@@ -1,0 +1,75 @@
+!Command
+command:
+- rm_spurious_events.py
+positional:
+- !Positional
+  description: 'Output:'
+  position: 0
+  name: duplicates
+  optional: false
+- !Positional
+  description: Path to bed6 file containing alignments.
+  position: 0
+  name: events
+  optional: false
+named:
+- !Flag
+  description: 'Write results to this file. (default: None)'
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: 'Threshold for spurious event removal. (default: 0.1)'
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: 'Be verbose. (default: False)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print lots of debugging information (default: False)'
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: rm_spurious_events.py [-h] -o OUTFILE [-t THRESHOLD] [-v] [-d]\
+  \ events\n\nRemove spurious events originating from errors in random sequence tags.\n\
+  \nThis script compares all events sharing the same coordinates. Among each group\n\
+  of events the maximum number of PCR duplicates is determined. All events that\n\
+  are supported by less than 10 percent of this maximum count are removed.\n\nInput:\n\
+  * bed6 file containing crosslinking events with score field set to number of PCR\n\
+  \  duplicates\n\nOutput:\n* bed6 file with spurious crosslinking events removed,\
+  \ sorted by fields chrom,\n  start, stop, strand\n\nExample usage:\n- remove spurious\
+  \ events from spurious.bed and write results to file cleaned.bed\nrm_spurious_events.py\
+  \ spurious.bed --oufile cleaned.bed\n\npositional arguments:\n  events         \
+  \       Path to bed6 file containing alignments.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -o OUTFILE, --outfile OUTFILE\n\
+  \                        Write results to this file. (default: None)\n  -t THRESHOLD,\
+  \ --threshold THRESHOLD\n                        Threshold for spurious event removal.\
+  \ (default: 0.1)\n  -v, --verbose         Be verbose. (default: False)\n  -d, --debug\
+  \           Print lots of debugging information (default: False)\n"
+generated_using:
+- --help

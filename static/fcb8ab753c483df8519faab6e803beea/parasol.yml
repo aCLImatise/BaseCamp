@@ -1,0 +1,140 @@
+!Command
+command:
+- parasol
+positional:
+- !Positional
+  description: parasol add machine machineFullHostName cpus ramSizeMB localTempDir
+    localDir localSizeMB switchName
+  position: 0
+  name: or
+  optional: false
+named:
+- !Flag
+  description: '- Where to get stdin, default /dev/null'
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: in
+  optional: true
+- !Flag
+  description: '- Where to put stdout, default /dev/null'
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: out
+  optional: true
+- !Flag
+  description: '- If set wait for job to finish to return and return with job status
+    code'
+  synonyms:
+  - -wait
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- set stderr to out file - only works with wait flag'
+  synonyms:
+  - -err
+  args: !SimpleFlagArg
+    name: outFile
+  optional: true
+- !Flag
+  description: '- set verbosity level, default level is 1'
+  synonyms:
+  - -verbose
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- prints jobId to stdout'
+  synonyms:
+  - -printId
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- set output results dir, default is current dir'
+  synonyms:
+  - -dir
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: "fully qualified path to the results file,\nor `results' in the current\
+    \ directory if not specified."
+  synonyms:
+  - -results
+  args: !SimpleFlagArg
+    name: resultFile
+  optional: true
+- !Flag
+  description: Number of CPUs used by the jobs, default 1.
+  synonyms:
+  - -cpu
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Number of bytes of RAM used by the jobs.\nDefault is RAM on node divided\
+    \ by number of cpus on node.\nShorthand expressions allow t,g,m,k for tera, giga,\
+    \ mega, kilo.\ne.g. 4g = 4 Gigabytes."
+  synonyms:
+  - -ram
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- connect to a paraHub process on a remote host instead\nlocalhost."
+  synonyms:
+  - -host
+  args: !SimpleFlagArg
+    name: hostname
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Parasol version 12.18\nParasol is the name given to the overall system\
+  \ for managing jobs on\na computer cluster and to this specific command.  This command\
+  \ is\nintended primarily for system administrators.  The 'para' command\nis the\
+  \ primary command for users.\nUsage in brief:\n   parasol add machine machineFullHostName\
+  \ localTempDir  - Add new machine to pool.\n    or \n   parasol add machine machineFullHostName\
+  \ cpus ramSizeMB localTempDir localDir localSizeMB switchName\n   parasol remove\
+  \ machine machineFullHostName \"reason why\"  - Remove machine from pool.\n   parasol\
+  \ check dead - Check machines marked dead ASAP, some have been fixed.\n   parasol\
+  \ add spoke  - Add a new spoke daemon.\n   parasol [options] add job command-line\
+  \   - Add job to list.\n         options:\n            -in=in - Where to get stdin,\
+  \ default /dev/null\n            -out=out - Where to put stdout, default /dev/null\n\
+  \            -wait - If set wait for job to finish to return and return with job\
+  \ status code\n            -err=outFile - set stderr to out file - only works with\
+  \ wait flag\n            -verbose=N - set verbosity level, default level is 1\n\
+  \            -printId - prints jobId to stdout\n            -dir=dir - set output\
+  \ results dir, default is current dir\n            -results=resultFile fully qualified\
+  \ path to the results file, \n             or `results' in the current directory\
+  \ if not specified.\n            -cpu=N  Number of CPUs used by the jobs, default\
+  \ 1.\n            -ram=N  Number of bytes of RAM used by the jobs.\n           \
+  \  Default is RAM on node divided by number of cpus on node.\n             Shorthand\
+  \ expressions allow t,g,m,k for tera, giga, mega, kilo.\n             e.g. 4g =\
+  \ 4 Gigabytes.\n   parasol [options] clear sick  - Clear sick stats on a batch.\n\
+  \         options:\n            -results=resultFile fully qualified path to the\
+  \ results file, \n             or `results' in the current directory if not specified.\n\
+  \   parasol remove job id  - Remove job of given ID.\n   parasol ping [count]  -\
+  \ Ping hub server to make sure it's alive.\n   parasol remove jobs userName [jobPattern]\
+  \  - Remove jobs submitted by user that\n         match jobPattern (which may include\
+  \ ? and * escaped for shell).\n   parasol list machines  - List machines in pool.\n\
+  \   parasol [-extended] list jobs  - List jobs one per line.\n   parasol list users\
+  \  - List users one per line.\n   parasol [options] list batches  - List batches\
+  \ one per line.\n         option - 'all' if set include inactive\n   parasol list\
+  \ sick  - List nodes considered sick by all running batches, one per line.\n   parasol\
+  \ status  - Summarize status of machines, jobs, and spoke daemons.\n   parasol [options]\
+  \ pstat2  - Get status of jobs queued and running.\n         options:\n        \
+  \    -results=resultFile fully qualified path to the results file, \n          \
+  \   or `results' in the current directory if not specified.\n   parasol flushResults\n\
+  \         Flush results file.  Warns if batch has jobs queued or running.\n    \
+  \     options:\n            -results=resultFile fully qualified path to the results\
+  \ file, \n             or `results' in the current directory if not specified.\n\
+  options:\n   -host=hostname - connect to a paraHub process on a remote host instead\n\
+  \                    localhost.\nImportant note:\n  Options must precede positional\
+  \ arguments\n\n"
+generated_using:
+- --help

@@ -1,0 +1,179 @@
+!Command
+command:
+- nanonet2d
+positional:
+- !Positional
+  description: 'A path to fast5 files. (default: None)'
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Output prefix, output will be in fasta format.
+  position: 1
+  name: output_prefix
+  optional: false
+named:
+- !Flag
+  description: "Output fastq rather than fasta. (Default: --no-fastq)\n(default: False)"
+  synonyms:
+  - --fastq
+  - --no-fastq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Switch to watching folder, argument value used as\ntimeout period.\
+    \ (default: None)"
+  synonyms:
+  - --watch
+  args: !SimpleFlagArg
+    name: WATCH
+  optional: true
+- !Flag
+  description: "Section of read for which to produce basecalls, will\noverride that\
+    \ stored in model file. (default: None)"
+  synonyms:
+  - --section
+  args: !ChoiceFlagArg
+    choices: !!set
+      complement:
+      template:
+  optional: true
+- !Flag
+  description: "Perform event detection, else use existing event data\n(Default: --event_detect)\
+    \ (default: True)"
+  synonyms:
+  - --event_detect
+  - --no-event_detect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write event datasets to .fast5. (Default: --no-\nwrite_events) (default:\
+    \ False)"
+  synonyms:
+  - --write_events
+  - --no-write_events
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'List of reads to process. (default: None)'
+  synonyms:
+  - --strand_list
+  args: !SimpleFlagArg
+    name: STRAND_LIST
+  optional: true
+- !Flag
+  description: "Limit the number of input for processing. (default:\nNone)"
+  synonyms:
+  - --limit
+  args: !SimpleFlagArg
+    name: LIMIT
+  optional: true
+- !Flag
+  description: 'Min. read length (events) to basecall. (default: 500)'
+  synonyms:
+  - --min_len
+  args: !SimpleFlagArg
+    name: MIN_LEN
+  optional: true
+- !Flag
+  description: "Max. read length (events) to basecall. (default:\n15000)"
+  synonyms:
+  - --max_len
+  args: !SimpleFlagArg
+    name: MAX_LEN
+  optional: true
+- !Flag
+  description: "Trained ANN. (default: /root/.cache/Python-\nEggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-\n\
+    tmp/nanonet/data/default_template.npy)"
+  synonyms:
+  - --template_model
+  args: !SimpleFlagArg
+    name: TEMPLATE_MODEL
+  optional: true
+- !Flag
+  description: "Trained ANN. (default: /root/.cache/Python-\nEggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-\n\
+    tmp/nanonet/data/default_complement.npy)"
+  synonyms:
+  - --complement_model
+  args: !SimpleFlagArg
+    name: COMPLEMENT_MODEL
+  optional: true
+- !Flag
+  description: 'No of decoding jobs to run in parallel. (default: 1)'
+  synonyms:
+  - --jobs
+  args: !SimpleFlagArg
+    name: JOBS
+  optional: true
+- !Flag
+  description: "Use OpenCL for 2D calls. (Default: --no-opencl_2d)\n(default: False)"
+  synonyms:
+  - --opencl_2d
+  - --no-opencl_2d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "step skip\nBase transition probabilities (default: None)"
+  synonyms:
+  - --trans
+  args: !SimpleFlagArg
+    name: stay
+  optional: true
+- !Flag
+  description: "Use simple, fast decoder with no transition estimates.\n(Default:\
+    \ --no-fast_decode) (default: False)\n"
+  synonyms:
+  - --fast_decode
+  - --no-fast_decode
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: nanonet2d [-h] [--fastq] [--watch WATCH]\n                 [--section\
+  \ {template,complement}] [--event_detect]\n                 [--write_events] [--strand_list\
+  \ STRAND_LIST] [--limit LIMIT]\n                 [--min_len MIN_LEN] [--max_len\
+  \ MAX_LEN]\n                 [--template_model TEMPLATE_MODEL]\n               \
+  \  [--complement_model COMPLEMENT_MODEL] [--jobs JOBS]\n                 [--opencl_2d]\
+  \ [--trans stay step skip] [--fast_decode]\n                 [input] output_prefix\n\
+  \nA simple RNN basecaller for Oxford Nanopore data.\n\npositional arguments:\n \
+  \ input                 A path to fast5 files. (default: None)\n  output_prefix\
+  \         Output prefix, output will be in fasta format.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --fastq, --no-fastq\
+  \   Output fastq rather than fasta. (Default: --no-fastq)\n                    \
+  \    (default: False)\n  --watch WATCH         Switch to watching folder, argument\
+  \ value used as\n                        timeout period. (default: None)\n  --section\
+  \ {template,complement}\n                        Section of read for which to produce\
+  \ basecalls, will\n                        override that stored in model file. (default:\
+  \ None)\n  --event_detect, --no-event_detect\n                        Perform event\
+  \ detection, else use existing event data\n                        (Default: --event_detect)\
+  \ (default: True)\n  --write_events, --no-write_events\n                       \
+  \ Write event datasets to .fast5. (Default: --no-\n                        write_events)\
+  \ (default: False)\n  --strand_list STRAND_LIST\n                        List of\
+  \ reads to process. (default: None)\n  --limit LIMIT         Limit the number of\
+  \ input for processing. (default:\n                        None)\n  --min_len MIN_LEN\
+  \     Min. read length (events) to basecall. (default: 500)\n  --max_len MAX_LEN\
+  \     Max. read length (events) to basecall. (default:\n                       \
+  \ 15000)\n  --template_model TEMPLATE_MODEL\n                        Trained ANN.\
+  \ (default: /root/.cache/Python-\n                        Eggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-\n\
+  \                        tmp/nanonet/data/default_template.npy)\n  --complement_model\
+  \ COMPLEMENT_MODEL\n                        Trained ANN. (default: /root/.cache/Python-\n\
+  \                        Eggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-\n          \
+  \              tmp/nanonet/data/default_complement.npy)\n  --jobs JOBS         \
+  \  No of decoding jobs to run in parallel. (default: 1)\n  --opencl_2d, --no-opencl_2d\n\
+  \                        Use OpenCL for 2D calls. (Default: --no-opencl_2d)\n  \
+  \                      (default: False)\n  --trans stay step skip\n            \
+  \            Base transition probabilities (default: None)\n  --fast_decode, --no-fast_decode\n\
+  \                        Use simple, fast decoder with no transition estimates.\n\
+  \                        (Default: --no-fast_decode) (default: False)\n"
+generated_using:
+- --help

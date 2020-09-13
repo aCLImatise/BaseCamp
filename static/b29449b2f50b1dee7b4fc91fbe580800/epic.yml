@@ -1,0 +1,269 @@
+!Command
+command:
+- epic
+positional: []
+named:
+- !Flag
+  description: "Treatment (pull-down) file(s) in (b/gzipped) bed/bedpe\nformat."
+  synonyms:
+  - --treatment
+  - -t
+  args: !RepeatFlagArg
+    name: TREATMENT
+  optional: true
+- !Flag
+  description: "Control (input) file(s) in (b/gzipped) bed/bedpe\nformat."
+  synonyms:
+  - --control
+  - -c
+  args: !RepeatFlagArg
+    name: CONTROL
+  optional: true
+- !Flag
+  description: "Number of cpus to use. Can use at most one per\nchromosome. Default:\
+    \ 1."
+  synonyms:
+  - --number-cores
+  - -cpu
+  args: !SimpleFlagArg
+    name: NUMBER_CORES
+  optional: true
+- !Flag
+  description: "Which genome to analyze. Default: hg19. If\n--chromsizes flag is given,\
+    \ --genome is not required."
+  synonyms:
+  - --genome
+  - -gn
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: "Keep reads mapping to the same position on the same\nstrand within\
+    \ a library. Default is to remove all but\nthe first duplicate."
+  synonyms:
+  - --keep-duplicates
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Size of the windows to scan the genome. WINDOW_SIZE is\nthe smallest\
+    \ possible island. Default 200."
+  synonyms:
+  - --window-size
+  - -w
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+  optional: true
+- !Flag
+  description: "This number is multiplied by the window size to\ndetermine the gap\
+    \ size. Must be an integer. Default:\n3."
+  synonyms:
+  - --gaps-allowed
+  - -g
+  args: !SimpleFlagArg
+    name: GAPS_ALLOWED
+  optional: true
+- !Flag
+  description: "(Single end reads only) Size of the sequenced\nfragment. The center\
+    \ of the the fragment will be taken\nas half the fragment size. Default 150."
+  synonyms:
+  - --fragment-size
+  - -fs
+  args: !SimpleFlagArg
+    name: FRAGMENT_SIZE
+  optional: true
+- !Flag
+  description: "Remove all islands with an FDR below cutoff. Default\n0.05."
+  synonyms:
+  - --false-discovery-rate-cutoff
+  - -fdr
+  args: !SimpleFlagArg
+    name: FALSE_DISCOVERY_RATE_CUTOFF
+  optional: true
+- !Flag
+  description: "Use a different effective genome fraction than the one\nincluded in\
+    \ epic. The default value depends on the\ngenome and readlength, but is a number\
+    \ between 0 and\n1."
+  synonyms:
+  - --effective-genome-fraction
+  - -egf
+  args: !SimpleFlagArg
+    name: EFFECTIVE_GENOME_FRACTION
+  optional: true
+- !Flag
+  description: "Set the chromosome lengths yourself in a file with two\ncolumns: chromosome\
+    \ names and sizes. Useful to analyze\ncustom genomes, assemblies or simulated\
+    \ data. Only\nchromosomes included in the file will be analyzed."
+  synonyms:
+  - --chromsizes
+  - -cs
+  args: !SimpleFlagArg
+    name: CHROMSIZES
+  optional: true
+- !Flag
+  description: "Store the matrix of counts per bin for ChIP and input\nto gzipped\
+    \ file <STORE_MATRIX>."
+  synonyms:
+  - --store-matrix
+  - -sm
+  args: !SimpleFlagArg
+    name: STORE_MATRIX
+  optional: true
+- !Flag
+  description: "For each file, store a bigwig of both enriched and\nnon-enriched regions\
+    \ to folder <BIGWIG>. Requires\ndifferent basenames for each file."
+  synonyms:
+  - --bigwig
+  - -bw
+  args: !SimpleFlagArg
+    name: BIGWIG
+  optional: true
+- !Flag
+  description: "For each file, store a bigwig of the log2fc of\nChIP/(Sum Input) to\
+    \ folder <INDIVIDUAL-LOG2FC-\nBIGWIGS>. Requires different basenames for each\
+    \ file."
+  synonyms:
+  - --individual-log2fc-bigwigs
+  - -i2bw
+  args: !SimpleFlagArg
+    name: INDIVIDUAL_LOG2FC_BIGWIGS
+  optional: true
+- !Flag
+  description: "Store an RPKM-normalized summed bigwig for all ChIP\nfiles in file\
+    \ <CHIP-BIGWIG>."
+  synonyms:
+  - --chip-bigwig
+  - -cbw
+  args: !SimpleFlagArg
+    name: CHIP_BIGWIG
+  optional: true
+- !Flag
+  description: "Store an RPKM-normalized summed bigwig for all Input\nfiles in file\
+    \ <INPUT-BIGWIG>."
+  synonyms:
+  - --input-bigwig
+  - -ibw
+  args: !SimpleFlagArg
+    name: INPUT_BIGWIG
+  optional: true
+- !Flag
+  description: "Store an log2(ChIP/Input) bigwig in file <LOG2FC-\nBIGWIG>. (Both\
+    \ ChIP and Input are RPKM-normalized\nbefore dividing.)"
+  synonyms:
+  - --log2fc-bigwig
+  - -2bw
+  args: !SimpleFlagArg
+    name: LOG2FC_BIGWIG
+  optional: true
+- !Flag
+  description: "A summary bed file of all regions for display in the\nUCSC genome\
+    \ browser or downstream analyses with e.g.\nbedtools. The score field is log2(#ChIP/#Input)\
+    \ * 100\ncapped at a 1000."
+  synonyms:
+  - --bed
+  - -b
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: File to write log messages to.
+  synonyms:
+  - --log
+  - -l
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: File to write results to. By default sent to stdout.
+  synonyms:
+  - --outfile
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: epic [-h] --treatment TREATMENT [TREATMENT ...] --control CONTROL\n\
+  \            [CONTROL ...] [--number-cores NUMBER_CORES] [--genome GENOME]\n   \
+  \         [--keep-duplicates] [--window-size WINDOW_SIZE]\n            [--gaps-allowed\
+  \ GAPS_ALLOWED] [--fragment-size FRAGMENT_SIZE]\n            [--false-discovery-rate-cutoff\
+  \ FALSE_DISCOVERY_RATE_CUTOFF]\n            [--effective-genome-fraction EFFECTIVE_GENOME_FRACTION]\n\
+  \            [--chromsizes CHROMSIZES] [--store-matrix STORE_MATRIX]\n         \
+  \   [--bigwig BIGWIG]\n            [--individual-log2fc-bigwigs INDIVIDUAL_LOG2FC_BIGWIGS]\n\
+  \            [--chip-bigwig CHIP_BIGWIG] [--input-bigwig INPUT_BIGWIG]\n       \
+  \     [--log2fc-bigwig LOG2FC_BIGWIG] [--bed BED] [--log LOG]\n            [--outfile\
+  \ OUTFILE] [--version]\n\nDiffuse domain ChIP-Seq caller based on SICER. (Visit\
+  \ github.com/endrebak/epic\nfor examples and help.)\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --treatment TREATMENT [TREATMENT\
+  \ ...], -t TREATMENT [TREATMENT ...]\n                        Treatment (pull-down)\
+  \ file(s) in (b/gzipped) bed/bedpe\n                        format.\n  --control\
+  \ CONTROL [CONTROL ...], -c CONTROL [CONTROL ...]\n                        Control\
+  \ (input) file(s) in (b/gzipped) bed/bedpe\n                        format.\n  --number-cores\
+  \ NUMBER_CORES, -cpu NUMBER_CORES\n                        Number of cpus to use.\
+  \ Can use at most one per\n                        chromosome. Default: 1.\n  --genome\
+  \ GENOME, -gn GENOME\n                        Which genome to analyze. Default:\
+  \ hg19. If\n                        --chromsizes flag is given, --genome is not\
+  \ required.\n  --keep-duplicates, -k\n                        Keep reads mapping\
+  \ to the same position on the same\n                        strand within a library.\
+  \ Default is to remove all but\n                        the first duplicate.\n \
+  \ --window-size WINDOW_SIZE, -w WINDOW_SIZE\n                        Size of the\
+  \ windows to scan the genome. WINDOW_SIZE is\n                        the smallest\
+  \ possible island. Default 200.\n  --gaps-allowed GAPS_ALLOWED, -g GAPS_ALLOWED\n\
+  \                        This number is multiplied by the window size to\n     \
+  \                   determine the gap size. Must be an integer. Default:\n     \
+  \                   3.\n  --fragment-size FRAGMENT_SIZE, -fs FRAGMENT_SIZE\n   \
+  \                     (Single end reads only) Size of the sequenced\n          \
+  \              fragment. The center of the the fragment will be taken\n        \
+  \                as half the fragment size. Default 150.\n  --false-discovery-rate-cutoff\
+  \ FALSE_DISCOVERY_RATE_CUTOFF, -fdr FALSE_DISCOVERY_RATE_CUTOFF\n              \
+  \          Remove all islands with an FDR below cutoff. Default\n              \
+  \          0.05.\n  --effective-genome-fraction EFFECTIVE_GENOME_FRACTION, -egf\
+  \ EFFECTIVE_GENOME_FRACTION\n                        Use a different effective genome\
+  \ fraction than the one\n                        included in epic. The default value\
+  \ depends on the\n                        genome and readlength, but is a number\
+  \ between 0 and\n                        1.\n  --chromsizes CHROMSIZES, -cs CHROMSIZES\n\
+  \                        Set the chromosome lengths yourself in a file with two\n\
+  \                        columns: chromosome names and sizes. Useful to analyze\n\
+  \                        custom genomes, assemblies or simulated data. Only\n  \
+  \                      chromosomes included in the file will be analyzed.\n  --store-matrix\
+  \ STORE_MATRIX, -sm STORE_MATRIX\n                        Store the matrix of counts\
+  \ per bin for ChIP and input\n                        to gzipped file <STORE_MATRIX>.\n\
+  \  --bigwig BIGWIG, -bw BIGWIG\n                        For each file, store a bigwig\
+  \ of both enriched and\n                        non-enriched regions to folder <BIGWIG>.\
+  \ Requires\n                        different basenames for each file.\n  --individual-log2fc-bigwigs\
+  \ INDIVIDUAL_LOG2FC_BIGWIGS, -i2bw INDIVIDUAL_LOG2FC_BIGWIGS\n                 \
+  \       For each file, store a bigwig of the log2fc of\n                       \
+  \ ChIP/(Sum Input) to folder <INDIVIDUAL-LOG2FC-\n                        BIGWIGS>.\
+  \ Requires different basenames for each file.\n  --chip-bigwig CHIP_BIGWIG, -cbw\
+  \ CHIP_BIGWIG\n                        Store an RPKM-normalized summed bigwig for\
+  \ all ChIP\n                        files in file <CHIP-BIGWIG>.\n  --input-bigwig\
+  \ INPUT_BIGWIG, -ibw INPUT_BIGWIG\n                        Store an RPKM-normalized\
+  \ summed bigwig for all Input\n                        files in file <INPUT-BIGWIG>.\n\
+  \  --log2fc-bigwig LOG2FC_BIGWIG, -2bw LOG2FC_BIGWIG\n                        Store\
+  \ an log2(ChIP/Input) bigwig in file <LOG2FC-\n                        BIGWIG>.\
+  \ (Both ChIP and Input are RPKM-normalized\n                        before dividing.)\n\
+  \  --bed BED, -b BED     A summary bed file of all regions for display in the\n\
+  \                        UCSC genome browser or downstream analyses with e.g.\n\
+  \                        bedtools. The score field is log2(#ChIP/#Input) * 100\n\
+  \                        capped at a 1000.\n  --log LOG, -l LOG     File to write\
+  \ log messages to.\n  --outfile OUTFILE, -o OUTFILE\n                        File\
+  \ to write results to. By default sent to stdout.\n  --version, -v         show\
+  \ program's version number and exit\n"
+generated_using:
+- --help

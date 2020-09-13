@@ -1,0 +1,157 @@
+!Command
+command:
+- bowtie2-build-s
+positional:
+- !Positional
+  description: comma-separated list of files with ref sequences
+  position: 0
+  name: reference_in
+  optional: false
+- !Positional
+  description: write bt2 data to files with this dir/basename
+  position: 1
+  name: bt2_index_base
+  optional: false
+named:
+- !Flag
+  description: reference files are Fasta (default)
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "reference sequences given on cmd line (as\n<reference_in>)"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable automatic -p/--bmax/--dcv memory-fitting
+  synonyms:
+  - -a/--noauto
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use packed strings internally; slower, less memory
+  synonyms:
+  - -p/--packed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max bucket sz for blockwise suffix-array builder
+  synonyms:
+  - --bmax
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'max bucket sz as divisor of ref len (default: 4)'
+  synonyms:
+  - --bmaxdivn
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'diff-cover period for blockwise (default: 1024)'
+  synonyms:
+  - --dcv
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: disable diff-cover (algorithm becomes quadratic)
+  synonyms:
+  - --nodc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't build .3/.4 index files
+  synonyms:
+  - -r/--noref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: just build .3/.4 index files
+  synonyms:
+  - -3/--justref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'SA is sampled every 2^<int> BWT chars (default: 5)'
+  synonyms:
+  - -o/--offrate
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '# of chars consumed in initial lookup (default: 10)'
+  synonyms:
+  - -t/--ftabchars
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '# of threads'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: seed for random number generator
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: verbose output (for debugging)
+  synonyms:
+  - -q/--quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print detailed description of tool and its options
+  synonyms:
+  - -h/--help
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag: !Flag
+  description: print this usage message
+  synonyms:
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
+version_flag: !Flag
+  description: print version information and quit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Bowtie 2 version 2.4.1 by Ben Langmead (langmea@cs.jhu.edu, www.cs.jhu.edu/~langmea)\n\
+  Usage: bowtie2-build-s [options]* <reference_in> <bt2_index_base>\n    reference_in\
+  \            comma-separated list of files with ref sequences\n    bt2_index_base\
+  \          write bt2 data to files with this dir/basename\n*** Bowtie 2 indexes\
+  \ work only with v2 (not v1).  Likewise for v1 indexes. ***\nOptions:\n    -f  \
+  \                    reference files are Fasta (default)\n    -c               \
+  \       reference sequences given on cmd line (as\n                            <reference_in>)\n\
+  \    -a/--noauto             disable automatic -p/--bmax/--dcv memory-fitting\n\
+  \    -p/--packed             use packed strings internally; slower, less memory\n\
+  \    --bmax <int>            max bucket sz for blockwise suffix-array builder\n\
+  \    --bmaxdivn <int>        max bucket sz as divisor of ref len (default: 4)\n\
+  \    --dcv <int>             diff-cover period for blockwise (default: 1024)\n \
+  \   --nodc                  disable diff-cover (algorithm becomes quadratic)\n \
+  \   -r/--noref              don't build .3/.4 index files\n    -3/--justref    \
+  \        just build .3/.4 index files\n    -o/--offrate <int>      SA is sampled\
+  \ every 2^<int> BWT chars (default: 5)\n    -t/--ftabchars <int>    # of chars consumed\
+  \ in initial lookup (default: 10)\n    --threads <int>         # of threads\n  \
+  \  --seed <int>            seed for random number generator\n    -q/--quiet    \
+  \          verbose output (for debugging)\n    -h/--help               print detailed\
+  \ description of tool and its options\n    --usage                 print this usage\
+  \ message\n    --version               print version information and quit\n"
+generated_using:
+- --help

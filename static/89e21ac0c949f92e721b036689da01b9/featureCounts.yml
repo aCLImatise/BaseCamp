@@ -1,0 +1,528 @@
+!Command
+command:
+- featureCounts
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_file1
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: input_file2
+  optional: true
+named:
+- !Flag
+  description: Name of an annotation file. GTF/GFF format by default. See
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: for more format information. Inbuilt annotations
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: option
+  optional: true
+- !Flag
+  description: "Name of output file including read counts. A separate file\nincluding\
+    \ summary statistics of counting results is also\nincluded in the output ('<string>.summary').\
+    \ Both files\nare in tab delimited format."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Specify feature type(s) in a GTF annotation. If multiple\ntypes are\
+    \ provided, they should be separated by ',' with\nno space in between. 'exon'\
+    \ by default. Rows in the\nannotation with a matched feature will be extracted\
+    \ and\nused for read mapping."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Specify attribute type in GTF annotation. 'gene_id' by\ndefault. Meta-features\
+    \ used for read counting will be\nextracted from annotation using the provided\
+    \ value."
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Extract extra attribute types from the provided GTF\nannotation and\
+    \ include them in the counting output. These\nattribute types will not be used\
+    \ to group features. If\nmore than one attribute type is provided they should\
+    \ be\nseparated by comma."
+  synonyms:
+  - --extraAttributes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Provide a chromosome name alias file to match chr names in\nannotation\
+    \ with those in the reads. This should be a two-\ncolumn comma-delimited text\
+    \ file. Its first column should\ninclude chr names in the annotation and its second\
+    \ column\nshould include chr names in the reads. Chr names are case\nsensitive.\
+    \ No column header should be included in the\nfile."
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Perform read counting at feature level (eg. counting\nreads for exons\
+    \ rather than genes)."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Assign reads to all their overlapping meta-features (or\nfeatures\
+    \ if -f is specified)."
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum number of overlapping bases in a read that is\nrequired for\
+    \ read assignment. 1 by default. Number of\noverlapping bases is counted from\
+    \ both reads if paired\nend. If a negative value is provided, then a gap of up\n\
+    to specified size will be allowed between read and the\nfeature that the read\
+    \ is assigned to."
+  synonyms:
+  - --minOverlap
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Minimum fraction of overlapping bases in a read that is\nrequired\
+    \ for read assignment. Value should be within range\n[0,1]. 0 by default. Number\
+    \ of overlapping bases is\ncounted from both reads if paired end. Both this option\n\
+    and '--minOverlap' option need to be satisfied for read\nassignment."
+  synonyms:
+  - --fracOverlap
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Minimum fraction of overlapping bases in a\nfeature that is required\
+    \ for read assignment. Value\nshould be within range [0,1]. 0 by default."
+  synonyms:
+  - --fracOverlapFeature
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Assign reads to a meta-feature/feature that has the\nlargest number\
+    \ of overlapping bases."
+  synonyms:
+  - --largestOverlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum number of non-overlapping bases in a read (or a\nread pair)\
+    \ that is allowed when being assigned to a\nfeature. No limit is set by default."
+  synonyms:
+  - --nonOverlap
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Maximum number of non-overlapping bases in a feature\nthat is allowed\
+    \ in read assignment. No limit is set by\ndefault."
+  synonyms:
+  - --nonOverlapFeature
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Reads are extended upstream by <int> bases from their\n5' end."
+  synonyms:
+  - --readExtension5
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Reads are extended upstream by <int> bases from their\n3' end."
+  synonyms:
+  - --readExtension3
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "<5:3>    Reduce reads to their 5' most base or 3' most base. Read\n\
+    counting is then performed based on the single base the\nread is reduced to."
+  synonyms:
+  - --read2pos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Multi-mapping reads will also be counted. For a multi-\nmapping read,\
+    \ all its reported alignments will be\ncounted. The 'NH' tag in BAM/SAM input\
+    \ is used to detect\nmulti-mapping reads."
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Assign fractional counts to features. This option must\nbe used together\
+    \ with '-M' or '-O' or both. When '-M' is\nspecified, each reported alignment\
+    \ from a multi-mapping\nread (identified via 'NH' tag) will carry a fractional\n\
+    count of 1/x, instead of 1 (one), where x is the total\nnumber of alignments reported\
+    \ for the same read. When '-O'\nis specified, each overlapping feature will receive\
+    \ a\nfractional count of 1/y, where y is the total number of\nfeatures overlapping\
+    \ with the read. When both '-M' and\n'-O' are specified, each alignment will carry\
+    \ a fractional\ncount of 1/(x*y)."
+  synonyms:
+  - --fraction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The minimum mapping quality score a read must satisfy in\norder to\
+    \ be counted. For paired-end reads, at least one\nend should satisfy this criteria.\
+    \ 0 by default."
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Count split alignments only (ie. alignments with CIGAR\nstring containing\
+    \ 'N'). An example of split alignments is\nexon-spanning reads in RNA-seq data."
+  synonyms:
+  - --splitOnly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, only non-split alignments (CIGAR strings do\nnot contain\
+    \ letter 'N') will be counted. All the other\nalignments will be ignored."
+  synonyms:
+  - --nonSplitOnly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Count primary alignments only. Primary alignments are\nidentified\
+    \ using bit 0x100 in SAM/BAM FLAG field."
+  synonyms:
+  - --primary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ignore duplicate reads in read counting. Duplicate reads\nare identified\
+    \ using bit Ox400 in BAM/SAM FLAG field. The\nwhole read pair is ignored if one\
+    \ of the reads is a\nduplicate read for paired end data."
+  synonyms:
+  - --ignoreDup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Perform strand-specific read counting. A single integer\nvalue (applied\
+    \ to all input files) or a string of comma-\nseparated values (applied to each\
+    \ corresponding input\nfile) should be provided. Possible values include:\n0 (unstranded),\
+    \ 1 (stranded) and 2 (reversely stranded).\nDefault value is 0 (ie. unstranded\
+    \ read counting carried\nout for all input files)."
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int or string
+  optional: true
+- !Flag
+  description: "Count number of reads supporting each exon-exon junction.\nJunctions\
+    \ were identified from those exon-spanning reads\nin the input (containing 'N'\
+    \ in CIGAR string). Counting\nresults are saved to a file named '<output_file>.jcounts'"
+  synonyms:
+  - -J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Provide the name of a FASTA-format file that contains the\nreference\
+    \ sequences used in read mapping that produced the\nprovided SAM/BAM files. This\
+    \ optional argument can be used\nwith '-J' option to improve read counting for\
+    \ junctions."
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "If specified, fragments (or templates) will be counted\ninstead of\
+    \ reads. This option is only applicable for\npaired-end reads; single-end reads\
+    \ are always counted as\nreads."
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only count read pairs that have both ends aligned.
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Check validity of paired-end distance when counting read\npairs. Use\
+    \ -d and -D to set thresholds."
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum fragment/template length, 50 by default.
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum fragment/template length, 600 by default.
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Do not count read pairs that have their two ends mapping\nto different\
+    \ chromosomes or mapping to same chromosome\nbut on different strands."
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not sort reads in BAM/SAM input. Note that reads from\nthe same\
+    \ pair are required to be located next to each\nother in the input."
+  synonyms:
+  - --donotsort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of the threads. 1 by default.
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Assign reads by read group. \"RG\" tag is required to be\npresent\
+    \ in the input BAM/SAM files."
+  synonyms:
+  - --byReadGroup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Count long reads such as Nanopore and PacBio reads. Long\nread counting\
+    \ can only run in one thread and only reads\n(not read-pairs) can be counted.\
+    \ There is no limitation on\nthe number of 'M' operations allowed in a CIGAR string\
+    \ in\nlong read counting."
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output detailed assignment results for each read or read-\npair. Results\
+    \ are saved to a file that is in one of the\nfollowing formats: CORE, SAM and\
+    \ BAM. See Users Guide for\nmore info about these formats."
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: "Specify a directory to save the detailed assignment\nresults. If unspecified,\
+    \ the directory where counting\nresults are saved is used."
+  synonyms:
+  - --Rpath
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Directory under which intermediate files are saved (later\nremoved).\
+    \ By default, intermediate files will be saved to\nthe directory specified in\
+    \ '-o' argument."
+  synonyms:
+  - --tmpDir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Maximum number of 'M' operations allowed in a CIGAR\nstring. 10 by\
+    \ default. Both 'X' and '=' are treated as 'M'\nand adjacent 'M' operations are\
+    \ merged in the CIGAR\nstring."
+  synonyms:
+  - --maxMOp
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Output verbose information for debugging, such as un-\nmatched chromosome/contig\
+    \ names."
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output version of the program.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "featureCounts: unrecognized option '--help'\n\nVersion 2.0.1\n\nUsage:\
+  \ featureCounts [options] -a <annotation_file> -o <output_file> input_file1 [input_file2]\
+  \ ... \n\n## Mandatory arguments:\n\n  -a <string>         Name of an annotation\
+  \ file. GTF/GFF format by default. See\n                      -F option for more\
+  \ format information. Inbuilt annotations\n                      (SAF format) is\
+  \ available in 'annotation' directory of the\n                      package. Gzipped\
+  \ file is also accepted.\n\n  -o <string>         Name of output file including\
+  \ read counts. A separate file\n                      including summary statistics\
+  \ of counting results is also\n                      included in the output ('<string>.summary').\
+  \ Both files\n                      are in tab delimited format.\n\n  input_file1\
+  \ [input_file2] ...   A list of SAM or BAM format files. They can be\n         \
+  \             either name or location sorted. If no files provided,\n          \
+  \            <stdin> input is expected. Location-sorted paired-end reads\n     \
+  \                 are automatically sorted by read names.\n\n## Optional arguments:\n\
+  # Annotation\n\n  -F <string>         Specify format of the provided annotation\
+  \ file. Acceptable\n                      formats include 'GTF' (or compatible GFF\
+  \ format) and\n                      'SAF'. 'GTF' by default.  For SAF format, please\
+  \ refer to\n                      Users Guide.\n\n  -t <string>         Specify\
+  \ feature type(s) in a GTF annotation. If multiple\n                      types\
+  \ are provided, they should be separated by ',' with\n                      no space\
+  \ in between. 'exon' by default. Rows in the\n                      annotation with\
+  \ a matched feature will be extracted and\n                      used for read mapping.\
+  \ \n\n  -g <string>         Specify attribute type in GTF annotation. 'gene_id'\
+  \ by \n                      default. Meta-features used for read counting will\
+  \ be \n                      extracted from annotation using the provided value.\n\
+  \n  --extraAttributes   Extract extra attribute types from the provided GTF\n  \
+  \                    annotation and include them in the counting output. These\n\
+  \                      attribute types will not be used to group features. If\n\
+  \                      more than one attribute type is provided they should be\n\
+  \                      separated by comma.\n\n  -A <string>         Provide a chromosome\
+  \ name alias file to match chr names in\n                      annotation with those\
+  \ in the reads. This should be a two-\n                      column comma-delimited\
+  \ text file. Its first column should\n                      include chr names in\
+  \ the annotation and its second column\n                      should include chr\
+  \ names in the reads. Chr names are case\n                      sensitive. No column\
+  \ header should be included in the\n                      file.\n\n# Level of summarization\n\
+  \n  -f                  Perform read counting at feature level (eg. counting \n\
+  \                      reads for exons rather than genes).\n\n# Overlap between\
+  \ reads and features\n\n  -O                  Assign reads to all their overlapping\
+  \ meta-features (or \n                      features if -f is specified).\n\n  --minOverlap\
+  \ <int>  Minimum number of overlapping bases in a read that is\n               \
+  \       required for read assignment. 1 by default. Number of\n                \
+  \      overlapping bases is counted from both reads if paired\n                \
+  \      end. If a negative value is provided, then a gap of up\n                \
+  \      to specified size will be allowed between read and the\n                \
+  \      feature that the read is assigned to.\n\n  --fracOverlap <float> Minimum\
+  \ fraction of overlapping bases in a read that is\n                      required\
+  \ for read assignment. Value should be within range\n                      [0,1].\
+  \ 0 by default. Number of overlapping bases is\n                      counted from\
+  \ both reads if paired end. Both this option\n                      and '--minOverlap'\
+  \ option need to be satisfied for read\n                      assignment.\n\n  --fracOverlapFeature\
+  \ <float> Minimum fraction of overlapping bases in a\n                      feature\
+  \ that is required for read assignment. Value\n                      should be within\
+  \ range [0,1]. 0 by default.\n\n  --largestOverlap    Assign reads to a meta-feature/feature\
+  \ that has the \n                      largest number of overlapping bases.\n\n\
+  \  --nonOverlap <int>  Maximum number of non-overlapping bases in a read (or a\n\
+  \                      read pair) that is allowed when being assigned to a\n   \
+  \                   feature. No limit is set by default.\n\n  --nonOverlapFeature\
+  \ <int> Maximum number of non-overlapping bases in a feature\n                 \
+  \     that is allowed in read assignment. No limit is set by\n                 \
+  \     default.\n\n  --readExtension5 <int> Reads are extended upstream by <int>\
+  \ bases from their\n                      5' end.\n\n  --readExtension3 <int> Reads\
+  \ are extended upstream by <int> bases from their\n                      3' end.\n\
+  \n  --read2pos <5:3>    Reduce reads to their 5' most base or 3' most base. Read\n\
+  \                      counting is then performed based on the single base the \n\
+  \                      read is reduced to.\n\n# Multi-mapping reads\n\n  -M    \
+  \              Multi-mapping reads will also be counted. For a multi-\n        \
+  \              mapping read, all its reported alignments will be \n            \
+  \          counted. The 'NH' tag in BAM/SAM input is used to detect \n         \
+  \             multi-mapping reads.\n\n# Fractional counting\n\n  --fraction    \
+  \      Assign fractional counts to features. This option must\n                \
+  \      be used together with '-M' or '-O' or both. When '-M' is\n              \
+  \        specified, each reported alignment from a multi-mapping\n             \
+  \         read (identified via 'NH' tag) will carry a fractional\n             \
+  \         count of 1/x, instead of 1 (one), where x is the total\n             \
+  \         number of alignments reported for the same read. When '-O'\n         \
+  \             is specified, each overlapping feature will receive a\n          \
+  \            fractional count of 1/y, where y is the total number of\n         \
+  \             features overlapping with the read. When both '-M' and\n         \
+  \             '-O' are specified, each alignment will carry a fractional\n     \
+  \                 count of 1/(x*y).\n\n# Read filtering\n\n  -Q <int>          \
+  \  The minimum mapping quality score a read must satisfy in\n                  \
+  \    order to be counted. For paired-end reads, at least one\n                 \
+  \     end should satisfy this criteria. 0 by default.\n\n  --splitOnly         Count\
+  \ split alignments only (ie. alignments with CIGAR\n                      string\
+  \ containing 'N'). An example of split alignments is\n                      exon-spanning\
+  \ reads in RNA-seq data.\n\n  --nonSplitOnly      If specified, only non-split alignments\
+  \ (CIGAR strings do\n                      not contain letter 'N') will be counted.\
+  \ All the other\n                      alignments will be ignored.\n\n  --primary\
+  \           Count primary alignments only. Primary alignments are \n           \
+  \           identified using bit 0x100 in SAM/BAM FLAG field.\n\n  --ignoreDup \
+  \        Ignore duplicate reads in read counting. Duplicate reads \n           \
+  \           are identified using bit Ox400 in BAM/SAM FLAG field. The \n       \
+  \               whole read pair is ignored if one of the reads is a \n         \
+  \             duplicate read for paired end data.\n\n# Strandness\n\n  -s <int or\
+  \ string>  Perform strand-specific read counting. A single integer\n           \
+  \           value (applied to all input files) or a string of comma-\n         \
+  \             separated values (applied to each corresponding input\n          \
+  \            file) should be provided. Possible values include:\n              \
+  \        0 (unstranded), 1 (stranded) and 2 (reversely stranded).\n            \
+  \          Default value is 0 (ie. unstranded read counting carried\n          \
+  \            out for all input files).\n\n# Exon-exon junctions\n\n  -J        \
+  \          Count number of reads supporting each exon-exon junction.\n         \
+  \             Junctions were identified from those exon-spanning reads\n       \
+  \               in the input (containing 'N' in CIGAR string). Counting\n      \
+  \                results are saved to a file named '<output_file>.jcounts'\n\n \
+  \ -G <string>         Provide the name of a FASTA-format file that contains the\n\
+  \                      reference sequences used in read mapping that produced the\n\
+  \                      provided SAM/BAM files. This optional argument can be used\n\
+  \                      with '-J' option to improve read counting for junctions.\n\
+  \n# Parameters specific to paired end reads\n\n  -p                  If specified,\
+  \ fragments (or templates) will be counted\n                      instead of reads.\
+  \ This option is only applicable for\n                      paired-end reads; single-end\
+  \ reads are always counted as\n                      reads.\n\n  -B            \
+  \      Only count read pairs that have both ends aligned.\n\n  -P              \
+  \    Check validity of paired-end distance when counting read \n               \
+  \       pairs. Use -d and -D to set thresholds.\n\n  -d <int>            Minimum\
+  \ fragment/template length, 50 by default.\n\n  -D <int>            Maximum fragment/template\
+  \ length, 600 by default.\n\n  -C                  Do not count read pairs that\
+  \ have their two ends mapping \n                      to different chromosomes or\
+  \ mapping to same chromosome \n                      but on different strands.\n\
+  \n  --donotsort         Do not sort reads in BAM/SAM input. Note that reads from\
+  \ \n                      the same pair are required to be located next to each\
+  \ \n                      other in the input.\n\n# Number of CPU threads\n\n  -T\
+  \ <int>            Number of the threads. 1 by default.\n\n# Read groups\n\n  --byReadGroup\
+  \       Assign reads by read group. \"RG\" tag is required to be\n             \
+  \         present in the input BAM/SAM files.\n                      \n\n# Long\
+  \ reads\n\n  -L                  Count long reads such as Nanopore and PacBio reads.\
+  \ Long\n                      read counting can only run in one thread and only\
+  \ reads\n                      (not read-pairs) can be counted. There is no limitation\
+  \ on\n                      the number of 'M' operations allowed in a CIGAR string\
+  \ in\n                      long read counting.\n\n# Assignment results for each\
+  \ read\n\n  -R <format>         Output detailed assignment results for each read\
+  \ or read-\n                      pair. Results are saved to a file that is in one\
+  \ of the\n                      following formats: CORE, SAM and BAM. See Users\
+  \ Guide for\n                      more info about these formats.\n\n  --Rpath <string>\
+  \    Specify a directory to save the detailed assignment\n                     \
+  \ results. If unspecified, the directory where counting\n                      results\
+  \ are saved is used.\n\n# Miscellaneous\n\n  --tmpDir <string>   Directory under\
+  \ which intermediate files are saved (later\n                      removed). By\
+  \ default, intermediate files will be saved to\n                      the directory\
+  \ specified in '-o' argument.\n\n  --maxMOp <int>      Maximum number of 'M' operations\
+  \ allowed in a CIGAR\n                      string. 10 by default. Both 'X' and\
+  \ '=' are treated as 'M'\n                      and adjacent 'M' operations are\
+  \ merged in the CIGAR\n                      string.\n\n  --verbose           Output\
+  \ verbose information for debugging, such as un-\n                      matched\
+  \ chromosome/contig names.\n\n  -v                  Output version of the program.\n\
+  \n"
+generated_using:
+- --help

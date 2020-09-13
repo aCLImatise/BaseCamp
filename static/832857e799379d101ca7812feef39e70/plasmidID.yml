@@ -1,0 +1,234 @@
+!Command
+command:
+- plasmidID
+positional: []
+named:
+- !Flag
+  description: '| --R1       <filename>      reads corresponding to paired-end R1
+    (mandatory)'
+  synonyms:
+  - '-1'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --R2       <filename>      reads corresponding to paired-end R2
+    (mandatory)'
+  synonyms:
+  - '-2'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --database <filename>      database to map and reconstruct (mandatory)'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --sample   <string>        sample name (mandatory), less than 37
+    characters'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --group    <string>        group name (optional). If unset, samples
+    will be gathered in NO_GROUP group'
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --contigs  <filename>      file with contigs. If supplied, plasmidID
+    will not assembly reads'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --annotate <filename>      file with configuration file for specific
+    annotation'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <output_dir>    output directory, by default is the current directory
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Relaxes default parameters to find less reliable relationships within
+    data supplied and database
+  synonyms:
+  - --explore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Database supplied will not be filtered and all sequences will be used\
+    \ as scaffold\nThis option does not require R1 and R2, instead a contig file can\
+    \ be supplied"
+  synonyms:
+  - --only-reconstruct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Undo winner takes it all algorithm when clustering by kmer - QUICKER
+    MODE
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory holding trimmomatic .jar executable
+  synonyms:
+  - --trimmomatic-directory
+  args: !SimpleFlagArg
+    name: Indicate
+  optional: true
+- !Flag
+  description: Reads supplied will not be quality trimmed
+  synonyms:
+  - --no-trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --coverage-cutoff  <int>   minimun coverage percentage to select
+    a plasmid as scafold (0-100), default 80'
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --coverage-summary <int>   minimun coverage percentage to include
+    plasmids in summary image (0-100), default 90'
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --cluster  <int>   kmer identity to cluster plasmids into the same
+    representative sequence (0 means identical) (0-1), default 0.5'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --kmer     <int>   identity to filter plasmids from the database
+    with kmer approach (0-1), default 0.95'
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --alignment-identity <int> minimun identity percentage aligned for
+    a contig to annotate, default 90'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --alignment-percentage <int>       minimun length percentage aligned
+    for a contig to annotate, default 20'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --length-total     <int>   minimun alignment length to filter blast
+    analysis'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: look for annotation over regions with no homology found (base pairs),
+    default 500bp
+  synonyms:
+  - --extend-annotation
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: directory holding config files, default config_files/
+  synonyms:
+  - --config-directory
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: file name of the individual file used to reconstruct
+  synonyms:
+  - --config-file-individual
+  args: !SimpleFlagArg
+    name: file-name
+  optional: true
+- !Flag
+  description: '| --memory   <int>   max memory allowed to use'
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --threads  <int>   number of threads'
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --version          version'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '| --help             display usage message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nplasmidID is a computational pipeline tha reconstruct and annotate the\
+  \ most likely plasmids present in one sample\n\nusage : /usr/local/bin/plasmidID\
+  \ <-1 R1> <-2 R2> <-d database(fasta)> <-s sample_name> [-g group_name] [options]\n\
+  \n\tMandatory input data:\n\t-1 | --R1\t<filename>\treads corresponding to paired-end\
+  \ R1 (mandatory)\n\t-2 | --R2\t<filename>\treads corresponding to paired-end R2\
+  \ (mandatory)\n\t-d | --database\t<filename>\tdatabase to map and reconstruct (mandatory)\n\
+  \t-s | --sample\t<string>\tsample name (mandatory), less than 37 characters\n\n\t\
+  Optional input data:\n\t-g | --group\t<string>\tgroup name (optional). If unset,\
+  \ samples will be gathered in NO_GROUP group\n\t-c | --contigs\t<filename>\tfile\
+  \ with contigs. If supplied, plasmidID will not assembly reads\n\t-a | --annotate\
+  \ <filename>\tfile with configuration file for specific annotation\n\t-o \t\t<output_dir>\t\
+  output directory, by default is the current directory\n\n\tPipeline options:\n\t\
+  --explore\tRelaxes default parameters to find less reliable relationships within\
+  \ data supplied and database\n\t--only-reconstruct\tDatabase supplied will not be\
+  \ filtered and all sequences will be used as scaffold\n\t\t\t\t\t\tThis option does\
+  \ not require R1 and R2, instead a contig file can be supplied\n\t-w \t\t\tUndo\
+  \ winner takes it all algorithm when clustering by kmer - QUICKER MODE\n\tTrimming:\n\
+  \t--trimmomatic-directory Indicate directory holding trimmomatic .jar executable\n\
+  \t--no-trim\tReads supplied will not be quality trimmed\n\n\tCoverage and Clustering:\n\
+  \t-C | --coverage-cutoff\t<int>\tminimun coverage percentage to select a plasmid\
+  \ as scafold (0-100), default 80\n\t-S | --coverage-summary\t<int>\tminimun coverage\
+  \ percentage to include plasmids in summary image (0-100), default 90\n\t-f | --cluster\t\
+  <int>\tkmer identity to cluster plasmids into the same representative sequence (0\
+  \ means identical) (0-1), default 0.5\n\t-k | --kmer\t<int>\tidentity to filter\
+  \ plasmids from the database with kmer approach (0-1), default 0.95\n\n\tContig\
+  \ local alignment\n\t-i | --alignment-identity <int>\tminimun identity percentage\
+  \ aligned for a contig to annotate, default 90\n\t-l | --alignment-percentage <int>\t\
+  minimun length percentage aligned for a contig to annotate, default 20\n\t-L | --length-total\t\
+  <int>\tminimun alignment length to filter blast analysis\n\t--extend-annotation\
+  \ <int>\tlook for annotation over regions with no homology found (base pairs), default\
+  \ 500bp\n\n\tDraw images:\n\t--config-directory <dir>\tdirectory holding config\
+  \ files, default config_files/\n\t--config-file-individual <file-name> file name\
+  \ of the individual file used to reconstruct\n\tAdditional options:\n\n\t-M | --memory\t\
+  <int>\tmax memory allowed to use\n\t-T | --threads\t<int>\tnumber of threads\n\t\
+  -v | --version\t\tversion\n\t-h | --help\t\tdisplay usage message\n\nexample: ./plasmidID.sh\
+  \ -1 ecoli_R1.fastq.gz -2 ecoli_R2.fastq.gz -d database.fasta -s ECO_553 -G ENTERO\n\
+  \t\t./plasmidID.sh -1 ecoli_R1.fastq.gz -2 ecoli_R2.fastq.gz -d PacBio_sample.fasta\
+  \ -c scaffolds.fasta -C 60 -s ECO_60 -G ENTERO --no-trim\n\n"
+generated_using:
+- --help

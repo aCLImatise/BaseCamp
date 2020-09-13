@@ -1,0 +1,135 @@
+!Command
+command:
+- sak
+positional: []
+named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: "Path to the resulting file. If omitted, result is printed to stdout\n\
+    in FastQ format. Valid filetypes are: .sam, .raw, .frn, .fq, .fna,\n.ffn, .fastq,\
+    \ .fasta, .faa, .fa, and .bam."
+  synonyms:
+  - -o
+  - --out-path
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: Reverse-complement output.
+  synonyms:
+  - -rc
+  - --revcomp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximal number of sequence characters to write out.
+  synonyms:
+  - -l
+  - --max-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "of INTEGER's\nSelect the given sequence for extraction by 0-based\
+    \ index."
+  synonyms:
+  - -s
+  - --sequence
+  args: !SimpleFlagArg
+    name: List
+  optional: true
+- !Flag
+  description: "of STRING's\nSelect sequence with name prefix being NAME."
+  synonyms:
+  - -sn
+  - --sequence-name
+  args: !SimpleFlagArg
+    name: List
+  optional: true
+- !Flag
+  description: "of STRING's\nSelect sequences from-to where from and to are 0-based\
+    \ indices."
+  synonyms:
+  - -ss
+  - --sequences
+  args: !SimpleFlagArg
+    name: List
+  optional: true
+- !Flag
+  description: "of STRING's\nSelect characters from-to where from and to are 0-based\
+    \ indices."
+  synonyms:
+  - -i
+  - --infix
+  args: !SimpleFlagArg
+    name: List
+  optional: true
+- !Flag
+  description: "Set line length in output file. See section Line Length for details.\n\
+    In range [-1..inf]."
+  synonyms:
+  - -ll
+  - --line-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "sak - Slicing and dicing of FASTA/FASTQ files..\n===============================================\n\
+  \nSYNOPSIS\n    sak [OPTIONS] [-o OUT.{fa,fq}] IN.{fa,fq}\n\nDESCRIPTION\n    \"\
+  It slices, it dices and it makes the laundry!\"\n\n    Original SAK tool by David\
+  \ Weese. Rewrite by Manuel Holtgrewe.\n\nREQUIRED ARGUMENTS\n    IN INPUT_FILE\n\
+  \          Valid filetypes are: .sam, .raw, .gbk, .frn, .fq, .fna, .ffn,\n     \
+  \     .fastq, .fasta, .faa, .fa, .embl, and .bam.\n\nOPTIONS\n    -h, --help\n \
+  \         Display the help message.\n    --version-check BOOL\n          Turn this\
+  \ option off to disable version update notifications of the\n          application.\
+  \ One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\n          Default: 1.\n\
+  \    --version\n          Display version information.\n\n  Output Options:\n  \
+  \  -o, --out-path OUTPUT_FILE\n          Path to the resulting file. If omitted,\
+  \ result is printed to stdout\n          in FastQ format. Valid filetypes are: .sam,\
+  \ .raw, .frn, .fq, .fna,\n          .ffn, .fastq, .fasta, .faa, .fa, and .bam.\n\
+  \    -rc, --revcomp\n          Reverse-complement output.\n    -l, --max-length\
+  \ INTEGER\n          Maximal number of sequence characters to write out.\n\n  Filter\
+  \ Options:\n    -s, --sequence List of INTEGER's\n          Select the given sequence\
+  \ for extraction by 0-based index.\n    -sn, --sequence-name List of STRING's\n\
+  \          Select sequence with name prefix being NAME.\n    -ss, --sequences List\
+  \ of STRING's\n          Select sequences from-to where from and to are 0-based\
+  \ indices.\n    -i, --infix List of STRING's\n          Select characters from-to\
+  \ where from and to are 0-based indices.\n    -ll, --line-length INTEGER\n     \
+  \     Set line length in output file. See section Line Length for details.\n   \
+  \       In range [-1..inf].\n\nLINE LENGTH\n    You can use the setting --line-length\
+  \ for setting the resulting line\n    length. By default, sequences in FASTA files\
+  \ are written with at most 70\n    characters per line and sequences in FASTQ files\
+  \ are written without any\n    line breaks. The quality sequence in FASTQ file is\
+  \ written in the same way\n    as the residue sequence.\n\n    The default is selected\
+  \ with a --line-length value of -1 and line breaks\n    can be disabled with a value\
+  \ of 0.\n\nUSAGE EXAMPLES\n    sak -s 10 IN.fa\n          Cut out 11th sequence\
+  \ from IN.fa and write to stdout as FASTA.\n    sak -ss 10-12 -ss 100-200 IN.fq\n\
+  \          Cut out 11th up to and including 12th and 101th up to and including\n\
+  \          199th sequence from IN.fq and write to stdout as FASTA.\n\nVERSION\n\
+  \    Last update: 2016-12-22_14:49:36_+0100\n    sak version: 0.4.6 [75beba3]\n\
+  \    SeqAn version: 2.3.1\n"
+generated_using:
+- --help

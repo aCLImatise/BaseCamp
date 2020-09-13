@@ -1,0 +1,74 @@
+!Command
+command:
+- medpy_reslice_3d_to_4d.py
+positional:
+- !Positional
+  description: Source volume.
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Target volume.
+  position: 1
+  name: output
+  optional: false
+- !Positional
+  description: The dimension in which to perform the cut (starting from 0).
+  position: 2
+  name: dimension
+  optional: false
+- !Positional
+  description: The offset between the slices.
+  position: 3
+  name: offset
+  optional: false
+named:
+- !Flag
+  description: Display more information.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Silently override existing output images.
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: medpy_reslice_3d_to_4d.py [-h] [-v] [-d] [-f]\n               \
+  \                  input output dimension offset\n\nTakes a a 3D volume containing\
+  \ 4D information and converts it into a real 4D\nimage. This is achieved by taking\
+  \ every offset slice, starting from the first,\nof the input 4D volume and then\
+  \ by combining them into a 3D volume. Then\nrepeats the process starting from the\
+  \ second slice, etc. The new dimension\nwill be appended to the already existing\
+  \ once. A typical use case are dicom\nimages. These often come with the time dimension\
+  \ represented by stacking\nvarious 3D volumes on top of each other in one of the\
+  \ spatial dimensions.\nThese can be converted in proper 4D volumes with this script.\
+  \ Copyright (C)\n2013 Oskar Maier This program comes with ABSOLUTELY NO WARRANTY;\
+  \ This is free\nsoftware, and you are welcome to redistribute it under certain conditions;\
+  \ see\nthe LICENSE file or <http://www.gnu.org/licenses/> for details.\n\npositional\
+  \ arguments:\n  input       Source volume.\n  output      Target volume.\n  dimension\
+  \   The dimension in which to perform the cut (starting from 0).\n  offset     \
+  \ The offset between the slices.\n\noptional arguments:\n  -h, --help  show this\
+  \ help message and exit\n  -v          Display more information.\n  -d         \
+  \ Display debug information.\n  -f          Silently override existing output images.\n"
+generated_using:
+- --help

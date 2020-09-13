@@ -1,0 +1,145 @@
+!Command
+command:
+- VcfFilter
+positional: []
+named:
+- !Flag
+  description: "Input VCF file. If unset, reads from STDIN.\nDefault value: ''"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output VCF list. If unset, writes to STDOUT.\nDefault value: ''"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Region of interest in BED format, or comma-separated list of region,\
+    \ e.g. 'chr1:454540-454678,chr2:473457-4734990'.\nDefault value: ''"
+  synonyms:
+  - -reg
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Filters by variant type. Possible types are: 'snp','indel','multi-allelic','other'.\n\
+    Default value: ''"
+  synonyms:
+  - -variant_type
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Filter by ID column (regular expression).\nDefault value: ''"
+  synonyms:
+  - -id
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Filter by QUAL column (minimum).\nDefault value: '0'"
+  synonyms:
+  - -qual
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Filter by FILTER column (regular expression).\nDefault value: ''"
+  synonyms:
+  - -filter
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Removes entries with non-empty FILTER column.\nDefault value: 'false'"
+  synonyms:
+  - -filter_empty
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter by INFO column entries - use ';' as separator for several filters,
+    e.g. 'DP > 5;AO > 2' (spaces are important).
+  synonyms:
+  - -info
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Filter by sample-specific entries - use ';' as separator for several
+    filters, e.g. 'GT is 1/1' (spaces are important).
+  synonyms:
+  - -sample
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "If set, a line will pass if one sample passes all filters (default\
+    \ behaviour is that all samples have to pass all filters).\nDefault value: 'false'"
+  synonyms:
+  - -sample_one_match
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints changeloge and exits.
+  synonyms:
+  - --changelog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  synonyms:
+  - --tdx
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows this help and exits.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "VcfFilter (2020_06)\n\nFilters a VCF based on the given criteria.\n\n\
+  Missing annotation in the SAMPLE filter are treated as passing the filter.\nINFO\
+  \ flags (i.e. entries without value) are ignored, i.e. they cannot be filtered.\n\
+  \nOptional parameters:\n  -in <file>             Input VCF file. If unset, reads\
+  \ from STDIN.\n                         Default value: ''\n  -out <file>       \
+  \     Output VCF list. If unset, writes to STDOUT.\n                         Default\
+  \ value: ''\n  -reg <string>          Region of interest in BED format, or comma-separated\
+  \ list of region, e.g. 'chr1:454540-454678,chr2:473457-4734990'.\n             \
+  \            Default value: ''\n  -variant_type <string> Filters by variant type.\
+  \ Possible types are: 'snp','indel','multi-allelic','other'.\n                 \
+  \        Default value: ''\n  -id <string>           Filter by ID column (regular\
+  \ expression).\n                         Default value: ''\n  -qual <float>    \
+  \      Filter by QUAL column (minimum).\n                         Default value:\
+  \ '0'\n  -filter <string>       Filter by FILTER column (regular expression).\n\
+  \                         Default value: ''\n  -filter_empty          Removes entries\
+  \ with non-empty FILTER column.\n                         Default value: 'false'\n\
+  \  -info <string>         Filter by INFO column entries - use ';' as separator for\
+  \ several filters, e.g. 'DP > 5;AO > 2' (spaces are important).\nValid operations\
+  \ are '>','>=','=','!=','<=','<','is','not','contains'.\n                      \
+  \   Default value: ''\n  -sample <string>       Filter by sample-specific entries\
+  \ - use ';' as separator for several filters, e.g. 'GT is 1/1' (spaces are important).\n\
+  Valid operations are '>','>=','=','!=','<=','<','is','not','contains'.\n       \
+  \                  Default value: ''\n  -sample_one_match      If set, a line will\
+  \ pass if one sample passes all filters (default behaviour is that all samples have\
+  \ to pass all filters).\n                         Default value: 'false'\n\nSpecial\
+  \ parameters:\n  --help                 Shows this help and exits.\n  --version\
+  \              Prints version and exits.\n  --changelog            Prints changeloge\
+  \ and exits.\n  --tdx                  Writes a Tool Definition Xml file. The file\
+  \ name is the application name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help

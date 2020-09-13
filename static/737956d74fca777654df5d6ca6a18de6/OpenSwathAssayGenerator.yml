@@ -1,0 +1,231 @@
+!Command
+command:
+- OpenSwathAssayGenerator
+positional: []
+named:
+- !Flag
+  description: "*                           Input file (valid formats: 'tsv', 'mrm',\
+    \ 'pqp', 'TraML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Input file type -- default: determined from file extension or content\n\
+    (valid: 'tsv', 'mrm', 'pqp', 'TraML')"
+  synonyms:
+  - -in_type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "*                          Output file (valid formats: 'tsv', 'pqp',\
+    \ 'TraML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file type -- default: determined from file extension or content\n\
+    (valid: 'tsv', 'pqp', 'TraML')"
+  synonyms:
+  - -out_type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "Minimal number of transitions (default: '6')"
+  synonyms:
+  - -min_transitions
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Maximal number of transitions (default: '6')"
+  synonyms:
+  - -max_transitions
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Allowed fragment types (default: 'b,y')"
+  synonyms:
+  - -allowed_fragment_types
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "Allowed fragment charge states (default: '1,2,3,4')"
+  synonyms:
+  - -allowed_fragment_charges
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: Set this flag if specific neutral losses for detection fragment ions
+    should be allowed
+  synonyms:
+  - -enable_detection_specific_losses
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set this flag if unspecific neutral losses (H2O1, H3N1, C1H2N2, C1H2N1O1)
+    for detection fragment ions should be allowed
+  synonyms:
+  - -enable_detection_unspecific_losses
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "MZ threshold in Thomson for precursor ion selection (default: '0.025')"
+  synonyms:
+  - -precursor_mz_threshold
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Lower MZ limit for precursor ions (default: '400.0')"
+  synonyms:
+  - -precursor_lower_mz_limit
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Upper MZ limit for precursor ions (default: '1200.0')"
+  synonyms:
+  - -precursor_upper_mz_limit
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "MZ threshold in Thomson for fragment ion annotation (default: '0.025')"
+  synonyms:
+  - -product_mz_threshold
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Lower MZ limit for fragment ions (default: '350.0')"
+  synonyms:
+  - -product_lower_mz_limit
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Upper MZ limit for fragment ions (default: '2000.0')"
+  synonyms:
+  - -product_upper_mz_limit
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Tab separated file containing the SWATH windows for exclusion of fragment\
+    \ ions falling into the precursor isolation window: lower_offset upper_offset\
+    \ \\newline 400 425 \\newline ... Note that the first line is a header and will\
+    \ be skipped. (valid formats: 'txt')"
+  synonyms:
+  - -swath_windows_file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "(Modified) Unimod XML file (http://www.unimod.org/xml/unimod.xml)\
+    \ describing residue modifiability (valid formats: 'xml')"
+  synonyms:
+  - -unimod_file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "IPF: set this flag if identification transitions should be generated\
+    \ for IPF. Note: Requires setting 'unimod_file'."
+  synonyms:
+  - -enable_ipf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nOpenSwathAssayGenerator\
+  \ -- Generates assays according to different models for a specific TraML\nFull documentation:\
+  \ http://www.openms.de/documentation/TOPP_OpenSwathAssayGenerator.html\nVersion:\
+  \ 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision: HEAD-HASH-NOTFOUND\n\
+  To cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible\
+  \ open-source software platform for mass spectrometry data analysis. Nat Meth. 2016;\
+  \ 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n  OpenSwathAssayGenerator <options>\n\
+  \nOptions (mandatory options marked with '*'):\n  -in <file>*                  \
+  \         Input file (valid formats: 'tsv', 'mrm', 'pqp', 'TraML')\n  -in_type <type>\
+  \                       Input file type -- default: determined from file extension\
+  \ or content\n                                        (valid: 'tsv', 'mrm', 'pqp',\
+  \ 'TraML')\n  -out <file>*                          Output file (valid formats:\
+  \ 'tsv', 'pqp', 'TraML')\n  -out_type <type>                      Output file type\
+  \ -- default: determined from file extension or content\n                      \
+  \                  (valid: 'tsv', 'pqp', 'TraML')\n  -min_transitions <int>    \
+  \            Minimal number of transitions (default: '6')\n  -max_transitions <int>\
+  \                Maximal number of transitions (default: '6')\n  -allowed_fragment_types\
+  \ <type>        Allowed fragment types (default: 'b,y')\n  -allowed_fragment_charges\
+  \ <type>      Allowed fragment charge states (default: '1,2,3,4')\n  -enable_detection_specific_losses\
+  \     Set this flag if specific neutral losses for detection fragment ions should\
+  \ be allowed\n  -enable_detection_unspecific_losses   Set this flag if unspecific\
+  \ neutral losses (H2O1, H3N1, C1H2N2, C1H2N1O1) for detection fragment ions should\
+  \ be allowed\n  -precursor_mz_threshold <double>      MZ threshold in Thomson for\
+  \ precursor ion selection (default: '0.025')\n  -precursor_lower_mz_limit <double>\
+  \    Lower MZ limit for precursor ions (default: '400.0')\n  -precursor_upper_mz_limit\
+  \ <double>    Upper MZ limit for precursor ions (default: '1200.0')\n  -product_mz_threshold\
+  \ <double>        MZ threshold in Thomson for fragment ion annotation (default:\
+  \ '0.025')\n  -product_lower_mz_limit <double>      Lower MZ limit for fragment\
+  \ ions (default: '350.0')\n  -product_upper_mz_limit <double>      Upper MZ limit\
+  \ for fragment ions (default: '2000.0')\n  -swath_windows_file <file>          \
+  \  Tab separated file containing the SWATH windows for exclusion of fragment ions\
+  \ falling into the precursor isolation window: lower_offset upper_offset \\newline\
+  \ 400 425 \\newline ... Note that the first line is a header and will be skipped.\
+  \ (valid formats: 'txt')\n  -unimod_file <file>                   (Modified) Unimod\
+  \ XML file (http://www.unimod.org/xml/unimod.xml) describing residue modifiability\
+  \ (valid formats: 'xml')\n  -enable_ipf                           IPF: set this\
+  \ flag if identification transitions should be generated for IPF. Note: Requires\
+  \ setting 'unimod_file'.\n                                        \nCommon TOPP\
+  \ options:\n  -ini <file>                           Use the given TOPP INI file\n\
+  \  -threads <n>                          Sets the number of threads allowed to be\
+  \ used by the TOPP tool (default: '1')\n  -write_ini <file>                    \
+  \ Writes the default configuration file\n  --help                              \
+  \  Shows options\n  --helphelp                            Shows all options (including\
+  \ advanced)\n\n"
+generated_using:
+- --help

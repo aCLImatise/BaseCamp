@@ -1,0 +1,99 @@
+!Command
+command:
+- base_evolve
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file.hmm
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: tree1.mod
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: tree3.mod
+  optional: true
+named:
+- !Flag
+  description: Generate an alignment with <nsites> columns.  Default is 1000.
+  synonyms:
+  - --nsites
+  - -n
+  args: !SimpleFlagArg
+    name: nsites
+  optional: true
+- !Flag
+  description: "|PHYLIP|MPM|SS\nOutput alignment in specified format.  Default is\
+    \ FASTA."
+  synonyms:
+  - --msa-format
+  - -o
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "(for use with a phylo-HMM)  Output an annotations file in GFF\nreflecting\
+    \ the path through the phylo-HMM."
+  synonyms:
+  - --features
+  - -f
+  args: !SimpleFlagArg
+    name: out.gff
+  optional: true
+- !Flag
+  description: "(for use with --features)  Use specified category map to\ndefine feature\
+    \ names."
+  synonyms:
+  - --catmap
+  - -c
+  args: !SimpleFlagArg
+    name: map.cm
+  optional: true
+- !Flag
+  description: ",<length>\nEmbed an artificial element of the given length in the\
+    \ alignment,\ndrawing columns from <alt.mod>.  A single element is embedded in\n\
+    the exact middle of the generated alignment.  Useful for testing\nsensitivity\
+    \ of methods for functional element detection."
+  synonyms:
+  - --embed
+  - -e
+  args: !SimpleFlagArg
+    name: alt.mod
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Display this help message and exit.\n"
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nPROGRAM: base_evolve\n\nUSAGE: base_evolve [file.hmm] tree1.mod [tree2.mod\
+  \ tree3.mod ...] > alignment\n\nDESCRIPTION: \n\n    Produce a synthetic alignment\
+  \ by simulating evolution according to\n    a phylogenetic model or a phylo-HMM.\
+  \  Deals with base-substitution\n    only, not indels.  If a multiple tree models\
+  \ are given, then an\n    HMM file must be given showing how to transition between\
+  \ them.\n\nEXAMPLES:\n\n    base_evolve --nsites 500 mytree.mod > simulated.fa\n\
+  \n    base_evolve --nsites 500 simple-gene.hmm tree1.mod tree2.mod \\\n        tree3.mod\
+  \ --features simulated2.gff --catmap simple-gene.cm \\\n        > simulated2.fa\n\
+  \nOPTIONS:\n\n    --nsites, -n <nsites>\n        Generate an alignment with <nsites>\
+  \ columns.  Default is 1000.\n\n    --msa-format, -o FASTA|PHYLIP|MPM|SS\n     \
+  \   Output alignment in specified format.  Default is FASTA.\n\n    --features,\
+  \ -f <out.gff>\n        (for use with a phylo-HMM)  Output an annotations file in\
+  \ GFF\n        reflecting the path through the phylo-HMM.\n\n    --catmap, -c <map.cm>\n\
+  \        (for use with --features)  Use specified category map to\n        define\
+  \ feature names.\n\n    --embed, -e <alt.mod>,<length>\n        Embed an artificial\
+  \ element of the given length in the alignment,\n        drawing columns from <alt.mod>.\
+  \  A single element is embedded in\n        the exact middle of the generated alignment.\
+  \  Useful for testing\n        sensitivity of methods for functional element detection.\n\
+  \n    --help, -h\n        Display this help message and exit.\n"
+generated_using:
+- --help

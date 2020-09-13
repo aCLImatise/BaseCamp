@@ -1,0 +1,205 @@
+!Command
+command:
+- eqtlbma_avg_bfs
+positional: []
+named:
+- !Flag
+  description: level (0/default=1/2/3)
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: verbosity
+  optional: true
+- !Flag
+  description: pattern to glob '_l10abfs_raw' files from 'eqtlbma_bf'
+  synonyms:
+  - --in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file with grid weights (one per line, only the value)
+  synonyms:
+  - --gwts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ind-ex/icies of grid weights to keep (all by default)\ne.g. '1+3+5+7+9'\
+    \ to keep only those with no heterogeneity"
+  synonyms:
+  - --gtk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: which model (default=configs/types)
+  synonyms:
+  - --model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: of subgroups
+  synonyms:
+  - --nsubgrp
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: dimension of the model (nb of active configs or types)
+  synonyms:
+  - --dim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with configuration weights (one per line, name<sep>value)\nonly\
+    \ a subset of the configs can be given, in agreement with --nsubgrp and --dim"
+  synonyms:
+  - --cwts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file with type and subgroup weights (one per line, name<sep>value)
+  synonyms:
+  - --tswts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "precise what to save (bf/post/bf+post)\n'post' requires also options\
+    \ --pi0 and --post"
+  synonyms:
+  - --save
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "proba for a gene to have no eQTL in any subgroup\nif not provided,\
+    \ BFs will be saved instead of posterior probability"
+  synonyms:
+  - --pi0
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "save various kinds of posterior probabilities (e.g. 'a+b')\na: the\
+    \ gene has at least one eQTL\nb: the SNP is 'the' eQTL for the gene, in at least\
+    \ one subgroup, given that the gene has exactly one eQTL,\nassuming all cis SNPs\
+    \ are equally likely and a single eQTL per gene\nc: the SNP is 'an' eQTL for the\
+    \ gene, in at least one subgroup, given that the gene contains at least one eQTL\n\
+    and that SNPs are independent\nd: the SNP is an eQTL in subgroup s, given that\
+    \ it is 'the' eQTL for the gene, the configs/types being marginalized"
+  synonyms:
+  - --post
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file with subset of gene(s) to keep (one per line)
+  synonyms:
+  - --gene
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with subset of snp(s) to keep (one per line)\ncaution, it can\
+    \ change the gene-level BFs and posteriors"
+  synonyms:
+  - --snp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with subset of gene-snp pai(s) to keep (gene<tab>snp, one per\
+    \ line)\ncaution, it can change the gene-level BFs and posteriors"
+  synonyms:
+  - --gene-snp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the best SNP(s) per gene\n0: report all SNPs (default)\n1: report\
+    \ only the single best SNP (pick one if tie)\n2: report the best SNP(s) listed\
+    \ in decreasing order of their probability of being the eQTL (conditional on the\
+    \ gene containing an eQTL), such that the sum of these probabilities exceeds 0.95"
+  synonyms:
+  - --bestsnp
+  args: !SimpleFlagArg
+    name: report
+  optional: true
+- !Flag
+  description: the best config/type per SNP (and its posterior)
+  synonyms:
+  - --bestdim
+  args: !SimpleFlagArg
+    name: report
+  optional: true
+- !Flag
+  description: "report also BF and/or posterior for all dimensions (configs or types)\n\
+    caution, the number of configurations can be big"
+  synonyms:
+  - --alldim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "name of the output file (gzipped)\nif --cwts is not provided, the\
+    \ output file will be used as input for 'eqtlbma_hm'"
+  synonyms:
+  - --out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads (default=1)
+  synonyms:
+  - --thread
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display the help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: version information and exit
+  synonyms:
+  - -V
+  - --version
+  args: !SimpleFlagArg
+    name: output
+  optional: true
+help_text: "`eqtlbma_avg_bfs' averages the raw BFs over the grid only,\nor over both\
+  \ the grid and the configurations,\nand it can also compute posteriors.\n\nUsage:\
+  \ eqtlbma_avg_bfs [OPTIONS] ...\n\nOptions:\n  -h, --help\tdisplay the help and\
+  \ exit\n  -V, --version\toutput version information and exit\n  -v, --verbose\t\
+  verbosity level (0/default=1/2/3)\n      --in\tpattern to glob '_l10abfs_raw' files\
+  \ from 'eqtlbma_bf'\n      --gwts\tfile with grid weights (one per line, only the\
+  \ value)\n      --gtk\tind-ex/icies of grid weights to keep (all by default)\n\t\
+  \te.g. '1+3+5+7+9' to keep only those with no heterogeneity\n      --model\twhich\
+  \ model (default=configs/types)\n      --nsubgrp\tnumber of subgroups\n      --dim\t\
+  dimension of the model (nb of active configs or types)\n      --cwts\tfile with\
+  \ configuration weights (one per line, name<sep>value)\n\t\tonly a subset of the\
+  \ configs can be given, in agreement with --nsubgrp and --dim\n      --tswts\tfile\
+  \ with type and subgroup weights (one per line, name<sep>value)\n      --save\t\
+  precise what to save (bf/post/bf+post)\n\t\t'post' requires also options --pi0 and\
+  \ --post\n      --pi0\tproba for a gene to have no eQTL in any subgroup\n\t\tif\
+  \ not provided, BFs will be saved instead of posterior probability\n      --post\t\
+  save various kinds of posterior probabilities (e.g. 'a+b')\n\t\ta: the gene has\
+  \ at least one eQTL\n\t\tb: the SNP is 'the' eQTL for the gene, in at least one\
+  \ subgroup, given that the gene has exactly one eQTL,\n\t\tassuming all cis SNPs\
+  \ are equally likely and a single eQTL per gene\n\t\tc: the SNP is 'an' eQTL for\
+  \ the gene, in at least one subgroup, given that the gene contains at least one\
+  \ eQTL\n\t\tand that SNPs are independent\n\t\td: the SNP is an eQTL in subgroup\
+  \ s, given that it is 'the' eQTL for the gene, the configs/types being marginalized\n\
+  \      --gene\tfile with subset of gene(s) to keep (one per line)\n      --snp\t\
+  file with subset of snp(s) to keep (one per line)\n\t\tcaution, it can change the\
+  \ gene-level BFs and posteriors\n      --gene-snp\tfile with subset of gene-snp\
+  \ pai(s) to keep (gene<tab>snp, one per line)\n\t\tcaution, it can change the gene-level\
+  \ BFs and posteriors\n      --bestsnp\treport the best SNP(s) per gene\n\t\t0: report\
+  \ all SNPs (default)\n\t\t1: report only the single best SNP (pick one if tie)\n\
+  \t\t2: report the best SNP(s) listed in decreasing order of their probability of\
+  \ being the eQTL (conditional on the gene containing an eQTL), such that the sum\
+  \ of these probabilities exceeds 0.95\n      --bestdim\treport the best config/type\
+  \ per SNP (and its posterior)\n      --alldim\treport also BF and/or posterior for\
+  \ all dimensions (configs or types)\n\t\tcaution, the number of configurations can\
+  \ be big\n      --out\tname of the output file (gzipped)\n\t\tif --cwts is not provided,\
+  \ the output file will be used as input for 'eqtlbma_hm'\n      --thread\tnumber\
+  \ of threads (default=1)\n\n"
+generated_using:
+- --help

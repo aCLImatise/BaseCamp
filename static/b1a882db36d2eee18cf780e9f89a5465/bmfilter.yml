@@ -1,0 +1,263 @@
+!Command
+command:
+- bmfilter
+positional: []
+named:
+- !Flag
+  description: -q 0           Number of quality channers for reads (0|1)
+  synonyms:
+  - --quality-channels
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: =''                   -1 ''          Fasta or fastq (for -q1) file
+    with reads, may be repeated
+  synonyms:
+  - --read-1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =''                   -2 ''          Fasta or fastq (for -q1) file
+    with read pair mates, if used should be repeated as many times as -1 is
+  synonyms:
+  - --read-2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =''             -b ''          Word bitmask file (may be repeated)
+  synonyms:
+  - --word-bitmask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -M             Use mmap for word bitmask (slow unless used for few
+    reads; intended for debug) [off]
+  synonyms:
+  - --use-mmap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -a 0           Maximal number of ambiguities per word
+  synonyms:
+  - --max-ambiguities
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: -l             Should lowercase head and tail of each read be clipped
+    [off]
+  synonyms:
+  - --clip-lowercase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -N 0           Clip sequence head or tail as long as it has at least
+    one N per this long window
+  synonyms:
+  - --clip-N-win
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: -Q 0           Clip sequence head or tail with quality lower then this
+    (for fastq input)
+  synonyms:
+  - --clip-quality
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: =''                   -o ''          Output base name (suffixes will
+    be added to it)
+  synonyms:
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -T             Produce .tag file [off]
+  synonyms:
+  - --tag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -P             Produce .short?.fa and .long?.fa files [off]
+  synonyms:
+  - --post
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -R             Produce .report file [off]
+  synonyms:
+  - --report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -z             Put clipped versions of sequences to output .fa files
+    [off]
+  synonyms:
+  - --post-clipped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -F 2           Set complexity filter cutoff
+  synonyms:
+  - --complexity
+  args: !SimpleFlagArg
+    name: '2'
+  optional: true
+- !Flag
+  description: -L 1073741823  Set sequence length to consider it as short for postprocessing
+  synonyms:
+  - --short-seq
+  args: !SimpleFlagArg
+    name: '1073741823'
+  optional: true
+- !Flag
+  description: -n 25          Set longest sequence length to ignore postprocessing
+  synonyms:
+  - --no-post-len
+  args: !SimpleFlagArg
+    name: '25'
+  optional: true
+- !Flag
+  description: -c 32          Set length to chop short sequences to
+  synonyms:
+  - --chop-length
+  args: !SimpleFlagArg
+    name: '32'
+  optional: true
+- !Flag
+  description: -s 4           Set step by which to chop short sequences
+  synonyms:
+  - --chop-step
+  args: !SimpleFlagArg
+    name: '4'
+  optional: true
+- !Flag
+  description: -m 0           Set mask low complexity before applying heuristics
+  synonyms:
+  - --mask-early
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: -Z 0           Should 'unknown' low complexity reads be sent to post
+    processing
+  synonyms:
+  - --post-low-complexity
+  args: !SimpleFlagArg
+    name: '0'
+  optional: true
+- !Flag
+  description: Set minimal word count to apply heuristics
+  synonyms:
+  - --heur-min-words
+  args: !SimpleFlagArg
+    name: '10'
+  optional: true
+- !Flag
+  description: Set number of good words which switches watermarks (long/short)
+  synonyms:
+  - --heur-many-words
+  args: !SimpleFlagArg
+    name: '200'
+  optional: true
+- !Flag
+  description: :60                  Set watermarks for matched word count for long
+    sequences, int % of good words
+  synonyms:
+  - --heur-count-long-pct
+  args: !SimpleFlagArg
+    name: '20'
+  optional: true
+- !Flag
+  description: :80                 Set watermarks for matched word count for short
+    sequences, int % of good words
+  synonyms:
+  - --heur-count-short-pct
+  args: !SimpleFlagArg
+    name: '20'
+  optional: true
+- !Flag
+  description: :20                    Set watermarks for longest match run for long
+    sequences, int % of good words
+  synonyms:
+  - --heur-run-long-pct
+  args: !SimpleFlagArg
+    name: '10'
+  optional: true
+- !Flag
+  description: :40                   Set watermarks for longest match run for short
+    sequences, int % of good words
+  synonyms:
+  - --heur-run-short-pct
+  args: !SimpleFlagArg
+    name: '10'
+  optional: true
+- !Flag
+  description: Set cutoff for sequences to consider - these and shorter (after clipping)
+    will be marked as foreign
+  synonyms:
+  - --heur-negligible-length
+  args: !SimpleFlagArg
+    name: '15'
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: -h             Print help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: -V             Print version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "bmfilter\nFilter reads based on word bitmask matches\nwhere options are:\n\
+  [general]\n  --help                        -h             Print help\n  --version\
+  \                     -V             Print version\n[input]\n  --quality-channels=0\
+  \          -q 0           Number of quality channers for reads (0|1)\n  --read-1=''\
+  \                   -1 ''          Fasta or fastq (for -q1) file with reads, may\
+  \ be repeated\n  --read-2=''                   -2 ''          Fasta or fastq (for\
+  \ -q1) file with read pair mates, if used should be repeated as many times as -1\
+  \ is\n  --word-bitmask=''             -b ''          Word bitmask file (may be repeated)\n\
+  \  --use-mmap                    -M             Use mmap for word bitmask (slow\
+  \ unless used for few reads; intended for debug) [off]\n[input-filters]\n  --max-ambiguities=0\
+  \           -a 0           Maximal number of ambiguities per word\n  --clip-lowercase\
+  \              -l             Should lowercase head and tail of each read be clipped\
+  \ [off]\n  --clip-N-win=0                -N 0           Clip sequence head or tail\
+  \ as long as it has at least one N per this long window\n  --clip-quality=0    \
+  \          -Q 0           Clip sequence head or tail with quality lower then this\
+  \ (for fastq input)\n[output]\n  --output=''                   -o ''          Output\
+  \ base name (suffixes will be added to it)\n  --tag                         -T \
+  \            Produce .tag file [off]\n  --post                        -P       \
+  \      Produce .short?.fa and .long?.fa files [off]\n  --report                \
+  \      -R             Produce .report file [off]\n  --post-clipped             \
+  \   -z             Put clipped versions of sequences to output .fa files [off]\n\
+  \  --complexity=2                -F 2           Set complexity filter cutoff\n \
+  \ --short-seq=1073741823        -L 1073741823  Set sequence length to consider it\
+  \ as short for postprocessing\n  --no-post-len=25              -n 25          Set\
+  \ longest sequence length to ignore postprocessing\n  --chop-length=32         \
+  \     -c 32          Set length to chop short sequences to\n  --chop-step=4    \
+  \             -s 4           Set step by which to chop short sequences\n  --mask-early=0\
+  \                -m 0           Set mask low complexity before applying heuristics\n\
+  \  --post-low-complexity=0       -Z 0           Should 'unknown' low complexity\
+  \ reads be sent to post processing\n[heuristics]\n  --heur-min-words=10        \
+  \                  Set minimal word count to apply heuristics\n  --heur-many-words=200\
+  \                        Set number of good words which switches watermarks (long/short)\n\
+  \  --heur-count-long-pct=20:60                  Set watermarks for matched word\
+  \ count for long sequences, int % of good words\n  --heur-count-short-pct=20:80\
+  \                 Set watermarks for matched word count for short sequences, int\
+  \ % of good words\n  --heur-run-long-pct=10:20                    Set watermarks\
+  \ for longest match run for long sequences, int % of good words\n  --heur-run-short-pct=10:40\
+  \                   Set watermarks for longest match run for short sequences, int\
+  \ % of good words\n  --heur-negligible-length=15                  Set cutoff for\
+  \ sequences to consider - these and shorter (after clipping) will be marked as foreign\n"
+generated_using:
+- --help

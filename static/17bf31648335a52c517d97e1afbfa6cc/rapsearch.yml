@@ -1,0 +1,171 @@
+!Command
+command:
+- rapsearch
+positional: []
+named:
+- !Flag
+  description: ': query file or stdin (FASTA or FASTQ format)'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ': database file (**base name only**, with full path)'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ': output file name'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ": stream one result through stdout [1: m8 result, 2: aln result, default:\
+    \ don't stream any result through stdout]"
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ': number of threads [default: 1]'
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ': report log10(E-value) or E-value for each hit [t/T: log10(E-value),
+    the default; f/F: E-value]'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: char
+  optional: true
+- !Flag
+  description: ': E-value threshold, given in the format of log10(E-value), or E-value
+    (when -s is set to f) [default: 1.0/10.0].'
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: ': threshold of bit score [default: 0.0]. It is the alternative option
+    to limit the hits to report.'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: ': threshold of minimal alignment length [default: 0]'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ": number of database sequences to show one-line descriptions [default:\
+    \ 500]. If it's -1, all results will be shown."
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ": number of database sequence to show alignments [default: 100]. If\
+    \ it's -1, all results will be shown."
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ': type of query sequences [u/U:unknown, n/N:nucleotide, a/A:amino
+    acid, q/Q:fastq, default: u]'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: char
+  optional: true
+- !Flag
+  description: ': output ALL/MATCHED query reads into the alignment file [t/T: output
+    all query reads, f/F: output matched reads, default: f]'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: char
+  optional: true
+- !Flag
+  description: ': apply gap extension [t/T: yes, f/F: no, default: t]'
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: char
+  optional: true
+- !Flag
+  description: ': use fast mode (10~30 fold) [t/T: yes, f/F: no, default: f]'
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: char
+  optional: true
+- !Flag
+  description: ': apply HSSP criterion instead of E-value criterion [t/T: HSSP, f/F:
+    E-value criteria, default: f]'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: char
+  optional: true
+- !Flag
+  description: ': print hits in xml format [t/T: yes, f/F: no, default: f]'
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: char
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Error: No query\nrapsearch v2.24: Fast protein similarity search tool\
+  \ for short reads\n-------------------------------------------------------------------------\n\
+  \ Options: \n\t-q string : query file or stdin (FASTA or FASTQ format)\n\t-d string\
+  \ : database file (**base name only**, with full path)\n\t-o string : output file\
+  \ name\n\t-u int    : stream one result through stdout [1: m8 result, 2: aln result,\
+  \ default: don't stream any result through stdout]\n\t-z int    : number of threads\
+  \ [default: 1]\n\t-s char   : report log10(E-value) or E-value for each hit [t/T:\
+  \ log10(E-value), the default; f/F: E-value]\n\t-e double : E-value threshold, given\
+  \ in the format of log10(E-value), or E-value (when -s is set to f) [default: 1.0/10.0].\
+  \ \n\t-i double : threshold of bit score [default: 0.0]. It is the alternative option\
+  \ to limit the hits to report.\n\t-l int    : threshold of minimal alignment length\
+  \ [default: 0]\n\t-v int    : number of database sequences to show one-line descriptions\
+  \ [default: 500]. If it's -1, all results will be shown.\n\t-b int    : number of\
+  \ database sequence to show alignments [default: 100]. If it's -1, all results will\
+  \ be shown.\n\t-t char   : type of query sequences [u/U:unknown, n/N:nucleotide,\
+  \ a/A:amino acid, q/Q:fastq, default: u]\n\t-p char   : output ALL/MATCHED query\
+  \ reads into the alignment file [t/T: output all query reads, f/F: output matched\
+  \ reads, default: f]\n\t-g char   : apply gap extension [t/T: yes, f/F: no, default:\
+  \ t]\n\t-a char   : use fast mode (10~30 fold) [t/T: yes, f/F: no, default: f]\n\
+  \t-w char   : apply HSSP criterion instead of E-value criterion [t/T: HSSP, f/F:\
+  \ E-value criteria, default: f]\n\t-x char   : print hits in xml format [t/T: yes,\
+  \ f/F: no, default: f]\n-------------------------------------------------------------------------\n\
+  example 1> rapsearch -q query.fa -d nr -o output_file\nexample 2> rapsearch -q query.fa\
+  \ -d nr -o output_file -i 40 -l 25\n   this setting only reports the hits with bit\
+  \ score >= 40 and alignment length >= 25\nexample 3> rapsearch -q query.fa -d nr\
+  \ -o output_file -e -5\n   this setting only reports hits with log(E-value) <= -5\
+  \ (i.e., E-value <= 1e-5)\nexample 4> rapsearch -q query.fa -d nr -o output_file\
+  \ -e 1e-5 -s f\n   this setting only reports the hits with E-value <= 1e-5\nthe\
+  \ difference between example 3 & 4 is that the former lists log(E-value) while the\
+  \ latter lists E-value for each hit in the output file\n"
+generated_using:
+- --help

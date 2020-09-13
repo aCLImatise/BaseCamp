@@ -1,0 +1,294 @@
+!Command
+command:
+- rgt-THOR
+positional:
+- !Positional
+  description: -m, --merge           Merge peaks which have a distance less than the
+  position: 0
+  name: created.
+  optional: false
+named:
+- !Flag
+  description: Experiment's name and prefix for all files that are
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Merge the overlapping bin before filtering by\np-value.[default: Merging\
+    \ bins]"
+  synonyms:
+  - --no-merge-bin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Define housekeeping genes (BED format) used for\nnormalizing. [default:\
+    \ none]"
+  synonyms:
+  - --housekeeping-genes
+  args: !SimpleFlagArg
+    name: HOUSEKEEPING_GENES
+  optional: true
+- !Flag
+  description: 'Store files in output directory. [default: none]'
+  synonyms:
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUTDIR
+  optional: true
+- !Flag
+  description: "Generate HTML report about experiment. [default:\nFalse]"
+  synonyms:
+  - --report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Define blacklisted genomic regions avoided for\nanalysis (BED format).\
+    \ [default: none]"
+  synonyms:
+  - --deadzones
+  args: !SimpleFlagArg
+    name: DEADZONES
+  optional: true
+- !Flag
+  description: "Do not use multipe test correction for p-values\n(Benjamini/Hochberg).\
+    \ [default: False]"
+  synonyms:
+  - --no-correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "P-value cutoff for peak detection. Call only peaks\nwith p-value lower\
+    \ than cutoff. [default: 0.1]"
+  synonyms:
+  - -p
+  - --pvalue
+  args: !SimpleFlagArg
+    name: PCUTOFF
+  optional: true
+- !Flag
+  description: "Read's extension size for BAM files (comma separated\nlist for each\
+    \ BAM file in config file). If option is\nnot chosen, estimate extension sizes.\
+    \ [default: none]"
+  synonyms:
+  - --exts
+  args: !SimpleFlagArg
+    name: EXTS
+  optional: true
+- !Flag
+  description: "Normalization factors for input-DNA (comma separated\nlist for each\
+    \ BAM file in config file). If option is\nnot chosen, estimate factors. [default:\
+    \ none]"
+  synonyms:
+  - --factors-inputs
+  args: !SimpleFlagArg
+    name: FACTORS_INPUTS
+  optional: true
+- !Flag
+  description: "Scaling factor for each BAM file (not control input-\nDNA) as comma\
+    \ separated list for each BAM file in\nconfig file. If option is not chosen, follow\n\
+    normalization strategy (TMM or HK approach) [default:\nnone]"
+  synonyms:
+  - --scaling-factors
+  args: !SimpleFlagArg
+    name: SCALING_FACTORS_IP
+  optional: true
+- !Flag
+  description: 'Save input-DNA file if available. [default: False]'
+  synonyms:
+  - --save-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Define regions (BED format) to restrict the analysis,\nthat is, where\
+    \ to train the HMM and search for DPs. It\nis faster, but less precise."
+  synonyms:
+  - --regions
+  args: !SimpleFlagArg
+    name: REGIONS
+  optional: true
+- !Flag
+  description: "Size of underlying bins for creating the signal.\n[default: 100]"
+  synonyms:
+  - -b
+  - --binsize
+  args: !SimpleFlagArg
+    name: BINSIZE
+  optional: true
+- !Flag
+  description: "Stepsize with which the window consecutively slides\nacross the genome\
+    \ to create the signal. [default: 50]"
+  synonyms:
+  - -s
+  - --step
+  args: !SimpleFlagArg
+    name: STEPSIZE
+  optional: true
+- !Flag
+  description: "Output debug information. Warning: space consuming!\n[default: False]"
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not normalize towards GC content. [default: False]'
+  synonyms:
+  - --no-gc-content
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Restrict normalization to particular regions (BED\nformat). [default:\
+    \ none]"
+  synonyms:
+  - --norm-regions
+  args: !SimpleFlagArg
+    name: NORM_REGIONS
+  optional: true
+- !Flag
+  description: "Fold change parameter to define training set (t_1, see\npaper). [default:\
+    \ 1.6]"
+  synonyms:
+  - -f
+  - --foldchange
+  args: !SimpleFlagArg
+    name: FOLDCHANGE
+  optional: true
+- !Flag
+  description: "Minimum signal support for differential peaks to\ndefine training\
+    \ set as percentage (t_2, see paper).\n[default: 95]"
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: "Number of bins the HMM's training set constists of.\n[default: 10000]"
+  synonyms:
+  - --size
+  args: !SimpleFlagArg
+    name: SIZE_TS
+  optional: true
+- !Flag
+  description: "Percentile for p-value postprocessing filter.\n[default: 1]"
+  synonyms:
+  - --par
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: "Use binomial distribution as emmission. [default:\nFalse]"
+  synonyms:
+  - --poisson
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Allow single strand BAM file as input. [default:\nFalse]"
+  synonyms:
+  - --single-strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Define the M threshold of percentile for training TMM.\n[default:\
+    \ 80]"
+  synonyms:
+  - --m_threshold
+  args: !SimpleFlagArg
+    name: M_THRESHOLD
+  optional: true
+- !Flag
+  description: "Define the A threshold of percentile for training TMM.\n[default:\
+    \ 95]"
+  synonyms:
+  - --a_threshold
+  args: !SimpleFlagArg
+    name: A_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Remove the duplicate reads [default: False]'
+  synonyms:
+  - --rmdup
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show script's version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: \nrgt-THOR [options] CONFIG\n\nTHOR detects differential peaks\
+  \ in multiple ChIP-seq profiles associated\nwith two distinct biological conditions.\n\
+  \nCopyright (C) 2014-2016  Manuel Allhoff (allhoff@aices.rwth-aachen.de)\n\nThis\
+  \ program comes with ABSOLUTELY NO WARRANTY. This is free \nsoftware, and you are\
+  \ welcome to redistribute it under certain \nconditions. Please see LICENSE file\
+  \ for details.\n\n\nOptions:\n  -h, --help            show this help message and\
+  \ exit\n  -n NAME, --name=NAME  Experiment's name and prefix for all files that\
+  \ are\n                        created.\n  -m, --merge           Merge peaks which\
+  \ have a distance less than the\n                        estimated mean fragment\
+  \ size (recommended for histone\n                        data). [default: do not\
+  \ merge]\n  --no-merge-bin        Merge the overlapping bin before filtering by\n\
+  \                        p-value.[default: Merging bins]\n  --housekeeping-genes=HOUSEKEEPING_GENES\n\
+  \                        Define housekeeping genes (BED format) used for\n     \
+  \                   normalizing. [default: none]\n  --output-dir=OUTPUTDIR\n   \
+  \                     Store files in output directory. [default: none]\n  --report\
+  \              Generate HTML report about experiment. [default:\n              \
+  \          False]\n  --deadzones=DEADZONES\n                        Define blacklisted\
+  \ genomic regions avoided for\n                        analysis (BED format). [default:\
+  \ none]\n  --no-correction       Do not use multipe test correction for p-values\n\
+  \                        (Benjamini/Hochberg). [default: False]\n  -p PCUTOFF, --pvalue=PCUTOFF\n\
+  \                        P-value cutoff for peak detection. Call only peaks\n  \
+  \                      with p-value lower than cutoff. [default: 0.1]\n  --exts=EXTS\
+  \           Read's extension size for BAM files (comma separated\n             \
+  \           list for each BAM file in config file). If option is\n             \
+  \           not chosen, estimate extension sizes. [default: none]\n  --factors-inputs=FACTORS_INPUTS\n\
+  \                        Normalization factors for input-DNA (comma separated\n\
+  \                        list for each BAM file in config file). If option is\n\
+  \                        not chosen, estimate factors. [default: none]\n  --scaling-factors=SCALING_FACTORS_IP\n\
+  \                        Scaling factor for each BAM file (not control input-\n\
+  \                        DNA) as comma separated list for each BAM file in\n   \
+  \                     config file. If option is not chosen, follow\n           \
+  \             normalization strategy (TMM or HK approach) [default:\n          \
+  \              none]\n  --save-input          Save input-DNA file if available.\
+  \ [default: False]\n  --version             Show script's version.\n\n  Advanced\
+  \ options:\n    --regions=REGIONS   Define regions (BED format) to restrict the\
+  \ analysis,\n                        that is, where to train the HMM and search\
+  \ for DPs. It\n                        is faster, but less precise.\n    -b BINSIZE,\
+  \ --binsize=BINSIZE\n                        Size of underlying bins for creating\
+  \ the signal.\n                        [default: 100]\n    -s STEPSIZE, --step=STEPSIZE\n\
+  \                        Stepsize with which the window consecutively slides\n \
+  \                       across the genome to create the signal. [default: 50]\n\
+  \    --debug             Output debug information. Warning: space consuming!\n \
+  \                       [default: False]\n    --no-gc-content     Do not normalize\
+  \ towards GC content. [default: False]\n    --norm-regions=NORM_REGIONS\n      \
+  \                  Restrict normalization to particular regions (BED\n         \
+  \               format). [default: none]\n    -f FOLDCHANGE, --foldchange=FOLDCHANGE\n\
+  \                        Fold change parameter to define training set (t_1, see\n\
+  \                        paper). [default: 1.6]\n    -t THRESHOLD, --threshold=THRESHOLD\n\
+  \                        Minimum signal support for differential peaks to\n    \
+  \                    define training set as percentage (t_2, see paper).\n     \
+  \                   [default: 95]\n    --size=SIZE_TS      Number of bins the HMM's\
+  \ training set constists of.\n                        [default: 10000]\n    --par=PAR\
+  \           Percentile for p-value postprocessing filter.\n                    \
+  \    [default: 1]\n    --poisson           Use binomial distribution as emmission.\
+  \ [default:\n                        False]\n    --single-strand     Allow single\
+  \ strand BAM file as input. [default:\n                        False]\n    --m_threshold=M_THRESHOLD\n\
+  \                        Define the M threshold of percentile for training TMM.\n\
+  \                        [default: 80]\n    --a_threshold=A_THRESHOLD\n        \
+  \                Define the A threshold of percentile for training TMM.\n      \
+  \                  [default: 95]\n    --rmdup             Remove the duplicate reads\
+  \ [default: False]\n"
+generated_using:
+- --help

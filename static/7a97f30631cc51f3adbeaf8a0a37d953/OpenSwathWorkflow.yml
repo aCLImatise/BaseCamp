@@ -1,0 +1,177 @@
+!Command
+command:
+- OpenSwathWorkflow
+positional: []
+named:
+- !Flag
+  description: "*                    Input files separated by blank (valid formats:\
+    \ 'mzML', 'mzXML', 'sqMass')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: files
+  optional: true
+- !Flag
+  description: "*                     Transition file ('TraML','tsv','pqp') (valid\
+    \ formats: 'traML', 'tsv', 'pqp')"
+  synonyms:
+  - -tr
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Input file type -- default: determined from file extension or content\n\
+    (valid: 'traML', 'tsv', 'pqp')"
+  synonyms:
+  - -tr_type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "Transition file ('TraML') (valid formats: 'traML')"
+  synonyms:
+  - -tr_irt
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file (valid formats: 'featureXML')"
+  synonyms:
+  - -out_features
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "TSV output file (mProphet compatible TSV file) (valid formats: 'tsv')"
+  synonyms:
+  - -out_tsv
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "OSW output file (PyProphet compatible SQLite file) (valid formats:\
+    \ 'osw')"
+  synonyms:
+  - -out_osw
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Only extract RT around this value (-1 means extract over the whole\
+    \ range, a value of 600 means to extract around +/- 300 s of the expected elution).\
+    \ (default: '600')"
+  synonyms:
+  - -rt_extraction_window
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Extraction window in ion mobility dimension (in milliseconds). This\
+    \ is the full window size, e.g. a value of 10 milliseconds would extract 5 milliseconds\
+    \ on either side. (default: '-1')"
+  synonyms:
+  - -ion_mobility_window
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Extraction window used (in Thomson, to use ppm see -ppm flag) (default:\
+    \ '0.05' min: '0')"
+  synonyms:
+  - -mz_extraction_window
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: M/z extraction_window is in ppm
+  synonyms:
+  - -ppm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Data is scanning SWATH data
+  synonyms:
+  - -sonar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nOpenSwathWorkflow\
+  \ -- Complete workflow to run OpenSWATH\nVersion: 2.4.0 Jan  8 2020, 08:35:33, Revision:\
+  \ 2116a70\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow C et al..\
+  \ OpenMS: a flexible open-source software platform for mass spectrometry data analysis.\
+  \ Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n  OpenSwathWorkflow\
+  \ <options>\n\nThis tool has algorithm parameters that are not shown here! Please\
+  \ check the ini file for a detailed description or use the --helphelp option.\n\n\
+  Options (mandatory options marked with '*'):\n  -in <files>*                   \
+  \ Input files separated by blank (valid formats: 'mzML', 'mzXML', 'sqMass')\n  -tr\
+  \ <file>*                     Transition file ('TraML','tsv','pqp') (valid formats:\
+  \ 'traML', 'tsv', 'pqp')\n  -tr_type <type>                 Input file type -- default:\
+  \ determined from file extension or content\n                                  (valid:\
+  \ 'traML', 'tsv', 'pqp')\n  -tr_irt <file>                  Transition file ('TraML')\
+  \ (valid formats: 'traML')\n  -out_features <file>            Output file (valid\
+  \ formats: 'featureXML')\n  -out_tsv <file>                 TSV output file (mProphet\
+  \ compatible TSV file) (valid formats: 'tsv')\n  -out_osw <file>               \
+  \  OSW output file (PyProphet compatible SQLite file) (valid formats: 'osw')\n \
+  \ -rt_extraction_window <double>  Only extract RT around this value (-1 means extract\
+  \ over the whole range, a value of 600 means to extract around +/- 300 s of the\
+  \ expected elution). (default: '600')\n  -ion_mobility_window <double>   Extraction\
+  \ window in ion mobility dimension (in milliseconds). This is the full window size,\
+  \ e.g. a value of 10 milliseconds would extract 5 milliseconds on either side. (default:\
+  \ '-1')\n  -mz_extraction_window <double>  Extraction window used (in Thomson, to\
+  \ use ppm see -ppm flag) (default: '0.05' min: '0')\n  -ppm                    \
+  \        M/z extraction_window is in ppm\n  -sonar                          Data\
+  \ is scanning SWATH data\n                                  \nCommon UTIL options:\n\
+  \  -ini <file>                     Use the given TOPP INI file\n  -threads <n> \
+  \                   Sets the number of threads allowed to be used by the TOPP tool\
+  \ (default: '1')\n  -write_ini <file>               Writes the default configuration\
+  \ file\n  --help                          Shows options\n  --helphelp          \
+  \            Shows all options (including advanced)\n\nThe following configuration\
+  \ subsections are valid:\n - Debugging         Debugging\n - Library           Library\
+  \ parameters section\n - RTNormalization   Parameters for the RTNormalization for\
+  \ iRT petides. This specifies how the RT alignment is performed and how outlier\
+  \ detection is applied. Outlier detection can be done iteratively (by default) which\
+  \ removes one outlier per iteration or using the RANSAC algorithm.\n - Scoring \
+  \          Scoring parameters section\n\nYou can write an example INI file using\
+  \ the '-write_ini' option.\nDocumentation of subsection parameters can be found\
+  \ in the doxygen documentation or the INIFileEditor.\nHave a look at the OpenMS\
+  \ documentation for more information.\n\n"
+generated_using:
+- --help

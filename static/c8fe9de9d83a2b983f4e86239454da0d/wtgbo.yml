@@ -1,0 +1,256 @@
+!Command
+command:
+- wtgbo
+positional: []
+named:
+- !Flag
+  description: Number of threads, [1]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Long reads sequences file(s), + *
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Long reads retained region, often from wtobt, +\nFormat: read_name\\\
+    toffset\\tlength\\toriginal_len"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Overlap file(s), + *\nFormat: reads1\\t+/-\\tlen1\\tbeg1\\tend1\\\
+    treads2\\t+/-\\tlen2\\tbeg2\\tend2\\tscore"
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Load pairs of read name from file, will avoid to calculate overlap
+    them again, + [NULL]
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Minimum alignment score, [200]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum alignment identity, [0.6]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Maximum margin of alignment, [100]
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Output file of new overlaps, *
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Record pairs of sequences have beed aligned regardless of successful,\
+    \ including pairs from '-L'\nFormat: read1\\tread2"
+  synonyms:
+  - '-9'
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Force overwrite output file
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum estimated coverage of edge to be trusted, [1]\nedge coverage\
+    \ is calculated by counting overlaps that can replace this edge"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Use number of matches as alignment score
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Best score cutoff, say best overlap MUST have alignment score >= <-r>
+    * read's best score [0.95]
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Turn off homopolymer compression
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Smaller kmer size (z-mer), 5 <= <-z> <= 16, [10]
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Filter high frequency z-mers, maybe repetitive, [100]
+  synonyms:
+  - -Z
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Zmer window, [800]
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum size of seeding region within zmer window, [200]
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum size of total seeding region for zmer windows, [300]
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum variant of uncompressed sizes between two matched hz-kmer,
+    [2]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: match, [2]'
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: mismatch, [-5]'
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: insertion or deletion, [-3]'
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: gap extension, [-1]'
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: read end clipping, 0: distable HSP extension, otherwise
+    set to -50 or other [-50]'
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum bandwidth, iteratively doubled to maximum [50]
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum bandwidth, [3200]
+  synonyms:
+  - -W
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Refine the alignment
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Max turns of iteration, [5]
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "WTGBO: Overlapper based on overlap graph\nSMARTdenovo: Ultra-fast de novo\
+  \ assembler for high noisy long reads\nAuthor: Jue Ruan <ruanjue@gmail.com>\nVersion:\
+  \ 1.0\nUsage: wtgbo [options]\nOptions:\n -t <int>    Number of threads, [1]\n -i\
+  \ <string> Long reads sequences file(s), + *\n -b <string> Long reads retained region,\
+  \ often from wtobt, +\n             Format: read_name\\toffset\\tlength\\toriginal_len\n\
+  \ -j <string> Overlap file(s), + *\n             Format: reads1\\t+/-\\tlen1\\tbeg1\\\
+  tend1\\treads2\\t+/-\\tlen2\\tbeg2\\tend2\\tscore\n -L <string> Load pairs of read\
+  \ name from file, will avoid to calculate overlap them again, + [NULL]\n -s <int>\
+  \    Minimum alignment score, [200]\n -m <float>  Minimum alignment identity, [0.6]\n\
+  \ -u <int>    Maximum margin of alignment, [100]\n -o <string> Output file of new\
+  \ overlaps, *\n -9 <string> Record pairs of sequences have beed aligned regardless\
+  \ of successful, including pairs from '-L'\n             Format: read1\\tread2\n\
+  \ -f          Force overwrite output file\n -c <int>    Minimum estimated coverage\
+  \ of edge to be trusted, [1]\n             edge coverage is calculated by counting\
+  \ overlaps that can replace this edge\n -Q          Use number of matches as alignment\
+  \ score\n -q <float>  Best score cutoff, say best overlap MUST have alignment score\
+  \ >= <-r> * read's best score [0.95]\n -H          Turn off homopolymer compression\n\
+  \ -z <int>    Smaller kmer size (z-mer), 5 <= <-z> <= 16, [10]\n -Z <int>    Filter\
+  \ high frequency z-mers, maybe repetitive, [100]\n -y <int>    Zmer window, [800]\n\
+  \ -R <int>    Minimum size of seeding region within zmer window, [200]\n -r <int>\
+  \    Minimum size of total seeding region for zmer windows, [300]\n -l <int>   \
+  \ Maximum variant of uncompressed sizes between two matched hz-kmer, [2]\n -M <int>\
+  \    Alignment penalty: match, [2]\n -X <int>    Alignment penalty: mismatch, [-5]\n\
+  \ -O <int>    Alignment penalty: insertion or deletion, [-3]\n -E <int>    Alignment\
+  \ penalty: gap extension, [-1]\n -T <int>    Alignment penalty: read end clipping,\
+  \ 0: distable HSP extension, otherwise set to -50 or other [-50]\n -w <int>    Minimum\
+  \ bandwidth, iteratively doubled to maximum [50]\n -W <int>    Maximum bandwidth,\
+  \ [3200]\n -n          Refine the alignment\n -N <int>    Max turns of iteration,\
+  \ [5]\n\n"
+generated_using:
+- --help

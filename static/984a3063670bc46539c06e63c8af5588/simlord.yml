@@ -1,0 +1,300 @@
+!Command
+command:
+- simlord
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 1
+  name: OUTPUT_PREFIX.fastq
+  optional: false
+named:
+- !Flag
+  description: Fixed read length for all reads.
+  synonyms:
+  - --fixed-readlength
+  - -fl
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Read a reference from PATH to sample reads from
+  synonyms:
+  - --read-reference
+  - -rr
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "LENGTH, -gr GC LENGTH\nGenerate a random reference with given GC-content\
+    \ and\ngiven length"
+  synonyms:
+  - --generate-reference
+  args: !SimpleFlagArg
+    name: GC
+  optional: true
+- !Flag
+  description: "Save the random reference as fasta-file at given PATH.\nBy default,\
+    \ save at output path with\n'_reference.fasta' appended."
+  synonyms:
+  - --save-reference
+  - -sr
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Number of reads to simulate (1000).
+  synonyms:
+  - --num-reads
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Desired read coverage.
+  synonyms:
+  - --coverage
+  - -c
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "PAR PAR PAR PAR, -xs PAR PAR PAR PAR PAR\nParameters for the curve\
+    \ determining the parameter\nscale for the chi^2 distribution: m,b, z, c, a for\n\
+    'm*x + b' if x <= z and 'c * x^-a' if x > z (default=\n(0.01214, -5.12, 675, 48303.0732881,\n\
+    1.4691051212330266))"
+  synonyms:
+  - --chi2-params-s
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: "PAR PAR, -xn PAR PAR PAR\nParameters for the function determining\
+    \ the parameter\nn for the chi^2 distribution: m, b, z for 'm*x + b' if\nx < z\
+    \ and 'm*z + b' for x >=z (default=\n(0.00189237136, 2.5394497, 5500))."
+  synonyms:
+  - --chi2-params-n
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: "Maximal number of passes for one molecule (default=\n40)."
+  synonyms:
+  - --max-passes
+  - -mp
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "PAR, -sq PAR PAR\nParameters for the sqare root function for the quality\n\
+    increase: a, b for 'sqrt(x+a) - b' (default= (0.5,\n0.2247))"
+  synonyms:
+  - --sqrt-params
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: "PAR, -nd PAR PAR\nParameters for normal distributed noise added to\n\
+    quality increase sqare root function (default= (0,\n0.2))"
+  synonyms:
+  - --norm-params
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: "Upper bound for the modified total error probability\n(default= 0.2)"
+  synonyms:
+  - --probability-threshold
+  - -t
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Probability for insertions for reads with one pass.\n(default= 0.11)"
+  synonyms:
+  - --prob-ins
+  - -pi
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Probability for deletions for reads with one pass.\n(default= 0.04)"
+  synonyms:
+  - --prob-del
+  - -pd
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Probability for substitutions for reads with one pass.\n(default=\
+    \ 0.01)"
+  synonyms:
+  - --prob-sub
+  - -ps
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Minium read length (default= 50) for lognormal\ndistribution"
+  synonyms:
+  - --min-readlength
+  - -mr
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "[PARAMETER [PARAMETER ...]], -ln [PARAMETER [PARAMETER ...]]\nParameters\
+    \ for lognormal read length distribution:\n(sigma, loc, scale), empty for defaults"
+  synonyms:
+  - --lognorm-readlength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sample read length from a fastq-file at PATH\ncontaining reads."
+  synonyms:
+  - --sample-readlength-from-fastq
+  - -sf
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Sample read length from a text file (one length per\nline)."
+  synonyms:
+  - --sample-readlength-from-text
+  - -st
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Save the alignments in a sam-file at SAM_OUTPUT. By\ndefault, use\
+    \ OUTPUT_PREFIX.sam."
+  synonyms:
+  - --sam-output
+  - -so
+  args: !SimpleFlagArg
+    name: SAM_OUTPUT
+  optional: true
+- !Flag
+  description: Do not calculate the alignment and write a sam file.
+  synonyms:
+  - --no-sam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compress the simulated reads using gzip and save them\nat OUTPUT_PREFIX.fastq.gz"
+  synonyms:
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip regions containing Ns and sample reads only from\nparts completly\
+    \ without Ns."
+  synonyms:
+  - --without-ns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sample chromosomes for reads equally distributed\ninstead of weighted\
+    \ by their length. (Was default\nbehaviour up to version 1.0.1)"
+  synonyms:
+  - --uniform-chromosome-probability
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use old long read names where all information is\nencoded in one large\
+    \ string. New format is according\nto PacBio convention m\\{\\}/\\{\\}/CCS with\
+    \ read\ninformation following after a whitespace.\n"
+  synonyms:
+  - --old-read-names
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: simlord [-h] [--version]\n               (--read-reference PATH\
+  \ | --generate-reference GC LENGTH)\n               [--save-reference PATH] [--num-reads\
+  \ INT | --coverage FLOAT]\n               [--chi2-params-s PAR PAR PAR PAR PAR]\n\
+  \               [--chi2-params-n PAR PAR PAR] [--max-passes INT]\n             \
+  \  [--sqrt-params PAR PAR] [--norm-params PAR PAR]\n               [--probability-threshold\
+  \ FLOAT] [--prob-ins FLOAT]\n               [--prob-del FLOAT] [--prob-sub FLOAT]\
+  \ [--min-readlength INT]\n               [--lognorm-readlength [PARAMETER [PARAMETER\
+  \ ...]] |\n               --fixed-readlength INT | --sample-readlength-from-fastq\
+  \ PATH\n               [PATH ...] | --sample-readlength-from-text PATH]\n      \
+  \         [--sam-output SAM_OUTPUT] [--no-sam] [--gzip] [--without-ns]\n       \
+  \        [--uniform-chromosome-probability] [--old-read-names]\n               OUTPUT_PREFIX\n\
+  \nSimLoRD v1.0.4 -- SimLoRD is a read simulator for long reads from third\ngeneration\
+  \ sequencing and is currently focused on the Pacific Biosciences SMRT\nerror model.\n\
+  \npositional arguments:\n  OUTPUT_PREFIX         Save the simulated reads as a fastq-file\
+  \ at\n                        OUTPUT_PREFIX.fastq\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --version             show\
+  \ program's version number and exit\n  --read-reference PATH, -rr PATH\n       \
+  \                 Read a reference from PATH to sample reads from\n  --generate-reference\
+  \ GC LENGTH, -gr GC LENGTH\n                        Generate a random reference\
+  \ with given GC-content and\n                        given length\n  --save-reference\
+  \ PATH, -sr PATH\n                        Save the random reference as fasta-file\
+  \ at given PATH.\n                        By default, save at output path with\n\
+  \                        '_reference.fasta' appended.\n  --num-reads INT, -n INT\n\
+  \                        Number of reads to simulate (1000).\n  --coverage FLOAT,\
+  \ -c FLOAT\n                        Desired read coverage.\n  --chi2-params-s PAR\
+  \ PAR PAR PAR PAR, -xs PAR PAR PAR PAR PAR\n                        Parameters for\
+  \ the curve determining the parameter\n                        scale for the chi^2\
+  \ distribution: m,b, z, c, a for\n                        'm*x + b' if x <= z and\
+  \ 'c * x^-a' if x > z (default=\n                        (0.01214, -5.12, 675, 48303.0732881,\n\
+  \                        1.4691051212330266))\n  --chi2-params-n PAR PAR PAR, -xn\
+  \ PAR PAR PAR\n                        Parameters for the function determining the\
+  \ parameter\n                        n for the chi^2 distribution: m, b, z for 'm*x\
+  \ + b' if\n                        x < z and 'm*z + b' for x >=z (default=\n   \
+  \                     (0.00189237136, 2.5394497, 5500)).\n  --max-passes INT, -mp\
+  \ INT\n                        Maximal number of passes for one molecule (default=\n\
+  \                        40).\n  --sqrt-params PAR PAR, -sq PAR PAR\n          \
+  \              Parameters for the sqare root function for the quality\n        \
+  \                increase: a, b for 'sqrt(x+a) - b' (default= (0.5,\n          \
+  \              0.2247))\n  --norm-params PAR PAR, -nd PAR PAR\n                \
+  \        Parameters for normal distributed noise added to\n                    \
+  \    quality increase sqare root function (default= (0,\n                      \
+  \  0.2))\n  --probability-threshold FLOAT, -t FLOAT\n                        Upper\
+  \ bound for the modified total error probability\n                        (default=\
+  \ 0.2)\n  --prob-ins FLOAT, -pi FLOAT\n                        Probability for insertions\
+  \ for reads with one pass.\n                        (default= 0.11)\n  --prob-del\
+  \ FLOAT, -pd FLOAT\n                        Probability for deletions for reads\
+  \ with one pass.\n                        (default= 0.04)\n  --prob-sub FLOAT, -ps\
+  \ FLOAT\n                        Probability for substitutions for reads with one\
+  \ pass.\n                        (default= 0.01)\n  --min-readlength INT, -mr INT\n\
+  \                        Minium read length (default= 50) for lognormal\n      \
+  \                  distribution\n  --lognorm-readlength [PARAMETER [PARAMETER ...]],\
+  \ -ln [PARAMETER [PARAMETER ...]]\n                        Parameters for lognormal\
+  \ read length distribution:\n                        (sigma, loc, scale), empty\
+  \ for defaults\n  --fixed-readlength INT, -fl INT\n                        Fixed\
+  \ read length for all reads.\n  --sample-readlength-from-fastq PATH [PATH ...],\
+  \ -sf PATH [PATH ...]\n                        Sample read length from a fastq-file\
+  \ at PATH\n                        containing reads.\n  --sample-readlength-from-text\
+  \ PATH, -st PATH\n                        Sample read length from a text file (one\
+  \ length per\n                        line).\n  --sam-output SAM_OUTPUT, -so SAM_OUTPUT\n\
+  \                        Save the alignments in a sam-file at SAM_OUTPUT. By\n \
+  \                       default, use OUTPUT_PREFIX.sam.\n  --no-sam            \
+  \  Do not calculate the alignment and write a sam file.\n  --gzip              \
+  \  Compress the simulated reads using gzip and save them\n                     \
+  \   at OUTPUT_PREFIX.fastq.gz\n  --without-ns          Skip regions containing Ns\
+  \ and sample reads only from\n                        parts completly without Ns.\n\
+  \  --uniform-chromosome-probability\n                        Sample chromosomes\
+  \ for reads equally distributed\n                        instead of weighted by\
+  \ their length. (Was default\n                        behaviour up to version 1.0.1)\n\
+  \  --old-read-names      Use old long read names where all information is\n    \
+  \                    encoded in one large string. New format is according\n    \
+  \                    to PacBio convention m\\{\\}/\\{\\}/CCS with read\n       \
+  \                 information following after a whitespace.\n"
+generated_using:
+- --help

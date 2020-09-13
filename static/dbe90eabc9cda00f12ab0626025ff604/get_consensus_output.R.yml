@@ -1,0 +1,156 @@
+!Command
+command:
+- get_consensus_output.R
+positional: []
+named:
+- !Flag
+  description: "Path to the directory with standardised .tsv files from multiple\n\
+    methods"
+  synonyms:
+  - -i
+  - --input-dir
+  args: !SimpleFlagArg
+    name: INPUT-DIR
+  optional: true
+- !Flag
+  description: Path to the tool evaluation table in text format
+  synonyms:
+  - -t
+  - --tool-table
+  args: !SimpleFlagArg
+    name: TOOL-TABLE
+  optional: true
+- !Flag
+  description: 'Boolean: Should computation be run in parallel? Default: FALSE'
+  synonyms:
+  - -p
+  - --parallel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of cores to run the process on. Default: all available cores.
+    --parallel must be set to "true" for this to take effect'
+  synonyms:
+  - -c
+  - --num-cores
+  args: !SimpleFlagArg
+    name: NUM-CORES
+  optional: true
+- !Flag
+  description: Path to the mapping between labels and CL terms in .rds format
+  synonyms:
+  - -d
+  - --cl-dictionary
+  args: !SimpleFlagArg
+    name: CL-DICTIONARY
+  optional: true
+- !Flag
+  description: Path to the yaml file with excluded terms. Must contain fields 'unlabelled'
+    and 'trivial_terms'
+  synonyms:
+  - -e
+  - --exclusions
+  args: !SimpleFlagArg
+    name: EXCLUSIONS
+  optional: true
+- !Flag
+  description: Cache directory path
+  synonyms:
+  - -g
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+- !Flag
+  description: Path to the ontology graph in .obo or .xml format. Import link can
+    also be provided.
+  synonyms:
+  - -f
+  - --ontology-graph
+  args: !SimpleFlagArg
+    name: ONTOLOGY-GRAPH
+  optional: true
+- !Flag
+  description: "Semantic similarity scoring method.\nMust be supported by Onassis\
+    \ package.\nSee listSimilarities()$pairwiseMeasures for a list of accepted options.\n\
+    NB: if included in combined score calculation, make sure to select a metric with\
+    \ values in the [0;1] range."
+  synonyms:
+  - -m
+  - --semantic-sim-metric
+  args: !SimpleFlagArg
+    name: SEMANTIC-SIM-METRIC
+  optional: true
+- !Flag
+  description: "Should semantic similarity be included into combined score calculation?\
+    \ Default: FALSE.\nIf setting to TRUE, note that this confines the options on\
+    \ semantic similarity metric\nto those with range in the [0;1] interval only."
+  synonyms:
+  - -k
+  - --include-sem-siml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Should cells be sorted by their aggregated scores? Default: TRUE'
+  synonyms:
+  - -s
+  - --sort-by-agg-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to the output table with top labels and per-cell metrics in .tsv
+    format
+  synonyms:
+  - -o
+  - --summary-table-output-path
+  args: !SimpleFlagArg
+    name: SUMMARY-TABLE-OUTPUT-PATH
+  optional: true
+- !Flag
+  description: Path to the output table with all labels in .tsv format
+  synonyms:
+  - -r
+  - --raw-table-output-path
+  args: !SimpleFlagArg
+    name: RAW-TABLE-OUTPUT-PATH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Show this help message and exit\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/get_consensus_output.R [options]\n\n\nOptions:\n\
+  \t-i INPUT-DIR, --input-dir=INPUT-DIR\n\t\tPath to the directory with standardised\
+  \ .tsv files from multiple\n                methods\n\n\t-t TOOL-TABLE, --tool-table=TOOL-TABLE\n\
+  \t\tPath to the tool evaluation table in text format\n\n\t-p, --parallel\n\t\tBoolean:\
+  \ Should computation be run in parallel? Default: FALSE\n\n\t-c NUM-CORES, --num-cores=NUM-CORES\n\
+  \t\tNumber of cores to run the process on. Default: all available cores. --parallel\
+  \ must be set to \"true\" for this to take effect\n\n\t-d CL-DICTIONARY, --cl-dictionary=CL-DICTIONARY\n\
+  \t\tPath to the mapping between labels and CL terms in .rds format\n\n\t-e EXCLUSIONS,\
+  \ --exclusions=EXCLUSIONS\n\t\tPath to the yaml file with excluded terms. Must contain\
+  \ fields 'unlabelled' and 'trivial_terms'\n\n\t-g TMPDIR, --tmpdir=TMPDIR\n\t\t\
+  Cache directory path\n\n\t-f ONTOLOGY-GRAPH, --ontology-graph=ONTOLOGY-GRAPH\n\t\
+  \tPath to the ontology graph in .obo or .xml format. Import link can also be provided.\n\
+  \n\t-m SEMANTIC-SIM-METRIC, --semantic-sim-metric=SEMANTIC-SIM-METRIC\n\t\tSemantic\
+  \ similarity scoring method. \n                Must be supported by Onassis package.\n\
+  \                See listSimilarities()$pairwiseMeasures for a list of accepted\
+  \ options.\n                NB: if included in combined score calculation, make\
+  \ sure to select a metric with values in the [0;1] range.\n\n\t-k, --include-sem-siml\n\
+  \t\tShould semantic similarity be included into combined score calculation? Default:\
+  \ FALSE.\n                If setting to TRUE, note that this confines the options\
+  \ on semantic similarity metric\n                to those with range in the [0;1]\
+  \ interval only.\n\n\t-s, --sort-by-agg-score\n\t\tShould cells be sorted by their\
+  \ aggregated scores? Default: TRUE\n\n\t-o SUMMARY-TABLE-OUTPUT-PATH, --summary-table-output-path=SUMMARY-TABLE-OUTPUT-PATH\n\
+  \t\tPath to the output table with top labels and per-cell metrics in .tsv format\n\
+  \n\t-r RAW-TABLE-OUTPUT-PATH, --raw-table-output-path=RAW-TABLE-OUTPUT-PATH\n\t\t\
+  Path to the output table with all labels in .tsv format\n\n\t-h, --help\n\t\tShow\
+  \ this help message and exit\n\n\n"
+generated_using:
+- --help

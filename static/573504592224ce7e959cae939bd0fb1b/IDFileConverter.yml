@@ -1,0 +1,146 @@
+!Command
+command:
+- IDFileConverter
+positional: []
+named:
+- !Flag
+  description: "*           Input file or directory containing the data to convert.\
+    \ This may be:\n- a single file in a multi-purpose XML format (.pepXML, .protXML,\
+    \ .idXML, .mzid),\n- a single file in a search engine-specific format (Mascot:\
+    \ .mascotXML, OMSSA: .omssaXML, X! Tandem: .xml, Percolator: .psms, xQuest: .xquest.xml),\n\
+    - a single text file (tab separated) with one line for all peptide sequences matching\
+    \ a spectrum (top N hits),\n- for Sequest results, a directory containing .out\
+    \ files.\n(valid formats: 'pepXML', 'protXML', 'mascotXML', 'omssaXML', 'xml',\
+    \ 'psms', 'tsv', 'idXML', 'mzid', 'xquest.xml')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: path/file
+  optional: true
+- !Flag
+  description: "*               Output file (valid formats: 'idXML', 'mzid', 'pepXML',\
+    \ 'FASTA', 'xquest.xml')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file type (default: determined from file extension) (valid:\
+    \ 'idXML', 'mzid', 'pepXML', 'FASTA', 'xquest.xml')"
+  synonyms:
+  - -out_type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "[pepXML, Sequest, Mascot, X! Tandem, mzid, Percolator only] Retention\
+    \ times and native spectrum ids (spectrum_references) will be looked up in this\
+    \ file (valid formats: 'mzML', 'mzXML', 'mzData')"
+  synonyms:
+  - -mz_file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "[pepXML only] Experiment filename/path (extension will be removed)\
+    \ to match in the pepXML file ('base_name' attribute). Only necessary if different\
+    \ from 'mz_file'."
+  synonyms:
+  - -mz_name
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "[pepXML output only] Write output in the format of a PeptideProphet\
+    \ analysis result. By default a 'raw' pepXML is produced that contains only search\
+    \ engine results."
+  synonyms:
+  - -peptideprophet_analyzed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[Percolator only] Which of the Percolator scores to report as 'the'\
+    \ score for a peptide hit (default: 'qvalue' valid: 'qvalue', 'PEP', 'score')"
+  synonyms:
+  - -score_type
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nIDFileConverter\
+  \ -- Converts identification engine file formats.\nFull documentation: http://www.openms.de/documentation/TOPP_IDFileConverter.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  IDFileConverter <options>\n\nOptions (mandatory options marked with '*'):\n \
+  \ -in <path/file>*           Input file or directory containing the data to convert.\
+  \ This may be:\n                             - a single file in a multi-purpose\
+  \ XML format (.pepXML, .protXML, .idXML, .mzid),\n                             -\
+  \ a single file in a search engine-specific format (Mascot: .mascotXML, OMSSA: .omssaXML,\
+  \ X! Tandem: .xml, Percolator: .psms, xQuest: .xquest.xml),\n                  \
+  \           - a single text file (tab separated) with one line for all peptide sequences\
+  \ matching a spectrum (top N hits),\n                             - for Sequest\
+  \ results, a directory containing .out files.\n                             (valid\
+  \ formats: 'pepXML', 'protXML', 'mascotXML', 'omssaXML', 'xml', 'psms', 'tsv', 'idXML',\
+  \ 'mzid', 'xquest.xml')\n  -out <file>*               Output file (valid formats:\
+  \ 'idXML', 'mzid', 'pepXML', 'FASTA', 'xquest.xml')\n  -out_type <type>        \
+  \   Output file type (default: determined from file extension) (valid: 'idXML',\
+  \ 'mzid', 'pepXML', 'FASTA', 'xquest.xml')\n                             \n  -mz_file\
+  \ <file>            [pepXML, Sequest, Mascot, X! Tandem, mzid, Percolator only]\
+  \ Retention times and native spectrum ids (spectrum_references) will be looked up\
+  \ in this file (valid formats: 'mzML', 'mzXML', 'mzData')\n                    \
+  \         \n  -mz_name <file>            [pepXML only] Experiment filename/path\
+  \ (extension will be removed) to match in the pepXML file ('base_name' attribute).\
+  \ Only necessary if different from 'mz_file'.\n  -peptideprophet_analyzed   [pepXML\
+  \ output only] Write output in the format of a PeptideProphet analysis result. By\
+  \ default a 'raw' pepXML is produced that contains only search engine results.\n\
+  \  -score_type <choice>       [Percolator only] Which of the Percolator scores to\
+  \ report as 'the' score for a peptide hit (default: 'qvalue' valid: 'qvalue', 'PEP',\
+  \ 'score')\n                             \nCommon TOPP options:\n  -ini <file> \
+  \               Use the given TOPP INI file\n  -threads <n>               Sets the\
+  \ number of threads allowed to be used by the TOPP tool (default: '1')\n  -write_ini\
+  \ <file>          Writes the default configuration file\n  --help              \
+  \       Shows options\n  --helphelp                 Shows all options (including\
+  \ advanced)\n\n"
+generated_using:
+- --help

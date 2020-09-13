@@ -1,0 +1,449 @@
+&id001 !Command
+command:
+- slivar
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - slivar
+  - expr
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: slivar
+    optional: false
+  named:
+  - !Flag
+    description: path to VCF/BCF
+    synonyms:
+    - -v
+    - --vcf
+    args: !SimpleFlagArg
+      name: VCF
+    optional: true
+  - !Flag
+    description: optional region to limit evaluation. e.g. chr1 or 1:222-333 (or a
+      BED file of regions)
+    synonyms:
+    - --region
+    args: !SimpleFlagArg
+      name: REGION
+    optional: true
+  - !Flag
+    description: BED file of exclude regions (will never output excluded variants
+      regardless of pass-only flag)
+    synonyms:
+    - -x
+    - --exclude
+    args: !SimpleFlagArg
+      name: EXCLUDE
+    optional: true
+  - !Flag
+    description: path to javascript functions to expose to user
+    synonyms:
+    - -j
+    - --js
+    args: !SimpleFlagArg
+      name: JS
+    optional: true
+  - !Flag
+    description: pedigree file with family relations, sex, and affected status
+    synonyms:
+    - -p
+    - --ped
+    args: !SimpleFlagArg
+      name: PED
+    optional: true
+  - !Flag
+    description: path to file of group aliases
+    synonyms:
+    - -a
+    - --alias
+    args: !SimpleFlagArg
+      name: ALIAS
+    optional: true
+  - !Flag
+    description: 'path to output VCF/BCF (default: /dev/stdout)'
+    synonyms:
+    - -o
+    - --out-vcf
+    args: !SimpleFlagArg
+      name: OUT_VCF
+    optional: true
+  - !Flag
+    description: only output variants that pass at least one of the filters
+    synonyms:
+    - --pass-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: don't evaluate expression unless at least 1 sample is variable at
+      the variant this can improve speed
+    synonyms:
+    - --skip-non-variable
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: expression(s) applied to each trio where 'mom', 'dad', 'kid' labels
+      are available; trios inferred from ped file.
+    synonyms:
+    - --trio
+    args: !SimpleFlagArg
+      name: TRIO
+    optional: true
+  - !Flag
+    description: expression(s) applied to each family where 'fam' is available with
+      a list of samples in each family from ped file.
+    synonyms:
+    - --family-expr
+    args: !SimpleFlagArg
+      name: FAMILY_EXPR
+    optional: true
+  - !Flag
+    description: 'expression(s) applied to the groups defined in the alias option
+      [see: https://github.com/brentp/slivar/wiki/groups-in-slivar].'
+    synonyms:
+    - --group-expr
+    args: !SimpleFlagArg
+      name: GROUP_EXPR
+    optional: true
+  - !Flag
+    description: expression(s) applied to each sample in the VCF.
+    synonyms:
+    - --sample-expr
+    args: !SimpleFlagArg
+      name: SAMPLE_EXPR
+    optional: true
+  - !Flag
+    description: expression using only attributes from  the INFO field or variant.
+      If this does not pass trio/group/sample expressions are not applied.
+    synonyms:
+    - --info
+    args: !SimpleFlagArg
+      name: INFO
+    optional: true
+  - !Flag
+    description: path(s) to compressed gnotate file(s)
+    synonyms:
+    - -g
+    - --gnotate
+    args: !SimpleFlagArg
+      name: GNOTATE
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this help
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "slivar expr\n\nUsage:\n  slivar expr [options] \n\nOptions:\n  -v, --vcf=VCF\
+    \              path to VCF/BCF\n  --region=REGION            optional region to\
+    \ limit evaluation. e.g. chr1 or 1:222-333 (or a BED file of regions)\n  -x, --exclude=EXCLUDE\
+    \      BED file of exclude regions (will never output excluded variants regardless\
+    \ of pass-only flag)\n  -j, --js=JS                path to javascript functions\
+    \ to expose to user\n  -p, --ped=PED              pedigree file with family relations,\
+    \ sex, and affected status\n  -a, --alias=ALIAS          path to file of group\
+    \ aliases\n  -o, --out-vcf=OUT_VCF      path to output VCF/BCF (default: /dev/stdout)\n\
+    \  --pass-only                only output variants that pass at least one of the\
+    \ filters\n  --skip-non-variable        don't evaluate expression unless at least\
+    \ 1 sample is variable at the variant this can improve speed\n  --trio=TRIO  \
+    \              expression(s) applied to each trio where 'mom', 'dad', 'kid' labels\
+    \ are available; trios inferred from ped file.\n  --family-expr=FAMILY_EXPR  expression(s)\
+    \ applied to each family where 'fam' is available with a list of samples in each\
+    \ family from ped file.\n  --group-expr=GROUP_EXPR    expression(s) applied to\
+    \ the groups defined in the alias option [see: https://github.com/brentp/slivar/wiki/groups-in-slivar].\n\
+    \  --sample-expr=SAMPLE_EXPR  expression(s) applied to each sample in the VCF.\n\
+    \  --info=INFO                expression using only attributes from  the INFO\
+    \ field or variant. If this does not pass trio/group/sample expressions are not\
+    \ applied.\n  -g, --gnotate=GNOTATE      path(s) to compressed gnotate file(s)\n\
+    \  -h, --help                 Show this help\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - slivar
+  - ddc
+  positional:
+  - !Positional
+    description: ped
+    position: 0
+    name: vcf
+    optional: false
+  named:
+  - !Flag
+    description: "limit to this chromosome only. use '-3' for all chromosomes (in\
+      \ the case of exome data) (default: chr15)"
+    synonyms:
+    - --chrom
+    args: !SimpleFlagArg
+      name: CHROM
+    optional: true
+  - !Flag
+    description: comma-delimited list of info fields
+    synonyms:
+    - --info-fields
+    args: !SimpleFlagArg
+      name: INFO_FIELDS
+    optional: true
+  - !Flag
+    description: comma-delimited list of sample fields
+    synonyms:
+    - --fmt-fields
+    args: !SimpleFlagArg
+      name: FMT_FIELDS
+    optional: true
+  - !Flag
+    description: 'path to output file (default: slivar-ddc.html)'
+    synonyms:
+    - --html
+    args: !SimpleFlagArg
+      name: HTML
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this help
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "slivar ddc\n\nUsage:\n  slivar ddc [options] vcf ped\n\nArguments:\n\
+    \  vcf\n  ped\n\nOptions:\n  --chrom=CHROM              limit to this chromosome\
+    \ only. use '-3' for all chromosomes (in the case of exome data) (default: chr15)\n\
+    \  --info-fields=INFO_FIELDS  comma-delimited list of info fields\n  --fmt-fields=FMT_FIELDS\
+    \    comma-delimited list of sample fields\n  --html=HTML                path\
+    \ to output file (default: slivar-ddc.html)\n  -h, --help                 Show\
+    \ this help\n"
+  generated_using: *id002
+- !Command
+  command:
+  - slivar
+  - tsv
+  positional: []
+  named:
+  - !Flag
+    description: required ped file describing the trios in the VCF
+    synonyms:
+    - -p
+    - --ped
+    args: !SimpleFlagArg
+      name: PED
+    optional: true
+  - !Flag
+    description: INFO field containing the gene name and impact. Usually CSQ or BCSQ
+    synonyms:
+    - -c
+    - --csq-field
+    args: !SimpleFlagArg
+      name: CSQ_FIELD
+    optional: true
+  - !Flag
+    description: CSQ sub-field(s) to extract (in addition to gene, impact, transcript).
+      may be specified multiple times.
+    synonyms:
+    - --csq-column
+    args: !SimpleFlagArg
+      name: CSQ_COLUMN
+    optional: true
+  - !Flag
+    description: INFO field(s) that contains list of samples that have passed previous
+      filters.
+    synonyms:
+    - -s
+    - --sample-field
+    args: !SimpleFlagArg
+      name: SAMPLE_FIELD
+    optional: true
+  - !Flag
+    description: tab-separated lookup of gene (column 1) to description (column 2)
+      to add to output. the gene is case-sensitive. can be specified multiple times
+    synonyms:
+    - -g
+    - --gene-description
+    args: !SimpleFlagArg
+      name: GENE_DESCRIPTION
+    optional: true
+  - !Flag
+    description: ordering of impacts to override the default (https://raw.githubusercontent.com/brentp/slivar/master/src/slivarpkg/default-order.txt)
+    synonyms:
+    - --impact-order
+    args: !SimpleFlagArg
+      name: IMPACT_ORDER
+    optional: true
+  - !Flag
+    description: INFO field(s) that should be added to output (e.g. gnomad_popmax_af)
+    synonyms:
+    - -i
+    - --info-field
+    args: !SimpleFlagArg
+      name: INFO_FIELD
+    optional: true
+  - !Flag
+    description: 'path to output tab-separated file (default: /dev/stdout)'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this help
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "slivar tsv\n\nconvert filtered VCF to tab-separated-value spreadsheet\
+    \ for final filtering\n\ncreate a --gene-description file e.g. from human phenotype\
+    \ ontology with:\n  wget -qO - http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt\
+    \ | cut -f 2,3 > gene_desc.txt\nor from clinvar with:\n  wget -qO - ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/gene_condition_source_id\
+    \ | cut -f 2,5 | grep -v ^$'\\t' > clinvar_gene_desc.txt\nor gene->pLI with:\n\
+    \   wget -qO - https://storage.googleapis.com/gnomad-public/release/2.1.1/constraint/gnomad.v2.1.1.lof_metrics.by_gene.txt.bgz\
+    \ | zcat \\\n       | cut -f 1,21,24 | tail -n+2 | awk '{ printf(\"%s\\tpLI=%.3g;oe_lof=%.5g\\\
+    n\", $1, $2, $3)}'\n\n    \n\nUsage:\n  slivar tsv [options] [vcf]\n\nArguments:\n\
+    \  [vcf]            input VCF (default: /dev/stdin)\n\nOptions:\n  -p, --ped=PED\
+    \              required ped file describing the trios in the VCF\n  -c, --csq-field=CSQ_FIELD\
+    \  INFO field containing the gene name and impact. Usually CSQ or BCSQ\n  --csq-column=CSQ_COLUMN\
+    \    CSQ sub-field(s) to extract (in addition to gene, impact, transcript). may\
+    \ be specified multiple times.\n  -s, --sample-field=SAMPLE_FIELD\n          \
+    \                   INFO field(s) that contains list of samples that have passed\
+    \ previous filters.\ncan be specified multiple times.\n  -g, --gene-description=GENE_DESCRIPTION\n\
+    \                             tab-separated lookup of gene (column 1) to description\
+    \ (column 2) to add to output. the gene is case-sensitive. can be specified multiple\
+    \ times\n  --impact-order=IMPACT_ORDER\n                             ordering\
+    \ of impacts to override the default (https://raw.githubusercontent.com/brentp/slivar/master/src/slivarpkg/default-order.txt)\n\
+    \  -i, --info-field=INFO_FIELD\n                             INFO field(s) that\
+    \ should be added to output (e.g. gnomad_popmax_af)\n  -o, --out=OUT         \
+    \     path to output tab-separated file (default: /dev/stdout)\n  -h, --help \
+    \                Show this help\n"
+  generated_using: *id002
+- !Command
+  command:
+  - slivar
+  - duo-del
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: slivar
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: duodel
+    optional: false
+  named:
+  - !Flag
+    description: required ped file describing the duos in the VCF
+    synonyms:
+    - -p
+    - --ped
+    args: !SimpleFlagArg
+      name: PED
+    optional: true
+  - !Flag
+    description: optional gnotate file to check for flagged variants to exclude
+    synonyms:
+    - -g
+    - --gnotate
+    args: !SimpleFlagArg
+      name: GNOTATE
+    optional: true
+  - !Flag
+    description: 'minimum number of variants required to define a region (use 1 to
+      output all putative deletions) (default: 3)'
+    synonyms:
+    - -s
+    - --min-sites
+    args: !SimpleFlagArg
+      name: MIN_SITES
+    optional: true
+  - !Flag
+    description: 'minimum size in base-pairs of a region (default: 50)'
+    synonyms:
+    - -S
+    - --min-size
+    args: !SimpleFlagArg
+      name: MIN_SIZE
+    optional: true
+  - !Flag
+    description: path to BED file of exclude regions e.g. (LCRs or self-chains)
+    synonyms:
+    - -x
+    - --exclude
+    args: !SimpleFlagArg
+      name: EXCLUDE
+    optional: true
+  - !Flag
+    description: only output DEL calls for affected kids
+    synonyms:
+    - -a
+    - --affected-only
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this help
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "slivar duodel\n\nfind denovo structural deletions in parent-child duos\
+    \ using non-transmission of SNPs\n    see: https://github.com/brentp/slivar/wiki/finding-deletions-in-parent-child-duos\n\
+    \    \n\nUsage:\n  slivar duodel [options] [vcf]\n\nArguments:\n  [vcf]      \
+    \      input SNP/indel VCF (default: /dev/stdin)\n\nOptions:\n  -p, --ped=PED\
+    \              required ped file describing the duos in the VCF\n  -g, --gnotate=GNOTATE\
+    \      optional gnotate file to check for flagged variants to exclude\n  -s, --min-sites=MIN_SITES\
+    \  minimum number of variants required to define a region (use 1 to output all\
+    \ putative deletions) (default: 3)\n  -S, --min-size=MIN_SIZE    minimum size\
+    \ in base-pairs of a region (default: 50)\n  -x, --exclude=EXCLUDE      path to\
+    \ BED file of exclude regions e.g. (LCRs or self-chains)\n  -a, --affected-only\
+    \        only output DEL calls for affected kids\n  -h, --help               \
+    \  Show this help\nslivar duodel\n\nfind denovo structural deletions in parent-child\
+    \ duos using non-transmission of SNPs\n    see: https://github.com/brentp/slivar/wiki/finding-deletions-in-parent-child-duos\n\
+    \    \n\nUsage:\n  slivar duodel [options] [vcf]\n\nArguments:\n  [vcf]      \
+    \      input SNP/indel VCF (default: /dev/stdin)\n\nOptions:\n  -p, --ped=PED\
+    \              required ped file describing the duos in the VCF\n  -g, --gnotate=GNOTATE\
+    \      optional gnotate file to check for flagged variants to exclude\n  -s, --min-sites=MIN_SITES\
+    \  minimum number of variants required to define a region (use 1 to output all\
+    \ putative deletions) (default: 3)\n  -S, --min-size=MIN_SIZE    minimum size\
+    \ in base-pairs of a region (default: 50)\n  -x, --exclude=EXCLUDE      path to\
+    \ BED file of exclude regions e.g. (LCRs or self-chains)\n  -a, --affected-only\
+    \        only output DEL calls for affected kids\n  -h, --help               \
+    \  Show this help\n\n"
+  generated_using: *id002
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "  expr         :   filter and/or annotate with INFO, trio, sample, group\
+  \ expressions\n  make-gnotate :   make a gnotate zip file for a given VCF\n  compound-hets:\
+  \   find compound hets in a (previously filtered and gene-annotated) VCF\n  tsv\
+  \          :   converted a filtered VCF to a tab-separated-value spreadsheet for\
+  \ final examination\n  duo-del      :   find large denovo deletions in parent-child\
+  \ duos using non-transmission from SNP VCF\n  ddc          :   data-driven cutoffs\
+  \ using mendelian violations and transmissions\nunknown program '--help'\n"
+generated_using: *id002

@@ -1,0 +1,169 @@
+!Command
+command:
+- bam-to-alignment-priors
+positional: []
+named:
+- !Flag
+  description: "[ --dont_skip_non_xa ]             Do not skip reads for which other\n\
+    alignments exist (i.e. X0+X1>1, but no\nXA tag is present)."
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not use alternative alignments from\nXA tags."
+  synonyms:
+  - --ignore_xa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use MAPQ instead of recomputing\nprobability from all alignments."
+  synonyms:
+  - --use_mapq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --phred_base ] arg (=33)         Value to substract from ASCII code\
+    \ to\nget the PHRED quality."
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --bad_alignment_threshold ] arg (=1000)\nIssue a warning when AS\
+    \ tag is above\nthis value."
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --max_span ] arg (=50000)        Maximal internal segment. Read\
+    \ pairs\nwith larger internal segment will be\nignored."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --discard_reads ] arg (=0)       Discard \"concordant\" alignments\
+    \ within\nthe given number of standard deviations\n(default: disabled)."
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --insert_size_dist ] arg         Filename of known internal segment\
+    \ size\ndistribution. If not given, this\ndistribution is estimated."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --insert_size_dist_out ] arg     Filename of write estimated internal\n\
+    segment size distribution to."
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --rg_insert_size_dist ] arg      Filename of read-group-wise known\n\
+    internal segment size distributions.\nExpects two-column text file:\n<readgroup>\
+    \ <distribution-filename>."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --dist_est_count ] arg (=5000000)\nNumber of uniquely mapping reads\
+    \ that\nare to be used to estimate internal\nsegment size distribution."
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --mean_and_sd ] arg              Write (robustly estimated) mean\
+    \ and\nstandard deviation of main peak if\ninternal segment size distribution\
+    \ to\ngiven filename."
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --threads ] arg (=0)             Number of threads (default: 0 =\n\
+    strictly single-threaded)."
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't assume reads to be sorted by\nposition. In this case, alignments\
+    \ must\nbe grouped by read, i.e. alignments of\nthe same read (pair) must be in\n\
+    subsequent lines."
+  synonyms:
+  - --unsorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chromosome to process (default: all).'
+  synonyms:
+  - --chromosome
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "bam-to-alignment-priors version: v2.4\nUsage: bam-to-alignment-priors\
+  \ [options] <reference.fasta(.gz)> <input.bam>\n\nReads a sorted BAM file (also\
+  \ parsing the BWA-specific XA tags)\nand outputs a list of plausible alignments\
+  \ (one per line) of read pairs\nto stdout in the following format:\n\n<read-name>\
+  \ <pair-nr> <read-group> <phred-sum1> <chromosome1> <start1> <end1> <strand1> <phred-sum2>\
+  \ <chromosome2> <start2> <end2> <strand2> <aln-pair-prob> <aln-pair-prob-inslength>\n\
+  \nWhere <aln-pair-prob> is the probability that this alignment pair is \ncorrect\
+  \ estimated based on the alignment quality while the probabilities \ngiven in <aln-pair-prob-inslength>\
+  \ are estimates based on alignment quality AND\ninsert length.\n\n<startX> and <endX>\
+  \ coordinates are 1-based and inclusive (i.e. closed intervals)\nand give the region\
+  \ on the reference the respective read was aligned to.\n\nAllowed options:\n  -x\
+  \ [ --dont_skip_non_xa ]             Do not skip reads for which other \n      \
+  \                                  alignments exist (i.e. X0+X1>1, but no \n   \
+  \                                     XA tag is present).\n  --ignore_xa       \
+  \                    Do not use alternative alignments from \n                 \
+  \                       XA tags.\n  --use_mapq                            Use MAPQ\
+  \ instead of recomputing \n                                        probability from\
+  \ all alignments.\n  -p [ --phred_base ] arg (=33)         Value to substract from\
+  \ ASCII code to \n                                        get the PHRED quality.\n\
+  \  -b [ --bad_alignment_threshold ] arg (=1000)\n                              \
+  \          Issue a warning when AS tag is above \n                             \
+  \           this value.\n  -s [ --max_span ] arg (=50000)        Maximal internal\
+  \ segment. Read pairs \n                                        with larger internal\
+  \ segment will be \n                                        ignored.\n  -d [ --discard_reads\
+  \ ] arg (=0)       Discard \"concordant\" alignments within \n                 \
+  \                       the given number of standard deviations\n              \
+  \                          (default: disabled).\n  -i [ --insert_size_dist ] arg\
+  \         Filename of known internal segment size\n                            \
+  \            distribution. If not given, this \n                               \
+  \         distribution is estimated.\n  -I [ --insert_size_dist_out ] arg     Filename\
+  \ of write estimated internal \n                                        segment\
+  \ size distribution to.\n  -r [ --rg_insert_size_dist ] arg      Filename of read-group-wise\
+  \ known \n                                        internal segment size distributions.\
+  \ \n                                        Expects two-column text file: \n   \
+  \                                     <readgroup> <distribution-filename>.\n  -n\
+  \ [ --dist_est_count ] arg (=5000000)\n                                        Number\
+  \ of uniquely mapping reads that \n                                        are to\
+  \ be used to estimate internal \n                                        segment\
+  \ size distribution.\n  -m [ --mean_and_sd ] arg              Write (robustly estimated)\
+  \ mean and \n                                        standard deviation of main\
+  \ peak if \n                                        internal segment size distribution\
+  \ to \n                                        given filename.\n  -T [ --threads\
+  \ ] arg (=0)             Number of threads (default: 0 = \n                    \
+  \                    strictly single-threaded).\n  --unsorted                  \
+  \          Don't assume reads to be sorted by \n                               \
+  \         position. In this case, alignments must\n                            \
+  \            be grouped by read, i.e. alignments of \n                         \
+  \               the same read (pair) must be in \n                             \
+  \           subsequent lines.\n  --chromosome arg                      Chromosome\
+  \ to process (default: all).\n\n"
+generated_using:
+- --help

@@ -1,0 +1,423 @@
+!Command
+command:
+- vdb-dump
+positional:
+- !Positional
+  description: -l|--line_feed <count>           number of line-feed's inbetween rows
+  position: 0
+  name: used
+  optional: false
+- !Positional
+  description: --cur-cache <size>            size of cursor cache
+  position: 1
+  name: index
+  optional: false
+- !Positional
+  description: -h|--help                        print this message
+  position: 2
+  name: file.
+  optional: false
+named:
+- !Flag
+  description: print row id
+  synonyms:
+  - -I
+  - --row_id_on
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not print column-names
+  synonyms:
+  - -N
+  - --colname_off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print numbers in hex
+  synonyms:
+  - -X
+  - --in_hex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prints the schema
+  synonyms:
+  - -A
+  - --schema_dump
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enumerate tables
+  synonyms:
+  - -E
+  - --table_enum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enumerate columns in extended form
+  synonyms:
+  - -O
+  - --column_enum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enumerate columns in short form
+  synonyms:
+  - -o
+  - --column_enum_short
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prints id-range
+  synonyms:
+  - -r
+  - --id_range
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: without sra-translation
+  synonyms:
+  - -n
+  - --without_sra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: request vdb-version
+  synonyms:
+  - -j
+  - --obj_version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: request object modification date
+  synonyms:
+  - --obj_timestamp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: report type of object
+  synonyms:
+  - -y
+  - --obj_type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print only element-count
+  synonyms:
+  - -u
+  - --numelem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sum element-count
+  synonyms:
+  - -U
+  - --numelemsum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show blobbing
+  synonyms:
+  - --blobbing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enumeate physical columns
+  synonyms:
+  - --phys
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enumeate readable columns
+  synonyms:
+  - --readable
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enumeate all available index
+  synonyms:
+  - --idx-report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compress output using gzip
+  synonyms:
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compress output using bzip2
+  synonyms:
+  - --bzip2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print info about accession
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show spotgroups
+  synonyms:
+  - --spotgroups
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: merge and sort row-ranges
+  synonyms:
+  - --merge-ranges
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show spread of integer values
+  synonyms:
+  - --spread
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: append to output-file, if output-file is
+  synonyms:
+  - -a
+  - --append
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: limits line length
+  synonyms:
+  - -M
+  - --max_length
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: indents the line
+  synonyms:
+  - -i
+  - --indent_with
+  args: !SimpleFlagArg
+    name: width
+  optional: true
+- !Flag
+  description: name of table to use
+  synonyms:
+  - -T
+  - --table
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: rows (default:all)
+  synonyms:
+  - -R
+  - --rows
+  args: !SimpleFlagArg
+    name: rows
+  optional: true
+- !Flag
+  description: columns (default:all)
+  synonyms:
+  - -C
+  - --columns
+  args: !SimpleFlagArg
+    name: columns
+  optional: true
+- !Flag
+  description: path to schema-file
+  synonyms:
+  - -S
+  - --schema
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: print dna-bases
+  synonyms:
+  - -D
+  - --dna_bases
+  args: !SimpleFlagArg
+    name: bases
+  optional: true
+- !Flag
+  description: "output-format: csv ... comma-separated\nvalues on one line, xml ...\
+    \ xml-style\nwithout complete xml-frame, json ...\njson-style, piped ... 1 line\
+    \ per cell (\nrow-id, column-name: value ), tab ... 1\nline per row ( tab-separated\
+    \ values only\n), fastq ... FASTQ( 4 lines ) for each\nrow, fastq1 ... FASTQ(\
+    \ 4 lines ) for\neach fragment, fasta ... FASTA ( 2 lines\n) for each fragment\
+    \ if possible, fasta1\n... one FASTA-record for the whole\naccession (REFSEQ),\
+    \ fasta2 ... one\nFASTA-record for each REFERENCE in cSRA,\nqual ... QUAL( 2 lines\
+    \ ) for each row,\nqual1 ... QUAL ( 2 lines ) for each\nfragment if possible"
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: exclude these columns
+  synonyms:
+  - -x
+  - --exclude
+  args: !SimpleFlagArg
+    name: columns
+  optional: true
+- !Flag
+  description: "defines how boolean's are printed, valid\nvalue: [1|T]"
+  synonyms:
+  - -b
+  - --boolean
+  args: !SimpleFlagArg
+    name: mode
+  optional: true
+- !Flag
+  description: enumerate values and row-ranges of one
+  synonyms:
+  - --idx-range
+  args: !SimpleFlagArg
+    name: idx-name
+  optional: true
+- !Flag
+  description: write output to this file
+  synonyms:
+  - --output-file
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: write output to this directory
+  synonyms:
+  - --output-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: size of output-buffer, 0...none
+  synonyms:
+  - --output-buffer-size
+  args: !SimpleFlagArg
+    name: size
+  optional: true
+- !Flag
+  description: <path> to ngc file
+  synonyms:
+  - --ngc
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: <path> to permission file
+  synonyms:
+  - --perm
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: location in cloud
+  synonyms:
+  - --location
+  args: !SimpleFlagArg
+    name: location
+  optional: true
+- !Flag
+  description: <path> to cart file
+  synonyms:
+  - --cart
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: disable multithreading
+  synonyms:
+  - --disable-multithreading
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+    \ or\n(0-6) Current/default is warn"
+  synonyms:
+  - -L
+  - --log-level
+  args: !SimpleFlagArg
+    name: level
+  optional: true
+- !Flag
+  description: Read more options and parameters from the
+  synonyms:
+  - --option-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Display the version of the program
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nUsage: vdb-dump [ options ] [ accessions(s)... ]\n\nParameters:\n\n\
+  \  accessions(s)                    list of accessions to process\n\n\nOptions:\n\
+  \n  -I|--row_id_on                   print row id\n  -N|--colname_off          \
+  \       do not print column-names\n  -X|--in_hex                      print numbers\
+  \ in hex\n  -A|--schema_dump                 prints the schema\n  -E|--table_enum\
+  \                  enumerate tables\n  -O|--column_enum                 enumerate\
+  \ columns in extended form\n  -o|--column_enum_short           enumerate columns\
+  \ in short form\n  -r|--id_range                    prints id-range\n  -n|--without_sra\
+  \                 without sra-translation\n  -j|--obj_version                 request\
+  \ vdb-version\n     --obj_timestamp               request object modification date\n\
+  \  -y|--obj_type                    report type of object\n  -u|--numelem      \
+  \               print only element-count\n  -U|--numelemsum                  sum\
+  \ element-count\n     --blobbing                    show blobbing\n     --phys \
+  \                       enumeate physical columns\n     --readable             \
+  \       enumeate readable columns\n     --idx-report                  enumeate all\
+  \ available index\n     --gzip                        compress output using gzip\n\
+  \     --bzip2                       compress output using bzip2\n     --info   \
+  \                     print info about accession\n     --spotgroups            \
+  \      show spotgroups\n     --merge-ranges                merge and sort row-ranges\n\
+  \     --spread                      show spread of integer values\n  -a|--append\
+  \                      append to output-file, if output-file is\n              \
+  \                       used\n  -l|--line_feed <count>           number of line-feed's\
+  \ inbetween rows\n  -M|--max_length <length>         limits line length\n  -i|--indent_with\
+  \ <width>         indents the line\n  -T|--table <name>                name of table\
+  \ to use\n  -R|--rows <rows>                 rows (default:all)\n  -C|--columns\
+  \ <columns>           columns (default:all)\n  -S|--schema <path>              \
+  \ path to schema-file\n  -D|--dna_bases <bases>           print dna-bases\n  -f|--format\
+  \ <format>             output-format: csv ... comma-separated\n                \
+  \                     values on one line, xml ... xml-style\n                  \
+  \                   without complete xml-frame, json ...\n                     \
+  \                json-style, piped ... 1 line per cell (\n                     \
+  \                row-id, column-name: value ), tab ... 1\n                     \
+  \                line per row ( tab-separated values only\n                    \
+  \                 ), fastq ... FASTQ( 4 lines ) for each\n                     \
+  \                row, fastq1 ... FASTQ( 4 lines ) for\n                        \
+  \             each fragment, fasta ... FASTA ( 2 lines\n                       \
+  \              ) for each fragment if possible, fasta1\n                       \
+  \              ... one FASTA-record for the whole\n                            \
+  \         accession (REFSEQ), fasta2 ... one\n                                 \
+  \    FASTA-record for each REFERENCE in cSRA,\n                                \
+  \     qual ... QUAL( 2 lines ) for each row,\n                                 \
+  \    qual1 ... QUAL ( 2 lines ) for each\n                                     fragment\
+  \ if possible\n  -x|--exclude <columns>           exclude these columns\n  -b|--boolean\
+  \ <mode>              defines how boolean's are printed, valid\n               \
+  \                      value: [1|T]\n     --idx-range <idx-name>        enumerate\
+  \ values and row-ranges of one\n                                     index\n   \
+  \  --cur-cache <size>            size of cursor cache\n     --output-file <filename>\
+  \      write output to this file\n     --output-path <path>          write output\
+  \ to this directory\n     --output-buffer-size <size>   size of output-buffer, 0...none\n\
+  \     --ngc <path>                  <path> to ngc file\n     --perm <path>     \
+  \            <path> to permission file\n     --location <location>         location\
+  \ in cloud\n     --cart <path>                 <path> to cart file\n     --disable-multithreading\
+  \      disable multithreading\n  -V|--version                     Display the version\
+  \ of the program\n  -L|--log-level <level>           Logging level as number or\
+  \ enum string.\n                                     One of\n                  \
+  \                   (fatal|sys|int|err|warn|info|debug) or\n                   \
+  \                  (0-6) Current/default is warn\n     --option-file file      \
+  \      Read more options and parameters from the\n                             \
+  \        file.\n  -h|--help                        print this message\n\n\"vdb-dump\"\
+  \ version 2.10.8\n\n"
+generated_using:
+- --help

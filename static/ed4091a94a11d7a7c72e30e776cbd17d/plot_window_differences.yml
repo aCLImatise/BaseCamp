@@ -1,0 +1,152 @@
+!Command
+command:
+- plot_window_differences
+positional: []
+named:
+- !Flag
+  description: Full path to dataframe 1 (will be treated) as 'before'
+  synonyms:
+  - --before
+  args: !SimpleFlagArg
+    name: BEFORE
+  optional: true
+- !Flag
+  description: Chromosome to analyze. Must match name in dataframes.
+  synonyms:
+  - --chrom
+  args: !SimpleFlagArg
+    name: CHROM
+  optional: true
+- !Flag
+  description: Sample ID or other identifier to be used in naming
+  synonyms:
+  - --sample_id
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+  optional: true
+- !Flag
+  description: Full path to and prefix of desired output plot
+  synonyms:
+  - --output_prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: Marker size in matplotlib. Default is 10.
+  synonyms:
+  - --marker_size
+  args: !SimpleFlagArg
+    name: MARKER_SIZE
+  optional: true
+- !Flag
+  description: "Transparency of markers. Alpha in matplotlib. Default\nis 0.5"
+  synonyms:
+  - --marker_transparency
+  - -mt
+  args: !SimpleFlagArg
+    name: MARKER_TRANSPARENCY
+  optional: true
+- !Flag
+  description: "Divide all coordinates by this value.Default is\n1000000, which will\
+    \ plot everything in megabases."
+  synonyms:
+  - --coordinate_scale
+  args: !SimpleFlagArg
+    name: COORDINATE_SCALE
+  optional: true
+- !Flag
+  description: "If 'auto', will allow matplotlib to automatically\ndetermine limit.\
+    \ Otherwise, will set the y axis\nminimum to the value provided (int or float)"
+  synonyms:
+  - --y_min
+  args: !SimpleFlagArg
+    name: Y_MIN
+  optional: true
+- !Flag
+  description: "If 'auto', will allow matplotlib to automatically\ndetermine limit.\
+    \ Otherwise, will set the y axis\nmaximum to the value provided (int or float)"
+  synonyms:
+  - --y_max
+  args: !SimpleFlagArg
+    name: Y_MAX
+  optional: true
+- !Flag
+  description: "Max value on x axis. We recommend you use the\nchromosome length."
+  synonyms:
+  - --x_limit
+  args: !SimpleFlagArg
+    name: X_LIMIT
+  optional: true
+- !Flag
+  description: "Include flag to plot the absolute value of the log of\nthe depth difference\
+    \ *IN THE DIRECTION OF THE\nDIFFERENCE*. For exampe, if the difference is 2, this\n\
+    would plot that value as abs(log10(2)), while if the\ndifference is -2, this would\
+    \ plot that value as\n-abs(log10(2)). This allows the sign of the difference\n\
+    to remain intact, while controlling for taking the log\nof negative numbers or\
+    \ values between 0 and 1.\n"
+  synonyms:
+  - --log_transform_depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --after
+  args: !SimpleFlagArg
+    name: AFTER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: plot_window_differences [-h] [--before BEFORE] [--after AFTER]\n\
+  \                               [--color COLOR] [--chrom CHROM]\n              \
+  \                 [--sample_id SAMPLE_ID]\n                               [--output_prefix\
+  \ OUTPUT_PREFIX]\n                               [--marker_size MARKER_SIZE]\n \
+  \                              [--marker_transparency MARKER_TRANSPARENCY]\n   \
+  \                            [--coordinate_scale COORDINATE_SCALE]\n           \
+  \                    [--y_min Y_MIN] [--y_max Y_MAX]\n                         \
+  \      [--x_limit X_LIMIT] [--log_transform_depth]\n\nThis script takes two dataframes\
+  \ output by XYalign's BAM_ANALYSIS module and\nplots the difference in depth and\
+  \ mapq for a given chromosome. This was\ndesigned to plot these metrics before and\
+  \ after XYalign processing on the same\nsample, but could conceivably be used for\
+  \ other purposes.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --before BEFORE       Full path to dataframe 1 (will be treated)\
+  \ as 'before'\n                        condition.\n  --after AFTER         Full\
+  \ path to dataframe 2 (will be treated) as 'after'\n                        condition.\n\
+  \  --color COLOR         Color of points to use. Consult matplotlib\n          \
+  \              documentation for available options.\n  --chrom CHROM         Chromosome\
+  \ to analyze. Must match name in dataframes.\n  --sample_id SAMPLE_ID\n        \
+  \                Sample ID or other identifier to be used in naming\n  --output_prefix\
+  \ OUTPUT_PREFIX\n                        Full path to and prefix of desired output\
+  \ plot\n  --marker_size MARKER_SIZE\n                        Marker size in matplotlib.\
+  \ Default is 10.\n  --marker_transparency MARKER_TRANSPARENCY, -mt MARKER_TRANSPARENCY\n\
+  \                        Transparency of markers. Alpha in matplotlib. Default\n\
+  \                        is 0.5\n  --coordinate_scale COORDINATE_SCALE\n       \
+  \                 Divide all coordinates by this value.Default is\n            \
+  \            1000000, which will plot everything in megabases.\n  --y_min Y_MIN\
+  \         If 'auto', will allow matplotlib to automatically\n                  \
+  \      determine limit. Otherwise, will set the y axis\n                       \
+  \ minimum to the value provided (int or float)\n  --y_max Y_MAX         If 'auto',\
+  \ will allow matplotlib to automatically\n                        determine limit.\
+  \ Otherwise, will set the y axis\n                        maximum to the value provided\
+  \ (int or float)\n  --x_limit X_LIMIT     Max value on x axis. We recommend you\
+  \ use the\n                        chromosome length.\n  --log_transform_depth\n\
+  \                        Include flag to plot the absolute value of the log of\n\
+  \                        the depth difference *IN THE DIRECTION OF THE\n       \
+  \                 DIFFERENCE*. For exampe, if the difference is 2, this\n      \
+  \                  would plot that value as abs(log10(2)), while if the\n      \
+  \                  difference is -2, this would plot that value as\n           \
+  \             -abs(log10(2)). This allows the sign of the difference\n         \
+  \               to remain intact, while controlling for taking the log\n       \
+  \                 of negative numbers or values between 0 and 1.\n"
+generated_using:
+- --help

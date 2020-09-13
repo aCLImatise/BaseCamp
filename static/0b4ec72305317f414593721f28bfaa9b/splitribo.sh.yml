@@ -1,0 +1,61 @@
+!Command
+command:
+- splitribo.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified January 22, 2020\n\nDescription:\
+  \  Splits a file of various rRNAs into one file per type\n(16S, 18S, 5S, 23s).\n\
+  \nUsage:  splitribo.sh in=<file,file> out=<pattern>\n\nStandard parameters:\nin=<file>\
+  \       Input file.\nout=<pattern>   Output file pattern, such as out_#.fa.  The\
+  \ # symbol is\n                required and will be substituted by the type name,\
+  \ such as\n                16S, to make out_16S.fa, for example.\noverwrite=f  \
+  \   (ow) Set to false to force the program to abort rather than\n              \
+  \  overwrite an existing file.\nziplevel=9      (zl) Set to 1 (lowest) through 9\
+  \ (max) to change compression\n                level; lower compression is faster.\n\
+  \ntypes=16S,18S,5S,23S,m16S,m18S,p16S\n                Align to these sequences.\
+  \  Fewer types is faster.  m16S\n                and m18S are mitochondrial; p16S\
+  \ is plastid (chloroplast).\n\nProcessing parameters:\nminid=0.59      Ignore alignments\
+  \ with identity lower than this to a \n                consensus sequences.\nrefineid=0.70\
+  \   Refine score by aligning to clade-specific consensus if\n                the\
+  \ best alignment to a universal consensus is below this.\n\nJava Parameters:\n-Xmx\
+  \            This will set Java's memory usage, overriding autodetection.\n    \
+  \            -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will\n          \
+  \      specify 200 megs. The max is typically 85% of physical memory.\n-eoom   \
+  \        This flag will cause the process to exit if an out-of-memory\n        \
+  \        exception occurs.  Requires Java 8u92+.\n-da             Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

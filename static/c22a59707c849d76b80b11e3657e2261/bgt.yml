@@ -1,0 +1,366 @@
+&id001 !Command
+command:
+- bgt
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - bgt
+  - fmf
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: fmf
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.fmf
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: condition
+    optional: true
+  named:
+  - !Flag
+    description: load the entire FMF into RAM
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only output the row name (the 1st column)
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -mn
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "fmf: invalid option -- '-'\nfmf: invalid option -- 'h'\nfmf: invalid\
+    \ option -- 'e'\nfmf: invalid option -- 'l'\nfmf: invalid option -- 'p'\nUsage:\
+    \ fmf [-mn] <in.fmf> [condition]\nOptions:\n  -m   load the entire FMF into RAM\n\
+    \  -n   only output the row name (the 1st column)\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - bgt
+  - import
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: out-prefix
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.bcf
+    optional: false
+  named:
+  - !Flag
+    description: input is VCF
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list of reference names and lengths [null]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: keep filtered variants
+    synonyms:
+    - -F
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: generate .pb1 file (not used for now)
+    synonyms:
+    - '-1'
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "import: invalid option -- '-'\nimport: invalid option -- 'h'\nimport:\
+    \ invalid option -- 'e'\nUsage: bgt import [options] <out-prefix> <in.bcf>|<in.vcf>|<in.vcf.gz>\n\
+    Options:\n  -S           input is VCF\n  -t FILE      list of reference names\
+    \ and lengths [null]\n  -F           keep filtered variants\n  -1           generate\
+    \ .pb1 file (not used for now)\n"
+  generated_using: *id002
+- !Command
+  command:
+  - bgt
+  - bcfidx
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bcf
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: minShift
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "bcfidx: invalid option -- '-'\nbcfidx: invalid option -- 'h'\nbcfidx:\
+    \ invalid option -- 'e'\nbcfidx: invalid option -- 'l'\nbcfidx: invalid option\
+    \ -- 'p'\nUsage: bgt bcfidx [-s minShift] <in.bcf>\n"
+  generated_using: *id002
+- !Command
+  command:
+  - bgt
+  - view
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bgt-prefix
+    optional: false
+  named:
+  - !Flag
+    description: samples list (,sample1,sample2 or a file or expr; see Notes below)
+      [all]
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: EXPR
+    optional: true
+  - !Flag
+    description: region [all]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: extract variants overlapping BED FILE []
+    synonyms:
+    - -B
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: exclude variants overlapping BED FILE (effective with -B)
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: process from the INT-th record (1-based) []
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: process at most INT records []
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: variant annotations in FMF (to work with -a) []
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: load variant annotations in RAM (only with -d)
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: alleles list chr:1basedPos:refLen:seq (,allele1,allele2 or a file
+      or expr) []
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: EXPR
+    optional: true
+  - !Flag
+    description: frequency filters []
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: BCF output (effective without -S/-H)
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compression level for BCF [default]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: equivalent to -bl0 (overriding -b and -l)
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: don't output sample genotypes
+    synonyms:
+    - -G
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write AC/AN to the INFO field (auto applied with -f or multipl -s)
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: show samples with a set of alleles (with -a)
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: count of haplotypes with a set of alleles (with -a)
+    synonyms:
+    - -H
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "comma-delimited list of fields to output. Accepted variables:\n\
+      AC, AN, AC#, AN#, CHROM, POS, END, REF, ALT (# for a group number)"
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "view: invalid option -- '-'\nview: invalid option -- 'h'\nUsage: bgt\
+    \ view [options] <bgt-prefix> [...]\nOptions:\n  Sample selection:\n    -s EXPR\
+    \      samples list (,sample1,sample2 or a file or expr; see Notes below) [all]\n\
+    \  Site selection:\n    -r STR       region [all]\n    -B FILE      extract variants\
+    \ overlapping BED FILE []\n    -e           exclude variants overlapping BED FILE\
+    \ (effective with -B)\n    -i INT       process from the INT-th record (1-based)\
+    \ []\n    -n INT       process at most INT records []\n    -d FILE      variant\
+    \ annotations in FMF (to work with -a) []\n    -M           load variant annotations\
+    \ in RAM (only with -d)\n    -a EXPR      alleles list chr:1basedPos:refLen:seq\
+    \ (,allele1,allele2 or a file or expr) []\n    -f STR       frequency filters\
+    \ []\n  VCF output:\n    -b           BCF output (effective without -S/-H)\n \
+    \   -l INT       compression level for BCF [default]\n    -u           equivalent\
+    \ to -bl0 (overriding -b and -l)\n    -G           don't output sample genotypes\n\
+    \    -C           write AC/AN to the INFO field (auto applied with -f or multipl\
+    \ -s)\n  Non-VCF output:\n    -S           show samples with a set of alleles\
+    \ (with -a)\n    -H           count of haplotypes with a set of alleles (with\
+    \ -a)\n    -t STR       comma-delimited list of fields to output. Accepted variables:\n\
+    \                 AC, AN, AC#, AN#, CHROM, POS, END, REF, ALT (# for a group number)\n\
+    Notes:\n  For option -s/-a, EXPR can be one of:\n    1) comma-delimited list following\
+    \ a colon/comma. e.g. -s,NA12878,NA12044\n    2) space-delimited file with the\
+    \ first column giving a sample/allele name. e.g. -s list.txt\n    3) expression\
+    \ if .spl/-d file contains metadata. e.g.: -s\"gender=='M'&&population!='CEU'\"\
+    \n  If multiple -s is specified, the AC/AN of the first group will be written\
+    \ to VCF INFO AC1/AN1,\n  the second to AC2/AN2, etc.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - bgt
+  - atomize
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bcf
+    optional: false
+  named:
+  - !Flag
+    description: BCF output
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: VCF input
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list of contig names and lengths (force -S)
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: use <M> at a multi-allelic site (override -0)
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use 0 at a multi-allelic genotype
+    synonyms:
+    - '-0'
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "atomize: invalid option -- '-'\natomize: invalid option -- 'h'\natomize:\
+    \ invalid option -- 'e'\natomize: invalid option -- 'l'\natomize: invalid option\
+    \ -- 'p'\nUsage: bgt atomize [options] <in.bcf>|<in.vcf>\nOptions:\n  -b     \
+    \  BCF output\n  -S       VCF input\n  -t FILE  list of contig names and lengths\
+    \ (force -S)\n  -M       use <M> at a multi-allelic site (override -0)\n  -0 \
+    \      use 0 at a multi-allelic genotype\n"
+  generated_using: *id002
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: bgt <command> <argument>\nCommands:\n  import       convert VCF\
+  \ to BGT\n  atomize      atomize VCF\n  view         extract from BGT\n  fmf   \
+  \       manipulate FMF files\n  bcfidx       (re)index BCF with record number index\n\
+  \  version      show version number\n"
+generated_using: []

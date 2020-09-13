@@ -1,0 +1,125 @@
+!Command
+command:
+- anvi-script-calculate-pn-ps-ratio
+positional: []
+named:
+- !Flag
+  description: and the output filename.
+  synonyms:
+  - --engine
+  args: !SimpleFlagArg
+    name: CDN
+  optional: true
+- !Flag
+  description: Filepath to the SAAV table.
+  synonyms:
+  - -a
+  - --saav-table
+  args: !SimpleFlagArg
+    name: SAAV_FILE
+  optional: true
+- !Flag
+  description: Filepath to the SCV table.
+  synonyms:
+  - -b
+  - --scv-table
+  args: !SimpleFlagArg
+    name: SCV_FILE
+  optional: true
+- !Flag
+  description: "Filepath to the contigs database used to generate\nvariability tables."
+  synonyms:
+  - -c
+  - --contigs-db
+  args: !SimpleFlagArg
+    name: CONTIGS_DB
+  optional: true
+- !Flag
+  description: "Variants (either SCVs or SAAVs) will be ignored if\nthey have a departure\
+    \ from consensus less than this\nvalue. Note: Keep in mind you may have already\n\
+    supplied this parameter during anvi-gen-variability-\nprofile. The default value\
+    \ is \"0.10\"."
+  synonyms:
+  - -j
+  - --min-departure-from-consensus
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Ignore genes with less than this number of single\ncodon variants.\
+    \ This avoids being impressed by pN/pS\nvalues of infinite, when in reality the\
+    \ gene had a\nsingle SAAV and no synonymous SCVs. The default is 4\nto ensure\
+    \ a default value with some level of\nstatistical importance."
+  synonyms:
+  - -i
+  - --minimum-num-variants
+  args: !SimpleFlagArg
+    name: MINIMUM_NUM_VARIANTS
+  optional: true
+- !Flag
+  description: "If the coverage value at a codon is less than this\namount, any SAAVs\
+    \ or SCVs associated with it will be\nignored. The default is 30."
+  synonyms:
+  - -m
+  - --min-coverage
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+  optional: true
+- !Flag
+  description: "Directory path for output files\n"
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: DIR_PATH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-calculate-pn-ps-ratio [-h] [-a SAAV_FILE] [-b SCV_FILE]\
+  \ -c\n                                         CONTIGS_DB [-j FLOAT]\n         \
+  \                                [-i MINIMUM_NUM_VARIANTS]\n                   \
+  \                      [-m MIN_COVERAGE] -o DIR_PATH\n\nThis program calculates\
+  \ for each gene the ratio of pN/pS (the metagenomic\nanalogy of dN/dS; see doi:10.1038/nature11711\
+  \ and doi:10.7717/peerj.2959)\nbased on metagenomic read recruitment, however, unlike\
+  \ standard pN/pS\ncalculations, it relies on codons rather than nucleotides for\
+  \ accurate\nestimations of synonimity.\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n\nVARIABILITY:\n  You provide two variability\
+  \ tables generated with anvi-gen-variability-\n  profile: one for SAAVs (generated\
+  \ with --engine AA) and for SCVs\n  (generated with --engine CDN). They must be\
+  \ generated with the same\n  profile and contigs database pair. To be safe, we recommended\
+  \ you use the\n  same settings during both commands except for changing --engine\
+  \ AA to\n  --engine CDN and the output filename.\n\n  -a SAAV_FILE, --saav-table\
+  \ SAAV_FILE\n                        Filepath to the SAAV table.\n  -b SCV_FILE,\
+  \ --scv-table SCV_FILE\n                        Filepath to the SCV table.\n  -c\
+  \ CONTIGS_DB, --contigs-db CONTIGS_DB\n                        Filepath to the contigs\
+  \ database used to generate\n                        variability tables.\n\nTUNABLES:\n\
+  \  Successfully tune one or more of these parameters to unlock the badge\n  'Advanced\
+  \ anvian'.\n\n  -j FLOAT, --min-departure-from-consensus FLOAT\n               \
+  \         Variants (either SCVs or SAAVs) will be ignored if\n                 \
+  \       they have a departure from consensus less than this\n                  \
+  \      value. Note: Keep in mind you may have already\n                        supplied\
+  \ this parameter during anvi-gen-variability-\n                        profile.\
+  \ The default value is \"0.10\".\n  -i MINIMUM_NUM_VARIANTS, --minimum-num-variants\
+  \ MINIMUM_NUM_VARIANTS\n                        Ignore genes with less than this\
+  \ number of single\n                        codon variants. This avoids being impressed\
+  \ by pN/pS\n                        values of infinite, when in reality the gene\
+  \ had a\n                        single SAAV and no synonymous SCVs. The default\
+  \ is 4\n                        to ensure a default value with some level of\n \
+  \                       statistical importance.\n  -m MIN_COVERAGE, --min-coverage\
+  \ MIN_COVERAGE\n                        If the coverage value at a codon is less\
+  \ than this\n                        amount, any SAAVs or SCVs associated with it\
+  \ will be\n                        ignored. The default is 30.\n\nOUTPUT:\n  The\
+  \ output of this program is a folder directory with several tables.\n\n  -o DIR_PATH,\
+  \ --output-dir DIR_PATH\n                        Directory path for output files\n"
+generated_using:
+- --help

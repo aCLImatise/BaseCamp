@@ -1,0 +1,162 @@
+&id001 !Command
+command:
+- readreduce
+positional: []
+named:
+- !Flag
+  description: direct the output to a file named OUTPUT (default=stdout)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "handle ambigous nucleotides using one of the following strategies\
+    \ (default=resolve)\nresolve: resolve ambiguities to minimize distance (e.g.R\
+    \ matches A);\naverage: average ambiguities (e.g.R-A is 0.5 A-A and 0.5 G-A);\n\
+    skip: do not include sites with ambiguous nucleotides in distance calculations;\n\
+    gapmm: a gap ('-') matched to anything other than another gap is like matching\
+    \ an N (4-fold ambig) to it;"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: AMBIGS
+  optional: true
+- !Flag
+  description: 'merge reads that match over at least this many positions (an integer
+    >0, default=100):'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+- !Flag
+  description: 'mimimum cluster size to report in output (an integer >0, default=16):'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: "if sequence name is of the form 'somethingCOUNTS_IN_NAMEinteger' then\
+    \ treat the integer as a copy number\nwhen counting reads; also output cluster\
+    \ sizes using the same separator (a character, default=':'):"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: COUNTS_IN_NAME
+  optional: true
+- !Flag
+  description: report the results to a JSON file (instead of a FASTA MSA)
+  synonyms:
+  - -j
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not report progress updates and other diagnostics to stderr
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - readreduce
+  - FASTA
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: SIZE
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: COUNTS_IN_NAME
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: OVERLAP
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: AMBIGS
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: readreduce [-h] [-o OUTPUT] [-a AMBIGS] [-l OVERLAP][-d COUNTS_IN_NAME]\
+    \ [-s SIZE] [-q] [-j] [FASTA]\nreadreduce: error: unknown argument: FASTA\n"
+  generated_using: &id002
+  - --help
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: readreduce [-h] [-o OUTPUT] [-a AMBIGS] [-l OVERLAP][-d COUNTS_IN_NAME]\
+  \ [-s SIZE] [-q] [-j] [FASTA]\n\nmerge matching (subject to ambig resolution) reads\
+  \ into clusters\n\noptional arguments:\n  -h, --help               show this help\
+  \ message and exit\n  -o OUTPUT                direct the output to a file named\
+  \ OUTPUT (default=stdout)\n  -a AMBIGS                handle ambigous nucleotides\
+  \ using one of the following strategies (default=resolve)\n                    \
+  \       resolve: resolve ambiguities to minimize distance (e.g.R matches A);\n \
+  \                          average: average ambiguities (e.g.R-A is 0.5 A-A and\
+  \ 0.5 G-A);\n                           skip: do not include sites with ambiguous\
+  \ nucleotides in distance calculations;\n                           gapmm: a gap\
+  \ ('-') matched to anything other than another gap is like matching an N (4-fold\
+  \ ambig) to it;\n  -l OVERLAP               merge reads that match over at least\
+  \ this many positions (an integer >0, default=100):\n  -s SIZE                 \
+  \ mimimum cluster size to report in output (an integer >0, default=16):\n  -d COUNTS_IN_NAME\
+  \        if sequence name is of the form 'somethingCOUNTS_IN_NAMEinteger' then treat\
+  \ the integer as a copy number\n                           when counting reads;\
+  \ also output cluster sizes using the same separator (a character, default=':'):\n\
+  \  -j                       report the results to a JSON file (instead of a FASTA\
+  \ MSA) \n  -q                       do not report progress updates and other diagnostics\
+  \ to stderr \n  FASTA                    read sequences to compare from this file\
+  \ (default=stdin)\n"
+generated_using: *id002

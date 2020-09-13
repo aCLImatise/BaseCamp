@@ -1,0 +1,105 @@
+!Command
+command:
+- bl-filter-illumina
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: filter_illumina
+  optional: false
+named:
+- !Flag
+  description: specify multiple INPUT files
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify multiple OUTPUT files. If input data are paired, these files\n\
+    contain only reads that passed for both members of the pair"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify single OUTPUT file for reads that passed for one member of\
+    \ a\npair but not the other. These reads passed the filter criteria, but\nare\
+    \ excluded from the multiple OUTPUT files specified by -o because\ntheir paired\
+    \ read did not pass"
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use FASTA output instead of FASTQ
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ascii OFFSET for the quality score (default = 33)
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: filter out reads that have a mean quality less than QUALITY
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: limit output to only the first NREADS that pass
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: remove Illumina adapter sequences
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: remove sequences with suspicious base content
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "reformat paired read ID lines by replacing everything after the first\n\
+    space, tab or / with the specified SEP followed by the input file number\n(e.g.\
+    \ '/' will use /1 as the ID suffix for the first input file, etc.)"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nusage: filter_illumina [-i INPUT ...] [-o OUTPUT ...] [-u UNPAIRED-OUTPUT]\
+  \ [-f]\n                       [-t OFFSET] [-q QUALITY] [-n NREADS] [-a] [-b] [-s\
+  \ SEP]\n\nFilters out low-quality and adapter-contaminated reads from Illumina data.\n\
+  \nIf no inputs are specified, input is read from stdin. If no outputs are\nspecified,\
+  \ stdout is used.\n\nIf multiple input files are specified, these are treated as\
+  \ paired files.\nSo if a sequence in one input is filtered, its pair is also filtered\
+  \ from\nthe same position in all other input files.\n\n  -i  specify multiple INPUT\
+  \ files\n  -o  specify multiple OUTPUT files. If input data are paired, these files\n\
+  \      contain only reads that passed for both members of the pair\n  -u  specify\
+  \ single OUTPUT file for reads that passed for one member of a\n      pair but not\
+  \ the other. These reads passed the filter criteria, but\n      are excluded from\
+  \ the multiple OUTPUT files specified by -o because \n      their paired read did\
+  \ not pass\n  -f  use FASTA output instead of FASTQ\n  -t  ascii OFFSET for the\
+  \ quality score (default = 33)\n  -q  filter out reads that have a mean quality\
+  \ less than QUALITY\n  -n  limit output to only the first NREADS that pass\n  -a\
+  \  remove Illumina adapter sequences\n  -b  remove sequences with suspicious base\
+  \ content\n  -s  reformat paired read ID lines by replacing everything after the\
+  \ first\n      space, tab or / with the specified SEP followed by the input file\
+  \ number\n      (e.g. '/' will use /1 as the ID suffix for the first input file,\
+  \ etc.)\n\nExample usage on paired-end data:\nfilter_illumina -i 1.fastq -i 2.fastq\
+  \ -o 1.filtered.fastq -o 2.filtered.fastq\n\n"
+generated_using:
+- --help

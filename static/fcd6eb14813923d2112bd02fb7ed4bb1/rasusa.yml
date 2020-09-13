@@ -1,0 +1,131 @@
+&id001 !Command
+command:
+- rasusa
+positional: []
+named:
+- !Flag
+  description: Switch on verbosity.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The desired coverage to sub-sample the reads to.
+  synonyms:
+  - -c
+  - --coverage
+  args: !SimpleFlagArg
+    name: coverage
+  optional: true
+- !Flag
+  description: "Size of the genome to calculate coverage with respect to. i.e 4.3kb,\
+    \ 7Tb, 9000,\n4.1MB etc."
+  synonyms:
+  - -g
+  - --genome-size
+  args: !SimpleFlagArg
+    name: genome-size
+  optional: true
+- !Flag
+  description: "...             The fast{a,q} file(s) to subsample. For paired Illumina\
+    \ you may either pass this\nflag twice `-i r1.fq -i r2.fq` or give two files consecutively\
+    \ `-i r1.fq r2.fq`."
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: input
+  optional: true
+- !Flag
+  description: "...           Output file(s), stdout if not present. For paired Illumina\
+    \ you may either pass\nthis flag twice `-o o1.fq -o o2.fq` or give two files consecutively\
+    \ `-o o1.fq\no2.fq`. NOTE: The order of the pairs is assumed to be the same as\
+    \ that given for\n--input. This option is required for paired input."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: output
+  optional: true
+- !Flag
+  description: Random seed to use.
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - rasusa
+  - FLAGS
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: input
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --genome-size
+    args: !SimpleFlagArg
+      name: genome-size
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --coverage
+    args: !SimpleFlagArg
+      name: coverage
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+    \ in this context\n\nUSAGE:\n    rasusa [FLAGS] [OPTIONS] --coverage <coverage>\
+    \ --genome-size <genome-size> --input <input>...\n\nFor more information try --help\n"
+  generated_using: &id002
+  - --help
+usage: []
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "rasusa 0.3.0\nRandomly subsample reads to a specified coverage.\n\nUSAGE:\n\
+  \    rasusa [FLAGS] [OPTIONS] --coverage <coverage> --genome-size <genome-size>\
+  \ --input <input>...\n\nFLAGS:\n    -h, --help       Prints help information\n \
+  \   -V, --version    Prints version information\n    -v               Switch on\
+  \ verbosity.\n\nOPTIONS:\n    -c, --coverage <coverage>          The desired coverage\
+  \ to sub-sample the reads to.\n    -g, --genome-size <genome-size>    Size of the\
+  \ genome to calculate coverage with respect to. i.e 4.3kb, 7Tb, 9000,\n        \
+  \                               4.1MB etc.\n    -i, --input <input>...         \
+  \    The fast{a,q} file(s) to subsample. For paired Illumina you may either pass\
+  \ this\n                                       flag twice `-i r1.fq -i r2.fq` or\
+  \ give two files consecutively `-i r1.fq r2.fq`.\n    -o, --output <output>... \
+  \          Output file(s), stdout if not present. For paired Illumina you may either\
+  \ pass\n                                       this flag twice `-o o1.fq -o o2.fq`\
+  \ or give two files consecutively `-o o1.fq\n                                  \
+  \     o2.fq`. NOTE: The order of the pairs is assumed to be the same as that given\
+  \ for\n                                       --input. This option is required for\
+  \ paired input.\n    -s, --seed <seed>                  Random seed to use.\n"
+generated_using: *id002

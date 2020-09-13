@@ -1,0 +1,400 @@
+!Command
+command:
+- smina
+positional:
+- !Positional
+  description: 'Scoring and minimization options:'
+  position: 0
+  name: residues
+  optional: false
+- !Positional
+  description: '--minimize_iters arg (=0)     number iterations of steepest descent;
+    default '
+  position: 1
+  name: clashes
+  optional: false
+- !Positional
+  description: --user_grid_lambda arg (=-1)  Scales user_grid and functional scoring
+  position: 0
+  name: calculations
+  optional: false
+- !Positional
+  description: --print_atom_types            Print all available atom types
+  position: 1
+  name: parameterizations
+  optional: false
+- !Positional
+  description: --out_flex arg                output file for flexible receptor residues
+  position: 0
+  name: extension
+  optional: false
+- !Positional
+  description: '--atom_term_data              embedded per-atom interaction terms
+    in output '
+  position: 1
+  name: values
+  optional: false
+- !Positional
+  description: -q [ --quiet ]                Suppress output messages
+  position: 0
+  name: redundancy
+  optional: false
+named:
+- !Flag
+  description: '[ --receptor ] arg         rigid part of the receptor (PDBQT)'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: flexible side chains, if any (PDBQT)
+  synonyms:
+  - --flex
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --ligand ] arg           ligand(s)'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "flexible side chains specified by comma\nseparated list of chain:resid"
+  synonyms:
+  - --flexres
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Ligand to use for flexdist
+  synonyms:
+  - --flexdist_ligand
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "set all side chains within specified distance\nto flexdist_ligand\
+    \ to flexible"
+  synonyms:
+  - --flexdist
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: X coordinate of the center
+  synonyms:
+  - --center_x
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Y coordinate of the center
+  synonyms:
+  - --center_y
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Z coordinate of the center
+  synonyms:
+  - --center_z
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: size in the X dimension (Angstroms)
+  synonyms:
+  - --size_x
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: size in the Y dimension (Angstroms)
+  synonyms:
+  - --size_y
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: size in the Z dimension (Angstroms)
+  synonyms:
+  - --size_z
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Ligand to use for autobox
+  synonyms:
+  - --autobox_ligand
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Amount of buffer space to add to auto-generated\nbox (default +4 on\
+    \ all six sides)"
+  synonyms:
+  - --autobox_add
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: no ligand; for sampling/minimizing flexible
+  synonyms:
+  - --no_lig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify alternative builtin scoring function
+  synonyms:
+  - --scoring
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: custom scoring function file
+  synonyms:
+  - --custom_scoring
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: custom atom type parameters file
+  synonyms:
+  - --custom_atoms
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: score provided ligand pose
+  synonyms:
+  - --score_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "local search only using autobox (you probably\nwant to use --minimize)"
+  synonyms:
+  - --local_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: energy minimization
+  synonyms:
+  - --minimize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate random poses, attempting to avoid
+  synonyms:
+  - --randomize_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use accurate line search
+  synonyms:
+  - --accurate_line
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Stop minimization before convergence conditions\nare fully met."
+  synonyms:
+  - --minimize_early_term
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: approximation (linear, spline, or exact) to use
+  synonyms:
+  - --approximation
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "approximation factor: higher results in a\nfiner-grained approximation"
+  synonyms:
+  - --factor
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "max allowed force; lower values more gently\nminimize clashing structures"
+  synonyms:
+  - --force_cap
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Autodock map file for user grid data based
+  synonyms:
+  - --user_grid
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Print all available terms with default
+  synonyms:
+  - --print_terms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --out ] arg              output file name, format taken from file'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: optionally, write log file
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: optionally write per-atom interaction term
+  synonyms:
+  - --atom_terms
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "the number of CPUs to use (the default is to\ntry to detect the number\
+    \ of CPUs or, failing\nthat, use 1)"
+  synonyms:
+  - --cpu
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: explicit random seed
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(=8)     exhaustiveness of the global search (roughly\nproportional\
+    \ to time)"
+  synonyms:
+  - --exhaustiveness
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=9)          maximum number of binding modes to generate
+  synonyms:
+  - --num_modes
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(=3)       maximum energy difference between the best\nbinding mode\
+    \ and the worst one displayed\n(kcal/mol)"
+  synonyms:
+  - --energy_range
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=1)    rmsd value used to filter final poses to remove
+  synonyms:
+  - --min_rmsd_filter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "automatically add hydrogens in ligands (on by\ndefault)"
+  synonyms:
+  - --addH
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: the above options can be put here
+  synonyms:
+  - --config
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: display usage summary with hidden options
+  synonyms:
+  - --help_hidden
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display usage summary
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: display program version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nInput:\n  -r [ --receptor ] arg         rigid part of the receptor (PDBQT)\n\
+  \  --flex arg                    flexible side chains, if any (PDBQT)\n  -l [ --ligand\
+  \ ] arg           ligand(s)\n  --flexres arg                 flexible side chains\
+  \ specified by comma \n                                separated list of chain:resid\n\
+  \  --flexdist_ligand arg         Ligand to use for flexdist\n  --flexdist arg  \
+  \              set all side chains within specified distance \n                \
+  \                to flexdist_ligand to flexible\n\nSearch space (required):\n  --center_x\
+  \ arg                X coordinate of the center\n  --center_y arg              \
+  \  Y coordinate of the center\n  --center_z arg                Z coordinate of the\
+  \ center\n  --size_x arg                  size in the X dimension (Angstroms)\n\
+  \  --size_y arg                  size in the Y dimension (Angstroms)\n  --size_z\
+  \ arg                  size in the Z dimension (Angstroms)\n  --autobox_ligand arg\
+  \          Ligand to use for autobox\n  --autobox_add arg             Amount of\
+  \ buffer space to add to auto-generated\n                                box (default\
+  \ +4 on all six sides)\n  --no_lig                      no ligand; for sampling/minimizing\
+  \ flexible \n                                residues\n\nScoring and minimization\
+  \ options:\n  --scoring arg                 specify alternative builtin scoring\
+  \ function\n  --custom_scoring arg          custom scoring function file\n  --custom_atoms\
+  \ arg            custom atom type parameters file\n  --score_only              \
+  \    score provided ligand pose\n  --local_only                  local search only\
+  \ using autobox (you probably \n                                want to use --minimize)\n\
+  \  --minimize                    energy minimization\n  --randomize_only       \
+  \       generate random poses, attempting to avoid \n                          \
+  \      clashes\n  --minimize_iters arg (=0)     number iterations of steepest descent;\
+  \ default \n                                scales with rotors and usually isn't\
+  \ sufficient\n                                for convergence\n  --accurate_line\
+  \               use accurate line search\n  --minimize_early_term         Stop minimization\
+  \ before convergence conditions\n                                are fully met.\n\
+  \  --approximation arg           approximation (linear, spline, or exact) to use\n\
+  \  --factor arg                  approximation factor: higher results in a \n  \
+  \                              finer-grained approximation\n  --force_cap arg  \
+  \             max allowed force; lower values more gently \n                   \
+  \             minimize clashing structures\n  --user_grid arg               Autodock\
+  \ map file for user grid data based \n                                calculations\n\
+  \  --user_grid_lambda arg (=-1)  Scales user_grid and functional scoring\n  --print_terms\
+  \                 Print all available terms with default \n                    \
+  \            parameterizations\n  --print_atom_types            Print all available\
+  \ atom types\n\nOutput (optional):\n  -o [ --out ] arg              output file\
+  \ name, format taken from file \n                                extension\n  --out_flex\
+  \ arg                output file for flexible receptor residues\n  --log arg   \
+  \                  optionally, write log file\n  --atom_terms arg              optionally\
+  \ write per-atom interaction term \n                                values\n  --atom_term_data\
+  \              embedded per-atom interaction terms in output \n                \
+  \                sd data\n\nMisc (optional):\n  --cpu arg                     the\
+  \ number of CPUs to use (the default is to \n                                try\
+  \ to detect the number of CPUs or, failing \n                                that,\
+  \ use 1)\n  --seed arg                    explicit random seed\n  --exhaustiveness\
+  \ arg (=8)     exhaustiveness of the global search (roughly \n                 \
+  \               proportional to time)\n  --num_modes arg (=9)          maximum number\
+  \ of binding modes to generate\n  --energy_range arg (=3)       maximum energy difference\
+  \ between the best \n                                binding mode and the worst\
+  \ one displayed \n                                (kcal/mol)\n  --min_rmsd_filter\
+  \ arg (=1)    rmsd value used to filter final poses to remove\n                \
+  \                redundancy\n  -q [ --quiet ]                Suppress output messages\n\
+  \  --addH arg                    automatically add hydrogens in ligands (on by \n\
+  \                                default)\n\nConfiguration file (optional):\n  --config\
+  \ arg                  the above options can be put here\n\nInformation (optional):\n\
+  \  --help                        display usage summary\n  --help_hidden        \
+  \         display usage summary with hidden options\n  --version               \
+  \      display program version\n\n"
+generated_using:
+- --help

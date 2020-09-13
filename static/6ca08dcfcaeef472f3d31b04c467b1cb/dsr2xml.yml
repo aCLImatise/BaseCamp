@@ -1,0 +1,205 @@
+!Command
+command:
+- dsr2xml
+positional:
+- !Positional
+  description: DICOM SR input filename to be converted
+  position: 0
+  name: dsrfile-in
+  optional: false
+- !Positional
+  description: 'XML output filename (default: stdout)'
+  position: 1
+  name: xmlfile-out
+  optional: false
+named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet                 quiet mode, print no warnings and errors
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --verbose               verbose mode, print processing details
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --debug                 debug mode, print debug information
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-level             [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
+  synonyms:
+  - -ll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-config            [f]ilename: string\nuse config file f for\
+    \ the logger"
+  synonyms:
+  - -lc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --read-dataset          read data set without file meta information
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =  --read-xfer-auto        use TS recognition (default)
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore TS specified in the file meta header
+  synonyms:
+  - -td
+  - --read-xfer-detect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read with explicit VR little endian TS
+  synonyms:
+  - -te
+  - --read-xfer-little
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read with explicit VR big endian TS
+  synonyms:
+  - -tb
+  - --read-xfer-big
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read with implicit VR little endian TS
+  synonyms:
+  - -ti
+  - --read-xfer-implicit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: accept unknown/missing relationship type
+  synonyms:
+  - -Er
+  - --unknown-relationship
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "accept invalid content item value\n(e.g. violation of VR or VM definition)"
+  synonyms:
+  - -Ev
+  - --invalid-item-value
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore relationship content constraints
+  synonyms:
+  - -Ec
+  - --ignore-constraints
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not abort on content item errors, just warn\n(e.g. missing value\
+    \ type specific attributes)"
+  synonyms:
+  - -Ee
+  - --ignore-item-errors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip invalid content items (incl. sub-tree)
+  synonyms:
+  - -Ei
+  - --skip-invalid-items
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable check for VR-conformant string values
+  synonyms:
+  - -Dv
+  - --disable-vr-checker
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: --help                  print this help text and exit
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "$dcmtk: dsr2xml v3.6.1 2016-11-02 $\n\ndsr2xml: Convert DICOM SR file\
+  \ and data set to XML\nusage: dsr2xml [options] dsrfile-in [xmlfile-out]\n\nparameters:\n\
+  \  dsrfile-in                     DICOM SR input filename to be converted\n  xmlfile-out\
+  \                    XML output filename (default: stdout)\n\ngeneral options:\n\
+  \  -h     --help                  print this help text and exit\n         --version\
+  \               print version information and exit\n         --arguments       \
+  \      print expanded command line arguments\n  -q     --quiet                 quiet\
+  \ mode, print no warnings and errors\n  -v     --verbose               verbose mode,\
+  \ print processing details\n  -d     --debug                 debug mode, print debug\
+  \ information\n  -ll    --log-level             [l]evel: string constant\n     \
+  \                            (fatal, error, warn, info, debug, trace)\n        \
+  \                         use level l for the logger\n  -lc    --log-config    \
+  \        [f]ilename: string\n                                 use config file f\
+  \ for the logger\ninput options:\n  input file format:\n    +f   --read-file   \
+  \          read file format or data set (default)\n    +fo  --read-file-only   \
+  \     read file format only\n    -f   --read-dataset          read data set without\
+  \ file meta information\n  input transfer syntax:\n    -t=  --read-xfer-auto   \
+  \     use TS recognition (default)\n    -td  --read-xfer-detect      ignore TS specified\
+  \ in the file meta header\n    -te  --read-xfer-little      read with explicit VR\
+  \ little endian TS\n    -tb  --read-xfer-big         read with explicit VR big endian\
+  \ TS\n    -ti  --read-xfer-implicit    read with implicit VR little endian TS\n\
+  processing options:\n  error handling:\n    -Er  --unknown-relationship  accept\
+  \ unknown/missing relationship type\n    -Ev  --invalid-item-value    accept invalid\
+  \ content item value\n                                 (e.g. violation of VR or\
+  \ VM definition)\n    -Ec  --ignore-constraints    ignore relationship content constraints\n\
+  \    -Ee  --ignore-item-errors    do not abort on content item errors, just warn\n\
+  \                                 (e.g. missing value type specific attributes)\n\
+  \    -Ei  --skip-invalid-items    skip invalid content items (incl. sub-tree)\n\
+  \    -Dv  --disable-vr-checker    disable check for VR-conformant string values\n\
+  \  specific character set:\n    +Cr  --charset-require       require declaration\
+  \ of ext. charset (default)\n    +Ca  --charset-assume        [c]harset: string\n\
+  \                                 assume charset c if no extended charset declared\n\
+  \    +Cc  --charset-check-all     check all data elements with string values\n \
+  \                                (default: only PN, LO, LT, SH, ST, UC and UT)\n\
+  \    +U8  --convert-to-utf8       convert all element values that are affected\n\
+  \                                 by Specific Character Set (0008,0005) to UTF-8\n\
+  output options:\n  encoding:\n    +Ea  --attr-all              encode everything\
+  \ as XML attribute\n                                 (shortcut for +Ec, +Er, +Ev\
+  \ and +Et)\n    +Ec  --attr-code             encode code value, coding scheme designator\n\
+  \                                 and coding scheme version as XML attribute\n \
+  \   +Er  --attr-relationship     encode relationship type as XML attribute\n   \
+  \ +Ev  --attr-value-type       encode value type as XML attribute\n    +Et  --attr-template-id\
+  \      encode template id as XML attribute\n    +Ee  --template-envelope     template\
+  \ element encloses content items\n                                 (requires +Wt,\
+  \ implies +Et)\n  XML structure:\n    +Xs  --add-schema-reference  add reference\
+  \ to XML Schema \"dsr2xml.xsd\"\n                                 (not with +Ea,\
+  \ +Ec, +Er, +Ev, +Et, +Ee, +We)\n    +Xn  --use-xml-namespace     add XML namespace\
+  \ declaration to root element\n  writing:\n    +We  --write-empty-tags      write\
+  \ all tags even if their value is empty\n    +Wi  --write-item-id         always\
+  \ write item identifier\n    +Wt  --write-template-id     write template identification\
+  \ information\n\n"
+generated_using:
+- --help

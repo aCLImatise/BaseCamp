@@ -1,0 +1,101 @@
+!Command
+command:
+- fetchOrfs.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FASTA
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: OUT
+  optional: true
+named:
+- !Flag
+  description: 'Threads to run (default: 1)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: "[FASTA], --fasta [FASTA]\nThe fasta file to operate on. (default:\
+    \ None)"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[OUT], --out [OUT]\nThe file to write results to. Leave blank for\
+    \ stdout,\n(default: <_io.TextIOWrapper name='<stdout>' mode='w'\nencoding='utf-8'>)"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum ORF length in amino acids. (default: 50)'
+  synonyms:
+  - --min
+  args: !SimpleFlagArg
+    name: MIN
+  optional: true
+- !Flag
+  description: 'Search both strands for ORFs. (default: False)'
+  synonyms:
+  - --both-strands
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output ORFs starting with amino acids other than MET\n(default: False)"
+  synonyms:
+  - --no-met-start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Truncate leading amino acids up to MET (default:\nFalse)"
+  synonyms:
+  - --from-met
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Truncate leading amino acids up to MET, but keep the\nuntruncated\
+    \ version as well. (default: False)\n"
+  synonyms:
+  - --from-met-keep
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: fetchOrfs.py [-h] [-p P] -f [FASTA] [-o [OUT]] [--min MIN]\n  \
+  \                  [--both-strands] [--no-met-start] [--from-met]\n            \
+  \        [--from-met-keep]\n\nThis script will accept a given nucleotide fasta file\
+  \ and output found ORFs.\nORFs are annotated by which stop codon they are a part\
+  \ of. As in, ORF 3 is\nannotated as the 3rd sequence if the translated sequence\
+  \ is divided by stop\ncodons. This is prevent ambiguity with differing minimum lengths\
+  \ of ORFs.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -p P                  Threads to run (default: 1)\n  -f [FASTA], --fasta\
+  \ [FASTA]\n                        The fasta file to operate on. (default: None)\n\
+  \  -o [OUT], --out [OUT]\n                        The file to write results to.\
+  \ Leave blank for stdout,\n                        (default: <_io.TextIOWrapper\
+  \ name='<stdout>' mode='w'\n                        encoding='utf-8'>)\n  --min\
+  \ MIN             Minimum ORF length in amino acids. (default: 50)\n  --both-strands\
+  \        Search both strands for ORFs. (default: False)\n  --no-met-start      \
+  \  Output ORFs starting with amino acids other than MET\n                      \
+  \  (default: False)\n  --from-met            Truncate leading amino acids up to\
+  \ MET (default:\n                        False)\n  --from-met-keep       Truncate\
+  \ leading amino acids up to MET, but keep the\n                        untruncated\
+  \ version as well. (default: False)\n"
+generated_using:
+- --help

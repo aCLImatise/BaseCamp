@@ -1,0 +1,74 @@
+!Command
+command:
+- count-median.py
+positional:
+- !Positional
+  description: Count k-mers summary stats for sequences
+  position: 0
+  name: output_summary_filename
+  optional: false
+- !Positional
+  description: input k-mer countgraph filename
+  position: 0
+  name: input_count_graph_filename
+  optional: false
+- !Positional
+  description: input FAST[AQ] sequence filename
+  position: 1
+  name: input_sequence_filename
+  optional: false
+- !Positional
+  description: output summary filename
+  position: 2
+  name: output_summary_filename
+  optional: false
+named:
+- !Flag
+  description: print citation information
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Overwrite output file if it exists (default: False)'
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: count-median.py [--version] [--info] [-h] [-f]\n              \
+  \         input_count_graph_filename input_sequence_filename\n                 \
+  \      output_summary_filename\n\nCount k-mers summary stats for sequences\n\npositional\
+  \ arguments:\n  input_count_graph_filename\n                        input k-mer\
+  \ countgraph filename\n  input_sequence_filename\n                        input\
+  \ FAST[AQ] sequence filename\n  output_summary_filename\n                      \
+  \  output summary filename\n\noptional arguments:\n  --version             show\
+  \ program's version number and exit\n  --info                print citation information\n\
+  \  -h, --help            show this help message and exit\n  -f, --force        \
+  \   Overwrite output file if it exists (default: False)\n\nCount the median/avg\
+  \ k-mer abundance for each sequence in the input file, based\non the k-mer counts\
+  \ in the given k-mer countgraph.  Can be used to estimate\nexpression levels (mRNAseq)\
+  \ or coverage (genomic/metagenomic).\n\nThe output file contains sequence id, median,\
+  \ average, stddev, and seq length,\nin comma-separated value (CSV) format.\n\nExample:\n\
+  \n    load-into-counting.py counts tests/test-data/test-reads.fq.gz\n    count-median.py\
+  \ counts tests/test-data/test-reads.fq.gz medians.txt\n\nNOTE: All 'N's in the input\
+  \ sequences are converted to 'A's.\n"
+generated_using:
+- --help

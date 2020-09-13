@@ -1,0 +1,80 @@
+!Command
+command:
+- filterbytaxa.sh
+positional:
+- !Positional
+  description: Only needed if accesions will be used; requires ~45GB
+  position: 0
+  name: files.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified June 18, 2018\n\nDescription:\
+  \   Filters sequences according to their taxonomy,\nas determined by the sequence\
+  \ name.  Sequences should\nbe labeled with a gi number, NCBI taxID, or species name.\n\
+  \nUsage:  filterbytaxa.sh in=<input file> out=<output file> tree=<tree file> table=<table\
+  \ file> ids=<numbers> level=<name or number>\n\nI/O parameters:\nin=<file>     \
+  \  Primary input, or read 1 input.\nout=<file>      Primary output, or read 1 output.\n\
+  results=<file>  Optional; prints a list indicating which taxa were retained.\noverwrite=f\
+  \     (ow) Set to false to force the program to abort rather than\n            \
+  \    overwrite an existing file.\nshowspeed=t     (ss) Set to 'f' to suppress display\
+  \ of processing speed.\nziplevel=2      (zl) Set to 1 (lowest) through 9 (max) to\
+  \ change compression\n                level; lower compression is faster.\n\nProcessing\
+  \ parameters:\nlevel=          Taxonomic level, such as phylum.  Filtering will\
+  \ operate on\n                sequences within the same taxonomic level as specified\
+  \ ids.\n                If not set, only matches to a node or its descendants will\
+  \ \n                be considered.\nreqlevel=       Require nodes to have ancestors\
+  \ at these levels.  For example,\n                reqlevel=species,genus would ban\
+  \ nodes that are not defined\n                at both the species and genus levels.\n\
+  ids=            Comma-delimited list of NCBI numeric IDs.  Can also be a\n     \
+  \           file with one taxID per line.  Names (like bacteria) are also\n    \
+  \            acceptable.\ninclude=f       'f' will discard filtered sequences, 't'\
+  \ will keep them.\nbesteffort=f    Intended for include mode.  Iteratively increases\
+  \ level\n                while the input file has no hits to the tax list.\ntree=<file>\
+  \     Specify a TaxTree file like tree.taxtree.gz.  \n                On Genepool,\
+  \ use 'auto'.\ngi=<file>       Specify a gitable file like gitable.int1d.gz. Only\
+  \ needed\n                if gi numbers will be used.  On Genepool, use 'auto'.\n\
+  accession=      Specify one or more comma-delimited NCBI accession to taxid\n  \
+  \              files.  Only needed if accesions will be used; requires ~45GB\n \
+  \               of memory.  On Genepool, use 'auto'.\nprintnodes=t    Print the\
+  \ names of nodes added to the filter.\nrequirepresent=t   Crash with an error message\
+  \ if a header cannot be resolved\n                   to a taxid.\n\nString-matching\
+  \ parameters:\nregex=          Filter names matching this Java regular expression.\n\
+  contains=       Filter names containing this substring (case-insensitive).\n\n*\
+  \ Note *\nTree and table files are in /global/projectb/sandbox/gaag/bbtools/tax\n\
+  For non-Genepool users, or to make new ones, use taxtree.sh and gitable.sh\n\nJava\
+  \ Parameters:\n-Xmx            This will set Java's memory usage, overriding autodetection.\n\
+  \                -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will\n      \
+  \          specify 200 megs. The max is typically 85% of physical memory.\n-eoom\
+  \           This flag will cause the process to exit if an out-of-memory\n     \
+  \           exception occurs.  Requires Java 8u92+.\n-da             Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

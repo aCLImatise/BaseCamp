@@ -1,0 +1,492 @@
+!Command
+command:
+- abra2
+positional: []
+named:
+- !Flag
+  description: "Set mapq for alignments that map\nequally well to reference and an\n\
+    ABRA generated contig.  default of\n-1 disables (default: -1)"
+  synonyms:
+  - --amq
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "Contig anchor [M_bases_at_contig_edge,\nmax_mismatches_near_edge]\
+    \ (default:\n10,2)"
+  synonyms:
+  - --ca
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compression level of output bam file\n(s) (default: 5)"
+  synonyms:
+  - --cl
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "Use positional consensus sequence when\naligning high quality soft\
+    \ clipping"
+  synonyms:
+  - --cons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Optional file to which assembled\ncontigs are written"
+  synonyms:
+  - --contigs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Max read move distance (default: 1000)'
+  synonyms:
+  - --dist
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "If specified, only reprocess regions\nthat contain at least one contig\n\
+    containing an indel or splice\n(experimental)"
+  synonyms:
+  - --gc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, use the GKL Intel\nDeflater."
+  synonyms:
+  - --gkl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: GTF file defining exons and transcripts
+  synonyms:
+  - --gtf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Required list of input sam or bam file\n(s) separated by comma"
+  synonyms:
+  - --in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "VCF containing known (or suspected)\nvariant sites.  Very large files\n\
+    should be avoided."
+  synonyms:
+  - --in-vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable BAM index generation when\noutputting sorted alignments (may\n\
+    require additonal memory)"
+  synonyms:
+  - --index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Splice junctions definition file
+  synonyms:
+  - --junctions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not delete the temporary directory
+  synonyms:
+  - --keep-tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Optional assembly kmer size(delimit\nwith commas if multiple sizes\n\
+    specified)"
+  synonyms:
+  - --kmer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Logging level (trace,debug,info,warn,\nerror) (default: info)"
+  synonyms:
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Max assembled contigs (default: 64)'
+  synonyms:
+  - --mac
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "Regions with average depth exceeding\nthis value will be downsampled\n\
+    (default: 1000)"
+  synonyms:
+  - --mad
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "[Integer]                        Minimum mapping quality for a read\
+    \ to\nbe used in assembly and be eligible\nfor realignment (default: 20)"
+  synonyms:
+  - --mapq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[Integer]                        Maximum pre-pruned nodes in regional\n\
+    assembly (default: 150000)"
+  synonyms:
+  - --maxn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[Integer]                         Minimum base quality for inclusion\
+    \ in\nassembly.  This value is compared\nagainst the sum of base qualities\nper\
+    \ kmer position (default: 20)"
+  synonyms:
+  - --mbq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[Integer]                         Assembly minimum contig length\n\
+    (default: -1)"
+  synonyms:
+  - --mcl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Max number of cached reads per sample\nper thread (default: 1000000)"
+  synonyms:
+  - --mcr
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "Min edge pruning ratio.  Default value\nis appropriate for relatively\n\
+    sensitive somatic cases.  May be\nincreased for improved speed in\ngermline only\
+    \ cases. (default: 0.01)"
+  synonyms:
+  - --mer
+  args: !SimpleFlagArg
+    name: Double
+  optional: true
+- !Flag
+  description: "Max allowed mismatch rate when mapping\nreads back to contigs (default:\
+    \ 0.05)"
+  synonyms:
+  - --mmr
+  args: !SimpleFlagArg
+    name: Double
+  optional: true
+- !Flag
+  description: "Assembly minimum node frequency\n(default: 1)"
+  synonyms:
+  - --mnf
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "Reads with noise score exceeding this\nvalue are not remapped.\nnumMismatches+(numIndels*2)\
+    \ <\nreadLength*mnr (default: 0.1)"
+  synonyms:
+  - --mrn
+  args: !SimpleFlagArg
+    name: Double
+  optional: true
+- !Flag
+  description: "Regions containing more reads than\nthis value are not processed.\
+    \  Use\n-1 to disable. (default: 1000000)"
+  synonyms:
+  - --mrr
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "Max reads to keep in memory per sample\nduring the sort phase.  When\
+    \ this\nvalue is exceeded, sort spills to\ndisk (default: 1000000)"
+  synonyms:
+  - --msr
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "If specified, do not update alignments\nfor reads that have a complex\
+    \ indel\nat the read edge.  i.e. Do not allow\nalignments like: 90M10D10I"
+  synonyms:
+  - --no-edge-ci
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, do not allow adjacent N-\nD-N cigar elements"
+  synonyms:
+  - --no-ndn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not attempt to sort final output
+  synonyms:
+  - --nosort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Required list of output sam or bam file\n(s) separated by comma"
+  synonyms:
+  - --out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum read candidate fraction for\ntriggering assembly (default:\
+    \ 0.01)"
+  synonyms:
+  - --rcf
+  args: !SimpleFlagArg
+    name: Double
+  optional: true
+- !Flag
+  description: Genome reference location
+  synonyms:
+  - --ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip assembly
+  synonyms:
+  - --sa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Soft clip contig args [max_contigs,\nmin_base_qual,frac_high_qual_bases,\n\
+    min_soft_clip_len] (default:\n16,13,80,15)"
+  synonyms:
+  - --sc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Scoring used for contig alignments\n(match, mismatch_penalty,\ngap_open_penalty,\n\
+    gap_extend_penalty) (default:\n8,32,48,1)"
+  synonyms:
+  - --sga
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is single end
+  synonyms:
+  - --single
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If no target specified, skip\nrealignment of chromosomes matching\n\
+    specified regex.  Skipped reads are\noutput without modification.\nSpecify none\
+    \ to disable. (default:\nGL.*|hs37d5|chr.*random|chrUn.\n*|chrEBV|CMV|HBV|HCV.*|HIV.\n\
+    *|KSHV|HTLV.*|MCV|SV40|HPV.*)"
+  synonyms:
+  - --skip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not use observed indels in original\nalignments to generate contigs"
+  synonyms:
+  - --sobs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip usage of soft clipped sequences\nas putative contigs"
+  synonyms:
+  - --ssc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not use unmapped reads anchored by\nmate to trigger assembly. \
+    \ These\nreads are still eligible to\ncontribute to assembly"
+  synonyms:
+  - --sua
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "BED-like file containing target\nregions with per region kmer sizes\n\
+    in 4th column"
+  synonyms:
+  - --target-kmers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: BED file containing target regions
+  synonyms:
+  - --targets
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of threads (default: 4)'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: Integer
+  optional: true
+- !Flag
+  description: "Set the temp directory (overrides java.\nio.tmpdir)"
+  synonyms:
+  - --tmpdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, use junction permuations\nas contigs (Experimental -\
+    \ may use\nexcessive memory and compute times)"
+  synonyms:
+  - --ujac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Unset duplicate flag
+  synonyms:
+  - --undup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Processing window size and overlap\n(size,overlap) (default: 400,200)"
+  synonyms:
+  - --ws
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Picked up JAVA_TOOL_OPTIONS: -Xmx4G\nINFO\tWed Sep 09 17:29:03 GMT 2020\t\
+  Abra version: 2.22\nINFO\tWed Sep 09 17:29:03 GMT 2020\tAbra params: [/usr/local/share/abra2-2.22-0/abra2.jar\
+  \ --help]\n'help' is not a recognized option\nOption                           \
+  \       Description                            \n------                        \
+  \          -----------                            \n--amq <Integer>            \
+  \             Set mapq for alignments that map       \n                        \
+  \                  equally well to reference and an     \n                     \
+  \                     ABRA generated contig.  default of   \n                  \
+  \                        -1 disables (default: -1)            \n--ca           \
+  \                         Contig anchor [M_bases_at_contig_edge, \n            \
+  \                              max_mismatches_near_edge] (default:  \n         \
+  \                                 10,2)                                \n--cl <Integer>\
+  \                          Compression level of output bam file   \n           \
+  \                               (s) (default: 5)                     \n--cons  \
+  \                                Use positional consensus sequence when \n     \
+  \                                     aligning high quality soft clipping  \n--contigs\
+  \                               Optional file to which assembled       \n      \
+  \                                    contigs are written                  \n--dist\
+  \ <Integer>                        Max read move distance (default: 1000) \n--gc\
+  \                                    If specified, only reprocess regions   \n \
+  \                                         that contain at least one contig     \n\
+  \                                          containing an indel or splice       \
+  \ \n                                          (experimental)                   \
+  \    \n--gkl                                   If specified, use the GKL Intel \
+  \       \n                                          Deflater.                  \
+  \          \n--gtf                                   GTF file defining exons and\
+  \ transcripts\n--in                                    Required list of input sam\
+  \ or bam file \n                                          (s) separated by comma\
+  \               \n--in-vcf                                VCF containing known (or\
+  \ suspected)    \n                                          variant sites.  Very\
+  \ large files     \n                                          should be avoided.\
+  \                   \n--index                                 Enable BAM index generation\
+  \ when       \n                                          outputting sorted alignments\
+  \ (may    \n                                          require additonal memory)\
+  \            \n--junctions                             Splice junctions definition\
+  \ file       \n--keep-tmp                              Do not delete the temporary\
+  \ directory  \n--kmer                                  Optional assembly kmer size(delimit\
+  \    \n                                          with commas if multiple sizes \
+  \       \n                                          specified)                 \
+  \          \n--log                                   Logging level (trace,debug,info,warn,\
+  \  \n                                          error) (default: info)          \
+  \     \n--mac <Integer>                         Max assembled contigs (default:\
+  \ 64)    \n--mad <Integer>                         Regions with average depth exceeding\
+  \   \n                                          this value will be downsampled \
+  \      \n                                          (default: 1000)             \
+  \         \n--mapq [Integer]                        Minimum mapping quality for\
+  \ a read to  \n                                          be used in assembly and\
+  \ be eligible  \n                                          for realignment (default:\
+  \ 20)        \n--maxn [Integer]                        Maximum pre-pruned nodes\
+  \ in regional   \n                                          assembly (default: 150000)\
+  \           \n--mbq [Integer]                         Minimum base quality for inclusion\
+  \ in  \n                                          assembly.  This value is compared\
+  \    \n                                          against the sum of base qualities\
+  \    \n                                          per kmer position (default: 20)\
+  \      \n--mcl [Integer]                         Assembly minimum contig length\
+  \         \n                                          (default: -1)            \
+  \            \n--mcr <Integer>                         Max number of cached reads\
+  \ per sample  \n                                          per thread (default: 1000000)\
+  \        \n--mer <Double>                          Min edge pruning ratio.  Default\
+  \ value \n                                          is appropriate for relatively\
+  \        \n                                          sensitive somatic cases.  May\
+  \ be     \n                                          increased for improved speed\
+  \ in      \n                                          germline only cases. (default:\
+  \ 0.01) \n--mmr <Double>                          Max allowed mismatch rate when\
+  \ mapping \n                                          reads back to contigs (default:\
+  \ 0.05)\n--mnf <Integer>                         Assembly minimum node frequency\
+  \        \n                                          (default: 1)              \
+  \           \n--mrn <Double>                          Reads with noise score exceeding\
+  \ this  \n                                          value are not remapped.    \
+  \          \n                                          numMismatches+(numIndels*2)\
+  \ <        \n                                          readLength*mnr (default:\
+  \ 0.1)        \n--mrr <Integer>                         Regions containing more\
+  \ reads than     \n                                          this value are not\
+  \ processed.  Use   \n                                          -1 to disable. (default:\
+  \ 1000000)    \n--msr <Integer>                         Max reads to keep in memory\
+  \ per sample \n                                          during the sort phase.\
+  \  When this    \n                                          value is exceeded, sort\
+  \ spills to    \n                                          disk (default: 1000000)\
+  \              \n--no-edge-ci                            If specified, do not update\
+  \ alignments \n                                          for reads that have a complex\
+  \ indel  \n                                          at the read edge.  i.e. Do\
+  \ not allow \n                                          alignments like: 90M10D10I\
+  \           \n--no-ndn                                If specified, do not allow\
+  \ adjacent N- \n                                          D-N cigar elements   \
+  \                \n--nosort                                Do not attempt to sort\
+  \ final output    \n--out                                   Required list of output\
+  \ sam or bam file\n                                          (s) separated by comma\
+  \               \n--rcf <Double>                          Minimum read candidate\
+  \ fraction for    \n                                          triggering assembly\
+  \ (default: 0.01)  \n--ref                                   Genome reference location\
+  \              \n--sa                                    Skip assembly         \
+  \                 \n--sc                                    Soft clip contig args\
+  \ [max_contigs,    \n                                          min_base_qual,frac_high_qual_bases,\
+  \  \n                                          min_soft_clip_len] (default:    \
+  \     \n                                          16,13,80,15)                 \
+  \        \n--sga                                   Scoring used for contig alignments\
+  \     \n                                          (match, mismatch_penalty,    \
+  \        \n                                          gap_open_penalty,         \
+  \           \n                                          gap_extend_penalty) (default:\
+  \        \n                                          8,32,48,1)                \
+  \           \n--single                                Input is single end      \
+  \              \n--skip                                  If no target specified,\
+  \ skip           \n                                          realignment of chromosomes\
+  \ matching  \n                                          specified regex.  Skipped\
+  \ reads are  \n                                          output without modification.\
+  \         \n                                          Specify none to disable. (default:\
+  \   \n                                          GL.*|hs37d5|chr.*random|chrUn. \
+  \      \n                                          *|chrEBV|CMV|HBV|HCV.*|HIV. \
+  \         \n                                          *|KSHV|HTLV.*|MCV|SV40|HPV.*)\
+  \        \n--sobs                                  Do not use observed indels in\
+  \ original \n                                          alignments to generate contigs\
+  \       \n--ssc                                   Skip usage of soft clipped sequences\
+  \   \n                                          as putative contigs            \
+  \      \n--sua                                   Do not use unmapped reads anchored\
+  \ by  \n                                          mate to trigger assembly.  These\
+  \     \n                                          reads are still eligible to  \
+  \        \n                                          contribute to assembly    \
+  \           \n--target-kmers                          BED-like file containing target\
+  \        \n                                          regions with per region kmer\
+  \ sizes   \n                                          in 4th column            \
+  \            \n--targets                               BED file containing target\
+  \ regions     \n--threads <Integer>                     Number of threads (default:\
+  \ 4)         \n--tmpdir                                Set the temp directory (overrides\
+  \ java.\n                                          io.tmpdir)                  \
+  \         \n--ujac                                  If specified, use junction permuations\
+  \ \n                                          as contigs (Experimental - may use\
+  \   \n                                          excessive memory and compute times)\
+  \  \n--undup                                 Unset duplicate flag              \
+  \     \n--ws                                    Processing window size and overlap\
+  \     \n                                          (size,overlap) (default: 400,200)\
+  \    \nException in thread \"main\" joptsimple.UnrecognizedOptionException: 'help'\
+  \ is not a recognized option\n\tat joptsimple.OptionException.unrecognizedOption(OptionException.java:88)\n\
+  \tat joptsimple.OptionParser.handleLongOptionToken(OptionParser.java:403)\n\tat\
+  \ joptsimple.OptionParserState$2.handleArgument(OptionParserState.java:54)\n\tat\
+  \ joptsimple.OptionParser.parse(OptionParser.java:379)\n\tat abra.Options.parseOptions(Options.java:32)\n\
+  \tat abra.ReAligner.run(ReAligner.java:1747)\n\tat abra.Abra.main(Abra.java:12)\n"
+generated_using:
+- --help

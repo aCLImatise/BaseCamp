@@ -1,0 +1,127 @@
+!Command
+command:
+- createAugustusJoblist.pl
+positional: []
+named:
+- !Flag
+  description: "input sequences, format: each line contains one sequence including\
+    \ the full path and its size, e.g.\n/cluster/data/panTro2/1/chr1.fa    1     \
+    \  229974691\n/cluster/data/panTro2/1/chr1_random        1       9420409\n/cluster/data/panTro2/2/chr2a\
+    \      1       114460064\nor\n/cluster/data/panTro2/1/chr1_random        /hints/chr1_random\
+    \      1       9420409\n/cluster/data/panTro2/2/chr2a      /hints/chr2a    1 \
+    \      114460064"
+  synonyms:
+  - --sequences
+  args: !SimpleFlagArg
+    name: seqs.lst
+  optional: true
+- !Flag
+  description: directory, in which later the AUGUSTUS output will be written.
+  synonyms:
+  - --outputdir
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: AUGUSTUS command, e.g. "augustus --species=human --maxDNAPieceSize=600000".
+  synonyms:
+  - --command
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: filename with list of jobs as given to parasol.
+  synonyms:
+  - --joblist
+  args: !SimpleFlagArg
+    name: job.lst
+  optional: true
+- !Flag
+  description: chunk size. Each sequence is (imaginarily) cut into chunks of this
+    size
+  synonyms:
+  - --chunksize
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: overlap. Neighboring chunks overlap by this number of bases.
+  synonyms:
+  - --overlap
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: padding on both sides (default 0).
+  synonyms:
+  - --padding
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: directory, in which later the AUGUSTUS error messages will be written.
+  synonyms:
+  - --errordir
+  args: !SimpleFlagArg
+    name: errdir
+  optional: true
+- !Flag
+  description: insert parasol input/output checks.
+  synonyms:
+  - --check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: have each job in a separate file, preceded by command s.
+  synonyms:
+  - --wrap
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: 'prefix of job name (default: "job.")'
+  synonyms:
+  - --jobprefix
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: "partition hints files according to genomic locus of single augustus\
+    \ runs,\nadd a command to the augustus job that will create and delete this hints\
+    \ file\nin the output directory of the augustus job. This option also will automatically\n\
+    delete empty error files of augustus.\n"
+  synonyms:
+  - --partitionHints
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/createAugustusJoblist.pl -- Create a joblist with sequence\
+  \ chunks from multiple fasta files.\n\nUsage: /usr/local/bin/createAugustusJoblist.pl\n\
+  \nparameters:\n--sequences seqs.lst input sequences, format: each line contains\
+  \ one sequence including the full path and its size, e.g.\n                    \
+  \ /cluster/data/panTro2/1/chr1.fa\t1\t229974691\n                     /cluster/data/panTro2/1/chr1_random\t\
+  1\t9420409\n                     /cluster/data/panTro2/2/chr2a\t1\t114460064\n \
+  \                    or\n                     /cluster/data/panTro2/1/chr1_random\t\
+  /hints/chr1_random\t1\t9420409\n                     /cluster/data/panTro2/2/chr2a\t\
+  /hints/chr2a\t1\t114460064\n--outputdir s        directory, in which later the AUGUSTUS\
+  \ output will be written.\n--command s          AUGUSTUS command, e.g. \"augustus\
+  \ --species=human --maxDNAPieceSize=600000\".\n--joblist job.lst    filename with\
+  \ list of jobs as given to parasol.\n--chunksize n        chunk size. Each sequence\
+  \ is (imaginarily) cut into chunks of this size\n\noptions:\n--overlap n       \
+  \   overlap. Neighboring chunks overlap by this number of bases.\n--padding n  \
+  \        padding on both sides (default 0).\n--errordir errdir    directory, in\
+  \ which later the AUGUSTUS error messages will be written.\n--check            \
+  \  insert parasol input/output checks.\n--wrap=s             have each job in a\
+  \ separate file, preceded by command s.\n--jobprefix=s        prefix of job name\
+  \ (default: \"job.\")\n--partitionHints     partition hints files according to genomic\
+  \ locus of single augustus runs,\n                     add a command to the augustus\
+  \ job that will create and delete this hints file\n                     in the output\
+  \ directory of the augustus job. This option also will automatically\n         \
+  \            delete empty error files of augustus.\n"
+generated_using:
+- --help

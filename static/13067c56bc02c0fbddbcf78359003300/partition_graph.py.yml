@@ -1,0 +1,83 @@
+!Command
+command:
+- partition-graph.py
+positional: []
+named:
+- !Flag
+  description: print citation information
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use stoptags in this file during partitioning\n(default: )"
+  synonyms:
+  - -S
+  - --stoptags
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "Set subset size (usually 1e5-1e6 is good) (default:\n100000)"
+  synonyms:
+  - -s
+  - --subset-size
+  args: !SimpleFlagArg
+    name: SUBSET_SIZE
+  optional: true
+- !Flag
+  description: "Truncate graph joins at big traversals (default:\nFalse)"
+  synonyms:
+  - --no-big-traverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Overwrite output file if it exists (default: False)'
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of simultaneous threads to execute (default: 1)'
+  synonyms:
+  - -T
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: partition-graph.py [--version] [--info] [-h] [-S filename]\n  \
+  \                        [-s SUBSET_SIZE] [--no-big-traverse] [-f]\n           \
+  \               [-T THREADS]\n                          basename\n\nPartition a\
+  \ sequence graph based upon waypoint connectivity\n\npositional arguments:\n  basename\
+  \              basename of the input k-mer nodegraph + tagset files\n\noptional\
+  \ arguments:\n  --version             show program's version number and exit\n \
+  \ --info                print citation information\n  -h, --help            show\
+  \ this help message and exit\n  -S filename, --stoptags filename\n             \
+  \           Use stoptags in this file during partitioning\n                    \
+  \    (default: )\n  -s SUBSET_SIZE, --subset-size SUBSET_SIZE\n                \
+  \        Set subset size (usually 1e5-1e6 is good) (default:\n                 \
+  \       100000)\n  --no-big-traverse     Truncate graph joins at big traversals\
+  \ (default:\n                        False)\n  -f, --force           Overwrite output\
+  \ file if it exists (default: False)\n  -T THREADS, --threads THREADS\n        \
+  \                Number of simultaneous threads to execute (default: 1)\n\nThe resulting\
+  \ partition maps are saved as \"${basename}.subset.#.pmap\" files.\n"
+generated_using:
+- --help

@@ -1,0 +1,254 @@
+!Command
+command:
+- wtpoa-cns
+positional: []
+named:
+- !Flag
+  description: Number of threads, [4]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Reference sequences for SAM input, will invoke sorted-SAM input mode
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "XORed flags to handle SAM input. [0]\n0x1: Only process reference\
+    \ regions present in/between SAM alignments\n0x2: Don't fileter secondary/supplementary\
+    \ SAM records with flag (0x100 | 0x800)"
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Force to use reference mode
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Similar with -d, but translate SAM into wtdbg layout file
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Input file(s) *.ctg.lay from wtdbg, +, [STDIN]\nOr sorted SAM files\
+    \ when having -d/-p"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Output files, [STDOUT]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Force overwrite
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Expected max length of node, or say the overlap length of two adjacent\
+    \ units in layout file, [1500] bp\noverlap will be default to 1500(or 150 for\
+    \ sam-sr) when having -d/-p, block size will be 2.5 * overlap"
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Bonus for tri-bases match, [0]
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Match score, [2]
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Mismatch score, [-5]
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Insertion score, [-2]
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Deletion score, [-4]
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Homopolymer merge score used in dp-call-cns mode, [-3]
+  synonyms:
+  - -H
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Bandwidth in POA, [Wmin[,Wmax[,mat_rate]]], mat_rate = matched_bases/total_bases\
+    \ [64,1024,0.92]\nProgram will double bandwidth from Wmin to Wmax when mat_rate\
+    \ is lower than setting"
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: "Window size in the middle of the first read for fast align remaining\
+    \ reads, [200]\nIf $W is negative, will disable fast align, but use the abs($W)\
+    \ as Band align score cutoff"
+  synonyms:
+  - -W
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Min size of aligned size in window, [$W * 0.5]
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Abort TriPOA when any read cannot be fast aligned, then try POA
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Shuffle mode, 0: don't shuffle reads, 1: by shared kmers, 2: subsampling.\
+    \ [1]"
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Realignment bandwidth, 0: disable, [16]'
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Consensus mode: 0, run-length; 1, dp-call-cns, [0]'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Min count of bases to call a consensus base, [3]
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Min frequency of non-gap bases to call a consensus base, [0.5]
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Max number of reads in PO-MSA [20]\nKeep in mind that I am not going\
+    \ to generate high accurate consensus sequences here"
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Presets, []\nsam-sr: polishs contigs from short reads mapping, accepts\
+    \ sorted SAM files\nshorted for '-j 50 -W 0 -R 0 -b 1 -c 1 -N 50 -rS 2'"
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Quiet
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print version information and then exit
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "WTPOA-CNS: Consensuser for wtdbg using PO-MSA\nAuthor: Jue Ruan <ruanjue@gmail.com>\n\
+  Version: 0.0 (19830203)\nUsage: wtpoa-cns [options]\nOptions:\n -t <int>    Number\
+  \ of threads, [4]\n -d <string> Reference sequences for SAM input, will invoke sorted-SAM\
+  \ input mode\n -u <int>    XORed flags to handle SAM input. [0]\n             0x1:\
+  \ Only process reference regions present in/between SAM alignments\n           \
+  \  0x2: Don't fileter secondary/supplementary SAM records with flag (0x100 | 0x800)\n\
+  \ -r          Force to use reference mode\n -p <string> Similar with -d, but translate\
+  \ SAM into wtdbg layout file\n -i <string> Input file(s) *.ctg.lay from wtdbg, +,\
+  \ [STDIN]\n             Or sorted SAM files when having -d/-p\n -o <string> Output\
+  \ files, [STDOUT]\n -f          Force overwrite\n -j <int>    Expected max length\
+  \ of node, or say the overlap length of two adjacent units in layout file, [1500]\
+  \ bp\n             overlap will be default to 1500(or 150 for sam-sr) when having\
+  \ -d/-p, block size will be 2.5 * overlap\n -b <int>    Bonus for tri-bases match,\
+  \ [0]\n -M <int>    Match score, [2]\n -X <int>    Mismatch score, [-5]\n -I <int>\
+  \    Insertion score, [-2]\n -D <int>    Deletion score, [-4]\n -H <float>  Homopolymer\
+  \ merge score used in dp-call-cns mode, [-3]\n -B <expr>   Bandwidth in POA, [Wmin[,Wmax[,mat_rate]]],\
+  \ mat_rate = matched_bases/total_bases [64,1024,0.92]\n             Program will\
+  \ double bandwidth from Wmin to Wmax when mat_rate is lower than setting\n -W <int>\
+  \    Window size in the middle of the first read for fast align remaining reads,\
+  \ [200]\n             If $W is negative, will disable fast align, but use the abs($W)\
+  \ as Band align score cutoff\n -w <int>    Min size of aligned size in window, [$W\
+  \ * 0.5]\n -A          Abort TriPOA when any read cannot be fast aligned, then try\
+  \ POA\n -S <int>    Shuffle mode, 0: don't shuffle reads, 1: by shared kmers, 2:\
+  \ subsampling. [1]\n -R <int>    Realignment bandwidth, 0: disable, [16]\n -c <int>\
+  \    Consensus mode: 0, run-length; 1, dp-call-cns, [0]\n -C <int>    Min count\
+  \ of bases to call a consensus base, [3]\n -F <float>  Min frequency of non-gap\
+  \ bases to call a consensus base, [0.5]\n -N <int>    Max number of reads in PO-MSA\
+  \ [20]\n             Keep in mind that I am not going to generate high accurate\
+  \ consensus sequences here\n -x <string> Presets, []\n             sam-sr: polishs\
+  \ contigs from short reads mapping, accepts sorted SAM files\n                 \
+  \    shorted for '-j 50 -W 0 -R 0 -b 1 -c 1 -N 50 -rS 2'\n -q          Quiet\n -v\
+  \          Verbose\n -V          Print version information and then exit\n\n"
+generated_using:
+- --help

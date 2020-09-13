@@ -1,0 +1,184 @@
+!Command
+command:
+- Binsanity-lc
+positional: []
+named:
+- !Flag
+  description: Specify a Coverage File
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: CoverageFile
+  optional: true
+- !Flag
+  description: Specify directory containing Fasta File to be clustered
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: FastaLocation
+  optional: true
+- !Flag
+  description: "Specify a preference [Default: -3]\nNote: decreasing the preference\
+    \ leads to more lumping,\nincreasing will lead to more splitting. If your range\n\
+    of coverages are low you will want to decrease the\npreference, if you have 10\
+    \ or less replicates increasing\nthe preference could benefit you."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: Preference
+  optional: true
+- !Flag
+  description: 'Specify a max number of iterations [Default: 4000]'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: MaximumIterations
+  optional: true
+- !Flag
+  description: "Specify the convergence iteration number [Default:400]\ne.g Number\
+    \ of iterations with no change in the number\nof estimated clusters that stops\
+    \ the convergence."
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: ConvergenceIterations
+  optional: true
+- !Flag
+  description: 'Specify a damping factor between 0.5 and 1 [Default: 0.95]'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: DampeningFactor
+  optional: true
+- !Flag
+  description: Name     Specify the fasta file containing contigs you want to cluster
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: FastaFile
+  optional: true
+- !Flag
+  description: Specify the contig size cut-off [Default:1000 bp]
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: SizeCutOff
+  optional: true
+- !Flag
+  description: "Directory   Give a name to the directory BinSanity results will be\
+    \ output in\n[Default:'BINSANITY-RESULTS']"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: Output
+  optional: true
+- !Flag
+  description: 'Indicate how many threads you want dedicated to the subprocess CheckM
+    [Default: 1]'
+  synonyms:
+  - --checkm_threads
+  args: !SimpleFlagArg
+    name: Threads
+  optional: true
+- !Flag
+  description: "Indicate how many threads you want dedicated to kmeans clustering\n\
+    [Default: 1]"
+  synonyms:
+  - --kmean_threads
+  args: !SimpleFlagArg
+    name: kmeanThread
+  optional: true
+- !Flag
+  description: 'Indicate a number for the kmer calculation [Default: 4]'
+  synonyms:
+  - --kmer
+  args: !SimpleFlagArg
+    name: Kmer
+  optional: true
+- !Flag
+  description: 'Specify a preference for refinement [Default: -25]'
+  synonyms:
+  - --refine-preference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Indicate a number of initial clusters for kmean [Default:100]
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: ClusterNumber
+  optional: true
+- !Flag
+  description: Specify a prefix to append to the start of all directories generated
+    during Binsanity
+  synonyms:
+  - --Prefix
+  args: !SimpleFlagArg
+    name: Prefix
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: Binsanity-lc -f [/path/to/fasta] -l [fastafile] -c [coverage file]\
+  \ -o [output directory]\n\n    ************************************************************************************************\n\
+  \    **************************************BinSanity*************************************************\n\
+  \    **    Binsanity-lc is a workflow script that will subset assemblies larger\
+  \ than 100,000       ** \n    **    contigs using coverage prior to running Binsanity\
+  \ and Binsanity-refine sequentially.    **\n    **    The following is including\
+  \ in the workflow:                                             **\n    **      \
+  \ Step 1: Use Coverage to Subsample contigs with K-mean Clustering             \
+  \        **\n    **       STEP 2: Run Binsanity                                \
+  \                                **\n    **       STEP 3: Run CheckM to estimate\
+  \ completeness for Refinement                           **\n    **       STEP 4:\
+  \ Run Binsanity-refine                                                         **\n\
+  \    **       STEP 5: Creat Final BinSanity Clusters                           \
+  \                    **\n    **                                                \
+  \                                            **\n    ************************************************************************************************\n\
+  \    \n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -c CoverageFile       Specify a Coverage File\n                      \
+  \      \n  -f FastaLocation      Specify directory containing Fasta File to be clustered\n\
+  \                            \n  -p Preference         Specify a preference [Default:\
+  \ -3]\n                            Note: decreasing the preference leads to more\
+  \ lumping, \n                            increasing will lead to more splitting.\
+  \ If your range\n                            of coverages are low you will want\
+  \ to decrease the\n                            preference, if you have 10 or less\
+  \ replicates increasing\n                            the preference could benefit\
+  \ you.\n                            \n  -m MaximumIterations  Specify a max number\
+  \ of iterations [Default: 4000]\n                            \n  -v ConvergenceIterations\n\
+  \                        Specify the convergence iteration number [Default:400]\n\
+  \                            e.g Number of iterations with no change in the number\
+  \ \n                            of estimated clusters that stops the convergence.\n\
+  \                            \n  -d DampeningFactor    Specify a damping factor\
+  \ between 0.5 and 1 [Default: 0.95]\n                            \n  -l FastaFile\
+  \ Name     Specify the fasta file containing contigs you want to cluster\n     \
+  \                       \n  -x SizeCutOff         Specify the contig size cut-off\
+  \ [Default:1000 bp]\n                            \n  -o Output Directory   Give\
+  \ a name to the directory BinSanity results will be output in \n               \
+  \             [Default:'BINSANITY-RESULTS']\n                            \n  --checkm_threads\
+  \ Threads\n                        Indicate how many threads you want dedicated\
+  \ to the subprocess CheckM [Default: 1]\n                            \n  --kmean_threads\
+  \ kmeanThread\n                        Indicate how many threads you want dedicated\
+  \ to kmeans clustering\n                            [Default: 1]\n  --kmer Kmer\
+  \           Indicate a number for the kmer calculation [Default: 4]\n          \
+  \                  \n  --refine-preference   Specify a preference for refinement\
+  \ [Default: -25]\n                            \n  -C ClusterNumber      Indicate\
+  \ a number of initial clusters for kmean [Default:100]\n                       \
+  \     \n  --Prefix Prefix       Specify a prefix to append to the start of all directories\
+  \ generated during Binsanity\n                            \n  --version        \
+  \     show program's version number and exit\n"
+generated_using:
+- --help

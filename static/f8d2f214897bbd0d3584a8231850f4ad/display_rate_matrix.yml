@@ -1,0 +1,192 @@
+!Command
+command:
+- display_rate_matrix
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: model_fname
+  optional: false
+named:
+- !Flag
+  description: ": Output P(t) = exp(Qt) instead of Q.  Requires t >= 0.\nUse \"-t\
+    \ A\" to output a matrix for each branch of the tree."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: t
+  optional: true
+- !Flag
+  description: ":     Show equilibrium frequencies as an additional table row.\nIn\
+    \ list node they are shown with first tuple being -."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     Show \"exchangeabilities\" instead of raw matrix elements\n\
+    (that is, divide each element by the equilibrium frequency\nof its column).  Not\
+    \ available with -t."
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':     Suppress printing of elements on main diagonal.'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':     Format table for typesetting with LATEX.  Incompatible with
+    -l.'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     Show matrix elements as a list rather than as a table.\nWhen\
+    \ -t is not specified (rate matrix case), only off-diagonal\nelements will be\
+    \ printed."
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     (For use with -l only) Report whether each substitution is\n\
+    a transition or a transversion."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     (For use with -l) Report elements equal to zero (omitted by\n\
+    default, except with -t).  Implied by -a."
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     (For use with -l)  Assume a symmetric matrix and report half\n\
+    as many lines.  Useful with -e."
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     (for use with -l) Print rates and probabilities\nin scientific\
+    \ notation (format %e instead of %f)."
+  synonyms:
+  - -E
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     (Requires a model of order 3).  Replace a matrix of codon\n\
+    substitution rates with the induced matrix of amino acid\nsubstitution rates,\
+    \ according to the universal genetic\ncode.  See Yang, Nielsen, and Hasegawa,\
+    \ 1998."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':     (For use with -a)  Include stop codons (by default suppressed).'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": (For use with -l only; implies -a) Read an amino-acid\nsubstitution\
+    \ matrix from file <f> and report values from\nthis matrix with the induced amino\
+    \ acid substitution rates.\nMatrix should be in the format used by BLAST (as\n\
+    produced by the NCBI \"pam\" program)"
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: "Like -M but for matrices in the format used by the PAML\npackage for\
+    \ amino acid substitution and rate matrices."
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ": (For use with -l only and not with -M/-N)  Read alternative\nsubstitution\
+    \ scores from file <f> and report values in\noutput.  File <f> should have three\
+    \ columns: a \"from\"\ntuple, a \"to\" tuple, and a real-valued score.\nSubstitutions\
+    \ not listed will be given null scores and\nreported as \"NA\"."
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: "Like -A but compares to rates of a single-nucleotide model\n(order\
+    \ 1).  File <f> should be a standard tree model (.mod) file."
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: "Report context-dependent transition/transversion rates, as\nshown\
+    \ in Tables 2 and 3 of Morton et al., JME 45:227-231, 1997.\nRequires a model\
+    \ of order 3 with a DNA alphabet."
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "PROGRAM: display_rate_matrix\nUSAGE: display_rate_matrix [OPTIONS] <model_fname>\n\
+  OPTIONS:\n    -t <t>: Output P(t) = exp(Qt) instead of Q.  Requires t >= 0.  \n\
+  \            Use \"-t A\" to output a matrix for each branch of the tree.\n    -f:\
+  \     Show equilibrium frequencies as an additional table row.  \n            In\
+  \ list node they are shown with first tuple being -.\n    -e:     Show \"exchangeabilities\"\
+  \ instead of raw matrix elements \n            (that is, divide each element by\
+  \ the equilibrium frequency \n            of its column).  Not available with -t.\n\
+  \    -d:     Suppress printing of elements on main diagonal.\n    -L:     Format\
+  \ table for typesetting with LATEX.  Incompatible with -l.\n    -l:     Show matrix\
+  \ elements as a list rather than as a table.  \n            When -t is not specified\
+  \ (rate matrix case), only off-diagonal\n            elements will be printed.\n\
+  \    -i:     (For use with -l only) Report whether each substitution is\n      \
+  \      a transition or a transversion.\n    -z:     (For use with -l) Report elements\
+  \ equal to zero (omitted by \n            default, except with -t).  Implied by\
+  \ -a.\n    -S:     (For use with -l)  Assume a symmetric matrix and report half\
+  \ \n            as many lines.  Useful with -e.\n    -E:     (for use with -l) Print\
+  \ rates and probabilities \n            in scientific notation (format %e instead\
+  \ of %f).\n    -a:     (Requires a model of order 3).  Replace a matrix of codon\n\
+  \            substitution rates with the induced matrix of amino acid\n        \
+  \    substitution rates, according to the universal genetic\n            code. \
+  \ See Yang, Nielsen, and Hasegawa, 1998.\n    -s:     (For use with -a)  Include\
+  \ stop codons (by default suppressed).\n    -M <f>: (For use with -l only; implies\
+  \ -a) Read an amino-acid\n            substitution matrix from file <f> and report\
+  \ values from\n            this matrix with the induced amino acid substitution\
+  \ rates.\n            Matrix should be in the format used by BLAST (as\n       \
+  \     produced by the NCBI \"pam\" program) \n    -N <f>  Like -M but for matrices\
+  \ in the format used by the PAML \n            package for amino acid substitution\
+  \ and rate matrices.\n    -A <f>: (For use with -l only and not with -M/-N)  Read\
+  \ alternative\n            substitution scores from file <f> and report values in\n\
+  \            output.  File <f> should have three columns: a \"from\"\n         \
+  \   tuple, a \"to\" tuple, and a real-valued score.\n            Substitutions not\
+  \ listed will be given null scores and\n            reported as \"NA\".\n    -B\
+  \ <f>  Like -A but compares to rates of a single-nucleotide model \n           \
+  \ (order 1).  File <f> should be a standard tree model (.mod) file.\n    -C    \
+  \  Report context-dependent transition/transversion rates, as \n            shown\
+  \ in Tables 2 and 3 of Morton et al., JME 45:227-231, 1997. \n            Requires\
+  \ a model of order 3 with a DNA alphabet.\n    -h      Print this help message.\n\
+  \n"
+generated_using:
+- -h

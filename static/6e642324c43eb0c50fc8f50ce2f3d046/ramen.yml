@@ -1,0 +1,145 @@
+!Command
+command:
+- ramen
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sequence file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: motif file
+  optional: false
+named:
+- !Flag
+  description: "[on|off] Regression on the log_e of the fluorescence scores\non: (Default)\
+    \ Use the log_e(fluorescence) in the regression.\noff: Use the score directly\
+    \ provided in the sequence file."
+  synonyms:
+  - --log-fscores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[on|off] Regression on the log_e of the PWM scores\non: Use the log_e(RMA\
+    \ or AMA Score) in the regression.\noff: (Default) Use the RMA/AMA score directly."
+  synonyms:
+  - --log-pwmscores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[on|off] Normalise the motif scores so that the motifs are comparable\n\
+    on: (Default) Normalise motifs for comparison (Use RMA score).\noff: Use raw AMA\
+    \ score (Not recommended)."
+  synonyms:
+  - --normalise-motifs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[on|on] Switch the x and y axis for the linear regression\non: y-points\
+    \ are PWM scores, x-values are fluorescence scores.\noff: (Default) y-points are\
+    \ fluorescence scores, x-points are PWM scores."
+  synonyms:
+  - --linreg-switchxy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump (R-format) TSV files of each regression.
+  synonyms:
+  - --linreg-dumpdir
+  args: !SimpleFlagArg
+    name: existing_directory
+  optional: true
+- !Flag
+  description: (default=10,000) Number of times to sample for p-value determination.
+  synonyms:
+  - --repeats
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: (default=0.05) Only show results with p-value <= this cutoff
+  synonyms:
+  - --pvalue-cutoff
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "[0|2|3] source used to determine background frequencies\n0: uniform\
+    \ background\n1: MEME motif file\n2: Background file"
+  synonyms:
+  - --bgformat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file containing background frequencies
+  synonyms:
+  - --bgfile
+  args: !SimpleFlagArg
+    name: background
+  optional: true
+- !Flag
+  description: '[meme|tamo|regexp] format of input motif file (default meme)'
+  synonyms:
+  - --motif-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <float, default = 0.25> Pseudocount for motif affinity scan
+  synonyms:
+  - --pseudocount
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <1...5>                 Integer describing verbosity. Best used as
+    first argument in list.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message again
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: ramen [options] <sequence file> <motif file>\n\n   Linear Regression\
+  \ Options:\n     --log-fscores [on|off] Regression on the log_e of the fluorescence\
+  \ scores\n             on: (Default) Use the log_e(fluorescence) in the regression.\n\
+  \            off: Use the score directly provided in the sequence file.\n     --log-pwmscores\
+  \ [on|off] Regression on the log_e of the PWM scores\n             on: Use the log_e(RMA\
+  \ or AMA Score) in the regression.\n            off: (Default) Use the RMA/AMA score\
+  \ directly.\n     --normalise-motifs [on|off] Normalise the motif scores so that\
+  \ the motifs are comparable\n             on: (Default) Normalise motifs for comparison\
+  \ (Use RMA score).\n            off: Use raw AMA score (Not recommended).\n    \
+  \ --linreg-switchxy [on|on] Switch the x and y axis for the linear regression\n\
+  \              on: y-points are PWM scores, x-values are fluorescence scores.\n\
+  \             off: (Default) y-points are fluorescence scores, x-points are PWM\
+  \ scores.\n     --linreg-dumpdir <existing_directory> Dump (R-format) TSV files\
+  \ of each regression.\n\n   P-Value Simulation Options:\n     --repeats <integer>\
+  \ (default=10,000) Number of times to sample for p-value determination.\n     --pvalue-cutoff\
+  \ <float> (default=0.05) Only show results with p-value <= this cutoff\n\n   File\
+  \ format options:\n     --bgformat [0|2|3] source used to determine background frequencies\n\
+  \                        0: uniform background\n                        1: MEME\
+  \ motif file\n                        2: Background file\n     --bgfile <background>\
+  \ file containing background frequencies\n     --motif-format [meme|tamo|regexp]\
+  \ format of input motif file (default meme)\n\n   Miscellaneous Options:\n     --pseudocount\
+  \ <float, default = 0.25> Pseudocount for motif affinity scan\n     --verbose  \
+  \   <1...5>                 Integer describing verbosity. Best used as first argument\
+  \ in list.\n     --help                                Show this message again\n\
+  \n   Citing ramen (Regression Analysis of Motif ENrichment):\n     If ramen is of\
+  \ use to you in your research, please cite:\n\n          Robert C. McLeay, Timothy\
+  \ L. Bailey (2009).\n          \"Motif Enrichment Analysis: a unified framework\
+  \ and an evaluation on ChIP data.\"\n          BMC Bioinformatics 2010, 11:165,\
+  \ doi:10.1186/1471-2105-11-165.\n\n   Contact the authors:\n     You can contact\
+  \ the authors via email:\n\n         Robert McLeay <r.mcleay@imb.uq.edu.au>, and\n\
+  \         Timothy Bailey <t.bailey@imb.uq.edu.au>.\n\n     Bug reports should be\
+  \ directed to Robert McLeay.\n\n"
+generated_using:
+- --help

@@ -1,0 +1,214 @@
+!Command
+command:
+- gmtkMMItrain
+positional: []
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Argument Error: Unknown switch: --help\nUsage: gmtkMMItrain  [[[-flag]\
+  \ [option]] ...]\nOptions:\nRequired: <>; Optional: []; Flagless arguments must\
+  \ be in order.\n\n\n*** Observation input file handling ***\n\n <-ofX str>     \
+  \                            Observation File.  Replace X with the file number {null}\n\
+  \ [-nfX unsigned]                            Number of floats in observation file\
+  \ X {0}\n [-niX unsigned]                            Number of ints in observation\
+  \ file X {0}\n [-fmtX str]                                Format (htk,binary,ascii,flatascii,hdf5,pfile)\
+  \ for observation file X {pfile}\n [-fileBufferSize unsigned]                 Size\
+  \ in MB of the file observation frame buffer {16}\n [-constantSpace bool]      \
+  \                Use only fileBufferSize memory to hold the observation data {F}\n\
+  \ [-fileWindowSize unsigned]                 Size in MB to load at once if constantSpace\
+  \ is active {4}\n [-fileWindowDelta unsigned]                How close (in frames)\
+  \ from the edge of the current window triggers loading more frames {100}\n [-iswpX\
+  \ bool]                              Endian swap condition for observation file\
+  \ X {T}\n [-prefrX str]                              Float range for observation\
+  \ file X (before transforms) {all}\n [-preirX str]                             \
+  \ Int range for observation file X {all}\n [-frX str]                          \
+  \       Float range for observation file X (after transforms) {all}\n [-irX str]\
+  \                                 Int range for observation file X {all}\n [-srX\
+  \ str]                                 Segment range for observation file X {all}\n\
+  \ [-leftPadX unsigned]                       Prepend padding frames to file X {0}\n\
+  \ [-rightPadX unsigned]                      Append padding frames to file X {0}\n\
+  \ [-preprX str]                              Pre Per-segment frame Range for obs\
+  \ file X before any transforms are applied {null}\n [-postprX str]             \
+  \                Post Per-segment frame Range for obs file X after per-stream transforms\
+  \ are applied {null}\n [-gpr str]                                 Global Per-segment\
+  \ final frame Range {null}\n [-justification str]                       Justification\
+  \ of usable frames (left, center, right) {left}\n [-obsNAN bool]               \
+  \              True if observation files allow FP NAN values {F}\n\n*** File range\
+  \ options ***\n\n [-trrng str]                               Range to train over\
+  \ segment file {all}\n [-startSkip integer]                       Frames to skip\
+  \ at beginning (i.e., first frame is buff[startSkip]) {0}\n [-endSkip integer] \
+  \                        Frames to skip at end (i.e., last frame is buff[len-1-endSkip])\
+  \ {0}\n\n*** Help options ***\n\n [-help [unsigned]]                         Print\
+  \ this message. Add an argument from 1 to 5 for increasing help info. {0}\n [-version\
+  \ bool]                            Print GMTK version number and exit. {F}\n\n***\
+  \ Observation matrix transformation options ***\n\n [-fdiffactX str]           \
+  \                Action if different number of frames in streams: error (er), repeat\
+  \ last frame (rl), first frame (rf), segmentally expand (se), truncate from start\
+  \ (ts), truncate from end (te) {er}\n [-sdiffactX str]                         \
+  \  Action if different number of segments in streams: error (er), truncate from\
+  \ end (te), repeat last sent (rl), and wrap around (wa). {te}\n [-cppifascii bool]\
+  \                         Pre-process ASCII files using CPP {F}\n [-transX str]\
+  \                              per stream transformations string {null}\n [-posttrans\
+  \ str]                           Final global transformations string {null}\n [-comb\
+  \ str]                                Combine float features (none: no combination,\
+  \ add, sub, mul,div {none}\n [-cppCommandOptions str]                   Command\
+  \ line options to give to 'cpp' {null}\n\n*** Input trainable parameter file handling\
+  \ ***\n\n <-inputMasterFile str>                     Input file of multi-level master\
+  \ CPP processed GM input parameters {null}\n [-mapX str]                       \
+  \         Deterministic mapping dynamic library file. Replace X with the file number\
+  \ {null}\n [-outputMasterFile str]                    Output file to place master\
+  \ CPP processed GM output parameters {null}\n [-inputTrainableParameters str]  \
+  \          File of only and all trainable parameters {null}\n [-binInputTrainableParameters\
+  \ bool]        Binary condition of trainable parameters file {F}\n [-outputTrainableParameters\
+  \ str]           File to place only and all trainable output parametes {null}\n\
+  \ [-binOutputTrainableParameters bool]       Binary condition of output trainable\
+  \ parameters? {F}\n [-wpaeei bool]                             Write Parameters\
+  \ After Each EM Iteration Completes {T}\n [-allocateDenseCpts integer]         \
+  \      Automatically allocate undefined CPTs. (-1) = don't read params, (0) = don't\
+  \ allocate, (1) = use random initial CPT values, (2) = use uniform values {0}\n\
+  \ [-cptNormThreshold double]                 Read error if |Sum-1.0|/card > norm_threshold\
+  \ {1.000000e-02}\n\n*** Input model file handling ***\n\n <-strFile str>       \
+  \                      Graphical Model Structure File {null}\n [-checkTriFileCards\
+  \ bool]                  Verify rv cardinalities in triangulation file match .str\
+  \ file {T}\n [-triFile str]                             Triangulation file for strFile\
+  \ {null}\n [-jtFile str]                              Name of file to write junction\
+  \ tree information {jt_info.txt}\n [-jtwUB bool]                              True\
+  \ means jtWeight is allways an upper bound on true JT weight, false means jtWeight\
+  \ is estimate {F}\n\n*** Discriminative Training Options  ***\n\n <-denomStrFile\
+  \ str>                        Denominator graphical model structure file {null}\n\
+  \ [-denomTriFile str]                        Triangulation file for denomStrFile\
+  \ {null}\n <-denomInputMasterFile str>                Input file of multi-level\
+  \ master CPP processed GM input parameters for denominator model {null}\n [-denomInputTrainableParameters\
+  \ str]       File of only and all trainable parameters for denominator model {null}\n\
+  \ [-denomBinInputTrainableParameters bool]   Binary condition of trainable parameters\
+  \ file for denominator model {F}\n [-updateCPT bool]                          whether\
+  \ to update cpts during discriminative training {F}\n [-updateDPMF bool]       \
+  \                  whether to update dpmfs during discriminative training {F}\n\
+  \ [-updateMean bool]                         whether to update means during discriminative\
+  \ training {T}\n [-updateCovar bool]                        whether to update covars\
+  \ during discriminative training {F}\n [-useAdagrad bool]                      \
+  \   whether to use adagrad {T}\n [-useDecayLr bool]                         whether\
+  \ to use decaying learning rate for initLr: default is 1/sqrt(t) {T}\n [-useCovarDecayLr\
+  \ bool]                    whether to use decaying learning rate for covariances:\
+  \ default is 1/sqrt(t) {T}\n [-useMeanDecayLr bool]                     whether\
+  \ to use decaying learning rate for mean: default is 1/sqrt(t) {T}\n [-decayLrRate\
+  \ double]                      1/pow([initLr], t) {5.000000e-01}\n [-decayCovarLrRate\
+  \ double]                 1/pow([covarLr], t) {5.000000e-01}\n [-decayMeanLrRate\
+  \ double]                  1/pow([meanLr], t) {5.000000e-01}\n [-maxIter unsigned]\
+  \                        maximum number of iterations {2}\n [-initIter unsigned]\
+  \                       initial iteration to shrink learning rate from {0}\n [-segmentSchedule\
+  \ str]                     Order to process training data segments (linear, random,\
+  \ permute, shuffle) {linear}\n [-batchSize unsigned]                      batch\
+  \ size for stochastic gradient descent {1}\n [-initLr double]                  \
+  \         initial learning rate for DPMFs and CPTs {1.000000e-03}\n [-covarLr double]\
+  \                          the additional multiplicative learning rate for covariance;\
+  \ the formula for covariance learning rate is: covarLr * adagradLr {1.000000e-05}\n\
+  \ [-meanLr double]                           the additional multiplicative learning\
+  \ rate for means; the formula for the mean learning rate is: meanLr * adagradLr\
+  \ {1.000000e-05}\n [-denomWeightMean double]                  the weight for the\
+  \ denominator model when calculating the gradient of means: numeratorGradient -\
+  \ denomWeight * denominatorGradient {1.000000e+00}\n [-denomWeightCovar double]\
+  \                 the weight for the denominator model when calculating the gradient\
+  \ of covars: numeratorGradient - denomWeight * denominatorGradient {1.000000e+00}\n\
+  \ [-denomWeightDPMF double]                  the weight for the denominator model\
+  \ when calculating the gradient of DPMFs: numeratorGradient - denomWeight * denominatorGradient\
+  \ {1.000000e+00}\n\n*** Continuous random variable options ***\n\n [-varFloor double]\
+  \                         Variance Floor (variances can't fall below this value)\
+  \ {1.000000e-10}\n [-floorVarOnRead bool]                     Floor the variances\
+  \ to varFloor when they are read in {F}\n\n*** Beam pruning options ***\n\n [-cbeam\
+  \ double]                            Clique beam width to prune clique (log value)\
+  \ {1.000000e+17}\n [-cpbeam double]                           Clique beam width\
+  \ while building cliques (log value) {1.000000e+17}\n [-cpfilter str]          \
+  \                  Adaptive filter to use for clique bild pruning {}\n [-cpch bool]\
+  \                               For clique beam build pruning, use a continuation\
+  \ heurisic within the rest of the clique {T}\n [-cpef double]                  \
+  \           For clique beam build pruning, the amount that the beam expands each\
+  \ time we find a zero clique {1.000000e+00}\n [-cpme unsigned]                 \
+  \          For clique beam build pruning, the maximum number of expansions before\
+  \ we fail and exit {1}\n [-ckbeam unsigned]                         Prune to this\
+  \ clique max state space (0 = no pruning) {0}\n [-cusample double]             \
+  \            Uniformly sample pruned clique (0<v=<=1 fraction, > 1 number) {0.000000e+00}\n\
+  \ [-ccclusters unsigned]                     Number of clusters to use in cluster\
+  \ pruning {0}\n [-ccbeam double]                           Clique cluster beam width\
+  \ to prune clique clusters (log value) {1.000000e+17}\n [-cckbeam unsigned]    \
+  \                    Max number of states in each cluster in cluster pruning {4294967295}\n\
+  \ [-ccrbeam float]                           Fraction of in-cluster clique state\
+  \ space to retain. Range: 0 < v <= 1. {1.000000e+00}\n [-ccmbeam double]       \
+  \                   Percentage of clique cluster mass to retain. Range: 0 < v <=\
+  \ 1. v = 1.0 means no pruning {1.000000e+00}\n [-ccmexp double]                \
+  \           Exponent to apply to clique cluster scores when doing mass pruning.\
+  \ Must be non-negative. {1.000000e+00}\n [-ccmmin unsigned]                    \
+  \     When using -cmbeam, min possible resulting clique cluster state size (>= 1)\
+  \ {1}\n [-ccmfurther double]                       When using -ccmbeam, additional\
+  \ beam to use after mass has been acounted for (>= 0) {0.000000e+00}\n [-crbeam\
+  \ float]                            Fraction of clique state space to retain. Range:\
+  \ 0 < v <= 1. v = 1 means no pruning {1.000000e+00}\n [-cmbeam double]         \
+  \                  Percentage of clique mass to relinquish. Range: 0 < v <= 1. v\
+  \ = 1.0 means no pruning {1.000000e+00}\n [-cmexp double]                      \
+  \      Exponent to apply to clique scores when doing mass pruning. Must be non-negative.\
+  \ {1.000000e+00}\n [-cmmin unsigned]                          When using -cmbeam,\
+  \ min possible resulting clique state size (>= 1) {1}\n [-cmfurther double]    \
+  \                    When using -cmbeam, additional beam to use after mass has been\
+  \ acounted for (>= 0) {0.000000e+00}\n [-sbeam double]                         \
+  \   Separator beam width pruning log value {1.000000e+17}\n [-ebeam double]    \
+  \                        EM training beam width {1.000000e+17}\n\n*** Memory management\
+  \ options ***\n\n [-memoryGrowth str]                        Rate to grow data structures\
+  \ (conservative, default, aggressive) {default}\n [-hashLoadFactor float]      \
+  \              Hash table load factor, in range 0.05 <= lf <= 1.0 {5.000000e-01}\n\
+  \ [-deterministicChildrenStore bool]         Store deterministic children in clique\
+  \ memory {T}\n [-clearCliqueValMem bool]                  Free clique/separator\
+  \ value cache for each segment {T}\n [-mmapViterbiValues bool]                 \
+  \ Use mmap() to get memory to hold Viterbi values {T}\n\n*** General options ***\n\
+  \n [-seed bool]                               Seed the random number generator {F}\n\
+  \ [-skipStartupChecks bool]                  Skip expensive model validity checks\
+  \ performed at GMTK startup {F}\n [-verbosity str]                           Verbosity\
+  \ - coma separated list of m=v, where m is all, default, inference, inference-memory,\
+  \ training, triangulation, boundary, unrolling, printing, modelinfo, obsfile, obsstream;\
+  \ 0 <= v <= 100 {null}\n [-printIntValues bool]                     Always print\
+  \ rv values as integer rather than symbols {F}\n\n*** Inference options ***\n\n\
+  \ [-island bool]                             Run island algorithm {F}\n [-base str]\
+  \                                Island algorithm logarithm base (integer or 'root')\
+  \ {3}\n [-root float]                              use T^r as the island logarithm\
+  \ base, where T is the number of frames {5.000000e-01}\n [-lst unsigned]       \
+  \                     Island algorithm linear segment threshold {100}\n [-componentCache\
+  \ bool]                     Cache mixture and component probabilities, faster but\
+  \ uses more memory. {T}\n [-vsap str]                                Variable section\
+  \ assignment priority. Sequence of chars in set [C,D,O,B,S,I,A,F,N] {COI}\n [-vcap\
+  \ str]                                Variable clique sorting priority. Sequence\
+  \ of chars in set [C,D,O,B,S,I,A,F,N,T,M,+,.] {COT}\n [-jcap str]              \
+  \                  Junction Tree Clique MST Sorting Priority. From Set: [D,E,S,U,V,W,H,O,L,Q]\
+  \ {DSU}\n [-icap str]                                Interface Clique Priority Determiner\
+  \ Priority. From Set: [W,D,H,O,I] {W}\n [-useVESeparators unsigned]            \
+  \    Use Virtual Evidence (VE) Separators (if any are available) during inference\
+  \ (Bitwise or of 0x1 (PC) or PCG (0x2) {3}\n [-veSepWhere unsigned]            \
+  \         Where to use VE seps. Bitwise or of 0x1 (P), 0x2 (C), 0x4 (E) {0}\n [-veSepFileName\
+  \ str]                       Name of VE separators file to store VE sep/read previous\
+  \ VE sep info {veSeparatorFile.dat}\n [-veSepRecompute bool]                   \
+  \  Force a re-compute of VE separator information {F}\n [-veSepLogProdCardLimit\
+  \ float]             The log (base 10) upper limit on a VE sep variable cardinality\
+  \ product {7.000000e+00}\n [-keepOnlyInterfaceSeparatorMemory bool]   Use a slower\
+  \ but more memory efficient inference implementation {F}\n [-failOnZeroClique bool]\
+  \                   abort GMTK program on zero clique errors {T}\n [-cliqueTableNormalize\
+  \ float]              Normalize scores of each clique right after its creation (increases\
+  \ dynamic range). {1.000000e+00}\n\n*** Kernel options ***\n\n [-random bool]  \
+  \                           Randomize the parameters {F}\n [-transFileIsBinary bool]\
+  \                  Use binary to write the parameters in transformed space {F}\n\
+  \ [-objsNotToUtilize str]                    File listing trainable parameter objects\
+  \ to not utilize in transformed space. {null}\n <-storeFeatureFile str>        \
+  \            File to store feature space values in {null}\n [-localCliqueNorm bool]\
+  \                    Use local clique sum for posterior normalization. {F}\n [-fisherKernel\
+  \ bool]                       Compute the fisher kernel transformation. {T}\n [-annotateTransformationOutput\
+  \ bool]       Annotation the output tranformation matrix (one per line). {T}\n [-writeLogVals\
+  \ bool]                       Write log(p) rather than just p for prob values. {F}\n\
+  \n*** Lattice options ***\n\n [-latticeDefaultFrameRate double]          Lattice,\
+  \ default frame rate (if negative, compute from file) {-1.000000e+02}\n [-latticeUseMaxScore\
+  \ bool]                 Lattice, use max edge score for node CPT {T}\n [-latticeIgnoreNodeTimeMarks\
+  \ bool]         Lattice, ignore lattice node time marks in all lattices {F}\n\n\
+  *** Additional arguments ***\n\n [-argsFile <str>]                          File\
+  \ to obtain additional arguments from {}\n"
+generated_using:
+- --help

@@ -1,0 +1,244 @@
+!Command
+command:
+- obiclean
+positional: []
+named:
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "###, --distance=###\nMaximum numbers of errors between two variant\n\
+    sequences [default: 1]"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tag containing sample descriptions
+  synonyms:
+  - -s
+  - --sample
+  args: !SimpleFlagArg
+    name: TAGNAME
+  optional: true
+- !Flag
+  description: File name where the clustering graphs are saved
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: TAGNAME
+  optional: true
+- !Flag
+  description: "Minimum ratio between counts of two sequence records\nso that the\
+    \ less abundant one can be considered as a\nvariant of the more abundant [default:\
+    \ 0.5]"
+  synonyms:
+  - -r
+  - --ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Outputs only head tagged sequence records
+  synonyms:
+  - -H
+  - --head
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set obiclean in clustering mode
+  synonyms:
+  - -C
+  - --cluster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip the N first sequences
+  synonyms:
+  - --skip
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: treat only N sequences
+  synonyms:
+  - --only
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Input file is in genbank format
+  synonyms:
+  - --genbank
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is in embl format
+  synonyms:
+  - --embl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip sequence entries with parse error
+  synonyms:
+  - --skip-on-error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fasta nucleic format (including\nobitools fasta extentions)"
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is in ecopcr format
+  synonyms:
+  - --ecopcr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fasta format (but more tolerant to\nformat variant)"
+  synonyms:
+  - --raw-fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in sanger fastq nucleic format (standard\nfastq)"
+  synonyms:
+  - --sanger
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fastq nucleic format produced by\nsolexa sequencer"
+  synonyms:
+  - --solexa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is an ecopcr database
+  synonyms:
+  - --ecopcrdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file contains nucleic sequences
+  synonyms:
+  - --nuc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file contains protein sequences
+  synonyms:
+  - --prot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output sequences in obitools fasta format
+  synonyms:
+  - --fasta-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output sequences in sanger fastq format
+  synonyms:
+  - --fastq-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output sequences in ecopcr database format (sequence\nrecords are\
+    \ not printed on standard output)"
+  synonyms:
+  - --ecopcrdb-output
+  args: !SimpleFlagArg
+    name: ECOPCROUTPUT
+  optional: true
+- !Flag
+  description: Print sequences in upper case (default is lower case)
+  synonyms:
+  - --uppercase
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: \n:py:mod:`obiclean`: tags a set of sequences for PCR/sequencing\
+  \ errors identification \n====================================================================================\n\
+  \n.. codeauthor:: Eric Coissac <eric.coissac@metabarcoding.org>\n\n:py:mod:`obiclean`\
+  \ is a command that classifies sequence records either as ``head``, ``internal``\
+  \ or ``singleton``.\n\nFor that purpose, two pieces of information are used:\n \
+  \   - sequence record counts\n    - sequence similarities\n\n*S1* a sequence record\
+  \ is considered as a variant of *S2* another sequence record if and only if:\n \
+  \   - ``count`` of *S1* divided by ``count`` of *S2* is lesser than the ratio *R*.\n\
+  \      *R* default value is set to 1, and can be adjusted between 0 and 1 with the\
+  \ ``-r`` option.\n    - both sequences are *related* to one another (they can align\
+  \ with some differences, \n      the maximum number of differences can be specified\
+  \ by the ``-d`` option).\n\nConsidering *S* a sequence record, the following properties\
+  \ hold for *S* tagged as:\n    - ``head``: \n       + there exists **at least one**\
+  \ sequence record in the dataset that is a variant of *S*\n       + there exists\
+  \ **no** sequence record in the dataset such that *S* is a variant of this \n  \
+  \       sequence record\n    - ``internal``:\n       + there exists **at least one**\
+  \ sequence record in the dataset such that *S* is a variant\n         of this sequence\
+  \ record\n    - ``singleton``: \n       + there exists **no** sequence record in\
+  \ the dataset that is a variant of *S*\n       + there exists **no** sequence record\
+  \ in the dataset such that *S* is a variant of this \n         sequence record\n\
+  \nBy default, tagging is done once for the whole dataset, but it can also be done\
+  \ sample by sample\nby specifying the ``-s`` option. In such a case, the counts\
+  \ are extracted from the sample \ninformation.\n\nFinally, each sequence record\
+  \ is annotated with three new attributes ``head``, ``internal`` and \n``singleton``.\
+  \ The attribute values are the numbers of samples in which the sequence record has\
+  \ \nbeen classified in this manner.\n\n\n***********\n* Options *\n***********\n\
+  \  -h, --help            show this help message and exit\n  --DEBUG            \
+  \   Set logging in debug mode\n  --without-progress-bar\n                      \
+  \  desactivate progress bar\n  -d ###, --distance=###\n                        Maximum\
+  \ numbers of errors between two variant\n                        sequences [default:\
+  \ 1]\n  -s <TAGNAME>, --sample=<TAGNAME>\n                        Tag containing\
+  \ sample descriptions\n  -g <TAGNAME>, --graph=<TAGNAME>\n                     \
+  \   File name where the clustering graphs are saved\n  -r <FLOAT>, --ratio=<FLOAT>\n\
+  \                        Minimum ratio between counts of two sequence records\n\
+  \                        so that the less abundant one can be considered as a\n\
+  \                        variant of the more abundant [default: 0.5]\n  -H, --head\
+  \            Outputs only head tagged sequence records\n  -C, --cluster        \
+  \ Set obiclean in clustering mode\n\n  *************************************\n \
+  \ * Restriction to a sub-part options *\n  *************************************\n\
+  \    Allow to limit analysis to a sub-part of the data file\n\n    --skip=<N>  \
+  \        skip the N first sequences\n    --only=<N>          treat only N sequences\n\
+  \n  ************************\n  * Input format options *\n  ************************\n\
+  \    If not specified, a test is done to determine the file format\n\n    --genbank\
+  \           Input file is in genbank format\n    --embl              Input file\
+  \ is in embl format\n    --skip-on-error     Skip sequence entries with parse error\n\
+  \    --fasta             Input file is in fasta nucleic format (including\n    \
+  \                    obitools fasta extentions)\n    --ecopcr            Input file\
+  \ is in ecopcr format\n    --raw-fasta         Input file is in fasta format (but\
+  \ more tolerant to\n                        format variant)\n    --sanger      \
+  \      Input file is in sanger fastq nucleic format (standard\n                \
+  \        fastq)\n    --solexa            Input file is in fastq nucleic format produced\
+  \ by\n                        solexa sequencer\n    --ecopcrdb          Input file\
+  \ is an ecopcr database\n    --nuc               Input file contains nucleic sequences\n\
+  \    --prot              Input file contains protein sequences\n\n  *************************\n\
+  \  * Output format options *\n  *************************\n    --fasta-output  \
+  \    Output sequences in obitools fasta format\n    --fastq-output      Output sequences\
+  \ in sanger fastq format\n    --ecopcrdb-output=ECOPCROUTPUT\n                 \
+  \       Output sequences in ecopcr database format (sequence\n                 \
+  \       records are not printed on standard output)\n    --uppercase         Print\
+  \ sequences in upper case (default is lower case)\n"
+generated_using:
+- --help

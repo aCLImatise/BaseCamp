@@ -1,0 +1,359 @@
+!Command
+command:
+- flexbar
+positional: []
+named:
+- !Flag
+  description: Display the help message with advanced options.
+  synonyms:
+  - -hh
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print Flexbar and SeqAn version numbers.
+  synonyms:
+  - -v
+  - --versions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show program references for citation.
+  synonyms:
+  - -c
+  - --cite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of threads to employ. Default: 1.'
+  synonyms:
+  - -n
+  - --threads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Prefix for output file names or paths. Default: flexbarOut.'
+  synonyms:
+  - -t
+  - --target
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: Fasta/q file or stdin (-) with reads that may contain barcodes.
+  synonyms:
+  - -r
+  - --reads
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: Second input file of paired reads, gz and bz2 files supported.
+  synonyms:
+  - -p
+  - --reads2
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: Fasta file with barcodes for demultiplexing, may contain N.
+  synonyms:
+  - -b
+  - --barcodes
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: Fasta/q file containing separate barcode reads for detection.
+  synonyms:
+  - -br
+  - --barcode-reads
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: 'Minimum overlap of barcode and read. Default: barcode length.'
+  synonyms:
+  - -bo
+  - --barcode-min-overlap
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Error rate threshold for mismatches and gaps. Default: 0.0.'
+  synonyms:
+  - -be
+  - --barcode-error-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Type of detection, see section trim-end modes. Default: LTAIL.'
+  synonyms:
+  - -bt
+  - --barcode-trim-end
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Fasta file with adapters for removal that may contain N.
+  synonyms:
+  - -a
+  - --adapters
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: File with extra adapters for second read set in paired mode.
+  synonyms:
+  - -a2
+  - --adapters2
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: One of TruSeq, SmallRNA, Methyl, Ribo, Nextera, and NexteraMP.
+  synonyms:
+  - -aa
+  - --adapter-preset
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'Minimum overlap for removal without pair overlap. Default: 3.'
+  synonyms:
+  - -ao
+  - --adapter-min-overlap
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Error rate threshold for mismatches and gaps. Default: 0.1.'
+  synonyms:
+  - -ae
+  - --adapter-error-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Type of removal, see section trim-end modes. Default: RIGHT.'
+  synonyms:
+  - -at
+  - --adapter-trim-end
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Overlap detection of paired reads. One of ON, SHORT, and ONLY.
+  synonyms:
+  - -ap
+  - --adapter-pair-overlap
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'Allowed uncalled bases N for each read. Default: 0.'
+  synonyms:
+  - -u
+  - --max-uncalled
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Trim given number of bases on 5' read end before detection.
+  synonyms:
+  - -x
+  - --pre-trim-left
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Trim specified number of bases on 3' end prior to detection.
+  synonyms:
+  - -y
+  - --pre-trim-right
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Minimum read length to remain after removal. Default: 18.'
+  synonyms:
+  - -m
+  - --min-read-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Quality-based trimming mode. One of TAIL, WIN, and BWA.
+  synonyms:
+  - -q
+  - --qtrim
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Quality format. One of sanger, solexa, i1.3, i1.5, and i1.8.
+  synonyms:
+  - -qf
+  - --qtrim-format
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'Minimum quality as threshold for trimming. Default: 20.'
+  synonyms:
+  - -qt
+  - --qtrim-threshold
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Trim certain homopolymers on right read end after removal.
+  synonyms:
+  - -hr
+  - --htrim-right
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'Minimum length of homopolymers at read ends. Default: 3.'
+  synonyms:
+  - -hi
+  - --htrim-min-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Error rate threshold for mismatches. Default: 0.1.'
+  synonyms:
+  - -he
+  - --htrim-error-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: Prefer non-quality format fasta for output.
+  synonyms:
+  - -f
+  - --fasta-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Direct compression of output files. One of GZ and BZ2.
+  synonyms:
+  - -z
+  - --zip-output
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Write reads to stdout, tagged and interleaved if needed.
+  synonyms:
+  - '-1'
+  - --stdout-reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print chosen read alignments. One of ALL, MOD, and TAB.
+  synonyms:
+  - -l
+  - --align-log
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Write statistics to stdout instead of target log file.
+  synonyms:
+  - -o
+  - --stdout-log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tag reads that are subject to adapter or barcode removal.
+  synonyms:
+  - -g
+  - --removal-tags
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nflexbar - flexible barcode and adapter removal\n==============================================\n\
+  \nSYNOPSIS\n    flexbar -r reads [-b barcodes] [-a adapters] [options]\n\nDESCRIPTION\n\
+  \    The program Flexbar preprocesses high-throughput sequencing data\n    efficiently.\
+  \ It demultiplexes barcoded runs and removes adapter sequences.\n    Several adapter\
+  \ removal presets for Illumina libraries are included.\n    Flexbar computes exact\
+  \ overlap alignments using SIMD and multicore\n    parallelism. Moreover, trimming\
+  \ and filtering features are provided, e.g.\n    trimming of homopolymers at read\
+  \ ends. Flexbar increases read mapping\n    rates and improves genome as well as\
+  \ transcriptome assemblies. Unique\n    molecular identifiers can be extracted in\
+  \ a flexible way. The software\n    supports data in fasta and fastq format from\
+  \ multiple sequencing\n    platforms. Refer to the manual on github.com/seqan/flexbar/wiki\
+  \ or contact\n    Johannes Roehr on github.com/jtroehr for support with this application.\n\
+  \nOPTIONS\n    -h, --help\n          Display the help message.\n    -hh, --full-help\n\
+  \          Display the help message with advanced options.\n    -v, --versions\n\
+  \          Print Flexbar and SeqAn version numbers.\n    -c, --cite\n          Show\
+  \ program references for citation.\n\n  Basic options:\n    -n, --threads INTEGER\n\
+  \          Number of threads to employ. Default: 1.\n    -t, --target OUTPUT_PREFIX\n\
+  \          Prefix for output file names or paths. Default: flexbarOut.\n    -r,\
+  \ --reads INPUT_FILE\n          Fasta/q file or stdin (-) with reads that may contain\
+  \ barcodes.\n    -p, --reads2 INPUT_FILE\n          Second input file of paired\
+  \ reads, gz and bz2 files supported.\n\n  Barcode detection:\n    -b, --barcodes\
+  \ INPUT_FILE\n          Fasta file with barcodes for demultiplexing, may contain\
+  \ N.\n    -br, --barcode-reads INPUT_FILE\n          Fasta/q file containing separate\
+  \ barcode reads for detection.\n    -bo, --barcode-min-overlap INTEGER\n       \
+  \   Minimum overlap of barcode and read. Default: barcode length.\n    -be, --barcode-error-rate\
+  \ DOUBLE\n          Error rate threshold for mismatches and gaps. Default: 0.0.\n\
+  \    -bt, --barcode-trim-end STRING\n          Type of detection, see section trim-end\
+  \ modes. Default: LTAIL.\n\n  Adapter removal:\n    -a, --adapters INPUT_FILE\n\
+  \          Fasta file with adapters for removal that may contain N.\n    -a2, --adapters2\
+  \ INPUT_FILE\n          File with extra adapters for second read set in paired mode.\n\
+  \    -aa, --adapter-preset STRING\n          One of TruSeq, SmallRNA, Methyl, Ribo,\
+  \ Nextera, and NexteraMP.\n    -ao, --adapter-min-overlap INTEGER\n          Minimum\
+  \ overlap for removal without pair overlap. Default: 3.\n    -ae, --adapter-error-rate\
+  \ DOUBLE\n          Error rate threshold for mismatches and gaps. Default: 0.1.\n\
+  \    -at, --adapter-trim-end STRING\n          Type of removal, see section trim-end\
+  \ modes. Default: RIGHT.\n    -ap, --adapter-pair-overlap STRING\n          Overlap\
+  \ detection of paired reads. One of ON, SHORT, and ONLY.\n\n  Filtering and trimming:\n\
+  \    -u, --max-uncalled INTEGER\n          Allowed uncalled bases N for each read.\
+  \ Default: 0.\n    -x, --pre-trim-left INTEGER\n          Trim given number of bases\
+  \ on 5' read end before detection.\n    -y, --pre-trim-right INTEGER\n         \
+  \ Trim specified number of bases on 3' end prior to detection.\n    -m, --min-read-length\
+  \ INTEGER\n          Minimum read length to remain after removal. Default: 18.\n\
+  \n  Quality-based trimming:\n    -q, --qtrim STRING\n          Quality-based trimming\
+  \ mode. One of TAIL, WIN, and BWA.\n    -qf, --qtrim-format STRING\n          Quality\
+  \ format. One of sanger, solexa, i1.3, i1.5, and i1.8.\n    -qt, --qtrim-threshold\
+  \ INTEGER\n          Minimum quality as threshold for trimming. Default: 20.\n\n\
+  \  Trimming of homopolymers:\n    -hr, --htrim-right STRING\n          Trim certain\
+  \ homopolymers on right read end after removal.\n    -hi, --htrim-min-length INTEGER\n\
+  \          Minimum length of homopolymers at read ends. Default: 3.\n    -he, --htrim-error-rate\
+  \ DOUBLE\n          Error rate threshold for mismatches. Default: 0.1.\n\n  Output\
+  \ selection:\n    -f, --fasta-output\n          Prefer non-quality format fasta\
+  \ for output.\n    -z, --zip-output STRING\n          Direct compression of output\
+  \ files. One of GZ and BZ2.\n    -1, --stdout-reads\n          Write reads to stdout,\
+  \ tagged and interleaved if needed.\n\n  Logging and tagging:\n    -l, --align-log\
+  \ STRING\n          Print chosen read alignments. One of ALL, MOD, and TAB.\n  \
+  \  -o, --stdout-log\n          Write statistics to stdout instead of target log\
+  \ file.\n    -g, --removal-tags\n          Tag reads that are subject to adapter\
+  \ or barcode removal.\n\nTRIM-END MODES\n    ANY: longer side of read remains after\
+  \ removal of overlap\n    LEFT: right side remains after removal, align <= read\
+  \ end\n    RIGHT: left part remains after removal, align >= read start\n    LTAIL:\
+  \ consider first n bases of reads in alignment\n    RTAIL: use only last n bases,\
+  \ see tail-length options\n\nEXAMPLES\n    flexbar -r reads.fq -t target -q TAIL\
+  \ -qf i1.8\n    flexbar -r reads.fq -b barcodes.fa -bt LTAIL\n    flexbar -r reads.fq\
+  \ -a adapters.fa -ao 3 -ae 0.1\n    flexbar -r r1.fq -p r2.fq -a a1.fa -a2 a2.fa\
+  \ -ap ON\n    flexbar -r r1.fq -p r2.fq -aa TruSeq -ap ON\n\nVERSION\n    Last update:\
+  \ May 2019\n    flexbar version: 3.5.0\n    SeqAn version: 2.4.0\n\nAvailable on\
+  \ github.com/seqan/flexbar\n\nShow advanced options: flexbar -hh\n\n"
+generated_using:
+- --help

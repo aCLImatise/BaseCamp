@@ -1,0 +1,150 @@
+!Command
+command:
+- bttcmp
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Example
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: The
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: '1'
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: '2'
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: '3'
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: '4'
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: '5'
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: '6'
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: '7'
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: main
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: usage
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: is
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: as
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: follows
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Options:\n    [--help]                      Print the help message and\
+  \ exit\n\n    [--version]                   Show version number of BTTCMP and exit\n\
+  \n    [--threads (INT)]             Number of threads to be used ( Default 4 )\n\
+  \n    [--SeqPath (PATH)]            [Required] The path of input sequences (\n \
+  \                                 Default \"the current directory\" )\n\n    [--SequenceType\
+  \ (STRING)]     [Required] Sequence type for inputs.\n                         \
+  \         \"reads\", \"nucl\", \"orfs\", and \"prot\"\n                        \
+  \          avaliable ( Default nucl )\n\n    [--platform (STRING)]         [Required]\
+  \ Sequencing Platform,\n                                  \"illumina\", \"pacbio\"\
+  , \"oxford\" and\n                                  \"hybrid\" available ( Default\
+  \ illumina )\n\n    [--assemble_only (STRING)]    Only perform genome assembly without\n\
+  \                                  predicting toxins.\n\n    [--reads1 (STRING)]\
+  \           [Required by \"reads\"] The suffix name of\n                       \
+  \           reads 1 ( for example: if the name of\n                            \
+  \      reads 1 is\n                                  \"YBT-1520_L1_I050.R1.clean.fastq.gz\"\
+  ,\n                                  \"YBT-1520\" is the strain same, so the\n \
+  \                                 suffix name should be \".R1.clean.fastq.gz\"\n\
+  \                                  )\n\n    [--reads2 (STRING)]           [Required\
+  \ by \"reads\"] The suffix name of\n                                  reads 2( not\
+  \ required by \"oxford\" and\n                                  \"pacbio\". For\
+  \ example: if the name of\n                                  reads 2 is \"YBT-1520_2.fq\"\
+  , the suffix\n                                  name should be _2.fq\" )\n\n   \
+  \ [--suffix_len (INT)]          [Required by \"reads\"] (Strongly\n            \
+  \                      recommended) The suffix length of the\n                 \
+  \                 reads file, that is the length of the\n                      \
+  \            reads name minus the length of the strain\n                       \
+  \           name. For example the --suffix_len of\n                            \
+  \      \"YBT-1520_L1_I050.R1.clean.fastq.gz\" is 26\n                          \
+  \        ( \"YBT-1520\" is the strain name ) (\n                               \
+  \   Default 0 )\n\n    [--short1 (STRING)]           [Required] FASTQ file of first\
+  \ short reads\n                                  in each pair. Needed by hybrid\
+  \ assembly (\n                                  Default Unset )\n\n    [--short2\
+  \ (STRING)]           [Required] FASTQ file of second short\n                  \
+  \                reads in each pair. Needed by hybrid\n                        \
+  \          assembly ( Default Unset )\n\n    [--long (STRING)]             [Required]\
+  \ FASTQ or FASTA file of long\n                                  reads. Needed by\
+  \ hybrid assembly ( Default\n                                  Unset )\n\n    [--hout\
+  \ (STRING)]             [Required] Output directory for hybrid\n               \
+  \                   assembly ( Default\n                                  ./Results/Assembles/Hybrid\
+  \ )\n\n    [--genomeSize (STRING)]       [Required] An estimate of the size of the\n\
+  \                                  genome. Common suffixes are allowed, for\n  \
+  \                                example, 3.7m or 2.8g. Needed by PacBio\n     \
+  \                             data and Oxford data ( Default 6.07m )\n\n    [--Scaf_suffix\
+  \ (STRING)]      The suffix of scaffolds or genomes (\n                        \
+  \          Default \".filtered.fas\" )\n\n    [--orfs_suffix (STRING)]      The\
+  \ suffix of orfs files ( Default \".ffn\"\n                                  )\n\
+  \n    [--prot_suffix (STRING)]      The suffix of protein files ( Default\n    \
+  \                              \".faa\" )\n\nUsage:\n      bttcmp [Options]\n\n\
+  \      The main usage is as follows:\n\n      Example 1: Processing Illumina paired-end\
+  \ Reads\n\n                 bttcmp --SeqPath <Illumina Reads PATH> --SequenceType\
+  \ reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name\
+  \ of reads 2> --threads <INT> --suffix_len <INT>\n\n      Example 2: Processing\
+  \ PacBio long Reads\n\n                 bttcmp --SeqPath <PacBio Reads PATH> --SequenceType\
+  \ reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT>\
+  \ --suffix_len <INT>\n\n      Example 3: Processing Oxford long Reads\n\n      \
+  \           bttcmp --SeqPath <Oxford Reads PATH> --SequenceType reads --platform\
+  \ oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>\n\
+  \n      Example 4: Processing Hybrid Reads (Long reads + illumina short reads)\n\
+  \n                 bttcmp --SeqPath <Reads PATH> --SequenceType reads --platform\
+  \ hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads\
+  \ <INT>\n\n      Example 5: Processing assembled genomes\n\n                 bttcmp\
+  \ --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of\
+  \ genomes> --threads <INT>\n\n      Example 6: Processing protein sequences\n\n\
+  \                 bttcmp --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix\
+  \ <suffix of protein files> --threads <INT>\n\n      Example 7: Processing orfs\
+  \ sequences\n\n                 bttcmp --SeqPath <orfs file PATH> --SequenceType\
+  \ orfs --orfs_suffix <suffix of orfs files> --threads <INT>\n\n"
+generated_using:
+- --help

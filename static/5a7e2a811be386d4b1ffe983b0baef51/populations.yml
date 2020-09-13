@@ -1,0 +1,466 @@
+!Command
+command:
+- populations
+positional: []
+named:
+- !Flag
+  description: ': path to a directory containing Stacks ouput files.'
+  synonyms:
+  - -P
+  - --in-path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': path to a standalone input VCF file.'
+  synonyms:
+  - -V
+  - --in-vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': path to a directory where to write the output files. (Required by
+    -V; otherwise defaults to value of -P.)'
+  synonyms:
+  - -O
+  - --out-path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": path to a population map. (Format is 'SAMPLE1 \\t POP1 \\n SAMPLE2\
+    \ ...'.)"
+  synonyms:
+  - -M
+  - --popmap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': number of threads to run in parallel sections of code.'
+  synonyms:
+  - -t
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[int]: the number of loci to process in a batch (default: 10,000 in\
+    \ de novo mode; in reference mode, one chromosome\nper batch). Increase to speed\
+    \ analysis, uses more memory, decrease to save memory)."
+  synonyms:
+  - --batch-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]: minimum number of populations a locus must be present in to
+    process a locus.'
+  synonyms:
+  - -p
+  - --min-populations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[float]: minimum percentage of individuals in a population required
+    to process a locus for that population.'
+  synonyms:
+  - -r
+  - --min-samples-per-pop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[float]: minimum percentage of individuals across populations required
+    to process a locus.'
+  synonyms:
+  - -R
+  - --min-samples-overall
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": apply the above filters haplotype wise\n(unshared SNPs will be pruned\
+    \ to reduce haplotype-wise missing data)."
+  synonyms:
+  - -H
+  - --filter-haplotype-wise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[float]: specify a minimum minor allele frequency required to process
+    a SNP (0 < min_maf < 0.5).'
+  synonyms:
+  - --min-maf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]: specify a minimum minor allele count required to process a
+    SNP.'
+  synonyms:
+  - --min-mac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[float]: specify a maximum observed heterozygosity required to process
+    a SNP.'
+  synonyms:
+  - --max-obs-het
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': restrict data analysis to only the first SNP per locus (implies
+    --no-haps).'
+  synonyms:
+  - --write-single-snp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': restrict data analysis to one random SNP per locus (implies --no-haps).'
+  synonyms:
+  - --write-random-snp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': path to a file containing Blacklisted markers to be excluded from
+    the export.'
+  synonyms:
+  - -B
+  - --blacklist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': path to a file containing Whitelisted markers to include in the
+    export.'
+  synonyms:
+  - -W
+  - --whitelist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': restriction enzyme name.'
+  synonyms:
+  - -e
+  - --renz
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': merge loci that were produced from the same restriction enzyme cutsite
+    (requires reference-aligned data).'
+  synonyms:
+  - --merge-sites
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': when merging adjacent loci, if at least X% samples posses both loci
+    prune the remaining samples out of the analysis.'
+  synonyms:
+  - --merge-prune-lim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': calculate divergence from Hardy-Weinberg equilibrium for each locus.'
+  synonyms:
+  - --hwe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': enable SNP and haplotype-based F statistics.'
+  synonyms:
+  - --fstats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": specify a p-value correction to be applied to Fst values based on\
+    \ a Fisher's exact test. Default: off."
+  synonyms:
+  - --fst-correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[float]: maximum p-value to keep an Fst measurement. Default: 0.05.
+    (Also used as base for Bonferroni correction.)'
+  synonyms:
+  - --p-value-cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": enable kernel-smoothed Pi, Fis, Fst, Fst', and Phi_st calculations."
+  synonyms:
+  - -k
+  - --smooth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": enable kernel-smoothed Fst, Fst', and Phi_st calculations."
+  synonyms:
+  - --smooth-fstats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": enable kernel-smoothed Pi and Fis calculations.\n(Note: turning\
+    \ on smoothing implies --ordered-export.)"
+  synonyms:
+  - --smooth-popstats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]: standard deviation of the kernel smoothing weight distribution.
+    Default 150kb.'
+  synonyms:
+  - --sigma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': turn on boostrap resampling for all smoothed statistics.'
+  synonyms:
+  - --bootstrap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]: number of bootstrap resamplings to calculate (default 100).'
+  synonyms:
+  - -N
+  - --bootstrap-reps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': turn on boostrap resampling for smoothed SNP-based Pi and Fis calculations.'
+  synonyms:
+  - --bootstrap-pifis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': turn on boostrap resampling for smoothed Fst calculations based
+    on pairwise population comparison of SNPs.'
+  synonyms:
+  - --bootstrap-fst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': turn on boostrap resampling for smoothed haplotype diveristy and
+    gene diversity calculations based on haplotypes.'
+  synonyms:
+  - --bootstrap-div
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': turn on boostrap resampling for smoothed Phi_st calculations based
+    on haplotypes.'
+  synonyms:
+  - --bootstrap-phist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[path]: only bootstrap loci contained in this whitelist.'
+  synonyms:
+  - --bootstrap-wl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': if data is reference aligned, exports will be ordered; only a single
+    representative of each overlapping site.'
+  synonyms:
+  - --ordered-export
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output locus consensus sequences in FASTA format.'
+  synonyms:
+  - --fasta-loci
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output the sequences of the two haplotypes of each (diploid) sample,
+    for each locus, in FASTA format.'
+  synonyms:
+  - --fasta-samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output SNPs and haplotypes in Variant Call Format (VCF).'
+  synonyms:
+  - --vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output SNPs and haplotypes in GenePop format.'
+  synonyms:
+  - --genepop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output results in Structure format.'
+  synonyms:
+  - --structure
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output results in fineRADstructure/RADpainter format.'
+  synonyms:
+  - --radpainter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output genotypes in PLINK format.'
+  synonyms:
+  - --plink
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output genotypes in Hybrid Zone Analysis using R (HZAR) format.'
+  synonyms:
+  - --hzar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output nucleotides that are fixed-within, and variant among populations
+    in Phylip format for phylogenetic tree construction.'
+  synonyms:
+  - --phylip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': include variable sites in the phylip output encoded using IUPAC
+    notation.'
+  synonyms:
+  - --phylip-var
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': include all sequence as well as variable sites in the phylip output
+    encoded using IUPAC notation.'
+  synonyms:
+  - --phylip-var-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output SNPs in a format useable for the TreeMix program (Pickrell
+    and Pritchard).'
+  synonyms:
+  - --treemix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': omit haplotype outputs.'
+  synonyms:
+  - --no-hap-exports
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output all haplotypes observed in each sample, for each locus, in
+    FASTA format.'
+  synonyms:
+  - --fasta-samples-raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": genetic map type to write. 'CP', 'DH', 'F2', and 'BC1' are the currently\
+    \ supported map types."
+  synonyms:
+  - --map-type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": mapping program format to write, 'joinmap', 'onemap', and 'rqtl'\
+    \ are currently supported."
+  synonyms:
+  - --map-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': turn on additional logging.'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': log components of Fst/Phi_st calculations to a file.'
+  synonyms:
+  - --log-fst-comp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': display this help messsage.'
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: ': print program version.'
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "populations 2.53\nUsage:\npopulations -P dir [-O dir] [-M popmap] (filters)\
+  \ [--fstats] [-k [--sigma=150000] [--bootstrap [-N 100]]] (output formats)\npopulations\
+  \ -V vcf -O dir [-M popmap] (filters) [--fstats] [-k [--sigma=150000] [--bootstrap\
+  \ [-N 100]]] (output formats)\n\n  -P,--in-path: path to a directory containing\
+  \ Stacks ouput files.\n  -V,--in-vcf: path to a standalone input VCF file.\n  -O,--out-path:\
+  \ path to a directory where to write the output files. (Required by -V; otherwise\
+  \ defaults to value of -P.)\n  -M,--popmap: path to a population map. (Format is\
+  \ 'SAMPLE1 \\t POP1 \\n SAMPLE2 ...'.)\n  -t,--threads: number of threads to run\
+  \ in parallel sections of code.\n  --batch-size [int]: the number of loci to process\
+  \ in a batch (default: 10,000 in de novo mode; in reference mode, one chromosome\n\
+  \                      per batch). Increase to speed analysis, uses more memory,\
+  \ decrease to save memory).\n\nData Filtering:\n  -p,--min-populations [int]: minimum\
+  \ number of populations a locus must be present in to process a locus.\n  -r,--min-samples-per-pop\
+  \ [float]: minimum percentage of individuals in a population required to process\
+  \ a locus for that population.\n  -R,--min-samples-overall [float]: minimum percentage\
+  \ of individuals across populations required to process a locus.\n  -H,--filter-haplotype-wise:\
+  \ apply the above filters haplotype wise\n                              (unshared\
+  \ SNPs will be pruned to reduce haplotype-wise missing data).\n  --min-maf [float]:\
+  \ specify a minimum minor allele frequency required to process a SNP (0 < min_maf\
+  \ < 0.5).\n  --min-mac [int]: specify a minimum minor allele count required to process\
+  \ a SNP.\n  --max-obs-het [float]: specify a maximum observed heterozygosity required\
+  \ to process a SNP.\n\n  --write-single-snp: restrict data analysis to only the\
+  \ first SNP per locus (implies --no-haps).\n  --write-random-snp: restrict data\
+  \ analysis to one random SNP per locus (implies --no-haps).\n  -B,--blacklist: path\
+  \ to a file containing Blacklisted markers to be excluded from the export.\n  -W,--whitelist:\
+  \ path to a file containing Whitelisted markers to include in the export.\n\nMerging\
+  \ and Phasing:\n  -e,--renz: restriction enzyme name.\n  --merge-sites: merge loci\
+  \ that were produced from the same restriction enzyme cutsite (requires reference-aligned\
+  \ data).\n  --merge-prune-lim: when merging adjacent loci, if at least X% samples\
+  \ posses both loci prune the remaining samples out of the analysis.\n\nLocus stats:\n\
+  \  --hwe: calculate divergence from Hardy-Weinberg equilibrium for each locus.\n\
+  \nFstats:\n  --fstats: enable SNP and haplotype-based F statistics.\n  --fst-correction:\
+  \ specify a p-value correction to be applied to Fst values based on a Fisher's exact\
+  \ test. Default: off.\n  --p-value-cutoff [float]: maximum p-value to keep an Fst\
+  \ measurement. Default: 0.05. (Also used as base for Bonferroni correction.)\n\n\
+  Kernel-smoothing algorithm:\n  -k,--smooth: enable kernel-smoothed Pi, Fis, Fst,\
+  \ Fst', and Phi_st calculations.\n  --smooth-fstats: enable kernel-smoothed Fst,\
+  \ Fst', and Phi_st calculations.\n  --smooth-popstats: enable kernel-smoothed Pi\
+  \ and Fis calculations.\n    (Note: turning on smoothing implies --ordered-export.)\n\
+  \  --sigma [int]: standard deviation of the kernel smoothing weight distribution.\
+  \ Default 150kb.\n  --bootstrap: turn on boostrap resampling for all smoothed statistics.\n\
+  \  -N,--bootstrap-reps [int]: number of bootstrap resamplings to calculate (default\
+  \ 100).\n  --bootstrap-pifis: turn on boostrap resampling for smoothed SNP-based\
+  \ Pi and Fis calculations.\n  --bootstrap-fst: turn on boostrap resampling for smoothed\
+  \ Fst calculations based on pairwise population comparison of SNPs.\n  --bootstrap-div:\
+  \ turn on boostrap resampling for smoothed haplotype diveristy and gene diversity\
+  \ calculations based on haplotypes.\n  --bootstrap-phist: turn on boostrap resampling\
+  \ for smoothed Phi_st calculations based on haplotypes.\n  --bootstrap-wl [path]:\
+  \ only bootstrap loci contained in this whitelist.\n\nFile output options:\n  --ordered-export:\
+  \ if data is reference aligned, exports will be ordered; only a single representative\
+  \ of each overlapping site.\n  --fasta-loci: output locus consensus sequences in\
+  \ FASTA format.\n  --fasta-samples: output the sequences of the two haplotypes of\
+  \ each (diploid) sample, for each locus, in FASTA format.\n  --vcf: output SNPs\
+  \ and haplotypes in Variant Call Format (VCF).\n  --genepop: output SNPs and haplotypes\
+  \ in GenePop format.\n  --structure: output results in Structure format.\n  --radpainter:\
+  \ output results in fineRADstructure/RADpainter format.\n  --plink: output genotypes\
+  \ in PLINK format.\n  --hzar: output genotypes in Hybrid Zone Analysis using R (HZAR)\
+  \ format.\n  --phylip: output nucleotides that are fixed-within, and variant among\
+  \ populations in Phylip format for phylogenetic tree construction.\n  --phylip-var:\
+  \ include variable sites in the phylip output encoded using IUPAC notation.\n  --phylip-var-all:\
+  \ include all sequence as well as variable sites in the phylip output encoded using\
+  \ IUPAC notation.\n  --treemix: output SNPs in a format useable for the TreeMix\
+  \ program (Pickrell and Pritchard).\n  --no-hap-exports: omit haplotype outputs.\n\
+  \  --fasta-samples-raw: output all haplotypes observed in each sample, for each\
+  \ locus, in FASTA format.\n\nGenetic map output options (population map must specify\
+  \ a genetic cross):\n  --map-type: genetic map type to write. 'CP', 'DH', 'F2',\
+  \ and 'BC1' are the currently supported map types.\n  --map-format: mapping program\
+  \ format to write, 'joinmap', 'onemap', and 'rqtl' are currently supported.\n\n\
+  Additional options:\n  -h,--help: display this help messsage.\n  -v,--version: print\
+  \ program version.\n  --verbose: turn on additional logging.\n  --log-fst-comp:\
+  \ log components of Fst/Phi_st calculations to a file.\n"
+generated_using:
+- --help

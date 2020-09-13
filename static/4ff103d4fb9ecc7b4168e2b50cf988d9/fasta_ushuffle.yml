@@ -1,0 +1,90 @@
+!Command
+command:
+- fasta_ushuffle
+positional:
+- !Positional
+  description: '>dummy2'
+  position: 0
+  name: AGTAGTAGTAGTAGTAGTAGTAGTAGTAGTAGAGTG
+  optional: false
+- !Positional
+  description: 'This is not a valid input file:'
+  position: 1
+  name: CTGAGAGTCACACATGATTTTACAACAACCATGAAG
+  optional: false
+- !Positional
+  description: TAGTAGAGTG
+  position: 0
+  name: AGTAGTAGTAGTAGTAGTAGTAGTAG
+  optional: false
+- !Positional
+  description: AACCATGAAG
+  position: 0
+  name: CTGAGAGTCACACATGATTTTACAAC
+  optional: false
+named:
+- !Flag
+  description: Print original (unshuffled) in output file.
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specifies the let size
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: specifies the seed for random number generator.
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "For each input sequence, print N permutations (default is 1).\nUse\
+    \ this only for debugging."
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Retry N times to find a new shuffle (Default is 10). After N retries,
+    a warning is printed, and a non-shuffled sequence will be written.
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: This help screen
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "fasta_ushuffle: invalid option -- '-'\nfasta_ushuffle: shuffles biological\
+  \ sequences while preserving the k-let counts.\n\nVERSION 0.2\n\n\nCopyright (C)\
+  \ 2010 A. gordon (gordon@cshl.edu).\n\nUses the uShuffle library code by: Minghui\
+  \ Jiang, James Anderson, Joel Gillespie, and Martin Mayne.\n\nUsage: fasta_ushuffle\
+  \ [-r N] [-h] [-o] [-n N] [-k N] [-s N] < INPUT.FA > OUTPUT.FA\n\n -h\t\tThis help\
+  \ screen\n -o            Print original (unshuffled) in output file.\n -k N\t\t\
+  specifies the let size\n -s N\t\tspecifies the seed for random number generator.\n\
+  \ -n N          For each input sequence, print N permutations (default is 1).\n\
+  \               Use this only for debugging.\n -r N          Retry N times to find\
+  \ a new shuffle (Default is 10). After N retries, a warning is printed, and a non-shuffled\
+  \ sequence will be written.\n\nNucleotide sequences in the input FASTA file must\
+  \ be in a single line.\nThis is a valid input file:\n  >dummy1\n  AGTAGTAGTAGTAGTAGTAGTAGTAGTAGTAGAGTG\n\
+  \  >dummy2\n  CTGAGAGTCACACATGATTTTACAACAACCATGAAG\n\nThis is not a valid input\
+  \ file:\n  >dummy1\n  AGTAGTAGTAGTAGTAGTAGTAGTAG\n  TAGTAGAGTG\n  >dummy2\n  CTGAGAGTCACACATGATTTTACAAC\n\
+  \  AACCATGAAG\n\nUse fasta_formatter (from the FASTX-Toolkit) to re-format a multiline\
+  \ fasta file.\n\n"
+generated_using:
+- --help

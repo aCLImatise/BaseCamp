@@ -1,0 +1,116 @@
+!Command
+command:
+- wellington_bootstrap.py
+positional:
+- !Positional
+  description: BAM file for treatment
+  position: 0
+  name: treatment_bam
+  optional: false
+- !Positional
+  description: BAM file for control
+  position: 1
+  name: control_bam
+  optional: false
+- !Positional
+  description: BED file of genomic locations to search in
+  position: 2
+  name: bedsites
+  optional: false
+- !Positional
+  description: File to write treatment specific fooprints scores to
+  position: 3
+  name: treatment_only_output
+  optional: false
+- !Positional
+  description: File to write control specific footprint scores to
+  position: 4
+  name: control_only_output
+  optional: false
+named:
+- !Flag
+  description: "Range of footprint sizes to try in format\n\"from,to,step\" (default:\
+    \ 11,26,2)"
+  synonyms:
+  - -fp
+  - --footprint-sizes
+  args: !SimpleFlagArg
+    name: FOOTPRINT_SIZES
+  optional: true
+- !Flag
+  description: "Detect footprints using the FDR selection method at a\nspecific FDR\
+    \ (default: 0.01)"
+  synonyms:
+  - -fdr
+  - --FDR_cutoff
+  args: !SimpleFlagArg
+    name: FDR_CUTOFF
+  optional: true
+- !Flag
+  description: "How many randomisations to use when performing FDR\ncalculations (default:\
+    \ 100)"
+  synonyms:
+  - -fdriter
+  - --FDR_iterations
+  args: !SimpleFlagArg
+    name: FDR_ITERATIONS
+  optional: true
+- !Flag
+  description: "Minimum p-value to be considered significant for FDR\ncalculation\
+    \ (default: -20)"
+  synonyms:
+  - -fdrlimit
+  - --FDR_limit
+  args: !SimpleFlagArg
+    name: FDR_LIMIT
+  optional: true
+- !Flag
+  description: 'Number of processes to use (default: uses all CPUs)'
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'ATAC-seq mode (default: False)'
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: wellington_bootstrap.py [-h] [-fp FOOTPRINT_SIZES] [-fdr FDR_CUTOFF]\n\
+  \                               [-fdriter FDR_ITERATIONS] [-fdrlimit FDR_LIMIT]\n\
+  \                               [-p PROCESSES] [-A]\n                          \
+  \     treatment_bam control_bam bedsites\n                               treatment_only_output\
+  \ control_only_output\n\nScores Differential Footprints using Wellington-Bootstrap.\n\
+  \npositional arguments:\n  treatment_bam         BAM file for treatment\n  control_bam\
+  \           BAM file for control\n  bedsites              BED file of genomic locations\
+  \ to search in\n  treatment_only_output\n                        File to write treatment\
+  \ specific fooprints scores to\n  control_only_output   File to write control specific\
+  \ footprint scores to\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -fp FOOTPRINT_SIZES, --footprint-sizes FOOTPRINT_SIZES\n\
+  \                        Range of footprint sizes to try in format\n           \
+  \             \"from,to,step\" (default: 11,26,2)\n  -fdr FDR_CUTOFF, --FDR_cutoff\
+  \ FDR_CUTOFF\n                        Detect footprints using the FDR selection\
+  \ method at a\n                        specific FDR (default: 0.01)\n  -fdriter\
+  \ FDR_ITERATIONS, --FDR_iterations FDR_ITERATIONS\n                        How many\
+  \ randomisations to use when performing FDR\n                        calculations\
+  \ (default: 100)\n  -fdrlimit FDR_LIMIT, --FDR_limit FDR_LIMIT\n               \
+  \         Minimum p-value to be considered significant for FDR\n               \
+  \         calculation (default: -20)\n  -p PROCESSES, --processes PROCESSES\n  \
+  \                      Number of processes to use (default: uses all CPUs)\n  -A\
+  \                    ATAC-seq mode (default: False)\n"
+generated_using:
+- --help

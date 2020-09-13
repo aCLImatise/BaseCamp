@@ -1,0 +1,123 @@
+!Command
+command:
+- closest-features-float128
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: closest-features
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Process-Flags
+  optional: true
+- !Positional
+  description: ''
+  position: 2
+  name: input-file
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: query-file
+  optional: false
+named:
+- !Flag
+  description: Jump to and process data for given <chromosome> only.
+  synonyms:
+  - --chrom
+  args: !SimpleFlagArg
+    name: chromosome
+  optional: true
+- !Flag
+  description: Choose the closest element for output only.  Ties go the left element.
+  synonyms:
+  - --closest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Change output delimiter from '|' to <delim> between columns (e.g. '\t')
+  synonyms:
+  - --delim
+  args: !SimpleFlagArg
+    name: delim
+  optional: true
+- !Flag
+  description: "Print the signed distances to the <input-file> element as additional\n\
+    columns of output.  An overlapping element has a distance of 0."
+  synonyms:
+  - --dist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Error check all input files (slower).
+  synonyms:
+  - --ec
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Accept headers (VCF, GFF, SAM, BED, WIG) in any input file.
+  synonyms:
+  - --header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overlapping elements from <query-file> will not be reported.
+  synonyms:
+  - --no-overlaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not echo elements from <input-file>.
+  synonyms:
+  - --no-ref
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this message and exit successfully.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print program information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "closest-features\n  citation: http://bioinformatics.oxfordjournals.org/content/28/14/1919.abstract\n\
+  \            https://doi.org/10.1093/bioinformatics/bts277\n  version:  2.4.39 (typical,\
+  \ quadruple precision float)\n  authors:  Shane Neph & Scott Kuehn\n\nUSAGE: closest-features\
+  \ [Process-Flags] <input-file> <query-file>\n   All input files must be sorted per\
+  \ sort-bed.\n   The program accepts BED and Starch file formats\n   May use '-'\
+  \ for a file to indicate reading from standard input (BED format only).\n\n   For\
+  \ every element in <input-file>, determine the two elements from <query-file> falling\n\
+  \     nearest to its left and right edges (See NOTES below).  By default, echo the\
+  \ <input-file>\n     element, followed by those left and right elements found in\
+  \ <query-file>.\n\n  Process Flags:\n    --chrom <chromosome>   Jump to and process\
+  \ data for given <chromosome> only.\n    --closest              Choose the closest\
+  \ element for output only.  Ties go the left element.\n    --delim <delim>     \
+  \   Change output delimiter from '|' to <delim> between columns (e.g. '\\t')\n \
+  \   --dist                 Print the signed distances to the <input-file> element\
+  \ as additional\n                             columns of output.  An overlapping\
+  \ element has a distance of 0.\n    --ec                   Error check all input\
+  \ files (slower).\n    --header               Accept headers (VCF, GFF, SAM, BED,\
+  \ WIG) in any input file.\n    --help                 Print this message and exit\
+  \ successfully.\n    --no-overlaps          Overlapping elements from <query-file>\
+  \ will not be reported.\n    --no-ref               Do not echo elements from <input-file>.\n\
+  \    --version              Print program information.\n\n  NOTES:\n    If an element\
+  \ from <query-file> overlaps the <input-file> element, its distance is zero.\n \
+  \     An overlapping element takes precedence over all non-overlapping elements.\
+  \  This is true\n      even when the overlapping element's edge-to-edge distance\
+  \ to the <input-file>'s element\n      is greater than the edge-to-edge distance\
+  \ from a non-overlapping element.\n    Overlapping elements may be ignored completely\
+  \ (no precedence) with --no-overlaps.\n    Elements reported as closest to the left\
+  \ and right edges are never the same.\n    When no qualifying element from <query-file>\
+  \ exists as a closest feature, 'NA' is reported.\n\n"
+generated_using:
+- --help

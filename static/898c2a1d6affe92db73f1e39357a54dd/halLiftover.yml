@@ -1,0 +1,188 @@
+!Command
+command:
+- halLiftover
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: halFile
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: srcGenome
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: srcBed
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: tgtGenome
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: tgtBed
+  optional: false
+named:
+- !Flag
+  description: ':                     append results to tgtBed [default = 0]'
+  synonyms:
+  - --append
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":         maximum size in bytes of regular hdf5 cache [default =\n\
+    15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':           number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":           number of regular slots in hdf5 cache.  should be a\n\
+    prime number ~= 10 * DefaultCacheRDCBytes / chunk\n[default = 599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':            w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":   coalescence limit genome: the genome at or above the\nMRCA of\
+    \ source and target at which we stop looking for\nhomologies (default: MRCA) [default\
+    \ = ]"
+  synonyms:
+  - --coalescenceLimit
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":       bed version of input file as integer between 3 and 9 or\n\
+    12 reflecting the number of columns (see bed format"
+  synonyms:
+  - --inBedVersion
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":                   load all data in memory (and disable hdf5 cache)\n\
+    [default = 0]"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":                  keep extra columns. these are columns in the input\n\
+    beyond the specified or detected bed version, and which\nare cut by default. [default\
+    \ = 0]"
+  synonyms:
+  - --keepExtra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':                    do not map between duplications in graph. [default
+    = 0]'
+  synonyms:
+  - --noDupes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":      bed version of output file as integer between 3 and 9\nor 12\
+    \ reflecting the number of columns (see bed format\nspecification for more details).\
+    \ Will be same as input\nby default. [default = 0]"
+  synonyms:
+  - --outBedVersion
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":                     write output in PSL instead of bed format. overrides\n\
+    --outBedVersion when specified. [default = 0]"
+  synonyms:
+  - --outPSL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":             write output as input BED name followed by PSL line\n\
+    instead of bed format. overrides --outBedVersion when\nspecified. [default = 0]"
+  synonyms:
+  - --outPSLWithName
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":                        input is tab-separated. this allows column\
+    \ entries to\ncontain spaces.  if this flag is not set, both spaces\nand tabs\
+    \ are used to separate input columns. [default =\n0]\n"
+  synonyms:
+  - --tab
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ':                       dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: " \n\nhalLiftover v2.1: Map BED genome interval coordinates between two\
+  \ genomes.\n\nUSAGE:\nhalLiftover [Options] <halFile> <srcGenome> <srcBed> <tgtGenome>\
+  \ <tgtBed>\n\nARGUMENTS:\nhalFile:     input hal file\nsrcGenome:   source genome\
+  \ name\nsrcBed:      path of input bed file.  set as stdin to stream from standard\
+  \ input\ntgtGenome:   target genome name\ntgtBed:      path of output bed file.\
+  \  set as stdout to stream to standard output.\n\nOPTIONS:\n--append:          \
+  \           append results to tgtBed [default = 0]\n--cacheBytes <value>:      \
+  \   maximum size in bytes of regular hdf5 cache [default = \n                  \
+  \            15728640]\n--cacheMDC <value>:           number of metadata slots in\
+  \ hdf5 cache [default = 113]\n--cacheRDC <value>:           number of regular slots\
+  \ in hdf5 cache.  should be a \n                              prime number ~= 10\
+  \ * DefaultCacheRDCBytes / chunk \n                              [default = 599999]\n\
+  --cacheW0 <value>:            w0 parameter fro hdf5 cache [default = 0.75]\n--coalescenceLimit\
+  \ <value>:   coalescence limit genome: the genome at or above the \n           \
+  \                   MRCA of source and target at which we stop looking for \n  \
+  \                            homologies (default: MRCA) [default = ]\n--help:  \
+  \                     dsiplay this help page [default = 0]\n--inBedVersion <value>:\
+  \       bed version of input file as integer between 3 and 9 or\n              \
+  \                 12 reflecting the number of columns (see bed format \n       \
+  \                       specification for more details). Will be autodetected \n\
+  \                              by default. [default = 0]\n--inMemory:          \
+  \         load all data in memory (and disable hdf5 cache) \n                  \
+  \            [default = 0]\n--keepExtra:                  keep extra columns. these\
+  \ are columns in the input \n                              beyond the specified\
+  \ or detected bed version, and which\n                               are cut by\
+  \ default. [default = 0]\n--noDupes:                    do not map between duplications\
+  \ in graph. [default = 0]\n--outBedVersion <value>:      bed version of output file\
+  \ as integer between 3 and 9 \n                              or 12 reflecting the\
+  \ number of columns (see bed format \n                              specification\
+  \ for more details). Will be same as input \n                              by default.\
+  \ [default = 0]\n--outPSL:                     write output in PSL instead of bed\
+  \ format. overrides \n                              --outBedVersion when specified.\
+  \ [default = 0]\n--outPSLWithName:             write output as input BED name followed\
+  \ by PSL line \n                              instead of bed format. overrides --outBedVersion\
+  \ when \n                              specified. [default = 0]\n--tab:        \
+  \                input is tab-separated. this allows column entries to \n      \
+  \                        contain spaces.  if this flag is not set, both spaces \n\
+  \                              and tabs are used to separate input columns. [default\
+  \ =\n                               0]\n\n\n"
+generated_using:
+- --help

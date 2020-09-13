@@ -1,0 +1,237 @@
+!Command
+command:
+- hal2maf
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: halFile
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: mafFile
+  optional: false
+named:
+- !Flag
+  description: ":                      append to instead of overwrite output file.\
+    \ [default =\n0]"
+  synonyms:
+  - --append
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":          maximum size in bytes of regular hdf5 cache [default =\n\
+    15728640]"
+  synonyms:
+  - --cacheBytes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':            number of metadata slots in hdf5 cache [default = 113]'
+  synonyms:
+  - --cacheMDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":            number of regular slots in hdf5 cache.  should be a\n\
+    prime number ~= 10 * DefaultCacheRDCBytes / chunk\n[default = 599999]"
+  synonyms:
+  - --cacheRDC
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':             w0 parameter fro hdf5 cache [default = 0.75]'
+  synonyms:
+  - --cacheW0
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":                      output all columns in alignment, ignoring refGenome,\n\
+    refSequence, etc. flags [default = 0]"
+  synonyms:
+  - --global
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":                    load all data in memory (and disable hdf5 cache)\n\
+    [default = 0]"
+  synonyms:
+  - --inMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":              length of the reference genome (or sequence if\nspecified)\
+    \ to convert.  If set to 0, the entire thing\nis converted [default = 0]"
+  synonyms:
+  - --length
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':         maximum length of MAF block in output [default = 1000]'
+  synonyms:
+  - --maxBlockLen
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':           maximum gap length in reference [default = 0]'
+  synonyms:
+  - --maxRefGap
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":                 don't write ancestral sequences. IMPORTANT: Must\
+    \ be\nused in conjunction with --refGenome to set a\nnon-ancestral genome as the\
+    \ reference because the\ndefault reference is the root. [default = 0]"
+  synonyms:
+  - --noAncestors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':                     ignore paralogy edges [default = 0]'
+  synonyms:
+  - --noDupes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":               make only orthologs to the reference appear in the\
+    \ MAF\nblocks [default = 0]"
+  synonyms:
+  - --onlyOrthologs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":           use only sequence names for output names.  By default,\n\
+    the UCSC convention of Genome.Sequence is used"
+  synonyms:
+  - --onlySequenceNames
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':                   print a gene tree for every block [default = 0]'
+  synonyms:
+  - --printTree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":           name of reference genome (root if empty) [default =\n\"\
+    \"]"
+  synonyms:
+  - --refGenome
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":         name of reference sequence within reference genome\n(all\
+    \ sequences if empty) [default = \"\"]"
+  synonyms:
+  - --refSequence
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":          bed file coordinates of intervals in the reference\ngenome\
+    \ to export (or \"stdin\" to pipe from standard\ninput) [default = \"\"]"
+  synonyms:
+  - --refTargets
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ':          name of root genome (none if empty) [default = ""]'
+  synonyms:
+  - --rootGenome
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":               coordinate within reference genome (or sequence if\n\
+    specified) to start at [default = 0]"
+  synonyms:
+  - --start
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":       comma-separated (no spaces) list of target genomes\n(others\
+    \ are excluded) (vist all if empty) [default =\n\"\"]"
+  synonyms:
+  - --targetGenomes
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":                      only write column whose left-most reference\
+    \ coordinate\nis in the specified range.  this is used to insure"
+  synonyms:
+  - --unique
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ':                        dsiplay this help page [default = 0]'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: " \n\nhal2maf v2.1: Convert hal database to maf.\n\nUSAGE:\nhal2maf [Options]\
+  \ <halFile> <mafFile>\n\nARGUMENTS:\nhalFile:   input hal file\nmafFile:   output\
+  \ maf file (or \"stdout\" to pipe to standard output)\n\nOPTIONS:\n--append:   \
+  \                   append to instead of overwrite output file. [default =\n   \
+  \                             0]\n--cacheBytes <value>:          maximum size in\
+  \ bytes of regular hdf5 cache [default =\n                                15728640]\n\
+  --cacheMDC <value>:            number of metadata slots in hdf5 cache [default =\
+  \ 113]\n--cacheRDC <value>:            number of regular slots in hdf5 cache.  should\
+  \ be a \n                               prime number ~= 10 * DefaultCacheRDCBytes\
+  \ / chunk \n                               [default = 599999]\n--cacheW0 <value>:\
+  \             w0 parameter fro hdf5 cache [default = 0.75]\n--global:          \
+  \            output all columns in alignment, ignoring refGenome, \n           \
+  \                    refSequence, etc. flags [default = 0]\n--help:            \
+  \            dsiplay this help page [default = 0]\n--inMemory:                 \
+  \   load all data in memory (and disable hdf5 cache) \n                        \
+  \       [default = 0]\n--length <value>:              length of the reference genome\
+  \ (or sequence if \n                               specified) to convert.  If set\
+  \ to 0, the entire thing \n                               is converted [default\
+  \ = 0]\n--maxBlockLen <value>:         maximum length of MAF block in output [default\
+  \ = 1000]\n--maxRefGap <value>:           maximum gap length in reference [default\
+  \ = 0]\n--noAncestors:                 don't write ancestral sequences. IMPORTANT:\
+  \ Must be \n                               used in conjunction with --refGenome\
+  \ to set a \n                               non-ancestral genome as the reference\
+  \ because the \n                               default reference is the root. [default\
+  \ = 0]\n--noDupes:                     ignore paralogy edges [default = 0]\n--onlyOrthologs:\
+  \               make only orthologs to the reference appear in the MAF\n       \
+  \                         blocks [default = 0]\n--onlySequenceNames:           use\
+  \ only sequence names for output names.  By default,\n                         \
+  \       the UCSC convention of Genome.Sequence is used \n                      \
+  \         [default = 0]\n--printTree:                   print a gene tree for every\
+  \ block [default = 0]\n--refGenome <value>:           name of reference genome (root\
+  \ if empty) [default = \n                               \"\"]\n--refSequence <value>:\
+  \         name of reference sequence within reference genome \n                \
+  \               (all sequences if empty) [default = \"\"]\n--refTargets <value>:\
+  \          bed file coordinates of intervals in the reference \n               \
+  \                genome to export (or \"stdin\" to pipe from standard \n       \
+  \                        input) [default = \"\"]\n--rootGenome <value>:        \
+  \  name of root genome (none if empty) [default = \"\"]\n--start <value>:      \
+  \         coordinate within reference genome (or sequence if \n                \
+  \               specified) to start at [default = 0]\n--targetGenomes <value>: \
+  \      comma-separated (no spaces) list of target genomes \n                   \
+  \            (others are excluded) (vist all if empty) [default = \n           \
+  \                    \"\"]\n--unique:                      only write column whose\
+  \ left-most reference coordinate\n                                is in the specified\
+  \ range.  this is used to insure \n                               that the same\
+  \ column isnt sampled twice (due to \n                               ducplications)\
+  \ by mafs generated on distinct ranges. \n                               [default\
+  \ = 0]\n\n\n"
+generated_using:
+- --help

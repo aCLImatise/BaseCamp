@@ -1,0 +1,162 @@
+!Command
+command:
+- OpenSwathChromatogramExtractor
+positional: []
+named:
+- !Flag
+  description: "*                   Input files separated by blank (valid formats:\
+    \ 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: files
+  optional: true
+- !Flag
+  description: "*                    Transition file ('TraML' or 'csv') (valid formats:\
+    \ 'csv', 'traML')"
+  synonyms:
+  - -tr
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "RT normalization file (how to map the RTs of this run to the ones\
+    \ stored in the library) (valid formats: 'trafoXML')"
+  synonyms:
+  - -rt_norm
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                   Output file (valid formats: 'mzML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Minimal distance to the edge to still consider a precursor, in Thomson\
+    \ (default: '0.0')"
+  synonyms:
+  - -min_upper_edge_dist
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Extraction window in RT dimension (-1 means extract over the whole\
+    \ range). This is the full window size, e.g. a value of 1000 seconds would extract\
+    \ 500 seconds on either side. (default: '-1.0')"
+  synonyms:
+  - -rt_window
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Extraction window in ion mobility dimension (in milliseconds). This\
+    \ is the full window size, e.g. a value of 10 milliseconds would extract 5 milliseconds\
+    \ on either side. (default: '-1.0')"
+  synonyms:
+  - -ion_mobility_window
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Extraction window in m/z dimension (in Thomson, to use ppm see -ppm\
+    \ flag). This is the full window size, e.g. 100 ppm would extract 50 ppm on either\
+    \ side. (default: '0.05' min: '0.0')"
+  synonyms:
+  - -mz_window
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: M/z extraction_window is in ppm
+  synonyms:
+  - -ppm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set this flag if the data is SWATH data
+  synonyms:
+  - -is_swath
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Extract the MS1 transitions based on the precursor values in the TraML
+    file (useful for extracting MS1 XIC)
+  synonyms:
+  - -extract_MS1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nOpenSwathChromatogramExtractor\
+  \ -- Extract chromatograms (XIC) from a MS2 map file.\nFull documentation: http://www.openms.de/documentation/TOPP_OpenSwathChromatogramExtractor.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  OpenSwathChromatogramExtractor <options>\n\nOptions (mandatory options marked\
+  \ with '*'):\n  -in <files>*                   Input files separated by blank (valid\
+  \ formats: 'mzML')\n  -tr <file>*                    Transition file ('TraML' or\
+  \ 'csv') (valid formats: 'csv', 'traML')\n  -rt_norm <file>                RT normalization\
+  \ file (how to map the RTs of this run to the ones stored in the library) (valid\
+  \ formats: 'trafoXML')\n  -out <file>*                   Output file (valid formats:\
+  \ 'mzML')\n  -min_upper_edge_dist <double>  Minimal distance to the edge to still\
+  \ consider a precursor, in Thomson (default: '0.0')\n  -rt_window <double>     \
+  \       Extraction window in RT dimension (-1 means extract over the whole range).\
+  \ This is the full window size, e.g. a value of 1000 seconds would extract 500 seconds\
+  \ on either side. (default: '-1.0')\n  -ion_mobility_window <double>  Extraction\
+  \ window in ion mobility dimension (in milliseconds). This is the full window size,\
+  \ e.g. a value of 10 milliseconds would extract 5 milliseconds on either side. (default:\
+  \ '-1.0')\n  -mz_window <double>            Extraction window in m/z dimension (in\
+  \ Thomson, to use ppm see -ppm flag). This is the full window size, e.g. 100 ppm\
+  \ would extract 50 ppm on either side. (default: '0.05' min: '0.0')\n  -ppm    \
+  \                       M/z extraction_window is in ppm\n  -is_swath           \
+  \           Set this flag if the data is SWATH data\n  -extract_MS1            \
+  \       Extract the MS1 transitions based on the precursor values in the TraML file\
+  \ (useful for extracting MS1 XIC)\n                                 \nCommon TOPP\
+  \ options:\n  -ini <file>                    Use the given TOPP INI file\n  -threads\
+  \ <n>                   Sets the number of threads allowed to be used by the TOPP\
+  \ tool (default: '1')\n  -write_ini <file>              Writes the default configuration\
+  \ file\n  --help                         Shows options\n  --helphelp           \
+  \          Shows all options (including advanced)\n\n"
+generated_using:
+- --help

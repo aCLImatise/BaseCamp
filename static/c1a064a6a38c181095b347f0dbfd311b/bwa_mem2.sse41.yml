@@ -1,0 +1,369 @@
+&id001 !Command
+command:
+- bwa-mem2.sse41
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - bwa-mem2.sse41
+  - mem
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: idxbase
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in1.fq
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: in2.fq
+    optional: true
+  named:
+  - !Flag
+    description: Output SAM file name
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum seed length [19]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: band width for banded alignment [100]
+    synonyms:
+    - -w
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: off-diagonal X-dropoff [100]
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: seed occurrence for the 3rd round seeding [20]
+    synonyms:
+    - -y
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip seeds with more than INT occurrences [500]
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: drop chains shorter than FLOAT fraction of the longest overlapping
+      chain [0.50]
+    synonyms:
+    - -D
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: discard a chain if seeded bases shorter than INT [0]
+    synonyms:
+    - -W
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: perform at most INT rounds of mate rescues for each read [50]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip mate rescue
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip pairing; mate rescue performed unless -S also in use
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: score for a sequence match, which scales options -TdBOELU unless
+      overridden [1]
+    synonyms:
+    - -A
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: penalty for a mismatch [4]
+    synonyms:
+    - -B
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: gap open penalties for deletions and insertions [6,6]
+    synonyms:
+    - -O
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+    optional: true
+  - !Flag
+    description: gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
+    synonyms:
+    - -E
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+    optional: true
+  - !Flag
+    description: penalty for 5'- and 3'-end clipping [5,5]
+    synonyms:
+    - -L
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+    optional: true
+  - !Flag
+    description: penalty for an unpaired read pair [17]
+    synonyms:
+    - -U
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: smart pairing (ignoring in2.fq)
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: read group header line such as '@RG\tID:foo\tSM:bar' [null]
+    synonyms:
+    - -R
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: insert STR to header if it starts with @; or insert lines in FILE
+      [null]
+    synonyms:
+    - -H
+    args: !SimpleFlagArg
+      name: STR/FILE
+    optional: true
+  - !Flag
+    description: treat ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt
+      file)
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: for split alignment, take the alignment with the smallest coordinate
+      as primary
+    synonyms:
+    - '-5'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: don't modify mapQ of supplementary alignments
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: process INT input bases in each batch regardless of nThreads (for
+      reproducibility) []
+    synonyms:
+    - -K
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'verbose level: 1=error, 2=warning, 3=message, 4+=debugging [3]'
+    synonyms:
+    - -v
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum score to output [30]
+    synonyms:
+    - -T
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: if there are <INT hits with score >80% of the max score, output all
+      in XA [5,200]
+    synonyms:
+    - -h
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+      separator: ','
+    optional: true
+  - !Flag
+    description: output all alignments for SE or unpaired PE
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: append FASTA/FASTQ comment to SAM output
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output the reference FASTA header in the XR tag
+    synonyms:
+    - -V
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use soft clipping for supplementary alignments
+    synonyms:
+    - -Y
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: mark shorter split hits as secondary
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "specify the mean, standard deviation (10% of the mean if absent),\
+      \ max\n(4 sigma from the mean if absent) and min of the insert size distribution.\n\
+      FR orientation only. [inferred]"
+    synonyms:
+    - -I
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT
+      - INT
+      - INT
+      separator: ','
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "-----------------------------\nExecuting in SSE4.1 mode!!\n-----------------------------\n\
+    Usage: bwa-mem2 mem [options] <idxbase> <in1.fq> [in2.fq]\nOptions:\n  Algorithm\
+    \ options:\n    -o STR        Output SAM file name\n    -t INT        number of\
+    \ threads [1]\n    -k INT        minimum seed length [19]\n    -w INT        band\
+    \ width for banded alignment [100]\n    -d INT        off-diagonal X-dropoff [100]\n\
+    \    -r FLOAT      look for internal seeds inside a seed longer than {-k} * FLOAT\
+    \ [1.5]\n    -y INT        seed occurrence for the 3rd round seeding [20]\n  \
+    \  -c INT        skip seeds with more than INT occurrences [500]\n    -D FLOAT\
+    \      drop chains shorter than FLOAT fraction of the longest overlapping chain\
+    \ [0.50]\n    -W INT        discard a chain if seeded bases shorter than INT [0]\n\
+    \    -m INT        perform at most INT rounds of mate rescues for each read [50]\n\
+    \    -S            skip mate rescue\n    -o            output file name missing\n\
+    \    -P            skip pairing; mate rescue performed unless -S also in use\n\
+    Scoring options:\n   -A INT        score for a sequence match, which scales options\
+    \ -TdBOELU unless overridden [1]\n   -B INT        penalty for a mismatch [4]\n\
+    \   -O INT[,INT]  gap open penalties for deletions and insertions [6,6]\n   -E\
+    \ INT[,INT]  gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]\n\
+    \   -L INT[,INT]  penalty for 5'- and 3'-end clipping [5,5]\n   -U INT       \
+    \ penalty for an unpaired read pair [17]\nInput/output options:\n   -p       \
+    \     smart pairing (ignoring in2.fq)\n   -R STR        read group header line\
+    \ such as '@RG\\tID:foo\\tSM:bar' [null]\n   -H STR/FILE   insert STR to header\
+    \ if it starts with @; or insert lines in FILE [null]\n   -j            treat\
+    \ ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt file)\n\
+    \   -5            for split alignment, take the alignment with the smallest coordinate\
+    \ as primary\n   -q            don't modify mapQ of supplementary alignments\n\
+    \   -K INT        process INT input bases in each batch regardless of nThreads\
+    \ (for reproducibility) []\n   -v INT        verbose level: 1=error, 2=warning,\
+    \ 3=message, 4+=debugging [3]\n   -T INT        minimum score to output [30]\n\
+    \   -h INT[,INT]  if there are <INT hits with score >80% of the max score, output\
+    \ all in XA [5,200]\n   -a            output all alignments for SE or unpaired\
+    \ PE\n   -C            append FASTA/FASTQ comment to SAM output\n   -V       \
+    \     output the reference FASTA header in the XR tag\n   -Y            use soft\
+    \ clipping for supplementary alignments\n   -M            mark shorter split hits\
+    \ as secondary\n   -I FLOAT[,FLOAT[,INT[,INT]]]\n                 specify the\
+    \ mean, standard deviation (10% of the mean if absent), max\n                \
+    \ (4 sigma from the mean if absent) and min of the insert size distribution.\n\
+    \                 FR orientation only. [inferred]\nNote: Please read the man page\
+    \ for detailed description of the command line and options.\n\nImportant parameter\
+    \ settings: \n\tBATCH_SIZE: 512\n\tMAX_SEQ_LEN_REF: 256\n\tMAX_SEQ_LEN_QER: 128\n\
+    \tMAX_SEQ_LEN8: 128\n\tSEEDS_PER_READ: 500\n\tSIMD_WIDTH8 X: 16\n\tSIMD_WIDTH16\
+    \ X: 8\n\tAVG_SEEDS_PER_READ: 64\n"
+  generated_using: &id002 []
+- !Command
+  command:
+  - bwa-mem2.sse41
+  - index
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fasta
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: prefix
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bwa-mem2 index [-p prefix] <in.fasta>\nTotal time taken: 0.0000\n"
+  generated_using: *id002
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: bwa-mem2 <command> <arguments>\nCommands:\n  index         create\
+  \ index\n  mem           alignment\n  version       print version number\n"
+generated_using: *id002

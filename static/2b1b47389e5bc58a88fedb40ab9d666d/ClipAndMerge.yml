@@ -1,0 +1,323 @@
+!Command
+command:
+- ClipAndMerge
+positional: []
+named:
+- !Flag
+  description: ": Discard reads after merging that do not fulfill the quality criteria.\
+    \ (default:\nfalse)"
+  synonyms:
+  - -discardBadReads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Error rate for merging forward and reverse reads. A value of 0.05\
+    \ means that 5%\nmismatches are allowed in the overlap region. (default: 0.05)"
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: ': Forward reads adapter sequence. (default: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: FORWARD_ADAPTER_STRING
+  optional: true
+- !Flag
+  description: '[]                       : Forward reads input file(s) in fastq(.gz)
+    file format.'
+  synonyms:
+  - -in1
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: '[]                       : Reverse reads input file(s) in fastq(.gz)
+    file format.'
+  synonyms:
+  - -in2
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: ": Discard sequences shorter than this number of nucleotides after\
+    \ adapter\nclipping. (default: 25)"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ": Reads are trimmed from the 3' end until given value is reached.\
+    \ Trimming is not\nperformed if read is already <= given value. If this option\
+    \ is given the\n'-trim3p' option is disregarded! Given value sould be 1-based!\
+    \ (default:\n2147483647)"
+  synonyms:
+  - -lastBase
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ': Write log messages to a file instead of the standard error stream.'
+  synonyms:
+  - -log
+  args: !SimpleFlagArg
+    name: LOG_FILE_STRING
+  optional: true
+- !Flag
+  description: ": Require a minimum adapter alignment length. If less nucleotides\
+    \ align with the\nadapter, the sequences are not clipped. (default: 8)"
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ": Maximal number of reads, that can be processed in parallel. This\
+    \ number largely\ndepends on the processing system settings! Only change it if\
+    \ you know what you\nare doing! (default: 1000)"
+  synonyms:
+  - -maxParallelReads
+  args: !SimpleFlagArg
+    name: NUM_READS_INTEGER
+  optional: true
+- !Flag
+  description: ": Minimal base quality for keeping bad reads. If 0 is specified, then\
+    \ all reads\nare kept. (default: 0)"
+  synonyms:
+  - -minQualBadReads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ": Discard sequences with unknown (N) nucleotides. Default is to keep\
+    \ such\nsequences. (default: false)"
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Disable the display of clipping statistics. (default: false)'
+  synonyms:
+  - -no_clip_stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Skip adapter clipping. Only read merging is performed! (This is\
+    \ only recommended\nif every forward and reverse read has a corresponding partner\
+    \ in the other\nrespective fastq-file! Otherwise merging can not be performed\
+    \ correctly.\n(default: false)"
+  synonyms:
+  - -no_clipping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Skip read merging for paired-end sequencing data! Only adapter clipping\
+    \ is\nperformed. This parameter is not needed for single-end data. (default: false)"
+  synonyms:
+  - -no_merging
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Do not perform quality based mismatch calculation for merging. Default\
+    \ is to\ntake quality scores into account. (default: false)"
+  synonyms:
+  - -no_qbMM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Output file. If no file is provided, output will be written to System.out.\
+    \ If\nfile ends with '.gz', output will be gzipped."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE_STRING
+  optional: true
+- !Flag
+  description: ": Minimal number of nucleotides that have to overlap in order to merge\
+    \ the forward\nand reverse read. (default: 10)"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ': Minimum base quality for quality trimming. (default: 20)'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ': Phred Score offset. (default: 33)'
+  synonyms:
+  - -qo
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ': Enable quality trimming for non-merged reads. (default: true)'
+  synonyms:
+  - -qt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Percentage of reads that have to fulfill minimal base quality criterion.\n\
+    (default: 0.9)"
+  synonyms:
+  - -qualFreqBadReads
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: ': Reverse reads adapter sequence. (default: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA)'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: REVERSE_ADAPTER_STRING
+  optional: true
+- !Flag
+  description: ': Remove reads with no pairing partner after adapter clipping. (default:
+    false)'
+  synonyms:
+  - -rm_no_partner
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Perform remaining time estimation. Note: this can take long for\
+    \ large gzipped\ninput files. (default: false)"
+  synonyms:
+  - -timeEstimation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Trim N nucleotides from the 3' end of each read. This step is performed\
+    \ after\nadapter clipping. Reverse reads are not reverse trancriped before trimming.\n\
+    (default: 0)"
+  synonyms:
+  - -trim3p
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ": Trim N nucleotides from the 5' end of each read. This step is performed\
+    \ after\nadapter clipping. Reverse reads are not reverse transcriped before trimming.\n\
+    (default: 0)"
+  synonyms:
+  - -trim5p
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "REVERSE_FILE        : Write unmerged forward and reverse reads to\
+    \ extra files. Unmerged forward reads\nare written to the file 'FORWARD_FILE'.\
+    \ Unmerged reverse reads are written to\nthe file 'REVERSE_FILE', i.e. the regular\
+    \ output file then only contains merged\nreads!\nAttention: If the option '-rm_no_partner'\
+    \ is not selected the two given output\nfiles also contain forward/reverse reads\
+    \ with no pairing partner!\nIf filenames end with '.gz' gzipped output is produced!"
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: FORWARD_FILE
+  optional: true
+- !Flag
+  description: ': Print additional processing information (default: false)'
+  synonyms:
+  - -verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': Display this help page and exit. (default: false)'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "ClipAndMerge (v. 1.7.8)\nIntegrative Transcriptomics\nUniversity of T?bingen\n\
+  \nAuthor: G?nter J?ger\n\nThis tool clips adapters from fastq sequences and merges\
+  \ overlapping regions from forward and reverse reads.\nInput sequences are accepted\
+  \ in fastq, or in gzipped fastq format.\n\n\"--help\" is not a valid option\njava\
+  \ -jar ClipAndMerge.jar [options...]\n\n  Example: java -jar ClipAndMerge.jar -in1\
+  \ STRING[]\n\n -discardBadReads                    : Discard reads after merging\
+  \ that do not fulfill the quality criteria. (default:\n                        \
+  \               false)\n -e DOUBLE                           : Error rate for merging\
+  \ forward and reverse reads. A value of 0.05 means that 5%\n                   \
+  \                    mismatches are allowed in the overlap region. (default: 0.05)\n\
+  \ -f FORWARD_ADAPTER_STRING           : Forward reads adapter sequence. (default:\
+  \ AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)\n -h                                  : Display\
+  \ this help page and exit. (default: false)\n -in1 STRING[]                    \
+  \   : Forward reads input file(s) in fastq(.gz) file format.\n -in2 STRING[]   \
+  \                    : Reverse reads input file(s) in fastq(.gz) file format.\n\
+  \ -l INTEGER                          : Discard sequences shorter than this number\
+  \ of nucleotides after adapter\n                                       clipping.\
+  \ (default: 25)\n -lastBase INTEGER                   : Reads are trimmed from the\
+  \ 3' end until given value is reached. Trimming is not\n                       \
+  \                performed if read is already <= given value. If this option is\
+  \ given the\n                                       '-trim3p' option is disregarded!\
+  \ Given value sould be 1-based! (default:\n                                    \
+  \   2147483647)\n -log LOG_FILE_STRING                : Write log messages to a\
+  \ file instead of the standard error stream.\n -m INTEGER                      \
+  \    : Require a minimum adapter alignment length. If less nucleotides align with\
+  \ the\n                                       adapter, the sequences are not clipped.\
+  \ (default: 8)\n -maxParallelReads NUM_READS_INTEGER : Maximal number of reads,\
+  \ that can be processed in parallel. This number largely\n                     \
+  \                  depends on the processing system settings! Only change it if\
+  \ you know what you\n                                       are doing! (default:\
+  \ 1000)\n -minQualBadReads INTEGER            : Minimal base quality for keeping\
+  \ bad reads. If 0 is specified, then all reads\n                               \
+  \        are kept. (default: 0)\n -n                                  : Discard\
+  \ sequences with unknown (N) nucleotides. Default is to keep such\n            \
+  \                           sequences. (default: false)\n -no_clip_stats       \
+  \               : Disable the display of clipping statistics. (default: false)\n\
+  \ -no_clipping                        : Skip adapter clipping. Only read merging\
+  \ is performed! (This is only recommended\n                                    \
+  \   if every forward and reverse read has a corresponding partner in the other\n\
+  \                                       respective fastq-file! Otherwise merging\
+  \ can not be performed correctly.\n                                       (default:\
+  \ false)\n -no_merging                         : Skip read merging for paired-end\
+  \ sequencing data! Only adapter clipping is\n                                  \
+  \     performed. This parameter is not needed for single-end data. (default: false)\n\
+  \ -no_qbMM                            : Do not perform quality based mismatch calculation\
+  \ for merging. Default is to\n                                       take quality\
+  \ scores into account. (default: false)\n -o OUTPUT_FILE_STRING               :\
+  \ Output file. If no file is provided, output will be written to System.out. If\n\
+  \                                       file ends with '.gz', output will be gzipped.\n\
+  \ -p INTEGER                          : Minimal number of nucleotides that have\
+  \ to overlap in order to merge the forward\n                                   \
+  \    and reverse read. (default: 10)\n -q INTEGER                          : Minimum\
+  \ base quality for quality trimming. (default: 20)\n -qo INTEGER               \
+  \          : Phred Score offset. (default: 33)\n -qt                           \
+  \      : Enable quality trimming for non-merged reads. (default: true)\n -qualFreqBadReads\
+  \ DOUBLE            : Percentage of reads that have to fulfill minimal base quality\
+  \ criterion.\n                                       (default: 0.9)\n -r REVERSE_ADAPTER_STRING\
+  \           : Reverse reads adapter sequence. (default: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA)\n\
+  \ -rm_no_partner                      : Remove reads with no pairing partner after\
+  \ adapter clipping. (default: false)\n -timeEstimation                     : Perform\
+  \ remaining time estimation. Note: this can take long for large gzipped\n      \
+  \                                 input files. (default: false)\n -trim3p INTEGER\
+  \                     : Trim N nucleotides from the 3' end of each read. This step\
+  \ is performed after\n                                       adapter clipping. Reverse\
+  \ reads are not reverse trancriped before trimming.\n                          \
+  \             (default: 0)\n -trim5p INTEGER                     : Trim N nucleotides\
+  \ from the 5' end of each read. This step is performed after\n                 \
+  \                      adapter clipping. Reverse reads are not reverse transcriped\
+  \ before trimming.\n                                       (default: 0)\n -u FORWARD_FILE\
+  \ REVERSE_FILE        : Write unmerged forward and reverse reads to extra files.\
+  \ Unmerged forward reads\n                                       are written to\
+  \ the file 'FORWARD_FILE'. Unmerged reverse reads are written to\n             \
+  \                          the file 'REVERSE_FILE', i.e. the regular output file\
+  \ then only contains merged\n                                       reads!\n   \
+  \                                    Attention: If the option '-rm_no_partner' is\
+  \ not selected the two given output\n                                       files\
+  \ also contain forward/reverse reads with no pairing partner!\n                \
+  \                       If filenames end with '.gz' gzipped output is produced!\n\
+  \ -verbose                            : Print additional processing information\
+  \ (default: false)\n"
+generated_using:
+- --help

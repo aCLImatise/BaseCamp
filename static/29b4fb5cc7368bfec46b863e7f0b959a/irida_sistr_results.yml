@@ -1,0 +1,210 @@
+!Command
+command:
+- irida-sistr-results
+positional: []
+named:
+- !Flag
+  description: The URL to the IRIDA instance.
+  synonyms:
+  - --irida-url
+  args: !SimpleFlagArg
+    name: IRIDA_URL
+  optional: true
+- !Flag
+  description: The client id for an IRIDA instance.
+  synonyms:
+  - --client-id
+  args: !SimpleFlagArg
+    name: CLIENT_ID
+  optional: true
+- !Flag
+  description: The client secret for the IRIDA instance.
+  synonyms:
+  - --client-secret
+  args: !SimpleFlagArg
+    name: CLIENT_SECRET
+  optional: true
+- !Flag
+  description: The username for the IRIDA instance.
+  synonyms:
+  - -u
+  - --username
+  args: !SimpleFlagArg
+    name: USERNAME
+  optional: true
+- !Flag
+  description: The password for the IRIDA instance. Prompts for password if left blank.
+  synonyms:
+  - --password
+  args: !SimpleFlagArg
+    name: PASSWORD
+  optional: true
+- !Flag
+  description: Turn on verbose logging.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Projects to scan for SISTR results. If left blank will scan all projects
+    the user has access to.
+  synonyms:
+  - -p
+  - --project
+  args: !SimpleFlagArg
+    name: PROJECTS
+  optional: true
+- !Flag
+  description: Explicitly load results from all projects the user has access to.  Will
+    ignore the values given in --project.
+  synonyms:
+  - -a
+  - --all-projects
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print results to tab-deliminited file.
+  synonyms:
+  - --output-tab
+  - --to-tab-file
+  args: !SimpleFlagArg
+    name: TABULAR_FILE
+  optional: true
+- !Flag
+  description: Print results to the given excel file.
+  synonyms:
+  - -o
+  - --output-excel
+  - --to-excel-file
+  args: !SimpleFlagArg
+    name: EXCEL_FILE
+  optional: true
+- !Flag
+  description: Include SISTR analysis results run directly by the user.
+  synonyms:
+  - --include-user-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If including user results, do not replace existing SISTR analysis that
+    were automatically generated with user-run SISTR results.
+  synonyms:
+  - --exclude-user-existing-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The reportable serovars file [/usr/local/lib/python3.7/site-packages/irida_sistr_results/data/reportable_serovars.tsv].
+  synonyms:
+  - --reportable-serovars-file
+  args: !SimpleFlagArg
+    name: REPORTABLE_SEROVARS_FILE
+  optional: true
+- !Flag
+  description: Excludes printing of reportable serovar status in final output.
+  synonyms:
+  - --exclude-reportable-status
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Connection timeout when getting results from IRIDA.
+  synonyms:
+  - -T
+  - --connection-timeout
+  args: !SimpleFlagArg
+    name: TIMEOUT
+  optional: true
+- !Flag
+  description: Configuration file for IRIDA (overrides values in ['/usr/local/lib/python3.7/site-packages/irida_sistr_results/etc/config.ini',
+    '/root/.local/share/irida-sistr-results/config.ini'])
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: Only include results of these workflow versions (or uuids) ['0.1',
+    '0.2', '0.3'] [all versions]
+  synonyms:
+  - -w
+  - --workflow
+  args: !SimpleFlagArg
+    name: WORKFLOW_VERSIONS_OR_IDS
+  optional: true
+- !Flag
+  description: Only include samples created more recently than this date (in format
+    YYYY-MM-DD) or this many days ago (as a number) [Include all samples]
+  synonyms:
+  - -d
+  - --samples-created-since
+  args: !SimpleFlagArg
+    name: SAMPLES_CREATED_SINCE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: irida-sistr-results [-h] [--irida-url IRIDA_URL]\n            \
+  \               [--client-id CLIENT_ID]\n                           [--client-secret\
+  \ CLIENT_SECRET] [-u USERNAME]\n                           [--password PASSWORD]\
+  \ [-v] [-p PROJECTS] [-a]\n                           [--output-tab TABULAR_FILE]\
+  \ [-o EXCEL_FILE]\n                           [--include-user-results]\n       \
+  \                    [--exclude-user-existing-results]\n                       \
+  \    [--reportable-serovars-file REPORTABLE_SEROVARS_FILE]\n                   \
+  \        [--exclude-reportable-status] [-T TIMEOUT]\n                          \
+  \ [-c CONFIG] [-V] [-w WORKFLOW_VERSIONS_OR_IDS]\n                           [-d\
+  \ SAMPLES_CREATED_SINCE]\n\nCompile SISTR results from an IRIDA instance into a\
+  \ table.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --irida-url IRIDA_URL\n                        The URL to the IRIDA\
+  \ instance.\n  --client-id CLIENT_ID\n                        The client id for\
+  \ an IRIDA instance.\n  --client-secret CLIENT_SECRET\n                        The\
+  \ client secret for the IRIDA instance.\n  -u USERNAME, --username USERNAME\n  \
+  \                      The username for the IRIDA instance.\n  --password PASSWORD\
+  \   The password for the IRIDA instance. Prompts for password if left blank.\n \
+  \ -v, --verbose         Turn on verbose logging.\n  -p PROJECTS, --project PROJECTS\n\
+  \                        Projects to scan for SISTR results. If left blank will\
+  \ scan all projects the user has access to.\n  -a, --all-projects    Explicitly\
+  \ load results from all projects the user has access to.  Will ignore the values\
+  \ given in --project.\n  --output-tab TABULAR_FILE, --to-tab-file TABULAR_FILE\n\
+  \                        Print results to tab-deliminited file.\n  -o EXCEL_FILE,\
+  \ --output-excel EXCEL_FILE, --to-excel-file EXCEL_FILE\n                      \
+  \  Print results to the given excel file.\n  --include-user-results\n          \
+  \              Include SISTR analysis results run directly by the user.\n  --exclude-user-existing-results\n\
+  \                        If including user results, do not replace existing SISTR\
+  \ analysis that were automatically generated with user-run SISTR results.\n  --reportable-serovars-file\
+  \ REPORTABLE_SEROVARS_FILE\n                        The reportable serovars file\
+  \ [/usr/local/lib/python3.7/site-packages/irida_sistr_results/data/reportable_serovars.tsv].\n\
+  \  --exclude-reportable-status\n                        Excludes printing of reportable\
+  \ serovar status in final output.\n  -T TIMEOUT, --connection-timeout TIMEOUT\n\
+  \                        Connection timeout when getting results from IRIDA.\n \
+  \ -c CONFIG, --config CONFIG\n                        Configuration file for IRIDA\
+  \ (overrides values in ['/usr/local/lib/python3.7/site-packages/irida_sistr_results/etc/config.ini',\
+  \ '/root/.local/share/irida-sistr-results/config.ini'])\n  -V, --version       \
+  \  show program's version number and exit\n  -w WORKFLOW_VERSIONS_OR_IDS, --workflow\
+  \ WORKFLOW_VERSIONS_OR_IDS\n                        Only include results of these\
+  \ workflow versions (or uuids) ['0.1', '0.2', '0.3'] [all versions]\n  -d SAMPLES_CREATED_SINCE,\
+  \ --samples-created-since SAMPLES_CREATED_SINCE\n                        Only include\
+  \ samples created more recently than this date (in format YYYY-MM-DD) or this many\
+  \ days ago (as a number) [Include all samples]\n\nExample:\n\tirida-sistr-results\
+  \ -a -u irida-user -o out.xlsx\n\t\tExports all SISTR results from all projects\
+  \ to a file 'out.xlsx'\n\n\tirida-sistr-results -p 1 -p 2 -u irida-user -o out.xlsx\n\
+  \t\tExports SISTR results from projects [1,2] to a file 'out.xlsx'\n\n\tirida-sistr-results\
+  \ -p 1 -w 0.3 -w 0.2 -u irida-user -o out.xlsx\n\t\tExports only SISTR results from\
+  \ workflow versions 0.3 and 0.2 from project [1]\n"
+generated_using:
+- --help

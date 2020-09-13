@@ -1,0 +1,312 @@
+!Command
+command:
+- run_upp.py
+positional: []
+named:
+- !Flag
+  description: "maximum fragment chunk size of N. Helps controlling\nmemory. [default:\
+    \ 20000]"
+  synonyms:
+  - -F
+  - --fragmentChunkSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "minimum p-distance before stopping the\ndecomposition[default: 1]"
+  synonyms:
+  - -D
+  - --distance
+  args: !SimpleFlagArg
+    name: DISTANCE
+  optional: true
+- !Flag
+  description: "maximum tree diameter before stopping the\ndecomposition[default:\
+    \ None]"
+  synonyms:
+  - --diameter
+  args: !SimpleFlagArg
+    name: DIAMETER
+  optional: true
+- !Flag
+  description: 'max alignment subset size of N [default: 10]'
+  synonyms:
+  - -A
+  - --alignmentSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Consider all fragments that are 25% longer or shorter\nthan N to be\
+    \ excluded from the backbone. If value is\n-1, then UPP will use the median of\
+    \ the sequences as\nthe median full length [default: None]"
+  synonyms:
+  - -M
+  - --median_full_length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Only consider sequences with lengths within (1-N)*M\nand (1+N)*M as\
+    \ full-length, where M is the median\nlength of the full-length sequence given\
+    \ by the -M\noption and N is the percentage given by the -T\noption.[default:\
+    \ 0.25]"
+  synonyms:
+  - -T
+  - --backbone_threshold
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "(Optional) size of backbone set. If no backbone tree\nand alignment\
+    \ is given, the sequence file will be\nrandomly split into a backbone set (size\
+    \ set to N) and\nquery set (remaining sequences), [default:\nmin(1000,input size)]"
+  synonyms:
+  - -B
+  - --backboneSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "decomposition strategy [default: ensemble of HMMs\n(hierarchical)]"
+  synonyms:
+  - -S
+  - --decomp_strategy
+  args: !SimpleFlagArg
+    name: DECOMP
+  optional: true
+- !Flag
+  description: "Tempfile files will be written to DIR. Full-path\nrequired. [default:\
+    \ /tmp/sepp]"
+  synonyms:
+  - -p
+  - --tempdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: 'output files with prefix OUTPUT. [default: output]'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "output to OUTPUT_DIR directory. full-path required.\n[default: .]"
+  synonyms:
+  - -d
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "Molecule type of sequences. Can be amino, dna, or rna\n[default: dna]"
+  synonyms:
+  - -m
+  - --molecule
+  args: !SimpleFlagArg
+    name: MOLECULE
+  optional: true
+- !Flag
+  description: "Unaligned sequence file. If no backbone tree and\nalignment is given,\
+    \ the sequence file will be randomly\nsplit into a backbone set (size set to B)\
+    \ and query\nset (remaining sequences), [default: None]"
+  synonyms:
+  - -s
+  - --sequence_file
+  args: !SimpleFlagArg
+    name: SEQ
+  optional: true
+- !Flag
+  description: "A config file, including options used to run UPP.\nOptions provided\
+    \ as command line arguments overwrite\nconfig file values for those options. [default:\
+    \ None]"
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: 'Input tree file (newick format) [default: None]'
+  synonyms:
+  - -t
+  - --tree
+  args: !SimpleFlagArg
+    name: TREE
+  optional: true
+- !Flag
+  description: 'Aligned fasta file [default: None]'
+  synonyms:
+  - -a
+  - --alignment
+  args: !SimpleFlagArg
+    name: ALIGN
+  optional: true
+- !Flag
+  description: "Use N cpus [default: number of cpus available on the\nmachine]"
+  synonyms:
+  - -x
+  - --cpu
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'checkpoint file [default: no checkpointing]'
+  synonyms:
+  - -cp
+  - --checkpoint
+  args: !SimpleFlagArg
+    name: CHCK_FILE
+  optional: true
+- !Flag
+  description: "Interval (in seconds) between checkpoint writes. Has\neffect only\
+    \ with -cp provided. [default: 3600]"
+  synonyms:
+  - -cpi
+  - --interval
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'random seed number. [default: 297834]'
+  synonyms:
+  - -seed
+  - --randomseed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Branches longer than N times the median branch length\nare filtered\
+    \ from backbone and added to fragments.\n[default: None (no filtering)]"
+  synonyms:
+  - -l
+  - --longbranchfilter
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "max placement subset size of N [default: 10% of the\ntotal number\
+    \ of taxa]"
+  synonyms:
+  - -P
+  - --placementSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "RAxML_info file including model parameters, generated\nby RAxML.[default:\
+    \ None]"
+  synonyms:
+  - -r
+  - --raxml
+  args: !SimpleFlagArg
+    name: RAXML
+  optional: true
+- !Flag
+  description: "fragment file [default: None]\n"
+  synonyms:
+  - -f
+  - --fragment
+  args: !SimpleFlagArg
+    name: FRAG
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: run_upp.py [-h] [-v] [-F N] [-D DISTANCE] [--diameter DIAMETER]\n\
+  \                  [-p DIR] [-o OUTPUT] [-d OUTPUT_DIR] [-m MOLECULE] [-x N]\n \
+  \                 [-cp CHCK_FILE] [-cpi N] [-seed N] [-A N] [-M N] [-T N]\n    \
+  \              [-B N] [-S DECOMP] [-s SEQ] [-c CONFIG] [-t TREE] [-a ALIGN]\n  \
+  \                [-l N] [-P N] [-r RAXML] [-f FRAG]\n\nThis script runs the UPP\
+  \ algorithm on set of sequences. A backbone alignment\nand tree can be given as\
+  \ input. If none is provided, a backbone will be\nautomatically generated.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -v, --version\
+  \         show program's version number and exit\n\nDECOMPOSITION OPTIONS:\n  These\
+  \ options determine the alignment decomposition size, backbone size,\n  and how\
+  \ to decompose the backbone set.\n\n  -F N, --fragmentChunkSize N\n            \
+  \            maximum fragment chunk size of N. Helps controlling\n             \
+  \           memory. [default: 20000]\n  -D DISTANCE, --distance DISTANCE\n     \
+  \                   minimum p-distance before stopping the\n                   \
+  \     decomposition[default: 1]\n  --diameter DIAMETER   maximum tree diameter before\
+  \ stopping the\n                        decomposition[default: None]\n  -A N, --alignmentSize\
+  \ N\n                        max alignment subset size of N [default: 10]\n  -M\
+  \ N, --median_full_length N\n                        Consider all fragments that\
+  \ are 25% longer or shorter\n                        than N to be excluded from\
+  \ the backbone. If value is\n                        -1, then UPP will use the median\
+  \ of the sequences as\n                        the median full length [default:\
+  \ None]\n  -T N, --backbone_threshold N\n                        Only consider sequences\
+  \ with lengths within (1-N)*M\n                        and (1+N)*M as full-length,\
+  \ where M is the median\n                        length of the full-length sequence\
+  \ given by the -M\n                        option and N is the percentage given\
+  \ by the -T\n                        option.[default: 0.25]\n  -B N, --backboneSize\
+  \ N\n                        (Optional) size of backbone set. If no backbone tree\n\
+  \                        and alignment is given, the sequence file will be\n   \
+  \                     randomly split into a backbone set (size set to N) and\n \
+  \                       query set (remaining sequences), [default:\n           \
+  \             min(1000,input size)]\n  -S DECOMP, --decomp_strategy DECOMP\n   \
+  \                     decomposition strategy [default: ensemble of HMMs\n      \
+  \                  (hierarchical)]\n\nOUTPUT OPTIONS:\n  These options control output.\n\
+  \n  -p DIR, --tempdir DIR\n                        Tempfile files will be written\
+  \ to DIR. Full-path\n                        required. [default: /tmp/sepp]\n  -o\
+  \ OUTPUT, --output OUTPUT\n                        output files with prefix OUTPUT.\
+  \ [default: output]\n  -d OUTPUT_DIR, --outdir OUTPUT_DIR\n                    \
+  \    output to OUTPUT_DIR directory. full-path required.\n                     \
+  \   [default: .]\n\nINPUT OPTIONS:\n  These options control input. To run SEPP the\
+  \ following is required. A\n  backbone tree (in newick format), a RAxML_info file\
+  \ (this is the file\n  generated by RAxML during estimation of the backbone tree.\
+  \ Pplacer uses\n  this info file to set model parameters), a backbone alignment\
+  \ file (in\n  fasta format), and a fasta file including fragments. The input sequences\n\
+  \  are assumed to be DNA unless specified otherwise.\n\n  -m MOLECULE, --molecule\
+  \ MOLECULE\n                        Molecule type of sequences. Can be amino, dna,\
+  \ or rna\n                        [default: dna]\n  -s SEQ, --sequence_file SEQ\n\
+  \                        Unaligned sequence file. If no backbone tree and\n    \
+  \                    alignment is given, the sequence file will be randomly\n  \
+  \                      split into a backbone set (size set to B) and query\n   \
+  \                     set (remaining sequences), [default: None]\n  -c CONFIG, --config\
+  \ CONFIG\n                        A config file, including options used to run UPP.\n\
+  \                        Options provided as command line arguments overwrite\n\
+  \                        config file values for those options. [default: None]\n\
+  \  -t TREE, --tree TREE  Input tree file (newick format) [default: None]\n  -a ALIGN,\
+  \ --alignment ALIGN\n                        Aligned fasta file [default: None]\n\
+  \nOTHER OPTIONS:\n  These options control how SEPP is run\n\n  -x N, --cpu N   \
+  \      Use N cpus [default: number of cpus available on the\n                  \
+  \      machine]\n  -cp CHCK_FILE, --checkpoint CHCK_FILE\n                     \
+  \   checkpoint file [default: no checkpointing]\n  -cpi N, --interval N  Interval\
+  \ (in seconds) between checkpoint writes. Has\n                        effect only\
+  \ with -cp provided. [default: 3600]\n  -seed N, --randomseed N\n              \
+  \          random seed number. [default: 297834]\n\nUPP OPTIONS:\n  These options\
+  \ set settings specific to UPP\n\n  -l N, --longbranchfilter N\n               \
+  \         Branches longer than N times the median branch length\n              \
+  \          are filtered from backbone and added to fragments.\n                \
+  \        [default: None (no filtering)]\n\nSEPP OPTIONS:\n  These options set settings\
+  \ specific to SEPP and are not used for UPP.\n\n  -P N, --placementSize N\n    \
+  \                    max placement subset size of N [default: 10% of the\n     \
+  \                   total number of taxa]\n  -r RAXML, --raxml RAXML\n         \
+  \               RAxML_info file including model parameters, generated\n        \
+  \                by RAxML.[default: None]\n  -f FRAG, --fragment FRAG\n        \
+  \                fragment file [default: None]\n"
+generated_using:
+- --help

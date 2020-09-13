@@ -1,0 +1,68 @@
+!Command
+command:
+- sdrmsd
+positional:
+- !Positional
+  description: SDF file with the reference molecule.
+  position: 0
+  name: reference.sdf
+  optional: false
+- !Positional
+  description: SDF file with the molecules to be compared to reference.
+  position: 1
+  name: input.sdf
+  optional: false
+named:
+- !Flag
+  description: Superpose molecules before RMSD calculation
+  synonyms:
+  - -f
+  - --fit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Discard poses with RMSD < THRESHOLD with respect\nprevious poses which\
+    \ where not rejected based on same\nprinciple. A Population SDField will be added\
+    \ to\noutput SD with the population number."
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: "If declared, write an output SDF file with the input\nmolecules with\
+    \ a new sdfield <RMSD>. If molecule was\nfitted, the fitted molecule coordinates\
+    \ will be saved."
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: sdrmsd [options] reference.sdf input.sdf\n\nOptions:\n  -h, --help\
+  \            show this help message and exit\n  -f, --fit             Superpose\
+  \ molecules before RMSD calculation\n  -t THRESHOLD, --threshold=THRESHOLD\n   \
+  \                     Discard poses with RMSD < THRESHOLD with respect\n       \
+  \                 previous poses which where not rejected based on same\n      \
+  \                  principle. A Population SDField will be added to\n          \
+  \              output SD with the population number.\n  -o FILE, --out=FILE   If\
+  \ declared, write an output SDF file with the input\n                        molecules\
+  \ with a new sdfield <RMSD>. If molecule was\n                        fitted, the\
+  \ fitted molecule coordinates will be saved.\nArgs:\n  reference.sdf         SDF\
+  \ file with the reference molecule.\n  input.sdf             SDF file with the molecules\
+  \ to be compared to reference.\n"
+generated_using:
+- --help

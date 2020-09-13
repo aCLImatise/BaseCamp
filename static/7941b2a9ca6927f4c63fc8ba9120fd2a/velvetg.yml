@@ -1,0 +1,192 @@
+!Command
+command:
+- velvetg
+positional:
+- !Positional
+  description: ': working directory name'
+  position: 0
+  name: directory
+  optional: false
+- !Positional
+  description: ': fasta file of contigs longer than twice hash length'
+  position: 0
+  name: directory/contigs.fa
+  optional: false
+- !Positional
+  description: ': stats file (tab-spaced) useful for determining appropriate coverage
+    cutoff'
+  position: 1
+  name: directory/stats.txt
+  optional: false
+- !Positional
+  description: ': special formatted file with all the information on the final graph'
+  position: 2
+  name: directory/LastGraph
+  optional: false
+- !Positional
+  description: ': (if requested) AMOS compatible assembly file'
+  position: 3
+  name: directory/velvet_asm.afg
+  optional: false
+named:
+- !Flag
+  description: ": removal of low coverage nodes AFTER tour bus or allow the system\
+    \ to infer it\n(default: no removal)"
+  synonyms:
+  - -cov_cutoff
+  args: !SimpleFlagArg
+    name: floating-point|auto
+  optional: true
+- !Flag
+  description: ': expected distance between two paired end reads (default: no read
+    pairing)'
+  synonyms:
+  - -ins_length
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': tracking of short read positions in assembly (default: no tracking)'
+  synonyms:
+  - -read_trkg
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ': minimum contig length exported to contigs.fa file (default: hash
+    length * 2)'
+  synonyms:
+  - -min_contig_lgth
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': export assembly to AMOS file (default: no export)'
+  synonyms:
+  - -amos_file
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ": expected coverage of unique regions or allow the system to infer\
+    \ it\n(default: no long or paired-end read resolution)"
+  synonyms:
+  - -exp_cov
+  args: !SimpleFlagArg
+    name: floating point|auto
+  optional: true
+- !Flag
+  description: ': expected distance between two paired-end reads in the second short-read
+    dataset (default: no read pairing)'
+  synonyms:
+  - -ins_length2
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': expected distance between two long paired-end reads (default: no
+    read pairing)'
+  synonyms:
+  - -ins_length_long
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': scaffolding of contigs used paired end information (default: on)'
+  synonyms:
+  - -scaffolding
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+- !Flag
+  description: ': maximum length in base pair of bubble (default: 100)'
+  synonyms:
+  - -max_branch_length
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': maximum divergence rate between two branches in a bubble (default:
+    0.2)'
+  synonyms:
+  - -max_divergence
+  args: !SimpleFlagArg
+    name: floating-point
+  optional: true
+- !Flag
+  description: ': maximum number of gaps allowed in the alignment of the two branches
+    of a bubble (default: 3)'
+  synonyms:
+  - -max_gap_count
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': minimum number of paired end connections to justify the scaffolding
+    of two long contigs (default: 10)'
+  synonyms:
+  - -min_pair_count
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: ': removal of high coverage nodes AFTER tour bus (default: no removal)'
+  synonyms:
+  - -max_coverage
+  args: !SimpleFlagArg
+    name: floating point
+  optional: true
+- !Flag
+  description: ': minimum number of long reads required to merge contigs (default:
+    2)'
+  synonyms:
+  - -long_mult_cutoff
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ': export unused reads in UnusedReads.fa file (default: no)'
+  synonyms:
+  - -unused_reads
+  args: !SimpleFlagArg
+    name: yes|no
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n./velvetg directory [options]\n\n\tdirectory\t\t\t: working directory\
+  \ name\n\nStandard options:\n\t-cov_cutoff <floating-point|auto>\t: removal of low\
+  \ coverage nodes AFTER tour bus or allow the system to infer it\n\t\t(default: no\
+  \ removal)\n\t-ins_length <integer>\t\t: expected distance between two paired end\
+  \ reads (default: no read pairing)\n\t-read_trkg <yes|no>\t\t: tracking of short\
+  \ read positions in assembly (default: no tracking)\n\t-min_contig_lgth <integer>\t\
+  : minimum contig length exported to contigs.fa file (default: hash length * 2)\n\
+  \t-amos_file <yes|no>\t\t: export assembly to AMOS file (default: no export)\n\t\
+  -exp_cov <floating point|auto>\t: expected coverage of unique regions or allow the\
+  \ system to infer it\n\t\t(default: no long or paired-end read resolution)\n\nAdvanced\
+  \ options:\n\t-ins_length2 <integer>\t\t: expected distance between two paired-end\
+  \ reads in the second short-read dataset (default: no read pairing)\n\t-ins_length_long\
+  \ <integer>\t: expected distance between two long paired-end reads (default: no\
+  \ read pairing)\n\t-ins_length*_sd <integer>\t: est. standard deviation of respective\
+  \ dataset (default: 10% of corresponding length)\n\t\t[replace '*' by nothing, '2'\
+  \ or '_long' as necessary]\n\t-scaffolding <yes|no>\t\t: scaffolding of contigs\
+  \ used paired end information (default: on)\n\t-max_branch_length <integer>\t: maximum\
+  \ length in base pair of bubble (default: 100)\n\t-max_divergence <floating-point>:\
+  \ maximum divergence rate between two branches in a bubble (default: 0.2)\n\t-max_gap_count\
+  \ <integer>\t: maximum number of gaps allowed in the alignment of the two branches\
+  \ of a bubble (default: 3)\n\t-min_pair_count <integer>\t: minimum number of paired\
+  \ end connections to justify the scaffolding of two long contigs (default: 10)\n\
+  \t-max_coverage <floating point>\t: removal of high coverage nodes AFTER tour bus\
+  \ (default: no removal)\n\t-long_mult_cutoff <int>\t\t: minimum number of long reads\
+  \ required to merge contigs (default: 2)\n\t-unused_reads <yes|no>\t\t: export unused\
+  \ reads in UnusedReads.fa file (default: no)\n\nOutput:\n\tdirectory/contigs.fa\t\
+  \t: fasta file of contigs longer than twice hash length\n\tdirectory/stats.txt\t\
+  \t: stats file (tab-spaced) useful for determining appropriate coverage cutoff\n\
+  \tdirectory/LastGraph\t\t: special formatted file with all the information on the\
+  \ final graph\n\tdirectory/velvet_asm.afg\t: (if requested) AMOS compatible assembly\
+  \ file\n"
+generated_using:
+- --help

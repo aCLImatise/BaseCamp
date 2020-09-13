@@ -1,0 +1,357 @@
+!Command
+command:
+- ShortStack
+positional: []
+named:
+- !Flag
+  description: '[string] : path to reference genome in .fasta or .fa format. Required
+    for any run.'
+  synonyms:
+  - --genomefile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : name of output directory to be created for results. Defaults\
+    \ to 'ShortStack_[time]',\nwhere [time] is the current UNIX time according to\
+    \ the system. If the outdir already exists, ShortStack\nwill exit with an error\
+    \ message."
+  synonyms:
+  - --outdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : path to readfile(s) to be aligned. valid formats: .fasta,\
+    \ .fa, .fasta.gz,\n.fa.gz, .fastq, .fq, .fastq.gz, .fq.gz, .csfasta, .csfasta.gz.\
+    \ Multiple files, can be specified as\nseparate arguments to --readfile ... e.g.\
+    \ --readfile file1.fastq file2.fastq file3.fastq\nMutually exclusive with --bamfile\
+    \ or --cramfile."
+  synonyms:
+  - --readfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : sequence of 3' adapter to trim off during read-pre processing.\
+    \ Must be at least\n8 bases, with only ATCG characters. If not specified, reads\
+    \ are assumed to be already trimmed."
+  synonyms:
+  - --adapter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[integer] : Argument to be passed to bowtie's -p option, specifying\
+    \ number of processor\ncores to request during alignment. Defaults to 1. Must\
+    \ be an integer of 1 or more."
+  synonyms:
+  - --bowtie_cores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : Argument to be passed to samtools sort -m option, which\
+    \ sets the maximum memory\nusage during bam file sorting. If not set, samtools\
+    \ sort defaults it to 768M. Higher settings will\nreduce the overall time spent\
+    \ in alignment phase, at cost of more memory usage. Use K/M/G suffixes to\nspecify\
+    \ kilobytes, megabytes, and gigabytes, respectively. Extremely large alignment\
+    \ jobs will\ncrash (due to crash of samtools sort operation) if --sort_mem is\
+    \ not set high enough. However, alignment\njobs will also crash if sort_mem is\
+    \ set too high, and all physical memory on your machine is exahusted."
+  synonyms:
+  - --sort_mem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[integer] : Argument to be passed to bowtie's -v option, specifying\
+    \ number of mismatches\nto be tolerated in a valid alignment. Must be either 0,\
+    \ 1, or 2. In cases of multiple hits, only hits\nwith lowest number of mismatches\
+    \ kept. Default: 1."
+  synonyms:
+  - --mismatches
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : path(s) to color-space quality value file(s). Used only\
+    \ in conjunction with .csfasta\nor .csfasta.gz formatted files in --readfile.\
+    \ Compressed format for cquals is NOT allowed. Like --readfile,\ncquals can take\
+    \ multiple arguments for multiple files, e.g. --cquals file1.qual file2.qual file3.qual"
+  synonyms:
+  - --cquals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': When aligning, convert final alignment to cram format instead of
+    the default bam format.'
+  synonyms:
+  - --cram
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : Protocol for handling multi-mapped reads. Valid entries\
+    \ are n (none), r (random), u (unique-\nseeded guide), or f (fractional-seeded\
+    \ guide). default: u"
+  synonyms:
+  - --mmap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : Setting to be passed to the -m option of bowtie. Over-ridden\
+    \ and set to 1 if option\nmmap is set to n. This sets the maximum number of multi-mappings\
+    \ allowed. Valid settings are integers >= 1 OR set 'all'\nto disable suppression\
+    \ of highly multi-mapped reads. Default: 50"
+  synonyms:
+  - --bowtie_m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : Reads with more than this number of possible alignment\
+    \ positions where the\nchoice can't be guided by unequal  will be reported as\
+    \ unmapped. Irrelevant if option mmap is set\nto n or r. Must be integer of 2\
+    \ or greater or set to 'none' to disable. Default: 3."
+  synonyms:
+  - --ranmax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": If this switch is present, the ShortStack run will terminate after\
+    \ the alignment phase\nwith no analysis performed."
+  synonyms:
+  - --align_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": If this switch is present, the output alignment file will contain\
+    \ secondary alignments\nas well as primary alignments for multi-mapped reads.\
+    \ Secondary alignments have bit 256 set in the SAM FLAG field.\nThis option can\
+    \ increase alignment file size, sometimes by a lot."
+  synonyms:
+  - --show_secondaries
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": As of version 3.5, by default ShortStack alignments no longer store\
+    \ the quality values, to save space. Use\nof this switch will cause quality values\
+    \ to be retained. Note that this increases file size."
+  synonyms:
+  - --keep_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : path to input .bam alignment file of small RNAs. Only lines\
+    \ with bits 4 and 256\nunset will be used. Mutually exclusive with --readfile\
+    \ or --cramfile."
+  synonyms:
+  - --bamfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : path to input .cram alignment file of small RNAs. Only\
+    \ lines with bits 4 and 256\nunset will be used. Mutually exclusive with --readfile\
+    \ or --bamfile."
+  synonyms:
+  - --cramfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[integer] : Minimum size of a Dicer-processed small RNA. Must be an\
+    \ integer of at least 15\nand <= dicermax. Default: 20."
+  synonyms:
+  - --dicermin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[integer] : Maximum size of a Dicer-processed small RNA. Must be an\
+    \ integer of at least 15\nand >= dicermin. Deafult: 24."
+  synonyms:
+  - --dicermax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[integer] : Size of genomic RNA segments for folding during MIRNA\
+    \ search. Any loci larger\nthan this size will not be analyzed with respect for\
+    \ MIRNA features. Must be an integer of at\nleast 200 and no larger than 1,000.\
+    \ Default: 300. Note that increasing this setting may drastically\nincrease runtimes."
+  synonyms:
+  - --foldsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : Path to a tab-delimited plain-text file listing intervals\
+    \ to analyze. Lines\nstarting with # are ignored. First column is coordinate in\
+    \ format Chr:start-stop, second column\nis names (optional), and any other columns\
+    \ are ignored. Mutually exclusive with option --locus."
+  synonyms:
+  - --locifile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : Analyze the specified interval(s). Interval(s) is specified\
+    \ in format Chr:start-stop.\nMultiple intervals can be specified in a comma-separated\
+    \ list. Mutually exclusive with option\n--locifile. Specify the value for --total_primaries\
+    \ to make a single locus run fast."
+  synonyms:
+  - --locus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Disable MIRNA search.'
+  synonyms:
+  - --nohp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[integer] : Initially found clusters of small RNAs will be merged\
+    \ if the distance between them is\nless than or equal to the value of pad. Must\
+    \ be an integer between 0 and 50000. Default: 75."
+  synonyms:
+  - --pad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[string] : Clusters of small RNAs must have at least this many alignments.\
+    \ Supply an\ninteger between 1 and 50000. Can also be a normalized value in reads\
+    \ per million (rpm) OR reads per million mapped (rpmm). When specifying mincov\
+    \ in\nrpm or rpmm, the mincov value must be a floating point number > 0 and <\
+    \ 500,000 followed\nby the string 'rpm' or 'rpmm'. Examples: '5' --> threshold\
+    \ is 5 raw reads. '3.2rpm' --> threshold is\n3.2 reads per million mapped. '2.8rpmm'\
+    \ --> threshold is 2.8 reads per million mapped. Deafult: 0.5rpm."
+  synonyms:
+  - --mincov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[float] : Cutoff for calling the strandedness of a locus. Must be\
+    \ a floating point number\nbetween 0.5 and 1 (inclusive). DEFAULT: 0.8. At default\
+    \ of 0.8, a locus must have 80% of more of its\nreads on the top strand to be\
+    \ called a + strand locus, or 20% or less on the top strand to be a -\nstrand\
+    \ locus. All others receive no strand call (e.g. '.'). Only stranded loci are\
+    \ analyzed for\nMIRNAs, while only unstranded loci are analyzed with respect to\
+    \ phasing. Most users probably want\nto use the default setting of 0.8."
+  synonyms:
+  - --strand_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[integer] : Tell ShortStack the total number of primary alignments\
+    \ in the bam file. Specifying\nthis value here speeds the analysis, since ShortStack\
+    \ does not need to count the reads directly from the bam file.\nCan only be specified\
+    \ in conjunction with --bamfile. This count should include all primary alignment\
+    \ INCLUDING unplaced ones."
+  synonyms:
+  - --total_primaries
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': print this message and quit'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: ': print version and quit'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nShortStack version 3.8.5\nUsage: ShortStack [options] {--readfile <r>\
+  \ | {--bamfile <b> | --cramfile <c>}} --genomefile <g>\n\n<r> : readfile must be\
+  \ in fasta (.fasta or .fa), colorspace-fasta (.csfasta), \n      or fastq (.fastq\
+  \ or .fq) format, or their gzip-compressed versions\n      (.fasta.gz, .fa.gz, .csfasta.gz,\
+  \ .fastq.gz, or .fq.gz)\n      Can also be a list (seperated by spaces) of several\
+  \ read files.\n<b> : BAM formatted alignment file (.bam).\n<c> : CRAM formatted\
+  \ alignment file (.cram).\n<g> : FASTA formatted (.fa or .fasta) genome file.\n\n\
+  Dependencies (in PATH):\n\nsamtools (version 1.x)\nbowtie (if aligning)\nbowtie-build\
+  \ (if aligning and .ebwt indices not found)\ngzip (if aligning)\nRNAfold (unless\
+  \ running with --nohp option to disable MIRNA search)\n\nGeneral Options:\n\n--help\
+  \ : print this message and quit\n\n--version : print version and quit\n\n--genomefile\
+  \ [string] : path to reference genome in .fasta or .fa format. Required for any\
+  \ run.\n\n--outdir [string] : name of output directory to be created for results.\
+  \ Defaults to 'ShortStack_[time]', \n  where [time] is the current UNIX time according\
+  \ to the system. If the outdir already exists, ShortStack\n  will exit with an error\
+  \ message.\n\nAlignment Options:\n\n--readfile [string] : path to readfile(s) to\
+  \ be aligned. valid formats: .fasta, .fa, .fasta.gz,\n  .fa.gz, .fastq, .fq, .fastq.gz,\
+  \ .fq.gz, .csfasta, .csfasta.gz. Multiple files, can be specified as \n  separate\
+  \ arguments to --readfile ... e.g. --readfile file1.fastq file2.fastq file3.fastq\n\
+  \  Mutually exclusive with --bamfile or --cramfile.\n\n--adapter [string] : sequence\
+  \ of 3' adapter to trim off during read-pre processing. Must be at least \n  8 bases,\
+  \ with only ATCG characters. If not specified, reads are assumed to be already trimmed.\n\
+  \n--bowtie_cores [integer] : Argument to be passed to bowtie's -p option, specifying\
+  \ number of processor\n  cores to request during alignment. Defaults to 1. Must\
+  \ be an integer of 1 or more.\n\n--sort_mem [string] : Argument to be passed to\
+  \ samtools sort -m option, which sets the maximum memory\n  usage during bam file\
+  \ sorting. If not set, samtools sort defaults it to 768M. Higher settings will\n\
+  \  reduce the overall time spent in alignment phase, at cost of more memory usage.\
+  \ Use K/M/G suffixes to \n  specify kilobytes, megabytes, and gigabytes, respectively.\
+  \ Extremely large alignment jobs will\n  crash (due to crash of samtools sort operation)\
+  \ if --sort_mem is not set high enough. However, alignment\n  jobs will also crash\
+  \ if sort_mem is set too high, and all physical memory on your machine is exahusted.\n\
+  \n--mismatches [integer] : Argument to be passed to bowtie's -v option, specifying\
+  \ number of mismatches\n  to be tolerated in a valid alignment. Must be either 0,\
+  \ 1, or 2. In cases of multiple hits, only hits\n  with lowest number of mismatches\
+  \ kept. Default: 1.\n\n--cquals [string] : path(s) to color-space quality value\
+  \ file(s). Used only in conjunction with .csfasta \n  or .csfasta.gz formatted files\
+  \ in --readfile. Compressed format for cquals is NOT allowed. Like --readfile, \n\
+  \  cquals can take multiple arguments for multiple files, e.g. --cquals file1.qual\
+  \ file2.qual file3.qual\n\n--cram : When aligning, convert final alignment to cram\
+  \ format instead of the default bam format.\n\n--mmap [string] : Protocol for handling\
+  \ multi-mapped reads. Valid entries are n (none), r (random), u (unique-\n  seeded\
+  \ guide), or f (fractional-seeded guide). default: u\n\n--bowtie_m [string] : Setting\
+  \ to be passed to the -m option of bowtie. Over-ridden and set to 1 if option\n\
+  \  mmap is set to n. This sets the maximum number of multi-mappings allowed. Valid\
+  \ settings are integers >= 1 OR set 'all' \n  to disable suppression of highly multi-mapped\
+  \ reads. Default: 50\n\n--ranmax [string] : Reads with more than this number of\
+  \ possible alignment positions where the \n  choice can't be guided by unequal \
+  \ will be reported as unmapped. Irrelevant if option mmap is set\n  to n or r. Must\
+  \ be integer of 2 or greater or set to 'none' to disable. Default: 3.\n\n--align_only\
+  \ : If this switch is present, the ShortStack run will terminate after the alignment\
+  \ phase\n  with no analysis performed.\n\n--show_secondaries : If this switch is\
+  \ present, the output alignment file will contain secondary alignments\n  as well\
+  \ as primary alignments for multi-mapped reads. Secondary alignments have bit 256\
+  \ set in the SAM FLAG field.\n  This option can increase alignment file size, sometimes\
+  \ by a lot.\n\n--keep_quals : As of version 3.5, by default ShortStack alignments\
+  \ no longer store the quality values, to save space. Use \n  of this switch will\
+  \ cause quality values to be retained. Note that this increases file size.\n\nAnalysis\
+  \ Options:\n\n--bamfile [string] : path to input .bam alignment file of small RNAs.\
+  \ Only lines with bits 4 and 256\n  unset will be used. Mutually exclusive with\
+  \ --readfile or --cramfile.\n\n--cramfile [string] : path to input .cram alignment\
+  \ file of small RNAs. Only lines with bits 4 and 256\n  unset will be used. Mutually\
+  \ exclusive with --readfile or --bamfile.\n\n--dicermin [integer] : Minimum size\
+  \ of a Dicer-processed small RNA. Must be an integer of at least 15\n  and <= dicermax.\
+  \ Default: 20.\n\n--dicermax [integer] : Maximum size of a Dicer-processed small\
+  \ RNA. Must be an integer of at least 15\n  and >= dicermin. Deafult: 24.\n\n--foldsize\
+  \ [integer] : Size of genomic RNA segments for folding during MIRNA search. Any\
+  \ loci larger\n  than this size will not be analyzed with respect for MIRNA features.\
+  \ Must be an integer of at \n  least 200 and no larger than 1,000. Default: 300.\
+  \ Note that increasing this setting may drastically\n  increase runtimes.\n\n--locifile\
+  \ [string] : Path to a tab-delimited plain-text file listing intervals to analyze.\
+  \ Lines\n  starting with # are ignored. First column is coordinate in format Chr:start-stop,\
+  \ second column\n  is names (optional), and any other columns are ignored. Mutually\
+  \ exclusive with option --locus.\n\n--locus [string] : Analyze the specified interval(s).\
+  \ Interval(s) is specified in format Chr:start-stop.\n  Multiple intervals can be\
+  \ specified in a comma-separated list. Mutually exclusive with option \n  --locifile.\
+  \ Specify the value for --total_primaries to make a single locus run fast.\n\n--nohp\
+  \ : Disable MIRNA search.\n\n--pad [integer] : Initially found clusters of small\
+  \ RNAs will be merged if the distance between them is\n  less than or equal to the\
+  \ value of pad. Must be an integer between 0 and 50000. Default: 75.\n\n--mincov\
+  \ [string] : Clusters of small RNAs must have at least this many alignments. Supply\
+  \ an\n  integer between 1 and 50000. Can also be a normalized value in reads per\
+  \ million (rpm) OR reads per million mapped (rpmm). When specifying mincov in \n\
+  \  rpm or rpmm, the mincov value must be a floating point number > 0 and < 500,000\
+  \ followed\n  by the string 'rpm' or 'rpmm'. Examples: '5' --> threshold is 5 raw\
+  \ reads. '3.2rpm' --> threshold is \n  3.2 reads per million mapped. '2.8rpmm' -->\
+  \ threshold is 2.8 reads per million mapped. Deafult: 0.5rpm.\n\n--strand_cutoff\
+  \ [float] : Cutoff for calling the strandedness of a locus. Must be a floating point\
+  \ number \n  between 0.5 and 1 (inclusive). DEFAULT: 0.8. At default of 0.8, a locus\
+  \ must have 80% of more of its \n  reads on the top strand to be called a + strand\
+  \ locus, or 20% or less on the top strand to be a - \n  strand locus. All others\
+  \ receive no strand call (e.g. '.'). Only stranded loci are analyzed for \n  MIRNAs,\
+  \ while only unstranded loci are analyzed with respect to phasing. Most users probably\
+  \ want\n  to use the default setting of 0.8.\n\n--total_primaries [integer] : Tell\
+  \ ShortStack the total number of primary alignments in the bam file. Specifying\n\
+  \  this value here speeds the analysis, since ShortStack does not need to count\
+  \ the reads directly from the bam file.\n  Can only be specified in conjunction\
+  \ with --bamfile. This count should include all primary alignment INCLUDING unplaced\
+  \ ones.\n\nType perldoc ShortStack for documentation, or see README\n\n"
+generated_using:
+- --help

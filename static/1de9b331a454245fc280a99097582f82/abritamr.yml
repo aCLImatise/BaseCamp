@@ -1,0 +1,151 @@
+!Command
+command:
+- abritamr
+positional: []
+named:
+- !Flag
+  description: "Set if running on MDU QC data. If set please provide\nthe MDU QC .csv\
+    \ as further input and an additional\noutput suitable for lims input will be provided.\n\
+    (default: False)"
+  synonyms:
+  - --mduqc
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name of checked MDU QC file. (default:\nmdu_qc_checked.csv)"
+  synonyms:
+  - --qc
+  - -q
+  args: !SimpleFlagArg
+    name: QC
+  optional: true
+- !Flag
+  description: "Path to positive control sequence - must be set if\nusing -m (default:\
+    \ )"
+  synonyms:
+  - --positive_control
+  - -p
+  args: !SimpleFlagArg
+    name: POSITIVE_CONTROL
+  optional: true
+- !Flag
+  description: "If using singularity container for AMRfinderplus\n(default: False)"
+  synonyms:
+  - --Singularity
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to the singularity container for AMRfinderplus,\nif empty will\
+    \ defualt to shub://phgenomics-\nsingularity/amrfinderplus (default: )"
+  synonyms:
+  - --singularity_path
+  - -s
+  args: !SimpleFlagArg
+    name: SINGULARITY_PATH
+  optional: true
+- !Flag
+  description: "Tab-delimited file with sample ID as column 1 and path\nto assemblies\
+    \ as column 2 (default: )"
+  synonyms:
+  - --contigs
+  - -c
+  args: !SimpleFlagArg
+    name: CONTIGS
+  optional: true
+- !Flag
+  description: "Tab-delimited file with sample ID as column 1 and path\nto amr_finder\
+    \ output files as column 2 (default: )"
+  synonyms:
+  - --amrfinder_output
+  - -o
+  args: !SimpleFlagArg
+    name: AMRFINDER_OUTPUT
+  optional: true
+- !Flag
+  description: "Working directory, default is current directory\n(default: /)"
+  synonyms:
+  - --workdir
+  - -w
+  args: !SimpleFlagArg
+    name: WORKDIR
+  optional: true
+- !Flag
+  description: "Directory where templates are stored (default:\n/usr/local/lib/python3.7/site-packages/abritamr)"
+  synonyms:
+  - --resources
+  - -r
+  args: !SimpleFlagArg
+    name: RESOURCES
+  optional: true
+- !Flag
+  description: "Path to file (default: /usr/local/lib/python3.7/site-\npackages/abritamr/db/refgenes.csv)"
+  synonyms:
+  - --drug_classes
+  - -d
+  args: !SimpleFlagArg
+    name: DRUG_CLASSES
+  optional: true
+- !Flag
+  description: "Number of AMR finder jobs to run in parallel.\n(default: 16)"
+  synonyms:
+  - --jobs
+  - -j
+  args: !SimpleFlagArg
+    name: JOBS
+  optional: true
+- !Flag
+  description: "If you would like to keep intermediate files and\nsnakemake log. Default\
+    \ is to remove (default: False)\n"
+  synonyms:
+  - --keep
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: abritamr [-h] [--mduqc] [--qc QC] [--positive_control POSITIVE_CONTROL]\n\
+  \                [--Singularity] [--singularity_path SINGULARITY_PATH]\n       \
+  \         [--contigs CONTIGS] [--amrfinder_output AMRFINDER_OUTPUT]\n          \
+  \      [--workdir WORKDIR] [--resources RESOURCES]\n                [--drug_classes\
+  \ DRUG_CLASSES] [--jobs JOBS] [--keep]\n\nMDU AMR gene detection pipeline\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --mduqc,\
+  \ -m           Set if running on MDU QC data. If set please provide\n          \
+  \              the MDU QC .csv as further input and an additional\n            \
+  \            output suitable for lims input will be provided.\n                \
+  \        (default: False)\n  --qc QC, -q QC        Name of checked MDU QC file.\
+  \ (default:\n                        mdu_qc_checked.csv)\n  --positive_control POSITIVE_CONTROL,\
+  \ -p POSITIVE_CONTROL\n                        Path to positive control sequence\
+  \ - must be set if\n                        using -m (default: )\n  --Singularity,\
+  \ -S     If using singularity container for AMRfinderplus\n                    \
+  \    (default: False)\n  --singularity_path SINGULARITY_PATH, -s SINGULARITY_PATH\n\
+  \                        Path to the singularity container for AMRfinderplus,\n\
+  \                        if empty will defualt to shub://phgenomics-\n         \
+  \               singularity/amrfinderplus (default: )\n  --contigs CONTIGS, -c CONTIGS\n\
+  \                        Tab-delimited file with sample ID as column 1 and path\n\
+  \                        to assemblies as column 2 (default: )\n  --amrfinder_output\
+  \ AMRFINDER_OUTPUT, -o AMRFINDER_OUTPUT\n                        Tab-delimited file\
+  \ with sample ID as column 1 and path\n                        to amr_finder output\
+  \ files as column 2 (default: )\n  --workdir WORKDIR, -w WORKDIR\n             \
+  \           Working directory, default is current directory\n                  \
+  \      (default: /)\n  --resources RESOURCES, -r RESOURCES\n                   \
+  \     Directory where templates are stored (default:\n                        /usr/local/lib/python3.7/site-packages/abritamr)\n\
+  \  --drug_classes DRUG_CLASSES, -d DRUG_CLASSES\n                        Path to\
+  \ file (default: /usr/local/lib/python3.7/site-\n                        packages/abritamr/db/refgenes.csv)\n\
+  \  --jobs JOBS, -j JOBS  Number of AMR finder jobs to run in parallel.\n       \
+  \                 (default: 16)\n  --keep, -k            If you would like to keep\
+  \ intermediate files and\n                        snakemake log. Default is to remove\
+  \ (default: False)\n"
+generated_using:
+- --help

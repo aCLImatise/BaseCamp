@@ -1,0 +1,133 @@
+!Command
+command:
+- extract_coverage_intervals
+positional:
+- !Positional
+  description: Input BAM file(s)
+  position: 0
+  name: BAM
+  optional: false
+named:
+- !Flag
+  description: "Region of interested in BED format, e.g.\nHXB2:2253-3869. Loci are\
+    \ interpreted using 0-based\nindexing, and a half-open interval is used, i.e,\n\
+    [start:end) (default: None)"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "File containing coverage per locus per sample. Samples\nare expected\
+    \ as columns and loci as rows. This option\nis not compatible with the read-window\
+    \ overlap\nthresholding (default: None)"
+  synonyms:
+  - -cf
+  args: !SimpleFlagArg
+    name: TSV
+  optional: true
+- !Flag
+  description: 'Minimum read depth per window (default: 100)'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Threshold on the overlap between each read and the\nwindow (default:\
+    \ 0.85)"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: ',len2,...      Window length used by ShoRAH (default: 201)'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: len1
+  optional: true
+- !Flag
+  description: ", shift2, ...\nWindow shifts used by ShoRAH (default: 67)"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: shift1
+  optional: true
+- !Flag
+  description: ",name2,...    Patient/sample identifiers as comma separated strings\n\
+    (default: None)"
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: name1
+  optional: true
+- !Flag
+  description: "Indicate whether to apply a more liberal shift on\nintervals' right-endpoint\
+    \ (default: False)"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Inidcate whether to report regions with sufficient\ncoverage rather\
+    \ than windows for SNV calling using\nShoRAH (default: False)"
+  synonyms:
+  - --no-shorah
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of threads (default: 1)'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Output file name (default: coverage_intervals.tsv)'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: extract_coverage_intervals [-h] [-r BED] [-cf TSV] [-c INT] [-f\
+  \ FLOAT]\n                                  [-w len1,len2,...] [-s shift1, shift2,\
+  \ ...]\n                                  [-N name1,name2,...] [-e] [--no-shorah]\n\
+  \                                  [-t INT] [-o OUTPUT]\n                      \
+  \            BAM [BAM ...]\n\nScript to extract coverage windows for ShoRAH\n\n\
+  positional arguments:\n  BAM                   Input BAM file(s)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -r BED             \
+  \   Region of interested in BED format, e.g.\n                        HXB2:2253-3869.\
+  \ Loci are interpreted using 0-based\n                        indexing, and a half-open\
+  \ interval is used, i.e,\n                        [start:end) (default: None)\n\
+  \  -cf TSV               File containing coverage per locus per sample. Samples\n\
+  \                        are expected as columns and loci as rows. This option\n\
+  \                        is not compatible with the read-window overlap\n      \
+  \                  thresholding (default: None)\n  -c INT                Minimum\
+  \ read depth per window (default: 100)\n  -f FLOAT              Threshold on the\
+  \ overlap between each read and the\n                        window (default: 0.85)\n\
+  \  -w len1,len2,...      Window length used by ShoRAH (default: 201)\n  -s shift1,\
+  \ shift2, ...\n                        Window shifts used by ShoRAH (default: 67)\n\
+  \  -N name1,name2,...    Patient/sample identifiers as comma separated strings\n\
+  \                        (default: None)\n  -e                    Indicate whether\
+  \ to apply a more liberal shift on\n                        intervals' right-endpoint\
+  \ (default: False)\n  --no-shorah           Inidcate whether to report regions with\
+  \ sufficient\n                        coverage rather than windows for SNV calling\
+  \ using\n                        ShoRAH (default: False)\n  -t INT             \
+  \   Number of threads (default: 1)\n  -o OUTPUT             Output file name (default:\
+  \ coverage_intervals.tsv)\n"
+generated_using:
+- --help
