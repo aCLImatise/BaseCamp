@@ -1,4 +1,6 @@
 const path = require("path")
+const yaml = require("js-yaml")
+const schema = require("./aclimatiseTypes")
 
 exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
   createTypes([
@@ -7,16 +9,58 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
       fields: {
         name: "String!",
         publicURL: "String!",
+        succeededExeCount: "Int!",
+        allExeCount: "Int!",
+        succeededProportion: "Float!",
+        versions: {
+          type: "[CondaVersion]",
+          resolve(source, args, context, info) {
+            return context.nodeModel.getNodesByIds({
+              ids: source.versions,
+              type: "CondaVersion",
+            })
+          },
+        },
       },
       interfaces: ["Node"],
+      extensions: {
+        infer: false,
+      },
     }),
+
     schema.buildObjectType({
       name: "CondaVersion",
       fields: {
         name: "String!",
         publicURL: "String!",
+        packageName: "String!",
+        succeededExeCount: "Int!",
+        allExeCount: "Int!",
+        succeededProportion: "Float!",
+        package: {
+          type: "CondaPackage",
+          resolve(source, args, context, info) {
+            const ret = context.nodeModel.getNodeById({
+              id: source.fields.package,
+              type: "CondaPackage",
+            })
+            return ret
+          },
+        },
+        executables: {
+          type: "[CondaExecutable]",
+          resolve(source, args, context, info) {
+            return context.nodeModel.getNodesByIds({
+              ids: source.executables,
+              type: "CondaExecutable",
+            })
+          },
+        },
       },
       interfaces: ["Node"],
+      extensions: {
+        infer: false,
+      },
     }),
     schema.buildObjectType({
       name: "CondaExecutable",
@@ -31,28 +75,185 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
           },
         },
         name: "String!",
-        path: "String!",
+        versionName: "String!",
+        packageName: "String!",
+        succeeded: "Boolean!",
+        // path: "String!",
+        version: {
+          type: "CondaVersion",
+          resolve(source, args, context, info) {
+            return context.nodeModel.getNodeById({
+              id: source.fields.version,
+              type: "CondaVersion",
+            })
+          },
+        },
         publicURL: "String!",
       },
       interfaces: ["Node"],
+      extensions: {
+        infer: false,
+      },
     }),
   ])
 }
 
-// You can delete this file if you're not using it
-exports.createPages = async ({
-  graphql,
-  actions,
-  getNode,
-  createContentDigest,
-  createNodeId,
-}) => {
+async function createPackages(helpers) {
   const {
-    createNode,
-    createNodeField,
-    createPage,
-    createParentChildLink,
-  } = actions
+    graphql,
+    actions: { createNode, createNodeField, createPage },
+    createContentDigest,
+    createNodeId,
+    getNode,
+  } = helpers
+  const result = await graphql(`
+    {
+      allCondaVersion {
+        group(field: packageName) {
+          nodes {
+            id
+            publicURL
+            internal {
+              fieldOwners
+            }
+            succeededExeCount
+            allExeCount
+          }
+          fieldValue
+        }
+      }
+    }
+  `)
+  await Promise.all(
+    result.data.allCondaVersion.group.map(async ({ nodes, fieldValue }) => {
+      let versionSucceeded = nodes.reduce(
+        (acc, curr) => acc + curr.succeededExeCount,
+        0
+      )
+      let versionTotal = nodes.reduce((acc, curr) => acc + curr.allExeCount, 0)
+      let succeededProportion = versionSucceeded / versionTotal
+
+      const packageUrl = `/packages/${fieldValue}`
+      const packageId = createNodeId(fieldValue)
+
+      const fields = {
+        id: packageId,
+        name: fieldValue,
+        succeededExeCount: versionSucceeded,
+        allExeCount: versionTotal,
+        succeededProportion,
+        publicURL: packageUrl,
+        versions: nodes.map(node => node.id),
+        parent: null,
+        children: [],
+      }
+      const pack = {
+        ...fields,
+        internal: {
+          type: "CondaPackage",
+          contentDigest: createContentDigest(fields),
+        },
+      }
+      await createNode(pack)
+      for (let node of nodes) {
+        const resNode = getNode(node.id)
+        // Give the version a handle to its parent package
+        createNodeField({ node: resNode, name: "package", value: packageId })
+        // We now have enough information for the version page to be created
+        await createPage({
+          component: path.resolve(`./src/templates/version.js`),
+          path: resNode.publicURL,
+          context: {
+            version: resNode.id,
+          },
+        })
+      }
+      await createPage({
+        component: path.resolve(`./src/templates/package.js`),
+        path: fields.publicURL,
+        context: {
+          package: fields.id,
+        },
+      })
+    })
+  )
+}
+
+async function createVersions(helpers) {
+  const {
+    graphql,
+    actions: { createNode, createNodeField, createPage },
+    createContentDigest,
+    createNodeId,
+    getNode,
+  } = helpers
+
+  const result = await graphql(`
+    {
+      allCondaExecutable {
+        group(field: versionName) {
+          nodes {
+            id
+            succeeded
+            internal {
+              fieldOwners
+            }
+          }
+          fieldValue
+        }
+      }
+    }
+  `)
+  await Promise.all(
+    result.data.allCondaExecutable.group.map(async ({ nodes, fieldValue }) => {
+      const [packageName, versionName] = fieldValue.split(path.sep)
+      // Calculate the successes for each version in the package
+      const versionSucceeded = nodes.reduce(
+        (acc, curr) => acc + (curr.succeeded ? 1 : 0),
+        0
+      )
+      const versionTotal = nodes.length
+      const succeededProportion = versionSucceeded / versionTotal
+      const publicUrl = `/packages/${fieldValue}`
+      const id = createNodeId(fieldValue)
+      const fields = {
+        id,
+        succeededExeCount: versionSucceeded,
+        succeededProportion,
+        allExeCount: versionTotal,
+        publicURL: publicUrl,
+        name: versionName,
+        packageName,
+        executables: nodes.map(node => node.id),
+        parent: null,
+        children: [],
+      }
+      const version = {
+        ...fields,
+        internal: {
+          type: "CondaVersion",
+          contentDigest: createContentDigest(fields),
+        },
+      }
+      await createNode(version)
+
+      // Let the children have access to the parent
+      for (let node of nodes) {
+        const resNode = getNode(node.id)
+        createNodeField({ node: resNode, name: "version", value: version.id })
+      }
+    })
+  )
+}
+
+async function createExecutables(helpers) {
+  const {
+    graphql,
+    actions: { createNode, createPage },
+    createContentDigest,
+    loadNodeContent,
+    createNodeId,
+  } = helpers
 
   // Only select files 3 levels deep, from the git repos
   const result = await graphql(`
@@ -63,12 +264,19 @@ exports.createPages = async ({
           sourceInstanceName: { in: ["Wrappers", "Definitions"] }
         }
       ) {
-        edges {
-          node {
+        group(field: name) {
+          fieldValue
+          nodes {
             id
             relativePath
+            absolutePath
             extension
             publicURL
+            internal {
+              type
+              content
+              owner
+            }
           }
         }
       }
@@ -76,98 +284,61 @@ exports.createPages = async ({
   `)
 
   await Promise.all(
-    result.data.allFile.edges.map(async ({ node }) => {
-      // The root is the package name, e.g. "bwa". Create it if it doesn't exist
-      const [packageName, versionName, filename] = node.relativePath.split(
+    result.data.allFile.group.map(async ({ nodes, fieldValue }) => {
+      const yamlNode = nodes.filter(node => node.extension === "yml")[0]
+      if (!yamlNode) {
+        return
+      }
+      const [packageName, versionName, filename] = yamlNode.relativePath.split(
         path.sep
       )
       const [stem, extension] = filename.split(".")
-      const packageId = createNodeId(packageName)
-      const packageUrl = `/packages/${packageName}`
 
-      // Fetch the package node if it exists, otherwise create it
-      let pack = getNode(packageId)
-      if (!pack) {
-        pack = {
-          id: packageId,
-          name: packageName,
-          publicURL: packageUrl,
-          internal: {
-            type: "CondaPackage",
-            contentDigest: createContentDigest(packageName),
-          },
-        }
-        await createNode(pack)
-        await createPage({
-          component: path.resolve(`./src/templates/package.js`),
-          path: packageUrl,
-          context: {
-            package: packageId,
-          },
-        })
-      }
-
-      // Fetch the version node if it exists, otherwise create it
-      const versionId = createNodeId(`${packageName}/${versionName}`)
-      const versionUrl = `/packages/${packageName}/${versionName}`
-      let version = getNode(versionId)
-      if (!version) {
-        version = {
-          id: versionId,
-          publicURL: versionUrl,
-          name: versionName,
-          parent: packageId,
-          internal: {
-            type: "CondaVersion",
-            contentDigest: createContentDigest(versionId),
-          },
-        }
-        await createNode(version)
-        await createPage({
-          component: path.resolve(`./src/templates/version.js`),
-          path: versionUrl,
-          context: {
-            version: versionId,
-          },
-        })
-      }
-      createParentChildLink({ parent: pack, child: version })
+      // We can parse the base YAML file to obtain more useful metadata
+      const contents = await loadNodeContent(yamlNode)
+      const parsed = yaml.safeLoad(contents, { schema: schema })
+      const success =
+        parsed.positional.length +
+          parsed.named.length +
+          parsed.subcommands.length >
+        0
 
       // Now create the node for the single file within that package
-      const exeUrl = `${versionUrl}/${stem}`
-      const exeId = createNodeId(exeUrl)
-      let createdExe = false
-      let exe = getNode(exeId)
-      if (!exe) {
-        exe = {
-          id: exeId,
-          name: stem,
-          path: node.relativePath.split(".")[0],
-          publicURL: exeUrl,
-          parent: versionId,
-          wrappers: [],
-          internal: {
-            type: "CondaExecutable",
-            contentDigest: node.relativePath,
-          },
-        }
-        await createNode(exe)
-        await createPage({
-          component: path.resolve(`./src/templates/executable.js`),
-          path: exeUrl,
-          context: {
-            exe: exeId,
-          },
-        })
+      const publicUrl = `/packages/${packageName}/${versionName}/${stem}`
+      const id = createNodeId(yamlNode.relativePath)
+      const fields = {
+        id,
+        name: stem,
+        versionName: packageName + path.sep + versionName,
+        succeeded: success,
+        packageName,
+        // path: yamlNode.relativePath.split(".")[0],
+        wrappers: nodes.map(node => node.id),
+        publicURL: publicUrl,
+        children: [],
       }
-
-      // Link the version to the executable
-      createParentChildLink({ parent: version, child: exe })
-
-      // Link the executable to the wrapper
-      const wrappers = exe.wrappers || []
-      wrappers.push(node.id)
-      createNodeField({ node: exe, name: "wrappers", value: wrappers })
+      const exe = {
+        ...fields,
+        internal: {
+          type: "CondaExecutable",
+          contentDigest: createContentDigest(fields),
+        },
+      }
+      await createNode(exe)
+      await createPage({
+        component: path.resolve(`./src/templates/executable.js`),
+        path: publicUrl,
+        context: {
+          exe: id,
+        },
+      })
     })
   )
+}
+
+exports.createPages = async helpers => {
+  // We build up the structures in reverse order because nodes are immutable
+  await createExecutables(helpers)
+  await createVersions(helpers)
+  await createPackages(helpers)
 }

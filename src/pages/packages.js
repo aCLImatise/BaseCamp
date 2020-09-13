@@ -9,6 +9,7 @@ import List from "react-bulma-components/lib/components/list"
 import Container from "react-bulma-components/lib/components/container"
 import Heading from "react-bulma-components/lib/components/heading"
 import Section from "react-bulma-components/lib/components/section"
+import Tag from "react-bulma-components/lib/components/tag"
 
 export default function SecondPage() {
   const data = useStaticQuery(graphql`
@@ -17,6 +18,7 @@ export default function SecondPage() {
         nodes {
           publicURL
           name
+          succeededProportion
         }
       }
     }
@@ -30,9 +32,14 @@ export default function SecondPage() {
           <Heading size={2}>Packages</Heading>
           <List>
             {data.allCondaPackage.nodes.map(pack => {
+              const tagColour =
+                pack.succeededProportion > 0.7 ? "success" : "danger"
               return (
                 <List.Item renderAs={"a"} href={withPrefix(pack.publicURL)}>
                   {pack.name}
+                  <Tag color={tagColour} pull={"right"}>
+                    {pack.succeededProportion * 100}% Success
+                  </Tag>
                 </List.Item>
               )
             })}
