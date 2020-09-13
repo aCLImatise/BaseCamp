@@ -21,6 +21,9 @@ jobs:
 
       - run: npm install
 
+      - run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+        name: Fix file watch limit
+
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           deploy-branch: gh-pages
