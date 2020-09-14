@@ -14,19 +14,10 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
-      // We need this so that gatsby-source-git works properly
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `Wrappers`,
         path: `${__dirname}/ToolWrappers`,
-      },
-    },
-    {
-      // We need this so that gatsby-source-git works properly
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `Definitions`,
-        path: `${__dirname}/ToolDefinitions`,
       },
     },
   ],
