@@ -38,7 +38,7 @@ export default function SecondPage() {
                 <List.Item renderAs={"a"} href={withPrefix(pack.publicURL)}>
                   {pack.name}
                   <Tag color={tagColour} pull={"right"}>
-                    {pack.succeededProportion * 100}% Success
+                    {(pack.succeededProportion * 100).toFixed(2)}% Success
                   </Tag>
                 </List.Item>
               )
