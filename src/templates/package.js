@@ -10,6 +10,8 @@ import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tag from "react-bulma-components/lib/components/tag"
+import { Input } from "react-bulma-components/lib/components/form"
+import useStringFilter from "../hooks/useStringFilter"
 
 export const query = graphql`
   query package($package: String) {
@@ -27,6 +29,7 @@ export const query = graphql`
 `
 
 export default function Package({ path, location, pageResources, data }) {
+  const [inputProps, matches] = useStringFilter()
   const pack = data.condaPackage
   const condaUrl = `https://anaconda.org/bioconda/${pack.name}`
   const tagColour = pack.succeededProportion > 0.7 ? "success" : "danger"
@@ -55,10 +58,14 @@ export default function Package({ path, location, pageResources, data }) {
             </tr>
           </Table>
           <Heading size={3}>Versions</Heading>
+          <Input placeholder="Search" {...inputProps} />
           <List>
             {pack.versions.map(child => {
               const tagColour =
                 child.succeededProportion > 0.7 ? "success" : "danger"
+              if (!matches(child.name)) {
+                return
+              }
               return (
                 <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>
                   {child.name}

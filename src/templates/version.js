@@ -9,6 +9,8 @@ import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import Tag from "react-bulma-components/lib/components/tag"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Input } from "react-bulma-components/lib/components/form"
+import useStringFilter from "../hooks/useStringFilter"
 
 export const query = graphql`
   query version($version: String) {
@@ -30,6 +32,7 @@ export const query = graphql`
 `
 
 export default function Version({ data }) {
+  const [inputProps, matches] = useStringFilter()
   const version = data.condaVersion
   const tagColour = version.succeededProportion > 0.7 ? "success" : "danger"
 
@@ -60,8 +63,12 @@ export default function Version({ data }) {
             </Tag>
           </Heading>
           <Heading level={3}>Executables</Heading>
+          <Input placeholder="Search" {...inputProps} />
           <List>
             {version.executables.map(child => {
+              if (!matches(child.name)) {
+                return
+              }
               return (
                 <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>
                   {child.name}
