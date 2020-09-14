@@ -56,7 +56,7 @@ export default function Version({ data }) {
           <Heading level={2}>
             {title}{" "}
             <Tag color={tagColour} pull="right">
-              {version.succeededProportion * 100}% Success
+              {(version.succeededProportion * 100).toFixed(2)}% Success
             </Tag>
           </Heading>
           <Heading level={3}>Executables</Heading>

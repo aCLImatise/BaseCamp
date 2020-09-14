@@ -63,7 +63,7 @@ export default function Package({ path, location, pageResources, data }) {
                 <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>
                   {child.name}
                   <Tag color={tagColour} pull={"right"}>
-                    {child.succeededProportion * 100}% Success
+                    {(child.succeededProportion * 100).toFixed(2)}% Success
                   </Tag>
                 </List.Item>
               )
