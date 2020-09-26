@@ -1,25 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - faSize
 positional: []
-named:
-- !Flag
-  description: "outputs name and size of each record\nhas the side effect of printing\
-    \ nothing else"
-  synonyms:
-  - -detailed
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: output statistics in a tab separated format
-  synonyms:
-  - -tab
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - faSize
   - file
   positional: []
@@ -31,15 +18,61 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: "outputs name and size of each record\nhas the side effect of printing\
+        \ nothing else"
+      synonyms:
+      - -detailed
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output statistics in a tab separated format
+      synonyms:
+      - -tab
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: not a valid option
+        synonyms:
+        - -h
+        args: !SimpleFlagArg
+          name: is
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "-h is not a valid option\n"
+      generated_using: &id004
+      - -h
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "faSize - print total base count in fa files.\nusage:\n   faSize file(s).fa\n\
+      Command flags\n   -detailed        outputs name and size of each record\n  \
+      \                  has the side effect of printing nothing else\n   -tab   \
+      \          output statistics in a tab separated format\n\n"
+    generated_using: &id005 []
   subcommands: []
   usage: []
   help_flag:
   usage_flag:
   version_flag:
   help_text: "-h is not a valid option\n"
-  generated_using:
-  - -h
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -48,4 +81,4 @@ help_text: "faSize - print total base count in fa files.\nusage:\n   faSize file
   Command flags\n   -detailed        outputs name and size of each record\n      \
   \              has the side effect of printing nothing else\n   -tab           \
   \  output statistics in a tab separated format\n\n"
-generated_using: []
+generated_using: *id005

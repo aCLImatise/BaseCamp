@@ -28,52 +28,29 @@ positional:
   name: flatfile-to-json.pl
   optional: false
 - !Positional
-  description: --gff <GFF3 file>
-  position: 0
-  name: Required
-  optional: false
-- !Positional
-  description: "--help | -h | -?\nDisplay an extended help screen."
-  position: 1
-  name: Optional
-  optional: false
-- !Positional
   description: "--maxLookback <integer>\nMaximum number of features to keep in memory\
     \ when parsing GFF3\nfiles. Defaults to 10000.\nIf you receive \"orphan features\"\
     \ errors when parsing a GFF3 file\nthat doesn't contain enough '###' directives\
     \ (which are important\nfor parsing), you can try setting this higher if your\
     \ machine has\nenough memory."
-  position: 2
+  position: 0
   name: GFF3-specific
   optional: false
 - !Positional
   description: --thinType <type>
-  position: 3
+  position: 1
   name: BED-specific
   optional: false
 named:
 - !Flag
-  description: ''
+  description: "--bed <BED file>\n--gbk <GenBank file>\nProcess a GFF3, BED, or GenBank\
+    \ file containing annotation data.\nThis script does not support GFF version 2\
+    \ or GTF (GFF 2.5) input.\nGenBank input is limited to handling records for single\
+    \ genes.\n--trackLabel <track identifier>\nUnique identifier for this track. Required."
   synonyms:
-  - --bed
+  - --gff
   args: !SimpleFlagArg
-    name: BED file
-  optional: true
-- !Flag
-  description: "Process a GFF3, BED, or GenBank file containing annotation data.\n\
-    This script does not support GFF version 2 or GTF (GFF 2.5) input.\nGenBank input\
-    \ is limited to handling records for single genes."
-  synonyms:
-  - --gbk
-  args: !SimpleFlagArg
-    name: GenBank file
-  optional: true
-- !Flag
-  description: Unique identifier for this track. Required.
-  synonyms:
-  - --trackLabel
-  args: !SimpleFlagArg
-    name: track identifier
+    name: GFF3 file
   optional: true
 - !Flag
   description: "'<text>'\nHuman-readable track name."
@@ -217,7 +194,12 @@ named:
 parent:
 subcommands: []
 usage: []
-help_flag:
+help_flag: !Flag
+  description: "| -h | -?\nDisplay an extended help screen."
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
 help_text: "NAME\n    flatfile-to-json.pl - format data into JBrowse JSON format from\

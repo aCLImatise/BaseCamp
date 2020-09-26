@@ -1,18 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - wordLine
 positional: []
-named:
-- !Flag
-  description: '- Break up words based on C symbol rules rather than white space'
-  synonyms:
-  - -csym
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - wordLine
   - inFile
   positional: []
@@ -24,15 +18,54 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: '- Break up words based on C symbol rules rather than white space'
+      synonyms:
+      - -csym
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: not a valid option
+        synonyms:
+        - -h
+        args: !SimpleFlagArg
+          name: is
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "-h is not a valid option\n"
+      generated_using: &id004
+      - -h
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "wordLine - chop up words by white space and output them with one\n\
+      word to each line.\nusage:\n    wordLine inFile(s)\nOutput will go to stdout.Options:\n\
+      \    -csym - Break up words based on C symbol rules rather than white space\n\
+      \n"
+    generated_using: &id005 []
   subcommands: []
   usage: []
   help_flag:
   usage_flag:
   version_flag:
   help_text: "-h is not a valid option\n"
-  generated_using:
-  - -h
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -40,4 +73,4 @@ version_flag:
 help_text: "wordLine - chop up words by white space and output them with one\nword\
   \ to each line.\nusage:\n    wordLine inFile(s)\nOutput will go to stdout.Options:\n\
   \    -csym - Break up words based on C symbol rules rather than white space\n\n"
-generated_using: []
+generated_using: *id005

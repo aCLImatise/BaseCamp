@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - jhsdb
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - jhsdb
   - debugd
   positional:
@@ -36,7 +36,291 @@ subcommands:
     name: id
     optional: true
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: java
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sun.jvm.hotspot.DebugServer
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: pid
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: server
+        optional: true
+      - !Positional
+        description: ''
+        position: 4
+        name: id
+        optional: true
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "usage: java sun.jvm.hotspot.DebugServer <pid> [server id]\n   or:\
+        \ java sun.jvm.hotspot.DebugServer <executable> <core> [server id]\n\"pid\"\
+        \ must be the process ID of a HotSpot process.\nIf reading a core file, \"\
+        executable\" must (currently) be the\nfull path name to the precise java executable\
+        \ which generated\nthe core file (not, on Solaris, the \"java\" wrapper script\
+        \ in\nthe \"bin\" subdirectory of the JDK.)\nThe \"server id\" is a unique\
+        \ name for a specific remote debuggee.\n"
+      generated_using: &id005
+      - --usage
+    - !Command
+      command: &id006
+      - jhsdb
+      - jsnap
+      positional: []
+      named:
+      - !Flag
+        description: to print all performance counters
+        synonyms:
+        - --all
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: executable image name
+        synonyms:
+        - --exe
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: path to coredump
+        synonyms:
+        - --core
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: pid of process to attach
+        synonyms:
+        - --pid
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "    --all\tto print all performance counters\n    --exe\texecutable\
+        \ image name\n    --core\tpath to coredump\n    --pid\tpid of process to attach\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id007
+      - jhsdb
+      - hsdb
+      positional: []
+      named:
+      - !Flag
+        description: executable image name
+        synonyms:
+        - --exe
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: path to coredump
+        synonyms:
+        - --core
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: pid of process to attach
+        synonyms:
+        - --pid
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "    --exe\texecutable image name\n    --core\tpath to coredump\n\
+        \    --pid\tpid of process to attach\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - jhsdb
+      - jinfo
+      positional: []
+      named:
+      - !Flag
+        description: to print VM flags
+        synonyms:
+        - --flags
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: to print Java System properties
+        synonyms:
+        - --sysprops
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: executable image name
+        synonyms:
+        - --exe
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: path to coredump
+        synonyms:
+        - --core
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: pid of process to attach
+        synonyms:
+        - --pid
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "    --flags\tto print VM flags\n    --sysprops\tto print Java System\
+        \ properties\n    <no option>\tto print both of the above\n    --exe\texecutable\
+        \ image name\n    --core\tpath to coredump\n    --pid\tpid of process to attach\n"
+      generated_using: *id004
+    - !Command
+      command: &id009
+      - jhsdb
+      - clhsdb
+      positional: []
+      named:
+      - !Flag
+        description: executable image name
+        synonyms:
+        - --exe
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: path to coredump
+        synonyms:
+        - --core
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: pid of process to attach
+        synonyms:
+        - --pid
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "    --exe\texecutable image name\n    --core\tpath to coredump\n\
+        \    --pid\tpid of process to attach\n"
+      generated_using: *id004
+    - !Command
+      command: &id010
+      - jhsdb
+      - jmap
+      positional: []
+      named:
+      - !Flag
+        description: to print java heap summary
+        synonyms:
+        - --heap
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: to dump java heap in hprof binary format
+        synonyms:
+        - --binaryheap
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: name of the dump file
+        synonyms:
+        - --dumpfile
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: to print histogram of java object heap
+        synonyms:
+        - --histo
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: to print class loader statistics
+        synonyms:
+        - --clstats
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: to print information on objects awaiting finalization
+        synonyms:
+        - --finalizerinfo
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: executable image name
+        synonyms:
+        - --exe
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: path to coredump
+        synonyms:
+        - --core
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: pid of process to attach
+        synonyms:
+        - --pid
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "    <no option>\tto print same info as Solaris pmap\n    --heap\t\
+        to print java heap summary\n    --binaryheap\tto dump java heap in hprof binary\
+        \ format\n    --dumpfile\tname of the dump file\n    --histo\tto print histogram\
+        \ of java object heap\n    --clstats\tto print class loader statistics\n \
+        \   --finalizerinfo\tto print information on objects awaiting finalization\n\
+        \    --exe\texecutable image name\n    --core\tpath to coredump\n    --pid\t\
+        pid of process to attach\n"
+      generated_using: *id004
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "    clhsdb       \tcommand line debugger\n    debugd       \tdebug\
+      \ server\n    hsdb         \tui debugger\n    jstack --help\tto get more information\n\
+      \    jmap   --help\tto get more information\n    jinfo  --help\tto get more\
+      \ information\n    jsnap  --help\tto get more information\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag:
@@ -49,12 +333,9 @@ subcommands:
     \ generated\nthe core file (not, on Solaris, the \"java\" wrapper script in\n\
     the \"bin\" subdirectory of the JDK.)\nThe \"server id\" is a unique name for\
     \ a specific remote debuggee.\n"
-  generated_using:
-  - --usage
+  generated_using: *id005
 - !Command
-  command:
-  - jhsdb
-  - jsnap
+  command: *id006
   positional: []
   named:
   - !Flag
@@ -81,7 +362,7 @@ subcommands:
     - --pid
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -89,12 +370,9 @@ subcommands:
   version_flag:
   help_text: "    --all\tto print all performance counters\n    --exe\texecutable\
     \ image name\n    --core\tpath to coredump\n    --pid\tpid of process to attach\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - jhsdb
-  - hsdb
+  command: *id007
   positional: []
   named:
   - !Flag
@@ -115,7 +393,7 @@ subcommands:
     - --pid
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -123,11 +401,9 @@ subcommands:
   version_flag:
   help_text: "    --exe\texecutable image name\n    --core\tpath to coredump\n   \
     \ --pid\tpid of process to attach\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - jhsdb
-  - jinfo
+  command: *id008
   positional: []
   named:
   - !Flag
@@ -160,7 +436,7 @@ subcommands:
     - --pid
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -169,11 +445,9 @@ subcommands:
   help_text: "    --flags\tto print VM flags\n    --sysprops\tto print Java System\
     \ properties\n    <no option>\tto print both of the above\n    --exe\texecutable\
     \ image name\n    --core\tpath to coredump\n    --pid\tpid of process to attach\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - jhsdb
-  - clhsdb
+  command: *id009
   positional: []
   named:
   - !Flag
@@ -194,7 +468,7 @@ subcommands:
     - --pid
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -202,11 +476,9 @@ subcommands:
   version_flag:
   help_text: "    --exe\texecutable image name\n    --core\tpath to coredump\n   \
     \ --pid\tpid of process to attach\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - jhsdb
-  - jmap
+  command: *id010
   positional: []
   named:
   - !Flag
@@ -263,7 +535,7 @@ subcommands:
     - --pid
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -275,7 +547,7 @@ subcommands:
     \ of java object heap\n    --clstats\tto print class loader statistics\n    --finalizerinfo\t\
     to print information on objects awaiting finalization\n    --exe\texecutable image\
     \ name\n    --core\tpath to coredump\n    --pid\tpid of process to attach\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -284,4 +556,4 @@ help_text: "    clhsdb       \tcommand line debugger\n    debugd       \tdebug s
   \    hsdb         \tui debugger\n    jstack --help\tto get more information\n  \
   \  jmap   --help\tto get more information\n    jinfo  --help\tto get more information\n\
   \    jsnap  --help\tto get more information\n"
-generated_using: *id002
+generated_using: *id004

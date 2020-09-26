@@ -1,86 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - merauder
 positional: []
-named:
-- !Flag
-  description: Aggressive closures
-  synonyms:
-  - -A
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '*                   Contig FASTA file'
-  synonyms:
-  - -c
-  args: !SimpleFlagArg
-    name: char
-  optional: true
-- !Flag
-  description: Minimum depth (default 2)
-  synonyms:
-  - -D
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: '*                   Gap data file'
-  synonyms:
-  - -g
-  args: !SimpleFlagArg
-    name: char
-  optional: true
-- !Flag
-  description: Maximum insert size
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: Mer size
-  synonyms:
-  - -m
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: Polymorphic mode
-  synonyms:
-  - -P
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Quality offset (default 33)
-  synonyms:
-  - -Q
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: Exclude repeats
-  synonyms:
-  - -R
-  args: !SimpleFlagArg
-    name: double
-  optional: true
-- !Flag
-  description: '*                   Scaffold report file'
-  synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: char
-  optional: true
-- !Flag
-  description: Verbose mode
-  synonyms:
-  - -V
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - merauder
   - OPTION...
   positional:
@@ -110,7 +36,151 @@ subcommands:
     name: required
     optional: false
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: Aggressive closures
+      synonyms:
+      - -A
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '*                   Contig FASTA file'
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: char
+      optional: true
+    - !Flag
+      description: Minimum depth (default 2)
+      synonyms:
+      - -D
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: '*                   Gap data file'
+      synonyms:
+      - -g
+      args: !SimpleFlagArg
+        name: char
+      optional: true
+    - !Flag
+      description: Maximum insert size
+      synonyms:
+      - -i
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: Mer size
+      synonyms:
+      - -m
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: Polymorphic mode
+      synonyms:
+      - -P
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Quality offset (default 33)
+      synonyms:
+      - -Q
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: Exclude repeats
+      synonyms:
+      - -R
+      args: !SimpleFlagArg
+        name: double
+      optional: true
+    - !Flag
+      description: '*                   Scaffold report file'
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: char
+      optional: true
+    - !Flag
+      description: Verbose mode
+      synonyms:
+      - -V
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: max
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: insert
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: size
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: is
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: required
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: max insert size is required (-i int)\n             [-APV]\
+        \ [-c char*] [-D int] [-g char*] [-i int] [-m int] [-Q int]\n            [-R\
+        \ double] [-s char*] \n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag:
+    usage_flag: !Flag
+      description: Give a short usage message
+      synonyms:
+      - --usage
+      args: !EmptyFlagArg {}
+      optional: true
+    version_flag: !Flag
+      description: Print program version
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Usage: merauder [OPTION...] \nOptions:\n\n  -A                   \
+      \      Aggressive closures\n  -c char*                   Contig FASTA file\n\
+      \  -D int                     Minimum depth (default 2)\n  -g char*        \
+      \           Gap data file\n  -i int                     Maximum insert size\n\
+      \  -m int                     Mer size\n  -P                         Polymorphic\
+      \ mode\n  -Q int                     Quality offset (default 33)\n  -R double\
+      \                  Exclude repeats\n  -s char*                   Scaffold report\
+      \ file\n  -V                         Verbose mode\n  -?, --help            \
+      \     Give this help list\n      --usage                Give a short usage message\n\
+      \      --version              Print program version\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag:
@@ -119,22 +189,11 @@ subcommands:
   help_text: "Usage: max insert size is required (-i int)\n             [-APV] [-c\
     \ char*] [-D int] [-g char*] [-i int] [-m int] [-Q int]\n            [-R double]\
     \ [-s char*] \n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 usage: []
 help_flag:
-usage_flag: !Flag
-  description: Give a short usage message
-  synonyms:
-  - --usage
-  args: !EmptyFlagArg {}
-  optional: true
-version_flag: !Flag
-  description: Print program version
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+usage_flag:
+version_flag:
 help_text: "Usage: merauder [OPTION...] \nOptions:\n\n  -A                       \
   \  Aggressive closures\n  -c char*                   Contig FASTA file\n  -D int\
   \                     Minimum depth (default 2)\n  -g char*                   Gap\
@@ -145,4 +204,4 @@ help_text: "Usage: merauder [OPTION...] \nOptions:\n\n  -A                      
   \                    Verbose mode\n  -?, --help                 Give this help list\n\
   \      --usage                Give a short usage message\n      --version      \
   \        Print program version\n"
-generated_using: *id002
+generated_using: *id004

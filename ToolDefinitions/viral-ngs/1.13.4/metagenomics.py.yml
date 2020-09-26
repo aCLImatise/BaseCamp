@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - metagenomics.py
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - metagenomics.py
   - krona
   positional:
@@ -65,14 +65,278 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
+        DEBUG:
         ERROR:
         EXCEPTION:
-        INFO:
-        DEBUG:
-        WARNING:
         CRITICAL:
+        INFO:
+        WARNING:
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: Input tab delimited file.
+        position: 0
+        name: inTsv
+        optional: false
+      - !Positional
+        description: Krona taxonomy database directory.
+        position: 1
+        name: db
+        optional: false
+      - !Positional
+        description: Output html report.
+        position: 2
+        name: outHtml
+        optional: false
+      named:
+      - !Flag
+        description: Column of query id. (default 2)
+        synonyms:
+        - --queryColumn
+        args: !SimpleFlagArg
+          name: QUERYCOLUMN
+        optional: true
+      - !Flag
+        description: Column of taxonomy id. (default 3)
+        synonyms:
+        - --taxidColumn
+        args: !SimpleFlagArg
+          name: TAXIDCOLUMN
+        optional: true
+      - !Flag
+        description: Column of score. (default None)
+        synonyms:
+        - --scoreColumn
+        args: !SimpleFlagArg
+          name: SCORECOLUMN
+        optional: true
+      - !Flag
+        description: Include wedge for no hits.
+        synonyms:
+        - --noHits
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Include no rank assignments.
+        synonyms:
+        - --noRank
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'Verboseness of output. [default: DEBUG]'
+        synonyms:
+        - --loglevel
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? ERROR
+            ? EXCEPTION
+            ? INFO
+            ? DEBUG
+            ? WARNING
+            ? CRITICAL
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        - -V
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: metagenomics.py subcommand krona [-h] [--queryColumn QUERYCOLUMN]\n\
+        \                                        [--taxidColumn TAXIDCOLUMN]\n   \
+        \                                     [--scoreColumn SCORECOLUMN] [--noHits]\n\
+        \                                        [--noRank]\n                    \
+        \                    [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+        \                                        [--version]\n                   \
+        \                     inTsv db outHtml\n\nCreate an interactive HTML report\
+        \ from a tabular metagenomic report\n\npositional arguments:\n  inTsv    \
+        \             Input tab delimited file.\n  db                    Krona taxonomy\
+        \ database directory.\n  outHtml               Output html report.\n\noptional\
+        \ arguments:\n  -h, --help            show this help message and exit\n  --queryColumn\
+        \ QUERYCOLUMN\n                        Column of query id. (default 2)\n \
+        \ --taxidColumn TAXIDCOLUMN\n                        Column of taxonomy id.\
+        \ (default 3)\n  --scoreColumn SCORECOLUMN\n                        Column\
+        \ of score. (default None)\n  --noHits              Include wedge for no hits.\n\
+        \  --noRank              Include no rank assignments.\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+        \                        Verboseness of output. [default: DEBUG]\n  --version,\
+        \ -V         show program's version number and exit\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - metagenomics.py
+      - report
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: metagenomics.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: subcommand
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "usage: metagenomics.py subcommand\nmetagenomics.py: error: argument\
+        \ \e[F: invalid choice: 'report' (choose from 'kraken', 'diamond', 'krona',\
+        \ 'align_rna', 'report_merge')\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - metagenomics.py
+      - kraken
+      positional:
+      - !Positional
+        description: Input unaligned reads, BAM format.
+        position: 0
+        name: inBam
+        optional: false
+      - !Positional
+        description: Kraken database directory.
+        position: 1
+        name: db
+        optional: false
+      named:
+      - !Flag
+        description: Kraken report output file.
+        synonyms:
+        - --outReport
+        args: !SimpleFlagArg
+          name: OUTREPORT
+        optional: true
+      - !Flag
+        description: Kraken per read output file.
+        synonyms:
+        - --outReads
+        args: !SimpleFlagArg
+          name: OUTREADS
+        optional: true
+      - !Flag
+        description: Kraken filter threshold (default 0.05)
+        synonyms:
+        - --filterThreshold
+        args: !SimpleFlagArg
+          name: FILTERTHRESHOLD
+        optional: true
+      - !Flag
+        description: Number of threads to run. (default 1)
+        synonyms:
+        - --numThreads
+        args: !SimpleFlagArg
+          name: NUMTHREADS
+        optional: true
+      - !Flag
+        description: 'Verboseness of output. [default: DEBUG]'
+        synonyms:
+        - --loglevel
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? ERROR
+            ? EXCEPTION
+            ? INFO
+            ? DEBUG
+            ? WARNING
+            ? CRITICAL
+        optional: true
+      - !Flag
+        description: 'Base directory for temp files. [default: /tmp]'
+        synonyms:
+        - --tmp_dir
+        args: !SimpleFlagArg
+          name: TMP_DIR
+        optional: true
+      - !Flag
+        description: "Keep the tmp_dir if an exception occurs while running.\nDefault\
+          \ is to delete all temp files at the end, even\nif there's a failure.\n"
+        synonyms:
+        - --tmp_dirKeep
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        - -V
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: metagenomics.py subcommand kraken [-h] [--outReport OUTREPORT]\n\
+        \                                         [--outReads OUTREADS]\n        \
+        \                                 [--filterThreshold FILTERTHRESHOLD]\n  \
+        \                                       [--numThreads NUMTHREADS]\n      \
+        \                                   [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+        \                                         [--version] [--tmp_dir TMP_DIR]\n\
+        \                                         [--tmp_dirKeep]\n              \
+        \                           inBam db\n\nClassify reads by taxon using Kraken\n\
+        \npositional arguments:\n  inBam                 Input unaligned reads, BAM\
+        \ format.\n  db                    Kraken database directory.\n\noptional\
+        \ arguments:\n  -h, --help            show this help message and exit\n  --outReport\
+        \ OUTREPORT\n                        Kraken report output file.\n  --outReads\
+        \ OUTREADS   Kraken per read output file.\n  --filterThreshold FILTERTHRESHOLD\n\
+        \                        Kraken filter threshold (default 0.05)\n  --numThreads\
+        \ NUMTHREADS\n                        Number of threads to run. (default 1)\n\
+        \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n            \
+        \            Verboseness of output. [default: DEBUG]\n  --version, -V    \
+        \     show program's version number and exit\n  --tmp_dir TMP_DIR     Base\
+        \ directory for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep\
+        \ the tmp_dir if an exception occurs while running.\n                    \
+        \    Default is to delete all temp files at the end, even\n              \
+        \          if there's a failure.\n"
+      generated_using: *id004
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nEnter a subcommand to view additional information:\n\n     metagenomics.py\
+      \ \e[1mkraken\e[0m [...]\n          Classify reads by taxon using Kraken\n\n\
+      \     metagenomics.py \e[1mdiamond\e[0m [...]\n          Classify reads by the\
+      \ taxon of the Lowest Common Ancestor\n          (LCA)\n\n     metagenomics.py\
+      \ \e[1mkrona\e[0m [...]\n          Create an interactive HTML report from a\
+      \ tabular metagenomic\n          report\n\n     metagenomics.py \e[1malign_rna\e\
+      [0m [...]\n          Align to metagenomics bwa index, mark duplicates, and\n\
+      \          generate LCA report\n\n     metagenomics.py \e[1mreport_merge\e[0m\
+      \ [...]\n          Merge multiple metegenomic reports into a single metagenomic\n\
+      \          report. Any Krona input files created by this\n\nusage: metagenomics.py\
+      \ subcommand\n\nThis script contains a number of utilities for metagenomic analyses.\n\
+      \nsubcommands:\n  \e[F\n    kraken\n    diamond\n    krona\n    align_rna\n\
+      \    report_merge\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -108,12 +372,9 @@ subcommands:
     \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                \
     \        Verboseness of output. [default: DEBUG]\n  --version, -V         show\
     \ program's version number and exit\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - metagenomics.py
-  - report
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -126,7 +387,7 @@ subcommands:
     name: subcommand
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -135,11 +396,9 @@ subcommands:
   help_text: "usage: metagenomics.py subcommand\nmetagenomics.py: error: argument\
     \ \e[F: invalid choice: 'report' (choose from 'kraken', 'diamond', 'krona', 'align_rna',\
     \ 'report_merge')\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - metagenomics.py
-  - kraken
+  command: *id006
   positional:
   - !Positional
     description: Input unaligned reads, BAM format.
@@ -186,12 +445,12 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
+        DEBUG:
         ERROR:
         EXCEPTION:
-        INFO:
-        DEBUG:
-        WARNING:
         CRITICAL:
+        INFO:
+        WARNING:
     optional: true
   - !Flag
     description: 'Base directory for temp files. [default: /tmp]'
@@ -207,7 +466,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -246,7 +505,7 @@ subcommands:
     \ tmp_dir if an exception occurs while running.\n                        Default\
     \ is to delete all temp files at the end, even\n                        if there's\
     \ a failure.\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -263,4 +522,4 @@ help_text: "\nEnter a subcommand to view additional information:\n\n     metagen
   \ by this\n\nusage: metagenomics.py subcommand\n\nThis script contains a number\
   \ of utilities for metagenomic analyses.\n\nsubcommands:\n  \e[F\n    kraken\n \
   \   diamond\n    krona\n    align_rna\n    report_merge\n"
-generated_using: *id002
+generated_using: *id004

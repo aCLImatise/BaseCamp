@@ -1,19 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - esl-seqrange
 positional: []
-named:
-- !Flag
-  description: ': specify that input file is in format <s>'
-  synonyms:
-  - --informat
-  args: !SimpleFlagArg
-    name: s
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - esl-seqrange
   - sqfile
   positional:
@@ -28,7 +21,131 @@ subcommands:
     name: nproc
     optional: false
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: ': specify that input file is in format <s>'
+      synonyms:
+      - --informat
+      args: !SimpleFlagArg
+        name: s
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: procidx
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: nproc
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: esl-seqrange [options] <sqfile> <procidx> <nproc>\n\nTo see\
+        \ more help on available options, do esl-seqrange -h\n\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - esl-seqrange
+      - nproc
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: esl-seqrange
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sqfile
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: procidx
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: nproc
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: esl-seqrange [options] <sqfile> <procidx> <nproc>\n\nTo see\
+        \ more help on available options, do esl-seqrange -h\n\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - esl-seqrange
+      - procidx
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: esl-seqrange
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sqfile
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: procidx
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: nproc
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: esl-seqrange [options] <sqfile> <procidx> <nproc>\n\nTo see\
+        \ more help on available options, do esl-seqrange -h\n\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: ': help; show brief info on version and usage'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "# esl-seqrange :: determine range of sequences for one of many parallel\
+      \ processes\n# Easel 0.46 (Nov 2019)\n# Copyright (C) 2019 Howard Hughes Medical\
+      \ Institute.\n# Freely distributed under the BSD open source license.\n# - -\
+      \ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage:\
+      \ esl-seqrange [options] <sqfile> <procidx> <nproc>\n\n where general options\
+      \ are:\n  -h             : help; show brief info on version and usage\n  --informat\
+      \ <s> : specify that input file is in format <s>\n"
+    generated_using: &id007
+    - -h
   subcommands: []
   usage: []
   help_flag:
@@ -36,12 +153,9 @@ subcommands:
   version_flag:
   help_text: "Usage: esl-seqrange [options] <sqfile> <procidx> <nproc>\n\nTo see more\
     \ help on available options, do esl-seqrange -h\n\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - esl-seqrange
-  - nproc
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -64,7 +178,7 @@ subcommands:
     name: nproc
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -72,11 +186,9 @@ subcommands:
   version_flag:
   help_text: "Usage: esl-seqrange [options] <sqfile> <procidx> <nproc>\n\nTo see more\
     \ help on available options, do esl-seqrange -h\n\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - esl-seqrange
-  - procidx
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -99,7 +211,7 @@ subcommands:
     name: nproc
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -107,14 +219,9 @@ subcommands:
   version_flag:
   help_text: "Usage: esl-seqrange [options] <sqfile> <procidx> <nproc>\n\nTo see more\
     \ help on available options, do esl-seqrange -h\n\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: ': help; show brief info on version and usage'
-  synonyms:
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "# esl-seqrange :: determine range of sequences for one of many parallel\
@@ -124,5 +231,4 @@ help_text: "# esl-seqrange :: determine range of sequences for one of many paral
   \ [options] <sqfile> <procidx> <nproc>\n\n where general options are:\n  -h    \
   \         : help; show brief info on version and usage\n  --informat <s> : specify\
   \ that input file is in format <s>\n"
-generated_using:
-- -h
+generated_using: *id007

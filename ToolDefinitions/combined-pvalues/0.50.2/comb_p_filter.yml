@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - comb-p
 - filter
@@ -55,146 +55,7 @@ named:
   args: !SimpleFlagArg
     name: REGION_P
   optional: true
-parent: &id002 !Command
-  command:
-  - comb-p
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - *id001
-  - !Command
-    command:
-    - comb-p
-    - peaks
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: find
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: peaks
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: or
-      optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: troughs
-      optional: false
-    - !Positional
-      description: ''
-      position: 4
-      name: in
-      optional: false
-    - !Positional
-      description: ''
-      position: 5
-      name: sorted
-      optional: false
-    - !Positional
-      description: ''
-      position: 6
-      name: bed
-      optional: false
-    - !Positional
-      description: ''
-      position: 7
-      name: files
-      optional: false
-    named:
-    - !Flag
-      description: "Maximum dist to skip before finding a seed/thresh\nvalue. If this\
-        \ number is exceeded, the region is\nended."
-      synonyms:
-      - --dist
-      args: !SimpleFlagArg
-        name: DIST
-      optional: true
-    - !Flag
-      description: "A value must be at least this large/small in order to\nseed a\
-        \ region."
-      synonyms:
-      - --seed
-      args: !SimpleFlagArg
-        name: SEED
-      optional: true
-    - !Flag
-      description: "After seeding, a value of at least this number can\nextend a region."
-      synonyms:
-      - --threshold
-      args: !SimpleFlagArg
-        name: THRESHOLD
-      optional: true
-    - !Flag
-      description: "by default, the test is for a value less-than seed or\nthresh--e.g.\
-        \ for p-values. If this flag is specified,\nthe test is for greater-than--e.g.\
-        \ for scores or\n-log10(p-values)"
-      synonyms:
-      - --invert
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "column number containing the value for which to find\npeaks.\n"
-      synonyms:
-      - -c
-      args: !SimpleFlagArg
-        name: C
-      optional: true
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: \nfind peaks or troughs in sorted bed files\n\nfor a bedgraph\
-      \ file with pvalues in the 4th column. usage would be:\n\n    $ python peaks.py\
-      \ --dist 100 --seed 0.01 some.bed > some.regions.bed\n\nwhere some.regions.bed\
-      \ contains the start and end of the region and (currently)\nthe lowest p-value\
-      \ in that region.\n\n       [-h] [--dist DIST] [--seed SEED] [--threshold THRESHOLD]\
-      \ [--invert]\n       [-c C]\n       bed_file\n\npositional arguments:\n  bed_file\n\
-      \noptional arguments:\n  -h, --help            show this help message and exit\n\
-      \  --dist DIST           Maximum dist to skip before finding a seed/thresh\n\
-      \                        value. If this number is exceeded, the region is\n\
-      \                        ended.\n  --seed SEED           A value must be at\
-      \ least this large/small in order to\n                        seed a region.\n\
-      \  --threshold THRESHOLD\n                        After seeding, a value of\
-      \ at least this number can\n                        extend a region.\n  --invert\
-      \              by default, the test is for a value less-than seed or\n     \
-      \                   thresh--e.g. for p-values. If this flag is specified,\n\
-      \                        the test is for greater-than--e.g. for scores or\n\
-      \                        -log10(p-values)\n  -c C                  column number\
-      \ containing the value for which to find\n                        peaks.\n"
-    generated_using: &id003
-    - --help
-  usage: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "\nTools for viewing and adjusting p-values in BED files.\n\n   Contact:\
-    \ Brent Pedersen - bpederse@gmail.com\n   License: BSD\n\nTo run, indicate one\
-    \ of:\n\n   acf       - calculate autocorrelation within BED file\n   slk    \
-    \   - Stouffer-Liptak-Kechris correction of correlated p-values\n   fdr      \
-    \ - Benjamini-Hochberg correction of p-values\n   peaks     - find peaks in a\
-    \ BED file.\n   region_p  - generate SLK p-values for a region (of p-values)\n\
-    \   filter    - filter region_p output on size and p and add coef/t\n   hist \
-    \     - plot a histogram of a column and check for uniformity.\n   manhattan -\
-    \ a manhattan plot of values in a BED file.\n   pipeline  - run acf, slk, fdr,\
-    \ peaks, region_p in succesion\n\nNOTE: most of these assume *sorted* BED files.\n\
-    SEE: https://github.com/brentp/combined-pvalues for documentation\n    \n"
-  generated_using: *id003
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -220,4 +81,5 @@ help_text: "usage: comb-p [-h] [-p P] [-t T] [--coef COEF] [--filter] [--max-p M
   \   don't print row if there's a swith in t-scores\n  --max-p MAX_P        filter\
   \ regions with any p-value > this value\n  --region-p REGION_P  filter regions with\
   \ combined p-value > this value\n"
-generated_using: *id003
+generated_using:
+- --help

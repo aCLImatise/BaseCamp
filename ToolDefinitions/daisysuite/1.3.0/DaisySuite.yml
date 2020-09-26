@@ -1,574 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - DaisySuite
 positional: []
-named:
-- !Flag
-  description: The workflow definition in a snakefile.
-  synonyms:
-  - --snakefile
-  - -s
-  args: !SimpleFlagArg
-    name: FILE
-  optional: true
-- !Flag
-  description: "[PORT]          Serve an HTML based user interface to the given port\n\
-    (default: 8000). If possible, a browser window is\nopened."
-  synonyms:
-  - --gui
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "[N], --jobs [N], -j [N]\nUse at most N cores in parallel (default:\
-    \ 1). If N is\nomitted, the limit is set to the number of available\ncores."
-  synonyms:
-  - --cores
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "In cluster mode, use at most N cores of the host\nmachine in parallel\
-    \ (default: number of CPU cores of\nthe host). The cores are used to execute local\
-    \ rules.\nThis option is ignored when not in cluster mode."
-  synonyms:
-  - --local-cores
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "[NAME=INT [NAME=INT ...]], --res [NAME=INT [NAME=INT ...]]\nDefine\
-    \ additional resources that shall constrain the\nscheduling analogously to threads\
-    \ (see above). A\nresource is defined as a name and an integer value.\nE.g. --resources\
-    \ gpu=1. Rules can use resources by\ndefining the resource keyword, e.g. resources:\
-    \ gpu=1.\nIf now two rules require 1 of the resource 'gpu' they\nwon't be run\
-    \ in parallel by the scheduler."
-  synonyms:
-  - --resources
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "[KEY=VALUE [KEY=VALUE ...]], -C [KEY=VALUE [KEY=VALUE ...]]\nSet or\
-    \ overwrite values in the workflow config object.\nThe workflow config object\
-    \ is accessible as variable\nconfig inside the workflow. Default values can be\
-    \ set\nby providing a JSON file (see Documentation)."
-  synonyms:
-  - --config
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Specify or overwrite the config file of the workflow\n(see the docs).\
-    \ Values specified in JSON or YAML\nformat are available in the global config\
-    \ dictionary\ninside the workflow."
-  synonyms:
-  - --configfile
-  args: !SimpleFlagArg
-    name: FILE
-  optional: true
-- !Flag
-  description: Show availiable rules in given Snakefile.
-  synonyms:
-  - --list
-  - -l
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Show available target rules in given Snakefile.
-  synonyms:
-  - --list-target-rules
-  - --lt
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Specify working directory (relative paths in the\nsnakefile will use\
-    \ this as their origin)."
-  synonyms:
-  - --directory
-  - -d
-  args: !SimpleFlagArg
-    name: DIR
-  optional: true
-- !Flag
-  description: Do not execute anything.
-  synonyms:
-  - --dryrun
-  - -n
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Print out the shell commands that will be executed.
-  synonyms:
-  - --printshellcmds
-  - -p
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Do not execute anything and print the directed acyclic\ngraph of jobs\
-    \ in the dot language. Recommended use on\nUnix systems: snakemake --dag | dot\
-    \ | display"
-  synonyms:
-  - --dag
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Force threads rather than processes. Helpful if shared\nmemory (/dev/shm)\
-    \ is full or unavailable."
-  synonyms:
-  - --force-use-threads
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Do not execute anything and print the dependency graph\nof rules in\
-    \ the dot language. This will be less\ncrowded than above DAG of jobs, but also\
-    \ show less\ninformation. Note that each rule is displayed once,\nhence the displayed\
-    \ graph will be cyclic if a rule\nappears in several steps of the workflow. Use\
-    \ this if\nabove option leads to a DAG that is too large.\nRecommended use on\
-    \ Unix systems: snakemake --rulegraph\n| dot | display"
-  synonyms:
-  - --rulegraph
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Print the DAG in D3.js compatible JSON format.
-  synonyms:
-  - --d3dag
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Print a summary of all files created by the workflow.\nThe has the\
-    \ following columns: filename, modification\ntime, rule version, status, plan.\
-    \ Thereby rule version\ncontains the versionthe file was created with (see the\n\
-    version keyword of rules), and status denotes whether\nthe file is missing, its\
-    \ input files are newer or if\nversion or implementation of the rule changed since\n\
-    file creation. Finally the last column denotes whether\nthe file will be updated\
-    \ or created during the next\nworkflow execution."
-  synonyms:
-  - --summary
-  - -S
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Print a summary of all files created by the workflow.\nThe has the\
-    \ following columns: filename, modification\ntime, rule version, input file(s),\
-    \ shell command,\nstatus, plan. Thereby rule version contains the\nversionthe\
-    \ file was created with (see the version\nkeyword of rules), and status denotes\
-    \ whether the file\nis missing, its input files are newer or if version or\nimplementation\
-    \ of the rule changed since file\ncreation. The input file and shell command columns\
-    \ are\nselfexplanatory. Finally the last column denotes\nwhether the file will\
-    \ be updated or created during the\nnext workflow execution."
-  synonyms:
-  - --detailed-summary
-  - -D
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Touch output files (mark them up to date without\nreally changing\
-    \ them) instead of running their\ncommands. This is used to pretend that the rules\
-    \ were\nexecuted, in order to fool future invocations of\nsnakemake. Fails if\
-    \ a file does not yet exist."
-  synonyms:
-  - --touch
-  - -t
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Go on with independent jobs if a job fails.
-  synonyms:
-  - --keep-going
-  - -k
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Force the execution of the selected target or the\nfirst rule regardless\
-    \ of already created output."
-  synonyms:
-  - --force
-  - -f
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Force the execution of the selected (or the first)\nrule and all rules\
-    \ it is dependent on regardless of\nalready created output."
-  synonyms:
-  - --forceall
-  - -F
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "[TARGET [TARGET ...]], -R [TARGET [TARGET ...]]\nForce the re-execution\
-    \ or creation of the given rules\nor files. Use this option if you changed a rule\
-    \ and\nwant to have all its output in your workflow updated."
-  synonyms:
-  - --forcerun
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Tell the scheduler to assign creation of given targets\n(and all their\
-    \ dependencies) highest priority.\n(EXPERIMENTAL)"
-  synonyms:
-  - --prioritize
-  - -P
-  args: !RepeatFlagArg
-    name: TARGET
-  optional: true
-- !Flag
-  description: "Runs the pipeline until it reaches the specified rules\nor files.\
-    \ Only runs jobs that are dependencies of the\nspecified rule or files, does not\
-    \ run sibling DAGs."
-  synonyms:
-  - --until
-  - -U
-  args: !RepeatFlagArg
-    name: TARGET
-  optional: true
-- !Flag
-  description: "Prevent the execution or creation of the given rules\nor files as\
-    \ well as any rules or files that are\ndownstream of these targets in the DAG.\
-    \ Also runs jobs\nin sibling DAGs that are independent of the rules or\nfiles\
-    \ specified here."
-  synonyms:
-  - --omit-from
-  - -O
-  args: !RepeatFlagArg
-    name: TARGET
-  optional: true
-- !Flag
-  description: "Don't check for ambiguous rules and simply use the\nfirst if several\
-    \ can produce the same file. This\nallows the user to prioritize rules by their\
-    \ order in\nthe snakefile."
-  synonyms:
-  - --allow-ambiguity
-  - -a
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Execute snakemake rules with the given submit command,\ne.g. qsub.\
-    \ Snakemake compiles jobs into scripts that\nare submitted to the cluster with\
-    \ the given command,\nonce all input files for a particular job are present.\n\
-    The submit command can be decorated to make it aware\nof certain job properties\
-    \ (input, output, params,\nwildcards, log, threads and dependencies (see the\n\
-    argument below)), e.g.: $ snakemake --cluster 'qsub\n-pe threaded {threads}'."
-  synonyms:
-  - --cluster
-  - -c
-  args: !SimpleFlagArg
-    name: CMD
-  optional: true
-- !Flag
-  description: "cluster submission command will block, returning the\nremote exitstatus\
-    \ upon remote termination (for\nexample, this should be usedif the cluster command\
-    \ is\n'qsub -sync y' (SGE)"
-  synonyms:
-  - --cluster-sync
-  args: !SimpleFlagArg
-    name: CMD
-  optional: true
-- !Flag
-  description: "[ARGS]        Execute snakemake on a cluster accessed via DRMAA,\n\
-    Snakemake compiles jobs into scripts that are\nsubmitted to the cluster with the\
-    \ given command, once\nall input files for a particular job are present. ARGS\n\
-    can be used to specify options of the underlying\ncluster system, thereby using\
-    \ the job properties\ninput, output, params, wildcards, log, threads and\ndependencies,\
-    \ e.g.: --drmaa ' -pe threaded {threads}'.\nNote that ARGS must be given in quotes\
-    \ and with a\nleading whitespace."
-  synonyms:
-  - --drmaa
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "A JSON or YAML file that defines the wildcards used in\n'cluster'for\
-    \ specific rules, instead of having them\nspecified in the Snakefile. For example,\
-    \ for rule\n'job' you may define: { 'job' : { 'time' : '24:00:00'\n} } to specify\
-    \ the time for rule 'job'. You can\nspecify more than one file. The configuration\
-    \ files\nare merged with later values overriding earlier ones."
-  synonyms:
-  - --cluster-config
-  - -u
-  args: !SimpleFlagArg
-    name: FILE
-  optional: true
-- !Flag
-  description: "Immediately submit all jobs to the cluster instead of\nwaiting for\
-    \ present input files. This will fail,\nunless you make the cluster aware of job\
-    \ dependencies,\ne.g. via: $ snakemake --cluster 'sbatch --dependency\n{dependencies}.\
-    \ Assuming that your submit script (here\nsbatch) outputs the generated job id\
-    \ to the first\nstdout line, {dependencies} will be filled with space\nseparated\
-    \ job ids this job depends on."
-  synonyms:
-  - --immediate-submit
-  - --is
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Provide a custom job script for submission to the\ncluster. The default\
-    \ script resides as 'jobscript.sh'\nin the installation directory."
-  synonyms:
-  - --jobscript
-  - --js
-  args: !SimpleFlagArg
-    name: SCRIPT
-  optional: true
-- !Flag
-  description: "Provide a custom name for the jobscript that is\nsubmitted to the\
-    \ cluster (see --cluster). NAME is\n\"snakejob.{rulename}.{jobid}.sh\" per default.\
-    \ The\nwildcard {jobid} has to be present in the name."
-  synonyms:
-  - --jobname
-  - --jn
-  args: !SimpleFlagArg
-    name: NAME
-  optional: true
-- !Flag
-  description: Print the reason for each executed rule.
-  synonyms:
-  - --reason
-  - -r
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Write stats about Snakefile execution in JSON format\nto the given\
-    \ file."
-  synonyms:
-  - --stats
-  args: !SimpleFlagArg
-    name: FILE
-  optional: true
-- !Flag
-  description: Do not use a colored output.
-  synonyms:
-  - --nocolor
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not output any progress or rule information.
-  synonyms:
-  - --quiet
-  - -q
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not lock the working directory
-  synonyms:
-  - --nolock
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Remove a lock on the working directory.
-  synonyms:
-  - --unlock
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Cleanup the metadata of given files. That means that\nsnakemake removes\
-    \ any tracked version info, and any\nmarks that files are incomplete."
-  synonyms:
-  - --cleanup-metadata
-  - --cm
-  args: !RepeatFlagArg
-    name: FILE
-  optional: true
-- !Flag
-  description: "Re-run all jobs the output of which is recognized as\nincomplete."
-  synonyms:
-  - --rerun-incomplete
-  - --ri
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not check for incomplete output files.
-  synonyms:
-  - --ignore-incomplete
-  - --ii
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "List all output files that have been created with a\ndifferent version\
-    \ (as determined by the version\nkeyword)."
-  synonyms:
-  - --list-version-changes
-  - --lv
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "List all output files for which the rule body (run or\nshell) have\
-    \ changed in the Snakefile."
-  synonyms:
-  - --list-code-changes
-  - --lc
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "List all output files for which the defined input\nfiles have changed\
-    \ in the Snakefile (e.g. new input\nfiles were added in the rule definition or\
-    \ files were\nrenamed). For listing input file modification in the\nfilesystem,\
-    \ use --summary."
-  synonyms:
-  - --list-input-changes
-  - --li
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "List all output files for which the defined params\nhave changed in\
-    \ the Snakefile."
-  synonyms:
-  - --list-params-changes
-  - --lp
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Wait given seconds if an output file of a job is not\npresent after\
-    \ the job finished. This helps if your\nfilesystem suffers from latency (default\
-    \ 5)."
-  synonyms:
-  - --latency-wait
-  - --output-wait
-  - -w
-  args: !SimpleFlagArg
-    name: SECONDS
-  optional: true
-- !Flag
-  description: "[FILE [FILE ...]]\nWait --latency-wait seconds for these files to\
-    \ be\npresent before executing the workflow. This option is\nused internally to\
-    \ handle filesystem latency in\ncluster environments."
-  synonyms:
-  - --wait-for-files
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Repeat a job N times if marked for benchmarking\n(default 1)."
-  synonyms:
-  - --benchmark-repeats
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Ignore temp() declarations. This is useful when\nrunning only a part\
-    \ of the workflow, since temp()\nwould lead to deletion of probably needed files\
-    \ by\nother parts of the workflow."
-  synonyms:
-  - --notemp
-  - --nt
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Keep local copies of remote input files.
-  synonyms:
-  - --keep-remote
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Do not adjust the paths of given target files relative\nto the working\
-    \ directory."
-  synonyms:
-  - --keep-target-files
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not delete the shadow directory on snakemake
-  synonyms:
-  - --keep-shadow
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Maximal number of cluster/drmaa jobs per second,\ndefault is no limit"
-  synonyms:
-  - --max-jobs-per-second
-  args: !SimpleFlagArg
-    name: MAX_JOBS_PER_SECOND
-  optional: true
-- !Flag
-  description: Add a timestamp to all logging output
-  synonyms:
-  - --timestamp
-  - -T
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Set the greediness of scheduling. This value between 0\nand 1 determines\
-    \ how careful jobs are selected for\nexecution. The default value (1.0) provides\
-    \ the best\nspeed and still acceptable scheduling quality."
-  synonyms:
-  - --greediness
-  args: !SimpleFlagArg
-    name: GREEDINESS
-  optional: true
-- !Flag
-  description: "Do not invoke onstart, onsuccess or onerror hooks\nafter execution."
-  synonyms:
-  - --no-hooks
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Print the python representation of the workflow.
-  synonyms:
-  - --print-compilation
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Provide a shell command that shall be executed instead\nof those given\
-    \ in the workflow. This is for debugging\npurposes only."
-  synonyms:
-  - --overwrite-shellcmd
-  args: !SimpleFlagArg
-    name: OVERWRITE_SHELLCMD
-  optional: true
-- !Flag
-  description: Print debugging output.
-  synonyms:
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Allow to debug rules with e.g. PDB. This flag allows\nto set breakpoints\
-    \ in run blocks."
-  synonyms:
-  - --debug
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Profile Snakemake and write the output to FILE. This\nrequires yappi\
-    \ to be installed."
-  synonyms:
-  - --profile
-  args: !SimpleFlagArg
-    name: FILE
-  optional: true
-- !Flag
-  description: Set execution mode of Snakemake (internal use only).
-  synonyms:
-  - --mode
-  args: !ChoiceFlagArg
-    choices: !!set
-      '1':
-      '2':
-      '0':
-  optional: true
-- !Flag
-  description: "Output code to register bash completion for snakemake.\nPut the following\
-    \ in your .bashrc (including the\naccents): `snakemake --bash-completion` or issue\
-    \ it in\nan open terminal session."
-  synonyms:
-  - --bash-completion
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If defined in the rule, create job specific conda\nenvironments. If\
-    \ this flag is not set, the conda\ndirective is ignored."
-  synonyms:
-  - --use-conda
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Prefix for URL created from wrapper directive\n(default: https://bitbucket.org/snakemake/snakemake-\n\
-    wrappers/raw/). Set this to a different URL to use\nyour fork or a local clone\
-    \ of the repository."
-  synonyms:
-  - --wrapper-prefix
-  args: !SimpleFlagArg
-    name: WRAPPER_PREFIX
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - DaisySuite
   - target
   positional:
@@ -618,7 +56,981 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: The workflow definition in a snakefile.
+      synonyms:
+      - --snakefile
+      - -s
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: "[PORT]          Serve an HTML based user interface to the given\
+        \ port\n(default: 8000). If possible, a browser window is\nopened."
+      synonyms:
+      - --gui
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[N], --jobs [N], -j [N]\nUse at most N cores in parallel (default:\
+        \ 1). If N is\nomitted, the limit is set to the number of available\ncores."
+      synonyms:
+      - --cores
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "In cluster mode, use at most N cores of the host\nmachine in parallel\
+        \ (default: number of CPU cores of\nthe host). The cores are used to execute\
+        \ local rules.\nThis option is ignored when not in cluster mode."
+      synonyms:
+      - --local-cores
+      args: !SimpleFlagArg
+        name: N
+      optional: true
+    - !Flag
+      description: "[NAME=INT [NAME=INT ...]], --res [NAME=INT [NAME=INT ...]]\nDefine\
+        \ additional resources that shall constrain the\nscheduling analogously to\
+        \ threads (see above). A\nresource is defined as a name and an integer value.\n\
+        E.g. --resources gpu=1. Rules can use resources by\ndefining the resource\
+        \ keyword, e.g. resources: gpu=1.\nIf now two rules require 1 of the resource\
+        \ 'gpu' they\nwon't be run in parallel by the scheduler."
+      synonyms:
+      - --resources
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[KEY=VALUE [KEY=VALUE ...]], -C [KEY=VALUE [KEY=VALUE ...]]\n\
+        Set or overwrite values in the workflow config object.\nThe workflow config\
+        \ object is accessible as variable\nconfig inside the workflow. Default values\
+        \ can be set\nby providing a JSON file (see Documentation)."
+      synonyms:
+      - --config
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Specify or overwrite the config file of the workflow\n(see the\
+        \ docs). Values specified in JSON or YAML\nformat are available in the global\
+        \ config dictionary\ninside the workflow."
+      synonyms:
+      - --configfile
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: Show availiable rules in given Snakefile.
+      synonyms:
+      - --list
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Show available target rules in given Snakefile.
+      synonyms:
+      - --list-target-rules
+      - --lt
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Specify working directory (relative paths in the\nsnakefile will\
+        \ use this as their origin)."
+      synonyms:
+      - --directory
+      - -d
+      args: !SimpleFlagArg
+        name: DIR
+      optional: true
+    - !Flag
+      description: Do not execute anything.
+      synonyms:
+      - --dryrun
+      - -n
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Print out the shell commands that will be executed.
+      synonyms:
+      - --printshellcmds
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not execute anything and print the directed acyclic\ngraph\
+        \ of jobs in the dot language. Recommended use on\nUnix systems: snakemake\
+        \ --dag | dot | display"
+      synonyms:
+      - --dag
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Force threads rather than processes. Helpful if shared\nmemory\
+        \ (/dev/shm) is full or unavailable."
+      synonyms:
+      - --force-use-threads
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not execute anything and print the dependency graph\nof rules\
+        \ in the dot language. This will be less\ncrowded than above DAG of jobs,\
+        \ but also show less\ninformation. Note that each rule is displayed once,\n\
+        hence the displayed graph will be cyclic if a rule\nappears in several steps\
+        \ of the workflow. Use this if\nabove option leads to a DAG that is too large.\n\
+        Recommended use on Unix systems: snakemake --rulegraph\n| dot | display"
+      synonyms:
+      - --rulegraph
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Print the DAG in D3.js compatible JSON format.
+      synonyms:
+      - --d3dag
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Print a summary of all files created by the workflow.\nThe has\
+        \ the following columns: filename, modification\ntime, rule version, status,\
+        \ plan. Thereby rule version\ncontains the versionthe file was created with\
+        \ (see the\nversion keyword of rules), and status denotes whether\nthe file\
+        \ is missing, its input files are newer or if\nversion or implementation of\
+        \ the rule changed since\nfile creation. Finally the last column denotes whether\n\
+        the file will be updated or created during the next\nworkflow execution."
+      synonyms:
+      - --summary
+      - -S
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Print a summary of all files created by the workflow.\nThe has\
+        \ the following columns: filename, modification\ntime, rule version, input\
+        \ file(s), shell command,\nstatus, plan. Thereby rule version contains the\n\
+        versionthe file was created with (see the version\nkeyword of rules), and\
+        \ status denotes whether the file\nis missing, its input files are newer or\
+        \ if version or\nimplementation of the rule changed since file\ncreation.\
+        \ The input file and shell command columns are\nselfexplanatory. Finally the\
+        \ last column denotes\nwhether the file will be updated or created during\
+        \ the\nnext workflow execution."
+      synonyms:
+      - --detailed-summary
+      - -D
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Touch output files (mark them up to date without\nreally changing\
+        \ them) instead of running their\ncommands. This is used to pretend that the\
+        \ rules were\nexecuted, in order to fool future invocations of\nsnakemake.\
+        \ Fails if a file does not yet exist."
+      synonyms:
+      - --touch
+      - -t
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Go on with independent jobs if a job fails.
+      synonyms:
+      - --keep-going
+      - -k
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Force the execution of the selected target or the\nfirst rule\
+        \ regardless of already created output."
+      synonyms:
+      - --force
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Force the execution of the selected (or the first)\nrule and all\
+        \ rules it is dependent on regardless of\nalready created output."
+      synonyms:
+      - --forceall
+      - -F
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "[TARGET [TARGET ...]], -R [TARGET [TARGET ...]]\nForce the re-execution\
+        \ or creation of the given rules\nor files. Use this option if you changed\
+        \ a rule and\nwant to have all its output in your workflow updated."
+      synonyms:
+      - --forcerun
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Tell the scheduler to assign creation of given targets\n(and all\
+        \ their dependencies) highest priority.\n(EXPERIMENTAL)"
+      synonyms:
+      - --prioritize
+      - -P
+      args: !RepeatFlagArg
+        name: TARGET
+      optional: true
+    - !Flag
+      description: "Runs the pipeline until it reaches the specified rules\nor files.\
+        \ Only runs jobs that are dependencies of the\nspecified rule or files, does\
+        \ not run sibling DAGs."
+      synonyms:
+      - --until
+      - -U
+      args: !RepeatFlagArg
+        name: TARGET
+      optional: true
+    - !Flag
+      description: "Prevent the execution or creation of the given rules\nor files\
+        \ as well as any rules or files that are\ndownstream of these targets in the\
+        \ DAG. Also runs jobs\nin sibling DAGs that are independent of the rules or\n\
+        files specified here."
+      synonyms:
+      - --omit-from
+      - -O
+      args: !RepeatFlagArg
+        name: TARGET
+      optional: true
+    - !Flag
+      description: "Don't check for ambiguous rules and simply use the\nfirst if several\
+        \ can produce the same file. This\nallows the user to prioritize rules by\
+        \ their order in\nthe snakefile."
+      synonyms:
+      - --allow-ambiguity
+      - -a
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Execute snakemake rules with the given submit command,\ne.g. qsub.\
+        \ Snakemake compiles jobs into scripts that\nare submitted to the cluster\
+        \ with the given command,\nonce all input files for a particular job are present.\n\
+        The submit command can be decorated to make it aware\nof certain job properties\
+        \ (input, output, params,\nwildcards, log, threads and dependencies (see the\n\
+        argument below)), e.g.: $ snakemake --cluster 'qsub\n-pe threaded {threads}'."
+      synonyms:
+      - --cluster
+      - -c
+      args: !SimpleFlagArg
+        name: CMD
+      optional: true
+    - !Flag
+      description: "cluster submission command will block, returning the\nremote exitstatus\
+        \ upon remote termination (for\nexample, this should be usedif the cluster\
+        \ command is\n'qsub -sync y' (SGE)"
+      synonyms:
+      - --cluster-sync
+      args: !SimpleFlagArg
+        name: CMD
+      optional: true
+    - !Flag
+      description: "[ARGS]        Execute snakemake on a cluster accessed via DRMAA,\n\
+        Snakemake compiles jobs into scripts that are\nsubmitted to the cluster with\
+        \ the given command, once\nall input files for a particular job are present.\
+        \ ARGS\ncan be used to specify options of the underlying\ncluster system,\
+        \ thereby using the job properties\ninput, output, params, wildcards, log,\
+        \ threads and\ndependencies, e.g.: --drmaa ' -pe threaded {threads}'.\nNote\
+        \ that ARGS must be given in quotes and with a\nleading whitespace."
+      synonyms:
+      - --drmaa
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "A JSON or YAML file that defines the wildcards used in\n'cluster'for\
+        \ specific rules, instead of having them\nspecified in the Snakefile. For\
+        \ example, for rule\n'job' you may define: { 'job' : { 'time' : '24:00:00'\n\
+        } } to specify the time for rule 'job'. You can\nspecify more than one file.\
+        \ The configuration files\nare merged with later values overriding earlier\
+        \ ones."
+      synonyms:
+      - --cluster-config
+      - -u
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: "Immediately submit all jobs to the cluster instead of\nwaiting\
+        \ for present input files. This will fail,\nunless you make the cluster aware\
+        \ of job dependencies,\ne.g. via: $ snakemake --cluster 'sbatch --dependency\n\
+        {dependencies}. Assuming that your submit script (here\nsbatch) outputs the\
+        \ generated job id to the first\nstdout line, {dependencies} will be filled\
+        \ with space\nseparated job ids this job depends on."
+      synonyms:
+      - --immediate-submit
+      - --is
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Provide a custom job script for submission to the\ncluster. The\
+        \ default script resides as 'jobscript.sh'\nin the installation directory."
+      synonyms:
+      - --jobscript
+      - --js
+      args: !SimpleFlagArg
+        name: SCRIPT
+      optional: true
+    - !Flag
+      description: "Provide a custom name for the jobscript that is\nsubmitted to\
+        \ the cluster (see --cluster). NAME is\n\"snakejob.{rulename}.{jobid}.sh\"\
+        \ per default. The\nwildcard {jobid} has to be present in the name."
+      synonyms:
+      - --jobname
+      - --jn
+      args: !SimpleFlagArg
+        name: NAME
+      optional: true
+    - !Flag
+      description: Print the reason for each executed rule.
+      synonyms:
+      - --reason
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Write stats about Snakefile execution in JSON format\nto the given\
+        \ file."
+      synonyms:
+      - --stats
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: Do not use a colored output.
+      synonyms:
+      - --nocolor
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Do not output any progress or rule information.
+      synonyms:
+      - --quiet
+      - -q
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Do not lock the working directory
+      synonyms:
+      - --nolock
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Remove a lock on the working directory.
+      synonyms:
+      - --unlock
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Cleanup the metadata of given files. That means that\nsnakemake\
+        \ removes any tracked version info, and any\nmarks that files are incomplete."
+      synonyms:
+      - --cleanup-metadata
+      - --cm
+      args: !RepeatFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: "Re-run all jobs the output of which is recognized as\nincomplete."
+      synonyms:
+      - --rerun-incomplete
+      - --ri
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Do not check for incomplete output files.
+      synonyms:
+      - --ignore-incomplete
+      - --ii
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "List all output files that have been created with a\ndifferent\
+        \ version (as determined by the version\nkeyword)."
+      synonyms:
+      - --list-version-changes
+      - --lv
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "List all output files for which the rule body (run or\nshell)\
+        \ have changed in the Snakefile."
+      synonyms:
+      - --list-code-changes
+      - --lc
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "List all output files for which the defined input\nfiles have\
+        \ changed in the Snakefile (e.g. new input\nfiles were added in the rule definition\
+        \ or files were\nrenamed). For listing input file modification in the\nfilesystem,\
+        \ use --summary."
+      synonyms:
+      - --list-input-changes
+      - --li
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "List all output files for which the defined params\nhave changed\
+        \ in the Snakefile."
+      synonyms:
+      - --list-params-changes
+      - --lp
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Wait given seconds if an output file of a job is not\npresent\
+        \ after the job finished. This helps if your\nfilesystem suffers from latency\
+        \ (default 5)."
+      synonyms:
+      - --latency-wait
+      - --output-wait
+      - -w
+      args: !SimpleFlagArg
+        name: SECONDS
+      optional: true
+    - !Flag
+      description: "[FILE [FILE ...]]\nWait --latency-wait seconds for these files\
+        \ to be\npresent before executing the workflow. This option is\nused internally\
+        \ to handle filesystem latency in\ncluster environments."
+      synonyms:
+      - --wait-for-files
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Repeat a job N times if marked for benchmarking\n(default 1)."
+      synonyms:
+      - --benchmark-repeats
+      args: !SimpleFlagArg
+        name: N
+      optional: true
+    - !Flag
+      description: "Ignore temp() declarations. This is useful when\nrunning only\
+        \ a part of the workflow, since temp()\nwould lead to deletion of probably\
+        \ needed files by\nother parts of the workflow."
+      synonyms:
+      - --notemp
+      - --nt
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Keep local copies of remote input files.
+      synonyms:
+      - --keep-remote
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Do not adjust the paths of given target files relative\nto the\
+        \ working directory."
+      synonyms:
+      - --keep-target-files
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Do not delete the shadow directory on snakemake
+      synonyms:
+      - --keep-shadow
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Maximal number of cluster/drmaa jobs per second,\ndefault is no\
+        \ limit"
+      synonyms:
+      - --max-jobs-per-second
+      args: !SimpleFlagArg
+        name: MAX_JOBS_PER_SECOND
+      optional: true
+    - !Flag
+      description: Add a timestamp to all logging output
+      synonyms:
+      - --timestamp
+      - -T
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Set the greediness of scheduling. This value between 0\nand 1\
+        \ determines how careful jobs are selected for\nexecution. The default value\
+        \ (1.0) provides the best\nspeed and still acceptable scheduling quality."
+      synonyms:
+      - --greediness
+      args: !SimpleFlagArg
+        name: GREEDINESS
+      optional: true
+    - !Flag
+      description: "Do not invoke onstart, onsuccess or onerror hooks\nafter execution."
+      synonyms:
+      - --no-hooks
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Print the python representation of the workflow.
+      synonyms:
+      - --print-compilation
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Provide a shell command that shall be executed instead\nof those\
+        \ given in the workflow. This is for debugging\npurposes only."
+      synonyms:
+      - --overwrite-shellcmd
+      args: !SimpleFlagArg
+        name: OVERWRITE_SHELLCMD
+      optional: true
+    - !Flag
+      description: Print debugging output.
+      synonyms:
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Allow to debug rules with e.g. PDB. This flag allows\nto set breakpoints\
+        \ in run blocks."
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Profile Snakemake and write the output to FILE. This\nrequires\
+        \ yappi to be installed."
+      synonyms:
+      - --profile
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: Set execution mode of Snakemake (internal use only).
+      synonyms:
+      - --mode
+      args: !ChoiceFlagArg
+        choices: !!set
+          ? "1"
+          ? "2"
+          ? "0"
+      optional: true
+    - !Flag
+      description: "Output code to register bash completion for snakemake.\nPut the\
+        \ following in your .bashrc (including the\naccents): `snakemake --bash-completion`\
+        \ or issue it in\nan open terminal session."
+      synonyms:
+      - --bash-completion
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "If defined in the rule, create job specific conda\nenvironments.\
+        \ If this flag is not set, the conda\ndirective is ignored."
+      synonyms:
+      - --use-conda
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Prefix for URL created from wrapper directive\n(default: https://bitbucket.org/snakemake/snakemake-\n\
+        wrappers/raw/). Set this to a different URL to use\nyour fork or a local clone\
+        \ of the repository."
+      synonyms:
+      - --wrapper-prefix
+      args: !SimpleFlagArg
+        name: WRAPPER_PREFIX
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: DaisySuite
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: Snakemake
+        optional: true
+      named:
+      - !Flag
+        description: number of cores
+        synonyms:
+        - -j
+        - --cores
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: go on with independent jobs if a job fails
+        synonyms:
+        - -k
+        - --keep-going
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: do not execute anything
+        synonyms:
+        - -n
+        - --dryrun
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print out the shell commands that will be executed
+        synonyms:
+        - -p
+        - --printshellcmds
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --configfile
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show Snakemake help (or snakemake -h)
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "DaisySuite Pipeline (powered by Snakemake)\n\nUsage: DaisySuite\
+        \ --configfile FILE [Snakemake options]\n\n Useful Snakemake parameters:\n\
+        \   -j, --cores            number of cores\n   -k, --keep-going       go on\
+        \ with independent jobs if a job fails\n   -n, --dryrun           do not execute\
+        \ anything\n   -p, --printshellcmds   print out the shell commands that will\
+        \ be executed\n\n Full list of parameters:\n   --help                 show\
+        \ Snakemake help (or snakemake -h)\n\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - DaisySuite
+      - startup.
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: DaisySuite
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: Snakemake
+        optional: true
+      named:
+      - !Flag
+        description: number of cores
+        synonyms:
+        - -j
+        - --cores
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: go on with independent jobs if a job fails
+        synonyms:
+        - -k
+        - --keep-going
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: do not execute anything
+        synonyms:
+        - -n
+        - --dryrun
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print out the shell commands that will be executed
+        synonyms:
+        - -p
+        - --printshellcmds
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --configfile
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show Snakemake help (or snakemake -h)
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "DaisySuite Pipeline (powered by Snakemake)\n\nUsage: DaisySuite\
+        \ --configfile FILE [Snakemake options]\n\n Useful Snakemake parameters:\n\
+        \   -j, --cores            number of cores\n   -k, --keep-going       go on\
+        \ with independent jobs if a job fails\n   -n, --dryrun           do not execute\
+        \ anything\n   -p, --printshellcmds   print out the shell commands that will\
+        \ be executed\n\n Full list of parameters:\n   --help                 show\
+        \ Snakemake help (or snakemake -h)\n\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "usage: snakemake [-h] [--snakefile FILE] [--gui [PORT]] [--cores [N]]\n\
+      \                 [--local-cores N] [--resources [NAME=INT [NAME=INT ...]]]\n\
+      \                 [--config [KEY=VALUE [KEY=VALUE ...]]] [--configfile FILE]\n\
+      \                 [--list] [--list-target-rules] [--directory DIR] [--dryrun]\n\
+      \                 [--printshellcmds] [--dag] [--force-use-threads]\n       \
+      \          [--rulegraph] [--d3dag] [--summary] [--detailed-summary]\n      \
+      \           [--touch] [--keep-going] [--force] [--forceall]\n              \
+      \   [--forcerun [TARGET [TARGET ...]]]\n                 [--prioritize TARGET\
+      \ [TARGET ...]]\n                 [--until TARGET [TARGET ...]]\n          \
+      \       [--omit-from TARGET [TARGET ...]] [--allow-ambiguity]\n            \
+      \     [--cluster CMD | --cluster-sync CMD | --drmaa [ARGS]]\n              \
+      \   [--cluster-config FILE] [--immediate-submit]\n                 [--jobscript\
+      \ SCRIPT] [--jobname NAME] [--reason]\n                 [--stats FILE] [--nocolor]\
+      \ [--quiet] [--nolock] [--unlock]\n                 [--cleanup-metadata FILE\
+      \ [FILE ...]] [--rerun-incomplete]\n                 [--ignore-incomplete] [--list-version-changes]\n\
+      \                 [--list-code-changes] [--list-input-changes]\n           \
+      \      [--list-params-changes] [--latency-wait SECONDS]\n                 [--wait-for-files\
+      \ [FILE [FILE ...]]] [--benchmark-repeats N]\n                 [--notemp] [--keep-remote]\
+      \ [--keep-target-files]\n                 [--keep-shadow]\n                \
+      \ [--allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]]\n                 [--max-jobs-per-second\
+      \ MAX_JOBS_PER_SECOND] [--timestamp]\n                 [--greediness GREEDINESS]\
+      \ [--no-hooks] [--print-compilation]\n                 [--overwrite-shellcmd\
+      \ OVERWRITE_SHELLCMD] [--verbose]\n                 [--debug] [--profile FILE]\
+      \ [--mode {0,1,2}]\n                 [--bash-completion] [--use-conda]\n   \
+      \              [--wrapper-prefix WRAPPER_PREFIX] [--version]\n             \
+      \    [target [target ...]]\n\nSnakemake is a Python based language and execution\
+      \ environment for GNU Make-\nlike workflows.\n\npositional arguments:\n  target\
+      \                Targets to build. May be rules or files.\n\noptional arguments:\n\
+      \  -h, --help            show this help message and exit\n  --snakefile FILE,\
+      \ -s FILE\n                        The workflow definition in a snakefile.\n\
+      \  --gui [PORT]          Serve an HTML based user interface to the given port\n\
+      \                        (default: 8000). If possible, a browser window is\n\
+      \                        opened.\n  --cores [N], --jobs [N], -j [N]\n      \
+      \                  Use at most N cores in parallel (default: 1). If N is\n \
+      \                       omitted, the limit is set to the number of available\n\
+      \                        cores.\n  --local-cores N       In cluster mode, use\
+      \ at most N cores of the host\n                        machine in parallel (default:\
+      \ number of CPU cores of\n                        the host). The cores are used\
+      \ to execute local rules.\n                        This option is ignored when\
+      \ not in cluster mode.\n  --resources [NAME=INT [NAME=INT ...]], --res [NAME=INT\
+      \ [NAME=INT ...]]\n                        Define additional resources that\
+      \ shall constrain the\n                        scheduling analogously to threads\
+      \ (see above). A\n                        resource is defined as a name and\
+      \ an integer value.\n                        E.g. --resources gpu=1. Rules can\
+      \ use resources by\n                        defining the resource keyword, e.g.\
+      \ resources: gpu=1.\n                        If now two rules require 1 of the\
+      \ resource 'gpu' they\n                        won't be run in parallel by the\
+      \ scheduler.\n  --config [KEY=VALUE [KEY=VALUE ...]], -C [KEY=VALUE [KEY=VALUE\
+      \ ...]]\n                        Set or overwrite values in the workflow config\
+      \ object.\n                        The workflow config object is accessible\
+      \ as variable\n                        config inside the workflow. Default values\
+      \ can be set\n                        by providing a JSON file (see Documentation).\n\
+      \  --configfile FILE     Specify or overwrite the config file of the workflow\n\
+      \                        (see the docs). Values specified in JSON or YAML\n\
+      \                        format are available in the global config dictionary\n\
+      \                        inside the workflow.\n  --list, -l            Show\
+      \ availiable rules in given Snakefile.\n  --list-target-rules, --lt\n      \
+      \                  Show available target rules in given Snakefile.\n  --directory\
+      \ DIR, -d DIR\n                        Specify working directory (relative paths\
+      \ in the\n                        snakefile will use this as their origin).\n\
+      \  --dryrun, -n          Do not execute anything.\n  --printshellcmds, -p  Print\
+      \ out the shell commands that will be executed.\n  --dag                 Do\
+      \ not execute anything and print the directed acyclic\n                    \
+      \    graph of jobs in the dot language. Recommended use on\n               \
+      \         Unix systems: snakemake --dag | dot | display\n  --force-use-threads\
+      \   Force threads rather than processes. Helpful if shared\n               \
+      \         memory (/dev/shm) is full or unavailable.\n  --rulegraph         \
+      \  Do not execute anything and print the dependency graph\n                \
+      \        of rules in the dot language. This will be less\n                 \
+      \       crowded than above DAG of jobs, but also show less\n               \
+      \         information. Note that each rule is displayed once,\n            \
+      \            hence the displayed graph will be cyclic if a rule\n          \
+      \              appears in several steps of the workflow. Use this if\n     \
+      \                   above option leads to a DAG that is too large.\n       \
+      \                 Recommended use on Unix systems: snakemake --rulegraph\n \
+      \                       | dot | display\n  --d3dag               Print the DAG\
+      \ in D3.js compatible JSON format.\n  --summary, -S         Print a summary\
+      \ of all files created by the workflow.\n                        The has the\
+      \ following columns: filename, modification\n                        time, rule\
+      \ version, status, plan. Thereby rule version\n                        contains\
+      \ the versionthe file was created with (see the\n                        version\
+      \ keyword of rules), and status denotes whether\n                        the\
+      \ file is missing, its input files are newer or if\n                       \
+      \ version or implementation of the rule changed since\n                    \
+      \    file creation. Finally the last column denotes whether\n              \
+      \          the file will be updated or created during the next\n           \
+      \             workflow execution.\n  --detailed-summary, -D\n              \
+      \          Print a summary of all files created by the workflow.\n         \
+      \               The has the following columns: filename, modification\n    \
+      \                    time, rule version, input file(s), shell command,\n   \
+      \                     status, plan. Thereby rule version contains the\n    \
+      \                    versionthe file was created with (see the version\n   \
+      \                     keyword of rules), and status denotes whether the file\n\
+      \                        is missing, its input files are newer or if version\
+      \ or\n                        implementation of the rule changed since file\n\
+      \                        creation. The input file and shell command columns\
+      \ are\n                        selfexplanatory. Finally the last column denotes\n\
+      \                        whether the file will be updated or created during\
+      \ the\n                        next workflow execution.\n  --touch, -t     \
+      \      Touch output files (mark them up to date without\n                  \
+      \      really changing them) instead of running their\n                    \
+      \    commands. This is used to pretend that the rules were\n               \
+      \         executed, in order to fool future invocations of\n               \
+      \         snakemake. Fails if a file does not yet exist.\n  --keep-going, -k\
+      \      Go on with independent jobs if a job fails.\n  --force, -f          \
+      \ Force the execution of the selected target or the\n                      \
+      \  first rule regardless of already created output.\n  --forceall, -F      \
+      \  Force the execution of the selected (or the first)\n                    \
+      \    rule and all rules it is dependent on regardless of\n                 \
+      \       already created output.\n  --forcerun [TARGET [TARGET ...]], -R [TARGET\
+      \ [TARGET ...]]\n                        Force the re-execution or creation\
+      \ of the given rules\n                        or files. Use this option if you\
+      \ changed a rule and\n                        want to have all its output in\
+      \ your workflow updated.\n  --prioritize TARGET [TARGET ...], -P TARGET [TARGET\
+      \ ...]\n                        Tell the scheduler to assign creation of given\
+      \ targets\n                        (and all their dependencies) highest priority.\n\
+      \                        (EXPERIMENTAL)\n  --until TARGET [TARGET ...], -U TARGET\
+      \ [TARGET ...]\n                        Runs the pipeline until it reaches the\
+      \ specified rules\n                        or files. Only runs jobs that are\
+      \ dependencies of the\n                        specified rule or files, does\
+      \ not run sibling DAGs.\n  --omit-from TARGET [TARGET ...], -O TARGET [TARGET\
+      \ ...]\n                        Prevent the execution or creation of the given\
+      \ rules\n                        or files as well as any rules or files that\
+      \ are\n                        downstream of these targets in the DAG. Also\
+      \ runs jobs\n                        in sibling DAGs that are independent of\
+      \ the rules or\n                        files specified here.\n  --allow-ambiguity,\
+      \ -a\n                        Don't check for ambiguous rules and simply use\
+      \ the\n                        first if several can produce the same file. This\n\
+      \                        allows the user to prioritize rules by their order\
+      \ in\n                        the snakefile.\n  --cluster CMD, -c CMD\n    \
+      \                    Execute snakemake rules with the given submit command,\n\
+      \                        e.g. qsub. Snakemake compiles jobs into scripts that\n\
+      \                        are submitted to the cluster with the given command,\n\
+      \                        once all input files for a particular job are present.\n\
+      \                        The submit command can be decorated to make it aware\n\
+      \                        of certain job properties (input, output, params,\n\
+      \                        wildcards, log, threads and dependencies (see the\n\
+      \                        argument below)), e.g.: $ snakemake --cluster 'qsub\n\
+      \                        -pe threaded {threads}'.\n  --cluster-sync CMD    cluster\
+      \ submission command will block, returning the\n                        remote\
+      \ exitstatus upon remote termination (for\n                        example,\
+      \ this should be usedif the cluster command is\n                        'qsub\
+      \ -sync y' (SGE)\n  --drmaa [ARGS]        Execute snakemake on a cluster accessed\
+      \ via DRMAA,\n                        Snakemake compiles jobs into scripts that\
+      \ are\n                        submitted to the cluster with the given command,\
+      \ once\n                        all input files for a particular job are present.\
+      \ ARGS\n                        can be used to specify options of the underlying\n\
+      \                        cluster system, thereby using the job properties\n\
+      \                        input, output, params, wildcards, log, threads and\n\
+      \                        dependencies, e.g.: --drmaa ' -pe threaded {threads}'.\n\
+      \                        Note that ARGS must be given in quotes and with a\n\
+      \                        leading whitespace.\n  --cluster-config FILE, -u FILE\n\
+      \                        A JSON or YAML file that defines the wildcards used\
+      \ in\n                        'cluster'for specific rules, instead of having\
+      \ them\n                        specified in the Snakefile. For example, for\
+      \ rule\n                        'job' you may define: { 'job' : { 'time' : '24:00:00'\n\
+      \                        } } to specify the time for rule 'job'. You can\n \
+      \                       specify more than one file. The configuration files\n\
+      \                        are merged with later values overriding earlier ones.\n\
+      \  --immediate-submit, --is\n                        Immediately submit all\
+      \ jobs to the cluster instead of\n                        waiting for present\
+      \ input files. This will fail,\n                        unless you make the\
+      \ cluster aware of job dependencies,\n                        e.g. via: $ snakemake\
+      \ --cluster 'sbatch --dependency\n                        {dependencies}. Assuming\
+      \ that your submit script (here\n                        sbatch) outputs the\
+      \ generated job id to the first\n                        stdout line, {dependencies}\
+      \ will be filled with space\n                        separated job ids this\
+      \ job depends on.\n  --jobscript SCRIPT, --js SCRIPT\n                     \
+      \   Provide a custom job script for submission to the\n                    \
+      \    cluster. The default script resides as 'jobscript.sh'\n               \
+      \         in the installation directory.\n  --jobname NAME, --jn NAME\n    \
+      \                    Provide a custom name for the jobscript that is\n     \
+      \                   submitted to the cluster (see --cluster). NAME is\n    \
+      \                    \"snakejob.{rulename}.{jobid}.sh\" per default. The\n \
+      \                       wildcard {jobid} has to be present in the name.\n  --reason,\
+      \ -r          Print the reason for each executed rule.\n  --stats FILE     \
+      \     Write stats about Snakefile execution in JSON format\n               \
+      \         to the given file.\n  --nocolor             Do not use a colored output.\n\
+      \  --quiet, -q           Do not output any progress or rule information.\n \
+      \ --nolock              Do not lock the working directory\n  --unlock      \
+      \        Remove a lock on the working directory.\n  --cleanup-metadata FILE\
+      \ [FILE ...], --cm FILE [FILE ...]\n                        Cleanup the metadata\
+      \ of given files. That means that\n                        snakemake removes\
+      \ any tracked version info, and any\n                        marks that files\
+      \ are incomplete.\n  --rerun-incomplete, --ri\n                        Re-run\
+      \ all jobs the output of which is recognized as\n                        incomplete.\n\
+      \  --ignore-incomplete, --ii\n                        Do not check for incomplete\
+      \ output files.\n  --list-version-changes, --lv\n                        List\
+      \ all output files that have been created with a\n                        different\
+      \ version (as determined by the version\n                        keyword).\n\
+      \  --list-code-changes, --lc\n                        List all output files\
+      \ for which the rule body (run or\n                        shell) have changed\
+      \ in the Snakefile.\n  --list-input-changes, --li\n                        List\
+      \ all output files for which the defined input\n                        files\
+      \ have changed in the Snakefile (e.g. new input\n                        files\
+      \ were added in the rule definition or files were\n                        renamed).\
+      \ For listing input file modification in the\n                        filesystem,\
+      \ use --summary.\n  --list-params-changes, --lp\n                        List\
+      \ all output files for which the defined params\n                        have\
+      \ changed in the Snakefile.\n  --latency-wait SECONDS, --output-wait SECONDS,\
+      \ -w SECONDS\n                        Wait given seconds if an output file of\
+      \ a job is not\n                        present after the job finished. This\
+      \ helps if your\n                        filesystem suffers from latency (default\
+      \ 5).\n  --wait-for-files [FILE [FILE ...]]\n                        Wait --latency-wait\
+      \ seconds for these files to be\n                        present before executing\
+      \ the workflow. This option is\n                        used internally to handle\
+      \ filesystem latency in\n                        cluster environments.\n  --benchmark-repeats\
+      \ N\n                        Repeat a job N times if marked for benchmarking\n\
+      \                        (default 1).\n  --notemp, --nt        Ignore temp()\
+      \ declarations. This is useful when\n                        running only a\
+      \ part of the workflow, since temp()\n                        would lead to\
+      \ deletion of probably needed files by\n                        other parts\
+      \ of the workflow.\n  --keep-remote         Keep local copies of remote input\
+      \ files.\n  --keep-target-files   Do not adjust the paths of given target files\
+      \ relative\n                        to the working directory.\n  --keep-shadow\
+      \         Do not delete the shadow directory on snakemake\n                \
+      \        startup.\n  --allowed-rules ALLOWED_RULES [ALLOWED_RULES ...]\n   \
+      \                     Only use given rules. If omitted, all rules in\n     \
+      \                   Snakefile are used.\n  --max-jobs-per-second MAX_JOBS_PER_SECOND\n\
+      \                        Maximal number of cluster/drmaa jobs per second,\n\
+      \                        default is no limit\n  --timestamp, -T       Add a\
+      \ timestamp to all logging output\n  --greediness GREEDINESS\n             \
+      \           Set the greediness of scheduling. This value between 0\n       \
+      \                 and 1 determines how careful jobs are selected for\n     \
+      \                   execution. The default value (1.0) provides the best\n \
+      \                       speed and still acceptable scheduling quality.\n  --no-hooks\
+      \            Do not invoke onstart, onsuccess or onerror hooks\n           \
+      \             after execution.\n  --print-compilation   Print the python representation\
+      \ of the workflow.\n  --overwrite-shellcmd OVERWRITE_SHELLCMD\n            \
+      \            Provide a shell command that shall be executed instead\n      \
+      \                  of those given in the workflow. This is for debugging\n \
+      \                       purposes only.\n  --verbose             Print debugging\
+      \ output.\n  --debug               Allow to debug rules with e.g. PDB. This\
+      \ flag allows\n                        to set breakpoints in run blocks.\n \
+      \ --profile FILE        Profile Snakemake and write the output to FILE. This\n\
+      \                        requires yappi to be installed.\n  --mode {0,1,2} \
+      \       Set execution mode of Snakemake (internal use only).\n  --bash-completion\
+      \     Output code to register bash completion for snakemake.\n             \
+      \           Put the following in your .bashrc (including the\n             \
+      \           accents): `snakemake --bash-completion` or issue it in\n       \
+      \                 an open terminal session.\n  --use-conda           If defined\
+      \ in the rule, create job specific conda\n                        environments.\
+      \ If this flag is not set, the conda\n                        directive is ignored.\n\
+      \  --wrapper-prefix WRAPPER_PREFIX\n                        Prefix for URL created\
+      \ from wrapper directive\n                        (default: https://bitbucket.org/snakemake/snakemake-\n\
+      \                        wrappers/raw/). Set this to a different URL to use\n\
+      \                        your fork or a local clone of the repository.\n  --version,\
+      \ -v         show program's version number and exit\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -635,12 +1047,9 @@ subcommands:
     \ if a job fails\n   -n, --dryrun           do not execute anything\n   -p, --printshellcmds\
     \   print out the shell commands that will be executed\n\n Full list of parameters:\n\
     \   --help                 show Snakemake help (or snakemake -h)\n\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - DaisySuite
-  - startup.
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -688,7 +1097,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -705,23 +1114,11 @@ subcommands:
     \ if a job fails\n   -n, --dryrun           do not execute anything\n   -p, --printshellcmds\
     \   print out the shell commands that will be executed\n\n Full list of parameters:\n\
     \   --help                 show Snakemake help (or snakemake -h)\n\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: snakemake [-h] [--snakefile FILE] [--gui [PORT]] [--cores [N]]\n\
   \                 [--local-cores N] [--resources [NAME=INT [NAME=INT ...]]]\n  \
   \               [--config [KEY=VALUE [KEY=VALUE ...]]] [--configfile FILE]\n   \
@@ -960,4 +1357,4 @@ help_text: "usage: snakemake [-h] [--snakefile FILE] [--gui [PORT]] [--cores [N]
   \ wrappers/raw/). Set this to a different URL to use\n                        your\
   \ fork or a local clone of the repository.\n  --version, -v         show program's\
   \ version number and exit\n"
-generated_using: *id002
+generated_using: *id004

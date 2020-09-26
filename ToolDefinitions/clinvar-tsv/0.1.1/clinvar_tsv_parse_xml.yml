@@ -1,4 +1,4 @@
-&id003 !Command
+!Command
 command:
 - clinvar_tsv
 - parse_xml
@@ -34,8 +34,8 @@ named:
   - --genome-build
   args: !ChoiceFlagArg
     choices: !!set
-      b37:
       b38:
+      b37:
   optional: true
 - !Flag
   description: Output path for single TSV file.
@@ -51,203 +51,7 @@ named:
   args: !SimpleFlagArg
     name: MAX_ROWS
   optional: true
-parent: &id001 !Command
-  command:
-  - clinvar_tsv
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - !Command
-    command:
-    - clinvar_tsv
-    - normalize_tsv
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: clinvar-tsv
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: normalize_tsv
-      optional: false
-    named:
-    - !Flag
-      description: Path to reference FASTA file
-      synonyms:
-      - --reference
-      args: !SimpleFlagArg
-        name: REFERENCE
-      optional: true
-    - !Flag
-      description: Path to input TSV file.
-      synonyms:
-      - --input-tsv
-      args: !SimpleFlagArg
-        name: INPUT_TSV
-      optional: true
-    - !Flag
-      description: "Path to output TSV file.\n"
-      synonyms:
-      - --output-tsv
-      args: !SimpleFlagArg
-        name: OUTPUT_TSV
-      optional: true
-    parent: *id001
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: clinvar-tsv normalize_tsv [-h] --reference REFERENCE --input-tsv\n\
-      \                                 INPUT_TSV --output-tsv OUTPUT_TSV\n\noptional\
-      \ arguments:\n  -h, --help            show this help message and exit\n  --reference\
-      \ REFERENCE\n                        Path to reference FASTA file\n  --input-tsv\
-      \ INPUT_TSV\n                        Path to input TSV file.\n  --output-tsv\
-      \ OUTPUT_TSV\n                        Path to output TSV file.\n"
-    generated_using: &id002
-    - --help
-  - !Command
-    command:
-    - clinvar_tsv
-    - main
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: clinvar-tsv
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: main
-      optional: false
-    named:
-    - !Flag
-      description: Path to GRCh37 FAI-indexed FASTA file.
-      synonyms:
-      - --b37-path
-      args: !SimpleFlagArg
-        name: B37_PATH
-      optional: true
-    - !Flag
-      description: Path to GRCh38 FAI-indexed FASTA file.
-      synonyms:
-      - --b38-path
-      args: !SimpleFlagArg
-        name: B38_PATH
-      optional: true
-    - !Flag
-      description: Path to working directory
-      synonyms:
-      - --work-dir
-      args: !SimpleFlagArg
-        name: WORK_DIR
-      optional: true
-    - !Flag
-      description: Number of cores to use
-      synonyms:
-      - --cores
-      args: !SimpleFlagArg
-        name: CORES
-      optional: true
-    - !Flag
-      description: Enables debugging helps
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    parent: *id001
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: clinvar-tsv main [-h] --b37-path B37_PATH --b38-path B38_PATH\n\
-      \                        [--work-dir WORK_DIR] [--cores CORES] [--debug]\n\n\
-      optional arguments:\n  -h, --help           show this help message and exit\n\
-      \  --b37-path B37_PATH  Path to GRCh37 FAI-indexed FASTA file.\n  --b38-path\
-      \ B38_PATH  Path to GRCh38 FAI-indexed FASTA file.\n  --work-dir WORK_DIR  Path\
-      \ to working directory\n  --cores CORES        Number of cores to use\n  --debug\
-      \              Enables debugging helps\n"
-    generated_using: *id002
-  - *id003
-  - !Command
-    command:
-    - clinvar_tsv
-    - inspect
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: clinvar-tsv
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: inspect
-      optional: false
-    named:
-    - !Flag
-      description: Path to working directory
-      synonyms:
-      - --work-dir
-      args: !SimpleFlagArg
-        name: WORK_DIR
-      optional: true
-    parent: *id001
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: clinvar-tsv inspect [-h] [--work-dir WORK_DIR]\n\noptional\
-      \ arguments:\n  -h, --help           show this help message and exit\n  --work-dir\
-      \ WORK_DIR  Path to working directory\n"
-    generated_using: *id002
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: show program's version number and exit
-    synonyms:
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: clinvar-tsv [-h] [--version] {inspect,main,parse_xml,normalize_tsv}\
-    \ ...\n\npositional arguments:\n  {inspect,main,parse_xml,normalize_tsv}\n   \
-    \ inspect             Show files to be created\n    main                Run the\
-    \ full process pipeline\n    parse_xml           Parse the Clinvar XML\n    normalize_tsv\
-    \       Parse the Clinvar XML\n\noptional arguments:\n  -h, --help           \
-    \ show this help message and exit\n  --version             show program's version\
-    \ number and exit\n"
-  generated_using: *id002
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -268,4 +72,5 @@ help_text: "usage: clinvar-tsv parse_xml [-h] --clinvar-xml CLINVAR_XML --genome
   \ OUTPUT_SINGLE\n                        Output path for single TSV file.\n  --output-multi\
   \ OUTPUT_MULTI\n                        Output path to multi TSV file.\n  --max-rows\
   \ MAX_ROWS   Maximal number of rows to write out; for debugging.\n"
-generated_using: *id002
+generated_using:
+- --help

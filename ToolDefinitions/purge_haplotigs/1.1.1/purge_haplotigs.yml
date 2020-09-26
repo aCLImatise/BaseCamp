@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - purge_haplotigs
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - purge_haplotigs
   - cov
   positional: []
@@ -60,7 +60,429 @@ subcommands:
     args: !SimpleFlagArg
       name: integer
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: / -in        The bedtools genomecov output that was produced
+          from 'purge_haplotigs readhist'
+        synonyms:
+        - -i
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -low       The read depth low cutoff (use the histogram to
+          eyeball these cutoffs)
+        synonyms:
+        - -l
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -mid       The low point between the haploid and diploid peaks
+        synonyms:
+        - -m
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -out       Choose an output file name (CSV format, DEFAULT
+          = coverage_stats.csv)
+        synonyms:
+        - -o
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "/ -junk      Auto-assign contig as \"j\" (junk) if this percentage\
+          \ or greater of the contig is\nlow/high coverage (DEFAULT = 80, > 100 =\
+          \ don't junk anything)"
+        synonyms:
+        - -j
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "/ -suspect   Auto-assign contig as \"s\" (suspected haplotig)\
+          \ if this percentage or less of the\ncontig is diploid level of coverage\
+          \ (DEFAULT = 80)\n"
+        synonyms:
+        - -s
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !SimpleFlagArg
+          name: integer
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: / -high      The read depth high cutoff
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Unknown option: help\n\nUSAGE:\npurge_haplotigs  cov  -i aligned.bam.genecov\
+        \  -l <integer>  -m <integer>  -h <integer>  [-o coverage_stats.csv -j 80\
+        \  -s 80 ]\n\nREQUIRED:\n-i / -in        The bedtools genomecov output that\
+        \ was produced from 'purge_haplotigs readhist'\n-l / -low       The read depth\
+        \ low cutoff (use the histogram to eyeball these cutoffs)\n-h / -high    \
+        \  The read depth high cutoff\n-m / -mid       The low point between the haploid\
+        \ and diploid peaks\n\nOPTIONAL:\n-o / -out       Choose an output file name\
+        \ (CSV format, DEFAULT = coverage_stats.csv)\n-j / -junk      Auto-assign\
+        \ contig as \"j\" (junk) if this percentage or greater of the contig is \n\
+        \                low/high coverage (DEFAULT = 80, > 100 = don't junk anything)\n\
+        -s / -suspect   Auto-assign contig as \"s\" (suspected haplotig) if this percentage\
+        \ or less of the\n                contig is diploid level of coverage (DEFAULT\
+        \ = 80)\n\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - purge_haplotigs
+      - clip
+      positional: []
+      named:
+      - !Flag
+        description: / -primary       Primary contigs (curated.fasta by default) from
+          the 'purge' stage.
+        synonyms:
+        - -p
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -outPrefix     Output file prefix. DEFAULT = clip
+        synonyms:
+        - -o
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -length        Minimum overlap length to trigger clipping.
+          DEFAULT = 10000
+        synonyms:
+        - -l
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -gap           Maximum end gap to allow clipping. DEFAULT =
+          10000
+        synonyms:
+        - -g
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -ratio         Max allowable gap to alignment ratio. DEFAULT
+          = 0.5
+        synonyms:
+        - -r
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -threads       Threds to use. DEFAULT = 4
+        synonyms:
+        - -t
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !SimpleFlagArg
+          name: haplotigs.fasta
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: / -haplotigs     Haplotigs (curated.haplotigs.fasta by default)
+          from the 'purge' stage.
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Unknown option: help\n\nUSAGE:\npurge_haplotigs  clip  -p contigs.fasta\
+        \  -h haplotigs.fasta\n\nREQUIRED:\n-p / -primary       Primary contigs (curated.fasta\
+        \ by default) from the 'purge' stage.\n-h / -haplotigs     Haplotigs (curated.haplotigs.fasta\
+        \ by default) from the 'purge' stage.\n\nOPTIONAL:\n-o / -outPrefix     Output\
+        \ file prefix. DEFAULT = clip\n-l / -length        Minimum overlap length\
+        \ to trigger clipping. DEFAULT = 10000\n-g / -gap           Maximum end gap\
+        \ to allow clipping. DEFAULT = 10000\n-r / -ratio         Max allowable gap\
+        \ to alignment ratio. DEFAULT = 0.5\n-t / -threads       Threds to use. DEFAULT\
+        \ = 4\n\nNOTE: This script is experimental. \n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - purge_haplotigs
+      - purge
+      positional: []
+      named:
+      - !Flag
+        description: / -genome        Genome assembly in fasta format. Needs to be
+          indexed with samtools faidx.
+        synonyms:
+        - -g
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -coverage      Contig by contig coverage stats csv file from
+          the previous step.
+        synonyms:
+        - -c
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -threads       Number of worker threads to use. DEFAULT = 4
+        synonyms:
+        - -t
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -outprefix     Prefix for the curated assembly. DEFAULT = "curated"
+        synonyms:
+        - -o
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -repeats       BED-format file of repeats to ignore during
+          analysis.
+        synonyms:
+        - -r
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -dotplots      Generate dotplots for manual inspection.
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "/ -bam           Samtools-indexed bam file of aligned and sorted\
+          \ reads/subreads to the\nreference, required for generating dotplots."
+        synonyms:
+        - -b
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -falconNaming  Rename contigs in the style used by FALCON/FALCON-unzip
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -align_cov     Percent cutoff for identifying a contig as a
+          haplotig. DEFAULT = 70
+        synonyms:
+        - -a
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "/ -max_match     Percent cutoff for identifying repetitive contigs.\
+          \ Ignored when\nusing repeat annotations (-repeats). DEFAULT = 250"
+        synonyms:
+        - -m
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Minimap2 indexing, drop minimisers every N bases, DEFAULT = 4G
+        synonyms:
+        - -I
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -verbose       Print EVERYTHING.
+        synonyms:
+        - -v
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Limit for I/O intensive jobs. DEFAULT = -threads
+        synonyms:
+        - -limit_io
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Min window size for BED coverage plots (for dotplots). DEFAULT
+          = 5000
+        synonyms:
+        - -wind_min
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Max windows per contig for BED coverage plots (for dotplots).
+          DEFAULT = 200
+        synonyms:
+        - -wind_nmax
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "[10-09-2020 00:41:40] bedtools OK!\n[10-09-2020 00:41:40] minimap2\
+        \ OK!\n[10-09-2020 00:41:40] samtools OK!\nUnknown option: help\n\nUSAGE:\n\
+        purge_haplotigs  purge  -g genome.fasta  -c coverage_stats.csv\n\nREQUIRED:\n\
+        -g / -genome        Genome assembly in fasta format. Needs to be indexed with\
+        \ samtools faidx.\n-c / -coverage      Contig by contig coverage stats csv\
+        \ file from the previous step.\n\nOPTIONAL:\n-t / -threads       Number of\
+        \ worker threads to use. DEFAULT = 4\n-o / -outprefix     Prefix for the curated\
+        \ assembly. DEFAULT = \"curated\"\n-r / -repeats       BED-format file of\
+        \ repeats to ignore during analysis.\n-d / -dotplots      Generate dotplots\
+        \ for manual inspection.\n-b / -bam           Samtools-indexed bam file of\
+        \ aligned and sorted reads/subreads to the\n                    reference,\
+        \ required for generating dotplots.\n-f / -falconNaming  Rename contigs in\
+        \ the style used by FALCON/FALCON-unzip\n\nADVANCED:\n-a / -align_cov    \
+        \ Percent cutoff for identifying a contig as a haplotig. DEFAULT = 70\n-m\
+        \ / -max_match     Percent cutoff for identifying repetitive contigs. Ignored\
+        \ when \n                    using repeat annotations (-repeats). DEFAULT\
+        \ = 250\n-I                  Minimap2 indexing, drop minimisers every N bases,\
+        \ DEFAULT = 4G\n-v / -verbose       Print EVERYTHING.\n-limit_io         \
+        \  Limit for I/O intensive jobs. DEFAULT = -threads\n-wind_min           Min\
+        \ window size for BED coverage plots (for dotplots). DEFAULT = 5000\n-wind_nmax\
+        \          Max windows per contig for BED coverage plots (for dotplots). DEFAULT\
+        \ = 200\n\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - purge_haplotigs
+      - place
+      positional: []
+      named:
+      - !Flag
+        description: / -primary       Primary contigs fasta file
+        synonyms:
+        - -p
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -out           Placement file name. DEFAULT = ncbi_placements.tsv
+        synonyms:
+        - -o
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -threads       Threads for Minimap2. DEFAULT = 4
+        synonyms:
+        - -t
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "/ -coverage      Coverage cutoff percentage for pairing contigs.\n\
+          DEFAULT = 50 (%)"
+        synonyms:
+        - -c
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "/ -falconNaming  Rename contigs in the style used by FALCON\
+          \ Unzip. Saved\nto <in-prefix>.FALC.fasta\n"
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !SimpleFlagArg
+          name: haplotigs.fasta
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: / -haplotigs     Haplotigs fasta file
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "[10-09-2020 00:41:41] minimap2 OK!\n[10-09-2020 00:41:41] samtools\
+        \ OK!\nUnknown option: help\n\nUSAGE:\npurge_haplotigs  place  -p primary_contigs.fasta\
+        \  -h haplotigs.fasta  \n            [ -o out.tsv  -t <INT  -c <INT  -f]\n\
+        \nREQUIRED:\n-p / -primary       Primary contigs fasta file\n-h / -haplotigs\
+        \     Haplotigs fasta file\n\nOPTIONAL:\n-o / -out           Placement file\
+        \ name. DEFAULT = ncbi_placements.tsv\n-t / -threads       Threads for Minimap2.\
+        \ DEFAULT = 4\n-c / -coverage      Coverage cutoff percentage for pairing\
+        \ contigs. \n                    DEFAULT = 50 (%)\n-f / -falconNaming  Rename\
+        \ contigs in the style used by FALCON Unzip. Saved\n                    to\
+        \ <in-prefix>.FALC.fasta\n\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - purge_haplotigs
+      - hist
+      positional: []
+      named:
+      - !Flag
+        description: / -bam       BAM file of aligned and sorted reads/subreads to
+          the reference
+        synonyms:
+        - -b
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -genome    Reference FASTA for the BAM file.
+        synonyms:
+        - -g
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: / -threads   Number of worker threads to use, DEFAULT = 4, MINIMUM
+          = 2
+        synonyms:
+        - -t
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "/ -depth     Maximum cutoff for depth. DEFAULT = 200, increase\
+          \ if needed,\nset much higher than your expected average coverage.\n"
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "[10-09-2020 00:41:43] bedtools OK!\n[10-09-2020 00:41:43] Rscript\
+        \ OK!\n[10-09-2020 00:41:43] samtools OK!\n[10-09-2020 00:41:43] ALL DEPENDENCIES\
+        \ OK\n\n\nUnknown option: help\n\nUSAGE:\npurge_haplotigs  hist  -b aligned.bam\
+        \  -g genome.fasta  [ -t threads ]\n\nREQUIRED:\n-b / -bam       BAM file\
+        \ of aligned and sorted reads/subreads to the reference\n-g / -genome    Reference\
+        \ FASTA for the BAM file.\n\nOPTIONAL:\n-t / -threads   Number of worker threads\
+        \ to use, DEFAULT = 4, MINIMUM = 2\n-d / -depth     Maximum cutoff for depth.\
+        \ DEFAULT = 200, increase if needed,\n                set much higher than\
+        \ your expected average coverage.\n"
+      generated_using: *id004
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nERROR: no such sub-command --help\n\nUSAGE:\npurge_haplotigs  <command>\
+      \  [options]\n\nCOMMANDS:\n-- Purge Haplotigs pipeline:\n    hist          \
+      \  First step, generate a read-depth histogram for the genome\n    cov     \
+      \        Second step, get contig coverage stats and flag 'suspect' contigs\n\
+      \    purge           Third step, identify and reassign haplotigs\n\n-- Other\
+      \ scripts\n    clip            EXPERIMENTAL; Find and clip overlapping contig\
+      \ ends\n    place           Generate a placement file for submission to NCBI\n\
+      \    test            Test everything!\n\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -83,12 +505,9 @@ subcommands:
     \ = 80, > 100 = don't junk anything)\n-s / -suspect   Auto-assign contig as \"\
     s\" (suspected haplotig) if this percentage or less of the\n                contig\
     \ is diploid level of coverage (DEFAULT = 80)\n\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - purge_haplotigs
-  - clip
+  command: *id005
   positional: []
   named:
   - !Flag
@@ -137,7 +556,7 @@ subcommands:
     args: !SimpleFlagArg
       name: haplotigs.fasta
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -158,11 +577,9 @@ subcommands:
     \ DEFAULT = 10000\n-r / -ratio         Max allowable gap to alignment ratio. DEFAULT\
     \ = 0.5\n-t / -threads       Threds to use. DEFAULT = 4\n\nNOTE: This script is\
     \ experimental. \n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - purge_haplotigs
-  - purge
+  command: *id006
   positional: []
   named:
   - !Flag
@@ -262,7 +679,7 @@ subcommands:
     - -wind_nmax
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -288,11 +705,9 @@ subcommands:
     \ for I/O intensive jobs. DEFAULT = -threads\n-wind_min           Min window size\
     \ for BED coverage plots (for dotplots). DEFAULT = 5000\n-wind_nmax          Max\
     \ windows per contig for BED coverage plots (for dotplots). DEFAULT = 200\n\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - purge_haplotigs
-  - place
+  command: *id007
   positional: []
   named:
   - !Flag
@@ -334,7 +749,7 @@ subcommands:
     args: !SimpleFlagArg
       name: haplotigs.fasta
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -355,11 +770,9 @@ subcommands:
     \             DEFAULT = 50 (%)\n-f / -falconNaming  Rename contigs in the style\
     \ used by FALCON Unzip. Saved\n                    to <in-prefix>.FALC.fasta\n\
     \n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - purge_haplotigs
-  - hist
+  command: *id008
   positional: []
   named:
   - !Flag
@@ -389,7 +802,7 @@ subcommands:
     - -d
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -404,7 +817,7 @@ subcommands:
     \ use, DEFAULT = 4, MINIMUM = 2\n-d / -depth     Maximum cutoff for depth. DEFAULT\
     \ = 200, increase if needed,\n                set much higher than your expected\
     \ average coverage.\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -417,4 +830,4 @@ help_text: "\nERROR: no such sub-command --help\n\nUSAGE:\npurge_haplotigs  <com
   \          EXPERIMENTAL; Find and clip overlapping contig ends\n    place      \
   \     Generate a placement file for submission to NCBI\n    test            Test\
   \ everything!\n\n"
-generated_using: *id002
+generated_using: *id004

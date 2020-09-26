@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - tadtool
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - tadtool
   - tads
   positional:
@@ -65,7 +65,311 @@ subcommands:
     - --write-values
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: "Square Hi-C Matrix as tab-delimited or .npy file\n(created with\
+          \ numpy.save) or sparse matrix format\n(each line: <row region index> <column\
+          \ region index>\n<matrix value>)"
+        position: 0
+        name: matrix
+        optional: false
+      - !Positional
+        description: "BED file (no header) with regions corresponding to the\nnumber\
+          \ of rows in the provided matrix. Fourth column,\nif present, denotes name\
+          \ field, which is used as an\nidentifier in sparse matrix notation."
+        position: 1
+        name: regions
+        optional: false
+      - !Positional
+        description: Window size in base pairs
+        position: 2
+        name: window_size
+        optional: false
+      - !Positional
+        description: Cutoff for TAD-calling algorithm at given window size.
+        position: 3
+        name: cutoff
+        optional: false
+      - !Positional
+        description: Optional output file to save TADs.
+        position: 4
+        name: output
+        optional: false
+      named:
+      - !Flag
+        description: "TAD-calling algorithm. Options: insulation,\nninsulation, directionality.\
+          \ Default: insulation."
+        synonyms:
+        - -a
+        - --algorithm
+        args: !SimpleFlagArg
+          name: ALGORITHM
+        optional: true
+      - !Flag
+        description: "Normalisation window in number of regions. Only\naffects ninsulation\
+          \ algorithm. If not specified,\nwindow will be the whole chromosome."
+        synonyms:
+        - -n
+        - --normalisation-window
+        args: !SimpleFlagArg
+          name: NORMALISATION_WINDOW
+        optional: true
+      - !Flag
+        description: Write index values to file instead of TADs.
+        synonyms:
+        - -v
+        - --write-values
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tadtool tads [-h] [-a ALGORITHM] [-n NORMALISATION_WINDOW]\
+        \ [-v]\n                    matrix regions window_size cutoff [output]\n\n\
+        Call TADs with pre-defined parameters\n\npositional arguments:\n  matrix \
+        \               Square Hi-C Matrix as tab-delimited or .npy file\n       \
+        \                 (created with numpy.save) or sparse matrix format\n    \
+        \                    (each line: <row region index> <column region index>\n\
+        \                        <matrix value>)\n  regions               BED file\
+        \ (no header) with regions corresponding to the\n                        number\
+        \ of rows in the provided matrix. Fourth column,\n                       \
+        \ if present, denotes name field, which is used as an\n                  \
+        \      identifier in sparse matrix notation.\n  window_size           Window\
+        \ size in base pairs\n  cutoff                Cutoff for TAD-calling algorithm\
+        \ at given window size.\n  output                Optional output file to save\
+        \ TADs.\n\noptional arguments:\n  -h, --help            show this help message\
+        \ and exit\n  -a ALGORITHM, --algorithm ALGORITHM\n                      \
+        \  TAD-calling algorithm. Options: insulation,\n                        ninsulation,\
+        \ directionality. Default: insulation.\n  -n NORMALISATION_WINDOW, --normalisation-window\
+        \ NORMALISATION_WINDOW\n                        Normalisation window in number\
+        \ of regions. Only\n                        affects ninsulation algorithm.\
+        \ If not specified,\n                        window will be the whole chromosome.\n\
+        \  -v, --write-values    Write index values to file instead of TADs.\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - tadtool
+      - subset
+      positional:
+      - !Positional
+        description: "Square Hi-C Matrix as tab-delimited or .npy file (created\n\
+          with numpy.save) or sparse matrix format (each line: <row\nregion index>\
+          \ <column region index> <matrix value>)"
+        position: 0
+        name: matrix
+        optional: false
+      - !Positional
+        description: "BED file (no header) with regions corresponding to the\nnumber\
+          \ of rows in the provided matrix. Fourth column, if\npresent, denotes name\
+          \ field, which is used as an identifier\nin sparse matrix notation."
+        position: 1
+        name: regions
+        optional: false
+      - !Positional
+        description: "Region of the Hi-C matrix to display in plot. Format:\n<chromosome>:<start>-<end>,\
+          \ e.g. chr12:31000000-33000000"
+        position: 2
+        name: sub_region
+        optional: false
+      - !Positional
+        description: Output matrix file.
+        position: 3
+        name: output_matrix
+        optional: false
+      - !Positional
+        description: Output regions file.
+        position: 4
+        name: output_regions
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tadtool subset [-h]\n                      matrix regions\
+        \ sub_region output_matrix output_regions\n\nReduce a matrix to a smaller\
+        \ region.\n\npositional arguments:\n  matrix          Square Hi-C Matrix as\
+        \ tab-delimited or .npy file (created\n                  with numpy.save)\
+        \ or sparse matrix format (each line: <row\n                  region index>\
+        \ <column region index> <matrix value>)\n  regions         BED file (no header)\
+        \ with regions corresponding to the\n                  number of rows in the\
+        \ provided matrix. Fourth column, if\n                  present, denotes name\
+        \ field, which is used as an identifier\n                  in sparse matrix\
+        \ notation.\n  sub_region      Region of the Hi-C matrix to display in plot.\
+        \ Format:\n                  <chromosome>:<start>-<end>, e.g. chr12:31000000-33000000\n\
+        \  output_matrix   Output matrix file.\n  output_regions  Output regions file.\n\
+        \noptional arguments:\n  -h, --help      show this help message and exit\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - tadtool
+      - plot
+      positional:
+      - !Positional
+        description: "Square Hi-C Matrix as tab-delimited or .npy file\n(created with\
+          \ numpy.save) or sparse matrix format\n(each line: <row region index> <column\
+          \ region index>\n<matrix value>)"
+        position: 0
+        name: matrix
+        optional: false
+      - !Positional
+        description: "BED file (no header) with regions corresponding to the\nnumber\
+          \ of rows in the provided matrix. Fourth column,\nif present, denotes name\
+          \ field, which is used as an\nidentifier in sparse matrix notation."
+        position: 1
+        name: regions
+        optional: false
+      - !Positional
+        description: "Region of the Hi-C matrix to display in plot. Format:\n<chromosome>:<start>-<end>,\
+          \ e.g.\nchr12:31000000-33000000"
+        position: 2
+        name: plotting_region
+        optional: false
+      named:
+      - !Flag
+        description: "Window sizes in base pairs used for TAD calculation.\nYou can\
+          \ pass (1) a filename with whitespace-delimited\nwindow sizes, (2) three\
+          \ integers denoting start, stop,\nand step size to generate a range of window\
+          \ sizes, or\n(3) more than three integers to define window sizes\ndirectly.\
+          \ If left at default, window sizes will be\nlogarithmically spaced between\
+          \ 10**4 and 10**6, or\n10**6.5 for the insulation and directionality index,\n\
+          respectively."
+        synonyms:
+        - -w
+        - --window-sizes
+        args: !RepeatFlagArg
+          name: WINDOW_SIZES
+        optional: true
+      - !Flag
+        description: "TAD-calling algorithm. Options: insulation,\nninsulation, directionality.\
+          \ Default: insulation."
+        synonyms:
+        - -a
+        - --algorithm
+        args: !SimpleFlagArg
+          name: ALGORITHM
+        optional: true
+      - !Flag
+        description: "Maximum distance in base-pairs away from the diagonal\nto be\
+          \ shown in Hi-C plot. Defaults to half the\nplotting window."
+        synonyms:
+        - -m
+        - --max-distance
+        args: !SimpleFlagArg
+          name: MAX_DIST
+        optional: true
+      - !Flag
+        description: "Normalisation window in number of regions. Only\naffects ninsulation\
+          \ algorithm. If not specified,\nwindow will be the whole chromosome."
+        synonyms:
+        - -n
+        - --normalisation-window
+        args: !SimpleFlagArg
+          name: NORMALISATION_WINDOW
+        optional: true
+      - !Flag
+        description: "Matrix with index data. Rows correspond to window\nsizes, columns\
+          \ to Hi-C matrix bins. If provided,\nsuppresses inbuilt index calculation.\n"
+        synonyms:
+        - -d
+        - --data
+        args: !SimpleFlagArg
+          name: DATA
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tadtool plot [-h] [-w WINDOW_SIZES [WINDOW_SIZES ...]] [-a\
+        \ ALGORITHM]\n                    [-m MAX_DIST] [-n NORMALISATION_WINDOW]\
+        \ [-d DATA]\n                    matrix regions plotting_region\n\nMain interactive\
+        \ TADtool plotting window\n\npositional arguments:\n  matrix             \
+        \   Square Hi-C Matrix as tab-delimited or .npy file\n                   \
+        \     (created with numpy.save) or sparse matrix format\n                \
+        \        (each line: <row region index> <column region index>\n          \
+        \              <matrix value>)\n  regions               BED file (no header)\
+        \ with regions corresponding to the\n                        number of rows\
+        \ in the provided matrix. Fourth column,\n                        if present,\
+        \ denotes name field, which is used as an\n                        identifier\
+        \ in sparse matrix notation.\n  plotting_region       Region of the Hi-C matrix\
+        \ to display in plot. Format:\n                        <chromosome>:<start>-<end>,\
+        \ e.g.\n                        chr12:31000000-33000000\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  -w WINDOW_SIZES\
+        \ [WINDOW_SIZES ...], --window-sizes WINDOW_SIZES [WINDOW_SIZES ...]\n   \
+        \                     Window sizes in base pairs used for TAD calculation.\n\
+        \                        You can pass (1) a filename with whitespace-delimited\n\
+        \                        window sizes, (2) three integers denoting start,\
+        \ stop,\n                        and step size to generate a range of window\
+        \ sizes, or\n                        (3) more than three integers to define\
+        \ window sizes\n                        directly. If left at default, window\
+        \ sizes will be\n                        logarithmically spaced between 10**4\
+        \ and 10**6, or\n                        10**6.5 for the insulation and directionality\
+        \ index,\n                        respectively.\n  -a ALGORITHM, --algorithm\
+        \ ALGORITHM\n                        TAD-calling algorithm. Options: insulation,\n\
+        \                        ninsulation, directionality. Default: insulation.\n\
+        \  -m MAX_DIST, --max-distance MAX_DIST\n                        Maximum distance\
+        \ in base-pairs away from the diagonal\n                        to be shown\
+        \ in Hi-C plot. Defaults to half the\n                        plotting window.\n\
+        \  -n NORMALISATION_WINDOW, --normalisation-window NORMALISATION_WINDOW\n\
+        \                        Normalisation window in number of regions. Only\n\
+        \                        affects ninsulation algorithm. If not specified,\n\
+        \                        window will be the whole chromosome.\n  -d DATA,\
+        \ --data DATA  Matrix with index data. Rows correspond to window\n       \
+        \                 sizes, columns to Hi-C matrix bins. If provided,\n     \
+        \                   suppresses inbuilt index calculation.\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: tadtool <command> [options]\n\nCommands:\n    plot        \
+      \        Main interactive TADtool plotting window\n    tads                Call\
+      \ TADs with pre-defined parameters\n    subset              Reduce a matrix\
+      \ to a smaller region.\n\nRun tadtool <command> -h for help on a specific command.\n\
+      \nAssistant to find cutoffs in TAD calling algorithms.\n\npositional arguments:\n\
+      \  command     Subcommand to run\n\noptional arguments:\n  -h, --help  show\
+      \ this help message and exit\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -97,12 +401,9 @@ subcommands:
     \ of regions. Only\n                        affects ninsulation algorithm. If\
     \ not specified,\n                        window will be the whole chromosome.\n\
     \  -v, --write-values    Write index values to file instead of TADs.\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - tadtool
-  - subset
+  command: *id005
   positional:
   - !Positional
     description: "Square Hi-C Matrix as tab-delimited or .npy file (created\nwith\
@@ -135,7 +436,7 @@ subcommands:
     name: output_regions
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -160,11 +461,9 @@ subcommands:
     \ e.g. chr12:31000000-33000000\n  output_matrix   Output matrix file.\n  output_regions\
     \  Output regions file.\n\noptional arguments:\n  -h, --help      show this help\
     \ message and exit\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - tadtool
-  - plot
+  command: *id006
   positional:
   - !Positional
     description: "Square Hi-C Matrix as tab-delimited or .npy file\n(created with\
@@ -236,7 +535,7 @@ subcommands:
     args: !SimpleFlagArg
       name: DATA
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -283,15 +582,9 @@ subcommands:
     \ chromosome.\n  -d DATA, --data DATA  Matrix with index data. Rows correspond\
     \ to window\n                        sizes, columns to Hi-C matrix bins. If provided,\n\
     \                        suppresses inbuilt index calculation.\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: tadtool <command> [options]\n\nCommands:\n    plot            \
@@ -301,4 +594,4 @@ help_text: "usage: tadtool <command> [options]\n\nCommands:\n    plot           
   \ to find cutoffs in TAD calling algorithms.\n\npositional arguments:\n  command\
   \     Subcommand to run\n\noptional arguments:\n  -h, --help  show this help message\
   \ and exit\n"
-generated_using: *id002
+generated_using: *id004

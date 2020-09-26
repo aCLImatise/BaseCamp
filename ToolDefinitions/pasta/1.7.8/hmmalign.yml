@@ -1,70 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - hmmalign
 positional: []
-named:
-- !Flag
-  description: ': output alignment to file <f>, not stdout'
-  synonyms:
-  - -o
-  args: !SimpleFlagArg
-    name: f
-  optional: true
-- !Flag
-  description: ': include alignment in file <f> (same ali that HMM came from)'
-  synonyms:
-  - --mapali
-  args: !SimpleFlagArg
-    name: f
-  optional: true
-- !Flag
-  description: ': trim terminal tails of nonaligned residues from alignment'
-  synonyms:
-  - --trim
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': assert <seqfile>, <hmmfile> both protein: no autodetection'
-  synonyms:
-  - --amino
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': assert <seqfile>, <hmmfile> both DNA: no autodetection'
-  synonyms:
-  - --dna
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': assert <seqfile>, <hmmfile> both RNA: no autodetection'
-  synonyms:
-  - --rna
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': assert <seqfile> is in format <s>: no autodetection'
-  synonyms:
-  - --informat
-  args: !SimpleFlagArg
-    name: s
-  optional: true
-- !Flag
-  description: ': output alignment in format <s>  [Stockholm]'
-  synonyms:
-  - --outformat
-  args: !SimpleFlagArg
-    name: s
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -options
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - hmmalign
   - seqfile
   positional:
@@ -90,7 +32,159 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: ': output alignment to file <f>, not stdout'
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: f
+      optional: true
+    - !Flag
+      description: ': include alignment in file <f> (same ali that HMM came from)'
+      synonyms:
+      - --mapali
+      args: !SimpleFlagArg
+        name: f
+      optional: true
+    - !Flag
+      description: ': trim terminal tails of nonaligned residues from alignment'
+      synonyms:
+      - --trim
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ': assert <seqfile>, <hmmfile> both protein: no autodetection'
+      synonyms:
+      - --amino
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ': assert <seqfile>, <hmmfile> both DNA: no autodetection'
+      synonyms:
+      - --dna
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ': assert <seqfile>, <hmmfile> both RNA: no autodetection'
+      synonyms:
+      - --rna
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ': assert <seqfile> is in format <s>: no autodetection'
+      synonyms:
+      - --informat
+      args: !SimpleFlagArg
+        name: s
+      optional: true
+    - !Flag
+      description: ': output alignment in format <s>  [Stockholm]'
+      synonyms:
+      - --outformat
+      args: !SimpleFlagArg
+        name: s
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hmmalign
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: hmmfile
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: seqfile
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -options
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "\nERROR: Incorrect number of command line arguments.\nUsage: hmmalign\
+        \ [-options] <hmmfile> <seqfile>\n\nTo see more help on available options,\
+        \ do hmmalign -h\n\n"
+      generated_using: &id004 []
+    - !Command
+      command: &id005
+      - hmmalign
+      - hmmfile
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: seqfile
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -options
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "\nERROR: Incorrect number of command line arguments.\nUsage: hmmalign\
+        \ [-options] <hmmfile> <seqfile>\n\nTo see more help on available options,\
+        \ do hmmalign -h\n\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: ': show brief help on version and usage'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "# hmmalign :: align sequences to a profile HMM\n# HMMER 3.1b1 (May\
+      \ 2013); http://hmmer.org/\n# Copyright (C) 2013 Howard Hughes Medical Institute.\n\
+      # Freely distributed under the GNU General Public License (GPLv3).\n# - - -\
+      \ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage:\
+      \ hmmalign [-options] <hmmfile> <seqfile>\n\nBasic options:\n  -h     : show\
+      \ brief help on version and usage\n  -o <f> : output alignment to file <f>,\
+      \ not stdout\n\nLess common options:\n  --mapali <f>    : include alignment\
+      \ in file <f> (same ali that HMM came from)\n  --trim          : trim terminal\
+      \ tails of nonaligned residues from alignment\n  --amino         : assert <seqfile>,\
+      \ <hmmfile> both protein: no autodetection\n  --dna           : assert <seqfile>,\
+      \ <hmmfile> both DNA: no autodetection\n  --rna           : assert <seqfile>,\
+      \ <hmmfile> both RNA: no autodetection\n  --informat <s>  : assert <seqfile>\
+      \ is in format <s>: no autodetection\n  --outformat <s> : output alignment in\
+      \ format <s>  [Stockholm]\n\nSequence input formats include:   FASTA, EMBL,\
+      \ GenBank, UniProt\nAlignment output formats include: Stockholm, Pfam, A2M,\
+      \ PSIBLAST\n\n"
+    generated_using: &id006
+    - -h
   subcommands: []
   usage: []
   help_flag:
@@ -99,11 +193,9 @@ subcommands:
   help_text: "\nERROR: Incorrect number of command line arguments.\nUsage: hmmalign\
     \ [-options] <hmmfile> <seqfile>\n\nTo see more help on available options, do\
     \ hmmalign -h\n\n"
-  generated_using: &id002 []
+  generated_using: *id004
 - !Command
-  command:
-  - hmmalign
-  - hmmfile
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -117,7 +209,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -126,14 +218,9 @@ subcommands:
   help_text: "\nERROR: Incorrect number of command line arguments.\nUsage: hmmalign\
     \ [-options] <hmmfile> <seqfile>\n\nTo see more help on available options, do\
     \ hmmalign -h\n\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: ': show brief help on version and usage'
-  synonyms:
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "# hmmalign :: align sequences to a profile HMM\n# HMMER 3.1b1 (May 2013);\
@@ -151,5 +238,4 @@ help_text: "# hmmalign :: align sequences to a profile HMM\n# HMMER 3.1b1 (May 2
   \ : output alignment in format <s>  [Stockholm]\n\nSequence input formats include:\
   \   FASTA, EMBL, GenBank, UniProt\nAlignment output formats include: Stockholm,\
   \ Pfam, A2M, PSIBLAST\n\n"
-generated_using:
-- -h
+generated_using: *id006

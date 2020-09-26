@@ -1,26 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - hitac.py
 positional: []
-named:
-- !Flag
-  description: 'Kmer size for feature extraction [default: 6]'
-  synonyms:
-  - --kmer
-  args: !SimpleFlagArg
-    name: KMER
-  optional: true
-- !Flag
-  description: 'Number of threads [default: all threads available]'
-  synonyms:
-  - --threads
-  args: !SimpleFlagArg
-    name: THREADS
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - hitac.py
   - test
   positional:
@@ -59,7 +45,155 @@ subcommands:
     args: !SimpleFlagArg
       name: KMER
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: 'Kmer size for feature extraction [default: 6]'
+      synonyms:
+      - --kmer
+      args: !SimpleFlagArg
+        name: KMER
+      optional: true
+    - !Flag
+      description: 'Number of threads [default: all threads available]'
+      synonyms:
+      - --threads
+      args: !SimpleFlagArg
+        name: THREADS
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hitac.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: train
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: test
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: predictions
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --threads
+        args: !SimpleFlagArg
+          name: THREADS
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --kmer
+        args: !SimpleFlagArg
+          name: KMER
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hitac.py [-h] [--kmer KMER] [--threads THREADS] train test\
+        \ predictions\nhitac.py: error: the following arguments are required: test,\
+        \ predictions\n"
+      generated_using: &id004 []
+    - !Command
+      command: &id005
+      - hitac.py
+      - prediction
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hitac.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: train
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: test
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: predictions
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --threads
+        args: !SimpleFlagArg
+          name: THREADS
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --kmer
+        args: !SimpleFlagArg
+          name: KMER
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hitac.py [-h] [--kmer KMER] [--threads THREADS] train test\
+        \ predictions\nhitac.py: error: the following arguments are required: test,\
+        \ predictions\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: hitac.py [-h] [--kmer KMER] [--threads THREADS] train test\
+      \ predictions\n\nHiTaC, a hierarchical taxonomy classifier for fungal ITS sequences\n\
+      \npositional arguments:\n  train              Input FASTA file containing the\
+      \ sequences for training\n  test               Input FASTA file containing the\
+      \ sequences for taxonomy\n                     prediction\n  predictions   \
+      \     Output file to write the predictions\n\noptional arguments:\n  -h, --help\
+      \         show this help message and exit\n  --kmer KMER        Kmer size for\
+      \ feature extraction [default: 6]\n  --threads THREADS  Number of threads [default:\
+      \ all threads available]\n"
+    generated_using: &id006
+    - --help
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -72,11 +206,9 @@ subcommands:
   version_flag:
   help_text: "usage: hitac.py [-h] [--kmer KMER] [--threads THREADS] train test predictions\n\
     hitac.py: error: the following arguments are required: test, predictions\n"
-  generated_using: &id002 []
+  generated_using: *id004
 - !Command
-  command:
-  - hitac.py
-  - prediction
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -113,7 +245,7 @@ subcommands:
     args: !SimpleFlagArg
       name: KMER
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -126,15 +258,9 @@ subcommands:
   version_flag:
   help_text: "usage: hitac.py [-h] [--kmer KMER] [--threads THREADS] train test predictions\n\
     hitac.py: error: the following arguments are required: test, predictions\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: hitac.py [-h] [--kmer KMER] [--threads THREADS] train test predictions\n\
@@ -145,5 +271,4 @@ help_text: "usage: hitac.py [-h] [--kmer KMER] [--threads THREADS] train test pr
   \ predictions\n\noptional arguments:\n  -h, --help         show this help message\
   \ and exit\n  --kmer KMER        Kmer size for feature extraction [default: 6]\n\
   \  --threads THREADS  Number of threads [default: all threads available]\n"
-generated_using:
-- --help
+generated_using: *id006

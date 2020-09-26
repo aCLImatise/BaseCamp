@@ -1,27 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - NanoSplit
 positional: []
-named:
-- !Flag
-  description: Splitting on this average read quality score
-  synonyms:
-  - -q
-  - --quality
-  args: !SimpleFlagArg
-    name: QUALITY
-  optional: true
-- !Flag
-  description: Specify directory in which output has to be created.
-  synonyms:
-  - --outdir
-  args: !SimpleFlagArg
-    name: OUTDIR
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - NanoSplit
   - fastqfile
   positional: []
@@ -40,7 +25,79 @@ subcommands:
     args: !SimpleFlagArg
       name: QUALITY
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: Splitting on this average read quality score
+      synonyms:
+      - -q
+      - --quality
+      args: !SimpleFlagArg
+        name: QUALITY
+      optional: true
+    - !Flag
+      description: Specify directory in which output has to be created.
+      synonyms:
+      - --outdir
+      args: !SimpleFlagArg
+        name: OUTDIR
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUTDIR
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -q
+        args: !SimpleFlagArg
+          name: QUALITY
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\
+        NanoSplit: error: argument fastqfile: can't open 'fastqfile': [Errno 2] No\
+        \ such file or directory: 'fastqfile'\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\n\
+      Perform splitting of a fastq file based on average basecall quality.\n\npositional\
+      \ arguments:\n  fastqfile             Fastq file to split, can be gz compressed.\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -q QUALITY, --quality QUALITY\n                        Splitting on this\
+      \ average read quality score\n  --outdir OUTDIR       Specify directory in which\
+      \ output has to be created.\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -54,16 +111,9 @@ subcommands:
   help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\nNanoSplit:\
     \ error: argument fastqfile: can't open 'fastqfile': [Errno 2] No such file or\
     \ directory: 'fastqfile'\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\nPerform\
@@ -72,4 +122,4 @@ help_text: "usage: NanoSplit [-h] [-q QUALITY] [--outdir OUTDIR] fastqfile\n\nPe
   \ arguments:\n  -h, --help            show this help message and exit\n  -q QUALITY,\
   \ --quality QUALITY\n                        Splitting on this average read quality\
   \ score\n  --outdir OUTDIR       Specify directory in which output has to be created.\n"
-generated_using: *id002
+generated_using: *id004

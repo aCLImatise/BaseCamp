@@ -1,26 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - dnase_wig_tracks.py
 positional: []
-named:
-- !Flag
-  description: "Report cuts on the negative strand as positive numbers instead\nof\
-    \ negative (default: False)"
-  synonyms:
-  - -r
-  - --real
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'ATAC-seq mode (default: False)'
-  synonyms:
-  - -A
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - dnase_wig_tracks.py
   - fw_output
   positional:
@@ -62,7 +48,220 @@ subcommands:
     - -r
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: "Report cuts on the negative strand as positive numbers instead\n\
+        of negative (default: False)"
+      synonyms:
+      - -r
+      - --real
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'ATAC-seq mode (default: False)'
+      synonyms:
+      - -A
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: dnase_wig_tracks.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: regions
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: reads
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fw_output
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: rev_output
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -A
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -r
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output\
+        \ rev_output\ndnase_wig_tracks.py: error: the following arguments are required:\
+        \ reads, fw_output, rev_output\n"
+      generated_using: &id004 []
+    - !Command
+      command: &id005
+      - dnase_wig_tracks.py
+      - reads
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: dnase_wig_tracks.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: regions
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: reads
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fw_output
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: rev_output
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -A
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -r
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output\
+        \ rev_output\ndnase_wig_tracks.py: error: the following arguments are required:\
+        \ reads, fw_output, rev_output\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - dnase_wig_tracks.py
+      - rev_output
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: dnase_wig_tracks.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: regions
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: reads
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fw_output
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: rev_output
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -A
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -r
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output\
+        \ rev_output\ndnase_wig_tracks.py: error: the following arguments are required:\
+        \ reads, fw_output, rev_output\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output\
+      \ rev_output\n\nWrites two WIG files with the cut information based on the regions\
+      \ in reads\nBED file and the reads in reads BAM file\n\npositional arguments:\n\
+      \  regions     BED file of the regions you want to write wig tracks for\n  reads\
+      \       The BAM file containing the read data\n  fw_output   Path to write the\
+      \ forward reads wig track to\n  rev_output  Path to write the reverse reads\
+      \ wig track to\n\noptional arguments:\n  -h, --help  show this help message\
+      \ and exit\n  -r, --real  Report cuts on the negative strand as positive numbers\
+      \ instead\n              of negative (default: False)\n  -A          ATAC-seq\
+      \ mode (default: False)\n"
+    generated_using: &id007
+    - --help
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -76,11 +275,9 @@ subcommands:
   help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output rev_output\n\
     dnase_wig_tracks.py: error: the following arguments are required: reads, fw_output,\
     \ rev_output\n"
-  generated_using: &id002 []
+  generated_using: *id004
 - !Command
-  command:
-  - dnase_wig_tracks.py
-  - reads
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -120,7 +317,7 @@ subcommands:
     - -r
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -134,11 +331,9 @@ subcommands:
   help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output rev_output\n\
     dnase_wig_tracks.py: error: the following arguments are required: reads, fw_output,\
     \ rev_output\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - dnase_wig_tracks.py
-  - rev_output
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -178,7 +373,7 @@ subcommands:
     - -r
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -192,15 +387,9 @@ subcommands:
   help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output rev_output\n\
     dnase_wig_tracks.py: error: the following arguments are required: reads, fw_output,\
     \ rev_output\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output rev_output\n\
@@ -212,5 +401,4 @@ help_text: "usage: dnase_wig_tracks.py [-h] [-r] [-A] regions reads fw_output re
   \ arguments:\n  -h, --help  show this help message and exit\n  -r, --real  Report\
   \ cuts on the negative strand as positive numbers instead\n              of negative\
   \ (default: False)\n  -A          ATAC-seq mode (default: False)\n"
-generated_using:
-- --help
+generated_using: *id007

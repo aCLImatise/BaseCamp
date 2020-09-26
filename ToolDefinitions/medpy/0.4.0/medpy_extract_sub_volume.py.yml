@@ -1,30 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - medpy_extract_sub_volume.py
 positional: []
-named:
-- !Flag
-  description: Set this flag to silently override files that exist.
-  synonyms:
-  - -f
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Display more information.
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Display debug information.
-  synonyms:
-  - -d
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - medpy_extract_sub_volume.py
   - output
   positional:
@@ -67,7 +49,187 @@ subcommands:
     - -f
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: Set this flag to silently override files that exist.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Display more information.
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Display debug information.
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: medpy_extract_sub_volume.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: image
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: output
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: volume
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -v
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: medpy_extract_sub_volume.py [-h] [-f] [-v] [-d] image output\
+        \ volume\nmedpy_extract_sub_volume.py: error: the following arguments are\
+        \ required: output, volume\n"
+      generated_using: &id004 []
+    - !Command
+      command: &id005
+      - medpy_extract_sub_volume.py
+      - volume
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: medpy_extract_sub_volume.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: image
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: output
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: volume
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -v
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: medpy_extract_sub_volume.py [-h] [-f] [-v] [-d] image output\
+        \ volume\nmedpy_extract_sub_volume.py: error: the following arguments are\
+        \ required: output, volume\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: medpy_extract_sub_volume.py [-h] [-f] [-v] [-d] image output\
+      \ volume\n\n                  Takes a medical image of arbitrary dimensions\
+      \ and the dimensions\n                  of a sub-volume that lies inside the\
+      \ dimensions of this images.\n                  Extracts the sub-volume from\
+      \ the supplied image and saves it.\n                  \n                  The\
+      \ volume to be extracted is defined by its slices, the syntax is the same as\n\
+      \                  for numpy array indexes (i.e. starting with zero-index, the\
+      \ first literal (x) of any\n                  x:y included and the second (y)\
+      \ excluded).\n                  E.g. '2:3,4:6' would extract the slice no. 3\
+      \ in X and 5, 6 in Y direction of a 2D image.\n                  E.g. '99:199,149:199,99:249'\
+      \ would extract the respective slices in X,Y and Z direction of a 3D image.\n\
+      \                       This could, for example, be used to extract the area\
+      \ of the liver form a CT scan.\n                  To keep all slices in one\
+      \ direction just omit the respective value:\n                  E.g. '99:199,149:199,'\
+      \ would work ust as example II, but extract all Z slices.\n                \
+      \       Note here the trailing colon.\n\n                  Note to take into\
+      \ account the input images orientation when supplying the sub-volume.\n    \
+      \              \n                  Copyright (C) 2013 Oskar Maier\n        \
+      \          This program comes with ABSOLUTELY NO WARRANTY; This is free software,\n\
+      \                  and you are welcome to redistribute it under certain conditions;\
+      \ see\n                  the LICENSE file or <http://www.gnu.org/licenses/>\
+      \ for details.   \n                  \n\npositional arguments:\n  image    \
+      \   The source volume.\n  output      The target volume.\n  volume      The\
+      \ coordinated of the sub-volume of the images that should be extracted.\n  \
+      \            Example: 30:59,40:67,45:75 for a 3D image.\n              See -h\
+      \ for more information.\n\noptional arguments:\n  -h, --help  show this help\
+      \ message and exit\n  -f          Set this flag to silently override files that\
+      \ exist.\n  -v          Display more information.\n  -d          Display debug\
+      \ information.\n"
+    generated_using: &id006
+    - --help
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -81,11 +243,9 @@ subcommands:
   help_text: "usage: medpy_extract_sub_volume.py [-h] [-f] [-v] [-d] image output\
     \ volume\nmedpy_extract_sub_volume.py: error: the following arguments are required:\
     \ output, volume\n"
-  generated_using: &id002 []
+  generated_using: *id004
 - !Command
-  command:
-  - medpy_extract_sub_volume.py
-  - volume
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -126,7 +286,7 @@ subcommands:
     - -f
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -140,15 +300,9 @@ subcommands:
   help_text: "usage: medpy_extract_sub_volume.py [-h] [-f] [-v] [-d] image output\
     \ volume\nmedpy_extract_sub_volume.py: error: the following arguments are required:\
     \ output, volume\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: medpy_extract_sub_volume.py [-h] [-f] [-v] [-d] image output volume\n\
@@ -178,5 +332,4 @@ help_text: "usage: medpy_extract_sub_volume.py [-h] [-f] [-v] [-d] image output 
   \noptional arguments:\n  -h, --help  show this help message and exit\n  -f     \
   \     Set this flag to silently override files that exist.\n  -v          Display\
   \ more information.\n  -d          Display debug information.\n"
-generated_using:
-- --help
+generated_using: *id006

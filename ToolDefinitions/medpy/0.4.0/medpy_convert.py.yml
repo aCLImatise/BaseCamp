@@ -1,37 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - medpy_convert.py
 positional: []
-named:
-- !Flag
-  description: "Instead of copying the voxel data, create an empty copy\nconserving\
-    \ all meta-data if possible."
-  synonyms:
-  - -e
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Display more information.
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Display debug information.
-  synonyms:
-  - -d
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Silently override existing output images.
-  synonyms:
-  - -f
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - medpy_convert.py
   - output
   positional:
@@ -75,7 +50,117 @@ subcommands:
     - -e
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: "Instead of copying the voxel data, create an empty copy\nconserving\
+        \ all meta-data if possible."
+      synonyms:
+      - -e
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Display more information.
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Display debug information.
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Silently override existing output images.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: medpy_convert.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: input
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: output
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -v
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -e
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: medpy_convert.py [-h] [-e] [-v] [-d] [-f] input output\n\
+        medpy_convert.py: error: the following arguments are required: output\n"
+      generated_using: &id004 []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: medpy_convert.py [-h] [-e] [-v] [-d] [-f] input output\n\n\
+      Convert an image from one format into another. The image type is determined\
+      \ by\nthe file suffixes. Copyright (C) 2013 Oskar Maier This program comes with\n\
+      ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to\nredistribute\
+      \ it under certain conditions; see the LICENSE file or\n<http://www.gnu.org/licenses/>\
+      \ for details.\n\npositional arguments:\n  input       Source volume.\n  output\
+      \      Target volume.\n\noptional arguments:\n  -h, --help  show this help message\
+      \ and exit\n  -e          Instead of copying the voxel data, create an empty\
+      \ copy\n              conserving all meta-data if possible.\n  -v          Display\
+      \ more information.\n  -d          Display debug information.\n  -f        \
+      \  Silently override existing output images.\n"
+    generated_using: &id005
+    - --help
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -88,15 +173,9 @@ subcommands:
   version_flag:
   help_text: "usage: medpy_convert.py [-h] [-e] [-v] [-d] [-f] input output\nmedpy_convert.py:\
     \ error: the following arguments are required: output\n"
-  generated_using: []
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: medpy_convert.py [-h] [-e] [-v] [-d] [-f] input output\n\nConvert\
@@ -110,5 +189,4 @@ help_text: "usage: medpy_convert.py [-h] [-e] [-v] [-d] [-f] input output\n\nCon
   \              conserving all meta-data if possible.\n  -v          Display more\
   \ information.\n  -d          Display debug information.\n  -f          Silently\
   \ override existing output images.\n"
-generated_using:
-- --help
+generated_using: *id005

@@ -4,7 +4,10 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
+  description: "--taxon-group TAXON_GROUP --output\nOUTPUT [--incomplete-matrix]\n\
+    [--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH] [--optimize]\n[--random]\
+    \ [--samples SAMPLES]\n[--sample-size SAMPLE_SIZE]\n[--extend-locus-db EXTEND_LOCUS_DB]\n\
+    [--silent] [--keep-counts]"
   synonyms:
   - --taxon-list-config
   args: !SimpleFlagArg
@@ -13,93 +16,28 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - --taxon-group
-  - --output
-  args: !SimpleFlagArg
-    name: TAXON_GROUP
-  optional: true
-- !Flag
-  description: "The SQL database file holding probe matches to\ntargeted loci (usually\
-    \ \"lastz/probe.matches.sqlite\".)"
-  synonyms:
   - --locus-db
   args: !SimpleFlagArg
     name: LOCUS_DB
-  optional: true
-- !Flag
-  description: Generate an incomplete matrix of data.
-  synonyms:
-  - --incomplete-matrix
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: The logging level to use.
-  synonyms:
-  - --verbosity
-  args: !ChoiceFlagArg
-    choices: !!set
-      CRITICAL:
-      WARN:
-      INFO:
-  optional: true
-- !Flag
-  description: The path to a directory to hold logs.
-  synonyms:
-  - --log-path
-  args: !SimpleFlagArg
-    name: LOG_PATH
-  optional: true
-- !Flag
-  description: "Return optimum groups of probes by enumeration\n(default) or sampling."
-  synonyms:
-  - --optimize
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Optimize by sampling.
-  synonyms:
-  - --random
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: The number of samples to take.
-  synonyms:
-  - --samples
-  args: !SimpleFlagArg
-    name: SAMPLES
-  optional: true
-- !Flag
-  description: The group size of samples.
-  synonyms:
-  - --sample-size
-  args: !SimpleFlagArg
-    name: SAMPLE_SIZE
-  optional: true
-- !Flag
-  description: "An SQLlite database file holding probe matches to\nother targeted\
-    \ loci"
-  synonyms:
-  - --extend-locus-db
-  args: !SimpleFlagArg
-    name: EXTEND_LOCUS_DB
-  optional: true
-- !Flag
-  description: Don't print probe names.
-  synonyms:
-  - --silent
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --keep-counts
-  args: !EmptyFlagArg {}
   optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n--locus-db LOCUS_DB   The SQL database\
+    \ file holding probe matches to\ntargeted loci (usually \"lastz/probe.matches.sqlite\"\
+    .)\n--taxon-list-config TAXON_LIST_CONFIG\nThe config file containing lists of\
+    \ the taxa you want\nto include in matrices.\n--taxon-group TAXON_GROUP\nThe [group]\
+    \ in the config file whose specific data\nmatrix you want to create.\n--output\
+    \ OUTPUT       The path to the output file you want to create.\n--incomplete-matrix\
+    \   Generate an incomplete matrix of data.\n--verbosity {INFO,WARN,CRITICAL}\n\
+    The logging level to use.\n--log-path LOG_PATH   The path to a directory to hold\
+    \ logs.\n--optimize            Return optimum groups of probes by enumeration\n\
+    (default) or sampling.\n--random              Optimize by sampling.\n--samples\
+    \ SAMPLES     The number of samples to take.\n--sample-size SAMPLE_SIZE\nThe group\
+    \ size of samples.\n--extend-locus-db EXTEND_LOCUS_DB\nAn SQLlite database file\
+    \ holding probe matches to\nother targeted loci\n--silent              Don't print\
+    \ probe names.\n--keep-counts\n"
   synonyms:
   - -h
   - --help

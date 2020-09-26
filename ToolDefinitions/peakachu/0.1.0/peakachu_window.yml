@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - peakachu
 - window
@@ -7,310 +7,54 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -t
-  - --exp_libs
-  args: !RepeatFlagArg
-    name: EXP_LIBS
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -c
-  - --ctr_libs
-  args: !RepeatFlagArg
-    name: CTR_LIBS
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -r
-  - --pairwise_replicates
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -P
-  - --paired_end
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
   - -M
-  - --max_insert_size
   args: !SimpleFlagArg
     name: MAX_INSERT_SIZE
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - -g
-  - --gff_folder
-  args: !SimpleFlagArg
-    name: GFF_FOLDER
-  optional: true
-- !Flag
-  description: '[FEATURES [FEATURES ...]]'
-  synonyms:
-  - --features
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[SUB_FEATURES [SUB_FEATURES ...]]'
-  synonyms:
-  - --sub_features
+  - -P
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - -p
-  - --max_proc
-  args: !SimpleFlagArg
-    name: MAX_PROC
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -w
-  - --window_size
-  args: !SimpleFlagArg
-    name: WINDOW_SIZE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -l
-  - --step_size
-  args: !SimpleFlagArg
-    name: STEP_SIZE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -d
-  - --stat_test
-  args: !ChoiceFlagArg
-    choices: !!set
-      deseq:
-      gtest:
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -n
-  - --norm_method
-  args: !ChoiceFlagArg
-    choices: !!set
-      count:
-      manual:
-      none:
-      deseq:
-      tmm:
-  optional: true
-- !Flag
-  description: "[SIZE_FACTORS [SIZE_FACTORS ...]], --size_factors [SIZE_FACTORS [SIZE_FACTORS\
-    \ ...]]\nNormalization factors for libraries in input order\n(first experiment\
-    \ then control libraries)"
-  synonyms:
-  - -s
+  - -r
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - -m
-  - --mad_multiplier
-  args: !SimpleFlagArg
-    name: MAD_MULTIPLIER
+  - -c
+  args: !RepeatFlagArg
+    name: CTR_LIBS
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - -f
-  - --fc_cutoff
-  args: !SimpleFlagArg
-    name: FC_CUTOFF
+  - -t
+  args: !RepeatFlagArg
+    name: EXP_LIBS
   optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -H
-  - --het_p_val_threshold
-  args: !SimpleFlagArg
-    name: HET_P_VAL_THRESHOLD
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -R
-  - --rep_pair_p_val_threshold
-  args: !SimpleFlagArg
-    name: REP_PAIR_P_VAL_THRESHOLD
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -Q
-  - --padj_threshold
-  args: !SimpleFlagArg
-    name: PADJ_THRESHOLD
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  - --output_folder
-  args: !SimpleFlagArg
-    name: OUTPUT_FOLDER
-  optional: true
-parent: &id002 !Command
-  command:
-  - peakachu
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - *id001
-  - !Command
-    command:
-    - peakachu
-    - commands
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: peakachu
-      optional: false
-    named: []
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: ''
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "usage: peakachu [-h] [--version] {window,adaptive,coverage,consensus_peak}\
-      \ ...\npeakachu: error: invalid choice: 'commands' (choose from 'window', 'adaptive',\
-      \ 'coverage', 'consensus_peak')\n"
-    generated_using: &id003
-    - --help
-  - !Command
-    command:
-    - peakachu
-    - consensus_peak
-    positional:
-    - !Positional
-      description: 'optional arguments:'
-      position: 0
-      name: project_folder
-      optional: false
-    named:
-    - !Flag
-      description: "Length of the region around peak centers for plotting\nconsensus\
-        \ peaks\n"
-      synonyms:
-      - -l
-      - --consensus_length
-      args: !SimpleFlagArg
-        name: CONSENSUS_LENGTH
-      optional: true
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: peakachu consensus_peak [-h] [-l CONSENSUS_LENGTH] project_folder\n\
-      \npositional arguments:\n  project_folder\n\noptional arguments:\n  -h, --help\
-      \            show this help message and exit\n  -l CONSENSUS_LENGTH, --consensus_length\
-      \ CONSENSUS_LENGTH\n                        Length of the region around peak\
-      \ centers for plotting\n                        consensus peaks\n"
-    generated_using: *id003
-  - !Command
-    command:
-    - peakachu
-    - coverage
-    positional:
-    - !Positional
-      description: 'optional arguments:'
-      position: 0
-      name: project_folder
-      optional: false
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -p
-      - --max_proc
-      args: !SimpleFlagArg
-        name: MAX_PROC
-      optional: true
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "usage: peakachu coverage [-h] [-p MAX_PROC] project_folder\n\npositional\
-      \ arguments:\n  project_folder\n\noptional arguments:\n  -h, --help        \
-      \    show this help message and exit\n  -p MAX_PROC, --max_proc MAX_PROC\n"
-    generated_using: *id003
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: show version
-    synonyms:
-    - --version
-    - -v
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: peakachu [-h] [--version] {window,adaptive,coverage,consensus_peak}\
-    \ ...\n\npositional arguments:\n  {window,adaptive,coverage,consensus_peak}\n\
-    \                        commands\n    window              Define peaks using\
-    \ a sliding window approach where\n                        experiment and control\
-    \ libraries are compared for each\n                        window\n    adaptive\
-    \            Define peaks using shape-dependent predefined peaks\n           \
-    \             based on experiment libraries and subsequent\n                 \
-    \       comparison to a control\n    coverage            Generate normalized coverage\
-    \ files in wiggle format\n                        for each library and strand\n\
-    \    consensus_peak      Plot consensus peak for previously called peaks based\n\
-    \                        on coverage files\n\noptional arguments:\n  -h, --help\
-    \            show this help message and exit\n  --version, -v         show version\n"
-  generated_using: *id003
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n-t EXP_LIBS [EXP_LIBS ...], --exp_libs\
+    \ EXP_LIBS [EXP_LIBS ...]\n-c CTR_LIBS [CTR_LIBS ...], --ctr_libs CTR_LIBS [CTR_LIBS\
+    \ ...]\n-r, --pairwise_replicates\n-P, --paired_end\n-M MAX_INSERT_SIZE, --max_insert_size\
+    \ MAX_INSERT_SIZE\n-g GFF_FOLDER, --gff_folder GFF_FOLDER\n--features [FEATURES\
+    \ [FEATURES ...]]\n--sub_features [SUB_FEATURES [SUB_FEATURES ...]]\n-p MAX_PROC,\
+    \ --max_proc MAX_PROC\n-w WINDOW_SIZE, --window_size WINDOW_SIZE\n-l STEP_SIZE,\
+    \ --step_size STEP_SIZE\n-d {gtest,deseq}, --stat_test {gtest,deseq}\n-n {tmm,deseq,count,manual,none},\
+    \ --norm_method {tmm,deseq,count,manual,none}\n-s [SIZE_FACTORS [SIZE_FACTORS\
+    \ ...]], --size_factors [SIZE_FACTORS [SIZE_FACTORS ...]]\nNormalization factors\
+    \ for libraries in input order\n(first experiment then control libraries)\n-m\
+    \ MAD_MULTIPLIER, --mad_multiplier MAD_MULTIPLIER\n-f FC_CUTOFF, --fc_cutoff FC_CUTOFF\n\
+    -H HET_P_VAL_THRESHOLD, --het_p_val_threshold HET_P_VAL_THRESHOLD\n-R REP_PAIR_P_VAL_THRESHOLD,\
+    \ --rep_pair_p_val_threshold REP_PAIR_P_VAL_THRESHOLD\n-Q PADJ_THRESHOLD, --padj_threshold\
+    \ PADJ_THRESHOLD\n-o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER\n"
   synonyms:
   - -h
   - --help
@@ -342,4 +86,5 @@ help_text: "usage: peakachu window [-h] -t EXP_LIBS [EXP_LIBS ...] -c CTR_LIBS\n
   \ --het_p_val_threshold HET_P_VAL_THRESHOLD\n  -R REP_PAIR_P_VAL_THRESHOLD, --rep_pair_p_val_threshold\
   \ REP_PAIR_P_VAL_THRESHOLD\n  -Q PADJ_THRESHOLD, --padj_threshold PADJ_THRESHOLD\n\
   \  -o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER\n"
-generated_using: *id003
+generated_using:
+- --help

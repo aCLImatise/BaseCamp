@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - pyega3
 - fetch
@@ -48,8 +48,8 @@ named:
   - -f
   args: !ChoiceFlagArg
     choices: !!set
-      BAM:
       CRAM:
+      BAM:
   optional: true
 - !Flag
   description: "The maximum number of times to retry a failed\ntransfer. Any negative\
@@ -74,114 +74,7 @@ named:
   - --saveto
   args: !EmptyFlagArg {}
   optional: true
-parent: &id002 !Command
-  command:
-  - pyega3
-  positional: []
-  named:
-  - !Flag
-    description: Extra debugging messages
-    synonyms:
-    - -d
-    - --debug
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: "JSON file containing credentials/config\ne.g.{\"username\":\"user1\"\
-      ,\"password\":\"toor\"}"
-    synonyms:
-    - -cf
-    - --config-file
-    args: !SimpleFlagArg
-      name: CONFIG_FILE
-    optional: true
-  - !Flag
-    description: "JSON file containing server config\ne.g.{\"url_auth\":\"aai url\"\
-      ,\"url_api\":\"api url\",\n\"url_api_ticket\":\"htsget url\", \"client_secret\"\
-      :\"client\nsecret\"}"
-    synonyms:
-    - -sf
-    - --server-file
-    args: !SimpleFlagArg
-      name: SERVER_FILE
-    optional: true
-  - !Flag
-    description: Download using specified number of connections
-    synonyms:
-    - -c
-    - --connections
-    args: !SimpleFlagArg
-      name: CONNECTIONS
-    optional: true
-  - !Flag
-    description: Test user activated
-    synonyms:
-    - -t
-    - --test
-    args: !EmptyFlagArg {}
-    optional: true
-  parent:
-  subcommands:
-  - *id001
-  - !Command
-    command:
-    - pyega3
-    - files
-    positional:
-    - !Positional
-      description: Dataset ID (e.g. EGAD00000000001)
-      position: 0
-      name: identifier
-      optional: false
-    named: []
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-    help_text: "pyEGA3 - EGA python client version 3.1.0 (https://github.com/EGA-archive/ega-download-client)\n\
-      Parts of this software are derived from pyEGA (https://github.com/blachlylab/pyega)\
-      \ by James Blachly\nusage: pyega3 files [-h] identifier\n\npositional arguments:\n\
-      \  identifier  Dataset ID (e.g. EGAD00000000001)\n\noptional arguments:\n  -h,\
-      \ --help  show this help message and exit\n"
-    generated_using: &id003
-    - --help
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-  help_text: "pyEGA3 - EGA python client version 3.1.0 (https://github.com/EGA-archive/ega-download-client)\n\
-    Parts of this software are derived from pyEGA (https://github.com/blachlylab/pyega)\
-    \ by James Blachly\nusage: pyega3 [-h] [-d] [-cf CONFIG_FILE] [-sf SERVER_FILE]\
-    \ [-c CONNECTIONS]\n              [-t]\n              {datasets,files,fetch} ...\n\
-    \nDownload from EMBL EBI's EGA (European Genome-phenome Archive)\n\npositional\
-    \ arguments:\n  {datasets,files,fetch}\n                        subcommands\n\
-    \    datasets            List authorized datasets\n    files               List\
-    \ files in a specified dataset\n    fetch               Fetch a dataset or file\n\
-    \noptional arguments:\n  -h, --help            show this help message and exit\n\
-    \  -d, --debug           Extra debugging messages\n  -cf CONFIG_FILE, --config-file\
-    \ CONFIG_FILE\n                        JSON file containing credentials/config\n\
-    \                        e.g.{\"username\":\"user1\",\"password\":\"toor\"}\n\
-    \  -sf SERVER_FILE, --server-file SERVER_FILE\n                        JSON file\
-    \ containing server config\n                        e.g.{\"url_auth\":\"aai url\"\
-    ,\"url_api\":\"api url\",\n                        \"url_api_ticket\":\"htsget\
-    \ url\", \"client_secret\":\"client\n                        secret\"}\n  -c CONNECTIONS,\
-    \ --connections CONNECTIONS\n                        Download using specified\
-    \ number of connections\n  -t, --test            Test user activated\n"
-  generated_using: *id003
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -222,4 +115,5 @@ help_text: "pyEGA3 - EGA python client version 3.1.0 (https://github.com/EGA-arc
   \                        The number of seconds to wait before retrying a failed\n\
   \                        transfer.\n  --saveto [SAVETO]     Output file(for files)/output\
   \ dir(for datasets)\n"
-generated_using: *id003
+generated_using:
+- --help

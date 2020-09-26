@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - bamtools-2.4.1
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - bamtools-2.4.1
   - count
   positional:
@@ -44,7 +44,1317 @@ subcommands:
     args: !SimpleFlagArg
       name: REGION
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: count
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file(s) [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the input BAM file list, one\nline per file"
+        synonyms:
+        - -list
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: "genomic region. Index file is\nrecommended for better performance,\
+          \ and is\nused automatically if it exists. See\n'bamtools help index' for\
+          \ more details on\ncreating one"
+        synonyms:
+        - -region
+        args: !SimpleFlagArg
+          name: REGION
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: prints number of alignments in BAM file(s).\n\nUsage:\
+        \ bamtools count [-in <filename> -in <filename> ... | -list <filelist>] [-region\
+        \ <REGION>]\n\nInput & Output:\n  -in <BAM filename>                the input\
+        \ BAM file(s) [stdin]\n  -list <filename>                  the input BAM file\
+        \ list, one\n                                    line per file\n  -region\
+        \ <REGION>                  genomic region. Index file is\n              \
+        \                      recommended for better performance, and is\n      \
+        \                              used automatically if it exists. See\n    \
+        \                                'bamtools help index' for more details on\n\
+        \                                    creating one\n\nHelp:\n  --help, -h \
+        \                       shows this help text\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - bamtools-2.4.1
+      - resolve
+      positional:
+      - !Positional
+        description: 'General Resolve Options (available in all modes):'
+        position: 0
+        name: purposes.
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file(s) [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: the output BAM file [stdout]
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "input/output stats file,\ndepending on selected mode (see below).\n\
+          This file is human-readable, storing\nfragment length data generated per\
+          \ read\ngroup, as well as the options used to\nconfigure the -makeStats\
+          \ mode"
+        synonyms:
+        - -stats
+        args: !SimpleFlagArg
+          name: STATS filename
+        optional: true
+      - !Flag
+        description: "if results are sent to stdout\n(like when piping to another\
+          \ tool),\ndefault behavior is to leave output\nuncompressed.Use this flag\
+          \ to override and\nforce compression. This feature is\ndisabled in -makeStats\
+          \ mode."
+        synonyms:
+        - -forceCompression
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "generates a fragment-length\nstats file from the input BAM.\
+          \ Data is\nwritten to file specified using the -stats\noption. MarkPairs\
+          \ Mode Settings are\nDISABLED."
+        synonyms:
+        - -makeStats
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "generates an output BAM with\nalignments marked with proper-pair\
+          \ status.\nStats data is read from file specified\nusing the -stats option.\
+          \ MakeStats Mode\nSettings are DISABLED"
+        synonyms:
+        - -markPairs
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: combines the -makeStats &
+        synonyms:
+        - -twoPass
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: minimum map quality. Used in
+        synonyms:
+        - -minMQ
+        args: !SimpleFlagArg
+          name: unsigned short
+        optional: true
+      - !Flag
+        description: "confidence interval. Set\nmin/max fragment lengths such that\
+          \ we\ncapture this fraction of pairs"
+        synonyms:
+        - -ci
+        args: !SimpleFlagArg
+          name: double
+        optional: true
+      - !Flag
+        description: "unused model threshold. The\nresolve tool considers 8 possible\n\
+          orientation models for pairs. The top 2\nare selected for later use when\
+          \ actually\nmarking alignments. This value determines\nthe cutoff for marking\
+          \ a read group as\nambiguous. Meaning that if the ratio of\nthe number of\
+          \ alignments from bottom 6\nmodels to the top 2 is greater than this\nthreshold,\
+          \ then the read group is flagged\nas ambiguous. By default, NO alignments\n\
+          from ambiguous read groups will be marked\nas proper pairs. You may override\
+          \ this\nbehavior with the -force option in\n-markPairs mode"
+        synonyms:
+        - -umt
+        args: !SimpleFlagArg
+          name: double
+        optional: true
+      - !Flag
+        description: "forces all read groups to be\nmarked according to their top\
+          \ 2\n'orientation models'. When generating\nstats, the 2 (out of 8 possible)\
+          \ models\nwith the most observations are chosen as\nthe top models for each\
+          \ read group. If the\nremaining 6 models account for more than\nsome threshold\
+          \ ([default=10%], see -umt),\nthen the read group is marked as\nambiguous.\
+          \ The default behavior is that\nfor an ambiguous read group, NONE of its\n\
+          alignments are marked as proper-pairs. By\nsetting this option, a read group's\n\
+          ambiguity flag will be ignored, and all of\nits alignments will be compared\
+          \ to the top\n2 models."
+        synonyms:
+        - -force
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: resolves paired-end reads (marking the IsProperPair\
+        \ flag as needed).\n\nUsage: bamtools resolve <mode> [options] [-in <filename>]\
+        \ [-out <filename> | [-forceCompression] ] [-stats <filename>]\n\nInput &\
+        \ Output:\n  -in <BAM filename>                the input BAM file(s) [stdin]\n\
+        \  -out <BAM filename>               the output BAM file [stdout]\n  -stats\
+        \ <STATS filename>           input/output stats file,\n                  \
+        \                  depending on selected mode (see below).\n             \
+        \                       This file is human-readable, storing\n           \
+        \                         fragment length data generated per read\n      \
+        \                              group, as well as the options used to\n   \
+        \                                 configure the -makeStats mode\n  -forceCompression\
+        \                 if results are sent to stdout\n                        \
+        \            (like when piping to another tool),\n                       \
+        \             default behavior is to leave output\n                      \
+        \              uncompressed.Use this flag to override and\n              \
+        \                      force compression. This feature is\n              \
+        \                      disabled in -makeStats mode.\n\nResolve Modes (must\
+        \ select ONE of the following):\n  -makeStats                        generates\
+        \ a fragment-length\n                                    stats file from the\
+        \ input BAM. Data is\n                                    written to file\
+        \ specified using the -stats\n                                    option.\
+        \ MarkPairs Mode Settings are\n                                    DISABLED.\n\
+        \  -markPairs                        generates an output BAM with\n      \
+        \                              alignments marked with proper-pair status.\n\
+        \                                    Stats data is read from file specified\n\
+        \                                    using the -stats option. MakeStats Mode\n\
+        \                                    Settings are DISABLED\n  -twoPass   \
+        \                       combines the -makeStats &\n                      \
+        \              -markPairs modes into a single command.\n                 \
+        \                   However, due to the two-pass nature of\n             \
+        \                       paired-end resolution, piping BAM data via\n     \
+        \                               stdin is DISABLED. You must supply an\n  \
+        \                                  explicit input BAM file. Output BAM may\
+        \ be\n                                    piped to stdout, however, if desired.\
+        \ All\n                                    MakeStats & MarkPairs Mode Settings\
+        \ are\n                                    available. The intermediate stats\
+        \ file is\n                                    not necessary, but if the -stats\
+        \ options\n                                    is used, then one will be generated.\
+        \ You\n                                    may find this useful for documentation\n\
+        \                                    purposes.\n\nGeneral Resolve Options\
+        \ (available in all modes):\n  -minMQ <unsigned short>           minimum map\
+        \ quality. Used in\n                                    -makeStats mode as\
+        \ a heuristic for\n                                    determining a mate's\
+        \ uniqueness. Used in\n                                    -markPairs mode\
+        \ as a filter for marking\n                                    candidate proper\
+        \ pairs.\n\nMakeStats Mode Options (disabled in -markPairs mode):\n  -ci <double>\
+        \                      confidence interval. Set\n                        \
+        \            min/max fragment lengths such that we\n                     \
+        \               capture this fraction of pairs\n  -umt <double>          \
+        \           unused model threshold. The\n                                \
+        \    resolve tool considers 8 possible\n                                 \
+        \   orientation models for pairs. The top 2\n                            \
+        \        are selected for later use when actually\n                      \
+        \              marking alignments. This value determines\n               \
+        \                     the cutoff for marking a read group as\n           \
+        \                         ambiguous. Meaning that if the ratio of\n      \
+        \                              the number of alignments from bottom 6\n  \
+        \                                  models to the top 2 is greater than this\n\
+        \                                    threshold, then the read group is flagged\n\
+        \                                    as ambiguous. By default, NO alignments\n\
+        \                                    from ambiguous read groups will be marked\n\
+        \                                    as proper pairs. You may override this\n\
+        \                                    behavior with the -force option in\n\
+        \                                    -markPairs mode\n\nMarkPairs Mode Options\
+        \ (disabled in -makeStats mode):\n  -force                            forces\
+        \ all read groups to be\n                                    marked according\
+        \ to their top 2\n                                    'orientation models'.\
+        \ When generating\n                                    stats, the 2 (out of\
+        \ 8 possible) models\n                                    with the most observations\
+        \ are chosen as\n                                    the top models for each\
+        \ read group. If the\n                                    remaining 6 models\
+        \ account for more than\n                                    some threshold\
+        \ ([default=10%], see -umt),\n                                    then the\
+        \ read group is marked as\n                                    ambiguous.\
+        \ The default behavior is that\n                                    for an\
+        \ ambiguous read group, NONE of its\n                                    alignments\
+        \ are marked as proper-pairs. By\n                                    setting\
+        \ this option, a read group's\n                                    ambiguity\
+        \ flag will be ignored, and all of\n                                    its\
+        \ alignments will be compared to the top\n                               \
+        \     2 models.\n\nHelp:\n  --help, -h                        shows this help\
+        \ text\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - bamtools-2.4.1
+      - split
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: split
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "custom prefix for splitting by\nreferences. Currently files\
+          \ end with\nREF_<refName>.bam. This option allows you\nto replace \"REF_\"\
+          \ with a prefix of your\nchoosing."
+        synonyms:
+        - -refPrefix
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: "custom prefix for splitting by\ntags. Current files end with\n\
+          TAG_<tagname>_<tagvalue>.bam. This option\nallows you to replace \"TAG_\"\
+          \ with a prefix\nof your choosing."
+        synonyms:
+        - -tagPrefix
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: "prefix stub for output BAM\nfiles (default behavior is to use\
+          \ input\nfilename, without .bam extension, as\nstub). If input is stdin\
+          \ and no stub\nprovided, a timestamp is generated as the\nstub."
+        synonyms:
+        - -stub
+        args: !SimpleFlagArg
+          name: filename stub
+        optional: true
+      - !Flag
+        description: "delimiter used to separate\nvalues in the filenames generated\
+          \ from\nsplitting on list-type tags [--]"
+        synonyms:
+        - -tagListDelim
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: split mapped/unmapped
+        synonyms:
+        - -mapped
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "splits alignments based on all\nvalues of TAG encountered (i.e.\
+          \ -tag RG\ncreates a BAM file for each read group in\noriginal BAM file)"
+        synonyms:
+        - -tag
+        args: !SimpleFlagArg
+          name: tag name
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: splits a BAM file on user-specified property, creating\
+        \ a new BAM output file for each value found.\n\nUsage: bamtools split [-in\
+        \ <filename>] [-stub <filename stub>] < -mapped | -paired | -reference [-refPrefix\
+        \ <prefix>] | -tag <TAG> > \n\nInput & Output:\n  -in <BAM filename>     \
+        \           the input BAM file [stdin]\n  -refPrefix <string>            \
+        \   custom prefix for splitting by\n                                    references.\
+        \ Currently files end with\n                                    REF_<refName>.bam.\
+        \ This option allows you\n                                    to replace \"\
+        REF_\" with a prefix of your\n                                    choosing.\n\
+        \  -tagPrefix <string>               custom prefix for splitting by\n    \
+        \                                tags. Current files end with\n          \
+        \                          TAG_<tagname>_<tagvalue>.bam. This option\n   \
+        \                                 allows you to replace \"TAG_\" with a prefix\n\
+        \                                    of your choosing.\n  -stub <filename\
+        \ stub>             prefix stub for output BAM\n                         \
+        \           files (default behavior is to use input\n                    \
+        \                filename, without .bam extension, as\n                  \
+        \                  stub). If input is stdin and no stub\n                \
+        \                    provided, a timestamp is generated as the\n         \
+        \                           stub.\n  -tagListDelim <string>            delimiter\
+        \ used to separate\n                                    values in the filenames\
+        \ generated from\n                                    splitting on list-type\
+        \ tags [--]\n\nSplit Options:\n  -mapped                           split mapped/unmapped\n\
+        \                                    alignments\n  -paired               \
+        \            split single-end/paired-end\n                               \
+        \     alignments\n  -reference                        split alignments by\
+        \ reference\n  -tag <tag name>                   splits alignments based on\
+        \ all\n                                    values of TAG encountered (i.e.\
+        \ -tag RG\n                                    creates a BAM file for each\
+        \ read group in\n                                    original BAM file)\n\n\
+        Help:\n  --help, -h                        shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - bamtools-2.4.1
+      - stats
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: stats
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the input BAM file list, one\nline per file"
+        synonyms:
+        - -list
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: summarize insert size data
+        synonyms:
+        - -insert
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: prints general alignment statistics.\n\nUsage: bamtools\
+        \ stats [-in <filename> -in <filename> ... | -list <filelist>] [statsOptions]\n\
+        \nInput & Output:\n  -in <BAM filename>                the input BAM file\
+        \ [stdin]\n  -list <filename>                  the input BAM file list, one\n\
+        \                                    line per file\n\nAdditional Stats:\n\
+        \  -insert                           summarize insert size data\n\nHelp:\n\
+        \  --help, -h                        shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - bamtools-2.4.1
+      - random
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: random
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the input BAM file list, one\nline per file"
+        synonyms:
+        - -list
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: the output BAM file [stdout]
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "only pull random alignments\nfrom within this genomic region.\
+          \ Index\nfile is recommended for better\nperformance, and is used automatically\
+          \ if\nit exists. See 'bamtools help index' for\nmore details on creating\
+          \ one"
+        synonyms:
+        - -region
+        args: !SimpleFlagArg
+          name: REGION
+        optional: true
+      - !Flag
+        description: "if results are sent to stdout\n(like when piping to another\
+          \ tool),\ndefault behavior is to leave output\nuncompressed. Use this flag\
+          \ to override\nand force compression"
+        synonyms:
+        - -forceCompression
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "number of alignments to grab.\nNote - no duplicate checking\
+          \ is performed\n[10000]"
+        synonyms:
+        - -n
+        args: !SimpleFlagArg
+          name: count
+        optional: true
+      - !Flag
+        description: "random number generator seed\n(for repeatable results). Current\
+          \ time is\nused if no seed value is provided."
+        synonyms:
+        - -seed
+        args: !SimpleFlagArg
+          name: unsigned integer
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: grab a random subset of alignments.\n\nUsage: bamtools\
+        \ random [-in <filename> -in <filename> ... | -list <filelist>] [-out <filename>]\
+        \ [-forceCompression] [-n] [-region <REGION>]\n\nInput & Output:\n  -in <BAM\
+        \ filename>                the input BAM file [stdin]\n  -list <filename>\
+        \                  the input BAM file list, one\n                        \
+        \            line per file\n  -out <BAM filename>               the output\
+        \ BAM file [stdout]\n  -region <REGION>                  only pull random\
+        \ alignments\n                                    from within this genomic\
+        \ region. Index\n                                    file is recommended for\
+        \ better\n                                    performance, and is used automatically\
+        \ if\n                                    it exists. See 'bamtools help index'\
+        \ for\n                                    more details on creating one\n\
+        \  -forceCompression                 if results are sent to stdout\n     \
+        \                               (like when piping to another tool),\n    \
+        \                                default behavior is to leave output\n   \
+        \                                 uncompressed. Use this flag to override\n\
+        \                                    and force compression\n\nSettings:\n\
+        \  -n <count>                        number of alignments to grab.\n     \
+        \                               Note - no duplicate checking is performed\n\
+        \                                    [10000]\n  -seed <unsigned integer> \
+        \         random number generator seed\n                                 \
+        \   (for repeatable results). Current time is\n                          \
+        \          used if no seed value is provided.\n\nHelp:\n  --help, -h     \
+        \                   shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id009
+      - bamtools-2.4.1
+      - filter
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: filter
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file(s) [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the input BAM file list, one\nline per file"
+        synonyms:
+        - -list
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: the output BAM file [stdout]
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "only read data from this\ngenomic region (see documentation\
+          \ for more\ndetails)"
+        synonyms:
+        - -region
+        args: !SimpleFlagArg
+          name: REGION
+        optional: true
+      - !Flag
+        description: "the filter script file (see\ndocumentation for more details)"
+        synonyms:
+        - -script
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: "if results are sent to stdout\n(like when piping to another\
+          \ tool),\ndefault behavior is to leave output\nuncompressed. Use this flag\
+          \ to override\nand force compression"
+        synonyms:
+        - -forceCompression
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "keep reads with this *exact*\nalignment flag (for more detailed\
+          \ queries,\nsee below)"
+        synonyms:
+        - -alignmentFlag
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "keep reads with insert size\nthat matches pattern"
+        synonyms:
+        - -insertSize
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "keep reads with length that\nmatches pattern"
+        synonyms:
+        - -length
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "<[0-255]>             keep reads with map quality\nthat matches\
+          \ pattern"
+        synonyms:
+        - -mapQuality
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "keep reads with name that\nmatches pattern"
+        synonyms:
+        - -name
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: "keep reads with motif that\nmatches pattern"
+        synonyms:
+        - -queryBases
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: "<TAG:VALUE>                  keep reads with this\nkey=>value\
+          \ pair"
+        synonyms:
+        - -tag
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "keep only alignments that are\nmarked as duplicate? [true]"
+        synonyms:
+        - -isDuplicate
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments that\nfailed QC? [true]"
+        synonyms:
+        - -isFailedQC
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments marked as\nfirst mate? [true]"
+        synonyms:
+        - -isFirstMate
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments that were\nmapped? [true]"
+        synonyms:
+        - -isMapped
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments with\nmates that mapped [true]"
+        synonyms:
+        - -isMateMapped
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments with mate\non reverese strand? [true]"
+        synonyms:
+        - -isMateReverseStrand
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments that were\nsequenced as paired? [true]"
+        synonyms:
+        - -isPaired
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments marked as\nprimary? [true]"
+        synonyms:
+        - -isPrimaryAlignment
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments that\npassed PE resolution? [true]"
+        synonyms:
+        - -isProperPair
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments on\nreverse strand? [true]"
+        synonyms:
+        - -isReverseStrand
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: "keep only alignments marked as\nsecond mate? [true]"
+        synonyms:
+        - -isSecondMate
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      - !Flag
+        description: keep only singletons [true]
+        synonyms:
+        - -isSingleton
+        args: !SimpleFlagArg
+          name: true/false
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: filters BAM file(s).\n\nUsage: bamtools filter [-in\
+        \ <filename> -in <filename> ... | -list <filelist>] [-out <filename> | [-forceCompression]]\
+        \ [-region <REGION>] [ [-script <filename] | [filterOptions] ]\n\nInput &\
+        \ Output:\n  -in <BAM filename>                the input BAM file(s) [stdin]\n\
+        \  -list <filename>                  the input BAM file list, one\n      \
+        \                              line per file\n  -out <BAM filename>      \
+        \         the output BAM file [stdout]\n  -region <REGION>               \
+        \   only read data from this\n                                    genomic\
+        \ region (see documentation for more\n                                   \
+        \ details)\n  -script <filename>                the filter script file (see\n\
+        \                                    documentation for more details)\n  -forceCompression\
+        \                 if results are sent to stdout\n                        \
+        \            (like when piping to another tool),\n                       \
+        \             default behavior is to leave output\n                      \
+        \              uncompressed. Use this flag to override\n                 \
+        \                   and force compression\n\nGeneral Filters:\n  -alignmentFlag\
+        \ <int>              keep reads with this *exact*\n                      \
+        \              alignment flag (for more detailed queries,\n              \
+        \                      see below)\n  -insertSize <int>                 keep\
+        \ reads with insert size\n                                    that matches\
+        \ pattern\n  -length <int>                     keep reads with length that\n\
+        \                                    matches pattern\n  -mapQuality <[0-255]>\
+        \             keep reads with map quality\n                              \
+        \      that matches pattern\n  -name <string>                    keep reads\
+        \ with name that\n                                    matches pattern\n  -queryBases\
+        \ <string>              keep reads with motif that\n                     \
+        \               matches pattern\n  -tag <TAG:VALUE>                  keep\
+        \ reads with this\n                                    key=>value pair\n\n\
+        Alignment Flag Filters:\n  -isDuplicate <true/false>         keep only alignments\
+        \ that are\n                                    marked as duplicate? [true]\n\
+        \  -isFailedQC <true/false>          keep only alignments that\n         \
+        \                           failed QC? [true]\n  -isFirstMate <true/false>\
+        \         keep only alignments marked as\n                               \
+        \     first mate? [true]\n  -isMapped <true/false>            keep only alignments\
+        \ that were\n                                    mapped? [true]\n  -isMateMapped\
+        \ <true/false>        keep only alignments with\n                        \
+        \            mates that mapped [true]\n  -isMateReverseStrand <true/false>\
+        \ keep only alignments with mate\n                                    on reverese\
+        \ strand? [true]\n  -isPaired <true/false>            keep only alignments\
+        \ that were\n                                    sequenced as paired? [true]\n\
+        \  -isPrimaryAlignment <true/false>  keep only alignments marked as\n    \
+        \                                primary? [true]\n  -isProperPair <true/false>\
+        \        keep only alignments that\n                                    passed\
+        \ PE resolution? [true]\n  -isReverseStrand <true/false>     keep only alignments\
+        \ on\n                                    reverse strand? [true]\n  -isSecondMate\
+        \ <true/false>        keep only alignments marked as\n                   \
+        \                 second mate? [true]\n  -isSingleton <true/false>       \
+        \  keep only singletons [true]\n\nHelp:\n  --help, -h                    \
+        \    shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id010
+      - bamtools-2.4.1
+      - revert
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: revert
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: the output BAM file [stdout]
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "if results are sent to stdout\n(like when piping to another\
+          \ tool),\ndefault behavior is to leave output\nuncompressed. Use this flag\
+          \ to override\nand force compression"
+        synonyms:
+        - -forceCompression
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: keep duplicates marked
+        synonyms:
+        - -keepDuplicate
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "keep base qualities (do not\nreplace with OQ contents)"
+        synonyms:
+        - -keepQualities
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: removes duplicate marks and restores original (non-recalibrated)\
+        \ base qualities.\n\nUsage: bamtools revert [-in <filename> -in <filename>\
+        \ ...] [-out <filename> | [-forceCompression]] [revertOptions]\n\nInput &\
+        \ Output:\n  -in <BAM filename>                the input BAM file [stdin]\n\
+        \  -out <BAM filename>               the output BAM file [stdout]\n  -forceCompression\
+        \                 if results are sent to stdout\n                        \
+        \            (like when piping to another tool),\n                       \
+        \             default behavior is to leave output\n                      \
+        \              uncompressed. Use this flag to override\n                 \
+        \                   and force compression\n\nRevert Options:\n  -keepDuplicate\
+        \                    keep duplicates marked\n  -keepQualities            \
+        \        keep base qualities (do not\n                                   \
+        \ replace with OQ contents)\n\nHelp:\n  --help, -h                       \
+        \ shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id011
+      - bamtools-2.4.1
+      - convert
+      positional:
+      - !Positional
+        description: 'Help:'
+        position: 0
+        name: output
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file(s) [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the input BAM file list, one\nline per file"
+        synonyms:
+        - -list
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: the output BAM file [stdout]
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the output file format - see\nREADME for recognized formats"
+        synonyms:
+        - -format
+        args: !SimpleFlagArg
+          name: FORMAT
+        optional: true
+      - !Flag
+        description: "genomic region. Index file is\nrecommended for better performance,\
+          \ and is\nused automatically if it exists. See\n'bamtools help index' for\
+          \ more details on\ncreating one"
+        synonyms:
+        - -region
+        args: !SimpleFlagArg
+          name: REGION
+        optional: true
+      - !Flag
+        description: FASTA reference file
+        synonyms:
+        - -fasta
+        args: !SimpleFlagArg
+          name: FASTA filename
+        optional: true
+      - !Flag
+        description: print the mapping qualities
+        synonyms:
+        - -mapqual
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: omit the SAM header from
+        synonyms:
+        - -noheader
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: converts BAM to a number of other formats.\n\nUsage:\
+        \ bamtools convert -format <FORMAT> [-in <filename> -in <filename> ... | -list\
+        \ <filelist>] [-out <filename>] [-region <REGION>] [format-specific options]\n\
+        \nInput & Output:\n  -in <BAM filename>                the input BAM file(s)\
+        \ [stdin]\n  -list <filename>                  the input BAM file list, one\n\
+        \                                    line per file\n  -out <BAM filename>\
+        \               the output BAM file [stdout]\n  -format <FORMAT>         \
+        \         the output file format - see\n                                 \
+        \   README for recognized formats\n  -region <REGION>                  genomic\
+        \ region. Index file is\n                                    recommended for\
+        \ better performance, and is\n                                    used automatically\
+        \ if it exists. See\n                                    'bamtools help index'\
+        \ for more details on\n                                    creating one\n\n\
+        Pileup Options:\n  -fasta <FASTA filename>           FASTA reference file\n\
+        \  -mapqual                          print the mapping qualities\n\nSAM Options:\n\
+        \  -noheader                         omit the SAM header from\n          \
+        \                          output\n\nHelp:\n  --help, -h                 \
+        \       shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id012
+      - bamtools-2.4.1
+      - header
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: header
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file(s) [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the input BAM file list, one\nline per file"
+        synonyms:
+        - -list
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: prints header from BAM file(s).\n\nUsage: bamtools\
+        \ header [-in <filename> -in <filename> ... | -list <filelist>]\n\nInput &\
+        \ Output:\n  -in <BAM filename>                the input BAM file(s) [stdin]\n\
+        \  -list <filename>                  the input BAM file list, one\n      \
+        \                              line per file\n\nHelp:\n  --help, -h      \
+        \                  shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id013
+      - bamtools-2.4.1
+      - index
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: index
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "create (non-standard) BamTools\nindex file (*.bti). Default\
+          \ behavior is to\ncreate standard BAM index (*.bai)"
+        synonyms:
+        - -bti
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: creates index for BAM file.\n\nUsage: bamtools index\
+        \ [-in <filename>] [-bti]\n\nInput & Output:\n  -in <BAM filename>       \
+        \         the input BAM file [stdin]\n  -bti                             \
+        \ create (non-standard) BamTools\n                                    index\
+        \ file (*.bti). Default behavior is to\n                                 \
+        \   create standard BAM index (*.bai)\n\nHelp:\n  --help, -h             \
+        \           shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id014
+      - bamtools-2.4.1
+      - sort
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sort
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: sortOptions
+        optional: true
+      named:
+      - !Flag
+        description: the input BAM file [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: the output BAM file [stdout]
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: sort by alignment name
+        synonyms:
+        - -byname
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "max number of alignments per\ntempfile [500000]"
+        synonyms:
+        - -n
+        args: !SimpleFlagArg
+          name: count
+        optional: true
+      - !Flag
+        description: max memory to use [1024]
+        synonyms:
+        - -mem
+        args: !SimpleFlagArg
+          name: Mb
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: sorts a BAM file.\n\nUsage: bamtools sort [-in <filename>]\
+        \ [-out <filename>] [sortOptions]\n\nInput & Output:\n  -in <BAM filename>\
+        \                the input BAM file [stdin]\n  -out <BAM filename>       \
+        \        the output BAM file [stdout]\n\nSorting Methods:\n  -byname     \
+        \                      sort by alignment name\n\nMemory Settings:\n  -n <count>\
+        \                        max number of alignments per\n                  \
+        \                  tempfile [500000]\n  -mem <Mb>                        \
+        \ max memory to use [1024]\n\nHelp:\n  --help, -h                        shows\
+        \ this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id015
+      - bamtools-2.4.1
+      - merge
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: merge
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file(s)
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "the input BAM file list, one\nline per file"
+        synonyms:
+        - -list
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      - !Flag
+        description: the output BAM file
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: "if results are sent to stdout\n(like when piping to another\
+          \ tool),\ndefault behavior is to leave output\nuncompressed. Use this flag\
+          \ to override\nand force compression"
+        synonyms:
+        - -forceCompression
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "genomic region. See README for\nmore details"
+        synonyms:
+        - -region
+        args: !SimpleFlagArg
+          name: REGION
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: merges multiple BAM files into one.\n\nUsage: bamtools\
+        \ merge [-in <filename> -in <filename> ... | -list <filelist>] [-out <filename>\
+        \ | [-forceCompression]] [-region <REGION>]\n\nInput & Output:\n  -in <BAM\
+        \ filename>                the input BAM file(s)\n  -list <filename>     \
+        \             the input BAM file list, one\n                             \
+        \       line per file\n  -out <BAM filename>               the output BAM\
+        \ file\n  -forceCompression                 if results are sent to stdout\n\
+        \                                    (like when piping to another tool),\n\
+        \                                    default behavior is to leave output\n\
+        \                                    uncompressed. Use this flag to override\n\
+        \                                    and force compression\n  -region <REGION>\
+        \                  genomic region. See README for\n                      \
+        \              more details\n\nHelp:\n  --help, -h                       \
+        \ shows this help text\n"
+      generated_using: *id004
+    - !Command
+      command: &id016
+      - bamtools-2.4.1
+      - coverage
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: bamtools
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: coverage
+        optional: false
+      named:
+      - !Flag
+        description: the input BAM file [stdin]
+        synonyms:
+        - -in
+        args: !SimpleFlagArg
+          name: BAM filename
+        optional: true
+      - !Flag
+        description: the output file [stdout]
+        synonyms:
+        - -out
+        args: !SimpleFlagArg
+          name: filename
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: shows this help text
+        synonyms:
+        - --help
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Description: prints coverage data for a single BAM file.\n\nUsage:\
+        \ bamtools coverage [-in <filename>] [-out <filename>]\n\nInput & Output:\n\
+        \  -in <BAM filename>                the input BAM file [stdin]\n  -out <filename>\
+        \                   the output file [stdout]\n\nHelp:\n  --help, -h      \
+        \                  shows this help text\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "\nusage: bamtools [--help] COMMAND [ARGS]\n\nAvailable bamtools commands:\n\
+      \tconvert         Converts between BAM and a number of other formats\n\tcount\
+      \           Prints number of alignments in BAM file(s)\n\tcoverage        Prints\
+      \ coverage statistics from the input BAM file\n\tfilter          Filters BAM\
+      \ file(s) by user-specified criteria\n\theader          Prints BAM header information\n\
+      \tindex           Generates index for BAM file\n\tmerge           Merge multiple\
+      \ BAM files into single file\n\trandom          Select random alignments from\
+      \ existing BAM file(s), intended more as a testing tool.\n\tresolve        \
+      \ Resolves paired-end reads (marking the IsProperPair flag as needed)\n\trevert\
+      \          Removes duplicate marks and restores original base qualities\n\t\
+      sort            Sorts the BAM file according to some criteria\n\tsplit     \
+      \      Splits a BAM file on user-specified property, creating a new BAM output\
+      \ file for each value found\n\tstats           Prints some basic statistics\
+      \ from input BAM file(s)\n\nSee 'bamtools help COMMAND' for more information\
+      \ on a specific command.\n\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -66,12 +1376,9 @@ subcommands:
     \ if it exists. See\n                                    'bamtools help index'\
     \ for more details on\n                                    creating one\n\nHelp:\n\
     \  --help, -h                        shows this help text\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - resolve
+  command: *id005
   positional:
   - !Positional
     description: 'General Resolve Options (available in all modes):'
@@ -174,7 +1481,7 @@ subcommands:
     - -force
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -264,11 +1571,9 @@ subcommands:
     \                                    its alignments will be compared to the top\n\
     \                                    2 models.\n\nHelp:\n  --help, -h        \
     \                shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - split
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -336,7 +1641,7 @@ subcommands:
     args: !SimpleFlagArg
       name: tag name
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -378,11 +1683,9 @@ subcommands:
     \                  creates a BAM file for each read group in\n               \
     \                     original BAM file)\n\nHelp:\n  --help, -h              \
     \          shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - stats
+  command: *id007
   positional:
   - !Positional
     description: ''
@@ -415,7 +1718,7 @@ subcommands:
     - -insert
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -434,11 +1737,9 @@ subcommands:
     \                          line per file\n\nAdditional Stats:\n  -insert     \
     \                      summarize insert size data\n\nHelp:\n  --help, -h     \
     \                   shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - random
+  command: *id008
   positional:
   - !Positional
     description: ''
@@ -505,7 +1806,7 @@ subcommands:
     args: !SimpleFlagArg
       name: unsigned integer
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -540,11 +1841,9 @@ subcommands:
     \ results). Current time is\n                                    used if no seed\
     \ value is provided.\n\nHelp:\n  --help, -h                        shows this\
     \ help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - filter
+  command: *id009
   positional:
   - !Positional
     description: ''
@@ -734,7 +2033,7 @@ subcommands:
     args: !SimpleFlagArg
       name: true/false
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -793,11 +2092,9 @@ subcommands:
     \             second mate? [true]\n  -isSingleton <true/false>         keep only\
     \ singletons [true]\n\nHelp:\n  --help, -h                        shows this help\
     \ text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - revert
+  command: *id010
   positional:
   - !Positional
     description: ''
@@ -844,7 +2141,7 @@ subcommands:
     - -keepQualities
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -869,11 +2166,9 @@ subcommands:
     \  -keepQualities                    keep base qualities (do not\n           \
     \                         replace with OQ contents)\n\nHelp:\n  --help, -h   \
     \                     shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - convert
+  command: *id011
   positional:
   - !Positional
     description: 'Help:'
@@ -937,7 +2232,7 @@ subcommands:
     - -noheader
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -966,11 +2261,9 @@ subcommands:
     \ mapping qualities\n\nSAM Options:\n  -noheader                         omit\
     \ the SAM header from\n                                    output\n\nHelp:\n \
     \ --help, -h                        shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - header
+  command: *id012
   positional:
   - !Positional
     description: ''
@@ -997,7 +2290,7 @@ subcommands:
     args: !SimpleFlagArg
       name: filename
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1015,11 +2308,9 @@ subcommands:
     \                  the input BAM file list, one\n                            \
     \        line per file\n\nHelp:\n  --help, -h                        shows this\
     \ help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - index
+  command: *id013
   positional:
   - !Positional
     description: ''
@@ -1046,7 +2337,7 @@ subcommands:
     - -bti
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1064,11 +2355,9 @@ subcommands:
     \ BamTools\n                                    index file (*.bti). Default behavior\
     \ is to\n                                    create standard BAM index (*.bai)\n\
     \nHelp:\n  --help, -h                        shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - sort
+  command: *id014
   positional:
   - !Positional
     description: ''
@@ -1120,7 +2409,7 @@ subcommands:
     args: !SimpleFlagArg
       name: Mb
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1140,11 +2429,9 @@ subcommands:
     \               max number of alignments per\n                               \
     \     tempfile [500000]\n  -mem <Mb>                         max memory to use\
     \ [1024]\n\nHelp:\n  --help, -h                        shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - merge
+  command: *id015
   positional:
   - !Positional
     description: ''
@@ -1193,7 +2480,7 @@ subcommands:
     args: !SimpleFlagArg
       name: REGION
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1218,11 +2505,9 @@ subcommands:
     \   and force compression\n  -region <REGION>                  genomic region.\
     \ See README for\n                                    more details\n\nHelp:\n\
     \  --help, -h                        shows this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - bamtools-2.4.1
-  - coverage
+  command: *id016
   positional:
   - !Positional
     description: ''
@@ -1249,7 +2534,7 @@ subcommands:
     args: !SimpleFlagArg
       name: filename
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1266,14 +2551,9 @@ subcommands:
     \                the input BAM file [stdin]\n  -out <filename>               \
     \    the output file [stdout]\n\nHelp:\n  --help, -h                        shows\
     \ this help text\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: ''
-  synonyms:
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "\nusage: bamtools [--help] COMMAND [ARGS]\n\nAvailable bamtools commands:\n\
@@ -1290,4 +2570,4 @@ help_text: "\nusage: bamtools [--help] COMMAND [ARGS]\n\nAvailable bamtools comm
   \ output file for each value found\n\tstats           Prints some basic statistics\
   \ from input BAM file(s)\n\nSee 'bamtools help COMMAND' for more information on\
   \ a specific command.\n\n"
-generated_using: *id002
+generated_using: *id004

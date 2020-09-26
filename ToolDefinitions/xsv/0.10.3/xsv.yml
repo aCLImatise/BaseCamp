@@ -1,18 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - xsv
 positional: []
-named:
-- !Flag
-  description: List all commands available.
-  synonyms:
-  - --list
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - xsv
   - headers
   positional: []
@@ -40,7 +34,1626 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: List all commands available.
+      synonyms:
+      - --list
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: "Only show the header names (hide column index).\nThis is automatically\
+          \ enabled if more than one\ninput is given."
+        synonyms:
+        - -j
+        - --just-names
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Shows the intersection of all headers in all of\nthe inputs\
+          \ given."
+        synonyms:
+        - --intersect
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Prints the fields of the first row in the CSV data.\n\nThese names\
+        \ can be used in commands like 'select' to refer to columns in the\nCSV data.\n\
+        \nNote that multiple CSV files may be given to this command. This is useful\
+        \ with\nthe --intersect flag.\n\nUsage:\n    xsv headers [options] [<input>...]\n\
+        \nheaders options:\n    -j, --just-names       Only show the header names\
+        \ (hide column index).\n                           This is automatically enabled\
+        \ if more than one\n                           input is given.\n    --intersect\
+        \            Shows the intersection of all headers in all of\n           \
+        \                the inputs given.\n\nCommon options:\n    -h, --help    \
+        \         Display this message\n    -d, --delimiter <arg>  The field delimiter\
+        \ for reading CSV data.\n                           Must be a single character.\
+        \ (default: ,)\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id006
+      - xsv
+      - input
+      positional: []
+      named:
+      - !Flag
+        description: 'The quote character to use. [default: "]'
+        synonyms:
+        - --quote
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "The escape character to use. When not specified,\nquotes are\
+          \ escaped by doubling them."
+        synonyms:
+        - --escape
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. [default: ,]\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Read CSV data with special quoting rules.\n\nGenerally, all xsv\
+        \ commands support basic options like specifying the delimiter\nused in CSV\
+        \ data. This does not cover all possible types of CSV data. For\nexample,\
+        \ some CSV files don't use '\"' for quotes or use different escaping\nstyles.\n\
+        \nUsage:\n    xsv input [options] [<input>]\n\ninput options:\n    --quote\
+        \ <arg>          The quote character to use. [default: \"]\n    --escape <arg>\
+        \         The escape character to use. When not specified,\n             \
+        \              quotes are escaped by doubling them.\n\nCommon options:\n \
+        \   -h, --help             Display this message\n    -o, --output <file> \
+        \   Write output to <file> instead of stdout.\n    -d, --delimiter <arg> \
+        \ The field delimiter for reading CSV data.\n                           Must\
+        \ be a single character. [default: ,]\n"
+      generated_using: *id004
+    - &id005 !Command
+      command: &id007
+      - xsv
+      - join
+      positional: []
+      named:
+      - !Flag
+        description: When set, joins are done case insensitively.
+        synonyms:
+        - --no-case
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Do a 'left outer' join. This returns all rows in\nfirst CSV\
+          \ data set, including rows with no\ncorresponding row in the second data\
+          \ set. When no\ncorresponding row exists, it is padded out with\nempty fields."
+        synonyms:
+        - --left
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Do a 'right outer' join. This returns all rows in\nsecond CSV\
+          \ data set, including rows with no\ncorresponding row in the first data\
+          \ set. When no\ncorresponding row exists, it is padded out with\nempty fields.\
+          \ (This is the reverse of 'outer left'.)"
+        synonyms:
+        - --right
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Do a 'full outer' join. This returns all rows in\nboth data\
+          \ sets with matching records joined. If\nthere is no match, the missing\
+          \ side will be padded\nout with empty fields. (This is the combination of\n\
+          'outer left' and 'outer right'.)"
+        synonyms:
+        - --full
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "USE WITH CAUTION.\nThis returns the cartesian product of the\
+          \ CSV\ndata sets given. The number of rows return is\nequal to N * M, where\
+          \ N and M correspond to the\nnumber of rows in the given data sets, respectively."
+        synonyms:
+        - --cross
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "When set, joins will work on empty fields.\nOtherwise, empty\
+          \ fields are completely ignored.\n(In fact, any row that has an empty field\
+          \ in the\nkey specified is ignored.)"
+        synonyms:
+        - --nulls
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will not be interpreted\nas headers.\
+          \ (i.e., They are not searched, analyzed,\nsliced, etc.)"
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id008
+        - xsv
+        - join
+        - columns1
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: input1
+          optional: false
+        - !Positional
+          description: ''
+          position: 0
+          name: xsv
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: columns2
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: join
+          optional: false
+        named: []
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Invalid arguments.\n\nUsage:\n    xsv join [options] <columns1>\
+          \ <input1> <columns2> <input2>\n    xsv join --help\n"
+        generated_using: *id004
+      - !Command
+        command: &id009
+        - xsv
+        - join
+        - input1
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: xsv
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: join
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: columns1
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: input1
+          optional: false
+        - !Positional
+          description: ''
+          position: 4
+          name: columns2
+          optional: false
+        named: []
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Invalid arguments.\n\nUsage:\n    xsv join [options] <columns1>\
+          \ <input1> <columns2> <input2>\n    xsv join --help\n"
+        generated_using: *id004
+      - !Command
+        command: &id010
+        - xsv
+        - join
+        - columns2
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: xsv
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: join
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: columns1
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: input1
+          optional: false
+        - !Positional
+          description: ''
+          position: 4
+          name: columns2
+          optional: false
+        named: []
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Invalid arguments.\n\nUsage:\n    xsv join [options] <columns1>\
+          \ <input1> <columns2> <input2>\n    xsv join --help\n"
+        generated_using: *id004
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Joins two sets of CSV data on the specified columns.\n\nThe default\
+        \ join operation is an 'inner' join. This corresponds to the\nintersection\
+        \ of rows on the keys specified.\n\nJoins are always done by ignoring leading\
+        \ and trailing whitespace. By default,\njoins are done case sensitively, but\
+        \ this can be disabled with the --no-case\nflag.\n\nThe columns arguments\
+        \ specify the columns to join for each input. Columns can\nbe referenced by\
+        \ name or index, starting at 1. Specify multiple columns by\nseparating them\
+        \ with a comma. Specify a range of columns with `-`. Both\ncolumns1 and columns2\
+        \ must specify exactly the same number of columns.\n(See 'xsv select --help'\
+        \ for the full syntax.)\n\nUsage:\n    xsv join [options] <columns1> <input1>\
+        \ <columns2> <input2>\n    xsv join --help\n\njoin options:\n    --no-case\
+        \              When set, joins are done case insensitively.\n    --left  \
+        \               Do a 'left outer' join. This returns all rows in\n       \
+        \                    first CSV data set, including rows with no\n        \
+        \                   corresponding row in the second data set. When no\n  \
+        \                         corresponding row exists, it is padded out with\n\
+        \                           empty fields.\n    --right                Do a\
+        \ 'right outer' join. This returns all rows in\n                         \
+        \  second CSV data set, including rows with no\n                         \
+        \  corresponding row in the first data set. When no\n                    \
+        \       corresponding row exists, it is padded out with\n                \
+        \           empty fields. (This is the reverse of 'outer left'.)\n    --full\
+        \                 Do a 'full outer' join. This returns all rows in\n     \
+        \                      both data sets with matching records joined. If\n \
+        \                          there is no match, the missing side will be padded\n\
+        \                           out with empty fields. (This is the combination\
+        \ of\n                           'outer left' and 'outer right'.)\n    --cross\
+        \                USE WITH CAUTION.\n                           This returns\
+        \ the cartesian product of the CSV\n                           data sets given.\
+        \ The number of rows return is\n                           equal to N * M,\
+        \ where N and M correspond to the\n                           number of rows\
+        \ in the given data sets, respectively.\n    --nulls                When set,\
+        \ joins will work on empty fields.\n                           Otherwise,\
+        \ empty fields are completely ignored.\n                           (In fact,\
+        \ any row that has an empty field in the\n                           key specified\
+        \ is ignored.)\n\nCommon options:\n    -h, --help             Display this\
+        \ message\n    -o, --output <file>    Write output to <file> instead of stdout.\n\
+        \    -n, --no-headers       When set, the first row will not be interpreted\n\
+        \                           as headers. (i.e., They are not searched, analyzed,\n\
+        \                           sliced, etc.)\n    -d, --delimiter <arg>  The\
+        \ field delimiter for reading CSV data.\n                           Must be\
+        \ a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id011
+      - xsv
+      - select
+      positional: []
+      named:
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will not be interpreted\nas headers.\
+          \ (i.e., They are not searched, analyzed,\nsliced, etc.)"
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Select columns from CSV data efficiently.\n\nThis command lets you\
+        \ manipulate the columns in CSV data. You can re-order\nthem, duplicate them\
+        \ or drop them. Columns can be referenced by index or by\nname if there is\
+        \ a header row (duplicate column names can be disambiguated with\nmore indexing).\
+        \ Finally, column ranges can be specified.\n\n  Select the first and fourth\
+        \ columns:\n  $ xsv select 1,4\n\n  Select the first 4 columns (by index and\
+        \ by name):\n  $ xsv select 1-4\n  $ xsv select Header1-Header4\n\n  Ignore\
+        \ the first 2 columns (by range and by omission):\n  $ xsv select 3-\n  $\
+        \ xsv select '!1-2'\n\n  Select the third column named 'Foo':\n  $ xsv select\
+        \ 'Foo[2]'\n\n  Re-order and duplicate columns arbitrarily:\n  $ xsv select\
+        \ 3-1,Header3-Header1,Header1,Foo[2],Header1\n\nUsage:\n    xsv select [options]\
+        \ [--] <selection> [<input>]\n    xsv select --help\n\nCommon options:\n \
+        \   -h, --help             Display this message\n    -o, --output <file> \
+        \   Write output to <file> instead of stdout.\n    -n, --no-headers      \
+        \ When set, the first row will not be interpreted\n                      \
+        \     as headers. (i.e., They are not searched, analyzed,\n              \
+        \             sliced, etc.)\n    -d, --delimiter <arg>  The field delimiter\
+        \ for reading CSV data.\n                           Must be a single character.\
+        \ (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id012
+      - xsv
+      - fixlengths
+      positional: []
+      named:
+      - !Flag
+        description: "Forcefully set the length of each record. If a\nrecord is not\
+          \ the size given, then it is truncated\nor expanded as appropriate."
+        synonyms:
+        - -l
+        - --length
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Transforms CSV data so that all records have the same length. The\
+        \ length is\nthe length of the longest record in the data. Records with smaller\
+        \ lengths are\npadded with empty fields.\n\nThis requires two complete scans\
+        \ of the CSV data: one for determining the\nrecord size and one for the actual\
+        \ transform. Because of this, the input\ngiven must be a file and not stdin.\n\
+        \nAlternatively, if --length is set, then all records are forced to that length.\n\
+        This requires a single pass and can be done with stdin.\n\nUsage:\n    xsv\
+        \ fixlengths [options] [<input>]\n\nfixlengths options:\n    -l, --length\
+        \ <arg>     Forcefully set the length of each record. If a\n             \
+        \              record is not the size given, then it is truncated\n      \
+        \                     or expanded as appropriate.\n\nCommon options:\n   \
+        \ -h, --help             Display this message\n    -o, --output <file>   \
+        \ Write output to <file> instead of stdout.\n    -d, --delimiter <arg>  The\
+        \ field delimiter for reading CSV data.\n                           Must be\
+        \ a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id013
+      - xsv
+      - search
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: regex
+        optional: false
+      named:
+      - !Flag
+        description: "Case insensitive search. This is equivalent to\nprefixing the\
+          \ regex with '(?i)'."
+        synonyms:
+        - -i
+        - --ignore-case
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Select the columns to search. See 'xsv select -h'\nfor the full\
+          \ syntax."
+        synonyms:
+        - -s
+        - --select
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Select only rows that did not match
+        synonyms:
+        - -v
+        - --invert-match
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will not be interpreted\nas headers.\
+          \ (i.e., They are not searched, analyzed,\nsliced, etc.)"
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Filters CSV data by whether the given regex matches a row.\n\nThe\
+        \ regex is applied to each field in each row, and if any field matches,\n\
+        then the row is written to the output. The columns to search can be limited\n\
+        with the '--select' flag (but the full row is still written to the output\
+        \ if\nthere is a match).\n\nUsage:\n    xsv search [options] <regex> [<input>]\n\
+        \    xsv search --help\n\nsearch options:\n    -i, --ignore-case      Case\
+        \ insensitive search. This is equivalent to\n                           prefixing\
+        \ the regex with '(?i)'.\n    -s, --select <arg>     Select the columns to\
+        \ search. See 'xsv select -h'\n                           for the full syntax.\n\
+        \    -v, --invert-match     Select only rows that did not match\n\nCommon\
+        \ options:\n    -h, --help             Display this message\n    -o, --output\
+        \ <file>    Write output to <file> instead of stdout.\n    -n, --no-headers\
+        \       When set, the first row will not be interpreted\n                \
+        \           as headers. (i.e., They are not searched, analyzed,\n        \
+        \                   sliced, etc.)\n    -d, --delimiter <arg>  The field delimiter\
+        \ for reading CSV data.\n                           Must be a single character.\
+        \ (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id014
+      - xsv
+      - index
+      positional: []
+      named:
+      - !Flag
+        description: "Write index to <file> instead of <input>.idx.\nGenerally, this\
+          \ is not currently useful because\nthe only way to use an index is if it\
+          \ is specially\nnamed <input>.idx."
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Creates an index of the given CSV data, which can make other operations\
+        \ like\nslicing, splitting and gathering statistics much faster.\n\nNote that\
+        \ this does not accept CSV data on stdin. You must give a file\npath. The\
+        \ index is created at 'path/to/input.csv.idx'. The index will be\nautomatically\
+        \ used by commands that can benefit from it. If the original CSV\ndata changes\
+        \ after the index is made, commands that try to use it will result\nin an\
+        \ error (you have to regenerate the index before it can be used again).\n\n\
+        Usage:\n    xsv index [options] <input>\n    xsv index --help\n\nindex options:\n\
+        \    -o, --output <file>    Write index to <file> instead of <input>.idx.\n\
+        \                           Generally, this is not currently useful because\n\
+        \                           the only way to use an index is if it is specially\n\
+        \                           named <input>.idx.\n\nCommon options:\n    -h,\
+        \ --help             Display this message\n    -d, --delimiter <arg>  The\
+        \ field delimiter for reading CSV data.\n                           Must be\
+        \ a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id015
+      - xsv
+      - slice
+      positional: []
+      named:
+      - !Flag
+        description: The index of the record to slice from.
+        synonyms:
+        - -s
+        - --start
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: The index of the record to slice to.
+        synonyms:
+        - -e
+        - --end
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "The length of the slice (can be used instead\nof --end)."
+        synonyms:
+        - -l
+        - --len
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Slice a single record (shortcut for -s N -l 1).
+        synonyms:
+        - -i
+        - --index
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will not be interpreted\nas headers.\
+          \ Otherwise, the first row will always\nappear in the output as the header\
+          \ row."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Returns the rows in the range specified (starting at 0, half-open\
+        \ interval).\nThe range does not include headers.\n\nIf the start of the range\
+        \ isn't specified, then the slice starts from the first\nrecord in the CSV\
+        \ data.\n\nIf the end of the range isn't specified, then the slice continues\
+        \ to the last\nrecord in the CSV data.\n\nThis operation can be made much\
+        \ faster by creating an index with 'xsv index'\nfirst. Namely, a slice on\
+        \ an index requires parsing just the rows that are\nsliced. Without an index,\
+        \ all rows up to the first row in the slice must be\nparsed.\n\nUsage:\n \
+        \   xsv slice [options] [<input>]\n\nslice options:\n    -s, --start <arg>\
+        \      The index of the record to slice from.\n    -e, --end <arg>       \
+        \ The index of the record to slice to.\n    -l, --len <arg>        The length\
+        \ of the slice (can be used instead\n                           of --end).\n\
+        \    -i, --index <arg>      Slice a single record (shortcut for -s N -l 1).\n\
+        \nCommon options:\n    -h, --help             Display this message\n    -o,\
+        \ --output <file>    Write output to <file> instead of stdout.\n    -n, --no-headers\
+        \       When set, the first row will not be interpreted\n                \
+        \           as headers. Otherwise, the first row will always\n           \
+        \                appear in the output as the header row.\n    -d, --delimiter\
+        \ <arg>  The field delimiter for reading CSV data.\n                     \
+        \      Must be a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id016
+      - xsv
+      - cat
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: columns
+        optional: false
+      - !Positional
+        description: ''
+        position: 0
+        name: rows
+        optional: false
+      named:
+      - !Flag
+        description: "When concatenating columns, this flag will cause\nall records\
+          \ to appear. It will pad each row if\nother CSV data isn't long enough."
+        synonyms:
+        - -p
+        - --pad
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will NOT be interpreted\nas column names.\
+          \ Note that this has no effect when\nconcatenating columns."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Concatenates CSV data by column or by row.\n\nWhen concatenating\
+        \ by column, the columns will be written in the same order as\nthe inputs\
+        \ given. The number of rows in the result is always equivalent to to\nthe\
+        \ minimum number of rows across all given CSV data. (This behavior can be\n\
+        reversed with the '--pad' flag.)\n\nWhen concatenating by row, all CSV data\
+        \ must have the same number of columns.\nIf you need to rearrange the columns\
+        \ or fix the lengths of records, use the\n'select' or 'fixlengths' commands.\
+        \ Also, only the headers of the *first* CSV\ndata given are used. Headers\
+        \ in subsequent inputs are ignored. (This behavior\ncan be disabled with --no-headers.)\n\
+        \nUsage:\n    xsv cat rows    [options] [<input>...]\n    xsv cat columns\
+        \ [options] [<input>...]\n    xsv cat --help\n\ncat options:\n    -p, --pad\
+        \              When concatenating columns, this flag will cause\n        \
+        \                   all records to appear. It will pad each row if\n     \
+        \                      other CSV data isn't long enough.\n\nCommon options:\n\
+        \    -h, --help             Display this message\n    -o, --output <file>\
+        \    Write output to <file> instead of stdout.\n    -n, --no-headers     \
+        \  When set, the first row will NOT be interpreted\n                     \
+        \      as column names. Note that this has no effect when\n              \
+        \             concatenating columns.\n    -d, --delimiter <arg>  The field\
+        \ delimiter for reading CSV data.\n                           Must be a single\
+        \ character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id017
+      - xsv
+      - count
+      positional: []
+      named:
+      - !Flag
+        description: "When set, the first row will not be included in\nthe count."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Prints a count of the number of records in the CSV data.\n\nNote\
+        \ that the count will not include the header row (unless --no-headers is\n\
+        given).\n\nUsage:\n    xsv count [options] [<input>]\n\nCommon options:\n\
+        \    -h, --help             Display this message\n    -n, --no-headers   \
+        \    When set, the first row will not be included in\n                   \
+        \        the count.\n    -d, --delimiter <arg>  The field delimiter for reading\
+        \ CSV data.\n                           Must be a single character. (default:\
+        \ ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id018
+      - xsv
+      - flatten
+      positional: []
+      named:
+      - !Flag
+        description: "Limits the length of each field to the value\nspecified. If\
+          \ the field is UTF-8 encoded, then\n<arg> refers to the number of code points.\n\
+          Otherwise, it refers to the number of bytes."
+        synonyms:
+        - -c
+        - --condense
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "A string of characters to write after each record.\nWhen non-empty,\
+          \ a new line is automatically\nappended to the separator.\n[default: #]"
+        synonyms:
+        - -s
+        - --separator
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "When set, the first row will not be interpreted\nas headers.\
+          \ When set, the name of each field\nwill be its index."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Prints flattened records such that fields are labeled separated\
+        \ by a new line.\nThis mode is particularly useful for viewing one record\
+        \ at a time. Each\nrecord is separated by a special '#' character (on a line\
+        \ by itself), which\ncan be changed with the --separator flag.\n\nThere is\
+        \ also a condensed view (-c or --condense) that will shorten the\ncontents\
+        \ of each field to provide a summary view.\n\nUsage:\n    xsv flatten [options]\
+        \ [<input>]\n\nflatten options:\n    -c, --condense <arg>  Limits the length\
+        \ of each field to the value\n                           specified. If the\
+        \ field is UTF-8 encoded, then\n                           <arg> refers to\
+        \ the number of code points.\n                           Otherwise, it refers\
+        \ to the number of bytes.\n    -s, --separator <arg>  A string of characters\
+        \ to write after each record.\n                           When non-empty,\
+        \ a new line is automatically\n                           appended to the\
+        \ separator.\n                           [default: #]\n\nCommon options:\n\
+        \    -h, --help             Display this message\n    -n, --no-headers   \
+        \    When set, the first row will not be interpreted\n                   \
+        \        as headers. When set, the name of each field\n                  \
+        \         will be its index.\n    -d, --delimiter <arg>  The field delimiter\
+        \ for reading CSV data.\n                           Must be a single character.\
+        \ (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id019
+      - xsv
+      - split
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: outdir
+        optional: false
+      named:
+      - !Flag
+        description: "The number of records to write into each chunk.\n[default: 500]"
+        synonyms:
+        - -s
+        - --size
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "The number of spliting jobs to run in parallel.\nThis only works\
+          \ when the given CSV data has\nan index already created. Note that a file\
+          \ handle\nis opened for each job.\nWhen set to '0', the number of jobs is\
+          \ set to the\nnumber of CPUs detected.\n[default: 0]"
+        synonyms:
+        - -j
+        - --jobs
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will NOT be interpreted\nas column names.\
+          \ Otherwise, the first row will\nappear in all chunks as the header row."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Splits the given CSV data into chunks.\n\nThe files are written\
+        \ to the directory given with the name '{start}.csv',\nwhere {start} is the\
+        \ index of the first record of the chunk (starting at 0).\n\nUsage:\n    xsv\
+        \ split [options] <outdir> [<input>]\n    xsv split --help\n\nsplit options:\n\
+        \    -s, --size <arg>       The number of records to write into each chunk.\n\
+        \                           [default: 500]\n    -j, --jobs <arg>       The\
+        \ number of spliting jobs to run in parallel.\n                          \
+        \ This only works when the given CSV data has\n                          \
+        \ an index already created. Note that a file handle\n                    \
+        \       is opened for each job.\n                           When set to '0',\
+        \ the number of jobs is set to the\n                           number of CPUs\
+        \ detected.\n                           [default: 0]\n\nCommon options:\n\
+        \    -h, --help             Display this message\n    -o, --output <file>\
+        \    Write output to <file> instead of stdout.\n    -n, --no-headers     \
+        \  When set, the first row will NOT be interpreted\n                     \
+        \      as column names. Otherwise, the first row will\n                  \
+        \         appear in all chunks as the header row.\n    -d, --delimiter <arg>\
+        \  The field delimiter for reading CSV data.\n                           Must\
+        \ be a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id020
+      - xsv
+      - table
+      positional: []
+      named:
+      - !Flag
+        description: "The minimum width of each column.\n[default: 2]"
+        synonyms:
+        - -w
+        - --width
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "The minimum number of spaces between each column.\n[default:\
+          \ 2]"
+        synonyms:
+        - -p
+        - --pad
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "Limits the length of each field to the value\nspecified. If\
+          \ the field is UTF-8 encoded, then\n<arg> refers to the number of code points.\n\
+          Otherwise, it refers to the number of bytes."
+        synonyms:
+        - -c
+        - --condense
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Outputs CSV data as a table with columns in alignment.\n\nThis will\
+        \ not work well if the CSV data contains large fields.\n\nNote that formatting\
+        \ a table requires buffering all CSV data into memory.\nTherefore, you should\
+        \ use the 'sample' or 'slice' command to trim down large\nCSV data before\
+        \ formatting it with this command.\n\nUsage:\n    xsv table [options] [<input>]\n\
+        \ntable options:\n    -w, --width <arg>      The minimum width of each column.\n\
+        \                           [default: 2]\n    -p, --pad <arg>        The minimum\
+        \ number of spaces between each column.\n                           [default:\
+        \ 2]\n    -c, --condense <arg>  Limits the length of each field to the value\n\
+        \                           specified. If the field is UTF-8 encoded, then\n\
+        \                           <arg> refers to the number of code points.\n \
+        \                          Otherwise, it refers to the number of bytes.\n\n\
+        Common options:\n    -h, --help             Display this message\n    -o,\
+        \ --output <file>    Write output to <file> instead of stdout.\n    -d, --delimiter\
+        \ <arg>  The field delimiter for reading CSV data.\n                     \
+        \      Must be a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id021
+      - xsv
+      - stats
+      positional: []
+      named:
+      - !Flag
+        description: "Select a subset of columns to compute stats for.\nSee 'xsv select\
+          \ --help' for the format details.\nThis is provided here because piping\
+          \ 'xsv select'\ninto 'xsv stats' will disable the use of indexing."
+        synonyms:
+        - -s
+        - --select
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Show all statistics available.
+        synonyms:
+        - --everything
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Show the mode.\nThis requires storing all CSV data in memory."
+        synonyms:
+        - --mode
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Show the cardinality.\nThis requires storing all CSV data in\
+          \ memory."
+        synonyms:
+        - --cardinality
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Show the median.\nThis requires storing all CSV data in memory."
+        synonyms:
+        - --median
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Include NULLs in the population size for computing\nmean and\
+          \ standard deviation."
+        synonyms:
+        - --nulls
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The number of jobs to run in parallel.\nThis works better when\
+          \ the given CSV data has\nan index already created. Note that a file handle\n\
+          is opened for each job.\nWhen set to '0', the number of jobs is set to the\n\
+          number of CPUs detected.\n[default: 0]"
+        synonyms:
+        - -j
+        - --jobs
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will NOT be interpreted\nas column names.\
+          \ i.e., They will be included\nin statistics."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Computes basic statistics on CSV data.\n\nBasic statistics includes\
+        \ mean, median, mode, standard deviation, sum, max and\nmin values. Note that\
+        \ some statistics are expensive to compute, so they must\nbe enabled explicitly.\
+        \ By default, the following statistics are reported for\n*every* column in\
+        \ the CSV data: mean, max, min and standard deviation. The\ndefault set of\
+        \ statistics corresponds to statistics that can be computed\nefficiently on\
+        \ a stream of data (i.e., constant memory).\n\nComputing statistics on a large\
+        \ file can be made much faster if you create\nan index for it first with 'xsv\
+        \ index'.\n\nUsage:\n    xsv stats [options] [<input>]\n\nstats options:\n\
+        \    -s, --select <arg>     Select a subset of columns to compute stats for.\n\
+        \                           See 'xsv select --help' for the format details.\n\
+        \                           This is provided here because piping 'xsv select'\n\
+        \                           into 'xsv stats' will disable the use of indexing.\n\
+        \    --everything           Show all statistics available.\n    --mode   \
+        \              Show the mode.\n                           This requires storing\
+        \ all CSV data in memory.\n    --cardinality          Show the cardinality.\n\
+        \                           This requires storing all CSV data in memory.\n\
+        \    --median               Show the median.\n                           This\
+        \ requires storing all CSV data in memory.\n    --nulls                Include\
+        \ NULLs in the population size for computing\n                           mean\
+        \ and standard deviation.\n    -j, --jobs <arg>       The number of jobs to\
+        \ run in parallel.\n                           This works better when the\
+        \ given CSV data has\n                           an index already created.\
+        \ Note that a file handle\n                           is opened for each job.\n\
+        \                           When set to '0', the number of jobs is set to\
+        \ the\n                           number of CPUs detected.\n             \
+        \              [default: 0]\n\nCommon options:\n    -h, --help           \
+        \  Display this message\n    -o, --output <file>    Write output to <file>\
+        \ instead of stdout.\n    -n, --no-headers       When set, the first row will\
+        \ NOT be interpreted\n                           as column names. i.e., They\
+        \ will be included\n                           in statistics.\n    -d, --delimiter\
+        \ <arg>  The field delimiter for reading CSV data.\n                     \
+        \      Must be a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id022
+      - xsv
+      - sample
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: sample-size
+        optional: false
+      named:
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will be consider as part of\nthe population\
+          \ to sample from. (When not set, the\nfirst row is the header row and will\
+          \ always appear\nin the output.)"
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Randomly samples CSV data uniformly using memory proportional to\
+        \ the size of\nthe sample.\n\nWhen an index is present, this command will\
+        \ use random indexing if the sample\nsize is less than 10% of the total number\
+        \ of records. This allows for efficient\nsampling such that the entire CSV\
+        \ file is not parsed.\n\nThis command is intended to provide a means to sample\
+        \ from a CSV data set that\nis too big to fit into memory (for example, for\
+        \ use with commands like 'xsv\nfrequency' or 'xsv stats'). It will however\
+        \ visit every CSV record exactly\nonce, which is necessary to provide a uniform\
+        \ random sample. If you wish to\nlimit the number of records visited, use\
+        \ the 'xsv slice' command to pipe into\n'xsv sample'.\n\nUsage:\n    xsv sample\
+        \ [options] <sample-size> [<input>]\n    xsv sample --help\n\nCommon options:\n\
+        \    -h, --help             Display this message\n    -o, --output <file>\
+        \    Write output to <file> instead of stdout.\n    -n, --no-headers     \
+        \  When set, the first row will be consider as part of\n                 \
+        \          the population to sample from. (When not set, the\n           \
+        \                first row is the header row and will always appear\n    \
+        \                       in the output.)\n    -d, --delimiter <arg>  The field\
+        \ delimiter for reading CSV data.\n                           Must be a single\
+        \ character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id023
+      - xsv
+      - fmt
+      positional: []
+      named:
+      - !Flag
+        description: "The field delimiter for writing CSV data.\n[default: ,]"
+        synonyms:
+        - -t
+        - --out-delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Use '\r\n' line endings in the output.
+        synonyms:
+        - --crlf
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Use ASCII field and record separators.
+        synonyms:
+        - --ascii
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'The quote character to use. [default: "]'
+        synonyms:
+        - --quote
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Put quotes around every value.
+        synonyms:
+        - --quote-always
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The escape character to use. When not specified,\nquotes are\
+          \ escaped by doubling them."
+        synonyms:
+        - --escape
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. [default: ,]\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Formats CSV data with a custom delimiter or CRLF line endings.\n\
+        \nGenerally, all commands in xsv output CSV data in a default format, which\
+        \ is\nthe same as the default format for reading CSV data. This makes it easy\
+        \ to\npipe multiple xsv commands together. However, you may want the final\
+        \ result to\nhave a specific delimiter or record separator, and this is where\
+        \ 'xsv fmt' is\nuseful.\n\nUsage:\n    xsv fmt [options] [<input>]\n\nfmt\
+        \ options:\n    -t, --out-delimiter <arg>  The field delimiter for writing\
+        \ CSV data.\n                               [default: ,]\n    --crlf     \
+        \                Use '\\r\\n' line endings in the output.\n    --ascii   \
+        \                 Use ASCII field and record separators.\n    --quote <arg>\
+        \              The quote character to use. [default: \"]\n    --quote-always\
+        \             Put quotes around every value.\n    --escape <arg>         \
+        \    The escape character to use. When not specified,\n                  \
+        \             quotes are escaped by doubling them.\n\nCommon options:\n  \
+        \  -h, --help             Display this message\n    -o, --output <file>  \
+        \  Write output to <file> instead of stdout.\n    -d, --delimiter <arg>  The\
+        \ field delimiter for reading CSV data.\n                           Must be\
+        \ a single character. [default: ,]\n"
+      generated_using: *id004
+    - !Command
+      command: &id024
+      - xsv
+      - frequency
+      positional: []
+      named:
+      - !Flag
+        description: "Select a subset of columns to compute frequencies\nfor. See\
+          \ 'xsv select --help' for the format\ndetails. This is provided here because\
+          \ piping 'xsv\nselect' into 'xsv frequency' will disable the use\nof indexing."
+        synonyms:
+        - -s
+        - --select
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "Limit the frequency table to the N most common\nitems. Set to\
+          \ '0' to disable a limit.\n[default: 10]"
+        synonyms:
+        - -l
+        - --limit
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: "Sort the frequency tables in ascending order by\ncount. The\
+          \ default is descending order."
+        synonyms:
+        - -a
+        - --asc
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Don't include NULLs in the frequency table.
+        synonyms:
+        - --no-nulls
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The number of jobs to run in parallel.\nThis works better when\
+          \ the given CSV data has\nan index already created. Note that a file handle\n\
+          is opened for each job.\nWhen set to '0', the number of jobs is set to the\n\
+          number of CPUs detected.\n[default: 0]"
+        synonyms:
+        - -j
+        - --jobs
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will NOT be included\nin the frequency\
+          \ table. Additionally, the 'field'\ncolumn will be 1-based indices instead\
+          \ of header\nnames."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Compute a frequency table on CSV data.\n\nThe frequency table is\
+        \ formatted as CSV data:\n\n    field,value,count\n\nBy default, there is\
+        \ a row for the N most frequent values for each field in the\ndata. The order\
+        \ and number of values can be tweaked with --asc and --limit,\nrespectively.\n\
+        \nSince this computes an exact frequency table, memory proportional to the\n\
+        cardinality of each column is required.\n\nUsage:\n    xsv frequency [options]\
+        \ [<input>]\n\nfrequency options:\n    -s, --select <arg>     Select a subset\
+        \ of columns to compute frequencies\n                           for. See 'xsv\
+        \ select --help' for the format\n                           details. This\
+        \ is provided here because piping 'xsv\n                           select'\
+        \ into 'xsv frequency' will disable the use\n                           of\
+        \ indexing.\n    -l, --limit <arg>      Limit the frequency table to the N\
+        \ most common\n                           items. Set to '0' to disable a limit.\n\
+        \                           [default: 10]\n    -a, --asc              Sort\
+        \ the frequency tables in ascending order by\n                           count.\
+        \ The default is descending order.\n    --no-nulls             Don't include\
+        \ NULLs in the frequency table.\n    -j, --jobs <arg>       The number of\
+        \ jobs to run in parallel.\n                           This works better when\
+        \ the given CSV data has\n                           an index already created.\
+        \ Note that a file handle\n                           is opened for each job.\n\
+        \                           When set to '0', the number of jobs is set to\
+        \ the\n                           number of CPUs detected.\n             \
+        \              [default: 0]\n\nCommon options:\n    -h, --help           \
+        \  Display this message\n    -o, --output <file>    Write output to <file>\
+        \ instead of stdout.\n    -n, --no-headers       When set, the first row will\
+        \ NOT be included\n                           in the frequency table. Additionally,\
+        \ the 'field'\n                           column will be 1-based indices instead\
+        \ of header\n                           names.\n    -d, --delimiter <arg>\
+        \  The field delimiter for reading CSV data.\n                           Must\
+        \ be a single character. (default: ,)\n"
+      generated_using: *id004
+    - !Command
+      command: &id025
+      - xsv
+      - sort
+      positional: []
+      named:
+      - !Flag
+        description: "Select a subset of columns to sort.\nSee 'xsv select --help'\
+          \ for the format details."
+        synonyms:
+        - -s
+        - --select
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      - !Flag
+        description: Write output to <file> instead of stdout.
+        synonyms:
+        - -o
+        - --output
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: "When set, the first row will not be interpreted\nas headers.\
+          \ Namely, it will be sorted with the rest\nof the rows. Otherwise, the first\
+          \ row will always\nappear as the header row in the output."
+        synonyms:
+        - -n
+        - --no-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "The field delimiter for reading CSV data.\nMust be a single\
+          \ character. (default: ,)\n"
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: arg
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Display this message
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Sorts CSV data lexicographically.\n\nNote that this requires reading\
+        \ all of the CSV data into memory.\n\nUsage:\n    xsv sort [options] [<input>]\n\
+        \nsort options:\n    -s, --select <arg>     Select a subset of columns to\
+        \ sort.\n                           See 'xsv select --help' for the format\
+        \ details.\n\nCommon options:\n    -h, --help             Display this message\n\
+        \    -o, --output <file>    Write output to <file> instead of stdout.\n  \
+        \  -n, --no-headers       When set, the first row will not be interpreted\n\
+        \                           as headers. Namely, it will be sorted with the\
+        \ rest\n                           of the rows. Otherwise, the first row will\
+        \ always\n                           appear as the header row in the output.\n\
+        \    -d, --delimiter <arg>  The field delimiter for reading CSV data.\n  \
+        \                         Must be a single character. (default: ,)\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: Display this message
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Print version info and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Usage:\n    xsv <command> [<args>...]\n    xsv [options]\n\nOptions:\n\
+      \    --list        List all commands available.\n    -h, --help    Display this\
+      \ message\n    --version     Print version info and exit\n\nCommands:\n    cat\
+      \         Concatenate by row or column\n    count       Count records\n    fixlengths\
+      \  Makes all records have same length\n    flatten     Show one field per line\n\
+      \    fmt         Format CSV output (change field delimiter)\n    frequency \
+      \  Show frequency tables\n    headers     Show header names\n    help      \
+      \  Show this usage message.\n    index       Create CSV index for faster access\n\
+      \    input       Read CSV data with special quoting rules\n    join        Join\
+      \ CSV files\n    sample      Randomly sample CSV data\n    search      Search\
+      \ CSV data with regexes\n    select      Select columns from CSV\n    slice\
+      \       Slice records from CSV\n    sort        Sort CSV data\n    split   \
+      \    Split CSV data into many files\n    stats       Compute basic statistics\n\
+      \    table       Align CSV data into columns\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -63,12 +1676,9 @@ subcommands:
     \ the inputs given.\n\nCommon options:\n    -h, --help             Display this\
     \ message\n    -d, --delimiter <arg>  The field delimiter for reading CSV data.\n\
     \                           Must be a single character. (default: ,)\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - input
+  command: *id006
   positional: []
   named:
   - !Flag
@@ -103,7 +1713,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -126,93 +1736,15 @@ subcommands:
     \ this message\n    -o, --output <file>    Write output to <file> instead of stdout.\n\
     \    -d, --delimiter <arg>  The field delimiter for reading CSV data.\n      \
     \                     Must be a single character. [default: ,]\n"
-  generated_using: *id002
-- &id003 !Command
-  command:
-  - xsv
-  - join
+  generated_using: *id004
+- !Command
+  command: *id007
   positional: []
-  named:
-  - !Flag
-    description: When set, joins are done case insensitively.
-    synonyms:
-    - --no-case
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: "Do a 'left outer' join. This returns all rows in\nfirst CSV data\
-      \ set, including rows with no\ncorresponding row in the second data set. When\
-      \ no\ncorresponding row exists, it is padded out with\nempty fields."
-    synonyms:
-    - --left
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: "Do a 'right outer' join. This returns all rows in\nsecond CSV data\
-      \ set, including rows with no\ncorresponding row in the first data set. When\
-      \ no\ncorresponding row exists, it is padded out with\nempty fields. (This is\
-      \ the reverse of 'outer left'.)"
-    synonyms:
-    - --right
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: "Do a 'full outer' join. This returns all rows in\nboth data sets\
-      \ with matching records joined. If\nthere is no match, the missing side will\
-      \ be padded\nout with empty fields. (This is the combination of\n'outer left'\
-      \ and 'outer right'.)"
-    synonyms:
-    - --full
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: "USE WITH CAUTION.\nThis returns the cartesian product of the CSV\n\
-      data sets given. The number of rows return is\nequal to N * M, where N and M\
-      \ correspond to the\nnumber of rows in the given data sets, respectively."
-    synonyms:
-    - --cross
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: "When set, joins will work on empty fields.\nOtherwise, empty fields\
-      \ are completely ignored.\n(In fact, any row that has an empty field in the\n\
-      key specified is ignored.)"
-    synonyms:
-    - --nulls
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: Write output to <file> instead of stdout.
-    synonyms:
-    - -o
-    - --output
-    args: !SimpleFlagArg
-      name: file
-    optional: true
-  - !Flag
-    description: "When set, the first row will not be interpreted\nas headers. (i.e.,\
-      \ They are not searched, analyzed,\nsliced, etc.)"
-    synonyms:
-    - -n
-    - --no-headers
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: "The field delimiter for reading CSV data.\nMust be a single character.\
-      \ (default: ,)\n"
-    synonyms:
-    - -d
-    - --delimiter
-    args: !SimpleFlagArg
-      name: arg
-    optional: true
-  parent: *id001
+  named: []
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - xsv
-    - join
-    - columns1
+    command: *id008
     positional:
     - !Positional
       description: ''
@@ -235,7 +1767,7 @@ subcommands:
       name: join
       optional: false
     named: []
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag:
@@ -243,12 +1775,9 @@ subcommands:
     version_flag:
     help_text: "Invalid arguments.\n\nUsage:\n    xsv join [options] <columns1> <input1>\
       \ <columns2> <input2>\n    xsv join --help\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
-    command:
-    - xsv
-    - join
-    - input1
+    command: *id009
     positional:
     - !Positional
       description: ''
@@ -276,7 +1805,7 @@ subcommands:
       name: columns2
       optional: false
     named: []
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag:
@@ -284,12 +1813,9 @@ subcommands:
     version_flag:
     help_text: "Invalid arguments.\n\nUsage:\n    xsv join [options] <columns1> <input1>\
       \ <columns2> <input2>\n    xsv join --help\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
-    command:
-    - xsv
-    - join
-    - columns2
+    command: *id010
     positional:
     - !Positional
       description: ''
@@ -317,7 +1843,7 @@ subcommands:
       name: columns2
       optional: false
     named: []
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag:
@@ -325,15 +1851,9 @@ subcommands:
     version_flag:
     help_text: "Invalid arguments.\n\nUsage:\n    xsv join [options] <columns1> <input1>\
       \ <columns2> <input2>\n    xsv join --help\n"
-    generated_using: *id002
+    generated_using: *id004
   usage: []
-  help_flag: !Flag
-    description: Display this message
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "Joins two sets of CSV data on the specified columns.\n\nThe default\
@@ -376,11 +1896,9 @@ subcommands:
     \ are not searched, analyzed,\n                           sliced, etc.)\n    -d,\
     \ --delimiter <arg>  The field delimiter for reading CSV data.\n             \
     \              Must be a single character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - select
+  command: *id011
   positional: []
   named:
   - !Flag
@@ -408,7 +1926,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -438,11 +1956,9 @@ subcommands:
     \                        sliced, etc.)\n    -d, --delimiter <arg>  The field delimiter\
     \ for reading CSV data.\n                           Must be a single character.\
     \ (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - fixlengths
+  command: *id012
   positional: []
   named:
   - !Flag
@@ -471,7 +1987,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -497,11 +2013,9 @@ subcommands:
     \    -o, --output <file>    Write output to <file> instead of stdout.\n    -d,\
     \ --delimiter <arg>  The field delimiter for reading CSV data.\n             \
     \              Must be a single character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - search
+  command: *id013
   positional:
   - !Positional
     description: ''
@@ -558,7 +2072,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -586,11 +2100,9 @@ subcommands:
     \                           sliced, etc.)\n    -d, --delimiter <arg>  The field\
     \ delimiter for reading CSV data.\n                           Must be a single\
     \ character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - index
+  command: *id014
   positional: []
   named:
   - !Flag
@@ -612,7 +2124,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -639,11 +2151,9 @@ subcommands:
     \  Display this message\n    -d, --delimiter <arg>  The field delimiter for reading\
     \ CSV data.\n                           Must be a single character. (default:\
     \ ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - slice
+  command: *id015
   positional: []
   named:
   - !Flag
@@ -703,7 +2213,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -734,11 +2244,9 @@ subcommands:
     \                           appear in the output as the header row.\n    -d, --delimiter\
     \ <arg>  The field delimiter for reading CSV data.\n                         \
     \  Must be a single character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - cat
+  command: *id016
   positional:
   - !Positional
     description: ''
@@ -784,7 +2292,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -816,11 +2324,9 @@ subcommands:
     \        concatenating columns.\n    -d, --delimiter <arg>  The field delimiter\
     \ for reading CSV data.\n                           Must be a single character.\
     \ (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - count
+  command: *id017
   positional: []
   named:
   - !Flag
@@ -839,7 +2345,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -858,11 +2364,9 @@ subcommands:
     \ row will not be included in\n                           the count.\n    -d,\
     \ --delimiter <arg>  The field delimiter for reading CSV data.\n             \
     \              Must be a single character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - flatten
+  command: *id018
   positional: []
   named:
   - !Flag
@@ -901,7 +2405,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -932,11 +2436,9 @@ subcommands:
     \    will be its index.\n    -d, --delimiter <arg>  The field delimiter for reading\
     \ CSV data.\n                           Must be a single character. (default:\
     \ ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - split
+  command: *id019
   positional:
   - !Positional
     description: ''
@@ -988,7 +2490,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1018,11 +2520,9 @@ subcommands:
     \      appear in all chunks as the header row.\n    -d, --delimiter <arg>  The\
     \ field delimiter for reading CSV data.\n                           Must be a\
     \ single character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - table
+  command: *id020
   positional: []
   named:
   - !Flag
@@ -1068,7 +2568,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1096,11 +2596,9 @@ subcommands:
     \ output to <file> instead of stdout.\n    -d, --delimiter <arg>  The field delimiter\
     \ for reading CSV data.\n                           Must be a single character.\
     \ (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - stats
+  command: *id021
   positional: []
   named:
   - !Flag
@@ -1180,7 +2678,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1224,11 +2722,9 @@ subcommands:
     \ They will be included\n                           in statistics.\n    -d, --delimiter\
     \ <arg>  The field delimiter for reading CSV data.\n                         \
     \  Must be a single character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - sample
+  command: *id022
   positional:
   - !Positional
     description: ''
@@ -1262,7 +2758,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1292,11 +2788,9 @@ subcommands:
     \                           in the output.)\n    -d, --delimiter <arg>  The field\
     \ delimiter for reading CSV data.\n                           Must be a single\
     \ character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - fmt
+  command: *id023
   positional: []
   named:
   - !Flag
@@ -1357,7 +2851,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1386,11 +2880,9 @@ subcommands:
     \ instead of stdout.\n    -d, --delimiter <arg>  The field delimiter for reading\
     \ CSV data.\n                           Must be a single character. [default:\
     \ ,]\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - frequency
+  command: *id024
   positional: []
   named:
   - !Flag
@@ -1463,7 +2955,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1504,11 +2996,9 @@ subcommands:
     \                           names.\n    -d, --delimiter <arg>  The field delimiter\
     \ for reading CSV data.\n                           Must be a single character.\
     \ (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - xsv
-  - sort
+  command: *id025
   positional: []
   named:
   - !Flag
@@ -1546,7 +3036,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1570,22 +3060,11 @@ subcommands:
     \           appear as the header row in the output.\n    -d, --delimiter <arg>\
     \  The field delimiter for reading CSV data.\n                           Must\
     \ be a single character. (default: ,)\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: Display this message
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: Print version info and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "Usage:\n    xsv <command> [<args>...]\n    xsv [options]\n\nOptions:\n\
   \    --list        List all commands available.\n    -h, --help    Display this\
   \ message\n    --version     Print version info and exit\n\nCommands:\n    cat \
@@ -1600,4 +3079,4 @@ help_text: "Usage:\n    xsv <command> [<args>...]\n    xsv [options]\n\nOptions:
   \ from CSV\n    sort        Sort CSV data\n    split       Split CSV data into many\
   \ files\n    stats       Compute basic statistics\n    table       Align CSV data\
   \ into columns\n"
-generated_using: *id002
+generated_using: *id004

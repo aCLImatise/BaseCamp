@@ -1,19 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - split_by_p7_barcode
 positional: []
-named:
-- !Flag
-  description: Overwrite existing files when creating the output.
-  synonyms:
-  - -f
-  - --force
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - split_by_p7_barcode
   - p7_file
   positional:
@@ -39,7 +32,76 @@ subcommands:
     - -f
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: Overwrite existing files when creating the output.
+      synonyms:
+      - -f
+      - --force
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: split_by_p7_barcode
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: p5_file
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: p7_file
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: split_by_p7_barcode [-h] [-f] p5_file p7_file\nsplit_by_p7_barcode:\
+        \ error: the following arguments are required: p7_file\n"
+      generated_using: &id004 []
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: split_by_p7_barcode [-h] [-f] p5_file p7_file\n\nSplit a multi-barcode\
+      \ file created by ddRAGE p7 barcode. Output files are\nwritten into the current\
+      \ folder.\n\npositional arguments:\n  p5_file      Path to forward read file.\n\
+      \  p7_file      Path to reverse read file.\n\noptional arguments:\n  -h, --help\
+      \   show this help message and exit\n  -f, --force  Overwrite existing files\
+      \ when creating the output.\n"
+    generated_using: &id005
+    - --help
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -52,15 +114,9 @@ subcommands:
   version_flag:
   help_text: "usage: split_by_p7_barcode [-h] [-f] p5_file p7_file\nsplit_by_p7_barcode:\
     \ error: the following arguments are required: p7_file\n"
-  generated_using: []
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: split_by_p7_barcode [-h] [-f] p5_file p7_file\n\nSplit a multi-barcode\
@@ -69,5 +125,4 @@ help_text: "usage: split_by_p7_barcode [-h] [-f] p5_file p7_file\n\nSplit a mult
   \  p7_file      Path to reverse read file.\n\noptional arguments:\n  -h, --help\
   \   show this help message and exit\n  -f, --force  Overwrite existing files when\
   \ creating the output.\n"
-generated_using:
-- --help
+generated_using: *id005

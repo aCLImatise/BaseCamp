@@ -8,26 +8,6 @@ positional:
   name: cwltool
   optional: false
 - !Positional
-  description: --preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]
-  position: 0
-  name: exit
-  optional: false
-- !Positional
-  description: --preserve-entire-environment
-  position: 0
-  name: CommandLineTools
-  optional: false
-- !Positional
-  description: --destBucket DESTBUCKET
-  position: 0
-  name: CommandLineTools.
-  optional: false
-- !Positional
-  description: --strict-memory-limit
-  position: 0
-  name: only
-  optional: false
-- !Positional
   description: "The location of the job store for the workflow. A job\nstore holds\
     \ persistent information about the jobs and\nfiles in a workflow. If the workflow\
     \ is run with a\ndistributed batch system, the job store must be\naccessible by\
@@ -49,146 +29,6 @@ positional:
   name: provisioning.
   optional: false
 named:
-- !Flag
-  description: ''
-  synonyms:
-  - --jobStore
-  args: !SimpleFlagArg
-    name: JOBSTORE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --not-strict
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Enable loading and running development versions of CWL
-  synonyms:
-  - --enable-dev
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --quiet
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --basedir
-  args: !SimpleFlagArg
-    name: BASEDIR
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --outdir
-  args: !SimpleFlagArg
-    name: OUTDIR
-  optional: true
-- !Flag
-  description: "(Linux/OS X only) Specify a user space docker command\n(like udocker\
-    \ or dx-docker) that will be used to call\n'pull' and 'run'"
-  synonyms:
-  - --user-space-docker-cmd
-  args: !SimpleFlagArg
-    name: USER_SPACE_DOCKER_CMD
-  optional: true
-- !Flag
-  description: "[experimental] Use Singularity runtime for running\ncontainers. Requires\
-    \ Singularity v2.6.1+ and Linux\nwith kernel version v3.18+ or with overlayfs\
-    \ support\nbackported."
-  synonyms:
-  - --singularity
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
-    \ is specified under `hints`."
-  synonyms:
-  - --no-container
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not delete Docker container used by jobs after they
-  synonyms:
-  - --leave-container
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --beta-dependency-resolvers-configuration
-  args: !SimpleFlagArg
-    name: BETA_DEPENDENCY_RESOLVERS_CONFIGURATION
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --beta-dependencies-directory
-  args: !SimpleFlagArg
-    name: BETA_DEPENDENCIES_DIRECTORY
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --beta-use-biocontainers
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --beta-conda-dependencies
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Path prefix for temporary directories
-  synonyms:
-  - --tmpdir-prefix
-  args: !SimpleFlagArg
-    name: TMPDIR_PREFIX
-  optional: true
-- !Flag
-  description: Path prefix for intermediate output directories
-  synonyms:
-  - --tmp-outdir-prefix
-  args: !SimpleFlagArg
-    name: TMP_OUTDIR_PREFIX
-  optional: true
-- !Flag
-  description: Pull latest docker image even if it is locally present
-  synonyms:
-  - --force-docker-pull
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Disable passing the current uid to `docker run --user`
-  synonyms:
-  - --no-match-user
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Do not set root directory in the container as read-
-  synonyms:
-  - --no-read-only
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Relax requirements on path names to permit spaces and\nhash characters."
-  synonyms:
-  - --relax-path-checks
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Specify a default docker container that will be used\nif the workflow\
-    \ fails to specify one."
-  synonyms:
-  - --default-container
-  args: !SimpleFlagArg
-    name: DEFAULT_CONTAINER
-  optional: true
 - !Flag
   description: Same as --logCritical
   synonyms:
@@ -286,10 +126,10 @@ named:
   - --clean
   args: !ChoiceFlagArg
     choices: !!set
-      onError:
       never:
-      always:
       onSuccess:
+      always:
+      onError:
   optional: true
 - !Flag
   description: "Determines deletion of temporary worker directory upon\ncompletion\
@@ -301,9 +141,9 @@ named:
   args: !ChoiceFlagArg
     choices: !!set
       never:
-      onError:
-      always:
       onSuccess:
+      always:
+      onError:
   optional: true
 - !Flag
   description: "[CLUSTERSTATS]\nIf enabled, writes out JSON resource usage statistics\n\
@@ -561,37 +401,17 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: ''
+  description: "--maxCores INT        The maximum number of CPU cores to request from\
+    \ the\nbatch system at any one time. Standard suffixes like\nK, Ki, M, Mi, G or\
+    \ Gi are supported. Default is 8.0 Ei\n--maxMemory INT       The maximum amount\
+    \ of memory to request from the batch\nsystem at any one time. Standard suffixes\
+    \ like K, Ki,\nM, Mi, G or Gi are supported. Default is 8.0 Ei\n--maxDisk INT\
+    \         The maximum amount of disk space to request from the\nbatch system at\
+    \ any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default\
+    \ is 8.0 Ei"
   synonyms:
   - --defaultPreemptable
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "The maximum number of CPU cores to request from the\nbatch system\
-    \ at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported.\
-    \ Default is 8.0 Ei"
-  synonyms:
-  - --maxCores
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "The maximum amount of memory to request from the batch\nsystem at\
-    \ any one time. Standard suffixes like K, Ki,\nM, Mi, G or Gi are supported. Default\
-    \ is 8.0 Ei"
-  synonyms:
-  - --maxMemory
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "The maximum amount of disk space to request from the\nbatch system\
-    \ at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported.\
-    \ Default is 8.0 Ei"
-  synonyms:
-  - --maxDisk
-  args: !SimpleFlagArg
-    name: INT
   optional: true
 - !Flag
   description: "Number of times to retry a failing job before giving\nup and labeling\
@@ -819,19 +639,40 @@ parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n--jobStore JOBSTORE\n--not-strict\n\
+    --enable-dev          Enable loading and running development versions of CWL\n\
+    --quiet\n--basedir BASEDIR\n--outdir OUTDIR\n--version             show program's\
+    \ version number and exit\n--user-space-docker-cmd USER_SPACE_DOCKER_CMD\n(Linux/OS\
+    \ X only) Specify a user space docker command\n(like udocker or dx-docker) that\
+    \ will be used to call\n'pull' and 'run'\n--singularity         [experimental]\
+    \ Use Singularity runtime for running\ncontainers. Requires Singularity v2.6.1+\
+    \ and Linux\nwith kernel version v3.18+ or with overlayfs support\nbackported.\n\
+    --no-container        Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
+    \ is specified under `hints`.\n--leave-container     Do not delete Docker container\
+    \ used by jobs after they\nexit\n--preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]\n\
+    Preserve specified environment variables when running\nCommandLineTools\n--preserve-entire-environment\n\
+    Preserve all environment variable when running\nCommandLineTools.\n--destBucket\
+    \ DESTBUCKET\nSpecify a cloud bucket endpoint for output files.\n--beta-dependency-resolvers-configuration\
+    \ BETA_DEPENDENCY_RESOLVERS_CONFIGURATION\n--beta-dependencies-directory BETA_DEPENDENCIES_DIRECTORY\n\
+    --beta-use-biocontainers\n--beta-conda-dependencies\n--tmpdir-prefix TMPDIR_PREFIX\n\
+    Path prefix for temporary directories\n--tmp-outdir-prefix TMP_OUTDIR_PREFIX\n\
+    Path prefix for intermediate output directories\n--force-docker-pull   Pull latest\
+    \ docker image even if it is locally present\n--no-match-user       Disable passing\
+    \ the current uid to `docker run --user`\n--no-read-only        Do not set root\
+    \ directory in the container as read-\nonly\n--strict-memory-limit\nWhen running\
+    \ with software containers and the Docker\nengine, pass either the calculated\
+    \ memory allocation\nfrom ResourceRequirements or the default of 1 gigabyte\n\
+    to Docker's --memory option.\n--relax-path-checks   Relax requirements on path\
+    \ names to permit spaces and\nhash characters.\n--default-container DEFAULT_CONTAINER\n\
+    Specify a default docker container that will be used\nif the workflow fails to\
+    \ specify one."
   synonyms:
   - -h
   - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: toil-cwl-runner [-h] [--logOff] [--logCritical] [--logError]\n\
   \                       [--logWarning] [--logInfo] [--logDebug]\n              \
   \         [--logLevel LOGLEVEL] [--logFile LOGFILE]\n                       [--rotatingLogging]\

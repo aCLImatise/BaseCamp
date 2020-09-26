@@ -4,12 +4,11 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
+  description: '[--output_prefix out_prefix] [--tasks N]'
   synonyms:
-  - --binning
   - --output_path
   args: !SimpleFlagArg
-    name: variable_500000_101_bwa
+    name: out_path
   optional: true
 - !Flag
   description: 'Run the pipeline. USAGE: phylics --run [--run_cnvs |'
@@ -24,32 +23,34 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '[v [v ...]] --output_path out_path'
+  description: "Run 10x data pre-processing module. USAGE: phylics\n--run_10x_preproc\
+    \ --input_dirs\nsample_name:10x_out_path --output_path out_oath\n[--output_prefix\
+    \ out_prefix] [--verbose]. Only single-\nsample execution is available for this\
+    \ option: only\nthe first input directory is considered, even if more\nthan one\
+    \ has been declared."
   synonyms:
-  - --values
+  - --run_10x_preproc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Run only the CNV calling stage. USAGE: phylics --run'
+  description: "Run the cell filtering module. USAGE: phylics\n--run_cell_filtering\
+    \ --input_dirs\nsample_name:input_path --intervals [v1-v2 [v1-v2 ...]\n--values\
+    \ [v [v ...]] --output_path out_path\n[--output_prefix out_prefix] [--verbose].\
+    \ Only single-\nsample execution is available for this option: only\nthe first\
+    \ input directory is considered, even if more\nthan one has been declared. NOTE\
+    \ that at least one of\nthe two options, \"--intervals\" and \"--values\", must\n\
+    contain values to make this command effective."
   synonyms:
-  - --run_cnvs
+  - --run_cell_filtering
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: "Run only the CNV calling stage. USAGE: phylics --run\n--run_cnvs --input_dirs\
+    \ beds_dir [beds_dir ...]\n--genome hg19 --binning variable_500000_101_bwa\n[--init_ginkgo]\
+    \ [--verbose]"
   synonyms:
   - --run_cnvs
-  - --input_dirs
-  args: !RepeatFlagArg
-    name: beds_dir
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --genome
-  - --binning
-  args: !SimpleFlagArg
-    name: hg19
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: "Run only the multiple-sample analysis stage. USAGE:\nphylics --run\
@@ -60,18 +61,27 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: ":input_dir [sample_name:input_dir ...]\nPairs made of sample name\
+    \ and directory path,\nseparated by \":\", for each input sample. Sample name\n\
+    and input directory path cannot contain \":\""
+  synonyms:
+  - --input_dirs
+  args: !SimpleFlagArg
+    name: sample_name
+  optional: true
+- !Flag
   description: Clustering method (default = complete)
   synonyms:
   - --method
   args: !ChoiceFlagArg
     choices: !!set
-      weighted:
-      single:
-      complete:
-      centroid:
-      median:
       average:
       ward:
+      centroid:
+      single:
+      weighted:
+      complete:
+      median:
   optional: true
 - !Flag
   description: Distance metric
@@ -80,14 +90,14 @@ named:
   args: !ChoiceFlagArg
     choices: !!set
       correlation:
-      cityblock:
-      chebyshev:
-      canberra:
-      jaccard:
-      cosine:
-      hamming:
-      sqeuclidean:
       euclidean:
+      jaccard:
+      sqeuclidean:
+      chebyshev:
+      cosine:
+      canberra:
+      cityblock:
+      hamming:
   optional: true
 - !Flag
   description: "A string to be pre-pended to the names automatically\ngenerated for\
@@ -144,6 +154,34 @@ named:
   - --intervals
   args: !RepeatFlagArg
     name: v1-v2
+  optional: true
+- !Flag
+  description: "List of of mean ploidy values: cells which mean\nploidies are equal\
+    \ to the specified ones are filtered\nout"
+  synonyms:
+  - --values
+  args: !RepeatFlagArg
+    name: v
+  optional: true
+- !Flag
+  description: Directory name for ROOT_DIR/genomes/${chosen_genome}
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: genome
+  optional: true
+- !Flag
+  description: "A complex value made of the concatenation of - type:\nvariable or\
+    \ fixed (bins. Variable refers to amount of\nmappable genome, recommended); -\
+    \ size: bin size; -\nread-length: mapped reads length; - aligner: bowtie or\n\
+    bwa. The read-length and aligner refer to the\nsimulations of re-mapping reads\
+    \ of that length with\nthat aligner on the whole genome. This is used to\ncalculate\
+    \ bins of \"mappable\" (i.e. variable)\ngenome.The resulting value is the name\
+    \ of a file under\nginkgo/genomes/$choosen_genome/original/ with the bin\ncoordinates."
+  synonyms:
+  - --binning
+  args: !SimpleFlagArg
+    name: variable_500000_101_bwa
   optional: true
 - !Flag
   description: Verbose execution.

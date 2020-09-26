@@ -1,23 +1,16 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - gqt
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - gqt
   - calpha
   positional: []
   named:
-  - !Flag
-    description: \
-    synonyms:
-    - -d
-    args: !SimpleFlagArg
-      name: ped database file
-    optional: true
   - !Flag
     description: direcory name for remote files (default ./)
     synonyms:
@@ -46,7 +39,445 @@ subcommands:
     args: !SimpleFlagArg
       name: gqt file
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: \
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: ped database file
+        optional: true
+      - !Flag
+        description: direcory name for remote files (default ./)
+        synonyms:
+        - -t
+        args: !SimpleFlagArg
+          name: tmp
+        optional: true
+      - !Flag
+        description: (requried for pca-shared)\
+        synonyms:
+        - -f
+        args: !SimpleFlagArg
+          name: label db field name
+        optional: true
+      - !Flag
+        description: (requried for pca-shared)\
+        synonyms:
+        - -l
+        args: !SimpleFlagArg
+          name: label output file
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -i
+        args: !SimpleFlagArg
+          name: gqt file
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "calpha: invalid option -- '-'\nUnknown option `--'.\ngqt 1.1.3\n\
+        usage:   gqt calpha -i <gqt file> \\\n                   -d <ped database\
+        \ file> \\\n                   -t tmp direcory name for remote files (default\
+        \ ./)\n                   -f <label db field name> (requried for pca-shared)\\\
+        \n                   -l <label output file> (requried for pca-shared)\\\n\
+        \                   -p <population query 1> \\\n                   -p <population\
+        \ query 2> \\\n                   ... \\\n                   -p <population\
+        \ query N> \n\nEach population query defines one subpopulation.\nFor example,\
+        \ to find compare the GBR and YRI subpopulations:\n\t-p \"Population = 'GBR'\"\
+        \n\t-p \"Population = 'YRI'\"\n\nPopulation queries are based on the PED file\
+        \ that is associated with the\ngenotypes, and any column in that PED file\
+        \ can be part of the query.  For\nexample, a PED file that includes the \"\
+        Paternal_ID\" and \"Gender\" fields\n(where male = 1 and female = 2) could\
+        \ be queried by:\n\n\t-p \"Paternal_ID = 'NA12878' AND Gender = 2\"\n\nNOTE:\
+        \ gst and fst assume that variants are biallelic.  If your data\ncontains\
+        \ multiallelic sites, we recommend decomposing your VCF \n(see A. Tan, Bioinformatics\
+        \ 2015) prior to indexing.\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - gqt
+      - fst
+      positional: []
+      named:
+      - !Flag
+        description: \
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: ped database file
+        optional: true
+      - !Flag
+        description: direcory name for remote files (default ./)
+        synonyms:
+        - -t
+        args: !SimpleFlagArg
+          name: tmp
+        optional: true
+      - !Flag
+        description: (requried for pca-shared)\
+        synonyms:
+        - -f
+        args: !SimpleFlagArg
+          name: label db field name
+        optional: true
+      - !Flag
+        description: (requried for pca-shared)\
+        synonyms:
+        - -l
+        args: !SimpleFlagArg
+          name: label output file
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -i
+        args: !SimpleFlagArg
+          name: gqt file
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "fst: invalid option -- '-'\nUnknown option `--'.\ngqt 1.1.3\nusage:\
+        \   gqt fst -i <gqt file> \\\n                   -d <ped database file> \\\
+        \n                   -t tmp direcory name for remote files (default ./)\n\
+        \                   -f <label db field name> (requried for pca-shared)\\\n\
+        \                   -l <label output file> (requried for pca-shared)\\\n \
+        \                  -p <population query 1> \\\n                   -p <population\
+        \ query 2> \\\n                   ... \\\n                   -p <population\
+        \ query N> \n\nEach population query defines one subpopulation.\nFor example,\
+        \ to find compare the GBR and YRI subpopulations:\n\t-p \"Population = 'GBR'\"\
+        \n\t-p \"Population = 'YRI'\"\n\nPopulation queries are based on the PED file\
+        \ that is associated with the\ngenotypes, and any column in that PED file\
+        \ can be part of the query.  For\nexample, a PED file that includes the \"\
+        Paternal_ID\" and \"Gender\" fields\n(where male = 1 and female = 2) could\
+        \ be queried by:\n\n\t-p \"Paternal_ID = 'NA12878' AND Gender = 2\"\n\nNOTE:\
+        \ gst and fst assume that variants are biallelic.  If your data\ncontains\
+        \ multiallelic sites, we recommend decomposing your VCF \n(see A. Tan, Bioinformatics\
+        \ 2015) prior to indexing.\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - gqt
+      - gst
+      positional: []
+      named:
+      - !Flag
+        description: \
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: ped database file
+        optional: true
+      - !Flag
+        description: direcory name for remote files (default ./)
+        synonyms:
+        - -t
+        args: !SimpleFlagArg
+          name: tmp
+        optional: true
+      - !Flag
+        description: (requried for pca-shared)\
+        synonyms:
+        - -f
+        args: !SimpleFlagArg
+          name: label db field name
+        optional: true
+      - !Flag
+        description: (requried for pca-shared)\
+        synonyms:
+        - -l
+        args: !SimpleFlagArg
+          name: label output file
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -i
+        args: !SimpleFlagArg
+          name: gqt file
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "gst: invalid option -- '-'\nUnknown option `--'.\ngqt 1.1.3\nusage:\
+        \   gqt gst -i <gqt file> \\\n                   -d <ped database file> \\\
+        \n                   -t tmp direcory name for remote files (default ./)\n\
+        \                   -f <label db field name> (requried for pca-shared)\\\n\
+        \                   -l <label output file> (requried for pca-shared)\\\n \
+        \                  -p <population query 1> \\\n                   -p <population\
+        \ query 2> \\\n                   ... \\\n                   -p <population\
+        \ query N> \n\nEach population query defines one subpopulation.\nFor example,\
+        \ to find compare the GBR and YRI subpopulations:\n\t-p \"Population = 'GBR'\"\
+        \n\t-p \"Population = 'YRI'\"\n\nPopulation queries are based on the PED file\
+        \ that is associated with the\ngenotypes, and any column in that PED file\
+        \ can be part of the query.  For\nexample, a PED file that includes the \"\
+        Paternal_ID\" and \"Gender\" fields\n(where male = 1 and female = 2) could\
+        \ be queried by:\n\n\t-p \"Paternal_ID = 'NA12878' AND Gender = 2\"\n\nNOTE:\
+        \ gst and fst assume that variants are biallelic.  If your data\ncontains\
+        \ multiallelic sites, we recommend decomposing your VCF \n(see A. Tan, Bioinformatics\
+        \ 2015) prior to indexing.\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - gqt
+      - query
+      positional: []
+      named:
+      - !Flag
+        description: \
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: ped database file
+        optional: true
+      - !Flag
+        description: print number of resulting variants \
+        synonyms:
+        - -c
+        args: !SimpleFlagArg
+          name: only
+        optional: true
+      - !Flag
+        description: genotypes (from the source bcf/vcf)\
+        synonyms:
+        - -v
+        args: !SimpleFlagArg
+          name: print
+        optional: true
+      - !Flag
+        description: direcory name for remote files (default ./)
+        synonyms:
+        - -t
+        args: !SimpleFlagArg
+          name: tmp
+        optional: true
+      - !Flag
+        description: (opt.)\
+        synonyms:
+        - -B
+        args: !SimpleFlagArg
+          name: bim file
+        optional: true
+      - !Flag
+        description: (opt.)\
+        synonyms:
+        - -O
+        args: !SimpleFlagArg
+          name: off file
+        optional: true
+      - !Flag
+        description: (opt.)\
+        synonyms:
+        - -V
+        args: !SimpleFlagArg
+          name: vid file
+        optional: true
+      - !Flag
+        description: (opt.)\
+        synonyms:
+        - -G
+        args: !SimpleFlagArg
+          name: gqt file
+        optional: true
+      - !Flag
+        description: \
+        synonyms:
+        - -p
+        args: !SimpleFlagArg
+          name: population query 1
+        optional: true
+      - !Flag
+        description: \
+        synonyms:
+        - -g
+        args: !SimpleFlagArg
+          name: genotype query 1
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -i
+        args: !SimpleFlagArg
+          name: bcf/vcf or gqt file
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "query: invalid option -- '-'\nUnknown option `--'.\ngqt v1.1.3\n\
+        usage:   gqt query -i <bcf/vcf or gqt file> \\\n                   -d <ped\
+        \ database file> \\\n                   -c only print number of resulting\
+        \ variants \\\n                   -v print genotypes (from the source bcf/vcf)\\\
+        \n                   -t tmp direcory name for remote files (default ./)\n\
+        \                   -B <bim file> (opt.)\\\n                   -O <off file>\
+        \ (opt.)\\\n                   -V <vid file> (opt.)\\\n                  \
+        \ -G <gqt file> (opt.)\\\n                   -p <population query 1> \\\n\
+        \                   -g <genotype query 1> \\\n                   -p <population\
+        \ query 2> \\\n                   -g <genotype query 2> \\\n\nA GQT query\
+        \ returns a set of variants that meet some number of population \nand genotype\
+        \ conditions.  Conditions are specified by a population query \nand genotype\
+        \ query pair, where the population query defines the set of\nindividuals to\
+        \ consider and the genotype query defines a filter on that\npopulation.  The\
+        \ result is the set of variants within that sub-population\nthat meet the\
+        \ given conditions.  For example, to find the variants that are\nheterozygous\
+        \ in the GBR population the query pair would be:\n\n\t-p \"Population = 'GBR'\"\
+        \ -g \"HET\"\n\nAny number of query pairs can be included, to further refine\
+        \ that set of\nvariants.  For example, to find the variants that are heterozygous\
+        \ in at \nleast 10 individuals from the GBR population, and are homozygous\
+        \ reference \nin the TSI population the two query pairs would be:\n\n\t-p\
+        \ \"Population = 'GBR'\" -g \"count(HET) >= 10\" \\\n\t-p \"Population = 'GBR'\"\
+        \ -g \"HOM_REF\"\n\nPopulation queries are based on the PED file that is associated\
+        \ with the\ngenotypes, and any column in that PED file can be part of the\
+        \ query.  For\nexample, a PED file that includes the \"Paternal_ID\" and \"\
+        Gender\" fields\n(where male = 1 and female = 2) could be queried by:\n\n\t\
+        -p \"Paternal_ID = 'NA12878' AND Gender = 2\"\n\nGenotype queries can either\
+        \ be direct genotype filters or count-based \nfilters.  To get the variants\
+        \ that are heterozygous in every member of the\npopulation the query would\
+        \ be:\n\n\t-g \"HET\"\n\nOr to get the variants that are either heterozygous\
+        \ or homozygous alternate\nin every member the query would be:\n\n\t-g \"\
+        HET HOM_ALT\"\n\nCount based filters used the \"count()\" operator that takes\
+        \ a genotype \nlist as a parameter followed by some condition.  For example,\
+        \ to find the\nvariants that are either heterozygous or homozygous alternate\
+        \ in no more\nthan 10 individuals the query would be\n\n\t-g \"count(HET HOM_ALT)\
+        \ < 10\"\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - gqt
+      - convert
+      positional:
+      - !Positional
+        description: create a GQT index
+        position: 0
+        name: bcf
+        optional: false
+      - !Positional
+        description: create sample phenotype database
+        position: 1
+        name: ped
+        optional: false
+      named:
+      - !Flag
+        description: PED file name (opt.)
+        synonyms:
+        - -p
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Sample name column in PED (Default 2)
+        synonyms:
+        - -c
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: GQT output file name (opt.)
+        synonyms:
+        - -G
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: VID output file name (opt.)
+        synonyms:
+        - -V
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: OFF output file name (opt.)
+        synonyms:
+        - -O
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: BIM output file name (opt.)
+        synonyms:
+        - -B
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: PED DB output file name (opt.)
+        synonyms:
+        - -D
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Number of variants (opt. with index)
+        synonyms:
+        - -r
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Number of samples (opt. with index)
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Tmp working directory(./ by defualt)
+        synonyms:
+        - -t
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -i
+        args: !SimpleFlagArg
+          name: input VCF/VCF.GZ/BCF file
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "gqt v1.1.3\nusage:   gqt convert <type> -i <input VCF/VCF.GZ/BCF\
+        \ file>\n     types:\n         bcf         create a GQT index\n         ped\
+        \         create sample phenotype database\n\n     options:\n         -p \
+        \          PED file name (opt.)\n         -c           Sample name column\
+        \ in PED (Default 2)\n         -G           GQT output file name (opt.)\n\
+        \         -V           VID output file name (opt.)\n         -O          \
+        \ OFF output file name (opt.)\n         -B           BIM output file name\
+        \ (opt.)\n         -D           PED DB output file name (opt.)\n         -r\
+        \           Number of variants (opt. with index)\n         -f           Number\
+        \ of samples (opt. with index)\n         -t           Tmp working directory(./\
+        \ by defualt)\n"
+      generated_using: *id004
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Unknown command\ngqt, v1.1.3\nusage:   gqt <command> [options]\n \
+      \        convert    Convert between file types\n         query      Query the\
+      \ index\n         pca-shared Compute the similarity matrix for PCA base\n  \
+      \                  on the number of shared non-reference loci.\n         calpha\
+      \     Calculate C-alpha paramters (Neal 2011)\n         gst        Calculate\
+      \ Gst statistic (Neil 1973)\n         fst        Calculate Fst statistic (Weir\
+      \ and Cockerham 1984)\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag:
@@ -68,21 +499,11 @@ subcommands:
     \ AND Gender = 2\"\n\nNOTE: gst and fst assume that variants are biallelic.  If\
     \ your data\ncontains multiallelic sites, we recommend decomposing your VCF \n\
     (see A. Tan, Bioinformatics 2015) prior to indexing.\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - gqt
-  - fst
+  command: *id005
   positional: []
   named:
-  - !Flag
-    description: \
-    synonyms:
-    - -d
-    args: !SimpleFlagArg
-      name: ped database file
-    optional: true
   - !Flag
     description: direcory name for remote files (default ./)
     synonyms:
@@ -111,7 +532,7 @@ subcommands:
     args: !SimpleFlagArg
       name: gqt file
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -133,20 +554,11 @@ subcommands:
     \ AND Gender = 2\"\n\nNOTE: gst and fst assume that variants are biallelic.  If\
     \ your data\ncontains multiallelic sites, we recommend decomposing your VCF \n\
     (see A. Tan, Bioinformatics 2015) prior to indexing.\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - gqt
-  - gst
+  command: *id006
   positional: []
   named:
-  - !Flag
-    description: \
-    synonyms:
-    - -d
-    args: !SimpleFlagArg
-      name: ped database file
-    optional: true
   - !Flag
     description: direcory name for remote files (default ./)
     synonyms:
@@ -175,7 +587,7 @@ subcommands:
     args: !SimpleFlagArg
       name: gqt file
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -197,20 +609,11 @@ subcommands:
     \ AND Gender = 2\"\n\nNOTE: gst and fst assume that variants are biallelic.  If\
     \ your data\ncontains multiallelic sites, we recommend decomposing your VCF \n\
     (see A. Tan, Bioinformatics 2015) prior to indexing.\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - gqt
-  - query
+  command: *id007
   positional: []
   named:
-  - !Flag
-    description: \
-    synonyms:
-    - -d
-    args: !SimpleFlagArg
-      name: ped database file
-    optional: true
   - !Flag
     description: print number of resulting variants \
     synonyms:
@@ -261,27 +664,13 @@ subcommands:
       name: gqt file
     optional: true
   - !Flag
-    description: \
-    synonyms:
-    - -p
-    args: !SimpleFlagArg
-      name: population query 1
-    optional: true
-  - !Flag
-    description: \
-    synonyms:
-    - -g
-    args: !SimpleFlagArg
-      name: genotype query 1
-    optional: true
-  - !Flag
     description: ''
     synonyms:
     - -i
     args: !SimpleFlagArg
       name: bcf/vcf or gqt file
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -321,11 +710,9 @@ subcommands:
     \ example, to find the\nvariants that are either heterozygous or homozygous alternate\
     \ in no more\nthan 10 individuals the query would be\n\n\t-g \"count(HET HOM_ALT)\
     \ < 10\"\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - gqt
-  - convert
+  command: *id008
   positional:
   - !Positional
     description: create a GQT index
@@ -405,7 +792,7 @@ subcommands:
     args: !SimpleFlagArg
       name: input VCF/VCF.GZ/BCF file
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -421,7 +808,7 @@ subcommands:
     \ file name (opt.)\n         -r           Number of variants (opt. with index)\n\
     \         -f           Number of samples (opt. with index)\n         -t      \
     \     Tmp working directory(./ by defualt)\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -432,4 +819,4 @@ help_text: "Unknown command\ngqt, v1.1.3\nusage:   gqt <command> [options]\n    
   \      on the number of shared non-reference loci.\n         calpha     Calculate\
   \ C-alpha paramters (Neal 2011)\n         gst        Calculate Gst statistic (Neil\
   \ 1973)\n         fst        Calculate Fst statistic (Weir and Cockerham 1984)\n"
-generated_using: *id002
+generated_using: *id004

@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - referenceseeker_db
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - referenceseeker_db
   - import
   positional: []
@@ -50,9 +50,9 @@ subcommands:
     - -s
     args: !ChoiceFlagArg
       choices: !!set
-        contig:
-        chromosome:
         complete:
+        chromosome:
+        contig:
         scaffold:
     optional: true
   - !Flag
@@ -63,7 +63,160 @@ subcommands:
     args: !SimpleFlagArg
       name: ORGANISM
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: ReferenceSeeker database path
+        synonyms:
+        - --db
+        - -d
+        args: !SimpleFlagArg
+          name: DB
+        optional: true
+      - !Flag
+        description: Genome path [Fasta, GenBank, EMBL]
+        synonyms:
+        - --genome
+        - -g
+        args: !SimpleFlagArg
+          name: GENOME
+        optional: true
+      - !Flag
+        description: "Unique genome identifier (default sequence id of first\nrecord)"
+        synonyms:
+        - --id
+        - -i
+        args: !SimpleFlagArg
+          name: ID
+        optional: true
+      - !Flag
+        description: Taxonomy ID (default = 12908 [unclassified sequences])
+        synonyms:
+        - --taxonomy
+        - -t
+        args: !SimpleFlagArg
+          name: TAXONOMY
+        optional: true
+      - !Flag
+        description: Assembly level (default = contig)
+        synonyms:
+        - --status
+        - -s
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? contig
+            ? chromosome
+            ? complete
+            ? scaffold
+        optional: true
+      - !Flag
+        description: "Organism name (default = \"\")\n"
+        synonyms:
+        - --organism
+        - -o
+        args: !SimpleFlagArg
+          name: ORGANISM
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: referenceseeker_db import [-h] --db DB --genome GENOME [--id\
+        \ ID]\n                                 [--taxonomy TAXONOMY]\n          \
+        \                       [--status {complete,chromosome,scaffold,contig}]\n\
+        \                                 [--organism ORGANISM]\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  --db DB, -d DB\
+        \        ReferenceSeeker database path\n  --genome GENOME, -g GENOME\n   \
+        \                     Genome path [Fasta, GenBank, EMBL]\n  --id ID, -i ID\
+        \        Unique genome identifier (default sequence id of first\n        \
+        \                record)\n  --taxonomy TAXONOMY, -t TAXONOMY\n           \
+        \             Taxonomy ID (default = 12908 [unclassified sequences])\n  --status\
+        \ {complete,chromosome,scaffold,contig}, -s {complete,chromosome,scaffold,contig}\n\
+        \                        Assembly level (default = contig)\n  --organism ORGANISM,\
+        \ -o ORGANISM\n                        Organism name (default = \"\")\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - referenceseeker_db
+      - init
+      positional: []
+      named:
+      - !Flag
+        description: output directory (default = current working directory)
+        synonyms:
+        - --output
+        - -o
+        args: !SimpleFlagArg
+          name: OUTPUT
+        optional: true
+      - !Flag
+        description: Name of the new ReferenceSeeker database
+        synonyms:
+        - --db
+        - -d
+        args: !SimpleFlagArg
+          name: DB
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: referenceseeker_db init [-h] [--output OUTPUT] --db DB\n\n\
+        optional arguments:\n  -h, --help            show this help message and exit\n\
+        \  --output OUTPUT, -o OUTPUT\n                        output directory (default\
+        \ = current working directory)\n  --db DB, -d DB        Name of the new ReferenceSeeker\
+        \ database\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: Show this help message and exit
+      synonyms:
+      - --help
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      - -V
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "usage: referenceseeker_db [--help] [--version] {init,import} ...\n\
+      \nRapid determination of appropriate reference genomes.\n\npositional arguments:\n\
+      \  {init,import}  sub-command help\n    init         Initialize a new database\n\
+      \    import       Add a new genome to database\n\nRuntime & auxiliary options:\n\
+      \  --help, -h     Show this help message and exit\n  --version, -V  show program's\
+      \ version number and exit\n\nCitation:\nSchwengers et al., (2020)\nReferenceSeeker:\
+      \ rapid determination of appropriate reference genomes.\nJournal of Open Source\
+      \ Software, 5(46), 1994, https://doi.org/10.21105/joss.01994\n\nGitHub:\nhttps://github.com/oschwengers/referenceseeker\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -88,12 +241,9 @@ subcommands:
     \ -s {complete,chromosome,scaffold,contig}\n                        Assembly level\
     \ (default = contig)\n  --organism ORGANISM, -o ORGANISM\n                   \
     \     Organism name (default = \"\")\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - referenceseeker_db
-  - init
+  command: *id005
   positional: []
   named:
   - !Flag
@@ -112,7 +262,7 @@ subcommands:
     args: !SimpleFlagArg
       name: DB
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -129,23 +279,11 @@ subcommands:
     \ OUTPUT, -o OUTPUT\n                        output directory (default = current\
     \ working directory)\n  --db DB, -d DB        Name of the new ReferenceSeeker\
     \ database\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: Show this help message and exit
-  synonyms:
-  - --help
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  - -V
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: referenceseeker_db [--help] [--version] {init,import} ...\n\nRapid\
   \ determination of appropriate reference genomes.\n\npositional arguments:\n  {init,import}\
   \  sub-command help\n    init         Initialize a new database\n    import    \
@@ -154,4 +292,4 @@ help_text: "usage: referenceseeker_db [--help] [--version] {init,import} ...\n\n
   \ and exit\n\nCitation:\nSchwengers et al., (2020)\nReferenceSeeker: rapid determination\
   \ of appropriate reference genomes.\nJournal of Open Source Software, 5(46), 1994,\
   \ https://doi.org/10.21105/joss.01994\n\nGitHub:\nhttps://github.com/oschwengers/referenceseeker\n"
-generated_using: *id002
+generated_using: *id004

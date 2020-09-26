@@ -1,67 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - cactus2hal.py
 positional: []
-named:
-- !Flag
-  description: root event of the input phylogeny
-  synonyms:
-  - --event
-  args: !SimpleFlagArg
-    name: EVENT
-  optional: true
-- !Flag
-  description: maximum size in bytes of regular hdf5 cache
-  synonyms:
-  - --cacheBytes
-  args: !SimpleFlagArg
-    name: CACHEBYTES
-  optional: true
-- !Flag
-  description: number of metadata slots in hdf5 cache
-  synonyms:
-  - --cacheMDC
-  args: !SimpleFlagArg
-    name: CACHEMDC
-  optional: true
-- !Flag
-  description: number of regular slots in hdf5 cache
-  synonyms:
-  - --cacheRDC
-  args: !SimpleFlagArg
-    name: CACHERDC
-  optional: true
-- !Flag
-  description: w0 parameter for hdf5 cache
-  synonyms:
-  - --cacheW0
-  args: !SimpleFlagArg
-    name: CACHEW0
-  optional: true
-- !Flag
-  description: hdf5 chunk size
-  synonyms:
-  - --chunk
-  args: !SimpleFlagArg
-    name: CHUNK
-  optional: true
-- !Flag
-  description: hdf5 compression factor
-  synonyms:
-  - --deflate
-  args: !SimpleFlagArg
-    name: DEFLATE
-  optional: true
-- !Flag
-  description: keep entire hdf5 arrays in memory, overriding the
-  synonyms:
-  - --inMemory
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - cactus2hal.py
   - HAL_file_path
   positional:
@@ -85,7 +30,265 @@ subcommands:
     args: !SimpleFlagArg
       name: EVENT
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: root event of the input phylogeny
+      synonyms:
+      - --event
+      args: !SimpleFlagArg
+        name: EVENT
+      optional: true
+    - !Flag
+      description: maximum size in bytes of regular hdf5 cache
+      synonyms:
+      - --cacheBytes
+      args: !SimpleFlagArg
+        name: CACHEBYTES
+      optional: true
+    - !Flag
+      description: number of metadata slots in hdf5 cache
+      synonyms:
+      - --cacheMDC
+      args: !SimpleFlagArg
+        name: CACHEMDC
+      optional: true
+    - !Flag
+      description: number of regular slots in hdf5 cache
+      synonyms:
+      - --cacheRDC
+      args: !SimpleFlagArg
+        name: CACHERDC
+      optional: true
+    - !Flag
+      description: w0 parameter for hdf5 cache
+      synonyms:
+      - --cacheW0
+      args: !SimpleFlagArg
+        name: CACHEW0
+      optional: true
+    - !Flag
+      description: hdf5 chunk size
+      synonyms:
+      - --chunk
+      args: !SimpleFlagArg
+        name: CHUNK
+      optional: true
+    - !Flag
+      description: hdf5 compression factor
+      synonyms:
+      - --deflate
+      args: !SimpleFlagArg
+        name: DEFLATE
+      optional: true
+    - !Flag
+      description: keep entire hdf5 arrays in memory, overriding the
+      synonyms:
+      - --inMemory
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: cactus2hal.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --cacheBytes
+        args: !SimpleFlagArg
+          name: CACHEBYTES
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --event
+        args: !SimpleFlagArg
+          name: EVENT
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: cactus2hal.py [-h] [--event EVENT] [--cacheBytes CACHEBYTES]\n\
+        \                     [--cacheMDC CACHEMDC] [--cacheRDC CACHERDC]\n      \
+        \               [--cacheW0 CACHEW0] [--chunk CHUNK] [--deflate DEFLATE]\n\
+        \                     [--inMemory] [--append]\n                     cactus_project\
+        \ HAL_file_path\ncactus2hal.py: error: argument cactus_project: can't open\
+        \ 'HAL_file_path': [Errno 2] No such file or directory: 'HAL_file_path'\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - cactus2hal.py
+      - cactus_project
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: cactus2hal.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --cacheBytes
+        args: !SimpleFlagArg
+          name: CACHEBYTES
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --event
+        args: !SimpleFlagArg
+          name: EVENT
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: cactus2hal.py [-h] [--event EVENT] [--cacheBytes CACHEBYTES]\n\
+        \                     [--cacheMDC CACHEMDC] [--cacheRDC CACHERDC]\n      \
+        \               [--cacheW0 CACHEW0] [--chunk CHUNK] [--deflate DEFLATE]\n\
+        \                     [--inMemory] [--append]\n                     cactus_project\
+        \ HAL_file_path\ncactus2hal.py: error: argument cactus_project: can't open\
+        \ 'cactus_project': [Errno 2] No such file or directory: 'cactus_project'\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - cactus2hal.py
+      - stored.
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: cactus2hal.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --cacheBytes
+        args: !SimpleFlagArg
+          name: CACHEBYTES
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --event
+        args: !SimpleFlagArg
+          name: EVENT
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: cactus2hal.py [-h] [--event EVENT] [--cacheBytes CACHEBYTES]\n\
+        \                     [--cacheMDC CACHEMDC] [--cacheRDC CACHERDC]\n      \
+        \               [--cacheW0 CACHEW0] [--chunk CHUNK] [--deflate DEFLATE]\n\
+        \                     [--inMemory] [--append]\n                     cactus_project\
+        \ HAL_file_path\ncactus2hal.py: error: argument cactus_project: can't open\
+        \ 'stored.': [Errno 2] No such file or directory: 'stored.'\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - cactus2hal.py
+      - cache.
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: cactus2hal.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --cacheBytes
+        args: !SimpleFlagArg
+          name: CACHEBYTES
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --event
+        args: !SimpleFlagArg
+          name: EVENT
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: cactus2hal.py [-h] [--event EVENT] [--cacheBytes CACHEBYTES]\n\
+        \                     [--cacheMDC CACHEMDC] [--cacheRDC CACHERDC]\n      \
+        \               [--cacheW0 CACHEW0] [--chunk CHUNK] [--deflate DEFLATE]\n\
+        \                     [--inMemory] [--append]\n                     cactus_project\
+        \ HAL_file_path\ncactus2hal.py: error: argument cactus_project: can't open\
+        \ 'cache.': [Errno 2] No such file or directory: 'cache.'\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: cactus2hal.py [-h] [--event EVENT] [--cacheBytes CACHEBYTES]\n\
+      \                     [--cacheMDC CACHEMDC] [--cacheRDC CACHERDC]\n        \
+      \             [--cacheW0 CACHEW0] [--chunk CHUNK] [--deflate DEFLATE]\n    \
+      \                 [--inMemory] [--append]\n                     cactus_project\
+      \ HAL_file_path\n\nConvert Cactus database to HAL database\n\npositional arguments:\n\
+      \  cactus_project        cactus project xml file\n  HAL_file_path         file\
+      \ path where newly created HAL file is to be\n                        stored.\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  --event EVENT         root event of the input phylogeny\n  --cacheBytes CACHEBYTES\n\
+      \                        maximum size in bytes of regular hdf5 cache\n  --cacheMDC\
+      \ CACHEMDC   number of metadata slots in hdf5 cache\n  --cacheRDC CACHERDC \
+      \  number of regular slots in hdf5 cache\n  --cacheW0 CACHEW0     w0 parameter\
+      \ for hdf5 cache\n  --chunk CHUNK         hdf5 chunk size\n  --deflate DEFLATE\
+      \     hdf5 compression factor\n  --inMemory            keep entire hdf5 arrays\
+      \ in memory, overriding the\n                        cache.\n  --append    \
+      \          append to an existing hal file instead of overwriting\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -102,12 +305,9 @@ subcommands:
     \             [--inMemory] [--append]\n                     cactus_project HAL_file_path\n\
     cactus2hal.py: error: argument cactus_project: can't open 'HAL_file_path': [Errno\
     \ 2] No such file or directory: 'HAL_file_path'\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - cactus2hal.py
-  - cactus_project
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -129,7 +329,7 @@ subcommands:
     args: !SimpleFlagArg
       name: EVENT
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -146,11 +346,9 @@ subcommands:
     \             [--inMemory] [--append]\n                     cactus_project HAL_file_path\n\
     cactus2hal.py: error: argument cactus_project: can't open 'cactus_project': [Errno\
     \ 2] No such file or directory: 'cactus_project'\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - cactus2hal.py
-  - stored.
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -172,7 +370,7 @@ subcommands:
     args: !SimpleFlagArg
       name: EVENT
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -189,11 +387,9 @@ subcommands:
     \             [--inMemory] [--append]\n                     cactus_project HAL_file_path\n\
     cactus2hal.py: error: argument cactus_project: can't open 'stored.': [Errno 2]\
     \ No such file or directory: 'stored.'\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - cactus2hal.py
-  - cache.
+  command: *id007
   positional:
   - !Positional
     description: ''
@@ -215,7 +411,7 @@ subcommands:
     args: !SimpleFlagArg
       name: EVENT
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -232,15 +428,9 @@ subcommands:
     \             [--inMemory] [--append]\n                     cactus_project HAL_file_path\n\
     cactus2hal.py: error: argument cactus_project: can't open 'cache.': [Errno 2]\
     \ No such file or directory: 'cache.'\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: cactus2hal.py [-h] [--event EVENT] [--cacheBytes CACHEBYTES]\n\
@@ -259,4 +449,4 @@ help_text: "usage: cactus2hal.py [-h] [--event EVENT] [--cacheBytes CACHEBYTES]\
   \  --inMemory            keep entire hdf5 arrays in memory, overriding the\n   \
   \                     cache.\n  --append              append to an existing hal\
   \ file instead of overwriting\n"
-generated_using: *id002
+generated_using: *id004

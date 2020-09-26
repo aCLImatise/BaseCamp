@@ -1,100 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - transabyss-merge
 positional: []
-named:
-- !Flag
-  description: smallest k-mer size
-  synonyms:
-  - --mink
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: largest k-mer size
-  synonyms:
-  - --maxk
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: prefixes for the contigs from each assembly
-  synonyms:
-  - --prefixes
-  args: !RepeatFlagArg
-    name: STR
-  optional: true
-- !Flag
-  description: assemblies are strand-specific
-  synonyms:
-  - --SS
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: force overwriting
-  synonyms:
-  - --force
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: output file [/transabyss-merged.fa]
-  synonyms:
-  - --out
-  args: !SimpleFlagArg
-    name: PATH
-  optional: true
-- !Flag
-  description: number of threads [1]
-  synonyms:
-  - --threads
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: shortest sequence to report [0]
-  synonyms:
-  - --length
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: do not remove intermediate files at completion
-  synonyms:
-  - --no-cleanup
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "use abyss-map to merge all FASTA files at once (NOTE:\nfaster than\
-    \ BLAT but less sensitive and more memory\nintensive)"
-  synonyms:
-  - --abyssmap
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "use abyss-map to merge one additional FASTA at a time,\nutilizing\
-    \ less memory."
-  synonyms:
-  - --abyssmap-itr
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: indel size tolerance [1]
-  synonyms:
-  - --indel
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "minimum percent sequence identity of redundant\nsequences [0.95]"
-  synonyms:
-  - --pid
-  args: !SimpleFlagArg
-    name: FLOAT
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - transabyss-merge
   - PATH
   positional:
@@ -118,7 +30,186 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: smallest k-mer size
+      synonyms:
+      - --mink
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: largest k-mer size
+      synonyms:
+      - --maxk
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: prefixes for the contigs from each assembly
+      synonyms:
+      - --prefixes
+      args: !RepeatFlagArg
+        name: STR
+      optional: true
+    - !Flag
+      description: assemblies are strand-specific
+      synonyms:
+      - --SS
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: force overwriting
+      synonyms:
+      - --force
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: output file [/transabyss-merged.fa]
+      synonyms:
+      - --out
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: number of threads [1]
+      synonyms:
+      - --threads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: shortest sequence to report [0]
+      synonyms:
+      - --length
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: do not remove intermediate files at completion
+      synonyms:
+      - --no-cleanup
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "use abyss-map to merge all FASTA files at once (NOTE:\nfaster\
+        \ than BLAT but less sensitive and more memory\nintensive)"
+      synonyms:
+      - --abyssmap
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "use abyss-map to merge one additional FASTA at a time,\nutilizing\
+        \ less memory."
+      synonyms:
+      - --abyssmap-itr
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: indel size tolerance [1]
+      synonyms:
+      - --indel
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: "minimum percent sequence identity of redundant\nsequences [0.95]"
+      synonyms:
+      - --pid
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: transabyss-merge
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --maxk
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --mink
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: ''
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: transabyss-merge [-h] [--version] --mink INT --maxk INT\n\
+        \                        [--prefixes STR [STR ...]] [--SS] [--force]\n   \
+        \                     [--out PATH] [--threads INT] [--length INT]\n      \
+        \                  [--no-cleanup] [--abyssmap] [--abyssmap-itr]\n        \
+        \                [--indel INT] [--pid FLOAT]\n                        PATH\
+        \ [PATH ...]\ntransabyss-merge: error: No such file or directory PATH\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "usage: transabyss-merge [-h] [--version] --mink INT --maxk INT\n \
+      \                       [--prefixes STR [STR ...]] [--SS] [--force]\n      \
+      \                  [--out PATH] [--threads INT] [--length INT]\n           \
+      \             [--no-cleanup] [--abyssmap] [--abyssmap-itr]\n               \
+      \         [--indel INT] [--pid FLOAT]\n                        PATH [PATH ...]\n\
+      \nMerge Trans-ABySS assemblies.\n\noptional arguments:\n  -h, --help       \
+      \     show this help message and exit\n  --version             show program's\
+      \ version number and exit\n\nInput:\n  PATH                  assembly FASTA\
+      \ file(s)\n  --mink INT            smallest k-mer size\n  --maxk INT       \
+      \     largest k-mer size\n  --prefixes STR [STR ...]\n                     \
+      \   prefixes for the contigs from each assembly\n  --SS                  assemblies\
+      \ are strand-specific\n\nBasic Options:\n  --force               force overwriting\n\
+      \  --out PATH            output file [/transabyss-merged.fa]\n  --threads INT\
+      \         number of threads [1]\n  --length INT          shortest sequence to\
+      \ report [0]\n  --no-cleanup          do not remove intermediate files at completion\n\
+      \nAdvanced Options:\n  --abyssmap            use abyss-map to merge all FASTA\
+      \ files at once (NOTE:\n                        faster than BLAT but less sensitive\
+      \ and more memory\n                        intensive)\n  --abyssmap-itr    \
+      \    use abyss-map to merge one additional FASTA at a time,\n              \
+      \          utilizing less memory.\n  --indel INT           indel size tolerance\
+      \ [1]\n  --pid FLOAT           minimum percent sequence identity of redundant\n\
+      \                        sequences [0.95]\n\nWritten by Ka Ming Nip.\nCopyright\
+      \ 2018 Canada's Michael Smith Genome Sciences Centre\nReport bugs to <trans-abyss@googlegroups.com>\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -140,23 +231,11 @@ subcommands:
     \       [--no-cleanup] [--abyssmap] [--abyssmap-itr]\n                       \
     \ [--indel INT] [--pid FLOAT]\n                        PATH [PATH ...]\ntransabyss-merge:\
     \ error: No such file or directory PATH\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: transabyss-merge [-h] [--version] --mink INT --maxk INT\n     \
   \                   [--prefixes STR [STR ...]] [--SS] [--force]\n              \
   \          [--out PATH] [--threads INT] [--length INT]\n                       \
@@ -179,4 +258,4 @@ help_text: "usage: transabyss-merge [-h] [--version] --mink INT --maxk INT\n    
   \ [1]\n  --pid FLOAT           minimum percent sequence identity of redundant\n\
   \                        sequences [0.95]\n\nWritten by Ka Ming Nip.\nCopyright\
   \ 2018 Canada's Michael Smith Genome Sciences Centre\nReport bugs to <trans-abyss@googlegroups.com>\n"
-generated_using: *id002
+generated_using: *id004

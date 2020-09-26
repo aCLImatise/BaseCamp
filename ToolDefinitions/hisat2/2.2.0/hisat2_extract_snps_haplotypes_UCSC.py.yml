@@ -1,39 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - hisat2_extract_snps_haplotypes_UCSC.py
 positional: []
-named:
-- !Flag
-  description: "Maximum distance for variants to be in the same\nhaplotype"
-  synonyms:
-  - --inter-gap
-  args: !SimpleFlagArg
-    name: INTER_GAP
-  optional: true
-- !Flag
-  description: Break a haplotype into several haplotypes
-  synonyms:
-  - --intra-gap
-  args: !SimpleFlagArg
-    name: INTRA_GAP
-  optional: true
-- !Flag
-  description: also print some statistics to stderr
-  synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: print test reads
-  synonyms:
-  - --testset
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - hisat2_extract_snps_haplotypes_UCSC.py
   - base_fname
   positional:
@@ -50,7 +23,176 @@ subcommands:
     args: !SimpleFlagArg
       name: INTER_GAP
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: "Maximum distance for variants to be in the same\nhaplotype"
+      synonyms:
+      - --inter-gap
+      args: !SimpleFlagArg
+        name: INTER_GAP
+      optional: true
+    - !Flag
+      description: Break a haplotype into several haplotypes
+      synonyms:
+      - --intra-gap
+      args: !SimpleFlagArg
+        name: INTRA_GAP
+      optional: true
+    - !Flag
+      description: also print some statistics to stderr
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: print test reads
+      synonyms:
+      - --testset
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hisat2_extract_snps_haplotypes_UCSC.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --inter-gap
+        args: !SimpleFlagArg
+          name: INTER_GAP
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_extract_snps_haplotypes_UCSC.py [-h] [--inter-gap\
+        \ INTER_GAP]\n                                              [--intra-gap INTRA_GAP]\
+        \ [-v]\n                                              [--testset]\n      \
+        \                                        [genome_file] [snp_fname]\n     \
+        \                                         [base_fname]\nhisat2_extract_snps_haplotypes_UCSC.py:\
+        \ error: argument genome_file: can't open 'base_fname': [Errno 2] No such\
+        \ file or directory: 'base_fname'\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - hisat2_extract_snps_haplotypes_UCSC.py
+      - snp_fname
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hisat2_extract_snps_haplotypes_UCSC.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --inter-gap
+        args: !SimpleFlagArg
+          name: INTER_GAP
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_extract_snps_haplotypes_UCSC.py [-h] [--inter-gap\
+        \ INTER_GAP]\n                                              [--intra-gap INTRA_GAP]\
+        \ [-v]\n                                              [--testset]\n      \
+        \                                        [genome_file] [snp_fname]\n     \
+        \                                         [base_fname]\nhisat2_extract_snps_haplotypes_UCSC.py:\
+        \ error: argument genome_file: can't open 'snp_fname': [Errno 2] No such file\
+        \ or directory: 'snp_fname'\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - hisat2_extract_snps_haplotypes_UCSC.py
+      - genome_file
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hisat2_extract_snps_haplotypes_UCSC.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --inter-gap
+        args: !SimpleFlagArg
+          name: INTER_GAP
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_extract_snps_haplotypes_UCSC.py [-h] [--inter-gap\
+        \ INTER_GAP]\n                                              [--intra-gap INTRA_GAP]\
+        \ [-v]\n                                              [--testset]\n      \
+        \                                        [genome_file] [snp_fname]\n     \
+        \                                         [base_fname]\nhisat2_extract_snps_haplotypes_UCSC.py:\
+        \ error: argument genome_file: can't open 'genome_file': [Errno 2] No such\
+        \ file or directory: 'genome_file'\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: hisat2_extract_snps_haplotypes_UCSC.py [-h] [--inter-gap INTER_GAP]\n\
+      \                                              [--intra-gap INTRA_GAP] [-v]\n\
+      \                                              [--testset]\n               \
+      \                               [genome_file] [snp_fname]\n                \
+      \                              [base_fname]\n\nExtract SNPs and haplotypes from\
+      \ a SNP file downloaded from UCSC (e.g.\nhttp://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/snp144.txt.gz)\n\
+      \npositional arguments:\n  genome_file           input genome file (e.g. genome.fa)\n\
+      \  snp_fname             input snp file downloaded from UCSC (plain text or\n\
+      \                        gzipped file is accepted: snp144Common.txt or\n   \
+      \                     snp144Common.txt.gz)\n  base_fname            base filename\
+      \ for SNPs and haplotypes\n\noptional arguments:\n  -h, --help            show\
+      \ this help message and exit\n  --inter-gap INTER_GAP\n                    \
+      \    Maximum distance for variants to be in the same\n                     \
+      \   haplotype\n  --intra-gap INTRA_GAP\n                        Break a haplotype\
+      \ into several haplotypes\n  -v, --verbose         also print some statistics\
+      \ to stderr\n  --testset             print test reads\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -68,12 +210,9 @@ subcommands:
     \                          [base_fname]\nhisat2_extract_snps_haplotypes_UCSC.py:\
     \ error: argument genome_file: can't open 'base_fname': [Errno 2] No such file\
     \ or directory: 'base_fname'\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - hisat2_extract_snps_haplotypes_UCSC.py
-  - snp_fname
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -88,7 +227,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INTER_GAP
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -106,11 +245,9 @@ subcommands:
     \                          [base_fname]\nhisat2_extract_snps_haplotypes_UCSC.py:\
     \ error: argument genome_file: can't open 'snp_fname': [Errno 2] No such file\
     \ or directory: 'snp_fname'\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - hisat2_extract_snps_haplotypes_UCSC.py
-  - genome_file
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -125,7 +262,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INTER_GAP
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -143,15 +280,9 @@ subcommands:
     \                          [base_fname]\nhisat2_extract_snps_haplotypes_UCSC.py:\
     \ error: argument genome_file: can't open 'genome_file': [Errno 2] No such file\
     \ or directory: 'genome_file'\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: hisat2_extract_snps_haplotypes_UCSC.py [-h] [--inter-gap INTER_GAP]\n\
@@ -170,4 +301,4 @@ help_text: "usage: hisat2_extract_snps_haplotypes_UCSC.py [-h] [--inter-gap INTE
   \ --intra-gap INTRA_GAP\n                        Break a haplotype into several\
   \ haplotypes\n  -v, --verbose         also print some statistics to stderr\n  --testset\
   \             print test reads\n"
-generated_using: *id002
+generated_using: *id004

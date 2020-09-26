@@ -11,40 +11,35 @@ named:
 - !Flag
   description: ''
   synonyms:
-  - -v
-  - --verbosity
-  args: !ChoiceFlagArg
-    choices: !!set
-      warning:
-      debug:
-      info:
-      error:
-      critical:
+  - -V
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - -V
-  args: !EmptyFlagArg {}
+  - -v
+  args: !ChoiceFlagArg
+    choices: !!set
+      error:
+      info:
+      critical:
+      debug:
+      warning:
   optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n-v {debug,info,warning,error,critical},\
+    \ --verbosity {debug,info,warning,error,critical}\n-V, --version         show\
+    \ program's version number and exit"
   synonyms:
   - -h
   - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - -V
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: neurodocker [-h] [-v {debug,info,warning,error,critical}] [-V]\n\
   \                   {generate,reprozip} ...\n\nNeurodocker is a command-line interface\
   \ to generate custom Dockerfiles and\nSingularity recipes.\n\nFor help generating\

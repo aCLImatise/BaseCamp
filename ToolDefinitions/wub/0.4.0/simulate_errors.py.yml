@@ -1,33 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - simulate_errors.py
 positional: []
-named:
-- !Flag
-  description: "Total rate of substitutions insertions and deletions\n(0.1)."
-  synonyms:
-  - -e
-  args: !SimpleFlagArg
-    name: error_rate
-  optional: true
-- !Flag
-  description: "Relative frequency of substitutions,insertions,deletions\n(1,1,4)."
-  synonyms:
-  - -w
-  args: !SimpleFlagArg
-    name: error_weights
-  optional: true
-- !Flag
-  description: Random seed (None).
-  synonyms:
-  - -z
-  args: !SimpleFlagArg
-    name: random_seed
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - simulate_errors.py
   - output_fasta
   positional:
@@ -51,7 +30,134 @@ subcommands:
     args: !SimpleFlagArg
       name: error_rate
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: "Total rate of substitutions insertions and deletions\n(0.1)."
+      synonyms:
+      - -e
+      args: !SimpleFlagArg
+        name: error_rate
+      optional: true
+    - !Flag
+      description: "Relative frequency of substitutions,insertions,deletions\n(1,1,4)."
+      synonyms:
+      - -w
+      args: !SimpleFlagArg
+        name: error_weights
+      optional: true
+    - !Flag
+      description: Random seed (None).
+      synonyms:
+      - -z
+      args: !SimpleFlagArg
+        name: random_seed
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: simulate_errors.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -w
+        args: !SimpleFlagArg
+          name: error_weights
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -e
+        args: !SimpleFlagArg
+          name: error_rate
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: simulate_errors.py [-h] [-e error_rate] [-w error_weights]\n\
+        \                          [-z random_seed]\n                          [input_fasta]\
+        \ [output_fasta]\nsimulate_errors.py: error: argument input_fasta: can't open\
+        \ 'output_fasta': [Errno 2] No such file or directory: 'output_fasta'\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - simulate_errors.py
+      - input_fasta
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: simulate_errors.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -w
+        args: !SimpleFlagArg
+          name: error_weights
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -e
+        args: !SimpleFlagArg
+          name: error_rate
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: simulate_errors.py [-h] [-e error_rate] [-w error_weights]\n\
+        \                          [-z random_seed]\n                          [input_fasta]\
+        \ [output_fasta]\nsimulate_errors.py: error: argument input_fasta: can't open\
+        \ 'input_fasta': [Errno 2] No such file or directory: 'input_fasta'\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: simulate_errors.py [-h] [-e error_rate] [-w error_weights]\n\
+      \                          [-z random_seed]\n                          [input_fasta]\
+      \ [output_fasta]\n\nSimulate sequencing errors for each input sequence.\n\n\
+      positional arguments:\n  input_fasta       Input fasta (default: stdin).\n \
+      \ output_fasta      Output fasta (default: stdout)\n\noptional arguments:\n\
+      \  -h, --help        show this help message and exit\n  -e error_rate     Total\
+      \ rate of substitutions insertions and deletions\n                    (0.1).\n\
+      \  -w error_weights  Relative frequency of substitutions,insertions,deletions\n\
+      \                    (1,1,4).\n  -z random_seed    Random seed (None).\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -66,12 +172,9 @@ subcommands:
     \                          [-z random_seed]\n                          [input_fasta]\
     \ [output_fasta]\nsimulate_errors.py: error: argument input_fasta: can't open\
     \ 'output_fasta': [Errno 2] No such file or directory: 'output_fasta'\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - simulate_errors.py
-  - input_fasta
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -93,7 +196,7 @@ subcommands:
     args: !SimpleFlagArg
       name: error_rate
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -108,15 +211,9 @@ subcommands:
     \                          [-z random_seed]\n                          [input_fasta]\
     \ [output_fasta]\nsimulate_errors.py: error: argument input_fasta: can't open\
     \ 'input_fasta': [Errno 2] No such file or directory: 'input_fasta'\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: simulate_errors.py [-h] [-e error_rate] [-w error_weights]\n  \
@@ -128,4 +225,4 @@ help_text: "usage: simulate_errors.py [-h] [-e error_rate] [-w error_weights]\n 
   \ insertions and deletions\n                    (0.1).\n  -w error_weights  Relative\
   \ frequency of substitutions,insertions,deletions\n                    (1,1,4).\n\
   \  -z random_seed    Random seed (None).\n"
-generated_using: *id002
+generated_using: *id004

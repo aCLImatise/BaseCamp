@@ -1,30 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - pocheck
 positional: []
-named:
-- !Flag
-  description: ': verbose output'
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ': debugging output'
-  synonyms:
-  - -d
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -options
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - pocheck
   - seqfile in
   positional: []
@@ -35,7 +17,66 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: ': verbose output'
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ': debugging output'
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -options
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "\nFATAL: Failed to open sequence file seqfile in\nUsage: pocheck\
+        \ [-options] <seqfile in>\n\n\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag: !Flag
+      description: ': print short help, usage info, and grammar description'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "CONUS: Single Sequence SCFG algorithms\n         CONUS 1.0 (in progress)\n\
+      Usage: pocheck [-options] <seqfile in>\n\nwhere options are:\n-h           \
+      \ : print short help, usage info, and grammar description\n-v            : verbose\
+      \ output \n-d            : debugging output \n\n\nUsage: pocheck [-options]\
+      \ <seqfile in>\n\n\n"
+    generated_using: &id005
+    - -h
   subcommands: []
   usage: []
   help_flag:
@@ -43,15 +84,9 @@ subcommands:
   version_flag:
   help_text: "\nFATAL: Failed to open sequence file seqfile in\nUsage: pocheck [-options]\
     \ <seqfile in>\n\n\n"
-  generated_using:
-  - --help
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: ': print short help, usage info, and grammar description'
-  synonyms:
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "CONUS: Single Sequence SCFG algorithms\n         CONUS 1.0 (in progress)\n\
@@ -59,5 +94,4 @@ help_text: "CONUS: Single Sequence SCFG algorithms\n         CONUS 1.0 (in progr
   \ short help, usage info, and grammar description\n-v            : verbose output\
   \ \n-d            : debugging output \n\n\nUsage: pocheck [-options] <seqfile in>\n\
   \n\n"
-generated_using:
-- -h
+generated_using: *id005

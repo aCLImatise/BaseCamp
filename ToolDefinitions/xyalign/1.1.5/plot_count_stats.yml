@@ -10,19 +10,17 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ''
+  description: "--const_chr CONST_CHR\n[--var1_marker {color,shape,size}]\n[--var1_marker_vals\
+    \ VAR1_MARKER_VALS [VAR1_MARKER_VALS ...]]\n[--var2_marker {color,shape,size,none}]\n\
+    [--var2_marker_vals [VAR2_MARKER_VALS [VAR2_MARKER_VALS ...]]]\n[--marker_size\
+    \ MARKER_SIZE]\n[--marker_color MARKER_COLOR]\n[--marker_shape MARKER_SHAPE]\n\
+    [--marker_alpha MARKER_ALPHA]\n[--legend_marker_scale LEGEND_MARKER_SCALE]\n[--x_title\
+    \ X_TITLE] [--y_title Y_TITLE]"
   synonyms:
   - --first_chr
   - --second_chr
   args: !SimpleFlagArg
     name: FIRST_CHR
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --const_chr
-  args: !SimpleFlagArg
-    name: CONST_CHR
   optional: true
 - !Flag
   description: Full path to file containing table output by
@@ -49,6 +47,15 @@ named:
     name: EXCLUDE_SUFFIX
   optional: true
 - !Flag
+  description: "Chromosome to use denominator on both the X- and\nY-axis. For example,\
+    \ if one was comparing chrX and\nchrY, and using chr19 to normalize, recommended\
+    \ values\nwould be: --first_chr chrX --second_chr chrY\n--const_chr chr19."
+  synonyms:
+  - --const_chr
+  args: !SimpleFlagArg
+    name: CONST_CHR
+  optional: true
+- !Flag
   description: "Way of designating variable 1 values in plot. Choices\nare 'color',\
     \ 'shape', or 'size'. Must be used in\nconjunction with --var1_marker_vals. Default\
     \ is\n'color'."
@@ -56,8 +63,8 @@ named:
   - --var1_marker
   args: !ChoiceFlagArg
     choices: !!set
-      color:
       shape:
+      color:
       size:
   optional: true
 - !Flag
@@ -81,9 +88,9 @@ named:
   - --var2_marker
   args: !ChoiceFlagArg
     choices: !!set
-      color:
-      none:
       shape:
+      none:
+      color:
       size:
   optional: true
 - !Flag

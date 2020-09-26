@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - screed
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - screed
   - command
   positional:
@@ -16,7 +16,81 @@ subcommands:
     name: command
     optional: false
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: 'optional arguments:'
+        position: 0
+        name: command
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Unrecognized command\nusage: screed <command> [<args>]\n\nAvailable:\n\
+        \n    db <filename>               Creates a screed database.\n    dump_fasta\
+        \ <db> <output>    Convert a screed database to a FASTA file\n    dump_fastq\
+        \ <db> <output>    Convert a screed database to a FASTQ file\n\npositional\
+        \ arguments:\n  command\n\noptional arguments:\n  -h, --help  show this help\
+        \ message and exit\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - screed
+      - args
+      positional:
+      - !Positional
+        description: 'optional arguments:'
+        position: 0
+        name: command
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Unrecognized command\nusage: screed <command> [<args>]\n\nAvailable:\n\
+        \n    db <filename>               Creates a screed database.\n    dump_fasta\
+        \ <db> <output>    Convert a screed database to a FASTA file\n    dump_fastq\
+        \ <db> <output>    Convert a screed database to a FASTQ file\n\npositional\
+        \ arguments:\n  command\n\noptional arguments:\n  -h, --help  show this help\
+        \ message and exit\n"
+      generated_using: *id004
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "usage: screed <command> [<args>]\n\nAvailable:\n\n    db <filename>\
+      \               Creates a screed database.\n    dump_fasta <db> <output>   \
+      \ Convert a screed database to a FASTA file\n    dump_fastq <db> <output>  \
+      \  Convert a screed database to a FASTQ file\nscreed: error: the following arguments\
+      \ are required: command\n"
+    generated_using: &id006 []
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -33,12 +107,9 @@ subcommands:
     \ <output>    Convert a screed database to a FASTA file\n    dump_fastq <db> <output>\
     \    Convert a screed database to a FASTQ file\n\npositional arguments:\n  command\n\
     \noptional arguments:\n  -h, --help  show this help message and exit\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - screed
-  - args
+  command: *id005
   positional:
   - !Positional
     description: 'optional arguments:'
@@ -46,7 +117,7 @@ subcommands:
     name: command
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -63,7 +134,7 @@ subcommands:
     \ <output>    Convert a screed database to a FASTA file\n    dump_fastq <db> <output>\
     \    Convert a screed database to a FASTQ file\n\npositional arguments:\n  command\n\
     \noptional arguments:\n  -h, --help  show this help message and exit\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -73,4 +144,4 @@ help_text: "usage: screed <command> [<args>]\n\nAvailable:\n\n    db <filename> 
   \ a screed database to a FASTA file\n    dump_fastq <db> <output>    Convert a screed\
   \ database to a FASTQ file\nscreed: error: the following arguments are required:\
   \ command\n"
-generated_using: []
+generated_using: *id006

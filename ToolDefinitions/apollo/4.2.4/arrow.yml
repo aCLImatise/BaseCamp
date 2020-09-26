@@ -1,34 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - arrow
 positional: []
-named:
-- !Flag
-  description: Enables verbose mode.
-  synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: name of apollo instance from /root/.apollo-
-  synonyms:
-  - -a
-  - --apollo_instance
-  args: !SimpleFlagArg
-    name: TEXT
-  optional: true
-- !Flag
-  description: "[debug|info|warn|error|critical]\nLogging level  [default: warn]"
-  synonyms:
-  - -l
-  - --log-level
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - arrow
   - arrow.yml
   positional:
@@ -48,7 +26,2636 @@ subcommands:
     name: ARGS
     optional: true
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: Enables verbose mode.
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: name of apollo instance from /root/.apollo-
+      synonyms:
+      - -a
+      - --apollo_instance
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "[debug|info|warn|error|critical]\nLogging level  [default: warn]"
+      synonyms:
+      - -l
+      - --log-level
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: arrow
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: COMMAND
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: ARGS
+        optional: true
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Problem loading command arrow.yml, exception No module named 'arrow.commands.cmd_arrow'\n\
+        Usage: arrow [OPTIONS] COMMAND [ARGS]...\nTry 'arrow -h' for help.\n\nError:\
+        \ No such command 'arrow.yml'.\n"
+      generated_using: &id005
+      - --help
+    - &id004 !Command
+      command: &id010
+      - arrow
+      - status
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id011
+        - arrow
+        - status
+        - add_status
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: STATUS
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status add_status [OPTIONS] STATUS\n\n  Add a status\
+          \ value\n\n  Output:\n\n      A dictionnary containing status description\n\
+          \nOptions:\n  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id012
+        - arrow
+        - status
+        - findStatusById
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status findStatusById [OPTIONS] ID_NUMBER\n\n  TODO:\
+          \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id013
+        - arrow
+        - status
+        - updateStatus
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: NEW_VALUE
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status updateStatus [OPTIONS] ID_NUMBER NEW_VALUE\n\
+          \n  TODO: Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help\
+          \  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id014
+        - arrow
+        - status
+        - update_status
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: NEW_VALUE
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status update_status [OPTIONS] ID_NUMBER NEW_VALUE\n\
+          \n  Update a status name\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n\
+          \  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id015
+        - arrow
+        - status
+        - show_status
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: STATUS
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status show_status [OPTIONS] STATUS\n\n  Get a specific\
+          \ status\n\n  Output:\n\n      A dictionnary containing status description\n\
+          \nOptions:\n  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id016
+        - arrow
+        - status
+        - delete_status
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status delete_status [OPTIONS] ID_NUMBER\n\n  Delete\
+          \ a status\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n  -h,\
+          \ --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id017
+        - arrow
+        - status
+        - deleteStatus
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status deleteStatus [OPTIONS] ID_NUMBER\n\n  TODO:\
+          \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id018
+        - arrow
+        - status
+        - findStatusByValue
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: VALUE
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status findStatusByValue [OPTIONS] VALUE\n\n  TODO:\
+          \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id019
+        - arrow
+        - status
+        - addStatus
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: VALUE
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow status addStatus [OPTIONS] VALUE\n\n  TODO: Undocumented\n\
+          \n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this message and\
+          \ exit.\n"
+        generated_using: *id005
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: arrow status [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+        \ --help  Show this message and exit.\n\nCommands:\n  addStatus          TODO:\
+        \ Undocumented Output: ???\n  add_status         Add a status value Output:\
+        \ A dictionnary containing...\n  deleteStatus       TODO: Undocumented Output:\
+        \ ???\n  delete_status      Delete a status Output: an empty dictionary\n\
+        \  findAllStatuses    TODO: Undocumented Output: ???\n  findStatusById   \
+        \  TODO: Undocumented Output: ???\n  findStatusByValue  TODO: Undocumented\
+        \ Output: ???\n  get_statuses       Get all statuses available in this Apollo\
+        \ instance...\n  show_status        Get a specific status Output: A dictionnary\
+        \ containing...\n  updateStatus       TODO: Undocumented Output: ???\n  update_status\
+        \      Update a status name Output: an empty dictionary\n"
+      generated_using: *id005
+    - &id006 !Command
+      command: &id020
+      - arrow
+      - groups
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id021
+        - arrow
+        - groups
+        - update_group
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: NEW_NAME
+          optional: false
+        named: []
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups update_group [OPTIONS] GROUP_ID NEW_NAME\n\
+          \n  Update the name of a group\n\n  Output:\n\n      a dictionary containing\
+          \ group information\n\nOptions:\n  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id022
+        - arrow
+        - groups
+        - get_group_creator
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP
+          optional: false
+        named: []
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups get_group_creator [OPTIONS] GROUP\n\n  Get\
+          \ the group's creator\n\n  Output:\n\n      creator userId\n\nOptions:\n\
+          \  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id023
+        - arrow
+        - groups
+        - update_organism_permissions
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: ORGANISM_NAME
+          optional: false
+        named:
+        - !Flag
+          description: Should the group have administrate privileges
+          synonyms:
+          - --administrate
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Should the group have write privileges
+          synonyms:
+          - --write
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Should the group have read privileges
+          synonyms:
+          - --read
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Should the group have export privileges
+          synonyms:
+          - --export
+          args: !EmptyFlagArg {}
+          optional: true
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups update_organism_permissions [OPTIONS] GROUP\
+          \ ORGANISM_NAME\n\n  Update the group's permissions on an organism\n\n \
+          \ Output:\n\n      list of group organism permissions\n\nOptions:\n  --administrate\
+          \  Should the group have administrate privileges\n  --write         Should\
+          \ the group have write privileges\n  --read          Should the group have\
+          \ read privileges\n  --export        Should the group have export privileges\n\
+          \  -h, --help      Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id024
+        - arrow
+        - groups
+        - get_group_admin
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP
+          optional: false
+        named: []
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups get_group_admin [OPTIONS] GROUP\n\n  Get the\
+          \ group's admins\n\n  Output:\n\n      a list containing group admins\n\n\
+          Options:\n  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id025
+        - arrow
+        - groups
+        - get_groups
+        positional: []
+        named:
+        - !Flag
+          description: Only return group(s) with given name
+          synonyms:
+          - --name
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups get_groups [OPTIONS]\n\n  Get all the groups\n\
+          \n  Output:\n\n      list of a dictionaries containing group information\n\
+          \nOptions:\n  --name TEXT  Only return group(s) with given name\n  -h, --help\
+          \   Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id026
+        - arrow
+        - groups
+        - update_group_admin
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP_ID
+          optional: false
+        named:
+        - !Flag
+          description: List of emails
+          synonyms:
+          - --users
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups update_group_admin [OPTIONS] GROUP_ID\n\n\
+          \  Update the group's admins\n\n  Output:\n\n      dictionary of group information\n\
+          \nOptions:\n  --users TEXT  List of emails\n  -h, --help    Show this message\
+          \ and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id027
+        - arrow
+        - groups
+        - get_organism_permissions
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP
+          optional: false
+        named: []
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups get_organism_permissions [OPTIONS] GROUP\n\
+          \n  Get the group's organism permissions\n\n  Output:\n\n      a list containing\
+          \ organism permissions (if any)\n\nOptions:\n  -h, --help  Show this message\
+          \ and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id028
+        - arrow
+        - groups
+        - delete_group
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP
+          optional: false
+        named: []
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups delete_group [OPTIONS] GROUP\n\n  Delete a\
+          \ group\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n  -h, --help\
+          \  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id029
+        - arrow
+        - groups
+        - update_membership
+        positional: []
+        named:
+        - !Flag
+          description: Group ID Number
+          synonyms:
+          - --group_id
+          args: !SimpleFlagArg
+            name: INTEGER
+          optional: true
+        - !Flag
+          description: List of emails
+          synonyms:
+          - --users
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: "Bulk memberships to update of the form: [ {groupId:\n<groupId>,users:\
+            \ [\"user1\", \"user2\", \"user3\"]},\n{groupId:<another-groupId>, users:\
+            \ [\"user2\", \"user8\"]}\n(users and groupId will be ignored)"
+          synonyms:
+          - --memberships
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups update_membership [OPTIONS]\n\n  Update the\
+          \ group's membership\n\n  Output:\n\n      dictionary of group information\n\
+          \nOptions:\n  --group_id INTEGER  Group ID Number\n  --users TEXT      \
+          \  List of emails\n  --memberships TEXT  Bulk memberships to update of the\
+          \ form: [ {groupId:\n                      <groupId>,users: [\"user1\",\
+          \ \"user2\", \"user3\"]},\n                      {groupId:<another-groupId>,\
+          \ users: [\"user2\", \"user8\"]}\n                      (users and groupId\
+          \ will be ignored)\n\n  -h, --help          Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id030
+        - arrow
+        - groups
+        - create_group
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: NAME
+          optional: false
+        named: []
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups create_group [OPTIONS] NAME\n\n  Create a\
+          \ new group\n\n  Output:\n\n      Group information dictionary\n\nOptions:\n\
+          \  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id031
+        - arrow
+        - groups
+        - show_group
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: GROUP_ID
+          optional: false
+        named: []
+        parent: *id006
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow groups show_group [OPTIONS] GROUP_ID\n\n  Get information\
+          \ about a group\n\n  Output:\n\n      a dictionary containing group information\n\
+          \nOptions:\n  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: arrow groups [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
+        \ --help  Show this message and exit.\n\nCommands:\n  create_group       \
+        \          Create a new group Output: Group information...\n  delete_group\
+        \                 Delete a group Output: an empty dictionary\n  get_group_admin\
+        \              Get the group's admins Output: a list...\n  get_group_creator\
+        \            Get the group's creator Output: creator...\n  get_groups    \
+        \               Get all the groups Output: list of a...\n  get_organism_permissions\
+        \     Get the group's organism permissions Output:...\n  show_group      \
+        \             Get information about a group Output: a...\n  update_group \
+        \                Update the name of a group Output: a...\n  update_group_admin\
+        \           Update the group's admins Output: dictionary...\n  update_membership\
+        \            Update the group's membership Output:...\n  update_organism_permissions\
+        \  Update the group's permissions on an\n                               organism...\n"
+      generated_using: *id005
+    - &id007 !Command
+      command: &id032
+      - arrow
+      - cannedkeys
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id033
+        - arrow
+        - cannedkeys
+        - deleteKey
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        named: []
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys deleteKey [OPTIONS] ID_NUMBER\n\n  TODO:\
+          \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id034
+        - arrow
+        - cannedkeys
+        - findKeyById
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        named: []
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys findKeyById [OPTIONS] ID_NUMBER\n\n  TODO:\
+          \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id035
+        - arrow
+        - cannedkeys
+        - delete_key
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        named: []
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys delete_key [OPTIONS] ID_NUMBER\n\n  Update\
+          \ a canned key\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n \
+          \ -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id036
+        - arrow
+        - cannedkeys
+        - show_key
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: VALUE
+          optional: false
+        named: []
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys show_key [OPTIONS] VALUE\n\n  Get a specific\
+          \ canned key\n\n  Output:\n\n      A dictionnary containing canned key description\n\
+          \nOptions:\n  -h, --help  Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id037
+        - arrow
+        - cannedkeys
+        - update_key
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ID_NUMBER
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: NEW_KEY
+          optional: false
+        named:
+        - !Flag
+          description: Optional metadata
+          synonyms:
+          - --metadata
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys update_key [OPTIONS] ID_NUMBER NEW_KEY\n\
+          \n  Update a canned key\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n\
+          \  --metadata TEXT  Optional metadata\n  -h, --help       Show this message\
+          \ and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id038
+        - arrow
+        - cannedkeys
+        - add_key
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: KEY
+          optional: false
+        named:
+        - !Flag
+          description: Optional metadata
+          synonyms:
+          - --metadata
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys add_key [OPTIONS] KEY\n\n  Add a canned\
+          \ key\n\n  Output:\n\n      A dictionnary containing canned key description\n\
+          \nOptions:\n  --metadata TEXT  Optional metadata\n  -h, --help       Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id039
+        - arrow
+        - cannedkeys
+        - containing...
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: arrow
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: cannedkeys
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: COMMAND
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: ARGS
+          optional: true
+        named: []
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys [OPTIONS] COMMAND [ARGS]...\nTry 'arrow\
+          \ cannedkeys -h' for help.\n\nError: No such command 'containing...'.\n"
+        generated_using: *id005
+      - !Command
+        command: &id040
+        - arrow
+        - cannedkeys
+        - findKeyByValue
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: VALUE
+          optional: false
+        named: []
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys findKeyByValue [OPTIONS] VALUE\n\n  TODO:\
+          \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id041
+        - arrow
+        - cannedkeys
+        - addKey
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: KEY
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - --metadata
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id007
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow cannedkeys addKey [OPTIONS] KEY\n\n  TODO: Undocumented\n\
+          \n  Output:\n\n      ???\n\nOptions:\n  --metadata TEXT\n  -h, --help  \
+          \     Show this message and exit.\n"
+        generated_using: *id005
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: arrow cannedkeys [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
+        \  -h, --help  Show this message and exit.\n\nCommands:\n  addKey        \
+        \  TODO: Undocumented Output: ???\n  add_key         Add a canned key Output:\
+        \ A dictionnary containing canned...\n  deleteKey       TODO: Undocumented\
+        \ Output: ???\n  delete_key      Update a canned key Output: an empty dictionary\n\
+        \  findAllKeys     TODO: Undocumented Output: ???\n  findKeyById     TODO:\
+        \ Undocumented Output: ???\n  findKeyByValue  TODO: Undocumented Output: ???\n\
+        \  get_keys        Get all canned keys available in this Apollo instance...\n\
+        \  show_key        Get a specific canned key Output: A dictionnary\n     \
+        \             containing...\n\n  updateKey       TODO: Undocumented Output:\
+        \ ???\n  update_key      Update a canned key Output: an empty dictionary\n"
+      generated_using: *id005
+    - &id008 !Command
+      command: &id042
+      - arrow
+      - metrics
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id043
+        - arrow
+        - metrics
+        - COMMAND
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ARGS
+          optional: true
+        named: []
+        parent: *id008
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow metrics [OPTIONS] COMMAND [ARGS]...\nTry 'arrow metrics\
+          \ -h' for help.\n\nError: No such command 'COMMAND'.\n"
+        generated_using: *id005
+      - !Command
+        command: &id044
+        - arrow
+        - metrics
+        - ARGS
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: arrow
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: metrics
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: COMMAND
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: ARGS
+          optional: true
+        named: []
+        parent: *id008
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow metrics [OPTIONS] COMMAND [ARGS]...\nTry 'arrow metrics\
+          \ -h' for help.\n\nError: No such command 'ARGS'.\n"
+        generated_using: *id005
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: arrow metrics [OPTIONS] COMMAND [ARGS]...\nTry 'arrow metrics\
+        \ -h' for help.\n\nError: no such option: --usage\n"
+      generated_using: &id045
+      - --usage
+    - !Command
+      command: &id046
+      - arrow
+      - scripts.
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: arrow
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: COMMAND
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: ARGS
+        optional: true
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Problem loading command scripts., exception No module named 'arrow.commands.cmd_scripts'\n\
+        Usage: arrow [OPTIONS] COMMAND [ARGS]...\nTry 'arrow -h' for help.\n\nError:\
+        \ No such command 'scripts.'.\n"
+      generated_using: *id005
+    - &id009 !Command
+      command: &id047
+      - arrow
+      - annotations
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id048
+        - arrow
+        - annotations
+        - merge_exons
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: EXON_A
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: EXON_B
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations merge_exons [OPTIONS] EXON_A EXON_B\n\
+          \n  Merge two exons\n\n  Output:\n\n      A standard apollo feature dictionary\
+          \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
+          \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
+          \ and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id049
+        - arrow
+        - annotations
+        - set_sequence
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ORGANISM
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: SEQUENCE
+          optional: false
+        named: []
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations set_sequence [OPTIONS] ORGANISM SEQUENCE\n\
+          Try 'arrow annotations set_sequence -h' for help.\n\nError: Missing argument\
+          \ 'ORGANISM'.\n"
+        generated_using: &id050 []
+      - !Command
+        command: &id051
+        - arrow
+        - annotations
+        - load_gff3
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ORGANISM
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: GFF3
+          optional: false
+        named:
+        - !Flag
+          description: URL where the input dataset can be found.
+          synonyms:
+          - --source
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: 'Size of batches before writing  [default: 1]'
+          synonyms:
+          - --batch_size
+          args: !SimpleFlagArg
+            name: INTEGER
+          optional: true
+        - !Flag
+          description: Run in dry run mode
+          synonyms:
+          - --test
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Use the given name instead of generating one.
+          synonyms:
+          - --use_name
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "Disable CDS recalculation and instead use the\none provided"
+          synonyms:
+          - --disable_cds_recalculation
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Output loading performance metrics
+          synonyms:
+          - --timing
+          args: !EmptyFlagArg {}
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations load_gff3 [OPTIONS] ORGANISM GFF3\n\n\
+          \  Load a full GFF3 into annotation track\n\n  Output:\n\n      Loading\
+          \ report\n\nOptions:\n  --source TEXT                URL where the input\
+          \ dataset can be found.\n  --batch_size INTEGER         Size of batches\
+          \ before writing  [default: 1]\n  --test                       Run in dry\
+          \ run mode\n  --use_name                   Use the given name instead of\
+          \ generating one.\n  --disable_cds_recalculation  Disable CDS recalculation\
+          \ and instead use the\n                               one provided\n\n \
+          \ --timing                     Output loading performance metrics\n  -h,\
+          \ --help                   Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id052
+        - arrow
+        - annotations
+        - set_translation_start
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: START
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations set_translation_start [OPTIONS] FEATURE_ID\
+          \ START\n\n  Set the translation start of a feature\n\n  Output:\n\n   \
+          \   A standard apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n\
+          \  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n\
+          \  -h, --help       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id053
+        - arrow
+        - annotations
+        - delete_dbxref
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: DB
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: ACCESSION
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations delete_dbxref [OPTIONS] FEATURE_ID DB\
+          \ ACCESSION\n\n  Delete a dbxref from a feature\n\n  Output:\n\n      A\
+          \ standard apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n\
+          \  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n\
+          \  -h, --help       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id054
+        - arrow
+        - annotations
+        - get_comments
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations get_comments [OPTIONS] FEATURE_ID\n\n\
+          \  Get a feature's comments\n\n  Output:\n\n      A standard apollo feature\
+          \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
+          \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id055
+        - arrow
+        - annotations
+        - add_comment
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        named:
+        - !Flag
+          description: Feature comments
+          synonyms:
+          - --comments
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations add_comment [OPTIONS] FEATURE_ID\n\n\
+          \  Set a feature's description\n\n  Output:\n\n      A standard apollo feature\
+          \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --comments TEXT  Feature\
+          \ comments\n  --organism TEXT  Organism Common Name\n  --sequence TEXT \
+          \ Sequence Name\n  -h, --help       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id056
+        - arrow
+        - annotations
+        - update_attribute
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: ATTRIBUTE_KEY
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations update_attribute [OPTIONS] FEATURE_ID\
+          \ ATTRIBUTE_KEY\n                                          OLD_VALUE NEW_VALUE\n\
+          \n  Delete an attribute from a feature\n\n  Output:\n\n      A standard\
+          \ apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism\
+          \ TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help\
+          \       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id057
+        - arrow
+        - annotations
+        - update_dbxref
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: OLD_DB
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations update_dbxref [OPTIONS] FEATURE_ID OLD_DB\n\
+          \                                       OLD_ACCESSION NEW_DB NEW_ACCESSION\n\
+          \n  Delete a dbxref from a feature\n\n  Output:\n\n      A standard apollo\
+          \ feature dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism\
+          \ TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help\
+          \       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id058
+        - arrow
+        - annotations
+        - load_legacy_gff3
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: ORGANISM
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: GFF3
+          optional: false
+        named:
+        - !Flag
+          description: URL where the input dataset can be found.
+          synonyms:
+          - --source
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations load_legacy_gff3 [OPTIONS] ORGANISM GFF3\n\
+          \n  Load a full GFF3 into annotation track (legacy version, kept for\n \
+          \ compatibility only)\n\n  Output:\n\n      Loading report\n\nOptions:\n\
+          \  --source TEXT  URL where the input dataset can be found.\n  -h, --help\
+          \     Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id059
+        - arrow
+        - annotations
+        - get_gff3
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations get_gff3 [OPTIONS] FEATURE_ID\n\n  Get\
+          \ the GFF3 associated with a feature\n\n  Output:\n\n      GFF3 text content\n\
+          \nOptions:\n  --organism TEXT  Organism Common Name\n  --sequence TEXT \
+          \ Sequence Name\n  -h, --help       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id060
+        - arrow
+        - annotations
+        - A...
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: arrow
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: annotations
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: COMMAND
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: ARGS
+          optional: true
+        named: []
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\nTry 'arrow\
+          \ annotations -h' for help.\n\nError: No such command 'A...'.\n"
+        generated_using: *id005
+      - !Command
+        command: &id061
+        - arrow
+        - annotations
+        - standard...
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: arrow
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: annotations
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: COMMAND
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: ARGS
+          optional: true
+        named: []
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\nTry 'arrow\
+          \ annotations -h' for help.\n\nError: No such command 'standard...'.\n"
+        generated_using: *id005
+      - !Command
+        command: &id062
+        - arrow
+        - annotations
+        - add_transcripts
+        positional: []
+        named:
+        - !Flag
+          description: Transcript data
+          synonyms:
+          - --transcripts
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Suppress the history of this operation
+          synonyms:
+          - --suppress_history
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Suppress instant update of the user interface
+          synonyms:
+          - --suppress_events
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations add_transcripts [OPTIONS]\n\n  Add a\
+          \ list of transcript annotations\n\n  Output:\n\n      A standard apollo\
+          \ feature dictionary ({\"features\": [{...}]})\n\nOptions:\n  --transcripts\
+          \ TEXT  Transcript data\n  --suppress_history  Suppress the history of this\
+          \ operation\n  --suppress_events   Suppress instant update of the user interface\n\
+          \  --organism TEXT     Organism Common Name\n  --sequence TEXT     Sequence\
+          \ Name\n  -h, --help          Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id063
+        - arrow
+        - annotations
+        - delete_sequence_alteration
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations delete_sequence_alteration [OPTIONS]\
+          \ FEATURE_ID\n\n  [UNTESTED] Delete a specific feature alteration\n\n  Output:\n\
+          \n      A list of sequence alterations(?)\n\nOptions:\n  --organism TEXT\
+          \  Organism Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help\
+          \       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id064
+        - arrow
+        - annotations
+        - add_attribute
+        positional:
+        - !Positional
+          description: Add an attribute to a feature
+          position: 0
+          name: ATTRIBUTE_VALUE
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations add_attribute [OPTIONS] FEATURE_ID ATTRIBUTE_KEY\n\
+          \                                       ATTRIBUTE_VALUE\n\n  Add an attribute\
+          \ to a feature\n\n  Output:\n\n      A standard apollo feature dictionary\
+          \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
+          \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
+          \ and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id065
+        - arrow
+        - annotations
+        - get_sequence_alterations
+        positional: []
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations get_sequence_alterations [OPTIONS]\n\n\
+          \  [UNTESTED] Get all of the sequence's alterations\n\n  Output:\n\n   \
+          \   A list of sequence alterations(?)\n\nOptions:\n  --organism TEXT  Organism\
+          \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id066
+        - arrow
+        - annotations
+        - set_status
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: STATUS
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations set_status [OPTIONS] FEATURE_ID STATUS\n\
+          \n  Set a feature's description\n\n  Output:\n\n      A standard apollo\
+          \ feature dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism\
+          \ TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help\
+          \       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id067
+        - arrow
+        - annotations
+        - set_boundaries
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: START
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: END
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations set_boundaries [OPTIONS] FEATURE_ID START\
+          \ END\n\n  Set the boundaries of a genomic feature\n\n  Output:\n\n    \
+          \  A standard apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n\
+          \  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n\
+          \  -h, --help       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id068
+        - arrow
+        - annotations
+        - add_feature
+        positional: []
+        named:
+        - !Flag
+          description: Feature information
+          synonyms:
+          - --feature
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations add_feature [OPTIONS]\n\n  Add a single\
+          \ feature\n\n  Output:\n\n      A standard apollo feature dictionary ({\"\
+          features\": [{...}]})\n\nOptions:\n  --feature TEXT   Feature information\n\
+          \  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n\
+          \  -h, --help       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id069
+        - arrow
+        - annotations
+        - get_feature_sequence
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations get_feature_sequence [OPTIONS] FEATURE_ID\n\
+          \n  [CURRENTLY BROKEN] Get the sequence of a feature\n\n  Output:\n\n  \
+          \    A standard apollo feature dictionary ({\"features\": [{...}]})\n\n\
+          Options:\n  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence\
+          \ Name\n  -h, --help       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id070
+        - arrow
+        - annotations
+        - flip_strand
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations flip_strand [OPTIONS] FEATURE_ID\n\n\
+          \  Flip the strand of a feature\n\n  Output:\n\n      A standard apollo\
+          \ feature dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism\
+          \ TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help\
+          \       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id071
+        - arrow
+        - annotations
+        - get_features
+        positional: []
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations get_features [OPTIONS]\n\n  Get the features\
+          \ for an organism / sequence\n\n  Output:\n\n      A standard apollo feature\
+          \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
+          \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id072
+        - arrow
+        - annotations
+        - set_description
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: DESCRIPTION
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations set_description [OPTIONS] FEATURE_ID\
+          \ DESCRIPTION\n\n  Set a feature's description\n\n  Output:\n\n      A standard\
+          \ apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism\
+          \ TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help\
+          \       Show this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id073
+        - arrow
+        - annotations
+        - delete_feature
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations delete_feature [OPTIONS] FEATURE_ID\n\
+          \n  Delete a feature\n\n  Output:\n\n      A standard apollo feature dictionary\
+          \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
+          \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
+          \ and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id074
+        - arrow
+        - annotations
+        - set_name
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: FEATURE_ID
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: NAME
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations set_name [OPTIONS] FEATURE_ID NAME\n\n\
+          \  Set a feature's name\n\n  Output:\n\n      A standard apollo feature\
+          \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
+          \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id075
+        - arrow
+        - annotations
+        - apollo...
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: arrow
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: annotations
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: COMMAND
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: ARGS
+          optional: true
+        named: []
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\nTry 'arrow\
+          \ annotations -h' for help.\n\nError: No such command 'apollo...'.\n"
+        generated_using: *id005
+      - !Command
+        command: &id076
+        - arrow
+        - annotations
+        - duplicate_transcript
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: TRANSCRIPT_ID
+          optional: false
+        named:
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations duplicate_transcript [OPTIONS] TRANSCRIPT_ID\n\
+          \n  Duplicate a transcripte\n\n  Output:\n\n      A standard apollo feature\
+          \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
+          \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show\
+          \ this message and exit.\n"
+        generated_using: *id005
+      - !Command
+        command: &id077
+        - arrow
+        - annotations
+        - add_transcript
+        positional: []
+        named:
+        - !Flag
+          description: Transcript data
+          synonyms:
+          - --transcript
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Suppress the history of this operation
+          synonyms:
+          - --suppress_history
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Suppress instant update of the user interface
+          synonyms:
+          - --suppress_events
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Organism Common Name
+          synonyms:
+          - --organism
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        - !Flag
+          description: Sequence Name
+          synonyms:
+          - --sequence
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        parent: *id009
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: arrow annotations add_transcript [OPTIONS]\n\n  Add a single\
+          \ transcript annotation\n\n  Output:\n\n      A standard apollo feature\
+          \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --transcript TEXT\
+          \   Transcript data\n  --suppress_history  Suppress the history of this\
+          \ operation\n  --suppress_events   Suppress instant update of the user interface\n\
+          \  --organism TEXT     Organism Common Name\n  --sequence TEXT     Sequence\
+          \ Name\n  -h, --help          Show this message and exit.\n"
+        generated_using: *id005
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
+        \  -h, --help  Show this message and exit.\n\nCommands:\n  add_attribute \
+        \              Add an attribute to a feature Output: A...\n  add_comment \
+        \                Set a feature's description Output: A\n                 \
+        \             standard...\n\n  add_dbxref                  Add a dbxref to\
+        \ a feature Output: A standard...\n  add_feature                 Add a single\
+        \ feature Output: A standard\n                              apollo...\n\n\
+        \  add_features                Add a list of feature Output: A standard...\n\
+        \  add_transcript              Add a single transcript annotation Output:\
+        \ A...\n  add_transcripts             Add a list of transcript annotations\
+        \ Output:\n                              A...\n\n  delete_attribute      \
+        \      Delete an attribute from a feature Output: A...\n  delete_dbxref  \
+        \             Delete a dbxref from a feature Output: A...\n  delete_feature\
+        \              Delete a feature Output: A standard apollo...\n  delete_sequence_alteration\
+        \  [UNTESTED] Delete a specific feature...\n  duplicate_transcript       \
+        \ Duplicate a transcripte Output: A standard...\n  flip_strand           \
+        \      Flip the strand of a feature Output: A...\n  get_comments         \
+        \       Get a feature's comments Output: A standard...\n  get_feature_sequence\
+        \        [CURRENTLY BROKEN] Get the sequence of a...\n  get_features     \
+        \           Get the features for an organism / sequence...\n  get_gff3   \
+        \                 Get the GFF3 associated with a feature\n               \
+        \               Output:...\n\n  get_search_tools            Get the search\
+        \ tools available Output:...\n  get_sequence_alterations    [UNTESTED] Get\
+        \ all of the sequence's...\n  load_gff3                   Load a full GFF3\
+        \ into annotation track\n                              Output:...\n\n  load_legacy_gff3\
+        \            Load a full GFF3 into annotation track\n                    \
+        \          (legacy...\n\n  merge_exons                 Merge two exons Output:\
+        \ A standard apollo...\n  set_boundaries              Set the boundaries of\
+        \ a genomic feature...\n  set_description             Set a feature's description\
+        \ Output: A\n                              standard...\n\n  set_longest_orf\
+        \             Automatically pick the longest ORF in a...\n  set_name     \
+        \               Set a feature's name Output: A standard\n                \
+        \              apollo...\n\n  set_readthrough_stop_codon  Set the feature\
+        \ to read through the first...\n  set_sequence                Set the sequence\
+        \ for subsequent requests.\n  set_status                  Set a feature's\
+        \ description Output: A\n                              standard...\n\n  set_symbol\
+        \                  Set a feature's description Output: A\n               \
+        \               standard...\n\n  set_translation_end         Set a feature's\
+        \ end Output: A standard apollo...\n  set_translation_start       Set the\
+        \ translation start of a feature\n                              Output:...\n\
+        \n  update_attribute            Delete an attribute from a feature Output:\
+        \ A...\n  update_dbxref               Delete a dbxref from a feature Output:\
+        \ A...\n"
+      generated_using: *id005
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Show the version and exit.
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Usage: arrow [OPTIONS] COMMAND [ARGS]...\n\n  Command line wrappers\
+      \ around Apollo functions. While this sounds\n  unexciting, with arrow and jq\
+      \ you can easily build powerful command line\n  scripts.\n\nOptions:\n  --version\
+      \                       Show the version and exit.\n  -v, --verbose        \
+      \           Enables verbose mode.\n  -a, --apollo_instance TEXT      name of\
+      \ apollo instance from /root/.apollo-\n                                  arrow.yml\
+      \  [default: __default; required]\n\n  -l, --log-level [debug|info|warn|error|critical]\n\
+      \                                  Logging level  [default: warn]\n  -h, --help\
+      \                      Show this message and exit.\n\nCommands:\n  init    \
+      \        Help initialize global configuration (in home directory)\n  annotations\n\
+      \  cannedcomments\n  cannedkeys\n  cannedvalues\n  groups\n  io\n  metrics\n\
+      \  organisms\n  status\n  users\n  remote\n"
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag:
@@ -57,21 +2664,15 @@ subcommands:
   help_text: "Problem loading command arrow.yml, exception No module named 'arrow.commands.cmd_arrow'\n\
     Usage: arrow [OPTIONS] COMMAND [ARGS]...\nTry 'arrow -h' for help.\n\nError: No\
     \ such command 'arrow.yml'.\n"
-  generated_using: &id003
-  - --help
-- &id002 !Command
-  command:
-  - arrow
-  - status
+  generated_using: *id005
+- !Command
+  command: *id010
   positional: []
   named: []
-  parent: *id001
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - arrow
-    - status
-    - add_status
+    command: *id011
     positional:
     - !Positional
       description: ''
@@ -79,7 +2680,7 @@ subcommands:
       name: STATUS
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -94,12 +2695,9 @@ subcommands:
     help_text: "Usage: arrow status add_status [OPTIONS] STATUS\n\n  Add a status\
       \ value\n\n  Output:\n\n      A dictionnary containing status description\n\n\
       Options:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - findStatusById
+    command: *id012
     positional:
     - !Positional
       description: ''
@@ -107,7 +2705,7 @@ subcommands:
       name: ID_NUMBER
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -122,12 +2720,9 @@ subcommands:
     help_text: "Usage: arrow status findStatusById [OPTIONS] ID_NUMBER\n\n  TODO:\
       \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - updateStatus
+    command: *id013
     positional:
     - !Positional
       description: ''
@@ -140,7 +2735,7 @@ subcommands:
       name: NEW_VALUE
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -155,12 +2750,9 @@ subcommands:
     help_text: "Usage: arrow status updateStatus [OPTIONS] ID_NUMBER NEW_VALUE\n\n\
       \  TODO: Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show\
       \ this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - update_status
+    command: *id014
     positional:
     - !Positional
       description: ''
@@ -173,7 +2765,7 @@ subcommands:
       name: NEW_VALUE
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -188,12 +2780,9 @@ subcommands:
     help_text: "Usage: arrow status update_status [OPTIONS] ID_NUMBER NEW_VALUE\n\n\
       \  Update a status name\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n\
       \  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - show_status
+    command: *id015
     positional:
     - !Positional
       description: ''
@@ -201,7 +2790,7 @@ subcommands:
       name: STATUS
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -216,12 +2805,9 @@ subcommands:
     help_text: "Usage: arrow status show_status [OPTIONS] STATUS\n\n  Get a specific\
       \ status\n\n  Output:\n\n      A dictionnary containing status description\n\
       \nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - delete_status
+    command: *id016
     positional:
     - !Positional
       description: ''
@@ -229,7 +2815,7 @@ subcommands:
       name: ID_NUMBER
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -244,12 +2830,9 @@ subcommands:
     help_text: "Usage: arrow status delete_status [OPTIONS] ID_NUMBER\n\n  Delete\
       \ a status\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n  -h, --help\
       \  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - deleteStatus
+    command: *id017
     positional:
     - !Positional
       description: ''
@@ -257,7 +2840,7 @@ subcommands:
       name: ID_NUMBER
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -271,12 +2854,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow status deleteStatus [OPTIONS] ID_NUMBER\n\n  TODO: Undocumented\n\
       \n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - findStatusByValue
+    command: *id018
     positional:
     - !Positional
       description: ''
@@ -284,7 +2864,7 @@ subcommands:
       name: VALUE
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -298,12 +2878,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow status findStatusByValue [OPTIONS] VALUE\n\n  TODO: Undocumented\n\
       \n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - status
-    - addStatus
+    command: *id019
     positional:
     - !Positional
       description: ''
@@ -311,7 +2888,7 @@ subcommands:
       name: VALUE
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -325,15 +2902,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow status addStatus [OPTIONS] VALUE\n\n  TODO: Undocumented\n\
       \n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   usage: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "Usage: arrow status [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h, --help\
@@ -346,20 +2917,15 @@ subcommands:
     \ in this Apollo instance...\n  show_status        Get a specific status Output:\
     \ A dictionnary containing...\n  updateStatus       TODO: Undocumented Output:\
     \ ???\n  update_status      Update a status name Output: an empty dictionary\n"
-  generated_using: *id003
-- &id004 !Command
-  command:
-  - arrow
-  - groups
+  generated_using: *id005
+- !Command
+  command: *id020
   positional: []
   named: []
-  parent: *id001
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - arrow
-    - groups
-    - update_group
+    command: *id021
     positional:
     - !Positional
       description: ''
@@ -372,7 +2938,7 @@ subcommands:
       name: NEW_NAME
       optional: false
     named: []
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -387,12 +2953,9 @@ subcommands:
     help_text: "Usage: arrow groups update_group [OPTIONS] GROUP_ID NEW_NAME\n\n \
       \ Update the name of a group\n\n  Output:\n\n      a dictionary containing group\
       \ information\n\nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - get_group_creator
+    command: *id022
     positional:
     - !Positional
       description: ''
@@ -400,7 +2963,7 @@ subcommands:
       name: GROUP
       optional: false
     named: []
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -415,12 +2978,9 @@ subcommands:
     help_text: "Usage: arrow groups get_group_creator [OPTIONS] GROUP\n\n  Get the\
       \ group's creator\n\n  Output:\n\n      creator userId\n\nOptions:\n  -h, --help\
       \  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - update_organism_permissions
+    command: *id023
     positional:
     - !Positional
       description: ''
@@ -457,7 +3017,7 @@ subcommands:
       - --export
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -476,12 +3036,9 @@ subcommands:
       \ privileges\n  --read          Should the group have read privileges\n  --export\
       \        Should the group have export privileges\n  -h, --help      Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - get_group_admin
+    command: *id024
     positional:
     - !Positional
       description: ''
@@ -489,7 +3046,7 @@ subcommands:
       name: GROUP
       optional: false
     named: []
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -504,12 +3061,9 @@ subcommands:
     help_text: "Usage: arrow groups get_group_admin [OPTIONS] GROUP\n\n  Get the group's\
       \ admins\n\n  Output:\n\n      a list containing group admins\n\nOptions:\n\
       \  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - get_groups
+    command: *id025
     positional: []
     named:
     - !Flag
@@ -519,7 +3073,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -535,12 +3089,9 @@ subcommands:
       \n  Output:\n\n      list of a dictionaries containing group information\n\n\
       Options:\n  --name TEXT  Only return group(s) with given name\n  -h, --help\
       \   Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - update_group_admin
+    command: *id026
     positional:
     - !Positional
       description: ''
@@ -555,7 +3106,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -571,12 +3122,9 @@ subcommands:
       \ the group's admins\n\n  Output:\n\n      dictionary of group information\n\
       \nOptions:\n  --users TEXT  List of emails\n  -h, --help    Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - get_organism_permissions
+    command: *id027
     positional:
     - !Positional
       description: ''
@@ -584,7 +3132,7 @@ subcommands:
       name: GROUP
       optional: false
     named: []
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -600,12 +3148,9 @@ subcommands:
       \ Get the group's organism permissions\n\n  Output:\n\n      a list containing\
       \ organism permissions (if any)\n\nOptions:\n  -h, --help  Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - delete_group
+    command: *id028
     positional:
     - !Positional
       description: ''
@@ -613,7 +3158,7 @@ subcommands:
       name: GROUP
       optional: false
     named: []
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -628,12 +3173,9 @@ subcommands:
     help_text: "Usage: arrow groups delete_group [OPTIONS] GROUP\n\n  Delete a group\n\
       \n  Output:\n\n      an empty dictionary\n\nOptions:\n  -h, --help  Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - update_membership
+    command: *id029
     positional: []
     named:
     - !Flag
@@ -659,7 +3201,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -679,12 +3221,9 @@ subcommands:
       \                      {groupId:<another-groupId>, users: [\"user2\", \"user8\"\
       ]}\n                      (users and groupId will be ignored)\n\n  -h, --help\
       \          Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - create_group
+    command: *id030
     positional:
     - !Positional
       description: ''
@@ -692,7 +3231,7 @@ subcommands:
       name: NAME
       optional: false
     named: []
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -707,12 +3246,9 @@ subcommands:
     help_text: "Usage: arrow groups create_group [OPTIONS] NAME\n\n  Create a new\
       \ group\n\n  Output:\n\n      Group information dictionary\n\nOptions:\n  -h,\
       \ --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - groups
-    - show_group
+    command: *id031
     positional:
     - !Positional
       description: ''
@@ -720,7 +3256,7 @@ subcommands:
       name: GROUP_ID
       optional: false
     named: []
-    parent: *id004
+    parent: *id006
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -735,15 +3271,9 @@ subcommands:
     help_text: "Usage: arrow groups show_group [OPTIONS] GROUP_ID\n\n  Get information\
       \ about a group\n\n  Output:\n\n      a dictionary containing group information\n\
       \nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   usage: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "Usage: arrow groups [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h, --help\
@@ -759,20 +3289,15 @@ subcommands:
     \ dictionary...\n  update_membership            Update the group's membership\
     \ Output:...\n  update_organism_permissions  Update the group's permissions on\
     \ an\n                               organism...\n"
-  generated_using: *id003
-- &id005 !Command
-  command:
-  - arrow
-  - cannedkeys
+  generated_using: *id005
+- !Command
+  command: *id032
   positional: []
   named: []
-  parent: *id001
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - deleteKey
+    command: *id033
     positional:
     - !Positional
       description: ''
@@ -780,7 +3305,7 @@ subcommands:
       name: ID_NUMBER
       optional: false
     named: []
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -794,12 +3319,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow cannedkeys deleteKey [OPTIONS] ID_NUMBER\n\n  TODO: Undocumented\n\
       \n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - findKeyById
+    command: *id034
     positional:
     - !Positional
       description: ''
@@ -807,7 +3329,7 @@ subcommands:
       name: ID_NUMBER
       optional: false
     named: []
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -822,12 +3344,9 @@ subcommands:
     help_text: "Usage: arrow cannedkeys findKeyById [OPTIONS] ID_NUMBER\n\n  TODO:\
       \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - delete_key
+    command: *id035
     positional:
     - !Positional
       description: ''
@@ -835,7 +3354,7 @@ subcommands:
       name: ID_NUMBER
       optional: false
     named: []
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -850,12 +3369,9 @@ subcommands:
     help_text: "Usage: arrow cannedkeys delete_key [OPTIONS] ID_NUMBER\n\n  Update\
       \ a canned key\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n  -h,\
       \ --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - show_key
+    command: *id036
     positional:
     - !Positional
       description: ''
@@ -863,7 +3379,7 @@ subcommands:
       name: VALUE
       optional: false
     named: []
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -878,12 +3394,9 @@ subcommands:
     help_text: "Usage: arrow cannedkeys show_key [OPTIONS] VALUE\n\n  Get a specific\
       \ canned key\n\n  Output:\n\n      A dictionnary containing canned key description\n\
       \nOptions:\n  -h, --help  Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - update_key
+    command: *id037
     positional:
     - !Positional
       description: ''
@@ -903,7 +3416,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -919,12 +3432,9 @@ subcommands:
       \  Update a canned key\n\n  Output:\n\n      an empty dictionary\n\nOptions:\n\
       \  --metadata TEXT  Optional metadata\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - add_key
+    command: *id038
     positional:
     - !Positional
       description: ''
@@ -939,7 +3449,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -955,12 +3465,9 @@ subcommands:
       \n  Output:\n\n      A dictionnary containing canned key description\n\nOptions:\n\
       \  --metadata TEXT  Optional metadata\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - containing...
+    command: *id039
     positional:
     - !Positional
       description: ''
@@ -983,7 +3490,7 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag:
@@ -991,12 +3498,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow cannedkeys [OPTIONS] COMMAND [ARGS]...\nTry 'arrow cannedkeys\
       \ -h' for help.\n\nError: No such command 'containing...'.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - findKeyByValue
+    command: *id040
     positional:
     - !Positional
       description: ''
@@ -1004,7 +3508,7 @@ subcommands:
       name: VALUE
       optional: false
     named: []
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1019,12 +3523,9 @@ subcommands:
     help_text: "Usage: arrow cannedkeys findKeyByValue [OPTIONS] VALUE\n\n  TODO:\
       \ Undocumented\n\n  Output:\n\n      ???\n\nOptions:\n  -h, --help  Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - cannedkeys
-    - addKey
+    command: *id041
     positional:
     - !Positional
       description: ''
@@ -1033,36 +3534,24 @@ subcommands:
       optional: false
     named:
     - !Flag
-      description: ''
+      description: "-h, --help       Show this message and exit.\n"
       synonyms:
       - --metadata
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id005
+    parent: *id007
     subcommands: []
     usage: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage: arrow cannedkeys addKey [OPTIONS] KEY\n\n  TODO: Undocumented\n\
       \n  Output:\n\n      ???\n\nOptions:\n  --metadata TEXT\n  -h, --help      \
       \ Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   usage: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "Usage: arrow cannedkeys [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -h,\
@@ -1076,20 +3565,15 @@ subcommands:
     \ canned key Output: A dictionnary\n                  containing...\n\n  updateKey\
     \       TODO: Undocumented Output: ???\n  update_key      Update a canned key\
     \ Output: an empty dictionary\n"
-  generated_using: *id003
-- &id006 !Command
-  command:
-  - arrow
-  - metrics
+  generated_using: *id005
+- !Command
+  command: *id042
   positional: []
   named: []
-  parent: *id001
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - arrow
-    - metrics
-    - COMMAND
+    command: *id043
     positional:
     - !Positional
       description: ''
@@ -1097,7 +3581,7 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    parent: *id006
+    parent: *id008
     subcommands: []
     usage: []
     help_flag:
@@ -1105,12 +3589,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow metrics [OPTIONS] COMMAND [ARGS]...\nTry 'arrow metrics\
       \ -h' for help.\n\nError: No such command 'COMMAND'.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - metrics
-    - ARGS
+    command: *id044
     positional:
     - !Positional
       description: ''
@@ -1133,7 +3614,7 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    parent: *id006
+    parent: *id008
     subcommands: []
     usage: []
     help_flag:
@@ -1141,19 +3622,16 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow metrics [OPTIONS] COMMAND [ARGS]...\nTry 'arrow metrics\
       \ -h' for help.\n\nError: No such command 'ARGS'.\n"
-    generated_using: *id003
+    generated_using: *id005
   usage: []
   help_flag:
   usage_flag:
   version_flag:
   help_text: "Usage: arrow metrics [OPTIONS] COMMAND [ARGS]...\nTry 'arrow metrics\
     \ -h' for help.\n\nError: no such option: --usage\n"
-  generated_using:
-  - --usage
+  generated_using: *id045
 - !Command
-  command:
-  - arrow
-  - scripts.
+  command: *id046
   positional:
   - !Positional
     description: ''
@@ -1171,7 +3649,7 @@ subcommands:
     name: ARGS
     optional: true
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -1180,20 +3658,15 @@ subcommands:
   help_text: "Problem loading command scripts., exception No module named 'arrow.commands.cmd_scripts'\n\
     Usage: arrow [OPTIONS] COMMAND [ARGS]...\nTry 'arrow -h' for help.\n\nError: No\
     \ such command 'scripts.'.\n"
-  generated_using: *id003
-- &id007 !Command
-  command:
-  - arrow
-  - annotations
+  generated_using: *id005
+- !Command
+  command: *id047
   positional: []
   named: []
-  parent: *id001
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - arrow
-    - annotations
-    - merge_exons
+    command: *id048
     positional:
     - !Positional
       description: ''
@@ -1220,7 +3693,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1237,12 +3710,9 @@ subcommands:
       \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
       \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - set_sequence
+    command: *id049
     positional:
     - !Positional
       description: ''
@@ -1255,7 +3725,7 @@ subcommands:
       name: SEQUENCE
       optional: false
     named: []
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag:
@@ -1264,12 +3734,9 @@ subcommands:
     help_text: "Usage: arrow annotations set_sequence [OPTIONS] ORGANISM SEQUENCE\n\
       Try 'arrow annotations set_sequence -h' for help.\n\nError: Missing argument\
       \ 'ORGANISM'.\n"
-    generated_using: []
+    generated_using: *id050
   - !Command
-    command:
-    - arrow
-    - annotations
-    - load_gff3
+    command: *id051
     positional:
     - !Positional
       description: ''
@@ -1320,7 +3787,7 @@ subcommands:
       - --timing
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1341,12 +3808,9 @@ subcommands:
       \  Disable CDS recalculation and instead use the\n                         \
       \      one provided\n\n  --timing                     Output loading performance\
       \ metrics\n  -h, --help                   Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - set_translation_start
+    command: *id052
     positional:
     - !Positional
       description: ''
@@ -1373,7 +3837,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1390,12 +3854,9 @@ subcommands:
       \ standard apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n\
       \  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n\
       \  -h, --help       Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - delete_dbxref
+    command: *id053
     positional:
     - !Positional
       description: ''
@@ -1427,7 +3888,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1444,12 +3905,9 @@ subcommands:
       \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
       \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - get_comments
+    command: *id054
     positional:
     - !Positional
       description: ''
@@ -1471,7 +3929,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1488,12 +3946,9 @@ subcommands:
       \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
       \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - add_comment
+    command: *id055
     positional:
     - !Positional
       description: ''
@@ -1522,7 +3977,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1539,12 +3994,9 @@ subcommands:
       \ ({\"features\": [{...}]})\n\nOptions:\n  --comments TEXT  Feature comments\n\
       \  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n\
       \  -h, --help       Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - update_attribute
+    command: *id056
     positional:
     - !Positional
       description: ''
@@ -1571,7 +4023,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1589,12 +4041,9 @@ subcommands:
       \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
       \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - update_dbxref
+    command: *id057
     positional:
     - !Positional
       description: ''
@@ -1621,7 +4070,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1639,12 +4088,9 @@ subcommands:
       \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
       \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - load_legacy_gff3
+    command: *id058
     positional:
     - !Positional
       description: ''
@@ -1664,7 +4110,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1681,12 +4127,9 @@ subcommands:
       \ only)\n\n  Output:\n\n      Loading report\n\nOptions:\n  --source TEXT  URL\
       \ where the input dataset can be found.\n  -h, --help     Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - get_gff3
+    command: *id059
     positional:
     - !Positional
       description: ''
@@ -1708,7 +4151,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1724,12 +4167,9 @@ subcommands:
       \ GFF3 associated with a feature\n\n  Output:\n\n      GFF3 text content\n\n\
       Options:\n  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence\
       \ Name\n  -h, --help       Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - A...
+    command: *id060
     positional:
     - !Positional
       description: ''
@@ -1752,7 +4192,7 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag:
@@ -1760,12 +4200,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\nTry 'arrow annotations\
       \ -h' for help.\n\nError: No such command 'A...'.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - standard...
+    command: *id061
     positional:
     - !Positional
       description: ''
@@ -1788,7 +4225,7 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag:
@@ -1796,12 +4233,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\nTry 'arrow annotations\
       \ -h' for help.\n\nError: No such command 'standard...'.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - add_transcripts
+    command: *id062
     positional: []
     named:
     - !Flag
@@ -1837,7 +4271,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1856,12 +4290,9 @@ subcommands:
       \   Suppress instant update of the user interface\n  --organism TEXT     Organism\
       \ Common Name\n  --sequence TEXT     Sequence Name\n  -h, --help          Show\
       \ this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - delete_sequence_alteration
+    command: *id063
     positional:
     - !Positional
       description: ''
@@ -1883,7 +4314,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1900,12 +4331,9 @@ subcommands:
       \ list of sequence alterations(?)\n\nOptions:\n  --organism TEXT  Organism Common\
       \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - add_attribute
+    command: *id064
     positional:
     - !Positional
       description: Add an attribute to a feature
@@ -1927,7 +4355,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1945,12 +4373,9 @@ subcommands:
       features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common Name\n\
       \  --sequence TEXT  Sequence Name\n  -h, --help       Show this message and\
       \ exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - get_sequence_alterations
+    command: *id065
     positional: []
     named:
     - !Flag
@@ -1967,7 +4392,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1983,12 +4408,9 @@ subcommands:
       \ Get all of the sequence's alterations\n\n  Output:\n\n      A list of sequence\
       \ alterations(?)\n\nOptions:\n  --organism TEXT  Organism Common Name\n  --sequence\
       \ TEXT  Sequence Name\n  -h, --help       Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - set_status
+    command: *id066
     positional:
     - !Positional
       description: ''
@@ -2015,7 +4437,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2032,12 +4454,9 @@ subcommands:
       \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
       \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - set_boundaries
+    command: *id067
     positional:
     - !Positional
       description: ''
@@ -2069,7 +4488,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2086,12 +4505,9 @@ subcommands:
       \ apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism\
       \ TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help\
       \       Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - add_feature
+    command: *id068
     positional: []
     named:
     - !Flag
@@ -2115,7 +4531,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2132,12 +4548,9 @@ subcommands:
       \nOptions:\n  --feature TEXT   Feature information\n  --organism TEXT  Organism\
       \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - get_feature_sequence
+    command: *id069
     positional:
     - !Positional
       description: ''
@@ -2159,7 +4572,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2176,12 +4589,9 @@ subcommands:
       \ standard apollo feature dictionary ({\"features\": [{...}]})\n\nOptions:\n\
       \  --organism TEXT  Organism Common Name\n  --sequence TEXT  Sequence Name\n\
       \  -h, --help       Show this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - flip_strand
+    command: *id070
     positional:
     - !Positional
       description: ''
@@ -2203,7 +4613,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2220,12 +4630,9 @@ subcommands:
       \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
       \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - get_features
+    command: *id071
     positional: []
     named:
     - !Flag
@@ -2242,7 +4649,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2259,12 +4666,9 @@ subcommands:
       \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
       \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - set_description
+    command: *id072
     positional:
     - !Positional
       description: ''
@@ -2291,7 +4695,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2308,12 +4712,9 @@ subcommands:
       \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
       \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - delete_feature
+    command: *id073
     positional:
     - !Positional
       description: ''
@@ -2335,7 +4736,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2352,12 +4753,9 @@ subcommands:
       \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
       \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - set_name
+    command: *id074
     positional:
     - !Positional
       description: ''
@@ -2384,7 +4782,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2401,12 +4799,9 @@ subcommands:
       \ ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism Common\
       \ Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this message\
       \ and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - apollo...
+    command: *id075
     positional:
     - !Positional
       description: ''
@@ -2429,7 +4824,7 @@ subcommands:
       name: ARGS
       optional: true
     named: []
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag:
@@ -2437,12 +4832,9 @@ subcommands:
     version_flag:
     help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\nTry 'arrow annotations\
       \ -h' for help.\n\nError: No such command 'apollo...'.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - duplicate_transcript
+    command: *id076
     positional:
     - !Positional
       description: ''
@@ -2464,7 +4856,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2481,12 +4873,9 @@ subcommands:
       \ dictionary ({\"features\": [{...}]})\n\nOptions:\n  --organism TEXT  Organism\
       \ Common Name\n  --sequence TEXT  Sequence Name\n  -h, --help       Show this\
       \ message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   - !Command
-    command:
-    - arrow
-    - annotations
-    - add_transcript
+    command: *id077
     positional: []
     named:
     - !Flag
@@ -2522,7 +4911,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id007
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2541,15 +4930,9 @@ subcommands:
       \   Suppress instant update of the user interface\n  --organism TEXT     Organism\
       \ Common Name\n  --sequence TEXT     Sequence Name\n  -h, --help          Show\
       \ this message and exit.\n"
-    generated_using: *id003
+    generated_using: *id005
   usage: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "Usage: arrow annotations [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n \
@@ -2592,22 +4975,11 @@ subcommands:
     \                        Output:...\n\n  update_attribute            Delete an\
     \ attribute from a feature Output: A...\n  update_dbxref               Delete\
     \ a dbxref from a feature Output: A...\n"
-  generated_using: *id003
+  generated_using: *id005
 usage: []
-help_flag: !Flag
-  description: Show this message and exit.
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: Show the version and exit.
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "Usage: arrow [OPTIONS] COMMAND [ARGS]...\n\n  Command line wrappers around\
   \ Apollo functions. While this sounds\n  unexciting, with arrow and jq you can easily\
   \ build powerful command line\n  scripts.\n\nOptions:\n  --version             \
@@ -2619,4 +4991,4 @@ help_text: "Usage: arrow [OPTIONS] COMMAND [ARGS]...\n\n  Command line wrappers 
   \          Show this message and exit.\n\nCommands:\n  init            Help initialize\
   \ global configuration (in home directory)\n  annotations\n  cannedcomments\n  cannedkeys\n\
   \  cannedvalues\n  groups\n  io\n  metrics\n  organisms\n  status\n  users\n  remote\n"
-generated_using: *id003
+generated_using: *id005

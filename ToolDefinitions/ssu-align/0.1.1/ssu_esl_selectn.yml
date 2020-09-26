@@ -1,25 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - ssu-esl-selectn
 positional: []
-named:
-- !Flag
-  description: ": set random number generator's seed to <n>  [0]"
-  synonyms:
-  - --seed
-  args: !SimpleFlagArg
-    name: n
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -options
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - ssu-esl-selectn
   - n
   positional:
@@ -35,7 +22,103 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: ": set random number generator's seed to <n>  [0]"
+      synonyms:
+      - --seed
+      args: !SimpleFlagArg
+        name: n
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -options
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: file
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -options
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: ssu-esl-selectn [-options] <n> <file>\n\nTo see more help\
+        \ on available options, do ssu-esl-selectn -h\n\n"
+      generated_using: &id004 []
+    - !Command
+      command: &id005
+      - ssu-esl-selectn
+      - file
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: ssu-esl-selectn
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: n
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: file
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -options
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "Usage: ssu-esl-selectn [-options] <n> <file>\n\nTo see more help\
+        \ on available options, do ssu-esl-selectn -h\n\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: ': show brief help on version and usage'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "# ssu-esl-selectn :: select n lines randomly from a file\n# Easel\
+      \ s0.1.1 (Feb 2016)\n# Copyright (C) 2016 HHMI Janelia Farm Research Campus\n\
+      # Freely distributed under the BSD open source license.\n# - - - - - - - - -\
+      \ - - - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage: ssu-esl-selectn\
+      \ [-options] <n> <file>\n\n where general options are:\n  -h         : show\
+      \ brief help on version and usage\n  --seed <n> : set random number generator's\
+      \ seed to <n>  [0]\n"
+    generated_using: &id006
+    - -h
   subcommands: []
   usage: []
   help_flag:
@@ -43,11 +126,9 @@ subcommands:
   version_flag:
   help_text: "Usage: ssu-esl-selectn [-options] <n> <file>\n\nTo see more help on\
     \ available options, do ssu-esl-selectn -h\n\n"
-  generated_using: &id002 []
+  generated_using: *id004
 - !Command
-  command:
-  - ssu-esl-selectn
-  - file
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -71,7 +152,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -79,14 +160,9 @@ subcommands:
   version_flag:
   help_text: "Usage: ssu-esl-selectn [-options] <n> <file>\n\nTo see more help on\
     \ available options, do ssu-esl-selectn -h\n\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: ': show brief help on version and usage'
-  synonyms:
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "# ssu-esl-selectn :: select n lines randomly from a file\n# Easel s0.1.1\
@@ -95,5 +171,4 @@ help_text: "# ssu-esl-selectn :: select n lines randomly from a file\n# Easel s0
   \ - - - - - - - - - - - - - - - -\nUsage: ssu-esl-selectn [-options] <n> <file>\n\
   \n where general options are:\n  -h         : show brief help on version and usage\n\
   \  --seed <n> : set random number generator's seed to <n>  [0]\n"
-generated_using:
-- -h
+generated_using: *id006

@@ -1,40 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - vawk
 positional: []
-named:
-- !Flag
-  description: 'declare an external variable (e.g.: SIZE=10000)'
-  synonyms:
-  - -v
-  - --var
-  args: !SimpleFlagArg
-    name: VAR
-  optional: true
-- !Flag
-  description: column of the INFO field [8]
-  synonyms:
-  - -c
-  - --col
-  args: !SimpleFlagArg
-    name: INFO_COL
-  optional: true
-- !Flag
-  description: print VCF header
-  synonyms:
-  - --header
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: debugging level verbosity
-  synonyms:
-  - --debug
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - vawk
   - vcf
   positional:
@@ -80,7 +52,133 @@ subcommands:
     args: !SimpleFlagArg
       name: VAR
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: 'declare an external variable (e.g.: SIZE=10000)'
+      synonyms:
+      - -v
+      - --var
+      args: !SimpleFlagArg
+        name: VAR
+      optional: true
+    - !Flag
+      description: column of the INFO field [8]
+      synonyms:
+      - -c
+      - --col
+      args: !SimpleFlagArg
+        name: INFO_COL
+      optional: true
+    - !Flag
+      description: print VCF header
+      synonyms:
+      - --header
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: debugging level verbosity
+      synonyms:
+      - --debug
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: vawk
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: cmd
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: vcf
+        optional: true
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --debug
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --header
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -c
+        args: !SimpleFlagArg
+          name: INFO_COL
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -v
+        args: !SimpleFlagArg
+          name: VAR
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: vawk [-h] [-v VAR] [-c INFO_COL] [--header] [--debug] cmd\
+        \ [vcf]\nvawk: error: unrecognized arguments: --usage\n"
+      generated_using: &id004
+      - --usage
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: vawk [-h] [-v VAR] [-c INFO_COL] [--header] [--debug] cmd [vcf]\n\
+      \nvawk\nauthor: Colby Chiang (cc2qe@virginia.edu)\nversion: $Revision: 0.0.2\
+      \ $\ndescription: An awk-like VCF parser\n\npositional arguments:\n  cmd   \
+      \                vawk command syntax is exactly the same as awk syntax with\n\
+      \                            a few additional features. The INFO field can be\
+      \ split using\n                            the I$ prefix and the SAMPLE field\
+      \ can be split using\n                            the S$ prefix. For example,\
+      \ I$AF prints the allele frequency of\n                            each variant\
+      \ and S$NA12878 prints the entire SAMPLE field for the\n                   \
+      \         NA12878 individual for each variant. S$* returns all samples.\n  \
+      \                      \n                            The SAMPLE field can be\
+      \ further split based on the keys in the\n                            FORMAT\
+      \ field of the VCF (column 9). For example, S$NA12877$GT\n                 \
+      \           returns the genotype of the NA12878 individual.\n              \
+      \          \n                            ex: '{ if (I$AF>0.5) print $1,$2,$3,I$AN,S$NA12878,S$NA12877$GT\
+      \ }'\n                            \n  vcf                   VCF file (default:\
+      \ stdin)\n\noptional arguments:\n  -h, --help            show this help message\
+      \ and exit\n  -v VAR, --var VAR     declare an external variable (e.g.: SIZE=10000)\n\
+      \  -c INFO_COL, --col INFO_COL\n                        column of the INFO field\
+      \ [8]\n  --header              print VCF header\n  --debug               debugging\
+      \ level verbosity\n"
+    generated_using: &id005
+    - --help
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -93,16 +191,9 @@ subcommands:
   version_flag:
   help_text: "usage: vawk [-h] [-v VAR] [-c INFO_COL] [--header] [--debug] cmd [vcf]\n\
     vawk: error: unrecognized arguments: --usage\n"
-  generated_using:
-  - --usage
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: vawk [-h] [-v VAR] [-c INFO_COL] [--header] [--debug] cmd [vcf]\n\
@@ -125,5 +216,4 @@ help_text: "usage: vawk [-h] [-v VAR] [-c INFO_COL] [--header] [--debug] cmd [vc
   \ external variable (e.g.: SIZE=10000)\n  -c INFO_COL, --col INFO_COL\n        \
   \                column of the INFO field [8]\n  --header              print VCF\
   \ header\n  --debug               debugging level verbosity\n"
-generated_using:
-- --help
+generated_using: *id005

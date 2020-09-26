@@ -1,26 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - pynnotator
 positional: []
-named:
-- !Flag
-  description: ''
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: hg19
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: example.vcf
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - pynnotator
   - or
   positional:
@@ -44,7 +30,81 @@ subcommands:
     args: !SimpleFlagArg
       name: hg19
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -b
+      args: !SimpleFlagArg
+        name: hg19
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -i
+      args: !SimpleFlagArg
+        name: example.vcf
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: install test
+        position: 0
+        name: options
+        optional: false
+      named:
+      - !Flag
+        description: a VCF file to be annotated
+        synonyms:
+        - -i
+        args: !SimpleFlagArg
+          name: example.vcf
+        optional: true
+      - !Flag
+        description: or hg38  The genome build you want to use
+        synonyms:
+        - -b
+        args: !SimpleFlagArg
+          name: hg19
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: pynnotator [-h] [-i example.vcf] [-b hg19 or hg38] [options]\n\
+        \npositional arguments:\n  options          install test\n\noptional arguments:\n\
+        \  -h, --help       show this help message and exit\n  -i example.vcf   a\
+        \ VCF file to be annotated\n  -b hg19 or hg38  The genome build you want to\
+        \ use\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: pynnotator [-h] [-i example.vcf] [-b hg19 or hg38] [options]\n\
+      pynnotator: error: unrecognized arguments: --usage\n"
+    generated_using: &id005
+    - --usage
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -60,18 +120,11 @@ subcommands:
     \npositional arguments:\n  options          install test\n\noptional arguments:\n\
     \  -h, --help       show this help message and exit\n  -i example.vcf   a VCF\
     \ file to be annotated\n  -b hg19 or hg38  The genome build you want to use\n"
-  generated_using:
-  - --help
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: ''
-  synonyms:
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: pynnotator [-h] [-i example.vcf] [-b hg19 or hg38] [options]\n\
   pynnotator: error: unrecognized arguments: --usage\n"
-generated_using:
-- --usage
+generated_using: *id005

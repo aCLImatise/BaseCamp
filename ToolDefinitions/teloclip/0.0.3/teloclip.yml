@@ -1,63 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - teloclip
 positional: []
-named:
-- !Flag
-  description: "Path to fai index for reference fasta. Index fasta\nusing `samtools\
-    \ faidx FASTA`"
-  synonyms:
-  - --refIdx
-  args: !SimpleFlagArg
-    name: REFIDX
-  optional: true
-- !Flag
-  description: "Require clip to extend past ref contig end by at least\nN bases."
-  synonyms:
-  - --minClip
-  args: !SimpleFlagArg
-    name: MINCLIP
-  optional: true
-- !Flag
-  description: Tolerate max N unaligned bases at contig ends.
-  synonyms:
-  - --maxBreak
-  args: !SimpleFlagArg
-    name: MAXBREAK
-  optional: true
-- !Flag
-  description: "If set keep only reads containing given motif/s from\ncomma delimited\
-    \ list of strings. By default also search\nfor reverse complement of motifs. i.e.\
-    \ TTAGGG,TTAAGGG\nwill also match CCCTAA,CCCTTAA"
-  synonyms:
-  - --motifs
-  args: !SimpleFlagArg
-    name: MOTIFS
-  optional: true
-- !Flag
-  description: "If set do NOT search for reverse complement of\nspecified motifs."
-  synonyms:
-  - --noRev
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If set collapse homopolymer tracks within motifs before\nsearching\
-    \ overhangs. i.e.\n\"TTAGGGTTAGGGTTAGGGTTAGGGTTAGGG\" -> \"TAGTAGTAGTAGTAG\".\n\
-    Useful for PacBio or ONP long reads homopolymer length\nerrors. Default: Off"
-  synonyms:
-  - --noPoly
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: If set motif match may occur in unclipped region of
-  synonyms:
-  - --matchAny
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - teloclip
   - alignment.
   positional:
@@ -88,7 +37,194 @@ subcommands:
     args: !SimpleFlagArg
       name: REFIDX
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: "Path to fai index for reference fasta. Index fasta\nusing `samtools\
+        \ faidx FASTA`"
+      synonyms:
+      - --refIdx
+      args: !SimpleFlagArg
+        name: REFIDX
+      optional: true
+    - !Flag
+      description: "Require clip to extend past ref contig end by at least\nN bases."
+      synonyms:
+      - --minClip
+      args: !SimpleFlagArg
+        name: MINCLIP
+      optional: true
+    - !Flag
+      description: Tolerate max N unaligned bases at contig ends.
+      synonyms:
+      - --maxBreak
+      args: !SimpleFlagArg
+        name: MAXBREAK
+      optional: true
+    - !Flag
+      description: "If set keep only reads containing given motif/s from\ncomma delimited\
+        \ list of strings. By default also search\nfor reverse complement of motifs.\
+        \ i.e. TTAGGG,TTAAGGG\nwill also match CCCTAA,CCCTTAA"
+      synonyms:
+      - --motifs
+      args: !SimpleFlagArg
+        name: MOTIFS
+      optional: true
+    - !Flag
+      description: "If set do NOT search for reverse complement of\nspecified motifs."
+      synonyms:
+      - --noRev
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "If set collapse homopolymer tracks within motifs before\nsearching\
+        \ overhangs. i.e.\n\"TTAGGGTTAGGGTTAGGGTTAGGGTTAGGG\" -> \"TAGTAGTAGTAGTAG\"\
+        .\nUseful for PacBio or ONP long reads homopolymer length\nerrors. Default:\
+        \ Off"
+      synonyms:
+      - --noPoly
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: If set motif match may occur in unclipped region of
+      synonyms:
+      - --matchAny
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: teloclip
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --maxBreak
+        args: !SimpleFlagArg
+          name: MAXBREAK
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --minClip
+        args: !SimpleFlagArg
+          name: MINCLIP
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --refIdx
+        args: !SimpleFlagArg
+          name: REFIDX
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: teloclip [-h] --refIdx REFIDX [--minClip MINCLIP] [--maxBreak\
+        \ MAXBREAK]\n                [--motifs MOTIFS] [--noRev] [--noPoly] [--matchAny]\n\
+        \                [--version]\n                [samfile]\nteloclip: error:\
+        \ argument samfile: can't open 'alignment.': [Errno 2] No such file or directory:\
+        \ 'alignment.'\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - teloclip
+      - samfile
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: teloclip
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --maxBreak
+        args: !SimpleFlagArg
+          name: MAXBREAK
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --minClip
+        args: !SimpleFlagArg
+          name: MINCLIP
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --refIdx
+        args: !SimpleFlagArg
+          name: REFIDX
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: teloclip [-h] --refIdx REFIDX [--minClip MINCLIP] [--maxBreak\
+        \ MAXBREAK]\n                [--motifs MOTIFS] [--noRev] [--noPoly] [--matchAny]\n\
+        \                [--version]\n                [samfile]\nteloclip: error:\
+        \ argument samfile: can't open 'samfile': [Errno 2] No such file or directory:\
+        \ 'samfile'\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: teloclip [-h] --refIdx REFIDX [--minClip MINCLIP] [--maxBreak\
+      \ MAXBREAK]\n                [--motifs MOTIFS] [--noRev] [--noPoly] [--matchAny]\n\
+      \                [--version]\n                [samfile]\n\nFilter SAM file for\
+      \ clipped alignments containing unassembled telomeric\nrepeats.\n\npositional\
+      \ arguments:\n  samfile\n\noptional arguments:\n  -h, --help           show\
+      \ this help message and exit\n  --refIdx REFIDX      Path to fai index for reference\
+      \ fasta. Index fasta\n                       using `samtools faidx FASTA`\n\
+      \  --minClip MINCLIP    Require clip to extend past ref contig end by at least\n\
+      \                       N bases.\n  --maxBreak MAXBREAK  Tolerate max N unaligned\
+      \ bases at contig ends.\n  --motifs MOTIFS      If set keep only reads containing\
+      \ given motif/s from\n                       comma delimited list of strings.\
+      \ By default also search\n                       for reverse complement of motifs.\
+      \ i.e. TTAGGG,TTAAGGG\n                       will also match CCCTAA,CCCTTAA\n\
+      \  --noRev              If set do NOT search for reverse complement of\n   \
+      \                    specified motifs.\n  --noPoly             If set collapse\
+      \ homopolymer tracks within motifs before\n                       searching\
+      \ overhangs. i.e.\n                       \"TTAGGGTTAGGGTTAGGGTTAGGGTTAGGG\"\
+      \ -> \"TAGTAGTAGTAGTAG\".\n                       Useful for PacBio or ONP long\
+      \ reads homopolymer length\n                       errors. Default: Off\n  --matchAny\
+      \           If set motif match may occur in unclipped region of\n          \
+      \             alignment.\n  --version            show program's version number\
+      \ and exit\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -103,12 +239,9 @@ subcommands:
     \ MAXBREAK]\n                [--motifs MOTIFS] [--noRev] [--noPoly] [--matchAny]\n\
     \                [--version]\n                [samfile]\nteloclip: error: argument\
     \ samfile: can't open 'alignment.': [Errno 2] No such file or directory: 'alignment.'\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - teloclip
-  - samfile
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -137,7 +270,7 @@ subcommands:
     args: !SimpleFlagArg
       name: REFIDX
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -152,15 +285,9 @@ subcommands:
     \ MAXBREAK]\n                [--motifs MOTIFS] [--noRev] [--noPoly] [--matchAny]\n\
     \                [--version]\n                [samfile]\nteloclip: error: argument\
     \ samfile: can't open 'samfile': [Errno 2] No such file or directory: 'samfile'\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: teloclip [-h] --refIdx REFIDX [--minClip MINCLIP] [--maxBreak MAXBREAK]\n\
@@ -183,4 +310,4 @@ help_text: "usage: teloclip [-h] --refIdx REFIDX [--minClip MINCLIP] [--maxBreak
   \ reads homopolymer length\n                       errors. Default: Off\n  --matchAny\
   \           If set motif match may occur in unclipped region of\n              \
   \         alignment.\n  --version            show program's version number and exit\n"
-generated_using: *id002
+generated_using: *id004

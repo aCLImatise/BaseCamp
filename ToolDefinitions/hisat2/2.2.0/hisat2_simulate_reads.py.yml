@@ -1,106 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - hisat2_simulate_reads.py
 positional: []
-named:
-- !Flag
-  description: 'DNA-seq reads (default: RNA-seq reads)'
-  synonyms:
-  - -d
-  - --dna
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'single-end reads (default: paired-end reads)'
-  synonyms:
-  - --single-end
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'read length (default: 100)'
-  synonyms:
-  - -r
-  - --read-length
-  args: !SimpleFlagArg
-    name: READ_LEN
-  optional: true
-- !Flag
-  description: 'fragment length (default: 250)'
-  synonyms:
-  - -f
-  - --fragment-length
-  args: !SimpleFlagArg
-    name: FRAG_LEN
-  optional: true
-- !Flag
-  description: 'number of fragments (default: 1000000)'
-  synonyms:
-  - -n
-  - --num-fragment
-  args: !SimpleFlagArg
-    name: NUM_FRAG
-  optional: true
-- !Flag
-  description: 'expression profile: flux or constant (default: flux)'
-  synonyms:
-  - -e
-  - --expr-profile
-  args: !SimpleFlagArg
-    name: EXPR_PROFILE
-  optional: true
-- !Flag
-  description: repeat information filename
-  synonyms:
-  - --repeat-info
-  args: !SimpleFlagArg
-    name: REPEAT_FNAME
-  optional: true
-- !Flag
-  description: 'per-base sequencing error rate (%) (default: 0.0)'
-  synonyms:
-  - --error-rate
-  args: !SimpleFlagArg
-    name: ERROR_RATE
-  optional: true
-- !Flag
-  description: 'max mismatches due to sequencing errors (default: 3)'
-  synonyms:
-  - --max-mismatch
-  args: !SimpleFlagArg
-    name: MAX_MISMATCH
-  optional: true
-- !Flag
-  description: 'random seeding value (default: 0)'
-  synonyms:
-  - --random-seed
-  args: !SimpleFlagArg
-    name: RANDOM_SEED
-  optional: true
-- !Flag
-  description: "probability of a read including a snp when the read\nspans the snp\
-    \ ranging from 0.0 to 1.0 (default: 1.0)"
-  synonyms:
-  - --snp-prob
-  args: !SimpleFlagArg
-    name: SNP_PROB
-  optional: true
-- !Flag
-  description: sanity check
-  synonyms:
-  - --sanity-check
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: also print some statistics to stderr
-  synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - hisat2_simulate_reads.py
   - gtf_file
   positional:
@@ -129,7 +35,358 @@ subcommands:
     - -d
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: 'DNA-seq reads (default: RNA-seq reads)'
+      synonyms:
+      - -d
+      - --dna
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'single-end reads (default: paired-end reads)'
+      synonyms:
+      - --single-end
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'read length (default: 100)'
+      synonyms:
+      - -r
+      - --read-length
+      args: !SimpleFlagArg
+        name: READ_LEN
+      optional: true
+    - !Flag
+      description: 'fragment length (default: 250)'
+      synonyms:
+      - -f
+      - --fragment-length
+      args: !SimpleFlagArg
+        name: FRAG_LEN
+      optional: true
+    - !Flag
+      description: 'number of fragments (default: 1000000)'
+      synonyms:
+      - -n
+      - --num-fragment
+      args: !SimpleFlagArg
+        name: NUM_FRAG
+      optional: true
+    - !Flag
+      description: 'expression profile: flux or constant (default: flux)'
+      synonyms:
+      - -e
+      - --expr-profile
+      args: !SimpleFlagArg
+        name: EXPR_PROFILE
+      optional: true
+    - !Flag
+      description: repeat information filename
+      synonyms:
+      - --repeat-info
+      args: !SimpleFlagArg
+        name: REPEAT_FNAME
+      optional: true
+    - !Flag
+      description: 'per-base sequencing error rate (%) (default: 0.0)'
+      synonyms:
+      - --error-rate
+      args: !SimpleFlagArg
+        name: ERROR_RATE
+      optional: true
+    - !Flag
+      description: 'max mismatches due to sequencing errors (default: 3)'
+      synonyms:
+      - --max-mismatch
+      args: !SimpleFlagArg
+        name: MAX_MISMATCH
+      optional: true
+    - !Flag
+      description: 'random seeding value (default: 0)'
+      synonyms:
+      - --random-seed
+      args: !SimpleFlagArg
+        name: RANDOM_SEED
+      optional: true
+    - !Flag
+      description: "probability of a read including a snp when the read\nspans the\
+        \ snp ranging from 0.0 to 1.0 (default: 1.0)"
+      synonyms:
+      - --snp-prob
+      args: !SimpleFlagArg
+        name: SNP_PROB
+      optional: true
+    - !Flag
+      description: sanity check
+      synonyms:
+      - --sanity-check
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: also print some statistics to stderr
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hisat2_simulate_reads.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -r
+        args: !SimpleFlagArg
+          name: READ_LEN
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --single-end
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_simulate_reads.py [-h] [-d] [--single-end] [-r READ_LEN]\n\
+        \                                [-f FRAG_LEN] [-n NUM_FRAG] [-e EXPR_PROFILE]\n\
+        \                                [--repeat-info REPEAT_FNAME]\n          \
+        \                      [--error-rate ERROR_RATE]\n                       \
+        \         [--max-mismatch MAX_MISMATCH]\n                                [--random-seed\
+        \ RANDOM_SEED]\n                                [--snp-prob SNP_PROB] [--sanity-check]\
+        \ [-v]\n                                [--version]\n                    \
+        \            [genome_file] [gtf_file] [snp_file]\n                       \
+        \         [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file:\
+        \ can't open 'gtf_file': [Errno 2] No such file or directory: 'gtf_file'\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - hisat2_simulate_reads.py
+      - snp_file
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hisat2_simulate_reads.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -r
+        args: !SimpleFlagArg
+          name: READ_LEN
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --single-end
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_simulate_reads.py [-h] [-d] [--single-end] [-r READ_LEN]\n\
+        \                                [-f FRAG_LEN] [-n NUM_FRAG] [-e EXPR_PROFILE]\n\
+        \                                [--repeat-info REPEAT_FNAME]\n          \
+        \                      [--error-rate ERROR_RATE]\n                       \
+        \         [--max-mismatch MAX_MISMATCH]\n                                [--random-seed\
+        \ RANDOM_SEED]\n                                [--snp-prob SNP_PROB] [--sanity-check]\
+        \ [-v]\n                                [--version]\n                    \
+        \            [genome_file] [gtf_file] [snp_file]\n                       \
+        \         [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file:\
+        \ can't open 'snp_file': [Errno 2] No such file or directory: 'snp_file'\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - hisat2_simulate_reads.py
+      - base_fname
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hisat2_simulate_reads.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -r
+        args: !SimpleFlagArg
+          name: READ_LEN
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --single-end
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_simulate_reads.py [-h] [-d] [--single-end] [-r READ_LEN]\n\
+        \                                [-f FRAG_LEN] [-n NUM_FRAG] [-e EXPR_PROFILE]\n\
+        \                                [--repeat-info REPEAT_FNAME]\n          \
+        \                      [--error-rate ERROR_RATE]\n                       \
+        \         [--max-mismatch MAX_MISMATCH]\n                                [--random-seed\
+        \ RANDOM_SEED]\n                                [--snp-prob SNP_PROB] [--sanity-check]\
+        \ [-v]\n                                [--version]\n                    \
+        \            [genome_file] [gtf_file] [snp_file]\n                       \
+        \         [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file:\
+        \ can't open 'base_fname': [Errno 2] No such file or directory: 'base_fname'\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - hisat2_simulate_reads.py
+      - genome_file
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hisat2_simulate_reads.py
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -r
+        args: !SimpleFlagArg
+          name: READ_LEN
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --single-end
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - -d
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_simulate_reads.py [-h] [-d] [--single-end] [-r READ_LEN]\n\
+        \                                [-f FRAG_LEN] [-n NUM_FRAG] [-e EXPR_PROFILE]\n\
+        \                                [--repeat-info REPEAT_FNAME]\n          \
+        \                      [--error-rate ERROR_RATE]\n                       \
+        \         [--max-mismatch MAX_MISMATCH]\n                                [--random-seed\
+        \ RANDOM_SEED]\n                                [--snp-prob SNP_PROB] [--sanity-check]\
+        \ [-v]\n                                [--version]\n                    \
+        \            [genome_file] [gtf_file] [snp_file]\n                       \
+        \         [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file:\
+        \ can't open 'genome_file': [Errno 2] No such file or directory: 'genome_file'\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "usage: hisat2_simulate_reads.py [-h] [-d] [--single-end] [-r READ_LEN]\n\
+      \                                [-f FRAG_LEN] [-n NUM_FRAG] [-e EXPR_PROFILE]\n\
+      \                                [--repeat-info REPEAT_FNAME]\n            \
+      \                    [--error-rate ERROR_RATE]\n                           \
+      \     [--max-mismatch MAX_MISMATCH]\n                                [--random-seed\
+      \ RANDOM_SEED]\n                                [--snp-prob SNP_PROB] [--sanity-check]\
+      \ [-v]\n                                [--version]\n                      \
+      \          [genome_file] [gtf_file] [snp_file]\n                           \
+      \     [base_fname]\n\nSimulate reads from GENOME (fasta) and GTF files\n\npositional\
+      \ arguments:\n  genome_file           input GENOME file\n  gtf_file        \
+      \      input GTF file\n  snp_file              input SNP file\n  base_fname\
+      \            output base filename\n\noptional arguments:\n  -h, --help     \
+      \       show this help message and exit\n  -d, --dna             DNA-seq reads\
+      \ (default: RNA-seq reads)\n  --single-end          single-end reads (default:\
+      \ paired-end reads)\n  -r READ_LEN, --read-length READ_LEN\n               \
+      \         read length (default: 100)\n  -f FRAG_LEN, --fragment-length FRAG_LEN\n\
+      \                        fragment length (default: 250)\n  -n NUM_FRAG, --num-fragment\
+      \ NUM_FRAG\n                        number of fragments (default: 1000000)\n\
+      \  -e EXPR_PROFILE, --expr-profile EXPR_PROFILE\n                        expression\
+      \ profile: flux or constant (default: flux)\n  --repeat-info REPEAT_FNAME\n\
+      \                        repeat information filename\n  --error-rate ERROR_RATE\n\
+      \                        per-base sequencing error rate (%) (default: 0.0)\n\
+      \  --max-mismatch MAX_MISMATCH\n                        max mismatches due to\
+      \ sequencing errors (default: 3)\n  --random-seed RANDOM_SEED\n            \
+      \            random seeding value (default: 0)\n  --snp-prob SNP_PROB   probability\
+      \ of a read including a snp when the read\n                        spans the\
+      \ snp ranging from 0.0 to 1.0 (default: 1.0)\n  --sanity-check        sanity\
+      \ check\n  -v, --verbose         also print some statistics to stderr\n  --version\
+      \             show program's version number and exit\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -150,12 +407,9 @@ subcommands:
     \        [genome_file] [gtf_file] [snp_file]\n                               \
     \ [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file: can't open\
     \ 'gtf_file': [Errno 2] No such file or directory: 'gtf_file'\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - hisat2_simulate_reads.py
-  - snp_file
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -182,7 +436,7 @@ subcommands:
     - -d
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -203,11 +457,9 @@ subcommands:
     \        [genome_file] [gtf_file] [snp_file]\n                               \
     \ [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file: can't open\
     \ 'snp_file': [Errno 2] No such file or directory: 'snp_file'\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - hisat2_simulate_reads.py
-  - base_fname
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -234,7 +486,7 @@ subcommands:
     - -d
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -255,11 +507,9 @@ subcommands:
     \        [genome_file] [gtf_file] [snp_file]\n                               \
     \ [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file: can't open\
     \ 'base_fname': [Errno 2] No such file or directory: 'base_fname'\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - hisat2_simulate_reads.py
-  - genome_file
+  command: *id007
   positional:
   - !Positional
     description: ''
@@ -286,7 +536,7 @@ subcommands:
     - -d
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -307,22 +557,11 @@ subcommands:
     \        [genome_file] [gtf_file] [snp_file]\n                               \
     \ [base_fname]\nhisat2_simulate_reads.py: error: argument genome_file: can't open\
     \ 'genome_file': [Errno 2] No such file or directory: 'genome_file'\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: hisat2_simulate_reads.py [-h] [-d] [--single-end] [-r READ_LEN]\n\
   \                                [-f FRAG_LEN] [-n NUM_FRAG] [-e EXPR_PROFILE]\n\
   \                                [--repeat-info REPEAT_FNAME]\n                \
@@ -351,4 +590,4 @@ help_text: "usage: hisat2_simulate_reads.py [-h] [-d] [--single-end] [-r READ_LE
   \ (default: 1.0)\n  --sanity-check        sanity check\n  -v, --verbose        \
   \ also print some statistics to stderr\n  --version             show program's version\
   \ number and exit\n"
-generated_using: *id002
+generated_using: *id004

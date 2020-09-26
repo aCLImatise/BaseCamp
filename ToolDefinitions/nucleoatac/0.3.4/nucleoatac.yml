@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - nucleoatac
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - nucleoatac
   - nfr
   positional:
@@ -88,7 +88,706 @@ subcommands:
     args: !SimpleFlagArg
       name: float
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: --out out_basename    output file basename
+        position: 0
+        name: optional
+        optional: false
+      named:
+      - !Flag
+        description: Peaks in bed format
+        synonyms:
+        - --bed
+        args: !SimpleFlagArg
+          name: bed_file
+        optional: true
+      - !Flag
+        description: "bgzip compressed, tabix-indexed bedgraph file with\nocccupancy\
+          \ track."
+        synonyms:
+        - --occ_track
+        args: !SimpleFlagArg
+          name: occ_file
+        optional: true
+      - !Flag
+        description: bed file with nucleosome center calls
+        synonyms:
+        - --calls
+        args: !SimpleFlagArg
+          name: nucpos_file
+        optional: true
+      - !Flag
+        description: "bgzip compressed, tabix-indexed bedgraph file with\ninsertion\
+          \ track. will be generated if not included"
+        synonyms:
+        - --ins_track
+        args: !SimpleFlagArg
+          name: ins_file
+        optional: true
+      - !Flag
+        description: Sorted (and indexed) BAM file
+        synonyms:
+        - --bam
+        args: !SimpleFlagArg
+          name: bam_file
+        optional: true
+      - !Flag
+        description: Indexed fasta file
+        synonyms:
+        - --fasta
+        args: !SimpleFlagArg
+          name: genome_seq
+        optional: true
+      - !Flag
+        description: "PWM descriptor file. Default is Human.PWM.txt included\nin package"
+        synonyms:
+        - --pwm
+        args: !SimpleFlagArg
+          name: Tn5_PWM
+        optional: true
+      - !Flag
+        description: Number of cores to use
+        synonyms:
+        - --cores
+        args: !SimpleFlagArg
+          name: num_cores
+        optional: true
+      - !Flag
+        description: Maximum mean occupancy for NFR. Default is 0.1
+        synonyms:
+        - --max_occ
+        args: !SimpleFlagArg
+          name: float
+        optional: true
+      - !Flag
+        description: "Maximum for minimum of upper bound occupancy in NFR.\nDefault\
+          \ is 0.25\n"
+        synonyms:
+        - --max_occ_upper
+        args: !SimpleFlagArg
+          name: float
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Command run:  /usr/local/bin/nucleoatac nfr --help\nnucleoatac version\
+        \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: nucleoatac nfr [-h] --bed\
+        \ bed_file --occ_track occ_file --calls\n                      nucpos_file\
+        \ [--ins_track ins_file] [--bam bam_file]\n                      [--fasta\
+        \ genome_seq] [--pwm Tn5_PWM]\n                      [--out out_basename]\
+        \ [--cores num_cores]\n                      [--max_occ float] [--max_occ_upper\
+        \ float]\n\noptional arguments:\n  -h, --help            show this help message\
+        \ and exit\n\nRequired:\n  Necessary arguments\n\n  --bed bed_file       \
+        \ Peaks in bed format\n  --occ_track occ_file  bgzip compressed, tabix-indexed\
+        \ bedgraph file with\n                        occcupancy track.\n  --calls\
+        \ nucpos_file   bed file with nucleosome center calls\n\nInsertion track options:\n\
+        \  Either input insertion track or bamfile\n\n  --ins_track ins_file  bgzip\
+        \ compressed, tabix-indexed bedgraph file with\n                        insertion\
+        \ track. will be generated if not included\n  --bam bam_file        Sorted\
+        \ (and indexed) BAM file\n\nBias calculation information:\n  Highly recommended.\
+        \ If fasta is not provided, will not calculate bias\n\n  --fasta genome_seq\
+        \    Indexed fasta file\n  --pwm Tn5_PWM         PWM descriptor file. Default\
+        \ is Human.PWM.txt included\n                        in package\n\nGeneral\
+        \ options:\n  optional\n\n  --out out_basename    output file basename\n \
+        \ --cores num_cores     Number of cores to use\n\nNFR determination parameters:\n\
+        \  --max_occ float       Maximum mean occupancy for NFR. Default is 0.1\n\
+        \  --max_occ_upper float\n                        Maximum for minimum of upper\
+        \ bound occupancy in NFR.\n                        Default is 0.25\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - nucleoatac
+      - occ
+      positional:
+      - !Positional
+        description: --confidence_interval float
+        position: 0
+        name: '120.'
+        optional: false
+      named:
+      - !Flag
+        description: Peaks in bed format
+        synonyms:
+        - --bed
+        args: !SimpleFlagArg
+          name: bed_file
+        optional: true
+      - !Flag
+        description: Sorted (and indexed) BAM file
+        synonyms:
+        - --bam
+        args: !SimpleFlagArg
+          name: bam_file
+        optional: true
+      - !Flag
+        description: give output basename
+        synonyms:
+        - --out
+        args: !SimpleFlagArg
+          name: basename
+        optional: true
+      - !Flag
+        description: Indexed fasta file
+        synonyms:
+        - --fasta
+        args: !SimpleFlagArg
+          name: genome_seq
+        optional: true
+      - !Flag
+        description: "PWM descriptor file. Default is Human.PWM.txt included\nin package"
+        synonyms:
+        - --pwm
+        args: !SimpleFlagArg
+          name: Tn5_PWM
+        optional: true
+      - !Flag
+        description: "File with fragment size distribution. Use if don't\nwant calculation\
+          \ of fragment size"
+        synonyms:
+        - --sizes
+        args: !SimpleFlagArg
+          name: fragmentsizes_file
+        optional: true
+      - !Flag
+        description: Number of cores to use
+        synonyms:
+        - --cores
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: upper limit in insert size. default is 251
+        synonyms:
+        - --upper
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "Distance on each side of dyad to include for local occ\ncalculation.\
+          \ Default is 60."
+        synonyms:
+        - --flank
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "Occupancy cutoff for determining nucleosome\ndistribution. Default\
+          \ is 0.1"
+        synonyms:
+        - --min_occ
+        args: !SimpleFlagArg
+          name: float
+        optional: true
+      - !Flag
+        description: minimum separation between occupany peaks. Default is
+        synonyms:
+        - --nuc_sep
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "step size along genome for comuting occ. Default is 5.\nShould\
+          \ be odd, or will be subtracted by 1\n"
+        synonyms:
+        - --step
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Command run:  /usr/local/bin/nucleoatac occ --help\nnucleoatac version\
+        \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: nucleoatac occ [-h] --bed\
+        \ bed_file --bam bam_file --out basename\n                      [--fasta genome_seq]\
+        \ [--pwm Tn5_PWM]\n                      [--sizes fragmentsizes_file] [--cores\
+        \ int] [--upper int]\n                      [--flank int] [--min_occ float]\
+        \ [--nuc_sep int]\n                      [--confidence_interval float] [--step\
+        \ int]\n\noptional arguments:\n  -h, --help            show this help message\
+        \ and exit\n\nRequired:\n  Necessary arguments\n\n  --bed bed_file       \
+        \ Peaks in bed format\n  --bam bam_file        Sorted (and indexed) BAM file\n\
+        \  --out basename        give output basename\n\nBias calculation information:\n\
+        \  Highly recommended. If fasta is not provided, will not calculate bias\n\
+        \n  --fasta genome_seq    Indexed fasta file\n  --pwm Tn5_PWM         PWM\
+        \ descriptor file. Default is Human.PWM.txt included\n                   \
+        \     in package\n\nGeneral Options:\n\n  --sizes fragmentsizes_file\n   \
+        \                     File with fragment size distribution. Use if don't\n\
+        \                        want calculation of fragment size\n  --cores int\
+        \           Number of cores to use\n\nOccupancy parameter:\n  Change with\
+        \ caution\n\n  --upper int           upper limit in insert size. default is\
+        \ 251\n  --flank int           Distance on each side of dyad to include for\
+        \ local occ\n                        calculation. Default is 60.\n  --min_occ\
+        \ float       Occupancy cutoff for determining nucleosome\n              \
+        \          distribution. Default is 0.1\n  --nuc_sep int         minimum separation\
+        \ between occupany peaks. Default is\n                        120.\n  --confidence_interval\
+        \ float\n                        confidence interval level for lower and upper\
+        \ bounds.\n                        default is 0.9, should be between 0 and\
+        \ 1\n  --step int            step size along genome for comuting occ. Default\
+        \ is 5.\n                        Should be odd, or will be subtracted by 1\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - nucleoatac
+      - run
+      positional: []
+      named:
+      - !Flag
+        description: '[--pwm Tn5_PWM] [--cores num_cores]'
+        synonyms:
+        - --fasta
+        args: !SimpleFlagArg
+          name: genome_seq
+        optional: true
+      - !Flag
+        description: Regions for which to do stuff.
+        synonyms:
+        - --bed
+        args: !SimpleFlagArg
+          name: bed_file
+        optional: true
+      - !Flag
+        description: Accepts sorted BAM file
+        synonyms:
+        - --bam
+        args: !SimpleFlagArg
+          name: bam_file
+        optional: true
+      - !Flag
+        description: give output basename
+        synonyms:
+        - --out
+        args: !SimpleFlagArg
+          name: output_basename
+        optional: true
+      - !Flag
+        description: "PWM descriptor file. Default is Human.PWM.txt included\nin package"
+        synonyms:
+        - --pwm
+        args: !SimpleFlagArg
+          name: Tn5_PWM
+        optional: true
+      - !Flag
+        description: Number of cores to use
+        synonyms:
+        - --cores
+        args: !SimpleFlagArg
+          name: num_cores
+        optional: true
+      - !Flag
+        description: write all tracks
+        synonyms:
+        - --write_all
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Command run:  /usr/local/bin/nucleoatac run --help\nnucleoatac version\
+        \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: nucleoatac run [-h] --bed\
+        \ bed_file --bam bam_file --out output_basename\n                      --fasta\
+        \ genome_seq [--pwm Tn5_PWM] [--cores num_cores]\n                      [--write_all]\n\
+        \noptional arguments:\n  -h, --help            show this help message and\
+        \ exit\n\nRequired:\n  Necessary arguments\n\n  --bed bed_file        Regions\
+        \ for which to do stuff.\n  --bam bam_file        Accepts sorted BAM file\n\
+        \  --out output_basename\n                        give output basename\n \
+        \ --fasta genome_seq    Indexed fasta file\n\nBias calculation parameters:\n\
+        \n  --pwm Tn5_PWM         PWM descriptor file. Default is Human.PWM.txt included\n\
+        \                        in package\n\nGeneral options:\n\n  --cores num_cores\
+        \     Number of cores to use\n  --write_all           write all tracks\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - nucleoatac
+      - vprocess
+      positional:
+      - !Positional
+        description: --sizes file          Insert distribution file
+        position: 0
+        name: Optional
+        optional: false
+      - !Positional
+        description: --plot_extra          Make some additional plots
+        position: 0
+        name: smoothing.
+        optional: false
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --out
+        args: !SimpleFlagArg
+          name: output_basename
+        optional: true
+      - !Flag
+        description: Accepts VMat file. Default is Vplot from S. Cer.
+        synonyms:
+        - --vplot
+        args: !SimpleFlagArg
+          name: vmat_file
+        optional: true
+      - !Flag
+        description: lower limit (inclusive) in insert size. default is 105
+        synonyms:
+        - --lower
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: upper limit (exclusive) in insert size. default 251
+        synonyms:
+        - --upper
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: distance on each side of dyad to include
+        synonyms:
+        - --flank
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: SD to use for gaussian smoothing. Use 0 for no
+        synonyms:
+        - --smooth
+        args: !SimpleFlagArg
+          name: float
+        optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --sizes
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Command run:  /usr/local/bin/nucleoatac vprocess --help\nnucleoatac\
+        \ version 0.3.4\nstart run at: 2020-09-09 22:16\nusage: nucleoatac vprocess\
+        \ [-h] --out output_basename [--sizes file]\n                           [--vplot\
+        \ vmat_file] [--lower int] [--upper int]\n                           [--flank\
+        \ int] [--smooth float] [--plot_extra]\n\noptional arguments:\n  -h, --help\
+        \            show this help message and exit\n\nRequired:\n  Necessary arguments\n\
+        \n  --out output_basename\n\nVPlot and Insert Size Options:\n  Optional\n\n\
+        \  --sizes file          Insert distribution file\n  --vplot vmat_file   \
+        \  Accepts VMat file. Default is Vplot from S. Cer.\n\nSize parameers:\n \
+        \ Use sensible values\n\n  --lower int           lower limit (inclusive) in\
+        \ insert size. default is 105\n  --upper int           upper limit (exclusive)\
+        \ in insert size. default 251\n  --flank int           distance on each side\
+        \ of dyad to include\n\nOptions:\n\n  --smooth float        SD to use for\
+        \ gaussian smoothing. Use 0 for no\n                        smoothing.\n \
+        \ --plot_extra          Make some additional plots\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - nucleoatac
+      - merge
+      positional:
+      - !Positional
+        description: --out out_basename    output file basename
+        position: 0
+        name: optional
+        optional: false
+      named:
+      - !Flag
+        description: Output from occ utility
+        synonyms:
+        - --occpeaks
+        args: !SimpleFlagArg
+          name: occpeaks_file
+        optional: true
+      - !Flag
+        description: Output from nuc utility
+        synonyms:
+        - --nucpos
+        args: !SimpleFlagArg
+          name: nucpos_file
+        optional: true
+      - !Flag
+        description: minimum separation between call
+        synonyms:
+        - --sep
+        args: !SimpleFlagArg
+          name: min_separation
+        optional: true
+      - !Flag
+        description: "minimum lower bound occupancy of nucleosomes to be\nconsidered\
+          \ for excluding NFR. default is 0.1\n"
+        synonyms:
+        - --min_occ
+        args: !SimpleFlagArg
+          name: min_occ
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Command run:  /usr/local/bin/nucleoatac merge --help\nnucleoatac\
+        \ version 0.3.4\nstart run at: 2020-09-09 22:16\nusage: nucleoatac merge [-h]\
+        \ --occpeaks occpeaks_file --nucpos nucpos_file\n                        [--out\
+        \ out_basename] [--sep min_separation]\n                        [--min_occ\
+        \ min_occ]\n\noptional arguments:\n  -h, --help            show this help\
+        \ message and exit\n\nRequired:\n  Necessary arguments\n\n  --occpeaks occpeaks_file\n\
+        \                        Output from occ utility\n  --nucpos nucpos_file \
+        \ Output from nuc utility\n\nOptions:\n  optional\n\n  --out out_basename\
+        \    output file basename\n  --sep min_separation  minimum separation between\
+        \ call\n  --min_occ min_occ     minimum lower bound occupancy of nucleosomes\
+        \ to be\n                        considered for excluding NFR. default is\
+        \ 0.1\n"
+      generated_using: *id004
+    - !Command
+      command: &id009
+      - nucleoatac
+      - nuc
+      positional: []
+      named:
+      - !Flag
+        description: '[--fasta genome_seq] [--pwm Tn5_PWM]'
+        synonyms:
+        - --out
+        args: !SimpleFlagArg
+          name: basename
+        optional: true
+      - !Flag
+        description: Regions for which to do stuff.
+        synonyms:
+        - --bed
+        args: !SimpleFlagArg
+          name: bed_file
+        optional: true
+      - !Flag
+        description: VMat object
+        synonyms:
+        - --vmat
+        args: !SimpleFlagArg
+          name: vdensity_file
+        optional: true
+      - !Flag
+        description: Accepts sorted BAM file
+        synonyms:
+        - --bam
+        args: !SimpleFlagArg
+          name: bam_file
+        optional: true
+      - !Flag
+        description: Indexed fasta file
+        synonyms:
+        - --fasta
+        args: !SimpleFlagArg
+          name: genome_seq
+        optional: true
+      - !Flag
+        description: "PWM descriptor file. Default is Human.PWM.txt included\nin package"
+        synonyms:
+        - --pwm
+        args: !SimpleFlagArg
+          name: Tn5_PWM
+        optional: true
+      - !Flag
+        description: "File with fragment size distribution. Use if don't\nwant calculation\
+          \ of fragment size"
+        synonyms:
+        - --sizes
+        args: !SimpleFlagArg
+          name: fragmentsizes_file
+        optional: true
+      - !Flag
+        description: "bgzip compressed, tabix-indexed bedgraph file with\nocccupancy\
+          \ track. Otherwise occ not determined for nuc\npositions."
+        synonyms:
+        - --occ_track
+        args: !SimpleFlagArg
+          name: occ_file
+        optional: true
+      - !Flag
+        description: Number of cores to use
+        synonyms:
+        - --cores
+        args: !SimpleFlagArg
+          name: num_cores
+        optional: true
+      - !Flag
+        description: write all tracks
+        synonyms:
+        - --write_all
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: data is not atac-seq
+        synonyms:
+        - --not_atac
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Z-score threshold for nucleosome calls. Default is 3
+        synonyms:
+        - --min_z
+        args: !SimpleFlagArg
+          name: float
+        optional: true
+      - !Flag
+        description: "Log likelihood ratio threshold for nucleosome calls.\nDefault\
+          \ is 0"
+        synonyms:
+        - --min_lr
+        args: !SimpleFlagArg
+          name: float
+        optional: true
+      - !Flag
+        description: "Minimum separation between non-redundant nucleosomes.\nDefault\
+          \ is 120"
+        synonyms:
+        - --nuc_sep
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "Minimum separation between redundant nucleosomes. Not\nrecommended\
+          \ to be below 15. Default is 25"
+        synonyms:
+        - --redundant_sep
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: "Standard deviation for smoothing. Affect the\nresolution at\
+          \ which nucleosomes can be positioned. Not\nrecommended to exceed 25 or\
+          \ to be smaller than 10.\nDefault is 10\n"
+        synonyms:
+        - --sd
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Command run:  /usr/local/bin/nucleoatac nuc --help\nnucleoatac version\
+        \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: nucleoatac nuc [-h] --bed\
+        \ bed_file --vmat vdensity_file --bam bam_file\n                      --out\
+        \ basename [--fasta genome_seq] [--pwm Tn5_PWM]\n                      [--sizes\
+        \ fragmentsizes_file] [--occ_track occ_file]\n                      [--cores\
+        \ num_cores] [--write_all] [--not_atac]\n                      [--min_z float]\
+        \ [--min_lr float] [--nuc_sep int]\n                      [--redundant_sep\
+        \ int] [--sd int]\n\noptional arguments:\n  -h, --help            show this\
+        \ help message and exit\n\nRequired:\n  Necessary arguments\n\n  --bed bed_file\
+        \        Regions for which to do stuff.\n  --vmat vdensity_file  VMat object\n\
+        \  --bam bam_file        Accepts sorted BAM file\n  --out basename       \
+        \ give output basename\n\nBias options:\n  If --fasta not provided, bias not\
+        \ calculated\n\n  --fasta genome_seq    Indexed fasta file\n  --pwm Tn5_PWM\
+        \         PWM descriptor file. Default is Human.PWM.txt included\n       \
+        \                 in package\n\nGeneral options:\n\n  --sizes fragmentsizes_file\n\
+        \                        File with fragment size distribution. Use if don't\n\
+        \                        want calculation of fragment size\n  --occ_track\
+        \ occ_file  bgzip compressed, tabix-indexed bedgraph file with\n         \
+        \               occcupancy track. Otherwise occ not determined for nuc\n \
+        \                       positions.\n  --cores num_cores     Number of cores\
+        \ to use\n  --write_all           write all tracks\n  --not_atac         \
+        \   data is not atac-seq\n\nNucleosome calling parameters:\n  Change with\
+        \ caution\n\n  --min_z float         Z-score threshold for nucleosome calls.\
+        \ Default is 3\n  --min_lr float        Log likelihood ratio threshold for\
+        \ nucleosome calls.\n                        Default is 0\n  --nuc_sep int\
+        \         Minimum separation between non-redundant nucleosomes.\n        \
+        \                Default is 120\n  --redundant_sep int   Minimum separation\
+        \ between redundant nucleosomes. Not\n                        recommended\
+        \ to be below 15. Default is 25\n  --sd int              Standard deviation\
+        \ for smoothing. Affect the\n                        resolution at which nucleosomes\
+        \ can be positioned. Not\n                        recommended to exceed 25\
+        \ or to be smaller than 10.\n                        Default is 10\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "Command run:  /usr/local/bin/nucleoatac --help\nnucleoatac version\
+      \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: nucleoatac [-h] [--version]\
+      \ {run,occ,vprocess,nuc,merge,nfr} ...\n\nnucleoatac -- Nucleosome Calling for\
+      \ ATAC-Seq\n\npositional arguments:\n  {run,occ,vprocess,nuc,merge,nfr}\n  \
+      \  run                 Main nucleoatac utility-- runs through occupancy\n  \
+      \                      determination & calling nuc positions\n    occ      \
+      \           nucleoatac function: Call nucleosome occupancy\n    vprocess   \
+      \         nucleoatac function: Make processed vplot to use for\n           \
+      \             nucleosome calling\n    nuc                 nucleoatac function:\
+      \ Call nucleosome positions and\n                        make signal tracks\n\
+      \    merge               nucleoatac function: Merge occ and nuc calls\n    nfr\
+      \                 nucleoatac function: Call NFRs\n\noptional arguments:\n  -h,\
+      \ --help            show this help message and exit\n  --version           \
+      \  show program's version number and exit\n\nFor command line options for each\
+      \ command, type nucleoatac COMMAND -h\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -122,12 +821,9 @@ subcommands:
     \  --max_occ float       Maximum mean occupancy for NFR. Default is 0.1\n  --max_occ_upper\
     \ float\n                        Maximum for minimum of upper bound occupancy\
     \ in NFR.\n                        Default is 0.25\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - nucleoatac
-  - occ
+  command: *id005
   positional:
   - !Positional
     description: --confidence_interval float
@@ -223,7 +919,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -261,11 +957,9 @@ subcommands:
     \                        default is 0.9, should be between 0 and 1\n  --step int\
     \            step size along genome for comuting occ. Default is 5.\n        \
     \                Should be odd, or will be subtracted by 1\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - nucleoatac
-  - run
+  command: *id006
   positional: []
   named:
   - !Flag
@@ -316,7 +1010,7 @@ subcommands:
     - --write_all
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -340,11 +1034,9 @@ subcommands:
     \ file. Default is Human.PWM.txt included\n                        in package\n\
     \nGeneral options:\n\n  --cores num_cores     Number of cores to use\n  --write_all\
     \           write all tracks\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - nucleoatac
-  - vprocess
+  command: *id007
   positional:
   - !Positional
     description: --sizes file          Insert distribution file
@@ -357,13 +1049,6 @@ subcommands:
     name: smoothing.
     optional: false
   named:
-  - !Flag
-    description: ''
-    synonyms:
-    - --out
-    args: !SimpleFlagArg
-      name: output_basename
-    optional: true
   - !Flag
     description: Accepts VMat file. Default is Vplot from S. Cer.
     synonyms:
@@ -406,7 +1091,14 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id001
+  - !Flag
+    description: ''
+    synonyms:
+    - --out
+    args: !SimpleFlagArg
+      name: output_basename
+    optional: true
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -432,11 +1124,9 @@ subcommands:
     \           distance on each side of dyad to include\n\nOptions:\n\n  --smooth\
     \ float        SD to use for gaussian smoothing. Use 0 for no\n              \
     \          smoothing.\n  --plot_extra          Make some additional plots\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - nucleoatac
-  - merge
+  command: *id008
   positional:
   - !Positional
     description: --out out_basename    output file basename
@@ -473,7 +1163,7 @@ subcommands:
     args: !SimpleFlagArg
       name: min_occ
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -496,11 +1186,9 @@ subcommands:
     \ min_separation  minimum separation between call\n  --min_occ min_occ     minimum\
     \ lower bound occupancy of nucleosomes to be\n                        considered\
     \ for excluding NFR. default is 0.1\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - nucleoatac
-  - nuc
+  command: *id009
   positional: []
   named:
   - !Flag
@@ -620,7 +1308,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -662,22 +1350,11 @@ subcommands:
     \ deviation for smoothing. Affect the\n                        resolution at which\
     \ nucleosomes can be positioned. Not\n                        recommended to exceed\
     \ 25 or to be smaller than 10.\n                        Default is 10\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "Command run:  /usr/local/bin/nucleoatac --help\nnucleoatac version 0.3.4\n\
   start run at: 2020-09-09 22:16\nusage: nucleoatac [-h] [--version] {run,occ,vprocess,nuc,merge,nfr}\
   \ ...\n\nnucleoatac -- Nucleosome Calling for ATAC-Seq\n\npositional arguments:\n\
@@ -692,4 +1369,4 @@ help_text: "Command run:  /usr/local/bin/nucleoatac --help\nnucleoatac version 0
   \        show this help message and exit\n  --version             show program's\
   \ version number and exit\n\nFor command line options for each command, type nucleoatac\
   \ COMMAND -h\n"
-generated_using: *id002
+generated_using: *id004

@@ -3,11 +3,19 @@ command:
 - msa_split
 positional:
 - !Positional
-  description: msa_split mydata.fa --features conserved.bed --by-category \
+  description: ''
   position: 0
-  name: format.
+  name: fname
   optional: false
 named:
+- !Flag
+  description: Filename root for output files (default "msa_split").
+  synonyms:
+  - --out-root
+  - -r
+  args: !SimpleFlagArg
+    name: name
+  optional: true
 - !Flag
   description: "<win_size,win_overlap>\nSplit the alignment into \"windows\" of size\
     \ <win_size> bases,\noverlapping by <win_overlap>."
@@ -17,42 +25,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "(Not for use with --by-category or --for-features) Try to\npartition\
-    \ at sites between alignment blocks.  Assumes a\nreference sequence alignment,\
-    \ with the first sequence as the\nreference seq (as created by multiz).  Blocks\
-    \ of 30 sites with\ngaps in all sequences but the reference seq are assumed to\n\
-    indicate boundaries between alignment blocks.  Partition\nindices will not be\
-    \ moved more than <radius> sites."
-  synonyms:
-  - --between-blocks
-  - -B
-  args: !SimpleFlagArg
-    name: radius
-  optional: true
-- !Flag
   description: "(Requires --features) Split by category, as defined by\nannotations\
     \ file and (optionally) category map (see\n--catmap)"
   synonyms:
   - --by-category
   - -L
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Reverse complement all segments having at least one feature on\nthe\
-    \ reverse strand and none on the positive strand.  For use\nwith --by-group. \
-    \ Can also be used with --by-category to ensure\nall sites in a category are represented\
-    \ in the same strand\norientation."
-  synonyms:
-  - --reverse-compl
-  - -s
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "(Requires --features) Extract section of alignment\ncorresponding\
-    \ to every feature.  There will be no output for\nregions not covered by features."
-  synonyms:
-  - --for-features
-  - -F
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -65,6 +42,14 @@ named:
   - -P
   args: !SimpleFlagArg
     name: tag
+  optional: true
+- !Flag
+  description: "(Requires --features) Extract section of alignment\ncorresponding\
+    \ to every feature.  There will be no output for\nregions not covered by features."
+  synonyms:
+  - --for-features
+  - -F
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: "List of explicit indices at which to split alignment\n(comma-separated).\
@@ -84,6 +69,19 @@ named:
   - -n
   args: !SimpleFlagArg
     name: number
+  optional: true
+- !Flag
+  description: "(Not for use with --by-category or --for-features) Try to\npartition\
+    \ at sites between alignment blocks.  Assumes a\nreference sequence alignment,\
+    \ with the first sequence as the\nreference seq (as created by multiz).  Blocks\
+    \ of 30 sites with\ngaps in all sequences but the reference seq are assumed to\n\
+    indicate boundaries between alignment blocks.  Partition\nindices will not be\
+    \ moved more than <radius> sites."
+  synonyms:
+  - --between-blocks
+  - -B
+  args: !SimpleFlagArg
+    name: radius
   optional: true
 - !Flag
   description: "(For use with --by-category, --by-group, --for-features, or\n--windows)\
@@ -143,20 +141,22 @@ named:
     name: FASTA
   optional: true
 - !Flag
-  description: Filename root for output files (default "msa_split").
-  synonyms:
-  - --out-root
-  - -r
-  args: !SimpleFlagArg
-    name: name
-  optional: true
-- !Flag
   description: "(For use with --features)  Output subsets of features\ncorresponding\
     \ to subalignments.  Features overlapping\npartition boundaries will be discarded.\
     \  Not permitted with\n--by-category."
   synonyms:
   - --sub-features
   - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Reverse complement all segments having at least one feature on\nthe\
+    \ reverse strand and none on the positive strand.  For use\nwith --by-group. \
+    \ Can also be used with --by-category to ensure\nall sites in a category are represented\
+    \ in the same strand\norientation."
+  synonyms:
+  - --reverse-compl
+  - -s
   args: !EmptyFlagArg {}
   optional: true
 - !Flag

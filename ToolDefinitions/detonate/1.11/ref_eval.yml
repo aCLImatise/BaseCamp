@@ -96,76 +96,6 @@ positional:
   optional: false
 named:
 - !Flag
-  description: \
-  synonyms:
-  - --weighted
-  args: !SimpleFlagArg
-    name: both
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --A-seqs
-  args: !SimpleFlagArg
-    name: A.fa
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --B-seqs
-  args: !SimpleFlagArg
-    name: B.fa
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --A-expr
-  args: !SimpleFlagArg
-    name: A_expr.isoforms.results
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --B-expr
-  args: !SimpleFlagArg
-    name: B_expr.isoforms.results
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --A-to-B
-  args: !SimpleFlagArg
-    name: A_to_B.psl
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --B-to-A
-  args: !SimpleFlagArg
-    name: B_to_A.psl
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --num-reads
-  args: !SimpleFlagArg
-    name: '5000000'
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --readlen
-  args: !SimpleFlagArg
-    name: '76'
-  optional: true
-- !Flag
-  description: \
-  synonyms:
-  - --kmerlen
-  args: !SimpleFlagArg
-    name: '76'
-  optional: true
-- !Flag
   description: "The groups of scores to compute, separated by commas (e.g.,\n--scores=nucl,contig,kc).\
     \ It is more efficient to compute all\nthe scores you are interested in using\
     \ one invocation of\nREF-EVAL instead of using multiple invocations that each\n\
@@ -177,6 +107,22 @@ named:
     compression score.\nRequired unless --paper is given."
   synonyms:
   - --scores
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "A string indicating whether to compute weighted or unweighted\nvariants\
+    \ of scores, or both (e.g., --weighted=yes):\n* yes: compute weighted variants\
+    \ of scores.\n* no: compute unweighted variants of scores.\n* both: compute both\
+    \ weighted and unweighted variants of\nscores.\nIn weighted variants, the expression\
+    \ levels (TPM) of the\nassembly and reference sequences are taken into account,\
+    \ and\nhence need to be specified using --A-expr and --B-expr.\nUnweighted variants\
+    \ are equivalent to weighted variants with\nuniform expression.\nThe distinction\
+    \ between weighted and unweighted variants\ndoesn't make sense for the KC score,\
+    \ so this option is\nignored by the KC score.\nRequired unless --paper or only\
+    \ --score=kc is given."
+  synonyms:
+  - --weighted
   args: !SimpleFlagArg
     name: arg
   optional: true
@@ -195,6 +141,54 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: The assembly sequences, in FASTA format. Required.
+  synonyms:
+  - --A-seqs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: The reference sequences, in FASTA format. Required.
+  synonyms:
+  - --B-seqs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The assembly expression, for use in weighted scores, as\nproduced\
+    \ by RSEM in a file called *.isoforms.results.\nRequired for weighted variants\
+    \ of scores."
+  synonyms:
+  - --A-expr
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The reference expression, for use in weighted scores, as\nproduced\
+    \ by RSEM in a file called *.isoforms.results.\nRequired for weighted variants\
+    \ of scores."
+  synonyms:
+  - --B-expr
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The alignments of the assembly to the reference. The file\nformat\
+    \ is specified by --alignment-type. Required for\nalignment-based scores."
+  synonyms:
+  - --A-to-B
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The alignments of the reference to the assembly. The file\nformat\
+    \ is specified by --alignment-type. Required for\nalignment-based scores."
+  synonyms:
+  - --B-to-A
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
   description: "The type of alignments used, either blast or psl. Default:\npsl. Currently\
     \ BLAST support is experimental, not well\ntested, and not recommended."
   synonyms:
@@ -209,6 +203,33 @@ named:
   synonyms:
   - --strand-specific
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This option only applies to the KC scores. The read length of\nthe\
+    \ reads used to build the assembly, used in the denominator\nof the ICR. Required\
+    \ for KC scores."
+  synonyms:
+  - --readlen
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "This option only applies to the KC scores. The number of\nreads used\
+    \ to build the assembly, used in the denominator of\nthe ICR. Required for KC\
+    \ scores."
+  synonyms:
+  - --num-reads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "This option only applies to the kmer and KC scores. This is\nthe length\
+    \ (\"k\") of the kmers used in the definition of the\nKC and kmer scores. Required\
+    \ for KC and kmer scores."
+  synonyms:
+  - --kmerlen
+  args: !SimpleFlagArg
+    name: arg
   optional: true
 - !Flag
   description: "This option only applies to contig scores. Alignments with\nfraction\
@@ -313,7 +334,24 @@ named:
     name: arg
   optional: true
 - !Flag
-  description: ''
+  description: "If --weighted=no, we construct the kmer occurrence frequency profiles\n\
+    $p_A$ and $p_B$ in the same way, except that uniform relative\nabundances are\
+    \ used, i.e., $\\tau(a) = 1/|A|$ for all $a$ in $A$, and\n$\\tau(b) = 1/|B|$ for\
+    \ all $b$ in $B$, where $|A|$ is the number of\ncontigs in $A$, and $|B|$ is the\
+    \ number of reference sequences in\n$B$.\nLet $m$ be the \"mean\" profile of $p_A$\
+    \ and $p_B$:\n$$ m(r) = (1/2) (p_A(r) + p_B(r)) \\qquad\\hbox{for every kmer $r$}.\
+    \ $$\nThe Jensen-Shannon divergence between $p_A$ and $p_B$ is defined in\nterms\
+    \ of the KL divergence between $p_A$ and the mean, and $p_B$ and\nthe mean, as\
+    \ follows:\n* Let $KL(p_A || m) = \\sum_r p_A(r) (\\log_2(p_A(r)) -\n\\log_2(m(r)))$.\n\
+    * Let $KL(p_B || m) = \\sum_r p_B(r) (\\log_2(p_B(r)) -\n\\log_2(m(r)))$.\n* Let\
+    \ $JS(p_A || p_B) = (1/2) (KL(p_A || m) + KL(p_B || m))$.\nIn the output file,\
+    \ these three scores are denoted\n(un)weighted_kmer_KL_A_to_M, (un)weighted_kmer_KL_B_to_M,\
+    \ and\n(un)weighted_kmer_jensen_shannon, respectively.\nThe Hellinger distance\
+    \ between $p_A$ and $p_B$ is defined as\n$$ \\sqrt{ (1/2) \\sum_r (\\sqrt{p_A(r)}\
+    \ - \\sqrt{p_B(r)})^2 } $$\nThe total variation distance between $p_A$ and $p_B$\
+    \ is defined as\n$$ (1/2) \\sum_r |p_A(r) - p_B(r)|, $$\nwhere $|\\cdot|$ denotes\
+    \ absolute value. Above, $\\sum_r$ denotes a sum\nover all possible kmers $r$\
+    \ (most of which will have $p_A(r) = p_B(r)\n= 0$)."
   synonyms:
   - --B-expr.
   args: !EmptyFlagArg {}

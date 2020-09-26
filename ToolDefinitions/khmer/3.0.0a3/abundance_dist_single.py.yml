@@ -3,6 +3,11 @@ command:
 - abundance-dist-single.py
 positional:
 - !Positional
+  description: The name of the input FAST[AQ] sequence file.
+  position: 0
+  name: input_sequence_filename
+  optional: false
+- !Positional
   description: "The name of the output histogram file. The columns\nare: (1) k-mer\
     \ abundance, (2) k-mer count, (3)\ncumulative count, (4) fraction of total distinct\n\
     k-mers."
@@ -11,113 +16,43 @@ positional:
   optional: false
 named:
 - !Flag
-  description: print citation information
-  synonyms:
-  - --info
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'k-mer size to use (default: 32)'
+  description: ''
   synonyms:
   - -k
-  - --ksize
   args: !SimpleFlagArg
     name: KSIZE
   optional: true
 - !Flag
-  description: "approximate number of unique kmers in the input set\n(default: 0)"
-  synonyms:
-  - -U
-  - --unique-kmers
-  args: !SimpleFlagArg
-    name: UNIQUE_KMERS
-  optional: true
-- !Flag
-  description: "Override the automatic FP rate setting for the current\nscript (default:\
-    \ None)"
-  synonyms:
-  - --fp-rate
-  args: !SimpleFlagArg
-    name: FP_RATE
-  optional: true
-- !Flag
-  description: "maximum amount of memory to use for data structure\n(default: None)"
-  synonyms:
-  - -M
-  - --max-memory-usage
-  args: !SimpleFlagArg
-    name: MAX_MEMORY_USAGE
-  optional: true
-- !Flag
-  description: "Reduce memory usage by using a smaller counter for\nindividual kmers.\
-    \ (default: False)"
-  synonyms:
-  - --small-count
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Number of simultaneous threads to execute (default: 1)'
-  synonyms:
-  - -T
-  - --threads
-  args: !SimpleFlagArg
-    name: THREADS
-  optional: true
-- !Flag
-  description: 'Do not output zero-count bins (default: True)'
-  synonyms:
-  - -z
-  - --no-zero
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Do not count k-mers past 255 (default: True)'
-  synonyms:
-  - -b
-  - --no-bigcount
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Overwrite output file if it exists (default: False)'
-  synonyms:
-  - -s
-  - --squash
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Save the k-mer countgraph to the specified filename.\n(default: None)"
-  synonyms:
-  - --savegraph
-  args: !SimpleFlagArg
-    name: filename
-  optional: true
-- !Flag
-  description: 'Override sanity checks (default: False)'
-  synonyms:
-  - -f
-  - --force
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ''
   synonyms:
-  - -q
-  - --quiet
+  - --info
   args: !EmptyFlagArg {}
   optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: ''
   synonyms:
   - -h
-  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
 version_flag: !Flag
-  description: show program's version number and exit
+  description: "show program's version number and exit\n--info                print\
+    \ citation information\n-h, --help            show this help message and exit\n\
+    -k KSIZE, --ksize KSIZE\nk-mer size to use (default: 32)\n-U UNIQUE_KMERS, --unique-kmers\
+    \ UNIQUE_KMERS\napproximate number of unique kmers in the input set\n(default:\
+    \ 0)\n--fp-rate FP_RATE     Override the automatic FP rate setting for the current\n\
+    script (default: None)\n-M MAX_MEMORY_USAGE, --max-memory-usage MAX_MEMORY_USAGE\n\
+    maximum amount of memory to use for data structure\n(default: None)\n--small-count\
+    \         Reduce memory usage by using a smaller counter for\nindividual kmers.\
+    \ (default: False)\n-T THREADS, --threads THREADS\nNumber of simultaneous threads\
+    \ to execute (default: 1)\n-z, --no-zero         Do not output zero-count bins\
+    \ (default: True)\n-b, --no-bigcount     Do not count k-mers past 255 (default:\
+    \ True)\n-s, --squash          Overwrite output file if it exists (default: False)\n\
+    --savegraph filename  Save the k-mer countgraph to the specified filename.\n(default:\
+    \ None)\n-f, --force           Override sanity checks (default: False)\n-q, --quiet"
   synonyms:
   - --version
   args: !EmptyFlagArg {}

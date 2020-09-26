@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - tbprofiler_performance.py
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - tbprofiler_performance.py
   - calculate
   positional:
@@ -49,7 +49,219 @@ subcommands:
     args: !SimpleFlagArg
       name: DRUGS
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: NGS Platform
+        position: 0
+        name: samples
+        optional: false
+      - !Positional
+        description: NGS Platform
+        position: 1
+        name: dst
+        optional: false
+      - !Positional
+        description: NGS Platform
+        position: 2
+        name: bed
+        optional: false
+      named:
+      - !Flag
+        description: 'NGS Platform (default: results/)'
+        synonyms:
+        - --dir
+        - -d
+        args: !SimpleFlagArg
+          name: DIR
+        optional: true
+      - !Flag
+        description: "Fraction of gene missing to call gDST as missing\n(default:\
+          \ 0.1)"
+        synonyms:
+        - --miss
+        - -m
+        args: !SimpleFlagArg
+          name: MISS
+        optional: true
+      - !Flag
+        description: 'NGS Platform (default: None)'
+        synonyms:
+        - --drugs
+        args: !SimpleFlagArg
+          name: DRUGS
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tbprofiler_performance.py calculate [-h] [--dir DIR] [--miss\
+        \ MISS]\n                                           [--drugs DRUGS]\n    \
+        \                                       samples dst bed\n\npositional arguments:\n\
+        \  samples               NGS Platform\n  dst                   NGS Platform\n\
+        \  bed                   NGS Platform\n\noptional arguments:\n  -h, --help\
+        \            show this help message and exit\n  --dir DIR, -d DIR     NGS\
+        \ Platform (default: results/)\n  --miss MISS, -m MISS  Fraction of gene missing\
+        \ to call gDST as missing\n                        (default: 0.1)\n  --drugs\
+        \ DRUGS         NGS Platform (default: None)\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id006
+      - tbprofiler_performance.py
+      - print
+      positional: []
+      named:
+      - !Flag
+        description: "NGS Platform (default: None)\n"
+        synonyms:
+        - --drugs
+        - -d
+        args: !SimpleFlagArg
+          name: DRUGS
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tbprofiler_performance.py print [-h] [--drugs DRUGS]\n\n\
+        optional arguments:\n  -h, --help            show this help message and exit\n\
+        \  --drugs DRUGS, -d DRUGS\n                        NGS Platform (default:\
+        \ None)\n"
+      generated_using: *id004
+    - &id005 !Command
+      command: &id007
+      - tbprofiler_performance.py
+      - analyse
+      positional: []
+      named:
+      - !Flag
+        description: 'NGS Platform (default: results/)'
+        synonyms:
+        - --dir
+        - -d
+        args: !SimpleFlagArg
+          name: DIR
+        optional: true
+      - !Flag
+        description: 'NGS Platform (default: False)'
+        synonyms:
+        - --itol
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id008
+        - tbprofiler_performance.py
+        - analyse
+        - bed
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: tbprofiler_performance.py
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: analyse
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: drug
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: bed
+          optional: false
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - --itol
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - --dir
+          args: !SimpleFlagArg
+            name: DIR
+          optional: true
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: tbprofiler_performance.py analyse [-h] [--dir DIR] [--itol]\
+          \ drug bed\ntbprofiler_performance.py analyse: error: the following arguments\
+          \ are required: bed\n"
+        generated_using: &id009 []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: tbprofiler_performance.py analyse [-h] [--dir DIR] [--itol]\
+        \ drug bed\n\npositional arguments:\n  drug               NGS Platform\n \
+        \ bed                NGS Platform\n\noptional arguments:\n  -h, --help   \
+        \      show this help message and exit\n  --dir DIR, -d DIR  NGS Platform\
+        \ (default: results/)\n  --itol             NGS Platform (default: False)\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: tbprofiler_performance.py [-h] {calculate,print,analyse} ...\n\
+      \nTBProfiler pipeline\n\npositional arguments:\n  {calculate,print,analyse}\n\
+      \                        Task to perform\n    calculate           Run whole\
+      \ pipeline\n    print               Run whole pipeline\n    analyse        \
+      \     Run whole pipeline\n\noptional arguments:\n  -h, --help            show\
+      \ this help message and exit\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -70,12 +282,9 @@ subcommands:
     \ (default: results/)\n  --miss MISS, -m MISS  Fraction of gene missing to call\
     \ gDST as missing\n                        (default: 0.1)\n  --drugs DRUGS   \
     \      NGS Platform (default: None)\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - tbprofiler_performance.py
-  - print
+  command: *id006
   positional: []
   named:
   - !Flag
@@ -86,7 +295,7 @@ subcommands:
     args: !SimpleFlagArg
       name: DRUGS
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -101,34 +310,15 @@ subcommands:
   help_text: "usage: tbprofiler_performance.py print [-h] [--drugs DRUGS]\n\noptional\
     \ arguments:\n  -h, --help            show this help message and exit\n  --drugs\
     \ DRUGS, -d DRUGS\n                        NGS Platform (default: None)\n"
-  generated_using: *id002
-- &id003 !Command
-  command:
-  - tbprofiler_performance.py
-  - analyse
+  generated_using: *id004
+- !Command
+  command: *id007
   positional: []
-  named:
-  - !Flag
-    description: 'NGS Platform (default: results/)'
-    synonyms:
-    - --dir
-    - -d
-    args: !SimpleFlagArg
-      name: DIR
-    optional: true
-  - !Flag
-    description: 'NGS Platform (default: False)'
-    synonyms:
-    - --itol
-    args: !EmptyFlagArg {}
-    optional: true
-  parent: *id001
+  named: []
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - tbprofiler_performance.py
-    - analyse
-    - bed
+    command: *id008
     positional:
     - !Positional
       description: ''
@@ -164,7 +354,7 @@ subcommands:
       args: !SimpleFlagArg
         name: DIR
       optional: true
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -178,15 +368,9 @@ subcommands:
     help_text: "usage: tbprofiler_performance.py analyse [-h] [--dir DIR] [--itol]\
       \ drug bed\ntbprofiler_performance.py analyse: error: the following arguments\
       \ are required: bed\n"
-    generated_using: []
+    generated_using: *id009
   usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "usage: tbprofiler_performance.py analyse [-h] [--dir DIR] [--itol] drug\
@@ -194,15 +378,9 @@ subcommands:
     \           NGS Platform\n\noptional arguments:\n  -h, --help         show this\
     \ help message and exit\n  --dir DIR, -d DIR  NGS Platform (default: results/)\n\
     \  --itol             NGS Platform (default: False)\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: tbprofiler_performance.py [-h] {calculate,print,analyse} ...\n\n\
@@ -210,4 +388,4 @@ help_text: "usage: tbprofiler_performance.py [-h] {calculate,print,analyse} ...\
   \                    Task to perform\n    calculate           Run whole pipeline\n\
   \    print               Run whole pipeline\n    analyse             Run whole pipeline\n\
   \noptional arguments:\n  -h, --help            show this help message and exit\n"
-generated_using: *id002
+generated_using: *id004

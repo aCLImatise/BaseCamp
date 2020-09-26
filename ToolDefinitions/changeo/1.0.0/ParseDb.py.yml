@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - ParseDb.py
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - ParseDb.py
   - split
   positional: []
@@ -51,7 +51,1060 @@ subcommands:
     args: !SimpleFlagArg
       name: NUM_SPLIT
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: "Annotation field by which to split database files.\n(default:\
+          \ None)"
+        synonyms:
+        - -f
+        args: !SimpleFlagArg
+          name: FIELD
+        optional: true
+      - !Flag
+        description: "Specify to define the field as numeric and group\nrecords by\
+          \ whether they are less than or at least\n(greater than or equal to) the\
+          \ specified value.\n(default: None)\n"
+        synonyms:
+        - --num
+        args: !SimpleFlagArg
+          name: NUM_SPLIT
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py split [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+        \                        [--outdir OUT_DIR] [--outname OUT_NAME] -f FIELD\n\
+        \                        [--num NUM_SPLIT]\n\nSplits database files by field\
+        \ values\n\nhelp:\n  --version             show program's version number and\
+        \ exit\n  -h, --help            show this help message and exit\n\nstandard\
+        \ arguments:\n  -d DB_FILES [DB_FILES ...]\n                        A list\
+        \ of tab delimited database files. (default:\n                        None)\n\
+        \  --outdir OUT_DIR      Specify to changes the output directory to the\n\
+        \                        location specified. The input file directory is used\n\
+        \                        if this is not specified. (default: None)\n  --outname\
+        \ OUT_NAME    Changes the prefix of the successfully processed\n         \
+        \               output file to the string specified. May not be\n        \
+        \                specified with multiple input files. (default: None)\n\n\
+        parsing arguments:\n  -f FIELD              Annotation field by which to split\
+        \ database files.\n                        (default: None)\n  --num NUM_SPLIT\
+        \       Specify to define the field as numeric and group\n               \
+        \         records by whether they are less than or at least\n            \
+        \            (greater than or equal to) the specified value.\n           \
+        \             (default: None)\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - ParseDb.py
+      - rename
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: 'List of fields to rename. (default: None)'
+        synonyms:
+        - -f
+        args: !RepeatFlagArg
+          name: FIELDS
+        optional: true
+      - !Flag
+        description: 'List of new names for each field. (default: None)'
+        synonyms:
+        - -k
+        args: !RepeatFlagArg
+          name: NAMES
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py rename [--version] [-h] -d DB_FILES [DB_FILES\
+        \ ...]\n                         [-o OUT_FILES [OUT_FILES ...]] [--outdir\
+        \ OUT_DIR]\n                         [--outname OUT_NAME] -f FIELDS [FIELDS\
+        \ ...] -k NAMES\n                         [NAMES ...]\n\nRenames fields.\n\
+        \nhelp:\n  --version             show program's version number and exit\n\
+        \  -h, --help            show this help message and exit\n\nstandard arguments:\n\
+        \  -d DB_FILES [DB_FILES ...]\n                        A list of tab delimited\
+        \ database files. (default:\n                        None)\n  -o OUT_FILES\
+        \ [OUT_FILES ...]\n                        Explicit output file name. Note,\
+        \ this argument cannot\n                        be used with the --failed,\
+        \ --outdir, or --outname\n                        arguments. If unspecified,\
+        \ then the output filename\n                        will be based on the input\
+        \ filename(s). (default:\n                        None)\n  --outdir OUT_DIR\
+        \      Specify to changes the output directory to the\n                  \
+        \      location specified. The input file directory is used\n            \
+        \            if this is not specified. (default: None)\n  --outname OUT_NAME\
+        \    Changes the prefix of the successfully processed\n                  \
+        \      output file to the string specified. May not be\n                 \
+        \       specified with multiple input files. (default: None)\n\nparsing arguments:\n\
+        \  -f FIELDS [FIELDS ...]\n                        List of fields to rename.\
+        \ (default: None)\n  -k NAMES [NAMES ...]  List of new names for each field.\
+        \ (default: None)\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - ParseDb.py
+      - sequences
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: ParseDb.py
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: ''
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py [--version] [-h]  ...\nParseDb.py: error: argument\
+        \ : invalid choice: 'sequences' (choose from 'add', 'delete', 'drop', 'index',\
+        \ 'rename', 'select', 'sort', 'update', 'merge', 'split')\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - ParseDb.py
+      - add
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: 'The name of the fields to add. (default: None)'
+        synonyms:
+        - -f
+        args: !RepeatFlagArg
+          name: FIELDS
+        optional: true
+      - !Flag
+        description: "The value to assign to all rows for each field.\n(default: None)\n"
+        synonyms:
+        - -u
+        args: !RepeatFlagArg
+          name: VALUES
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py add [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+        \                      [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
+        \                      [--outname OUT_NAME] -f FIELDS [FIELDS ...] -u VALUES\n\
+        \                      [VALUES ...]\n\nAdds field and value pairs.\n\nhelp:\n\
+        \  --version             show program's version number and exit\n  -h, --help\
+        \            show this help message and exit\n\nstandard arguments:\n  -d\
+        \ DB_FILES [DB_FILES ...]\n                        A list of tab delimited\
+        \ database files. (default:\n                        None)\n  -o OUT_FILES\
+        \ [OUT_FILES ...]\n                        Explicit output file name. Note,\
+        \ this argument cannot\n                        be used with the --failed,\
+        \ --outdir, or --outname\n                        arguments. If unspecified,\
+        \ then the output filename\n                        will be based on the input\
+        \ filename(s). (default:\n                        None)\n  --outdir OUT_DIR\
+        \      Specify to changes the output directory to the\n                  \
+        \      location specified. The input file directory is used\n            \
+        \            if this is not specified. (default: None)\n  --outname OUT_NAME\
+        \    Changes the prefix of the successfully processed\n                  \
+        \      output file to the string specified. May not be\n                 \
+        \       specified with multiple input files. (default: None)\n\nparsing arguments:\n\
+        \  -f FIELDS [FIELDS ...]\n                        The name of the fields\
+        \ to add. (default: None)\n  -u VALUES [VALUES ...]\n                    \
+        \    The value to assign to all rows for each field.\n                   \
+        \     (default: None)\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - ParseDb.py
+      - update
+      positional: []
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -t
+        args: !RepeatFlagArg
+          name: UPDATES
+        optional: true
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: 'The name of the field to update. (default: None)'
+        synonyms:
+        - -f
+        args: !SimpleFlagArg
+          name: FIELD
+        optional: true
+      - !Flag
+        description: 'The values that will be replaced. (default: None)'
+        synonyms:
+        - -u
+        args: !RepeatFlagArg
+          name: VALUES
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py update [--version] [-h] -d DB_FILES [DB_FILES\
+        \ ...]\n                         [-o OUT_FILES [OUT_FILES ...]] [--outdir\
+        \ OUT_DIR]\n                         [--outname OUT_NAME] -f FIELD -u VALUES\
+        \ [VALUES ...]\n                         -t UPDATES [UPDATES ...]\n\nUpdates\
+        \ field and value pairs.\n\nhelp:\n  --version             show program's\
+        \ version number and exit\n  -h, --help            show this help message\
+        \ and exit\n\nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n        \
+        \                A list of tab delimited database files. (default:\n     \
+        \                   None)\n  -o OUT_FILES [OUT_FILES ...]\n              \
+        \          Explicit output file name. Note, this argument cannot\n       \
+        \                 be used with the --failed, --outdir, or --outname\n    \
+        \                    arguments. If unspecified, then the output filename\n\
+        \                        will be based on the input filename(s). (default:\n\
+        \                        None)\n  --outdir OUT_DIR      Specify to changes\
+        \ the output directory to the\n                        location specified.\
+        \ The input file directory is used\n                        if this is not\
+        \ specified. (default: None)\n  --outname OUT_NAME    Changes the prefix of\
+        \ the successfully processed\n                        output file to the string\
+        \ specified. May not be\n                        specified with multiple input\
+        \ files. (default: None)\n\nparsing arguments:\n  -f FIELD              The\
+        \ name of the field to update. (default: None)\n  -u VALUES [VALUES ...]\n\
+        \                        The values that will be replaced. (default: None)\n\
+        \  -t UPDATES [UPDATES ...]\n                        The new value to assign\
+        \ to each selected row.\n                        (default: None)\n"
+      generated_using: *id004
+    - !Command
+      command: &id009
+      - ParseDb.py
+      - index
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: "The name of the index field to add to the database.\n(default:\
+          \ INDEX)\n"
+        synonyms:
+        - -f
+        args: !SimpleFlagArg
+          name: FIELD
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py index [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+        \                        [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
+        \                        [--outname OUT_NAME] [-f FIELD]\n\nAdds a numeric\
+        \ index field.\n\nhelp:\n  --version             show program's version number\
+        \ and exit\n  -h, --help            show this help message and exit\n\nstandard\
+        \ arguments:\n  -d DB_FILES [DB_FILES ...]\n                        A list\
+        \ of tab delimited database files. (default:\n                        None)\n\
+        \  -o OUT_FILES [OUT_FILES ...]\n                        Explicit output file\
+        \ name. Note, this argument cannot\n                        be used with the\
+        \ --failed, --outdir, or --outname\n                        arguments. If\
+        \ unspecified, then the output filename\n                        will be based\
+        \ on the input filename(s). (default:\n                        None)\n  --outdir\
+        \ OUT_DIR      Specify to changes the output directory to the\n          \
+        \              location specified. The input file directory is used\n    \
+        \                    if this is not specified. (default: None)\n  --outname\
+        \ OUT_NAME    Changes the prefix of the successfully processed\n         \
+        \               output file to the string specified. May not be\n        \
+        \                specified with multiple input files. (default: None)\n\n\
+        parsing arguments:\n  -f FIELD              The name of the index field to\
+        \ add to the database.\n                        (default: INDEX)\n"
+      generated_using: *id004
+    - !Command
+      command: &id010
+      - ParseDb.py
+      - sort
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: "The annotation field by which to sort records.\n(default: None)"
+        synonyms:
+        - -f
+        args: !SimpleFlagArg
+          name: FIELD
+        optional: true
+      - !Flag
+        description: "Specify to define the sort column as numeric rather\nthan textual.\
+          \ (default: False)"
+        synonyms:
+        - --num
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "If specified, sort records in descending, rather than\nascending,\
+          \ order by values in the target field.\n(default: False)\n"
+        synonyms:
+        - --descend
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py sort [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+        \                       [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
+        \                       [--outname OUT_NAME] -f FIELD [--num] [--descend]\n\
+        \nSorts records by field values.\n\nhelp:\n  --version             show program's\
+        \ version number and exit\n  -h, --help            show this help message\
+        \ and exit\n\nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n        \
+        \                A list of tab delimited database files. (default:\n     \
+        \                   None)\n  -o OUT_FILES [OUT_FILES ...]\n              \
+        \          Explicit output file name. Note, this argument cannot\n       \
+        \                 be used with the --failed, --outdir, or --outname\n    \
+        \                    arguments. If unspecified, then the output filename\n\
+        \                        will be based on the input filename(s). (default:\n\
+        \                        None)\n  --outdir OUT_DIR      Specify to changes\
+        \ the output directory to the\n                        location specified.\
+        \ The input file directory is used\n                        if this is not\
+        \ specified. (default: None)\n  --outname OUT_NAME    Changes the prefix of\
+        \ the successfully processed\n                        output file to the string\
+        \ specified. May not be\n                        specified with multiple input\
+        \ files. (default: None)\n\nparsing arguments:\n  -f FIELD              The\
+        \ annotation field by which to sort records.\n                        (default:\
+        \ None)\n  --num                 Specify to define the sort column as numeric\
+        \ rather\n                        than textual. (default: False)\n  --descend\
+        \             If specified, sort records in descending, rather than\n    \
+        \                    ascending, order by values in the target field.\n   \
+        \                     (default: False)\n"
+      generated_using: *id004
+    - !Command
+      command: &id011
+      - ParseDb.py
+      - select
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: "The name of the fields to check for selection\ncriteria. (default:\
+          \ None)"
+        synonyms:
+        - -f
+        args: !RepeatFlagArg
+          name: FIELDS
+        optional: true
+      - !Flag
+        description: "The values defining with records to select. A value\nmay appear\
+          \ in any of the fields specified with -f.\n(default: None)"
+        synonyms:
+        - -u
+        args: !RepeatFlagArg
+          name: VALUES
+        optional: true
+      - !Flag
+        description: "Defines whether a value may appear in any field (any)\nor whether\
+          \ it must appear in all fields (all).\n(default: any)"
+        synonyms:
+        - --logic
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? any
+            ? all
+        optional: true
+      - !Flag
+        description: "If specified, treat values as regular expressions and\nallow\
+          \ partial string matches. (default: False)\n"
+        synonyms:
+        - --regex
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py select [--version] [-h] -d DB_FILES [DB_FILES\
+        \ ...]\n                         [-o OUT_FILES [OUT_FILES ...]] [--outdir\
+        \ OUT_DIR]\n                         [--outname OUT_NAME] -f FIELDS [FIELDS\
+        \ ...] -u VALUES\n                         [VALUES ...] [--logic {any,all}]\
+        \ [--regex]\n\nSelects specific records.\n\nhelp:\n  --version           \
+        \  show program's version number and exit\n  -h, --help            show this\
+        \ help message and exit\n\nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n\
+        \                        A list of tab delimited database files. (default:\n\
+        \                        None)\n  -o OUT_FILES [OUT_FILES ...]\n         \
+        \               Explicit output file name. Note, this argument cannot\n  \
+        \                      be used with the --failed, --outdir, or --outname\n\
+        \                        arguments. If unspecified, then the output filename\n\
+        \                        will be based on the input filename(s). (default:\n\
+        \                        None)\n  --outdir OUT_DIR      Specify to changes\
+        \ the output directory to the\n                        location specified.\
+        \ The input file directory is used\n                        if this is not\
+        \ specified. (default: None)\n  --outname OUT_NAME    Changes the prefix of\
+        \ the successfully processed\n                        output file to the string\
+        \ specified. May not be\n                        specified with multiple input\
+        \ files. (default: None)\n\nparsing arguments:\n  -f FIELDS [FIELDS ...]\n\
+        \                        The name of the fields to check for selection\n \
+        \                       criteria. (default: None)\n  -u VALUES [VALUES ...]\n\
+        \                        The values defining with records to select. A value\n\
+        \                        may appear in any of the fields specified with -f.\n\
+        \                        (default: None)\n  --logic {any,all}     Defines\
+        \ whether a value may appear in any field (any)\n                        or\
+        \ whether it must appear in all fields (all).\n                        (default:\
+        \ any)\n  --regex               If specified, treat values as regular expressions\
+        \ and\n                        allow partial string matches. (default: False)\n"
+      generated_using: *id004
+    - !Command
+      command: &id012
+      - ParseDb.py
+      - merge
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir or --outname\narguments. (default: None)"
+        synonyms:
+        - -o
+        args: !SimpleFlagArg
+          name: OUT_FILE
+        optional: true
+      - !Flag
+        description: "If specified, drop fields that do not exist in all\ninput files.\
+          \ Otherwise, include all columns in all\nfiles and fill missing data with\
+          \ empty strings.\n(default: False)\n"
+        synonyms:
+        - --drop
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py merge [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+        \                        [--outdir OUT_DIR] [--outname OUT_NAME] [-o OUT_FILE]\n\
+        \                        [--drop]\n\nMerges files.\n\nhelp:\n  --version \
+        \            show program's version number and exit\n  -h, --help        \
+        \    show this help message and exit\n\nstandard arguments:\n  -d DB_FILES\
+        \ [DB_FILES ...]\n                        A list of tab delimited database\
+        \ files. (default:\n                        None)\n  --outdir OUT_DIR    \
+        \  Specify to changes the output directory to the\n                      \
+        \  location specified. The input file directory is used\n                \
+        \        if this is not specified. (default: None)\n  --outname OUT_NAME \
+        \   Changes the prefix of the successfully processed\n                   \
+        \     output file to the string specified. May not be\n                  \
+        \      specified with multiple input files. (default: None)\n\nparsing arguments:\n\
+        \  -o OUT_FILE           Explicit output file name. Note, this argument cannot\n\
+        \                        be used with the --failed, --outdir or --outname\n\
+        \                        arguments. (default: None)\n  --drop            \
+        \    If specified, drop fields that do not exist in all\n                \
+        \        input files. Otherwise, include all columns in all\n            \
+        \            files and fill missing data with empty strings.\n           \
+        \             (default: False)\n"
+      generated_using: *id004
+    - !Command
+      command: &id013
+      - ParseDb.py
+      - delete
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: "The name of the fields to check for deletion criteria.\n(default:\
+          \ None)"
+        synonyms:
+        - -f
+        args: !RepeatFlagArg
+          name: FIELDS
+        optional: true
+      - !Flag
+        description: "The values defining which records to delete. A value\nmay appear\
+          \ in any of the fields specified with -f.\n(default: ['', 'NA'])"
+        synonyms:
+        - -u
+        args: !RepeatFlagArg
+          name: VALUES
+        optional: true
+      - !Flag
+        description: "Defines whether a value may appear in any field (any)\nor whether\
+          \ it must appear in all fields (all).\n(default: any)"
+        synonyms:
+        - --logic
+        args: !ChoiceFlagArg
+          choices: !!set
+            ? any
+            ? all
+        optional: true
+      - !Flag
+        description: "If specified, treat values as regular expressions and\nallow\
+          \ partial string matches. (default: False)\n"
+        synonyms:
+        - --regex
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py delete [--version] [-h] -d DB_FILES [DB_FILES\
+        \ ...]\n                         [-o OUT_FILES [OUT_FILES ...]] [--outdir\
+        \ OUT_DIR]\n                         [--outname OUT_NAME] -f FIELDS [FIELDS\
+        \ ...]\n                         [-u VALUES [VALUES ...]] [--logic {any,all}]\n\
+        \                         [--regex]\n\nDeletes specific records.\n\nhelp:\n\
+        \  --version             show program's version number and exit\n  -h, --help\
+        \            show this help message and exit\n\nstandard arguments:\n  -d\
+        \ DB_FILES [DB_FILES ...]\n                        A list of tab delimited\
+        \ database files. (default:\n                        None)\n  -o OUT_FILES\
+        \ [OUT_FILES ...]\n                        Explicit output file name. Note,\
+        \ this argument cannot\n                        be used with the --failed,\
+        \ --outdir, or --outname\n                        arguments. If unspecified,\
+        \ then the output filename\n                        will be based on the input\
+        \ filename(s). (default:\n                        None)\n  --outdir OUT_DIR\
+        \      Specify to changes the output directory to the\n                  \
+        \      location specified. The input file directory is used\n            \
+        \            if this is not specified. (default: None)\n  --outname OUT_NAME\
+        \    Changes the prefix of the successfully processed\n                  \
+        \      output file to the string specified. May not be\n                 \
+        \       specified with multiple input files. (default: None)\n\nparsing arguments:\n\
+        \  -f FIELDS [FIELDS ...]\n                        The name of the fields\
+        \ to check for deletion criteria.\n                        (default: None)\n\
+        \  -u VALUES [VALUES ...]\n                        The values defining which\
+        \ records to delete. A value\n                        may appear in any of\
+        \ the fields specified with -f.\n                        (default: ['', 'NA'])\n\
+        \  --logic {any,all}     Defines whether a value may appear in any field (any)\n\
+        \                        or whether it must appear in all fields (all).\n\
+        \                        (default: any)\n  --regex               If specified,\
+        \ treat values as regular expressions and\n                        allow partial\
+        \ string matches. (default: False)\n"
+      generated_using: *id004
+    - !Command
+      command: &id014
+      - ParseDb.py
+      - drop
+      positional: []
+      named:
+      - !Flag
+        description: "A list of tab delimited database files. (default:\nNone)"
+        synonyms:
+        - -d
+        args: !RepeatFlagArg
+          name: DB_FILES
+        optional: true
+      - !Flag
+        description: "Explicit output file name. Note, this argument cannot\nbe used\
+          \ with the --failed, --outdir, or --outname\narguments. If unspecified,\
+          \ then the output filename\nwill be based on the input filename(s). (default:\n\
+          None)"
+        synonyms:
+        - -o
+        args: !RepeatFlagArg
+          name: OUT_FILES
+        optional: true
+      - !Flag
+        description: "Specify to changes the output directory to the\nlocation specified.\
+          \ The input file directory is used\nif this is not specified. (default:\
+          \ None)"
+        synonyms:
+        - --outdir
+        args: !SimpleFlagArg
+          name: OUT_DIR
+        optional: true
+      - !Flag
+        description: "Changes the prefix of the successfully processed\noutput file\
+          \ to the string specified. May not be\nspecified with multiple input files.\
+          \ (default: None)"
+        synonyms:
+        - --outname
+        args: !SimpleFlagArg
+          name: OUT_NAME
+        optional: true
+      - !Flag
+        description: "The name of the fields to delete from the database.\n(default:\
+          \ None)\n"
+        synonyms:
+        - -f
+        args: !RepeatFlagArg
+          name: FIELDS
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag: !Flag
+        description: show program's version number and exit
+        synonyms:
+        - --version
+        args: !EmptyFlagArg {}
+        optional: true
+      help_text: "usage: ParseDb.py drop [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+        \                       [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
+        \                       [--outname OUT_NAME] -f FIELDS [FIELDS ...]\n\nDeletes\
+        \ entire fields.\n\nhelp:\n  --version             show program's version\
+        \ number and exit\n  -h, --help            show this help message and exit\n\
+        \nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n                    \
+        \    A list of tab delimited database files. (default:\n                 \
+        \       None)\n  -o OUT_FILES [OUT_FILES ...]\n                        Explicit\
+        \ output file name. Note, this argument cannot\n                        be\
+        \ used with the --failed, --outdir, or --outname\n                       \
+        \ arguments. If unspecified, then the output filename\n                  \
+        \      will be based on the input filename(s). (default:\n               \
+        \         None)\n  --outdir OUT_DIR      Specify to changes the output directory\
+        \ to the\n                        location specified. The input file directory\
+        \ is used\n                        if this is not specified. (default: None)\n\
+        \  --outname OUT_NAME    Changes the prefix of the successfully processed\n\
+        \                        output file to the string specified. May not be\n\
+        \                        specified with multiple input files. (default: None)\n\
+        \nparsing arguments:\n  -f FIELDS [FIELDS ...]\n                        The\
+        \ name of the fields to delete from the database.\n                      \
+        \  (default: None)\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "usage: ParseDb.py [--version] [-h]  ...\n\nParses tab delimited database\
+      \ files\n\nhelp:\n  --version   show program's version number and exit\n  -h,\
+      \ --help  show this help message and exit\n\nsubcommands:\n              Database\
+      \ operation\n    add       Adds field and value pairs.\n    delete    Deletes\
+      \ specific records.\n    drop      Deletes entire fields.\n    index     Adds\
+      \ a numeric index field.\n    rename    Renames fields.\n    select    Selects\
+      \ specific records.\n    sort      Sorts records by field values.\n    update\
+      \    Updates field and value pairs.\n    merge     Merges files.\n    split\
+      \     Splits database files by field values.\n\noutput files:\n    sequences\n\
+      \        FASTA formatted sequences output from the subcommands fasta and clip.\n\
+      \    <field>-<value>\n        database files partitioned by annotation <field>\
+      \ and <value>.\n    parse-<command>\n        output of the database modification\
+      \ functions where <command> is one of\n        the subcommands add, index, drop,\
+      \ delete, rename, select, sort or update.\n\nrequired fields:\n    sequence_id\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -86,12 +1139,9 @@ subcommands:
     \ as numeric and group\n                        records by whether they are less\
     \ than or at least\n                        (greater than or equal to) the specified\
     \ value.\n                        (default: None)\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - rename
+  command: *id005
   positional: []
   named:
   - !Flag
@@ -141,7 +1191,7 @@ subcommands:
     args: !RepeatFlagArg
       name: NAMES
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -179,11 +1229,9 @@ subcommands:
     \ arguments:\n  -f FIELDS [FIELDS ...]\n                        List of fields\
     \ to rename. (default: None)\n  -k NAMES [NAMES ...]  List of new names for each\
     \ field. (default: None)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - sequences
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -191,7 +1239,7 @@ subcommands:
     name: ParseDb.py
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -210,11 +1258,9 @@ subcommands:
   help_text: "usage: ParseDb.py [--version] [-h]  ...\nParseDb.py: error: argument\
     \ : invalid choice: 'sequences' (choose from 'add', 'delete', 'drop', 'index',\
     \ 'rename', 'select', 'sort', 'update', 'merge', 'split')\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - add
+  command: *id007
   positional: []
   named:
   - !Flag
@@ -264,7 +1310,7 @@ subcommands:
     args: !RepeatFlagArg
       name: VALUES
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -303,20 +1349,11 @@ subcommands:
     \ fields to add. (default: None)\n  -u VALUES [VALUES ...]\n                 \
     \       The value to assign to all rows for each field.\n                    \
     \    (default: None)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - update
+  command: *id008
   positional: []
   named:
-  - !Flag
-    description: ''
-    synonyms:
-    - -t
-    args: !RepeatFlagArg
-      name: UPDATES
-    optional: true
   - !Flag
     description: "A list of tab delimited database files. (default:\nNone)"
     synonyms:
@@ -364,7 +1401,14 @@ subcommands:
     args: !RepeatFlagArg
       name: VALUES
     optional: true
-  parent: *id001
+  - !Flag
+    description: "The new value to assign to each selected row.\n(default: None)\n"
+    synonyms:
+    - -t
+    args: !RepeatFlagArg
+      name: UPDATES
+    optional: true
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -404,11 +1448,9 @@ subcommands:
     \ be replaced. (default: None)\n  -t UPDATES [UPDATES ...]\n                 \
     \       The new value to assign to each selected row.\n                      \
     \  (default: None)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - index
+  command: *id009
   positional: []
   named:
   - !Flag
@@ -451,7 +1493,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FIELD
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -487,11 +1529,9 @@ subcommands:
     \                     specified with multiple input files. (default: None)\n\n\
     parsing arguments:\n  -f FIELD              The name of the index field to add\
     \ to the database.\n                        (default: INDEX)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - sort
+  command: *id010
   positional: []
   named:
   - !Flag
@@ -548,7 +1588,7 @@ subcommands:
     - --descend
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -588,11 +1628,9 @@ subcommands:
     \               than textual. (default: False)\n  --descend             If specified,\
     \ sort records in descending, rather than\n                        ascending,\
     \ order by values in the target field.\n                        (default: False)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - select
+  command: *id011
   positional: []
   named:
   - !Flag
@@ -651,8 +1689,8 @@ subcommands:
     - --logic
     args: !ChoiceFlagArg
       choices: !!set
-        any:
         all:
+        any:
     optional: true
   - !Flag
     description: "If specified, treat values as regular expressions and\nallow partial\
@@ -661,7 +1699,7 @@ subcommands:
     - --regex
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -706,11 +1744,9 @@ subcommands:
     \                    (default: any)\n  --regex               If specified, treat\
     \ values as regular expressions and\n                        allow partial string\
     \ matches. (default: False)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - merge
+  command: *id012
   positional: []
   named:
   - !Flag
@@ -753,7 +1789,7 @@ subcommands:
     - --drop
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -789,11 +1825,9 @@ subcommands:
     \               input files. Otherwise, include all columns in all\n         \
     \               files and fill missing data with empty strings.\n            \
     \            (default: False)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - delete
+  command: *id013
   positional: []
   named:
   - !Flag
@@ -852,8 +1886,8 @@ subcommands:
     - --logic
     args: !ChoiceFlagArg
       choices: !!set
-        any:
         all:
+        any:
     optional: true
   - !Flag
     description: "If specified, treat values as regular expressions and\nallow partial\
@@ -862,7 +1896,7 @@ subcommands:
     - --regex
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -908,11 +1942,9 @@ subcommands:
     \              (default: any)\n  --regex               If specified, treat values\
     \ as regular expressions and\n                        allow partial string matches.\
     \ (default: False)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - ParseDb.py
-  - drop
+  command: *id014
   positional: []
   named:
   - !Flag
@@ -955,7 +1987,7 @@ subcommands:
     args: !RepeatFlagArg
       name: FIELDS
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -992,22 +2024,11 @@ subcommands:
     parsing arguments:\n  -f FIELDS [FIELDS ...]\n                        The name\
     \ of the fields to delete from the database.\n                        (default:\
     \ None)\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: ParseDb.py [--version] [-h]  ...\n\nParses tab delimited database\
   \ files\n\nhelp:\n  --version   show program's version number and exit\n  -h, --help\
   \  show this help message and exit\n\nsubcommands:\n              Database operation\n\
@@ -1022,4 +2043,4 @@ help_text: "usage: ParseDb.py [--version] [-h]  ...\n\nParses tab delimited data
   \ database modification functions where <command> is one of\n        the subcommands\
   \ add, index, drop, delete, rename, select, sort or update.\n\nrequired fields:\n\
   \    sequence_id\n"
-generated_using: *id002
+generated_using: *id004

@@ -4,63 +4,24 @@ command:
 positional: []
 named:
 - !Flag
-  description: Path to the input BIOM-format table. [REQUIRED]
-  synonyms:
-  - -i
-  - --biom_table_fp
-  args: !SimpleFlagArg
-    name: BIOM_TABLE_FP
-  optional: true
-- !Flag
-  description: "The transform to apply to the data. Default: arcsine\nsquare root."
-  synonyms:
-  - -t
-  - --transform
-  args: !ChoiceFlagArg
-    choices: !!set
-      ra:
-      ra_log10:
-      log10:
-      arcsin_sqrt:
-  optional: true
-- !Flag
-  description: "Set the output format of the BIOM table. Default is\nHDF5."
-  synonyms:
-  - --fmt
-  args: !ChoiceFlagArg
-    choices: !!set
-      hdf5:
-      tsv:
-      json:
-  optional: true
-- !Flag
-  description: "Compress the output BIOM table with gzip. HDF5 BIOM\n(v2.x) files\
-    \ are internally compressed by default, so\nthis option is not needed when specifying\
-    \ --fmt hdf5."
-  synonyms:
-  - --gzip
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Output path for the transformed BIOM table.[REQUIRED]
-  synonyms:
-  - -o
-  - --output_fp
-  args: !SimpleFlagArg
-    name: OUTPUT_FP
-  optional: true
-- !Flag
   description: ''
   synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
+  - -i
+  args: !SimpleFlagArg
+    name: BIOM_TABLE_FP
   optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n-i BIOM_TABLE_FP, --biom_table_fp\
+    \ BIOM_TABLE_FP\nPath to the input BIOM-format table. [REQUIRED]\n-t {arcsin_sqrt,log10,ra,ra_log10},\
+    \ --transform {arcsin_sqrt,log10,ra,ra_log10}\nThe transform to apply to the data.\
+    \ Default: arcsine\nsquare root.\n--fmt {hdf5,json,tsv}\nSet the output format\
+    \ of the BIOM table. Default is\nHDF5.\n--gzip                Compress the output\
+    \ BIOM table with gzip. HDF5 BIOM\n(v2.x) files are internally compressed by default,\
+    \ so\nthis option is not needed when specifying --fmt hdf5.\n-o OUTPUT_FP, --output_fp\
+    \ OUTPUT_FP\nOutput path for the transformed BIOM table.[REQUIRED]\n-v, --verbose\n"
   synonyms:
   - -h
   - --help

@@ -38,17 +38,6 @@ positional:
   position: 3
   name: SILENT
   optional: false
-- !Positional
-  description: '-W,--insert-std <INT>               The insert size STD.  Used for
-    SV calling.  Default: 100'
-  position: 0
-  name: LENIENT
-  optional: false
-- !Positional
-  description: The
-  position: 1
-  name: caution.
-  optional: false
 named:
 - !Flag
   description: Indicate to move indels to 3-prime if alternative alignment can be
@@ -447,62 +436,25 @@ named:
     name: STRICT | LENIENT | SILENT
   optional: true
 - !Flag
-  description: 'The insert size.  Used for SV calling.  Default: 300'
+  description: "The insert size STD.  Used for SV calling.  Default: 100\n-w,--insert-size\
+    \ <INT>              The insert size.  Used for SV calling.  Default: 300\n-X\
+    \ <INT>                            Extension of bp to look for mismatches after\
+    \ insersion or deletion.  Default to 2 bp, or only calls when\nthey're within\
+    \ 2 bp.\n-x <INT>                            The number of nucleotide to extend\
+    \ for each segment, default: 0\n-Y,--ref-extension <INT>            Extension\
+    \ of bp of reference to build lookup table. Default to 1200 bp. Increase the number\
+    \ will slowdown\nthe program. The main purpose is to call large indels with 1000\
+    \ bp that can be missed by discordant mate\npairs.\n-y,--verbose\n-Z,--downsample\
+    \ <double>            For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.\
+    \  Default: No downsampling.  Use with\ncaution.  The\ndownsampling will be random\
+    \ and non-reproducible.\n-z <0/1>                            Indicate whether\
+    \ coordinates are zero-based, as IGV uses.  Default: 1 for BED file or amplicon\
+    \ BED file.\nUse 0 to turn it off. When using the -R option, it's set to 0"
   synonyms:
-  - -w
-  - --insert-size
+  - -W
+  - --insert-std
   args: !SimpleFlagArg
     name: INT
-  optional: true
-- !Flag
-  description: "Extension of bp to look for mismatches after insersion or deletion.\
-    \  Default to 2 bp, or only calls when\nthey're within 2 bp."
-  synonyms:
-  - -X
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'The number of nucleotide to extend for each segment, default: 0'
-  synonyms:
-  - -x
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "Extension of bp of reference to build lookup table. Default to 1200\
-    \ bp. Increase the number will slowdown\nthe program. The main purpose is to call\
-    \ large indels with 1000 bp that can be missed by discordant mate\npairs."
-  synonyms:
-  - -Y
-  - --ref-extension
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -y
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default:
-    No downsampling.  Use with'
-  synonyms:
-  - -Z
-  - --downsample
-  args: !SimpleFlagArg
-    name: double
-  optional: true
-- !Flag
-  description: "Indicate whether coordinates are zero-based, as IGV uses.  Default:\
-    \ 1 for BED file or amplicon BED file.\nUse 0 to turn it off. When using the -R\
-    \ option, it's set to 0"
-  synonyms:
-  - -z
-  args: !SimpleFlagArg
-    name: 0/1
   optional: true
 parent:
 subcommands: []

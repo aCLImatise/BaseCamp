@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - card-trick
 - search
@@ -25,11 +25,11 @@ named:
   - --format_output
   args: !ChoiceFlagArg
     choices: !!set
-      tsv:
+      json:
       stdout:
+      tsv:
       csv:
       all:
-      json:
   optional: true
 - !Flag
   description: Output name.
@@ -72,11 +72,11 @@ named:
   - --term_2
   args: !ChoiceFlagArg
     choices: !!set
-      any:
-      ARO:
-      target:
       gene:
+      any:
+      target:
       antibiotic:
+      ARO:
   optional: true
 - !Flag
   description: "Provide this option if input_2 is a file containing\nmultiple terms,\
@@ -93,50 +93,7 @@ named:
   - --quiet
   args: !EmptyFlagArg {}
   optional: true
-parent: !Command
-  command:
-  - card-trick
-  positional: []
-  named:
-  - !Flag
-    description: Additional information
-    synonyms:
-    - --man
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: ''
-    synonyms:
-    - -v
-    args: !EmptyFlagArg {}
-    optional: true
-  parent:
-  subcommands:
-  - *id001
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: display the version number
-    synonyms:
-    - -v
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: card-trick [-h] [-v] [--man] {update,search} ...\n\npositional\
-    \ arguments:\n  {update,search}  The following commands are available. Type card-trick\n\
-    \                   <COMMAND> -h for more help on a specific commands\n    update\
-    \         Get latest CARD ontology\n    search         Search CARD ontology\n\n\
-    optional arguments:\n  -h, --help       show this help message and exit\n  -v,\
-    \ --version    display the version number\n  --man            Additional information\n"
-  generated_using: &id002
-  - --help
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -170,4 +127,5 @@ help_text: "usage: card-trick search [-h] -i INPUT [-f {stdout,json,csv,tsv,all}
   \ any\n  -b2, --batch_2        Provide this option if input_2 is a file containing\n\
   \                        multiple terms, one per line.\n  -q, --quiet          \
   \ Do not print process information\n"
-generated_using: *id002
+generated_using:
+- --help

@@ -1,19 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - hisat2_extract_splice_sites.py
 positional: []
-named:
-- !Flag
-  description: also print some statistics to stderr
-  synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - hisat2_extract_splice_sites.py
   - gtf_file
   positional: []
@@ -24,7 +17,61 @@ subcommands:
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: also print some statistics to stderr
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - -v
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: hisat2_extract_splice_sites.py [-h] [-v] [gtf_file]\nhisat2_extract_splice_sites.py:\
+        \ error: argument gtf_file: can't open 'gtf_file': [Errno 2] No such file\
+        \ or directory: 'gtf_file'\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: hisat2_extract_splice_sites.py [-h] [-v] [gtf_file]\n\nExtract\
+      \ splice junctions from a GTF file\n\npositional arguments:\n  gtf_file    \
+      \   input GTF file (use \"-\" for stdin)\n\noptional arguments:\n  -h, --help\
+      \     show this help message and exit\n  -v, --verbose  also print some statistics\
+      \ to stderr\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -38,20 +85,13 @@ subcommands:
   help_text: "usage: hisat2_extract_splice_sites.py [-h] [-v] [gtf_file]\nhisat2_extract_splice_sites.py:\
     \ error: argument gtf_file: can't open 'gtf_file': [Errno 2] No such file or directory:\
     \ 'gtf_file'\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: hisat2_extract_splice_sites.py [-h] [-v] [gtf_file]\n\nExtract\
   \ splice junctions from a GTF file\n\npositional arguments:\n  gtf_file       input\
   \ GTF file (use \"-\" for stdin)\n\noptional arguments:\n  -h, --help     show this\
   \ help message and exit\n  -v, --verbose  also print some statistics to stderr\n"
-generated_using: *id002
+generated_using: *id004

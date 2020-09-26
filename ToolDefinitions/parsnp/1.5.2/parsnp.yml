@@ -4,52 +4,17 @@ command:
 positional: []
 named:
 - !Flag
-  description: (c)urated genome directory, use all genomes in dir and ignore MUMi?
+  description: "(c)urated genome directory, use all genomes in dir and ignore MUMi?\n\
+    -d SEQUENCES [SEQUENCES ...], --sequences SEQUENCES [SEQUENCES ...]\nA list of\
+    \ files containing genomes/contigs/scaffolds\n-r REFERENCE, --reference REFERENCE\n\
+    (r)eference genome (set to ! to pick random one from sequence dir)\n-g GENBANK\
+    \ [GENBANK ...], --genbank GENBANK [GENBANK ...]\nA list of Genbank file(s) (gbk)\n\
+    -o OUTPUT_DIR, --output-dir OUTPUT_DIR\n-q QUERY, --query QUERY\nSpecify (assembled)\
+    \ query genome to use, in addition to genomes found in genome dir"
   synonyms:
   - -c
   - --curated
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: A list of files containing genomes/contigs/scaffolds
-  synonyms:
-  - -d
-  - --sequences
-  args: !RepeatFlagArg
-    name: SEQUENCES
-  optional: true
-- !Flag
-  description: (r)eference genome (set to ! to pick random one from sequence dir)
-  synonyms:
-  - -r
-  - --reference
-  args: !SimpleFlagArg
-    name: REFERENCE
-  optional: true
-- !Flag
-  description: A list of Genbank file(s) (gbk)
-  synonyms:
-  - -g
-  - --genbank
-  args: !RepeatFlagArg
-    name: GENBANK
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -o
-  - --output-dir
-  args: !SimpleFlagArg
-    name: OUTPUT_DIR
-  optional: true
-- !Flag
-  description: Specify (assembled) query genome to use, in addition to genomes found
-    in genome dir
-  synonyms:
-  - -q
-  - --query
-  args: !SimpleFlagArg
-    name: QUERY
   optional: true
 - !Flag
   description: Max MUMi distance value for MUMi distribution
@@ -164,10 +129,10 @@ named:
   - --alignmentprog
   args: !ChoiceFlagArg
     choices: !!set
-      mafft:
-      prank:
-      fsa:
       muscle:
+      fsa:
+      prank:
+      mafft:
   optional: true
 - !Flag
   description: Ouput unaligned regions
@@ -177,56 +142,28 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Use fasttree instead of RaxML
+  description: "Use fasttree instead of RaxML\n-p THREADS, --threads THREADS\nNumber\
+    \ of threads to use\n-P MAX_PARTITION_SIZE, --max-partition-size MAX_PARTITION_SIZE\n\
+    Max partition size (limits memory usage)\n-v, --verbose         Verbose output\n\
+    -x, --xtrafast\n-i INIFILE, --inifile INIFILE, --ini-file INIFILE\n-e, --extend\n\
+    -V, --version         show program's version number and exit\n"
   synonyms:
   - --use-fasttree
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Number of threads to use
+  description: ''
   synonyms:
-  - -p
-  - --threads
+  - -r
   args: !SimpleFlagArg
-    name: THREADS
-  optional: true
-- !Flag
-  description: Max partition size (limits memory usage)
-  synonyms:
-  - -P
-  - --max-partition-size
-  args: !SimpleFlagArg
-    name: MAX_PARTITION_SIZE
-  optional: true
-- !Flag
-  description: Verbose output
-  synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
+    name: REFERENCE
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - -x
-  - --xtrafast
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -i
-  - --inifile
-  - --ini-file
-  args: !SimpleFlagArg
-    name: INIFILE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -e
-  - --extend
-  args: !EmptyFlagArg {}
+  - -d
+  args: !RepeatFlagArg
+    name: SEQUENCES
   optional: true
 parent:
 subcommands: []
@@ -239,13 +176,7 @@ help_flag: !Flag
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - -V
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: parsnp [-h] [-c] -d SEQUENCES [SEQUENCES ...] [-r REFERENCE]\n\
   \              [-g GENBANK [GENBANK ...]] [-o OUTPUT_DIR] [-q QUERY]\n         \
   \     [-U MAX_MUMI_DISTR_DIST | -mmd MAX_MUMI_DISTANCE] [-F] [-M]\n            \

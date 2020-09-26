@@ -4,34 +4,18 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --dbDir
-  - --ds_foldername
-  args: !SimpleFlagArg
-    name: DBDIR
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --genome_build
-  args: !ChoiceFlagArg
-    choices: !!set
-      hg19:
-  optional: true
-- !Flag
   description: datasource type.  Type of datasource to create.
   synonyms:
   - --ds_type
   args: !ChoiceFlagArg
     choices: !!set
-      bigwig:
-      gene_tsv:
-      transcript_tsv:
       indexed_tsv:
-      gp_tsv:
       indexed_vcf:
+      gp_tsv:
+      gene_tsv:
       gpp_tsv:
+      transcript_tsv:
+      bigwig:
   optional: true
 - !Flag
   description: datasource filename.  Headers must be on the first line.  This is the
@@ -47,6 +31,29 @@ named:
   - --name
   args: !SimpleFlagArg
     name: NAME
+  optional: true
+- !Flag
+  description: Main datasource directory that contains other datasources.  I.e. the
+    destination directory for the newly created datasource.
+  synonyms:
+  - --dbDir
+  args: !SimpleFlagArg
+    name: DBDIR
+  optional: true
+- !Flag
+  description: Name of the folder that should appear in dbDir
+  synonyms:
+  - --ds_foldername
+  args: !SimpleFlagArg
+    name: DS_FOLDERNAME
+  optional: true
+- !Flag
+  description: Genome build.  For example, hg19.
+  synonyms:
+  - --genome_build
+  args: !ChoiceFlagArg
+    choices: !!set
+      hg19:
   optional: true
 - !Flag
   description: Comma separated list of index columns.  MUST be the name of the columns
@@ -144,9 +151,9 @@ named:
   - --match_mode
   args: !ChoiceFlagArg
     choices: !!set
-      exact:
       overlap:
       avg:
+      exact:
   optional: true
 parent:
 subcommands: []

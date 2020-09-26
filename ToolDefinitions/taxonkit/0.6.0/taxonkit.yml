@@ -1,49 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - taxonkit
 positional: []
-named:
-- !Flag
-  description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
-  synonyms:
-  - --data-dir
-  args: !SimpleFlagArg
-    name: string
-  optional: true
-- !Flag
-  description: use line buffering on output, i.e., immediately writing to stdin/file
-    for every line of output
-  synonyms:
-  - --line-buffered
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
-  synonyms:
-  - -o
-  - --out-file
-  args: !SimpleFlagArg
-    name: string
-  optional: true
-- !Flag
-  description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU PC, 2
-    for others) (default 2)'
-  synonyms:
-  - -j
-  - --threads
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
-  description: print verbose information
-  synonyms:
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - taxonkit
   - lineage
   positional: []
@@ -122,7 +85,615 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+      synonyms:
+      - --data-dir
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: use line buffering on output, i.e., immediately writing to stdin/file
+        for every line of output
+      synonyms:
+      - --line-buffered
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: out file ("-" for stdout, suffix .gz for gzipped out) (default
+        "-")
+      synonyms:
+      - -o
+      - --out-file
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU PC,
+        2 for others) (default 2)'
+      synonyms:
+      - -j
+      - --threads
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: print verbose information
+      synonyms:
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: field delimiter in lineage (default ";")
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: appending lineage consisting of taxids
+        synonyms:
+        - -t
+        - --show-lineage-taxids
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: appending rank of taxids
+        synonyms:
+        - -r
+        - --show-rank
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: show status code between lineage
+        synonyms:
+        - -c
+        - --show-status-code
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: field index of taxid. data should be tab-separated (default 1)
+        synonyms:
+        - -i
+        - --taxid-field
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+        synonyms:
+        - --data-dir
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: use line buffering on output, i.e., immediately writing to stdin/file
+          for every line of output
+        synonyms:
+        - --line-buffered
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: out file ("-" for stdout, suffix .gz for gzipped out) (default
+          "-")
+        synonyms:
+        - -o
+        - --out-file
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU
+          PC, 2 for others) (default 2)'
+        synonyms:
+        - -j
+        - --threads
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: print verbose information
+        synonyms:
+        - --verbose
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: help for lineage
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "query lineage of given taxids\n\nInput:\n  - List of taxids, one\
+        \ taxid per line.\n  - Or tab-delimited format, please specify taxid field\
+        \ with flag -i/--taxid-field.\n  - Supporting (gzipped) file or STDIN.\n\n\
+        Output:\n  0. Input line.\n  1. Status code (optional with flag -c/--show-status-code)\n\
+        \     - \"-1\" for queries not found in whole database.\n     - \"0\" for\
+        \ deleted taxids, provided by \"delnodes.dmp\".\n     - New taxids for merged\
+        \ taxids, provided by \"merged.dmp\".\n     - Taxids for these found in \"\
+        nodes.dmp\".\n  2. Lineage, delimiter can be changed with flag -d/--delimiter.\n\
+        \  3. Lineage taxids (optional with flag -t/--show-lineage-taxids)\n  4. Rank\
+        \ (optional with flag -r/--show-rank)\n\nUsage:\n  taxonkit lineage [flags]\n\
+        \nFlags:\n  -d, --delimiter string      field delimiter in lineage (default\
+        \ \";\")\n  -h, --help                  help for lineage\n  -t, --show-lineage-taxids\
+        \   appending lineage consisting of taxids\n  -r, --show-rank            \
+        \ appending rank of taxids\n  -c, --show-status-code      show status code\
+        \ between lineage\n  -i, --taxid-field int       field index of taxid. data\
+        \ should be tab-separated (default 1)\n\nGlobal Flags:\n      --data-dir string\
+        \   directory containing nodes.dmp and names.dmp (default \"/root/.taxonkit\"\
+        )\n      --line-buffered     use line buffering on output, i.e., immediately\
+        \ writing to stdin/file for every line of output\n  -o, --out-file string\
+        \   out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\"\
+        )\n  -j, --threads int       number of CPUs. 2 is enough (default value: 1\
+        \ for single-CPU PC, 2 for others) (default 2)\n      --verbose          \
+        \ print verbose information\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - taxonkit
+      - name2taxid
+      positional: []
+      named:
+      - !Flag
+        description: field index of name. data should be tab-separated (default 1)
+        synonyms:
+        - -i
+        - --name-field
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: only searching scientific names
+        synonyms:
+        - -s
+        - --sci-name
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: show rank
+        synonyms:
+        - -r
+        - --show-rank
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+        synonyms:
+        - --data-dir
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: use line buffering on output, i.e., immediately writing to stdin/file
+          for every line of output
+        synonyms:
+        - --line-buffered
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: out file ("-" for stdout, suffix .gz for gzipped out) (default
+          "-")
+        synonyms:
+        - -o
+        - --out-file
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU
+          PC, 2 for others) (default 2)'
+        synonyms:
+        - -j
+        - --threads
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: print verbose information
+        synonyms:
+        - --verbose
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: help for name2taxid
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "query taxid by taxon scientific name\n\nUsage:\n  taxonkit name2taxid\
+        \ [flags]\n\nFlags:\n  -h, --help             help for name2taxid\n  -i, --name-field\
+        \ int   field index of name. data should be tab-separated (default 1)\n  -s,\
+        \ --sci-name         only searching scientific names\n  -r, --show-rank  \
+        \      show rank\n\nGlobal Flags:\n      --data-dir string   directory containing\
+        \ nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n      --line-buffered\
+        \     use line buffering on output, i.e., immediately writing to stdin/file\
+        \ for every line of output\n  -o, --out-file string   out file (\"-\" for\
+        \ stdout, suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int\
+        \       number of CPUs. 2 is enough (default value: 1 for single-CPU PC, 2\
+        \ for others) (default 2)\n      --verbose           print verbose information\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - taxonkit
+      - version
+      positional: []
+      named:
+      - !Flag
+        description: check update
+        synonyms:
+        - -u
+        - --check-update
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+        synonyms:
+        - --data-dir
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: use line buffering on output, i.e., immediately writing to stdin/file
+          for every line of output
+        synonyms:
+        - --line-buffered
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: out file ("-" for stdout, suffix .gz for gzipped out) (default
+          "-")
+        synonyms:
+        - -o
+        - --out-file
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU
+          PC, 2 for others) (default 2)'
+        synonyms:
+        - -j
+        - --threads
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: print verbose information
+        synonyms:
+        - --verbose
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: help for version
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "print version information and check for update\n\nUsage:\n  taxonkit\
+        \ version [flags]\n\nFlags:\n  -u, --check-update   check update\n  -h, --help\
+        \           help for version\n\nGlobal Flags:\n      --data-dir string   directory\
+        \ containing nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n     \
+        \ --line-buffered     use line buffering on output, i.e., immediately writing\
+        \ to stdin/file for every line of output\n  -o, --out-file string   out file\
+        \ (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n  -j, --threads\
+        \ int       number of CPUs. 2 is enough (default value: 1 for single-CPU PC,\
+        \ 2 for others) (default 2)\n      --verbose           print verbose information\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - taxonkit
+      - list
+      positional: []
+      named:
+      - !Flag
+        description: taxid(s), multiple values should be separated by comma
+        synonyms:
+        - --ids
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: indent (default "  ")
+        synonyms:
+        - --indent
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: output in JSON format. you can save the result in file with suffix
+          ".json" and open with modern text editor
+        synonyms:
+        - --json
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: output scientific name
+        synonyms:
+        - -n
+        - --show-name
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: output rank
+        synonyms:
+        - -r
+        - --show-rank
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+        synonyms:
+        - --data-dir
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: use line buffering on output, i.e., immediately writing to stdin/file
+          for every line of output
+        synonyms:
+        - --line-buffered
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: out file ("-" for stdout, suffix .gz for gzipped out) (default
+          "-")
+        synonyms:
+        - -o
+        - --out-file
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU
+          PC, 2 for others) (default 2)'
+        synonyms:
+        - -j
+        - --threads
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: print verbose information
+        synonyms:
+        - --verbose
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: help for list
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "list taxon tree of given taxids\n\nUsage:\n  taxonkit list [flags]\n\
+        \nFlags:\n  -h, --help            help for list\n      --ids string      taxid(s),\
+        \ multiple values should be separated by comma\n      --indent string   indent\
+        \ (default \"  \")\n      --json            output in JSON format. you can\
+        \ save the result in file with suffix \".json\" and open with modern text\
+        \ editor\n  -n, --show-name       output scientific name\n  -r, --show-rank\
+        \       output rank\n\nGlobal Flags:\n      --data-dir string   directory\
+        \ containing nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n     \
+        \ --line-buffered     use line buffering on output, i.e., immediately writing\
+        \ to stdin/file for every line of output\n  -o, --out-file string   out file\
+        \ (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n  -j, --threads\
+        \ int       number of CPUs. 2 is enough (default value: 1 for single-CPU PC,\
+        \ 2 for others) (default 2)\n      --verbose           print verbose information\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - taxonkit
+      - reformat
+      positional: []
+      named:
+      - !Flag
+        description: field delimiter in input lineage (default ";")
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: fill missing rank with original lineage information (experimental)
+        synonyms:
+        - -F
+        - --fill-miss-rank
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: output format, placeholders of rank are needed (default "{k};{p};{c};{o};{f};{g};{s}")
+        synonyms:
+        - -f
+        - --format
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: field index of lineage. data should be tab-separated (default
+          2)
+        synonyms:
+        - -i
+        - --lineage-field
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: replacement string for missing rank, if given "", "unclassified
+          xxx xxx" will used, where "unclassified " is settable by flag -p/--miss-rank-repl-prefix
+        synonyms:
+        - -r
+        - --miss-rank-repl
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: prefix for estimated taxon level (default "unclassified ")
+        synonyms:
+        - -p
+        - --miss-rank-repl-prefix
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: replacement string for missing taxid
+        synonyms:
+        - -R
+        - --miss-taxid-repl
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: show corresponding taxids of reformated lineage
+        synonyms:
+        - -t
+        - --show-lineage-taxids
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+        synonyms:
+        - --data-dir
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: use line buffering on output, i.e., immediately writing to stdin/file
+          for every line of output
+        synonyms:
+        - --line-buffered
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: out file ("-" for stdout, suffix .gz for gzipped out) (default
+          "-")
+        synonyms:
+        - -o
+        - --out-file
+        args: !SimpleFlagArg
+          name: string
+        optional: true
+      - !Flag
+        description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU
+          PC, 2 for others) (default 2)'
+        synonyms:
+        - -j
+        - --threads
+        args: !SimpleFlagArg
+          name: int
+        optional: true
+      - !Flag
+        description: print verbose information
+        synonyms:
+        - --verbose
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: help for reformat
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "reformat lineage\n\nOutput format can be formated by flag --format,\
+        \ available placeholders:\n\n    {k}: superkingdom\n    {p}: phylum\n    {c}:\
+        \ class\n    {o}: order\n    {f}: family\n    {g}: genus\n    {s}: species\n\
+        \    {S}: subspecies\n\nOutput format can contains some escape charactors\
+        \ like \"\\t\".\n\nThis command appends reformated lineage to the input line.\n\
+        The corresponding taxids of reformated lineage can be provided as another\n\
+        column by flag \"-t/--show-lineage-taxids\".\n\nUsage:\n  taxonkit reformat\
+        \ [flags]\n\nFlags:\n  -d, --delimiter string               field delimiter\
+        \ in input lineage (default \";\")\n  -F, --fill-miss-rank               \
+        \  fill missing rank with original lineage information (experimental)\n  -f,\
+        \ --format string                  output format, placeholders of rank are\
+        \ needed (default \"{k};{p};{c};{o};{f};{g};{s}\")\n  -h, --help         \
+        \                  help for reformat\n  -i, --lineage-field int          \
+        \    field index of lineage. data should be tab-separated (default 2)\n  -r,\
+        \ --miss-rank-repl string          replacement string for missing rank, if\
+        \ given \"\", \"unclassified xxx xxx\" will used, where \"unclassified \"\
+        \ is settable by flag -p/--miss-rank-repl-prefix\n  -p, --miss-rank-repl-prefix\
+        \ string   prefix for estimated taxon level (default \"unclassified \")\n\
+        \  -R, --miss-taxid-repl string         replacement string for missing taxid\n\
+        \  -t, --show-lineage-taxids            show corresponding taxids of reformated\
+        \ lineage\n\nGlobal Flags:\n      --data-dir string   directory containing\
+        \ nodes.dmp and names.dmp (default \"/root/.taxonkit\")\n      --line-buffered\
+        \     use line buffering on output, i.e., immediately writing to stdin/file\
+        \ for every line of output\n  -o, --out-file string   out file (\"-\" for\
+        \ stdout, suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int\
+        \       number of CPUs. 2 is enough (default value: 1 for single-CPU PC, 2\
+        \ for others) (default 2)\n      --verbose           print verbose information\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: help for taxonkit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "TaxonKit - A Cross-platform and Efficient NCBI Taxonomy Toolkit\n\n\
+      Version: 0.6.0\n\nAuthor: Wei Shen <shenwei356@gmail.com>\n\nSource code: https://github.com/shenwei356/taxonkit\n\
+      Documents  : https://bioinf.shenwei.me/taxonkit\nCitation   : https://www.biorxiv.org/content/early/2019/01/08/513523\n\
+      \nDataset:\n\n    Please download and decompress \"taxdump.tar.gz\":\n    ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz\n\
+      \n    and copy \"names.dmp\", \"nodes.dmp\", \"delnodes.dmp\" and \"merged.dmp\"\
+      \ to data directory:\n    \"/root/.taxonkit\"\n\n    or some other directory,\
+      \ and later you can refer to using flag --data-dir,\n    or environment variable\
+      \ TAXONKIT_DB\n\nUsage:\n  taxonkit [command]\n\nAvailable Commands:\n  genautocomplete\
+      \ generate shell autocompletion script\n  help            Help about any command\n\
+      \  lineage         query lineage of given taxids\n  list            list taxon\
+      \ tree of given taxids\n  name2taxid      query taxid by taxon scientific name\n\
+      \  reformat        reformat lineage\n  taxid-changelog create taxid changelog\
+      \ from dump archives\n  version         print version information and check\
+      \ for update\n\nFlags:\n      --data-dir string   directory containing nodes.dmp\
+      \ and names.dmp (default \"/root/.taxonkit\")\n  -h, --help              help\
+      \ for taxonkit\n      --line-buffered     use line buffering on output, i.e.,\
+      \ immediately writing to stdin/file for every line of output\n  -o, --out-file\
+      \ string   out file (\"-\" for stdout, suffix .gz for gzipped out) (default\
+      \ \"-\")\n  -j, --threads int       number of CPUs. 2 is enough (default value:\
+      \ 1 for single-CPU PC, 2 for others) (default 2)\n      --verbose          \
+      \ print verbose information\n\nUse \"taxonkit [command] --help\" for more information\
+      \ about a command.\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -156,12 +727,9 @@ subcommands:
     \ out) (default \"-\")\n  -j, --threads int       number of CPUs. 2 is enough\
     \ (default value: 1 for single-CPU PC, 2 for others) (default 2)\n      --verbose\
     \           print verbose information\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - taxonkit
-  - name2taxid
+  command: *id005
   positional: []
   named:
   - !Flag
@@ -223,7 +791,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -246,11 +814,9 @@ subcommands:
     \ for gzipped out) (default \"-\")\n  -j, --threads int       number of CPUs.\
     \ 2 is enough (default value: 1 for single-CPU PC, 2 for others) (default 2)\n\
     \      --verbose           print verbose information\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - taxonkit
-  - version
+  command: *id006
   positional: []
   named:
   - !Flag
@@ -297,7 +863,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -318,11 +884,9 @@ subcommands:
     \ suffix .gz for gzipped out) (default \"-\")\n  -j, --threads int       number\
     \ of CPUs. 2 is enough (default value: 1 for single-CPU PC, 2 for others) (default\
     \ 2)\n      --verbose           print verbose information\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - taxonkit
-  - list
+  command: *id007
   positional: []
   named:
   - !Flag
@@ -397,7 +961,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -422,11 +986,9 @@ subcommands:
     \ for gzipped out) (default \"-\")\n  -j, --threads int       number of CPUs.\
     \ 2 is enough (default value: 1 for single-CPU PC, 2 for others) (default 2)\n\
     \      --verbose           print verbose information\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - taxonkit
-  - reformat
+  command: *id008
   positional: []
   named:
   - !Flag
@@ -529,7 +1091,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -567,15 +1129,9 @@ subcommands:
     -\")\n  -j, --threads int       number of CPUs. 2 is enough (default value: 1\
     \ for single-CPU PC, 2 for others) (default 2)\n      --verbose           print\
     \ verbose information\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: help for taxonkit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "TaxonKit - A Cross-platform and Efficient NCBI Taxonomy Toolkit\n\nVersion:\
@@ -599,4 +1155,4 @@ help_text: "TaxonKit - A Cross-platform and Efficient NCBI Taxonomy Toolkit\n\nV
   \ 2 is enough (default value: 1 for single-CPU PC, 2 for others) (default 2)\n \
   \     --verbose           print verbose information\n\nUse \"taxonkit [command]\
   \ --help\" for more information about a command.\n"
-generated_using: *id002
+generated_using: *id004

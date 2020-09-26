@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - RADpainter
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - RADpainter
   - paint
   positional:
@@ -46,7 +46,131 @@ subcommands:
     - --missing2
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: INPUT.txt
+        optional: false
+      named:
+      - !Flag
+        description: ploidy of the species being analysed (default is 2N, i.e. diploid)
+        synonyms:
+        - -p
+        - --ploidy
+        args: !SimpleFlagArg
+          name: N
+        optional: true
+      - !Flag
+        description: output per-chromosome coancestry matrices
+        synonyms:
+        - -c
+        - --chr
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: run-name will be included in the output file name(s)
+        synonyms:
+        - -n
+        - --run-name
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "(deprecated) output a conancestry matrix with missing data treated\n\
+          as if any pair of individuals are equally distant"
+        synonyms:
+        - -m
+        - --missing2
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: display this help and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: RADpainter paint [OPTIONS] INPUT.txt\nGenerate a co-ancestry\
+        \ matrix from RAD data\n\n       -h, --help                              display\
+        \ this help and exit\n       -p, --ploidy=N                          ploidy\
+        \ of the species being analysed (default is 2N, i.e. diploid)\n       -c,\
+        \ --chr                               output per-chromosome coancestry matrices\n\
+        \       -n, --run-name                          run-name will be included\
+        \ in the output file name(s)\n\n       -m, --missing2                    \
+        \      (deprecated) output a conancestry matrix with missing data treated\n\
+        \                                               as if any pair of individuals\
+        \ are equally distant\n\n\n\nReport bugs to milan.malinsky@unibas.ch\n\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - RADpainter
+      - hapsFromVCF
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: INPUT.vcf
+        optional: false
+      named:
+      - !Flag
+        description: ',   --het-treatment <r|p>             r: assign het bases randomly
+          (default); p: use the phase information in the VCF'
+        synonyms:
+        - -H
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: 'minimum acceptable inbreeding coefficient (default: F >= -0.3)'
+        synonyms:
+        - -F
+        args: !SimpleFlagArg
+          name: MIN_F
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: display this help and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "\nUsage: RADpainter hapsFromVCF [OPTIONS] INPUT.vcf\nGenerate a\
+        \ co-ancestry matrix from RAD data\n\n       -h, --help                  \
+        \            display this help and exit\n       -H,   --het-treatment <r|p>\
+        \             r: assign het bases randomly (default); p: use the phase information\
+        \ in the VCF\n       -F MIN_F                                minimum acceptable\
+        \ inbreeding coefficient (default: F >= -0.3)\n\n\n\nReport bugs to milan.malinsky@unibas.ch\n\
+        \n"
+      generated_using: *id004
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Program: RADpainter\nVersion: 0.3.2 r109\nContact: Milan Malinsky\
+      \ [milan.malinsky@unibas.ch]\nUsage: RADpainter <command> [options]\n\nCommands:\n\
+      \           paint           Get co-ancestry matrix for fineStructure\n     \
+      \      hapsFromVCF     (experimental) Get the haplotype format input from a\
+      \ VCF file\n                           !NOTE! for now this only works for some\
+      \ VCF formats\n\nReport bugs to milan.malinsky@unibas.ch\n\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -68,12 +192,9 @@ subcommands:
     \ output a conancestry matrix with missing data treated\n                    \
     \                           as if any pair of individuals are equally distant\n\
     \n\n\nReport bugs to milan.malinsky@unibas.ch\n\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - RADpainter
-  - hapsFromVCF
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -95,7 +216,7 @@ subcommands:
     args: !SimpleFlagArg
       name: MIN_F
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -113,7 +234,7 @@ subcommands:
     \ het bases randomly (default); p: use the phase information in the VCF\n    \
     \   -F MIN_F                                minimum acceptable inbreeding coefficient\
     \ (default: F >= -0.3)\n\n\n\nReport bugs to milan.malinsky@unibas.ch\n\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -124,4 +245,4 @@ help_text: "Program: RADpainter\nVersion: 0.3.2 r109\nContact: Milan Malinsky [m
   \ Get the haplotype format input from a VCF file\n                           !NOTE!\
   \ for now this only works for some VCF formats\n\nReport bugs to milan.malinsky@unibas.ch\n\
   \n"
-generated_using: *id002
+generated_using: *id004

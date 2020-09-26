@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - smof
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - smof
   - grep
   positional:
@@ -214,7 +214,1528 @@ subcommands:
     args: !SimpleFlagArg
       name: FASTA
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: pattern to match
+        position: 0
+        name: PATTERN
+        optional: false
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 1
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: match sequence rather than header
+        synonyms:
+        - -q
+        - --match-sequence
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: obtain patterns from FILE, one per line
+        synonyms:
+        - -f
+        - --file
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      - !Flag
+        description: print names files with no matches
+        synonyms:
+        - -L
+        - --files-without-match
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print names input files with matches
+        synonyms:
+        - -l
+        - --files-with-matches
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: a regular expression to capture patterns
+        synonyms:
+        - -w
+        - --wrap
+        args: !SimpleFlagArg
+          name: REG
+        optional: true
+      - !Flag
+        description: treat patterns as perl regular expressions
+        synonyms:
+        - -P
+        - --perl-regexp
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: parse extended nucleotide alphabet
+        synonyms:
+        - -G
+        - --ambiguous-nucl
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: DO NOT ignore case distinctions (ignore by default)
+        synonyms:
+        - -I
+        - --case-sensitive
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print non-matching entries
+        synonyms:
+        - -v
+        - --invert-match
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: show only the part that matches
+        synonyms:
+        - -o
+        - --only-matching
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Include N characters before match
+        synonyms:
+        - -B
+        - --before-context
+        args: !SimpleFlagArg
+          name: N
+        optional: true
+      - !Flag
+        description: Include N characters after match
+        synonyms:
+        - -A
+        - --after-context
+        args: !SimpleFlagArg
+          name: N
+        optional: true
+      - !Flag
+        description: Include N characters before and after match
+        synonyms:
+        - -C
+        - --context
+        args: !SimpleFlagArg
+          name: N
+        optional: true
+      - !Flag
+        description: print number of entries with matches
+        synonyms:
+        - -c
+        - --count
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print number of non-overlapping matches
+        synonyms:
+        - -m
+        - --count-matches
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: force PATTERN to match the whole text (regex allowed)
+        synonyms:
+        - -x
+        - --line-regexp
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: force PATTERN to literally equal the text (fast)
+        synonyms:
+        - -X
+        - --exact
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: match across gaps when searching aligned sequences
+        synonyms:
+        - -g
+        - --gapped
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: search both strands
+        synonyms:
+        - -b
+        - --both-strands
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: only search the reverse strand
+        synonyms:
+        - -r
+        - --reverse-only
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: do not print in color
+        synonyms:
+        - -y
+        - --no-color
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print in color even to non-tty (DANGEROUS)
+        synonyms:
+        - -Y
+        - --force-color
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Preserve incoming color
+        synonyms:
+        - -S
+        - --preserve-color
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Choose a highlight color
+        synonyms:
+        - --color
+        args: !SimpleFlagArg
+          name: STR
+        optional: true
+      - !Flag
+        description: output matches in gff format
+        synonyms:
+        - --gff
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: name of searched feature
+        synonyms:
+        - --gff-type
+        args: !SimpleFlagArg
+          name: STR
+        optional: true
+      - !Flag
+        description: Search for exact sequence matches against FASTA
+        synonyms:
+        - --fastain
+        args: !SimpleFlagArg
+          name: FASTA
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof grep <options>\n\nSmof grep is based on\
+        \ GNU grep but operates on fasta entries.\nIt allows you to extract entries\
+        \ where either the header or the\nsequence match the search term. For sequence\
+        \ searches, it can\nproduce GFF formatted output, which specifies the location\
+        \ of\neach match.\n\nThe --wrap option limits search space to expressions\
+        \ captured\nby a Perl regular expression. This, coupled with the --file\n\
+        option, allows thousands of sequences to be rapidly extracted\nbased on terms\
+        \ from a file.\n\nSmof grep can also take a fasta file as a search term input\n\
+        (--fastain) and return sequences containing exact matches to\nthe sequences\
+        \ in the search fasta file. See the documentation\nfor examples.\n\npositional\
+        \ arguments:\n  PATTERN               pattern to match\n  INPUT          \
+        \       input fasta sequence (default = stdin)\n\noptional arguments:\n  -h,\
+        \ --help            show this help message and exit\n  -q, --match-sequence\
+        \  match sequence rather than header\n  -f FILE, --file FILE  obtain patterns\
+        \ from FILE, one per line\n  -L, --files-without-match\n                 \
+        \       print names files with no matches\n  -l, --files-with-matches\n  \
+        \                      print names input files with matches\n  -w REG, --wrap\
+        \ REG    a regular expression to capture patterns\n  -P, --perl-regexp   \
+        \  treat patterns as perl regular expressions\n  -G, --ambiguous-nucl  parse\
+        \ extended nucleotide alphabet\n  -I, --case-sensitive  DO NOT ignore case\
+        \ distinctions (ignore by default)\n  -v, --invert-match    print non-matching\
+        \ entries\n  -o, --only-matching   show only the part that matches\n  -B N,\
+        \ --before-context N\n                        Include N characters before\
+        \ match\n  -A N, --after-context N\n                        Include N characters\
+        \ after match\n  -C N, --context N     Include N characters before and after\
+        \ match\n  -c, --count           print number of entries with matches\n  -m,\
+        \ --count-matches   print number of non-overlapping matches\n  -x, --line-regexp\
+        \     force PATTERN to match the whole text (regex allowed)\n  -X, --exact\
+        \           force PATTERN to literally equal the text (fast)\n  -g, --gapped\
+        \          match across gaps when searching aligned sequences\n  -b, --both-strands\
+        \    search both strands\n  -r, --reverse-only    only search the reverse\
+        \ strand\n  -y, --no-color        do not print in color\n  -Y, --force-color\
+        \     print in color even to non-tty (DANGEROUS)\n  -S, --preserve-color \
+        \ Preserve incoming color\n  --color STR           Choose a highlight color\n\
+        \  --gff                 output matches in gff format\n  --gff-type STR  \
+        \      name of searched feature\n  --fastain FASTA       Search for exact\
+        \ sequence matches against FASTA\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - smof
+      - uniq
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      - !Positional
+        description: -P, --unpack          reverse the pack operation
+        position: 0
+        name: headers
+        optional: false
+      named:
+      - !Flag
+        description: writes (count|header) in tab-delimited format
+        synonyms:
+        - -c
+        - --count
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print only repeated entries
+        synonyms:
+        - -d
+        - --repeated
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print only unique entries
+        synonyms:
+        - -u
+        - --uniq
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: combine redundant sequences by concatenating the
+        synonyms:
+        - -p
+        - --pack
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "set delimiting string for pack/unpack operations (SOH,\n0x01,\
+          \ by default)"
+        synonyms:
+        - -z
+        - --pack-sep
+        args: !SimpleFlagArg
+          name: PACK_SEP
+        optional: true
+      - !Flag
+        description: "make headers unique by deleting all but the final\nentry with\
+          \ a given header (the sequence is ignored, so\norder matters, you may want\
+          \ to sort by sequence first\nfor reproducibility)\n"
+        synonyms:
+        - -f
+        - --final-header
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof uniq <options>\n\nEmulates the GNU uniq\
+        \ command. Two entries are considered equivalent only if\ntheir sequences\
+        \ AND headers are exactly equal. Newlines are ignored but all\ncomparisons\
+        \ are case-sensitive. The pack/unpack option is designed to be\ncompatible\
+        \ with the conventions used in the NCBI-BLAST non-redundant\ndatabases: entries\
+        \ with identical sequences are merged and their headers are\njoined with SOH\
+        \ (0x01) as a delimiter (by default).\n\npositional arguments:\n  INPUT  \
+        \               input fasta sequence (default = stdin)\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  -c, --count  \
+        \         writes (count|header) in tab-delimited format\n  -d, --repeated\
+        \        print only repeated entries\n  -u, --uniq            print only unique\
+        \ entries\n  -p, --pack            combine redundant sequences by concatenating\
+        \ the\n                        headers\n  -P, --unpack          reverse the\
+        \ pack operation\n  -z PACK_SEP, --pack-sep PACK_SEP\n                   \
+        \     set delimiting string for pack/unpack operations (SOH,\n           \
+        \             0x01, by default)\n  -f, --final-header    make headers unique\
+        \ by deleting all but the final\n                        entry with a given\
+        \ header (the sequence is ignored, so\n                        order matters,\
+        \ you may want to sort by sequence first\n                        for reproducibility)\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - smof
+      - filter
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: keep only if length is less than or equal to LEN
+        synonyms:
+        - -s
+        - --shorter-than
+        args: !SimpleFlagArg
+          name: LEN
+        optional: true
+      - !Flag
+        description: keep only if length is greater than or equal to LEN
+        synonyms:
+        - -l
+        - --longer-than
+        args: !SimpleFlagArg
+          name: LEN
+        optional: true
+      - !Flag
+        description: "keep only if composition meets the condition (e.g. 'GC\n> .5')\n"
+        synonyms:
+        - -c
+        - --composition
+        args: !SimpleFlagArg
+          name: EXPR
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof filter <options>\n\nPrints every entry\
+        \ by default. You may add one or more criteria to filter the\nresults (e.g.\
+        \ `smof filter -s 200 -l 100 -c 'GC > .5'` will print only\nsequences between\
+        \ 100 and 200 resides in length and greater than 50% GC\ncontent).\n\npositional\
+        \ arguments:\n  INPUT                 input fasta sequence (default = stdin)\n\
+        \noptional arguments:\n  -h, --help            show this help message and\
+        \ exit\n  -s LEN, --shorter-than LEN\n                        keep only if\
+        \ length is less than or equal to LEN\n  -l LEN, --longer-than LEN\n     \
+        \                   keep only if length is greater than or equal to LEN\n\
+        \  -c EXPR, --composition EXPR\n                        keep only if composition\
+        \ meets the condition (e.g. 'GC\n                        > .5')\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - smof
+      - head
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: "print first K entries; or use -n -K to print all but the\nlast\
+          \ K entries"
+        synonyms:
+        - -n
+        - --entries
+        args: !SimpleFlagArg
+          name: K
+        optional: true
+      - !Flag
+        description: print first K letters of each sequence
+        synonyms:
+        - -f
+        - --first
+        args: !SimpleFlagArg
+          name: K
+        optional: true
+      - !Flag
+        description: print last K letters of each sequence
+        synonyms:
+        - -l
+        - --last
+        args: !SimpleFlagArg
+          name: K
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof head <options>\n\n`smof head` is modeled\
+        \ after GNU tail and follows the same basic conventions\nexcept it is entry-based\
+        \ rather than line-based. By default, `smof head`\noutputs ONE sequence (rather\
+        \ than the 10 line default for `head`)\n\npositional arguments:\n  K     \
+        \             -K print first K entries\n  INPUT              input fasta sequence\
+        \ (default = stdin)\n\noptional arguments:\n  -h, --help         show this\
+        \ help message and exit\n  -n K, --entries K  print first K entries; or use\
+        \ -n -K to print all but the\n                     last K entries\n  -f K,\
+        \ --first K    print first K letters of each sequence\n  -l K, --last K  \
+        \   print last K letters of each sequence\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - smof
+      - tail
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: "print last K entries; or use -n +K to output starting\nwith\
+          \ the Kth"
+        synonyms:
+        - -n
+        - --entries
+        args: !SimpleFlagArg
+          name: K
+        optional: true
+      - !Flag
+        description: print first K letters of each sequence
+        synonyms:
+        - -f
+        - --first
+        args: !SimpleFlagArg
+          name: K
+        optional: true
+      - !Flag
+        description: print last K letters of each sequence
+        synonyms:
+        - -l
+        - --last
+        args: !SimpleFlagArg
+          name: K
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof tail <options>\n\n`smof tail` is modeled\
+        \ after GNU tail and follows the same basic conventions\nexcept it is entry-based\
+        \ rather than line-based. `smof tail` will output ONE\nsequence (rather than\
+        \ the 10 line default for `tail`)\n\npositional arguments:\n  K          \
+        \        -K print last K entries\n  INPUT              input fasta sequence\
+        \ (default = stdin)\n\noptional arguments:\n  -h, --help         show this\
+        \ help message and exit\n  -n K, --entries K  print last K entries; or use\
+        \ -n +K to output starting\n                     with the Kth\n  -f K, --first\
+        \ K    print first K letters of each sequence\n  -l K, --last K     print\
+        \ last K letters of each sequence\n"
+      generated_using: *id004
+    - !Command
+      command: &id009
+      - smof
+      - translate
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: Require each product begin with a start codon
+        synonyms:
+        - -s
+        - --from-start
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Translate in all frames, keep longest
+        synonyms:
+        - -f
+        - --all-frames
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Write the DNA coding sequence
+        synonyms:
+        - -c
+        - --cds
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof translate <options>\n\nOnly the standard\
+        \ gene code table is supported. Any codons with ambiguous\ncharacters will\
+        \ be translated as X. Trailing characters will be ignored. All\ngaps [_.-]\
+        \ will be removed. When -f is True, then the longest product will be\nfound.\
+        \ Ties are resolved by comparing position (earlier positions are\npreferred)\
+        \ and then frame (first frame is preferred). By default, translation\nstarts\
+        \ at the first nucleotide.\n\npositional arguments:\n  INPUT             input\
+        \ fasta sequence (default = stdin)\n\noptional arguments:\n  -h, --help  \
+        \      show this help message and exit\n  -s, --from-start  Require each product\
+        \ begin with a start codon\n  -f, --all-frames  Translate in all frames, keep\
+        \ longest\n  -c, --cds         Write the DNA coding sequence\n"
+      generated_using: *id004
+    - !Command
+      command: &id010
+      - smof
+      - permute
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: size of each word (default=1)
+        synonyms:
+        - -w
+        - --word-size
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      - !Flag
+        description: number of letters to ignore at beginning (default=0)
+        synonyms:
+        - -s
+        - --start-offset
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      - !Flag
+        description: number of letters to ignore at end (default=0)
+        synonyms:
+        - -e
+        - --end-offset
+        args: !SimpleFlagArg
+          name: INT
+        optional: true
+      - !Flag
+        description: set random seed (for reproducibility/debugging)
+        synonyms:
+        - --seed
+        args: !SimpleFlagArg
+          name: SEED
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof permute <options>\n\nRandomly order letters\
+        \ in each sequence. The --word-size option allows random\nordering of words\
+        \ of the given size. The --start-offset and --end-offset\noptions are useful\
+        \ if, for example, you want to rearrange the letters within a\ncoding sequence\
+        \ but want to preserve the start and stop codons.\n\npositional arguments:\n\
+        \  INPUT                 input fasta sequence (default = stdin)\n\noptional\
+        \ arguments:\n  -h, --help            show this help message and exit\n  -w\
+        \ INT, --word-size INT\n                        size of each word (default=1)\n\
+        \  -s INT, --start-offset INT\n                        number of letters to\
+        \ ignore at beginning (default=0)\n  -e INT, --end-offset INT\n          \
+        \              number of letters to ignore at end (default=0)\n  --seed SEED\
+        \           set random seed (for reproducibility/debugging)\n"
+      generated_using: *id004
+    - !Command
+      command: &id011
+      - smof
+      - stat
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: output delimiter
+        synonyms:
+        - -d
+        - --delimiter
+        args: !SimpleFlagArg
+          name: DELIMITER
+        optional: true
+      - !Flag
+        description: write a line for each sequence
+        synonyms:
+        - -q
+        - --byseq
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: match case
+        synonyms:
+        - -I
+        - --case-sensitive
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: count the number of lowercase characters
+        synonyms:
+        - -m
+        - --count-lower
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: write counts of all characters
+        synonyms:
+        - -c
+        - --counts
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: guess sequence type
+        synonyms:
+        - -t
+        - --type
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: write sequence length
+        synonyms:
+        - -l
+        - --length
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: write proportion of each character
+        synonyms:
+        - -p
+        - --proportion
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: display protein profile
+        synonyms:
+        - -C
+        - --aa-profile
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: write ascii histogram of sequence lengths
+        synonyms:
+        - -g
+        - --hist
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: write ascii histogram of sequence log2 lengths
+        synonyms:
+        - -G
+        - --log-hist
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof stat <options>\n\nThe default action is\
+        \ to count the lengths of all sequences and output summary\nstatistics including:\
+        \ 1) the number of sequences, 2) the number of characters,\n3) the five-number\
+        \ summary of sequence lengths (minimum, 25th quantile,\nmedian, 75th quantile,\
+        \ and maximum), 4) the mean and standard deviation of\nlengths, and 5) the\
+        \ N50 (if you don't know what that is, you don't need to\nknow).\n\npositional\
+        \ arguments:\n  INPUT                 input fasta sequence (default = stdin)\n\
+        \noptional arguments:\n  -h, --help            show this help message and\
+        \ exit\n  -d DELIMITER, --delimiter DELIMITER\n                        output\
+        \ delimiter\n  -q, --byseq           write a line for each sequence\n  -I,\
+        \ --case-sensitive  match case\n  -m, --count-lower     count the number of\
+        \ lowercase characters\n  -c, --counts          write counts of all characters\n\
+        \  -t, --type            guess sequence type\n  -l, --length          write\
+        \ sequence length\n  -p, --proportion      write proportion of each character\n\
+        \  -C, --aa-profile      display protein profile\n  -g, --hist           \
+        \ write ascii histogram of sequence lengths\n  -G, --log-hist        write\
+        \ ascii histogram of sequence log2 lengths\n"
+      generated_using: *id004
+    - !Command
+      command: &id012
+      - smof
+      - cut
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: Indices to print, comma delimited, with ranges
+        synonyms:
+        - -f
+        - --fields
+        args: !SimpleFlagArg
+          name: FIELDS
+        optional: true
+      - !Flag
+        description: Invert selection
+        synonyms:
+        - -v
+        - --complement
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof cut <options>\n\nPrints sequences by index\n\
+        \npositional arguments:\n  INPUT                 input fasta sequence (default\
+        \ = stdin)\n\noptional arguments:\n  -h, --help            show this help\
+        \ message and exit\n  -f FIELDS, --fields FIELDS\n                       \
+        \ Indices to print, comma delimited, with ranges\n  -v, --complement     \
+        \ Invert selection\n"
+      generated_using: *id004
+    - !Command
+      command: &id013
+      - smof
+      - subseq
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: N, --bounds N N  from and to values (indexed from 1)
+        synonyms:
+        - -b
+        args: !SimpleFlagArg
+          name: N
+        optional: true
+      - !Flag
+        description: get bounds from this gff3 file
+        synonyms:
+        - -f
+        - --gff
+        args: !SimpleFlagArg
+          name: FILE
+        optional: true
+      - !Flag
+        description: With --gff, keep sequences with no matches
+        synonyms:
+        - -k
+        - --keep
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: color subsequence (do not extract)
+        synonyms:
+        - -c
+        - --color
+        args: !SimpleFlagArg
+          name: STR
+        optional: true
+      - !Flag
+        description: print in color even to non-tty (DANGEROUS)
+        synonyms:
+        - -Y
+        - --force-color
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof subseq <options>\n\nThe current default\
+        \ action is unfortunately excruciating death. The simplest\nusage is `smof\
+        \ subseq -b START STOP`, where START and STOP are two integers.\nIf START\
+        \ is greater than STOP, and if the sequence appears to be nucleic,\n`subseq`\
+        \ will write the reverse complement. Subseq can also read start and\nstop\
+        \ positions from a GFF file, where column 1 in the GFF is checked against\n\
+        the sequence id (the first word in the fasta header). In addition to sequence\n\
+        subsetting, `subseq` can color the matched regions.\n\npositional arguments:\n\
+        \  INPUT                 input fasta sequence (default = stdin)\n\noptional\
+        \ arguments:\n  -h, --help            show this help message and exit\n  -b\
+        \ N N, --bounds N N  from and to values (indexed from 1)\n  -f FILE, --gff\
+        \ FILE   get bounds from this gff3 file\n  -k, --keep            With --gff,\
+        \ keep sequences with no matches\n  -c STR, --color STR   color subsequence\
+        \ (do not extract)\n  -Y, --force-color     print in color even to non-tty\
+        \ (DANGEROUS)\n"
+      generated_using: *id004
+    - !Command
+      command: &id014
+      - smof
+      - clean
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: '|p, --type n|p    sequence type'
+        synonyms:
+        - -t
+        args: !SimpleFlagArg
+          name: n
+        optional: true
+      - !Flag
+        description: convert to uppercase
+        synonyms:
+        - -u
+        - --toupper
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: convert to lowercase
+        synonyms:
+        - -l
+        - --tolower
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: removes all non-letter characters (gaps, stops, etc.)
+        synonyms:
+        - -x
+        - --toseq
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "Remove all text from header that follows the first\nword (delimited\
+          \ by [ |])"
+        synonyms:
+        - -s
+        - --reduce-header
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: converts irregular letters to unknown
+        synonyms:
+        - -r
+        - --mask-irregular
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: convert lower-case to unknown
+        synonyms:
+        - -m
+        - --mask-lowercase
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: width of the sequence output (0 indicates no wrapping)
+        synonyms:
+        - -w
+        - --col_width
+        args: !SimpleFlagArg
+          name: W
+        optional: true
+      - !Flag
+        description: Convert 'X' in DNA to 'N' and '[._]' to '-' (for gaps)
+        synonyms:
+        - -d
+        - --standardize
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof clean <options>\n\nRemove all space within\
+        \ the sequences and write them in even columns (default\nwidth of 80 characters).\
+        \ Case and all characters (except whitespace) are\npreserved by default.\n\
+        \npositional arguments:\n  INPUT                 input fasta sequence (default\
+        \ = stdin)\n\noptional arguments:\n  -h, --help            show this help\
+        \ message and exit\n  -t n|p, --type n|p    sequence type\n  -u, --toupper\
+        \         convert to uppercase\n  -l, --tolower         convert to lowercase\n\
+        \  -x, --toseq           removes all non-letter characters (gaps, stops, etc.)\n\
+        \  -s, --reduce-header   Remove all text from header that follows the first\n\
+        \                        word (delimited by [ |])\n  -r, --mask-irregular\
+        \  converts irregular letters to unknown\n  -m, --mask-lowercase  convert\
+        \ lower-case to unknown\n  -w W, --col_width W   width of the sequence output\
+        \ (0 indicates no wrapping)\n  -d, --standardize     Convert 'X' in DNA to\
+        \ 'N' and '[._]' to '-' (for gaps)\n"
+      generated_using: *id004
+    - !Command
+      command: &id015
+      - smof
+      - split
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: Number of output files or sequences per file
+        synonyms:
+        - -n
+        - --number
+        args: !SimpleFlagArg
+          name: NUMBER
+        optional: true
+      - !Flag
+        description: split by maximum sequences per file
+        synonyms:
+        - -q
+        - --seqs
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "prefix for output files (default=\"xxx\")\n"
+        synonyms:
+        - -p
+        - --prefix
+        args: !SimpleFlagArg
+          name: PREFIX
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof split <options>\n\nBreaks a multiple sequence\
+        \ fasta file into several smaller files.\n\npositional arguments:\n  INPUT\
+        \                 input fasta sequence (default = stdin)\n\noptional arguments:\n\
+        \  -h, --help            show this help message and exit\n  -n NUMBER, --number\
+        \ NUMBER\n                        Number of output files or sequences per\
+        \ file\n  -q, --seqs            split by maximum sequences per file\n  -p\
+        \ PREFIX, --prefix PREFIX\n                        prefix for output files\
+        \ (default=\"xxx\")\n"
+      generated_using: *id004
+    - !Command
+      command: &id016
+      - smof
+      - md5sum
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: convert all to uppercase, before hashing
+        synonyms:
+        - -i
+        - --ignore-case
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: calculate md5sum for each sequence (TAB delimited)
+        synonyms:
+        - -q
+        - --each-sequence
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: calculate one md5sum for all concatenated sequences
+        synonyms:
+        - -s
+        - --all-sequences
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: calculate one md5sum for all concatenated headers
+        synonyms:
+        - -d
+        - --all-headers
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "replace the header of each entry with the checksum of\nthe sequence\n"
+        synonyms:
+        - -r
+        - --replace-header
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof md5sum <options>\n\nBy default, `smof\
+        \ md5sum` concantenates all headers and sequences and\ncalculates the md5sum\
+        \ for the resulting string. This is identical to `tr -d\n'\\n>' < a.fa | md5sum`.\n\
+        \npositional arguments:\n  INPUT                 input fasta sequence (default\
+        \ = stdin)\n\noptional arguments:\n  -h, --help            show this help\
+        \ message and exit\n  -i, --ignore-case     convert all to uppercase, before\
+        \ hashing\n  -q, --each-sequence   calculate md5sum for each sequence (TAB\
+        \ delimited)\n  -s, --all-sequences   calculate one md5sum for all concatenated\
+        \ sequences\n  -d, --all-headers     calculate one md5sum for all concatenated\
+        \ headers\n  -r, --replace-header  replace the header of each entry with the\
+        \ checksum of\n                        the sequence\n"
+      generated_using: *id004
+    - !Command
+      command: &id017
+      - smof
+      - sample
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: sample size (default=1)
+        synonyms:
+        - -n
+        - --number
+        args: !SimpleFlagArg
+          name: NUMBER
+        optional: true
+      - !Flag
+        description: set random seed (for reproducibility/debugging)
+        synonyms:
+        - --seed
+        args: !SimpleFlagArg
+          name: SEED
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof sample <options>\n\nRandomly sample entries.\
+        \ `sample` reads the entire file into memory, so should\nnot be used for extremely\
+        \ large files.\n\npositional arguments:\n  INPUT                 input fasta\
+        \ sequence (default = stdin)\n\noptional arguments:\n  -h, --help        \
+        \    show this help message and exit\n  -n NUMBER, --number NUMBER\n     \
+        \                   sample size (default=1)\n  --seed SEED           set random\
+        \ seed (for reproducibility/debugging)\n"
+      generated_using: *id004
+    - !Command
+      command: &id018
+      - smof
+      - consensus
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: Print count table instead of consensus
+        synonyms:
+        - -t
+        - --table
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof consensus <options>\n\nGiven input in\
+        \ aligned FASTA file format, where all sequences are of equal\nlength (possibly\
+        \ with gaps), `consensus` will find the most common character\nin each column.\
+        \ Ties are resolved alphabetically. Optionally, it will instead\nprovide the\
+        \ counts or proportions of each character at each position.\n\npositional\
+        \ arguments:\n  INPUT        input fasta sequence (default = stdin)\n\noptional\
+        \ arguments:\n  -h, --help   show this help message and exit\n  -t, --table\
+        \  Print count table instead of consensus\n"
+      generated_using: *id004
+    - !Command
+      command: &id019
+      - smof
+      - reverse
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: is set. The extended nucleotide alphabet is supported.
+        synonyms:
+        - -c
+        args: !SimpleFlagArg
+          name: flag
+        optional: true
+      - !Flag
+        description: take the reverse complement of the sequence
+        synonyms:
+        - -c
+        - --complement
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: "do not check whether the sequence is DNA before\nreverse complement"
+        synonyms:
+        - -V
+        - --no-validate
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Preserve incoming color
+        synonyms:
+        - -S
+        - --preserve-color
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: print in color even to non-tty (DANGEROUS)
+        synonyms:
+        - -Y
+        - --force-color
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof reverse <options>\n\nReverse the letters\
+        \ in each sequence. The complement is NOT taken unless the\n-c flag is set.\
+        \ The extended nucleotide alphabet is supported.\n\npositional arguments:\n\
+        \  INPUT                 input fasta sequence (default = stdin)\n\noptional\
+        \ arguments:\n  -h, --help            show this help message and exit\n  -c,\
+        \ --complement      take the reverse complement of the sequence\n  -V, --no-validate\
+        \     do not check whether the sequence is DNA before\n                  \
+        \      reverse complement\n  -S, --preserve-color  Preserve incoming color\n\
+        \  -Y, --force-color     print in color even to non-tty (DANGEROUS)\n"
+      generated_using: *id004
+    - !Command
+      command: &id020
+      - smof
+      - wc
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: writes the summed length of all sequences
+        synonyms:
+        - -m
+        - --chars
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: writes the total number of sequences
+        synonyms:
+        - -l
+        - --lines
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof wc <options>\n\nOutputs the total number\
+        \ of entries and the total sequence length (TAB\ndelimited).\n\npositional\
+        \ arguments:\n  INPUT        input fasta sequence (default = stdin)\n\noptional\
+        \ arguments:\n  -h, --help   show this help message and exit\n  -m, --chars\
+        \  writes the summed length of all sequences\n  -l, --lines  writes the total\
+        \ number of sequences\n"
+      generated_using: *id004
+    - !Command
+      command: &id021
+      - smof
+      - sort
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named:
+      - !Flag
+        description: sort by single regex capture
+        synonyms:
+        - -x
+        - --regex
+        args: !SimpleFlagArg
+          name: REG
+        optional: true
+      - !Flag
+        description: reverse sort
+        synonyms:
+        - -r
+        - --reverse
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: numeric sort
+        synonyms:
+        - -n
+        - --numeric-sort
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: sort by sequence length
+        synonyms:
+        - -l
+        - --length-sort
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: randomly sort sequences
+        synonyms:
+        - -R
+        - --random-sort
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Key to sort on (column number or tag)
+        synonyms:
+        - -k
+        - --key
+        args: !SimpleFlagArg
+          name: KEY
+        optional: true
+      - !Flag
+        description: "The field separator (default: '|')"
+        synonyms:
+        - -t
+        - --field-separator
+        args: !SimpleFlagArg
+          name: FIELD_SEPARATOR
+        optional: true
+      - !Flag
+        description: "The separator between a tag and value (default: '=')\n"
+        synonyms:
+        - -p
+        - --pair-separator
+        args: !SimpleFlagArg
+          name: PAIR_SEPARATOR
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof sort <options>\n\nSorts the entries in\
+        \ a fasta file. By default, it sorts by the header strings.\n`sort` reads\
+        \ the entire file into memory, so should not be used for extremely\nlarge\
+        \ files.\n\npositional arguments:\n  INPUT                 input fasta sequence\
+        \ (default = stdin)\n\noptional arguments:\n  -h, --help            show this\
+        \ help message and exit\n  -x REG, --regex REG   sort by single regex capture\n\
+        \  -r, --reverse         reverse sort\n  -n, --numeric-sort    numeric sort\n\
+        \  -l, --length-sort     sort by sequence length\n  -R, --random-sort    \
+        \ randomly sort sequences\n  -k KEY, --key KEY     Key to sort on (column\
+        \ number or tag)\n  -t FIELD_SEPARATOR, --field-separator FIELD_SEPARATOR\n\
+        \                        The field separator (default: '|')\n  -p PAIR_SEPARATOR,\
+        \ --pair-separator PAIR_SEPARATOR\n                        The separator between\
+        \ a tag and value (default: '=')\n"
+      generated_using: *id004
+    - !Command
+      command: &id022
+      - smof
+      - sniff
+      positional:
+      - !Positional
+        description: input fasta sequence (default = stdin)
+        position: 0
+        name: INPUT
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: <fastafile> | smof sniff <options>\n\nIdentifies the sequence\
+        \ type and aids in diagnostics.\n\npositional arguments:\n  INPUT       input\
+        \ fasta sequence (default = stdin)\n\noptional arguments:\n  -h, --help  show\
+        \ this help message and exit\n\nThe output can be divided into 6 sections\n\
+        \n1. Overview and warnings\n\n  smof sniff counts the number of unique sequences\
+        \ and the number\n  of total sequences. It warns if there are any sequences\
+        \ with\n  illegal characters or if there are any duplicate headers. Example:\n\
+        \n  > 23 uniq sequences (24 total)\n  > WARNING: headers are not unique (23/24)\n\
+        \  > WARNING: illegal characters found\n\n  Illegal characters include any\
+        \ character that is neither\n  standard, ambiguous, a gap [_-.], or a stop\
+        \ [*].\n\n2. Sequence types\n\n  For each entry, it predicts whether it is\
+        \ protein, DNA, RNA, or\n  illegal. Example:\n\n  > Sequence types:\n  > \
+        \  prot:                20         83.3333%\n  >   dna:                 2\
+        \          8.3333%\n  >   illegal:             1          4.1667%\n  >   rna:\
+        \                 1          4.1667%\n\n  The 2nd column is the count, 3rd\
+        \ percentage\n\n3. Sequence cases\n\n  Reports the case of the sequences,\
+        \ example:\n\n  > Sequences cases:\n  >   uppercase:           21        \
+        \ 87.5000%\n  >   lowercase:           2          8.3333%\n  >   mixedcase:\
+        \           1          4.1667%\n\n4. Nucleotide features\n\n  Reports a summary\
+        \ nucleotide features\n\n  The nucleotide features entry is comprised of four\
+        \ flags\n  which will all equal 1 for a proper nucleotide coding sequence\n\
+        \  (0 otherwise). A sequence will be counted as 1111 if it:\n\n    1) starts\
+        \ with a start codon (ATG)\n    2) ends with a stop codon (TAG, TAA, or TGA)\n\
+        \    3) has a length that is a multiple of three\n    4) has no internal stop\
+        \ codon. If a sequence lacks a\n       start codon, but otherwise looks like\
+        \ a coding sequence,\n       it will have the value 0111.\n\n  For example:\n\
+        \n  > Nucleotide Features\n  >   0000:                2          66.6667%\n\
+        \  >   1100:                1          33.3333%\n\n5. Protein features\n\n\
+        \  1) terminal-stop - does the sequence end with '*'?\n  2) initial-Met -\
+        \ does the sequence start with 'M'?\n  3) internal-stop - does '*' appear\
+        \ within the sequence?\n  4) selenocysteine - does the sequence include 'U'?\n\
+        \n  Example:\n\n  > Protein Features:\n  >   terminal-stop:       20     \
+        \    100.0000%\n  >   initial-Met:         19         95.0000%\n  >   internal-stop:\
+        \       0          0.0000%\n  >   selenocysteine:      0          0.0000%\n\
+        \n6. Universal features\n\n  Example:\n\n  > Universal Features:\n  >   ambiguous:\
+        \           1          4.1667%\n  >   unknown:             0          0.0000%\n\
+        \  >   gapped:              0          0.0000%\n\nAmbiguous characters are\
+        \ RYSWKMDBHV for nucleotides and BJZ\nfor proteins.\n\nUnknown characters\
+        \ are X for proteins and N for nucleotides\n\nGaps are '-_.'\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - -v
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "usage: <fastafile> | smof <subcommand> <options>\n\nTools for studying\
+      \ and manipulating fasta files\n\noptional arguments:\n  -h, --help        \
+      \    show this help message and exit\n  -v, --version         show program's\
+      \ version number and exit\n\nsubcommands:\n  [ for help on each: smof <subcommand>\
+      \ -h ]\n    cut                 emulates UNIX cut command, where fields are\
+      \ entries\n    clean               cleans fasta files\n    consensus       \
+      \    finds the consensus sequence for aligned sequence\n    filter         \
+      \     extracts sequences meeting the given conditions\n    grep            \
+      \    roughly emulates the UNIX grep command\n    md5sum              calculate\
+      \ an md5 checksum for the input sequences\n    head                writes the\
+      \ first sequences in a file\n    permute             randomly order sequence\n\
+      \    reverse             reverse each sequence (or reverse complement)\n   \
+      \ sample              randomly select entries from fasta file\n    sniff   \
+      \            extract info about the sequence\n    sort                sort sequences\n\
+      \    split               split a fasta file into smaller files\n    stat   \
+      \             calculate sequence statistics\n    subseq              extract\
+      \ subsequence from each entry (revcomp if a<b)\n    tail                writes\
+      \ the last sequences in a file\n    translate           translate a DNA sequence\
+      \ into a protein sequence\n    uniq                count, omit, or merge repeated\
+      \ entries\n    wc                  roughly emulates the UNIX wc command\n\n\
+      Project site: https://github.com/incertae-sedis/smof\nReport bugs/requests via\
+      \ https://github.com/incertae-sedis/smof/issues\nAuthor: Zebulun Arendsee (zbwrnz@gmail.com)\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -261,12 +1782,9 @@ subcommands:
     \               output matches in gff format\n  --gff-type STR        name of\
     \ searched feature\n  --fastain FASTA       Search for exact sequence matches\
     \ against FASTA\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - uniq
+  command: *id005
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -325,7 +1843,7 @@ subcommands:
     - --final-header
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -355,11 +1873,9 @@ subcommands:
     \ unique by deleting all but the final\n                        entry with a given\
     \ header (the sequence is ignored, so\n                        order matters,\
     \ you may want to sort by sequence first\n                        for reproducibility)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - filter
+  command: *id006
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -391,7 +1907,7 @@ subcommands:
     args: !SimpleFlagArg
       name: EXPR
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -414,11 +1930,9 @@ subcommands:
     \ than or equal to LEN\n  -c EXPR, --composition EXPR\n                      \
     \  keep only if composition meets the condition (e.g. 'GC\n                  \
     \      > .5')\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - head
+  command: *id007
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -451,7 +1965,7 @@ subcommands:
     args: !SimpleFlagArg
       name: K
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -473,11 +1987,9 @@ subcommands:
     \ all but the\n                     last K entries\n  -f K, --first K    print\
     \ first K letters of each sequence\n  -l K, --last K     print last K letters\
     \ of each sequence\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - tail
+  command: *id008
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -510,7 +2022,7 @@ subcommands:
     args: !SimpleFlagArg
       name: K
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -531,11 +2043,9 @@ subcommands:
     \  -n K, --entries K  print last K entries; or use -n +K to output starting\n\
     \                     with the Kth\n  -f K, --first K    print first K letters\
     \ of each sequence\n  -l K, --last K     print last K letters of each sequence\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - translate
+  command: *id009
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -564,7 +2074,7 @@ subcommands:
     - --cds
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -587,11 +2097,9 @@ subcommands:
     \ -s, --from-start  Require each product begin with a start codon\n  -f, --all-frames\
     \  Translate in all frames, keep longest\n  -c, --cds         Write the DNA coding\
     \ sequence\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - permute
+  command: *id010
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -630,7 +2138,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SEED
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -653,11 +2161,9 @@ subcommands:
     \ INT\n                        number of letters to ignore at beginning (default=0)\n\
     \  -e INT, --end-offset INT\n                        number of letters to ignore\
     \ at end (default=0)\n  --seed SEED           set random seed (for reproducibility/debugging)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - stat
+  command: *id011
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -743,7 +2249,7 @@ subcommands:
     - --log-hist
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -771,11 +2277,9 @@ subcommands:
     \ of each character\n  -C, --aa-profile      display protein profile\n  -g, --hist\
     \            write ascii histogram of sequence lengths\n  -G, --log-hist     \
     \   write ascii histogram of sequence log2 lengths\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - cut
+  command: *id012
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -798,7 +2302,7 @@ subcommands:
     - --complement
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -815,11 +2319,9 @@ subcommands:
     \ = stdin)\n\noptional arguments:\n  -h, --help            show this help message\
     \ and exit\n  -f FIELDS, --fields FIELDS\n                        Indices to print,\
     \ comma delimited, with ranges\n  -v, --complement      Invert selection\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - subseq
+  command: *id013
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -864,7 +2366,7 @@ subcommands:
     - --force-color
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -890,11 +2392,9 @@ subcommands:
     \ -k, --keep            With --gff, keep sequences with no matches\n  -c STR,\
     \ --color STR   color subsequence (do not extract)\n  -Y, --force-color     print\
     \ in color even to non-tty (DANGEROUS)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - clean
+  command: *id014
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -967,7 +2467,7 @@ subcommands:
     - --standardize
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -992,11 +2492,9 @@ subcommands:
     \ --mask-lowercase  convert lower-case to unknown\n  -w W, --col_width W   width\
     \ of the sequence output (0 indicates no wrapping)\n  -d, --standardize     Convert\
     \ 'X' in DNA to 'N' and '[._]' to '-' (for gaps)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - split
+  command: *id015
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1027,7 +2525,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PREFIX
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1046,11 +2544,9 @@ subcommands:
     \ NUMBER\n                        Number of output files or sequences per file\n\
     \  -q, --seqs            split by maximum sequences per file\n  -p PREFIX, --prefix\
     \ PREFIX\n                        prefix for output files (default=\"xxx\")\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - md5sum
+  command: *id016
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1093,7 +2589,7 @@ subcommands:
     - --replace-header
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1116,11 +2612,9 @@ subcommands:
     \    calculate one md5sum for all concatenated headers\n  -r, --replace-header\
     \  replace the header of each entry with the checksum of\n                   \
     \     the sequence\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - sample
+  command: *id017
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1143,7 +2637,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SEED
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1161,11 +2655,9 @@ subcommands:
     \ (default = stdin)\n\noptional arguments:\n  -h, --help            show this\
     \ help message and exit\n  -n NUMBER, --number NUMBER\n                      \
     \  sample size (default=1)\n  --seed SEED           set random seed (for reproducibility/debugging)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - consensus
+  command: *id018
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1180,7 +2672,7 @@ subcommands:
     - --table
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1200,11 +2692,9 @@ subcommands:
     \  input fasta sequence (default = stdin)\n\noptional arguments:\n  -h, --help\
     \   show this help message and exit\n  -t, --table  Print count table instead\
     \ of consensus\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - reverse
+  command: *id019
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1247,7 +2737,7 @@ subcommands:
     - --force-color
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1268,11 +2758,9 @@ subcommands:
     \ whether the sequence is DNA before\n                        reverse complement\n\
     \  -S, --preserve-color  Preserve incoming color\n  -Y, --force-color     print\
     \ in color even to non-tty (DANGEROUS)\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - wc
+  command: *id020
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1294,7 +2782,7 @@ subcommands:
     - --lines
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1311,11 +2799,9 @@ subcommands:
     \  INPUT        input fasta sequence (default = stdin)\n\noptional arguments:\n\
     \  -h, --help   show this help message and exit\n  -m, --chars  writes the summed\
     \ length of all sequences\n  -l, --lines  writes the total number of sequences\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - sort
+  command: *id021
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1383,7 +2869,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PAIR_SEPARATOR
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1407,11 +2893,9 @@ subcommands:
     \ --field-separator FIELD_SEPARATOR\n                        The field separator\
     \ (default: '|')\n  -p PAIR_SEPARATOR, --pair-separator PAIR_SEPARATOR\n     \
     \                   The separator between a tag and value (default: '=')\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - smof
-  - sniff
+  command: *id022
   positional:
   - !Positional
     description: input fasta sequence (default = stdin)
@@ -1419,7 +2903,7 @@ subcommands:
     name: INPUT
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1468,23 +2952,11 @@ subcommands:
     \          0          0.0000%\n  >   gapped:              0          0.0000%\n\
     \nAmbiguous characters are RYSWKMDBHV for nucleotides and BJZ\nfor proteins.\n\
     \nUnknown characters are X for proteins and N for nucleotides\n\nGaps are '-_.'\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - -v
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: <fastafile> | smof <subcommand> <options>\n\nTools for studying\
   \ and manipulating fasta files\n\noptional arguments:\n  -h, --help            show\
   \ this help message and exit\n  -v, --version         show program's version number\
@@ -1506,4 +2978,4 @@ help_text: "usage: <fastafile> | smof <subcommand> <options>\n\nTools for studyi
   \ merge repeated entries\n    wc                  roughly emulates the UNIX wc command\n\
   \nProject site: https://github.com/incertae-sedis/smof\nReport bugs/requests via\
   \ https://github.com/incertae-sedis/smof/issues\nAuthor: Zebulun Arendsee (zbwrnz@gmail.com)\n"
-generated_using: *id002
+generated_using: *id004

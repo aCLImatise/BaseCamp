@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - pybda
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - pybda
   - clustering
   positional:
@@ -21,7 +21,183 @@ subcommands:
     name: SPARK
     optional: false
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: CONFIG
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: SPARK
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: pybda clustering [OPTIONS] CONFIG SPARK\n\n  Do a clustering\
+        \ fit from a CONFIG in a SPARK session.\n\nOptions:\n  --help  Show this message\
+        \ and exit.\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - pybda
+      - dimension-reduction
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: CONFIG
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: SPARK
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: pybda dimension-reduction [OPTIONS] CONFIG SPARK\n\n  Computes\
+        \ a dimension reduction from a CONFIG in a SPARK session.\n\nOptions:\n  --help\
+        \  Show this message and exit.\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - pybda
+      - sample
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: CONFIG
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: SPARK
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: pybda sample [OPTIONS] CONFIG SPARK\n\n  Subsample a data\
+        \ set down to a specified fraction  from a CONFIG in a\n  SPARK session.\n\
+        \nOptions:\n  --help  Show this message and exit.\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - pybda
+      - run
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: CONFIG
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: SPARK
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: pybda run [OPTIONS] CONFIG SPARK\n\n  Execute all tasks defined\
+        \ in a CONFIG in a SPARK session.\n\nOptions:\n  --help  Show this message\
+        \ and exit.\n"
+      generated_using: *id004
+    - !Command
+      command: &id008
+      - pybda
+      - regression
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: CONFIG
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: SPARK
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Usage: pybda regression [OPTIONS] CONFIG SPARK\n\n  Fit a regression\
+        \ model from a CONFIG in a SPARK session.\n\nOptions:\n  --help  Show this\
+        \ message and exit.\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Usage: pybda [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help  Show\
+      \ this message and exit.\n\nCommands:\n  clustering           Do a clustering\
+      \ fit from a CONFIG in a SPARK session.\n  dimension-reduction  Computes a dimension\
+      \ reduction from a CONFIG in a...\n  regression           Fit a regression model\
+      \ from a CONFIG in a SPARK...\n  run                  Execute all tasks defined\
+      \ in a CONFIG in a SPARK...\n  sample               Subsample a data set down\
+      \ to a specified fraction...\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -35,12 +211,9 @@ subcommands:
   help_text: "Usage: pybda clustering [OPTIONS] CONFIG SPARK\n\n  Do a clustering\
     \ fit from a CONFIG in a SPARK session.\n\nOptions:\n  --help  Show this message\
     \ and exit.\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - pybda
-  - dimension-reduction
+  command: *id005
   positional:
   - !Positional
     description: ''
@@ -53,7 +226,7 @@ subcommands:
     name: SPARK
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -67,11 +240,9 @@ subcommands:
   help_text: "Usage: pybda dimension-reduction [OPTIONS] CONFIG SPARK\n\n  Computes\
     \ a dimension reduction from a CONFIG in a SPARK session.\n\nOptions:\n  --help\
     \  Show this message and exit.\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - pybda
-  - sample
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -84,7 +255,7 @@ subcommands:
     name: SPARK
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -98,11 +269,9 @@ subcommands:
   help_text: "Usage: pybda sample [OPTIONS] CONFIG SPARK\n\n  Subsample a data set\
     \ down to a specified fraction  from a CONFIG in a\n  SPARK session.\n\nOptions:\n\
     \  --help  Show this message and exit.\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - pybda
-  - run
+  command: *id007
   positional:
   - !Positional
     description: ''
@@ -115,7 +284,7 @@ subcommands:
     name: SPARK
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -129,11 +298,9 @@ subcommands:
   help_text: "Usage: pybda run [OPTIONS] CONFIG SPARK\n\n  Execute all tasks defined\
     \ in a CONFIG in a SPARK session.\n\nOptions:\n  --help  Show this message and\
     \ exit.\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - pybda
-  - regression
+  command: *id008
   positional:
   - !Positional
     description: ''
@@ -146,7 +313,7 @@ subcommands:
     name: SPARK
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -160,14 +327,9 @@ subcommands:
   help_text: "Usage: pybda regression [OPTIONS] CONFIG SPARK\n\n  Fit a regression\
     \ model from a CONFIG in a SPARK session.\n\nOptions:\n  --help  Show this message\
     \ and exit.\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: Show this message and exit.
-  synonyms:
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "Usage: pybda [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help  Show this\
@@ -176,4 +338,4 @@ help_text: "Usage: pybda [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help  Show
   \ from a CONFIG in a...\n  regression           Fit a regression model from a CONFIG\
   \ in a SPARK...\n  run                  Execute all tasks defined in a CONFIG in\
   \ a SPARK...\n  sample               Subsample a data set down to a specified fraction...\n"
-generated_using: *id002
+generated_using: *id004

@@ -1,34 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - mtsv-tree-build
 positional: []
-named:
-- !Flag
-  description: Include this flag to trigger debug-level logging.
-  synonyms:
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Output path to mtsv-inform index file.
-  synonyms:
-  - -i
-  - --index
-  args: !SimpleFlagArg
-    name: INDEX
-  optional: true
-- !Flag
-  description: Path to NCBI taxdump.tar.gz file which matches the given FASTA file.
-  synonyms:
-  - -d
-  - --dump
-  args: !SimpleFlagArg
-    name: NCBI_TREE
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - mtsv-tree-build
   - FLAGS
   positional: []
@@ -40,7 +18,82 @@ subcommands:
     args: !SimpleFlagArg
       name: INDEX
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: Include this flag to trigger debug-level logging.
+      synonyms:
+      - -v
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output path to mtsv-inform index file.
+      synonyms:
+      - -i
+      - --index
+      args: !SimpleFlagArg
+        name: INDEX
+      optional: true
+    - !Flag
+      description: Path to NCBI taxdump.tar.gz file which matches the given FASTA
+        file.
+      synonyms:
+      - -d
+      - --dump
+      args: !SimpleFlagArg
+        name: NCBI_TREE
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: ''
+        synonyms:
+        - --index
+        args: !SimpleFlagArg
+          name: INDEX
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
+        \ in this context\n\nUSAGE:\n    mtsv-tree-build [FLAGS] --index <INDEX> --dump\
+        \ <NCBI_TREE>\n\nFor more information try --help\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag: !Flag
+      description: Prints help information
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Prints version information
+      synonyms:
+      - -V
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+    help_text: "mtsv-tree-build 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie\
+      \ Schneider <tes87@nau.edu>\nIndex construction for mtsv-inform read informativeness\
+      \ tool.\n\nUSAGE:\n    mtsv-tree-build [FLAGS] --index <INDEX> --dump <NCBI_TREE>\n\
+      \nFLAGS:\n    -v               Include this flag to trigger debug-level logging.\n\
+      \    -h, --help       Prints help information\n    -V, --version    Prints version\
+      \ information\n\nOPTIONS:\n    -i, --index <INDEX>       Output path to mtsv-inform\
+      \ index file.\n    -d, --dump <NCBI_TREE>    Path to NCBI taxdump.tar.gz file\
+      \ which matches the given FASTA file.\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag:
@@ -49,24 +102,11 @@ subcommands:
   help_text: "error: Found argument 'FLAGS' which wasn't expected, or isn't valid\
     \ in this context\n\nUSAGE:\n    mtsv-tree-build [FLAGS] --index <INDEX> --dump\
     \ <NCBI_TREE>\n\nFor more information try --help\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: Prints help information
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: Prints version information
-  synonyms:
-  - -V
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "mtsv-tree-build 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Schneider\
   \ <tes87@nau.edu>\nIndex construction for mtsv-inform read informativeness tool.\n\
   \nUSAGE:\n    mtsv-tree-build [FLAGS] --index <INDEX> --dump <NCBI_TREE>\n\nFLAGS:\n\
@@ -75,4 +115,4 @@ help_text: "mtsv-tree-build 0.4.0\nAdam Perry <adam.n.perry@gmail.com>:Tsosie Sc
   \nOPTIONS:\n    -i, --index <INDEX>       Output path to mtsv-inform index file.\n\
   \    -d, --dump <NCBI_TREE>    Path to NCBI taxdump.tar.gz file which matches the\
   \ given FASTA file.\n"
-generated_using: *id002
+generated_using: *id004

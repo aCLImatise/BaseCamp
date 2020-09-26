@@ -4,7 +4,12 @@ command:
 positional: []
 named:
 - !Flag
-  description: ''
+  description: "-o FILENAME, --output FILENAME\n-s {VIRSorter,Prodigal-coords,Prodigal-FAA,MetaGeneMark,NCBICodingSequence,NCBIFasta},\
+    \ --source-type {VIRSorter,Prodigal-coords,Prodigal-FAA,MetaGeneMark,NCBICodingSequence,NCBIFasta}\n\
+    Select one of the options as an input source. MetaGeneMark can be either the nucleotide\
+    \ or protein FASTA-formatted output.\n-k, --keep-descriptions\nThis will enable\
+    \ taking the full description of sequences during MetaGeneMark parsing.\n-c, --compatibility\
+    \   Adds compatibility for vContact1 headers.\n"
   synonyms:
   - -p
   - --proteins
@@ -14,40 +19,15 @@ named:
 - !Flag
   description: ''
   synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
   - -o
-  - --output
   args: !SimpleFlagArg
     name: FILENAME
-  optional: true
-- !Flag
-  description: Select one of the options as an input source. MetaGeneMark can be either
-    the nucleotide or protein FASTA-formatted output.
-  synonyms:
-  - -s
-  - --source-type
-  args: !ChoiceFlagArg
-    choices: !!set
-      NCBICodingSequence:
-      NCBIFasta:
-      MetaGeneMark:
-      Prodigal-coords:
-      VIRSorter:
-      Prodigal-FAA:
-  optional: true
-- !Flag
-  description: This will enable taking the full description of sequences during MetaGeneMark
-    parsing.
-  synonyms:
-  - -k
-  - --keep-descriptions
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Adds compatibility for vContact1 headers.
-  synonyms:
-  - -c
-  - --compatibility
-  args: !EmptyFlagArg {}
   optional: true
 parent:
 subcommands: []

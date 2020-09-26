@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - banner
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - banner
   - train
   positional:
@@ -48,7 +48,205 @@ subcommands:
     args: !SimpleFlagArg
       name: ESTIMATORS
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: banner
+        optional: false
+      named:
+      - !Flag
+        description: The matrix from hulk smash
+        synonyms:
+        - -m
+        - --matrix
+        args: !SimpleFlagArg
+          name: MATRIX
+        optional: true
+      - !Flag
+        description: Where to write the model to
+        synonyms:
+        - -o
+        - --outFile
+        args: !SimpleFlagArg
+          name: OUTFILE
+        optional: true
+      - !Flag
+        description: Number of processors to use for training
+        synonyms:
+        - -p
+        - --processors
+        args: !SimpleFlagArg
+          name: PROCESSORS
+        optional: true
+      - !Flag
+        description: "Number of estimators to use for training\n"
+        synonyms:
+        - -e
+        - --estimators
+        args: !SimpleFlagArg
+          name: ESTIMATORS
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "##########\n# BANNER #\n##########\nsubcommand: train\nusage: banner\
+        \ [-h] -m MATRIX [-o OUTFILE] [-p PROCESSORS] [-e ESTIMATORS]\n\nTrain takes\
+        \ a banner-matrix file from hulk and uses it to train a Random\nForest Classifier\n\
+        \noptional arguments:\n  -h, --help            show this help message and\
+        \ exit\n  -m MATRIX, --matrix MATRIX\n                        The matrix from\
+        \ hulk smash\n  -o OUTFILE, --outFile OUTFILE\n                        Where\
+        \ to write the model to\n  -p PROCESSORS, --processors PROCESSORS\n      \
+        \                  Number of processors to use for training\n  -e ESTIMATORS,\
+        \ --estimators ESTIMATORS\n                        Number of estimators to\
+        \ use for training\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id005
+      - banner
+      - subcommand
+      positional:
+      - !Positional
+        description: Train takes a banner-matrix file from hulk and uses it to train
+          a Random Forest Classifier
+        position: 0
+        name: train
+        optional: false
+      - !Positional
+        description: Predict collects sketches from STDIN and classifies them using
+          a RFC
+        position: 1
+        name: predict
+        optional: false
+      - !Positional
+        description: Prints the banner version number and exits
+        position: 2
+        name: version
+        optional: false
+      - !Positional
+        description: Subcommand to run
+        position: 0
+        name: subcommand
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Unrecognized subcommand\nusage: banner <subcommand> [<args>]\n\n\
+        subcommands:\n   train\tTrain takes a banner-matrix file from hulk and uses\
+        \ it to train a Random Forest Classifier\n   predict\tPredict collects sketches\
+        \ from STDIN and classifies them using a RFC\n   version\tPrints the banner\
+        \ version number and exits\n\nBANNER is a tool that lives inside HULK and\
+        \ aims to make sense of hulk\nsketches. At the moment, it trains a Random\
+        \ Forest Classifier using a set of\nlabelled hulk sketches. It can then use\
+        \ this model to predict the label of\nmicrobiomes as they are sketches by\
+        \ HULK.\n\npositional arguments:\n  subcommand  Subcommand to run\n\noptional\
+        \ arguments:\n  -h, --help  show this help message and exit\n"
+      generated_using: *id004
+    - !Command
+      command: &id006
+      - banner
+      - predict
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: banner
+        optional: false
+      named:
+      - !Flag
+        description: The model that banner trained
+        synonyms:
+        - -m
+        - --model
+        args: !SimpleFlagArg
+          name: MODEL
+        optional: true
+      - !Flag
+        description: "The probability threshold for reporting\nclassifications"
+        synonyms:
+        - -p
+        - --probability
+        args: !SimpleFlagArg
+          name: PROBABILITY
+        optional: true
+      - !Flag
+        description: "Print all predictions and probability, even if\nthreshold not\
+          \ met yet\n"
+        synonyms:
+        - -v
+        - --verbose
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "##########\n# BANNER #\n##########\nsubcommand: predict\nusage:\
+        \ banner [-h] -m MODEL [-p PROBABILITY] [-v]\n\nPredict collects sketches\
+        \ from STDIN and classifies them using a RFC\n\noptional arguments:\n  -h,\
+        \ --help            show this help message and exit\n  -m MODEL, --model MODEL\n\
+        \                        The model that banner trained\n  -p PROBABILITY,\
+        \ --probability PROBABILITY\n                        The probability threshold\
+        \ for reporting\n                        classifications\n  -v, --verbose\
+        \         Print all predictions and probability, even if\n               \
+        \         threshold not met yet\n"
+      generated_using: *id004
+    usage: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: banner <subcommand> [<args>]\n\nsubcommands:\n   train\tTrain\
+      \ takes a banner-matrix file from hulk and uses it to train a Random Forest\
+      \ Classifier\n   predict\tPredict collects sketches from STDIN and classifies\
+      \ them using a RFC\n   version\tPrints the banner version number and exits\n\
+      \nBANNER is a tool that lives inside HULK and aims to make sense of hulk\nsketches.\
+      \ At the moment, it trains a Random Forest Classifier using a set of\nlabelled\
+      \ hulk sketches. It can then use this model to predict the label of\nmicrobiomes\
+      \ as they are sketches by HULK.\n\npositional arguments:\n  subcommand  Subcommand\
+      \ to run\n\noptional arguments:\n  -h, --help  show this help message and exit\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -69,12 +267,9 @@ subcommands:
     \ to\n  -p PROCESSORS, --processors PROCESSORS\n                        Number\
     \ of processors to use for training\n  -e ESTIMATORS, --estimators ESTIMATORS\n\
     \                        Number of estimators to use for training\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - banner
-  - subcommand
+  command: *id005
   positional:
   - !Positional
     description: Train takes a banner-matrix file from hulk and uses it to train a
@@ -99,7 +294,7 @@ subcommands:
     name: subcommand
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -120,11 +315,9 @@ subcommands:
     \ hulk sketches. It can then use this model to predict the label of\nmicrobiomes\
     \ as they are sketches by HULK.\n\npositional arguments:\n  subcommand  Subcommand\
     \ to run\n\noptional arguments:\n  -h, --help  show this help message and exit\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - banner
-  - predict
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -156,7 +349,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -176,15 +369,9 @@ subcommands:
     \                        The probability threshold for reporting\n           \
     \             classifications\n  -v, --verbose         Print all predictions and\
     \ probability, even if\n                        threshold not met yet\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: banner <subcommand> [<args>]\n\nsubcommands:\n   train\tTrain takes\
@@ -196,4 +383,4 @@ help_text: "usage: banner <subcommand> [<args>]\n\nsubcommands:\n   train\tTrain
   \ then use this model to predict the label of\nmicrobiomes as they are sketches\
   \ by HULK.\n\npositional arguments:\n  subcommand  Subcommand to run\n\noptional\
   \ arguments:\n  -h, --help  show this help message and exit\n"
-generated_using: *id002
+generated_using: *id004

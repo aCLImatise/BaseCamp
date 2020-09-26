@@ -10,52 +10,22 @@ positional:
   position: 0
   name: read-families.tsv
   optional: false
-- !Positional
-  description: --version             Print the version number and exit.
-  position: 0
-  name: run.
-  optional: false
-named:
-- !Flag
-  description: "The multiple sequence aligner to use. Default:\nkalign"
-  synonyms:
-  - -a
-  - --aligner
-  args: !ChoiceFlagArg
-    choices: !!set
-      mafft:
-      kalign:
-      dummy:
-  optional: true
-- !Flag
-  description: Don't check to make sure read pairs have identical ids. By default,
-    if this encounters a pair of reads in families.tsv with ids that aren't identical
-    (minus an ending /1 or /2), it will throw an error.
-  synonyms:
-  - -I
-  - --no-check-ids
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Number of worker subprocesses to use. If 0, no\nsubprocesses will\
-    \ be started and everything\nwill be done inside one process. Give \"auto\"\n\
-    to use as many processes as there are CPU\ncores. Default: 0."
-  synonyms:
-  - -p
-  - --processes
-  args: !SimpleFlagArg
-    name: PROCESSES
-  optional: true
-- !Flag
-  description: "How long to go accumulating responses from\nworker subprocesses before\
-    \ dealing with all of\nthem. Default: 8 * the number of worker\n--processes."
-  synonyms:
-  - --queue-size
-  args: !SimpleFlagArg
-    name: QUEUE_SIZE
-  optional: true
-- !Flag
-  description: "Report helpful usage data to the developer, to\nbetter understand\
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "show this help message and exit\n-a {mafft,kalign,dummy}, --aligner\
+    \ {mafft,kalign,dummy}\nThe multiple sequence aligner to use. Default:\nkalign\n\
+    -I, --no-check-ids    Don't check to make sure read pairs have identical ids.\
+    \ By default, if this encounters a pair of reads in families.tsv with ids that\
+    \ aren't identical (minus an ending /1 or /2), it will throw an error.\n-p PROCESSES,\
+    \ --processes PROCESSES\nNumber of worker subprocesses to use. If 0, no\nsubprocesses\
+    \ will be started and everything\nwill be done inside one process. Give \"auto\"\
+    \nto use as many processes as there are CPU\ncores. Default: 0.\n--queue-size\
+    \ QUEUE_SIZE\nHow long to go accumulating responses from\nworker subprocesses\
+    \ before dealing with all of\nthem. Default: 8 * the number of worker\n--processes.\n\
+    --phone-home          Report helpful usage data to the developer, to\nbetter understand\
     \ the use cases and\nperformance of the tool. The only data which\nwill be recorded\
     \ is the name and version of\nthe tool, the size of the input data, the time\n\
     and memory taken to process it, and the IP\naddress of the machine running it.\
@@ -63,59 +33,12 @@ named:
     \ and the line of code it\noccurred in. No filenames are sent, and the\nonly parameters\
     \ reported are --aligner,\n--processes, and --queue-size, which are\nnecessary\
     \ to evaluate performance. All the\nreporting and recording code is available\
-    \ at\nhttps://github.com/NickSto/ET."
-  synonyms:
-  - --phone-home
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Tell the script it's running on Galaxy.\nCurrently this only affects\
-    \ data reported when\nphoning home."
-  synonyms:
-  - --galaxy
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: If reporting usage data, mark this as a test
-  synonyms:
-  - --test
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Print log messages to this file instead of to\nstderr. NOTE: Will\
-    \ overwrite the file."
-  synonyms:
-  - -L
-  - --log-file
-  args: !SimpleFlagArg
-    name: LOG_FILE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -q
-  - --quiet
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -v
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - -D
-  - --debug
-  args: !EmptyFlagArg {}
-  optional: true
-parent:
-subcommands: []
-usage: []
-help_flag: !Flag
-  description: show this help message and exit
+    \ at\nhttps://github.com/NickSto/ET.\n--galaxy              Tell the script it's\
+    \ running on Galaxy.\nCurrently this only affects data reported when\nphoning\
+    \ home.\n--test                If reporting usage data, mark this as a test\n\
+    run.\n--version             Print the version number and exit.\n-L LOG_FILE, --log-file\
+    \ LOG_FILE\nPrint log messages to this file instead of to\nstderr. NOTE: Will\
+    \ overwrite the file.\n-q, --quiet\n-v, --verbose\n-D, --debug\n"
   synonyms:
   - -h
   - --help

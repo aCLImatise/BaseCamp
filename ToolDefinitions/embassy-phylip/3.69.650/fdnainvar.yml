@@ -1,18 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - fdnainvar
 positional: []
-named:
-- !Flag
-  description: boolean    [N] Print data at start of run
-  synonyms:
-  - -printdata
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - fdnainvar
   - alignments
   positional:
@@ -34,7 +28,95 @@ subcommands:
     - -printdata
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: boolean    [N] Print data at start of run
+      synonyms:
+      - -printdata
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: 'Additional (Optional) qualifiers (* if not always prompted):'
+        position: 0
+        name: file
+        optional: false
+      named:
+      - !Flag
+        description: properties Phylip weights file (optional)
+        synonyms:
+        - -weights
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: boolean    [N] Print data at start of run
+        synonyms:
+        - -printdata
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: "boolean    Report command line options and exit. More\ninformation\
+          \ on associated and general\nqualifiers can be found with -help -verbose\n"
+        synonyms:
+        - -help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0\
+        \ PHYLIPNEW:3.69.650\n\n   Standard (Mandatory) qualifiers:\n  [-sequence]\
+        \          seqsetall  [alignments] File containing one or more\n         \
+        \                         sequence alignments\n   -weights            properties\
+        \ Phylip weights file (optional)\n  [-outfile]           outfile    [*.fdnainvar]\
+        \ Phylip dnainvar program output\n                                  file\n\
+        \n   Additional (Optional) qualifiers (* if not always prompted):\n   -printdata\
+        \          boolean    [N] Print data at start of run\n*  -[no]dotdiff    \
+        \    boolean    [Y] Use dot-differencing to display results\n   -[no]printpattern\
+        \   boolean    [Y] Print counts of patterns\n   -[no]printinvariant boolean\
+        \    [Y] Print invariants\n   -[no]progress       boolean    [Y] Print indications\
+        \ of progress of run\n\n   Advanced (Unprompted) qualifiers: (none)\n   General\
+        \ qualifiers:\n   -help               boolean    Report command line options\
+        \ and exit. More\n                                  information on associated\
+        \ and general\n                                  qualifiers can be found with\
+        \ -help -verbose\n\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag: !Flag
+      description: "boolean    Report command line options and exit. More\ninformation\
+        \ on associated and general\nqualifiers can be found with -help -verbose\n"
+      synonyms:
+      - -help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0 PHYLIPNEW:3.69.650\n\
+      \n   Standard (Mandatory) qualifiers:\n  [-sequence]          seqsetall  File\
+      \ containing one or more sequence\n                                  alignments\n\
+      \   -weights            properties Phylip weights file (optional)\n  [-outfile]\
+      \           outfile    [*.fdnainvar] Phylip dnainvar program output\n      \
+      \                            file\n\n   Additional (Optional) qualifiers (*\
+      \ if not always prompted):\n   -printdata          boolean    [N] Print data\
+      \ at start of run\n*  -[no]dotdiff        boolean    [Y] Use dot-differencing\
+      \ to display results\n   -[no]printpattern   boolean    [Y] Print counts of\
+      \ patterns\n   -[no]printinvariant boolean    [Y] Print invariants\n   -[no]progress\
+      \       boolean    [Y] Print indications of progress of run\n\n   Advanced (Unprompted)\
+      \ qualifiers: (none)\n   General qualifiers:\n   -help               boolean\
+      \    Report command line options and exit. More\n                          \
+      \        information on associated and general\n                           \
+      \       qualifiers can be found with -help -verbose\n\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -61,16 +143,9 @@ subcommands:
     \   Report command line options and exit. More\n                             \
     \     information on associated and general\n                                \
     \  qualifiers can be found with -help -verbose\n\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 usage: []
-help_flag: !Flag
-  description: "boolean    Report command line options and exit. More\ninformation\
-    \ on associated and general\nqualifiers can be found with -help -verbose\n"
-  synonyms:
-  - -help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0 PHYLIPNEW:3.69.650\n\
@@ -87,4 +162,4 @@ help_text: "Nucleic acid sequence invariants method\nVersion: EMBOSS:6.5.7.0 PHY
   \   -help               boolean    Report command line options and exit. More\n\
   \                                  information on associated and general\n     \
   \                             qualifiers can be found with -help -verbose\n\n"
-generated_using: *id002
+generated_using: *id004

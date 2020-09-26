@@ -1,18 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - nw_stats
 positional: []
-named:
-- !Flag
-  description: ''
-  synonyms:
-  - -fHh
-  args: !EmptyFlagArg {}
-  optional: true
+named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - nw_stats
   - filename|-
   positional: []
@@ -23,7 +17,58 @@ subcommands:
     - -f
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -fHh
+      args: !EmptyFlagArg {}
+      optional: true
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional: []
+      named:
+      - !Flag
+        description: '[lc]: format in lines (l) or columns (c). Default is l.'
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ': print this message and exit'
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "Prints statistics about trees\n\nSynopsis\n--------\n\nnw_stats\
+        \ [-hHf:] <newick trees filename|->\n\nInput\n-----\n\nArgument is the name\
+        \ of a file that contains Newick trees, or '-' (in\nwhich case trees are read\
+        \ from standard input).\n\nOutput\n------\n\nPrints information about the\
+        \ trees in the input. The info is printed:\nTree type, number of nodes, number\
+        \ of leaves, number of dichotomies,\nnumber of leaf labels, number of inner\
+        \ labels. By default, the fields\nare printed on a line, like this:\nType:\t\
+        Phylogram\n#nodes:\t19\n#leaves:\t10\n#dichotomies:\t9\n#leaf labels:\t10\n\
+        #inner labels:\t6\n\nOptions\n-------\n\n    -h: print this message and exit\n\
+        \    -f [lc]: format in lines (l) or columns (c). Default is l.\n\nExamples\n\
+        --------\n\n# default statistics:\n\n$ nw_stats data/catarrhini.nw\n"
+      generated_using: &id004
+      - -h
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: nw_stats [-fHh] <filename|->\n"
+    generated_using: &id005 []
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -45,11 +90,10 @@ subcommands:
     \n    -h: print this message and exit\n    -f [lc]: format in lines (l) or columns\
     \ (c). Default is l.\n\nExamples\n--------\n\n# default statistics:\n\n$ nw_stats\
     \ data/catarrhini.nw\n"
-  generated_using:
-  - -h
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
 version_flag:
 help_text: "Usage: nw_stats [-fHh] <filename|->\n"
-generated_using: []
+generated_using: *id005

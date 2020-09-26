@@ -1,23 +1,220 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - filter_components.py
 positional: []
 named: []
 parent:
 subcommands:
-- &id002 !Command
-  command:
+- !Command
+  command: &id002
   - filter_components.py
   - infile
   positional: []
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - &id004 !Command
+      command: *id002
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id006
+        - filter_components.py
+        - infile
+        - infile
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: filter_components.py
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: infile
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: outfile
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: minlength
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
+          \ error: the following arguments are required: minlength\n"
+        generated_using: &id005 []
+      - !Command
+        command: &id007
+        - filter_components.py
+        - infile
+        - minlength
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: filter_components.py
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: infile
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: outfile
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: minlength
+          optional: false
+        named: []
+        parent: *id004
+        subcommands: []
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
+          \ error: the following arguments are required: minlength\n"
+        generated_using: *id005
+      usage: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: filter_components.py [-h] infile outfile minlength\n\npositional\
+        \ arguments:\n  infile\n  outfile\n  minlength\n\noptional arguments:\n  -h,\
+        \ --help  show this help message and exit\n"
+      generated_using: &id008
+      - --help
+    - !Command
+      command: &id009
+      - filter_components.py
+      - minlength
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: filter_components.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: infile
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: outfile
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: minlength
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
+        \ error: the following arguments are required: outfile, minlength\n"
+      generated_using: *id005
+    - !Command
+      command: &id010
+      - filter_components.py
+      - outfile
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: filter_components.py
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: infile
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: outfile
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: minlength
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - -h
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+      help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
+        \ error: the following arguments are required: outfile, minlength\n"
+      generated_using: *id005
+    usage: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
+      \ error: the following arguments are required: infile, outfile, minlength\n"
+    generated_using: *id005
   subcommands:
   - !Command
-    command:
-    - filter_components.py
-    - infile
-    - infile
+    command: *id006
     positional:
     - !Positional
       description: ''
@@ -40,7 +237,7 @@ subcommands:
       name: minlength
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -53,12 +250,9 @@ subcommands:
     version_flag:
     help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
       \ error: the following arguments are required: minlength\n"
-    generated_using: &id003 []
+    generated_using: *id005
   - !Command
-    command:
-    - filter_components.py
-    - infile
-    - minlength
+    command: *id007
     positional:
     - !Positional
       description: ''
@@ -81,7 +275,7 @@ subcommands:
       name: minlength
       optional: false
     named: []
-    parent: *id002
+    parent: *id004
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -94,26 +288,17 @@ subcommands:
     version_flag:
     help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
       \ error: the following arguments are required: minlength\n"
-    generated_using: *id003
+    generated_using: *id005
   usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
   help_text: "usage: filter_components.py [-h] infile outfile minlength\n\npositional\
     \ arguments:\n  infile\n  outfile\n  minlength\n\noptional arguments:\n  -h, --help\
     \  show this help message and exit\n"
-  generated_using:
-  - --help
+  generated_using: *id008
 - !Command
-  command:
-  - filter_components.py
-  - minlength
+  command: *id009
   positional:
   - !Positional
     description: ''
@@ -136,7 +321,7 @@ subcommands:
     name: minlength
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -149,11 +334,9 @@ subcommands:
   version_flag:
   help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
     \ error: the following arguments are required: outfile, minlength\n"
-  generated_using: *id003
+  generated_using: *id005
 - !Command
-  command:
-  - filter_components.py
-  - outfile
+  command: *id010
   positional:
   - !Positional
     description: ''
@@ -176,7 +359,7 @@ subcommands:
     name: minlength
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -189,16 +372,11 @@ subcommands:
   version_flag:
   help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
     \ error: the following arguments are required: outfile, minlength\n"
-  generated_using: *id003
+  generated_using: *id005
 usage: []
-help_flag: !Flag
-  description: ''
-  synonyms:
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
 help_text: "usage: filter_components.py [-h] infile outfile minlength\nfilter_components.py:\
   \ error: the following arguments are required: infile, outfile, minlength\n"
-generated_using: *id003
+generated_using: *id005

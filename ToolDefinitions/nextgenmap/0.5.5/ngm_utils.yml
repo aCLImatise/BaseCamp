@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - ngm-utils
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - ngm-utils
   - interleave
   positional:
@@ -64,7 +64,98 @@ subcommands:
     - --noprogress
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: char
+        optional: true
+      named:
+      - !Flag
+        description: ",  --m1 <file>\n(required)  Upstream mates (FASTA/Q)"
+        synonyms:
+        - '-1'
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: ",  --m2 <file>\n(required)  Downstream mates (FASTA/Q)"
+        synonyms:
+        - '-2'
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: ",  --output <file>\n(required)  Output file"
+        synonyms:
+        - -o
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: ",  --unpaired <file>\nWrite reads without mate to this file."
+        synonyms:
+        - -u
+        args: !SimpleFlagArg
+          name: file
+        optional: true
+      - !Flag
+        description: ",  --delimiter <char>\nThe character that precedes the 1 and\
+          \ 2 in the input files."
+        synonyms:
+        - -d
+        args: !SimpleFlagArg
+          name: char
+        optional: true
+      - !Flag
+        description: ",  --force\nForce finishing even if no pairs are found."
+        synonyms:
+        - -f
+        args: !EmptyFlagArg {}
+        optional: true
+      - !Flag
+        description: Suppress progress output.
+        synonyms:
+        - --noprogress
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "\nUSAGE: \n\n   ngm-utils interleave  -1 <file> -2 <file> -o <file>\
+        \ [-u <file>] [-d\n                         <char>] [-f] [--noprogress] [--]\n\
+        \n\nWhere: \n\n   -1 <file>,  --m1 <file>\n     (required)  Upstream mates\
+        \ (FASTA/Q)\n\n   -2 <file>,  --m2 <file>\n     (required)  Downstream mates\
+        \ (FASTA/Q)\n\n   -o <file>,  --output <file>\n     (required)  Output file\n\
+        \n   -u <file>,  --unpaired <file>\n     Write reads without mate to this\
+        \ file.\n\n   -d <char>,  --delimiter <char>\n     The character that precedes\
+        \ the 1 and 2 in the input files.\n\n   -f,  --force\n     Force finishing\
+        \ even if no pairs are found.\n\n   --noprogress\n     Suppress progress output.\n\
+        \n   --,  --ignore_rest\n     Ignores the rest of the labeled arguments following\
+        \ this flag.\n\n\n   Interleaves paired end reads from two FASTA/Q files into\
+        \ one FASTQ file.\n\n"
+      generated_using: &id004
+      - --help
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "\nUSAGE: \n\n   ngm-utils  [--] <name>\n\n\nWhere: \n\n   --,  --ignore_rest\n\
+      \     Ignores the rest of the labeled arguments following this flag.\n\n   <name>\n\
+      \     (required)  Name of the program you want to use. Available programs: \n\
+      \n     interleave \n\n     count \n\n     reformat_fasta\n\n\n   \n\n"
+    generated_using: &id005 []
   subcommands: []
   usage: []
   help_flag:
@@ -81,8 +172,7 @@ subcommands:
     \n   --noprogress\n     Suppress progress output.\n\n   --,  --ignore_rest\n \
     \    Ignores the rest of the labeled arguments following this flag.\n\n\n   Interleaves\
     \ paired end reads from two FASTA/Q files into one FASTQ file.\n\n"
-  generated_using:
-  - --help
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -91,4 +181,4 @@ help_text: "\nUSAGE: \n\n   ngm-utils  [--] <name>\n\n\nWhere: \n\n   --,  --ign
   \     Ignores the rest of the labeled arguments following this flag.\n\n   <name>\n\
   \     (required)  Name of the program you want to use. Available programs: \n\n\
   \     interleave \n\n     count \n\n     reformat_fasta\n\n\n   \n\n"
-generated_using: []
+generated_using: *id005

@@ -4,45 +4,37 @@ command:
 positional: []
 named:
 - !Flag
-  description: "Output file prefix (which will be used as a prefix for\nfiles that\
-    \ appear in output directory)"
-  synonyms:
-  - -o
-  - --output_file_prefix
-  args: !SimpleFlagArg
-    name: OUTPUT_FILE_PREFIX
-  optional: true
-- !Flag
-  description: Overlap size must exceed this value. Default is 15.
+  description: ''
   synonyms:
   - --min-overlap-size
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: "Maximum number of mismatches at the overlapped region\nto retain the\
-    \ pair. The default behavior relies on\n`-P` parameter and does not pay attention\
-    \ to the\nnumber of mismatches at the overlapped region."
+  description: ''
   synonyms:
-  - --max-num-mismatches
+  - -o
   args: !SimpleFlagArg
-    name: INT
+    name: OUTPUT_FILE_PREFIX
   optional: true
-- !Flag
-  description: "Minimum Q-score for a base to overwrite a mismatch at\nthe overlapped\
-    \ region. If there is a mismatch at the\noverlapped region, the base with higher\
-    \ quality is\nbeing used in the final sequence. Alternatively, if\nthe Q-score\
-    \ of the base with higher quality is lower\nthan the Q-score declared with this\
-    \ parameter, that\nbase is being marked as an ambiguous base, which may\nresult\
-    \ in the elimination of the merged sequence\ndepending on the --ignore-Ns paranmeter.\
-    \ The default\nvalue is 15."
-  synonyms:
-  - --min-qual-score
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "Any merged sequence with P above the declared value is\ndiscarded\
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "show this help message and exit\n-o OUTPUT_FILE_PREFIX, --output_file_prefix\
+    \ OUTPUT_FILE_PREFIX\nOutput file prefix (which will be used as a prefix for\n\
+    files that appear in output directory)\n--min-overlap-size INT\nOverlap size must\
+    \ exceed this value. Default is 15.\n--max-num-mismatches INT\nMaximum number\
+    \ of mismatches at the overlapped region\nto retain the pair. The default behavior\
+    \ relies on\n`-P` parameter and does not pay attention to the\nnumber of mismatches\
+    \ at the overlapped region.\n--min-qual-score INT  Minimum Q-score for a base\
+    \ to overwrite a mismatch at\nthe overlapped region. If there is a mismatch at\
+    \ the\noverlapped region, the base with higher quality is\nbeing used in the final\
+    \ sequence. Alternatively, if\nthe Q-score of the base with higher quality is\
+    \ lower\nthan the Q-score declared with this parameter, that\nbase is being marked\
+    \ as an ambiguous base, which may\nresult in the elimination of the merged sequence\n\
+    depending on the --ignore-Ns paranmeter. The default\nvalue is 15.\n-P FLOAT \
+    \             Any merged sequence with P above the declared value is\ndiscarded\
     \ and stored in a separate file. P is computed\nby dividing the number of mismatches\
     \ at the overlapped\nregion by the length of the overlapped region. For\ninstance,\
     \ if the length of the overlapped region is 30\nnt long, and there are 3 mismatches\
@@ -50,122 +42,43 @@ named:
     P is 0.300000, however it must be adjusted based on\nthe expected overlap in a\
     \ given study with respect to\ndesired stringency. Stringency can also be adjusted\n\
     using `--max-num-mismatches` parameter, or can be done\npost-merging, using the\
-    \ program `filter-merged-reads`."
-  synonyms:
-  - -P
-  args: !SimpleFlagArg
-    name: FLOAT
-  optional: true
-- !Flag
-  description: "By default, quality filtering is being done based only\non the mismatches\
-    \ found in the overlapped region, and\nthe beginning and the end of merged reads\
-    \ are not\nbeing checked. However a final control can be enforced\nusing this\
-    \ flag. This flag turns on the Q30 check, as\nit was explained by Minoche et al.\
-    \ in their 2012\npaper. Briefly, Q30-check eliminates pairs if the 66%\nof bases\
-    \ in the first half of each read do not have\nQ-scores over Q30. Note that Q30\
-    \ is applied only to\nthe parts of reads that did not overlap. If either of\n\
-    reads fail Q30 check, merged sequence is discarded."
-  synonyms:
-  - --enforce-Q30-check
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "When set, qual dicts will be computed. May take a very\nlong time\
-    \ for datasets with more than a million pairs."
-  synonyms:
-  - --compute-qual-dicts
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "When set, merger will only return the parts of reads\nthat do overlap,\
-    \ and parts of reads that do not\noverlap will be trimmed."
-  synonyms:
-  - --retain-only-overlap
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: When set, debug messages will be printed
-  synonyms:
-  - --debug
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If FASTQ files are not CASAVA outputs, parsing the\nheader info may\
-    \ go wrong. This flag tells the software\nto skip parsing deflines."
-  synonyms:
-  - --ignore-deflines
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Merged sequences are being eliminated if they have any\nambiguous\
-    \ bases. If this parameter is set merged pairs\nwith Ns stay in the merged pairs\
-    \ bin."
-  synonyms:
-  - --ignore-Ns
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Finds the best merge going beyond expected \"partial\noverlap\" case\
-    \ for amplicons. Please read the\ndescription at url https://github.com/meren/illumina-\n\
-    utils/issues/1 for details."
-  synonyms:
-  - --marker-gene-stringent
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Some datasets contain both partially and completely\noverlapping reads.\
-    \ `--marker-gene-stringent` would be\nused in that case. Completely overlapping\
-    \ reads can\ncontain unwanted adapter sequence at the ends of the\nreads (read\
-    \ 1 adapter at the end of read 2 and read 2\nadapter at the end of read 1). By\
-    \ default, these\nadapter suffixes are trimmed from merged reads, and\nnon-overlapping\
-    \ parts of the insert are left untouched\nin partially overlapping reads (`--retain-only-\n\
-    overlap` trims partially overlapping merges). Setting\nthis flag leaves adapter\
-    \ suffixes untrimmed."
-  synonyms:
-  - --skip-suffix-trimming
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If there is a prefix to read 1 specified in the config\nfile, these\
-    \ sequences will be reported for merged\nreads when this flag is set. This can\
-    \ be useful if the\nprefix sequence has variable bases, such as in a\nunique molecular\
-    \ identifier (UMI)."
-  synonyms:
-  - --report-r1-prefix
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If there is a prefix to read 2 specified in the config\nfile, these\
-    \ sequences will be reported for merged\nreads when this flag is set. This can\
-    \ be useful if the\nprefix sequence has variable bases, such as in a\nunique molecular\
-    \ identifier (UMI)."
-  synonyms:
-  - --report-r2-prefix
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "This triggers a faster algorithm for merging reads\nwith no mismatches\
-    \ in the overlapping region. This can\nonly be used in combination with `--max-num-mismatches\n\
-    0`. Specify the number of CPU cores that you wish to\nuse."
-  synonyms:
-  - --num-threads
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --distance-metric
-  args: !ChoiceFlagArg
-    choices: !!set
-      hamming:
-      levenshtein:
-  optional: true
-parent:
-subcommands: []
-usage: []
-help_flag: !Flag
-  description: show this help message and exit
+    \ program `filter-merged-reads`.\n--enforce-Q30-check   By default, quality filtering\
+    \ is being done based only\non the mismatches found in the overlapped region,\
+    \ and\nthe beginning and the end of merged reads are not\nbeing checked. However\
+    \ a final control can be enforced\nusing this flag. This flag turns on the Q30\
+    \ check, as\nit was explained by Minoche et al. in their 2012\npaper. Briefly,\
+    \ Q30-check eliminates pairs if the 66%\nof bases in the first half of each read\
+    \ do not have\nQ-scores over Q30. Note that Q30 is applied only to\nthe parts\
+    \ of reads that did not overlap. If either of\nreads fail Q30 check, merged sequence\
+    \ is discarded.\n--compute-qual-dicts  When set, qual dicts will be computed.\
+    \ May take a very\nlong time for datasets with more than a million pairs.\n--retain-only-overlap\n\
+    When set, merger will only return the parts of reads\nthat do overlap, and parts\
+    \ of reads that do not\noverlap will be trimmed.\n--debug               When set,\
+    \ debug messages will be printed\n--ignore-deflines     If FASTQ files are not\
+    \ CASAVA outputs, parsing the\nheader info may go wrong. This flag tells the software\n\
+    to skip parsing deflines.\n--ignore-Ns           Merged sequences are being eliminated\
+    \ if they have any\nambiguous bases. If this parameter is set merged pairs\nwith\
+    \ Ns stay in the merged pairs bin.\n--marker-gene-stringent\nFinds the best merge\
+    \ going beyond expected \"partial\noverlap\" case for amplicons. Please read the\n\
+    description at url https://github.com/meren/illumina-\nutils/issues/1 for details.\n\
+    --skip-suffix-trimming\nSome datasets contain both partially and completely\n\
+    overlapping reads. `--marker-gene-stringent` would be\nused in that case. Completely\
+    \ overlapping reads can\ncontain unwanted adapter sequence at the ends of the\n\
+    reads (read 1 adapter at the end of read 2 and read 2\nadapter at the end of read\
+    \ 1). By default, these\nadapter suffixes are trimmed from merged reads, and\n\
+    non-overlapping parts of the insert are left untouched\nin partially overlapping\
+    \ reads (`--retain-only-\noverlap` trims partially overlapping merges). Setting\n\
+    this flag leaves adapter suffixes untrimmed.\n--report-r1-prefix    If there is\
+    \ a prefix to read 1 specified in the config\nfile, these sequences will be reported\
+    \ for merged\nreads when this flag is set. This can be useful if the\nprefix sequence\
+    \ has variable bases, such as in a\nunique molecular identifier (UMI).\n--report-r2-prefix\
+    \    If there is a prefix to read 2 specified in the config\nfile, these sequences\
+    \ will be reported for merged\nreads when this flag is set. This can be useful\
+    \ if the\nprefix sequence has variable bases, such as in a\nunique molecular identifier\
+    \ (UMI).\n--num-threads INT     This triggers a faster algorithm for merging reads\n\
+    with no mismatches in the overlapping region. This can\nonly be used in combination\
+    \ with `--max-num-mismatches\n0`. Specify the number of CPU cores that you wish\
+    \ to\nuse.\n--distance-metric {hamming,levenshtein}\n"
   synonyms:
   - -h
   - --help

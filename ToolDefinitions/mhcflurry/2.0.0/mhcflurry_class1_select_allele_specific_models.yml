@@ -34,181 +34,6 @@ positional:
   optional: false
 named:
 - !Flag
-  description: "Model selection data CSV. Expected columns: allele,\npeptide, measurement_value"
-  synonyms:
-  - --data
-  args: !SimpleFlagArg
-    name: FILE.csv
-  optional: true
-- !Flag
-  description: "Data to EXCLUDE from model selection. Useful to\nspecify the original\
-    \ training data used"
-  synonyms:
-  - --exclude-data
-  args: !SimpleFlagArg
-    name: FILE.csv
-  optional: true
-- !Flag
-  description: Directory to read models
-  synonyms:
-  - --models-dir
-  args: !SimpleFlagArg
-    name: DIR
-  optional: true
-- !Flag
-  description: Directory to write selected models
-  synonyms:
-  - --out-models-dir
-  args: !SimpleFlagArg
-    name: DIR
-  optional: true
-- !Flag
-  description: "Write predictions for validation data using unselected\npredictor\
-    \ to FILE.csv"
-  synonyms:
-  - --out-unselected-predictions
-  args: !SimpleFlagArg
-    name: FILE.csv
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --unselected-accuracy-scorer
-  args: !SimpleFlagArg
-    name: SCORER
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --unselected-accuracy-scorer-num-samples
-  args: !SimpleFlagArg
-    name: UNSELECTED_ACCURACY_SCORER_NUM_SAMPLES
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --unselected-accuracy-percentile-threshold
-  args: !SimpleFlagArg
-    name: X
-  optional: true
-- !Flag
-  description: "Alleles to select models for. If not specified, all\nalleles with\
-    \ enough measurements will be used."
-  synonyms:
-  - --allele
-  args: !RepeatFlagArg
-    name: ALLELE
-  optional: true
-- !Flag
-  description: "Min number of models to select per allele when using\ncombined selector"
-  synonyms:
-  - --combined-min-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Max number of models to select per allele when using\ncombined selector"
-  synonyms:
-  - --combined-max-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Use only model selectors that can contribute at least\nX % to the\
-    \ total score. Default: 1.0"
-  synonyms:
-  - --combined-min-contribution-percent
-  args: !SimpleFlagArg
-    name: X
-  optional: true
-- !Flag
-  description: "Min number of measurements required for an allele to\nuse mass-spec\
-    \ model selection"
-  synonyms:
-  - --mass-spec-min-measurements
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Min number of models to select per allele when using\nmass-spec selector"
-  synonyms:
-  - --mass-spec-min-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Max number of models to select per allele when using\nmass-spec selector"
-  synonyms:
-  - --mass-spec-max-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Min number of measurements required for an allele to\nuse MSE model\
-    \ selection"
-  synonyms:
-  - --mse-min-measurements
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Min number of models to select per allele when using\nMSE selector"
-  synonyms:
-  - --mse-min-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Max number of models to select per allele when using\nMSE selector"
-  synonyms:
-  - --mse-max-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: Scoring procedures to use in order
-  synonyms:
-  - --scoring
-  args: !RepeatFlagArg
-    name: SCORING
-  optional: true
-- !Flag
-  description: "Min number of models to select per allele when using\nconsensus selector"
-  synonyms:
-  - --consensus-min-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: "Max number of models to select per allele when using\nconsensus selector"
-  synonyms:
-  - --consensus-max-models
-  args: !SimpleFlagArg
-    name: N
-  optional: true
-- !Flag
-  description: Num peptides per length to use for consensus scoring
-  synonyms:
-  - --consensus-num-peptides-per-length
-  args: !SimpleFlagArg
-    name: CONSENSUS_NUM_PEPTIDES_PER_LENGTH
-  optional: true
-- !Flag
-  description: "Regular expression for mass-spec data. Runs on\nmeasurement_source\
-    \ col.Default: mass[- ]spec."
-  synonyms:
-  - --mass-spec-regex
-  args: !SimpleFlagArg
-    name: REGEX
-  optional: true
-- !Flag
-  description: 'Keras verbosity. Default: 0'
-  synonyms:
-  - --verbosity
-  args: !SimpleFlagArg
-    name: VERBOSITY
-  optional: true
-- !Flag
   description: "Number of local processes to parallelize training\nover. Set to 0\
     \ for serial run. Default: 0."
   synonyms:
@@ -222,8 +47,8 @@ named:
   - --backend
   args: !ChoiceFlagArg
     choices: !!set
-      tensorflow-gpu:
       tensorflow-default:
+      tensorflow-gpu:
       tensorflow-cpu:
   optional: true
 - !Flag
@@ -261,7 +86,35 @@ parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n--data FILE.csv       Model selection\
+    \ data CSV. Expected columns: allele,\npeptide, measurement_value\n--exclude-data\
+    \ FILE.csv\nData to EXCLUDE from model selection. Useful to\nspecify the original\
+    \ training data used\n--models-dir DIR      Directory to read models\n--out-models-dir\
+    \ DIR  Directory to write selected models\n--out-unselected-predictions FILE.csv\n\
+    Write predictions for validation data using unselected\npredictor to FILE.csv\n\
+    --unselected-accuracy-scorer SCORER\n--unselected-accuracy-scorer-num-samples\
+    \ UNSELECTED_ACCURACY_SCORER_NUM_SAMPLES\n--unselected-accuracy-percentile-threshold\
+    \ X\n--allele ALLELE [ALLELE ...]\nAlleles to select models for. If not specified,\
+    \ all\nalleles with enough measurements will be used.\n--combined-min-models N\n\
+    Min number of models to select per allele when using\ncombined selector\n--combined-max-models\
+    \ N\nMax number of models to select per allele when using\ncombined selector\n\
+    --combined-min-contribution-percent X\nUse only model selectors that can contribute\
+    \ at least\nX % to the total score. Default: 1.0\n--mass-spec-min-measurements\
+    \ N\nMin number of measurements required for an allele to\nuse mass-spec model\
+    \ selection\n--mass-spec-min-models N\nMin number of models to select per allele\
+    \ when using\nmass-spec selector\n--mass-spec-max-models N\nMax number of models\
+    \ to select per allele when using\nmass-spec selector\n--mse-min-measurements\
+    \ N\nMin number of measurements required for an allele to\nuse MSE model selection\n\
+    --mse-min-models N    Min number of models to select per allele when using\nMSE\
+    \ selector\n--mse-max-models N    Max number of models to select per allele when\
+    \ using\nMSE selector\n--scoring SCORING [SCORING ...]\nScoring procedures to\
+    \ use in order\n--consensus-min-models N\nMin number of models to select per allele\
+    \ when using\nconsensus selector\n--consensus-max-models N\nMax number of models\
+    \ to select per allele when using\nconsensus selector\n--consensus-num-peptides-per-length\
+    \ CONSENSUS_NUM_PEPTIDES_PER_LENGTH\nNum peptides per length to use for consensus\
+    \ scoring\n--mass-spec-regex REGEX\nRegular expression for mass-spec data. Runs\
+    \ on\nmeasurement_source col.Default: mass[- ]spec.\n--verbosity VERBOSITY\nKeras\
+    \ verbosity. Default: 0"
   synonyms:
   - -h
   - --help

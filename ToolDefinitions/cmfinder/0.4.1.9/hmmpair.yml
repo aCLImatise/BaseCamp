@@ -1,12 +1,12 @@
-&id001 !Command
-command:
+!Command
+command: &id001
 - hmmpair
 positional: []
 named: []
 parent:
 subcommands:
 - !Command
-  command:
+  command: &id002
   - hmmpair
   - size of poly-N flanking seqs in forward prob calculations
   positional:
@@ -41,7 +41,560 @@ subcommands:
     name: uniformDistributionOfProfileHmmStartsAndEnds
     optional: false
   named: []
-  parent: *id001
+  parent: &id003 !Command
+    command: *id001
+    positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hmmpair
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sto file
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: max non-canonical pair freq
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fragmentary-policy
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: size of poly-N flanking seqs in forward prob calculations
+        optional: false
+      - !Positional
+        description: ''
+        position: 5
+        name: uniformDistributionOfProfileHmmStartsAndEnds
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "insufficient number of params (argc=3)\nusage: hmmpair <sto file>\
+        \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+        \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+        \ <partition function data file (from Vienna output), or the string \"NULL\"\
+        \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+        \ is in emblcsv format (each line is comma-separated, and the fields are seqId,start,end).\
+        \  it's for masking transcription terminators, and it's assumed to be double-sided,\
+        \ i.e. we should ignore a nucleotide if there's a terminator overlapping it,\
+        \ or a rev-comp of a terminator overlapping it.  So it doesn't matter if start<end\
+        \ or start>end.  Each line should have a terminator stem (the lowest coordinate\
+        \ of a paired nucleotide and the highest coordinate).  Also pairs within this\
+        \ range are ignored.\n<fragmentary-policy>=d means disable, <fragmentary-policy>=f\
+        \ means force fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+        \ means force fragmentary for covarying pairs and do the simple hack for training\
+        \ the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f 200 0 <partition-func-stuff>\
+        \ <NULL or terminator stem predictions if you have them>\nnote: hmmpair only\
+        \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
+        \ that include pseudoknots might benefit from an extended version of hmmpair\
+        \ that considers these additional base pairs.\n"
+      generated_using: &id004
+      - --help
+    - !Command
+      command: &id006
+      - hmmpair
+      - max non-canonical pair freq
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hmmpair
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sto file
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: max non-canonical pair freq
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fragmentary-policy
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: size of poly-N flanking seqs in forward prob calculations
+        optional: false
+      - !Positional
+        description: ''
+        position: 5
+        name: uniformDistributionOfProfileHmmStartsAndEnds
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "insufficient number of params (argc=3)\nusage: hmmpair <sto file>\
+        \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+        \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+        \ <partition function data file (from Vienna output), or the string \"NULL\"\
+        \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+        \ is in emblcsv format (each line is comma-separated, and the fields are seqId,start,end).\
+        \  it's for masking transcription terminators, and it's assumed to be double-sided,\
+        \ i.e. we should ignore a nucleotide if there's a terminator overlapping it,\
+        \ or a rev-comp of a terminator overlapping it.  So it doesn't matter if start<end\
+        \ or start>end.  Each line should have a terminator stem (the lowest coordinate\
+        \ of a paired nucleotide and the highest coordinate).  Also pairs within this\
+        \ range are ignored.\n<fragmentary-policy>=d means disable, <fragmentary-policy>=f\
+        \ means force fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+        \ means force fragmentary for covarying pairs and do the simple hack for training\
+        \ the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f 200 0 <partition-func-stuff>\
+        \ <NULL or terminator stem predictions if you have them>\nnote: hmmpair only\
+        \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
+        \ that include pseudoknots might benefit from an extended version of hmmpair\
+        \ that considers these additional base pairs.\n"
+      generated_using: *id004
+    - !Command
+      command: &id007
+      - hmmpair
+      - uniformDistributionOfProfileHmmStartsAndEnds
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hmmpair
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sto file
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: max non-canonical pair freq
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fragmentary-policy
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: size of poly-N flanking seqs in forward prob calculations
+        optional: false
+      - !Positional
+        description: ''
+        position: 5
+        name: uniformDistributionOfProfileHmmStartsAndEnds
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "insufficient number of params (argc=3)\nusage: hmmpair <sto file>\
+        \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+        \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+        \ <partition function data file (from Vienna output), or the string \"NULL\"\
+        \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+        \ is in emblcsv format (each line is comma-separated, and the fields are seqId,start,end).\
+        \  it's for masking transcription terminators, and it's assumed to be double-sided,\
+        \ i.e. we should ignore a nucleotide if there's a terminator overlapping it,\
+        \ or a rev-comp of a terminator overlapping it.  So it doesn't matter if start<end\
+        \ or start>end.  Each line should have a terminator stem (the lowest coordinate\
+        \ of a paired nucleotide and the highest coordinate).  Also pairs within this\
+        \ range are ignored.\n<fragmentary-policy>=d means disable, <fragmentary-policy>=f\
+        \ means force fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+        \ means force fragmentary for covarying pairs and do the simple hack for training\
+        \ the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f 200 0 <partition-func-stuff>\
+        \ <NULL or terminator stem predictions if you have them>\nnote: hmmpair only\
+        \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
+        \ that include pseudoknots might benefit from an extended version of hmmpair\
+        \ that considers these additional base pairs.\n"
+      generated_using: *id004
+    - &id005 !Command
+      command: &id008
+      - hmmpair
+      - sto file
+      positional: []
+      named: []
+      parent: *id003
+      subcommands:
+      - !Command
+        command: &id009
+        - hmmpair
+        - sto file
+        - fragmentary-policy
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: hmmpair
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: sto file
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: max non-canonical pair freq
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: fragmentary-policy
+          optional: false
+        - !Positional
+          description: ''
+          position: 4
+          name: size of poly-N flanking seqs in forward prob calculations
+          optional: false
+        - !Positional
+          description: ''
+          position: 5
+          name: uniformDistributionOfProfileHmmStartsAndEnds
+          optional: false
+        named: []
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "insufficient number of params (argc=4)\nusage: hmmpair <sto file>\
+          \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+          \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+          \ <partition function data file (from Vienna output), or the string \"NULL\"\
+          \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+          \ is in emblcsv format (each line is comma-separated, and the fields are\
+          \ seqId,start,end).  it's for masking transcription terminators, and it's\
+          \ assumed to be double-sided, i.e. we should ignore a nucleotide if there's\
+          \ a terminator overlapping it, or a rev-comp of a terminator overlapping\
+          \ it.  So it doesn't matter if start<end or start>end.  Each line should\
+          \ have a terminator stem (the lowest coordinate of a paired nucleotide and\
+          \ the highest coordinate).  Also pairs within this range are ignored.\n\
+          <fragmentary-policy>=d means disable, <fragmentary-policy>=f means force\
+          \ fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+          \ means force fragmentary for covarying pairs and do the simple hack for\
+          \ training the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f\
+          \ 200 0 <partition-func-stuff> <NULL or terminator stem predictions if you\
+          \ have them>\nnote: hmmpair only considers the secondary structure in the\
+          \ #=GC SS_cons line.  Motif predictions that include pseudoknots might benefit\
+          \ from an extended version of hmmpair that considers these additional base\
+          \ pairs.\n"
+        generated_using: *id004
+      - !Command
+        command: &id010
+        - hmmpair
+        - sto file
+        - size of poly-N flanking seqs in forward prob calculations
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: hmmpair
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: sto file
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: max non-canonical pair freq
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: fragmentary-policy
+          optional: false
+        - !Positional
+          description: ''
+          position: 4
+          name: size of poly-N flanking seqs in forward prob calculations
+          optional: false
+        - !Positional
+          description: ''
+          position: 5
+          name: uniformDistributionOfProfileHmmStartsAndEnds
+          optional: false
+        named: []
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "insufficient number of params (argc=4)\nusage: hmmpair <sto file>\
+          \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+          \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+          \ <partition function data file (from Vienna output), or the string \"NULL\"\
+          \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+          \ is in emblcsv format (each line is comma-separated, and the fields are\
+          \ seqId,start,end).  it's for masking transcription terminators, and it's\
+          \ assumed to be double-sided, i.e. we should ignore a nucleotide if there's\
+          \ a terminator overlapping it, or a rev-comp of a terminator overlapping\
+          \ it.  So it doesn't matter if start<end or start>end.  Each line should\
+          \ have a terminator stem (the lowest coordinate of a paired nucleotide and\
+          \ the highest coordinate).  Also pairs within this range are ignored.\n\
+          <fragmentary-policy>=d means disable, <fragmentary-policy>=f means force\
+          \ fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+          \ means force fragmentary for covarying pairs and do the simple hack for\
+          \ training the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f\
+          \ 200 0 <partition-func-stuff> <NULL or terminator stem predictions if you\
+          \ have them>\nnote: hmmpair only considers the secondary structure in the\
+          \ #=GC SS_cons line.  Motif predictions that include pseudoknots might benefit\
+          \ from an extended version of hmmpair that considers these additional base\
+          \ pairs.\n"
+        generated_using: *id004
+      - !Command
+        command: &id011
+        - hmmpair
+        - sto file
+        - uniformDistributionOfProfileHmmStartsAndEnds
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: hmmpair
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: sto file
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: max non-canonical pair freq
+          optional: false
+        - !Positional
+          description: ''
+          position: 3
+          name: fragmentary-policy
+          optional: false
+        - !Positional
+          description: ''
+          position: 4
+          name: size of poly-N flanking seqs in forward prob calculations
+          optional: false
+        - !Positional
+          description: ''
+          position: 5
+          name: uniformDistributionOfProfileHmmStartsAndEnds
+          optional: false
+        named: []
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "insufficient number of params (argc=4)\nusage: hmmpair <sto file>\
+          \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+          \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+          \ <partition function data file (from Vienna output), or the string \"NULL\"\
+          \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+          \ is in emblcsv format (each line is comma-separated, and the fields are\
+          \ seqId,start,end).  it's for masking transcription terminators, and it's\
+          \ assumed to be double-sided, i.e. we should ignore a nucleotide if there's\
+          \ a terminator overlapping it, or a rev-comp of a terminator overlapping\
+          \ it.  So it doesn't matter if start<end or start>end.  Each line should\
+          \ have a terminator stem (the lowest coordinate of a paired nucleotide and\
+          \ the highest coordinate).  Also pairs within this range are ignored.\n\
+          <fragmentary-policy>=d means disable, <fragmentary-policy>=f means force\
+          \ fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+          \ means force fragmentary for covarying pairs and do the simple hack for\
+          \ training the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f\
+          \ 200 0 <partition-func-stuff> <NULL or terminator stem predictions if you\
+          \ have them>\nnote: hmmpair only considers the secondary structure in the\
+          \ #=GC SS_cons line.  Motif predictions that include pseudoknots might benefit\
+          \ from an extended version of hmmpair that considers these additional base\
+          \ pairs.\n"
+        generated_using: *id004
+      - !Command
+        command: &id012
+        - hmmpair
+        - sto file
+        - max non-canonical pair freq
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: fragmentary-policy
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: size of poly-N flanking seqs in forward prob calculations
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: uniformDistributionOfProfileHmmStartsAndEnds
+          optional: false
+        named: []
+        parent: *id005
+        subcommands: []
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "insufficient number of params (argc=4)\nusage: hmmpair <sto file>\
+          \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+          \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+          \ <partition function data file (from Vienna output), or the string \"NULL\"\
+          \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+          \ is in emblcsv format (each line is comma-separated, and the fields are\
+          \ seqId,start,end).  it's for masking transcription terminators, and it's\
+          \ assumed to be double-sided, i.e. we should ignore a nucleotide if there's\
+          \ a terminator overlapping it, or a rev-comp of a terminator overlapping\
+          \ it.  So it doesn't matter if start<end or start>end.  Each line should\
+          \ have a terminator stem (the lowest coordinate of a paired nucleotide and\
+          \ the highest coordinate).  Also pairs within this range are ignored.\n\
+          <fragmentary-policy>=d means disable, <fragmentary-policy>=f means force\
+          \ fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+          \ means force fragmentary for covarying pairs and do the simple hack for\
+          \ training the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f\
+          \ 200 0 <partition-func-stuff> <NULL or terminator stem predictions if you\
+          \ have them>\nnote: hmmpair only considers the secondary structure in the\
+          \ #=GC SS_cons line.  Motif predictions that include pseudoknots might benefit\
+          \ from an extended version of hmmpair that considers these additional base\
+          \ pairs.\n"
+        generated_using: *id004
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "insufficient number of params (argc=3)\nusage: hmmpair <sto file>\
+        \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+        \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+        \ <partition function data file (from Vienna output), or the string \"NULL\"\
+        \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+        \ is in emblcsv format (each line is comma-separated, and the fields are seqId,start,end).\
+        \  it's for masking transcription terminators, and it's assumed to be double-sided,\
+        \ i.e. we should ignore a nucleotide if there's a terminator overlapping it,\
+        \ or a rev-comp of a terminator overlapping it.  So it doesn't matter if start<end\
+        \ or start>end.  Each line should have a terminator stem (the lowest coordinate\
+        \ of a paired nucleotide and the highest coordinate).  Also pairs within this\
+        \ range are ignored.\n<fragmentary-policy>=d means disable, <fragmentary-policy>=f\
+        \ means force fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+        \ means force fragmentary for covarying pairs and do the simple hack for training\
+        \ the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f 200 0 <partition-func-stuff>\
+        \ <NULL or terminator stem predictions if you have them>\nnote: hmmpair only\
+        \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
+        \ that include pseudoknots might benefit from an extended version of hmmpair\
+        \ that considers these additional base pairs.\n"
+      generated_using: *id004
+    - !Command
+      command: &id013
+      - hmmpair
+      - fragmentary-policy
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: hmmpair
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: sto file
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: max non-canonical pair freq
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: fragmentary-policy
+        optional: false
+      - !Positional
+        description: ''
+        position: 4
+        name: size of poly-N flanking seqs in forward prob calculations
+        optional: false
+      - !Positional
+        description: ''
+        position: 5
+        name: uniformDistributionOfProfileHmmStartsAndEnds
+        optional: false
+      named: []
+      parent: *id003
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "insufficient number of params (argc=3)\nusage: hmmpair <sto file>\
+        \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+        \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+        \ <partition function data file (from Vienna output), or the string \"NULL\"\
+        \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+        \ is in emblcsv format (each line is comma-separated, and the fields are seqId,start,end).\
+        \  it's for masking transcription terminators, and it's assumed to be double-sided,\
+        \ i.e. we should ignore a nucleotide if there's a terminator overlapping it,\
+        \ or a rev-comp of a terminator overlapping it.  So it doesn't matter if start<end\
+        \ or start>end.  Each line should have a terminator stem (the lowest coordinate\
+        \ of a paired nucleotide and the highest coordinate).  Also pairs within this\
+        \ range are ignored.\n<fragmentary-policy>=d means disable, <fragmentary-policy>=f\
+        \ means force fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+        \ means force fragmentary for covarying pairs and do the simple hack for training\
+        \ the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f 200 0 <partition-func-stuff>\
+        \ <NULL or terminator stem predictions if you have them>\nnote: hmmpair only\
+        \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
+        \ that include pseudoknots might benefit from an extended version of hmmpair\
+        \ that considers these additional base pairs.\n"
+      generated_using: *id004
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "insufficient number of params (argc=2)\nusage: hmmpair <sto file>\
+      \ <max non-canonical pair freq> <fragmentary-policy> <size of poly-N flanking\
+      \ seqs in forward prob calculations> <uniformDistributionOfProfileHmmStartsAndEnds>\
+      \ <partition function data file (from Vienna output), or the string \"NULL\"\
+      \ to ignore> <positions to ignore file name or the string \"NULL\">\npositionsToIgnoreFileName\
+      \ is in emblcsv format (each line is comma-separated, and the fields are seqId,start,end).\
+      \  it's for masking transcription terminators, and it's assumed to be double-sided,\
+      \ i.e. we should ignore a nucleotide if there's a terminator overlapping it,\
+      \ or a rev-comp of a terminator overlapping it.  So it doesn't matter if start<end\
+      \ or start>end.  Each line should have a terminator stem (the lowest coordinate\
+      \ of a paired nucleotide and the highest coordinate).  Also pairs within this\
+      \ range are ignored.\n<fragmentary-policy>=d means disable, <fragmentary-policy>=f\
+      \ means force fragmentary for calculation of covarying base pairs only, <fragmentary-policy>=F\
+      \ means force fragmentary for covarying pairs and do the simple hack for training\
+      \ the HMM\nreasonable defaults are:\nhmmpair <sto file> 0.05 f 200 0 <partition-func-stuff>\
+      \ <NULL or terminator stem predictions if you have them>\nnote: hmmpair only\
+      \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
+      \ that include pseudoknots might benefit from an extended version of hmmpair\
+      \ that considers these additional base pairs.\n"
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag:
@@ -66,12 +619,9 @@ subcommands:
     \ the secondary structure in the #=GC SS_cons line.  Motif predictions that include\
     \ pseudoknots might benefit from an extended version of hmmpair that considers\
     \ these additional base pairs.\n"
-  generated_using: &id002
-  - --help
+  generated_using: *id004
 - !Command
-  command:
-  - hmmpair
-  - max non-canonical pair freq
+  command: *id006
   positional:
   - !Positional
     description: ''
@@ -104,7 +654,7 @@ subcommands:
     name: uniformDistributionOfProfileHmmStartsAndEnds
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -129,11 +679,9 @@ subcommands:
     \ the secondary structure in the #=GC SS_cons line.  Motif predictions that include\
     \ pseudoknots might benefit from an extended version of hmmpair that considers\
     \ these additional base pairs.\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - hmmpair
-  - uniformDistributionOfProfileHmmStartsAndEnds
+  command: *id007
   positional:
   - !Positional
     description: ''
@@ -166,7 +714,7 @@ subcommands:
     name: uniformDistributionOfProfileHmmStartsAndEnds
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -191,20 +739,15 @@ subcommands:
     \ the secondary structure in the #=GC SS_cons line.  Motif predictions that include\
     \ pseudoknots might benefit from an extended version of hmmpair that considers\
     \ these additional base pairs.\n"
-  generated_using: *id002
-- &id003 !Command
-  command:
-  - hmmpair
-  - sto file
+  generated_using: *id004
+- !Command
+  command: *id008
   positional: []
   named: []
-  parent: *id001
+  parent: *id003
   subcommands:
   - !Command
-    command:
-    - hmmpair
-    - sto file
-    - fragmentary-policy
+    command: *id009
     positional:
     - !Positional
       description: ''
@@ -237,7 +780,7 @@ subcommands:
       name: uniformDistributionOfProfileHmmStartsAndEnds
       optional: false
     named: []
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag:
@@ -262,12 +805,9 @@ subcommands:
       \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
       \ that include pseudoknots might benefit from an extended version of hmmpair\
       \ that considers these additional base pairs.\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
-    command:
-    - hmmpair
-    - sto file
-    - size of poly-N flanking seqs in forward prob calculations
+    command: *id010
     positional:
     - !Positional
       description: ''
@@ -300,7 +840,7 @@ subcommands:
       name: uniformDistributionOfProfileHmmStartsAndEnds
       optional: false
     named: []
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag:
@@ -325,12 +865,9 @@ subcommands:
       \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
       \ that include pseudoknots might benefit from an extended version of hmmpair\
       \ that considers these additional base pairs.\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
-    command:
-    - hmmpair
-    - sto file
-    - uniformDistributionOfProfileHmmStartsAndEnds
+    command: *id011
     positional:
     - !Positional
       description: ''
@@ -363,7 +900,7 @@ subcommands:
       name: uniformDistributionOfProfileHmmStartsAndEnds
       optional: false
     named: []
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag:
@@ -388,12 +925,9 @@ subcommands:
       \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
       \ that include pseudoknots might benefit from an extended version of hmmpair\
       \ that considers these additional base pairs.\n"
-    generated_using: *id002
+    generated_using: *id004
   - !Command
-    command:
-    - hmmpair
-    - sto file
-    - max non-canonical pair freq
+    command: *id012
     positional:
     - !Positional
       description: ''
@@ -411,7 +945,7 @@ subcommands:
       name: uniformDistributionOfProfileHmmStartsAndEnds
       optional: false
     named: []
-    parent: *id003
+    parent: *id005
     subcommands: []
     usage: []
     help_flag:
@@ -436,7 +970,7 @@ subcommands:
       \ considers the secondary structure in the #=GC SS_cons line.  Motif predictions\
       \ that include pseudoknots might benefit from an extended version of hmmpair\
       \ that considers these additional base pairs.\n"
-    generated_using: *id002
+    generated_using: *id004
   usage: []
   help_flag:
   usage_flag:
@@ -460,11 +994,9 @@ subcommands:
     \ the secondary structure in the #=GC SS_cons line.  Motif predictions that include\
     \ pseudoknots might benefit from an extended version of hmmpair that considers\
     \ these additional base pairs.\n"
-  generated_using: *id002
+  generated_using: *id004
 - !Command
-  command:
-  - hmmpair
-  - fragmentary-policy
+  command: *id013
   positional:
   - !Positional
     description: ''
@@ -497,7 +1029,7 @@ subcommands:
     name: uniformDistributionOfProfileHmmStartsAndEnds
     optional: false
   named: []
-  parent: *id001
+  parent: *id003
   subcommands: []
   usage: []
   help_flag:
@@ -522,7 +1054,7 @@ subcommands:
     \ the secondary structure in the #=GC SS_cons line.  Motif predictions that include\
     \ pseudoknots might benefit from an extended version of hmmpair that considers\
     \ these additional base pairs.\n"
-  generated_using: *id002
+  generated_using: *id004
 usage: []
 help_flag:
 usage_flag:
@@ -546,4 +1078,4 @@ help_text: "insufficient number of params (argc=2)\nusage: hmmpair <sto file> <m
   \ structure in the #=GC SS_cons line.  Motif predictions that include pseudoknots\
   \ might benefit from an extended version of hmmpair that considers these additional\
   \ base pairs.\n"
-generated_using: *id002
+generated_using: *id004
