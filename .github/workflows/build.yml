@@ -24,6 +24,9 @@ jobs:
       - run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
         name: Fix file watch limit
 
+      - run: echo fs.file-max=1000000 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+        name: Fix file watch limit
+
       - uses: enriikke/gatsby-gh-pages-action@v2
         env:
           NODE_OPTIONS: --max_old_space_size=4096
