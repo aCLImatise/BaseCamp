@@ -40,7 +40,7 @@ subcommands:
     - --storelist
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -79,7 +79,319 @@ subcommands:
         - --storelist
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: the eagle-data-file
+            position: 0
+            name: input
+            optional: false
+          - !Positional
+            description: the name of the meta information
+            position: 1
+            name: name
+            optional: false
+          named:
+          - !Flag
+            description: write this value as meta information
+            synonyms:
+            - -s
+            args: !SimpleFlagArg
+              name: S
+            optional: true
+          - !Flag
+            description: delete the meta information
+            synonyms:
+            - --delete
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[STORELIST]\na list containing key value pairs to store\n"
+            synonyms:
+            - --storelist
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: eagle meta [-h] [-s S] [--delete] [--storelist [STORELIST]]\n\
+            \                  input [name]\n\npositional arguments:\n  input    \
+            \             the eagle-data-file\n  name                  the name of\
+            \ the meta information\n\noptional arguments:\n  -h, --help          \
+            \  show this help message and exit\n  -s S                  write this\
+            \ value as meta information\n  --delete              delete the meta information\n\
+            \  --storelist [STORELIST]\n                        a list containing\
+            \ key value pairs to store\n"
+          generated_using: &id006
+          - --help
+        - &id004 !Command
+          command: &id007
+          - eagle
+          - convert
+          positional: []
+          named:
+          - !Flag
+            description: "[SAMPLES [SAMPLES ...]]\nlimit the output creation to these\
+              \ samples"
+            synonyms:
+            - --samples
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "the reference in fasta format to extract a variant\nmotifs\
+              \ information\n"
+            synonyms:
+            - --ref
+            args: !SimpleFlagArg
+              name: REF
+            optional: true
+          parent: *id003
+          subcommands:
+          - !Command
+            command: &id008
+            - eagle
+            - convert
+            - input
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: eagle
+              optional: false
+            - !Positional
+              description: ''
+              position: 1
+              name: convert
+              optional: false
+            - !Positional
+              description: ''
+              position: 2
+              name: SAMPLES
+              optional: true
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - --ref
+              args: !SimpleFlagArg
+                name: REF
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - --samples
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id004
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: ''
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: eagle convert [-h] [--samples [SAMPLES [SAMPLES ...]]]\
+              \ [--ref REF]\n                     input outdir\neagle convert: error:\
+              \ the following arguments are required: outdir\n"
+            generated_using: &id005 []
+          - !Command
+            command: &id009
+            - eagle
+            - convert
+            - outdir
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: eagle
+              optional: false
+            - !Positional
+              description: ''
+              position: 1
+              name: convert
+              optional: false
+            - !Positional
+              description: ''
+              position: 2
+              name: SAMPLES
+              optional: true
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - --ref
+              args: !SimpleFlagArg
+                name: REF
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - --samples
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id004
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: ''
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: eagle convert [-h] [--samples [SAMPLES [SAMPLES ...]]]\
+              \ [--ref REF]\n                     input outdir\neagle convert: error:\
+              \ the following arguments are required: outdir\n"
+            generated_using: *id005
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: eagle convert [-h] [--samples [SAMPLES [SAMPLES ...]]]\
+            \ [--ref REF]\n                     input outdir\n\npositional arguments:\n\
+            \  input                 the input in vcf format\n  outdir           \
+            \     the output directory\n\noptional arguments:\n  -h, --help      \
+            \      show this help message and exit\n  --samples [SAMPLES [SAMPLES\
+            \ ...]]\n                        limit the output creation to these samples\n\
+            \  --ref REF             the reference in fasta format to extract a variant\n\
+            \                        motifs information\n"
+          generated_using: *id006
+        - !Command
+          command: &id010
+          - eagle
+          - interface
+          positional: []
+          named:
+          - !Flag
+            description: 'port (default: 8000)'
+            synonyms:
+            - --port
+            - -p
+            args: !SimpleFlagArg
+              name: PORT
+            optional: true
+          - !Flag
+            description: listen for external connections
+            synonyms:
+            - --public
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: disable debug messages
+            synonyms:
+            - --nodebug
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: config file to use.
+            synonyms:
+            - --config
+            - -c
+            args: !SimpleFlagArg
+              name: CONFIG
+            optional: true
+          - !Flag
+            description: "use up to M parallel processes to serve HTTP requests\n\
+              (default=1).\n"
+            synonyms:
+            - --processes
+            - -m
+            args: !SimpleFlagArg
+              name: PROCESSES
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: eagle interface [-h] [--port PORT] [--public] [--nodebug]\
+            \ --config\n                       CONFIG [--processes PROCESSES]\n\n\
+            optional arguments:\n  -h, --help            show this help message and\
+            \ exit\n  --port PORT, -p PORT  port (default: 8000)\n  --public     \
+            \         listen for external connections\n  --nodebug             disable\
+            \ debug messages\n  --config CONFIG, -c CONFIG\n                     \
+            \   config file to use.\n  --processes PROCESSES, -m PROCESSES\n     \
+            \                   use up to M parallel processes to serve HTTP requests\n\
+            \                        (default=1).\n"
+          generated_using: *id006
+        - !Command
+          command: &id011
+          - eagle
+          - files
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: eagle
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: eagle [-h] {interface,convert,meta,extract} ...\neagle:\
+            \ error: argument command: invalid choice: 'files' (choose from 'interface',\
+            \ 'convert', 'meta', 'extract')\n"
+          generated_using: *id006
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: eagle [-h] {interface,convert,meta,extract} ...\n\noptional\
+          \ arguments:\n  -h, --help            show this help message and exit\n\n\
+          subcommands:\n  valid subcommands\n\n  {interface,convert,meta,extract}\n\
+          \    interface           run the EAGLE interface service\n    convert  \
+          \           convert a vcf file to the eagle format\n    meta           \
+          \     read or write meta information to eagle formatted\n              \
+          \          files\n    extract             extract meta information from\
+          \ bam\n"
+        generated_using: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -98,35 +410,15 @@ subcommands:
         \ message and exit\n  -s S                  write this value as meta information\n\
         \  --delete              delete the meta information\n  --storelist [STORELIST]\n\
         \                        a list containing key value pairs to store\n"
-      generated_using: &id006
-      - --help
-    - &id004 !Command
-      command: &id007
-      - eagle
-      - convert
+      generated_using: *id006
+    - &id013 !Command
+      command: *id007
       positional: []
-      named:
-      - !Flag
-        description: "[SAMPLES [SAMPLES ...]]\nlimit the output creation to these\
-          \ samples"
-        synonyms:
-        - --samples
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: "the reference in fasta format to extract a variant\nmotifs information\n"
-        synonyms:
-        - --ref
-        args: !SimpleFlagArg
-          name: REF
-        optional: true
+      named: []
       parent: *id003
       subcommands:
       - !Command
-        command: &id008
-        - eagle
-        - convert
-        - input
+        command: *id008
         positional:
         - !Positional
           description: ''
@@ -171,12 +463,9 @@ subcommands:
         help_text: "usage: eagle convert [-h] [--samples [SAMPLES [SAMPLES ...]]]\
           \ [--ref REF]\n                     input outdir\neagle convert: error:\
           \ the following arguments are required: outdir\n"
-        generated_using: &id005 []
+        generated_using: *id005
       - !Command
-        command: &id009
-        - eagle
-        - convert
-        - outdir
+        command: *id009
         positional:
         - !Positional
           description: ''
@@ -223,13 +512,7 @@ subcommands:
           \ the following arguments are required: outdir\n"
         generated_using: *id005
       usage: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
+      help_flag:
       usage_flag:
       version_flag:
       help_text: "usage: eagle convert [-h] [--samples [SAMPLES [SAMPLES ...]]] [--ref\
@@ -242,9 +525,7 @@ subcommands:
         \        motifs information\n"
       generated_using: *id006
     - !Command
-      command: &id010
-      - eagle
-      - interface
+      command: *id010
       positional: []
       named:
       - !Flag
@@ -305,9 +586,7 @@ subcommands:
         \ M parallel processes to serve HTTP requests\n                        (default=1).\n"
       generated_using: *id006
     - !Command
-      command: &id011
-      - eagle
-      - files
+      command: *id011
       positional:
       - !Positional
         description: ''
@@ -331,13 +610,7 @@ subcommands:
         \ 'meta', 'extract')\n"
       generated_using: *id006
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: eagle [-h] {interface,convert,meta,extract} ...\n\noptional\
@@ -371,7 +644,7 @@ subcommands:
   command: *id007
   positional: []
   named: []
-  parent: *id003
+  parent: *id012
   subcommands:
   - !Command
     command: *id008
@@ -405,7 +678,7 @@ subcommands:
       - --samples
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id004
+    parent: *id013
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -452,7 +725,7 @@ subcommands:
       - --samples
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id004
+    parent: *id013
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -519,7 +792,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PROCESSES
     optional: true
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -549,7 +822,7 @@ subcommands:
     name: eagle
     optional: false
   named: []
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag

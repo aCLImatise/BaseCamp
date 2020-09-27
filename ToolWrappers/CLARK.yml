@@ -1,0 +1,184 @@
+!Command
+command:
+- CLARK
+positional: []
+named:
+- !Flag
+  description: ',           k-mer length:  integer, >= 2 and <= 32 (for CLARK only).
+    The default value is 31.'
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: kmerSize
+  optional: true
+- !Flag
+  description: ',      minimum of k-mer frequency in targets (for CLARK only):        integer,
+    >=0.'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: minFreqTarget
+  optional: true
+- !Flag
+  description: ',     minimum of k-mer frequency in objects  (for CLARK only):       integer,
+    >=0.'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: minFreqtObject
+  optional: true
+- !Flag
+  description: ',        filename of the targets definition:     text.'
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: fileTargets
+  optional: true
+- !Flag
+  description: ',       directory name for the database (to load/save database files):  text.'
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: directoryDB/
+  optional: true
+- !Flag
+  description: ',        filename of objects (or list of objects):       text.'
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: fileObjects
+  optional: true
+- !Flag
+  description: '<file2>,      filenames of paired-end reads:  texts.'
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: file1
+  optional: true
+- !Flag
+  description: ',        filename to store results (or corresponding list of results
+    file):      text.'
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: fileResults
+  optional: true
+- !Flag
+  description: ",               mode of execution: 0 (full), 1 (default), 2 (express)\
+    \ and 3 (spectrum).\nFor CLARK-S, the full and default mode are the same."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: mode
+  optional: true
+- !Flag
+  description: ',    number of threads:     integer >= 1.'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: numberofthreads
+  optional: true
+- !Flag
+  description: ",                  to indicate that the objects files contains very\
+    \ long/large sequences (e.g.,\nlong contigs from genome assembly, long sequencing\
+    \ reads from Nanopore or Pacbio, etc.)\nand allocate more memory accordingly.\
+    \ This option is only for running the full mode or\nrunning CLARK-S, in the case\
+    \ of sequences up to 50 Mbp."
+  synonyms:
+  - --long
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',                   to request a detailed creation of the database
+    (target specific k-mers files). This option is no more supported.'
+  synonyms:
+  - --tsk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',                   to request the loading of the database by memory
+    mapped-file (in multithreaded mode, multiple parallel threads are requested).'
+  synonyms:
+  - --ldm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',                   to request a preliminary k-spectrum analysis of
+    each object (for mode 3 only).'
+  synonyms:
+  - --kso
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',              to request an extended output of the full mode (for
+    CLARK only).'
+  synonyms:
+  - --extended
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ',          gap or number of non-overlapping k-mers to pass for the
+    database creation (for CLARK-l only). The default value is 4.'
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: iteration
+  optional: true
+- !Flag
+  description: ',             sampling factor value in the default mode (for CLARK/CLARK-S
+    only).'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: factor
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ',                  to print help/options.'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: ',               to print the version info.'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nCLARK -- ``CLAssifier based on Reduced K-mers'', UCR CS&E 2013-2019\n\
+  \n./CLARK -k <kmerSize> -t <minFreqTarget> -o <minFreqObject> -T <fileTargets> -D\
+  \ <directoryDB/> -O <fileObjects> -R <fileResults> -m <mode> -n <numberofthreads>\
+  \ ...\n\n\nDefinitions of parameters (cf. README file, for details):\n\n-k <kmerSize>,\
+  \       \t k-mer length:\tinteger, >= 2 and <= 32 (for CLARK only). The default\
+  \ value is 31.\n-t <minFreqTarget>,  \t minimum of k-mer frequency in targets (for\
+  \ CLARK only):\tinteger, >=0.\n-o <minFreqtObject>, \t minimum of k-mer frequency\
+  \ in objects  (for CLARK only):\tinteger, >=0.\n-T <fileTargets>,    \t filename\
+  \ of the targets definition:\t text.\n-D <directoryDB/>,   \t directory name for\
+  \ the database (to load/save database files):\t text.\n-O <fileObjects>,    \t filename\
+  \ of objects (or list of objects):\t text.\n-P <file1> <file2>,  \t filenames of\
+  \ paired-end reads:\t texts.\n-R <fileResults>,    \t filename to store results\
+  \ (or corresponding list of results file):\t text.\n-m <mode>,           \t mode\
+  \ of execution: 0 (full), 1 (default), 2 (express) and 3 (spectrum).\n         \
+  \            \t For CLARK-S, the full and default mode are the same.\n-n <numberofthreads>,\t\
+  \ number of threads:\tinteger >= 1.\n--long,              \t to indicate that the\
+  \ objects files contains very long/large sequences (e.g.,\n                    \
+  \ \t long contigs from genome assembly, long sequencing reads from Nanopore or Pacbio,\
+  \ etc.)\n                     \t and allocate more memory accordingly. This option\
+  \ is only for running the full mode or \n                     \t running CLARK-S,\
+  \ in the case of sequences up to 50 Mbp.\n--tsk,               \t to request a detailed\
+  \ creation of the database (target specific k-mers files). This option is no more\
+  \ supported.\n--ldm,               \t to request the loading of the database by\
+  \ memory mapped-file (in multithreaded mode, multiple parallel threads are requested).\n\
+  --kso,               \t to request a preliminary k-spectrum analysis of each object\
+  \ (for mode 3 only).\n--extended,          \t to request an extended output of the\
+  \ full mode (for CLARK only).\n-g <iteration>,      \t gap or number of non-overlapping\
+  \ k-mers to pass for the database creation (for CLARK-l only). The default value\
+  \ is 4.\n-s <factor>,         \t sampling factor value in the default mode (for\
+  \ CLARK/CLARK-S only). \n\n--help,              \t to print help/options.\n--version,\
+  \           \t to print the version info.\nVersion: 1.2.6.1, Contact/Help: Rachid\
+  \ Ounit, rouni001 at cs.ucr.edu\n\n"
+generated_using:
+- --help

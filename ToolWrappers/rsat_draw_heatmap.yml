@@ -1,0 +1,92 @@
+!Command
+command:
+- rsat
+- draw-heatmap
+positional:
+- !Positional
+  description: "\e[1mVERSION\e[0m"
+  position: 0
+  name: draw-heatmap
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: "\e[1m-out_format img_format\e[0m"
+  position: 0
+  name: heatmap.
+  optional: false
+named:
+- !Flag
+  description: '[png|jpeg]'
+  synonyms:
+  - -out_format
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    draw-heatmap\n\n\e[1mVERSION\e[0m\n    $program_version\n\
+  \n\e[1mDESCRIPTION\e[0m\n    Draw a heatmap from a table\n\n\e[1mAUTHORS\e[0m\n\
+  \    Sylvain Brohee <sbrohee\\@ulb.ac.be>\n\n    With the help of Morgane Thomas-Chollier\
+  \ <morgane@bigre.ulb.ac.be> for\n    Chaos representation\n\n    Jacques van Helden\
+  \ <Jacques.van-Helden@univ-amu.fr> for the optio\n    -r_plot (2016-02-29).\n\n\e\
+  [1mCATEGORY\e[0m\n    util\n\n\e[1mUSAGE\e[0m\n    draw-heatmap [-i inputfile] -o\
+  \ outputfile [-v #] [-chaos] [...]\n    -out_format [png|jpeg]\n\n\e[1mINPUT FORMAT\e\
+  [0m\n    A tab delimited table.\n\n    It may contain a header (starting with a\
+  \ '#' symbol). The cells nlt\n    containing real values will not be taken into\
+  \ account.\n\n\e[1mOUTPUT FORMAT\e[0m\n    A heatmap in the specified format.\n\n\
+  \e[1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n        Level of verbosity (detail in the\
+  \ warning messages during execution)\n\n    \e[1m-h\e[0m  Display full help message\n\
+  \n    \e[1m-help\e[0m\n        Same as -h\n\n    \e[1m-i inputfile\e[0m\n      \
+  \  Input file name. This option is mandatory.\n\n    \e[1m-o outputfile\e[0m\n \
+  \       Name of the output file. This option is mandatory.\n\n    \e[1m-html html_map_file\e\
+  [0m\n        If a HTML map file is defined, draw-heatmap then produces a HTML\n\
+  \        file that loads the HEATMAP. Moreover, each of the cells is defined\n \
+  \       so that when the mouse is over in a web browser, a tooltip displays\n  \
+  \      the row name, column name and the value of the cell.\n\n        For CHAOS\
+  \ game representation, the word corresponding to the cell\n        and its associated\
+  \ value are given.\n\n    \e[1m-rownames\e[0m\n        Use this option if the first\
+  \ column contain the row names.\n\n    \e[1m-no_text\e[0m\n        Using this option,\
+  \ the values are not written in the cells of the\n        heatmap.\n\n    \e[1m-out_format\
+  \ img_format\e[0m\n        Output format. Supported: png,jpeg\n\n    \e[1m-title\e\
+  [0m\n        Title for the graph (only works with option -r_plot so far).\n\n  \
+  \  \e[1m-gradient\e[0m\n        Color of the intensity gradient of the heatmap.\
+  \ Default is grey.\n        Supported : green, blue, red, fire, grey.\n\n    \e\
+  [1m-col_width #\e[0m\n        Width of the columns (in pixel).\n\n        If the\
+  \ row height is to small, the label of the heatmap will not be\n        indicated.\
+  \ (Default : 50 px)\n\n    \e[1m-row_height #\e[0m\n        Height of the rows (in\
+  \ pixel).\n\n        If the row height is to small, the label of the heatmap will\
+  \ not be\n        indicated. (Default : 30 px)\n\n    \e[1m-min #\e[0m\n       \
+  \ Minimal value of the heatmap. By default, this value is the minimal\n        value\
+  \ of the input file. If the specified value is larger than the\n        minimal\
+  \ value of the heatmap, then the minimal value of the heatmap\n        will be used\
+  \ as minimal value.\n\n    \e[1m-max #\e[0m\n        Maximal value of the heatmap.\
+  \ By default, this value is the maximal\n        value of the input file. If the\
+  \ specified value is smaller than the\n        maximal value of the heatmap, then\
+  \ the maximal value of the heatmap\n        will be used as maximal value.\n\n \
+  \   \e[1m-digits #\e[0m\n        Round the values to the specified number of digit.\n\
+  \n    \e[1m-lines\e[0m\n        Add black vertical and horizontal separations lines\
+  \ between the\n        cells of the heatmap\n\n    \e[1m-chaos\e[0m\n        The\
+  \ heatmap is a CHAOS Game Representation. This option enables to\n        label\
+  \ the angles of the figure with the nucleotide letters,\n        activates -no_text,\
+  \ and col_width equals row_height to obtain\n        squares. see \e[33mchaos-table\e\
+  [0m for details on CHAOS Game Representation.\n\n    \e[1m-r_plot\e[0m\n       \
+  \ Use R to generate the heatmap, rather than using the Perl GD module.\n\n\e[1mSEE\
+  \ ALSO\e[0m\n  \e[1mconvert-background-model\e[0m\n    Heatmaps can be used to provide\
+  \ an intuitive feeling of Markovian\n    background models provided as transition\
+  \ matrices. Such models can be\n    obtained with the command.\n\n     convert-background-model\
+  \ -i model.tab -from oligos -to transitions \\\n       | cut -f 1-5 | heatmap -out_format\
+  \ png -min 0 -max 1 \\\n          -o model_transition_heatmap.png\n\n\e[1mWISH LIST\e\
+  [0m\n    \e[1m-out_format\e[0m\n        Add support for ps and pdf formats>\n\n\
+  \    \e[1m-title 'My title text'\e[0m\n        Display a title on the top of the\
+  \ image.\n\n    \e[1m-xlab 'X label'\e[0m\n        Display the label along the X\
+  \ axis of the image.\n\n    \e[1m-ylab 'Y label'\e[0m\n        Display the label\
+  \ along the Y axis of the image.\n\n"
+generated_using:
+- -h

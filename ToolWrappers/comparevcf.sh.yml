@@ -1,0 +1,59 @@
+!Command
+command:
+- comparevcf.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified April 30, 2019\n\nDescription:\
+  \  Performs set operations on VCF files:\nUnion, intersection, and subtraction.\n\
+  \nUsage:  comparevcf.sh in=<file,file,...> out=<file>\n\nI/O parameters:\nin=<file>\
+  \       Input; must be at least 2 files.\nout=<file>      Output file.\nref=<file>\
+  \      Reference file; optional.  Usually not needed.\nshist=<file>    (scorehist)\
+  \ Output for variant score histogram.\noverwrite=f     (ow) Set to false to force\
+  \ the program to abort rather than\nbgzip=f         Use bgzip for gzip compression.\n\
+  \nProcessing Mode (choose one only):\nsubtract=t      Subtract all other files from\
+  \ the first file.\nunion=f         Make a union of all files.\nintersection=f  Make\
+  \ an intersection of all files.\n\nProcessing Parameters:\naddsamples=t    Include\
+  \ all samples in the output lines. (TODO)\nsplitalleles=f  Split multi-allelic lines\
+  \ into multiple lines.\nsplitsubs=f     Split multi-base substitutions into SNPs.\n\
+  canonize=t      Trim variations down to a canonical representation.\n\nJava Parameters:\n\
+  -Xmx            This will set Java's memory usage, overriding autodetection.\n \
+  \               -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will\n       \
+  \         specify 200 megs. The max is typically 85% of physical memory.\n-eoom\
+  \           This flag will cause the process to exit if an out-of-memory\n     \
+  \           exception occurs.  Requires Java 8u92+.\n-da             Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

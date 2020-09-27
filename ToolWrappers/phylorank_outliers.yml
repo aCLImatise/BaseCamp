@@ -1,0 +1,185 @@
+!Command
+command:
+- phylorank
+- outliers
+positional:
+- !Positional
+  description: decorated tree for inferring RED outliers
+  position: 0
+  name: input_tree
+  optional: false
+- !Positional
+  description: taxonomy file for inferring RED outliers
+  position: 1
+  name: taxonomy_file
+  optional: false
+- !Positional
+  description: desired output directory for generated files
+  position: 2
+  name: output_dir
+  optional: false
+named:
+- !Flag
+  description: indicates a viral input tree and taxonomy
+  synonyms:
+  - --viral
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use single fixed root to infer outliers
+  synonyms:
+  - --fixed_root
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file indicating trusted taxonomic groups to use for\ninferring distribution\
+    \ (default: all taxa)"
+  synonyms:
+  - -t
+  - --trusted_taxa_file
+  args: !SimpleFlagArg
+    name: TRUSTED_TAXA_FILE
+  optional: true
+- !Flag
+  description: "minimum required child taxa to consider taxa when\ninferring distribution\
+    \ (default: 2)"
+  synonyms:
+  - -m
+  - --min_children
+  args: !SimpleFlagArg
+    name: MIN_CHILDREN
+  optional: true
+- !Flag
+  description: "minimum support value to consider taxa when inferring\ndistribution\
+    \ (default: 0) (default: 0.0)"
+  synonyms:
+  - -s
+  - --min_support
+  args: !SimpleFlagArg
+    name: MIN_SUPPORT
+  optional: true
+- !Flag
+  description: table indicating F-measure score for each taxa
+  synonyms:
+  - --fmeasure_table
+  args: !SimpleFlagArg
+    name: FMEASURE_TABLE
+  optional: true
+- !Flag
+  description: "minimum F-measure to consider taxa when inferring\ndistribution (default:\
+    \ 0.95)"
+  synonyms:
+  - --min_fmeasure
+  args: !SimpleFlagArg
+    name: MIN_FMEASURE
+  optional: true
+- !Flag
+  description: "minimum F-measure to consider taxa monophyletic\n(default: 0.95)"
+  synonyms:
+  - --fmeasure_mono
+  args: !SimpleFlagArg
+    name: FMEASURE_MONO
+  optional: true
+- !Flag
+  description: "highlight taxa with an F-measure less than\n--fmeasure_mono"
+  synonyms:
+  - --highlight_polyphyly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "calculate 'mean branch length to extent taxa' instead\nof 'relative\
+    \ evolutionary distances'"
+  synonyms:
+  - --mblet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file indicating taxonomic groups to plot (default: all\ntaxa)"
+  synonyms:
+  - -p
+  - --plot_taxa_file
+  args: !SimpleFlagArg
+    name: PLOT_TAXA_FILE
+  optional: true
+- !Flag
+  description: show domain rank in plot
+  synonyms:
+  - --plot_domain
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only plot taxa used to infer distribution
+  synonyms:
+  - --plot_dist_taxa_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file indicating taxa to highlight
+  synonyms:
+  - --highlight_taxa_file
+  args: !SimpleFlagArg
+    name: HIGHLIGHT_TAXA_FILE
+  optional: true
+- !Flag
+  description: 'DPI of plots (default: 96)'
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: DPI
+  optional: true
+- !Flag
+  description: add additional columns to output table
+  synonyms:
+  - --verbose_table
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: phylorank outliers [-h] [--viral] [--fixed_root] [-t TRUSTED_TAXA_FILE]\n\
+  \                          [-m MIN_CHILDREN] [-s MIN_SUPPORT]\n                \
+  \          [--fmeasure_table FMEASURE_TABLE]\n                          [--min_fmeasure\
+  \ MIN_FMEASURE]\n                          [--fmeasure_mono FMEASURE_MONO]\n   \
+  \                       [--highlight_polyphyly] [--mblet]\n                    \
+  \      [-p PLOT_TAXA_FILE] [--plot_domain]\n                          [--plot_dist_taxa_only]\n\
+  \                          [--highlight_taxa_file HIGHLIGHT_TAXA_FILE]\n       \
+  \                   [--dpi DPI] [--verbose_table]\n                          input_tree\
+  \ taxonomy_file output_dir\n\nCreate information for identifying taxonomic outliers\n\
+  \npositional arguments:\n  input_tree            decorated tree for inferring RED\
+  \ outliers\n  taxonomy_file         taxonomy file for inferring RED outliers\n \
+  \ output_dir            desired output directory for generated files\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --viral\
+  \               indicates a viral input tree and taxonomy\n  --fixed_root      \
+  \    use single fixed root to infer outliers\n  -t, --trusted_taxa_file TRUSTED_TAXA_FILE\n\
+  \                        file indicating trusted taxonomic groups to use for\n \
+  \                       inferring distribution (default: all taxa)\n  -m, --min_children\
+  \ MIN_CHILDREN\n                        minimum required child taxa to consider\
+  \ taxa when\n                        inferring distribution (default: 2)\n  -s,\
+  \ --min_support MIN_SUPPORT\n                        minimum support value to consider\
+  \ taxa when inferring\n                        distribution (default: 0) (default:\
+  \ 0.0)\n  --fmeasure_table FMEASURE_TABLE\n                        table indicating\
+  \ F-measure score for each taxa\n  --min_fmeasure MIN_FMEASURE\n               \
+  \         minimum F-measure to consider taxa when inferring\n                  \
+  \      distribution (default: 0.95)\n  --fmeasure_mono FMEASURE_MONO\n         \
+  \               minimum F-measure to consider taxa monophyletic\n              \
+  \          (default: 0.95)\n  --highlight_polyphyly\n                        highlight\
+  \ taxa with an F-measure less than\n                        --fmeasure_mono\n  --mblet\
+  \               calculate 'mean branch length to extent taxa' instead\n        \
+  \                of 'relative evolutionary distances'\n  -p, --plot_taxa_file PLOT_TAXA_FILE\n\
+  \                        file indicating taxonomic groups to plot (default: all\n\
+  \                        taxa)\n  --plot_domain         show domain rank in plot\n\
+  \  --plot_dist_taxa_only\n                        only plot taxa used to infer distribution\n\
+  \  --highlight_taxa_file HIGHLIGHT_TAXA_FILE\n                        file indicating\
+  \ taxa to highlight\n  --dpi DPI             DPI of plots (default: 96)\n  --verbose_table\
+  \       add additional columns to output table\n"
+generated_using:
+- --help

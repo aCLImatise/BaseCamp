@@ -1,0 +1,92 @@
+!Command
+command:
+- CollapseBarcodesInPlace
+positional:
+- !Positional
+  description: MIN_NUM_READS_CORE=Integer    Number of reads a barcode would need
+    to have in order to have other barcodes get merged
+  position: 0
+  name: value.
+  optional: false
+named:
+- !Flag
+  description: (default 4g)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+  optional: true
+- !Flag
+  description: final command line before executing
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: echo
+  optional: true
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: /usr/local/bin/CollapseBarcodesInPlace [-m <jvm_heap_size>] [-v]\
+  \ program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: CollapseBarcodesInPlace\
+  \ [options]\n\nFold down barcodes, possibly in the context of another barcode (that\
+  \ has been folded down already.)\nVersion: 2.3.0(34e6572_1555443285)\n\n\nOptions:\n\
+  \n--help\n-h                            Displays options specific to this tool.\n\
+  \n--stdhelp\n-H                            Displays options specific to this tool\
+  \ AND options common to all Picard command line\n                              tools.\n\
+  \n--version                     Displays program version.\n\nINPUT=File\nI=File\
+  \                        The input SAM or BAM file to analyze.  Must be coordinate\
+  \ sorted.   Default value: null.\n                              This option must\
+  \ be specified at least 1 times. \n\nOUTPUT=File\nO=File                       \
+  \ Output BAM file with an extra tag.  Required. \n\nPRIMARY_BARCODE=String     \
+  \   Barcode to collapse  Required. \n\nEDIT_DISTANCE=Integer         The edit distance\
+  \ to collapse barcodes  Default value: 1. This option can be set to 'null'\n   \
+  \                           to clear the default value. \n\nFIND_INDELS=Boolean\
+  \           Should indels be considered in edit distance calculations?  Doing this\
+  \ correctly is far\n                              slower than a simple edit distance\
+  \ test, but gives a more complete result.  Default value:\n                    \
+  \          true. This option can be set to 'null' to clear the default value. Possible\
+  \ values: {true,\n                              false} \n\nOUT_BARCODE=String  \
+  \          The output barcode tag for the newly collapsed barcodes  Required. \n\
+  \nMINIMUM_MAPPING_QUALITY=Integer\nREAD_MQ=Integer               Minimum mapping\
+  \ quality to include the read in the analysis.  Set to 0 to not filter reads\n \
+  \                             by map quality.  Default value: 10. This option can\
+  \ be set to 'null' to clear the default\n                              value. \n\
+  \nMIN_NUM_READS_CORE=Integer    Number of reads a barcode would need to have in\
+  \ order to have other barcodes get merged\n                              into it.\
+  \  All barcodes are candidates to be merged into another barcode.For cell barcodes\n\
+  \                              you probably want to set this to a relatively high\
+  \ number like 100, since we expect cells\n                              to have\
+  \ thousands or more reads, and this signficantly speeds up analysis.  For molecular\n\
+  \                              barcodes, you probably want to set this to 1, as\
+  \ you want to include all molecular\n                              barcodes, unless\
+  \ you have very high sequencing depth.  Default value: null. \n\nNUM_CORE_BARCODES=Integer\
+  \     Number of cells that you think are in the library.  This accomplishes the\
+  \ same goals as\n                              the MIN_NUM_READS_CORE argument,\
+  \ but instead of defining barcodes as important based on\n                     \
+  \         the number of reads, it picks the top  barcodes as core.  Default value:\
+  \ null. \n\nMIN_NUM_READS_NONCORE=Integer The number of reads a non-core barcode\
+  \ must have to be merged with a core barcode. \n                              Default\
+  \ value: 1. This option can be set to 'null' to clear the default value. \n\nFILTER_PCR_DUPLICATES=Boolean\
+  \ Filter PCR Duplicates.  Defaults to false  Default value: false. This option can\
+  \ be set to\n                              'null' to clear the default value. Possible\
+  \ values: {true, false} \n\nNUM_THREADS=Integer           Number of threads to use.\
+  \  Defaults to 1.  Default value: 1. This option can be set to\n               \
+  \               'null' to clear the default value. \n\n"
+generated_using:
+- --help

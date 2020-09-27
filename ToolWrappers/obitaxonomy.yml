@@ -1,0 +1,169 @@
+!Command
+command:
+- obitaxonomy
+positional: []
+named:
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":rank:parent, --add-taxon=<taxon_name>:rank:parent\nAdds a new taxon\
+    \ to the taxonomy. The new taxon is\ndescribed by three values separated by colons:\
+    \ the\nscientific name, the rank of the new taxon, the taxid\nof the parent taxon"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: taxon_name
+  optional: true
+- !Flag
+  description: Erase a local taxon
+  synonyms:
+  - -D
+  - --delete-local-taxon
+  args: !SimpleFlagArg
+    name: TAXID
+  optional: true
+- !Flag
+  description: "Adds a new species to the taxonomy. The new species is\ndescribed\
+    \ by its scientific name"
+  synonyms:
+  - -s
+  - --add-species
+  args: !SimpleFlagArg
+    name: SPECIES_NAME
+  optional: true
+- !Flag
+  description: "Add all the species from a fasta file to the taxonomy.\nThe header\
+    \ of the sequences must contain the field\ndefined by the -k option"
+  synonyms:
+  - -F
+  - --add-file
+  args: !SimpleFlagArg
+    name: file name
+  optional: true
+- !Flag
+  description: "Name of the attribute key used to find the species\nnames in the headers\
+    \ when the -F option is used.\nDefault = 'species_name'"
+  synonyms:
+  - -k
+  - --key_name
+  args: !SimpleFlagArg
+    name: key name
+  optional: true
+- !Flag
+  description: ":taxid, --add-favorite-name=<taxon_name>:taxid\nAdd a new favorite\
+    \ name to the taxonomy. The new name\nis described by two values separated by\
+    \ a colon. the\nnew favorite name and the taxid of the taxon"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: taxon_name
+  optional: true
+- !Flag
+  description: "####, --min-taxid=####\nminimal taxid for the newly added taxid"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "works with the -F option. Can be a word or a taxid\n(number). Enables\
+    \ to restrict the adding of taxids\nunder a specified ancestor. If it's a word,\
+    \ it's the\nfield containing the ancestor's taxid in each\nsequence's header (can\
+    \ be different for each\nsequence). If it's a number, it's the taxid of the\n\
+    ancestor (in which case it's the same for all the\nsequences). All the sequences\
+    \ in the file for which\nthe genus can't be found will be added under this\nancestor."
+  synonyms:
+  - -A
+  - --restricting_ancestor
+  args: !SimpleFlagArg
+    name: ANCESTOR
+  optional: true
+- !Flag
+  description: "works with the -F option. Field name for the taxonomy\npath of the\
+    \ taxa if they are in the headers of the\nsequences. Must be of the form\n'Fungi,Agaricomycetes,Thelephorales,Thelephoraceae'\n\
+    with the highest ancestors first and ',' as separators\nbetween ancestors"
+  synonyms:
+  - -p
+  - --path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: ecoPCR taxonomy Database name
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "NCBI Taxonomy dump repository name\n"
+  synonyms:
+  - -t
+  - --taxonomy-dump
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: obitaxonomy [options]\n\n***********\n* Options *\n***********\n\
+  \  -h, --help            show this help message and exit\n  --DEBUG            \
+  \   Set logging in debug mode\n  --without-progress-bar\n                      \
+  \  desactivate progress bar\n  -a <taxon_name>:rank:parent, --add-taxon=<taxon_name>:rank:parent\n\
+  \                        Adds a new taxon to the taxonomy. The new taxon is\n  \
+  \                      described by three values separated by colons: the\n    \
+  \                    scientific name, the rank of the new taxon, the taxid\n   \
+  \                     of the parent taxon\n  -D <TAXID>, --delete-local-taxon=<TAXID>\n\
+  \                        Erase a local taxon\n  -s <SPECIES_NAME>, --add-species=<SPECIES_NAME>\n\
+  \                        Adds a new species to the taxonomy. The new species is\n\
+  \                        described by its scientific name\n  -F <file name>, --add-file=<file\
+  \ name>\n                        Add all the species from a fasta file to the taxonomy.\n\
+  \                        The header of the sequences must contain the field\n  \
+  \                      defined by the -k option\n  -k <key name>, --key_name=<key\
+  \ name>\n                        Name of the attribute key used to find the species\n\
+  \                        names in the headers when the -F option is used.\n    \
+  \                    Default = 'species_name'\n  -f <taxon_name>:taxid, --add-favorite-name=<taxon_name>:taxid\n\
+  \                        Add a new favorite name to the taxonomy. The new name\n\
+  \                        is described by two values separated by a colon. the\n\
+  \                        new favorite name and the taxid of the taxon\n  -m ####,\
+  \ --min-taxid=####\n                        minimal taxid for the newly added taxid\n\
+  \  -A <ANCESTOR>, --restricting_ancestor=<ANCESTOR>\n                        works\
+  \ with the -F option. Can be a word or a taxid\n                        (number).\
+  \ Enables to restrict the adding of taxids\n                        under a specified\
+  \ ancestor. If it's a word, it's the\n                        field containing the\
+  \ ancestor's taxid in each\n                        sequence's header (can be different\
+  \ for each\n                        sequence). If it's a number, it's the taxid\
+  \ of the\n                        ancestor (in which case it's the same for all\
+  \ the\n                        sequences). All the sequences in the file for which\n\
+  \                        the genus can't be found will be added under this\n   \
+  \                     ancestor.\n  -p <path>, --path=<path>\n                  \
+  \      works with the -F option. Field name for the taxonomy\n                 \
+  \       path of the taxa if they are in the headers of the\n                   \
+  \     sequences. Must be of the form\n                        'Fungi,Agaricomycetes,Thelephorales,Thelephoraceae'\n\
+  \                        with the highest ancestors first and ',' as separators\n\
+  \                        between ancestors\n\n  ****************************\n \
+  \ * Taxonomy loading options *\n  ****************************\n    -d <FILENAME>,\
+  \ --database=<FILENAME>\n                        ecoPCR taxonomy Database name\n\
+  \    -t <FILENAME>, --taxonomy-dump=<FILENAME>\n                        NCBI Taxonomy\
+  \ dump repository name\n"
+generated_using:
+- --help

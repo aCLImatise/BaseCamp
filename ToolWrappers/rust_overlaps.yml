@@ -1,0 +1,133 @@
+!Command
+command:
+- rust-overlaps
+positional:
+- !Positional
+  description: -h, --help              Prints help information
+  position: 0
+  name: arise
+  optional: false
+named:
+- !Flag
+  description: Uses Levenshtein / edit distance instead of Hamming distance
+  synonyms:
+  - -e
+  - --edit_distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The first line of the output file will contain a TSV header line.
+  synonyms:
+  - -f
+  - --format_line
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Threads print solutions to output greedily instead of storing them.
+    Limited duplication may
+  synonyms:
+  - -g
+  - --greedy_output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables finding of inclusion overlaps (one string within another)
+  synonyms:
+  - -i
+  - --inclusions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Omits N symbol from alphabet saving time. Will remove N symbols from\
+    \ input file (with a\nwarning)"
+  synonyms:
+  - -n
+  - --no_n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For each solution printed to file, also prints a rough visualization\
+    \ to stdout (mostly for\ndebugging purposes)"
+  synonyms:
+  - -p
+  - --print
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables reversals of input strings
+  synonyms:
+  - -r
+  - --reversals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints progress bar for completed tasks and ETA to stdout
+  synonyms:
+  - -t
+  - --track_progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints completed steps of the run process
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Uses the filtering scheme mode given options {valimaki, kucherov}.\
+    \ Modes\ncan also be supplied string arguments i.e. 'kucherov_2'. (Default :\n\
+    kucherov_2"
+  synonyms:
+  - -m
+  - --mode
+  args: !SimpleFlagArg
+    name: mode
+  optional: true
+- !Flag
+  description: Number of worker threads used. Defaults to number of logical cpu cores
+  synonyms:
+  - -w
+  - --worker_threads
+  args: !SimpleFlagArg
+    name: worker_threads
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "ASPOPsolver 1.0\nChristopher Esterhuyse <christopher.esterhuyse@gmail.com>\n\
+  Finds approximate suffix prefix overlaps from a given fasta file\n\nUSAGE:\n   \
+  \ rust-overlaps [FLAGS] [OPTIONS] <IN_PATH> <OUT_PATH> <ERR_RATE> <THRESH>\n\nFLAGS:\n\
+  \    -e, --edit_distance     Uses Levenshtein / edit distance instead of Hamming\
+  \ distance\n    -f, --format_line       The first line of the output file will contain\
+  \ a TSV header line.\n    -g, --greedy_output     Threads print solutions to output\
+  \ greedily instead of storing them. Limited duplication may\n                  \
+  \          arise\n    -h, --help              Prints help information\n    -i, --inclusions\
+  \        Enables finding of inclusion overlaps (one string within another)\n   \
+  \ -n, --no_n              Omits N symbol from alphabet saving time. Will remove\
+  \ N symbols from input file (with a\n                            warning)\n    -p,\
+  \ --print             For each solution printed to file, also prints a rough visualization\
+  \ to stdout (mostly for\n                            debugging purposes)\n    -r,\
+  \ --reversals         Enables reversals of input strings\n    -t, --track_progress\
+  \    Prints progress bar for completed tasks and ETA to stdout\n    -V, --version\
+  \           Prints version information\n    -v, --verbose           Prints completed\
+  \ steps of the run process\n\nOPTIONS:\n    -m, --mode <mode>                  \
+  \      Uses the filtering scheme mode given options {valimaki, kucherov}. Modes\n\
+  \                                             can also be supplied string arguments\
+  \ i.e. 'kucherov_2'. (Default :\n                                             kucherov_2\n\
+  \    -w, --worker_threads <worker_threads>    Number of worker threads used. Defaults\
+  \ to number of logical cpu cores\n\nARGS:\n    <IN_PATH>     Path to the input fasta\
+  \ file\n    <OUT_PATH>    Path of desired output file\n    <ERR_RATE>    The max\
+  \ rate of errors in an overlap\n    <THRESH>      Shortest allowed length of an\
+  \ overlap\n"
+generated_using:
+- --help

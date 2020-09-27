@@ -1,0 +1,150 @@
+!Command
+command:
+- create_pan_genome
+positional: []
+named:
+- !Flag
+  description: number of threads [1]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: clusters output filename [clustered_proteins]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: output directory [.]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: create a multiFASTA alignment of core genes
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fast core gene alignement with MAFFT, use with -e
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum percentage identity for blastp [95]
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: percentage of isolates a gene must be in to be core [99]
+  synonyms:
+  - -cd
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: dont delete intermediate files
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: translation table [11]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: verbose output to STDOUT
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: add gene inference information to spreadsheet, doesnt work with -e
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum number of clusters [50000]
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: generate QC report with Kraken
+  synonyms:
+  - -qc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to Kraken database for QC, use with -qc
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: print version and exit
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: check dependancies and print versions
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: this help message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nPlease cite Roary if you use any of the results it produces:\n    Andrew\
+  \ J. Page, Carla A. Cummins, Martin Hunt, Vanessa K. Wong, Sandra Reuter, Matthew\
+  \ T. G. Holden, Maria Fookes, Daniel Falush, Jacqueline A. Keane, Julian Parkhill,\n\
+  \t\"Roary: Rapid large-scale prokaryote pan genome analysis\", Bioinformatics, 2015\
+  \ Nov 15;31(22):3691-3693\n    doi: http://doi.org/10.1093/bioinformatics/btv421\n\
+  \tPubmed: 26198102\n\nUsage:   create_pan_genome [options] *.gff\nBuild a pan genome\
+  \ with WTSI defaults.\n\nOptions: -p INT    number of threads [1]\n         -o STR\
+  \    clusters output filename [clustered_proteins]\n\t\t -f STR    output directory\
+  \ [.]\n         -e        create a multiFASTA alignment of core genes\n        \
+  \ -n        fast core gene alignement with MAFFT, use with -e\n         -i     \
+  \   minimum percentage identity for blastp [95]\n         -cd FLOAT percentage of\
+  \ isolates a gene must be in to be core [99]\n         -z        dont delete intermediate\
+  \ files\n         -t INT    translation table [11]\n         -v        verbose output\
+  \ to STDOUT\n         -y        add gene inference information to spreadsheet, doesnt\
+  \ work with -e\n         -g INT    maximum number of clusters [50000]\n        \
+  \ -qc       generate QC report with Kraken\n         -k STR    path to Kraken database\
+  \ for QC, use with -qc\n         -w        print version and exit\n\t\t -a     \
+  \   check dependancies and print versions\n         -h        this help message\n\
+  \nExample: Quickly generate a core gene alignment using 16 threads\n\n         bsub.py\
+  \ --threads 16 10 log create_pan_genome -e --mafft -p 16  *.gff\n         \nExample:\
+  \ Allow Roary to bsub the jobs to LSF - you cant bsub this command itself\n\n  \
+  \       create_pan_genome -j LSF -e --mafft -p 16  *.gff\n\t\t \nExample: Create\
+  \ a tree and visualise with iCANDY\n\n\t\t annotationfind –t file –i file_of_lanes\
+  \ -symlink .\n\t\t bsub.py --threads 16 10 log create_pan_genome -e --mafft -p 16\
+  \ *.gff\n\t\t ~sh16/scripts/run_RAxML.py -a core_gene_alignment.aln -q normal  -M\
+  \ 8 -n 8 -V AVX -o tree\n\t\t bsub.py 10 log ~sh16/scripts/iCANDY.py -t RAxML_bipartitions.tree\
+  \ -q taxa -l 1 -E 30 -o accessory.pdf -M -L left -p A1 -g 90 accessory.tab accessory.header.embl\n\
+  \nFor further info see: http://mediawiki.internal.sanger.ac.uk/index.php/Pathogen_Informatics_Pan_Genome_Pipeline\n\
+  \n"
+generated_using:
+- --help

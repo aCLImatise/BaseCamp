@@ -29,7 +29,7 @@ subcommands:
     - --contig-regex
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -57,17 +57,224 @@ subcommands:
         - --contig-regex
         args: !EmptyFlagArg {}
         optional: true
-      - !Flag
-        description: "The value to use for set ID\nDefault: .\n"
-        synonyms:
-        - --set-id
-        args: !EmptyFlagArg {}
-        optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: annotate
+            optional: false
+          named:
+          - !Flag
+            description: "The value to use for case ID\nDefault: ."
+            synonyms:
+            - --case-id
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Regular expression to use for selection of contigs\nDefault:\
+              \ ^(chr)?(\\d+|X|Y|M|MT)$"
+            synonyms:
+            - --contig-regex
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "The value to use for set ID\nDefault: .\n"
+            synonyms:
+            - --set-id
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Annotate VCF to TSV files\nUsage: annotate [options]\n  Options:\n\
+            \    --case-id\n      The value to use for case ID\n      Default: .\n\
+            \    --contig-regex\n      Regular expression to use for selection of\
+            \ contigs\n      Default: ^(chr)?(\\d+|X|Y|M|MT)$\n  * --db-path\n   \
+            \   Path to H2 file to initialize/update\n  * --ensembl-ser-path\n   \
+            \   Path to Jannovar .ser file for ENSEMBL\n    --help\n\n  * --input-vcf\n\
+            \      Path to input VCF file to annotate\n  * --output-db-info\n    \
+            \  Path to output TSV file with annotation DB versions\n  * --output-gts\n\
+            \      Path to output TSV file with annotated genotypes\n  * --ref-path\n\
+            \      Path to reference FASTA file, used for variant normalization\n\
+            \  * --refseq-ser-path\n      Path to Jannovar .ser file for RefSeq\n\
+            \  * --release\n      The genome release used\n    --set-id\n      The\
+            \ value to use for set ID\n      Default: .\n\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - varfish-annotator
+          - init-db
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: init-db
+            optional: false
+          named:
+          - !Flag
+            description: "Path to Clinvar TSV file(s) to use for import, see documentation\
+              \ for\nmore information"
+            synonyms:
+            - --clinvar-path
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Provide database release information as "$db:$release" for
+              storage in DB
+            synonyms:
+            - --db-release-info
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Path to ExAC VCF file to use for import, see documentation\
+              \ for more\ninformation"
+            synonyms:
+            - --exac-path
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Path to gnomAD exomes VCF file to use for import, see documentation\
+              \ for\nmore information"
+            synonyms:
+            - --gnomad-exomes-path
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Path to gnomAD genomes VCF file to use for import, see documentation\
+              \ for\nmore information"
+            synonyms:
+            - --gnomad-genomes-path
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Path to HTMD Public TSV file to use for import, see documentation\
+              \ for\nmore information"
+            synonyms:
+            - --hgmd-public
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Genomic region CHR:START-END (1-based) to import
+            synonyms:
+            - --region
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Path to 1000 genomes VCF file to use for import, see documentation\
+              \ for\nmore information\n"
+            synonyms:
+            - --thousand-genomes-path
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Initialize or update DB\nUsage: init-db [options]\n  Options:\n\
+            \    --clinvar-path\n      Path to Clinvar TSV file(s) to use for import,\
+            \ see documentation for \n      more information\n  * --db-path\n    \
+            \  Path to H2 file to initialize/update\n    --db-release-info\n     \
+            \ Provide database release information as \"$db:$release\" for storage\
+            \ in DB\n    --exac-path\n      Path to ExAC VCF file to use for import,\
+            \ see documentation for more \n      information \n    --gnomad-exomes-path\n\
+            \      Path to gnomAD exomes VCF file to use for import, see documentation\
+            \ for \n      more information\n    --gnomad-genomes-path\n      Path\
+            \ to gnomAD genomes VCF file to use for import, see documentation for\
+            \ \n      more information\n    --help\n\n    --hgmd-public\n      Path\
+            \ to HTMD Public TSV file to use for import, see documentation for \n\
+            \      more information\n  * --ref-path\n      Path to reference FASTA\
+            \ file, used for variant normalization\n    --region\n      Genomic region\
+            \ CHR:START-END (1-based) to import\n    --thousand-genomes-path\n   \
+            \   Path to 1000 genomes VCF file to use for import, see documentation\
+            \ for \n      more information\n\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: <main class> [command] [command options]\n  Commands:\n\
+          \    init-db      Initialize or update DB\n      Usage: init-db [options]\n\
+          \        Options:\n          --clinvar-path\n            Path to Clinvar\
+          \ TSV file(s) to use for import, see documentation \n            for more\
+          \ information\n        * --db-path\n            Path to H2 file to initialize/update\n\
+          \          --db-release-info\n            Provide database release information\
+          \ as \"$db:$release\" for storage \n            in DB\n          --exac-path\n\
+          \            Path to ExAC VCF file to use for import, see documentation\
+          \ for \n            more information\n          --gnomad-exomes-path\n \
+          \           Path to gnomAD exomes VCF file to use for import, see \n   \
+          \         documentation for more information\n          --gnomad-genomes-path\n\
+          \            Path to gnomAD genomes VCF file to use for import, see \n \
+          \           documentation for more information\n          --help\n\n   \
+          \       --hgmd-public\n            Path to HTMD Public TSV file to use for\
+          \ import, see documentation \n            for more information\n       \
+          \ * --ref-path\n            Path to reference FASTA file, used for variant\
+          \ normalization\n          --region\n            Genomic region CHR:START-END\
+          \ (1-based) to import\n          --thousand-genomes-path\n            Path\
+          \ to 1000 genomes VCF file to use for import, see documentation \n     \
+          \       for more information\n\n    annotate      Annotate VCF to TSV files\n\
+          \      Usage: annotate [options]\n        Options:\n          --case-id\n\
+          \            The value to use for case ID\n            Default: .\n    \
+          \      --contig-regex\n            Regular expression to use for selection\
+          \ of contigs\n            Default: ^(chr)?(\\d+|X|Y|M|MT)$\n        * --db-path\n\
+          \            Path to H2 file to initialize/update\n        * --ensembl-ser-path\n\
+          \            Path to Jannovar .ser file for ENSEMBL\n          --help\n\n\
+          \        * --input-vcf\n            Path to input VCF file to annotate\n\
+          \        * --output-db-info\n            Path to output TSV file with annotation\
+          \ DB versions\n        * --output-gts\n            Path to output TSV file\
+          \ with annotated genotypes\n        * --ref-path\n            Path to reference\
+          \ FASTA file, used for variant normalization\n        * --refseq-ser-path\n\
+          \            Path to Jannovar .ser file for RefSeq\n        * --release\n\
+          \            The genome release used\n          --set-id\n            The\
+          \ value to use for set ID\n            Default: .\n\n    annotate-svs  \
+          \    Annotate VCF to TSV files\n      Usage: annotate-svs [options]\n  \
+          \      Options:\n          --case-id\n            The value to use for case\
+          \ ID\n            Default: .\n          --contig-regex\n            Regular\
+          \ expression to use for selection of contigs\n            Default: ^(chr)?(\\\
+          d+|X|Y|M|MT)$\n        * --db-path\n            Path to H2 file to initialize/update\n\
+          \        * --ensembl-ser-path\n            Path to Jannovar .ser file for\
+          \ ENSEMBL\n          --help\n\n        * --input-vcf\n            Path to\
+          \ input VCF file to annotate\n        * --output-db-info\n            Path\
+          \ to output TSV file with annotation DB versions\n        * --output-feature-effects\n\
+          \            Path to output TSV file with annotation of effects on features\n\
+          \        * --output-gts\n            Path to output TSV file with SVs and\
+          \ genotype calls\n        * --refseq-ser-path\n            Path to Jannovar\
+          \ .ser file for RefSeq\n        * --release\n            The genome release\
+          \ used\n          --set-id\n            The value to use for set ID\n  \
+          \          Default: .\n\n\n"
+        generated_using: &id006 []
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        description: "* --input-vcf\nPath to input VCF file to annotate\n* --output-db-info\n\
+          Path to output TSV file with annotation DB versions\n* --output-gts\nPath\
+          \ to output TSV file with annotated genotypes\n* --ref-path\nPath to reference\
+          \ FASTA file, used for variant normalization\n* --refseq-ser-path\nPath\
+          \ to Jannovar .ser file for RefSeq\n* --release\nThe genome release used\n\
+          --set-id\nThe value to use for set ID\nDefault: .\n"
         synonyms:
         - --help
         args: !EmptyFlagArg {}
@@ -87,12 +294,9 @@ subcommands:
         \ to Jannovar .ser file for RefSeq\n  * --release\n      The genome release\
         \ used\n    --set-id\n      The value to use for set ID\n      Default: .\n\
         \n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - varfish-annotator
-      - init-db
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -136,13 +340,6 @@ subcommands:
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: "Path to HTMD Public TSV file to use for import, see documentation\
-          \ for\nmore information"
-        synonyms:
-        - --hgmd-public
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
         description: Genomic region CHR:START-END (1-based) to import
         synonyms:
         - --region
@@ -159,7 +356,8 @@ subcommands:
       subcommands: []
       usage: []
       help_flag: !Flag
-        description: ''
+        description: "--hgmd-public\nPath to HTMD Public TSV file to use for import,\
+          \ see documentation for\nmore information"
         synonyms:
         - --help
         args: !EmptyFlagArg {}
@@ -234,7 +432,7 @@ subcommands:
       \ --refseq-ser-path\n            Path to Jannovar .ser file for RefSeq\n   \
       \     * --release\n            The genome release used\n          --set-id\n\
       \            The value to use for set ID\n            Default: .\n\n\n"
-    generated_using: &id006 []
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -320,7 +518,7 @@ subcommands:
     - --thousand-genomes-path
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

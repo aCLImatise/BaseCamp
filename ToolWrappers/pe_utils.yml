@@ -1,0 +1,80 @@
+!Command
+command:
+- pe_utils
+positional: []
+named:
+- !Flag
+  description: "Compute insert length for given sample. Takes as input\n(1) a comma-separated\
+    \ list of sorted, indexed BAM\nfiles with headers (or a single BAM filename),\
+    \ (2) a\nGFF file with constitutive exons. Outputs the insert\nlength distribution\
+    \ into the output directory."
+  synonyms:
+  - --compute-insert-len
+  args: !SimpleFlagArg
+    name: COMPUTE_INSERT_LEN
+  optional: true
+- !Flag
+  description: "If provided, this ignores the BAM file flags that\nstate whether the\
+    \ read was paired or not, and instead\nuses only the read IDs to pair up the mates.\
+    \ Use this\nif your paired-end BAM was the result of a samtools\nmerge operation."
+  synonyms:
+  - --no-bam-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum size of constitutive exon (in nucleotides)\nthat should be\
+    \ used in the computation. Default is 500\nbp."
+  synonyms:
+  - --min-exon-size
+  args: !SimpleFlagArg
+    name: MIN_EXON_SIZE
+  optional: true
+- !Flag
+  description: "Number of standard deviations used to define outliers.\nBy default,\
+    \ set to 2, meaning that any points at least\n2*sigma away from the mean of the\
+    \ insert length\ndistribution will be discarded."
+  synonyms:
+  - --sd-max
+  args: !SimpleFlagArg
+    name: SD_MAX
+  optional: true
+- !Flag
+  description: "Output directory.\n"
+  synonyms:
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: pe_utils [options]\n\nOptions:\n  -h, --help            show this\
+  \ help message and exit\n  --compute-insert-len=COMPUTE_INSERT_LEN\n           \
+  \             Compute insert length for given sample. Takes as input\n         \
+  \               (1) a comma-separated list of sorted, indexed BAM\n            \
+  \            files with headers (or a single BAM filename), (2) a\n            \
+  \            GFF file with constitutive exons. Outputs the insert\n            \
+  \            length distribution into the output directory.\n  --no-bam-filter \
+  \      If provided, this ignores the BAM file flags that\n                     \
+  \   state whether the read was paired or not, and instead\n                    \
+  \    uses only the read IDs to pair up the mates. Use this\n                   \
+  \     if your paired-end BAM was the result of a samtools\n                    \
+  \    merge operation.\n  --min-exon-size=MIN_EXON_SIZE\n                       \
+  \ Minimum size of constitutive exon (in nucleotides)\n                        that\
+  \ should be used in the computation. Default is 500\n                        bp.\n\
+  \  --sd-max=SD_MAX       Number of standard deviations used to define outliers.\n\
+  \                        By default, set to 2, meaning that any points at least\n\
+  \                        2*sigma away from the mean of the insert length\n     \
+  \                   distribution will be discarded.\n  --output-dir=OUTPUT_DIR\n\
+  \                        Output directory.\n"
+generated_using:
+- --help

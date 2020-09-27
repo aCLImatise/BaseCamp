@@ -1,0 +1,141 @@
+!Command
+command:
+- cath-map-clusters
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_file
+  optional: false
+named:
+- !Flag
+  description: '[ --version ]                      Output version information'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Map numbers from previous clusters specified in <file> to their equivalents\
+    \ in the working clusters where possible and\nif all the cluster names in <file>\
+    \ are positive integers, renumber leftover new clusters from one plus the largest\n\
+    or if not, rename with new_cmc_cluster_1, new_cmc_cluster_2, ...\n(of, if unspecified,\
+    \ renumber all working clusters from 1 upwards)"
+  synonyms:
+  - --map-from-clustmemb-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Read batches of work from the input file with lines of format: `batch_id\
+    \ working_clust_memb_file prev_clust_memb_file` where:\n* batch_id           \
+    \  is a unique label for the batch (with no whitespace)\n* prev_clust_memb_file\
+    \ is optional"
+  synonyms:
+  - --read-batches-from-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(=60)    Define domain equivalence as: sharing more than <percent>%\
+    \ of residues (over the longest domain)\n(where <percent> must be ≥ 50)"
+  synonyms:
+  - --min_equiv_dom_ol
+  args: !SimpleFlagArg
+    name: percent
+  optional: true
+- !Flag
+  description: "(=60)  Define cluster equivalence as: more than <percent>% of the\
+    \ map-from cluster's members having equivalents in the working cluster\n[and them\
+    \ being equivalent to > 20% of the working cluster's entries and > 50% of those\
+    \ that have an equivalence]\n(where <percent> must be ≥ 50%)"
+  synonyms:
+  - --min_equiv_clust_ol
+  args: !SimpleFlagArg
+    name: percent
+  optional: true
+- !Flag
+  description: Append batch ID <id> as an extra column in the results output (equivalent
+    to the first column in a --multi-batch-file input file)
+  synonyms:
+  - --append-batch-id
+  args: !SimpleFlagArg
+    name: id
+  optional: true
+- !Flag
+  description: Write output to file <file> (or, if unspecified, to stdout)
+  synonyms:
+  - --output-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Print a summary of the renumbering to file <file>
+  synonyms:
+  - --summarise-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Output the entry (domain)-level mapping results
+  synonyms:
+  - --print-entry-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show the criteria for sorting unmapped clusters
+  synonyms:
+  - --sorting-help
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]                         Output help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: cath-map-clusters [options] <input_file>\n\nMap names from previous\
+  \ clusters to new clusters based on (the overlaps between)\ntheir members (which\
+  \ may be specified as regions within a parent sequence).\nRenumber any clusters\
+  \ with no equivalents.\n\nWhen <input_file> is -, the input is read from standard\
+  \ input.\n\nMiscellaneous:\n  -h [ --help ]                         Output help\
+  \ message\n  -v [ --version ]                      Output version information\n\n\
+  Input:\n  --map-from-clustmemb-file <file>      Map numbers from previous clusters\
+  \ specified in <file> to their equivalents in the working clusters where possible\
+  \ and\n                                        if all the cluster names in <file>\
+  \ are positive integers, renumber leftover new clusters from one plus the largest\n\
+  \                                        or if not, rename with new_cmc_cluster_1,\
+  \ new_cmc_cluster_2, ...\n                                        (of, if unspecified,\
+  \ renumber all working clusters from 1 upwards)\n  --read-batches-from-input   \
+  \          Read batches of work from the input file with lines of format: `batch_id\
+  \ working_clust_memb_file prev_clust_memb_file` where:\n                       \
+  \                  * batch_id             is a unique label for the batch (with\
+  \ no whitespace)\n                                         * prev_clust_memb_file\
+  \ is optional\n\nMapping:\n  --min_equiv_dom_ol <percent> (=60)    Define domain\
+  \ equivalence as: sharing more than <percent>% of residues (over the longest domain)\n\
+  \                                        (where <percent> must be ≥ 50)\n  --min_equiv_clust_ol\
+  \ <percent> (=60)  Define cluster equivalence as: more than <percent>% of the map-from\
+  \ cluster's members having equivalents in the working cluster\n                \
+  \                        [and them being equivalent to > 20% of the working cluster's\
+  \ entries and > 50% of those that have an equivalence]\n                       \
+  \                 (where <percent> must be ≥ 50%)\n\nOutput:\n  --append-batch-id\
+  \ <id>                Append batch ID <id> as an extra column in the results output\
+  \ (equivalent to the first column in a --multi-batch-file input file)\n  --output-to-file\
+  \ <file>               Write output to file <file> (or, if unspecified, to stdout)\n\
+  \  --summarise-to-file <file>            Print a summary of the renumbering to file\
+  \ <file>\n  --print-entry-results                 Output the entry (domain)-level\
+  \ mapping results\n\nDetailed help:\n  --sorting-help                        Show\
+  \ the criteria for sorting unmapped clusters\n\nThe input cluster-membership data\
+  \ should contain lines like:\n\ncluster_name domain_id\n\n...where domain_id is\
+  \ a sequence/protein name, optionally suffixed with the domain's segments in notation\
+  \ like '/100-199,350-399'. The suffixes should be present for all of the domain\
+  \ IDs or for none of them. Domains shouldn't overlap with others in the same cluster-membership\
+  \ data.\n\nInput data doesn't have to be grouped by cluster.\n\nNOTE: When mapping\
+  \ (ie using --map-from-clustmemb-file), the mapping algorithm treats the two cluster\
+  \ membership files differently - see --min_equiv_clust_ol description.\n\nPlease\
+  \ tell us your cath-tools bugs/suggestions : https://github.com/UCLOrengoGroup/cath-tools/issues/new\n"
+generated_using:
+- --help

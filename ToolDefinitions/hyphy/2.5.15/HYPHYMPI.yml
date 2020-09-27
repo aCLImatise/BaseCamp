@@ -31,59 +31,10 @@ subcommands:
     name: else
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: calculator mode; causes HyPhy to drop into an expression evaluation
-        until 'exit' is typed
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: debug mode; causes HyPhy to drop into an expression evaluation
-        mode upon script error
-      synonyms:
-      - -d
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: interactive mode; causes HyPhy to always prompt the user for analysis
-        options, even when defaults are available
-      synonyms:
-      - -i
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "postprocessor mode; drops HyPhy into an interactive mode where\
-        \ general post-processing scripts can be selected\nupon analysis completion"
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: write diagnostic messages to messages.log
-      synonyms:
-      - -m
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "will be passed to the analysis (which uses KeywordArgument directives)\n\
-        multiple values for the same keywords are treated as an array of values for\
-        \ multiple selectors"
-      synonyms:
-      - --keyword
-      args: !SimpleFlagArg
-        name: value
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -110,7 +61,356 @@ subcommands:
         name: else
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: calculator mode; causes HyPhy to drop into an expression evaluation
+            until 'exit' is typed
+          synonyms:
+          - -c
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: debug mode; causes HyPhy to drop into an expression evaluation
+            mode upon script error
+          synonyms:
+          - -d
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: interactive mode; causes HyPhy to always prompt the user for
+            analysis options, even when defaults are available
+          synonyms:
+          - -i
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "postprocessor mode; drops HyPhy into an interactive mode where\
+            \ general post-processing scripts can be selected\nupon analysis completion"
+          synonyms:
+          - -p
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: write diagnostic messages to messages.log
+          synonyms:
+          - -m
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "will be passed to the analysis (which uses KeywordArgument\
+            \ directives)\nmultiple values for the same keywords are treated as an\
+            \ array of values for multiple selectors"
+          synonyms:
+          - --keyword
+          args: !SimpleFlagArg
+            name: value
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: i=0;
+            position: 0
+            name: to
+            optional: false
+          - !Positional
+            description: Branch under condition 'echoFlag'
+            position: 1
+            name: else
+            optional: false
+          - !Positional
+            description: fprintf(stdout, "\n|------------|-------|-----------|------------|");
+            position: 2
+            name: to
+            optional: false
+          - !Positional
+            description: return 0;
+            position: 3
+            name: else
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "\nAvailable analysis command line options\n---------------------------------------\n\
+            Use --option VALUE syntax to invoke\nIf a [reqired] option is not provided\
+            \ on the command line, the analysis will prompt for its value\n[conditionally\
+            \ required] options may or not be required based on the values of other\
+            \ options\n\n\n\n****** RUNNING AIC BASED MODEL SELECTION ******\n\n\n\
+            |  Model     | # prm |    lnL    |    AIC     |\n|------------|-------|-----------|------------|Error:\n\
+            \nMaster node received an error:A recursive dependency error in _Variable::Compute;\
+            \ this is an HBL implementation bug; offending variable is 'MESSAGE_LOGGING'\n\
+            \nFunction call stack\n1 :  Branch under condition 'k<Columns(modelStrings)'\n\
+            \tto\n\t\ti=0;\n\telse\n\t\tBranch under condition 'echoFlag'\n\tto\n\t\
+            \tfprintf(stdout, \"\\n|------------|-------|-----------|------------|\"\
+            );\n\telse\n\t\treturn 0;\n\n-------\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - HYPHYMPI
+          - sw
+          positional:
+          - !Positional
+            description: firstTime=0;
+            position: 0
+            name: to
+            optional: false
+          - !Positional
+            description: fprintf(stdout, "Finshed Segment ", Format(segmentStart,0,0),
+              " - ", Format(segmentEnd,0,0), "\n");
+            position: 1
+            name: else
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "\nAvailable analysis command line options\n---------------------------------------\n\
+            Use --option VALUE syntax to invoke\nIf a [reqired] option is not provided\
+            \ on the command line, the analysis will prompt for its value\n[conditionally\
+            \ required] options may or not be required based on the values of other\
+            \ options\n\nError:\n\nMaster node received an error:A recursive dependency\
+            \ error in _Variable::Compute; this is an HBL implementation bug; offending\
+            \ variable is 'MESSAGE_LOGGING'\n\nFunction call stack\n1 :  Branch under\
+            \ condition 'firstTime'\n\tto\n\t\tfirstTime=0;\n\telse\n\t\tfprintf(stdout,\
+            \ \"Finshed Segment \", Format(segmentStart,0,0), \" - \", Format(segmentEnd,0,0),\
+            \ \"\\n\");\n\n-------\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - HYPHYMPI
+          - sa
+          positional:
+          - !Positional
+            description: fprintf(stdout, "Input file contained 3 or fewer sequences
+              - not much inference to be done!\n");
+            position: 0
+            name: to
+            optional: false
+          - !Positional
+            description: Branch under condition 'randomOption==1'
+            position: 1
+            name: else
+            optional: false
+          - !Positional
+            description: treeNodes={filteredData.species,1};
+            position: 2
+            name: to
+            optional: false
+          - !Positional
+            description: additionOrder={filteredData.species,1};
+            position: 3
+            name: else
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "\nAvailable analysis command line options\n---------------------------------------\n\
+            Use --option VALUE syntax to invoke\nIf a [reqired] option is not provided\
+            \ on the command line, the analysis will prompt for its value\n[conditionally\
+            \ required] options may or not be required based on the values of other\
+            \ options\n\nError:\n\nMaster node received an error:A recursive dependency\
+            \ error in _Variable::Compute; this is an HBL implementation bug; offending\
+            \ variable is 'MESSAGE_LOGGING'\n\nFunction call stack\n1 :  Branch under\
+            \ condition 'filteredData.species<=3'\n\tto\n\t\tfprintf(stdout, \"Input\
+            \ file contained 3 or fewer sequences - not much inference to be done!\\\
+            n\");\n\telse\n\t\tBranch under condition 'randomOption==1'\n\tto\n\t\t\
+            treeNodes={filteredData.species,1};\n\telse\n\t\tadditionOrder={filteredData.species,1};\n\
+            \n-------\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: hyphy or HYPHYMPI [-h] [--help][-c] [-d] [-i] [-p] [BASEPATH=directory\
+          \ path] [CPU=integer] [LIBPATH=library path] [USEPATH=library path] [<standard\
+          \ analysis name> or <path to hyphy batch file>] [--keyword value ...] [positional\
+          \ arguments ...]\n\nExecute a HyPhy analysis, either interactively, or in\
+          \ batch mode\noptional flags:\n  -h --help                show this help\
+          \ message and exit\n  -c                       calculator mode; causes HyPhy\
+          \ to drop into an expression evaluation until 'exit' is typed\n  -d    \
+          \                   debug mode; causes HyPhy to drop into an expression\
+          \ evaluation mode upon script error\n  -i                       interactive\
+          \ mode; causes HyPhy to always prompt the user for analysis options, even\
+          \ when defaults are available\n  -p                       postprocessor\
+          \ mode; drops HyPhy into an interactive mode where general post-processing\
+          \ scripts can be selected\n                           upon analysis completion\n\
+          \n  -m                       write diagnostic messages to messages.log\n\
+          optional global arguments:\n  BASEPATH=directory path  defines the base\
+          \ directory for all path operations (default is pwd)\n  CPU=integer    \
+          \          if compiled with OpenMP multithreading support, requests this\
+          \ many threads; HyPhy could use fewer than this\n                      \
+          \     but never more; default is the number of CPU cores (as computed by\
+          \ OpenMP) on the system\n  LIBPATH=directory path   defines the directory\
+          \ where HyPhy library files are located (default installed location is /usr/local/lib/hyphy\n\
+          \                           or as configured during CMake installation\n\
+          \  USEPATH=directory path   specifies the optional working and relative\
+          \ path directory (default is BASEPATH)\n\n  ENV=expression           set\
+          \ HBL enviroment variables via explicit statements\n                   \
+          \        for example ENV='DEBUG_MESSAGES=1;WRITE_LOGS=1'\n  batch file to\
+          \ run        if specified, execute this file, otherwise drop into an interactive\
+          \ mode\n  analysis arguments       if batch file is present, all remaining\
+          \ positional arguments are interpreted as inputs to analysis prompts\n\n\
+          optional keyword arguments (can appear anywhere); will be consumed by the\
+          \ requested analysis\n  --keyword value          will be passed to the analysis\
+          \ (which uses KeywordArgument directives)\n                           multiple\
+          \ values for the same keywords are treated as an array of values for multiple\
+          \ selectors\n\nusage examples:\n\nSelect a standard analysis from the list\
+          \ : \n\thyphy -i \nRun a standard analysis with default options and one\
+          \ required user argument; \n\thyphy busted --alignment path/to/file\nRun\
+          \ a standard analysis with additional keyword arguments \n\thyphy busted\
+          \ --alignment path/to/file --srv No\nSee whcih arguments are understood\
+          \ by a standard analysis \n\thyphy busted --help\nRun a custom analysis\
+          \ and pass it some arguments \n\thyphy path/to/hyphy.script argument1 'argument\
+          \ 2' \nAvailable standard keyword analyses (located in /usr/local/share/hyphy/)\n\
+          \tmeme \t[MEME] Test for episodic site-level selection using MEME (Mixed\
+          \ Effects Model of Evolution).\n\tmh \tMerge two datafiles by combining\
+          \ sites (horizontal merge).\n\tmv \tMerge two datafiles by combining sequences\
+          \ (vertical merge).\n\tmcc \tCompare mean within-clade branch length or\
+          \ pairwise divergence between two or more non-nested cladesd in a tree\n\
+          \tmclk \tTest for the presence of a global molecular clock on the tree using\
+          \ its root (the resulting clock tree is unrooted, but one of the root branches\
+          \ can be divided in such a way as to enforce the clock).\n\tmgvsgy \tCompare\
+          \ the fits of MG94 and GY94 models (crossed with an arbitrary nucleotide\
+          \ bias) on codon data.\n\tmt \tSelect an evolutionary model for nucleotide\
+          \ data, using the methods of 'ModelTest' - a program by David Posada and\
+          \ Keith Crandall.\n\tfel \t[FEL] Test for pervasive site-level selection\
+          \ using FEL (Fixed Effects Likelihood).\n\tfubar \t[FUBAR] Test for pervasive\
+          \ site-level selection using FUBAR (Fast Unconstrained Bayesian AppRoximation\
+          \ for inferring selection).\n\tfade \t[FADE] Test a protein alignment for\
+          \ directional selection towards specific amino acids along a specified set\
+          \ of test branches using FADE (a FUBAR Approach to Directional Evolution).\n\
+          \tfaa \tFit a multiple fitness class model to amino acid data.\n\tfmm \t\
+          \ \"Fit a model that permits double (and triple) instantaneous nucleotide\
+          \ substitutions\"\n\tfst \tCompute various measures of F_ST and (optionally)\
+          \ perform permutation tests.\n\tslac \t[SLAC] Test for pervasive site-level\
+          \ selection using SLAC (Single Likelihood Ancestor Counting).\n\tsm \tPeform\
+          \ a classic and structured Slatkin-Maddison test for the number migrations.\n\
+          \tsns \tParse a codon alignment for ambiguous codons and output a complete\
+          \ list/resolutions/syn and ns counts by sequence/position\n\tsw \tPerform\
+          \ a sliding window analysis of sequence data.\n\tsa \tPerform a phylogeny\
+          \ reconstuction for nucleotide, protein or codon data with user-selectable\
+          \ models using the method of sequential addition.\n\tsbl \tSearch an alignment\
+          \ for a single breakpoint.\n\tspl \tPlot genetic distances (similarity)\
+          \ of one sequence against all others in an alignment, using a sliding window.\
+          \ Optionally, determine NJ-based clustering and bootstrap support in every\
+          \ window. This is a HyPhy adaptation of the excellent (but Windows only\
+          \ tool) SimPlot (and/or VarPlot) written by Stuart Ray (http://sray.med.som.jhmi.edu/SCRoftware/simplot/)\n\
+          \tbusted \t[BUSTED] Test for episodic gene-wide selection using BUSTED (Branch-site\
+          \ Unrestricted Statistical Test of Episodic Diversification).\n\tbgm \t\
+          [BGM] Apply Bayesian Graphical Model inference to substitution histories\
+          \ at individual sites.\n\tbva \tRun a selection analysis using a general\
+          \ discrete bivariate (dN AND dS) distribution; the appropriate number of\
+          \ rate classes is determined automatically.\n\tbrp \tInterpret bivariate\
+          \ codon rate analysis results.\n\tbsel \tSplit a tree into two clades (compartments)\
+          \ and a separating branch and test for equality of dN/dS between compartments\
+          \ and for selection along the separating branch using a series of Likelihood\
+          \ Ratio Tests.\n\tbst \tUse the improved branch-site REL method of Yang\
+          \ and Nielsen (2005) to look for episodic selection in sequences.\n\tbt\
+          \ \tTest whether a branch (or branches) in the tree evolves under different\
+          \ dN and dS than the rest of the tree.\n\tabsrel \t[aBSREL] Test for lineage-specific\
+          \ evolution using the branch-site method aBS-REL (Adaptive Branch-Site Random\
+          \ Effects Likelihood).\n\tacd \tAnalyse codon data with a variery of standard\
+          \ models using given tree.\n\tad \tAnalyse nucleotide or aminoacid data\
+          \ with a variery of standard models using given tree.\n\tadn \tAnalyse di-nucleotide\
+          \ data with a variery of standard models using given tree.\n\tafd \tAnalyse\
+          \ nucleotide data with a variery of standard models using given tree, estimating\
+          \ equilibrium frequencies as parameters\n\tana \tRun a selection analysis.\n\
+          \tai \tPeter Simmonds' Association Index (AI).\n\trelax \t[RELAX] Test for\
+          \ relaxation of selection pressure along a specified set of test branches\
+          \ using RELAX (a random effects test of selection relaxation).\n\tred \t\
+          Replace sufficiently close sequence with their MRCA\n\trpc \tInterpret analysis\
+          \ results.\n\trmv \tRemove sequences with stop codons from the data.\n\t\
+          rble \tUse a series of random effects branch-site models to perform robust\
+          \ model-averaged branch length estimation under a codon model with episodic\
+          \ selection.\n\trclk \tTest for the presence of a global molecular clock\
+          \ on the tree. The tree is rooted at every possible branch.\n\trr \tUse\
+          \ relative rate test on three species and a variety of standard models\n\
+          \trrt \tUse relative ratio test on 2 datasets and a variety of standard\
+          \ models\n\tprime \t[PRIME] \n\tprotein \tCompare the fit of several amino-acid\
+          \ substitution models to an alignment using AIC and c-AIC.\n\tprr \tUsing\
+          \ the model and the outgroup provided by the user, perform relative rate\
+          \ tests with all possible pair of species from the data file. \n\tprrti\
+          \ \tGiven a list of files (and optinally genetic code tables), perform relative\
+          \ ratio tests on all possible pair of the data files.\n\tpdf \tRead sequence\
+          \ data, select a contiguous subset of sites and save it to another datafile.\n\
+          \tphb \tRun an example file from our book chapter in 'The Phylogentic Handbook'\
+          \ (2nd edition).\n\tpsm \tTest for positive selection using the approach\
+          \ of Nielsen and Yang, by sampling global dN/dS from an array of distributions,\
+          \ and using Bayesian posterior to identify the sites with dN/dS>1. Multiple\
+          \ subsets of one data set with shared dN/dS.\n\tparris \tA PARtitioning\
+          \ approach for Robust Inference of Selection (written by K. Scheffler)\n\
+          \tcontrast-fel \t[Contrast-FEL] \"Perform a site-level test for differences\
+          \ in selective pressures between predetermined sets of branches.\"\n\tconv\
+          \ \tTranslate an in-frame codon alignment to proteins.\n\tcorr \tAssess\
+          \ the correlation between phylogenetic and compartment segregation using\
+          \ generalized correlation coefficients and permutation tests.\n\tcod \t\
+          Compare all 203 reversible nucleotide models composed with MG94 to extend\
+          \ them to codon data, and perform LRT and AIC model selection.\n\tcmp \t\
+          Use a series of LR tests to decide if dN and dS rate distributions are the\
+          \ same or different between two codon alignments.\n\tcaln \tAlign coding\
+          \ sequences to reference (assuming star topology) using a codon-based dynamic\
+          \ programming algorithm (good for fixing multiple frameshifts). Designed\
+          \ with within-patient HIV sequences in mind.\n\tclg \tRemove 'gappy' sites\
+          \ from alignments based on a user-specified gap threshold.\n\tcln \tConvert\
+          \ sequence names to HyPhy valid identifiers if needed and replace stop codons\
+          \ with gaps in codon data if any are present.\n\tclsr \tPartition sequences\
+          \ into clusters based on a distance matrix.\n\tclst \tApply clustering methods\
+          \ for phylogeny reconstruction (UPGMA,WPGMA,complete or minimal linkage)\
+          \ to nucleotide, protein and codon data, using MLE of pairwise distances\
+          \ with user-selectable models. These methods produce trees with global molecular\
+          \ clock.\n\tleisr \tInfer relative evolutionary rates on a nucleotide or\
+          \ protein alignment, in a spirit similar to Rate4Site (PMID: 12169533).\n\
+          \tlz \tCompute Lempel-Ziv complexity and entropy of (possibly unaligned)\
+          \ sequences\n\tlclk \tTest for the presence of a local molecular clock.\
+          \ Every subtree of the given tree is subjected to the clock constraint,\
+          \ while the remainder of the tree is free of the clock constraint.\n\tlht\
+          \ \tA Likelihood Ratio Test to detect conflicting phylogenetic signal Huelsenbeck\
+          \ and Bull, 1996. [Contributed by Olivier Fedrigo].\n\ttc \tTest whether\
+          \ a group of sequences in a sample cluster together\n\tts \tPerform an exhaustive\
+          \ tree space search for nucleotide or protein data with user-selectable\
+          \ models. Should only be used for data sets with less than 10 taxa!\n\t\
+          dtr \tRead sequence data (#,PHYLIP,NEXUS) and convert to a different format\n\
+          \tdist \tGenerate a pairwise sequence distance matrix in PHYLIP format.\n\
+          \tkh \tPerform a Kishino-Hasegawa test on two competing phylogenies\n\t\
+          ub \tObtain an upper bound on the likelihood score of a dataset.\n\tnuc\
+          \ \tCompare all 203 reversible nucleotide models and perform LRT and AIC\
+          \ model selection.\n\tnj \tPerform a phylogeny reconstuction for nucleotide,\
+          \ protein or codon data with user-selectable models using the method of\
+          \ neighbor joining.\n\tny \tTest for positive selection using the approach\
+          \ of Nielsen and Yabg, by sampling global dN/dS from an array of distributions,\
+          \ and using Bayesian posterior to identify the sites with dN/dS>1.\n\tgard\
+          \ \t[GARD] Screen an alignment using GARD (requires an MPI environment).\n\
+          \tgrdr \tProcess GARD results.\n\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -128,12 +428,9 @@ subcommands:
         \tto\n\t\ti=0;\n\telse\n\t\tBranch under condition 'echoFlag'\n\tto\n\t\t\
         fprintf(stdout, \"\\n|------------|-------|-----------|------------|\");\n\
         \telse\n\t\treturn 0;\n\n-------\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - HYPHYMPI
-      - sw
+      command: *id005
       positional:
       - !Positional
         description: firstTime=0;
@@ -165,9 +462,7 @@ subcommands:
         \\n\");\n\n-------\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - HYPHYMPI
-      - sa
+      command: *id006
       positional:
       - !Positional
         description: fprintf(stdout, "Input file contained 3 or fewer sequences -
@@ -210,13 +505,7 @@ subcommands:
         \telse\n\t\tadditionOrder={filteredData.species,1};\n\n-------\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: hyphy or HYPHYMPI [-h] [--help][-c] [-d] [-i] [-p] [BASEPATH=directory\
@@ -405,7 +694,7 @@ subcommands:
     name: else
     optional: false
   named: []
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag:
@@ -446,7 +735,7 @@ subcommands:
     name: else
     optional: false
   named: []
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag:

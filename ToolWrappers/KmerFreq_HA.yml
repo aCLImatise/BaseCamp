@@ -1,0 +1,164 @@
+!Command
+command:
+- KmerFreq_HA
+positional:
+- !Positional
+  description: 'Usage:  KmerFreq_HA [OPTION]'
+  position: 0
+  name: '05'
+  optional: false
+named:
+- !Flag
+  description: "Set kmer size(13~27), default=17.\nNote: kmer size should be set between\
+    \ 13 and 27."
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set read length used to get kmers, default=read's real length.\nNote:\
+    \ the max read length to get kmer frequency spectrum."
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set ignored length of the beginning of a read, default=0.\nNote: set\
+    \ this option when sequencing quality is low in the beginning of reads."
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set ignored length of the end of a read, default=0\nNote: set this\
+    \ option when sequencing quality is low in the end of reads."
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set total bases number used to get kmers, default=all input bases.\n\
+    Note: when sequencing depth is too much, you can set this option, about 30X\n\
+    data bases is preferred."
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set input read file list.\nNote: no default value, the address list\
+    \ of reads file, each reads files take a line."
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: "Set the output prefix, default=output.\nNote: often use species name\
+    \ as prefix."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: "Set initial size of hash table, default=50000000.\nNote: this is the\
+    \ initial size, and program will enlarge the HashSet memory\nspace (*2 each time)\
+    \ when memeory is insufficient."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set thread number, default=1.\nNote: the more thread number, the high\
+    \ speed, however, this should be less than\nthe number of CPU cores."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set maximum read length, default=100.\nNote: program will alloc memeory\
+    \ buffer base on read length, so you should set the\nmaximun read length in the\
+    \ read files."
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set whether use Bloom filter to reduce memory usage, 0:no; 1:yes;\
+    \ default=0.\nNote: reduce memeory usage by using Bloom filter to reduce kmer\
+    \ which frequency lower than(<=) 2."
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set the Bloom array size, default=1000000000.\nNote: you can set by\
+    \ this formula:(genome_size+genome_size*coverage*error_rate*kmer_size)*5/4."
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Set the kmer-freq analysis divide into how many steps(=1, 2, 4, 8),\
+    \ default =1.\nNote: the more step, the less memeory usage, but need more time."
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show detailed help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nProgram:\tKmerFreq_HA\nVersion:\tv2.03\nAuthor:\t\tBGI-ShenZhen\nCompileDate:\t\
+  Jul 16 2018 time: 16:18:05\n\nUsage:\tKmerFreq_HA [OPTION]\n\n\t-k <int>  Set kmer\
+  \ size(13~27), default=17.\n\t            Note: kmer size should be set between\
+  \ 13 and 27.\n\t-r <int>  Set read length used to get kmers, default=read's real\
+  \ length.\n\t            Note: the max read length to get kmer frequency spectrum.\n\
+  \t-a <int>  Set ignored length of the beginning of a read, default=0.\n\t      \
+  \      Note: set this option when sequencing quality is low in the beginning of\
+  \ reads.\n\t-d <int>  Set ignored length of the end of a read, default=0\n\t   \
+  \         Note: set this option when sequencing quality is low in the end of reads.\n\
+  \t-g <int>  Set total bases number used to get kmers, default=all input bases.\n\
+  \t            Note: when sequencing depth is too much, you can set this option,\
+  \ about 30X\n\t            data bases is preferred.\n\t-l <str>  Set input read\
+  \ file list.\n\t            Note: no default value, the address list of reads file,\
+  \ each reads files take a line.\n\t-p <str>  Set the output prefix, default=output.\n\
+  \t            Note: often use species name as prefix.\n\t-i <int>  Set initial size\
+  \ of hash table, default=50000000.\n\t            Note: this is the initial size,\
+  \ and program will enlarge the HashSet memory \n\t            space (*2 each time)\
+  \ when memeory is insufficient.\n\t-t <int>  Set thread number, default=1.\n\t \
+  \           Note: the more thread number, the high speed, however, this should be\
+  \ less than \n\t            the number of CPU cores.\n\t-L <int>  Set maximum read\
+  \ length, default=100.\n\t            Note: program will alloc memeory buffer base\
+  \ on read length, so you should set the\n\t            maximun read length in the\
+  \ read files.\n\t-f <int>  Set whether use Bloom filter to reduce memory usage,\
+  \ 0:no; 1:yes; default=0.\n\t            Note: reduce memeory usage by using Bloom\
+  \ filter to reduce kmer which frequency lower than(<=) 2.\n\t-s <int>  Set the Bloom\
+  \ array size, default=1000000000.\n\t            Note: you can set by this formula:(genome_size+genome_size*coverage*error_rate*kmer_size)*5/4.\n\
+  \t-b <int>  Set the kmer-freq analysis divide into how many steps(=1, 2, 4, 8),\
+  \ default =1.\n\t            Note: the more step, the less memeory usage, but need\
+  \ more time.\n\t-h        Show detailed help\n\nExample: \nKmerFreq_HA -k 17 -i\
+  \ 450000000 -l read.lst -p Yeast -t 5 -L 100 >kmerfreq.cout 2>kmerfreq.cerr;\nKmerFreq_HA\
+  \ -k 23 -i 600000000 -t 8 -f 1 -s 6000000000 -l read.list -p Human >kmerfreq.cout\
+  \ 2>kmerfreq.cerr;\n\nNote: Please don't set -d and -r at the same time.\nAdvice:\
+  \ About 30X data is preferred in calculating the Kmer frequency spectrum.\n\n"
+generated_using:
+- -h

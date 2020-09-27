@@ -1,0 +1,107 @@
+!Command
+command:
+- megalodon_extras
+- merge
+- modified_bases
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 1
+  name: output.
+  optional: false
+- !Positional
+  description: --force-uint32-pos-index
+  position: 2
+  name: process.
+  optional: false
+named:
+- !Flag
+  description: "Output directory. Cannot exist before this command.\nDefault: megalodon_merge_mods_results"
+  synonyms:
+  - --output-megalodon-results-dir
+  args: !SimpleFlagArg
+    name: OUTPUT_MEGALODON_RESULTS_DIR
+  optional: true
+- !Flag
+  description: "Batch size to insert position and statistics data.\nDefault: 100000"
+  synonyms:
+  - --data-batch-size
+  args: !SimpleFlagArg
+    name: DATA_BATCH_SIZE
+  optional: true
+- !Flag
+  description: "Maximum number of processes to open for reading\nstatistics. Each\
+    \ process must load all output database\nin memory indices, and thus may incur\
+    \ high memory\nusage. Default: 4"
+  synonyms:
+  - --max-processes
+  args: !SimpleFlagArg
+    name: MAX_PROCESSES
+  optional: true
+- !Flag
+  description: Do not use multiprocessing with one input database per
+  synonyms:
+  - --single-process
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Setting for database performance versus corruption\nprotection. Options:\
+    \ 0 (DB corruption on application\ncrash), 1 (DB corruption on system crash),\
+    \ 2 (DB safe\nmode). Default: 1"
+  synonyms:
+  - --database-safety
+  args: !SimpleFlagArg
+    name: DATABASE_SAFETY
+  optional: true
+- !Flag
+  description: Overwrite output directory if it exists.
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras merge modified_bases [-h]\n                  \
+  \                           [--output-megalodon-results-dir OUTPUT_MEGALODON_RESULTS_DIR]\n\
+  \                                             [--data-batch-size DATA_BATCH_SIZE]\n\
+  \                                             [--max-processes MAX_PROCESSES]\n\
+  \                                             [--single-process]\n             \
+  \                                [--force-uint32-pos-index]\n                  \
+  \                           [--database-safety DATABASE_SAFETY]\n              \
+  \                               [--overwrite]\n                                \
+  \             megalodon_results_dirs\n                                         \
+  \    [megalodon_results_dirs ...]\n\npositional arguments:\n  megalodon_results_dirs\n\
+  \                        Output megalodon directories with per_read_mods in\n  \
+  \                      output.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --output-megalodon-results-dir OUTPUT_MEGALODON_RESULTS_DIR\n\
+  \                        Output directory. Cannot exist before this command.\n \
+  \                       Default: megalodon_merge_mods_results\n  --data-batch-size\
+  \ DATA_BATCH_SIZE\n                        Batch size to insert position and statistics\
+  \ data.\n                        Default: 100000\n  --max-processes MAX_PROCESSES\n\
+  \                        Maximum number of processes to open for reading\n     \
+  \                   statistics. Each process must load all output database\n   \
+  \                     in memory indices, and thus may incur high memory\n      \
+  \                  usage. Default: 4\n  --single-process      Do not use multiprocessing\
+  \ with one input database per\n                        process.\n  --force-uint32-pos-index\n\
+  \                        Force position database index to use uint32. Default\n\
+  \                        will swap to uint64 (doubling memory use) for\n       \
+  \                 references > 2.1 gigabases. If set, no more than 2.1\n       \
+  \                 billion unique stranded reference sites should contain\n     \
+  \                   modified base scores.\n  --database-safety DATABASE_SAFETY\n\
+  \                        Setting for database performance versus corruption\n  \
+  \                      protection. Options: 0 (DB corruption on application\n  \
+  \                      crash), 1 (DB corruption on system crash), 2 (DB safe\n \
+  \                       mode). Default: 1\n  --overwrite           Overwrite output\
+  \ directory if it exists.\n"
+generated_using:
+- --help

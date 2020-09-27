@@ -37,18 +37,10 @@ subcommands:
     - -S
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: "Compare IDs in the file only up to the first space in\nthe IDs\
-        \ in the FASTA file\n"
-      synonyms:
-      - -S
-      - --compare-up-to-the-first-space
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -81,7 +73,131 @@ subcommands:
         - -S
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: "Compare IDs in the file only up to the first space in\nthe\
+            \ IDs in the FASTA file\n"
+          synonyms:
+          - -S
+          - --compare-up-to-the-first-space
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: o-get-reads-from-fasta
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: input_fasta
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: ids_file
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: output_fasta
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -S
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: o-get-reads-from-fasta [-h] [-S] input_fasta ids_file\
+            \ output_fasta\no-get-reads-from-fasta: error: too few arguments\n"
+          generated_using: &id004 []
+        - !Command
+          command: &id005
+          - o-get-reads-from-fasta
+          - ids_file
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: o-get-reads-from-fasta
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: input_fasta
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: ids_file
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: output_fasta
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -S
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: o-get-reads-from-fasta [-h] [-S] input_fasta ids_file\
+            \ output_fasta\no-get-reads-from-fasta: error: too few arguments\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: o-get-reads-from-fasta [-h] [-S] input_fasta ids_file output_fasta\n\
+          \nGenerates a new FASTA file with all matching read IDs in a FASTA\n\npositional\
+          \ arguments:\n  input_fasta           Input FASTA file path\n  ids_file\
+          \              Text file with read IDs in each line to sample from\n   \
+          \                     the input file\n  output_fasta          Output FASTA\
+          \ file path\n\noptional arguments:\n  -h, --help            show this help\
+          \ message and exit\n  -S, --compare-up-to-the-first-space\n            \
+          \            Compare IDs in the file only up to the first space in\n   \
+          \                     the IDs in the FASTA file\n"
+        generated_using: &id006
+        - --help
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -94,11 +210,9 @@ subcommands:
       version_flag:
       help_text: "usage: o-get-reads-from-fasta [-h] [-S] input_fasta ids_file output_fasta\n\
         o-get-reads-from-fasta: error: too few arguments\n"
-      generated_using: &id004 []
+      generated_using: *id004
     - !Command
-      command: &id005
-      - o-get-reads-from-fasta
-      - ids_file
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -142,13 +256,7 @@ subcommands:
         o-get-reads-from-fasta: error: too few arguments\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: o-get-reads-from-fasta [-h] [-S] input_fasta ids_file output_fasta\n\
@@ -160,8 +268,7 @@ subcommands:
       \  -S, --compare-up-to-the-first-space\n                        Compare IDs\
       \ in the file only up to the first space in\n                        the IDs\
       \ in the FASTA file\n"
-    generated_using: &id006
-    - --help
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -205,7 +312,7 @@ subcommands:
     - -S
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

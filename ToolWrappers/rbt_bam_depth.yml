@@ -1,0 +1,74 @@
+!Command
+command:
+- rbt
+- bam-depth
+positional: []
+named:
+- !Flag
+  description: Skip reads with mask bits set [UNMAP, SECONDARY, QCFAIL, DUP].
+  synonyms:
+  - -e
+  - --excl-flags
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Skip reads with mask bits unset [].
+  synonyms:
+  - -i
+  - --incl-flags
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Maximum read length to consider. This affects the speed of the involved\
+    \ pileup. Reads\nlonger than this length can be missed when calculating the depth.\
+    \ [default: 1000]"
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Minimum mapping quality. [default: 0]'
+  synonyms:
+  - -q
+  - --min-mapq
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "rbt-bam-depth \nJohannes Köster <johannes.koester@tu-dortmund.de>\nPrint\
+  \ depth of BAM or CRAM file at given positions from STDIN (tab separated: chrom,\
+  \ pos).\n\nUsage:\n$ rbt bam-depth test.bam < pos.txt > depth.txt\n\nThe positions\
+  \ file contains the name of one reference sequence and one position per line (tab\
+  \ separated).\nExample:\n\n16\t1\n17\t38\n17\t39\n\nDepths are written to stdout\
+  \ as tab-separated lines, similar to the positions input.\nExample:\n\n16\t1\t0\n\
+  17\t38\t14\n17\t39\t13\n\n\n\nUSAGE:\n    rbt bam-depth [OPTIONS] <bam-path>\n\n\
+  FLAGS:\n    -h, --help       Prints help information\n    -V, --version    Prints\
+  \ version information\n\nOPTIONS:\n    -e, --excl-flags <INT>    Skip reads with\
+  \ mask bits set [UNMAP, SECONDARY, QCFAIL, DUP].\n    -i, --incl-flags <INT>   \
+  \ Skip reads with mask bits unset [].\n    -m <INT>                  Maximum read\
+  \ length to consider. This affects the speed of the involved pileup. Reads\n   \
+  \                           longer than this length can be missed when calculating\
+  \ the depth. [default: 1000]\n    -q, --min-mapq <INT>      Minimum mapping quality.\
+  \ [default: 0]\n\nARGS:\n    <bam-path>    Path to indexed BAM file.\n"
+generated_using:
+- --help

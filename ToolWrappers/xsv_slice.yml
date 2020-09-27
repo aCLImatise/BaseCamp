@@ -1,0 +1,96 @@
+!Command
+command:
+- xsv
+- slice
+positional: []
+named:
+- !Flag
+  description: The index of the record to slice from.
+  synonyms:
+  - -s
+  - --start
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: The index of the record to slice to.
+  synonyms:
+  - -e
+  - --end
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The length of the slice (can be used instead\nof --end)."
+  synonyms:
+  - -l
+  - --len
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Slice a single record (shortcut for -s N -l 1).
+  synonyms:
+  - -i
+  - --index
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Write output to <file> instead of stdout.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "When set, the first row will not be interpreted\nas headers. Otherwise,\
+    \ the first row will always\nappear in the output as the header row."
+  synonyms:
+  - -n
+  - --no-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The field delimiter for reading CSV data.\nMust be a single character.\
+    \ (default: ,)\n"
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Returns the rows in the range specified (starting at 0, half-open interval).\n\
+  The range does not include headers.\n\nIf the start of the range isn't specified,\
+  \ then the slice starts from the first\nrecord in the CSV data.\n\nIf the end of\
+  \ the range isn't specified, then the slice continues to the last\nrecord in the\
+  \ CSV data.\n\nThis operation can be made much faster by creating an index with\
+  \ 'xsv index'\nfirst. Namely, a slice on an index requires parsing just the rows\
+  \ that are\nsliced. Without an index, all rows up to the first row in the slice\
+  \ must be\nparsed.\n\nUsage:\n    xsv slice [options] [<input>]\n\nslice options:\n\
+  \    -s, --start <arg>      The index of the record to slice from.\n    -e, --end\
+  \ <arg>        The index of the record to slice to.\n    -l, --len <arg>       \
+  \ The length of the slice (can be used instead\n                           of --end).\n\
+  \    -i, --index <arg>      Slice a single record (shortcut for -s N -l 1).\n\n\
+  Common options:\n    -h, --help             Display this message\n    -o, --output\
+  \ <file>    Write output to <file> instead of stdout.\n    -n, --no-headers    \
+  \   When set, the first row will not be interpreted\n                          \
+  \ as headers. Otherwise, the first row will always\n                           appear\
+  \ in the output as the header row.\n    -d, --delimiter <arg>  The field delimiter\
+  \ for reading CSV data.\n                           Must be a single character.\
+  \ (default: ,)\n"
+generated_using:
+- --help

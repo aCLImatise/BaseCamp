@@ -11,60 +11,173 @@ subcommands:
   - unite
   positional: []
   named: []
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: log file for diagnostic messages, warnings, and errors
-      synonyms:
-      - -l
-      - --logfile
-      args: !SimpleFlagArg
-        name: F
-      optional: true
-    - !Flag
-      description: write diagnostic output to logfile AND terminal (stderr)
-      synonyms:
-      - --tee
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
-    - &id004 !Command
+    - &id008 !Command
       command: *id002
       positional: []
-      named:
-      - !Flag
-        description: "write output to \"FILE\"; by default, output is written\nto\
-          \ the terminal (standard output)"
-        synonyms:
-        - -o
-        - --out
-        args: !SimpleFlagArg
-          name: FILE
-        optional: true
-      - !Flag
-        description: seed for random number generator
-        synonyms:
-        - -s
-        - --seed
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      parent: *id003
+      named: []
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: log file for diagnostic messages, warnings, and errors
+          synonyms:
+          - -l
+          - --logfile
+          args: !SimpleFlagArg
+            name: F
+          optional: true
+        - !Flag
+          description: write diagnostic output to logfile AND terminal (stderr)
+          synonyms:
+          - --tee
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -v
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - &id004 !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: "write output to \"FILE\"; by default, output is written\n\
+              to the terminal (standard output)"
+            synonyms:
+            - -o
+            - --out
+            args: !SimpleFlagArg
+              name: FILE
+            optional: true
+          - !Flag
+            description: seed for random number generator
+            synonyms:
+            - -s
+            - --seed
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          parent: *id003
+          subcommands:
+          - !Command
+            command: &id006
+            - mhpl8r
+            - unite
+            - dad
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: mhpl8r
+              optional: false
+            - !Positional
+              description: ''
+              position: 1
+              name: unite
+              optional: false
+            - !Positional
+              description: ''
+              position: 2
+              name: mom
+              optional: false
+            - !Positional
+              description: ''
+              position: 3
+              name: dad
+              optional: false
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - -s
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - -o
+              args: !SimpleFlagArg
+                name: FILE
+              optional: true
+            parent: *id004
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: ''
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: mhpl8r unite [-h] [-o FILE] [-s INT] mom dad\nmhpl8r\
+              \ unite: error: the following arguments are required: dad\n"
+            generated_using: &id007 []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: mhpl8r unite [-h] [-o FILE] [-s INT] mom dad\n\npositional\
+            \ arguments:\n  mom                  simulated or inferred genotype in\
+            \ JSON format\n  dad                  simulated or inferred genotype in\
+            \ JSON format\n\noptional arguments:\n  -h, --help           show this\
+            \ help message and exit\n  -o FILE, --out FILE  write output to \"FILE\"\
+            ; by default, output is written\n                       to the terminal\
+            \ (standard output)\n  -s INT, --seed INT   seed for random number generator\n"
+          generated_using: &id005
+          - --help
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: show program's version number and exit
+          synonyms:
+          - -v
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "usage: mhpl8r [-h] [-v] [-l F] [--tee] subcmd ...\n\n≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠\n\
+          \  __  __ _            _  _                _      _\n |  \\/  (_)__ _ _\
+          \ ___| || |__ _ _ __ _  _| |__ _| |_ ___ _ _\n | |\\/| | / _| '_/ _ \\ __\
+          \ / _` | '_ \\ || | / _` |  _/ _ \\ '_|\n |_|  |_|_\\__|_| \\___/_||_\\\
+          __,_| .__/\\_,_|_\\__,_|\\__\\___/_|\n                               |_|\n\
+          ≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠\n\
+          Invoke `mhpl8r <subcmd> --help` and replace `<subcmd>` with one of the\n\
+          subcommands listed below to see instructions for that operation.\n\nSubcommands:\n\
+          \  subcmd             contain, contrib, diff, dist, mix, prob, seq, sim,\
+          \ type,\n                     unite\n\nGlobal arguments:\n  -h, --help \
+          \        show this help message and exit\n  -v, --version      show program's\
+          \ version number and exit\n  -l F, --logfile F  log file for diagnostic\
+          \ messages, warnings, and errors\n  --tee              write diagnostic\
+          \ output to logfile AND terminal (stderr)\n"
+        generated_using: *id005
       subcommands:
       - !Command
-        command: &id006
-        - mhpl8r
-        - unite
-        - dad
+        command: *id006
         positional:
         - !Positional
           description: ''
@@ -114,15 +227,9 @@ subcommands:
         version_flag:
         help_text: "usage: mhpl8r unite [-h] [-o FILE] [-s INT] mom dad\nmhpl8r unite:\
           \ error: the following arguments are required: dad\n"
-        generated_using: &id007 []
+        generated_using: *id007
       usage: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
+      help_flag:
       usage_flag:
       version_flag:
       help_text: "usage: mhpl8r unite [-h] [-o FILE] [-s INT] mom dad\n\npositional\
@@ -132,24 +239,11 @@ subcommands:
         \  -o FILE, --out FILE  write output to \"FILE\"; by default, output is written\n\
         \                       to the terminal (standard output)\n  -s INT, --seed\
         \ INT   seed for random number generator\n"
-      generated_using: &id005
-      - --help
+      generated_using: *id005
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - -v
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "usage: mhpl8r [-h] [-v] [-l F] [--tee] subcmd ...\n\n≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠\n\
       \  __  __ _            _  _                _      _\n |  \\/  (_)__ _ _ ___|\
       \ || |__ _ _ __ _  _| |__ _| |_ ___ _ _\n | |\\/| | / _| '_/ _ \\ __ / _` |\
@@ -203,7 +297,7 @@ subcommands:
       args: !SimpleFlagArg
         name: FILE
       optional: true
-    parent: *id004
+    parent: *id008
     subcommands: []
     usage: []
     help_flag: !Flag

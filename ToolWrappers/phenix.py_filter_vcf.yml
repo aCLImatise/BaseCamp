@@ -1,0 +1,85 @@
+!Command
+command:
+- phenix.py
+- filter_vcf
+positional: []
+named:
+- !Flag
+  description: VCF file to (re)filter.
+  synonyms:
+  - --vcf
+  - -v
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: "Filter(s) to apply as key:threshold pairs, separated\nby comma. Recommendations:\
+    \ GATK:\nmq_score:30,min_depth:10,ad_ratio:0.9 Mpileup:\nmq_score:30,min_depth:10,dp4_ratio:0.9"
+  synonyms:
+  - --filters
+  - -f
+  args: !SimpleFlagArg
+    name: FILTERS
+  optional: true
+- !Flag
+  description: "Config with filters in YAML format.\nE.g.filters:-key:value"
+  synonyms:
+  - --config
+  - -c
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: Location for filtered VCF to be written.
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "mpileup version <= 1.3 do not output all positions.\nThis is required\
+    \ to fix rfrence base in VCF."
+  synonyms:
+  - --reference
+  - -r
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: "Write only variants that PASS all filters (default all\nvariants are\
+    \ written).\n"
+  synonyms:
+  - --only-good
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: phenix.py filter_vcf [-h] --vcf VCF\n                         \
+  \   [--filters FILTERS | --config CONFIG] --output\n                           \
+  \ OUTPUT [--reference REFERENCE] [--only-good]\n\nFilter the VCF using provided\
+  \ filters.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --vcf VCF, -v VCF     VCF file to (re)filter.\n  --filters FILTERS,\
+  \ -f FILTERS\n                        Filter(s) to apply as key:threshold pairs,\
+  \ separated\n                        by comma. Recommendations: GATK:\n        \
+  \                mq_score:30,min_depth:10,ad_ratio:0.9 Mpileup:\n              \
+  \          mq_score:30,min_depth:10,dp4_ratio:0.9\n  --config CONFIG, -c CONFIG\n\
+  \                        Config with filters in YAML format.\n                 \
+  \       E.g.filters:-key:value\n  --output OUTPUT, -o OUTPUT\n                 \
+  \       Location for filtered VCF to be written.\n  --reference REFERENCE, -r REFERENCE\n\
+  \                        mpileup version <= 1.3 do not output all positions.\n \
+  \                       This is required to fix rfrence base in VCF.\n  --only-good\
+  \           Write only variants that PASS all filters (default all\n           \
+  \             variants are written).\n"
+generated_using:
+- --help

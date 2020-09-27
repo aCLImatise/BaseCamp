@@ -1,0 +1,104 @@
+!Command
+command:
+- csb-bfit
+positional:
+- !Positional
+  description: full path to the first structure
+  position: 0
+  name: pdb1
+  optional: false
+- !Positional
+  description: full path to the second structure
+  position: 1
+  name: pdb2
+  optional: false
+named:
+- !Flag
+  description: Chain of the first structure (default=A)
+  synonyms:
+  - -c
+  - --chain1
+  args: !SimpleFlagArg
+    name: CHAIN1
+  optional: true
+- !Flag
+  description: Chain of the second structure (default=A)
+  synonyms:
+  - -d
+  - --chain2
+  args: !SimpleFlagArg
+    name: CHAIN2
+  optional: true
+- !Flag
+  description: Scale mixture distribution (default=student)
+  synonyms:
+  - -s
+  - --scalemixture
+  args: !ChoiceFlagArg
+    choices: !!set
+      student:
+      k:
+  optional: true
+- !Flag
+  description: "Alignment in fasta format defining equivalent\npositions Assumes that\
+    \ chain1 is the first sequence of\nthe alignment and chain2 the second sequence"
+  synonyms:
+  - -a
+  - --alignment
+  args: !SimpleFlagArg
+    name: ALIGNMENT
+  optional: true
+- !Flag
+  description: "file to which the rotated second structure will be\nwritten (default=bfit.pdb)"
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: Number of optimization steps (default=200)
+  synonyms:
+  - -n
+  - --niter
+  args: !SimpleFlagArg
+    name: NITER
+  optional: true
+- !Flag
+  description: Use the EM algorithm for optimsation (default=False)
+  synonyms:
+  - --em
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: csb-bfit [-h] [-c CHAIN1] [-d CHAIN2] [-s {student,k}] [-a ALIGNMENT]\n\
+  \                [-o OUTFILE] [-n NITER] [--em]\n                pdb1 pdb2\n\nPython\
+  \ application for robust structure superposition of two structures. bfit\nmodels\
+  \ non-rigid displacements in protein ensembles with outlier-tolerant\nprobability\
+  \ distributions.\n\npositional arguments:\n  pdb1                  full path to\
+  \ the first structure\n  pdb2                  full path to the second structure\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -c CHAIN1, --chain1 CHAIN1\n                        Chain of the first structure\
+  \ (default=A)\n  -d CHAIN2, --chain2 CHAIN2\n                        Chain of the\
+  \ second structure (default=A)\n  -s {student,k}, --scalemixture {student,k}\n \
+  \                       Scale mixture distribution (default=student)\n  -a ALIGNMENT,\
+  \ --alignment ALIGNMENT\n                        Alignment in fasta format defining\
+  \ equivalent\n                        positions Assumes that chain1 is the first\
+  \ sequence of\n                        the alignment and chain2 the second sequence\n\
+  \  -o OUTFILE, --outfile OUTFILE\n                        file to which the rotated\
+  \ second structure will be\n                        written (default=bfit.pdb)\n\
+  \  -n NITER, --niter NITER\n                        Number of optimization steps\
+  \ (default=200)\n  --em                  Use the EM algorithm for optimsation (default=False)\n"
+generated_using:
+- --help

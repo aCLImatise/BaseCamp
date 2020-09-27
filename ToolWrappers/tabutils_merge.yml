@@ -1,0 +1,76 @@
+!Command
+command:
+- tabutils
+- merge
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: tab_merge.py
+  optional: false
+named:
+- !Flag
+  description: the header is last commented line ('#')
+  synonyms:
+  - -headercomment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the files have no header row
+  synonyms:
+  - -noheader
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard rows with missing values
+  synonyms:
+  - -nomissing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: order uncommon values by file first, not column
+  synonyms:
+  - -collate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",col   if there are missing values, use these columns to\ndetermine\
+    \ which file has missing data.  If the col ends\nin 'n', this is taken to be a\
+    \ number.\n(defaults to common cols, in order)"
+  synonyms:
+  - -keycols
+  args: !SimpleFlagArg
+    name: col
+  optional: true
+- !Flag
+  description: "keys are sorted descending order\n(defaults to ascending)"
+  synonyms:
+  - -keydesc
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nMerges tab-delimited files together, combining common columns\n\nUsage:\
+  \ tab_merge.py {opts} common_cols merge_cols files\n\ncommon_cols and merge_cols\
+  \ should be a comma-separated list of column numbers.\n\nFiles must be in the same\
+  \ sort order (given as  if not ascending text).\nIf the case of extra rows in one\
+  \ of the files, blank values will be \nsubstituted. New column names will be guessed\
+  \ based upon the filenames. \nCommented lines and blank lines are ignored, except\
+  \ for any commented lines \nthat are at the begining of the file - these are kept.\
+  \  This assumes that the \nfirst non-comment, non-blank row is the header.\n\nOptions:\n\
+  \    -headercomment     the header is last commented line ('#')\n    -noheader \
+  \         the files have no header row\n    -nomissing         discard rows with\
+  \ missing values\n    -collate           order uncommon values by file first, not\
+  \ column\n    \n    -keycols col,col   if there are missing values, use these columns\
+  \ to \n                       determine which file has missing data.  If the col\
+  \ ends \n                       in 'n', this is taken to be a number.\n        \
+  \               (defaults to common cols, in order)\n                       \n \
+  \   -keydesc           keys are sorted descending order\n                      \
+  \ (defaults to ascending)\n\nValid column definitions:\n    1,2,3,4\n    1-4\n \
+  \   1-4,5\n\n\n"
+generated_using:
+- -h

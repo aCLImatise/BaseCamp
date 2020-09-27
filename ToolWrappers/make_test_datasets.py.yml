@@ -1,0 +1,135 @@
+!Command
+command:
+- make_test_datasets.py
+positional: []
+named:
+- !Flag
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the output directory.  Duplicate trees, trait tables,\nexpected values\
+    \ and prediction files will be saved\nhere.[default:./test_datasets/]"
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "the minimum phylogenetic distance to use with the\nholdout method,\
+    \ if applicable.  Usually\n0.0.[default:0.0]"
+  synonyms:
+  - --min_dist
+  args: !SimpleFlagArg
+    name: MIN_DIST
+  optional: true
+- !Flag
+  description: "If passed, modify only the trait table, not the tree .\n[default:\
+    \ False]"
+  synonyms:
+  - --suppress_tree_modification
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the phylogenetic distance increment to use with the\nholdout method,\
+    \ if applicable.[default:0.03]"
+  synonyms:
+  - --dist_increment
+  args: !SimpleFlagArg
+    name: DIST_INCREMENT
+  optional: true
+- !Flag
+  description: "the maximum phylogenetic distance to use with the\nholdout method,\
+    \ if applicable.[default:0.45]"
+  synonyms:
+  - --max_dist
+  args: !SimpleFlagArg
+    name: MAX_DIST
+  optional: true
+- !Flag
+  description: "if specified, limit test dataset generation to\nspecified tips (comma-separated).[default:]"
+  synonyms:
+  - --limit_to_tips
+  args: !SimpleFlagArg
+    name: LIMIT_TO_TIPS
+  optional: true
+- !Flag
+  description: "The test method to use in generating test data.  Valid\nchoices are:exclude_tips_by_distance,randomize_tip_lab\n\
+    els_by_distance,collapse_tree_by_distance [default:\nexclude_tips_by_distance]"
+  synonyms:
+  - -m
+  - --method
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: the input trait table. [REQUIRED]
+  synonyms:
+  - -i
+  - --input_trait_table
+  args: !SimpleFlagArg
+    name: INPUT_TRAIT_TABLE
+  optional: true
+- !Flag
+  description: "the input tree in Newick format [REQUIRED]\n"
+  synonyms:
+  - -t
+  - --input_tree
+  args: !SimpleFlagArg
+    name: INPUT_TREE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: make_test_datasets.py [options] {-i/--input_trait_table INPUT_TRAIT_TABLE\
+  \ -t/--input_tree INPUT_TREE}\n\n[] indicates optional input (order unimportant)\n\
+  {} indicates required input (order unimportant)\n\n\n\nExample usage: \nPrint help\
+  \ message and exit\n make_test_datasets.py -h\n\nGenerate holdout test trees from\
+  \ genome_tree.newick, and save results in the directory ./test_holdout_trees/.\n\
+  \ make_test_datasets.py -t genome_tree.newick -o ./test_holdout_trees\n\nOptions:\n\
+  \  --version             show program's version number and exit\n  -h, --help  \
+  \          show this help message and exit\n  -v, --verbose         Print information\
+  \ during execution -- useful for\n                        debugging [default: False]\n\
+  \  -o OUTPUT_DIR, --output_dir=OUTPUT_DIR\n                        the output directory.\
+  \  Duplicate trees, trait tables,\n                        expected values and prediction\
+  \ files will be saved\n                        here.[default:./test_datasets/]\n\
+  \  --min_dist=MIN_DIST   the minimum phylogenetic distance to use with the\n   \
+  \                     holdout method, if applicable.  Usually\n                \
+  \        0.0.[default:0.0]\n  --suppress_tree_modification\n                   \
+  \     If passed, modify only the trait table, not the tree .\n                 \
+  \       [default: False]\n  --dist_increment=DIST_INCREMENT\n                  \
+  \      the phylogenetic distance increment to use with the\n                   \
+  \     holdout method, if applicable.[default:0.03]\n  --max_dist=MAX_DIST   the\
+  \ maximum phylogenetic distance to use with the\n                        holdout\
+  \ method, if applicable.[default:0.45]\n  --limit_to_tips=LIMIT_TO_TIPS\n      \
+  \                  if specified, limit test dataset generation to\n            \
+  \            specified tips (comma-separated).[default:]\n  -m METHOD, --method=METHOD\n\
+  \                        The test method to use in generating test data.  Valid\n\
+  \                        choices are:exclude_tips_by_distance,randomize_tip_lab\n\
+  \                        els_by_distance,collapse_tree_by_distance [default:\n \
+  \                       exclude_tips_by_distance]\n\n  REQUIRED options:\n    The\
+  \ following options must be provided under all circumstances.\n\n    -i INPUT_TRAIT_TABLE,\
+  \ --input_trait_table=INPUT_TRAIT_TABLE\n                        the input trait\
+  \ table. [REQUIRED]\n    -t INPUT_TREE, --input_tree=INPUT_TREE\n              \
+  \          the input tree in Newick format [REQUIRED]\n"
+generated_using:
+- --help

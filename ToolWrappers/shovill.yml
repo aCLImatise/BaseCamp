@@ -1,0 +1,186 @@
+!Command
+command:
+- shovill
+positional: []
+named:
+- !Flag
+  description: Check dependencies are installed
+  synonyms:
+  - --check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Read 1 FASTQ (default: '')"
+  synonyms:
+  - --R1
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: "Read 2 FASTQ (default: '')"
+  synonyms:
+  - --R2
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: 'Sub-sample --R1/--R2 to this depth. Disable with --depth 0 (default:
+    150)'
+  synonyms:
+  - --depth
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Estimated genome size eg. 3.2M <blank=AUTODETECT> (default: '')"
+  synonyms:
+  - --gsize
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: "Output folder (default: '')"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: 'Force overwite of existing output folder (default: OFF)'
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum contig length <0=AUTO> (default: 0)'
+  synonyms:
+  - --minlen
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Minimum contig coverage <0=AUTO> (default: 2)'
+  synonyms:
+  - --mincov
+  args: !SimpleFlagArg
+    name: n.nn
+  optional: true
+- !Flag
+  description: "Format of contig FASTA IDs in 'printf' style (default: 'contig%05d')"
+  synonyms:
+  - --namefmt
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: 'Keep intermediate files (default: OFF)'
+  synonyms:
+  - --keepfiles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Fast temporary directory (default: '')"
+  synonyms:
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: 'Number of CPUs to use (0=ALL) (default: 1)'
+  synonyms:
+  - --cpus
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Try to keep RAM usage below this many GB (default: 15.64)'
+  synonyms:
+  - --ram
+  args: !SimpleFlagArg
+    name: n.nn
+  optional: true
+- !Flag
+  description: "Assembler: skesa spades velvet megahit (default: 'spades')"
+  synonyms:
+  - --assembler
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: "Extra assembler options in quotes eg. spades: '--sc' (default: '')"
+  synonyms:
+  - --opts
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: "K-mers to use <blank=AUTO> (default: '')"
+  synonyms:
+  - --kmers
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+- !Flag
+  description: 'Enable adaptor trimming (default: OFF)'
+  synonyms:
+  - --trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable read error correction (default: OFF)'
+  synonyms:
+  - --noreadcorr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable read stitching (default: OFF)'
+  synonyms:
+  - --nostitch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable post-assembly correction (default: OFF)'
+  synonyms:
+  - --nocorr
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: This help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "SYNOPSIS\n  De novo assembly pipeline for Illumina paired reads\nUSAGE\n\
+  \  shovill [options] --outdir DIR --R1 R1.fq.gz --R2 R2.fq.gz\nGENERAL\n  --help\
+  \          This help\n  --version       Print version and exit\n  --check      \
+  \   Check dependencies are installed\nINPUT\n  --R1 XXX        Read 1 FASTQ (default:\
+  \ '')\n  --R2 XXX        Read 2 FASTQ (default: '')\n  --depth N       Sub-sample\
+  \ --R1/--R2 to this depth. Disable with --depth 0 (default: 150)\n  --gsize XXX\
+  \     Estimated genome size eg. 3.2M <blank=AUTODETECT> (default: '')\nOUTPUT\n\
+  \  --outdir XXX    Output folder (default: '')\n  --force         Force overwite\
+  \ of existing output folder (default: OFF)\n  --minlen N      Minimum contig length\
+  \ <0=AUTO> (default: 0)\n  --mincov n.nn   Minimum contig coverage <0=AUTO> (default:\
+  \ 2)\n  --namefmt XXX   Format of contig FASTA IDs in 'printf' style (default: 'contig%05d')\n\
+  \  --keepfiles     Keep intermediate files (default: OFF)\nRESOURCES\n  --tmpdir\
+  \ XXX    Fast temporary directory (default: '')\n  --cpus N        Number of CPUs\
+  \ to use (0=ALL) (default: 1)\n  --ram n.nn      Try to keep RAM usage below this\
+  \ many GB (default: 15.64)\nASSEMBLER\n  --assembler XXX Assembler: skesa spades\
+  \ velvet megahit (default: 'spades')\n  --opts XXX      Extra assembler options\
+  \ in quotes eg. spades: '--sc' (default: '')\n  --kmers XXX     K-mers to use <blank=AUTO>\
+  \ (default: '')\nMODULES\n  --trim          Enable adaptor trimming (default: OFF)\n\
+  \  --noreadcorr    Disable read error correction (default: OFF)\n  --nostitch  \
+  \    Disable read stitching (default: OFF)\n  --nocorr        Disable post-assembly\
+  \ correction (default: OFF)\nHOMEPAGE\n  https://github.com/tseemann/shovill - Torsten\
+  \ Seemann\n"
+generated_using:
+- --help

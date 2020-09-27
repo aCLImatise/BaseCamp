@@ -16,7 +16,7 @@ subcommands:
     name: arg...
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
     named: []
@@ -31,7 +31,103 @@ subcommands:
         name: arg...
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: arg...
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: Display this message
+            synonyms:
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: Display version
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "Unknown command 'cmd'\n\nUsage: jellyfish <cmd> [options] arg...\n\
+            Where <cmd> is one of: count, bc, info, stats, histo, dump, merge, query,\
+            \ cite, jf.\nOptions:\n  --version        Display version\n  --help  \
+            \         Display this message\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - jellyfish
+          - arg...
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: jellyfish
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: cmd
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: arg...
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: Display this message
+            synonyms:
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: Display version
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "Unknown command 'arg...'\n\nUsage: jellyfish <cmd> [options]\
+            \ arg...\nWhere <cmd> is one of: count, bc, info, stats, histo, dump,\
+            \ merge, query, cite, jf.\nOptions:\n  --version        Display version\n\
+            \  --help           Display this message\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: Display this message
+          synonyms:
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: Display version
+          synonyms:
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "Usage: jellyfish <cmd> [options] arg...\nWhere <cmd> is one of:\
+          \ count, bc, info, stats, histo, dump, merge, query, cite, jf.\nOptions:\n\
+          \  --version        Display version\n  --help           Display this message\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -51,12 +147,9 @@ subcommands:
         Where <cmd> is one of: count, bc, info, stats, histo, dump, merge, query,\
         \ cite, jf.\nOptions:\n  --version        Display version\n  --help      \
         \     Display this message\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - jellyfish
-      - arg...
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -96,19 +189,9 @@ subcommands:
         \     Display this message\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: Display this message
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: Display version
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "Usage: jellyfish <cmd> [options] arg...\nWhere <cmd> is one of: count,\
       \ bc, info, stats, histo, dump, merge, query, cite, jf.\nOptions:\n  --version\
       \        Display version\n  --help           Display this message\n"
@@ -152,7 +235,7 @@ subcommands:
     name: arg...
     optional: false
   named: []
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag: !Flag

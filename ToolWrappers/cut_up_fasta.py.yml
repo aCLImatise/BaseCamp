@@ -1,0 +1,69 @@
+!Command
+command:
+- cut_up_fasta.py
+positional:
+- !Positional
+  description: Fasta files with contigs
+  position: 0
+  name: contigs
+  optional: false
+named:
+- !Flag
+  description: Chunk size
+  synonyms:
+  - -c
+  - --chunk_size
+  args: !SimpleFlagArg
+    name: CHUNK_SIZE
+  optional: true
+- !Flag
+  description: Overlap size
+  synonyms:
+  - -o
+  - --overlap_size
+  args: !SimpleFlagArg
+    name: OVERLAP_SIZE
+  optional: true
+- !Flag
+  description: Concatenate final part to last contig
+  synonyms:
+  - -m
+  - --merge_last
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "BEDfile to be created with exact regions of the\noriginal contigs\
+    \ corresponding to the newly created\ncontigs\n"
+  synonyms:
+  - -b
+  - --bedfile
+  args: !SimpleFlagArg
+    name: BEDFILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: cut_up_fasta.py [-h] [-c CHUNK_SIZE] [-o OVERLAP_SIZE] [-m]\n \
+  \                      [-b BEDFILE]\n                       contigs [contigs ...]\n\
+  \nCut up fasta file in non-overlapping or overlapping parts of equal length.\n\n\
+  Optionally creates a BED-file where the cutup contigs are specified in terms\nof\
+  \ the original contigs. This can be used as input to concoct_coverage_table.py.\n\
+  \npositional arguments:\n  contigs               Fasta files with contigs\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -c CHUNK_SIZE,\
+  \ --chunk_size CHUNK_SIZE\n                        Chunk size\n  -o OVERLAP_SIZE,\
+  \ --overlap_size OVERLAP_SIZE\n                        Overlap size\n  -m, --merge_last\
+  \      Concatenate final part to last contig\n  -b BEDFILE, --bedfile BEDFILE\n\
+  \                        BEDfile to be created with exact regions of the\n     \
+  \                   original contigs corresponding to the newly created\n      \
+  \                  contigs\n"
+generated_using:
+- --help

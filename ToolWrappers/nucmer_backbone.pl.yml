@@ -1,0 +1,270 @@
+!Command
+command:
+- nucmer_backbone.pl
+positional:
+- !Positional
+  description: version = 0.4
+  position: 0
+  name: genome
+  optional: false
+- !Positional
+  description: one multi-fasta file of sequences aligned by nucmer
+  position: 0
+  name: or
+  optional: false
+- !Positional
+  description: 'If the genome "strainA"is contained in two contigs:'
+  position: 0
+  name: i.e.
+  optional: false
+- !Positional
+  description: '>contig2'
+  position: 0
+  name: AGCAAAG...
+  optional: false
+- !Positional
+  description: 'Rename the headers like so:'
+  position: 1
+  name: AGAACCC...
+  optional: false
+- !Positional
+  description: '>#strainA#contig2'
+  position: 0
+  name: AGCAAAG...
+  optional: false
+- !Positional
+  description: 'Optional:  '
+  position: 1
+  name: AGAACCC...
+  optional: false
+- !Positional
+  description: if this file is given, a list of locus IDs of genes present in
+  position: 0
+  name: etc.
+  optional: false
+- !Positional
+  description: '*** This option currently only works for non-draft sequences'
+  position: 0
+  name: sequences.
+  optional: false
+named:
+- !Flag
+  description: "alignment [C]oordinates file. Produced by numcer alignment of\nall\
+    \ genomes vs. all genomes:\n$ nucmer -p out --maxmatch genomes.fasta genomes.fasta\n\
+    followed by running show-coords and sorting by reference:\n$ show-coords -rTH\
+    \ out.delta > out.coords.txt"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "number of genomes from which a section can be [A]bsent and still\n\
+    be included as core genome (default 0)"
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "genome used as [R]eference for generating backbone fragment list\n\
+    with 1 being the first genome entered, 2 being the second, etc.\n(default is first\
+    \ genome entered, but you may try several\nruns altering this number as number\
+    \ and length of backbone\nsegments output may be slightly different)"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "list of [G]enomes from which backbone should be created,\nseparated\
+    \ by commas with no spaces between. Order of the list\nwill determine priority\
+    \ in producing core genome. Genome given\nby -r will be given first priorty, with\
+    \ all other genomes moving\ndown one step. Number of genomes entered must be at\
+    \ least (a+1),\nso if the value given by -a is 2, at least three genomes must\
+    \ be\nentered.\nExample: to create a backbone from the first, second, and fourth\n\
+    genomes given and ignore the third, enter \"1,2,4\".\nThe first genome will be\
+    \ given highest priority,\nsecond given next-highest, fourth given third-highest\n\
+    (default is to use genomes in the order their sequences were\nprovided)"
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file listing all cds locus ids in the format:\ngenome order number<tab>locus\
+    \ id<tab>contig_id<tab>start coord<tab>end coord<tab>strand<tab>product (optional)\n\
+    (one entry per line)\nexample:\n1       gen1_00001      contig1 456     2176 \
+    \   +   exoU\n1       gen1_00002      contig2 3187    4599    +   spcU\n2    \
+    \   gen2_00001      contigA 679     3100    -   hypothetical protein\netc.\nIf\
+    \ an input is given for both -x and -l, only -x will be used as\ninput. If the\
+    \ file given by -x does not exist, it will be\ncreated using the files from -l\
+    \ to create a locus id file."
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[M]aximum distance between backbone fragments.\nDistances less than\
+    \ this parameter between adjacent fragments\nwill result in combination of fragments\
+    \ with interspersed N's\n(default 10)"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum [B]ackbone size to be output (default 10)
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum [I]sland size to be output (default 10)
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prefix of output files (default "output")
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if given, will output coordinates of core and accessory genome\nsegments\
+    \ for each genome. Takes longer (default: only output\nbackbone files)"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output file of position values that can be used to calculate\npangenome\
+    \ and core genome characteristics of the data set\nusing core_and_pangenome.pl.\
+    \ If selected, will automatically\ntrigger -o option."
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output a pangenome sequence from all input genomes. This sequence\n\
+    will be generated from sequences in the order given or from the\norder given to\
+    \ -g and -r above."
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads (default 15)
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose output
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (uppercase)    Output version number and quit.
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -MORE_OPTIONS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -OPTIONS
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "minimum percent identity of a nucmer alignment to be considered\n\
+    homologous (default 85)"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/nucmer_backbone.pl version [unknown] calling Getopt::Std::getopts\
+  \ (version 1.12 [paranoid]),\nrunning under Perl version 5.26.2.\n\nUsage: nucmer_backbone.pl\
+  \ [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe following single-character\
+  \ options are accepted:\n\tWith arguments: -c -f -a -r -g -s -m -h -b -B -I -l -x\
+  \ -t -z\n\tBoolean (without arguments): -o -e -n -v -V -w\n\nOptions may be merged\
+  \ together.  -- stops processing of options.\nSpace is not required between options\
+  \ and their arguments.\n  [Now continuing due to backward compatibility and excessive\
+  \ paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
+  \nnucmer_backbone.pl - Uses nucmer alignment to determine core and accessory\n \
+  \                    genome\n                     \nversion = 0.4\n\nCopyright (C)\
+  \ 2016  Egon A. Ozer\nThis program comes with ABSOLUTELY NO WARRANTY. This is free\
+  \ software, and you\nare welcome to redistribute it under certain conditions;\n\
+  see LICENSE.txt for details\n\nUsage: perl nucmer_backbone.pl <options> [fasta_file_1]\
+  \ [fasta_file_2] ...\n\nRequired:\n  -c\t\talignment [C]oordinates file. Produced\
+  \ by numcer alignment of\n                all genomes vs. all genomes:\n       \
+  \             $ nucmer -p out --maxmatch genomes.fasta genomes.fasta           \
+  \     \n                followed by running show-coords and sorting by reference:\
+  \ \n                    $ show-coords -rTH out.delta > out.coords.txt\n        \
+  \        \n  [fasta_file]\tfasta files of sequences aligned by nucmer\n\t\t\tor\n\
+  \t\tone multi-fasta file of sequences aligned by nucmer\n                \n    \
+  \            Fasta records with the same header prefix will be grouped\n       \
+  \         together, as in the case of multi-contig draft genomes. Make\n       \
+  \         sure each header starts with \"#genome_name#\".\n                i.e.\n\
+  \                If the genome \"strainA\"is contained in two contigs:\n       \
+  \         >contig1\n                AGCAAAG...\n                >contig2\n     \
+  \           AGAACCC...\n                Rename the headers like so:\n          \
+  \      >#strainA#contig1\n                AGCAAAG...\n                >#strainA#contig2\n\
+  \                AGAACCC...\n  \nOptional:  \n  -a\t\tnumber of genomes from which\
+  \ a section can be [A]bsent and still\n\t\tbe included as core genome (default 0)\n\
+  \  -r\t\tgenome used as [R]eference for generating backbone fragment list\n\t\t\
+  with 1 being the first genome entered, 2 being the second, etc.\n\t\t(default is\
+  \ first genome entered, but you may try several\n\t\truns altering this number as\
+  \ number and length of backbone\n\t\tsegments output may be slightly different)\n\
+  \  -g\t\tlist of [G]enomes from which backbone should be created,\n\t\tseparated\
+  \ by commas with no spaces between. Order of the list\n\t\twill determine priority\
+  \ in producing core genome. Genome given\n\t\tby -r will be given first priorty,\
+  \ with all other genomes moving\n\t\tdown one step. Number of genomes entered must\
+  \ be at least (a+1),\n                so if the value given by -a is 2, at least\
+  \ three genomes must be\n                entered.\n\t\tExample: to create a backbone\
+  \ from the first, second, and fourth\n\t\t         genomes given and ignore the\
+  \ third, enter \"1,2,4\".\n\t\t\t The first genome will be given highest priority,\n\
+  \t\t\t second given next-highest, fourth given third-highest\n\t\t(default is to\
+  \ use genomes in the order their sequences were\n                provided)\n[deprecated]\
+  \  -l\t\tpath to file listing paths to genbank files of genome\n\t\tannotations,\
+  \ given in the same order of the input fasta files.\n\t\tFile locations should be\
+  \ separated into separate lines.\n\t\t    example:\n\t\t    /path/to/genbank_file_1.gbk\n\
+  \t\t    /path/to/genbank_file_2.gbk\n\t\t    etc.\n\t\tif this file is given, a\
+  \ list of locus IDs of genes present in\n\t\tthe core genome (IDs from the reference\
+  \ genome) will be output,\n\t\tas will lists of accessory genome genes for each\
+  \ of the input\n\t\tsequences.\n                *** This option currently only works\
+  \ for non-draft sequences\n  -x\t\tfile listing all cds locus ids in the format:\n\
+  \t\tgenome order number<tab>locus id<tab>contig_id<tab>start coord<tab>end coord<tab>strand<tab>product\
+  \ (optional)\n\t\t(one entry per line)\n\t\t\texample:\n\t\t\t1\tgen1_00001\tcontig1\
+  \ 456\t2176    +   exoU\n\t\t\t1\tgen1_00002\tcontig2 3187\t4599    +   spcU\n\t\
+  \t\t2\tgen2_00001\tcontigA 679\t3100    -   hypothetical protein\n\t\t\tetc.\n\t\
+  \tIf an input is given for both -x and -l, only -x will be used as\n\t\tinput. If\
+  \ the file given by -x does not exist, it will be\n                created using\
+  \ the files from -l to create a locus id file.\n[deprecated]  -p\t\tminimum percent\
+  \ coverage of a locus for it to be output as core\n\t\t(default 50)\t \n  -m\t\t\
+  [M]aximum distance between backbone fragments.\n\t\tDistances less than this parameter\
+  \ between adjacent fragments\n\t\twill result in combination of fragments with interspersed\
+  \ N's\n\t\t(default 10)\n  -h            minimum percent identity of a nucmer alignment\
+  \ to be considered\n                homologous (default 85)\n  -B\t\tminimum [B]ackbone\
+  \ size to be output (default 10)\n  -I\t\tminimum [I]sland size to be output (default\
+  \ 10)\n  -s\t\tprefix of output files (default \"output\")\n  -o\t\tif given, will\
+  \ output coordinates of core and accessory genome\n\t\tsegments for each genome.\
+  \ Takes longer (default: only output\n                backbone files)\n  -e    \
+  \        Output file of position values that can be used to calculate\n        \
+  \        pangenome and core genome characteristics of the data set\n           \
+  \     using core_and_pangenome.pl. If selected, will automatically\n           \
+  \     trigger -o option.\n  -n        Output a pangenome sequence from all input\
+  \ genomes. This sequence\n            will be generated from sequences in the order\
+  \ given or from the\n            order given to -g and -r above.\n  -t         \
+  \   Number of threads (default 15)\n  -v\t\tverbose output\n  -V (uppercase)   \
+  \ Output version number and quit.        \n\n"
+generated_using:
+- --help

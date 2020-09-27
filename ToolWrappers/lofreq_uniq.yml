@@ -1,0 +1,123 @@
+!Command
+command:
+- lofreq
+- uniq
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: indexed-in.bam
+  optional: false
+named:
+- !Flag
+  description: '| --vcf-in FILE      Input vcf file listing variants [- = stdin; gzip
+    supported]'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --vcf-out FILE     Output vcf file [- = stdout; gzip supported]'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --uni-freq         Assume variants have uniform test frequency of
+    this value (unused if <=0) [-1.000000]'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --uniq-thresh INT  Minimum uniq phred-value required. Conflicts
+    with -m. 0 for off (default=0)'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --uniq-mtc STRING  Uniq multiple testing correction type. One of\
+    \ 'bonf', 'holm' or 'fdr'. (default=MTC_FDR)"
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --uniq-alpha FLOAT Uniq Multiple testing correction p-value threshold
+    (default=0.001000)'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --uniq-ntests INT  Uniq multiple testing correction p-value threshold
+    (default=#vars)'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report all variants instead of only the ones, marked unique.\nNote,\
+    \ that variants already filtered in input will not be printed."
+  synonyms:
+  - --output-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report variants if they are above implied detection limit\nDefault\
+    \ is to use binomial test to check for frequency differences"
+  synonyms:
+  - --use-det-lim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't ignore anomalous read pairs / orphan reads
+  synonyms:
+  - --use-orphan
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be verbose
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable debugging
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nlofreq uniq: Checks whether variants predicted in one sample (listed\
+  \ in vcf input) are unique to this sample or if they were not called in other sample\
+  \ due to coverage issues. This is done by using a Binomial test with alternate and\
+  \ reference counts from the BAM and the variant frequency (i.e it's testing differences\
+  \ in frequencies. Alternatively, the logic can be changed to check whether the variant\
+  \ frequency would have been above LoFreq's detection limit given the BAM coverage\
+  \ and base-qualities.\n\nAssigns UNIQ tag to variants considered unique. Will ignore\
+  \ filtered input variants and will by default only report uniq variants.\n\nUsage:\
+  \ lofreq uniq [options] indexed-in.bam\n\nOptions:\n  -v | --vcf-in FILE      Input\
+  \ vcf file listing variants [- = stdin; gzip supported]\n  -o | --vcf-out FILE \
+  \    Output vcf file [- = stdout; gzip supported]\n  -f | --uni-freq         Assume\
+  \ variants have uniform test frequency of this value (unused if <=0) [-1.000000]\n\
+  \  -t | --uniq-thresh INT  Minimum uniq phred-value required. Conflicts with -m.\
+  \ 0 for off (default=0)\n  -m | --uniq-mtc STRING  Uniq multiple testing correction\
+  \ type. One of 'bonf', 'holm' or 'fdr'. (default=MTC_FDR)\n  -a | --uniq-alpha FLOAT\
+  \ Uniq Multiple testing correction p-value threshold (default=0.001000)\n  -n |\
+  \ --uniq-ntests INT  Uniq multiple testing correction p-value threshold (default=#vars)\n\
+  \       --output-all       Report all variants instead of only the ones, marked\
+  \ unique.\n                          Note, that variants already filtered in input\
+  \ will not be printed.\n       --use-det-lim      Report variants if they are above\
+  \ implied detection limit\n                          Default is to use binomial\
+  \ test to check for frequency differences\n       --use-orphan       Don't ignore\
+  \ anomalous read pairs / orphan reads\n       --verbose          Be verbose\n  \
+  \     --debug            Enable debugging\n"
+generated_using:
+- --help

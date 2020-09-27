@@ -31,7 +31,7 @@ subcommands:
     name: range
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -61,7 +61,114 @@ subcommands:
         name: range
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: MakeStreamingPrefilter.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: reference_file
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: out_file
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: range
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: MakeStreamingPrefilter.py [-h] reference_file out_file\
+            \ range\nMakeStreamingPrefilter.py: error: the following arguments are\
+            \ required: out_file, range\n"
+          generated_using: &id004 []
+        - !Command
+          command: &id005
+          - MakeStreamingPrefilter.py
+          - range
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: MakeStreamingPrefilter.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: reference_file
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: out_file
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: range
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: MakeStreamingPrefilter.py [-h] reference_file out_file\
+            \ range\nMakeStreamingPrefilter.py: error: the following arguments are\
+            \ required: out_file, range\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: MakeStreamingPrefilter.py [-h] reference_file out_file\
+          \ range\n\nThis script pre-computes a prefilter for the StreamingQueryDNADatabase\
+          \ (for a\nfixed k-range).\n\npositional arguments:\n  reference_file  Training\
+          \ database/reference file (in HDF5 format). Created\n                  with\
+          \ MakeStreamingDNADatabase.py\n  out_file        Output prefilter file.\n\
+          \  range           Range of k-mer sizes in the formate\n               \
+          \   <start>-<end>-<increment>. So 5-10-2 means [5, 7, 9]. If\n         \
+          \         <end> is larger than the k-mer sizeof the training data,\n   \
+          \               this will automatically be reduced.\n\noptional arguments:\n\
+          \  -h, --help      show this help message and exit\n"
+        generated_using: &id006
+        - --help
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -75,11 +182,9 @@ subcommands:
       help_text: "usage: MakeStreamingPrefilter.py [-h] reference_file out_file range\n\
         MakeStreamingPrefilter.py: error: the following arguments are required: out_file,\
         \ range\n"
-      generated_using: &id004 []
+      generated_using: *id004
     - !Command
-      command: &id005
-      - MakeStreamingPrefilter.py
-      - range
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -118,13 +223,7 @@ subcommands:
         \ range\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: MakeStreamingPrefilter.py [-h] reference_file out_file range\n\
@@ -136,8 +235,7 @@ subcommands:
       \ means [5, 7, 9]. If\n                  <end> is larger than the k-mer sizeof\
       \ the training data,\n                  this will automatically be reduced.\n\
       \noptional arguments:\n  -h, --help      show this help message and exit\n"
-    generated_using: &id006
-    - --help
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -176,7 +274,7 @@ subcommands:
     name: range
     optional: false
   named: []
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

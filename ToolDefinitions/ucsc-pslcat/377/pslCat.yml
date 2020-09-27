@@ -16,43 +16,10 @@ subcommands:
     name: match
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: input.  Detects more errors but slower
-      synonyms:
-      - -check
-      args: !SimpleFlagArg
-        name: parses
-      optional: true
-    - !Flag
-      description: psl header
-      synonyms:
-      - -nohead
-      args: !SimpleFlagArg
-        name: omit
-      optional: true
-    - !Flag
-      description: files are directories (concatenate all in dirs)
-      synonyms:
-      - -dir
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: put output to file rather than stdout
-      synonyms:
-      - -out
-      args: !SimpleFlagArg
-        name: file
-      optional: true
-    - !Flag
-      description: =.xxx  limit files in directories to those with extension
-      synonyms:
-      - -ext
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -64,7 +31,77 @@ subcommands:
         name: match
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: input.  Detects more errors but slower
+          synonyms:
+          - -check
+          args: !SimpleFlagArg
+            name: parses
+          optional: true
+        - !Flag
+          description: psl header
+          synonyms:
+          - -nohead
+          args: !SimpleFlagArg
+            name: omit
+          optional: true
+        - !Flag
+          description: files are directories (concatenate all in dirs)
+          synonyms:
+          - -dir
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: put output to file rather than stdout
+          synonyms:
+          - -out
+          args: !SimpleFlagArg
+            name: file
+          optional: true
+        - !Flag
+          description: =.xxx  limit files in directories to those with extension
+          synonyms:
+          - -ext
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: match           count   bases   count   bases           name            size    start   end     name            size    start   end     count
+            position: 0
+            name: match
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "psLayout version 3\n\nmatch\tmis- \trep. \tN's\tQ gap\tQ gap\t\
+            T gap\tT gap\tstrand\tQ        \tQ   \tQ    \tQ  \tT        \tT   \tT\
+            \    \tT  \tblock\tblockSizes \tqStarts\t tStarts\n     \tmatch\tmatch\t\
+            \   \tcount\tbases\tcount\tbases\t      \tname     \tsize\tstart\tend\t\
+            name     \tsize\tstart\tend\tcount\n---------------------------------------------------------------------------------------------------------------------------------------------------------------\n"
+          generated_using: &id004
+          - --help
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "pslCat - concatenate psl files\nusage:\n   pslCat file(s)\noptions:\n\
+          \   -check parses input.  Detects more errors but slower\n   -nohead omit\
+          \ psl header\n   -dir  files are directories (concatenate all in dirs)\n\
+          \   -out=file put output to file rather than stdout\n   -ext=.xxx  limit\
+          \ files in directories to those with extension\n\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -75,8 +112,7 @@ subcommands:
         T  \tblock\tblockSizes \tqStarts\t tStarts\n     \tmatch\tmatch\t   \tcount\t\
         bases\tcount\tbases\t      \tname     \tsize\tstart\tend\tname     \tsize\t\
         start\tend\tcount\n---------------------------------------------------------------------------------------------------------------------------------------------------------------\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     usage: []
     help_flag:
     usage_flag:

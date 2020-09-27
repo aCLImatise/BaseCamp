@@ -1,0 +1,129 @@
+!Command
+command:
+- ProteinInference
+positional: []
+named:
+- !Flag
+  description: "*                                               Input file(s) (valid\
+    \ formats: 'idXML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                                              Output file (valid\
+    \ formats: 'idXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "If your idXML contains multiple runs, merge them beforehand? (default:\
+    \ 'no' valid: 'no', 'all')"
+  synonyms:
+  - -merge_runs
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "If you want to annotate indistinguishable protein groups, either for\
+    \ reporting or for group based quant. later. Only works with a single ID run in\
+    \ the file. (default: 'true' valid: 'true', 'false')"
+  synonyms:
+  - -annotate_indist_groups
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: ":annotate_origin <choice>                         If true, adds a\
+    \ map_index MetaValue to the PeptideIDs to annotate the IDRun they came from.\
+    \ (default: 'true' valid: 'true', 'false')"
+  synonyms:
+  - -Merging
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nProteinInference\
+  \ -- Protein inference based on an aggregation of the scores of the identified peptides.\n\
+  Full documentation: http://www.openms.de/documentation/TOPP_ProteinInference.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  ProteinInference <options>\n\nOptions (mandatory options marked with '*'):\n\
+  \  -in <file>*                                               Input file(s) (valid\
+  \ formats: 'idXML')\n  -out <file>*                                            \
+  \  Output file (valid formats: 'idXML')\n  -merge_runs <choice>                \
+  \                      If your idXML contains multiple runs, merge them beforehand?\
+  \ (default: 'no' valid: 'no', 'all')\n  -annotate_indist_groups <choice>       \
+  \                   If you want to annotate indistinguishable protein groups, either\
+  \ for reporting or for group based quant. later. Only works with a single ID run\
+  \ in the file. (default: 'true' valid: 'true', 'false')\n                      \
+  \                                      \n\nMerging:\n  -Merging:annotate_origin\
+  \ <choice>                         If true, adds a map_index MetaValue to the PeptideIDs\
+  \ to annotate the IDRun they came from. (default: 'true' valid: 'true', 'false')\n\
+  \nAlgorithm:\n  -Algorithm:min_peptides_per_protein <number>              Minimal\
+  \ number of peptides needed for a protein identification. If set to zero, unmatched\
+  \ proteins get a score of -Infinity. If bigger than zero, proteins with less peptides\
+  \ are filtered and evidences removed from the PSMs. PSMs that do not reference any\
+  \ proteins anymore are removed but the spectrum info is kept. (default: '1' min:\
+  \ '0')\n  -Algorithm:score_aggregation_method <choice>              How to aggregate\
+  \ scores of peptides matching to the same protein? (default: 'maximum' valid: 'maximum',\
+  \ 'product', 'sum')\n  -Algorithm:treat_charge_variants_separately <text>      \
+  \  If this is set, different charge variants of the same peptide sequence count\
+  \ as individual evidences. (default: 'true')\n  -Algorithm:treat_modification_variants_separately\
+  \ <text>  If this is set, different modification variants of the same peptide sequence\
+  \ count as individual evidences. (default: 'true')\n  -Algorithm:use_shared_peptides\
+  \ <text>                     If this is set, shared peptides are used as evidences.\
+  \ (default: 'true')\n  -Algorithm:skip_count_annotation <text>                 \
+  \  If this is true, peptide counts won't be annotated at the proteins. (default:\
+  \ 'false')\n\n                                                            \nCommon\
+  \ TOPP options:\n  -ini <file>                                               Use\
+  \ the given TOPP INI file\n  -threads <n>                                      \
+  \        Sets the number of threads allowed to be used by the TOPP tool (default:\
+  \ '1')\n  -write_ini <file>                                         Writes the default\
+  \ configuration file\n  --help                                                 \
+  \   Shows options\n  --helphelp                                                Shows\
+  \ all options (including advanced)\n\n"
+generated_using:
+- --help

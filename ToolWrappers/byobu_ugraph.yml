@@ -1,0 +1,93 @@
+!Command
+command:
+- byobu-ugraph
+positional:
+- !Positional
+  description: 'Usage: byobu-ugraph [options] [command [args...]]'
+  position: 0
+  name: byobu-ulevel.
+  optional: false
+named:
+- !Flag
+  description: ": File to read data points from.\n(only required if no command specified)."
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ': Minimum value (default=0).'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ': Supress output of newline character.'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Specify number of data points in graph\n(default=5)."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: points
+  optional: true
+- !Flag
+  description: ": Do not rotate file <file> (default is to rotate).\nOption implies\
+    \ file <file> should not be written to\nso a command cannot follow script options\
+    \ in this case."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": 'byobu-ulevel' theme to use (default=vbars_8)."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: theme
+  optional: true
+- !Flag
+  description: ': Maximum value (default=100).'
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': Show this help.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Description: Display a graph of historical indicator values using\n  \
+  \           byobu-ulevel.\n\nUsage: byobu-ugraph [options] [command [args...]]\n\
+  \nOptions:\n\n -f <file>   : File to read data points from.\n               (only\
+  \ required if no command specified).\n -h          : Show this help.\n -m <num>\
+  \    : Minimum value (default=0).\n -n          : Supress output of newline character.\n\
+  \ -p <points> : Specify number of data points in graph\n               (default=5).\n\
+  \ -r          : Do not rotate file <file> (default is to rotate).\n            \
+  \   Option implies file <file> should not be written to\n               so a command\
+  \ cannot follow script options in this case.\n -t <theme>  : 'byobu-ulevel' theme\
+  \ to use (default=vbars_8).\n -x <num>    : Maximum value (default=100).\n\n\nExamples:\n\
+  \n  Using byobu-ugraph to run a command, rotate log and display graph.\n\n  Here\
+  \ we specify a command to display available memory.\n  Trailing echo adds a required\
+  \ newline\n  Note no filename specified.\n\n    byobu-ugraph \"(/usr/local/lib/byobu/mem_used\
+  \ | sed -e 's/% //g';echo)\"\n\n\n  Using byobu-ugraph just to rotate log and display\
+  \ the graph\n\n    file=/tmp/load.dat\n    awk '{ print $1}' /proc/loadavg >> $file\n\
+  \    # Note: we need to specify what we consider to be a \"reasonable\" maximum\
+  \ load\n    byobu-ugraph -m 3.0 -f $file\n\nNotes:\n\n  - If you specify 'command',\
+  \ care must be taken with shell quoting to\n    avoid expansion prior to this script\
+  \ running the command.\n  - If '-r' is not specified, the file <file> will be rotated\
+  \ such that\n    at most <points> lines are retained on each invocation of this\n\
+  \    script.\n\n"
+generated_using:
+- --help

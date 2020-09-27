@@ -1,0 +1,187 @@
+!Command
+command:
+- panphlan_profiling.py
+positional:
+- !Positional
+  description: -v, --verbose         Show progress information
+  position: 0
+  name: matrix.
+  optional: false
+named:
+- !Flag
+  description: "Input directory of panphlan_map.py results, containing\nSAMPLE.csv.bz2\
+    \ files"
+  synonyms:
+  - -i
+  - --i_dna
+  args: !SimpleFlagArg
+    name: I_DNA
+  optional: true
+- !Flag
+  description: Path to pangenome tsv file exported from ChocoPhlAn
+  synonyms:
+  - -p
+  - --pangenome
+  args: !SimpleFlagArg
+    name: PANGENOME
+  optional: true
+- !Flag
+  description: Path to precomputed coverage matrix
+  synonyms:
+  - --i_covmat
+  args: !SimpleFlagArg
+    name: I_COVMAT
+  optional: true
+- !Flag
+  description: Path for presence/absence matrix output
+  synonyms:
+  - --o_matrix
+  args: !SimpleFlagArg
+    name: O_MATRIX
+  optional: true
+- !Flag
+  description: Write raw gene-family coverage matrix in provided file
+  synonyms:
+  - --o_covmat
+  args: !SimpleFlagArg
+    name: O_COVMAT
+  optional: true
+- !Flag
+  description: Filename for normalized gene-family coverage plot.
+  synonyms:
+  - --o_covplot_normed
+  args: !SimpleFlagArg
+    name: O_COVPLOT_NORMED
+  optional: true
+- !Flag
+  description: Write gene-family plateau definitions (1, -1, -2, -3)
+  synonyms:
+  - --o_idx
+  args: !SimpleFlagArg
+    name: DNA_INDEX_FILE
+  optional: true
+- !Flag
+  description: 'Minimum coverage threshold, default: 2X'
+  synonyms:
+  - --min_coverage
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+  optional: true
+- !Flag
+  description: "Strain presence/absence plateau curve threshold: left\nmax [1.25]"
+  synonyms:
+  - --left_max
+  args: !SimpleFlagArg
+    name: LEFT_MAX
+  optional: true
+- !Flag
+  description: "Strain presence/absence plateau curve threshold: right\nmin [0.75]"
+  synonyms:
+  - --right_min
+  args: !SimpleFlagArg
+    name: RIGHT_MIN
+  optional: true
+- !Flag
+  description: 'Gene families threshold: not present if lower'
+  synonyms:
+  - --th_non_present
+  args: !SimpleFlagArg
+    name: TH_NON_PRESENT
+  optional: true
+- !Flag
+  description: 'Gene families threshold: present if higher'
+  synonyms:
+  - --th_present
+  args: !SimpleFlagArg
+    name: TH_PRESENT
+  optional: true
+- !Flag
+  description: 'Gene families threshold: multicopy if higher'
+  synonyms:
+  - --th_multicopy
+  args: !SimpleFlagArg
+    name: TH_MULTICOPY
+  optional: true
+- !Flag
+  description: "Minimum threshold (percentage) for genome length to\nadd a reference\
+    \ genome to presence/absence matrix\n(default: 50)."
+  synonyms:
+  - --strain_similarity_perc
+  args: !SimpleFlagArg
+    name: SIMILARITY_PERCENTAGE
+  optional: true
+- !Flag
+  description: Add reference genomes to gene-family presence/absence
+  synonyms:
+  - --add_ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to file mapping UniRef IDs to GO/KEGG/...\nannotation for functional\
+    \ characterization"
+  synonyms:
+  - --func_annot
+  args: !SimpleFlagArg
+    name: FUNC_ANNOT
+  optional: true
+- !Flag
+  description: "Field in the annotation file that must be added to the\npresence/absence\
+    \ matrix\n"
+  synonyms:
+  - -f
+  - --field
+  args: !SimpleFlagArg
+    name: FIELD
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: panphlan_profiling.py [-h] [-i I_DNA] [-p PANGENOME]\n        \
+  \                     [--i_covmat I_COVMAT] [--o_matrix O_MATRIX]\n            \
+  \                 [--o_covmat O_COVMAT]\n                             [--o_covplot_normed\
+  \ O_COVPLOT_NORMED]\n                             [--o_idx DNA_INDEX_FILE]\n   \
+  \                          [--min_coverage MIN_COVERAGE]\n                     \
+  \        [--left_max LEFT_MAX] [--right_min RIGHT_MIN]\n                       \
+  \      [--th_non_present TH_NON_PRESENT]\n                             [--th_present\
+  \ TH_PRESENT]\n                             [--th_multicopy TH_MULTICOPY]\n    \
+  \                         [--strain_similarity_perc SIMILARITY_PERCENTAGE]\n   \
+  \                          [--add_ref] [-v] [--func_annot FUNC_ANNOT]\n        \
+  \                     [-f FIELD]\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  -i I_DNA, --i_dna I_DNA\n                \
+  \        Input directory of panphlan_map.py results, containing\n              \
+  \          SAMPLE.csv.bz2 files\n  -p PANGENOME, --pangenome PANGENOME\n       \
+  \                 Path to pangenome tsv file exported from ChocoPhlAn\n  --i_covmat\
+  \ I_COVMAT   Path to precomputed coverage matrix\n  --o_matrix O_MATRIX   Path for\
+  \ presence/absence matrix output\n  --o_covmat O_COVMAT   Write raw gene-family\
+  \ coverage matrix in provided file\n  --o_covplot_normed O_COVPLOT_NORMED\n    \
+  \                    Filename for normalized gene-family coverage plot.\n  --o_idx\
+  \ DNA_INDEX_FILE\n                        Write gene-family plateau definitions\
+  \ (1, -1, -2, -3)\n  --min_coverage MIN_COVERAGE\n                        Minimum\
+  \ coverage threshold, default: 2X\n  --left_max LEFT_MAX   Strain presence/absence\
+  \ plateau curve threshold: left\n                        max [1.25]\n  --right_min\
+  \ RIGHT_MIN\n                        Strain presence/absence plateau curve threshold:\
+  \ right\n                        min [0.75]\n  --th_non_present TH_NON_PRESENT\n\
+  \                        Gene families threshold: not present if lower\n  --th_present\
+  \ TH_PRESENT\n                        Gene families threshold: present if higher\n\
+  \  --th_multicopy TH_MULTICOPY\n                        Gene families threshold:\
+  \ multicopy if higher\n  --strain_similarity_perc SIMILARITY_PERCENTAGE\n      \
+  \                  Minimum threshold (percentage) for genome length to\n       \
+  \                 add a reference genome to presence/absence matrix\n          \
+  \              (default: 50).\n  --add_ref             Add reference genomes to\
+  \ gene-family presence/absence\n                        matrix.\n  -v, --verbose\
+  \         Show progress information\n  --func_annot FUNC_ANNOT\n               \
+  \         Path to file mapping UniRef IDs to GO/KEGG/...\n                     \
+  \   annotation for functional characterization\n  -f FIELD, --field FIELD\n    \
+  \                    Field in the annotation file that must be added to the\n  \
+  \                      presence/absence matrix\n"
+generated_using:
+- --help

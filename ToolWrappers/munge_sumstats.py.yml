@@ -1,0 +1,291 @@
+!Command
+command:
+- munge_sumstats.py
+positional:
+- !Positional
+  description: --daner-n             Use this flag to parse more recent daner* formatted
+  position: 0
+  name: format.
+  optional: false
+named:
+- !Flag
+  description: Input filename.
+  synonyms:
+  - --sumstats
+  args: !SimpleFlagArg
+    name: SUMSTATS
+  optional: true
+- !Flag
+  description: "Sample size If this option is not set, will try to\ninfer the sample\
+    \ size from the input file. If the\ninput file contains a sample size column,\
+    \ and this\nflag is set, the argument to this flag has priority."
+  synonyms:
+  - --N
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Number of cases. If this option is not set, will try\nto infer the\
+    \ number of cases from the input file. If\nthe input file contains a number of\
+    \ cases column, and\nthis flag is set, the argument to this flag has\npriority."
+  synonyms:
+  - --N-cas
+  args: !SimpleFlagArg
+    name: N_CAS
+  optional: true
+- !Flag
+  description: "Number of controls. If this option is not set, will\ntry to infer\
+    \ the number of controls from the input\nfile. If the input file contains a number\
+    \ of controls\ncolumn, and this flag is set, the argument to this\nflag has priority."
+  synonyms:
+  - --N-con
+  args: !SimpleFlagArg
+    name: N_CON
+  optional: true
+- !Flag
+  description: Output filename prefix.
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: Minimum INFO score.
+  synonyms:
+  - --info-min
+  args: !SimpleFlagArg
+    name: INFO_MIN
+  optional: true
+- !Flag
+  description: Minimum MAF.
+  synonyms:
+  - --maf-min
+  args: !SimpleFlagArg
+    name: MAF_MIN
+  optional: true
+- !Flag
+  description: Use this flag to parse Stephan Ripke's daner* file
+  synonyms:
+  - --daner
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't require alleles. Useful if only unsigned summary\nstatistics\
+    \ are available and the goal is h2 /\npartitioned h2 estimation rather than rg\
+    \ estimation."
+  synonyms:
+  - --no-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Same as --merge, except the file should have three\ncolumns: SNP,\
+    \ A1, A2, and all alleles will be matched\nto the --merge-alleles file alleles."
+  synonyms:
+  - --merge-alleles
+  args: !SimpleFlagArg
+    name: MERGE_ALLELES
+  optional: true
+- !Flag
+  description: "Minimum N (sample size). Default is (90th percentile\nN) / 2."
+  synonyms:
+  - --n-min
+  args: !SimpleFlagArg
+    name: N_MIN
+  optional: true
+- !Flag
+  description: Chunksize.
+  synonyms:
+  - --chunksize
+  args: !SimpleFlagArg
+    name: CHUNKSIZE
+  optional: true
+- !Flag
+  description: "Name of SNP column (if not a name that ldsc\nunderstands). NB: case\
+    \ insensitive."
+  synonyms:
+  - --snp
+  args: !SimpleFlagArg
+    name: SNP
+  optional: true
+- !Flag
+  description: "Name of N column (if not a name that ldsc\nunderstands). NB: case\
+    \ insensitive."
+  synonyms:
+  - --N-col
+  args: !SimpleFlagArg
+    name: N_COL
+  optional: true
+- !Flag
+  description: "Name of N column (if not a name that ldsc\nunderstands). NB: case\
+    \ insensitive."
+  synonyms:
+  - --N-cas-col
+  args: !SimpleFlagArg
+    name: N_CAS_COL
+  optional: true
+- !Flag
+  description: "Name of N column (if not a name that ldsc\nunderstands). NB: case\
+    \ insensitive."
+  synonyms:
+  - --N-con-col
+  args: !SimpleFlagArg
+    name: N_CON_COL
+  optional: true
+- !Flag
+  description: "Name of A1 column (if not a name that ldsc\nunderstands). NB: case\
+    \ insensitive."
+  synonyms:
+  - --a1
+  args: !SimpleFlagArg
+    name: A1
+  optional: true
+- !Flag
+  description: "Name of A2 column (if not a name that ldsc\nunderstands). NB: case\
+    \ insensitive."
+  synonyms:
+  - --a2
+  args: !SimpleFlagArg
+    name: A2
+  optional: true
+- !Flag
+  description: "Name of p-value column (if not a name that ldsc\nunderstands). NB:\
+    \ case insensitive."
+  synonyms:
+  - --p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: "Name of FRQ or MAF column (if not a name that ldsc\nunderstands).\
+    \ NB: case insensitive."
+  synonyms:
+  - --frq
+  args: !SimpleFlagArg
+    name: FRQ
+  optional: true
+- !Flag
+  description: "Name of signed sumstat column, comma null value (e.g.,\nZ,0 or OR,1).\
+    \ NB: case insensitive."
+  synonyms:
+  - --signed-sumstats
+  args: !SimpleFlagArg
+    name: SIGNED_SUMSTATS
+  optional: true
+- !Flag
+  description: "Name of INFO column (if not a name that ldsc\nunderstands). NB: case\
+    \ insensitive."
+  synonyms:
+  - --info
+  args: !SimpleFlagArg
+    name: INFO
+  optional: true
+- !Flag
+  description: "Comma-separated list of INFO columns. Will filter on\nthe mean. NB:\
+    \ case insensitive."
+  synonyms:
+  - --info-list
+  args: !SimpleFlagArg
+    name: INFO_LIST
+  optional: true
+- !Flag
+  description: "Name of NSTUDY column (if not a name that ldsc\nunderstands). NB:\
+    \ case insensitive."
+  synonyms:
+  - --nstudy
+  args: !SimpleFlagArg
+    name: NSTUDY
+  optional: true
+- !Flag
+  description: "Minimum # of studies. Default is to remove everything\nbelow the max,\
+    \ unless there is an N column, in which\ncase do nothing."
+  synonyms:
+  - --nstudy-min
+  args: !SimpleFlagArg
+    name: NSTUDY_MIN
+  optional: true
+- !Flag
+  description: "Comma-separated list of column names to ignore.\n--a1-inc        \
+    \      A1 is the increasing allele.\n--keep-maf            Keep the MAF column\
+    \ (if one exists).\n"
+  synonyms:
+  - --ignore
+  args: !SimpleFlagArg
+    name: IGNORE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: munge_sumstats.py [-h] [--sumstats SUMSTATS] [--N N] [--N-cas N_CAS]\n\
+  \                         [--N-con N_CON] [--out OUT] [--info-min INFO_MIN]\n  \
+  \                       [--maf-min MAF_MIN] [--daner] [--daner-n]\n            \
+  \             [--no-alleles] [--merge-alleles MERGE_ALLELES]\n                 \
+  \        [--n-min N_MIN] [--chunksize CHUNKSIZE] [--snp SNP]\n                 \
+  \        [--N-col N_COL] [--N-cas-col N_CAS_COL]\n                         [--N-con-col\
+  \ N_CON_COL] [--a1 A1] [--a2 A2] [--p P]\n                         [--frq FRQ] [--signed-sumstats\
+  \ SIGNED_SUMSTATS]\n                         [--info INFO] [--info-list INFO_LIST]\n\
+  \                         [--nstudy NSTUDY] [--nstudy-min NSTUDY_MIN]\n        \
+  \                 [--ignore IGNORE] [--a1-inc] [--keep-maf]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --sumstats SUMSTATS\
+  \   Input filename.\n  --N N                 Sample size If this option is not set,\
+  \ will try to\n                        infer the sample size from the input file.\
+  \ If the\n                        input file contains a sample size column, and\
+  \ this\n                        flag is set, the argument to this flag has priority.\n\
+  \  --N-cas N_CAS         Number of cases. If this option is not set, will try\n\
+  \                        to infer the number of cases from the input file. If\n\
+  \                        the input file contains a number of cases column, and\n\
+  \                        this flag is set, the argument to this flag has\n     \
+  \                   priority.\n  --N-con N_CON         Number of controls. If this\
+  \ option is not set, will\n                        try to infer the number of controls\
+  \ from the input\n                        file. If the input file contains a number\
+  \ of controls\n                        column, and this flag is set, the argument\
+  \ to this\n                        flag has priority.\n  --out OUT             Output\
+  \ filename prefix.\n  --info-min INFO_MIN   Minimum INFO score.\n  --maf-min MAF_MIN\
+  \     Minimum MAF.\n  --daner               Use this flag to parse Stephan Ripke's\
+  \ daner* file\n                        format.\n  --daner-n             Use this\
+  \ flag to parse more recent daner* formatted\n                        files, which\
+  \ include sample size column 'Nca' and\n                        'Nco'.\n  --no-alleles\
+  \          Don't require alleles. Useful if only unsigned summary\n            \
+  \            statistics are available and the goal is h2 /\n                   \
+  \     partitioned h2 estimation rather than rg estimation.\n  --merge-alleles MERGE_ALLELES\n\
+  \                        Same as --merge, except the file should have three\n  \
+  \                      columns: SNP, A1, A2, and all alleles will be matched\n \
+  \                       to the --merge-alleles file alleles.\n  --n-min N_MIN  \
+  \       Minimum N (sample size). Default is (90th percentile\n                 \
+  \       N) / 2.\n  --chunksize CHUNKSIZE\n                        Chunksize.\n \
+  \ --snp SNP             Name of SNP column (if not a name that ldsc\n          \
+  \              understands). NB: case insensitive.\n  --N-col N_COL         Name\
+  \ of N column (if not a name that ldsc\n                        understands). NB:\
+  \ case insensitive.\n  --N-cas-col N_CAS_COL\n                        Name of N\
+  \ column (if not a name that ldsc\n                        understands). NB: case\
+  \ insensitive.\n  --N-con-col N_CON_COL\n                        Name of N column\
+  \ (if not a name that ldsc\n                        understands). NB: case insensitive.\n\
+  \  --a1 A1               Name of A1 column (if not a name that ldsc\n          \
+  \              understands). NB: case insensitive.\n  --a2 A2               Name\
+  \ of A2 column (if not a name that ldsc\n                        understands). NB:\
+  \ case insensitive.\n  --p P                 Name of p-value column (if not a name\
+  \ that ldsc\n                        understands). NB: case insensitive.\n  --frq\
+  \ FRQ             Name of FRQ or MAF column (if not a name that ldsc\n         \
+  \               understands). NB: case insensitive.\n  --signed-sumstats SIGNED_SUMSTATS\n\
+  \                        Name of signed sumstat column, comma null value (e.g.,\n\
+  \                        Z,0 or OR,1). NB: case insensitive.\n  --info INFO    \
+  \       Name of INFO column (if not a name that ldsc\n                        understands).\
+  \ NB: case insensitive.\n  --info-list INFO_LIST\n                        Comma-separated\
+  \ list of INFO columns. Will filter on\n                        the mean. NB: case\
+  \ insensitive.\n  --nstudy NSTUDY       Name of NSTUDY column (if not a name that\
+  \ ldsc\n                        understands). NB: case insensitive.\n  --nstudy-min\
+  \ NSTUDY_MIN\n                        Minimum # of studies. Default is to remove\
+  \ everything\n                        below the max, unless there is an N column,\
+  \ in which\n                        case do nothing.\n  --ignore IGNORE       Comma-separated\
+  \ list of column names to ignore.\n  --a1-inc              A1 is the increasing\
+  \ allele.\n  --keep-maf            Keep the MAF column (if one exists).\n"
+generated_using:
+- --help

@@ -1,0 +1,210 @@
+!Command
+command:
+- igphyml
+positional: []
+named:
+- !Flag
+  description: "\e[00;04mID_string\e[00;00m\n\e[00;00mAppend the string \e[00;04mID_string\e\
+    [00;00m at the end of each output file."
+  synonyms:
+  - --run_id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04muser_tree_file\e[00;00m (only if -i used)\n\e[00;04muser_tree_file\e\
+    [00;00m : starting tree filename. The tree must be in Newick format."
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mpartition_file\e[00;00m (only if -i used)\n\e[00;04mpartition_file\e\
+    [00;00m : Partition file specifying CDRs/FWRs for sequence file."
+  synonyms:
+  - --partfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mmodel\e[00;00m \e[00;01m(required)\n\e[00;04mmodel\e[00;00m\
+    \ : substitution model name.\n\e[00;00mCodon\e[00;00m based models: \e[00;04mHLP\e\
+    [00;00m (HLP19) | \e[00;04mGY\e[00;00m | \e[00;04mHLP17\e[00;00m\n\e[00;00mUse\
+    \ GY for quick tree construction.\nHLP for B cell specific features (see docs)."
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mts/tv_ratio\e[00;00m = [e|ce|i|ci|>0]\nSet the transition/transversion\
+    \ ratio."
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04momega\e[00;00m = [e|ce|i|ci|>0]\nSet number/value of omegas\
+    \ to estimate.\nFirst value (0) corresponds to FWRs, second (1) to CDRs.\nMay\
+    \ specify multiple omegas if partition file(s) specified."
+  synonyms:
+  - --omega
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mhotness\e[00;00m = [e|ce|i|ci|>-1]\nSet number hot- and coldspot\
+    \ rates to estimate.\nMay specify multiple values according to --motifs option.\n\
+    'e,e,e,e,e,e' is default."
+  synonyms:
+  - --hotness
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mmotifs\e[00;00m\nSpecify hot- and coldspot motifs to be modeled.\n\
+    \e[00;04mmotifs\e[00;00m = FCH (default) : Free coldspots and hotspots. Estimate\
+    \ separate rates for six canonical motifs.\nOtherwise, motifs specified by <motif>_<mutable\
+    \ position>:<index_in_hotness>.\n\e[00;04mmotifs\e[00;00m = WRC_2:0 | GYW_0:0\
+    \ | WA_1:0 | TW_0:0 | SYC_2:0 | GRS_0:0 : Model rate specific motif(s).\ne.g.\
+    \ \e[00;04mmotifs\e[00;00m = WRC_2:0,GYW_0:0 symmetric WR\e[00;04mC\e[00;00m/\e\
+    [00;04mG\e[00;00mYW motifs.\ne.g. \e[00;04mmotifs\e[00;00m = WRC_2:0,GYW_0:1 asymmetric\
+    \ WR\e[00;04mC\e[00;00m/\e[00;04mG\e[00;00mYW motifs. Must specify two values\
+    \ in --hotness."
+  synonyms:
+  - --motifs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(or --frequencies) \e[00;04mempirical\e[00;01m, \e[00;04mmodel\e[00;00m,\
+    \ \e[00;04moptimized\e[00;00m, \e[00;04mfT,fC,fA,fG\e[00;00m,\n\e[00;04mfT1,fC1,fA1,fG1,fT2,fC2,fA2,fG2,fT3,fC3,fA3,fG3\e\
+    [00;00m\n\e[00;01mor\e[00;00m \e[00;04mfC1,fC2, ... ,fC64\e[00;00m\n\e[00;04mempirical\e\
+    [00;00m: (GY default) the equilibrium codon frequencies are estimated by counting\n\
+    the occurence of bases or codons in the alignment.\n\e[00;04moptimize\e[00;00m\
+    \ : (HLP17 default) codon frequencies are estimated using maximum likelihood"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mfrequency model\e[00;00m\nWhich frequency model to use.\n\
+    \e[00;04mfrequency model\e[00;00m = \e[00;04mF1XCODONS\e[00;00m | \e[00;04mF1X4\e\
+    [00;00m | \e[00;04mF3X4\e[00;00m | \e[00;04mCF3X4\e[00;00m (default)"
+  synonyms:
+  - --fmodel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(or --optimize) \e[00;04mparams\e[00;00m\nThis option focuses on specific\
+    \ parameter optimisation.\n\e[00;04mparams\e[00;00m = tlr : (default) tree topology\
+    \ (t), branch length (l) and rate parameters (r) are optimised.\n\e[00;04mparams\e\
+    [00;00m = tl  : tree topology and branch length are optimised.\n\e[00;04mparams\e\
+    [00;00m = lr  : branch length and rate parameters are optimised.\n\e[00;04mparams\e\
+    [00;00m = l   : branch length are optimised.\n\e[00;04mparams\e[00;00m = r   :\
+    \ rate parameters are optimised.\n\e[00;04mparams\e[00;00m = n   : no parameter\
+    \ is optimised."
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(or --search) \e[00;04mmove\e[00;00m\nTree topology search operation\
+    \ option.\nCan be either \e[00;04mNNI\e[00;00m (default, fast) or \e[00;04mSPR\e\
+    [00;00m (thorough, slow)."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mnum_threads\e[00;00m\nNumber of threads to use for parallelization.\
+    \ Default is 1."
+  synonyms:
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[00;04mminimum_sequences\e[00;00m\nMinimum number of sequences (including\
+    \ germline) per lineage for inclusion in analysis."
+  synonyms:
+  - --minSeq
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "(or --help)\e[00;00m\n\e[00;00mShow this help message and exit.\n"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "COMMAND: igphyml --help \n\n\e[00;01mIgPhyML 1.1.3 052020\n\t\e[00;01mKB\
+  \ Hoehn, JA Vander Heiden, JQ Zhou, G Lunter, OG Pybus, SH Kleinstein.\n\e[00;00m\t\
+  Please cite: https://doi.org/10.1073/pnas.1906020116 and 10.1534/genetics.116.196303\n\
+  \e[00;01m\n\tFor detail and usage information: https://igphyml.readthedocs.io\n\e\
+  [00;01m\nUsage:\e[00;00m\n\tigphyml --repfile [lineages file] -m [model] [other\
+  \ options]\n\e[00;00m\n\tigphyml -i [sequence file] -m [model] [other options]\n\
+  \e[00;01m\nInput/output options:\n\e[00;00m\n\t\e[00;01m--repfile \e[00;04mlineage_file_name\e\
+  [00;01m (required if no -i specified)\n\t\t\e[00;04mlineage_file_name\e[00;00m:\
+  \ File specifying input files for repertoire analysis (see docs).\n\t\tUse BuildTrees.py\
+  \ (https://changeo.readthedocs.io) to generate lineages file.\n\n\t\e[00;01m-i \e\
+  [00;04mseq_file_name\e[00;01m (required if no --repfile specified)\n\t\t\e[00;04mseq_file_name\e\
+  [00;00m: Codon-aligned sequence file in FASTA or PHYLIP format.\n\e[00;01m\n\t--run_id\
+  \ \e[00;04mID_string\e[00;00m\n\t\t\e[00;00mAppend the string \e[00;04mID_string\e\
+  [00;00m at the end of each output file.\n\e[00;01m\n\t-u \e[00;04muser_tree_file\e\
+  [00;00m (only if -i used)\n\t\t\e[00;04muser_tree_file\e[00;00m : starting tree\
+  \ filename. The tree must be in Newick format.\n\e[00;01m\n\t--partfile \e[00;04mpartition_file\e\
+  [00;00m (only if -i used)\n\t\t\e[00;04mpartition_file\e[00;00m : Partition file\
+  \ specifying CDRs/FWRs for sequence file.\n\e[00;01m\nModel options:\n\e[00;00m\e\
+  [00;01m\n\t-m \e[00;04mmodel\e[00;00m \e[00;01m(required)\n\t\t\e[00;04mmodel\e\
+  [00;00m : substitution model name.\n\t\t\e[00;00mCodon\e[00;00m based models: \e\
+  [00;04mHLP\e[00;00m (HLP19) | \e[00;04mGY\e[00;00m | \e[00;04mHLP17\e[00;00m\n\t\
+  \t\e[00;00mUse GY for quick tree construction.\n\t\tHLP for B cell specific features\
+  \ (see docs).\n\e[00;01m\n\tModel parameterization arguments:\e[00;04m\n\e[00;01m\n\
+  \t (!) -t, --omega, and --hotness have the following options.\e[00;04m\n\t\t\e[00;00mAny\
+  \ combination of these may be specified in a comma separated list\n\t\twhen multiple\
+  \ parameters are estimated e.g. --omega ce,1\n\t\t\e[00;04mparameter\e[00;00m =\
+  \ e: Estimate single value by ML across all lineages (default).\n\t\t\e[00;04mparameter\e\
+  [00;00m = ce: Same as 'e' but also find 95% confidence intervals.\n\t\t\e[00;04mparameter\e\
+  [00;00m = i: Estimate by ML for each lineage individually (experimental).\n\t\t\e\
+  [00;04mparameter\e[00;00m = ci: Same as 'i' but also find 95% confidence intervals\
+  \ (experimental).\n\t\t\e[00;04mparameter\e[00;00m > -1: Fix parameter to specified\
+  \ value for all lineages (see below).\n\e[00;01m\n\t-t \e[00;04mts/tv_ratio\e[00;00m\
+  \ = [e|ce|i|ci|>0]\n\t\tSet the transition/transversion ratio.\n\e[00;01m\n\t--omega\
+  \ \e[00;04momega\e[00;00m = [e|ce|i|ci|>0]\n\t\tSet number/value of omegas to estimate.\n\
+  \t\tFirst value (0) corresponds to FWRs, second (1) to CDRs.\n\t\tMay specify multiple\
+  \ omegas if partition file(s) specified.\n\e[00;01m\n\t--hotness \e[00;04mhotness\e\
+  [00;00m = [e|ce|i|ci|>-1]\n\t\tSet number hot- and coldspot rates to estimate.\n\
+  \t\tMay specify multiple values according to --motifs option.\n\t\t'e,e,e,e,e,e'\
+  \ is default.\n\e[00;01m\n\t--motifs \e[00;04mmotifs\e[00;00m\n\t\tSpecify hot-\
+  \ and coldspot motifs to be modeled.\n\t\t\e[00;04mmotifs\e[00;00m = FCH (default)\
+  \ : Free coldspots and hotspots. Estimate separate rates for six canonical motifs.\n\
+  \t\tOtherwise, motifs specified by <motif>_<mutable position>:<index_in_hotness>.\n\
+  \t\t\e[00;04mmotifs\e[00;00m = WRC_2:0 | GYW_0:0 | WA_1:0 | TW_0:0 | SYC_2:0 | GRS_0:0\
+  \ : Model rate specific motif(s).\n\t\te.g. \e[00;04mmotifs\e[00;00m = WRC_2:0,GYW_0:0\
+  \ symmetric WR\e[00;04mC\e[00;00m/\e[00;04mG\e[00;00mYW motifs.\n\t\te.g. \e[00;04mmotifs\e\
+  [00;00m = WRC_2:0,GYW_0:1 asymmetric WR\e[00;04mC\e[00;00m/\e[00;04mG\e[00;00mYW\
+  \ motifs. Must specify two values in --hotness.\n\e[00;01m\n\t-f (or --frequencies)\
+  \ \e[00;04mempirical\e[00;01m, \e[00;04mmodel\e[00;00m, \e[00;04moptimized\e[00;00m,\
+  \ \e[00;04mfT,fC,fA,fG\e[00;00m,\n\t\t\e[00;04mfT1,fC1,fA1,fG1,fT2,fC2,fA2,fG2,fT3,fC3,fA3,fG3\e\
+  [00;00m\n\t                       \e[00;01mor\e[00;00m \e[00;04mfC1,fC2, ... ,fC64\e\
+  [00;00m\n\t\t\e[00;04mempirical\e[00;00m: (GY default) the equilibrium codon frequencies\
+  \ are estimated by counting\n\t\t the occurence of bases or codons in the alignment.\n\
+  \t\t\e[00;04moptimize\e[00;00m : (HLP17 default) codon frequencies are estimated\
+  \ using maximum likelihood\n\e[00;01m\n\t--fmodel \e[00;04mfrequency model\e[00;00m\n\
+  \t\tWhich frequency model to use.\n\t\t\e[00;04mfrequency model\e[00;00m = \e[00;04mF1XCODONS\e\
+  [00;00m | \e[00;04mF1X4\e[00;00m | \e[00;04mF3X4\e[00;00m | \e[00;04mCF3X4\e[00;00m\
+  \ (default)\n\e[00;01m\nOptimization options:\n\e[00;00m\e[00;01m\n\t-o (or --optimize)\
+  \ \e[00;04mparams\e[00;00m\n\t\tThis option focuses on specific parameter optimisation.\n\
+  \t\t\e[00;04mparams\e[00;00m = tlr : (default) tree topology (t), branch length\
+  \ (l) and rate parameters (r) are optimised.\n\t\t\e[00;04mparams\e[00;00m = tl\
+  \  : tree topology and branch length are optimised.\n\t\t\e[00;04mparams\e[00;00m\
+  \ = lr  : branch length and rate parameters are optimised.\n\t\t\e[00;04mparams\e\
+  [00;00m = l   : branch length are optimised.\n\t\t\e[00;04mparams\e[00;00m = r \
+  \  : rate parameters are optimised.\n\t\t\e[00;04mparams\e[00;00m = n   : no parameter\
+  \ is optimised.\n\e[00;01m\n\t-s (or --search) \e[00;04mmove\e[00;00m\n\t\tTree\
+  \ topology search operation option.\n\t\tCan be either \e[00;04mNNI\e[00;00m (default,\
+  \ fast) or \e[00;04mSPR\e[00;00m (thorough, slow).\n\e[00;01m\n\t--threads \e[00;04mnum_threads\e\
+  [00;00m\n\t\tNumber of threads to use for parallelization. Default is 1.\n\e[00;01m\n\
+  \t--minSeq \e[00;04mminimum_sequences\e[00;00m\n\t\tMinimum number of sequences\
+  \ (including germline) per lineage for inclusion in analysis.\n\e[00;01m\n\t-h (or\
+  \ --help)\e[00;00m\n\t\t\e[00;00mShow this help message and exit.\n"
+generated_using:
+- --help

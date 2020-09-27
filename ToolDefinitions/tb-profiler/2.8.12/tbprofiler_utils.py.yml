@@ -36,7 +36,7 @@ subcommands:
     args: !SimpleFlagArg
       name: DB
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
     named: []
@@ -60,8 +60,8 @@ subcommands:
         - --outfmt
         args: !ChoiceFlagArg
           choices: !!set
-            ? json
             ? txt
+            ? json
         optional: true
       - !Flag
         description: "Full path to mutation database json file to use\n(default: TBProfiler\
@@ -71,7 +71,79 @@ subcommands:
         args: !SimpleFlagArg
           name: DB
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: 'Sample prefix (default: tbprofiler)'
+            synonyms:
+            - --prefix
+            - -p
+            args: !SimpleFlagArg
+              name: PREFIX
+            optional: true
+          - !Flag
+            description: 'Output format (default: json)'
+            synonyms:
+            - --outfmt
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? json
+                ? txt
+            optional: true
+          - !Flag
+            description: "Full path to mutation database json file to use\n(default:\
+              \ TBProfiler panel) (default: drdb_v2)\n"
+            synonyms:
+            - --db
+            args: !SimpleFlagArg
+              name: DB
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: tbprofiler_utils.py gbcf_lineage [-h] [--prefix PREFIX]\n\
+            \                                        [--outfmt {json,txt}] [--db DB]\n\
+            \                                        bcf\n\npositional arguments:\n\
+            \  bcf                   Sample prefix\n\noptional arguments:\n  -h, --help\
+            \            show this help message and exit\n  --prefix PREFIX, -p PREFIX\n\
+            \                        Sample prefix (default: tbprofiler)\n  --outfmt\
+            \ {json,txt}   Output format (default: json)\n  --db DB              \
+            \ Full path to mutation database json file to use\n                  \
+            \      (default: TBProfiler panel) (default: drdb_v2)\n"
+          generated_using: &id004
+          - --help
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: tbprofiler_utils.py [-h] {gbcf_lineage} ...\n\nTBProfiler\
+          \ Utils\n\npositional arguments:\n  {gbcf_lineage}  Task to perform\n  \
+          \  gbcf_lineage  Create a phylogeny based on SNPs\n\noptional arguments:\n\
+          \  -h, --help      show this help message and exit\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -92,16 +164,9 @@ subcommands:
         \   Output format (default: json)\n  --db DB               Full path to mutation\
         \ database json file to use\n                        (default: TBProfiler\
         \ panel) (default: drdb_v2)\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: tbprofiler_utils.py [-h] {gbcf_lineage} ...\n\nTBProfiler Utils\n\

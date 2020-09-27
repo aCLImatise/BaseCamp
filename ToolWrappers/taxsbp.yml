@@ -1,0 +1,146 @@
+!Command
+command:
+- taxsbp
+positional: []
+named:
+- !Flag
+  description: "Tab-separated with the fields: sequence id <tab>\nsequence length\
+    \ <tab> taxonomic id [<tab>\nspecialization]"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: input_file
+  optional: true
+- !Flag
+  description: nodes.dmp from NCBI Taxonomy
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: nodes_file
+  optional: true
+- !Flag
+  description: merged.dmp from NCBI Taxonomy
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: merged_file
+  optional: true
+- !Flag
+  description: "Approximate number of bins (estimated by total\nlength/bin number).\
+    \ Default: 50 [Mutually exclusive -l]"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: bins
+  optional: true
+- !Flag
+  description: "Maximum bin length (in bp). Use this parameter insted\nof -b to define\
+    \ the number of bins [Mutually exclusive\n-b]"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: bin_len
+  optional: true
+- !Flag
+  description: "Fragment sequences into pieces, output accession will\nbe modified\
+    \ with positions: ACCESION/start:end"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: fragment_len
+  optional: true
+- !Flag
+  description: Overlap length between fragments [Only valid with -a]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: overlap_len
+  optional: true
+- !Flag
+  description: "Pre-cluster sequences into rank/taxid/specialization,\nso they won't\
+    \ be splitted among bins\n[none,specialization name,taxid,species,genus,...]\n\
+    Default: none"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: pre_cluster
+  optional: true
+- !Flag
+  description: "Make bins rank/taxid/specialization exclusive, so bins\nwon't have\
+    \ mixed sequences. When the chosen rank is not\npresent on a sequence lineage,\
+    \ this sequence will be\ntaxid/specialization exclusive. [none,specialization\n\
+    name,taxid,species,genus,...] Default: none"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: bin_exclusive
+  optional: true
+- !Flag
+  description: "Specialization name (e.g. assembly, strain). If given,\nTaxSBP will\
+    \ cluster entries on a specialized level\nafter the taxonomic id. The specialization\
+    \ identifier\nshould be provided as an extra collumn in the\ninput_file ans should\
+    \ respect the taxonomic hiercharchy\n(one taxid -> multiple specializations /\
+    \ one\nspecialization -> one taxid). Default: ''"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: specialization
+  optional: true
+- !Flag
+  description: "Previously generated files to be updated. Default: ''"
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: update_file
+  optional: true
+- !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: TaxSBP [-h] -f <input_file> -n <nodes_file> [-m <merged_file>]\n\
+  \              [-b <bins>] [-l <bin_len>] [-a <fragment_len>]\n              [-o\
+  \ <overlap_len>] [-p <pre_cluster>] [-r <bin_exclusive>]\n              [-z <specialization>]\
+  \ [-u <update_file>] [-v]\n\noptional arguments:\n  -h, --help           show this\
+  \ help message and exit\n  -f <input_file>      Tab-separated with the fields: sequence\
+  \ id <tab>\n                       sequence length <tab> taxonomic id [<tab>\n \
+  \                      specialization]\n  -n <nodes_file>      nodes.dmp from NCBI\
+  \ Taxonomy\n  -m <merged_file>     merged.dmp from NCBI Taxonomy\n  -b <bins>  \
+  \          Approximate number of bins (estimated by total\n                    \
+  \   length/bin number). Default: 50 [Mutually exclusive -l]\n  -l <bin_len>    \
+  \     Maximum bin length (in bp). Use this parameter insted\n                  \
+  \     of -b to define the number of bins [Mutually exclusive\n                 \
+  \      -b]\n  -a <fragment_len>    Fragment sequences into pieces, output accession\
+  \ will\n                       be modified with positions: ACCESION/start:end\n\
+  \  -o <overlap_len>     Overlap length between fragments [Only valid with -a]\n\
+  \  -p <pre_cluster>     Pre-cluster sequences into rank/taxid/specialization,\n\
+  \                       so they won't be splitted among bins\n                 \
+  \      [none,specialization name,taxid,species,genus,...]\n                    \
+  \   Default: none\n  -r <bin_exclusive>   Make bins rank/taxid/specialization exclusive,\
+  \ so bins\n                       won't have mixed sequences. When the chosen rank\
+  \ is not\n                       present on a sequence lineage, this sequence will\
+  \ be\n                       taxid/specialization exclusive. [none,specialization\n\
+  \                       name,taxid,species,genus,...] Default: none\n  -z <specialization>\
+  \  Specialization name (e.g. assembly, strain). If given,\n                    \
+  \   TaxSBP will cluster entries on a specialized level\n                       after\
+  \ the taxonomic id. The specialization identifier\n                       should\
+  \ be provided as an extra collumn in the\n                       input_file ans\
+  \ should respect the taxonomic hiercharchy\n                       (one taxid ->\
+  \ multiple specializations / one\n                       specialization -> one taxid).\
+  \ Default: ''\n  -u <update_file>     Previously generated files to be updated.\
+  \ Default: ''\n  -v                   show program's version number and exit\n"
+generated_using:
+- --help

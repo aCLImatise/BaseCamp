@@ -1,0 +1,244 @@
+!Command
+command:
+- samtools
+- fastq
+positional:
+- !Positional
+  description: the first 14 characters are index 1, the next 8 characters are index
+    2
+  position: 0
+  name: i14i8
+  optional: false
+- !Positional
+  description: ignore the first 8 characters, and use the next 14 characters for index
+    1
+  position: 1
+  name: n8i14
+  optional: false
+named:
+- !Flag
+  description: write reads designated READ_OTHER to FILE
+  synonyms:
+  - '-0'
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write reads designated READ1 to FILE
+  synonyms:
+  - '-1'
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write reads designated READ2 to FILE
+  synonyms:
+  - '-2'
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "write reads designated READ1 or READ2 to FILE\nnote: if a singleton\
+    \ file is specified with -s, only\npaired reads will be written to the -1 and\
+    \ -2 files."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: only include reads with all  of the FLAGs in INT present [0]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: only include reads with none of the FLAGS in INT present [0x900]
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: only EXCLUDE reads with all  of the FLAGs in INT present [0]
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: don't append /1 and /2 to the read name
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: always append /1 and /2 to the read name
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output quality in the OQ tag if present
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write singleton reads designated READ1 or READ2 to FILE
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: copy RG, BC and QT tags to the FASTQ header line
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: copy arbitrary tags to the FASTQ header line
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: TAGLIST
+  optional: true
+- !Flag
+  description: default quality score if not given in file [1]
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: add Illumina Casava 1.8 format entry to header (eg 1:N:0:ATCACG)
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compression level [0..9] to use when creating gz or bgzf fastq files
+    [1]
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write first index reads to FILE
+  synonyms:
+  - --i1
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write second index reads to FILE
+  synonyms:
+  - --i2
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Barcode tag [default: BC]'
+  synonyms:
+  - --barcode-tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: 'Quality tag [default: QT]'
+  synonyms:
+  - --quality-tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: How to parse barcode and quality tags
+  synonyms:
+  - --index-format
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  synonyms:
+  - --input-fmt-option
+  args: !SimpleFlagArg
+    name: OPT
+  optional: true
+- !Flag
+  description: Reference sequence FASTA FILE [null]
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Number of additional threads to use [0]
+  synonyms:
+  - -@
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Set level of verbosity
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "fastq: unrecognized option '--help'\nUsage: samtools fastq [options...]\
+  \ <in.bam>\n\nDescription:\nConverts a SAM, BAM or CRAM into either FASTQ or FASTA\
+  \ format depending on the command invoked.\n\nOptions:\n  -0 FILE              write\
+  \ reads designated READ_OTHER to FILE\n  -1 FILE              write reads designated\
+  \ READ1 to FILE\n  -2 FILE              write reads designated READ2 to FILE\n \
+  \ -o FILE              write reads designated READ1 or READ2 to FILE\n         \
+  \              note: if a singleton file is specified with -s, only\n          \
+  \             paired reads will be written to the -1 and -2 files.\n  -f INT   \
+  \            only include reads with all  of the FLAGs in INT present [0]\n  -F\
+  \ INT               only include reads with none of the FLAGS in INT present [0x900]\n\
+  \  -G INT               only EXCLUDE reads with all  of the FLAGs in INT present\
+  \ [0]\n  -n                   don't append /1 and /2 to the read name\n  -N    \
+  \               always append /1 and /2 to the read name\n  -O                 \
+  \  output quality in the OQ tag if present\n  -s FILE              write singleton\
+  \ reads designated READ1 or READ2 to FILE\n  -t                   copy RG, BC and\
+  \ QT tags to the FASTQ header line\n  -T TAGLIST           copy arbitrary tags to\
+  \ the FASTQ header line\n  -v INT               default quality score if not given\
+  \ in file [1]\n  -i                   add Illumina Casava 1.8 format entry to header\
+  \ (eg 1:N:0:ATCACG)\n  -c                   compression level [0..9] to use when\
+  \ creating gz or bgzf fastq files [1]\n  --i1 FILE            write first index\
+  \ reads to FILE\n  --i2 FILE            write second index reads to FILE\n  --barcode-tag\
+  \ TAG    Barcode tag [default: BC]\n  --quality-tag TAG    Quality tag [default:\
+  \ QT]\n  --index-format STR   How to parse barcode and quality tags\n\n      --input-fmt-option\
+  \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+  \               of OPTION or OPTION=VALUE\n      --reference FILE\n            \
+  \   Reference sequence FASTA FILE [null]\n  -@, --threads INT\n               Number\
+  \ of additional threads to use [0]\n      --verbosity INT\n               Set level\
+  \ of verbosity\n\nThe files will be automatically compressed if the file names have\
+  \ a .gz or .bgzf extension.\nThe input to this program must be collated by name.\
+  \ Run 'samtools collate' or 'samtools sort -n'.\n\nReads are designated READ1 if\
+  \ FLAG READ1 is set and READ2 is not set.\nReads are designated READ2 if FLAG READ1\
+  \ is not set and READ2 is set.\nReads are designated READ_OTHER if FLAGs READ1 and\
+  \ READ2 are either both set\nor both unset.\nRun 'samtools flags' for more information\
+  \ on flag codes and meanings.\n\nThe index-format string describes how to parse\
+  \ the barcode and quality tags, for example:\n   i14i8       the first 14 characters\
+  \ are index 1, the next 8 characters are index 2\n   n8i14       ignore the first\
+  \ 8 characters, and use the next 14 characters for index 1\nIf the tag contains\
+  \ a separator, then the numeric part can be replaced with '*' to mean\n'read until\
+  \ the separator or end of tag', for example:\n   n*i*        ignore the left part\
+  \ of the tag until the separator, then use the second part\n               of the\
+  \ tag as index 1\n\nExamples:\n To get just the paired reads in separate files,\
+  \ use:\n   samtools fastq -1 paired1.fq -2 paired2.fq -0 /dev/null -s /dev/null\
+  \ -n in.bam\n\n To get all non-supplementary/secondary reads in a single file, redirect\
+  \ the output:\n   samtools fastq in.bam > all_reads.fq\n"
+generated_using:
+- --help

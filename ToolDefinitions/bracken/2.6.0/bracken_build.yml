@@ -11,62 +11,174 @@ subcommands:
   - KMER_LEN
   positional: []
   named: []
-  parent: &id003 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: THREADS
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -x
-      args: !SimpleFlagArg
-        name: K_INSTALLATION
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -d
-      args: !SimpleFlagArg
-        name: MY_DB
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -l
-      args: !SimpleFlagArg
-        name: READ_LEN
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -k
-      args: !SimpleFlagArg
-        name: KMER_LEN
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
       command: *id002
-      positional:
-      - !Positional
-        description: '= '
-        position: 0
-        name: database
-        optional: false
-      - !Positional
-        description: = 1
-        position: 1
-        name: threads
-        optional: false
+      positional: []
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - -t
+          args: !SimpleFlagArg
+            name: THREADS
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -x
+          args: !SimpleFlagArg
+            name: K_INSTALLATION
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -d
+          args: !SimpleFlagArg
+            name: MY_DB
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -l
+          args: !SimpleFlagArg
+            name: READ_LEN
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -k
+          args: !SimpleFlagArg
+            name: KMER_LEN
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: '= '
+            position: 0
+            name: database
+            optional: false
+          - !Positional
+            description: = 1
+            position: 1
+            name: threads
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: " >> Selected Options:\n       kmer length = 35\n       read\
+            \ length = 100\n       database    = \n       threads     = 1\n >> Checking\
+            \ for Valid Options...\n ERROR: Database library /library does not exist\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - bracken-build
+          - THREADS
+          positional:
+          - !Positional
+            description: '= '
+            position: 0
+            name: database
+            optional: false
+          - !Positional
+            description: = 1
+            position: 1
+            name: threads
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: " >> Selected Options:\n       kmer length = 35\n       read\
+            \ length = 100\n       database    = \n       threads     = 1\n >> Checking\
+            \ for Valid Options...\n ERROR: Database library /library does not exist\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - bracken-build
+          - MY_DB
+          positional:
+          - !Positional
+            description: '= '
+            position: 0
+            name: database
+            optional: false
+          - !Positional
+            description: = 1
+            position: 1
+            name: threads
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: " >> Selected Options:\n       kmer length = 35\n       read\
+            \ length = 100\n       database    = \n       threads     = 1\n >> Checking\
+            \ for Valid Options...\n ERROR: Database library /library does not exist\n"
+          generated_using: *id004
+        - !Command
+          command: &id007
+          - bracken-build
+          - READ_LEN
+          positional:
+          - !Positional
+            description: '= '
+            position: 0
+            name: database
+            optional: false
+          - !Positional
+            description: = 1
+            position: 1
+            name: threads
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: " >> Selected Options:\n       kmer length = 35\n       read\
+            \ length = 100\n       database    = \n       threads     = 1\n >> Checking\
+            \ for Valid Options...\n ERROR: Database library /library does not exist\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: bracken_build -k KMER_LEN -l READ_LEN -d MY_DB -x K_INSTALLATION\
+          \ -t THREADS\n  KMER_LEN       kmer length used to build the kraken database\
+          \ (default: 35)\n  THREADS        the number of threads to use when running\
+          \ kraken classification and the bracken scripts\n  READ_LEN       read length\
+          \ to get all classifications for (default: 100)\n  MY_DB          location\
+          \ of Kraken database\n  K_INSTALLATION location of the installed kraken/kraken-build\
+          \ scripts (default assumes scripts can be run from the user path)\n\n**Note\
+          \ that this script will try to use kraken2 as default. If kraken2 is not\
+          \ installed, kraken will be used instead\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -75,23 +187,10 @@ subcommands:
       help_text: " >> Selected Options:\n       kmer length = 35\n       read length\
         \ = 100\n       database    = \n       threads     = 1\n >> Checking for Valid\
         \ Options...\n ERROR: Database library /library does not exist\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - bracken-build
-      - THREADS
-      positional:
-      - !Positional
-        description: '= '
-        position: 0
-        name: database
-        optional: false
-      - !Positional
-        description: = 1
-        position: 1
-        name: threads
-        optional: false
+      command: *id005
+      positional: []
       named: []
       parent: *id003
       subcommands: []
@@ -104,20 +203,8 @@ subcommands:
         \ Options...\n ERROR: Database library /library does not exist\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - bracken-build
-      - MY_DB
-      positional:
-      - !Positional
-        description: '= '
-        position: 0
-        name: database
-        optional: false
-      - !Positional
-        description: = 1
-        position: 1
-        name: threads
-        optional: false
+      command: *id006
+      positional: []
       named: []
       parent: *id003
       subcommands: []
@@ -130,20 +217,8 @@ subcommands:
         \ Options...\n ERROR: Database library /library does not exist\n"
       generated_using: *id004
     - !Command
-      command: &id007
-      - bracken-build
-      - READ_LEN
-      positional:
-      - !Positional
-        description: '= '
-        position: 0
-        name: database
-        optional: false
-      - !Positional
-        description: = 1
-        position: 1
-        name: threads
-        optional: false
+      command: *id007
+      positional: []
       named: []
       parent: *id003
       subcommands: []
@@ -182,7 +257,7 @@ subcommands:
   command: *id005
   positional: []
   named: []
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag:
@@ -196,7 +271,7 @@ subcommands:
   command: *id006
   positional: []
   named: []
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag:
@@ -210,7 +285,7 @@ subcommands:
   command: *id007
   positional: []
   named: []
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag:

@@ -1,0 +1,245 @@
+!Command
+command:
+- _showalign
+positional:
+- !Positional
+  description: -[no]ruler          boolean    [Y] If this option is true then a ruler
+    line
+  position: 0
+  name: alignment.
+  optional: false
+named:
+- !Flag
+  description: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\nThis is the\
+    \ scoring matrix file used when\ncomparing sequences. By default it is the\nfile\
+    \ 'EBLOSUM62' (for proteins) or the file\n'EDNAFULL' (for nucleic sequences).\
+    \ These\nfiles are found in the 'data' directory of\nthe EMBOSS installation."
+  synonyms:
+  - -matrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "string     [0] If you give the number in the alignment\nor the name\
+    \ of a sequence, it will be taken\nto be the reference sequence. The reference\n\
+    sequence is always shown in full and is the\none against which all the other sequences\n\
+    are compared. If this is set to 0 then the\nconsensus sequence will be used as\
+    \ the\nreference sequence. By default the consensus\nsequence is used as the reference\
+    \ sequence.\n(Any string)"
+  synonyms:
+  - -refseq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "menu       [N] What to show (Values: A (All of the\nsequences); I\
+    \ (Identities between the\nsequences); N (Non-identities between the\nsequences);\
+    \ S (Similarities between the\nsequences); D (Dissimilarities between the\nsequences))"
+  synonyms:
+  - -show
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "menu       [I] Output order of the sequences (Values: I\n(Input order\
+    \ - no change); A (Alphabetical\norder of the names); S (Similarity to the\nreference\
+    \ sequence))"
+  synonyms:
+  - -order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "range      [If this is left blank, then the sequence\ncase is left\
+    \ alone.] Regions to put in\nuppercase.\nIf this is left blank, then the sequence\n\
+    case is left alone.\nA set of regions is specified by a set of\npairs of positions.\n\
+    The positions are integers.\nThey are separated by any non-digit,\nnon-alpha character.\n\
+    Examples of region specifications are:\n24-45, 56-78\n1:45, 67=99;765..888\n1,5,8,10,23,45,57,99"
+  synonyms:
+  - -uppercase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [60] Width of sequence to display (Integer 1\nor more)"
+  synonyms:
+  - -width
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "integer    [-1] This sets the length of the left-hand\nmargin for\
+    \ sequence names. If the margin is\nset at 0 then no margin and no names are\n\
+    displayed. If the margin is set to a value\nthat is less than the length of a\
+    \ sequence\nname then the sequence name is displayed\ntruncated to the length\
+    \ of the margin. If\nthe margin is set to -1 then the minimum\nmargin width that\
+    \ will allow all the\nsequence names to be displayed in full plus\na space at\
+    \ the end of the name will\nautomatically be selected. (Integer -1 or\nmore)"
+  synonyms:
+  - -margin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: boolean    [N] Use HTML formatting
+  synonyms:
+  - -html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "range      [(full sequence)] Regions to colour if\nformatting for\
+    \ HTML.\nIf this is left blank, then the sequence is\nleft alone.\nA set of regions\
+    \ is specified by a set of\npairs of positions.\nThe positions are integers.\n\
+    They are followed by any valid HTML font\ncolour.\nExamples of region specifications\
+    \ are:\n24-45 blue 56-78 orange\n1-100 green 120-156 red\nA file of ranges to\
+    \ colour (one range per\nline) can be specified as '@filename'."
+  synonyms:
+  - -highlight
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [50.0] Set a cut-off for the % of positive\nscoring matches\
+    \ below which there is no\nconsensus. The default plurality is taken as\n50% of\
+    \ the total weight of all the\nsequences in the alignment. (Number from\n0.000\
+    \ to 100.000)"
+  synonyms:
+  - -plurality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [@( $(sequence.totweight) / 2)] Sets the\nthreshold for\
+    \ the scores of the positive\nmatches above which the consensus is in\nupper-case\
+    \ and below which the consensus is\nin lower-case. By default this is set to be\n\
+    half of the (weight-adjusted) number of\nsequences in the alignment. (Any numeric\n\
+    value)"
+  synonyms:
+  - -setcase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "float      [0.0] Provides the facility of setting the\nrequired number\
+    \ of identities at a position\nfor it to give a consensus. Therefore, if\nthis\
+    \ is set to 100% only columns of\nidentities contribute to the consensus.\n(Number\
+    \ from 0.000 to 100.000)"
+  synonyms:
+  - -identity
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "boolean    Report command line options and exit. More\ninformation\
+    \ on associated and general\nqualifiers can be found with -help -verbose\n"
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Display a multiple sequence alignment in pretty format\nVersion: EMBOSS:6.6.0.0\n\
+  \n   Standard (Mandatory) qualifiers:\n  [-sequence]          seqset     The sequence\
+  \ alignment to be displayed.\n  [-outfile]           outfile    [*.showalign] Output\
+  \ file name\n\n   Additional (Optional) qualifiers:\n   -matrix             matrix\
+  \     [EBLOSUM62 for protein, EDNAFULL for DNA]\n                              \
+  \    This is the scoring matrix file used when\n                               \
+  \   comparing sequences. By default it is the\n                                \
+  \  file 'EBLOSUM62' (for proteins) or the file\n                               \
+  \   'EDNAFULL' (for nucleic sequences). These\n                                \
+  \  files are found in the 'data' directory of\n                                \
+  \  the EMBOSS installation.\n   -refseq             string     [0] If you give the\
+  \ number in the alignment\n                                  or the name of a sequence,\
+  \ it will be taken\n                                  to be the reference sequence.\
+  \ The reference\n                                  sequence is always shown in full\
+  \ and is the\n                                  one against which all the other\
+  \ sequences\n                                  are compared. If this is set to 0\
+  \ then the\n                                  consensus sequence will be used as\
+  \ the\n                                  reference sequence. By default the consensus\n\
+  \                                  sequence is used as the reference sequence.\n\
+  \                                  (Any string)\n   -[no]bottom         boolean\
+  \    [Y] If this is true then the reference\n                                  sequence\
+  \ is displayed at the bottom of the\n                                  alignment\
+  \ instead of the top.\n   -show               menu       [N] What to show (Values:\
+  \ A (All of the\n                                  sequences); I (Identities between\
+  \ the\n                                  sequences); N (Non-identities between the\n\
+  \                                  sequences); S (Similarities between the\n   \
+  \                               sequences); D (Dissimilarities between the\n   \
+  \                               sequences))\n   -order              menu       [I]\
+  \ Output order of the sequences (Values: I\n                                  (Input\
+  \ order - no change); A (Alphabetical\n                                  order of\
+  \ the names); S (Similarity to the\n                                  reference\
+  \ sequence))\n   -[no]similarcase    boolean    [Y] If this is set True, then when\
+  \ -show is\n                                  set to 'Similarities' or 'Non-identities'\n\
+  \                                  and a residue is similar but not identical\n\
+  \                                  to the reference sequence residue, it will\n\
+  \                                  be changed to lower-case. If -show is set to\n\
+  \                                  'All' then non-identical, non-similar\n     \
+  \                             residues will be changed to lower-case. If\n     \
+  \                             this is False then no change to the case of\n    \
+  \                              the residues is made on the basis of their\n    \
+  \                              similarity to the reference sequence.\n   -[no]consensus\
+  \      boolean    [Y] If this is true then the consensus line\n                \
+  \                  is displayed.\n\n   Advanced (Unprompted) qualifiers:\n   -uppercase\
+  \          range      [If this is left blank, then the sequence\n              \
+  \                    case is left alone.] Regions to put in\n                  \
+  \                uppercase.\n                                  If this is left blank,\
+  \ then the sequence\n                                  case is left alone.\n   \
+  \                               A set of regions is specified by a set of\n    \
+  \                              pairs of positions.\n                           \
+  \       The positions are integers.\n                                  They are\
+  \ separated by any non-digit,\n                                  non-alpha character.\n\
+  \                                  Examples of region specifications are:\n    \
+  \                              24-45, 56-78\n                                  1:45,\
+  \ 67=99;765..888\n                                  1,5,8,10,23,45,57,99\n   -[no]number\
+  \         boolean    [Y] If this option is true then a line\n                  \
+  \                giving the positions in the alignment is\n                    \
+  \              displayed every 10 characters above the\n                       \
+  \           alignment.\n   -[no]ruler          boolean    [Y] If this option is\
+  \ true then a ruler line\n                                  marking every 5th and\
+  \ 10th character in the\n                                  alignment is displayed.\n\
+  \   -width              integer    [60] Width of sequence to display (Integer 1\n\
+  \                                  or more)\n   -margin             integer    [-1]\
+  \ This sets the length of the left-hand\n                                  margin\
+  \ for sequence names. If the margin is\n                                  set at\
+  \ 0 then no margin and no names are\n                                  displayed.\
+  \ If the margin is set to a value\n                                  that is less\
+  \ than the length of a sequence\n                                  name then the\
+  \ sequence name is displayed\n                                  truncated to the\
+  \ length of the margin. If\n                                  the margin is set\
+  \ to -1 then the minimum\n                                  margin width that will\
+  \ allow all the\n                                  sequence names to be displayed\
+  \ in full plus\n                                  a space at the end of the name\
+  \ will\n                                  automatically be selected. (Integer -1\
+  \ or\n                                  more)\n   -html               boolean  \
+  \  [N] Use HTML formatting\n   -highlight          range      [(full sequence)]\
+  \ Regions to colour if\n                                  formatting for HTML.\n\
+  \                                  If this is left blank, then the sequence is\n\
+  \                                  left alone.\n                               \
+  \   A set of regions is specified by a set of\n                                \
+  \  pairs of positions.\n                                  The positions are integers.\n\
+  \                                  They are followed by any valid HTML font\n  \
+  \                                colour.\n                                  Examples\
+  \ of region specifications are:\n                                  24-45 blue 56-78\
+  \ orange\n                                  1-100 green 120-156 red\n          \
+  \                        A file of ranges to colour (one range per\n           \
+  \                       line) can be specified as '@filename'.\n   -plurality  \
+  \        float      [50.0] Set a cut-off for the % of positive\n               \
+  \                   scoring matches below which there is no\n                  \
+  \                consensus. The default plurality is taken as\n                \
+  \                  50% of the total weight of all the\n                        \
+  \          sequences in the alignment. (Number from\n                          \
+  \        0.000 to 100.000)\n   -setcase            float      [@( $(sequence.totweight)\
+  \ / 2)] Sets the\n                                  threshold for the scores of\
+  \ the positive\n                                  matches above which the consensus\
+  \ is in\n                                  upper-case and below which the consensus\
+  \ is\n                                  in lower-case. By default this is set to\
+  \ be\n                                  half of the (weight-adjusted) number of\n\
+  \                                  sequences in the alignment. (Any numeric\n  \
+  \                                value)\n   -identity           float      [0.0]\
+  \ Provides the facility of setting the\n                                  required\
+  \ number of identities at a position\n                                  for it to\
+  \ give a consensus. Therefore, if\n                                  this is set\
+  \ to 100% only columns of\n                                  identities contribute\
+  \ to the consensus.\n                                  (Number from 0.000 to 100.000)\n\
+  \   -[no]gaps           boolean    [Y] If this option is true then gap\n       \
+  \                           characters can appear in the consensus. The\n      \
+  \                            alternative is 'N' for nucleotide, or 'X'\n       \
+  \                           for protein\n\n   General qualifiers:\n   -help    \
+  \           boolean    Report command line options and exit. More\n            \
+  \                      information on associated and general\n                 \
+  \                 qualifiers can be found with -help -verbose\n\n"
+generated_using:
+- --help

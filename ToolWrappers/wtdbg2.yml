@@ -1,0 +1,676 @@
+!Command
+command:
+- wtdbg2
+positional: []
+named:
+- !Flag
+  description: Long reads sequences file (REQUIRED; can be multiple), []
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Error-free sequences file (can be multiple), []
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Prefix of output files (REQUIRED), []
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Number of threads, 0 for all cores, [4]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Force to overwrite output files
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Choose the longest subread and drop reads shorter than <int> (5000
+    recommended for PacBio) [0]
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Kmer psize, 0 <= p <= 25, [21]\nk + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Filter high frequency kmers, maybe repetitive, [1000]\nif K >= 1,\
+    \ take the integer value as cutoff, MUST <= 65535\nelse, mask the top fraction\
+    \ part high frequency kmers"
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Min kmer frequency, [2]
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Filter low frequency kmers by a 4G-bytes array (max_occ=3 2-bits).
+    Here, -E must greater than 1
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Max number of bin(256bp) in one gap, [4]
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Max number of bin(256bp) in one deviation, [4]
+  synonyms:
+  - -Y
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: penalty for BIN gap, [-7]
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: penalty for BIN deviation, [-21]
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Min length of alignment, [2048]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Min matched, [200]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Keep contained reads during alignment
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Max length variation of two aligned fragments, [0.2]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Min read depth of a valid edge, [3]
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Quiet
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose (can be multiple)
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'See -t 0, default: all cores'
+  synonyms:
+  - --cpu
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "+\nSee -i"
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "+\nSee -I. Error-free sequences will be firstly token for nodes, if\
+    \ --err-free-nodes is specified, only select nodes from those sequences"
+  synonyms:
+  - --err-free-seq
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: See -f
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: See -o
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: See -k 0
+  synonyms:
+  - --kmer-fsize
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -p 21
+  synonyms:
+  - --kmer-psize
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -K 1000
+  synonyms:
+  - --kmer-depth-max
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: See -E
+  synonyms:
+  - --kmer-depth-min
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "See -F\n`wtdbg` uses a 4 Gbytes array to counting the occurence (0-3)\
+    \ of kmers in the way of counting-bloom-filter. It will reduce memory space largely\n\
+    Orphaned kmers won't appear in building kbm-index"
+  synonyms:
+  - --kmer-depth-min-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: See -S 1
+  synonyms:
+  - --kmer-subampling
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Select no more than n seeds in a query bin, default: 256'
+  synonyms:
+  - --aln-kmer-sampling
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -X 4
+  synonyms:
+  - --dp-max-gap
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -Y 4
+  synonyms:
+  - --dp-max-var
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -x -7
+  synonyms:
+  - --dp-penalty-gap
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -y -21
+  synonyms:
+  - --dp-penalty-var
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -l 2048
+  synonyms:
+  - --aln-min-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -m 200. Here the num of matches counting basepair of the matched
+    kmer's regions
+  synonyms:
+  - --aln-min-match
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: See -s 0.2
+  synonyms:
+  - --aln-max-var
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'Retain dovetail overlaps only, the max overhang size is <--aln-dovetail>,
+    -1 to disable filtering, default: 256'
+  synonyms:
+  - --aln-dovetail
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "1: forward, 2: reverse, 3: both. Please don't change the deault vaule\
+    \ 3, unless you exactly know what you are doing"
+  synonyms:
+  - --aln-strand
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Max n hits for each read in build graph, default: 1000'
+  synonyms:
+  - --aln-maxhit
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Use best n hits for each read in build graph, 0: keep all, default:\
+    \ 500\n<prefix>.alignments always store all alignments"
+  synonyms:
+  - --aln-bestn
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Even a read was contained in previous alignment, still align it against
+    other reads
+  synonyms:
+  - -A
+  - --aln-noskip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "+\nSee -v. -vvvv will display the most detailed information"
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: See -q
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Default: 0. Pick longest subreads if possible. Filter reads less than\
+    \ <--tidy-reads>. Rename reads into 'S%010d' format. The first read is named as\
+    \ S0000000001\nSet to 0 bp to disable tidy. Suggested vaule is 5000 for pacbio\
+    \ reads"
+  synonyms:
+  - -L
+  - --tidy-reads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Select nodes from error-free-sequences only. E.g. you have contigs\
+    \ assembled from NGS-WGS reads, and long noisy reads.\nYou can type '--err-free-seq\
+    \ your_ctg.fa --input your_long_reads.fa --err-free-nodes' to perform assembly\
+    \ somehow act as long-reads scaffolding"
+  synonyms:
+  - --err-free-nodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Limit the input sequences to at most <int> M bp. Usually for test
+  synonyms:
+  - --limit-input
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "The default value is 1024, which is times of KBM_BIN_SIZE(always equals\
+    \ 256 bp). It specifies the length of intervals (or call nodes after selecting).\n\
+    kbm indexs sequences into BINs of 256 bp in size, so that many parameter should\
+    \ be times of 256 bp. There are: --node-len, --node-ovl, --aln-min-length, --aln-dovetail\
+    \ .   Other parameters are counted in BINs, --dp-max-gap, --dp-max-var ."
+  synonyms:
+  - --node-len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Min matched bins in a node, default:1
+  synonyms:
+  - --node-matched-bins
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Default: 256. Max overlap size between two adjacent intervals in any
+    read. It is used in selecting best nodes representing reads in graph'
+  synonyms:
+  - --node-ovl
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Default: 3. The minimal depth of a valid edge is set to 3. In another\
+    \ word, Valid edges must be supported by at least 3 reads\nWhen the sequence depth\
+    \ is low, have a try with --edge-min 2. Or very high, try --edge-min 4"
+  synonyms:
+  - -e
+  - --edge-min
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Don't attempt to rescue low coverage edges
+  synonyms:
+  - --drop-low-cov-edges
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Min depth of a intreval to be selected as valid node. Defaultly, this
+    value is automaticly the same with --edge-min.
+  synonyms:
+  - --node-min
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Nodes with too high depth will be regarded as repetitive, and be masked.
+    Default: 200, more than 200 reads contain this node'
+  synonyms:
+  - --node-max
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ", 0.5\nTiny Tandom Repeat. A node located inside ttr will bring noisy\
+    \ in graph, should be masked. The pattern of such nodes is:\ndepth >= <--ttr-cutoff-depth>,\
+    \ and none of their edges have depth greater than depth * <--ttr-cutoff-ratio\
+    \ 0.5>\nset --ttr-cutoff-depth 0 to disable ttr masking"
+  synonyms:
+  - --ttr-cutoff-ratio
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Dump kbm index into file for loaded by `kbm` or `wtdbg`
+  synonyms:
+  - --dump-kbm
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Instead of reading sequences and building kbm index, which is time-consumed,\
+    \ loading kbm-index from already dumped file.\nPlease note that, once kbm-index\
+    \ is mmaped by kbm -R <kbm-index> start, will just get the shared memory in minute\
+    \ time.\nSee `kbm` -R <your_seqs.kbmidx> [start | stop]"
+  synonyms:
+  - --load-kbm
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "+\n`wtdbg` output reads' alignments into <--prefix>.alignments, program\
+    \ can load them to fastly build assembly graph. Or you can offer\nother source\
+    \ of alignments to `wtdbg`. When --load-alignment, will only reading long sequences\
+    \ but skip building kbm index\nYou can type --load-alignments <file> more than\
+    \ once to load alignments from many files"
+  synonyms:
+  - --load-alignments
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Combined with --load-nodes. Load reads clips. You can find it in `wtdbg`'s
+    <--prefix>.clps
+  synonyms:
+  - --load-clips
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Load dumped nodes from previous execution for fast construct the assembly
+    graph, should be combined with --load-clips. You can find it in `wtdbg`'s <--prefix>.1.nodes
+  synonyms:
+  - --load-nodes
+  args: !SimpleFlagArg
+    name: sting
+  optional: true
+- !Flag
+  description: 'Max step to search a bubble, meaning the max step from the starting
+    node to the ending node. Default: 40'
+  synonyms:
+  - --bubble-step
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Max step to search a tip, 10
+  synonyms:
+  - --tip-step
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Min length of contigs to be output, 5000
+  synonyms:
+  - --ctg-min-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Min num of nodes in a contig to be ouput, 3
+  synonyms:
+  - --ctg-min-nodes
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Will generate as less output files (<--prefix>.*) as it can
+  synonyms:
+  - --minimal-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Used in filtering BINs. If a BIN has less indexed valid kmers than
+    <--bin-complexity-cutoff 2>, masks it.
+  synonyms:
+  - --bin-complexity-cutoff
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Before building edges, for each node, local-graph-analysis reads all\
+    \ related reads and according nodes, and builds a local graph to judge whether\
+    \ to mask it\nThe analysis aims to find repetitive nodes"
+  synonyms:
+  - --no-local-graph-analysis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Defaultly, `wtdbg` sorts input sequences by length DSC. The order of
+    reads affects the generating of nodes in selecting important intervals
+  synonyms:
+  - --no-read-length-sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: In graph clean, `wtdbg` normally masks isolated (orphaned) nodes
+  synonyms:
+  - --keep-isolated-nodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Defaultly, `wtdbg` clips a input sequence by analyzing its overlaps\
+    \ to remove high error endings, rolling-circle repeats (see PacBio CCS), and chimera.\n\
+    When building edges, clipped region won't contribute. However, `wtdbg` will use\
+    \ them in the final linking of unitigs"
+  synonyms:
+  - --no-read-clip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Defaultly, performs alignments chainning in read clipping\n** If '--aln-bestn\
+    \ 0 --no-read-clip', alignments will be parsed directly, and less RAM spent on\
+    \ recording alignments\n"
+  synonyms:
+  - --no-chainning-clip
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show more options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "WTDBG: De novo assembler for long noisy sequences\nAuthor: Jue Ruan <ruanjue@gmail.com>\n\
+  Version: 2.0 (20180924)\nCompiled: Mon Sep 24 15:38:04 UTC 2018\nUsage: wtdbg2 [options]\n\
+  Options:\n -i <string> Long reads sequences file (REQUIRED; can be multiple), []\n\
+  \ -I <string> Error-free sequences file (can be multiple), []\n -o <string> Prefix\
+  \ of output files (REQUIRED), []\n -t <int>    Number of threads, 0 for all cores,\
+  \ [4]\n -f          Force to overwrite output files\n -L <int>    Choose the longest\
+  \ subread and drop reads shorter than <int> (5000 recommended for PacBio) [0]\n\
+  \ -k <int>    Kmer fsize, 0 <= k <= 25, [0]\n -p <int>    Kmer psize, 0 <= p <=\
+  \ 25, [21]\n             k + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>\n\
+  \ -K <float>  Filter high frequency kmers, maybe repetitive, [1000]\n          \
+  \   if K >= 1, take the integer value as cutoff, MUST <= 65535\n             else,\
+  \ mask the top fraction part high frequency kmers\n -E <int>    Min kmer frequency,\
+  \ [2]\n -F          Filter low frequency kmers by a 4G-bytes array (max_occ=3 2-bits).\
+  \ Here, -E must greater than 1\n -S <int>    Subsampling kmers, 1/(<-S>) kmers are\
+  \ indexed, [4]\n             -S is very useful in saving memeory and speeding up\n\
+  \             please note that subsampling kmers will have less matched length\n\
+  \ -X <int>    Max number of bin(256bp) in one gap, [4]\n -Y <int>    Max number\
+  \ of bin(256bp) in one deviation, [4]\n -x <int>    penalty for BIN gap, [-7]\n\
+  \ -y <int>    penalty for BIN deviation, [-21]\n -l <float>  Min length of alignment,\
+  \ [2048]\n -m <float>  Min matched, [200]\n -A          Keep contained reads during\
+  \ alignment\n -s <float>  Max length variation of two aligned fragments, [0.2]\n\
+  \ -e <int>    Min read depth of a valid edge, [3]\n -q          Quiet\n -v     \
+  \     Verbose (can be multiple)\n --help      Show more options\n ** more options\
+  \ **\n --cpu <int>\n   See -t 0, default: all cores\n --input <string> +\n   See\
+  \ -i\n --err-free-seq <string> +\n   See -I. Error-free sequences will be firstly\
+  \ token for nodes, if --err-free-nodes is specified, only select nodes from those\
+  \ sequences\n --force\n   See -f\n --prefix <string>\n   See -o\n --kmer-fsize <int>\n\
+  \   See -k 0\n --kmer-psize <int>\n   See -p 21\n --kmer-depth-max <float>\n   See\
+  \ -K 1000\n --kmer-depth-min <int>\n   See -E\n --kmer-depth-min-filter\n   See\
+  \ -F\n   `wtdbg` uses a 4 Gbytes array to counting the occurence (0-3) of kmers\
+  \ in the way of counting-bloom-filter. It will reduce memory space largely\n   \
+  \ Orphaned kmers won't appear in building kbm-index\n --kmer-subampling <int>\n\
+  \   See -S 1\n --aln-kmer-sampling <int>\n   Select no more than n seeds in a query\
+  \ bin, default: 256\n --dp-max-gap <int>\n   See -X 4\n --dp-max-var <int>\n   See\
+  \ -Y 4\n --dp-penalty-gap <int>\n   See -x -7\n --dp-penalty-var <int>\n   See -y\
+  \ -21\n --aln-min-length <int>\n   See -l 2048\n --aln-min-match <int>\n   See -m\
+  \ 200. Here the num of matches counting basepair of the matched kmer's regions\n\
+  \ --aln-max-var <float>\n   See -s 0.2\n --aln-dovetail <int>\n   Retain dovetail\
+  \ overlaps only, the max overhang size is <--aln-dovetail>, -1 to disable filtering,\
+  \ default: 256\n --aln-strand <int>\n   1: forward, 2: reverse, 3: both. Please\
+  \ don't change the deault vaule 3, unless you exactly know what you are doing\n\
+  \ --aln-maxhit <int>\n   Max n hits for each read in build graph, default: 1000\n\
+  \ --aln-bestn <int>\n   Use best n hits for each read in build graph, 0: keep all,\
+  \ default: 500\n   <prefix>.alignments always store all alignments\n -A, --aln-noskip\n\
+  \   Even a read was contained in previous alignment, still align it against other\
+  \ reads\n --verbose +\n   See -v. -vvvv will display the most detailed information\n\
+  \ --quiet\n   See -q\n -L <int>, --tidy-reads=<int>\n   Default: 0. Pick longest\
+  \ subreads if possible. Filter reads less than <--tidy-reads>. Rename reads into\
+  \ 'S%010d' format. The first read is named as S0000000001\n   Set to 0 bp to disable\
+  \ tidy. Suggested vaule is 5000 for pacbio reads\n --err-free-nodes\n   Select nodes\
+  \ from error-free-sequences only. E.g. you have contigs assembled from NGS-WGS reads,\
+  \ and long noisy reads.\n   You can type '--err-free-seq your_ctg.fa --input your_long_reads.fa\
+  \ --err-free-nodes' to perform assembly somehow act as long-reads scaffolding\n\
+  \ --limit-input <int>\n   Limit the input sequences to at most <int> M bp. Usually\
+  \ for test\n --node-len <int>\n   The default value is 1024, which is times of KBM_BIN_SIZE(always\
+  \ equals 256 bp). It specifies the length of intervals (or call nodes after selecting).\n\
+  \   kbm indexs sequences into BINs of 256 bp in size, so that many parameter should\
+  \ be times of 256 bp. There are: --node-len, --node-ovl, --aln-min-length, --aln-dovetail\
+  \ .   Other parameters are counted in BINs, --dp-max-gap, --dp-max-var .\n --node-matched-bins\
+  \ <int>\n   Min matched bins in a node, default:1\n --node-ovl <int>\n   Default:\
+  \ 256. Max overlap size between two adjacent intervals in any read. It is used in\
+  \ selecting best nodes representing reads in graph\n -e <int>, --edge-min=<int>\n\
+  \   Default: 3. The minimal depth of a valid edge is set to 3. In another word,\
+  \ Valid edges must be supported by at least 3 reads\n   When the sequence depth\
+  \ is low, have a try with --edge-min 2. Or very high, try --edge-min 4\n --drop-low-cov-edges\n\
+  \   Don't attempt to rescue low coverage edges\n --node-min <int>\n   Min depth\
+  \ of a intreval to be selected as valid node. Defaultly, this value is automaticly\
+  \ the same with --edge-min.\n --node-max <int>\n   Nodes with too high depth will\
+  \ be regarded as repetitive, and be masked. Default: 200, more than 200 reads contain\
+  \ this node\n --ttr-cutoff-depth <int>, 0\n --ttr-cutoff-ratio <float>, 0.5\n  \
+  \ Tiny Tandom Repeat. A node located inside ttr will bring noisy in graph, should\
+  \ be masked. The pattern of such nodes is:\n   depth >= <--ttr-cutoff-depth>, and\
+  \ none of their edges have depth greater than depth * <--ttr-cutoff-ratio 0.5>\n\
+  \   set --ttr-cutoff-depth 0 to disable ttr masking\n --dump-kbm <string>\n   Dump\
+  \ kbm index into file for loaded by `kbm` or `wtdbg`\n --load-kbm <string>\n   Instead\
+  \ of reading sequences and building kbm index, which is time-consumed, loading kbm-index\
+  \ from already dumped file.\n   Please note that, once kbm-index is mmaped by kbm\
+  \ -R <kbm-index> start, will just get the shared memory in minute time.\n   See\
+  \ `kbm` -R <your_seqs.kbmidx> [start | stop]\n --load-alignments <string> +\n  \
+  \ `wtdbg` output reads' alignments into <--prefix>.alignments, program can load\
+  \ them to fastly build assembly graph. Or you can offer\n   other source of alignments\
+  \ to `wtdbg`. When --load-alignment, will only reading long sequences but skip building\
+  \ kbm index\n   You can type --load-alignments <file> more than once to load alignments\
+  \ from many files\n --load-clips <string>\n   Combined with --load-nodes. Load reads\
+  \ clips. You can find it in `wtdbg`'s <--prefix>.clps\n --load-nodes <sting>\n \
+  \  Load dumped nodes from previous execution for fast construct the assembly graph,\
+  \ should be combined with --load-clips. You can find it in `wtdbg`'s <--prefix>.1.nodes\n\
+  \ --bubble-step <int>\n   Max step to search a bubble, meaning the max step from\
+  \ the starting node to the ending node. Default: 40\n --tip-step <int>\n   Max step\
+  \ to search a tip, 10\n --ctg-min-length <int>\n   Min length of contigs to be output,\
+  \ 5000\n --ctg-min-nodes <int>\n   Min num of nodes in a contig to be ouput, 3\n\
+  \ --minimal-output\n   Will generate as less output files (<--prefix>.*) as it can\n\
+  \ --bin-complexity-cutoff <int>\n   Used in filtering BINs. If a BIN has less indexed\
+  \ valid kmers than <--bin-complexity-cutoff 2>, masks it.\n --no-local-graph-analysis\n\
+  \   Before building edges, for each node, local-graph-analysis reads all related\
+  \ reads and according nodes, and builds a local graph to judge whether to mask it\n\
+  \   The analysis aims to find repetitive nodes\n --no-read-length-sort\n   Defaultly,\
+  \ `wtdbg` sorts input sequences by length DSC. The order of reads affects the generating\
+  \ of nodes in selecting important intervals\n --keep-isolated-nodes\n   In graph\
+  \ clean, `wtdbg` normally masks isolated (orphaned) nodes\n --no-read-clip\n   Defaultly,\
+  \ `wtdbg` clips a input sequence by analyzing its overlaps to remove high error\
+  \ endings, rolling-circle repeats (see PacBio CCS), and chimera.\n   When building\
+  \ edges, clipped region won't contribute. However, `wtdbg` will use them in the\
+  \ final linking of unitigs\n --no-chainning-clip\n   Defaultly, performs alignments\
+  \ chainning in read clipping\n   ** If '--aln-bestn 0 --no-read-clip', alignments\
+  \ will be parsed directly, and less RAM spent on recording alignments\n\n"
+generated_using:
+- --help

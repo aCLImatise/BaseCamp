@@ -1,0 +1,219 @@
+!Command
+command:
+- bcftools
+- csq
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in.vcf
+  optional: false
+named:
+- !Flag
+  description: reference file in fasta format
+  synonyms:
+  - -f
+  - --fasta-ref
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: gff3 annotation file
+  synonyms:
+  - -g
+  - --gff-annot
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: annotate with abbreviated protein-changing predictions
+  synonyms:
+  - -b
+  - --brief-predictions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use this tag instead of the default BCSQ
+  synonyms:
+  - -c
+  - --custom-tag
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: localized predictions, consider only one VCF record at a time
+  synonyms:
+  - -l
+  - --local-csq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum number of consequences to consider per site [16]
+  synonyms:
+  - -n
+  - --ncsq
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "how to handle unphased heterozygous genotypes: [r]\na: take GTs as\
+    \ is, create haplotypes regardless of phase (0/1 -> 0|1)\nm: merge *all* GTs into\
+    \ a single haplotype (0/1 -> 1, 1/2 -> 1)\nr: require phased GTs, throw an error\
+    \ on unphased het GTs\nR: create non-reference haplotypes if possible (0/1 ->\
+    \ 1|1, 1/2 -> 1|2)\ns: skip unphased hets"
+  synonyms:
+  - -p
+  - --phase
+  args: !SimpleFlagArg
+    name: a|m|r|R|s
+  optional: true
+- !Flag
+  description: exclude sites for which the expression is true
+  synonyms:
+  - -e
+  - --exclude
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: run even if some sanity checks fail
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: select sites for which the expression is true
+  synonyms:
+  - -i
+  - --include
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: do not append version and command line to the header
+  synonyms:
+  - --no-version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write output to a file [standard output]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "b: compressed BCF, u: uncompressed BCF, z: compressed VCF\nv: uncompressed\
+    \ VCF, t: plain tab-delimited text output [v]"
+  synonyms:
+  - -O
+  - --output-type
+  args: !SimpleFlagArg
+    name: b|u|z|v|t
+  optional: true
+- !Flag
+  description: restrict to comma-separated list of regions
+  synonyms:
+  - -r
+  - --regions
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: restrict to regions listed in a file
+  synonyms:
+  - -R
+  - --regions-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: <-|list>          samples to include or "-" to apply all variants and
+    ignore samples
+  synonyms:
+  - -s
+  - --samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: samples to include
+  synonyms:
+  - -S
+  - --samples-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: similar to -r but streams rather than index-jumps
+  synonyms:
+  - -t
+  - --targets
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: similar to -R but streams rather than index-jumps
+  synonyms:
+  - -T
+  - --targets-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: use multithreading with <int> worker threads [0]
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: verbosity level 0-2 [1]
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout: Haplotype-aware consequence caller.\nUsage: bcftools csq [options]\
+  \ in.vcf\n\nRequired options:\n   -f, --fasta-ref <file>          reference file\
+  \ in fasta format\n   -g, --gff-annot <file>          gff3 annotation file\n\nCSQ\
+  \ options:\n   -b, --brief-predictions         annotate with abbreviated protein-changing\
+  \ predictions\n   -c, --custom-tag <string>       use this tag instead of the default\
+  \ BCSQ\n   -l, --local-csq                 localized predictions, consider only\
+  \ one VCF record at a time\n   -n, --ncsq <int>                maximum number of\
+  \ consequences to consider per site [16]\n   -p, --phase <a|m|r|R|s>         how\
+  \ to handle unphased heterozygous genotypes: [r]\n                             \
+  \        a: take GTs as is, create haplotypes regardless of phase (0/1 -> 0|1)\n\
+  \                                     m: merge *all* GTs into a single haplotype\
+  \ (0/1 -> 1, 1/2 -> 1)\n                                     r: require phased GTs,\
+  \ throw an error on unphased het GTs\n                                     R: create\
+  \ non-reference haplotypes if possible (0/1 -> 1|1, 1/2 -> 1|2)\n              \
+  \                       s: skip unphased hets\nOptions:\n   -e, --exclude <expr>\
+  \            exclude sites for which the expression is true\n       --force    \
+  \                 run even if some sanity checks fail\n   -i, --include <expr> \
+  \           select sites for which the expression is true\n       --no-version \
+  \               do not append version and command line to the header\n   -o, --output\
+  \ <file>             write output to a file [standard output]\n   -O, --output-type\
+  \ <b|u|z|v|t>   b: compressed BCF, u: uncompressed BCF, z: compressed VCF\n    \
+  \                               v: uncompressed VCF, t: plain tab-delimited text\
+  \ output [v]\n   -r, --regions <region>          restrict to comma-separated list\
+  \ of regions\n   -R, --regions-file <file>       restrict to regions listed in a\
+  \ file\n   -s, --samples <-|list>          samples to include or \"-\" to apply\
+  \ all variants and ignore samples\n   -S, --samples-file <file>       samples to\
+  \ include\n   -t, --targets <region>          similar to -r but streams rather than\
+  \ index-jumps\n   -T, --targets-file <file>       similar to -R but streams rather\
+  \ than index-jumps\n       --threads <int>             use multithreading with <int>\
+  \ worker threads [0]\n   -v, --verbose <int>             verbosity level 0-2 [1]\n\
+  \nExample:\n   bcftools csq -f hs37d5.fa -g Homo_sapiens.GRCh37.82.gff3.gz in.vcf\n\
+  \n   # GFF3 annotation files can be downloaded from Ensembl. e.g. for human:\n \
+  \  ftp://ftp.ensembl.org/pub/current_gff3/homo_sapiens/\n   ftp://ftp.ensembl.org/pub/grch37/release-84/gff3/homo_sapiens/\n\
+  \n"
+generated_using:
+- --help

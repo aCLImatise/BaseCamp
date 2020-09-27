@@ -1,0 +1,179 @@
+!Command
+command:
+- utrrnaseq
+positional: []
+named:
+- !Flag
+  description: -short option   data type       description
+  synonyms:
+  - --long
+  args: !SimpleFlagArg
+    name: option
+  optional: true
+- !Flag
+  description: -G              s               scaffold file in FASTA-format. Required.
+  synonyms:
+  - --in-scaffold-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -C              s               file with start and stop features in
+    GTF/GFF format. Required.
+  synonyms:
+  - --in-coding-region-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -I              s               intron file in GTF/GFF format. Required.
+  synonyms:
+  - --in-intron-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -W              s               wiggle file in WIG-format. Required.
+  synonyms:
+  - --in-wiggle-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -R              s               repeat file in GTF/GFF format.
+  synonyms:
+  - --in-repeat-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "-o              s               output filename. Optional. Default\
+    \ Value: 'UTRs.gff'"
+  synonyms:
+  - --out-file-name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-w              i               smoothing window size. Optional. Default
+    Value: 150'
+  synonyms:
+  - --smoothing-window-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-r              i               read length of RNA-Seq data. Optional.
+    Default Value: 150'
+  synonyms:
+  - --read-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-l              i               maximal distance from computation
+    start. Optional. Default Value: 5000'
+  synonyms:
+  - --limit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-v              i               window size after UTR end. Optional.
+    Default Value: 50'
+  synonyms:
+  - --drop-window-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-n              i               minimal UTR length. Optional. Default
+    Value: 2'
+  synonyms:
+  - --minimum-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-c              i               minimal average UTR coverage. Optional.
+    Default Value: 10'
+  synonyms:
+  - --minimum-average-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-p              d               percentage of window coverage after
+    UTR. Optional. Default Value: 0.6'
+  synonyms:
+  - --percent-window
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-i              d               percentage of coverage in introns.
+    Optional. Default Value: 0.5'
+  synonyms:
+  - --percent-intron
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-m              d               percentage of multiplicity of introns.
+    Optional. Default Value: 0.1'
+  synonyms:
+  - --percent-multiplicity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "-s              s               accepted splice sites. If 'all' is\
+    \ chosen, no splice site filtering is done.Optional. Default Value: GT_AG"
+  synonyms:
+  - --splices-sites
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-z              none            Determination of UTRs based on zero
+    coverage. Optional. Default Value: false'
+  synonyms:
+  - --zero-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '-f              none            Only print format examples of input
+    files. Optional. Default Value: false'
+  synonyms:
+  - --format-examples
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '-h              none            Produce help message. Optional. Default
+    Value: false'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nutrrnaseq - A tool for identifying UTRs of annotated genes on the basis\
+  \ of RNA-Seq data.\n            Starting from known start/stop codons of genes,\
+  \ coverage with RNA-Seq data in\n            potential UTRs is monitored for a drastic\
+  \ drop, and such points are defined as\n\t     ends of UTRs. Spliced alignments\
+  \ are incorported as introns into UTRs. Drops\n            in coverage due to repeat\
+  \ masking are not reported as UTR endpoints. Only UTR\n            models with evidence\
+  \ from RNA-Seq coverage are reported.\n\nObligatory arguments are\n\n--long option\
+  \  \t\t\t-short option   data type       description\n--in-scaffold-file\t\t-G\t\
+  \ts      \t\tscaffold file in FASTA-format. Required.\n--in-coding-region-file\t\
+  \t-C\t\ts      \t\tfile with start and stop features in GTF/GFF format. Required.\n\
+  --in-intron-file\t\t-I\t\ts      \t\tintron file in GTF/GFF format. Required.\n\
+  --in-wiggle-file\t\t-W\t\ts      \t\twiggle file in WIG-format. Required.\n\nOptional\
+  \ arguments are:\n\n--long option\t\t\t-short option\tdata type\tdescription\n--in-repeat-file\t\
+  \t-R\t\ts      \t\trepeat file in GTF/GFF format.\n--out-file-name\t \t\t-o\t\t\
+  s\t\toutput filename. Optional. Default Value: 'UTRs.gff'\n--smoothing-window-size\t\
+  \t-w\t\ti\t\tsmoothing window size. Optional. Default Value: 150\n--read-length\t\
+  \ \t\t-r\t\ti\t\tread length of RNA-Seq data. Optional. Default Value: 150\n--limit\t\
+  \ \t\t\t-l\t\ti\t\tmaximal distance from computation start. Optional. Default Value:\
+  \ 5000\n--drop-window-size\t\t-v\t\ti\t\twindow size after UTR end. Optional. Default\
+  \ Value: 50\n--minimum-length\t\t-n\t\ti\t\tminimal UTR length. Optional. Default\
+  \ Value: 2\n--minimum-average-coverage\t-c\t\ti\t\tminimal average UTR coverage.\
+  \ Optional. Default Value: 10\n--percent-window\t\t-p\t\td\t\tpercentage of window\
+  \ coverage after UTR. Optional. Default Value: 0.6\n--percent-intron\t\t-i\t\td\t\
+  \tpercentage of coverage in introns. Optional. Default Value: 0.5\n--percent-multiplicity\t\
+  \t-m\t\td\t\tpercentage of multiplicity of introns. Optional. Default Value: 0.1\n\
+  --splices-sites\t\t\t-s\t\ts \t\taccepted splice sites. If 'all' is chosen, no splice\
+  \ site filtering is done.Optional. Default Value: GT_AG\n--zero-coverage\t \t\t\
+  -z\t\tnone\t\tDetermination of UTRs based on zero coverage. Optional. Default Value:\
+  \ false\n--format-examples\t\t-f\t\tnone\t\tOnly print format examples of input\
+  \ files. Optional. Default Value: false\n--help\t \t\t\t-h\t\tnone\t\tProduce help\
+  \ message. Optional. Default Value: false\n"
+generated_using:
+- --help

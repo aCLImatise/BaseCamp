@@ -45,32 +45,10 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTFILE
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: Write results to this file.
-      synonyms:
-      - -o
-      - --outfile
-      args: !SimpleFlagArg
-        name: OUTFILE
-      optional: true
-    - !Flag
-      description: Be verbose.
-      synonyms:
-      - -v
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Print lots of debugging information
-      synonyms:
-      - -d
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -111,7 +89,116 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTFILE
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: Write results to this file.
+          synonyms:
+          - -o
+          - --outfile
+          args: !SimpleFlagArg
+            name: OUTFILE
+          optional: true
+        - !Flag
+          description: Be verbose.
+          synonyms:
+          - -v
+          - --verbose
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Print lots of debugging information
+          synonyms:
+          - -d
+          - --debug
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: merge_pcr_duplicates.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: alignments
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: bclib
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -d
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -o
+            args: !SimpleFlagArg
+              name: OUTFILE
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: merge_pcr_duplicates.py [-h] -o OUTFILE [-v] [-d] alignments\
+            \ bclib\nmerge_pcr_duplicates.py: error: the following arguments are required:\
+            \ bclib, -o/--outfile\n"
+          generated_using: &id004 []
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: merge_pcr_duplicates.py [-h] -o OUTFILE [-v] [-d] alignments\
+          \ bclib\n\nMerge PCR duplicates according to random barcode library. All\
+          \ alignments with\nsame outer coordinates and barcode will be merged into\
+          \ a single crosslinking\nevent.\n\nBarcodes containing uncalled base 'N'\
+          \ are removed.\n\nInput:\n* bed6 file containing alignments with fastq read-id\
+          \ in name field\n* fastq library of random barcodes\n\nOutput:\n* bed6 file\
+          \ with a read id from a representative alignment in the name field and\n\
+          \  number of PCR duplicates as score, sorted by fields chrom, start, stop,\n\
+          \  strand, name\n\nExample usage:\n- read PCR duplicates from file duplicates.bed\
+          \ and write merged results to file\n  merged.bed:\nmerge_pcr_duplicates.py\
+          \ duplicates.bed bclibrary.fa --outfile merged.bed\n\npositional arguments:\n\
+          \  alignments            Path to bed6 file containing alignments.\n  bclib\
+          \                 Path to fastq barcode library.\n\noptional arguments:\n\
+          \  -h, --help            show this help message and exit\n  -o OUTFILE,\
+          \ --outfile OUTFILE\n                        Write results to this file.\n\
+          \  -v, --verbose         Be verbose.\n  -d, --debug           Print lots\
+          \ of debugging information\n"
+        generated_using: &id005
+        - --help
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -125,15 +212,9 @@ subcommands:
       help_text: "usage: merge_pcr_duplicates.py [-h] -o OUTFILE [-v] [-d] alignments\
         \ bclib\nmerge_pcr_duplicates.py: error: the following arguments are required:\
         \ bclib, -o/--outfile\n"
-      generated_using: &id004 []
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: merge_pcr_duplicates.py [-h] -o OUTFILE [-v] [-d] alignments\
@@ -152,8 +233,7 @@ subcommands:
       \ OUTFILE, --outfile OUTFILE\n                        Write results to this\
       \ file.\n  -v, --verbose         Be verbose.\n  -d, --debug           Print\
       \ lots of debugging information\n"
-    generated_using: &id005
-    - --help
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag: !Flag

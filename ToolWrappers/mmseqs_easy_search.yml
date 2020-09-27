@@ -1,0 +1,549 @@
+!Command
+command:
+- mmseqs
+- easy-search
+positional: []
+named:
+- !Flag
+  description: 1               correct for locally biased amino acid composition [0,1]
+  synonyms:
+  - --comp-bias-corr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           artificially add entries of queries with themselves
+    (for clustering)
+  synonyms:
+  - --add-self-matches
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '5.700           sensitivity: 1.0 faster; 4.0 fast default; 7.5 sensitive
+    [1.0,7.5]'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0               k-mer size in the range [6,7] (0: set automatically
+    to optimum)'
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 2147483647      k-mer threshold for generating similar-k-mer lists
+  synonyms:
+  - --k-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 21              alphabet size [2,21]
+  synonyms:
+  - --alph-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0               Offset result list
+  synonyms:
+  - --offset-result
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0               Splits input sets into N equally distributed chunks.
+    The default value sets the best split automatically. createindex can only be used
+    with split 1.
+  synonyms:
+  - --split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '2               0: split target db; 1: split query db;  2: auto, depending
+    on main memory'
+  synonyms:
+  - --split-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0               Maximum system memory in megabyte that one split may
+    use. Defaults (0) to all available system memory.
+  synonyms:
+  - --split-memory-limit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1               use diagonal score for sorting the prefilter results
+    [0,1]
+  synonyms:
+  - --diag-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0               only exact k-mer matching [0,1]
+  synonyms:
+  - --exact-kmer-matching
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '1               0: w/o low complexity masking, 1: with low complexity
+    masking'
+  synonyms:
+  - --mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 15              accept only matches with ungapped alignment score above
+    this threshold
+  synonyms:
+  - --min-ungapped-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '1               0: use consecutive positions a k-mers; 1: use spaced
+    k-mers'
+  synonyms:
+  - --spaced-kmer-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           add backtrace string (convert to alignments with mmseqs
+    convertalis utility)
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '3               How to compute the alignment: 0: automatic; 1: only
+    score and end_pos; 2: also start_pos and cov; 3: also seq.id; 4: only ungapped
+    alignment'
+  synonyms:
+  - --alignment-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.001           list matches below this E-value [0.0, inf]
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.000           list matches above this sequence identity (for clustering)
+    [0.0,1.0]
+  synonyms:
+  - --min-seq-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0               0: alignment length 1: shorter, 2: longer sequence'
+  synonyms:
+  - --seq-id-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0               Show up to this many alternative alignments
+  synonyms:
+  - --alt-ali
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.000           list matches above this fraction of aligned (covered)
+    residues (see --cov-mode)
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0               0: coverage of query and target, 1: coverage of target,
+    2: coverage of query 3: target seq. length needs be at least x% of query length'
+  synonyms:
+  - --cov-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           compute more conservative, shorter alignments (scores
+    and E-values not changed)
+  synonyms:
+  - --realign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 2147483647      maximum rejected alignments before alignment calculation
+    for a query is aborted
+  synonyms:
+  - --max-rejected
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 2147483647      maximum accepted alignments before alignment calculation
+    for a query is stopped
+  synonyms:
+  - --max-accept
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.000           Score bias when computing the SW alignment (in bits)
+  synonyms:
+  - --score-bias
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1.000           pseudo count admixture strength
+  synonyms:
+  - --pca
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '1.500           pseudo counts: Neff at half of maximum admixture (0.0,infinity)'
+  synonyms:
+  - --pcb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1               mask query sequence of profile using tantan [0,1]
+  synonyms:
+  - --mask-profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.001           includes sequences matches with < e-value thr. into
+    the profile [>=0.0]
+  synonyms:
+  - --e-profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           use global sequence weighting for profile calculation
+  synonyms:
+  - --wg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '1               filter msa: 0: do not filter, 1: filter'
+  synonyms:
+  - --filter-msa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.900           reduce redundancy of output MSA using max. pairwise
+    sequence identity [0.0,1.0]
+  synonyms:
+  - --max-seq-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.000           reduce diversity of output MSAs using min.seq. identity
+    with query sequences [0.0,1.0]
+  synonyms:
+  - --qid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -20.000         reduce diversity of output MSAs using min. score per
+    aligned residue with query sequences [-50.0,100.0]
+  synonyms:
+  - --qsc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.000           filter output MSAs using min. fraction of query residues
+    covered by matched sequences [0.0,1.0]
+  synonyms:
+  - --cov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1000            filter MSAs by selecting most diverse set of sequences,
+    keeping at least this many seqs in each MSA block of length 50
+  synonyms:
+  - --diff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1               Search iterations
+  synonyms:
+  - --num-iterations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           Do not preload database
+  synonyms:
+  - --no-preload
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0               Rescore diagonal with: 0: Hamming distance, 1: local
+    alignment (score only) or 2: local alignment'
+  synonyms:
+  - --rescore-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1               minimum codon number in open reading frames
+  synonyms:
+  - --min-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 2147483647      maximum codon number in open reading frames
+  synonyms:
+  - --max-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 2147483647      maximum number of codons with gaps or unknown residues
+    before an open reading frame is rejected
+  synonyms:
+  - --max-gaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '2               Contig start can be 0: incomplete, 1: complete, 2:
+    both'
+  synonyms:
+  - --contig-start-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '2               Contig end can be 0: incomplete, 1: complete, 2: both'
+  synonyms:
+  - --contig-end-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0               Orf fragment can be 0: from start to stop, 1: from
+    any to stop, 2: from last encountered start to stop (no start in the middle)'
+  synonyms:
+  - --orf-start-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1,2,3           comma-seperated list of ORF frames on the forward strand
+    to be extracted
+  synonyms:
+  - --forward-frames
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1,2,3           comma-seperated list of ORF frames on the reverse strand
+    to be extracted
+  synonyms:
+  - --reverse-frames
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1               1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL,
+    4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE, 9) FLATWORM_MITOCHONDRIAL,
+    10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL,
+    15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL,
+    22) SCENEDESMUS_MITOCHONDRIAL, 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,
+    25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA, 29) MESODINIUM,
+    30) PERTRICH, 31) BLASTOCRITHIDIA
+  synonyms:
+  - --translation-table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           use all alteratives for a start codon in the genetic
+    table, if false - only ATG (AUG)
+  synonyms:
+  - --use-all-table-starts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0               numeric ids in index file are offset by this value
+  synonyms:
+  - --id-offset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           add * at complete start and end
+  synonyms:
+  - --add-orf-stop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 4.000           start sensitivity
+  synonyms:
+  - --start-sens
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1               Search steps performed from --start-sense and -s.
+  synonyms:
+  - --sens-steps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0               output format 0: BLAST-TAB, 1: PAIRWISE, 2: BLAST-TAB
+    + query/db length'
+  synonyms:
+  - --format-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           Output a result db instead of a text file
+  synonyms:
+  - --db-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.000           maximum overlap
+  synonyms:
+  - --overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: false           Choose the best hits greedily to cover the query.
+  synonyms:
+  - --greedy-best-hits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: blosum62.out    amino acid substitution matrix file
+  synonyms:
+  - --sub-mat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 65535           Maximum sequence length [1,32768]
+  synonyms:
+  - --max-seq-len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 300             maximum result sequences per query (this parameter
+    affects the sensitivity)
+  synonyms:
+  - --max-seqs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 8               number of cores used for the computation (uses all
+    cores by default)
+  synonyms:
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings,
+    3: +info'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "mmseqs easy-search:\nSearches with a sequence FASTA file through the target\
+  \ sequence FASTA file or DB by in a single step. This combines createdb, search,\
+  \ summarizeresults, convert and convertalis modules into a single workflow.\n\n\
+  Please cite:\nSteinegger, M. & Soding, J. MMseqs2 enables sensitive protein sequence\
+  \ searching for the analysis of massive data sets. Nature Biotechnology, doi:10.1038/nbt.3988\
+  \ (2017)\n\n© Milot Mirdita <milot@mirdita.de> & Martin Steinegger <martin.steinegger@mpibpc.mpg.de>\n\
+  \nUsage: <i:queryFastaFile[.gz]>  <i:targetFastaFile[.gz]>|<i:targetDB> <o:alignmentFile>\
+  \ <tmpDir> [options]\n\nprefilter options       \tdefault   \tdescription [value\
+  \ range]\n  --comp-bias-corr      \t1         \tcorrect for locally biased amino\
+  \ acid composition [0,1]     \n  --add-self-matches    \tfalse     \tartificially\
+  \ add entries of queries with themselves (for clustering)\n  -s                \
+  \    \t5.700     \tsensitivity: 1.0 faster; 4.0 fast default; 7.5 sensitive [1.0,7.5]\n\
+  \  -k                    \t0         \tk-mer size in the range [6,7] (0: set automatically\
+  \ to optimum)\n  --k-score             \t2147483647\tk-mer threshold for generating\
+  \ similar-k-mer lists          \n  --alph-size           \t21        \talphabet\
+  \ size [2,21]                                        \n  --offset-result       \t\
+  0         \tOffset result list                                          \n  --split\
+  \               \t0         \tSplits input sets into N equally distributed chunks.\
+  \ The default value sets the best split automatically. createindex can only be used\
+  \ with split 1.\n  --split-mode          \t2         \t0: split target db; 1: split\
+  \ query db;  2: auto, depending on main memory\n  --split-memory-limit  \t0    \
+  \     \tMaximum system memory in megabyte that one split may use. Defaults (0) to\
+  \ all available system memory.\n  --diag-score          \t1         \tuse diagonal\
+  \ score for sorting the prefilter results [0,1]  \n  --exact-kmer-matching \t0 \
+  \        \tonly exact k-mer matching [0,1]                             \n  --mask\
+  \                \t1         \t0: w/o low complexity masking, 1: with low complexity\
+  \ masking\n  --min-ungapped-score  \t15        \taccept only matches with ungapped\
+  \ alignment score above this threshold\n  --spaced-kmer-mode    \t1         \t0:\
+  \ use consecutive positions a k-mers; 1: use spaced k-mers \n\nalign options   \
+  \        \tdefault   \tdescription [value range]\n  -a                    \tfalse\
+  \     \tadd backtrace string (convert to alignments with mmseqs convertalis utility)\n\
+  \  --alignment-mode      \t3         \tHow to compute the alignment: 0: automatic;\
+  \ 1: only score and end_pos; 2: also start_pos and cov; 3: also seq.id; 4: only\
+  \ ungapped alignment\n  -e                    \t0.001     \tlist matches below this\
+  \ E-value [0.0, inf]                  \n  --min-seq-id          \t0.000     \tlist\
+  \ matches above this sequence identity (for clustering) [0.0,1.0]\n  --seq-id-mode\
+  \         \t0         \t0: alignment length 1: shorter, 2: longer sequence     \
+  \     \n  --alt-ali             \t0         \tShow up to this many alternative alignments\
+  \                 \n  -c                    \t0.000     \tlist matches above this\
+  \ fraction of aligned (covered) residues (see --cov-mode)\n  --cov-mode        \
+  \    \t0         \t0: coverage of query and target, 1: coverage of target, 2: coverage\
+  \ of query 3: target seq. length needs be at least x% of query length\n  --realign\
+  \             \tfalse     \tcompute more conservative, shorter alignments (scores\
+  \ and E-values not changed)\n  --max-rejected        \t2147483647\tmaximum rejected\
+  \ alignments before alignment calculation for a query is aborted\n  --max-accept\
+  \          \t2147483647\tmaximum accepted alignments before alignment calculation\
+  \ for a query is stopped\n  --score-bias          \t0.000     \tScore bias when\
+  \ computing the SW alignment (in bits)        \n\nprofile options         \tdefault\
+  \   \tdescription [value range]\n  --pca                 \t1.000     \tpseudo count\
+  \ admixture strength                             \n  --pcb                 \t1.500\
+  \     \tpseudo counts: Neff at half of maximum admixture (0.0,infinity)\n  --mask-profile\
+  \        \t1         \tmask query sequence of profile using tantan [0,1]       \
+  \    \n  --e-profile           \t0.001     \tincludes sequences matches with < e-value\
+  \ thr. into the profile [>=0.0]\n  --wg                  \tfalse     \tuse global\
+  \ sequence weighting for profile calculation       \n  --filter-msa          \t\
+  1         \tfilter msa: 0: do not filter, 1: filter                     \n  --max-seq-id\
+  \          \t0.900     \treduce redundancy of output MSA using max. pairwise sequence\
+  \ identity [0.0,1.0]\n  --qid                 \t0.000     \treduce diversity of\
+  \ output MSAs using min.seq. identity with query sequences [0.0,1.0]\n  --qsc  \
+  \               \t-20.000   \treduce diversity of output MSAs using min. score per\
+  \ aligned residue with query sequences [-50.0,100.0]\n  --cov                 \t\
+  0.000     \tfilter output MSAs using min. fraction of query residues covered by\
+  \ matched sequences [0.0,1.0]\n  --diff                \t1000      \tfilter MSAs\
+  \ by selecting most diverse set of sequences, keeping at least this many seqs in\
+  \ each MSA block of length 50\n  --num-iterations      \t1         \tSearch iterations\
+  \                                           \n\nmisc options            \tdefault\
+  \   \tdescription [value range]\n  --no-preload          \tfalse     \tDo not preload\
+  \ database                                     \n  --rescore-mode        \t0   \
+  \      \tRescore diagonal with: 0: Hamming distance, 1: local alignment (score only)\
+  \ or 2: local alignment\n  --min-length          \t1         \tminimum codon number\
+  \ in open reading frames                 \n  --max-length          \t2147483647\t\
+  maximum codon number in open reading frames                 \n  --max-gaps     \
+  \       \t2147483647\tmaximum number of codons with gaps or unknown residues before\
+  \ an open reading frame is rejected\n  --contig-start-mode   \t2         \tContig\
+  \ start can be 0: incomplete, 1: complete, 2: both     \n  --contig-end-mode   \
+  \  \t2         \tContig end can be 0: incomplete, 1: complete, 2: both       \n\
+  \  --orf-start-mode      \t0         \tOrf fragment can be 0: from start to stop,\
+  \ 1: from any to stop, 2: from last encountered start to stop (no start in the middle)\n\
+  \  --forward-frames      \t1,2,3     \tcomma-seperated list of ORF frames on the\
+  \ forward strand to be extracted\n  --reverse-frames      \t1,2,3     \tcomma-seperated\
+  \ list of ORF frames on the reverse strand to be extracted\n  --translation-table\
+  \   \t1         \t1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4)\
+  \ MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE, 9) FLATWORM_MITOCHONDRIAL,\
+  \ 10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL,\
+  \ 15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL,\
+  \ 22) SCENEDESMUS_MITOCHONDRIAL, 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+  \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA, 29) MESODINIUM,\
+  \ 30) PERTRICH, 31) BLASTOCRITHIDIA\n  --use-all-table-starts\tfalse     \tuse all\
+  \ alteratives for a start codon in the genetic table, if false - only ATG (AUG)\n\
+  \  --id-offset           \t0         \tnumeric ids in index file are offset by this\
+  \ value          \n  --add-orf-stop        \tfalse     \tadd * at complete start\
+  \ and end                             \n  --start-sens          \t4.000     \tstart\
+  \ sensitivity                                           \n  --sens-steps       \
+  \   \t1         \tSearch steps performed from --start-sense and -s.           \n\
+  \  --format-mode         \t0         \toutput format 0: BLAST-TAB, 1: PAIRWISE,\
+  \ 2: BLAST-TAB + query/db length\n  --db-output           \tfalse     \tOutput a\
+  \ result db instead of a text file                   \n  --overlap             \t\
+  0.000     \tmaximum overlap                                             \n  --greedy-best-hits\
+  \    \tfalse     \tChoose the best hits greedily to cover the query.           \n\
+  \ncommon options          \tdefault   \tdescription [value range]\n  --sub-mat \
+  \            \tblosum62.out\tamino acid substitution matrix file               \
+  \          \n  --max-seq-len         \t65535     \tMaximum sequence length [1,32768]\
+  \                           \n  --max-seqs            \t300       \tmaximum result\
+  \ sequences per query (this parameter affects the sensitivity)\n  --threads    \
+  \         \t8         \tnumber of cores used for the computation (uses all cores\
+  \ by default)\n  -v                    \t3         \tverbosity level: 0=nothing,\
+  \ 1: +errors, 2: +warnings, 3: +info\n\nUnrecognized parameter --help\nDid you mean\
+  \ \"-e\"?\n"
+generated_using:
+- --help

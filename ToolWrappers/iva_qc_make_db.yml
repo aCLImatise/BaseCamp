@@ -1,0 +1,88 @@
+!Command
+command:
+- iva_qc_make_db
+positional:
+- !Positional
+  description: Name of output directory
+  position: 0
+  name: Directory_name
+  optional: false
+named:
+- !Flag
+  description: "Filename of Genbank IDs or GI numbers to be added to\ndatabase. Format\
+    \ is: whitespace separated list of GI\nnumbers on each line. One line defines\
+    \ one genome\n(e.g. flu is 8 segments, so put 8 GI numbers on one\nline for one\
+    \ flu reference)"
+  synonyms:
+  - --add_to_ref
+  args: !SimpleFlagArg
+    name: Filename
+  optional: true
+- !Flag
+  description: "Do not run kraken-build --download-library viruses\nwhen building\
+    \ the database. If this option used, then\n--add_to_ref must also be used"
+  synonyms:
+  - --skip_viruses
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads to use [1]
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Number to pass to kraken-build minimizer_len option\n[13]"
+  synonyms:
+  - --minimizer_len
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Number to pass to kraken-build max_db_size option [3]
+  synonyms:
+  - --max_db_size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Be verbose
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: iva_qc_make_db [options] <output directory>\n\npositional arguments:\n\
+  \  Directory_name        Name of output directory\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --add_to_ref Filename\n \
+  \                       Filename of Genbank IDs or GI numbers to be added to\n \
+  \                       database. Format is: whitespace separated list of GI\n \
+  \                       numbers on each line. One line defines one genome\n    \
+  \                    (e.g. flu is 8 segments, so put 8 GI numbers on one\n     \
+  \                   line for one flu reference)\n  --skip_viruses        Do not\
+  \ run kraken-build --download-library viruses\n                        when building\
+  \ the database. If this option used, then\n                        --add_to_ref\
+  \ must also be used\n  --threads INT         Number of threads to use [1]\n  --minimizer_len\
+  \ INT   Number to pass to kraken-build minimizer_len option\n                  \
+  \      [13]\n  --max_db_size INT     Number to pass to kraken-build max_db_size\
+  \ option [3]\n  --verbose             Be verbose\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help

@@ -1,0 +1,167 @@
+!Command
+command:
+- ConsensusFixer
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: java
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: options...
+  optional: false
+named:
+- !Flag
+  description: ': Alignment file in BAM format (required).'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: ': Reference file in FASTA format (optional).'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: ': Path to the output directory (default: current directory).'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: ': Minimal coverage to call consensus.'
+  synonyms:
+  - -mcc
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ': Minimal coverage to call insertion.'
+  synonyms:
+  - -mic
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ': Minimal relative position-wise base occurence to integrate into
+    wobble (default: 0.05).'
+  synonyms:
+  - -plurality
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: ': Minimal relative position-wise gap occurence call N (default: 0.5).'
+  synonyms:
+  - -pluralityN
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: ': Majority vote respecting pluralityN first, otherwise allow wobbles.'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Only allow in frame insertions in the consensus.'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Remove gaps if they are >= pluralityN.'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Only the insertion with the maximum frequency greater than mic is
+    incorporated.'
+  synonyms:
+  - -mi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Progressive insertion mode, respecting mic.'
+  synonyms:
+  - -pi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Window size for progressive insertion mode (default: 300).'
+  synonyms:
+  - -pis
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ": Use '-' instead of bases from the reference."
+  synonyms:
+  - -dash
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Single core mode with low memory footprint.'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':NewRatio=9        : Reduces the memory consumption (RECOMMENDED to
+    use).'
+  synonyms:
+  - -XX
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Increase heap space.'
+  synonyms:
+  - -Xms2G
+  - -Xmx10G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -jar
+  args: !SimpleFlagArg
+    name: ConsensusFixer.jar
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/ConsensusFixer: line 7: warning: setlocale: LC_ALL: cannot\
+  \ change locale (en_US.UTF-8): No such file or directory\n\"--help\" is not a valid\
+  \ option\n\nConsensusFixer version: 0.4\n\nUSAGE: java -jar ConsensusFixer.jar options...\n\
+  \n -------------------------\n === GENERAL options ===\n  -i INPUT\t\t: Alignment\
+  \ file in BAM format (required).\n  -r INPUT\t\t: Reference file in FASTA format\
+  \ (optional).\n  -o PATH\t\t: Path to the output directory (default: current directory).\n\
+  \  -mcc INT\t\t: Minimal coverage to call consensus.\n  -mic INT\t\t: Minimal coverage\
+  \ to call insertion.\n  -plurality DOUBLE\t: Minimal relative position-wise base\
+  \ occurence to integrate into wobble (default: 0.05).\n  -pluralityN DOUBLE\t: Minimal\
+  \ relative position-wise gap occurence call N (default: 0.5).\n  -m \t\t\t: Majority\
+  \ vote respecting pluralityN first, otherwise allow wobbles.\n  -f \t\t\t: Only\
+  \ allow in frame insertions in the consensus.\n  -d \t\t\t: Remove gaps if they\
+  \ are >= pluralityN.\n  -mi \t\t\t: Only the insertion with the maximum frequency\
+  \ greater than mic is incorporated.\n  -pi \t\t\t: Progressive insertion mode, respecting\
+  \ mic.\n  -pis INT\t\t: Window size for progressive insertion mode (default: 300).\n\
+  \  -dash \t\t: Use '-' instead of bases from the reference.\n  -s \t\t\t: Single\
+  \ core mode with low memory footprint.\n\n -------------------------\n === Technical\
+  \ options ===\n  -XX:NewRatio=9\t: Reduces the memory consumption (RECOMMENDED to\
+  \ use).\n  -Xms2G -Xmx10G\t: Increase heap space.\n  -XX:+UseParallelGC\t: Enhances\
+  \ performance on multicore systems.\n  -XX:+UseNUMA\t\t: Enhances performance on\
+  \ multi-CPU systems.\n -------------------------\n === EXAMPLES ===\n   java -XX:+UseParallelGC\
+  \ -Xms2g -Xmx10g -XX:+UseNUMA -XX:NewRatio=9 -jar ConsensusFixer.jar -i alignment.bam\
+  \ -r reference.fasta\n -------------------------\n"
+generated_using:
+- --help

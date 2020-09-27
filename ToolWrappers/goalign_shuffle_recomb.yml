@@ -1,0 +1,152 @@
+!Command
+command:
+- goalign
+- shuffle
+- recomb
+positional: []
+named:
+- !Flag
+  description: Proportion of length of sequences to recombine (default 0.5)
+  synonyms:
+  - -l
+  - --prop-length
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Proportion of the  sequences to recombine (default 0.5)
+  synonyms:
+  - -n
+  - --prop-seq
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Alignment input file (default "stdin")
+  synonyms:
+  - -i
+  - --align
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Auto detects input format (overrides -p, -x and -u)
+  synonyms:
+  - --auto-detect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in clustal? default fasta
+  synonyms:
+  - -u
+  - --clustal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore duplicated sequences that have the same name and same sequences
+  synonyms:
+  - --ignore-identical
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Strict phylip input format (only used with -p)
+  synonyms:
+  - --input-strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in nexus? default fasta
+  synonyms:
+  - -x
+  - --nexus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write Phylip sequences without space separated blocks (only used with
+    -p)
+  synonyms:
+  - --no-block
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write Phylip sequences on 1 line (only used with -p)
+  synonyms:
+  - --one-line
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shuffled alignment output file (default "stdout")
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Strict phylip output format (only used with -p)
+  synonyms:
+  - --output-strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in phylip? default fasta
+  synonyms:
+  - -p
+  - --phylip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Number of threads (default 1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for recomb
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Recombine of sequences in the input alignment.\n\nIt may take Fasta or\
+  \ Phylip input alignment.\n\nIf the input alignment contains several alignments,\
+  \ will process all of them\n\nTwo options:\n1 - The proportion of recommbining sequences.\
+  \ It will take n sequences \n    and will copy/paste a portion of another n sequences;\n\
+  2 - The proportion of the sequence length to recombine.\n\nRecombine 25% of sequences\
+  \ by 50%:\n\ns1 CCCCCCCCCCCCCC    s1 CCCCCCCCCCCCCC\ns2 AAAAAAAAAAAAAA => s2 AAAATTTTTTTAAA\n\
+  s3 GGGGGGGGGGGGGG    s3 GGGGGGGGGGGGGG\ns4 TTTTTTTTTTTTTT    s4 TTTTTTTTTTTTTT\n\
+  \nExample of usage:\n\ngoalign shuffle recomb -i align.phylip -p -n 1 -l 0.5\ngoalign\
+  \ shuffle recomb -i align.fasta -r 0.5 -n 1 -l 0.5\n\nVersion: 0.3.2\n\nUsage:\n\
+  \  goalign shuffle recomb [flags]\n\nFlags:\n  -h, --help                help for\
+  \ recomb\n  -l, --prop-length float   Proportion of length of sequences to recombine\
+  \ (default 0.5)\n  -n, --prop-seq float      Proportion of the  sequences to recombine\
+  \ (default 0.5)\n\nGlobal Flags:\n  -i, --align string       Alignment input file\
+  \ (default \"stdin\")\n      --auto-detect        Auto detects input format (overrides\
+  \ -p, -x and -u)\n  -u, --clustal            Alignment is in clustal? default fasta\n\
+  \      --ignore-identical   Ignore duplicated sequences that have the same name\
+  \ and same sequences\n      --input-strict       Strict phylip input format (only\
+  \ used with -p)\n  -x, --nexus              Alignment is in nexus? default fasta\n\
+  \      --no-block           Write Phylip sequences without space separated blocks\
+  \ (only used with -p)\n      --one-line           Write Phylip sequences on 1 line\
+  \ (only used with -p)\n  -o, --output string      Shuffled alignment output file\
+  \ (default \"stdout\")\n      --output-strict      Strict phylip output format (only\
+  \ used with -p)\n  -p, --phylip             Alignment is in phylip? default fasta\n\
+  \      --seed int           Random Seed: -1 = nano seconds since 1970/01/01 00:00:00\
+  \ (default -1)\n  -t, --threads int        Number of threads (default 1)\n\n"
+generated_using:
+- --help

@@ -1,0 +1,254 @@
+!Command
+command:
+- mhap
+positional: []
+named:
+- !Flag
+  description: ", default = 1.0E-5\n[double], The cutoff at which the k-mer in the\
+    \ k-mer filter file is considered repetitive. This value for a specific k-mer\
+    \ is specified in the second column in the filter file. If no filter file is provided,\
+    \ this option is ignored."
+  synonyms:
+  - --filter-threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 0.2\n[double], Region size to the left and right of the\
+    \ estimated overlap, as derived from the median shift and sequence length, where\
+    \ a k-mer matches are still considered valid. Second stage filter only."
+  synonyms:
+  - --max-shift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 116\n[int], The minimum length of the read that used for\
+    \ overlapping. Used to filter out short reads from FASTA file."
+  synonyms:
+  - --min-olap-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 0\n[int], The minimum length of the read that is stored\
+    \ in the box. Used to filter out short reads from FASTA file."
+  synonyms:
+  - --min-store-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = false\nDo not store or do comparison of the reverse compliment\
+    \ strings."
+  synonyms:
+  - --no-rc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = false\nDo not compute the overlaps between sequences inside\
+    \ a box. Should be used when the to and from sequences are coming from different\
+    \ files."
+  synonyms:
+  - --no-self
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = false\nDo not perform the tf weighing, in the tf-idf weighing."
+  synonyms:
+  - --no-tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 512\n[int], Number of min-mers to be used in MinHashing."
+  synonyms:
+  - --num-hashes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 3\n[int], Minimum # min-mer that must be shared before\
+    \ computing second stage filter. Any sequences below that value are considered\
+    \ non-overlapping."
+  synonyms:
+  - --num-min-matches
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 8\n[int], nNumber of threads to use for computation. Typically\
+    \ set to #cores."
+  synonyms:
+  - --num-threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 12\n[int] The size of k-mers used in the ordered second\
+    \ stage filter."
+  synonyms:
+  - --ordered-kmer-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 1536\n[int] The sketch size for second stage filter."
+  synonyms:
+  - --ordered-sketch-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 3.0\n[double] The upper range of the idf (from tf-idf)\
+    \ scale. The full scale will be [1,X], where X is the parameter."
+  synonyms:
+  - --repeat-idf-scale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 0.9\n[double] Repeat suppression strength for tf-idf weighing.\
+    \ <0.0 do unweighted MinHash (version 1.0), >=1.0 do only the tf weighing. To\
+    \ perform no idf weighting, do no supply -f option."
+  synonyms:
+  - --repeat-weight
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 0\nSet all unset parameters for the default settings.\
+    \ Same defaults are applied to Nanopore and Pacbio reads. 0) None, 1) Default,\
+    \ 2) Fast, 3) Sensitive."
+  synonyms:
+  - --settings
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = false\nStore full IDs as seen in FASTA files, rather than\
+    \ storing just the sequence position in the file. Some FASTA files have long IDS,\
+    \ slowing output of results. This options is ignored when using compressed file\
+    \ format. Indexed file (-s) is indexed first, followed by -q files in alphabetical\
+    \ order."
+  synonyms:
+  - --store-full-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 0\n[int] 0) Does nothing, 1) completely removes any k-mers\
+    \ not specified in the filter file, 2) supresses k-mers not specified in the filter\
+    \ file, similar to repeats."
+  synonyms:
+  - --supress-noise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 0.78\n[double], The threshold cutoff for the second stage\
+    \ sort-merge filter. This is based on the identity score computed from the Jaccard\
+    \ distance of k-mers (size given by ordered-kmer-size) in the overlapping regions."
+  synonyms:
+  - --threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = \"\"\nk-mer filter file used for filtering out highly\
+    \ repetative k-mers. Must be sorted in descending order of frequency (second column)."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = 16\n[int], k-mer size used for MinHashing. The k-mer size\
+    \ for second stage filter is seperate, and can also be modified."
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = \"\"\nUsage 2 only. The directory containing FASTA files\
+    \ that should be converted to binary format for storage."
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = \"\"\nUsage 1: The FASTA file of reads, or a directory\
+    \ of files, that will be compared to the set of reads in the box (see -s). Usage\
+    \ 2: The output directory for the binary formatted dat files."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", default = \"\"\nUsage 1 only. The FASTA or binary dat file (see\
+    \ Usage 2) of reads that will be stored in a box, and that all subsequent reads\
+    \ will be compared to.\n"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ", default = false\nDisplays the help menu."
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: ", default = false\nDisplays the version and build time."
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "MHAP: MinHash Alignment Protocol. A tool for finding overlaps of long-read\
+  \ sequences (such as PacBio or Nanopore) in bioinformatics.\n\tVersion: 2.1.3\n\t\
+  Usage 1 (direct execution): java -server -Xmx<memory> -jar <MHAP jar> -s<fasta/dat\
+  \ from/self file> [-q<fasta/dat to file>] [-f<kmer filter list, must be sorted>]\n\
+  \tUsage 2 (generate precomputed binaries): java -server -Xmx<memory> -jar <MHAP\
+  \ jar> -p<directory of fasta files> -q <output directory> [-f<kmer filter list,\
+  \ must be sorted>]\n\t\t--filter-threshold, default = 1.0E-5\n\t\t\t[double], The\
+  \ cutoff at which the k-mer in the k-mer filter file is considered repetitive. This\
+  \ value for a specific k-mer is specified in the second column in the filter file.\
+  \ If no filter file is provided, this option is ignored.\n\t\t--help, default =\
+  \ true\n\t\t\tDisplays the help menu.\n\t\t--max-shift, default = 0.2\n\t\t\t[double],\
+  \ Region size to the left and right of the estimated overlap, as derived from the\
+  \ median shift and sequence length, where a k-mer matches are still considered valid.\
+  \ Second stage filter only.\n\t\t--min-olap-length, default = 116\n\t\t\t[int],\
+  \ The minimum length of the read that used for overlapping. Used to filter out short\
+  \ reads from FASTA file.\n\t\t--min-store-length, default = 0\n\t\t\t[int], The\
+  \ minimum length of the read that is stored in the box. Used to filter out short\
+  \ reads from FASTA file.\n\t\t--no-rc, default = false\n\t\t\tDo not store or do\
+  \ comparison of the reverse compliment strings.\n\t\t--no-self, default = false\n\
+  \t\t\tDo not compute the overlaps between sequences inside a box. Should be used\
+  \ when the to and from sequences are coming from different files.\n\t\t--no-tf,\
+  \ default = false\n\t\t\tDo not perform the tf weighing, in the tf-idf weighing.\n\
+  \t\t--num-hashes, default = 512\n\t\t\t[int], Number of min-mers to be used in MinHashing.\n\
+  \t\t--num-min-matches, default = 3\n\t\t\t[int], Minimum # min-mer that must be\
+  \ shared before computing second stage filter. Any sequences below that value are\
+  \ considered non-overlapping.\n\t\t--num-threads, default = 8\n\t\t\t[int], nNumber\
+  \ of threads to use for computation. Typically set to #cores.\n\t\t--ordered-kmer-size,\
+  \ default = 12\n\t\t\t[int] The size of k-mers used in the ordered second stage\
+  \ filter.\n\t\t--ordered-sketch-size, default = 1536\n\t\t\t[int] The sketch size\
+  \ for second stage filter.\n\t\t--repeat-idf-scale, default = 3.0\n\t\t\t[double]\
+  \ The upper range of the idf (from tf-idf) scale. The full scale will be [1,X],\
+  \ where X is the parameter.\n\t\t--repeat-weight, default = 0.9\n\t\t\t[double]\
+  \ Repeat suppression strength for tf-idf weighing. <0.0 do unweighted MinHash (version\
+  \ 1.0), >=1.0 do only the tf weighing. To perform no idf weighting, do no supply\
+  \ -f option. \n\t\t--settings, default = 0\n\t\t\tSet all unset parameters for the\
+  \ default settings. Same defaults are applied to Nanopore and Pacbio reads. 0) None,\
+  \ 1) Default, 2) Fast, 3) Sensitive.\n\t\t--store-full-id, default = false\n\t\t\
+  \tStore full IDs as seen in FASTA files, rather than storing just the sequence position\
+  \ in the file. Some FASTA files have long IDS, slowing output of results. This options\
+  \ is ignored when using compressed file format. Indexed file (-s) is indexed first,\
+  \ followed by -q files in alphabetical order.\n\t\t--supress-noise, default = 0\n\
+  \t\t\t[int] 0) Does nothing, 1) completely removes any k-mers not specified in the\
+  \ filter file, 2) supresses k-mers not specified in the filter file, similar to\
+  \ repeats. \n\t\t--threshold, default = 0.78\n\t\t\t[double], The threshold cutoff\
+  \ for the second stage sort-merge filter. This is based on the identity score computed\
+  \ from the Jaccard distance of k-mers (size given by ordered-kmer-size) in the overlapping\
+  \ regions.\n\t\t--version, default = false\n\t\t\tDisplays the version and build\
+  \ time.\n\t\t-f, default = \"\"\n\t\t\tk-mer filter file used for filtering out\
+  \ highly repetative k-mers. Must be sorted in descending order of frequency (second\
+  \ column).\n\t\t-h, default = false\n\t\t\tDisplays the help menu.\n\t\t-k, default\
+  \ = 16\n\t\t\t[int], k-mer size used for MinHashing. The k-mer size for second stage\
+  \ filter is seperate, and can also be modified.\n\t\t-p, default = \"\"\n\t\t\t\
+  Usage 2 only. The directory containing FASTA files that should be converted to binary\
+  \ format for storage.\n\t\t-q, default = \"\"\n\t\t\tUsage 1: The FASTA file of\
+  \ reads, or a directory of files, that will be compared to the set of reads in the\
+  \ box (see -s). Usage 2: The output directory for the binary formatted dat files.\n\
+  \t\t-s, default = \"\"\n\t\t\tUsage 1 only. The FASTA or binary dat file (see Usage\
+  \ 2) of reads that will be stored in a box, and that all subsequent reads will be\
+  \ compared to.\n\n"
+generated_using:
+- --help

@@ -7,7 +7,7 @@ named: []
 parent:
 subcommands:
 - !Command
-  command: &id008
+  command: &id002
   - merge-pairs.sh
   - bgzip
   - DEST
@@ -47,269 +47,52 @@ subcommands:
     - -cft
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id005 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: Same as -dpR
-      synonyms:
-      - -a
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Recurse
-      synonyms:
-      - -R
-      - -r
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Preserve symlinks (default if -R)
-      synonyms:
-      - -d
-      - -P
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Follow all symlinks
-      synonyms:
-      - -L
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Follow symlinks on command line
-      synonyms:
-      - -H
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Preserve file attributes if possible
-      synonyms:
-      - -p
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Overwrite
-      synonyms:
-      - -f
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Prompt before overwrite
-      synonyms:
-      - -i
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Create (sym)links
-      synonyms:
-      - -l
-      - -s
-      args: !EmptyFlagArg {}
-      optional: true
-    parent: &id002 !Command
-      command:
-      - merge-pairs.sh
-      positional: []
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: gunzip
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: FILE
+        optional: true
       named:
       - !Flag
-        description: decompress at virtual file pointer (0-based uncompressed offset)
-        synonyms:
-        - -b
-        - --offset
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: write on standard output, keep original files unchanged
+        description: Write to stdout
         synonyms:
         - -c
-        - --stdout
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: decompress
-        synonyms:
-        - -d
-        - --decompress
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: overwrite files without asking
+        description: Force
         synonyms:
         - -f
-        - --force
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: compress and create BGZF index
-        synonyms:
-        - -i
-        - --index
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: name of BGZF index file [file.gz.gzi]
-        synonyms:
-        - -I
-        - --index-name
-        args: !SimpleFlagArg
-          name: FILE
-        optional: true
-      - !Flag
-        description: Compression level to use when compressing; 0 to 9, or -1 for
-          default [-1]
-        synonyms:
-        - -l
-        - --compress-level
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: (re)index compressed file
-        synonyms:
-        - -r
-        - --reindex
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: use an index file to bgzip a file
-        synonyms:
-        - -g
-        - --rebgzip
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: decompress INT bytes (uncompressed size)
-        synonyms:
-        - -s
-        - --size
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: number of compression threads to use [1]
-        synonyms:
-        - -@
-        - --threads
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: test integrity of compressed file
+        description: Test file integrity
         synonyms:
         - -t
-        - --test
         args: !EmptyFlagArg {}
         optional: true
       - !Flag
-        description: 'preset: pairs, merged_nodups, old_merged_nodups, gff, bed, sam,
-          vcf, psltbl [gff]'
+        description: ''
         synonyms:
-        - -p
-        args: !SimpleFlagArg
-          name: STR
-        optional: true
-      - !Flag
-        description: end1 column; can be identical to '-b' [5]
-        synonyms:
-        - -e
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: start2 column [null]
-        synonyms:
-        - -u
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: end2 column; can be identical to '-u' [null or identical to the
-          start2 specified by -u]
-        synonyms:
-        - -v
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: delimiter is space instead of tab.
-        synonyms:
-        - -T
+        - -cft
         args: !EmptyFlagArg {}
         optional: true
-      - !Flag
-        description: query region is not a string but a file listing query regions
-        synonyms:
-        - -L
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: skip first INT lines [0]
-        synonyms:
-        - -S
-        args: !SimpleFlagArg
-          name: INT
-        optional: true
-      - !Flag
-        description: symbol for query region separator [|]
-        synonyms:
-        - -w
-        args: !SimpleFlagArg
-          name: CHAR
-        optional: true
-      - !Flag
-        description: zero-based coordinate
-        synonyms:
-        - '-0'
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: print only the header lines
-        synonyms:
-        - -H
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: print only the number of bgzf blocks for existing chromosome
-          (pairs)
-        synonyms:
-        - -B
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: print only the region split character
-        synonyms:
-        - -W
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Only check if the file is a triangle (i.e. a chromosome pair
-          occurs only in one direction (e.g. if chr1|chr2 exists, chr2|chr1 doesn't))
-        synonyms:
-        - -Y
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: print only the total line count (same as gunzip -c | wc -l but
-          much faster)
-        synonyms:
-        - -n
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: autoflip query when the matching chromosome pair doesn't exist
-        synonyms:
-        - -a
-        args: !EmptyFlagArg {}
-        optional: true
-      parent:
-      subcommands:
-      - &id003 !Command
-        command:
-        - merge-pairs.sh
-        - FILE
+      parent: &id006 !Command
+        command: *id001
         positional: []
         named:
         - !Flag
@@ -369,264 +152,1008 @@ subcommands:
           - -s
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id002
+        parent: &id003 !Command
+          command:
+          - merge-pairs.sh
+          positional: []
+          named:
+          - !Flag
+            description: decompress at virtual file pointer (0-based uncompressed
+              offset)
+            synonyms:
+            - -b
+            - --offset
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: write on standard output, keep original files unchanged
+            synonyms:
+            - -c
+            - --stdout
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: decompress
+            synonyms:
+            - -d
+            - --decompress
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: overwrite files without asking
+            synonyms:
+            - -f
+            - --force
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: compress and create BGZF index
+            synonyms:
+            - -i
+            - --index
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: name of BGZF index file [file.gz.gzi]
+            synonyms:
+            - -I
+            - --index-name
+            args: !SimpleFlagArg
+              name: FILE
+            optional: true
+          - !Flag
+            description: Compression level to use when compressing; 0 to 9, or -1
+              for default [-1]
+            synonyms:
+            - -l
+            - --compress-level
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: (re)index compressed file
+            synonyms:
+            - -r
+            - --reindex
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: use an index file to bgzip a file
+            synonyms:
+            - -g
+            - --rebgzip
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: decompress INT bytes (uncompressed size)
+            synonyms:
+            - -s
+            - --size
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: number of compression threads to use [1]
+            synonyms:
+            - -@
+            - --threads
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: test integrity of compressed file
+            synonyms:
+            - -t
+            - --test
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: 'preset: pairs, merged_nodups, old_merged_nodups, gff, bed,
+              sam, vcf, psltbl [gff]'
+            synonyms:
+            - -p
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: end1 column; can be identical to '-b' [5]
+            synonyms:
+            - -e
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: start2 column [null]
+            synonyms:
+            - -u
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: end2 column; can be identical to '-u' [null or identical
+              to the start2 specified by -u]
+            synonyms:
+            - -v
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: delimiter is space instead of tab.
+            synonyms:
+            - -T
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: query region is not a string but a file listing query regions
+            synonyms:
+            - -L
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: skip first INT lines [0]
+            synonyms:
+            - -S
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: symbol for query region separator [|]
+            synonyms:
+            - -w
+            args: !SimpleFlagArg
+              name: CHAR
+            optional: true
+          - !Flag
+            description: zero-based coordinate
+            synonyms:
+            - '-0'
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: print only the header lines
+            synonyms:
+            - -H
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: print only the number of bgzf blocks for existing chromosome
+              (pairs)
+            synonyms:
+            - -B
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: print only the region split character
+            synonyms:
+            - -W
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Only check if the file is a triangle (i.e. a chromosome pair
+              occurs only in one direction (e.g. if chr1|chr2 exists, chr2|chr1 doesn't))
+            synonyms:
+            - -Y
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: print only the total line count (same as gunzip -c | wc -l
+              but much faster)
+            synonyms:
+            - -n
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: autoflip query when the matching chromosome pair doesn't
+              exist
+            synonyms:
+            - -a
+            args: !EmptyFlagArg {}
+            optional: true
+          parent:
+          subcommands:
+          - &id004 !Command
+            command:
+            - merge-pairs.sh
+            - FILE
+            positional: []
+            named:
+            - !Flag
+              description: Same as -dpR
+              synonyms:
+              - -a
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Recurse
+              synonyms:
+              - -R
+              - -r
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Preserve symlinks (default if -R)
+              synonyms:
+              - -d
+              - -P
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Follow all symlinks
+              synonyms:
+              - -L
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Follow symlinks on command line
+              synonyms:
+              - -H
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Preserve file attributes if possible
+              synonyms:
+              - -p
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Overwrite
+              synonyms:
+              - -f
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Prompt before overwrite
+              synonyms:
+              - -i
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Create (sym)links
+              synonyms:
+              - -l
+              - -s
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - merge-pairs.sh
+              - FILE
+              - DEST
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id004
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: DEST: No such file or directory\ngunzip: unrecognized\
+                \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
+                \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or\
+                \ stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\
+                \ngunzip: DEST: No such file or directory\ngunzip: DEST: No such file\
+                \ or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
+                \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
+                \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\
+                \t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: &id005
+              - --help
+            - !Command
+              command:
+              - merge-pairs.sh
+              - FILE
+              - cp
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id004
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: cp: No such file or directory\ngunzip: cp: No such\
+                \ file or directory\ngunzip: unrecognized option '--help'\nBusyBox\
+                \ v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
+                \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to\
+                \ stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\ngunzip: cp: No\
+                \ such file or directory\ngunzip: unrecognized option '--help'\nBusyBox\
+                \ v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
+                \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to\
+                \ stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - merge-pairs.sh
+              - FILE
+              - SOURCE...
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id004
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: SOURCE...: No such file or directory\ngunzip: unrecognized\
+                \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
+                \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or\
+                \ stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\
+                \ngunzip: SOURCE...: No such file or directory\ngunzip: SOURCE...:\
+                \ No such file or directory\ngunzip: unrecognized option '--help'\n\
+                BusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage:\
+                \ gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\t\
+                Write to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "cp: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
+              \ 01:24:27 UTC) multi-call binary.\n\nUsage: cp [OPTIONS] SOURCE...\
+              \ DEST\n\nCopy SOURCE(s) to DEST\n\n\t-a\tSame as -dpR\n\t-R,-r\tRecurse\n\
+              \t-d,-P\tPreserve symlinks (default if -R)\n\t-L\tFollow all symlinks\n\
+              \t-H\tFollow symlinks on command line\n\t-p\tPreserve file attributes\
+              \ if possible\n\t-f\tOverwrite\n\t-i\tPrompt before overwrite\n\t-l,-s\t\
+              Create (sym)links\n\nopen: No such file or directory\n[pairix] was bgzip\
+              \ used to compress this file? FILE.pairs.gz\n"
+            generated_using: *id005
+          - *id006
+          - &id007 !Command
+            command:
+            - merge-pairs.sh
+            - in.pairs.gz
+            positional: []
+            named:
+            - !Flag
+              description: Same as -dpR
+              synonyms:
+              - -a
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Recurse
+              synonyms:
+              - -R
+              - -r
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Preserve symlinks (default if -R)
+              synonyms:
+              - -d
+              - -P
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Follow all symlinks
+              synonyms:
+              - -L
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Follow symlinks on command line
+              synonyms:
+              - -H
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Preserve file attributes if possible
+              synonyms:
+              - -p
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Overwrite
+              synonyms:
+              - -f
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Prompt before overwrite
+              synonyms:
+              - -i
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Create (sym)links
+              synonyms:
+              - -l
+              - -s
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - merge-pairs.sh
+              - in.pairs.gz
+              - DEST
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id007
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: DEST: No such file or directory\ngunzip: unrecognized\
+                \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
+                \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or\
+                \ stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\
+                \ngunzip: DEST: No such file or directory\ngunzip: DEST: No such file\
+                \ or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
+                \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
+                \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\
+                \t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - merge-pairs.sh
+              - in.pairs.gz
+              - cp
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id007
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: cp: No such file or directory\ngunzip: cp: No such\
+                \ file or directory\ngunzip: unrecognized option '--help'\nBusyBox\
+                \ v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
+                \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to\
+                \ stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\ngunzip: cp: No\
+                \ such file or directory\ngunzip: unrecognized option '--help'\nBusyBox\
+                \ v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
+                \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to\
+                \ stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - merge-pairs.sh
+              - in.pairs.gz
+              - SOURCE...
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id007
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
+                \ 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\
+                \nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\
+                \t-t\tTest file integrity\n\ngunzip: SOURCE...: No such file or directory\n\
+                gunzip: SOURCE...: No such file or directory\ngunzip: SOURCE...: No\
+                \ such file or directory\ngunzip: unrecognized option '--help'\nBusyBox\
+                \ v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
+                \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to\
+                \ stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "cp: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
+              \ 01:24:27 UTC) multi-call binary.\n\nUsage: cp [OPTIONS] SOURCE...\
+              \ DEST\n\nCopy SOURCE(s) to DEST\n\n\t-a\tSame as -dpR\n\t-R,-r\tRecurse\n\
+              \t-d,-P\tPreserve symlinks (default if -R)\n\t-L\tFollow all symlinks\n\
+              \t-H\tFollow symlinks on command line\n\t-p\tPreserve file attributes\
+              \ if possible\n\t-f\tOverwrite\n\t-i\tPrompt before overwrite\n\t-l,-s\t\
+              Create (sym)links\n\nopen: No such file or directory\n[pairix] was bgzip\
+              \ used to compress this file? in.pairs.gz.pairs.gz\n"
+            generated_using: *id005
+          - &id008 !Command
+            command:
+            - merge-pairs.sh
+            - pairix
+            positional: []
+            named:
+            - !Flag
+              description: Same as -dpR
+              synonyms:
+              - -a
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Recurse
+              synonyms:
+              - -R
+              - -r
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Preserve symlinks (default if -R)
+              synonyms:
+              - -d
+              - -P
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Follow all symlinks
+              synonyms:
+              - -L
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Follow symlinks on command line
+              synonyms:
+              - -H
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Preserve file attributes if possible
+              synonyms:
+              - -p
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Overwrite
+              synonyms:
+              - -f
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Prompt before overwrite
+              synonyms:
+              - -i
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Create (sym)links
+              synonyms:
+              - -l
+              - -s
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - merge-pairs.sh
+              - pairix
+              - DEST
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id008
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: DEST: No such file or directory\ngunzip: unrecognized\
+                \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
+                \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or\
+                \ stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\
+                \ngunzip: DEST: No such file or directory\ngunzip: DEST: No such file\
+                \ or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
+                \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
+                \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\
+                \t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - merge-pairs.sh
+              - pairix
+              - cp
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id008
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: cp: No such file or directory\ngunzip: unrecognized\
+                \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
+                \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or\
+                \ stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\
+                \ngunzip: cp: No such file or directory\ngunzip: cp: No such file\
+                \ or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
+                \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
+                \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\
+                \t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - merge-pairs.sh
+              - pairix
+              - SOURCE...
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gunzip
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: FILE
+                optional: true
+              named:
+              - !Flag
+                description: Write to stdout
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Force
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Test file integrity
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -cft
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id008
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "gunzip: SOURCE...: No such file or directory\ngunzip: unrecognized\
+                \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
+                \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or\
+                \ stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\
+                \ngunzip: SOURCE...: No such file or directory\ngunzip: SOURCE...:\
+                \ No such file or directory\ngunzip: unrecognized option '--help'\n\
+                BusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage:\
+                \ gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\t\
+                Write to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\n"
+              generated_using: *id005
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "cp: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
+              \ 01:24:27 UTC) multi-call binary.\n\nUsage: cp [OPTIONS] SOURCE...\
+              \ DEST\n\nCopy SOURCE(s) to DEST\n\n\t-a\tSame as -dpR\n\t-R,-r\tRecurse\n\
+              \t-d,-P\tPreserve symlinks (default if -R)\n\t-L\tFollow all symlinks\n\
+              \t-H\tFollow symlinks on command line\n\t-p\tPreserve file attributes\
+              \ if possible\n\t-f\tOverwrite\n\t-i\tPrompt before overwrite\n\t-l,-s\t\
+              Create (sym)links\n\nopen: No such file or directory\n[pairix] was bgzip\
+              \ used to compress this file? pairix.pairs.gz\n"
+            generated_using: *id005
+          usage: []
+          help_flag: !Flag
+            description: print usage with exit 0
+            synonyms:
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "gunzip: invalid magic\nbgzip: unrecognized option '--help.pairs'\n\
+            \nVersion: 1.9\nUsage:   bgzip [OPTIONS] [FILE] ...\nOptions:\n   -b,\
+            \ --offset INT           decompress at virtual file pointer (0-based uncompressed\
+            \ offset)\n   -c, --stdout               write on standard output, keep\
+            \ original files unchanged\n   -d, --decompress           decompress\n\
+            \   -f, --force                overwrite files without asking\n   -h,\
+            \ --help                 give this help\n   -i, --index              \
+            \  compress and create BGZF index\n   -I, --index-name FILE      name\
+            \ of BGZF index file [file.gz.gzi]\n   -l, --compress-level INT   Compression\
+            \ level to use when compressing; 0 to 9, or -1 for default [-1]\n   -r,\
+            \ --reindex              (re)index compressed file\n   -g, --rebgzip \
+            \             use an index file to bgzip a file\n   -s, --size INT   \
+            \          decompress INT bytes (uncompressed size)\n   -@, --threads\
+            \ INT          number of compression threads to use [1]\n   -t, --test\
+            \                 test integrity of compressed file\npairix: unrecognized\
+            \ option '--help.pairs.gz'\n\nProgram: pairix (PAIRs file InderXer)\n\
+            Version: 0.3.7\n\nUsage:   pairix <in.pairs.gz> [region1 [region2 [...]]]\n\
+            \nOptions: -p STR     preset: pairs, merged_nodups, old_merged_nodups,\
+            \ gff, bed, sam, vcf, psltbl [gff]\n         -s INT     sequence name\
+            \ column [1]\n         -d INT     second sequence name column [null]\n\
+            \         -b INT     start1 column [4]\n         -e INT     end1 column;\
+            \ can be identical to '-b' [5]\n         -u INT     start2 column [null]\n\
+            \         -v INT     end2 column; can be identical to '-u' [null or identical\
+            \ to the start2 specified by -u]\n         -T         delimiter is space\
+            \ instead of tab.\n         -L         query region is not a string but\
+            \ a file listing query regions\n         -S INT     skip first INT lines\
+            \ [0]\n         -c CHAR    symbol for comment/meta lines [#]\n       \
+            \  -w CHAR    symbol for query region separator [|]\n         -r FILE\
+            \    replace the header with the content of FILE [null]\n         -0 \
+            \        zero-based coordinate\n         -h         print also the header\
+            \ lines\n         -H         print only the header lines\n         -B\
+            \         print only the number of bgzf blocks for existing chromosome\
+            \ (pairs)\n         -W         print only the region split character\n\
+            \         -Y         Only check if the file is a triangle (i.e. a chromosome\
+            \ pair occurs only in one direction (e.g. if chr1|chr2 exists, chr2|chr1\
+            \ doesn't))\n         -l         list chromosome names\n         -n  \
+            \       print only the total line count (same as gunzip -c | wc -l but\
+            \ much faster)\n         -f         force to overwrite the index\n   \
+            \      -a         autoflip query when the matching chromosome pair doesn't\
+            \ exist\n         --help     print usage with exit 0\n\n"
+          generated_using: *id005
         subcommands:
         - !Command
-          command:
-          - merge-pairs.sh
-          - FILE
-          - DEST
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: gunzip
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: FILE
-            optional: true
-          named:
-          - !Flag
-            description: Write to stdout
-            synonyms:
-            - -c
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Force
-            synonyms:
-            - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Test file integrity
-            synonyms:
-            - -t
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -cft
-            args: !EmptyFlagArg {}
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "gunzip: DEST: No such file or directory\ngunzip: unrecognized\
-            \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
-            \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\
-            \n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\ngunzip:\
-            \ DEST: No such file or directory\ngunzip: DEST: No such file or directory\n\
-            gunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27\
-            \ UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress\
-            \ FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file\
-            \ integrity\n\n"
-          generated_using: &id004
-          - --help
-        - !Command
-          command:
-          - merge-pairs.sh
-          - FILE
-          - cp
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: gunzip
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: FILE
-            optional: true
-          named:
-          - !Flag
-            description: Write to stdout
-            synonyms:
-            - -c
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Force
-            synonyms:
-            - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Test file integrity
-            synonyms:
-            - -t
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -cft
-            args: !EmptyFlagArg {}
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "gunzip: cp: No such file or directory\ngunzip: cp: No such file\
-            \ or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
-            \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
-            \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
-            -f\tForce\n\t-t\tTest file integrity\n\ngunzip: cp: No such file or directory\n\
-            gunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27\
-            \ UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress\
-            \ FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file\
-            \ integrity\n\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - merge-pairs.sh
-          - FILE
-          - SOURCE...
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: gunzip
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: FILE
-            optional: true
-          named:
-          - !Flag
-            description: Write to stdout
-            synonyms:
-            - -c
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Force
-            synonyms:
-            - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Test file integrity
-            synonyms:
-            - -t
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -cft
-            args: !EmptyFlagArg {}
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "gunzip: SOURCE...: No such file or directory\ngunzip: unrecognized\
-            \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
-            \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\
-            \n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\ngunzip:\
-            \ SOURCE...: No such file or directory\ngunzip: SOURCE...: No such file\
-            \ or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
-            \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
-            \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
-            -f\tForce\n\t-t\tTest file integrity\n\n"
-          generated_using: *id004
-        usage: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "cp: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
-          \ 01:24:27 UTC) multi-call binary.\n\nUsage: cp [OPTIONS] SOURCE... DEST\n\
-          \nCopy SOURCE(s) to DEST\n\n\t-a\tSame as -dpR\n\t-R,-r\tRecurse\n\t-d,-P\t\
-          Preserve symlinks (default if -R)\n\t-L\tFollow all symlinks\n\t-H\tFollow\
-          \ symlinks on command line\n\t-p\tPreserve file attributes if possible\n\
-          \t-f\tOverwrite\n\t-i\tPrompt before overwrite\n\t-l,-s\tCreate (sym)links\n\
-          \nopen: No such file or directory\n[pairix] was bgzip used to compress this\
-          \ file? FILE.pairs.gz\n"
-        generated_using: *id004
-      - *id005
-      - &id006 !Command
-        command:
-        - merge-pairs.sh
-        - in.pairs.gz
-        positional: []
-        named:
-        - !Flag
-          description: Same as -dpR
-          synonyms:
-          - -a
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Recurse
-          synonyms:
-          - -R
-          - -r
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Preserve symlinks (default if -R)
-          synonyms:
-          - -d
-          - -P
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Follow all symlinks
-          synonyms:
-          - -L
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Follow symlinks on command line
-          synonyms:
-          - -H
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Preserve file attributes if possible
-          synonyms:
-          - -p
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Overwrite
-          synonyms:
-          - -f
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Prompt before overwrite
-          synonyms:
-          - -i
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Create (sym)links
-          synonyms:
-          - -l
-          - -s
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands:
-        - !Command
-          command:
-          - merge-pairs.sh
-          - in.pairs.gz
-          - DEST
+          command: *id002
           positional:
           - !Positional
             description: ''
@@ -669,269 +1196,20 @@ subcommands:
           help_flag:
           usage_flag:
           version_flag:
-          help_text: "gunzip: DEST: No such file or directory\ngunzip: unrecognized\
-            \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
-            \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\
-            \n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\ngunzip:\
-            \ DEST: No such file or directory\ngunzip: DEST: No such file or directory\n\
-            gunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27\
-            \ UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress\
-            \ FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file\
-            \ integrity\n\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - merge-pairs.sh
-          - in.pairs.gz
-          - cp
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: gunzip
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: FILE
-            optional: true
-          named:
-          - !Flag
-            description: Write to stdout
-            synonyms:
-            - -c
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Force
-            synonyms:
-            - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Test file integrity
-            synonyms:
-            - -t
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -cft
-            args: !EmptyFlagArg {}
-            optional: true
-          parent: *id006
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "gunzip: cp: No such file or directory\ngunzip: cp: No such file\
-            \ or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
-            \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
-            \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
-            -f\tForce\n\t-t\tTest file integrity\n\ngunzip: cp: No such file or directory\n\
-            gunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27\
-            \ UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress\
-            \ FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file\
-            \ integrity\n\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - merge-pairs.sh
-          - in.pairs.gz
-          - SOURCE...
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: gunzip
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: FILE
-            optional: true
-          named:
-          - !Flag
-            description: Write to stdout
-            synonyms:
-            - -c
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Force
-            synonyms:
-            - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Test file integrity
-            synonyms:
-            - -t
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -cft
-            args: !EmptyFlagArg {}
-            optional: true
-          parent: *id006
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "gunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
-            \ 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\
-            \nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t\
-            -t\tTest file integrity\n\ngunzip: SOURCE...: No such file or directory\n\
-            gunzip: SOURCE...: No such file or directory\ngunzip: SOURCE...: No such\
+          help_text: "gunzip: DEST: No such file or directory\ngunzip: DEST: No such\
             \ file or directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1\
             \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
             \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
-            -f\tForce\n\t-t\tTest file integrity\n\n"
-          generated_using: *id004
-        usage: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "cp: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
-          \ 01:24:27 UTC) multi-call binary.\n\nUsage: cp [OPTIONS] SOURCE... DEST\n\
-          \nCopy SOURCE(s) to DEST\n\n\t-a\tSame as -dpR\n\t-R,-r\tRecurse\n\t-d,-P\t\
-          Preserve symlinks (default if -R)\n\t-L\tFollow all symlinks\n\t-H\tFollow\
-          \ symlinks on command line\n\t-p\tPreserve file attributes if possible\n\
-          \t-f\tOverwrite\n\t-i\tPrompt before overwrite\n\t-l,-s\tCreate (sym)links\n\
-          \nopen: No such file or directory\n[pairix] was bgzip used to compress this\
-          \ file? in.pairs.gz.pairs.gz\n"
-        generated_using: *id004
-      - &id007 !Command
-        command:
-        - merge-pairs.sh
-        - pairix
-        positional: []
-        named:
-        - !Flag
-          description: Same as -dpR
-          synonyms:
-          - -a
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Recurse
-          synonyms:
-          - -R
-          - -r
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Preserve symlinks (default if -R)
-          synonyms:
-          - -d
-          - -P
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Follow all symlinks
-          synonyms:
-          - -L
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Follow symlinks on command line
-          synonyms:
-          - -H
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Preserve file attributes if possible
-          synonyms:
-          - -p
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Overwrite
-          synonyms:
-          - -f
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Prompt before overwrite
-          synonyms:
-          - -i
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Create (sym)links
-          synonyms:
-          - -l
-          - -s
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands:
+            -f\tForce\n\t-t\tTest file integrity\n\ngunzip: DEST: No such file or\
+            \ directory\ngunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23\
+            \ 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\
+            \nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t\
+            -t\tTest file integrity\n\n"
+          generated_using: *id005
         - !Command
-          command:
+          command: &id009
           - merge-pairs.sh
-          - pairix
-          - DEST
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: gunzip
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: FILE
-            optional: true
-          named:
-          - !Flag
-            description: Write to stdout
-            synonyms:
-            - -c
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Force
-            synonyms:
-            - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Test file integrity
-            synonyms:
-            - -t
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -cft
-            args: !EmptyFlagArg {}
-            optional: true
-          parent: *id007
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "gunzip: DEST: No such file or directory\ngunzip: unrecognized\
-            \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call\
-            \ binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\
-            \n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\ngunzip:\
-            \ DEST: No such file or directory\ngunzip: DEST: No such file or directory\n\
-            gunzip: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27\
-            \ UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress\
-            \ FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file\
-            \ integrity\n\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - merge-pairs.sh
-          - pairix
+          - bgzip
           - cp
           positional:
           - !Positional
@@ -969,7 +1247,7 @@ subcommands:
             - -cft
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id007
+          parent: *id006
           subcommands: []
           usage: []
           help_flag:
@@ -984,11 +1262,11 @@ subcommands:
             \ UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress\
             \ FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file\
             \ integrity\n\n"
-          generated_using: *id004
+          generated_using: *id005
         - !Command
-          command:
+          command: &id010
           - merge-pairs.sh
-          - pairix
+          - bgzip
           - SOURCE...
           positional:
           - !Positional
@@ -1026,7 +1304,7 @@ subcommands:
             - -cft
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id007
+          parent: *id006
           subcommands: []
           usage: []
           help_flag:
@@ -1041,7 +1319,7 @@ subcommands:
             \ (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip [-cft]\
             \ [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
             -f\tForce\n\t-t\tTest file integrity\n\n"
-          generated_using: *id004
+          generated_using: *id005
         usage: []
         help_flag:
         usage_flag:
@@ -1053,96 +1331,8 @@ subcommands:
           \ symlinks on command line\n\t-p\tPreserve file attributes if possible\n\
           \t-f\tOverwrite\n\t-i\tPrompt before overwrite\n\t-l,-s\tCreate (sym)links\n\
           \nopen: No such file or directory\n[pairix] was bgzip used to compress this\
-          \ file? pairix.pairs.gz\n"
-        generated_using: *id004
-      usage: []
-      help_flag: !Flag
-        description: print usage with exit 0
-        synonyms:
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "gunzip: invalid magic\nbgzip: unrecognized option '--help.pairs'\n\
-        \nVersion: 1.9\nUsage:   bgzip [OPTIONS] [FILE] ...\nOptions:\n   -b, --offset\
-        \ INT           decompress at virtual file pointer (0-based uncompressed offset)\n\
-        \   -c, --stdout               write on standard output, keep original files\
-        \ unchanged\n   -d, --decompress           decompress\n   -f, --force    \
-        \            overwrite files without asking\n   -h, --help               \
-        \  give this help\n   -i, --index                compress and create BGZF\
-        \ index\n   -I, --index-name FILE      name of BGZF index file [file.gz.gzi]\n\
-        \   -l, --compress-level INT   Compression level to use when compressing;\
-        \ 0 to 9, or -1 for default [-1]\n   -r, --reindex              (re)index\
-        \ compressed file\n   -g, --rebgzip              use an index file to bgzip\
-        \ a file\n   -s, --size INT             decompress INT bytes (uncompressed\
-        \ size)\n   -@, --threads INT          number of compression threads to use\
-        \ [1]\n   -t, --test                 test integrity of compressed file\npairix:\
-        \ unrecognized option '--help.pairs.gz'\n\nProgram: pairix (PAIRs file InderXer)\n\
-        Version: 0.3.7\n\nUsage:   pairix <in.pairs.gz> [region1 [region2 [...]]]\n\
-        \nOptions: -p STR     preset: pairs, merged_nodups, old_merged_nodups, gff,\
-        \ bed, sam, vcf, psltbl [gff]\n         -s INT     sequence name column [1]\n\
-        \         -d INT     second sequence name column [null]\n         -b INT \
-        \    start1 column [4]\n         -e INT     end1 column; can be identical\
-        \ to '-b' [5]\n         -u INT     start2 column [null]\n         -v INT \
-        \    end2 column; can be identical to '-u' [null or identical to the start2\
-        \ specified by -u]\n         -T         delimiter is space instead of tab.\n\
-        \         -L         query region is not a string but a file listing query\
-        \ regions\n         -S INT     skip first INT lines [0]\n         -c CHAR\
-        \    symbol for comment/meta lines [#]\n         -w CHAR    symbol for query\
-        \ region separator [|]\n         -r FILE    replace the header with the content\
-        \ of FILE [null]\n         -0         zero-based coordinate\n         -h \
-        \        print also the header lines\n         -H         print only the header\
-        \ lines\n         -B         print only the number of bgzf blocks for existing\
-        \ chromosome (pairs)\n         -W         print only the region split character\n\
-        \         -Y         Only check if the file is a triangle (i.e. a chromosome\
-        \ pair occurs only in one direction (e.g. if chr1|chr2 exists, chr2|chr1 doesn't))\n\
-        \         -l         list chromosome names\n         -n         print only\
-        \ the total line count (same as gunzip -c | wc -l but much faster)\n     \
-        \    -f         force to overwrite the index\n         -a         autoflip\
-        \ query when the matching chromosome pair doesn't exist\n         --help \
-        \    print usage with exit 0\n\n"
-      generated_using: *id004
-    subcommands:
-    - !Command
-      command: *id008
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: gunzip
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: FILE
-        optional: true
-      named:
-      - !Flag
-        description: Write to stdout
-        synonyms:
-        - -c
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Force
-        synonyms:
-        - -f
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Test file integrity
-        synonyms:
-        - -t
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - -cft
-        args: !EmptyFlagArg {}
-        optional: true
-      parent: *id005
+          \ file? bgzip.pairs.gz\n"
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag:
@@ -1156,12 +1346,9 @@ subcommands:
         \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\
         \nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\t\
         Write to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\n"
-      generated_using: *id004
+      generated_using: *id005
     - !Command
-      command: &id009
-      - merge-pairs.sh
-      - bgzip
-      - cp
+      command: *id009
       positional:
       - !Positional
         description: ''
@@ -1198,7 +1385,7 @@ subcommands:
         - -cft
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id005
+      parent: *id006
       subcommands: []
       usage: []
       help_flag:
@@ -1212,12 +1399,9 @@ subcommands:
         \ option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\
         \nUsage: gunzip [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\t\
         Write to stdout\n\t-f\tForce\n\t-t\tTest file integrity\n\n"
-      generated_using: *id004
+      generated_using: *id005
     - !Command
-      command: &id010
-      - merge-pairs.sh
-      - bgzip
-      - SOURCE...
+      command: *id010
       positional:
       - !Positional
         description: ''
@@ -1254,7 +1438,7 @@ subcommands:
         - -cft
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id005
+      parent: *id006
       subcommands: []
       usage: []
       help_flag:
@@ -1269,7 +1453,7 @@ subcommands:
         \ UTC) multi-call binary.\n\nUsage: gunzip [-cft] [FILE]...\n\nDecompress\
         \ FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t-f\tForce\n\t-t\tTest file\
         \ integrity\n\n"
-      generated_using: *id004
+      generated_using: *id005
     usage: []
     help_flag:
     usage_flag:
@@ -1281,7 +1465,7 @@ subcommands:
       \ line\n\t-p\tPreserve file attributes if possible\n\t-f\tOverwrite\n\t-i\t\
       Prompt before overwrite\n\t-l,-s\tCreate (sym)links\n\nopen: No such file or\
       \ directory\n[pairix] was bgzip used to compress this file? bgzip.pairs.gz\n"
-    generated_using: *id004
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag:
@@ -1295,7 +1479,7 @@ subcommands:
     BusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
     \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
     -f\tForce\n\t-t\tTest file integrity\n\n"
-  generated_using: *id004
+  generated_using: *id005
 - !Command
   command: *id009
   positional:
@@ -1334,7 +1518,7 @@ subcommands:
     - -cft
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id005
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -1348,7 +1532,7 @@ subcommands:
     BusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
     \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
     -f\tForce\n\t-t\tTest file integrity\n\n"
-  generated_using: *id004
+  generated_using: *id005
 - !Command
   command: *id010
   positional:
@@ -1387,7 +1571,7 @@ subcommands:
     - -cft
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id005
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -1401,7 +1585,7 @@ subcommands:
     BusyBox v1.22.1 (2014-05-23 01:24:27 UTC) multi-call binary.\n\nUsage: gunzip\
     \ [-cft] [FILE]...\n\nDecompress FILEs (or stdin)\n\n\t-c\tWrite to stdout\n\t\
     -f\tForce\n\t-t\tTest file integrity\n\n"
-  generated_using: *id004
+  generated_using: *id005
 usage: []
 help_flag:
 usage_flag:
@@ -1413,4 +1597,4 @@ help_text: "cp: unrecognized option '--help'\nBusyBox v1.22.1 (2014-05-23 01:24:
   Preserve file attributes if possible\n\t-f\tOverwrite\n\t-i\tPrompt before overwrite\n\
   \t-l,-s\tCreate (sym)links\n\nopen: No such file or directory\n[pairix] was bgzip\
   \ used to compress this file? bgzip.pairs.gz\n"
-generated_using: *id004
+generated_using: *id005

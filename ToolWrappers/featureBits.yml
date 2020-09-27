@@ -1,0 +1,200 @@
+!Command
+command:
+- featureBits
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: database
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: table
+  optional: false
+named:
+- !Flag
+  description: Put intersection into bed format. Can use stdout.
+  synonyms:
+  - -bed
+  args: !SimpleFlagArg
+    name: output.bed
+  optional: true
+- !Flag
+  description: Put sequence in intersection into .fa file
+  synonyms:
+  - -fa
+  args: !SimpleFlagArg
+    name: output.fa
+  optional: true
+- !Flag
+  description: For fa output merge overlapping features.
+  synonyms:
+  - -faMerge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum size to output (default 1)
+  synonyms:
+  - -minSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Restrict to one chromosome
+  synonyms:
+  - -chrom
+  args: !SimpleFlagArg
+    name: chrN
+  optional: true
+- !Flag
+  description: "Read chrom sizes from file instead of database.\n(chromInfo three\
+    \ column format)"
+  synonyms:
+  - -chromSize
+  args: !SimpleFlagArg
+    name: sizefile
+  optional: true
+- !Flag
+  description: Or tables together instead of anding them
+  synonyms:
+  - -or
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output negation of resulting bit set.
+  synonyms:
+  - -not
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Count gaps in denominator
+  synonyms:
+  - -countGaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't include _random (or Un) chromosomes
+  synonyms:
+  - -noRandom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't include _hap|_alt chromosomes
+  synonyms:
+  - -noHap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output dot every N chroms (scaffolds) processed
+  synonyms:
+  - -dots
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Don't include bits of the track that are smaller than\nminFeatureSize,\
+    \ useful for differentiating between\nalignment gaps and introns."
+  synonyms:
+  - -minFeatureSize
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Put bin counts in output file
+  synonyms:
+  - -bin
+  args: !SimpleFlagArg
+    name: output.bin
+  optional: true
+- !Flag
+  description: Bin size for generating counts in bin file (default 500000)
+  synonyms:
+  - -binSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Bin overlap for generating counts in bin file (default 250000)
+  synonyms:
+  - -binOverlap
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Read in a bed file for bin counts in specific regions\nand write to\
+    \ bedRegionsOut"
+  synonyms:
+  - -bedRegionIn
+  args: !SimpleFlagArg
+    name: input.bed
+  optional: true
+- !Flag
+  description: "Write a bed file of bin counts in specific regions\nfrom bedRegionIn"
+  synonyms:
+  - -bedRegionOut
+  args: !SimpleFlagArg
+    name: output.bed
+  optional: true
+- !Flag
+  description: "Calculates coverage and enrichment assuming first table\nis reference\
+    \ gene track and second track something else\nEnrichment is the amount of table1\
+    \ that covers table2 vs. the\namount of table1 that covers the genome. It's how\
+    \ much denser\ntable1 is in table2 than it is genome-wide."
+  synonyms:
+  - -enrichment
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "featureBits - Correlate tables via bitmap projections. \nusage:\n   featureBits\
+  \ database table(s)\nThis will return the number of bits in all the tables anded\
+  \ together\nPipe warning:  output goes to stderr.\nOptions:\n   -bed=output.bed\
+  \   Put intersection into bed format. Can use stdout.\n   -fa=output.fa     Put\
+  \ sequence in intersection into .fa file\n   -faMerge          For fa output merge\
+  \ overlapping features.\n   -minSize=N        Minimum size to output (default 1)\n\
+  \   -chrom=chrN       Restrict to one chromosome\n   -chromSize=sizefile       Read\
+  \ chrom sizes from file instead of database. \n                             (chromInfo\
+  \ three column format)\n   -or               Or tables together instead of anding\
+  \ them\n   -not              Output negation of resulting bit set.\n   -countGaps\
+  \        Count gaps in denominator\n   -noRandom         Don't include _random (or\
+  \ Un) chromosomes\n   -noHap            Don't include _hap|_alt chromosomes\n  \
+  \ -dots=N           Output dot every N chroms (scaffolds) processed\n   -minFeatureSize=n\
+  \ Don't include bits of the track that are smaller than\n                     minFeatureSize,\
+  \ useful for differentiating between\n                     alignment gaps and introns.\n\
+  \   -bin=output.bin   Put bin counts in output file\n   -binSize=N        Bin size\
+  \ for generating counts in bin file (default 500000)\n   -binOverlap=N     Bin overlap\
+  \ for generating counts in bin file (default 250000)\n   -bedRegionIn=input.bed\
+  \    Read in a bed file for bin counts in specific regions \n                  \
+  \   and write to bedRegionsOut\n   -bedRegionOut=output.bed  Write a bed file of\
+  \ bin counts in specific regions \n                     from bedRegionIn\n   -enrichment\
+  \       Calculates coverage and enrichment assuming first table\n              \
+  \       is reference gene track and second track something else\n              \
+  \       Enrichment is the amount of table1 that covers table2 vs. the\n        \
+  \             amount of table1 that covers the genome. It's how much denser\n  \
+  \                   table1 is in table2 than it is genome-wide.\n   '-where=some\
+  \ sql pattern'  Restrict to features matching some sql pattern\nYou can include\
+  \ a '!' before a table name to negate it.\n   To prevent your shell from interpreting\
+  \ the '!' you will need\n   to use the backslash \\!, for example the gap table:\
+  \ \\!gap\nSome table names can be followed by modifiers such as:\n    :exon:N  \
+  \        Break into exons and add N to each end of each exon\n    :cds         \
+  \    Break into coding exons\n    :intron:N        Break into introns, remove N\
+  \ from each end\n    :utr5, :utr3     Break into 5' or 3' UTRs\n    :upstream:N\
+  \      Consider the region of N bases before region\n    :end:N           Consider\
+  \ the region of N bases after region\n    :score:N         Consider records with\
+  \ score >= N \n    :upstreamAll:N   Like upstream, but doesn't filter out genes\
+  \ that \n                     have txStart==cdsStart or txEnd==cdsEnd\n    :endAll:N\
+  \        Like end, but doesn't filter out genes that \n                     have\
+  \ txStart==cdsStart or txEnd==cdsEnd\nThe tables can be bed, psl, or chain files,\
+  \ or a directory full of\nsuch files as well as actual database tables.  To count\
+  \ the bits\nused in dir/chrN_something*.bed you'd do:\n   featureBits database dir/_something.bed\n\
+  NB: by default, featureBits omits gap regions from its calculation of the total\n\
+  number of bases.  This requires connecting to a database server using credentials\n\
+  from a .hg.conf file (or similar).  If such a connection is not available, you will\n\
+  need to specify -countGaps (which skips the database connection) in addition to\n\
+  providing all tables as files or directories.\n\n"
+generated_using: []

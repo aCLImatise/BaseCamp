@@ -1,0 +1,271 @@
+!Command
+command:
+- treerecs
+positional: []
+named:
+- !Flag
+  description: verbose mode. Causes Treerecs to print messages about its progress.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: super-verbose mode. Print even more messages than in verbose mode.
+  synonyms:
+  - -Y
+  - --superverbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'input gene tree(s) (supported formats: Newick, NHX or PhyloXML).'
+  synonyms:
+  - -g
+  - --genetree
+  args: !SimpleFlagArg
+    name: GENETREE_FILE
+  optional: true
+- !Flag
+  description: 'input species tree (supported formats: Newick, NHX or PhyloXML).'
+  synonyms:
+  - -s
+  - --speciestree
+  args: !SimpleFlagArg
+    name: SPECIESTREE_FILE
+  optional: true
+- !Flag
+  description: "input alignment file. Must contain:\n* the pll substitution model\
+    \ to use\n* the paths to the multiple alignments (one per gene-tree)"
+  synonyms:
+  - -a
+  - --alignments
+  args: !SimpleFlagArg
+    name: ALIGNMENTS_FILE
+  optional: true
+- !Flag
+  description: input gene-to-species mapping file.
+  synonyms:
+  - -S
+  - --smap
+  args: !SimpleFlagArg
+    name: SMAP_FILE
+  optional: true
+- !Flag
+  description: find the best root according to the reconciliation cost.
+  synonyms:
+  - -r
+  - --reroot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify gene duplication cost (default value = 2).
+  synonyms:
+  - -d
+  - --dupcost
+  args: !SimpleFlagArg
+    name: VALUE
+  optional: true
+- !Flag
+  description: specify gene loss cost (default value = 1).
+  synonyms:
+  - -l
+  - --losscost
+  args: !SimpleFlagArg
+    name: VALUE
+  optional: true
+- !Flag
+  description: "| quantiles[N]\nspecify branch support thresholds to use while contracting\
+    \ gene trees.\n* EXPRESSION can be any colon-separated combination of the following:\n\
+    none: no contraction\nall: contract all branches. The tree collapses into a single\
+    \ polytomy\nVALUE: contract branches with support strictly lower than VALUE\n\
+    VALUE+epsilon (short VALUE+e): contract branches with support equal to\nor lower\
+    \ than VALUE\n* quantiles[N]: use several threshold values: none, all, and the\n\
+    quantiles dividing the branch supports into N groups"
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: EXPRESSION
+  optional: true
+- !Flag
+  description: size of the tree sampling (default value = 1).
+  synonyms:
+  - -n
+  - --sample-size
+  args: !SimpleFlagArg
+    name: VALUE
+  optional: true
+- !Flag
+  description: only consider the VALUE-th gene tree in the gene tree file.
+  synonyms:
+  - -N
+  - --tree-index
+  args: !SimpleFlagArg
+    name: VALUE
+  optional: true
+- !Flag
+  description: 'output directory (default: treerecs_output).'
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "output format(s): newick(default), nhx, phyloxml, recphyloxml or svg.\n\
+    repeat option or use a colon-separated list of formats to get multiple\noutput"
+  synonyms:
+  - -O
+  - --output-format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: force possible overwrite of existing files.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify separator character for species names embedded in gene names\n\
+    (default = '_')."
+  synonyms:
+  - -c
+  - --sep
+  args: !SimpleFlagArg
+    name: CHARACTER
+  optional: true
+- !Flag
+  description: "specify whether the species_name is a prefix of gene_name\ndefault\
+    \ = N)."
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: Y/N
+  optional: true
+- !Flag
+  description: run in parallel if possible.
+  synonyms:
+  - -P
+  - --parallelize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: save map(s) used during execution.
+  synonyms:
+  - -M
+  - --save-map
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: silent mode (no print, no progression bar).
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: estimate duplication and loss costs.
+  synonyms:
+  - -C
+  - --costs-estimation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print informations about genetree(s) with a branch support diagram.
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use case sensitive mapping.
+  synonyms:
+  - --case-sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute ALE log likelihood for each solution.
+  synonyms:
+  - --ale-evaluation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: strip output from gene tree descriptions.
+  synonyms:
+  - --output-without-description
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create a file that summarizes orthology/paralogy relationships.
+  synonyms:
+  - --fevent
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this help, then exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag: !Flag
+  description: print usage, then exit.
+  synonyms:
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
+version_flag: !Flag
+  description: print version number, then exit.
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Treerecs (1.2), Inria - Beagle\n--------------------------------------------------\n\
+  Usage:   treerecs -h | --help\n   or:   treerecs -V | --version\n   or:   treerecs\
+  \ --usage\n   or:   treerecs -g GENETREE_FILE -s SPECIESTREE_FILE\n            \
+  \      [-S MAP_FILE] [-t BRANCH_SUPPORT_THRESHOLD] [...]\n   or:   treerecs -g GENETREE_FILE\
+  \ --info\n\nOptions:\n   -h, --help\n\tprint this help, then exit.\n\n   --usage\n\
+  \tprint usage, then exit.\n\n   -V, --version\n\tprint version number, then exit.\n\
+  \n   -v, --verbose\n\tverbose mode. Causes Treerecs to print messages about its\
+  \ progress.\n\n   -Y, --superverbose\n\tsuper-verbose mode. Print even more messages\
+  \ than in verbose mode.\n\n   -g, --genetree GENETREE_FILE\n\tinput gene tree(s)\
+  \ (supported formats: Newick, NHX or PhyloXML).\n\n   -s, --speciestree SPECIESTREE_FILE\n\
+  \tinput species tree (supported formats: Newick, NHX or PhyloXML).\n\n   -a, --alignments\
+  \ ALIGNMENTS_FILE\n\tinput alignment file. Must contain:\n\t  * the pll substitution\
+  \ model to use\n\t  * the paths to the multiple alignments (one per gene-tree)\n\
+  \n   -S, --smap SMAP_FILE\n\tinput gene-to-species mapping file.\n\n   -r, --reroot\n\
+  \tfind the best root according to the reconciliation cost.\n\n   -d, --dupcost VALUE\n\
+  \tspecify gene duplication cost (default value = 2).\n\n   -l, --losscost VALUE\n\
+  \tspecify gene loss cost (default value = 1).\n\n   -t, --threshold EXPRESSION |\
+  \ quantiles[N]\n\tspecify branch support thresholds to use while contracting gene\
+  \ trees.\n\n\t* EXPRESSION can be any colon-separated combination of the following:\n\
+  \t  none: no contraction\n\t  all: contract all branches. The tree collapses into\
+  \ a single polytomy\n\t  VALUE: contract branches with support strictly lower than\
+  \ VALUE\n\t  VALUE+epsilon (short VALUE+e): contract branches with support equal\
+  \ to\n\t  or lower than VALUE\n\n\t* quantiles[N]: use several threshold values:\
+  \ none, all, and the\n\t  quantiles dividing the branch supports into N groups\n\
+  \n   -n, --sample-size VALUE\n\tsize of the tree sampling (default value = 1).\n\
+  \n   -N, --tree-index VALUE\n\tonly consider the VALUE-th gene tree in the gene\
+  \ tree file.\n\n   -o, --outdir OUTPUT_DIR\n\toutput directory (default: treerecs_output).\n\
+  \n   -O, --output-format FORMAT\n\toutput format(s): newick(default), nhx, phyloxml,\
+  \ recphyloxml or svg.\n\trepeat option or use a colon-separated list of formats\
+  \ to get multiple\n\toutput\n\n   -f, --force\n\tforce possible overwrite of existing\
+  \ files.\n\n   -c, --sep CHARACTER\n\tspecify separator character for species names\
+  \ embedded in gene names\n\t(default = '_').\n\n   -p, --prefix Y/N\n\tspecify whether\
+  \ the species_name is a prefix of gene_name\n\tdefault = N).\n\n   -P, --parallelize\n\
+  \trun in parallel if possible.\n\n   -M, --save-map\n\tsave map(s) used during execution.\n\
+  \n   -q, --quiet\n\tsilent mode (no print, no progression bar).\n\n   -C, --costs-estimation\n\
+  \testimate duplication and loss costs.\n\n   --info\n\tprint informations about\
+  \ genetree(s) with a branch support diagram.\n\n   --case-sensitive\n\tuse case\
+  \ sensitive mapping.\n\n   --ale-evaluation\n\tcompute ALE log likelihood for each\
+  \ solution.\n\n   --output-without-description\n\tstrip output from gene tree descriptions.\n\
+  \n   --fevent\n\tcreate a file that summarizes orthology/paralogy relationships.\n\
+  \n\nTreerecs 1.2\n"
+generated_using:
+- --help

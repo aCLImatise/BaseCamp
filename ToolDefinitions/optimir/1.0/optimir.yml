@@ -18,7 +18,7 @@ subcommands:
     args: !SimpleFlagArg
       name: DIR
     optional: true
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -35,7 +35,441 @@ subcommands:
         args: !SimpleFlagArg
           name: DIR
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: Full path of the directory containing results
+            synonyms:
+            - --dir
+            args: !SimpleFlagArg
+              name: DIR
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: optimir summarize [-h] --dir DIR\n\noptional arguments:\n\
+            \  -h, --help  show this help message and exit\n  --dir DIR   Full path\
+            \ of the directory containing results\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - optimir
+          - process
+          positional: []
+          named:
+          - !Flag
+            description: "Full path of the sample fastq file (accepted formats\nand\
+              \ extensions: fastq, fq and fq.gz)"
+            synonyms:
+            - -i
+            - --fq
+            args: !SimpleFlagArg
+              name: FASTQ
+            optional: true
+          - !Flag
+            description: "Full path of the directory where output files are\ngenerated\
+              \ [default: ./OptimiR_Results_Dir/]"
+            synonyms:
+            - -o
+            - --dirOutput
+            args: !SimpleFlagArg
+              name: OUTDIR
+            optional: true
+          - !Flag
+            description: Full path of the vcf file with genotypes
+            synonyms:
+            - -g
+            - --vcf
+            args: !SimpleFlagArg
+              name: VCF
+            optional: true
+          - !Flag
+            description: "Choose the alignment seed length used in option '-L'\nby\
+              \ Bowtie2 [default: 17]"
+            synonyms:
+            - --seedLen
+            args: !SimpleFlagArg
+              name: SEEDLEN
+            optional: true
+          - !Flag
+            description: "Choose the weight applied on events detected on the 5'\n\
+              end of aligned reads [default: 4]"
+            synonyms:
+            - --w5
+            args: !SimpleFlagArg
+              name: WEIGHT5
+            optional: true
+          - !Flag
+            description: "Choose the threshold for alignment score above which\nalignments\
+              \ are discarded [default: 9]"
+            synonyms:
+            - --scoreThresh
+            args: !SimpleFlagArg
+              name: SCORE_THRESH
+            optional: true
+          - !Flag
+            description: "Choose the rate threshold for inconsistent reads\nmapped\
+              \ to a polymiR above which the alignment is\nflagged as highly suspicious\
+              \ [default: 0.01]"
+            synonyms:
+            - --consistentRate
+            args: !SimpleFlagArg
+              name: INCONSISTENT_THRESHOLD
+            optional: true
+          - !Flag
+            description: "Add this option to remove temporary files (trimmed\nfastq,\
+              \ collapsed fastq, mapped reads, annotated bams"
+            synonyms:
+            - --rmTempFiles
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Control which annotation file is produced by adding\ncorresponding\
+              \ letter : 'h' for expressed_hairpins, 'p'\nfor polymiRs_table, 'i'\
+              \ for consistency_table, 'c' for\nremaining_ambiguous, 's' for isomiRs_dist.\
+              \ Ex: '--\nannot hpics' [default] will produce all of them"
+            synonyms:
+            - --annot
+            args: !SimpleFlagArg
+              name: ANNOT_FILES
+            optional: true
+          - !Flag
+            description: "Add this option to generate results in mirGFF3 format\n\
+              [default : disabled]"
+            synonyms:
+            - --gff_out
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Add this option to generate results in VCF format\n[default\
+              \ : disabled]"
+            synonyms:
+            - --vcf_out
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Define the 3' adaptor sequence (default is NEB &\nILLUMINA:\
+              \ AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -a\nTGGAATTCTCGGGTGCCAAGG -> hack:\
+              \ use -a to add adapter\nsequences)"
+            synonyms:
+            - --adapt3
+            args: !SimpleFlagArg
+              name: ADAPT3
+            optional: true
+          - !Flag
+            description: "Define the 5' adaptor sequence [default: None]"
+            synonyms:
+            - --adapt5
+            args: !SimpleFlagArg
+              name: ADAPT5
+            optional: true
+          - !Flag
+            description: "Define the minimum read length defined with option -m\n\
+              in cutadapt [default: 15]"
+            synonyms:
+            - --readMin
+            args: !SimpleFlagArg
+              name: READMIN
+            optional: true
+          - !Flag
+            description: "Define the maximum read length defined with option -M\n\
+              in cutadapt [default: 27]"
+            synonyms:
+            - --readMax
+            args: !SimpleFlagArg
+              name: READMAX
+            optional: true
+          - !Flag
+            description: Define the Base Quality threshold defined with option
+            synonyms:
+            - --bqThresh
+            args: !SimpleFlagArg
+              name: BQTHRESH
+            optional: true
+          - !Flag
+            description: 'cutadapt [default: 28]'
+            synonyms:
+            - -q
+            args: !SimpleFlagArg
+              name: in
+            optional: true
+          - !Flag
+            description: "Add this option to trim files that have been trimmed\nin\
+              \ a previous application. By default, when temporary\nfiles are kept,\
+              \ trimmed files are reused. If you wish\nto change a paramater used\
+              \ in the trimming step of the\nworkflow, this parameter is a must [default:\
+              \ disabled]"
+            synonyms:
+            - --trimAgain
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Path to the reference library containing mature miRNAs\n\
+              sequences [default: miRBase 21]"
+            synonyms:
+            - --maturesFasta
+            args: !SimpleFlagArg
+              name: MATURES
+            optional: true
+          - !Flag
+            description: "Path to the reference library containing pri-miRNAs\nsequences\
+              \ [default: miRBase 21]"
+            synonyms:
+            - --hairpinsFasta
+            args: !SimpleFlagArg
+              name: HAIRPINS
+            optional: true
+          - !Flag
+            description: "Path to the reference library containing miRNAs and\npri-miRNAs\
+              \ coordinates [default: miRBase v21, GRCh38\ncoordinates]"
+            synonyms:
+            - --gff3
+            args: !SimpleFlagArg
+              name: GFF3
+            optional: true
+          - !Flag
+            description: "Add this option to remove OptimiR progression on\nscreen\
+              \ [default: disabled]"
+            synonyms:
+            - --quiet
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Provide path to the cutadapt binary [default: from\n$PATH]"
+            synonyms:
+            - --cutadapt
+            args: !SimpleFlagArg
+              name: CUTADAPT
+            optional: true
+          - !Flag
+            description: "Provide path to the bowtie2 binary [default: from\n$PATH]"
+            synonyms:
+            - --bowtie2
+            args: !SimpleFlagArg
+              name: BOWTIE2
+            optional: true
+          - !Flag
+            description: "Provide path to the bowtie2 index builder binary\n[default:\
+              \ from $PATH]"
+            synonyms:
+            - --bowtie2_build
+            args: !SimpleFlagArg
+              name: BOWTIE2_BUILD
+            optional: true
+          - !Flag
+            description: "Provide path to the samtools binary [default: from\n$PATH]\n"
+            synonyms:
+            - --samtools
+            args: !SimpleFlagArg
+              name: SAMTOOLS
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: optimir process [-h] -i FASTQ [-o OUTDIR] [-g VCF] [--seedLen\
+            \ SEEDLEN]\n                       [--w5 WEIGHT5] [--scoreThresh SCORE_THRESH]\n\
+            \                       [--consistentRate INCONSISTENT_THRESHOLD]\n  \
+            \                     [--rmTempFiles] [--annot ANNOT_FILES] [--gff_out]\n\
+            \                       [--vcf_out] [--adapt3 ADAPT3] [--adapt5 ADAPT5]\n\
+            \                       [--readMin READMIN] [--readMax READMAX]\n    \
+            \                   [--bqThresh BQTHRESH] [--trimAgain]\n            \
+            \           [--maturesFasta MATURES] [--hairpinsFasta HAIRPINS]\n    \
+            \                   [--gff3 GFF3] [--quiet] [--cutadapt CUTADAPT]\n  \
+            \                     [--bowtie2 BOWTIE2] [--bowtie2_build BOWTIE2_BUILD]\n\
+            \                       [--samtools SAMTOOLS]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  -i FASTQ,\
+            \ --fq FASTQ  Full path of the sample fastq file (accepted formats\n \
+            \                       and extensions: fastq, fq and fq.gz)\n  -o OUTDIR,\
+            \ --dirOutput OUTDIR\n                        Full path of the directory\
+            \ where output files are\n                        generated [default:\
+            \ ./OptimiR_Results_Dir/]\n  -g VCF, --vcf VCF     Full path of the vcf\
+            \ file with genotypes\n  --seedLen SEEDLEN     Choose the alignment seed\
+            \ length used in option '-L'\n                        by Bowtie2 [default:\
+            \ 17]\n  --w5 WEIGHT5          Choose the weight applied on events detected\
+            \ on the 5'\n                        end of aligned reads [default: 4]\n\
+            \  --scoreThresh SCORE_THRESH\n                        Choose the threshold\
+            \ for alignment score above which\n                        alignments\
+            \ are discarded [default: 9]\n  --consistentRate INCONSISTENT_THRESHOLD\n\
+            \                        Choose the rate threshold for inconsistent reads\n\
+            \                        mapped to a polymiR above which the alignment\
+            \ is\n                        flagged as highly suspicious [default: 0.01]\n\
+            \  --rmTempFiles         Add this option to remove temporary files (trimmed\n\
+            \                        fastq, collapsed fastq, mapped reads, annotated\
+            \ bams\n  --annot ANNOT_FILES   Control which annotation file is produced\
+            \ by adding\n                        corresponding letter : 'h' for expressed_hairpins,\
+            \ 'p'\n                        for polymiRs_table, 'i' for consistency_table,\
+            \ 'c' for\n                        remaining_ambiguous, 's' for isomiRs_dist.\
+            \ Ex: '--\n                        annot hpics' [default] will produce\
+            \ all of them\n  --gff_out             Add this option to generate results\
+            \ in mirGFF3 format\n                        [default : disabled]\n  --vcf_out\
+            \             Add this option to generate results in VCF format\n    \
+            \                    [default : disabled]\n  --adapt3 ADAPT3       Define\
+            \ the 3' adaptor sequence (default is NEB &\n                        ILLUMINA:\
+            \ AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -a\n                        TGGAATTCTCGGGTGCCAAGG\
+            \ -> hack: use -a to add adapter\n                        sequences)\n\
+            \  --adapt5 ADAPT5       Define the 5' adaptor sequence [default: None]\n\
+            \  --readMin READMIN     Define the minimum read length defined with option\
+            \ -m\n                        in cutadapt [default: 15]\n  --readMax READMAX\
+            \     Define the maximum read length defined with option -M\n        \
+            \                in cutadapt [default: 27]\n  --bqThresh BQTHRESH   Define\
+            \ the Base Quality threshold defined with option\n                   \
+            \     -q in cutadapt [default: 28]\n  --trimAgain           Add this option\
+            \ to trim files that have been trimmed\n                        in a previous\
+            \ application. By default, when temporary\n                        files\
+            \ are kept, trimmed files are reused. If you wish\n                  \
+            \      to change a paramater used in the trimming step of the\n      \
+            \                  workflow, this parameter is a must [default: disabled]\n\
+            \  --maturesFasta MATURES\n                        Path to the reference\
+            \ library containing mature miRNAs\n                        sequences\
+            \ [default: miRBase 21]\n  --hairpinsFasta HAIRPINS\n                \
+            \        Path to the reference library containing pri-miRNAs\n       \
+            \                 sequences [default: miRBase 21]\n  --gff3 GFF3     \
+            \      Path to the reference library containing miRNAs and\n         \
+            \               pri-miRNAs coordinates [default: miRBase v21, GRCh38\n\
+            \                        coordinates]\n  --quiet               Add this\
+            \ option to remove OptimiR progression on\n                        screen\
+            \ [default: disabled]\n  --cutadapt CUTADAPT   Provide path to the cutadapt\
+            \ binary [default: from\n                        $PATH]\n  --bowtie2 BOWTIE2\
+            \     Provide path to the bowtie2 binary [default: from\n            \
+            \            $PATH]\n  --bowtie2_build BOWTIE2_BUILD\n               \
+            \         Provide path to the bowtie2 index builder binary\n         \
+            \               [default: from $PATH]\n  --samtools SAMTOOLS   Provide\
+            \ path to the samtools binary [default: from\n                       \
+            \ $PATH]\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - optimir
+          - libprep
+          positional: []
+          named:
+          - !Flag
+            description: Full path of the input VCF file.
+            synonyms:
+            - -v
+            - --vcf
+            args: !SimpleFlagArg
+              name: VCF
+            optional: true
+          - !Flag
+            description: "Path to the reference library containing mature miRNAs\n\
+              sequences [default: miRBase 21]"
+            synonyms:
+            - --maturesFasta
+            args: !SimpleFlagArg
+              name: MATURES
+            optional: true
+          - !Flag
+            description: "Path to the reference library containing pri-miRNAs\nsequences\
+              \ [default: miRBase 21]"
+            synonyms:
+            - --hairpinsFasta
+            args: !SimpleFlagArg
+              name: HAIRPINS
+            optional: true
+          - !Flag
+            description: "Path to the reference library containing miRNAs and\npri-miRNAs\
+              \ coordinates [default: miRBase v21, GRCh38\ncoordinates]"
+            synonyms:
+            - --gff3
+            args: !SimpleFlagArg
+              name: GFF3
+            optional: true
+          - !Flag
+            description: "Full path of the directory where output files are\ngenerated\
+              \ [default: ./OptimiR_Results_Dir/]"
+            synonyms:
+            - -o
+            - --dirOutput
+            args: !SimpleFlagArg
+              name: OUTDIR
+            optional: true
+          - !Flag
+            description: "Provide path to the bowtie2 index builder binary\n[default:\
+              \ from $PATH]\n"
+            synonyms:
+            - --bowtie2_build
+            args: !SimpleFlagArg
+              name: BOWTIE2_BUILD
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: optimir libprep [-h] [-v VCF] [--maturesFasta MATURES]\n\
+            \                       [--hairpinsFasta HAIRPINS] [--gff3 GFF3] [-o OUTDIR]\n\
+            \                       [--bowtie2_build BOWTIE2_BUILD]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  -v VCF, --vcf\
+            \ VCF     Full path of the input VCF file.\n  --maturesFasta MATURES\n\
+            \                        Path to the reference library containing mature\
+            \ miRNAs\n                        sequences [default: miRBase 21]\n  --hairpinsFasta\
+            \ HAIRPINS\n                        Path to the reference library containing\
+            \ pri-miRNAs\n                        sequences [default: miRBase 21]\n\
+            \  --gff3 GFF3           Path to the reference library containing miRNAs\
+            \ and\n                        pri-miRNAs coordinates [default: miRBase\
+            \ v21, GRCh38\n                        coordinates]\n  -o OUTDIR, --dirOutput\
+            \ OUTDIR\n                        Full path of the directory where output\
+            \ files are\n                        generated [default: ./OptimiR_Results_Dir/]\n\
+            \  --bowtie2_build BOWTIE2_BUILD\n                        Provide path\
+            \ to the bowtie2 index builder binary\n                        [default:\
+            \ from $PATH]\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: optimir [-h] {process,summarize,libprep} ...\n\nOptimiR:\
+          \ A bioinformatics pipeline designed to detect and quantify miRNAs,\nisomiRs\
+          \ and polymiRs from miRSeq data, & study the impact of genetic\nvariations\
+          \ on polymiRs' expression\n\noptional arguments:\n  -h, --help         \
+          \   show this help message and exit\n\nOptimiR subcommands:\n  {process,summarize,libprep}\n\
+          \    process             Process a single fastq file with the OptimiR workflow\n\
+          \    summarize           Summarize results of previously processed samples\n\
+          \    libprep             Only prepare small RNA alignment library sequences\n\
+          \                        that integrates genetic variants (required before\n\
+          \                        processing multiple samples in parallel)\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -50,12 +484,9 @@ subcommands:
       help_text: "usage: optimir summarize [-h] --dir DIR\n\noptional arguments:\n\
         \  -h, --help  show this help message and exit\n  --dir DIR   Full path of\
         \ the directory containing results\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - optimir
-      - process
+      command: *id005
       positional: []
       named:
       - !Flag
@@ -343,9 +774,7 @@ subcommands:
         \                        $PATH]\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - optimir
-      - libprep
+      command: *id006
       positional: []
       named:
       - !Flag
@@ -427,13 +856,7 @@ subcommands:
         \ builder binary\n                        [default: from $PATH]\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: optimir [-h] {process,summarize,libprep} ...\n\nOptimiR: A\
@@ -668,7 +1091,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SAMTOOLS
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -797,7 +1220,7 @@ subcommands:
     args: !SimpleFlagArg
       name: BOWTIE2_BUILD
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

@@ -1,0 +1,248 @@
+!Command
+command:
+- reparation.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: bacteria_genome_fasta_file
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: curated_protein_db
+  optional: false
+named:
+- !Flag
+  description: Ribosome alignment file (bam)
+  synonyms:
+  - -bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Genome fasta file. This should be the same genome fasta file used\
+    \ in\nthe alignment of the Ribo-seq reads."
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The \"scripts\" directory (avialable within the REPARATION directory),\n\
+    defaults to directory of reparation.pl script"
+  synonyms:
+  - -sdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: database of curated bacteria protein sequences
+  synonyms:
+  - -db
+  args: !SimpleFlagArg
+    name: fasta
+  optional: true
+- !Flag
+  description: GTF genome annotation file
+  synonyms:
+  - -gtf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: working directory (defaults to current directory)
+  synonyms:
+  - -wdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: name
+  synonyms:
+  - -en
+  args: !SimpleFlagArg
+    name: Experiment
+  optional: true
+- !Flag
+  description: "Ribosome profiling read p site assignment strategy, 1 = plastid\n\
+    P-site estimation ((default), 3 = 3 prime of read, 5 prime of the\nread"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ribosome profiling reads shorter than these values are\neliminated\
+    \ from the ananlysis (default = 22)"
+  synonyms:
+  - -mn
+  args: !SimpleFlagArg
+    name: All
+  optional: true
+- !Flag
+  description: "ribosome profiling reads longerer than these values are\neliminated\
+    \ from the ananlysis (default = 40)"
+  synonyms:
+  - -mx
+  args: !SimpleFlagArg
+    name: All
+  optional: true
+- !Flag
+  description: "length of open reading frame considered for prediction\n(default =\
+    \ 30 value in nucleotides)"
+  synonyms:
+  - -mo
+  args: !SimpleFlagArg
+    name: Minimum
+  optional: true
+- !Flag
+  description: "reading frames with less than these number of ribosome\nprofiling\
+    \ reads are eliminated from analysis (default = 3)"
+  synonyms:
+  - -mr
+  args: !SimpleFlagArg
+    name: Open
+  optional: true
+- !Flag
+  description: "Start region length in nucleotides (default = 45nts). This value is\n\
+    used to calculate features specific to the start region."
+  synonyms:
+  - -ost
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Stop region length in nucleotides (default = 21nts). This value is\n\
+    used to calculate features specific to the stop region."
+  synonyms:
+  - -osp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Distance of Shine dalgarno sequence from start codon (defualt =\n\
+    5nts)."
+  synonyms:
+  - -osd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Shine dalgarno sequence (default = GGAGG). The shine dalgarno\nsequence\
+    \ used for Ribosome binind site energy calculation."
+  synonyms:
+  - -seed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ribosome binding site (RBS) energy in the open reading frame\nprediction\
+    \ (Y = use RBS energy (default), N = donot use RBS engergy)"
+  synonyms:
+  - -sd
+  args: !SimpleFlagArg
+    name: Use
+  optional: true
+- !Flag
+  description: UNI STUTT Minimum identify score for BLAST protein
+  synonyms:
+  - -id
+  args: !SimpleFlagArg
+    name: Online-Ticket
+  optional: true
+- !Flag
+  description: e-vlaue for BLAST protein sequence search (default = 1e-5)
+  synonyms:
+  - -ev
+  args: !SimpleFlagArg
+    name: maximum
+  optional: true
+- !Flag
+  description: "for initial positive set generation (1 = prodigal (default),\n2 =\
+    \ glimmer)"
+  synonyms:
+  - -pg
+  args: !SimpleFlagArg
+    name: program
+  optional: true
+- !Flag
+  description: Comma separted list of start codons (default = ATG,GTG,TTG)
+  synonyms:
+  - -cdn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Start codon for negative set (default = CTG)
+  synonyms:
+  - -ncdn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Start codon for positive set (default = ATG,GTG,TTG). Should be a\n\
+    subset of the standard genetic code for bacteria"
+  synonyms:
+  - -pcdn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Genetic code to use for initail positive set generation. Valid when\n\
+    -pg is 1. (default = 11, takes value between 1-25)"
+  synonyms:
+  - -gcode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "to determine if prodigal should bypass Shine-Dalgarno trainer\nand\
+    \ force a full motif scan (default = N). (Y = yes, N = no) Valid\nonly for -pg\
+    \ 1"
+  synonyms:
+  - -by
+  args: !SimpleFlagArg
+    name: Flag
+  optional: true
+- !Flag
+  description: "Random forest classification probability score threshold to define\n\
+    as ORF are protein coding, the minimum (defualt is 0.5)\n"
+  synonyms:
+  - -score
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n    reparation.pl [options] -bam riboseq_alignment_files_bam_format\
+  \ -g\n    bacteria_genome_fasta_file -sdir scripts_directory -db\n    curated_protein_db(fasta)\n\
+  \nOptions:\n  Mandatory:\n    -bam\n        Ribosome alignment file (bam)\n\n  \
+  \  -g  Genome fasta file. This should be the same genome fasta file used in\n  \
+  \      the alignment of the Ribo-seq reads.\n\n    -sdir\n        The \"scripts\"\
+  \ directory (avialable within the REPARATION directory),\n        defaults to directory\
+  \ of reparation.pl script\n\n    -db fasta database of curated bacteria protein\
+  \ sequences\n\n  Optional:\n    -gtf\n        GTF genome annotation file\n\n   \
+  \ -wdir\n        working directory (defaults to current directory)\n\n    -en Experiment\
+  \ name\n\n    -p  Ribosome profiling read p site assignment strategy, 1 = plastid\n\
+  \        P-site estimation ((default), 3 = 3 prime of read, 5 prime of the\n   \
+  \     read\n\n    -mn All ribosome profiling reads shorter than these values are\n\
+  \        eliminated from the ananlysis (default = 22)\n\n    -mx All ribosome profiling\
+  \ reads longerer than these values are\n        eliminated from the ananlysis (default\
+  \ = 40)\n\n    -mo Minimum length of open reading frame considered for prediction\n\
+  \        (default = 30 value in nucleotides)\n\n    -mr Open reading frames with\
+  \ less than these number of ribosome\n        profiling reads are eliminated from\
+  \ analysis (default = 3)\n\n    -ost\n        Start region length in nucleotides\
+  \ (default = 45nts). This value is\n        used to calculate features specific\
+  \ to the start region.\n\n    -osp\n        Stop region length in nucleotides (default\
+  \ = 21nts). This value is\n        used to calculate features specific to the stop\
+  \ region.\n\n    -osd\n        Distance of Shine dalgarno sequence from start codon\
+  \ (defualt =\n        5nts).\n\n    -seed\n        Shine dalgarno sequence (default\
+  \ = GGAGG). The shine dalgarno\n        sequence used for Ribosome binind site energy\
+  \ calculation.\n\n    -sd Use ribosome binding site (RBS) energy in the open reading\
+  \ frame\n        prediction (Y = use RBS energy (default), N = donot use RBS engergy)\n\
+  \n    -id Online-Ticket UNI STUTT Minimum identify score for BLAST protein\n   \
+  \ sequence search (default = 0.75)\n    -ev maximum e-vlaue for BLAST protein sequence\
+  \ search (default = 1e-5)\n\n    -pg program for initial positive set generation\
+  \ (1 = prodigal (default),\n        2 = glimmer)\n\n    -cdn\n        Comma separted\
+  \ list of start codons (default = ATG,GTG,TTG)\n\n    -ncdn\n        Start codon\
+  \ for negative set (default = CTG)\n\n    -pcdn\n        Start codon for positive\
+  \ set (default = ATG,GTG,TTG). Should be a\n        subset of the standard genetic\
+  \ code for bacteria\n\n    -gcode\n        Genetic code to use for initail positive\
+  \ set generation. Valid when\n        -pg is 1. (default = 11, takes value between\
+  \ 1-25)\n\n    -by Flag to determine if prodigal should bypass Shine-Dalgarno trainer\n\
+  \        and force a full motif scan (default = N). (Y = yes, N = no) Valid\n  \
+  \      only for -pg 1\n\n    -score\n        Random forest classification probability\
+  \ score threshold to define\n        as ORF are protein coding, the minimum (defualt\
+  \ is 0.5)\n\n"
+generated_using:
+- --help

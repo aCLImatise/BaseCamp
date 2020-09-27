@@ -1,0 +1,115 @@
+!Command
+command:
+- svtk
+- vcf2bed
+positional:
+- !Positional
+  description: VCF to convert.
+  position: 0
+  name: vcf
+  optional: false
+- !Positional
+  description: Converted bed. Specify `-` or `stdout` to write to
+  position: 1
+  name: bed
+  optional: false
+- !Positional
+  description: 'optional arguments:'
+  position: 2
+  name: stdout.
+  optional: false
+named:
+- !Flag
+  description: "Don't include comma-delimited list of called samples\nfor each variant."
+  synonyms:
+  - --no-samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INFO field to include as column in output. May be\nspecified more\
+    \ than once. To include all INFO fields,\nspecify `--info ALL`. INFO fields are\
+    \ reported in the\norder in which they are requested. If ALL INFO fields\nare\
+    \ requested, they are reported in the order in which\nthey appear in the VCF header."
+  synonyms:
+  - -i
+  - --info
+  args: !SimpleFlagArg
+    name: INFO
+  optional: true
+- !Flag
+  description: "Include FILTER status in output, with the same\nbehavior an INFO field."
+  synonyms:
+  - --include-filters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report two entries in bed file for each BND.
+  synonyms:
+  - --split-bnd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report entries for each CPX rearrangement interval.
+  synonyms:
+  - --split-cpx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Suppress header.
+  synonyms:
+  - --no-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not sort start/end coordinates per record before\nwriting to bed."
+  synonyms:
+  - --no-sort-coords
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not output unresolved variants.
+  synonyms:
+  - --no-unresolved
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report all INS sinks as 1bp intervals.
+  synonyms:
+  - --simple-sinks
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: svtk [-h] [--no-samples] [-i INFO] [--include-filters] [--split-bnd]\n\
+  \            [--split-cpx] [--no-header] [--no-sort-coords] [--no-unresolved]\n\
+  \            [--simple-sinks]\n            vcf bed\n\nConvert a VCF to a BED.\n\n\
+  positional arguments:\n  vcf                   VCF to convert.\n  bed          \
+  \         Converted bed. Specify `-` or `stdout` to write to\n                 \
+  \       stdout.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --no-samples          Don't include comma-delimited list of called\
+  \ samples\n                        for each variant.\n  -i INFO, --info INFO  INFO\
+  \ field to include as column in output. May be\n                        specified\
+  \ more than once. To include all INFO fields,\n                        specify `--info\
+  \ ALL`. INFO fields are reported in the\n                        order in which\
+  \ they are requested. If ALL INFO fields\n                        are requested,\
+  \ they are reported in the order in which\n                        they appear in\
+  \ the VCF header.\n  --include-filters     Include FILTER status in output, with\
+  \ the same\n                        behavior an INFO field.\n  --split-bnd     \
+  \      Report two entries in bed file for each BND.\n  --split-cpx           Report\
+  \ entries for each CPX rearrangement interval.\n  --no-header           Suppress\
+  \ header.\n  --no-sort-coords      Do not sort start/end coordinates per record\
+  \ before\n                        writing to bed.\n  --no-unresolved       Do not\
+  \ output unresolved variants.\n  --simple-sinks        Report all INS sinks as 1bp\
+  \ intervals.\n"
+generated_using:
+- --help

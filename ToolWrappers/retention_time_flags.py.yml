@@ -1,0 +1,141 @@
+!Command
+command:
+- retention_time_flags.py
+positional: []
+named:
+- !Flag
+  description: Input dataset in wide format.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: Design file.
+  synonyms:
+  - -d
+  - --design
+  args: !SimpleFlagArg
+    name: DESIGN
+  optional: true
+- !Flag
+  description: Name of the column with unique identifiers.
+  synonyms:
+  - -id
+  - --ID
+  args: !SimpleFlagArg
+    name: UNIQID
+  optional: true
+- !Flag
+  description: "Value cutoff. The default is .2 minutes assuming data\nare in minutes."
+  synonyms:
+  - -m
+  - --minutes
+  args: !SimpleFlagArg
+    name: MINUTES
+  optional: true
+- !Flag
+  description: "The difference is calculated by 95th percentile and\n5th percentile\
+    \ by default. If you add this argument,\nit uses 90th percentile and 10th percentile.\n\
+    [optional]"
+  synonyms:
+  - --pctl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The default CV cutoff will flag 10 percent of the\nrowIDs with larger\
+    \ CVs. If you want to set a CV\ncutoff, put the number here. [optional]"
+  synonyms:
+  - -cv
+  - --CVcutoff
+  args: !SimpleFlagArg
+    name: CVCUTOFF
+  optional: true
+- !Flag
+  description: Name of the output TSV for CV plots.
+  synonyms:
+  - -f
+  - --figure
+  args: !SimpleFlagArg
+    name: FIGURE
+  optional: true
+- !Flag
+  description: Name of the output PDF for RT flags.
+  synonyms:
+  - -fl
+  - --flag
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: Name of the palette to use.
+  synonyms:
+  - -pal
+  - --palette
+  args: !SimpleFlagArg
+    name: PALETTE
+  optional: true
+- !Flag
+  description: "Name of a valid color scheme on the selected palette\n"
+  synonyms:
+  - -col
+  - --color
+  args: !SimpleFlagArg
+    name: COLOR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: retention_time_flags.py [-h] -i INPUT -d DESIGN -id UNIQID [-m\
+  \ MINUTES]\n                               [--pctl] [-cv CVCUTOFF] -f FIGURE -fl\
+  \ FLAG\n                               [-pal PALETTE] [-col COLOR]\n\nRetention\
+  \ time (RT) is related to the location of the compound.\n    Thus, across samples,\
+  \ the retention times for one compound do not vary much \n    if it's consistent.\
+  \ Therefore, we use various measurements for the variation\n    of retention times\
+  \ to detect whether the compound is consistent.\n\n    Retention time flags include,\n\
+  \        flag_RT_Q90Q10_outlier:     Flagged when the difference between the 90th\n\
+  \                                    and the 10th percentile of RT of the compound\n\
+  \                                    is greater than 0.2.\n        flag_RT_Q95Q05_outlier:\
+  \     Flagged when the difference between the 95th\n                           \
+  \         and the 5th percentile of RT of the compound\n                       \
+  \             is greater than 0.2.\n        flag_RT_max_gt_threshold:   Flagged\
+  \ when the difference between the maximum\n                                    and\
+  \ the median of the RT of the compound is \n                                   \
+  \ greater than 0.1\n        flag_RT_min_lt_threshold:   Flagged when the difference\
+  \ between the minimum\n                                    and the median of the\
+  \ RT of the compound is \n                                    greater than 0.1\n\
+  \        flag_RT_min_max_outlier:    Flagged when the minimum or the maximum is\
+  \ more\n                                    than 3 times the standard deviation\
+  \ away from\n                                    the mean of the RT of the compound\n\
+  \        flag_RT_big_CV:             A flag for large CV of the RT\n\n    \n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n\nStandard\
+  \ input:\n  Standard input for SECIM tools.\n\n  -i INPUT, --input INPUT\n     \
+  \                   Input dataset in wide format.\n  -d DESIGN, --design DESIGN\n\
+  \                        Design file.\n  -id UNIQID, --ID UNIQID\n             \
+  \           Name of the column with unique identifiers.\n\nTool Input:\n  Input\
+  \ specific for the tool.\n\n  -m MINUTES, --minutes MINUTES\n                  \
+  \      Value cutoff. The default is .2 minutes assuming data\n                 \
+  \       are in minutes.\n  --pctl                The difference is calculated by\
+  \ 95th percentile and\n                        5th percentile by default. If you\
+  \ add this argument,\n                        it uses 90th percentile and 10th percentile.\n\
+  \                        [optional]\n  -cv CVCUTOFF, --CVcutoff CVCUTOFF\n     \
+  \                   The default CV cutoff will flag 10 percent of the\n        \
+  \                rowIDs with larger CVs. If you want to set a CV\n             \
+  \           cutoff, put the number here. [optional]\n\nOutput:\n  Output parameters.\n\
+  \n  -f FIGURE, --figure FIGURE\n                        Name of the output TSV for\
+  \ CV plots.\n  -fl FLAG, --flag FLAG\n                        Name of the output\
+  \ PDF for RT flags.\n\nPlot options:\n  -pal PALETTE, --palette PALETTE\n      \
+  \                  Name of the palette to use.\n  -col COLOR, --color COLOR\n  \
+  \                      Name of a valid color scheme on the selected palette\n"
+generated_using:
+- --help

@@ -30,79 +30,10 @@ subcommands:
     args: !SimpleFlagArg
       name: KMER
     optional: true
-  parent: &id003 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: kmer-length
-      synonyms:
-      - --kmer
-      args: !SimpleFlagArg
-        name: KMER
-      optional: true
-    - !Flag
-      description: start index of PAR-CLIP sites
-      synonyms:
-      - --start
-      args: !SimpleFlagArg
-        name: START
-      optional: true
-    - !Flag
-      description: stop index of PAR-CLIP sites
-      synonyms:
-      - --stop
-      args: !SimpleFlagArg
-        name: STOP
-      optional: true
-    - !Flag
-      description: number of nt +/- the crosslink site
-      synonyms:
-      - --width
-      args: !SimpleFlagArg
-        name: WIDTH
-      optional: true
-    - !Flag
-      description: set key that is used for PAR-CLIP site ordering
-      synonyms:
-      - --key
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? transitions
-          ? score
-          ? occupancy
-          ? coverage
-      optional: true
-    - !Flag
-      description: "set path to GFF if sites should be removed that\noverlap with\
-        \ the GFF. By default no sites are filtered\nout."
-      synonyms:
-      - --filterGFF
-      args: !SimpleFlagArg
-        name: FILTERGFF
-      optional: true
-    - !Flag
-      description: "number of nt that are added to the start/stop indices\nof the\
-        \ GFF annotations"
-      synonyms:
-      - --awidth
-      args: !SimpleFlagArg
-        name: AWIDTH
-      optional: true
-    - !Flag
-      description: remove temporary text files
-      synonyms:
-      - --remove
-      - -r
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: verbose output
-      synonyms:
-      - --verbose
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -128,7 +59,288 @@ subcommands:
         args: !SimpleFlagArg
           name: KMER
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: kmer-length
+          synonyms:
+          - --kmer
+          args: !SimpleFlagArg
+            name: KMER
+          optional: true
+        - !Flag
+          description: start index of PAR-CLIP sites
+          synonyms:
+          - --start
+          args: !SimpleFlagArg
+            name: START
+          optional: true
+        - !Flag
+          description: stop index of PAR-CLIP sites
+          synonyms:
+          - --stop
+          args: !SimpleFlagArg
+            name: STOP
+          optional: true
+        - !Flag
+          description: number of nt +/- the crosslink site
+          synonyms:
+          - --width
+          args: !SimpleFlagArg
+            name: WIDTH
+          optional: true
+        - !Flag
+          description: set key that is used for PAR-CLIP site ordering
+          synonyms:
+          - --key
+          args: !ChoiceFlagArg
+            choices: !!set
+              ? transitions
+              ? score
+              ? occupancy
+              ? coverage
+          optional: true
+        - !Flag
+          description: "set path to GFF if sites should be removed that\noverlap with\
+            \ the GFF. By default no sites are filtered\nout."
+          synonyms:
+          - --filterGFF
+          args: !SimpleFlagArg
+            name: FILTERGFF
+          optional: true
+        - !Flag
+          description: "number of nt that are added to the start/stop indices\nof\
+            \ the GFF annotations"
+          synonyms:
+          - --awidth
+          args: !SimpleFlagArg
+            name: AWIDTH
+          optional: true
+        - !Flag
+          description: remove temporary text files
+          synonyms:
+          - --remove
+          - -r
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: verbose output
+          synonyms:
+          - --verbose
+          - -v
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: mb-plot-kmer-enrichment
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - --start
+            args: !SimpleFlagArg
+              name: START
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --kmer
+            args: !SimpleFlagArg
+              name: KMER
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: mb-plot-kmer-enrichment [-h] [--kmer KMER] [--start START]\n\
+            \                               [--stop STOP] [--width WIDTH]\n      \
+            \                         [--key {occupancy,transitions,coverage,score}]\n\
+            \                               [--filterGFF FILTERGFF] [--awidth AWIDTH]\n\
+            \                               [--remove] [--verbose]\n             \
+            \                  inputfile genome outdir prefix\nmb-plot-kmer-enrichment:\
+            \ error: argument inputfile: 'genome' does not exist\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - mb-plot-kmer-enrichment
+          - prefix
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: mb-plot-kmer-enrichment
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - --start
+            args: !SimpleFlagArg
+              name: START
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --kmer
+            args: !SimpleFlagArg
+              name: KMER
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: mb-plot-kmer-enrichment [-h] [--kmer KMER] [--start START]\n\
+            \                               [--stop STOP] [--width WIDTH]\n      \
+            \                         [--key {occupancy,transitions,coverage,score}]\n\
+            \                               [--filterGFF FILTERGFF] [--awidth AWIDTH]\n\
+            \                               [--remove] [--verbose]\n             \
+            \                  inputfile genome outdir prefix\nmb-plot-kmer-enrichment:\
+            \ error: argument inputfile: 'prefix' does not exist\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - mb-plot-kmer-enrichment
+          - inputfile
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: mb-plot-kmer-enrichment
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - --start
+            args: !SimpleFlagArg
+              name: START
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --kmer
+            args: !SimpleFlagArg
+              name: KMER
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: mb-plot-kmer-enrichment [-h] [--kmer KMER] [--start START]\n\
+            \                               [--stop STOP] [--width WIDTH]\n      \
+            \                         [--key {occupancy,transitions,coverage,score}]\n\
+            \                               [--filterGFF FILTERGFF] [--awidth AWIDTH]\n\
+            \                               [--remove] [--verbose]\n             \
+            \                  inputfile genome outdir prefix\nmb-plot-kmer-enrichment:\
+            \ error: argument inputfile: 'inputfile' does not exist\n"
+          generated_using: *id004
+        - !Command
+          command: &id007
+          - mb-plot-kmer-enrichment
+          - outdir
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: mb-plot-kmer-enrichment
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - --start
+            args: !SimpleFlagArg
+              name: START
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --kmer
+            args: !SimpleFlagArg
+              name: KMER
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: mb-plot-kmer-enrichment [-h] [--kmer KMER] [--start START]\n\
+            \                               [--stop STOP] [--width WIDTH]\n      \
+            \                         [--key {occupancy,transitions,coverage,score}]\n\
+            \                               [--filterGFF FILTERGFF] [--awidth AWIDTH]\n\
+            \                               [--remove] [--verbose]\n             \
+            \                  inputfile genome outdir prefix\nmb-plot-kmer-enrichment:\
+            \ error: argument inputfile: 'outdir' does not exist\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: mb-plot-kmer-enrichment [-h] [--kmer KMER] [--start START]\n\
+          \                               [--stop STOP] [--width WIDTH]\n        \
+          \                       [--key {occupancy,transitions,coverage,score}]\n\
+          \                               [--filterGFF FILTERGFF] [--awidth AWIDTH]\n\
+          \                               [--remove] [--verbose]\n               \
+          \                inputfile genome outdir prefix\n\nPlots kmer occurences\
+          \ per sequence position for all kmers of a given kmer-\nlength for selected\
+          \ PAR-CLIP sites.\n\npositional arguments:\n  inputfile             PAR-CLIP\
+          \ file *.table\n  genome                path to genome\n  outdir       \
+          \         output directory\n  prefix                prefix\n\noptional arguments:\n\
+          \  -h, --help            show this help message and exit\n  --kmer KMER\
+          \           kmer-length\n  --start START         start index of PAR-CLIP\
+          \ sites\n  --stop STOP           stop index of PAR-CLIP sites\n  --width\
+          \ WIDTH         number of nt +/- the crosslink site\n  --key {occupancy,transitions,coverage,score}\n\
+          \                        set key that is used for PAR-CLIP site ordering\n\
+          \  --filterGFF FILTERGFF\n                        set path to GFF if sites\
+          \ should be removed that\n                        overlap with the GFF.\
+          \ By default no sites are filtered\n                        out.\n  --awidth\
+          \ AWIDTH       number of nt that are added to the start/stop indices\n \
+          \                       of the GFF annotations\n  --remove, -r         \
+          \ remove temporary text files\n  --verbose, -v         verbose output\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -146,12 +358,9 @@ subcommands:
         \                              [--remove] [--verbose]\n                  \
         \             inputfile genome outdir prefix\nmb-plot-kmer-enrichment: error:\
         \ argument inputfile: 'genome' does not exist\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - mb-plot-kmer-enrichment
-      - prefix
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -193,9 +402,7 @@ subcommands:
         \ argument inputfile: 'prefix' does not exist\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - mb-plot-kmer-enrichment
-      - inputfile
+      command: *id006
       positional:
       - !Positional
         description: ''
@@ -237,9 +444,7 @@ subcommands:
         \ argument inputfile: 'inputfile' does not exist\n"
       generated_using: *id004
     - !Command
-      command: &id007
-      - mb-plot-kmer-enrichment
-      - outdir
+      command: *id007
       positional:
       - !Positional
         description: ''
@@ -281,13 +486,7 @@ subcommands:
         \ argument inputfile: 'outdir' does not exist\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: mb-plot-kmer-enrichment [-h] [--kmer KMER] [--start START]\n\
@@ -353,7 +552,7 @@ subcommands:
     args: !SimpleFlagArg
       name: KMER
     optional: true
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -395,7 +594,7 @@ subcommands:
     args: !SimpleFlagArg
       name: KMER
     optional: true
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -437,7 +636,7 @@ subcommands:
     args: !SimpleFlagArg
       name: KMER
     optional: true
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

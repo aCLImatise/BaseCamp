@@ -1,0 +1,151 @@
+!Command
+command:
+- TextExporter
+positional: []
+named:
+- !Flag
+  description: "*                                     Input file  (valid formats:\
+    \ 'featureXML', 'consensusXML', 'idXML', 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file (mandatory for featureXML and idXML) (valid formats: 'csv')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: The used separator character(s); if not set the 'tab' character is
+    used
+  synonyms:
+  - -separator
+  args: !SimpleFlagArg
+    name: sep
+  optional: true
+- !Flag
+  description: "Used to replace occurrences of the separator in strings before writing,\
+    \ if 'quoting' is 'none' (default: '_')"
+  synonyms:
+  - -replacement
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Method for quoting of strings: 'none' for no quoting, 'double' for\
+    \ quoting with doubling of embedded quotes,\n'escape' for quoting with backslash-escaping\
+    \ of embedded quotes (default: 'none' valid: 'none', 'double', 'escape')"
+  synonyms:
+  - -quoting
+  args: !SimpleFlagArg
+    name: method
+  optional: true
+- !Flag
+  description: Suppresses output of identification data.
+  synonyms:
+  - -no_ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nTextExporter --\
+  \ Exports various XML formats to a text file.\nFull documentation: http://www.openms.de/documentation/TOPP_TextExporter.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  TextExporter <options>\n\nOptions (mandatory options marked with '*'):\n  -in\
+  \ <file>*                                     Input file  (valid formats: 'featureXML',\
+  \ 'consensusXML', 'idXML', 'mzML')\n  -out <file>                              \
+  \       Output file (mandatory for featureXML and idXML) (valid formats: 'csv')\n\
+  \  -separator <sep>                                The used separator character(s);\
+  \ if not set the 'tab' character is used\n  -replacement <string>              \
+  \             Used to replace occurrences of the separator in strings before writing,\
+  \ if 'quoting' is 'none' (default: '_')\n  -quoting <method>                   \
+  \            Method for quoting of strings: 'none' for no quoting, 'double' for\
+  \ quoting with doubling of embedded quotes,\n                                  \
+  \                'escape' for quoting with backslash-escaping of embedded quotes\
+  \ (default: 'none' valid: 'none', 'double', 'escape')\n  -no_ids               \
+  \                          Suppresses output of identification data.\n         \
+  \                                         \n\nOptions for featureXML input files:\n\
+  \  -feature:minimal                                Set this flag to write only three\
+  \ attributes: RT, m/z, and intensity.\n  -feature:add_metavalues <min_frequency>\
+  \         Add columns for meta values which occur with a certain frequency (0-100%).\
+  \ Set to -1 to omit meta values (default). (default: '-1' min: '-1' max: '100')\n\
+  \n                                                  \n\nOptions for idXML input\
+  \ files:\n  -id:proteins_only                               Set this flag if you\
+  \ want only protein information from an idXML file\n  -id:peptides_only        \
+  \                       Set this flag if you want only peptide information from\
+  \ an idXML file\n  -id:protein_groups                              Set this flag\
+  \ if you want to also write indist. group information from an idXML file\n  -id:first_dim_rt\
+  \                                If this flag is set the first_dim RT of the peptide\
+  \ hits will also be printed (if present).\n  -id:add_metavalues <min_frequency>\
+  \              Add columns for meta values of PeptideID (=spectrum) entries which\
+  \ occur with a certain frequency (0-100%). Set to -1 to omit meta values (default).\
+  \ (default: '-1' min: '-1' max: '100')\n  -id:add_hit_metavalues <min_frequency>\
+  \          Add columns for meta values of PeptideHit (=PSM) entries which occur\
+  \ with a certain frequency (0-100%). Set to -1 to omit meta values (default). (default:\
+  \ '-1' min: '-1' max: '100')\n  -id:add_protein_hit_metavalues <min_frequency> \
+  \ Add columns for meta values on protein level which occur with a certain frequency\
+  \ (0-100%). Set to -1 to omit meta values (default). (default: '-1' min: '-1' max:\
+  \ '100')\n\n                                                  \n\nOptions for consensusXML\
+  \ input files:\n  -consensus:centroids <file>                     Output file for\
+  \ centroids of consensus features (valid formats: 'csv')\n  -consensus:elements\
+  \ <file>                      Output file for elements of consensus features (valid\
+  \ formats: 'csv')\n  -consensus:features <file>                      Output file\
+  \ for consensus features and contained elements from all maps (writes 'nan's if\
+  \ elements are missing) (valid formats: 'csv')\n  -consensus:sorting_method <method>\
+  \              Sorting options can be combined. The precedence is: sort_by_size,\
+  \ sort_by_maps, sorting_method (default: 'none' valid: 'none', 'RT', 'MZ', 'RT_then_MZ',\
+  \ 'intensity', 'quality_decreasing', 'quality_increasing')\n  -consensus:sort_by_maps\
+  \                         Apply a stable sort by the covered maps, lexicographically\n\
+  \  -consensus:sort_by_size                         Apply a stable sort by decreasing\
+  \ size (i.e., the number of elements)\n\n                                      \
+  \            \nCommon TOPP options:\n  -ini <file>                             \
+  \        Use the given TOPP INI file\n  -threads <n>                           \
+  \         Sets the number of threads allowed to be used by the TOPP tool (default:\
+  \ '1')\n  -write_ini <file>                               Writes the default configuration\
+  \ file\n  --help                                          Shows options\n  --helphelp\
+  \                                      Shows all options (including advanced)\n\n"
+generated_using:
+- --help

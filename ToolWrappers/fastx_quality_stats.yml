@@ -1,0 +1,184 @@
+!Command
+command:
+- fastx_quality_stats
+positional:
+- !Positional
+  description: = column number (1 to 36 for a 36-cycles read solexa file)
+  position: 0
+  name: column
+  optional: false
+- !Positional
+  description: = number of bases found in this column.
+  position: 1
+  name: count
+  optional: false
+- !Positional
+  description: = Lowest quality score value found in this column.
+  position: 2
+  name: min
+  optional: false
+- !Positional
+  description: = Highest quality score value found in this column.
+  position: 3
+  name: max
+  optional: false
+- !Positional
+  description: = Sum of quality score values for this column.
+  position: 4
+  name: sum
+  optional: false
+- !Positional
+  description: = Mean quality score value for this column.
+  position: 5
+  name: mean
+  optional: false
+- !Positional
+  description: = 1st quartile quality score.
+  position: 6
+  name: Q1
+  optional: false
+- !Positional
+  description: = Median quality score.
+  position: 7
+  name: med
+  optional: false
+- !Positional
+  description: = 3rd quartile quality score.
+  position: 8
+  name: Q3
+  optional: false
+- !Positional
+  description: = Inter-Quartile range (Q3-Q1).
+  position: 9
+  name: IQR
+  optional: false
+- !Positional
+  description: = 'Left-Whisker' value (for boxplotting).
+  position: 10
+  name: lW
+  optional: false
+- !Positional
+  description: = 'Right-Whisker' value (for boxplotting).
+  position: 11
+  name: rW
+  optional: false
+- !Positional
+  description: 'For each nucleotide in the cycle (ALL/A/C/G/T/N):'
+  position: 0
+  name: max-count
+  optional: false
+- !Positional
+  description: = number of bases found in this column.
+  position: 1
+  name: count
+  optional: false
+- !Positional
+  description: = Lowest quality score value found in this column.
+  position: 2
+  name: min
+  optional: false
+- !Positional
+  description: = Highest quality score value found in this column.
+  position: 3
+  name: max
+  optional: false
+- !Positional
+  description: = Sum of quality score values for this column.
+  position: 4
+  name: sum
+  optional: false
+- !Positional
+  description: = Mean quality score value for this column.
+  position: 5
+  name: mean
+  optional: false
+- !Positional
+  description: = 1st quartile quality score.
+  position: 6
+  name: Q1
+  optional: false
+- !Positional
+  description: = Median quality score.
+  position: 7
+  name: med
+  optional: false
+- !Positional
+  description: = 3rd quartile quality score.
+  position: 8
+  name: Q3
+  optional: false
+- !Positional
+  description: = Inter-Quartile range (Q3-Q1).
+  position: 9
+  name: IQR
+  optional: false
+- !Positional
+  description: = 'Left-Whisker' value (for boxplotting).
+  position: 10
+  name: lW
+  optional: false
+- !Positional
+  description: = 'Right-Whisker' value (for boxplotting).
+  position: 11
+  name: rW
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: fastx_quality_stats [-h] [-N] [-i INFILE] [-o OUTFILE]\nPart of\
+  \ FASTX Toolkit 0.0.14 by A. Gordon (assafgordon@gmail.com)\n\n   [-h] = This helpful\
+  \ help screen.\n   [-i INFILE]  = FASTQ input file. default is STDIN.\n   [-o OUTFILE]\
+  \ = TEXT output file. default is STDOUT.\n   [-N]         = New output format (with\
+  \ more information per nucleotide/cycle).\n\nThe *OLD* output TEXT file will have\
+  \ the following fields (one row per column):\n\tcolumn\t= column number (1 to 36\
+  \ for a 36-cycles read solexa file)\n\tcount   = number of bases found in this column.\n\
+  \tmin     = Lowest quality score value found in this column.\n\tmax     = Highest\
+  \ quality score value found in this column.\n\tsum     = Sum of quality score values\
+  \ for this column.\n\tmean    = Mean quality score value for this column.\n\tQ1\t\
+  = 1st quartile quality score.\n\tmed\t= Median quality score.\n\tQ3\t= 3rd quartile\
+  \ quality score.\n\tIQR\t= Inter-Quartile range (Q3-Q1).\n\tlW\t= 'Left-Whisker'\
+  \ value (for boxplotting).\n\trW\t= 'Right-Whisker' value (for boxplotting).\n\t\
+  A_Count\t= Count of 'A' nucleotides found in this column.\n\tC_Count\t= Count of\
+  \ 'C' nucleotides found in this column.\n\tG_Count\t= Count of 'G' nucleotides found\
+  \ in this column.\n\tT_Count\t= Count of 'T' nucleotides found in this column.\n\
+  \tN_Count = Count of 'N' nucleotides found in this column.\n\tmax-count = max. number\
+  \ of bases (in all cycles)\n\n\nThe *NEW* output format:\n\tcycle (previously called\
+  \ 'column') = cycle number\n\tmax-count\n\tFor each nucleotide in the cycle (ALL/A/C/G/T/N):\n\
+  \t\tcount   = number of bases found in this column.\n\t\tmin     = Lowest quality\
+  \ score value found in this column.\n\t\tmax     = Highest quality score value found\
+  \ in this column.\n\t\tsum     = Sum of quality score values for this column.\n\t\
+  \tmean    = Mean quality score value for this column.\n\t\tQ1\t= 1st quartile quality\
+  \ score.\n\t\tmed\t= Median quality score.\n\t\tQ3\t= 3rd quartile quality score.\n\
+  \t\tIQR\t= Inter-Quartile range (Q3-Q1).\n\t\tlW\t= 'Left-Whisker' value (for boxplotting).\n\
+  \t\trW\t= 'Right-Whisker' value (for boxplotting).\n\n\n"
+generated_using:
+- -h

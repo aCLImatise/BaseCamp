@@ -26,7 +26,7 @@ subcommands:
     name: in.hapmap
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -51,18 +51,164 @@ subcommands:
         name: in.hapmap
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: vcfutils.pl
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: in.ucsc.snp
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: in.hapmap
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
+          generated_using: &id004 []
+        - !Command
+          command: &id006
+          - vcfutils.pl
+          - varFilter
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: vcfutils.pl
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -MORE_OPTIONS
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -OPTIONS
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "/usr/local/bin/vcfutils.pl version [unknown] calling Getopt::Std::getopts\
+            \ (version 1.12 [paranoid]),\nrunning under Perl version 5.26.2.\n\nUsage:\
+            \ vcfutils.pl [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe\
+            \ following single-character options are accepted:\n\tWith arguments:\
+            \ -d -D -W -Q -w -a -1 -2 -3 -4 -G -S -e\n\tBoolean (without arguments):\
+            \ -p\n\nOptions may be merged together.  -- stops processing of options.\n\
+            Space is not required between options and their arguments.\n  [Now continuing\
+            \ due to backward compatibility and excessive paranoia.\n   See 'perldoc\
+            \ Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n"
+          generated_using: &id005
+          - --help
+        - !Command
+          command: &id007
+          - vcfutils.pl
+          - subsam
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: in.vcf
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: samples
+            optional: true
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
+          generated_using: *id004
+        - !Command
+          command: &id008
+          - vcfutils.pl
+          - qstats
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: vcfutils.pl
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -MORE_OPTIONS
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -OPTIONS
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "/usr/local/bin/vcfutils.pl version [unknown] calling Getopt::Std::getopts\
+            \ (version 1.12 [paranoid]),\nrunning under Perl version 5.26.2.\n\nUsage:\
+            \ vcfutils.pl [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\nThe\
+            \ following single-character options are accepted:\n\tWith arguments:\
+            \ -r -s\n\tBoolean (without arguments): -v\n\nOptions may be merged together.\
+            \  -- stops processing of options.\nSpace is not required between options\
+            \ and their arguments.\n  [Now continuing due to backward compatibility\
+            \ and excessive paranoia.\n   See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\
+            Illegal division by zero at /usr/local/bin/vcfutils.pl line 204.\n"
+          generated_using: *id005
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "\nUsage:   vcfutils.pl <command> [<arguments>]\n\nCommand: subsam\
+          \       get a subset of samples\n         listsam      list the samples\n\
+          \         fillac       fill the allele count field\n         qstats    \
+          \   SNP stats stratified by QUAL\n\n         hapmap2vcf   convert the hapmap\
+          \ format to VCF\n         ucscsnp2vcf  convert UCSC SNP SQL dump to VCF\n\
+          \n         varFilter    filtering short variants (*)\n         vcf2fq  \
+          \     VCF->fastq (**)\n\nNotes: Commands with description endting with (*)\
+          \ may need bcftools\n       specific annotations.\n\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
       usage_flag:
       version_flag:
       help_text: "Usage: vcfutils.pl <in.ucsc.snp> <in.hapmap>\n"
-      generated_using: &id004 []
+      generated_using: *id004
     - !Command
-      command: &id006
-      - vcfutils.pl
-      - varFilter
+      command: *id006
       positional:
       - !Positional
         description: ''
@@ -97,12 +243,9 @@ subcommands:
         \ between options and their arguments.\n  [Now continuing due to backward\
         \ compatibility and excessive paranoia.\n   See 'perldoc Getopt::Std' about\
         \ $Getopt::Std::STANDARD_HELP_VERSION.]\n"
-      generated_using: &id005
-      - --help
+      generated_using: *id005
     - !Command
-      command: &id007
-      - vcfutils.pl
-      - subsam
+      command: *id007
       positional:
       - !Positional
         description: ''
@@ -124,9 +267,7 @@ subcommands:
       help_text: "Usage: vcfutils.pl subsam <in.vcf> [samples]\n"
       generated_using: *id004
     - !Command
-      command: &id008
-      - vcfutils.pl
-      - qstats
+      command: *id008
       positional:
       - !Positional
         description: ''
@@ -203,7 +344,7 @@ subcommands:
     - -OPTIONS
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -232,7 +373,7 @@ subcommands:
     name: samples
     optional: true
   named: []
-  parent: *id003
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -261,7 +402,7 @@ subcommands:
     - -OPTIONS
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

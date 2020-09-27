@@ -1,0 +1,104 @@
+!Command
+command:
+- igdiscover
+- clonotypes
+positional: []
+named:
+- !Flag
+  description: "Sort by group size (largest first). Default: Sort by\nV/D/J gene names"
+  synonyms:
+  - --sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print out only the first N groups
+  synonyms:
+  - --limit
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: V SHM threshold for _mindiffrate computations
+  synonyms:
+  - --v-shm-threshold
+  args: !SimpleFlagArg
+    name: V_SHM_THRESHOLD
+  optional: true
+- !Flag
+  description: ":END\nSTART:END defines the non-junction region of CDR3\nsequences.\
+    \ Use negative numbers for END to count from\nthe end. Regions before and after\
+    \ are considered to be\njunction sequence, and for two CDR3s to be considered\n\
+    similar, at least one of the junctions must be\nidentical. Default: no junction\
+    \ region."
+  synonyms:
+  - --cdr3-core
+  args: !SimpleFlagArg
+    name: START
+  optional: true
+- !Flag
+  description: "No. of allowed mismatches between CDR3 sequences. Can\nalso be a fraction\
+    \ between 0 and 1 (such as 0.15),\ninterpreted relative to the length of the CDR3\
+    \ (minus\nthe front non-core). Default: 1"
+  synonyms:
+  - --mismatches
+  args: !SimpleFlagArg
+    name: MISMATCHES
+  optional: true
+- !Flag
+  description: "Count CDR3 mismatches on amino-acid level. Default:\nCompare nucleotides."
+  synonyms:
+  - --aa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write member table to FILE
+  synonyms:
+  - --members
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: igdiscover clonotypes [-h] [--sort] [--limit N]\n             \
+  \                [--v-shm-threshold V_SHM_THRESHOLD]\n                         \
+  \    [--cdr3-core START:END] [--mismatches MISMATCHES]\n                       \
+  \      [--aa] [--members FILE]\n                             table\n\nGroup assigned\
+  \ sequences by clonotype\n\nTwo sequences have the same clonotype if\n- their V\
+  \ and J assignments are the same\n- the length of their CDR3 is identical\n- the\
+  \ difference between their CDR3s (in terms of mismatches)\n  is not higher than\
+  \ a given threshold (by default 1)\n\nThe output is a table with one row per clonotype,\
+  \ written to\nstandard output.\n\nOptionally, a full table of all members (sequences\
+  \ belonging to a clonotype)\ncan be created with one row per input sequence, sorted\
+  \ by\nclonotype, plus an empty line between each group of sequences\nthat have the\
+  \ same clonotype.\n\nThe tables are by default sorted by clonotype, but can instead\
+  \ be sorted\nby the group size (number of members of a clonotype).\n\npositional\
+  \ arguments:\n  table                 Table with parsed and filtered IgBLAST results\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --sort                Sort by group size (largest first). Default: Sort by\n\
+  \                        V/D/J gene names\n  --limit N             Print out only\
+  \ the first N groups\n  --v-shm-threshold V_SHM_THRESHOLD\n                    \
+  \    V SHM threshold for _mindiffrate computations\n  --cdr3-core START:END\n  \
+  \                      START:END defines the non-junction region of CDR3\n     \
+  \                   sequences. Use negative numbers for END to count from\n    \
+  \                    the end. Regions before and after are considered to be\n  \
+  \                      junction sequence, and for two CDR3s to be considered\n \
+  \                       similar, at least one of the junctions must be\n       \
+  \                 identical. Default: no junction region.\n  --mismatches MISMATCHES\n\
+  \                        No. of allowed mismatches between CDR3 sequences. Can\n\
+  \                        also be a fraction between 0 and 1 (such as 0.15),\n  \
+  \                      interpreted relative to the length of the CDR3 (minus\n \
+  \                       the front non-core). Default: 1\n  --aa                \
+  \  Count CDR3 mismatches on amino-acid level. Default:\n                       \
+  \ Compare nucleotides.\n  --members FILE        Write member table to FILE\n"
+generated_using:
+- --help

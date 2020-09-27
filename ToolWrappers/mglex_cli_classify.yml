@@ -1,0 +1,121 @@
+!Command
+command:
+- mglex-cli
+- classify
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: classify
+  optional: false
+named:
+- !Flag
+  description: Output class posterior instead of the raw likelihood
+  synonyms:
+  - -n
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Pre-calculated classificaton model file
+  synonyms:
+  - -m
+  - --model
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Absolute mean coverage data file for Poisson Model
+  synonyms:
+  - -a
+  - --abcoverage
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Differential mean coverage data file for Multinomial Model
+  synonyms:
+  - -d
+  - --diffcoverage
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Compositional data (numeric) file for Naive Bayes Model
+  synonyms:
+  - -c
+  - --composition
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Label-type data file (e.g. a taxonomic path) for Hierarchical Naive
+    Bayes Model
+  synonyms:
+  - -t
+  - --labels
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Beta correction factor (e.g. determined via MSE evaluation); default
+    1.0
+  synonyms:
+  - -b
+  - --beta
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: File for logging
+  synonyms:
+  - -l
+  - --logfile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this screen
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "This is the main program which takes a pre-calculated model file and corresponding\
+  \ sample features. The program returns\nthe corresponding classification likelihood\
+  \ for each datum and class in the form of a (negatively log-scaled)\nlikelihood\
+  \ matrix. When normalization is requested, then these are (negatively log-scaled)\
+  \ class posteror\nprobabilities, also called the responsibility matrix in the context\
+  \ of mixture models.\n\nUsage:\n  classify  (--help | --version)\n  classify  (--model\
+  \ <file>) [--abcoverage <file>] [--diffcoverage <file>] [--composition <file>]\n\
+  \                             [--labels <file>] [--beta <float>] [--logfile <file>]\
+  \ [--normalize]\n\n  -h, --help                        Show this screen\n  -v, --version\
+  \                     Show version\n  -n, --normalize                   Output class\
+  \ posterior instead of the raw likelihood\n  -m <file>, --model <file>         Pre-calculated\
+  \ classificaton model file\n  -a <file>, --abcoverage <file>    Absolute mean coverage\
+  \ data file for Poisson Model\n  -d <file>, --diffcoverage <file>  Differential\
+  \ mean coverage data file for Multinomial Model\n  -c <file>, --composition <file>\
+  \   Compositional data (numeric) file for Naive Bayes Model\n  -t <file>, --labels\
+  \ <file>        Label-type data file (e.g. a taxonomic path) for Hierarchical Naive\
+  \ Bayes Model\n  -b <float>, --beta <float>        Beta correction factor (e.g.\
+  \ determined via MSE evaluation); default 1.0\n  -l <file>, --logfile <file>   \
+  \    File for logging\n"
+generated_using:
+- --help

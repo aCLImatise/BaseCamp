@@ -1,0 +1,259 @@
+!Command
+command:
+- rtg
+- readsim
+positional:
+- !Positional
+  description: -q, --qual-range=STRING          set the range of base quality values
+  position: 0
+  name: SDF
+  optional: false
+named:
+- !Flag
+  description: SDF containing input genome
+  synonyms:
+  - -t
+  - --input
+  args: !SimpleFlagArg
+    name: SDF
+  optional: true
+- !Flag
+  description: "select the sequencing technology to model.\nAllowed values are [illumina_se,\n\
+    illumina_pe, complete_genomics,\ncomplete_genomics_2, 454_pe, 454_se,\niontorrent]"
+  synonyms:
+  - --machine
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: name for reads output SDF
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: SDF
+  optional: true
+- !Flag
+  description: "if set, the user-supplied distribution\nrepresents desired abundance"
+  synonyms:
+  - --abundance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "allow reads to be drawn from template\nfragments containing unknown\
+    \ nucleotides"
+  synonyms:
+  - -N
+  - --allow-unknowns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: coverage, must be positive
+  synonyms:
+  - -c
+  - --coverage
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "file containing probability distribution for\nsequence selection"
+  synonyms:
+  - -D
+  - --distribution
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "if set, the user-supplied distribution\nrepresents desired DNA fraction"
+  synonyms:
+  - --dna-fraction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum fragment size (Default is 250)
+  synonyms:
+  - -M
+  - --max-fragment-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum fragment size (Default is 200)
+  synonyms:
+  - -m
+  - --min-fragment-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "rate that the machine will generate new\nunknowns in the read (Default\
+    \ is 0.0)"
+  synonyms:
+  - --n-rate
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: number of reads to be generated
+  synonyms:
+  - -n
+  - --num-reads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "file containing probability distribution for\nsequence selection expressed\
+    \ by taxonomy id"
+  synonyms:
+  - --taxonomy-distribution
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: target read length on the left side
+  synonyms:
+  - -L
+  - --left-read-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: target read length on the right side
+  synonyms:
+  - -R
+  - --right-read-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: target read length, must be positive
+  synonyms:
+  - -r
+  - --read-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "maximum 454 read length (in paired end case\nthe sum of the left and\
+    \ the right read\nlengths)"
+  synonyms:
+  - --454-max-total-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "minimum 454 read length (in paired end case\nthe sum of the left and\
+    \ the right read\nlengths)"
+  synonyms:
+  - --454-min-total-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: maximum IonTorrent read length
+  synonyms:
+  - --ion-max-total-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum IonTorrent read length
+  synonyms:
+  - --ion-min-total-size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: comment to include in the generated SDF
+  synonyms:
+  - --comment
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: do not create read names in the output SDF
+  synonyms:
+  - --no-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not create read qualities in the output
+  synonyms:
+  - --no-qualities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|FILE         file containing a single valid read group\nSAM header\
+    \ line or a string in the form\n\"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\""
+  synonyms:
+  - --sam-rg
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: seed for random number generator
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print help on command-line flag usage
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: rtg readsim [OPTION]... -t SDF --machine STRING -o SDF -c FLOAT\n\
+  \                   [OPTION]... -t SDF --machine STRING -o SDF -n INT\n\nGenerates\
+  \ reads from a reference genome.\n\nFile Input/Output\n  -t, --input=SDF       \
+  \           SDF containing input genome\n      --machine=STRING             select\
+  \ the sequencing technology to model.\n                                   Allowed\
+  \ values are [illumina_se,\n                                   illumina_pe, complete_genomics,\n\
+  \                                   complete_genomics_2, 454_pe, 454_se,\n     \
+  \                              iontorrent]\n  -o, --output=SDF                 name\
+  \ for reads output SDF\n\nFragment Generation\n      --abundance               \
+  \   if set, the user-supplied distribution\n                                   represents\
+  \ desired abundance\n  -N, --allow-unknowns             allow reads to be drawn\
+  \ from template\n                                   fragments containing unknown\
+  \ nucleotides\n  -c, --coverage=FLOAT             coverage, must be positive\n \
+  \ -D, --distribution=FILE          file containing probability distribution for\n\
+  \                                   sequence selection\n      --dna-fraction   \
+  \            if set, the user-supplied distribution\n                          \
+  \         represents desired DNA fraction\n  -M, --max-fragment-size=INT      maximum\
+  \ fragment size (Default is 250)\n  -m, --min-fragment-size=INT      minimum fragment\
+  \ size (Default is 200)\n      --n-rate=FLOAT               rate that the machine\
+  \ will generate new\n                                   unknowns in the read (Default\
+  \ is 0.0)\n  -n, --num-reads=INT              number of reads to be generated\n\
+  \      --taxonomy-distribution=FILE file containing probability distribution for\n\
+  \                                   sequence selection expressed by taxonomy id\n\
+  \nIllumina PE\n  -L, --left-read-length=INT       target read length on the left\
+  \ side\n  -R, --right-read-length=INT      target read length on the right side\n\
+  \nIllumina SE\n  -r, --read-length=INT            target read length, must be positive\n\
+  \n454 SE/PE\n      --454-max-total-size=INT     maximum 454 read length (in paired\
+  \ end case\n                                   the sum of the left and the right\
+  \ read\n                                   lengths)\n      --454-min-total-size=INT\
+  \     minimum 454 read length (in paired end case\n                            \
+  \       the sum of the left and the right read\n                               \
+  \    lengths)\n\nIonTorrent SE\n      --ion-max-total-size=INT     maximum IonTorrent\
+  \ read length\n      --ion-min-total-size=INT     minimum IonTorrent read length\n\
+  \nUtility\n      --comment=STRING             comment to include in the generated\
+  \ SDF\n  -h, --help                       print help on command-line flag usage\n\
+  \      --no-names                   do not create read names in the output SDF\n\
+  \      --no-qualities               do not create read qualities in the output\n\
+  \                                   SDF\n  -q, --qual-range=STRING          set\
+  \ the range of base quality values\n                                   permitted\
+  \ e.g.: 3-40 (Default is fixed\n                                   qualities corresponding\
+  \ to overall machine\n                                   base error rate)\n    \
+  \  --sam-rg=STRING|FILE         file containing a single valid read group\n    \
+  \                               SAM header line or a string in the form\n      \
+  \                             \"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\
+  \n  -s, --seed=INT                   seed for random number generator\n\n"
+generated_using:
+- --help

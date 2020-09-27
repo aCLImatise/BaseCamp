@@ -1,0 +1,628 @@
+!Command
+command:
+- rsat
+- install-organism
+positional:
+- !Positional
+  description: AUTHOR
+  position: 0
+  name: install-organism
+  optional: false
+- !Positional
+  description: This option avoids filling disk with
+  position: 0
+  name: parse/install.
+  optional: false
+- !Positional
+  description: -organism Full name of the organism (e.g. 'Saccharomyces
+  position: 0
+  name: list.
+  optional: false
+- !Positional
+  description: install-organism -task dyads
+  position: 0
+  name: e.g.
+  optional: false
+- !Positional
+  description: "list available species on the NCBI FTP site.\nThis task cannot be\
+    \ combine with any\nother task."
+  position: 0
+  name: available
+  optional: false
+- !Positional
+  description: "download genome from the NCBI FTP site\n(ftp://ftp.ncbi.nih.gov/genomes/refseq/)\n\
+    via the rsync protocol."
+  position: 1
+  name: download
+  optional: false
+- !Positional
+  description: "print the list of downloaded strains for the\nuser-specified species."
+  position: 2
+  name: list
+  optional: false
+- !Positional
+  description: "parse genome data (sequence, features) from \ngenbank-formatted flat\
+    \ files (gbff)\ndownloaded from NCBI. Parsing is ensured\nby the program parse-genbank.pl."
+  position: 3
+  name: parse
+  optional: false
+- !Positional
+  description: update configuration file
+  position: 4
+  name: config
+  optional: false
+- !Positional
+  description: calculate start and stop codon
+  position: 5
+  name: start_stop
+  optional: false
+- !Positional
+  description: allup        retrieve all upstream sequences
+  position: 6
+  name: frequencies
+  optional: false
+- !Positional
+  description: "retrieve sequences and limits of genome segments\n(intergenic, genic)"
+  position: 7
+  name: genome_segments
+  optional: false
+- !Positional
+  description: "calculate oligonucleotide frequencies\nThis task requires to specify,\
+    \ in\naddition, the type(s) of sequences for\nwhich oligo frequencies have to\
+    \ be\ncalculated (upstream_freq,\nintergenic_freq, genome_freq)."
+  position: 8
+  name: oligos
+  optional: false
+- !Positional
+  description: "calculate dyad frequencies\nThis task requires to specify, in\naddition,\
+    \ the type(s) of sequences for\nwhich dyad frequencies have to be\ncalculated\
+    \ (upstream_freq,\nintergenic_freq, genome_freq)."
+  position: 9
+  name: dyads
+  optional: false
+- !Positional
+  description: "calculate oligo and dyad frequencies in\nintergenic segments"
+  position: 10
+  name: ncf
+  optional: false
+- !Positional
+  description: "calculate oligo and dyad frequencies for\nall upstream sequences"
+  position: 11
+  name: upstream_freq
+  optional: false
+- !Positional
+  description: "calculate oligo and dyad frequencies for\nall intergenic sequences"
+  position: 12
+  name: intergenic_freq
+  optional: false
+- !Positional
+  description: "calculate oligo and dyad frequencies for\nthe whole genome sequence.\
+    \ This is not\nrecommended for higher organisms, where\nthe genome represents\
+    \ several Gigabases,\nand the computation of all oligo and dyad\nfrequencies might\
+    \ take ages."
+  position: 13
+  name: genome_freq
+  optional: false
+- !Positional
+  description: remove unnecessary sequence files
+  position: 14
+  name: clean
+  optional: false
+- !Positional
+  description: "The program I<install-organism> performs all the formatting\nand calibration\
+    \ tasks for importing genomes from the reference\ndatabases (NCBI, EMBL) to RSAT.\n\
+    The program I<download-organism> transfers the RSAT-formatted\ngenomes from a\
+    \ RSAT server.\nIf a genome is available on the RSAT server, it is recommended\n\
+    to use download-genomes in order to obtain it immediately in\nthe RSAT format,\
+    \ rather than install-genomes.\n"
+  position: 0
+  name: download-organisms
+  optional: false
+named:
+- !Flag
+  description: (must be first argument) display options
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "organism name without spaces (e.g. Saccharomyces_cerevisiae)\nThe\
+    \ option -org can be used iteratively on the same\ncommand line to iterate the\
+    \ installation over multiple\norganisms."
+  synonyms:
+  - -org
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Text file containing a list of organisms to install.\nThe first word\
+    \ of each row is taken as a query\norgnanism. Further information of the same\
+    \ row is\nignored."
+  synonyms:
+  - -org_file
+  args: !SimpleFlagArg
+    name: organism_file_name
+  optional: true
+- !Flag
+  description: "Install all the organisms found in the Refseq\ndirectory (see option\
+    \ -refseq)."
+  synonyms:
+  - -all_organisms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "taxon name (mutually exclusive with -org)\nThe installation will iterate\
+    \ over all organisms of\nthe selected taxon. Note that the command will only\n\
+    apply to the organisms previously declared with the\ncommand install-organism\
+    \ -task config. The option\n-taxon is thus convenient for re-running installation\n\
+    tasks on previously installed organisms rather than\nfor installing new genomes\
+    \ downloaded e.g. from NCBI.\nThe option -taxon can be used iteratively on the\
+    \ same\ncommand line to iterate the installation over multiple\ntaxa."
+  synonyms:
+  - -taxon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "group according to the NCBI/Refseq ftp/rsync\nsite (ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq).\n\
+    Examples: bacteria, fungi, protozoa, plant,\ninvertebrate, vertebrate_mammalian,\
+    \ vertebrate_other"
+  synonyms:
+  - -group
+  args: !SimpleFlagArg
+    name: taxonomic
+  optional: true
+- !Flag
+  description: "name, with space replaced by underscore\n(e.g. Saccharomyces_cerevisiae).\n\
+    Note that one species may correspond to several\norganisms if several strains\
+    \ are available for this\nspecies. In particular, for some bacteria there are\n\
+    several thousands of sequenced strains\n(e.g. Escherichia coli).\nThe option -max_strains\
+    \ can be used to restrict the\nnumber of installed strains per species.\nAn alternative\
+    \ is to specify a custom list of species\n+ strains with the option -org_table\
+    \ (this is the\nrecommended way to install multiple genomes from\nNCBI)."
+  synonyms:
+  - -species
+  args: !SimpleFlagArg
+    name: species
+  optional: true
+- !Flag
+  description: containing species names in the first
+  synonyms:
+  - -species_file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "the download to a single strain or\nassembly. By default all strains\
+    \ of the selected\nspecies are downloaded, but this can be heavy for some\nbacterial\
+    \ species where thousands of strains have been\nsequenced (e.g. Escherichia coli).\n\
+    Note: the RSAT organism name is automatically built by\nconcatenating the NCBI\
+    \ species name and strain\nidentifier."
+  synonyms:
+  - -strain
+  args: !SimpleFlagArg
+    name: restrict
+  optional: true
+- !Flag
+  description: "Table extracted from the NCBI ftp site, indicating the\norganisms\
+    \ to install.\nExample: assembly table of fungi:\nftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/fungi/assembly_summary.txt\n\
+    The table can be the full table for a given group, or\na custom subset, which\
+    \ can be selected on some\ninformative fields of the assembly table.\nWe recommend\
+    \ to select the subset of rows having\neither \"Complete genome\" or \"Chromosome\"\
+    \ in the 12th\ncolumn (\"assembly_level\"), and to add a filter on\n\"refseq_category\"\
+    \ in order to select \"representative\ngenome\" or \"reference genome\".\nThe\
+    \ assembly table can also be filtered out manually\nin order to select a custom\
+    \ subset of the available\ngenomes."
+  synonyms:
+  - -assembly_table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Local directory containing the mirror of the refseq\ngenomes found\
+    \ on the NCBI site:\nftp://ftp.ncbi.nih.gov/genomes/refseq\nNormally, the refseq\
+    \ directory is specified by\ndefining a global variable REFSEQ_DIR in the config\n\
+    file. The option -refseq allows to overwrite this\nvalue."
+  synonyms:
+  - -refseq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# Skip the first # organisms of the list.\nThis option is convenient\
+    \ to resume the installation\nof a list of organisms, when it has been interrupted.\n\
+    It also allows to organize the installation by chunks\nof organisms."
+  synonyms:
+  - -skip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# skip the first # of the list of NCBI species.\nNote that one species\
+    \ can correspond to several\norganisms, if several strains have been sequenced."
+  synonyms:
+  - -skip_species
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# Stop after the first # organisms of the list.\nThis option can be\
+    \ used to organize the installation\nby chunks of organisms."
+  synonyms:
+  - -last
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# Stop after the first # species of the NCBI'
+  synonyms:
+  - -last_species
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: source
+  synonyms:
+  - -source
+  args: !SimpleFlagArg
+    name: data
+  optional: true
+- !Flag
+  description: "{install}\nAbsolute path of the installation directory.\nBEWARE :\
+    \ you should provide the absolute path of the\ninstallation directory, not the\
+    \ relative path."
+  synonyms:
+  - -dir
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: "some tasks (for example the calibration of oligos\nand dyads) in batch\
+    \ mode.  This options works on our\nlab cluster, but could be adapted for other\n\
+    configurations by adapting the parameters in\nRSAT_config.props."
+  synonyms:
+  - -batch
+  args: !SimpleFlagArg
+    name: run
+  optional: true
+- !Flag
+  description: "specify a queue to send the job with the option -batch.\nOn this instance\
+    \ of RSAT, default queue is rsat\nType 'qstat -f' to get a list of existing queues."
+  synonyms:
+  - -queue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an alternative organism configuration file for the\ngenome\
+    \ to be installed.\nBy default, the organism configuration file is\n$RSAT/public_html/data/genomes/supported_organisms.pl"
+  synonyms:
+  - -config
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Store a backup copy of the organism table before\noverwriting it."
+  synonyms:
+  - -backup_org_table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Absolute path of a RSA local config file.\nBy default, the newly installed\
+    \ organism is added to\nthe main RSA config file is changed (provided the user\n\
+    has write access to the RSA config file).\nIn addition to the organisms installed\
+    \ by the RSAT\nsystem administrator (found in\n/usr/local/share/rsat/public_html/data/supported_organisms.tab),\
+    \ users can\ninstall some organisms locally.\nFor this, the user must first define\
+    \ an environment\nvariable called RSA_LOCAL_CONFIG, and indicating the\nabsolute\
+    \ path of the local config file.\nE.g.\nexport RSA_LOCAL_CONFIG=/home/fred/RSA.local.config\n\
+    When install-organism is called with the option\n-local, the new organism is added\
+    \ to the file\nindicated by the environment variable RSA_LOCAL_CONFIG\nrather\
+    \ than the main RSA config file."
+  synonyms:
+  - -local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "synonym table\nA tab-delimited file containing two coloumns. The\n\
+    forst column contains a gene ID, the second a gene\nname."
+  synonyms:
+  - -syn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: limit of the upstream regions (e.g. -800 for yeast)
+  synonyms:
+  - -up_from
+  args: !SimpleFlagArg
+    name: distal
+  optional: true
+- !Flag
+  description: proximal limit of the upstream regions (e.g. -1)
+  synonyms:
+  - -up_to
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory (obsolete, see refseq)
+  synonyms:
+  - -genbank
+  args: !SimpleFlagArg
+    name: genbank
+  optional: true
+- !Flag
+  description: "idname\npassed to parse-genbank.pl"
+  synonyms:
+  - -prefid
+  args: !SimpleFlagArg
+    name: feattype
+  optional: true
+- !Flag
+  description: "Force the 'last_update' attribute to a given date.\nThis option is\
+    \ used by download-organism to ensure\nthat the local genome has the same installation\
+    \ date\nas the server, rather than using the date of download\nas update date."
+  synonyms:
+  - -date
+  args: !SimpleFlagArg
+    name: last_update
+  optional: true
+- !Flag
+  description: "ENSEMBL directory. Directory containing the ENSEMBL\nflat files in\
+    \ Genbank format (ext .dat)\nExample:\nftp.ensembl.org/pub/current_worm/data/flatfiles/genbank"
+  synonyms:
+  - -ensembl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specification of a single installation task
+  synonyms:
+  - -task
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "calibrate oligo and dyad frequncies on repeat masked\nsequences, in\
+    \ addition to the non-masked sequences."
+  synonyms:
+  - -rm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: image format for the graphs of sequence length distribution
+  synonyms:
+  - -img_format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Download one species with rsync:\ninstall-organism -v 1  -group [GROUP]\
+    \ -species [SPECIES]\n-task download\nParse the genome for a given species, and\
+    \ declare it in RSAT\nsupported organism. NOTE: this installs all the strains\
+    \ for the\nselected species. For some species this can represent thousands of\n\
+    strains (e.g. Eschrichia coli). Strains can be restricted with the\noptions -strain\
+    \ or -max_strains.\ninstall-organism -v 1  -group [GROUP] -species [SPECIES]\n\
+    -task parse,config\nRun the default installation steps for a given species. Note:\
+    \ the\noption -list is required in order to collect the organism names,\nwhich\
+    \ are made by concatenating species and strain\ninstall-organism -v 1  -group\
+    \ [GROUP] -species [SPECIES]\n-task list,default\nInstallation can be automated\
+    \ and parallelized with a job\nscheduler (e.g. qsub) in order to install all the\
+    \ species of a\ngiven group.\nExample: install all species of the group \"fungi\"\
+    \ at NCBI.\nStep 1: get the list of species available at NCBI\ninstall-organism\
+    \ -v 1 -group fungi -task available\n-o fungi_available_species.txt\nStep 2: download\
+    \ genome for all the strains of these\nspecies. Beware, this takes space, there\
+    \ are several hundreds of\nspecies.\ninstall-organism -v 1 -group fungi -task\
+    \ download\n-species_file fungi_available_species.txt\nStep 3: parse the genomes\
+    \ of all strains for each fungal species.\ninstall-organism -v 1 -group fungi\
+    \ -task parse,config\n-species_file fungi_available_species.txt\nStep 4: collect\
+    \ the list of downloaded organisms. Organism names\nare built by concatenating\
+    \ species and strain names.\ninstall-organism -v 1 -group fungi\n-species_file\
+    \ fungi_available_species.txt\n-task list\n-o fungi_downloaded_orgnanisms.txt\n\
+    Step 5: extract fasta sequences for different types of genomic\nregions, and run\
+    \ some control tests (e.g. oligonucleotide\nfrequencies of start and stop codons).\
+    \ With the option -batch, the\ntasks are sent to a job scheuler (qsub) in order\
+    \ to be executed in\nparallel.\ninstall-organism -v 1\n-org_file fungi_downloaded_orgnanisms.txt\n\
+    -task start_stop,allup,seq_len_distrib,genome_segments\n-task protein_len,fasta_genome,fasta_genome_rm\n\
+    -task chrom_sizes,index_bedtools\n-batch\nStep 6: compute the oligomer frequency\
+    \ tables. In batch mode, this\ntask can be done only after the previous job list\
+    \ is finished,\nbecause of the dependencies between the parallelized tasks\n(upstream\
+    \ sequences have to be computed before computing their\noligonucleotide and dyad\
+    \ frequencies).\ninstall-organism -v 1\n-org_file fungi_downloaded_orgnanisms.txt\n\
+    -task upstream_freq,genome_freq,protein_freq,oligos,dyads\n-batch"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: available_vertebrate.tab
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: (must be first argument) display full help message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n\tinstall-organism\n\nAUTHOR\n        Jacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
+  \nUSAGE\n        install-organism -org organism_name\n\nDESCRIPTION\n\tInstall one\
+  \ or several organisms on the local RSAT instance.\n\n\tThis script is a task manager,\
+  \ which (depending on the\n\tselected tasks) manages different steps necessary for\
+  \ the\n\tinstallation of an organism from the NCBI flat files:\n\n\t- Downloading\
+  \ genomes from the NCBI/Refseq ftp site via the\n          rsync protocol\n    \
+  \      (rsync://ftp.ncbi.nlm.nih.gov/genomes/refseq).\n\n\t- Parsing the .gbff files\
+  \ (Genbank-formatted flat files).\n\n\t- Adding the organism in the config file.\n\
+  \n\t- Calculating trinucleotide frequencies in the start and stop\n          codons\
+  \ (a way to check consistency of the gene locations).\n\n\t- Calculating oligonucleotide\
+  \ and dyad frequencies, which will\n          be used as background models for motif\
+  \ discovery.\n\nCATEGORY\n\tData management.\n\nOPTIONS\n\t-h\t(must be first argument)\
+  \ display full help message\n\t-help\t(must be first argument) display options\n\
+  \t-v\tverbose\n\n    MANDATORY ARGUMENTS\n\n    \tThe only mandatory option is to\
+  \ specify one or more\n    \torganism(s) to be installed. This can be done with\
+  \ any of the\n    \tfollowing options: -org, -org_file, -all_organisms, -taxon.\n\
+  \n\t-org\torganism name without spaces (e.g. Saccharomyces_cerevisiae)\n\n\t\tThe\
+  \ option -org can be used iteratively on the same\n\t\tcommand line to iterate the\
+  \ installation over multiple\n\t\torganisms.\n\n        -org_file organism_file_name\n\
+  \t\tText file containing a list of organisms to install.\n\t\tThe first word of\
+  \ each row is taken as a query\n\t\torgnanism. Further information of the same row\
+  \ is\n\t\tignored.\n\n\t-all_organisms\n\n\t\tInstall all the organisms found in\
+  \ the Refseq\n\t\tdirectory (see option -refseq).\n\n      \t-taxon  taxon name\
+  \ (mutually exclusive with -org)\n\n\t\tThe installation will iterate over all organisms\
+  \ of\n\t\tthe selected taxon. Note that the command will only\n\t\tapply to the\
+  \ organisms previously declared with the\n\t\tcommand install-organism -task config.\
+  \ The option\n\t\t-taxon is thus convenient for re-running installation\n\t\ttasks\
+  \ on previously installed organisms rather than\n\t\tfor installing new genomes\
+  \ downloaded e.g. from NCBI.\n\n\t\tThe option -taxon can be used iteratively on\
+  \ the same\n\t\tcommand line to iterate the installation over multiple\n\t\ttaxa.\n\
+  \n    SPECIFIC ARGUMENTS FOR THE DOWNLOAD AND PARSE TASK\n\n        -group taxonomic\
+  \ group according to the NCBI/Refseq ftp/rsync\n\t       site (ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq).\
+  \ \n\n\t       Examples: bacteria, fungi, protozoa, plant,\n\t       invertebrate,\
+  \ vertebrate_mammalian, vertebrate_other\n\n\t-species species name, with space\
+  \ replaced by underscore\n\t         (e.g. Saccharomyces_cerevisiae). \n\n\t\t Note\
+  \ that one species may correspond to several\n\t         organisms if several strains\
+  \ are available for this\n\t         species. In particular, for some bacteria there\
+  \ are\n\t         several thousands of sequenced strains\n\t         (e.g. Escherichia\
+  \ coli). \n\n\t\t The option -max_strains can be used to restrict the\n\t      \
+  \   number of installed strains per species. \n\n\t\t An alternative is to specify\
+  \ a custom list of species\n\t\t + strains with the option -org_table (this is the\n\
+  \t\t recommended way to install multiple genomes from\n\t\t NCBI).\n\n\t-species_file\
+  \ file containing species names in the first\n\t        column.\n\n\t-max_strains\
+  \ #\n\n\t        Maximal number of strains per species to\n\t\tparse/install.  This\
+  \ option avoids filling disk with\n\t\tparticular bacterial species for which thousands\
+  \ of\n\t\tstrains have been sequenced (e.g. Escherichia coli).\n\n\t-strain restrict\
+  \ the download to a single strain or\n                assembly. By default all strains\
+  \ of the selected\n                species are downloaded, but this can be heavy\
+  \ for some\n                bacterial species where thousands of strains have been\n\
+  \                sequenced (e.g. Escherichia coli).\n\n\t      Note: the RSAT organism\
+  \ name is automatically built by\n\t      concatenating the NCBI species name and\
+  \ strain\n\t      identifier.\n\n\t-assembly_table\n\n\t        Table extracted\
+  \ from the NCBI ftp site, indicating the\n\t        organisms to install. \n\n\t\
+  \tExample: assembly table of fungi:\n\n\t        ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/fungi/assembly_summary.txt\n\
+  \n\t\tThe table can be the full table for a given group, or\n\t\ta custom subset,\
+  \ which can be selected on some\n\t\tinformative fields of the assembly table. \n\
+  \n                We recommend to select the subset of rows having\n\t\teither \"\
+  Complete genome\" or \"Chromosome\" in the 12th\n\t\tcolumn (\"assembly_level\"\
+  ), and to add a filter on\n\t\t\"refseq_category\" in order to select \"representative\n\
+  \t\tgenome\" or \"reference genome\". \n\n\t\tThe assembly table can also be filtered\
+  \ out manually\n\t\tin order to select a custom subset of the available\n\t\tgenomes.\n\
+  \n\t-refseq\n\t\tLocal directory containing the mirror of the refseq\n\t\tgenomes\
+  \ found on the NCBI site:\n\t\t       ftp://ftp.ncbi.nih.gov/genomes/refseq\n\t\t\
+  Normally, the refseq directory is specified by\n\t\tdefining a global variable REFSEQ_DIR\
+  \ in the config\n\t\tfile. The option -refseq allows to overwrite this\n\t\tvalue.\n\
+  \n\n    OPTIONAL ARGUMENTS\n\n\t-skip #\tSkip the first # organisms of the list.\n\
+  \n\t        This option is convenient to resume the installation\n\t        of a\
+  \ list of organisms, when it has been interrupted.\n\n\t\tIt also allows to organize\
+  \ the installation by chunks\n\t\tof organisms.\n\n\t-skip_species # skip the first\
+  \ # of the list of NCBI species. \n\n\t        Note that one species can correspond\
+  \ to several\n\t        organisms, if several strains have been sequenced.\n\n\t\
+  -last #\tStop after the first # organisms of the list.\n\n\t\tThis option can be\
+  \ used to organize the installation\n\t\tby chunks of organisms.\n\n\t-last_species\
+  \ # Stop after the first # species of the NCBI\n\t        list.\n\n\t-organism Full\
+  \ name of the organism (e.g. 'Saccharomyces\n\t\tcerevisiae'). This option is only\
+  \ valid when a single\n\t\torganism is installed.\n\n\t-source\tdata source\n\n\t\
+  -dir dir{install}\n\t\tAbsolute path of the installation directory. \n\t\tBEWARE\
+  \ : you should provide the absolute path of the\n\t\tinstallation directory, not\
+  \ the relative path.\n\n\t-batch run some tasks (for example the calibration of\
+  \ oligos\n\t\tand dyads) in batch mode.  This options works on our\n\t\tlab cluster,\
+  \ but could be adapted for other\n\t\tconfigurations by adapting the parameters\
+  \ in\n\t\tRSAT_config.props.\n\n\t-queue  specify a queue to send the job with the\
+  \ option -batch. \n\n\t        On this instance of RSAT, default queue is rsat\n\
+  \n                Type 'qstat -f' to get a list of existing queues.\n\n\t-config\n\
+  \t\tSpecify an alternative organism configuration file for the\n\t\tgenome to be\
+  \ installed.\n\n\t\tBy default, the organism configuration file is \n\t      \t\
+  $RSAT/public_html/data/genomes/supported_organisms.pl\n\n        -backup_org_table\n\
+  \                Store a backup copy of the organism table before\n            \
+  \    overwriting it.\n\n\t-local\n\t\tAbsolute path of a RSA local config file.\n\
+  \n\t\tBy default, the newly installed organism is added to\n\t\tthe main RSA config\
+  \ file is changed (provided the user\n\t\thas write access to the RSA config file).\n\
+  \n\t\tIn addition to the organisms installed by the RSAT\n\t\tsystem administrator\
+  \ (found in\n\t\t/usr/local/share/rsat/public_html/data/supported_organisms.tab),\
+  \ users can\n\t\tinstall some organisms locally.\n\n\t\tFor this, the user must\
+  \ first define an environment\n\t\tvariable called RSA_LOCAL_CONFIG, and indicating\
+  \ the\n\t\tabsolute path of the local config file.  \n\t\tE.g.  \n\t\t  export RSA_LOCAL_CONFIG=/home/fred/RSA.local.config\n\
+  \n\t\tWhen install-organism is called with the option\n\t\t-local, the new organism\
+  \ is added to the file\n\t\tindicated by the environment variable RSA_LOCAL_CONFIG\n\
+  \t\trather than the main RSA config file.\n\n\t-syn\tsynonym table\n\t\tA tab-delimited\
+  \ file containing two coloumns. The\n\t\tforst column contains a gene ID, the second\
+  \ a gene\n\t\tname.\n\n\t-up_from distal limit of the upstream regions (e.g. -800\
+  \ for yeast)\n\n\t-up_to\tproximal limit of the upstream regions (e.g. -1)\n\n\t\
+  -genbank genbank directory (obsolete, see refseq)\n\n\t-prefid feattype idname\n\
+  \t        passed to parse-genbank.pl\n\n\t-date last_update\n\n\t        Force the\
+  \ 'last_update' attribute to a given date. \n\n\t\tThis option is used by download-organism\
+  \ to ensure\n\t\tthat the local genome has the same installation date\n\t\tas the\
+  \ server, rather than using the date of download\n\t\tas update date.\n\n\t-ensembl\n\
+  \t\tENSEMBL directory. Directory containing the ENSEMBL\n\t\tflat files in Genbank\
+  \ format (ext .dat)\n\n\t\tExample: \n\t\tftp.ensembl.org/pub/current_worm/data/flatfiles/genbank\n\
+  \n\t-task\tspecification of a single installation task\n\t\t    e.g.\n\t\t\tinstall-organism\
+  \ -task dyads\n\t\tsupported tasks: available,download,list,parse,config,phylogeny,start_stop,allup,seq_len_distrib,genome_segments,upstream_freq,genome_freq,protein_freq,protein_len,oligos,dyads,fasta_genome,fasta_genome_rm,chrom_sizes,index_bedtools,uninstall,erase,distrib,ncf,intergenic_freq,ensembl_freq,clean,default,rewrite,all\n\
+  \n\t\tDescription of the tasks\n\t\t------------------------\n\n\t\tavailable  \
+  \  list available species on the NCBI FTP site.\n\t\t             This task cannot\
+  \ be combine with any\n\t\t             other task.\n\n\t\tdownload     download\
+  \ genome from the NCBI FTP site\n\t\t             (ftp://ftp.ncbi.nih.gov/genomes/refseq/)\n\
+  \t\t             via the rsync protocol.\n\n\t\tlist         print the list of downloaded\
+  \ strains for the\n\t\t             user-specified species.\n\n\t\tparse       \
+  \ parse genome data (sequence, features) from \n\t\t             genbank-formatted\
+  \ flat files (gbff)\n\t\t             downloaded from NCBI. Parsing is ensured\n\
+  \t\t             by the program parse-genbank.pl.\n\n\t\tconfig\t     update configuration\
+  \ file\n\n\t\tstart_stop   \n\t\t\t     calculate start and stop codon\n\t\t\t \
+  \    frequencies\n\n\t\tallup\t     retrieve all upstream sequences\n\n\t\tgenome_segments\n\
+  \t\t\t     retrieve sequences and limits of genome segments\n\t\t\t     (intergenic,\
+  \ genic)\n\n\t\toligos\t     calculate oligonucleotide frequencies\n\n\t\t\t   \
+  \  This task requires to specify, in\n\t\t\t     addition, the type(s) of sequences\
+  \ for\n\t\t\t     which oligo frequencies have to be\n\t\t\t     calculated (upstream_freq,\n\
+  \t\t\t     intergenic_freq, genome_freq).\n\n\t\tdyads\t     calculate dyad frequencies\n\
+  \n\t\t\t     This task requires to specify, in\n\t\t\t     addition, the type(s)\
+  \ of sequences for\n\t\t\t     which dyad frequencies have to be\n\t\t\t     calculated\
+  \ (upstream_freq,\n\t\t\t     intergenic_freq, genome_freq).\n\n\t\tncf\t     calculate\
+  \ oligo and dyad frequencies in\n\t\t\t     intergenic segments\n\n\t\tupstream_freq\n\
+  \t\t\t     calculate oligo and dyad frequencies for\n\t\t\t     all upstream sequences\n\
+  \n\t\tintergenic_freq\n\t\t\t     calculate oligo and dyad frequencies for\n\t\t\
+  \t     all intergenic sequences\n\n\t\tgenome_freq  \n\t\t\t     calculate oligo\
+  \ and dyad frequencies for\n\t\t\t     the whole genome sequence. This is not\n\t\
+  \t\t     recommended for higher organisms, where\n\t\t\t     the genome represents\
+  \ several Gigabases,\n\t\t\t     and the computation of all oligo and dyad\n\t\t\
+  \t     frequencies might take ages.\n\n\t\tclean\t     remove unnecessary sequence\
+  \ files\n\n\t-rm\tcalibrate oligo and dyad frequncies on repeat masked\n\t\tsequences,\
+  \ in addition to the non-masked sequences.\n\n\t-img_format\n\t\timage format for\
+  \ the graphs of sequence length distribution\n\nEXAMPLES\n\n    Get the list of\
+  \ available genomes for one of the supported groups\n    on the NCBI FTP/rsync site.\
+  \  Supported values for option -group\n    are the subdirectories of the FTP site\n\
+  \    (rsync://ftp.ncbi.nlm.nih.gov/genomes/refseq).\n\n\tinstall-organism -v 1 -group\
+  \ [GROUP]  -task available \n            -o available_vertebrate.tab\n\n    Download\
+  \ one species with rsync:\n\n    \tinstall-organism -v 1  -group [GROUP] -species\
+  \ [SPECIES] \n            -task download\n\n    Parse the genome for a given species,\
+  \ and declare it in RSAT\n    supported organism. NOTE: this installs all the strains\
+  \ for the\n    selected species. For some species this can represent thousands of\n\
+  \    strains (e.g. Eschrichia coli). Strains can be restricted with the\n    options\
+  \ -strain or -max_strains.\n\n        install-organism -v 1  -group [GROUP] -species\
+  \ [SPECIES] \n            -task parse,config\n\n    Run the default installation\
+  \ steps for a given species. Note: the\n    option -list is required in order to\
+  \ collect the organism names,\n    which are made by concatenating species and strain\n\
+  \n        install-organism -v 1  -group [GROUP] -species [SPECIES] \n          \
+  \  -task list,default\n\n    Installation can be automated and parallelized with\
+  \ a job\n    scheduler (e.g. qsub) in order to install all the species of a\n  \
+  \  given group.\n\n    Example: install all species of the group \"fungi\" at NCBI.\n\
+  \n    Step 1: get the list of species available at NCBI\n\n        install-organism\
+  \ -v 1 -group fungi -task available \n\t    -o fungi_available_species.txt\n\n \
+  \   Step 2: download genome for all the strains of these\n    species. Beware, this\
+  \ takes space, there are several hundreds of\n    species.\n\n\tinstall-organism\
+  \ -v 1 -group fungi -task download \n    \t    -species_file fungi_available_species.txt\n\
+  \n    Step 3: parse the genomes of all strains for each fungal species.\n\n\tinstall-organism\
+  \ -v 1 -group fungi -task parse,config \n    \t    -species_file fungi_available_species.txt\n\
+  \n    Step 4: collect the list of downloaded organisms. Organism names\n    are\
+  \ built by concatenating species and strain names.\n\n\tinstall-organism -v 1 -group\
+  \ fungi \n    \t    -species_file fungi_available_species.txt \n\t    -task list\
+  \ \n\t    -o fungi_downloaded_orgnanisms.txt\n\n    Step 5: extract fasta sequences\
+  \ for different types of genomic\n    regions, and run some control tests (e.g.\
+  \ oligonucleotide\n    frequencies of start and stop codons). With the option -batch,\
+  \ the\n    tasks are sent to a job scheuler (qsub) in order to be executed in\n\
+  \    parallel.\n\n\tinstall-organism -v 1 \n\t    -org_file fungi_downloaded_orgnanisms.txt\
+  \ \n\t    -task start_stop,allup,seq_len_distrib,genome_segments \n\t    -task protein_len,fasta_genome,fasta_genome_rm\
+  \ \n\t    -task chrom_sizes,index_bedtools \n\t    -batch\n\n    Step 6: compute\
+  \ the oligomer frequency tables. In batch mode, this\n    task can be done only\
+  \ after the previous job list is finished,\n    because of the dependencies between\
+  \ the parallelized tasks\n    (upstream sequences have to be computed before computing\
+  \ their\n    oligonucleotide and dyad frequencies).\n\n\tinstall-organism -v 1 \n\
+  \t    -org_file fungi_downloaded_orgnanisms.txt \n\t    -task upstream_freq,genome_freq,protein_freq,oligos,dyads\
+  \ \n\t    -batch\n\nSEE ALSO\n\n    download-organisms\n\n        The program I<install-organism>\
+  \ performs all the formatting\n\tand calibration tasks for importing genomes from\
+  \ the reference\n\tdatabases (NCBI, EMBL) to RSAT.\n\n\tThe program I<download-organism>\
+  \ transfers the RSAT-formatted\n\tgenomes from a RSAT server. \n\n \tIf a genome\
+  \ is available on the RSAT server, it is recommended\n\tto use download-genomes\
+  \ in order to obtain it immediately in\n\tthe RSAT format, rather than install-genomes.\n\
+  \n\n"
+generated_using:
+- -h

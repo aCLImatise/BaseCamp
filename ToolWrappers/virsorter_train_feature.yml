@@ -1,0 +1,145 @@
+!Command
+command:
+- virsorter
+- train-feature
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: SNAKEMAKE_ARGS
+  optional: true
+named:
+- !Flag
+  description: output directory  [required]
+  synonyms:
+  - -w
+  - --working-dir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "genome sequence file for training; for file\npattern globbing, put\
+    \ quotes around the pattern,\neg. \"fasta-dir/*.fa\"  [required]"
+  synonyms:
+  - --seqfile
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "customized viral HMMs for training; default to\nthe one used in VirSorter2"
+  synonyms:
+  - --hmm
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "hallmark gene hmm list from -hmm for training (a\ntab separated file\
+    \ with three columns: 1. hmm\nname 2. gene name of hmm 3. hmm bit score\ncutoff);\
+    \ default to the one used for dsDNAphage\nin VirSorter2"
+  synonyms:
+  - --hallmark
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "customized training db from prodigal; default to\nthe one used in\
+    \ prodigal --meta mode"
+  synonyms:
+  - --prodigal-train
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "number of random DNA fragments collected from\neach genome  [default:\
+    \ 5]"
+  synonyms:
+  - --frags-per-genome
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'max # of jobs in parallel  [default: 8]'
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "minimum size of random DNA fragment for training\n[default: 1000]"
+  synonyms:
+  - --min-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Max # of orf used for computing taxonomic\nfeatures; if # of orf in\
+    \ a seq exceeds the max\nlimit, it is sub-sampled to this # to reduce\ncomputation;\
+    \ to turn off this, set it to -1\n[default: 20]"
+  synonyms:
+  - --max-orf-per-seq
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "if applied, each file (genome bin) is a genome\nin --seqfile, else\
+    \ each sequence is a genome\n[default: False]"
+  synonyms:
+  - --genome-as-bin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Stop using the conda envs (vs2.yaml) that come\nwith this package\
+    \ and use what are installed in\ncurrent system; Only useful when you want to\n\
+    install dependencies on your own with your own\nprefer versions  [default: False]"
+  synonyms:
+  - --use-conda-off
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: virsorter train-feature [OPTIONS] [SNAKEMAKE_ARGS]...\n\n  Training\
+  \ features for customized classifier.\n\n  Executes a snakemake workflow to do the\
+  \ following: 1) prepare random DNA\n  fragments from viral and nonviral genome data\
+  \  2) extract feature from\n  random DNA fragments to make ftrfile\n\nOptions:\n\
+  \  -w, --working-dir PATH      output directory  [required]\n  --seqfile TEXT  \
+  \            genome sequence file for training; for file\n                     \
+  \         pattern globbing, put quotes around the pattern,\n                   \
+  \           eg. \"fasta-dir/*.fa\"  [required]\n\n  --hmm PATH                 \
+  \ customized viral HMMs for training; default to\n                             \
+  \ the one used in VirSorter2\n\n  --hallmark PATH             hallmark gene hmm\
+  \ list from -hmm for training (a\n                              tab separated file\
+  \ with three columns: 1. hmm\n                              name 2. gene name of\
+  \ hmm 3. hmm bit score\n                              cutoff); default to the one\
+  \ used for dsDNAphage\n                              in VirSorter2\n\n  --prodigal-train\
+  \ PATH       customized training db from prodigal; default to\n                \
+  \              the one used in prodigal --meta mode\n\n  --frags-per-genome INTEGER\
+  \  number of random DNA fragments collected from\n                             \
+  \ each genome  [default: 5]\n\n  -j, --jobs INTEGER          max # of jobs in parallel\
+  \  [default: 8]\n  --min-length INTEGER        minimum size of random DNA fragment\
+  \ for training\n                              [default: 1000]\n\n  --max-orf-per-seq\
+  \ INTEGER   Max # of orf used for computing taxonomic\n                        \
+  \      features; if # of orf in a seq exceeds the max\n                        \
+  \      limit, it is sub-sampled to this # to reduce\n                          \
+  \    computation; to turn off this, set it to -1\n                             \
+  \ [default: 20]\n\n  --genome-as-bin             if applied, each file (genome bin)\
+  \ is a genome\n                              in --seqfile, else each sequence is\
+  \ a genome\n                              [default: False]\n\n  --use-conda-off\
+  \             Stop using the conda envs (vs2.yaml) that come\n                 \
+  \             with this package and use what are installed in\n                \
+  \              current system; Only useful when you want to\n                  \
+  \            install dependencies on your own with your own\n                  \
+  \            prefer versions  [default: False]\n\n  -h, --help                 \
+  \ Show this message and exit.\n"
+generated_using:
+- --help

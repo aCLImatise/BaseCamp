@@ -200,7 +200,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
     named: []
@@ -400,7 +400,463 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: ref.fa
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: sorted_alignments.bam
+            optional: false
+          named:
+          - !Flag
+            description: Minimum MAPQ threshold to include an alignment (default 10)
+            synonyms:
+            - -q
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: "Minimum Phred threshold to include a base (default 5). This\n\
+              must be >0."
+            synonyms:
+            - -p
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Maximum per-base depth (default 2000)
+            synonyms:
+            - -D
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Minimum per-base depth for reporting output. If you use
+            synonyms:
+            - -d
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: ', this then applies to the merged CpG/CHG.'
+            synonyms:
+            - --mergeContext
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Region string in which to extract methylation
+            synonyms:
+            - -r
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: "A BED file listing regions for inclusion. Note that unlike\n\
+              samtools mpileup, this option will utilize the strand column\n(column\
+              \ 6) if present. Thus, if a region has a '+' in this\ncolumn, then only\
+              \ metrics from the top strand will be\noutput. Note that the -r option\
+              \ can be used to limit the\nregions of -l."
+            synonyms:
+            - -l
+            args: !SimpleFlagArg
+              name: FILE
+            optional: true
+          - !Flag
+            description: "Output filename prefix. CpG/CHG/CHH context metrics will\
+              \ be\noutput to STR_CpG.bedGraph and so on."
+            synonyms:
+            - -o
+            - --opref
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: "By default, any alignment marked as a duplicate is ignored.\n\
+              This option causes them to be incorporated."
+            synonyms:
+            - --keepDupes
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "By default, if only one read in a pair aligns (a singleton)\n\
+              then it's ignored."
+            synonyms:
+            - --keepSingleton
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "default, paired-end alignments with the properly-paired\
+              \ bit\nunset in the FLAG field are ignored. Note that the definition\n\
+              of concordant and discordant is based on your aligner\nsettings."
+            synonyms:
+            - --keepDiscordant
+            args: !SimpleFlagArg
+              name: By
+            optional: true
+          - !Flag
+            description: "By deault, any alignment marked as secondary (bit 0x100),\n\
+              failing QC (bit 0x200), a PCR/optical duplicate (0x400) or\nsupplemental\
+              \ (0x800) is ignored. This equates to a value of\n0xF00 or 3840 in decimal.\
+              \ If you would like to change that,\nyou can specify a new value here.\n\
+              ignored. Specifying this causes them to be included."
+            synonyms:
+            - -F
+            - --ignoreFlags
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Do not output CpG context methylation metrics
+            synonyms:
+            - --noCpG
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Output CHG context methylation metrics
+            synonyms:
+            - --CHG
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Output CHH context methylation metrics
+            synonyms:
+            - --CHH
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Extract fractional methylation (only) at each position.\
+              \ This\nproduces a file with a .meth.bedGraph extension."
+            synonyms:
+            - --fraction
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Extract base counts (only) at each position. This produces\
+              \ a\nfile with a .counts.bedGraph extension."
+            synonyms:
+            - --counts
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Extract logit(M/(M+U)) (only) at each position. This produces\n\
+              a file with a .logit.bedGraph extension."
+            synonyms:
+            - --logit
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Output in the format required by methylKit. Note that this\
+              \ is\nincompatible with --mergeContext, --fraction and --counts."
+            synonyms:
+            - --methylKit
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ",INT,INT,INT Inclusion bounds for methylation calls from\
+              \ reads/pairs\norigination from the original top strand. Suggested values\
+              \ can\nbe obtained from the MBias program. Each integer represents a\n\
+              1-based position on a read. For example --OT A,B,C,D\ntranslates to,\
+              \ \"Include calls at positions from A through B\non read #1 and C through\
+              \ D on read #2\". If a 0 is used a any\nposition then that is translated\
+              \ to mean start/end of the\nalignment, as appropriate. For example,\
+              \ --OT 5,0,0,0 would\ninclude all but the first 4 bases on read #1.\
+              \ Users are\nstrongly advised to consult a methylation bias plot, for\n\
+              example by using the MBias program."
+            synonyms:
+            - --OT
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: ',INT,INT,INT'
+            synonyms:
+            - --OB
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: ',INT,INT,INT'
+            synonyms:
+            - --CTOT
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: ",INT,INT,INT As with --OT, but for the original bottom,\
+              \ complementary\nto the original top, and complementary to the original\
+              \ bottom\nstrands, respectively."
+            synonyms:
+            - --CTOB
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag: !Flag
+            description: Print version and then quit.
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "\nUsage: PileOMeth extract [OPTIONS] <ref.fa> <sorted_alignments.bam>\n\
+            \nOptions:\n -q INT           Minimum MAPQ threshold to include an alignment\
+            \ (default 10)\n -p INT           Minimum Phred threshold to include a\
+            \ base (default 5). This\n                  must be >0.\n -D INT     \
+            \      Maximum per-base depth (default 2000)\n -d INT           Minimum\
+            \ per-base depth for reporting output. If you use\n                  --mergeContext,\
+            \ this then applies to the merged CpG/CHG.\n                  (default\
+            \ 1)\n -r STR           Region string in which to extract methylation\n\
+            \ -l FILE          A BED file listing regions for inclusion. Note that\
+            \ unlike\n                  samtools mpileup, this option will utilize\
+            \ the strand column\n                  (column 6) if present. Thus, if\
+            \ a region has a '+' in this\n                  column, then only metrics\
+            \ from the top strand will be\n                  output. Note that the\
+            \ -r option can be used to limit the\n                  regions of -l.\n\
+            \ --mergeContext   Merge per-Cytosine metrics from CpG and CHG contexts\
+            \ into\n                  per-CPG or per-CHG metrics.\n -o, --opref STR\
+            \  Output filename prefix. CpG/CHG/CHH context metrics will be\n     \
+            \             output to STR_CpG.bedGraph and so on.\n --keepDupes    \
+            \  By default, any alignment marked as a duplicate is ignored.\n     \
+            \             This option causes them to be incorporated.\n --keepSingleton\
+            \  By default, if only one read in a pair aligns (a singleton)\n     \
+            \             then it's ignored.\n --keepDiscordant By default, paired-end\
+            \ alignments with the properly-paired bit\n                  unset in\
+            \ the FLAG field are ignored. Note that the definition\n             \
+            \     of concordant and discordant is based on your aligner\n        \
+            \          settings.\n -F, --ignoreFlags    By deault, any alignment marked\
+            \ as secondary (bit 0x100),\n                  failing QC (bit 0x200),\
+            \ a PCR/optical duplicate (0x400) or\n                  supplemental (0x800)\
+            \ is ignored. This equates to a value of\n                  0xF00 or 3840\
+            \ in decimal. If you would like to change that,\n                  you\
+            \ can specify a new value here.\n                  ignored. Specifying\
+            \ this causes them to be included.\n --noCpG          Do not output CpG\
+            \ context methylation metrics\n --CHG            Output CHG context methylation\
+            \ metrics\n --CHH            Output CHH context methylation metrics\n\
+            \ --fraction       Extract fractional methylation (only) at each position.\
+            \ This\n                  produces a file with a .meth.bedGraph extension.\n\
+            \ --counts         Extract base counts (only) at each position. This produces\
+            \ a\n                  file with a .counts.bedGraph extension.\n --logit\
+            \          Extract logit(M/(M+U)) (only) at each position. This produces\n\
+            \                  a file with a .logit.bedGraph extension.\n --methylKit\
+            \      Output in the format required by methylKit. Note that this is\n\
+            \                  incompatible with --mergeContext, --fraction and --counts.\n\
+            \ --OT INT,INT,INT,INT Inclusion bounds for methylation calls from reads/pairs\n\
+            \                  origination from the original top strand. Suggested\
+            \ values can\n                  be obtained from the MBias program. Each\
+            \ integer represents a\n                  1-based position on a read.\
+            \ For example --OT A,B,C,D\n                  translates to, \"Include\
+            \ calls at positions from A through B\n                  on read #1 and\
+            \ C through D on read #2\". If a 0 is used a any\n                  position\
+            \ then that is translated to mean start/end of the\n                 \
+            \ alignment, as appropriate. For example, --OT 5,0,0,0 would\n       \
+            \           include all but the first 4 bases on read #1. Users are\n\
+            \                  strongly advised to consult a methylation bias plot,\
+            \ for\n                  example by using the MBias program.\n --OB INT,INT,INT,INT\n\
+            \ --CTOT INT,INT,INT,INT\n --CTOB INT,INT,INT,INT As with --OT, but for\
+            \ the original bottom, complementary\n                  to the original\
+            \ top, and complementary to the original bottom\n                  strands,\
+            \ respectively.\n --version        Print version and then quit.\n\nNote\
+            \ that --fraction, --counts, and --logit are mutually exclusive!\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - PileOMeth
+          - mbias
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: ref.fa
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: sorted_alignments.bam
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: output.prefix
+            optional: false
+          named:
+          - !Flag
+            description: Minimum MAPQ threshold to include an alignment (default 10)
+            synonyms:
+            - -q
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: "Minimum Phred threshold to include a base (default 5). This\n\
+              must be >0."
+            synonyms:
+            - -p
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Maximum per-base depth (default 2000)
+            synonyms:
+            - -D
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Region string in which to extract methylation
+            synonyms:
+            - -r
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: "A BED file listing regions for inclusion. Note that unlike\n\
+              samtools mpileup, this option will utilize the strand column\n(column\
+              \ 6) if present. Thus, if a region has a '+' in this\ncolumn, then only\
+              \ metrics from the top strand will be\noutput. Note that the -r option\
+              \ can be used to limit the\nregions of -l."
+            synonyms:
+            - -l
+            args: !SimpleFlagArg
+              name: FILE
+            optional: true
+          - !Flag
+            description: "By default, any alignment marked as a duplicate is ignored.\n\
+              This option causes them to be incorporated."
+            synonyms:
+            - --keepDupes
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "By default, if only one read in a pair aligns (a singleton)\n\
+              then it's ignored."
+            synonyms:
+            - --keepSingleton
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "default, paired-end alignments with the properly-paired\
+              \ bit\nunset in the FLAG field are ignored. Note that the definition\n\
+              of concordant and discordant is based on your aligner\nsettings."
+            synonyms:
+            - --keepDiscordant
+            args: !SimpleFlagArg
+              name: By
+            optional: true
+          - !Flag
+            description: "By deault, any alignment marked as secondary (bit 0x100),\n\
+              failing QC (bit 0x200), a PCR/optical duplicate (0x400) or\nsupplemental\
+              \ (0x800) is ignored. This equates to a value of\n0xF00 or 3840 in decimal.\
+              \ If you would like to change that,\nyou can specify a new value here.\n\
+              ignored. Specifying this causes them to be included."
+            synonyms:
+            - -F
+            - --ignoreFlags
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Output tab separated metrics to the screen. These can be\n\
+              imported into R or another program for manual plotting and\nanalysis."
+            synonyms:
+            - --txt
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Don't produce the SVG files. This option implies --txt.\
+              \ Note\nthat an output prefix is no longer required with this option."
+            synonyms:
+            - --noSVG
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Do not output CpG methylation metrics
+            synonyms:
+            - --noCpG
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Output CHG methylation metrics
+            synonyms:
+            - --CHG
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Output CHH methylation metrics
+            synonyms:
+            - --CHH
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag: !Flag
+            description: Print version and the quit
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "\nUsage: PileOMeth mbias [OPTIONS] <ref.fa> <sorted_alignments.bam>\
+            \ <output.prefix>\n\nOptions:\n -q INT           Minimum MAPQ threshold\
+            \ to include an alignment (default 10)\n -p INT           Minimum Phred\
+            \ threshold to include a base (default 5). This\n                  must\
+            \ be >0.\n -D INT           Maximum per-base depth (default 2000)\n -r\
+            \ STR           Region string in which to extract methylation\n -l FILE\
+            \          A BED file listing regions for inclusion. Note that unlike\n\
+            \                  samtools mpileup, this option will utilize the strand\
+            \ column\n                  (column 6) if present. Thus, if a region has\
+            \ a '+' in this\n                  column, then only metrics from the\
+            \ top strand will be\n                  output. Note that the -r option\
+            \ can be used to limit the\n                  regions of -l.\n --keepDupes\
+            \      By default, any alignment marked as a duplicate is ignored.\n \
+            \                 This option causes them to be incorporated.\n --keepSingleton\
+            \  By default, if only one read in a pair aligns (a singleton)\n     \
+            \             then it's ignored.\n --keepDiscordant By default, paired-end\
+            \ alignments with the properly-paired bit\n                  unset in\
+            \ the FLAG field are ignored. Note that the definition\n             \
+            \     of concordant and discordant is based on your aligner\n        \
+            \          settings.\n -F, --ignoreFlags    By deault, any alignment marked\
+            \ as secondary (bit 0x100),\n                  failing QC (bit 0x200),\
+            \ a PCR/optical duplicate (0x400) or\n                  supplemental (0x800)\
+            \ is ignored. This equates to a value of\n                  0xF00 or 3840\
+            \ in decimal. If you would like to change that,\n                  you\
+            \ can specify a new value here.\n                  ignored. Specifying\
+            \ this causes them to be included.\n --txt            Output tab separated\
+            \ metrics to the screen. These can be\n                  imported into\
+            \ R or another program for manual plotting and\n                  analysis.\n\
+            \ --noSVG          Don't produce the SVG files. This option implies --txt.\
+            \ Note\n                  that an output prefix is no longer required\
+            \ with this option.\n --noCpG          Do not output CpG methylation metrics\n\
+            \ --CHG            Output CHG methylation metrics\n --CHH            Output\
+            \ CHH methylation metrics\n --version        Print version and the quit\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "PileOMeth: A tool for processing bisulfite sequencing alignments.\n\
+          Version: 0.1.13 (using HTSlib version 1.2.1)\nUsage: PileOMeth <command>\
+          \ [options]\n\nCommands:\n    mbias    Determine the position-dependent\
+          \ methylation bias in a dataset,\n             producing diagnostic SVG\
+          \ images.\n    extract  Extract methylation metrics from an alignment file\
+          \ in BAM/CRAM\n             format.\n    mergeContext   Combine single Cytosine\
+          \ metrics from 'PileOMeth extract' into\n             per-CpG/CHG metrics.\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -467,12 +923,9 @@ subcommands:
         \     to the original top, and complementary to the original bottom\n    \
         \              strands, respectively.\n --version        Print version and\
         \ then quit.\n\nNote that --fraction, --counts, and --logit are mutually exclusive!\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - PileOMeth
-      - mbias
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -841,7 +1294,7 @@ subcommands:
     - --CHH
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag:

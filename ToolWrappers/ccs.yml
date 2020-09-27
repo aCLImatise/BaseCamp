@@ -1,0 +1,166 @@
+!Command
+command:
+- ccs
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: IN.subreads.bam|xml
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: FILE
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Subreads
+  optional: false
+named:
+- !Flag
+  description: "INT    Minimum number of full-length subreads\nrequired to generate\
+    \ CCS for a ZMW. [3]"
+  synonyms:
+  - --min-passes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FLOAT  Minimum SNR of subreads to use for\ngenerating CCS [2.5]"
+  synonyms:
+  - --min-snr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Minimum draft length before polishing.\n[10]"
+  synonyms:
+  - --min-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Maximum draft length before polishing.\n[50000]"
+  synonyms:
+  - --max-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR    Operate on a single chunk. Format i/N,\nwhere i in [1,N]. Examples:\
+    \ 3/24 or 9/9"
+  synonyms:
+  - --chunk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Determine maximum number of chunks.
+  synonyms:
+  - --max-chunks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR    Path to a chemistry model file or\ndirectory containing model\
+    \ files."
+  synonyms:
+  - --model-path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR    Name of chemistry or model to use,\noverriding default selection."
+  synonyms:
+  - --model-spec
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate a consensus for each strand.
+  synonyms:
+  - --by-strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only output the initial draft template\n(faster, less accurate)."
+  synonyms:
+  - --skip-polish
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FLOAT  Minimum predicted accuracy in [0, 1].\n[0.99]"
+  synonyms:
+  - --min-rq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FILE   Where to write the results report.\n[ccs_report.txt]"
+  synonyms:
+  - --report-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Number of threads to use, 0 means\nautodetection. [0]"
+  synonyms:
+  - -j
+  - --num-threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR    Set log level. Valid choices: (TRACE,\nDEBUG, INFO, WARN, FATAL).\
+    \ [WARN]"
+  synonyms:
+  - --log-level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FILE   Log to a file, instead of stderr.
+  synonyms:
+  - --log-file
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show application version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "ccs - Generate circular consensus sequences (ccs) from subreads.\n\nUsage:\n\
+  \  ccs [options] <IN.subreads.bam|xml> <OUT.ccs.bam|fastq.gz|xml>\n\n  IN.subreads.bam|xml\
+  \       FILE   Subreads (.subreads.bam or\n                                   .subreadset.xml).\n\
+  \  OUT.ccs.bam|fastq.gz|xml  FILE   Consensus reads (.bam, .fastq.gz, or\n     \
+  \                              .consensusreadset.xml).\n\n\nInput Filter Options:\n\
+  \  --min-passes              INT    Minimum number of full-length subreads\n   \
+  \                                required to generate CCS for a ZMW. [3]\n  --min-snr\
+  \                 FLOAT  Minimum SNR of subreads to use for\n                  \
+  \                 generating CCS [2.5]\n\nDraft Filter Options:\n  --min-length\
+  \              INT    Minimum draft length before polishing.\n                 \
+  \                  [10]\n  --max-length              INT    Maximum draft length\
+  \ before polishing.\n                                   [50000]\n\nChunking Options:\n\
+  \  --chunk                   STR    Operate on a single chunk. Format i/N,\n   \
+  \                                where i in [1,N]. Examples: 3/24 or 9/9\n  --max-chunks\
+  \                     Determine maximum number of chunks.\n\nModel Override Options:\n\
+  \  --model-path              STR    Path to a chemistry model file or\n        \
+  \                           directory containing model files.\n  --model-spec  \
+  \            STR    Name of chemistry or model to use,\n                       \
+  \            overriding default selection.\n\nProcessing Options:\n  --by-strand\
+  \                      Generate a consensus for each strand.\n  --skip-polish  \
+  \                  Only output the initial draft template\n                    \
+  \               (faster, less accurate).\n\nOutput Filter Options:\n  --min-rq \
+  \                 FLOAT  Minimum predicted accuracy in [0, 1].\n               \
+  \                    [0.99]\n\nOutput Files Options:\n  --report-file          \
+  \   FILE   Where to write the results report.\n                                \
+  \   [ccs_report.txt]\n\n  -h,--help                        Show this help and exit.\n\
+  \  --version                        Show application version and exit.\n  -j,--num-threads\
+  \          INT    Number of threads to use, 0 means\n                          \
+  \         autodetection. [0]\n  --log-level               STR    Set log level.\
+  \ Valid choices: (TRACE,\n                                   DEBUG, INFO, WARN,\
+  \ FATAL). [WARN]\n  --log-file                FILE   Log to a file, instead of stderr.\n\
+  \n"
+generated_using:
+- --help

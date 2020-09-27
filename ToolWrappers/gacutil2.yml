@@ -1,0 +1,182 @@
+!Command
+command:
+- gacutil2
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: gacutil.exe
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: commands
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: options
+  optional: true
+named:
+- !Flag
+  description: "[-check_refs] [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nInstalls\
+    \ an assembly into the global assembly cache.\n<assembly_path> is the name of\
+    \ the file that contains the       assembly manifest\nExample: -i myDll.dll"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: assembly_path
+  optional: true
+- !Flag
+  description: "[-check_refs] [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nInstalls\
+    \ one or more assemblies into the global assembly cache.\n<assembly_list_file>\
+    \ is the path to a test file containing a list of\nassembly file paths on separate\
+    \ lines.\nExample -il assembly_list.txt\nassembly_list.txt contents:\nassembly1.dll\n\
+    assembly2.dll"
+  synonyms:
+  - -il
+  args: !SimpleFlagArg
+    name: assembly_list_file
+  optional: true
+- !Flag
+  description: "[-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nUninstalls an assembly\
+    \ from the global assembly cache.\n<assembly_display_name> is the name of the\
+    \ assembly (partial or\nfully qualified) to remove from the global assembly cache.\
+    \ If a\npartial name is specified all matching assemblies will be uninstalled.\n\
+    Example: -u myDll,Version=1.2.1.0"
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: assembly_display_name
+  optional: true
+- !Flag
+  description: "[-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nUninstalls one or\
+    \ more assemblies from the global assembly cache.\n<assembly_list_file> is the\
+    \ path to a test file containing a list of\nassembly names on separate lines.\n\
+    Example -ul assembly_list.txt\nassembly_list.txt contents:\nassembly1,Version=1.0.0.0,Culture=en,PublicKeyToken=0123456789abcdef\n\
+    assembly2,Version=2.0.0.0,Culture=en,PublicKeyToken=0123456789abcdef"
+  synonyms:
+  - -ul
+  args: !SimpleFlagArg
+    name: assembly_list_file
+  optional: true
+- !Flag
+  description: "[-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nUninstalls an assembly\
+    \ using the specifed assemblies full name.\n<assembly path> is the path to an\
+    \ assembly. The full assembly name\nis retrieved from the specified assembly if\
+    \ there is an assembly in\nthe GAC with a matching name, it is removed.\nExample:\
+    \ -us myDll.dll"
+  synonyms:
+  - -us
+  args: !SimpleFlagArg
+    name: assembly_path
+  optional: true
+- !Flag
+  description: "[assembly_name] [-root ROOTDIR] [-gacdir GACDIR]\nLists the contents\
+    \ of the global assembly cache.\nWhen the <assembly_name> parameter is specified\
+    \ only matching\nassemblies are listed."
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Used to create a directory in prefix/lib/mono with the name NAME,\
+    \ and a\nsymlink is created from NAME/assembly_name to the assembly on the GAC.\n\
+    This is used so developers can reference a set of libraries at once."
+  synonyms:
+  - -package
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Used to specify the GACs base directory. Once an assembly has been\
+    \ installed\nto a non standard gacdir the MONO_GAC_PREFIX environment variable\
+    \ must be used\nto access the assembly."
+  synonyms:
+  - -gacdir
+  args: !SimpleFlagArg
+    name: GACDIR
+  optional: true
+- !Flag
+  description: "Used by developers integrating this with automake tools or packaging\
+    \ tools\nthat require a prefix directory to  be specified. The root represents\
+    \ the\n\"libdir\" component of a prefix (typically prefix/lib)."
+  synonyms:
+  - -root
+  args: !SimpleFlagArg
+    name: ROOTDIR
+  optional: true
+- !Flag
+  description: "Used to ensure that the assembly being installed into the GAC does\
+    \ not\nreference any non strong named assemblies. Assemblies being installed to\n\
+    the GAC should not reference non strong named assemblies, however the is\nan optional\
+    \ check."
+  synonyms:
+  - -check_refs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The Mono gacutil ignores the -f option to maintain commandline compatibility\
+    \ with\nother gacutils. gacutil will always force the installation of a new assembly."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<reference_id> <description>\nThe Mono gacutil has not implemented\
+    \ traced references and will emit a warning\nwhen this option is used.\n"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: reference_scheme
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: gacutil.exe <commands> [ <options> ]\nCommands:\n-i <assembly_path>\
+  \ [-check_refs] [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\n\tInstalls an\
+  \ assembly into the global assembly cache.\n\t<assembly_path> is the name of the\
+  \ file that contains the \tassembly manifest\n\tExample: -i myDll.dll\n\n-il <assembly_list_file>\
+  \ [-check_refs] [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\n\tInstalls one\
+  \ or more assemblies into the global assembly cache.\n\t<assembly_list_file> is\
+  \ the path to a test file containing a list of\n\tassembly file paths on separate\
+  \ lines.\n\tExample -il assembly_list.txt\n\t\tassembly_list.txt contents:\n\t\t\
+  assembly1.dll\n\t\tassembly2.dll\n\n-u <assembly_display_name> [-package NAME] [-root\
+  \ ROOTDIR] [-gacdir GACDIR]\n\tUninstalls an assembly from the global assembly cache.\n\
+  \t<assembly_display_name> is the name of the assembly (partial or\n\tfully qualified)\
+  \ to remove from the global assembly cache. If a \n\tpartial name is specified all\
+  \ matching assemblies will be uninstalled.\n\tExample: -u myDll,Version=1.2.1.0\n\
+  \n-ul <assembly_list_file> [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\n\t\
+  Uninstalls one or more assemblies from the global assembly cache.\n\t<assembly_list_file>\
+  \ is the path to a test file containing a list of\n\tassembly names on separate\
+  \ lines.\n\tExample -ul assembly_list.txt\n\t\tassembly_list.txt contents:\n\t\t\
+  assembly1,Version=1.0.0.0,Culture=en,PublicKeyToken=0123456789abcdef\n\t\tassembly2,Version=2.0.0.0,Culture=en,PublicKeyToken=0123456789abcdef\n\
+  \n-us <assembly_path> [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\n\tUninstalls\
+  \ an assembly using the specifed assemblies full name.\n\t<assembly path> is the\
+  \ path to an assembly. The full assembly name\n\tis retrieved from the specified\
+  \ assembly if there is an assembly in\n\tthe GAC with a matching name, it is removed.\n\
+  \tExample: -us myDll.dll\n\n-l [assembly_name] [-root ROOTDIR] [-gacdir GACDIR]\n\
+  \tLists the contents of the global assembly cache.\n\tWhen the <assembly_name> parameter\
+  \ is specified only matching\n\tassemblies are listed.\n\n-?\n\tDisplays a detailed\
+  \ help screen\n\nOptions:\n-package <NAME>\n\tUsed to create a directory in prefix/lib/mono\
+  \ with the name NAME, and a\n\tsymlink is created from NAME/assembly_name to the\
+  \ assembly on the GAC.\n\tThis is used so developers can reference a set of libraries\
+  \ at once.\n\n-gacdir <GACDIR>\n\tUsed to specify the GACs base directory. Once\
+  \ an assembly has been installed\n\tto a non standard gacdir the MONO_GAC_PREFIX\
+  \ environment variable must be used\n\tto access the assembly.\n\n-root <ROOTDIR>\n\
+  \tUsed by developers integrating this with automake tools or packaging tools\n\t\
+  that require a prefix directory to  be specified. The root represents the\n\t\"\
+  libdir\" component of a prefix (typically prefix/lib).\n\n-check_refs\n\tUsed to\
+  \ ensure that the assembly being installed into the GAC does not\n\treference any\
+  \ non strong named assemblies. Assemblies being installed to\n\tthe GAC should not\
+  \ reference non strong named assemblies, however the is\n\tan optional check.\n\n\
+  Ignored Options:\n-f\n\tThe Mono gacutil ignores the -f option to maintain commandline\
+  \ compatibility with\n\tother gacutils. gacutil will always force the installation\
+  \ of a new assembly.\n\n-r <reference_scheme> <reference_id> <description>\n\tThe\
+  \ Mono gacutil has not implemented traced references and will emit a warning\n\t\
+  when this option is used.\n"
+generated_using:
+- --help

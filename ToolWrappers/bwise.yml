@@ -1,0 +1,180 @@
+!Command
+command:
+- bwise
+positional: []
+named:
+- !Flag
+  description: "input fasta or (compressed .gz if -c option is != 0)\npaired-end read\
+    \ files. Several read files must be\nconcatenated."
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: PAIRED_READFILES
+  optional: true
+- !Flag
+  description: "input fasta or (compressed .gz if -c option is != 0)\nsingle-end read\
+    \ files. Several read files must be\nconcatenated."
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: SINGLE_READFILES
+  optional: true
+- !Flag
+  description: "an integer, k-mers present strictly less than this\nnumber of times\
+    \ in the dataset will be discarded\n(default 2)"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: KMER_SOLIDITY
+  optional: true
+- !Flag
+  description: "an integer, minimal unitig coverage for first cleaning\n(default 5)"
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: KMER_COVERAGE
+  optional: true
+- !Flag
+  description: "an integer, super-reads present strictly less than\nthis number of\
+    \ times will be discarded (default 3)"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: SR_SOLIDITY
+  optional: true
+- !Flag
+  description: "an integer, unitigs with less than S reads mapped is\nfiltred (default\
+    \ 3)"
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: SR_COVERAGE
+  optional: true
+- !Flag
+  description: an integer, smallest k-mer size (default 63)
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: K_MIN
+  optional: true
+- !Flag
+  description: an integer, largest k-mer size (default 201)
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: K_MAX
+  optional: true
+- !Flag
+  description: Anchors to test for mapping (default 1000)
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: MAPPING_EFFORT
+  optional: true
+- !Flag
+  description: Anchors size (default 31)
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: ANCHOR_SIZE
+  optional: true
+- !Flag
+  description: "Fraction of the anchor that are indexed (default all,\nput 10 to index\
+    \ one out of 10 anchors)"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: FRACTION_ANCHOR
+  optional: true
+- !Flag
+  description: maximal ccurence for an indexed anchor (default 1)
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: MAX_OCCURENCE
+  optional: true
+- !Flag
+  description: missmatch allowed in mapping (default 10)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: MISSMATCH_ALLOWED
+  optional: true
+- !Flag
+  description: Greedy contig extension
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: GREEDY_K2000
+  optional: true
+- !Flag
+  description: number of cores used (default max)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: NB_CORES
+  optional: true
+- !Flag
+  description: "path to store the results (default = current\ndirectory)"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: Produce a haploid assembly
+  synonyms:
+  - -H
+  args: !SimpleFlagArg
+    name: HAPLO_MODE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\n*** This is BWISE - High order De Bruijn graph assembler ***\n\nusage:\
+  \ bwise [-h] [-x PAIRED_READFILES] [-u SINGLE_READFILES]\n             [-s KMER_SOLIDITY]\
+  \ [-S KMER_COVERAGE] [-p SR_SOLIDITY]\n             [-P SR_COVERAGE] [-k K_MIN]\
+  \ [-K K_MAX] [-e MAPPING_EFFORT]\n             [-a ANCHOR_SIZE] [-i FRACTION_ANCHOR]\
+  \ [-A MAX_OCCURENCE]\n             [-m MISSMATCH_ALLOWED] [-g GREEDY_K2000] [-t\
+  \ NB_CORES]\n             [-o OUT_DIR] [-H HAPLO_MODE] [--version]\n\nBwise - High\
+  \ order De Bruijn graph assembler\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n  -x PAIRED_READFILES   input fasta or (compressed\
+  \ .gz if -c option is != 0)\n                        paired-end read files. Several\
+  \ read files must be\n                        concatenated.\n  -u SINGLE_READFILES\
+  \   input fasta or (compressed .gz if -c option is != 0)\n                     \
+  \   single-end read files. Several read files must be\n                        concatenated.\n\
+  \  -s KMER_SOLIDITY      an integer, k-mers present strictly less than this\n  \
+  \                      number of times in the dataset will be discarded\n      \
+  \                  (default 2)\n  -S KMER_COVERAGE      an integer, minimal unitig\
+  \ coverage for first cleaning\n                        (default 5)\n  -p SR_SOLIDITY\
+  \        an integer, super-reads present strictly less than\n                  \
+  \      this number of times will be discarded (default 3)\n  -P SR_COVERAGE    \
+  \    an integer, unitigs with less than S reads mapped is\n                    \
+  \    filtred (default 3)\n  -k K_MIN              an integer, smallest k-mer size\
+  \ (default 63)\n  -K K_MAX              an integer, largest k-mer size (default\
+  \ 201)\n  -e MAPPING_EFFORT     Anchors to test for mapping (default 1000)\n  -a\
+  \ ANCHOR_SIZE        Anchors size (default 31)\n  -i FRACTION_ANCHOR    Fraction\
+  \ of the anchor that are indexed (default all,\n                        put 10 to\
+  \ index one out of 10 anchors)\n  -A MAX_OCCURENCE      maximal ccurence for an\
+  \ indexed anchor (default 1)\n  -m MISSMATCH_ALLOWED  missmatch allowed in mapping\
+  \ (default 10)\n  -g GREEDY_K2000       Greedy contig extension\n  -t NB_CORES \
+  \          number of cores used (default max)\n  -o OUT_DIR            path to store\
+  \ the results (default = current\n                        directory)\n  -H HAPLO_MODE\
+  \         Produce a haploid assembly\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help

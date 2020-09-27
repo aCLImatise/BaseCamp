@@ -1,0 +1,100 @@
+!Command
+command:
+- super_distance
+positional: []
+named:
+- !Flag
+  description: for too many leaves, estimates only two species trees
+  synonyms:
+  - -F
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: tolerance (small value below which a branch length is considered zero
+    for nodal distances)
+  synonyms:
+  - -e
+  - --epsilon
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: file with species names, one per line (comments in square braces allowed);
+    if absent, orthology is assumed
+  synonyms:
+  - -s
+  - --species
+  args: !SimpleFlagArg
+    name: species names
+  optional: true
+- !Flag
+  description: output file with species supertrees, in newick format (default '-')
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: newick
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print a longer help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "super_distance 1.1.0 \nMatrix Representation with Distances: calculates\
+  \ pairwise distances between gene leaves, and estimates species trees from summary\
+  \ distance matrices\nThe complete syntax is:\n\n super_distance  [-h|--help] [-v|--version]\
+  \ [-F|--fast] [-e|--epsilon=<double>] [-s|--species=<species names>] [-o|--output=<newick>]\
+  \ <file> [<file>]...\n\n  -h, --help                       print a longer help and\
+  \ exit\n  -v, --version                    print version and exit\n  -F, --fast\
+  \                       for too many leaves, estimates only two species trees\n\
+  \  -e, --epsilon=<double>           tolerance (small value below which a branch\
+  \ length is considered zero for nodal distances)\n  -s, --species=<species names>\
+  \    file with species names, one per line (comments in square braces allowed);\
+  \ if absent, orthology is assumed\n  -o, --output=<newick>            output file\
+  \ with species supertrees, in newick format (default '-')\n  <file>            \
+  \               list of gene tree files, in newick format\n\nBased on several rescaled\
+  \ patristic distances, the program takes the average matrix between genes and estimates\
+  \ \n the species tree using bioNJ, UPGMA and single-linkage after scaling back to\
+  \ the original values (more below). The program \n also uses a distance matrix to\
+  \ project branch lengths on species trees missing lengths; \n\nThe branch length\
+  \ rescaling per gene can be the minimum, the average, the total sum, etc. and at\
+  \ the end these values\n averaged over trees are scaled back in the final distance\
+  \ matrix, such that lengths in the supertree (species tree) are interpretable.\n\
+  \ One exception is the nodal distance, which is based on the number of nodes between\
+  \ two leaves (e.g. NJst). In this case it may make\n more sense to use another distance\
+  \ matrix to infer the branch lengths. Option 'F' uses averages distances projected\
+  \ on nodal-estimated tree; \n it uses fewer scalings/options, providing a fast estimation.\
+  \ We avoid using individual gene trees since they may have \n missing information\
+  \ (missing species or species pairs). For missing comparisons (when two species\
+  \ are never seen in the same gene tree)\n we use the ultrametric condition (comparison\
+  \ to a common species) to estimate its value.\n\nIf a file with species names is\
+  \ given, the program allows for paralogs; otherwise it assumes orthology and that\
+  \ _at_least_ one tree has no missing data:\n * Paralogy: the species names will\
+  \ be mapped to individual gene tree leaves (e.g. `ECOLI_a` and `ECOLI_b` will both\
+  \ map to species `ECOLI`).\n    Each gene tree can therefore have several copies\
+  \ of each species, and can also have missing species.\n * Orthology: if a file with\
+  \ species names is not given, however, it is assumed that each species is represented\
+  \ at most once per gene, and\n   furthermore that the leaf names represent the species,\
+  \ and are thus identical across trees. This mode is the underlying assumption behind\n\
+  \   most tree comparison software, although here missing data for some trees (not\
+  \ all) is allowed. I.e. as long as one tree has full information\n   (for all species),\
+  \ then others can have some absent species.\nWith paralogs or not, it is not recommended\
+  \ to have missing entries in the distance matrix (e.g. when a species pair does\
+  \ not appear in any tree),\n and matrix representation with distances methods work\
+  \ better with more 'complete' gene trees.\n\n"
+generated_using:
+- --help

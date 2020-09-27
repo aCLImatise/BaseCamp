@@ -1,0 +1,100 @@
+!Command
+command:
+- rtg
+- vcfsplit
+positional:
+- !Positional
+  description: -o, --output=DIR                directory for output
+  position: 0
+  name: input
+  optional: false
+named:
+- !Flag
+  description: "if set, only read VCF records that overlap\nthe ranges contained in\
+    \ the specified BED\nfile"
+  synonyms:
+  - --bed-regions
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: the input VCF, or '-' to read from standard
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "if set, only read VCF records within the\nspecified range. The format\
+    \ is one of\n<sequence_name>,\n<sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
+    \ or\n<sequence_name>:<pos>~<padding>"
+  synonyms:
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: keep records where the sample is reference
+  synonyms:
+  - --keep-ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|FILE   file containing sample IDs to select, or a\nliteral sample\
+    \ name. May be specified 0 or\nmore times, or as a comma separated list"
+  synonyms:
+  - --keep-sample
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "|FILE file containing sample IDs to ignore, or a\nliteral sample name.\
+    \ May be specified 0 or\nmore times, or as a comma separated list"
+  synonyms:
+  - --remove-sample
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: do not gzip the output
+  synonyms:
+  - -Z
+  - --no-gzip
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print help on command-line flag usage
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: rtg vcfsplit [OPTION]... -i FILE -o DIR\n\nSplits samples contained\
+  \ within a VCF into separate files, one per sample.\n\nFile Input/Output\n     \
+  \ --bed-regions=FILE          if set, only read VCF records that overlap\n     \
+  \                             the ranges contained in the specified BED\n      \
+  \                            file\n  -i, --input=FILE                the input VCF,\
+  \ or '-' to read from standard\n                                  input\n  -o, --output=DIR\
+  \                directory for output\n      --region=REGION             if set,\
+  \ only read VCF records within the\n                                  specified\
+  \ range. The format is one of\n                                  <sequence_name>,\n\
+  \                                  <sequence_name>:<start>-<end>,\n            \
+  \                      <sequence_name>:<pos>+<length> or\n                     \
+  \             <sequence_name>:<pos>~<padding>\n\nFiltering\n      --keep-ref   \
+  \               keep records where the sample is reference\n      --keep-sample=STRING|FILE\
+  \   file containing sample IDs to select, or a\n                               \
+  \   literal sample name. May be specified 0 or\n                               \
+  \   more times, or as a comma separated list\n      --remove-sample=STRING|FILE\
+  \ file containing sample IDs to ignore, or a\n                                 \
+  \ literal sample name. May be specified 0 or\n                                 \
+  \ more times, or as a comma separated list\n\nUtility\n  -h, --help            \
+  \          print help on command-line flag usage\n  -Z, --no-gzip              \
+  \     do not gzip the output\n\n"
+generated_using:
+- --help

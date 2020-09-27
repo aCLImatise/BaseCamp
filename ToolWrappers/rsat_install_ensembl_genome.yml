@@ -1,0 +1,149 @@
+!Command
+command:
+- rsat
+- install-ensembl-genome
+positional:
+- !Positional
+  description: "\e[1mVERSION\e[0m"
+  position: 0
+  name: install-ensembl-genome
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: "\e[1mdownload-ensembl-features\e[0m"
+  position: 0
+  name: package.
+  optional: false
+- !Positional
+  description: "This corresponds to the lastest release of Ensembl. Beware: this\n\
+    release is not guaranteed to be compatible with RSAT, in case\nEnsembl would change\
+    \ their file formats or locations."
+  position: 0
+  name: latest
+  optional: false
+- !Positional
+  description: "This task is executed by running \e[33minstall-organism\e[0m."
+  position: 0
+  name: analysis.
+  optional: false
+- !Positional
+  description: "\e[1m-dry\e[0m"
+  position: 0
+  name: incomplete.
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    install-ensembl-genome\n\n\e[1mVERSION\e[0m\n    $program_version\n\
+  \n\e[1mDESCRIPTION\e[0m\n    Install genomes from ensembl (<http://www.ensembl.org/>)\
+  \ to the local\n    RSAT instance. The installation includes genomic sequence, annotations\n\
+  \    (features) and (optionally) variations.\n\n    The connection to ensembl is\
+  \ ensured by a combination of their Perl API\n    and their ftp site (some information\
+  \ can not be obtained directly from\n    the API, e.g. the taxonomy).\n\n\e[1mAUTHORS\e\
+  [0m\n    \e[33mJeremy Delerce\e[0m (Master 2 thesis 2013)\n    \e[33mAlejandra Medina-Rivera\e\
+  [0m (amedina@lcg.unam.mx)\n    \e[33mJacques van Helden\e[0m (Jacques.van-Helden\\\
+  @univ-amu.fr)\n\n\e[1mCATEGORY\e[0m\n    util\n\n\e[1mUSAGE\e[0m\n    \"install-ensembl-genome\
+  \ [-release #] [-task #] [-o outputfile] [-v #]\n    [...]\"\n\n  \e[1mExample\e\
+  [0m\n    \"install-ensembl-genome -v 1 -species Saccharomyces_cerevisiae\"\n\n\e\
+  [1mOUTPUT FORMAT\e[0m\n    The program exports chromosome sequences and genomic\
+  \ features.\n\n  \e[1mChromosome sequence format\e[0m\n    Chromosome sequences\
+  \ are exported in raw format (sequences only, no\n    space, no carriage return),\
+  \ which is indispensable in order to enable\n    direct access to any piece of sequences\
+  \ on the hard drive, rather than\n    loading the whole chromosome in memory.\n\n\
+  \  \e[1mGenomic features\e[0m\n    Genomic features (genes, CDS, mRNAs, ...) are\
+  \ exported in gft format\n    (the RSAT specification of genomic features). For\
+  \ a description, of this\n    format and conversions from/to other formats, type\n\
+  \n    \"convert-features -h\"\n\n  \e[1mVariation features\e[0m\n    Variation features\
+  \ are exported in a tab-delimited format specific to\n    RSAT. This format can\
+  \ be generated from files in classical formats (VCF,\n    GVF) with the tool \e\
+  [33mconvert-variations\e[0m.\n\n    For a description, of variation formats\n\n\
+  \    \"download-ensembl-variations -h\"\n\n    \"convert-variations -h\"\n\n\e[1mSEE\
+  \ ALSO\e[0m\n  \e[1mdownload-ensembl-genome\e[0m\n    \e[33minstall-ensembl-genome\e\
+  [0m calls \e[33mdownload-ensembl-genome\e[0m to download genome\n    sequences and\
+  \ install them in the appropriate data directory of the RSAT\n    package.\n\n \
+  \ \e[1mdownload-ensembl-features\e[0m\n    \e[33minstall-ensembl-genome\e[0m calls\
+  \ \e[33mdownload-ensembl-features\e[0m to download\n    genomic features from ensembl\
+  \ API and install them in the RSAT data\n    directory.\n\n  \e[1mdownload-ensembl-variations\e\
+  [0m\n    \e[33minstall-ensembl-genome\e[0m calls \e[33mdownload-ensembl-variations\e\
+  [0m to download\n    variation features from ensembl ftp and install them in the\
+  \ RSAT data\n    directory.\n\n\e[1mWISH LIST\e[0m\n\e[1mOPTIONS\e[0m\n    \e[1m-v\
+  \ #\e[0m\n        Level of verbosity (detail in the warning messages during execution)\n\
+  \n    \e[1m-h\e[0m  Display full help message\n\n    \e[1m-help\e[0m\n        Same\
+  \ as -h\n\n    \e[1m-available_species\e[0m\n        Get available species on Ensembl\
+  \ for all available task\n\n    \e[1m-species #\e[0m\n        Name of the species\
+  \ (organism).\n\n        This option can be used iteratively to install multiple\
+  \ genomes.\n        Alternatively, a file contianing a list of species names can\
+  \ be\n        entered with the option \e[33m-species_file\e[0m.\n\n        Use the\
+  \ option \e[33m-available_species\e[0m to print a list of available\n        species\
+  \ at Ensembl, or options \e[33m-available_species -db\n        ensemblgenomes\e\
+  [0m to get the species available at EnsemblGenomes\n        (extended Ensembl).\n\
+  \n    \e[1m-species_file #\e[0m\n        File containing the list of species to\
+  \ install. The file must be in\n        text format. The first word of each row\
+  \ (everything that precedes a\n        space or tab) is considered as a species\
+  \ name. Further information\n        on the line is ignored.\n\n    \e[1m-release\
+  \ #\e[0m\n        The release release of ensEMBL.\n\n        Supported releases:\
+  \ releases later than 70, safe, latest. This\n        script was developed while\
+  \ Ensembl was at release 72.\n\n        Default : \e[33msafe\e[0m\n\n        \e\
+  [33msafe\e[0m\n            The file locations and/or formats of the Ensembl ftp\n\
+  \            distribution may change between two Ensembl release.\n\n          \
+  \  For this reason, we defined the \"safe\" release, which\n            corresponds\
+  \ to the latest release of ensembl which has been\n            checked to work with\
+  \ this script.\n\n        latest\n            This corresponds to the lastest release\
+  \ of Ensembl. Beware: this\n            release is not guaranteed to be compatible\
+  \ with RSAT, in case\n            Ensembl would change their file formats or locations.\n\
+  \n    \e[1m-assembly\e[0m\n        Choose a particular assembly for the configuration.\
+  \ In principle\n        this option should not be used, since the assembly is automatically\n\
+  \        determined when the request is send to Ensembl.\n\n        This option\
+  \ can be convenient to enable the option \e[33m-task config\e[0m when\n        the\
+  \ genome has been synchronized from another RSAT server.\n\n    \e[1m-species_suffix\e\
+  [0m\n        Suffix to append to the full species ID.\n\n        By default, the\
+  \ full species ID is composed by concatenating the\n        Ensembl species and\
+  \ assembly. The option \e[33m-species_suffix\e[0m allows to\n        specify a string\
+  \ (e.g. _ensembl76, _for_testing, ...) that will be\n        appended to the full\
+  \ species ID.\n\n    \e[1m-task #\e[0m\n        What you whant to install\n\n  \
+  \      Supported tasks : genome, features, variations, config, install\n\n     \
+  \   \e[1m-task genome\e[0m\n            Download all genomic sequences from Ensembl.\
+  \ This task is\n            executed by running \e[33mdownload-ensembl-genome\e\
+  [0m.\n\n        \e[1m-task features\e[0m\n            Download all genomic features\
+  \ from Ensembl. This task is\n            executed by running \e[33mdownload-ensembl-features\e\
+  [0m.\n\n        \e[1m-task variations\e[0m\n            Download all genomic variations\
+  \ from Ensembl. This task is\n            executed by running \e[33mdownload-ensembl-variations\e\
+  [0m.\n\n        \e[1m-task config\e[0m\n            Declare the organism to RSAT.\
+  \ This step is necessary for this\n            organism to become supported on the\
+  \ local RSAT installation.\n            This task is executed by running \e[33minstall-organism\e\
+  [0m.\n\n        \e[1m-task install\e[0m\n            Perform a series of installation\
+  \ tasks in order to have the\n            organims fully supported in RSAT. In particular,\
+  \ compute the\n            frequencies of oligonuleotides and dyads in all upstream\n\
+  \            sequences, in order to calibrate background models for motif\n    \
+  \        analysis.\n\n            This task is executed by running \e[33minstall-organism\e\
+  [0m.\n\n    \e[1m-db ensembl|ensemblgenomes\e[0m\n        Default: Ensembl\n\n \
+  \       Select the source database.\n\n        \e[33mensembl\e[0m\n            The\
+  \ \"historical\" Ensembl database (<http://ensembl.org/>),\n            restricted\
+  \ to a series of genomes from model organisms (69\n            supported species\
+  \ on Oct 30, 2014).\n\n        \e[33mensemblgenomes\e[0m\n            The exended\
+  \ EnsemblGenomes database\n            (<http://ensemblgenomes.org/>), which comprises\
+  \ repositories for\n            the following taxa: Bacteria (actually includes\
+  \ Archaea), Fungi,\n            Metazoa, Plants, Protists.\n\n            In Oct\
+  \ 2014, EnsemblGenomes supports >15,000 species.\n\n        \e[33mensemblall\e[0m\n\
+  \            Load both Ensembl and Ensembl Genomes.\n\n    \e[1m-o outputfile\e\
+  [0m\n        If no output file is specified, the standard output is used. This\n\
+  \        allows to use the command within a pipe.\n\n    \e[1m-only_api\e[0m\n \
+  \       Only use API to download. This argument is passed to\n        \e[33mdownload-ensembl-features\e\
+  [0m.\n\n    \e[1m-nodie\e[0m\n        Do not die in case a sub-program returns an\
+  \ error.\n\n        The option -nodie allows you to circumvent problems with specific\n\
+  \        sub-tasks, but this is not recommended because the results may be\n   \
+  \     incomplete.\n\n    \e[1m-dry\e[0m\n        Dry run: print the commands without\
+  \ running them (for testing and\n        debugging).\n\n    \e[1m-batch\e[0m\n \
+  \       Run the last installation tasks (\e[33minstall-organism\e[0m) in batch.\
+  \ This\n        option requires to dispose of a PC cluster, and to configure it\n\
+  \        properly in the configuration file $RSAT/RSAT_config.props.\n\n"
+generated_using:
+- -h

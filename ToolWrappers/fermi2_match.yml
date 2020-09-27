@@ -1,0 +1,87 @@
+!Command
+command:
+- fermi2
+- match
+positional:
+- !Positional
+  description: seqName  seqLen
+  position: 0
+  name: SQ
+  optional: false
+- !Positional
+  description: start  end  occurrence [positions]
+  position: 1
+  name: EM
+  optional: false
+- !Positional
+  description: start  leftLen  diffLen  rightLen  leftOcc  rightOcc  strand  seq  qual
+  position: 2
+  name: NS
+  optional: false
+named:
+- !Flag
+  description: find SMEMs (req. both strands in one index)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discovery novel alleles (force -p)
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: k-mer length in the discovery mode (force -d) [61]
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of threads [1]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: batch size [10000000]
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: sampled suffix array [null]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: show coordinate if the number of hits is no more than INT [10]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "match: invalid option -- '-'\nmatch: invalid option -- 'h'\nmatch: invalid\
+  \ option -- 'e'\nmatch: invalid option -- 'l'\n\nUsage:   fermi2 match [options]\
+  \ <index.fmd> <seq.fa>\n\nOptions: -p        find SMEMs (req. both strands in one\
+  \ index)\n         -d        discovery novel alleles (force -p)\n         -k INT\
+  \    k-mer length in the discovery mode (force -d) [61]\n         -t INT    number\
+  \ of threads [1]\n         -b INT    batch size [10000000]\n         -s FILE   sampled\
+  \ suffix array [null]\n         -m INT    show coordinate if the number of hits\
+  \ is no more than INT [10]\n         -s INT    min occurrences [1]\n\nOutput format:\n\
+  \n    SQ  seqName  seqLen\n    EM  start  end  occurrence [positions]\n    NS  start\
+  \  leftLen  diffLen  rightLen  leftOcc  rightOcc  strand  seq  qual\n\n  At an 'NS'\
+  \ line, the length of 'seq' always equals leftLen+diffLen+rightLen.\n\n"
+generated_using:
+- --help

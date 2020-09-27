@@ -59,7 +59,7 @@ subcommands:
     args: !SimpleFlagArg
       name: basename
     optional: true
-  parent: &id003 !Command
+  parent: &id014 !Command
     command: *id001
     positional: []
     named: []
@@ -82,25 +82,12 @@ subcommands:
           name: bam_file
         optional: true
       - !Flag
-        description: Regions in which to get insertions
+        description: "Regions in which to get insertions\n--out basename\n--cores\
+          \ int     Number of cores to use"
         synonyms:
         - --bed
         args: !SimpleFlagArg
           name: bed_file
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - --out
-        args: !SimpleFlagArg
-          name: basename
-        optional: true
-      - !Flag
-        description: Number of cores to use
-        synonyms:
-        - --cores
-        args: !SimpleFlagArg
-          name: int
         optional: true
       - !Flag
         description: lower limit on insert size
@@ -123,7 +110,1094 @@ subcommands:
         args: !SimpleFlagArg
           name: int
         optional: true
-      parent: *id003
+      - !Flag
+        description: ''
+        synonyms:
+        - --out
+        args: !SimpleFlagArg
+          name: basename
+        optional: true
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: --not_atac      Don't use atac offsets
+            position: 0
+            name: smoothing
+            optional: false
+          named:
+          - !Flag
+            description: Accepts sorted BAM file
+            synonyms:
+            - --bam
+            args: !SimpleFlagArg
+              name: bam_file
+            optional: true
+          - !Flag
+            description: Regions in which to get insertions
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: basename
+            optional: true
+          - !Flag
+            description: Number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: lower limit on insert size
+            synonyms:
+            - --lower
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: upper limit on insert size
+            synonyms:
+            - --upper
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: smoothing window for guassian smoothing. default is no
+            synonyms:
+            - --smooth
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac ins --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: pyatac ins [-h] --bam\
+            \ bam_file [--bed bed_file] [--out basename]\n                  [--cores\
+            \ int] [--lower int] [--upper int] [--smooth int]\n                  [--not_atac]\n\
+            \noptional arguments:\n  -h, --help      show this help message and exit\n\
+            \nRequired:\n  Necessary arguments\n\n  --bam bam_file  Accepts sorted\
+            \ BAM file\n\nGeneral options:\n\n  --bed bed_file  Regions in which to\
+            \ get insertions\n  --out basename\n  --cores int     Number of cores\
+            \ to use\n\ninsertion option:\n  Size range, smoothing\n\n  --lower int\
+            \     lower limit on insert size\n  --upper int     upper limit on insert\
+            \ size\n  --smooth int    smoothing window for guassian smoothing. default\
+            \ is no\n                  smoothing\n  --not_atac      Don't use atac\
+            \ offsets\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - pyatac
+          - vplot
+          positional:
+          - !Positional
+            description: --scale         Scale each site
+            position: 0
+            name: include
+            optional: false
+          named:
+          - !Flag
+            description: Positions around which to generate VPlot
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: Accepts sorted BAM file
+            synonyms:
+            - --bam
+            args: !SimpleFlagArg
+              name: bam_file
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: basename
+            optional: true
+          - !Flag
+            description: Number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: lower limit on insert size
+            synonyms:
+            - --lower
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: upper limit on insert size
+            synonyms:
+            - --upper
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: how many bases on each side of site (or center of site) to
+            synonyms:
+            - --flank
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: column in which weight information is included
+            synonyms:
+            - --weight
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: column in which strand information is included
+            synonyms:
+            - --strand
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Don't use atac offsets
+            synonyms:
+            - --not_atac
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Don't plot output
+            synonyms:
+            - --no_plot
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Make some extra plots
+            synonyms:
+            - --plot_extra
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac vplot --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: pyatac vplot [-h] --bed\
+            \ bed_file --bam bam_file [--out basename]\n                    [--cores\
+            \ int] [--lower int] [--upper int] [--flank int]\n                   \
+            \ [--scale] [--weight int] [--strand int] [--not_atac]\n             \
+            \       [--no_plot] [--plot_extra]\n\noptional arguments:\n  -h, --help\
+            \      show this help message and exit\n\nRequired:\n  Necessary arguments\n\
+            \n  --bed bed_file  Positions around which to generate VPlot\n  --bam\
+            \ bam_file  Accepts sorted BAM file\n\nGeneral options:\n\n  --out basename\n\
+            \  --cores int     Number of cores to use\n\nVMat option:\n  Size, scaling\
+            \ of VPlot\n\n  --lower int     lower limit on insert size\n  --upper\
+            \ int     upper limit on insert size\n  --flank int     how many bases\
+            \ on each side of site (or center of site) to\n                  include\n\
+            \  --scale         Scale each site\n  --weight int    column in which\
+            \ weight information is included\n  --strand int    column in which strand\
+            \ information is included\n  --not_atac      Don't use atac offsets\n\n\
+            Plot options:\n  Make plots?\n\n  --no_plot       Don't plot output\n\
+            \  --plot_extra    Make some extra plots\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - pyatac
+          - bias
+          positional: []
+          named:
+          - !Flag
+            description: Accepts fasta file
+            synonyms:
+            - --fasta
+            args: !SimpleFlagArg
+              name: fasta_file
+            optional: true
+          - !Flag
+            description: "PWM descriptor file. Default is Human.PWM.txt included\n\
+              in package"
+            synonyms:
+            - --pwm
+            args: !SimpleFlagArg
+              name: Tn5_PWM
+            optional: true
+          - !Flag
+            description: Positions around which to get nucleotide frequencies
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: Basename for output
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: output_basename
+            optional: true
+          - !Flag
+            description: number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac bias --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: pyatac bias [-h] --fasta\
+            \ fasta_file [--pwm Tn5_PWM] [--bed bed_file]\n                   [--out\
+            \ output_basename] [--cores int]\n\noptional arguments:\n  -h, --help\
+            \            show this help message and exit\n\nRequired:\n  Necessary\
+            \ arguments\n\n  --fasta fasta_file    Accepts fasta file\n\nPWM option:\n\
+            \  Designate PWM file or default will be used\n\n  --pwm Tn5_PWM     \
+            \    PWM descriptor file. Default is Human.PWM.txt included\n        \
+            \                in package\n\nFind only bias for regions of genome:\n\
+            \  --bed bed_file        Positions around which to get nucleotide frequencies\n\
+            \nOptions:\n  Optional settings\n\n  --out output_basename\n         \
+            \               Basename for output\n  --cores int           number of\
+            \ cores to use\n"
+          generated_using: *id004
+        - !Command
+          command: &id007
+          - pyatac
+          - sizes
+          positional: []
+          named:
+          - !Flag
+            description: Aligned reads
+            synonyms:
+            - --bam
+            args: !SimpleFlagArg
+              name: bam_file
+            optional: true
+          - !Flag
+            description: "Only compute size distribution for fragment centered\nwithin\
+              \ regions in bed file"
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: Basename for output
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: output_basename
+            optional: true
+          - !Flag
+            description: Don't use atac offsets
+            synonyms:
+            - --not_atac
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: lower limit on insert size. Default is 0
+            synonyms:
+            - --lower
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: upper limit on insert size. Default is 500
+            synonyms:
+            - --upper
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Don't plot output
+            synonyms:
+            - --no_plot
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac sizes --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:16\nusage: pyatac sizes [-h] --bam\
+            \ bam_file [--bed bed_file]\n                    [--out output_basename]\
+            \ [--not_atac] [--lower int]\n                    [--upper int] [--no_plot]\n\
+            \noptional arguments:\n  -h, --help            show this help message\
+            \ and exit\n\nRequired:\n  Necessary arguments\n\n  --bam bam_file   \
+            \     Aligned reads\n\nFind only fragmentsizes for regions of genome:\n\
+            \  --bed bed_file        Only compute size distribution for fragment centered\n\
+            \                        within regions in bed file\n\nOptions:\n  Optional\
+            \ settings\n\n  --out output_basename\n                        Basename\
+            \ for output\n  --not_atac            Don't use atac offsets\n\nFragment\
+            \ sizs bounds option:\n  Upper and lower limits\n\n  --lower int     \
+            \      lower limit on insert size. Default is 0\n  --upper int       \
+            \    upper limit on insert size. Default is 500\n\nPlot options:\n  Make\
+            \ plots?\n\n  --no_plot             Don't plot output\n"
+          generated_using: *id004
+        - !Command
+          command: &id008
+          - pyatac
+          - cov
+          positional: []
+          named:
+          - !Flag
+            description: Accepts sorted BAM file
+            synonyms:
+            - --bam
+            args: !SimpleFlagArg
+              name: bam_file
+            optional: true
+          - !Flag
+            description: Regions in which to get insertions
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: basename
+            optional: true
+          - !Flag
+            description: Number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: lower limit on insert size
+            synonyms:
+            - --lower
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: upper limit on insert size
+            synonyms:
+            - --upper
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "window for flat smoothing of coverage. default is 121,\n\
+              should be odd"
+            synonyms:
+            - --window
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "scaling value. default is 10, corresponding to signal\n\
+              corresponding to # of fragment centers per 10 bp. Use 1 for\nfragments\
+              \ per 1 bp."
+            synonyms:
+            - --scale
+            args: !SimpleFlagArg
+              name: float
+            optional: true
+          - !Flag
+            description: Don't use atac offsets
+            synonyms:
+            - --not_atac
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac cov --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:17\nusage: pyatac cov [-h] --bam\
+            \ bam_file [--bed bed_file] [--out basename]\n                  [--cores\
+            \ int] [--lower int] [--upper int] [--window int]\n                  [--scale\
+            \ float] [--not_atac]\n\noptional arguments:\n  -h, --help      show this\
+            \ help message and exit\n\nRequired:\n  Necessary arguments\n\n  --bam\
+            \ bam_file  Accepts sorted BAM file\n\nGeneral options:\n\n  --bed bed_file\
+            \  Regions in which to get insertions\n  --out basename\n  --cores int\
+            \     Number of cores to use\n\ninsertion option:\n  Size range, smoothing\n\
+            \n  --lower int     lower limit on insert size\n  --upper int     upper\
+            \ limit on insert size\n  --window int    window for flat smoothing of\
+            \ coverage. default is 121,\n                  should be odd\n  --scale\
+            \ float   scaling value. default is 10, corresponding to signal\n    \
+            \              corresponding to # of fragment centers per 10 bp. Use 1\
+            \ for\n                  fragments per 1 bp.\n  --not_atac      Don't\
+            \ use atac offsets\n"
+          generated_using: *id004
+        - !Command
+          command: &id009
+          - pyatac
+          - nucleotide
+          positional:
+          - !Positional
+            description: --up int              Bases upstream of site to get frequencies
+              for
+            position: 0
+            name: nucleotide
+            optional: false
+          named:
+          - !Flag
+            description: Accepts fasta file
+            synonyms:
+            - --fasta
+            args: !SimpleFlagArg
+              name: fasta_file
+            optional: true
+          - !Flag
+            description: Positions around which to get nucleotide frequencies
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: Compute dinucleotide frequencies instead of single
+            synonyms:
+            - --dinucleotide
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Bases downstream of site to get frequencies for
+            synonyms:
+            - --down
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Column in bedfile with strand info (1-based)
+            synonyms:
+            - --strand
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Basename for output
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: output_basename
+            optional: true
+          - !Flag
+            description: number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Normalize by background frequencies
+            synonyms:
+            - --norm
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac nucleotide --help\npyatac\
+            \ version 0.3.4\nstart run at: 2020-09-09 22:17\nusage: pyatac nucleotide\
+            \ [-h] --fasta fasta_file --bed bed_file\n                         [--dinucleotide]\
+            \ [--up int] [--down int]\n                         [--strand int] [--out\
+            \ output_basename] [--cores int]\n                         [--norm]\n\n\
+            optional arguments:\n  -h, --help            show this help message and\
+            \ exit\n\nRequired:\n  Necessary arguments\n\n  --fasta fasta_file   \
+            \ Accepts fasta file\n  --bed bed_file        Positions around which to\
+            \ get nucleotide frequencies\n\nOptions:\n  Optional settings\n\n  --dinucleotide\
+            \        Compute dinucleotide frequencies instead of single\n        \
+            \                nucleotide\n  --up int              Bases upstream of\
+            \ site to get frequencies for\n  --down int            Bases downstream\
+            \ of site to get frequencies for\n  --strand int          Column in bedfile\
+            \ with strand info (1-based)\n  --out output_basename\n              \
+            \          Basename for output\n  --cores int           number of cores\
+            \ to use\n  --norm                Normalize by background frequencies\n"
+          generated_using: *id004
+        - !Command
+          command: &id010
+          - pyatac
+          - counts
+          positional: []
+          named:
+          - !Flag
+            description: Aligned reads
+            synonyms:
+            - --bam
+            args: !SimpleFlagArg
+              name: bam_file
+            optional: true
+          - !Flag
+            description: Windows in which to compute counts
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: Basename for output
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: output_basename
+            optional: true
+          - !Flag
+            description: Don't use atac offsets
+            synonyms:
+            - --not_atac
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: lower limit on insert size. Default is 0
+            synonyms:
+            - --lower
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: upper limit on insert size. Default is 500
+            synonyms:
+            - --upper
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac counts --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:17\nusage: pyatac counts [-h] --bam\
+            \ bam_file --bed bed_file\n                     [--out output_basename]\
+            \ [--not_atac] [--lower int]\n                     [--upper int]\n\noptional\
+            \ arguments:\n  -h, --help            show this help message and exit\n\
+            \nRequired:\n  Necessary arguments\n\n  --bam bam_file        Aligned\
+            \ reads\n  --bed bed_file        Windows in which to compute counts\n\n\
+            Options:\n  Optional settings\n\n  --out output_basename\n           \
+            \             Basename for output\n  --not_atac            Don't use atac\
+            \ offsets\n\nFragment size bounds option:\n  Upper and lower limits\n\n\
+            \  --lower int           lower limit on insert size. Default is 0\n  --upper\
+            \ int           upper limit on insert size. Default is 500\n"
+          generated_using: *id004
+        - !Command
+          command: &id011
+          - pyatac
+          - pwm
+          positional:
+          - !Positional
+            description: --bed bed_file        Regions from which to use reads
+            position: 0
+            name: region
+            optional: false
+          - !Positional
+            description: --flank int           Bases away from insertion site to get
+              frequencies for.
+            position: 0
+            name: nucleotide
+            optional: false
+          named:
+          - !Flag
+            description: Accepts fasta file
+            synonyms:
+            - --fasta
+            args: !SimpleFlagArg
+              name: fasta_file
+            optional: true
+          - !Flag
+            description: Reads around which to get nucleotide freq
+            synonyms:
+            - --bam
+            args: !SimpleFlagArg
+              name: bam_file
+            optional: true
+          - !Flag
+            description: Compute dinucleotide frequencies instead of single
+            synonyms:
+            - --dinucleotide
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: lower limit on insert size. default is 0
+            synonyms:
+            - --lower
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: upper limit on insert size. default is 2000
+            synonyms:
+            - --upper
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Don't use atac offsets
+            synonyms:
+            - --not_atac
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Don't symmetrize PWM
+            synonyms:
+            - --no_sym
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Basename for output
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: output_basename
+            optional: true
+          - !Flag
+            description: number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac pwm --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:17\nusage: pyatac pwm [-h] --fasta\
+            \ fasta_file --bam bam_file [--bed bed_file]\n                  [--dinucleotide]\
+            \ [--flank int] [--lower int] [--upper int]\n                  [--not_atac]\
+            \ [--no_sym] [--out output_basename]\n                  [--cores int]\n\
+            \noptional arguments:\n  -h, --help            show this help message\
+            \ and exit\n\nRequired:\n  Necessary arguments\n\n  --fasta fasta_file\
+            \    Accepts fasta file\n  --bam bam_file        Reads around which to\
+            \ get nucleotide freq\n\nInput sites:\n  If bed provided, find nucleotide\
+            \ frequencies around read starts within bed\n  region\n\n  --bed bed_file\
+            \        Regions from which to use reads\n\nOptions:\n  Optional settings\n\
+            \n  --dinucleotide        Compute dinucleotide frequencies instead of\
+            \ single\n                        nucleotide\n  --flank int          \
+            \ Bases away from insertion site to get frequencies for.\n           \
+            \             Default is 10\n  --lower int           lower limit on insert\
+            \ size. default is 0\n  --upper int           upper limit on insert size.\
+            \ default is 2000\n  --not_atac            Don't use atac offsets\n  --no_sym\
+            \              Don't symmetrize PWM\n  --out output_basename\n       \
+            \                 Basename for output\n  --cores int           number\
+            \ of cores to use\n"
+          generated_using: *id004
+        - !Command
+          command: &id012
+          - pyatac
+          - signal
+          positional:
+          - !Positional
+            description: --no_agg              Don't make a plot of aggregate or write
+              up of
+            position: 0
+            name: sites
+            optional: false
+          - !Positional
+            description: 'Bed options:'
+            position: 1
+            name: aggregate
+            optional: false
+          named:
+          - !Flag
+            description: Positions around which to generate VPlot
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: Accepts bedgraph file that is tabix indexed
+            synonyms:
+            - --bg
+            args: !SimpleFlagArg
+              name: bg_file
+            optional: true
+          - !Flag
+            description: File with chromosome names in 1st col, sizes in 2nd
+            synonyms:
+            - --sizes
+            args: !SimpleFlagArg
+              name: genome_sizes_file
+            optional: true
+          - !Flag
+            description: basename for output
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: basename
+            optional: true
+          - !Flag
+            description: Number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: output csv file (gzipped) with signal track around all
+            synonyms:
+            - --all
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: bases upstream of site to look
+            synonyms:
+            - --up
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: bases dowstream site to look
+            synonyms:
+            - --down
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "Column with weight information. Signal for interval\nwill\
+              \ be weighted by value in column"
+            synonyms:
+            - --weight
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "Column in which strand information is included if\nstrand\
+              \ is to be used"
+            synonyms:
+            - --strand
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: take exponent of value
+            synonyms:
+            - --exp
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Only include positive signal
+            synonyms:
+            - --positive
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: scale each individual track by total signal value
+            synonyms:
+            - --scale
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: normalize aggregate track by number of intervals
+            synonyms:
+            - --norm
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac signal --help\npyatac version\
+            \ 0.3.4\nstart run at: 2020-09-09 22:17\nusage: pyatac signal [-h] --bed\
+            \ bed_file --bg bg_file --sizes\n                     genome_sizes_file\
+            \ [--out basename] [--cores int] [--all]\n                     [--no_agg]\
+            \ [--up int] [--down int] [--weight int]\n                     [--strand\
+            \ int] [--exp] [--positive] [--scale] [--norm]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n\nRequired:\n\
+            \  Necessary arguments\n\n  --bed bed_file        Positions around which\
+            \ to generate VPlot\n  --bg bg_file          Accepts bedgraph file that\
+            \ is tabix indexed\n  --sizes genome_sizes_file\n                    \
+            \    File with chromosome names in 1st col, sizes in 2nd\n\nGeneral options:\n\
+            \n  --out basename        basename for output\n  --cores int         \
+            \  Number of cores to use\n  --all                 output csv file (gzipped)\
+            \ with signal track around all\n                        sites\n  --no_agg\
+            \              Don't make a plot of aggregate or write up of\n       \
+            \                 aggregate\n\nBed options:\n  Options related to bed\
+            \ intervals\n\n  --up int              bases upstream of site to look\n\
+            \  --down int            bases dowstream site to look\n  --weight int\
+            \          Column with weight information. Signal for interval\n     \
+            \                   will be weighted by value in column\n  --strand int\
+            \          Column in which strand information is included if\n       \
+            \                 strand is to be used\n\nSignal options:\n  Options related\
+            \ to signal\n\n  --exp                 take exponent of value\n  --positive\
+            \            Only include positive signal\n  --scale               scale\
+            \ each individual track by total signal value\n  --norm              \
+            \  normalize aggregate track by number of intervals\n"
+          generated_using: *id004
+        - !Command
+          command: &id013
+          - pyatac
+          - bias_vplot
+          positional: []
+          named:
+          - !Flag
+            description: Positions around which to generate VPlot
+            synonyms:
+            - --bed
+            args: !SimpleFlagArg
+              name: bed_file
+            optional: true
+          - !Flag
+            description: Accepts sizes file from pyatac sizes command
+            synonyms:
+            - --sizes
+            args: !SimpleFlagArg
+              name: sizes_file
+            optional: true
+          - !Flag
+            description: Accepts tabix indexed file
+            synonyms:
+            - --bg
+            args: !SimpleFlagArg
+              name: bias_file
+            optional: true
+          - !Flag
+            description: Accepts indexed fasta file
+            synonyms:
+            - --fasta
+            args: !SimpleFlagArg
+              name: fasta_file
+            optional: true
+          - !Flag
+            description: "PWM descriptor file. Default is Human.PWM.txt included\n\
+              in package"
+            synonyms:
+            - --pwm
+            args: !SimpleFlagArg
+              name: Tn5_PWM
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --out
+            args: !SimpleFlagArg
+              name: basename
+            optional: true
+          - !Flag
+            description: Number of cores to use
+            synonyms:
+            - --cores
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: lower limit on insert size
+            synonyms:
+            - --lower
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: upper limit on insert size
+            synonyms:
+            - --upper
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "how many bases on each side of site (or center of site)\n\
+              to include"
+            synonyms:
+            - --flank
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --scale
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: column in which weight information is included
+            synonyms:
+            - --weight
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: column in which strand information is included
+            synonyms:
+            - --strand
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Don't plot output
+            synonyms:
+            - --no_plot
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Make some extra plots
+            synonyms:
+            - --plot_extra
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Command run:  /usr/local/bin/pyatac bias_vplot --help\npyatac\
+            \ version 0.3.4\nstart run at: 2020-09-09 22:17\nusage: pyatac bias_vplot\
+            \ [-h] --bed bed_file --sizes sizes_file\n                         [--bg\
+            \ bias_file] [--fasta fasta_file] [--pwm Tn5_PWM]\n                  \
+            \       [--out basename] [--cores int] [--lower int]\n               \
+            \          [--upper int] [--flank int] [--scale] [--weight int]\n    \
+            \                     [--strand int] [--no_plot] [--plot_extra]\n\noptional\
+            \ arguments:\n  -h, --help          show this help message and exit\n\n\
+            Required:\n  Necessary arguments\n\n  --bed bed_file      Positions around\
+            \ which to generate VPlot\n  --sizes sizes_file  Accepts sizes file from\
+            \ pyatac sizes command\n\nBias Options:\n  Must either submit a tabix-indexed\
+            \ bedgraph file or a fasta file.\n\n  --bg bias_file      Accepts tabix\
+            \ indexed file\n  --fasta fasta_file  Accepts indexed fasta file\n  --pwm\
+            \ Tn5_PWM       PWM descriptor file. Default is Human.PWM.txt included\n\
+            \                      in package\n\nGeneral options:\n\n  --out basename\n\
+            \  --cores int         Number of cores to use\n\nVMat option:\n  Size,\
+            \ scaling of VPlot\n\n  --lower int         lower limit on insert size\n\
+            \  --upper int         upper limit on insert size\n  --flank int     \
+            \    how many bases on each side of site (or center of site)\n       \
+            \               to include\n  --scale\n  --weight int        column in\
+            \ which weight information is included\n  --strand int        column in\
+            \ which strand information is included\n\nPlot options:\n  Make plots?\n\
+            \n  --no_plot           Don't plot output\n  --plot_extra        Make\
+            \ some extra plots\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: show program's version number and exit
+          synonyms:
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "Command run:  /usr/local/bin/pyatac --help\npyatac version 0.3.4\n\
+          start run at: 2020-09-09 22:16\nusage: pyatac [-h] [--version]\n       \
+          \       {nucleotide,vplot,bias_vplot,pwm,signal,ins,cov,bias,sizes,counts}\n\
+          \              ...\n\npyatac -- Utilitis for working with ATAC-Seq data\n\
+          \npositional arguments:\n  {nucleotide,vplot,bias_vplot,pwm,signal,ins,cov,bias,sizes,counts}\n\
+          \    nucleotide          pyatac function-- get nucleotide (or di-nucleotide)\n\
+          \                        content around sites\n    vplot               pyatac\
+          \ function-- make vplot\n    bias_vplot          pyatac function-- make\
+          \ vplot\n    pwm                 pyatac function-- get nucleotide (or di-nucleotide)\n\
+          \                        content around sites\n    signal              pyatac\
+          \ function-- get signal around sites\n    ins                 pyatac function--\
+          \ get insertions\n    cov                 pyatac function-- get coverage\n\
+          \    bias                pyatac function-- compute Tn5 bias score\n    sizes\
+          \               pyatac function-- compute fragment size distribution\n \
+          \   counts              pyatac function-- compute fragment counts within\n\
+          \                        windows\n\noptional arguments:\n  -h, --help  \
+          \          show this help message and exit\n  --version             show\
+          \ program's version number and exit\n\nFor command line options for each\
+          \ command, type pyatac COMMAND -h\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -147,12 +1221,9 @@ subcommands:
         \  --upper int     upper limit on insert size\n  --smooth int    smoothing\
         \ window for guassian smoothing. default is no\n                  smoothing\n\
         \  --not_atac      Don't use atac offsets\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - pyatac
-      - vplot
+      command: *id005
       positional:
       - !Positional
         description: --scale         Scale each site
@@ -175,18 +1246,11 @@ subcommands:
           name: bam_file
         optional: true
       - !Flag
-        description: ''
+        description: --cores int     Number of cores to use
         synonyms:
         - --out
         args: !SimpleFlagArg
           name: basename
-        optional: true
-      - !Flag
-        description: Number of cores to use
-        synonyms:
-        - --cores
-        args: !SimpleFlagArg
-          name: int
         optional: true
       - !Flag
         description: lower limit on insert size
@@ -272,9 +1336,7 @@ subcommands:
         \ output\n  --plot_extra    Make some extra plots\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - pyatac
-      - bias
+      command: *id006
       positional: []
       named:
       - !Flag
@@ -338,9 +1400,7 @@ subcommands:
         \ of cores to use\n"
       generated_using: *id004
     - !Command
-      command: &id007
-      - pyatac
-      - sizes
+      command: *id007
       positional: []
       named:
       - !Flag
@@ -420,9 +1480,7 @@ subcommands:
         \ plot output\n"
       generated_using: *id004
     - !Command
-      command: &id008
-      - pyatac
-      - cov
+      command: *id008
       positional: []
       named:
       - !Flag
@@ -433,25 +1491,12 @@ subcommands:
           name: bam_file
         optional: true
       - !Flag
-        description: Regions in which to get insertions
+        description: "Regions in which to get insertions\n--out basename\n--cores\
+          \ int     Number of cores to use"
         synonyms:
         - --bed
         args: !SimpleFlagArg
           name: bed_file
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - --out
-        args: !SimpleFlagArg
-          name: basename
-        optional: true
-      - !Flag
-        description: Number of cores to use
-        synonyms:
-        - --cores
-        args: !SimpleFlagArg
-          name: int
         optional: true
       - !Flag
         description: lower limit on insert size
@@ -489,6 +1534,13 @@ subcommands:
         - --not_atac
         args: !EmptyFlagArg {}
         optional: true
+      - !Flag
+        description: ''
+        synonyms:
+        - --out
+        args: !SimpleFlagArg
+          name: basename
+        optional: true
       parent: *id003
       subcommands: []
       usage: []
@@ -518,9 +1570,7 @@ subcommands:
         \ atac offsets\n"
       generated_using: *id004
     - !Command
-      command: &id009
-      - pyatac
-      - nucleotide
+      command: *id009
       positional:
       - !Positional
         description: --up int              Bases upstream of site to get frequencies
@@ -612,9 +1662,7 @@ subcommands:
         \ of cores to use\n  --norm                Normalize by background frequencies\n"
       generated_using: *id004
     - !Command
-      command: &id010
-      - pyatac
-      - counts
+      command: *id010
       positional: []
       named:
       - !Flag
@@ -684,9 +1732,7 @@ subcommands:
         \ Default is 500\n"
       generated_using: *id004
     - !Command
-      command: &id011
-      - pyatac
-      - pwm
+      command: *id011
       positional:
       - !Positional
         description: --bed bed_file        Regions from which to use reads
@@ -799,9 +1845,7 @@ subcommands:
         \ for output\n  --cores int           number of cores to use\n"
       generated_using: *id004
     - !Command
-      command: &id012
-      - pyatac
-      - signal
+      command: *id012
       positional:
       - !Positional
         description: --no_agg              Don't make a plot of aggregate or write
@@ -949,9 +1993,7 @@ subcommands:
         \ number of intervals\n"
       generated_using: *id004
     - !Command
-      command: &id013
-      - pyatac
-      - bias_vplot
+      command: *id013
       positional: []
       named:
       - !Flag
@@ -990,58 +2032,20 @@ subcommands:
           name: Tn5_PWM
         optional: true
       - !Flag
-        description: ''
+        description: --cores int         Number of cores to use
         synonyms:
         - --out
         args: !SimpleFlagArg
           name: basename
         optional: true
       - !Flag
-        description: Number of cores to use
-        synonyms:
-        - --cores
-        args: !SimpleFlagArg
-          name: int
-        optional: true
-      - !Flag
-        description: lower limit on insert size
+        description: "lower limit on insert size\n--upper int         upper limit\
+          \ on insert size\n--flank int         how many bases on each side of site\
+          \ (or center of site)\nto include\n--scale\n--weight int        column in\
+          \ which weight information is included\n--strand int        column in which\
+          \ strand information is included"
         synonyms:
         - --lower
-        args: !SimpleFlagArg
-          name: int
-        optional: true
-      - !Flag
-        description: upper limit on insert size
-        synonyms:
-        - --upper
-        args: !SimpleFlagArg
-          name: int
-        optional: true
-      - !Flag
-        description: "how many bases on each side of site (or center of site)\nto\
-          \ include"
-        synonyms:
-        - --flank
-        args: !SimpleFlagArg
-          name: int
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - --scale
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: column in which weight information is included
-        synonyms:
-        - --weight
-        args: !SimpleFlagArg
-          name: int
-        optional: true
-      - !Flag
-        description: column in which strand information is included
-        synonyms:
-        - --strand
         args: !SimpleFlagArg
           name: int
         optional: true
@@ -1093,20 +2097,9 @@ subcommands:
         \ plot output\n  --plot_extra        Make some extra plots\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "Command run:  /usr/local/bin/pyatac --help\npyatac version 0.3.4\n\
       start run at: 2020-09-09 22:16\nusage: pyatac [-h] [--version]\n           \
       \   {nucleotide,vplot,bias_vplot,pwm,signal,ins,cov,bias,sizes,counts}\n   \
@@ -1233,7 +2226,7 @@ subcommands:
     - --plot_extra
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1301,7 +2294,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1377,7 +2370,7 @@ subcommands:
     - --no_plot
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1466,7 +2459,7 @@ subcommands:
     args: !SimpleFlagArg
       name: basename
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1556,7 +2549,7 @@ subcommands:
     - --norm
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1629,7 +2622,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1735,7 +2728,7 @@ subcommands:
     args: !SimpleFlagArg
       name: bed_file
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1876,7 +2869,7 @@ subcommands:
     - --norm
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1981,7 +2974,7 @@ subcommands:
     - --plot_extra
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag

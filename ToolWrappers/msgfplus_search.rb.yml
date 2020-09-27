@@ -1,0 +1,261 @@
+!Command
+command:
+- msgfplus_search.rb
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file2.mzML
+  optional: false
+named:
+- !Flag
+  description: Dont skip analyses for which the output file already exists [false]
+  synonyms:
+  - -r
+  - --replace-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: An explicitly named output file.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: out
+  optional: true
+- !Flag
+  description: Number of processing threads to use. Set to 0 to autodetect an appropriate
+    value [1]
+  synonyms:
+  - -n
+  - --threads
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Specify the database to use for this search. Can be a named protk database
+    or the path to a fasta file [sphuman]
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: dbname
+  optional: true
+- !Flag
+  description: Enzyme [Trypsin]
+  synonyms:
+  - --enzyme
+  args: !SimpleFlagArg
+    name: enz
+  optional: true
+- !Flag
+  description: Variable modifications. These should be provided in a comma separated
+    list
+  synonyms:
+  - --var-mods
+  args: !SimpleFlagArg
+    name: vm
+  optional: true
+- !Flag
+  description: Fixed modifications. These should be provided in a comma separated
+    list
+  synonyms:
+  - --fix-mods
+  args: !SimpleFlagArg
+    name: fm
+  optional: true
+- !Flag
+  description: Instrument [ESI-QUAD-TOF]
+  synonyms:
+  - --instrument
+  args: !SimpleFlagArg
+    name: instrument
+  optional: true
+- !Flag
+  description: Search for peptides with up to 1 non-enzymatic cleavage site [false]
+  synonyms:
+  - --cleavage-semi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expect N-Glycosylation modifications as variable mod in a search or
+    as a parameter when building statistical models [false]
+  synonyms:
+  - -g
+  - --glyco
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expect N-terminal acetylation as a variable mod in a search or as a
+    parameter when building statistical models [false]
+  synonyms:
+  - -y
+  - --acetyl-nterm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expect Oxidised Methionine modifications as variable mod in a search
+    [false]
+  synonyms:
+  - -m
+  - --methionineo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expect Carbamidomethyl C modifications as fixed mod in a search [false]
+  synonyms:
+  - -c
+  - --carbamidomethyl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Precursor ion mass tolerance. [20]
+  synonyms:
+  - -p
+  - --precursor-ion-tol
+  args: !SimpleFlagArg
+    name: tol
+  optional: true
+- !Flag
+  description: Precursor ion mass tolerance units (ppm or Da). [ppm]
+  synonyms:
+  - --precursor-ion-tol-units
+  args: !SimpleFlagArg
+    name: tolu
+  optional: true
+- !Flag
+  description: Convert results to pepxml. [false]
+  synonyms:
+  - --pepxml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Takes into account of the error introduced by chooosing a non-monoisotopic
+    peak for fragmentation. [0,1]
+  synonyms:
+  - --isotope-error-range
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: 'Fragment method 0: As written in the spectrum or CID if no info (Default),
+    1: CID, 2: ETD, 3: HCD, 4: Merge spectra from the same precursor [0]'
+  synonyms:
+  - --fragment-method
+  args: !SimpleFlagArg
+    name: method
+  optional: true
+- !Flag
+  description: Build and search a decoy database on the fly. Input db should not contain
+    decoys if this option is used [false]
+  synonyms:
+  - --decoy-search
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum peptide length to consider [6]
+  synonyms:
+  - --min-pep-length
+  args: !SimpleFlagArg
+    name: p
+  optional: true
+- !Flag
+  description: Maximum peptide length to consider [40]
+  synonyms:
+  - --max-pep-length
+  args: !SimpleFlagArg
+    name: p
+  optional: true
+- !Flag
+  description: Minimum precursor charge to consider if charges are not specified in
+    the spectrum file [2]
+  synonyms:
+  - --min-pep-charge
+  args: !SimpleFlagArg
+    name: c
+  optional: true
+- !Flag
+  description: Maximum precursor charge to consider if charges are not specified in
+    the spectrum file [3]
+  synonyms:
+  - --max-pep-charge
+  args: !SimpleFlagArg
+    name: c
+  optional: true
+- !Flag
+  description: 'Number of matches per spectrum to be reported, Default: 1 [1]'
+  synonyms:
+  - --num-reported-matches
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: output additional features [false]
+  synonyms:
+  - --add-features
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Java memory limit when running the search (Default 3.5Gb) [3500M]
+  synonyms:
+  - --java-mem
+  args: !SimpleFlagArg
+    name: mem
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this screen
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Run an MSGFPlus msms search on a set of msms spectrum input files.\n\n\
+  Usage: msgfplus_search.rb [options] file1.mzML file2.mzML ...\n    -h, --help  \
+  \                             Display this screen\n    -r, --replace-output    \
+  \                 Dont skip analyses for which the output file already exists [false]\n\
+  \    -o, --output out                         An explicitly named output file.\n\
+  \    -n, --threads num                        Number of processing threads to use.\
+  \ Set to 0 to autodetect an appropriate value [1]\n    -d, --database dbname   \
+  \                 Specify the database to use for this search. Can be a named protk\
+  \ database or the path to a fasta file [sphuman]\n        --enzyme enz         \
+  \                Enzyme [Trypsin]\n        --var-mods vm                       \
+  \ Variable modifications. These should be provided in a comma separated list\n \
+  \       --fix-mods fm                        Fixed modifications. These should be\
+  \ provided in a comma separated list\n        --instrument instrument          \
+  \    Instrument [ESI-QUAD-TOF]\n        --cleavage-semi                      Search\
+  \ for peptides with up to 1 non-enzymatic cleavage site [false]\n    -g, --glyco\
+  \                              Expect N-Glycosylation modifications as variable\
+  \ mod in a search or as a parameter when building statistical models [false]\n \
+  \   -y, --acetyl-nterm                       Expect N-terminal acetylation as a\
+  \ variable mod in a search or as a parameter when building statistical models [false]\n\
+  \    -m, --methionineo                        Expect Oxidised Methionine modifications\
+  \ as variable mod in a search [false]\n    -c, --carbamidomethyl               \
+  \     Expect Carbamidomethyl C modifications as fixed mod in a search [false]\n\
+  \    -p, --precursor-ion-tol tol              Precursor ion mass tolerance. [20]\n\
+  \        --precursor-ion-tol-units tolu       Precursor ion mass tolerance units\
+  \ (ppm or Da). [ppm]\n        --pepxml                             Convert results\
+  \ to pepxml. [false]\n        --isotope-error-range range          Takes into account\
+  \ of the error introduced by chooosing a non-monoisotopic peak for fragmentation.\
+  \ [0,1]\n        --fragment-method method             Fragment method 0: As written\
+  \ in the spectrum or CID if no info (Default), 1: CID, 2: ETD, 3: HCD, 4: Merge\
+  \ spectra from the same precursor [0]\n        --decoy-search                  \
+  \     Build and search a decoy database on the fly. Input db should not contain\
+  \ decoys if this option is used [false]\n        --protocol p                  \
+  \       0: NoProtocol (Default), 1: Phosphorylation, 2: iTRAQ, 3: iTRAQPhospho [0]\n\
+  \        --min-pep-length p                   Minimum peptide length to consider\
+  \ [6]\n        --max-pep-length p                   Maximum peptide length to consider\
+  \ [40]\n        --min-pep-charge c                   Minimum precursor charge to\
+  \ consider if charges are not specified in the spectrum file [2]\n        --max-pep-charge\
+  \ c                   Maximum precursor charge to consider if charges are not specified\
+  \ in the spectrum file [3]\n        --num-reported-matches n             Number\
+  \ of matches per spectrum to be reported, Default: 1 [1]\n        --add-features\
+  \                       output additional features [false]\n        --java-mem mem\
+  \                       Java memory limit when running the search (Default 3.5Gb)\
+  \ [3500M]\n"
+generated_using:
+- --help

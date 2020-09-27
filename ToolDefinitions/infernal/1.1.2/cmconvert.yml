@@ -17,53 +17,10 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: ': ascii:  output models in INFERNAL 1.1 ASCII format  [default]'
-      synonyms:
-      - -a
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ': binary: output models in INFERNAL 1.1 binary format'
-      synonyms:
-      - -b
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ': output backward compatible Infernal v0.7-->v1.0.2 ASCII format'
-      synonyms:
-      - '-1'
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ': save CM file to file <f>, not stdout'
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: f
-      optional: true
-    - !Flag
-      description: ': output maximum likelihood HMM for CM in HMMER3 format'
-      synonyms:
-      - --mlhmm
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ': output filter HMM for CM in HMMER3 format'
-      synonyms:
-      - --fhmm
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -76,7 +33,99 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: ': ascii:  output models in INFERNAL 1.1 ASCII format  [default]'
+          synonyms:
+          - -a
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ': binary: output models in INFERNAL 1.1 binary format'
+          synonyms:
+          - -b
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ': output backward compatible Infernal v0.7-->v1.0.2 ASCII
+            format'
+          synonyms:
+          - '-1'
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ': save CM file to file <f>, not stdout'
+          synonyms:
+          - -o
+          args: !SimpleFlagArg
+            name: f
+          optional: true
+        - !Flag
+          description: ': output maximum likelihood HMM for CM in HMMER3 format'
+          synonyms:
+          - --mlhmm
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ': output filter HMM for CM in HMMER3 format'
+          synonyms:
+          - --fhmm
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -options
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -options
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Incorrect number of command line arguments.\nUsage: cmconvert\
+            \ [-options] <cmfile>\n\nTo see more help on available options, do cmconvert\
+            \ -h\n\n"
+          generated_using: &id004
+          - --help
+        usage: []
+        help_flag: !Flag
+          description: ': show brief help on version and usage'
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "# cmconvert :: convert CM file to a different Infernal format\n\
+          # INFERNAL 1.1.2 (July 2016)\n# Copyright (C) 2016 Howard Hughes Medical\
+          \ Institute.\n# Freely distributed under a BSD open source license.\n# -\
+          \ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\
+          Usage: cmconvert [-options] <cmfile>\n\nOptions:\n  -h      : show brief\
+          \ help on version and usage\n  -a      : ascii:  output models in INFERNAL\
+          \ 1.1 ASCII format  [default]\n  -b      : binary: output models in INFERNAL\
+          \ 1.1 binary format\n  -1      : output backward compatible Infernal v0.7-->v1.0.2\
+          \ ASCII format\n  -o <f>  : save CM file to file <f>, not stdout\n  --mlhmm\
+          \ : output maximum likelihood HMM for CM in HMMER3 format\n  --fhmm  : output\
+          \ filter HMM for CM in HMMER3 format\n"
+        generated_using: &id005
+        - -h
       subcommands: []
       usage: []
       help_flag:
@@ -84,15 +133,9 @@ subcommands:
       version_flag:
       help_text: "Incorrect number of command line arguments.\nUsage: cmconvert [-options]\
         \ <cmfile>\n\nTo see more help on available options, do cmconvert -h\n\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: ': show brief help on version and usage'
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "# cmconvert :: convert CM file to a different Infernal format\n# INFERNAL\
@@ -106,8 +149,7 @@ subcommands:
       \  : save CM file to file <f>, not stdout\n  --mlhmm : output maximum likelihood\
       \ HMM for CM in HMMER3 format\n  --fhmm  : output filter HMM for CM in HMMER3\
       \ format\n"
-    generated_using: &id005
-    - -h
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag:

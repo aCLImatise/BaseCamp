@@ -1,0 +1,109 @@
+!Command
+command:
+- lofreq
+- vcfset
+positional: []
+named:
+- !Flag
+  description: '| --vcf1 FILE      1st VCF input file (bgzip supported)'
+  synonyms:
+  - '-1'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --vcf2 FILE      2nd VCF input file (mandatory - except for concat
+    - and needs to be tabix indexed)'
+  synonyms:
+  - '-2'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| --vcfout         VCF output file (default: - for stdout; gzip supported).'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --action         Set operation to perform: intersect, complement\
+    \ or concat.\n- intersect = vcf1 AND vcf2.\n- complement = vcf1 \\ vcf2.\n- concat\
+    \ = vcf1 + vcf2 ... vcfn (output as in file order, i.e. output not necessarily\
+    \ sorted!)"
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| --add-info STR   Add info field, e.g. 'SOMATIC'"
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't print bases, just numbers
+  synonyms:
+  - --count-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable allele-awareness by using position only (ignoring bases) as
+    key for storing and comparison
+  synonyms:
+  - --only-pos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore variants marked as filtered
+  synonyms:
+  - --only-passed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore anything but SNVs in both input files
+  synonyms:
+  - --only-snvs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore anything but indels in both input files
+  synonyms:
+  - --only-indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be verbose
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable debugging
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "lofreq vcfset: Perform set operations on two vcf files\n\nUsage: lofreq\
+  \ vcfset [options] -a op -1 1.vcf -2 2.vcf \nOptions:\n  -1 | --vcf1 FILE      1st\
+  \ VCF input file (bgzip supported)\n  -2 | --vcf2 FILE      2nd VCF input file (mandatory\
+  \ - except for concat - and needs to be tabix indexed)\n  -o | --vcfout        \
+  \ VCF output file (default: - for stdout; gzip supported).\n  -a | --action    \
+  \     Set operation to perform: intersect, complement or concat.\n             \
+  \           - intersect = vcf1 AND vcf2.\n                        - complement =\
+  \ vcf1 \\ vcf2.\n                        - concat = vcf1 + vcf2 ... vcfn (output\
+  \ as in file order, i.e. output not necessarily sorted!)\n  -I | --add-info STR\
+  \   Add info field, e.g. 'SOMATIC'\n       --count-only     Don't print bases, just\
+  \ numbers\n       --only-pos       Disable allele-awareness by using position only\
+  \ (ignoring bases) as key for storing and comparison\n       --only-passed    Ignore\
+  \ variants marked as filtered\n       --only-snvs      Ignore anything but SNVs\
+  \ in both input files\n       --only-indels    Ignore anything but indels in both\
+  \ input files\n       --verbose        Be verbose\n       --debug          Enable\
+  \ debugging\n\nNote, vcf1 is always fully parsed, whereas indexing is used for vcf2.\n\
+  Therefore, use the bigger file as vcf2 to speed things up.\nHeader/meta-data for\
+  \ the output file is taken from vcf1\n"
+generated_using:
+- --help

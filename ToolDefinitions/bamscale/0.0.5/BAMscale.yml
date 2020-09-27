@@ -178,7 +178,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
     named: []
@@ -357,7 +357,592 @@ subcommands:
         args: !SimpleFlagArg
           name: int
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: Input BED file
+            synonyms:
+            - --bed
+            - -b
+            args: !SimpleFlagArg
+              name: file
+            optional: true
+          - !Flag
+            description: Input BAM file. This can be specified multiple times in case
+              of multiple BAM files
+            synonyms:
+            - --bam
+            - -i
+            args: !SimpleFlagArg
+              name: file
+            optional: true
+          - !Flag
+            description: 'Sequencing type to be used. Can be: single, paired, and
+              auto (default: autodetect)'
+            synonyms:
+            - --libtype
+            - -l
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: 'Compute coverage using fragments instead of reads (default:
+              no)'
+            synonyms:
+            - --frag
+            - -f
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Reads need to have same orientation of peaks (default: unstranded)'
+            synonyms:
+            - --strand
+            - -s
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Reads need to have reverse orientation of peaks (default:
+              unstranded)'
+            synonyms:
+            - --rstrand
+            - -r
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: "Compute sequencing coverage from BAM file quickly using\
+              \ the index (option '0'),\nor count number of reads by parsing entire\
+              \ BAM file (slower, but more accurate; set to '1' [default])"
+            synonyms:
+            - --seqcov
+            - -e
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Input file with list of chromosomes to blacklist when computing
+              coverage for normalization
+            synonyms:
+            - --blacklist
+            - -c
+            args: !SimpleFlagArg
+              name: file
+            optional: true
+          - !Flag
+            description: "BED file with regions to subtract when computing coverage\
+              \ for normalization\nThese coordinates should not overlap so reads are\
+              \ not counted multiple times"
+            synonyms:
+            - --bedsubtract
+            - -u
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Minimum (at least) mapping quality (default: 0)'
+            synonyms:
+            - --mapq
+            - -q
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Keep duplicated reads (default: no)'
+            synonyms:
+            - --keepdup
+            - -d
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Do not filter un-proper alignments (default: filter)'
+            synonyms:
+            - --noproper
+            - -p
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: Do not remove reads with unmapped pairs
+            synonyms:
+            - --unmappair
+            - -m
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Minimum fragment size for read pairs (default: 0)'
+            synonyms:
+            - --minfrag
+            - -g
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Maximum fragment size for read pairs (default: 2000)'
+            synonyms:
+            - --maxfrag
+            - -x
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Filter reads based on fragment size (default: no)'
+            synonyms:
+            - --fragfilt
+            - -w
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Keep reads where read pair aligns to different chromosome
+              (default: no)'
+            synonyms:
+            - --diffchr
+            - -W
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: "Output directory name (default: '.')"
+            synonyms:
+            - --outdir
+            - -o
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: 'Output prefix for file names (default: none)'
+            synonyms:
+            - --prefix
+            - -n
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: 'No. of threads to use (default: 1)'
+            synonyms:
+            - --threads
+            - -t
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "cov: unrecognized option '--help'\nERROR: No BAM file(s) specified\n\
+            ERROR: No BED file specified\n\nCalculate coverage of BED coordinates\
+            \ in BAM file(s)\nVersion: v0.0.5\n\nUsage: BAMscale cov [OPTIONS] --bed\
+            \ <BEDFILE> --bam <BAM_1> (--bam <BAM_2> ... --bam <BAM_N>)\n\nOutput:\
+            \ Coverage tables (un-normalized, library-size normalized, FPKM and TPM)\n\
+            \nRequired options:\n\t--bed|-b <file>\t\tInput BED file\n\t--bam|-i <file>\t\
+            \tInput BAM file. This can be specified multiple times in case of multiple\
+            \ BAM files\n\nLibrary options:\n\t--libtype|-l <str>\tSequencing type\
+            \ to be used. Can be: single, paired, and auto (default: autodetect)\n\
+            \t--frag|-f <flag>\tCompute coverage using fragments instead of reads\
+            \ (default: no)\n\t--strand|-s <flag>\tReads need to have same orientation\
+            \ of peaks (default: unstranded)\n\t--rstrand|-r <flag>\tReads need to\
+            \ have reverse orientation of peaks (default: unstranded)\n\nSequencing\
+            \ coverage computation options:\n\t--seqcov|-e <int>\tCompute sequencing\
+            \ coverage from BAM file quickly using the index (option '0'),\n\t\t\t\
+            \tor count number of reads by parsing entire BAM file (slower, but more\
+            \ accurate; set to '1' [default])\n\n\t--blacklist|-c <file>\tInput file\
+            \ with list of chromosomes to blacklist when computing coverage for normalization\n\
+            \n\t--bedsubtract|-u <int>\tBED file with regions to subtract when computing\
+            \ coverage for normalization\n\t\t\t\tThese coordinates should not overlap\
+            \ so reads are not counted multiple times\n\nMapping options:\n\t--mapq|-q\
+            \ <int>\t\tMinimum (at least) mapping quality (default: 0)\n\t--keepdup|-d\
+            \ <flag>\tKeep duplicated reads (default: no)\n\t--noproper|-p <flag>\t\
+            Do not filter un-proper alignments (default: filter)\n\t--unmappair|-m\
+            \ <flag>\tDo not remove reads with unmapped pairs\n\t--minfrag|-g <int>\t\
+            Minimum fragment size for read pairs (default: 0)\n\t--maxfrag|-x <int>\t\
+            Maximum fragment size for read pairs (default: 2000)\n\t--fragfilt|-w\
+            \ <flag>\tFilter reads based on fragment size (default: no)\n\t--diffchr|-W\
+            \ <flag>\tKeep reads where read pair aligns to different chromosome (default:\
+            \ no)\n\nOutput options:\n\t--outdir|-o <str>\tOutput directory name (default:\
+            \ '.')\n\t--prefix|-n <str>\tOutput prefix for file names (default: none)\n\
+            \nPerformance options:\n\t--threads|-t <int>\tNo. of threads to use (default:\
+            \ 1)\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - BAMscale
+          - scale
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: scale
+            optional: false
+          named:
+          - !Flag
+            description: Input BAM file. This has to be specified at least two times.
+            synonyms:
+            - --bam
+            - -i
+            args: !SimpleFlagArg
+              name: file
+            optional: true
+          - !Flag
+            description: 'Sequencing type to be used. Can be: single, paired, and
+              auto (default: autodetect)'
+            synonyms:
+            - --libtype
+            - -l
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: 'Compute coverage using fragments instead of reads (default:
+              no)'
+            synonyms:
+            - --frag
+            - -f
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: Fragment size to be used to extend single-end library reads
+            synonyms:
+            - --fragsize
+            - -a
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "Type of normalization. (default: base)\nIf no normalization\
+              \ is needed, set '--scale no' argument, the program will disregard this\
+              \ option.\nOptions:\n1) reads: No. of mapped reads/fragments\n2) base:\
+              \ Sum of per-base coverage of reads/fragments"
+            synonyms:
+            - --normtype
+            - -y
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: "Method to scale samples together. (default: genome)\nOptions\
+              \ are:\n1) no: no scaling, just calculate coverage\n2) smallest: scale\
+              \ reads to smallest library (multiple-samples only)\n3) genome: scale\
+              \ samples to 1x genome coverage (only possible with 'base' normalization\
+              \ type)\n4) custom: scale to custom scaling factor (--factor or -F <float>\
+              \ has to be supplied)"
+            synonyms:
+            - --scale
+            - -k
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: "Scaling factor(s) when \"--scale custom\" normalization\
+              \ is selected.\nIf multiple samples are specified, scaling factors should\
+              \ be comma (\",\") delimited.\nexample in case of three input BAM files:\
+              \ 0.643,0.45667,1.3."
+            synonyms:
+            - --factor
+            - -F
+            args: !SimpleFlagArg
+              name: float
+            optional: true
+          - !Flag
+            description: "Operation to perform when scaling samples. Default: scaled\n\
+              Options are:\n1) scaled: output scaled tracks\n2) unscaled: do not scale\
+              \ files in any way\n3) log2: log2 transform against first BAM file\n\
+              4) ratio: coverage ratio against first BAM file.\n5) subtract: subtract\
+              \ coverage against first BAM file.\n5) rfd: OK-seq RFD calculation\n\
+              6) endseq: strand-specific coverages\n7) endseqr: strand-specific coverages\
+              \ (reverse strand score is negative)\n8) reptime: replication timing\
+              \ mode for two BAM files (binsize: 100bp, smoothen: 500 bins)\n9) rna:\
+              \ coverage of RNA-seq file (one file at a time)\n10) strandrna: stranded\
+              \ coverage of RNA-seq file (one file at a time)\n11) strandrnaR: stranded\
+              \ coverage of RNA-seq file (reverse is negative, one file at a time)\n\
+              Short description of settings:\nendseq: generates scaled coverage tracks\
+              \ of positive/negative strands,\nand the log2 ratios\nendseqr: generates\
+              \ scaled coverage tracks of positive/negative strands,\nthe negative\
+              \ strand coverage will be negative, and the log2 ratios are calculated\n\
+              reptime: generates scaled coverage tracks and log2 ratios of two BAM\
+              \ files,\nsetting the binsize to 100bp and smoothening smoothen to 500\
+              \ bins\nrna: coverage of RNA-seq, useful for accurate coverages at exon-intron\
+              \ boundaries\nstrandrna: stranded coverage of RNA-seq, useful for accurate\
+              \ coverages at exon-intron boundaries,\ncreating separate tracks for\
+              \ forward and reverse strand\nstrandrnaR: stranded coverage of RNA-seq,\
+              \ useful for accurate coverages at exon-intron boundaries,\ncreating\
+              \ separate tracks for forward and reverse strand, reverse strand is\
+              \ negated"
+            synonyms:
+            - --operation
+            - -r
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: Output strand-specific normalized tracks. One BAM file can
+              be specified only
+            synonyms:
+            - -S
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Size of bins for output bigWig/bedgraph generation (default:
+              5)'
+            synonyms:
+            - --binsize
+            - -z
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "Compute sequencing coverage from BAM file. (default: '1',\
+              \ count reads while parsing BAM)\nOptions are:\n1) 0: use reads in index\
+              \ (only if normalization is set to 'reads')\n2) 1: count reads while\
+              \ parsing BAM(s)\nWARNING: this option is only useful when 'reads' are\
+              \ used for normalization"
+            synonyms:
+            - --seqcov
+            - -e
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: Input file with list of chromosomes to blacklist during scaling
+              analysis
+            synonyms:
+            - --blacklist
+            - -c
+            args: !SimpleFlagArg
+              name: file
+            optional: true
+          - !Flag
+            description: "BED file with regions to subtract when computing coverage\
+              \ for normalization\nThese coordinates should not overlap so reads are\
+              \ not counted multiple times"
+            synonyms:
+            - --bedsubtract
+            - -u
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "Smoothen signal by calculating mean of N bins flanking both\
+              \ sides of each bin (default: 0)\nIf set to '0', the signal is not smoothened.\
+              \ To turn on specify a value greater than '0'.\nFor replication timing,\
+              \ a good value is to smoothen to 100k bases. If binSize is 100bp, this\
+              \ would be '1000'"
+            synonyms:
+            - --smoothen
+            - -j
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: "Which tracks should be smoothened when performing smoothening\
+              \ (default: '1' meaning only binned track).\nOptions are:\n1) 0: Smoothen\
+              \ scaled and transformed tracks (log2, ratio or subtracted)\n2) 1: Smoothen\
+              \ only the scaled sequencing track\n3) 2: Smoothen only the transformed\
+              \ (log2, ratio or subtract) track"
+            synonyms:
+            - --tracksmooth
+            - -b
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Minimum (at least) mapping quality (default: 0)'
+            synonyms:
+            - --mapq
+            - -q
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Keep duplicated reads (default: no)'
+            synonyms:
+            - --keepdup
+            - -d
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Do not filter un-proper alignments (default: filter)'
+            synonyms:
+            - --noproper
+            - -p
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: Do not remove reads with unmapped pairs
+            synonyms:
+            - --unmappair
+            - -m
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Minimum fragment size for read pairs (default: 0)'
+            synonyms:
+            - --minfrag
+            - -g
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Maximum fragment size for read pairs (default: 2000)'
+            synonyms:
+            - --maxfrag
+            - -x
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          - !Flag
+            description: 'Filter reads based on fragment size (default: no)'
+            synonyms:
+            - --fragfilt
+            - -w
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: 'Keep reads where read pair aligns to different chromosome
+              (default: no)'
+            synonyms:
+            - --diffchr
+            - -W
+            args: !SimpleFlagArg
+              name: flag
+            optional: true
+          - !Flag
+            description: "Output directory name (default: '.')"
+            synonyms:
+            - --outdir
+            - -o
+            args: !SimpleFlagArg
+              name: str
+            optional: true
+          - !Flag
+            description: 'No. of threads to use (default: 1)'
+            synonyms:
+            - --threads
+            - -t
+            args: !SimpleFlagArg
+              name: int
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "scale: unrecognized option '--help'\n\nScale one or multiple\
+            \ BAM files\nVersion: v0.0.5\n\nUsage: scale scale [OPTIONS] --bam <BAM_1>\
+            \ (--bam <BAM_2> ... --bam <BAM_N>)\n\nOutput: Coverage tracks in BigWig\
+            \ format (un-scaled, scaled, genome scaled)\n\nRequired options:\n\t--bam|-i\
+            \ <file>\t\tInput BAM file. This has to be specified at least two times.\n\
+            \nLibrary options:\n\t--libtype|-l <str>\tSequencing type to be used.\
+            \ Can be: single, paired, and auto (default: autodetect)\n\t--frag|-f\
+            \ <flag>\tCompute coverage using fragments instead of reads (default:\
+            \ no)\n\t--fragsize|-a <int>\tFragment size to be used to extend single-end\
+            \ library reads\n\nNormalization, scaling and operation type:\n\t--normtype|-y\
+            \ <str>\tType of normalization. (default: base)\n\t\t\t\tIf no normalization\
+            \ is needed, set '--scale no' argument, the program will disregard this\
+            \ option.\n\t\t\t\tOptions: \n\t\t\t\t  1) reads: No. of mapped reads/fragments\n\
+            \t\t\t\t  2) base: Sum of per-base coverage of reads/fragments\n\n\t--scale|-k\
+            \ <str>\tMethod to scale samples together. (default: genome)\n\t\t\t\t\
+            Options are: \n\t\t\t\t  1) no: no scaling, just calculate coverage\n\t\
+            \t\t\t  2) smallest: scale reads to smallest library (multiple-samples\
+            \ only)\n\t\t\t\t  3) genome: scale samples to 1x genome coverage (only\
+            \ possible with 'base' normalization type)\n\n\t\t\t\t  4) custom: scale\
+            \ to custom scaling factor (--factor or -F <float> has to be supplied)\n\
+            \n\n\t--factor|-F <float>\tScaling factor(s) when \"--scale custom\" normalization\
+            \ is selected.\n\t\t\t\t  If multiple samples are specified, scaling factors\
+            \ should be comma (\",\") delimited.\n\t\t\t\t  example in case of three\
+            \ input BAM files: 0.643,0.45667,1.3.\n\n\t--operation|-r <str>\tOperation\
+            \ to perform when scaling samples. Default: scaled\n\t\t\t\tOptions are:\
+            \ \n\t\t\t\t  1) scaled: output scaled tracks\n\t\t\t\t  2) unscaled:\
+            \ do not scale files in any way\n\t\t\t\t  3) log2: log2 transform against\
+            \ first BAM file\n\t\t\t\t  4) ratio: coverage ratio against first BAM\
+            \ file.\n\t\t\t\t  5) subtract: subtract coverage against first BAM file.\n\
+            \t\t\t\t  5) rfd: OK-seq RFD calculation\n\t\t\t\t  6) endseq: strand-specific\
+            \ coverages\n\t\t\t\t  7) endseqr: strand-specific coverages (reverse\
+            \ strand score is negative)\n\t\t\t\t  8) reptime: replication timing\
+            \ mode for two BAM files (binsize: 100bp, smoothen: 500 bins)\n\t\t\t\t\
+            \  9) rna: coverage of RNA-seq file (one file at a time)\n\t\t\t\t  10)\
+            \ strandrna: stranded coverage of RNA-seq file (one file at a time)\n\t\
+            \t\t\t  11) strandrnaR: stranded coverage of RNA-seq file (reverse is\
+            \ negative, one file at a time)\n\n\t\t\t\tShort description of settings:\n\
+            \t\t\t\tendseq: generates scaled coverage tracks of positive/negative\
+            \ strands,\n\t\t\t\t\tand the log2 ratios\n\n\t\t\t\tendseqr: generates\
+            \ scaled coverage tracks of positive/negative strands,\n\t\t\t\t\tthe\
+            \ negative strand coverage will be negative, and the log2 ratios are calculated\n\
+            \n\t\t\t\treptime: generates scaled coverage tracks and log2 ratios of\
+            \ two BAM files,\n\t\t\t\t\tsetting the binsize to 100bp and smoothening\
+            \ smoothen to 500 bins\n\n\t\t\t\trna: coverage of RNA-seq, useful for\
+            \ accurate coverages at exon-intron boundaries\n\n\t\t\t\tstrandrna: stranded\
+            \ coverage of RNA-seq, useful for accurate coverages at exon-intron boundaries,\n\
+            \t\t\t\t\tcreating separate tracks for forward and reverse strand\n\n\t\
+            \t\t\tstrandrnaR: stranded coverage of RNA-seq, useful for accurate coverages\
+            \ at exon-intron boundaries,\n\t\t\t\t\tcreating separate tracks for forward\
+            \ and reverse strand, reverse strand is negated\n\n\t-S <flag>\t\tOutput\
+            \ strand-specific normalized tracks. One BAM file can be specified only\n\
+            \n\t--binsize|-z <int>\tSize of bins for output bigWig/bedgraph generation\
+            \ (default: 5)\n\nSequencing coverage computation options:\n\t--seqcov|-e\
+            \ <int>\tCompute sequencing coverage from BAM file. (default: '1', count\
+            \ reads while parsing BAM)\n\t\t\t\tOptions are: \n\t\t\t\t  1) 0: use\
+            \ reads in index (only if normalization is set to 'reads')\n\t\t\t\t \
+            \ 2) 1: count reads while parsing BAM(s)\n\t\t\t\tWARNING: this option\
+            \ is only useful when 'reads' are used for normalization\n\n\t--blacklist|-c\
+            \ <file>\tInput file with list of chromosomes to blacklist during scaling\
+            \ analysis\n\n\t--bedsubtract|-u <int>\tBED file with regions to subtract\
+            \ when computing coverage for normalization\n\t\t\t\tThese coordinates\
+            \ should not overlap so reads are not counted multiple times\n\n\t--smoothen|-j\
+            \ <int>\tSmoothen signal by calculating mean of N bins flanking both sides\
+            \ of each bin (default: 0)\n\t\t\t\tIf set to '0', the signal is not smoothened.\
+            \ To turn on specify a value greater than '0'.\n\t\t\t\tFor replication\
+            \ timing, a good value is to smoothen to 100k bases. If binSize is 100bp,\
+            \ this would be '1000'\n\n\t--tracksmooth|-b <int>\tWhich tracks should\
+            \ be smoothened when performing smoothening (default: '1' meaning only\
+            \ binned track).\n\t\t\t\tOptions are: \n\t\t\t\t  1) 0: Smoothen scaled\
+            \ and transformed tracks (log2, ratio or subtracted)\n\t\t\t\t  2) 1:\
+            \ Smoothen only the scaled sequencing track\n\t\t\t\t  3) 2: Smoothen\
+            \ only the transformed (log2, ratio or subtract) track\n\nMapping options:\n\
+            \t--mapq|-q <int>\t\tMinimum (at least) mapping quality (default: 0)\n\
+            \t--keepdup|-d <flag>\tKeep duplicated reads (default: no)\n\t--noproper|-p\
+            \ <flag>\tDo not filter un-proper alignments (default: filter)\n\t--unmappair|-m\
+            \ <flag>\tDo not remove reads with unmapped pairs\n\t--minfrag|-g <int>\t\
+            Minimum fragment size for read pairs (default: 0)\n\t--maxfrag|-x <int>\t\
+            Maximum fragment size for read pairs (default: 2000)\n\t--fragfilt|-w\
+            \ <flag>\tFilter reads based on fragment size (default: no)\n\t--diffchr|-W\
+            \ <flag>\tKeep reads where read pair aligns to different chromosome (default:\
+            \ no)\n\nOutput options:\n\t--outdir|-o <str>\tOutput directory name (default:\
+            \ '.')\n\nPerformance options:\n\t--threads|-t <int>\tNo. of threads to\
+            \ use (default: 1)\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "\nBAMscale: a tool to quantify peaks, and scale sequencing data\n\
+          Version: v1.0\n\nUsage: BAMscale <command>\n\n\tCommands\tDescription\n\t\
+          ========\t===========\n\t   cov\t\tCalculate coverage of BED coordinates\
+          \ in BAM file(s). Outputs are raw read counts, FPKM and TPM normalized values.\n\
+          \t   scale\tConvert BAM files to BigWigs; scale one or multiple files to\
+          \ genome size or to each other.\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -394,12 +979,9 @@ subcommands:
         \ <str>\tOutput directory name (default: '.')\n\t--prefix|-n <str>\tOutput\
         \ prefix for file names (default: none)\n\nPerformance options:\n\t--threads|-t\
         \ <int>\tNo. of threads to use (default: 1)\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - BAMscale
-      - scale
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -1039,7 +1621,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag:

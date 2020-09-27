@@ -367,7 +367,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
     named: []
@@ -735,7 +735,844 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: artificially add entries of queries with themselves (for
+              clustering)
+            synonyms:
+            - --add-self-matches
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: alphabet size (range 2-21) [13]
+            synonyms:
+            - --alph-size
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'mask sequences in k-mer stage 0: w/o low complexity masking,
+              1: with low complexity masking [0]'
+            synonyms:
+            - --mask
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'lowercase letters will be excluded from k-mer search 0:
+              include region, 1: exclude region [0]'
+            synonyms:
+            - --mask-lower-case
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'k-mer size in the range (0: set automatically to optimum)
+              [14]'
+            synonyms:
+            - -k
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Set max memory per split. E.g. 800B, 5K, 10M, 1G. Defaults
+              (0) to all available system memory. [0]
+            synonyms:
+            - --split-memory-limit
+            args: !SimpleFlagArg
+              name: BYTE
+            optional: true
+          - !Flag
+            description: Extend sequences if the E-value is below [0.0, inf] [0.000]
+            synonyms:
+            - -e
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: list matches above this fraction of aligned (covered) residues
+              (see --cov-mode) [0.000]
+            synonyms:
+            - -c
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: add backtrace string (convert to alignments with mmseqs convertalis
+              utility)
+            synonyms:
+            - -a
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: '0: coverage of query and target, 1: coverage of target,
+              2: coverage of query 3: target seq. length needs to be at least x% of
+              query length, 4: query seq. length needs to be at least x% of target
+              length 5: short seq. needs to be at least x% of the other seq. length
+              [0]'
+            synonyms:
+            - --cov-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Overlap sequence identity threshold [0.0, 1.0] [0.900]
+            synonyms:
+            - --min-seq-id
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: minimum alignment length (range 0-INT_MAX) [0]
+            synonyms:
+            - --min-aln-len
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: '0: alignment length 1: shorter, 2: longer sequence [0]'
+            synonyms:
+            - --seq-id-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: kmer per sequence [60]
+            synonyms:
+            - --kmer-per-seq
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: adjust k-mer length based on specificity (only for nucleotides)
+            synonyms:
+            - --adjust-kmer-len
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Shift k-mer hash [5]
+            synonyms:
+            - --hash-shift
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Include only extendable [1, set to 0 to disable]
+            synonyms:
+            - --include-only-extendable
+            args: !SimpleFlagArg
+              name: '0'
+            optional: true
+          - !Flag
+            description: Skip kmers occuring multiple times (>=2) [1, set to 0 to
+              disable]
+            synonyms:
+            - --ignore-multi-kmer
+            args: !SimpleFlagArg
+              name: '0'
+            optional: true
+          - !Flag
+            description: Number of assembly iterations [1, inf] [12]
+            synonyms:
+            - --num-iterations
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'Rescore diagonal with: 0: Hamming distance, 1: local alignment
+              (score only), 2: local alignment, 3: global alignment or 4: longest
+              alignment fullfilling window quality criterion [3]'
+            synonyms:
+            - --rescore-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Double the (nucleotide) query sequence during the scoring
+              process to allow wrapped diagonal scoring around end and start
+            synonyms:
+            - --wrapped-scoring
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: minimum codon number in open reading frames [45]
+            synonyms:
+            - --min-length
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: maximum codon number in open reading frames [32734]
+            synonyms:
+            - --max-length
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: maximum number of codons with gaps or unknown residues before
+              an open reading frame is rejected [2147483647]
+            synonyms:
+            - --max-gaps
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'Contig start can be 0: incomplete, 1: complete, 2: both
+              [2]'
+            synonyms:
+            - --contig-start-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'Contig end can be 0: incomplete, 1: complete, 2: both  [2]'
+            synonyms:
+            - --contig-end-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'Orf fragment can be 0: from start to stop, 1: from any to
+              stop, 2: from last encountered start to stop (no start in the middle)
+              [1]'
+            synonyms:
+            - --orf-start-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: comma-seperated list of ORF frames on the forward strand
+              to be extracted [1,2,3]
+            synonyms:
+            - --forward-frames
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: comma-seperated list of ORF frames on the reverse strand
+              to be extracted [1,2,3]
+            synonyms:
+            - --reverse-frames
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: 1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL,
+              4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE, 9) FLATWORM_MITOCHONDRIAL,
+              10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL,
+              14) ALT_FLATWORM_MITOCHONDRIAL, 15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,
+              21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL, 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL,
+              24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN,
+              27) KARYORELICT, 28) CONDYLOSTOMA, 29) MESODINIUM, 30) PERTRICH, 31)
+              BLASTOCRITHIDIA [1]
+            synonyms:
+            - --translation-table
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: translate ORF to amino acid [0]
+            synonyms:
+            - --translate
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: use all alteratives for a start codon in the genetic table,
+              if false - only ATG (AUG)
+            synonyms:
+            - --use-all-table-starts
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: numeric ids in index file are offset by this value  [0]
+            synonyms:
+            - --id-offset
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: filter proteins lower than threshold [0.0,1.0] [0.200]
+            synonyms:
+            - --protein-filter-threshold
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: filter proteins by a neural network [0,1] [1]
+            synonyms:
+            - --filter-proteins
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: delete temporary files incremental [0,1] [1]
+            synonyms:
+            - --delete-tmp-inc
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Delete temporary files
+            synonyms:
+            - --remove-tmp-files
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: amino acid substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]
+            synonyms:
+            - --sub-mat
+            args: !SimpleFlagArg
+              name: MAT
+            optional: true
+          - !Flag
+            description: 'Database preload mode 0: auto, 1: fread, 2: mmap, 3: mmap+touch
+              [0]'
+            synonyms:
+            - --db-load-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: number of cores used for the computation (uses all cores
+              by default) [8]
+            synonyms:
+            - --threads
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: write results in compressed format [0]
+            synonyms:
+            - --compressed
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3:
+              +info [3]'
+            synonyms:
+            - -v
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: maximum sequence length (range 1-32768]) [65535]
+            synonyms:
+            - --max-seq-len
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Use MPI on compute grid with this MPI command (e.g. "mpirun
+              -np 42") []
+            synonyms:
+            - --mpi-runner
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: filter hits by seq.id. and coverage
+            synonyms:
+            - --filter-hits
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: 'Sort results: 0: no sorting, 1: sort by evalue (Alignment)
+              or seq.id. (Hamming) [0]'
+            synonyms:
+            - --sort-results
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: scale kmer per sequence based on sequence length as kmer-per-seq
+              val + scale x seqlen [0.000]
+            synonyms:
+            - --kmer-per-seq-scale
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: Create database lookup file (can be very large) [0]
+            synonyms:
+            - --create-lookup
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: plass assemble <i:fast(a|q)File[.gz]> | <i:fastqFile1_1[.gz]\
+            \ ... <i:fastqFileN_1[.gz] <i:fastqFile1_2[.gz] ... <i:fastqFileN_2[.gz]>\
+            \ <o:fastaFile> <tmpDir> [options]\n\nAssemble protein sequences by iterative\
+            \ greedy overlap assembly. Extends sequence to the left and right using\
+            \ ungapped alignments.\n By Martin Steinegger <martin.steinegger@mpibpc.mpg.de>\
+            \ \n\nOptions: \n Prefilter:                    \n   --add-self-matches\
+            \               artificially add entries of queries with themselves (for\
+            \ clustering)\n   --alph-size INT                  alphabet size (range\
+            \ 2-21) [13]\n   --mask INT                       mask sequences in k-mer\
+            \ stage 0: w/o low complexity masking, 1: with low complexity masking\
+            \ [0]\n   --mask-lower-case INT            lowercase letters will be excluded\
+            \ from k-mer search 0: include region, 1: exclude region [0]\n   -k INT\
+            \                           k-mer size in the range (0: set automatically\
+            \ to optimum) [14]\n   --split-memory-limit BYTE        Set max memory\
+            \ per split. E.g. 800B, 5K, 10M, 1G. Defaults (0) to all available system\
+            \ memory. [0]\n\n Align:                        \n   -e FLOAT        \
+            \                 Extend sequences if the E-value is below [0.0, inf]\
+            \ [0.000]\n   -c FLOAT                         list matches above this\
+            \ fraction of aligned (covered) residues (see --cov-mode) [0.000]\n  \
+            \ -a                               add backtrace string (convert to alignments\
+            \ with mmseqs convertalis utility)\n   --cov-mode INT                \
+            \   0: coverage of query and target, 1: coverage of target, 2: coverage\
+            \ of query 3: target seq. length needs to be at least x% of query length,\
+            \ 4: query seq. length needs to be at least x% of target length 5: short\
+            \ seq. needs to be at least x% of the other seq. length [0]\n   --min-seq-id\
+            \ FLOAT               Overlap sequence identity threshold [0.0, 1.0] [0.900]\n\
+            \   --min-aln-len INT                minimum alignment length (range 0-INT_MAX)\
+            \ [0]\n   --seq-id-mode INT                0: alignment length 1: shorter,\
+            \ 2: longer sequence [0]\n\n Kmermatcher:                  \n   --kmer-per-seq\
+            \ INT               kmer per sequence [60]\n   --adjust-kmer-len     \
+            \           adjust k-mer length based on specificity (only for nucleotides)\n\
+            \   --hash-shift INT                 Shift k-mer hash [5]\n   --include-only-extendable\
+            \ 0      Include only extendable [1, set to 0 to disable]\n   --ignore-multi-kmer\
+            \ 0            Skip kmers occuring multiple times (>=2) [1, set to 0 to\
+            \ disable]\n\n Profile:                      \n   --num-iterations INT\
+            \             Number of assembly iterations [1, inf] [12]\n\n Misc:  \
+            \                       \n   --rescore-mode INT               Rescore\
+            \ diagonal with: 0: Hamming distance, 1: local alignment (score only),\
+            \ 2: local alignment, 3: global alignment or 4: longest alignment fullfilling\
+            \ window quality criterion [3]\n   --wrapped-scoring                Double\
+            \ the (nucleotide) query sequence during the scoring process to allow\
+            \ wrapped diagonal scoring around end and start\n   --min-length INT \
+            \                minimum codon number in open reading frames [45]\n  \
+            \ --max-length INT                 maximum codon number in open reading\
+            \ frames [32734]\n   --max-gaps INT                   maximum number of\
+            \ codons with gaps or unknown residues before an open reading frame is\
+            \ rejected [2147483647]\n   --contig-start-mode INT          Contig start\
+            \ can be 0: incomplete, 1: complete, 2: both [2]\n   --contig-end-mode\
+            \ INT            Contig end can be 0: incomplete, 1: complete, 2: both\
+            \  [2]\n   --orf-start-mode INT             Orf fragment can be 0: from\
+            \ start to stop, 1: from any to stop, 2: from last encountered start to\
+            \ stop (no start in the middle) [1]\n   --forward-frames STR         \
+            \    comma-seperated list of ORF frames on the forward strand to be extracted\
+            \ [1,2,3]\n   --reverse-frames STR             comma-seperated list of\
+            \ ORF frames on the reverse strand to be extracted [1,2,3]\n   --translation-table\
+            \ INT          1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL,\
+            \ 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE, 9) FLATWORM_MITOCHONDRIAL,\
+            \ 10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL,\
+            \ 14) ALT_FLATWORM_MITOCHONDRIAL, 15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+            \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL, 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL,\
+            \ 24) PTEROBRANCHIA_MITOCHONDRIAL, 25) GRACILIBACTERIA, 26) PACHYSOLEN,\
+            \ 27) KARYORELICT, 28) CONDYLOSTOMA, 29) MESODINIUM, 30) PERTRICH, 31)\
+            \ BLASTOCRITHIDIA [1]\n   --translate INT                  translate ORF\
+            \ to amino acid [0]\n   --use-all-table-starts           use all alteratives\
+            \ for a start codon in the genetic table, if false - only ATG (AUG)\n\
+            \   --id-offset INT                  numeric ids in index file are offset\
+            \ by this value  [0]\n   --protein-filter-threshold FLOAT filter proteins\
+            \ lower than threshold [0.0,1.0] [0.200]\n   --filter-proteins INT   \
+            \         filter proteins by a neural network [0,1] [1]\n   --delete-tmp-inc\
+            \ INT             delete temporary files incremental [0,1] [1]\n   --remove-tmp-files\
+            \               Delete temporary files\n\n Common:                   \
+            \    \n   --sub-mat MAT                    amino acid substitution matrix\
+            \ file [nucl:nucleotide.out,aa:blosum62.out]\n   --db-load-mode INT  \
+            \             Database preload mode 0: auto, 1: fread, 2: mmap, 3: mmap+touch\
+            \ [0]\n   --threads INT                    number of cores used for the\
+            \ computation (uses all cores by default) [8]\n   --compressed INT   \
+            \              write results in compressed format [0]\n   -v INT     \
+            \                      verbosity level: 0=nothing, 1: +errors, 2: +warnings,\
+            \ 3: +info [3]\n   --max-seq-len INT                maximum sequence length\
+            \ (range 1-32768]) [65535]\n   --mpi-runner STR                 Use MPI\
+            \ on compute grid with this MPI command (e.g. \"mpirun -np 42\") []\n\n\
+            \ Expert:                       \n   --filter-hits                   \
+            \ filter hits by seq.id. and coverage\n   --sort-results INT         \
+            \      Sort results: 0: no sorting, 1: sort by evalue (Alignment) or seq.id.\
+            \ (Hamming) [0]\n   --kmer-per-seq-scale FLOAT       scale kmer per sequence\
+            \ based on sequence length as kmer-per-seq val + scale x seqlen [0.000]\n\
+            \   --create-lookup INT              Create database lookup file (can\
+            \ be very large) [0]\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - plass
+          - nuclassemble
+          positional: []
+          named:
+          - !Flag
+            description: alphabet size (range 2-21) [5]
+            synonyms:
+            - --alph-size
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'mask sequences in k-mer stage 0: w/o low complexity masking,
+              1: with low complexity masking [0]'
+            synonyms:
+            - --mask
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'lowercase letters will be excluded from k-mer search 0:
+              include region, 1: exclude region [0]'
+            synonyms:
+            - --mask-lower-case
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'k-mer size in the range (0: set automatically to optimum)
+              [22]'
+            synonyms:
+            - -k
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Set max memory per split. E.g. 800B, 5K, 10M, 1G. Defaults
+              (0) to all available system memory. [0]
+            synonyms:
+            - --split-memory-limit
+            args: !SimpleFlagArg
+              name: BYTE
+            optional: true
+          - !Flag
+            description: artificially add entries of queries with themselves (for
+              clustering)
+            synonyms:
+            - --add-self-matches
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Overlap sequence identity threshold [0.0, 1.0] [0.970]
+            synonyms:
+            - --min-seq-id
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: '0: coverage of query and target, 1: coverage of target,
+              2: coverage of query 3: target seq. length needs to be at least x% of
+              query length, 4: query seq. length needs to be at least x% of target
+              length 5: short seq. needs to be at least x% of the other seq. length
+              [0]'
+            synonyms:
+            - --cov-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: list matches above this fraction of aligned (covered) residues
+              (see --cov-mode) [0.000]
+            synonyms:
+            - -c
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: Extend sequences if the E-value is below [0.0, inf] [0.000]
+            synonyms:
+            - -e
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: add backtrace string (convert to alignments with mmseqs convertalis
+              utility)
+            synonyms:
+            - -a
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: minimum alignment length (range 0-INT_MAX) [0]
+            synonyms:
+            - --min-aln-len
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: '0: alignment length 1: shorter, 2: longer sequence [0]'
+            synonyms:
+            - --seq-id-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: kmer per sequence [60]
+            synonyms:
+            - --kmer-per-seq
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: adjust k-mer length based on specificity (only for nucleotides)
+            synonyms:
+            - --adjust-kmer-len
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Shift k-mer hash [5]
+            synonyms:
+            - --hash-shift
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Include only extendable [1, set to 0 to disable]
+            synonyms:
+            - --include-only-extendable
+            args: !SimpleFlagArg
+              name: '0'
+            optional: true
+          - !Flag
+            description: Skip kmers occuring multiple times (>=2) [1, set to 0 to
+              disable]
+            synonyms:
+            - --ignore-multi-kmer
+            args: !SimpleFlagArg
+              name: '0'
+            optional: true
+          - !Flag
+            description: Number of assembly iterations [1, inf] [12]
+            synonyms:
+            - --num-iterations
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Check for circular sequences (avoid infinite extension of
+              circular or long repeated regions)  [1, set to 0 to disable]
+            synonyms:
+            - --cycle-check
+            args: !SimpleFlagArg
+              name: '0'
+            optional: true
+          - !Flag
+            description: Minimum length of assembled contig to output [1000]
+            synonyms:
+            - --min-contig-len
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Threshold to reduce redundancy in assembly by applying the
+              linclust algorithm (clustering threshold) (range 0.0-1.0) [0.970]
+            synonyms:
+            - --clust-thr
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: Delete temporary files
+            synonyms:
+            - --remove-tmp-files
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: delete temporary files incremental [0,1] [1]
+            synonyms:
+            - --delete-tmp-inc
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'Rescore diagonal with: 0: Hamming distance, 1: local alignment
+              (score only), 2: local alignment, 3: global alignment or 4: longest
+              alignment fullfilling window quality criterion [3]'
+            synonyms:
+            - --rescore-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: Double the (nucleotide) query sequence during the scoring
+              process to allow wrapped diagonal scoring around end and start
+            synonyms:
+            - --wrapped-scoring
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Remove superfluous part of circular fragments [1, set to
+              0 to disable]
+            synonyms:
+            - --chop-cycle
+            args: !SimpleFlagArg
+              name: '0'
+            optional: true
+          - !Flag
+            description: Use MPI on compute grid with this MPI command (e.g. "mpirun
+              -np 42") []
+            synonyms:
+            - --mpi-runner
+            args: !SimpleFlagArg
+              name: STR
+            optional: true
+          - !Flag
+            description: amino acid substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]
+            synonyms:
+            - --sub-mat
+            args: !SimpleFlagArg
+              name: MAT
+            optional: true
+          - !Flag
+            description: maximum sequence length (range 1-32768]) [65535]
+            synonyms:
+            - --max-seq-len
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: number of cores used for the computation (uses all cores
+              by default) [8]
+            synonyms:
+            - --threads
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: write results in compressed format [0]
+            synonyms:
+            - --compressed
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3:
+              +info [3]'
+            synonyms:
+            - -v
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: 'Database preload mode 0: auto, 1: fread, 2: mmap, 3: mmap+touch
+              [0]'
+            synonyms:
+            - --db-load-mode
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          - !Flag
+            description: scale kmer per sequence based on sequence length as kmer-per-seq
+              val + scale x seqlen [0.100]
+            synonyms:
+            - --kmer-per-seq-scale
+            args: !SimpleFlagArg
+              name: FLOAT
+            optional: true
+          - !Flag
+            description: filter hits by seq.id. and coverage
+            synonyms:
+            - --filter-hits
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: 'Sort results: 0: no sorting, 1: sort by evalue (Alignment)
+              or seq.id. (Hamming) [0]'
+            synonyms:
+            - --sort-results
+            args: !SimpleFlagArg
+              name: INT
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: plass nuclassemble <i:fast(a|q)File[.gz]> | <i:fastqFile1_1[.gz]\
+            \ ... <i:fastqFileN_1[.gz] <i:fastqFile1_2[.gz] ... <i:fastqFileN_2[.gz]>\
+            \ <o:fastaFile> <tmpDir> [options]\n\nAssemble nucleotide sequences by\
+            \ iterative greedy overlap assembly (experimental). Extends sequence to\
+            \ the left and right using ungapped alignments.\n By Annika Seidel <annika.seidel@mpibpc.mpg.de>\
+            \ & Martin Steinegger <martin.steinegger@mpibpc.mpg.de> \n\nOptions: \n\
+            \ Prefilter:                   \n   --alph-size INT                 alphabet\
+            \ size (range 2-21) [5]\n   --mask INT                      mask sequences\
+            \ in k-mer stage 0: w/o low complexity masking, 1: with low complexity\
+            \ masking [0]\n   --mask-lower-case INT           lowercase letters will\
+            \ be excluded from k-mer search 0: include region, 1: exclude region [0]\n\
+            \   -k INT                          k-mer size in the range (0: set automatically\
+            \ to optimum) [22]\n   --split-memory-limit BYTE       Set max memory\
+            \ per split. E.g. 800B, 5K, 10M, 1G. Defaults (0) to all available system\
+            \ memory. [0]\n   --add-self-matches              artificially add entries\
+            \ of queries with themselves (for clustering)\n\n Align:             \
+            \          \n   --min-seq-id FLOAT              Overlap sequence identity\
+            \ threshold [0.0, 1.0] [0.970]\n   --cov-mode INT                  0:\
+            \ coverage of query and target, 1: coverage of target, 2: coverage of\
+            \ query 3: target seq. length needs to be at least x% of query length,\
+            \ 4: query seq. length needs to be at least x% of target length 5: short\
+            \ seq. needs to be at least x% of the other seq. length [0]\n   -c FLOAT\
+            \                        list matches above this fraction of aligned (covered)\
+            \ residues (see --cov-mode) [0.000]\n   -e FLOAT                     \
+            \   Extend sequences if the E-value is below [0.0, inf] [0.000]\n   -a\
+            \                              add backtrace string (convert to alignments\
+            \ with mmseqs convertalis utility)\n   --min-aln-len INT             \
+            \  minimum alignment length (range 0-INT_MAX) [0]\n   --seq-id-mode INT\
+            \               0: alignment length 1: shorter, 2: longer sequence [0]\n\
+            \n Kmermatcher:                 \n   --kmer-per-seq INT              kmer\
+            \ per sequence [60]\n   --adjust-kmer-len               adjust k-mer length\
+            \ based on specificity (only for nucleotides)\n   --hash-shift INT   \
+            \             Shift k-mer hash [5]\n   --include-only-extendable 0   \
+            \  Include only extendable [1, set to 0 to disable]\n   --ignore-multi-kmer\
+            \ 0           Skip kmers occuring multiple times (>=2) [1, set to 0 to\
+            \ disable]\n\n Profile:                     \n   --num-iterations INT\
+            \            Number of assembly iterations [1, inf] [12]\n\n Misc:   \
+            \                     \n   --cycle-check 0                 Check for circular\
+            \ sequences (avoid infinite extension of circular or long repeated regions)\
+            \  [1, set to 0 to disable]\n   --min-contig-len INT            Minimum\
+            \ length of assembled contig to output [1000]\n   --clust-thr FLOAT  \
+            \             Threshold to reduce redundancy in assembly by applying the\
+            \ linclust algorithm (clustering threshold) (range 0.0-1.0) [0.970]\n\
+            \   --remove-tmp-files              Delete temporary files\n   --delete-tmp-inc\
+            \ INT            delete temporary files incremental [0,1] [1]\n   --rescore-mode\
+            \ INT              Rescore diagonal with: 0: Hamming distance, 1: local\
+            \ alignment (score only), 2: local alignment, 3: global alignment or 4:\
+            \ longest alignment fullfilling window quality criterion [3]\n   --wrapped-scoring\
+            \               Double the (nucleotide) query sequence during the scoring\
+            \ process to allow wrapped diagonal scoring around end and start\n   --chop-cycle\
+            \ 0                  Remove superfluous part of circular fragments [1,\
+            \ set to 0 to disable]\n\n Common:                      \n   --mpi-runner\
+            \ STR                Use MPI on compute grid with this MPI command (e.g.\
+            \ \"mpirun -np 42\") []\n   --sub-mat MAT                   amino acid\
+            \ substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]\n   --max-seq-len\
+            \ INT               maximum sequence length (range 1-32768]) [65535]\n\
+            \   --threads INT                   number of cores used for the computation\
+            \ (uses all cores by default) [8]\n   --compressed INT               \
+            \ write results in compressed format [0]\n   -v INT                  \
+            \        verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info\
+            \ [3]\n   --db-load-mode INT              Database preload mode 0: auto,\
+            \ 1: fread, 2: mmap, 3: mmap+touch [0]\n\n Expert:                   \
+            \   \n   --kmer-per-seq-scale FLOAT      scale kmer per sequence based\
+            \ on sequence length as kmer-per-seq val + scale x seqlen [0.100]\n  \
+            \ --filter-hits                   filter hits by seq.id. and coverage\n\
+            \   --sort-results INT              Sort results: 0: no sorting, 1: sort\
+            \ by evalue (Alignment) or seq.id. (Hamming) [0]\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Protein Level Assembler.\n\nPlass Version: 3.764a3\n© Martin Steinegger\
+          \ (martin.steinegger@mpibpc.mpg.de)\n\nMain tools  (for non-experts)\n \
+          \ assemble          \tAssemble protein sequences by iterative greedy overlap\
+          \ assembly.\n  nuclassemble      \tAssemble nucleotide sequences by iterative\
+          \ greedy overlap assembly. (experimental\n\n\nInvalid Command: --help\n\
+          Did you mean \"plass createdb\"?\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -824,12 +1661,9 @@ subcommands:
         \   --kmer-per-seq-scale FLOAT       scale kmer per sequence based on sequence\
         \ length as kmer-per-seq val + scale x seqlen [0.000]\n   --create-lookup\
         \ INT              Create database lookup file (can be very large) [0]\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - plass
-      - nuclassemble
+      command: *id005
       positional: []
       named:
       - !Flag
@@ -1548,7 +2382,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag:

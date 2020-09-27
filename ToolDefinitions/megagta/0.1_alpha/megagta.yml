@@ -46,7 +46,7 @@ subcommands:
     name: low_cov_penalty
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -91,7 +91,386 @@ subcommands:
         name: low_cov_penalty
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: search
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: succinct_dbg
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: gene_list
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: starting_kmers_prefix
+            optional: false
+          - !Positional
+            description: ''
+            position: 4
+            name: output_prefix
+            optional: false
+          - !Positional
+            description: ''
+            position: 5
+            name: prune_len
+            optional: false
+          - !Positional
+            description: ''
+            position: 6
+            name: low_cov_penalty
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: search <succinct_dbg> <gene_list> <starting_kmers_prefix>\
+            \ <output_prefix> <prune_len> <low_cov_penalty> [num_threads=0]\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id006
+          - megagta
+          - findstart
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: findstart
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: ref_seq
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: read.lib
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: k_size
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: findstart <ref_seq> <read.lib> <k_size> [num_threads=0]\n"
+          generated_using: &id005 []
+        - !Command
+          command: &id007
+          - megagta
+          - readstat
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: cat
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: cat *.fq | readstat\n"
+          generated_using: *id004
+        - !Command
+          command: &id008
+          - megagta
+          - denovo
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: denovo
+            optional: false
+          named:
+          - !Flag
+            description: succinct de Bruijn graph name
+            synonyms:
+            - -s
+            - --sdbg_name
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=out)         output prefix
+            synonyms:
+            - -o
+            - --output_prefix
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=0)         number of cpu threads
+            synonyms:
+            - -t
+            - --num_cpu_threads
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=-1)            max length for tips to be removed. -1 for
+              2k
+            synonyms:
+            - --max_tip_len
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: do not remove bubbles
+            synonyms:
+            - --no_bubble
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: (=400)        min length of a standalone contig to output
+              to final.contigs.fa
+            synonyms:
+            - --min_standalone
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=0)              min length of contig to output
+            synonyms:
+            - --min_contig
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "denovo: unrecognized option '--help'\nuknown option\nUsage:\
+            \ denovo -s sdbg_name -o output_prefix\noptions:\n  -s, --sdbg_name arg\
+            \                    succinct de Bruijn graph name\n  -o, --output_prefix\
+            \ arg (=out)         output prefix\n  -t, --num_cpu_threads arg (=0) \
+            \        number of cpu threads\n      --max_tip_len arg (=-1)        \
+            \    max length for tips to be removed. -1 for 2k\n      --no_bubble \
+            \                       do not remove bubbles\n      --min_standalone\
+            \ arg (=400)        min length of a standalone contig to output to final.contigs.fa\n\
+            \      --min_contig arg (=0)              min length of contig to output\n\
+            \n"
+          generated_using: *id004
+        - !Command
+          command: &id009
+          - megagta
+          - filterbylen
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: cat
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: contigs.fa
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: cat contigs.fa | filterbylen <min_len>\n"
+          generated_using: *id005
+        - !Command
+          command: &id010
+          - megagta
+          - translate
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: translate
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: nucl_seq
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Usage: translate <nucl_seq> \n"
+          generated_using: *id005
+        - !Command
+          command: &id011
+          - megagta
+          - buildgraph
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: sdbg_builder
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: read2sdbg
+            optional: false
+          named:
+          - !Flag
+            description: (=21)                 kmer size
+            synonyms:
+            - -k
+            - --kmer_k
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=2)      min frequency to output an edge
+            synonyms:
+            - -m
+            - --min_kmer_frequency
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=0)                Max memory to be used. 90% of the free
+              memory is recommended.
+            synonyms:
+            - --host_mem
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=0)                 gpu memory to be used. 0 for auto detect.
+            synonyms:
+            - --gpu_mem
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=0)         number of CPU threads. At least 2.
+            synonyms:
+            - --num_cpu_threads
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=0)      number of threads for output. Must be less than
+              num_cpu_threads
+            synonyms:
+            - --num_output_threads
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: input fast[aq] file, can be gzip'ed. "-" for stdin.
+            synonyms:
+            - --read_lib_file
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: input assisting fast[aq] file (FILE_NAME.info should exist),
+              can be gzip'ed.
+            synonyms:
+            - --assist_seq
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: (=out)         output prefix
+            synonyms:
+            - --output_prefix
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: "(=1)                memory options. 0: minimize memory usage;\
+              \ 1: automatically use moderate memory; other: use all available mem\
+              \ specified by '--host_mem'"
+            synonyms:
+            - --mem_flag
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: to add mercy edges.
+            synonyms:
+            - --need_mercy
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -o
+            args: !SimpleFlagArg
+              name: out
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "buildgraph: unrecognized option '--help'\nuknown option\nUsage:\
+            \ sdbg_builder read2sdbg --read_lib_file fastx_file -o out\nOptions:\n\
+            \  -k, --kmer_k arg (=21)                 kmer size\n  -m, --min_kmer_frequency\
+            \ arg (=2)      min frequency to output an edge\n      --host_mem arg\
+            \ (=0)                Max memory to be used. 90% of the free memory is\
+            \ recommended.\n      --gpu_mem arg (=0)                 gpu memory to\
+            \ be used. 0 for auto detect.\n      --num_cpu_threads arg (=0)      \
+            \   number of CPU threads. At least 2.\n      --num_output_threads arg\
+            \ (=0)      number of threads for output. Must be less than num_cpu_threads\n\
+            \      --read_lib_file arg                input fast[aq] file, can be\
+            \ gzip'ed. \"-\" for stdin.\n      --assist_seq arg                  \
+            \ input assisting fast[aq] file (FILE_NAME.info should exist), can be\
+            \ gzip'ed.\n      --output_prefix arg (=out)         output prefix\n \
+            \     --mem_flag arg (=1)                memory options. 0: minimize memory\
+            \ usage; 1: automatically use moderate memory; other: use all available\
+            \ mem specified by '--host_mem'\n      --need_mercy                  \
+            \     to add mercy edges.\n\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: megagta <sub_program> [sub options]\n    sub-programs:\n\
+          \       buildlib              build read library\n       buildgraph    \
+          \        build the SdBG\n       denovo                de novo assemble contigs\
+          \ from SDBG\n       findstart             find starting kmers\n       search\
+          \                A* search\n       dumpversion           dump MEGAHIT-GT\
+          \ version\n       readstat              get sequence stat from fastq/a files\n\
+          \       filterbylen           filter contigs by length\n       translate\
+          \             translate DNA to Protein\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -99,12 +478,9 @@ subcommands:
       version_flag:
       help_text: "Usage: search <succinct_dbg> <gene_list> <starting_kmers_prefix>\
         \ <output_prefix> <prune_len> <low_cov_penalty> [num_threads=0]\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id006
-      - megagta
-      - findstart
+      command: *id006
       positional:
       - !Positional
         description: ''
@@ -134,11 +510,9 @@ subcommands:
       usage_flag:
       version_flag:
       help_text: "Usage: findstart <ref_seq> <read.lib> <k_size> [num_threads=0]\n"
-      generated_using: &id005 []
+      generated_using: *id005
     - !Command
-      command: &id007
-      - megagta
-      - readstat
+      command: *id007
       positional:
       - !Positional
         description: ''
@@ -155,9 +529,7 @@ subcommands:
       help_text: "Usage: cat *.fq | readstat\n"
       generated_using: *id004
     - !Command
-      command: &id008
-      - megagta
-      - denovo
+      command: *id008
       positional:
       - !Positional
         description: ''
@@ -234,9 +606,7 @@ subcommands:
         \ (=0)              min length of contig to output\n\n"
       generated_using: *id004
     - !Command
-      command: &id009
-      - megagta
-      - filterbylen
+      command: *id009
       positional:
       - !Positional
         description: ''
@@ -258,9 +628,7 @@ subcommands:
       help_text: "Usage: cat contigs.fa | filterbylen <min_len>\n"
       generated_using: *id005
     - !Command
-      command: &id010
-      - megagta
-      - translate
+      command: *id010
       positional:
       - !Positional
         description: ''
@@ -282,9 +650,7 @@ subcommands:
       help_text: "Usage: translate <nucl_seq> \n"
       generated_using: *id005
     - !Command
-      command: &id011
-      - megagta
-      - buildgraph
+      command: *id011
       positional:
       - !Positional
         description: ''
@@ -454,7 +820,7 @@ subcommands:
     name: k_size
     optional: false
   named: []
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -471,7 +837,7 @@ subcommands:
     name: cat
     optional: false
   named: []
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -539,7 +905,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -568,7 +934,7 @@ subcommands:
     name: contigs.fa
     optional: false
   named: []
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -590,7 +956,7 @@ subcommands:
     name: nucl_seq
     optional: false
   named: []
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -701,7 +1067,7 @@ subcommands:
     args: !SimpleFlagArg
       name: out
     optional: true
-  parent: *id003
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:

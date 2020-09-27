@@ -1,0 +1,124 @@
+!Command
+command:
+- phyluce_assembly_match_contigs_to_probes
+positional: []
+named:
+- !Flag
+  description: "OUTPUT\n[--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n\
+    [--min-coverage MIN_COVERAGE]\n[--min-identity MIN_IDENTITY]\n[--dupefile DUPEFILE]\n\
+    [--regex REGEX]\n[--keep-duplicates KEEP_DUPLICATES]"
+  synonyms:
+  - --probes
+  - --output
+  args: !SimpleFlagArg
+    name: PROBES
+  optional: true
+- !Flag
+  description: "The directory containing the assembled contigs in\nwhich you are searching\
+    \ for UCE loci."
+  synonyms:
+  - --contigs
+  args: !SimpleFlagArg
+    name: CONTIGS
+  optional: true
+- !Flag
+  description: The logging level to use.
+  synonyms:
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      WARN:
+      INFO:
+      CRITICAL:
+  optional: true
+- !Flag
+  description: The path to a directory to hold logs.
+  synonyms:
+  - --log-path
+  args: !SimpleFlagArg
+    name: LOG_PATH
+  optional: true
+- !Flag
+  description: "The minimum percent coverage required for a match\n[default=80]."
+  synonyms:
+  - --min-coverage
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+  optional: true
+- !Flag
+  description: "The minimum percent identity required for a match\n[default=80]."
+  synonyms:
+  - --min-identity
+  args: !SimpleFlagArg
+    name: MIN_IDENTITY
+  optional: true
+- !Flag
+  description: "Path to self-to-self lastz results for baits to remove\npotential\
+    \ duplicate probes."
+  synonyms:
+  - --dupefile
+  args: !SimpleFlagArg
+    name: DUPEFILE
+  optional: true
+- !Flag
+  description: "A regular expression to apply to the probe names for\nreplacement\
+    \ [default='^(uce-\\d+)(?:_p\\d+.*)']."
+  synonyms:
+  - --regex
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: "A optional output file in which to store those loci\nthat appear to\
+    \ be duplicates.\n"
+  synonyms:
+  - --keep-duplicates
+  args: !SimpleFlagArg
+    name: KEEP_DUPLICATES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: phyluce_assembly_match_contigs_to_probes [-h] --contigs CONTIGS\n\
+  \                                                --probes PROBES --output\n    \
+  \                                            OUTPUT\n                          \
+  \                      [--verbosity {INFO,WARN,CRITICAL}]\n                    \
+  \                            [--log-path LOG_PATH]\n                           \
+  \                     [--min-coverage MIN_COVERAGE]\n                          \
+  \                      [--min-identity MIN_IDENTITY]\n                         \
+  \                       [--dupefile DUPEFILE]\n                                \
+  \                [--regex REGEX]\n                                             \
+  \   [--keep-duplicates KEEP_DUPLICATES]\n\nMatch UCE probes/baits to assembled contigs\
+  \ and store the data in a relational\ndatabase. The matching process is dependent\
+  \ on the probe names in the file. If\nthe probe names are not like 'uce-1001_p1'\
+  \ where 'uce-' indicates we're\nsearching for uce loci, '1001' indicates locus 1001,\
+  \ '_p1' indicates this is\nprobe 1 for locus 1001, you will need to set the optional\
+  \ --regex parameter.\nSo, if your probe names are 'MyProbe-A_probe1', the --regex\
+  \ will look like\n--regex='^(MyProbe-\\W+)(?:_probe\\d+.*)'\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --contigs CONTIGS  \
+  \   The directory containing the assembled contigs in\n                        which\
+  \ you are searching for UCE loci.\n  --probes PROBES       The bait/probe file in\
+  \ FASTA format.\n  --output OUTPUT       The directory in which to store the resulting\
+  \ SQL\n                        database and LASTZ files.\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use.\n  --log-path LOG_PATH   The\
+  \ path to a directory to hold logs.\n  --min-coverage MIN_COVERAGE\n           \
+  \             The minimum percent coverage required for a match\n              \
+  \          [default=80].\n  --min-identity MIN_IDENTITY\n                      \
+  \  The minimum percent identity required for a match\n                        [default=80].\n\
+  \  --dupefile DUPEFILE   Path to self-to-self lastz results for baits to remove\n\
+  \                        potential duplicate probes.\n  --regex REGEX         A\
+  \ regular expression to apply to the probe names for\n                        replacement\
+  \ [default='^(uce-\\d+)(?:_p\\d+.*)'].\n  --keep-duplicates KEEP_DUPLICATES\n  \
+  \                      A optional output file in which to store those loci\n   \
+  \                     that appear to be duplicates.\n"
+generated_using:
+- --help

@@ -1,0 +1,151 @@
+!Command
+command:
+- pathoscope
+- LIB
+positional: []
+named:
+- !Flag
+  description: "Specify reference genome(Download\nftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)"
+  synonyms:
+  - -genomeFile
+  args: !SimpleFlagArg
+    name: LIB_REFERENCE
+  optional: true
+- !Flag
+  description: "Specify taxon ids of your interest with comma\nseparated (if you have\
+    \ multiple taxon ids). If you do\nnot specify this option, it will work on all\
+    \ entries\nin the reference file. For taxonomy id lookup, refer\nto http://www.ncbi.nlm.nih.gov/taxonomy"
+  synonyms:
+  - -taxonIds
+  args: !SimpleFlagArg
+    name: LIB_TAXON_IDS
+  optional: true
+- !Flag
+  description: "Specify taxon ids to exclude with comma separated (if\nyou have multiple\
+    \ taxon ids to exclude)."
+  synonyms:
+  - -excludeTaxonIds
+  args: !SimpleFlagArg
+    name: LIB_EXCLUDE_TAXON_IDS
+  optional: true
+- !Flag
+  description: "Do not keep an additional description in original\nfasta seq header.Depending\
+    \ on NGS aligner, a long\nsequence header may slow down its mapping process."
+  synonyms:
+  - --noDesc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "To include all sub taxonomies under the query taxonomy\nid. e.g.,\
+    \ if you set -t 4751 --subtax, it will cover\nall sub taxonomies under taxon id\
+    \ 4751 (fungi)."
+  synonyms:
+  - --subTax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "To enable online searching in case you cannot find a\ncorrect taxonomy\
+    \ id for a given gi. When there are\nmany entries in nt whose gi is invalid, this\
+    \ option\nmay slow down the overall process."
+  synonyms:
+  - --online
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify hostname running mysql if you want to use\nmysql instead of\
+    \ hash method in mapping gi to taxonomy\nid"
+  synonyms:
+  - -dbhost
+  args: !SimpleFlagArg
+    name: LIB_DBHOST
+  optional: true
+- !Flag
+  description: "provide mysql server port if different from default\n(3306)"
+  synonyms:
+  - -dbport
+  args: !SimpleFlagArg
+    name: LIB_DBPORT
+  optional: true
+- !Flag
+  description: user name to access mysql
+  synonyms:
+  - -dbuser
+  args: !SimpleFlagArg
+    name: LIB_DBUSER
+  optional: true
+- !Flag
+  description: provide password associate with user
+  synonyms:
+  - -dbpasswd
+  args: !SimpleFlagArg
+    name: LIB_DBPASSWD
+  optional: true
+- !Flag
+  description: 'mysql pathoscope database name (default: pathodb)'
+  synonyms:
+  - -db
+  args: !SimpleFlagArg
+    name: LIB_DB
+  optional: true
+- !Flag
+  description: Output Directory (Default=. (current directory))
+  synonyms:
+  - -outDir
+  args: !SimpleFlagArg
+    name: LIB_OUTDIR
+  optional: true
+- !Flag
+  description: "specify an output prefix to name your target database\n"
+  synonyms:
+  - -outPrefix
+  args: !SimpleFlagArg
+    name: LIB_OUTPREFIX
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Running without mySQLdb library\nusage: pathoscope LIB [-h] -genomeFile\
+  \ LIB_REFERENCE [-taxonIds LIB_TAXON_IDS]\n                      [-excludeTaxonIds\
+  \ LIB_EXCLUDE_TAXON_IDS] [--noDesc]\n                      [--subTax] [--online]\
+  \ [-dbhost LIB_DBHOST]\n                      [-dbport LIB_DBPORT] [-dbuser LIB_DBUSER]\n\
+  \                      [-dbpasswd LIB_DBPASSWD] [-db LIB_DB]\n                 \
+  \     [-outDir LIB_OUTDIR] -outPrefix LIB_OUTPREFIX\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -genomeFile LIB_REFERENCE\n\
+  \                        Specify reference genome(Download\n                   \
+  \     ftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)\n  -taxonIds LIB_TAXON_IDS\n\
+  \                        Specify taxon ids of your interest with comma\n       \
+  \                 separated (if you have multiple taxon ids). If you do\n      \
+  \                  not specify this option, it will work on all entries\n      \
+  \                  in the reference file. For taxonomy id lookup, refer\n      \
+  \                  to http://www.ncbi.nlm.nih.gov/taxonomy\n  -excludeTaxonIds LIB_EXCLUDE_TAXON_IDS\n\
+  \                        Specify taxon ids to exclude with comma separated (if\n\
+  \                        you have multiple taxon ids to exclude).\n  --noDesc  \
+  \            Do not keep an additional description in original\n               \
+  \         fasta seq header.Depending on NGS aligner, a long\n                  \
+  \      sequence header may slow down its mapping process.\n  --subTax          \
+  \    To include all sub taxonomies under the query taxonomy\n                  \
+  \      id. e.g., if you set -t 4751 --subtax, it will cover\n                  \
+  \      all sub taxonomies under taxon id 4751 (fungi).\n  --online             \
+  \ To enable online searching in case you cannot find a\n                       \
+  \ correct taxonomy id for a given gi. When there are\n                        many\
+  \ entries in nt whose gi is invalid, this option\n                        may slow\
+  \ down the overall process.\n  -dbhost LIB_DBHOST    specify hostname running mysql\
+  \ if you want to use\n                        mysql instead of hash method in mapping\
+  \ gi to taxonomy\n                        id\n  -dbport LIB_DBPORT    provide mysql\
+  \ server port if different from default\n                        (3306)\n  -dbuser\
+  \ LIB_DBUSER    user name to access mysql\n  -dbpasswd LIB_DBPASSWD\n          \
+  \              provide password associate with user\n  -db LIB_DB            mysql\
+  \ pathoscope database name (default: pathodb)\n  -outDir LIB_OUTDIR    Output Directory\
+  \ (Default=. (current directory))\n  -outPrefix LIB_OUTPREFIX\n                \
+  \        specify an output prefix to name your target database\n"
+generated_using:
+- --help

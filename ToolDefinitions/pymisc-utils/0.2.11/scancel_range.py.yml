@@ -16,7 +16,7 @@ subcommands:
     name: end
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
     named: []
@@ -31,7 +31,86 @@ subcommands:
         name: end
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: end
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: scancel_range.py [-h] start end\nscancel_range.py: error:\
+            \ argument start: invalid int value: 'start'\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - scancel_range.py
+          - end
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: scancel_range.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: start
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: end
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: scancel_range.py [-h] start end\nscancel_range.py: error:\
+            \ argument start: invalid int value: 'end'\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: scancel_range.py [-h] start end\n\nThis script calls scancel\
+          \ for a given range of jobids (inclusive)\n\npositional arguments:\n  start\
+          \       The beginning jobid\n  end         The ending jobid\n\noptional\
+          \ arguments:\n  -h, --help  show this help message and exit\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -44,12 +123,9 @@ subcommands:
       version_flag:
       help_text: "usage: scancel_range.py [-h] start end\nscancel_range.py: error:\
         \ argument start: invalid int value: 'start'\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - scancel_range.py
-      - end
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -82,13 +158,7 @@ subcommands:
         \ argument start: invalid int value: 'end'\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: scancel_range.py [-h] start end\n\nThis script calls scancel\
@@ -128,7 +198,7 @@ subcommands:
     name: end
     optional: false
   named: []
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag: !Flag

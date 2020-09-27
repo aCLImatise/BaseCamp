@@ -1,0 +1,55 @@
+!Command
+command:
+- gsutil
+- label
+positional:
+- !Positional
+  description: SET
+  position: 0
+  name: command.
+  optional: false
+named:
+- !Flag
+  description: Remove the label with the specified key.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n  label - Get, set, or change the label configuration of a bucket.\n\
+  \n\nSYNOPSIS\n  gsutil label set label-json-file url...\n  gsutil label get url\n\
+  \  gsutil label ch <label_modifier>... url...\n\n  where each <label_modifier> is\
+  \ one of the following forms:\n\n    -l <key>:<value>\n    -d <key>\n\n\n\nDESCRIPTION\n\
+  \  Gets, sets, or changes the label configuration (also called the tagging\n  configuration\
+  \ by other storage providers) of one or more buckets. An example\n  label JSON document\
+  \ looks like the following:\n\n    {\n      \"your_label_key\": \"your_label_value\"\
+  ,\n      \"your_other_label_key\": \"your_other_label_value\"\n    }\n\n  The label\
+  \ command has three sub-commands:\n\nGET\n  The \"label get\" command gets the\n\
+  \  `labels <https://cloud.google.com/storage/docs/key-terms#bucket-labels>`_\n \
+  \ applied to a bucket, which you can save and edit for use with the \"label set\"\
+  \n  command.\n\nSET\n  The \"label set\" command allows you to set the labels on\
+  \ one or more\n  buckets. You can retrieve a bucket's labels using the \"label get\"\
+  \ command,\n  save the output to a file, edit the file, and then use the \"label\
+  \ set\"\n  command to apply those labels to the specified bucket(s). For\n  example:\n\
+  \n    gsutil label get gs://bucket > labels.json\n\n  Make changes to labels.json,\
+  \ such as adding an additional label, then:\n\n    gsutil label set labels.json\
+  \ gs://example-bucket\n\n  Note that you can set these labels on multiple buckets\
+  \ at once:\n\n    gsutil label set labels.json gs://bucket-foo gs://bucket-bar\n\
+  \nCH\n  The \"label ch\" command updates a bucket's label configuration, applying\
+  \ the\n  label changes specified by the -l and -d flags. You can specify multiple\n\
+  \  label changes in a single command run; all changes will be made atomically to\n\
+  \  each bucket.\n\nCH EXAMPLES\n  Examples for \"ch\" sub-command:\n\n  Add the\
+  \ label \"key-foo:value-bar\" to the bucket \"example-bucket\":\n\n    gsutil label\
+  \ ch -l key-foo:value-bar gs://example-bucket\n\n  Change the above label to have\
+  \ a new value:\n\n    gsutil label ch -l key-foo:other-value gs://example-bucket\n\
+  \n  Add a new label and delete the old one from above:\n\n    gsutil label ch -l\
+  \ new-key:new-value -d key-foo gs://example-bucket\n\nCH OPTIONS\n  The \"ch\" sub-command\
+  \ has the following options\n\n    -l          Add or update a label with the specified\
+  \ key and value.\n\n    -d          Remove the label with the specified key.\n"
+generated_using:
+- --help

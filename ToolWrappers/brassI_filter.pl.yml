@@ -1,0 +1,331 @@
+!Command
+command:
+- brassI_filter.pl
+positional: []
+named:
+- !Flag
+  description: ': Name of the input brassI marked groups file'
+  synonyms:
+  - -infile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Name of the output file (bedpe filename extension will be appended
+    if not supplied)'
+  synonyms:
+  - -outfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Name of the tumour sample'
+  synonyms:
+  - -tumour
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': run/rerun translocation flagging of the bedpe file'
+  synonyms:
+  - -trans_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': run/rerun occurrences flagging of the bedpe file'
+  synonyms:
+  - -occurrences_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': run/rerun near-copynumber-change flagging of the bedpe file'
+  synonyms:
+  - -cn_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': run/rerun blat flagging of the bedpe file'
+  synonyms:
+  - -blat_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter flag. Sequence depth for this sample. (default = 30)'
+  synonyms:
+  - -seq_depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter flag. Use min_tumour_count_high over this value and min_tumour_count_low
+    otherwise. (default = 25)'
+  synonyms:
+  - -seq_depth_threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter flag. Discard rearrangements, where chrH=chrL, that do not
+    exceed this value (default = 100)'
+  synonyms:
+  - -distance_threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": filter flag. Discard rearrangements which do not reach this number\
+    \ of reads in any of the tumour or metastatic samples involved\n(low seq_depth)\
+    \ (default = 2)"
+  synonyms:
+  - -min_tumour_count_low
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": filter flag. Discard rearrangements which do not reach this number\
+    \ of reads in any of the tumour or metastatic samples involved\n(above seq_depth\
+    \ threshold) (default = 4)"
+  synonyms:
+  - -min_tumour_count_high
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter flag. Discard rearrangements which have more than this number
+    of reads in the matched normal (default = 0)'
+  synonyms:
+  - -max_normal_count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter flag. Discard rearrangements which have more than this number
+    of unmatched normal panel samples with reads  (default = 0)'
+  synonyms:
+  - -max_np_sample_count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter flag. Discard rearrangements which have more than this number
+    of reads in the unmatched normal panel samples (default = 0, +1 for foldback <=
+    5kb)'
+  synonyms:
+  - -max_np_count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter flag. Discard rearrangements which are associated with known
+    repeats (default = 0)'
+  synonyms:
+  - -discard_if_repeats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': which number field of the bedpe output file the balanced translocation
+    flag should go into (default = 21)'
+  synonyms:
+  - -bal_trans_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': which number field of the bedpe output file the inversion flag should
+    go into (default = 22)'
+  synonyms:
+  - -inv_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': which number field of the bedpe output file the L occurrences flag
+    should go into (default = 23)'
+  synonyms:
+  - -occL_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': which number field of the bedpe output file the H occurrences flag
+    should go into (default = 24)'
+  synonyms:
+  - -occH_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': which number field of the bedpe output file the near-copynumber-change
+    flag should go into (default = 25)'
+  synonyms:
+  - -cn_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': which number field of the bedpe output file the L v H blat score
+    should go into (default = 26)'
+  synonyms:
+  - -blat_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': how far away breakpoint ends in 2 different rearrangements can be,
+    to be declared a similar coordinate (default = 500)'
+  synonyms:
+  - -occurs_distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': how far away the breakpoint coordinates for 2 different rearrangements
+    can be, to be declared a balanced translocation (default = 100000)'
+  synonyms:
+  - -bal_distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': how far away the breakpoint coordinates for 2 different rearrangements
+    can be, to be declared a inversion (default = 1000)'
+  synonyms:
+  - -inv_distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': how far away a copynumber chagepoint can be from a rearrangement
+    for it to qualify as a changepoint hit (default = 100000)'
+  synonyms:
+  - -cn_distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': If -cn_one_end_hit is present, call a hit even if only one end of
+    the rearrangement is near a changepoint (default = not set)'
+  synonyms:
+  - -cn_one_end_hit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": copynumber (cn) segments summary file for this sample - ASCAT. (optional)\n\
+    Line Format: unused,chr,start,end,normal_total_cn(optional),normal_minor_cn(optional),tumour_total_cn,tumour_minor_cn"
+  synonyms:
+  - -ascat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": copynumber (cn) segments summary file for this sample - NGS. (optional)\n\
+    Line Format: unused,chr,start,end,normal_total_cn(optional),normal_minor_cn(optional),tumour_total_cn,tumour_minor_cn"
+  synonyms:
+  - -ngs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": copynumber (cn) segments summary file for this sample - Battenberg.\
+    \ (optional)\nLine Format: unused,chr,start,end,normal_total_cn(optional),normal_minor_cn(optional),tumour_total_cn,tumour_minor_cn"
+  synonyms:
+  - -bb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Blat of breakpoint range L against range H - fasta format Reference
+    file (fai index file also present) to retrieve breakpoint range sequence from.'
+  synonyms:
+  - -ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Blat of breakpoint range L against range H - blat script to use
+    (default = blat)'
+  synonyms:
+  - -blat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Blat of breakpoint range L against range H - minimum identity value
+    to supply to blat (default = 95)'
+  synonyms:
+  - -minIdentity
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': Print this message'
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nbrassI_filter.pl\n\nDescription - filters brassI marked groups file\
+  \ and outputs to another file.\n\noptions...\n    -infile                : Name\
+  \ of the input brassI marked groups file\n    -outfile               : Name of the\
+  \ output file (bedpe filename extension will be appended if not supplied)\n    -tumour\
+  \                : Name of the tumour sample\n\n    -trans_only            : run/rerun\
+  \ translocation flagging of the bedpe file\n    -occurrences_only      : run/rerun\
+  \ occurrences flagging of the bedpe file\n    -cn_only               : run/rerun\
+  \ near-copynumber-change flagging of the bedpe file\n    -blat_only            \
+  \ : run/rerun blat flagging of the bedpe file\n\n    -seq_depth             : filter\
+  \ flag. Sequence depth for this sample. (default = 30)\n    -seq_depth_threshold\
+  \   : filter flag. Use min_tumour_count_high over this value and min_tumour_count_low\
+  \ otherwise. (default = 25)\n    -distance_threshold    : filter flag. Discard rearrangements,\
+  \ where chrH=chrL, that do not exceed this value (default = 100)\n    -min_tumour_count_low\
+  \   : filter flag. Discard rearrangements which do not reach this number of reads\
+  \ in any of the tumour or metastatic samples involved\n                        \
+  \     (low seq_depth) (default = 2)\n    -min_tumour_count_high  : filter flag.\
+  \ Discard rearrangements which do not reach this number of reads in any of the tumour\
+  \ or metastatic samples involved\n                             (above seq_depth\
+  \ threshold) (default = 4)\n    -max_normal_count      : filter flag. Discard rearrangements\
+  \ which have more than this number of reads in the matched normal (default = 0)\n\
+  \    -max_np_sample_count   : filter flag. Discard rearrangements which have more\
+  \ than this number of unmatched normal panel samples with reads  (default = 0)\n\
+  \    -max_np_count          : filter flag. Discard rearrangements which have more\
+  \ than this number of reads in the unmatched normal panel samples (default = 0,\
+  \ +1 for foldback <= 5kb)\n    -discard_if_repeats    : filter flag. Discard rearrangements\
+  \ which are associated with known repeats (default = 0)\n\n    -bal_trans_field\
+  \       : which number field of the bedpe output file the balanced translocation\
+  \ flag should go into (default = 21)\n    -inv_field             : which number\
+  \ field of the bedpe output file the inversion flag should go into (default = 22)\n\
+  \    -occL_field            : which number field of the bedpe output file the L\
+  \ occurrences flag should go into (default = 23)\n    -occH_field            : which\
+  \ number field of the bedpe output file the H occurrences flag should go into (default\
+  \ = 24)\n    -cn_field              : which number field of the bedpe output file\
+  \ the near-copynumber-change flag should go into (default = 25)\n    -blat_field\
+  \            : which number field of the bedpe output file the L v H blat score\
+  \ should go into (default = 26)\n\n    -occurs_distance       : how far away breakpoint\
+  \ ends in 2 different rearrangements can be, to be declared a similar coordinate\
+  \ (default = 500)\n\n    -bal_distance          : how far away the breakpoint coordinates\
+  \ for 2 different rearrangements can be, to be declared a balanced translocation\
+  \ (default = 100000)\n    -inv_distance          : how far away the breakpoint coordinates\
+  \ for 2 different rearrangements can be, to be declared a inversion (default = 1000)\n\
+  \n    -cn_distance           : how far away a copynumber chagepoint can be from\
+  \ a rearrangement for it to qualify as a changepoint hit (default = 100000)\n  \
+  \  -cn_one_end_hit        : If -cn_one_end_hit is present, call a hit even if only\
+  \ one end of the rearrangement is near a changepoint (default = not set)\n    -ascat\
+  \                 : copynumber (cn) segments summary file for this sample - ASCAT.\
+  \ (optional)\n                             Line Format: unused,chr,start,end,normal_total_cn(optional),normal_minor_cn(optional),tumour_total_cn,tumour_minor_cn\n\
+  \    -ngs                   : copynumber (cn) segments summary file for this sample\
+  \ - NGS. (optional)\n                             Line Format: unused,chr,start,end,normal_total_cn(optional),normal_minor_cn(optional),tumour_total_cn,tumour_minor_cn\n\
+  \    -bb                    : copynumber (cn) segments summary file for this sample\
+  \ - Battenberg. (optional)\n                             Line Format: unused,chr,start,end,normal_total_cn(optional),normal_minor_cn(optional),tumour_total_cn,tumour_minor_cn\n\
+  \n    -ref                   : Blat of breakpoint range L against range H - fasta\
+  \ format Reference file (fai index file also present) to retrieve breakpoint range\
+  \ sequence from.\n    -blat                  : Blat of breakpoint range L against\
+  \ range H - blat script to use (default = blat)\n    -minIdentity           : Blat\
+  \ of breakpoint range L against range H - minimum identity value to supply to blat\
+  \ (default = 95)\n\n    -help                  : Print this message\n\n\nexample...\n\
+  \nbrassI_filter.pl -infile file.rg.marked -outfile test_brass.out -tumour AB1234\
+  \ -ascat AB1234_ascat.summary.csv  -ngs AB1234_ngs.summary.csv -ref /nfs/cancer_ref01/human/37/genome.fa\
+  \ -blat \"/software/pubseq/bin/blat\" -cn_one_end_hit\n\n\nDefault output column\
+  \ order (tab delimited) and description:\n\nchr1             - lower breakpoint\
+  \ chromosome\nstart1           - lower breakpoint range start (zero referenced)\n\
+  end1             - lower breakpoint range end (zero referenced)\nchr2          \
+  \   - higher breakpoint chromosome\nstart2           - higher breakpoint range start\n\
+  end2             - higher breakpoint range end\nid/name          - name or id of\
+  \ this rearrangement\nbrass_score      - brassI score (total number of reads)\n\
+  strand1          - lower breakpoint strand\nstrand2          - higher breakpoint\
+  \ strand\nrepeats          - known repeats detected by brassI\nnp_sample_count \
+  \ - how may normal panel samples have this rearrangement\ntumour_count      - how\
+  \ many reads represent this rearrangement in the tumour\nnormal_count     - how\
+  \ many reads represent this rearrangement in the normal\nnp_count         - how\
+  \ many reads represent this rearrangement in the normal panel samples\nbkpt_distance\
+  \    - how far apart the breakpoints are (if on the same chromosome)\nsample   \
+  \        - name of sample\nsample_type      - type of sample T(umour), N(ormal),\
+  \ M(etastasis), N(ormal)P(anel)\nnames            - list of readnames that came\
+  \ from the stated sample\ncount            - number of reads\nbal_trans        -\
+  \ list of ids/names for other rearrangement entries that may pair with this rearrangement\
+  \ to form a balanced translocation\ninv              - list of ids/names for other\
+  \ rearrangement entries that may pair with this rearrangement to form an inversion\n\
+  occL             - how many time the lower (1) breakpoint appears in this dataset\n\
+  occH             - how many time the higher (2) breakpoint appears in this dataset\n\
+  copynumber_flag  - Summary of copynumber changepoints that lie close to the Lower\
+  \ and Higher breakpoints of this rearrangement.\n                   Format: Lower_Higher.\
+  \ A = Ascat, N = Picnic NGS, B = Battenberg. eg A_ANB.\nrange_blat       - blat\
+  \ score from aligning lower_breakpoint_sequence to higher_breakpoint_sequence\n\n\
+  \n\n\nAuthor : las\n\n\n"
+generated_using:
+- --help

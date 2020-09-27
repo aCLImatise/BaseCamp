@@ -1,0 +1,190 @@
+!Command
+command:
+- efn2-smp
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: efn2
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: ct file
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: output file
+  optional: false
+named:
+- !Flag
+  description: "Specify that the sequence is DNA, and DNA parameters are to be used.\n\
+    Default is to use RNA parameters."
+  synonyms:
+  - -d
+  - -D
+  - --DNA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not calculate experimental uncertainties
+  synonyms:
+  - --ne
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Print the simple list file to standard output. This won't override\
+    \ default\nbehavior of writing to a file. Thermodynamic files (if written) are\
+    \ not\npiped. This option implies --quiet."
+  synonyms:
+  - -p
+  - -P
+  - --print
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Suppress unnecessary output. This option is implied when the output\
+    \ file is\n'-' (STDOUT) or when the --print flag is present."
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the simple energy function for multibranch loops, used by\
+    \ the\ndynamic programming algorithms (Fold, partition, stochastic, AllSub, etc.),\n\
+    should be used. If this is not specified, an more sophisticated energy\nfunction\
+    \ is used, and the energies might not match those estimated for\nstructures during\
+    \ structure prediction."
+  synonyms:
+  - -s
+  - -S
+  - --simple
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write a thermodynamic details file. The thermodynamic details file\
+    \ replaces\nthe list file that is outputted by default."
+  synonyms:
+  - -w
+  - -W
+  - --writedetails
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the name of a folding alphabet and associated nearest neighbor\n\
+    parameters. The alphabet is the prefix for the thermodynamic parameter\nfiles,\
+    \ e.g. \"rna\" for RNA parameters or \"dna\" for DNA parameters or a\ncustom extended/modified\
+    \ alphabet. The thermodynamic parameters need to\nreside in the at the location\
+    \ indicated by environment variable DATAPATH.\nThe default is \"rna\" (i.e. use\
+    \ RNA parameters). This option overrides the\n--DNA flag."
+  synonyms:
+  - -a
+  - --alphabet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a file where parameter usage counts will be exported
+  synonyms:
+  - -c
+  - -C
+  - --count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a SHAPE constraints file to be applied. These constraints\
+    \ are\npseudoenergy constraints.\nDefault is to have no constraints applied."
+  synonyms:
+  - -sh
+  - -SH
+  - --SHAPE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an intercept used with SHAPE constraints.\nDefault is -0.6\
+    \ kcal/mol."
+  synonyms:
+  - -si
+  - -SI
+  - --SHAPEintercept
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a slope used with SHAPE constraints.\nDefault is 1.8 kcal/mol."
+  synonyms:
+  - -sm
+  - -SM
+  - --SHAPEslope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the temperature at which calculation takes place in Kelvin.\n\
+    Default is 310.15 K, which is 37 degrees C.\n"
+  synonyms:
+  - -t
+  - -T
+  - --temperature
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the usage details message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version and copyright information for this interface.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: efn2 <ct file> <output file> [options]\nAll flags are case-insensitive,\
+  \ and grouping of flags is not allowed.\n\n=============================\n==== Required\
+  \ Parameters ====\n=============================\n<ct file>\n    The name of a file\
+  \ containing structure CT data.\n\n<output file>\n    The energy file to which output\
+  \ is written. Depending on the options\n    selected, this may be one of the following\
+  \ file types. 1) Simple list\n    (Lists free energy for each structure, lowest\
+  \ first). 2) Thermodynamic\n    details (Writes details of every substructure in\
+  \ each structure, and the\n    corresponding free energy of each).\n\n=========================================\n\
+  ==== Option Flags Without Parameters ====\n=========================================\n\
+  -d -D --DNA \n    Specify that the sequence is DNA, and DNA parameters are to be\
+  \ used.\n    Default is to use RNA parameters.\n\n-h --help \n    Display the usage\
+  \ details message.\n\n--ne \n    Do not calculate experimental uncertainties\n\n\
+  -p -P --print \n    Print the simple list file to standard output. This won't override\
+  \ default\n    behavior of writing to a file. Thermodynamic files (if written) are\
+  \ not\n    piped. This option implies --quiet.\n\n-q --quiet \n    Suppress unnecessary\
+  \ output. This option is implied when the output file is\n    '-' (STDOUT) or when\
+  \ the --print flag is present.\n\n-s -S --simple \n    Specify the simple energy\
+  \ function for multibranch loops, used by the\n    dynamic programming algorithms\
+  \ (Fold, partition, stochastic, AllSub, etc.),\n    should be used. If this is not\
+  \ specified, an more sophisticated energy\n    function is used, and the energies\
+  \ might not match those estimated for\n    structures during structure prediction.\n\
+  \n-v --version \n    Display version and copyright information for this interface.\n\
+  \n-w -W --writedetails \n    Write a thermodynamic details file. The thermodynamic\
+  \ details file replaces\n    the list file that is outputted by default.\n\n======================================\n\
+  ==== Option Flags With Parameters ====\n======================================\n\
+  All parameters must follow their associated flag directly.\nFailure to do so may\
+  \ result in aberrant program behavior.\n\n-a --alphabet \n    Specify the name of\
+  \ a folding alphabet and associated nearest neighbor\n    parameters. The alphabet\
+  \ is the prefix for the thermodynamic parameter\n    files, e.g. \"rna\" for RNA\
+  \ parameters or \"dna\" for DNA parameters or a\n    custom extended/modified alphabet.\
+  \ The thermodynamic parameters need to\n    reside in the at the location indicated\
+  \ by environment variable DATAPATH.\n    The default is \"rna\" (i.e. use RNA parameters).\
+  \ This option overrides the\n    --DNA flag.\n\n-c -C --count \n    Specify a file\
+  \ where parameter usage counts will be exported\n\n-sh -SH --SHAPE \n    Specify\
+  \ a SHAPE constraints file to be applied. These constraints are\n    pseudoenergy\
+  \ constraints.\n    Default is to have no constraints applied.\n\n-si -SI --SHAPEintercept\
+  \ \n    Specify an intercept used with SHAPE constraints.\n    Default is -0.6 kcal/mol.\n\
+  \n-sm -SM --SHAPEslope \n    Specify a slope used with SHAPE constraints.\n    Default\
+  \ is 1.8 kcal/mol.\n\n-t -T --temperature \n    Specify the temperature at which\
+  \ calculation takes place in Kelvin.\n    Default is 310.15 K, which is 37 degrees\
+  \ C.\n\n"
+generated_using:
+- --help

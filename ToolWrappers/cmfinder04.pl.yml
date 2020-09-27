@@ -1,0 +1,335 @@
+!Command
+command:
+- cmfinder04.pl
+positional: []
+named:
+- !Flag
+  description: The maximum number of candidates in each sequence. Default 40. No bigger
+    than 100.
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: The minimum length of candidates. Default 30
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: The maximum length of candidates. Default 100
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: The fraction of the sequences expected to contain the motif. Default
+    0.80
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: The max number of output single stem-loop motifs
+  synonyms:
+  - -s1
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: The max number of output double stem-loop motifs
+  synonyms:
+  - -s2
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: minimum span of a candidate sub-sequence in the heuristics to come
+    up with an initial alignment for single-hairpin (h1) motifs
+  synonyms:
+  - -minspan1
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: like -minspan1, but maximum
+  synonyms:
+  - -maxspan1
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: like -minspan1, but for double-hairpin (h2) motifs
+  synonyms:
+  - -minspan2
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: like -minspan2, but maximal
+  synonyms:
+  - -maxspan2
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: Combine the output motifs. Default False
+  synonyms:
+  - -combine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Produce a list of motifs generated, one motif per line.
+  synonyms:
+  - -motifList
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Minimum overlap for combining motifs
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: Minimum number of sequences (weighted) for combining motifs
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: Use the sequences in this fasta file for the expectation maximization
+    step (i.e., the C executable cmfinder), but not for the earlier steps related
+    to finding candidate motifs.  The reason for this distinction is that it is somewhat
+    easier to add weighting to the cmfinder program, than the various canda, candf,
+    cands and align programs.
+  synonyms:
+  - -emSeq
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Behave as much as possible like the old CMfinder, e.g., passing --enone,
+    --p56 and --degen-rand to cmfinder_inf11.  It's not possible to produce identical
+    results to CMfinder 0.3, but these flags make it more similar.
+  synonyms:
+  - -likeold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Pass --fragmentary for cmfinder
+  synonyms:
+  - -fragmentary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Pass --amaa to cmfinder (align max align accuracy)
+  synonyms:
+  - -amaa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run the old cmfinder executable, mainly to test whether we get different
+    results because of this perl script, or the cmfinder_inf11 executable.
+  synonyms:
+  - -useOldCmfinder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not run clustalw, like older installations lacking this program.
+  synonyms:
+  - -skipClustalw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the command to run for the cmfinder executable, with appropriate
+    partial flags.  This can be used to realign an existing .sto file, for example.
+  synonyms:
+  - -justGetCmfinderCommand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: For debugging.  Reads a log file that contains cmfinder commands, and
+    re-runs them with new CMfinder.
+  synonyms:
+  - -copyCmfinderRunsFromLog
+  args: !SimpleFlagArg
+    name: log-file
+  optional: true
+- !Flag
+  description: "<flags>\nList of flags and arguments to pass to the EM-step cmfinder\
+    \ exe.  There's an 'x' at the beginning of the flags, so that perl doesn't interpret\
+    \ the flags as flags for it.  It's comma-separated where on the command line it\
+    \ would be space separated.  I think commas are safe, and mean that I don't have\
+    \ to worry about quoting stuff.  e.g., -commaSepEmFlags x--fragmentary,--filter-non-frag,--filter-non-frag-pad,10\
+    \ would pass this to the cmfinder program: \"--fragmentary --filter-non-frag --filter-non-frag-pad\
+    \ 10\", i.e., just replace commas with spaces."
+  synonyms:
+  - -commaSepEmFlags
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: "<flags>\nFlags to pass to the --summarize command.  Same syntax as\
+    \ for --commaSepEmFlags"
+  synonyms:
+  - -commaSepSummarizeFlags
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: "<flags>\nFlags to pass to the candf command.  Same syntax as for --commaSepEmFlags"
+  synonyms:
+  - -commaSepCandfFlags
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: "Pass --min-cand-score-in-final <number> to cmfinder.  WARNING: there's\
+    \ a difference between using this flag (where even intermediate motifs will avoid\
+    \ these hits) and taking the low-scoring instances out of the final alignments\
+    \ (which might be combinations of motifs in which the sequence would have been\
+    \ lower-scoring)."
+  synonyms:
+  - -minCandScoreInFinal
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: Pass --filter-non-frag to cmfinder
+  synonyms:
+  - -filterNonFrag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Pass --column-only-base-pair-probs to cmfinder
+  synonyms:
+  - -columnOnlyBasePairProbs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create tab-delimited <file> containing timing stats on various sub-processes
+    of this script.  the first tab-delimited field is the description of the sub-process,
+    the second field is the total CPU time (user+sys) and the third field is the wall-clock
+    time.  Sub-processes can occur in multiple lines if they are run multiple timers,
+    so the caller should add them.  Due to my laziness, the time of the clustalw program
+    (if used) is not counted.
+  synonyms:
+  - -saveTimer
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: use <num> CPUs for functionality that can use multi-CPUs (currently
+    only the internal cmsearch commands in cmfinder04)
+  synonyms:
+  - -cpu
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: equivalent to -cpu X , where X is the number of available processors.
+  synonyms:
+  - -allCpus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run the two cands jobs in parallel, even if -cpu 1
+  synonyms:
+  - -candsParallel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: add <string> to the output file names.  this is useful if you want
+    to run the script in multiple ways in the same directory.
+  synonyms:
+  - -outFileSuffix
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Show package version\n"
+  synonyms:
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this list
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Unknown option: help\nInvalid options\nbin_path=/usr/local/bin\nCMFINDER\
+  \ [options] SEQ\nOptions:\n    -c <number>      \n     The maximum number of candidates\
+  \ in each sequence. Default 40. No bigger than 100.\n    -m <number>      \n   \
+  \  The minimum length of candidates. Default 30\n    -M <number>      \n     The\
+  \ maximum length of candidates. Default 100\n    -f <number>      \n     The fraction\
+  \ of the sequences expected to contain the motif. Default 0.80\n    -s1 <number>\
+  \     \n     The max number of output single stem-loop motifs\n    -s2 <number>\
+  \    \n     The max number of output double stem-loop motifs    \n    -minspan1\
+  \ <number>\n     minimum span of a candidate sub-sequence in the heuristics to come\
+  \ up with an initial alignment for single-hairpin (h1) motifs\n    -maxspan1 <number>\n\
+  \     like -minspan1, but maximum\n    -minspan2 <number>\n     like -minspan1,\
+  \ but for double-hairpin (h2) motifs\n    -maxspan2 <number>\n     like -minspan2,\
+  \ but maximal\n    -combine         \n     Combine the output motifs. Default False\n\
+  \    -motifList <file> \n     Produce a list of motifs generated, one motif per\
+  \ line.\n    -o <number>\n     Minimum overlap for combining motifs\n    -n <number>\
+  \      \n     Minimum number of sequences (weighted) for combining motifs\n    -emSeq\
+  \ <file>\n     Use the sequences in this fasta file for the expectation maximization\
+  \ step (i.e., the C executable cmfinder), but not for the earlier steps related\
+  \ to finding candidate motifs.  The reason for this distinction is that it is somewhat\
+  \ easier to add weighting to the cmfinder program, than the various canda, candf,\
+  \ cands and align programs.\n    -likeold         \n     Behave as much as possible\
+  \ like the old CMfinder, e.g., passing --enone, --p56 and --degen-rand to cmfinder_inf11.\
+  \  It's not possible to produce identical results to CMfinder 0.3, but these flags\
+  \ make it more similar.\n    -fragmentary\n     Pass --fragmentary for cmfinder\n\
+  \    -amaa            \n     Pass --amaa to cmfinder (align max align accuracy)\n\
+  \    -useOldCmfinder  \n     Run the old cmfinder executable, mainly to test whether\
+  \ we get different results because of this perl script, or the cmfinder_inf11 executable.\n\
+  \    -skipClustalw    \n     Do not run clustalw, like older installations lacking\
+  \ this program.\n    -justGetCmfinderCommand    \n     Print the command to run\
+  \ for the cmfinder executable, with appropriate partial flags.  This can be used\
+  \ to realign an existing .sto file, for example.\n    -copyCmfinderRunsFromLog <log-file>\
+  \ \n     For debugging.  Reads a log file that contains cmfinder commands, and re-runs\
+  \ them with new CMfinder.\n    -commaSepEmFlags x<flags>\n     List of flags and\
+  \ arguments to pass to the EM-step cmfinder exe.  There's an 'x' at the beginning\
+  \ of the flags, so that perl doesn't interpret the flags as flags for it.  It's\
+  \ comma-separated where on the command line it would be space separated.  I think\
+  \ commas are safe, and mean that I don't have to worry about quoting stuff.  e.g.,\
+  \ -commaSepEmFlags x--fragmentary,--filter-non-frag,--filter-non-frag-pad,10 would\
+  \ pass this to the cmfinder program: \"--fragmentary --filter-non-frag --filter-non-frag-pad\
+  \ 10\", i.e., just replace commas with spaces.\n    -commaSepSummarizeFlags x<flags>\n\
+  \     Flags to pass to the --summarize command.  Same syntax as for --commaSepEmFlags\n\
+  \    -commaSepCandfFlags x<flags>\n     Flags to pass to the candf command.  Same\
+  \ syntax as for --commaSepEmFlags\n    -minCandScoreInFinal <number>    \n     Pass\
+  \ --min-cand-score-in-final <number> to cmfinder.  WARNING: there's a difference\
+  \ between using this flag (where even intermediate motifs will avoid these hits)\
+  \ and taking the low-scoring instances out of the final alignments (which might\
+  \ be combinations of motifs in which the sequence would have been lower-scoring).\n\
+  \    -filterNonFrag\n     Pass --filter-non-frag to cmfinder\n    -columnOnlyBasePairProbs\n\
+  \     Pass --column-only-base-pair-probs to cmfinder\n    -saveTimer <file>\n  \
+  \   create tab-delimited <file> containing timing stats on various sub-processes\
+  \ of this script.  the first tab-delimited field is the description of the sub-process,\
+  \ the second field is the total CPU time (user+sys) and the third field is the wall-clock\
+  \ time.  Sub-processes can occur in multiple lines if they are run multiple timers,\
+  \ so the caller should add them.  Due to my laziness, the time of the clustalw program\
+  \ (if used) is not counted.\n    -cpu <num>\n     use <num> CPUs for functionality\
+  \ that can use multi-CPUs (currently only the internal cmsearch commands in cmfinder04)\n\
+  \    -allCpus\n     equivalent to -cpu X , where X is the number of available processors.\n\
+  \    -candsParallel\n     run the two cands jobs in parallel, even if -cpu 1\n \
+  \   -outFileSuffix <string>\n     add <string> to the output file names.  this is\
+  \ useful if you want to run the script in multiple ways in the same directory.\n\
+  \    -h               \n     Show this list\n    -version\n     Show package version\n"
+generated_using:
+- --help

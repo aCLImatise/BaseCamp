@@ -7,7 +7,7 @@ named: []
 parent:
 subcommands:
 - !Command
-  command: &id005
+  command: &id002
   - smeg
   - build_species
   - for
@@ -19,110 +19,30 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id043 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: Genomes directory
-      synonyms:
-      - -g
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Output directory
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "File listing a subset of genomes for database building\n[default\
-        \ = use all genomes in 'Genomes directory']"
-      synonyms:
-      - -l
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Number of threads [default 4]
-      synonyms:
-      - -p
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: SNP assignment threshold (range 0.1 - 1) [default 0.6]
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: FLOAT
-      optional: true
-    - !Flag
-      description: Cluster SNPs threshold for iterative clustering [default 50]
-      synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: Ignore iterative clustering
-      synonyms:
-      - -i
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Activate auto-mode
-      synonyms:
-      - -a
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Representative genome [default = auto select Rep genome]
-      synonyms:
-      - -r
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Keep Roary output [default = false]
-      synonyms:
-      - -k
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "Create database ONLY applicable with Reference-based SMEG method\n\
-        [default = generate database suitable for both de novo and ref-based methods]"
-      synonyms:
-      - -e
-      args: !EmptyFlagArg {}
-      optional: true
-    parent: &id002 !Command
-      command:
-      - smeg
+    named: []
+    parent:
+    subcommands:
+    - !Command
+      command: *id002
       positional: []
       named:
       - !Flag
-        description: ''
+        description: '[option] is required'
         synonyms:
-        - -v
+        - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent:
-      subcommands:
-      - !Command
-        command:
-        - smeg
-        - growth_est
+      parent: &id004 !Command
+        command: *id001
         positional: []
         named:
         - !Flag
-          description: Reads directory (single-end reads)
+          description: Genomes directory
           synonyms:
-          - -r
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Sample filename extension (fq, fastq, fastq.gz) [default fastq]
-          synonyms:
-          - -x
+          - -g
           args: !EmptyFlagArg {}
           optional: true
         - !Flag
@@ -132,87 +52,1007 @@ subcommands:
           args: !EmptyFlagArg {}
           optional: true
         - !Flag
-          description: Species database directory
-          synonyms:
-          - -s
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: INT    SMEG method (0 = de novo-based method, 1 = reference-based
-            method) [default = 0]
-          synonyms:
-          - -m
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: FLOAT  Coverage cutoff (>= 0.5) [default 0.5]
-          synonyms:
-          - -c
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: INT    Minimum number of SNPs to estimate growth rate [default
-            = 100]
-          synonyms:
-          - -u
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Path to file listing a subset of reads for analysis\n[default\
-            \ = analyze all samples in Reads directory]"
+          description: "File listing a subset of genomes for database building\n[default\
+            \ = use all genomes in 'Genomes directory']"
           synonyms:
           - -l
           args: !EmptyFlagArg {}
           optional: true
         - !Flag
-          description: FLOAT  Cluster detection threshold (range 0.1 - 1) [default
-            = 0.2]
+          description: Number of threads [default 4]
           synonyms:
-          - -d
-          args: !EmptyFlagArg {}
+          - -p
+          args: !SimpleFlagArg
+            name: INT
           optional: true
         - !Flag
-          description: FLOAT  Sample-specific SNP assignment threshold (range 0.1
-            - 1) [default = 0.6]
+          description: SNP assignment threshold (range 0.1 - 1) [default 0.6]
+          synonyms:
+          - -s
+          args: !SimpleFlagArg
+            name: FLOAT
+          optional: true
+        - !Flag
+          description: Cluster SNPs threshold for iterative clustering [default 50]
           synonyms:
           - -t
-          args: !EmptyFlagArg {}
+          args: !SimpleFlagArg
+            name: INT
           optional: true
         - !Flag
-          description: File listing reference genomes for growth rate estimation
+          description: Ignore iterative clustering
           synonyms:
-          - -g
+          - -i
           args: !EmptyFlagArg {}
           optional: true
         - !Flag
-          description: File listing FULL PATH to DESMAN-resolved strains in fasta
-            format (core-genes)
+          description: Activate auto-mode
           synonyms:
           - -a
           args: !EmptyFlagArg {}
           optional: true
         - !Flag
-          description: INT    Max number of mismatch [default = use default bowtie2
-            threshold]
+          description: Representative genome [default = auto select Rep genome]
           synonyms:
-          - -n
+          - -r
           args: !EmptyFlagArg {}
           optional: true
         - !Flag
-          description: merge output tables into a single matrix file and generate
-            heatmap
+          description: Keep Roary output [default = false]
+          synonyms:
+          - -k
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "Create database ONLY applicable with Reference-based SMEG\
+            \ method\n[default = generate database suitable for both de novo and ref-based\
+            \ methods]"
           synonyms:
           - -e
           args: !EmptyFlagArg {}
           optional: true
-        - !Flag
-          description: INT    Number of threads [default 4]
-          synonyms:
-          - -p
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
+        parent: &id003 !Command
+          command:
+          - smeg
+          positional: []
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          parent:
+          subcommands:
+          - !Command
+            command:
+            - smeg
+            - growth_est
+            positional: []
+            named:
+            - !Flag
+              description: Reads directory (single-end reads)
+              synonyms:
+              - -r
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Sample filename extension (fq, fastq, fastq.gz) [default
+                fastq]
+              synonyms:
+              - -x
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Output directory
+              synonyms:
+              - -o
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Species database directory
+              synonyms:
+              - -s
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: INT    SMEG method (0 = de novo-based method, 1 = reference-based
+                method) [default = 0]
+              synonyms:
+              - -m
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: FLOAT  Coverage cutoff (>= 0.5) [default 0.5]
+              synonyms:
+              - -c
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: INT    Minimum number of SNPs to estimate growth rate [default
+                = 100]
+              synonyms:
+              - -u
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Path to file listing a subset of reads for analysis\n\
+                [default = analyze all samples in Reads directory]"
+              synonyms:
+              - -l
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: FLOAT  Cluster detection threshold (range 0.1 - 1) [default
+                = 0.2]
+              synonyms:
+              - -d
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: FLOAT  Sample-specific SNP assignment threshold (range
+                0.1 - 1) [default = 0.6]
+              synonyms:
+              - -t
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: File listing reference genomes for growth rate estimation
+              synonyms:
+              - -g
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: File listing FULL PATH to DESMAN-resolved strains in fasta
+                format (core-genes)
+              synonyms:
+              - -a
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: INT    Max number of mismatch [default = use default bowtie2
+                threshold]
+              synonyms:
+              - -n
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: merge output tables into a single matrix file and generate
+                heatmap
+              synonyms:
+              - -e
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: INT    Number of threads [default 4]
+              synonyms:
+              - -p
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: Display this message
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "Usage:\n    smeg growth_est <options>\n    <options>\n\n \
+              \ ## MAIN OPTIONS ## \n    -r         Reads directory (single-end reads)\n\
+              \    -x         Sample filename extension (fq, fastq, fastq.gz) [default\
+              \ fastq]\n    -o         Output directory\n    -s         Species database\
+              \ directory\n    -m  INT    SMEG method (0 = de novo-based method, 1\
+              \ = reference-based method) [default = 0]\n    -c  FLOAT  Coverage cutoff\
+              \ (>= 0.5) [default 0.5]\n    -u  INT    Minimum number of SNPs to estimate\
+              \ growth rate [default = 100]\n    -l         Path to file listing a\
+              \ subset of reads for analysis\n               [default = analyze all\
+              \ samples in Reads directory]\n\n  ## DE-NOVO BASED APPROACH OPTIONS\
+              \ ## \n    -d  FLOAT  Cluster detection threshold (range 0.1 - 1) [default\
+              \ = 0.2]\n    -t  FLOAT  Sample-specific SNP assignment threshold (range\
+              \ 0.1 - 1) [default = 0.6]\n\n  ## REFERENCE BASED APPROACH OPTIONS\
+              \ ##\n    -g         File listing reference genomes for growth rate\
+              \ estimation\n    -a         File listing FULL PATH to DESMAN-resolved\
+              \ strains in fasta format (core-genes)\n    -n  INT    Max number of\
+              \ mismatch [default = use default bowtie2 threshold]\n\n  ## OTHER OPTIONS\
+              \ ##\n    -e         merge output tables into a single matrix file and\
+              \ generate heatmap\n    -p  INT    Number of threads [default 4]\n \
+              \   -h         Display this message\n"
+            generated_using: &id005
+            - -h
+          - *id004
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Usage:\n    smeg build_species <options>   Build species database\n\
+            \    smeg growth_est <options>      Estimate strain-specific growth rate\n\
+            \    smeg -v                        Version\n    smeg -h             \
+            \           Display this help message\n"
+          generated_using: *id005
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: &id006
+          - --help
+        - !Command
+          command: &id007
+          - smeg
+          - build_species
+          - Cluster
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id008
+          - smeg
+          - build_species
+          - Activate
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id009
+          - smeg
+          - build_species
+          - subset
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id010
+          - smeg
+          - build_species
+          - assignment
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id011
+          - smeg
+          - build_species
+          - SMEG
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id012
+          - smeg
+          - build_species
+          - Output
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id013
+          - smeg
+          - build_species
+          - SNP
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id014
+          - smeg
+          - build_species
+          - clustering
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id015
+          - smeg
+          - build_species
+          - listing
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id016
+          - smeg
+          - build_species
+          - Number
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id017
+          - smeg
+          - build_species
+          - Display
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id018
+          - smeg
+          - build_species
+          - this
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id019
+          - smeg
+          - build_species
+          - genome
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id020
+          - smeg
+          - build_species
+          - Roary
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id021
+          - smeg
+          - build_species
+          - database
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id022
+          - smeg
+          - build_species
+          - genomes
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id023
+          - smeg
+          - build_species
+          - Keep
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id024
+          - smeg
+          - build_species
+          - iterative
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id025
+          - smeg
+          - build_species
+          - applicable
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id026
+          - smeg
+          - build_species
+          - building
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id027
+          - smeg
+          - build_species
+          - SNPs
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id028
+          - smeg
+          - build_species
+          - threads
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id029
+          - smeg
+          - build_species
+          - output
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id030
+          - smeg
+          - build_species
+          - with
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id031
+          - smeg
+          - build_species
+          - method
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id032
+          - smeg
+          - build_species
+          - ONLY
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id033
+          - smeg
+          - build_species
+          - default
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id034
+          - smeg
+          - build_species
+          - threshold
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id035
+          - smeg
+          - build_species
+          - a
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id036
+          - smeg
+          - build_species
+          - Ignore
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id037
+          - smeg
+          - build_species
+          - of
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id038
+          - smeg
+          - build_species
+          - Representative
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id039
+          - smeg
+          - build_species
+          - Create
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id040
+          - smeg
+          - build_species
+          - Reference-based
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id041
+          - smeg
+          - build_species
+          - File
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
+        - !Command
+          command: &id042
+          - smeg
+          - build_species
+          - Genomes
+          positional: []
+          named:
+          - !Flag
+            description: '[option] is required'
+            synonyms:
+            - -g
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-g [option] is required\n"
+          generated_using: *id006
         usage: []
         help_flag: !Flag
           description: Display this message
@@ -222,76 +1062,19 @@ subcommands:
           optional: true
         usage_flag:
         version_flag:
-        help_text: "Usage:\n    smeg growth_est <options>\n    <options>\n\n  ## MAIN\
-          \ OPTIONS ## \n    -r         Reads directory (single-end reads)\n    -x\
-          \         Sample filename extension (fq, fastq, fastq.gz) [default fastq]\n\
-          \    -o         Output directory\n    -s         Species database directory\n\
-          \    -m  INT    SMEG method (0 = de novo-based method, 1 = reference-based\
-          \ method) [default = 0]\n    -c  FLOAT  Coverage cutoff (>= 0.5) [default\
-          \ 0.5]\n    -u  INT    Minimum number of SNPs to estimate growth rate [default\
-          \ = 100]\n    -l         Path to file listing a subset of reads for analysis\n\
-          \               [default = analyze all samples in Reads directory]\n\n \
-          \ ## DE-NOVO BASED APPROACH OPTIONS ## \n    -d  FLOAT  Cluster detection\
-          \ threshold (range 0.1 - 1) [default = 0.2]\n    -t  FLOAT  Sample-specific\
-          \ SNP assignment threshold (range 0.1 - 1) [default = 0.6]\n\n  ## REFERENCE\
-          \ BASED APPROACH OPTIONS ##\n    -g         File listing reference genomes\
-          \ for growth rate estimation\n    -a         File listing FULL PATH to DESMAN-resolved\
-          \ strains in fasta format (core-genes)\n    -n  INT    Max number of mismatch\
-          \ [default = use default bowtie2 threshold]\n\n  ## OTHER OPTIONS ##\n \
-          \   -e         merge output tables into a single matrix file and generate\
-          \ heatmap\n    -p  INT    Number of threads [default 4]\n    -h        \
-          \ Display this message\n"
-        generated_using: &id004
-        - -h
-      - *id003
-      usage: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - -h
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "Usage:\n    smeg build_species <options>   Build species database\n\
-        \    smeg growth_est <options>      Estimate strain-specific growth rate\n\
-        \    smeg -v                        Version\n    smeg -h                 \
-        \       Display this help message\n"
-      generated_using: *id004
-    subcommands:
-    - !Command
-      command: *id005
-      positional: []
-      named:
-      - !Flag
-        description: '[option] is required'
-        synonyms:
-        - -g
-        args: !EmptyFlagArg {}
-        optional: true
-      parent: *id003
-      subcommands: []
-      usage: []
-      help_flag:
-      usage_flag:
-      version_flag:
-      help_text: "-g [option] is required\n"
-      generated_using: &id006
-      - --help
-    - !Command
-      command: &id007
-      - smeg
-      - build_species
-      - Cluster
-      positional: []
-      named:
-      - !Flag
-        description: '[option] is required'
-        synonyms:
-        - -g
-        args: !EmptyFlagArg {}
-        optional: true
-      parent: *id003
+        help_text: "Usage:\n    smeg build_species <options>\n    <options>\n    -g\
+          \        Genomes directory\n    -o        Output directory\n    -l     \
+          \   File listing a subset of genomes for database building\n           \
+          \     [default = use all genomes in 'Genomes directory']\n    -p INT   \
+          \ Number of threads [default 4]\n    -s FLOAT  SNP assignment threshold\
+          \ (range 0.1 - 1) [default 0.6]\n    -t INT    Cluster SNPs threshold for\
+          \ iterative clustering [default 50]\n    -i        Ignore iterative clustering\n\
+          \    -a        Activate auto-mode\n    -r        Representative genome [default\
+          \ = auto select Rep genome]\n    -k        Keep Roary output [default =\
+          \ false]\n    -e        Create database ONLY applicable with Reference-based\
+          \ SMEG method\n                [default = generate database suitable for\
+          \ both de novo and ref-based methods]\n    -h        Display this message\n"
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag:
@@ -300,10 +1083,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id008
-      - smeg
-      - build_species
-      - Activate
+      command: *id007
       positional: []
       named:
       - !Flag
@@ -312,7 +1092,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -321,10 +1101,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id009
-      - smeg
-      - build_species
-      - subset
+      command: *id008
       positional: []
       named:
       - !Flag
@@ -333,7 +1110,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -342,10 +1119,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id010
-      - smeg
-      - build_species
-      - assignment
+      command: *id009
       positional: []
       named:
       - !Flag
@@ -354,7 +1128,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -363,10 +1137,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id011
-      - smeg
-      - build_species
-      - SMEG
+      command: *id010
       positional: []
       named:
       - !Flag
@@ -375,7 +1146,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -384,10 +1155,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id012
-      - smeg
-      - build_species
-      - Output
+      command: *id011
       positional: []
       named:
       - !Flag
@@ -396,7 +1164,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -405,10 +1173,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id013
-      - smeg
-      - build_species
-      - SNP
+      command: *id012
       positional: []
       named:
       - !Flag
@@ -417,7 +1182,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -426,10 +1191,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id014
-      - smeg
-      - build_species
-      - clustering
+      command: *id013
       positional: []
       named:
       - !Flag
@@ -438,7 +1200,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -447,10 +1209,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id015
-      - smeg
-      - build_species
-      - listing
+      command: *id014
       positional: []
       named:
       - !Flag
@@ -459,7 +1218,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -468,10 +1227,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id016
-      - smeg
-      - build_species
-      - Number
+      command: *id015
       positional: []
       named:
       - !Flag
@@ -480,7 +1236,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -489,10 +1245,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id017
-      - smeg
-      - build_species
-      - Display
+      command: *id016
       positional: []
       named:
       - !Flag
@@ -501,7 +1254,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -510,10 +1263,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id018
-      - smeg
-      - build_species
-      - this
+      command: *id017
       positional: []
       named:
       - !Flag
@@ -522,7 +1272,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -531,10 +1281,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id019
-      - smeg
-      - build_species
-      - genome
+      command: *id018
       positional: []
       named:
       - !Flag
@@ -543,7 +1290,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -552,10 +1299,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id020
-      - smeg
-      - build_species
-      - Roary
+      command: *id019
       positional: []
       named:
       - !Flag
@@ -564,7 +1308,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -573,10 +1317,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id021
-      - smeg
-      - build_species
-      - database
+      command: *id020
       positional: []
       named:
       - !Flag
@@ -585,7 +1326,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -594,10 +1335,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id022
-      - smeg
-      - build_species
-      - genomes
+      command: *id021
       positional: []
       named:
       - !Flag
@@ -606,7 +1344,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -615,10 +1353,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id023
-      - smeg
-      - build_species
-      - Keep
+      command: *id022
       positional: []
       named:
       - !Flag
@@ -627,7 +1362,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -636,10 +1371,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id024
-      - smeg
-      - build_species
-      - iterative
+      command: *id023
       positional: []
       named:
       - !Flag
@@ -648,7 +1380,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -657,10 +1389,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id025
-      - smeg
-      - build_species
-      - applicable
+      command: *id024
       positional: []
       named:
       - !Flag
@@ -669,7 +1398,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -678,10 +1407,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id026
-      - smeg
-      - build_species
-      - building
+      command: *id025
       positional: []
       named:
       - !Flag
@@ -690,7 +1416,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -699,10 +1425,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id027
-      - smeg
-      - build_species
-      - SNPs
+      command: *id026
       positional: []
       named:
       - !Flag
@@ -711,7 +1434,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -720,10 +1443,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id028
-      - smeg
-      - build_species
-      - threads
+      command: *id027
       positional: []
       named:
       - !Flag
@@ -732,7 +1452,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -741,10 +1461,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id029
-      - smeg
-      - build_species
-      - output
+      command: *id028
       positional: []
       named:
       - !Flag
@@ -753,7 +1470,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -762,10 +1479,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id030
-      - smeg
-      - build_species
-      - with
+      command: *id029
       positional: []
       named:
       - !Flag
@@ -774,7 +1488,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -783,10 +1497,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id031
-      - smeg
-      - build_species
-      - method
+      command: *id030
       positional: []
       named:
       - !Flag
@@ -795,7 +1506,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -804,10 +1515,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id032
-      - smeg
-      - build_species
-      - ONLY
+      command: *id031
       positional: []
       named:
       - !Flag
@@ -816,7 +1524,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -825,10 +1533,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id033
-      - smeg
-      - build_species
-      - default
+      command: *id032
       positional: []
       named:
       - !Flag
@@ -837,7 +1542,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -846,10 +1551,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id034
-      - smeg
-      - build_species
-      - threshold
+      command: *id033
       positional: []
       named:
       - !Flag
@@ -858,7 +1560,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -867,10 +1569,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id035
-      - smeg
-      - build_species
-      - a
+      command: *id034
       positional: []
       named:
       - !Flag
@@ -879,7 +1578,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -888,10 +1587,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id036
-      - smeg
-      - build_species
-      - Ignore
+      command: *id035
       positional: []
       named:
       - !Flag
@@ -900,7 +1596,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -909,10 +1605,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id037
-      - smeg
-      - build_species
-      - of
+      command: *id036
       positional: []
       named:
       - !Flag
@@ -921,7 +1614,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -930,10 +1623,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id038
-      - smeg
-      - build_species
-      - Representative
+      command: *id037
       positional: []
       named:
       - !Flag
@@ -942,7 +1632,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -951,10 +1641,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id039
-      - smeg
-      - build_species
-      - Create
+      command: *id038
       positional: []
       named:
       - !Flag
@@ -963,7 +1650,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -972,10 +1659,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id040
-      - smeg
-      - build_species
-      - Reference-based
+      command: *id039
       positional: []
       named:
       - !Flag
@@ -984,7 +1668,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -993,10 +1677,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id041
-      - smeg
-      - build_species
-      - File
+      command: *id040
       positional: []
       named:
       - !Flag
@@ -1005,7 +1686,7 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -1014,10 +1695,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     - !Command
-      command: &id042
-      - smeg
-      - build_species
-      - Genomes
+      command: *id041
       positional: []
       named:
       - !Flag
@@ -1026,7 +1704,25 @@ subcommands:
         - -g
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id004
+      subcommands: []
+      usage: []
+      help_flag:
+      usage_flag:
+      version_flag:
+      help_text: "-g [option] is required\n"
+      generated_using: *id006
+    - !Command
+      command: *id042
+      positional: []
+      named:
+      - !Flag
+        description: '[option] is required'
+        synonyms:
+        - -g
+        args: !EmptyFlagArg {}
+        optional: true
+      parent: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -1035,12 +1731,7 @@ subcommands:
       help_text: "-g [option] is required\n"
       generated_using: *id006
     usage: []
-    help_flag: !Flag
-      description: Display this message
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage:\n    smeg build_species <options>\n    <options>\n    -g  \
@@ -1055,7 +1746,7 @@ subcommands:
       \ ONLY applicable with Reference-based SMEG method\n                [default\
       \ = generate database suitable for both de novo and ref-based methods]\n   \
       \ -h        Display this message\n"
-    generated_using: *id004
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag:
@@ -1073,7 +1764,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1091,7 +1782,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1109,7 +1800,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1127,7 +1818,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1145,7 +1836,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1163,7 +1854,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1181,7 +1872,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1199,7 +1890,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1217,7 +1908,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1235,7 +1926,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1253,7 +1944,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1271,7 +1962,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1289,7 +1980,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1307,7 +1998,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1325,7 +2016,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1343,7 +2034,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1361,7 +2052,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1379,7 +2070,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1397,7 +2088,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1415,7 +2106,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1433,7 +2124,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1451,7 +2142,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1469,7 +2160,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1487,7 +2178,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1505,7 +2196,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1523,7 +2214,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1541,7 +2232,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1559,7 +2250,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1577,7 +2268,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1595,7 +2286,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1613,7 +2304,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1631,7 +2322,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1649,7 +2340,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1667,7 +2358,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1685,7 +2376,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1703,7 +2394,7 @@ subcommands:
     - -g
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id043
   subcommands: []
   usage: []
   help_flag:
@@ -1726,4 +2417,4 @@ help_text: "Usage:\n    smeg build_species <options>\n    <options>\n    -g     
   \ output [default = false]\n    -e        Create database ONLY applicable with Reference-based\
   \ SMEG method\n                [default = generate database suitable for both de\
   \ novo and ref-based methods]\n    -h        Display this message\n"
-generated_using: *id004
+generated_using: *id005

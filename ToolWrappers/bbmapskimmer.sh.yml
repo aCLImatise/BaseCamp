@@ -1,0 +1,302 @@
+!Command
+command:
+- bbmapskimmer.sh
+positional:
+- !Positional
+  description: (use the first best site)
+  position: 0
+  name: best
+  optional: false
+- !Positional
+  description: (consider unmapped)
+  position: 1
+  name: toss
+  optional: false
+- !Positional
+  description: (select one top-scoring site randomly)
+  position: 2
+  name: random
+  optional: false
+- !Positional
+  description: (retain all top-scoring sites)
+  position: 3
+  name: all
+  optional: false
+- !Positional
+  description: Set to false for long-mate-pair libraries.
+  position: 0
+  name: orientation.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage,\noverriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx800m\nwill specify 800 megs.  The max is\
+    \ typically 85% of\nphysical memory.  The human genome requires around 24g,\n\
+    or 12g with the 'usemodulo' flag.  The index uses\nroughly 6 bytes per reference\
+    \ base."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nBBMap\nWritten by Brian Bushnell, from Dec. 2010 - present\nLast modified\
+  \ February 13, 2020\n\nDescription:  Fast and accurate splice-aware read aligner.\n\
+  Please read bbmap/docs/guides/BBMapGuide.txt for more information.\n\nTo index:\
+  \     bbmap.sh ref=<reference fasta>\nTo map:       bbmap.sh in=<reads> out=<output\
+  \ sam>\nTo map without writing an index:\n    bbmap.sh ref=<reference fasta> in=<reads>\
+  \ out=<output sam> nodisk\n\nin=stdin will accept reads from standard in, and out=stdout\
+  \ will write to \nstandard out, but file extensions are still needed to specify\
+  \ the format of the \ninput and output files e.g. in=stdin.fa.gz will read gzipped\
+  \ fasta from \nstandard in; out=stdout.sam.gz will write gzipped sam.\n\nIndexing\
+  \ Parameters (required when building the index):\nnodisk=f                Set to\
+  \ true to build index in memory and write nothing \n                        to disk\
+  \ except output.\nref=<file>              Specify the reference sequence.  Only\
+  \ do this ONCE, \n                        when building the index (unless using\
+  \ 'nodisk').\nbuild=1                 If multiple references are indexed in the\
+  \ same directory,\n                        each needs a unique numeric ID (unless\
+  \ using 'nodisk').\nk=13                    Kmer length, range 8-15.  Longer is\
+  \ faster but uses \n                        more memory.  Shorter is more sensitive.\n\
+  \                        If indexing and mapping are done in two steps, K should\n\
+  \                        be specified each time.\npath=<.>                Specify\
+  \ the location to write the index, if you don't \n                        want it\
+  \ in the current working directory.\nusemodulo=f             Throw away ~80% of\
+  \ kmers based on remainder modulo a \n                        number (reduces RAM\
+  \ by 50% and sensitivity slightly).\n                        Should be enabled both\
+  \ when building the index AND \n                        when mapping.\nrebuild=f\
+  \               Force a rebuild of the index (ref= should be set).\n\nInput Parameters:\n\
+  build=1                 Designate index to use.  Corresponds to the number \n  \
+  \                      specified when building the index.\nin=<file>           \
+  \    Primary reads input; required parameter.\nin2=<file>              For paired\
+  \ reads in two files.\ninterleaved=auto        True forces paired/interleaved input;\
+  \ false forces \n                        single-ended mapping. If not specified,\
+  \ interleaved \n                        status will be autodetected from read names.\n\
+  fastareadlen=500        Break up FASTA reads longer than this.  Max is 500 for\n\
+  \                        BBMap and 6000 for BBMapPacBio.  Only works for FASTA\n\
+  \                        input (use 'maxlen' for FASTQ input).  The default for\n\
+  \                        bbmap.sh is 500, and for mapPacBio.sh is 6000.\nunpigz=f\
+  \                Spawn a pigz (parallel gzip) process for faster \n            \
+  \            decompression than using Java.  \n                        Requires\
+  \ pigz to be installed.\ntouppercase=t           (tuc) Convert lowercase letters\
+  \ in reads to upper case \n                        (otherwise they will not match\
+  \ the reference).\n\nSampling Parameters:\n\nreads=-1                Set to a positive\
+  \ number N to only process the first N\n                        reads (or pairs),\
+  \ then quit.  -1 means use all reads.\nsamplerate=1            Set to a number from\
+  \ 0 to 1 to randomly select that\n                        fraction of reads for\
+  \ mapping. 1 uses all reads.\nskipreads=0             Set to a number N to skip\
+  \ the first N reads (or pairs), \n                        then map the rest.\n\n\
+  Mapping Parameters:\nfast=f                  This flag is a macro which sets other\
+  \ paramters to run \n                        faster, at reduced sensitivity.  Bad\
+  \ for RNA-seq.\nslow=f                  This flag is a macro which sets other paramters\
+  \ to run \n                        slower, at greater sensitivity.  'vslow' is even\
+  \ slower.\nmaxindel=16000          Don't look for indels longer than this. Lower\
+  \ is faster.\n                        Set to >=100k for RNAseq with long introns\
+  \ like mammals.\nstrictmaxindel=f        When enabled, do not allow indels longer\
+  \ than 'maxindel'.\n                        By default these are not sought, but\
+  \ may be found anyway.\ntipsearch=100           Look this far for read-end deletions\
+  \ with anchors\n                        shorter than K, using brute force.\nminid=0.76\
+  \              Approximate minimum alignment identity to look for. \n          \
+  \              Higher is faster and less sensitive.\nminhits=1               Minimum\
+  \ number of seed hits required for candidate sites.\n                        Higher\
+  \ is faster.\nlocal=f                 Set to true to use local, rather than global,\
+  \ alignments.\n                        This will soft-clip ugly ends of poor alignments.\n\
+  perfectmode=f           Allow only perfect mappings when set to true (very fast).\n\
+  semiperfectmode=f       Allow only perfect and semiperfect (perfect except for \n\
+  \                        N's in the reference) mappings.\nthreads=auto         \
+  \   (t) Set to number of threads desired.  By default, uses \n                 \
+  \       all cores available.\nambiguous=best          (ambig) Set behavior on ambiguously-mapped\
+  \ reads (with \n                        multiple top-scoring mapping locations).\n\
+  \                            best    (use the first best site)\n               \
+  \             toss    (consider unmapped)\n                            random  (select\
+  \ one top-scoring site randomly)\n                            all     (retain all\
+  \ top-scoring sites)\nsamestrandpairs=f       (ssp) Specify whether paired reads\
+  \ should map to the\n                        same strand or opposite strands.\n\
+  requirecorrectstrand=t  (rcs) Forbid pairing of reads without correct strand \n\
+  \                        orientation.  Set to false for long-mate-pair libraries.\n\
+  killbadpairs=f          (kbp) If a read pair is mapped with an inappropriate\n \
+  \                       insert size or orientation, the read with the lower  \n\
+  \                        mapping quality is marked unmapped.\npairedonly=f     \
+  \       (po) Treat unpaired reads as unmapped.  Thus they will \n              \
+  \          be sent to 'outu' but not 'outm'.\nrcomp=f                 Reverse complement\
+  \ both reads prior to mapping (for LMP\n                        outward-facing libraries).\n\
+  rcompmate=f             Reverse complement read2 prior to mapping.\npairlen=32000\
+  \           Set max allowed distance between paired reads.  \n                 \
+  \       (insert size)=(pairlen)+(read1 length)+(read2 length)\nrescuedist=1200 \
+  \        Don't try to rescue paired reads if avg. insert size\n                \
+  \        greater than this.  Lower is faster.\nrescuemismatches=32     Maximum mismatches\
+  \ allowed in a rescued read.  Lower\n                        is faster.\naveragepairdist=100\
+  \     (apd) Initial average distance between paired reads.\n                   \
+  \     Varies dynamically; does not need to be specified.\ndeterministic=f      \
+  \   Run in deterministic mode.  In this case it is good\n                      \
+  \  to set averagepairdist.  BBMap is deterministic\n                        without\
+  \ this flag if using single-ended reads,\n                        or run singlethreaded.\n\
+  bandwidthratio=0        (bwr) If above zero, restrict alignment band to this \n\
+  \                        fraction of read length.  Faster but less accurate.\nbandwidth=0\
+  \             (bw) Set the bandwidth directly.\n                        fraction\
+  \ of read length.  Faster but less accurate.\nusejni=f                (jni) Do alignments\
+  \ faster, in C code.  Requires \n                        compiling the C code; details\
+  \ are in /jni/README.txt.\nmaxsites2=800           Don't analyze (or print) more\
+  \ than this many alignments \n                        per read.\nignorefrequentkmers=t\
+  \   (ifk) Discard low-information kmers that occur often.\nexcludefraction=0.03\
+  \    (ef) Fraction of kmers to ignore.  For example, 0.03\n                    \
+  \    will ignore the most common 3% of kmers.\ngreedy=t                Use a greedy\
+  \ algorithm to discard the least-useful\n                        kmers on a per-read\
+  \ basis.\nkfilter=0               If positive, potential mapping sites must have\
+  \ at\n                        least this many consecutive exact matches.\n\n\nQuality\
+  \ and Trimming Parameters:\nqin=auto                Set to 33 or 64 to specify input\
+  \ quality value ASCII\n                        offset. 33 is Sanger, 64 is old Solexa.\n\
+  qout=auto               Set to 33 or 64 to specify output quality value ASCII \n\
+  \                        offset (only if output format is fastq).\nqtrim=f     \
+  \            Quality-trim ends before mapping.  Options are: \n                \
+  \        'f' (false), 'l' (left), 'r' (right), and 'lr' (both).\nuntrim=f      \
+  \          Undo trimming after mapping.  Untrimmed bases will be \n            \
+  \            soft-clipped in cigar strings.\ntrimq=6                 Trim regions\
+  \ with average quality below this \n                        (phred algorithm).\n\
+  mintrimlength=60        (mintl) Don't trim reads to be shorter than this.\nfakefastaquality=-1\
+  \     (ffq) Set to a positive number 1-50 to generate fake\n                   \
+  \     quality strings for fasta input reads.\nignorebadquality=f      (ibq) Keep\
+  \ going, rather than crashing, if a read has \n                        out-of-range\
+  \ quality values.\nusequality=t            Use quality scores when determining which\
+  \ read kmers\n                        to use as seeds.\nminaveragequality=0    \
+  \ (maq) Do not map reads with average quality below this.\nmaqb=0              \
+  \    If positive, calculate maq from this many initial bases.\n\nOutput Parameters:\n\
+  out=<file>              Write all reads to this file.\noutu=<file>             Write\
+  \ only unmapped reads to this file.  Does not \n                        include\
+  \ unmapped paired reads with a mapped mate.\noutm=<file>             Write only\
+  \ mapped reads to this file.  Includes \n                        unmapped paired\
+  \ reads with a mapped mate.\nmappedonly=f            If true, treats 'out' like\
+  \ 'outm'.\nbamscript=<file>        (bs) Write a shell script to <file> that will\
+  \ turn \n                        the sam output into a sorted, indexed bam file.\n\
+  ordered=f               Set to true to output reads in same order as input.  \n\
+  \                        Slower and uses more memory.\noverwrite=f             (ow)\
+  \ Allow process to overwrite existing files.\nsecondary=f             Print secondary\
+  \ alignments.\nsssr=0.95               (secondarysitescoreratio) Print only secondary\
+  \ alignments\n                        with score of at least this fraction of primary.\n\
+  ssao=f                  (secondarysiteasambiguousonly) Only print secondary \n \
+  \                       alignments for ambiguously-mapped reads.\nmaxsites=5   \
+  \           Maximum number of total alignments to print per read.\n            \
+  \            Only relevant when secondary=t.\nquickmatch=f            Generate cigar\
+  \ strings more quickly.\ntrimreaddescriptions=f  (trd) Truncate read and ref names\
+  \ at the first whitespace,\n                        assuming that the remainder\
+  \ is a comment or description.\nziplevel=2              (zl) Compression level for\
+  \ zip or gzip output.\npigz=f                  Spawn a pigz (parallel gzip) process\
+  \ for faster \n                        compression than Java.  Requires pigz to\
+  \ be installed.\nmachineout=f            Set to true to output statistics in machine-friendly\
+  \ \n                        'key=value' format.\nprintunmappedcount=f    Print the\
+  \ total number of unmapped reads and bases.\n                        If input is\
+  \ paired, the number will be of pairs\n                        for which both reads\
+  \ are unmapped.\nshowprogress=0          If positive, print a '.' every X reads.\n\
+  showprogress2=0         If positive, print the number of seconds since the\n   \
+  \                     last progress update (instead of a '.').\nrenamebyinsert=f\
+  \        Renames reads based on their mapped insert size.\n\nBloom-Filtering Parameters\
+  \ (bloomfilter.sh is the standalone version).\nbloom=f                 Use a Bloom\
+  \ filter to ignore reads not sharing kmers\n                        with the reference.\
+  \  This uses more memory, but speeds\n                        mapping when most\
+  \ reads don't match the reference.\nbloomhashes=2           Number of hash functions.\n\
+  bloomminhits=3          Number of consecutive hits to be considered matched.\nbloomk=31\
+  \               Bloom filter kmer length.\nbloomserial=t           Use the serialized\
+  \ Bloom filter for greater loading\n                        speed, if available.\
+  \  If not, generate and write one.\n\nPost-Filtering Parameters:\nidfilter=0   \
+  \           Independant of minid; sets exact minimum identity \n               \
+  \         allowed for alignments to be printed.  Range 0 to 1.\nsubfilter=-1   \
+  \         Ban alignments with more than this many substitutions.\ninsfilter=-1 \
+  \           Ban alignments with more than this many insertions.\ndelfilter=-1  \
+  \          Ban alignments with more than this many deletions.\nindelfilter=-1  \
+  \        Ban alignments with more than this many indels.\neditfilter=-1        \
+  \   Ban alignments with more than this many edits.\ninslenfilter=-1         Ban\
+  \ alignments with an insertion longer than this.\ndellenfilter=-1         Ban alignments\
+  \ with a deletion longer than this.\nnfilter=-1              Ban alignments with\
+  \ more than this many ns.  This \n                        includes nocall, noref,\
+  \ and off scaffold ends.\n\nSam flags and settings:\nnoheader=f              Disable\
+  \ generation of header lines.\nsam=1.4                 Set to 1.4 to write Sam version\
+  \ 1.4 cigar strings, \n                        with = and X, or 1.3 to use M.\n\
+  saa=t                   (secondaryalignmentasterisks) Use asterisks instead of\n\
+  \                        bases for sam secondary alignments.\ncigar=t          \
+  \       Set to 'f' to skip generation of cigar strings (faster).\nkeepnames=f  \
+  \           Keep original names of paired reads, rather than \n                \
+  \        ensuring both reads have the same name.\nintronlen=999999999     Set to\
+  \ a lower number like 10 to change 'D' to 'N' in \n                        cigar\
+  \ strings for deletions of at least that length.\nrgid=                   Set readgroup\
+  \ ID.  All other readgroup fields \n                        can be set similarly,\
+  \ with the flag rgXX=\n                        If you set a readgroup flag to the\
+  \ word 'filename',\n                        e.g. rgid=filename, the input file name\
+  \ will be used.\nmdtag=f                 Write MD tags.\nnhtag=f               \
+  \  Write NH tags.\nxmtag=f                 Write XM tags (may only work correctly\
+  \ with ambig=all).\namtag=f                 Write AM tags.\nnmtag=f            \
+  \     Write NM tags.\nxstag=f                 Set to 'xs=fs', 'xs=ss', or 'xs=us'\
+  \ to write XS tags \n                        for RNAseq using firststrand, secondstrand,\
+  \ or \n                        unstranded libraries.  Needed by Cufflinks.  \n \
+  \                       JGI mainly uses 'firststrand'.\nstoptag=f              \
+  \ Write a tag indicating read stop location, prefixed by YS:i:\nlengthtag=f    \
+  \         Write a tag indicating (query,ref) alignment lengths, \n             \
+  \           prefixed by YL:Z:\nidtag=f                 Write a tag indicating percent\
+  \ identity, prefixed by YI:f:\ninserttag=f             Write a tag indicating insert\
+  \ size, prefixed by X8:Z:\nscoretag=f              Write a tag indicating BBMap's\
+  \ raw score, prefixed by YR:i:\ntimetag=f               Write a tag indicating this\
+  \ read's mapping time, prefixed by X0:i:\nboundstag=f             Write a tag indicating\
+  \ whether either read in the pair\n                        goes off the end of the\
+  \ reference, prefixed by XB:Z:\nnotags=f                Turn off all optional tags.\n\
+  \nHistogram and statistics output parameters:\nscafstats=<file>        Statistics\
+  \ on how many reads mapped to which scaffold.\nrefstats=<file>         Statistics\
+  \ on how many reads mapped to which reference\n                        file; only\
+  \ for BBSplit.\nsortscafs=t             Sort scaffolds or references by read count.\n\
+  bhist=<file>            Base composition histogram by position.\nqhist=<file>  \
+  \          Quality histogram by position.\naqhist=<file>           Histogram of\
+  \ average read quality.\nbqhist=<file>           Quality histogram designed for\
+  \ box plots.\nlhist=<file>            Read length histogram.\nihist=<file>     \
+  \       Write histogram of insert sizes (for paired reads).\nehist=<file>      \
+  \      Errors-per-read histogram.\nqahist=<file>           Quality accuracy histogram\
+  \ of error rates versus \n                        quality score.\nindelhist=<file>\
+  \        Indel length histogram.\nmhist=<file>            Histogram of match, sub,\
+  \ del, and ins rates by \n                        read location.\ngchist=<file>\
+  \           Read GC content histogram.\ngcbins=100              Number gchist bins.\
+  \  Set to 'auto' to use read length.\ngcpairs=t               Use average GC of\
+  \ paired reads.\nidhist=<file>           Histogram of read count versus percent\
+  \ identity.\nidbins=100              Number idhist bins.  Set to 'auto' to use read\
+  \ length.\nstatsfile=stderr        Mapping statistics are printed here.\n\nCoverage\
+  \ output parameters (these may reduce speed and use more RAM):\ncovstats=<file>\
+  \         Per-scaffold coverage info.\nrpkm=<file>             Per-scaffold RPKM/FPKM\
+  \ counts.\ncovhist=<file>          Histogram of # occurrences of each depth level.\n\
+  basecov=<file>          Coverage per base location.\nbincov=<file>           Print\
+  \ binned coverage per location (one line per X bases).\ncovbinsize=1000        \
+  \ Set the binsize for binned coverage output.\nnzo=t                   Only print\
+  \ scaffolds with nonzero coverage.\ntwocolumn=f             Change to true to print\
+  \ only ID and Avg_fold instead of \n                        all 6 columns to the\
+  \ 'out=' file.\n32bit=f                 Set to true if you need per-base coverage\
+  \ over 64k.\nstrandedcov=f           Track coverage for plus and minus strand independently.\n\
+  startcov=f              Only track start positions of reads.\nsecondarycov=t   \
+  \       Include coverage of secondary alignments.\nphyscov=f               Calculate\
+  \ physical coverage for paired reads.\n                        This includes the\
+  \ unsequenced bases.\ndelcoverage=t           (delcov) Count bases covered by deletions\
+  \ as covered.\n                        True is faster than false.\ncovk=0      \
+  \            If positive, calculate kmer coverage statistics.\n\nJava Parameters:\n\
+  -Xmx                    This will set Java's memory usage, \n                  \
+  \      overriding autodetection.\n                        -Xmx20g will specify 20\
+  \ gigs of RAM, and -Xmx800m \n                        will specify 800 megs.  The\
+  \ max is typically 85% of \n                        physical memory.  The human\
+  \ genome requires around 24g,\n                        or 12g with the 'usemodulo'\
+  \ flag.  The index uses \n                        roughly 6 bytes per reference\
+  \ base.\n-eoom                   This flag will cause the process to exit if an\
+  \ \n                        out-of-memory exception occurs.  Requires Java 8u92+.\n\
+  -da                     Disable assertions.\n\nPlease contact Brian Bushnell at\
+  \ bbushnell@lbl.gov if you encounter \nany problems, or post at: http://seqanswers.com/forums/showthread.php?t=41057\n\
+  \n"
+generated_using:
+- --help

@@ -1,0 +1,77 @@
+!Command
+command:
+- consolidate_vcfs.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: v1
+  optional: false
+named:
+- !Flag
+  description: /opt/bcftools/bcftools
+  synonyms:
+  - --snv-abundance-ratio
+  - --bcftools-path
+  args: !SimpleFlagArg
+    name: '0.75'
+  optional: true
+- !Flag
+  description: "[REQUIRED]\nMultiple list of key/value pair. Multiple .gz files can\
+    \ be input.\nExample with 3 gz files: --vcfsplit 'name=/path/vcf1.gz' --vcfsplit\n\
+    'name=/path/vcf2.gz' --vcfsplit 'name=/path/vcf3.gz'."
+  synonyms:
+  - --vcfsplit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[REQUIRED]\nMultiple list of key/value pair. Multiple .gz files can\
+    \ be input.\nExample with 3 gz files: --mpileup 'name=/path/vcf1.gz' --mpileup\n\
+    'name=/path/vcf2.gz' --mpileup 'name=/path/vcf3.gz'."
+  synonyms:
+  - --mpileup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[REQUIRED]\nThe cutoff for coverage to include a reference base (default:\
+    \ 1)."
+  synonyms:
+  - --coverage-cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[REQUIRED]\nMean mapping quality of observed alternate alleles."
+  synonyms:
+  - --min-mean-mapping
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Displays the help screen.\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage:\n    consolidate_vcfs.pl --vcfsplit v1=files/dataset1.dat --mpileup\n\
+  \    v1=files/dataset2.dat --coverage-cutoff 15 --min-mean-mapping 30\n    --snv-abundance-ratio\
+  \ 0.75 --bcftools-path /opt/bcftools/bcftools\n\nOptions:\n    --vcfsplit [REQUIRED]\n\
+  \        Multiple list of key/value pair. Multiple .gz files can be input.\n   \
+  \     Example with 3 gz files: --vcfsplit 'name=/path/vcf1.gz' --vcfsplit\n    \
+  \    'name=/path/vcf2.gz' --vcfsplit 'name=/path/vcf3.gz'.\n\n    --mpileup [REQUIRED]\n\
+  \        Multiple list of key/value pair. Multiple .gz files can be input.\n   \
+  \     Example with 3 gz files: --mpileup 'name=/path/vcf1.gz' --mpileup\n      \
+  \  'name=/path/vcf2.gz' --mpileup 'name=/path/vcf3.gz'.\n\n    --coverage-cutoff\
+  \ [REQUIRED]\n        The cutoff for coverage to include a reference base (default:\
+  \ 1).\n\n    --min-mean-mapping [REQUIRED]\n        Mean mapping quality of observed\
+  \ alternate alleles.\n\n    --snv-abundance-ratio [REQUIRED]\n        Ratio of number\
+  \ of reads that supporting a variant compare to total\n        reads for a particular\
+  \ position. Percentage for values > 1 (e.g., 75\n        = 75%), decimal for values\
+  \ <= 1 (e.g., 0.75 = 75%).\n\n    --bcftools-path [REQUIRED]\n        Full path\
+  \ to BCFTools.\n\n    -h, --help\n        Displays the help screen.\n\n"
+generated_using:
+- --help

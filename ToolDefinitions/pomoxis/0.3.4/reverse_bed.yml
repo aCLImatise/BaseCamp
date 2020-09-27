@@ -31,7 +31,7 @@ subcommands:
     name: bed_out
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -61,7 +61,107 @@ subcommands:
         name: bed_out
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: reverse_bed
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: bed_in
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: ref_fasta
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: bed_out
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: reverse_bed [-h] bed_in ref_fasta bed_out\nreverse_bed:\
+            \ error: the following arguments are required: ref_fasta, bed_out\n"
+          generated_using: &id004 []
+        - !Command
+          command: &id005
+          - reverse_bed
+          - ref_fasta
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: reverse_bed
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: bed_in
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: ref_fasta
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: bed_out
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: reverse_bed [-h] bed_in ref_fasta bed_out\nreverse_bed:\
+            \ error: the following arguments are required: ref_fasta, bed_out\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: reverse_bed [-h] bed_in ref_fasta bed_out\n\nConvert bed-file\
+          \ coordinates to coordinates on the reverse strand.\n\npositional arguments:\n\
+          \  bed_in      Input bed file.\n  ref_fasta   Input reference fasta file.\n\
+          \  bed_out     Output bed file.\n\noptional arguments:\n  -h, --help  show\
+          \ this help message and exit\n"
+        generated_using: &id006
+        - --help
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -74,11 +174,9 @@ subcommands:
       version_flag:
       help_text: "usage: reverse_bed [-h] bed_in ref_fasta bed_out\nreverse_bed: error:\
         \ the following arguments are required: ref_fasta, bed_out\n"
-      generated_using: &id004 []
+      generated_using: *id004
     - !Command
-      command: &id005
-      - reverse_bed
-      - ref_fasta
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -116,13 +214,7 @@ subcommands:
         \ the following arguments are required: ref_fasta, bed_out\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: reverse_bed [-h] bed_in ref_fasta bed_out\n\nConvert bed-file\
@@ -130,8 +222,7 @@ subcommands:
       \  bed_in      Input bed file.\n  ref_fasta   Input reference fasta file.\n\
       \  bed_out     Output bed file.\n\noptional arguments:\n  -h, --help  show this\
       \ help message and exit\n"
-    generated_using: &id006
-    - --help
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -169,7 +260,7 @@ subcommands:
     name: bed_out
     optional: false
   named: []
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

@@ -1,0 +1,250 @@
+!Command
+command:
+- h5diff
+positional:
+- !Positional
+  description: File name of the first HDF5 file
+  position: 0
+  name: file1
+  optional: false
+- !Positional
+  description: File name of the second HDF5 file
+  position: 1
+  name: file2
+  optional: false
+- !Positional
+  description: "-h, --help\nPrint a usage message and exit."
+  position: 0
+  name: OPTIONS
+  optional: false
+named:
+- !Flag
+  description: Report mode. Print differences.
+  synonyms:
+  - -r
+  - --report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Quiet mode. Do not produce output.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints messages from the HDF5 error stack as they occur.
+  synonyms:
+  - --enable-error-stack
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Follow symbolic links (soft links and external links and compare the)\n\
+    links' target objects.\nIf symbolic link(s) with the same name exist in the files\
+    \ being\ncompared, then determine whether the target of each link is an existing\n\
+    object (dataset, group, or named datatype) or the link is a dangling\nlink (a\
+    \ soft or external link pointing to a target object that does\nnot yet exist).\n\
+    - If both symbolic links are dangling links, they are treated as being\nthe same;\
+    \ by default, h5diff returns an exit code of 0.\nIf, however, --no-dangling-links\
+    \ is used with --follow-symlinks,\nthis situation is treated as an error and h5diff\
+    \ returns an\nexit code of 2.\n- If only one of the two links is a dangling link,they\
+    \ are treated as\nbeing different and h5diff returns an exit code of 1.\nIf, however,\
+    \ --no-dangling-links is used with --follow-symlinks,\nthis situation is treated\
+    \ as an error and h5diff returns an\nexit code of 2.\n- If both symbolic links\
+    \ point to existing objects, h5diff compares the\ntwo objects.\nIf any symbolic\
+    \ link specified in the call to h5diff does not exist,\nh5diff treats it as an\
+    \ error and returns an exit code of 2."
+  synonyms:
+  - --follow-symlinks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Must be used with --follow-symlinks option; otherwise, h5diff shows\n\
+    error message and returns an exit code of 2.\nCheck for any symbolic links (soft\
+    \ links or external links) that do not\nresolve to an existing object (dataset,\
+    \ group, or named datatype).\nIf any dangling link is found, this situation is\
+    \ treated as an error\nand h5diff returns an exit code of 2."
+  synonyms:
+  - --no-dangling-links
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: List objects that are not comparable
+  synonyms:
+  - -c
+  - --compare
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Avoid NaNs detection
+  synonyms:
+  - -N
+  - --nan
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print differences up to C. C must be a positive integer.
+  synonyms:
+  - -n
+  - --count
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: "Print difference if (|a-b| > D). D must be a positive number. Where\
+    \ a\nis the data point value in file1 and b is the data point value in file2.\n\
+    Can not use with '-p' or '--use-system-epsilon'."
+  synonyms:
+  - -d
+  - --delta
+  args: !SimpleFlagArg
+    name: D
+  optional: true
+- !Flag
+  description: "Print difference if (|(a-b)/b| > R). R must be a positive number.\
+    \ Where a\nis the data point value in file1 and b is the data point value in file2.\n\
+    Can not use with '-d' or '--use-system-epsilon'."
+  synonyms:
+  - -p
+  - --relative
+  args: !SimpleFlagArg
+    name: R
+  optional: true
+- !Flag
+  description: "Print difference if (|a-b| > EPSILON), EPSILON is system defined value.\
+    \ Where a\nis the data point value in file1 and b is the data point value in file2.\n\
+    If the system epsilon is not defined,one of the following predefined\nvalues will\
+    \ be used:\nFLT_EPSILON = 1.19209E-07 for floating-point type\nDBL_EPSILON = 2.22045E-16\
+    \ for double precision type\nCan not use with '-p' or '-d'."
+  synonyms:
+  - --use-system-epsilon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\"path\"\nExclude the specified path to an object when comparing files\
+    \ or groups.\nIf a group is excluded, all member objects will also be excluded.\n\
+    The specified path is excluded wherever it occurs.\nThis flexibility enables the\
+    \ same option to exclude either objects that\nexist only in one file or common\
+    \ objects that are known to differ.\nWhen comparing files, \"path\" is the absolute\
+    \ path to the excluded;\nobject; when comparing groups, \"path\" is similar to\
+    \ the relative\npath from the group to the excluded object. This \"path\" can\
+    \ be\ntaken from the first section of the output of the --verbose option.\nFor\
+    \ example, if you are comparing the group /groupA in two files and\nyou want to\
+    \ exclude /groupA/groupB/groupC in both files, the exclude\noption would read\
+    \ as follows:\n--exclude-path \"/groupB/groupC\"\nIf there are multiple paths\
+    \ to an object, only the specified path(s)\nwill be excluded; the comparison will\
+    \ include any path not explicitly\nexcluded.\nThis option can be used repeatedly\
+    \ to exclude multiple paths."
+  synonyms:
+  - --exclude-path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'mode: print the above plus a list of objects and warnings'
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: Verbose
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Print version number and exit.
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: h5diff [OPTIONS] file1 file2 [obj1[ obj2]]\n  file1           \
+  \  File name of the first HDF5 file\n  file2             File name of the second\
+  \ HDF5 file\n  [obj1]            Name of an HDF5 object, in absolute path\n  [obj2]\
+  \            Name of an HDF5 object, in absolute path\n\n  OPTIONS\n   -h, --help\n\
+  \         Print a usage message and exit.\n   -V, --version\n         Print version\
+  \ number and exit.\n   -r, --report\n         Report mode. Print differences.\n\
+  \   -v --verbose\n         Verbose mode. Print differences information and list\
+  \ of objects.\n   -vN --verbose=N\n         Verbose mode with level. Print differences\
+  \ and list of objects.\n         Level of detail depends on value of N:\n      \
+  \    0 : Identical to '-v' or '--verbose'.\n          1 : All level 0 information\
+  \ plus one-line attribute\n              status summary.\n          2 : All level\
+  \ 1 information plus extended attribute\n              status report.\n   -q, --quiet\n\
+  \         Quiet mode. Do not produce output.\n   --enable-error-stack\n        \
+  \           Prints messages from the HDF5 error stack as they occur.\n   --follow-symlinks\n\
+  \         Follow symbolic links (soft links and external links and compare the)\n\
+  \         links' target objects.\n         If symbolic link(s) with the same name\
+  \ exist in the files being\n         compared, then determine whether the target\
+  \ of each link is an existing\n         object (dataset, group, or named datatype)\
+  \ or the link is a dangling\n         link (a soft or external link pointing to\
+  \ a target object that does\n         not yet exist).\n         - If both symbolic\
+  \ links are dangling links, they are treated as being\n           the same; by default,\
+  \ h5diff returns an exit code of 0.\n           If, however, --no-dangling-links\
+  \ is used with --follow-symlinks,\n           this situation is treated as an error\
+  \ and h5diff returns an\n           exit code of 2.\n         - If only one of the\
+  \ two links is a dangling link,they are treated as\n           being different and\
+  \ h5diff returns an exit code of 1.\n           If, however, --no-dangling-links\
+  \ is used with --follow-symlinks,\n           this situation is treated as an error\
+  \ and h5diff returns an\n           exit code of 2.\n         - If both symbolic\
+  \ links point to existing objects, h5diff compares the\n           two objects.\n\
+  \         If any symbolic link specified in the call to h5diff does not exist,\n\
+  \         h5diff treats it as an error and returns an exit code of 2.\n   --no-dangling-links\n\
+  \         Must be used with --follow-symlinks option; otherwise, h5diff shows\n\
+  \         error message and returns an exit code of 2.\n         Check for any symbolic\
+  \ links (soft links or external links) that do not\n         resolve to an existing\
+  \ object (dataset, group, or named datatype).\n         If any dangling link is\
+  \ found, this situation is treated as an error\n         and h5diff returns an exit\
+  \ code of 2.\n   -c, --compare\n         List objects that are not comparable\n\
+  \   -N, --nan\n         Avoid NaNs detection\n   -n C, --count=C\n         Print\
+  \ differences up to C. C must be a positive integer.\n   -d D, --delta=D\n     \
+  \    Print difference if (|a-b| > D). D must be a positive number. Where a\n   \
+  \      is the data point value in file1 and b is the data point value in file2.\n\
+  \         Can not use with '-p' or '--use-system-epsilon'.\n   -p R, --relative=R\n\
+  \         Print difference if (|(a-b)/b| > R). R must be a positive number. Where\
+  \ a\n         is the data point value in file1 and b is the data point value in\
+  \ file2.\n         Can not use with '-d' or '--use-system-epsilon'.\n   --use-system-epsilon\n\
+  \         Print difference if (|a-b| > EPSILON), EPSILON is system defined value.\
+  \ Where a\n         is the data point value in file1 and b is the data point value\
+  \ in file2.\n         If the system epsilon is not defined,one of the following\
+  \ predefined\n         values will be used:\n           FLT_EPSILON = 1.19209E-07\
+  \ for floating-point type\n           DBL_EPSILON = 2.22045E-16 for double precision\
+  \ type\n         Can not use with '-p' or '-d'.\n   --exclude-path \"path\"\n  \
+  \       Exclude the specified path to an object when comparing files or groups.\n\
+  \         If a group is excluded, all member objects will also be excluded.\n  \
+  \       The specified path is excluded wherever it occurs.\n         This flexibility\
+  \ enables the same option to exclude either objects that\n         exist only in\
+  \ one file or common objects that are known to differ.\n\n         When comparing\
+  \ files, \"path\" is the absolute path to the excluded;\n         object; when comparing\
+  \ groups, \"path\" is similar to the relative\n         path from the group to the\
+  \ excluded object. This \"path\" can be\n         taken from the first section of\
+  \ the output of the --verbose option.\n         For example, if you are comparing\
+  \ the group /groupA in two files and\n         you want to exclude /groupA/groupB/groupC\
+  \ in both files, the exclude\n         option would read as follows:\n         \
+  \  --exclude-path \"/groupB/groupC\"\n\n         If there are multiple paths to\
+  \ an object, only the specified path(s)\n         will be excluded; the comparison\
+  \ will include any path not explicitly\n         excluded.\n         This option\
+  \ can be used repeatedly to exclude multiple paths.\n\n Modes of output:\n  Default\
+  \ mode: print the number of differences found and where they occured\n  -r Report\
+  \ mode: print the above plus the differences\n  -v Verbose mode: print the above\
+  \ plus a list of objects and warnings\n  -q Quiet mode: do not print output\n\n\
+  \ File comparison:\n  If no objects [obj1[ obj2]] are specified, the h5diff comparison\
+  \ proceeds as\n  a comparison of the two files' root groups.  That is, h5diff first\
+  \ compares\n  the names of root group members, generates a report of root group\
+  \ objects\n  that appear in only one file or in both files, and recursively compares\n\
+  \  common objects.\n\n Object comparison:\n  1) Groups\n      First compares the\
+  \ names of member objects (relative path, from the\n      specified group) and generates\
+  \ a report of objects that appear in only\n      one group or in both groups. Common\
+  \ objects are then compared recursively.\n  2) Datasets\n      Array rank and dimensions,\
+  \ datatypes, and data values are compared.\n  3) Datatypes\n      The comparison\
+  \ is based on the return value of H5Tequal.\n  4) Symbolic links\n      The paths\
+  \ to the target objects are compared.\n      (The option --follow-symlinks overrides\
+  \ the default behavior when\n       symbolic links are compared.).\n\n Exit code:\n\
+  \  0 if no differences, 1 if differences found, 2 if error\n\n Examples of use:\n\
+  \ 1) h5diff file1 file2 /g1/dset1 /g1/dset2\n    Compares object '/g1/dset1' in\
+  \ file1 with '/g1/dset2' in file2\n\n 2) h5diff file1 file2 /g1/dset1\n    Compares\
+  \ object '/g1/dset1' in both files\n\n 3) h5diff file1 file2\n    Compares all objects\
+  \ in both files\n\n Notes:\n  file1 and file2 can be the same file.\n  Use h5diff\
+  \ file1 file1 /g1/dset1 /g1/dset2 to compare\n  '/g1/dset1' and '/g1/dset2' in the\
+  \ same file\n\n"
+generated_using:
+- --help

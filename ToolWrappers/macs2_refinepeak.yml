@@ -1,0 +1,99 @@
+!Command
+command:
+- macs2
+- refinepeak
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !RepeatFlagArg
+    name: IFILE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: BEDFILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "show this help message and exit\n-b BEDFILE            Candidate peak\
+    \ file in BED format. REQUIRED.\n-i IFILE [IFILE ...], --ifile IFILE [IFILE ...]\n\
+    ChIP-seq alignment file. If multiple files are given\nas '-t A B C', then they\
+    \ will all be read and\ncombined. Note that pair-end data is not supposed to\n\
+    work with this command. REQUIRED.\n-f {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE},\
+    \ --format {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE}\nFormat of tag\
+    \ file, \"AUTO\", \"BED\" or \"ELAND\" or\n\"ELANDMULTI\" or \"ELANDEXPORT\" or\
+    \ \"SAM\" or \"BAM\" or\n\"BOWTIE\". The default AUTO option will let 'macs2\n\
+    refinepeak' decide which format the file is. Please\ncheck the definition in README\
+    \ file if you choose\nELAND/ELANDMULTI/ELANDEXPORT/SAM/BAM/BOWTIE. DEFAULT:\n\"\
+    AUTO\"\n-c CUTOFF, --cutoff CUTOFF\nCutoff DEFAULT: 5\n-w WINDOWSIZE, --window-size\
+    \ WINDOWSIZE\nScan window size on both side of the summit (default:\n100bp)\n\
+    --buffer-size BUFFER_SIZE\nBuffer size for incrementally increasing internal\n\
+    array size to store reads alignment information. In\nmost cases, you don't have\
+    \ to change this parameter.\nHowever, if there are large number of\nchromosomes/contigs/scaffolds\
+    \ in your alignment, it's\nrecommended to specify a smaller buffer size in order\n\
+    to decrease memory usage (but it will take longer time\nto read alignment files).\
+    \ Minimum memory requested for\nreading an alignment file is about # of CHROMOSOME\
+    \ *\nBUFFER_SIZE * 8 Bytes. DEFAULT: 100000\n--verbose VERBOSE     Set verbose\
+    \ level. 0: only show critical message, 1:\nshow additional warning message, 2:\
+    \ show process\ninformation, 3: show debug messages. If you want to\nknow where\
+    \ are the duplicate reads, use 3. DEFAULT:2\n--outdir OUTDIR       If specified\
+    \ all output files will be written to that\ndirectory. Default: the current working\
+    \ directory\n-o OFILE, --ofile OFILE\nOutput file name. Mutually exclusive with\
+    \ --o-prefix.\n--o-prefix OPREFIX    Output file prefix. Mutually exclusive with\n\
+    -o/--ofile.\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: macs2 refinepeak [-h] -b BEDFILE -i IFILE [IFILE ...]\n       \
+  \                 [-f {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE}]\n\
+  \                        [-c CUTOFF] [-w WINDOWSIZE]\n                        [--buffer-size\
+  \ BUFFER_SIZE] [--verbose VERBOSE]\n                        [--outdir OUTDIR] (-o\
+  \ OFILE | --o-prefix OPREFIX)\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -b BEDFILE            Candidate peak file in BED\
+  \ format. REQUIRED.\n  -i IFILE [IFILE ...], --ifile IFILE [IFILE ...]\n       \
+  \                 ChIP-seq alignment file. If multiple files are given\n       \
+  \                 as '-t A B C', then they will all be read and\n              \
+  \          combined. Note that pair-end data is not supposed to\n              \
+  \          work with this command. REQUIRED.\n  -f {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE},\
+  \ --format {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE}\n            \
+  \            Format of tag file, \"AUTO\", \"BED\" or \"ELAND\" or\n           \
+  \             \"ELANDMULTI\" or \"ELANDEXPORT\" or \"SAM\" or \"BAM\" or\n     \
+  \                   \"BOWTIE\". The default AUTO option will let 'macs2\n      \
+  \                  refinepeak' decide which format the file is. Please\n       \
+  \                 check the definition in README file if you choose\n          \
+  \              ELAND/ELANDMULTI/ELANDEXPORT/SAM/BAM/BOWTIE. DEFAULT:\n         \
+  \               \"AUTO\"\n  -c CUTOFF, --cutoff CUTOFF\n                       \
+  \ Cutoff DEFAULT: 5\n  -w WINDOWSIZE, --window-size WINDOWSIZE\n               \
+  \         Scan window size on both side of the summit (default:\n              \
+  \          100bp)\n  --buffer-size BUFFER_SIZE\n                        Buffer size\
+  \ for incrementally increasing internal\n                        array size to store\
+  \ reads alignment information. In\n                        most cases, you don't\
+  \ have to change this parameter.\n                        However, if there are\
+  \ large number of\n                        chromosomes/contigs/scaffolds in your\
+  \ alignment, it's\n                        recommended to specify a smaller buffer\
+  \ size in order\n                        to decrease memory usage (but it will take\
+  \ longer time\n                        to read alignment files). Minimum memory\
+  \ requested for\n                        reading an alignment file is about # of\
+  \ CHROMOSOME *\n                        BUFFER_SIZE * 8 Bytes. DEFAULT: 100000\n\
+  \  --verbose VERBOSE     Set verbose level. 0: only show critical message, 1:\n\
+  \                        show additional warning message, 2: show process\n    \
+  \                    information, 3: show debug messages. If you want to\n     \
+  \                   know where are the duplicate reads, use 3. DEFAULT:2\n  --outdir\
+  \ OUTDIR       If specified all output files will be written to that\n         \
+  \               directory. Default: the current working directory\n  -o OFILE, --ofile\
+  \ OFILE\n                        Output file name. Mutually exclusive with --o-prefix.\n\
+  \  --o-prefix OPREFIX    Output file prefix. Mutually exclusive with\n         \
+  \               -o/--ofile.\n"
+generated_using:
+- --help

@@ -1,0 +1,302 @@
+!Command
+command:
+- tardis
+positional:
+- !Positional
+  description: command to run
+  position: 0
+  name: command
+  optional: false
+- !Positional
+  description: command arguments
+  position: 1
+  name: arg
+  optional: false
+named:
+- !Flag
+  description: "Run the command as part of a workflow. After launching\nall of the\
+    \ jobs, tardis waits for all outputs, which\nare then collated and merged into\
+    \ a single output\nfile, as specified by the output file path in the\noriginal\
+    \ command; all of the temporary input files\n(for example chunks of uncompressed\
+    \ fastq) are deleted\nprovided all prior steps completed without error (if\nthere\
+    \ was an error they are left there to assist with\ndebugging). Without this option,\
+    \ the program exits\nimmediately after launching all of the jobs, and\noutput\
+    \ is left un-collated in the scratch folder\ncreated by this script, and no cleanup\
+    \ is done."
+  synonyms:
+  - -w
+  - --in-workflow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "When conditioning the input file(s), split into files\neach containing\
+    \ N logical records. (A logical record\nfor a sequence file is a complete sequence.\
+    \ For a text\nfile it is a line of text). (If the -s option is used\nto sample\
+    \ the inputs, the chunksize relates to the\nfull un-sampled file . so the same\
+    \ chunk-size can be\nused whether random sampling or not. For example a\nchunksize\
+    \ of 1,000,000 is specified in combination\nwith a sampling rate of .0001, then\
+    \ each chunk would\ncontain 100 sequences . i.e. you should not adjust the\nchunk-size,\
+    \ for the sampling rate. Note that to avoid\na race-condition that could be caused\
+    \ by a very small\nchunk-size resulting in launching a very large number\nof jobs,\
+    \ tardis will throw an exception if the chunk-\nsize used would result in launching\
+    \ more than\nMAX_DIMENSION jobs (currently 5000) )"
+  synonyms:
+  - -c
+  - --chunksize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "When conditioning the input file(s), only use records\nfrom the input\
+    \ file after or including N (where that\nis logical record number . e.g. in a\
+    \ fastq file, start\nfrom record number N means start from sequence N). By\ncombining\
+    \ this option with -to, you can process slices\nof a file. Note that this option\
+    \ has no affect when\nprocessing a list-file."
+  synonyms:
+  - --from
+  - --from-record
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "When conditioning the input file(s), only use records\nup to and including\
+    \ the record N (where that is\nlogical record number . e.g. in a fastq file, process\n\
+    up to record number N means process up to and\nincluding sequence N). By combining\
+    \ this option with\n-from, you can process slices of a file. Note that\nthis option\
+    \ has no affect when processing a list-file."
+  synonyms:
+  - --to
+  - --to-record
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Rather than process the entire input file(s), a random\nsample of\
+    \ the records is processed. RATE is the\nprobability that a given record will\
+    \ be sampled. For\nexample -s .001 will result in roughly 1 in every 1000\nlogical\
+    \ records being sampled. When the -s option is\nspecified, tardis does not clean\
+    \ up the conditioned\ninput and output . e.g. all of the uncompressed fastq\n\
+    sample fragments would be retained. These are retained\nto assist with the Q/C\
+    \ work that is normally\nassociated with a sampled run. Paired fastq input\nfiles\
+    \ are sampled in lock-step, provided the paired\nfastq conditioning directive\
+    \ is used for both files."
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: RATE
+  optional: true
+- !Flag
+  description: "create the tardis working folder under DIR. If no\nworking root is\
+    \ specified, a default location is used."
+  synonyms:
+  - -d
+  - --rootdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: "validate the run by doing a dry run. This means that\nthe chunks,\
+    \ job scripts and job files etc. are all\ngenerated but the jobs are not launched.\
+    \ The user can\nstart then kill (CTRL-C) the run, inspect the script\nand job\
+    \ files that were generated to check that their\ncommand has been conditioned\
+    \ as envisaged."
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "keep the conditioned input and output - i.e. the input\nand output\
+    \ fragments. Normally in workflow mode these\nare deleted after the output is\
+    \ successfully\n\"unconditioned\" - i.e. joined back together"
+  synonyms:
+  - -k
+  - --keep-conditioned-data
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "optionally supply a job template - tardis will read\nthe contents\
+    \ of FILE and use this as the job template."
+  synonyms:
+  - --job-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: template directory
+  synonyms:
+  - --templatedir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: job template name, resolved in template directory
+  synonyms:
+  - --job-template-name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "indicate the hpc environment. Currently the only\nsupported values\
+    \ are: condor which results in tardis\nattempting to set up and launch condor\
+    \ jobs; local\nwhich results in each job being launched by tardis\nitself on the\
+    \ local machine, using the native python\nsub-process API. The maximum number\
+    \ of processes it\nwill run at a time is controlled by a global variable\nin the\
+    \ script MAX_PROCESSES, which is initially 10;\nslurm which results in tardis\
+    \ attempting to set up and\nlaunch slurm jobs."
+  synonyms:
+  - --hpctype
+  args: !SimpleFlagArg
+    name: HPCTYPE
+  optional: true
+- !Flag
+  description: "if you supply a \"baton file\" FILE, tardis will write\nthe process\
+    \ exit code to this file after all\nprocessing has completed. This can be useful\
+    \ to\npreserve synchronous execution of a workflow, even if\ntardis is started\
+    \ in the background - the workflow can\ntest the existence of the batonfile -\
+    \ if it exists\nthen the corresponding tardis processing step has\ncompleted (i.e.\
+    \ another way of each step in a workflow\n\"passing the baton\" to the next step)"
+  synonyms:
+  - --batonfile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: shell script fragment included in jobs
+  synonyms:
+  - --shell-include-file
+  - --runtimeconfigsourcefile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: run quietly
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: user configuration file
+  synonyms:
+  - --userconfig
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: ignore the system configuration file
+  synonyms:
+  - --no-sysconfig
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tardis [-h] [-w] [-c N] [--from N] [--to N] [-s RATE] [-d DIR]\n\
+  \              [--dry-run] [-k] [--job-file FILE] [--templatedir DIR]\n        \
+  \      [--job-template-name NAME] [--hpctype HPCTYPE]\n              [--batonfile\
+  \ FILE] [--shell-include-file FILE] [-q]\n              [--userconfig FILE] [--no-sysconfig]\n\
+  \              command ...\n\nCondition a command for execution on a cluster.\n\n\
+  positional arguments:\n  command               command to run\n  arg           \
+  \        command arguments\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -w, --in-workflow     Run the command as part of\
+  \ a workflow. After launching\n                        all of the jobs, tardis waits\
+  \ for all outputs, which\n                        are then collated and merged into\
+  \ a single output\n                        file, as specified by the output file\
+  \ path in the\n                        original command; all of the temporary input\
+  \ files\n                        (for example chunks of uncompressed fastq) are\
+  \ deleted\n                        provided all prior steps completed without error\
+  \ (if\n                        there was an error they are left there to assist\
+  \ with\n                        debugging). Without this option, the program exits\n\
+  \                        immediately after launching all of the jobs, and\n    \
+  \                    output is left un-collated in the scratch folder\n        \
+  \                created by this script, and no cleanup is done.\n  -c N, --chunksize\
+  \ N   When conditioning the input file(s), split into files\n                  \
+  \      each containing N logical records. (A logical record\n                  \
+  \      for a sequence file is a complete sequence. For a text\n                \
+  \        file it is a line of text). (If the -s option is used\n               \
+  \         to sample the inputs, the chunksize relates to the\n                 \
+  \       full un-sampled file . so the same chunk-size can be\n                 \
+  \       used whether random sampling or not. For example a\n                   \
+  \     chunksize of 1,000,000 is specified in combination\n                     \
+  \   with a sampling rate of .0001, then each chunk would\n                     \
+  \   contain 100 sequences . i.e. you should not adjust the\n                   \
+  \     chunk-size, for the sampling rate. Note that to avoid\n                  \
+  \      a race-condition that could be caused by a very small\n                 \
+  \       chunk-size resulting in launching a very large number\n                \
+  \        of jobs, tardis will throw an exception if the chunk-\n               \
+  \         size used would result in launching more than\n                      \
+  \  MAX_DIMENSION jobs (currently 5000) )\n  --from N, --from-record N\n        \
+  \                When conditioning the input file(s), only use records\n       \
+  \                 from the input file after or including N (where that\n       \
+  \                 is logical record number . e.g. in a fastq file, start\n     \
+  \                   from record number N means start from sequence N). By\n    \
+  \                    combining this option with -to, you can process slices\n  \
+  \                      of a file. Note that this option has no affect when\n   \
+  \                     processing a list-file.\n  --to N, --to-record N\n       \
+  \                 When conditioning the input file(s), only use records\n      \
+  \                  up to and including the record N (where that is\n           \
+  \             logical record number . e.g. in a fastq file, process\n          \
+  \              up to record number N means process up to and\n                 \
+  \       including sequence N). By combining this option with\n                 \
+  \       -from, you can process slices of a file. Note that\n                   \
+  \     this option has no affect when processing a list-file.\n  -s RATE        \
+  \       Rather than process the entire input file(s), a random\n               \
+  \         sample of the records is processed. RATE is the\n                    \
+  \    probability that a given record will be sampled. For\n                    \
+  \    example -s .001 will result in roughly 1 in every 1000\n                  \
+  \      logical records being sampled. When the -s option is\n                  \
+  \      specified, tardis does not clean up the conditioned\n                   \
+  \     input and output . e.g. all of the uncompressed fastq\n                  \
+  \      sample fragments would be retained. These are retained\n                \
+  \        to assist with the Q/C work that is normally\n                        associated\
+  \ with a sampled run. Paired fastq input\n                        files are sampled\
+  \ in lock-step, provided the paired\n                        fastq conditioning\
+  \ directive is used for both files.\n  -d DIR, --rootdir DIR\n                 \
+  \       create the tardis working folder under DIR. If no\n                    \
+  \    working root is specified, a default location is used.\n  --dry-run       \
+  \      validate the run by doing a dry run. This means that\n                  \
+  \      the chunks, job scripts and job files etc. are all\n                    \
+  \    generated but the jobs are not launched. The user can\n                   \
+  \     start then kill (CTRL-C) the run, inspect the script\n                   \
+  \     and job files that were generated to check that their\n                  \
+  \      command has been conditioned as envisaged.\n  -k, --keep-conditioned-data\n\
+  \                        keep the conditioned input and output - i.e. the input\n\
+  \                        and output fragments. Normally in workflow mode these\n\
+  \                        are deleted after the output is successfully\n        \
+  \                \"unconditioned\" - i.e. joined back together\n  --job-file FILE\
+  \       optionally supply a job template - tardis will read\n                  \
+  \      the contents of FILE and use this as the job template.\n  --templatedir DIR\
+  \     template directory\n  --job-template-name NAME\n                        job\
+  \ template name, resolved in template directory\n  --hpctype HPCTYPE     indicate\
+  \ the hpc environment. Currently the only\n                        supported values\
+  \ are: condor which results in tardis\n                        attempting to set\
+  \ up and launch condor jobs; local\n                        which results in each\
+  \ job being launched by tardis\n                        itself on the local machine,\
+  \ using the native python\n                        sub-process API. The maximum\
+  \ number of processes it\n                        will run at a time is controlled\
+  \ by a global variable\n                        in the script MAX_PROCESSES, which\
+  \ is initially 10;\n                        slurm which results in tardis attempting\
+  \ to set up and\n                        launch slurm jobs.\n  --batonfile FILE\
+  \      if you supply a \"baton file\" FILE, tardis will write\n                \
+  \        the process exit code to this file after all\n                        processing\
+  \ has completed. This can be useful to\n                        preserve synchronous\
+  \ execution of a workflow, even if\n                        tardis is started in\
+  \ the background - the workflow can\n                        test the existence\
+  \ of the batonfile - if it exists\n                        then the corresponding\
+  \ tardis processing step has\n                        completed (i.e. another way\
+  \ of each step in a workflow\n                        \"passing the baton\" to the\
+  \ next step)\n  --shell-include-file FILE, --runtimeconfigsourcefile FILE\n    \
+  \                    shell script fragment included in jobs\n  -q, --quiet     \
+  \      run quietly\n  --userconfig FILE     user configuration file\n  --no-sysconfig\
+  \        ignore the system configuration file\n"
+generated_using:
+- --help

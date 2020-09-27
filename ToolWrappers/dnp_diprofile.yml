@@ -1,0 +1,91 @@
+!Command
+command:
+- dnp-diprofile
+positional:
+- !Positional
+  description: REQUIRED ARGUMENTS
+  position: 0
+  name: position.
+  optional: false
+named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: "Dinucleotide to compute a frequency profile in fasta file. One of\n\
+    AA, AC, AG, AT, CA, CC, CG, CT, GA, GC, GG, GT, TA, TC, TG, and TT.\nDefault:\
+    \ AA."
+  synonyms:
+  - -di
+  - --dinucleotide
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'Sequence length in fasta file. In range [25..600]. Default: 600.'
+  synonyms:
+  - -sl
+  - --seqlength
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Perform computation on COMPLEMENTARY sequences of the strings in\n\
+    fasta file."
+  synonyms:
+  - -c
+  - --complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print parameters and variables.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "diprofile - Dinucleotide Frequency Profile\n==========================================\n\
+  \nSYNOPSIS\n    diprofile [OPTIONS] \"fastaFile.fa\"\n\nDESCRIPTION\n    This program\
+  \ computes a profile of a frequency of occurrence of the\n    dinucleotide in a\
+  \ batch of fasta sequences aligned by their start\n    position.\n\nREQUIRED ARGUMENTS\n\
+  \    FASTA_FILE STRING\n\nOPTIONS\n    -h, --help\n          Display the help message.\n\
+  \    --version-check BOOL\n          Turn this option off to disable version update\
+  \ notifications of the\n          application. One of 1, ON, TRUE, T, YES, 0, OFF,\
+  \ FALSE, F, and NO.\n          Default: 1.\n    -di, --dinucleotide STRING\n   \
+  \       Dinucleotide to compute a frequency profile in fasta file. One of\n    \
+  \      AA, AC, AG, AT, CA, CC, CG, CT, GA, GC, GG, GT, TA, TC, TG, and TT.\n   \
+  \       Default: AA.\n    -sl, --seqlength INTEGER\n          Sequence length in\
+  \ fasta file. In range [25..600]. Default: 600.\n    -c, --complement\n        \
+  \  Perform computation on COMPLEMENTARY sequences of the strings in\n          fasta\
+  \ file.\n    -v, --verbose\n          Print parameters and variables.\n    --version\n\
+  \          Display version information.\n\nEXAMPLES\n    diprofile -sl 146 -di CT\
+  \ path/to/fasta/file.fa\n          Compute CT profile in fasta sequences of 146bp\
+  \ long\n    diprofile -sl 146 -di CT -c path/to/fasta/file.fa\n          Compute\
+  \ CT profile in sequence complements of fasta sequences of\n          146bp long\n\
+  \nOUTPUT\n    Column of relative frequencies of dinucleotide occurrences at each\
+  \ \n          position along fasta sequences of given length --seqlength\n\nVERSION\n\
+  \    Last update: April 2017\n    diprofile version: 1.0\n    SeqAn version: 2.4.0\n"
+generated_using:
+- --help

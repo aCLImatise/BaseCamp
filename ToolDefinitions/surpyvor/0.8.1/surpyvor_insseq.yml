@@ -7,7 +7,7 @@ named: []
 parent:
 subcommands:
 - !Command
-  command: &id005
+  command: &id002
   - surpyvor
   - insseq
   - vcf
@@ -46,961 +46,14 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id004 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: Print out more information while running.
-      synonyms:
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "vcf file to write improved variants to [stdout]\n"
-      synonyms:
-      - -o
-      - --output
-      args: !SimpleFlagArg
-        name: OUTPUT
-      optional: true
-    parent: &id002 !Command
-      command:
-      - surpyvor
-      positional: []
-      named:
-      - !Flag
-        description: ''
-        synonyms:
-        - -v
-        args: !EmptyFlagArg {}
-        optional: true
-      parent:
-      subcommands:
-      - !Command
-        command:
-        - surpyvor
-        - highconf
-        positional: []
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: vcf files to merge
-          synonyms:
-          - --variants
-          args: !RepeatFlagArg
-            name: VARIANTS
-          optional: true
-        - !Flag
-          description: output file
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        - !Flag
-          description: distance between variants to merge
-          synonyms:
-          - -d
-          - --distance
-          args: !SimpleFlagArg
-            name: DISTANCE
-          optional: true
-        - !Flag
-          description: "Minimum length of variants to consider\n"
-          synonyms:
-          - -l
-          - --minlength
-          args: !SimpleFlagArg
-            name: MINLENGTH
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor highconf [-h] [--verbose] --variants VARIANTS\
-          \ [VARIANTS ...]\n                         [-o OUTPUT] [-d DISTANCE] [-l\
-          \ MINLENGTH]\n\noptional arguments:\n  -h, --help            show this help\
-          \ message and exit\n  --verbose             Print out more information while\
-          \ running.\n\nrequired arguments:\n  --variants VARIANTS [VARIANTS ...]\n\
-          \                        vcf files to merge\n\noptional arguments:\n  -o\
-          \ OUTPUT, --output OUTPUT\n                        output file\n  -d DISTANCE,\
-          \ --distance DISTANCE\n                        distance between variants\
-          \ to merge\n  -l MINLENGTH, --minlength MINLENGTH\n                    \
-          \    Minimum length of variants to consider\n"
-        generated_using: &id003
-        - --help
-      - !Command
-        command:
-        - surpyvor
-        - upset
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: VARIANTS
-          optional: true
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "[VARIANTS [VARIANTS ...]]\nvcfs containing structural variants"
-          synonyms:
-          - --variants
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "[NAMES [NAMES ...]]\nNames of datasets in --variants"
-          synonyms:
-          - --names
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: maximum distance between test and truth call
-          synonyms:
-          - -d
-          - --distance
-          args: !SimpleFlagArg
-            name: DISTANCE
-          optional: true
-        - !Flag
-          description: Minimum length of SVs to be taken into account
-          synonyms:
-          - --minlength
-          args: !SimpleFlagArg
-            name: MINLENGTH
-          optional: true
-        - !Flag
-          description: Ignore the type of the structural variant
-          synonyms:
-          - -i
-          - --ignore_type
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Save merged vcf file
-          synonyms:
-          - --keepmerged
-          args: !SimpleFlagArg
-            name: KEEPMERGED
-          optional: true
-        - !Flag
-          description: Name of output plot
-          synonyms:
-          - --plotout
-          args: !SimpleFlagArg
-            name: PLOTOUT
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor upset [-h] [--verbose] --variants [VARIANTS [VARIANTS\
-          \ ...]]\n                      [--names [NAMES [NAMES ...]]] [-d DISTANCE]\n\
-          \                      [--minlength MINLENGTH] [-i] [--keepmerged KEEPMERGED]\n\
-          \                      [--plotout PLOTOUT]\n\noptional arguments:\n  -h,\
-          \ --help            show this help message and exit\n  --verbose       \
-          \      Print out more information while running.\n\nrequired arguments:\n\
-          \  --variants [VARIANTS [VARIANTS ...]]\n                        vcfs containing\
-          \ structural variants\n\noptional arguments:\n  --names [NAMES [NAMES ...]]\n\
-          \                        Names of datasets in --variants\n  -d DISTANCE,\
-          \ --distance DISTANCE\n                        maximum distance between\
-          \ test and truth call\n  --minlength MINLENGTH\n                       \
-          \ Minimum length of SVs to be taken into account\n  -i, --ignore_type  \
-          \   Ignore the type of the structural variant\n  --keepmerged KEEPMERGED\n\
-          \                        Save merged vcf file\n  --plotout PLOTOUT     Name\
-          \ of output plot\n"
-        generated_using: *id003
-      - *id004
-      - !Command
-        command:
-        - surpyvor
-        - fixvcf
-        positional:
-        - !Positional
-          description: vcf file to parse
-          position: 0
-          name: vcf
-          optional: false
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "vcf file to write to\n"
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor fixvcf [-h] [--verbose] [-o OUTPUT] vcf\n\noptional\
-          \ arguments:\n  -h, --help            show this help message and exit\n\
-          \  --verbose             Print out more information while running.\n\nrequired\
-          \ arguments:\n  vcf                   vcf file to parse\n\noptional arguments:\n\
-          \  -o OUTPUT, --output OUTPUT\n                        vcf file to write\
-          \ to\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - svlentruncate
-        positional:
-        - !Positional
-          description: vcf file to parse
-          position: 0
-          name: vcf
-          optional: false
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: maximal SVLEN, replace SVLEN by this value if larger
-          synonyms:
-          - -l
-          - --length
-          args: !SimpleFlagArg
-            name: LENGTH
-          optional: true
-        - !Flag
-          description: "vcf file to write to\n"
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor svlentruncate [-h] [--verbose] [-l LENGTH] [-o\
-          \ OUTPUT] vcf\n\noptional arguments:\n  -h, --help            show this\
-          \ help message and exit\n  --verbose             Print out more information\
-          \ while running.\n\nrequired arguments:\n  vcf                   vcf file\
-          \ to parse\n\noptional arguments:\n  -l LENGTH, --length LENGTH\n      \
-          \                  maximal SVLEN, replace SVLEN by this value if larger\n\
-          \  -o OUTPUT, --output OUTPUT\n                        vcf file to write\
-          \ to\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - haplomerge
-        positional: []
-        named:
-        - !Flag
-          description: "Print out more information while running. (default:\nFalse)"
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "[VARIANTS [VARIANTS ...]]\nvcf files to merge (default: None)"
-          synonyms:
-          - --variants
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: 'output file (default: stdout)'
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        - !Flag
-          description: 'name of sample in output VCF (default: stdout)'
-          synonyms:
-          - -n
-          - --name
-          args: !SimpleFlagArg
-            name: NAME
-          optional: true
-        - !Flag
-          description: 'distance between variants to merge (default: 200)'
-          synonyms:
-          - -d
-          - --distance
-          args: !SimpleFlagArg
-            name: DISTANCE
-          optional: true
-        - !Flag
-          description: 'Minimum length of variants to consider (default: 50)'
-          synonyms:
-          - -l
-          - --minlength
-          args: !SimpleFlagArg
-            name: MINLENGTH
-          optional: true
-        - !Flag
-          description: "Minimum number of callers to support a variant\n(default:\
-            \ 1)"
-          synonyms:
-          - -c
-          - --callers
-          args: !SimpleFlagArg
-            name: CALLERS
-          optional: true
-        - !Flag
-          description: "Ignore the type of the structural variant (default:\nFalse)"
-          synonyms:
-          - -i
-          - --ignore_type
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: 'Take strand into account (default: False)'
-          synonyms:
-          - -s
-          - --strand
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Estimate distance between calls (default: False)\n"
-          synonyms:
-          - -e
-          - --estimate_distance
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor haplomerge [-h] [--verbose] --variants\n     \
-          \                      [VARIANTS [VARIANTS ...]] [-o OUTPUT] [-n NAME]\n\
-          \                           [-d DISTANCE] [-l MINLENGTH] [-c CALLERS] [-i]\
-          \ [-s]\n                           [-e]\n\noptional arguments:\n  -h, --help\
-          \            show this help message and exit\n  --verbose             Print\
-          \ out more information while running. (default:\n                      \
-          \  False)\n\nrequired arguments:\n  --variants [VARIANTS [VARIANTS ...]]\n\
-          \                        vcf files to merge (default: None)\n\noptional\
-          \ arguments:\n  -o OUTPUT, --output OUTPUT\n                        output\
-          \ file (default: stdout)\n  -n NAME, --name NAME  name of sample in output\
-          \ VCF (default: stdout)\n  -d DISTANCE, --distance DISTANCE\n          \
-          \              distance between variants to merge (default: 200)\n  -l MINLENGTH,\
-          \ --minlength MINLENGTH\n                        Minimum length of variants\
-          \ to consider (default: 50)\n  -c CALLERS, --callers CALLERS\n         \
-          \               Minimum number of callers to support a variant\n       \
-          \                 (default: 1)\n  -i, --ignore_type     Ignore the type\
-          \ of the structural variant (default:\n                        False)\n\
-          \  -s, --strand          Take strand into account (default: False)\n  -e,\
-          \ --estimate_distance\n                        Estimate distance between\
-          \ calls (default: False)\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - highsens
-        positional: []
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: vcf files to merge
-          synonyms:
-          - --variants
-          args: !RepeatFlagArg
-            name: VARIANTS
-          optional: true
-        - !Flag
-          description: output file
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        - !Flag
-          description: distance between variants to merge
-          synonyms:
-          - -d
-          - --distance
-          args: !SimpleFlagArg
-            name: DISTANCE
-          optional: true
-        - !Flag
-          description: "Minimum length of variants to consider\n"
-          synonyms:
-          - -l
-          - --minlength
-          args: !SimpleFlagArg
-            name: MINLENGTH
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor highsens [-h] [--verbose] --variants VARIANTS\
-          \ [VARIANTS ...]\n                         [-o OUTPUT] [-d DISTANCE] [-l\
-          \ MINLENGTH]\n\noptional arguments:\n  -h, --help            show this help\
-          \ message and exit\n  --verbose             Print out more information while\
-          \ running.\n\nrequired arguments:\n  --variants VARIANTS [VARIANTS ...]\n\
-          \                        vcf files to merge\n\noptional arguments:\n  -o\
-          \ OUTPUT, --output OUTPUT\n                        output file\n  -d DISTANCE,\
-          \ --distance DISTANCE\n                        distance between variants\
-          \ to merge\n  -l MINLENGTH, --minlength MINLENGTH\n                    \
-          \    Minimum length of variants to consider\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - lengthplot
-        positional: []
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: output file to write figure to
-          synonyms:
-          - --plotout
-          args: !SimpleFlagArg
-            name: PLOTOUT
-          optional: true
-        - !Flag
-          description: "output file to write counts to\n"
-          synonyms:
-          - -c
-          - --counts
-          args: !SimpleFlagArg
-            name: COUNTS
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor lengthplot [-h] [--verbose] [--plotout PLOTOUT]\
-          \ [-c COUNTS]\n                           vcf\n\noptional arguments:\n \
-          \ -h, --help            show this help message and exit\n  --verbose   \
-          \          Print out more information while running.\n\nrequired arguments:\n\
-          \  vcf                   vcf file to parse\n\noptional arguments:\n  --plotout\
-          \ PLOTOUT     output file to write figure to\n  -c COUNTS, --counts COUNTS\n\
-          \                        output file to write counts to\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - minlen
-        positional:
-        - !Positional
-          description: vcf file to parse
-          position: 0
-          name: vcf
-          optional: false
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: minimal SV length
-          synonyms:
-          - -l
-          - --length
-          args: !SimpleFlagArg
-            name: LENGTH
-          optional: true
-        - !Flag
-          description: "vcf file to write to\n"
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor minlen [-h] [--verbose] [-l LENGTH] [-o OUTPUT]\
-          \ vcf\n\noptional arguments:\n  -h, --help            show this help message\
-          \ and exit\n  --verbose             Print out more information while running.\n\
-          \nrequired arguments:\n  vcf                   vcf file to parse\n\noptional\
-          \ arguments:\n  -l LENGTH, --length LENGTH\n                        minimal\
-          \ SV length\n  -o OUTPUT, --output OUTPUT\n                        vcf file\
-          \ to write to\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - merge
-        positional: []
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: vcf files to merge
-          synonyms:
-          - --variants
-          args: !RepeatFlagArg
-            name: VARIANTS
-          optional: true
-        - !Flag
-          description: output file
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        - !Flag
-          description: distance between variants to merge
-          synonyms:
-          - -d
-          - --distance
-          args: !SimpleFlagArg
-            name: DISTANCE
-          optional: true
-        - !Flag
-          description: Minimum length of variants to consider
-          synonyms:
-          - -l
-          - --minlength
-          args: !SimpleFlagArg
-            name: MINLENGTH
-          optional: true
-        - !Flag
-          description: Minimum number of callers to support a variant
-          synonyms:
-          - -c
-          - --callers
-          args: !SimpleFlagArg
-            name: CALLERS
-          optional: true
-        - !Flag
-          description: Ignore the type of the structural variant
-          synonyms:
-          - -i
-          - --ignore_type
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Take strand into account
-          synonyms:
-          - -s
-          - --strand
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Estimate distance between calls\n"
-          synonyms:
-          - -e
-          - --estimate_distance
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor merge [-h] [--verbose] --variants VARIANTS [VARIANTS\
-          \ ...]\n                      [-o OUTPUT] [-d DISTANCE] [-l MINLENGTH] [-c\
-          \ CALLERS]\n                      [-i] [-s] [-e]\n\noptional arguments:\n\
-          \  -h, --help            show this help message and exit\n  --verbose  \
-          \           Print out more information while running.\n\nrequired arguments:\n\
-          \  --variants VARIANTS [VARIANTS ...]\n                        vcf files\
-          \ to merge\n\noptional arguments:\n  -o OUTPUT, --output OUTPUT\n      \
-          \                  output file\n  -d DISTANCE, --distance DISTANCE\n   \
-          \                     distance between variants to merge\n  -l MINLENGTH,\
-          \ --minlength MINLENGTH\n                        Minimum length of variants\
-          \ to consider\n  -c CALLERS, --callers CALLERS\n                       \
-          \ Minimum number of callers to support a variant\n  -i, --ignore_type  \
-          \   Ignore the type of the structural variant\n  -s, --strand          Take\
-          \ strand into account\n  -e, --estimate_distance\n                     \
-          \   Estimate distance between calls\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - prf
-        positional: []
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: vcf containing truth set
-          synonyms:
-          - --truth
-          args: !SimpleFlagArg
-            name: TRUTH
-          optional: true
-        - !Flag
-          description: vcf containing test set
-          synonyms:
-          - --test
-          args: !SimpleFlagArg
-            name: TEST
-          optional: true
-        - !Flag
-          description: maximum distance between test and truth call
-          synonyms:
-          - -d
-          - --distance
-          args: !SimpleFlagArg
-            name: DISTANCE
-          optional: true
-        - !Flag
-          description: Minimum length of SVs to be taken into account
-          synonyms:
-          - --minlength
-          args: !SimpleFlagArg
-            name: MINLENGTH
-          optional: true
-        - !Flag
-          description: Ignore the type of the structural variant
-          synonyms:
-          - -i
-          - --ignore_type
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "[IGNORE_CHROMS [IGNORE_CHROMS ...]]\nChromosomes to ignore\
-            \ for prf calculation."
-          synonyms:
-          - --ignore_chroms
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Save merged vcf file.
-          synonyms:
-          - --keepmerged
-          args: !SimpleFlagArg
-            name: KEEPMERGED
-          optional: true
-        - !Flag
-          description: "Make stacked bar chart of SV lengths coloured by\nvalidation\
-            \ status"
-          synonyms:
-          - --bar
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Make a confusion matrix.
-          synonyms:
-          - --matrix
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Make a venn diagram.
-          synonyms:
-          - --venn
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor prf [-h] [--verbose] --truth TRUTH --test TEST\
-          \ [-d DISTANCE]\n                    [--minlength MINLENGTH] [-i]\n    \
-          \                [--ignore_chroms [IGNORE_CHROMS [IGNORE_CHROMS ...]]]\n\
-          \                    [--keepmerged KEEPMERGED] [--bar] [--matrix] [--venn]\n\
-          \noptional arguments:\n  -h, --help            show this help message and\
-          \ exit\n  --verbose             Print out more information while running.\n\
-          \nrequired arguments:\n  --truth TRUTH         vcf containing truth set\n\
-          \  --test TEST           vcf containing test set\n\noptional arguments:\n\
-          \  -d DISTANCE, --distance DISTANCE\n                        maximum distance\
-          \ between test and truth call\n  --minlength MINLENGTH\n               \
-          \         Minimum length of SVs to be taken into account\n  -i, --ignore_type\
-          \     Ignore the type of the structural variant\n  --ignore_chroms [IGNORE_CHROMS\
-          \ [IGNORE_CHROMS ...]]\n                        Chromosomes to ignore for\
-          \ prf calculation.\n  --keepmerged KEEPMERGED\n                        Save\
-          \ merged vcf file.\n  --bar                 Make stacked bar chart of SV\
-          \ lengths coloured by\n                        validation status\n  --matrix\
-          \              Make a confusion matrix.\n  --venn                Make a\
-          \ venn diagram.\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - purge2d
-        positional:
-        - !Positional
-          description: bam file to filter
-          position: 0
-          name: bam
-          optional: false
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "sam/bam file to write filtered alignments to [stdout]\n"
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor purge2d [-h] [--verbose] [-o OUTPUT] bam\n\noptional\
-          \ arguments:\n  -h, --help            show this help message and exit\n\
-          \  --verbose             Print out more information while running.\n\nrequired\
-          \ arguments:\n  bam                   bam file to filter\n\noptional arguments:\n\
-          \  -o OUTPUT, --output OUTPUT\n                        sam/bam file to write\
-          \ filtered alignments to [stdout]\n"
-        generated_using: *id003
-      - !Command
-        command:
-        - surpyvor
-        - venn
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: VARIANTS
-          optional: true
-        named:
-        - !Flag
-          description: Print out more information while running.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "[VARIANTS [VARIANTS ...]]\nvcfs containing structural variants"
-          synonyms:
-          - --variants
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "[NAMES [NAMES ...]]\nNames of datasets in --variants"
-          synonyms:
-          - --names
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: maximum distance between test and truth call
-          synonyms:
-          - -d
-          - --distance
-          args: !SimpleFlagArg
-            name: DISTANCE
-          optional: true
-        - !Flag
-          description: Minimum length of SVs to be taken into account
-          synonyms:
-          - --minlength
-          args: !SimpleFlagArg
-            name: MINLENGTH
-          optional: true
-        - !Flag
-          description: Ignore the type of the structural variant
-          synonyms:
-          - -i
-          - --ignore_type
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Save merged vcf file
-          synonyms:
-          - --keepmerged
-          args: !SimpleFlagArg
-            name: KEEPMERGED
-          optional: true
-        - !Flag
-          description: Name of output plot
-          synonyms:
-          - --plotout
-          args: !SimpleFlagArg
-            name: PLOTOUT
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: surpyvor venn [-h] [--verbose] --variants [VARIANTS [VARIANTS\
-          \ ...]]\n                     [--names [NAMES [NAMES ...]]] [-d DISTANCE]\n\
-          \                     [--minlength MINLENGTH] [-i] [--keepmerged KEEPMERGED]\n\
-          \                     [--plotout PLOTOUT]\n\noptional arguments:\n  -h,\
-          \ --help            show this help message and exit\n  --verbose       \
-          \      Print out more information while running.\n\nrequired arguments:\n\
-          \  --variants [VARIANTS [VARIANTS ...]]\n                        vcfs containing\
-          \ structural variants\n\noptional arguments:\n  --names [NAMES [NAMES ...]]\n\
-          \                        Names of datasets in --variants\n  -d DISTANCE,\
-          \ --distance DISTANCE\n                        maximum distance between\
-          \ test and truth call\n  --minlength MINLENGTH\n                       \
-          \ Minimum length of SVs to be taken into account\n  -i, --ignore_type  \
-          \   Ignore the type of the structural variant\n  --keepmerged KEEPMERGED\n\
-          \                        Save merged vcf file\n  --plotout PLOTOUT     Name\
-          \ of output plot\n"
-        generated_using: *id003
-      usage: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag: !Flag
-        description: Print version and quit.
-        synonyms:
-        - -v
-        - --version
-        args: !EmptyFlagArg {}
-        optional: true
-      help_text: "usage: surpyvor [-h] [-v]\n                {merge,highsens,highconf,prf,venn,upset,haplomerge,lengthplot,minlen,svlentruncate,fixvcf,purge2d,insseq}\n\
-        \                ...\n\nA wrapper around SURVIVOR, with convenience functions.\n\
-        \noptional arguments:\n  -h, --help            show this help message and\
-        \ exit\n  -v, --version         Print version and quit.\n\n[sub-commands]:\n\
-        \  {merge,highsens,highconf,prf,venn,upset,haplomerge,lengthplot,minlen,svlentruncate,fixvcf,purge2d,insseq}\n\
-        \    merge               merging vcf files of SVs\n    highsens          \
-        \  get union of SV vcfs\n    highconf            get intersection of SV vcfs\n\
-        \    prf                 calculate precision, recall and F-measure\n    venn\
-        \                Make venn diagram for 2 or 3 SV vcf files\n    upset    \
-        \           Make upset plot for multiple SV vcf files\n    haplomerge    \
-        \      merging vcf files of SVs from two haplotypes\n    lengthplot      \
-        \    create stacked bar plot of SV lengths split by type\n    minlen     \
-        \         filter a SV vcf file by minimal variant length\n    svlentruncate\
-        \       limit the SVLEN to a certain (positive) length\n    fixvcf       \
-        \       Some fixes to make compatible with e.g. vcfanno\n    purge2d     \
-        \        Remove accidental 2D reads from a bam file\n    insseq          \
-        \    Get improved inserted sequences for INS\n"
-      generated_using: *id003
+    named: []
+    parent:
     subcommands:
     - !Command
-      command: *id005
+      command: *id002
       positional:
       - !Positional
         description: ''
@@ -1036,7 +89,1039 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id004
+      parent: &id005 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: Print out more information while running.
+          synonyms:
+          - --verbose
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "vcf file to write improved variants to [stdout]\n"
+          synonyms:
+          - -o
+          - --output
+          args: !SimpleFlagArg
+            name: OUTPUT
+          optional: true
+        parent: &id003 !Command
+          command:
+          - surpyvor
+          positional: []
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          parent:
+          subcommands:
+          - !Command
+            command:
+            - surpyvor
+            - highconf
+            positional: []
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: vcf files to merge
+              synonyms:
+              - --variants
+              args: !RepeatFlagArg
+                name: VARIANTS
+              optional: true
+            - !Flag
+              description: output file
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            - !Flag
+              description: distance between variants to merge
+              synonyms:
+              - -d
+              - --distance
+              args: !SimpleFlagArg
+                name: DISTANCE
+              optional: true
+            - !Flag
+              description: "Minimum length of variants to consider\n"
+              synonyms:
+              - -l
+              - --minlength
+              args: !SimpleFlagArg
+                name: MINLENGTH
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor highconf [-h] [--verbose] --variants VARIANTS\
+              \ [VARIANTS ...]\n                         [-o OUTPUT] [-d DISTANCE]\
+              \ [-l MINLENGTH]\n\noptional arguments:\n  -h, --help            show\
+              \ this help message and exit\n  --verbose             Print out more\
+              \ information while running.\n\nrequired arguments:\n  --variants VARIANTS\
+              \ [VARIANTS ...]\n                        vcf files to merge\n\noptional\
+              \ arguments:\n  -o OUTPUT, --output OUTPUT\n                       \
+              \ output file\n  -d DISTANCE, --distance DISTANCE\n                \
+              \        distance between variants to merge\n  -l MINLENGTH, --minlength\
+              \ MINLENGTH\n                        Minimum length of variants to consider\n"
+            generated_using: &id004
+            - --help
+          - !Command
+            command:
+            - surpyvor
+            - upset
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: VARIANTS
+              optional: true
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "[VARIANTS [VARIANTS ...]]\nvcfs containing structural\
+                \ variants"
+              synonyms:
+              - --variants
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "[NAMES [NAMES ...]]\nNames of datasets in --variants"
+              synonyms:
+              - --names
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: maximum distance between test and truth call
+              synonyms:
+              - -d
+              - --distance
+              args: !SimpleFlagArg
+                name: DISTANCE
+              optional: true
+            - !Flag
+              description: Minimum length of SVs to be taken into account
+              synonyms:
+              - --minlength
+              args: !SimpleFlagArg
+                name: MINLENGTH
+              optional: true
+            - !Flag
+              description: Ignore the type of the structural variant
+              synonyms:
+              - -i
+              - --ignore_type
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Save merged vcf file
+              synonyms:
+              - --keepmerged
+              args: !SimpleFlagArg
+                name: KEEPMERGED
+              optional: true
+            - !Flag
+              description: Name of output plot
+              synonyms:
+              - --plotout
+              args: !SimpleFlagArg
+                name: PLOTOUT
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor upset [-h] [--verbose] --variants [VARIANTS\
+              \ [VARIANTS ...]]\n                      [--names [NAMES [NAMES ...]]]\
+              \ [-d DISTANCE]\n                      [--minlength MINLENGTH] [-i]\
+              \ [--keepmerged KEEPMERGED]\n                      [--plotout PLOTOUT]\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  --verbose             Print out more information while\
+              \ running.\n\nrequired arguments:\n  --variants [VARIANTS [VARIANTS\
+              \ ...]]\n                        vcfs containing structural variants\n\
+              \noptional arguments:\n  --names [NAMES [NAMES ...]]\n             \
+              \           Names of datasets in --variants\n  -d DISTANCE, --distance\
+              \ DISTANCE\n                        maximum distance between test and\
+              \ truth call\n  --minlength MINLENGTH\n                        Minimum\
+              \ length of SVs to be taken into account\n  -i, --ignore_type     Ignore\
+              \ the type of the structural variant\n  --keepmerged KEEPMERGED\n  \
+              \                      Save merged vcf file\n  --plotout PLOTOUT   \
+              \  Name of output plot\n"
+            generated_using: *id004
+          - *id005
+          - !Command
+            command:
+            - surpyvor
+            - fixvcf
+            positional:
+            - !Positional
+              description: vcf file to parse
+              position: 0
+              name: vcf
+              optional: false
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "vcf file to write to\n"
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor fixvcf [-h] [--verbose] [-o OUTPUT] vcf\n\n\
+              optional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  --verbose             Print out more information while\
+              \ running.\n\nrequired arguments:\n  vcf                   vcf file\
+              \ to parse\n\noptional arguments:\n  -o OUTPUT, --output OUTPUT\n  \
+              \                      vcf file to write to\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - svlentruncate
+            positional:
+            - !Positional
+              description: vcf file to parse
+              position: 0
+              name: vcf
+              optional: false
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: maximal SVLEN, replace SVLEN by this value if larger
+              synonyms:
+              - -l
+              - --length
+              args: !SimpleFlagArg
+                name: LENGTH
+              optional: true
+            - !Flag
+              description: "vcf file to write to\n"
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor svlentruncate [-h] [--verbose] [-l LENGTH]\
+              \ [-o OUTPUT] vcf\n\noptional arguments:\n  -h, --help            show\
+              \ this help message and exit\n  --verbose             Print out more\
+              \ information while running.\n\nrequired arguments:\n  vcf         \
+              \          vcf file to parse\n\noptional arguments:\n  -l LENGTH, --length\
+              \ LENGTH\n                        maximal SVLEN, replace SVLEN by this\
+              \ value if larger\n  -o OUTPUT, --output OUTPUT\n                  \
+              \      vcf file to write to\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - haplomerge
+            positional: []
+            named:
+            - !Flag
+              description: "Print out more information while running. (default:\n\
+                False)"
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "[VARIANTS [VARIANTS ...]]\nvcf files to merge (default:\
+                \ None)"
+              synonyms:
+              - --variants
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: 'output file (default: stdout)'
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            - !Flag
+              description: 'name of sample in output VCF (default: stdout)'
+              synonyms:
+              - -n
+              - --name
+              args: !SimpleFlagArg
+                name: NAME
+              optional: true
+            - !Flag
+              description: 'distance between variants to merge (default: 200)'
+              synonyms:
+              - -d
+              - --distance
+              args: !SimpleFlagArg
+                name: DISTANCE
+              optional: true
+            - !Flag
+              description: 'Minimum length of variants to consider (default: 50)'
+              synonyms:
+              - -l
+              - --minlength
+              args: !SimpleFlagArg
+                name: MINLENGTH
+              optional: true
+            - !Flag
+              description: "Minimum number of callers to support a variant\n(default:\
+                \ 1)"
+              synonyms:
+              - -c
+              - --callers
+              args: !SimpleFlagArg
+                name: CALLERS
+              optional: true
+            - !Flag
+              description: "Ignore the type of the structural variant (default:\n\
+                False)"
+              synonyms:
+              - -i
+              - --ignore_type
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: 'Take strand into account (default: False)'
+              synonyms:
+              - -s
+              - --strand
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Estimate distance between calls (default: False)\n"
+              synonyms:
+              - -e
+              - --estimate_distance
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor haplomerge [-h] [--verbose] --variants\n \
+              \                          [VARIANTS [VARIANTS ...]] [-o OUTPUT] [-n\
+              \ NAME]\n                           [-d DISTANCE] [-l MINLENGTH] [-c\
+              \ CALLERS] [-i] [-s]\n                           [-e]\n\noptional arguments:\n\
+              \  -h, --help            show this help message and exit\n  --verbose\
+              \             Print out more information while running. (default:\n\
+              \                        False)\n\nrequired arguments:\n  --variants\
+              \ [VARIANTS [VARIANTS ...]]\n                        vcf files to merge\
+              \ (default: None)\n\noptional arguments:\n  -o OUTPUT, --output OUTPUT\n\
+              \                        output file (default: stdout)\n  -n NAME, --name\
+              \ NAME  name of sample in output VCF (default: stdout)\n  -d DISTANCE,\
+              \ --distance DISTANCE\n                        distance between variants\
+              \ to merge (default: 200)\n  -l MINLENGTH, --minlength MINLENGTH\n \
+              \                       Minimum length of variants to consider (default:\
+              \ 50)\n  -c CALLERS, --callers CALLERS\n                        Minimum\
+              \ number of callers to support a variant\n                        (default:\
+              \ 1)\n  -i, --ignore_type     Ignore the type of the structural variant\
+              \ (default:\n                        False)\n  -s, --strand        \
+              \  Take strand into account (default: False)\n  -e, --estimate_distance\n\
+              \                        Estimate distance between calls (default: False)\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - highsens
+            positional: []
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: vcf files to merge
+              synonyms:
+              - --variants
+              args: !RepeatFlagArg
+                name: VARIANTS
+              optional: true
+            - !Flag
+              description: output file
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            - !Flag
+              description: distance between variants to merge
+              synonyms:
+              - -d
+              - --distance
+              args: !SimpleFlagArg
+                name: DISTANCE
+              optional: true
+            - !Flag
+              description: "Minimum length of variants to consider\n"
+              synonyms:
+              - -l
+              - --minlength
+              args: !SimpleFlagArg
+                name: MINLENGTH
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor highsens [-h] [--verbose] --variants VARIANTS\
+              \ [VARIANTS ...]\n                         [-o OUTPUT] [-d DISTANCE]\
+              \ [-l MINLENGTH]\n\noptional arguments:\n  -h, --help            show\
+              \ this help message and exit\n  --verbose             Print out more\
+              \ information while running.\n\nrequired arguments:\n  --variants VARIANTS\
+              \ [VARIANTS ...]\n                        vcf files to merge\n\noptional\
+              \ arguments:\n  -o OUTPUT, --output OUTPUT\n                       \
+              \ output file\n  -d DISTANCE, --distance DISTANCE\n                \
+              \        distance between variants to merge\n  -l MINLENGTH, --minlength\
+              \ MINLENGTH\n                        Minimum length of variants to consider\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - lengthplot
+            positional: []
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: output file to write figure to
+              synonyms:
+              - --plotout
+              args: !SimpleFlagArg
+                name: PLOTOUT
+              optional: true
+            - !Flag
+              description: "output file to write counts to\n"
+              synonyms:
+              - -c
+              - --counts
+              args: !SimpleFlagArg
+                name: COUNTS
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor lengthplot [-h] [--verbose] [--plotout PLOTOUT]\
+              \ [-c COUNTS]\n                           vcf\n\noptional arguments:\n\
+              \  -h, --help            show this help message and exit\n  --verbose\
+              \             Print out more information while running.\n\nrequired\
+              \ arguments:\n  vcf                   vcf file to parse\n\noptional\
+              \ arguments:\n  --plotout PLOTOUT     output file to write figure to\n\
+              \  -c COUNTS, --counts COUNTS\n                        output file to\
+              \ write counts to\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - minlen
+            positional:
+            - !Positional
+              description: vcf file to parse
+              position: 0
+              name: vcf
+              optional: false
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: minimal SV length
+              synonyms:
+              - -l
+              - --length
+              args: !SimpleFlagArg
+                name: LENGTH
+              optional: true
+            - !Flag
+              description: "vcf file to write to\n"
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor minlen [-h] [--verbose] [-l LENGTH] [-o OUTPUT]\
+              \ vcf\n\noptional arguments:\n  -h, --help            show this help\
+              \ message and exit\n  --verbose             Print out more information\
+              \ while running.\n\nrequired arguments:\n  vcf                   vcf\
+              \ file to parse\n\noptional arguments:\n  -l LENGTH, --length LENGTH\n\
+              \                        minimal SV length\n  -o OUTPUT, --output OUTPUT\n\
+              \                        vcf file to write to\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - merge
+            positional: []
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: vcf files to merge
+              synonyms:
+              - --variants
+              args: !RepeatFlagArg
+                name: VARIANTS
+              optional: true
+            - !Flag
+              description: output file
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            - !Flag
+              description: distance between variants to merge
+              synonyms:
+              - -d
+              - --distance
+              args: !SimpleFlagArg
+                name: DISTANCE
+              optional: true
+            - !Flag
+              description: Minimum length of variants to consider
+              synonyms:
+              - -l
+              - --minlength
+              args: !SimpleFlagArg
+                name: MINLENGTH
+              optional: true
+            - !Flag
+              description: Minimum number of callers to support a variant
+              synonyms:
+              - -c
+              - --callers
+              args: !SimpleFlagArg
+                name: CALLERS
+              optional: true
+            - !Flag
+              description: Ignore the type of the structural variant
+              synonyms:
+              - -i
+              - --ignore_type
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Take strand into account
+              synonyms:
+              - -s
+              - --strand
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Estimate distance between calls\n"
+              synonyms:
+              - -e
+              - --estimate_distance
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor merge [-h] [--verbose] --variants VARIANTS\
+              \ [VARIANTS ...]\n                      [-o OUTPUT] [-d DISTANCE] [-l\
+              \ MINLENGTH] [-c CALLERS]\n                      [-i] [-s] [-e]\n\n\
+              optional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  --verbose             Print out more information while\
+              \ running.\n\nrequired arguments:\n  --variants VARIANTS [VARIANTS ...]\n\
+              \                        vcf files to merge\n\noptional arguments:\n\
+              \  -o OUTPUT, --output OUTPUT\n                        output file\n\
+              \  -d DISTANCE, --distance DISTANCE\n                        distance\
+              \ between variants to merge\n  -l MINLENGTH, --minlength MINLENGTH\n\
+              \                        Minimum length of variants to consider\n  -c\
+              \ CALLERS, --callers CALLERS\n                        Minimum number\
+              \ of callers to support a variant\n  -i, --ignore_type     Ignore the\
+              \ type of the structural variant\n  -s, --strand          Take strand\
+              \ into account\n  -e, --estimate_distance\n                        Estimate\
+              \ distance between calls\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - prf
+            positional: []
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: vcf containing truth set
+              synonyms:
+              - --truth
+              args: !SimpleFlagArg
+                name: TRUTH
+              optional: true
+            - !Flag
+              description: vcf containing test set
+              synonyms:
+              - --test
+              args: !SimpleFlagArg
+                name: TEST
+              optional: true
+            - !Flag
+              description: maximum distance between test and truth call
+              synonyms:
+              - -d
+              - --distance
+              args: !SimpleFlagArg
+                name: DISTANCE
+              optional: true
+            - !Flag
+              description: Minimum length of SVs to be taken into account
+              synonyms:
+              - --minlength
+              args: !SimpleFlagArg
+                name: MINLENGTH
+              optional: true
+            - !Flag
+              description: Ignore the type of the structural variant
+              synonyms:
+              - -i
+              - --ignore_type
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "[IGNORE_CHROMS [IGNORE_CHROMS ...]]\nChromosomes to ignore\
+                \ for prf calculation."
+              synonyms:
+              - --ignore_chroms
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Save merged vcf file.
+              synonyms:
+              - --keepmerged
+              args: !SimpleFlagArg
+                name: KEEPMERGED
+              optional: true
+            - !Flag
+              description: "Make stacked bar chart of SV lengths coloured by\nvalidation\
+                \ status"
+              synonyms:
+              - --bar
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Make a confusion matrix.
+              synonyms:
+              - --matrix
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Make a venn diagram.
+              synonyms:
+              - --venn
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor prf [-h] [--verbose] --truth TRUTH --test\
+              \ TEST [-d DISTANCE]\n                    [--minlength MINLENGTH] [-i]\n\
+              \                    [--ignore_chroms [IGNORE_CHROMS [IGNORE_CHROMS\
+              \ ...]]]\n                    [--keepmerged KEEPMERGED] [--bar] [--matrix]\
+              \ [--venn]\n\noptional arguments:\n  -h, --help            show this\
+              \ help message and exit\n  --verbose             Print out more information\
+              \ while running.\n\nrequired arguments:\n  --truth TRUTH         vcf\
+              \ containing truth set\n  --test TEST           vcf containing test\
+              \ set\n\noptional arguments:\n  -d DISTANCE, --distance DISTANCE\n \
+              \                       maximum distance between test and truth call\n\
+              \  --minlength MINLENGTH\n                        Minimum length of\
+              \ SVs to be taken into account\n  -i, --ignore_type     Ignore the type\
+              \ of the structural variant\n  --ignore_chroms [IGNORE_CHROMS [IGNORE_CHROMS\
+              \ ...]]\n                        Chromosomes to ignore for prf calculation.\n\
+              \  --keepmerged KEEPMERGED\n                        Save merged vcf\
+              \ file.\n  --bar                 Make stacked bar chart of SV lengths\
+              \ coloured by\n                        validation status\n  --matrix\
+              \              Make a confusion matrix.\n  --venn                Make\
+              \ a venn diagram.\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - purge2d
+            positional:
+            - !Positional
+              description: bam file to filter
+              position: 0
+              name: bam
+              optional: false
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "sam/bam file to write filtered alignments to [stdout]\n"
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor purge2d [-h] [--verbose] [-o OUTPUT] bam\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  --verbose             Print out more information while\
+              \ running.\n\nrequired arguments:\n  bam                   bam file\
+              \ to filter\n\noptional arguments:\n  -o OUTPUT, --output OUTPUT\n \
+              \                       sam/bam file to write filtered alignments to\
+              \ [stdout]\n"
+            generated_using: *id004
+          - !Command
+            command:
+            - surpyvor
+            - venn
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: VARIANTS
+              optional: true
+            named:
+            - !Flag
+              description: Print out more information while running.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "[VARIANTS [VARIANTS ...]]\nvcfs containing structural\
+                \ variants"
+              synonyms:
+              - --variants
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "[NAMES [NAMES ...]]\nNames of datasets in --variants"
+              synonyms:
+              - --names
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: maximum distance between test and truth call
+              synonyms:
+              - -d
+              - --distance
+              args: !SimpleFlagArg
+                name: DISTANCE
+              optional: true
+            - !Flag
+              description: Minimum length of SVs to be taken into account
+              synonyms:
+              - --minlength
+              args: !SimpleFlagArg
+                name: MINLENGTH
+              optional: true
+            - !Flag
+              description: Ignore the type of the structural variant
+              synonyms:
+              - -i
+              - --ignore_type
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Save merged vcf file
+              synonyms:
+              - --keepmerged
+              args: !SimpleFlagArg
+                name: KEEPMERGED
+              optional: true
+            - !Flag
+              description: Name of output plot
+              synonyms:
+              - --plotout
+              args: !SimpleFlagArg
+                name: PLOTOUT
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: surpyvor venn [-h] [--verbose] --variants [VARIANTS\
+              \ [VARIANTS ...]]\n                     [--names [NAMES [NAMES ...]]]\
+              \ [-d DISTANCE]\n                     [--minlength MINLENGTH] [-i] [--keepmerged\
+              \ KEEPMERGED]\n                     [--plotout PLOTOUT]\n\noptional\
+              \ arguments:\n  -h, --help            show this help message and exit\n\
+              \  --verbose             Print out more information while running.\n\
+              \nrequired arguments:\n  --variants [VARIANTS [VARIANTS ...]]\n    \
+              \                    vcfs containing structural variants\n\noptional\
+              \ arguments:\n  --names [NAMES [NAMES ...]]\n                      \
+              \  Names of datasets in --variants\n  -d DISTANCE, --distance DISTANCE\n\
+              \                        maximum distance between test and truth call\n\
+              \  --minlength MINLENGTH\n                        Minimum length of\
+              \ SVs to be taken into account\n  -i, --ignore_type     Ignore the type\
+              \ of the structural variant\n  --keepmerged KEEPMERGED\n           \
+              \             Save merged vcf file\n  --plotout PLOTOUT     Name of\
+              \ output plot\n"
+            generated_using: *id004
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: Print version and quit.
+            synonyms:
+            - -v
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: surpyvor [-h] [-v]\n                {merge,highsens,highconf,prf,venn,upset,haplomerge,lengthplot,minlen,svlentruncate,fixvcf,purge2d,insseq}\n\
+            \                ...\n\nA wrapper around SURVIVOR, with convenience functions.\n\
+            \noptional arguments:\n  -h, --help            show this help message\
+            \ and exit\n  -v, --version         Print version and quit.\n\n[sub-commands]:\n\
+            \  {merge,highsens,highconf,prf,venn,upset,haplomerge,lengthplot,minlen,svlentruncate,fixvcf,purge2d,insseq}\n\
+            \    merge               merging vcf files of SVs\n    highsens      \
+            \      get union of SV vcfs\n    highconf            get intersection\
+            \ of SV vcfs\n    prf                 calculate precision, recall and\
+            \ F-measure\n    venn                Make venn diagram for 2 or 3 SV vcf\
+            \ files\n    upset               Make upset plot for multiple SV vcf files\n\
+            \    haplomerge          merging vcf files of SVs from two haplotypes\n\
+            \    lengthplot          create stacked bar plot of SV lengths split by\
+            \ type\n    minlen              filter a SV vcf file by minimal variant\
+            \ length\n    svlentruncate       limit the SVLEN to a certain (positive)\
+            \ length\n    fixvcf              Some fixes to make compatible with e.g.\
+            \ vcfanno\n    purge2d             Remove accidental 2D reads from a bam\
+            \ file\n    insseq              Get improved inserted sequences for INS\n"
+          generated_using: *id004
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: surpyvor
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: insseq
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: bam
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: vcf
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -o
+            args: !SimpleFlagArg
+              name: OUTPUT
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --verbose
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id005
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: surpyvor insseq [-h] [--verbose] [-o OUTPUT] bam vcf\n\
+            surpyvor insseq: error: the following arguments are required: vcf\n"
+          generated_using: &id006 []
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: surpyvor insseq [-h] [--verbose] [-o OUTPUT] bam vcf\n\n\
+          optional arguments:\n  -h, --help            show this help message and\
+          \ exit\n  --verbose             Print out more information while running.\n\
+          \nrequired arguments:\n  bam                   alignments in bam format\n\
+          \  vcf                   variants in VCF format\n\noptional arguments:\n\
+          \  -o OUTPUT, --output OUTPUT\n                        vcf file to write\
+          \ improved variants to [stdout]\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1049,15 +1134,9 @@ subcommands:
       version_flag:
       help_text: "usage: surpyvor insseq [-h] [--verbose] [-o OUTPUT] bam vcf\nsurpyvor\
         \ insseq: error: the following arguments are required: vcf\n"
-      generated_using: &id006 []
+      generated_using: *id006
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: surpyvor insseq [-h] [--verbose] [-o OUTPUT] bam vcf\n\noptional\
@@ -1066,7 +1145,7 @@ subcommands:
       \  bam                   alignments in bam format\n  vcf                   variants\
       \ in VCF format\n\noptional arguments:\n  -o OUTPUT, --output OUTPUT\n     \
       \                   vcf file to write improved variants to [stdout]\n"
-    generated_using: *id003
+    generated_using: *id004
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1090,4 +1169,4 @@ help_text: "usage: surpyvor insseq [-h] [--verbose] [-o OUTPUT] bam vcf\n\noptio
   \  bam                   alignments in bam format\n  vcf                   variants\
   \ in VCF format\n\noptional arguments:\n  -o OUTPUT, --output OUTPUT\n         \
   \               vcf file to write improved variants to [stdout]\n"
-generated_using: *id003
+generated_using: *id004

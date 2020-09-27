@@ -1,0 +1,203 @@
+!Command
+command:
+- jar
+positional:
+- !Positional
+  description: -t, --list                 List the table of contents for the archive
+  position: 0
+  name: archives
+  optional: false
+named:
+- !Flag
+  description: Create the archive
+  synonyms:
+  - -c
+  - --create
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate index information for the specified jar
+  synonyms:
+  - -i
+  - --generate-index
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Update an existing jar archive
+  synonyms:
+  - -u
+  - --update
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Extract named (or all) files from the archive
+  synonyms:
+  - -x
+  - --extract
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the module descriptor, or automatic module name
+  synonyms:
+  - -d
+  - --describe-module
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Change to the specified directory and include the\nfollowing file"
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: "The archive file name. When omitted, either stdin or\nstdout is used\
+    \ based on the operation"
+  synonyms:
+  - -f
+  - --file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Places all following files in a versioned directory\nof the jar (i.e.\
+    \ META-INF/versions/VERSION/)"
+  synonyms:
+  - --release
+  args: !SimpleFlagArg
+    name: VERSION
+  optional: true
+- !Flag
+  description: Generate verbose output on standard output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The application entry point for stand-alone\napplications bundled\
+    \ into a modular, or executable,\njar archive"
+  synonyms:
+  - -e
+  - --main-class
+  args: !SimpleFlagArg
+    name: CLASSNAME
+  optional: true
+- !Flag
+  description: "Include the manifest information from the given\nmanifest file"
+  synonyms:
+  - -m
+  - --manifest
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Do not create a manifest file for the entries
+  synonyms:
+  - -M
+  - --no-manifest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The module version, when creating a modular\njar, or updating a non-modular\
+    \ jar"
+  synonyms:
+  - --module-version
+  args: !SimpleFlagArg
+    name: VERSION
+  optional: true
+- !Flag
+  description: "Compute and record the hashes of modules\nmatched by the given pattern\
+    \ and that depend upon\ndirectly or indirectly on a modular jar being\ncreated\
+    \ or a non-modular jar being updated"
+  synonyms:
+  - --hash-modules
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: "Location of module dependence for generating\nthe hash"
+  synonyms:
+  - -p
+  - --module-path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Store only; use no ZIP compression
+  synonyms:
+  - '-0'
+  - --no-compress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Give help on extra options
+  synonyms:
+  - --help-extra
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Print program version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: jar [OPTION...] [ [--release VERSION] [-C dir] files] ...\njar\
+  \ creates an archive for classes and resources, and can manipulate or\nrestore individual\
+  \ classes or resources from an archive.\n\n Examples:\n # Create an archive called\
+  \ classes.jar with two class files:\n jar --create --file classes.jar Foo.class\
+  \ Bar.class\n # Create an archive using an existing manifest, with all the files\
+  \ in foo/:\n jar --create --file classes.jar --manifest mymanifest -C foo/ .\n #\
+  \ Create a modular jar archive, where the module descriptor is located in\n # classes/module-info.class:\n\
+  \ jar --create --file foo.jar --main-class com.foo.Main --module-version 1.0\n \
+  \    -C foo/ classes resources\n # Update an existing non-modular jar to a modular\
+  \ jar:\n jar --update --file foo.jar --main-class com.foo.Main --module-version\
+  \ 1.0\n     -C foo/ module-info.class\n # Create a multi-release jar, placing some\
+  \ files in the META-INF/versions/9 directory:\n jar --create --file mr.jar -C foo\
+  \ classes --release 9 -C foo9 classes\n\nTo shorten or simplify the jar command,\
+  \ you can specify arguments in a separate\ntext file and pass it to the jar command\
+  \ with the at sign (@) as a prefix.\n\n Examples:\n # Read additional options and\
+  \ list of class files from the file classes.list\n jar --create --file my.jar @classes.list\n\
+  \n\n Main operation mode:\n\n  -c, --create               Create the archive\n \
+  \ -i, --generate-index=FILE  Generate index information for the specified jar\n\
+  \                             archives\n  -t, --list                 List the table\
+  \ of contents for the archive\n  -u, --update               Update an existing jar\
+  \ archive\n  -x, --extract              Extract named (or all) files from the archive\n\
+  \  -d, --describe-module      Print the module descriptor, or automatic module name\n\
+  \n Operation modifiers valid in any mode:\n\n  -C DIR                     Change\
+  \ to the specified directory and include the\n                             following\
+  \ file\n  -f, --file=FILE            The archive file name. When omitted, either\
+  \ stdin or\n                             stdout is used based on the operation\n\
+  \      --release VERSION      Places all following files in a versioned directory\n\
+  \                             of the jar (i.e. META-INF/versions/VERSION/)\n  -v,\
+  \ --verbose              Generate verbose output on standard output\n\n Operation\
+  \ modifiers valid only in create and update mode:\n\n  -e, --main-class=CLASSNAME\
+  \ The application entry point for stand-alone\n                             applications\
+  \ bundled into a modular, or executable,\n                             jar archive\n\
+  \  -m, --manifest=FILE        Include the manifest information from the given\n\
+  \                             manifest file\n  -M, --no-manifest          Do not\
+  \ create a manifest file for the entries\n      --module-version=VERSION    The\
+  \ module version, when creating a modular\n                             jar, or\
+  \ updating a non-modular jar\n      --hash-modules=PATTERN Compute and record the\
+  \ hashes of modules \n                             matched by the given pattern\
+  \ and that depend upon\n                             directly or indirectly on a\
+  \ modular jar being\n                             created or a non-modular jar being\
+  \ updated\n  -p, --module-path          Location of module dependence for generating\n\
+  \                             the hash\n\n Operation modifiers valid only in create,\
+  \ update, and generate-index mode:\n\n  -0, --no-compress          Store only; use\
+  \ no ZIP compression\n\n Other options:\n\n  -?, -h, --help[:compat]    Give this,\
+  \ or optionally the compatibility, help\n      --help-extra           Give help\
+  \ on extra options\n      --version              Print program version\n\n An archive\
+  \ is a modular jar if a module descriptor, 'module-info.class', is\n located in\
+  \ the root of the given directories, or the root of the jar archive\n itself. The\
+  \ following operations are only valid when creating a modular jar,\n or updating\
+  \ an existing non-modular jar: '--module-version',\n '--hash-modules', and '--module-path'.\n\
+  \n Mandatory or optional arguments to long options are also mandatory or optional\n\
+  \ for any corresponding short options.\n\n"
+generated_using:
+- --help

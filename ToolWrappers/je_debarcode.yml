@@ -1,0 +1,389 @@
+!Command
+command:
+- je
+- debarcode
+positional:
+- !Positional
+  description: 'In this format, a simple BARCODE slot is expected in the ReadLayout
+    and NO headers are '
+  position: 0
+  name: col2.
+  optional: false
+- !Positional
+  description: "sample1 ATAT|GAGG:CCAA|TGTG\n3. Extended barcode file format : 3 (single-end)\
+    \ or 4 (paired-end) tab-delimited colums\nsame as the simple barcode file format\
+    \ but the extra columns contains the file name(s)"
+  position: 0
+  name: e.g.
+  optional: false
+- !Positional
+  description: sample1          ATAT|GAGG:CCAA|TGTG     spl1_1.txt.gz   spl1_2.txt.gz
+  position: 0
+  name: Or
+  optional: false
+- !Positional
+  description: Cannot be used in conjuction with option(s) USE_EMBASE (EM)
+  position: 1
+  name: Required.
+  optional: false
+- !Positional
+  description: "When provided, Je expects as many 'OF=' as output layouts ('OL=...')\
+    \ parameters or "
+  position: 0
+  name: formats.
+  optional: false
+- !Positional
+  description: 'Default value: null. '
+  position: 0
+  name: barcoded.
+  optional: false
+named:
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Picked up _JAVA_OPTIONS: -Xmx4G -Xms256m\nUSAGE: DemultiplexCLI [options]\n\
+  \nUsage: program [options...]\n\nVersion: 2.0.RC\n\n\nOptions:\n\n--help\n-h   \
+  \                         Displays options specific to this tool.\n\n--stdhelp\n\
+  -H                            Displays options specific to this tool AND options\
+  \ common to all Picard command line \n                              tools.\n\n--version\
+  \                     Displays program version.\n\nFASTQ=File\nF=File          \
+  \              Input fastq file (optionally gzipped)  Default value: null. This\
+  \ option must be specified \n                              at least 1 times. \n\n\
+  BARCODE_FILE=File\nBF=File                       Barcode file (tsv) matching sample\
+  \ names to barcode combination. \n                              \n             \
+  \                    ### GENERAL Barcode File Format \n                        \
+  \      In this format, the file structure is governed with headers:\n          \
+  \                    \t* the 'SAMPLE' column lists the sample names\n          \
+  \                    \t* the 'BARCODEn' columns list the matching BARCODE from the\
+  \ BARCODEn slot (where n is a \n                              number, see RL option).\
+  \ \n                              \t    It is mandatory to have as many 'BARCODEn'\
+  \ columns as described BARCODE slots in \n                              READ LAYOUTS.\
+  \ Here again, barcodes can be combined using the OR operator '|'\n             \
+  \                 \t* the optional 'OUTn' columns (where n is a number) list the\
+  \ output file names for this \n                              sample and matching\
+  \ output number.\n                              \n                             \
+  \    ### SIMPLE Barcode File Format (for backward compatibility) ; please see the\
+  \ GENERAL \n                              format described above \n            \
+  \                  The file must have 2 columns with the sample in col1 and the\
+  \ corresponding barcode in \n                              col2.\n             \
+  \                 In this format, a simple BARCODE slot is expected in the ReadLayout\
+  \ and NO headers are \n                              needed e.g. :\n           \
+  \                   \t\tsample1\tGAGG\n                              \t\tsample2\t\
+  CCAA\n                              \tThe format accept the following shortcuts:\
+  \ \n                              \t1. If multiple barcodes map to the same sample,\
+  \ either lines can be duplicated e.g.\n                              \t\tsample1\t\
+  ATAT\n                              \t\tsample1\tGAGG\n                        \
+  \      \t\tsample2\tCCAA\n                              \t\tsample2\tTGTG\n    \
+  \                          \tOr barcodes can be combined using the OR operator '|'\
+  \ i.e. the file above can be \n                              re-written like\n \
+  \                              \t\tsample1\tATAT|GAGG\n                        \
+  \      \t\tsample2\tCCAA|TGTG\n                              \t2. For the special\
+  \ situation of paired-end data in which barcodes differ at both ends \n        \
+  \                      i.e. with BARCODE1 and BARCODE2 described for read one and\
+  \ two respectively, barcodes for \n                              BARCODE1 and BARCODE2\
+  \ can be distinguished using a ':' separator i.e. \n                           \
+  \   \t\tsample1\tATAT:GAGG\n                              \t\tsample2\tCCAA:TGTG\n\
+  \                              \tThis above syntax means that sample 1 is encoded\
+  \ with ATAT barcode from BARCODE1 slot \n                              AND GAGG\
+  \ barcode from BARCODE2 slot. Note that you can still combine barcodes using | \n\
+  \                              e.g. \n                              \t\tsample1\t\
+  ATAT|GAGG:CCAA|TGTG\n                              \t3. Extended barcode file format\
+  \ : 3 (single-end) or 4 (paired-end) tab-delimited colums\n                    \
+  \          \tsame as the simple barcode file format but the extra columns contains\
+  \ the file name(s) \n                              to use to name output files.\
+  \ A unique extra column is expected for single-end while 2 \n                  \
+  \            extra columns are expected for paired-end. In case lines are duplicated\
+  \ (multiple \n                              barcodes mapping the same sample), the\
+  \ same file name should be indicated in the third \n                           \
+  \   (and fourth) column(s). \n                              \t\tsample1\tATAT\t\
+  spl1_1.txt.gz\tspl1_2.txt.gz\n                              \t\tsample1\tGAGG\t\
+  spl1_1.txt.gz\tspl1_2.txt.gz\n                              \t\tsample2\tCCAA\t\
+  spl2_1.txt.gz\tspl2_2.txt.gz\n                              \tOr\n             \
+  \                 \t\tsample1 \t ATAT|GAGG:CCAA|TGTG \t spl1_1.txt.gz \t spl1_2.txt.gz\n\
+  \                                Required.  Cannot be used in conjuction with option(s)\
+  \ USE_EMBASE (EM)\n\nREAD_LAYOUT=String\nRL=String                     Describes\
+  \ the read layout(s) of input fastq file(s) e.g. RL='<BARCODE:6><SAMPLE:x>' \n \
+  \                             describes a read with a barcode in the first 6 bases\
+  \ followed by the sample sequence ('x' \n                              means 'till\
+  \ the end', see below). You MUST single quote the pattern \n                   \
+  \           (RL='<BARCODE:6><SAMPLE:x>') as '>' have special meaning in unix.The\
+  \ input fastq files \n                              and read layouts are mached\
+  \ up by order on the command line.\n                              Read layouts are\
+  \ only needed for complex layouts but one must provide read layouts for \n     \
+  \                         ALL or NONE of the input fastq files.\n              \
+  \                ## READ LAYOUT FORMAT DESCRIPTION:/nRead layouts are made of <UMIn:X>,\
+  \ <BARCODEn:X>, \n                              <SAMPLEn:X> blocks to describe blocks\
+  \ of type UMI, BARCODE or SAMPLE with : \n                                  * 'n'\
+  \ the unique block index (an index must be unique across all read layouts for \n\
+  \                              each index or each block type), use the same index\
+  \ to specify redundant blocks e.g. use \n                              <BARCODE1:6>\
+  \ in two different layouts to specify that the barcode found in both reads are \n\
+  \                              the same\n                                 * 'X'\
+  \ : either a number indicating the length of the UMI, BARCODE or SAMPLE block or\
+  \ a \n                              negative number e.g. -2 to specify the last\
+  \ 2 bases should be ignored/clipped) or the \n                              letter\
+  \ 'x' to specify to take the sequence till the end of read. Importantly, the 'x'\
+  \ or \n                              negative length shortcuts can *only* be used\
+  \ in the last block of a read layout (i.e. \n                              <BARCODE1:x><SAMPLE1:20>\
+  \ is not allowed)\n                              In addition, layouts can contain\
+  \ N or fixed bases like in 'NN<BARCODE1:6>NNNN<SAMPLE1:x>' \n                  \
+  \            where the Ns tell Je to skip 2 and 4 bases before extracting the barcode\
+  \ & sample \n                              sequence respectively.\n            \
+  \                  \n                              ## OMIITING READ LAYOUT IN THE\
+  \ COMMAND LINE:/nWhen no read layout is provided, the \n                       \
+  \       following defaults apply :\n                                 * 1 input fastq:\
+  \ single end with layout <BARCODE1:X><SAMPLE1:x> where X is inferred \n        \
+  \                      from barcode file\n                                 * 2 input\
+  \ fastqs: \n                                     - paired end with redundant barcode\
+  \ if barcode file describes a single BARCODE \n                              i.e.\
+  \ <BARCODE1:X><SAMPLE1:x> and <BARCODE1:X><SAMPLE2:x>, where X is inferred from\
+  \ \n                              barcode file\n                               \
+  \      - paired end with non redundant barcode if barcode file describes two BARCODE\
+  \ \n                              column i.e. <BARCODE1:X><SAMPLE1:x> and <BARCODE2:Y><SAMPLE2:x>,\
+  \ where X and Y are \n                              inferred from barcode file\n\
+  \                                     - single end with index file if barcode file\
+  \ describes a single BARCODE and second \n                              fastq file\
+  \ has reads of length < 10 + barcode_length\n                                 *\
+  \ 3 input fastqs: \n                                     - paired end with an index\
+  \ file i.e. <SAMPLE1:x>, <SAMPLE2:x> and <BARCODE1:X> \n                       \
+  \       when barcode file has a single BARCODE column (X is inferred from barcode\
+  \ file)\n                                     - single end with two index files\
+  \ i.e. <SAMPLE1:x>, <BARCODE1:X> and <BARCODE2:Y> \n                           \
+  \   when barcode file has two BARCODE columns (X,Y is inferred from barcode file)\n\
+  \                                 * 4 input fastqs: paired end with either \n  \
+  \                                    - 2 non-redundant index files i.e. <SAMPLE1:x>,\
+  \ <SAMPLE2:x>, <BARCODE1:X>, \n                              <BARCODE2:Y> if the\
+  \ barcode file has two BARCODE columns or a ATGC:GCTAGC syntax (X,Y \n         \
+  \                     inferred from barcode file) \n                           \
+  \          - 2 redundant index files <SAMPLE1:x>, <SAMPLE2:x>, <BARCODE1:X> and\
+  \ <BARCODE1:X> \n                              if the barcode file has a single\
+  \ BARCODE column (X inferred from barcode file)\n                              \n\
+  \                                Default value: null. This option may be specified\
+  \ 0 or more times. \n\nOUTPUT_LAYOUT=String\nOL=String                     Describes\
+  \ the output file layout(s) using the slots defined in read layouts (, , ) and \n\
+  \                              are made of three distinct parts separated with ':'.\n\
+  \                              In addition to , , ,  is used as a synonym to  to\
+  \ indicate that the real sequence  should \n                              be written\
+  \ (as opposed to writting the barcode when usign ). \n                         \
+  \     An output layout looks like '1::' where the three mandatory parts (':'-separated)\
+  \ are :\n                              \t- The number in the first part (i.e. from\
+  \ '1:' above) is the output file index and it \n                              must\
+  \ be unique across all 'OL' inputs. \n                              \t- The second\
+  \ part (i.e. '' above) is the read header layout; when writing multiple UMI \n \
+  \                             and BARCODE slots in output read headers, these are\
+  \ always separated with the RCHAR (':' \n                              by defaults).\n\
+  \                              \t- The third part (i.e. '' above) is the read sequence\
+  \ layout. Note that here  and  are \n                              fully synonyms\
+  \ as the real sequence (i.e READBAR) is always written\n                       \
+  \       \n                              Important: You MUST single quote the pattern\
+  \ (OL='1::') as '>' have special meaning in \n                              unix.An\
+  \ output file is created for each sample and each OL index. Output file names \n\
+  \                              default to samplename_outputfileindex with the original\
+  \ fastq file extensions\n                              \n                      \
+  \        ## OMIITING OUTPUT LAYOUT IN THE COMMAND LINE:/n  When no OL is described,\
+  \ Je considers \n                              an output file should be created\
+  \ for each input FASTQ (containing a SAMPLE slot) and for \n                   \
+  \           each sample.\n                               In this scenario:\n   \
+  \                           \t1. The output files only contain the SAMPLE slot unless\
+  \ CLIP is set to false\n                              \t2. The barcode(s) and sample\
+  \ names are injected in the output file names according to \n                  \
+  \            the pattern 'FASTQFILENAMEn_SAMPLENAME_BARCODES.ORIGINALEXTENSIONS'\
+  \ ) \n                              \t3. Unless ADD is set to false, all BARCODE\
+  \ and UMI slots (if any) are placed in the \n                              fastq\
+  \ headers following their slot index i.e. BARCODE1:...:BARCODEn:UMI1:UMI2:...:UMIn\
+  \ \n                              and are separated with ':'.\n                \
+  \              ## SHORT LAYOUT FORMAT \n                              The output\
+  \ layout can be specified in a concise way using 'S','B', 'R' and 'U' for \n   \
+  \                           SAMPLE, BARCODE, READBAR and UMI, respectively. In this\
+  \ format, the surounding '' are \n                              also omitted. For\
+  \ example 'OL=1:B1U1U2:S1' is a synonym of 'OL=1::'  Default value: null. \n   \
+  \                           This option may be specified 0 or more times. \n\nWITH_QUALITY_IN_READNAME=Boolean\n\
+  WQ=Boolean                    Set to True to keep Phred sequence qualities in output\
+  \ read names. \n                              This option only applies to BARCODE,\
+  \ READBAR and UMI described in the read name slot of \n                        \
+  \      output layout. For BARCODE, the equivalent READBAR quality is used. In case\
+  \ of redundant \n                              slots, the best found quality is\
+  \ used.\n                              The quality string is translated into 2 digits\
+  \ number representing the quality scores on \n                              the\
+  \ Phred scale and a e.g. UMI will look like\n                              \t '...:ATGCAT333023212322:...'\
+  \ instead of '...:ATGCAT:...'\n                              This option is particularly\
+  \ useful with the retag module that knows how to extract \n                    \
+  \          quality numbers into BAM tags.  Default value: false. This option can\
+  \ be set to 'null' to \n                              clear the default value. Possible\
+  \ values: {true, false} \n\nOUTPUT_DIR=File\nO=File                        Output\
+  \ directory. By default, output files are written in running directory.\n      \
+  \                          Default value: null. \n\nKEEP_UNASSIGNED_READ=Boolean\n\
+  UN=Boolean                    Should un-assigned reads be saved in files or simply\
+  \ ignored. File names are \n                              automatically created\
+  \ or can be given using UF option.\n                                Default value:\
+  \ true. This option can be set to 'null' to clear the default value. \n        \
+  \                      Possible values: {true, false} \n\nUNASSIGNED_FILE=String\n\
+  UF=String                     Name of unassigned files in which to write unassigned\
+  \ reads. When provided, Je expects as \n                              many UF files\
+  \ as input FASTQ files. UF options are matched up with FASTQ options \n        \
+  \                      following the order they are defined on the command line.\n\
+  \                              Either a name (in which case the file will be created\
+  \ in the output dir) or full path.\n                                Default value:\
+  \ null. This option may be specified 0 or more times. \n\nADD_LAYOUT_IDX_IN_OUTPUT_FILENAME=Boolean\n\
+  OWID=Boolean                  Should the output layout number (output layout first\
+  \ slot) be injected in the filename ?\n                              Only used in\
+  \ absence of explicit file names in the barcode file.\n                        \
+  \        Default value: true. This option can be set to 'null' to clear the default\
+  \ value. \n                              Possible values: {true, false} \n\nADD_HEADER_LAYOUT_IN_OUTPUT_FILENAME=Boolean\n\
+  OWHL=Boolean                  Should the output layout used for the read name (output\
+  \ layout second slot,in short \n                              format) be injected\
+  \ in the filename ? When true, each ouput file name contains e.g. \n           \
+  \                   '_B1U1' for OL='1::'  \n                              Only used\
+  \ in absence of explicit file names in the barcode file.\n                     \
+  \           Default value: false. This option can be set to 'null' to clear the\
+  \ default value. \n                              Possible values: {true, false}\
+  \ \n\nADD_SEQUENCE_LAYOUT_IN_OUTPUT_FILENAME=Boolean\nOWSL=Boolean             \
+  \     Should the output layout used for the read sequence (output layout third slot,\
+  \ in short \n                              format) be injected in the filename ?When\
+  \ true, each ouput file name contains e.g. '_S1' \n                            \
+  \  for OL='1::'  \n                              Only used in absence of explicit\
+  \ file names in the barcode file.\n                                Default value:\
+  \ false. This option can be set to 'null' to clear the default value. \n       \
+  \                       Possible values: {true, false} \n\nOUTPUT_FILE=String\n\
+  OF=String                     Tells Je to write **all** assigned reads in the same\
+  \ output file(s) i.e. use this option \n                              when you do\
+  \ NOT want to create per-sample demultiplexed files but rather want to keep all\
+  \ \n                              reads in the same file while barcode information\
+  \ is gathered and injected in output \n                              formats.\n\
+  \                               When provided, Je expects as many 'OF=' as output\
+  \ layouts ('OL=...') parameters or \n                              'FASTQ=input'\
+  \ files when OL is not provided\n                              . OF options are\
+  \ matched up with OL/FASTQ options following the order in which they are \n    \
+  \                          defined on the command line.\n                      \
+  \        OF expects either a name (in which case the file will be created in the\
+  \ output dir) or an \n                              absolute path.\n           \
+  \                     Default value: null. This option may be specified 0 or more\
+  \ times. \n\nMAX_MISMATCHES=String\nMM=String                     Maximum mismatches\
+  \ for a barcode to be considered a match. Either exactly one or multiple \n    \
+  \                          values (with format MM=X:Y:Z). \n                   \
+  \           When multiple values are provided, Je expects exactly one value for\
+  \ each BARCODE (with \n                              distinct indices) described\
+  \ in the barcode file/read layouts.\n                              Values (X,Y,Z)\
+  \ are matched up with the sorted list of BARCODES (i.e.  X for BARCODE1, Y \n  \
+  \                            for BARCODE2 and Z for BARCODE3)\n                \
+  \                Default value: 1. This option can be set to 'null' to clear the\
+  \ default value. \n\nMIN_MISMATCH_DELTA=String\nMMD=String                    Minimum\
+  \ difference between the number of mismatches against the best and the second best\
+  \ \n                              barcode. When MMD is not respected, the read remains\
+  \ unassigned.\n                              Either exactly one or multiple values\
+  \ (with format MMD=X:Y:Z). When multiple values are \n                         \
+  \     provided, Je expects exactly one value for each BARCODE (with distinct indices)\
+  \ described \n                              in the barcode file/read layouts.\n\
+  \                              Values (X,Y,Z) are matched up with the sorted list\
+  \ of BARCODES (i.e.  X for BARCODE1, Y \n                              for BARCODE2\
+  \ and Z for BARCODE3)\n                                Default value: 1. This option\
+  \ can be set to 'null' to clear the default value. \n\nMIN_BASE_QUALITY=String\n\
+  Q=String                      Minimum base quality during barcode matching: bases\
+  \ which quality is less than this \n                              cutoff are always\
+  \ considered as a mismatch.Either exactly one or multiple values (with \n      \
+  \                        format Q=X:Y:Z). When multiple values are provided, Je\
+  \ expects exactly one value for each \n                              BARCODE (with\
+  \ distinct indices) described in the barcode file/read layouts.\n              \
+  \                Values (X,Y,Z) are matched up with the sorted list of BARCODES\
+  \ (i.e.  X for BARCODE1, Y \n                              for BARCODE2 and Z for\
+  \ BARCODE3)\n                                Default value: 10. This option can\
+  \ be set to 'null' to clear the default value. \n\nSTRICT=Boolean\nS=Boolean   \
+  \                  When reads have redundant BARCODE slots, this option tells how\
+  \ to handle situation when \n                              the read sequence do\
+  \ not resolve to the same sample.\n                               When true, the\
+  \ read pair is always 'unassigned'.\n                               When false,\
+  \ the read pair is assigned to the sample with the lowest overall mismatch sum\n\
+  \                                Default value: false. This option can be set to\
+  \ 'null' to clear the default value. \n                              Possible values:\
+  \ {true, false} \n\nFORCE=Boolean                 Allows to overwrite existing files\
+  \ (system rights still apply).\n                                Default value: false.\
+  \ This option can be set to 'null' to clear the default value. \n              \
+  \                Possible values: {true, false} \n\nGZIP_OUTPUTS=Boolean\nGZ=Boolean\
+  \                    Compress output files using gzip.\n                       \
+  \         Default value: true. This option can be set to 'null' to clear the default\
+  \ value. \n                              Possible values: {true, false} \n\nCLIP=Boolean\
+  \                  In absence of output layout, tell if barcode and UMI sequences\
+  \ should be clipped off read \n                              sequence before writing\
+  \ to output file.\n                               If false, reads are written without\
+  \ modification to output file.  Default value: true. \n                        \
+  \      This option can be set to 'null' to clear the default value. Possible values:\
+  \ {true, \n                              false} \n\nADD=Boolean                \
+  \   In absence of output layout, tell if barcode and UMI sequences should be added\
+  \ at the end \n                              of the read header.\n             \
+  \                 BARCODE and UMI slots (in this order) are concatenated using the\
+  \ character defined by the \n                              SEP option\n        \
+  \                        Default value: true. This option can be set to 'null' to\
+  \ clear the default value. \n                              Possible values: {true,\
+  \ false} \n\nREAD_NAME_SEPARATOR_CHAR=String\nSEP=String                    Separator\
+  \ character used to concatenate barcodes and umis in read header\n             \
+  \                   Default value: :. This option can be set to 'null' to clear\
+  \ the default value. \n\nQUALITY_FORMAT=FastqQualityFormat\nV=FastqQualityFormat\
+  \          A value describing how the quality values are encoded in the fastq files.\
+  \  Either \n                              'Solexa' for pre-pipeline 1.3 style scores\
+  \ (solexa scaling + 66), 'Illumina' for pipeline \n                            \
+  \  1.3 and above (phred scaling + 64) or 'Standard' for phred scaled scores with\
+  \ a character \n                              shift of 33.  If this value is not\
+  \ specified (or 'null' is given), the quality format is \n                     \
+  \         assumed to be will the 'Standard' for phred scale.\n                 \
+  \               Default value: null. Possible values: {Solexa, Illumina, Standard}\
+  \ \n\nMETRICS_FILE_NAME=String\nM=String                      File name where to\
+  \ write demultiplexing statistics. Either a name (in which case the file \n    \
+  \                          will be created in the output dir) or an absolute path.\n\
+  \                                Default value: jemultiplexer_out_stats.txt. This\
+  \ option can be set to 'null' to clear \n                              the default\
+  \ value. \n\nBARCODE_DIAG_FILE=String\nDIAG=String                   Name for a\
+  \ barcode match reporting file (not generated by default).Either a name (in \n \
+  \                             which case the file will be created in the output\
+  \ dir) or full path. This file will \n                              contain a line\
+  \ per read set with the barcodes best matching the read subsequences or \n     \
+  \                         'null' when no match is found according to matching parameters\
+  \ ; and the final selected \n                              sample. This file is\
+  \ useful for debugging or further processing in case both ends are \n          \
+  \                    barcoded.\n                                Default value: null.\
+  \ \n\nTEST_MODE_STOP_AFTER_PARSING=Boolean\nTEST=Boolean                  test mode\
+  \ ie code execution stops right before read demultiplexing starts but after \n \
+  \                             command line validation  Default value: false. This\
+  \ option can be set to 'null' to clear \n                              the default\
+  \ value. Possible values: {true, false} \n\nFASTQ_FILE_EXTENSION=String   Change\
+  \ the default extension of created fastq files, eg 'fastqsanger'. By default uses\
+  \ \n                              the file extension from input fastq file. If result\
+  \ file names are given in the barcode \n                              file, this\
+  \ option is only used to adapt the unassigned file names. When using \n        \
+  \                      compression, a .gz is always appended to file names and should\
+  \ not be specified in \n                              FASTQ_FILE_EXTENSION i.e.\
+  \ \n                              use FASTQ_FILE_EXTENSION=fastq and NOT FASTQ_FILE_EXTENSION=fastq.gz\n\
+  \                                Default value: null. \n\nINPUT_FASTQ_COMPRESSION=Boolean\n\
+  \                              Indicates if the input fastq files are gzipped. Please\
+  \ use this option when file names \n                              are compressed\
+  \ but lack the typical '.gz' extension. \n                                Default\
+  \ value: null. Possible values: {true, false} \n\nWRITER_FACTORY_USE_ASYNC_IO=Boolean\n\
+  ASYNC=Boolean                 Use one thread per Fastq Writer.\n               \
+  \                 Default value: true. This option can be set to 'null' to clear\
+  \ the default value. \n                              Possible values: {true, false}\
+  \ \n\nUSE_EMBASE=Boolean\nEM=Boolean                    Enables emBASE mode i.e\
+  \ fetch information from emBASE and place demultiplexed files \n               \
+  \               directly in emBASE repository structure.\n                     \
+  \         This option is mutually exclusive with BARCODE_FILE.\n               \
+  \               Note : this option forces O=null GZ=true UN=true UF1=null UF2=null\
+  \ STATS_ONLY=false (all \n                              other user options supported).\n\
+  \                                Default value: false. This option can be set to\
+  \ 'null' to clear the default value. \n                              Possible values:\
+  \ {true, false}  Cannot be used in conjuction with option(s) BARCODE_FILE \n   \
+  \                           (BF)\n\n"
+generated_using:
+- --help

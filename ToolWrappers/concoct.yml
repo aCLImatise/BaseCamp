@@ -1,0 +1,210 @@
+!Command
+command:
+- concoct
+positional: []
+named:
+- !Flag
+  description: "specify the coverage file, containing a table where\neach row correspond\
+    \ to a contig, and each column\ncorrespond to a sample. The values are the average\n\
+    coverage for this contig in that sample. All values\nare separated with tabs."
+  synonyms:
+  - --coverage_file
+  args: !SimpleFlagArg
+    name: COVERAGE_FILE
+  optional: true
+- !Flag
+  description: "specify the composition file, containing sequences in\nfasta format.\
+    \ It is named the composition file since\nit is used to calculate the kmer composition\
+    \ (the\ngenomic signature) of each contig."
+  synonyms:
+  - --composition_file
+  args: !SimpleFlagArg
+    name: COMPOSITION_FILE
+  optional: true
+- !Flag
+  description: "specify maximal number of clusters for VGMM, default\n400."
+  synonyms:
+  - -c
+  - --clusters
+  args: !SimpleFlagArg
+    name: CLUSTERS
+  optional: true
+- !Flag
+  description: specify kmer length, default 4.
+  synonyms:
+  - -k
+  - --kmer_length
+  args: !SimpleFlagArg
+    name: KMER_LENGTH
+  optional: true
+- !Flag
+  description: Number of threads to use
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "specify the sequence length threshold, contigs shorter\nthan this\
+    \ value will not be included. Defaults to\n1000."
+  synonyms:
+  - -l
+  - --length_threshold
+  args: !SimpleFlagArg
+    name: LENGTH_THRESHOLD
+  optional: true
+- !Flag
+  description: specify read length for coverage, default 100
+  synonyms:
+  - -r
+  - --read_length
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+  optional: true
+- !Flag
+  description: "The percentage of variance explained by the principal\ncomponents\
+    \ for the combined data."
+  synonyms:
+  - --total_percentage_pca
+  args: !SimpleFlagArg
+    name: TOTAL_PERCENTAGE_PCA
+  optional: true
+- !Flag
+  description: "Specify the basename for files or directory where\noutputwill be placed.\
+    \ Path to existing directory or\nbasenamewith a trailing '/' will be interpreted\
+    \ as a\ndirectory.If not provided, current directory will be\nused."
+  synonyms:
+  - -b
+  - --basename
+  args: !SimpleFlagArg
+    name: BASENAME
+  optional: true
+- !Flag
+  description: "Specify an integer to use as seed for clustering. 0\ngives a random\
+    \ seed, 1 is the default seed and any\nother positive integer can be used. Other\
+    \ values give\nArgumentTypeError."
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: "Specify maximum number of iterations for the VBGMM.\nDefault value\
+    \ is 500"
+  synonyms:
+  - -i
+  - --iterations
+  args: !SimpleFlagArg
+    name: ITERATIONS
+  optional: true
+- !Flag
+  description: "By default the coverage is normalized with regards to\nsamples, then\
+    \ normalized with regards of contigs and\nfinally log transformed. By setting\
+    \ this flag you skip\nthe normalization and only do log transorm of the\ncoverage."
+  synonyms:
+  - --no_cov_normalization
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "By default, the total coverage is added as a new\ncolumn in the coverage\
+    \ data matrix, independently of\ncoverage normalization but previous to log\n\
+    transformation. Use this tag to escape this behaviour."
+  synonyms:
+  - --no_total_coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "By default the original data is saved to disk. For big\ndatasets,\
+    \ especially when a large k is used for\ncompositional data, this file can become\
+    \ very large.\nUse this tag if you don't want to save the original\ndata."
+  synonyms:
+  - --no_original_data
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write convergence info to files.
+  synonyms:
+  - -o
+  - --converge_out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Debug parameters.
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: concoct [-h] [--coverage_file COVERAGE_FILE]\n               [--composition_file\
+  \ COMPOSITION_FILE] [-c CLUSTERS]\n               [-k KMER_LENGTH] [-t THREADS]\
+  \ [-l LENGTH_THRESHOLD]\n               [-r READ_LENGTH] [--total_percentage_pca\
+  \ TOTAL_PERCENTAGE_PCA]\n               [-b BASENAME] [-s SEED] [-i ITERATIONS]\n\
+  \               [--no_cov_normalization] [--no_total_coverage]\n               [--no_original_data]\
+  \ [-o] [-d] [-v]\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --coverage_file COVERAGE_FILE\n                        specify\
+  \ the coverage file, containing a table where\n                        each row\
+  \ correspond to a contig, and each column\n                        correspond to\
+  \ a sample. The values are the average\n                        coverage for this\
+  \ contig in that sample. All values\n                        are separated with\
+  \ tabs.\n  --composition_file COMPOSITION_FILE\n                        specify\
+  \ the composition file, containing sequences in\n                        fasta format.\
+  \ It is named the composition file since\n                        it is used to\
+  \ calculate the kmer composition (the\n                        genomic signature)\
+  \ of each contig.\n  -c CLUSTERS, --clusters CLUSTERS\n                        specify\
+  \ maximal number of clusters for VGMM, default\n                        400.\n \
+  \ -k KMER_LENGTH, --kmer_length KMER_LENGTH\n                        specify kmer\
+  \ length, default 4.\n  -t THREADS, --threads THREADS\n                        Number\
+  \ of threads to use\n  -l LENGTH_THRESHOLD, --length_threshold LENGTH_THRESHOLD\n\
+  \                        specify the sequence length threshold, contigs shorter\n\
+  \                        than this value will not be included. Defaults to\n   \
+  \                     1000.\n  -r READ_LENGTH, --read_length READ_LENGTH\n     \
+  \                   specify read length for coverage, default 100\n  --total_percentage_pca\
+  \ TOTAL_PERCENTAGE_PCA\n                        The percentage of variance explained\
+  \ by the principal\n                        components for the combined data.\n\
+  \  -b BASENAME, --basename BASENAME\n                        Specify the basename\
+  \ for files or directory where\n                        outputwill be placed. Path\
+  \ to existing directory or\n                        basenamewith a trailing '/'\
+  \ will be interpreted as a\n                        directory.If not provided, current\
+  \ directory will be\n                        used.\n  -s SEED, --seed SEED  Specify\
+  \ an integer to use as seed for clustering. 0\n                        gives a random\
+  \ seed, 1 is the default seed and any\n                        other positive integer\
+  \ can be used. Other values give\n                        ArgumentTypeError.\n \
+  \ -i ITERATIONS, --iterations ITERATIONS\n                        Specify maximum\
+  \ number of iterations for the VBGMM.\n                        Default value is\
+  \ 500\n  --no_cov_normalization\n                        By default the coverage\
+  \ is normalized with regards to\n                        samples, then normalized\
+  \ with regards of contigs and\n                        finally log transformed.\
+  \ By setting this flag you skip\n                        the normalization and only\
+  \ do log transorm of the\n                        coverage.\n  --no_total_coverage\
+  \   By default, the total coverage is added as a new\n                        column\
+  \ in the coverage data matrix, independently of\n                        coverage\
+  \ normalization but previous to log\n                        transformation. Use\
+  \ this tag to escape this behaviour.\n  --no_original_data    By default the original\
+  \ data is saved to disk. For big\n                        datasets, especially when\
+  \ a large k is used for\n                        compositional data, this file can\
+  \ become very large.\n                        Use this tag if you don't want to\
+  \ save the original\n                        data.\n  -o, --converge_out    Write\
+  \ convergence info to files.\n  -d, --debug           Debug parameters.\n  -v, --version\
+  \         show program's version number and exit\n"
+generated_using:
+- --help

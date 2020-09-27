@@ -1,0 +1,99 @@
+!Command
+command:
+- gotree
+- repopulate
+positional:
+- !Positional
+  description: 'Example with Tip1,Tip2 :'
+  position: 0
+  name: branches.
+  optional: false
+- !Positional
+  description: '|   After (if l>0.0)  |  After (if l=0.0)'
+  position: 1
+  name: Before
+  optional: false
+named:
+- !Flag
+  description: File with groups of identical tips (default "none")
+  synonyms:
+  - -g
+  - --id-groups
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Input tree (default "stdin")
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Renamed tree output file (default "stdout")
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Number of threads (Max=8) (default 1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for repopulate
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Re populate the tree with tips that have the same sequences.\n\nWhen a\
+  \ tree is inferred, some tools first remove identical sequences.\n\nHowever, it\
+  \ may be useful to keep them in the tree. To do so, this command takes:\n\n1. A\
+  \ input tree\n2. A file containing a list of tips that are identical, in the following\
+  \ format:\n    Tip1,Tip2\n    Tip3,Tip4\n    Meaning that Tip1 is identical to Tip2,\
+  \ and Tip3 is identical to Tip4.\n\n\"repopulate\" command then adds Tip2 next to\
+  \ Tip1 if Tip1 is present in the tree, or \nTip1 next to Tip2 if Tip2 is present\
+  \ in the tree. To do so, it adds two 0.0 length\n branches. \n\nExample with Tip1,Tip2\
+  \ :\n\n Before     |   After (if l>0.0)  |  After (if l=0.0)\n------------+---------------------+-------------------\n\
+  \            |         *Tip1       |     *Tip1\n    l       |    l   /.0       \
+  \   |    /0.0\n *----*Tip1 |   ----*\t          |   *\n            |        \\.0\
+  \          |    \\0.0\n            |         *Tip2       |     *Tip2\n\nEach identical\
+  \ group must contain exactly 1 already present tip, otherwise it returns\n an error.\n\
+  \nIf a new tip is present in several groups, then returns and error.\n\nThe tree\
+  \ after \"repopulate\" command may contain polytomies.\n\nUsage:\n  gotree repopulate\
+  \ [flags]\n\nFlags:\n  -h, --help               help for repopulate\n  -g, --id-groups\
+  \ string   File with groups of identical tips (default \"none\")\n  -i, --input\
+  \ string       Input tree (default \"stdin\")\n  -o, --output string      Renamed\
+  \ tree output file (default \"stdout\")\n\nGlobal Flags:\n      --format string\
+  \   Input tree format (newick, nexus, or phyloxml) (default \"newick\")\n      --seed\
+  \ int        Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n\
+  \  -t, --threads int     Number of threads (Max=8) (default 1)\n"
+generated_using:
+- --help

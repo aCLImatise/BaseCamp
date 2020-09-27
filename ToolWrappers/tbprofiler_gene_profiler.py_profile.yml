@@ -1,0 +1,100 @@
+!Command
+command:
+- tbprofiler_gene_profiler.py
+- profile
+positional: []
+named:
+- !Flag
+  description: 'BAM file (default: None)'
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: "Sample prefix for all results generated (default:\nNone)"
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'Output file suffix (default: .results.json)'
+  synonyms:
+  - --suffix
+  args: !SimpleFlagArg
+    name: SUFFIX
+  optional: true
+- !Flag
+  description: 'NGS Platform used to generate data (default: illumina)'
+  synonyms:
+  - --platform
+  - -m
+  args: !ChoiceFlagArg
+    choices: !!set
+      nanopore:
+      illumina:
+  optional: true
+- !Flag
+  description: 'Variant calling tool to use. (default: bcftools)'
+  synonyms:
+  - --caller
+  args: !ChoiceFlagArg
+    choices: !!set
+      gatk:
+      bcftools:
+  optional: true
+- !Flag
+  description: 'Mutation panel name (default: tbdb)'
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: DB
+  optional: true
+- !Flag
+  description: "Path to db files prefix (overrides \"--db\" parameter)\n(default:\
+    \ None)"
+  synonyms:
+  - --external_db
+  args: !SimpleFlagArg
+    name: EXTERNAL_DB
+  optional: true
+- !Flag
+  description: "Threads to use (default: 1)\n"
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tbprofiler_gene_profiler.py profile [-h] --bam BAM [--prefix PREFIX]\n\
+  \                                           [--suffix SUFFIX]\n                \
+  \                           [--platform {illumina,nanopore}]\n                 \
+  \                          [--caller {bcftools,gatk}]\n                        \
+  \                   [--db DB]\n                                           [--external_db\
+  \ EXTERNAL_DB]\n                                           [--threads THREADS]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --bam BAM             BAM file (default: None)\n  --prefix PREFIX       Sample\
+  \ prefix for all results generated (default:\n                        None)\n  --suffix\
+  \ SUFFIX       Output file suffix (default: .results.json)\n  --platform {illumina,nanopore},\
+  \ -m {illumina,nanopore}\n                        NGS Platform used to generate\
+  \ data (default: illumina)\n  --caller {bcftools,gatk}\n                       \
+  \ Variant calling tool to use. (default: bcftools)\n  --db DB               Mutation\
+  \ panel name (default: tbdb)\n  --external_db EXTERNAL_DB\n                    \
+  \    Path to db files prefix (overrides \"--db\" parameter)\n                  \
+  \      (default: None)\n  --threads THREADS, -t THREADS\n                      \
+  \  Threads to use (default: 1)\n"
+generated_using:
+- --help

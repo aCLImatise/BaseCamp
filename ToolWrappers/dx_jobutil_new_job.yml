@@ -1,0 +1,135 @@
+!Command
+command:
+- dx-jobutil-new-job
+positional: []
+named:
+- !Flag
+  description: "An input to be added using \"<input\nname>[:<class>]=<input value>\"\
+    \ (provide \"class\" if\nthere is no input spec; it can be any job IO class,\n\
+    e.g. \"string\", \"array:string\", or \"array\"; if \"class\"\nis \"array\" or\
+    \ not specified, the value will be\nattempted to be parsed as JSON and is otherwise\n\
+    treated as a string)"
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: "The full input JSON (keys=input field names,\nvalues=input field values)"
+  synonyms:
+  - -j
+  - --input-json
+  args: !SimpleFlagArg
+    name: INPUT_JSON
+  optional: true
+- !Flag
+  description: Load input JSON from FILENAME ("-" to use stdin)
+  synonyms:
+  - -f
+  - --input-json-file
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "Specify instance type(s) for jobs this executable will\nrun; see --instance-type-help\
+    \ for more details"
+  synonyms:
+  - --instance-type
+  args: !SimpleFlagArg
+    name: INSTANCE_TYPE_OR_MAPPING
+  optional: true
+- !Flag
+  description: Print help for specifying instance types
+  synonyms:
+  - --instance-type-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Arguments (in JSON format) to pass to the underlying\nAPI method,\
+    \ overriding the default settings"
+  synonyms:
+  - --extra-args
+  args: !SimpleFlagArg
+    name: EXTRA_ARGS
+  optional: true
+- !Flag
+  description: "=VALUE  Key-value pair to add as a property; repeat as\nnecessary,\
+    \ e.g. \"--property key1=val1 --property\nkey2=val2\""
+  synonyms:
+  - --property
+  args: !SimpleFlagArg
+    name: KEY
+  optional: true
+- !Flag
+  description: "Tag for the resulting execution; repeat as necessary,\ne.g. \"--tag\
+    \ tag1 --tag tag2\""
+  synonyms:
+  - --tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: "Name for the new job (default is the current job name,\nplus \":<function>\"\
+    )"
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "[JOB_OR_OBJECT_ID [JOB_OR_OBJECT_ID ...]]\nJob and/or data object\
+    \ IDs that must finish or close\nbefore the new job should be run. WARNING: For\
+    \ proper\nparsing, do not use this flag directly before the\n*function* parameter.\n"
+  synonyms:
+  - --depends-on
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: dx-jobutil-new-job [-h] [-i INPUT] [-j INPUT_JSON] [-f FILENAME]\n\
+  \                          [--instance-type INSTANCE_TYPE_OR_MAPPING]\n        \
+  \                  [--instance-type-help] [--extra-args EXTRA_ARGS]\n          \
+  \                [--property KEY=VALUE] [--tag TAG] [--name NAME]\n            \
+  \              [--depends-on [JOB_OR_OBJECT_ID [JOB_OR_OBJECT_ID ...]]]\n      \
+  \                    function\n\nCreates a new job to run the named function with\
+  \ the specified input. If\nsuccessful, prints the ID of the new job.\n\npositional\
+  \ arguments:\n  function              Name of the function to run\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i INPUT, --input INPUT\n\
+  \                        An input to be added using \"<input\n                 \
+  \       name>[:<class>]=<input value>\" (provide \"class\" if\n                \
+  \        there is no input spec; it can be any job IO class,\n                 \
+  \       e.g. \"string\", \"array:string\", or \"array\"; if \"class\"\n        \
+  \                is \"array\" or not specified, the value will be\n            \
+  \            attempted to be parsed as JSON and is otherwise\n                 \
+  \       treated as a string)\n  -j INPUT_JSON, --input-json INPUT_JSON\n       \
+  \                 The full input JSON (keys=input field names,\n               \
+  \         values=input field values)\n  -f FILENAME, --input-json-file FILENAME\n\
+  \                        Load input JSON from FILENAME (\"-\" to use stdin)\n  --instance-type\
+  \ INSTANCE_TYPE_OR_MAPPING\n                        Specify instance type(s) for\
+  \ jobs this executable will\n                        run; see --instance-type-help\
+  \ for more details\n  --instance-type-help  Print help for specifying instance types\n\
+  \  --extra-args EXTRA_ARGS\n                        Arguments (in JSON format) to\
+  \ pass to the underlying\n                        API method, overriding the default\
+  \ settings\n  --property KEY=VALUE  Key-value pair to add as a property; repeat\
+  \ as\n                        necessary, e.g. \"--property key1=val1 --property\n\
+  \                        key2=val2\"\n  --tag TAG             Tag for the resulting\
+  \ execution; repeat as necessary,\n                        e.g. \"--tag tag1 --tag\
+  \ tag2\"\n  --name NAME           Name for the new job (default is the current job\
+  \ name,\n                        plus \":<function>\")\n  --depends-on [JOB_OR_OBJECT_ID\
+  \ [JOB_OR_OBJECT_ID ...]]\n                        Job and/or data object IDs that\
+  \ must finish or close\n                        before the new job should be run.\
+  \ WARNING: For proper\n                        parsing, do not use this flag directly\
+  \ before the\n                        *function* parameter.\n"
+generated_using:
+- --help

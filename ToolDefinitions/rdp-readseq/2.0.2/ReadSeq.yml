@@ -31,7 +31,7 @@ subcommands:
     name: seq_per_split
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id013 !Command
     command: *id001
     positional: []
     named: []
@@ -61,7 +61,381 @@ subcommands:
         name: seq_per_split
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: SeqFileSplitter
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: infile
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: outdir
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: seq_per_split
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "/usr/local/bin/ReadSeq: line 6: warning: setlocale: LC_ALL:\
+            \ cannot change locale (en_US.UTF-8): No such file or directory\nUsage:\
+            \ SeqFileSplitter infile outdir seq_per_split\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - ReadSeq
+          - to-stk
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: USAGE
+            optional: false
+          named:
+          - !Flag
+            description: "the header of the output file in case a differenet\nstk\
+              \ version, default is # STOCKHOLM 1.0"
+            synonyms:
+            - -h
+            - --header
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: "is set, do not write the GC reference sequences to\noutput\n"
+            synonyms:
+            - -r
+            - --removeref
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: USAGE: to-stk <input-file> <out-file>\n -h,--header <arg>\
+            \   the header of the output file in case a differenet\n             \
+            \        stk version, default is # STOCKHOLM 1.0\n -r,--removeref    \
+            \  is set, do not write the GC reference sequences to\n              \
+            \       output\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - ReadSeq
+          - to-fastq
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: ToFastq
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: seqfile
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: qualfile
+            optional: true
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "/usr/local/bin/ReadSeq: line 6: warning: setlocale: LC_ALL:\
+            \ cannot change locale (en_US.UTF-8): No such file or directory\nUSAGE:\
+            \ ToFastq <seqfile> [qualfile]\n"
+          generated_using: &id007 []
+        - !Command
+          command: &id008
+          - ReadSeq
+          - select-seqs
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: SequenceSelector
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: ids_file
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: outfile
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: outputformat
+            optional: false
+          - !Positional
+            description: ''
+            position: 4
+            name: keep
+            optional: false
+          - !Positional
+            description: ''
+            position: 5
+            name: Y|N
+            optional: true
+          - !Positional
+            description: ''
+            position: 6
+            name: seqfile
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "/usr/local/bin/ReadSeq: line 6: warning: setlocale: LC_ALL:\
+            \ cannot change locale (en_US.UTF-8): No such file or directory\nUSAGE:\
+            \ SequenceSelector ids_file outfile outputformat keep[Y|N] seqfile(s)\
+            \ \nInput format is fasta or fastq. The outputformat can be either fasta\
+            \ or fastq if inputs are fastq\nDefault is to keep the sequences in the\
+            \ ids_file. If keep is false or N, the sequences will be removed from\
+            \ output \n"
+          generated_using: *id004
+        - !Command
+          command: &id009
+          - ReadSeq
+          - to-fasta
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: USAGE
+            optional: false
+          named:
+          - !Flag
+            description: Mask sequence name indicating columns to drop
+            synonyms:
+            - -m
+            - --mask
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: USAGE: to-fasta <input-file>\n -m,--mask <arg>   Mask\
+            \ sequence name indicating columns to drop\n"
+          generated_using: *id004
+        - !Command
+          command: &id010
+          - ReadSeq
+          - rm-dupseq
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: RmRedundantSeqs
+            optional: false
+          named:
+          - !Flag
+            description: remove identical sequence, or sequence contained by another
+              sequence
+            synonyms:
+            - -d
+            - --duplicates
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: output the ids that are contained by other sequences to standard
+              out
+            synonyms:
+            - -g
+            - --debug
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: input fasta file
+            synonyms:
+            - -i
+            - --infile
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: filter sequence by minimum sequence length, default is 0
+            synonyms:
+            - -l
+            - --min_seq_length
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: output fasta file
+            synonyms:
+            - -o
+            - --outfile
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: RmRedundantSeqs [options]\n -d,--duplicates         \
+            \    remove identical sequence, or sequence contained by another sequence\n\
+            \ -g,--debug                  output the ids that are contained by other\
+            \ sequences to standard out\n -i,--infile <arg>           input fasta\
+            \ file\n -l,--min_seq_length <arg>   filter sequence by minimum sequence\
+            \ length, default is 0\n -o,--outfile <arg>          output fasta file\n"
+          generated_using: *id004
+        - !Command
+          command: &id011
+          - ReadSeq
+          - reverse-comp
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: RevComplement
+            optional: false
+          named:
+          - !Flag
+            description: If set, will check orientation of the rRNA sequenc, only
+              reverse complement if needed
+            synonyms:
+            - -c
+            - --check
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: output format, fasta or fastq. Default is fasta
+            synonyms:
+            - -f
+            - --format
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: input fasta file
+            synonyms:
+            - -i
+            - --infile
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: output fasta file
+            synonyms:
+            - -o
+            - --outfile
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: RevComplement [options]\n -c,--check           If set,\
+            \ will check orientation of the rRNA sequenc, only reverse complement\
+            \ if needed\n -f,--format <arg>    output format, fasta or fastq. Default\
+            \ is fasta\n -i,--infile <arg>    input fasta file\n -o,--outfile <arg>\
+            \   output fasta file\n"
+          generated_using: *id004
+        - !Command
+          command: &id012
+          - ReadSeq
+          - random-sample
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: ResampleSeqFile
+            optional: false
+          named:
+          - !Flag
+            description: "number of sequence to select for each sample. Default is\
+              \ the smallest sample size. Limit\nto the default value."
+            synonyms:
+            - -n
+            - --num-selection
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          - !Flag
+            description: "If specified, radomly choose a subregion with the required\
+              \ length from the sequence.  If\na selected sequence is shorter than\
+              \ the specified length, that sequence will not be\nincluded in the output,\
+              \  which may result in not equal number of sequences in some\nsamples."
+            synonyms:
+            - -s
+            - --subregion_length
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: ResampleSeqFile [options] <infile(dir)> <outdir>\n -n,--num-selection\
+            \ <arg>      number of sequence to select for each sample. Default is\
+            \ the smallest sample size. Limit\n                               to the\
+            \ default value.\n -s,--subregion_length <arg>   If specified, radomly\
+            \ choose a subregion with the required length from the sequence.  If\n\
+            \                               a selected sequence is shorter than the\
+            \ specified length, that sequence will not be\n                      \
+            \         included in the output,  which may result in not equal number\
+            \ of sequences in some\n                               samples.\nERROR:\
+            \ Unrecognized option: --help\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "/usr/local/bin/ReadSeq: line 6: warning: setlocale: LC_ALL: cannot\
+          \ change locale (en_US.UTF-8): No such file or directory\nERROR: wrong subcommand\n\
+          USAGE: ReadSeqMain <subcommand> <subcommand args ...>\n\trandom-sample \
+          \ - random select a subset or subregion of sequences\n\treverse-comp   -\
+          \ reverse complement sequences\n\trm-dupseq      - remove identical or substring\
+          \ of sequences\n\tselect-seqs    - select or deselect sequences from a file\n\
+          \tsplit          - split sequences\n\tto-fasta       - convert to fasta\
+          \ format\n\tto-fastq       - convert to fastq format\n\tto-stk         -\
+          \ convert to stk format\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -70,12 +444,9 @@ subcommands:
       help_text: "/usr/local/bin/ReadSeq: line 6: warning: setlocale: LC_ALL: cannot\
         \ change locale (en_US.UTF-8): No such file or directory\nUsage: SeqFileSplitter\
         \ infile outdir seq_per_split\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - ReadSeq
-      - to-stk
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -111,9 +482,7 @@ subcommands:
         \ do not write the GC reference sequences to\n                     output\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - ReadSeq
-      - to-fastq
+      command: *id006
       positional:
       - !Positional
         description: ''
@@ -140,11 +509,9 @@ subcommands:
       help_text: "/usr/local/bin/ReadSeq: line 6: warning: setlocale: LC_ALL: cannot\
         \ change locale (en_US.UTF-8): No such file or directory\nUSAGE: ToFastq <seqfile>\
         \ [qualfile]\n"
-      generated_using: &id007 []
+      generated_using: *id007
     - !Command
-      command: &id008
-      - ReadSeq
-      - select-seqs
+      command: *id008
       positional:
       - !Positional
         description: ''
@@ -196,9 +563,7 @@ subcommands:
         \ sequences will be removed from output \n"
       generated_using: *id004
     - !Command
-      command: &id009
-      - ReadSeq
-      - to-fasta
+      command: *id009
       positional:
       - !Positional
         description: ''
@@ -224,9 +589,7 @@ subcommands:
         \ name indicating columns to drop\n"
       generated_using: *id004
     - !Command
-      command: &id010
-      - ReadSeq
-      - rm-dupseq
+      command: *id010
       positional:
       - !Positional
         description: ''
@@ -287,9 +650,7 @@ subcommands:
         \ <arg>          output fasta file\n"
       generated_using: *id004
     - !Command
-      command: &id011
-      - ReadSeq
-      - reverse-comp
+      command: *id011
       positional:
       - !Positional
         description: ''
@@ -341,9 +702,7 @@ subcommands:
         \ <arg>    input fasta file\n -o,--outfile <arg>   output fasta file\n"
       generated_using: *id004
     - !Command
-      command: &id012
-      - ReadSeq
-      - random-sample
+      command: *id012
       positional:
       - !Positional
         description: ''
@@ -434,7 +793,7 @@ subcommands:
     - --removeref
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -464,7 +823,7 @@ subcommands:
     name: qualfile
     optional: true
   named: []
-  parent: *id003
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -512,7 +871,7 @@ subcommands:
     name: seqfile
     optional: false
   named: []
-  parent: *id003
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -542,7 +901,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id003
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -599,7 +958,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id003
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -653,7 +1012,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id003
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -693,7 +1052,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id003
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:

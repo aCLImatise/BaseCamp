@@ -22,22 +22,10 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: ': construct indices for the database'
-      synonyms:
-      - --index
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -options
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -55,7 +43,119 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: ': construct indices for the database'
+          synonyms:
+          - --index
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -options
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: name or accession
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -options
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ': help; print version and usage info'
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
+            \ afetch [-options] <alignment database> <name or accession>\n   or: afetch\
+            \ --index <alignment database>\n\n   Get an alignment from a database.\n\
+            \   Available options:\n   -h      : help; print version and usage info\n\
+            \n\n"
+          generated_using: &id004 []
+        - !Command
+          command: &id005
+          - afetch
+          - name or accession
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: afetch
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: alignment database
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: name or accession
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -options
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ': help; print version and usage info'
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "\nFATAL: Incorrect number of command line arguments.\nUsage:\
+            \ afetch [-options] <alignment database> <name or accession>\n   or: afetch\
+            \ --index <alignment database>\n\n   Get an alignment from a database.\n\
+            \   Available options:\n   -h      : help; print version and usage info\n\
+            \n\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: ': help; print version and usage info'
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "afetch - retrieve an alignment from Pfam\nSQUID 1.9g (Oct 2002)\n\
+          Copyright (C) 1992-2002 HHMI/Washington University School of Medicine\n\
+          Freely distributed under the GNU General Public License (GPL)\n- - - - -\
+          \ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage:\
+          \ afetch [-options] <alignment database> <name or accession>\n   or: afetch\
+          \ --index <alignment database>\n\n   Get an alignment from a database.\n\
+          \   Available options:\n   -h      : help; print version and usage info\n\
+          \n   --index : construct indices for the database\n\n"
+        generated_using: &id006
+        - -h
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -70,11 +170,9 @@ subcommands:
         \ [-options] <alignment database> <name or accession>\n   or: afetch --index\
         \ <alignment database>\n\n   Get an alignment from a database.\n   Available\
         \ options:\n   -h      : help; print version and usage info\n\n\n"
-      generated_using: &id004 []
+      generated_using: *id004
     - !Command
-      command: &id005
-      - afetch
-      - name or accession
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -115,12 +213,7 @@ subcommands:
         \ options:\n   -h      : help; print version and usage info\n\n\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: ': help; print version and usage info'
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "afetch - retrieve an alignment from Pfam\nSQUID 1.9g (Oct 2002)\n\
@@ -131,8 +224,7 @@ subcommands:
       \ database>\n\n   Get an alignment from a database.\n   Available options:\n\
       \   -h      : help; print version and usage info\n\n   --index : construct indices\
       \ for the database\n\n"
-    generated_using: &id006
-    - -h
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -173,7 +265,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

@@ -1,0 +1,116 @@
+!Command
+command:
+- FeatureFinderMultiplex
+positional: []
+named:
+- !Flag
+  description: "*                              LC-MS dataset in either centroid or\
+    \ profile mode (valid formats: 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file containing the individual peptide features. (valid formats:\
+    \ 'featureXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nFeatureFinderMultiplex\
+  \ -- Determination of peak ratios in LC-MS data\nFull documentation: http://www.openms.de/documentation/TOPP_FeatureFinderMultiplex.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\nUsage:\n\
+  \  FeatureFinderMultiplex <options>\n\nOptions (mandatory options marked with '*'):\n\
+  \  -in <file>*                              LC-MS dataset in either centroid or\
+  \ profile mode (valid formats: 'mzML')\n  -out <file>                          \
+  \    Output file containing the individual peptide features. (valid formats: 'featureXML')\n\
+  \nalgorithmic parameters:\n  -algorithm:labels <text>                 Labels used\
+  \ for labelling the samples. If the sample is unlabelled (i.e. you want to detect\
+  \ only single peptide features) please leave this parameter empty. [...] specifies\
+  \ the labels for a single sample. For example\n                                \
+  \           [][Lys8,Arg10]        ... SILAC\n                                  \
+  \         [][Lys4,Arg6][Lys8,Arg10]        ... triple-SILAC\n                  \
+  \                         [Dimethyl0][Dimethyl6]        ... Dimethyl\n         \
+  \                                  [Dimethyl0][Dimethyl4][Dimethyl8]        ...\
+  \ triple Dimethyl\n                                           [ICPL0][ICPL4][ICPL6][ICPL10]\
+  \        ... ICPL (default: '[][Lys8,Arg10]')\n  -algorithm:charge <text>      \
+  \           Range of charge states in the sample, i.e. min charge : max charge.\
+  \ (default: '1:4')\n  -algorithm:rt_typical <value>            Typical retention\
+  \ time [s] over which a characteristic peptide elutes. (This is not an upper bound.\
+  \ Peptides that elute for longer will be reported.) (default: '40.0' min: '0.0')\n\
+  \  -algorithm:rt_band <value>               The algorithm searches for characteristic\
+  \ isotopic peak patterns, spectrum by spectrum. For some low-intensity peptides,\
+  \ an important peak might be missing in one spectrum but be present in one of the\
+  \ neighbouring ones. The algorithm takes a bundle of neighbouring spectra with width\
+  \ rt_band into account. For example with rt_band = 0, all characteristic isotopic\
+  \ peaks have to be present in one and the same spectrum. As rt_band increases, the\
+  \ sensitivity of the algorithm but also the likelihood of false detections increases.\
+  \ (default: '0.0' min: '0.0')\n  -algorithm:rt_min <value>                Lower\
+  \ bound for the retention time [s]. (Any peptides seen for a shorter time period\
+  \ are not reported.) (default: '2.0' min: '0.0')\n  -algorithm:mz_tolerance <value>\
+  \          M/z tolerance for search of peak patterns. (default: '6.0' min: '0.0')\n\
+  \  -algorithm:mz_unit <choice>              Unit of the 'mz_tolerance' parameter.\
+  \ (default: 'ppm' valid: 'Da', 'ppm')\n  -algorithm:intensity_cutoff <value>   \
+  \   Lower bound for the intensity of isotopic peaks. (default: '1000.0' min: '0.0')\n\
+  \  -algorithm:peptide_similarity <value>    Two peptides in a multiplet are expected\
+  \ to have the same isotopic pattern. This parameter is a lower bound on their similarity.\
+  \ (default: '0.5' min: '-1.0' max: '1.0')\n  -algorithm:averagine_similarity <value>\
+  \  The isotopic pattern of a peptide should resemble the averagine model at this\
+  \ m/z position. This parameter is a lower bound on similarity between measured isotopic\
+  \ pattern and the averagine model. (default: '0.4' min: '-1.0' max: '1.0')\n  -algorithm:missed_cleavages\
+  \ <number>     Maximum number of missed cleavages due to incomplete digestion. (Only\
+  \ relevant if enzymatic cutting site coincides with labelling site. For example,\
+  \ Arg/Lys in the case of trypsin digestion and SILAC labelling.) (default: '0' min:\
+  \ '0')\n\n                                           \nCommon TOPP options:\n  -ini\
+  \ <file>                              Use the given TOPP INI file\n  -threads <n>\
+  \                             Sets the number of threads allowed to be used by the\
+  \ TOPP tool (default: '1')\n  -write_ini <file>                        Writes the\
+  \ default configuration file\n  --help                                   Shows options\n\
+  \  --helphelp                               Shows all options (including advanced)\n\
+  \n"
+generated_using:
+- --help

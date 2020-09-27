@@ -1,0 +1,124 @@
+!Command
+command:
+- getDifferentialPeaksReplicates.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: IP
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: tagdir2
+  optional: true
+named:
+- !Flag
+  description: '[background tagdir2] ...'
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: background tagdir1
+  optional: true
+- !Flag
+  description: '[Input tagdir2] ...'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: Input tagdir1
+  optional: true
+- !Flag
+  description: '<#> (fold enrichment over bg, default: 2)'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (FDR over bg, default: 0.05)'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (genome version to use for annotation)
+  synonyms:
+  - -genome
+  args: !SimpleFlagArg
+    name: genome version
+  optional: true
+- !Flag
+  description: '| -DESeq | -edgeR (differential stats algorithm, default: DESeq2)'
+  synonyms:
+  - -DESeq2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(normalize signal across peaks, default: normalize to read totals)'
+  synonyms:
+  - -balanced
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (standardize estimated fragment length across analysis)
+  synonyms:
+  - -fragLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (report all peaks, not just differentially regulated)
+  synonyms:
+  - -all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (findPeaks style to use for finding peaks)
+  synonyms:
+  - -style
+  args: !SimpleFlagArg
+    name: factor|histone|tss
+  optional: true
+- !Flag
+  description: (use existing peaks in tag directories)
+  synonyms:
+  - -use
+  args: !SimpleFlagArg
+    name: peaks.txt|regions.txt|tss.txt
+  optional: true
+- !Flag
+  description: (use specific peak file instead of tagDir/peaks.txt or finding new
+    one)
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: peak file
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: IP tagdir1
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tUsage: getDifferentialPeaksReplicates.pl [options] -t <IP tagdir1>\
+  \ [IP tagdir2] ...\n\t                                         -b <background tagdir1>\
+  \ [background tagdir2] ...\n\t                                         -i <Input\
+  \ tagdir1> [Input tagdir2] ...\n\t\tNote: if input is provided, peaks will be called.\n\
+  \n\tOptions:\n\t\t-f <#> (fold enrichment over bg, default: 2)\n\t\t-q <#> (FDR\
+  \ over bg, default: 0.05)\n\t\t-fdr <#>, -F <#>, -L <#> (parameters for findPeaks)\n\
+  \t\t-genome <genome version> (genome version to use for annotation)\n\t\t-DESeq2\
+  \ | -DESeq | -edgeR (differential stats algorithm, default: DESeq2)\n\t\t-balanced\
+  \ (normalize signal across peaks, default: normalize to read totals)\n\t\t-fragLength\
+  \ <#> (standardize estimated fragment length across analysis)\n\t\t-all (report\
+  \ all peaks, not just differentially regulated)\n\n\tPeak finding directives:\n\t\
+  \t-style <factor|histone|tss> (findPeaks style to use for finding peaks)\n\t\t-use\
+  \ <peaks.txt|regions.txt|tss.txt> (use existing peaks in tag directories)\n\t\t\
+  -p <peak file> (use specific peak file instead of tagDir/peaks.txt or finding new\
+  \ one)\n\t\tOther options will be passed to findPeaks\n\n"
+generated_using:
+- --help

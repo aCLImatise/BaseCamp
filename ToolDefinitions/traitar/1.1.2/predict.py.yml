@@ -39,17 +39,10 @@ subcommands:
     args: !SimpleFlagArg
       name: VOTERS
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -k
-      args: !SimpleFlagArg
-        name: VOTERS
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -84,7 +77,88 @@ subcommands:
         args: !SimpleFlagArg
           name: VOTERS
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - -k
+          args: !SimpleFlagArg
+            name: VOTERS
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: 'positional arguments:'
+            position: 0
+            name: annotation_matrix
+            optional: false
+          - !Positional
+            description: archive with the phenotype predictors
+            position: 1
+            name: pt_models
+            optional: false
+          - !Positional
+            description: directory for the phenotype predictions
+            position: 2
+            name: out_dir
+            optional: false
+          - !Positional
+            description: summary file with pfams
+            position: 3
+            name: annotation_matrix
+            optional: false
+          named:
+          - !Flag
+            description: "use this number of voters for the classification\n"
+            synonyms:
+            - -k
+            - --voters
+            args: !SimpleFlagArg
+              name: VOTERS
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: predict phenotypes from hmmer Pfam annotation [-h] [-k\
+            \ VOTERS]\n                                                     pt_models\
+            \ out_dir\n                                                     annotation_matrix\n\
+            \npositional arguments:\n  pt_models             archive with the phenotype\
+            \ predictors\n  out_dir               directory for the phenotype predictions\n\
+            \  annotation_matrix     summary file with pfams\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  -k VOTERS,\
+            \ --voters VOTERS\n                        use this number of voters for\
+            \ the classification\n"
+          generated_using: &id004
+          - --help
+        usage: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: predict phenotypes from hmmer Pfam annotation [-h] [-k\
+          \ VOTERS]\n                                                     pt_models\
+          \ out_dir\n                                                     annotation_matrix\n\
+          predict phenotypes from hmmer Pfam annotation: error: too few arguments\n"
+        generated_using: &id005 []
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -104,22 +178,16 @@ subcommands:
         \  annotation_matrix     summary file with pfams\n\noptional arguments:\n\
         \  -h, --help            show this help message and exit\n  -k VOTERS, --voters\
         \ VOTERS\n                        use this number of voters for the classification\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: predict phenotypes from hmmer Pfam annotation [-h] [-k VOTERS]\n\
       \                                                     pt_models out_dir\n  \
       \                                                   annotation_matrix\npredict\
       \ phenotypes from hmmer Pfam annotation: error: too few arguments\n"
-    generated_using: &id005 []
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag: !Flag

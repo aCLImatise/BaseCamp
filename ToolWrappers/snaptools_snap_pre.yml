@@ -1,0 +1,240 @@
+!Command
+command:
+- snaptools
+- snap-pre
+positional: []
+named:
+- !Flag
+  description: 'input bam, bed or bed.gz file. (default: None)'
+  synonyms:
+  - --input-file
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: 'output snap file. (default: None)'
+  synonyms:
+  - --output-snap
+  args: !SimpleFlagArg
+    name: OUTPUT_SNAP
+  optional: true
+- !Flag
+  description: "genome identifier (i.e. hg19, mm10). This tag does not\nchange anything\
+    \ unless merge or compare multiple snap\nfiles. (default: None)"
+  synonyms:
+  - --genome-name
+  args: !SimpleFlagArg
+    name: GENOME_NAME
+  optional: true
+- !Flag
+  description: "a txt file contains corresponding genome sizes. It\nmust be in the\
+    \ following format with the first column\nthe chromsome name and the second column\
+    \ as chromsome\nlength. This tag does not change anything unless merge\nor compare\
+    \ multiple snap files. (default: None)"
+  synonyms:
+  - --genome-size
+  args: !SimpleFlagArg
+    name: GENOME_SIZE
+  optional: true
+- !Flag
+  description: "a txt file contains pre-selected cell barcodes. If\n--barcode-file\
+    \ is given, snaptools will ignore any\nbarcodes not present in the --barcode-file.\
+    \ If it is\nNone, snaptools will automatically identify barcodes\nfrom bam file.\
+    \ The first column of --barcode-file must\nbe the selected barcodes and the other\
+    \ columns could\nbe any attributes of the barcode as desired\n(`ATGCTCTACTAC attr1\
+    \ att2`). The attributes, however,\nwill not be kept in the snap file. This tag\
+    \ will be\nignored if the output snap file already exists.\n(default: None)"
+  synonyms:
+  - --barcode-file
+  args: !SimpleFlagArg
+    name: BARCODE_FILE
+  optional: true
+- !Flag
+  description: "min mappability score. Fargments with mappability\nscore less than\
+    \ --min-mapq will be filtered. (default:\n10)"
+  synonyms:
+  - --min-mapq
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+  optional: true
+- !Flag
+  description: "min number of fragments per barcode. barcodes of total\nfragments\
+    \ fewer than --min-cov will be considered when\ncreating the cell x bin count\
+    \ matrix. Note: because\nthe vast majority of barcodes contains very few reads,\n\
+    we found by setting --min-cov, one can remove barcodes\nof low coverage without\
+    \ wasting time and storage.\nPlease note that this is not selection of good\n\
+    barcodes for downstream clustering analysis, it is\nonly filterationof very low-quality\
+    \ barcodes.\n(default: 0)"
+  synonyms:
+  - --min-cov
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: "max number of barcodes to store. Barcodes are sorted\nbased on the\
+    \ coverage and only the top --max-num\nbarcodes will be stored. (default: 1000000)"
+  synonyms:
+  - --max-num
+  args: !SimpleFlagArg
+    name: MAX_NUM
+  optional: true
+- !Flag
+  description: "a boolen tag indicates whether to keep fragments\nmapped to chrM.\
+    \ If set Fasle, fragments aligned to the\nmitochondrial sequence will be filtered.\
+    \ (default:\nTrue)"
+  synonyms:
+  - --keep-chrm
+  args: !SimpleFlagArg
+    name: KEEP_CHRM
+  optional: true
+- !Flag
+  description: "a boolen tag indicates whether to keep those reads\nwhose mates are\
+    \ not mapped or missing. If False,\nunpaired reads will be filtered. If True,\
+    \ unpaired\nreads will be simply treated as a fragment. Note: for\nsingle-end\
+    \ such as scTHS-seq, --keep-single must be\nTrue. (default: True)"
+  synonyms:
+  - --keep-single
+  args: !SimpleFlagArg
+    name: KEEP_SINGLE
+  optional: true
+- !Flag
+  description: "a boolen tag indicates whether to keep secondary\nalignments. If False,\
+    \ secondary alignments will be\nfiltered. If True, a secondary alignments will\
+    \ be\ntreated as fragments just single-end. (default: False)"
+  synonyms:
+  - --keep-secondary
+  args: !SimpleFlagArg
+    name: KEEP_SECONDARY
+  optional: true
+- !Flag
+  description: "a boolen tag indicates whether to keep discordant read\npairs. (default:\
+    \ False)"
+  synonyms:
+  - --keep-discordant
+  args: !SimpleFlagArg
+    name: KEEP_DISCORDANT
+  optional: true
+- !Flag
+  description: "a directory to store temporary files. If not given,\nsnaptools will\
+    \ automatically generate a temporary\nlocation to store temporary files. (default:\
+    \ None)"
+  synonyms:
+  - --tmp-folder
+  args: !SimpleFlagArg
+    name: TMP_FOLDER
+  optional: true
+- !Flag
+  description: "a boolen tag indicates whether to overwrite the matrix\nsession if\
+    \ it already exists. (default: False)"
+  synonyms:
+  - --overwrite
+  args: !SimpleFlagArg
+    name: OVERWRITE
+  optional: true
+- !Flag
+  description: "a boolen tag indicates whether to create a master qc\nfile. This .qc\
+    \ file contains basic quality control\nmetrics at the bulk level. Quality control\
+    \ is only\nestimated by selected barcodes only. (default: True)"
+  synonyms:
+  - --qc-file
+  args: !SimpleFlagArg
+    name: QC_FILE
+  optional: true
+- !Flag
+  description: "a boolen tag indicates output the progress. (default:\nTrue)\n"
+  synonyms:
+  - --verbose
+  args: !SimpleFlagArg
+    name: VERBOSE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: snaptools snap-pre [-h] --input-file INPUT_FILE --output-snap\n\
+  \                          OUTPUT_SNAP --genome-name GENOME_NAME --genome-size\n\
+  \                          GENOME_SIZE [--barcode-file BARCODE_FILE]\n         \
+  \                 [--min-mapq MIN_MAPQ] [--min-flen MIN_FLEN]\n                \
+  \          [--max-flen MAX_FLEN] [--min-cov MIN_COV]\n                         \
+  \ [--max-num MAX_NUM] [--keep-chrm KEEP_CHRM]\n                          [--keep-single\
+  \ KEEP_SINGLE]\n                          [--keep-secondary KEEP_SECONDARY]\n  \
+  \                        [--keep-discordant KEEP_DISCORDANT]\n                 \
+  \         [--tmp-folder TMP_FOLDER] [--overwrite OVERWRITE]\n                  \
+  \        [--qc-file QC_FILE] [--verbose VERBOSE]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n\nrequired inputs:\n  --input-file\
+  \ INPUT_FILE\n                        input bam, bed or bed.gz file. (default: None)\n\
+  \  --output-snap OUTPUT_SNAP\n                        output snap file. (default:\
+  \ None)\n  --genome-name GENOME_NAME\n                        genome identifier\
+  \ (i.e. hg19, mm10). This tag does not\n                        change anything\
+  \ unless merge or compare multiple snap\n                        files. (default:\
+  \ None)\n  --genome-size GENOME_SIZE\n                        a txt file contains\
+  \ corresponding genome sizes. It\n                        must be in the following\
+  \ format with the first column\n                        the chromsome name and the\
+  \ second column as chromsome\n                        length. This tag does not\
+  \ change anything unless merge\n                        or compare multiple snap\
+  \ files. (default: None)\n\noptional inputs:\n  --barcode-file BARCODE_FILE\n  \
+  \                      a txt file contains pre-selected cell barcodes. If\n    \
+  \                    --barcode-file is given, snaptools will ignore any\n      \
+  \                  barcodes not present in the --barcode-file. If it is\n      \
+  \                  None, snaptools will automatically identify barcodes\n      \
+  \                  from bam file. The first column of --barcode-file must\n    \
+  \                    be the selected barcodes and the other columns could\n    \
+  \                    be any attributes of the barcode as desired\n             \
+  \           (`ATGCTCTACTAC attr1 att2`). The attributes, however,\n            \
+  \            will not be kept in the snap file. This tag will be\n             \
+  \           ignored if the output snap file already exists.\n                  \
+  \      (default: None)\n  --min-mapq MIN_MAPQ   min mappability score. Fargments\
+  \ with mappability\n                        score less than --min-mapq will be filtered.\
+  \ (default:\n                        10)\n  --min-flen MIN_FLEN   min fragment length.\
+  \ Fragments of length shorted than\n                        --min-flen will be filtered.\
+  \ (default: 0)\n  --max-flen MAX_FLEN   max fragment length. Fragments of length\
+  \ longer than\n                        --max-flen will be filtered. (default: 1000)\n\
+  \  --min-cov MIN_COV     min number of fragments per barcode. barcodes of total\n\
+  \                        fragments fewer than --min-cov will be considered when\n\
+  \                        creating the cell x bin count matrix. Note: because\n \
+  \                       the vast majority of barcodes contains very few reads,\n\
+  \                        we found by setting --min-cov, one can remove barcodes\n\
+  \                        of low coverage without wasting time and storage.\n   \
+  \                     Please note that this is not selection of good\n         \
+  \               barcodes for downstream clustering analysis, it is\n           \
+  \             only filterationof very low-quality barcodes.\n                  \
+  \      (default: 0)\n  --max-num MAX_NUM     max number of barcodes to store. Barcodes\
+  \ are sorted\n                        based on the coverage and only the top --max-num\n\
+  \                        barcodes will be stored. (default: 1000000)\n  --keep-chrm\
+  \ KEEP_CHRM\n                        a boolen tag indicates whether to keep fragments\n\
+  \                        mapped to chrM. If set Fasle, fragments aligned to the\n\
+  \                        mitochondrial sequence will be filtered. (default:\n  \
+  \                      True)\n  --keep-single KEEP_SINGLE\n                    \
+  \    a boolen tag indicates whether to keep those reads\n                      \
+  \  whose mates are not mapped or missing. If False,\n                        unpaired\
+  \ reads will be filtered. If True, unpaired\n                        reads will\
+  \ be simply treated as a fragment. Note: for\n                        single-end\
+  \ such as scTHS-seq, --keep-single must be\n                        True. (default:\
+  \ True)\n  --keep-secondary KEEP_SECONDARY\n                        a boolen tag\
+  \ indicates whether to keep secondary\n                        alignments. If False,\
+  \ secondary alignments will be\n                        filtered. If True, a secondary\
+  \ alignments will be\n                        treated as fragments just single-end.\
+  \ (default: False)\n  --keep-discordant KEEP_DISCORDANT\n                      \
+  \  a boolen tag indicates whether to keep discordant read\n                    \
+  \    pairs. (default: False)\n  --tmp-folder TMP_FOLDER\n                      \
+  \  a directory to store temporary files. If not given,\n                       \
+  \ snaptools will automatically generate a temporary\n                        location\
+  \ to store temporary files. (default: None)\n  --overwrite OVERWRITE\n         \
+  \               a boolen tag indicates whether to overwrite the matrix\n       \
+  \                 session if it already exists. (default: False)\n  --qc-file QC_FILE\
+  \     a boolen tag indicates whether to create a master qc\n                   \
+  \     file. This .qc file contains basic quality control\n                     \
+  \   metrics at the bulk level. Quality control is only\n                       \
+  \ estimated by selected barcodes only. (default: True)\n  --verbose VERBOSE    \
+  \ a boolen tag indicates output the progress. (default:\n                      \
+  \  True)\n"
+generated_using:
+- --help

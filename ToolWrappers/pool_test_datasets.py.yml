@@ -1,0 +1,115 @@
+!Command
+command:
+- pool_test_datasets.py
+positional: []
+named:
+- !Flag
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "pass comma-separated categories, in the order they\nappear in file\
+    \ names.   Categories are \"file_type\",\"pr\nediction_method\",\"weighting_method\"\
+    ,\"holdout_method\"\n(randomization vs. holdout),\"distance\",and \"organism\"\
+    .\nExample:  \"-f file_type,test_method,asr_method\nspecifies that files will\
+    \ be in the form:\npredict_traits--distance_exclusion--wagner.  Any\nunspecified\
+    \ values are set to \"not_specified\".\n[default: file_type,prediction_method,weighting_method\n\
+    ,holdout_method,distance,organism]"
+  synonyms:
+  - -f
+  - --field_order
+  args: !SimpleFlagArg
+    name: FIELD_ORDER
+  optional: true
+- !Flag
+  description: "pass comma-separated categories to pool results by\nthose metadata\
+    \ categories. Valid categories are:\nholdout_method,\nprediction_method,weighting_method,distance\
+    \ and\norganism. For example, pass \"distance\" to output\nresults pooled by holdout\
+    \ distance in addition to\nholdout method and prediction method  [default: False]"
+  synonyms:
+  - -p
+  - --pool_by
+  args: !SimpleFlagArg
+    name: POOL_BY
+  optional: true
+- !Flag
+  description: "the input trait table directory (files in biom format)\n[REQUIRED]"
+  synonyms:
+  - -i
+  - --trait_table_dir
+  args: !SimpleFlagArg
+    name: TRAIT_TABLE_DIR
+  optional: true
+- !Flag
+  description: "the input expected trait table directory (files in\nbiom format) [REQUIRED]"
+  synonyms:
+  - -e
+  - --exp_trait_table_dir
+  args: !SimpleFlagArg
+    name: EXP_TRAIT_TABLE_DIR
+  optional: true
+- !Flag
+  description: "the output directory [REQUIRED]\n"
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: pool_test_datasets.py [options] {-i/--trait_table_dir TRAIT_TABLE_DIR\
+  \ -e/--exp_trait_table_dir EXP_TRAIT_TABLE_DIR -o/--output_dir OUTPUT_DIR}\n\n[]\
+  \ indicates optional input (order unimportant)\n{} indicates required input (order\
+  \ unimportant)\n\nThe script finds all paired expected and observed values in a\
+  \ set of directories and generates pooled .biom files in a specified output directory\n\
+  \nExample usage: \nPrint help message and exit\n pool_test_datasets.py -h\n\nPool\
+  \ .biom files according to holdout_distance.\n pool_test_datasets.py -i obs_otu_table_dir\
+  \ -e exp_otu_table_dir -p distance -o./evaluation_results/pooled_by_distance/\n\n\
+  Options:\n  --version             show program's version number and exit\n  -h,\
+  \ --help            show this help message and exit\n  -v, --verbose         Print\
+  \ information during execution -- useful for\n                        debugging\
+  \ [default: False]\n  -f FIELD_ORDER, --field_order=FIELD_ORDER\n              \
+  \          pass comma-separated categories, in the order they\n                \
+  \        appear in file names.   Categories are \"file_type\",\"pr\n           \
+  \             ediction_method\",\"weighting_method\",\"holdout_method\"\n      \
+  \                  (randomization vs. holdout),\"distance\",and \"organism\".\n\
+  \                        Example:  \"-f file_type,test_method,asr_method\n     \
+  \                   specifies that files will be in the form:\n                \
+  \        predict_traits--distance_exclusion--wagner.  Any\n                    \
+  \    unspecified values are set to \"not_specified\".\n                        [default:\
+  \ file_type,prediction_method,weighting_method\n                        ,holdout_method,distance,organism]\n\
+  \  -p POOL_BY, --pool_by=POOL_BY\n                        pass comma-separated categories\
+  \ to pool results by\n                        those metadata categories. Valid categories\
+  \ are:\n                        holdout_method,\n                        prediction_method,weighting_method,distance\
+  \ and\n                        organism. For example, pass \"distance\" to output\n\
+  \                        results pooled by holdout distance in addition to\n   \
+  \                     holdout method and prediction method  [default: False]\n\n\
+  \  REQUIRED options:\n    The following options must be provided under all circumstances.\n\
+  \n    -i TRAIT_TABLE_DIR, --trait_table_dir=TRAIT_TABLE_DIR\n                  \
+  \      the input trait table directory (files in biom format)\n                \
+  \        [REQUIRED]\n    -e EXP_TRAIT_TABLE_DIR, --exp_trait_table_dir=EXP_TRAIT_TABLE_DIR\n\
+  \                        the input expected trait table directory (files in\n  \
+  \                      biom format) [REQUIRED]\n    -o OUTPUT_DIR, --output_dir=OUTPUT_DIR\n\
+  \                        the output directory [REQUIRED]\n"
+generated_using:
+- --help

@@ -1,0 +1,138 @@
+!Command
+command:
+- slncky
+positional:
+- !Positional
+  description: bed12 file of transcripts
+  position: 0
+  name: bedfile
+  optional: false
+- !Positional
+  description: assembly
+  position: 1
+  name: assembly
+  optional: false
+named:
+- !Flag
+  description: flag if you only want to filter lncs but don't want to
+  synonyms:
+  - --no_orth_search
+  - '-1'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: flag if you don't want lncs to be filtered before
+  synonyms:
+  - --no_filter
+  - '-2'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: flag if you don't want to compare lnc-to-ortholog
+  synonyms:
+  - --no_bg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: flag if you don't want to search for orfs
+  synonyms:
+  - --no_orf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to bedtools
+  synonyms:
+  - --bedtools
+  args: !SimpleFlagArg
+    name: BEDTOOLS
+  optional: true
+- !Flag
+  description: path to liftOver
+  synonyms:
+  - --liftover
+  args: !SimpleFlagArg
+    name: LIFTOVER
+  optional: true
+- !Flag
+  description: minMatch parameter for liftover. default=0.1
+  synonyms:
+  - --minMatch
+  args: !SimpleFlagArg
+    name: MINMATCH
+  optional: true
+- !Flag
+  description: '# of basepairs to search up- and down-stream when'
+  synonyms:
+  - --pad
+  args: !SimpleFlagArg
+    name: PAD
+  optional: true
+- !Flag
+  description: flag for if you want slncky to create a website
+  synonyms:
+  - --web
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: slncky [-h] [--config CONFIG] [--no_orth_search] [--no_filter]\n\
+  \              [--overwrite] [--threads THREADS] [--min_overlap MIN_OVERLAP]\n \
+  \             [--min_cluster MIN_CLUSTER] [--min_coding MIN_CODING]\n          \
+  \    [--no_overlap] [--no_collapse] [--no_dup] [--no_self]\n              [--no_coding]\
+  \ [--min_noncoding MIN_NONCODING] [--no_bg]\n              [--no_orf] [--bedtools\
+  \ BEDTOOLS] [--liftover LIFTOVER]\n              [--minMatch MINMATCH] [--pad PAD]\
+  \ [--lastz LASTZ]\n              [--gap_open GAP_OPEN] [--gap_extend GAP_EXTEND]\
+  \ [--web]\n              bedfile assembly out_prefix\n\nsLNCky: a lncRNA discovery\
+  \ software for lncRNA annotation and ortholog\ndiscovery.\n\npositional arguments:\n\
+  \  bedfile               bed12 file of transcripts\n  assembly              assembly\n\
+  \  out_prefix            out_prefix\n\noptional arguments:\n  -h, --help       \
+  \     show this help message and exit\n  --config CONFIG, -c CONFIG\n          \
+  \              path to assembly.config file. default uses config file\n        \
+  \                in same directory as slncky\n  --no_orth_search, -1  flag if you\
+  \ only want to filter lncs but don't want to\n                        search for\
+  \ orthologs\n  --no_filter, -2       flag if you don't want lncs to be filtered\
+  \ before\n                        searching for ortholog\n  --overwrite, -o    \
+  \   forces overwrite of out_prefix.bed\n  --threads THREADS, -n THREADS\n      \
+  \                  number of threads. default = 5\n  --min_overlap MIN_OVERLAP\n\
+  \                        remove any transcript that overlap annotated coding\n \
+  \                       gene > min_overlap%. default = 0%\n  --min_cluster MIN_CLUSTER\n\
+  \                        min size of duplication clusters to remove. default=2\n\
+  \  --min_coding MIN_CODING\n                        min exonic identity to filter\
+  \ out transcript that\n                        aligns to orthologous coding gene.\
+  \ default is set by\n                        learning coding alignment distribution\
+  \ from data\n  --no_overlap          flag if you don't want to overlap with coding\n\
+  \  --no_collapse         flag if you don't want to collapse isoforms\n  --no_dup\
+  \              flag if don't want to align to duplicates\n  --no_self          \
+  \   flag if you don't want to self-align for duplicates\n  --no_coding         \
+  \  flag if you don't want to align to orthologous coding\n  --min_noncoding MIN_NONCODING\n\
+  \                        min exonic identity to filter out transcript that\n   \
+  \                     aligns to orthologous noncoding gene. default=0\n  --no_bg\
+  \               flag if you don't want to compare lnc-to-ortholog\n            \
+  \            alignments to a background. This flag may be useful if\n          \
+  \              you want to do a 'quick-and-dirty' run of the ortholog\n        \
+  \                search.\n  --no_orf              flag if you don't want to search\
+  \ for orfs\n  --bedtools BEDTOOLS   path to bedtools\n  --liftover LIFTOVER   path\
+  \ to liftOver\n  --minMatch MINMATCH   minMatch parameter for liftover. default=0.1\n\
+  \  --pad PAD             # of basepairs to search up- and down-stream when\n   \
+  \                     lifting over lnc to ortholog\n  --lastz LASTZ         path\
+  \ to lastz\n  --gap_open GAP_OPEN\n  --gap_extend GAP_EXTEND\n  --web          \
+  \       flag for if you want slncky to create a website\n                      \
+  \  visualizing results\n"
+generated_using:
+- --help

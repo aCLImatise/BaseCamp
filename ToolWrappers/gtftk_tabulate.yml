@@ -1,0 +1,201 @@
+!Command
+command:
+- gtftk
+- tabulate
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 0
+  name: '2018-01-20'
+  optional: false
+named:
+- !Flag
+  description: 'A shortcuts for "-k transcript_id". (default: False)'
+  synonyms:
+  - -t
+  - --select-transcript-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A shortcuts for "-k gene_id". (default: False)'
+  synonyms:
+  - -g
+  - --select-gene_ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A shortcuts for "-k gene_name". (default: False)'
+  synonyms:
+  - -a
+  - --select-gene-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A shortcuts for "-k exon_ids". (default: False)'
+  synonyms:
+  - -e
+  - --select-exon-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
+  synonyms:
+  - -i
+  - --inputfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output file. (default: <stdout>)'
+  synonyms:
+  - -o
+  - --outputfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The output field separator. (default: )'
+  synonyms:
+  - -s
+  - --separator
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A comma-separated list of key names. (default: *)'
+  synonyms:
+  - -k
+  - --key
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print a non redondant list of lines. (default: False)'
+  synonyms:
+  - -u
+  - --unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't print the header line. (default: False)"
+  synonyms:
+  - -H
+  - --no-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't print lines containing '.' (unset values) (default: False)"
+  synonyms:
+  - -n
+  - --no-unset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Print line for which the key is undefined (i.e, '?', does not exists).\
+    \ (default: False)"
+  synonyms:
+  - -x
+  - --accept-undef
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "In case key is set to 'all' or '*', don't write basic attributes.\
+    \ (default: False)"
+  synonyms:
+  - -b
+  - --no-basic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set output verbosity ([0-3]). (default: 0)'
+  synonyms:
+  - -V
+  - --verbosity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not add date to output file names. (default: False)'
+  synonyms:
+  - -D
+  - --no-date
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Add 'chr' to chromosome names before printing output. (default: False)"
+  synonyms:
+  - -C
+  - --add-chr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Keep all temporary files into this folder. (default: None)'
+  synonyms:
+  - -K
+  - --tmp-dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Try to keep all temporary files even if process does not terminate
+    normally. (default: False)'
+  synonyms:
+  - -A
+  - --keep-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Stores the arguments passed to the command into a file. (default:
+    None)'
+  synonyms:
+  - -L
+  - --logger-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Store all message into a file. (default: None)'
+  synonyms:
+  - -W
+  - --write-message-to-file
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "  Usage: gtftk tabulate [-i GTF] [-o TXT] [-s SEPARATOR] [-k KEY,KEY...]\
+  \ [-u] [-H] [-n] [-x] [-b] [-t | -g | -a | -e] [-h] [-V [verbosity]] [-D] [-C] [-K\
+  \ tmp_dir] [-A] [-L logger_file] [-W write_message_to_file]\n\n  Description: \n\
+  \     *  Convert a GTF to tabulated format.\n\n  Notes:\n     *  Warning: by default\
+  \ tabulate will discard any line for which one of the selected key is not\n    \
+  \ defined. Use -x (--accept-undef) to print them.\n     *  To refer to default keys\
+  \ use: seqid,source,feature,start,end,frame,gene_id...\n     *  Note that 'all'\
+  \ or '*' are special keys that can be used to convert the whole GTF into a\n   \
+  \  tabulated file. Thanks @fafa13.\n\n  Version:  2018-01-20\n\noptional arguments:\n\
+  \ -t, --select-transcript-ids  A shortcuts for \"-k transcript_id\". (default: False)\n\
+  \ -g, --select-gene_ids        A shortcuts for \"-k gene_id\". (default: False)\n\
+  \ -a, --select-gene-names      A shortcuts for \"-k gene_name\". (default: False)\n\
+  \ -e, --select-exon-ids        A shortcuts for \"-k exon_ids\". (default: False)\n\
+  \nArguments:\n -i, --inputfile              Path to the GTF file. Default to STDIN\
+  \ (default: <stdin>)\n -o, --outputfile             Output file. (default: <stdout>)\n\
+  \ -s, --separator              The output field separator. (default: )\n -k, --key\
+  \                    A comma-separated list of key names. (default: *)\n -u, --unique\
+  \                 Print a non redondant list of lines. (default: False)\n -H, --no-header\
+  \              Don't print the header line. (default: False)\n -n, --no-unset  \
+  \             Don't print lines containing '.' (unset values) (default: False)\n\
+  \ -x, --accept-undef           Print line for which the key is undefined (i.e, '?',\
+  \ does not exists). (default: False)\n -b, --no-basic               In case key\
+  \ is set to 'all' or '*', don't write basic attributes. (default: False)\n\nCommand-wise\
+  \ optional arguments:\n -h, --help                   Show this help message and\
+  \ exit.\n -V, --verbosity              Set output verbosity ([0-3]). (default: 0)\n\
+  \ -D, --no-date                Do not add date to output file names. (default: False)\n\
+  \ -C, --add-chr                Add 'chr' to chromosome names before printing output.\
+  \ (default: False)\n -K, --tmp-dir                Keep all temporary files into\
+  \ this folder. (default: None)\n -A, --keep-all               Try to keep all temporary\
+  \ files even if process does not terminate normally. (default: False)\n -L, --logger-file\
+  \            Stores the arguments passed to the command into a file. (default: None)\n\
+  \ -W, --write-message-to-file  Store all message into a file. (default: None)\n"
+generated_using:
+- --help

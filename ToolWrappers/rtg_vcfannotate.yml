@@ -1,0 +1,170 @@
+!Command
+command:
+- rtg
+- vcfannotate
+positional: []
+named:
+- !Flag
+  description: "if set, only read VCF records that overlap the\nranges contained in\
+    \ the specified BED file"
+  synonyms:
+  - --bed-regions
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "VCF file containing variants to annotate. Use\n'-' to read from standard\
+    \ input"
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "output VCF file name. Use '-' to write to\nstandard output"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "if set, only read VCF records within the\nspecified range. The format\
+    \ is one of\n<sequence_name>, <sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
+    \ or\n<sequence_name>:<pos>~<padding>"
+  synonyms:
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: "add computed annotation to VCF records. Allowed\nvalues are [AC, AN,\
+    \ EP, GQD, IC, LAL, MEANQAD,\nNAA, PD, QA, QD, RA, SCONT, VAF, VAF1, ZY]. May\n\
+    be specified 0 or more times, or as a comma\nseparated list"
+  synonyms:
+  - -A
+  - --annotation
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "add variant IDs from BED file. May be specified\n0 or more times"
+  synonyms:
+  - --bed-ids
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "add INFO annotations from BED file. May be\nspecified 0 or more times"
+  synonyms:
+  - --bed-info
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: add or update the AN and AC INFO fields
+  synonyms:
+  - --fill-an-ac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if the BED INFO field is not already declared,\nuse this description\
+    \ in the header (Default is\nAnnotation)"
+  synonyms:
+  - --info-description
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "the INFO ID for BED INFO annotations (Default\nis ANN)"
+  synonyms:
+  - --info-id
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "relabel samples according to \"old-name\nnew-name\" pairs in specified\
+    \ file"
+  synonyms:
+  - --relabel
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "add variant IDs from VCF file. May be specified\n0 or more times"
+  synonyms:
+  - --vcf-ids
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "|FILE  file containing VCF header lines to add, or a\nliteral header\
+    \ line. May be specified 0 or more\ntimes"
+  synonyms:
+  - -a
+  - --add-header
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: do not gzip the output
+  synonyms:
+  - -Z
+  - --no-gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prevent VCF header from being written
+  synonyms:
+  - --no-header
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print help on command-line flag usage
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: rtg vcfannotate [OPTION]... -i FILE -o FILE\n\nAdds annotations\
+  \ to a VCF file, either to the VCF ID field, or as a VCF INFO\nsub-field.\n\nFile\
+  \ Input/Output\n      --bed-regions=FILE        if set, only read VCF records that\
+  \ overlap the\n                                ranges contained in the specified\
+  \ BED file\n  -i, --input=FILE              VCF file containing variants to annotate.\
+  \ Use\n                                '-' to read from standard input\n  -o, --output=FILE\
+  \             output VCF file name. Use '-' to write to\n                      \
+  \          standard output\n      --region=REGION           if set, only read VCF\
+  \ records within the\n                                specified range. The format\
+  \ is one of\n                                <sequence_name>, <sequence_name>:<start>-<end>,\n\
+  \                                <sequence_name>:<pos>+<length> or\n           \
+  \                     <sequence_name>:<pos>~<padding>\n\nReporting\n  -A, --annotation=STRING\
+  \       add computed annotation to VCF records. Allowed\n                      \
+  \          values are [AC, AN, EP, GQD, IC, LAL, MEANQAD,\n                    \
+  \            NAA, PD, QA, QD, RA, SCONT, VAF, VAF1, ZY]. May\n                 \
+  \               be specified 0 or more times, or as a comma\n                  \
+  \              separated list\n      --bed-ids=FILE            add variant IDs from\
+  \ BED file. May be specified\n                                0 or more times\n\
+  \      --bed-info=FILE           add INFO annotations from BED file. May be\n  \
+  \                              specified 0 or more times\n      --fill-an-ac   \
+  \           add or update the AN and AC INFO fields\n      --info-description=STRING\
+  \ if the BED INFO field is not already declared,\n                             \
+  \   use this description in the header (Default is\n                           \
+  \     Annotation)\n      --info-id=STRING          the INFO ID for BED INFO annotations\
+  \ (Default\n                                is ANN)\n      --relabel=FILE      \
+  \      relabel samples according to \"old-name\n                               \
+  \ new-name\" pairs in specified file\n      --vcf-ids=FILE            add variant\
+  \ IDs from VCF file. May be specified\n                                0 or more\
+  \ times\n\nUtility\n  -a, --add-header=STRING|FILE  file containing VCF header lines\
+  \ to add, or a\n                                literal header line. May be specified\
+  \ 0 or more\n                                times\n  -h, --help               \
+  \     print help on command-line flag usage\n  -Z, --no-gzip                 do\
+  \ not gzip the output\n      --no-header               prevent VCF header from being\
+  \ written\n\n"
+generated_using:
+- --help

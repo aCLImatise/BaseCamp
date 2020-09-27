@@ -26,7 +26,7 @@ subcommands:
     name: logger
     optional: true
   named: []
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
     named: []
@@ -51,7 +51,63 @@ subcommands:
         name: logger
         optional: true
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: fc_run
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: config
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: logger
+            optional: true
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "falcon-kit 1.8.1 (pip thinks \"falcon-kit 1.8.1\")\npypeflow\
+            \ 2.3.0\nusage: fc_run [-h] config [logger]\nfc_run: error: unrecognized\
+            \ arguments: --usage\n"
+          generated_using: &id004
+          - --usage
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: fc_run [-h] config [logger]\n\npositional arguments:\n\
+          \  config      .cfg/.ini/.json\n  logger      (Optional)JSON config for\
+          \ standard Python logging module\n\noptional arguments:\n  -h, --help  show\
+          \ this help message and exit\n"
+        generated_using: &id005
+        - --help
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -65,24 +121,16 @@ subcommands:
       help_text: "falcon-kit 1.8.1 (pip thinks \"falcon-kit 1.8.1\")\npypeflow 2.3.0\n\
         usage: fc_run [-h] config [logger]\nfc_run: error: unrecognized arguments:\
         \ --usage\n"
-      generated_using: &id004
-      - --usage
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: fc_run [-h] config [logger]\n\npositional arguments:\n  config\
       \      .cfg/.ini/.json\n  logger      (Optional)JSON config for standard Python\
       \ logging module\n\noptional arguments:\n  -h, --help  show this help message\
       \ and exit\n"
-    generated_using: &id005
-    - --help
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag: !Flag

@@ -1,0 +1,142 @@
+!Command
+command:
+- vSNP_step2.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: PROG
+  optional: false
+named:
+- !Flag
+  description: provide a valid reference, see -t output
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: see valid reference types available
+  synonyms:
+  - -t
+  - --table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create table with all isolates
+  synonyms:
+  - -a
+  - --all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "create trees with a subset of sample that represent\nthe whole"
+  synonyms:
+  - -s
+  - --subset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: turn off map.pooling of samples
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run without applying filters
+  synonyms:
+  - -n
+  - --no_filters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write possible positions to filter to text file
+  synonyms:
+  - -f
+  - --filter_finder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Optional: path to VCF files'
+  synonyms:
+  - -w
+  - --cwd
+  args: !SimpleFlagArg
+    name: WORKING_DIRECTORY
+  optional: true
+- !Flag
+  description: 'Optional: provide full path to gbk file'
+  synonyms:
+  - -g
+  - --gbk
+  args: !SimpleFlagArg
+    name: GBK
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: PROG [-h] [-r REFERENCE] [-t] [-a] [-s] [-d] [-n] [-f]\n      \
+  \      [-w WORKING_DIRECTORY] [-g GBK] [-v]\n\n---------------------------------------------------------\n\
+  Current working directory used by default, but can specify working directory with\
+  \ -w.\nDirectory must contain VCF files with file extension \".vcf\"\n\nUsage: \n\
+  \    # See available reference options:\n    vSNP_step2.py -t\n\n    # Run with\
+  \ a specific reference option:\n    vSNP_step2.py -r Brucella_suis1\n\n    # Find\
+  \ reference from VCF chrom column:\n    vSNP_step2.py\n\n    # If VCF chrom does\
+  \ not cross-reference with reference an all_vcf is made:\n    vSNP_step2.py\n\n\
+  \    # An all VCF table can also be created along with using a reference option:\n\
+  \    vSNP_step2.py -ar Brucella_suis1\n\nDependencies:\n- Reference options are\
+  \ grouped and accessed via named directories.  New directories are added using,\
+  \ $ path_adder.py.  In vSNP's installed package dependency paths are stored in,\
+  \ \"dependency_paths.txt\".  Directory/reference options are shown using -t option.\n\
+  \    Seven files can be included:\n        Excel: (see template_define_filter.xlsx)\
+  \ with defining SNPs and filter positions.   <Required for grouping>\n        Excel:\
+  \ metadata.xlsx  3 column file: VCF file name, updated file name, representative\
+  \ (optional boolean).  File name must contain \"meta\" somewhere in its name.  <Optional>\n\
+  \        Excel: remove_from_analysis.xlsx 1 column file: removes files based on\
+  \ name minus .vcf extension.  File name must contain \"remove\" somewhere in its\
+  \ name.  <Optional>\n        FASTA (.fasta): used by vSNP_step1.py as reference.\
+  \  <Required, unless explicitely given with -r option.  See senario 1>\n       \
+  \ GBK (.gbk): used to annotate VCF files and tables.  <Optional>\n        GFF (.gff):\
+  \ used by IGV to show annotation.  <Optional>\n        IGV file: .genome IGV file\
+  \ mapping FASTA and GFF.  <Optional>\n\n    - \"template.xlsx\" is availabe in \"\
+  dependencies\" directory.\n      Definition: absolute position - combination of\
+  \ reference and position.  This is the combination of VCF CHROM and POS, CHROM:POS.\
+  \ \n      There are 3 aspects to Excel file:\n        1) top row: absolute position\
+  \ to define a group\n        2) second row: group name.  First column must contain\
+  \ \"-All\" in the name, other naming restrictions: no special characters or spaces.\
+  \  Dashes and underscores are allowed in group name.\n        3) third row and below:\
+  \ positions to filter from table and trees.\n            Must be in CHROM:POS format\n\
+  \            POS numbers are allowed to have commas: both 1000 and 1,000 are accepted\n\
+  \            POS number ranges can be be used.  Note: CHROM:POS number range conforms\
+  \ to IGV\n\n- vSNP comes installed with Mycobacterium_AF2122.  For additional reference\
+  \ options see: https://github.com/USDA-VS/vSNP_dependencies.git\n\n---------------------------------------------------------\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -r REFERENCE, --reference REFERENCE\n                        provide a valid\
+  \ reference, see -t output\n  -t, --table           see valid reference types available\n\
+  \  -a, --all             create table with all isolates\n  -s, --subset        \
+  \  create trees with a subset of sample that represent\n                       \
+  \ the whole\n  -d, --debug           turn off map.pooling of samples\n  -n, --no_filters\
+  \      run without applying filters\n  -f, --filter_finder   write possible positions\
+  \ to filter to text file\n  -w WORKING_DIRECTORY, --cwd WORKING_DIRECTORY\n    \
+  \                    Optional: path to VCF files\n  -g GBK, --gbk GBK     Optional:\
+  \ provide full path to gbk file\n  -v, --version         show program's version\
+  \ number and exit\n\n---------------------------------------------------------\n"
+generated_using:
+- --help

@@ -1,0 +1,68 @@
+!Command
+command:
+- sga
+- kmer-count
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: src.
+  optional: false
+named:
+- !Flag
+  description: 'The length of the kmer to use. (default: 27)'
+  synonyms:
+  - -k
+  - --kmer-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "use occurrence array sample rate of N in the FM-index. Higher values\
+    \ use significantly\nless memory at the cost of higher runtime. This value must\
+    \ be a power of 2 (default: 128)"
+  synonyms:
+  - -d
+  - --sample-rate
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Cache Length for bwt lookups (default: 10)'
+  synonyms:
+  - -c
+  - --cache-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: display program version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: sga kmer-count [OPTION] src.{bwt,fa,fq} [test1.bwt] [test2.bwt]\n\
+  Generate a table of the k-mers in src.{bwt,fa,fq}, and optionally count the number\
+  \ of time they appears in testX.bwt.\nOutput on stdout the canonical kmers and their\
+  \ counts on forward and reverse strand if input is .bwt\nIf src is a sequence file\
+  \ output forward and reverse counts for each kmer in the file\n\n      --help  \
+  \                         display this help and exit\n      --version          \
+  \              display program version\n      -k, --kmer-size=N                The\
+  \ length of the kmer to use. (default: 27)\n      -d, --sample-rate=N          \
+  \    use occurrence array sample rate of N in the FM-index. Higher values use significantly\n\
+  \                                       less memory at the cost of higher runtime.\
+  \ This value must be a power of 2 (default: 128)\n      -c, --cache-length=N   \
+  \          Cache Length for bwt lookups (default: 10)\n\nReport bugs to js18@sanger.ac.uk\n\
+  \n"
+generated_using:
+- --help

@@ -16,84 +16,10 @@ subcommands:
     name: confidence_recal
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: File to save the Kraken 2 report in.
-      synonyms:
-      - --output_report
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: File to save the Kraken 2 read classifications in.
-      synonyms:
-      - --output_classifications
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: "Specify if you want to output unclassified reads in\naddition\
-        \ to classified reads. NOTE(!): This script\nwill always discard reads that\
-        \ are unclassified in the\nclassifications input file, this flag will just\
-        \ make\nsure to keep previously classified reads even if they\nare reclassified\
-        \ as unclassified by this script.\nTIP(!): Always run Kraken2 with no confidence\
-        \ cutoff."
-      synonyms:
-      - --keep_unclassified
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "File to send verbose output to. This file will\ncontain, for each\
-        \ read, (1) original classification,\n(2) new classification, (3) original\
-        \ confidence, (4),\nnew confidence (5), original taxa name (6), new taxa\n\
-        name, (7) original rank, (8) new rank, (9) distance\ntravelled (how many nodes\
-        \ was it lifted upwards in the\ntaxonomy)."
-      synonyms:
-      - --output_verbose
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: taxonomy names dump file (names.dmp)
-      synonyms:
-      - --names
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: "Path to a pickle file containing a taxonomy tree\ncreated through\
-        \ the TaxonomyTree.save_taxonomy\nfunction (taxonomy.py)."
-      synonyms:
-      - --taxonomy_file
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: taxonomy nodes dump file (nodes.dmp)
-      synonyms:
-      - --nodes
-      args: !SimpleFlagArg
-        name: FILE
-      optional: true
-    - !Flag
-      description: "The minimum number of hit groups a read needs to be\nclassified.\
-        \ NOTE: You need to supply a classifications\nfile (kraken2 output) that contain\
-        \ the\n\"minimizer_hit_groups\" column."
-      synonyms:
-      - --minimum_hit_groups
-      args: !SimpleFlagArg
-        name: INT
-      optional: true
-    - !Flag
-      description: "Set this flag to output <output_classifications> and\n<output_verbose>\
-        \ in gzipped format (will add .gz\nextension to the filenames).\n"
-      synonyms:
-      - --gz_output
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -105,7 +31,180 @@ subcommands:
         name: confidence_recal
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: File to save the Kraken 2 report in.
+          synonyms:
+          - --output_report
+          args: !SimpleFlagArg
+            name: FILE
+          optional: true
+        - !Flag
+          description: File to save the Kraken 2 read classifications in.
+          synonyms:
+          - --output_classifications
+          args: !SimpleFlagArg
+            name: FILE
+          optional: true
+        - !Flag
+          description: "Specify if you want to output unclassified reads in\naddition\
+            \ to classified reads. NOTE(!): This script\nwill always discard reads\
+            \ that are unclassified in the\nclassifications input file, this flag\
+            \ will just make\nsure to keep previously classified reads even if they\n\
+            are reclassified as unclassified by this script.\nTIP(!): Always run Kraken2\
+            \ with no confidence cutoff."
+          synonyms:
+          - --keep_unclassified
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "File to send verbose output to. This file will\ncontain, for\
+            \ each read, (1) original classification,\n(2) new classification, (3)\
+            \ original confidence, (4),\nnew confidence (5), original taxa name (6),\
+            \ new taxa\nname, (7) original rank, (8) new rank, (9) distance\ntravelled\
+            \ (how many nodes was it lifted upwards in the\ntaxonomy)."
+          synonyms:
+          - --output_verbose
+          args: !SimpleFlagArg
+            name: FILE
+          optional: true
+        - !Flag
+          description: taxonomy names dump file (names.dmp)
+          synonyms:
+          - --names
+          args: !SimpleFlagArg
+            name: FILE
+          optional: true
+        - !Flag
+          description: "Path to a pickle file containing a taxonomy tree\ncreated\
+            \ through the TaxonomyTree.save_taxonomy\nfunction (taxonomy.py)."
+          synonyms:
+          - --taxonomy_file
+          args: !SimpleFlagArg
+            name: FILE
+          optional: true
+        - !Flag
+          description: taxonomy nodes dump file (nodes.dmp)
+          synonyms:
+          - --nodes
+          args: !SimpleFlagArg
+            name: FILE
+          optional: true
+        - !Flag
+          description: "The minimum number of hit groups a read needs to be\nclassified.\
+            \ NOTE: You need to supply a classifications\nfile (kraken2 output) that\
+            \ contain the\n\"minimizer_hit_groups\" column."
+          synonyms:
+          - --minimum_hit_groups
+          args: !SimpleFlagArg
+            name: INT
+          optional: true
+        - !Flag
+          description: "Set this flag to output <output_classifications> and\n<output_verbose>\
+            \ in gzipped format (will add .gz\nextension to the filenames).\n"
+          synonyms:
+          - --gz_output
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: confidence_recal
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: confidence_recal [--names <FILE> --nodes <FILE> | --taxonomy_file\
+            \ <FILE>] [--output_report <FILE>] [--output_classifications <FILE>] [--output_verbose\
+            \ <FILE>] [--keep_unclassified] [--minimum_hit_groups INT] [--gz_output]\
+            \ [--help] confidence classifications\nConfidence score reclassification:\
+            \ error: argument confidence: invalid float value: 'confidence'\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - stringmeup
+          - classifications
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: confidence_recal
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: confidence_recal [--names <FILE> --nodes <FILE> | --taxonomy_file\
+            \ <FILE>] [--output_report <FILE>] [--output_classifications <FILE>] [--output_verbose\
+            \ <FILE>] [--keep_unclassified] [--minimum_hit_groups INT] [--gz_output]\
+            \ [--help] confidence classifications\nConfidence score reclassification:\
+            \ error: argument confidence: invalid float value: 'classifications'\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: confidence_recal [--names <FILE> --nodes <FILE> | --taxonomy_file\
+          \ <FILE>] [--output_report <FILE>] [--output_classifications <FILE>] [--output_verbose\
+          \ <FILE>] [--keep_unclassified] [--minimum_hit_groups INT] [--gz_output]\
+          \ [--help] confidence classifications\n\nReclassification of reads (Kraken\
+          \ 2) by confidence score.\n\npositional arguments:\n  confidence       \
+          \     The confidence score threshold to be used in\n                   \
+          \     reclassification [0-1].\n  classifications       Path to the Kraken\
+          \ 2 output file containing the\n                        individual read\
+          \ classifications.\n\noptional arguments:\n  -h, --help            show\
+          \ this help message and exit\n  --output_report FILE  File to save the Kraken\
+          \ 2 report in.\n  --output_classifications FILE\n                      \
+          \  File to save the Kraken 2 read classifications in.\n  --keep_unclassified\
+          \   Specify if you want to output unclassified reads in\n              \
+          \          addition to classified reads. NOTE(!): This script\n        \
+          \                will always discard reads that are unclassified in the\n\
+          \                        classifications input file, this flag will just\
+          \ make\n                        sure to keep previously classified reads\
+          \ even if they\n                        are reclassified as unclassified\
+          \ by this script.\n                        TIP(!): Always run Kraken2 with\
+          \ no confidence cutoff.\n  --output_verbose FILE\n                     \
+          \   File to send verbose output to. This file will\n                   \
+          \     contain, for each read, (1) original classification,\n           \
+          \             (2) new classification, (3) original confidence, (4),\n  \
+          \                      new confidence (5), original taxa name (6), new taxa\n\
+          \                        name, (7) original rank, (8) new rank, (9) distance\n\
+          \                        travelled (how many nodes was it lifted upwards\
+          \ in the\n                        taxonomy).\n  --names FILE          taxonomy\
+          \ names dump file (names.dmp)\n  --taxonomy_file FILE  Path to a pickle\
+          \ file containing a taxonomy tree\n                        created through\
+          \ the TaxonomyTree.save_taxonomy\n                        function (taxonomy.py).\n\
+          \  --nodes FILE          taxonomy nodes dump file (nodes.dmp)\n  --minimum_hit_groups\
+          \ INT\n                        The minimum number of hit groups a read needs\
+          \ to be\n                        classified. NOTE: You need to supply a\
+          \ classifications\n                        file (kraken2 output) that contain\
+          \ the\n                        \"minimizer_hit_groups\" column.\n  --gz_output\
+          \           Set this flag to output <output_classifications> and\n     \
+          \                   <output_verbose> in gzipped format (will add .gz\n \
+          \                       extension to the filenames).\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag:
@@ -116,12 +215,9 @@ subcommands:
         \ <FILE>] [--keep_unclassified] [--minimum_hit_groups INT] [--gz_output] [--help]\
         \ confidence classifications\nConfidence score reclassification: error: argument\
         \ confidence: invalid float value: 'confidence'\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - stringmeup
-      - classifications
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -142,13 +238,7 @@ subcommands:
         \ confidence: invalid float value: 'classifications'\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: confidence_recal [--names <FILE> --nodes <FILE> | --taxonomy_file\
@@ -208,7 +298,7 @@ subcommands:
     name: confidence_recal
     optional: false
   named: []
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag:

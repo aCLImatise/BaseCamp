@@ -1,0 +1,99 @@
+!Command
+command:
+- svtk
+- bedcluster
+positional:
+- !Positional
+  description: "SV calls to cluster. Columns: #chr, start, end, name,\nsample, svtype"
+  position: 0
+  name: bed
+  optional: false
+- !Positional
+  description: Clustered bed.
+  position: 1
+  name: fout
+  optional: false
+named:
+- !Flag
+  description: "Minimum reciprocal overlap fraction to link variants.\n[0.8]"
+  synonyms:
+  - -f
+  - --frac
+  args: !SimpleFlagArg
+    name: FRAC
+  optional: true
+- !Flag
+  description: "Region to cluster (chrom:start-end). Requires tabixed\nbed."
+  synonyms:
+  - -r
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: Cluster ID prefix
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "Report median of start and end positions in each\ncluster as final\
+    \ coordinates of cluster."
+  synonyms:
+  - -m
+  - --merge-coordinates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Temporary directory [/tmp]
+  synonyms:
+  - -T
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+- !Flag
+  description: "Pre-computed self-intersection of bed.\n"
+  synonyms:
+  - -s
+  - --intersection
+  args: !SimpleFlagArg
+    name: INTERSECTION
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: svtk bedcluster [-h] [-f FRAC] [-r REGION] [-p PREFIX] [-m] [-T\
+  \ TMPDIR]\n                       [-s INTERSECTION]\n                       bed\
+  \ [fout]\n\nCluster a bed of structural variants based on reciprocal overlap.\n\n\
+  Variants are clustered with the single-linkage algorithm, using a minimum\nreciprocal\
+  \ overlap to determine whether two variants are linked. If multiple\nvariants from\
+  \ the same sample are clustered together, they are merged into a\nsingle spanning\
+  \ variant. Cluster compactness, calculated as the\nroot-mean-square standard deviation,\
+  \ is reported for each cluster. Optionally,\nthe median coordinates for each cluster\
+  \ are reported rather than the original\nindividual coordinates.\n\npositional arguments:\n\
+  \  bed                   SV calls to cluster. Columns: #chr, start, end, name,\n\
+  \                        sample, svtype\n  fout                  Clustered bed.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -f FRAC, --frac FRAC  Minimum reciprocal overlap fraction to link variants.\n\
+  \                        [0.8]\n  -r REGION, --region REGION\n                 \
+  \       Region to cluster (chrom:start-end). Requires tabixed\n                \
+  \        bed.\n  -p PREFIX, --prefix PREFIX\n                        Cluster ID\
+  \ prefix\n  -m, --merge-coordinates\n                        Report median of start\
+  \ and end positions in each\n                        cluster as final coordinates\
+  \ of cluster.\n  -T TMPDIR, --tmpdir TMPDIR\n                        Temporary directory\
+  \ [/tmp]\n  -s INTERSECTION, --intersection INTERSECTION\n                     \
+  \   Pre-computed self-intersection of bed.\n"
+generated_using:
+- --help

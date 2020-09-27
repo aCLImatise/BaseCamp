@@ -1,0 +1,208 @@
+!Command
+command:
+- analyze_primers.py
+positional: []
+named:
+- !Flag
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to input primers file.  This file is tab\ndelineated, with the\
+    \ first column being the primer\nname, which must end with an 'f' or a 'r'.  The\
+    \ second\ncolumn contains the primer sequence in 5' to  3'\nformat. One must supply\
+    \ either a primer file or a\nprimer name  (-p parameter) and primer sequence (-s\n\
+    parameter). [default: none]"
+  synonyms:
+  - -P
+  - --primers_filepath
+  args: !SimpleFlagArg
+    name: PRIMERS_FILEPATH
+  optional: true
+- !Flag
+  description: "Specify a single primer to analyze.  One can either\nspecify a single\
+    \ primer that is listed in a primers\nfile (-P parameter) or  specify a sequence\
+    \ with the -s\nparameter.  Primer name must end with a \"f\" or \"r\" to\ndesignate\
+    \ orientation. [default: none]"
+  synonyms:
+  - -p
+  - --primer_name
+  args: !SimpleFlagArg
+    name: PRIMER_NAME
+  optional: true
+- !Flag
+  description: "Primer sequence if using the -p option.  Must be\nspecified if not\
+    \ passing a primers file with the -P\noption.  If both -P and -p parameters are\
+    \ passed, the\nsequence given with this option will be taken rather\nthan sequences\
+    \ in the -P primers file. [default: none]"
+  synonyms:
+  - -s
+  - --primer_sequence
+  args: !SimpleFlagArg
+    name: PRIMER_SEQUENCE
+  optional: true
+- !Flag
+  description: "Specify output directory for hits files and primer\nsummary graphs.\
+    \ [default: .]"
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "Length of primer considered to be part of the 3'\nregion for the purpose\
+    \ of giving a weighted score for\nmismatches and/or gaps. [default: 5]"
+  synonyms:
+  - -e
+  - --three_prime_len
+  args: !SimpleFlagArg
+    name: THREE_PRIME_LEN
+  optional: true
+- !Flag
+  description: "Sets penalty for mismatch in final base of 3' end of\nthe primer.\
+    \ [default: 3]"
+  synonyms:
+  - -l
+  - --last_base_mismatch
+  args: !SimpleFlagArg
+    name: LAST_BASE_MISMATCH
+  optional: true
+- !Flag
+  description: "Penalty for all 3' mismatches except final\nbase.[default: 1]"
+  synonyms:
+  - -t
+  - --three_prime_mismatch
+  args: !SimpleFlagArg
+    name: THREE_PRIME_MISMATCH
+  optional: true
+- !Flag
+  description: "Penalty for all non-3' mismatches. [default: 0.4]"
+  synonyms:
+  - -T
+  - --non_three_prime_mismatch
+  args: !SimpleFlagArg
+    name: NON_THREE_PRIME_MISMATCH
+  optional: true
+- !Flag
+  description: "Penalty for gaps in the 3' region of the primer.\n[default: 3]"
+  synonyms:
+  - -g
+  - --three_prime_gap
+  args: !SimpleFlagArg
+    name: THREE_PRIME_GAP
+  optional: true
+- !Flag
+  description: "Penalty for non 3' gaps. [default: 1]"
+  synonyms:
+  - -G
+  - --non_three_prime_gap
+  args: !SimpleFlagArg
+    name: NON_THREE_PRIME_GAP
+  optional: true
+- !Flag
+  description: "Target fasta file(s) to score input primer(s) against.\nSeparate multiple\
+    \ files with a colon. [REQUIRED]\n"
+  synonyms:
+  - -f
+  - --fasta_seqs
+  args: !SimpleFlagArg
+    name: FASTA_SEQS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: analyze_primers.py [options] {-f/--fasta_seqs FASTA_SEQS}\n\n[]\
+  \ indicates optional input (order unimportant)\n{} indicates required input (order\
+  \ unimportant)\n\n\n\nThis module performs a local alignment for the input primer(s)\
+  \ against target \nsequences, and then determines a weighted score based upon the\
+  \ number of \nmismatches and gaps.  A summary graph showing mismatches and weighted\
+  \ scores is \ngenerated for all input fasta files, as is a hits file containing\
+  \ details about \nthe primer mismatches, index in the sequence, and other details\
+  \ about primer \nbinding.\n\nThis module takes an input primer file and one or more\
+  \ fasta files.  Each\nprimer is tested against every sequence to find the best local\
+  \ alignment.\nMismatches and gaps are calculated for the primer, along with a weighting\
+  \ score \nwhich gives larger penalties to gaps and mismatches in the 3' end of the\
+  \ primer.\n\nAn output hits file is generated for each primer, recording information\
+  \ about\nthe primer hit site, mismatches, and overall weighted score (a perfect\
+  \ score\nstarts at zero and increases as penalties are added).  A graph is\nalso\
+  \ generated, showing mismatches/gaps and overall score information for the \nprimer\
+  \ and the target sequences.\n\nThe primers input file should be generated with the\
+  \ following format:\nComments are preceeded by a pound \"#\" symbol.\nThe primer\
+  \ data are tab delineated with the primer name first, such as\n\"349_v2r\", the\
+  \ actual nucleotide sequence next, listed in a 5' to 3' sequence, \n(example: \"\
+  AATCGRACGNTYA\"), and finally a comment \nor citation, if any, can be listed.  Forward\
+  \ primers should be followed by a \n\"f\" while reverse primers are followed by\
+  \ \"r\".\nA complete example line is listed below.\n\n815_v34f\tGTGGCCNATRRCYAGAACGC\t\
+  Darrow,Scopes,Bryan et al. 1926\n\nThe input sequences should be in fasta format.\
+  \  If more than one file is \nsupplied, they should be separated by a colon.  Each\
+  \ fasta file passed will\nhave its sequence coverage displayed in separate output\
+  \ graphics and hits\nfiles.\n\n\nExample usage: \nPrint help message and exit\n\
+  \ analyze_primers.py -h\n\nExample: Standard Example\n analyze_primers.py [options]\
+  \ {-P input_primers_filepath [required] -f input_fasta_filepath [required]}\n\n\
+  Manually specify a primer name and sequence: Note - primer name must end with 'f'\
+  \ or 'r'\n analyze_primers.py -p \"primer_name_f\" -s \"ACCTGACRGGTAATC\" -f input_fasta_filepath\n\
+  \nUse multiple target files, change scoring parameters: Pass a primers file, two\
+  \ target fasta files, change the size of the 3' region from the default 5 bases\
+  \ to 7 bases, and lower the 3' mismatch penalty from the default 1.0 to 0.6\n analyze_primers.py\
+  \ -P primers.txt -f bacterial_seqs.fasta:eukaryotic_seqs.fasta -e 7 -t 0.6\n\nOptions:\n\
+  \  --version             show program's version number and exit\n  -h, --help  \
+  \          show this help message and exit\n  -v, --verbose         Print information\
+  \ during execution -- useful for\n                        debugging [default: False]\n\
+  \  -P PRIMERS_FILEPATH, --primers_filepath=PRIMERS_FILEPATH\n                  \
+  \      Path to input primers file.  This file is tab\n                        delineated,\
+  \ with the first column being the primer\n                        name, which must\
+  \ end with an 'f' or a 'r'.  The second\n                        column contains\
+  \ the primer sequence in 5' to  3'\n                        format. One must supply\
+  \ either a primer file or a\n                        primer name  (-p parameter)\
+  \ and primer sequence (-s\n                        parameter). [default: none]\n\
+  \  -p PRIMER_NAME, --primer_name=PRIMER_NAME\n                        Specify a\
+  \ single primer to analyze.  One can either\n                        specify a single\
+  \ primer that is listed in a primers\n                        file (-P parameter)\
+  \ or  specify a sequence with the -s\n                        parameter.  Primer\
+  \ name must end with a \"f\" or \"r\" to\n                        designate orientation.\
+  \ [default: none]\n  -s PRIMER_SEQUENCE, --primer_sequence=PRIMER_SEQUENCE\n   \
+  \                     Primer sequence if using the -p option.  Must be\n       \
+  \                 specified if not passing a primers file with the -P\n        \
+  \                option.  If both -P and -p parameters are passed, the\n       \
+  \                 sequence given with this option will be taken rather\n       \
+  \                 than sequences in the -P primers file. [default: none]\n  -o OUTPUT_DIR,\
+  \ --output_dir=OUTPUT_DIR\n                        Specify output directory for\
+  \ hits files and primer\n                        summary graphs. [default: .]\n\
+  \  -e THREE_PRIME_LEN, --three_prime_len=THREE_PRIME_LEN\n                     \
+  \   Length of primer considered to be part of the 3'\n                        region\
+  \ for the purpose of giving a weighted score for\n                        mismatches\
+  \ and/or gaps. [default: 5]\n  -l LAST_BASE_MISMATCH, --last_base_mismatch=LAST_BASE_MISMATCH\n\
+  \                        Sets penalty for mismatch in final base of 3' end of\n\
+  \                        the primer. [default: 3]\n  -t THREE_PRIME_MISMATCH, --three_prime_mismatch=THREE_PRIME_MISMATCH\n\
+  \                        Penalty for all 3' mismatches except final\n          \
+  \              base.[default: 1]\n  -T NON_THREE_PRIME_MISMATCH, --non_three_prime_mismatch=NON_THREE_PRIME_MISMATCH\n\
+  \                        Penalty for all non-3' mismatches. [default: 0.4]\n  -g\
+  \ THREE_PRIME_GAP, --three_prime_gap=THREE_PRIME_GAP\n                        Penalty\
+  \ for gaps in the 3' region of the primer.\n                        [default: 3]\n\
+  \  -G NON_THREE_PRIME_GAP, --non_three_prime_gap=NON_THREE_PRIME_GAP\n         \
+  \               Penalty for non 3' gaps. [default: 1]\n\n  REQUIRED options:\n \
+  \   The following options must be provided under all circumstances.\n\n    -f FASTA_SEQS,\
+  \ --fasta_seqs=FASTA_SEQS\n                        Target fasta file(s) to score\
+  \ input primer(s) against.\n                        Separate multiple files with\
+  \ a colon. [REQUIRED]\n"
+generated_using:
+- --help

@@ -16,7 +16,7 @@ subcommands:
     name: program.
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
     named: []
@@ -31,7 +31,47 @@ subcommands:
         name: program.
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: 'usage: /usr/local/bin/maf_print_chroms.py refindex [options]'
+            position: 0
+            name: program.
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "\nRead a maf from stdin and print the chromosome number for\
+            \ each alignment. It\nsearches for 'chr' in each alignment block src,\
+            \ and may not be robust if other\nsrc formats are used.\n\nNOTE: See 'align_print_template.py'\
+            \ for a more general variation of this\n      program.\n\nusage: /usr/local/bin/maf_print_chroms.py\
+            \ refindex [options]\n\n"
+          generated_using: &id004 []
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage: maf_print_chroms.py refindex [options]\n\nOptions:\n  -h,\
+          \ --help  show this help message and exit\n"
+        generated_using: &id005
+        - --help
       subcommands: []
       usage: []
       help_flag:
@@ -42,21 +82,14 @@ subcommands:
         \ be robust if other\nsrc formats are used.\n\nNOTE: See 'align_print_template.py'\
         \ for a more general variation of this\n      program.\n\nusage: /usr/local/bin/maf_print_chroms.py\
         \ refindex [options]\n\n"
-      generated_using: &id004 []
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage: maf_print_chroms.py refindex [options]\n\nOptions:\n  -h, --help\
       \  show this help message and exit\n"
-    generated_using: &id005
-    - --help
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag:

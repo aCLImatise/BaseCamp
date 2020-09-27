@@ -1,0 +1,109 @@
+!Command
+command:
+- flye-samtools
+- depth
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: samtools
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: depth
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: in1.bam
+  optional: false
+named:
+- !Flag
+  description: list of positions or regions
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: bed
+  optional: true
+- !Flag
+  description: list of input BAM filenames, one per line [null]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: read length threshold (ignore reads shorter than <int>) [0]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "maximum coverage depth [8000]. If 0, depth is set to the maximum\n\
+    integer value, effectively removing any depth limit."
+  synonyms:
+  - -d/-m
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: base quality threshold [0]
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: mapping quality threshold [0]
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: <chr:from-to>    region
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  synonyms:
+  - --input-fmt-option
+  args: !SimpleFlagArg
+    name: OPT
+  optional: true
+- !Flag
+  description: Reference sequence FASTA FILE [null]
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "depth: unrecognized option '--help'\n\nUsage: samtools depth [options]\
+  \ in1.bam [in2.bam [...]]\nOptions:\n   -a                  output all positions\
+  \ (including zero depth)\n   -a -a (or -aa)      output absolutely all positions,\
+  \ including unused ref. sequences\n   -b <bed>            list of positions or regions\n\
+  \   -f <list>           list of input BAM filenames, one per line [null]\n   -l\
+  \ <int>            read length threshold (ignore reads shorter than <int>) [0]\n\
+  \   -d/-m <int>         maximum coverage depth [8000]. If 0, depth is set to the\
+  \ maximum\n                       integer value, effectively removing any depth\
+  \ limit.\n   -q <int>            base quality threshold [0]\n   -Q <int>       \
+  \     mapping quality threshold [0]\n   -r <chr:from-to>    region\n      --input-fmt-option\
+  \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+  \               of OPTION or OPTION=VALUE\n      --reference FILE\n            \
+  \   Reference sequence FASTA FILE [null]\n\nThe output is a simple tab-separated\
+  \ table with three columns: reference name,\nposition, and coverage depth.  Note\
+  \ that positions with zero coverage may be\nomitted by default; see the -a option.\n\
+  \n"
+generated_using:
+- --help

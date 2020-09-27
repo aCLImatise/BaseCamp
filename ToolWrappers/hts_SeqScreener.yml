@@ -1,0 +1,201 @@
+!Command
+command:
+- hts_SeqScreener
+positional: []
+named:
+- !Flag
+  description: '[ --version ]                      Version print'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --notes ] arg                    Notes for the stats JSON'
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --stats-file ] arg (=stats.log)  Write to stats file name'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --append-stats-file ] arg        Append to stats file name'
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --read1-input ] arg              Read 1 paired end fastq input <space\n\
+    separated for multiple files>"
+  synonyms:
+  - '-1'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --read2-input ] arg              Read 2 paired end fastq input <space\n\
+    separated for multiple files>"
+  synonyms:
+  - '-2'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --singleend-input ] arg          Single end read fastq input <space\n\
+    separated for multiple files>"
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --interleaved-input ] arg        Interleaved fastq input <space\n\
+    separated for multiple files>"
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --tab-input ] arg                Tab-delimited (tab6) input <space\n\
+    separated for multiple files>"
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --force ]                        Forces overwrite of files'
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --uncompressed ]                 Output uncompressed (not gzipped)
+    files'
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --fastq-output ] arg             Output to Fastq files <PE AND/OR\
+    \ SE\nfiles>"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --interleaved-output ] arg       Output to interleaved fastq files\n\
+    <INTERLEAVED PE AND/OR SE files>"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --tab-output ] arg               Output to tab-delimited (tab6)
+    file'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --unmapped-output ] arg          Output to unmapped sam file'
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --seq ] arg                      Please supply a fasta file - default\
+    \ -\nPhix Sequence - default\nhttps://www.ncbi.nlm.nih.gov/nuccore/96\n26372"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --check-read-2 ]                 Check R2 as well as R1 (pe)'
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --kmer ] arg (=12)               Kmer size of the lookup table (min\
+    \ 5,\nmax 256)"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --percentage-hits ] arg (=0.25)  Proportion of kmer percentage-hits\
+    \ to\nsequence need to happen to discard (min\n0.0, max 1.0)"
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --inverse ]                      Output reads that are ABOVE the\
+    \ kmer\nhit threshold"
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --record ]                       Only record the reads that pass\
+    \ the\nkmer hit threshold, output all reads"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]                         Prints help documentation'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "HTStream <https://github.com/s4hts/HTStream> application: hts_SeqScreener\n\
+  Version: 1.3.1\nhts_SeqScreener identifies and removes any reads which appear to\
+  \ have originated\n  from a contaminant DNA source. Because bacteriophage Phi-X\
+  \ is common spiked\n  into Illumina runs for QC purposes, sequences originating\
+  \ from Phi-X are removed\n  by default. If other contaminants are suspected their\
+  \ sequence can be supplied\n  as a fasta file <seq>, however the algorithm has been\
+  \ tuned for short contaminant\n  sequences, and may not work well with sequences\
+  \ significantly longer than Phi-X (5Kb).\n\n\nStandard Options:\n  -v [ --version\
+  \ ]                      Version print\n  -h [ --help ]                        \
+  \ Prints help documentation\n  -N [ --notes ] arg                    Notes for the\
+  \ stats JSON\n  -L [ --stats-file ] arg (=stats.log)  Write to stats file name\n\
+  \  -A [ --append-stats-file ] arg        Append to stats file name\n\nInput Options\
+  \ [default: tab6 format on stdin]:\n  -1 [ --read1-input ] arg              Read\
+  \ 1 paired end fastq input <space \n                                        separated\
+  \ for multiple files>\n  -2 [ --read2-input ] arg              Read 2 paired end\
+  \ fastq input <space \n                                        separated for multiple\
+  \ files>\n  -U [ --singleend-input ] arg          Single end read fastq input <space\
+  \ \n                                        separated for multiple files>\n  -I\
+  \ [ --interleaved-input ] arg        Interleaved fastq input <space \n         \
+  \                               separated for multiple files>\n  -T [ --tab-input\
+  \ ] arg                Tab-delimited (tab6) input <space \n                    \
+  \                    separated for multiple files>\n\nhts_SeqScreener Output Options\
+  \ [default: tab6 format to stdout]:\n  -F [ --force ]                        Forces\
+  \ overwrite of files\n  -u [ --uncompressed ]                 Output uncompressed\
+  \ (not gzipped) files\n  -f [ --fastq-output ] arg             Output to Fastq files\
+  \ <PE AND/OR SE \n                                        files>\n  -i [ --interleaved-output\
+  \ ] arg       Output to interleaved fastq files \n                             \
+  \           <INTERLEAVED PE AND/OR SE files>\n  -t [ --tab-output ] arg        \
+  \       Output to tab-delimited (tab6) file\n  -z [ --unmapped-output ] arg    \
+  \      Output to unmapped sam file\n\nApplication Specific Options:\n  -s [ --seq\
+  \ ] arg                      Please supply a fasta file - default - \n         \
+  \                               Phix Sequence - default \n                     \
+  \                   https://www.ncbi.nlm.nih.gov/nuccore/96\n                  \
+  \                      26372\n  -C [ --check-read-2 ]                 Check R2 as\
+  \ well as R1 (pe)\n  -k [ --kmer ] arg (=12)               Kmer size of the lookup\
+  \ table (min 5, \n                                        max 256)\n  -x [ --percentage-hits\
+  \ ] arg (=0.25)  Proportion of kmer percentage-hits to \n                      \
+  \                  sequence need to happen to discard (min\n                   \
+  \                     0.0, max 1.0)\n  -n [ --inverse ]                      Output\
+  \ reads that are ABOVE the kmer \n                                        hit threshold\n\
+  \  -r [ --record ]                       Only record the reads that pass the \n\
+  \                                        kmer hit threshold, output all reads\n\n\
+  \nPlease report any issues, request for enhancement, or comments to <https://github.com/s4hts/HTStream/issues>\n"
+generated_using:
+- --help

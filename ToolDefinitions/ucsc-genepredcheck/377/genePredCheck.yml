@@ -18,26 +18,10 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: &id003 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: "- If specified, then this database is used to\nget chromosome\
-        \ sizes, and perhaps the table to check."
-      synonyms:
-      - -db
-      args: !SimpleFlagArg
-        name: db
-      optional: true
-    - !Flag
-      description: "- use chrom sizes from tab separated\nfile (name,size) instead\
-        \ of from chromInfo table in specified db.\n"
-      synonyms:
-      - -chromSizes
-      args: !SimpleFlagArg
-        name: file.chrom.sizes
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -51,19 +35,175 @@ subcommands:
         args: !SimpleFlagArg
           name: is
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: "- If specified, then this database is used to\nget chromosome\
+            \ sizes, and perhaps the table to check."
+          synonyms:
+          - -db
+          args: !SimpleFlagArg
+            name: db
+          optional: true
+        - !Flag
+          description: "- use chrom sizes from tab separated\nfile (name,size) instead\
+            \ of from chromInfo table in specified db.\n"
+          synonyms:
+          - -chromSizes
+          args: !SimpleFlagArg
+            name: file.chrom.sizes
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: &id004
+          - -h
+        - !Command
+          command: &id005
+          - genePredCheck
+          - is
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - genePredCheck
+          - existing
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: *id004
+        - !Command
+          command: &id007
+          - genePredCheck
+          - If
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: *id004
+        - !Command
+          command: &id008
+          - genePredCheck
+          - file
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: *id004
+        - !Command
+          command: &id009
+          - genePredCheck
+          - an
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "genePredCheck - validate genePred files or tables\nusage:\n  \
+          \ genePredCheck [options] fileTbl ..\n\nIf fileTbl is an existing file,\
+          \ then it is checked.  Otherwise, if -db\nis provided, then a table by this\
+          \ name in db is checked.\n\noptions:\n   -db=db - If specified, then this\
+          \ database is used to\n          get chromosome sizes, and perhaps the table\
+          \ to check.\n   -chromSizes=file.chrom.sizes - use chrom sizes from tab\
+          \ separated\n          file (name,size) instead of from chromInfo table\
+          \ in specified db.\n"
+        generated_using: &id010 []
       subcommands: []
       usage: []
       help_flag:
       usage_flag:
       version_flag:
       help_text: "-h is not a valid option\n"
-      generated_using: &id004
-      - -h
+      generated_using: *id004
     - !Command
-      command: &id005
-      - genePredCheck
-      - is
+      command: *id005
       positional: []
       named:
       - !Flag
@@ -82,9 +222,7 @@ subcommands:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - genePredCheck
-      - existing
+      command: *id006
       positional: []
       named:
       - !Flag
@@ -103,9 +241,7 @@ subcommands:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
     - !Command
-      command: &id007
-      - genePredCheck
-      - If
+      command: *id007
       positional: []
       named:
       - !Flag
@@ -124,9 +260,7 @@ subcommands:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
     - !Command
-      command: &id008
-      - genePredCheck
-      - file
+      command: *id008
       positional: []
       named:
       - !Flag
@@ -145,9 +279,7 @@ subcommands:
       help_text: "-h is not a valid option\n"
       generated_using: *id004
     - !Command
-      command: &id009
-      - genePredCheck
-      - an
+      command: *id009
       positional: []
       named:
       - !Flag
@@ -176,7 +308,7 @@ subcommands:
       \    get chromosome sizes, and perhaps the table to check.\n   -chromSizes=file.chrom.sizes\
       \ - use chrom sizes from tab separated\n          file (name,size) instead of\
       \ from chromInfo table in specified db.\n"
-    generated_using: &id010 []
+    generated_using: *id010
   subcommands: []
   usage: []
   help_flag:
@@ -195,7 +327,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id003
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -214,7 +346,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id003
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -233,7 +365,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id003
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -252,7 +384,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id003
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -271,7 +403,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id003
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:

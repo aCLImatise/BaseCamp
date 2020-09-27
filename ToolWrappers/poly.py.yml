@@ -1,0 +1,122 @@
+!Command
+command:
+- poly.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: ID
+  optional: true
+named:
+- !Flag
+  description: "ID, --contig REFERENCE ID\nFocus on a subset of references in the\
+    \ BAM file. Can\nbe a list of references separated by commas or a FASTA\nfile\
+    \ (the IDs are used to subset)"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: "If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\nfail (FQCFAIL)\
+    \ and duplicate (FDUP) are excluded. If\nunset ALL reads are considered (bedtools\
+    \ genomecov\nstyle). Default: unset"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sort and index the file
+  synonyms:
+  - --sortindex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum Reference Length for a reference to be\nconsidered. Default:\
+    \ 0"
+  synonyms:
+  - --minlen
+  args: !SimpleFlagArg
+    name: MINLEN
+  optional: true
+- !Flag
+  description: "Minimum base quality. Bases with quality score lower\nthan this will\
+    \ be discarded. This is performed BEFORE\n--mincov. Default: 30"
+  synonyms:
+  - --minqual
+  args: !SimpleFlagArg
+    name: MINQUAL
+  optional: true
+- !Flag
+  description: "Minimum position coverage to perform the polymorphism\ncalculation.\
+    \ Position with a lower depth of coverage\nwill be discarded (i.e. considered\
+    \ as zero-coverage\npositions). This is calculated AFTER --minqual.\nDefault:1"
+  synonyms:
+  - --mincov
+  args: !SimpleFlagArg
+    name: MINCOV
+  optional: true
+- !Flag
+  description: "Binomial p-value threshold for the binomal-polymorphic\ntest. Default:\
+    \ 0.01"
+  synonyms:
+  - --pvalue
+  args: !SimpleFlagArg
+    name: PVALUE
+  optional: true
+- !Flag
+  description: 'Sequencing error rate. Default: 0.001'
+  synonyms:
+  - --seq_err
+  args: !SimpleFlagArg
+    name: SEQ_ERR
+  optional: true
+- !Flag
+  description: "Cutoff for degree of `allele dominance` for a position\nto be considered\
+    \ polymorphic. Default: 0.8\n"
+  synonyms:
+  - --dominant_frq_thrsh
+  args: !SimpleFlagArg
+    name: DOMINANT_FRQ_THRSH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: poly.py [-h] [-c REFERENCE ID] [-f] [--sortindex] [--minlen MINLEN]\n\
+  \               [--minqual MINQUAL] [--mincov MINCOV] [--pvalue PVALUE]\n      \
+  \         [--seq_err SEQ_ERR] [--dominant_frq_thrsh DOMINANT_FRQ_THRSH]\n      \
+  \         BAMFILE\n\nReports the polymorpgic rate of each reference (polymorphic\
+  \ bases / total\nbases). Focuses only on covered regions (i.e. depth >= 1)\n\npositional\
+  \ arguments:\n  BAMFILE               The file on which to operate\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -c REFERENCE ID, --contig\
+  \ REFERENCE ID\n                        Focus on a subset of references in the BAM\
+  \ file. Can\n                        be a list of references separated by commas\
+  \ or a FASTA\n                        file (the IDs are used to subset)\n  -f  \
+  \                  If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\n     \
+  \                   fail (FQCFAIL) and duplicate (FDUP) are excluded. If\n     \
+  \                   unset ALL reads are considered (bedtools genomecov\n       \
+  \                 style). Default: unset\n  --sortindex           Sort and index\
+  \ the file\n  --minlen MINLEN       Minimum Reference Length for a reference to\
+  \ be\n                        considered. Default: 0\n  --minqual MINQUAL     Minimum\
+  \ base quality. Bases with quality score lower\n                        than this\
+  \ will be discarded. This is performed BEFORE\n                        --mincov.\
+  \ Default: 30\n  --mincov MINCOV       Minimum position coverage to perform the\
+  \ polymorphism\n                        calculation. Position with a lower depth\
+  \ of coverage\n                        will be discarded (i.e. considered as zero-coverage\n\
+  \                        positions). This is calculated AFTER --minqual.\n     \
+  \                   Default:1\n  --pvalue PVALUE       Binomial p-value threshold\
+  \ for the binomal-polymorphic\n                        test. Default: 0.01\n  --seq_err\
+  \ SEQ_ERR     Sequencing error rate. Default: 0.001\n  --dominant_frq_thrsh DOMINANT_FRQ_THRSH\n\
+  \                        Cutoff for degree of `allele dominance` for a position\n\
+  \                        to be considered polymorphic. Default: 0.8\n"
+generated_using:
+- --help

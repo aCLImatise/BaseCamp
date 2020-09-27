@@ -1,0 +1,88 @@
+!Command
+command:
+- sqStoreDumpFASTQ
+positional: []
+named:
+- !Flag
+  description: "-o out-prefix       write files out-prefix.(libname).fastq, ...\n\
+    if out-prefix is '-', all sequences output to stdout\nif out-prefix ends in .gz,\
+    \ .bz2 or .xz, output is compressed\n-fastq              output is FASTQ format\
+    \ (with extension .fastq, default)\n(note that QVs are not stored, and are invalid)\n\
+    -fasta              output is FASTA format (with extension .fasta)\n-nolibname\
+    \          don't include the library name in the output file name\n-noreadname\
+    \         don't include the read name in the sequence header.  header will be:\n\
+    '>original-name id=<seqID> clr=<bgn>,<end>   with names\n'>read<seqID> clr=<bgn>,<end>\
+    \                without names"
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: seqStore
+  optional: true
+- !Flag
+  description: "Dump the reverse-complement of the read.\n-l id               output\
+    \ only read in library number 'id'\n-r id[-id]          output only the single\
+    \ read 'id', or the specified range of ids"
+  synonyms:
+  - -reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump raw reads.
+  synonyms:
+  - -raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump corrected reads.
+  synonyms:
+  - -corrected
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump the trimmed version of the raw/corrected read.
+  synonyms:
+  - -trimmed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump the compressed version of the raw/corrected read.
+  synonyms:
+  - -compressed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dump the uncompressed version of the raw/corrected read.\n(for stores\
+    \ that are by default compressing homopolymers)"
+  synonyms:
+  - -normal
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "ERROR: unknown option '--help'\nusage: sqStoreDumpFASTQ [...] -o out-prefix\
+  \ -g seqStore\n  -S seqStore\n  -o out-prefix       write files out-prefix.(libname).fastq,\
+  \ ...\n                      if out-prefix is '-', all sequences output to stdout\n\
+  \                      if out-prefix ends in .gz, .bz2 or .xz, output is compressed\n\
+  \n  -fastq              output is FASTQ format (with extension .fastq, default)\n\
+  \                      (note that QVs are not stored, and are invalid)\n\n  -fasta\
+  \              output is FASTA format (with extension .fasta)\n\n  -nolibname  \
+  \        don't include the library name in the output file name\n\n  -noreadname\
+  \         don't include the read name in the sequence header.  header will be:\n\
+  \                        '>original-name id=<seqID> clr=<bgn>,<end>   with names\n\
+  \                        '>read<seqID> clr=<bgn>,<end>                without names\n\
+  \n -reverse             Dump the reverse-complement of the read.\n\n  -l id    \
+  \           output only read in library number 'id'\n  -r id[-id]          output\
+  \ only the single read 'id', or the specified range of ids\n\n The default is to\
+  \ dump the latest version of each read.  You can force it to dump:\n  -raw     \
+  \           Dump raw reads.\n  -corrected          Dump corrected reads.\n\n  -trimmed\
+  \            Dump the trimmed version of the raw/corrected read.\n  -compressed\
+  \         Dump the compressed version of the raw/corrected read.\n  -normal    \
+  \         Dump the uncompressed version of the raw/corrected read.\n           \
+  \             (for stores that are by default compressing homopolymers)\n\nERROR:\
+  \ no seqStore (-S) supplied.\nERROR: no output prefix (-o) supplied.\n"
+generated_using:
+- --help

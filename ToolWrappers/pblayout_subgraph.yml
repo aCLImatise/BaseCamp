@@ -1,0 +1,130 @@
+!Command
+command:
+- pblayout
+- subgraph
+positional:
+- !Positional
+  description: STR   Input string graph in the sg_edges_list
+  position: 0
+  name: in_sg
+  optional: false
+- !Positional
+  description: out_prefix               STR   Output prefix.
+  position: 1
+  name: format.
+  optional: false
+named:
+- !Flag
+  description: "Apply the directed ego-graph algorithm to\nextract the subgraph."
+  synonyms:
+  - --directed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT   Radius (in the number of nodes) to extract in\neach direction.\
+    \ [100]"
+  synonyms:
+  - --radius
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR   Path to a tiling path file. If specified, it\nwill be used to\
+    \ create the Bandage CSV."
+  synonyms:
+  - --tp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR   Path to a SeqDB file. If specified, it will be\nused to retrieve\
+    \ lengths of sequences."
+  synonyms:
+  - --seqdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Indicates that the sequences in the input\ngraph are actually IDs\
+    \ instead of headers."
+  synonyms:
+  - --use-seq-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write the sequences to the generated GFA file.\nThis requires the\
+    \ '--seqdb' to be provided."
+  synonyms:
+  - --write-seqs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR   CSV file with a list of nodes to extract. Each\nline contains\
+    \ 2 columns: <node_name> <label>.\nThe label will be used to name the output\n\
+    files."
+  synonyms:
+  - --csv-nodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT   Number of threads to use, 0 means\nautodetection. [0]"
+  synonyms:
+  - -j
+  - --num-threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR   Set log level. Valid choices: (TRACE, DEBUG,\nINFO, WARN, FATAL).\
+    \ [WARN]"
+  synonyms:
+  - --log-level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FILE  Log to a file, instead of stderr.
+  synonyms:
+  - --log-file
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show application version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "subgraph - Extract a subgraph from a given assembly graph.\n\nUsage:\n\
+  \  subgraph [options] <in_sg> <out_prefix> <node1 [node2 node3 ...]>\n\n  in_sg\
+  \                    STR   Input string graph in the sg_edges_list\n           \
+  \                      format.\n  out_prefix               STR   Output prefix.\n\
+  \  node1 [node2 node3 ...]  STR   One or more nodes to extract the subgraph for.\n\
+  \nAlgorithm Options:\n  --directed                     Apply the directed ego-graph\
+  \ algorithm to\n                                 extract the subgraph.\n  --radius\
+  \                 INT   Radius (in the number of nodes) to extract in\n        \
+  \                         each direction. [100]\n  --tp                     STR\
+  \   Path to a tiling path file. If specified, it\n                             \
+  \    will be used to create the Bandage CSV.\n  --seqdb                  STR   Path\
+  \ to a SeqDB file. If specified, it will be\n                                 used\
+  \ to retrieve lengths of sequences.\n  --use-seq-ids                  Indicates\
+  \ that the sequences in the input\n                                 graph are actually\
+  \ IDs instead of headers.\n  --write-seqs                   Write the sequences\
+  \ to the generated GFA file.\n                                 This requires the\
+  \ '--seqdb' to be provided.\n  --csv-nodes              STR   CSV file with a list\
+  \ of nodes to extract. Each\n                                 line contains 2 columns:\
+  \ <node_name> <label>.\n                                 The label will be used\
+  \ to name the output\n                                 files.\n\n  -h,--help   \
+  \                   Show this help and exit.\n  --version                      Show\
+  \ application version and exit.\n  -j,--num-threads         INT   Number of threads\
+  \ to use, 0 means\n                                 autodetection. [0]\n  --log-level\
+  \              STR   Set log level. Valid choices: (TRACE, DEBUG,\n            \
+  \                     INFO, WARN, FATAL). [WARN]\n  --log-file               FILE\
+  \  Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help

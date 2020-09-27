@@ -56,39 +56,10 @@ subcommands:
     args: !SimpleFlagArg
       name: ORDER
     optional: true
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: "the bspline order, default is 2; means nearest\nneighbours; see\
-        \ also medpy_binary_resampling.py"
-      synonyms:
-      - -o
-      - --order
-      args: !SimpleFlagArg
-        name: ORDER
-      optional: true
-    - !Flag
-      description: verbose output
-      synonyms:
-      - -v
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Display debug information.
-      synonyms:
-      - -d
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: overwrite existing files
-      synonyms:
-      - -f
-      - --force
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -140,7 +111,200 @@ subcommands:
         args: !SimpleFlagArg
           name: ORDER
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: "the bspline order, default is 2; means nearest\nneighbours;\
+            \ see also medpy_binary_resampling.py"
+          synonyms:
+          - -o
+          - --order
+          args: !SimpleFlagArg
+            name: ORDER
+          optional: true
+        - !Flag
+          description: verbose output
+          synonyms:
+          - -v
+          - --verbose
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Display debug information.
+          synonyms:
+          - -d
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: overwrite existing files
+          synonyms:
+          - -f
+          - --force
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: medpy_resample.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: input
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: output
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: spacing
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -f
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -d
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -o
+            args: !SimpleFlagArg
+              name: ORDER
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: medpy_resample.py [-h] [-o ORDER] [-v] [-d] [-f] input\
+            \ output spacing\nmedpy_resample.py: error: the following arguments are\
+            \ required: output, spacing\n"
+          generated_using: &id004 []
+        - !Command
+          command: &id005
+          - medpy_resample.py
+          - spacing
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: medpy_resample.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: input
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: output
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: spacing
+            optional: false
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -f
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -d
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -o
+            args: !SimpleFlagArg
+              name: ORDER
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: medpy_resample.py [-h] [-o ORDER] [-v] [-d] [-f] input\
+            \ output spacing\nmedpy_resample.py: error: the following arguments are\
+            \ required: output, spacing\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: medpy_resample.py [-h] [-o ORDER] [-v] [-d] [-f] input\
+          \ output spacing\n\nResamples an image according to a supplied voxel spacing.\
+          \ BSpline is used for\ninterpolation. A order between 1 and 5 can be selected.\
+          \ Note that the pixel\ndata type of the input image is respected, i.e. a\
+          \ integer input image leads to\nan integer output image etc. Copyright (C)\
+          \ 2013 Oskar Maier This program comes\nwith ABSOLUTELY NO WARRANTY; This\
+          \ is free software, and you are welcome to\nredistribute it under certain\
+          \ conditions; see the LICENSE file or\n<http://www.gnu.org/licenses/> for\
+          \ details.\n\npositional arguments:\n  input                 the input image\n\
+          \  output                the output image\n  spacing               the desired\
+          \ voxel spacing in colon-separated values,\n                        e.g.\
+          \ 1.2,1.2,5.0\n\noptional arguments:\n  -h, --help            show this\
+          \ help message and exit\n  -o ORDER, --order ORDER\n                   \
+          \     the bspline order, default is 2; means nearest\n                 \
+          \       neighbours; see also medpy_binary_resampling.py\n  -v, --verbose\
+          \         verbose output\n  -d                    Display debug information.\n\
+          \  -f, --force           overwrite existing files\n"
+        generated_using: &id006
+        - --help
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -154,11 +318,9 @@ subcommands:
       help_text: "usage: medpy_resample.py [-h] [-o ORDER] [-v] [-d] [-f] input output\
         \ spacing\nmedpy_resample.py: error: the following arguments are required:\
         \ output, spacing\n"
-      generated_using: &id004 []
+      generated_using: *id004
     - !Command
-      command: &id005
-      - medpy_resample.py
-      - spacing
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -222,13 +384,7 @@ subcommands:
         \ output, spacing\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: medpy_resample.py [-h] [-o ORDER] [-v] [-d] [-f] input output\
@@ -247,8 +403,7 @@ subcommands:
       \ 2; means nearest\n                        neighbours; see also medpy_binary_resampling.py\n\
       \  -v, --verbose         verbose output\n  -d                    Display debug\
       \ information.\n  -f, --force           overwrite existing files\n"
-    generated_using: &id006
-    - --help
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -312,7 +467,7 @@ subcommands:
     args: !SimpleFlagArg
       name: ORDER
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

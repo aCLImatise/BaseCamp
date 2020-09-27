@@ -1,0 +1,70 @@
+!Command
+command:
+- sqlToXml
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: database
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: dumpSpec.od
+  optional: false
+named:
+- !Flag
+  description: "- Give the top level XML tag the given name.  By\ndefault it will\
+    \ be the same as the database name."
+  synonyms:
+  - -topTag
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "- Instead of dumping whole database, just dump those\nrecords matching\
+    \ SQL select statement in file.sql.\nThis statement should be of the form:\nselect\
+    \ * from table where ...\nor\nselect table.* from table,otherTables where ...\n\
+    Where the table is the same as the table in the first\nline of dumpSpec."
+  synonyms:
+  - -query
+  args: !SimpleFlagArg
+    name: file.sql
+  optional: true
+- !Flag
+  description: "- number of spaces betweeen tabs in xml.dumpSpec - by default it's\
+    \ 8.\n(It may be best just to avoid tabs in that file though.)"
+  synonyms:
+  - -tab
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- This will limit any lists in the output to no more than\nsize N.\
+    \  This is mostly just for testing.\n"
+  synonyms:
+  - -maxList
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "sqlToXml - dump out all or part of a relational database to XML, guided\n\
+  by a dump specification.  See sqlToXml.doc for additional information.\nusage:\n\
+  \   sqlToXml database dumpSpec.od output.xml\noptions:\n   -topTag=name - Give the\
+  \ top level XML tag the given name.  By\n               default it will be the same\
+  \ as the database name.\n   -query=file.sql - Instead of dumping whole database,\
+  \ just dump those\n                  records matching SQL select statement in file.sql.\n\
+  \                  This statement should be of the form:\n           select * from\
+  \ table where ...\n                   or\n           select table.* from table,otherTables\
+  \ where ...\n                   Where the table is the same as the table in the\
+  \ first\n                   line of dumpSpec.\n   -tab=N - number of spaces betweeen\
+  \ tabs in xml.dumpSpec - by default it's 8.\n            (It may be best just to\
+  \ avoid tabs in that file though.)\n   -maxList=N - This will limit any lists in\
+  \ the output to no more than\n                size N.  This is mostly just for testing.\n\
+  \n"
+generated_using: []

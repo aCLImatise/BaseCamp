@@ -1,0 +1,112 @@
+!Command
+command:
+- vcfremap
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: vcf file
+  optional: true
+named:
+- !Flag
+  description: align using this many bases flanking each side of the reference allele
+  synonyms:
+  - -w
+  - --ref-window-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: align using this many flanking bases from the reference around each
+    alternate allele
+  synonyms:
+  - -s
+  - --alt-window-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: FASTA reference file, required with -i and -u
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: match score for SW algorithm
+  synonyms:
+  - -m
+  - --match-score
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: mismatch score for SW algorithm
+  synonyms:
+  - -x
+  - --mismatch-score
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: gap open penalty for SW algorithm
+  synonyms:
+  - -o
+  - --gap-open-penalty
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: gap extension penalty for SW algorithm
+  synonyms:
+  - -e
+  - --gap-extend-penalty
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: use entropy scaling for the gap open penalty
+  synonyms:
+  - -z
+  - --entropy-gap-open
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: penalize non-repeat-unit gaps in repeat sequence
+  synonyms:
+  - -R
+  - --repeat-gap-extend
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: supply a new cigar as TAG in the output VCF
+  synonyms:
+  - -a
+  - --adjust-vcf
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: vcfremap [options] [<vcf file>]\n\noptions:\n    -w, --ref-window-size\
+  \ N      align using this many bases flanking each side of the reference allele\n\
+  \    -s, --alt-window-size N      align using this many flanking bases from the\
+  \ reference around each alternate allele\n    -r, --reference FILE         FASTA\
+  \ reference file, required with -i and -u\n    -m, --match-score N          match\
+  \ score for SW algorithm\n    -x, --mismatch-score N       mismatch score for SW\
+  \ algorithm\n    -o, --gap-open-penalty N     gap open penalty for SW algorithm\n\
+  \    -e, --gap-extend-penalty N   gap extension penalty for SW algorithm\n    -z,\
+  \ --entropy-gap-open       use entropy scaling for the gap open penalty\n    -R,\
+  \ --repeat-gap-extend N    penalize non-repeat-unit gaps in repeat sequence\n  \
+  \  -a, --adjust-vcf TAG         supply a new cigar as TAG in the output VCF\n\n\
+  For each alternate allele, attempt to realign against the reference with lowered\
+  \ gap open penalty.\nIf realignment is possible, adjust the cigar and reference/alternate\
+  \ alleles.\n"
+generated_using:
+- --help

@@ -1,0 +1,232 @@
+!Command
+command:
+- svict
+positional:
+- !Positional
+  description: -- Structural Variant in ctDNA Sequencing Data
+  position: 0
+  name: svcit
+  optional: false
+named:
+- !Flag
+  description: "[FILE]\nInput alignment file. This file should be a sorted SAM or\
+    \ BAM file."
+  synonyms:
+  - -i
+  - --input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[FILE]\nReference geneome that the reads are algined to."
+  synonyms:
+  - -r
+  - --reference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[STRING]\nPrefix of output file (default out)"
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[FILE]\nGTF file. Enables annotation of SV calls and fusion identification."
+  synonyms:
+  - -g
+  - --annotation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nThe minimum number of supporting reads required to be considered\
+    \ a SV (default 2)."
+  synonyms:
+  - -s
+  - --min_support
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nThe maximum number of supporting reads required to be considered\
+    \ a SV, could be used to filter out germline calls (default unlimited)."
+  synonyms:
+  - -S
+  - --max_support
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nMin SV length (default 30)."
+  synonyms:
+  - -m
+  - --min_length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nMax SV length (default 20000)."
+  synonyms:
+  - -M
+  - --max_length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print all contigs and associated reads as additional output out.vcf.reads,
+    out is the prefix specified in -o|--output, when activated.
+  synonyms:
+  - -p
+  - --print_reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":\nPrint statistics of detected SV calls and fusions to stderr."
+  synonyms:
+  - -P
+  - --print_stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nThe size of the sliding window collecting all reads with soft-clip/split\
+    \ positions in it to form the breakpoint specific cluster for contig assembly.\n\
+    Larger window size could assign a read to more clusters for potentially higher\
+    \ sensitivity with the cost of increased running time (default 3)."
+  synonyms:
+  - -w
+  - --window_size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nMinimum soft clip length for a read to be considered as unmapped\
+    \ or incorrectly mapped to be extracted for contig assembly (default 10)."
+  synonyms:
+  - -d
+  - --min_sc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore indels in the input BAM/SAM (I and D in cigar) when extracting
+    potential breakpoints.
+  synonyms:
+  - -n
+  - --no_indel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nThe minimum lenth of overlaps between 2 reads in overlap-layout-consensus\
+    \ contig assembly (default 50)."
+  synonyms:
+  - -O
+  - --assembler_overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nAnchor length. Intervals shorter than this value would be discarded\
+    \ in interval chaining procedure for locating contigs (default 30)."
+  synonyms:
+  - -a
+  - --anchor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nk-mer length to index and remap assembled contigs to reference\
+    \ genome (default 14)."
+  synonyms:
+  - -k
+  - --kmer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nUncertainty around the breakpoint position.\nSee \"Interval\
+    \ Chaining for Optimal Mapping\" in publication (default 8)."
+  synonyms:
+  - -u
+  - --uncertainty
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INT]\nFor a contig, SViCT will report all paths which are not worse\
+    \ than the optimal by c on the DAGs to achieve potentially better sensitivity.\n\
+    See \"Interval Chaining for Optimal Mapping\" in publication (default 0 - co-optimals\
+    \ only, negative value disables)."
+  synonyms:
+  - -c
+  - --sub_optimal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use clustering heuristic (good for data with PCR duplicates).
+  synonyms:
+  - -H
+  - --heuristic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump contigs in fastq format for mapping.
+  synonyms:
+  - -D
+  - --dump_contigs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":\nResume at the interval chaining stage with mapped contigs."
+  synonyms:
+  - -R
+  - --resume
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Shows current version.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Description\n\tsvcit  -- Structural Variant in ctDNA Sequencing Data\n\
+  \nUsage:\n\tsvict -i [FILE] -r [FILE]\nRequired Parameters:\n\t-i, --input [FILE]\n\
+  \t\t Input alignment file. This file should be a sorted SAM or BAM file.\n\n\t-r,\
+  \ --reference [FILE]\n\t\tReference geneome that the reads are algined to.\n\nMain\
+  \ Optional Parameters:\n\t-o, --output [STRING]\n\t\tPrefix of output file (default\
+  \ out)\n\n\t-g, --annotation [FILE]\n\t\tGTF file. Enables annotation of SV calls\
+  \ and fusion identification.\n\n\t-s, --min_support [INT]\n\t\tThe minimum number\
+  \ of supporting reads required to be considered a SV (default 2).\n\n\t-S, --max_support\
+  \ [INT]\n\t\tThe maximum number of supporting reads required to be considered a\
+  \ SV, could be used to filter out germline calls (default unlimited).\n\n\t-m, --min_length\
+  \ [INT]\n\t\tMin SV length (default 30).\n\n\t-M, --max_length [INT]\n\t\tMax SV\
+  \ length (default 20000).\n\t\nAdditional Parameters:\n\t-h, --help\n\t\tShows help\
+  \ message.\n\n\t-v, --version\n\t\tShows current version.\n\n\t-p, --print_reads\n\
+  \t\tPrint all contigs and associated reads as additional output out.vcf.reads, out\
+  \ is the prefix specified in -o|--output, when activated.\n\n\t-P, --print_stats:\n\
+  \t\tPrint statistics of detected SV calls and fusions to stderr.\n\n\t-w, --window_size\
+  \ [INT]\n\t\tThe size of the sliding window collecting all reads with soft-clip/split\
+  \ positions in it to form the breakpoint specific cluster for contig assembly. \n\
+  \t\tLarger window size could assign a read to more clusters for potentially higher\
+  \ sensitivity with the cost of increased running time (default 3).\n\n\t-d, --min_sc\
+  \ [INT]\n\t\tMinimum soft clip length for a read to be considered as unmapped or\
+  \ incorrectly mapped to be extracted for contig assembly (default 10).\n\n\t-n,\
+  \ --no_indel\n\t\tIgnore indels in the input BAM/SAM (I and D in cigar) when extracting\
+  \ potential breakpoints.\n\n\t-O, --assembler_overlap [INT]\n\t\tThe minimum lenth\
+  \ of overlaps between 2 reads in overlap-layout-consensus contig assembly (default\
+  \ 50).\n\n\t-a, --anchor [INT]\n\t\tAnchor length. Intervals shorter than this value\
+  \ would be discarded in interval chaining procedure for locating contigs (default\
+  \ 30).\n\n\t-k, --kmer [INT]\n\t\tk-mer length to index and remap assembled contigs\
+  \ to reference genome (default 14).\n\n\t-u, --uncertainty [INT]\n\t\tUncertainty\
+  \ around the breakpoint position.\n\t\tSee \"Interval Chaining for Optimal Mapping\"\
+  \ in publication (default 8).\n\n\t-c, --sub_optimal [INT]\n\t\tFor a contig, SViCT\
+  \ will report all paths which are not worse than the optimal by c on the DAGs to\
+  \ achieve potentially better sensitivity. \n\t\tSee \"Interval Chaining for Optimal\
+  \ Mapping\" in publication (default 0 - co-optimals only, negative value disables).\n\
+  \n\t-H, --heuristic \n\t\tUse clustering heuristic (good for data with PCR duplicates).\n\
+  \n\t-D, --dump_contigs\n\t\tDump contigs in fastq format for mapping.\n\n\t-R, --resume:\n\
+  \t\tResume at the interval chaining stage with mapped contigs.\n\nExample:\n\tsvict\
+  \ -i input.bam -r human_genome.fa -o final\n\tThis command will generate prediction\
+  \ result final.vcf directly from input.sam.\n\n\n"
+generated_using:
+- --help

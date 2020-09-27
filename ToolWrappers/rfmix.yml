@@ -1,0 +1,221 @@
+!Command
+command:
+- rfmix
+positional: []
+named:
+- !Flag
+  description: "(required)\nVCF file with samples to analyze                     \
+    \ (required)"
+  synonyms:
+  - -f
+  - --query-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nVCF file with reference individuals                  \
+    \ (required)"
+  synonyms:
+  - -r
+  - --reference-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nReference panel sample population classification map \
+    \ (required)"
+  synonyms:
+  - -m
+  - --sample-map
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nGenetic map file                                     \
+    \ (required)"
+  synonyms:
+  - -g
+  - --genetic-map
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nBasename (prefix) for output files                   \
+    \ (required)"
+  synonyms:
+  - -o
+  - --output-basename
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "(required)\nExecute only on specified chromosome                 \
+    \ (required)"
+  synonyms:
+  - --chromosome
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Conditional Random Field spacing (# of SNPs)
+  synonyms:
+  - -c
+  - --crf-spacing
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Random forest window size (class estimation window size)
+  synonyms:
+  - -s
+  - --rf-window-size
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Weight of observation term relative to transition term in conditional
+    random field
+  synonyms:
+  - -w
+  - --crf-weight
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Average number of generations since expected admixture
+  synonyms:
+  - -G
+  - --generations
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Maximum number of EM iterations
+  synonyms:
+  - -e
+  - --em-iterations
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: In EM, analyze local ancestry of the reference panel and reclassify
+    it
+  synonyms:
+  - --reanalyze-reference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Terminal node size for random forest trees
+  synonyms:
+  - -n
+  - --node-size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Number of tree in random forest to estimate population class probability
+  synonyms:
+  - -t
+  - --trees
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum proportion of missing data allowed to include a SNP
+  synonyms:
+  - --max-missing
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Specify random forest bootstrap mode as integer code (see manual)
+  synonyms:
+  - -b
+  - --bootstrap-mode
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: With genetic sized rf windows, include at least this many SNPs regardless
+    of span
+  synonyms:
+  - --rf-minimum-snps
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Physical position range, specified as <start pos>-<end pos>, in Mbp
+    (decimal allowed)
+  synonyms:
+  - --analyze-range
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Turn on any debugging output
+  synonyms:
+  - --debug
+  args: !SimpleFlagArg
+    name: flag
+  optional: true
+- !Flag
+  description: Force number of simultaneous thread for parallel execution
+  synonyms:
+  - --n-threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Seed value for random number generation (integer)\n(maybe specified\
+    \ in hexadecimal by preceeding with 0x), or the string\n\"clock\" to seed with\
+    \ the current system time.\n"
+  synonyms:
+  - --random-seed
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nRFMIX v2.03-r0 - Local Ancestry and Admixture Inference\n(c) 2016, 2017\
+  \ Mark Koni Hamilton Wright\nBustamante Lab - Stanford University School of Medicine\n\
+  Based on concepts developed in RFMIX v1 by Brian Keith Maples, et al.\n\nThis version\
+  \ is licensed for non-commercial academic research use only\nFor commercial licensing,\
+  \ please contact cdbadmin@stanford.edu\n\n--- For use in scientific publications\
+  \ please cite original publication ---\nBrian Maples, Simon Gravel, Eimear E. Kenny,\
+  \ and Carlos D. Bustamante (2013).\nRFMix: A Discriminative Modeling Approach for\
+  \ Rapid and Robust Local-Ancestry\nInference. Am. J. Hum. Genet. 93, 278-288\n\n\
+  Summary of command line options - see manual for details\n\n   -f <string>, --query-file=<string>\t\
+  (required)\n      VCF file with samples to analyze                      (required)\n\
+  \   -r <string>, --reference-file=<string>\t(required)\n      VCF file with reference\
+  \ individuals                   (required)\n   -m <string>, --sample-map=<string>\t\
+  (required)\n      Reference panel sample population classification map  (required)\n\
+  \   -g <string>, --genetic-map=<string>\t(required)\n      Genetic map file    \
+  \                                  (required)\n   -o <string>, --output-basename=<string>\t\
+  (required)\n      Basename (prefix) for output files                    (required)\n\
+  \   --chromosome=<string>\t(required)\n      Execute only on specified chromosome\
+  \                  (required)\n\n   -c <float>, --crf-spacing=<float>\n      Conditional\
+  \ Random Field spacing (# of SNPs)\n   -s <float>, --rf-window-size=<float>\n  \
+  \    Random forest window size (class estimation window size)\n   -w <float>, --crf-weight=<float>\n\
+  \      Weight of observation term relative to transition term in conditional random\
+  \ field\n   -G <float>, --generations=<float>\n      Average number of generations\
+  \ since expected admixture\n   -e <int>, --em-iterations=<int>\n      Maximum number\
+  \ of EM iterations\n   --reanalyze-reference\n      In EM, analyze local ancestry\
+  \ of the reference panel and reclassify it\n\n   -n <int>, --node-size=<int>\n \
+  \     Terminal node size for random forest trees\n   -t <int>, --trees=<int>\n \
+  \     Number of tree in random forest to estimate population class probability\n\
+  \   --max-missing=<float>\n      Maximum proportion of missing data allowed to include\
+  \ a SNP\n   -b <int>, --bootstrap-mode=<int>\n      Specify random forest bootstrap\
+  \ mode as integer code (see manual)\n   --rf-minimum-snps=<int>\n      With genetic\
+  \ sized rf windows, include at least this many SNPs regardless of span\n   --analyze-range=<string>\n\
+  \      Physical position range, specified as <start pos>-<end pos>, in Mbp (decimal\
+  \ allowed)\n\n   --debug=<flag>\n      Turn on any debugging output\n   --n-threads=<int>\n\
+  \      Force number of simultaneous thread for parallel execution\n   --random-seed=<string>\n\
+  \      Seed value for random number generation (integer)\n\t(maybe specified in\
+  \ hexadecimal by preceeding with 0x), or the string\n\t\"clock\" to seed with the\
+  \ current system time.\n\n\n"
+generated_using:
+- --help

@@ -1,0 +1,120 @@
+!Command
+command:
+- bactopia-search.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: bactopia
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: search
+  optional: false
+named:
+- !Flag
+  description: Exclude Taxon ID descendents.
+  synonyms:
+  - --exact_taxon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Directory to write output. (Default: .)'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: 'Prefix to use for output file names. (Default: ena)'
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "Maximum number of results to return. (Default:\n1000000)"
+  synonyms:
+  - --limit
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "If a BioSample has multiple Experiments, pick a random\nsubset. (Default:\
+    \ Return All)"
+  synonyms:
+  - --biosample_subset
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Filters samples based on minimum mean read length.\n(Default: No filter)"
+  synonyms:
+  - --min_read_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Filters samples based on minimum basepair count.\n(Default: No filter)"
+  synonyms:
+  - --min_base_count
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Filter samples based on minimum coverage (requires
+  synonyms:
+  - --min_coverage
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Genome size to estimate coverage (requires --coverage)
+  synonyms:
+  - --genome_size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: bactopia search [-h] [--exact_taxon] [--outdir OUTPUT_DIRECTORY]\n\
+  \                       [--prefix PREFIX] [--limit INT]\n                      \
+  \ [--biosample_subset INT] [--min_read_length INT]\n                       [--min_base_count\
+  \ INT] [--min_coverage INT]\n                       [--genome_size INT] [--version]\n\
+  \                       STR\n\nbactopia search (v1.4.0) - Search ENA for associated\
+  \ WGS samples\n\npositional arguments:\n  STR                   Taxon ID or Study,\
+  \ BioSample, or Run accession\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --exact_taxon         Exclude Taxon ID descendents.\n\
+  \  --outdir OUTPUT_DIRECTORY\n                        Directory to write output.\
+  \ (Default: .)\n  --prefix PREFIX       Prefix to use for output file names. (Default:\
+  \ ena)\n  --limit INT           Maximum number of results to return. (Default:\n\
+  \                        1000000)\n  --biosample_subset INT\n                  \
+  \      If a BioSample has multiple Experiments, pick a random\n                \
+  \        subset. (Default: Return All)\n  --min_read_length INT\n              \
+  \          Filters samples based on minimum mean read length.\n                \
+  \        (Default: No filter)\n  --min_base_count INT  Filters samples based on\
+  \ minimum basepair count.\n                        (Default: No filter)\n  --min_coverage\
+  \ INT    Filter samples based on minimum coverage (requires\n                  \
+  \      --genome_size)\n  --genome_size INT     Genome size to estimate coverage\
+  \ (requires --coverage)\n  --version             show program's version number and\
+  \ exit\n\nexample usage:\n  bactopia search PRJNA480016 --limit 20\n  bactopia search\
+  \ 1280 --exact_taxon --limit 20'\n  bactopia search \"staphylococcus aureus\" --limit\
+  \ 20\n  bactopia search SAMN01737350\n  bactopia search SRR578340\n"
+generated_using:
+- --help

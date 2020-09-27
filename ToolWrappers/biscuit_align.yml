@@ -1,0 +1,383 @@
+!Command
+command:
+- biscuit
+- align
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: idxbase
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: in1.fq
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: in2.fq
+  optional: true
+named:
+- !Flag
+  description: number of threads [1]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "For PE, read 1 to parent, read 2 to daughter (1, directional library);\n\
+    read1 and read 2 to both (0: default, nondirectional library); For SE, parent\
+    \ (1);\ndaughter (3); both (0, default); Def: parent (bisulfite\ntreated strand),\
+    \ daughter (synthesized strand)"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "1: BSW strand; 3: BSC strand; 0 (default): both; (libraries\ntargeting\
+    \ either BSW or BSC are unseen so far!)"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum seed length [19]
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: band width for banded alignment [100]
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: off-diagonal X-dropoff [100]
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "look for internal seeds inside a seed longer than\n{-k} * FLOAT [1.5]"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: seed occurrence for the 3rd round seeding [20]
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: adaptor of read 1 (fastq direction)
+  synonyms:
+  - -J
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: adaptor of read 2 (fastq direction)
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: min base quality to keep from both ends of reads [0]
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of extra bases to clip from 5'-end [0]
+  synonyms:
+  - '-5'
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of extra bases to clip from 3'-end [0]
+  synonyms:
+  - '-3'
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: skip seeds with more than INT occurrences [500]
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "drop chains shorter than FLOAT fraction of the longest\noverlapping\
+    \ chain [0.50]"
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: discard a chain if seeded bases shorter than INT [0]
+  synonyms:
+  - -W
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: perform at most INT rounds of mate rescues for a read [50]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: skip mate rescue
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip pairing; mate rescue performed unless -S also in use
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard full-length exact matches
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "score for a sequence match, which scales options -TdBOELU\nunless\
+    \ overridden [1]"
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: penalty for a mismatch [2]
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: gap open penalties for deletions and insertions [6,6]
+  synonyms:
+  - -O
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+  optional: true
+- !Flag
+  description: "gap extension penalty; a gap of size k cost\n'{-O} + {-E}*k' [1,1]"
+  synonyms:
+  - -E
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+  optional: true
+- !Flag
+  description: penalty for 5'- and 3'-end clipping [10,10]
+  synonyms:
+  - -L
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+  optional: true
+- !Flag
+  description: penalty for an unpaired read pair [17]
+  synonyms:
+  - -U
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: turn off autoinference of ALT chromosomes.
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: smart pairing (ignoring in2.fq)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read group header line such as '@RG\tID:foo\tSM:bar' [null]
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: suppress SAM header output
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "insert STR to header if it starts with @; or insert lines\nin FILE\
+    \ [null]"
+  synonyms:
+  - -H
+  args: !SimpleFlagArg
+    name: STR/FILE
+  optional: true
+- !Flag
+  description: "treat ALT contigs as part of the primary assembly (i.e.\nignore <idxbase>.alt\
+    \ file)"
+  synonyms:
+  - -j
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't modify mapQ of supplementary alignments.
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "verbose level:\n1=error, 2=warning, 3=message, 4+=debugging [3]"
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum score to output [30]
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: maximum number of hits output in XA [5,5]
+  synonyms:
+  - -h
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+    separator: ','
+  optional: true
+- !Flag
+  description: output all alignments for SE or unpaired PE
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: append FASTA/FASTQ comment to SAM output
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the reference FASTA header in the XR tag
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use soft clipping for supplementary alignments
+  synonyms:
+  - -Y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mark shorter split hits as secondary
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify the mean, standard deviation (10% of the mean\nif absent),\
+    \ max (4 sigma from the mean if absent) and min\nof insert size distribution.FR\
+    \ orientation only [inferred]\n"
+  synonyms:
+  - -I
+  args: !OptionalFlagArg
+    names:
+    - FLOAT
+    - FLOAT
+    - INT
+    - INT
+    separator: ','
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: biscuit align [options] <idxbase> <in1.fq> [in2.fq]\n\nAlgorithm\
+  \ options:\n       -t INT        number of threads [1]\n       -b INT        For\
+  \ PE, read 1 to parent, read 2 to daughter (1, directional library);\n         \
+  \            read1 and read 2 to both (0: default, nondirectional library); For\
+  \ SE, parent (1);\n                     daughter (3); both (0, default); Def: parent\
+  \ (bisulfite\n                     treated strand), daughter (synthesized strand)\n\
+  \       -f INT        1: BSW strand; 3: BSC strand; 0 (default): both; (libraries\n\
+  \                     targeting either BSW or BSC are unseen so far!)\n       -k\
+  \ INT        minimum seed length [19]\n       -w INT        band width for banded\
+  \ alignment [100]\n       -d INT        off-diagonal X-dropoff [100]\n       -r\
+  \ FLOAT      look for internal seeds inside a seed longer than\n               \
+  \      {-k} * FLOAT [1.5]\n       -y INT        seed occurrence for the 3rd round\
+  \ seeding [20]\n       -J STR        adaptor of read 1 (fastq direction)\n     \
+  \  -K STR        adaptor of read 2 (fastq direction)\n       -z INT        min base\
+  \ quality to keep from both ends of reads [0]\n       -5 INT        number of extra\
+  \ bases to clip from 5'-end [0]\n       -3 INT        number of extra bases to clip\
+  \ from 3'-end [0]\n       -c INT        skip seeds with more than INT occurrences\
+  \ [500]\n       -D FLOAT      drop chains shorter than FLOAT fraction of the longest\n\
+  \                     overlapping chain [0.50]\n       -W INT        discard a chain\
+  \ if seeded bases shorter than INT [0]\n       -m INT        perform at most INT\
+  \ rounds of mate rescues for a read [50]\n       -S            skip mate rescue\n\
+  \       -P            skip pairing; mate rescue performed unless -S also in use\n\
+  \       -e            discard full-length exact matches\n\nScoring options:\n  \
+  \     -A INT        score for a sequence match, which scales options -TdBOELU\n\
+  \                     unless overridden [1]\n       -B INT        penalty for a\
+  \ mismatch [2]\n       -O INT[,INT]  gap open penalties for deletions and insertions\
+  \ [6,6]\n       -E INT[,INT]  gap extension penalty; a gap of size k cost\n    \
+  \                 '{-O} + {-E}*k' [1,1]\n       -L INT[,INT]  penalty for 5'- and\
+  \ 3'-end clipping [10,10]\n       -U INT        penalty for an unpaired read pair\
+  \ [17]\n\nInput/output options:\n       -i            turn off autoinference of\
+  \ ALT chromosomes.\n       -p            smart pairing (ignoring in2.fq)\n     \
+  \  -R STR        read group header line such as '@RG\\tID:foo\\tSM:bar' [null]\n\
+  \       -F            suppress SAM header output\n       -H STR/FILE   insert STR\
+  \ to header if it starts with @; or insert lines\n                     in FILE [null]\n\
+  \       -j            treat ALT contigs as part of the primary assembly (i.e.\n\
+  \                     ignore <idxbase>.alt file)\n       -q            don't modify\
+  \ mapQ of supplementary alignments.\n       -v INT        verbose level: \n    \
+  \                 1=error, 2=warning, 3=message, 4+=debugging [3]\n       -T INT\
+  \        minimum score to output [30]\n       -h INT[,INT]  maximum number of hits\
+  \ output in XA [5,5]\n       -a            output all alignments for SE or unpaired\
+  \ PE\n       -C            append FASTA/FASTQ comment to SAM output\n       -V \
+  \           output the reference FASTA header in the XR tag\n       -Y         \
+  \   use soft clipping for supplementary alignments\n       -M            mark shorter\
+  \ split hits as secondary\n       -I FLOAT[,FLOAT[,INT[,INT]]]\n               \
+  \      specify the mean, standard deviation (10% of the mean\n                 \
+  \    if absent), max (4 sigma from the mean if absent) and min\n               \
+  \      of insert size distribution.FR orientation only [inferred]\n\n"
+generated_using: []

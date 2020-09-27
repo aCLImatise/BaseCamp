@@ -1,0 +1,97 @@
+!Command
+command:
+- assignTSStoGene.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: tss peak file
+  optional: false
+named:
+- !Flag
+  description: (use default homer gene annotation/RefSeq)
+  synonyms:
+  - -genome
+  args: !SimpleFlagArg
+    name: genomeVersion
+  optional: true
+- !Flag
+  description: (use custom gene annotation, can also use -gff or -gff3)
+  synonyms:
+  - -gtf
+  args: !SimpleFlagArg
+    name: GTF file
+  optional: true
+- !Flag
+  description: (use gene_id with GTF file)
+  synonyms:
+  - -gid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use custom gene annotation in bed/peak file format)
+  synonyms:
+  - -bed
+  args: !SimpleFlagArg
+    name: peak/BED file
+  optional: true
+- !Flag
+  description: (only supply reference TSS positions)
+  synonyms:
+  - -refTSS
+  args: !SimpleFlagArg
+    name: tss peak file
+  optional: true
+- !Flag
+  description: '<#> (max dist from tss to gene allowed, default: 1000)'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(don't keep reference promoters not found in the tss peak file, default:\
+    \ keep)"
+  synonyms:
+  - -nokeepRef
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(keep TSS without reference annotation, default: remove)'
+  synonyms:
+  - -keepOrphans
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (output genes with new 5'end)
+  synonyms:
+  - -bedOut
+  args: !SimpleFlagArg
+    name: file name
+  optional: true
+- !Flag
+  description: (do 3' end assignment instead of TSS, assumes peaks are on - strand
+    rel to gene)
+  synonyms:
+  - -3p
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tUsage: assignTSStoGene.pl <tss peak file> [options]\n\n\tThis program\
+  \ takes TSS defined by 5' RNA sequencing and assigns them to genes\n\n\tOne of the\
+  \ following options are required to define genes:\n\t\t-genome <genomeVersion> (use\
+  \ default homer gene annotation/RefSeq)\n\t\t-gtf <GTF file> (use custom gene annotation,\
+  \ can also use -gff or -gff3)\n\t\t\t-gid (use gene_id with GTF file)\n\t\t-bed\
+  \ <peak/BED file> (use custom gene annotation in bed/peak file format)\n\t\t-refTSS\
+  \ <tss peak file> (only supply reference TSS positions)\n\n\tOther Options:\n\t\t\
+  -d <#> (max dist from tss to gene allowed, default: 1000)\n\t\t-nokeepRef (don't\
+  \ keep reference promoters not found in the tss peak file, default: keep)\n\t\t\
+  -keepOrphans (keep TSS without reference annotation, default: remove)\n\t\t-bedOut\
+  \ <file name> (output genes with new 5'end)\n\n\t\t-3p (do 3' end assignment instead\
+  \ of TSS, assumes peaks are on - strand rel to gene)\n\n"
+generated_using:
+- --help

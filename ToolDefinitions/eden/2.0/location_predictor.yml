@@ -51,24 +51,10 @@ subcommands:
     args: !RepeatFlagArg
       name: SELECTED_COLUMN_NAMES
     optional: true
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: 'Increase output verbosity (default: None)'
-      synonyms:
-      - -v
-      - --verbosity
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'If set, do not log on file. (default: False)'
-      synonyms:
-      - -x
-      - --no-logging
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -115,61 +101,258 @@ subcommands:
         args: !RepeatFlagArg
           name: SELECTED_COLUMN_NAMES
         optional: true
-      - !Flag
-        description: '... (default: 2)'
-        synonyms:
-        - -w
-        - --window-size
-        args: !SimpleFlagArg
-          name: WINDOW_SIZE
-        optional: true
-      - !Flag
-        description: '... (default: 4)'
-        synonyms:
-        - -c
-        - --complexity
-        args: !SimpleFlagArg
-          name: COMPLEXITY
-        optional: true
-      - !Flag
-        description: '... (default: 20)'
-        synonyms:
-        - -b
-        - --nbits
-        args: !SimpleFlagArg
-          name: NBITS
-        optional: true
-      - !Flag
-        description: '... (default: 100)'
-        synonyms:
-        - -n
-        - --n_discretization-levels
-        args: !SimpleFlagArg
-          name: N
-        optional: true
-      - !Flag
-        description: '... (default: 5)'
-        synonyms:
-        - -s
-        - --label-size
-        args: !SimpleFlagArg
-          name: LABEL_SIZE
-        optional: true
-      - !Flag
-        description: '... (default: 3)'
-        synonyms:
-        - --min-subarray-size
-        args: !SimpleFlagArg
-          name: MIN_SUBARRAY_SIZE
-        optional: true
-      - !Flag
-        description: "... (default: 15)\n"
-        synonyms:
-        - --max-subarray-size
-        args: !SimpleFlagArg
-          name: MAX_SUBARRAY_SIZE
-        optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: 'Increase output verbosity (default: None)'
+          synonyms:
+          - -v
+          - --verbosity
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: 'If set, do not log on file. (default: False)'
+          synonyms:
+          - -x
+          - --no-logging
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: 'Path to file containing input. (default: None)'
+            synonyms:
+            - -i
+            - --input-file
+            args: !SimpleFlagArg
+              name: INPUT_FILE
+            optional: true
+          - !Flag
+            description: 'Path to a fit model file. (default: model)'
+            synonyms:
+            - -m
+            - --model-file
+            args: !SimpleFlagArg
+              name: MODEL_FILE
+            optional: true
+          - !Flag
+            description: '... (default: gene_domain_score)'
+            synonyms:
+            - -g
+            - --gene-domain-score-file-name
+            args: !SimpleFlagArg
+              name: GENE_DOMAIN_SCORE_FNAME
+            optional: true
+          - !Flag
+            description: 'Path to output directory. (default: out)'
+            synonyms:
+            - -o
+            - --output-dir
+            args: !SimpleFlagArg
+              name: OUTPUT_DIR_PATH
+            optional: true
+          - !Flag
+            description: '.... (default: None)'
+            synonyms:
+            - -l
+            - --selected-column-names
+            args: !RepeatFlagArg
+              name: SELECTED_COLUMN_NAMES
+            optional: true
+          - !Flag
+            description: '... (default: 2)'
+            synonyms:
+            - -w
+            - --window-size
+            args: !SimpleFlagArg
+              name: WINDOW_SIZE
+            optional: true
+          - !Flag
+            description: '... (default: 4)'
+            synonyms:
+            - -c
+            - --complexity
+            args: !SimpleFlagArg
+              name: COMPLEXITY
+            optional: true
+          - !Flag
+            description: '... (default: 20)'
+            synonyms:
+            - -b
+            - --nbits
+            args: !SimpleFlagArg
+              name: NBITS
+            optional: true
+          - !Flag
+            description: '... (default: 100)'
+            synonyms:
+            - -n
+            - --n_discretization-levels
+            args: !SimpleFlagArg
+              name: N
+            optional: true
+          - !Flag
+            description: '... (default: 5)'
+            synonyms:
+            - -s
+            - --label-size
+            args: !SimpleFlagArg
+              name: LABEL_SIZE
+            optional: true
+          - !Flag
+            description: '... (default: 3)'
+            synonyms:
+            - --min-subarray-size
+            args: !SimpleFlagArg
+              name: MIN_SUBARRAY_SIZE
+            optional: true
+          - !Flag
+            description: "... (default: 15)\n"
+            synonyms:
+            - --max-subarray-size
+            args: !SimpleFlagArg
+              name: MAX_SUBARRAY_SIZE
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: location_predictor fit [-h] -i INPUT_FILE [-m MODEL_FILE]\n\
+            \                              [-g GENE_DOMAIN_SCORE_FNAME]\n        \
+            \                      [-o OUTPUT_DIR_PATH] -l SELECTED_COLUMN_NAMES\n\
+            \                              [SELECTED_COLUMN_NAMES ...] [-w WINDOW_SIZE]\n\
+            \                              [-c COMPLEXITY] [-b NBITS] [-n N]\n   \
+            \                           [-s LABEL_SIZE]\n                        \
+            \      [--min-subarray-size MIN_SUBARRAY_SIZE]\n                     \
+            \         [--max-subarray-size MAX_SUBARRAY_SIZE]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  -i INPUT_FILE,\
+            \ --input-file INPUT_FILE\n                        Path to file containing\
+            \ input. (default: None)\n  -m MODEL_FILE, --model-file MODEL_FILE\n \
+            \                       Path to a fit model file. (default: model)\n \
+            \ -g GENE_DOMAIN_SCORE_FNAME, --gene-domain-score-file-name GENE_DOMAIN_SCORE_FNAME\n\
+            \                        ... (default: gene_domain_score)\n  -o OUTPUT_DIR_PATH,\
+            \ --output-dir OUTPUT_DIR_PATH\n                        Path to output\
+            \ directory. (default: out)\n  -l SELECTED_COLUMN_NAMES [SELECTED_COLUMN_NAMES\
+            \ ...], --selected-column-names SELECTED_COLUMN_NAMES [SELECTED_COLUMN_NAMES\
+            \ ...]\n                        .... (default: None)\n  -w WINDOW_SIZE,\
+            \ --window-size WINDOW_SIZE\n                        ... (default: 2)\n\
+            \  -c COMPLEXITY, --complexity COMPLEXITY\n                        ...\
+            \ (default: 4)\n  -b NBITS, --nbits NBITS\n                        ...\
+            \ (default: 20)\n  -n N, --n_discretization-levels N\n               \
+            \         ... (default: 100)\n  -s LABEL_SIZE, --label-size LABEL_SIZE\n\
+            \                        ... (default: 5)\n  --min-subarray-size MIN_SUBARRAY_SIZE\n\
+            \                        ... (default: 3)\n  --max-subarray-size MAX_SUBARRAY_SIZE\n\
+            \                        ... (default: 15)\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - location_predictor
+          - predict
+          positional: []
+          named:
+          - !Flag
+            description: 'Path to file containing input. (default: None)'
+            synonyms:
+            - -i
+            - --input-file
+            args: !SimpleFlagArg
+              name: INPUT_FILE
+            optional: true
+          - !Flag
+            description: 'Path to a fit model file. (default: model)'
+            synonyms:
+            - -m
+            - --model-file
+            args: !SimpleFlagArg
+              name: MODEL_FILE
+            optional: true
+          - !Flag
+            description: '... (default: gene_domain_score)'
+            synonyms:
+            - -g
+            - --gene-domain-score-file-name
+            args: !SimpleFlagArg
+              name: GENE_DOMAIN_SCORE_FNAME
+            optional: true
+          - !Flag
+            description: "Path to output directory. (default: out)\n"
+            synonyms:
+            - -o
+            - --output-dir
+            args: !SimpleFlagArg
+              name: OUTPUT_DIR_PATH
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: location_predictor predict [-h] -i INPUT_FILE [-m MODEL_FILE]\n\
+            \                                  [-g GENE_DOMAIN_SCORE_FNAME]\n    \
+            \                              [-o OUTPUT_DIR_PATH]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  -i INPUT_FILE,\
+            \ --input-file INPUT_FILE\n                        Path to file containing\
+            \ input. (default: None)\n  -m MODEL_FILE, --model-file MODEL_FILE\n \
+            \                       Path to a fit model file. (default: model)\n \
+            \ -g GENE_DOMAIN_SCORE_FNAME, --gene-domain-score-file-name GENE_DOMAIN_SCORE_FNAME\n\
+            \                        ... (default: gene_domain_score)\n  -o OUTPUT_DIR_PATH,\
+            \ --output-dir OUTPUT_DIR_PATH\n                        Path to output\
+            \ directory. (default: out)\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: show program's version number and exit
+          synonyms:
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "usage: location_predictor [-h] [--version] [-v] [-x] {fit,predict}\
+          \ ...\n\nLocationPredictor\n\nExample usage:\n# for fitting a predictive\
+          \ model:\n./location_predictor.py -x -v fit -c 2 -b 13 -n 30 -s 3 -l 'clust_id'\
+          \ 'domain_scores' -i ../data/Traindataset_Cas_loci_TypeI_system_only.Feautres.tab\
+          \ -m mod_type_I.md -g ../data/ProteinID_DomainID_Bitscore_TypeI.tab\n\n\
+          # for predicting using a fit model:\n./location_predictor.py -x predict\
+          \ -i ../data/Testdataset_Cas_loci_TypeI_system_only.Feautres.tab -g ../data/ProteinID_DomainID_Bitscore_TypeI.tab\
+          \ -m out/mod_type_I.md\ncat out/summary.txt\n\npositional arguments:\n \
+          \ {fit,predict}     commands\n    fit             Fit commands\n    predict\
+          \         Predict commands\n\noptional arguments:\n  -h, --help        show\
+          \ this help message and exit\n  --version         show program's version\
+          \ number and exit\n  -v, --verbosity   Increase output verbosity (default:\
+          \ None)\n  -x, --no-logging  If set, do not log on file. (default: False)\n\
+          \nAuthor: Fabrizio Costa\nCopyright: 2015\nLicense: GPL\nMaintainer: Fabrizio\
+          \ Costa\nEmail: costa@informatik.uni-freiburg.de\nStatus: Production\nVersion:\
+          \ 0.2.1\n\nCite:\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -206,12 +389,9 @@ subcommands:
         \ 5)\n  --min-subarray-size MIN_SUBARRAY_SIZE\n                        ...\
         \ (default: 3)\n  --max-subarray-size MAX_SUBARRAY_SIZE\n                \
         \        ... (default: 15)\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - location_predictor
-      - predict
+      command: *id005
       positional: []
       named:
       - !Flag
@@ -271,20 +451,9 @@ subcommands:
         \ out)\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "usage: location_predictor [-h] [--version] [-v] [-x] {fit,predict}\
       \ ...\n\nLocationPredictor\n\nExample usage:\n# for fitting a predictive model:\n\
       ./location_predictor.py -x -v fit -c 2 -b 13 -n 30 -s 3 -l 'clust_id' 'domain_scores'\
@@ -372,7 +541,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTPUT_DIR_PATH
     optional: true
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag: !Flag

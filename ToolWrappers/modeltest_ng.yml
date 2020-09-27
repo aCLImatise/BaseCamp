@@ -1,0 +1,366 @@
+!Command
+command:
+- modeltest-ng
+positional:
+- !Positional
+  description: nucleotide
+  position: 0
+  name: nt
+  optional: false
+- !Positional
+  description: amino acid
+  position: 1
+  name: aa
+  optional: false
+- !Positional
+  description: maximum likelihood
+  position: 2
+  name: ml
+  optional: false
+- !Positional
+  description: maximum parsimony
+  position: 3
+  name: mp
+  optional: false
+- !Positional
+  description: fixed maximum likelihood (JC)
+  position: 4
+  name: fixed-ml-jc
+  optional: false
+- !Positional
+  description: fixed maximum likelihood (GTR)
+  position: 5
+  name: fixed-ml-gtr
+  optional: false
+- !Positional
+  description: fixed maximum parsimony (default)
+  position: 6
+  name: fixed-mp
+  optional: false
+- !Positional
+  description: random generated tree
+  position: 7
+  name: random
+  optional: false
+- !Positional
+  description: fixed user defined (requires -u argument)
+  position: 8
+  name: user
+  optional: false
+- !Positional
+  description: Lewis (2001)
+  position: 0
+  name: lewis
+  optional: false
+- !Positional
+  description: "Felsenstein\nrequires number of invariant sites"
+  position: 1
+  name: felsenstein
+  optional: false
+- !Positional
+  description: "Leaché et al. (2015)\nrequires invariant sites composition"
+  position: 2
+  name: stamatakis
+  optional: false
+- !Positional
+  description: RAxML (DNA 3 schemes / AA full search)
+  position: 3
+  name: raxml
+  optional: false
+- !Positional
+  description: PhyML (DNA full search / 14 AA matrices)
+  position: 4
+  name: phyml
+  optional: false
+- !Positional
+  description: MrBayes (DNA 3 schemes / 8 AA matrices)
+  position: 5
+  name: mrbayes
+  optional: false
+- !Positional
+  description: PAUP* (DNA full search / AA full search)
+  position: 6
+  name: paup
+  optional: false
+named:
+- !Flag
+  description: sets the data type
+  synonyms:
+  - -d
+  - --datatype
+  args: !SimpleFlagArg
+    name: data_type_t
+  optional: true
+- !Flag
+  description: sets the input alignment file (FASTA or PHYLIP format, required)
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: input_msa
+  optional: true
+- !Flag
+  description: pipes the output into a file
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: output_file
+  optional: true
+- !Flag
+  description: sets the number of processors to use (shared memory)
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: n_procs
+  optional: true
+- !Flag
+  description: sets a partitioning scheme
+  synonyms:
+  - -q
+  - --partitions
+  args: !SimpleFlagArg
+    name: partitions_file
+  optional: true
+- !Flag
+  description: sets the seed for the random number generator
+  synonyms:
+  - -r
+  - --rngseed
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+- !Flag
+  description: sets the starting topology
+  synonyms:
+  - -t
+  - --topology
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: sets a user tree
+  synonyms:
+  - -u
+  - --utree
+  args: !SimpleFlagArg
+    name: tree_file
+  optional: true
+- !Flag
+  description: force output overriding
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable checkpoint writing
+  synonyms:
+  - --disable-checkpoint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[:values]     includes ascertainment bias correction\ncheck modeltest\
+    \ manual for more information"
+  synonyms:
+  - -a
+  - --asc-bias
+  args: !SimpleFlagArg
+    name: algorithm
+  optional: true
+- !Flag
+  description: "[ef]                sets the candidate models frequencies\ne: estimated\
+    \ - maximum likelihood (DNA) / empirical (AA)\nf: fixed - equal (DNA) / model\
+    \ defined (AA)"
+  synonyms:
+  - -f
+  - --frequencies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "sets the candidate model matrices separated by commas.\nuse '+' or\
+    \ '-' prefix for updating the default list.\ne.g., \"-m JTT,LG\" evaluates JTT\
+    \ and LG only .\n\"-m +LG4X,+LG4M,-LG\" adds LG4 models and removes LG and from\
+    \ the list.\ndna: *JC *HKY *TrN *TPM1 *TPM2 *TPM3\n*TIM1 *TIM2 *TIM3 *TVM *GTR\n\
+    protein: *DAYHOFF *LG *DCMUT *JTT *MTREV *WAG *RTREV *CPREV\n*VT *BLOSUM62 *MTMAM\
+    \ *MTART *MTZOA *PMB *HIVB *HIVW\n*JTT-DCMUT *FLU *STMTREV LG4M LG4X GTR\n* included\
+    \ by default"
+  synonyms:
+  - -m
+  - --models
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: "[3|5|7|11|203]          sets the number of predefined DNA substitution\
+    \ schemes evaluated\n3:   JC/F81, K80/HKY, SYM/GTR\n5:   + TrNef/TrN, TPM1/TPM1uf\n\
+    7:   + TIM1ef/TIM1, TVMef/TVM\n11:  + TPM2/TPM2uf, TPM3/TPM3uf, TIM2ef/TIM2, TIM3ef/TIM3\n\
+    203: All possible GTR submatrices"
+  synonyms:
+  - -s
+  - --schemes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[tool]                 sets candidate models according to a specified
+    tool'
+  synonyms:
+  - -T
+  - --template
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sets the model optimization epsilon
+  synonyms:
+  - --eps
+  args: !SimpleFlagArg
+    name: epsilon_value
+  optional: true
+- !Flag
+  description: sets the parameter optimization tolerance
+  synonyms:
+  - --tol
+  args: !SimpleFlagArg
+    name: tolerance_value
+  optional: true
+- !Flag
+  description: forces frequencies smoothing
+  synonyms:
+  - --smooth-frequencies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[a|g]               sets gamma rates mode\na                  uses\
+    \ the average (or mean) per category (default)\nm                  uses the median\
+    \ per category"
+  synonyms:
+  - -g
+  - --gamma-rates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "disables pattern compression\nmodeltest ignores if there are missing\
+    \ states"
+  synonyms:
+  - -H
+  - --no-compress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep branch lengths fixed
+  synonyms:
+  - -k
+  - --keep-params
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run in verbose mode
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help message and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "                             _      _ _            _      _   _  _____\
+  \ \n                            | |    | | |          | |    | \\ | |/ ____|\n \
+  \        _ __ ___   ___   __| | ___| | |_ ___  ___| |_   |  \\| | |  __ \n     \
+  \   | '_ ` _ \\ / _ \\ / _` |/ _ \\ | __/ _ \\/ __| __|  | . ` | | |_ |\n      \
+  \  | | | | | | (_) | (_| |  __/ | ||  __/\\__ \\ |_   | |\\  | |__| |\n        |_|\
+  \ |_| |_|\\___/ \\__,_|\\___|_|\\__\\___||___/\\__|  |_| \\_|\\_____|\n--------------------------------------------------------------------------------\n\
+  modeltest x.y.z\nCopyright (C) 2017 Diego Darriba, David Posada, Alexandros Stamatakis\n\
+  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n\
+  This is free software: you are free to change and redistribute it.\nThere is NO\
+  \ WARRANTY, to the extent permitted by law.\n\nWritten by Diego Darriba.\n--------------------------------------------------------------------------------\n\
+  \nUsage: modeltest -i sequenceFilename\n            [-c n_categories] [-d nt|aa]\
+  \ [-F] [-N]\n            [-p numberOfThreads] [-q partitionsFile]\n            [-t\
+  \ mp|fixed|user] [-u treeFile] [-v] [-V]\n            [-T raxml|phyml|mrbayes|paup]\n\
+  \            [--eps optimizationEpsilonValue] [--tol parameterTolerance]\n\nselects\
+  \ the best-fit model of amino acid or nucleotide replacement.\n\nmandatory arguments\
+  \ for long options are also mandatory for short options.\n\n\n Main arguments:\n\
+  \  -d, --datatype data_type_t            sets the data type\n                 nt\
+  \                     nucleotide\n                 aa                     amino\
+  \ acid\n  -i, --input input_msa                 sets the input alignment file (FASTA\
+  \ or PHYLIP format, required)\n  -o, --output output_file              pipes the\
+  \ output into a file\n  -p, --processes n_procs               sets the number of\
+  \ processors to use (shared memory)\n  -q, --partitions partitions_file      sets\
+  \ a partitioning scheme\n  -r, --rngseed seed                    sets the seed for\
+  \ the random number generator\n  -t, --topology type                   sets the\
+  \ starting topology\n                 ml                     maximum likelihood\n\
+  \                 mp                     maximum parsimony\n                 fixed-ml-jc\
+  \            fixed maximum likelihood (JC)\n                 fixed-ml-gtr      \
+  \     fixed maximum likelihood (GTR)\n                 fixed-mp               fixed\
+  \ maximum parsimony (default)\n                 random                 random generated\
+  \ tree\n                 user                   fixed user defined (requires -u\
+  \ argument)\n  -u, --utree tree_file                 sets a user tree\n      --force\
+  \                           force output overriding\n      --disable-checkpoint\
+  \              disable checkpoint writing\n\n Candidate models:\n  -a, --asc-bias\
+  \ algorithm[:values]     includes ascertainment bias correction\n              \
+  \                            check modeltest manual for more information\n     \
+  \            lewis                  Lewis (2001)\n                 felsenstein \
+  \           Felsenstein\n                                          requires number\
+  \ of invariant sites\n                 stamatakis             Leaché et al. (2015)\n\
+  \                                          requires invariant sites composition\n\
+  \  -f, --frequencies [ef]                sets the candidate models frequencies\n\
+  \                                        e: estimated - maximum likelihood (DNA)\
+  \ / empirical (AA)\n                                        f: fixed - equal (DNA)\
+  \ / model defined (AA)\n  -h, --model-het [uigf]                sets the candidate\
+  \ models rate heterogeneity\n                                        u: *uniform\n\
+  \                                        i: *proportion of invariant sites (+I)\n\
+  \                                        g: *discrite Gamma rate categories (+G)\n\
+  \                                        f: *both +I and +G (+I+G)\n           \
+  \                             r: free rate models (+R)\n                       \
+  \                 * included by default\n  -m, --models list                   \
+  \  sets the candidate model matrices separated by commas.\n                    \
+  \                    use '+' or '-' prefix for updating the default list.\n    \
+  \                                    e.g., \"-m JTT,LG\" evaluates JTT and LG only\
+  \ .\n                                              \"-m +LG4X,+LG4M,-LG\" adds LG4\
+  \ models and removes LG and from the list.\n                                   \
+  \     dna: *JC *HKY *TrN *TPM1 *TPM2 *TPM3\n                                   \
+  \          *TIM1 *TIM2 *TIM3 *TVM *GTR\n                                       \
+  \ protein: *DAYHOFF *LG *DCMUT *JTT *MTREV *WAG *RTREV *CPREV\n                \
+  \                                 *VT *BLOSUM62 *MTMAM *MTART *MTZOA *PMB *HIVB\
+  \ *HIVW\n                                                 *JTT-DCMUT *FLU *STMTREV\
+  \ LG4M LG4X GTR\n                                        * included by default\n\
+  \  -s, --schemes [3|5|7|11|203]          sets the number of predefined DNA substitution\
+  \ schemes evaluated\n                                        3:   JC/F81, K80/HKY,\
+  \ SYM/GTR\n                                        5:   + TrNef/TrN, TPM1/TPM1uf\n\
+  \                                        7:   + TIM1ef/TIM1, TVMef/TVM\n       \
+  \                                 11:  + TPM2/TPM2uf, TPM3/TPM3uf, TIM2ef/TIM2,\
+  \ TIM3ef/TIM3\n                                        203: All possible GTR submatrices\n\
+  \  -T, --template [tool]                 sets candidate models according to a specified\
+  \ tool\n                 raxml                  RAxML (DNA 3 schemes / AA full search)\n\
+  \                 phyml                  PhyML (DNA full search / 14 AA matrices)\n\
+  \                 mrbayes                MrBayes (DNA 3 schemes / 8 AA matrices)\n\
+  \                 paup                   PAUP* (DNA full search / AA full search)\n\
+  \n Other options:\n      --eps epsilon_value               sets the model optimization\
+  \ epsilon\n      --tol tolerance_value             sets the parameter optimization\
+  \ tolerance\n      --smooth-frequencies              forces frequencies smoothing\n\
+  \  -g, --gamma-rates [a|g]               sets gamma rates mode\n               \
+  \      a                  uses the average (or mean) per category (default)\n  \
+  \                   m                  uses the median per category\n      --disable-checkpoint\
+  \              does not create checkpoint files\n  -H, --no-compress           \
+  \          disables pattern compression\n                                      \
+  \  modeltest ignores if there are missing states\n  -k, --keep-params          \
+  \           keep branch lengths fixed\n  -v, --verbose                         run\
+  \ in verbose mode\n      --help                            display this help message\
+  \ and exit\n      --version                         output version information and\
+  \ exit\n\nExit status:\n 0  if OK,\n 1  if minor problems (e.g., invalid arguments\
+  \ or data),\n 2  if serious trouble (e.g., execution crashed).\n\nReport modeltest\
+  \ bugs to diego.darriba@h-its.org\nModelTest home page: <http://www.github.com/ddarriba/modeltest/>\n"
+generated_using:
+- --help

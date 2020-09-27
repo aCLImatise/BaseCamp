@@ -11,35 +11,167 @@ subcommands:
   - parse
   positional: []
   named: []
-  parent: &id003 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: Open the floodgates
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Don't colorize output
-      synonyms:
-      - --no-color
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
-    - &id004 !Command
+    - &id009 !Command
       command: *id002
       positional: []
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: Open the floodgates
+          synonyms:
+          - --debug
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Don't colorize output
+          synonyms:
+          - --no-color
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - &id004 !Command
+          command: *id002
+          positional: []
+          named: []
+          parent: *id003
+          subcommands:
+          - !Command
+            command: &id006
+            - wdl
+            - parse
+            - wdl_file
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: wdl
+              optional: false
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - --no-color
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - --debug
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id004
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: ''
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: ''
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse}\
+              \ ...\nwdl: error: unrecognized arguments: --usage\n"
+            generated_using: &id007
+            - --usage
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: wdl parse [-h] wdl_file\n\nParse a WDL file, print parse\
+            \ tree\n\npositional arguments:\n  wdl_file    Path to WDL File\n\noptional\
+            \ arguments:\n  -h, --help  show this help message and exit\n"
+          generated_using: &id005
+          - --help
+        - !Command
+          command: &id008
+          - wdl
+          - run
+          positional:
+          - !Positional
+            description: Path to WDL File
+            position: 0
+            name: wdl_file
+            optional: false
+          named:
+          - !Flag
+            description: Path to JSON file to define inputs
+            synonyms:
+            - --inputs
+            args: !SimpleFlagArg
+              name: INPUTS
+            optional: true
+          - !Flag
+            description: Use SGE to execute tasks
+            synonyms:
+            - --sge
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: wdl run [-h] [--inputs INPUTS] [--sge] wdl_file\n\nRun\
+            \ you a WDL\n\npositional arguments:\n  wdl_file         Path to WDL File\n\
+            \noptional arguments:\n  -h, --help       show this help message and exit\n\
+            \  --inputs INPUTS  Path to JSON file to define inputs\n  --sge      \
+            \      Use SGE to execute tasks\n"
+          generated_using: *id005
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: show program's version number and exit
+          synonyms:
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse}\
+          \ ...\n\nWorkflow Description Language (WDL)\n\npositional arguments:\n\
+          \  {run,parse}  WDL Actions\n    run        Run you a WDL\n    parse   \
+          \   Parse a WDL file, print parse tree\n\noptional arguments:\n  -h, --help\
+          \   show this help message and exit\n  --version    show program's version\
+          \ number and exit\n  --debug      Open the floodgates\n  --no-color   Don't\
+          \ colorize output\n"
+        generated_using: *id005
       subcommands:
       - !Command
-        command: &id006
-        - wdl
-        - parse
-        - wdl_file
+        command: *id006
         positional:
         - !Positional
           description: ''
@@ -77,27 +209,17 @@ subcommands:
           optional: true
         help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse}\
           \ ...\nwdl: error: unrecognized arguments: --usage\n"
-        generated_using: &id007
-        - --usage
+        generated_using: *id007
       usage: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
+      help_flag:
       usage_flag:
       version_flag:
       help_text: "usage: wdl parse [-h] wdl_file\n\nParse a WDL file, print parse\
         \ tree\n\npositional arguments:\n  wdl_file    Path to WDL File\n\noptional\
         \ arguments:\n  -h, --help  show this help message and exit\n"
-      generated_using: &id005
-      - --help
+      generated_using: *id005
     - !Command
-      command: &id008
-      - wdl
-      - run
+      command: *id008
       positional:
       - !Positional
         description: Path to WDL File
@@ -137,20 +259,9 @@ subcommands:
         \  Use SGE to execute tasks\n"
       generated_using: *id005
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "usage: wdl [-h] [--version] [--debug] [--no-color] {run,parse} ...\n\
       \nWorkflow Description Language (WDL)\n\npositional arguments:\n  {run,parse}\
       \  WDL Actions\n    run        Run you a WDL\n    parse      Parse a WDL file,\
@@ -180,7 +291,7 @@ subcommands:
       - --debug
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id004
+    parent: *id009
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -229,7 +340,7 @@ subcommands:
     - --sge
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag

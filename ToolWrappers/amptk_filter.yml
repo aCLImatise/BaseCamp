@@ -1,0 +1,183 @@
+!Command
+command:
+- amptk
+- filter
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: arguments
+  optional: false
+named:
+- !Flag
+  description: OTU table
+  synonyms:
+  - -i
+  - --otu_table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: OTU fasta
+  synonyms:
+  - -f
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Base name for output files. Default: use input basename'
+  synonyms:
+  - -o
+  - --out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Name of barcode of mock community (Recommended)
+  synonyms:
+  - -b
+  - --mock_barcode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mock community FASTA file. Required if -b passed. [synmock,mock1,mock2,mock3,other]
+  synonyms:
+  - -m
+  - --mc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Calculate index-bleed options. Default: all [in,all]'
+  synonyms:
+  - -c
+  - --calculate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sample(s) to drop from OTU table. (list, separate by space)
+  synonyms:
+  - -d
+  - --drop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Negative sample names. (list, separate by space)
+  synonyms:
+  - --negatives
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore sample(s) during index-bleed calc (list, separate by space)
+  synonyms:
+  - --ignore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Filter index bleed between samples (percent). Default: 0.005'
+  synonyms:
+  - -p
+  - --index_bleed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number to use for establishing read count threshold. Default: max
+    [max,sum,top5,top10,top25]'
+  synonyms:
+  - -t
+  - --threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Threshold to subtract from all OTUs (any number or auto). Default:
+    0'
+  synonyms:
+  - -s
+  - --subtract
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Delimiter of OTU tables. Default: tsv  [csv, tsv]'
+  synonyms:
+  - --delimiter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum number of reads for valid OTU from whole experiment. Default:
+    2'
+  synonyms:
+  - --min_reads_otu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum number of samples for valid OTU from whole experiment. Default:
+    1'
+  synonyms:
+  - --min_samples_otu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Column order (separate by space). Default: sort naturally'
+  synonyms:
+  - --col_order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Keep Spike-in mock community. Default: False'
+  synonyms:
+  - --keep_mock
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show OTU stats on STDOUT
+  synonyms:
+  - --show_stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep intermediate files.
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'USEARCH executable. Default: usearch9'
+  synonyms:
+  - -u
+  - --usearch
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       amptk filter <arguments>\nversion:     1.4.2\n\nDescription:\
+  \ Script filters OTU table generated from the `amptk cluster` command and should\
+  \ \n             be run on all datasets to combat barcode-switching or index-bleed\
+  \ (as high as \n             2%% in MiSeq datasets, ~ 0.3%% in Ion PGM datasets).\
+  \  This script works best when\n             a spike-in control sequence is used,\
+  \ e.g. Synthetic Mock, although a mock is not required.\n    \nRequired:    -i,\
+  \ --otu_table     OTU table\n             -f, --fasta         OTU fasta\n      \
+  \       \nOptional:    -o, --out           Base name for output files. Default:\
+  \ use input basename\n             -b, --mock_barcode  Name of barcode of mock community\
+  \ (Recommended)\n             -m, --mc            Mock community FASTA file. Required\
+  \ if -b passed. [synmock,mock1,mock2,mock3,other]\n             -c, --calculate\
+  \     Calculate index-bleed options. Default: all [in,all]\n             -d, --drop\
+  \          Sample(s) to drop from OTU table. (list, separate by space)\n       \
+  \      --negatives         Negative sample names. (list, separate by space)\n  \
+  \           --ignore            Ignore sample(s) during index-bleed calc (list,\
+  \ separate by space)\n             \nFiltering    -n, --normalize     Normalize\
+  \ reads to number of reads per sample [y,n]. Default: y\n             -p, --index_bleed\
+  \   Filter index bleed between samples (percent). Default: 0.005\n             -t,\
+  \ --threshold     Number to use for establishing read count threshold. Default:\
+  \ max [max,sum,top5,top10,top25]\n             -s, --subtract      Threshold to\
+  \ subtract from all OTUs (any number or auto). Default: 0\n             --delimiter\
+  \         Delimiter of OTU tables. Default: tsv  [csv, tsv]\n             --min_reads_otu\
+  \     Minimum number of reads for valid OTU from whole experiment. Default: 2\n\
+  \             --min_samples_otu   Minimum number of samples for valid OTU from whole\
+  \ experiment. Default: 1\n             --col_order         Column order (separate\
+  \ by space). Default: sort naturally\n             --keep_mock         Keep Spike-in\
+  \ mock community. Default: False\n             --show_stats        Show OTU stats\
+  \ on STDOUT  \n             --debug             Keep intermediate files.\n     \
+  \        -u, --usearch       USEARCH executable. Default: usearch9 \n        \n"
+generated_using:
+- --help

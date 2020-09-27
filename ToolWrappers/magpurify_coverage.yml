@@ -1,0 +1,70 @@
+!Command
+command:
+- magpurify
+- coverage
+positional:
+- !Positional
+  description: Path to input genome in FASTA format
+  position: 0
+  name: fna
+  optional: false
+- !Positional
+  description: Output directory to store results and intermediate
+  position: 1
+  name: out
+  optional: false
+- !Positional
+  description: bams                  Path to input sorted BAM file(s)
+  position: 2
+  name: files
+  optional: false
+named:
+- !Flag
+  description: "Contigs with coverage greater than [max-deviation *\nmean coverage]\
+    \ or less than [(1/max-deviation) * mean\ncoverage] will be flagged as outliers\
+    \ (default: 5.0)"
+  synonyms:
+  - --max-deviation
+  args: !SimpleFlagArg
+    name: MAX_DEVIATION
+  optional: true
+- !Flag
+  description: "Compute the mean weighted by the contig length\n(default: False)"
+  synonyms:
+  - --weighted-mean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of CPUs to use (default: 1)'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: magpurify coverage [-h] [--max-deviation MAX_DEVIATION]\n     \
+  \                     [--weighted-mean] [--threads THREADS]\n                  \
+  \        fna out bams [bams ...]\n\nFind contigs with outlier coverage profile.\n\
+  \npositional arguments:\n  fna                   Path to input genome in FASTA format\n\
+  \  out                   Output directory to store results and intermediate\n  \
+  \                      files\n  bams                  Path to input sorted BAM file(s)\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --max-deviation MAX_DEVIATION\n                        Contigs with coverage\
+  \ greater than [max-deviation *\n                        mean coverage] or less\
+  \ than [(1/max-deviation) * mean\n                        coverage] will be flagged\
+  \ as outliers (default: 5.0)\n  --weighted-mean       Compute the mean weighted\
+  \ by the contig length\n                        (default: False)\n  --threads THREADS\
+  \     Number of CPUs to use (default: 1)\n"
+generated_using:
+- --help

@@ -18,17 +18,10 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: restrict output to just this sequence name
-      synonyms:
-      - -name
-      args: !SimpleFlagArg
-        name: name
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -42,19 +35,77 @@ subcommands:
         args: !SimpleFlagArg
           name: is
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: restrict output to just this sequence name
+          synonyms:
+          - -name
+          args: !SimpleFlagArg
+            name: name
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: &id004
+          - -h
+        - !Command
+          command: &id005
+          - qacToQa
+          - out.qa
+          positional: []
+          named:
+          - !Flag
+            description: not a valid option
+            synonyms:
+            - -h
+            args: !SimpleFlagArg
+              name: is
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "-h is not a valid option\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "qacToQa - convert from compressed to uncompressed\nquality score\
+          \ format.\nusage:\n   qacToQa in.qac out.qa\n\t-name=name  restrict output\
+          \ to just this sequence name\n\n"
+        generated_using: &id006 []
       subcommands: []
       usage: []
       help_flag:
       usage_flag:
       version_flag:
       help_text: "-h is not a valid option\n"
-      generated_using: &id004
-      - -h
+      generated_using: *id004
     - !Command
-      command: &id005
-      - qacToQa
-      - out.qa
+      command: *id005
       positional: []
       named:
       - !Flag
@@ -79,7 +130,7 @@ subcommands:
     help_text: "qacToQa - convert from compressed to uncompressed\nquality score format.\n\
       usage:\n   qacToQa in.qac out.qa\n\t-name=name  restrict output to just this\
       \ sequence name\n\n"
-    generated_using: &id006 []
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag:
@@ -98,7 +149,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag:

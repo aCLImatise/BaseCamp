@@ -1,0 +1,122 @@
+!Command
+command:
+- fastq-stats
+positional:
+- !Positional
+  description: ': #reads in the fastq file'
+  position: 0
+  name: reads
+  optional: false
+- !Positional
+  description: ': read length. mean and stdev are provided for variable read lengths'
+  position: 1
+  name: len
+  optional: false
+- !Positional
+  description: ': phred scale used'
+  position: 2
+  name: phred
+  optional: false
+- !Positional
+  description: ': Number of reads used to generate duplicate read statistics'
+  position: 3
+  name: window-size
+  optional: false
+- !Positional
+  description: ': Number of bases to assess for duplicity'
+  position: 4
+  name: cycle-max
+  optional: false
+- !Positional
+  description: ': Number of reads that are duplicates'
+  position: 5
+  name: dups
+  optional: false
+- !Positional
+  description: ': Base Quality min, max and mean'
+  position: 0
+  name: qual
+  optional: false
+named:
+- !Flag
+  description: 'cyclemax: max cycles for which following quality stats are produced
+    [35]'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'window: max window size for generating duplicate read statistics [2000000]'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'debug: prints out debug statements'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't do duplicate read statistics
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of top duplicate reads to display
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: output fastx statistics (requires an output filename)
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+- !Flag
+  description: "output base breakdown by per phred quality at every cycle.\nIt sets\
+    \ cylemax to longest read length"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+- !Flag
+  description: Output length counts
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "fastq-stats: invalid option -- '-'\n\nUsage: fastq-stats [options] <fastq-file>\n\
+  \nVersion: 1.01 $Id$\n\nProduces lots of easily digested statistics for the files\
+  \ listed\n\nOptions\n\n-c     cyclemax: max cycles for which following quality stats\
+  \ are produced [35]\n-w INT window: max window size for generating duplicate read\
+  \ statistics [2000000]\n-d     debug: prints out debug statements\n-D     don't\
+  \ do duplicate read statistics\n-s INT number of top duplicate reads to display\n\
+  -x FIL output fastx statistics (requires an output filename)\n-b FIL output base\
+  \ breakdown by per phred quality at every cycle.\n       It sets cylemax to longest\
+  \ read length\n-L FIL Output length counts \n\n\nThe following data are printed\
+  \ to stdout:\n\n  reads\t\t\t: #reads in the fastq file\n  len \t              \
+  \  : read length. mean and stdev are provided for variable read lengths\n  phred\t\
+  \t\t: phred scale used\n  window-size\t\t: Number of reads used to generate duplicate\
+  \ read statistics\n  cycle-max\t\t: Number of bases to assess for duplicity\n  dups\t\
+  \t\t: Number of reads that are duplicates\n  %dup\t\t\t: Pct reads that are duplcate\n\
+  \  unique-dup seq\t: Number sequences that are duplicated\n  min dup count\t\t:\
+  \ Smallest duplicate tally for any duplicate sequence\n  dup seq <rank> <count>\
+  \ <sequence> \n  \t\t\t: Lists top 10 most frequent duplicate reads along with count\
+  \ mean and stdev\n  qual\t\t\t: Base Quality min, max and mean\n  %A,%T,%C,%G\t\t\
+  : base percentages\n  total bases\t\t: total number of bases\n\n"
+generated_using:
+- --help

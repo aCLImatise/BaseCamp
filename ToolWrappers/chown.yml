@@ -1,0 +1,139 @@
+!Command
+command:
+- chown
+positional:
+- !Positional
+  description: -P                     do not traverse any symbolic links (default)
+  position: 0
+  name: encountered
+  optional: false
+named:
+- !Flag
+  description: like verbose but report only when a change is made
+  synonyms:
+  - -c
+  - --changes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress most error messages
+  synonyms:
+  - -f
+  - --silent
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output a diagnostic for every file processed
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "affect the referent of each symbolic link (this is\nthe default),\
+    \ rather than the symbolic link itself"
+  synonyms:
+  - --dereference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":CURRENT_GROUP\nchange the owner and/or group of each file only if\n\
+    its current owner and/or group match those specified\nhere.  Either may be omitted,\
+    \ in which case a match\nis not required for the omitted attribute"
+  synonyms:
+  - --from
+  args: !SimpleFlagArg
+    name: CURRENT_OWNER
+  optional: true
+- !Flag
+  description: do not treat '/' specially (the default)
+  synonyms:
+  - --no-preserve-root
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fail to operate recursively on '/'
+  synonyms:
+  - --preserve-root
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use RFILE's owner and group rather than\nspecifying OWNER:GROUP values"
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: RFILE
+  optional: true
+- !Flag
+  description: operate on files and directories recursively
+  synonyms:
+  - -R
+  - --recursive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if a command line argument is a symbolic link\nto a directory, traverse\
+    \ it"
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: traverse every symbolic link to a directory
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: chown [OPTION]... [OWNER][:[GROUP]] FILE...\n  or:  chown [OPTION]...\
+  \ --reference=RFILE FILE...\nChange the owner and/or group of each FILE to OWNER\
+  \ and/or GROUP.\nWith --reference, change the owner and group of each FILE to those\
+  \ of RFILE.\n\n  -c, --changes          like verbose but report only when a change\
+  \ is made\n  -f, --silent, --quiet  suppress most error messages\n  -v, --verbose\
+  \          output a diagnostic for every file processed\n      --dereference   \
+  \   affect the referent of each symbolic link (this is\n                       \
+  \  the default), rather than the symbolic link itself\n  -h, --no-dereference  \
+  \ affect symbolic links instead of any referenced file\n                       \
+  \  (useful only on systems that can change the\n                         ownership\
+  \ of a symlink)\n      --from=CURRENT_OWNER:CURRENT_GROUP\n                    \
+  \     change the owner and/or group of each file only if\n                     \
+  \    its current owner and/or group match those specified\n                    \
+  \     here.  Either may be omitted, in which case a match\n                    \
+  \     is not required for the omitted attribute\n      --no-preserve-root  do not\
+  \ treat '/' specially (the default)\n      --preserve-root    fail to operate recursively\
+  \ on '/'\n      --reference=RFILE  use RFILE's owner and group rather than\n   \
+  \                      specifying OWNER:GROUP values\n  -R, --recursive        operate\
+  \ on files and directories recursively\n\nThe following options modify how a hierarchy\
+  \ is traversed when the -R\noption is also specified.  If more than one is specified,\
+  \ only the final\none takes effect.\n\n  -H                     if a command line\
+  \ argument is a symbolic link\n                         to a directory, traverse\
+  \ it\n  -L                     traverse every symbolic link to a directory\n   \
+  \                      encountered\n  -P                     do not traverse any\
+  \ symbolic links (default)\n\n      --help     display this help and exit\n    \
+  \  --version  output version information and exit\n\nOwner is unchanged if missing.\
+  \  Group is unchanged if missing, but changed\nto login group if implied by a ':'\
+  \ following a symbolic OWNER.\nOWNER and GROUP may be numeric as well as symbolic.\n\
+  \nExamples:\n  chown root /u        Change the owner of /u to \"root\".\n  chown\
+  \ root:staff /u  Likewise, but also change its group to \"staff\".\n  chown -hR\
+  \ root /u    Change the owner of /u and subfiles to \"root\".\n\nGNU coreutils online\
+  \ help: <https://www.gnu.org/software/coreutils/>\nReport any translation bugs to\
+  \ <https://translationproject.org/team/>\nFull documentation <https://www.gnu.org/software/coreutils/chown>\n\
+  or available locally via: info '(coreutils) chown invocation'\n"
+generated_using:
+- --help

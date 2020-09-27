@@ -96,7 +96,7 @@ subcommands:
     - --pprof
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
     named: []
@@ -191,7 +191,172 @@ subcommands:
         - --pprof
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: -g, --gene=[GAG|POL|GP41]                      gene(s) the
+              input
+            position: 0
+            name: output
+            optional: false
+          named:
+          - !Flag
+            description: hide non-error information
+            synonyms:
+            - -q
+            - --quiet
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "bonus score when a indel\ncodon was opened (default:\n0)"
+            synonyms:
+            - --indel-codon-opening-bonus
+            args: !SimpleFlagArg
+              name: BONUS
+            optional: true
+          - !Flag
+            description: "bonus score when a indel\ncodon was extended\n(default:\
+              \ 2)"
+            synonyms:
+            - --indel-codon-extension-bonus
+            args: !SimpleFlagArg
+              name: BONUS
+            optional: true
+          - !Flag
+            description: "penalty score when a stop\ncodon was met (default: 4)"
+            synonyms:
+            - --stop-codon-penalty
+            args: !SimpleFlagArg
+              name: PENALTY
+            optional: true
+          - !Flag
+            description: "penalty score when a gap\nwas opened (default: 10)"
+            synonyms:
+            - --gap-opening-penalty
+            args: !SimpleFlagArg
+              name: PENALTY
+            optional: true
+          - !Flag
+            description: "penalty score when a gap\nwas extended (default: 2)"
+            synonyms:
+            - --gap-extension-penalty
+            args: !SimpleFlagArg
+              name: PENALTY
+            optional: true
+          - !Flag
+            description: "number of goroutines the\nalignment will use. Use\nthe core\
+              \ number when\nequals to 0 (default: 0)"
+            synonyms:
+            - --goroutines
+            args: !SimpleFlagArg
+              name: GOROUTINES
+            optional: true
+          - !Flag
+            description: "[tsv|json]    output format of the\nalignment result (default:\n\
+              tsv)"
+            synonyms:
+            - --output-format
+            args: !SimpleFlagArg
+              name: OUTPUT_FORMAT
+            optional: true
+          - !Flag
+            description: "FASTA file contains one or\nmore DNA sequences\n(default:\
+              \ -)"
+            synonyms:
+            - -i
+            - --input
+            args: !SimpleFlagArg
+              name: INPUT
+            optional: true
+          - !Flag
+            description: "output destination of the\nalignment results\n(default:\
+              \ -)"
+            synonyms:
+            - -o
+            - --output
+            args: !SimpleFlagArg
+              name: OUTPUT
+            optional: true
+          - !Flag
+            description: "output pprof benchmark\nresult\n"
+            synonyms:
+            - --pprof
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: Show this help message
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Usage:\n  nucamino [OPTIONS] hiv1b [hiv1b-OPTIONS]\n\nUse HIV-1\
+            \ type B consensus from LANL to align input sequences; support genes\n\
+            POL (56gag + 99PR + 560RT + 288IN)\n\nHelp Options:\n  -h, --help    \
+            \                                     Show this help message\n\n[hiv1b\
+            \ command options]\n      -q, --quiet                                \
+            \    hide non-error information\n                                    \
+            \                 output\n      -g, --gene=[GAG|POL|GP41]            \
+            \          gene(s) the input\n                                       \
+            \              sequences should be\n                                 \
+            \                    aligned with\n          --indel-codon-opening-bonus=BONUS\
+            \          bonus score when a indel\n                                \
+            \                     codon was opened (default:\n                   \
+            \                                  0)\n          --indel-codon-extension-bonus=BONUS\
+            \        bonus score when a indel\n                                  \
+            \                   codon was extended\n                             \
+            \                        (default: 2)\n          --stop-codon-penalty=PENALTY\
+            \               penalty score when a stop\n                          \
+            \                           codon was met (default: 4)\n          --gap-opening-penalty=PENALTY\
+            \              penalty score when a gap\n                            \
+            \                         was opened (default: 10)\n          --gap-extension-penalty=PENALTY\
+            \            penalty score when a gap\n                              \
+            \                       was extended (default: 2)\n          --goroutines=GOROUTINES\
+            \                    number of goroutines the\n                      \
+            \                               alignment will use. Use\n            \
+            \                                         the core number when\n     \
+            \                                                equals to 0 (default:\
+            \ 0)\n          --output-format=OUTPUT_FORMAT[tsv|json]    output format\
+            \ of the\n                                                     alignment\
+            \ result (default:\n                                                 \
+            \    tsv)\n\n    File Options:\n      -i, --input=INPUT              \
+            \                FASTA file contains one or\n                        \
+            \                             more DNA sequences\n                   \
+            \                                  (default: -)\n      -o, --output=OUTPUT\
+            \                            output destination of the\n             \
+            \                                        alignment results\n         \
+            \                                            (default: -)\n\n    Pprof\
+            \ Options:\n          --pprof                                    output\
+            \ pprof benchmark\n                                                  \
+            \   result\n\n"
+          generated_using: &id004
+          - --help
+        usage: []
+        help_flag: !Flag
+          description: Show this help message
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Usage:\n  nucamino [OPTIONS] <hiv1b>\n\nHelp Options:\n  -h, --help\
+          \  Show this help message\n\nAvailable commands:\n  hiv1b  Align HIV-1 type\
+          \ B sequences\n\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -239,16 +404,9 @@ subcommands:
         \                                    (default: -)\n\n    Pprof Options:\n\
         \          --pprof                                    output pprof benchmark\n\
         \                                                     result\n\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: Show this help message
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage:\n  nucamino [OPTIONS] <hiv1b>\n\nHelp Options:\n  -h, --help\

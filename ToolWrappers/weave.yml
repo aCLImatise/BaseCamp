@@ -1,0 +1,128 @@
+!Command
+command:
+- weave
+positional: []
+named:
+- !Flag
+  description: filename of assembly in FASTA format (required)
+  synonyms:
+  - -a
+  - --assembly
+  args: !SimpleFlagArg
+    name: ASSEMBLY
+  optional: true
+- !Flag
+  description: "filename of long reads in FASTQ format (required; must\nbe gzipped)"
+  synonyms:
+  - -r
+  - --reads
+  args: !SimpleFlagArg
+    name: READS
+  optional: true
+- !Flag
+  description: "genome coverage to subsample from FASTQ file (default\n50)"
+  synonyms:
+  - -d
+  - --depth
+  args: !SimpleFlagArg
+    name: DEPTH
+  optional: true
+- !Flag
+  description: "minimum read length to retain when subsampling\n(default 10000 bp)"
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: telomere sequence to search for
+  synonyms:
+  - -t
+  - --telomere
+  args: !RepeatFlagArg
+    name: TELOMERE
+  optional: true
+- !Flag
+  description: "window size for ploidy calculations (default ~1/30th\nof contig N50\
+    \ length, minimum 10000 bp)"
+  synonyms:
+  - -w
+  - --windowsize
+  args: !SimpleFlagArg
+    name: WINDOWSIZE
+  optional: true
+- !Flag
+  description: "output read alignments whatever the assembly size\n(default, only\
+    \ output read alignments for <50 Mb\nassemblies)"
+  synonyms:
+  - -f
+  - --forcereadoutput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "minimum length of contig alignment to keep (default\n2000 bp)"
+  synonyms:
+  - -m
+  - --mincontigalignment
+  args: !SimpleFlagArg
+    name: MINCONTIGALIGNMENT
+  optional: true
+- !Flag
+  description: directory to write output, default weave_output
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: number of parallel cores to use (default 1)
+  synonyms:
+  - -c
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: report version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: weave [-h] -a ASSEMBLY -r READS [-d DEPTH] [-l LENGTH]\n      \
+  \       [-t TELOMERE [TELOMERE ...]] [-w WINDOWSIZE] [-f]\n             [-m MINCONTIGALIGNMENT]\
+  \ [-o OUTPUT] [-c CORES] [-v]\n\nweave: assess quality of one genome assembly\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -a ASSEMBLY, --assembly ASSEMBLY\n                        filename of assembly\
+  \ in FASTA format (required)\n  -r READS, --reads READS\n                      \
+  \  filename of long reads in FASTQ format (required; must\n                    \
+  \    be gzipped)\n  -d DEPTH, --depth DEPTH\n                        genome coverage\
+  \ to subsample from FASTQ file (default\n                        50)\n  -l LENGTH,\
+  \ --length LENGTH\n                        minimum read length to retain when subsampling\n\
+  \                        (default 10000 bp)\n  -t TELOMERE [TELOMERE ...], --telomere\
+  \ TELOMERE [TELOMERE ...]\n                        telomere sequence to search for\n\
+  \  -w WINDOWSIZE, --windowsize WINDOWSIZE\n                        window size for\
+  \ ploidy calculations (default ~1/30th\n                        of contig N50 length,\
+  \ minimum 10000 bp)\n  -f, --forcereadoutput\n                        output read\
+  \ alignments whatever the assembly size\n                        (default, only\
+  \ output read alignments for <50 Mb\n                        assemblies)\n  -m MINCONTIGALIGNMENT,\
+  \ --mincontigalignment MINCONTIGALIGNMENT\n                        minimum length\
+  \ of contig alignment to keep (default\n                        2000 bp)\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        directory to write output, default weave_output\n\
+  \  -c CORES, --cores CORES\n                        number of parallel cores to\
+  \ use (default 1)\n  -v, --version         report version number and exit\n"
+generated_using:
+- --help

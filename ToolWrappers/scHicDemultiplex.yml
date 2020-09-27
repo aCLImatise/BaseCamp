@@ -1,0 +1,142 @@
+!Command
+command:
+- scHicDemultiplex
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: of
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: fastq
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: files
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: to
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: demultiplex
+  optional: false
+named:
+- !Flag
+  description: "of fastq files to demultiplex [list of fastq files to demultiplex\
+    \ ...], -f list of fastq files to demultiplex [list of fastq files to demultiplex\
+    \ ...]\nThe fastq files to demultiplex of Nagano 2017 Cell\ncycle dynamics of\
+    \ chromosomal organization at single-\ncell resolutionGEO: GSE94489. Files need\
+    \ to have four\nFASTQ lines per read:/1 forward; /2 barcode forward;\n/3 bardcode\
+    \ reverse; /4 reverse read.Please be aware\nthe files can be downloaded via the\
+    \ command fastq-dump\nto be in the right format:fastq-dump --accession\nSRR5229025\
+    \ --split-files --defline-seq\n'@$sn[_$rn]/$ri' --defline-qual '+' --split-spot\n\
+    --stdout SRR5229025 > SRR5229025.fastq (default: None)"
+  synonyms:
+  - --fastq
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: "of fastq files to demultiplex. Use GSE94489_README.txt file., -bf\
+    \ list of fastq files to demultiplex. Use GSE94489_README.txt file.\nThe fastq\
+    \ files to demultiplex (default: None)"
+  synonyms:
+  - --barcodeFile
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: "The mappings from SRR number to sample id as given in\nthe barcode\
+    \ file. (default: None)"
+  synonyms:
+  - --srrToSampleFile
+  - -s
+  args: !SimpleFlagArg
+    name: SRRTOSAMPLEFILE
+  optional: true
+- !Flag
+  description: "Path of folder to save the demultiplexed files\n(default: demultiplexed)"
+  synonyms:
+  - --outputFolder
+  - -o
+  args: !SimpleFlagArg
+    name: FOLDER
+  optional: true
+- !Flag
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Number of lines to buffer in memory, if full, write\nthe data to disk.\
+    \ (default: 20000000.0)"
+  synonyms:
+  - --bufferSize
+  - -bs
+  args: !SimpleFlagArg
+    name: BUFFERSIZE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: scHicDemultiplex --fastq list of fastq files to demultiplex\n \
+  \                       [list of fastq files to demultiplex ...] --barcodeFile\n\
+  \                        list of fastq files to demultiplex. Use\n             \
+  \           GSE94489_README.txt file. --srrToSampleFile\n                      \
+  \  SRRTOSAMPLEFILE [--outputFolder FOLDER]\n                        [--threads THREADS]\
+  \ [--bufferSize BUFFERSIZE] [--help]\n                        [--version]\n\nscHicDemultiplex\
+  \ demultiplexes fastq files from Nagano 2017: \"Cell-cycle\ndynamics of chromosomal\
+  \ organization at single-cell resolution\" according\ntheir barcodes to a seperated\
+  \ forward and reverse strand fastq files per cell.\n\nRequired arguments:\n  --fastq\
+  \ list of fastq files to demultiplex [list of fastq files to demultiplex ...], -f\
+  \ list of fastq files to demultiplex [list of fastq files to demultiplex ...]\n\
+  \                        The fastq files to demultiplex of Nagano 2017 Cell\n  \
+  \                      cycle dynamics of chromosomal organization at single-\n \
+  \                       cell resolutionGEO: GSE94489. Files need to have four\n\
+  \                        FASTQ lines per read:/1 forward; /2 barcode forward;\n\
+  \                        /3 bardcode reverse; /4 reverse read.Please be aware\n\
+  \                        the files can be downloaded via the command fastq-dump\n\
+  \                        to be in the right format:fastq-dump --accession\n    \
+  \                    SRR5229025 --split-files --defline-seq\n                  \
+  \      '@$sn[_$rn]/$ri' --defline-qual '+' --split-spot\n                      \
+  \  --stdout SRR5229025 > SRR5229025.fastq (default: None)\n  --barcodeFile list\
+  \ of fastq files to demultiplex. Use GSE94489_README.txt file., -bf list of fastq\
+  \ files to demultiplex. Use GSE94489_README.txt file.\n                        The\
+  \ fastq files to demultiplex (default: None)\n  --srrToSampleFile SRRTOSAMPLEFILE,\
+  \ -s SRRTOSAMPLEFILE\n                        The mappings from SRR number to sample\
+  \ id as given in\n                        the barcode file. (default: None)\n  --outputFolder\
+  \ FOLDER, -o FOLDER\n                        Path of folder to save the demultiplexed\
+  \ files\n                        (default: demultiplexed)\n\nOptional arguments:\n\
+  \  --threads THREADS, -t THREADS\n                        Number of threads. Using\
+  \ the python multiprocessing\n                        module. (default: 4)\n  --bufferSize\
+  \ BUFFERSIZE, -bs BUFFERSIZE\n                        Number of lines to buffer\
+  \ in memory, if full, write\n                        the data to disk. (default:\
+  \ 20000000.0)\n  --help, -h            show this help message and exit\n  --version\
+  \             show program's version number and exit\n"
+generated_using:
+- --help

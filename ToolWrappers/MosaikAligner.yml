@@ -1,0 +1,218 @@
+!Command
+command:
+- MosaikAligner
+positional:
+- !Positional
+  description: '-m <mode>                         alignment mode: [unique, all]. def:
+    all'
+  position: 0
+  name: all
+  optional: false
+- !Positional
+  description: -srefn <hashes>                   the maximum special hashes
+  position: 0
+  name: references
+  optional: false
+- !Positional
+  description: '-mms <mismatch score>             the mismatch score. def: -9.00'
+  position: 0
+  name: '10.00'
+  optional: false
+named:
+- !Flag
+  description: "the input read file\n-out <MOSAIK alignment filename>  the output\
+    \ alignment file\n-ibs <MOSAIK reference filename>  enables colorspace to basespace\
+    \ conversion\nusing the supplied BASESPACE reference\narchive\n-annpe <Neural\
+    \ network filename>\n-annse <Neural network filename>"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: MOSAIK read filename
+  optional: true
+- !Flag
+  description: 'hash size [4 - 32]. def: 15'
+  synonyms:
+  - -hs
+  args: !SimpleFlagArg
+    name: hash size
+  optional: true
+- !Flag
+  description: enable local alignment search for PE reads
+  synonyms:
+  - -ls
+  args: !SimpleFlagArg
+    name: radius
+  optional: true
+- !Flag
+  description: 'the maximum # of positions stored per seed'
+  synonyms:
+  - -mhp
+  args: !SimpleFlagArg
+    name: hash positions
+  optional: true
+- !Flag
+  description: 'the maximum # of regions for aligning'
+  synonyms:
+  - -mhr
+  args: !SimpleFlagArg
+    name: hash regionss
+  optional: true
+- !Flag
+  description: 'the minimum # of aligned nucleotides'
+  synonyms:
+  - -min
+  args: !SimpleFlagArg
+    name: nucleotides
+  optional: true
+- !Flag
+  description: "the minimum alignment percentage [0.0 -\n1.0]"
+  synonyms:
+  - -minp
+  args: !SimpleFlagArg
+    name: percent
+  optional: true
+- !Flag
+  description: 'the # of mismatches allowed'
+  synonyms:
+  - -mm
+  args: !SimpleFlagArg
+    name: mismatches
+  optional: true
+- !Flag
+  description: "the percentage of mismatches allowed [0.0\n- 1.0]"
+  synonyms:
+  - -mmp
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: not count gaps as mismatches
+  synonyms:
+  - -ncg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specifies the Smith-Waterman bandwidth.\ndef: 9"
+  synonyms:
+  - -bw
+  args: !SimpleFlagArg
+    name: bandwidth
+  optional: true
+- !Flag
+  description: enable low-memory functions
+  synonyms:
+  - -lm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keeps the keys file on disk
+  synonyms:
+  - -kd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keeps the positions file on disk
+  synonyms:
+  - -pd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specifies the prefixes of special
+  synonyms:
+  - -sref
+  args: !SimpleFlagArg
+    name: reference prefixes
+  optional: true
+- !Flag
+  description: "output chromosome ids and positions of\nmultiply mapped alignments\
+    \ in the\nmultiple.bam"
+  synonyms:
+  - -omi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "output complete multiply mapped alignments\nin the multiple.bam"
+  synonyms:
+  - -om
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output zn tags
+  synonyms:
+  - -zn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the gap open penalty. def: 15.00'
+  synonyms:
+  - -gop
+  args: !SimpleFlagArg
+    name: gap open penalty
+  optional: true
+- !Flag
+  description: 'the gap extend penalty. def: 1.00'
+  synonyms:
+  - -gep
+  args: !SimpleFlagArg
+    name: gap extend penalty
+  optional: true
+- !Flag
+  description: 'enables the homopolymer gop. def: 4.00'
+  synonyms:
+  - -hgop
+  args: !SimpleFlagArg
+    name: gap open penalty
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Description: pairwise aligns a MOSAIK read file.\n\nUsage: \e[1mMosaikAligner\e\
+  [0m -in <filename> -out <filename> -ia <filename>\n\n\e[1;31mInput/output: (required):\n\
+  \e[0m  -ia <MOSAIK reference filename>   the input reference file\n  -in <MOSAIK\
+  \ read filename>        the input read file\n  -out <MOSAIK alignment filename>\
+  \  the output alignment file\n  -ibs <MOSAIK reference filename>  enables colorspace\
+  \ to basespace conversion\n                                       using the supplied\
+  \ BASESPACE reference\n                                       archive\n  -annpe\
+  \ <Neural network filename>  \n  -annse <Neural network filename>  \n\n\e[1;31mEssential\
+  \ parameters:\n\e[0m  -a <algorithm>                    alignment algorithm: [fast,\
+  \ single, multi,\n                                       all]. def: all\n  -m <mode>\
+  \                         alignment mode: [unique, all]. def: all\n  -hs <hash size>\
+  \                   hash size [4 - 32]. def: 15\n\n\e[1;31mFiltering:\n\e[0m  -act\
+  \ <threshold>                  the alignment candidate threshold (length)\n  -ls\
+  \ <radius>                      enable local alignment search for PE reads\n  -mhp\
+  \ <hash positions>             the maximum # of positions stored per seed\n  -mhr\
+  \ <hash regionss>              the maximum # of regions for aligning\n  -min <nucleotides>\
+  \                the minimum # of aligned nucleotides\n  -minp <percent>       \
+  \            the minimum alignment percentage [0.0 -\n                         \
+  \              1.0]\n  -mm <mismatches>                  the # of mismatches allowed\n\
+  \  -mmp <threshold>                  the percentage of mismatches allowed [0.0\n\
+  \                                       - 1.0]\n  -ncg                         \
+  \     not count gaps as mismatches\n\n\e[1;31mPerformance:\n\e[0m  -p <processors>\
+  \                   uses the specified number of processors\n  -bw <bandwidth> \
+  \                  specifies the Smith-Waterman bandwidth.\n                   \
+  \                    def: 9\n  -lm                               enable low-memory\
+  \ functions\n\n\e[1;31mJump database:\n\e[0m  -j <filename stub>               \
+  \ uses the specified jump database\n  -kd                               keeps the\
+  \ keys file on disk\n  -pd                               keeps the positions file\
+  \ on disk\n  -sref <reference prefixes>        specifies the prefixes of special\n\
+  \                                       references\n  -srefn <hashes>          \
+  \         the maximum special hashes\n\n\e[1;31mReporting:\n\e[0m  -statmq <threshold>\
+  \               enable mapping quality threshold for\n                         \
+  \              statistical map [0 - 255]\n  -omi                              output\
+  \ chromosome ids and positions of\n                                       multiply\
+  \ mapped alignments in the\n                                       multiple.bam\n\
+  \  -om                               output complete multiply mapped alignments\n\
+  \                                       in the multiple.bam\n  -zn             \
+  \                  output zn tags\n\n\e[1;31mPairwise Alignment Scores:\n\e[0m \
+  \ -ms <match score>                 the match score. def: 10.00\n  -mms <mismatch\
+  \ score>             the mismatch score. def: -9.00\n  -gop <gap open penalty> \
+  \          the gap open penalty. def: 15.00\n  -gep <gap extend penalty>       \
+  \  the gap extend penalty. def: 1.00\n  -hgop <gap open penalty>          enables\
+  \ the homopolymer gop. def: 4.00\n\n\e[1;31mInterface Options:\n\e[0m  -quiet  \
+  \                          disable progress bars and counters\n\n\e[1;31mHelp:\n\
+  \e[0m  --help, -h                        shows this help text\n"
+generated_using:
+- --help

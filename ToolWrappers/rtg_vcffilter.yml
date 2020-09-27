@@ -1,0 +1,439 @@
+!Command
+command:
+- rtg
+- vcffilter
+positional:
+- !Positional
+  description: --exclude-bed=FILE            discard all variants within the regions
+    in
+  position: 0
+  name: discarded
+  optional: false
+- !Positional
+  description: Filtering (Sample based)
+  position: 0
+  name: records
+  optional: false
+- !Positional
+  description: --remove-all-same-as-ref      remove where all samples are same as
+  position: 1
+  name: INDEL
+  optional: false
+- !Positional
+  description: --remove-hom                  remove where sample is homozygous
+  position: 2
+  name: reference
+  optional: false
+- !Positional
+  description: Reporting
+  position: 3
+  name: SNP
+  optional: false
+named:
+- !Flag
+  description: ', and --fail-samples options for alternatives.'
+  synonyms:
+  - --clear-failed-samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "apply sample-specific criteria to all\nsamples contained in the input\
+    \ VCF"
+  synonyms:
+  - --all-samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if set, only read VCF records that overlap\nthe ranges contained in\
+    \ the specified BED\nfile"
+  synonyms:
+  - --bed-regions
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "VCF file containing variants to be\nfiltered. Use '-' to read from\
+    \ standard\ninput"
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "output VCF file. Use '-' to write to\nstandard output. This option\
+    \ is required,\nunless \"--javascript\" is being used"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "if set, only read VCF records within the\nspecified range. The format\
+    \ is one of\n<sequence_name>,\n<sequence_name>:<start>-<end>,\n<sequence_name>:<pos>+<length>\
+    \ or\n<sequence_name>:<pos>~<padding>"
+  synonyms:
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: "apply sample-specific criteria to the named\nsample contained in the\
+    \ input VCF. May be\nspecified 0 or more times"
+  synonyms:
+  - --sample
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: window within which multiple variants are
+  synonyms:
+  - -w
+  - --density-window
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "discard all variants that overlap with the\nones in this file"
+  synonyms:
+  - --exclude-vcf
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "only keep variants within the regions in\nthis BED file"
+  synonyms:
+  - --include-bed
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "only keep variants that overlap with the\nones in this file"
+  synonyms:
+  - --include-vcf
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "javascript filtering functions for\ndetermining whether to keep record.\
+    \ May be\neither an expression or a file name. May be\nspecified 0 or more times"
+  synonyms:
+  - -j
+  - --javascript
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "records for which this expression evaluates\nto true will be retained"
+  synonyms:
+  - -e
+  - --keep-expr
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "only keep variants with this FILTER tag.\nMay be specified 0 or more\
+    \ times, or as a\ncomma separated list"
+  synonyms:
+  - -k
+  - --keep-filter
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "only keep variants with this INFO tag. May\nbe specified 0 or more\
+    \ times, or as a comma\nseparated list"
+  synonyms:
+  - -K
+  - --keep-info
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: maximum number of alleles (REF included)
+  synonyms:
+  - --max-alleles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: maximum allowed combined read depth
+  synonyms:
+  - -C
+  - --max-combined-read-depth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: maximum allowed quality
+  synonyms:
+  - -Q
+  - --max-quality
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: minimum number of alleles (REF included)
+  synonyms:
+  - --min-alleles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum allowed combined read depth
+  synonyms:
+  - -c
+  - --min-combined-read-depth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum allowed quality
+  synonyms:
+  - -q
+  - --min-quality
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "remove variants with this FILTER tag. May\nbe specified 0 or more\
+    \ times, or as a comma\nseparated list"
+  synonyms:
+  - -r
+  - --remove-filter
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "remove variants with this INFO tag. May be\nspecified 0 or more times,\
+    \ or as a comma\nseparated list"
+  synonyms:
+  - -R
+  - --remove-info
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: remove records that overlap with previous
+  synonyms:
+  - --remove-overlapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum allowed ambiguity ratio
+  synonyms:
+  - -A
+  - --max-ambiguity-ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: maximum allowed AVR score
+  synonyms:
+  - --max-avr-score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: maximum de novo score threshold
+  synonyms:
+  - --max-denovo-score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: maximum allowed genotype quality
+  synonyms:
+  - -G
+  - --max-genotype-quality
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: maximum allowed sample read depth
+  synonyms:
+  - -D
+  - --max-read-depth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum allowed AVR score
+  synonyms:
+  - --min-avr-score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: minimum de novo score threshold
+  synonyms:
+  - --min-denovo-score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: minimum allowed genotype quality
+  synonyms:
+  - -g
+  - --min-genotype-quality
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: minimum allowed sample read depth
+  synonyms:
+  - -d
+  - --min-read-depth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: only keep where sample variant is MNP or
+  synonyms:
+  - --non-snps-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: remove where sample is same as reference
+  synonyms:
+  - --remove-same-as-ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only keep where sample variant is a simple
+  synonyms:
+  - --snps-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "retain failed records, add the provided\nlabel to the FILTER field"
+  synonyms:
+  - -f
+  - --fail
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "retain failed records, add the provided\nlabel to the sample FT field"
+  synonyms:
+  - -F
+  - --fail-samples
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "|FILE      file containing VCF header lines to add, or\na literal\
+    \ header line. May be specified 0\nor more times"
+  synonyms:
+  - -a
+  - --add-header
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: do not gzip the output
+  synonyms:
+  - -Z
+  - --no-gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prevent VCF header from being written
+  synonyms:
+  - --no-header
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print help on command-line flag usage
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: rtg vcffilter [OPTION]... -i FILE -o FILE\n                   \
+  \  [OPTION]... -i FILE -j STRING\n\nFilters VCF records based on various criteria.\
+  \ When filtering on multiple\nsamples, if any of the specified samples fail the\
+  \ criteria, the record will be\nfiltered. By default filtered records are removed,\
+  \ but see the --fail,\n--clear-failed-samples, and --fail-samples options for alternatives.\n\
+  \nFile Input/Output\n      --all-samples                 apply sample-specific criteria\
+  \ to all\n                                    samples contained in the input VCF\n\
+  \      --bed-regions=FILE            if set, only read VCF records that overlap\n\
+  \                                    the ranges contained in the specified BED\n\
+  \                                    file\n  -i, --input=FILE                  VCF\
+  \ file containing variants to be\n                                    filtered.\
+  \ Use '-' to read from standard\n                                    input\n  -o,\
+  \ --output=FILE                 output VCF file. Use '-' to write to\n         \
+  \                           standard output. This option is required,\n        \
+  \                            unless \"--javascript\" is being used\n      --region=REGION\
+  \               if set, only read VCF records within the\n                     \
+  \               specified range. The format is one of\n                        \
+  \            <sequence_name>,\n                                    <sequence_name>:<start>-<end>,\n\
+  \                                    <sequence_name>:<pos>+<length> or\n       \
+  \                             <sequence_name>:<pos>~<padding>\n      --sample=STRING\
+  \               apply sample-specific criteria to the named\n                  \
+  \                  sample contained in the input VCF. May be\n                 \
+  \                   specified 0 or more times\n\nFiltering (Record based)\n  -w,\
+  \ --density-window=INT          window within which multiple variants are\n    \
+  \                                discarded\n      --exclude-bed=FILE           \
+  \ discard all variants within the regions in\n                                 \
+  \   this BED file\n      --exclude-vcf=FILE            discard all variants that\
+  \ overlap with the\n                                    ones in this file\n    \
+  \  --include-bed=FILE            only keep variants within the regions in\n    \
+  \                                this BED file\n      --include-vcf=FILE       \
+  \     only keep variants that overlap with the\n                               \
+  \     ones in this file\n  -j, --javascript=STRING           javascript filtering\
+  \ functions for\n                                    determining whether to keep\
+  \ record. May be\n                                    either an expression or a\
+  \ file name. May be\n                                    specified 0 or more times\n\
+  \  -e, --keep-expr=STRING            records for which this expression evaluates\n\
+  \                                    to true will be retained\n  -k, --keep-filter=STRING\
+  \          only keep variants with this FILTER tag.\n                          \
+  \          May be specified 0 or more times, or as a\n                         \
+  \           comma separated list\n  -K, --keep-info=STRING            only keep\
+  \ variants with this INFO tag. May\n                                    be specified\
+  \ 0 or more times, or as a comma\n                                    separated\
+  \ list\n      --max-alleles=INT             maximum number of alleles (REF included)\n\
+  \  -C, --max-combined-read-depth=INT maximum allowed combined read depth\n  -Q,\
+  \ --max-quality=FLOAT           maximum allowed quality\n      --min-alleles=INT\
+  \             minimum number of alleles (REF included)\n  -c, --min-combined-read-depth=INT\
+  \ minimum allowed combined read depth\n  -q, --min-quality=FLOAT           minimum\
+  \ allowed quality\n  -r, --remove-filter=STRING        remove variants with this\
+  \ FILTER tag. May\n                                    be specified 0 or more times,\
+  \ or as a comma\n                                    separated list\n  -R, --remove-info=STRING\
+  \          remove variants with this INFO tag. May be\n                        \
+  \            specified 0 or more times, or as a comma\n                        \
+  \            separated list\n      --remove-overlapping          remove records\
+  \ that overlap with previous\n                                    records\n\nFiltering\
+  \ (Sample based)\n  -A, --max-ambiguity-ratio=FLOAT   maximum allowed ambiguity\
+  \ ratio\n      --max-avr-score=FLOAT         maximum allowed AVR score\n      --max-denovo-score=FLOAT\
+  \      maximum de novo score threshold\n  -G, --max-genotype-quality=FLOAT  maximum\
+  \ allowed genotype quality\n  -D, --max-read-depth=INT          maximum allowed\
+  \ sample read depth\n      --min-avr-score=FLOAT         minimum allowed AVR score\n\
+  \      --min-denovo-score=FLOAT      minimum de novo score threshold\n  -g, --min-genotype-quality=FLOAT\
+  \  minimum allowed genotype quality\n  -d, --min-read-depth=INT          minimum\
+  \ allowed sample read depth\n      --non-snps-only               only keep where\
+  \ sample variant is MNP or\n                                    INDEL\n      --remove-all-same-as-ref\
+  \      remove where all samples are same as\n                                  \
+  \  reference\n      --remove-hom                  remove where sample is homozygous\n\
+  \      --remove-same-as-ref          remove where sample is same as reference\n\
+  \      --snps-only                   only keep where sample variant is a simple\n\
+  \                                    SNP\n\nReporting\n      --clear-failed-samples\
+  \        retain failed records, set the sample GT\n                            \
+  \        field to missing\n  -f, --fail=STRING                 retain failed records,\
+  \ add the provided\n                                    label to the FILTER field\n\
+  \  -F, --fail-samples=STRING         retain failed records, add the provided\n \
+  \                                   label to the sample FT field\n\nUtility\n  -a,\
+  \ --add-header=STRING|FILE      file containing VCF header lines to add, or\n  \
+  \                                  a literal header line. May be specified 0\n \
+  \                                   or more times\n  -h, --help                \
+  \        print help on command-line flag usage\n  -Z, --no-gzip                \
+  \     do not gzip the output\n      --no-header                   prevent VCF header\
+  \ from being written\n\n"
+generated_using:
+- --help

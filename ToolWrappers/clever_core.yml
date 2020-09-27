@@ -1,0 +1,188 @@
+!Command
+command:
+- clever-core
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: distribution-file
+  optional: false
+named:
+- !Flag
+  description: "[ --verbose ]                      Be verbose: output additional\n\
+    statistics for each variation."
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --edge_sig_level ] arg (=0.20000000000000001)\nSignificance level\
+    \ for edges (the lower\nthe level, the more edges will be\npresent)."
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --min_aln_weight ] arg (=0.0016000000000000001)\nMinimum weight\
+    \ of alignment pairs to be\nconsidered."
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --max_insert_length ] arg (=50000)\nMaximum insert length of alignments\
+    \ to\nbe considered (0=unlimited)."
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --max_coverage ] arg (=200)      Maximum allowed coverage. If exceeded,\n\
+    violating reads are ignored. The number\nof such ignored reads is printed to\n\
+    stderr (0=unlimited)."
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --write_edges ] arg              Write edges to file of given name.'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --fdr ] arg (=0.10000000000000001)\nFalse discovery rate (FDR)."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --all ]                          Output all cliques instead of only\
+    \ the\nsignificant ones. Cliques are not\nsorted and last column (FDR) is not\n\
+    computed."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --output_reads ] arg             Output reads belonging to at least\
+    \ one\nsignificant clique to the given\nfilename (along with their assignment\n\
+    to significant cliques."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --output_coverage ] arg          Output the coverage with considered\n\
+    insert segments along the chromosome\n(one line per position) to the given\nfilename."
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --readgroup_aware ]              Use a separate mean and standard\n\
+    deviations per read group. If given,\nargument <distribution-file> must refer\n\
+    to a file containing this information."
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --arbitrary_dist ]               Use a given (arbitrary) distribution\n\
+    instead of a normal distribution as\nnull model (EXPERIMENTAL)."
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --cached_dist ] arg              Load cached distributions as\n\
+    precomputed with tool\n\"precompute-distributions\". Does not\nchange results,\
+    \ but increases speed.\nOnly applicable when using option -d."
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --read_groups ] arg              BAM file from whose header read\
+    \ group\ninformation is to be read, required if\noptions -A or -S are to be used."
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --multisample ]                  Read groups come from multiple\
+    \ samples\nas indicated by SM fields in BAM\nheader. Evaluate cliques sample wise.\n"
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "clever-core version: v2.4\nUsage: clever-core [options] <distribution-file>\n\
+  \n<distribution-file> file with assumed internal segment length distribution.\n\
+  \                    in default mode, this is a file containing one line with\n\
+  \                    mean and standard deviation of the normal distribution\n  \
+  \                  to be used. Such a file can be generated using option -m\n  \
+  \                  of insert-length-histogram. Note that the \"internal segment\"\
+  \n                    does NOT include the read (ends), i.e. a fragment disjointly\n\
+  \                    consists of two reads (read ends) and an internal segment.\n\
+  \                    If option -A is given, a two-column text file is expected\n\
+  \                    with columns <readgroup-name> <distribution-file>.\n      \
+  \              If option -d is given, an arbitrary distribution file as produced\n\
+  \                    as main output of insert-length-histogram can be used.\n  \
+  \                  (Note, however, that this is an experimental feature.)\n\nReads\
+  \ alignment pairs from stdin in computes all cliques. Expected format:\n<read-name>\
+  \ <pair-nr> <read-group> <phred-sum1> <chrom1> <start1> <end1> <strand1> <phred-sum2>\
+  \ <chrom2> <start2> <end2> <strand2> <aln-pair-prob> <aln-pair-prob-inslength>\n\
+  \nNOTE: Alignment pairs are assumed to be ordered by field 7 (end1).\n\nOutputs\
+  \ all significant variant predictions (sorted by p-value) after controlling FDR.\n\
+  \nAllowed options:\n  -v [ --verbose ]                      Be verbose: output additional\
+  \ \n                                        statistics for each variation.\n  -p\
+  \ [ --edge_sig_level ] arg (=0.20000000000000001)\n                            \
+  \            Significance level for edges (the lower\n                         \
+  \               the level, the more edges will be \n                           \
+  \             present).\n  -w [ --min_aln_weight ] arg (=0.0016000000000000001)\n\
+  \                                        Minimum weight of alignment pairs to be\n\
+  \                                        considered.\n  -l [ --max_insert_length\
+  \ ] arg (=50000)\n                                        Maximum insert length\
+  \ of alignments to \n                                        be considered (0=unlimited).\n\
+  \  -c [ --max_coverage ] arg (=200)      Maximum allowed coverage. If exceeded,\
+  \ \n                                        violating reads are ignored. The number\n\
+  \                                        of such ignored reads is printed to \n\
+  \                                        stderr (0=unlimited).\n  -e [ --write_edges\
+  \ ] arg              Write edges to file of given name.\n  -f [ --fdr ] arg (=0.10000000000000001)\n\
+  \                                        False discovery rate (FDR).\n  -a [ --all\
+  \ ]                          Output all cliques instead of only the \n         \
+  \                               significant ones. Cliques are not \n           \
+  \                             sorted and last column (FDR) is not \n           \
+  \                             computed.\n  -r [ --output_reads ] arg           \
+  \  Output reads belonging to at least one \n                                   \
+  \     significant clique to the given \n                                       \
+  \ filename (along with their assignment \n                                     \
+  \   to significant cliques.\n  -C [ --output_coverage ] arg          Output the\
+  \ coverage with considered \n                                        insert segments\
+  \ along the chromosome \n                                        (one line per position)\
+  \ to the given \n                                        filename.\n  -A [ --readgroup_aware\
+  \ ]              Use a separate mean and standard \n                           \
+  \             deviations per read group. If given, \n                          \
+  \              argument <distribution-file> must refer\n                       \
+  \                 to a file containing this information.\n  -d [ --arbitrary_dist\
+  \ ]               Use a given (arbitrary) distribution \n                      \
+  \                  instead of a normal distribution as \n                      \
+  \                  null model (EXPERIMENTAL).\n  -D [ --cached_dist ] arg      \
+  \        Load cached distributions as \n                                       \
+  \ precomputed with tool \n                                        \"precompute-distributions\"\
+  . Does not \n                                        change results, but increases\
+  \ speed. \n                                        Only applicable when using option\
+  \ -d.\n  -R [ --read_groups ] arg              BAM file from whose header read group\
+  \ \n                                        information is to be read, required\
+  \ if \n                                        options -A or -S are to be used.\n\
+  \  -S [ --multisample ]                  Read groups come from multiple samples\
+  \ \n                                        as indicated by SM fields in BAM \n\
+  \                                        header. Evaluate cliques sample wise.\n\
+  \n"
+generated_using: []

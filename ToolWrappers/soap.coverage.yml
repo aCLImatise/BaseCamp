@@ -1,0 +1,338 @@
+!Command
+command:
+- soap.coverage
+positional: []
+named:
+- !Flag
+  description: "Selector for sequencing coverage mode, physical coverage mode or reads\
+    \ tag mode\nAt least and only one should be selected!"
+  synonyms:
+  - -cvg
+  - -phy
+  - -tag
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: '[filename]   Input reference fasta file used in SOAP'
+  synonyms:
+  - -refsingle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[soap-file1 soap-file2 ...]\nInput several soap or soap gziped results\
+    \ by filenames."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[soap-list]         Input several soap or soap gziped results (absolute\
+    \ path!) with a soap-list file\nCaution: Only PE aligned results can be used in\
+    \ physical coverage!"
+  synonyms:
+  - -il
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[SE aligned results list]'
+  synonyms:
+  - -il_single
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[PE aligned results list]'
+  synonyms:
+  - -il_soap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[file-name]          Results output with details'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[directory]      Output coverage of each bp in seperate files, a directory
+    should be given'
+  synonyms:
+  - -depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[filename] Output coverage of each bp in a single file (text, fasta
+    like)'
+  synonyms:
+  - -depthsingle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[fn]    Output coverage of each bp in a single file (Binary mode)'
+  synonyms:
+  - -depthsinglebin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename]        Input N block data for exclusion (marked as 65535\
+    \ in depthsingle output)\nInput format: <segment_name> <start (numbering from\
+    \ 1)> <end (exclude the last)>"
+  synonyms:
+  - -addn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[filename]  Input previous coverage data (Both Text or Binary) for
+    faster accumulation'
+  synonyms:
+  - -depthinput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename]    Input specific block range for calculating coverage\n\
+    Input format: <segment_name> <start (numbering from 1)> <end (exclude the last)>"
+  synonyms:
+  - -cdsinput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename] [x-axis lower] [x-axis upper]\nOutput overall distribution\
+    \ of coverage of all segments"
+  synonyms:
+  - -plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename] [x-axis lower] [x-axis upper]\nOutput distribution of coverage\
+    \ of specific blocks"
+  synonyms:
+  - -cdsplot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename]\nOutput coverage of each bp of each specific blocks in\
+    \ a single file"
+  synonyms:
+  - -cdsdetail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename] [length]\nOutput coverage averaged in a [length] long window\
+    \ to [filename]"
+  synonyms:
+  - -window
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[num]                Number of processors [Default:4]'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[num]             Exclude [num] bp(s) from head & tail of each segments'
+  synonyms:
+  - -trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is a three column list
+  synonyms:
+  - -plain
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is a standard SAM input file
+  synonyms:
+  - -sam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is Blat for alculating query coverage.
+  synonyms:
+  - -pslquery
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is Blat for calculating subject coverage.
+  synonyms:
+  - -pslsub
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is MAQ output file.
+  synonyms:
+  - -maq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is Blast m8 file for calculating subject coverage (reference
+    should be subject).
+  synonyms:
+  - -m8subject
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is Blast m8 file for calculating query coverage (reference should
+    be query).
+  synonyms:
+  - -m8query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[limit]    Input mummer result file for calculating query coverage.'
+  synonyms:
+  - -mummerquery
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input Blastz axt file for calculating target coverage.
+  synonyms:
+  - -axtoitg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input Blastz axt file for calculating query coverage.
+  synonyms:
+  - -axtoiq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename_in] [filename_out]\nOutput S/P ratio data for post processing.\n\
+    Column:\nref    start    end    name"
+  synonyms:
+  - -sp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename_in] [filename_out]\nOutput pair-end reads on specific areas.\n\
+    Column:\nref    start    end    name"
+  synonyms:
+  - -pesupport
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use reads those are uniquely mapped (column 4 in soap == 1).
+  synonyms:
+  - -onlyuniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Omit mismatched bp in soap results.
+  synonyms:
+  - -precise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Cancel all possible warning.
+  synonyms:
+  - -nowarning
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not perform depth calculation.
+  synonyms:
+  - -nocalc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only output 0 or 1 for coverage calculation.
+  synonyms:
+  - -onlycover
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[num]        Exclude duplications, and gives the percentage of duplication.
+    [num]=readlength'
+  synonyms:
+  - -duplicate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[num]      Insert larger than num will be abandon [Default: 15000]'
+  synonyms:
+  - -insertupper
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[num]      Insert shorter thab num will be abandon [Default: 0]'
+  synonyms:
+  - -insertlower
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nSOAP.coverage\n    Version: 2.7.7\nComplied at: Dec 31 2009 14:58:44\n\
+  \     Author: RuiBang Luo\n     E-mail: luoruibang@genomics.org.cn\n\nThis utility\
+  \ can calculate sequencing coverage or physical coverage as well as duplication\
+  \ rate\nand details of specific block for each segments and whole genome by using\
+  \ SOAP, Blat, Blast, BlastZ,\nmummer and MAQ aligement results with multi-thread.\
+  \ Gzip file supported.\n\nParameters:\n  -cvg or -phy or -tag    Selector for sequencing\
+  \ coverage mode, physical coverage mode or reads tag mode\n                    \
+  \      At least and only one should be selected!\n  -refsingle [filename]   Input\
+  \ reference fasta file used in SOAP\n  -i [soap-file1 soap-file2 ...]\n        \
+  \                  Input several soap or soap gziped results by filenames.\n  -il\
+  \ [soap-list]         Input several soap or soap gziped results (absolute path!)\
+  \ with a soap-list file\n\t\tCaution: Only PE aligned results can be used in physical\
+  \ coverage!\n  -il_single [SE aligned results list]\n  -il_soap [PE aligned results\
+  \ list]\n  -o [file-name]          Results output with details\n  -depth [directory]\
+  \      Output coverage of each bp in seperate files, a directory should be given\n\
+  \  -depthsingle [filename] Output coverage of each bp in a single file (text, fasta\
+  \ like)\n  -depthsinglebin [fn]    Output coverage of each bp in a single file (Binary\
+  \ mode)\n  -addn [filename]        Input N block data for exclusion (marked as 65535\
+  \ in depthsingle output)\n\t\tInput format: <segment_name> <start (numbering from\
+  \ 1)> <end (exclude the last)>\n  -depthinput [filename]  Input previous coverage\
+  \ data (Both Text or Binary) for faster accumulation\n  -cdsinput [filename]   \
+  \ Input specific block range for calculating coverage\n\t\tInput format: <segment_name>\
+  \ <start (numbering from 1)> <end (exclude the last)>\n  -plot [filename] [x-axis\
+  \ lower] [x-axis upper]\n                          Output overall distribution of\
+  \ coverage of all segments\n  -cdsplot [filename] [x-axis lower] [x-axis upper]\n\
+  \                          Output distribution of coverage of specific blocks\n\
+  \  -cdsdetail [filename]\n                          Output coverage of each bp of\
+  \ each specific blocks in a single file\n  -window [filename] [length]\n       \
+  \                   Output coverage averaged in a [length] long window to [filename]\n\
+  \  -p [num]                Number of processors [Default:4]\n  -trim [num]     \
+  \        Exclude [num] bp(s) from head & tail of each segments\n\nInput format seletors:\n\
+  \  -plain                  Input is a three column list\n  -sam                \
+  \    Input is a standard SAM input file\n  -pslquery               Input is Blat\
+  \ for alculating query coverage.\n  -pslsub                 Input is Blat for calculating\
+  \ subject coverage.\n  -maq                    Input is MAQ output file.\n  -m8subject\
+  \              Input is Blast m8 file for calculating subject coverage (reference\
+  \ should be subject).\n  -m8query                Input is Blast m8 file for calculating\
+  \ query coverage (reference should be query).\n  -mummerquery [limit]    Input mummer\
+  \ result file for calculating query coverage.\n  -axtoitg                Input Blastz\
+  \ axt file for calculating target coverage.\n  -axtoiq                 Input Blastz\
+  \ axt file for calculating query coverage.\n\nSpecial functions:\n  -sp [filename_in]\
+  \ [filename_out]\n                          Output S/P ratio data for post processing.\n\
+  \       Column:\n           ref    start    end    name\n  -pesupport [filename_in]\
+  \ [filename_out]\n                          Output pair-end reads on specific areas.\n\
+  \       Column:\n           ref    start    end    name\n  -onlyuniq           \
+  \    Use reads those are uniquely mapped (column 4 in soap == 1).\n  -precise  \
+  \              Omit mismatched bp in soap results.\n  -nowarning              Cancel\
+  \ all possible warning.\n  -nocalc                 Do not perform depth calculation.\n\
+  \  -onlycover              Only output 0 or 1 for coverage calculation.\n\nPhysical\
+  \ Coverage Specified Parameters:\n  -duplicate [num]        Exclude duplications,\
+  \ and gives the percentage of duplication. [num]=readlength\n  -insertupper [num]\
+  \      Insert larger than num will be abandon [Default: 15000]\n  -insertlower [num]\
+  \      Insert shorter thab num will be abandon [Default: 0]\n\nExample:\n\t1. Calculate\
+  \ several files of SOAP results.\n\t   soap.coverage -cvg -i *.soap *.single -refsingle\
+  \ human.fa -o result.txt \n\n\t2. Calculate a list of SOAP results, exclude Ns blocks,\
+  \ output depth to\n\t   a file and plot coverage form depth 0 to 1000.\n\t   soap.coverage\
+  \ -cvg -il soap.list -refsingle human.fa -o result.txt -depthsingle all.coverage\
+  \ -addn n.gap -plot distribution.txt 0 1000\n\n\t3. Calculate a list of SOAP results,\
+  \ use only uniquely mapped reads, exclude Ns blocks\n\t   , output depth to a file\
+  \ and plot coverage form depth 0 to 1000.\n\t   soap.coverage -cvg -il soap.list\
+  \ -onlyuniq -refsingle human.fa -o result.txt -depthsingle all.coverage -addn n.gap\
+  \ -plot distribution.txt 0 1000\n\n\t4. Add new SOAP results to depth(-depthsingle)\
+  \ already calculated &\n\t   plot all data and specific blocks from depth 0 to 150,\
+  \ with 6 processors.\n\t   soap.coverage -cvg -depthinput all.coverage -refsingle\
+  \ human.fa -il soap.list -p 6 -o result.txt -cdsinput cds.list -plot distribution.txt\
+  \ 0 150 -cdsplot distribution_cds.txt 0 150\n\n\t5. Calculate physical coverage\
+  \ and duplication rate(read length=44) with\n\t   insert between (avg-3SD, avg+SD)[avg=197,\
+  \ SD=9], with 8 processors\n\t   soap.coverage -phy -il soap_without_single.list\
+  \ -refsingle human.fa -p 8 -o result.txt -duplicate 44 -insertlower 170 -insertupper\
+  \ 224\n"
+generated_using: []

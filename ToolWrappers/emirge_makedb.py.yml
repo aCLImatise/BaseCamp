@@ -1,0 +1,127 @@
+!Command
+command:
+- emirge_makedb.py
+positional: []
+named:
+- !Flag
+  description: "[SSU|LSU], --gene=[SSU|LSU]\nbuild database from this gene (SSU=Small\
+    \ Subunit rRNA;\nLSU=Large Subunit rRNA) default = SSU"
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "number of threads to use for vsearch clustering of\ndatabase (default\
+    \ = use all available)"
+  synonyms:
+  - -p
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: working directory for temporary files (default = /tmp)
+  synonyms:
+  - -t
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: 'SILVA release number (default: current SILVA release)'
+  synonyms:
+  - -r
+  - --release
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: minimum reference sequence length (default = 1200)
+  synonyms:
+  - -m
+  - --min-len
+  args: !SimpleFlagArg
+    name: LEN
+  optional: true
+- !Flag
+  description: maximum reference sequence length (default = 2000)
+  synonyms:
+  - -M
+  - --max-len
+  args: !SimpleFlagArg
+    name: LEN
+  optional: true
+- !Flag
+  description: "Cluster at this fractional identity level (default =\n0.97)"
+  synonyms:
+  - -i
+  - --id
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'keep intermediary files (default: do not keep)'
+  synonyms:
+  - -k
+  - --keep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'path to vsearch binary (default: look in $PATH)'
+  synonyms:
+  - -V
+  - --vsearch
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'path to bowtie-build binary (default: look in $PATH)'
+  synonyms:
+  - -B
+  - --bowtie-build
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "I have read and accepted the SILVA license.\n"
+  synonyms:
+  - --silva-license-accepted
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: emirge_makedb.py [OPTIONS]\n\nemirge_makedb.py creates a reference\
+  \ database and the necessay indices for use by\nEMIRGE from an rRNA reference database.\
+  \ Without extra parameters, emirge_makedb.py\nwill 1) download the most recent SILVA\
+  \ SSU database, 2) filter it by sequence\nlength, 3) cluster at 97% sequence identity,\
+  \ 4) replace ambiguous bases\nwith random characters and 5) create a bowtie index.\n\
+  \nRequires vsearch executable can be found in path for clustering.\nhttps://github.com/torognes/vsearch\n\
+  \nRequires bowtie-build (from bowtie version 1) can be found in path\n    \n\n\n\
+  Options:\n  -h, --help            show this help message and exit\n  -g [SSU|LSU],\
+  \ --gene=[SSU|LSU]\n                        build database from this gene (SSU=Small\
+  \ Subunit rRNA;\n                        LSU=Large Subunit rRNA) default = SSU\n\
+  \  -p THREADS, --threads=THREADS\n                        number of threads to use\
+  \ for vsearch clustering of\n                        database (default = use all\
+  \ available)\n  -t DIR, --tmpdir=DIR  working directory for temporary files (default\
+  \ = /tmp)\n  -r N, --release=N     SILVA release number (default: current SILVA\
+  \ release)\n  -m LEN, --min-len=LEN\n                        minimum reference sequence\
+  \ length (default = 1200)\n  -M LEN, --max-len=LEN\n                        maximum\
+  \ reference sequence length (default = 2000)\n  -i FLOAT, --id=FLOAT  Cluster at\
+  \ this fractional identity level (default =\n                        0.97)\n  -k,\
+  \ --keep            keep intermediary files (default: do not keep)\n  -V FILE, --vsearch=FILE\n\
+  \                        path to vsearch binary (default: look in $PATH)\n  -B FILE,\
+  \ --bowtie-build=FILE\n                        path to bowtie-build binary (default:\
+  \ look in $PATH)\n  --silva-license-accepted\n                        I have read\
+  \ and accepted the SILVA license.\n"
+generated_using:
+- --help

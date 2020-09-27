@@ -26,100 +26,10 @@ subcommands:
     name: outputFile
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: ": set distribution used for insert length\n[1 = normal], 2 = poisson"
-      synonyms:
-      - -id
-      args: !SimpleFlagArg
-        name: i
-      optional: true
-    - !Flag
-      description: ": set distribution used for read length\n[1 = normal], 2 = poisson"
-      synonyms:
-      - -ld
-      args: !SimpleFlagArg
-        name: i
-      optional: true
-    - !Flag
-      description: ': inward insert length mean [200.0]'
-      synonyms:
-      - -im
-      args: !SimpleFlagArg
-        name: f
-      optional: true
-    - !Flag
-      description: ': outward insert length mean [500.0]'
-      synonyms:
-      - -om
-      args: !SimpleFlagArg
-        name: f
-      optional: true
-    - !Flag
-      description: ': inward insert length std dev [10.0]'
-      synonyms:
-      - -is
-      args: !SimpleFlagArg
-        name: f
-      optional: true
-    - !Flag
-      description: ': outward insert length std dev [15.0]'
-      synonyms:
-      - -os
-      args: !SimpleFlagArg
-        name: f
-      optional: true
-    - !Flag
-      description: ': probability for an inward read [0.5]'
-      synonyms:
-      - -ip
-      args: !SimpleFlagArg
-        name: f
-      optional: true
-    - !Flag
-      description: ': illumina error char [^]'
-      synonyms:
-      - -er
-      args: !SimpleFlagArg
-        name: c
-      optional: true
-    - !Flag
-      description: ': number of reads to make [1000]'
-      synonyms:
-      - -nr
-      args: !SimpleFlagArg
-        name: i
-      optional: true
-    - !Flag
-      description: ': read length mean [85.0]'
-      synonyms:
-      - -rl
-      args: !SimpleFlagArg
-        name: x
-      optional: true
-    - !Flag
-      description: ': read length sigma [7.0]'
-      synonyms:
-      - -rs
-      args: !SimpleFlagArg
-        name: x
-      optional: true
-    - !Flag
-      description: ': no error for first x bases in a read [0]'
-      synonyms:
-      - -ps
-      args: !SimpleFlagArg
-        name: x
-      optional: true
-    - !Flag
-      description: ': outputs two fastq files for bowtie mapping [off]'
-      synonyms:
-      - -b
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -141,7 +51,188 @@ subcommands:
         name: outputFile
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: ": set distribution used for insert length\n[1 = normal], 2\
+            \ = poisson"
+          synonyms:
+          - -id
+          args: !SimpleFlagArg
+            name: i
+          optional: true
+        - !Flag
+          description: ": set distribution used for read length\n[1 = normal], 2 =\
+            \ poisson"
+          synonyms:
+          - -ld
+          args: !SimpleFlagArg
+            name: i
+          optional: true
+        - !Flag
+          description: ': inward insert length mean [200.0]'
+          synonyms:
+          - -im
+          args: !SimpleFlagArg
+            name: f
+          optional: true
+        - !Flag
+          description: ': outward insert length mean [500.0]'
+          synonyms:
+          - -om
+          args: !SimpleFlagArg
+            name: f
+          optional: true
+        - !Flag
+          description: ': inward insert length std dev [10.0]'
+          synonyms:
+          - -is
+          args: !SimpleFlagArg
+            name: f
+          optional: true
+        - !Flag
+          description: ': outward insert length std dev [15.0]'
+          synonyms:
+          - -os
+          args: !SimpleFlagArg
+            name: f
+          optional: true
+        - !Flag
+          description: ': probability for an inward read [0.5]'
+          synonyms:
+          - -ip
+          args: !SimpleFlagArg
+            name: f
+          optional: true
+        - !Flag
+          description: ': illumina error char [^]'
+          synonyms:
+          - -er
+          args: !SimpleFlagArg
+            name: c
+          optional: true
+        - !Flag
+          description: ': number of reads to make [1000]'
+          synonyms:
+          - -nr
+          args: !SimpleFlagArg
+            name: i
+          optional: true
+        - !Flag
+          description: ': read length mean [85.0]'
+          synonyms:
+          - -rl
+          args: !SimpleFlagArg
+            name: x
+          optional: true
+        - !Flag
+          description: ': read length sigma [7.0]'
+          synonyms:
+          - -rs
+          args: !SimpleFlagArg
+            name: x
+          optional: true
+        - !Flag
+          description: ': no error for first x bases in a read [0]'
+          synonyms:
+          - -ps
+          args: !SimpleFlagArg
+            name: x
+          optional: true
+        - !Flag
+          description: ': outputs two fastq files for bowtie mapping [off]'
+          synonyms:
+          - -b
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: synthReadGen
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: inputFile
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: outputFile
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ': print out help'
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott\
+            \ Clark\n\nUsage: synthReadGen [options] <inputFile> <outputFile>\n  \
+            \  Options:\n    -h : print out help\n"
+          generated_using: &id004 []
+        - !Command
+          command: &id005
+          - synthReadGen
+          - inputFile
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: outputFile
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ': print out help'
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott\
+            \ Clark\n\nUsage: synthReadGen [options] <inputFile> <outputFile>\n  \
+            \  Options:\n    -h : print out help\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: ': print out this help'
+          synonyms:
+          - -h
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott\
+          \ Clark\n\nUsage: synthReadGen [options] <inputFile> <outputFile>\n\nOptions:\
+          \ <i>nt <f>loat [default]\n  -h      : print out this help\n  -id <i> :\
+          \ set distribution used for insert length\n            [1 = normal], 2 =\
+          \ poisson\n  -ld <i> : set distribution used for read length\n         \
+          \   [1 = normal], 2 = poisson\n  -im <f> : inward insert length mean [200.0]\n\
+          \  -om <f> : outward insert length mean [500.0]\n  -is <f> : inward insert\
+          \ length std dev [10.0]\n  -os <f> : outward insert length std dev [15.0]\n\
+          \  -ip <f> : probability for an inward read [0.5]\n  -er <c> : illumina\
+          \ error char [^]\n  -nr <i> : number of reads to make [1000]\n  -rl <x>\
+          \ : read length mean [85.0]\n  -rs <x> : read length sigma [7.0]\n  -ps\
+          \ <x> : no error for first x bases in a read [0]\n  -b      : outputs two\
+          \ fastq files for bowtie mapping [off]\n"
+        generated_using: &id006
+        - -h
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -155,11 +246,9 @@ subcommands:
       help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott\
         \ Clark\n\nUsage: synthReadGen [options] <inputFile> <outputFile>\n    Options:\n\
         \    -h : print out help\n"
-      generated_using: &id004 []
+      generated_using: *id004
     - !Command
-      command: &id005
-      - synthReadGen
-      - inputFile
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -183,12 +272,7 @@ subcommands:
         \    -h : print out help\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: ': print out this help'
-      synonyms:
-      - -h
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott Clark\n\
@@ -203,8 +287,7 @@ subcommands:
       \ to make [1000]\n  -rl <x> : read length mean [85.0]\n  -rs <x> : read length\
       \ sigma [7.0]\n  -ps <x> : no error for first x bases in a read [0]\n  -b  \
       \    : outputs two fastq files for bowtie mapping [off]\n"
-    generated_using: &id006
-    - -h
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -228,7 +311,7 @@ subcommands:
     name: outputFile
     optional: false
   named: []
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

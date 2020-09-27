@@ -16,7 +16,7 @@ subcommands:
     name: AssemblePairs.py
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -31,7 +31,1238 @@ subcommands:
         name: AssemblePairs.py
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: AssemblePairs.py
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: ''
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: AssemblePairs.py [--version] [-h]  ...\nAssemblePairs.py:\
+            \ error: argument : invalid choice: 'assemble-fail' (choose from 'align',\
+            \ 'join', 'reference', 'sequential')\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - AssemblePairs.py
+          - assemble-pass
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: AssemblePairs.py
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: ''
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: AssemblePairs.py [--version] [-h]  ...\nAssemblePairs.py:\
+            \ error: argument : invalid choice: 'assemble-pass' (choose from 'align',\
+            \ 'join', 'reference', 'sequential')\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - AssemblePairs.py
+          - reference
+          positional: []
+          named:
+          - !Flag
+            description: "An ordered list of FASTA/FASTQ files containing\nhead/primary\
+              \ sequences. (default: None)"
+            synonyms:
+            - '-1'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_1
+            optional: true
+          - !Flag
+            description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary\
+              \ sequences. (default: None)"
+            synonyms:
+            - '-2'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_2
+            optional: true
+          - !Flag
+            description: "Explicit output file name(s). Note, this argument\ncannot\
+              \ be used with the --failed, --outdir, or\n--outname arguments. If unspecified,\
+              \ then the output\nfilename will be based on the input filename(s).\n\
+              (default: None)"
+            synonyms:
+            - -o
+            args: !RepeatFlagArg
+              name: OUT_FILES
+            optional: true
+          - !Flag
+            description: "Specify to changes the output directory to the\nlocation\
+              \ specified. The input file directory is used\nif this is not specified.\
+              \ (default: None)"
+            synonyms:
+            - --outdir
+            args: !SimpleFlagArg
+              name: OUT_DIR
+            optional: true
+          - !Flag
+            description: "Changes the prefix of the successfully processed\noutput\
+              \ file to the string specified. May not be\nspecified with multiple\
+              \ input files. (default: None)"
+            synonyms:
+            - --outname
+            args: !SimpleFlagArg
+              name: OUT_NAME
+            optional: true
+          - !Flag
+            description: "Specify to write verbose logging to a file. May not be\n\
+              specified with multiple input files. (default: None)"
+            synonyms:
+            - --log
+            args: !SimpleFlagArg
+              name: LOG_FILE
+            optional: true
+          - !Flag
+            description: "If specified create files containing records that fail\n\
+              processing. (default: False)"
+            synonyms:
+            - --failed
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Specify to force output as FASTA rather than FASTQ.\n(default:\
+              \ None)"
+            synonyms:
+            - --fasta
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "DELIMITER DELIMITER\nA list of the three delimiters that\
+              \ separate\nannotation blocks, field names and values, and values\n\
+              within a field, respectively. (default: ('|', '=',\n','))"
+            synonyms:
+            - --delim
+            args: !SimpleFlagArg
+              name: DELIMITER
+            optional: true
+          - !Flag
+            description: "The number of simultaneous computational processes to\n\
+              execute (CPU cores to utilized). (default: 8)"
+            synonyms:
+            - --nproc
+            args: !SimpleFlagArg
+              name: NPROC
+            optional: true
+          - !Flag
+            description: "The format of the sequence identifier which defines\nshared\
+              \ coordinate information across paired ends.\n(default: presto)"
+            synonyms:
+            - --coord
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? presto
+                ? "454"
+                ? sra
+                ? illumina
+                ? solexa
+            optional: true
+          - !Flag
+            description: "Specify which read to reverse complement before\nstitching.\
+              \ (default: tail)"
+            synonyms:
+            - --rc
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? tail
+                ? none
+                ? head
+                ? both
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from head records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --1f
+            args: !RepeatFlagArg
+              name: HEAD_FIELDS
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from tail records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --2f
+            args: !RepeatFlagArg
+              name: TAIL_FIELDS
+            optional: true
+          - !Flag
+            description: "A FASTA file containing the reference sequence\ndatabase.\
+              \ (default: None)"
+            synonyms:
+            - -r
+            args: !SimpleFlagArg
+              name: REF_FILE
+            optional: true
+          - !Flag
+            description: "Minimum identity of the assembled sequence required to\n\
+              call a valid reference guided assembly (between 0 and\n1). (default:\
+              \ 0.5)"
+            synonyms:
+            - --minident
+            args: !SimpleFlagArg
+              name: MIN_IDENT
+            optional: true
+          - !Flag
+            description: "Minimum E-value for reference alignment for both the\nhead\
+              \ and tail sequence. (default: 1e-05)"
+            synonyms:
+            - --evalue
+            args: !SimpleFlagArg
+              name: EVALUE
+            optional: true
+          - !Flag
+            description: "Maximum number of hits from the reference alignment to\n\
+              check for matching head and tail sequence assignments.\n(default: 100)"
+            synonyms:
+            - --maxhits
+            args: !SimpleFlagArg
+              name: MAX_HITS
+            optional: true
+          - !Flag
+            description: "Specify to change the behavior of inserted characters\n\
+              when the head and tail sequences do not overlap during\nreference guided\
+              \ assembly. If specified, this will\nresult in inserted of the V region\
+              \ reference sequence\ninstead of a sequence of Ns in the non-overlapping\n\
+              region. Warning: you could end up making chimeric\nsequences by using\
+              \ this option. (default: False)"
+            synonyms:
+            - --fill
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "The local alignment tool to use. Must be one blastn\n(blast+\
+              \ nucleotide) or usearch (ublast algorithm).\n(default: usearch)"
+            synonyms:
+            - --aligner
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? blastn
+                ? usearch
+            optional: true
+          - !Flag
+            description: "The name or location of the aligner executable file\n(blastn\
+              \ or usearch). Defaults to the name specified by\nthe --aligner argument.\
+              \ (default: None)"
+            synonyms:
+            - --exec
+            args: !SimpleFlagArg
+              name: ALIGNER_EXEC
+            optional: true
+          - !Flag
+            description: "The name or location of the executable file that\nbuilds\
+              \ the reference database. This defaults to\nmakeblastdb when blastn\
+              \ is specified to the --aligner\nargument, and usearch when usearch\
+              \ is specified.\n(default: None)\n"
+            synonyms:
+            - --dbexec
+            args: !SimpleFlagArg
+              name: DB_EXEC
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: show program's version number and exit
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: AssemblePairs.py reference [--version] [-h] -1 SEQ_FILES_1\n\
+            \                                  [SEQ_FILES_1 ...] -2 SEQ_FILES_2\n\
+            \                                  [SEQ_FILES_2 ...]\n               \
+            \                   [-o OUT_FILES [OUT_FILES ...]]\n                 \
+            \                 [--outdir OUT_DIR] [--outname OUT_NAME]\n          \
+            \                        [--log LOG_FILE] [--failed] [--fasta]\n     \
+            \                             [--delim DELIMITER DELIMITER DELIMITER]\n\
+            \                                  [--nproc NPROC]\n                 \
+            \                 [--coord {illumina,solexa,sra,454,presto}]\n       \
+            \                           [--rc {tail,head,both,none}]\n           \
+            \                       [--1f HEAD_FIELDS [HEAD_FIELDS ...]]\n       \
+            \                           [--2f TAIL_FIELDS [TAIL_FIELDS ...]] -r\n\
+            \                                  REF_FILE [--minident MIN_IDENT]\n \
+            \                                 [--evalue EVALUE] [--maxhits MAX_HITS]\n\
+            \                                  [--fill] [--aligner {blastn,usearch}]\n\
+            \                                  [--exec ALIGNER_EXEC] [--dbexec DB_EXEC]\n\
+            \nAssemble pairs by aligning reads against a reference database.\n\nhelp:\n\
+            \  --version             show program's version number and exit\n  -h,\
+            \ --help            show this help message and exit\n\nstandard arguments:\n\
+            \  -1 SEQ_FILES_1 [SEQ_FILES_1 ...]\n                        An ordered\
+            \ list of FASTA/FASTQ files containing\n                        head/primary\
+            \ sequences. (default: None)\n  -2 SEQ_FILES_2 [SEQ_FILES_2 ...]\n   \
+            \                     An ordered list of FASTA/FASTQ files containing\n\
+            \                        tail/secondary sequences. (default: None)\n \
+            \ -o OUT_FILES [OUT_FILES ...]\n                        Explicit output\
+            \ file name(s). Note, this argument\n                        cannot be\
+            \ used with the --failed, --outdir, or\n                        --outname\
+            \ arguments. If unspecified, then the output\n                       \
+            \ filename will be based on the input filename(s).\n                 \
+            \       (default: None)\n  --outdir OUT_DIR      Specify to changes the\
+            \ output directory to the\n                        location specified.\
+            \ The input file directory is used\n                        if this is\
+            \ not specified. (default: None)\n  --outname OUT_NAME    Changes the\
+            \ prefix of the successfully processed\n                        output\
+            \ file to the string specified. May not be\n                        specified\
+            \ with multiple input files. (default: None)\n  --log LOG_FILE       \
+            \ Specify to write verbose logging to a file. May not be\n           \
+            \             specified with multiple input files. (default: None)\n \
+            \ --failed              If specified create files containing records that\
+            \ fail\n                        processing. (default: False)\n  --fasta\
+            \               Specify to force output as FASTA rather than FASTQ.\n\
+            \                        (default: None)\n  --delim DELIMITER DELIMITER\
+            \ DELIMITER\n                        A list of the three delimiters that\
+            \ separate\n                        annotation blocks, field names and\
+            \ values, and values\n                        within a field, respectively.\
+            \ (default: ('|', '=',\n                        ','))\n  --nproc NPROC\
+            \         The number of simultaneous computational processes to\n    \
+            \                    execute (CPU cores to utilized). (default: 8)\n\n\
+            format arguments:\n  --coord {illumina,solexa,sra,454,presto}\n      \
+            \                  The format of the sequence identifier which defines\n\
+            \                        shared coordinate information across paired ends.\n\
+            \                        (default: presto)\n  --rc {tail,head,both,none}\n\
+            \                        Specify which read to reverse complement before\n\
+            \                        stitching. (default: tail)\n  --1f HEAD_FIELDS\
+            \ [HEAD_FIELDS ...]\n                        Specify annotation fields\
+            \ to copy from head records\n                        into assembled record.\
+            \ (default: None)\n  --2f TAIL_FIELDS [TAIL_FIELDS ...]\n            \
+            \            Specify annotation fields to copy from tail records\n   \
+            \                     into assembled record. (default: None)\n\nreference\
+            \ guided assembly arguments:\n  -r REF_FILE           A FASTA file containing\
+            \ the reference sequence\n                        database. (default:\
+            \ None)\n  --minident MIN_IDENT  Minimum identity of the assembled sequence\
+            \ required to\n                        call a valid reference guided assembly\
+            \ (between 0 and\n                        1). (default: 0.5)\n  --evalue\
+            \ EVALUE       Minimum E-value for reference alignment for both the\n\
+            \                        head and tail sequence. (default: 1e-05)\n  --maxhits\
+            \ MAX_HITS    Maximum number of hits from the reference alignment to\n\
+            \                        check for matching head and tail sequence assignments.\n\
+            \                        (default: 100)\n  --fill                Specify\
+            \ to change the behavior of inserted characters\n                    \
+            \    when the head and tail sequences do not overlap during\n        \
+            \                reference guided assembly. If specified, this will\n\
+            \                        result in inserted of the V region reference\
+            \ sequence\n                        instead of a sequence of Ns in the\
+            \ non-overlapping\n                        region. Warning: you could\
+            \ end up making chimeric\n                        sequences by using this\
+            \ option. (default: False)\n  --aligner {blastn,usearch}\n           \
+            \             The local alignment tool to use. Must be one blastn\n  \
+            \                      (blast+ nucleotide) or usearch (ublast algorithm).\n\
+            \                        (default: usearch)\n  --exec ALIGNER_EXEC   The\
+            \ name or location of the aligner executable file\n                  \
+            \      (blastn or usearch). Defaults to the name specified by\n      \
+            \                  the --aligner argument. (default: None)\n  --dbexec\
+            \ DB_EXEC      The name or location of the executable file that\n    \
+            \                    builds the reference database. This defaults to\n\
+            \                        makeblastdb when blastn is specified to the --aligner\n\
+            \                        argument, and usearch when usearch is specified.\n\
+            \                        (default: None)\n"
+          generated_using: *id004
+        - !Command
+          command: &id007
+          - AssemblePairs.py
+          - align
+          positional: []
+          named:
+          - !Flag
+            description: "An ordered list of FASTA/FASTQ files containing\nhead/primary\
+              \ sequences. (default: None)"
+            synonyms:
+            - '-1'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_1
+            optional: true
+          - !Flag
+            description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary\
+              \ sequences. (default: None)"
+            synonyms:
+            - '-2'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_2
+            optional: true
+          - !Flag
+            description: "Explicit output file name(s). Note, this argument\ncannot\
+              \ be used with the --failed, --outdir, or\n--outname arguments. If unspecified,\
+              \ then the output\nfilename will be based on the input filename(s).\n\
+              (default: None)"
+            synonyms:
+            - -o
+            args: !RepeatFlagArg
+              name: OUT_FILES
+            optional: true
+          - !Flag
+            description: "Specify to changes the output directory to the\nlocation\
+              \ specified. The input file directory is used\nif this is not specified.\
+              \ (default: None)"
+            synonyms:
+            - --outdir
+            args: !SimpleFlagArg
+              name: OUT_DIR
+            optional: true
+          - !Flag
+            description: "Changes the prefix of the successfully processed\noutput\
+              \ file to the string specified. May not be\nspecified with multiple\
+              \ input files. (default: None)"
+            synonyms:
+            - --outname
+            args: !SimpleFlagArg
+              name: OUT_NAME
+            optional: true
+          - !Flag
+            description: "Specify to write verbose logging to a file. May not be\n\
+              specified with multiple input files. (default: None)"
+            synonyms:
+            - --log
+            args: !SimpleFlagArg
+              name: LOG_FILE
+            optional: true
+          - !Flag
+            description: "If specified create files containing records that fail\n\
+              processing. (default: False)"
+            synonyms:
+            - --failed
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Specify to force output as FASTA rather than FASTQ.\n(default:\
+              \ None)"
+            synonyms:
+            - --fasta
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "DELIMITER DELIMITER\nA list of the three delimiters that\
+              \ separate\nannotation blocks, field names and values, and values\n\
+              within a field, respectively. (default: ('|', '=',\n','))"
+            synonyms:
+            - --delim
+            args: !SimpleFlagArg
+              name: DELIMITER
+            optional: true
+          - !Flag
+            description: "The number of simultaneous computational processes to\n\
+              execute (CPU cores to utilized). (default: 8)"
+            synonyms:
+            - --nproc
+            args: !SimpleFlagArg
+              name: NPROC
+            optional: true
+          - !Flag
+            description: "The format of the sequence identifier which defines\nshared\
+              \ coordinate information across paired ends.\n(default: presto)"
+            synonyms:
+            - --coord
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? presto
+                ? "454"
+                ? sra
+                ? illumina
+                ? solexa
+            optional: true
+          - !Flag
+            description: "Specify which read to reverse complement before\nstitching.\
+              \ (default: tail)"
+            synonyms:
+            - --rc
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? tail
+                ? none
+                ? head
+                ? both
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from head records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --1f
+            args: !RepeatFlagArg
+              name: HEAD_FIELDS
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from tail records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --2f
+            args: !RepeatFlagArg
+              name: TAIL_FIELDS
+            optional: true
+          - !Flag
+            description: "Significance threshold for de novo paired-end\nassembly.\
+              \ (default: 1e-05)"
+            synonyms:
+            - --alpha
+            args: !SimpleFlagArg
+              name: ALPHA
+            optional: true
+          - !Flag
+            description: "Maximum allowable error rate for de novo assembly.\n(default:\
+              \ 0.3)"
+            synonyms:
+            - --maxerror
+            args: !SimpleFlagArg
+              name: MAX_ERROR
+            optional: true
+          - !Flag
+            description: "Minimum sequence length to scan for overlap in de novo\n\
+              assembly. (default: 8)"
+            synonyms:
+            - --minlen
+            args: !SimpleFlagArg
+              name: MIN_LEN
+            optional: true
+          - !Flag
+            description: "Maximum sequence length to scan for overlap in de novo\n\
+              assembly. (default: 1000)"
+            synonyms:
+            - --maxlen
+            args: !SimpleFlagArg
+              name: MAX_LEN
+            optional: true
+          - !Flag
+            description: "If specified, scan past the end of the tail sequence\nin\
+              \ de novo assembly to allow the head sequence to\noverhang the end of\
+              \ the tail sequence. (default:\nFalse)\n"
+            synonyms:
+            - --scanrev
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: show program's version number and exit
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: AssemblePairs.py align [--version] [-h] -1 SEQ_FILES_1\n\
+            \                              [SEQ_FILES_1 ...] -2 SEQ_FILES_2\n    \
+            \                          [SEQ_FILES_2 ...] [-o OUT_FILES [OUT_FILES\
+            \ ...]]\n                              [--outdir OUT_DIR] [--outname OUT_NAME]\n\
+            \                              [--log LOG_FILE] [--failed] [--fasta]\n\
+            \                              [--delim DELIMITER DELIMITER DELIMITER]\n\
+            \                              [--nproc NPROC]\n                     \
+            \         [--coord {illumina,solexa,sra,454,presto}]\n               \
+            \               [--rc {tail,head,both,none}]\n                       \
+            \       [--1f HEAD_FIELDS [HEAD_FIELDS ...]]\n                       \
+            \       [--2f TAIL_FIELDS [TAIL_FIELDS ...]]\n                       \
+            \       [--alpha ALPHA] [--maxerror MAX_ERROR]\n                     \
+            \         [--minlen MIN_LEN] [--maxlen MAX_LEN]\n                    \
+            \          [--scanrev]\n\nAssemble pairs by aligning ends.\n\nhelp:\n\
+            \  --version             show program's version number and exit\n  -h,\
+            \ --help            show this help message and exit\n\nstandard arguments:\n\
+            \  -1 SEQ_FILES_1 [SEQ_FILES_1 ...]\n                        An ordered\
+            \ list of FASTA/FASTQ files containing\n                        head/primary\
+            \ sequences. (default: None)\n  -2 SEQ_FILES_2 [SEQ_FILES_2 ...]\n   \
+            \                     An ordered list of FASTA/FASTQ files containing\n\
+            \                        tail/secondary sequences. (default: None)\n \
+            \ -o OUT_FILES [OUT_FILES ...]\n                        Explicit output\
+            \ file name(s). Note, this argument\n                        cannot be\
+            \ used with the --failed, --outdir, or\n                        --outname\
+            \ arguments. If unspecified, then the output\n                       \
+            \ filename will be based on the input filename(s).\n                 \
+            \       (default: None)\n  --outdir OUT_DIR      Specify to changes the\
+            \ output directory to the\n                        location specified.\
+            \ The input file directory is used\n                        if this is\
+            \ not specified. (default: None)\n  --outname OUT_NAME    Changes the\
+            \ prefix of the successfully processed\n                        output\
+            \ file to the string specified. May not be\n                        specified\
+            \ with multiple input files. (default: None)\n  --log LOG_FILE       \
+            \ Specify to write verbose logging to a file. May not be\n           \
+            \             specified with multiple input files. (default: None)\n \
+            \ --failed              If specified create files containing records that\
+            \ fail\n                        processing. (default: False)\n  --fasta\
+            \               Specify to force output as FASTA rather than FASTQ.\n\
+            \                        (default: None)\n  --delim DELIMITER DELIMITER\
+            \ DELIMITER\n                        A list of the three delimiters that\
+            \ separate\n                        annotation blocks, field names and\
+            \ values, and values\n                        within a field, respectively.\
+            \ (default: ('|', '=',\n                        ','))\n  --nproc NPROC\
+            \         The number of simultaneous computational processes to\n    \
+            \                    execute (CPU cores to utilized). (default: 8)\n\n\
+            format arguments:\n  --coord {illumina,solexa,sra,454,presto}\n      \
+            \                  The format of the sequence identifier which defines\n\
+            \                        shared coordinate information across paired ends.\n\
+            \                        (default: presto)\n  --rc {tail,head,both,none}\n\
+            \                        Specify which read to reverse complement before\n\
+            \                        stitching. (default: tail)\n  --1f HEAD_FIELDS\
+            \ [HEAD_FIELDS ...]\n                        Specify annotation fields\
+            \ to copy from head records\n                        into assembled record.\
+            \ (default: None)\n  --2f TAIL_FIELDS [TAIL_FIELDS ...]\n            \
+            \            Specify annotation fields to copy from tail records\n   \
+            \                     into assembled record. (default: None)\n\nde novo\
+            \ assembly arguments:\n  --alpha ALPHA         Significance threshold\
+            \ for de novo paired-end\n                        assembly. (default:\
+            \ 1e-05)\n  --maxerror MAX_ERROR  Maximum allowable error rate for de\
+            \ novo assembly.\n                        (default: 0.3)\n  --minlen MIN_LEN\
+            \      Minimum sequence length to scan for overlap in de novo\n      \
+            \                  assembly. (default: 8)\n  --maxlen MAX_LEN      Maximum\
+            \ sequence length to scan for overlap in de novo\n                   \
+            \     assembly. (default: 1000)\n  --scanrev             If specified,\
+            \ scan past the end of the tail sequence\n                        in de\
+            \ novo assembly to allow the head sequence to\n                      \
+            \  overhang the end of the tail sequence. (default:\n                \
+            \        False)\n"
+          generated_using: *id004
+        - !Command
+          command: &id008
+          - AssemblePairs.py
+          - join
+          positional: []
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - '-2'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_2
+            optional: true
+          - !Flag
+            description: "An ordered list of FASTA/FASTQ files containing\nhead/primary\
+              \ sequences. (default: None)"
+            synonyms:
+            - '-1'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_1
+            optional: true
+          - !Flag
+            description: "Explicit output file name(s). Note, this argument\ncannot\
+              \ be used with the --failed, --outdir, or\n--outname arguments. If unspecified,\
+              \ then the output\nfilename will be based on the input filename(s).\n\
+              (default: None)"
+            synonyms:
+            - -o
+            args: !RepeatFlagArg
+              name: OUT_FILES
+            optional: true
+          - !Flag
+            description: "Specify to changes the output directory to the\nlocation\
+              \ specified. The input file directory is used\nif this is not specified.\
+              \ (default: None)"
+            synonyms:
+            - --outdir
+            args: !SimpleFlagArg
+              name: OUT_DIR
+            optional: true
+          - !Flag
+            description: "Changes the prefix of the successfully processed\noutput\
+              \ file to the string specified. May not be\nspecified with multiple\
+              \ input files. (default: None)"
+            synonyms:
+            - --outname
+            args: !SimpleFlagArg
+              name: OUT_NAME
+            optional: true
+          - !Flag
+            description: "Specify to write verbose logging to a file. May not be\n\
+              specified with multiple input files. (default: None)"
+            synonyms:
+            - --log
+            args: !SimpleFlagArg
+              name: LOG_FILE
+            optional: true
+          - !Flag
+            description: "If specified create files containing records that fail\n\
+              processing. (default: False)"
+            synonyms:
+            - --failed
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Specify to force output as FASTA rather than FASTQ.\n(default:\
+              \ None)"
+            synonyms:
+            - --fasta
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "DELIMITER DELIMITER\nA list of the three delimiters that\
+              \ separate\nannotation blocks, field names and values, and values\n\
+              within a field, respectively. (default: ('|', '=',\n','))"
+            synonyms:
+            - --delim
+            args: !SimpleFlagArg
+              name: DELIMITER
+            optional: true
+          - !Flag
+            description: "The number of simultaneous computational processes to\n\
+              execute (CPU cores to utilized). (default: 8)"
+            synonyms:
+            - --nproc
+            args: !SimpleFlagArg
+              name: NPROC
+            optional: true
+          - !Flag
+            description: "The format of the sequence identifier which defines\nshared\
+              \ coordinate information across paired ends.\n(default: presto)"
+            synonyms:
+            - --coord
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? presto
+                ? "454"
+                ? sra
+                ? illumina
+                ? solexa
+            optional: true
+          - !Flag
+            description: "Specify which read to reverse complement before\nstitching.\
+              \ (default: tail)"
+            synonyms:
+            - --rc
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? tail
+                ? none
+                ? head
+                ? both
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from head records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --1f
+            args: !RepeatFlagArg
+              name: HEAD_FIELDS
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from tail records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --2f
+            args: !RepeatFlagArg
+              name: TAIL_FIELDS
+            optional: true
+          - !Flag
+            description: "Number of N characters to place between ends.\n(default:\
+              \ 0)\n"
+            synonyms:
+            - --gap
+            args: !SimpleFlagArg
+              name: GAP
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: show program's version number and exit
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: AssemblePairs.py join [--version] [-h] -1 SEQ_FILES_1\
+            \ [SEQ_FILES_1 ...]\n                             -2 SEQ_FILES_2 [SEQ_FILES_2\
+            \ ...]\n                             [-o OUT_FILES [OUT_FILES ...]] [--outdir\
+            \ OUT_DIR]\n                             [--outname OUT_NAME] [--log LOG_FILE]\
+            \ [--failed]\n                             [--fasta] [--delim DELIMITER\
+            \ DELIMITER DELIMITER]\n                             [--nproc NPROC]\n\
+            \                             [--coord {illumina,solexa,sra,454,presto}]\n\
+            \                             [--rc {tail,head,both,none}]\n         \
+            \                    [--1f HEAD_FIELDS [HEAD_FIELDS ...]]\n          \
+            \                   [--2f TAIL_FIELDS [TAIL_FIELDS ...]] [--gap GAP]\n\
+            \nAssemble pairs by concatenating ends.\n\nhelp:\n  --version        \
+            \     show program's version number and exit\n  -h, --help           \
+            \ show this help message and exit\n\nstandard arguments:\n  -1 SEQ_FILES_1\
+            \ [SEQ_FILES_1 ...]\n                        An ordered list of FASTA/FASTQ\
+            \ files containing\n                        head/primary sequences. (default:\
+            \ None)\n  -2 SEQ_FILES_2 [SEQ_FILES_2 ...]\n                        An\
+            \ ordered list of FASTA/FASTQ files containing\n                     \
+            \   tail/secondary sequences. (default: None)\n  -o OUT_FILES [OUT_FILES\
+            \ ...]\n                        Explicit output file name(s). Note, this\
+            \ argument\n                        cannot be used with the --failed,\
+            \ --outdir, or\n                        --outname arguments. If unspecified,\
+            \ then the output\n                        filename will be based on the\
+            \ input filename(s).\n                        (default: None)\n  --outdir\
+            \ OUT_DIR      Specify to changes the output directory to the\n      \
+            \                  location specified. The input file directory is used\n\
+            \                        if this is not specified. (default: None)\n \
+            \ --outname OUT_NAME    Changes the prefix of the successfully processed\n\
+            \                        output file to the string specified. May not\
+            \ be\n                        specified with multiple input files. (default:\
+            \ None)\n  --log LOG_FILE        Specify to write verbose logging to a\
+            \ file. May not be\n                        specified with multiple input\
+            \ files. (default: None)\n  --failed              If specified create\
+            \ files containing records that fail\n                        processing.\
+            \ (default: False)\n  --fasta               Specify to force output as\
+            \ FASTA rather than FASTQ.\n                        (default: None)\n\
+            \  --delim DELIMITER DELIMITER DELIMITER\n                        A list\
+            \ of the three delimiters that separate\n                        annotation\
+            \ blocks, field names and values, and values\n                       \
+            \ within a field, respectively. (default: ('|', '=',\n               \
+            \         ','))\n  --nproc NPROC         The number of simultaneous computational\
+            \ processes to\n                        execute (CPU cores to utilized).\
+            \ (default: 8)\n\nformat arguments:\n  --coord {illumina,solexa,sra,454,presto}\n\
+            \                        The format of the sequence identifier which defines\n\
+            \                        shared coordinate information across paired ends.\n\
+            \                        (default: presto)\n  --rc {tail,head,both,none}\n\
+            \                        Specify which read to reverse complement before\n\
+            \                        stitching. (default: tail)\n  --1f HEAD_FIELDS\
+            \ [HEAD_FIELDS ...]\n                        Specify annotation fields\
+            \ to copy from head records\n                        into assembled record.\
+            \ (default: None)\n  --2f TAIL_FIELDS [TAIL_FIELDS ...]\n            \
+            \            Specify annotation fields to copy from tail records\n   \
+            \                     into assembled record. (default: None)\n\njoin assembly\
+            \ arguments:\n  --gap GAP             Number of N characters to place\
+            \ between ends.\n                        (default: 0)\n"
+          generated_using: *id004
+        - !Command
+          command: &id009
+          - AssemblePairs.py
+          - sequential
+          positional: []
+          named:
+          - !Flag
+            description: "An ordered list of FASTA/FASTQ files containing\nhead/primary\
+              \ sequences. (default: None)"
+            synonyms:
+            - '-1'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_1
+            optional: true
+          - !Flag
+            description: "An ordered list of FASTA/FASTQ files containing\ntail/secondary\
+              \ sequences. (default: None)"
+            synonyms:
+            - '-2'
+            args: !RepeatFlagArg
+              name: SEQ_FILES_2
+            optional: true
+          - !Flag
+            description: "Explicit output file name(s). Note, this argument\ncannot\
+              \ be used with the --failed, --outdir, or\n--outname arguments. If unspecified,\
+              \ then the output\nfilename will be based on the input filename(s).\n\
+              (default: None)"
+            synonyms:
+            - -o
+            args: !RepeatFlagArg
+              name: OUT_FILES
+            optional: true
+          - !Flag
+            description: "Specify to changes the output directory to the\nlocation\
+              \ specified. The input file directory is used\nif this is not specified.\
+              \ (default: None)"
+            synonyms:
+            - --outdir
+            args: !SimpleFlagArg
+              name: OUT_DIR
+            optional: true
+          - !Flag
+            description: "Changes the prefix of the successfully processed\noutput\
+              \ file to the string specified. May not be\nspecified with multiple\
+              \ input files. (default: None)"
+            synonyms:
+            - --outname
+            args: !SimpleFlagArg
+              name: OUT_NAME
+            optional: true
+          - !Flag
+            description: "Specify to write verbose logging to a file. May not be\n\
+              specified with multiple input files. (default: None)"
+            synonyms:
+            - --log
+            args: !SimpleFlagArg
+              name: LOG_FILE
+            optional: true
+          - !Flag
+            description: "If specified create files containing records that fail\n\
+              processing. (default: False)"
+            synonyms:
+            - --failed
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Specify to force output as FASTA rather than FASTQ.\n(default:\
+              \ None)"
+            synonyms:
+            - --fasta
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "DELIMITER DELIMITER\nA list of the three delimiters that\
+              \ separate\nannotation blocks, field names and values, and values\n\
+              within a field, respectively. (default: ('|', '=',\n','))"
+            synonyms:
+            - --delim
+            args: !SimpleFlagArg
+              name: DELIMITER
+            optional: true
+          - !Flag
+            description: "The number of simultaneous computational processes to\n\
+              execute (CPU cores to utilized). (default: 8)"
+            synonyms:
+            - --nproc
+            args: !SimpleFlagArg
+              name: NPROC
+            optional: true
+          - !Flag
+            description: "The format of the sequence identifier which defines\nshared\
+              \ coordinate information across paired ends.\n(default: presto)"
+            synonyms:
+            - --coord
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? presto
+                ? "454"
+                ? sra
+                ? illumina
+                ? solexa
+            optional: true
+          - !Flag
+            description: "Specify which read to reverse complement before\nstitching.\
+              \ (default: tail)"
+            synonyms:
+            - --rc
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? tail
+                ? none
+                ? head
+                ? both
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from head records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --1f
+            args: !RepeatFlagArg
+              name: HEAD_FIELDS
+            optional: true
+          - !Flag
+            description: "Specify annotation fields to copy from tail records\ninto\
+              \ assembled record. (default: None)"
+            synonyms:
+            - --2f
+            args: !RepeatFlagArg
+              name: TAIL_FIELDS
+            optional: true
+          - !Flag
+            description: "Significance threshold for de novo paired-end\nassembly.\
+              \ (default: 1e-05)"
+            synonyms:
+            - --alpha
+            args: !SimpleFlagArg
+              name: ALPHA
+            optional: true
+          - !Flag
+            description: "Maximum allowable error rate for de novo assembly.\n(default:\
+              \ 0.3)"
+            synonyms:
+            - --maxerror
+            args: !SimpleFlagArg
+              name: MAX_ERROR
+            optional: true
+          - !Flag
+            description: "Minimum sequence length to scan for overlap in de novo\n\
+              assembly. (default: 8)"
+            synonyms:
+            - --minlen
+            args: !SimpleFlagArg
+              name: MIN_LEN
+            optional: true
+          - !Flag
+            description: "Maximum sequence length to scan for overlap in de novo\n\
+              assembly. (default: 1000)"
+            synonyms:
+            - --maxlen
+            args: !SimpleFlagArg
+              name: MAX_LEN
+            optional: true
+          - !Flag
+            description: "If specified, scan past the end of the tail sequence\nin\
+              \ de novo assembly to allow the head sequence to\noverhang the end of\
+              \ the tail sequence. (default:\nFalse)"
+            synonyms:
+            - --scanrev
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "A FASTA file containing the reference sequence\ndatabase.\
+              \ (default: None)"
+            synonyms:
+            - -r
+            args: !SimpleFlagArg
+              name: REF_FILE
+            optional: true
+          - !Flag
+            description: "Minimum identity of the assembled sequence required to\n\
+              call a valid reference guided assembly (between 0 and\n1). (default:\
+              \ 0.5)"
+            synonyms:
+            - --minident
+            args: !SimpleFlagArg
+              name: MIN_IDENT
+            optional: true
+          - !Flag
+            description: "Minimum E-value for reference alignment for both the\nhead\
+              \ and tail sequence. (default: 1e-05)"
+            synonyms:
+            - --evalue
+            args: !SimpleFlagArg
+              name: EVALUE
+            optional: true
+          - !Flag
+            description: "Maximum number of hits from the reference alignment to\n\
+              check for matching head and tail sequence assignments.\n(default: 100)"
+            synonyms:
+            - --maxhits
+            args: !SimpleFlagArg
+              name: MAX_HITS
+            optional: true
+          - !Flag
+            description: "Specify to change the behavior of inserted characters\n\
+              when the head and tail sequences do not overlap during\nreference guided\
+              \ assembly. If specified, this will\nresult in inserted of the V region\
+              \ reference sequence\ninstead of a sequence of Ns in the non-overlapping\n\
+              region. Warning: you could end up making chimeric\nsequences by using\
+              \ this option. (default: False)"
+            synonyms:
+            - --fill
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "The local alignment tool to use. Must be one blastn\n(blast+\
+              \ nucleotide) or usearch (ublast algorithm).\n(default: usearch)"
+            synonyms:
+            - --aligner
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? blastn
+                ? usearch
+            optional: true
+          - !Flag
+            description: "The name or location of the aligner executable file\n(blastn\
+              \ or usearch). Defaults to the name specified by\nthe --aligner argument.\
+              \ (default: None)"
+            synonyms:
+            - --exec
+            args: !SimpleFlagArg
+              name: ALIGNER_EXEC
+            optional: true
+          - !Flag
+            description: "The name or location of the executable file that\nbuilds\
+              \ the reference database. This defaults to\nmakeblastdb when blastn\
+              \ is specified to the --aligner\nargument, and usearch when usearch\
+              \ is specified.\n(default: None)\n"
+            synonyms:
+            - --dbexec
+            args: !SimpleFlagArg
+              name: DB_EXEC
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: show program's version number and exit
+            synonyms:
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: AssemblePairs.py sequential [--version] [-h] -1 SEQ_FILES_1\n\
+            \                                   [SEQ_FILES_1 ...] -2 SEQ_FILES_2\n\
+            \                                   [SEQ_FILES_2 ...]\n              \
+            \                     [-o OUT_FILES [OUT_FILES ...]]\n               \
+            \                    [--outdir OUT_DIR] [--outname OUT_NAME]\n       \
+            \                            [--log LOG_FILE] [--failed] [--fasta]\n \
+            \                                  [--delim DELIMITER DELIMITER DELIMITER]\n\
+            \                                   [--nproc NPROC]\n                \
+            \                   [--coord {illumina,solexa,sra,454,presto}]\n     \
+            \                              [--rc {tail,head,both,none}]\n        \
+            \                           [--1f HEAD_FIELDS [HEAD_FIELDS ...]]\n   \
+            \                                [--2f TAIL_FIELDS [TAIL_FIELDS ...]]\n\
+            \                                   [--alpha ALPHA] [--maxerror MAX_ERROR]\n\
+            \                                   [--minlen MIN_LEN] [--maxlen MAX_LEN]\n\
+            \                                   [--scanrev] -r REF_FILE\n        \
+            \                           [--minident MIN_IDENT] [--evalue EVALUE]\n\
+            \                                   [--maxhits MAX_HITS] [--fill]\n  \
+            \                                 [--aligner {blastn,usearch}]\n     \
+            \                              [--exec ALIGNER_EXEC] [--dbexec DB_EXEC]\n\
+            \nAssemble pairs by first attempting de novo assembly, then reference\
+            \ guided assembly.\n\nhelp:\n  --version             show program's version\
+            \ number and exit\n  -h, --help            show this help message and\
+            \ exit\n\nstandard arguments:\n  -1 SEQ_FILES_1 [SEQ_FILES_1 ...]\n  \
+            \                      An ordered list of FASTA/FASTQ files containing\n\
+            \                        head/primary sequences. (default: None)\n  -2\
+            \ SEQ_FILES_2 [SEQ_FILES_2 ...]\n                        An ordered list\
+            \ of FASTA/FASTQ files containing\n                        tail/secondary\
+            \ sequences. (default: None)\n  -o OUT_FILES [OUT_FILES ...]\n       \
+            \                 Explicit output file name(s). Note, this argument\n\
+            \                        cannot be used with the --failed, --outdir, or\n\
+            \                        --outname arguments. If unspecified, then the\
+            \ output\n                        filename will be based on the input\
+            \ filename(s).\n                        (default: None)\n  --outdir OUT_DIR\
+            \      Specify to changes the output directory to the\n              \
+            \          location specified. The input file directory is used\n    \
+            \                    if this is not specified. (default: None)\n  --outname\
+            \ OUT_NAME    Changes the prefix of the successfully processed\n     \
+            \                   output file to the string specified. May not be\n\
+            \                        specified with multiple input files. (default:\
+            \ None)\n  --log LOG_FILE        Specify to write verbose logging to a\
+            \ file. May not be\n                        specified with multiple input\
+            \ files. (default: None)\n  --failed              If specified create\
+            \ files containing records that fail\n                        processing.\
+            \ (default: False)\n  --fasta               Specify to force output as\
+            \ FASTA rather than FASTQ.\n                        (default: None)\n\
+            \  --delim DELIMITER DELIMITER DELIMITER\n                        A list\
+            \ of the three delimiters that separate\n                        annotation\
+            \ blocks, field names and values, and values\n                       \
+            \ within a field, respectively. (default: ('|', '=',\n               \
+            \         ','))\n  --nproc NPROC         The number of simultaneous computational\
+            \ processes to\n                        execute (CPU cores to utilized).\
+            \ (default: 8)\n\nformat arguments:\n  --coord {illumina,solexa,sra,454,presto}\n\
+            \                        The format of the sequence identifier which defines\n\
+            \                        shared coordinate information across paired ends.\n\
+            \                        (default: presto)\n  --rc {tail,head,both,none}\n\
+            \                        Specify which read to reverse complement before\n\
+            \                        stitching. (default: tail)\n  --1f HEAD_FIELDS\
+            \ [HEAD_FIELDS ...]\n                        Specify annotation fields\
+            \ to copy from head records\n                        into assembled record.\
+            \ (default: None)\n  --2f TAIL_FIELDS [TAIL_FIELDS ...]\n            \
+            \            Specify annotation fields to copy from tail records\n   \
+            \                     into assembled record. (default: None)\n\nde novo\
+            \ assembly arguments:\n  --alpha ALPHA         Significance threshold\
+            \ for de novo paired-end\n                        assembly. (default:\
+            \ 1e-05)\n  --maxerror MAX_ERROR  Maximum allowable error rate for de\
+            \ novo assembly.\n                        (default: 0.3)\n  --minlen MIN_LEN\
+            \      Minimum sequence length to scan for overlap in de novo\n      \
+            \                  assembly. (default: 8)\n  --maxlen MAX_LEN      Maximum\
+            \ sequence length to scan for overlap in de novo\n                   \
+            \     assembly. (default: 1000)\n  --scanrev             If specified,\
+            \ scan past the end of the tail sequence\n                        in de\
+            \ novo assembly to allow the head sequence to\n                      \
+            \  overhang the end of the tail sequence. (default:\n                \
+            \        False)\n\nreference guided assembly arguments:\n  -r REF_FILE\
+            \           A FASTA file containing the reference sequence\n         \
+            \               database. (default: None)\n  --minident MIN_IDENT  Minimum\
+            \ identity of the assembled sequence required to\n                   \
+            \     call a valid reference guided assembly (between 0 and\n        \
+            \                1). (default: 0.5)\n  --evalue EVALUE       Minimum E-value\
+            \ for reference alignment for both the\n                        head and\
+            \ tail sequence. (default: 1e-05)\n  --maxhits MAX_HITS    Maximum number\
+            \ of hits from the reference alignment to\n                        check\
+            \ for matching head and tail sequence assignments.\n                 \
+            \       (default: 100)\n  --fill                Specify to change the\
+            \ behavior of inserted characters\n                        when the head\
+            \ and tail sequences do not overlap during\n                        reference\
+            \ guided assembly. If specified, this will\n                        result\
+            \ in inserted of the V region reference sequence\n                   \
+            \     instead of a sequence of Ns in the non-overlapping\n           \
+            \             region. Warning: you could end up making chimeric\n    \
+            \                    sequences by using this option. (default: False)\n\
+            \  --aligner {blastn,usearch}\n                        The local alignment\
+            \ tool to use. Must be one blastn\n                        (blast+ nucleotide)\
+            \ or usearch (ublast algorithm).\n                        (default: usearch)\n\
+            \  --exec ALIGNER_EXEC   The name or location of the aligner executable\
+            \ file\n                        (blastn or usearch). Defaults to the name\
+            \ specified by\n                        the --aligner argument. (default:\
+            \ None)\n  --dbexec DB_EXEC      The name or location of the executable\
+            \ file that\n                        builds the reference database. This\
+            \ defaults to\n                        makeblastdb when blastn is specified\
+            \ to the --aligner\n                        argument, and usearch when\
+            \ usearch is specified.\n                        (default: None)\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: show program's version number and exit
+          synonyms:
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "usage: AssemblePairs.py [--version] [-h]  ...\n\nAssembles paired-end\
+          \ reads into a single sequence\n\nhelp:\n  --version   show program's version\
+          \ number and exit\n  -h, --help  show this help message and exit\n\nsubcommands:\n\
+          \              Assembly method\n    align     Assemble pairs by aligning\
+          \ ends.\n    join      Assemble pairs by concatenating ends.\n    reference\n\
+          \              Assemble pairs by aligning reads against a reference database.\n\
+          \    sequential\n              Assemble pairs by first attempting de novo\
+          \ assembly, then\n              reference guided assembly.\n\noutput files:\n\
+          \    assemble-pass\n        successfully assembled reads.\n    assemble-fail\n\
+          \        raw reads failing paired-end assembly.\n\noutput annotation fields:\n\
+          \    <user defined>\n        annotation fields specified by the --1f or\
+          \ --2f arguments.\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -50,12 +1281,9 @@ subcommands:
       help_text: "usage: AssemblePairs.py [--version] [-h]  ...\nAssemblePairs.py:\
         \ error: argument : invalid choice: 'assemble-fail' (choose from 'align',\
         \ 'join', 'reference', 'sequential')\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - AssemblePairs.py
-      - assemble-pass
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -84,9 +1312,7 @@ subcommands:
         \ 'join', 'reference', 'sequential')\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - AssemblePairs.py
-      - reference
+      command: *id006
       positional: []
       named:
       - !Flag
@@ -179,10 +1405,10 @@ subcommands:
         - --coord
         args: !ChoiceFlagArg
           choices: !!set
+            ? illumina
             ? presto
             ? "454"
             ? sra
-            ? illumina
             ? solexa
         optional: true
       - !Flag
@@ -192,10 +1418,10 @@ subcommands:
         - --rc
         args: !ChoiceFlagArg
           choices: !!set
-            ? tail
-            ? none
             ? head
+            ? none
             ? both
+            ? tail
         optional: true
       - !Flag
         description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -263,8 +1489,8 @@ subcommands:
         - --aligner
         args: !ChoiceFlagArg
           choices: !!set
-            ? blastn
             ? usearch
+            ? blastn
         optional: true
       - !Flag
         description: "The name or location of the aligner executable file\n(blastn\
@@ -387,9 +1613,7 @@ subcommands:
         \                        (default: None)\n"
       generated_using: *id004
     - !Command
-      command: &id007
-      - AssemblePairs.py
-      - align
+      command: *id007
       positional: []
       named:
       - !Flag
@@ -482,10 +1706,10 @@ subcommands:
         - --coord
         args: !ChoiceFlagArg
           choices: !!set
+            ? illumina
             ? presto
             ? "454"
             ? sra
-            ? illumina
             ? solexa
         optional: true
       - !Flag
@@ -495,10 +1719,10 @@ subcommands:
         - --rc
         args: !ChoiceFlagArg
           choices: !!set
-            ? tail
-            ? none
             ? head
+            ? none
             ? both
+            ? tail
         optional: true
       - !Flag
         description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -638,13 +1862,15 @@ subcommands:
         \ the end of the tail sequence. (default:\n                        False)\n"
       generated_using: *id004
     - !Command
-      command: &id008
-      - AssemblePairs.py
-      - join
+      command: *id008
       positional: []
       named:
       - !Flag
-        description: ''
+        description: "[-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n[--outname\
+          \ OUT_NAME] [--log LOG_FILE] [--failed]\n[--fasta] [--delim DELIMITER DELIMITER\
+          \ DELIMITER]\n[--nproc NPROC]\n[--coord {illumina,solexa,sra,454,presto}]\n\
+          [--rc {tail,head,both,none}]\n[--1f HEAD_FIELDS [HEAD_FIELDS ...]]\n[--2f\
+          \ TAIL_FIELDS [TAIL_FIELDS ...]] [--gap GAP]"
         synonyms:
         - '-2'
         args: !RepeatFlagArg
@@ -732,10 +1958,10 @@ subcommands:
         - --coord
         args: !ChoiceFlagArg
           choices: !!set
+            ? illumina
             ? presto
             ? "454"
             ? sra
-            ? illumina
             ? solexa
         optional: true
       - !Flag
@@ -745,10 +1971,10 @@ subcommands:
         - --rc
         args: !ChoiceFlagArg
           choices: !!set
-            ? tail
-            ? none
             ? head
+            ? none
             ? both
+            ? tail
         optional: true
       - !Flag
         description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -844,9 +2070,7 @@ subcommands:
         \     (default: 0)\n"
       generated_using: *id004
     - !Command
-      command: &id009
-      - AssemblePairs.py
-      - sequential
+      command: *id009
       positional: []
       named:
       - !Flag
@@ -939,10 +2163,10 @@ subcommands:
         - --coord
         args: !ChoiceFlagArg
           choices: !!set
+            ? illumina
             ? presto
             ? "454"
             ? sra
-            ? illumina
             ? solexa
         optional: true
       - !Flag
@@ -952,10 +2176,10 @@ subcommands:
         - --rc
         args: !ChoiceFlagArg
           choices: !!set
-            ? tail
-            ? none
             ? head
+            ? none
             ? both
+            ? tail
         optional: true
       - !Flag
         description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -1063,8 +2287,8 @@ subcommands:
         - --aligner
         args: !ChoiceFlagArg
           choices: !!set
-            ? blastn
             ? usearch
+            ? blastn
         optional: true
       - !Flag
         description: "The name or location of the aligner executable file\n(blastn\
@@ -1201,20 +2425,9 @@ subcommands:
         \ None)\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "usage: AssemblePairs.py [--version] [-h]  ...\n\nAssembles paired-end\
       \ reads into a single sequence\n\nhelp:\n  --version   show program's version\
       \ number and exit\n  -h, --help  show this help message and exit\n\nsubcommands:\n\
@@ -1255,7 +2468,7 @@ subcommands:
     name: AssemblePairs.py
     optional: false
   named: []
-  parent: *id003
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1366,11 +2579,11 @@ subcommands:
     - --coord
     args: !ChoiceFlagArg
       choices: !!set
+        solexa:
+        sra:
         illumina:
         presto:
         '454':
-        sra:
-        solexa:
     optional: true
   - !Flag
     description: "Specify which read to reverse complement before\nstitching. (default:\
@@ -1379,10 +2592,10 @@ subcommands:
     - --rc
     args: !ChoiceFlagArg
       choices: !!set
-        head:
-        none:
         both:
+        head:
         tail:
+        none:
     optional: true
   - !Flag
     description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -1449,8 +2662,8 @@ subcommands:
     - --aligner
     args: !ChoiceFlagArg
       choices: !!set
-        usearch:
         blastn:
+        usearch:
     optional: true
   - !Flag
     description: "The name or location of the aligner executable file\n(blastn or\
@@ -1470,7 +2683,7 @@ subcommands:
     args: !SimpleFlagArg
       name: DB_EXEC
     optional: true
-  parent: *id003
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1658,11 +2871,11 @@ subcommands:
     - --coord
     args: !ChoiceFlagArg
       choices: !!set
+        solexa:
+        sra:
         illumina:
         presto:
         '454':
-        sra:
-        solexa:
     optional: true
   - !Flag
     description: "Specify which read to reverse complement before\nstitching. (default:\
@@ -1671,10 +2884,10 @@ subcommands:
     - --rc
     args: !ChoiceFlagArg
       choices: !!set
-        head:
-        none:
         both:
+        head:
         tail:
+        none:
     optional: true
   - !Flag
     description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -1731,7 +2944,7 @@ subcommands:
     - --scanrev
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1904,11 +3117,11 @@ subcommands:
     - --coord
     args: !ChoiceFlagArg
       choices: !!set
+        solexa:
+        sra:
         illumina:
         presto:
         '454':
-        sra:
-        solexa:
     optional: true
   - !Flag
     description: "Specify which read to reverse complement before\nstitching. (default:\
@@ -1917,10 +3130,10 @@ subcommands:
     - --rc
     args: !ChoiceFlagArg
       choices: !!set
-        head:
-        none:
         both:
+        head:
         tail:
+        none:
     optional: true
   - !Flag
     description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -1945,7 +3158,7 @@ subcommands:
     args: !SimpleFlagArg
       name: GAP
     optional: true
-  parent: *id003
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2103,11 +3316,11 @@ subcommands:
     - --coord
     args: !ChoiceFlagArg
       choices: !!set
+        solexa:
+        sra:
         illumina:
         presto:
         '454':
-        sra:
-        solexa:
     optional: true
   - !Flag
     description: "Specify which read to reverse complement before\nstitching. (default:\
@@ -2116,10 +3329,10 @@ subcommands:
     - --rc
     args: !ChoiceFlagArg
       choices: !!set
-        head:
-        none:
         both:
+        head:
         tail:
+        none:
     optional: true
   - !Flag
     description: "Specify annotation fields to copy from head records\ninto assembled\
@@ -2225,8 +3438,8 @@ subcommands:
     - --aligner
     args: !ChoiceFlagArg
       choices: !!set
-        usearch:
         blastn:
+        usearch:
     optional: true
   - !Flag
     description: "The name or location of the aligner executable file\n(blastn or\
@@ -2246,7 +3459,7 @@ subcommands:
     args: !SimpleFlagArg
       name: DB_EXEC
     optional: true
-  parent: *id003
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag

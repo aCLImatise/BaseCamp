@@ -1,0 +1,420 @@
+!Command
+command:
+- findMotifsGenome.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: pos file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: genome
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: output directory
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: additional
+  optional: true
+named:
+- !Flag
+  description: (mask repeats/lower case sequence, can also add 'r' to genome, i.e.
+    mm9r)
+  synonyms:
+  - -mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(genomic positions to be used as background, default=automatic)\n\
+    removes background positions overlapping with target positions unless -keepOverlappingBg\
+    \ is used\n-chopify (chop up large background regions to the avg size of target\
+    \ regions)"
+  synonyms:
+  - -bg
+  args: !SimpleFlagArg
+    name: background position file
+  optional: true
+- !Flag
+  description: "<#>[,<#>,<#>...] (motif length, default=8,10,12) [NOTE: values greater\
+    \ 12 may cause the program\nto run out of memory - in these cases decrease the\
+    \ number of sequences analyzed (-N),\nor try analyzing shorter sequence regions\
+    \ (i.e. -size 100)]"
+  synonyms:
+  - -len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Number of motifs to optimize, default: 25)'
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (global optimization: searches for strings with # mismatches,
+    default: 2)'
+  synonyms:
+  - -mis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (don't search reverse strand for motifs)
+  synonyms:
+  - -norevopp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (don't search for de novo motif enrichment)
+  synonyms:
+  - -nomotif
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (output RNA motif logos and compare to RNA motif database, automatically
+    sets -norevopp)
+  synonyms:
+  - -rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (This will cause the program to only scan for motifs)
+  synonyms:
+  - -find
+  args: !SimpleFlagArg
+    name: motif file
+  optional: true
+- !Flag
+  description: '(check against motif collects, default: auto)'
+  synonyms:
+  - -mset
+  args: !SimpleFlagArg
+    name: vertebrates|insects|worms|plants|yeast|all
+  optional: true
+- !Flag
+  description: (just visualize de novo motifs, don't check similarity with known motifs)
+  synonyms:
+  - -basic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(scale sequence logos by information content, default: doesn't scale)"
+  synonyms:
+  - -bits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (don't search for de novo vs. known motif similarity)
+  synonyms:
+  - -nocheck
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (known motifs to check against de novo motifs,
+  synonyms:
+  - -mcheck
+  args: !SimpleFlagArg
+    name: motif file
+  optional: true
+- !Flag
+  description: (allow adjustment of the degeneracy threshold for known motifs to improve
+    p-value[dangerous])
+  synonyms:
+  - -float
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(don't search for known motif enrichment, default: -known)"
+  synonyms:
+  - -noknown
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (known motifs to check for enrichment,
+  synonyms:
+  - -mknown
+  args: !SimpleFlagArg
+    name: motif file
+  optional: true
+- !Flag
+  description: (omit humor)
+  synonyms:
+  - -nofacts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use weblogo/seqlogo/ghostscript to generate logos, default uses SVG
+    now)
+  synonyms:
+  - -seqlogo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use GC% for sequence content normalization, now the default)
+  synonyms:
+  - -gc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use CpG% instead of GC% for sequence content normalization)
+  synonyms:
+  - -cpg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (no CG correction)
+  synonyms:
+  - -noweight
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (Number of sequences to use for motif finding, default=max(50k,
+    2x input)
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (use local background, # of equal size regions around peaks to
+    use i.e. 2)'
+  synonyms:
+  - -local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Remove redundant sequences matching greater than # percent, i.e.
+    -redundant 0.5)'
+  synonyms:
+  - -redundant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#> (maximum percentage of N's in sequence to consider for motif finding,\
+    \ default: 0.7)"
+  synonyms:
+  - -maxN
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[motif file 2]... (motifs to mask before motif finding)'
+  synonyms:
+  - -maskMotif
+  args: !SimpleFlagArg
+    name: motif file1
+  optional: true
+- !Flag
+  description: '[motif file 2]... (motifs to optimize or change length of)'
+  synonyms:
+  - -opt
+  args: !SimpleFlagArg
+    name: motif file1
+  optional: true
+- !Flag
+  description: (randomize target and background sequences labels)
+  synonyms:
+  - -rand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use file for target and background - first argument is list of peak
+    ids for targets)
+  synonyms:
+  - -ref
+  args: !SimpleFlagArg
+    name: peak file
+  optional: true
+- !Flag
+  description: (perform analysis of individual oligo enrichment)
+  synonyms:
+  - -oligo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Dump fasta files for target and background sequences for use with
+    other programs)
+  synonyms:
+  - -dumpFasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (force new background files to be created)
+  synonyms:
+  - -preparse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (location to search for preparsed file and/or place new files)
+  synonyms:
+  - -preparsedDir
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: (keep temporary files)
+  synonyms:
+  - -keepFiles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Calculate empirical FDR for de novo discovery #=number of randomizations)'
+  synonyms:
+  - -fdr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use homer2 instead of original homer, default)
+  synonyms:
+  - -homer2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (length of lower-order oligos to normalize in background, default:
+    -nlen 3)'
+  synonyms:
+  - -nlen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Max normalization iterations, default: 160)'
+  synonyms:
+  - -nmax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (weight sequences to neutral frequencies, i.e. 25%, 6.25%, etc.)
+  synonyms:
+  - -neutral
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (lower-order oligo normalization for oligo table, use if -nlen
+    isn't working well)
+  synonyms:
+  - -olen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Number of processors to use, default: 1)'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Maximum expected motif instance per bp in random sequence, default:
+    0.01)'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (size in MB for statistics cache, default: 500)'
+  synonyms:
+  - -cache
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (skip full masking after finding motifs, similar to original homer)
+  synonyms:
+  - -quickMask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (stop looking for motifs when seed logp score gets above #, default:
+    -10)'
+  synonyms:
+  - -minlp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (to force the use of the original homer)
+  synonyms:
+  - -homer1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[low|med|high|allnight] (time spent on local optimization default:
+    med)'
+  synonyms:
+  - -depth
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: (use hypergeometric for p-values, binomial is default)
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n\tProgram will find de novo and known motifs in regions in the genome\n\
+  \n\tUsage: findMotifsGenome.pl <pos file> <genome> <output directory> [additional\
+  \ options]\n\tExample: findMotifsGenome.pl peaks.txt mm8r peakAnalysis -size 200\
+  \ -len 8\n\n\tPossible Genomes:\n\t\t\t-- or --\n\t\tCustom: provide the path to\
+  \ genome FASTA files (directory or single file)\n\t\t\tHeads up: will create the\
+  \ directory \"preparsed/\" in same location.\n\n\tBasic options:\n\t\t-mask (mask\
+  \ repeats/lower case sequence, can also add 'r' to genome, i.e. mm9r)\n\t\t-bg <background\
+  \ position file> (genomic positions to be used as background, default=automatic)\n\
+  \t\t\tremoves background positions overlapping with target positions unless -keepOverlappingBg\
+  \ is used\n\t\t\t-chopify (chop up large background regions to the avg size of target\
+  \ regions)\n\t\t-len <#>[,<#>,<#>...] (motif length, default=8,10,12) [NOTE: values\
+  \ greater 12 may cause the program\n\t\t\tto run out of memory - in these cases\
+  \ decrease the number of sequences analyzed (-N),\n\t\t\tor try analyzing shorter\
+  \ sequence regions (i.e. -size 100)]\n\t\t-size <#> (fragment size to use for motif\
+  \ finding, default=200)\n\t\t\t-size <#,#> (i.e. -size -100,50 will get sequences\
+  \ from -100 to +50 relative from center)\n\t\t\t-size given (uses the exact regions\
+  \ you give it)\n\t\t-S <#> (Number of motifs to optimize, default: 25)\n\t\t-mis\
+  \ <#> (global optimization: searches for strings with # mismatches, default: 2)\n\
+  \t\t-norevopp (don't search reverse strand for motifs)\n\t\t-nomotif (don't search\
+  \ for de novo motif enrichment)\n\t\t-rna (output RNA motif logos and compare to\
+  \ RNA motif database, automatically sets -norevopp)\n\n\tScanning sequence for motifs\n\
+  \t\t-find <motif file> (This will cause the program to only scan for motifs)\n\n\
+  \tKnown Motif Options/Visualization\n\t\t-mset <vertebrates|insects|worms|plants|yeast|all>\
+  \ (check against motif collects, default: auto)\n\t\t-basic (just visualize de novo\
+  \ motifs, don't check similarity with known motifs)\n\t\t-bits (scale sequence logos\
+  \ by information content, default: doesn't scale)\n\t\t-nocheck (don't search for\
+  \ de novo vs. known motif similarity)\n\t\t-mcheck <motif file> (known motifs to\
+  \ check against de novo motifs,\n\t\t-float (allow adjustment of the degeneracy\
+  \ threshold for known motifs to improve p-value[dangerous])\n\t\t-noknown (don't\
+  \ search for known motif enrichment, default: -known)\n\t\t-mknown <motif file>\
+  \ (known motifs to check for enrichment,\n\t\t-nofacts (omit humor)\n\t\t-seqlogo\
+  \ (use weblogo/seqlogo/ghostscript to generate logos, default uses SVG now)\n\n\t\
+  Sequence normalization options:\n\t\t-gc (use GC% for sequence content normalization,\
+  \ now the default)\n\t\t-cpg (use CpG% instead of GC% for sequence content normalization)\n\
+  \t\t-noweight (no CG correction)\n\t\tAlso -nlen <#>, -olen <#>, see homer2 section\
+  \ below.\n\n\tAdvanced options:\n\t\t-h (use hypergeometric for p-values, binomial\
+  \ is default)\n\t\t-N <#> (Number of sequences to use for motif finding, default=max(50k,\
+  \ 2x input)\n\t\t-local <#> (use local background, # of equal size regions around\
+  \ peaks to use i.e. 2)\n\t\t-redundant <#> (Remove redundant sequences matching\
+  \ greater than # percent, i.e. -redundant 0.5)\n\t\t-maxN <#> (maximum percentage\
+  \ of N's in sequence to consider for motif finding, default: 0.7)\n\t\t-maskMotif\
+  \ <motif file1> [motif file 2]... (motifs to mask before motif finding)\n\t\t-opt\
+  \ <motif file1> [motif file 2]... (motifs to optimize or change length of)\n\t\t\
+  -rand (randomize target and background sequences labels)\n\t\t-ref <peak file> (use\
+  \ file for target and background - first argument is list of peak ids for targets)\n\
+  \t\t-oligo (perform analysis of individual oligo enrichment)\n\t\t-dumpFasta (Dump\
+  \ fasta files for target and background sequences for use with other programs)\n\
+  \t\t-preparse (force new background files to be created)\n\t\t-preparsedDir <directory>\
+  \ (location to search for preparsed file and/or place new files)\n\t\t-keepFiles\
+  \ (keep temporary files)\n\t\t-fdr <#> (Calculate empirical FDR for de novo discovery\
+  \ #=number of randomizations)\n\n\thomer2 specific options:\n\t\t-homer2 (use homer2\
+  \ instead of original homer, default)\n\t\t-nlen <#> (length of lower-order oligos\
+  \ to normalize in background, default: -nlen 3)\n\t\t\t-nmax <#> (Max normalization\
+  \ iterations, default: 160)\n\t\t\t-neutral (weight sequences to neutral frequencies,\
+  \ i.e. 25%, 6.25%, etc.)\n\t\t-olen <#> (lower-order oligo normalization for oligo\
+  \ table, use if -nlen isn't working well)\n\t\t-p <#> (Number of processors to use,\
+  \ default: 1)\n\t\t-e <#> (Maximum expected motif instance per bp in random sequence,\
+  \ default: 0.01)\n\t\t-cache <#> (size in MB for statistics cache, default: 500)\n\
+  \t\t-quickMask (skip full masking after finding motifs, similar to original homer)\n\
+  \t\t-minlp <#> (stop looking for motifs when seed logp score gets above #, default:\
+  \ -10)\n\n\tOriginal homer specific options:\n\t\t-homer1 (to force the use of the\
+  \ original homer)\n\t\t-depth [low|med|high|allnight] (time spent on local optimization\
+  \ default: med)\n\n"
+generated_using:
+- --help

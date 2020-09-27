@@ -1,0 +1,160 @@
+!Command
+command:
+- coverm
+- make
+positional: []
+named:
+- !Flag
+  description: Where generated BAM files will go
+  synonyms:
+  - -o
+  - --output-directory
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: "..             FASTA file of contigs e.g. concatenated\ngenomes or\
+    \ assembly, or minimap2 index\n(with --minimap2-reference-is-index),\nor BWA index\
+    \ stem (with -p bwa-mem).\nIf multiple references FASTA files are\nprovided and\
+    \ --sharded is specified,\nthen reads will be mapped to references\nseparately\
+    \ as sharded BAMs."
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Number of threads to use for mapping
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ..                          Forward FASTA/Q file(s) for mapping
+  synonyms:
+  - '-1'
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: ..                          Reverse FASTA/Q file(s) for mapping
+  synonyms:
+  - '-2'
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "<PATH> ..        One or more pairs of forward and reverse\nFASTA/Q\
+    \ files for mapping in order\n<sample1_R1.fq.gz> <sample1_R2.fq.gz>\n<sample2_R1.fq.gz>\
+    \ <sample2_R2.fq.gz> .."
+  synonyms:
+  - -c
+  - --coupled
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: ..               Interleaved FASTA/Q files(s) for mapping.
+  synonyms:
+  - --interleaved
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: ..                    Unpaired FASTA/Q files(s) for mapping.
+  synonyms:
+  - --single
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Underlying mapping software used\n(\"minimap2-sr\", \"bwa-mem\", \"\
+    minimap2-ont\",\n\"minimap2-pb\", or \"minimap2-no-preset\").\nminimap2 -sr, -ont,\
+    \ -pb, -no-preset specify\n'-x' preset of minimap2 to be used\n(with map-ont,\
+    \ map-pb for -ont, -pb).\n[default: \"minimap2-sr\"]"
+  synonyms:
+  - -p
+  - --mapper
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Extra parameters to provide to minimap2,\nboth indexing command (if\
+    \ used) and for\nmapping. Note that usage of this parameter\nhas security implications\
+    \ if untrusted input\nis specified. '-a' is always specified.\n[default \"\"]"
+  synonyms:
+  - --minimap2-params
+  args: !SimpleFlagArg
+    name: PARAMS
+  optional: true
+- !Flag
+  description: "Treat reference as a minimap2 database, not\nas a FASTA file."
+  synonyms:
+  - --minimap2-reference-is-index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Extra parameters to provide to BWA. Note\nthat usage of this parameter\
+    \ has security\nimplications if untrusted input is specified.\n[default \"\"]"
+  synonyms:
+  - --bwa-params
+  args: !SimpleFlagArg
+    name: PARAMS
+  optional: true
+- !Flag
+  description: Exclude unmapped reads from generated BAM files.
+  synonyms:
+  - --discard-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "coverm make: Generate BAM files through mapping.\n\nOutput (required):\n\
+  \   -o, --output-directory <DIR>          Where generated BAM files will go\n\n\
+  Mapping parameters:\n   -r, --reference <PATH> ..             FASTA file of contigs\
+  \ e.g. concatenated \n                                         genomes or assembly,\
+  \ or minimap2 index\n                                         (with --minimap2-reference-is-index),\n\
+  \                                         or BWA index stem (with -p bwa-mem).\n\
+  \                                         If multiple references FASTA files are\n\
+  \                                         provided and --sharded is specified,\n\
+  \                                         then reads will be mapped to references\n\
+  \                                         separately as sharded BAMs.\n   -t, --threads\
+  \ <INT>                   Number of threads to use for mapping\n   -1 <PATH> ..\
+  \                          Forward FASTA/Q file(s) for mapping\n   -2 <PATH> ..\
+  \                          Reverse FASTA/Q file(s) for mapping\n   -c, --coupled\
+  \ <PATH> <PATH> ..        One or more pairs of forward and reverse\n           \
+  \                              FASTA/Q files for mapping in order\n            \
+  \                             <sample1_R1.fq.gz> <sample1_R2.fq.gz>\n          \
+  \                               <sample2_R1.fq.gz> <sample2_R2.fq.gz> ..\n   --interleaved\
+  \ <PATH> ..               Interleaved FASTA/Q files(s) for mapping.\n   --single\
+  \ <PATH> ..                    Unpaired FASTA/Q files(s) for mapping.\n\n   -p,\
+  \ --mapper <NAME>                   Underlying mapping software used\n         \
+  \                                (\"minimap2-sr\", \"bwa-mem\", \"minimap2-ont\"\
+  ,\n                                         \"minimap2-pb\", or \"minimap2-no-preset\"\
+  ).\n                                         minimap2 -sr, -ont, -pb, -no-preset\
+  \ specify\n                                         '-x' preset of minimap2 to be\
+  \ used\n                                         (with map-ont, map-pb for -ont,\
+  \ -pb).\n                                         [default: \"minimap2-sr\"]\n \
+  \  --minimap2-params PARAMS              Extra parameters to provide to minimap2,\n\
+  \                                         both indexing command (if used) and for\n\
+  \                                         mapping. Note that usage of this parameter\n\
+  \                                         has security implications if untrusted\
+  \ input\n                                         is specified. '-a' is always specified.\n\
+  \                                         [default \"\"]\n   --minimap2-reference-is-index\
+  \         Treat reference as a minimap2 database, not \n                       \
+  \                  as a FASTA file.\n   --bwa-params PARAMS                   Extra\
+  \ parameters to provide to BWA. Note\n                                         that\
+  \ usage of this parameter has security\n                                       \
+  \  implications if untrusted input is specified.\n                             \
+  \            [default \"\"]\n   --discard-unmapped                    Exclude unmapped\
+  \ reads from generated BAM files.\n\nExample usage:\n\n  coverm make -r combined_genomes.fna\
+  \ -1 read1.fq -2 read2.fq\n\nBen J. Woodcroft <benjwoodcroft near gmail.com>\n\n"
+generated_using:
+- --help

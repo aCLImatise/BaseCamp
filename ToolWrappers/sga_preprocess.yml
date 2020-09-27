@@ -1,0 +1,204 @@
+!Command
+command:
+- sga
+- preprocess
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Prepare
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: READS1
+  optional: false
+named:
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set random seed
+  synonyms:
+  - --seed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'write the reads to FILE (default: stdout)'
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "0 - do not treat reads as paired (default)\n1 - reads are paired with\
+    \ the first read in READS1 and the second\nread in READS2. The paired reads will\
+    \ be interleaved in the output file\n2 - reads are paired and the records are\
+    \ interleaved within a single file."
+  synonyms:
+  - -p
+  - --pe-mode
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: if one half of a read pair fails filtering, write the passed half to
+    FILE
+  synonyms:
+  - --pe-orphans
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: convert quality values from phred-64 to phred-33.
+  synonyms:
+  - --phred64
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not output quality scores
+  synonyms:
+  - --discard-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "perform Heng Li's BWA quality trim algorithm.\nReads are trimmed according\
+    \ to the formula:\nargmax_x{\\sum_{i=x+1}^l(INT-q_i)} if q_l<INT\nwhere l is the\
+    \ original read length."
+  synonyms:
+  - -q
+  - --quality-trim
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "discard the read if it contains more than INT low-quality bases.\n\
+    Bases with phred score <= 3 are considered low quality. Default: no filtering.\n\
+    The filtering is applied after trimming so bases removed are not counted.\nDo\
+    \ not use this option if you are planning to use the BCR algorithm for indexing."
+  synonyms:
+  - -f
+  - --quality-filter
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "discard sequences that are shorter than INT\nthis is most useful when\
+    \ used in conjunction with --quality-trim. Default: 40"
+  synonyms:
+  - -m
+  - --min-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "clip all reads to be length INT. In most cases it is better to use\n\
+    the soft clip (quality-trim) option."
+  synonyms:
+  - -h
+  - --hard-clip
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Randomly change ambiguous base calls to one of possible bases.\nIf\
+    \ this option is not specified, the entire read will be discarded."
+  synonyms:
+  - --permute-ambiguous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Randomly sample reads or pairs with acceptance probability FLOAT.
+  synonyms:
+  - -s
+  - --sample
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Perform dust-style filtering of low complexity reads.
+  synonyms:
+  - --dust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'filter out reads that have a dust score higher than FLOAT (default:
+    4.0).'
+  synonyms:
+  - --dust-threshold
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: append SUFFIX to each read ID
+  synonyms:
+  - --suffix
+  args: !SimpleFlagArg
+    name: SUFFIX
+  optional: true
+- !Flag
+  description: "disable the default check for primer sequences\n-r, --remove-adapter-fwd=STRING\n\
+    -c, --remove-adapter-rev=STRING  Remove the adapter STRING from input reads."
+  synonyms:
+  - --no-primer-check
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: sga preprocess [OPTION] READS1 READS2 ...\nPrepare READS1, READS2,\
+  \ ... data files for assembly\nIf pe-mode is turned on (pe-mode=1) then if a read\
+  \ is discarded its pair will be discarded as well.\n\n      --help             \
+  \              display this help and exit\n      -v, --verbose                 \
+  \   display verbose output\n          --seed                       set random seed\n\
+  \nInput/Output options:\n      -o, --out=FILE                   write the reads\
+  \ to FILE (default: stdout)\n      -p, --pe-mode=INT                0 - do not treat\
+  \ reads as paired (default)\n                                       1 - reads are\
+  \ paired with the first read in READS1 and the second\n                        \
+  \               read in READS2. The paired reads will be interleaved in the output\
+  \ file\n                                       2 - reads are paired and the records\
+  \ are interleaved within a single file.\n          --pe-orphans=FILE           \
+  \ if one half of a read pair fails filtering, write the passed half to FILE\n\n\
+  Conversions/Filtering:\n          --phred64                    convert quality values\
+  \ from phred-64 to phred-33.\n          --discard-quality            do not output\
+  \ quality scores\n      -q, --quality-trim=INT           perform Heng Li's BWA quality\
+  \ trim algorithm. \n                                       Reads are trimmed according\
+  \ to the formula:\n                                       argmax_x{\\sum_{i=x+1}^l(INT-q_i)}\
+  \ if q_l<INT\n                                       where l is the original read\
+  \ length.\n      -f, --quality-filter=INT         discard the read if it contains\
+  \ more than INT low-quality bases.\n                                       Bases\
+  \ with phred score <= 3 are considered low quality. Default: no filtering.\n   \
+  \                                    The filtering is applied after trimming so\
+  \ bases removed are not counted.\n                                       Do not\
+  \ use this option if you are planning to use the BCR algorithm for indexing.\n \
+  \     -m, --min-length=INT             discard sequences that are shorter than INT\n\
+  \                                       this is most useful when used in conjunction\
+  \ with --quality-trim. Default: 40\n      -h, --hard-clip=INT              clip\
+  \ all reads to be length INT. In most cases it is better to use\n              \
+  \                         the soft clip (quality-trim) option.\n      --permute-ambiguous\
+  \              Randomly change ambiguous base calls to one of possible bases.\n\
+  \                                       If this option is not specified, the entire\
+  \ read will be discarded.\n      -s, --sample=FLOAT               Randomly sample\
+  \ reads or pairs with acceptance probability FLOAT.\n      --dust              \
+  \             Perform dust-style filtering of low complexity reads.\n      --dust-threshold=FLOAT\
+  \           filter out reads that have a dust score higher than FLOAT (default:\
+  \ 4.0).\n      --suffix=SUFFIX                  append SUFFIX to each read ID\n\n\
+  Adapter/Primer checks:\n          --no-primer-check            disable the default\
+  \ check for primer sequences\n      -r, --remove-adapter-fwd=STRING\n      -c, --remove-adapter-rev=STRING\
+  \  Remove the adapter STRING from input reads.\n\nReport bugs to js18@sanger.ac.uk\n\
+  \n"
+generated_using:
+- --help

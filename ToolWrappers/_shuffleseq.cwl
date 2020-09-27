@@ -1,0 +1,15 @@
+class: CommandLineTool
+id: _shuffleseq.cwl
+inputs:
+- id: in_shuffle
+  doc: integer    [1] Number of shuffles (Any integer value)
+  type: boolean
+  inputBinding:
+    prefix: -shuffle
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+cwlVersion: v1.1
+baseCommand:
+- _shuffleseq

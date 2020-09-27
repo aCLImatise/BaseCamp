@@ -1,0 +1,364 @@
+!Command
+command:
+- h5repack
+positional:
+- !Positional
+  description: Input HDF5 File
+  position: 0
+  name: file1
+  optional: false
+- !Positional
+  description: Output HDF5 File
+  position: 1
+  name: file2
+  optional: false
+- !Positional
+  description: -h, --help              Print a usage message and exit
+  position: 2
+  name: OPTIONS
+  optional: false
+named:
+- !Flag
+  description: Verbose mode, print object information
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use a native HDF5 type when repacking
+  synonyms:
+  - -n
+  - --native
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints messages from the HDF5 error stack as they occur
+  synonyms:
+  - --enable-error-stack
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use latest version of file format\nThis option will take precedence\
+    \ over the -j and -k options"
+  synonyms:
+  - -L
+  - --latest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The low bound for library release versions to use when creating\n\
+    objects in the file (default is H5F_LIBVER_EARLIEST)"
+  synonyms:
+  - --low
+  args: !SimpleFlagArg
+    name: BOUND
+  optional: true
+- !Flag
+  description: "The high bound for library release versions to use when creating\n\
+    objects in the file (default is H5F_LIBVER_LATEST)"
+  synonyms:
+  - --high
+  args: !SimpleFlagArg
+    name: BOUND
+  optional: true
+- !Flag
+  description: Maximum number of links in header messages
+  synonyms:
+  - -c
+  - --compact
+  args: !SimpleFlagArg
+    name: L1
+  optional: true
+- !Flag
+  description: Minimum number of links in the indexed format
+  synonyms:
+  - -d
+  - --indexed
+  args: !SimpleFlagArg
+    name: L2
+  optional: true
+- !Flag
+  description: '[:F], --ssize=S[:F] Shared object header message minimum size'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: S
+  optional: true
+- !Flag
+  description: Do not apply the filter to datasets smaller than M
+  synonyms:
+  - -m
+  - --minimum
+  args: !SimpleFlagArg
+    name: M
+  optional: true
+- !Flag
+  description: Name of file E with the -f and -l options
+  synonyms:
+  - -e
+  - --file
+  args: !SimpleFlagArg
+    name: E
+  optional: true
+- !Flag
+  description: Name of file U with user block data to be added
+  synonyms:
+  - -u
+  - --ublock
+  args: !SimpleFlagArg
+    name: U
+  optional: true
+- !Flag
+  description: Size of user block to be added
+  synonyms:
+  - -b
+  - --block
+  args: !SimpleFlagArg
+    name: B
+  optional: true
+- !Flag
+  description: Metadata block size for H5Pset_meta_block_size
+  synonyms:
+  - -M
+  - --metadata_block_size
+  args: !SimpleFlagArg
+    name: A
+  optional: true
+- !Flag
+  description: Threshold value for H5Pset_alignment
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: Alignment value for H5Pset_alignment
+  synonyms:
+  - -a
+  - --alignment
+  args: !SimpleFlagArg
+    name: A
+  optional: true
+- !Flag
+  description: Sort groups and attributes by index Q
+  synonyms:
+  - -q
+  - --sort_by
+  args: !SimpleFlagArg
+    name: Q
+  optional: true
+- !Flag
+  description: Sort groups and attributes by order Z
+  synonyms:
+  - -z
+  - --sort_order
+  args: !SimpleFlagArg
+    name: Z
+  optional: true
+- !Flag
+  description: Filter type
+  synonyms:
+  - -f
+  - --filter
+  args: !SimpleFlagArg
+    name: FILT
+  optional: true
+- !Flag
+  description: Layout type
+  synonyms:
+  - -l
+  - --layout
+  args: !SimpleFlagArg
+    name: LAYT
+  optional: true
+- !Flag
+  description: File space management strategy for H5Pset_file_space_strategy
+  synonyms:
+  - -S
+  - --fs_strategy
+  args: !SimpleFlagArg
+    name: FS_STRATEGY
+  optional: true
+- !Flag
+  description: Persisting or not persisting free-space for H5Pset_file_space_strategy
+  synonyms:
+  - -P
+  - --fs_persist
+  args: !SimpleFlagArg
+    name: FS_PERSIST
+  optional: true
+- !Flag
+  description: Free-space section threshold for H5Pset_file_space_strategy
+  synonyms:
+  - -T
+  - --fs_threshold
+  args: !SimpleFlagArg
+    name: FS_THRESHOLD
+  optional: true
+- !Flag
+  description: "File space page size for H5Pset_file_space_page_size\nM - is an integer\
+    \ greater than 1, size of dataset in bytes (default is 0)\nE - is a filename.\n\
+    S - is an integer\nU - is a filename.\nT - is an integer\nA - is an integer greater\
+    \ than zero\nQ - is the sort index type for the input file. It can be \"name\"\
+    \ or \"creation_order\" (default)\nZ - is the sort order type for the input file.\
+    \ It can be \"descending\" or \"ascending\" (default)\nB - is the user block size,\
+    \ any value that is 512 or greater and is\na power of 2 (1024 default)\nF - is\
+    \ the shared object header message type, any of <dspace|dtype|fill|\npline|attr>.\
+    \ If F is not specified, S applies to all messages\nBOUND is an integer indicating\
+    \ the library release versions to use when creating\nobjects in the file (see\
+    \ H5Pset_libver_bounds()):\n0: This is H5F_LIBVER_EARLIEST in H5F_libver_t struct\n\
+    1: This is H5F_LIBVER_V18 in H5F_libver_t struct\n2: This is H5F_LIBVER_V110 in\
+    \ H5F_libver_t struct\n(H5F_LIBVER_LATEST is aliased to H5F_LIBVER_V110 for this\
+    \ release\nFS_STRATEGY is a string indicating the file space strategy used:\n\
+    FSM_AGGR:\nThe mechanisms used in managing file space are free-space managers,\
+    \ aggregators and virtual file driver.\nPAGE:\nThe mechanisms used in managing\
+    \ file space are free-space managers with embedded paged aggregation and virtual\
+    \ file driver.\nAGGR:\nThe mechanisms used in managing file space are aggregators\
+    \ and virtual file driver.\nNONE:\nThe mechanisms used in managing file space\
+    \ are virtual file driver.\nThe default strategy when not set is FSM_AGGR without\
+    \ persisting free-space.\nFS_PERSIST is 1 to persisting free-space or 0 to not\
+    \ persisting free-space.\nThe default when not set is not persisting free-space.\n\
+    The value is ignored for AGGR and NONE strategies.\nFS_THRESHOLD is the minimum\
+    \ size (in bytes) of free-space sections to be tracked by the library.\nThe default\
+    \ when not set is 1.\nThe value is ignored for AGGR and NONE strategies.\nFS_PAGESIZE\
+    \ is the size (in bytes) >=512 that is used by the library when the file space\
+    \ strategy PAGE is used.\nThe default when not set is 4096.\nFILT - is a string\
+    \ with the format:\n<list of objects>:<name of filter>=<filter parameters>\n<list\
+    \ of objects> is a comma separated list of object names, meaning apply\ncompression\
+    \ only to those objects. If no names are specified, the filter\nis applied to\
+    \ all objects\n<name of filter> can be:\nGZIP, to apply the HDF5 GZIP filter (GZIP\
+    \ compression)\nSZIP, to apply the HDF5 SZIP filter (SZIP compression)\nSHUF,\
+    \ to apply the HDF5 shuffle filter\nFLET, to apply the HDF5 checksum filter\n\
+    NBIT, to apply the HDF5 NBIT filter (NBIT compression)\nSOFF, to apply the HDF5\
+    \ Scale/Offset filter\nUD,   to apply a user defined filter\nNONE, to remove all\
+    \ filters\n<filter parameters> is optional filter parameter information\nGZIP=<deflation\
+    \ level> from 1-9\nSZIP=<pixels per block,coding> pixels per block is a even number\
+    \ in\n2-32 and coding method is either EC or NN\nSHUF (no parameter)\nFLET (no\
+    \ parameter)\nNBIT (no parameter)\nSOFF=<scale_factor,scale_type> scale_factor\
+    \ is an integer and scale_type\nis either IN or DS\nUD=<filter_number,filter_flag,cd_value_count,value_1[,value_2,...,value_N]>\n\
+    required values for filter_number,filter_flag,cd_value_count,value_1\noptional\
+    \ values for value_2 to value_N\nNONE (no parameter)\nLAYT - is a string with\
+    \ the format:\n<list of objects>:<layout type>=<layout parameters>\n<list of objects>\
+    \ is a comma separated list of object names, meaning that\nlayout information\
+    \ is supplied for those objects. If no names are\nspecified, the layout type is\
+    \ applied to all objects\n<layout type> can be:\nCHUNK, to apply chunking layout\n\
+    COMPA, to apply compact layout\nCONTI, to apply contiguous layout\n<layout parameters>\
+    \ is optional layout information\nCHUNK=DIM[xDIM...xDIM], the chunk size of each\
+    \ dimension\nCOMPA (no parameter)\nCONTI (no parameter)"
+  synonyms:
+  - -G
+  - --fs_pagesize
+  args: !SimpleFlagArg
+    name: FS_PAGESIZE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Print version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: h5repack [OPTIONS] file1 file2\n  file1                    Input\
+  \ HDF5 File\n  file2                    Output HDF5 File\n  OPTIONS\n   -h, --help\
+  \              Print a usage message and exit\n   -v, --verbose           Verbose\
+  \ mode, print object information\n   -V, --version           Print version number\
+  \ and exit\n   -n, --native            Use a native HDF5 type when repacking\n \
+  \  --enable-error-stack    Prints messages from the HDF5 error stack as they occur\n\
+  \   -L, --latest            Use latest version of file format\n                \
+  \           This option will take precedence over the -j and -k options\n   --low=BOUND\
+  \             The low bound for library release versions to use when creating\n\
+  \                           objects in the file (default is H5F_LIBVER_EARLIEST)\n\
+  \   --high=BOUND            The high bound for library release versions to use when\
+  \ creating\n                           objects in the file (default is H5F_LIBVER_LATEST)\n\
+  \   -c L1, --compact=L1     Maximum number of links in header messages\n   -d L2,\
+  \ --indexed=L2     Minimum number of links in the indexed format\n   -s S[:F], --ssize=S[:F]\
+  \ Shared object header message minimum size\n   -m M, --minimum=M       Do not apply\
+  \ the filter to datasets smaller than M\n   -e E, --file=E          Name of file\
+  \ E with the -f and -l options\n   -u U, --ublock=U        Name of file U with user\
+  \ block data to be added\n   -b B, --block=B         Size of user block to be added\n\
+  \   -M A, --metadata_block_size=A  Metadata block size for H5Pset_meta_block_size\n\
+  \   -t T, --threshold=T     Threshold value for H5Pset_alignment\n   -a A, --alignment=A\
+  \     Alignment value for H5Pset_alignment\n   -q Q, --sort_by=Q       Sort groups\
+  \ and attributes by index Q\n   -z Z, --sort_order=Z    Sort groups and attributes\
+  \ by order Z\n   -f FILT, --filter=FILT  Filter type\n   -l LAYT, --layout=LAYT\
+  \  Layout type\n   -S FS_STRATEGY, --fs_strategy=FS_STRATEGY  File space management\
+  \ strategy for H5Pset_file_space_strategy\n   -P FS_PERSIST, --fs_persist=FS_PERSIST\
+  \  Persisting or not persisting free-space for H5Pset_file_space_strategy\n   -T\
+  \ FS_THRESHOLD, --fs_threshold=FS_THRESHOLD   Free-space section threshold for H5Pset_file_space_strategy\n\
+  \   -G FS_PAGESIZE, --fs_pagesize=FS_PAGESIZE   File space page size for H5Pset_file_space_page_size\n\
+  \n    M - is an integer greater than 1, size of dataset in bytes (default is 0)\n\
+  \    E - is a filename.\n    S - is an integer\n    U - is a filename.\n    T -\
+  \ is an integer\n    A - is an integer greater than zero\n    Q - is the sort index\
+  \ type for the input file. It can be \"name\" or \"creation_order\" (default)\n\
+  \    Z - is the sort order type for the input file. It can be \"descending\" or\
+  \ \"ascending\" (default)\n    B - is the user block size, any value that is 512\
+  \ or greater and is\n        a power of 2 (1024 default)\n    F - is the shared\
+  \ object header message type, any of <dspace|dtype|fill|\n        pline|attr>. If\
+  \ F is not specified, S applies to all messages\n\n    BOUND is an integer indicating\
+  \ the library release versions to use when creating\n          objects in the file\
+  \ (see H5Pset_libver_bounds()):\n        0: This is H5F_LIBVER_EARLIEST in H5F_libver_t\
+  \ struct\n        1: This is H5F_LIBVER_V18 in H5F_libver_t struct\n        2: This\
+  \ is H5F_LIBVER_V110 in H5F_libver_t struct\n           (H5F_LIBVER_LATEST is aliased\
+  \ to H5F_LIBVER_V110 for this release\n\n    FS_STRATEGY is a string indicating\
+  \ the file space strategy used:\n        FSM_AGGR:\n               The mechanisms\
+  \ used in managing file space are free-space managers, aggregators and virtual file\
+  \ driver.\n        PAGE:\n               The mechanisms used in managing file space\
+  \ are free-space managers with embedded paged aggregation and virtual file driver.\n\
+  \        AGGR:\n               The mechanisms used in managing file space are aggregators\
+  \ and virtual file driver.\n        NONE:\n               The mechanisms used in\
+  \ managing file space are virtual file driver.\n        The default strategy when\
+  \ not set is FSM_AGGR without persisting free-space.\n\n    FS_PERSIST is 1 to persisting\
+  \ free-space or 0 to not persisting free-space.\n      The default when not set\
+  \ is not persisting free-space.\n      The value is ignored for AGGR and NONE strategies.\n\
+  \n    FS_THRESHOLD is the minimum size (in bytes) of free-space sections to be tracked\
+  \ by the library.\n      The default when not set is 1.\n      The value is ignored\
+  \ for AGGR and NONE strategies.\n\n    FS_PAGESIZE is the size (in bytes) >=512\
+  \ that is used by the library when the file space strategy PAGE is used.\n     \
+  \ The default when not set is 4096.\n\n    FILT - is a string with the format:\n\
+  \n      <list of objects>:<name of filter>=<filter parameters>\n\n      <list of\
+  \ objects> is a comma separated list of object names, meaning apply\n        compression\
+  \ only to those objects. If no names are specified, the filter\n        is applied\
+  \ to all objects\n      <name of filter> can be:\n        GZIP, to apply the HDF5\
+  \ GZIP filter (GZIP compression)\n        SZIP, to apply the HDF5 SZIP filter (SZIP\
+  \ compression)\n        SHUF, to apply the HDF5 shuffle filter\n        FLET, to\
+  \ apply the HDF5 checksum filter\n        NBIT, to apply the HDF5 NBIT filter (NBIT\
+  \ compression)\n        SOFF, to apply the HDF5 Scale/Offset filter\n        UD,\
+  \   to apply a user defined filter\n        NONE, to remove all filters\n      <filter\
+  \ parameters> is optional filter parameter information\n        GZIP=<deflation\
+  \ level> from 1-9\n        SZIP=<pixels per block,coding> pixels per block is a\
+  \ even number in\n            2-32 and coding method is either EC or NN\n      \
+  \  SHUF (no parameter)\n        FLET (no parameter)\n        NBIT (no parameter)\n\
+  \        SOFF=<scale_factor,scale_type> scale_factor is an integer and scale_type\n\
+  \            is either IN or DS\n        UD=<filter_number,filter_flag,cd_value_count,value_1[,value_2,...,value_N]>\n\
+  \            required values for filter_number,filter_flag,cd_value_count,value_1\n\
+  \            optional values for value_2 to value_N\n        NONE (no parameter)\n\
+  \n    LAYT - is a string with the format:\n\n      <list of objects>:<layout type>=<layout\
+  \ parameters>\n\n      <list of objects> is a comma separated list of object names,\
+  \ meaning that\n        layout information is supplied for those objects. If no\
+  \ names are\n        specified, the layout type is applied to all objects\n    \
+  \  <layout type> can be:\n        CHUNK, to apply chunking layout\n        COMPA,\
+  \ to apply compact layout\n        CONTI, to apply contiguous layout\n      <layout\
+  \ parameters> is optional layout information\n        CHUNK=DIM[xDIM...xDIM], the\
+  \ chunk size of each dimension\n        COMPA (no parameter)\n        CONTI (no\
+  \ parameter)\n\nExamples of use:\n\n1) h5repack -v -f GZIP=1 file1 file2\n\n   GZIP\
+  \ compression with level 1 to all objects\n\n2) h5repack -v -f dset1:SZIP=8,NN file1\
+  \ file2\n\n   SZIP compression with 8 pixels per block and NN coding method to object\
+  \ dset1\n\n3) h5repack -v -l dset1,dset2:CHUNK=20x10 -f dset3,dset4,dset5:NONE file1\
+  \ file2\n\n   Chunked layout, with a layout size of 20x10, to objects dset1 and\
+  \ dset2\n   and remove filters to objects dset3, dset4, dset5\n\n4) h5repack -L\
+  \ -c 10 -s 20:dtype file1 file2\n\n   Using latest file format with maximum compact\
+  \ group size of 10 and\n   and minimum shared datatype size of 20\n\n5) h5repack\
+  \ --low=0 --high=1 file1 file2\n\n   Set low=H5F_LIBVER_EARLIEST and high=H5F_LIBVER_V18\
+  \ via H5Pset_libver_bounds() when\n   creating the repacked file: file2\n\n5) h5repack\
+  \ -f SHUF -f GZIP=1 file1 file2\n\n   Add both filters SHUF and GZIP in this order\
+  \ to all datasets\n\n6) h5repack -f UD=307,0,1,9 file1 file2\n\n   Add bzip2 filter\
+  \ to all datasets\n\n"
+generated_using:
+- --help

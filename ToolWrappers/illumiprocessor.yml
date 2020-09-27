@@ -1,0 +1,139 @@
+!Command
+command:
+- illumiprocessor
+positional: []
+named:
+- !Flag
+  description: "The input directory of raw reads to trim. (default:\nNone)"
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: "The output directory of clean reads to create.\n(default: None)"
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "A configuration file containing the tag:sample mapping\nand renaming\
+    \ options. (default: None)"
+  synonyms:
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: "The path to the trimmomatic-0.XX.jar file. (default:\n/usr/local/bin/trimmomatic)"
+  synonyms:
+  - --trimmomatic
+  args: !SimpleFlagArg
+    name: TRIMMOMATIC
+  optional: true
+- !Flag
+  description: 'The minimum length of reads to keep. (default: 40)'
+  synonyms:
+  - --min-len
+  args: !SimpleFlagArg
+    name: MIN_LEN
+  optional: true
+- !Flag
+  description: "When trimming PE reads, do not merge singleton files.\n(default: False)"
+  synonyms:
+  - --no-merge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of compute cores to use. (default: 1)'
+  synonyms:
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: "An optional regex pattern to find R1 reads. (default:\nNone)"
+  synonyms:
+  - --r1-pattern
+  args: !SimpleFlagArg
+    name: R1_PATTERN
+  optional: true
+- !Flag
+  description: "An optional regex pattern to find R2 reads. (default:\nNone)"
+  synonyms:
+  - --r2-pattern
+  args: !SimpleFlagArg
+    name: R2_PATTERN
+  optional: true
+- !Flag
+  description: 'Single-end reads. (default: False)'
+  synonyms:
+  - --se
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The type of fastq encoding used. (default: phred33)'
+  synonyms:
+  - --phred
+  args: !ChoiceFlagArg
+    choices: !!set
+      phred64:
+      phred33:
+  optional: true
+- !Flag
+  description: 'The path to a directory to hold logs. (default: None)'
+  synonyms:
+  - --log-path
+  args: !SimpleFlagArg
+    name: LOG_PATH
+  optional: true
+- !Flag
+  description: "The logging level to use. (default: INFO)\n"
+  synonyms:
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      WARN:
+      INFO:
+      CRITICAL:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: illumiprocessor [-h] --input INPUT --output OUTPUT --config CONFIG\n\
+  \                       [--trimmomatic TRIMMOMATIC] [--min-len MIN_LEN]\n      \
+  \                 [--no-merge] [--cores CORES] [--r1-pattern R1_PATTERN]\n     \
+  \                  [--r2-pattern R2_PATTERN] [--se]\n                       [--phred\
+  \ {phred33,phred64}] [--log-path LOG_PATH]\n                       [--verbosity\
+  \ {INFO,WARN,CRITICAL}]\n\nBatch trim Illumina reads for adapter contamination and\
+  \ low quality bases\nusing Trimmomatic\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  --input INPUT         The input directory\
+  \ of raw reads to trim. (default:\n                        None)\n  --output OUTPUT\
+  \       The output directory of clean reads to create.\n                       \
+  \ (default: None)\n  --config CONFIG       A configuration file containing the tag:sample\
+  \ mapping\n                        and renaming options. (default: None)\n  --trimmomatic\
+  \ TRIMMOMATIC\n                        The path to the trimmomatic-0.XX.jar file.\
+  \ (default:\n                        /usr/local/bin/trimmomatic)\n  --min-len MIN_LEN\
+  \     The minimum length of reads to keep. (default: 40)\n  --no-merge         \
+  \   When trimming PE reads, do not merge singleton files.\n                    \
+  \    (default: False)\n  --cores CORES         Number of compute cores to use. (default:\
+  \ 1)\n  --r1-pattern R1_PATTERN\n                        An optional regex pattern\
+  \ to find R1 reads. (default:\n                        None)\n  --r2-pattern R2_PATTERN\n\
+  \                        An optional regex pattern to find R2 reads. (default:\n\
+  \                        None)\n  --se                  Single-end reads. (default:\
+  \ False)\n  --phred {phred33,phred64}\n                        The type of fastq\
+  \ encoding used. (default: phred33)\n  --log-path LOG_PATH   The path to a directory\
+  \ to hold logs. (default: None)\n  --verbosity {INFO,WARN,CRITICAL}\n          \
+  \              The logging level to use. (default: INFO)\n"
+generated_using:
+- --help

@@ -1,0 +1,143 @@
+!Command
+command:
+- spring
+positional: []
+named:
+- !Flag
+  description: '[ --compress ]               compress'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --decompress ]             decompress'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--decompress-range start end\n(optional) decompress only reads (or\
+    \ read\npairs for PE datasets) from start to end\n(both inclusive) (1 <= start\
+    \ <= end <=\nnum_reads (or num_read_pairs for PE)). If -r\nwas specified during\
+    \ compression, the range\nof reads does not correspond to the original\norder\
+    \ of reads in the FASTQ file."
+  synonyms:
+  - --decompress-range
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --input-file ] arg         input file name (two files for paired
+    end)'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --output-file ] arg        output file name (for paired end\ndecompression,\
+    \ if only one file is specified,\ntwo output files will be created by suffixing\n\
+    .1 and .2.)"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --working-dir ] arg (=.)   directory to create temporary files (default\n\
+    current directory)"
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --num-threads ] arg (=8)   number of threads (default 8)'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --allow-read-reordering ]  do not retain read order during compression\n\
+    (paired reads still remain paired)"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not retain quality values during
+  synonyms:
+  - --no-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --long ]                   Use for compression of arbitrarily long\
+    \ read\nlengths. Can also provide better compression\nfor reads with significant\
+    \ number of indels.\n-r disabled in this mode. For Illumina short\nreads, compression\
+    \ is better without -l flag."
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --gzipped-fastq ]          enable if compression input is gzipped\
+    \ fastq\nor to output gzipped fastq during\ndecompression"
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "enable if compression input is fasta file\n(i.e., no qualities)\n"
+  synonyms:
+  - --fasta-input
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]                   produce help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Allowed options:\n  -h [ --help ]                   produce help message\n\
+  \  -c [ --compress ]               compress\n  -d [ --decompress ]             decompress\n\
+  \  --decompress-range arg          --decompress-range start end\n              \
+  \                    (optional) decompress only reads (or read \n              \
+  \                    pairs for PE datasets) from start to end \n               \
+  \                   (both inclusive) (1 <= start <= end <= \n                  \
+  \                num_reads (or num_read_pairs for PE)). If -r \n               \
+  \                   was specified during compression, the range \n             \
+  \                     of reads does not correspond to the original \n          \
+  \                        order of reads in the FASTQ file.\n  -i [ --input-file\
+  \ ] arg         input file name (two files for paired end)\n  -o [ --output-file\
+  \ ] arg        output file name (for paired end \n                             \
+  \     decompression, if only one file is specified,\n                          \
+  \        two output files will be created by suffixing\n                       \
+  \           .1 and .2.)\n  -w [ --working-dir ] arg (=.)   directory to create temporary\
+  \ files (default \n                                  current directory)\n  -t [\
+  \ --num-threads ] arg (=8)   number of threads (default 8)\n  -r [ --allow-read-reordering\
+  \ ]  do not retain read order during compression \n                            \
+  \      (paired reads still remain paired)\n  --no-quality                    do\
+  \ not retain quality values during \n                                  compression\n\
+  \  --no-ids                        do not retain read identifiers during \n    \
+  \                              compression\n  -q [ --quality-opts ] arg       quality\
+  \ mode: possible modes are\n                                  1. -q lossless (default)\n\
+  \                                  2. -q qvz qv_ratio (QVZ lossy compression, \n\
+  \                                  parameter qv_ratio roughly corresponds to \n\
+  \                                  bits used per quality value)\n              \
+  \                    3. -q ill_bin (Illumina 8-level binning)\n                \
+  \                  4. -q binary thr high low (binary (2-level) \n              \
+  \                    thresholding, quality binned to high if >= \n             \
+  \                     thr and to low if < thr)\n  -l [ --long ]                \
+  \   Use for compression of arbitrarily long read \n                            \
+  \      lengths. Can also provide better compression \n                         \
+  \         for reads with significant number of indels. \n                      \
+  \            -r disabled in this mode. For Illumina short \n                   \
+  \               reads, compression is better without -l flag.\n  -g [ --gzipped-fastq\
+  \ ]          enable if compression input is gzipped fastq \n                   \
+  \               or to output gzipped fastq during \n                           \
+  \       decompression\n  --fasta-input                   enable if compression input\
+  \ is fasta file \n                                  (i.e., no qualities)\n\n"
+generated_using:
+- --help

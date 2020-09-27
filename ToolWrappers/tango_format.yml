@@ -1,0 +1,86 @@
+!Command
+command:
+- tango
+- format
+positional:
+- !Positional
+  description: Specify protein fasta to reformat
+  position: 0
+  name: fastafile
+  optional: false
+- !Positional
+  description: Path to reformatted fastafile
+  position: 1
+  name: reformatted
+  optional: false
+named:
+- !Flag
+  description: Force overwrite of existing reformatted fastafile
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force overwrite of existing accession2taxid mapfile
+  synonyms:
+  - --forceidmap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Protein accession to taxid mapfile. For UniRef this\nfile is created\
+    \ from information in the fasta headers\nand stored in a file named prot.accession2taxid.gz\
+    \ in\nthe same directory as the reformatted fasta file.\nSpecify another path\
+    \ here."
+  synonyms:
+  - -m
+  - --taxidmap
+  args: !SimpleFlagArg
+    name: TAXIDMAP
+  optional: true
+- !Flag
+  description: "Maximum allowed length of sequence ids. Defaults to 14\n(required\
+    \ by diamond for adding taxonomy info to\ndatabase). Ids longer than this are\
+    \ written to a file\nwith the original id"
+  synonyms:
+  - --maxidlen
+  args: !SimpleFlagArg
+    name: MAXIDLEN
+  optional: true
+- !Flag
+  description: Temporary directory for writing fasta files
+  synonyms:
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tango format [-h] [-f] [--forceidmap] [-m TAXIDMAP]\n         \
+  \           [--maxidlen MAXIDLEN] [--tmpdir TMPDIR]\n                    fastafile\
+  \ reformatted\n\npositional arguments:\n  fastafile             Specify protein\
+  \ fasta to reformat\n  reformatted           Path to reformatted fastafile\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -f, --force\
+  \           Force overwrite of existing reformatted fastafile\n  --forceidmap  \
+  \        Force overwrite of existing accession2taxid mapfile\n  -m TAXIDMAP, --taxidmap\
+  \ TAXIDMAP\n                        Protein accession to taxid mapfile. For UniRef\
+  \ this\n                        file is created from information in the fasta headers\n\
+  \                        and stored in a file named prot.accession2taxid.gz in\n\
+  \                        the same directory as the reformatted fasta file.\n   \
+  \                     Specify another path here.\n  --maxidlen MAXIDLEN   Maximum\
+  \ allowed length of sequence ids. Defaults to 14\n                        (required\
+  \ by diamond for adding taxonomy info to\n                        database). Ids\
+  \ longer than this are written to a file\n                        with the original\
+  \ id\n  --tmpdir TMPDIR       Temporary directory for writing fasta files\n"
+generated_using:
+- --help

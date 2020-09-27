@@ -1,0 +1,105 @@
+!Command
+command:
+- icecreamfinder.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified May 6, 2020\n\nDescription:\
+  \  Finds PacBio reads containing inverted repeats.\nThese are candidate triangle\
+  \ reads (ice cream cones).\nEither ice cream cones only, or all inverted repeats,\
+  \ can be filtered.\n\nUsage:  icecreamfinder.sh in=<input file> out=<output file>\
+  \ outb=<bad reads>\n\nFile I/O parameters:\nin=<file>       Primary input.\nout=<file>\
+  \      (outgood) Output for good reads.\nouta=<file>     (outambig) Output for with\
+  \ inverted repeats, but it is unclear\n                whether that is natural or\
+  \ artifactual.\noutb=<file>     (outbad) Output for reads suspected as chimeric.\n\
+  outj=<file>     (outjunction) Output for junctions in inverted repeat reads.\nstats=<file>\
+  \    Print screen output here instead of to the screen.\njson=f          Print stats\
+  \ as json.\nasrhist=<file>  Adapter alignment score ratio histogram.\nirsist=<file>\
+  \   Inverted repeat alignment score ratio histogram.\nambig=          Determine\
+  \ where ambiguous reads are sent.  They will ALWAYS\n                be sent to\
+  \ outa if specified.  If not, they will be sent\n                to outg (good)\
+  \ unless overridden by this flag.  Options:\n                   ambig=good:  Send\
+  \ ambiguous reads to outg.\n                   ambig=bad:  Send ambiguous reads\
+  \ to outb.\n                   ambig=good,bad:  Send ambiguous reads to outg and\
+  \ outb.\n                   ambig=null:  Do not send to outg or outb.\noverwrite=f\
+  \     (ow) Set to false to force the program to abort rather than\n            \
+  \    overwrite an existing file.\nziplevel=2      (zl) Set to 1 (lowest) through\
+  \ 9 (max) to change compression\n                level; lower compression is faster.\n\
+  \nProcessing parameters:\nalignrc=t       Align the reverse-complement of the read\
+  \ to itself to look \n                for inverted repeats.\nalignadapter=t  Align\
+  \ adapter sequence to reads.\nadapter=        default: ATCTCTCTCAACAACAACAACGGAGGAGGAGGAAAAGAGAGAGAT\n\
+  icecreamonly=t  (ico) Only remove suspected triangle reads.  Otherwise, all\n  \
+  \              inverted repeats are removed.\nksr=t           (keepshortreads) Keep\
+  \ non-triangle reads from triangle ZMWs.\nkzt=f           (keepzmwstogether) Send\
+  \ all reads from a ZMW to the same file.\ntargetqlen=352  (qlen) Make queries of\
+  \ this length from a read tip.\nqlenfraction=0.15   Try to make queries at most\
+  \ this fraction of read length.\n                For short reads this will override\
+  \ targetqlen.\nminlen=40       Do not output reads shorter than this, after trimming.\n\
+  minqlen=100     Do not make queries shorter than this.  For very short\n       \
+  \         reads this will override qlenfraction.\nshortfraction=0.4   Only declare\
+  \ a read to be a triangle if the short half \n                of the repeat is at\
+  \ least this fraction of read length.\nccs=f           Input reads are CCS, meaning\
+  \ they are all full-pass.\n                In this case you should increase minratio.\n\
+  trim=t          Trim adapter sequence from read tips.\ntrimpolya=f     Trim terminal\
+  \ poly-A and poly-T sequences, for some isoseq\n                libraries.\nminpolymer=5\
+  \    Don't trim poly-A sequence shorter than this.\npolyerror=0.2   Max error rate\
+  \ for trimming poly-A.\n\n\nSpeed and sensitivity:\njni=f           Enable C code\
+  \ for higher speed and identical results.\nminratio=       Fraction of maximal alignment\
+  \ score to consider as matching.\n                Higher is more stringent; lower\
+  \ allows more sequencing errors.\n                This is VERY SENSITIVE.  For error-corrected\
+  \ reads it should\n                be set higher.  It is roughly the expected identity\
+  \ of one\n                read to another (double the per-read error rate).\nminratio1=0.59\
+  \  Set minratio for the first alignment pass only.\nminratio2=0.64  Set minratio\
+  \ for the second alignment pass only.\nadapterratio=0.18   Initial adapter detection\
+  \ sensitivity; affects speed.\nadapterratio2=.325  Final adapter detection sensitivity.\n\
+  minscore=-800   Exit alignment early if score drops below this.\n\nEntropy parameters\
+  \ (recommended setting is 'entropy=t'):\nminentropy=-1   Set to 0.4 or above to\
+  \ remove low-entropy reads;\n                range is 0-1, recommended value is\
+  \ 0.55.  0.7 is too high.\n                Negative numbers disable this function.\n\
+  entropyk=3      Kmer length for entropy calculation.\nentropylen=350  Reads with\
+  \ entropy below cutoff for at least this many\n                consecutive bases\
+  \ will be removed.\nentropyfraction=0.5     Alternative minimum length for short\
+  \ reads; the shorter\n                        of entropylen and entfraction*readlength\
+  \ will be used.\nentropywindow=50        Window size used for entropy calculation.\n\
+  maxmonomerfraction=0.74 (mmf) Also require this fraction of bases in each\n    \
+  \                    window to be the same base.\n\nJava Parameters:\n-Xmx     \
+  \       This will set Java's memory usage, overriding autodetection.\n         \
+  \       -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will\n               \
+  \ specify 200 megs. The max is typically 85% of physical memory.\n-eoom        \
+  \   This flag will cause the process to exit if an out-of-memory\n             \
+  \   exception occurs.  Requires Java 8u92+.\n-da             Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

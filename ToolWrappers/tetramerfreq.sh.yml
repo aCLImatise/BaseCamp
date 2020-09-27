@@ -1,0 +1,56 @@
+!Command
+command:
+- tetramerfreq.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will\nspecify 200 megs. The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Shijie Yao \nLast modified May 31, 2018\n\nDescription: DNA\
+  \ Tetramer analysis.\nDNA tetramers are counted for each sub-sequence of window\
+  \ size in the sequence.  \nThe window slides along the sequence by the step length.\n\
+  Sub-sequence shorter than the window size is ignored. Tetramers containing N are\
+  \ ignored. \n\nUsage: TetramerFreq.sh in=<input file> out=<output file> step=500\
+  \ window=2000\n\nInput may be fasta or fastq, compressed or uncompressed.\n\nStandard\
+  \ parameters:\nin=<file>       DNA sequence input file \nout=<file>      Output\
+  \ file name\nstep/s=INT      Step size (default 500) \nwindow/w=INT    Window size\
+  \ (default 2kb); <=0 turns windowing off (e.g. short reads)\nshort=T/F       Print\
+  \ lines for sequences shorter than window (default F)\nk=INT           Kmer length\
+  \ (default 4)\n\nJava Parameters:\n-Xmx            This will set Java's memory usage,\
+  \ overriding autodetection.\n                -Xmx20g will specify 20 gigs of RAM,\
+  \ and -Xmx200m will\n                specify 200 megs. The max is typically 85%\
+  \ of physical memory.\n-eoom           This flag will cause the process to exit\
+  \ if an out-of-memory\n                exception occurs.  Requires Java 8u92+.\n\
+  -da             Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help

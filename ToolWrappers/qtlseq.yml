@@ -1,0 +1,228 @@
+!Command
+command:
+- qtlseq
+positional:
+- !Positional
+  description: -F , --filial      Filial generation. This parameter must be
+  position: 0
+  name: exist.
+  optional: false
+named:
+- !Flag
+  description: ', --ref         Reference fasta.'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --parent      fastq or bam of parent. If you specify\nfastq, please\
+    \ separate pairs by comma,\ne.g. -p fastq1,fastq2. You can use this\noptiion multiple\
+    \ times"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --bulk1      fastq or bam of bulk 1. If you specify\nfastq, please\
+    \ separate pairs by comma,\ne.g. -b1 fastq1,fastq2. You can use this\noptiion\
+    \ multiple times"
+  synonyms:
+  - -b1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --bulk2      fastq or bam of bulk 2. If you specify\nfastq, please\
+    \ separate pairs by comma,\ne.g. -b2 fastq1,fastq2. You can use this\noptiion\
+    \ multiple times"
+  synonyms:
+  - -b2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --N-bulk1    Number of individuals in bulk 1.'
+  synonyms:
+  - -n1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --N-bulk2    Number of individuals in bulk 2.'
+  synonyms:
+  - -n2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --out         Output directory. Specified name must not'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --threads     Number of threads. If you specify the number\nbelow\
+    \ one, then QTL-seq will use the threads\nas many as possible. [2]"
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --window      Window size (kb). [2000]'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --step        Step size (kb). [100]'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --max-depth   Maximum depth of variants which will be used. [250]'
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --min-depth   Minimum depth of variants which will be used. [8]'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --N-rep       Number of replicates for simulation to make\nnull\
+    \ distribution. [5000]"
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Trim fastq using trimmomatic.
+  synonyms:
+  - -T
+  - --trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --adapter     FASTA of adapter sequences. This will be used\nwhen\
+    \ you specify \"-T\" for trimming."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Parameters for trimmomatic. Input parameters\nmust be separated by\
+    \ comma with following\norder: phred, ILLUMINACLIP, LEADING, TRAILING,\nSLIDINGWINDOW,\
+    \ MINLEN. If you want to remove\nadapters of illumina, please specify FASTA of\n\
+    the adapter sequences with \"--adapter\". Specified\nname will be inserted into\
+    \ <ADAPTER_FASTA>. If you\ndon't specify it, adapter trimming will be skipped.\n\
+    [33,<ADAPTER_FASTA>:2:30:10,20,20,4:15,75]"
+  synonyms:
+  - --trim-params
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --snpEff      Predict causal variant using SnpEff. Please\ncheck\
+    \ available databases in SnpEff."
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum memory per thread when bam sorted;\nsuffix K/M/G recognized.\
+    \ [1G]"
+  synonyms:
+  - --mem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --min-MQ      Minimum mapping quality in mpileup. [40]'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', --min-BQ      Minimum base quality in mpileup. [18]'
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --adjust-MQ   \"adjust-MQ\" in mpileup. Default parameter\nis suited\
+    \ for BWA. [50]"
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Consider multiple test correction derived by\nHuang et al. (2019).\
+    \ Please spesify a species name.\nWith this option. QTL-seq produces a theoretical\
+    \ threshold.\nCurrently, Arabidopsis, Cucumber, Maize, Rapeseed,\nRice, Tobacco,\
+    \ Tomato, Wheat, and Yeast are supported."
+  synonyms:
+  - --species
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: qtlseq -r <FASTA> -p <BAM|FASTQ> -b1 <BAM|FASTQ>\n            \
+  \  -b2 <BAM|FASTQ> -n1 <INT> -n2 <INT> -o <OUT_DIR>\n              [-F <INT>] [-T]\
+  \ [-e <DATABASE>]\n\nQTL-seq version 2.1.2\n\noptional arguments:\n  -h, --help\
+  \         show this help message and exit\n  -r , --ref         Reference fasta.\n\
+  \  -p , --parent      fastq or bam of parent. If you specify\n                 \
+  \    fastq, please separate pairs by comma,\n                     e.g. -p fastq1,fastq2.\
+  \ You can use this\n                     optiion multiple times\n  -b1 , --bulk1\
+  \      fastq or bam of bulk 1. If you specify\n                     fastq, please\
+  \ separate pairs by comma,\n                     e.g. -b1 fastq1,fastq2. You can\
+  \ use this\n                     optiion multiple times\n  -b2 , --bulk2      fastq\
+  \ or bam of bulk 2. If you specify\n                     fastq, please separate\
+  \ pairs by comma,\n                     e.g. -b2 fastq1,fastq2. You can use this\n\
+  \                     optiion multiple times\n  -n1 , --N-bulk1    Number of individuals\
+  \ in bulk 1.\n  -n2 , --N-bulk2    Number of individuals in bulk 2.\n  -o , --out\
+  \         Output directory. Specified name must not\n                     exist.\n\
+  \  -F , --filial      Filial generation. This parameter must be\n              \
+  \       more than 1. [2]\n  -t , --threads     Number of threads. If you specify\
+  \ the number\n                     below one, then QTL-seq will use the threads\n\
+  \                     as many as possible. [2]\n  -w , --window      Window size\
+  \ (kb). [2000]\n  -s , --step        Step size (kb). [100]\n  -D , --max-depth \
+  \  Maximum depth of variants which will be used. [250]\n  -d , --min-depth   Minimum\
+  \ depth of variants which will be used. [8]\n  -N , --N-rep       Number of replicates\
+  \ for simulation to make \n                     null distribution. [5000]\n  -T,\
+  \ --trim         Trim fastq using trimmomatic.\n  -a , --adapter     FASTA of adapter\
+  \ sequences. This will be used\n                     when you specify \"-T\" for\
+  \ trimming.\n  --trim-params      Parameters for trimmomatic. Input parameters\n\
+  \                     must be separated by comma with following\n              \
+  \       order: phred, ILLUMINACLIP, LEADING, TRAILING,\n                     SLIDINGWINDOW,\
+  \ MINLEN. If you want to remove\n                     adapters of illumina, please\
+  \ specify FASTA of\n                     the adapter sequences with \"--adapter\"\
+  . Specified\n                     name will be inserted into <ADAPTER_FASTA>. If\
+  \ you\n                     don't specify it, adapter trimming will be skipped.\n\
+  \                     [33,<ADAPTER_FASTA>:2:30:10,20,20,4:15,75]\n  -e , --snpEff\
+  \      Predict causal variant using SnpEff. Please\n                     check available\
+  \ databases in SnpEff.\n  --mem              Maximum memory per thread when bam\
+  \ sorted;\n                     suffix K/M/G recognized. [1G]\n  -q , --min-MQ \
+  \     Minimum mapping quality in mpileup. [40]\n  -Q , --min-BQ      Minimum base\
+  \ quality in mpileup. [18]\n  -C , --adjust-MQ   \"adjust-MQ\" in mpileup. Default\
+  \ parameter\n                     is suited for BWA. [50]\n  --species         \
+  \ Consider multiple test correction derived by\n                     Huang et al.\
+  \ (2019). Please spesify a species name.\n                     With this option.\
+  \ QTL-seq produces a theoretical threshold.\n                     Currently, Arabidopsis,\
+  \ Cucumber, Maize, Rapeseed,\n                     Rice, Tobacco, Tomato, Wheat,\
+  \ and Yeast are supported.\n  -v, --version      show program's version number and\
+  \ exit\n"
+generated_using:
+- --help

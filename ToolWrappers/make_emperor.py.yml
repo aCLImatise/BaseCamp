@@ -1,0 +1,379 @@
+!Command
+command:
+- make_emperor.py
+positional: []
+named:
+- !Flag
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of axes to be incorporated in the plot. Only 3\nwill be displayed\
+    \ at any given time but this option\nmodifies how many axes you can use for your\n\
+    visualization. Note that Emperor will only use the\naxes that explain more than\
+    \ 0.5% (this will be shown\nas 1% in the GUI)of the variability [default: 10]"
+  synonyms:
+  - --number_of_axes
+  args: !SimpleFlagArg
+    name: NUMBER_OF_AXES
+  optional: true
+- !Flag
+  description: "Comma-separated list of metadata categories to use as\ncustom axes\
+    \ in the plot. For instance, if there is a\ntime category and you would like to\
+    \ see the samples\nplotted on that axis instead of PC1, PC2, etc., you\nwould\
+    \ pass time as the value of this option.  Note: if\nthere is any non-numeric data\
+    \ in the metadata column,\nan error will be presented [default: none]"
+  synonyms:
+  - -a
+  - --custom_axes
+  args: !SimpleFlagArg
+    name: CUSTOM_AXES
+  optional: true
+- !Flag
+  description: "Add to the output categories of the mapping file the\ncolumns where\
+    \ all values are different. Note: if the\nresult of one of the concatenated fields\
+    \ in --color_by\nis a column where all values are unique, the resulting\ncolumn\
+    \ will get removed as well [default: False]"
+  synonyms:
+  - --add_unique_columns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Comma-sparated category(ies) used to add connecting\nlines (vectors)\
+    \ between samples. The first category\nspecifies the samples that will be connected\
+    \ by the\nvectors, whilst the second category (optionally)\ndetermines the order\
+    \ in which the samples will be\nconnected. [default: [None, None]]"
+  synonyms:
+  - --add_vectors
+  args: !SimpleFlagArg
+    name: ADD_VECTORS
+  optional: true
+- !Flag
+  description: "Comma-separated list of metadata categories (column\nheaders) to color\
+    \ by in the plots. The categories must\nmatch the name of a column header in the\
+    \ mapping file\nexactly. Multiple categories can be listed by comma\nseparating\
+    \ them without spaces. The user can also\ncombine columns in the mapping file\
+    \ by separating the\ncategories by \"&&\" without spaces. [default=color by\n\
+    all categories except ones where all values are\ndifferent]"
+  synonyms:
+  - -b
+  - --color_by
+  args: !SimpleFlagArg
+    name: COLOR_BY
+  optional: true
+- !Flag
+  description: "Output filepath that will contain the coordinates\nwhere each taxonomic\
+    \ sphere is centered. [default:\nnone]"
+  synonyms:
+  - --biplot_fp
+  args: !SimpleFlagArg
+    name: BIPLOT_FP
+  optional: true
+- !Flag
+  description: "Passing a directory with the -i (--input_coords)\noption in combination\
+    \ with this flag results in a set\nof bars connecting the replicated samples across\
+    \ all\nthe input files. [default=False]"
+  synonyms:
+  - -c
+  - --compare_plots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Used only when plotting ellipsoids for jackknifed beta\ndiversity\
+    \ (i.e. using a directory of coord files\ninstead of a single coord file). Valid\
+    \ values are\n\"IQR\" (for inter-quartile ranges) and \"sdev\" (for\nstandard\
+    \ deviation). [default=IQR]"
+  synonyms:
+  - -e
+  - --ellipsoid_method
+  args: !SimpleFlagArg
+    name: ELLIPSOID_METHOD
+  optional: true
+- !Flag
+  description: "This will overpass the error raised when the\ncoordinates file contains\
+    \ samples that are not present\nin the mapping file. Be aware that this is very\n\
+    misleading as the PCoA is accounting for all the\nsamples and removing some samples\
+    \ could lead to\nerroneous/skewed interpretations."
+  synonyms:
+  - --ignore_missing_samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of taxonomic groups from the \"--taxa_fp\" file\nto display.\
+    \ Passing \"-1\" will cause to display all the\ntaxonomic groups, this option\
+    \ is only used when\ncreating BiPlots. [default=10]"
+  synonyms:
+  - -n
+  - --n_taxa_to_keep
+  args: !SimpleFlagArg
+    name: N_TAXA_TO_KEEP
+  optional: true
+- !Flag
+  description: "Used only when the input is a directory of coordinate\nfiles i. e.\
+    \ for jackknifed beta diversity plot or for\na coordinate comparison plot (procrustes\
+    \ analysis).\nThe coordinates in this file will be the center of\neach ellipsoid\
+    \ in the case of a jackknifed PCoA plot\nor the center where the connecting arrows\
+    \ originate\nfrom for a comparison plot. [default: arbitrarily\nselected file\
+    \ from the input directory for a\njackknifed plot or None for a comparison plot\
+    \ in this\ncase one file will be connected to the next one and so\non]"
+  synonyms:
+  - -s
+  - --master_pcoa
+  args: !SimpleFlagArg
+    name: MASTER_PCOA
+  optional: true
+- !Flag
+  description: "Path to a summarized taxa file (i. e. the output of\nsummarize_taxa.py).\
+    \ This option is only used when\ncreating BiPlots. [default=none]"
+  synonyms:
+  - -t
+  - --taxa_fp
+  args: !SimpleFlagArg
+    name: TAXA_FP
+  optional: true
+- !Flag
+  description: "Option to override the error shown when the catergory\nused in '--custom_axes'\
+    \ has non-numeric values in the\nmapping file. The basic format is\ncustom_axis:new_value.\
+    \ For example, if you want to\nplot in time 0 all the samples that do not have\
+    \ a\nnumeric value in the column Time. you would pass -x\n\"Time:0\". Additionally,\
+    \ you can pass this format custo\nm_axis:other_column==value_in_other_column=new_value,\n\
+    with this format you can specify different values\n(new_value) to use in the substitution\
+    \ based on other\ncolumn (other_column) value (value_in_other_column);\nsee example\
+    \ above. This option could be used in all\nexplicit axes."
+  synonyms:
+  - -x
+  - --missing_custom_axes_values
+  args: !SimpleFlagArg
+    name: MISSING_CUSTOM_AXES_VALUES
+  optional: true
+- !Flag
+  description: "path to the output directory that will contain the\nPCoA plot. [default:\
+    \ emperor]"
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "the number of segments to generate any spheres, this\nincludes the\
+    \ samples, the taxa (biplots), and the\nconfidence intervals (jackknifing). Higher\
+    \ values will\nresult in better quality but can make the plots less\nresponsive,\
+    \ also it will make the resulting SVG images\nbigger. The value should be between\
+    \ 4 and 14.\n[default: 8]"
+  synonyms:
+  - --number_of_segments
+  args: !SimpleFlagArg
+    name: NUMBER_OF_SEGMENTS
+  optional: true
+- !Flag
+  description: "Depending on the plot to be generated, can be one of\nthe following:\
+    \ (1) Filepath of a coordinates file to\ncreate a PCoA plot. (2) Directory path\
+    \ to a folder\ncontaining coordinates files to create a jackknifed\nPCoA plot.\
+    \ (3) Directory path to a folder containing\ncoordinates files to compare the\
+    \ coordinates there\ncontained when --compare_plots is enabled (useful for\nprocustes\
+    \ analysis plots). For directories: hidden\nfiles, sub-directories and files suffixed\
+    \ as\n'_procrustes_results.txt' [REQUIRED]"
+  synonyms:
+  - -i
+  - --input_coords
+  args: !SimpleFlagArg
+    name: INPUT_COORDS
+  optional: true
+- !Flag
+  description: "path to a metadata mapping file [REQUIRED]\n"
+  synonyms:
+  - -m
+  - --map_fp
+  args: !SimpleFlagArg
+    name: MAP_FP
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: make_emperor.py [options] {-i/--input_coords INPUT_COORDS -m/--map_fp\
+  \ MAP_FP}\n\n[] indicates optional input (order unimportant)\n{} indicates required\
+  \ input (order unimportant)\n\nThis script automates the creation  of three-dimensional\
+  \ PCoA plots to be visualized with Emperor using Google Chrome.\n\nExample usage:\
+  \ \nPrint help message and exit\n make_emperor.py -h\n\nPlot PCoA data: Visualize\
+  \ the a PCoA file colored using a corresponding mapping file:\n make_emperor.py\
+  \ -i unweighted_unifrac_pc.txt -m Fasting_Map.txt -o emperor_output\n\nColoring\
+  \ by metadata mapping file: Additionally, using the supplied mapping file and a\
+  \ specific category or any combination of the available categories. When using the\
+  \ -b option, the user can specify the coloring for multiple header names, where\
+  \ each header is separated by a comma. The user can also combine mapping headers\
+  \ and color by the combined headers that are created by inserting an '&&' between\
+  \ the input header names. Color by 'Treatment' and by the result of concatenating\
+  \ the 'DOB' category and the 'Treatment' category:\n make_emperor.py -i unweighted_unifrac_pc.txt\
+  \ -m Fasting_Map.txt -b 'Treatment&&DOB,Treatment' -o emperor_colored_by\n\nPCoA\
+  \ plot with an explicit axis: Create a PCoA plot with an axis of the plot representing\
+  \ the 'DOB' of the samples. This option is useful when presenting a gradient from\
+  \ your metadata e. g. 'Time' or 'pH':\n make_emperor.py -i unweighted_unifrac_pc.txt\
+  \ -m Fasting_Map.txt -a DOB -o pcoa_dob\n\nPCoA plot with an explicit axis and using\
+  \ --missing_custom_axes_values: Create a PCoA plot with an axis of the plot representing\
+  \ the 'DOB' of the samples and define the position over the gradient of those samples\
+  \ missing a numeric value; in this case we are going to plot the samples in the\
+  \ value 20060000. You can select for each explicit axis which value you want to\
+  \ use for the missing values:\n make_emperor.py -i unweighted_unifrac_pc.txt -m\
+  \ Fasting_Map_modified.txt -a DOB -o pcoa_dob_with_missing_custom_axes_values -x\
+  \ 'DOB:20060000'\n\nPCoA plot with an explicit axis and using --missing_custom_axes_values\
+  \ but setting different values based on another column: Create a PCoA plot with\
+  \ an axis of the plot representing the 'DOB' of the samples and defining the position\
+  \ over the gradient of those samples missing a numeric value but using as reference\
+  \ another column of the mapping file. In this case we are going to plot the samples\
+  \ that are Control on the Treatment column on 20080220 and on 20080240 those that\
+  \ are Fast\n make_emperor.py -i unweighted_unifrac_pc.txt -m Fasting_Map_modified.txt\
+  \ -a DOB -o pcoa_dob_with_missing_custom_axes_with_multiple_values -x 'DOB:Treatment==Control=20080220'\
+  \ -x 'DOB:Treatment==Fast=20080240'\n\nJackknifed principal coordinates analysis\
+  \ plot: Create a jackknifed PCoA plot (with confidence intervals for each sample)\
+  \ passing as the input a directory of coordinates files (where each file corresponds\
+  \ to a different OTU table) and use the standard deviation method to compute the\
+  \ dimensions of the ellipsoids surrounding each sample:\n make_emperor.py -i unweighted_unifrac_pc\
+  \ -m Fasting_Map.txt -o jackknifed_pcoa -e sdev\n\nJackknifed PCoA plot with a master\
+  \ coordinates file: Passing a master coordinates file (--master_pcoa) will display\
+  \ the ellipsoids centered by the samples in this file:\n make_emperor.py -i unweighted_unifrac_pc\
+  \ -s unweighted_unifrac_pc/pcoa_unweighted_unifrac_rarefaction_110_5.txt -m Fasting_Map.txt\
+  \ -o jackknifed_with_master\n\nBiPlots: To see which taxa are the ten more prevalent\
+  \ in the different areas of the PCoA plot, you need to pass a summarized taxa file\
+  \ i. e. the output of summarize_taxa.py. Note that if the the '--taxa_fp' has fewer\
+  \ than 10 taxa, the script will default to use all.\n make_emperor.py -i unweighted_unifrac_pc.txt\
+  \ -m Fasting_Map.txt -t otu_table_L3.txt -o biplot\n\nBiPlots with extra options:\
+  \ To see which are the three most prevalent taxa and save the coordinates where\
+  \ these taxa are centered, you can use the -n (number of taxa to keep) and the --biplot_fp\
+  \ (output biplot file path) options.\n make_emperor.py -i unweighted_unifrac_pc.txt\
+  \ -m Fasting_Map.txt -t otu_table_L3.txt -o biplot_options -n 3 --biplot_fp biplot.txt\n\
+  \nDrawing connecting lines between samples: To draw lines betwen samples within\
+  \ a category use the '--add_vectors' option. For example to connect the lines by\
+  \ the 'Treatment' category.\n make_emperor.py -i unweighted_unifrac_pc.txt -m Fasting_Map.txt\
+  \ -o vectors --add_vectors Treatment\n\nDrawing connecting lines between samples\
+  \ with an explicit axis: To draw lines between samples within a category of the\
+  \ mapping file and have them sorted by a category that's explicitly represented\
+  \ in the 3D plot use the '--add_vectors' and the '-a' option.\n make_emperor.py\
+  \ -i unweighted_unifrac_pc.txt -m Fasting_Map.txt --add_vectors Treatment,DOB -a\
+  \ DOB -o sorted_by_DOB\n\nCompare two coordinate files: To draw replicates of the\
+  \ same samples like for a procustes plot.\n make_emperor.py -i compare -m Fasting_Map.txt\
+  \ --compare_plots -o comparison\n\nOptions:\n  --version             show program's\
+  \ version number and exit\n  -h, --help            show this help message and exit\n\
+  \  -v, --verbose         Print information during execution -- useful for\n    \
+  \                    debugging [default: False]\n  --number_of_axes=NUMBER_OF_AXES\n\
+  \                        Number of axes to be incorporated in the plot. Only 3\n\
+  \                        will be displayed at any given time but this option\n \
+  \                       modifies how many axes you can use for your\n          \
+  \              visualization. Note that Emperor will only use the\n            \
+  \            axes that explain more than 0.5% (this will be shown\n            \
+  \            as 1% in the GUI)of the variability [default: 10]\n  -a CUSTOM_AXES,\
+  \ --custom_axes=CUSTOM_AXES\n                        Comma-separated list of metadata\
+  \ categories to use as\n                        custom axes in the plot. For instance,\
+  \ if there is a\n                        time category and you would like to see\
+  \ the samples\n                        plotted on that axis instead of PC1, PC2,\
+  \ etc., you\n                        would pass time as the value of this option.\
+  \  Note: if\n                        there is any non-numeric data in the metadata\
+  \ column,\n                        an error will be presented [default: none]\n\
+  \  --add_unique_columns  Add to the output categories of the mapping file the\n\
+  \                        columns where all values are different. Note: if the\n\
+  \                        result of one of the concatenated fields in --color_by\n\
+  \                        is a column where all values are unique, the resulting\n\
+  \                        column will get removed as well [default: False]\n  --add_vectors=ADD_VECTORS\n\
+  \                        Comma-sparated category(ies) used to add connecting\n \
+  \                       lines (vectors) between samples. The first category\n  \
+  \                      specifies the samples that will be connected by the\n   \
+  \                     vectors, whilst the second category (optionally)\n       \
+  \                 determines the order in which the samples will be\n          \
+  \              connected. [default: [None, None]]\n  -b COLOR_BY, --color_by=COLOR_BY\n\
+  \                        Comma-separated list of metadata categories (column\n \
+  \                       headers) to color by in the plots. The categories must\n\
+  \                        match the name of a column header in the mapping file\n\
+  \                        exactly. Multiple categories can be listed by comma\n \
+  \                       separating them without spaces. The user can also\n    \
+  \                    combine columns in the mapping file by separating the\n   \
+  \                     categories by \"&&\" without spaces. [default=color by\n \
+  \                       all categories except ones where all values are\n      \
+  \                  different]\n  --biplot_fp=BIPLOT_FP\n                       \
+  \ Output filepath that will contain the coordinates\n                        where\
+  \ each taxonomic sphere is centered. [default:\n                        none]\n\
+  \  -c, --compare_plots   Passing a directory with the -i (--input_coords)\n    \
+  \                    option in combination with this flag results in a set\n   \
+  \                     of bars connecting the replicated samples across all\n   \
+  \                     the input files. [default=False]\n  -e ELLIPSOID_METHOD, --ellipsoid_method=ELLIPSOID_METHOD\n\
+  \                        Used only when plotting ellipsoids for jackknifed beta\n\
+  \                        diversity (i.e. using a directory of coord files\n    \
+  \                    instead of a single coord file). Valid values are\n       \
+  \                 \"IQR\" (for inter-quartile ranges) and \"sdev\" (for\n      \
+  \                  standard deviation). [default=IQR]\n  --ignore_missing_samples\n\
+  \                        This will overpass the error raised when the\n        \
+  \                coordinates file contains samples that are not present\n      \
+  \                  in the mapping file. Be aware that this is very\n           \
+  \             misleading as the PCoA is accounting for all the\n               \
+  \         samples and removing some samples could lead to\n                    \
+  \    erroneous/skewed interpretations.\n  -n N_TAXA_TO_KEEP, --n_taxa_to_keep=N_TAXA_TO_KEEP\n\
+  \                        Number of taxonomic groups from the \"--taxa_fp\" file\n\
+  \                        to display. Passing \"-1\" will cause to display all the\n\
+  \                        taxonomic groups, this option is only used when\n     \
+  \                   creating BiPlots. [default=10]\n  -s MASTER_PCOA, --master_pcoa=MASTER_PCOA\n\
+  \                        Used only when the input is a directory of coordinate\n\
+  \                        files i. e. for jackknifed beta diversity plot or for\n\
+  \                        a coordinate comparison plot (procrustes analysis).\n \
+  \                       The coordinates in this file will be the center of\n   \
+  \                     each ellipsoid in the case of a jackknifed PCoA plot\n   \
+  \                     or the center where the connecting arrows originate\n    \
+  \                    from for a comparison plot. [default: arbitrarily\n       \
+  \                 selected file from the input directory for a\n               \
+  \         jackknifed plot or None for a comparison plot in this\n              \
+  \          case one file will be connected to the next one and so\n            \
+  \            on]\n  -t TAXA_FP, --taxa_fp=TAXA_FP\n                        Path\
+  \ to a summarized taxa file (i. e. the output of\n                        summarize_taxa.py).\
+  \ This option is only used when\n                        creating BiPlots. [default=none]\n\
+  \  -x MISSING_CUSTOM_AXES_VALUES, --missing_custom_axes_values=MISSING_CUSTOM_AXES_VALUES\n\
+  \                        Option to override the error shown when the catergory\n\
+  \                        used in '--custom_axes' has non-numeric values in the\n\
+  \                        mapping file. The basic format is\n                   \
+  \     custom_axis:new_value. For example, if you want to\n                     \
+  \   plot in time 0 all the samples that do not have a\n                        numeric\
+  \ value in the column Time. you would pass -x\n                        \"Time:0\"\
+  . Additionally, you can pass this format custo\n                        m_axis:other_column==value_in_other_column=new_value,\n\
+  \                        with this format you can specify different values\n   \
+  \                     (new_value) to use in the substitution based on other\n  \
+  \                      column (other_column) value (value_in_other_column);\n  \
+  \                      see example above. This option could be used in all\n   \
+  \                     explicit axes.\n  -o OUTPUT_DIR, --output_dir=OUTPUT_DIR\n\
+  \                        path to the output directory that will contain the\n  \
+  \                      PCoA plot. [default: emperor]\n  --number_of_segments=NUMBER_OF_SEGMENTS\n\
+  \                        the number of segments to generate any spheres, this\n\
+  \                        includes the samples, the taxa (biplots), and the\n   \
+  \                     confidence intervals (jackknifing). Higher values will\n \
+  \                       result in better quality but can make the plots less\n \
+  \                       responsive, also it will make the resulting SVG images\n\
+  \                        bigger. The value should be between 4 and 14.\n       \
+  \                 [default: 8]\n\n  REQUIRED options:\n    The following options\
+  \ must be provided under all circumstances.\n\n    -i INPUT_COORDS, --input_coords=INPUT_COORDS\n\
+  \                        Depending on the plot to be generated, can be one of\n\
+  \                        the following: (1) Filepath of a coordinates file to\n\
+  \                        create a PCoA plot. (2) Directory path to a folder\n  \
+  \                      containing coordinates files to create a jackknifed\n   \
+  \                     PCoA plot. (3) Directory path to a folder containing\n   \
+  \                     coordinates files to compare the coordinates there\n     \
+  \                   contained when --compare_plots is enabled (useful for\n    \
+  \                    procustes analysis plots). For directories: hidden\n      \
+  \                  files, sub-directories and files suffixed as\n              \
+  \          '_procrustes_results.txt' [REQUIRED]\n    -m MAP_FP, --map_fp=MAP_FP\n\
+  \                        path to a metadata mapping file [REQUIRED]\n"
+generated_using:
+- --help

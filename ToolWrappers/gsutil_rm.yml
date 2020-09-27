@@ -1,0 +1,105 @@
+!Command
+command:
+- gsutil
+- rm
+positional:
+- !Positional
+  description: You can also use the -r option to specify recursive object deletion.
+    Thus, for
+  position: 0
+  name: subdirectories.
+  optional: false
+named:
+- !Flag
+  description: "Continues silently (without printing error messages) despite\nerrors\
+    \ when removing multiple objects. If some of the objects\ncould not be removed,\
+    \ gsutil's exit status will be non-zero even\nif this flag is set. Execution will\
+    \ still halt if an inaccessible\nbucket is encountered. This option is implicitly\
+    \ set when running\n\"gsutil -m rm ...\"."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Causes gsutil to read the list of objects to remove from stdin.\n\
+    This allows you to run a program that generates the list of\nobjects to remove."
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The -R and -r options are synonymous. Causes bucket or bucket\nsubdirectory\
+    \ contents (all objects and subdirectories that it\ncontains) to be removed recursively.\
+    \ If used with a bucket-only\nURL (like gs://bucket), after deleting objects and\
+    \ subdirectories\ngsutil will delete the bucket. This option implies the -a option\n\
+    and will delete all object versions."
+  synonyms:
+  - -R
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Delete all versions of an object.
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n  rm - Remove objects\n\n\nSYNOPSIS\n\n  gsutil rm [-f] [-r] url...\n\
+  \  gsutil rm [-f] [-r] -I\n\n\n\nDESCRIPTION\n  The gsutil rm command removes objects.\n\
+  \  For example, the command:\n\n    gsutil rm gs://bucket/subdir/*\n\n  will remove\
+  \ all objects in gs://bucket/subdir, but not in any of its\n  sub-directories. In\
+  \ contrast:\n\n    gsutil rm gs://bucket/subdir/**\n\n  will remove all objects\
+  \ under gs://bucket/subdir or any of its\n  subdirectories.\n\n  You can also use\
+  \ the -r option to specify recursive object deletion. Thus, for\n  example, either\
+  \ of the following two commands will remove gs://bucket/subdir\n  and all objects\
+  \ and subdirectories under it:\n\n    gsutil rm gs://bucket/subdir**\n    gsutil\
+  \ rm -r gs://bucket/subdir\n\n  The -r option will also delete all object versions\
+  \ in the subdirectory for\n  versioning-enabled buckets, whereas the ** command\
+  \ will only delete the live\n  version of each object in the subdirectory.\n\n \
+  \ Running gsutil rm -r on a bucket will delete all versions of all objects in\n\
+  \  the bucket, and then delete the bucket:\n\n    gsutil rm -r gs://bucket\n\n \
+  \ If you want to delete all objects in the bucket, but not the bucket itself,\n\
+  \  this command will work:\n\n    gsutil rm gs://bucket/**\n\n  If you have a large\
+  \ number of objects to remove you might want to use the\n  gsutil -m option, to\
+  \ perform parallel (multi-threaded/multi-processing)\n  removes:\n\n    gsutil -m\
+  \ rm -r gs://my_bucket/subdir\n\n  You can pass a list of URLs (one per line) to\
+  \ remove on stdin instead of as\n  command line arguments by using the -I option.\
+  \ This allows you to use gsutil\n  in a pipeline to remove objects identified by\
+  \ a program, such as:\n\n    some_program | gsutil -m rm -I\n\n  The contents of\
+  \ stdin can name cloud URLs and wildcards of cloud URLs.\n\n  Note that gsutil rm\
+  \ will refuse to remove files from the local\n  file system. For example this will\
+  \ fail:\n\n    gsutil rm *.txt\n\n  WARNING: Object removal cannot be undone. Google\
+  \ Cloud Storage is designed\n  to give developers a high amount of flexibility and\
+  \ control over their data,\n  and Google maintains strict controls over the processing\
+  \ and purging of\n  deleted data. To protect yourself from mistakes, you can configure\
+  \ object\n  versioning on your bucket(s). See 'gsutil help versions' for details.\n\
+  \n\nDATA RESTORATION FROM ACCIDENTAL DELETION OR OVERWRITES\nGoogle Cloud Storage\
+  \ does not provide support for restoring data lost\nor overwritten due to customer\
+  \ errors. If you have concerns that your\napplication software (or your users) may\
+  \ at some point erroneously delete or\noverwrite data, you can protect yourself\
+  \ from that risk by enabling Object\nVersioning (see \"gsutil help versioning\"\
+  ). Doing so increases storage costs,\nwhich can be partially mitigated by configuring\
+  \ Lifecycle Management to delete\nolder object versions (see \"gsutil help lifecycle\"\
+  ).\n\n\nOPTIONS\n  -f          Continues silently (without printing error messages)\
+  \ despite\n              errors when removing multiple objects. If some of the objects\n\
+  \              could not be removed, gsutil's exit status will be non-zero even\n\
+  \              if this flag is set. Execution will still halt if an inaccessible\n\
+  \              bucket is encountered. This option is implicitly set when running\n\
+  \              \"gsutil -m rm ...\".\n\n  -I          Causes gsutil to read the\
+  \ list of objects to remove from stdin.\n              This allows you to run a\
+  \ program that generates the list of\n              objects to remove.\n\n  -R,\
+  \ -r      The -R and -r options are synonymous. Causes bucket or bucket\n      \
+  \        subdirectory contents (all objects and subdirectories that it\n       \
+  \       contains) to be removed recursively. If used with a bucket-only\n      \
+  \        URL (like gs://bucket), after deleting objects and subdirectories\n   \
+  \           gsutil will delete the bucket. This option implies the -a option\n \
+  \             and will delete all object versions.\n\n  -a          Delete all versions\
+  \ of an object.\n"
+generated_using:
+- --help

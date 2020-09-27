@@ -1,0 +1,368 @@
+!Command
+command:
+- bam-load.2
+positional:
+- !Positional
+  description: '--accept-nomatch                 Accept alignments with no matching
+    bases '
+  position: 0
+  name: flags
+  optional: false
+- !Positional
+  description: '--no-cs                          turn off awareness of colorspace '
+  position: 1
+  name: indices
+  optional: false
+- !Positional
+  description: '--edit-aligned-qual <new-value>  Convert quality at aligned positions
+    to '
+  position: 2
+  name: reference
+  optional: false
+- !Positional
+  description: '--max-rec-count <number>         Set the maximum number of records
+    to '
+  position: 0
+  name: positions
+  optional: false
+- !Positional
+  description: '--defer-secondary                defer processing of secondary alignments '
+  position: 0
+  name: spots
+  optional: false
+- !Positional
+  description: '-L|--log-level <level>           Logging level as number or enum string.
+    One '
+  position: 0
+  name: quit.
+  optional: false
+- !Positional
+  description: 'bam-load.2 : 2.10.8'
+  position: 0
+  name: file.
+  optional: false
+named:
+- !Flag
+  description: Path and Name of the output database.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Path where to get fasta files from.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Path to configuration file: maps the input\nBAM file's reference names\
+    \ to the\nequivalent GenBank accession. It is\ntab-delimited text file with unix\
+    \ line\nendings (\\n LF) with the following fields\nin this order: #1 reference\
+    \ name as it\noccurs in the BAM file's SN field of @SQ\nheader record; #2 INSDC\
+    \ reference ID"
+  synonyms:
+  - -k
+  - --config
+  args: !SimpleFlagArg
+    name: path-to-file
+  optional: true
+- !Flag
+  description: "path to file containing the SAM header to\nstore in the resulting\
+    \ cSRA, recommended in\ncase of multiple input BAMs"
+  synonyms:
+  - --header
+  args: !SimpleFlagArg
+    name: path-to-file
+  optional: true
+- !Flag
+  description: Path to be used for scratch files.
+  synonyms:
+  - -t
+  - --tmpfs
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Specify file without aligned reads
+  synonyms:
+  - -u
+  - --unaligned
+  args: !SimpleFlagArg
+    name: path-to-file
+  optional: true
+- !Flag
+  description: Accept spots inconsistent PCR duplicate
+  synonyms:
+  - -d
+  - --accept-dups
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Where to write info for alignments with no\nmatching bases"
+  synonyms:
+  - --nomatch-log
+  args: !SimpleFlagArg
+    name: path-to-file
+  optional: true
+- !Flag
+  description: "Quality scores quantization level, can be\nnumber (0: none, 1: 2bit,\
+    \ 2: 1bit), or\nstring like '1:10,10:20,20:30,30:-' (which\nis equivalent to 1)\
+    \ (nb. the endpoint is\nexclusive)."
+  synonyms:
+  - -Q
+  - --qual-quant
+  args: !SimpleFlagArg
+    name: level
+  optional: true
+- !Flag
+  description: "Filter secondary alignments by minimum\nmapping quality."
+  synonyms:
+  - -q
+  - --min-mapq
+  args: !SimpleFlagArg
+    name: phred-score
+  optional: true
+- !Flag
+  description: Set the cache size in MB for the temporary
+  synonyms:
+  - --cache-size
+  args: !SimpleFlagArg
+    name: mbytes
+  optional: true
+- !Flag
+  description: minimum number of matches for an alignment
+  synonyms:
+  - --minimum-match
+  args: !SimpleFlagArg
+    name: count
+  optional: true
+- !Flag
+  description: ignore alignments marked as secondary
+  synonyms:
+  - -P
+  - --no-secondary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Tell the loader to expect unsorted input\n(requires more memory)"
+  synonyms:
+  - --unsorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tell the loader to require sorted input
+  synonyms:
+  - --sorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip verify existence of references from\nthe BAM file"
+  synonyms:
+  - --no-verify
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Exit after verifying existence of\nreferences from the BAM file"
+  synonyms:
+  - --only-verify
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use QUAL column for quality values (default\nis to use OQ if it is\
+    \ available)"
+  synonyms:
+  - --use-QUAL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only process alignments to references in\nthe config file"
+  synonyms:
+  - --ref-config
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only process alignments to the given
+  synonyms:
+  - --ref-filter
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Don't quantized quality at mismatched
+  synonyms:
+  - --keep-mismatch-qual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set the maximum number of errors to ignore\nfrom the BAM file"
+  synonyms:
+  - -E
+  - --max-err-count
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: path to fasta file with references
+  synonyms:
+  - -r
+  - --ref-file
+  args: !SimpleFlagArg
+    name: path-to-file
+  optional: true
+- !Flag
+  description: for trace alignments
+  synonyms:
+  - --TI
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set limit for number of duplicate flag\nmismatch warnings"
+  synonyms:
+  - --max-warning-dup-flag
+  args: !SimpleFlagArg
+    name: count
+  optional: true
+- !Flag
+  description: accept hard clipping in CIGAR
+  synonyms:
+  - --accept-hard-clip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "allow the same reference to be mapped to\nmultiple names in the input\
+    \ files (default\nis disallow, old behaviors was to allow it)"
+  synonyms:
+  - --allow-multi-map
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use secondary alignments for constructing
+  synonyms:
+  - --make-spots-with-secondary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: produce XML-formatted log file
+  synonyms:
+  - -z
+  - --xml-log
+  args: !SimpleFlagArg
+    name: logfile
+  optional: true
+- !Flag
+  description: "Increase the verbosity of the program\nstatus messages. Use multiple\
+    \ times for more\nverbosity. Negates quiet."
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Turn off all status messages for the\nprogram. Negated by verbose."
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read more options and parameters from the
+  synonyms:
+  - --option-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Output brief explanation for the program.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display the version of the program then
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage:\n\tbam-load.2 [options] <bam-file>\n\nSummary:\n\tLoad a BAM formatted\
+  \ data file\n\nExample:\n\tbam-load.2 -o /tmp/SRZ123456 -k analysis.bam.cfg 123456.bam\n\
+  \n  -o|--output <path>               Path and Name of the output database. \n\n\
+  Options:\n  -i|--input <path>                Path where to get fasta files from.\
+  \ \n  -k|--config <path-to-file>       Path to configuration file: maps the input\
+  \ \n                                   BAM file's reference names to the \n    \
+  \                               equivalent GenBank accession. It is \n         \
+  \                          tab-delimited text file with unix line \n           \
+  \                        endings (\\n LF) with the following fields \n         \
+  \                          in this order: #1 reference name as it \n           \
+  \                        occurs in the BAM file's SN field of @SQ \n           \
+  \                        header record; #2 INSDC reference ID \n  --header <path-to-file>\
+  \          path to file containing the SAM header to \n                        \
+  \           store in the resulting cSRA, recommended in \n                     \
+  \              case of multiple input BAMs \n  -t|--tmpfs <path>               \
+  \ Path to be used for scratch files. \n  -u|--unaligned <path-to-file>    Specify\
+  \ file without aligned reads \n  -d|--accept-dups                 Accept spots inconsistent\
+  \ PCR duplicate \n                                   flags \n  --accept-nomatch\
+  \                 Accept alignments with no matching bases \n  --nomatch-log <path-to-file>\
+  \     Where to write info for alignments with no \n                            \
+  \       matching bases \n  -Q|--qual-quant <level>          Quality scores quantization\
+  \ level, can be \n                                   number (0: none, 1: 2bit, 2:\
+  \ 1bit), or \n                                   string like '1:10,10:20,20:30,30:-'\
+  \ (which \n                                   is equivalent to 1) (nb. the endpoint\
+  \ is \n                                   exclusive). \n  -q|--min-mapq <phred-score>\
+  \      Filter secondary alignments by minimum \n                               \
+  \    mapping quality. \n  --cache-size <mbytes>            Set the cache size in\
+  \ MB for the temporary \n                                   indices \n  --no-cs\
+  \                          turn off awareness of colorspace \n  --minimum-match\
+  \ <count>          minimum number of matches for an alignment \n  -P|--no-secondary\
+  \                ignore alignments marked as secondary \n  --unsorted          \
+  \             Tell the loader to expect unsorted input \n                      \
+  \             (requires more memory) \n  --sorted                         Tell the\
+  \ loader to require sorted input \n  --no-verify                      Skip verify\
+  \ existence of references from \n                                   the BAM file\
+  \ \n  --only-verify                    Exit after verifying existence of \n    \
+  \                               references from the BAM file \n  --use-QUAL    \
+  \                   use QUAL column for quality values (default \n             \
+  \                      is to use OQ if it is available) \n  --ref-config       \
+  \              Only process alignments to references in \n                     \
+  \              the config file \n  --ref-filter <name>              Only process\
+  \ alignments to the given \n                                   reference \n  --edit-aligned-qual\
+  \ <new-value>  Convert quality at aligned positions to \n                      \
+  \             this value \n  --keep-mismatch-qual             Don't quantized quality\
+  \ at mismatched \n                                   positions \n  --max-rec-count\
+  \ <number>         Set the maximum number of records to \n                     \
+  \              process from the BAM file \n  -E|--max-err-count <number>      Set\
+  \ the maximum number of errors to ignore \n                                   from\
+  \ the BAM file \n  -r|--ref-file <path-to-file>     path to fasta file with references\
+  \ \n  --TI                             for trace alignments \n  --max-warning-dup-flag\
+  \ <count>   set limit for number of duplicate flag \n                          \
+  \         mismatch warnings \n  --accept-hard-clip               accept hard clipping\
+  \ in CIGAR \n  --allow-multi-map                allow the same reference to be mapped\
+  \ to \n                                   multiple names in the input files (default\
+  \ \n                                   is disallow, old behaviors was to allow it)\
+  \ \n  --make-spots-with-secondary      use secondary alignments for constructing\
+  \ \n                                   spots \n  --defer-secondary             \
+  \   defer processing of secondary alignments \n                                \
+  \   until the end of the file \n  -z|--xml-log <logfile>           produce XML-formatted\
+  \ log file \n\n  -h|--help                        Output brief explanation for the\
+  \ program. \n  -V|--version                     Display the version of the program\
+  \ then \n                                   quit. \n  -L|--log-level <level>   \
+  \        Logging level as number or enum string. One \n                        \
+  \           of (fatal|sys|int|err|warn|info|debug) or \n                       \
+  \            (0-6) Current/default is warn \n  -v|--verbose                    \
+  \ Increase the verbosity of the program \n                                   status\
+  \ messages. Use multiple times for more \n                                   verbosity.\
+  \ Negates quiet. \n  -q|--quiet                       Turn off all status messages\
+  \ for the \n                                   program. Negated by verbose. \n \
+  \ --option-file <file>             Read more options and parameters from the \n\
+  \                                   file. \n\nbam-load.2 : 2.10.8\n\n"
+generated_using:
+- --help

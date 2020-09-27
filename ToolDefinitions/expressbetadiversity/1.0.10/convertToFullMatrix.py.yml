@@ -26,7 +26,7 @@ subcommands:
     name: outputMatrix
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
     named: []
@@ -51,7 +51,62 @@ subcommands:
         name: outputMatrix
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: convertToFullMatrix.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: inputMatrix
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: outputMatrix
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: convertToFullMatrix.py [-h] inputMatrix outputMatrix\n\
+            convertToFullMatrix.py: error: the following arguments are required: outputMatrix\n"
+          generated_using: &id004 []
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: convertToFullMatrix.py [-h] inputMatrix outputMatrix\n\n\
+          Convert Phylip lower-triangular matrix produced by EBD to full matrix.\n\
+          \npositional arguments:\n  inputMatrix   Dissimilarity matrix produced by\
+          \ EBD.\n  outputMatrix  Output full dissimilarity matrix.\n\noptional arguments:\n\
+          \  -h, --help    show this help message and exit\n"
+        generated_using: &id005
+        - --help
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -64,15 +119,9 @@ subcommands:
       version_flag:
       help_text: "usage: convertToFullMatrix.py [-h] inputMatrix outputMatrix\nconvertToFullMatrix.py:\
         \ error: the following arguments are required: outputMatrix\n"
-      generated_using: &id004 []
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: convertToFullMatrix.py [-h] inputMatrix outputMatrix\n\nConvert\
@@ -80,8 +129,7 @@ subcommands:
       \ arguments:\n  inputMatrix   Dissimilarity matrix produced by EBD.\n  outputMatrix\
       \  Output full dissimilarity matrix.\n\noptional arguments:\n  -h, --help  \
       \  show this help message and exit\n"
-    generated_using: &id005
-    - --help
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag: !Flag

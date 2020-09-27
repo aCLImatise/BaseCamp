@@ -1,0 +1,80 @@
+!Command
+command:
+- hca
+- dss
+- get-events
+positional: []
+named:
+- !Flag
+  description: '[--per-page PER_PAGE]'
+  synonyms:
+  - --replica
+  args: !ChoiceFlagArg
+    choices: !!set
+      aws:
+      gcp:
+  optional: true
+- !Flag
+  description: Timestamp to begin replaying events, in DSS_VERSION format.  If this
+    is not provided, replay from the earliest event.
+  synonyms:
+  - --from-date
+  args: !SimpleFlagArg
+    name: FROM_DATE
+  optional: true
+- !Flag
+  description: Timestamp to stop replaying events, in DSS_VERSION format.  If this
+    is not provided, replay to the latest event.
+  synonyms:
+  - --to-date
+  args: !SimpleFlagArg
+    name: TO_DATE
+  optional: true
+- !Flag
+  description: Max number of results to return per page.
+  synonyms:
+  - --per-page
+  args: !SimpleFlagArg
+    name: PER_PAGE
+  optional: true
+- !Flag
+  description: Token to manage retries.  End users constructing queries should not
+    set this parameter.
+  synonyms:
+  - --token
+  args: !SimpleFlagArg
+    name: TOKEN
+  optional: true
+- !Flag
+  description: Do not automatically page the responses
+  synonyms:
+  - --no-paginate
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hca dss get-events [-h] [--from-date FROM_DATE] [--to-date TO_DATE]\n\
+  \                          --replica {aws,gcp} [--per-page PER_PAGE]\n         \
+  \                 [--token TOKEN] [--no-paginate]\n\nReturn urls where event data\
+  \ is available, with manifest of contents.\n\nOptional Arguments:\n  -h, --help\
+  \            show this help message and exit\n  --from-date FROM_DATE\n        \
+  \                Timestamp to begin replaying events, in DSS_VERSION format.  If\
+  \ this is not provided, replay from the earliest event.\n  --to-date TO_DATE   \
+  \  Timestamp to stop replaying events, in DSS_VERSION format.  If this is not provided,\
+  \ replay to the latest event.\n\nRequired Arguments:\n  --replica {aws,gcp}   Replica\
+  \ to fetch from.\n  --per-page PER_PAGE   Max number of results to return per page.\n\
+  \  --token TOKEN         Token to manage retries.  End users constructing queries\
+  \ should not set this parameter.\n  --no-paginate         Do not automatically page\
+  \ the responses\n\n"
+generated_using:
+- --help

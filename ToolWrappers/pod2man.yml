@@ -1,0 +1,223 @@
+!Command
+command:
+- pod2man
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: output
+  optional: true
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --utf8
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --stderr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --rquote
+  args: !SimpleFlagArg
+    name: quote
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --lquote
+  args: !SimpleFlagArg
+    name: quote
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --section
+  args: !SimpleFlagArg
+    name: manext
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --release
+  args: !SimpleFlagArg
+    name: version
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --nourls
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --fixedbolditalic
+  args: !SimpleFlagArg
+    name: font
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --fixedbold
+  args: !SimpleFlagArg
+    name: font
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --fixed
+  args: !SimpleFlagArg
+    name: font
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --date
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --center
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n    pod2man [--center=string] [--date=string] [--errors=style]\n\
+  \    [--fixed=font] [--fixedbold=font] [--fixeditalic=font]\n    [--fixedbolditalic=font]\
+  \ [--name=name] [--nourls] [--official]\n    [--release=version] [--section=manext]\
+  \ [--quotes=quotes]\n    [--lquote=quote] [--rquote=quote] [--stderr] [--utf8] [--verbose]\
+  \ [input\n    [output] ...]\n\n    pod2man --help\n\nOptions:\n    -c string, --center=string\n\
+  \        Sets the centered page header for the \".TH\" macro to string. The\n  \
+  \      default is \"User Contributed Perl Documentation\", but also see\n      \
+  \  --official below.\n\n    -d string, --date=string\n        Set the left-hand\
+  \ footer string for the \".TH\" macro to string. By\n        default, the modification\
+  \ date of the input file will be used, or\n        the current date if input comes\
+  \ from \"STDIN\", and will be based on\n        UTC (so that the output will be\
+  \ reproducible regardless of local\n        time zone).\n\n    --errors=style\n\
+  \        Set the error handling style. \"die\" says to throw an exception on\n \
+  \       any POD formatting error. \"stderr\" says to report errors on standard\n\
+  \        error, but not to throw an exception. \"pod\" says to include a POD\n \
+  \       ERRORS section in the resulting documentation summarizing the\n        errors.\
+  \ \"none\" ignores POD errors entirely, as much as possible.\n\n        The default\
+  \ is \"die\".\n\n    --fixed=font\n        The fixed-width font to use for verbatim\
+  \ text and code. Defaults to\n        \"CW\". Some systems may want \"CR\" instead.\
+  \ Only matters for troff(1)\n        output.\n\n    --fixedbold=font\n        Bold\
+  \ version of the fixed-width font. Defaults to \"CB\". Only matters\n        for\
+  \ troff(1) output.\n\n    --fixeditalic=font\n        Italic version of the fixed-width\
+  \ font (actually, something of a\n        misnomer, since most fixed-width fonts\
+  \ only have an oblique version,\n        not an italic version). Defaults to \"\
+  CI\". Only matters for troff(1)\n        output.\n\n    --fixedbolditalic=font\n\
+  \        Bold italic (probably actually oblique) version of the fixed-width\n  \
+  \      font. Pod::Man doesn't assume you have this, and defaults to \"CB\".\n  \
+  \      Some systems (such as Solaris) have this font available as \"CX\".\n    \
+  \    Only matters for troff(1) output.\n\n    -h, --help\n        Print out usage\
+  \ information.\n\n    -l, --lax\n        No longer used. pod2man used to check its\
+  \ input for validity as a\n        manual page, but this should now be done by podchecker(1)\
+  \ instead.\n        Accepted for backward compatibility; this option no longer does\n\
+  \        anything.\n\n    --lquote=quote\n    --rquote=quote\n        Sets the quote\
+  \ marks used to surround C<> text. --lquote sets the\n        left quote mark and\
+  \ --rquote sets the right quote mark. Either may\n        also be set to the special\
+  \ value \"none\", in which case no quote mark\n        is added on that side of\
+  \ C<> text (but the font is still changed for\n        troff output).\n\n      \
+  \  Also see the --quotes option, which can be used to set both quotes\n        at\
+  \ once. If both --quotes and one of the other options is set,\n        --lquote\
+  \ or --rquote overrides --quotes.\n\n    -n name, --name=name\n        Set the name\
+  \ of the manual page for the \".TH\" macro to name. Without\n        this option,\
+  \ the manual name is set to the uppercased base name of\n        the file being\
+  \ converted unless the manual section is 3, in which\n        case the path is parsed\
+  \ to see if it is a Perl module path. If it\n        is, a path like \".../lib/Pod/Man.pm\"\
+  \ is converted into a name like\n        \"Pod::Man\". This option, if given, overrides\
+  \ any automatic\n        determination of the name.\n\n        Although one does\
+  \ not have to follow this convention, be aware that\n        the convention for\
+  \ UNIX man pages for commands is for the man page\n        title to be in all-uppercase,\
+  \ even if the command isn't.\n\n        This option is probably not useful when\
+  \ converting multiple POD\n        files at once.\n\n        When converting POD\
+  \ source from standard input, the name will be set\n        to \"STDIN\" if this\
+  \ option is not provided. Providing this option is\n        strongly recommended\
+  \ to set a meaningful manual page name.\n\n    --nourls\n        Normally, L<> formatting\
+  \ codes with a URL but anchor text are\n        formatted to show both the anchor\
+  \ text and the URL. In other words:\n\n            L<foo|http://example.com/>\n\n\
+  \        is formatted as:\n\n            foo <http://example.com/>\n\n        This\
+  \ flag, if given, suppresses the URL when anchor text is given,\n        so this\
+  \ example would be formatted as just \"foo\". This can produce\n        less cluttered\
+  \ output in cases where the URLs are not particularly\n        important.\n\n  \
+  \  -o, --official\n        Set the default header to indicate that this page is\
+  \ part of the\n        standard Perl release, if --center is not also given.\n\n\
+  \    -q quotes, --quotes=quotes\n        Sets the quote marks used to surround C<>\
+  \ text to quotes. If quotes\n        is a single character, it is used as both the\
+  \ left and right quote.\n        Otherwise, it is split in half, and the first half\
+  \ of the string is\n        used as the left quote and the second is used as the\
+  \ right quote.\n\n        quotes may also be set to the special value \"none\",\
+  \ in which case no\n        quote marks are added around C<> text (but the font\
+  \ is still changed\n        for troff output).\n\n        Also see the --lquote\
+  \ and --rquote options, which can be used to set\n        the left and right quotes\
+  \ independently. If both --quotes and one of\n        the other options is set,\
+  \ --lquote or --rquote overrides --quotes.\n\n    -r version, --release=version\n\
+  \        Set the centered footer for the \".TH\" macro to version. By default,\n\
+  \        this is set to the version of Perl you run pod2man under. Setting\n   \
+  \     this to the empty string will cause some *roff implementations to\n      \
+  \  use the system default value.\n\n        Note that some system \"an\" macro sets\
+  \ assume that the centered\n        footer will be a modification date and will\
+  \ prepend something like\n        \"Last modified: \". If this is the case for your\
+  \ target system, you\n        may want to set --release to the last modified date\
+  \ and --date to\n        the version number.\n\n    -s string, --section=string\n\
+  \        Set the section for the \".TH\" macro. The standard section numbering\n\
+  \        convention is to use 1 for user commands, 2 for system calls, 3 for\n \
+  \       functions, 4 for devices, 5 for file formats, 6 for games, 7 for\n     \
+  \   miscellaneous information, and 8 for administrator commands. There\n       \
+  \ is a lot of variation here, however; some systems (like Solaris) use\n       \
+  \ 4 for file formats, 5 for miscellaneous information, and 7 for\n        devices.\
+  \ Still others use 1m instead of 8, or some mix of both.\n        About the only\
+  \ section numbers that are reliably consistent are 1,\n        2, and 3.\n\n   \
+  \     By default, section 1 will be used unless the file ends in \".pm\", in\n \
+  \       which case section 3 will be selected.\n\n    --stderr\n        By default,\
+  \ pod2man dies if any errors are detected in the POD\n        input. If --stderr\
+  \ is given and no --errors flag is present, errors\n        are sent to standard\
+  \ error, but pod2man does not abort. This is\n        equivalent to \"--errors=stderr\"\
+  \ and is supported for backward\n        compatibility.\n\n    -u, --utf8\n    \
+  \    By default, pod2man produces the most conservative possible *roff\n       \
+  \ output to try to ensure that it will work with as many different\n        *roff\
+  \ implementations as possible. Many *roff implementations cannot\n        handle\
+  \ non-ASCII characters, so this means all non-ASCII characters\n        are converted\
+  \ either to a *roff escape sequence that tries to create\n        a properly accented\
+  \ character (at least for troff output) or to \"X\".\n\n        This option says\
+  \ to instead output literal UTF-8 characters. If your\n        *roff implementation\
+  \ can handle it, this is the best output format\n        to use and avoids corruption\
+  \ of documents containing non-ASCII\n        characters. However, be warned that\
+  \ *roff source with literal UTF-8\n        characters is not supported by many implementations\
+  \ and may even\n        result in segfaults and other bad behavior.\n\n        Be\
+  \ aware that, when using this option, the input encoding of your\n        POD source\
+  \ should be properly declared unless it's US-ASCII.\n        Pod::Simple will attempt\
+  \ to guess the encoding and may be successful\n        if it's Latin-1 or UTF-8,\
+  \ but it will warn, which by default results\n        in a pod2man failure. Use\
+  \ the \"=encoding\" command to declare the\n        encoding. See perlpod(1) for\
+  \ more information.\n\n    -v, --verbose\n        Print out the name of each output\
+  \ file as it is being generated.\n\n"
+generated_using:
+- --help

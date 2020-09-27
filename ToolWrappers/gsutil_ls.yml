@@ -1,0 +1,183 @@
+!Command
+command:
+- gsutil
+- ls
+positional:
+- !Positional
+  description: 2012-03-02T19:25:17Z  gs://bucket/obj1
+  position: 0
+  name: '2276224'
+  optional: false
+- !Positional
+  description: 2012-03-02T19:30:27Z  gs://bucket/obj2
+  position: 1
+  name: '3914624'
+  optional: false
+named:
+- !Flag
+  description: Prints long listing (owner, length).
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Prints even more detail than -l.  Note: If you use this option\nwith\
+    \ the (non-default) XML API it will generate an additional\nrequest per object\
+    \ being listed, which makes the -L option run\nmuch more slowly (and cost more)\
+    \ using the XML API than the\ndefault JSON API."
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "List matching subdirectory names instead of contents, and do not\n\
+    recurse into matching subdirectories even if the -R option is\nspecified."
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints info about the bucket when used with a bucket URL.
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specifies the project ID to use for listing buckets.
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: proj_id
+  optional: true
+- !Flag
+  description: "Requests a recursive listing, performing at least one listing\noperation\
+    \ per subdirectory. If you have a large number of\nsubdirectories and do not require\
+    \ recursive-style output ordering,\nyou may be able to instead use wildcards to\
+    \ perform a flat\nlisting, e.g.  `gsutil ls gs://mybucket/**`, which will generally\n\
+    perform fewer listing operations."
+  synonyms:
+  - -R
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Includes non-current object versions / generations in the listing\n\
+    (only useful with a versioning-enabled bucket). If combined with\n-l option also\
+    \ prints metageneration for each listed object."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include ETag in long listing (-l) output.
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "When used with -l, prints object sizes in human readable format\n\
+    (e.g., 1 KiB, 234 MiB, 2 GiB, etc.)"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n  ls - List providers, buckets, or objects\n\n\nSYNOPSIS\n\n  gsutil\
+  \ ls [-a] [-b] [-d] [-l] [-L] [-r] [-p proj_id] url...\n\n\n\nLISTING PROVIDERS,\
+  \ BUCKETS, SUBDIRECTORIES, AND OBJECTS\n  If you run gsutil ls without URLs, it\
+  \ lists all of the Google Cloud Storage\n  buckets under your default project ID:\n\
+  \n    gsutil ls\n\n  (For details about projects, see \"gsutil help projects\" and\
+  \ also the -p\n  option in the OPTIONS section below.)\n\n  If you specify one or\
+  \ more provider URLs, gsutil ls will list buckets at\n  each listed provider:\n\n\
+  \    gsutil ls gs://\n\n  If you specify bucket URLs, gsutil ls will list objects\
+  \ at the top level of\n  each bucket, along with the names of each subdirectory.\
+  \ For example:\n\n    gsutil ls gs://bucket\n\n  might produce output like:\n\n\
+  \    gs://bucket/obj1.htm\n    gs://bucket/obj2.htm\n    gs://bucket/images1/\n\
+  \    gs://bucket/images2/\n\n  The \"/\" at the end of the last 2 URLs tells you\
+  \ they are subdirectories,\n  which you can list using:\n\n    gsutil ls gs://bucket/images*\n\
+  \n  If you specify object URLs, gsutil ls will list the specified objects. For\n\
+  \  example:\n\n    gsutil ls gs://bucket/*.txt\n\n  will list all files whose name\
+  \ matches the above wildcard at the top level\n  of the bucket.\n\n  See \"gsutil\
+  \ help wildcards\" for more details on working with wildcards.\n\n\nDIRECTORY BY\
+  \ DIRECTORY, FLAT, and RECURSIVE LISTINGS\n  Listing a bucket or subdirectory (as\
+  \ illustrated near the end of the previous\n  section) only shows the objects and\
+  \ names of subdirectories it contains. You\n  can list all objects in a bucket by\
+  \ using the -r option. For example:\n\n    gsutil ls -r gs://bucket\n\n  will list\
+  \ the top-level objects and buckets, then the objects and\n  buckets under gs://bucket/images1,\
+  \ then those under gs://bucket/images2, etc.\n\n  If you want to see all objects\
+  \ in the bucket in one \"flat\" listing use the\n  recursive (\"**\") wildcard,\
+  \ like:\n\n    gsutil ls -r gs://bucket/**\n\n  or, for a flat listing of a subdirectory:\n\
+  \n    gsutil ls -r gs://bucket/dir/**\n\n  If you want to see only the subdirectory\
+  \ itself, use the -d option:\n\n    gsutil ls -d gs://bucket/dir\n\n\nLISTING OBJECT\
+  \ DETAILS\n  If you specify the -l option, gsutil will output additional information\n\
+  \  about each matching provider, bucket, subdirectory, or object. For example:\n\
+  \n    gsutil ls -l gs://bucket/*.txt\n\n  will print the object size, creation time\
+  \ stamp, and name of each matching\n  object, along with the total count and sum\
+  \ of sizes of all matching objects:\n\n       2276224  2012-03-02T19:25:17Z  gs://bucket/obj1\n\
+  \       3914624  2012-03-02T19:30:27Z  gs://bucket/obj2\n    TOTAL: 2 objects, 6190848\
+  \ bytes (5.9 MiB)\n\n  Note that the total listed in parentheses above is in mebibytes\
+  \ (or gibibytes,\n  tebibytes, etc.), which corresponds to the unit of billing measurement\
+  \ for\n  Google Cloud Storage.\n\n  You can get a listing of all the objects in\
+  \ the top-level bucket directory\n  (along with the total count and sum of sizes)\
+  \ using a command like:\n\n    gsutil ls -l gs://bucket\n\n  To print additional\
+  \ detail about objects and buckets use the gsutil ls -L\n  option. For example:\n\
+  \n    gsutil ls -L gs://bucket/obj1\n\n  will print something like:\n\n    gs://bucket/obj1:\n\
+  \            Creation time:                    Fri, 21 Oct 2016 19:25:17 GMT\n \
+  \           Update time:                      Fri, 21 Oct 2016 21:17:59 GMT\n  \
+  \          Storage class update time:        Fri, 21 Oct 2016 22:12:32 GMT\n   \
+  \         Size:                             2276224\n            Cache-Control:\
+  \                    private, max-age=0\n            Content-Type:             \
+  \        application/x-executable\n            ETag:                           \
+  \  5ca6796417570a586723b7344afffc81\n            Generation:                   \
+  \    1378862725952000\n            Metageneration:                   1\n       \
+  \     ACL:\n    [\n      {\n        \"entity\": \"group-00b4903a97163d99003117abe64d292561d2b4074fc90ce5c0e35ac45f66ad70\"\
+  ,\n        \"entityId\": \"00b4903a97163d99003117abe64d292561d2b4074fc90ce5c0e35ac45f66ad70\"\
+  ,\n        \"role\": \"OWNER\"\n      }\n    ]\n    TOTAL: 1 objects, 2276224 bytes\
+  \ (2.17 MiB)\n\n  Note that some fields above (time updated, storage class update\
+  \ time) are\n  not available with the (non-default) XML API.\n\n  Also note that\
+  \ the Storage class update time field does not display unless it\n  differs from\
+  \ Creation time.\n\n  See also \"gsutil help acl\" for getting a more readable version\
+  \ of the ACL.\n\n\nLISTING BUCKET DETAILS\n  If you want to see information about\
+  \ the bucket itself, use the -b\n  option. For example:\n\n    gsutil ls -L -b gs://bucket\n\
+  \n  will print something like:\n\n    gs://bucket/ :\n            Storage class:\
+  \                MULTI_REGIONAL\n            Location constraint:          US\n\
+  \            Versioning enabled:           True\n            Logging configuration:\
+  \        None\n            Website configuration:        None\n            CORS\
+  \ configuration:           Present\n            Lifecycle configuration:      None\n\
+  \            Labels:                       None\n            Time created:     \
+  \            Fri, 21 Oct 2016 19:25:17 GMT\n            Time updated:          \
+  \       Fri, 21 Oct 2016 21:17:59 GMT\n            Metageneration:             \
+  \  1\n            ACL:\n    [\n      {\n        \"entity\": \"group-00b4903a97163d99003117abe64d292561d2b4074fc90ce5c0e35ac45f66ad70\"\
+  ,\n        \"entityId\": \"00b4903a97163d99003117abe64d292561d2b4074fc90ce5c0e35ac45f66ad70\"\
+  ,\n        \"role\": \"OWNER\"\n      }\n    ]\n            Default ACL:\n    [\n\
+  \      {\n        \"entity\": \"group-00b4903a97163d99003117abe64d292561d2b4074fc90ce5c0e35ac45f66ad70\"\
+  ,\n        \"entityId\": \"00b4903a97163d99003117abe64d292561d2b4074fc90ce5c0e35ac45f66ad70\"\
+  ,\n        \"role\": \"OWNER\"\n      }\n    ]\n\n  Note that some fields above\
+  \ (time created, time updated, metageneration) are\n  not available with the (non-default)\
+  \ XML API.\n\n\nOPTIONS\n  -l          Prints long listing (owner, length).\n\n\
+  \  -L          Prints even more detail than -l.  Note: If you use this option\n\
+  \              with the (non-default) XML API it will generate an additional\n \
+  \             request per object being listed, which makes the -L option run\n \
+  \             much more slowly (and cost more) using the XML API than the\n    \
+  \          default JSON API.\n\n  -d          List matching subdirectory names instead\
+  \ of contents, and do not\n              recurse into matching subdirectories even\
+  \ if the -R option is\n              specified.\n\n  -b          Prints info about\
+  \ the bucket when used with a bucket URL.\n\n  -h          When used with -l, prints\
+  \ object sizes in human readable format\n              (e.g., 1 KiB, 234 MiB, 2\
+  \ GiB, etc.)\n\n  -p proj_id  Specifies the project ID to use for listing buckets.\n\
+  \n  -R, -r      Requests a recursive listing, performing at least one listing\n\
+  \              operation per subdirectory. If you have a large number of\n     \
+  \         subdirectories and do not require recursive-style output ordering,\n \
+  \             you may be able to instead use wildcards to perform a flat\n     \
+  \         listing, e.g.  `gsutil ls gs://mybucket/**`, which will generally\n  \
+  \            perform fewer listing operations.\n\n  -a          Includes non-current\
+  \ object versions / generations in the listing\n              (only useful with\
+  \ a versioning-enabled bucket). If combined with\n              -l option also prints\
+  \ metageneration for each listed object.\n\n  -e          Include ETag in long listing\
+  \ (-l) output.\n"
+generated_using:
+- --help

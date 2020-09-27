@@ -1,0 +1,200 @@
+!Command
+command:
+- SeqPrep
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Required
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: Args
+  optional: true
+named:
+- !Flag
+  description: "-r <second read input fastq filename>\n-1 <first read output fastq\
+    \ filename>\n-2 <second read output fastq filename>"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: first read input fastq filename
+  optional: true
+- !Flag
+  description: "the spinner?\n-3 <first read discarded fastq filename>\n-4 <second\
+    \ read discarded fastq filename>\n-h Display this help message and exit (also\
+    \ works with no args)\n-6 Input sequence is in phred+64 rather than phred+33 format,\
+    \ the output will still be phred+33\n-q <Quality score cutoff for mismatches to\
+    \ be counted in overlap; default = 13>\n-L <Minimum length of a trimmed or merged\
+    \ read to print it; default = 30>"
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: Display
+  optional: true
+- !Flag
+  description: "<forward read primer/adapter sequence to trim as it would appear at\
+    \ the end of a read (recommend about 20bp of this)\n(should validate by grepping\
+    \ a file); default (genomic non-multiplexed adapter1) = AGATCGGAAGAGCACACGTC>"
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<reverse read primer/adapter sequence to trim as it would appear at\
+    \ the end of a read (recommend about 20bp of this)\n(should validate by grepping\
+    \ a file); default (genomic non-multiplexed adapter2) = AGATCGGAAGAGCGTCGTGT>"
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <minimum overall base pair overlap with adapter sequence to trim; default
+    = 10>
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <maximum fraction of good quality mismatching bases for primer/adapter
+    overlap; default = 0.020000>
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <minimum fraction of matching bases for primer/adapter overlap; default
+    = 0.870000>
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <adapter alignment band-width; default = 50>
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <adapter alignment gap-open; default = 8>
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <adapter alignment gap-extension; default = 2>
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <adapter alignment gap-end; default = 2>
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <adapter alignment minimum local alignment score cutoff [roughly (2*num_hits)
+    - (num_gaps*gap_open) - (num_gaps*gap_close) - (gap_len*gap_extend) - (2*num_mismatches)];
+    default = 26>
+  synonyms:
+  - -Z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <read alignment band-width; default = 50>
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <read alignment gap-open; default = 26>
+  synonyms:
+  - -W
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <read alignment gap-extension; default = 9>
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <read alignment gap-end; default = 5>
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <read alignment maximum fraction gap cutoff; default = 0.125000>
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <use mask; N will replace adapters>
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<maximum quality score in output ((phred 33) default = ']' )>\n-g\
+    \ <print overhang when adapters are present and stripped (use this if reads are\
+    \ different length)>\n-s <perform merging and output the merged reads to this\
+    \ file>\n-E <write pretty alignments to this file for visual Examination>\n-x\
+    \ <max number of pretty alignments to write (if -E provided); default = 10000>\n\
+    -o <minimum overall base pair overlap to merge two reads; default = 15>\n-m <maximum\
+    \ fraction of good quality mismatching bases to overlap reads; default = 0.020000>\n\
+    -n <minimum fraction of matching bases to overlap reads; default = 0.900000>\n"
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "SeqPrep: invalid option -- '-'\n\n\nUsage:\nSeqPrep [Required Args] [Options]\n\
+  NOTE 1: The output is always gziped compressed.\nNOTE 2: If the quality strings\
+  \ in the output contain characters less than ascii 33 on an ascii table (they look\
+  \ like lines from a binary file), try running again with or without the -6 option.\n\
+  Required Arguments:\n\t-f <first read input fastq filename>\n\t-r <second read input\
+  \ fastq filename>\n\t-1 <first read output fastq filename>\n\t-2 <second read output\
+  \ fastq filename>\nGeneral Arguments (Optional):\n\t-S Display the spinner?\n\t\
+  -3 <first read discarded fastq filename>\n\t-4 <second read discarded fastq filename>\n\
+  \t-h Display this help message and exit (also works with no args) \n\t-6 Input sequence\
+  \ is in phred+64 rather than phred+33 format, the output will still be phred+33\
+  \ \n\t-q <Quality score cutoff for mismatches to be counted in overlap; default\
+  \ = 13>\n\t-L <Minimum length of a trimmed or merged read to print it; default =\
+  \ 30>\nArguments for Adapter/Primer Trimming (Optional):\n\t-A <forward read primer/adapter\
+  \ sequence to trim as it would appear at the end of a read (recommend about 20bp\
+  \ of this)\n\t\t (should validate by grepping a file); default (genomic non-multiplexed\
+  \ adapter1) = AGATCGGAAGAGCACACGTC>\n\t-B <reverse read primer/adapter sequence\
+  \ to trim as it would appear at the end of a read (recommend about 20bp of this)\n\
+  \t\t (should validate by grepping a file); default (genomic non-multiplexed adapter2)\
+  \ = AGATCGGAAGAGCGTCGTGT>\n\t-O <minimum overall base pair overlap with adapter\
+  \ sequence to trim; default = 10>\n\t-M <maximum fraction of good quality mismatching\
+  \ bases for primer/adapter overlap; default = 0.020000>\n\t-N <minimum fraction\
+  \ of matching bases for primer/adapter overlap; default = 0.870000>\n\t-b <adapter\
+  \ alignment band-width; default = 50>\n\t-Q <adapter alignment gap-open; default\
+  \ = 8>\n\t-t <adapter alignment gap-extension; default = 2>\n\t-e <adapter alignment\
+  \ gap-end; default = 2>\n\t-Z <adapter alignment minimum local alignment score cutoff\
+  \ [roughly (2*num_hits) - (num_gaps*gap_open) - (num_gaps*gap_close) - (gap_len*gap_extend)\
+  \ - (2*num_mismatches)]; default = 26>\n\t-w <read alignment band-width; default\
+  \ = 50>\n\t-W <read alignment gap-open; default = 26>\n\t-p <read alignment gap-extension;\
+  \ default = 9>\n\t-P <read alignment gap-end; default = 5>\n\t-X <read alignment\
+  \ maximum fraction gap cutoff; default = 0.125000>\n\t-z <use mask; N will replace\
+  \ adapters>\nOptional Arguments for Merging:\n\t-y <maximum quality score in output\
+  \ ((phred 33) default = ']' )>\n\t-g <print overhang when adapters are present and\
+  \ stripped (use this if reads are different length)>\n\t-s <perform merging and\
+  \ output the merged reads to this file>\n\t-E <write pretty alignments to this file\
+  \ for visual Examination>\n\t-x <max number of pretty alignments to write (if -E\
+  \ provided); default = 10000>\n\t-o <minimum overall base pair overlap to merge\
+  \ two reads; default = 15>\n\t-m <maximum fraction of good quality mismatching bases\
+  \ to overlap reads; default = 0.020000>\n\t-n <minimum fraction of matching bases\
+  \ to overlap reads; default = 0.900000>\n\n"
+generated_using:
+- --help

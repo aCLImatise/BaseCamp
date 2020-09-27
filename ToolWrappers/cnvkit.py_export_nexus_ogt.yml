@@ -1,0 +1,107 @@
+!Command
+command:
+- cnvkit.py
+- export
+- nexus-ogt
+positional:
+- !Positional
+  description: "Log2 copy ratio data file (*.cnr), the output of the\n'fix' sub-command."
+  position: 0
+  name: filename
+  optional: false
+- !Positional
+  description: VCF of SNVs for the same sample, to calculate b-allele
+  position: 1
+  name: vcf
+  optional: false
+- !Positional
+  description: 'optional arguments:'
+  position: 2
+  name: frequencies.
+  optional: false
+named:
+- !Flag
+  description: "Specify the name of the sample in the VCF to use to\nextract b-allele\
+    \ frequencies."
+  synonyms:
+  - -i
+  - --sample-id
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+  optional: true
+- !Flag
+  description: Corresponding normal sample ID in the input VCF.
+  synonyms:
+  - -n
+  - --normal-id
+  args: !SimpleFlagArg
+    name: NORMAL_ID
+  optional: true
+- !Flag
+  description: "Minimum read depth for a SNV to be included in the\nb-allele frequency\
+    \ calculation. [Default: 20]"
+  synonyms:
+  - -m
+  - --min-variant-depth
+  args: !SimpleFlagArg
+    name: MIN_VARIANT_DEPTH
+  optional: true
+- !Flag
+  description: "[ALT_FREQ], --zygosity-freq [ALT_FREQ]\nIgnore VCF's genotypes (GT\
+    \ field) and instead infer\nzygosity from allele frequencies. [Default if used\n\
+    without a number: 0.25]"
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum weight (between 0 and 1) for a bin to be\nincluded in the\
+    \ output. [Default: 0.0]"
+  synonyms:
+  - -w
+  - --min-weight
+  args: !SimpleFlagArg
+    name: MIN_WEIGHT
+  optional: true
+- !Flag
+  description: "Output file name.\n"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py export nexus-ogt [-h] [-i SAMPLE_ID] [-n NORMAL_ID]\n\
+  \                                  [-m MIN_VARIANT_DEPTH] [-z [ALT_FREQ]]\n    \
+  \                              [-w MIN_WEIGHT] [-o FILENAME]\n                 \
+  \                 filename vcf\n\npositional arguments:\n  filename            \
+  \  Log2 copy ratio data file (*.cnr), the output of the\n                      \
+  \  'fix' sub-command.\n  vcf                   VCF of SNVs for the same sample,\
+  \ to calculate b-allele\n                        frequencies.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i SAMPLE_ID, --sample-id\
+  \ SAMPLE_ID\n                        Specify the name of the sample in the VCF to\
+  \ use to\n                        extract b-allele frequencies.\n  -n NORMAL_ID,\
+  \ --normal-id NORMAL_ID\n                        Corresponding normal sample ID\
+  \ in the input VCF.\n  -m MIN_VARIANT_DEPTH, --min-variant-depth MIN_VARIANT_DEPTH\n\
+  \                        Minimum read depth for a SNV to be included in the\n  \
+  \                      b-allele frequency calculation. [Default: 20]\n  -z [ALT_FREQ],\
+  \ --zygosity-freq [ALT_FREQ]\n                        Ignore VCF's genotypes (GT\
+  \ field) and instead infer\n                        zygosity from allele frequencies.\
+  \ [Default if used\n                        without a number: 0.25]\n  -w MIN_WEIGHT,\
+  \ --min-weight MIN_WEIGHT\n                        Minimum weight (between 0 and\
+  \ 1) for a bin to be\n                        included in the output. [Default:\
+  \ 0.0]\n  -o FILENAME, --output FILENAME\n                        Output file name.\n"
+generated_using:
+- --help

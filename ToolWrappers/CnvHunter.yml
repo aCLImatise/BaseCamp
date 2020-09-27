@@ -1,0 +1,240 @@
+!Command
+command:
+- CnvHunter
+positional: []
+named:
+- !Flag
+  description: Input TSV files (one per sample) containing coverage data (chr, start,
+    end, avg_depth). If only one file is given, each line in this file is interpreted
+    as an input file path.
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: filelist
+  optional: true
+- !Flag
+  description: Output TSV file containing the detected CNVs.
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "The number of most similar samples to use for reference construction.\n\
+    Default value: '30'"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Minimum z-score for CNV seed detection.\nDefault value: '4'"
+  synonyms:
+  - -min_z
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Minimum z-score for CNV extension around seeds.\nDefault value: '2'"
+  synonyms:
+  - -ext_min_z
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Percentage of orignal region size that can be spanned while merging\
+    \ nearby regions (0 disables it).\nDefault value: '20'"
+  synonyms:
+  - -ext_gap_span
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "QC: Minimum average depth of a sample.\nDefault value: '40'"
+  synonyms:
+  - -sam_min_depth
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "QC: Minimum correlation of sample to constructed reference sample.\n\
+    Default value: '0.95'"
+  synonyms:
+  - -sam_min_corr
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Maximum number of regions used for sample correlation calculation\
+    \ (to speed up comparisons for exoms etc.).\nDefault value: '20000'"
+  synonyms:
+  - -sam_corr_regs
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "QC: Minimum (average) absolute depth of a target region.\nDefault\
+    \ value: '20'"
+  synonyms:
+  - -reg_min_cov
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "QC: Minimum (average) normalized depth of a target region.\nDefault\
+    \ value: '0.01'"
+  synonyms:
+  - -reg_min_ncov
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "QC: Maximum coefficient of variation (median/mad) of target region.\n\
+    Default value: '0.4'"
+  synonyms:
+  - -reg_max_cv
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Writes debug information for the sample matching the given name (or\
+    \ for all samples if 'ALL' is given).\nDefault value: ''"
+  synonyms:
+  - -debug
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Writes a SEG file for the sample matching the given name (used for\
+    \ visualization in IGV).\nDefault value: ''"
+  synonyms:
+  - -seg
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Comma-separated list of pseudo-autosomal regions on the X chromosome.\n\
+    Default value: '1-2699520,154931044-155270560'"
+  synonyms:
+  - -par
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "BED file containing copy-number-polymorphism (CNP) regions. They are\
+    \ excluded from the normalization/correlation calculation. E.g use the CNV map\
+    \ from http://dx.doi.org/10.1038/nrg3871.\nDefault value: ''"
+  synonyms:
+  - -cnp_file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "List of BED files used for annotation. Each file adds a column to\
+    \ the output file. The base filename is used as colum name and 4th column of the\
+    \ BED file is used as annotation value.\nDefault value: ''"
+  synonyms:
+  - -annotate
+  args: !SimpleFlagArg
+    name: filelist
+  optional: true
+- !Flag
+  description: "Moving median GC-content normalization window size (disabled by default).\n\
+    Default value: '-1'"
+  synonyms:
+  - -gc_window
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Moving median GC-content normalization extension around target region.\n\
+    Default value: '0'"
+  synonyms:
+  - -gc_extend
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Reference genome FASTA file. If unset, 'reference_genome' from the\
+    \ 'settings.ini' file is used.\nDefault value: ''"
+  synonyms:
+  - -ref
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Prints changeloge and exits.
+  synonyms:
+  - --changelog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  synonyms:
+  - --tdx
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows this help and exits.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "CnvHunter (2020_06)\n\nCNV detection from targeted resequencing data using\
+  \ non-matched control samples.\n\nMandatory parameters:\n  -in <filelist>      \
+  \   Input TSV files (one per sample) containing coverage data (chr, start, end,\
+  \ avg_depth). If only one file is given, each line in this file is interpreted as\
+  \ an input file path.\n  -out <file>            Output TSV file containing the detected\
+  \ CNVs.\n\nOptional parameters:\n  -n <int>               The number of most similar\
+  \ samples to use for reference construction.\n                         Default value:\
+  \ '30'\n  -min_z <float>         Minimum z-score for CNV seed detection.\n     \
+  \                    Default value: '4'\n  -ext_min_z <float>     Minimum z-score\
+  \ for CNV extension around seeds.\n                         Default value: '2'\n\
+  \  -ext_gap_span <float>  Percentage of orignal region size that can be spanned\
+  \ while merging nearby regions (0 disables it).\n                         Default\
+  \ value: '20'\n  -sam_min_depth <float> QC: Minimum average depth of a sample.\n\
+  \                         Default value: '40'\n  -sam_min_corr <float>  QC: Minimum\
+  \ correlation of sample to constructed reference sample.\n                     \
+  \    Default value: '0.95'\n  -sam_corr_regs <int>   Maximum number of regions used\
+  \ for sample correlation calculation (to speed up comparisons for exoms etc.).\n\
+  \                         Default value: '20000'\n  -reg_min_cov <float>   QC: Minimum\
+  \ (average) absolute depth of a target region.\n                         Default\
+  \ value: '20'\n  -reg_min_ncov <float>  QC: Minimum (average) normalized depth of\
+  \ a target region.\n                         Default value: '0.01'\n  -reg_max_cv\
+  \ <float>    QC: Maximum coefficient of variation (median/mad) of target region.\n\
+  \                         Default value: '0.4'\n  -debug <string>        Writes\
+  \ debug information for the sample matching the given name (or for all samples if\
+  \ 'ALL' is given).\n                         Default value: ''\n  -seg <string>\
+  \          Writes a SEG file for the sample matching the given name (used for visualization\
+  \ in IGV).\n                         Default value: ''\n  -par <string>        \
+  \  Comma-separated list of pseudo-autosomal regions on the X chromosome.\n     \
+  \                    Default value: '1-2699520,154931044-155270560'\n  -cnp_file\
+  \ <file>       BED file containing copy-number-polymorphism (CNP) regions. They\
+  \ are excluded from the normalization/correlation calculation. E.g use the CNV map\
+  \ from http://dx.doi.org/10.1038/nrg3871.\n                         Default value:\
+  \ ''\n  -annotate <filelist>   List of BED files used for annotation. Each file\
+  \ adds a column to the output file. The base filename is used as colum name and\
+  \ 4th column of the BED file is used as annotation value.\n                    \
+  \     Default value: ''\n  -gc_window <int>       Moving median GC-content normalization\
+  \ window size (disabled by default).\n                         Default value: '-1'\n\
+  \  -gc_extend <int>       Moving median GC-content normalization extension around\
+  \ target region.\n                         Default value: '0'\n  -ref <file>   \
+  \         Reference genome FASTA file. If unset, 'reference_genome' from the 'settings.ini'\
+  \ file is used.\n                         Default value: ''\n\nSpecial parameters:\n\
+  \  --help                 Shows this help and exits.\n  --version              Prints\
+  \ version and exits.\n  --changelog            Prints changeloge and exits.\n  --tdx\
+  \                  Writes a Tool Definition Xml file. The file name is the application\
+  \ name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help

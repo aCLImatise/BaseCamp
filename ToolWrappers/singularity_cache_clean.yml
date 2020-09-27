@@ -1,0 +1,75 @@
+!Command
+command:
+- singularity
+- cache
+- clean
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: clean
+  optional: true
+named:
+- !Flag
+  description: "specify a container cache to clean (will clear all\ncache with the\
+    \ same name)"
+  synonyms:
+  - -N
+  - --name
+  args: !SimpleFlagArg
+    name: strings
+  optional: true
+- !Flag
+  description: "operate in dry run mode and do not actually clean\nthe cache"
+  synonyms:
+  - -n
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress any prompts and clean the cache
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "a list of cache types to clean (possible values:\nlibrary, oci, shub,\
+    \ blob, net, oras, all) (default\n[all])"
+  synonyms:
+  - -T
+  - --type
+  args: !SimpleFlagArg
+    name: strings
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for clean
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Clean your local Singularity cache\n\nUsage:\n  singularity cache clean\
+  \ [clean options...]\n\nDescription:\n  This will clean your local cache (stored\
+  \ at $HOME/.singularity/cache if\n  SINGULARITY_CACHEDIR is not set). By default\
+  \ the entire cache is cleaned, use\n  --name or --type flags to override this behavior.\
+  \ Note: if you use Singularity\n  as root, cache will be stored in '/root/.singularity/.cache',\
+  \ to clean that\n  cache, you will need to run 'cache clean --all' as root, or with\
+  \ 'sudo'.\n\nOptions:\n  -n, --dry-run        operate in dry run mode and do not\
+  \ actually clean\n                       the cache\n  -f, --force          suppress\
+  \ any prompts and clean the cache\n  -h, --help           help for clean\n  -N,\
+  \ --name strings   specify a container cache to clean (will clear all\n        \
+  \               cache with the same name)\n  -T, --type strings   a list of cache\
+  \ types to clean (possible values:\n                       library, oci, shub, blob,\
+  \ net, oras, all) (default\n                       [all])\n\n\nExamples:\n  All\
+  \ group commands have their own help output:\n\n  $ singularity help cache clean\
+  \ --name cache_name.sif\n  $ singularity help cache clean --type=library,oci\n \
+  \ $ singularity cache clean --help\n\n\nFor additional help or support, please visit\
+  \ https://www.sylabs.io/docs/\n"
+generated_using:
+- --help

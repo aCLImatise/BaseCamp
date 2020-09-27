@@ -1,0 +1,120 @@
+!Command
+command:
+- liftUp
+positional:
+- !Positional
+  description: '- Items not in liftSpec are silently dropped from dest'
+  position: 0
+  name: drop
+  optional: false
+- !Positional
+  description: '- Items not in liftSpec are dropped.  A warning is issued'
+  position: 1
+  name: warn
+  optional: false
+named:
+- !Flag
+  description: No header written for .psl files
+  synonyms:
+  - -nohead
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output a dot every N lines processed
+  synonyms:
+  - -dots
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Lift query (rather than target) side of psl
+  synonyms:
+  - -pslQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Lift query (rather than target) side of axt
+  synonyms:
+  - -axtQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Lift query (rather than target) side of chain
+  synonyms:
+  - -chainQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Lift query (rather than target) side of net
+  synonyms:
+  - -netQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Lift query (rather than target) side of waba alignment\n(waba lifts\
+    \ only work with query side at this time)"
+  synonyms:
+  - -wabaQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'t sort bed, gff, or gdup files, to save memory"
+  synonyms:
+  - -nosort
+  args: !SimpleFlagArg
+    name: Don
+  optional: true
+- !Flag
+  description: contig gapsize from default
+  synonyms:
+  - -gapsize
+  args: !SimpleFlagArg
+    name: change
+  optional: true
+- !Flag
+  description: '- Ignore NCBI-style version number in sequence ids of input files'
+  synonyms:
+  - -ignoreVersions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: extended genePred
+  synonyms:
+  - -extGenePred
+  args: !SimpleFlagArg
+    name: lift
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "liftUp - change coordinates of .psl, .agp, .gap, .gl, .out, .align, .gff,\
+  \ .gtf\n.bscore .tab .gdup .axt .chain .net, .gp, .genepred, .wab, .bed, .bed3,\
+  \ or .bed8 files to\nparent coordinate system.\n\nusage:\n   liftUp [-type=.xxx]\
+  \ destFile liftSpec how sourceFile(s)\nThe optional -type parameter tells what type\
+  \ of files to lift\nIf omitted the type is inferred from the suffix of destFile\n\
+  Type is one of the suffixes described above.\nDestFile will contain the merged and\
+  \ lifted source files,\nwith the coordinates translated as per liftSpec.  LiftSpec\n\
+  is tab-delimited with each line of the form:\n   offset oldName oldSize newName\
+  \ newSize\nLiftSpec may optionally have a sixth column specifying + or - strand,\n\
+  but strand is not supported for all input types.\nThe 'how' parameter controls what\
+  \ the program will do with\nitems which are not in the liftSpec.  It must be one\
+  \ of:\n   carry - Items not in liftSpec are carried to dest without translation\n\
+  \   drop  - Items not in liftSpec are silently dropped from dest\n   warn  - Items\
+  \ not in liftSpec are dropped.  A warning is issued\n   error - Items not in liftSpec\
+  \ generate an error\nIf the destination is a .agp file then a 'large inserts' file\n\
+  also needs to be included in the command line:\n   liftUp dest.agp liftSpec how\
+  \ inserts sourceFile(s)\nThis file describes where large inserts due to heterochromitin\n\
+  should be added. Use /dev/null and set -gapsize if there's not inserts file.\n\n\
+  options:\n   -nohead  No header written for .psl files\n   -dots=N Output a dot\
+  \ every N lines processed\n   -pslQ  Lift query (rather than target) side of psl\n\
+  \   -axtQ  Lift query (rather than target) side of axt\n   -chainQ  Lift query (rather\
+  \ than target) side of chain\n   -netQ  Lift query (rather than target) side of\
+  \ net\n   -wabaQ  Lift query (rather than target) side of waba alignment\n   \t\
+  (waba lifts only work with query side at this time)\n   -nosort Don't sort bed,\
+  \ gff, or gdup files, to save memory\n   -gapsize change contig gapsize from default\n\
+  \   -ignoreVersions - Ignore NCBI-style version number in sequence ids of input\
+  \ files\n   -extGenePred lift extended genePred\n\n"
+generated_using: []

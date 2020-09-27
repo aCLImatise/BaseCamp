@@ -1,0 +1,184 @@
+!Command
+command:
+- pycodestyle
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: pep8
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: input
+  optional: false
+named:
+- !Flag
+  description: print status messages, or debug with -vv
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: report only file names, or nothing with -qq
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (obsolete) show all occurrences of the same error
+  synonyms:
+  - -r
+  - --repeat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show first occurrence of each error
+  synonyms:
+  - --first
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "exclude files or directories which match these comma\nseparated patterns\
+    \ (default:\n.svn,CVS,.bzr,.hg,.git,__pycache__,.tox)"
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: patterns
+  optional: true
+- !Flag
+  description: "when parsing directories, only check filenames matching\nthese comma\
+    \ separated patterns (default: *.py)"
+  synonyms:
+  - --filename
+  args: !SimpleFlagArg
+    name: patterns
+  optional: true
+- !Flag
+  description: select errors and warnings (e.g. E,W6)
+  synonyms:
+  - --select
+  args: !SimpleFlagArg
+    name: errors
+  optional: true
+- !Flag
+  description: "skip errors and warnings (e.g. E4,W) (default:\nE121,E123,E126,E226,E24,E704,W503)"
+  synonyms:
+  - --ignore
+  args: !SimpleFlagArg
+    name: errors
+  optional: true
+- !Flag
+  description: show source code for each error
+  synonyms:
+  - --show-source
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show text of PEP 8 for each error (implies --first)
+  synonyms:
+  - --show-pep8
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: count errors and warnings
+  synonyms:
+  - --statistics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "print total number of errors and warnings to standard\nerror and set\
+    \ exit code to 1 if total is not null"
+  synonyms:
+  - --count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'set maximum allowed line length (default: 79)'
+  synonyms:
+  - --max-line-length
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "hang closing bracket instead of matching indentation of\nopening bracket's\
+    \ line"
+  synonyms:
+  - --hang-closing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set the error format [default|pylint|<custom>]
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: "report changes only within line number ranges in the\nunified diff\
+    \ received on STDIN"
+  synonyms:
+  - --diff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: measure processing speed
+  synonyms:
+  - --benchmark
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: user config file location
+  synonyms:
+  - --config
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: pep8 [options] input ...\n\nOptions:\n  --version            show\
+  \ program's version number and exit\n  -h, --help           show this help message\
+  \ and exit\n  -v, --verbose        print status messages, or debug with -vv\n  -q,\
+  \ --quiet          report only file names, or nothing with -qq\n  -r, --repeat \
+  \        (obsolete) show all occurrences of the same error\n  --first          \
+  \    show first occurrence of each error\n  --exclude=patterns   exclude files or\
+  \ directories which match these comma\n                       separated patterns\
+  \ (default:\n                       .svn,CVS,.bzr,.hg,.git,__pycache__,.tox)\n \
+  \ --filename=patterns  when parsing directories, only check filenames matching\n\
+  \                       these comma separated patterns (default: *.py)\n  --select=errors\
+  \      select errors and warnings (e.g. E,W6)\n  --ignore=errors      skip errors\
+  \ and warnings (e.g. E4,W) (default:\n                       E121,E123,E126,E226,E24,E704,W503)\n\
+  \  --show-source        show source code for each error\n  --show-pep8         \
+  \ show text of PEP 8 for each error (implies --first)\n  --statistics         count\
+  \ errors and warnings\n  --count              print total number of errors and warnings\
+  \ to standard\n                       error and set exit code to 1 if total is not\
+  \ null\n  --max-line-length=n  set maximum allowed line length (default: 79)\n \
+  \ --hang-closing       hang closing bracket instead of matching indentation of\n\
+  \                       opening bracket's line\n  --format=format      set the error\
+  \ format [default|pylint|<custom>]\n  --diff               report changes only within\
+  \ line number ranges in the\n                       unified diff received on STDIN\n\
+  \n  Testing Options:\n    --benchmark        measure processing speed\n\n  Configuration:\n\
+  \    The project options are read from the [pep8] section of the tox.ini\n    file\
+  \ or the setup.cfg file located in any parent folder of the path(s)\n    being processed.\
+  \  Allowed options are: exclude, filename, select,\n    ignore, max-line-length,\
+  \ hang-closing, count, format, quiet, show-\n    pep8, show-source, statistics,\
+  \ verbose.\n\n    --config=path      user config file location\n"
+generated_using:
+- --help

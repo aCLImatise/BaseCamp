@@ -1,0 +1,405 @@
+!Command
+command:
+- mason_variator
+positional:
+- !Positional
+  description: An insertion.
+  position: 0
+  name: INS
+  optional: false
+- !Positional
+  description: A deletion.
+  position: 1
+  name: DEL
+  optional: false
+- !Positional
+  description: An inversion.
+  position: 2
+  name: INV
+  optional: false
+- !Positional
+  description: An intra-chromosomal translocation.
+  position: 3
+  name: CTR
+  optional: false
+- !Positional
+  description: A duplication
+  position: 4
+  name: DUP
+  optional: false
+named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: Set verbosity to a minimum.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable verbose output.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable very verbose output.
+  synonyms:
+  - -vv
+  - --very-verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The seed to use for the random number generator. Default: 0.'
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'FASTA file with reference. Valid filetypes are: .fasta and .fa.'
+  synonyms:
+  - -ir
+  - --in-reference
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "TSV file with variants to simulate. See Section on the Variant TSV\n\
+    File below. Valid filetypes are: .txt and .tsv."
+  synonyms:
+  - -it
+  - --in-variant-tsv
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: 'VCF file to write simulated variations to. Valid filetype is: .vcf.'
+  synonyms:
+  - -ov
+  - --out-vcf
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "FASTA file to write simulated haplotypes to. Valid filetypes are:\n\
+    .fasta and .fa."
+  synonyms:
+  - -of
+  - --out-fasta
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "TSV file to write breakpoints in variants to. Valid filetypes are:\n\
+    .txt and .tsv."
+  synonyms:
+  - --out-breakpoints
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: 'Haplotype name separator in output FASTA. Default: /.'
+  synonyms:
+  - --haplotype-name-sep
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Do not generate variant ids.
+  synonyms:
+  - --no-gen-var-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The number of haplotypes to simulate. In range [1..inf]. Default:
+    1.'
+  synonyms:
+  - -n
+  - --num-haplotypes
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "The separator between the chromosome and the haplotype name in the\n\
+    output FASTA file. Default: /."
+  synonyms:
+  - --haplotype-sep
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'Per-base SNP rate. In range [0.0..1.0]. Default: 0.0001.'
+  synonyms:
+  - --snp-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Small indel rate. In range [0.0..1.0]. Default: 0.000001.'
+  synonyms:
+  - --small-indel-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Minimal small indel size to simulate. In range [0..inf]. Default:
+    1.'
+  synonyms:
+  - --min-small-indel-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Maximal small indel size to simulate. In range [0..inf]. Default:
+    6.'
+  synonyms:
+  - --max-small-indel-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Per-base SNP rate. In range [0.0..1.0]. Default: 0.0000001.'
+  synonyms:
+  - --sv-indel-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Per-base SNP rate. In range [0.0..1.0]. Default: 0.0000001.'
+  synonyms:
+  - --sv-inversion-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Per-base SNP rate. In range [0.0..1.0]. Default: 0.0000001.'
+  synonyms:
+  - --sv-translocation-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Per-base SNP rate. In range [0.0..1.0]. Default: 0.0000001.'
+  synonyms:
+  - --sv-duplication-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Minimal SV size to simulate. In range [0..inf]. Default: 50.'
+  synonyms:
+  - --min-sv-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Maximal SV size to simulate. In range [0..inf]. Default: 1000.'
+  synonyms:
+  - --max-sv-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Enable methylation level simulation.
+  synonyms:
+  - --methylation-levels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Median of beta distribution for methylation level of CpG loci. In\n\
+    range [0..1]. Default: 0.6."
+  synonyms:
+  - --meth-cg-mu
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of beta distribution for methylation level of CpG\n\
+    loci. In range [0..1]. Default: 0.03."
+  synonyms:
+  - --meth-cg-sigma
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Median of beta distribution for methylation level of CHG loci. In\n\
+    range [0..1]. Default: 0.08."
+  synonyms:
+  - --meth-chg-mu
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of beta distribution for methylation level of CHG\n\
+    loci. In range [0..1]. Default: 0.008."
+  synonyms:
+  - --meth-chg-sigma
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Median of beta distribution for methylation level of CHH loci. In\n\
+    range [0..1]. Default: 0.05."
+  synonyms:
+  - --meth-chh-mu
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of beta distribution for methylation level of CHH\n\
+    loci. In range [0..1]. Default: 0.005."
+  synonyms:
+  - --meth-chh-sigma
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Path to load original methylation levels from. Methylation levels\n\
+    are simulated if omitted. Valid filetypes are: .sam[.*], .raw[.*],\n.gbk[.*],\
+    \ .frn[.*], .fq[.*], .fna[.*], .ffn[.*], .fastq[.*],\n.fasta[.*], .faa[.*], .fa[.*],\
+    \ .embl[.*], and .bam, where * is any\nof the following extensions: gz and bgzf\
+    \ for transparent\n(de)compression."
+  synonyms:
+  - --meth-fasta-in
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Path to write methylation levels to as FASTA. Only written if\n-of/--out-fasta\
+    \ is given. Valid filetypes are: .sam[.*], .raw[.*],\n.frn[.*], .fq[.*], .fna[.*],\
+    \ .ffn[.*], .fastq[.*], .fasta[.*],\n.faa[.*], .fa[.*], and .bam, where * is any\
+    \ of the following\nextensions: gz and bgzf for transparent (de)compression."
+  synonyms:
+  - --meth-fasta-out
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: first two columns of this TSV file are
+  synonyms:
+  - --in-variant-tsv/-it.
+  args: !SimpleFlagArg
+    name: The
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "mason_variator - Variation Simulation\n=====================================\n\
+  \nSYNOPSIS\n    mason_variator [OPTIONS] -ir IN.fa -ov OUT.vcf [-of OUT.fa]\n\n\
+  DESCRIPTION\n    Either simulate variation and write out the result to VCF and optionally\n\
+  \    FASTA files.\n\nOPTIONS\n    -h, --help\n          Display the help message.\n\
+  \    --version-check BOOL\n          Turn this option off to disable version update\
+  \ notifications of the\n          application. One of 1, ON, TRUE, T, YES, 0, OFF,\
+  \ FALSE, F, and NO.\n          Default: 1.\n    --version\n          Display version\
+  \ information.\n\n  General Options:\n    -q, --quiet\n          Set verbosity to\
+  \ a minimum.\n    -v, --verbose\n          Enable verbose output.\n    -vv, --very-verbose\n\
+  \          Enable very verbose output.\n    -s, --seed INTEGER\n          The seed\
+  \ to use for the random number generator. Default: 0.\n\n  Input / Output:\n   \
+  \ -ir, --in-reference INPUT_FILE\n          FASTA file with reference. Valid filetypes\
+  \ are: .fasta and .fa.\n    -it, --in-variant-tsv INPUT_FILE\n          TSV file\
+  \ with variants to simulate. See Section on the Variant TSV\n          File below.\
+  \ Valid filetypes are: .txt and .tsv.\n    -ov, --out-vcf INPUT_FILE\n         \
+  \ VCF file to write simulated variations to. Valid filetype is: .vcf.\n    -of,\
+  \ --out-fasta INPUT_FILE\n          FASTA file to write simulated haplotypes to.\
+  \ Valid filetypes are:\n          .fasta and .fa.\n    --out-breakpoints OUTPUT_FILE\n\
+  \          TSV file to write breakpoints in variants to. Valid filetypes are:\n\
+  \          .txt and .tsv.\n    --haplotype-name-sep STRING\n          Haplotype\
+  \ name separator in output FASTA. Default: /.\n    --no-gen-var-ids\n          Do\
+  \ not generate variant ids.\n\n  Haplotype / Allele Configuration:\n    -n, --num-haplotypes\
+  \ INTEGER\n          The number of haplotypes to simulate. In range [1..inf]. Default:\
+  \ 1.\n    --haplotype-sep STRING\n          The separator between the chromosome\
+  \ and the haplotype name in the\n          output FASTA file. Default: /.\n\n  Variation\
+  \ Simulation:\n    --snp-rate DOUBLE\n          Per-base SNP rate. In range [0.0..1.0].\
+  \ Default: 0.0001.\n    --small-indel-rate DOUBLE\n          Small indel rate. In\
+  \ range [0.0..1.0]. Default: 0.000001.\n    --min-small-indel-size INTEGER\n   \
+  \       Minimal small indel size to simulate. In range [0..inf]. Default: 1.\n \
+  \   --max-small-indel-size INTEGER\n          Maximal small indel size to simulate.\
+  \ In range [0..inf]. Default: 6.\n    --sv-indel-rate DOUBLE\n          Per-base\
+  \ SNP rate. In range [0.0..1.0]. Default: 0.0000001.\n    --sv-inversion-rate DOUBLE\n\
+  \          Per-base SNP rate. In range [0.0..1.0]. Default: 0.0000001.\n    --sv-translocation-rate\
+  \ DOUBLE\n          Per-base SNP rate. In range [0.0..1.0]. Default: 0.0000001.\n\
+  \    --sv-duplication-rate DOUBLE\n          Per-base SNP rate. In range [0.0..1.0].\
+  \ Default: 0.0000001.\n    --min-sv-size INTEGER\n          Minimal SV size to simulate.\
+  \ In range [0..inf]. Default: 50.\n    --max-sv-size INTEGER\n          Maximal\
+  \ SV size to simulate. In range [0..inf]. Default: 1000.\n\n  Methylation Level\
+  \ Simulation:\n    --methylation-levels\n          Enable methylation level simulation.\n\
+  \    --meth-cg-mu DOUBLE\n          Median of beta distribution for methylation\
+  \ level of CpG loci. In\n          range [0..1]. Default: 0.6.\n    --meth-cg-sigma\
+  \ DOUBLE\n          Standard deviation of beta distribution for methylation level\
+  \ of CpG\n          loci. In range [0..1]. Default: 0.03.\n    --meth-chg-mu DOUBLE\n\
+  \          Median of beta distribution for methylation level of CHG loci. In\n \
+  \         range [0..1]. Default: 0.08.\n    --meth-chg-sigma DOUBLE\n          Standard\
+  \ deviation of beta distribution for methylation level of CHG\n          loci. In\
+  \ range [0..1]. Default: 0.008.\n    --meth-chh-mu DOUBLE\n          Median of beta\
+  \ distribution for methylation level of CHH loci. In\n          range [0..1]. Default:\
+  \ 0.05.\n    --meth-chh-sigma DOUBLE\n          Standard deviation of beta distribution\
+  \ for methylation level of CHH\n          loci. In range [0..1]. Default: 0.005.\n\
+  \    --meth-fasta-in INPUT_FILE\n          Path to load original methylation levels\
+  \ from. Methylation levels\n          are simulated if omitted. Valid filetypes\
+  \ are: .sam[.*], .raw[.*],\n          .gbk[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*],\
+  \ .fastq[.*],\n          .fasta[.*], .faa[.*], .fa[.*], .embl[.*], and .bam, where\
+  \ * is any\n          of the following extensions: gz and bgzf for transparent\n\
+  \          (de)compression.\n    --meth-fasta-out OUTPUT_FILE\n          Path to\
+  \ write methylation levels to as FASTA. Only written if\n          -of/--out-fasta\
+  \ is given. Valid filetypes are: .sam[.*], .raw[.*],\n          .frn[.*], .fq[.*],\
+  \ .fna[.*], .ffn[.*], .fastq[.*], .fasta[.*],\n          .faa[.*], .fa[.*], and\
+  \ .bam, where * is any of the following\n          extensions: gz and bgzf for transparent\
+  \ (de)compression.\n\nSIMULATION DETAILS\n    SNPs and small indels are simulated\
+  \ such that at each position, a random\n    experiment is performed whether to simulate\
+  \ either variation. In case both\n    variations are to be simulated, the experiment\
+  \ is repeated.\n\n    The indel and SV sizes are picked uniformly at random from\
+  \ the argument\n    size intervals.\n\n    The simulation of haplotypes works as\
+  \ follows. For small indels, the indel\n    is placed into one of the haplotypes\
+  \ that are to be simulated. The exact\n    haplotype is picked uniformly at random.\
+  \ For SNPs, we simulate a random\n    base for each haplotype. For at least one\
+  \ haplotype, the base has to be\n    different from the reference or the experiment\
+  \ is repeated.\n\nVARIATION TSV FILE\n    Instead of simulating the SVs from per-base\
+  \ rates, the user can specify a\n    TSV (tab separated values) file to load the\
+  \ variations from with\n    --in-variant-tsv/-it. The first two columns of this\
+  \ TSV file are\n    interpreted as the type of the variation and the size. For insertions,\
+  \ you\n    can give the sequence that is to be inserted. The length of the given\n\
+  \    sequence overrides the length given in the second column.\n\n    Indels smaller\
+  \ than 50 bp are considered small indels whereas larger\n    indels are considered\
+  \ structural variants in the VCF file.\n\n    INS   An insertion.\n    DEL   A deletion.\n\
+  \    INV   An inversion.\n    CTR   An intra-chromosomal translocation.\n    DUP\
+  \   A duplication\n\nMETHYLATION LEVEL SIMULATION\n    Simulation of cytosine methylation\
+  \ levels is done using a beta\n    distribution. There is one distribution each\
+  \ for cytosines in the context\n    CpG, CHG, and CHH and one distribution for all\
+  \ other cytonsines. You can\n    give the parameters mu and sigma of the beta distributions.\
+  \ The\n    methylation level is determined once for each base of the reference (0\
+  \ for\n    all non-cytosines) and stored in a string of levels. This string is then\n\
+  \    modified as small and structural variations are simualted.\n\n    The simulated\
+  \ methylation levels can then be written out to a FASTA file.\n    This file will\
+  \ contain two entries for the original and each haplotype;\n    the levels for the\
+  \ forward and the reverse strand. The sequence will be\n    ASCII characters 0,\
+  \ starting at '!' encoding the level in 1.25% steps. The\n    character '>' is ignored\
+  \ and encodes no level.\n\n    Methylation level simulation increases the memory\
+  \ usage of the program by\n    one byte for each character in the largest contig.\n\
+  \nVERSION\n    Last update: 2018-02-02_13:03:05_+0100\n    mason_variator version:\
+  \ 2.0.9 [e165baf]\n    SeqAn version: 2.4.0\n"
+generated_using:
+- --help

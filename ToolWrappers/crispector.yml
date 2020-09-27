@@ -1,0 +1,284 @@
+!Command
+command:
+- crispector
+positional:
+- !Positional
+  description: -m_r2, --mock_in2 PATH          Mock read read 2 input path, if FASTQ
+    files
+  position: 0
+  name: file
+  optional: false
+named:
+- !Flag
+  description: Tx read 1 input path or Tx merged FASTQ file
+  synonyms:
+  - -t_r1
+  - --tx_in1
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Tx read 2 input path, if FASTQ files aren't\nmerged [OPTIONAL]"
+  synonyms:
+  - -t_r2
+  - --tx_in2
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Mock read 1 input path or mock merged FASTQ
+  synonyms:
+  - -m_r1
+  - --mock_in1
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "A CSV (Comma Separated Values‏) file with\nthe experiment data. Table\
+    \ has 11 columns:\nSiteName, AmpliconReference, gRNA, OnTarget,\nForwardPrimer,\
+    \ ReversePrimer,TxInput1Path\nTxInput2Path, MockInput1Path,\nMockInput2Path, DonorReference.\
+    \ The first 4\ncolumns are required, the rest are optional.\nHeader should be\
+    \ specified by the above\norder. Please check the README on GitHub\nfurther details\
+    \ and examples.  [required]"
+  synonyms:
+  - -c
+  - --experiment_config
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Path to output folder
+  synonyms:
+  - -o
+  - --report_output
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Expected cut-site position with respect to\nthe 3' end of the provided\
+    \ sgRNA sequence.\nNote, the sgRNA sequence must be entered\nwithout the PAM.\
+    \  [default: -3]"
+  synonyms:
+  - --cut_site_position
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Path to crispector configuration in YAML\nformat.See \"Advanced usage\"\
+    \ section in\nREADME on GitHub for further."
+  synonyms:
+  - --crispector_config
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Try "fastp --help" for more details
+  synonyms:
+  - --fastp_options_string
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Minimum number of reads (per locus site) to\nevaluate edit events\
+    \  [default: 500]"
+  synonyms:
+  - --min_num_of_reads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Filter out any read shorter than\nmin_read_length_without_primers\
+    \ + length of\nforward and reverse primers. This threshold\nfilters primer-dimmer\
+    \ effect reads.\n[default: 10]"
+  synonyms:
+  - --min_read_length_without_primers
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Maximum edit distance to consider a read\nprefix (or suffix) as a\
+    \ match for a primer.\n[default: 8]"
+  synonyms:
+  - --max_edit_distance_on_primers
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "RANGE\nMinimum normalized alignment score to\nconsider a read alignment\
+    \ as valid.\nNormalized alignment score is defined as the\nNeedleman-Wunch alignment\
+    \ score divided by\nthe maximum possible score. Below this\nalignment threshold,\
+    \ reads are discarded.\n[default: 30]"
+  synonyms:
+  - --amplicon_min_score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "RANGE\nMinimum alignment score to consider a read\nwith primer inconsistency\
+    \ as a possible\ntranslocation. Should be higher than\n--amplicon_min_score, because\
+    \ translocations\nreads are noisier.Score is normalized\nbetween 0 (not even one\
+    \ bp match) to 100\n(read is identical to  [default: 80]"
+  synonyms:
+  - --translocation_amplicon_min_score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "RANGE\nMinimum editing activity (%). Sites with\nediting activity\
+    \ lower than the minimum,\nwill be discarded from the translocation\ndetection.\
+    \  [default: 0.1]"
+  synonyms:
+  - --min_editing_activity
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "RANGE\nTranslocations statistical significance\nlevel. This threshold\
+    \ is applied on the\ncorrected p_value,FDR (false discovery\nrate).  [default:\
+    \ 0.05]"
+  synonyms:
+  - --translocation_p_value
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Disable translocations detection  [default:\nFalse]"
+  synonyms:
+  - --disable_translocations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Override noise estimation with default q\nparameter from crispector_config\
+    \ file. It's\nadvisable to set this flag for experiment\nwith a low number of\
+    \ off-target sites (<5).\nq is defined as the probability of an indel\nto occur\
+    \ through an edit event. Check\nCRISPECTOR paper for more details.\n[default:\
+    \ False]"
+  synonyms:
+  - --override_noise_estimation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "RANGE\nConfidence interval for the evaluated\nediting activity  [default:\
+    \ 0.95]"
+  synonyms:
+  - --confidence_interval
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Enable substitutions events for the\nquantification of edit events\
+    \  [default:\nFalse]"
+  synonyms:
+  - --enable_substitutions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not create plots for sites (save memory\nand runtime)  [default:\
+    \ False]"
+  synonyms:
+  - --suppress_site_output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Keep intermediate files for debug purposes\n[default: False; required]"
+  synonyms:
+  - --keep_intermediate_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Higher verbosity  [default: False]'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: crispector [OPTIONS]\n\n  Accurate estimation of genome editing\
+  \ translocation and NHEJ off-target\n  activity from comparative NGS data\n\nOptions:\n\
+  \  -t_r1, --tx_in1 PATH            Tx read 1 input path or Tx merged FASTQ file\n\
+  \  -t_r2, --tx_in2 PATH            Tx read 2 input path, if FASTQ files aren't\n\
+  \                                  merged [OPTIONAL]\n\n  -m_r1, --mock_in1 PATH\
+  \          Mock read 1 input path or mock merged FASTQ\n                       \
+  \           file\n\n  -m_r2, --mock_in2 PATH          Mock read read 2 input path,\
+  \ if FASTQ files\n                                  aren't merged [OPTIONAL]\n\n\
+  \  -c, --experiment_config PATH    A CSV (Comma Separated Values‏) file with\n \
+  \                                 the experiment data. Table has 11 columns:\n \
+  \                                 SiteName, AmpliconReference, gRNA, OnTarget,\n\
+  \                                  ForwardPrimer, ReversePrimer,TxInput1Path\n \
+  \                                 TxInput2Path, MockInput1Path,\n              \
+  \                    MockInput2Path, DonorReference. The first 4\n             \
+  \                     columns are required, the rest are optional.\n           \
+  \                       Header should be specified by the above\n              \
+  \                    order. Please check the README on GitHub\n                \
+  \                  further details and examples.  [required]\n\n  -o, --report_output\
+  \ PATH        Path to output folder\n  --cut_site_position INTEGER     Expected\
+  \ cut-site position with respect to\n                                  the 3' end\
+  \ of the provided sgRNA sequence.\n                                  Note, the sgRNA\
+  \ sequence must be entered\n                                  without the PAM. \
+  \ [default: -3]\n\n  --crispector_config PATH        Path to crispector configuration\
+  \ in YAML\n                                  format.See \"Advanced usage\" section\
+  \ in\n                                  README on GitHub for further.\n\n  --fastp_options_string\
+  \ TEXT     Try \"fastp --help\" for more details\n  --min_num_of_reads INTEGER \
+  \     Minimum number of reads (per locus site) to\n                            \
+  \      evaluate edit events  [default: 500]\n\n  --min_read_length_without_primers\
+  \ INTEGER\n                                  Filter out any read shorter than\n\
+  \                                  min_read_length_without_primers + length of\n\
+  \                                  forward and reverse primers. This threshold\n\
+  \                                  filters primer-dimmer effect reads.\n       \
+  \                           [default: 10]\n\n  --max_edit_distance_on_primers INTEGER\n\
+  \                                  Maximum edit distance to consider a read\n  \
+  \                                prefix (or suffix) as a match for a primer.\n \
+  \                                 [default: 8]\n\n  --amplicon_min_score FLOAT RANGE\n\
+  \                                  Minimum normalized alignment score to\n     \
+  \                             consider a read alignment as valid.\n            \
+  \                      Normalized alignment score is defined as the\n          \
+  \                        Needleman-Wunch alignment score divided by\n          \
+  \                        the maximum possible score. Below this\n              \
+  \                    alignment threshold, reads are discarded.\n               \
+  \                   [default: 30]\n\n  --translocation_amplicon_min_score FLOAT\
+  \ RANGE\n                                  Minimum alignment score to consider a\
+  \ read\n                                  with primer inconsistency as a possible\n\
+  \                                  translocation. Should be higher than\n      \
+  \                            --amplicon_min_score, because translocations\n    \
+  \                              reads are noisier.Score is normalized\n         \
+  \                         between 0 (not even one bp match) to 100\n           \
+  \                       (read is identical to  [default: 80]\n\n  --min_editing_activity\
+  \ FLOAT RANGE\n                                  Minimum editing activity (%). Sites\
+  \ with\n                                  editing activity lower than the minimum,\n\
+  \                                  will be discarded from the translocation\n  \
+  \                                detection.  [default: 0.1]\n\n  --translocation_p_value\
+  \ FLOAT RANGE\n                                  Translocations statistical significance\n\
+  \                                  level. This threshold is applied on the\n   \
+  \                               corrected p_value,FDR (false discovery\n       \
+  \                           rate).  [default: 0.05]\n\n  --disable_translocations\
+  \        Disable translocations detection  [default:\n                         \
+  \         False]\n\n  --override_noise_estimation     Override noise estimation\
+  \ with default q\n                                  parameter from crispector_config\
+  \ file. It's\n                                  advisable to set this flag for experiment\n\
+  \                                  with a low number of off-target sites (<5).\n\
+  \                                  q is defined as the probability of an indel\n\
+  \                                  to occur through an edit event. Check\n     \
+  \                             CRISPECTOR paper for more details.\n             \
+  \                     [default: False]\n\n  --confidence_interval FLOAT RANGE\n\
+  \                                  Confidence interval for the evaluated\n     \
+  \                             editing activity  [default: 0.95]\n\n  --enable_substitutions\
+  \          Enable substitutions events for the\n                               \
+  \   quantification of edit events  [default:\n                                 \
+  \ False]\n\n  --suppress_site_output          Do not create plots for sites (save\
+  \ memory\n                                  and runtime)  [default: False]\n\n \
+  \ --keep_intermediate_files       Keep intermediate files for debug purposes\n \
+  \                                 [default: False; required]\n\n  --verbose    \
+  \                   Higher verbosity  [default: False]\n  -h, --help           \
+  \           Show this message and exit.\n"
+generated_using:
+- --help

@@ -1,0 +1,404 @@
+!Command
+command:
+- iva
+positional: []
+named:
+- !Flag
+  description: "[.gz], --reads_fwd filename[.gz]\nName of forward reads fasta/q file.\
+    \ Must be used in\nconjunction with --reads_rev"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "[.gz], --reads_rev filename[.gz]\nName of reverse reads fasta/q file.\
+    \ Must be used in\nconjunction with --reads_fwd"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '[.gz]    Name of interleaved fasta/q file'
+  synonyms:
+  - --fr
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "Keep intermediate files (could be many!). Default is\nto delete all\
+    \ unnecessary files"
+  synonyms:
+  - --keep_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[.gz]\nFasta file of contigs to be extended. Incompatible\nwith --reference"
+  synonyms:
+  - --contigs
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "[.gz]\nEXPERIMENTAL! This option is EXPERIMENTAL, not\nrecommended,\
+    \ and has not been tested! Fasta file of\nreference genome, or parts thereof.\
+    \ IVA will try to\nassemble one contig per sequence in this file.\nIncompatible\
+    \ with --contigs"
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "Be verbose by printing messages to stdout. Use up to\nthree times\
+    \ for increasing verbosity."
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "kmer hash length in SMALT (the -k option in smalt\nindex) [19]"
+  synonyms:
+  - -k
+  - --smalt_k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "kmer hash step size in SMALT (the -s option in smalt\nindex) [11]"
+  synonyms:
+  - -s
+  - --smalt_s
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Minimum identity threshold for mapping to be reported\n(the -y option\
+    \ in smalt map) [0.5]"
+  synonyms:
+  - -y
+  - --smalt_id
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Number of bases to trim off the end of every contig\nbefore extending\
+    \ for the first time [25]"
+  synonyms:
+  - --ctg_first_trim
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "During iterative extension, number of bases to trim\noff the end of\
+    \ a contig when extension fails (then try\nextending again) [10]"
+  synonyms:
+  - --ctg_iter_trim
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Minimum kmer depth needed to use that kmer to extend a\ncontig [10]"
+  synonyms:
+  - --ext_min_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Sets N, where kmer for extension must be at least N\ntimes more abundant\
+    \ than next most common kmer [4]"
+  synonyms:
+  - --ext_min_ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Maximum number of bases to try to extend on each\niteration [100]"
+  synonyms:
+  - --ext_max_bases
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Set minimum number of bases soft clipped off a read\nfor those bases\
+    \ to be used for extension [3]"
+  synonyms:
+  - --ext_min_clip
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Maximum number of contigs allowed in the assembly. No\nmore seeds\
+    \ generated if the cutoff is reached [50]"
+  synonyms:
+  - --max_contigs
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "When no more contigs can be extended, generate a new\nseed. This is\
+    \ forced to be true when --contigs is not\nused"
+  synonyms:
+  - --make_new_seeds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "When making a seed sequence, use the most common kmer\nof this length.\
+    \ Default is to use the minimum of\n(median read length, 95). Warning: it is not\n\
+    recommended to set this higher than 95"
+  synonyms:
+  - --seed_start_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Stop extending seed using perfect matches from reads\nwhen this length\
+    \ is reached. Future extensions are\nthen made by treating the seed as a contig\n\
+    [0.9*max_insert]"
+  synonyms:
+  - --seed_stop_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum kmer coverage of initial seed [25]
+  synonyms:
+  - --seed_min_kmer_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Maximum kmer coverage of initial seed [1000000]
+  synonyms:
+  - --seed_max_kmer_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Maximum number of bases to try to extend on each\niteration [50]"
+  synonyms:
+  - --seed_ext_max_bases
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Number of overlapping bases needed between read and\nseed to use that\
+    \ read to extend [seed_start_length]"
+  synonyms:
+  - --seed_overlap_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Minimum kmer depth needed to use that kmer to extend a\ncontig [10]"
+  synonyms:
+  - --seed_ext_min_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Sets N, where kmer for extension must be at least N\ntimes more abundant\
+    \ than next most common kmer [4]"
+  synonyms:
+  - --seed_ext_min_ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Provide location of trimmomatic.jar file to enable\nread trimming.\
+    \ Required if --adapters used"
+  synonyms:
+  - --trimmomatic
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "Trimmomatic options used to quality trim reads\n[LEADING:10 TRAILING:10\
+    \ SLIDINGWINDOW:4:20]"
+  synonyms:
+  - --trimmo_qual
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Fasta file of adapter sequences to be trimmed off\nreads. If used,\
+    \ must also use --trimmomatic. Default\nis file of adapters supplied with IVA"
+  synonyms:
+  - --adapters
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Minimum length of read after trimming [50]
+  synonyms:
+  - --min_trimmed_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "FASTA file of primers. The first perfect match found\nto a sequence\
+    \ in the primers file will be trimmed off\nthe start of each read. This is run\
+    \ after trimmomatic\n(if --trimmomatic used)"
+  synonyms:
+  - --pcr_primers
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "Maximum insert size (includes read length). Reads with\ninferred insert\
+    \ size more than the maximum will not be\nused to extend contigs [800]"
+  synonyms:
+  - -i
+  - --max_insert
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Number of threads to use [1]
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Force kmc to use one thread. By default the value of
+  synonyms:
+  - --kmc_onethread
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: used when running kmc
+  synonyms:
+  - -t/--threads
+  args: !SimpleFlagArg
+    name: is
+  optional: true
+- !Flag
+  description: "in [0,0.5]\nSet strand bias cutoff of mapped reads when trimming\n\
+    contig ends, in the interval [0,0.5]. A value of x\nmeans that a base needs min(fwd_depth,\
+    \ rev_depth) /\ntotal_depth <= x. The only time this should be used is\nwith libraries\
+    \ with overlapping reads (ie fragment\nlength < 2*read length), and even then,\
+    \ it can make\nresults worse. If used, try a low value like 0.1 first\n[0]"
+  synonyms:
+  - --strand_bias
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Run using built in test data. All other options will\nbe ignored,\
+    \ except the mandatory output directory, and\n--trimmomatic and --threads can\
+    \ be also be used"
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: iva [options] {-f reads_fwd -r reads_rev | --fr reads} <output\
+  \ directory>\n\npositional arguments:\n  Output directory      Name of output directory\
+  \ (must not already exist)\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n\nInput and output:\n  -f filename[.gz], --reads_fwd\
+  \ filename[.gz]\n                        Name of forward reads fasta/q file. Must\
+  \ be used in\n                        conjunction with --reads_rev\n  -r filename[.gz],\
+  \ --reads_rev filename[.gz]\n                        Name of reverse reads fasta/q\
+  \ file. Must be used in\n                        conjunction with --reads_fwd\n\
+  \  --fr filename[.gz]    Name of interleaved fasta/q file\n  --keep_files      \
+  \    Keep intermediate files (could be many!). Default is\n                    \
+  \    to delete all unnecessary files\n  --contigs filename[.gz]\n              \
+  \          Fasta file of contigs to be extended. Incompatible\n                \
+  \        with --reference\n  --reference filename[.gz]\n                       \
+  \ EXPERIMENTAL! This option is EXPERIMENTAL, not\n                        recommended,\
+  \ and has not been tested! Fasta file of\n                        reference genome,\
+  \ or parts thereof. IVA will try to\n                        assemble one contig\
+  \ per sequence in this file.\n                        Incompatible with --contigs\n\
+  \  -v, --verbose         Be verbose by printing messages to stdout. Use up to\n\
+  \                        three times for increasing verbosity.\n\nSMALT mapping\
+  \ options:\n  -k INT, --smalt_k INT\n                        kmer hash length in\
+  \ SMALT (the -k option in smalt\n                        index) [19]\n  -s INT,\
+  \ --smalt_s INT\n                        kmer hash step size in SMALT (the -s option\
+  \ in smalt\n                        index) [11]\n  -y FLOAT, --smalt_id FLOAT\n\
+  \                        Minimum identity threshold for mapping to be reported\n\
+  \                        (the -y option in smalt map) [0.5]\n\nContig options:\n\
+  \  --ctg_first_trim INT  Number of bases to trim off the end of every contig\n \
+  \                       before extending for the first time [25]\n  --ctg_iter_trim\
+  \ INT   During iterative extension, number of bases to trim\n                  \
+  \      off the end of a contig when extension fails (then try\n                \
+  \        extending again) [10]\n  --ext_min_cov INT     Minimum kmer depth needed\
+  \ to use that kmer to extend a\n                        contig [10]\n  --ext_min_ratio\
+  \ FLOAT\n                        Sets N, where kmer for extension must be at least\
+  \ N\n                        times more abundant than next most common kmer [4]\n\
+  \  --ext_max_bases INT   Maximum number of bases to try to extend on each\n    \
+  \                    iteration [100]\n  --ext_min_clip INT    Set minimum number\
+  \ of bases soft clipped off a read\n                        for those bases to be\
+  \ used for extension [3]\n  --max_contigs INT     Maximum number of contigs allowed\
+  \ in the assembly. No\n                        more seeds generated if the cutoff\
+  \ is reached [50]\n\nSeed generation options:\n  --make_new_seeds      When no more\
+  \ contigs can be extended, generate a new\n                        seed. This is\
+  \ forced to be true when --contigs is not\n                        used\n  --seed_start_length\
+  \ INT\n                        When making a seed sequence, use the most common\
+  \ kmer\n                        of this length. Default is to use the minimum of\n\
+  \                        (median read length, 95). Warning: it is not\n        \
+  \                recommended to set this higher than 95\n  --seed_stop_length INT\n\
+  \                        Stop extending seed using perfect matches from reads\n\
+  \                        when this length is reached. Future extensions are\n  \
+  \                      then made by treating the seed as a contig\n            \
+  \            [0.9*max_insert]\n  --seed_min_kmer_cov INT\n                     \
+  \   Minimum kmer coverage of initial seed [25]\n  --seed_max_kmer_cov INT\n    \
+  \                    Maximum kmer coverage of initial seed [1000000]\n  --seed_ext_max_bases\
+  \ INT\n                        Maximum number of bases to try to extend on each\n\
+  \                        iteration [50]\n  --seed_overlap_length INT\n         \
+  \               Number of overlapping bases needed between read and\n          \
+  \              seed to use that read to extend [seed_start_length]\n  --seed_ext_min_cov\
+  \ INT\n                        Minimum kmer depth needed to use that kmer to extend\
+  \ a\n                        contig [10]\n  --seed_ext_min_ratio FLOAT\n       \
+  \                 Sets N, where kmer for extension must be at least N\n        \
+  \                times more abundant than next most common kmer [4]\n\nRead trimming\
+  \ options:\n  --trimmomatic FILENAME\n                        Provide location of\
+  \ trimmomatic.jar file to enable\n                        read trimming. Required\
+  \ if --adapters used\n  --trimmo_qual STRING  Trimmomatic options used to quality\
+  \ trim reads\n                        [LEADING:10 TRAILING:10 SLIDINGWINDOW:4:20]\n\
+  \  --adapters FILENAME   Fasta file of adapter sequences to be trimmed off\n   \
+  \                     reads. If used, must also use --trimmomatic. Default\n   \
+  \                     is file of adapters supplied with IVA\n  --min_trimmed_length\
+  \ INT\n                        Minimum length of read after trimming [50]\n  --pcr_primers\
+  \ FILENAME\n                        FASTA file of primers. The first perfect match\
+  \ found\n                        to a sequence in the primers file will be trimmed\
+  \ off\n                        the start of each read. This is run after trimmomatic\n\
+  \                        (if --trimmomatic used)\n\nOther options:\n  -i INT, --max_insert\
+  \ INT\n                        Maximum insert size (includes read length). Reads\
+  \ with\n                        inferred insert size more than the maximum will\
+  \ not be\n                        used to extend contigs [800]\n  -t INT, --threads\
+  \ INT\n                        Number of threads to use [1]\n  --kmc_onethread \
+  \      Force kmc to use one thread. By default the value of\n                  \
+  \      -t/--threads is used when running kmc\n  --strand_bias FLOAT in [0,0.5]\n\
+  \                        Set strand bias cutoff of mapped reads when trimming\n\
+  \                        contig ends, in the interval [0,0.5]. A value of x\n  \
+  \                      means that a base needs min(fwd_depth, rev_depth) /\n   \
+  \                     total_depth <= x. The only time this should be used is\n \
+  \                       with libraries with overlapping reads (ie fragment\n   \
+  \                     length < 2*read length), and even then, it can make\n    \
+  \                    results worse. If used, try a low value like 0.1 first\n  \
+  \                      [0]\n  --test                Run using built in test data.\
+  \ All other options will\n                        be ignored, except the mandatory\
+  \ output directory, and\n                        --trimmomatic and --threads can\
+  \ be also be used\n  --version             show program's version number and exit\n"
+generated_using:
+- --help

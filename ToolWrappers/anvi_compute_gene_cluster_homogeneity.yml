@@ -1,0 +1,151 @@
+!Command
+command:
+- anvi-compute-gene-cluster-homogeneity
+positional: []
+named:
+- !Flag
+  description: Anvi'o pan database
+  synonyms:
+  - -p
+  - --pan-db
+  args: !SimpleFlagArg
+    name: PAN_DB
+  optional: true
+- !Flag
+  description: Anvi'o genomes storage file
+  synonyms:
+  - -g
+  - --genomes-storage
+  args: !SimpleFlagArg
+    name: GENOMES_STORAGE
+  optional: true
+- !Flag
+  description: File path to store results.
+  synonyms:
+  - -o
+  - --output-file
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: Store analysis results into the database directly.
+  synonyms:
+  - --store-in-db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Gene cluster ID you are interested in.
+  synonyms:
+  - --gene-cluster-id
+  args: !SimpleFlagArg
+    name: GENE_CLUSTER_ID
+  optional: true
+- !Flag
+  description: "Text file for gene clusters (each line should contain\nbe a unique\
+    \ gene cluster id)."
+  synonyms:
+  - --gene-cluster-ids-file
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: Collection name.
+  synonyms:
+  - -C
+  - --collection-name
+  args: !SimpleFlagArg
+    name: COLLECTION_NAME
+  optional: true
+- !Flag
+  description: Bin name you are interested in.
+  synonyms:
+  - -b
+  - --bin-id
+  args: !SimpleFlagArg
+    name: BIN_NAME
+  optional: true
+- !Flag
+  description: "By default, anvi'o will use a homogeneity algorithm\nthat checks for\
+    \ horizontal and vertical geometric\nhomogeneity (along with functional). With\
+    \ this flag,\nyou can tell anvi'o to skip horizontal geometric\nhomogeneity calculations.\
+    \ It will be less accurate but\nquicker."
+  synonyms:
+  - --quick-homogeneity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum number of threads to use for multithreading\nwhenever possible.\
+    \ Very conservatively, the default is\n1. It is a good idea to not exceed the\
+    \ number of CPUs\n/ cores on your system. Plus, please be careful with\nthis option\
+    \ if you are running your commands on a SGE\n--if you are clusterizing your runs,\
+    \ and asking for\nmultiple threads to use, you may deplete your\nresources very\
+    \ fast."
+  synonyms:
+  - -T
+  - --num-threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: "Don't bother me with questions or warnings, just do\nit.\n"
+  synonyms:
+  - --just-do-it
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: anvi-compute-gene-cluster-homogeneity [-h] -p PAN_DB\n        \
+  \                                     [-g GENOMES_STORAGE]\n                   \
+  \                          [-o FILE_PATH] [--store-in-db]\n                    \
+  \                         [--gene-cluster-id GENE_CLUSTER_ID]\n                \
+  \                             [--gene-cluster-ids-file FILE_PATH]\n            \
+  \                                 [-C COLLECTION_NAME]\n                       \
+  \                      [-b BIN_NAME]\n                                         \
+  \    [--quick-homogeneity]\n                                             [-T NUM_THREADS]\
+  \ [--just-do-it]\n\nCompute homogeneity for gene clusters\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n\nINPUT FILES:\n  Input\
+  \ files from the pangenome analysis.\n\n  -p PAN_DB, --pan-db PAN_DB\n         \
+  \               Anvi'o pan database\n  -g GENOMES_STORAGE, --genomes-storage GENOMES_STORAGE\n\
+  \                        Anvi'o genomes storage file\n\nREPORTING:\n  How do you\
+  \ want results to be reported? Anvi'o can produce a TAB-delimited\n  output file\
+  \ for you (for which you would have to provide an output file\n  name). Or the results\
+  \ can be stored in the pan database directly, for\n  which you would have to explicitly\
+  \ ask for it. You can get both as well in\n  case you are a fan of redundancy and\
+  \ poor data analysis practices. Anvi'o\n  does not judge.\n\n  -o FILE_PATH, --output-file\
+  \ FILE_PATH\n                        File path to store results.\n  --store-in-db\
+  \         Store analysis results into the database directly.\n\nSELECTION:\n  Which\
+  \ gene clusters should be analyzed. You can ask for a single gene\n  cluster, or\
+  \ multiple ones listed in a file, or you can use a collection\n  and bin name to\
+  \ list gene clusters of interest.\n\n  --gene-cluster-id GENE_CLUSTER_ID\n     \
+  \                   Gene cluster ID you are interested in.\n  --gene-cluster-ids-file\
+  \ FILE_PATH\n                        Text file for gene clusters (each line should\
+  \ contain\n                        be a unique gene cluster id).\n  -C COLLECTION_NAME,\
+  \ --collection-name COLLECTION_NAME\n                        Collection name.\n\
+  \  -b BIN_NAME, --bin-id BIN_NAME\n                        Bin name you are interested\
+  \ in.\n\nOPTIONAL:\n  Optional stuff available for you to use\n\n  --quick-homogeneity\
+  \   By default, anvi'o will use a homogeneity algorithm\n                      \
+  \  that checks for horizontal and vertical geometric\n                        homogeneity\
+  \ (along with functional). With this flag,\n                        you can tell\
+  \ anvi'o to skip horizontal geometric\n                        homogeneity calculations.\
+  \ It will be less accurate but\n                        quicker.\n  -T NUM_THREADS,\
+  \ --num-threads NUM_THREADS\n                        Maximum number of threads to\
+  \ use for multithreading\n                        whenever possible. Very conservatively,\
+  \ the default is\n                        1. It is a good idea to not exceed the\
+  \ number of CPUs\n                        / cores on your system. Plus, please be\
+  \ careful with\n                        this option if you are running your commands\
+  \ on a SGE\n                        --if you are clusterizing your runs, and asking\
+  \ for\n                        multiple threads to use, you may deplete your\n \
+  \                       resources very fast.\n  --just-do-it          Don't bother\
+  \ me with questions or warnings, just do\n                        it.\n"
+generated_using:
+- --help

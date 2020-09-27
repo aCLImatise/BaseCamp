@@ -1,0 +1,69 @@
+!Command
+command:
+- taxonomy.sh
+positional:
+- !Positional
+  description: Only needed if accesions will be used; requires ~45GB
+  position: 0
+  name: files.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage,\noverriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify\n200 megs.  The max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified Jan 7, 2020\n\nDescription:\
+  \   Prints the full taxonomy of a string.\nString may be a gi number, NCBI taxID,\
+  \ or Latin name.\nAn NCBI identifier should just be a number or ncbi|number.\nA\
+  \ gi number should be gi|number.\nPlease read bbmap/docs/guides/TaxonomyGuide.txt\
+  \ for more information.\nNot: It is more convenient to use taxonomy.jgi-psf.org.\n\
+  \nUsage:  taxonomy.sh tree=<tree file> <identifier>\nAlternate usage: taxonomy.sh\
+  \ tree=<tree file> in=<file>\n\nUsage examples:\ntaxonomy.sh tree=tree.taxtree.gz\
+  \ homo_sapiens canis_lupus 9606\ntaxonomy.sh tree=tree.taxtree.gz gi=gitable.int1.d.gz\
+  \ in=refseq.fasta\n\nProcessing parameters:\nin=<file>       A file containing named\
+  \ sequences, or just the names.\nout=<file>      Output file.  If blank, use stdout.\n\
+  tree=<file>     Specify a TaxTree file like tree.taxtree.gz.  \n               \
+  \ On Genepool, use 'auto'.\ngi=<file>       Specify a gitable file like gitable.int1d.gz.\
+  \ Only needed\n                if gi numbers will be used.  On Genepool, use 'auto'.\n\
+  accession=      Specify one or more comma-delimited NCBI accession to taxid\n  \
+  \              files.  Only needed if accesions will be used; requires ~45GB\n \
+  \               of memory.  On Genepool, use 'auto'.\nlevel=null      Set to a taxonomic\
+  \ level like phylum to just print that level.\nminlevel=-1     For multi-level printing,\
+  \ do not print levels below this.\nmaxlevel=life   For multi-level printing, do\
+  \ not print levels above this.\nsilva=f         Parse headers using Silva or semicolon-delimited\
+  \ syntax.\ntaxpath=auto    Set the path to taxonomy files; auto only works at NERSC.\n\
+  \nParameters without an '=' symbol will be considered organism identifiers.\n\n\
+  * Note *\nTree and table files are in /global/projectb/sandbox/gaag/bbtools/tax\n\
+  For non-Genepool users, or to make new ones, use taxtree.sh and gitable.sh\n\nJava\
+  \ Parameters:\n-Xmx            This will set Java's memory usage, \n           \
+  \     overriding autodetection.\n                -Xmx20g will specify 20 gigs of\
+  \ RAM, and -Xmx200m will specify\n                200 megs.  The max is typically\
+  \ 85% of physical memory.\n-eoom           This flag will cause the process to exit\
+  \ if an out-of-memory\n                exception occurs.  Requires Java 8u92+.\n\
+  -da             Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help

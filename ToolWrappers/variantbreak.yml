@@ -1,0 +1,168 @@
+!Command
+command:
+- variantbreak
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 0
+  name: exist.
+  optional: false
+named:
+- !Flag
+  description: "path to single annotation file or directory containing annotation\n\
+    files of GTF/GFF or BED formats. Formats: .gtf/.gff/.gff3/.bed"
+  synonyms:
+  - -a
+  - --annotation_file_dir
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "path to single filter file or directory containing filter files of\n\
+    BED format. Format: .bed"
+  synonyms:
+  - -f
+  - --filter_file_dir
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Deletions with sizes lower or equal to this value will have the\n\
+    entire deleted region annotated. Any genes that intersect with\nthe deleted region\
+    \ will be included as annotation. On the contrary,\nif deletion size is greater\
+    \ than this value, only the deletion\nbreakends will be annotated, omitting any\
+    \ annotation of the middle\ndeleted region. In other words, only genes intersecting\
+    \ with the\ndeletion breakends will be included as annotation. This is done to\n\
+    reduce false annotations due to false large deletions. Note that\nthe value to\
+    \ be set is an absolute deletion size, do not use minus\n'-'. Use value '-1' to\
+    \ disable this threshold and annotate all\ndeleted regions despite of size. [20000]"
+  synonyms:
+  - -d
+  - --del_annotate_size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: nucleotide length buffer for SV breakend clustering [400]
+  synonyms:
+  - -b
+  - --merge_buffer
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "length in base-pairs upstream of TSS to define promoter region\n[1000]"
+  synonyms:
+  - -p
+  - --promoter_size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "maximum number of annotation entries to be recorded in the\ndataframe\
+    \ for each SV [3]]"
+  synonyms:
+  - -m
+  - --max_annotation
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: performs hierarchical clustering on samples
+  synonyms:
+  - --cluster_sample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "automatically removes variants that intersected\nwith all filter BED\
+    \ files"
+  synonyms:
+  - --auto_filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "single character field delimiter for output dataframe CSV file\n(e.g.\
+    \ '\\t' for tab or ',' for comma) [,]"
+  synonyms:
+  - -s
+  - --sep
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: File name prefix of output files [output]
+  synonyms:
+  - -n
+  - --filename
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: hide verbose
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show version and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: variantbreak [-h] [-a path] [-f path] [-d int] [-b int] [-p int]\n\
+  \                    [-m int] [--cluster_sample] [--auto_filter] [-s str]\n    \
+  \                [-n str] [-v] [-q]\n                    [variant_path] [working_directory]\n\
+  \nVariantBreak is a structural variant (SV) breakend analyzer that intersects and\
+  \ merges \nSV breakends from NanoVar VCF files or variant BED files for visualization\
+  \ on VariantMap \nor summarized into a CSV file. It also annotates and filters all\
+  \ SVs across all samples \naccording to user input GTF/GFF/BED files.\n\npositional\
+  \ arguments:\n  [variant_path]        path to single variant file or directory containing\
+  \ variant files \n                        of VCF (NanoVar-v1.3.6 or above) or BED\
+  \ formats. Formats: .vcf/.bed\n  [working_directory]   path to working directory.\
+  \ Directory will be created if it does not \n                        exist.\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -a path, --annotation_file_dir path\n                        path to single annotation\
+  \ file or directory containing annotation \n                        files of GTF/GFF\
+  \ or BED formats. Formats: .gtf/.gff/.gff3/.bed\n  -f path, --filter_file_dir path\n\
+  \                        path to single filter file or directory containing filter\
+  \ files of \n                        BED format. Format: .bed\n  -d int, --del_annotate_size\
+  \ int\n                        Deletions with sizes lower or equal to this value\
+  \ will have the \n                        entire deleted region annotated. Any genes\
+  \ that intersect with \n                        the deleted region will be included\
+  \ as annotation. On the contrary, \n                        if deletion size is\
+  \ greater than this value, only the deletion \n                        breakends\
+  \ will be annotated, omitting any annotation of the middle \n                  \
+  \      deleted region. In other words, only genes intersecting with the \n     \
+  \                   deletion breakends will be included as annotation. This is done\
+  \ to \n                        reduce false annotations due to false large deletions.\
+  \ Note that \n                        the value to be set is an absolute deletion\
+  \ size, do not use minus \n                        '-'. Use value '-1' to disable\
+  \ this threshold and annotate all \n                        deleted regions despite\
+  \ of size. [20000]\n  -b int, --merge_buffer int\n                        nucleotide\
+  \ length buffer for SV breakend clustering [400]\n  -p int, --promoter_size int\n\
+  \                        length in base-pairs upstream of TSS to define promoter\
+  \ region \n                        [1000]\n  -m int, --max_annotation int\n    \
+  \                    maximum number of annotation entries to be recorded in the\
+  \ \n                        dataframe for each SV [3]]\n  --cluster_sample     \
+  \ performs hierarchical clustering on samples\n  --auto_filter         automatically\
+  \ removes variants that intersected\n                        with all filter BED\
+  \ files\n  -s str, --sep str     single character field delimiter for output dataframe\
+  \ CSV file \n                        (e.g. '\\t' for tab or ',' for comma) [,]\n\
+  \  -n str, --filename str\n                        File name prefix of output files\
+  \ [output]\n  -v, --version         show version and exit\n  -q, --quiet       \
+  \    hide verbose\n"
+generated_using:
+- --help

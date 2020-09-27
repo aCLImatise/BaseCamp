@@ -7,7 +7,7 @@ named: []
 parent:
 subcommands:
 - !Command
-  command: &id011
+  command: &id002
   - ariba
   - getref
   - outprefix
@@ -33,1446 +33,14 @@ subcommands:
     name: outprefix
     optional: false
   named: []
-  parent: &id004 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: Do not delete temporary downloaded files
-      synonyms:
-      - --debug
-      args: !EmptyFlagArg {}
-      optional: true
-    parent: &id002 !Command
-      command:
-      - ariba
-      positional: []
-      named: []
-      parent:
-      subcommands:
-      - &id003 !Command
-        command:
-        - ariba
-        - test
-        positional: []
-        named: []
-        parent: *id002
-        subcommands:
-        - !Command
-          command:
-          - ariba
-          - test
-          - outdir
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: ariba
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: command
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: options
-            optional: false
-          named: []
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "usage: ariba <command> <options>\nariba: error: unrecognized\
-            \ arguments: --usage\n"
-          generated_using: &id006
-          - --usage
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba test [options] <outdir>\n\nRun ARIBA on a small made\
-          \ up built-in test dataset\n\npositional arguments:\n  outdir      Name\
-          \ of output directory\n\noptional arguments:\n  -h, --help  show this help\
-          \ message and exit\n"
-        generated_using: &id005
-        - --help
-      - *id004
-      - !Command
-        command:
-        - ariba
-        - flag
-        positional:
-        - !Positional
-          description: Flag to be translated (an integer)
-          position: 0
-          name: flag
-          optional: false
-        named: []
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba flag <flag>\n\nTranslate the meaning of a flag output\
-          \ by ARIBA, found in the report tsv file\n\npositional arguments:\n  flag\
-          \        Flag to be translated (an integer)\n\noptional arguments:\n  -h,\
-          \ --help  show this help message and exit\n"
-        generated_using: *id005
-      - !Command
-        command:
-        - ariba
-        - pubmlstget
-        positional:
-        - !Positional
-          description: Species to download. Put it in quotes
-          position: 0
-          name: species
-          optional: false
-        - !Positional
-          description: Name of output directory to be made (must not already exist)
-          position: 1
-          name: outdir
-          optional: false
-        named:
-        - !Flag
-          description: Be verbose
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba pubmlstget [options] <\"species in quotes\"> <output_directory>\n\
-          \nDownload typing scheme for a given species from PubMLST, and make an ARIBA\
-          \ db\n\npositional arguments:\n  species     Species to download. Put it\
-          \ in quotes\n  outdir      Name of output directory to be made (must not\
-          \ already exist)\n\noptional arguments:\n  -h, --help  show this help message\
-          \ and exit\n  --verbose   Be verbose\n"
-        generated_using: *id005
-      - !Command
-        command:
-        - ariba
-        - micplot
-        positional:
-        - !Positional
-          description: Name of output directory when "ariba prepareref" was
-          position: 0
-          name: prepareref_dir
-          optional: false
-        - !Positional
-          description: antibiotic            Antibiotic name. Must exactly match a
-            column from the
-          position: 1
-          name: run
-          optional: false
-        - !Positional
-          description: "File containing MIC data for each sample and one or\nmore\
-            \ antibiotics"
-          position: 0
-          name: mic_file
-          optional: false
-        - !Positional
-          description: File made by running "ariba summary"
-          position: 1
-          name: summary_file
-          optional: false
-        - !Positional
-          description: Prefix of output files
-          position: 2
-          name: outprefix
-          optional: false
-        named:
-        - !Flag
-          description: "Output format of image file. Use anything that\nmatplotlib\
-            \ can save to, eg pdf or png [pdf]"
-          synonyms:
-          - --out_format
-          args: !SimpleFlagArg
-            name: OUT_FORMAT
-          optional: true
-        - !Flag
-          description: "\"title in quotes\"\nMain title of plot. Default is to use\
-            \ the antibiotic\nname"
-          synonyms:
-          - --main_title
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Height of plot in inches [7]
-          synonyms:
-          - --plot_height
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: Width of plot in inches [7]
-          synonyms:
-          - --plot_width
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "How to deal with HET snps. Choose from yes,no,exclude.\nyes:\
-            \ count a het SNP as present. no: do not count a\nhet SNP as present.\
-            \ exclude: completely remove any\nsample with any het SNP [yes]"
-          synonyms:
-          - --use_hets
-          args: !ChoiceFlagArg
-            choices: !!set
-              ? exclude
-              ? no
-              ? yes
-          optional: true
-        - !Flag
-          description: "Include interrupted genes (as in the assembled column\nof\
-            \ the ariba summary files)"
-          synonyms:
-          - --interrupted
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Minimum number of samples in each column required to\ninclude\
-            \ in plot [1]"
-          synonyms:
-          - --min_samples
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Do not show combinations of variants. Instead separate\nout\
-            \ into one box/violin plot per variant."
-          synonyms:
-          - --no_combinations
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ",height2\nTwo integers that determine relative height of top\
-            \ and\nbottom plots. eg 5,1 means ratio of 5:1 between top\nand bottom\
-            \ panel heights [9,2]"
-          synonyms:
-          - --panel_heights
-          args: !SimpleFlagArg
-            name: height1
-          optional: true
-        - !Flag
-          description: ",width2\nTwo integers that determine relative width of plots\n\
-            and space used by counts legend. eg 5,1 means ratio of\n5:1 between top\
-            \ and bottom panel widths. Only applies\nwhen plotting points and --point_size\
-            \ 0 [5,1]"
-          synonyms:
-          - --panel_widths
-          args: !SimpleFlagArg
-            name: width1
-          optional: true
-        - !Flag
-          description: "Control x position of counts legend when plotting\npoints\
-            \ and --point_size 0 [-2]"
-          synonyms:
-          - --count_legend_x
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: p-value cutoff for Mann-Whitney tests [0.05]
-          synonyms:
-          - --p_cutoff
-          args: !SimpleFlagArg
-            name: P_CUTOFF
-          optional: true
-        - !Flag
-          description: Best used with xkcd font installed ;)
-          synonyms:
-          - --xkcd
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "name\nColours to use. See\nhttp://matplotlib.org/users/colormaps.html\
-            \ [Accent]"
-          synonyms:
-          - --colourmap
-          args: !SimpleFlagArg
-            name: colourmap
-          optional: true
-        - !Flag
-          description: "Number of colours in plot. 0:same number as columns in\nthe\
-            \ plot. 1:all black. >1: take the first N colours\nfrom the colourmap\
-            \ specified by --colourmap and cycle\nthem [0]"
-          synonyms:
-          - --number_of_colours
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: ",FLOAT2\nIf using a continuous colourmap, --colour_skip a,b\n\
-            (where 0 <= a < b <= 1) will skip the range between a\nand b. Useful for\
-            \ excluding near-white colours"
-          synonyms:
-          - --colour_skip
-          args: !SimpleFlagArg
-            name: FLOAT1
-          optional: true
-        - !Flag
-          description: ",type2,...\nTypes of plots to make, separated by commas. Choose\n\
-            from violin,point [violin,point]"
-          synonyms:
-          - --plot_types
-          args: !SimpleFlagArg
-            name: type1
-          optional: true
-        - !Flag
-          description: ",float2,...\nComma-separated list of positions at which to\
-            \ draw\nhorizontal lines. Default is to draw no lines."
-          synonyms:
-          - --hlines
-          args: !SimpleFlagArg
-            name: float1
-          optional: true
-        - !Flag
-          description: Jitter width option when plotting points [0.1]
-          synonyms:
-          - --jitter_width
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "Base of log applied to y values. Set to zero to not\nlog [2]"
-          synonyms:
-          - --log_y
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "Size of points when --plot_types includes point. If\nzero,\
-            \ will group points and size them proportional to\nthe group size [4]"
-          synonyms:
-          - --point_size
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "Scale point sizes when --point_size 0. All point sizes\nare\
-            \ multiplied by this number. Useful if you have\nlarge data set [1]"
-          synonyms:
-          - --point_scale
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: Width of violins [0.75]
-          synonyms:
-          - --violin_width
-          args: !SimpleFlagArg
-            name: VIOLIN_WIDTH
-          optional: true
-        - !Flag
-          description: Size of dots in lower part of plot [100]
-          synonyms:
-          - --dot_size
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "Black outline around all dots (whether coloured or\nnot) in\
-            \ lower part of plots"
-          synonyms:
-          - --dot_outline
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Text size of labels [7]\n"
-          synonyms:
-          - --dot_y_text_size
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba prepareref [options] <prepareref_dir> <antibiotic>\
-          \ <MIC file> <summary file> <outprefix>\n\nMakes a violin and scatter plot\
-          \ of MIC per variant in the summary file\n\npositional arguments:\n  prepareref_dir\
-          \        Name of output directory when \"ariba prepareref\" was\n      \
-          \                  run\n  antibiotic            Antibiotic name. Must exactly\
-          \ match a column from the\n                        MIC file\n  mic_file\
-          \              File containing MIC data for each sample and one or\n   \
-          \                     more antibiotics\n  summary_file          File made\
-          \ by running \"ariba summary\"\n  outprefix             Prefix of output\
-          \ files\n\noptional arguments:\n  -h, --help            show this help message\
-          \ and exit\n\nGeneral options:\n  --out_format OUT_FORMAT\n            \
-          \            Output format of image file. Use anything that\n          \
-          \              matplotlib can save to, eg pdf or png [pdf]\n  --main_title\
-          \ \"title in quotes\"\n                        Main title of plot. Default\
-          \ is to use the antibiotic\n                        name\n  --plot_height\
-          \ FLOAT   Height of plot in inches [7]\n  --plot_width FLOAT    Width of\
-          \ plot in inches [7]\n  --use_hets {yes,no,exclude}\n                  \
-          \      How to deal with HET snps. Choose from yes,no,exclude.\n        \
-          \                yes: count a het SNP as present. no: do not count a\n \
-          \                       het SNP as present. exclude: completely remove any\n\
-          \                        sample with any het SNP [yes]\n  --interrupted\
-          \         Include interrupted genes (as in the assembled column\n      \
-          \                  of the ariba summary files)\n  --min_samples INT    \
-          \ Minimum number of samples in each column required to\n               \
-          \         include in plot [1]\n  --no_combinations     Do not show combinations\
-          \ of variants. Instead separate\n                        out into one box/violin\
-          \ plot per variant.\n  --panel_heights height1,height2\n               \
-          \         Two integers that determine relative height of top and\n     \
-          \                   bottom plots. eg 5,1 means ratio of 5:1 between top\n\
-          \                        and bottom panel heights [9,2]\n  --panel_widths\
-          \ width1,width2\n                        Two integers that determine relative\
-          \ width of plots\n                        and space used by counts legend.\
-          \ eg 5,1 means ratio of\n                        5:1 between top and bottom\
-          \ panel widths. Only applies\n                        when plotting points\
-          \ and --point_size 0 [5,1]\n  --count_legend_x FLOAT\n                 \
-          \       Control x position of counts legend when plotting\n            \
-          \            points and --point_size 0 [-2]\n  --p_cutoff P_CUTOFF   p-value\
-          \ cutoff for Mann-Whitney tests [0.05]\n  --xkcd                Best used\
-          \ with xkcd font installed ;)\n\nColour options:\n  --colourmap colourmap\
-          \ name\n                        Colours to use. See\n                  \
-          \      http://matplotlib.org/users/colormaps.html [Accent]\n  --number_of_colours\
-          \ INT\n                        Number of colours in plot. 0:same number\
-          \ as columns in\n                        the plot. 1:all black. >1: take\
-          \ the first N colours\n                        from the colourmap specified\
-          \ by --colourmap and cycle\n                        them [0]\n  --colour_skip\
-          \ FLOAT1,FLOAT2\n                        If using a continuous colourmap,\
-          \ --colour_skip a,b\n                        (where 0 <= a < b <= 1) will\
-          \ skip the range between a\n                        and b. Useful for excluding\
-          \ near-white colours\n\nUpper plot options:\n  --plot_types type1,type2,...\n\
-          \                        Types of plots to make, separated by commas. Choose\n\
-          \                        from violin,point [violin,point]\n  --hlines float1,float2,...\n\
-          \                        Comma-separated list of positions at which to draw\n\
-          \                        horizontal lines. Default is to draw no lines.\n\
-          \  --jitter_width FLOAT  Jitter width option when plotting points [0.1]\n\
-          \  --log_y FLOAT         Base of log applied to y values. Set to zero to\
-          \ not\n                        log [2]\n  --point_size FLOAT    Size of\
-          \ points when --plot_types includes point. If\n                        zero,\
-          \ will group points and size them proportional to\n                    \
-          \    the group size [4]\n  --point_scale FLOAT   Scale point sizes when\
-          \ --point_size 0. All point sizes\n                        are multiplied\
-          \ by this number. Useful if you have\n                        large data\
-          \ set [1]\n  --violin_width VIOLIN_WIDTH\n                        Width\
-          \ of violins [0.75]\n\nLower plot options:\n  --dot_size FLOAT      Size\
-          \ of dots in lower part of plot [100]\n  --dot_outline         Black outline\
-          \ around all dots (whether coloured or\n                        not) in\
-          \ lower part of plots\n  --dot_y_text_size INT\n                       \
-          \ Text size of labels [7]\n"
-        generated_using: *id005
-      - !Command
-        command:
-        - ariba
-        - pubmlstspecies
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: ariba
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: command
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: options
-          optional: false
-        named: []
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba <command> <options>\nariba: error: unrecognized arguments:\
-          \ --usage\n"
-        generated_using: *id006
-      - !Command
-        command:
-        - ariba
-        - prepareref
-        positional:
-        - !Positional
-          description: Output directory (must not already exist)
-          position: 0
-          name: outdir
-          optional: false
-        named:
-        - !Flag
-          description: "REQUIRED. Name of fasta file. Can be used more than\nonce\
-            \ if your sequences are spread over more than on\nfile"
-          synonyms:
-          - -f
-          - --fasta
-          args: !SimpleFlagArg
-            name: FILENAME
-          optional: true
-        - !Flag
-          description: "Name of tsv file of metadata about the input\nsequences. Can\
-            \ be used more than once if your metadata\nis spread over more than one\
-            \ file. Incompatible with\n--all_coding"
-          synonyms:
-          - -m
-          - --metadata
-          args: !SimpleFlagArg
-            name: FILENAME
-          optional: true
-        - !Flag
-          description: "Use this if you only have a fasta of presence absence\nsequences\
-            \ as input, and no metadata. Use \"yes\" if all\nsequences are coding,\
-            \ or \"no\" if they are all non-\ncoding. Incompatible with -m/--metadata"
-          synonyms:
-          - --all_coding
-          args: !ChoiceFlagArg
-            choices: !!set
-              ? no
-              ? yes
-          optional: true
-        - !Flag
-          description: "Do not run cd-hit. Each input sequence is put into its\nown\
-            \ \"cluster\". Incompatible with --cdhit_clusters."
-          synonyms:
-          - --no_cdhit
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "File specifying how the sequences should be clustered.\nWill\
-            \ be used instead of running cdhit. Format is one\ncluster per line. Sequence\
-            \ names separated by\nwhitespace. Incompatible with --no_cdhit"
-          synonyms:
-          - --cdhit_clusters
-          args: !SimpleFlagArg
-            name: FILENAME
-          optional: true
-        - !Flag
-          description: Sequence identity threshold (cd-hit option -c) [0.9]
-          synonyms:
-          - --cdhit_min_id
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: Length difference cutoff (cd-hit option -s) [0.0]
-          synonyms:
-          - --cdhit_min_length
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "Memory limit in MB (cd-hit option -M) [None]. Use 0\nfor unlimited."
-          synonyms:
-          - --cdhit_max_memory
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Minimum allowed length in nucleotides of reference\ngenes\
-            \ [6]"
-          synonyms:
-          - --min_gene_length
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Maximum allowed length in nucleotides of reference\ngenes\
-            \ [10000]"
-          synonyms:
-          - --max_gene_length
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Minimum allowed length in nucleotides of non-coding\nsequences\
-            \ [6]"
-          synonyms:
-          - --min_noncoding_length
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Maximum allowed length in nucleotides of non-coding\nsequences\
-            \ [20000]"
-          synonyms:
-          - --max_noncoding_length
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Number of genetic code to use. Currently supported\n1,4,11\
-            \ [11]"
-          synonyms:
-          - --genetic_code
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Overwrite output directory, if it already exists
-          synonyms:
-          - --force
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Number of threads (currently only applies to cdhit)\n[1]"
-          synonyms:
-          - --threads
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Be verbose
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba prepareref [options] <outdir>\n\nPrepare reference\
-          \ data for running the pipeline with \"ariba run\"\n\npositional arguments:\n\
-          \  outdir                Output directory (must not already exist)\n\noptional\
-          \ arguments:\n  -h, --help            show this help message and exit\n\n\
-          input files options:\n  -f FILENAME, --fasta FILENAME\n                \
-          \        REQUIRED. Name of fasta file. Can be used more than\n         \
-          \               once if your sequences are spread over more than on\n  \
-          \                      file\n  -m FILENAME, --metadata FILENAME\n      \
-          \                  Name of tsv file of metadata about the input\n      \
-          \                  sequences. Can be used more than once if your metadata\n\
-          \                        is spread over more than one file. Incompatible\
-          \ with\n                        --all_coding\n  --all_coding {yes,no}\n\
-          \                        Use this if you only have a fasta of presence absence\n\
-          \                        sequences as input, and no metadata. Use \"yes\"\
-          \ if all\n                        sequences are coding, or \"no\" if they\
-          \ are all non-\n                        coding. Incompatible with -m/--metadata\n\
-          \ncd-hit options:\n  --no_cdhit            Do not run cd-hit. Each input\
-          \ sequence is put into its\n                        own \"cluster\". Incompatible\
-          \ with --cdhit_clusters.\n  --cdhit_clusters FILENAME\n                \
-          \        File specifying how the sequences should be clustered.\n      \
-          \                  Will be used instead of running cdhit. Format is one\n\
-          \                        cluster per line. Sequence names separated by\n\
-          \                        whitespace. Incompatible with --no_cdhit\n  --cdhit_min_id\
-          \ FLOAT  Sequence identity threshold (cd-hit option -c) [0.9]\n  --cdhit_min_length\
-          \ FLOAT\n                        Length difference cutoff (cd-hit option\
-          \ -s) [0.0]\n  --cdhit_max_memory INT\n                        Memory limit\
-          \ in MB (cd-hit option -M) [None]. Use 0\n                        for unlimited.\n\
-          \nother options:\n  --min_gene_length INT\n                        Minimum\
-          \ allowed length in nucleotides of reference\n                        genes\
-          \ [6]\n  --max_gene_length INT\n                        Maximum allowed\
-          \ length in nucleotides of reference\n                        genes [10000]\n\
-          \  --min_noncoding_length INT\n                        Minimum allowed length\
-          \ in nucleotides of non-coding\n                        sequences [6]\n\
-          \  --max_noncoding_length INT\n                        Maximum allowed length\
-          \ in nucleotides of non-coding\n                        sequences [20000]\n\
-          \  --genetic_code INT    Number of genetic code to use. Currently supported\n\
-          \                        1,4,11 [11]\n  --force               Overwrite\
-          \ output directory, if it already exists\n  --threads INT         Number\
-          \ of threads (currently only applies to cdhit)\n                       \
-          \ [1]\n  --verbose             Be verbose\n\nREQUIRED: -f/--fasta, and also\
-          \ either -m/--metadata or --all_coding must be\nused\n"
-        generated_using: *id005
-      - !Command
-        command:
-        - ariba
-        - run
-        positional:
-        - !Positional
-          description: Name of output directory when "ariba prepareref" was
-          position: 0
-          name: prepareref_dir
-          optional: false
-        - !Positional
-          description: reads_1               Name of fwd reads fastq file
-          position: 1
-          name: run
-          optional: false
-        - !Positional
-          description: Name of rev reads fastq file
-          position: 2
-          name: reads_2
-          optional: false
-        - !Positional
-          description: Output directory (must not already exist)
-          position: 3
-          name: outdir
-          optional: false
-        named:
-        - !Flag
-          description: Minimum alignment identity (delta-filter -i) [90]
-          synonyms:
-          - --nucmer_min_id
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Minimum alignment length (delta-filter -i) [20]
-          synonyms:
-          - --nucmer_min_len
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Value to use for -breaklen when running nucmer [200]
-          synonyms:
-          - --nucmer_breaklen
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Assembler to use
-          synonyms:
-          - --assembler
-          args: !ChoiceFlagArg
-            choices: !!set
-              ? spades
-              ? fermilite
-          optional: true
-        - !Flag
-          description: "Target read coverage when sampling reads for assembly\n[50]"
-          synonyms:
-          - --assembly_cov
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Minimum number of read pairs needed as evidence for\nscaffold\
-            \ link between two contigs [10]"
-          synonyms:
-          - --min_scaff_depth
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "If using Spades assembler, either use default WGS\nmode, Single\
-            \ Cell mode (`spades.py --sc`) or RNA mode\n(`spades.py --rna`). Use SC\
-            \ or RNA mode if your input\nis from a viral sequencing with very uneven\
-            \ and deep\ncoverage. Set `--assembly_cov` to some high value if\nusing\
-            \ SC or RNA mode"
-          synonyms:
-          - --spades_mode
-          args: !ChoiceFlagArg
-            choices: !!set
-              ? rna
-              ? sc
-              ? wgs
-          optional: true
-        - !Flag
-          description: "Extra options to pass to Spades assembler. Sensible\ndefault\
-            \ options will be picked based on\n`--spades_mode` argument. Anything\
-            \ set here will\nreplace the defaults completely"
-          synonyms:
-          - --spades_options
-          args: !SimpleFlagArg
-            name: SPADES_OPTIONS
-          optional: true
-        - !Flag
-          description: "Experimental. Number of threads. Will run clusters in\nparallel,\
-            \ but not minimap (yet) [1]"
-          synonyms:
-          - --threads
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "(between 0 and 1)\nIf proportion of gene assembled (regardless\
-            \ of into\nhow many contigs) is at least this value then the flag\ngene_assembled\
-            \ is set [0.95]"
-          synonyms:
-          - --assembled_threshold
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "Max number of nucleotides to extend ends of gene\nmatches\
-            \ to look for start/stop codons [30]"
-          synonyms:
-          - --gene_nt_extend
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "(between 0 and 1)\nIf proportion of bases in gene assembled\
-            \ more than\nonce is <= this value, then the flag unique_contig is\nset\
-            \ [0.03]"
-          synonyms:
-          - --unique_threshold
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: Overwrite output directory, if it already exists
-          synonyms:
-          - --force
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Do not clean up intermediate files
-          synonyms:
-          - --noclean
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Existing directory in which to create a temporary\ndirectory\
-            \ used for local assemblies"
-          synonyms:
-          - --tmp_dir
-          args: !SimpleFlagArg
-            name: TMP_DIR
-          optional: true
-        - !Flag
-          description: Be verbose
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba run [options] <prepareref_dir> <reads1.fq> <reads2.fq>\
-          \ <outdir>\n\nRuns the local assembly pipeline. Input is dir made by prepareref,\
-          \ and paired\nreads\n\npositional arguments:\n  prepareref_dir        Name\
-          \ of output directory when \"ariba prepareref\" was\n                  \
-          \      run\n  reads_1               Name of fwd reads fastq file\n  reads_2\
-          \               Name of rev reads fastq file\n  outdir                Output\
-          \ directory (must not already exist)\n\noptional arguments:\n  -h, --help\
-          \            show this help message and exit\n\nnucmer options:\n  --nucmer_min_id\
-          \ INT   Minimum alignment identity (delta-filter -i) [90]\n  --nucmer_min_len\
-          \ INT  Minimum alignment length (delta-filter -i) [20]\n  --nucmer_breaklen\
-          \ INT\n                        Value to use for -breaklen when running nucmer\
-          \ [200]\n\nAssembly options:\n  --assembler {fermilite,spades}\n       \
-          \                 Assembler to use\n  --assembly_cov INT    Target read\
-          \ coverage when sampling reads for assembly\n                        [50]\n\
-          \  --min_scaff_depth INT\n                        Minimum number of read\
-          \ pairs needed as evidence for\n                        scaffold link between\
-          \ two contigs [10]\n  --spades_mode {wgs,sc,rna}\n                     \
-          \   If using Spades assembler, either use default WGS\n                \
-          \        mode, Single Cell mode (`spades.py --sc`) or RNA mode\n       \
-          \                 (`spades.py --rna`). Use SC or RNA mode if your input\n\
-          \                        is from a viral sequencing with very uneven and\
-          \ deep\n                        coverage. Set `--assembly_cov` to some high\
-          \ value if\n                        using SC or RNA mode\n  --spades_options\
-          \ SPADES_OPTIONS\n                        Extra options to pass to Spades\
-          \ assembler. Sensible\n                        default options will be picked\
-          \ based on\n                        `--spades_mode` argument. Anything set\
-          \ here will\n                        replace the defaults completely\n\n\
-          Other options:\n  --threads INT         Experimental. Number of threads.\
-          \ Will run clusters in\n                        parallel, but not minimap\
-          \ (yet) [1]\n  --assembled_threshold FLOAT (between 0 and 1)\n         \
-          \               If proportion of gene assembled (regardless of into\n  \
-          \                      how many contigs) is at least this value then the\
-          \ flag\n                        gene_assembled is set [0.95]\n  --gene_nt_extend\
-          \ INT  Max number of nucleotides to extend ends of gene\n              \
-          \          matches to look for start/stop codons [30]\n  --unique_threshold\
-          \ FLOAT (between 0 and 1)\n                        If proportion of bases\
-          \ in gene assembled more than\n                        once is <= this value,\
-          \ then the flag unique_contig is\n                        set [0.03]\n \
-          \ --force               Overwrite output directory, if it already exists\n\
-          \  --noclean             Do not clean up intermediate files\n  --tmp_dir\
-          \ TMP_DIR     Existing directory in which to create a temporary\n      \
-          \                  directory used for local assemblies\n  --verbose    \
-          \         Be verbose\n"
-        generated_using: *id005
-      - !Command
-        command:
-        - ariba
-        - summary
-        positional:
-        - !Positional
-          description: Prefix of output files
-          position: 0
-          name: outprefix
-          optional: false
-        - !Positional
-          description: Files to be summarised
-          position: 1
-          name: infiles
-          optional: false
-        named:
-        - !Flag
-          description: "File of filenames of ariba reports to be summarised.\nMust\
-            \ be used if no input files listed after the\noutfile. The first column\
-            \ should be the filename. An\noptional second column can be used to specify\
-            \ a sample\nname for that file, which will be used instead of the\nfilename\
-            \ in output files. Columns separated by\nwhitespace."
-          synonyms:
-          - -f
-          - --fofn
-          args: !SimpleFlagArg
-            name: FILENAME
-          optional: true
-        - !Flag
-          description: "|cluster_small|cluster_all|cluster_var_groups|all|all_no_filter\n\
-            Shorthand for setting --cluster_cols,--col_filter,--\nrow_filter,--v_groups,--variants.\
-            \ Using this overrides\nthose options"
-          synonyms:
-          - --preset
-          args: !SimpleFlagArg
-            name: minimal
-          optional: true
-        - !Flag
-          description: ",col2,...\nComma separated list of cluster columns to include.\n\
-            Choose from: assembled, match, ref_seq, pct_id,\nctg_cov, known_var, novel_var\
-            \ [match]"
-          synonyms:
-          - --cluster_cols
-          args: !SimpleFlagArg
-            name: col1
-          optional: true
-        - !Flag
-          description: "|n      Choose whether columns where all values are \"no\"\
-            \ or\n\"NA\" are removed [y]"
-          synonyms:
-          - --col_filter
-          args: !SimpleFlagArg
-            name: y
-          optional: true
-        - !Flag
-          description: Do not make phandango tree
-          synonyms:
-          - --no_tree
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "|n      Choose whether rows where all values are \"no\" or\
-            \ \"NA\"\nare removed [y]"
-          synonyms:
-          - --row_filter
-          args: !SimpleFlagArg
-            name: y
-          optional: true
-        - !Flag
-          description: "Minimum percent identity cutoff to count as assembled\n[90]"
-          synonyms:
-          - --min_id
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: "Only report data for the given comma-separated list of\ncluster\
-            \ names, eg: cluster1,cluster2,cluster42"
-          synonyms:
-          - --only_clusters
-          args: !SimpleFlagArg
-            name: Cluster_names
-          optional: true
-        - !Flag
-          description: Show a group column for each group of variants
-          synonyms:
-          - --v_groups
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Report all known variants
-          synonyms:
-          - --known_variants
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Report all novel variants
-          synonyms:
-          - --novel_variants
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Be verbose
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba summary [options] <outprefix> [report1.tsv report2.tsv\
-          \ ...]\n\nMake a summary of multiple ARIBA report files, and also make Phandango\
-          \ files\n\npositional arguments:\n  outprefix             Prefix of output\
-          \ files\n  infiles               Files to be summarised\n\noptional arguments:\n\
-          \  -h, --help            show this help message and exit\n  -f FILENAME,\
-          \ --fofn FILENAME\n                        File of filenames of ariba reports\
-          \ to be summarised.\n                        Must be used if no input files\
-          \ listed after the\n                        outfile. The first column should\
-          \ be the filename. An\n                        optional second column can\
-          \ be used to specify a sample\n                        name for that file,\
-          \ which will be used instead of the\n                        filename in\
-          \ output files. Columns separated by\n                        whitespace.\n\
-          \  --preset minimal|cluster_small|cluster_all|cluster_var_groups|all|all_no_filter\n\
-          \                        Shorthand for setting --cluster_cols,--col_filter,--\n\
-          \                        row_filter,--v_groups,--variants. Using this overrides\n\
-          \                        those options\n  --cluster_cols col1,col2,...\n\
-          \                        Comma separated list of cluster columns to include.\n\
-          \                        Choose from: assembled, match, ref_seq, pct_id,\n\
-          \                        ctg_cov, known_var, novel_var [match]\n  --col_filter\
-          \ y|n      Choose whether columns where all values are \"no\" or\n     \
-          \                   \"NA\" are removed [y]\n  --no_tree             Do not\
-          \ make phandango tree\n  --row_filter y|n      Choose whether rows where\
-          \ all values are \"no\" or \"NA\"\n                        are removed [y]\n\
-          \  --min_id FLOAT        Minimum percent identity cutoff to count as assembled\n\
-          \                        [90]\n  --only_clusters Cluster_names\n       \
-          \                 Only report data for the given comma-separated list of\n\
-          \                        cluster names, eg: cluster1,cluster2,cluster42\n\
-          \  --v_groups            Show a group column for each group of variants\n\
-          \  --known_variants      Report all known variants\n  --novel_variants \
-          \     Report all novel variants\n  --verbose             Be verbose\n\n\
-          Files must be listed after the output file and/or the option --fofn must\
-          \ be\nused. If both used, all files in the filename specified by --fofn\
-          \ AND the\nfiles listed after the output file will be used as input.\n"
-        generated_using: *id005
-      - !Command
-        command:
-        - ariba
-        - aln2meta
-        positional:
-        - !Positional
-          description: Multi-fasta file of alignments
-          position: 0
-          name: aln_fasta
-          optional: false
-        - !Positional
-          description: TSV file of variants information
-          position: 1
-          name: variants_tsv
-          optional: false
-        - !Positional
-          description: Prefix of output filenames
-          position: 0
-          name: outprefix
-          optional: false
-        named:
-        - !Flag
-          description: "Number of genetic code to use. Currently supported\n1,4,11\
-            \ [11]"
-          synonyms:
-          - --genetic_code
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: "Use this to flag all sequences as variant only. By\ndefault\
-            \ they are considered to be presence/absence\n"
-          synonyms:
-          - --variant_only
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba aln2meta [options] <aln_fasta> <variants_tsv> <(non)coding>\
-          \ <outprefix>\n\nMake metadata input to prepareref, using multialignment\
-          \ and SNPs\n\npositional arguments:\n  aln_fasta           Multi-fasta file\
-          \ of alignments\n  variants_tsv        TSV file of variants information\n\
-          \  (non)coding         Sequences are coding or noncoding. Must be one of:\n\
-          \                      coding noncoding\n  outprefix           Prefix of\
-          \ output filenames\n\noptional arguments:\n  -h, --help          show this\
-          \ help message and exit\n  --genetic_code INT  Number of genetic code to\
-          \ use. Currently supported\n                      1,4,11 [11]\n  --variant_only\
-          \      Use this to flag all sequences as variant only. By\n            \
-          \          default they are considered to be presence/absence\n"
-        generated_using: *id005
-      - &id007 !Command
-        command:
-        - ariba
-        - prepareref_tb
-        positional: []
-        named: []
-        parent: *id002
-        subcommands:
-        - !Command
-          command:
-          - ariba
-          - prepareref_tb
-          - outdir
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: ariba
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: command
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: options
-            optional: false
-          named: []
-          parent: *id007
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "usage: ariba <command> <options>\nariba: error: unrecognized\
-            \ arguments: --usage\n"
-          generated_using: *id006
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba prepareref_tb <outdir>\n\nPrepare built-in TB reference\
-          \ data for running the pipeline with \"ariba run\"\n\npositional arguments:\n\
-          \  outdir      Output directory (must not already exist)\n\noptional arguments:\n\
-          \  -h, --help  show this help message and exit\n"
-        generated_using: *id005
-      - !Command
-        command:
-        - ariba
-        - version
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: ariba
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: command
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: options
-          optional: false
-        named: []
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba <command> <options>\nariba: error: unrecognized arguments:\
-          \ --usage\n"
-        generated_using: *id006
-      - &id008 !Command
-        command:
-        - ariba
-        - expandflag
-        positional: []
-        named: []
-        parent: *id002
-        subcommands:
-        - !Command
-          command:
-          - ariba
-          - expandflag
-          - infile
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: ariba
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: expandflag
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: in.report.tsv
-            optional: false
-          named: []
-          parent: *id008
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "usage: ariba expandflag <in.report.tsv> <out.tsv\nariba <command>\
-            \ <options> expandflag: error: the following arguments are required: outfile\n"
-          generated_using: &id009 []
-        - !Command
-          command:
-          - ariba
-          - expandflag
-          - outfile
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: ariba
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: expandflag
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: in.report.tsv
-            optional: false
-          named: []
-          parent: *id008
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "usage: ariba expandflag <in.report.tsv> <out.tsv\nariba <command>\
-            \ <options> expandflag: error: the following arguments are required: outfile\n"
-          generated_using: *id009
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba expandflag <in.report.tsv> <out.tsv\n\nExpands the\
-          \ flag column in a report file from number to comma-separated list\nof flag\
-          \ bits\n\npositional arguments:\n  infile      Name of input report TSV\
-          \ file\n  outfile     Name of output report TSV file\n\noptional arguments:\n\
-          \  -h, --help  show this help message and exit\n"
-        generated_using: *id005
-      - &id010 !Command
-        command:
-        - ariba
-        - refquery
-        positional: []
-        named: []
-        parent: *id002
-        subcommands:
-        - !Command
-          command:
-          - ariba
-          - refquery
-          - cluster|seq
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: ariba
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: refquery
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: prepareref directory
-            optional: false
-          - !Positional
-            description: ''
-            position: 3
-            name: cluster|seq
-            optional: false
-          - !Positional
-            description: ''
-            position: 4
-            name: cluster name|sequence name
-            optional: false
-          named: []
-          parent: *id010
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "usage: ariba refquery <prepareref directory> <cluster|seq> <cluster\
-            \ name|sequence name>\nariba <command> <options> refquery: error: the\
-            \ following arguments are required: query_type, search_name\n"
-          generated_using: *id009
-        - !Command
-          command:
-          - ariba
-          - refquery
-          - cluster name|sequence name
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: ariba
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: refquery
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: prepareref directory
-            optional: false
-          - !Positional
-            description: ''
-            position: 3
-            name: cluster|seq
-            optional: false
-          - !Positional
-            description: ''
-            position: 4
-            name: cluster name|sequence name
-            optional: false
-          named: []
-          parent: *id010
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "usage: ariba refquery <prepareref directory> <cluster|seq> <cluster\
-            \ name|sequence name>\nariba <command> <options> refquery: error: the\
-            \ following arguments are required: query_type, search_name\n"
-          generated_using: *id009
-        - !Command
-          command:
-          - ariba
-          - refquery
-          - prepareref directory
-          positional:
-          - !Positional
-            description: Name of directory output by prepareref
-            position: 0
-            name: prepareref_dir
-            optional: false
-          - !Positional
-            description: Name of cluster or sequence to search for
-            position: 0
-            name: search_name
-            optional: false
-          named: []
-          parent: *id010
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: ariba refquery <prepareref directory> <cluster|seq> <cluster\
-            \ name|sequence name>\n\nGet cluster or sequence info from the output\
-            \ directory made by prepareref\n\npositional arguments:\n  prepareref_dir\
-            \  Name of directory output by prepareref\n  {cluster,seq}   Use \"cluster\"\
-            \ to get the sequences in a cluster, or \"seq\" to\n                 \
-            \ get information about a sequence\n  search_name     Name of cluster\
-            \ or sequence to search for\n\noptional arguments:\n  -h, --help     \
-            \ show this help message and exit\n"
-          generated_using: *id005
-        usage: []
-        help_flag:
-        usage_flag:
-        version_flag:
-        help_text: "usage: ariba refquery <prepareref directory> <cluster|seq> <cluster\
-          \ name|sequence name>\nariba <command> <options> refquery: error: the following\
-          \ arguments are required: prepareref_dir, query_type, search_name\n"
-        generated_using: *id009
-      usage: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-      help_text: "usage: ariba <command> <options>\n\nARIBA: Antibiotic Resistance\
-        \ Identification By Assembly\n\noptional arguments:\n  -h, --help      show\
-        \ this help message and exit\n\nAvailable commands:\n  \n    aln2meta    \
-        \  Converts multi-aln fasta and SNPs to metadata\n    expandflag    Expands\
-        \ flag column of report file\n    flag          Translate the meaning of a\
-        \ flag\n    getref        Download reference data\n    micplot       Make\
-        \ violin/dot plots using MIC data\n    prepareref    Prepare reference data\
-        \ for input to \"run\"\n    prepareref_tb\n                  Prepare reference\
-        \ TB data for input to \"run\"\n    pubmlstget    Download species from PubMLST\
-        \ and make db\n    pubmlstspecies\n                  Get list of available\
-        \ species from PubMLST\n    refquery      Get cluster or sequence info from\
-        \ prepareref output\n    run           Run the local assembly pipeline\n \
-        \   summary       Summarise multiple reports made by \"run\"\n    test   \
-        \       Run small built-in test dataset\n    version       Get versions and\
-        \ exit\n"
-      generated_using: *id005
+    named: []
+    parent:
     subcommands:
     - !Command
-      command: *id011
+      command: *id002
       positional:
       - !Positional
         description: ''
@@ -1495,7 +63,1544 @@ subcommands:
         name: outprefix
         optional: false
       named: []
-      parent: *id004
+      parent: &id005 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: Do not delete temporary downloaded files
+          synonyms:
+          - --debug
+          args: !EmptyFlagArg {}
+          optional: true
+        parent: &id003 !Command
+          command:
+          - ariba
+          positional: []
+          named: []
+          parent:
+          subcommands:
+          - &id004 !Command
+            command:
+            - ariba
+            - test
+            positional: []
+            named: []
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - ariba
+              - test
+              - outdir
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ariba
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: command
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: options
+                optional: false
+              named: []
+              parent: *id004
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "usage: ariba <command> <options>\nariba: error: unrecognized\
+                \ arguments: --usage\n"
+              generated_using: &id007
+              - --usage
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba test [options] <outdir>\n\nRun ARIBA on a small\
+              \ made up built-in test dataset\n\npositional arguments:\n  outdir \
+              \     Name of output directory\n\noptional arguments:\n  -h, --help\
+              \  show this help message and exit\n"
+            generated_using: &id006
+            - --help
+          - *id005
+          - !Command
+            command:
+            - ariba
+            - flag
+            positional:
+            - !Positional
+              description: Flag to be translated (an integer)
+              position: 0
+              name: flag
+              optional: false
+            named: []
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba flag <flag>\n\nTranslate the meaning of a flag\
+              \ output by ARIBA, found in the report tsv file\n\npositional arguments:\n\
+              \  flag        Flag to be translated (an integer)\n\noptional arguments:\n\
+              \  -h, --help  show this help message and exit\n"
+            generated_using: *id006
+          - !Command
+            command:
+            - ariba
+            - pubmlstget
+            positional:
+            - !Positional
+              description: Species to download. Put it in quotes
+              position: 0
+              name: species
+              optional: false
+            - !Positional
+              description: Name of output directory to be made (must not already exist)
+              position: 1
+              name: outdir
+              optional: false
+            named:
+            - !Flag
+              description: Be verbose
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba pubmlstget [options] <\"species in quotes\">\
+              \ <output_directory>\n\nDownload typing scheme for a given species from\
+              \ PubMLST, and make an ARIBA db\n\npositional arguments:\n  species\
+              \     Species to download. Put it in quotes\n  outdir      Name of output\
+              \ directory to be made (must not already exist)\n\noptional arguments:\n\
+              \  -h, --help  show this help message and exit\n  --verbose   Be verbose\n"
+            generated_using: *id006
+          - !Command
+            command:
+            - ariba
+            - micplot
+            positional:
+            - !Positional
+              description: Name of output directory when "ariba prepareref" was
+              position: 0
+              name: prepareref_dir
+              optional: false
+            - !Positional
+              description: antibiotic            Antibiotic name. Must exactly match
+                a column from the
+              position: 1
+              name: run
+              optional: false
+            - !Positional
+              description: "File containing MIC data for each sample and one or\n\
+                more antibiotics"
+              position: 0
+              name: mic_file
+              optional: false
+            - !Positional
+              description: File made by running "ariba summary"
+              position: 1
+              name: summary_file
+              optional: false
+            - !Positional
+              description: Prefix of output files
+              position: 2
+              name: outprefix
+              optional: false
+            named:
+            - !Flag
+              description: "Output format of image file. Use anything that\nmatplotlib\
+                \ can save to, eg pdf or png [pdf]"
+              synonyms:
+              - --out_format
+              args: !SimpleFlagArg
+                name: OUT_FORMAT
+              optional: true
+            - !Flag
+              description: "\"title in quotes\"\nMain title of plot. Default is to\
+                \ use the antibiotic\nname"
+              synonyms:
+              - --main_title
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Height of plot in inches [7]
+              synonyms:
+              - --plot_height
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: Width of plot in inches [7]
+              synonyms:
+              - --plot_width
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "How to deal with HET snps. Choose from yes,no,exclude.\n\
+                yes: count a het SNP as present. no: do not count a\nhet SNP as present.\
+                \ exclude: completely remove any\nsample with any het SNP [yes]"
+              synonyms:
+              - --use_hets
+              args: !ChoiceFlagArg
+                choices: !!set
+                  ? exclude
+                  ? no
+                  ? yes
+              optional: true
+            - !Flag
+              description: "Include interrupted genes (as in the assembled column\n\
+                of the ariba summary files)"
+              synonyms:
+              - --interrupted
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Minimum number of samples in each column required to\n\
+                include in plot [1]"
+              synonyms:
+              - --min_samples
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Do not show combinations of variants. Instead separate\n\
+                out into one box/violin plot per variant."
+              synonyms:
+              - --no_combinations
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ",height2\nTwo integers that determine relative height\
+                \ of top and\nbottom plots. eg 5,1 means ratio of 5:1 between top\n\
+                and bottom panel heights [9,2]"
+              synonyms:
+              - --panel_heights
+              args: !SimpleFlagArg
+                name: height1
+              optional: true
+            - !Flag
+              description: ",width2\nTwo integers that determine relative width of\
+                \ plots\nand space used by counts legend. eg 5,1 means ratio of\n\
+                5:1 between top and bottom panel widths. Only applies\nwhen plotting\
+                \ points and --point_size 0 [5,1]"
+              synonyms:
+              - --panel_widths
+              args: !SimpleFlagArg
+                name: width1
+              optional: true
+            - !Flag
+              description: "Control x position of counts legend when plotting\npoints\
+                \ and --point_size 0 [-2]"
+              synonyms:
+              - --count_legend_x
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: p-value cutoff for Mann-Whitney tests [0.05]
+              synonyms:
+              - --p_cutoff
+              args: !SimpleFlagArg
+                name: P_CUTOFF
+              optional: true
+            - !Flag
+              description: Best used with xkcd font installed ;)
+              synonyms:
+              - --xkcd
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "name\nColours to use. See\nhttp://matplotlib.org/users/colormaps.html\
+                \ [Accent]"
+              synonyms:
+              - --colourmap
+              args: !SimpleFlagArg
+                name: colourmap
+              optional: true
+            - !Flag
+              description: "Number of colours in plot. 0:same number as columns in\n\
+                the plot. 1:all black. >1: take the first N colours\nfrom the colourmap\
+                \ specified by --colourmap and cycle\nthem [0]"
+              synonyms:
+              - --number_of_colours
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: ",FLOAT2\nIf using a continuous colourmap, --colour_skip\
+                \ a,b\n(where 0 <= a < b <= 1) will skip the range between a\nand\
+                \ b. Useful for excluding near-white colours"
+              synonyms:
+              - --colour_skip
+              args: !SimpleFlagArg
+                name: FLOAT1
+              optional: true
+            - !Flag
+              description: ",type2,...\nTypes of plots to make, separated by commas.\
+                \ Choose\nfrom violin,point [violin,point]"
+              synonyms:
+              - --plot_types
+              args: !SimpleFlagArg
+                name: type1
+              optional: true
+            - !Flag
+              description: ",float2,...\nComma-separated list of positions at which\
+                \ to draw\nhorizontal lines. Default is to draw no lines."
+              synonyms:
+              - --hlines
+              args: !SimpleFlagArg
+                name: float1
+              optional: true
+            - !Flag
+              description: Jitter width option when plotting points [0.1]
+              synonyms:
+              - --jitter_width
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "Base of log applied to y values. Set to zero to not\n\
+                log [2]"
+              synonyms:
+              - --log_y
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "Size of points when --plot_types includes point. If\n\
+                zero, will group points and size them proportional to\nthe group size\
+                \ [4]"
+              synonyms:
+              - --point_size
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "Scale point sizes when --point_size 0. All point sizes\n\
+                are multiplied by this number. Useful if you have\nlarge data set\
+                \ [1]"
+              synonyms:
+              - --point_scale
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: Width of violins [0.75]
+              synonyms:
+              - --violin_width
+              args: !SimpleFlagArg
+                name: VIOLIN_WIDTH
+              optional: true
+            - !Flag
+              description: Size of dots in lower part of plot [100]
+              synonyms:
+              - --dot_size
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "Black outline around all dots (whether coloured or\nnot)\
+                \ in lower part of plots"
+              synonyms:
+              - --dot_outline
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Text size of labels [7]\n"
+              synonyms:
+              - --dot_y_text_size
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba prepareref [options] <prepareref_dir> <antibiotic>\
+              \ <MIC file> <summary file> <outprefix>\n\nMakes a violin and scatter\
+              \ plot of MIC per variant in the summary file\n\npositional arguments:\n\
+              \  prepareref_dir        Name of output directory when \"ariba prepareref\"\
+              \ was\n                        run\n  antibiotic            Antibiotic\
+              \ name. Must exactly match a column from the\n                     \
+              \   MIC file\n  mic_file              File containing MIC data for each\
+              \ sample and one or\n                        more antibiotics\n  summary_file\
+              \          File made by running \"ariba summary\"\n  outprefix     \
+              \        Prefix of output files\n\noptional arguments:\n  -h, --help\
+              \            show this help message and exit\n\nGeneral options:\n \
+              \ --out_format OUT_FORMAT\n                        Output format of\
+              \ image file. Use anything that\n                        matplotlib\
+              \ can save to, eg pdf or png [pdf]\n  --main_title \"title in quotes\"\
+              \n                        Main title of plot. Default is to use the\
+              \ antibiotic\n                        name\n  --plot_height FLOAT  \
+              \ Height of plot in inches [7]\n  --plot_width FLOAT    Width of plot\
+              \ in inches [7]\n  --use_hets {yes,no,exclude}\n                   \
+              \     How to deal with HET snps. Choose from yes,no,exclude.\n     \
+              \                   yes: count a het SNP as present. no: do not count\
+              \ a\n                        het SNP as present. exclude: completely\
+              \ remove any\n                        sample with any het SNP [yes]\n\
+              \  --interrupted         Include interrupted genes (as in the assembled\
+              \ column\n                        of the ariba summary files)\n  --min_samples\
+              \ INT     Minimum number of samples in each column required to\n   \
+              \                     include in plot [1]\n  --no_combinations     Do\
+              \ not show combinations of variants. Instead separate\n            \
+              \            out into one box/violin plot per variant.\n  --panel_heights\
+              \ height1,height2\n                        Two integers that determine\
+              \ relative height of top and\n                        bottom plots.\
+              \ eg 5,1 means ratio of 5:1 between top\n                        and\
+              \ bottom panel heights [9,2]\n  --panel_widths width1,width2\n     \
+              \                   Two integers that determine relative width of plots\n\
+              \                        and space used by counts legend. eg 5,1 means\
+              \ ratio of\n                        5:1 between top and bottom panel\
+              \ widths. Only applies\n                        when plotting points\
+              \ and --point_size 0 [5,1]\n  --count_legend_x FLOAT\n             \
+              \           Control x position of counts legend when plotting\n    \
+              \                    points and --point_size 0 [-2]\n  --p_cutoff P_CUTOFF\
+              \   p-value cutoff for Mann-Whitney tests [0.05]\n  --xkcd         \
+              \       Best used with xkcd font installed ;)\n\nColour options:\n \
+              \ --colourmap colourmap name\n                        Colours to use.\
+              \ See\n                        http://matplotlib.org/users/colormaps.html\
+              \ [Accent]\n  --number_of_colours INT\n                        Number\
+              \ of colours in plot. 0:same number as columns in\n                \
+              \        the plot. 1:all black. >1: take the first N colours\n     \
+              \                   from the colourmap specified by --colourmap and\
+              \ cycle\n                        them [0]\n  --colour_skip FLOAT1,FLOAT2\n\
+              \                        If using a continuous colourmap, --colour_skip\
+              \ a,b\n                        (where 0 <= a < b <= 1) will skip the\
+              \ range between a\n                        and b. Useful for excluding\
+              \ near-white colours\n\nUpper plot options:\n  --plot_types type1,type2,...\n\
+              \                        Types of plots to make, separated by commas.\
+              \ Choose\n                        from violin,point [violin,point]\n\
+              \  --hlines float1,float2,...\n                        Comma-separated\
+              \ list of positions at which to draw\n                        horizontal\
+              \ lines. Default is to draw no lines.\n  --jitter_width FLOAT  Jitter\
+              \ width option when plotting points [0.1]\n  --log_y FLOAT         Base\
+              \ of log applied to y values. Set to zero to not\n                 \
+              \       log [2]\n  --point_size FLOAT    Size of points when --plot_types\
+              \ includes point. If\n                        zero, will group points\
+              \ and size them proportional to\n                        the group size\
+              \ [4]\n  --point_scale FLOAT   Scale point sizes when --point_size 0.\
+              \ All point sizes\n                        are multiplied by this number.\
+              \ Useful if you have\n                        large data set [1]\n \
+              \ --violin_width VIOLIN_WIDTH\n                        Width of violins\
+              \ [0.75]\n\nLower plot options:\n  --dot_size FLOAT      Size of dots\
+              \ in lower part of plot [100]\n  --dot_outline         Black outline\
+              \ around all dots (whether coloured or\n                        not)\
+              \ in lower part of plots\n  --dot_y_text_size INT\n                \
+              \        Text size of labels [7]\n"
+            generated_using: *id006
+          - !Command
+            command:
+            - ariba
+            - pubmlstspecies
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: ariba
+              optional: false
+            - !Positional
+              description: ''
+              position: 1
+              name: command
+              optional: false
+            - !Positional
+              description: ''
+              position: 2
+              name: options
+              optional: false
+            named: []
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba <command> <options>\nariba: error: unrecognized\
+              \ arguments: --usage\n"
+            generated_using: *id007
+          - !Command
+            command:
+            - ariba
+            - prepareref
+            positional:
+            - !Positional
+              description: Output directory (must not already exist)
+              position: 0
+              name: outdir
+              optional: false
+            named:
+            - !Flag
+              description: "REQUIRED. Name of fasta file. Can be used more than\n\
+                once if your sequences are spread over more than on\nfile"
+              synonyms:
+              - -f
+              - --fasta
+              args: !SimpleFlagArg
+                name: FILENAME
+              optional: true
+            - !Flag
+              description: "Name of tsv file of metadata about the input\nsequences.\
+                \ Can be used more than once if your metadata\nis spread over more\
+                \ than one file. Incompatible with\n--all_coding"
+              synonyms:
+              - -m
+              - --metadata
+              args: !SimpleFlagArg
+                name: FILENAME
+              optional: true
+            - !Flag
+              description: "Use this if you only have a fasta of presence absence\n\
+                sequences as input, and no metadata. Use \"yes\" if all\nsequences\
+                \ are coding, or \"no\" if they are all non-\ncoding. Incompatible\
+                \ with -m/--metadata"
+              synonyms:
+              - --all_coding
+              args: !ChoiceFlagArg
+                choices: !!set
+                  ? no
+                  ? yes
+              optional: true
+            - !Flag
+              description: "Do not run cd-hit. Each input sequence is put into its\n\
+                own \"cluster\". Incompatible with --cdhit_clusters."
+              synonyms:
+              - --no_cdhit
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "File specifying how the sequences should be clustered.\n\
+                Will be used instead of running cdhit. Format is one\ncluster per\
+                \ line. Sequence names separated by\nwhitespace. Incompatible with\
+                \ --no_cdhit"
+              synonyms:
+              - --cdhit_clusters
+              args: !SimpleFlagArg
+                name: FILENAME
+              optional: true
+            - !Flag
+              description: Sequence identity threshold (cd-hit option -c) [0.9]
+              synonyms:
+              - --cdhit_min_id
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: Length difference cutoff (cd-hit option -s) [0.0]
+              synonyms:
+              - --cdhit_min_length
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "Memory limit in MB (cd-hit option -M) [None]. Use 0\n\
+                for unlimited."
+              synonyms:
+              - --cdhit_max_memory
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Minimum allowed length in nucleotides of reference\ngenes\
+                \ [6]"
+              synonyms:
+              - --min_gene_length
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Maximum allowed length in nucleotides of reference\ngenes\
+                \ [10000]"
+              synonyms:
+              - --max_gene_length
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Minimum allowed length in nucleotides of non-coding\n\
+                sequences [6]"
+              synonyms:
+              - --min_noncoding_length
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Maximum allowed length in nucleotides of non-coding\n\
+                sequences [20000]"
+              synonyms:
+              - --max_noncoding_length
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Number of genetic code to use. Currently supported\n1,4,11\
+                \ [11]"
+              synonyms:
+              - --genetic_code
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Overwrite output directory, if it already exists
+              synonyms:
+              - --force
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Number of threads (currently only applies to cdhit)\n\
+                [1]"
+              synonyms:
+              - --threads
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Be verbose
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba prepareref [options] <outdir>\n\nPrepare reference\
+              \ data for running the pipeline with \"ariba run\"\n\npositional arguments:\n\
+              \  outdir                Output directory (must not already exist)\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n\ninput files options:\n  -f FILENAME, --fasta FILENAME\n\
+              \                        REQUIRED. Name of fasta file. Can be used more\
+              \ than\n                        once if your sequences are spread over\
+              \ more than on\n                        file\n  -m FILENAME, --metadata\
+              \ FILENAME\n                        Name of tsv file of metadata about\
+              \ the input\n                        sequences. Can be used more than\
+              \ once if your metadata\n                        is spread over more\
+              \ than one file. Incompatible with\n                        --all_coding\n\
+              \  --all_coding {yes,no}\n                        Use this if you only\
+              \ have a fasta of presence absence\n                        sequences\
+              \ as input, and no metadata. Use \"yes\" if all\n                  \
+              \      sequences are coding, or \"no\" if they are all non-\n      \
+              \                  coding. Incompatible with -m/--metadata\n\ncd-hit\
+              \ options:\n  --no_cdhit            Do not run cd-hit. Each input sequence\
+              \ is put into its\n                        own \"cluster\". Incompatible\
+              \ with --cdhit_clusters.\n  --cdhit_clusters FILENAME\n            \
+              \            File specifying how the sequences should be clustered.\n\
+              \                        Will be used instead of running cdhit. Format\
+              \ is one\n                        cluster per line. Sequence names separated\
+              \ by\n                        whitespace. Incompatible with --no_cdhit\n\
+              \  --cdhit_min_id FLOAT  Sequence identity threshold (cd-hit option\
+              \ -c) [0.9]\n  --cdhit_min_length FLOAT\n                        Length\
+              \ difference cutoff (cd-hit option -s) [0.0]\n  --cdhit_max_memory INT\n\
+              \                        Memory limit in MB (cd-hit option -M) [None].\
+              \ Use 0\n                        for unlimited.\n\nother options:\n\
+              \  --min_gene_length INT\n                        Minimum allowed length\
+              \ in nucleotides of reference\n                        genes [6]\n \
+              \ --max_gene_length INT\n                        Maximum allowed length\
+              \ in nucleotides of reference\n                        genes [10000]\n\
+              \  --min_noncoding_length INT\n                        Minimum allowed\
+              \ length in nucleotides of non-coding\n                        sequences\
+              \ [6]\n  --max_noncoding_length INT\n                        Maximum\
+              \ allowed length in nucleotides of non-coding\n                    \
+              \    sequences [20000]\n  --genetic_code INT    Number of genetic code\
+              \ to use. Currently supported\n                        1,4,11 [11]\n\
+              \  --force               Overwrite output directory, if it already exists\n\
+              \  --threads INT         Number of threads (currently only applies to\
+              \ cdhit)\n                        [1]\n  --verbose             Be verbose\n\
+              \nREQUIRED: -f/--fasta, and also either -m/--metadata or --all_coding\
+              \ must be\nused\n"
+            generated_using: *id006
+          - !Command
+            command:
+            - ariba
+            - run
+            positional:
+            - !Positional
+              description: Name of output directory when "ariba prepareref" was
+              position: 0
+              name: prepareref_dir
+              optional: false
+            - !Positional
+              description: reads_1               Name of fwd reads fastq file
+              position: 1
+              name: run
+              optional: false
+            - !Positional
+              description: Name of rev reads fastq file
+              position: 2
+              name: reads_2
+              optional: false
+            - !Positional
+              description: Output directory (must not already exist)
+              position: 3
+              name: outdir
+              optional: false
+            named:
+            - !Flag
+              description: Minimum alignment identity (delta-filter -i) [90]
+              synonyms:
+              - --nucmer_min_id
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Minimum alignment length (delta-filter -i) [20]
+              synonyms:
+              - --nucmer_min_len
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Value to use for -breaklen when running nucmer [200]
+              synonyms:
+              - --nucmer_breaklen
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Assembler to use
+              synonyms:
+              - --assembler
+              args: !ChoiceFlagArg
+                choices: !!set
+                  ? spades
+                  ? fermilite
+              optional: true
+            - !Flag
+              description: "Target read coverage when sampling reads for assembly\n\
+                [50]"
+              synonyms:
+              - --assembly_cov
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Minimum number of read pairs needed as evidence for\n\
+                scaffold link between two contigs [10]"
+              synonyms:
+              - --min_scaff_depth
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "If using Spades assembler, either use default WGS\nmode,\
+                \ Single Cell mode (`spades.py --sc`) or RNA mode\n(`spades.py --rna`).\
+                \ Use SC or RNA mode if your input\nis from a viral sequencing with\
+                \ very uneven and deep\ncoverage. Set `--assembly_cov` to some high\
+                \ value if\nusing SC or RNA mode"
+              synonyms:
+              - --spades_mode
+              args: !ChoiceFlagArg
+                choices: !!set
+                  ? rna
+                  ? sc
+                  ? wgs
+              optional: true
+            - !Flag
+              description: "Extra options to pass to Spades assembler. Sensible\n\
+                default options will be picked based on\n`--spades_mode` argument.\
+                \ Anything set here will\nreplace the defaults completely"
+              synonyms:
+              - --spades_options
+              args: !SimpleFlagArg
+                name: SPADES_OPTIONS
+              optional: true
+            - !Flag
+              description: "Experimental. Number of threads. Will run clusters in\n\
+                parallel, but not minimap (yet) [1]"
+              synonyms:
+              - --threads
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "(between 0 and 1)\nIf proportion of gene assembled (regardless\
+                \ of into\nhow many contigs) is at least this value then the flag\n\
+                gene_assembled is set [0.95]"
+              synonyms:
+              - --assembled_threshold
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "Max number of nucleotides to extend ends of gene\nmatches\
+                \ to look for start/stop codons [30]"
+              synonyms:
+              - --gene_nt_extend
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "(between 0 and 1)\nIf proportion of bases in gene assembled\
+                \ more than\nonce is <= this value, then the flag unique_contig is\n\
+                set [0.03]"
+              synonyms:
+              - --unique_threshold
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: Overwrite output directory, if it already exists
+              synonyms:
+              - --force
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Do not clean up intermediate files
+              synonyms:
+              - --noclean
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Existing directory in which to create a temporary\ndirectory\
+                \ used for local assemblies"
+              synonyms:
+              - --tmp_dir
+              args: !SimpleFlagArg
+                name: TMP_DIR
+              optional: true
+            - !Flag
+              description: Be verbose
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba run [options] <prepareref_dir> <reads1.fq> <reads2.fq>\
+              \ <outdir>\n\nRuns the local assembly pipeline. Input is dir made by\
+              \ prepareref, and paired\nreads\n\npositional arguments:\n  prepareref_dir\
+              \        Name of output directory when \"ariba prepareref\" was\n  \
+              \                      run\n  reads_1               Name of fwd reads\
+              \ fastq file\n  reads_2               Name of rev reads fastq file\n\
+              \  outdir                Output directory (must not already exist)\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n\nnucmer options:\n  --nucmer_min_id INT   Minimum alignment\
+              \ identity (delta-filter -i) [90]\n  --nucmer_min_len INT  Minimum alignment\
+              \ length (delta-filter -i) [20]\n  --nucmer_breaklen INT\n         \
+              \               Value to use for -breaklen when running nucmer [200]\n\
+              \nAssembly options:\n  --assembler {fermilite,spades}\n            \
+              \            Assembler to use\n  --assembly_cov INT    Target read coverage\
+              \ when sampling reads for assembly\n                        [50]\n \
+              \ --min_scaff_depth INT\n                        Minimum number of read\
+              \ pairs needed as evidence for\n                        scaffold link\
+              \ between two contigs [10]\n  --spades_mode {wgs,sc,rna}\n         \
+              \               If using Spades assembler, either use default WGS\n\
+              \                        mode, Single Cell mode (`spades.py --sc`) or\
+              \ RNA mode\n                        (`spades.py --rna`). Use SC or RNA\
+              \ mode if your input\n                        is from a viral sequencing\
+              \ with very uneven and deep\n                        coverage. Set `--assembly_cov`\
+              \ to some high value if\n                        using SC or RNA mode\n\
+              \  --spades_options SPADES_OPTIONS\n                        Extra options\
+              \ to pass to Spades assembler. Sensible\n                        default\
+              \ options will be picked based on\n                        `--spades_mode`\
+              \ argument. Anything set here will\n                        replace\
+              \ the defaults completely\n\nOther options:\n  --threads INT       \
+              \  Experimental. Number of threads. Will run clusters in\n         \
+              \               parallel, but not minimap (yet) [1]\n  --assembled_threshold\
+              \ FLOAT (between 0 and 1)\n                        If proportion of\
+              \ gene assembled (regardless of into\n                        how many\
+              \ contigs) is at least this value then the flag\n                  \
+              \      gene_assembled is set [0.95]\n  --gene_nt_extend INT  Max number\
+              \ of nucleotides to extend ends of gene\n                        matches\
+              \ to look for start/stop codons [30]\n  --unique_threshold FLOAT (between\
+              \ 0 and 1)\n                        If proportion of bases in gene assembled\
+              \ more than\n                        once is <= this value, then the\
+              \ flag unique_contig is\n                        set [0.03]\n  --force\
+              \               Overwrite output directory, if it already exists\n \
+              \ --noclean             Do not clean up intermediate files\n  --tmp_dir\
+              \ TMP_DIR     Existing directory in which to create a temporary\n  \
+              \                      directory used for local assemblies\n  --verbose\
+              \             Be verbose\n"
+            generated_using: *id006
+          - !Command
+            command:
+            - ariba
+            - summary
+            positional:
+            - !Positional
+              description: Prefix of output files
+              position: 0
+              name: outprefix
+              optional: false
+            - !Positional
+              description: Files to be summarised
+              position: 1
+              name: infiles
+              optional: false
+            named:
+            - !Flag
+              description: "File of filenames of ariba reports to be summarised.\n\
+                Must be used if no input files listed after the\noutfile. The first\
+                \ column should be the filename. An\noptional second column can be\
+                \ used to specify a sample\nname for that file, which will be used\
+                \ instead of the\nfilename in output files. Columns separated by\n\
+                whitespace."
+              synonyms:
+              - -f
+              - --fofn
+              args: !SimpleFlagArg
+                name: FILENAME
+              optional: true
+            - !Flag
+              description: "|cluster_small|cluster_all|cluster_var_groups|all|all_no_filter\n\
+                Shorthand for setting --cluster_cols,--col_filter,--\nrow_filter,--v_groups,--variants.\
+                \ Using this overrides\nthose options"
+              synonyms:
+              - --preset
+              args: !SimpleFlagArg
+                name: minimal
+              optional: true
+            - !Flag
+              description: ",col2,...\nComma separated list of cluster columns to\
+                \ include.\nChoose from: assembled, match, ref_seq, pct_id,\nctg_cov,\
+                \ known_var, novel_var [match]"
+              synonyms:
+              - --cluster_cols
+              args: !SimpleFlagArg
+                name: col1
+              optional: true
+            - !Flag
+              description: "|n      Choose whether columns where all values are \"\
+                no\" or\n\"NA\" are removed [y]"
+              synonyms:
+              - --col_filter
+              args: !SimpleFlagArg
+                name: y
+              optional: true
+            - !Flag
+              description: Do not make phandango tree
+              synonyms:
+              - --no_tree
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "|n      Choose whether rows where all values are \"no\"\
+                \ or \"NA\"\nare removed [y]"
+              synonyms:
+              - --row_filter
+              args: !SimpleFlagArg
+                name: y
+              optional: true
+            - !Flag
+              description: "Minimum percent identity cutoff to count as assembled\n\
+                [90]"
+              synonyms:
+              - --min_id
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: "Only report data for the given comma-separated list of\n\
+                cluster names, eg: cluster1,cluster2,cluster42"
+              synonyms:
+              - --only_clusters
+              args: !SimpleFlagArg
+                name: Cluster_names
+              optional: true
+            - !Flag
+              description: Show a group column for each group of variants
+              synonyms:
+              - --v_groups
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Report all known variants
+              synonyms:
+              - --known_variants
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Report all novel variants
+              synonyms:
+              - --novel_variants
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Be verbose
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba summary [options] <outprefix> [report1.tsv report2.tsv\
+              \ ...]\n\nMake a summary of multiple ARIBA report files, and also make\
+              \ Phandango files\n\npositional arguments:\n  outprefix            \
+              \ Prefix of output files\n  infiles               Files to be summarised\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  -f FILENAME, --fofn FILENAME\n                       \
+              \ File of filenames of ariba reports to be summarised.\n           \
+              \             Must be used if no input files listed after the\n    \
+              \                    outfile. The first column should be the filename.\
+              \ An\n                        optional second column can be used to\
+              \ specify a sample\n                        name for that file, which\
+              \ will be used instead of the\n                        filename in output\
+              \ files. Columns separated by\n                        whitespace.\n\
+              \  --preset minimal|cluster_small|cluster_all|cluster_var_groups|all|all_no_filter\n\
+              \                        Shorthand for setting --cluster_cols,--col_filter,--\n\
+              \                        row_filter,--v_groups,--variants. Using this\
+              \ overrides\n                        those options\n  --cluster_cols\
+              \ col1,col2,...\n                        Comma separated list of cluster\
+              \ columns to include.\n                        Choose from: assembled,\
+              \ match, ref_seq, pct_id,\n                        ctg_cov, known_var,\
+              \ novel_var [match]\n  --col_filter y|n      Choose whether columns\
+              \ where all values are \"no\" or\n                        \"NA\" are\
+              \ removed [y]\n  --no_tree             Do not make phandango tree\n\
+              \  --row_filter y|n      Choose whether rows where all values are \"\
+              no\" or \"NA\"\n                        are removed [y]\n  --min_id\
+              \ FLOAT        Minimum percent identity cutoff to count as assembled\n\
+              \                        [90]\n  --only_clusters Cluster_names\n   \
+              \                     Only report data for the given comma-separated\
+              \ list of\n                        cluster names, eg: cluster1,cluster2,cluster42\n\
+              \  --v_groups            Show a group column for each group of variants\n\
+              \  --known_variants      Report all known variants\n  --novel_variants\
+              \      Report all novel variants\n  --verbose             Be verbose\n\
+              \nFiles must be listed after the output file and/or the option --fofn\
+              \ must be\nused. If both used, all files in the filename specified by\
+              \ --fofn AND the\nfiles listed after the output file will be used as\
+              \ input.\n"
+            generated_using: *id006
+          - !Command
+            command:
+            - ariba
+            - aln2meta
+            positional:
+            - !Positional
+              description: Multi-fasta file of alignments
+              position: 0
+              name: aln_fasta
+              optional: false
+            - !Positional
+              description: TSV file of variants information
+              position: 1
+              name: variants_tsv
+              optional: false
+            - !Positional
+              description: Prefix of output filenames
+              position: 0
+              name: outprefix
+              optional: false
+            named:
+            - !Flag
+              description: "Number of genetic code to use. Currently supported\n1,4,11\
+                \ [11]"
+              synonyms:
+              - --genetic_code
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: "Use this to flag all sequences as variant only. By\ndefault\
+                \ they are considered to be presence/absence\n"
+              synonyms:
+              - --variant_only
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba aln2meta [options] <aln_fasta> <variants_tsv>\
+              \ <(non)coding> <outprefix>\n\nMake metadata input to prepareref, using\
+              \ multialignment and SNPs\n\npositional arguments:\n  aln_fasta    \
+              \       Multi-fasta file of alignments\n  variants_tsv        TSV file\
+              \ of variants information\n  (non)coding         Sequences are coding\
+              \ or noncoding. Must be one of:\n                      coding noncoding\n\
+              \  outprefix           Prefix of output filenames\n\noptional arguments:\n\
+              \  -h, --help          show this help message and exit\n  --genetic_code\
+              \ INT  Number of genetic code to use. Currently supported\n        \
+              \              1,4,11 [11]\n  --variant_only      Use this to flag all\
+              \ sequences as variant only. By\n                      default they\
+              \ are considered to be presence/absence\n"
+            generated_using: *id006
+          - &id008 !Command
+            command:
+            - ariba
+            - prepareref_tb
+            positional: []
+            named: []
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - ariba
+              - prepareref_tb
+              - outdir
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ariba
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: command
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: options
+                optional: false
+              named: []
+              parent: *id008
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "usage: ariba <command> <options>\nariba: error: unrecognized\
+                \ arguments: --usage\n"
+              generated_using: *id007
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba prepareref_tb <outdir>\n\nPrepare built-in TB\
+              \ reference data for running the pipeline with \"ariba run\"\n\npositional\
+              \ arguments:\n  outdir      Output directory (must not already exist)\n\
+              \noptional arguments:\n  -h, --help  show this help message and exit\n"
+            generated_using: *id006
+          - !Command
+            command:
+            - ariba
+            - version
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: ariba
+              optional: false
+            - !Positional
+              description: ''
+              position: 1
+              name: command
+              optional: false
+            - !Positional
+              description: ''
+              position: 2
+              name: options
+              optional: false
+            named: []
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba <command> <options>\nariba: error: unrecognized\
+              \ arguments: --usage\n"
+            generated_using: *id007
+          - &id009 !Command
+            command:
+            - ariba
+            - expandflag
+            positional: []
+            named: []
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - ariba
+              - expandflag
+              - infile
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ariba
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: expandflag
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: in.report.tsv
+                optional: false
+              named: []
+              parent: *id009
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "usage: ariba expandflag <in.report.tsv> <out.tsv\nariba\
+                \ <command> <options> expandflag: error: the following arguments are\
+                \ required: outfile\n"
+              generated_using: &id010 []
+            - !Command
+              command:
+              - ariba
+              - expandflag
+              - outfile
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ariba
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: expandflag
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: in.report.tsv
+                optional: false
+              named: []
+              parent: *id009
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "usage: ariba expandflag <in.report.tsv> <out.tsv\nariba\
+                \ <command> <options> expandflag: error: the following arguments are\
+                \ required: outfile\n"
+              generated_using: *id010
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba expandflag <in.report.tsv> <out.tsv\n\nExpands\
+              \ the flag column in a report file from number to comma-separated list\n\
+              of flag bits\n\npositional arguments:\n  infile      Name of input report\
+              \ TSV file\n  outfile     Name of output report TSV file\n\noptional\
+              \ arguments:\n  -h, --help  show this help message and exit\n"
+            generated_using: *id006
+          - &id011 !Command
+            command:
+            - ariba
+            - refquery
+            positional: []
+            named: []
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - ariba
+              - refquery
+              - cluster|seq
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ariba
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: refquery
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: prepareref directory
+                optional: false
+              - !Positional
+                description: ''
+                position: 3
+                name: cluster|seq
+                optional: false
+              - !Positional
+                description: ''
+                position: 4
+                name: cluster name|sequence name
+                optional: false
+              named: []
+              parent: *id011
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "usage: ariba refquery <prepareref directory> <cluster|seq>\
+                \ <cluster name|sequence name>\nariba <command> <options> refquery:\
+                \ error: the following arguments are required: query_type, search_name\n"
+              generated_using: *id010
+            - !Command
+              command:
+              - ariba
+              - refquery
+              - cluster name|sequence name
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ariba
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: refquery
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: prepareref directory
+                optional: false
+              - !Positional
+                description: ''
+                position: 3
+                name: cluster|seq
+                optional: false
+              - !Positional
+                description: ''
+                position: 4
+                name: cluster name|sequence name
+                optional: false
+              named: []
+              parent: *id011
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "usage: ariba refquery <prepareref directory> <cluster|seq>\
+                \ <cluster name|sequence name>\nariba <command> <options> refquery:\
+                \ error: the following arguments are required: query_type, search_name\n"
+              generated_using: *id010
+            - !Command
+              command:
+              - ariba
+              - refquery
+              - prepareref directory
+              positional:
+              - !Positional
+                description: Name of directory output by prepareref
+                position: 0
+                name: prepareref_dir
+                optional: false
+              - !Positional
+                description: Name of cluster or sequence to search for
+                position: 0
+                name: search_name
+                optional: false
+              named: []
+              parent: *id011
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: ariba refquery <prepareref directory> <cluster|seq>\
+                \ <cluster name|sequence name>\n\nGet cluster or sequence info from\
+                \ the output directory made by prepareref\n\npositional arguments:\n\
+                \  prepareref_dir  Name of directory output by prepareref\n  {cluster,seq}\
+                \   Use \"cluster\" to get the sequences in a cluster, or \"seq\"\
+                \ to\n                  get information about a sequence\n  search_name\
+                \     Name of cluster or sequence to search for\n\noptional arguments:\n\
+                \  -h, --help      show this help message and exit\n"
+              generated_using: *id006
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "usage: ariba refquery <prepareref directory> <cluster|seq>\
+              \ <cluster name|sequence name>\nariba <command> <options> refquery:\
+              \ error: the following arguments are required: prepareref_dir, query_type,\
+              \ search_name\n"
+            generated_using: *id010
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: ariba <command> <options>\n\nARIBA: Antibiotic Resistance\
+            \ Identification By Assembly\n\noptional arguments:\n  -h, --help    \
+            \  show this help message and exit\n\nAvailable commands:\n  \n    aln2meta\
+            \      Converts multi-aln fasta and SNPs to metadata\n    expandflag \
+            \   Expands flag column of report file\n    flag          Translate the\
+            \ meaning of a flag\n    getref        Download reference data\n    micplot\
+            \       Make violin/dot plots using MIC data\n    prepareref    Prepare\
+            \ reference data for input to \"run\"\n    prepareref_tb\n           \
+            \       Prepare reference TB data for input to \"run\"\n    pubmlstget\
+            \    Download species from PubMLST and make db\n    pubmlstspecies\n \
+            \                 Get list of available species from PubMLST\n    refquery\
+            \      Get cluster or sequence info from prepareref output\n    run  \
+            \         Run the local assembly pipeline\n    summary       Summarise\
+            \ multiple reports made by \"run\"\n    test          Run small built-in\
+            \ test dataset\n    version       Get versions and exit\n"
+          generated_using: *id006
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: ariba
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: getref
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: db
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: outprefix
+            optional: false
+          named: []
+          parent: *id005
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "usage: ariba getref [options] <db> <outprefix>\nariba <command>\
+            \ <options> getref: error: argument DB name: invalid choice: 'outprefix'\
+            \ (choose from 'argannot', 'card', 'megares', 'ncbi', 'plasmidfinder',\
+            \ 'resfinder', 'srst2_argannot', 'vfdb_core', 'vfdb_full', 'virulencefinder')\n"
+          generated_using: *id006
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: "Version of reference data to download. If not used, gets\n\
+            the latest version. Applies to: card, megares, ncbi,\nplasmidfinder, resfinder,\
+            \ srst2_argannot,\nvirulencefinder. For plasmid/res/virulencefinder: default\n\
+            is to get latest from bitbucket - supply git commit hash\nto get a specific\
+            \ version from bitbucket, or use \"old \"\nto get from old website. For\
+            \ srst2_argannot: default is\nlatest version r2, use r1 to get the older\
+            \ version\n"
+          synonyms:
+          - --version
+          args: !SimpleFlagArg
+            name: VERSION
+          optional: true
+        help_text: "usage: ariba getref [options] <db> <outprefix>\n\nDownload reference\
+          \ data from one of a few supported public resources\n\npositional arguments:\n\
+          \  DB name            Database to download. Must be one of: argannot card\n\
+          \                     megares ncbi plasmidfinder resfinder srst2_argannot\n\
+          \                     vfdb_core vfdb_full virulencefinder\n  outprefix \
+          \         Prefix of output filenames\n\noptional arguments:\n  -h, --help\
+          \         show this help message and exit\n  --debug            Do not delete\
+          \ temporary downloaded files\n  --version VERSION  Version of reference\
+          \ data to download. If not used, gets\n                     the latest version.\
+          \ Applies to: card, megares, ncbi,\n                     plasmidfinder,\
+          \ resfinder, srst2_argannot,\n                     virulencefinder. For\
+          \ plasmid/res/virulencefinder: default\n                     is to get latest\
+          \ from bitbucket - supply git commit hash\n                     to get a\
+          \ specific version from bitbucket, or use \"old \"\n                   \
+          \  to get from old website. For srst2_argannot: default is\n           \
+          \          latest version r2, use r1 to get the older version\n"
+        generated_using: *id006
       subcommands: []
       usage: []
       help_flag:
@@ -1505,28 +1610,11 @@ subcommands:
         \ <options> getref: error: argument DB name: invalid choice: 'outprefix' (choose\
         \ from 'argannot', 'card', 'megares', 'ncbi', 'plasmidfinder', 'resfinder',\
         \ 'srst2_argannot', 'vfdb_core', 'vfdb_full', 'virulencefinder')\n"
-      generated_using: *id005
+      generated_using: *id006
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: "Version of reference data to download. If not used, gets\nthe\
-        \ latest version. Applies to: card, megares, ncbi,\nplasmidfinder, resfinder,\
-        \ srst2_argannot,\nvirulencefinder. For plasmid/res/virulencefinder: default\n\
-        is to get latest from bitbucket - supply git commit hash\nto get a specific\
-        \ version from bitbucket, or use \"old \"\nto get from old website. For srst2_argannot:\
-        \ default is\nlatest version r2, use r1 to get the older version\n"
-      synonyms:
-      - --version
-      args: !SimpleFlagArg
-        name: VERSION
-      optional: true
+    version_flag:
     help_text: "usage: ariba getref [options] <db> <outprefix>\n\nDownload reference\
       \ data from one of a few supported public resources\n\npositional arguments:\n\
       \  DB name            Database to download. Must be one of: argannot card\n\
@@ -1542,7 +1630,7 @@ subcommands:
       \                     to get a specific version from bitbucket, or use \"old\
       \ \"\n                     to get from old website. For srst2_argannot: default\
       \ is\n                     latest version r2, use r1 to get the older version\n"
-    generated_using: *id005
+    generated_using: *id006
   subcommands: []
   usage: []
   help_flag:
@@ -1552,7 +1640,7 @@ subcommands:
     \ getref: error: argument DB name: invalid choice: 'outprefix' (choose from 'argannot',\
     \ 'card', 'megares', 'ncbi', 'plasmidfinder', 'resfinder', 'srst2_argannot', 'vfdb_core',\
     \ 'vfdb_full', 'virulencefinder')\n"
-  generated_using: *id005
+  generated_using: *id006
 usage: []
 help_flag:
 usage_flag:
@@ -1572,4 +1660,4 @@ help_text: "usage: ariba getref [options] <db> <outprefix>\n\nDownload reference
   \ version from bitbucket, or use \"old \"\n                     to get from old\
   \ website. For srst2_argannot: default is\n                     latest version r2,\
   \ use r1 to get the older version\n"
-generated_using: *id005
+generated_using: *id006

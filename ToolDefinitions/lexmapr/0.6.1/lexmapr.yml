@@ -48,62 +48,10 @@ subcommands:
     - -o
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: "[OUTPUT], --output [OUTPUT]\nOutput file"
-      synonyms:
-      - -o
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Full output format
-      synonyms:
-      - -f
-      - --full
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Path to JSON file containing the IRI of ontologies to fetch terms
-        from
-      synonyms:
-      - -c
-      - --config
-      args: !SimpleFlagArg
-        name: CONFIG
-      optional: true
-    - !Flag
-      description: Classify samples into pre-defined buckets
-      synonyms:
-      - -b
-      - --bucket
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Ignore or replace online cached resources, if there are any.
-      synonyms:
-      - --no-cache
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "Pre-defined sets of command-line arguments for specialized purposes:\n\
-        * ifsac:\n* maps samples to food and environmental resources\n* classifies\
-        \ samples into ifsac labels\n* outputs content to ``ifsac_output.tsv``\n"
-      synonyms:
-      - -p
-      - --profile
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? ifsac
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -147,7 +95,154 @@ subcommands:
         - -o
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: "[OUTPUT], --output [OUTPUT]\nOutput file"
+          synonyms:
+          - -o
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Full output format
+          synonyms:
+          - -f
+          - --full
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Path to JSON file containing the IRI of ontologies to fetch
+            terms from
+          synonyms:
+          - -c
+          - --config
+          args: !SimpleFlagArg
+            name: CONFIG
+          optional: true
+        - !Flag
+          description: Classify samples into pre-defined buckets
+          synonyms:
+          - -b
+          - --bucket
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Ignore or replace online cached resources, if there are any.
+          synonyms:
+          - --no-cache
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "Pre-defined sets of command-line arguments for specialized\
+            \ purposes:\n* ifsac:\n* maps samples to food and environmental resources\n\
+            * classifies samples into ifsac labels\n* outputs content to ``ifsac_output.tsv``\n"
+          synonyms:
+          - -p
+          - --profile
+          args: !ChoiceFlagArg
+            choices: !!set
+              ? ifsac
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -v
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - --no-cache
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -b
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -c
+            args: !SimpleFlagArg
+              name: CONFIG
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -f
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -o
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: lexmapr [-h] [-o [OUTPUT]] [-f] [-c CONFIG] [-b] [--no-cache]\
+            \ [-v]\n               [-p {ifsac}]\n               input_file\nlexmapr:\
+            \ error: argument input_file: Please supply a csv or tsv input file\n"
+          generated_using: &id004
+          - --help
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: show program's version number and exit
+          synonyms:
+          - -v
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "usage: lexmapr [-h] [-o [OUTPUT]] [-f] [-c CONFIG] [-b] [--no-cache]\
+          \ [-v]\n               [-p {ifsac}]\n               input_file\n\npositional\
+          \ arguments:\n  input_file            Input csv or tsv file\n\noptional\
+          \ arguments:\n  -h, --help            show this help message and exit\n\
+          \  -o [OUTPUT], --output [OUTPUT]\n                        Output file\n\
+          \  -f, --full            Full output format\n  -c CONFIG, --config CONFIG\n\
+          \                        Path to JSON file containing the IRI of ontologies\
+          \ to fetch terms from\n  -b, --bucket          Classify samples into pre-defined\
+          \ buckets\n  --no-cache            Ignore or replace online cached resources,\
+          \ if there are any.\n  -v, --version         show program's version number\
+          \ and exit\n  -p {ifsac}, --profile {ifsac}\n                        Pre-defined\
+          \ sets of command-line arguments for specialized purposes:\n           \
+          \             \n                        * ifsac: \n                    \
+          \      * maps samples to food and environmental resources\n            \
+          \              * classifies samples into ifsac labels\n                \
+          \          * outputs content to ``ifsac_output.tsv``\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -161,24 +256,11 @@ subcommands:
       help_text: "usage: lexmapr [-h] [-o [OUTPUT]] [-f] [-c CONFIG] [-b] [--no-cache]\
         \ [-v]\n               [-p {ifsac}]\n               input_file\nlexmapr: error:\
         \ argument input_file: Please supply a csv or tsv input file\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - -v
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "usage: lexmapr [-h] [-o [OUTPUT]] [-f] [-c CONFIG] [-b] [--no-cache]\
       \ [-v]\n               [-p {ifsac}]\n               input_file\n\npositional\
       \ arguments:\n  input_file            Input csv or tsv file\n\noptional arguments:\n\

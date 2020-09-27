@@ -1,0 +1,149 @@
+!Command
+command:
+- svtyper
+positional: []
+named:
+- !Flag
+  description: 'VCF input (default: stdin)'
+  synonyms:
+  - -i
+  - --input_vcf
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'output VCF to write (default: stdout)'
+  synonyms:
+  - -o
+  - --output_vcf
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: BAM or CRAM file(s), comma-separated if genotyping multiple samples
+  synonyms:
+  - -B
+  - --bam
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Indexed reference FASTA file (recommended for reading CRAM files)
+  synonyms:
+  - -T
+  - --ref_fasta
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: create/read JSON file of library information
+  synonyms:
+  - -l
+  - --lib_info
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: minimum number of aligned bases to consider read as evidence [20]
+  synonyms:
+  - -m
+  - --min_aligned
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of reads to sample from BAM file for building insert size distribution
+    [1000000]
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'add genotyping quality to existing QUAL (default: overwrite QUAL field)'
+  synonyms:
+  - -q
+  - --sum_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'maximum number of reads to assess at any variant (reduces processing
+    time in high-depth regions, default: unlimited)'
+  synonyms:
+  - --max_reads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'maximum size of a confidence interval before 95% CI is used intead
+    (default: 1e10)'
+  synonyms:
+  - --max_ci_dist
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: weight for split reads [1]
+  synonyms:
+  - --split_weight
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: weight for discordant paired-end reads [1]
+  synonyms:
+  - --disc_weight
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: write relevant reads to BAM file
+  synonyms:
+  - -w
+  - --write_alignment
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Report status updates
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: svtyper [-h] [-i FILE] [-o FILE] -B FILE [-T FILE] [-l FILE] [-m\
+  \ INT]\n               [-n INT] [-q] [--max_reads INT] [--max_ci_dist INT]\n   \
+  \            [--split_weight FLOAT] [--disc_weight FLOAT] [-w FILE]\n          \
+  \     [--verbose]\n\nsvtyper\nauthor: Colby Chiang (colbychiang@wustl.edu)\nversion:\
+  \ v0.7.1\ndescription: Compute genotype of structural variants based on breakpoint\
+  \ depth\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -i FILE, --input_vcf FILE\n                        VCF input (default:\
+  \ stdin)\n  -o FILE, --output_vcf FILE\n                        output VCF to write\
+  \ (default: stdout)\n  -B FILE, --bam FILE   BAM or CRAM file(s), comma-separated\
+  \ if genotyping multiple samples\n  -T FILE, --ref_fasta FILE\n                \
+  \        Indexed reference FASTA file (recommended for reading CRAM files)\n  -l\
+  \ FILE, --lib_info FILE\n                        create/read JSON file of library\
+  \ information\n  -m INT, --min_aligned INT\n                        minimum number\
+  \ of aligned bases to consider read as evidence [20]\n  -n INT                number\
+  \ of reads to sample from BAM file for building insert size distribution [1000000]\n\
+  \  -q, --sum_quals       add genotyping quality to existing QUAL (default: overwrite\
+  \ QUAL field)\n  --max_reads INT       maximum number of reads to assess at any\
+  \ variant (reduces processing time in high-depth regions, default: unlimited)\n\
+  \  --max_ci_dist INT     maximum size of a confidence interval before 95% CI is\
+  \ used intead (default: 1e10)\n  --split_weight FLOAT  weight for split reads [1]\n\
+  \  --disc_weight FLOAT   weight for discordant paired-end reads [1]\n  -w FILE,\
+  \ --write_alignment FILE\n                        write relevant reads to BAM file\n\
+  \  --verbose             Report status updates\n"
+generated_using:
+- --help

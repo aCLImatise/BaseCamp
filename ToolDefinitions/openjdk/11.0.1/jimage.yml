@@ -31,29 +31,10 @@ subcommands:
     name: jimage...
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: ', list will also print entry size and offset attributes.'
-      synonyms:
-      - --verbose
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Target directory for extract directive
-      synonyms:
-      - --dir
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: Pattern list for filtering entries.
-      synonyms:
-      - --include
-      args: !SimpleFlagArg
-        name: pattern-list
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -80,7 +61,196 @@ subcommands:
         name: jimage...
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: ', list will also print entry size and offset attributes.'
+          synonyms:
+          - --verbose
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Target directory for extract directive
+          synonyms:
+          - --dir
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: Pattern list for filtering entries.
+          synonyms:
+          - --include
+          args: !SimpleFlagArg
+            name: pattern-list
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: jimage
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: extract | info | list | verify
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: options
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: jimage...
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Error: unknown option: --usage\nUsage: jimage <extract | info\
+            \ | list | verify> <options> jimage...\nuse -h or --help for a list of\
+            \ possible options.\n"
+          generated_using: &id004
+          - --usage
+        - !Command
+          command: &id005
+          - jimage
+          - extract
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: jimage
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: extract | info | list | verify
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: options
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: jimage...
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Error: unknown option: --usage\nUsage: jimage <extract | info\
+            \ | list | verify> <options> jimage...\nuse -h or --help for a list of\
+            \ possible options.\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - jimage
+          - list
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: jimage
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: extract | info | list | verify
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: options
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: jimage...
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Error: unknown option: --usage\nUsage: jimage <extract | info\
+            \ | list | verify> <options> jimage...\nuse -h or --help for a list of\
+            \ possible options.\n"
+          generated_using: *id004
+        - !Command
+          command: &id007
+          - jimage
+          - verify
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: jimage
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: extract | info | list | verify
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: options
+            optional: false
+          - !Positional
+            description: ''
+            position: 3
+            name: jimage...
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "Error: unknown option: --usage\nUsage: jimage <extract | info\
+            \ | list | verify> <options> jimage...\nuse -h or --help for a list of\
+            \ possible options.\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: jimage <extract | info | list | verify> <options> jimage...\n\
+          \n  extract  - Extract all jimage entries and place in a directory specified\n\
+          \             by the --dir=<directory> (default=.) option.\n\n  info   \
+          \  - Prints detailed information contained in the jimage header.\n\n  list\
+          \     - Prints the names of all the entries in the jimage.  When used with\n\
+          \             --verbose, list will also print entry size and offset attributes.\n\
+          \n  verify   - Reports on any .class entries that dont verify as classes.\n\
+          \nPossible options include:\n          --dir                        Target\
+          \ directory for extract directive\n  -?, -h, --help                    \
+          \   Print this help message\n          --include <pattern-list>     Pattern\
+          \ list for filtering entries.\n          --verbose                    Listing\
+          \ prints entry size and offset\n                                       attributes\n\
+          \          --version                    Print version information\n\nFor\
+          \ options requiring a <pattern-list>, the value will be a comma separated\n\
+          list of elements each using one the following forms:\n  <glob-pattern>\n\
+          \  glob:<glob-pattern>\n  regex:<regex-pattern>\n"
+        generated_using: &id008
+        - --help
       subcommands: []
       usage: []
       help_flag:
@@ -89,12 +259,9 @@ subcommands:
       help_text: "Error: unknown option: --usage\nUsage: jimage <extract | info |\
         \ list | verify> <options> jimage...\nuse -h or --help for a list of possible\
         \ options.\n"
-      generated_using: &id004
-      - --usage
+      generated_using: *id004
     - !Command
-      command: &id005
-      - jimage
-      - extract
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -128,9 +295,7 @@ subcommands:
         \ options.\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - jimage
-      - list
+      command: *id006
       positional:
       - !Positional
         description: ''
@@ -164,9 +329,7 @@ subcommands:
         \ options.\n"
       generated_using: *id004
     - !Command
-      command: &id007
-      - jimage
-      - verify
+      command: *id007
       positional:
       - !Positional
         description: ''
@@ -218,8 +381,7 @@ subcommands:
       \                    Print version information\n\nFor options requiring a <pattern-list>,\
       \ the value will be a comma separated\nlist of elements each using one the following\
       \ forms:\n  <glob-pattern>\n  glob:<glob-pattern>\n  regex:<regex-pattern>\n"
-    generated_using: &id008
-    - --help
+    generated_using: *id008
   subcommands: []
   usage: []
   help_flag:
@@ -252,7 +414,7 @@ subcommands:
     name: jimage...
     optional: false
   named: []
-  parent: *id003
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -285,7 +447,7 @@ subcommands:
     name: jimage...
     optional: false
   named: []
-  parent: *id003
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -318,7 +480,7 @@ subcommands:
     name: jimage...
     optional: false
   named: []
-  parent: *id003
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

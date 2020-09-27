@@ -1,0 +1,152 @@
+!Command
+command:
+- svtools
+- classify
+positional: []
+named:
+- !Flag
+  description: VCF input
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: VCF output [stdout]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: "tab delimited file of sample genders (male=1,\nfemale=2) ex: SAMPLE_A\
+    \ 2"
+  synonyms:
+  - -g
+  - --gender
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: BED file of annotated elements
+  synonyms:
+  - -a
+  - --annotation
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "fraction of reciprocal overlap to apply annotation to\nvariant [0.9]"
+  synonyms:
+  - -f
+  - --fraction
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "list of samples to exclude from classification\nalgorithms"
+  synonyms:
+  - -e
+  - --exclude
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "minimum slope absolute value of regression line to\nclassify as DEL\
+    \ or DUP[1.0]"
+  synonyms:
+  - -s
+  - --slope_threshold
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "minimum R^2 correlation value of regression line to\nclassify as DEL\
+    \ or DUP [0.2], for large sample\nreclassification"
+  synonyms:
+  - -r
+  - --rsquared_threshold
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "high quality deletions & duplications training\ndataset[vcf], required\
+    \ by naive Bayes reclassification"
+  synonyms:
+  - -t
+  - --tSet
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "reclassification method, one of (large_sample,\nnaive_bayes, hybrid)"
+  synonyms:
+  - -m
+  - --method
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: text file to output method comparisons
+  synonyms:
+  - -d
+  - --diag_file
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Comma-separated list of sex chromosome names\n[chrX,chrY]"
+  synonyms:
+  - --sex-chrom
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Directory for temp file downloads
+  synonyms:
+  - --tempdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: svtools classify [-h] [-i <VCF>] [-o <VCF>] -g <FILE> [-a <BED>]\n\
+  \                        [-f <FLOAT>] [-e <FILE>] [-s <FLOAT>] [-r <FLOAT>]\n  \
+  \                      [-t <STRING>] [-m <STRING>] [-d <STRING>]\n             \
+  \           [--sex-chrom <STRING>] [--tempdir <DIR>]\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -i <VCF>, --input <VCF>\n\
+  \                        VCF input\n  -o <VCF>, --output <VCF>\n               \
+  \         VCF output [stdout]\n  -g <FILE>, --gender <FILE>\n                  \
+  \      tab delimited file of sample genders (male=1,\n                        female=2)\
+  \ ex: SAMPLE_A 2\n  -a <BED>, --annotation <BED>\n                        BED file\
+  \ of annotated elements\n  -f <FLOAT>, --fraction <FLOAT>\n                    \
+  \    fraction of reciprocal overlap to apply annotation to\n                   \
+  \     variant [0.9]\n  -e <FILE>, --exclude <FILE>\n                        list\
+  \ of samples to exclude from classification\n                        algorithms\n\
+  \  -s <FLOAT>, --slope_threshold <FLOAT>\n                        minimum slope\
+  \ absolute value of regression line to\n                        classify as DEL\
+  \ or DUP[1.0]\n  -r <FLOAT>, --rsquared_threshold <FLOAT>\n                    \
+  \    minimum R^2 correlation value of regression line to\n                     \
+  \   classify as DEL or DUP [0.2], for large sample\n                        reclassification\n\
+  \  -t <STRING>, --tSet <STRING>\n                        high quality deletions\
+  \ & duplications training\n                        dataset[vcf], required by naive\
+  \ Bayes reclassification\n  -m <STRING>, --method <STRING>\n                   \
+  \     reclassification method, one of (large_sample,\n                        naive_bayes,\
+  \ hybrid)\n  -d <STRING>, --diag_file <STRING>\n                        text file\
+  \ to output method comparisons\n  --sex-chrom <STRING>  Comma-separated list of\
+  \ sex chromosome names\n                        [chrX,chrY]\n  --tempdir <DIR> \
+  \      Directory for temp file downloads\n"
+generated_using:
+- --help

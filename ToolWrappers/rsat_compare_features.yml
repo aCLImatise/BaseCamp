@@ -1,0 +1,150 @@
+!Command
+command:
+- rsat
+- compare-features
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: compare-features
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: "\e[1mOUTPUT TYPES\e[0m"
+  position: 0
+  name: negative.
+  optional: false
+- !Positional
+  description: Length (in residues) of the intersection between two features.
+  position: 0
+  name: inter_len
+  optional: false
+- !Positional
+  description: "Coverage of the intersection between two features. The coverage\n\
+    (inter_cov) is defined as\ninter_cov = inter_len / inter_pair\nwhere inter_len\
+    \ is the length of the intersection, pair_len is\nthe total length covered by\
+    \ the pair of intersecting features."
+  position: 1
+  name: inter_cov
+  optional: false
+- !Positional
+  description: convert-features
+  position: 0
+  name: feature-map
+  optional: false
+- !Positional
+  description: "Add columns with the coordinates of feature from f1 and f2 when\n\
+    there is an intersection. If features belong to set f2.not.f1,\nindicate NA in\
+    \ the f1 columns (and reciprocally).\n"
+  position: 0
+  name: all_coordinates
+  optional: false
+named:
+- !Flag
+  description: considered as input files.
+  synonyms:
+  - -files
+  args: !SimpleFlagArg
+    name: are
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    compare-features\n\n\e[1mDESCRIPTION\e[0m\n    Compare\
+  \ two or more sets of features.\n\n    This program takes as input several feature\
+  \ files (two or more), and\n    calculates the intersection, union and difference\
+  \ between features. It\n    also computes contingency tables and comparison statistics.\n\
+  \n\e[1mAUTHORS\e[0m\n    Jean Valery Turatsinze <jturatsi@ulb.ac.be>\n\n    Jacques\
+  \ van Helden <Jacques.van-Helden\\@univ-amu.fr>\n\n\e[1mCATEGORY\e[0m\n    util\n\
+  \n\e[1mUSAGE\e[0m\n    compare-features -i inputfile_1 -i inputfile_2 [-i inputfile_3\
+  \ ... ...]\n    [-o outputfile] [-v]\n\n\e[1mINPUT FORMAT\e[0m\n    The default\
+  \ input format is .ft (the same as for feature-map). Other\n    formats are also\
+  \ supported ($supported_input_formats).\n\n  \e[1mFeature format\e[0m\n    Each\
+  \ feature is represented by a single line, which should provide the\n    following\
+  \ information:\n\n    Input file columns:\n\n    1. map label (eg gene name)\n \
+  \   2. feature type\n    3. feature identifier (ex: GATAbox, Abf1_site)\n    4.\
+  \ strand (D for Direct, R for Reverse),\n    5. feature start position\n    6. feature\
+  \ end position\n    7. (optional) description\n    8. (optional) score\n\n    The\
+  \ standard input format assumes that these topics are provided in this\n    order,\
+  \ separated by tabs. Start and end positions can be positive or\n    negative.\n\
+  \n\e[1mOUTPUT TYPES\e[0m\n  \e[1minter\e[0m\n    Intersections between features\
+  \ (pairwise comparisons). For each\n    intersection between two features, a feature\
+  \ of type \"inter\" is created.\n\n    The ID of an \"inter\" feature indicates\
+  \ the files to which the\n    intersecting features belong. For example \"f1.and.f3\"\
+  \ means that the\n    intersection feture was obtained from a feature of the first\
+  \ input file\n    and a feature of the second input file.\n\n  \e[1mdiff\e[0m\n\
+  \    Pairwise differences between files. For each pair of file, a feature of\n \
+  \   type \"diff\" is created.\n\n    The ID of the \"diff\" feature indicates the\
+  \ number of the files\n    containing and not containing the feature, respezctively.\
+  \ For example,\n    the ID \"f1.not.f3\" indictaes a feature found in file 1 and\
+  \ without any\n    intersection with features oof file 3.\n\n  \e[1mstats\e[0m\n\
+  \    Calculate statistics about the intersections between features of each\n   \
+  \ pair of input file.\n\n\e[1mOUTPUT FORMAT\e[0m\n    The output depends on the\
+  \ return type(s), which can be specified with\n    the option -return.\n\n  \e[1minter,diff\e\
+  [0m\n    The intersection and differences are reported as features. Different\n\
+  \    output formats can be specified with the option -oformat (supported:\n    $supported_output_formats).\n\
+  \n  \e[1mstats\e[0m\n    Matching statistics are exported as tab-delimited tables.\
+  \ Each row is\n    starting with a comment character ';', so that the statistics\
+  \ are\n    ignored when the program is used as input by feature-map.\n\n    These\
+  \ comment characters can easily be removed if the result has to be\n    used by\
+  \ other programs. Try for example:\n\n        perl -pe 's/^;//' outfile\n\n\e[1mOPTIONS\e\
+  [0m\n    \e[1m-v #\e[0m\n        Level of verbosity (detail in the warning messages\
+  \ during execution)\n\n    \e[1m-h\e[0m  Display full help message\n\n    \e[1m-help\e\
+  [0m\n        Display options\n\n    \e[1m-i inputfile\e[0m\n        This option\
+  \ can be used iteratively to specify several input files.\n        It must be used\
+  \ at least 2 times, since the comparison requires at\n        least two feature\
+  \ files.\n\n    \e[1m-files inputfile_1 inputfile_2 ...\e[0m\n        Specify multiple\
+  \ input files. All the arguments following the option\n        -files are considered\
+  \ as input files.\n\n    \e[1m-filelist file_list_file\e[0m\n        Provide a file\
+  \ containing a list of input files.\n\n    \e[1m-ref reference_file\e[0m\n     \
+  \   Specify a reference file. Only one reference file can be specified.\n\n    \
+  \    All the other input files (specified with -i or -files) are then\n        compared\
+  \ to the reference file. When the option '-return stats' is\n        combined with\
+  \ a reference fiile, some additional statistics are\n        calculated (PPV, sensitivity,\
+  \ accuracy).\n\n    \e[1m-o outputfile\e[0m\n        If no output file is specified,\
+  \ the standard output is used. This\n        allows to use the command within a\
+  \ pipe.\n\n    \e[1m-oft output_feature_file\e[0m\n        In addition to the output,\
+  \ export a feature file containing the type\n        of the feature, and chromosomal\
+  \ location of each feature. This\n        option is compatible with -return inter.\n\
+  \n    \e[1m-iformat input_format\e[0m\n        Input feature format (Supported:\
+  \ $supported_input_formats)\n\n    \e[1m-oformat output_format\e[0m\n        Output\
+  \ feature format (Supported: $supported_output_formats)\n\n    \e[1m-self\e[0m\n\
+  \        Also perform comparison between features in the same file\n        (self-comparison).\
+  \ This can be useful to detect redundancy between\n        annotated features.\n\
+  \n    \e[1m-return output1[,output2,...]\e[0m\n        Specify the output type(s).\n\
+  \n        Supported output types: stats,inter,diff\n\n    \e[1m-lth parameter value\e\
+  [0m\n        Specify the value of the lower threshold on some parameter.\n\n   \
+  \     Examples:\n\n        -lth inter_len 3\n        -lth inter_cov 0.8\n\n    \
+  \    Supported parameters :\n\n        inter_len\n            Length (in residues)\
+  \ of the intersection between two features.\n\n        inter_cov\n            Coverage\
+  \ of the intersection between two features. The coverage\n            (inter_cov)\
+  \ is defined as\n\n            inter_cov = inter_len / inter_pair\n\n          \
+  \  where inter_len is the length of the intersection, pair_len is\n            the\
+  \ total length covered by the pair of intersecting features.\n\n\e[1mSEE ALSO\e\
+  [0m\n    feature-map\n\n    convert-features\n\n\e[1mWISH LIST\e[0m\n  \e[1m-return\
+  \ ref_vs_others\e[0m\n    This option requires to activate the option -ref in order\
+  \ to indicate\n    which input file serves as reference (the file which ahs to be\
+  \ compared\n    to each other file).\n\n    For example, the option could be used\
+  \ to compare a set of ChIP-seq peaks\n    (the reference file) with a series of\
+  \ files describing epigenetic marks,\n    TF binding, RNA pol II, .... (one query\
+  \ file per mark type).\n\n    The option -features_vs_files returns a separate table\
+  \ with one row per\n    feature of the reference file, and one column per query\
+  \ feature file,\n    containing a 1/0 value indicating whether or not the reference\
+  \ feature\n    intersects at least one feature of the query file.\n\n  \e[1msupport\
+  \ .bed as output format\e[0m\n  \e[1mtranspose contingency tables\e[0m\n    The\
+  \ row/column convention is counter-intuitive\n\n  \e[1mshorter intersection description\e\
+  [0m\n    The description is much too verbosy. Reduce to strict minimum (f1 inter\n\
+  \    f2), and export description only on demand.\n\n  \e[1mseparate columns for\
+  \ additional parameters\e[0m\n    all_coordinates\n        Add columns with the\
+  \ coordinates of feature from f1 and f2 when\n        there is an intersection.\
+  \ If features belong to set f2.not.f1,\n        indicate NA in the f1 columns (and\
+  \ reciprocally).\n\n"
+generated_using:
+- -h

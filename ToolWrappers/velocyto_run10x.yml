@@ -1,0 +1,123 @@
+!Command
+command:
+- velocyto
+- run10x
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: SAMPLEFOLDER
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: GTFFILE
+  optional: false
+named:
+- !Flag
+  description: Table containing metadata of the various samples (csv fortmated rows
+    are samples and cols are entries)
+  synonyms:
+  - -s
+  - --metadatatable
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: .gtf file containing intervals to mask
+  synonyms:
+  - -m
+  - --mask
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'The logic to use for the filtering (default: Default)'
+  synonyms:
+  - -l
+  - --logic
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Consider not unique mappings (not reccomended)
+  synonyms:
+  - -M
+  - --multimap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The number of threads to use to sort the bam by cellID file using samtools
+  synonyms:
+  - -@
+  - --samtools-threads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: The number of MB used for every thread by samtools to sort the bam
+    file
+  synonyms:
+  - --samtools-memory
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'The dtype of the loom file layers - if more than 6000 molecules/reads
+    per gene per cell are expected set uint32 to avoid truncation (default run_10x:
+    uint16)'
+  synonyms:
+  - -t
+  - --dtype
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'For debugging purposes only: it will dump a molecular mapping report
+    to hdf5. --dump N, saves a cell every N cells. If p is prepended a more complete
+    (but huge) pickle report is printed (default: 0)'
+  synonyms:
+  - -d
+  - --dump
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Set the vebosity level: -v (only warinings) -vv (warinings and info)
+    -vvv (warinings, info and debug)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: velocyto run10x [OPTIONS] SAMPLEFOLDER GTFFILE\n\n  Runs the velocity\
+  \ analysis for a Chromium 10X Sample\n\n  10XSAMPLEFOLDER specifies the cellranger\
+  \ sample folder\n\n  GTFFILE genome annotation file\n\nOptions:\n  -s, --metadatatable\
+  \ FILE        Table containing metadata of the various samples (csv fortmated rows\
+  \ are samples and cols are entries)\n  -m, --mask FILE                 .gtf file\
+  \ containing intervals to mask\n  -l, --logic TEXT                The logic to use\
+  \ for the filtering (default: Default)\n  -M, --multimap                  Consider\
+  \ not unique mappings (not reccomended)\n  -@, --samtools-threads INTEGER  The number\
+  \ of threads to use to sort the bam by cellID file using samtools\n  --samtools-memory\
+  \ INTEGER       The number of MB used for every thread by samtools to sort the bam\
+  \ file\n  -t, --dtype TEXT                The dtype of the loom file layers - if\
+  \ more than 6000 molecules/reads per gene per cell are expected set uint32 to avoid\
+  \ truncation (default run_10x: uint16)\n  -d, --dump TEXT                 For debugging\
+  \ purposes only: it will dump a molecular mapping report to hdf5. --dump N, saves\
+  \ a cell every N cells. If p is prepended a more complete (but huge) pickle report\
+  \ is printed (default: 0)\n  -v, --verbose                   Set the vebosity level:\
+  \ -v (only warinings) -vv (warinings and info) -vvv (warinings, info and debug)\n\
+  \  --help                          Show this message and exit.\n"
+generated_using:
+- --help

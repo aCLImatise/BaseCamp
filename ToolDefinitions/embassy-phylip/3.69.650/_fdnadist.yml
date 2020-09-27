@@ -47,28 +47,10 @@ subcommands:
     - -printdata
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id006 !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: properties Weights file
-      synonyms:
-      - -weights
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: boolean    [N] Output as a lower triangular distance
-      synonyms:
-      - -lower
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: boolean    [N] Print data at start of run
-      synonyms:
-      - -printdata
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -112,7 +94,273 @@ subcommands:
         - -printdata
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: properties Weights file
+          synonyms:
+          - -weights
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: boolean    [N] Output as a lower triangular distance
+          synonyms:
+          - -lower
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: boolean    [N] Print data at start of run
+          synonyms:
+          - -printdata
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: 'Additional (Optional) qualifiers (* if not always prompted):'
+            position: 0
+            name: file
+            optional: false
+          - !Positional
+            description: -humanreadable      boolean    [@($(method)==s?Y:N)] Output
+              as a
+            position: 0
+            name: matrix
+            optional: false
+          named:
+          - !Flag
+            description: "menu       [F84 distance model] Choose the method to\nuse\
+              \ (Values: f (F84 distance model); k\n(Kimura 2-parameter distance);\
+              \ j\n(Jukes-Cantor distance); l (LogDet\ndistance); s (Similarity table))"
+            synonyms:
+            - -method
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: properties Weights file
+            synonyms:
+            - -weights
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: boolean    [N] Output as a lower triangular distance
+            synonyms:
+            - -lower
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: boolean    [N] Print data at start of run
+            synonyms:
+            - -printdata
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: "boolean    Report command line options and exit. More\n\
+              information on associated and general\nqualifiers can be found with\
+              \ -help -verbose\n"
+            synonyms:
+            - -help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Nucleic acid sequence distance matrix program\nVersion: EMBOSS:6.5.7.0\
+            \ PHYLIPNEW:3.69.650\n\n   Standard (Mandatory) qualifiers:\n  [-sequence]\
+            \          seqsetall  [matrix] File containing one or more\n         \
+            \                         sequence alignments\n   -method            \
+            \ menu       [F84 distance model] Choose the method to\n             \
+            \                     use (Values: f (F84 distance model); k\n       \
+            \                           (Kimura 2-parameter distance); j\n       \
+            \                           (Jukes-Cantor distance); l (LogDet\n     \
+            \                             distance); s (Similarity table))\n  [-outfile]\
+            \           outfile    [*.fdnadist] Phylip distance matrix output\n  \
+            \                                file\n\n   Additional (Optional) qualifiers\
+            \ (* if not always prompted):\n*  -gammatype          menu       [No distribution\
+            \ parameters used] Gamma\n                                  distribution\
+            \ (Values: g (Gamma distributed\n                                  rates);\
+            \ i (Gamma+invariant sites); n (No\n                                 \
+            \ distribution parameters used))\n*  -ncategories        integer    [1]\
+            \ Number of substitution rate categories\n                           \
+            \       (Integer from 1 to 9)\n*  -rate               array      [1.0]\
+            \ Category rates\n*  -categories         properties File of substitution\
+            \ rate categories\n   -weights            properties Weights file\n* \
+            \ -gammacoefficient   float      [1] Coefficient of variation of substitution\n\
+            \                                  rate among sites (Number 0.001 or more)\n\
+            *  -invarfrac          float      [0.0] Fraction of invariant sites (Number\n\
+            \                                  from 0.000 to 1.000)\n*  -ttratio \
+            \           float      [2.0] Transition/transversion ratio (Number\n \
+            \                                 0.001 or more)\n*  -[no]freqsfrom  \
+            \    toggle     [Y] Use empirical base frequencies from\n            \
+            \                      seqeunce input\n*  -basefreq           array  \
+            \    [0.25 0.25 0.25 0.25] Base frequencies for A\n                  \
+            \                C G T/U (use blanks to separate)\n   -lower         \
+            \     boolean    [N] Output as a lower triangular distance\n         \
+            \                         matrix\n   -humanreadable      boolean    [@($(method)==s?Y:N)]\
+            \ Output as a\n                                  human-readable distance\
+            \ matrix\n   -printdata          boolean    [N] Print data at start of\
+            \ run\n   -[no]progress       boolean    [Y] Print indications of progress\
+            \ of run\n\n   Advanced (Unprompted) qualifiers: (none)\n   General qualifiers:\n\
+            \   -help               boolean    Report command line options and exit.\
+            \ More\n                                  information on associated and\
+            \ general\n                                  qualifiers can be found with\
+            \ -help -verbose\n\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - _fdnadist
+          - alignments
+          positional:
+          - !Positional
+            description: 'Additional (Optional) qualifiers (* if not always prompted):'
+            position: 0
+            name: file
+            optional: false
+          - !Positional
+            description: -humanreadable      boolean    [@($(method)==s?Y:N)] Output
+              as a
+            position: 0
+            name: matrix
+            optional: false
+          named:
+          - !Flag
+            description: "menu       [F84 distance model] Choose the method to\nuse\
+              \ (Values: f (F84 distance model); k\n(Kimura 2-parameter distance);\
+              \ j\n(Jukes-Cantor distance); l (LogDet\ndistance); s (Similarity table))"
+            synonyms:
+            - -method
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: properties Weights file
+            synonyms:
+            - -weights
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: boolean    [N] Output as a lower triangular distance
+            synonyms:
+            - -lower
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: boolean    [N] Print data at start of run
+            synonyms:
+            - -printdata
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: "boolean    Report command line options and exit. More\n\
+              information on associated and general\nqualifiers can be found with\
+              \ -help -verbose\n"
+            synonyms:
+            - -help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Nucleic acid sequence distance matrix program\nVersion: EMBOSS:6.5.7.0\
+            \ PHYLIPNEW:3.69.650\n\n   Standard (Mandatory) qualifiers:\n  [-sequence]\
+            \          seqsetall  [alignments] File containing one or more\n     \
+            \                             sequence alignments\n   -method        \
+            \     menu       [F84 distance model] Choose the method to\n         \
+            \                         use (Values: f (F84 distance model); k\n   \
+            \                               (Kimura 2-parameter distance); j\n   \
+            \                               (Jukes-Cantor distance); l (LogDet\n \
+            \                                 distance); s (Similarity table))\n \
+            \ [-outfile]           outfile    [*.fdnadist] Phylip distance matrix\
+            \ output\n                                  file\n\n   Additional (Optional)\
+            \ qualifiers (* if not always prompted):\n*  -gammatype          menu\
+            \       [No distribution parameters used] Gamma\n                    \
+            \              distribution (Values: g (Gamma distributed\n          \
+            \                        rates); i (Gamma+invariant sites); n (No\n  \
+            \                                distribution parameters used))\n*  -ncategories\
+            \        integer    [1] Number of substitution rate categories\n     \
+            \                             (Integer from 1 to 9)\n*  -rate        \
+            \       array      [1.0] Category rates\n*  -categories         properties\
+            \ File of substitution rate categories\n   -weights            properties\
+            \ Weights file\n*  -gammacoefficient   float      [1] Coefficient of variation\
+            \ of substitution\n                                  rate among sites\
+            \ (Number 0.001 or more)\n*  -invarfrac          float      [0.0] Fraction\
+            \ of invariant sites (Number\n                                  from 0.000\
+            \ to 1.000)\n*  -ttratio            float      [2.0] Transition/transversion\
+            \ ratio (Number\n                                  0.001 or more)\n* \
+            \ -[no]freqsfrom      toggle     [Y] Use empirical base frequencies from\n\
+            \                                  seqeunce input\n*  -basefreq      \
+            \     array      [0.25 0.25 0.25 0.25] Base frequencies for A\n      \
+            \                            C G T/U (use blanks to separate)\n   -lower\
+            \              boolean    [N] Output as a lower triangular distance\n\
+            \                                  matrix\n   -humanreadable      boolean\
+            \    [@($(method)==s?Y:N)] Output as a\n                             \
+            \     human-readable distance matrix\n   -printdata          boolean \
+            \   [N] Print data at start of run\n   -[no]progress       boolean   \
+            \ [Y] Print indications of progress of run\n\n   Advanced (Unprompted)\
+            \ qualifiers: (none)\n   General qualifiers:\n   -help               boolean\
+            \    Report command line options and exit. More\n                    \
+            \              information on associated and general\n               \
+            \                   qualifiers can be found with -help -verbose\n\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: "boolean    Report command line options and exit. More\ninformation\
+            \ on associated and general\nqualifiers can be found with -help -verbose\n"
+          synonyms:
+          - -help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "Nucleic acid sequence distance matrix program\nVersion: EMBOSS:6.5.7.0\
+          \ PHYLIPNEW:3.69.650\n\n   Standard (Mandatory) qualifiers:\n  [-sequence]\
+          \          seqsetall  File containing one or more sequence\n           \
+          \                       alignments\n   -method             menu       [F84\
+          \ distance model] Choose the method to\n                               \
+          \   use (Values: f (F84 distance model); k\n                           \
+          \       (Kimura 2-parameter distance); j\n                             \
+          \     (Jukes-Cantor distance); l (LogDet\n                             \
+          \     distance); s (Similarity table))\n  [-outfile]           outfile \
+          \   [*.fdnadist] Phylip distance matrix output\n                       \
+          \           file\n\n   Additional (Optional) qualifiers (* if not always\
+          \ prompted):\n*  -gammatype          menu       [No distribution parameters\
+          \ used] Gamma\n                                  distribution (Values: g\
+          \ (Gamma distributed\n                                  rates); i (Gamma+invariant\
+          \ sites); n (No\n                                  distribution parameters\
+          \ used))\n*  -ncategories        integer    [1] Number of substitution rate\
+          \ categories\n                                  (Integer from 1 to 9)\n\
+          *  -rate               array      [1.0] Category rates\n*  -categories \
+          \        properties File of substitution rate categories\n   -weights  \
+          \          properties Weights file\n*  -gammacoefficient   float      [1]\
+          \ Coefficient of variation of substitution\n                           \
+          \       rate among sites (Number 0.001 or more)\n*  -invarfrac         \
+          \ float      [0.0] Fraction of invariant sites (Number\n               \
+          \                   from 0.000 to 1.000)\n*  -ttratio            float \
+          \     [2.0] Transition/transversion ratio (Number\n                    \
+          \              0.001 or more)\n*  -[no]freqsfrom      toggle     [Y] Use\
+          \ empirical base frequencies from\n                                  seqeunce\
+          \ input\n*  -basefreq           array      [0.25 0.25 0.25 0.25] Base frequencies\
+          \ for A\n                                  C G T/U (use blanks to separate)\n\
+          \   -lower              boolean    [N] Output as a lower triangular distance\n\
+          \                                  matrix\n   -humanreadable      boolean\
+          \    [@($(method)==s?Y:N)] Output as a\n                               \
+          \   human-readable distance matrix\n   -printdata          boolean    [N]\
+          \ Print data at start of run\n   -[no]progress       boolean    [Y] Print\
+          \ indications of progress of run\n\n   Advanced (Unprompted) qualifiers:\
+          \ (none)\n   General qualifiers:\n   -help               boolean    Report\
+          \ command line options and exit. More\n                                \
+          \  information on associated and general\n                             \
+          \     qualifiers can be found with -help -verbose\n\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -162,12 +410,9 @@ subcommands:
         \ and exit. More\n                                  information on associated\
         \ and general\n                                  qualifiers can be found with\
         \ -help -verbose\n\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - _fdnadist
-      - alignments
+      command: *id005
       positional:
       - !Positional
         description: 'Additional (Optional) qualifiers (* if not always prompted):'
@@ -259,13 +504,7 @@ subcommands:
         \ -help -verbose\n\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: "boolean    Report command line options and exit. More\ninformation\
-        \ on associated and general\nqualifiers can be found with -help -verbose\n"
-      synonyms:
-      - -help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "Nucleic acid sequence distance matrix program\nVersion: EMBOSS:6.5.7.0\
@@ -394,7 +633,7 @@ subcommands:
     - -printdata
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id006
   subcommands: []
   usage: []
   help_flag: !Flag

@@ -1,0 +1,221 @@
+!Command
+command:
+- obiuniq
+positional: []
+named:
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Attributes to merge
+  synonyms:
+  - -m
+  - --merge
+  args: !SimpleFlagArg
+    name: TAG NAME
+  optional: true
+- !Flag
+  description: Add the merged key with all ids of merged sequences
+  synonyms:
+  - -i
+  - --merge-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Add one attribute to the list of attributes used to\ngroup sequences\
+    \ before dereplication (option can be\nused several times)"
+  synonyms:
+  - -c
+  - --category-attribute
+  args: !SimpleFlagArg
+    name: Attribute Name
+  optional: true
+- !Flag
+  description: "Dereplication is done based on prefix matching: (i)\nThe shortest\
+    \ sequence of each group is a prefix of any\nsequence of its group (ii) Two shortest\
+    \ sequences of\nany couple of groups are not theprefix of the other\none"
+  synonyms:
+  - -p
+  - --prefix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ecoPCR taxonomy Database name
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: NCBI Taxonomy dump repository name
+  synonyms:
+  - -t
+  - --taxonomy-dump
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: skip the N first sequences
+  synonyms:
+  - --skip
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: treat only N sequences
+  synonyms:
+  - --only
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Input file is in genbank format
+  synonyms:
+  - --genbank
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is in embl format
+  synonyms:
+  - --embl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip sequence entries with parse error
+  synonyms:
+  - --skip-on-error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fasta nucleic format (including\nobitools fasta extentions)"
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is in ecopcr format
+  synonyms:
+  - --ecopcr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fasta format (but more tolerant to\nformat variant)"
+  synonyms:
+  - --raw-fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in sanger fastq nucleic format (standard\nfastq)"
+  synonyms:
+  - --sanger
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fastq nucleic format produced by\nsolexa sequencer"
+  synonyms:
+  - --solexa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is an ecopcr database
+  synonyms:
+  - --ecopcrdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file contains nucleic sequences
+  synonyms:
+  - --nuc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file contains protein sequences
+  synonyms:
+  - --prot
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: \n:py:mod:`obiuniq`: groups and dereplicates sequences  \n====================================================\n\
+  \n.. codeauthor:: Eric Coissac <eric.coissac@metabarcoding.org>\n\nThe :py:mod:`obiuniq`\
+  \ command is in some way analog to the standard Unix ``uniq -c`` command.\n\nInstead\
+  \ of working text line by text line as the standard Unix tool, the processing is\
+  \ done on \nsequence records. \n\nA sequence record is a complex object composed\
+  \ of an identifier, a set of \nattributes (``key=value``), a definition, and the\
+  \ sequence itself. \n\nThe :py:mod:`obiuniq` command groups together sequence records.\
+  \ Then, for each group, a sequence \nrecord is printed.\n\nA group is defined by\
+  \ the sequence and optionally by the values of a set of attributes \nspecified with\
+  \ the ``-c`` option.\n\nAs the identifier, the set of attributes (``key=value``)\
+  \ and the definition of the sequence \nrecords that are grouped together may be\
+  \ different, two options (``-m`` and ``-i``) \nallow refining how these parts of\
+  \ the records are reported.\n\n    - By default, only attributes with identical\
+  \ values \n      within a group of sequence records are kept.\n\n    - A ``count``\
+  \ attribute is set to the total number of sequence records for each group.\n   \
+  \   \n    - For each attribute specified by the ``-m`` option, a new attribute whose\
+  \ key is prefixed \n      by ``merged_`` is created. These new attributes contain\
+  \ the number of times each value\n      occurs within the group of sequence records.\
+  \ \n    \n:py:mod:`obiuniq` and taxonomic information\n-------------------------------------------\n\
+  \    \nWhen a taxonomy is loaded (``-d`` or ``-t`` options), the ``merged_taxid``\
+  \ \nattribute is created and records the number of times each *taxid* has been found\
+  \ in the \ngroup (it may be empty if no sequence record has a *taxid* attribute\
+  \ in the group). \nIn addition, a set of taxonomy-related attributes are generated\
+  \ for each group having at \nleast one sequence record with a *taxid* attribute.\
+  \ The *taxid* attribute of the sequence\ngroup is set to the last common ancestor\
+  \ of the *taxids* of the group. All other taxonomy-related \nattributes created\
+  \ (``species``, ``genus``, ``family``, ``species_name``, ``genus_name``, \n``family_name``,\
+  \ ``rank``, ``scientific_name``) give information on the last common ancestor.\n\
+  \  \n\n\n***********\n* Options *\n***********\n  -h, --help            show this\
+  \ help message and exit\n  --DEBUG               Set logging in debug mode\n  --without-progress-bar\n\
+  \                        desactivate progress bar\n\n  ****************************\n\
+  \  * Obiuniq specific options *\n  ****************************\n    -m <TAG NAME>,\
+  \ --merge=<TAG NAME>\n                        Attributes to merge\n    -i, --merge-ids\
+  \     Add the merged key with all ids of merged sequences\n    -c <Attribute Name>,\
+  \ --category-attribute=<Attribute Name>\n                        Add one attribute\
+  \ to the list of attributes used to\n                        group sequences before\
+  \ dereplication (option can be\n                        used several times)\n  \
+  \  -p, --prefix        Dereplication is done based on prefix matching: (i)\n   \
+  \                     The shortest sequence of each group is a prefix of any\n \
+  \                       sequence of its group (ii) Two shortest sequences of\n \
+  \                       any couple of groups are not theprefix of the other\n  \
+  \                      one\n\n  ****************************\n  * Taxonomy loading\
+  \ options *\n  ****************************\n    -d <FILENAME>, --database=<FILENAME>\n\
+  \                        ecoPCR taxonomy Database name\n    -t <FILENAME>, --taxonomy-dump=<FILENAME>\n\
+  \                        NCBI Taxonomy dump repository name\n\n  *************************************\n\
+  \  * Restriction to a sub-part options *\n  *************************************\n\
+  \    Allow to limit analysis to a sub-part of the data file\n\n    --skip=<N>  \
+  \        skip the N first sequences\n    --only=<N>          treat only N sequences\n\
+  \n  ************************\n  * Input format options *\n  ************************\n\
+  \    If not specified, a test is done to determine the file format\n\n    --genbank\
+  \           Input file is in genbank format\n    --embl              Input file\
+  \ is in embl format\n    --skip-on-error     Skip sequence entries with parse error\n\
+  \    --fasta             Input file is in fasta nucleic format (including\n    \
+  \                    obitools fasta extentions)\n    --ecopcr            Input file\
+  \ is in ecopcr format\n    --raw-fasta         Input file is in fasta format (but\
+  \ more tolerant to\n                        format variant)\n    --sanger      \
+  \      Input file is in sanger fastq nucleic format (standard\n                \
+  \        fastq)\n    --solexa            Input file is in fastq nucleic format produced\
+  \ by\n                        solexa sequencer\n    --ecopcrdb          Input file\
+  \ is an ecopcr database\n    --nuc               Input file contains nucleic sequences\n\
+  \    --prot              Input file contains protein sequences\n"
+generated_using:
+- --help

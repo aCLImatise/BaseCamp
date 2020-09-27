@@ -115,7 +115,7 @@ subcommands:
     - --impute
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -229,7 +229,447 @@ subcommands:
         - --impute
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: DATA_MATRIX
+            optional: true
+          named:
+          - !Flag
+            description: '[ERROR] --output [OUTPUT] [--json] [--sql]'
+            synonyms:
+            - --error
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[DATA_MATRIX], -xd [DATA_MATRIX]\nPath to XCMS data matrix\
+              \ file"
+            synonyms:
+            - --data-matrix
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[SAMPLE_METADATA], -xs [SAMPLE_METADATA]\nPath to XCMS sample\
+              \ metadata file"
+            synonyms:
+            - --sample-metadata
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[VARIABLE_METADATA], -xv [VARIABLE_METADATA]\nPath to XCMS\
+              \ variable metadata file"
+            synonyms:
+            - --variable-metadata
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[OUTPUT], -o [OUTPUT]\nSpecify output file path"
+            synonyms:
+            - --output
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set JSON flag to save JSON output
+            synonyms:
+            - --json
+            - -j
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set SQL flag to save SQL output
+            synonyms:
+            - --sql
+            - -s
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set metadata flag to save argument metadata
+            synonyms:
+            - --metadata
+            - -m
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[DATABASE], -db [DATABASE]\nDefine path to custom database\
+              \ of known formula-mass\npairs"
+            synonyms:
+            - --database
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[PREFIX]     Define path prefix to support files (\"d3.html\"\
+              \ and\ndatabase directory)"
+            synonyms:
+            - --prefix
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Set flag to force polarity of all features to positive\n\
+              or negative"
+            synonyms:
+            - --polarity
+            - -p
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? negative
+                ? positive
+            optional: true
+          - !Flag
+            description: "Set flag if input data contains neutral feature mass\ninstead\
+              \ of mz"
+            synonyms:
+            - --neutral
+            - -n
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set flag to keep features with multiple predictions
+            synonyms:
+            - --alternate
+            - -a
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Set flag to impute \"1\" for missing charge information\n"
+            synonyms:
+            - --impute-charge
+            - --impute
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: vkmz w4m-xcms [-h] --data-matrix [DATA_MATRIX] --sample-metadata\n\
+            \                     [SAMPLE_METADATA] --variable-metadata [VARIABLE_METADATA]\n\
+            \                     --error [ERROR] --output [OUTPUT] [--json] [--sql]\n\
+            \                     [--metadata] [--database [DATABASE]] [--prefix [PREFIX]]\n\
+            \                     [--polarity {positive,negative}] [--neutral]\n \
+            \                    [--alternate] [--impute-charge]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  --data-matrix\
+            \ [DATA_MATRIX], -xd [DATA_MATRIX]\n                        Path to XCMS\
+            \ data matrix file\n  --sample-metadata [SAMPLE_METADATA], -xs [SAMPLE_METADATA]\n\
+            \                        Path to XCMS sample metadata file\n  --variable-metadata\
+            \ [VARIABLE_METADATA], -xv [VARIABLE_METADATA]\n                     \
+            \   Path to XCMS variable metadata file\n  --error [ERROR], -e [ERROR]\n\
+            \                        Mass error of MS data in parts-per-million\n\
+            \  --output [OUTPUT], -o [OUTPUT]\n                        Specify output\
+            \ file path\n  --json, -j            Set JSON flag to save JSON output\n\
+            \  --sql, -s             Set SQL flag to save SQL output\n  --metadata,\
+            \ -m        Set metadata flag to save argument metadata\n  --database\
+            \ [DATABASE], -db [DATABASE]\n                        Define path to custom\
+            \ database of known formula-mass\n                        pairs\n  --prefix\
+            \ [PREFIX]     Define path prefix to support files (\"d3.html\" and\n\
+            \                        database directory)\n  --polarity {positive,negative},\
+            \ -p {positive,negative}\n                        Set flag to force polarity\
+            \ of all features to positive\n                        or negative\n \
+            \ --neutral, -n         Set flag if input data contains neutral feature\
+            \ mass\n                        instead of mz\n  --alternate, -a     \
+            \  Set flag to keep features with multiple predictions\n  --impute-charge,\
+            \ --impute\n                        Set flag to impute \"1\" for missing\
+            \ charge information\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id005
+          - vkmz
+          - tabular
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: ERROR
+            optional: true
+          - !Positional
+            description: ''
+            position: 1
+            name: OUTPUT
+            optional: true
+          named:
+          - !Flag
+            description: Path to tabular file.
+            synonyms:
+            - --input
+            - -i
+            args: !SimpleFlagArg
+              name: INPUT
+            optional: true
+          - !Flag
+            description: "[ERROR], -e [ERROR]\nMass error of MS data in parts-per-million"
+            synonyms:
+            - --error
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[OUTPUT], -o [OUTPUT]\nSpecify output file path"
+            synonyms:
+            - --output
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set JSON flag to save JSON output
+            synonyms:
+            - --json
+            - -j
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set SQL flag to save SQL output
+            synonyms:
+            - --sql
+            - -s
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set metadata flag to save argument metadata
+            synonyms:
+            - --metadata
+            - -m
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[DATABASE], -db [DATABASE]\nDefine path to custom database\
+              \ of known formula-mass\npairs"
+            synonyms:
+            - --database
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[PREFIX]     Define path prefix to support files (\"d3.html\"\
+              \ and\ndatabase directory)"
+            synonyms:
+            - --prefix
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Set flag to force polarity of all features to positive\n\
+              or negative"
+            synonyms:
+            - --polarity
+            - -p
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? negative
+                ? positive
+            optional: true
+          - !Flag
+            description: "Set flag if input data contains neutral feature mass\ninstead\
+              \ of mz"
+            synonyms:
+            - --neutral
+            - -n
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set flag to keep features with multiple predictions
+            synonyms:
+            - --alternate
+            - -a
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Set flag to impute \"1\" for missing charge information\n"
+            synonyms:
+            - --impute-charge
+            - --impute
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: vkmz tabular [-h] --input INPUT --error [ERROR] --output\
+            \ [OUTPUT]\n                    [--json] [--sql] [--metadata] [--database\
+            \ [DATABASE]]\n                    [--prefix [PREFIX]] [--polarity {positive,negative}]\n\
+            \                    [--neutral] [--alternate] [--impute-charge]\n\noptional\
+            \ arguments:\n  -h, --help            show this help message and exit\n\
+            \  --input INPUT, -i INPUT\n                        Path to tabular file.\n\
+            \  --error [ERROR], -e [ERROR]\n                        Mass error of\
+            \ MS data in parts-per-million\n  --output [OUTPUT], -o [OUTPUT]\n   \
+            \                     Specify output file path\n  --json, -j         \
+            \   Set JSON flag to save JSON output\n  --sql, -s             Set SQL\
+            \ flag to save SQL output\n  --metadata, -m        Set metadata flag to\
+            \ save argument metadata\n  --database [DATABASE], -db [DATABASE]\n  \
+            \                      Define path to custom database of known formula-mass\n\
+            \                        pairs\n  --prefix [PREFIX]     Define path prefix\
+            \ to support files (\"d3.html\" and\n                        database\
+            \ directory)\n  --polarity {positive,negative}, -p {positive,negative}\n\
+            \                        Set flag to force polarity of all features to\
+            \ positive\n                        or negative\n  --neutral, -n     \
+            \    Set flag if input data contains neutral feature mass\n          \
+            \              instead of mz\n  --alternate, -a       Set flag to keep\
+            \ features with multiple predictions\n  --impute-charge, --impute\n  \
+            \                      Set flag to impute \"1\" for missing charge information\n"
+          generated_using: *id004
+        - !Command
+          command: &id006
+          - vkmz
+          - formula
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: OUTPUT
+            optional: true
+          named:
+          - !Flag
+            description: Path to tabular formula file.
+            synonyms:
+            - --input
+            - -i
+            args: !SimpleFlagArg
+              name: INPUT
+            optional: true
+          - !Flag
+            description: "[OUTPUT], -o [OUTPUT]\nSpecify output file path"
+            synonyms:
+            - --output
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set JSON flag to save JSON output
+            synonyms:
+            - --json
+            - -j
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set SQL flag to save SQL output
+            synonyms:
+            - --sql
+            - -s
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set metadata flag to save argument metadata
+            synonyms:
+            - --metadata
+            - -m
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[DATABASE], -db [DATABASE]\nDefine path to custom database\
+              \ of known formula-mass\npairs"
+            synonyms:
+            - --database
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "[PREFIX]     Define path prefix to support files (\"d3.html\"\
+              \ and\ndatabase directory)"
+            synonyms:
+            - --prefix
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Set flag to force polarity of all features to positive\n\
+              or negative"
+            synonyms:
+            - --polarity
+            - -p
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? negative
+                ? positive
+            optional: true
+          - !Flag
+            description: "Set flag if input data contains neutral feature mass\ninstead\
+              \ of mz"
+            synonyms:
+            - --neutral
+            - -n
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Set flag to keep features with multiple predictions
+            synonyms:
+            - --alternate
+            - -a
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Set flag to impute \"1\" for missing charge information\n"
+            synonyms:
+            - --impute-charge
+            - --impute
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: vkmz formula [-h] --input INPUT --output [OUTPUT] [--json]\
+            \ [--sql]\n                    [--metadata] [--database [DATABASE]] [--prefix\
+            \ [PREFIX]]\n                    [--polarity {positive,negative}] [--neutral]\
+            \ [--alternate]\n                    [--impute-charge]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  --input INPUT,\
+            \ -i INPUT\n                        Path to tabular formula file.\n  --output\
+            \ [OUTPUT], -o [OUTPUT]\n                        Specify output file path\n\
+            \  --json, -j            Set JSON flag to save JSON output\n  --sql, -s\
+            \             Set SQL flag to save SQL output\n  --metadata, -m      \
+            \  Set metadata flag to save argument metadata\n  --database [DATABASE],\
+            \ -db [DATABASE]\n                        Define path to custom database\
+            \ of known formula-mass\n                        pairs\n  --prefix [PREFIX]\
+            \     Define path prefix to support files (\"d3.html\" and\n         \
+            \               database directory)\n  --polarity {positive,negative},\
+            \ -p {positive,negative}\n                        Set flag to force polarity\
+            \ of all features to positive\n                        or negative\n \
+            \ --neutral, -n         Set flag if input data contains neutral feature\
+            \ mass\n                        instead of mz\n  --alternate, -a     \
+            \  Set flag to keep features with multiple predictions\n  --impute-charge,\
+            \ --impute\n                        Set flag to impute \"1\" for missing\
+            \ charge information\n"
+          generated_using: *id004
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: vkmz [-h] {tabular,w4m-xcms,formula} ...\n\npositional\
+          \ arguments:\n  {tabular,w4m-xcms,formula}\n                        Select\
+          \ mode:\n    tabular             Tabular data mode\n    w4m-xcms       \
+          \     W4M-XCMS data mode\n    formula             Annotated molecular formula\
+          \ mode\n\noptional arguments:\n  -h, --help            show this help message\
+          \ and exit\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -268,12 +708,9 @@ subcommands:
         \  --alternate, -a       Set flag to keep features with multiple predictions\n\
         \  --impute-charge, --impute\n                        Set flag to impute \"\
         1\" for missing charge information\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id005
-      - vkmz
-      - tabular
+      command: *id005
       positional:
       - !Positional
         description: ''
@@ -408,9 +845,7 @@ subcommands:
         1\" for missing charge information\n"
       generated_using: *id004
     - !Command
-      command: &id006
-      - vkmz
-      - formula
+      command: *id006
       positional:
       - !Positional
         description: ''
@@ -533,13 +968,7 @@ subcommands:
         1\" for missing charge information\n"
       generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: vkmz [-h] {tabular,w4m-xcms,formula} ...\n\npositional arguments:\n\
@@ -687,7 +1116,7 @@ subcommands:
     - --impute
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -811,7 +1240,7 @@ subcommands:
     - --impute
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

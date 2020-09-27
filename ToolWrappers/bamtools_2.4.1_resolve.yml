@@ -1,0 +1,196 @@
+!Command
+command:
+- bamtools-2.4.1
+- resolve
+positional:
+- !Positional
+  description: 'General Resolve Options (available in all modes):'
+  position: 0
+  name: purposes.
+  optional: false
+named:
+- !Flag
+  description: the input BAM file(s) [stdin]
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: BAM filename
+  optional: true
+- !Flag
+  description: the output BAM file [stdout]
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: BAM filename
+  optional: true
+- !Flag
+  description: "input/output stats file,\ndepending on selected mode (see below).\n\
+    This file is human-readable, storing\nfragment length data generated per read\n\
+    group, as well as the options used to\nconfigure the -makeStats mode"
+  synonyms:
+  - -stats
+  args: !SimpleFlagArg
+    name: STATS filename
+  optional: true
+- !Flag
+  description: "if results are sent to stdout\n(like when piping to another tool),\n\
+    default behavior is to leave output\nuncompressed.Use this flag to override and\n\
+    force compression. This feature is\ndisabled in -makeStats mode."
+  synonyms:
+  - -forceCompression
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "generates a fragment-length\nstats file from the input BAM. Data is\n\
+    written to file specified using the -stats\noption. MarkPairs Mode Settings are\n\
+    DISABLED."
+  synonyms:
+  - -makeStats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "generates an output BAM with\nalignments marked with proper-pair status.\n\
+    Stats data is read from file specified\nusing the -stats option. MakeStats Mode\n\
+    Settings are DISABLED"
+  synonyms:
+  - -markPairs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: combines the -makeStats &
+  synonyms:
+  - -twoPass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum map quality. Used in
+  synonyms:
+  - -minMQ
+  args: !SimpleFlagArg
+    name: unsigned short
+  optional: true
+- !Flag
+  description: "confidence interval. Set\nmin/max fragment lengths such that we\n\
+    capture this fraction of pairs"
+  synonyms:
+  - -ci
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "unused model threshold. The\nresolve tool considers 8 possible\norientation\
+    \ models for pairs. The top 2\nare selected for later use when actually\nmarking\
+    \ alignments. This value determines\nthe cutoff for marking a read group as\n\
+    ambiguous. Meaning that if the ratio of\nthe number of alignments from bottom\
+    \ 6\nmodels to the top 2 is greater than this\nthreshold, then the read group\
+    \ is flagged\nas ambiguous. By default, NO alignments\nfrom ambiguous read groups\
+    \ will be marked\nas proper pairs. You may override this\nbehavior with the -force\
+    \ option in\n-markPairs mode"
+  synonyms:
+  - -umt
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "forces all read groups to be\nmarked according to their top 2\n'orientation\
+    \ models'. When generating\nstats, the 2 (out of 8 possible) models\nwith the\
+    \ most observations are chosen as\nthe top models for each read group. If the\n\
+    remaining 6 models account for more than\nsome threshold ([default=10%], see -umt),\n\
+    then the read group is marked as\nambiguous. The default behavior is that\nfor\
+    \ an ambiguous read group, NONE of its\nalignments are marked as proper-pairs.\
+    \ By\nsetting this option, a read group's\nambiguity flag will be ignored, and\
+    \ all of\nits alignments will be compared to the top\n2 models."
+  synonyms:
+  - -force
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: shows this help text
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Description: resolves paired-end reads (marking the IsProperPair flag\
+  \ as needed).\n\nUsage: bamtools resolve <mode> [options] [-in <filename>] [-out\
+  \ <filename> | [-forceCompression] ] [-stats <filename>]\n\nInput & Output:\n  -in\
+  \ <BAM filename>                the input BAM file(s) [stdin]\n  -out <BAM filename>\
+  \               the output BAM file [stdout]\n  -stats <STATS filename>        \
+  \   input/output stats file,\n                                    depending on selected\
+  \ mode (see below).\n                                    This file is human-readable,\
+  \ storing\n                                    fragment length data generated per\
+  \ read\n                                    group, as well as the options used to\n\
+  \                                    configure the -makeStats mode\n  -forceCompression\
+  \                 if results are sent to stdout\n                              \
+  \      (like when piping to another tool),\n                                   \
+  \ default behavior is to leave output\n                                    uncompressed.Use\
+  \ this flag to override and\n                                    force compression.\
+  \ This feature is\n                                    disabled in -makeStats mode.\n\
+  \nResolve Modes (must select ONE of the following):\n  -makeStats              \
+  \          generates a fragment-length\n                                    stats\
+  \ file from the input BAM. Data is\n                                    written\
+  \ to file specified using the -stats\n                                    option.\
+  \ MarkPairs Mode Settings are\n                                    DISABLED.\n \
+  \ -markPairs                        generates an output BAM with\n             \
+  \                       alignments marked with proper-pair status.\n           \
+  \                         Stats data is read from file specified\n             \
+  \                       using the -stats option. MakeStats Mode\n              \
+  \                      Settings are DISABLED\n  -twoPass                       \
+  \   combines the -makeStats &\n                                    -markPairs modes\
+  \ into a single command.\n                                    However, due to the\
+  \ two-pass nature of\n                                    paired-end resolution,\
+  \ piping BAM data via\n                                    stdin is DISABLED. You\
+  \ must supply an\n                                    explicit input BAM file. Output\
+  \ BAM may be\n                                    piped to stdout, however, if desired.\
+  \ All\n                                    MakeStats & MarkPairs Mode Settings are\n\
+  \                                    available. The intermediate stats file is\n\
+  \                                    not necessary, but if the -stats options\n\
+  \                                    is used, then one will be generated. You\n\
+  \                                    may find this useful for documentation\n  \
+  \                                  purposes.\n\nGeneral Resolve Options (available\
+  \ in all modes):\n  -minMQ <unsigned short>           minimum map quality. Used\
+  \ in\n                                    -makeStats mode as a heuristic for\n \
+  \                                   determining a mate's uniqueness. Used in\n \
+  \                                   -markPairs mode as a filter for marking\n  \
+  \                                  candidate proper pairs.\n\nMakeStats Mode Options\
+  \ (disabled in -markPairs mode):\n  -ci <double>                      confidence\
+  \ interval. Set\n                                    min/max fragment lengths such\
+  \ that we\n                                    capture this fraction of pairs\n\
+  \  -umt <double>                     unused model threshold. The\n             \
+  \                       resolve tool considers 8 possible\n                    \
+  \                orientation models for pairs. The top 2\n                     \
+  \               are selected for later use when actually\n                     \
+  \               marking alignments. This value determines\n                    \
+  \                the cutoff for marking a read group as\n                      \
+  \              ambiguous. Meaning that if the ratio of\n                       \
+  \             the number of alignments from bottom 6\n                         \
+  \           models to the top 2 is greater than this\n                         \
+  \           threshold, then the read group is flagged\n                        \
+  \            as ambiguous. By default, NO alignments\n                         \
+  \           from ambiguous read groups will be marked\n                        \
+  \            as proper pairs. You may override this\n                          \
+  \          behavior with the -force option in\n                                \
+  \    -markPairs mode\n\nMarkPairs Mode Options (disabled in -makeStats mode):\n\
+  \  -force                            forces all read groups to be\n            \
+  \                        marked according to their top 2\n                     \
+  \               'orientation models'. When generating\n                        \
+  \            stats, the 2 (out of 8 possible) models\n                         \
+  \           with the most observations are chosen as\n                         \
+  \           the top models for each read group. If the\n                       \
+  \             remaining 6 models account for more than\n                       \
+  \             some threshold ([default=10%], see -umt),\n                      \
+  \              then the read group is marked as\n                              \
+  \      ambiguous. The default behavior is that\n                               \
+  \     for an ambiguous read group, NONE of its\n                               \
+  \     alignments are marked as proper-pairs. By\n                              \
+  \      setting this option, a read group's\n                                   \
+  \ ambiguity flag will be ignored, and all of\n                                 \
+  \   its alignments will be compared to the top\n                               \
+  \     2 models.\n\nHelp:\n  --help, -h                        shows this help text\n"
+generated_using:
+- --help

@@ -1,0 +1,187 @@
+!Command
+command:
+- phenix.py
+- vcf2distancematrix
+positional: []
+named:
+- !Flag
+  description: "Path to the maxtrix output file in given format.\n[REQUIRED. default\
+    \ format is tab separated. use\n--format to change format]"
+  synonyms:
+  - --out
+  - -o
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: Path to the directory with .vcf files. Input option 1.
+  synonyms:
+  - --directory
+  - -d
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: List of VCF files to process. Input option 2.
+  synonyms:
+  - --input
+  - -i
+  args: !RepeatFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: "FASTA FILE, -a MULTI FASTA FILE\nMulti fasta file with whole genome\
+    \ input alignment.\nInput option 3."
+  synonyms:
+  - --alignment-input
+  args: !SimpleFlagArg
+    name: MULTI
+  optional: true
+- !Flag
+  description: "Method of recombination filtering. Either 'pairwise'\nor 'complete'\
+    \ ['pairwise']"
+  synonyms:
+  - --deletion
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Substituition model. Either 'number_of_differences',\n'jc69', 'k80',\
+    \ 'tn84' or 't93'\n['number_of_differences']"
+  synonyms:
+  - --substitution
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: FILE    Only include positions in BED file in the FASTA
+  synonyms:
+  - --include
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: FILE    Exclude any positions specified in the BED file.
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "Attempt to remove recombination from distance matrix.\n[don't]"
+  synonyms:
+  - --remove-recombination
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FILE, -g FASTA FILE\nReference genome used for SNP calling [Required\
+    \ for\nrecombination removal]."
+  synonyms:
+  - --refgenome
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "Name of reference genome in input alignment [Required\nif input option\
+    \ 3 is used and reference is not named\n'reference']."
+  synonyms:
+  - --refgenomename
+  - -n
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Density tyhreshold above mean density for relevant\npair. [1.0]."
+  synonyms:
+  - --threshold
+  - -k
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Number of threads to use. [1].
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Change format for output file. Available options csv,\ntsv and mega.\
+    \ [tsv]"
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Make an NJ tree and write it to the given file in\nnewick format.\
+    \ [Default: Don't make tree, only matrix]"
+  synonyms:
+  - --tree
+  - -t
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write additional files with information on removed\nrecombinant SNPs.\
+    \ [don't]\n"
+  synonyms:
+  - --with-stats
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: phenix.py vcf2distancematrix [-h]\n                           \
+  \         (--directory DIRECTORY | --input INPUT [INPUT ...] | --alignment-input\
+  \ MULTI FASTA FILE)\n                                    --out OUT [--deletion STRING]\n\
+  \                                    [--substitution STRING]\n                 \
+  \                   [--include BED FILE | --exclude BED FILE]\n                \
+  \                    [--remove-recombination]\n                                \
+  \    [--refgenome FASTA FILE]\n                                    [--refgenomename\
+  \ STRING]\n                                    [--threshold FLOAT] [--threads INT]\n\
+  \                                    [--format STRING] [--tree FILE]\n         \
+  \                           [--with-stats]\n\nCombine multiple VCFs into a distance\
+  \ matrix. Distance measures according to\nfive different models are available: *\
+  \ Number of differences * Jukes-Cantor\ndistance (jc69) * Tajima-Nei distance (k80)\
+  \ * Kimura 2-parameter distance\n(tn84) * Tamura 3-parameter distance (t93)\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ --directory DIRECTORY, -d DIRECTORY\n                        Path to the directory\
+  \ with .vcf files. Input option 1.\n  --input INPUT [INPUT ...], -i INPUT [INPUT\
+  \ ...]\n                        List of VCF files to process. Input option 2.\n\
+  \  --alignment-input MULTI FASTA FILE, -a MULTI FASTA FILE\n                   \
+  \     Multi fasta file with whole genome input alignment.\n                    \
+  \    Input option 3.\n  --out OUT, -o OUT     Path to the maxtrix output file in\
+  \ given format.\n                        [REQUIRED. default format is tab separated.\
+  \ use\n                        --format to change format]\n  --deletion STRING \
+  \    Method of recombination filtering. Either 'pairwise'\n                    \
+  \    or 'complete' ['pairwise']\n  --substitution STRING\n                     \
+  \   Substituition model. Either 'number_of_differences',\n                     \
+  \   'jc69', 'k80', 'tn84' or 't93'\n                        ['number_of_differences']\n\
+  \  --include BED FILE    Only include positions in BED file in the FASTA\n  --exclude\
+  \ BED FILE    Exclude any positions specified in the BED file.\n  --remove-recombination\n\
+  \                        Attempt to remove recombination from distance matrix.\n\
+  \                        [don't]\n  --refgenome FASTA FILE, -g FASTA FILE\n    \
+  \                    Reference genome used for SNP calling [Required for\n     \
+  \                   recombination removal].\n  --refgenomename STRING, -n STRING\n\
+  \                        Name of reference genome in input alignment [Required\n\
+  \                        if input option 3 is used and reference is not named\n\
+  \                        'reference'].\n  --threshold FLOAT, -k FLOAT\n        \
+  \                Density tyhreshold above mean density for relevant\n          \
+  \              pair. [1.0].\n  --threads INT         Number of threads to use. [1].\n\
+  \  --format STRING       Change format for output file. Available options csv,\n\
+  \                        tsv and mega. [tsv]\n  --tree FILE, -t FILE  Make an NJ\
+  \ tree and write it to the given file in\n                        newick format.\
+  \ [Default: Don't make tree, only matrix]\n  --with-stats          Write additional\
+  \ files with information on removed\n                        recombinant SNPs. [don't]\n"
+generated_using:
+- --help

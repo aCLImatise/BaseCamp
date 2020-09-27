@@ -1,0 +1,241 @@
+!Command
+command:
+- yara_mapper
+positional: []
+named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: Displays global statistics.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Displays extensive statistics for each batch of reads.
+  synonyms:
+  - -vv
+  - --very-verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify an output file. Default: write the file to standard output.\n\
+    Valid filetypes are: .sam[.*] and .bam, where * is any of the\nfollowing extensions:\
+    \ gz, bz2, and bgzf for transparent\n(de)compression."
+  synonyms:
+  - -o
+  - --output-file
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: "Specify an output format. Note: when specifying the option\n--output-file,\
+    \ the output format is taken from the filename\nextension. One of bam, sam, sam.bgzf,\
+    \ sam.gz, and sam.bz2. Default:\nsam."
+  synonyms:
+  - -f
+  - --output-format
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Specify a read group for all records in the SAM/BAM file. Default:\n\
+    none."
+  synonyms:
+  - -rg
+  - --read-group
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Specify whether to output secondary matches in the XA tag of the\n\
+    primary alignment, as separate secondary records, or to omit them.\nOne of tag,\
+    \ record, and omit. Default: tag."
+  synonyms:
+  - -sm
+  - --secondary-matches
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Compute and output co- and suboptimal match alignments. Ignored if\n\
+    '-sa omit' is set."
+  synonyms:
+  - -as
+  - --align-secondary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output alignments compatible with the Read Alignment BEnchMArk\n(RABEMA)."
+  synonyms:
+  - -ra
+  - --rabema-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Consider alignments within this percentual number of errors.\nIncrease\
+    \ this threshold to increase the number of mapped reads.\nDecrease this threshold\
+    \ to decrease the runtime. In range [0..10].\nDefault: 5."
+  synonyms:
+  - -e
+  - --error-rate
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Consider suboptimal alignments within this percentual number of\n\
+    errors from the optimal alignment. Increase this threshold to\nincrease the number\
+    \ of alternative alignments at the expense of\nruntime. In range [0..10]. Default:\
+    \ 0."
+  synonyms:
+  - -s
+  - --strata-rate
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Consider suboptimal alignments within this absolute number of errors\n\
+    from the optimal alignment. Increase this threshold to increase the\nnumber of\
+    \ alternative alignments at the expense of runtime. In range\n[0..127]. Default:\
+    \ 0."
+  synonyms:
+  - -sc
+  - --strata-count
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Sensitivity with respect to edit distance. Full sensitivity\nguarantees\
+    \ to find all considered alignments but increases runtime,\nlow sensitivity decreases\
+    \ runtime by breaking such guarantee. One of\nlow, high, and full. Default: high."
+  synonyms:
+  - -y
+  - --sensitivity
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'Expected library length. Default: autodetected. In range [1..inf].'
+  synonyms:
+  - -ll
+  - --library-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Deviation from the expected library length. Default: autodetected.\n\
+    In range [1..inf]."
+  synonyms:
+  - -ld
+  - --library-deviation
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Rescue unaligned ends within this percentual number of indels. In\n\
+    range [0..50]. Default: 25."
+  synonyms:
+  - -i
+  - --indel-rate
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Turn off the rescue of unaligned ends containing indels.
+  synonyms:
+  - -ni
+  - --no-indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the number of threads to use. In range [1..2048]. Default:\n\
+    8."
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "yara_mapper - Yara Mapper\n=========================\n\nSYNOPSIS\n   \
+  \ yara_mapper [OPTIONS] <REFERENCE INDEX PREFIX> <SE-READS FILE>\n    yara_mapper\
+  \ [OPTIONS] <REFERENCE INDEX PREFIX> <PE-READS FILE 1> <PE-READS\n    FILE 2>\n\n\
+  DESCRIPTION\n    Yara - Yet Another Read Aligner.\n\n    See http://www.seqan.de/projects/yara\
+  \ for more information.\n\n    (c) Copyright 2011-2014 by Enrico Siragusa.\n\n \
+  \   (c) Copyright 2013 by NVIDIA Corporation.\n\nREQUIRED ARGUMENTS\n    REFERENCE_INDEX_PREFIX\
+  \ INPUT_PREFIX\n          An indexed reference genome.\n    READS_FILE List of INPUT_FILE's\n\
+  \          Either one single-end or two paired-end / mate-pair read files.\n   \
+  \       Valid filetypes are: .sam[.*], .raw[.*], .gbk[.*], .frn[.*],\n         \
+  \ .fq[.*], .fna[.*], .ffn[.*], .fastq[.*], .fasta[.*], .faa[.*],\n          .fa[.*],\
+  \ .embl[.*], and .bam, where * is any of the following\n          extensions: gz,\
+  \ bz2, and bgzf for transparent (de)compression.\n\nOPTIONS\n    -h, --help\n  \
+  \        Display the help message.\n    --version-check BOOL\n          Turn this\
+  \ option off to disable version update notifications of the\n          application.\
+  \ One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\n          Default: 1.\n\
+  \    --version\n          Display version information.\n    -v, --verbose\n    \
+  \      Displays global statistics.\n    -vv, --very-verbose\n          Displays\
+  \ extensive statistics for each batch of reads.\n\n  Output Options:\n    -o, --output-file\
+  \ OUTPUT_FILE\n          Specify an output file. Default: write the file to standard\
+  \ output.\n          Valid filetypes are: .sam[.*] and .bam, where * is any of the\n\
+  \          following extensions: gz, bz2, and bgzf for transparent\n          (de)compression.\n\
+  \    -f, --output-format STRING\n          Specify an output format. Note: when\
+  \ specifying the option\n          --output-file, the output format is taken from\
+  \ the filename\n          extension. One of bam, sam, sam.bgzf, sam.gz, and sam.bz2.\
+  \ Default:\n          sam.\n    -rg, --read-group STRING\n          Specify a read\
+  \ group for all records in the SAM/BAM file. Default:\n          none.\n    -sm,\
+  \ --secondary-matches STRING\n          Specify whether to output secondary matches\
+  \ in the XA tag of the\n          primary alignment, as separate secondary records,\
+  \ or to omit them.\n          One of tag, record, and omit. Default: tag.\n    -as,\
+  \ --align-secondary\n          Compute and output co- and suboptimal match alignments.\
+  \ Ignored if\n          '-sa omit' is set.\n    -ra, --rabema-alignments\n     \
+  \     Output alignments compatible with the Read Alignment BEnchMArk\n         \
+  \ (RABEMA).\n\n  Mapping Options:\n    -e, --error-rate INTEGER\n          Consider\
+  \ alignments within this percentual number of errors.\n          Increase this threshold\
+  \ to increase the number of mapped reads.\n          Decrease this threshold to\
+  \ decrease the runtime. In range [0..10].\n          Default: 5.\n    -s, --strata-rate\
+  \ INTEGER\n          Consider suboptimal alignments within this percentual number\
+  \ of\n          errors from the optimal alignment. Increase this threshold to\n\
+  \          increase the number of alternative alignments at the expense of\n   \
+  \       runtime. In range [0..10]. Default: 0.\n    -sc, --strata-count INTEGER\n\
+  \          Consider suboptimal alignments within this absolute number of errors\n\
+  \          from the optimal alignment. Increase this threshold to increase the\n\
+  \          number of alternative alignments at the expense of runtime. In range\n\
+  \          [0..127]. Default: 0.\n    -y, --sensitivity STRING\n          Sensitivity\
+  \ with respect to edit distance. Full sensitivity\n          guarantees to find\
+  \ all considered alignments but increases runtime,\n          low sensitivity decreases\
+  \ runtime by breaking such guarantee. One of\n          low, high, and full. Default:\
+  \ high.\n\n  Paired-End Mapping Options:\n    -ll, --library-length INTEGER\n  \
+  \        Expected library length. Default: autodetected. In range [1..inf].\n  \
+  \  -ld, --library-deviation INTEGER\n          Deviation from the expected library\
+  \ length. Default: autodetected.\n          In range [1..inf].\n    -i, --indel-rate\
+  \ INTEGER\n          Rescue unaligned ends within this percentual number of indels.\
+  \ In\n          range [0..50]. Default: 25.\n    -ni, --no-indels\n          Turn\
+  \ off the rescue of unaligned ends containing indels.\n\n  Performance Options:\n\
+  \    -t, --threads INTEGER\n          Specify the number of threads to use. In range\
+  \ [1..2048]. Default:\n          8.\n\nVERSION\n    Last update: 2018-08-20_08:52:10_+0200\n\
+  \    yara_mapper version: 1.0.2 [a914e84]\n    SeqAn version: 2.4.1\n"
+generated_using:
+- --help

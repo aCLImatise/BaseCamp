@@ -1,0 +1,158 @@
+!Command
+command:
+- advntr
+- genotype
+positional:
+- !Positional
+  description: -o/--outfile <file>             file to write results. adVNTR writes
+    output to stdout if oufile is not
+  position: 0
+  name: Illumina
+  optional: false
+- !Positional
+  description: -of/--outfmt <format>           output format. Allowed values are {text,
+    bed} [text]
+  position: 1
+  name: specified.
+  optional: false
+named:
+- !Flag
+  description: alignment file in SAM/BAM/CRAM format
+  synonyms:
+  - -a/--alignment_file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "path to a FASTA-formatted reference file for CRAM files. It overrides\n\
+    filename specified in header, which is normally used to find the reference"
+  synonyms:
+  - -r/--reference_filename
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Fasta file containing raw reads
+  synonyms:
+  - -f/--fasta
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: set this flag if input file contains PacBio reads instead of Illumina
+    reads
+  synonyms:
+  - -p/--pacbio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set this flag if input file contains Nanopore MinION reads instead
+    of
+  synonyms:
+  - -n/--nanopore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set this flag to search for frameshifts in VNTR instead of copy number.\n\
+    Supported VNTR IDs: [25561, 519759]"
+  synonyms:
+  - -fs/--frameshift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set this flag to determine long expansion from PCR-free data
+  synonyms:
+  - -e/--expansion
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: average sequencing coverage in PCR-free sequencing
+  synonyms:
+  - -c/--coverage
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: set this flag if the organism is haploid
+  synonyms:
+  - --haploid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use naive approach for PacBio reads
+  synonyms:
+  - -naive/--naive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h/--help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: working directory for creating temporary files needed for computation
+  synonyms:
+  - --working_directory
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+  synonyms:
+  - -m/--models
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: number of threads [1]
+  synonyms:
+  - -t/--threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: set this flag to iteratively update the model
+  synonyms:
+  - -u/--update
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: comma-separated list of VNTR IDs
+  synonyms:
+  - -vid/--vntr_id
+  args: !SimpleFlagArg
+    name: text
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: advntr genotype [options]\n\nInput/output options:\n  -a/--alignment_file\
+  \ <file>      alignment file in SAM/BAM/CRAM format\n  -r/--reference_filename <file>\
+  \  path to a FASTA-formatted reference file for CRAM files. It overrides\n     \
+  \                             filename specified in header, which is normally used\
+  \ to find the reference\n  -f/--fasta <file>               Fasta file containing\
+  \ raw reads\n  -p/--pacbio                     set this flag if input file contains\
+  \ PacBio reads instead of Illumina reads\n  -n/--nanopore                   set\
+  \ this flag if input file contains Nanopore MinION reads instead of\n          \
+  \                        Illumina\n  -o/--outfile <file>             file to write\
+  \ results. adVNTR writes output to stdout if oufile is not\n                   \
+  \               specified.\n  -of/--outfmt <format>           output format. Allowed\
+  \ values are {text, bed} [text]\n\nAlgorithm options:\n  -fs/--frameshift      \
+  \          set this flag to search for frameshifts in VNTR instead of copy number.\n\
+  \                                  Supported VNTR IDs: [25561, 519759]\n  -e/--expansion\
+  \                  set this flag to determine long expansion from PCR-free data\n\
+  \  -c/--coverage <float>           average sequencing coverage in PCR-free sequencing\n\
+  \  --haploid                       set this flag if the organism is haploid\n  -naive/--naive\
+  \                  use naive approach for PacBio reads\n\nOther options:\n  -h/--help\
+  \                       show this help message and exit\n  --working_directory <path>\
+  \      working directory for creating temporary files needed for computation\n \
+  \ -m/--models <file>              VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]\n\
+  \  -t/--threads <int>              number of threads [1]\n  -u/--update        \
+  \             set this flag to iteratively update the model\n  -vid/--vntr_id <text>\
+  \           comma-separated list of VNTR IDs\n"
+generated_using:
+- --help

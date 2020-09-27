@@ -1,0 +1,283 @@
+!Command
+command:
+- haystack_motifs
+positional:
+- !Positional
+  description: "A bed file containing the target coordinates on the\ngenome of reference"
+  position: 0
+  name: bed_target_filename
+  optional: false
+- !Positional
+  description: "Genome assembly to use from UCSC (for example hg19,\nmm9, etc.)"
+  position: 1
+  name: genome_name
+  optional: false
+- !Positional
+  description: --c_g_bins C_G_BINS   Number of bins for the C+G density correction
+  position: 0
+  name: background
+  optional: false
+named:
+- !Flag
+  description: ANALYSIS- [Luca Pinello - lpinello@jimmy.harvard.edu]
+  synonyms:
+  - -MOTIF
+  args: !SimpleFlagArg
+    name: ENRICHMENT
+  optional: true
+- !Flag
+  description: "A bed file containing the backround coordinates on the\ngenome of\
+    \ reference (default random sampled regions\nfrom the genome)"
+  synonyms:
+  - --bed_bg_filename
+  args: !SimpleFlagArg
+    name: BED_BG_FILENAME
+  optional: true
+- !Flag
+  description: "Motifs database in MEME format (default JASPAR CORE\n2016)"
+  synonyms:
+  - --meme_motifs_filename
+  args: !SimpleFlagArg
+    name: MEME_MOTIFS_FILENAME
+  optional: true
+- !Flag
+  description: "Nucleotide probability for the background in MEME\nformat (default\
+    \ precomupted on the Genome)"
+  synonyms:
+  - --nucleotide_bg_filename
+  args: !SimpleFlagArg
+    name: NUCLEOTIDE_BG_FILENAME
+  optional: true
+- !Flag
+  description: "FIMO p-value for calling a motif hit significant\n(deafult: 1e-4)"
+  synonyms:
+  - --p_value
+  args: !SimpleFlagArg
+    name: P_VALUE
+  optional: true
+- !Flag
+  description: Disable the matching of the C+G density of the
+  synonyms:
+  - --no_c_g_correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mask repetitive sequences
+  synonyms:
+  - --mask_repetitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of target coordinates to use (default: all)'
+  synonyms:
+  - --n_target_coordinates
+  args: !SimpleFlagArg
+    name: N_TARGET_COORDINATES
+  optional: true
+- !Flag
+  description: "Use the entire background file (use only when the cg\ncorrection is\
+    \ disabled)"
+  synonyms:
+  - --use_entire_bg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Column in the bedfile that represents the score\n(default: 5)"
+  synonyms:
+  - --bed_score_column
+  args: !SimpleFlagArg
+    name: BED_SCORE_COLUMN
+  optional: true
+- !Flag
+  description: 'Background size/Target size ratio (default: 1.0)'
+  synonyms:
+  - --bg_target_ratio
+  args: !SimpleFlagArg
+    name: BG_TARGET_RATIO
+  optional: true
+- !Flag
+  description: "Enable the bootstrap if the target set or the\nbackground set are\
+    \ too small, choices: True, False\n(default: False)"
+  synonyms:
+  - --bootstrap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Directory to store temporary files (default: /tmp)'
+  synonyms:
+  - --temp_directory
+  args: !SimpleFlagArg
+    name: TEMP_DIRECTORY
+  optional: true
+- !Flag
+  description: "Select the best --n_target_coordinates using the score\ncolumn from\
+    \ the target file instead of randomly select\nthem"
+  synonyms:
+  - --no_random_sampling_target
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Define a custom output filename for the report
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Window length in bp for the enrichment (default:\naverage lenght of\
+    \ the target sequences)"
+  synonyms:
+  - --internal_window_length
+  args: !SimpleFlagArg
+    name: INTERNAL_WINDOW_LENGTH
+  optional: true
+- !Flag
+  description: "Window length in bp for the profiler\n(default:internal_window_length*5)"
+  synonyms:
+  - --window_length
+  args: !SimpleFlagArg
+    name: WINDOW_LENGTH
+  optional: true
+- !Flag
+  description: "Minimum central enrichment to report a motif\n(default:>1.0)"
+  synonyms:
+  - --min_central_enrichment
+  args: !SimpleFlagArg
+    name: MIN_CENTRAL_ENRICHMENT
+  optional: true
+- !Flag
+  description: Disable target/bg ratio filter
+  synonyms:
+  - --disable_ratio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dump all the intermediate data, choices: True, False\n(default: False)"
+  synonyms:
+  - --dump
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output directory (default: current directory)'
+  synonyms:
+  - --output_directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: "Size in bp for the smoothing window (default:\ninternal_window_length/4)"
+  synonyms:
+  - --smooth_size
+  args: !SimpleFlagArg
+    name: SMOOTH_SIZE
+  optional: true
+- !Flag
+  description: "Optional gene annotations file from the UCSC Genome\nBrowser in bed\
+    \ format to map each region to its closes\ngene"
+  synonyms:
+  - --gene_annotations_filename
+  args: !SimpleFlagArg
+    name: GENE_ANNOTATIONS_FILENAME
+  optional: true
+- !Flag
+  description: "Optional mapping file between gene ids to gene names\n(relevant only\
+    \ if --gene_annotation_filename is used)"
+  synonyms:
+  - --gene_ids_to_names_filename
+  args: !SimpleFlagArg
+    name: GENE_IDS_TO_NAMES_FILENAME
+  optional: true
+- !Flag
+  description: "Specify the number of processes to use. The default is\n#cores available."
+  synonyms:
+  - --n_processes
+  args: !SimpleFlagArg
+    name: N_PROCESSES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\n[H A Y S T A C K   M O T I F S]\n\n-MOTIF ENRICHMENT ANALYSIS- [Luca\
+  \ Pinello - lpinello@jimmy.harvard.edu]\n\nVersion 0.5.5\n\nusage: haystack_motifs\
+  \ [-h] [--bed_bg_filename BED_BG_FILENAME]\n                       [--meme_motifs_filename\
+  \ MEME_MOTIFS_FILENAME]\n                       [--nucleotide_bg_filename NUCLEOTIDE_BG_FILENAME]\n\
+  \                       [--p_value P_VALUE] [--no_c_g_correction]\n            \
+  \           [--c_g_bins C_G_BINS] [--mask_repetitive]\n                       [--n_target_coordinates\
+  \ N_TARGET_COORDINATES]\n                       [--use_entire_bg] [--bed_score_column\
+  \ BED_SCORE_COLUMN]\n                       [--bg_target_ratio BG_TARGET_RATIO]\
+  \ [--bootstrap]\n                       [--temp_directory TEMP_DIRECTORY]\n    \
+  \                   [--no_random_sampling_target] [--name NAME]\n              \
+  \         [--internal_window_length INTERNAL_WINDOW_LENGTH]\n                  \
+  \     [--window_length WINDOW_LENGTH]\n                       [--min_central_enrichment\
+  \ MIN_CENTRAL_ENRICHMENT]\n                       [--disable_ratio] [--dump]\n \
+  \                      [--output_directory OUTPUT_DIRECTORY]\n                 \
+  \      [--smooth_size SMOOTH_SIZE]\n                       [--gene_annotations_filename\
+  \ GENE_ANNOTATIONS_FILENAME]\n                       [--gene_ids_to_names_filename\
+  \ GENE_IDS_TO_NAMES_FILENAME]\n                       [--n_processes N_PROCESSES]\
+  \ [--version]\n                       bed_target_filename genome_name\n\nHaystack\
+  \ Motifs Parameters\n\npositional arguments:\n  bed_target_filename   A bed file\
+  \ containing the target coordinates on the\n                        genome of reference\n\
+  \  genome_name           Genome assembly to use from UCSC (for example hg19,\n \
+  \                       mm9, etc.)\n\noptional arguments:\n  -h, --help        \
+  \    show this help message and exit\n  --bed_bg_filename BED_BG_FILENAME\n    \
+  \                    A bed file containing the backround coordinates on the\n  \
+  \                      genome of reference (default random sampled regions\n   \
+  \                     from the genome)\n  --meme_motifs_filename MEME_MOTIFS_FILENAME\n\
+  \                        Motifs database in MEME format (default JASPAR CORE\n \
+  \                       2016)\n  --nucleotide_bg_filename NUCLEOTIDE_BG_FILENAME\n\
+  \                        Nucleotide probability for the background in MEME\n   \
+  \                     format (default precomupted on the Genome)\n  --p_value P_VALUE\
+  \     FIMO p-value for calling a motif hit significant\n                       \
+  \ (deafult: 1e-4)\n  --no_c_g_correction   Disable the matching of the C+G density\
+  \ of the\n                        background\n  --c_g_bins C_G_BINS   Number of\
+  \ bins for the C+G density correction\n                        (default: 8)\n  --mask_repetitive\
+  \     Mask repetitive sequences\n  --n_target_coordinates N_TARGET_COORDINATES\n\
+  \                        Number of target coordinates to use (default: all)\n  --use_entire_bg\
+  \       Use the entire background file (use only when the cg\n                 \
+  \       correction is disabled)\n  --bed_score_column BED_SCORE_COLUMN\n       \
+  \                 Column in the bedfile that represents the score\n            \
+  \            (default: 5)\n  --bg_target_ratio BG_TARGET_RATIO\n               \
+  \         Background size/Target size ratio (default: 1.0)\n  --bootstrap      \
+  \     Enable the bootstrap if the target set or the\n                        background\
+  \ set are too small, choices: True, False\n                        (default: False)\n\
+  \  --temp_directory TEMP_DIRECTORY\n                        Directory to store temporary\
+  \ files (default: /tmp)\n  --no_random_sampling_target\n                       \
+  \ Select the best --n_target_coordinates using the score\n                     \
+  \   column from the target file instead of randomly select\n                   \
+  \     them\n  --name NAME           Define a custom output filename for the report\n\
+  \  --internal_window_length INTERNAL_WINDOW_LENGTH\n                        Window\
+  \ length in bp for the enrichment (default:\n                        average lenght\
+  \ of the target sequences)\n  --window_length WINDOW_LENGTH\n                  \
+  \      Window length in bp for the profiler\n                        (default:internal_window_length*5)\n\
+  \  --min_central_enrichment MIN_CENTRAL_ENRICHMENT\n                        Minimum\
+  \ central enrichment to report a motif\n                        (default:>1.0)\n\
+  \  --disable_ratio       Disable target/bg ratio filter\n  --dump              \
+  \  Dump all the intermediate data, choices: True, False\n                      \
+  \  (default: False)\n  --output_directory OUTPUT_DIRECTORY\n                   \
+  \     Output directory (default: current directory)\n  --smooth_size SMOOTH_SIZE\n\
+  \                        Size in bp for the smoothing window (default:\n       \
+  \                 internal_window_length/4)\n  --gene_annotations_filename GENE_ANNOTATIONS_FILENAME\n\
+  \                        Optional gene annotations file from the UCSC Genome\n \
+  \                       Browser in bed format to map each region to its closes\n\
+  \                        gene\n  --gene_ids_to_names_filename GENE_IDS_TO_NAMES_FILENAME\n\
+  \                        Optional mapping file between gene ids to gene names\n\
+  \                        (relevant only if --gene_annotation_filename is used)\n\
+  \  --n_processes N_PROCESSES\n                        Specify the number of processes\
+  \ to use. The default is\n                        #cores available.\n  --version\
+  \             Print version and exit.\n"
+generated_using:
+- --help

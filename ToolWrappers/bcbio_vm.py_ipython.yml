@@ -1,0 +1,127 @@
+!Command
+command:
+- bcbio_vm.py
+- ipython
+positional:
+- !Positional
+  description: YAML file with details about samples to process.
+  position: 0
+  name: sample_config
+  optional: false
+- !Positional
+  description: Scheduler queue to run jobs on.
+  position: 0
+  name: queue
+  optional: false
+- !Positional
+  description: --image IMAGE         Docker image name to use, could point to compatible
+  position: 0
+  name: process
+  optional: false
+named:
+- !Flag
+  description: A directory of Illumina output or fastq files to
+  synonyms:
+  - --fcdir
+  args: !SimpleFlagArg
+    name: FCDIR
+  optional: true
+- !Flag
+  description: "Global YAML configuration file specifying system\ndetails. Defaults\
+    \ to installed bcbio_system.yaml."
+  synonyms:
+  - --systemconfig
+  args: !SimpleFlagArg
+    name: SYSTEMCONFIG
+  optional: true
+- !Flag
+  description: Total cores to use for processing
+  synonyms:
+  - -n
+  - --numcores
+  args: !SimpleFlagArg
+    name: NUMCORES
+  optional: true
+- !Flag
+  description: "Cluster specific resources specifications. Can be\nspecified multiple\
+    \ times. Supports SGE and SLURM\nparameters."
+  synonyms:
+  - -r
+  - --resources
+  args: !SimpleFlagArg
+    name: RESOURCES
+  optional: true
+- !Flag
+  description: "Number of minutes before cluster startup times out.\nDefaults to 15"
+  synonyms:
+  - --timeout
+  args: !SimpleFlagArg
+    name: TIMEOUT
+  optional: true
+- !Flag
+  description: "Number of retries of failed tasks during distributed\nprocessing.\
+    \ Default 0 (no retries)"
+  synonyms:
+  - --retries
+  args: !SimpleFlagArg
+    name: RETRIES
+  optional: true
+- !Flag
+  description: Tag name to label jobs on the cluster
+  synonyms:
+  - -t
+  - --tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: "Path of local on-machine temporary directory to\nprocess in.\n"
+  synonyms:
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --image
+  args: !SimpleFlagArg
+    name: IMAGE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: bcbio_vm.py ipython [-h] [--fcdir FCDIR] [--image IMAGE]\n    \
+  \                       [--systemconfig SYSTEMCONFIG] [-n NUMCORES]\n          \
+  \                 [-r RESOURCES] [--timeout TIMEOUT]\n                         \
+  \  [--retries RETRIES] [-t TAG] [--tmpdir TMPDIR]\n                           sample_config\
+  \ {lsf,sge,torque,slurm,pbspro} queue\n\npositional arguments:\n  sample_config\
+  \         YAML file with details about samples to process.\n  {lsf,sge,torque,slurm,pbspro}\n\
+  \                        Scheduler to use.\n  queue                 Scheduler queue\
+  \ to run jobs on.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --fcdir FCDIR         A directory of Illumina output or fastq\
+  \ files to\n                        process\n  --image IMAGE         Docker image\
+  \ name to use, could point to compatible\n                        pre-installed\
+  \ image.\n  --systemconfig SYSTEMCONFIG\n                        Global YAML configuration\
+  \ file specifying system\n                        details. Defaults to installed\
+  \ bcbio_system.yaml.\n  -n NUMCORES, --numcores NUMCORES\n                     \
+  \   Total cores to use for processing\n  -r RESOURCES, --resources RESOURCES\n \
+  \                       Cluster specific resources specifications. Can be\n    \
+  \                    specified multiple times. Supports SGE and SLURM\n        \
+  \                parameters.\n  --timeout TIMEOUT     Number of minutes before cluster\
+  \ startup times out.\n                        Defaults to 15\n  --retries RETRIES\
+  \     Number of retries of failed tasks during distributed\n                   \
+  \     processing. Default 0 (no retries)\n  -t TAG, --tag TAG     Tag name to label\
+  \ jobs on the cluster\n  --tmpdir TMPDIR       Path of local on-machine temporary\
+  \ directory to\n                        process in.\n"
+generated_using:
+- --help

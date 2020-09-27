@@ -103,140 +103,10 @@ subcommands:
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: direct the output to a file named OUTPUT (default=stdout)
-      synonyms:
-      - -o
-      args: !SimpleFlagArg
-        name: OUTPUT
-      optional: true
-    - !Flag
-      description: only report (count) distances below this threshold (>=0, default=0.015)
-      synonyms:
-      - -t
-      args: !SimpleFlagArg
-        name: THRESHOLD
-      optional: true
-    - !Flag
-      description: "handle ambigous nucleotides using one of the following strategies\
-        \ (default=resolve)\nresolve: resolve ambiguities to minimize distance (e.g.R\
-        \ matches A);\naverage: average ambiguities (e.g.R-A is 0.5 A-A and 0.5 G-A);\n\
-        skip: do not include sites with ambiguous nucleotides in distance calculations;\n\
-        gapmm: a gap ('-') matched to anything other than another gap is like matching\
-        \ an N (4-fold ambig) to it;\na string (e.g. RY): any ambiguity in the list\
-        \ is RESOLVED; any ambiguitiy NOT in the list is averaged (LIST-NOT LIST will\
-        \ also be averaged);"
-      synonyms:
-      - -a
-      args: !SimpleFlagArg
-        name: AMBIGS
-      optional: true
-    - !Flag
-      description: "in combination with AMBIGS, works to limit (for resolve and string\
-        \ options to AMBIG)\nthe maximum tolerated FRACTION of ambiguous characters;\
-        \ sequences whose pairwise comparisons\ninclude no more than FRACTION [0,1]\
-        \ of sites with resolvable ambiguities will be resolved\nwhile all others\
-        \ will be AVERAGED (default = 1.0)"
-      synonyms:
-      - -g
-      args: !SimpleFlagArg
-        name: FRACTION
-      optional: true
-    - !Flag
-      description: "controls the format of the output unless -c is set (default=csv)\n\
-        csv: seqname1, seqname2, distance;\ncsvn: 1, 2, distance;\nhyphy: {{d11,d12,..,d1n}...{dn1,dn2,...,dnn}},\
-        \ where distances above THRESHOLD are set to 100;"
-      synonyms:
-      - -f
-      args: !SimpleFlagArg
-        name: FORMAT
-      optional: true
-    - !Flag
-      description: 'only process pairs of sequences that overlap over at least OVERLAP
-        nucleotides (an integer >0, default=100):'
-      synonyms:
-      - -l
-      args: !SimpleFlagArg
-        name: OVERLAP
-      optional: true
-    - !Flag
-      description: "if sequence name is of the form 'somethingCOUNTS_IN_NAMEinteger'\
-        \ then treat the integer as a copy number\nwhen computing distance histograms\
-        \ (a character, default=':'):"
-      synonyms:
-      - -d
-      args: !SimpleFlagArg
-        name: COUNTS_IN_NAME
-      optional: true
-    - !Flag
-      description: if specified, read another FASTA file from SECOND_FASTA and perform
-        pairwise comparison BETWEEN the files (default=NULL)
-      synonyms:
-      - -s
-      args: !SimpleFlagArg
-        name: SECOND_FASTA
-      optional: true
-    - !Flag
-      description: "bootstrap alignment columns before computing distances (default\
-        \ = false)\nwhen -s is supplied, permutes the assigment of sequences to files\n\
-        interacts with -r option"
-      synonyms:
-      - -b
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "if -b is specified AND -s is supplied, using -r will bootstrap\
-        \ across sites\ninstead of allocating sequences to 'compartments' randomly"
-      synonyms:
-      - -r
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: only count the pairs below a threshold, do not write out all the
-        pairs
-      synonyms:
-      - -c
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "compute inter- and intra-population means suitable for FST caclulations\n\
-        only applied when -s is used to provide a second file"
-      synonyms:
-      - -m
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: subsample sequences with specified probability (a value between
-        0 and 1, default = 1.0)
-      synonyms:
-      - -u
-      args: !SimpleFlagArg
-        name: PROBABILITY
-      optional: true
-    - !Flag
-      description: "report distances between each sequence and itself (as 0); this\
-        \ is useful to ensure every sequence\nin the input file appears in the output,\
-        \ e.g. for network construction to contrast clustered/unclustered"
-      synonyms:
-      - '-0'
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: do not report progress updates and other diagnostics to stderr
-      synonyms:
-      - -q
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - -v
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -335,7 +205,323 @@ subcommands:
         - -v
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: direct the output to a file named OUTPUT (default=stdout)
+          synonyms:
+          - -o
+          args: !SimpleFlagArg
+            name: OUTPUT
+          optional: true
+        - !Flag
+          description: only report (count) distances below this threshold (>=0, default=0.015)
+          synonyms:
+          - -t
+          args: !SimpleFlagArg
+            name: THRESHOLD
+          optional: true
+        - !Flag
+          description: "handle ambigous nucleotides using one of the following strategies\
+            \ (default=resolve)\nresolve: resolve ambiguities to minimize distance\
+            \ (e.g.R matches A);\naverage: average ambiguities (e.g.R-A is 0.5 A-A\
+            \ and 0.5 G-A);\nskip: do not include sites with ambiguous nucleotides\
+            \ in distance calculations;\ngapmm: a gap ('-') matched to anything other\
+            \ than another gap is like matching an N (4-fold ambig) to it;\na string\
+            \ (e.g. RY): any ambiguity in the list is RESOLVED; any ambiguitiy NOT\
+            \ in the list is averaged (LIST-NOT LIST will also be averaged);"
+          synonyms:
+          - -a
+          args: !SimpleFlagArg
+            name: AMBIGS
+          optional: true
+        - !Flag
+          description: "in combination with AMBIGS, works to limit (for resolve and\
+            \ string options to AMBIG)\nthe maximum tolerated FRACTION of ambiguous\
+            \ characters; sequences whose pairwise comparisons\ninclude no more than\
+            \ FRACTION [0,1] of sites with resolvable ambiguities will be resolved\n\
+            while all others will be AVERAGED (default = 1.0)"
+          synonyms:
+          - -g
+          args: !SimpleFlagArg
+            name: FRACTION
+          optional: true
+        - !Flag
+          description: "controls the format of the output unless -c is set (default=csv)\n\
+            csv: seqname1, seqname2, distance;\ncsvn: 1, 2, distance;\nhyphy: {{d11,d12,..,d1n}...{dn1,dn2,...,dnn}},\
+            \ where distances above THRESHOLD are set to 100;"
+          synonyms:
+          - -f
+          args: !SimpleFlagArg
+            name: FORMAT
+          optional: true
+        - !Flag
+          description: 'only process pairs of sequences that overlap over at least
+            OVERLAP nucleotides (an integer >0, default=100):'
+          synonyms:
+          - -l
+          args: !SimpleFlagArg
+            name: OVERLAP
+          optional: true
+        - !Flag
+          description: "if sequence name is of the form 'somethingCOUNTS_IN_NAMEinteger'\
+            \ then treat the integer as a copy number\nwhen computing distance histograms\
+            \ (a character, default=':'):"
+          synonyms:
+          - -d
+          args: !SimpleFlagArg
+            name: COUNTS_IN_NAME
+          optional: true
+        - !Flag
+          description: if specified, read another FASTA file from SECOND_FASTA and
+            perform pairwise comparison BETWEEN the files (default=NULL)
+          synonyms:
+          - -s
+          args: !SimpleFlagArg
+            name: SECOND_FASTA
+          optional: true
+        - !Flag
+          description: "bootstrap alignment columns before computing distances (default\
+            \ = false)\nwhen -s is supplied, permutes the assigment of sequences to\
+            \ files\ninteracts with -r option"
+          synonyms:
+          - -b
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "if -b is specified AND -s is supplied, using -r will bootstrap\
+            \ across sites\ninstead of allocating sequences to 'compartments' randomly"
+          synonyms:
+          - -r
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: only count the pairs below a threshold, do not write out all
+            the pairs
+          synonyms:
+          - -c
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: "compute inter- and intra-population means suitable for FST\
+            \ caclulations\nonly applied when -s is used to provide a second file"
+          synonyms:
+          - -m
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: subsample sequences with specified probability (a value between
+            0 and 1, default = 1.0)
+          synonyms:
+          - -u
+          args: !SimpleFlagArg
+            name: PROBABILITY
+          optional: true
+        - !Flag
+          description: "report distances between each sequence and itself (as 0);\
+            \ this is useful to ensure every sequence\nin the input file appears in\
+            \ the output, e.g. for network construction to contrast clustered/unclustered"
+          synonyms:
+          - '-0'
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: do not report progress updates and other diagnostics to stderr
+          synonyms:
+          - -q
+          args: !EmptyFlagArg {}
+          optional: true
+        - !Flag
+          description: ''
+          synonyms:
+          - -v
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: ''
+            synonyms:
+            - -q
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - '-0'
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -c
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -r
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -b
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -s
+            args: !SimpleFlagArg
+              name: SECOND_FASTA
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -f
+            args: !SimpleFlagArg
+              name: FORMAT
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -d
+            args: !SimpleFlagArg
+              name: COUNTS_IN_NAME
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -l
+            args: !SimpleFlagArg
+              name: OVERLAP
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -g
+            args: !SimpleFlagArg
+              name: FRACTION
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -a
+            args: !SimpleFlagArg
+              name: AMBIGS
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -t
+            args: !SimpleFlagArg
+              name: THRESHOLD
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -o
+            args: !SimpleFlagArg
+              name: OUTPUT
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: tn93 [-h] [-v] [-o OUTPUT] [-t THRESHOLD] [-a AMBIGS]\
+            \ [-g FRACTION] [-l OVERLAP] [-d COUNTS_IN_NAME] [-f FORMAT] [-s SECOND_FASTA]\
+            \ [-b] [-r] [-c] [-0] [-q] [FASTA]\ntn93: error: unknown argument: FASTA\n"
+          generated_using: &id004
+          - --help
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag: !Flag
+          description: show tn93 version
+          synonyms:
+          - -v
+          - --version
+          args: !EmptyFlagArg {}
+          optional: true
+        help_text: "usage: tn93 [-h] [-v] [-o OUTPUT] [-t THRESHOLD] [-a AMBIGS] [-g\
+          \ FRACTION] [-l OVERLAP] [-d COUNTS_IN_NAME] [-f FORMAT] [-s SECOND_FASTA]\
+          \ [-b] [-r] [-c] [-0] [-q] [FASTA]\n\ncompute Tamura Nei 93 distances between\
+          \ aligned sequences\n\noptional arguments:\n  -h, --help               show\
+          \ this help message and exit\n  -v, --version            show tn93 version\
+          \ \n  -o OUTPUT                direct the output to a file named OUTPUT\
+          \ (default=stdout)\n  -t THRESHOLD             only report (count) distances\
+          \ below this threshold (>=0, default=0.015)\n  -a AMBIGS               \
+          \ handle ambigous nucleotides using one of the following strategies (default=resolve)\n\
+          \                           resolve: resolve ambiguities to minimize distance\
+          \ (e.g.R matches A);\n                           average: average ambiguities\
+          \ (e.g.R-A is 0.5 A-A and 0.5 G-A);\n                           skip: do\
+          \ not include sites with ambiguous nucleotides in distance calculations;\n\
+          \                           gapmm: a gap ('-') matched to anything other\
+          \ than another gap is like matching an N (4-fold ambig) to it;\n       \
+          \                    a string (e.g. RY): any ambiguity in the list is RESOLVED;\
+          \ any ambiguitiy NOT in the list is averaged (LIST-NOT LIST will also be\
+          \ averaged);\n  -g FRACTION              in combination with AMBIGS, works\
+          \ to limit (for resolve and string options to AMBIG)\n                 \
+          \          the maximum tolerated FRACTION of ambiguous characters; sequences\
+          \ whose pairwise comparisons\n                           include no more\
+          \ than FRACTION [0,1] of sites with resolvable ambiguities will be resolved\n\
+          \                           while all others will be AVERAGED (default =\
+          \ 1.0)\n  -f FORMAT                controls the format of the output unless\
+          \ -c is set (default=csv)\n                           csv: seqname1, seqname2,\
+          \ distance;\n                           csvn: 1, 2, distance;\n        \
+          \                   hyphy: {{d11,d12,..,d1n}...{dn1,dn2,...,dnn}}, where\
+          \ distances above THRESHOLD are set to 100;\n  -l OVERLAP              \
+          \ only process pairs of sequences that overlap over at least OVERLAP nucleotides\
+          \ (an integer >0, default=100):\n  -d COUNTS_IN_NAME        if sequence\
+          \ name is of the form 'somethingCOUNTS_IN_NAMEinteger' then treat the integer\
+          \ as a copy number\n                           when computing distance histograms\
+          \ (a character, default=':'):\n  -s SECOND_FASTA          if specified,\
+          \ read another FASTA file from SECOND_FASTA and perform pairwise comparison\
+          \ BETWEEN the files (default=NULL)\n  -b                       bootstrap\
+          \ alignment columns before computing distances (default = false)\n     \
+          \                      when -s is supplied, permutes the assigment of sequences\
+          \ to files\n                           interacts with -r option\n  -r  \
+          \                     if -b is specified AND -s is supplied, using -r will\
+          \ bootstrap across sites\n                           instead of allocating\
+          \ sequences to 'compartments' randomly\n  -c                       only\
+          \ count the pairs below a threshold, do not write out all the pairs \n \
+          \ -m                       compute inter- and intra-population means suitable\
+          \ for FST caclulations\n                           only applied when -s\
+          \ is used to provide a second file\n  -u PROBABILITY           subsample\
+          \ sequences with specified probability (a value between 0 and 1, default\
+          \ = 1.0)\n  -0                       report distances between each sequence\
+          \ and itself (as 0); this is useful to ensure every sequence\n         \
+          \                  in the input file appears in the output, e.g. for network\
+          \ construction to contrast clustered/unclustered\n  -q                 \
+          \      do not report progress updates and other diagnostics to stderr \n\
+          \  FASTA                    read sequences to compare from this file (default=stdin)\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -349,24 +535,11 @@ subcommands:
       help_text: "usage: tn93 [-h] [-v] [-o OUTPUT] [-t THRESHOLD] [-a AMBIGS] [-g\
         \ FRACTION] [-l OVERLAP] [-d COUNTS_IN_NAME] [-f FORMAT] [-s SECOND_FASTA]\
         \ [-b] [-r] [-c] [-0] [-q] [FASTA]\ntn93: error: unknown argument: FASTA\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
-    version_flag: !Flag
-      description: show tn93 version
-      synonyms:
-      - -v
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
+    version_flag:
     help_text: "usage: tn93 [-h] [-v] [-o OUTPUT] [-t THRESHOLD] [-a AMBIGS] [-g FRACTION]\
       \ [-l OVERLAP] [-d COUNTS_IN_NAME] [-f FORMAT] [-s SECOND_FASTA] [-b] [-r] [-c]\
       \ [-0] [-q] [FASTA]\n\ncompute Tamura Nei 93 distances between aligned sequences\n\

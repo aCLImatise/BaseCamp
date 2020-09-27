@@ -1,0 +1,86 @@
+!Command
+command:
+- vembrane
+positional:
+- !Positional
+  description: The file containing the variants.
+  position: 0
+  name: vcf
+  optional: false
+- !Positional
+  description: "Filter variants and annotations. If this removes all\nannotations,\
+    \ the variant is removed as well."
+  position: 1
+  name: expression
+  optional: false
+named:
+- !Flag
+  description: "Output file, if not specified, output is written to\nSTDOUT."
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Output format.
+  synonyms:
+  - --output-fmt
+  - -O
+  args: !ChoiceFlagArg
+    choices: !!set
+      bcf:
+      vcf:
+      uncompressed-bcf:
+  optional: true
+- !Flag
+  description: The INFO key for the annotation field.
+  synonyms:
+  - --annotation-key
+  - -k
+  args: !SimpleFlagArg
+    name: FIELDNAME
+  optional: true
+- !Flag
+  description: Write statistics to this file.
+  synonyms:
+  - --statistics
+  - -s
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Keep all annotations of a variant if at least one of\nthem passes\
+    \ the expression.\n"
+  synonyms:
+  - --keep-unmatched
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vembrane [-h] [--output OUTPUT]\n                [--output-fmt\
+  \ {vcf,bcf,uncompressed-bcf}]\n                [--annotation-key FIELDNAME] [--statistics\
+  \ FILE]\n                [--keep-unmatched]\n                vcf expression\n\n\
+  positional arguments:\n  vcf                   The file containing the variants.\n\
+  \  expression            Filter variants and annotations. If this removes all\n\
+  \                        annotations, the variant is removed as well.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --output\
+  \ OUTPUT, -o OUTPUT\n                        Output file, if not specified, output\
+  \ is written to\n                        STDOUT.\n  --output-fmt {vcf,bcf,uncompressed-bcf},\
+  \ -O {vcf,bcf,uncompressed-bcf}\n                        Output format.\n  --annotation-key\
+  \ FIELDNAME, -k FIELDNAME\n                        The INFO key for the annotation\
+  \ field.\n  --statistics FILE, -s FILE\n                        Write statistics\
+  \ to this file.\n  --keep-unmatched      Keep all annotations of a variant if at\
+  \ least one of\n                        them passes the expression.\n"
+generated_using:
+- --help

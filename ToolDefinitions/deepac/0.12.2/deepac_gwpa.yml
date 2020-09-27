@@ -7,7 +7,7 @@ named: []
 parent:
 subcommands:
 - !Command
-  command: &id006
+  command: &id002
   - deepac
   - gwpa
   - factiv
@@ -68,1117 +68,14 @@ subcommands:
     - -F
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
-    parent: &id002 !Command
-      command:
-      - deepac
-      positional: []
-      named:
-      - !Flag
-        description: Disable eager mode.
-        synonyms:
-        - --debug-no-eager
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: "Set tensorflow debug info verbosity level. 0 = max, 3\n= min.\
-          \ Default: 2 (errors); 3 for tests (muted)"
-        synonyms:
-        - --debug-tf
-        args: !SimpleFlagArg
-          name: DEBUG_TF
-        optional: true
-      - !Flag
-        description: Enable verbose device placement information.
-        synonyms:
-        - --debug-device
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: Use a CPU even if GPUs are available.
-        synonyms:
-        - --force-cpu
-        args: !EmptyFlagArg {}
-        optional: true
-      - !Flag
-        description: "TPU name: 'colab' for Google Colab, or name of your\nTPU on\
-          \ GCE.\n"
-        synonyms:
-        - --tpu
-        args: !SimpleFlagArg
-          name: TPU
-        optional: true
-      - !Flag
-        description: ''
-        synonyms:
-        - -v
-        args: !EmptyFlagArg {}
-        optional: true
-      parent:
-      subcommands:
-      - !Command
-        command:
-        - deepac
-        - test
-        positional: []
-        named:
-        - !Flag
-          description: 'Number of CPU cores. Default: all.'
-          synonyms:
-          - -n
-          - --n-cpus
-          args: !SimpleFlagArg
-            name: N_CPUS
-          optional: true
-        - !Flag
-          description: 'GPU devices to use. Default: all'
-          synonyms:
-          - -g
-          - --gpus
-          args: !RepeatFlagArg
-            name: GPUS
-          optional: true
-        - !Flag
-          description: Test explain workflows.
-          synonyms:
-          - -x
-          - --explain
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Test gwpa workflows.
-          synonyms:
-          - -p
-          - --gwpa
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Test all functions.
-          synonyms:
-          - -a
-          - --all
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Don't test heavy models (e.g. when no GPU available).
-          synonyms:
-          - -q
-          - --quick
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Don't delete previous test output.
-          synonyms:
-          - -k
-          - --keep
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: 'Generate s*1024 reads for testing (Default: s=1).'
-          synonyms:
-          - -s
-          - --scale
-          args: !SimpleFlagArg
-            name: SCALE
-          optional: true
-        - !Flag
-          description: "[INPUT_MODES [INPUT_MODES ...]]\nInput modes to test: memory,\
-            \ sequence and/or tfdata.\nDefault: all.\n"
-          synonyms:
-          - --input-modes
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: deepac test [-h] [-n N_CPUS] [-g GPUS [GPUS ...]] [-x]\
-          \ [-p] [-a] [-q]\n                   [-k] [-s SCALE]\n                 \
-          \  [--input-modes [INPUT_MODES [INPUT_MODES ...]]]\n\noptional arguments:\n\
-          \  -h, --help            show this help message and exit\n  -n N_CPUS, --n-cpus\
-          \ N_CPUS\n                        Number of CPU cores. Default: all.\n \
-          \ -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n                        GPU\
-          \ devices to use. Default: all\n  -x, --explain         Test explain workflows.\n\
-          \  -p, --gwpa            Test gwpa workflows.\n  -a, --all             Test\
-          \ all functions.\n  -q, --quick           Don't test heavy models (e.g.\
-          \ when no GPU available).\n  -k, --keep            Don't delete previous\
-          \ test output.\n  -s SCALE, --scale SCALE\n                        Generate\
-          \ s*1024 reads for testing (Default: s=1).\n  --input-modes [INPUT_MODES\
-          \ [INPUT_MODES ...]]\n                        Input modes to test: memory,\
-          \ sequence and/or tfdata.\n                        Default: all.\n"
-        generated_using: &id004
-        - --help
-      - !Command
-        command:
-        - deepac
-        - preproc
-        positional:
-        - !Positional
-          description: Preprocessing config file.
-          position: 0
-          name: config
-          optional: false
-        named: []
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: deepac preproc [-h] config\n\npositional arguments:\n \
-          \ config      Preprocessing config file.\n\noptional arguments:\n  -h, --help\
-          \  show this help message and exit\n"
-        generated_using: &id007
-        - -h
-      - *id003
-      - !Command
-        command:
-        - deepac
-        - predict
-        positional: []
-        named:
-        - !Flag
-          description: Use .npy input instead.
-          synonyms:
-          - -a
-          - --array
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Use the sensitive model.
-          synonyms:
-          - -s
-          - --sensitive
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Use the rapid CNN model.
-          synonyms:
-          - -r
-          - --rapid
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Use the user-supplied, already compiled CUSTOM model.
-          synonyms:
-          - -c
-          - --custom
-          args: !SimpleFlagArg
-            name: CUSTOM
-          optional: true
-        - !Flag
-          description: Output file path [.npy].
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
-        - !Flag
-          description: 'Number of CPU cores. Default: all.'
-          synonyms:
-          - -n
-          - --n-cpus
-          args: !SimpleFlagArg
-            name: N_CPUS
-          optional: true
-        - !Flag
-          description: "GPU devices to use (comma-separated). Default: all\n"
-          synonyms:
-          - -g
-          - --gpus
-          args: !RepeatFlagArg
-            name: GPUS
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: deepac predict [-h] [-a] (-s | -r | -c CUSTOM) [-o OUTPUT]\
-          \ [-n N_CPUS]\n                      [-g GPUS [GPUS ...]]\n            \
-          \          input\n\npositional arguments:\n  input                 Input\
-          \ file path [.fasta].\n\noptional arguments:\n  -h, --help            show\
-          \ this help message and exit\n  -a, --array           Use .npy input instead.\n\
-          \  -s, --sensitive       Use the sensitive model.\n  -r, --rapid       \
-          \    Use the rapid CNN model.\n  -c CUSTOM, --custom CUSTOM\n          \
-          \              Use the user-supplied, already compiled CUSTOM model.\n \
-          \ -o OUTPUT, --output OUTPUT\n                        Output file path [.npy].\n\
-          \  -n N_CPUS, --n-cpus N_CPUS\n                        Number of CPU cores.\
-          \ Default: all.\n  -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n        \
-          \                GPU devices to use (comma-separated). Default: all\n"
-        generated_using: *id004
-      - !Command
-        command:
-        - deepac
-        - getmodels
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: deepac
-          optional: false
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --debug-tf
-          args: !SimpleFlagArg
-            name: DEBUG_TF
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --debug-no-eager
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -v
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: deepac [-h] [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n\
-          \              [--debug-device] [--force-cpu] [--tpu TPU]\n            \
-          \  {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
-          \              ...\ndeepac: error: unrecognized arguments: --usage\n"
-        generated_using:
-        - --usage
-      - !Command
-        command:
-        - deepac
-        - eval
-        positional: []
-        named:
-        - !Flag
-          description: Species-wise evaluation.
-          synonyms:
-          - -s
-          - --species
-          args: !SimpleFlagArg
-            name: SPECIES_CONFIG
-          optional: true
-        - !Flag
-          description: Read-wise evaluation.
-          synonyms:
-          - -r
-          - --reads
-          args: !SimpleFlagArg
-            name: READS_CONFIG
-          optional: true
-        - !Flag
-          description: "Simple ensemble evaluation.\n"
-          synonyms:
-          - -e
-          - --ensemble
-          args: !SimpleFlagArg
-            name: ENS_CONFIG
-          optional: true
-        parent: *id002
-        subcommands: []
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: deepac eval [-h] (-s SPECIES_CONFIG | -r READS_CONFIG |\
-          \ -e ENS_CONFIG)\n\noptional arguments:\n  -h, --help            show this\
-          \ help message and exit\n  -s SPECIES_CONFIG, --species SPECIES_CONFIG\n\
-          \                        Species-wise evaluation.\n  -r READS_CONFIG, --reads\
-          \ READS_CONFIG\n                        Read-wise evaluation.\n  -e ENS_CONFIG,\
-          \ --ensemble ENS_CONFIG\n                        Simple ensemble evaluation.\n"
-        generated_using: *id004
-      - &id005 !Command
-        command:
-        - deepac
-        - explain
-        positional: []
-        named: []
-        parent: *id002
-        subcommands:
-        - !Command
-          command:
-          - deepac
-          - explain
-          - fcontribs
-          positional:
-          - !Positional
-            description: -t TEST_DATA, --test_data TEST_DATA
-            position: 0
-            name: centered
-            optional: false
-          named:
-          - !Flag
-            description: Model file (.h5)
-            synonyms:
-            - -m
-            - --model
-            args: !SimpleFlagArg
-              name: MODEL
-            optional: true
-          - !Flag
-            description: Set flag if filter weight matrices should be mean-
-            synonyms:
-            - -b
-            - --w-norm
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Nonpathogenic reads of the test data set (.fasta)
-            synonyms:
-            - -N
-            - --nonpatho-test
-            args: !SimpleFlagArg
-              name: NONPATHO_TEST
-            optional: true
-          - !Flag
-            description: Pathogenic reads of the test data set (.fasta)
-            synonyms:
-            - -P
-            - --patho-test
-            args: !SimpleFlagArg
-              name: PATHO_TEST
-            optional: true
-          - !Flag
-            description: Output directory
-            synonyms:
-            - -o
-            - --out-dir
-            args: !SimpleFlagArg
-              name: OUT_DIR
-            optional: true
-          - !Flag
-            description: Modus to calculate reference sequences
-            synonyms:
-            - -r
-            - --ref-mode
-            args: !ChoiceFlagArg
-              choices: !!set
-                ? GC
-                ? N
-                ? own_ref_file
-            optional: true
-          - !Flag
-            description: "Train data (.npy), necessary to calculate reference\nsequences\
-              \ if ref_mode is 'GC'"
-            synonyms:
-            - -a
-            - --train-data
-            args: !SimpleFlagArg
-              name: TRAIN_DATA
-            optional: true
-          - !Flag
-            description: "User provided reference sequences (.fasta) if ref_mode\n\
-              is 'own_ref_file'"
-            synonyms:
-            - -F
-            - --ref-seqs
-            args: !SimpleFlagArg
-              name: REF_SEQS
-            optional: true
-          - !Flag
-            description: "[INTER_NEURON [INTER_NEURON ...]], --inter-neuron [INTER_NEURON\
-              \ [INTER_NEURON ...]]\nPerform calculations for this intermediate neuron\
-              \ only"
-            synonyms:
-            - -i
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Perform calculations for this intermediate layer
-            synonyms:
-            - -l
-            - --inter-layer
-            args: !SimpleFlagArg
-              name: INTER_LAYER
-            optional: true
-          - !Flag
-            description: Sequence chunk size. Decrease for lower memory usage.
-            synonyms:
-            - -c
-            - --seq-chunk
-            args: !SimpleFlagArg
-              name: CHUNK_SIZE
-            optional: true
-          - !Flag
-            description: "Extract contributions for all occurrences of a filter\n\
-              per read (Default: max only)"
-            synonyms:
-            - -A
-            - --all-occurrences
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Interpret elements of the LSTM output
-            synonyms:
-            - -R
-            - --recurrent
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Calculate partial nucleotide contributions per filter.
-            synonyms:
-            - -p
-            - --partial
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: "Calculate easy partial nucleotide contributions per\nfilter.\
-              \ Works for the first convolutional layer only;\ndisables all-occurences\
-              \ mode.\n"
-            synonyms:
-            - -e
-            - --easy-partial
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -t
-            args: !SimpleFlagArg
-              name: TEST_DATA
-            optional: true
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain fcontribs [-h] -m MODEL [-b] -t TEST_DATA\
-            \ -N\n                                NONPATHO_TEST -P PATHO_TEST [-o\
-            \ OUT_DIR]\n                                [-r {N,GC,own_ref_file}] [-a\
-            \ TRAIN_DATA]\n                                [-F REF_SEQS]\n       \
-            \                         [-i [INTER_NEURON [INTER_NEURON ...]]]\n   \
-            \                             [-l INTER_LAYER] [-c CHUNK_SIZE] [-A] [-R]\n\
-            \                                [-p | -e]\n\noptional arguments:\n  -h,\
-            \ --help            show this help message and exit\n  -m MODEL, --model\
-            \ MODEL\n                        Model file (.h5)\n  -b, --w-norm    \
-            \      Set flag if filter weight matrices should be mean-\n          \
-            \              centered\n  -t TEST_DATA, --test_data TEST_DATA\n     \
-            \                   Test data (.npy)\n  -N NONPATHO_TEST, --nonpatho-test\
-            \ NONPATHO_TEST\n                        Nonpathogenic reads of the test\
-            \ data set (.fasta)\n  -P PATHO_TEST, --patho-test PATHO_TEST\n      \
-            \                  Pathogenic reads of the test data set (.fasta)\n  -o\
-            \ OUT_DIR, --out-dir OUT_DIR\n                        Output directory\n\
-            \  -r {N,GC,own_ref_file}, --ref-mode {N,GC,own_ref_file}\n          \
-            \              Modus to calculate reference sequences\n  -a TRAIN_DATA,\
-            \ --train-data TRAIN_DATA\n                        Train data (.npy),\
-            \ necessary to calculate reference\n                        sequences\
-            \ if ref_mode is 'GC'\n  -F REF_SEQS, --ref-seqs REF_SEQS\n          \
-            \              User provided reference sequences (.fasta) if ref_mode\n\
-            \                        is 'own_ref_file'\n  -i [INTER_NEURON [INTER_NEURON\
-            \ ...]], --inter-neuron [INTER_NEURON [INTER_NEURON ...]]\n          \
-            \              Perform calculations for this intermediate neuron only\n\
-            \  -l INTER_LAYER, --inter-layer INTER_LAYER\n                       \
-            \ Perform calculations for this intermediate layer\n  -c CHUNK_SIZE, --seq-chunk\
-            \ CHUNK_SIZE\n                        Sequence chunk size. Decrease for\
-            \ lower memory usage.\n  -A, --all-occurrences\n                     \
-            \   Extract contributions for all occurrences of a filter\n          \
-            \              per read (Default: max only)\n  -R, --recurrent       Interpret\
-            \ elements of the LSTM output\n  -p, --partial         Calculate partial\
-            \ nucleotide contributions per filter.\n  -e, --easy-partial    Calculate\
-            \ easy partial nucleotide contributions per\n                        filter.\
-            \ Works for the first convolutional layer only;\n                    \
-            \    disables all-occurences mode.\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - deepac
-          - explain
-          - fa2transfac
-          positional: []
-          named:
-          - !Flag
-            description: Directory containing motifs per filter (.fasta)
-            synonyms:
-            - -i
-            - --in-dir
-            args: !SimpleFlagArg
-              name: IN_DIR
-            optional: true
-          - !Flag
-            description: Output directory
-            synonyms:
-            - -o
-            - --out-dir
-            args: !SimpleFlagArg
-              name: OUT_DIR
-            optional: true
-          - !Flag
-            description: Weight sequences by their DeepLIFT score
-            synonyms:
-            - -w
-            - --weighting
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: "Directory containing the DeepLIFT scores per filter\n(only\
-              \ required if --weighting is chosen)\n"
-            synonyms:
-            - -W
-            - --weight-dir
-            args: !SimpleFlagArg
-              name: WEIGHT_DIR
-            optional: true
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain fa2transfac [-h] -i IN_DIR -o OUT_DIR\
-            \ [-w]\n                                  [-W WEIGHT_DIR]\n\noptional\
-            \ arguments:\n  -h, --help            show this help message and exit\n\
-            \  -i IN_DIR, --in-dir IN_DIR\n                        Directory containing\
-            \ motifs per filter (.fasta)\n  -o OUT_DIR, --out-dir OUT_DIR\n      \
-            \                  Output directory\n  -w, --weighting       Weight sequences\
-            \ by their DeepLIFT score\n  -W WEIGHT_DIR, --weight-dir WEIGHT_DIR\n\
-            \                        Directory containing the DeepLIFT scores per\
-            \ filter\n                        (only required if --weighting is chosen)\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - deepac
-          - explain
-          - transfac2IC
-          positional: []
-          named:
-          - !Flag
-            description: File containing all filter motifs in transfac format
-            synonyms:
-            - -i
-            - --in-file
-            args: !SimpleFlagArg
-              name: IN_FILE
-            optional: true
-          - !Flag
-            description: Training data set (.npy) to normalize for GC-content
-            synonyms:
-            - -t
-            - --train
-            args: !SimpleFlagArg
-              name: TRAIN
-            optional: true
-          - !Flag
-            description: "Name of the output file\n"
-            synonyms:
-            - -o
-            - --out-file
-            args: !SimpleFlagArg
-              name: OUT_FILE
-            optional: true
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain transfac2IC [-h] -i IN_FILE -t TRAIN [-o\
-            \ OUT_FILE]\n\noptional arguments:\n  -h, --help            show this\
-            \ help message and exit\n  -i IN_FILE, --in-file IN_FILE\n           \
-            \             File containing all filter motifs in transfac format\n \
-            \ -t TRAIN, --train TRAIN\n                        Training data set (.npy)\
-            \ to normalize for GC-content\n  -o OUT_FILE, --out-file OUT_FILE\n  \
-            \                      Name of the output file\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - deepac
-          - explain
-          - mcompare
-          positional: []
-          named:
-          - !Flag
-            description: File containing all filter motifs in transfac format
-            synonyms:
-            - -q
-            - --in-file1
-            args: !SimpleFlagArg
-              name: IN_FILE1
-            optional: true
-          - !Flag
-            description: File containing all filter motifs in transfac format
-            synonyms:
-            - -t
-            - --in-file2
-            args: !SimpleFlagArg
-              name: IN_FILE2
-            optional: true
-          - !Flag
-            description: "Training data (.npy), necessary to calculate\nbackground\
-              \ GC content"
-            synonyms:
-            - -a
-            - --train-data
-            args: !SimpleFlagArg
-              name: TRAIN_DATA
-            optional: true
-          - !Flag
-            description: "Compare every motif from --in_file1 with every motif\nfrom\
-              \ --in_file2; default: compare only motifs with the\nsame ID"
-            synonyms:
-            - -e
-            - --extensively
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Consider RC-complement of a motif
-            synonyms:
-            - -r
-            - --rc
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: Shift motifs to find best alignment
-            synonyms:
-            - -s
-            - --shift
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: "Minimal overlap between two motifs if motifs are\nshifted\
-              \ to find the best alignment (--shift)"
-            synonyms:
-            - -m
-            - --min-overlap
-            args: !SimpleFlagArg
-              name: MIN_OVERLAP
-            optional: true
-          - !Flag
-            description: "Output directory\n"
-            synonyms:
-            - -o
-            - --out-dir
-            args: !SimpleFlagArg
-              name: OUT_DIR
-            optional: true
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain mcompare [-h] -q IN_FILE1 -t IN_FILE2\
-            \ [-a TRAIN_DATA]\n                               [-e] [-r] [-s] [-m MIN_OVERLAP]\
-            \ [-o OUT_DIR]\n\noptional arguments:\n  -h, --help            show this\
-            \ help message and exit\n  -q IN_FILE1, --in-file1 IN_FILE1\n        \
-            \                File containing all filter motifs in transfac format\n\
-            \  -t IN_FILE2, --in-file2 IN_FILE2\n                        File containing\
-            \ all filter motifs in transfac format\n  -a TRAIN_DATA, --train-data\
-            \ TRAIN_DATA\n                        Training data (.npy), necessary\
-            \ to calculate\n                        background GC content\n  -e, --extensively\
-            \     Compare every motif from --in_file1 with every motif\n         \
-            \               from --in_file2; default: compare only motifs with the\n\
-            \                        same ID\n  -r, --rc              Consider RC-complement\
-            \ of a motif\n  -s, --shift           Shift motifs to find best alignment\n\
-            \  -m MIN_OVERLAP, --min-overlap MIN_OVERLAP\n                       \
-            \ Minimal overlap between two motifs if motifs are\n                 \
-            \       shifted to find the best alignment (--shift)\n  -o OUT_DIR, --out-dir\
-            \ OUT_DIR\n                        Output directory\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - deepac
-          - explain
-          - weblogos
-          positional: []
-          named:
-          - !Flag
-            description: Directory containing motifs per filter
-            synonyms:
-            - -i
-            - --in-dir
-            args: !SimpleFlagArg
-              name: IN_DIR
-            optional: true
-          - !Flag
-            description: "{.fasta,.transfac}, --file-ext {.fasta,.transfac}\nExtension\
-              \ of file format of input files (.fasta or\n.transfac)"
-            synonyms:
-            - -f
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: "Training data set (.npy) to compute GC-content.\nN-padding\
-              \ lowers GC!"
-            synonyms:
-            - -t
-            - --train-data
-            args: !SimpleFlagArg
-              name: TRAIN_DATA
-            optional: true
-          - !Flag
-            description: "Output directory\n"
-            synonyms:
-            - -o
-            - --out-dir
-            args: !SimpleFlagArg
-              name: OUT_DIR
-            optional: true
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain weblogos [-h] -i IN_DIR [-f {.fasta,.transfac}]\n\
-            \                               [-t TRAIN_DATA] -o OUT_DIR\n\noptional\
-            \ arguments:\n  -h, --help            show this help message and exit\n\
-            \  -i IN_DIR, --in-dir IN_DIR\n                        Directory containing\
-            \ motifs per filter\n  -f {.fasta,.transfac}, --file-ext {.fasta,.transfac}\n\
-            \                        Extension of file format of input files (.fasta\
-            \ or\n                        .transfac)\n  -t TRAIN_DATA, --train-data\
-            \ TRAIN_DATA\n                        Training data set (.npy) to compute\
-            \ GC-content.\n                        N-padding lowers GC!\n  -o OUT_DIR,\
-            \ --out-dir OUT_DIR\n                        Output directory\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - deepac
-          - explain
-          - xlogos
-          positional: []
-          named:
-          - !Flag
-            description: Directory containing motifs per filter (.fasta)
-            synonyms:
-            - -i
-            - --fasta-dir
-            args: !SimpleFlagArg
-              name: FASTA_DIR
-            optional: true
-          - !Flag
-            description: "Directory containing nucleotide scores per filter\n(.csv)"
-            synonyms:
-            - -s
-            - --scores-dir
-            args: !SimpleFlagArg
-              name: SCORES_DIR
-            optional: true
-          - !Flag
-            description: "Directory containing motifs in weighted transfac\nformat\
-              \ (only required if weighted weblogos should be\ncreated)"
-            synonyms:
-            - -I
-            - --logo-dir
-            args: !SimpleFlagArg
-              name: LOGO_DIR
-            optional: true
-          - !Flag
-            description: "Color saturation gain. Weblogo colors reach saturation\n\
-              when the average nt score=1/gain. Default: 128000.\nRecommended: input\
-              \ length * number of filters."
-            synonyms:
-            - -G
-            - --gain
-            args: !SimpleFlagArg
-              name: GAIN
-            optional: true
-          - !Flag
-            description: Training data set to compute GC-content
-            synonyms:
-            - -t
-            - --train-data
-            args: !SimpleFlagArg
-              name: TRAIN_DATA
-            optional: true
-          - !Flag
-            description: "Output directory\n"
-            synonyms:
-            - -o
-            - --out-dir
-            args: !SimpleFlagArg
-              name: OUT_DIR
-            optional: true
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain xlogos [-h] -i FASTA_DIR -s SCORES_DIR\
-            \ [-I LOGO_DIR]\n                             [-G GAIN] [-t TRAIN_DATA]\
-            \ -o OUT_DIR\n\noptional arguments:\n  -h, --help            show this\
-            \ help message and exit\n  -i FASTA_DIR, --fasta-dir FASTA_DIR\n     \
-            \                   Directory containing motifs per filter (.fasta)\n\
-            \  -s SCORES_DIR, --scores-dir SCORES_DIR\n                        Directory\
-            \ containing nucleotide scores per filter\n                        (.csv)\n\
-            \  -I LOGO_DIR, --logo-dir LOGO_DIR\n                        Directory\
-            \ containing motifs in weighted transfac\n                        format\
-            \ (only required if weighted weblogos should be\n                    \
-            \    created)\n  -G GAIN, --gain GAIN  Color saturation gain. Weblogo\
-            \ colors reach saturation\n                        when the average nt\
-            \ score=1/gain. Default: 128000.\n                        Recommended:\
-            \ input length * number of filters.\n  -t TRAIN_DATA, --train-data TRAIN_DATA\n\
-            \                        Training data set to compute GC-content\n  -o\
-            \ OUT_DIR, --out-dir OUT_DIR\n                        Output directory\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - deepac
-          - explain
-          - details.
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: deepac
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: explain
-            optional: false
-          named: []
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: ''
-            synonyms:
-            - -h
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain [-h]\n                      {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
-            \                      ...\ndeepac explain: error: invalid choice: 'details.'\
-            \ (choose from 'maxact', 'fcontribs', 'franking', 'fa2transfac', 'weblogos',\
-            \ 'xlogos', 'transfac2IC', 'mcompare')\n"
-          generated_using: *id004
-        - !Command
-          command:
-          - deepac
-          - explain
-          - franking
-          positional:
-          - !Positional
-            description: 'optional arguments:'
-            position: 0
-            name: OUT_DIR
-            optional: false
-          named:
-          - !Flag
-            description: ''
-            synonyms:
-            - -f
-            - -y
-            - -p
-            - -o
-            args: !SimpleFlagArg
-              name: SCORES_DIR
-            optional: true
-          - !Flag
-            description: "Use original filter scores or normalize scores\nrelative\
-              \ to true or predicted classes."
-            synonyms:
-            - -m
-            - --mode
-            args: !ChoiceFlagArg
-              choices: !!set
-                ? rel_true_class
-                ? rel_pred_class
-                ? original
-            optional: true
-          - !Flag
-            description: Directory containing filter contribution scores (.csv)
-            synonyms:
-            - -f
-            - --scores-dir
-            args: !SimpleFlagArg
-              name: SCORES_DIR
-            optional: true
-          - !Flag
-            description: File with true read labels (.npy)
-            synonyms:
-            - -y
-            - --true-label
-            args: !SimpleFlagArg
-              name: TRUE_LABEL
-            optional: true
-          - !Flag
-            description: File with predicted read labels (.npy)
-            synonyms:
-            - -p
-            - --pred-label
-            args: !SimpleFlagArg
-              name: PRED_LABEL
-            optional: true
-          - !Flag
-            description: "Output directory\n"
-            synonyms:
-            - -o
-            - --out-dir
-            args: !SimpleFlagArg
-              name: OUT_DIR
-            optional: true
-          parent: *id005
-          subcommands: []
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: deepac explain franking [-h]\n                      \
-            \         [-m {original,rel_true_class,rel_pred_class}]\n            \
-            \                   -f SCORES_DIR -y TRUE_LABEL -p PRED_LABEL -o\n   \
-            \                            OUT_DIR\n\noptional arguments:\n  -h, --help\
-            \            show this help message and exit\n  -m {original,rel_true_class,rel_pred_class},\
-            \ --mode {original,rel_true_class,rel_pred_class}\n                  \
-            \      Use original filter scores or normalize scores\n              \
-            \          relative to true or predicted classes.\n  -f SCORES_DIR, --scores-dir\
-            \ SCORES_DIR\n                        Directory containing filter contribution\
-            \ scores (.csv)\n  -y TRUE_LABEL, --true-label TRUE_LABEL\n          \
-            \              File with true read labels (.npy)\n  -p PRED_LABEL, --pred-label\
-            \ PRED_LABEL\n                        File with predicted read labels\
-            \ (.npy)\n  -o OUT_DIR, --out-dir OUT_DIR\n                        Output\
-            \ directory\n"
-          generated_using: *id004
-        usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-        help_text: "usage: deepac explain [-h]\n                      {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
-          \                      ...\n\npositional arguments:\n  {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
-          \                        DeePaC explain subcommands. See command --help\
-          \ for\n                        details.\n    maxact              Get DeepBind-like\
-          \ max-activation scores.\n    fcontribs           Get DeepLIFT/SHAP filter\
-          \ contribution scores.\n    franking            Generate filter rankings.\n\
-          \    fa2transfac         Calculate transfac from fasta files.\n    weblogos\
-          \            Get sequence logos.\n    xlogos              Get extended sequence\
-          \ logos.\n    transfac2IC         Calculate information content from transfac\
-          \ files.\n    mcompare            Compare motifs.\n\noptional arguments:\n\
-          \  -h, --help            show this help message and exit\n"
-        generated_using: *id004
-      usage: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag: !Flag
-        description: Print version.
-        synonyms:
-        - -v
-        - --version
-        args: !EmptyFlagArg {}
-        optional: true
-      help_text: "usage: deepac [-h] [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n\
-        \              [--debug-device] [--force-cpu] [--tpu TPU]\n              {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
-        \              ...\n\nPredicting pathogenic potentials of novel DNA with reverse-complement\
-        \ neural\nnetworks.\n\npositional arguments:\n  {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
-        \                        DeePaC subcommands. See command --help for details.\n\
-        \    predict             Predict using a trained model.\n    filter      \
-        \        Filter prediction results.\n    train               Train a new model.\n\
-        \    preproc             Convert fasta files to numpy arrays for training.\n\
-        \    eval                Predict using a trained model.\n    convert     \
-        \        Convert and compile a model to an equivalent.\n    getmodels    \
-        \       Get built-in weights and rebuild built-in models.\n    test      \
-        \          Run additional tests.\n    explain             Run filter visualization\
-        \ workflows.\n    gwpa                Run GWPA workflows.\n    templates \
-        \          Get config templates (in this directory).\n\noptional arguments:\n\
-        \  -h, --help            show this help message and exit\n  -v, --version\
-        \         Print version.\n  --debug-no-eager      Disable eager mode.\n  --debug-tf\
-        \ DEBUG_TF   Set tensorflow debug info verbosity level. 0 = max, 3\n     \
-        \                   = min. Default: 2 (errors); 3 for tests (muted)\n  --debug-device\
-        \        Enable verbose device placement information.\n  --force-cpu     \
-        \      Use a CPU even if GPUs are available.\n  --tpu TPU             TPU\
-        \ name: 'colab' for Google Colab, or name of your\n                      \
-        \  TPU on GCE.\n"
-      generated_using: *id004
+    parent:
     subcommands:
     - !Command
-      command: *id006
+      command: *id002
       positional: []
       named:
       - !Flag
@@ -1236,7 +133,1339 @@ subcommands:
         - -F
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id004 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent: &id003 !Command
+          command:
+          - deepac
+          positional: []
+          named:
+          - !Flag
+            description: Disable eager mode.
+            synonyms:
+            - --debug-no-eager
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Set tensorflow debug info verbosity level. 0 = max, 3\n\
+              = min. Default: 2 (errors); 3 for tests (muted)"
+            synonyms:
+            - --debug-tf
+            args: !SimpleFlagArg
+              name: DEBUG_TF
+            optional: true
+          - !Flag
+            description: Enable verbose device placement information.
+            synonyms:
+            - --debug-device
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Use a CPU even if GPUs are available.
+            synonyms:
+            - --force-cpu
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "TPU name: 'colab' for Google Colab, or name of your\nTPU\
+              \ on GCE.\n"
+            synonyms:
+            - --tpu
+            args: !SimpleFlagArg
+              name: TPU
+            optional: true
+          - !Flag
+            description: ''
+            synonyms:
+            - -v
+            args: !EmptyFlagArg {}
+            optional: true
+          parent:
+          subcommands:
+          - !Command
+            command:
+            - deepac
+            - test
+            positional: []
+            named:
+            - !Flag
+              description: 'Number of CPU cores. Default: all.'
+              synonyms:
+              - -n
+              - --n-cpus
+              args: !SimpleFlagArg
+                name: N_CPUS
+              optional: true
+            - !Flag
+              description: 'GPU devices to use. Default: all'
+              synonyms:
+              - -g
+              - --gpus
+              args: !RepeatFlagArg
+                name: GPUS
+              optional: true
+            - !Flag
+              description: Test explain workflows.
+              synonyms:
+              - -x
+              - --explain
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Test gwpa workflows.
+              synonyms:
+              - -p
+              - --gwpa
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Test all functions.
+              synonyms:
+              - -a
+              - --all
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Don't test heavy models (e.g. when no GPU available).
+              synonyms:
+              - -q
+              - --quick
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Don't delete previous test output.
+              synonyms:
+              - -k
+              - --keep
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: 'Generate s*1024 reads for testing (Default: s=1).'
+              synonyms:
+              - -s
+              - --scale
+              args: !SimpleFlagArg
+                name: SCALE
+              optional: true
+            - !Flag
+              description: "[INPUT_MODES [INPUT_MODES ...]]\nInput modes to test:\
+                \ memory, sequence and/or tfdata.\nDefault: all.\n"
+              synonyms:
+              - --input-modes
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: deepac test [-h] [-n N_CPUS] [-g GPUS [GPUS ...]] [-x]\
+              \ [-p] [-a] [-q]\n                   [-k] [-s SCALE]\n             \
+              \      [--input-modes [INPUT_MODES [INPUT_MODES ...]]]\n\noptional arguments:\n\
+              \  -h, --help            show this help message and exit\n  -n N_CPUS,\
+              \ --n-cpus N_CPUS\n                        Number of CPU cores. Default:\
+              \ all.\n  -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n             \
+              \           GPU devices to use. Default: all\n  -x, --explain      \
+              \   Test explain workflows.\n  -p, --gwpa            Test gwpa workflows.\n\
+              \  -a, --all             Test all functions.\n  -q, --quick        \
+              \   Don't test heavy models (e.g. when no GPU available).\n  -k, --keep\
+              \            Don't delete previous test output.\n  -s SCALE, --scale\
+              \ SCALE\n                        Generate s*1024 reads for testing (Default:\
+              \ s=1).\n  --input-modes [INPUT_MODES [INPUT_MODES ...]]\n         \
+              \               Input modes to test: memory, sequence and/or tfdata.\n\
+              \                        Default: all.\n"
+            generated_using: &id005
+            - --help
+          - !Command
+            command:
+            - deepac
+            - preproc
+            positional:
+            - !Positional
+              description: Preprocessing config file.
+              position: 0
+              name: config
+              optional: false
+            named: []
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: deepac preproc [-h] config\n\npositional arguments:\n\
+              \  config      Preprocessing config file.\n\noptional arguments:\n \
+              \ -h, --help  show this help message and exit\n"
+            generated_using: &id007
+            - -h
+          - *id004
+          - !Command
+            command:
+            - deepac
+            - predict
+            positional: []
+            named:
+            - !Flag
+              description: Use .npy input instead.
+              synonyms:
+              - -a
+              - --array
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Use the sensitive model.
+              synonyms:
+              - -s
+              - --sensitive
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Use the rapid CNN model.
+              synonyms:
+              - -r
+              - --rapid
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Use the user-supplied, already compiled CUSTOM model.
+              synonyms:
+              - -c
+              - --custom
+              args: !SimpleFlagArg
+                name: CUSTOM
+              optional: true
+            - !Flag
+              description: Output file path [.npy].
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            - !Flag
+              description: 'Number of CPU cores. Default: all.'
+              synonyms:
+              - -n
+              - --n-cpus
+              args: !SimpleFlagArg
+                name: N_CPUS
+              optional: true
+            - !Flag
+              description: "GPU devices to use (comma-separated). Default: all\n"
+              synonyms:
+              - -g
+              - --gpus
+              args: !RepeatFlagArg
+                name: GPUS
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: deepac predict [-h] [-a] (-s | -r | -c CUSTOM) [-o\
+              \ OUTPUT] [-n N_CPUS]\n                      [-g GPUS [GPUS ...]]\n\
+              \                      input\n\npositional arguments:\n  input     \
+              \            Input file path [.fasta].\n\noptional arguments:\n  -h,\
+              \ --help            show this help message and exit\n  -a, --array \
+              \          Use .npy input instead.\n  -s, --sensitive       Use the\
+              \ sensitive model.\n  -r, --rapid           Use the rapid CNN model.\n\
+              \  -c CUSTOM, --custom CUSTOM\n                        Use the user-supplied,\
+              \ already compiled CUSTOM model.\n  -o OUTPUT, --output OUTPUT\n   \
+              \                     Output file path [.npy].\n  -n N_CPUS, --n-cpus\
+              \ N_CPUS\n                        Number of CPU cores. Default: all.\n\
+              \  -g GPUS [GPUS ...], --gpus GPUS [GPUS ...]\n                    \
+              \    GPU devices to use (comma-separated). Default: all\n"
+            generated_using: *id005
+          - !Command
+            command:
+            - deepac
+            - getmodels
+            positional:
+            - !Positional
+              description: ''
+              position: 0
+              name: deepac
+              optional: false
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - --debug-tf
+              args: !SimpleFlagArg
+                name: DEBUG_TF
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - --debug-no-eager
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - -v
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: ''
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: deepac [-h] [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n\
+              \              [--debug-device] [--force-cpu] [--tpu TPU]\n        \
+              \      {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
+              \              ...\ndeepac: error: unrecognized arguments: --usage\n"
+            generated_using:
+            - --usage
+          - !Command
+            command:
+            - deepac
+            - eval
+            positional: []
+            named:
+            - !Flag
+              description: Species-wise evaluation.
+              synonyms:
+              - -s
+              - --species
+              args: !SimpleFlagArg
+                name: SPECIES_CONFIG
+              optional: true
+            - !Flag
+              description: Read-wise evaluation.
+              synonyms:
+              - -r
+              - --reads
+              args: !SimpleFlagArg
+                name: READS_CONFIG
+              optional: true
+            - !Flag
+              description: "Simple ensemble evaluation.\n"
+              synonyms:
+              - -e
+              - --ensemble
+              args: !SimpleFlagArg
+                name: ENS_CONFIG
+              optional: true
+            parent: *id003
+            subcommands: []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: deepac eval [-h] (-s SPECIES_CONFIG | -r READS_CONFIG\
+              \ | -e ENS_CONFIG)\n\noptional arguments:\n  -h, --help            show\
+              \ this help message and exit\n  -s SPECIES_CONFIG, --species SPECIES_CONFIG\n\
+              \                        Species-wise evaluation.\n  -r READS_CONFIG,\
+              \ --reads READS_CONFIG\n                        Read-wise evaluation.\n\
+              \  -e ENS_CONFIG, --ensemble ENS_CONFIG\n                        Simple\
+              \ ensemble evaluation.\n"
+            generated_using: *id005
+          - &id006 !Command
+            command:
+            - deepac
+            - explain
+            positional: []
+            named: []
+            parent: *id003
+            subcommands:
+            - !Command
+              command:
+              - deepac
+              - explain
+              - fcontribs
+              positional:
+              - !Positional
+                description: -t TEST_DATA, --test_data TEST_DATA
+                position: 0
+                name: centered
+                optional: false
+              named:
+              - !Flag
+                description: Model file (.h5)
+                synonyms:
+                - -m
+                - --model
+                args: !SimpleFlagArg
+                  name: MODEL
+                optional: true
+              - !Flag
+                description: Set flag if filter weight matrices should be mean-
+                synonyms:
+                - -b
+                - --w-norm
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Nonpathogenic reads of the test data set (.fasta)
+                synonyms:
+                - -N
+                - --nonpatho-test
+                args: !SimpleFlagArg
+                  name: NONPATHO_TEST
+                optional: true
+              - !Flag
+                description: Pathogenic reads of the test data set (.fasta)
+                synonyms:
+                - -P
+                - --patho-test
+                args: !SimpleFlagArg
+                  name: PATHO_TEST
+                optional: true
+              - !Flag
+                description: Output directory
+                synonyms:
+                - -o
+                - --out-dir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              - !Flag
+                description: Modus to calculate reference sequences
+                synonyms:
+                - -r
+                - --ref-mode
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? GC
+                    ? N
+                    ? own_ref_file
+                optional: true
+              - !Flag
+                description: "Train data (.npy), necessary to calculate reference\n\
+                  sequences if ref_mode is 'GC'"
+                synonyms:
+                - -a
+                - --train-data
+                args: !SimpleFlagArg
+                  name: TRAIN_DATA
+                optional: true
+              - !Flag
+                description: "User provided reference sequences (.fasta) if ref_mode\n\
+                  is 'own_ref_file'"
+                synonyms:
+                - -F
+                - --ref-seqs
+                args: !SimpleFlagArg
+                  name: REF_SEQS
+                optional: true
+              - !Flag
+                description: "[INTER_NEURON [INTER_NEURON ...]], --inter-neuron [INTER_NEURON\
+                  \ [INTER_NEURON ...]]\nPerform calculations for this intermediate\
+                  \ neuron only"
+                synonyms:
+                - -i
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Perform calculations for this intermediate layer
+                synonyms:
+                - -l
+                - --inter-layer
+                args: !SimpleFlagArg
+                  name: INTER_LAYER
+                optional: true
+              - !Flag
+                description: Sequence chunk size. Decrease for lower memory usage.
+                synonyms:
+                - -c
+                - --seq-chunk
+                args: !SimpleFlagArg
+                  name: CHUNK_SIZE
+                optional: true
+              - !Flag
+                description: "Extract contributions for all occurrences of a filter\n\
+                  per read (Default: max only)"
+                synonyms:
+                - -A
+                - --all-occurrences
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Interpret elements of the LSTM output
+                synonyms:
+                - -R
+                - --recurrent
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Calculate partial nucleotide contributions per filter.
+                synonyms:
+                - -p
+                - --partial
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Calculate easy partial nucleotide contributions per\n\
+                  filter. Works for the first convolutional layer only;\ndisables\
+                  \ all-occurences mode.\n"
+                synonyms:
+                - -e
+                - --easy-partial
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: TEST_DATA
+                optional: true
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain fcontribs [-h] -m MODEL [-b] -t TEST_DATA\
+                \ -N\n                                NONPATHO_TEST -P PATHO_TEST\
+                \ [-o OUT_DIR]\n                                [-r {N,GC,own_ref_file}]\
+                \ [-a TRAIN_DATA]\n                                [-F REF_SEQS]\n\
+                \                                [-i [INTER_NEURON [INTER_NEURON ...]]]\n\
+                \                                [-l INTER_LAYER] [-c CHUNK_SIZE]\
+                \ [-A] [-R]\n                                [-p | -e]\n\noptional\
+                \ arguments:\n  -h, --help            show this help message and exit\n\
+                \  -m MODEL, --model MODEL\n                        Model file (.h5)\n\
+                \  -b, --w-norm          Set flag if filter weight matrices should\
+                \ be mean-\n                        centered\n  -t TEST_DATA, --test_data\
+                \ TEST_DATA\n                        Test data (.npy)\n  -N NONPATHO_TEST,\
+                \ --nonpatho-test NONPATHO_TEST\n                        Nonpathogenic\
+                \ reads of the test data set (.fasta)\n  -P PATHO_TEST, --patho-test\
+                \ PATHO_TEST\n                        Pathogenic reads of the test\
+                \ data set (.fasta)\n  -o OUT_DIR, --out-dir OUT_DIR\n           \
+                \             Output directory\n  -r {N,GC,own_ref_file}, --ref-mode\
+                \ {N,GC,own_ref_file}\n                        Modus to calculate\
+                \ reference sequences\n  -a TRAIN_DATA, --train-data TRAIN_DATA\n\
+                \                        Train data (.npy), necessary to calculate\
+                \ reference\n                        sequences if ref_mode is 'GC'\n\
+                \  -F REF_SEQS, --ref-seqs REF_SEQS\n                        User\
+                \ provided reference sequences (.fasta) if ref_mode\n            \
+                \            is 'own_ref_file'\n  -i [INTER_NEURON [INTER_NEURON ...]],\
+                \ --inter-neuron [INTER_NEURON [INTER_NEURON ...]]\n             \
+                \           Perform calculations for this intermediate neuron only\n\
+                \  -l INTER_LAYER, --inter-layer INTER_LAYER\n                   \
+                \     Perform calculations for this intermediate layer\n  -c CHUNK_SIZE,\
+                \ --seq-chunk CHUNK_SIZE\n                        Sequence chunk size.\
+                \ Decrease for lower memory usage.\n  -A, --all-occurrences\n    \
+                \                    Extract contributions for all occurrences of\
+                \ a filter\n                        per read (Default: max only)\n\
+                \  -R, --recurrent       Interpret elements of the LSTM output\n \
+                \ -p, --partial         Calculate partial nucleotide contributions\
+                \ per filter.\n  -e, --easy-partial    Calculate easy partial nucleotide\
+                \ contributions per\n                        filter. Works for the\
+                \ first convolutional layer only;\n                        disables\
+                \ all-occurences mode.\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - deepac
+              - explain
+              - fa2transfac
+              positional: []
+              named:
+              - !Flag
+                description: Directory containing motifs per filter (.fasta)
+                synonyms:
+                - -i
+                - --in-dir
+                args: !SimpleFlagArg
+                  name: IN_DIR
+                optional: true
+              - !Flag
+                description: Output directory
+                synonyms:
+                - -o
+                - --out-dir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              - !Flag
+                description: Weight sequences by their DeepLIFT score
+                synonyms:
+                - -w
+                - --weighting
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Directory containing the DeepLIFT scores per filter\n\
+                  (only required if --weighting is chosen)\n"
+                synonyms:
+                - -W
+                - --weight-dir
+                args: !SimpleFlagArg
+                  name: WEIGHT_DIR
+                optional: true
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain fa2transfac [-h] -i IN_DIR -o OUT_DIR\
+                \ [-w]\n                                  [-W WEIGHT_DIR]\n\noptional\
+                \ arguments:\n  -h, --help            show this help message and exit\n\
+                \  -i IN_DIR, --in-dir IN_DIR\n                        Directory containing\
+                \ motifs per filter (.fasta)\n  -o OUT_DIR, --out-dir OUT_DIR\n  \
+                \                      Output directory\n  -w, --weighting       Weight\
+                \ sequences by their DeepLIFT score\n  -W WEIGHT_DIR, --weight-dir\
+                \ WEIGHT_DIR\n                        Directory containing the DeepLIFT\
+                \ scores per filter\n                        (only required if --weighting\
+                \ is chosen)\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - deepac
+              - explain
+              - transfac2IC
+              positional: []
+              named:
+              - !Flag
+                description: File containing all filter motifs in transfac format
+                synonyms:
+                - -i
+                - --in-file
+                args: !SimpleFlagArg
+                  name: IN_FILE
+                optional: true
+              - !Flag
+                description: Training data set (.npy) to normalize for GC-content
+                synonyms:
+                - -t
+                - --train
+                args: !SimpleFlagArg
+                  name: TRAIN
+                optional: true
+              - !Flag
+                description: "Name of the output file\n"
+                synonyms:
+                - -o
+                - --out-file
+                args: !SimpleFlagArg
+                  name: OUT_FILE
+                optional: true
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain transfac2IC [-h] -i IN_FILE -t TRAIN\
+                \ [-o OUT_FILE]\n\noptional arguments:\n  -h, --help            show\
+                \ this help message and exit\n  -i IN_FILE, --in-file IN_FILE\n  \
+                \                      File containing all filter motifs in transfac\
+                \ format\n  -t TRAIN, --train TRAIN\n                        Training\
+                \ data set (.npy) to normalize for GC-content\n  -o OUT_FILE, --out-file\
+                \ OUT_FILE\n                        Name of the output file\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - deepac
+              - explain
+              - mcompare
+              positional: []
+              named:
+              - !Flag
+                description: File containing all filter motifs in transfac format
+                synonyms:
+                - -q
+                - --in-file1
+                args: !SimpleFlagArg
+                  name: IN_FILE1
+                optional: true
+              - !Flag
+                description: File containing all filter motifs in transfac format
+                synonyms:
+                - -t
+                - --in-file2
+                args: !SimpleFlagArg
+                  name: IN_FILE2
+                optional: true
+              - !Flag
+                description: "Training data (.npy), necessary to calculate\nbackground\
+                  \ GC content"
+                synonyms:
+                - -a
+                - --train-data
+                args: !SimpleFlagArg
+                  name: TRAIN_DATA
+                optional: true
+              - !Flag
+                description: "Compare every motif from --in_file1 with every motif\n\
+                  from --in_file2; default: compare only motifs with the\nsame ID"
+                synonyms:
+                - -e
+                - --extensively
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Consider RC-complement of a motif
+                synonyms:
+                - -r
+                - --rc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Shift motifs to find best alignment
+                synonyms:
+                - -s
+                - --shift
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Minimal overlap between two motifs if motifs are\nshifted\
+                  \ to find the best alignment (--shift)"
+                synonyms:
+                - -m
+                - --min-overlap
+                args: !SimpleFlagArg
+                  name: MIN_OVERLAP
+                optional: true
+              - !Flag
+                description: "Output directory\n"
+                synonyms:
+                - -o
+                - --out-dir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain mcompare [-h] -q IN_FILE1 -t IN_FILE2\
+                \ [-a TRAIN_DATA]\n                               [-e] [-r] [-s] [-m\
+                \ MIN_OVERLAP] [-o OUT_DIR]\n\noptional arguments:\n  -h, --help \
+                \           show this help message and exit\n  -q IN_FILE1, --in-file1\
+                \ IN_FILE1\n                        File containing all filter motifs\
+                \ in transfac format\n  -t IN_FILE2, --in-file2 IN_FILE2\n       \
+                \                 File containing all filter motifs in transfac format\n\
+                \  -a TRAIN_DATA, --train-data TRAIN_DATA\n                      \
+                \  Training data (.npy), necessary to calculate\n                \
+                \        background GC content\n  -e, --extensively     Compare every\
+                \ motif from --in_file1 with every motif\n                       \
+                \ from --in_file2; default: compare only motifs with the\n       \
+                \                 same ID\n  -r, --rc              Consider RC-complement\
+                \ of a motif\n  -s, --shift           Shift motifs to find best alignment\n\
+                \  -m MIN_OVERLAP, --min-overlap MIN_OVERLAP\n                   \
+                \     Minimal overlap between two motifs if motifs are\n         \
+                \               shifted to find the best alignment (--shift)\n  -o\
+                \ OUT_DIR, --out-dir OUT_DIR\n                        Output directory\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - deepac
+              - explain
+              - weblogos
+              positional: []
+              named:
+              - !Flag
+                description: Directory containing motifs per filter
+                synonyms:
+                - -i
+                - --in-dir
+                args: !SimpleFlagArg
+                  name: IN_DIR
+                optional: true
+              - !Flag
+                description: "{.fasta,.transfac}, --file-ext {.fasta,.transfac}\n\
+                  Extension of file format of input files (.fasta or\n.transfac)"
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Training data set (.npy) to compute GC-content.\nN-padding\
+                  \ lowers GC!"
+                synonyms:
+                - -t
+                - --train-data
+                args: !SimpleFlagArg
+                  name: TRAIN_DATA
+                optional: true
+              - !Flag
+                description: "Output directory\n"
+                synonyms:
+                - -o
+                - --out-dir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain weblogos [-h] -i IN_DIR [-f {.fasta,.transfac}]\n\
+                \                               [-t TRAIN_DATA] -o OUT_DIR\n\noptional\
+                \ arguments:\n  -h, --help            show this help message and exit\n\
+                \  -i IN_DIR, --in-dir IN_DIR\n                        Directory containing\
+                \ motifs per filter\n  -f {.fasta,.transfac}, --file-ext {.fasta,.transfac}\n\
+                \                        Extension of file format of input files (.fasta\
+                \ or\n                        .transfac)\n  -t TRAIN_DATA, --train-data\
+                \ TRAIN_DATA\n                        Training data set (.npy) to\
+                \ compute GC-content.\n                        N-padding lowers GC!\n\
+                \  -o OUT_DIR, --out-dir OUT_DIR\n                        Output directory\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - deepac
+              - explain
+              - xlogos
+              positional: []
+              named:
+              - !Flag
+                description: Directory containing motifs per filter (.fasta)
+                synonyms:
+                - -i
+                - --fasta-dir
+                args: !SimpleFlagArg
+                  name: FASTA_DIR
+                optional: true
+              - !Flag
+                description: "Directory containing nucleotide scores per filter\n\
+                  (.csv)"
+                synonyms:
+                - -s
+                - --scores-dir
+                args: !SimpleFlagArg
+                  name: SCORES_DIR
+                optional: true
+              - !Flag
+                description: "Directory containing motifs in weighted transfac\nformat\
+                  \ (only required if weighted weblogos should be\ncreated)"
+                synonyms:
+                - -I
+                - --logo-dir
+                args: !SimpleFlagArg
+                  name: LOGO_DIR
+                optional: true
+              - !Flag
+                description: "Color saturation gain. Weblogo colors reach saturation\n\
+                  when the average nt score=1/gain. Default: 128000.\nRecommended:\
+                  \ input length * number of filters."
+                synonyms:
+                - -G
+                - --gain
+                args: !SimpleFlagArg
+                  name: GAIN
+                optional: true
+              - !Flag
+                description: Training data set to compute GC-content
+                synonyms:
+                - -t
+                - --train-data
+                args: !SimpleFlagArg
+                  name: TRAIN_DATA
+                optional: true
+              - !Flag
+                description: "Output directory\n"
+                synonyms:
+                - -o
+                - --out-dir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain xlogos [-h] -i FASTA_DIR -s SCORES_DIR\
+                \ [-I LOGO_DIR]\n                             [-G GAIN] [-t TRAIN_DATA]\
+                \ -o OUT_DIR\n\noptional arguments:\n  -h, --help            show\
+                \ this help message and exit\n  -i FASTA_DIR, --fasta-dir FASTA_DIR\n\
+                \                        Directory containing motifs per filter (.fasta)\n\
+                \  -s SCORES_DIR, --scores-dir SCORES_DIR\n                      \
+                \  Directory containing nucleotide scores per filter\n           \
+                \             (.csv)\n  -I LOGO_DIR, --logo-dir LOGO_DIR\n       \
+                \                 Directory containing motifs in weighted transfac\n\
+                \                        format (only required if weighted weblogos\
+                \ should be\n                        created)\n  -G GAIN, --gain GAIN\
+                \  Color saturation gain. Weblogo colors reach saturation\n      \
+                \                  when the average nt score=1/gain. Default: 128000.\n\
+                \                        Recommended: input length * number of filters.\n\
+                \  -t TRAIN_DATA, --train-data TRAIN_DATA\n                      \
+                \  Training data set to compute GC-content\n  -o OUT_DIR, --out-dir\
+                \ OUT_DIR\n                        Output directory\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - deepac
+              - explain
+              - details.
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: deepac
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: explain
+                optional: false
+              named: []
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain [-h]\n                      {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
+                \                      ...\ndeepac explain: error: invalid choice:\
+                \ 'details.' (choose from 'maxact', 'fcontribs', 'franking', 'fa2transfac',\
+                \ 'weblogos', 'xlogos', 'transfac2IC', 'mcompare')\n"
+              generated_using: *id005
+            - !Command
+              command:
+              - deepac
+              - explain
+              - franking
+              positional:
+              - !Positional
+                description: 'optional arguments:'
+                position: 0
+                name: OUT_DIR
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -f
+                - -y
+                - -p
+                - -o
+                args: !SimpleFlagArg
+                  name: SCORES_DIR
+                optional: true
+              - !Flag
+                description: "Use original filter scores or normalize scores\nrelative\
+                  \ to true or predicted classes."
+                synonyms:
+                - -m
+                - --mode
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? rel_true_class
+                    ? rel_pred_class
+                    ? original
+                optional: true
+              - !Flag
+                description: Directory containing filter contribution scores (.csv)
+                synonyms:
+                - -f
+                - --scores-dir
+                args: !SimpleFlagArg
+                  name: SCORES_DIR
+                optional: true
+              - !Flag
+                description: File with true read labels (.npy)
+                synonyms:
+                - -y
+                - --true-label
+                args: !SimpleFlagArg
+                  name: TRUE_LABEL
+                optional: true
+              - !Flag
+                description: File with predicted read labels (.npy)
+                synonyms:
+                - -p
+                - --pred-label
+                args: !SimpleFlagArg
+                  name: PRED_LABEL
+                optional: true
+              - !Flag
+                description: "Output directory\n"
+                synonyms:
+                - -o
+                - --out-dir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              parent: *id006
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: deepac explain franking [-h]\n                  \
+                \             [-m {original,rel_true_class,rel_pred_class}]\n    \
+                \                           -f SCORES_DIR -y TRUE_LABEL -p PRED_LABEL\
+                \ -o\n                               OUT_DIR\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -m {original,rel_true_class,rel_pred_class},\
+                \ --mode {original,rel_true_class,rel_pred_class}\n              \
+                \          Use original filter scores or normalize scores\n      \
+                \                  relative to true or predicted classes.\n  -f SCORES_DIR,\
+                \ --scores-dir SCORES_DIR\n                        Directory containing\
+                \ filter contribution scores (.csv)\n  -y TRUE_LABEL, --true-label\
+                \ TRUE_LABEL\n                        File with true read labels (.npy)\n\
+                \  -p PRED_LABEL, --pred-label PRED_LABEL\n                      \
+                \  File with predicted read labels (.npy)\n  -o OUT_DIR, --out-dir\
+                \ OUT_DIR\n                        Output directory\n"
+              generated_using: *id005
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: deepac explain [-h]\n                      {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
+              \                      ...\n\npositional arguments:\n  {maxact,fcontribs,franking,fa2transfac,weblogos,xlogos,transfac2IC,mcompare}\n\
+              \                        DeePaC explain subcommands. See command --help\
+              \ for\n                        details.\n    maxact              Get\
+              \ DeepBind-like max-activation scores.\n    fcontribs           Get\
+              \ DeepLIFT/SHAP filter contribution scores.\n    franking          \
+              \  Generate filter rankings.\n    fa2transfac         Calculate transfac\
+              \ from fasta files.\n    weblogos            Get sequence logos.\n \
+              \   xlogos              Get extended sequence logos.\n    transfac2IC\
+              \         Calculate information content from transfac files.\n    mcompare\
+              \            Compare motifs.\n\noptional arguments:\n  -h, --help  \
+              \          show this help message and exit\n"
+            generated_using: *id005
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: Print version.
+            synonyms:
+            - -v
+            - --version
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: deepac [-h] [-v] [--debug-no-eager] [--debug-tf DEBUG_TF]\n\
+            \              [--debug-device] [--force-cpu] [--tpu TPU]\n          \
+            \    {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
+            \              ...\n\nPredicting pathogenic potentials of novel DNA with\
+            \ reverse-complement neural\nnetworks.\n\npositional arguments:\n  {predict,filter,train,preproc,eval,convert,getmodels,test,explain,gwpa,templates}\n\
+            \                        DeePaC subcommands. See command --help for details.\n\
+            \    predict             Predict using a trained model.\n    filter  \
+            \            Filter prediction results.\n    train               Train\
+            \ a new model.\n    preproc             Convert fasta files to numpy arrays\
+            \ for training.\n    eval                Predict using a trained model.\n\
+            \    convert             Convert and compile a model to an equivalent.\n\
+            \    getmodels           Get built-in weights and rebuild built-in models.\n\
+            \    test                Run additional tests.\n    explain          \
+            \   Run filter visualization workflows.\n    gwpa                Run GWPA\
+            \ workflows.\n    templates           Get config templates (in this directory).\n\
+            \noptional arguments:\n  -h, --help            show this help message\
+            \ and exit\n  -v, --version         Print version.\n  --debug-no-eager\
+            \      Disable eager mode.\n  --debug-tf DEBUG_TF   Set tensorflow debug\
+            \ info verbosity level. 0 = max, 3\n                        = min. Default:\
+            \ 2 (errors); 3 for tests (muted)\n  --debug-device        Enable verbose\
+            \ device placement information.\n  --force-cpu           Use a CPU even\
+            \ if GPUs are available.\n  --tpu TPU             TPU name: 'colab' for\
+            \ Google Colab, or name of your\n                        TPU on GCE.\n"
+          generated_using: *id005
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: Model file (.h5)
+            synonyms:
+            - -m
+            - --model
+            args: !SimpleFlagArg
+              name: MODEL
+            optional: true
+          - !Flag
+            description: Test data (.npy)
+            synonyms:
+            - -t
+            - --test-data
+            args: !SimpleFlagArg
+              name: TEST_DATA
+            optional: true
+          - !Flag
+            description: Reads of the test data set (.fasta)
+            synonyms:
+            - -f
+            - --test-fasta
+            args: !SimpleFlagArg
+              name: TEST_FASTA
+            optional: true
+          - !Flag
+            description: Output directory
+            synonyms:
+            - -o
+            - --out-dir
+            args: !SimpleFlagArg
+              name: OUT_DIR
+            optional: true
+          - !Flag
+            description: Perform calculations for this intermediate layer
+            synonyms:
+            - -l
+            - --inter-layer
+            args: !SimpleFlagArg
+              name: INTER_LAYER
+            optional: true
+          - !Flag
+            description: Sequence chunk size. Decrease for lower memory usage.
+            synonyms:
+            - -c
+            - --seq-chunk
+            args: !SimpleFlagArg
+              name: CHUNK_SIZE
+            optional: true
+          - !Flag
+            description: "[INTER_NEURON [INTER_NEURON ...]], --inter-neuron [INTER_NEURON\
+              \ [INTER_NEURON ...]]\nPerform calculations for this filter only\n"
+            synonyms:
+            - -F
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: deepac gwpa factiv [-h] -m MODEL -t TEST_DATA -f TEST_FASTA\n\
+            \                          [-o OUT_DIR] [-l INTER_LAYER] [-c CHUNK_SIZE]\n\
+            \                          [-F [INTER_NEURON [INTER_NEURON ...]]]\n\n\
+            optional arguments:\n  -h, --help            show this help message and\
+            \ exit\n  -m MODEL, --model MODEL\n                        Model file\
+            \ (.h5)\n  -t TEST_DATA, --test-data TEST_DATA\n                     \
+            \   Test data (.npy)\n  -f TEST_FASTA, --test-fasta TEST_FASTA\n     \
+            \                   Reads of the test data set (.fasta)\n  -o OUT_DIR,\
+            \ --out-dir OUT_DIR\n                        Output directory\n  -l INTER_LAYER,\
+            \ --inter-layer INTER_LAYER\n                        Perform calculations\
+            \ for this intermediate layer\n  -c CHUNK_SIZE, --seq-chunk CHUNK_SIZE\n\
+            \                        Sequence chunk size. Decrease for lower memory\
+            \ usage.\n  -F [INTER_NEURON [INTER_NEURON ...]], --inter-neuron [INTER_NEURON\
+            \ [INTER_NEURON ...]]\n                        Perform calculations for\
+            \ this filter only\n"
+          generated_using: *id007
+        - !Command
+          command: &id008
+          - deepac
+          - gwpa
+          - granking
+          positional: []
+          named:
+          - !Flag
+            description: "Directory containing the pathogenicity scores over all\n\
+              genomic regions per species (.bedgraph)"
+            synonyms:
+            - -p
+            - --patho-dir
+            args: !SimpleFlagArg
+              name: PATHO_DIR
+            optional: true
+          - !Flag
+            description: "Directory containing the annotation data of the\nspecies\
+              \ (.gff)"
+            synonyms:
+            - -g
+            - --gff-dir
+            args: !SimpleFlagArg
+              name: GFF_DIR
+            optional: true
+          - !Flag
+            description: Output directory
+            synonyms:
+            - -o
+            - --out-dir
+            args: !SimpleFlagArg
+              name: OUT_DIR
+            optional: true
+          - !Flag
+            description: Check for multiple CDSs per gene and unnamed genes.
+            synonyms:
+            - -x
+            - --extended
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "Number of CPU cores.\n"
+            synonyms:
+            - -n
+            - --n-cpus
+            args: !SimpleFlagArg
+              name: N_CPUS
+            optional: true
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: deepac gwpa granking [-h] -p PATHO_DIR -g GFF_DIR [-o\
+            \ OUT_DIR] [-x]\n                            [-n N_CPUS]\n\noptional arguments:\n\
+            \  -h, --help            show this help message and exit\n  -p PATHO_DIR,\
+            \ --patho-dir PATHO_DIR\n                        Directory containing\
+            \ the pathogenicity scores over all\n                        genomic regions\
+            \ per species (.bedgraph)\n  -g GFF_DIR, --gff-dir GFF_DIR\n         \
+            \               Directory containing the annotation data of the\n    \
+            \                    species (.gff)\n  -o OUT_DIR, --out-dir OUT_DIR\n\
+            \                        Output directory\n  -x, --extended        Check\
+            \ for multiple CDSs per gene and unnamed genes.\n  -n N_CPUS, --n-cpus\
+            \ N_CPUS\n                        Number of CPU cores.\n"
+          generated_using: *id007
+        - !Command
+          command: &id009
+          - deepac
+          - gwpa
+          - details.
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: deepac
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: gwpa
+            optional: false
+          named: []
+          parent: *id004
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: deepac gwpa [-h]\n                   {fragment,genomemap,granking,ntcontribs,factiv,fenrichment,gff2genome}\n\
+            \                   ...\ndeepac gwpa: error: invalid choice: 'details.'\
+            \ (choose from 'fragment', 'genomemap', 'granking', 'ntcontribs', 'factiv',\
+            \ 'fenrichment', 'gff2genome')\n"
+          generated_using: *id005
+        usage: []
+        help_flag: !Flag
+          description: show this help message and exit
+          synonyms:
+          - -h
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+        help_text: "usage: deepac gwpa [-h]\n                   {fragment,genomemap,granking,ntcontribs,factiv,fenrichment,gff2genome}\n\
+          \                   ...\n\npositional arguments:\n  {fragment,genomemap,granking,ntcontribs,factiv,fenrichment,gff2genome}\n\
+          \                        DeePaC gwpa subcommands. See command --help for\n\
+          \                        details.\n    fragment            Fragment genomes\
+          \ for analysis.\n    genomemap           Generate a genome-wide phenotype\
+          \ potential map.\n    granking            Generate gene rankings.\n    ntcontribs\
+          \          Generate a genome-wide nt contribution map.\n    factiv     \
+          \         Get filter activations.\n    fenrichment         Run filter enrichment\
+          \ analysis.\n    gff2genome          Generate .genome files.\n\noptional\
+          \ arguments:\n  -h, --help            show this help message and exit\n"
+        generated_using: &id010 []
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1264,10 +1493,7 @@ subcommands:
         \ for this filter only\n"
       generated_using: *id007
     - !Command
-      command: &id008
-      - deepac
-      - gwpa
-      - granking
+      command: *id008
       positional: []
       named:
       - !Flag
@@ -1310,7 +1536,7 @@ subcommands:
         args: !SimpleFlagArg
           name: N_CPUS
         optional: true
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1334,10 +1560,7 @@ subcommands:
         \  -n N_CPUS, --n-cpus N_CPUS\n                        Number of CPU cores.\n"
       generated_using: *id007
     - !Command
-      command: &id009
-      - deepac
-      - gwpa
-      - details.
+      command: *id009
       positional:
       - !Positional
         description: ''
@@ -1350,7 +1573,7 @@ subcommands:
         name: gwpa
         optional: false
       named: []
-      parent: *id003
+      parent: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1365,15 +1588,9 @@ subcommands:
         \                   ...\ndeepac gwpa: error: invalid choice: 'details.' (choose\
         \ from 'fragment', 'genomemap', 'granking', 'ntcontribs', 'factiv', 'fenrichment',\
         \ 'gff2genome')\n"
-      generated_using: *id004
+      generated_using: *id005
     usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
     help_text: "usage: deepac gwpa [-h]\n                   {fragment,genomemap,granking,ntcontribs,factiv,fenrichment,gff2genome}\n\
@@ -1386,7 +1603,7 @@ subcommands:
       \ Get filter activations.\n    fenrichment         Run filter enrichment analysis.\n\
       \    gff2genome          Generate .genome files.\n\noptional arguments:\n  -h,\
       \ --help            show this help message and exit\n"
-    generated_using: &id010 []
+    generated_using: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1456,7 +1673,7 @@ subcommands:
     args: !SimpleFlagArg
       name: N_CPUS
     optional: true
-  parent: *id003
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1493,7 +1710,7 @@ subcommands:
     name: gwpa
     optional: false
   named: []
-  parent: *id003
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1508,7 +1725,7 @@ subcommands:
     \                   ...\ndeepac gwpa: error: invalid choice: 'details.' (choose\
     \ from 'fragment', 'genomemap', 'granking', 'ntcontribs', 'factiv', 'fenrichment',\
     \ 'gff2genome')\n"
-  generated_using: *id004
+  generated_using: *id005
 usage: []
 help_flag:
 usage_flag:

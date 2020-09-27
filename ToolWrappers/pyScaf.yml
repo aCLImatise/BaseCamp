@@ -1,0 +1,174 @@
+!Command
+command:
+- pyScaf
+positional: []
+named:
+- !Flag
+  description: assembly FASTA file
+  synonyms:
+  - -f
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: output stream [scaffolds.fa]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: max no. of threads to run [4]
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: output log to [stderr]
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: "{,png,gif,pdf}\ngenerate dotplot as [png]"
+  synonyms:
+  - --dotplot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reference FastA file
+  synonyms:
+  - -r
+  - --ref
+  - --reference
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: min. identity [0.33]
+  synonyms:
+  - --identity
+  args: !SimpleFlagArg
+    name: IDENTITY
+  optional: true
+- !Flag
+  description: min. overlap  [0.66]
+  synonyms:
+  - --overlap
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+- !Flag
+  description: max. distance between adjacent contigs [0.01 * assembly_size]
+  synonyms:
+  - -g
+  - --maxgap
+  args: !SimpleFlagArg
+    name: MAXGAP
+  optional: true
+- !Flag
+  description: high identity mode (rearrangements not allowed)
+  synonyms:
+  - --norearrangements
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FastQ/FastA file(s) with PacBio/ONT reads
+  synonyms:
+  - -n
+  - --longreads
+  args: !RepeatFlagArg
+    name: LONGREADS
+  optional: true
+- !Flag
+  description: FASTQ PE/MP files
+  synonyms:
+  - -i
+  - --fastq
+  args: !RepeatFlagArg
+    name: FASTQ
+  optional: true
+- !Flag
+  description: min pairs to join contigs [5]
+  synonyms:
+  - -j
+  - --joins
+  args: !SimpleFlagArg
+    name: JOINS
+  optional: true
+- !Flag
+  description: max link ratio between two best contig pairs [0.7]
+  synonyms:
+  - -a
+  - --linkratio
+  args: !SimpleFlagArg
+    name: LINKRATIO
+  optional: true
+- !Flag
+  description: align subset of reads [0.2]
+  synonyms:
+  - -l
+  - --load
+  args: !SimpleFlagArg
+    name: LOAD
+  optional: true
+- !Flag
+  description: min mapping quality [10]
+  synonyms:
+  - -q
+  - --mapq
+  args: !SimpleFlagArg
+    name: MAPQ
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: pyScaf [-h] -f FASTA [-o OUTPUT] [-t THREADS] [--log LOG]\n   \
+  \           [--dotplot {,png,gif,pdf}] [-r REF] [--identity IDENTITY]\n        \
+  \      [--overlap OVERLAP] [-g MAXGAP] [--norearrangements]\n              [-n LONGREADS\
+  \ [LONGREADS ...]] [-i FASTQ [FASTQ ...]] [-j JOINS]\n              [-a LINKRATIO]\
+  \ [-l LOAD] [-q MAPQ] [--version]\n\nPerform scaffolding of contigs using information\
+  \ from (in this order):\n- paired-end (PE) and/or mate-pair (MP) libraries (!!!NOT\
+  \ IMPLEMENTED YET!!!)\n- long reads\n- synteny to reference genome\n\nMore info\
+  \ at: https://github.com/lpryszcz/pyScaf\n\noptional arguments:\n  -h, --help  \
+  \          show this help message and exit\n  -f FASTA, --fasta FASTA\n        \
+  \                assembly FASTA file\n  -o OUTPUT, --output OUTPUT\n           \
+  \             output stream [scaffolds.fa]\n  -t THREADS, --threads THREADS\n  \
+  \                      max no. of threads to run [4]\n  --log LOG             output\
+  \ log to [stderr]\n  --dotplot {,png,gif,pdf}\n                        generate\
+  \ dotplot as [png]\n  --version             show program's version number and exit\n\
+  \nReference-based scaffolding options:\n  -r REF, --ref REF, --reference REF\n \
+  \                       reference FastA file\n  --identity IDENTITY   min. identity\
+  \ [0.33]\n  --overlap OVERLAP     min. overlap  [0.66]\n  -g MAXGAP, --maxgap MAXGAP\n\
+  \                        max. distance between adjacent contigs [0.01 * assembly_size]\n\
+  \  --norearrangements    high identity mode (rearrangements not allowed)\n\nlong\
+  \ read-based scaffolding options (EXPERIMENTAL!):\n  -n LONGREADS [LONGREADS ...],\
+  \ --longreads LONGREADS [LONGREADS ...]\n                        FastQ/FastA file(s)\
+  \ with PacBio/ONT reads\n\nNGS-based scaffolding options (!NOT IMPLEMENTED!):\n\
+  \  -i FASTQ [FASTQ ...], --fastq FASTQ [FASTQ ...]\n                        FASTQ\
+  \ PE/MP files\n  -j JOINS, --joins JOINS\n                        min pairs to join\
+  \ contigs [5]\n  -a LINKRATIO, --linkratio LINKRATIO\n                        max\
+  \ link ratio between two best contig pairs [0.7]\n  -l LOAD, --load LOAD  align\
+  \ subset of reads [0.2]\n  -q MAPQ, --mapq MAPQ  min mapping quality [10]\n\nAuthor:\n\
+  l.p.pryszcz@gmail.com\n\nWarsaw, 12/03/2016\n"
+generated_using:
+- --help

@@ -1,0 +1,125 @@
+!Command
+command:
+- metaWRAP
+- binning
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: readsX_1.fastq
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: readsX_2.fastq
+  optional: true
+named:
+- !Flag
+  description: metagenomic assembly file
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: output directory
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: number of threads (default=1)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: amount of RAM available (default=4)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'minimum contig length to bin (default=1000bp). Note: metaBAT will
+    default to 1500bp minimum'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: bin contigs with metaBAT2
+  synonyms:
+  - --metabat2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bin contigs with the original metaBAT
+  synonyms:
+  - --metabat1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bin contigs with MaxBin2
+  synonyms:
+  - --maxbin2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bin contigs with CONCOCT
+  synonyms:
+  - --concoct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use universal marker genes instead of bacterial markers in MaxBin2
+    (improves Archaea binning)
+  synonyms:
+  - --universal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: immediately run CheckM on the bin results (requires 40GB+ of memory)
+  synonyms:
+  - --run-checkm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: non-paired reads mode (provide *.fastq files)
+  synonyms:
+  - --single-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the input read files contain interleaved paired-end reads
+  synonyms:
+  - --interleaved
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "metawrap binning --help\n\nUsage: metaWRAP binning [options] -a assembly.fa\
+  \ -o output_dir readsA_1.fastq readsA_2.fastq ... [readsX_1.fastq readsX_2.fastq]\n\
+  Note1: Make sure to provide all your separately replicate read files, not the joined\
+  \ file.\nNote2: You may provide single end or interleaved reads as well with the\
+  \ use of the correct option\nNote3: If the output already has the .bam alignments\
+  \ files from previous runs, the module will skip re-aligning the reads\n\nOptions:\n\
+  \n\t-a STR          metagenomic assembly file\n\t-o STR          output directory\n\
+  \t-t INT          number of threads (default=1)\n\t-m INT\t\tamount of RAM available\
+  \ (default=4)\n\t-l INT\t\tminimum contig length to bin (default=1000bp). Note:\
+  \ metaBAT will default to 1500bp minimum\n\n\t--metabat2      bin contigs with metaBAT2\n\
+  \t--metabat1\tbin contigs with the original metaBAT\n\t--maxbin2\tbin contigs with\
+  \ MaxBin2\n\t--concoct\tbin contigs with CONCOCT\n\n\t--universal\tuse universal\
+  \ marker genes instead of bacterial markers in MaxBin2 (improves Archaea binning)\n\
+  \t--run-checkm\timmediately run CheckM on the bin results (requires 40GB+ of memory)\n\
+  \t--single-end\tnon-paired reads mode (provide *.fastq files)\n\t--interleaved\t\
+  the input read files contain interleaved paired-end reads\n\n"
+generated_using:
+- --help

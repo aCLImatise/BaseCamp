@@ -1,0 +1,151 @@
+!Command
+command:
+- sam2starch
+positional: []
+named:
+- !Flag
+  description: to preserve the header data from the SAM input as
+  synonyms:
+  - --keep-header
+  args: !SimpleFlagArg
+    name: option
+  optional: true
+- !Flag
+  description: "(-a)\nInclude both unmapped and mapped reads in output"
+  synonyms:
+  - --all-reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-s)\nSplit reads with 'N' CIGAR operations into separate BED\nelements"
+  synonyms:
+  - --split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-S)\nSplit reads with 'N' and 'D' CIGAR operations into\nseparate\
+    \ elements"
+  synonyms:
+  - --split-with-deletions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-R)\nOnly print first six columns of output"
+  synonyms:
+  - --reduced
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-d)\nDo not sort BED output with sort-bed (not compatible with --output=starch)"
+  synonyms:
+  - --do-not-sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-m <val>)\nSets aside <value> memory for sorting BED output. For\
+    \ example, <value> can\nbe 8G, 8000M or 8000000000 to specify 8 GB of memory (default\
+    \ is 2G)"
+  synonyms:
+  - --max-mem
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "(-r <dir>)\nOptionally sets [dir] as temporary directory for sort\
+    \ data, when used in\nconjunction with --max-mem=[value], instead of the host's\
+    \ operating system\ndefault temporary directory"
+  synonyms:
+  - --sort-tmpdir
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: "(-z)\nUsed with --output=starch, the compressed output explicitly\
+    \ applies the bzip2\nalgorithm to compress intermediate data (default is bzip2)"
+  synonyms:
+  - --starch-bzip2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(-g)\nUsed with --output=starch, the compressed output applies gzip\
+    \ compression on\nintermediate data"
+  synonyms:
+  - --starch-gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=\"xyz...\" (-e \"xyz...\")\nUsed with --output=starch, this adds\
+    \ a note to the Starch archive metadata"
+  synonyms:
+  - --starch-note
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "| --help[-bam|-gff|-gtf|-gvf|-psl|-rmsk|-sam|-vcf|-wig] (-h | -h <fmt>)\n\
+    Show general help message (or detailed help for a specified input format)"
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: "(-w)\nShow application version\n"
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "convert2bed -i sam\n  version:  2.4.39\n  author:   Alex Reynolds\n\n\
+  \  Converts 1-based, closed [a, b] headered or headerless SAM input\n  into 0-based,\
+  \ half-open [a-1, b) extended BED or BEDOPS Starch\n\n  Usage:\n\n  $ sam2bed <\
+  \ foo.sam > sorted-foo.sam.bed\n  $ sam2starch < foo.sam > sorted-foo.sam.starch\n\
+  \n  Or:\n\n  $ convert2bed -i sam < foo.sam > sorted-foo.sam.bed\n  $ convert2bed\
+  \ -i sam -o starch < foo.sam > sorted-foo.sam.starch\n\n  We make no assumptions\
+  \ about sort order from converted output. Apply\n  the usage case displayed to pass\
+  \ data to the BEDOPS sort-bed application,\n  which generates lexicographically-sorted\
+  \ BED data as output.\n\n  If you want to skip sorting, use the --do-not-sort option:\n\
+  \n  $ sam2bed --do-not-sort < foo.sam > unsorted-foo.sam.bed\n\n  The SAM (Sequence\
+  \ Alignment/Map) format is 1-based and closed [a, b]\n  which is converted to 0-based,\
+  \ half-closed [a-1, b) when creating\n  BED output.\n\n  We process SAM columns\
+  \ from mappable reads (as described by \n  http://samtools.github.io/hts-specs/SAMv1.pdf)\
+  \ converting them into \n  the first six UCSC BED columns, as follows:\n\n  - RNAME\
+  \                     <-->   chromosome (1st column)\n  - POS - 1              \
+  \     <-->   start (2nd column)\n  - POS + length(SEQ) - 1     <-->   stop (3rd\
+  \ column)\n  - QNAME                     <-->   id (4th column)\n  - FLAG      \
+  \                <-->   score (5th column)\n  - 16 & FLAG                 <--> \
+  \  strand (6th column)\n\n  The remaining SAM columns are mapped intact, in order,\
+  \ to adjacent\n  BED columns:\n\n  - MAPQ\n  - CIGAR\n  - RNEXT\n  - PNEXT\n  -\
+  \ TLEN\n  - SEQ\n  - QUAL\n\n  Because we have mapped all columns, we can translate\
+  \ converted BED data back\n  to headerless SAM reads with a simple awk statement\
+  \ or other script that\n  calculates 1-based coordinates and permutes columns.\n\
+  \n  By default, we only process mapped reads. If you also want to convert unmapped\n\
+  \  reads, add the --all-reads option.\n\n  In the case of RNA-seq data with skipped\
+  \ regions ('N' components in the\n  read's CIGAR string), the --split option will\
+  \ split the read into two or more\n  separate BED elements.\n\n  The header section\
+  \ is normally stripped from the output. You can use the\n  --keep-header option\
+  \ to preserve the header data from the SAM input as\n  pseudo-BED elements.\n\n\
+  \  SAM conversion options:\n\n  --all-reads (-a)\n      Include both unmapped and\
+  \ mapped reads in output\n  --keep-header (-k)\n      Preserve header section as\
+  \ pseudo-BED elements\n  --split (-s)\n      Split reads with 'N' CIGAR operations\
+  \ into separate BED\n      elements\n  --split-with-deletions (-S)\n      Split\
+  \ reads with 'N' and 'D' CIGAR operations into\n      separate elements\n  --reduced\
+  \ (-R)\n      Only print first six columns of output\n\n  Other processing options:\n\
+  \n  --do-not-sort (-d)\n      Do not sort BED output with sort-bed (not compatible\
+  \ with --output=starch)\n  --max-mem=<value> (-m <val>)\n      Sets aside <value>\
+  \ memory for sorting BED output. For example, <value> can\n      be 8G, 8000M or\
+  \ 8000000000 to specify 8 GB of memory (default is 2G)\n  --sort-tmpdir=<dir> (-r\
+  \ <dir>)\n      Optionally sets [dir] as temporary directory for sort data, when\
+  \ used in\n      conjunction with --max-mem=[value], instead of the host's operating\
+  \ system\n      default temporary directory\n  --starch-bzip2 (-z)\n      Used with\
+  \ --output=starch, the compressed output explicitly applies the bzip2\n      algorithm\
+  \ to compress intermediate data (default is bzip2)\n  --starch-gzip (-g)\n     \
+  \ Used with --output=starch, the compressed output applies gzip compression on\n\
+  \      intermediate data\n  --starch-note=\"xyz...\" (-e \"xyz...\")\n      Used\
+  \ with --output=starch, this adds a note to the Starch archive metadata\n  --help\
+  \ | --help[-bam|-gff|-gtf|-gvf|-psl|-rmsk|-sam|-vcf|-wig] (-h | -h <fmt>)\n    \
+  \  Show general help message (or detailed help for a specified input format)\n \
+  \ --version (-w)\n      Show application version\n\n"
+generated_using:
+- --help

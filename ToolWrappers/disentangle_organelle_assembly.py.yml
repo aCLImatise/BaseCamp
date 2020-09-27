@@ -1,0 +1,285 @@
+!Command
+command:
+- disentangle_organelle_assembly.py
+positional:
+- !Positional
+  description: --linear              By default, this script would only disentangle
+    the
+  position: 0
+  name: ant_nr/animal_mt/fungus_mt/anonym.
+  optional: false
+- !Positional
+  description: --weight-f=WEIGHT_FACTOR
+  position: 0
+  name: cases.
+  optional: false
+named:
+- !Flag
+  description: input fastg format file.
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: FASTG_FILE
+  optional: true
+- !Flag
+  description: "input tab format file (*.csv; the postfix 'csv' was in\nconformity\
+    \ with Bandage) produced by slim_graph.py."
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: TAB_FILE
+  optional: true
+- !Flag
+  description: output directory.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: 'organelle type: embplant_pt/other_pt/embplant_mt/embpl'
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: "Depth factor for excluding non-target contigs.\nDefault:10.0"
+  synonyms:
+  - --depth-f
+  args: !SimpleFlagArg
+    name: DEPTH_FACTOR
+  optional: true
+- !Flag
+  description: "Type factor for identifying genome type tag.\nDefault:3.0"
+  synonyms:
+  - --type-f
+  args: !SimpleFlagArg
+    name: TYPE_FACTOR
+  optional: true
+- !Flag
+  description: "Depth factor for confirming contaminating contigs.\nDefault:3.0"
+  synonyms:
+  - --contamination-depth
+  args: !SimpleFlagArg
+    name: CONTAMINATION_DEPTH
+  optional: true
+- !Flag
+  description: "Similarity threshold for confirming contaminating\ncontigs. Default:0.9"
+  synonyms:
+  - --contamination-similarity
+  args: !SimpleFlagArg
+    name: CONTAMINATION_SIMILARITY
+  optional: true
+- !Flag
+  description: "Disable making consensus from parallel contig based on\nnucleotide\
+    \ degenerate table."
+  synonyms:
+  - --no-degenerate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Depth factor for confirming parallel contigs.\nDefault:1.5"
+  synonyms:
+  - --degenerate-depth
+  args: !SimpleFlagArg
+    name: DEGENERATE_DEPTH
+  optional: true
+- !Flag
+  description: "Similarity threshold for confirming parallel contigs.\nDefault:0.98"
+  synonyms:
+  - --degenerate-similarity
+  args: !SimpleFlagArg
+    name: DEGENERATE_SIMILARITY
+  optional: true
+- !Flag
+  description: "Expected maximum target genome size. Default: 200000\n(-F embplant_pt/fungus_mt),\
+    \ 25000 (-F\nembplant_nr/animal_mt/fungus_mt), 600000 (-F\nembplant_mt/other_pt)"
+  synonyms:
+  - --expected-max-size
+  args: !SimpleFlagArg
+    name: EXPECTED_MAX_SIZE
+  optional: true
+- !Flag
+  description: 'Expected mininum target genome size. Default: 10000'
+  synonyms:
+  - --expected-min-size
+  args: !SimpleFlagArg
+    name: EXPECTED_MIN_SIZE
+  optional: true
+- !Flag
+  description: "For '-F embplant_pt' with complete circular result, by\ndefault, the\
+    \ direction of the starting contig (usually\nthe LSC contig) is determined as\
+    \ the direction with\nless ORFs. Choose this option to reverse the direction\n\
+    of the starting contig when result is circular.\nActually, both directions are\
+    \ biologically equivalent\nto each other. The reordering of the direction is only\n\
+    for easier downstream analysis."
+  synonyms:
+  - --reverse-lsc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Repeats would dramatically increase the number of\npotential isomers\
+    \ (paths). This option was used to\nexport a certain amount of paths out of all\
+    \ possible\npaths per assembly graph. Default: 1000"
+  synonyms:
+  - --max-paths-num
+  args: !SimpleFlagArg
+    name: MAX_PATHS_NUM
+  optional: true
+- !Flag
+  description: "By default, this script would pick the contig with\nhighest coverage\
+    \ among all parallel (polymorphic)\ncontigs when degenerating was not applicable.\
+    \ Choose\nthis flag to export all combinations."
+  synonyms:
+  - --keep-all-polymorphic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum deviation factor for excluding non-target\ncontigs. Default:0.1"
+  synonyms:
+  - --min-sigma
+  args: !SimpleFlagArg
+    name: MIN_SIGMA_FACTOR
+  optional: true
+- !Flag
+  description: "Minimum coverage for a contig to be included in\ndisentangling. Default:0.0"
+  synonyms:
+  - --min-depth
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: "Minimum coverage for a contig to be included in\ndisentangling. Default:inf"
+  synonyms:
+  - --max-depth
+  args: !SimpleFlagArg
+    name: MAX_COV
+  optional: true
+- !Flag
+  description: "Maximum multiplicity of contigs for disentangling\ngenome paths. Should\
+    \ be 1~12. Default:8"
+  synonyms:
+  - --max-multiplicity
+  args: !SimpleFlagArg
+    name: MAX_MULTIPLICITY
+  optional: true
+- !Flag
+  description: "Prefix of output files inside output directory.\nDefault:target"
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: export intermediate graph file.
+  synonyms:
+  - --keep-temp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: time limit for the disentangling process. Default:3600
+  synonyms:
+  - --time-limit
+  args: !SimpleFlagArg
+    name: TIME_LIMIT
+  optional: true
+- !Flag
+  description: "Random seed (only for disentangling at this moment).\nDefault: 12345"
+  synonyms:
+  - --random-seed
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+  optional: true
+- !Flag
+  description: continue mode.
+  synonyms:
+  - --continue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose logging.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for debug.
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: disentangle_organelle_assembly.py -F embplant_pt -g input.fastg\
+  \ -t input.tab -o output_dir\n\nOptions:\n  -h, --help            show this help\
+  \ message and exit\n  -g FASTG_FILE         input fastg format file.\n  -t TAB_FILE\
+  \           input tab format file (*.csv; the postfix 'csv' was in\n           \
+  \             conformity with Bandage) produced by slim_graph.py.\n  -o OUTPUT_DIRECTORY\
+  \   output directory.\n  -F MODE               organelle type: embplant_pt/other_pt/embplant_mt/embpl\n\
+  \                        ant_nr/animal_mt/fungus_mt/anonym.\n  --linear        \
+  \      By default, this script would only disentangle the\n                    \
+  \    circular graph (the complete circular organelle\n                        genome),\
+  \ and would directly give up linear/broken\n                        graphs). Choose\
+  \ this option to try for linear/broken\n                        cases.\n  --weight-f=WEIGHT_FACTOR\n\
+  \                        weight factor for excluding non-target contigs.\n     \
+  \                   Default:100.0\n  --depth-f=DEPTH_FACTOR\n                  \
+  \      Depth factor for excluding non-target contigs.\n                        Default:10.0\n\
+  \  --type-f=TYPE_FACTOR  Type factor for identifying genome type tag.\n        \
+  \                Default:3.0\n  --contamination-depth=CONTAMINATION_DEPTH\n    \
+  \                    Depth factor for confirming contaminating contigs.\n      \
+  \                  Default:3.0\n  --contamination-similarity=CONTAMINATION_SIMILARITY\n\
+  \                        Similarity threshold for confirming contaminating\n   \
+  \                     contigs. Default:0.9\n  --no-degenerate       Disable making\
+  \ consensus from parallel contig based on\n                        nucleotide degenerate\
+  \ table.\n  --degenerate-depth=DEGENERATE_DEPTH\n                        Depth factor\
+  \ for confirming parallel contigs.\n                        Default:1.5\n  --degenerate-similarity=DEGENERATE_SIMILARITY\n\
+  \                        Similarity threshold for confirming parallel contigs.\n\
+  \                        Default:0.98\n  --expected-max-size=EXPECTED_MAX_SIZE\n\
+  \                        Expected maximum target genome size. Default: 200000\n\
+  \                        (-F embplant_pt/fungus_mt), 25000 (-F\n               \
+  \         embplant_nr/animal_mt/fungus_mt), 600000 (-F\n                       \
+  \ embplant_mt/other_pt)\n  --expected-min-size=EXPECTED_MIN_SIZE\n             \
+  \           Expected mininum target genome size. Default: 10000\n  --reverse-lsc\
+  \         For '-F embplant_pt' with complete circular result, by\n             \
+  \           default, the direction of the starting contig (usually\n           \
+  \             the LSC contig) is determined as the direction with\n            \
+  \            less ORFs. Choose this option to reverse the direction\n          \
+  \              of the starting contig when result is circular.\n               \
+  \         Actually, both directions are biologically equivalent\n              \
+  \          to each other. The reordering of the direction is only\n            \
+  \            for easier downstream analysis.\n  --max-paths-num=MAX_PATHS_NUM\n\
+  \                        Repeats would dramatically increase the number of\n   \
+  \                     potential isomers (paths). This option was used to\n     \
+  \                   export a certain amount of paths out of all possible\n     \
+  \                   paths per assembly graph. Default: 1000\n  --keep-all-polymorphic\n\
+  \                        By default, this script would pick the contig with\n  \
+  \                      highest coverage among all parallel (polymorphic)\n     \
+  \                   contigs when degenerating was not applicable. Choose\n     \
+  \                   this flag to export all combinations.\n  --min-sigma=MIN_SIGMA_FACTOR\n\
+  \                        Minimum deviation factor for excluding non-target\n   \
+  \                     contigs. Default:0.1\n  --min-depth=MIN_COV   Minimum coverage\
+  \ for a contig to be included in\n                        disentangling. Default:0.0\n\
+  \  --max-depth=MAX_COV   Minimum coverage for a contig to be included in\n     \
+  \                   disentangling. Default:inf\n  --max-multiplicity=MAX_MULTIPLICITY\n\
+  \                        Maximum multiplicity of contigs for disentangling\n   \
+  \                     genome paths. Should be 1~12. Default:8\n  --prefix=PREFIX\
+  \       Prefix of output files inside output directory.\n                      \
+  \  Default:target\n  --keep-temp           export intermediate graph file.\n  --time-limit=TIME_LIMIT\n\
+  \                        time limit for the disentangling process. Default:3600\n\
+  \  --random-seed=RANDOM_SEED\n                        Random seed (only for disentangling\
+  \ at this moment).\n                        Default: 12345\n  --continue       \
+  \     continue mode.\n  --verbose             verbose logging.\n  --debug      \
+  \         for debug.\n"
+generated_using:
+- --help

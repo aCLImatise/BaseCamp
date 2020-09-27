@@ -1,0 +1,450 @@
+!Command
+command:
+- lima
+positional:
+- !Positional
+  description: STR    Source BAM or DATASET
+  position: 0
+  name: INPUT
+  optional: false
+- !Positional
+  description: STR    FASTA or BARCODESET file
+  position: 1
+  name: BARCODES
+  optional: false
+- !Positional
+  description: STR    Output BAM or DATASET file
+  position: 2
+  name: OUTPUT
+  optional: false
+- !Positional
+  description: --scored-adapter-ratio         FLOAT  Minimum ratio of scored vs sequenced
+  position: 0
+  name: clustering.
+  optional: false
+named:
+- !Flag
+  description: "Only keep same barcodes in a pair in\nBAM output."
+  synonyms:
+  - -s
+  - --same
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only keep different barcodes in a pair\nin BAM output. Enforces --min-passes\n\
+    ≥ 1."
+  synonyms:
+  - -d
+  - --different
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only output barcode pairs that are\nneighbors in barcode file."
+  synonyms:
+  - -N
+  - --neighbors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not tag per ZMW, but per read.
+  synonyms:
+  - -p
+  - --per-read
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only use subreads flanked by adapters\nfor barcode identification."
+  synonyms:
+  - -f
+  - --score-full-pass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Only use up to N barcode pair regions\nto find the barcode,\
+    \ 0 means use all.\n[0]"
+  synonyms:
+  - -n
+  - --max-scored-barcode-pairs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Analyze at maximum the provided number\nof barcodes per ZMW;\
+    \ 0 means\ndeactivated. [0]"
+  synonyms:
+  - -b
+  - --max-scored-barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Analyze at maximum the provided number\nof adapters per ZMW;\
+    \ 0 means\ndeactivated. [0]"
+  synonyms:
+  - -a
+  - --max-scored-adapters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Minimal number of full passes. [0]
+  synonyms:
+  - -u
+  - --min-passes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Minimum sequence length after clipping.\n[50]"
+  synonyms:
+  - -l
+  - --min-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Maximum input sequence length, 0 means\ndeactivated. [0]"
+  synonyms:
+  - -L
+  - --max-input-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FLOAT  Maximum ratio of bad adapter. [0]
+  synonyms:
+  - -M
+  - --bad-adapter-ratio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Barcodes may be substrings of others.
+  synonyms:
+  - -P
+  - --shared-prefix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FLOAT  The candidate region size multiplier:\nbarcode_length * multiplier.\
+    \ [3]"
+  synonyms:
+  - -w
+  - --window-size-multi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    The candidate region size in bp. If\nset, --window-size-mult\
+    \ will be\nignored. [0]"
+  synonyms:
+  - -W
+  - --window-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FLOAT  Minimum reference span relative to the\nbarcode length. [0.5]"
+  synonyms:
+  - -r
+  - --min-ref-span
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Minimum number of barcode regions with\nsufficient relative\
+    \ span to the barcode\nlength. [1]"
+  synonyms:
+  - -R
+  - --min-scoring-regions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Reads below the minimum barcode score\nare removed from downstream\
+    \ analysis.\n[0]"
+  synonyms:
+  - -m
+  - --min-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Minimum end barcode score threshold is\napplied to the individual\
+    \ leading and\ntrailing ends. [0]"
+  synonyms:
+  - -i
+  - --min-end-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    The minimal score difference, between\nfirst and combined,\
+    \ required to call a\nbarcode pair different. [10]"
+  synonyms:
+  - -x
+  - --min-signal-increase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    The minimal score lead required to call\na barcode pair significant.\
+    \ [10]"
+  synonyms:
+  - -y
+  - --min-score-lead
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Keep identified order of barcode pair\nindices in BC tag; CCS only."
+  synonyms:
+  - -k
+  - --keep-tag-idx-order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Keep identified order of barcode pair\nindices in split BAM names;\
+    \ CCS only."
+  synonyms:
+  - -K
+  - --keep-split-idx-order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "CCS mode, use optimal alignment options\n-A 1 -B 4 -D 3 -I 3 -X 4."
+  synonyms:
+  - --ccs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Score for a sequence match. [4]\n-B,--mismatch-penalty    \
+    \      INT    Penalty for a mismatch. [13]\n-D,--deletion-penalty          INT\
+    \    Deletions penalty. [7]\n-I,--insertion-penalty         INT    Insertion penalty.\
+    \ [7]\n-X,--branch-penalty            INT    Branch penalty. [4]"
+  synonyms:
+  - -A
+  - --match-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Split BAM output by barcode pair.
+  synonyms:
+  - --split-bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Split BAM output by resolved barcode\npair name."
+  synonyms:
+  - --split-bam-named
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Group maximum numbers of split barcode\noutput files per directory;\
+    \ 0 means\ndeactivated. [0]"
+  synonyms:
+  - -F
+  - --files-per-directory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use UUIDs from dataset XML input, must\nbe used with output BAM splitting."
+  synonyms:
+  - -U
+  - --reuse-uuids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Maximum number of open BAM files. [500]
+  synonyms:
+  - --bam-handles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dump clipped regions in a separate\noutput file <prefix>.lima.clips"
+  synonyms:
+  - --dump-clips
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dump removed records to\n<prefix>.lima.removed.bam."
+  synonyms:
+  - --dump-removed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not generate BAM output.
+  synonyms:
+  - --no-bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not generate reports.
+  synonyms:
+  - --no-reports
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assign single side barcodes by score
+  synonyms:
+  - -S
+  - --single-side
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Activate specialized IsoSeq mode.
+  synonyms:
+  - --isoseq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Demux the first N ZMWs and return the\nmean score; 0 means\
+    \ peeking\ndeactivated. [0]"
+  synonyms:
+  - --peek
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Try to guess the used barcodes, using\nthe provided mean score\
+    \ threshold; 0\nmeans guessing deactivated. [0]"
+  synonyms:
+  - --guess
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Minimum number of ZMWs observed to\nwhitelist barcodes. [0]"
+  synonyms:
+  - --guess-min-count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Try to infer the used barcodes subset,\nby peeking at the first 50,000\
+    \ ZMWs,\nwhitelisting barcode pairs with more\nthan 10 counts and mean score ≥\
+    \ 45."
+  synonyms:
+  - --peek-guess
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore <BioSamples> from XML input.
+  synonyms:
+  - --ignore-biosamples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "INT    Number of threads to use, 0 means\nautodetection. [0]"
+  synonyms:
+  - -j
+  - --num-threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "STR    Set log level. Valid choices: (TRACE,\nDEBUG, INFO, WARN, FATAL).\
+    \ [WARN]"
+  synonyms:
+  - --log-level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FILE   Log to a file, instead of stderr.
+  synonyms:
+  - --log-file
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show application version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "lima - Lima, Demultiplex Barcoded PacBio Data and Clip Barcodes\n\nUsage:\n\
+  \  lima [options] <INPUT> <BARCODES> <OUTPUT>\n\n  INPUT                       \
+  \   STR    Source BAM or DATASET\n  BARCODES                       STR    FASTA\
+  \ or BARCODESET file\n  OUTPUT                         STR    Output BAM or DATASET\
+  \ file\n\nLibrary Design:\n  -s,--same                             Only keep same\
+  \ barcodes in a pair in\n                                        BAM output.\n \
+  \ -d,--different                        Only keep different barcodes in a pair\n\
+  \                                        in BAM output. Enforces --min-passes\n\
+  \                                        ≥ 1.\n  -N,--neighbors                \
+  \        Only output barcode pairs that are\n                                  \
+  \      neighbors in barcode file.\n\nInput Limitations:\n  -p,--per-read       \
+  \                  Do not tag per ZMW, but per read.\n  -f,--score-full-pass   \
+  \               Only use subreads flanked by adapters\n                        \
+  \                for barcode identification.\n  -n,--max-scored-barcode-pairs  INT\
+  \    Only use up to N barcode pair regions\n                                   \
+  \     to find the barcode, 0 means use all.\n                                  \
+  \      [0]\n  -b,--max-scored-barcodes       INT    Analyze at maximum the provided\
+  \ number\n                                        of barcodes per ZMW; 0 means\n\
+  \                                        deactivated. [0]\n  -a,--max-scored-adapters\
+  \       INT    Analyze at maximum the provided number\n                        \
+  \                of adapters per ZMW; 0 means\n                                \
+  \        deactivated. [0]\n  -u,--min-passes                INT    Minimal number\
+  \ of full passes. [0]\n  -l,--min-length                INT    Minimum sequence\
+  \ length after clipping.\n                                        [50]\n  -L,--max-input-length\
+  \          INT    Maximum input sequence length, 0 means\n                     \
+  \                   deactivated. [0]\n  -M,--bad-adapter-ratio         FLOAT  Maximum\
+  \ ratio of bad adapter. [0]\n  -P,--shared-prefix                    Barcodes may\
+  \ be substrings of others.\n\nBarcode Region:\n  -w,--window-size-multi        \
+  \ FLOAT  The candidate region size multiplier:\n                               \
+  \         barcode_length * multiplier. [3]\n  -W,--window-size               INT\
+  \    The candidate region size in bp. If\n                                     \
+  \   set, --window-size-mult will be\n                                        ignored.\
+  \ [0]\n  -r,--min-ref-span              FLOAT  Minimum reference span relative to\
+  \ the\n                                        barcode length. [0.5]\n  -R,--min-scoring-regions\
+  \       INT    Minimum number of barcode regions with\n                        \
+  \                sufficient relative span to the barcode\n                     \
+  \                   length. [1]\n\nScore Filters:\n  -m,--min-score            \
+  \     INT    Reads below the minimum barcode score\n                           \
+  \             are removed from downstream analysis.\n                          \
+  \              [0]\n  -i,--min-end-score             INT    Minimum end barcode\
+  \ score threshold is\n                                        applied to the individual\
+  \ leading and\n                                        trailing ends. [0]\n  -x,--min-signal-increase\
+  \       INT    The minimal score difference, between\n                         \
+  \               first and combined, required to call a\n                       \
+  \                 barcode pair different. [10]\n  -y,--min-score-lead          \
+  \  INT    The minimal score lead required to call\n                            \
+  \            a barcode pair significant. [10]\n\nIndex Sorting:\n  -k,--keep-tag-idx-order\
+  \               Keep identified order of barcode pair\n                        \
+  \                indices in BC tag; CCS only.\n  -K,--keep-split-idx-order     \
+  \        Keep identified order of barcode pair\n                               \
+  \         indices in split BAM names; CCS only.\n\nAligner Configuration:\n  --ccs\
+  \                                 CCS mode, use optimal alignment options\n    \
+  \                                    -A 1 -B 4 -D 3 -I 3 -X 4.\n  -A,--match-score\
+  \               INT    Score for a sequence match. [4]\n  -B,--mismatch-penalty\
+  \          INT    Penalty for a mismatch. [13]\n  -D,--deletion-penalty        \
+  \  INT    Deletions penalty. [7]\n  -I,--insertion-penalty         INT    Insertion\
+  \ penalty. [7]\n  -X,--branch-penalty            INT    Branch penalty. [4]\n\n\
+  Output Splitting:\n  --split-bam                           Split BAM output by barcode\
+  \ pair.\n  --split-bam-named                     Split BAM output by resolved barcode\n\
+  \                                        pair name.\n  -F,--files-per-directory\
+  \       INT    Group maximum numbers of split barcode\n                        \
+  \                output files per directory; 0 means\n                         \
+  \               deactivated. [0]\n  -U,--reuse-uuids                      Use UUIDs\
+  \ from dataset XML input, must\n                                        be used\
+  \ with output BAM splitting.\n\nOutput Restrictions:\n  --bam-handles          \
+  \        INT    Maximum number of open BAM files. [500]\n  --dump-clips        \
+  \                  Dump clipped regions in a separate\n                        \
+  \                output file <prefix>.lima.clips\n  --dump-removed             \
+  \           Dump removed records to\n                                        <prefix>.lima.removed.bam.\n\
+  \  --no-bam                              Do not generate BAM output.\n  --no-reports\
+  \                          Do not generate reports.\n\nSingle Side:\n  -S,--single-side\
+  \                      Assign single side barcodes by score\n                  \
+  \                      clustering.\n  --scored-adapter-ratio         FLOAT  Minimum\
+  \ ratio of scored vs sequenced\n                                        adapters.\
+  \ [0.25]\n\nIsoSeq:\n  --isoseq                              Activate specialized\
+  \ IsoSeq mode.\n\nAdvanced:\n  --peek                         INT    Demux the first\
+  \ N ZMWs and return the\n                                        mean score; 0 means\
+  \ peeking\n                                        deactivated. [0]\n  --guess \
+  \                       INT    Try to guess the used barcodes, using\n         \
+  \                               the provided mean score threshold; 0\n         \
+  \                               means guessing deactivated. [0]\n  --guess-min-count\
+  \              INT    Minimum number of ZMWs observed to\n                     \
+  \                   whitelist barcodes. [0]\n  --peek-guess                    \
+  \      Try to infer the used barcodes subset,\n                                \
+  \        by peeking at the first 50,000 ZMWs,\n                                \
+  \        whitelisting barcode pairs with more\n                                \
+  \        than 10 counts and mean score ≥ 45.\n  --ignore-biosamples            \
+  \       Ignore <BioSamples> from XML input.\n\n  -h,--help                     \
+  \        Show this help and exit.\n  --version                             Show\
+  \ application version and exit.\n  -j,--num-threads               INT    Number\
+  \ of threads to use, 0 means\n                                        autodetection.\
+  \ [0]\n  --log-level                    STR    Set log level. Valid choices: (TRACE,\n\
+  \                                        DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+  \                     FILE   Log to a file, instead of stderr.\n\n"
+generated_using: []

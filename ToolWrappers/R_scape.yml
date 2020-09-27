@@ -1,0 +1,711 @@
+!Command
+command:
+- R-scape
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: RNA
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Structural
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Covariation
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: Above
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: Phylogenetic
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: Expectation
+  optional: false
+- !Positional
+  description: ''
+  position: 6
+  name: msafile
+  optional: false
+named:
+- !Flag
+  description: ': Eval: max expected number of covNBPs allowed  [0.05]  (x>=0)'
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': two-set test: basepairs / all other pairs. Requires a given structure'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': This is a structural RNA of unknown structure'
+  synonyms:
+  - --structured
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': basepair-set sample size is all contacts (default for amino acids)'
+  synonyms:
+  - --samplecontacts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': basepair-set sample size is all 12-type basepairs (default for RNA/DNA)'
+  synonyms:
+  - --samplebp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': basepair-set sample size is WWc basepairs only'
+  synonyms:
+  - --samplewc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': obtain the structure with maximum covariation'
+  synonyms:
+  - --fold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': specify a directory for all output files'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: ': specify a filename for all outputs'
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: ': make R2R plot all position in the alignment'
+  synonyms:
+  - --r2rall
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': be verbose'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': window size  (n>0)'
+  synonyms:
+  - --window
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': window slide  [50]  (n>0)'
+  synonyms:
+  - --slide
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': if file has more than one msa, analyze only the first one'
+  synonyms:
+  - --onemsa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': do not produce R2R and dotplot outputs'
+  synonyms:
+  - --nofigures
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': write .roc file'
+  synonyms:
+  - --roc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': filter out seqs <x*seq_cons residues  (0<x<=1.0)'
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': require seqs to have < <x> id  [1.0]  (0<x<=1.0)'
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': require seqs to have >= <x> id  (0<=x<1.0)'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': min alignment position to analyze [1..alen]  (n>0)'
+  synonyms:
+  - --tstart
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': max alignment position to analyze [1..alen]  (n>0)'
+  synonyms:
+  - --tend
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': analyze only consensus (seq_cons) positions'
+  synonyms:
+  - --consensus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': take n random sequences from the alignment, all if NULL  (n>0)'
+  synonyms:
+  - --submsa
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': minimum number of sequences in the alignment  (n>0)'
+  synonyms:
+  - --nseqmin
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': keep columns with < <x> fraction of gaps  [0.75]  (0<=x<=1)'
+  synonyms:
+  - --gapthresh
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': minimum avgid of the given alignment  (0<x<=1.0)'
+  synonyms:
+  - --minid
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': maximum avgid of the given alignment  (0<x<=1.0)'
+  synonyms:
+  - --maxid
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': provide external tree to use'
+  synonyms:
+  - --treefile
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: ': shuffle the residues in a column'
+  synonyms:
+  - --vshuffle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': shuffle the columns of the alignment'
+  synonyms:
+  - --cshuffle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': max distance for contact definition  [8.0]  (x>0)'
+  synonyms:
+  - --cntmaxD
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': read pdb file from file <f>'
+  synonyms:
+  - --pdbfile
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': min (j-i+1) for contact definition  [1]  (n>0)'
+  synonyms:
+  - --cntmind
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': use only structural info in pdbfile, ignore msa annotation if any'
+  synonyms:
+  - --onlypdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': specify format'
+  synonyms:
+  - --informat
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: ': number of shuffled alignments  (n>0)'
+  synonyms:
+  - --nshuffle
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': CHI  ASC corrected statistic'
+  synonyms:
+  - --CHIa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': CHI  APC corrected statistic'
+  synonyms:
+  - --CHIp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': CHI  statistic'
+  synonyms:
+  - --CHI
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': GT   ASC corrected statistic'
+  synonyms:
+  - --GTa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': GT   APC corrected statistic  [TRUE]'
+  synonyms:
+  - --GTp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': GT   statistic'
+  synonyms:
+  - --GT
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MI   ASC corrected statistic'
+  synonyms:
+  - --MIa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MI   APC corrected statistic'
+  synonyms:
+  - --MIp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MI   statistic'
+  synonyms:
+  - --MI
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MIr  ASC corrected statistic'
+  synonyms:
+  - --MIra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MIr  APC corrected statistic'
+  synonyms:
+  - --MIrp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MIr  statistic'
+  synonyms:
+  - --MIr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MIg  ASC corrected statistic'
+  synonyms:
+  - --MIga
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MIg  APC corrected statistic'
+  synonyms:
+  - --MIgp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MIg  statistic'
+  synonyms:
+  - --MIg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': OMES ASC corrected statistic'
+  synonyms:
+  - --OMESa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': OMES APC corrected statistic'
+  synonyms:
+  - --OMESp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': OMES statistic'
+  synonyms:
+  - --OMES
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': RNAalifold ASC corrected statistic'
+  synonyms:
+  - --RAFa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': RNAalifold APC corrected statistic'
+  synonyms:
+  - --RAFp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': RNAalifold statistic'
+  synonyms:
+  - --RAF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': RNAalifold-stacking ASC corrected statistic'
+  synonyms:
+  - --RAFSa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': RNAalifold-stacking APC corrected statistic'
+  synonyms:
+  - --RAFSp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': RNAalifold-stacking  statistic'
+  synonyms:
+  - --RAFS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Correlation Coefficient with Frobenius norm ASC corrected statistic'
+  synonyms:
+  - --CCFa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Correlation Coefficient with Frobenious norm  APC corrected statistic'
+  synonyms:
+  - --CCFp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Correlation Coefficient with Frobenious norm   statistic'
+  synonyms:
+  - --CCF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': POTTS Frobenious ASC corrected statistic'
+  synonyms:
+  - --PTFp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': POTTS Averages   ASC corrected statistic'
+  synonyms:
+  - --PTAp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': POTTS DI         ASC corrected statistic'
+  synonyms:
+  - --PTDp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use 16 covariation classes'
+  synonyms:
+  - --C16
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use 2 covariation classes'
+  synonyms:
+  - --C2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use C2 if nseq <= nseqthresh otherwise use C16  [TRUE]'
+  synonyms:
+  - --CSELECT
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': sort results by cov score, no null model involved'
+  synonyms:
+  - --naive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': nullphylo  statistics  [TRUE]'
+  synonyms:
+  - --nullphylo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': non parameteric correlate  [TRUE]'
+  synonyms:
+  - --nonparam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': potts couplings'
+  synonyms:
+  - --potts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use DNA alphabet'
+  synonyms:
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use RNA alphabet'
+  synonyms:
+  - --rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use protein alphabet'
+  synonyms:
+  - --amino
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": potts regularization parameters for training hi's  [0.01]  (x>=0)"
+  synonyms:
+  - --ptmuh
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ": potts regularization parameters for training eij's  [0.20]  (x>=0)"
+  synonyms:
+  - --ptmue
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': potts option for training'
+  synonyms:
+  - --PLM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': potts option for training'
+  synonyms:
+  - --APLM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': write inferred potts parameters'
+  synonyms:
+  - --outpotts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': reproduce gremlin'
+  synonyms:
+  - --gremlin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': write actual msa used'
+  synonyms:
+  - --outmsa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': write phylogenetic tree used'
+  synonyms:
+  - --outtree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': write null alignments'
+  synonyms:
+  - --outnull
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': output msa with all branges'
+  synonyms:
+  - --allbranch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': verbose output'
+  synonyms:
+  - --voutput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': calculate empirical power curve'
+  synonyms:
+  - --power
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': calculate power using double substitutions, default is single substitutions'
+  synonyms:
+  - --doublesubs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': minimum hairpin loop length. If i-j is the closing pair: minhloop
+    = j-1-1. Default is 0  (n>=0)'
+  synonyms:
+  - --minhloop
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': pmass for censored histogram of cov scores  [0.0005]  (0<x<=1)'
+  synonyms:
+  - --pmass
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': show brief help on version and usage'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Failed to parse command line: No such option \"--help\".\nUsage: RNA Structural\
+  \ Covariation Above Phylogenetic Expectation [-options] <msafile>\n\nwhere options\
+  \ are:\n  -h               : show brief help on version and usage\n  -E <x>    \
+  \       : Eval: max expected number of covNBPs allowed  [0.05]  (x>=0)\n  -s   \
+  \            : two-set test: basepairs / all other pairs. Requires a given structure\n\
+  \  --structured     : This is a structural RNA of unknown structure\n  --samplecontacts\
+  \ : basepair-set sample size is all contacts (default for amino acids)\n  --samplebp\
+  \       : basepair-set sample size is all 12-type basepairs (default for RNA/DNA)\n\
+  \  --samplewc       : basepair-set sample size is WWc basepairs only\n  --fold \
+  \          : obtain the structure with maximum covariation\n  --outdir <s>     :\
+  \ specify a directory for all output files\n  --outname <s>    : specify a filename\
+  \ for all outputs\n  --r2rall         : make R2R plot all position in the alignment\n\
+  \  -v               : be verbose\n  --window <n>     : window size  (n>0)\n  --slide\
+  \ <n>      : window slide  [50]  (n>0)\n  --onemsa         : if file has more than\
+  \ one msa, analyze only the first one\n  --nofigures      : do not produce R2R and\
+  \ dotplot outputs\n  --roc            : write .roc file\n  -F <x>           : filter\
+  \ out seqs <x*seq_cons residues  (0<x<=1.0)\n  -I <x>           : require seqs to\
+  \ have < <x> id  [1.0]  (0<x<=1.0)\n  -i <x>           : require seqs to have >=\
+  \ <x> id  (0<=x<1.0)\n  --tstart <n>     : min alignment position to analyze [1..alen]\
+  \  (n>0)\n  --tend <n>       : max alignment position to analyze [1..alen]  (n>0)\n\
+  \  --consensus      : analyze only consensus (seq_cons) positions\n  --submsa <n>\
+  \     : take n random sequences from the alignment, all if NULL  (n>0)\n  --nseqmin\
+  \ <n>    : minimum number of sequences in the alignment  (n>0)\n  --gapthresh <x>\
+  \  : keep columns with < <x> fraction of gaps  [0.75]  (0<=x<=1)\n  --minid <x>\
+  \      : minimum avgid of the given alignment  (0<x<=1.0)\n  --maxid <x>      :\
+  \ maximum avgid of the given alignment  (0<x<=1.0)\n  --treefile <s>   : provide\
+  \ external tree to use\n  --vshuffle       : shuffle the residues in a column\n\
+  \  --cshuffle       : shuffle the columns of the alignment\n  --cntmaxD <x>    :\
+  \ max distance for contact definition  [8.0]  (x>0)\n  --pdbfile <f>    : read pdb\
+  \ file from file <f>\n  --cntmind <n>    : min (j-i+1) for contact definition  [1]\
+  \  (n>0)\n  --onlypdb        : use only structural info in pdbfile, ignore msa annotation\
+  \ if any\n  --informat <s>   : specify format\n  --nshuffle <n>   : number of shuffled\
+  \ alignments  (n>0)\n  --CHIa           : CHI  ASC corrected statistic\n  --CHIp\
+  \           : CHI  APC corrected statistic\n  --CHI            : CHI  statistic\n\
+  \  --GTa            : GT   ASC corrected statistic\n  --GTp            : GT   APC\
+  \ corrected statistic  [TRUE]\n  --GT             : GT   statistic\n  --MIa    \
+  \        : MI   ASC corrected statistic\n  --MIp            : MI   APC corrected\
+  \ statistic\n  --MI             : MI   statistic\n  --MIra           : MIr  ASC\
+  \ corrected statistic\n  --MIrp           : MIr  APC corrected statistic\n  --MIr\
+  \            : MIr  statistic\n  --MIga           : MIg  ASC corrected statistic\n\
+  \  --MIgp           : MIg  APC corrected statistic\n  --MIg            : MIg  statistic\n\
+  \  --OMESa          : OMES ASC corrected statistic\n  --OMESp          : OMES APC\
+  \ corrected statistic\n  --OMES           : OMES statistic\n  --RAFa           :\
+  \ RNAalifold ASC corrected statistic\n  --RAFp           : RNAalifold APC corrected\
+  \ statistic\n  --RAF            : RNAalifold statistic\n  --RAFSa          : RNAalifold-stacking\
+  \ ASC corrected statistic\n  --RAFSp          : RNAalifold-stacking APC corrected\
+  \ statistic\n  --RAFS           : RNAalifold-stacking  statistic\n  --CCFa     \
+  \      : Correlation Coefficient with Frobenius norm ASC corrected statistic\n \
+  \ --CCFp           : Correlation Coefficient with Frobenious norm  APC corrected\
+  \ statistic\n  --CCF            : Correlation Coefficient with Frobenious norm \
+  \  statistic\n  --PTFp           : POTTS Frobenious ASC corrected statistic\n  --PTAp\
+  \           : POTTS Averages   ASC corrected statistic\n  --PTDp           : POTTS\
+  \ DI         ASC corrected statistic\n  --C16            : use 16 covariation classes\n\
+  \  --C2             : use 2 covariation classes\n  --CSELECT        : use C2 if\
+  \ nseq <= nseqthresh otherwise use C16  [TRUE]\n  --naive          : sort results\
+  \ by cov score, no null model involved\n  --nullphylo      : nullphylo  statistics\
+  \  [TRUE]\n  --nonparam       : non parameteric correlate  [TRUE]\n  --potts   \
+  \       : potts couplings\n  --dna            : use DNA alphabet\n  --rna      \
+  \      : use RNA alphabet\n  --amino          : use protein alphabet\n  --ptmuh\
+  \ <x>      : potts regularization parameters for training hi's  [0.01]  (x>=0)\n\
+  \  --ptmue <x>      : potts regularization parameters for training eij's  [0.20]\
+  \  (x>=0)\n  --PLM            : potts option for training\n  --APLM           :\
+  \ potts option for training\n  --outpotts       : write inferred potts parameters\n\
+  \  --gremlin        : reproduce gremlin\n  --outmsa         : write actual msa used\n\
+  \  --outtree        : write phylogenetic tree used\n  --outnull        : write null\
+  \ alignments\n  --allbranch      : output msa with all branges\n  --voutput    \
+  \    : verbose output\n  --power <f>      : calculate empirical power curve\n  --doublesubs\
+  \     : calculate power using double substitutions, default is single substitutions\n\
+  \  --minhloop <n>   : minimum hairpin loop length. If i-j is the closing pair: minhloop\
+  \ = j-1-1. Default is 0  (n>=0)\n  --tol <x>        : tolerance  [1e-6]\n  --seed\
+  \ <n>       : set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)\n  --pmass\
+  \ <x>      : pmass for censored histogram of cov scores  [0.0005]  (0<x<=1)\n"
+generated_using:
+- --help

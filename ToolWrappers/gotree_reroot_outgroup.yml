@@ -1,0 +1,102 @@
+!Command
+command:
+- gotree
+- reroot
+- outgroup
+positional: []
+named:
+- !Flag
+  description: Removes the outgroup after reroot
+  synonyms:
+  - -r
+  - --remove-outgroup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enforce the outgroup to be monophyletic (else throw an error)
+  synonyms:
+  - --strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File containing names of tips of the outgroup (default "none")
+  synonyms:
+  - -l
+  - --tip-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Input tree format (newick, nexus, or phyloxml) (default "newick")
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Input Tree (default "stdin")
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Rerooted output tree file (default "stdout")
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Number of threads (Max=8) (default 1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for outgroup
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Reroot the tree using an outgroup given in argument or in stdin.\n\nExample:\n\
+  \nReroot on 1 tip named \"Tip10\" using stdin:\necho \"Tip10\" | gotree reroot outgroup\
+  \ -i tree.nw -l - > reroot.nw\n\nReroot using an outgroup defined by 3 tips using\
+  \ stdin:\necho \"Tip1,Tip2,Tip10\" | gotree reroot outgroup -i tree.nw -l - > reroot.nw\n\
+  \nReroot using an outgroup defined by 3 tips using command args:\n\ngotree reroot\
+  \ outgroup -i tree.nw Tip1 Tip2 Tip3 > reroot.nw\n\nIf the outgroup includes a tip\
+  \ that is not present in the tree,\nthis tip will not be taken into account for\
+  \ the reroot. A warning\nwill be issued.\n\nBy default (--strict=false), if the\
+  \ outgroup is not monophyletic it will\ntake all the descendant of the LCA to reroot\
+  \ and print a warning.If the\noutgroup is not monophyletic and if --strict is given,\
+  \ it exits with an \nerror.\n\nIf the option -r|--remove-outgroup is given, then\
+  \ the outgroup is\nremoved after reroot.\n\nUsage:\n  gotree reroot outgroup [flags]\n\
+  \nFlags:\n  -h, --help              help for outgroup\n  -r, --remove-outgroup \
+  \  Removes the outgroup after reroot\n      --strict            Enforce the outgroup\
+  \ to be monophyletic (else throw an error)\n  -l, --tip-file string   File containing\
+  \ names of tips of the outgroup (default \"none\")\n\nGlobal Flags:\n      --format\
+  \ string   Input tree format (newick, nexus, or phyloxml) (default \"newick\")\n\
+  \  -i, --input string    Input Tree (default \"stdin\")\n  -o, --output string \
+  \  Rerooted output tree file (default \"stdout\")\n      --seed int        Random\
+  \ Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n  -t, --threads\
+  \ int     Number of threads (Max=8) (default 1)\n"
+generated_using:
+- --help

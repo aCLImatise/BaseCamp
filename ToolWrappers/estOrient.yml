@@ -1,0 +1,80 @@
+!Command
+command:
+- estOrient
+positional:
+- !Positional
+  description: -fileInput - estTable is a psl file
+  position: 0
+  name: present.
+  optional: false
+named:
+- !Flag
+  description: '- process this chromosome, maybe repeated'
+  synonyms:
+  - -chrom
+  args: !SimpleFlagArg
+    name: chr
+  optional: true
+- !Flag
+  description: "- don't drop ESTs where orientation can't\nbe determined."
+  synonyms:
+  - -keepDisoriented
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- output ESTs that where orientation can't\nbe determined to this\
+    \ file."
+  synonyms:
+  - -disoriented
+  args: !SimpleFlagArg
+    name: psl
+  optional: true
+- !Flag
+  description: '- add NCBI version number to accession if not already'
+  synonyms:
+  - -inclVer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- instead of getting the orientation information\nfrom the estOrientInfo\
+    \ table, load it from this file.  This data is the\noutput of polyInfo command.\
+    \  If this option is specified, the direction\nwill not be looked up in the gbCdnaInfo\
+    \ table and db can be `no'."
+  synonyms:
+  - -estOrientInfo
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "- write information about each EST to this tab\nseparated file\nqName\
+    \ tName tStart tEnd origStrand newStrand orient\nwhere orient is < 0 if PSL was\
+    \ reverse, > 0 if it was left unchanged\nand 0 if the orientation couldn't be\
+    \ determined (and was left\nunchanged).\n"
+  synonyms:
+  - -info
+  args: !SimpleFlagArg
+    name: infoFile
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "wrong # of args:\nestOrient [options] db estTable outPsl\n\nRead ESTs\
+  \ from a database and determine orientation based on\nestOrientInfo table or direction\
+  \ in gbCdnaInfo table.  Update\nPSLs so that the strand reflects the direction of\
+  \ transcription.\nBy default, PSLs where the direction can't be determined are dropped.\n\
+  \nOptions:\n   -chrom=chr - process this chromosome, maybe repeated\n   -keepDisoriented\
+  \ - don't drop ESTs where orientation can't\n    be determined.\n   -disoriented=psl\
+  \ - output ESTs that where orientation can't\n    be determined to this file.\n\
+  \   -inclVer - add NCBI version number to accession if not already\n    present.\n\
+  \   -fileInput - estTable is a psl file\n   -estOrientInfo=file - instead of getting\
+  \ the orientation information\n    from the estOrientInfo table, load it from this\
+  \ file.  This data is the\n    output of polyInfo command.  If this option is specified,\
+  \ the direction\n    will not be looked up in the gbCdnaInfo table and db can be\
+  \ `no'.\n   -info=infoFile - write information about each EST to this tab\n    separated\
+  \ file \n       qName tName tStart tEnd origStrand newStrand orient\n    where orient\
+  \ is < 0 if PSL was reverse, > 0 if it was left unchanged\n    and 0 if the orientation\
+  \ couldn't be determined (and was left\n    unchanged).\n\n"
+generated_using: []

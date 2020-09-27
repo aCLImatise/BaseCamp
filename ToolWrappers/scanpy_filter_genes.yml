@@ -1,0 +1,154 @@
+!Command
+command:
+- scanpy-filter-genes
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_obj
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: output_obj
+  optional: false
+named:
+- !Flag
+  description: "[anndata|loom]\nInput object format.  [default: anndata]"
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Chunk size for writing output in zarr
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name of the variable that contains gene\nnames, used for flagging\
+    \ mitochondria genes\nwhen column \"mito\" is absent from `.var`.\n[default: index]"
+  synonyms:
+  - -g
+  - --gene-name
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "When set, list attributes that can be\nfiltered on."
+  synonyms:
+  - -l
+  - --list-attr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "...\nNumerical parameters used to filter the\ndata, in the format\
+    \ of \"-p name min max\".\nMultiple -p entries allowed."
+  synonyms:
+  - -p
+  - --param
+  args: !SimpleFlagArg
+    name: TEXT FLOAT FLOAT
+  optional: true
+- !Flag
+  description: "<TEXT TEXT[,TEXT...]>...\nCategorical attributes used to filter the\n\
+    data, in the format of \"-c <name> <values>\",\nwhere entries with attribute <name>\
+    \ with\nvalue in <values> are kept. If <values> is\npreceded by \"!\", entries\
+    \ with value in\n<values> are removed. Multiple -c entries\nallowed."
+  synonyms:
+  - -c
+  - --category
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "...\nSimilar to --category in the format of \"-s\n<name> <file>\"\
+    , but the <file> to be a one-\ncolumn table that provides the values.\nMultiple\
+    \ -s entries allowed."
+  synonyms:
+  - -s
+  - --subset
+  args: !SimpleFlagArg
+    name: TEXT FILENAME
+  optional: true
+- !Flag
+  description: "When set, re-calculate\n`pct_counts_<qc_variable>` and\n`pct_counts_in_top_<n>_genes`\
+    \ even if they\nexist."
+  synonyms:
+  - --force-recalc
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-filter-genes [OPTIONS] <input_obj> <output_obj>\n\n  Filter\
+  \ data based on specified conditions.\n\n  <input_obj>:   input file in format specfied\
+  \ by --input-format\n  <output_obj>:  output file in format specfied by --output-format\n\
+  \nOptions:\n  -f, --input-format [anndata|loom]\n                              \
+  \    Input object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+  \                                  Output object format.  [default: anndata]\n \
+  \ -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n      \
+  \                            format.  [default: 1000]\n  -X, --export-mtx PATH \
+  \          When specified, using it as prefix for\n                            \
+  \      exporting mtx files. If not empty and not\n                             \
+  \     ending with \"/\" or \"_\", a \"_\" will be\n                            \
+  \      appended.\n  --show-obj [stdout|stderr]      Print output object summary\
+  \ info to\n                                  specified stream.\n  -g, --gene-name\
+  \ TEXT            Name of the variable that contains gene\n                    \
+  \              names, used for flagging mitochondria genes\n                   \
+  \               when column \"mito\" is absent from `.var`.\n                  \
+  \                [default: index]\n  -l, --list-attr                 When set, list\
+  \ attributes that can be\n                                  filtered on.\n  -p,\
+  \ --param <TEXT FLOAT FLOAT>...\n                                  Numerical parameters\
+  \ used to filter the\n                                  data, in the format of \"\
+  -p name min max\".\n                                  Multiple -p entries allowed.\n\
+  \  -c, --category <TEXT TEXT[,TEXT...]>...\n                                  Categorical\
+  \ attributes used to filter the\n                                  data, in the\
+  \ format of \"-c <name> <values>\",\n                                  where entries\
+  \ with attribute <name> with\n                                  value in <values>\
+  \ are kept. If <values> is\n                                  preceded by \"!\"\
+  , entries with value in\n                                  <values> are removed.\
+  \ Multiple -c entries\n                                  allowed.\n  -s, --subset\
+  \ <TEXT FILENAME>...\n                                  Similar to --category in\
+  \ the format of \"-s\n                                  <name> <file>\", but the\
+  \ <file> to be a one-\n                                  column table that provides\
+  \ the values.\n                                  Multiple -s entries allowed.\n\
+  \  --force-recalc                  When set, re-calculate\n                    \
+  \              `pct_counts_<qc_variable>` and\n                                \
+  \  `pct_counts_in_top_<n>_genes` even if they\n                                \
+  \  exist.\n  --help                          Show this message and exit.\n"
+generated_using:
+- --help

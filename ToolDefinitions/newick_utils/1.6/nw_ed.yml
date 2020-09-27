@@ -34,16 +34,10 @@ subcommands:
     - -o
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id003 !Command
+  parent: !Command
     command: *id001
     positional: []
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - -hnro
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     parent:
     subcommands:
     - !Command
@@ -73,7 +67,124 @@ subcommands:
         - -o
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named:
+        - !Flag
+          description: ''
+          synonyms:
+          - -hnro
+          args: !EmptyFlagArg {}
+          optional: true
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional: []
+          named:
+          - !Flag
+            description: ": do not print the (possibly modified) tree at the end of\
+              \ the run\n(modeled after sed -n)"
+            synonyms:
+            - -n
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ": visit tree in preorder (starting at root, and visiting\
+              \ a node\nbefore any of its descendants). Default is post-order (ends\
+              \ at root\nand visits a node after all its descendats)."
+            synonyms:
+            - -r
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: ": stop processing a clade after the first match - that is,\
+              \ if a node\nmatches, its descendants are not processed.\nNote: this\
+              \ option will automatically set -r, as it makes no\nsense in post-order."
+            synonyms:
+            - -o
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ': print this help text, and exit'
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "Performs actions on nodes that match some condition\n\nSynopsis\n\
+            --------\n\nnw_ed [-hnor] <newick trees filename|-> <address> <action>\n\
+            \nInput\n-----\n\nFirst argument is the name of a file that contains Newick\
+            \ trees, or '-' (in\nwhich case trees are read from standard input).\n\
+            \nSecond argument is a node address, in the form of a logical expression\
+            \ (see\nAddresses below).\n\nThird argument is a code that specifies an\
+            \ action to perform on nodes\nwhich match the address (see Actions).\n\
+            \nOutput\n------\n\nBy default, prints the input tree, which may have\
+            \ been modified. However,\nthe 's' action (see Actions, below) causes\
+            \ matching subtrees to be\nprinted out.\n\nThis program is analogous to\
+            \ pattern-oriented, stream processing UNIX\nutilities like sed(1) and\
+            \ awk(1), but instead of working on lines (like\nsed) or records (like\
+            \ awk), nw_ed works on tree nodes.\n\nThe program traverses the tree in\
+            \ Newick order, evaluating the address\nexpression for each node in turn.\
+            \ If (and only if) the address matches, the\naction is performed.\n\n\
+            Addresses\n---------\n\nThe address expression involves node properties\
+            \ such as depth, bootstrap\nsupport, whether or not a node is a leaf,\
+            \ etc. These are represented by\nsingle-letter codes, to make expressions\
+            \ short. For example:\n\n\t\t\t\t       i\n\nmatches internal nodes, while\n\
+            \n\t\t\t\t     b > 75\n\nmatches nodes whose label has a numerical value\
+            \ of 75 or more (if the label\nis numeric). The usual logical and relational\
+            \ operators are available, so\n\n\t\t\t\t   i & b > 75\n\ncould be used\
+            \ to match internal nodes with a bootstrap support value\ngreater than\
+            \ 75.\n\nThe functions are:\n    a numeric    number of ancestors of node\t\
+            \n    b numeric    node's support value (or zero)\n    d numeric    node's\
+            \ depth (distance to root)\n    c numeric    node's number of children\n\
+            \    D numeric    node's number of descendants\n    i boolean    true\
+            \ iff node is strictly internal (i.e., not root!)\n    l boolean    true\
+            \ iff node is a leaf\n    r boolean    true iff node is the root\n\nThe\
+            \ operators are:\n    ==  equality\n    !=  inequality\n    <   greater\
+            \ than\n    >   lesser than\n    >=  greater than or equal to\n    <=\
+            \  lesser than or equal to\n    !   logical negation\n    &   logical\
+            \ and\n    |   logical or\n\nThe operator precedence is: negation, relationals,\
+            \ and, or; i.e. \n\n\t\t\t\t 1 == d & !i | l\n\nis equivalent to\n\n\t\
+            \t\t       ((1 == d) & (!i)) | l\n\nParentheses can be used for overriding\
+            \ precedence, or for clarity.\n\nActions\n-------\n\nActions are performed\
+            \ on nodes that match the address. They are:\n    s   (Subtree) print\
+            \ subtree rooted at matching node\n    o   (splice Out) splice out node,\
+            \ and attach children to parent, \n\t   preserving branch lengths. This\
+            \ is useful for \"opening\" poorly\n          supported nodes.\n    d\
+            \   Delete node\n    l   Print node's label\n\n\nOptions\n-------\n\n\
+            \    -h: print this help text, and exit\n    -n: do not print the (possibly\
+            \ modified) tree at the end of the run \n        (modeled after sed -n)\n\
+            \    -r: visit tree in preorder (starting at root, and visiting a node\n\
+            \        before any of its descendants). Default is post-order (ends at\
+            \ root\n        and visits a node after all its descendats).\n    -o:\
+            \ stop processing a clade after the first match - that is, if a node\n\
+            \        matches, its descendants are not processed.\n        Note: this\
+            \ option will automatically set -r, as it makes no\n        sense in post-order.\n\
+            \nBugs\n----\n\nAlthough there are no known bugs in this program, it is\
+            \ to be considered\nmore experimental than the others.\n\nExamples\n--------\n\
+            \n# \"open\" all nodes with bootstrap support <= 10 (assuming support\
+            \ is coded\n# in internal node labels)\n\n$ nw_ed data/HRV.bs.nw 'i &\
+            \ b <= 10' o \n\n# \"open\" all nodes with bootstrap support < 750, then\
+            \ discard leaves that\n# are directly attached to the ingroup's root.\
+            \ This effectively keeps only\n# leaves that are part of well-supported\
+            \ clades.\n\n$ nw_ed data/big.rn.nw 'i & b < 750' o | nw_ed - 'l & a ==\
+            \ 2' d\n\n# get all clades with at least one ancestor, 980 or better support.\
+            \ Do not\n# print subtrees of matching clades, even if they match (option\
+            \ -o)\n\n$ nw_ed data/big.rn.nw -n -o 'a >= 1 & b >= 980' s\n"
+          generated_using: &id004
+          - -h
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "Usage: nw_ed [-hnro] <filename|-> <address> <operation>\n"
+        generated_using: &id005 []
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -141,14 +252,13 @@ subcommands:
         \ d\n\n# get all clades with at least one ancestor, 980 or better support.\
         \ Do not\n# print subtrees of matching clades, even if they match (option\
         \ -o)\n\n$ nw_ed data/big.rn.nw -n -o 'a >= 1 & b >= 980' s\n"
-      generated_using: &id004
-      - -h
+      generated_using: *id004
     usage: []
     help_flag:
     usage_flag:
     version_flag:
     help_text: "Usage: nw_ed [-hnro] <filename|-> <address> <operation>\n"
-    generated_using: &id005 []
+    generated_using: *id005
   subcommands: []
   usage: []
   help_flag: !Flag

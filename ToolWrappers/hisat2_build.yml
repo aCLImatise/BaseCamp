@@ -1,0 +1,229 @@
+!Command
+command:
+- hisat2-build
+positional:
+- !Positional
+  description: comma-separated list of files with ref sequences
+  position: 0
+  name: reference_in
+  optional: false
+- !Positional
+  description: write ht2 data to files with this dir/basename
+  position: 1
+  name: hisat2_index_base
+  optional: false
+named:
+- !Flag
+  description: "reference sequences given on cmd line (as\n<reference_in>)"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "force generated index to be 'large', even if ref\nhas fewer than 4\
+    \ billion nucleotides"
+  synonyms:
+  - --large-index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable automatic -p/--bmax/--dcv memory-fitting
+  synonyms:
+  - -a/--noauto
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: max bucket sz for blockwise suffix-array builder
+  synonyms:
+  - --bmax
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'max bucket sz as divisor of ref len (default: 4)'
+  synonyms:
+  - --bmaxdivn
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'diff-cover period for blockwise (default: 1024)'
+  synonyms:
+  - --dcv
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: disable diff-cover (algorithm becomes quadratic)
+  synonyms:
+  - --nodc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't build .3/.4.ht2 (packed reference) portion
+  synonyms:
+  - -r/--noref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: just build .3/.4.ht2 (packed reference) portion
+  synonyms:
+  - -3/--justref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'SA is sampled every 2^offRate BWT chars (default: 5)'
+  synonyms:
+  - -o/--offrate
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '# of chars consumed in initial lookup (default: 10)'
+  synonyms:
+  - -t/--ftabchars
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'SA (local) is sampled every 2^offRate BWT chars (default: 3)'
+  synonyms:
+  - --localoffrate
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '# of chars consumed in initial lookup in a local index (default: 6)'
+  synonyms:
+  - --localftabchars
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: SNP file name
+  synonyms:
+  - --snp
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: haplotype file name
+  synonyms:
+  - --haplotype
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Splice site file name
+  synonyms:
+  - --ss
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Exon file name
+  synonyms:
+  - --exon
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Repeat reference file name
+  synonyms:
+  - --repeat-ref
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Repeat information file name
+  synonyms:
+  - --repeat-info
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Repeat snp file name
+  synonyms:
+  - --repeat-snp
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Repeat haplotype file name
+  synonyms:
+  - --repeat-haplotype
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: seed for random number generator
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: disable verbose output (for debugging)
+  synonyms:
+  - -q/--quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print detailed description of tool and its options
+  synonyms:
+  - -h/--help
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag: !Flag
+  description: print this usage message
+  synonyms:
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
+version_flag: !Flag
+  description: print version information and quit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "HISAT2 version  by Daehwan Kim (infphilo@gmail.com, http://www.ccb.jhu.edu/people/infphilo)\n\
+  Usage: hisat2-build [options]* <reference_in> <ht2_index_base>\n    reference_in\
+  \            comma-separated list of files with ref sequences\n    hisat2_index_base\
+  \       write ht2 data to files with this dir/basename\nOptions:\n    -c       \
+  \               reference sequences given on cmd line (as\n                    \
+  \        <reference_in>)\n    --large-index           force generated index to be\
+  \ 'large', even if ref\n                            has fewer than 4 billion nucleotides\n\
+  \    -a/--noauto             disable automatic -p/--bmax/--dcv memory-fitting\n\
+  \    -p <int>                number of threads\n    --bmax <int>            max\
+  \ bucket sz for blockwise suffix-array builder\n    --bmaxdivn <int>        max\
+  \ bucket sz as divisor of ref len (default: 4)\n    --dcv <int>             diff-cover\
+  \ period for blockwise (default: 1024)\n    --nodc                  disable diff-cover\
+  \ (algorithm becomes quadratic)\n    -r/--noref              don't build .3/.4.ht2\
+  \ (packed reference) portion\n    -3/--justref            just build .3/.4.ht2 (packed\
+  \ reference) portion\n    -o/--offrate <int>      SA is sampled every 2^offRate\
+  \ BWT chars (default: 5)\n    -t/--ftabchars <int>    # of chars consumed in initial\
+  \ lookup (default: 10)\n    --localoffrate <int>    SA (local) is sampled every\
+  \ 2^offRate BWT chars (default: 3)\n    --localftabchars <int>  # of chars consumed\
+  \ in initial lookup in a local index (default: 6)\n    --snp <path>            SNP\
+  \ file name\n    --haplotype <path>      haplotype file name\n    --ss <path>  \
+  \           Splice site file name\n    --exon <path>           Exon file name\n\
+  \    --repeat-ref <path>     Repeat reference file name\n    --repeat-info <path>\
+  \    Repeat information file name\n    --repeat-snp <path>     Repeat snp file name\n\
+  \    --repeat-haplotype <path>   Repeat haplotype file name\n    --seed <int>  \
+  \          seed for random number generator\n    -q/--quiet              disable\
+  \ verbose output (for debugging)\n    -h/--help               print detailed description\
+  \ of tool and its options\n    --usage                 print this usage message\n\
+  \    --version               print version information and quit\n"
+generated_using:
+- --help

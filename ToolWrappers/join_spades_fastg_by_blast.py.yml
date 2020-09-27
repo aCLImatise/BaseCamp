@@ -1,0 +1,92 @@
+!Command
+command:
+- join_spades_fastg_by_blast.py
+positional: []
+named:
+- !Flag
+  description: followed by your input fastg file
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: IN_FASTG_FILE
+  optional: true
+- !Flag
+  description: followed by Fasta index format
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: REFERENCE_FA_BASE
+  optional: true
+- !Flag
+  description: "Choose to disable deleting temp files produced by\nblast and this\
+    \ script"
+  synonyms:
+  - --keep-temp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Default: 0.60'
+  synonyms:
+  - --bt
+  args: !SimpleFlagArg
+    name: BLAST_HITS_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Default: 1500'
+  synonyms:
+  - --max-gap
+  args: !SimpleFlagArg
+    name: MAX_GAP_TO_ADD
+  optional: true
+- !Flag
+  description: "Choose to activate connecting all possible contigs.\nDefault: False"
+  synonyms:
+  - --con-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Default: 1.0'
+  synonyms:
+  - --depth
+  args: !SimpleFlagArg
+    name: DEPTH_TO_CONNECT
+  optional: true
+- !Flag
+  description: "Assign the path to BLAST binary files if not added to\nthe path. Default:\
+    \ try GetOrganelleDep/linux/ncbi-\nblast first, then $PATH\n"
+  synonyms:
+  - --which-blast
+  args: !SimpleFlagArg
+    name: WHICH_BLAST
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nThis script would join the spades fastg contigs according to the reference.\n\
+  It would add extra gap nodes (N) and/or overlap nodes (?) in between the connectible\
+  \ nodes and generate  a new fastg file.\n\nThis is a BETA version:\nAlthough it\
+  \ will not produce error connections, it usually replicates the same right connection.\n\
+  Don't be surprised if you find any other bugs.\nUsage: python join_spades_fastg_by_blast.py\
+  \ -g input.fastg -f refernce.fasta\n\nOptions:\n  -h, --help            show this\
+  \ help message and exit\n  -g IN_FASTG_FILE      followed by your input fastg file\n\
+  \  -f REFERENCE_FA_BASE  followed by Fasta index format\n  --keep-temp         \
+  \  Choose to disable deleting temp files produced by\n                        blast\
+  \ and this script\n  --bt=BLAST_HITS_THRESHOLD\n                        Default:\
+  \ 0.60\n  --max-gap=MAX_GAP_TO_ADD\n                        Default: 1500\n  --con-all\
+  \             Choose to activate connecting all possible contigs.\n            \
+  \            Default: False\n  --depth=DEPTH_TO_CONNECT\n                      \
+  \  Default: 1.0\n  --which-blast=WHICH_BLAST\n                        Assign the\
+  \ path to BLAST binary files if not added to\n                        the path.\
+  \ Default: try GetOrganelleDep/linux/ncbi-\n                        blast first,\
+  \ then $PATH\n"
+generated_using:
+- --help

@@ -1,0 +1,129 @@
+!Command
+command:
+- create_phylowgs_inputs.py
+positional:
+- !Positional
+  description: "Path to VCF file for each sample. Specified as\n<sample>=<VCF path>."
+  position: 0
+  name: vcf_files
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: ERROR_RATE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --vcf-type
+  args: !SimpleFlagArg
+    name: VCF_TYPES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "show this help message and exit\n--vcf-type VCF_TYPES  Type of VCF\
+    \ file for each sample, specified as\n<sample>=<vcf_type>. Valid VCF types are\
+    \ strelka,mutec\nt_pcawg,dkfz,muse,vardict,mutect_smchet,mutect_tcga,sa\nnger,pcawg_consensus.\
+    \ (default: None)\n-e ERROR_RATE, --error-rate ERROR_RATE\nExpected error rate\
+    \ of sequencing platform (default:\n0.001)\n--missing-variant-confidence MISSING_VARIANT_CONFIDENCE\n\
+    Confidence in range [0, 1] that SSMs missing from a\nsample are indeed not present\
+    \ in that sample (default:\n1.0)\n-s SAMPLE_SIZE, --sample-size SAMPLE_SIZE\n\
+    Subsample SSMs to reduce PhyloWGS runtime (default:\nNone)\n-P PRIORITY_SSM_FILENAME,\
+    \ --priority-ssms PRIORITY_SSM_FILENAME\nFile containing newline-separated list\
+    \ of SSMs in\n\"<chr>_<locus>\" format to prioritize for inclusion\n(default:\
+    \ None)\n--only-priority       Only sample variants provided on priority list\n\
+    (default: False)\n--cnvs CNV_FILES      Path to CNV file created with parse_cnvs.py\
+    \ for each\nsample. Specified as <sample>=<CNV path>. (default:\nNone)\n--regions\
+    \ {normal_cn,normal_and_abnormal_cn,all}\nWhich regions to use variants from.\
+    \ Refer to the\nparser README for more details. (default:\nnormal_and_abnormal_cn)\n\
+    --output-cnvs OUTPUT_CNVS\nOutput destination for CNVs (default: cnv_data.txt)\n\
+    --output-variants OUTPUT_VARIANTS\nOutput destination for variants (default:\n\
+    ssm_data.txt)\n--output-params OUTPUT_PARAMS\nOutput destination for run parameters\
+    \ (default:\nparams.json)\n--tumor-sample TUMOR_SAMPLE\nName of the tumor sample\
+    \ in the input VCF file.\nDefaults to last sample if not specified. (default:\n\
+    None)\n--muse-tier MUSE_TIER\nMaximum MuSE tier to include (default: 0)\n--nonsubsampled-variants\
+    \ OUTPUT_NONSUBSAMPLED_VARIANTS\nIf subsampling, write nonsubsampled variants\
+    \ to\nseparate file, in addition to subsampled variants\n(default: None)\n--nonsubsampled-variants-cnvs\
+    \ OUTPUT_NONSUBSAMPLED_VARIANTS_CNVS\nIf subsampling, write CNVs for nonsubsampled\
+    \ variants\nto separate file (default: None)\n--sex {auto,male,female}\nSex of\
+    \ patient. Used to adjust expected variant\nfrequencies on sex chromosomes. If\
+    \ auto, patient is\nset to male if any variants are provided on the Y\nchromosome,\
+    \ and female otherwise. (default: auto)\n--het-snp-rate HETSNP_RATE\nAverage number\
+    \ of heterozygous SNPs per base used to\ncall copy number. This determines how\
+    \ heavily we\nweight somatic CNAs relative to SNVs. Defaults to 7\nSNPs per 10\
+    \ kb, as per Battenberg. (default: 0.0007)\n--verbose\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: create_phylowgs_inputs.py [-h] --vcf-type VCF_TYPES [-e ERROR_RATE]\n\
+  \                                 [--missing-variant-confidence MISSING_VARIANT_CONFIDENCE]\n\
+  \                                 [-s SAMPLE_SIZE] [-P PRIORITY_SSM_FILENAME]\n\
+  \                                 [--only-priority] [--cnvs CNV_FILES]\n       \
+  \                          [--regions {normal_cn,normal_and_abnormal_cn,all}]\n\
+  \                                 [--output-cnvs OUTPUT_CNVS]\n                \
+  \                 [--output-variants OUTPUT_VARIANTS]\n                        \
+  \         [--output-params OUTPUT_PARAMS]\n                                 [--tumor-sample\
+  \ TUMOR_SAMPLE]\n                                 [--muse-tier MUSE_TIER]\n    \
+  \                             [--nonsubsampled-variants OUTPUT_NONSUBSAMPLED_VARIANTS]\n\
+  \                                 [--nonsubsampled-variants-cnvs OUTPUT_NONSUBSAMPLED_VARIANTS_CNVS]\n\
+  \                                 [--sex {auto,male,female}]\n                 \
+  \                [--het-snp-rate HETSNP_RATE] [--verbose]\n                    \
+  \             vcf_files [vcf_files ...]\n\nCreate ssm_data.txt and cnv_data.txt\
+  \ input files for PhyloWGS from VCF and CNV\ndata.\n\npositional arguments:\n  vcf_files\
+  \             Path to VCF file for each sample. Specified as\n                 \
+  \       <sample>=<VCF path>.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --vcf-type VCF_TYPES  Type of VCF file for each\
+  \ sample, specified as\n                        <sample>=<vcf_type>. Valid VCF types\
+  \ are strelka,mutec\n                        t_pcawg,dkfz,muse,vardict,mutect_smchet,mutect_tcga,sa\n\
+  \                        nger,pcawg_consensus. (default: None)\n  -e ERROR_RATE,\
+  \ --error-rate ERROR_RATE\n                        Expected error rate of sequencing\
+  \ platform (default:\n                        0.001)\n  --missing-variant-confidence\
+  \ MISSING_VARIANT_CONFIDENCE\n                        Confidence in range [0, 1]\
+  \ that SSMs missing from a\n                        sample are indeed not present\
+  \ in that sample (default:\n                        1.0)\n  -s SAMPLE_SIZE, --sample-size\
+  \ SAMPLE_SIZE\n                        Subsample SSMs to reduce PhyloWGS runtime\
+  \ (default:\n                        None)\n  -P PRIORITY_SSM_FILENAME, --priority-ssms\
+  \ PRIORITY_SSM_FILENAME\n                        File containing newline-separated\
+  \ list of SSMs in\n                        \"<chr>_<locus>\" format to prioritize\
+  \ for inclusion\n                        (default: None)\n  --only-priority    \
+  \   Only sample variants provided on priority list\n                        (default:\
+  \ False)\n  --cnvs CNV_FILES      Path to CNV file created with parse_cnvs.py for\
+  \ each\n                        sample. Specified as <sample>=<CNV path>. (default:\n\
+  \                        None)\n  --regions {normal_cn,normal_and_abnormal_cn,all}\n\
+  \                        Which regions to use variants from. Refer to the\n    \
+  \                    parser README for more details. (default:\n               \
+  \         normal_and_abnormal_cn)\n  --output-cnvs OUTPUT_CNVS\n               \
+  \         Output destination for CNVs (default: cnv_data.txt)\n  --output-variants\
+  \ OUTPUT_VARIANTS\n                        Output destination for variants (default:\n\
+  \                        ssm_data.txt)\n  --output-params OUTPUT_PARAMS\n      \
+  \                  Output destination for run parameters (default:\n           \
+  \             params.json)\n  --tumor-sample TUMOR_SAMPLE\n                    \
+  \    Name of the tumor sample in the input VCF file.\n                        Defaults\
+  \ to last sample if not specified. (default:\n                        None)\n  --muse-tier\
+  \ MUSE_TIER\n                        Maximum MuSE tier to include (default: 0)\n\
+  \  --nonsubsampled-variants OUTPUT_NONSUBSAMPLED_VARIANTS\n                    \
+  \    If subsampling, write nonsubsampled variants to\n                        separate\
+  \ file, in addition to subsampled variants\n                        (default: None)\n\
+  \  --nonsubsampled-variants-cnvs OUTPUT_NONSUBSAMPLED_VARIANTS_CNVS\n          \
+  \              If subsampling, write CNVs for nonsubsampled variants\n         \
+  \               to separate file (default: None)\n  --sex {auto,male,female}\n \
+  \                       Sex of patient. Used to adjust expected variant\n      \
+  \                  frequencies on sex chromosomes. If auto, patient is\n       \
+  \                 set to male if any variants are provided on the Y\n          \
+  \              chromosome, and female otherwise. (default: auto)\n  --het-snp-rate\
+  \ HETSNP_RATE\n                        Average number of heterozygous SNPs per base\
+  \ used to\n                        call copy number. This determines how heavily\
+  \ we\n                        weight somatic CNAs relative to SNVs. Defaults to\
+  \ 7\n                        SNPs per 10 kb, as per Battenberg. (default: 0.0007)\n\
+  \  --verbose\n"
+generated_using:
+- --help

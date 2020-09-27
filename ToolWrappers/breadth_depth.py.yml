@@ -1,0 +1,96 @@
+!Command
+command:
+- breadth_depth.py
+positional:
+- !Positional
+  description: --minqual MINQUAL     Minimum base quality. Bases with quality score
+    lower
+  position: 0
+  name: considered
+  optional: false
+named:
+- !Flag
+  description: "ID, --contig REFERENCE ID\nFocus on a subset of references in the\
+    \ BAM file. Can\nbe a list of references separated by commas or a FASTA\nfile\
+    \ (the IDs are used to subset)"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: "If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\nfail (FQCFAIL)\
+    \ and duplicate (FDUP) are excluded. If\nunset ALL reads are considered (bedtools\
+    \ genomecov\nstyle). Default: unset"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sort and index the file
+  synonyms:
+  - --sortindex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum Reference Length for a reference to be
+  synonyms:
+  - --minlen
+  args: !SimpleFlagArg
+    name: MINLEN
+  optional: true
+- !Flag
+  description: "Minimum position coverage to perform the polymorphism\ncalculation.\
+    \ Position with a lower depth of coverage\nwill be discarded (i.e. considered\
+    \ as zero-coverage\npositions). This is calculated AFTER --minqual.\nDefault:\
+    \ 1"
+  synonyms:
+  - --mincov
+  args: !SimpleFlagArg
+    name: MINCOV
+  optional: true
+- !Flag
+  description: "Number of nucleotides that are truncated at either\ncontigs end before\
+    \ calculating coverage values.\n"
+  synonyms:
+  - --truncate
+  args: !SimpleFlagArg
+    name: TRUNCATE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: breadth_depth.py [-h] [-c REFERENCE ID] [-f] [--sortindex]\n  \
+  \                      [--minlen MINLEN] [--minqual MINQUAL]\n                 \
+  \       [--mincov MINCOV] [--truncate TRUNCATE]\n                        BAMFILE\n\
+  \ncalculate the Breadth and Depth of coverage of BAMFILE.\n\npositional arguments:\n\
+  \  BAMFILE               The file on which to operate\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  -c REFERENCE ID, --contig\
+  \ REFERENCE ID\n                        Focus on a subset of references in the BAM\
+  \ file. Can\n                        be a list of references separated by commas\
+  \ or a FASTA\n                        file (the IDs are used to subset)\n  -f  \
+  \                  If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\n     \
+  \                   fail (FQCFAIL) and duplicate (FDUP) are excluded. If\n     \
+  \                   unset ALL reads are considered (bedtools genomecov\n       \
+  \                 style). Default: unset\n  --sortindex           Sort and index\
+  \ the file\n  --minlen MINLEN       Minimum Reference Length for a reference to\
+  \ be\n                        considered\n  --minqual MINQUAL     Minimum base quality.\
+  \ Bases with quality score lower\n                        than this will be discarded.\
+  \ This is performed BEFORE\n                        --mincov. Default: 30\n  --mincov\
+  \ MINCOV       Minimum position coverage to perform the polymorphism\n         \
+  \               calculation. Position with a lower depth of coverage\n         \
+  \               will be discarded (i.e. considered as zero-coverage\n          \
+  \              positions). This is calculated AFTER --minqual.\n               \
+  \         Default: 1\n  --truncate TRUNCATE   Number of nucleotides that are truncated\
+  \ at either\n                        contigs end before calculating coverage values.\n"
+generated_using:
+- --help

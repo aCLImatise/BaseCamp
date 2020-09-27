@@ -1,0 +1,124 @@
+!Command
+command:
+- bbsketch.sh
+positional:
+- !Positional
+  description: 'Independent of the number of sketches produced; '
+  position: 0
+  name: loading.
+  optional: false
+- !Positional
+  description: Designed for prokaryotes.
+  position: 0
+  name: nucleotides.
+  optional: false
+- !Positional
+  description: This includes sequences with no taxid,
+  position: 0
+  name: sequences.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified January 28, 2020\n\nDescription:\
+  \  Creates one or more sketches from a fasta file,\noptionally annotated with taxonomic\
+  \ information.\n\nPlease read bbmap/docs/guides/BBSketchGuide.txt for more information.\n\
+  \nUsage:  sketch.sh in=<fasta file> out=<sketch file>\n\nStandard parameters:\n\
+  in=<file>           A fasta file containing one or more sequences.\nout=<file> \
+  \         Output filename.  If multiple files are desired it must\n            \
+  \        contain the # symbol.\nblacklist=<file>    Ignore keys in this sketch file.\
+  \  Additionaly, there are\n                    built-in blacklists that can be specified:\n\
+  \                       nt:      Blacklist for nt\n                       refseq:\
+  \  Blacklist for Refseq\n                       silva:   Blacklist for Silva\n \
+  \                      img:     Blacklist for IMG\nfiles=1             Number of\
+  \ output sketch files to produce, for parallel \n                    loading.  Independent\
+  \ of the number of sketches produced; \n                    sketches will be randomly\
+  \ distributed between files.\nk=32,24             Kmer length, 1-32.  To maximize\
+  \ sensitivity and \n                    specificity, dual kmer lengths may be used,\
+  \ e.g. k=32,24\n                    Query and reference k must match.\nrcomp=t \
+  \            Look at reverse-complement kmers also.\namino=f             Use amino\
+  \ acid mode.  Input should be amino acids.\ntranslate=f         Call genes and translate\
+  \ to proteins.  Input should be\n                    nucleotides.  Designed for\
+  \ prokaryotes.\nmode=single         Possible modes:\n                       single:\
+  \ Write one sketch.\n                       sequence: Write one sketch per sequence.\n\
+  \                       taxa: Write one sketch per taxonomic unit.\n           \
+  \               Requires more memory, and taxonomic annotation.\n              \
+  \         img: Write one sketch per IMG id.\ndelta=t             Delta-compress\
+  \ sketches.\na48=t               Encode sketches as ASCII-48 rather than hex.\n\
+  depth=f             Track the number of times kmers appear.\n                  \
+  \  Required for the depth2 field in comparisons.\nentropy=0.66        Ignore sequence\
+  \ with entropy below this value.\nssu=t               Scan for and retain full-length\
+  \ SSU sequence.\n\nSize parameters:\nsize=10000          Desired size of sketches\
+  \ (if not using autosize).\nmaxfraction=0.01    (mgf) Max fraction of genomic kmers\
+  \ to use.\nminsize=100         Do not generate sketches for genomes smaller than\
+  \ this.\nautosize=t          Use flexible sizing instead of fixed-length.  This\
+  \ is\n                    nonlinear; a human sketch is only ~6x a bacterial sketch.\n\
+  sizemult=1          Multiply the autosized size of sketches by this factor.\n  \
+  \                  Normally a bacterial-size genome will get a sketch size\n   \
+  \                 of around 10000; if autosizefactor=2, it would be ~20000.\ndensity=\
+  \            If this flag is set (to a number between 0 and 1),\n              \
+  \      autosize and sizemult are ignored, and this fraction of\n               \
+  \     genomic kmers are used.  For example, at density=0.001,\n                \
+  \    a 4.5Mbp bacteria will get a 4500-kmer sketch.\n\nMetadata flags (optional;\
+  \ intended for single-sketch mode):\ntaxid=-1            Set the NCBI taxid.\nimgid=-1\
+  \            Set the IMG id.\nspid=-1             Set the JGI sequencing project\
+  \ id.\nname=               Set the name (taxname).\nname0=              Set name0\
+  \ (normally the first sequence header).\nfname=              Set fname (normally\
+  \ the file name).\nmeta_=              Set an arbitrary metadata field.\n      \
+  \              For example, meta_Month=March.\n\nTaxonomy-specific flags:\ntree=\
+  \               Specify a taxtree file.  On Genepool, use 'auto'.\ngi=         \
+  \        Specify a gitable file.  On Genepool, use 'auto'.\naccession=         \
+  \ Specify one or more comma-delimited NCBI accession to\n                    taxid\
+  \ files.  On Genepool, use 'auto'.\nimgdump=            Specify an IMG dump file\
+  \ containing NCBI taxIDs,\n                    for IMG mode.\ntaxlevel=subspecies\
+  \ Taxa hits below this rank will be promoted and merged\n                    with\
+  \ others.\nprefilter=f         For huge datasets full of junk like nt, this flag\n\
+  \                    will save memory by ignoring taxa smaller than minsize.\n \
+  \                   Requires taxonomic information (tree and gi).\ntossjunk=t  \
+  \        For taxa mode, discard taxonomically uninformative\n                  \
+  \  sequences.  This includes sequences with no taxid,\n                    with\
+  \ a tax level NO_RANK, of parent taxid of LIFE.\nsilva=f             Parse headers\
+  \ using Silva or semicolon-delimited syntax.\n\nRibosomal flags, which allow SSU\
+  \ sequences to be attached to sketches:\nprocessSSU=t        Run gene-calling to\
+  \ detect ribosomal SSU sequences.\n16Sfile=<file>      Optional file of 16S sequences,\
+  \ annotated with TaxIDs.\n18Sfile=<file>      Optional file of 18S sequences, annotated\
+  \ with TaxIDs.\npreferSSUMap=f      Prefer file SSUs over called SSUs.\npreferSSUMapEuks=t\
+  \  Prefer file SSUs over called SSUs for Eukaryotes.\nSSUMapOnly=f        Only use\
+  \ file SSUs.\nSSUMapOnlyEuks=f    Only use file SSUs for Eukaryotes.  This prevents\n\
+  \                    associating an organism with its mitochondrial or\n       \
+  \             chloroplast 16S/18S, which is otherwise a problem.\n\n\nJava Parameters:\n\
+  -Xmx                This will set Java's memory usage, overriding autodetection.\n\
+  \                    -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will specify\
+  \ 200 megs.\n                    The max is typically 85% of physical memory.\n\
+  -eoom               This flag will cause the process to exit if an\n           \
+  \         out-of-memory exception occurs.  Requires Java 8u92+.\n-da           \
+  \      Disable assertions.\n\nFor more detailed information, please read /bbmap/docs/guides/BBSketchGuide.txt.\n\
+  Please contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

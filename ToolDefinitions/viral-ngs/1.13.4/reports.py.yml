@@ -26,7 +26,7 @@ subcommands:
     name: consolidate_fastqc
     optional: false
   named: []
-  parent: &id003 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -51,7 +51,383 @@ subcommands:
         name: consolidate_fastqc
         optional: false
       named: []
-      parent: *id003
+      parent: &id003 !Command
+        command: *id001
+        positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: reports.py
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: subcommand
+            optional: false
+          - !Positional
+            description: ''
+            position: 2
+            name: consolidate_fastqc
+            optional: false
+          named: []
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - -h
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: reports.py subcommand consolidate_fastqc [-h]\n     \
+            \                                           inDirs [inDirs ...] outFile\n\
+            reports.py subcommand consolidate_fastqc: error: the following arguments\
+            \ are required: inDirs, outFile\n"
+          generated_using: &id005
+          - --usage
+        - !Command
+          command: &id006
+          - reports.py
+          - assembly_stats
+          positional:
+          - !Positional
+            description: Sample names.
+            position: 0
+            name: samples
+            optional: false
+          - !Positional
+            description: Output report file.
+            position: 1
+            name: outFile
+            optional: false
+          named:
+          - !Flag
+            description: "Genome coverage thresholds to report on. (default: (1,\n\
+              5, 20, 100))"
+            synonyms:
+            - --cov_thresholds
+            args: !RepeatFlagArg
+              name: COV_THRESHOLDS
+            optional: true
+          - !Flag
+            description: "Directory with assembly outputs. (default:\ndata/02_assembly)"
+            synonyms:
+            - --assembly_dir
+            args: !SimpleFlagArg
+              name: ASSEMBLY_DIR
+            optional: true
+          - !Flag
+            description: "Directory with assembly temp files. (default:\ntmp/02_assembly)"
+            synonyms:
+            - --assembly_tmp
+            args: !SimpleFlagArg
+              name: ASSEMBLY_TMP
+            optional: true
+          - !Flag
+            description: "Directory with reads aligned to own assembly.\n(default:\
+              \ data/02_align_to_self)"
+            synonyms:
+            - --align_dir
+            args: !SimpleFlagArg
+              name: ALIGN_DIR
+            optional: true
+          - !Flag
+            description: "Directory with unaligned filtered read BAMs. (default:\n\
+              data/01_per_sample)"
+            synonyms:
+            - --reads_dir
+            args: !SimpleFlagArg
+              name: READS_DIR
+            optional: true
+          - !Flag
+            description: "Directory with unaligned raw read BAMs. (default:\ndata/00_raw)\n"
+            synonyms:
+            - --raw_reads_dir
+            args: !SimpleFlagArg
+              name: RAW_READS_DIR
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+          help_text: "usage: reports.py subcommand assembly_stats [-h]\n         \
+            \                                   [--cov_thresholds COV_THRESHOLDS [COV_THRESHOLDS\
+            \ ...]]\n                                            [--assembly_dir ASSEMBLY_DIR]\n\
+            \                                            [--assembly_tmp ASSEMBLY_TMP]\n\
+            \                                            [--align_dir ALIGN_DIR]\n\
+            \                                            [--reads_dir READS_DIR]\n\
+            \                                            [--raw_reads_dir RAW_READS_DIR]\n\
+            \                                            samples [samples ...] outFile\n\
+            \nFetch assembly-level statistics for a given sample\n\npositional arguments:\n\
+            \  samples               Sample names.\n  outFile               Output\
+            \ report file.\n\noptional arguments:\n  -h, --help            show this\
+            \ help message and exit\n  --cov_thresholds COV_THRESHOLDS [COV_THRESHOLDS\
+            \ ...]\n                        Genome coverage thresholds to report on.\
+            \ (default: (1,\n                        5, 20, 100))\n  --assembly_dir\
+            \ ASSEMBLY_DIR\n                        Directory with assembly outputs.\
+            \ (default:\n                        data/02_assembly)\n  --assembly_tmp\
+            \ ASSEMBLY_TMP\n                        Directory with assembly temp files.\
+            \ (default:\n                        tmp/02_assembly)\n  --align_dir ALIGN_DIR\n\
+            \                        Directory with reads aligned to own assembly.\n\
+            \                        (default: data/02_align_to_self)\n  --reads_dir\
+            \ READS_DIR\n                        Directory with unaligned filtered\
+            \ read BAMs. (default:\n                        data/01_per_sample)\n\
+            \  --raw_reads_dir RAW_READS_DIR\n                        Directory with\
+            \ unaligned raw read BAMs. (default:\n                        data/00_raw)\n"
+          generated_using: &id004
+          - --help
+        - !Command
+          command: &id007
+          - reports.py
+          - plot_coverage
+          positional:
+          - !Positional
+            description: Input reads, BAM format.
+            position: 0
+            name: in_bam
+            optional: false
+          - !Positional
+            description: The generated chart file
+            position: 1
+            name: out_plot_file
+            optional: false
+          named:
+          - !Flag
+            description: "File format of the coverage plot. By default it is\ninferred\
+              \ from the file extension of out_plot_file, but\nit can be set explicitly\
+              \ via --plotFormat. Valid\nformats include: ps, jpg, rgba, jpeg, eps,\
+              \ png, raw,\ntif, tiff, svg, pdf, svgz, pgf"
+            synonyms:
+            - --plotFormat
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "The plot data display style. Valid options: filled,\nline,\
+              \ dots (default: filled)"
+            synonyms:
+            - --plotDataStyle
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: "The plot visual style. Valid options: fivethirtyeight,\n\
+              seaborn-talk, seaborn-ticks, seaborn-deep,\ndark_background, seaborn-dark,\
+              \ seaborn-colorblind,\nseaborn-whitegrid, seaborn-dark-palette, grayscale,\n\
+              seaborn-paper, seaborn-bright, classic, seaborn-muted,\nseaborn-darkgrid,\
+              \ seaborn-notebook, seaborn-pastel,\nseaborn-white, bmh, ggplot, seaborn-poster\
+              \ (default:\nggplot)"
+            synonyms:
+            - --plotStyle
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: 'Width of the plot in pixels (default: 1024)'
+            synonyms:
+            - --plotWidth
+            args: !SimpleFlagArg
+              name: PLOT_WIDTH
+            optional: true
+          - !Flag
+            description: 'Width of the plot in pixels (default: 768)'
+            synonyms:
+            - --plotHeight
+            args: !SimpleFlagArg
+              name: PLOT_HEIGHT
+            optional: true
+          - !Flag
+            description: "dots per inch for rendered output, more useful for\nvector\
+              \ modes (default: 80.0)"
+            synonyms:
+            - --plotDPI
+            args: !SimpleFlagArg
+              name: PLOT_DPI
+            optional: true
+          - !Flag
+            description: "The title displayed on the coverage plot (default:\n'Coverage\
+              \ Plot')"
+            synonyms:
+            - --plotTitle
+            args: !SimpleFlagArg
+              name: PLOT_TITLE
+            optional: true
+          - !Flag
+            description: The minimum base quality threshold
+            synonyms:
+            - -q
+            args: !SimpleFlagArg
+              name: BASE_Q_THRESHOLD
+            optional: true
+          - !Flag
+            description: The minimum mapping quality threshold
+            synonyms:
+            - -Q
+            args: !SimpleFlagArg
+              name: MAPPING_Q_THRESHOLD
+            optional: true
+          - !Flag
+            description: 'The max coverage depth (default: 1000000)'
+            synonyms:
+            - -m
+            args: !SimpleFlagArg
+              name: MAX_COVERAGE_DEPTH
+            optional: true
+          - !Flag
+            description: Read length threshold
+            synonyms:
+            - -l
+            args: !SimpleFlagArg
+              name: READ_LENGTH_THRESHOLD
+            optional: true
+          - !Flag
+            description: "Coverage summary TSV file. Default is to write to\ntemp."
+            synonyms:
+            - --outSummary
+            args: !SimpleFlagArg
+              name: OUT_SUMMARY
+            optional: true
+          - !Flag
+            description: Plot only non-duplicates (samtools -F 1024)
+            synonyms:
+            - --plotOnlyNonDuplicates
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: 'Verboseness of output. [default: DEBUG]'
+            synonyms:
+            - --loglevel
+            args: !ChoiceFlagArg
+              choices: !!set
+                ? ERROR
+                ? EXCEPTION
+                ? INFO
+                ? DEBUG
+                ? WARNING
+                ? CRITICAL
+            optional: true
+          - !Flag
+            description: 'Base directory for temp files. [default: /tmp]'
+            synonyms:
+            - --tmp_dir
+            args: !SimpleFlagArg
+              name: TMP_DIR
+            optional: true
+          - !Flag
+            description: "Keep the tmp_dir if an exception occurs while running.\n\
+              Default is to delete all temp files at the end, even\nif there's a failure.\n"
+            synonyms:
+            - --tmp_dirKeep
+            args: !EmptyFlagArg {}
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag: !Flag
+            description: show this help message and exit
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag: !Flag
+            description: show program's version number and exit
+            synonyms:
+            - --version
+            - -V
+            args: !EmptyFlagArg {}
+            optional: true
+          help_text: "usage: reports.py subcommand plot_coverage [-h] [--plotFormat]\n\
+            \                                           [--plotDataStyle] [--plotStyle]\n\
+            \                                           [--plotWidth PLOT_WIDTH]\n\
+            \                                           [--plotHeight PLOT_HEIGHT]\n\
+            \                                           [--plotDPI PLOT_DPI]\n   \
+            \                                        [--plotTitle PLOT_TITLE]\n  \
+            \                                         [-q BASE_Q_THRESHOLD]\n    \
+            \                                       [-Q MAPPING_Q_THRESHOLD]\n   \
+            \                                        [-m MAX_COVERAGE_DEPTH]\n   \
+            \                                        [-l READ_LENGTH_THRESHOLD]\n\
+            \                                           [--outSummary OUT_SUMMARY]\n\
+            \                                           [--plotOnlyNonDuplicates]\n\
+            \                                           [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+            \                                           [--version] [--tmp_dir TMP_DIR]\n\
+            \                                           [--tmp_dirKeep]\n        \
+            \                                   in_bam out_plot_file\n\nGenerate a\
+            \ coverage plot from an aligned bam file\n\npositional arguments:\n  in_bam\
+            \                Input reads, BAM format.\n  out_plot_file         The\
+            \ generated chart file\n\noptional arguments:\n  -h, --help          \
+            \  show this help message and exit\n  --plotFormat          File format\
+            \ of the coverage plot. By default it is\n                        inferred\
+            \ from the file extension of out_plot_file, but\n                    \
+            \    it can be set explicitly via --plotFormat. Valid\n              \
+            \          formats include: ps, jpg, rgba, jpeg, eps, png, raw,\n    \
+            \                    tif, tiff, svg, pdf, svgz, pgf\n  --plotDataStyle\
+            \       The plot data display style. Valid options: filled,\n        \
+            \                line, dots (default: filled)\n  --plotStyle         \
+            \  The plot visual style. Valid options: fivethirtyeight,\n          \
+            \              seaborn-talk, seaborn-ticks, seaborn-deep,\n          \
+            \              dark_background, seaborn-dark, seaborn-colorblind,\n  \
+            \                      seaborn-whitegrid, seaborn-dark-palette, grayscale,\n\
+            \                        seaborn-paper, seaborn-bright, classic, seaborn-muted,\n\
+            \                        seaborn-darkgrid, seaborn-notebook, seaborn-pastel,\n\
+            \                        seaborn-white, bmh, ggplot, seaborn-poster (default:\n\
+            \                        ggplot)\n  --plotWidth PLOT_WIDTH\n         \
+            \               Width of the plot in pixels (default: 1024)\n  --plotHeight\
+            \ PLOT_HEIGHT\n                        Width of the plot in pixels (default:\
+            \ 768)\n  --plotDPI PLOT_DPI    dots per inch for rendered output, more\
+            \ useful for\n                        vector modes (default: 80.0)\n \
+            \ --plotTitle PLOT_TITLE\n                        The title displayed\
+            \ on the coverage plot (default:\n                        'Coverage Plot')\n\
+            \  -q BASE_Q_THRESHOLD   The minimum base quality threshold\n  -Q MAPPING_Q_THRESHOLD\n\
+            \                        The minimum mapping quality threshold\n  -m MAX_COVERAGE_DEPTH\n\
+            \                        The max coverage depth (default: 1000000)\n \
+            \ -l READ_LENGTH_THRESHOLD\n                        Read length threshold\n\
+            \  --outSummary OUT_SUMMARY\n                        Coverage summary\
+            \ TSV file. Default is to write to\n                        temp.\n  --plotOnlyNonDuplicates\n\
+            \                        Plot only non-duplicates (samtools -F 1024)\n\
+            \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n        \
+            \                Verboseness of output. [default: DEBUG]\n  --version,\
+            \ -V         show program's version number and exit\n  --tmp_dir TMP_DIR\
+            \     Base directory for temp files. [default: /tmp]\n  --tmp_dirKeep\
+            \         Keep the tmp_dir if an exception occurs while running.\n   \
+            \                     Default is to delete all temp files at the end,\
+            \ even\n                        if there's a failure.\n"
+          generated_using: *id004
+        usage: []
+        help_flag:
+        usage_flag:
+        version_flag:
+        help_text: "\nEnter a subcommand to view additional information:\n\n     reports.py\
+          \ \e[1massembly_stats\e[0m [...]\n          Fetch assembly-level statistics\
+          \ for a given sample\n\n     reports.py \e[1malignment_summary\e[0m [...]\n\
+          \          Write or print pairwise alignment summary information for\n \
+          \         sequences in two FASTAfiles, including SNPs, ambiguous\n     \
+          \     bases, and indels.\n\n     reports.py \e[1mconsolidate_fastqc\e[0m\
+          \ [...]\n          Consolidate multiple FASTQC reports into one.\n\n   \
+          \  reports.py \e[1mconsolidate_spike_count\e[0m [...]\n          Consolidate\
+          \ multiple spike count reports into one.\n\n     reports.py \e[1mplot_coverage\e\
+          [0m [...]\n          Generate a coverage plot from an aligned bam file\n\
+          \n     reports.py \e[1malign_and_plot_coverage\e[0m [...]\n          Take\
+          \ reads, align to reference with BWA-MEM, and generate a\n          coverage\
+          \ plot\n\nusage: reports.py subcommand\n\nFunctions to create reports from\
+          \ genomics pipeline data.\n\nsubcommands:\n  \e[F\n    assembly_stats\n\
+          \    alignment_summary\n    consolidate_fastqc\n    consolidate_spike_count\n\
+          \    plot_coverage\n    align_and_plot_coverage\n"
+        generated_using: *id004
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -66,12 +442,9 @@ subcommands:
         \                                       inDirs [inDirs ...] outFile\nreports.py\
         \ subcommand consolidate_fastqc: error: the following arguments are required:\
         \ inDirs, outFile\n"
-      generated_using: &id005
-      - --usage
+      generated_using: *id005
     - !Command
-      command: &id006
-      - reports.py
-      - assembly_stats
+      command: *id006
       positional:
       - !Positional
         description: Sample names.
@@ -163,12 +536,9 @@ subcommands:
         \                        data/01_per_sample)\n  --raw_reads_dir RAW_READS_DIR\n\
         \                        Directory with unaligned raw read BAMs. (default:\n\
         \                        data/00_raw)\n"
-      generated_using: &id004
-      - --help
+      generated_using: *id004
     - !Command
-      command: &id007
-      - reports.py
-      - plot_coverage
+      command: *id007
       positional:
       - !Positional
         description: Input reads, BAM format.
@@ -284,12 +654,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
+            ? DEBUG
             ? ERROR
             ? EXCEPTION
-            ? INFO
-            ? DEBUG
-            ? WARNING
             ? CRITICAL
+            ? INFO
+            ? WARNING
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -467,7 +837,7 @@ subcommands:
     args: !SimpleFlagArg
       name: RAW_READS_DIR
     optional: true
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -619,12 +989,12 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        DEBUG:
-        ERROR:
         EXCEPTION:
-        CRITICAL:
-        INFO:
         WARNING:
+        ERROR:
+        INFO:
+        CRITICAL:
+        DEBUG:
     optional: true
   - !Flag
     description: 'Base directory for temp files. [default: /tmp]'
@@ -640,7 +1010,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id003
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

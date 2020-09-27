@@ -1,0 +1,195 @@
+!Command
+command:
+- phyloFlash_heatmap.R
+positional: []
+named:
+- !Flag
+  description: Be more talkative
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be less talkative
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show debug messages
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sum NTUs with less counts in pseudo NTU "Other". Default 50.
+  synonyms:
+  - -n
+  - --min-ntu-count
+  args: !SimpleFlagArg
+    name: MIN-NTU-COUNT
+  optional: true
+- !Flag
+  description: Do not split heatmap
+  synonyms:
+  - --no-split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Split heatmap using this regex on taxa. Multiple regex can be\nspecified\
+    \ comma separated. Default 'Eukaryota'"
+  synonyms:
+  - -t
+  - --split-regex
+  args: !SimpleFlagArg
+    name: SPLIT-REGEX
+  optional: true
+- !Flag
+  description: Do not shorten taxa names to last two groups
+  synonyms:
+  - -l
+  - --long-taxnames
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not scale columns to percentages
+  synonyms:
+  - -a
+  - --absolute
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use this method for clustering/sorting samples. Can be:\nalpha, ward.D,\
+    \ single, complete, average, mcquitty, median, centroid, or custom.\nDefault is\
+    \ ward.D."
+  synonyms:
+  - -m
+  - --cluster-samples
+  args: !SimpleFlagArg
+    name: CLUSTER-SAMPLES
+  optional: true
+- !Flag
+  description: "Use this method for clustering/sorting taxa. Can be:\nalpha, ward.D,\
+    \ single, complete, average, mcquitty, median or centroid.\nDefault is ward.D"
+  synonyms:
+  - -M
+  - --cluster-taxa
+  args: !SimpleFlagArg
+    name: CLUSTER-TAXA
+  optional: true
+- !Flag
+  description: "Component rows, in order, to render (separated by commas).\nValid\
+    \ terms are: tree, map, chao and labels.\nDefault is tree,map,chao,labels."
+  synonyms:
+  - -r
+  - --rows
+  args: !SimpleFlagArg
+    name: ROWS
+  optional: true
+- !Flag
+  description: "Component columns, in order, to render (separated by commas).\nValid\
+    \ terms are: labels, map and tree.\nDefault is labels,map,tree."
+  synonyms:
+  - -c
+  - --cols
+  args: !SimpleFlagArg
+    name: COLS
+  optional: true
+- !Flag
+  description: Colors for heatmaps. Default is steelblue,indianred,green,orange.
+  synonyms:
+  - --colors
+  args: !SimpleFlagArg
+    name: COLORS
+  optional: true
+- !Flag
+  description: Name of output file. Must end in .png or .pdf. Default is out.png.
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: "Type of anti-aliasing to use for PNG output. Can be one of default,\n\
+    none, gray, or subpixel. Default is gray."
+  synonyms:
+  - --aa
+  args: !SimpleFlagArg
+    name: AA
+  optional: true
+- !Flag
+  description: "Size of output graphic in pixels (e.g. 100x100). Assumes 72 DPI for\n\
+    PDF. Using \"auto\" for a dimension will attempt to guess at suitable\nsize. Default\
+    \ autoXauto"
+  synonyms:
+  - -s
+  - --out-size
+  args: !SimpleFlagArg
+    name: OUT-SIZE
+  optional: true
+- !Flag
+  description: Use thee filename to derive library name instead of parsing ...report.csv
+  synonyms:
+  - --library-name-from-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Import custom distance matrix for samples instead of calculating\n\
+    from abundance matrix"
+  synonyms:
+  - --custom-distance-matrix-sample
+  args: !SimpleFlagArg
+    name: CUSTOM-DISTANCE-MATRIX-SAMPLE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Show this help message and exit\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: /usr/local/bin/phyloFlash_heatmap.R [options] [files]\n\nGenerates\
+  \ a heatmap plot from multiple phyloFlash result sets. For more control,\nsource\
+  \ this file from R.\n\nFiles:\n        A list of files and/or directories that will\
+  \ be searched\n        for phyloFlash results.\n\nOptions:\n\t-v, --verbose\n\t\t\
+  Be more talkative\n\n\t-q, --quiet\n\t\tBe less talkative\n\n\t-d, --debug\n\t\t\
+  Show debug messages\n\n\t-n MIN-NTU-COUNT, --min-ntu-count=MIN-NTU-COUNT\n\t\tSum\
+  \ NTUs with less counts in pseudo NTU \"Other\". Default 50.\n\n\t--no-split\n\t\
+  \tDo not split heatmap\n\n\t-t SPLIT-REGEX, --split-regex=SPLIT-REGEX\n\t\tSplit\
+  \ heatmap using this regex on taxa. Multiple regex can be\n                specified\
+  \ comma separated. Default 'Eukaryota'\n\n\t-l, --long-taxnames\n\t\tDo not shorten\
+  \ taxa names to last two groups\n\n\t-a, --absolute\n\t\tDo not scale columns to\
+  \ percentages\n\n\t-m CLUSTER-SAMPLES, --cluster-samples=CLUSTER-SAMPLES\n\t\tUse\
+  \ this method for clustering/sorting samples. Can be:\n                alpha, ward.D,\
+  \ single, complete, average, mcquitty, median, centroid, or custom.\n          \
+  \      Default is ward.D.\n\n\t-M CLUSTER-TAXA, --cluster-taxa=CLUSTER-TAXA\n\t\t\
+  Use this method for clustering/sorting taxa. Can be:\n               alpha, ward.D,\
+  \ single, complete, average, mcquitty, median or centroid.\n               Default\
+  \ is ward.D\n\n\t-r ROWS, --rows=ROWS\n\t\tComponent rows, in order, to render (separated\
+  \ by commas).\n                Valid terms are: tree, map, chao and labels.\n  \
+  \              Default is tree,map,chao,labels.\n\n\t-c COLS, --cols=COLS\n\t\t\
+  Component columns, in order, to render (separated by commas).\n                Valid\
+  \ terms are: labels, map and tree.\n                Default is labels,map,tree.\n\
+  \n\t--colors=COLORS\n\t\tColors for heatmaps. Default is steelblue,indianred,green,orange.\n\
+  \n\t-o OUT, --out=OUT\n\t\tName of output file. Must end in .png or .pdf. Default\
+  \ is out.png.\n\n\t--aa=AA\n\t\tType of anti-aliasing to use for PNG output. Can\
+  \ be one of default,\n                none, gray, or subpixel. Default is gray.\n\
+  \n\t-s OUT-SIZE, --out-size=OUT-SIZE\n\t\tSize of output graphic in pixels (e.g.\
+  \ 100x100). Assumes 72 DPI for\n                PDF. Using \"auto\" for a dimension\
+  \ will attempt to guess at suitable\n                size. Default autoXauto\n\n\
+  \t--library-name-from-file\n\t\tUse thee filename to derive library name instead\
+  \ of parsing ...report.csv\n\n\t--custom-distance-matrix-sample=CUSTOM-DISTANCE-MATRIX-SAMPLE\n\
+  \t\tImport custom distance matrix for samples instead of calculating\n         \
+  \       from abundance matrix\n\n\t-h, --help\n\t\tShow this help message and exit\n\
+  \n\n"
+generated_using:
+- --help

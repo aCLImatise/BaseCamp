@@ -1,0 +1,182 @@
+!Command
+command:
+- spectrast2tsv.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: spectrast_file
+  optional: false
+named:
+- !Flag
+  description: Remove duplicate masses from labeling
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use theoretical mass
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fasta_file    Fasta file to relate peptides to their proteins (this
+    is optional).
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'mass_modifs   List of allowed fragment mass modifications. Useful
+    for phosphorylation and neutral losses. Example: -g -79.97,-97.98,-17.03,-18.01'
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: labeling_file File containing the amino acid isotopic labeling mass
+    shifts. If this option is used, heavy transitions will be generated.
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'output_key    Select the output provided. Keys available: openswath,
+    peakview. Default: peakview'
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'mass_limits   Lower and upper mass limits of fragment ions. Example:
+    -l 400,2000'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mods_file     File with the modifications delta mass
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'int           Max number of reported ions per peptide/z. Default:
+    20'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'int           Min number of reported ions per peptide/z. Default:
+    3'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'float         Maximum error allowed at the annotation of a fragment
+    ion. Default: 0.05'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'int            Number of processors to use (only for isoforms!). Default:
+    1'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'ion_series    List of ion series to be used. Example: -s y,b'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'time-scale    Options: minutes, seconds. Default: seconds.'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'unimod-code    Use this unimod code as a switching modification. Useful
+    for phosphorylations. Example: -u 21'
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose mode.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: swaths_file   File containing the swath ranges. This is used to remove
+    transitions with Q3 falling in the swath mass range. (line breaks in windows/unix
+    format)
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'allowed_frg_z Fragment ion charge states allowed. Default: 1,2'
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'UIS-order     When using a switching modification, this determines
+    the UIS order to be calculated. If -1 is set, all transitions for each isoform
+    will be reported. Default : 2'
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'outfile       Output file name (default: appends _peakview.txt)'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nspectrast2tsv.py\n---------------\nThis script is used as filter from\
+  \ spectraST files to swath input files.\n\nUsage: \npython spectrast2tsv.py [options]\
+  \ spectrast_file(s)\n-h                  Display this help\n-d                 \
+  \ Remove duplicate masses from labeling\n-e                  Use theoretical mass\n\
+  -f    fasta_file    Fasta file to relate peptides to their proteins (this is optional).\n\
+  -g    mass_modifs   List of allowed fragment mass modifications. Useful for phosphorylation\
+  \ and neutral losses. Example: -g -79.97,-97.98,-17.03,-18.01\n-i    labeling_file\
+  \ File containing the amino acid isotopic labeling mass shifts. If this option is\
+  \ used, heavy transitions will be generated.\n-k    output_key    Select the output\
+  \ provided. Keys available: openswath, peakview. Default: peakview\n-l    mass_limits\
+  \   Lower and upper mass limits of fragment ions. Example: -l 400,2000\n-m    mods_file\
+  \     File with the modifications delta mass\n-n    int           Max number of\
+  \ reported ions per peptide/z. Default: 20\n-o    int           Min number of reported\
+  \ ions per peptide/z. Default: 3\n-p    float         Maximum error allowed at the\
+  \ annotation of a fragment ion. Default: 0.05\n-q    int            Number of processors\
+  \ to use (only for isoforms!). Default: 1\n-s    ion_series    List of ion series\
+  \ to be used. Example: -s y,b\n-t    time-scale    Options: minutes, seconds. Default:\
+  \ seconds.\n-u     unimod-code    Use this unimod code as a switching modification.\
+  \ Useful for phosphorylations. Example: -u 21\n-v                  Verbose mode.\n\
+  -w    swaths_file   File containing the swath ranges. This is used to remove transitions\
+  \ with Q3 falling in the swath mass range. (line breaks in windows/unix format)\n\
+  -x    allowed_frg_z Fragment ion charge states allowed. Default: 1,2\n-y    UIS-order\
+  \     When using a switching modification, this determines the UIS order to be calculated.\
+  \ If -1 is set, all transitions for each isoform will be reported. Default : 2\n\
+  -a    outfile       Output file name (default: appends _peakview.txt)\n\n"
+generated_using:
+- --help

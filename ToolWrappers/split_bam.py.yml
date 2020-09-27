@@ -1,0 +1,69 @@
+!Command
+command:
+- split_bam.py
+positional: []
+named:
+- !Flag
+  description: "Alignment file in BAM or SAM format. BAM file should\nbe sorted and\
+    \ indexed."
+  synonyms:
+  - -i
+  - --input-file
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Gene list in bed foramt. All reads hits to exon\nregions (defined\
+    \ by this gene list) will be saved into\none BAM file, the remaining reads will\
+    \ saved into\nanother BAM file."
+  synonyms:
+  - -r
+  - --genelist
+  args: !SimpleFlagArg
+    name: GENE_LIST
+  optional: true
+- !Flag
+  description: "Prefix of output BAM files. \"prefix.in.bam\" file\ncontains reads\
+    \ mapped to the gene list specified by\n\"-r\", \"prefix.ex.bam\" contains reads\
+    \ that cannot\nmapped to gene list. \"prefix.junk.bam\" contains\nqcfailed or\
+    \ unmapped reads.\n"
+  synonyms:
+  - -o
+  - --out-prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: split_bam.py [options]\n-------------------------------------------------------------------------------------------------\n\
+  Split bam file according to input gene list (bed).\n-------------------------------------------------------------------------------------------------\n\
+  \n\nOptions:\n  --version             show program's version number and exit\n \
+  \ -h, --help            show this help message and exit\n  -i INPUT_FILE, --input-file=INPUT_FILE\n\
+  \                        Alignment file in BAM or SAM format. BAM file should\n\
+  \                        be sorted and indexed.\n  -r GENE_LIST, --genelist=GENE_LIST\n\
+  \                        Gene list in bed foramt. All reads hits to exon\n     \
+  \                   regions (defined by this gene list) will be saved into\n   \
+  \                     one BAM file, the remaining reads will saved into\n      \
+  \                  another BAM file.\n  -o OUTPUT_PREFIX, --out-prefix=OUTPUT_PREFIX\n\
+  \                        Prefix of output BAM files. \"prefix.in.bam\" file\n  \
+  \                      contains reads mapped to the gene list specified by\n   \
+  \                     \"-r\", \"prefix.ex.bam\" contains reads that cannot\n   \
+  \                     mapped to gene list. \"prefix.junk.bam\" contains\n      \
+  \                  qcfailed or unmapped reads.\n"
+generated_using:
+- --help

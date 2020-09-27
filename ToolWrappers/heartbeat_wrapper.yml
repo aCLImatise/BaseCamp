@@ -1,0 +1,69 @@
+!Command
+command:
+- heartbeat-wrapper
+positional:
+- !Positional
+  description: "System call (to be joined by \" \"). We will block on\nthis and return\
+    \ its result."
+  position: 0
+  name: command
+  optional: false
+named:
+- !Flag
+  description: '[--directory DIRECTORY]'
+  synonyms:
+  - --exit-file
+  args: !SimpleFlagArg
+    name: EXIT_FILE
+  optional: true
+- !Flag
+  description: 'Heartbeat rate, in seconds (default: 1.0)'
+  synonyms:
+  - --rate
+  args: !SimpleFlagArg
+    name: RATE
+  optional: true
+- !Flag
+  description: "Path to heartbeat file. The first line will have the\nformat '0 {pid}\
+    \ {pgid}\\n'. The rest are just elapsed\ntime (default: None)"
+  synonyms:
+  - --heartbeat-file
+  args: !SimpleFlagArg
+    name: HEARTBEAT_FILE
+  optional: true
+- !Flag
+  description: 'Directory in which to run COMMAND. (default: .)'
+  synonyms:
+  - --directory
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: heartbeat-wrapper [-h] [--rate RATE] --heartbeat-file HEARTBEAT_FILE\n\
+  \                         --exit-file EXIT_FILE [--directory DIRECTORY]\n      \
+  \                   command [command ...]\n\nWe wrap a system call to produce both\
+  \ a heartbeat and an exit-sentinel\nin the filesystem.\n\npositional arguments:\n\
+  \  command               System call (to be joined by \" \"). We will block on\n\
+  \                        this and return its result.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --rate RATE           Heartbeat\
+  \ rate, in seconds (default: 1.0)\n  --heartbeat-file HEARTBEAT_FILE\n         \
+  \               Path to heartbeat file. The first line will have the\n         \
+  \               format '0 {pid} {pgid}\\n'. The rest are just elapsed\n        \
+  \                time (default: None)\n  --exit-file EXIT_FILE\n               \
+  \         Path to exit sentinel file. At end, it will have the\n               \
+  \         format '{exit_code}' (default: None)\n  --directory DIRECTORY\n      \
+  \                  Directory in which to run COMMAND. (default: .)\n\nWe share stderr/stdout\
+  \ with the command. We log to stderr (for now).\n"
+generated_using:
+- --help

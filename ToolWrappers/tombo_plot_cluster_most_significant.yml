@@ -1,0 +1,162 @@
+!Command
+command:
+- tombo
+- plot
+- cluster_most_significant
+positional: []
+named:
+- !Flag
+  description: "CONTROL_FAST5_BASEDIRS\n[CONTROL_FAST5_BASEDIRS ...]\n--statistics-filename\n\
+    STATISTICS_FILENAME\n[--genome-fasta GENOME_FASTA]\n[--processes PROCESSES]\n\
+    [--num-regions NUM_REGIONS]\n[--num-bases NUM_BASES]\n[--slide-span SLIDE_SPAN]\n\
+    [--pdf-filename PDF_FILENAME]\n[--r-data-filename R_DATA_FILENAME]\n[--corrected-group\
+    \ CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS\
+    \ ...]]\n[--quiet] [--help]"
+  synonyms:
+  - --control-fast5-basedirs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directories containing fast5 files.
+  synonyms:
+  - --fast5-basedirs
+  args: !RepeatFlagArg
+    name: FAST5_BASEDIRS
+  optional: true
+- !Flag
+  description: File to save/load genomic base anchored statistics.
+  synonyms:
+  - --statistics-filename
+  args: !SimpleFlagArg
+    name: STATISTICS_FILENAME
+  optional: true
+- !Flag
+  description: "FASTA file used to re-squiggle. For faster sequence\naccess."
+  synonyms:
+  - --genome-fasta
+  args: !SimpleFlagArg
+    name: GENOME_FASTA
+  optional: true
+- !Flag
+  description: 'Number of processes. Default: 1'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'Number of regions to plot. Default: 10'
+  synonyms:
+  - --num-regions
+  args: !SimpleFlagArg
+    name: NUM_REGIONS
+  optional: true
+- !Flag
+  description: 'Number of bases to plot/output. Default: 21'
+  synonyms:
+  - --num-bases
+  args: !SimpleFlagArg
+    name: NUM_BASES
+  optional: true
+- !Flag
+  description: "Number of bases offset over which to search when\ncomputing distances\
+    \ for signal cluster plotting.\nDefault: 0 (exact position)"
+  synonyms:
+  - --slide-span
+  args: !SimpleFlagArg
+    name: SLIDE_SPAN
+  optional: true
+- !Flag
+  description: "PDF filename to store plot(s). Default:\ntombo_results.signal_clusters.pdf"
+  synonyms:
+  - --pdf-filename
+  args: !SimpleFlagArg
+    name: PDF_FILENAME
+  optional: true
+- !Flag
+  description: "Filename to save R data structure. Default: Don't save"
+  synonyms:
+  - --r-data-filename
+  args: !SimpleFlagArg
+    name: R_DATA_FILENAME
+  optional: true
+- !Flag
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing\
+    \ basecalls and created within\n[--corrected-group] containing re-squiggle results.\n\
+    Default: ['BaseCalled_template']"
+  synonyms:
+  - --basecall-subgroups
+  args: !RepeatFlagArg
+    name: BASECALL_SUBGROUPS
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tombo plot cluster_most_significant --fast5-basedirs FAST5_BASEDIRS\n\
+  \                                           [FAST5_BASEDIRS ...]\n             \
+  \                              --control-fast5-basedirs\n                      \
+  \                     CONTROL_FAST5_BASEDIRS\n                                 \
+  \          [CONTROL_FAST5_BASEDIRS ...]\n                                      \
+  \     --statistics-filename\n                                           STATISTICS_FILENAME\n\
+  \                                           [--genome-fasta GENOME_FASTA]\n    \
+  \                                       [--processes PROCESSES]\n              \
+  \                             [--num-regions NUM_REGIONS]\n                    \
+  \                       [--num-bases NUM_BASES]\n                              \
+  \             [--slide-span SLIDE_SPAN]\n                                      \
+  \     [--pdf-filename PDF_FILENAME]\n                                          \
+  \ [--r-data-filename R_DATA_FILENAME]\n                                        \
+  \   [--corrected-group CORRECTED_GROUP]\n                                      \
+  \     [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n     \
+  \                                      [--quiet] [--help]\n\nRequired Arguments:\n\
+  \  --fast5-basedirs FAST5_BASEDIRS [FAST5_BASEDIRS ...]\n                      \
+  \  Directories containing fast5 files.\n  --control-fast5-basedirs CONTROL_FAST5_BASEDIRS\
+  \ [CONTROL_FAST5_BASEDIRS ...]\n                        Set of directories containing\
+  \ fast5 files for control\n                        reads, containing only canonical\
+  \ nucleotides.\n  --statistics-filename STATISTICS_FILENAME\n                  \
+  \      File to save/load genomic base anchored statistics.\n\nFASTA Sequence Argument:\n\
+  \  --genome-fasta GENOME_FASTA\n                        FASTA file used to re-squiggle.\
+  \ For faster sequence\n                        access.\n\nMultiprocessing Argument:\n\
+  \  --processes PROCESSES\n                        Number of processes. Default:\
+  \ 1\n\nPlotting Region Arguments:\n  --num-regions NUM_REGIONS\n               \
+  \         Number of regions to plot. Default: 10\n  --num-bases NUM_BASES\n    \
+  \                    Number of bases to plot/output. Default: 21\n  --slide-span\
+  \ SLIDE_SPAN\n                        Number of bases offset over which to search\
+  \ when\n                        computing distances for signal cluster plotting.\n\
+  \                        Default: 0 (exact position)\n\nOutput Arguments:\n  --pdf-filename\
+  \ PDF_FILENAME\n                        PDF filename to store plot(s). Default:\n\
+  \                        tombo_results.signal_clusters.pdf\n  --r-data-filename\
+  \ R_DATA_FILENAME\n                        Filename to save R data structure. Default:\
+  \ Don't save\n\nFAST5 Data Arguments:\n  --corrected-group CORRECTED_GROUP\n   \
+  \                     FAST5 group created by resquiggle command. Default:\n    \
+  \                    RawGenomeCorrected_000\n  --basecall-subgroups BASECALL_SUBGROUPS\
+  \ [BASECALL_SUBGROUPS ...]\n                        FAST5 subgroup(s) (under /Analyses/[--basecall-\n\
+  \                        group]/) containing basecalls and created within\n    \
+  \                    [--corrected-group] containing re-squiggle results.\n     \
+  \                   Default: ['BaseCalled_template']\n\nMiscellaneous Arguments:\n\
+  \  --quiet, -q           Don't print status information.\n  --help, -h         \
+  \   Print this help message and exit\n"
+generated_using:
+- --help
