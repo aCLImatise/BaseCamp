@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SOAPdenovo_Trans_31mer_map.cwl
+id: SOAPdenovo_Trans_31mer_map.cwl
 inputs:
 - id: in_string_configfile_file
   doc: '<string>        configFile: the config file of reads'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_seqretsplit.cwl
+id: _seqretsplit.cwl
 inputs:
 - id: in_feature
   doc: boolean    Use feature information

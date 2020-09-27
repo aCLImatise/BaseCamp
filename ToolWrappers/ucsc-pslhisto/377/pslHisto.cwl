@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslHisto.cwl
+id: pslHisto.cwl
 inputs:
 - id: in_multi_only
   doc: '- omit queries with only one alignment from output.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_shlib_cop.cwl
+id: mono_shlib_cop.cwl
 inputs: []
 outputs:
 - id: out_stdout

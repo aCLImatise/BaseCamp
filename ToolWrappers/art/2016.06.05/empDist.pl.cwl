@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../empDist.pl.cwl
+id: empDist.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RAPPAS.jar.cwl
+id: RAPPAS.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

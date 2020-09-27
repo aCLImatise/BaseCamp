@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../laser_recalibrate.cwl
+id: laser_recalibrate.cwl
 inputs:
 - id: in_arg_file_name
   doc: '[ --insertion_length_dist ] arg    File name of empiric insertion size'

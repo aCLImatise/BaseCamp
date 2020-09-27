@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamsieve.cwl
+id: bamsieve.cwl
 inputs:
 - id: in_log_file
   doc: "Write the log to file. Default(None) will write to\nstdout. (default: None)"

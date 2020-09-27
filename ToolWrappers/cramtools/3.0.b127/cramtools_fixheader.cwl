@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cramtools_fixheader.cwl
+id: cramtools_fixheader.cwl
 inputs:
 - id: in_confirm_md_five
   doc: 'Calculate MD5 for sequences mentioned in the header. Requires --reference-fasta-file

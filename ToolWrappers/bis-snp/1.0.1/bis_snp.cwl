@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bis_snp.cwl
+id: bis_snp.cwl
 inputs:
 - id: in_analysis_type
   doc: Type of analysis to run

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../textget.cwl
+id: textget.cwl
 inputs:
 - id: in_text
   doc: ': enter text value: Error: Unable to get reply from user - end of standard

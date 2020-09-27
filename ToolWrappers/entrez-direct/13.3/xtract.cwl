@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xtract.cwl
+id: xtract.cwl
 inputs: []
 outputs:
 - id: out_stdout

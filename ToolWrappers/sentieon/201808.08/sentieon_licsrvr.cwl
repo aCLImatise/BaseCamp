@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sentieon_licsrvr.cwl
+id: sentieon_licsrvr.cwl
 inputs: []
 outputs:
 - id: out_stdout

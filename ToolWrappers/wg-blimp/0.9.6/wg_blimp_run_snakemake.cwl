@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wg_blimp_run_snakemake.cwl
+id: wg_blimp_run_snakemake.cwl
 inputs:
 - id: in_dry_run
   doc: Only dry-run the pipeline.

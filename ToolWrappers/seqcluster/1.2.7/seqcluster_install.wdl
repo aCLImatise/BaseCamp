@@ -2,26 +2,20 @@ version 1.0
 
 task SeqclusterInstall {
   input {
-    String? tools
-    File? data
     Boolean? upgrade
-    String? genomes
-    String? aligners
+    String? data
+    String? tools
   }
   command <<<
     seqcluster_install \
-      ~{if defined(tools) then ("--tools " +  '"' + tools + '"') else ""} \
-      ~{if defined(data) then ("--data " +  '"' + data + '"') else ""} \
       ~{if (upgrade) then "--upgrade" else ""} \
-      ~{if defined(genomes) then ("--genomes " +  '"' + genomes + '"') else ""} \
-      ~{if defined(aligners) then ("--aligners " +  '"' + aligners + '"') else ""}
+      ~{if defined(data) then ("--data " +  '"' + data + '"') else ""} \
+      ~{if defined(tools) then ("--tools " +  '"' + tools + '"') else ""}
   >>>
   parameter_meta {
-    tools: "install tools"
-    data: "path install data"
-    upgrade: "upgrade seqcluster"
-    genomes: ""
-    aligners: ""
+    upgrade: ""
+    data: ""
+    tools: ""
   }
   output {
     File out_stdout = stdout()

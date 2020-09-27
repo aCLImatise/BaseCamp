@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ac_diamond.cwl
+id: ac_diamond.cwl
 inputs:
 - id: in_arg_number_cpu
   doc: '[ --threads ] arg (=0) number of cpu threads'
@@ -141,11 +141,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --band
-- id: in_index_mode
-  doc: (=0)           index mode (1=10x1, 2=10x8)
-  type: long
-  inputBinding:
-    prefix: --index-mode
 - id: in_fetch_size
   doc: (=4096)        trace point fetch size
   type: long

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plink2vcf.cwl
+id: plink2vcf.cwl
 inputs: []
 outputs:
 - id: out_stdout

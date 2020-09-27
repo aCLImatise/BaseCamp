@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dupre.cwl
+id: dupre.cwl
 inputs:
 - id: in_observed
   doc: "observed occupancy vector (space-separated ints, or a\nfilename)"

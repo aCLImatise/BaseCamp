@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_merge.cwl
+id: fermi_merge.cwl
 inputs:
 - id: in_force_overwrite_file
   doc: force to overwrite the output file (effective with -o)

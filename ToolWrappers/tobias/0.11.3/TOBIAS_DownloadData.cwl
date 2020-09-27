@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_DownloadData.cwl
+id: TOBIAS_DownloadData.cwl
 inputs:
 - id: in_endpoint
   doc: 'Link to the s3 server (default: The loosolab s3 server)'

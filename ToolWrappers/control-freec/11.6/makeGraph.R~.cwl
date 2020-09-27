@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeGraph.R~.cwl
+id: makeGraph.R~.cwl
 inputs: []
 outputs:
 - id: out_stdout

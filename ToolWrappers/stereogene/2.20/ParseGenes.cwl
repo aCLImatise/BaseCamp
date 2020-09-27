@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseGenes.cwl
+id: ParseGenes.cwl
 inputs:
 - id: in_v
   doc: verbose

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../signalmaker.r.cwl
+id: signalmaker.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

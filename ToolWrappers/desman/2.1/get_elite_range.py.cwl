@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_elite_range.py.cwl
+id: get_elite_range.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_notebook_reconnect.cwl
+id: dx_notebook_reconnect.cwl
 inputs:
 - id: in_port
   doc: Local port to use for connecting.

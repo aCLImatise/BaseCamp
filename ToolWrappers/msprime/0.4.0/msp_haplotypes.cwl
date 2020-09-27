@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_haplotypes.cwl
+id: msp_haplotypes.cwl
 inputs:
 - id: in_history_file
   doc: The msprime history file in HDF5 format

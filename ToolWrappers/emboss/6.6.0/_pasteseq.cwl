@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_pasteseq.cwl
+id: _pasteseq.cwl
 inputs:
 - id: in_pos
   doc: "integer    [$(asequence.end)] The position in the main\ninput sequence to\

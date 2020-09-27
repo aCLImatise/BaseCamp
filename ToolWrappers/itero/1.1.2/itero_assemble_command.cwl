@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../itero_assemble_command.cwl
+id: itero_assemble_command.cwl
 inputs:
 - id: in_it_ero
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../image_maker.py.cwl
+id: image_maker.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

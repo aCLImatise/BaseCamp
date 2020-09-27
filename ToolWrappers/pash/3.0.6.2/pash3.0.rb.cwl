@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pash3.0.rb.cwl
+id: pash3.0.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eval_dualdecomp.pl.cwl
+id: eval_dualdecomp.pl.cwl
 inputs:
 - id: in_intput_augustus_file
   doc: intput AUGUSTUS file

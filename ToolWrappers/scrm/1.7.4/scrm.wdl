@@ -66,7 +66,7 @@ task Scrm {
       ~{if defined(in_it) then ("-init " +  '"' + in_it + '"') else ""} \
       ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
       ~{if defined(specify_number_significant) then ("-p " +  '"' + specify_number_significant + '"') else ""} \
-      ~{if (print_model) then "-print-model" else ""}
+      ~{if (print_model) then "--print-model" else ""}
   >>>
   parameter_meta {
     l_set_rate: "<L>       Set recombination rate to R and locus length to L."
@@ -99,7 +99,7 @@ task Scrm {
     in_it: "Read genealogies at the beginning of the sequence."
     seed: "[<SEED2> <SEED3>]   The random seed to use. Takes up to three\\ninteger numbers."
     specify_number_significant: "Specify the number of significant digits used in the output.\\nDefaults to 6."
-    print_model: ","
+    print_model: "Prints information about the demographic model."
   }
   output {
     File out_stdout = stdout()

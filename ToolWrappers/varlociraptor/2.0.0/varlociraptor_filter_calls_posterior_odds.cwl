@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_filter_calls_posterior_odds.cwl
+id: varlociraptor_filter_calls_posterior_odds.cwl
 inputs:
 - id: in_events
   doc: '...    Events to consider.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correlation_matrix.cwl
+id: correlation_matrix.cwl
 inputs:
 - id: in_config
   doc: Configuration file

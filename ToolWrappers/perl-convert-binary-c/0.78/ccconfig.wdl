@@ -2,77 +2,16 @@ version 1.0
 
 task Ccconfig {
   input {
-    Boolean? c
-    Boolean? cc
-    Boolean? o
-    File? output_file
-    Boolean? f
-    Boolean? output_format
-    Boolean? basename
-    Boolean? i
-    Boolean? inc_path
-    Boolean? preprocess
-    Boolean? compile_obj
-    Boolean? compile_exe
-    Boolean? c_ext
-    Boolean? pp_ext
-    Boolean? obj_ext
-    Boolean? exe_ext
-    Boolean? no_delete
-    Boolean? no_run
-    Boolean? quiet
-    Boolean? no_status
-    Boolean? debug
+    Boolean? _cc_compiler
   }
   command <<<
     ccconfig \
-      ~{if (c) then "-c" else ""} \
-      ~{if (cc) then "--cc" else ""} \
-      ~{if (o) then "-o" else ""} \
-      ~{if (output_file) then "--output-file" else ""} \
-      ~{if (f) then "-f" else ""} \
-      ~{if (output_format) then "--output-format" else ""} \
-      ~{if (basename) then "--basename" else ""} \
-      ~{if (i) then "-I" else ""} \
-      ~{if (inc_path) then "--inc-path" else ""} \
-      ~{if (preprocess) then "--preprocess" else ""} \
-      ~{if (compile_obj) then "--compile-obj" else ""} \
-      ~{if (compile_exe) then "--compile-exe" else ""} \
-      ~{if (c_ext) then "--c-ext" else ""} \
-      ~{if (pp_ext) then "--pp-ext" else ""} \
-      ~{if (obj_ext) then "--obj-ext" else ""} \
-      ~{if (exe_ext) then "--exe-ext" else ""} \
-      ~{if (no_delete) then "--nodelete" else ""} \
-      ~{if (no_run) then "--norun" else ""} \
-      ~{if (quiet) then "--quiet" else ""} \
-      ~{if (no_status) then "--nostatus" else ""} \
-      ~{if (debug) then "--debug" else ""}
+      ~{if (_cc_compiler) then "-c" else ""}
   >>>
   parameter_meta {
-    c: ""
-    cc: "compiler   compiler executable to test\\ndefault: auto-determined"
-    o: ""
-    output_file: "file       output filename\\ndefault: output to stdout"
-    f: ""
-    output_format: "format     output format\\ndefault: dumper"
-    basename: "name       basename of the temporary test files\\ndefault: _t_e_s_t"
-    i: ""
-    inc_path: "path       manually set compiler include path"
-    preprocess: "rule       compiler rule for preprocessing"
-    compile_obj: "rule       compiler rule for compiling objects"
-    compile_exe: "rule       compiler rule for compiling executables"
-    c_ext: "ext        extension of C source files"
-    pp_ext: "ext        extension of preprocessor output files"
-    obj_ext: "ext        extension of object files"
-    exe_ext: "ext        extension of executable files"
-    no_delete: "don't delete temporary files"
-    no_run: "don't try to run executables"
-    quiet: "don't display anything"
-    no_status: "don't display status indicator"
-    debug: "debug mode"
+    _cc_compiler: "--cc             compiler   compiler executable to test\\ndefault: auto-determined\\n-o\\n--output-file    file       output filename\\ndefault: output to stdout\\n-f\\n--output-format  format     output format\\ndefault: dumper\\n--basename       name       basename of the temporary test files\\ndefault: _t_e_s_t\\n-I\\n--inc-path       path       manually set compiler include path\\n--preprocess     rule       compiler rule for preprocessing\\n--compile-obj    rule       compiler rule for compiling objects\\n--compile-exe    rule       compiler rule for compiling executables\\n--c-ext          ext        extension of C source files\\n--pp-ext         ext        extension of preprocessor output files\\n--obj-ext        ext        extension of object files\\n--exe-ext        ext        extension of executable files\\n--nodelete                  don't delete temporary files\\n--norun                     don't try to run executables\\n--quiet                     don't display anything\\n--nostatus                  don't display status indicator\\n--version                   print version number\\n--debug                     debug mode"
   }
   output {
     File out_stdout = stdout()
-    File out_output_file = "${in_output_file}"
   }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halAppendSubtree.cwl
+id: halAppendSubtree.cwl
 inputs:
 - id: in_branch_length
   doc: ":      branch length between appended and appendee nodes\n[default = 0]"

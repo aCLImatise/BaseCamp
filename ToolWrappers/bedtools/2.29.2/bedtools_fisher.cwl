@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_fisher.cwl
+id: bedtools_fisher.cwl
 inputs:
 - id: in_merge_overlapping_intervals
   doc: "Merge overlapping intervals before\n- looking at overlap."

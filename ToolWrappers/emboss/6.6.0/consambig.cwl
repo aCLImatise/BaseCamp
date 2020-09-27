@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../consambig.cwl
+id: consambig.cwl
 inputs:
 - id: in_name
   doc: string     Name of the consensus sequence (Any string)

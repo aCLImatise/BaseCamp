@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BamClipOverlap.cwl
+id: BamClipOverlap.cwl
 inputs:
 - id: in_in
   doc: Input bam file. Needs to be sorted by name.

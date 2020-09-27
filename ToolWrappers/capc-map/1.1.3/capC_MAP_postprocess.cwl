@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../capC_MAP_postprocess.cwl
+id: capC_MAP_postprocess.cwl
 inputs:
 - id: in_configuration_file
   doc: configuration file

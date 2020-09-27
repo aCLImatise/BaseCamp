@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cert2spc.cwl
+id: cert2spc.cwl
 inputs:
 - id: in_certificate_vertical_line_crl
   doc: ''

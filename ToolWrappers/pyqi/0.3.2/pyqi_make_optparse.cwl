@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyqi_make_optparse.cwl
+id: pyqi_make_optparse.cwl
 inputs:
 - id: in_author
   doc: 'author/maintainer name [default: none]'

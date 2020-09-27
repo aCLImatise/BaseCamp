@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genericConvertIDs.pl.cwl
+id: genericConvertIDs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

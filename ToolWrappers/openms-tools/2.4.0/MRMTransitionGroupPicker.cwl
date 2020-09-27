@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MRMTransitionGroupPicker.cwl
+id: MRMTransitionGroupPicker.cwl
 inputs:
 - id: in_in
   doc: "*        Input file (valid formats: 'mzML')"

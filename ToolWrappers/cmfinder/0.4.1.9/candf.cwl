@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../candf.cwl
+id: candf.cwl
 inputs:
 - id: in_t
   doc: ''

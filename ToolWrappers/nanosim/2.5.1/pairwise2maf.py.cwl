@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairwise2maf.py.cwl
+id: pairwise2maf.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

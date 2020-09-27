@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_uncollapser.cwl
+id: fastx_uncollapser.cwl
 inputs:
 - id: in_o
   doc: ''

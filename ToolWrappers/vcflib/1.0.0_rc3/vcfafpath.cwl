@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfafpath.cwl
+id: vcfafpath.cwl
 inputs: []
 outputs:
 - id: out_stdout

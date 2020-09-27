@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nullarbor_report.pl.cwl
+id: nullarbor_report.pl.cwl
 inputs:
 - id: in_name
   doc: Report name to put in the top heading

@@ -1,59 +1,24 @@
 class: CommandLineTool
-id: ../../../sequence_extract.cwl
+id: sequence_extract.cwl
 inputs:
 - id: in_bases
-  doc: baselist extract bases as specified in the 'list' from each sequence
+  doc: "baselist extract bases as specified in the 'list' from each sequence\n-sequences\
+    \ seqlist  extract ordinal sequences as specified in the 'list'\n-reverse    \
+    \        reverse the bases in the sequence\n-complement         complement the\
+    \ bases in the sequence\n-rc                 alias for -reverse -complement\n\
+    -compress           compress homopolymer runs to one base\n-upcase\n-downcase\n\
+    -length min-max     print sequence if it is at least 'min' bases and at most 'max'\
+    \ bases long\na 'baselist' is a set of integers formed from any combination\n\
+    of the following, seperated by a comma:\nnum       a single number\nbgn-end  \
+    \ a range of numbers:  bgn <= end\nbases are spaced-based; -bases 0-2,4 will print\
+    \ the bases between\nthe first two spaces (the first two bases) and the base after\
+    \ the\nfourth space (the fifth base).\na 'seqlist' is a set of integers formed\
+    \ from any combination\nof the following, seperated by a comma:\nnum       a single\
+    \ number\nbgn-end   a range of numbers:  bgn <= end\nsequences are 1-based; -sequences\
+    \ 1,3-5 will print the first, third,\nfourth and fifth sequences."
   type: boolean
   inputBinding:
     prefix: -bases
-- id: in_sequences
-  doc: extract ordinal sequences as specified in the 'list'
-  type: string
-  inputBinding:
-    prefix: -sequences
-- id: in_reverse
-  doc: reverse the bases in the sequence
-  type: boolean
-  inputBinding:
-    prefix: -reverse
-- id: in_complement
-  doc: complement the bases in the sequence
-  type: boolean
-  inputBinding:
-    prefix: -complement
-- id: in_rc
-  doc: alias for -reverse -complement
-  type: boolean
-  inputBinding:
-    prefix: -rc
-- id: in_compress
-  doc: compress homopolymer runs to one base
-  type: boolean
-  inputBinding:
-    prefix: -compress
-- id: in_up_case
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -upcase
-- id: in_down_case
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -downcase
-- id: in_length
-  doc: "print sequence if it is at least 'min' bases and at most 'max' bases long\n\
-    a 'baselist' is a set of integers formed from any combination\nof the following,\
-    \ seperated by a comma:\nnum       a single number\nbgn-end   a range of numbers:\
-    \  bgn <= end\nbases are spaced-based; -bases 0-2,4 will print the bases between\n\
-    the first two spaces (the first two bases) and the base after the\nfourth space\
-    \ (the fifth base).\na 'seqlist' is a set of integers formed from any combination\n\
-    of the following, seperated by a comma:\nnum       a single number\nbgn-end  \
-    \ a range of numbers:  bgn <= end\nsequences are 1-based; -sequences 1,3-5 will\
-    \ print the first, third,\nfourth and fifth sequences."
-  type: long
-  inputBinding:
-    prefix: -length
 - id: in_sequence
   doc: ''
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RADpainter_hapsFromVCF.cwl
+id: RADpainter_hapsFromVCF.cwl
 inputs:
 - id: in__rp_r
   doc: ',   --het-treatment <r|p>             r: assign het bases randomly (default);

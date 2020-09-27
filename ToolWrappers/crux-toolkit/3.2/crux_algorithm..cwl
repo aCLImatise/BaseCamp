@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_algorithm..cwl
+id: crux_algorithm..cwl
 inputs:
 - id: in_bullseye
   doc: "Assign high resolution precursor m/z values to\nMS/MS data using the Hardklör\

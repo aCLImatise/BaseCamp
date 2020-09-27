@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novolrpolish_Long.cwl
+id: novolrpolish_Long.cwl
 inputs:
 - id: in_colheader_select_columns
   doc: ',COL2=HEADER     Select columns for display'

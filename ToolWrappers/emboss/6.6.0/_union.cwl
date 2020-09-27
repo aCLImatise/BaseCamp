@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_union.cwl
+id: _union.cwl
 inputs:
 - id: in_overlap_file
   doc: "outfile    [*.union] Sequence overlaps output file\n(optional)"

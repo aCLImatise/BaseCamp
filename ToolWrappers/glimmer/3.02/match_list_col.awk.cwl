@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../match_list_col.awk.cwl
+id: match_list_col.awk.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../translate_gard.cwl
+id: translate_gard.cwl
 inputs:
 - id: in_input_filename_cdnexgardcsv
   doc: input filename (like CD2.nex.GARD.csv)  [required]

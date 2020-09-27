@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqSimulate.cwl
+id: fastqSimulate.cwl
 inputs:
 - id: in_use_sequences_reffasta
   doc: Use sequences in ref.fasta as the genome.

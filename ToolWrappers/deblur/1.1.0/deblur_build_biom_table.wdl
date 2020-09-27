@@ -8,13 +8,11 @@ task DeblurBuildbiomtable {
     File? log_file
     String str
     String table
-    Int five_critical
   }
   command <<<
     deblur build_biom_table \
       ~{str} \
       ~{table} \
-      ~{five_critical} \
       ~{if defined(min_reads) then ("--min-reads " +  '"' + min_reads + '"') else ""} \
       ~{if defined(file_type) then ("--file_type " +  '"' + file_type + '"') else ""} \
       ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
@@ -27,7 +25,6 @@ task DeblurBuildbiomtable {
     log_file: "log file name  [default: deblur.log]"
     str: "the files type to add to the"
     table: "(default='.trim.derep.no_artifacts.msa.deblur.no_chimeras',   can"
-    five_critical: "[default: 2]"
   }
   output {
     File out_stdout = stdout()

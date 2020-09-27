@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxon_filter.py_interest..cwl
+id: taxon_filter.py_interest..cwl
 inputs:
 - id: in_tax_on_filter_do_tpy
   doc: ''

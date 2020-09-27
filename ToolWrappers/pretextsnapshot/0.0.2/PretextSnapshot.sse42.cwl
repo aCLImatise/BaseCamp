@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PretextSnapshot.sse42.cwl
+id: PretextSnapshot.sse42.cwl
 inputs:
 - id: in_m_slash_map
   doc: ":           Path to a pretext map.\nThis option is required, except when using:\n\

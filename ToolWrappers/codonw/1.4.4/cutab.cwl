@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cutab.cwl
+id: cutab.cwl
 inputs:
 - id: in_no_menu
   doc: Prevent the menu interface being displayed

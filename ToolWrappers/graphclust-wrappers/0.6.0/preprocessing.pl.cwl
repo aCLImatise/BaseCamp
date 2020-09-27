@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocessing.pl.cwl
+id: preprocessing.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

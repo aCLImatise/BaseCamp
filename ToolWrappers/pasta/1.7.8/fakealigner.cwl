@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fakealigner.cwl
+id: fakealigner.cwl
 inputs: []
 outputs:
 - id: out_stdout

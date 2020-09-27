@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drfinddata.cwl
+id: drfinddata.cwl
 inputs:
 - id: in_sensitive
   doc: "boolean    [N] By default, the query keywords are\nmatched against the EDAM\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoraw_plot_multi_correction.cwl
+id: nanoraw_plot_multi_correction.cwl
 inputs:
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.

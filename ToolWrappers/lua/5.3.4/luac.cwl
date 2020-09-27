@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../luac.cwl
+id: luac.cwl
 inputs:
 - id: in_list_use_l
   doc: list (use -l -l for full listing)

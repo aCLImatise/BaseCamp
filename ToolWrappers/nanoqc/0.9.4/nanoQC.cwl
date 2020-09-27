@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoQC.cwl
+id: nanoQC.cwl
 inputs:
 - id: in_outdir
   doc: Specify directory in which output has to be created.

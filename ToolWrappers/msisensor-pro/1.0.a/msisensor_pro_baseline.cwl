@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msisensor_pro_baseline.cwl
+id: msisensor_pro_baseline.cwl
 inputs:
 - id: in_string_homopolymer_file
   doc: <string>   homopolymer and microsatellite file
@@ -77,6 +77,11 @@ inputs:
   type: string
   inputBinding:
     position: 0
+- id: in_case_two
+  doc: /path/to/case1-sorted.bam
+  type: long
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

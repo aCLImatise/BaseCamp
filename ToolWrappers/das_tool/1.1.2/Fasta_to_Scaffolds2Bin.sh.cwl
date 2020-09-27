@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Fasta_to_Scaffolds2Bin.sh.cwl
+id: Fasta_to_Scaffolds2Bin.sh.cwl
 inputs:
 - id: in_extension
   doc: 'Extension of fasta files. (default: fasta)'

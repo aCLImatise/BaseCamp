@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotateBed_2way.pl.cwl
+id: annotateBed_2way.pl.cwl
 inputs:
 - id: in_an_no
   doc: ": genomic features' bed files, which are used to annotate input bed files,\

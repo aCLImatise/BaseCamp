@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blast2rma.cwl
+id: blast2rma.cwl
 inputs:
 - id: in_format
   doc: '[string]                Input file format. Mandatory option. Legal values:

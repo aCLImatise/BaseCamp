@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../post_process.pl.cwl
+id: post_process.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_trimseq.cwl
+id: _trimseq.cwl
 inputs:
 - id: in_window
   doc: "integer    [1] This determines the size of the region\nthat is considered\

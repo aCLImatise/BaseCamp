@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazIndex.pl.cwl
+id: rnazIndex.pl.cwl
 inputs:
 - id: in_gff
   doc: Generate GFF formatted output.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../utility_scripts.R.cwl
+id: utility_scripts.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

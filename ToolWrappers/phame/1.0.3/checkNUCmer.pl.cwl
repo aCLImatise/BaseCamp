@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkNUCmer.pl.cwl
+id: checkNUCmer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

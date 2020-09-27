@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../pathwaymatcher_match_vcf.cwl
+id: pathwaymatcher_match_vcf.cwl
 inputs:
 - id: in_i
-  doc: ''
+  doc: '[-o=<output_prefix>]'
   type: File
   inputBinding:
     prefix: -i

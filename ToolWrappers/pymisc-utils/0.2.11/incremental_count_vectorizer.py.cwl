@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../incremental_count_vectorizer.py.cwl
+id: incremental_count_vectorizer.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

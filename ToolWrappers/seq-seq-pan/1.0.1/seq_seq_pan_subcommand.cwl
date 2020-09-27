@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_subcommand.cwl
+id: seq_seq_pan_subcommand.cwl
 inputs:
 - id: in_seq_seq_pando_tpy
   doc: ''

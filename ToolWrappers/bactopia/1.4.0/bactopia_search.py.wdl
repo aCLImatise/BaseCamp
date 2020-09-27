@@ -10,6 +10,7 @@ task Bactopiasearchpy {
     Int? min_read_length
     Int? min_base_count
     Int? min_coverage
+    Int? genome_size
     String bac_topia
     String search
   }
@@ -24,7 +25,8 @@ task Bactopiasearchpy {
       ~{if defined(bio_sample_subset) then ("--biosample_subset " +  '"' + bio_sample_subset + '"') else ""} \
       ~{if defined(min_read_length) then ("--min_read_length " +  '"' + min_read_length + '"') else ""} \
       ~{if defined(min_base_count) then ("--min_base_count " +  '"' + min_base_count + '"') else ""} \
-      ~{if defined(min_coverage) then ("--min_coverage " +  '"' + min_coverage + '"') else ""}
+      ~{if defined(min_coverage) then ("--min_coverage " +  '"' + min_coverage + '"') else ""} \
+      ~{if defined(genome_size) then ("--genome_size " +  '"' + genome_size + '"') else ""}
   >>>
   parameter_meta {
     exact_tax_on: "Exclude Taxon ID descendents."
@@ -35,6 +37,7 @@ task Bactopiasearchpy {
     min_read_length: "Filters samples based on minimum mean read length.\\n(Default: No filter)"
     min_base_count: "Filters samples based on minimum basepair count.\\n(Default: No filter)"
     min_coverage: "Filter samples based on minimum coverage (requires"
+    genome_size: "Genome size to estimate coverage (requires --coverage)"
     bac_topia: ""
     search: ""
   }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_run_raxml_genetrees.cwl
+id: phyluce_genetrees_run_raxml_genetrees.cwl
 inputs:
 - id: in_input
   doc: The input directory containing alignments in phylip

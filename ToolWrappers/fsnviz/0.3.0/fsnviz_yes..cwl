@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fsnviz_yes..cwl
+id: fsnviz_yes..cwl
 inputs:
 - id: in_fsn_viz
   doc: ''

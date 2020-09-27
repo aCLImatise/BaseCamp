@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SelectContigsPos.pl.cwl
+id: SelectContigsPos.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapMers_depth.cwl
+id: mapMers_depth.cwl
 inputs: []
 outputs:
 - id: out_stdout

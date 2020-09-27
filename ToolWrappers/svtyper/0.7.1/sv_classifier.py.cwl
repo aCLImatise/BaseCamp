@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sv_classifier.py.cwl
+id: sv_classifier.py.cwl
 inputs:
 - id: in_input
   doc: VCF input [stdin]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_uniq_count.cwl
+id: sort_uniq_count.cwl
 inputs:
 - id: in_prefix_lines_number
   doc: Prefix lines by the number of occurrences

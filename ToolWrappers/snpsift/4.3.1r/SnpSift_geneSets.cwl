@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_geneSets.cwl
+id: SnpSift_geneSets.cwl
 inputs:
 - id: in_jar
   doc: ''

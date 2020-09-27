@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../popera_dhs_count.cwl
+id: popera_dhs_count.cwl
 inputs:
 - id: in_data
   doc: "data file, should be sorted bam format,\nexample=DH_sample1.bam,DH_sample2.bam"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_GO_assignments_from_Trinotate_xls.pl.cwl
+id: extract_GO_assignments_from_Trinotate_xls.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

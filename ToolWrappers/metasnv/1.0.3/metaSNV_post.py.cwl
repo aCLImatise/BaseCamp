@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaSNV_post.py.cwl
+id: metaSNV_post.py.cwl
 inputs:
 - id: in_coverage_breadth_minimal
   doc: "Coverage breadth: minimal horizontal genome coverage percentage\nper sample\

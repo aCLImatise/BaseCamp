@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_longseqdist.cwl
+id: abyss_longseqdist.cwl
 inputs:
 - id: in_km_er
   doc: length of a k-mer

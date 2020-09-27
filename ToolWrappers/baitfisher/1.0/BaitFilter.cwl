@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BaitFilter.cwl
+id: BaitFilter.cwl
 inputs:
 - id: in__inputbaitfilename_stringrequired
   doc: ",  --input-bait-file-name <string>\n(required)  Name of the input bait locus\

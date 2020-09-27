@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_dnarates_input_dbname.cwl
+id: arb_dnarates_input_dbname.cwl
 inputs:
 - id: in_db_save_name
   doc: ''

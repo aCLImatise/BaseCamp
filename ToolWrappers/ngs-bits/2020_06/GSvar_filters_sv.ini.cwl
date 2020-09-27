@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GSvar_filters_sv.ini.cwl
+id: GSvar_filters_sv.ini.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate_genome.py.cwl
+id: simulate_genome.py.cwl
 inputs:
 - id: in_number_of_chromosomes
   doc: Number of chromosomes (23).

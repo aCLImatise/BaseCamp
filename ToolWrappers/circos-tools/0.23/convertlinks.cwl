@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertlinks.cwl
+id: convertlinks.cwl
 inputs:
 - id: in_no_options
   doc: ''

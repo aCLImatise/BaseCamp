@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_tbam2gbam.cwl
+id: rsem_tbam2gbam.cwl
 inputs:
 - id: in_p
   doc: ''

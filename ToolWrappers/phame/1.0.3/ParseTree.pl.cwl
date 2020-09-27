@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseTree.pl.cwl
+id: ParseTree.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

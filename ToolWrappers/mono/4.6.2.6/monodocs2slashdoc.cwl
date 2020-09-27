@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monodocs2slashdoc.cwl
+id: monodocs2slashdoc.cwl
 inputs:
 - id: in_out
   doc: "The XML FILE to generate.\nIf not specified, will create a set of files in\n\

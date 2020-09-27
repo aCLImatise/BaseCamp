@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_synthesis_reference_transcripts.cwl
+id: rsem_synthesis_reference_transcripts.cwl
 inputs:
 - id: in_synthesis_ref
   doc: ''

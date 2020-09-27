@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_idxstats.cwl
+id: lofreq_idxstats.cwl
 inputs:
 - id: in_sam_tools
   doc: ''

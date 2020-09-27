@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_launch.cwl
+id: nf_core_launch.cwl
 inputs:
 - id: in_params
   doc: Local parameter settings file in JSON.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAsplit.cwl
+id: LAsplit.cwl
 inputs:
 - id: in_v
   doc: ''

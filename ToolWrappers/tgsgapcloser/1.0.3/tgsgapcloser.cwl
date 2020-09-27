@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgsgapcloser.cwl
+id: tgsgapcloser.cwl
 inputs:
 - id: in_sc_aff
   doc: <scaffold_file>      the input scaffold file.

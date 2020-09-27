@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mean.cwl
+id: mean.cwl
 inputs: []
 outputs:
 - id: out_stdout

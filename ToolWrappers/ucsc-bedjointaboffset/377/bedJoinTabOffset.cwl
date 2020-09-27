@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedJoinTabOffset.cwl
+id: bedJoinTabOffset.cwl
 inputs:
 - id: in_debug
   doc: show debug messages

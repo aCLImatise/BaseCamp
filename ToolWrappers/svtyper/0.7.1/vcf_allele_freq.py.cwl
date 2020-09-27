@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_allele_freq.py.cwl
+id: vcf_allele_freq.py.cwl
 inputs:
 - id: in_vcf
   doc: 'VCF input (default: stdin)'

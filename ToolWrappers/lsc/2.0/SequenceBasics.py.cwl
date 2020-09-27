@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SequenceBasics.py.cwl
+id: SequenceBasics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

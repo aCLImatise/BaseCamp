@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_bsstrand.cwl
+id: biscuit_bsstrand.cwl
 inputs:
 - id: in_region_optional_
   doc: region (optional, chrX:123-456 if missing, process the whole bam).

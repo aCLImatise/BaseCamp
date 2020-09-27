@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfstreamsort.cwl
+id: vcfstreamsort.cwl
 inputs:
 - id: in_window
   doc: number of sites to sort (default 10000)

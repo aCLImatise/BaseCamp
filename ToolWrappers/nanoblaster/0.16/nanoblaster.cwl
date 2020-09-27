@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoblaster.cwl
+id: nanoblaster.cwl
 inputs:
 - id: in_specify_one_parameters
   doc: ': To specify one of the Parameters: -C10, -C25, or -C50'

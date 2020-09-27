@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_reformat.cwl
+id: gotree_reformat.cwl
 inputs:
 - id: in_input
   doc: Input tree (default "stdin")

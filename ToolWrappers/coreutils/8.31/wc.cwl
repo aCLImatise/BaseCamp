@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wc.cwl
+id: wc.cwl
 inputs:
 - id: in_bytes
   doc: print the byte counts

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makblk.pl.cwl
+id: makblk.pl.cwl
 inputs:
 - id: in_use_reduced_alphabet
   doc: ':     use reduced alphabet'

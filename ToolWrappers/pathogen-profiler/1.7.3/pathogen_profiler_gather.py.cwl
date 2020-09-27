@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathogen_profiler_gather.py.cwl
+id: pathogen_profiler_gather.py.cwl
 inputs:
 - id: in_samples
   doc: 'NGS Platform (default: None)'

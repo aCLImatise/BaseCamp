@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../template.ini.cwl
+id: template.ini.cwl
 inputs: []
 outputs:
 - id: out_stdout

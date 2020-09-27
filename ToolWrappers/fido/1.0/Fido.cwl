@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Fido.cwl
+id: Fido.cwl
 inputs:
 - id: in_graph_file
   doc: ''

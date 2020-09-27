@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intron_exon_reads.pyc.cwl
+id: intron_exon_reads.pyc.cwl
 inputs: []
 outputs:
 - id: out_stdout

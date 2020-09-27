@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evidence_modeler.pl.cwl
+id: evidence_modeler.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

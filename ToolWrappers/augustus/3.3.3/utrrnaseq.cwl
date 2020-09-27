@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../utrrnaseq.cwl
+id: utrrnaseq.cwl
 inputs:
 - id: in_long
   doc: -short option   data type       description

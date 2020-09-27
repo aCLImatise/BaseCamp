@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calc_prob.py.cwl
+id: calc_prob.py.cwl
 inputs:
 - id: in_input
   doc: "filename for input reads separated by commas. Must enter\na fasta OR fastq\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blast_check_pair.pl.cwl
+id: blast_check_pair.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

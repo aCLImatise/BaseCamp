@@ -1,8 +1,11 @@
 class: CommandLineTool
-id: ../../../methylpy_add_methylation_level.cwl
+id: methylpy_add_methylation_level.cwl
 inputs:
 - id: in_output_file
-  doc: ''
+  doc: "ALLC_FILES [ALLC_FILES ...]\n[--samples SAMPLES [SAMPLES ...]]\n[--mc-type\
+    \ MC_TYPE [MC_TYPE ...]]\n[--extra-info EXTRA_INFO]\n[--num-procs NUM_PROCS]\n\
+    [--min-cov MIN_COV] [--max-cov MAX_COV]\n[--buffer-line-number BUFFER_LINE_NUMBER]\n\
+    [--input-no-header INPUT_NO_HEADER]"
   type: File
   inputBinding:
     prefix: --output-file
@@ -65,7 +68,10 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_output_file
-  doc: ''
+  doc: "ALLC_FILES [ALLC_FILES ...]\n[--samples SAMPLES [SAMPLES ...]]\n[--mc-type\
+    \ MC_TYPE [MC_TYPE ...]]\n[--extra-info EXTRA_INFO]\n[--num-procs NUM_PROCS]\n\
+    [--min-cov MIN_COV] [--max-cov MAX_COV]\n[--buffer-line-number BUFFER_LINE_NUMBER]\n\
+    [--input-no-header INPUT_NO_HEADER]"
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)

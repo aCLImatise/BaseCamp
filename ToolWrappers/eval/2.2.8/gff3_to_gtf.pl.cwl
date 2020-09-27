@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3_to_gtf.pl.cwl
+id: gff3_to_gtf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

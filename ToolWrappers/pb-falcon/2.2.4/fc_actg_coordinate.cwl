@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_actg_coordinate.cwl
+id: fc_actg_coordinate.cwl
 inputs: []
 outputs:
 - id: out_stdout

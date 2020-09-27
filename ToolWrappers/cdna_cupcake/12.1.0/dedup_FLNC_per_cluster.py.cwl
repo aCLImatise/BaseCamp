@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dedup_FLNC_per_cluster.py.cwl
+id: dedup_FLNC_per_cluster.py.cwl
 inputs:
 - id: in_gff
   doc: ''

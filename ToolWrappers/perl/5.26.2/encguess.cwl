@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../encguess.cwl
+id: encguess.cwl
 inputs:
 - id: in_specify_list_test
   doc: "specify a list of \"suspect encoding types\" to test, seperated by\neither\

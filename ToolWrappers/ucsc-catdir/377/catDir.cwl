@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../catDir.cwl
+id: catDir.cwl
 inputs: []
 outputs:
 - id: out_stdout

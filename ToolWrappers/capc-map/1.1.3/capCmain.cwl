@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../capCmain.cwl
+id: capCmain.cwl
 inputs:
 - id: in_bed_file_restriction
   doc: frag_file   is a bed file of restriction enzyme fragments genome wide

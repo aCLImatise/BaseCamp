@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuffleCodonsAddMotifs.rb.cwl
+id: shuffleCodonsAddMotifs.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

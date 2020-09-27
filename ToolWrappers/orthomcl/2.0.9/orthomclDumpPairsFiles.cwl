@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclDumpPairsFiles.cwl
+id: orthomclDumpPairsFiles.cwl
 inputs:
 - id: in_mcl_input
   doc: '- file required by the mcl program'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../defiant.cwl
+id: defiant.cwl
 inputs: []
 outputs:
 - id: out_stdout

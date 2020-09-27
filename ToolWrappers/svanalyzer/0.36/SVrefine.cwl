@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SVrefine.cwl
+id: SVrefine.cwl
 inputs:
 - id: in_bam
   doc: "Specify a BAM file produced by MiniMap2 with the alignments to be\nused for\

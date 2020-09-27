@@ -17,7 +17,7 @@ task CreateKUnitigMaxOverlaps {
   parameter_meta {
     km_er_value: "to specify the k-mer size used when generating the k-unitigs."
     create_coords_file: "output the coords file as well as the overlaps file"
-    largest_kuni_tig_number: "(in this case the\\nk-unitigs don't have to be in numeric order in the files.)\\n"
+    largest_kuni_tig_number: "(in this case the"
     prefix_dot_coords: "and   prefix.overlaps."
   }
   output {

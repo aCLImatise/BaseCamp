@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_test.cwl
+id: gsutil_test.cwl
 inputs:
 - id: in_run_tests_run
   doc: "Run tests against multi-regional US buckets. By default,\ntests run against\

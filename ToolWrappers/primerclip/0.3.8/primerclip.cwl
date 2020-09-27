@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../primerclip.cwl
+id: primerclip.cwl
 inputs:
 - id: in_bed_pe
   doc: "add this switch to use BEDPE coordinate input format\n(default format is master\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graftM_update.cwl
+id: graftM_update.cwl
 inputs:
 - id: in_graft_m_package
   doc: GraftM package to update

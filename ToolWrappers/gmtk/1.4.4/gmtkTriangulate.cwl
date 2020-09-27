@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmtkTriangulate.cwl
+id: gmtkTriangulate.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_makenucseq.cwl
+id: _makenucseq.cwl
 inputs:
 - id: in_codon_file
   doc: "codon      Optional codon usage file. Nucleotide\nsequences will be created\

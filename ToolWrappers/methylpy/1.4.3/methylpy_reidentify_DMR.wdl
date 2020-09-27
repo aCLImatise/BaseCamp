@@ -29,7 +29,7 @@ task MethylpyReidentifyDMR {
       ~{if defined(min_tests) then ("--min-tests " +  '"' + min_tests + '"') else ""}
   >>>
   parameter_meta {
-    output_file: ""
+    output_file: "[--collapse-samples COLLAPSE_SAMPLES [COLLAPSE_SAMPLES ...]]\\n[--sample-category SAMPLE_CATEGORY [SAMPLE_CATEGORY ...]]\\n[--min-cluster MIN_CLUSTER]\\n[--sig-cutoff SIG_CUTOFF]\\n[--dmr-max-dist DMR_MAX_DIST]\\n[--min-num-dms MIN_NUM_DMS]\\n[--resid-cutoff RESID_CUTOFF]\\n[--num-sims NUM_SIMS] [--min-tests MIN_TESTS]"
     input_rms_file: "File storing the results of RMS tests (from DMRfind\\nfunction. (default: None)"
     collapse_samples: "A list of samples for collapsing blocks (default:\\nFalse)"
     sample_category: "A list of categories that each respective sample\\nbelongs to; the categories must begin at 0 and\\nincrease by 1 for each category added. ex: samples\\n[A,B,C] categories [0,1,2] or categories [0, 1, 0]\\n(default: False)"

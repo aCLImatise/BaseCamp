@@ -2,9 +2,9 @@ version 1.0
 
 task HmmTrain {
   input {
-    String? _outhmm
     Int? list_multiple_sequence
     File? file_defining_mapping
+    Int? files_used_indices
     Int? mutually_exclusive_list
     String? fastampmssdefault_ss_alignment
     String? estimating_transition_probabilities
@@ -12,14 +12,12 @@ task HmmTrain {
     String? use_specified_topology
     Int? train_indel_model
     Boolean? proceed_quietly_updates
-    String hmm_train
   }
   command <<<
     hmm_train \
-      ~{hmm_train} \
-      ~{if defined(_outhmm) then ("-g " +  '"' + _outhmm + '"') else ""} \
       ~{if defined(list_multiple_sequence) then ("-m " +  '"' + list_multiple_sequence + '"') else ""} \
       ~{if defined(file_defining_mapping) then ("-c " +  '"' + file_defining_mapping + '"') else ""} \
+      ~{if defined(files_used_indices) then ("-g " +  '"' + files_used_indices + '"') else ""} \
       ~{if defined(mutually_exclusive_list) then ("-M " +  '"' + mutually_exclusive_list + '"') else ""} \
       ~{if defined(fastampmssdefault_ss_alignment) then ("-i " +  '"' + fastampmssdefault_ss_alignment + '"') else ""} \
       ~{if defined(estimating_transition_probabilities) then ("-R " +  '"' + estimating_transition_probabilities + '"') else ""} \
@@ -29,9 +27,9 @@ task HmmTrain {
       ~{if (proceed_quietly_updates) then "-q" else ""}
   >>>
   parameter_meta {
-    _outhmm: "[OPTIONS] > out.hmm"
     list_multiple_sequence: "List of multiple sequence alignment files.\\nCurrently, in testing mode, the list must be of length one."
     file_defining_mapping: "File defining mapping of feature types to category\\nnumbers."
+    files_used_indices: "Files in GFF defining sequence\\nfeatures to be used in labeling sites.   Frame of reference of\\nfeature indices is determined feature-by-feature according to\\n'seqname' attribute.  Filenames must correspond in number and order\\nto the elements of <msa_fname_list>."
     mutually_exclusive_list: "(Mutually exclusive with -m) Assume alignments\\nof the specified lengths (comma-separated list) and do not not\\nattempt to map the coordinates in the specified GFFs (assume\\nthey are in the desired coordinate frame).  This option allows\\nan HMM to be trained directly from GFFs, without alignments.\\nNot permitted with -I."
     fastampmssdefault_ss_alignment: "|FASTA|MPM|SS\\n(default SS) Alignment format."
     estimating_transition_probabilities: "Before estimating transition probabilities, group features by <tag>\\n(e.g., \\\"transcript_id\\\" or \\\"exon_id\\\") and reverse complement\\nsegments of the alignment corresponding to groups on the\\nreverse strand.  Groups must be non-overlapping (see refeature\\n--unique)."
@@ -39,7 +37,6 @@ task HmmTrain {
     use_specified_topology: "Use the specified tree topology when training\\nfor indels."
     train_indel_model: "Train an indel model for <nseqs>\\nsequences, despite that the training alignment has a different\\nnumber.  All (non-trivial) gap patterns are assumed to be\\nequally frequent."
     proceed_quietly_updates: "Proceed quietly (without updates to stderr)."
-    hmm_train: "USAGE: hmm_train -m <msa_fname_list> -c <category_map_fname> \\"
   }
   output {
     File out_stdout = stdout()

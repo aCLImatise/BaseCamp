@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_plot_flowcell.cwl
+id: interop_plot_flowcell.cwl
 inputs:
 - id: in_metric_name
   doc: '[Intensity]: Metric to plot'

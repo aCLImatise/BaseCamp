@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gem_list.cwl
+id: gem_list.cwl
 inputs:
 - id: in__installed_check
   doc: ', --[no-]installed             Check for installed gem'
@@ -88,11 +88,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
-- id: in_no_details
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --no-details
 - id: in_regexp
   doc: regexp to look for in gem name
   type: string

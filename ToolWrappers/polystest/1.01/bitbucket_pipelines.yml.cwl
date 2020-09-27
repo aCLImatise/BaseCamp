@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bitbucket_pipelines.yml.cwl
+id: bitbucket_pipelines.yml.cwl
 inputs: []
 outputs:
 - id: out_stdout

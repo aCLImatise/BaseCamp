@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sailfish.cwl
+id: sailfish.cwl
 inputs:
 - id: in_print_version_string
   doc: '[ --version ]      print version string'

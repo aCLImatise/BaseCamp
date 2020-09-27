@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_qr.cwl
+id: convert_qr.cwl
 inputs:
 - id: in_it
   doc: "Input file from QuasiRecomb, usually 'quasispecies.fasta'\nfor transmitter"

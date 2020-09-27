@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_predict_peptide_ions_charge..cwl
+id: crux_predict_peptide_ions_charge..cwl
 inputs:
 - id: in_crux
   doc: ''

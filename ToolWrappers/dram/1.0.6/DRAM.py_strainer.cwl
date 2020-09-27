@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM.py_strainer.cwl
+id: DRAM.py_strainer.cwl
 inputs:
 - id: in_input_annotations
   doc: 'annotations file to pull genes from (default: None)'

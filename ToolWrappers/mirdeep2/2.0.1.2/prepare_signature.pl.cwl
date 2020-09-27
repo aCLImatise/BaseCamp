@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_signature.pl.cwl
+id: prepare_signature.pl.cwl
 inputs:
 - id: in_fasta_file_sequences
   doc: "Fasta file with the sequences of known mature miRNAs for the species.\nThese\

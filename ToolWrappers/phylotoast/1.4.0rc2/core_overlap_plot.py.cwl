@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../core_overlap_plot.py.cwl
+id: core_overlap_plot.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

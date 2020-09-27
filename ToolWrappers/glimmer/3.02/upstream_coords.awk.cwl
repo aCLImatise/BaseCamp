@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../upstream_coords.awk.cwl
+id: upstream_coords.awk.cwl
 inputs: []
 outputs:
 - id: out_stdout

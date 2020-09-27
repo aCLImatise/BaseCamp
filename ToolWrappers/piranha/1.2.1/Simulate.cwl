@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Simulate.cwl
+id: Simulate.cwl
 inputs:
 - id: in_distribution
   doc: "what kind of distribution to use for generating read\ncounts? Currently supports\

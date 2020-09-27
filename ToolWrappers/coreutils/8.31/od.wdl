@@ -21,13 +21,9 @@ task Od {
     Boolean? same_octal_byte
     Boolean? same_t_d
     Boolean? same_t_x
-    String kb
-    String mb
   }
   command <<<
     od \
-      ~{kb} \
-      ~{mb} \
       ~{if defined(address_radix) then ("--address-radix " +  '"' + address_radix + '"') else ""} \
       ~{if (endian) then "--endian" else ""} \
       ~{if defined(skip_bytes) then ("--skip-bytes " +  '"' + skip_bytes + '"') else ""} \
@@ -68,8 +64,6 @@ task Od {
     same_octal_byte: "same as -t o2, select octal 2-byte units"
     same_t_d: "same as -t d2, select decimal 2-byte units"
     same_t_x: "same as -t x2, select hexadecimal 2-byte units"
-    kb: "1000"
-    mb: "1000*1000"
   }
   output {
     File out_stdout = stdout()

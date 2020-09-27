@@ -17,7 +17,6 @@ task Kdbmeta2 {
     String name
     File path_slash_name
     String quit_dot
-    File file_dot
   }
   command <<<
     kdbmeta_2 \
@@ -28,7 +27,6 @@ task Kdbmeta2 {
       ~{name} \
       ~{path_slash_name} \
       ~{quit_dot} \
-      ~{file_dot} \
       ~{if defined(table) then ("--table " +  '"' + table + '"') else ""} \
       ~{if (unsigned) then "--unsigned" else ""} \
       ~{if (read_only) then "--read-only" else ""} \
@@ -54,7 +52,6 @@ task Kdbmeta2 {
     name: "a named root node and children"
     path_slash_name: "an internal node and children"
     quit_dot: "-L|--log-level <level>           Logging level as number or enum string. One "
-    file_dot: "kdbmeta.2 : 2.10.8"
   }
   output {
     File out_stdout = stdout()

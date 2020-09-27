@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sq_list_attributes.pl.cwl
+id: agat_sq_list_attributes.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_mask_cpg.py.cwl
+id: maf_mask_cpg.py.cwl
 inputs:
 - id: in_mask
   doc: Character to use as mask ('?' is default)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_align_sequences.cwl
+id: secapr_align_sequences.cwl
 inputs:
 - id: in_sequences
   doc: "The fasta file containing individual sequences for\nseveral samples and loci"

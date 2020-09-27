@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HiLine_dangling_end.cwl
+id: HiLine_dangling_end.cwl
 inputs:
 - id: in_sort
   doc: / --no-sort  Sort and index output. Default=sort

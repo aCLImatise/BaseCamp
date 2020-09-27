@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go_show_paths_to_root.pl.cwl
+id: go_show_paths_to_root.pl.cwl
 inputs:
 - id: in_writes_errors_defaults
   doc: "writes parse errors in XML - defaults to STDERR (there should be no\nparse\

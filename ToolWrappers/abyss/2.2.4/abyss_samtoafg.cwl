@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_samtoafg.cwl
+id: abyss_samtoafg.cwl
 inputs: []
 outputs:
 - id: out_stdout

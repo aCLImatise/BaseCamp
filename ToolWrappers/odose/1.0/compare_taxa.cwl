@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_taxa.cwl
+id: compare_taxa.cwl
 inputs:
 - id: in_unfiltered_tax_on_a
   doc: genome IDs for taxon A as deduced from phylogenetic tree of unfiltered concatemers

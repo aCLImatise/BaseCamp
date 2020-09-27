@@ -2,7 +2,7 @@ version 1.0
 
 task SecaprFindTargetContigs {
   input {
-    String? var_output
+    Int? var_output
     Directory? contigs
     File? reference
     Int? min_coverage
@@ -23,7 +23,7 @@ task SecaprFindTargetContigs {
       ~{if (disable_stats) then "--disable_stats" else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--min-coverage MIN_COVERAGE]\\n[--min-identity MIN_IDENTITY]\\n[--keep-duplicates] [--keep-paralogs]\\n[--disable_stats]"
     contigs: "The directory containing the assembled contigs in\\nfasta format."
     reference: "The fasta-file containign the reference sequences\\n(probe-order-file)."
     min_coverage: "The minimum percent coverage required for a match\\n[default=80]."

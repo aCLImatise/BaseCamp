@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../widen_overlaps.cwl
+id: widen_overlaps.cwl
 inputs:
 - id: in_depot
   doc: depot path (string)

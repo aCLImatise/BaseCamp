@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_blastdb.pl.cwl
+id: update_blastdb.pl.cwl
 inputs:
 - id: in_decompress
   doc: "Downloads, decompresses the archives in the current working directory,\nand\

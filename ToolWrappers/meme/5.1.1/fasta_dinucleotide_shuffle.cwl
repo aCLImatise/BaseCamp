@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_dinucleotide_shuffle.cwl
+id: fasta_dinucleotide_shuffle.cwl
 inputs:
 - id: in_file_name_required
   doc: file name (required)

@@ -2,17 +2,17 @@ version 1.0
 
 task FindAllSnpspy {
   input {
-    String? a
     String? o
+    String? a
   }
   command <<<
     find_all_snps_py \
-      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""}
   >>>
   parameter_meta {
-    a: ""
     o: ""
+    a: ""
   }
   output {
     File out_stdout = stdout()

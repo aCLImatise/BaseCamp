@@ -92,11 +92,10 @@ task Rscape {
     String? power
     Boolean? double_subs
     Int? minh_loop
-    Float? to_l
     Int? seed
     Float? pm_ass
     Boolean? options
-    String var_94
+    String var_93
     String structural
     String covariation
     String above
@@ -106,7 +105,7 @@ task Rscape {
   }
   command <<<
     R_scape \
-      ~{var_94} \
+      ~{var_93} \
       ~{structural} \
       ~{covariation} \
       ~{above} \
@@ -203,7 +202,6 @@ task Rscape {
       ~{if defined(power) then ("--power " +  '"' + power + '"') else ""} \
       ~{if (double_subs) then "--doublesubs" else ""} \
       ~{if defined(minh_loop) then ("--minhloop " +  '"' + minh_loop + '"') else ""} \
-      ~{if defined(to_l) then ("--tol " +  '"' + to_l + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(pm_ass) then ("--pmass " +  '"' + pm_ass + '"') else ""} \
       ~{if (options) then "-options" else ""}
@@ -299,11 +297,10 @@ task Rscape {
     power: ": calculate empirical power curve"
     double_subs: ": calculate power using double substitutions, default is single substitutions"
     minh_loop: ": minimum hairpin loop length. If i-j is the closing pair: minhloop = j-1-1. Default is 0  (n>=0)"
-    to_l: ": tolerance  [1e-6]"
     seed: ": set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)"
     pm_ass: ": pmass for censored histogram of cov scores  [0.0005]  (0<x<=1)"
     options: ""
-    var_94: ""
+    var_93: ""
     structural: ""
     covariation: ""
     above: ""

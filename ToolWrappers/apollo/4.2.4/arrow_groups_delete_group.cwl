@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_groups_delete_group.cwl
+id: arrow_groups_delete_group.cwl
 inputs:
 - id: in_group
   doc: ''

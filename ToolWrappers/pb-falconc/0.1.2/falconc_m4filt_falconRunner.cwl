@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_m4filt_falconRunner.cwl
+id: falconc_m4filt_falconRunner.cwl
 inputs:
 - id: in__db_string
   doc: =, --db=               string  REQUIRED         set db

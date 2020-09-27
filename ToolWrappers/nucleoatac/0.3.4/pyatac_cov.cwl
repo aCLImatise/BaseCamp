@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_cov.cwl
+id: pyatac_cov.cwl
 inputs:
 - id: in_bam
   doc: Accepts sorted BAM file
@@ -7,20 +7,11 @@ inputs:
   inputBinding:
     prefix: --bam
 - id: in_bed
-  doc: Regions in which to get insertions
+  doc: "Regions in which to get insertions\n--out basename\n--cores int     Number\
+    \ of cores to use"
   type: File
   inputBinding:
     prefix: --bed
-- id: in_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --out
-- id: in_cores
-  doc: Number of cores to use
-  type: long
-  inputBinding:
-    prefix: --cores
 - id: in_lower
   doc: lower limit on insert size
   type: long
@@ -47,6 +38,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --not_atac
+- id: in_out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 outputs:
 - id: out_stdout
   doc: Standard output stream

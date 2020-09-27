@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_strip.cwl
+id: cpptraj_strip.cwl
 inputs:
 - id: in_config
   doc: Configuration file

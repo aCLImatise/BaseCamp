@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findRedundantBLAT.pl.cwl
+id: findRedundantBLAT.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_estimator.py.cwl
+id: coverage_estimator.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

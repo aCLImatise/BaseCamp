@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zorro.cwl
+id: zorro.cwl
 inputs:
 - id: in_sample
   doc: ': Sampling pairs to calculate alignment reliabilty [Off By Default]'

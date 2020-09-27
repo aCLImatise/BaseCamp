@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bt_context.txt.cwl
+id: bt_context.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

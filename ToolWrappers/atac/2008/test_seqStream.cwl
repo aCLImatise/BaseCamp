@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_seqStream.cwl
+id: test_seqStream.cwl
 inputs: []
 outputs:
 - id: out_stdout

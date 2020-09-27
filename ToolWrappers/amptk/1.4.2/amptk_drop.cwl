@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_drop.cwl
+id: amptk_drop.cwl
 inputs:
 - id: in_input
   doc: Input OTU file (.cluster.otus.fa) (FASTA)

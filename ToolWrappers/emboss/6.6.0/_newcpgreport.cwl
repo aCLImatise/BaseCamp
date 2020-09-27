@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_newcpgreport.cwl
+id: _newcpgreport.cwl
 inputs:
 - id: in_window
   doc: integer    [100] Window size (Integer 1 or more)

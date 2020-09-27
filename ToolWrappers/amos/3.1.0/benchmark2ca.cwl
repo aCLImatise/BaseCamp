@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../benchmark2ca.cwl
+id: benchmark2ca.cwl
 inputs: []
 outputs:
 - id: out_stdout

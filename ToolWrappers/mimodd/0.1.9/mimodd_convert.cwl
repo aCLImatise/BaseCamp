@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_convert.cwl
+id: mimodd_convert.cwl
 inputs:
 - id: in_i_format
   doc: 'the format of the input file(s) (default: bam)'

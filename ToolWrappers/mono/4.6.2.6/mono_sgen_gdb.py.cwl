@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_sgen_gdb.py.cwl
+id: mono_sgen_gdb.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sratools.2.10.8.cwl
+id: sratools.2.10.8.cwl
 inputs: []
 outputs:
 - id: out_stdout

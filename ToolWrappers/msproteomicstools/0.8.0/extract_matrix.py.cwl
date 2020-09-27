@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_matrix.py.cwl
+id: extract_matrix.py.cwl
 inputs:
 - id: in_in
   doc: feature aligner file

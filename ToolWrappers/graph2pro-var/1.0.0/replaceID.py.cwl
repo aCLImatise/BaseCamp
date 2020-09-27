@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../replaceID.py.cwl
+id: replaceID.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

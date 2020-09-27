@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2msa_OUTPUT.cwl
+id: bam2msa_OUTPUT.cwl
 inputs:
 - id: in_r
   doc: ''

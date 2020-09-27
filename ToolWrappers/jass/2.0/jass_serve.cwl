@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jass_serve.cwl
+id: jass_serve.cwl
 inputs:
 - id: in_jass
   doc: ''

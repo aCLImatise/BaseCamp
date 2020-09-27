@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqt_bameof_BAM.cwl
+id: sqt_bameof_BAM.cwl
 inputs:
 - id: in_align
   doc: Compare two strings

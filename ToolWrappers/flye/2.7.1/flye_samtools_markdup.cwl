@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_markdup.cwl
+id: flye_samtools_markdup.cwl
 inputs:
 - id: in_remove_duplicate_reads
   doc: Remove duplicate reads

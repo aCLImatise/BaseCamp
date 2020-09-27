@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bandage_image.cwl
+id: Bandage_image.cwl
 inputs:
 - id: in_height
   doc: 'Image height (default: 1000)'

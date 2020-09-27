@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../affiliation_postprocess.py.cwl
+id: affiliation_postprocess.py.cwl
 inputs:
 - id: in_b
   doc: '[-r REFERENCE]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_remove_empty_taxa.cwl
+id: phyluce_align_remove_empty_taxa.cwl
 inputs:
 - id: in_alignments
   doc: "The directory containing alignments to be screened.\n(default: None)"

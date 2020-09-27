@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfgenotypes.cwl
+id: vcfgenotypes.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

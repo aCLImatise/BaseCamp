@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_assemblo_velvet.cwl
+id: phyluce_assembly_assemblo_velvet.cwl
 inputs:
 - id: in_output
   doc: The directory in which to store the assembly data

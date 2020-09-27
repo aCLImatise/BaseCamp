@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparem_diss.cwl
+id: comparem_diss.cwl
 inputs:
 - id: in_metric
   doc: 'distance metric to use (default: euclidean)'

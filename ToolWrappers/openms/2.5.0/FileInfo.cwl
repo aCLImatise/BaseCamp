@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FileInfo.cwl
+id: FileInfo.cwl
 inputs:
 - id: in_in
   doc: "*        Input file  (valid formats: 'mzData', 'mzXML', 'mzML', 'dta', 'dta2d',\

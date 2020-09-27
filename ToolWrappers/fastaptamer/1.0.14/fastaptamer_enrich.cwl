@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaptamer_enrich.cwl
+id: fastaptamer_enrich.cwl
 inputs:
 - id: in_o
   doc: ''

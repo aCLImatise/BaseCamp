@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_phylogeny.cwl
+id: cactus_phylogeny.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'

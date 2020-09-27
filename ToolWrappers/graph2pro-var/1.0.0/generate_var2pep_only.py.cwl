@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_var2pep_only.py.cwl
+id: generate_var2pep_only.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

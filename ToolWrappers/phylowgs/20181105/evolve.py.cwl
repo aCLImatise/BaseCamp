@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evolve.py.cwl
+id: evolve.py.cwl
 inputs:
 - id: in_output_dir
   doc: 'Path to output directory (default: None)'

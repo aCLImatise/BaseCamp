@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xml_pp.cwl
+id: xml_pp.cwl
 inputs:
 - id: in_edits_files_provided
   doc: "[<extension>]\nedits the file(s) in place, if an extension is provided (no\

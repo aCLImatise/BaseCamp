@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_count_reads.cwl
+id: HLAProfiler.pl_count_reads.cwl
 inputs:
 - id: in_reads_directory
   doc: location of directory containing filtered read fastqs. Please make sure to

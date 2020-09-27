@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GUESSmyLT_example.cwl
+id: GUESSmyLT_example.cwl
 inputs: []
 outputs:
 - id: out_stdout

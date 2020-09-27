@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclAdjustFasta.cwl
+id: orthomclAdjustFasta.cwl
 inputs:
 - id: in_tax_on_code
   doc: ''

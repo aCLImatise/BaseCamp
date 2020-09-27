@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../script_all_heatmaps.sh.cwl
+id: script_all_heatmaps.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

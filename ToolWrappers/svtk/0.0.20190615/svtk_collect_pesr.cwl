@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_collect_pesr.cwl
+id: svtk_collect_pesr.cwl
 inputs:
 - id: in_index_dir
   doc: "Directory of local BAM indexes if accessing a remote\nS3 bam."

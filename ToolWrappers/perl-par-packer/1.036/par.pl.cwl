@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../par.pl.cwl
+id: par.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refinem_filter_bins.cwl
+id: refinem_filter_bins.cwl
 inputs:
 - id: in_genome_ext
   doc: "extension of genomes (other files in directory are\nignored) (default: fna)"

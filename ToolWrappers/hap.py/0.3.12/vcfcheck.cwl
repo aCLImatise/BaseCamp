@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfcheck.cwl
+id: vcfcheck.cwl
 inputs:
 - id: in_input_file
   doc: The input file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../random_forest_classifier.cwl
+id: random_forest_classifier.cwl
 inputs:
 - id: in_config
   doc: Configuration file

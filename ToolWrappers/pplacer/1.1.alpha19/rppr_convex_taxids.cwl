@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rppr_convex_taxids.cwl
+id: rppr_convex_taxids.cwl
 inputs:
 - id: in_reference_package_path
   doc: Reference package path. Required.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scompare.cwl
+id: scompare.cwl
 inputs:
 - id: in_output_given_structure
   doc: ': Output of given structure in ordered pairs (needed for comppair)'

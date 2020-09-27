@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_notification.cwl
+id: gsutil_notification.cwl
 inputs:
 - id: in_specify_type_filter
   doc: "Specify an event type filter for this notification config. Cloud\nStorage\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_blast_chunkFlowerSequences.cwl
+id: cactus_blast_chunkFlowerSequences.cwl
 inputs: []
 outputs:
 - id: out_stdout

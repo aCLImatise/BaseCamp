@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2fq.py.cwl
+id: bam2fq.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.

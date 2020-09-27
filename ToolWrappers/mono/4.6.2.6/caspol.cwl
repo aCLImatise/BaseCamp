@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../caspol.cwl
+id: caspol.cwl
 inputs:
 - id: in_arguments
   doc: ''

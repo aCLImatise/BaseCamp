@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../compound_identification.py.cwl
+id: compound_identification.py.cwl
 inputs:
 - id: in_lm_zi
-  doc: ''
+  doc: LIBRT -o OUTPUT
   type: string
   inputBinding:
     prefix: -lmzi

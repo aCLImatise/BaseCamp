@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_copy_trinity_symlinks.cwl
+id: phyluce_assembly_copy_trinity_symlinks.cwl
 inputs:
 - id: in_assembly_symlinks
   doc: "The location of the trinity symlinks (trinity-\nassemblies/contigs)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../caper_list.cwl
+id: caper_list.cwl
 inputs:
 - id: in_dry_run
   doc: Caper does not take any action.

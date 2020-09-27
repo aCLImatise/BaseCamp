@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_ml_engine_jobs.cwl
+id: gcloud_ml_engine_jobs.cwl
 inputs:
 - id: in_submit
   doc: Cloud ML Engine Jobs submit commands.

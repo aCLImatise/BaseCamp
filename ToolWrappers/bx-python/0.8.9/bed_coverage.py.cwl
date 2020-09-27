@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_coverage.py.cwl
+id: bed_coverage.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

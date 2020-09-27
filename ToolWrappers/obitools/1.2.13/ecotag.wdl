@@ -2,7 +2,6 @@ version 1.0
 
 task Ecotag {
   input {
-    String? sort
     Boolean? debug
     Boolean? without_progress_bar
     File? ref_database
@@ -33,14 +32,11 @@ task Ecotag {
     Boolean? fast_q_output
     String? eco_pcr_db_output
     Boolean? uppercase
-    String bash
     String identification
   }
   command <<<
     ecotag \
-      ~{bash} \
       ~{identification} \
-      ~{if defined(sort) then ("--sort " +  '"' + sort + '"') else ""} \
       ~{if (debug) then "--DEBUG" else ""} \
       ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
       ~{if defined(ref_database) then ("--ref-database " +  '"' + ref_database + '"') else ""} \
@@ -73,7 +69,6 @@ task Ecotag {
       ~{if (uppercase) then "--uppercase" else ""}
   >>>
   parameter_meta {
-    sort: "> seq_tag.fasta"
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
     ref_database: "fasta file containing reference sequences"
@@ -104,7 +99,6 @@ task Ecotag {
     fast_q_output: "Output sequences in sanger fastq format"
     eco_pcr_db_output: "Output sequences in ecopcr database format (sequence\\nrecords are not printed on standard output)"
     uppercase: "Print sequences in upper case (default is lower case)"
-    bash: "> ecotag -d embl_r113  -R ReferenceDB.fasta \\"
     identification: "--sort=SORT           Sort output on input sequence tag"
   }
   output {

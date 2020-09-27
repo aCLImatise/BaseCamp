@@ -30,7 +30,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -59,7 +59,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: &id003 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -88,7 +88,409 @@ subcommands:
             args: !SimpleFlagArg
               name: TEXT
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: BED_INPUT_FILE DBN_OUT
+                position: 0
+                name: DBN_INPUT_FILE
+                optional: false
+              - !Positional
+                description: RLAPPING
+                position: 0
+                name: BN_OUTPUT_FILE_NON_OVE
+                optional: false
+              named:
+              - !Flag
+                description: "Regex to capture the targeted location in DBN file\n\
+                  (default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)' )"
+                synonyms:
+                - -r
+                - --regex
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: segmentation-fold-utils filter-annotated-entries\
+                \ [OPTIONS]\n                                                    \
+                \    DBN_INPUT_FILE\n                                            \
+                \            BED_INPUT_FILE DBN_OUT\n                            \
+                \                            PUT_FILE_OVERLAPPING D\n            \
+                \                                            BN_OUTPUT_FILE_NON_OVE\n\
+                \                                                        RLAPPING\n\
+                \nOptions:\n  -r, --regex TEXT  Regex to capture the targeted location\
+                \ in DBN file\n                    (default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)'\
+                \ )\n  --help            Show this message and exit.\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - segmentation-fold-utils
+              - filter-by-energy
+              positional:
+              - !Positional
+                description: DBN_OUTPUT_FILE_SMALLER
+                position: 0
+                name: UTPUT_FILE_LARGER_OR_EQUAL
+                optional: false
+              named:
+              - !Flag
+                description: "Entries with transitions with energy smaller than energy\n\
+                  (< e) or without transitions will be put into\nDBN_OUTPUT_FILE_LARGER_OR_EQUAL\
+                  \ and those larger or\nequal (>= e) to DBN_OUTPUT_FILE_SMALLER"
+                synonyms:
+                - -e
+                - --energy
+                args: !SimpleFlagArg
+                  name: FLOAT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: segmentation-fold-utils filter-by-energy [OPTIONS]\
+                \ DBN_INPUT_FILE DBN_O\n                                         \
+                \       UTPUT_FILE_LARGER_OR_EQUAL\n                             \
+                \                   DBN_OUTPUT_FILE_SMALLER\n\nOptions:\n  -e, --energy\
+                \ FLOAT  Entries with transitions with energy smaller than energy\n\
+                \                      (< e) or without transitions will be put into\n\
+                \                      DBN_OUTPUT_FILE_LARGER_OR_EQUAL and those larger\
+                \ or\n                      equal (>= e) to DBN_OUTPUT_FILE_SMALLER\n\
+                \  --help              Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - segmentation-fold-utils
+              - fix-fasta-headers
+              positional:
+              - !Positional
+                description: 'Options:'
+                position: 0
+                name: FASTA_OUTPUT_FILE
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: segmentation-fold-utils fix-fasta-headers [OPTIONS]\
+                \ FASTA_INPUT_FILE\n                                             \
+                \    FASTA_OUTPUT_FILE\n\nOptions:\n  --help  Show this message and\
+                \ exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - segmentation-fold-utils
+              - add-read-counts
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: DBN_INPUT_FILE
+                optional: false
+              named:
+              - !Flag
+                description: "Regex to capture the targeted location in DBN file\n\
+                  (default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)' )"
+                synonyms:
+                - -r
+                - --regex
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: segmentation-fold-utils add-read-counts [OPTIONS]\
+                \ DBN_INPUT_FILE\n                                               BAM_INPUT_FILE\
+                \ DBN_OUTPUT_FILE\n\nOptions:\n  -r, --regex TEXT  Regex to capture\
+                \ the targeted location in DBN file\n                    (default:\
+                \ '>.*?(chr[^:]):([0-9]+)-([0-9]+)' )\n  --help            Show this\
+                \ message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - segmentation-fold-utils
+              - estimate-energy
+              positional:
+              - !Positional
+                description: -p, --precision FLOAT           Minimal difference for
+                  binary split - the
+                position: 0
+                name: segmentation-fold
+                optional: false
+              named:
+              - !Flag
+                description: "Ppath in which temporary conifig files will\nbe stored\
+                  \ (default: /tmp)"
+                synonyms:
+                - -t
+                - --temp-dir
+                args: !SimpleFlagArg
+                  name: PATH
+                optional: true
+              - !Flag
+                description: "Location of segmentatio-fold binary\n(default: segmentation-fold)"
+                synonyms:
+                - -s
+                - --segmentation-fold
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Location of segments.xml (default:\n/usr/local/share/segmentation-\n\
+                  fold/segments.xml)"
+                synonyms:
+                - -x
+                - --xml-file
+                args: !SimpleFlagArg
+                  name: FILENAME
+                optional: true
+              - !Flag
+                description: Number of threads per spawned instance of
+                synonyms:
+                - -T
+                - --threads
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: "Shuffle each sequence this many times and\npredict energy\
+                  \ of shuffled sequence(s)\n(default: 0, 0 means disabled)"
+                synonyms:
+                - -r
+                - --randomize
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: "Use sequences from a FASTA file instead of\nusing the\
+                  \ XML file that also contains the\nsegments. In XML files you can\
+                  \ explicitly\nlink one Segment(Loop) to one particular\nsequence\
+                  \ instead of doing n*n comparisons\n(default: None)"
+                synonyms:
+                - -f
+                - --sequences-from-fasta-file
+                args: !SimpleFlagArg
+                  name: PATH
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: segmentation-fold-utils estimate-energy [OPTIONS]\
+                \ DBN_OUTPUT_FILE\n\nOptions:\n  -t, --temp-dir PATH             Ppath\
+                \ in which temporary conifig files will\n                        \
+                \          be stored (default: /tmp)\n  -s, --segmentation-fold TEXT\
+                \    Location of segmentatio-fold binary\n                       \
+                \           (default: segmentation-fold)\n  -x, --xml-file FILENAME\
+                \         Location of segments.xml (default:\n                   \
+                \               /usr/local/share/segmentation-\n                 \
+                \                 fold/segments.xml)\n  -T, --threads INTEGER    \
+                \       Number of threads per spawned instance of\n              \
+                \                    segmentation-fold\n  -p, --precision FLOAT  \
+                \         Minimal difference for binary split - the\n            \
+                \                      smaller this value the slower. if this value\n\
+                \                                  equals 0, the difference is set\
+                \ to infinity\n                                  (default: 0.05)\n\
+                \  -r, --randomize INTEGER         Shuffle each sequence this many\
+                \ times and\n                                  predict energy of shuffled\
+                \ sequence(s)\n                                  (default: 0, 0 means\
+                \ disabled)\n  -f, --sequences-from-fasta-file PATH\n            \
+                \                      Use sequences from a FASTA file instead of\n\
+                \                                  using the XML file that also contains\
+                \ the\n                                  segments. In XML files you\
+                \ can explicitly\n                                  link one Segment(Loop)\
+                \ to one particular\n                                  sequence instead\
+                \ of doing n*n comparisons\n                                  (default:\
+                \ None)\n  --help                          Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - segmentation-fold-utils
+              - extract-boxed-sequences
+              positional:
+              - !Positional
+                description: BED_INPUT_FILE
+                position: 0
+                name: FASTA_INPUT_FILE
+                optional: false
+              - !Positional
+                description: 'Options:'
+                position: 1
+                name: FASTA_OUTPUT_FILE
+                optional: false
+              named:
+              - !Flag
+                description: "Maximal distance between the boxes\n(default=250bp)"
+                synonyms:
+                - -d
+                - --max-inner-dist
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: "Extend extracted sequences with this number of\nbases\
+                  \ (default: 10bp)"
+                synonyms:
+                - -e
+                - --bp-extension
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: segmentation-fold-utils extract-boxed-sequences [OPTIONS]\n\
+                \                                                       FASTA_INPUT_FILE\n\
+                \                                                       BED_INPUT_FILE\n\
+                \                                                       FASTA_OUTPUT_FILE\n\
+                \nOptions:\n  -d, --max-inner-dist INTEGER  Maximal distance between\
+                \ the boxes\n                                (default=250bp)\n  -e,\
+                \ --bp-extension INTEGER    Extend extracted sequences with this number\
+                \ of\n                                bases (default: 10bp)\n  --help\
+                \                        Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - segmentation-fold-utils
+              - find-boxes
+              positional:
+              - !Positional
+                description: 'Options:'
+                position: 0
+                name: BED_OUTPUT_FILE
+                optional: false
+              named:
+              - !Flag
+                description: "Sequence of box1 (default = C-box: 'NRUGAUG')"
+                synonyms:
+                - -c
+                - --box1
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Sequence of box2 (default = D-box: 'CUGA')"
+                synonyms:
+                - -d
+                - --box2
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: / --no-forward  Search in the forward direction of the
+                  reference
+                synonyms:
+                - --forward
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Usage: segmentation-fold-utils find-boxes [OPTIONS] FASTA_INPUT_FILE\n\
+                \                                          BED_OUTPUT_FILE\n\nOptions:\n\
+                \  -c, --box1 TEXT           Sequence of box1 (default = C-box: 'NRUGAUG')\n\
+                \  -d, --box2 TEXT           Sequence of box2 (default = D-box: 'CUGA')\n\
+                \  --forward / --no-forward  Search in the forward direction of the\
+                \ reference\n                            sequence\n  --reverse / --no-reverse\
+                \  Search in the reverse complement of the reference\n           \
+                \                 sequence\n  --help                    Show this\
+                \ message and exit.\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: Show this message and exit.
+              synonyms:
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: Show the version and exit.
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "Usage: segmentation-fold-utils [OPTIONS] COMMAND [ARGS]...\n\
+              \nOptions:\n  --version  Show the version and exit.\n  --help     Show\
+              \ this message and exit.\n\nCommands:\n  add-read-counts           Annotate\
+              \ sequences by adding the read counts from\n                       \
+              \     a bam file, within a region contained in the fasta\n         \
+              \                   header of the dbn file\n  estimate-energy      \
+              \     Estimates whether a certain Segment(Loop) is\n               \
+              \             present and for which delta-G this transistion\n     \
+              \                       takes place\n  extract-boxed-sequences   Extracts\
+              \ boxed sequences from bed_input_file which\n                      \
+              \      has to be created with 'find-box', part of this\n           \
+              \                 utility\n  filter-annotated-entries  Split entries\
+              \ into two files based on whether they\n                           \
+              \ overlap annotations in a bed file\n  filter-by-energy          Split\
+              \ entries over two files based on the\n                            estimated\
+              \ energy\n  find-boxes                Finds all occurances of two given\
+              \ boxes (sequence\n                            motifs) within a FASTA\
+              \ file (sequence headers may\n                            not contain\
+              \ spaces)\n  fix-fasta-headers         Replaces spaces in FASTA headers\
+              \ with underscores\n                            (for compatibility with\
+              \ pysam)\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -108,12 +510,9 @@ subcommands:
             Options:\n  -r, --regex TEXT  Regex to capture the targeted location in\
             \ DBN file\n                    (default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)'\
             \ )\n  --help            Show this message and exit.\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - segmentation-fold-utils
-          - filter-by-energy
+          command: *id005
           positional:
           - !Positional
             description: DBN_OUTPUT_FILE_SMALLER
@@ -152,9 +551,7 @@ subcommands:
             \  --help              Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - segmentation-fold-utils
-          - fix-fasta-headers
+          command: *id006
           positional:
           - !Positional
             description: 'Options:'
@@ -178,9 +575,7 @@ subcommands:
             Options:\n  --help  Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - segmentation-fold-utils
-          - add-read-counts
+          command: *id007
           positional:
           - !Positional
             description: ''
@@ -215,9 +610,7 @@ subcommands:
             \ )\n  --help            Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - segmentation-fold-utils
-          - estimate-energy
+          command: *id008
           positional:
           - !Positional
             description: -p, --precision FLOAT           Minimal difference for binary
@@ -318,9 +711,7 @@ subcommands:
             \                 Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - segmentation-fold-utils
-          - extract-boxed-sequences
+          command: *id009
           positional:
           - !Positional
             description: BED_INPUT_FILE
@@ -372,9 +763,7 @@ subcommands:
             \           Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id010
-          - segmentation-fold-utils
-          - find-boxes
+          command: *id010
           positional:
           - !Positional
             description: 'Options:'
@@ -420,19 +809,9 @@ subcommands:
             \     sequence\n  --help                    Show this message and exit.\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Show this message and exit.
-          synonyms:
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Show the version and exit.
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "Usage: segmentation-fold-utils [OPTIONS] COMMAND [ARGS]...\n\n\
           Options:\n  --version  Show the version and exit.\n  --help     Show this\
           \ message and exit.\n\nCommands:\n  add-read-counts           Annotate sequences\
@@ -492,7 +871,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FLOAT
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -521,7 +900,7 @@ subcommands:
         name: FASTA_OUTPUT_FILE
         optional: false
       named: []
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -554,7 +933,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -635,7 +1014,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PATH
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -701,7 +1080,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INTEGER
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -753,7 +1132,7 @@ subcommands:
         - --forward
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -830,7 +1209,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FLOAT
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -859,7 +1238,7 @@ subcommands:
     name: FASTA_OUTPUT_FILE
     optional: false
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -892,7 +1271,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -972,7 +1351,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PATH
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1038,7 +1417,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1089,7 +1468,7 @@ subcommands:
     - --forward
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:

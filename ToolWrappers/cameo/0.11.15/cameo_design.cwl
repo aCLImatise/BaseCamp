@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cameo_design.cwl
+id: cameo_design.cwl
 inputs:
 - id: in_output
   doc: "Output filename. Multiple output files can\nbe provided (pair with respective\

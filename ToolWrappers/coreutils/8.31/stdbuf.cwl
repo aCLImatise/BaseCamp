@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stdbuf.cwl
+id: stdbuf.cwl
 inputs:
 - id: in_input
   doc: adjust standard input stream buffering

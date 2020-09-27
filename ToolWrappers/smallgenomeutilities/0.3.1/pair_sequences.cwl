@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pair_sequences.cwl
+id: pair_sequences.cwl
 inputs:
 - id: in_tsv_file_patientsampleclustertype
   doc: tsv file of patient/sample/cluster/type mapping

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wig2hints.pl.cwl
+id: wig2hints.pl.cwl
 inputs:
 - id: in_width
   doc: 'Default: 40'

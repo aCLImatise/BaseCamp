@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igvtools.cwl
+id: igvtools.cwl
 inputs:
 - id: in_sort
   doc: 'sort an alignment file by start position. '

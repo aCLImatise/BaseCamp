@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biox_workflow.pl.cwl
+id: biox_workflow.pl.cwl
 inputs:
 - id: in_workflow
   doc: '- ExistingFile. Your configuration workflow'
@@ -114,11 +114,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --configfile
-- id: in_comment_char
-  doc: '- Str. Default=#.'
-  type: boolean
-  inputBinding:
-    prefix: --comment_char
 - id: in_rule_based
   doc: '- Bool. Default=1.'
   type: boolean

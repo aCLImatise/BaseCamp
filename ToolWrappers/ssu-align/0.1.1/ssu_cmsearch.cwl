@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_cmsearch.cwl
+id: ssu_cmsearch.cwl
 inputs:
 - id: in_direct_output_file
   doc: ': direct output to file <f>, not stdout'
@@ -61,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --devhelp
+- id: in_inside
+  doc: ': use scanning CM Inside algorithm  [default]'
+  type: boolean
+  inputBinding:
+    prefix: --inside
 - id: in_cy_k
   doc: ': use scanning CM CYK algorithm'
   type: boolean

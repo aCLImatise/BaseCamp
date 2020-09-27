@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../art_profiler_illumina.cwl
+id: art_profiler_illumina.cwl
 inputs: []
 outputs:
 - id: out_stdout

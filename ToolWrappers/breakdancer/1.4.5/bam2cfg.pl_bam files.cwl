@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2cfg.pl_bam files.cwl
+id: bam2cfg.pl_bam files.cwl
 inputs:
 - id: in_output_bam
   doc: output BAM

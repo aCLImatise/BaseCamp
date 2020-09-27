@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../hca_dss_login.cwl
+id: hca_dss_login.cwl
 inputs:
-- id: in_access_token
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --access-token
 - id: in_remote
   doc: ''
   type: boolean
   inputBinding:
     prefix: --remote
+- id: in_access_token
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --access-token
 outputs:
 - id: out_stdout
   doc: Standard output stream

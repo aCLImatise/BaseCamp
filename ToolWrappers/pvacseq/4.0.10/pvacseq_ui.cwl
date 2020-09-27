@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pvacseq_ui.cwl
+id: pvacseq_ui.cwl
 inputs: []
 outputs:
 - id: out_stdout

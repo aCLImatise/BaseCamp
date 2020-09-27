@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_datauri.cwl
+id: create_datauri.cwl
 inputs:
 - id: in_file_type
   doc: type of file to be converted to data uri

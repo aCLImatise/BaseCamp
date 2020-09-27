@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mobster_to_vcf.cwl
+id: mobster_to_vcf.cwl
 inputs:
 - id: in_mobster_to_vcf
   doc: ''

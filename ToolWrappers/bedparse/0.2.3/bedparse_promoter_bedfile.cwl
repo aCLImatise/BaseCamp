@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_promoter_bedfile.cwl
+id: bedparse_promoter_bedfile.cwl
 inputs:
 - id: in_un_stranded
   doc: ''

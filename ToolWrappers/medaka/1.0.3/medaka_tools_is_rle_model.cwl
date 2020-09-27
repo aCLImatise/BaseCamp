@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_tools_is_rle_model.cwl
+id: medaka_tools_is_rle_model.cwl
 inputs:
 - id: in_model
   doc: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\

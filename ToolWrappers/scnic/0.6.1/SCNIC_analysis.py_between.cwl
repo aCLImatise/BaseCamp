@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SCNIC_analysis.py_between.cwl
+id: SCNIC_analysis.py_between.cwl
 inputs:
 - id: in_table_one
   doc: 'table to be correlated (default: None)'

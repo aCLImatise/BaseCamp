@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scipiogff2gff.pl.cwl
+id: scipiogff2gff.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_getfasta.cwl
+id: bedtools_getfasta.cwl
 inputs:
 - id: in_fi
   doc: Input FASTA file

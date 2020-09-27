@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ca2mates.cwl
+id: ca2mates.cwl
 inputs:
 - id: in_asm_file
   doc: .asm file

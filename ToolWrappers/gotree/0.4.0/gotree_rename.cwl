@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_rename.cwl
+id: gotree_rename.cwl
 inputs:
 - id: in_length
   doc: Length of automatically generated id. Only with --auto (default 10)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../indelFit.cwl
+id: indelFit.cwl
 inputs:
 - id: in_alpha
   doc: Starting value of alpha, the insertion rate.  Default is 0.02.

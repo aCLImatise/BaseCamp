@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sepMPSfusion.cwl
+id: sepMPSfusion.cwl
 inputs: []
 outputs:
 - id: out_stdout

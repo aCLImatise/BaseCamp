@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_indent.cwl
+id: nw_indent.cwl
 inputs:
 - id: in_compact_remove_indentation
   doc: ': compact - remove indentation'

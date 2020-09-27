@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReverseStrand.pl.cwl
+id: ReverseStrand.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

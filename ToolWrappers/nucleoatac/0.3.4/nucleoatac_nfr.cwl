@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucleoatac_nfr.cwl
+id: nucleoatac_nfr.cwl
 inputs:
 - id: in_bed
   doc: Peaks in bed format

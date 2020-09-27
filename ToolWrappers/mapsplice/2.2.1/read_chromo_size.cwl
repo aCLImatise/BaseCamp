@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_chromo_size.cwl
+id: read_chromo_size.cwl
 inputs: []
 outputs:
 - id: out_stdout

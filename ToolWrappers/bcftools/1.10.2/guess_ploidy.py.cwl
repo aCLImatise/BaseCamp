@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guess_ploidy.py.cwl
+id: guess_ploidy.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

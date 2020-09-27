@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_count.cwl
+id: xsv_count.cwl
 inputs:
 - id: in_no_headers
   doc: "When set, the first row will not be included in\nthe count."

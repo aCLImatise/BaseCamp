@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_halGeneratorTests.cwl
+id: cactus_halGeneratorTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

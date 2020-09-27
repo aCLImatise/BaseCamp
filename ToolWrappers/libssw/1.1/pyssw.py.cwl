@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyssw.py.cwl
+id: pyssw.py.cwl
 inputs:
 - id: in_s_libpath
   doc: path of libssw.so

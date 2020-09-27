@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ChIPAssoc.cwl
+id: ChIPAssoc.cwl
 inputs:
 - id: in_bed
   doc: "BED file of genomic coordinates (e.g. ChIP-Seq peaks).\nThe center of each\

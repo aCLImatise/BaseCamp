@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_tags_to_primers.py.cwl
+id: add_tags_to_primers.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virmet_update.cwl
+id: virmet_update.cwl
 inputs:
 - id: in_viral
   doc: update viral [n]ucleic/[p]rotein

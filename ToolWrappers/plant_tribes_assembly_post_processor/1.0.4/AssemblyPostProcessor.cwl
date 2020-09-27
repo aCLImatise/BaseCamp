@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AssemblyPostProcessor.cwl
+id: AssemblyPostProcessor.cwl
 inputs: []
 outputs:
 - id: out_stdout

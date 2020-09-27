@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jhsdb_hsdb.cwl
+id: jhsdb_hsdb.cwl
 inputs:
 - id: in_exe
   doc: executable image name

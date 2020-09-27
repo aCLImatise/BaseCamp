@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fragScaff.pl.cwl
+id: fragScaff.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

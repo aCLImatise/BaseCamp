@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_do_mcl.pl.cwl
+id: proteinortho_do_mcl.pl.cwl
 inputs:
 - id: in_cores
   doc: ''

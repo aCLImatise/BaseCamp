@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_create.cwl
+id: blobtools_create.cwl
 inputs:
 - id: in_in_file
   doc: FASTA file of assembly. Headers are split at whitespaces.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../keyFreq.cwl
+id: keyFreq.cwl
 inputs:
 - id: in_p
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapStoreBuild.cwl
+id: overlapStoreBuild.cwl
 inputs:
 - id: in_path_store_create
   doc: path to store to create

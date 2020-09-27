@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractGenes.pl.cwl
+id: extractGenes.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

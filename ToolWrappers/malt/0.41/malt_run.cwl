@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../malt_run.cwl
+id: malt_run.cwl
 inputs:
 - id: in_mode
   doc: '[string]                  Program mode. Mandatory option. Legal values: Unknown,

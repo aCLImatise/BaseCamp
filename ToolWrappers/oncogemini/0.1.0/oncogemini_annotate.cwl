@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_annotate.cwl
+id: oncogemini_annotate.cwl
 inputs:
 - id: in_tabixed_bed_file
   doc: The TABIX'ed BED file containing the annotations

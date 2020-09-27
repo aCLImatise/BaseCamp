@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_csv2xls.cwl
+id: bioconvert_csv2xls.cwl
 inputs:
 - id: in_force
   doc: "if outfile exists, it is overwritten with this option\n(default: False)"

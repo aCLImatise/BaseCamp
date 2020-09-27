@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matlock.cwl
+id: matlock.cwl
 inputs:
 - id: in_command
   doc: ''

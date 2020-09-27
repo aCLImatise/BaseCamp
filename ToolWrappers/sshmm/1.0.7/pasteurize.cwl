@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pasteurize.cwl
+id: pasteurize.cwl
 inputs:
 - id: in_all_imports
   doc: Adds all __future__ and future imports to each module

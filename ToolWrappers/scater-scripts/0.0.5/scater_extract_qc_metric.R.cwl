@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scater_extract_qc_metric.R.cwl
+id: scater_extract_qc_metric.R.cwl
 inputs:
 - id: in_input_object_file
   doc: singleCellExperiment object containing expression values and experimental information.

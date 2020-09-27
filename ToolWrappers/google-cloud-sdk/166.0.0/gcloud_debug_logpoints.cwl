@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_debug_logpoints.cwl
+id: gcloud_debug_logpoints.cwl
 inputs:
 - id: in_target
   doc: "=(ID|DESCRIPTION_REGEXP)\nThe debug target. It may be a target ID or name\
@@ -10,16 +10,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --target
-- id: in_condition
-  doc: '"price < .50"'
-  type: boolean
-  inputBinding:
-    prefix: --condition
-- id: in_format
-  doc: ="value(logQuery)")
-  type: boolean
-  inputBinding:
-    prefix: --format
 - id: in_log_points
   doc: SYNOPSIS
   type: string

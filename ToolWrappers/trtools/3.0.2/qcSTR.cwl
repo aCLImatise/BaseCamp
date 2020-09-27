@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qcSTR.cwl
+id: qcSTR.cwl
 inputs:
 - id: in_vcf
   doc: VCF file to analyze.

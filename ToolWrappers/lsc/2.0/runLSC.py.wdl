@@ -13,7 +13,6 @@ task RunLSCpy {
     Int? parallelized_mode_two
     String? aligner
     Int? sort_mem_max
-    String? memory_unix_sort
     Int? min_number_of_non_n
     Int? max_n
     Int? error_rate_threshold
@@ -34,7 +33,6 @@ task RunLSCpy {
       ~{if defined(parallelized_mode_two) then ("--parallelized_mode_2 " +  '"' + parallelized_mode_two + '"') else ""} \
       ~{if defined(aligner) then ("--aligner " +  '"' + aligner + '"') else ""} \
       ~{if defined(sort_mem_max) then ("--sort_mem_max " +  '"' + sort_mem_max + '"') else ""} \
-      ~{if defined(memory_unix_sort) then ("-S " +  '"' + memory_unix_sort + '"') else ""} \
       ~{if defined(min_number_of_non_n) then ("--minNumberofNonN " +  '"' + min_number_of_non_n + '"') else ""} \
       ~{if defined(max_n) then ("--maxN " +  '"' + max_n + '"') else ""} \
       ~{if defined(error_rate_threshold) then ("--error_rate_threshold " +  '"' + error_rate_threshold + '"') else ""} \
@@ -53,8 +51,7 @@ task RunLSCpy {
     mode: "0: run through, 1: Prepare homopolymer compressed long\\nand short reads. 2: Execute correction on batches of\\nlong reads. Can be superseded by --parallelized_mode_2\\nwhere you will only execute a single batch. 3: Combine\\ncorrected batches into a final output folder.\\n(default: 0)"
     parallelized_mode_two: "Mode 2, but you specify a sigle batch to execute.\\n(default: None)"
     aligner: "Aligner choice. hisat parameters have not been\\noptimized, so we recommend bowtie2. (default: bowtie2)"
-    sort_mem_max: ""
-    memory_unix_sort: "for memory in unix sort (default: None)"
+    sort_mem_max: "-S option for memory in unix sort (default: None)"
     min_number_of_non_n: "Minimum number of non-N characters in the compressed\\nread (default: 40)"
     max_n: "Maximum number of Ns in the compressed read (default:\\nNone)"
     error_rate_threshold: "Maximum percent of errors in a read to use the\\nalignment (default: 12)"

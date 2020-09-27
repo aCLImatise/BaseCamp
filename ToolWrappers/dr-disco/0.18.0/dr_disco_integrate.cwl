@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dr_disco_integrate.cwl
+id: dr_disco_integrate.cwl
 inputs:
 - id: in_gtf
   doc: "Use gene annotation for estimating fusion genes and improve\nclassification\

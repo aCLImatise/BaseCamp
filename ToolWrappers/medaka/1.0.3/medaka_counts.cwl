@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_counts.cwl
+id: medaka_counts.cwl
 inputs:
 - id: in_print
   doc: 'print counts. (default: False)'

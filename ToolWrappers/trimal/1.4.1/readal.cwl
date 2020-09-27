@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readal.cwl
+id: readal.cwl
 inputs:
 - id: in_in
   doc: Input file in several formats.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../routines.pm.cwl
+id: routines.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

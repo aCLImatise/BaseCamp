@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makePeakMatrix.R.cwl
+id: makePeakMatrix.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

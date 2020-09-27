@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SampleSimilarity.cwl
+id: SampleSimilarity.cwl
 inputs:
 - id: in_in
   doc: Input variant lists in VCF format (two or more). If only one file is given,

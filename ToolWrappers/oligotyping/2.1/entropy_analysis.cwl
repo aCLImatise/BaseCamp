@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../entropy_analysis.cwl
+id: entropy_analysis.cwl
 inputs: []
 outputs:
 - id: out_stdout

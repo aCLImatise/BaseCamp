@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treeGen.cwl
+id: treeGen.cwl
 inputs:
 - id: in_or
   doc: treeGen '*speciesFile' ['*groupFile'] > outfile

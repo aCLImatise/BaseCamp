@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cs_chart.cwl
+id: cs_chart.cwl
 inputs:
 - id: in_in
   doc: input files, made by 'count' subprogram

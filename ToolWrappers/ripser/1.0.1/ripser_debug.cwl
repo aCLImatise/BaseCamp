@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ripser_debug.cwl
+id: ripser_debug.cwl
 inputs:
 - id: in_format
   doc: "use the specified file format for the input. Options are:\nlower-distance\

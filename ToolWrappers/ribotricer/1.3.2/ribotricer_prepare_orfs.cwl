@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribotricer_prepare_orfs.cwl
+id: ribotricer_prepare_orfs.cwl
 inputs:
 - id: in_gtf
   doc: Path to GTF file  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pandaseq_diff.cwl
+id: pandaseq_diff.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastqAddBarcode.cwl
+id: FastqAddBarcode.cwl
 inputs:
 - id: in_in_one
   doc: Input FASTQ file 1.

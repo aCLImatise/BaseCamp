@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recurrent_neural_network.cwl
+id: recurrent_neural_network.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rm_low_coverage_duplicated_contigs.py.cwl
+id: rm_low_coverage_duplicated_contigs.py.cwl
 inputs:
 - id: in_cov_t
   doc: "With ratio (coverage of query/coverage of subject)\nbelow which, the query\

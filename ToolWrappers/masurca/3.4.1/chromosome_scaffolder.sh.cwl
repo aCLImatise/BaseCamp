@@ -1,42 +1,6 @@
 class: CommandLineTool
-id: ../../../chromosome_scaffolder.sh.cwl
+id: chromosome_scaffolder.sh.cwl
 inputs:
-- id: in_r
-  doc: MANDATORY
-  type: string
-  inputBinding:
-    prefix: -r
-- id: in_q
-  doc: MANDATORY
-  type: string
-  inputBinding:
-    prefix: -q
-- id: in_t
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -t
-- id: in_minimum_sequence_similarity
-  doc: '<minimum sequence similarity percentage: default 97>'
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: in_merge_equence_alignments
-  doc: '<merge equence alignments slack: default 100000>'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: in_nb
-  doc: 'not align reads to query contigs and do not attempt to break at misassemblies:
-    default off'
-  type: string
-  inputBinding:
-    prefix: -nb
-- id: in_v
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -v
 - id: in_mandatory_nb_set
   doc: MANDATORY unless -nb set
   type: string

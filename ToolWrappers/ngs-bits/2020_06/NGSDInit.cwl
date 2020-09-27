@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDInit.cwl
+id: NGSDInit.cwl
 inputs:
 - id: in_add
   doc: "Additional SQL script to execute after database initialization.\nDefault value:\

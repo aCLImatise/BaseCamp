@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shred.cwl
+id: shred.cwl
 inputs:
 - id: in_force
   doc: change permissions to allow writing if necessary

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProbScan.cwl
+id: ProbScan.cwl
 inputs:
 - id: in_hairpin
   doc: Print probabilities for all possible hairpin loops.

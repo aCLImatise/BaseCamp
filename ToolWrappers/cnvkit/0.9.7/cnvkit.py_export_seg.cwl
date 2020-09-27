@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_export_seg.cwl
+id: cnvkit.py_export_seg.cwl
 inputs:
 - id: in_enumerate_chrom_s
   doc: Replace chromosome names with sequential integer IDs.

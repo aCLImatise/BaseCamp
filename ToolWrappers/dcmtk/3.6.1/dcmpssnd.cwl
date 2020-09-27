@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmpssnd.cwl
+id: dcmpssnd.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

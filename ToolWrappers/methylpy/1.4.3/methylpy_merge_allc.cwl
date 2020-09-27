@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methylpy_merge_allc.cwl
+id: methylpy_merge_allc.cwl
 inputs:
 - id: in_output_file
   doc: '[--num-procs NUM_PROCS]'

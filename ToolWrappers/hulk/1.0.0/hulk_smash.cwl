@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hulk_smash.cwl
+id: hulk_smash.cwl
 inputs:
 - id: in_algorithm
   doc: tells HULK which sketching algorithm to use [histosketch kmv khf] (default

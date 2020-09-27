@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.nglview_pre_unlink.sh.cwl
+id: .nglview_pre_unlink.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

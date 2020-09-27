@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenContactCLI.cwl
+id: OpenContactCLI.cwl
 inputs:
 - id: in_prot_a
   doc: Path to proteinA.pdb

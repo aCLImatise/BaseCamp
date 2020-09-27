@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_promote_by_default.cwl
+id: gcloud_config_promote_by_default.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

@@ -20,11 +20,9 @@ task Spinepl {
     Boolean? diag_factor
     Boolean? min_match
     Boolean? no_simplify
-    String homologous
   }
   command <<<
     spine_pl \
-      ~{homologous} \
       ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
       ~{if defined(pct_core) then ("--pctcore " +  '"' + pct_core + '"') else ""} \
       ~{if defined(max_dist) then ("--maxdist " +  '"' + max_dist + '"') else ""} \
@@ -63,7 +61,6 @@ task Spinepl {
     diag_factor: "Float (default: 0.12)"
     min_match: "Integer (default: 20)"
     no_simplify: "(default: simplify)"
-    homologous: "(default: 85) "
   }
   output {
     File out_stdout = stdout()

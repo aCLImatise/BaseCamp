@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rucs.cwl
+id: rucs.cwl
 inputs: []
 outputs:
 - id: out_stdout

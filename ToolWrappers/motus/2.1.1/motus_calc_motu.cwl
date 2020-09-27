@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../motus_calc_motu.cwl
+id: motus_calc_motu.cwl
 inputs:
 - id: in_sample_name
   doc: sample name

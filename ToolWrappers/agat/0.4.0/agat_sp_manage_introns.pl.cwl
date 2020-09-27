@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_manage_introns.pl.cwl
+id: agat_sp_manage_introns.pl.cwl
 inputs:
 - id: in_ref_file
   doc: "Input GTF/GFF file. You can use several input files by doing: -f\nfile1 -f\

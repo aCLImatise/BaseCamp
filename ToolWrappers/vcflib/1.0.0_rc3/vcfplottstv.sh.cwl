@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfplottstv.sh.cwl
+id: vcfplottstv.sh.cwl
 inputs:
 - id: in_g
   doc: ''

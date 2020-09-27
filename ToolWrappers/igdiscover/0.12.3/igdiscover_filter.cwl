@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_filter.cwl
+id: igdiscover_filter.cwl
 inputs:
 - id: in_v_coverage
   doc: "Require that the sequence covers at least PERCENT of\nthe V gene. Default:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_analyze_help.cwl
+id: mixcr_analyze_help.cwl
 inputs:
 - id: in_scr
   doc: ''

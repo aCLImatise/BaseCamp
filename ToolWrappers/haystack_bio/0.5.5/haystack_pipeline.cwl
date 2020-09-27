@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haystack_pipeline.cwl
+id: haystack_pipeline.cwl
 inputs:
 - id: in_selection
   doc: HOTSPOTS OF VARIABILITY AND ENRICHED MOTIFS-

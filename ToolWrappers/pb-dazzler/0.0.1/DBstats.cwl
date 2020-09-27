@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBstats.cwl
+id: DBstats.cwl
 inputs:
 - id: in_give_stats_untrimmed
   doc: ': Give stats for the untrimmed database.'

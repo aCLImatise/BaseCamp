@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cluster_by_UMI_mapping.py.cwl
+id: cluster_by_UMI_mapping.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

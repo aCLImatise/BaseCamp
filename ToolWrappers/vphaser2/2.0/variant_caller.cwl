@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../variant_caller.cwl
+id: variant_caller.cwl
 inputs:
 - id: in__output_directory
   doc: '[output DIR] -- output directory'

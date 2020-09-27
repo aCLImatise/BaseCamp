@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pgcgap.cwl
+id: pgcgap.cwl
 inputs:
 - id: in_for_thresholds_
   doc: for thresholds 0.5-0.6, -n 4 for

@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceUtilitiesMergeMultipleGzipFiles {
   input {
-    String? var_output
+    File? var_output
     File? config
     String? section
     String? verbosity
@@ -19,7 +19,7 @@ task PhyluceUtilitiesMergeMultipleGzipFiles {
       ~{if (trimmed) then "--trimmed" else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--section SECTION]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]\\n[--trimmed]"
     config: "The path to the config file to use for merging."
     section: "The section holding the merge info."
     verbosity: "The logging level to use."

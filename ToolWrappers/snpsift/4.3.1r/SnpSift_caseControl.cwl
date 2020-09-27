@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_caseControl.cwl
+id: SnpSift_caseControl.cwl
 inputs:
 - id: in_chi_two
   doc: ': Use ChiSquare approximarion instead of Fisher exact test.'

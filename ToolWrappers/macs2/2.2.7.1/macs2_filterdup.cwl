@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_filterdup.cwl
+id: macs2_filterdup.cwl
 inputs:
 - id: in_i_file
   doc: "Alignment file. If multiple files are given as '-t A B\nC', then they will\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obabel.cwl
+id: obabel.cwl
 inputs: []
 outputs:
 - id: out_stdout

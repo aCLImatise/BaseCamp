@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hallascatter.cwl
+id: hallascatter.cwl
 inputs:
 - id: in_input
   doc: HAllA output directory

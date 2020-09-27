@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Phi.cwl
+id: Phi.cwl
 inputs:
 - id: in_filename_fasta_format
   doc: ': Filename = FASTA format'

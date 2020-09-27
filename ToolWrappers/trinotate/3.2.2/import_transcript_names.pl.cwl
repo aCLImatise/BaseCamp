@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_transcript_names.pl.cwl
+id: import_transcript_names.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

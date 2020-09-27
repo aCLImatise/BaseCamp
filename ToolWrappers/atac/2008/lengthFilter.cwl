@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lengthFilter.cwl
+id: lengthFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_splitter.pl.cwl
+id: fasta_splitter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

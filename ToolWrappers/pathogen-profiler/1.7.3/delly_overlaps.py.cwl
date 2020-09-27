@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delly_overlaps.py.cwl
+id: delly_overlaps.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

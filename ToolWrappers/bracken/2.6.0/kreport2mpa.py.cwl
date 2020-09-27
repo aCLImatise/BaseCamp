@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kreport2mpa.py.cwl
+id: kreport2mpa.py.cwl
 inputs:
 - id: in_report_file
   doc: Input kraken report file for converting

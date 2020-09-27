@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_epca.cwl
+id: guppy_epca.cwl
 inputs:
 - id: in_out_dir
   doc: Specify the directory to write files to.

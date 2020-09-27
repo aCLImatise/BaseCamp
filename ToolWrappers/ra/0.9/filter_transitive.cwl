@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_transitive.cwl
+id: filter_transitive.cwl
 inputs:
 - id: in_depot
   doc: depot path (string)

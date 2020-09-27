@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_evaluate.cwl
+id: vtools_evaluate.cwl
 inputs:
 - id: in_call_vcf
   doc: "Path to VCF with calls to be evaluated\n[required]"

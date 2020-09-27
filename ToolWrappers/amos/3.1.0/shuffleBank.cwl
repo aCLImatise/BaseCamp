@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuffleBank.cwl
+id: shuffleBank.cwl
 inputs:
 - id: in_bank
   doc: bank where assembly is stored

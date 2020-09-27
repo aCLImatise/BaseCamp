@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_readcounts.cwl
+id: varscan_readcounts.cwl
 inputs:
 - id: in_variants_file
   doc: list of variants at which to report readcounts

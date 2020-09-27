@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_assemble_scaffold.cwl
+id: hp_assemble_scaffold.cwl
 inputs:
 - id: in_contigs_fa
   doc: Fasta file with assembled contigs

@@ -1,8 +1,12 @@
 class: CommandLineTool
-id: ../../../snaptools_align_paired_end.cwl
+id: snaptools_align_paired_end.cwl
 inputs:
 - id: in_input_fast_q_one
-  doc: ''
+  doc: "INPUT_FASTQ2 --output-bam OUTPUT_BAM\n[--aligner ALIGNER]\n[--path-to-aligner\
+    \ PATH_TO_ALIGNER]\n[--aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\n\
+    [--read-fastq-command READ_FASTQ_COMMAND]\n[--min-cov MIN_COV]\n[--num-threads\
+    \ NUM_THREADS]\n[--if-sort IF_SORT]\n[--tmp-folder TMP_FOLDER]\n[--overwrite OVERWRITE]\
+    \ [--verbose VERBOSE]"
   type: long
   inputBinding:
     prefix: --input-fastq1

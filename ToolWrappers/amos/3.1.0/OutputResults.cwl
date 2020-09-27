@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OutputResults.cwl
+id: OutputResults.cwl
 inputs:
 - id: in_version
   doc: ''

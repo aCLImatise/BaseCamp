@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../significanceCalculator.py.cwl
+id: significanceCalculator.py.cwl
 inputs:
 - id: in_m
   doc: ''

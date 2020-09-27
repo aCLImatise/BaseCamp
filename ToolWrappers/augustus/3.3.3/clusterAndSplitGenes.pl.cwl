@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clusterAndSplitGenes.pl.cwl
+id: clusterAndSplitGenes.pl.cwl
 inputs:
 - id: in_verbose
   doc: "threshold: minimal number of dependencies between two genes\nin order to force\

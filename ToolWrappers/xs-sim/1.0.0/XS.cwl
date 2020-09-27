@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../XS.cwl
+id: XS.cwl
 inputs:
 - id: in_verbose_mode
   doc: verbose mode

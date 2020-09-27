@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../realignsamfile.cwl
+id: realignsamfile.cwl
 inputs:
 - id: in_filter_circular_reads
   doc: "filter the reads\nthat don't map to a\ncircular identifier\n(true/false),\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_random_seq.cwl
+id: rsat_random_seq.cwl
 inputs:
 - id: in_sequence_length
   doc: sequence length
@@ -39,11 +39,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lw
-- id: in_type
-  doc: protein|DNA|other
-  type: boolean
-  inputBinding:
-    prefix: -type
 - id: in_seed
   doc: '# seed for the random generator'
   type: boolean

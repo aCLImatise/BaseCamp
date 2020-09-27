@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bubbledetector.py.cwl
+id: bubbledetector.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

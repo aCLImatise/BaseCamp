@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigMerDepth_56mer.cwl
+id: contigMerDepth_56mer.cwl
 inputs:
 - id: in_mer_count_file_prefix
   doc: ''

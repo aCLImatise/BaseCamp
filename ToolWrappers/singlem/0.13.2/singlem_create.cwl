@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../singlem_create.cwl
+id: singlem_create.cwl
 inputs:
 - id: in_output_single_m_package
-  doc: ''
+  doc: "PATH --hmm_position INTEGER --window_size INTEGER\n[--force]"
   type: File
   inputBinding:
     prefix: --output_singlem_package

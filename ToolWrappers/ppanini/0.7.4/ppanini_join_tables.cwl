@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_join_tables.cwl
+id: ppanini_join_tables.cwl
 inputs:
 - id: in_verbose
   doc: additional output is printed

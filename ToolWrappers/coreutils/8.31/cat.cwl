@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cat.cwl
+id: cat.cwl
 inputs:
 - id: in_show_all
   doc: equivalent to -vET

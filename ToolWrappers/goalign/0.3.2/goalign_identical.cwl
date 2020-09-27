@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_identical.cwl
+id: goalign_identical.cwl
 inputs:
 - id: in_compared
   doc: Compared alignment file (default "none")

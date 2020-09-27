@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bubbleprocesser.py.cwl
+id: bubbleprocesser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MasurcaSuperReads.pm.cwl
+id: MasurcaSuperReads.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

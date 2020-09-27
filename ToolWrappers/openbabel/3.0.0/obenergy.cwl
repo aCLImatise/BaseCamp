@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obenergy.cwl
+id: obenergy.cwl
 inputs:
 - id: in_verbose_print_interactions
   doc: 'verbose: print out indivual energy interactions'

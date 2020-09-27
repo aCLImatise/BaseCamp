@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkfake.cwl
+id: mkfake.cwl
 inputs:
 - id: in_plates
   doc: ': number of plates (default: 1)'

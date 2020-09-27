@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TrinityStats.pl.cwl
+id: TrinityStats.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

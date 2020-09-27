@@ -2,22 +2,20 @@ version 1.0
 
 task GetgffinfoDbm {
   input {
-    Boolean? verbose
-    Directory? output_dir
+    Directory? verbose
     String? gff_file
   }
   command <<<
     get_gff_info dbm \
       ~{gff_file} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    output_dir: "Directory for the database  [default: gff-dbm]"
+    verbose: "-d, --output-dir TEXT  Directory for the database  [default: gff-dbm]\\n--help                 Show this message and exit.\\n"
     gff_file: ""
   }
   output {
     File out_stdout = stdout()
+    Directory out_verbose = "${in_verbose}"
   }
 }

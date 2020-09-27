@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bxcl_seqqc.cwl
+id: bxcl_seqqc.cwl
 inputs:
 - id: in_files
   doc: F1    Pair of input FastQ files.

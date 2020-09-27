@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffutils_cli_clean.cwl
+id: gffutils_cli_clean.cwl
 inputs:
 - id: in_filename
   doc: GFF or GTF file to use

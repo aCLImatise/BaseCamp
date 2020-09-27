@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../groopm.cwl
+id: groopm.cwl
 inputs: []
 outputs:
 - id: out_stdout

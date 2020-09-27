@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzeRNA.pl.cwl
+id: analyzeRNA.pl.cwl
 inputs:
 - id: in_or
   doc: ': analyzeRNA.pl <custom RNA/GTF file> <organism|none>  [additional options...]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_tiers.cwl
+id: gcloud_sql_tiers.cwl
 inputs:
 - id: in_optional
   doc: ''

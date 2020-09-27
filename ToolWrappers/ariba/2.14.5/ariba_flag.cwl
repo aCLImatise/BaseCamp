@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_flag.cwl
+id: ariba_flag.cwl
 inputs:
 - id: in_flag
   doc: Flag to be translated (an integer)

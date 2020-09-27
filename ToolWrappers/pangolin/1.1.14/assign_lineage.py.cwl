@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assign_lineage.py.cwl
+id: assign_lineage.py.cwl
 inputs:
 - id: in_format
   doc: "what format is the tree file. This is passed to\ndendropy. default is 'nexus'"

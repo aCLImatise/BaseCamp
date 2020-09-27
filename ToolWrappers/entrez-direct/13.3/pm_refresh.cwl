@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pm_refresh.cwl
+id: pm_refresh.cwl
 inputs:
 - id: in_cat
   doc: ''

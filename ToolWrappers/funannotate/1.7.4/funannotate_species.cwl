@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_species.cwl
+id: funannotate_species.cwl
 inputs:
 - id: in_d
   doc: ''

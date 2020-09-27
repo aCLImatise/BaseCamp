@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../finalReport.py.cwl
+id: finalReport.py.cwl
 inputs:
 - id: in_file
   doc: configuration file

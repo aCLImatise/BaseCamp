@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Ribotaper.sh.cwl
+id: Ribotaper.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

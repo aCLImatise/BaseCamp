@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qtlplot.cwl
+id: qtlplot.cwl
 inputs:
 - id: in__vcf_vcf
   doc: ", --vcf            VCF file which contains parent, bulk1, and bulk2\nin this\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scater_plot_reduced_dim.R.cwl
+id: scater_plot_reduced_dim.R.cwl
 inputs:
 - id: in_input_object_file
   doc: singleCellExperiment object containing expression values and experimental information.

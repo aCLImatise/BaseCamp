@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbMarkerAnnotate.cwl
+id: cbMarkerAnnotate.cwl
 inputs:
 - id: in_debug
   doc: show debug messages

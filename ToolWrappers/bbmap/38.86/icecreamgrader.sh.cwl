@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../icecreamgrader.sh.cwl
+id: icecreamgrader.sh.cwl
 inputs:
 - id: in_in
   doc: ''

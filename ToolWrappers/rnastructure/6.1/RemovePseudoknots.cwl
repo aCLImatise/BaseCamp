@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RemovePseudoknots.cwl
+id: RemovePseudoknots.cwl
 inputs:
 - id: in_dna
   doc: "Specify that the sequence is DNA, and DNA parameters are to be used.\nDefault\

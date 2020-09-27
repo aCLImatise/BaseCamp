@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pureclip.cwl
+id: pureclip.cwl
 inputs:
 - id: in_in
   doc: 'Target bam files. Valid filetype is: .bam.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_dmatrix.cwl
+id: Clustering_dmatrix.cwl
 inputs:
 - id: in_dist_cut_off
   doc: Only save distances below the cutoff

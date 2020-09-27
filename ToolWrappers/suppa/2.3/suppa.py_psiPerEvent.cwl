@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../suppa.py_psiPerEvent.cwl
+id: suppa.py_psiPerEvent.cwl
 inputs:
 - id: in_ioe_file
   doc: "Input file with the event-transcripts equivalence\n(.ioe format)."

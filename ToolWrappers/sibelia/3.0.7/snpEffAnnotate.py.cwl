@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snpEffAnnotate.py.cwl
+id: snpEffAnnotate.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

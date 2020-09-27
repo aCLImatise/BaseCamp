@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_accuracy.py.cwl
+id: bam_accuracy.py.cwl
 inputs:
 - id: in_bam_region_none
   doc: BAM region (None).

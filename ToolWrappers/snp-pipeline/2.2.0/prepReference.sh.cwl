@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepReference.sh.cwl
+id: prepReference.sh.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result files already exist\nand are newer than\

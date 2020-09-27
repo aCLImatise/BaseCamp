@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getAlignmentWindows.cwl
+id: getAlignmentWindows.cwl
 inputs:
 - id: in_x_mfa_alignment
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_stats.cwl
+id: oncogemini_stats.cwl
 inputs:
 - id: in_ts_tv
   doc: Report the overall ts/tv ratio.

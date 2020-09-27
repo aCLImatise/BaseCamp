@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dendro.R.cwl
+id: dendro.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

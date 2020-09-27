@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene_annotation_parser.py.cwl
+id: gene_annotation_parser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_pull.cwl
+id: sketchy_pull.cwl
 inputs:
 - id: in_path
   doc: Path to sketchy home directory [~/.sketchy ]

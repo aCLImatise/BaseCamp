@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makembindex.cwl
+id: makembindex.cwl
 inputs: []
 outputs:
 - id: out_stdout

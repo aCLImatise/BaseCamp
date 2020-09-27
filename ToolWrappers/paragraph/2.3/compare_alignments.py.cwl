@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_alignments.py.cwl
+id: compare_alignments.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

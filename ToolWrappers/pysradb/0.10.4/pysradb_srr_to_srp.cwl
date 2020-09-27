@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pysradb_srr_to_srp.cwl
+id: pysradb_srr_to_srp.cwl
 inputs:
 - id: in_db
   doc: Path to SRAmetadb.sqlite file

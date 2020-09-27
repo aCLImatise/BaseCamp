@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deltaBS.pl.cwl
+id: deltaBS.pl.cwl
 inputs:
 - id: in__filetype_specify
   doc: "/ --filetype        :       Specify filetype, must be 'embl', 'genbank', or\

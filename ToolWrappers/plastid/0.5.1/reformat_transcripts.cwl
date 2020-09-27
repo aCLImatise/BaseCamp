@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reformat_transcripts.cwl
+id: reformat_transcripts.cwl
 inputs:
 - id: in_no_escape
   doc: "If specified and output format is GTF2, special\ncharacters in column 9 will\

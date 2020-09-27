@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../incorporateVCF.py.cwl
+id: incorporateVCF.py.cwl
 inputs:
 - id: in_threads_to_run
   doc: Threads to run

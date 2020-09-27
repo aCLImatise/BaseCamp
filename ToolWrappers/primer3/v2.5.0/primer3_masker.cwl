@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../primer3_masker.cwl
+id: primer3_masker.cwl
 inputs:
-- id: in_probability_cut_off
-  doc: '- masking cutoff [0, 1] (default: >=0.1)'
-  type: boolean
-  inputBinding:
-    prefix: --probability_cutoff
 - id: in_km_er_lists_path
   doc: '- path to the kmer list files (default: ../kmer_lists/)'
   type: boolean

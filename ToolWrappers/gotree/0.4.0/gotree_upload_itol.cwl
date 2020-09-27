@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_upload_itol.cwl
+id: gotree_upload_itol.cwl
 inputs:
 - id: in_name
   doc: iTOL tree name prefix (default "tree")

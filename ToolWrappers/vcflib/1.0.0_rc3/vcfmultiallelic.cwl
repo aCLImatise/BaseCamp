@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfmultiallelic.cwl
+id: vcfmultiallelic.cwl
 inputs: []
 outputs:
 - id: out_stdout

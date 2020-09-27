@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_tree2pag.pl.cwl
+id: bp_tree2pag.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

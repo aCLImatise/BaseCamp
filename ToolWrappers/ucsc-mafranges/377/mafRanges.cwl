@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafRanges.cwl
+id: mafRanges.cwl
 inputs:
 - id: in_other_db
   doc: "Output ranges only for alignments that include oDb.\noDB can be comma-separated\

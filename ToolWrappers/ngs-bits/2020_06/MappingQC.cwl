@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MappingQC.cwl
+id: MappingQC.cwl
 inputs:
 - id: in_in
   doc: Input BAM file.

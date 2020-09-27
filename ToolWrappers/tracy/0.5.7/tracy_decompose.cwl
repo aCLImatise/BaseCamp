@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracy_decompose.cwl
+id: tracy_decompose.cwl
 inputs:
 - id: in_arg_gzipped_fasta
   doc: '[ --genome ] arg                 (gzipped) fasta or wildtype ab1 file'

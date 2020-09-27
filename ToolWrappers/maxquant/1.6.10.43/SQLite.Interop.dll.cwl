@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SQLite.Interop.dll.cwl
+id: SQLite.Interop.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

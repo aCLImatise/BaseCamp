@@ -32,12 +32,12 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        EXCEPTION:
         WARNING:
-        ERROR:
-        INFO:
         CRITICAL:
+        ERROR:
         DEBUG:
+        INFO:
+        EXCEPTION:
     optional: true
   parent: !Command
     command: *id001
@@ -70,14 +70,14 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? DEBUG
-            ? ERROR
             ? EXCEPTION
-            ? CRITICAL
-            ? INFO
             ? WARNING
+            ? ERROR
+            ? INFO
+            ? CRITICAL
+            ? DEBUG
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
         named: []
@@ -108,14 +108,88 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
+                ? DEBUG
                 ? ERROR
                 ? EXCEPTION
-                ? INFO
-                ? DEBUG
-                ? WARNING
                 ? CRITICAL
+                ? INFO
+                ? WARNING
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: broad_utils.py
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: subcommand
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: get_bustard_dir
+                optional: false
+              named:
+              - !Flag
+                description: "Verboseness of output. [default: ERROR]\n"
+                synonyms:
+                - --loglevel
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? ERROR
+                    ? EXCEPTION
+                    ? INFO
+                    ? DEBUG
+                    ? WARNING
+                    ? CRITICAL
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: broad_utils.py subcommand get_bustard_dir [-h]\n\
+                \                                                 [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                \                                                 inDir\n\nFind the\
+                \ basecalls directory from a Picard directory\n\npositional arguments:\n\
+                \  inDir                 Picard directory\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  --loglevel\
+                \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                \
+                \        Verboseness of output. [default: ERROR]\n"
+              generated_using: &id004
+              - --help
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "\nEnter a subcommand to view additional information:\n\n \
+              \    broad_utils.py \e[1mget_bustard_dir\e[0m [...]\n          Find\
+              \ the basecalls directory from a Picard directory\n\n     broad_utils.py\
+              \ \e[1mget_run_date\e[0m [...]\n          Find the sequencing run date\
+              \ from a Picard directory\n\n     broad_utils.py \e[1mget_all_names\e\
+              [0m [...]\n          Get all samples\n\nusage: broad_utils.py subcommand\n\
+              \nUtilities for getting sequences out of the Broad walk-up sequencing\
+              \ pipeline.\nThese utilities are probably not of much use outside the\
+              \ Broad.\n\nsubcommands:\n  \e[F\n    get_bustard_dir\n    get_run_date\n\
+              \    get_all_names\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -134,8 +208,7 @@ subcommands:
             \                 Picard directory\n\noptional arguments:\n  -h, --help\
             \            show this help message and exit\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
             \                        Verboseness of output. [default: ERROR]\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         usage: []
         help_flag:
         usage_flag:

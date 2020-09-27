@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_proteome_from_gff.cwl
+id: extract_proteome_from_gff.cwl
 inputs:
 - id: in_output_suffix
   doc: output suffix [proteome.faa]

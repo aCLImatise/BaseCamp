@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../winconfig.bat.cwl
+id: winconfig.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

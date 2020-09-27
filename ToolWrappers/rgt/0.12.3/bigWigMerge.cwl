@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigWigMerge.cwl
+id: bigWigMerge.cwl
 inputs: []
 outputs:
 - id: out_stdout

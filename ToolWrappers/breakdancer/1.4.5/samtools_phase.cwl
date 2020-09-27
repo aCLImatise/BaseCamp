@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_phase.cwl
+id: samtools_phase.cwl
 inputs:
 - id: in_block_length
   doc: block length [13]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_signature.pl.orig.cwl
+id: prepare_signature.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

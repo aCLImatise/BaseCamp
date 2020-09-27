@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magpurify_known_contam.cwl
+id: magpurify_known_contam.cwl
 inputs:
 - id: in_db
   doc: "Path to reference database. By default, the IMAGEN_DB\nenvironmental variable\

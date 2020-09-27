@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jannovar_annotate_pos.cwl
+id: jannovar_annotate_pos.cwl
 inputs:
 - id: in_database
   doc: Path to database .ser file

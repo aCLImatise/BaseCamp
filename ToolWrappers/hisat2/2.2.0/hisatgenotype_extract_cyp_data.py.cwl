@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_extract_cyp_data.py.cwl
+id: hisatgenotype_extract_cyp_data.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

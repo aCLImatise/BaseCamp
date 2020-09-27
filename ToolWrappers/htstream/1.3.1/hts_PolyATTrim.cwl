@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_PolyATTrim.cwl
+id: hts_PolyATTrim.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

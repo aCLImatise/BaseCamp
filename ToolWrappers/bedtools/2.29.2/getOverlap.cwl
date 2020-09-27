@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getOverlap.cwl
+id: getOverlap.cwl
 inputs:
 - id: in_input_file_use
   doc: Input file. Use "stdin" for pipes.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maxentscan_score5.pl.cwl
+id: maxentscan_score5.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

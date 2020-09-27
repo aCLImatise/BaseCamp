@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isPcr.cwl
+id: isPcr.cwl
 inputs:
 - id: in_ooc
   doc: "Use overused tile file N.ooc.  N should correspond to\nthe tileSize"

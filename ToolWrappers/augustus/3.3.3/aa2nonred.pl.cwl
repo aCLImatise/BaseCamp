@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aa2nonred.pl.cwl
+id: aa2nonred.pl.cwl
 inputs:
 - id: in_max_id
   doc: "maximum percent identity between to sequences\n(#identical aa) / (length of\

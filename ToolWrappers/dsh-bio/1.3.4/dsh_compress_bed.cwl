@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_compress_bed.cwl
+id: dsh_compress_bed.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

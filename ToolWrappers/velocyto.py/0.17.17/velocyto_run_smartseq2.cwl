@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../velocyto_run_smartseq2.cwl
+id: velocyto_run_smartseq2.cwl
 inputs:
 - id: in_output_folder
   doc: Output folder, if it does not exist it will be created.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_unlock.cwl
+id: vdb_unlock.cwl
 inputs:
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\

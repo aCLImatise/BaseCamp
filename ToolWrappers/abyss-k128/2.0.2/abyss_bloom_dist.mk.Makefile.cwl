@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_bloom_dist.mk.Makefile.cwl
+id: abyss_bloom_dist.mk.Makefile.cwl
 inputs: []
 outputs:
 - id: out_stdout

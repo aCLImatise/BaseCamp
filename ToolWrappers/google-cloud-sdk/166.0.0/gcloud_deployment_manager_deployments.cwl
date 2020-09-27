@@ -1,6 +1,18 @@
 class: CommandLineTool
-id: ../../../gcloud_deployment_manager_deployments.cwl
+id: gcloud_deployment_manager_deployments.cwl
 inputs:
+- id: in_config
+  doc: "To update a deployment, run:\n$ gcloud deployment-manager deployments update\
+    \ my-deployment \\\n--config new_config.yaml\nTo stop a deployment create or update\
+    \ in progress, run:\n$ gcloud deployment-manager deployments stop my-deployment\n\
+    To cancel a previewed create or update, run:\n$ gcloud deployment-manager deployments\
+    \ cancel-preview my-deployment\nTo delete a deployment, run:\n$ gcloud deployment-manager\
+    \ deployments delete my-deployment\nTo view the details of a deployment, run:\n\
+    $ gcloud deployment-manager deployments describe my-deployment\nTo see the list\
+    \ of all deployments, run:\n$ gcloud deployment-manager deployments list\n"
+  type: string
+  inputBinding:
+    prefix: --config
 - id: in_deployments
   doc: SYNOPSIS
   type: string

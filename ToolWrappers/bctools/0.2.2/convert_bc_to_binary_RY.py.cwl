@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_bc_to_binary_RY.py.cwl
+id: convert_bc_to_binary_RY.py.cwl
 inputs:
 - id: in_outfile
   doc: Write results to this file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmer_analysis.pl.cwl
+id: kmer_analysis.pl.cwl
 inputs:
 - id: in_file_for_processing
   doc: File for processing

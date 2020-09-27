@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../initializeTranscriptDatasource.cwl
+id: initializeTranscriptDatasource.cwl
 inputs:
 - id: in_name
   doc: name of the datasource.  For example, ensembl.  Or GENCODE

@@ -7,11 +7,11 @@ task FindTcovSnp {
     Boolean? min_qv
     Int? min_snp
     Boolean? qvs
-    String options
+    String prefix
   }
   command <<<
     findTcovSnp \
-      ~{options} \
+      ~{prefix} \
       ~{if (prune_quality_discrepancies) then "-l" else ""} \
       ~{if (amb) then "-amb" else ""} \
       ~{if (min_qv) then "-minqv" else ""} \
@@ -24,7 +24,7 @@ task FindTcovSnp {
     min_qv: "Specify minimum cummulative qv of disagreeing reads"
     min_snp: "minimum number of consistent disagreeing reads"
     qvs: "Print Quality Values stats (max, avg) [ Default: -noqvs ]"
-    options: "-------"
+    prefix: ""
   }
   output {
     File out_stdout = stdout()

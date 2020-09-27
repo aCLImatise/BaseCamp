@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runcabog.py.cwl
+id: runcabog.py.cwl
 inputs:
 - id: in_para_file
   doc: ''

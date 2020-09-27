@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../anvi_analyze_synteny.cwl
+id: anvi_analyze_synteny.cwl
 inputs:
 - id: in_n_gram_window_range
-  doc: ''
+  doc: FILE_PATH [--analyze-unknown-functions]
   type: string
   inputBinding:
     prefix: --ngram-window-range

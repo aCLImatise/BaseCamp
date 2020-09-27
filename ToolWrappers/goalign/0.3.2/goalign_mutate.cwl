@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_mutate.cwl
+id: goalign_mutate.cwl
 inputs:
 - id: in_output
   doc: Mutated alignment output file (default "stdout")

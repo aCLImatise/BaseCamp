@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkGottchaTaxTree.pl.cwl
+id: mkGottchaTaxTree.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_merge.cwl
+id: checkm_merge.cwl
 inputs:
 - id: in_genes
   doc: bins contain genes as amino acids instead of nucleotide contigs

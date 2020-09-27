@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_barTests.cwl
+id: cactus_barTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

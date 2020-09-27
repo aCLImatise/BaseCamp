@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dadaist2.cwl
+id: dadaist2.cwl
 inputs: []
 outputs:
 - id: out_stdout

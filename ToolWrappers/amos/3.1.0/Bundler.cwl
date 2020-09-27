@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bundler.cwl
+id: Bundler.cwl
 inputs:
 - id: in_t
   doc: ''

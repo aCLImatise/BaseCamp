@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rna_cd_classify.cwl
+id: rna_cd_classify.cwl
 inputs:
 - id: in_chunksize
   doc: Chunksize in bases. Default = 100

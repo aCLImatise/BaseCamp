@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdsplit.cwl
+id: sdsplit.cwl
 inputs:
 - id: in_outputroot_root_name
   doc: <OutputRoot>  Root name for output files (default = tmp)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matchExtender.cwl
+id: matchExtender.cwl
 inputs: []
 outputs:
 - id: out_stdout

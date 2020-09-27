@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../resample.cwl
+id: resample.cwl
 inputs: []
 outputs:
 - id: out_stdout

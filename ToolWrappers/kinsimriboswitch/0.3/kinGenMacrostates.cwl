@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kinGenMacrostates.cwl
+id: kinGenMacrostates.cwl
 inputs:
 - id: in_energy_band_width
   doc: ":     energy band width (in kcal) in which structures are completely\nenumerated\

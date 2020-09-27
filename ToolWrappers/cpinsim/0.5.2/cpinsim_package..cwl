@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpinsim_package..cwl
+id: cpinsim_package..cwl
 inputs:
 - id: in_cp_in_sim
   doc: ''

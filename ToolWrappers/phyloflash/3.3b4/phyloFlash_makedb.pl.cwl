@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFlash_makedb.pl.cwl
+id: phyloFlash_makedb.pl.cwl
 inputs:
 - id: in_remote
   doc: Download databases via FTP

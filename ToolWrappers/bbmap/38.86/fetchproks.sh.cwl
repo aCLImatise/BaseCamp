@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetchproks.sh.cwl
+id: fetchproks.sh.cwl
 inputs:
 - id: in_url
   doc: ''

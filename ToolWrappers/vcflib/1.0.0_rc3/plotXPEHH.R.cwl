@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotXPEHH.R.cwl
+id: plotXPEHH.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

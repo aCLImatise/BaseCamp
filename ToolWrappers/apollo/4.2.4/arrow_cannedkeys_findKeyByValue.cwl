@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_cannedkeys_findKeyByValue.cwl
+id: arrow_cannedkeys_findKeyByValue.cwl
 inputs:
 - id: in_value
   doc: ''

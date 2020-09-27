@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2tsv.cwl
+id: vcf2tsv.cwl
 inputs:
 - id: in_g
   doc: ''

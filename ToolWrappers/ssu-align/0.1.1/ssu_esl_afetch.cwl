@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_afetch.cwl
+id: ssu_esl_afetch.cwl
 inputs:
 - id: in_second_cmdline_arg
   doc: ': second cmdline arg is a file of names to retrieve'

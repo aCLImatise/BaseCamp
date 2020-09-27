@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_reduce.cwl
+id: ffindex_reduce.cwl
 inputs:
 - id: in_data_filename
   doc: ''

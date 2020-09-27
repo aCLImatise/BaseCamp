@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_families.sh.cwl
+id: make_families.sh.cwl
 inputs:
 - id: in_length_barcode_portion
   doc: ': The length of the barcode portion of each read. Default: 12'

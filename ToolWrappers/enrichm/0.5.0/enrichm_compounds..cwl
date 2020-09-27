@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enrichm_compounds..cwl
+id: enrichm_compounds..cwl
 inputs:
 - id: in_enrich_m
   doc: ''

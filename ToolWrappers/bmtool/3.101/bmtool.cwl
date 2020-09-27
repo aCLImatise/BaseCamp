@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bmtool.cwl
+id: bmtool.cwl
 inputs:
 - id: in_quiet
   doc: -q     Do not show progress indicators [off]

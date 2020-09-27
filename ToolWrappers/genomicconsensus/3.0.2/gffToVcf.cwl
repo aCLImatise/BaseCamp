@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffToVcf.cwl
+id: gffToVcf.cwl
 inputs:
 - id: in_emit_tool_contract
   doc: 'Emit Tool Contract to stdout (default: False)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../koeken.py.cwl
+id: koeken.py.cwl
 inputs:
 - id: in_debug
   doc: Enable debugging

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasten_metrics.cwl
+id: fasten_metrics.cwl
 inputs:
 - id: in_num_cpus
   doc: 'Number of CPUs (default: 1)'

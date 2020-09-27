@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sgldwt.sh.cwl
+id: sgldwt.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

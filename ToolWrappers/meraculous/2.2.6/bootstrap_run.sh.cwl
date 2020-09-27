@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bootstrap_run.sh.cwl
+id: bootstrap_run.sh.cwl
 inputs:
 - id: in_s
   doc: ''

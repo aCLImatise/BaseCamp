@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfcleancomplex.cwl
+id: vcfcleancomplex.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

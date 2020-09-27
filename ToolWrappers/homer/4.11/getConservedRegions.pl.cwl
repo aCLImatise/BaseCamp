@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getConservedRegions.pl.cwl
+id: getConservedRegions.pl.cwl
 inputs:
 - id: in_size
   doc: "<#|given> (size of region centered on peaks to look for conserved islands)\n\

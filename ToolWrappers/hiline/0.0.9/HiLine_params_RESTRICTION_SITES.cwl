@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HiLine_params_RESTRICTION_SITES.cwl
+id: HiLine_params_RESTRICTION_SITES.cwl
 inputs:
 - id: in_hi_line
   doc: ''

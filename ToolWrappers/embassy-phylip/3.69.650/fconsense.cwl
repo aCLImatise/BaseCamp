@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fconsense.cwl
+id: fconsense.cwl
 inputs:
 - id: in_method
   doc: "menu       [mre] Consensus method (Values: s (strict\nconsensus tree); mr\

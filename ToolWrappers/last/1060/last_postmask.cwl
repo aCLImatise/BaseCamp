@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../last_postmask.cwl
+id: last_postmask.cwl
 inputs:
 - id: in_in_dot_maf
   doc: ''

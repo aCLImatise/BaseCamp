@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protein_neighbors.cwl
+id: protein_neighbors.cwl
 inputs: []
 outputs:
 - id: out_stdout

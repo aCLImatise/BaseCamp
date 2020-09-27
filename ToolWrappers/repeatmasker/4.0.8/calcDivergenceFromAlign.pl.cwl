@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calcDivergenceFromAlign.pl.cwl
+id: calcDivergenceFromAlign.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

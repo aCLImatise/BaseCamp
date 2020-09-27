@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dialign_tx.cwl
+id: dialign_tx.cwl
 inputs:
 - id: in_debugmode_debug_statements
   doc: "Debug-Mode  [DEFAULT 0]\n0 no debug statements\n1 debugs the current phase\

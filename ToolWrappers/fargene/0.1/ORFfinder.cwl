@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ORFfinder.cwl
+id: ORFfinder.cwl
 inputs: []
 outputs:
 - id: out_stdout

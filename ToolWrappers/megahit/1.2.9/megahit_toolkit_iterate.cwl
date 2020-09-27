@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_toolkit_iterate.cwl
+id: megahit_toolkit_iterate.cwl
 inputs:
 - id: in_contig_file
   doc: (*) contigs file, fasta/fastq format, output by assembler

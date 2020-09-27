@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfm_id.cwl
+id: cfm_id.cwl
 inputs:
 - id: in_spectrum_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drttest.cwl
+id: drttest.cwl
 inputs: []
 outputs:
 - id: out_stdout

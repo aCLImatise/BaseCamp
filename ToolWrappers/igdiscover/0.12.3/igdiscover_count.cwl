@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_count.cwl
+id: igdiscover_count.cwl
 inputs:
 - id: in_gene
   doc: 'Which gene type: Choose V, D or J. Default: Default: V'

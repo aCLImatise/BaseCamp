@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonomy_util_get_name.cwl
+id: taxonomy_util_get_name.cwl
 inputs:
 - id: in_db
   doc: ''

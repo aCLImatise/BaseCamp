@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bdf2gdfont.pl.cwl
+id: bdf2gdfont.pl.cwl
 inputs:
 - id: in_hlucidatypewriterboldrnormalsansmiso_
   doc: '&H-LucidaTypewriter-Bold-R-Normal-Sans-18-180-75-75-M-110-ISO8859-'

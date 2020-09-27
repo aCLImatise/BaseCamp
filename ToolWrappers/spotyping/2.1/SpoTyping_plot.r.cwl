@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpoTyping_plot.r.cwl
+id: SpoTyping_plot.r.cwl
 inputs:
 - id: in_more_options
   doc: ''

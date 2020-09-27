@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centersToGEM.pl.cwl
+id: centersToGEM.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_classify.cwl
+id: svtools_classify.cwl
 inputs:
 - id: in_input
   doc: VCF input

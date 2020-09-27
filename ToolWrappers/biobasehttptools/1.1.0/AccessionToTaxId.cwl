@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AccessionToTaxId.cwl
+id: AccessionToTaxId.cwl
 inputs:
 - id: in_accession
   doc: NCBI accession number, e.g NC_000913

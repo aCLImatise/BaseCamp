@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastdb_convert.cwl
+id: blastdb_convert.cwl
 inputs:
 - id: in_out
   doc: '[-logfile File_Name] [-version]'

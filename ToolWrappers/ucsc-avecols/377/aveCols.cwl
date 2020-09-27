@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aveCols.cwl
+id: aveCols.cwl
 inputs: []
 outputs:
 - id: out_stdout

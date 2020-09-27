@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SanitizeMe_GUI.py.cwl
+id: SanitizeMe_GUI.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

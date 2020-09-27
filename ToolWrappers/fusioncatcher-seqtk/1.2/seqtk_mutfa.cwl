@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_mutfa.cwl
+id: seqtk_mutfa.cwl
 inputs:
 - id: in_in_dot_fa
   doc: ''

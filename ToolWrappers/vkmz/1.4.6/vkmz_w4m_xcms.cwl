@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vkmz_w4m_xcms.cwl
+id: vkmz_w4m_xcms.cwl
 inputs:
 - id: in_error
   doc: '[ERROR] --output [OUTPUT] [--json] [--sql]'

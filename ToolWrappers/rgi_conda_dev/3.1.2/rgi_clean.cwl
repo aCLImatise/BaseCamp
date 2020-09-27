@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_clean.cwl
+id: rgi_clean.cwl
 inputs: []
 outputs:
 - id: out_stdout

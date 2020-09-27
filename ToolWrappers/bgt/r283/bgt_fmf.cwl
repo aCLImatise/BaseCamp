@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgt_fmf.cwl
+id: bgt_fmf.cwl
 inputs:
 - id: in_load_entire_fmf
   doc: load the entire FMF into RAM

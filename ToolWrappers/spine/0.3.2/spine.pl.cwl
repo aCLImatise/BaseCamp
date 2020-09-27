@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spine.pl.cwl
+id: spine.pl.cwl
 inputs:
 - id: in_file
   doc: "file with list of input sequence files. Accepted file\nformats include fasta\
@@ -138,11 +138,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nosimplify
-- id: in_homologous
-  doc: '(default: 85) '
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

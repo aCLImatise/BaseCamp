@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halMafTests.cwl
+id: halMafTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

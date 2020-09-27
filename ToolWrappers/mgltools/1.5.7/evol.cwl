@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evol.cwl
+id: evol.cwl
 inputs: []
 outputs:
 - id: out_stdout

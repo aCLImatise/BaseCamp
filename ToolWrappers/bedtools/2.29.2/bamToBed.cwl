@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamToBed.cwl
+id: bamToBed.cwl
 inputs:
 - id: in_bed_pe
   doc: "Write BEDPE format.\n- Requires BAM to be grouped or sorted by query."

@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../cromwell_tools_metadata.cwl
+id: cromwell_tools_metadata.cwl
 inputs:
 - id: in_uuid
-  doc: ''
+  doc: "[--includeKey INCLUDEKEY [INCLUDEKEY ...]]\n[--excludeKey EXCLUDEKEY [EXCLUDEKEY\
+    \ ...]]\n[--expandSubWorkflows EXPANDSUBWORKFLOWS]"
   type: string
   inputBinding:
     prefix: --uuid

@@ -3,7 +3,6 @@ version 1.0
 task MsaView {
   input {
     File? out_format
-    Int? tuple_size
     Int? start
     Int? end
     Int? seqs
@@ -26,6 +25,7 @@ task MsaView {
     Boolean? fill_ns
     Boolean? summary_only
     Int? window_summary
+    Int? tuple_size
     Boolean? unordered_ss
     File? refseq
     Boolean? keep_overlapping
@@ -44,7 +44,6 @@ task MsaView {
     msa_view \
       ~{alignments_dot} \
       ~{if defined(out_format) then ("--out-format " +  '"' + out_format + '"') else ""} \
-      ~{if defined(tuple_size) then ("--tuple-size " +  '"' + tuple_size + '"') else ""} \
       ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
       ~{if defined(end) then ("--end " +  '"' + end + '"') else ""} \
       ~{if defined(seqs) then ("--seqs " +  '"' + seqs + '"') else ""} \
@@ -67,6 +66,7 @@ task MsaView {
       ~{if (fill_ns) then "--fill-Ns" else ""} \
       ~{if (summary_only) then "--summary-only" else ""} \
       ~{if defined(window_summary) then ("--window-summary " +  '"' + window_summary + '"') else ""} \
+      ~{if defined(tuple_size) then ("--tuple-size " +  '"' + tuple_size + '"') else ""} \
       ~{if (unordered_ss) then "--unordered-ss" else ""} \
       ~{if defined(refseq) then ("--refseq " +  '"' + refseq + '"') else ""} \
       ~{if (keep_overlapping) then "--keep-overlapping" else ""} \
@@ -82,7 +82,6 @@ task MsaView {
   >>>
   parameter_meta {
     out_format: "|FASTA|MPM|SS\\n(Default FASTA)  Output file format."
-    tuple_size: "(For use with --out-format SS).  Represent an alignment in\\nterms of tuples of columns of the designated size.  Useful\\nwith context-dependent phylogenetic models."
     start: "Starting column of sub-alignment (indexing starts with 1).\\nDefault is 1.  Note that coordinates use the frame of reference\\nof the entire alignment unless --refidx 1 is specified."
     end: "Ending column of sub-alignment.  Default is length of\\nalignment.  Note that coordinates use the frame of reference\\nof the entire alignment unless --refidx 1 is specified."
     seqs: "Comma-separated list of sequences to include (default)\\nexclude (if --exclude).  Indicate by sequence number or name\\n(numbering starts with 1 and is evaluated *after* --order is\\napplied)."
@@ -105,6 +104,7 @@ task MsaView {
     fill_ns: "<s:b-e>\\nFill sequence no. <s> with Ns, from <b> to <e>. Applied before\\n--start, --end, --seqs, --gap-strip, but after --order.\\nCoordinate frame depends on --refidx.  Can be used\\nmultiple times."
     summary_only: "Report only summary statistics, rather than complete\\nalignment.  Statistics are for alignment that would otherwise\\nbe output (i.e., after other options have been applied)."
     window_summary: "Like -S, but output summary statistics for non-overlapping\\nwindows of the specified size."
+    tuple_size: "(For use with --out-format SS).  Represent an alignment in\\nterms of tuples of columns of the designated size.  Useful\\nwith context-dependent phylogenetic models."
     unordered_ss: "(For use with --out-format SS).  Suppress the portion of the\\nsufficient statistics concerned with the order in which\\ncolumns appear.  Useful for analyses for which order is\\nunimportant."
     refseq: "Read the complete text of the reference sequence from\\n<fname> (FASTA format) and combine it with the contents of\\nthe MAF file to produce a complete, ordered representation of\\nthe alignment (unaligned regions will be represented by gaps).\\nBest used with --out-format SS.  The reference sequence of the\\nMAF file is assumed to be the one that appears first in each\\nblock."
     keep_overlapping: "Keep blocks in MAF that have overlapping coordinates in the\\nreference (1st) sequence (by default, only the first one is\\nkept).  Useful in extracting unordered stats from a jumbled\\ncollection of MAF blocks (e.g., output of Jim Kent's mafFrags\\nprogram).  Cannot be used with --refseq, --features, or\\n--cats-cycle."

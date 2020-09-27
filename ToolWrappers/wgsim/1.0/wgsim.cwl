@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgsim.cwl
+id: wgsim.cwl
 inputs:
 - id: in_base_error_rate
   doc: base error rate [0.000]

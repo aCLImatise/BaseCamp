@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_rename.cwl
+id: novoutil_rename.cwl
 inputs:
 - id: in_original
   doc: "Assembly Report column name originally in the Chrom attribute.\nChoose from:\n\

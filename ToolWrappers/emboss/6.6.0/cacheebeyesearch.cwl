@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cacheebeyesearch.cwl
+id: cacheebeyesearch.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [stdout] Output file name

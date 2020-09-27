@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedIntersect.cwl
+id: BedIntersect.cwl
 inputs:
 - id: in_in_two
   doc: Second input BED file.

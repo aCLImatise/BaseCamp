@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedAnnotateGenes.cwl
+id: BedAnnotateGenes.cwl
 inputs:
 - id: in_in
   doc: "Input BED file. If unset, reads from STDIN.\nDefault value: ''"

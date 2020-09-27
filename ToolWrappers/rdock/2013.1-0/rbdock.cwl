@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbdock.cwl
+id: rbdock.cwl
 inputs:
 - id: in_input
   doc: input file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_profile_delete.cwl
+id: planemo_profile_delete.cwl
 inputs:
 - id: in_postgres
   doc: Use postgres database type.

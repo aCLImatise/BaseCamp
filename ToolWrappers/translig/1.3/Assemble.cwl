@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Assemble.cwl
+id: Assemble.cwl
 inputs:
 - id: in_reads_slash_i
   doc: ': the name of the file containing reads'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoBreak.cwl
+id: novoBreak.cwl
 inputs:
 - id: in_tumor_bam_file
   doc: Tumor bam file

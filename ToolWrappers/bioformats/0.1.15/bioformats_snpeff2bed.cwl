@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_snpeff2bed.cwl
+id: bioformats_snpeff2bed.cwl
 inputs:
 - id: in_bed_three
   doc: convert to the BED3 format

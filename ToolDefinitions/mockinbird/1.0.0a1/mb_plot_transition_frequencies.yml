@@ -23,7 +23,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COVERAGE
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -45,40 +45,10 @@ subcommands:
         args: !SimpleFlagArg
           name: COVERAGE
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: minimum coverage
-          synonyms:
-          - --coverage
-          - -c
-          args: !SimpleFlagArg
-            name: COVERAGE
-          optional: true
-        - !Flag
-          description: y-axis limit
-          synonyms:
-          - --limit
-          - -l
-          args: !SimpleFlagArg
-            name: LIMIT
-          optional: true
-        - !Flag
-          description: verbose output
-          synonyms:
-          - --verbose
-          - -v
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: remove temporary files
-          synonyms:
-          - --remove
-          - -r
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -97,7 +67,168 @@ subcommands:
             args: !SimpleFlagArg
               name: COVERAGE
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: minimum coverage
+              synonyms:
+              - --coverage
+              - -c
+              args: !SimpleFlagArg
+                name: COVERAGE
+              optional: true
+            - !Flag
+              description: y-axis limit
+              synonyms:
+              - --limit
+              - -l
+              args: !SimpleFlagArg
+                name: LIMIT
+              optional: true
+            - !Flag
+              description: verbose output
+              synonyms:
+              - --verbose
+              - -v
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: remove temporary files
+              synonyms:
+              - --remove
+              - -r
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-plot-transition-frequencies
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --coverage
+                args: !SimpleFlagArg
+                  name: COVERAGE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-plot-transition-frequencies [-h] [--coverage COVERAGE]\n\
+                \                                      [--limit LIMIT] [--verbose]\
+                \ [--remove]\n                                      inputfile outdir\
+                \ prefix\nmb-plot-transition-frequencies: error: argument inputfile:\
+                \ 'prefix' does not exist\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - mb-plot-transition-frequencies
+              - inputfile
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-plot-transition-frequencies
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --coverage
+                args: !SimpleFlagArg
+                  name: COVERAGE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-plot-transition-frequencies [-h] [--coverage COVERAGE]\n\
+                \                                      [--limit LIMIT] [--verbose]\
+                \ [--remove]\n                                      inputfile outdir\
+                \ prefix\nmb-plot-transition-frequencies: error: argument inputfile:\
+                \ 'inputfile' does not exist\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - mb-plot-transition-frequencies
+              - outdir
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-plot-transition-frequencies
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --coverage
+                args: !SimpleFlagArg
+                  name: COVERAGE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-plot-transition-frequencies [-h] [--coverage COVERAGE]\n\
+                \                                      [--limit LIMIT] [--verbose]\
+                \ [--remove]\n                                      inputfile outdir\
+                \ prefix\nmb-plot-transition-frequencies: error: argument inputfile:\
+                \ 'outdir' does not exist\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: mb-plot-transition-frequencies [-h] [--coverage COVERAGE]\n\
+              \                                      [--limit LIMIT] [--verbose] [--remove]\n\
+              \                                      inputfile outdir prefix\n\nPlots\
+              \ all possible conditional mutation probabilities based on pileup data.\n\
+              \npositional arguments:\n  inputfile             path to the *.pileup\n\
+              \  outdir                output directory\n  prefix                prefix\
+              \ of filenames\n\noptional arguments:\n  -h, --help            show\
+              \ this help message and exit\n  --coverage COVERAGE, -c COVERAGE\n \
+              \                       minimum coverage\n  --limit LIMIT, -l LIMIT\n\
+              \                        y-axis limit\n  --verbose, -v         verbose\
+              \ output\n  --remove, -r          remove temporary files\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -112,12 +243,9 @@ subcommands:
             \                                      [--limit LIMIT] [--verbose] [--remove]\n\
             \                                      inputfile outdir prefix\nmb-plot-transition-frequencies:\
             \ error: argument inputfile: 'prefix' does not exist\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - mb-plot-transition-frequencies
-          - inputfile
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -149,9 +277,7 @@ subcommands:
             \ error: argument inputfile: 'inputfile' does not exist\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - mb-plot-transition-frequencies
-          - outdir
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -183,13 +309,7 @@ subcommands:
             \ error: argument inputfile: 'outdir' does not exist\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: mb-plot-transition-frequencies [-h] [--coverage COVERAGE]\n\
@@ -235,7 +355,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COVERAGE
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -267,7 +387,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COVERAGE
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -329,7 +449,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COVERAGE
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -361,7 +481,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COVERAGE
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

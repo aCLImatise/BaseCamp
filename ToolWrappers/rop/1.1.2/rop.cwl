@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rop.cwl
+id: rop.cwl
 inputs: []
 outputs:
 - id: out_stdout

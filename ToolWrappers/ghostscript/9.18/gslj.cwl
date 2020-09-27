@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gslj.cwl
+id: gslj.cwl
 inputs: []
 outputs:
 - id: out_stdout

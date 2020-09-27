@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmetindex.cwl
+id: cmetindex.cwl
 inputs:
 - id: in_source_dir
   doc: "Directory where to read cmet index files (default is\nGMAP genome directory\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miRge2.0_predict.cwl
+id: miRge2.0_predict.cwl
 inputs:
 - id: in_two_options_file
   doc: "[sample <required> [sample <required> ...]]\ntwo options: 1. A file where\
@@ -57,11 +57,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -ad
-- id: in_phred_six_four
-  doc: 'phred64 format(default: 64)'
-  type: boolean
-  inputBinding:
-    prefix: -phred64
 - id: in_spike_in
   doc: "switch to annotate spike-ins if the bowtie index files\nare loacted at the\
     \ path of bowtie's index files\n(default: off)"

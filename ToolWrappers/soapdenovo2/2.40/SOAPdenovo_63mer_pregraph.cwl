@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SOAPdenovo_63mer_pregraph.cwl
+id: SOAPdenovo_63mer_pregraph.cwl
 inputs:
 - id: in_configfile_config_file
   doc: 'configFile: the config file of solexa reads'

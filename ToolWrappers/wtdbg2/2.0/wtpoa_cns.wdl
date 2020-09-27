@@ -11,7 +11,6 @@ task Wtpoacns {
     Int? mismatch_score
     Int? insertion_score
     Int? deletion_score
-    Int? bandwidth
     Int? window_size_middle
     Int? min_size_aligned
     Boolean? abort_tripoa_when
@@ -32,7 +31,6 @@ task Wtpoacns {
       ~{if defined(mismatch_score) then ("-X " +  '"' + mismatch_score + '"') else ""} \
       ~{if defined(insertion_score) then ("-I " +  '"' + insertion_score + '"') else ""} \
       ~{if defined(deletion_score) then ("-D " +  '"' + deletion_score + '"') else ""} \
-      ~{if defined(bandwidth) then ("-B " +  '"' + bandwidth + '"') else ""} \
       ~{if defined(window_size_middle) then ("-W " +  '"' + window_size_middle + '"') else ""} \
       ~{if defined(min_size_aligned) then ("-w " +  '"' + min_size_aligned + '"') else ""} \
       ~{if (abort_tripoa_when) then "-A" else ""} \
@@ -52,7 +50,6 @@ task Wtpoacns {
     mismatch_score: "Mismatch score, [-5]"
     insertion_score: "Insertion score, [-2]"
     deletion_score: "Deletion score, [-4]"
-    bandwidth: "Bandwidth, [96]"
     window_size_middle: "Window size in the middle of the first read for fast align remaining reads, [200]\\nIf $W is negative, will disable fast align, but use the abs($W) as Band align score cutoff"
     min_size_aligned: "Min size of aligned size in window, [$W * 0.5]"
     abort_tripoa_when: "Abort TriPOA when any read cannot be fast aligned, then try POA"

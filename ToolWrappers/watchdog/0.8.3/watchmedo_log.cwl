@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchmedo_log.cwl
+id: watchmedo_log.cwl
 inputs:
 - id: in_patterns
   doc: "matches event paths with these patterns (separated by\n;). (default: '*')"

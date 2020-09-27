@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Trinity.cwl
+id: Trinity.cwl
 inputs:
 - id: in_ignore_leading_blanks
   doc: Ignore leading blanks
@@ -86,9 +86,9 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nrugMcszbdfimSTokt
-- id: in_trinity_v_two_dot_nine_dot_one
-  doc: '#'
-  type: double
+- id: in_sort
+  doc: ''
+  type: string
   inputBinding:
     position: 0
 outputs:

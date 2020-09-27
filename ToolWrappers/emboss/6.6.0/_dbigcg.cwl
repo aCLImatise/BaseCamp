@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_dbigcg.cwl
+id: _dbigcg.cwl
 inputs:
 - id: in_id_format
   doc: "menu       [EMBL] Entry format (Values: EMBL (EMBL);\nSWISS (Swiss-Prot, SpTrEMBL,\

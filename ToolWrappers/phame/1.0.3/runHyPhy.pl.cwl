@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runHyPhy.pl.cwl
+id: runHyPhy.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

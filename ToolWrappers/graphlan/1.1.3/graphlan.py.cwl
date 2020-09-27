@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graphlan.py.cwl
+id: graphlan.py.cwl
 inputs:
 - id: in_format
   doc: "['output_image_format']\nset the format of the output image (default none\n\

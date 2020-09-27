@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceAlignReduceAlignmentsWithRaxml {
   input {
-    String? var_output
+    File? var_output
     Directory? alignments
     String? input_format
     Int? cores
@@ -19,7 +19,7 @@ task PhyluceAlignReduceAlignmentsWithRaxml {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--input-format {fasta,phylip,phylip-relaxed}]\\n[--cores CORES]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]"
     alignments: "Input folder of alignments"
     input_format: "The input alignment format"
     cores: "The number of compute cores to use"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KaKsAnalysis.cwl
+id: KaKsAnalysis.cwl
 inputs: []
 outputs:
 - id: out_stdout

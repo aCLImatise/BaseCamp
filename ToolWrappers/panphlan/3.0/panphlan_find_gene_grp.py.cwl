@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panphlan_find_gene_grp.py.cwl
+id: panphlan_find_gene_grp.py.cwl
 inputs:
 - id: in_i_matrix
   doc: Path to presence/absence matrix

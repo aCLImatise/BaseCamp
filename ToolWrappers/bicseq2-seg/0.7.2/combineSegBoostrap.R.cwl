@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineSegBoostrap.R.cwl
+id: combineSegBoostrap.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

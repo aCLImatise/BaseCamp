@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../factor.cwl
+id: factor.cwl
 inputs:
 - id: in_number
   doc: ''

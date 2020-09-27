@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../casm_layout.cwl
+id: casm_layout.cwl
 inputs:
 - id: in_set_path_use
   doc: Set path of the AMOS bank to use

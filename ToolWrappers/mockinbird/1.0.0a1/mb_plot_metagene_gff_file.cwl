@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_metagene_gff_file.cwl
+id: mb_plot_metagene_gff_file.cwl
 inputs:
 - id: in_downstream_bp
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mag_improve.cwl
+id: mag_improve.cwl
 inputs:
 - id: in_kmer_length_use
   doc: k-mer length to use

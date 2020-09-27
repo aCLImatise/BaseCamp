@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treestat.cwl
+id: treestat.cwl
 inputs: []
 outputs:
 - id: out_stdout

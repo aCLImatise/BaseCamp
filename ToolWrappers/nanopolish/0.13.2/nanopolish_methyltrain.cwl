@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanopolish_methyltrain.cwl
+id: nanopolish_methyltrain.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

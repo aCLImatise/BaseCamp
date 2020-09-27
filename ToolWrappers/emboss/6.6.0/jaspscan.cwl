@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jaspscan.cwl
+id: jaspscan.cwl
 inputs:
 - id: in_menu
   doc: "menu       [C] Matrix set (Values: C (Core); F (Fam); P\n(Phylofacts); N (CNE);\

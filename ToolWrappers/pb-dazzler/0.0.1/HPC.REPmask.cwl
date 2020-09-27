@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HPC.REPmask.cwl
+id: HPC.REPmask.cwl
 inputs:
 - id: in_int_cint_readsdbdam
   doc: <int> -c<int> <reads:db|dam> [<block:int>[-<range:int>]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spaln.cwl
+id: spaln.cwl
 inputs:
 - id: in_generate_local_table
   doc: Generate local lookup table for each block
@@ -63,6 +63,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -M
+- id: in_gvsac_alignment_bed
+  doc: "#[,#2,..] (GvsA|C)    0:Gff3_gene; 1:alignment; 2:Gff3_match; 3:Bed; 4:exon-inf;\n\
+    5:intron-inf; 6:cDNA; 7:translated; 8:block-only;\n10:SAM; 12:binary; 15:query+GS\
+    \ (4)"
+  type: boolean
+  inputBinding:
+    prefix: -O
 - id: in_dp_hspsearch_blocksearch
   doc: '#     0:DP; 1-3:HSP-Search; 4-7; Block-Search (3)'
   type: boolean
@@ -223,7 +230,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -KD
-- id: in_var_44
+- id: in_var_45
   doc: ''
   type: boolean
   inputBinding:

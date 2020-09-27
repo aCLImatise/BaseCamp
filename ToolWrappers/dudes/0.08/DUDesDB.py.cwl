@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DUDesDB.py.cwl
+id: DUDesDB.py.cwl
 inputs:
 - id: in_uses_gi_phasing
   doc: "'gi' uses the GI as the identifier (For headers like:\n>gi|158333233|ref|NC_009925.1|)\

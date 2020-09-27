@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../behst.py.cwl
+id: behst.py.cwl
 inputs:
 - id: in_target_extension
   doc: target extension basepair integer. Default is 9400.

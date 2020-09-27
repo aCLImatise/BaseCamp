@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_hexamer.py.cwl
+id: read_hexamer.py.cwl
 inputs:
 - id: in_input
   doc: "Read sequence in fasta or fastq format. Multiple\nfasta/fastq files should\

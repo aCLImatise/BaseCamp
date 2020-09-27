@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roast.cwl
+id: roast.cwl
 inputs: []
 outputs:
 - id: out_stdout

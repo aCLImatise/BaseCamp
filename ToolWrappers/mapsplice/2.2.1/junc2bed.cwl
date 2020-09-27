@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../junc2bed.cwl
+id: junc2bed.cwl
 inputs: []
 outputs:
 - id: out_stdout

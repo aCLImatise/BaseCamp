@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf_extract_linear.cwl
+id: srf_extract_linear.cwl
 inputs:
 - id: in_extract_linear_srf
   doc: ''

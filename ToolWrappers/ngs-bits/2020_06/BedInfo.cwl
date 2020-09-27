@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedInfo.cwl
+id: BedInfo.cwl
 inputs:
 - id: in_in
   doc: "Input BED file. If unset, reads from STDIN.\nDefault value: ''"

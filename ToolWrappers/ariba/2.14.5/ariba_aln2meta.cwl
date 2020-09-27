@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_aln2meta.cwl
+id: ariba_aln2meta.cwl
 inputs:
 - id: in_genetic_code
   doc: "Number of genetic code to use. Currently supported\n1,4,11 [11]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CopomuS.py.cwl
+id: CopomuS.py.cwl
 inputs:
 - id: in_query
   doc: The query sequence.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcalm.cwl
+id: bcalm.cwl
 inputs:
 - id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAshapes_subopt_microstate_window.cwl
+id: RNAshapes_subopt_microstate_window.cwl
 inputs:
 - id: in_specify_window_size
   doc: Specify the window size.

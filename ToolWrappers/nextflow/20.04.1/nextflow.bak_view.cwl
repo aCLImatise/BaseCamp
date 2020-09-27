@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_view.cwl
+id: nextflow.bak_view.cwl
 inputs:
 - id: in_list_repository_contentdefault
   doc: "List repository content\nDefault: false"

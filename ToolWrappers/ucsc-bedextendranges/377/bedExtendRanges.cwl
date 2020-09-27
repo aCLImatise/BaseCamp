@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedExtendRanges.cwl
+id: bedExtendRanges.cwl
 inputs: []
 outputs:
 - id: out_stdout

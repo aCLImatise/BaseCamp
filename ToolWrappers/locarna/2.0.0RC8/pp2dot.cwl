@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pp2dot.cwl
+id: pp2dot.cwl
 inputs:
 - id: in_colors
   doc: "Color palette. Use --colors2 to define a second palette for the\nlower-left\

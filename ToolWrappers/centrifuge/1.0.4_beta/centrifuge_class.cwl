@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_class.cwl
+id: centrifuge_class.cwl
 inputs:
 - id: in_query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)

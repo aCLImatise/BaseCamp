@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ataqv.cwl
+id: ataqv.cwl
 inputs:
 - id: in_verbose
   doc: ': show more details and progress updates.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../venn_mpl.pyc.cwl
+id: venn_mpl.pyc.cwl
 inputs: []
 outputs:
 - id: out_stdout

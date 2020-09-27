@@ -2,14 +2,8 @@ version 1.0
 
 task Prank {
   input {
-    File? d
-    File? t
-    File? m
-    File? o
-    String? var_4
-    Boolean? short_names
-    Boolean? quiet
-    Boolean? var_7
+    File? ttreefile_mmodelfile_ooutputfile
+    Boolean? f
     Boolean? gap_rate
     Boolean? gap_ext
     Boolean? codon
@@ -28,14 +22,8 @@ task Prank {
   }
   command <<<
     prank \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
-      ~{if defined(var_4) then ("-f " +  '"' + var_4 + '"') else ""} \
-      ~{if (short_names) then "-shortnames" else ""} \
-      ~{if (quiet) then "-quiet" else ""} \
-      ~{if (var_7) then "-F" else ""} \
+      ~{if defined(ttreefile_mmodelfile_ooutputfile) then ("-d " +  '"' + ttreefile_mmodelfile_ooutputfile + '"') else ""} \
+      ~{if (f) then "-F" else ""} \
       ~{if (gap_rate) then "-gaprate" else ""} \
       ~{if (gap_ext) then "-gapext" else ""} \
       ~{if (codon) then "-codon" else ""} \
@@ -53,14 +41,8 @@ task Prank {
       ~{if (convert) then "-convert" else ""}
   >>>
   parameter_meta {
-    d: ""
-    t: "[default: no tree, generate approximate NJ tree]"
-    m: "[default: HKY2/WAG]"
-    o: "[default: 'output']"
-    var_4: "[default: Fasta; type '--help' for details]"
-    short_names: "[truncate names at first space]"
-    quiet: ""
-    var_7: "[equivalent]"
+    ttreefile_mmodelfile_ooutputfile: "-t=tree_file [default: no tree, generate approximate NJ tree]\\n-m=model_file [default: HKY2/WAG]\\n-o=output_file [default: 'output']\\n-f=output_format [default: Fasta; type '--help' for details]\\n-shortnames [truncate names at first space]\\n-quiet"
+    f: "[equivalent]"
     gap_rate: "=# [gap opening rate; default: dna 0.025 / prot 0.005]"
     gap_ext: "=# [gap extension probability; default: dna 0.75 / prot 0.5]"
     codon: "[for coding DNA: use empirical codon model]"
@@ -79,6 +61,5 @@ task Prank {
   }
   output {
     File out_stdout = stdout()
-    File out_o = "${in_o}"
   }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gil2bin.cwl
+id: gil2bin.cwl
 inputs:
 - id: in_input_gilist
   doc: Input gilist [File In]

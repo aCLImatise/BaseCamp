@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazMAF2BED.pl.cwl
+id: rnazMAF2BED.pl.cwl
 inputs:
 - id: in_seq_id
   doc: "Specify the sequence identifier of the sequence which should be\nused as a\

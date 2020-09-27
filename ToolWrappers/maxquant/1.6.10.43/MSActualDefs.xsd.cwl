@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSActualDefs.xsd.cwl
+id: MSActualDefs.xsd.cwl
 inputs: []
 outputs:
 - id: out_stdout

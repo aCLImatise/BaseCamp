@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iupac2meme.cwl
+id: iupac2meme.cwl
 inputs:
 - id: in_use_dna_iupac_alphabet
   doc: use DNA IUPAC alphabet

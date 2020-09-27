@@ -58,17 +58,9 @@ task Gxw2statspl {
     Boolean? xml
     File? run
     File? s_xml
-    String weight_average_occupancy
-    String weight_matrix_positions
-    String weight_matrix_clustering
-    String weight_matrix_sequence_features
   }
   command <<<
     gxw2stats_pl \
-      ~{weight_average_occupancy} \
-      ~{weight_matrix_positions} \
-      ~{weight_matrix_clustering} \
-      ~{weight_matrix_sequence_features} \
       ~{if defined(matrices_file_gxw) then ("-m " +  '"' + matrices_file_gxw + '"') else ""} \
       ~{if defined(use_matrix_use) then ("-n " +  '"' + use_matrix_use + '"') else ""} \
       ~{if (pws) then "-pws" else ""} \
@@ -183,10 +175,6 @@ task Gxw2statspl {
     xml: ":             print only the xml file"
     run: ":       Print the stdout and stderr of the program into the file <str>"
     s_xml: ":      Save the xml file into <str>"
-    weight_average_occupancy: "======================"
-    weight_matrix_positions: "====================="
-    weight_matrix_clustering: "======================"
-    weight_matrix_sequence_features: "============================"
   }
   output {
     File out_stdout = stdout()

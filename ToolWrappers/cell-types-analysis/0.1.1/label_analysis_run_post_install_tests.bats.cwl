@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../label_analysis_run_post_install_tests.bats.cwl
+id: label_analysis_run_post_install_tests.bats.cwl
 inputs:
 - id: in_count
   doc: Count the number of test cases without running any tests

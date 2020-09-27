@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assignGeneWeights.pl.cwl
+id: assignGeneWeights.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

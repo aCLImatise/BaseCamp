@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addDataHeader.pl.cwl
+id: addDataHeader.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

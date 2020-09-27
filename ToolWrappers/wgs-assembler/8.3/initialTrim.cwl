@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../initialTrim.cwl
+id: initialTrim.cwl
 inputs:
 - id: in_find_quality_points
   doc: Find quality trim points using 'quality' as the base.

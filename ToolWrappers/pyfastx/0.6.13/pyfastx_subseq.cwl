@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfastx_subseq.cwl
+id: pyfastx_subseq.cwl
 inputs:
 - id: in_region_file
   doc: "tab-delimited file, one region per line, both start\nand end position are\

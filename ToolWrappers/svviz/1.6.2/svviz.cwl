@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svviz.cwl
+id: svviz.cwl
 inputs:
 - id: in_bam
   doc: "sorted, indexed bam file containing reads of interest to plot; can be specified\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_gwpa_details..cwl
+id: deepac_gwpa_details..cwl
 inputs:
 - id: in_deep_ac
   doc: ''

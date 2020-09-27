@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obspectrophore.cwl
+id: obspectrophore.cwl
 inputs:
 - id: in__input_file
   doc: '[required]: input file'

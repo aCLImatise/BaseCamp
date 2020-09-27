@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_spanner_databases.cwl
+id: gcloud_spanner_databases.cwl
 inputs:
 - id: in_ddl
   doc: Manage the DDL for Cloud Spanner databases.

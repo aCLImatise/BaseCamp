@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_fragment.cwl
+id: remove_fragment.cwl
 inputs:
 - id: in_one_uid_line
   doc: one uid per line

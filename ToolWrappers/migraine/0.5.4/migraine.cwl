@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../migraine.cwl
+id: migraine.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GenesToApproved.cwl
+id: GenesToApproved.cwl
 inputs:
 - id: in_in
   doc: "Input TXT file with one gene symbol per line. If unset, reads from STDIN.\n\

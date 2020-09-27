@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../callstate.cwl
+id: callstate.cwl
 inputs:
 - id: in_threads
   doc: 'Number of BAM decompression threads [default: 4]'

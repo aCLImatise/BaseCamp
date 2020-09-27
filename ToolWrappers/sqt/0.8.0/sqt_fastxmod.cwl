@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqt_fastxmod.cwl
+id: sqt_fastxmod.cwl
 inputs:
 - id: in_names
   doc: "Keep only records whose name occurs in FILE (one per\nline)"

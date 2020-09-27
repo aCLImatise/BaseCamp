@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_phipack.py.cwl
+id: run_phipack.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

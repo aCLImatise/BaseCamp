@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_renamer.cwl
+id: fastx_renamer.cwl
 inputs:
 - id: in_o
   doc: ''

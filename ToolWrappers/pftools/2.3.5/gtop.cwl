@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtop.cwl
+id: gtop.cwl
 inputs:
 - id: in_apply_asymmetric_mode
   doc: ': apply asymmetric gap weighting mode.'

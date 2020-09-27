@@ -13,7 +13,7 @@ task TranscovGeneratecoverage {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
   parameter_meta {
-    output_file: ""
+    output_file: "--help                  Show this message and exit.\\n"
     bam_file: ""
     bed_file: ""
   }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyrsa_sign.cwl
+id: pyrsa_sign.cwl
 inputs:
 - id: in_input
   doc: "Name of the file to sign. Reads from stdin if not\nspecified."

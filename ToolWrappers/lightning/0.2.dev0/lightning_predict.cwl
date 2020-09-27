@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lightning_predict.cwl
+id: lightning_predict.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dr_disco_detect.cwl
+id: dr_disco_detect.cwl
 inputs:
 - id: in_min_e_score
   doc: "Minimal score to initiate pulling sub-graphs\n(larger numbers boost performance\

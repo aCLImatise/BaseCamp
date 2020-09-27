@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MasurcaPaths.pm.cwl
+id: MasurcaPaths.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

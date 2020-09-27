@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_perfdiag.cwl
+id: gsutil_perfdiag.cwl
 inputs:
 - id: in_sets_number_downloading
   doc: "Sets the number of objects to use when downloading and uploading\nfiles during\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_csq.cwl
+id: bcftools_csq.cwl
 inputs:
 - id: in_fast_a_ref
   doc: reference file in fasta format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbImportSeurat.cwl
+id: cbImportSeurat.cwl
 inputs: []
 outputs:
 - id: out_stdout

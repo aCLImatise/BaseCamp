@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_self_test.cwl
+id: anvi_self_test.cwl
 inputs:
 - id: in_force
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../model_diploid.r.cwl
+id: model_diploid.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

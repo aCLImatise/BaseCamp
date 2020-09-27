@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snakemake.cwl
+id: snakemake.cwl
 inputs:
 - id: in_dry_run
   doc: "Do not execute anything, and display what would be\ndone. If you have a very\

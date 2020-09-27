@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_skipseq.cwl
+id: _skipseq.cwl
 inputs:
 - id: in_skip
   doc: "integer    [0] Number of sequences to skip at start\n(Any integer value)"

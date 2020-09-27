@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_to_bigwig.pl.cwl
+id: bam_to_bigwig.pl.cwl
 inputs:
 - id: in_bam
   doc: Input file in BAM format

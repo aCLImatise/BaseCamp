@@ -14,8 +14,8 @@ named:
   - --predictor-kind
   args: !ChoiceFlagArg
     choices: !!set
-      ? class1_presentation
-      ? class1_affinity
+      class1_presentation:
+      class1_affinity:
   optional: true
 - !Flag
   description: Directory to read and write models
@@ -121,9 +121,9 @@ named:
   - --backend
   args: !ChoiceFlagArg
     choices: !!set
-      ? tensorflow-gpu
-      ? tensorflow-default
-      ? tensorflow-cpu
+      tensorflow-default:
+      tensorflow-cpu:
+      tensorflow-gpu:
   optional: true
 - !Flag
   description: "Number of GPUs to attempt to parallelize across.\nRequires running\
@@ -155,47 +155,6 @@ named:
   - --worker-log-dir
   args: !SimpleFlagArg
     name: WORKER_LOG_DIR
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --cluster-parallelism
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 'Default: sh'
-  synonyms:
-  - --cluster-submit-command
-  args: !SimpleFlagArg
-    name: CLUSTER_SUBMIT_COMMAND
-  optional: true
-- !Flag
-  description: 'Default: ./cluster-workdir'
-  synonyms:
-  - --cluster-results-workdir
-  args: !SimpleFlagArg
-    name: CLUSTER_RESULTS_WORKDIR
-  optional: true
-- !Flag
-  description: "Additional file to monitor for job completion.\nDefault: STDERR"
-  synonyms:
-  - --additional-complete-file
-  args: !SimpleFlagArg
-    name: ADDITIONAL_COMPLETE_FILE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --cluster-script-prefix-path
-  args: !SimpleFlagArg
-    name: CLUSTER_SCRIPT_PREFIX_PATH
-  optional: true
-- !Flag
-  description: "How many times to rerun failing jobs. Default: 3\n"
-  synonyms:
-  - --cluster-max-retries
-  args: !SimpleFlagArg
-    name: CLUSTER_MAX_RETRIES
   optional: true
 parent:
 subcommands: []

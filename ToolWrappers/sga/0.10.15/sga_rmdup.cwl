@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_rmdup.cwl
+id: sga_rmdup.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

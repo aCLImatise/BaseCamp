@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../manorm.cwl
+id: manorm.cwl
 inputs:
 - id: in_verbose
   doc: Enable verbose log messages.

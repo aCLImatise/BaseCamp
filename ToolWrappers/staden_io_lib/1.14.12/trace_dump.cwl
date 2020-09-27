@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trace_dump.cwl
+id: trace_dump.cwl
 inputs:
 - id: in_trace_file
   doc: ''

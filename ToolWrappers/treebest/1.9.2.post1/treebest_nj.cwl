@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_nj.cwl
+id: treebest_nj.cwl
 inputs:
 - id: in_constrained_trees_nh
   doc: constrained tree(s) in NH format [null]

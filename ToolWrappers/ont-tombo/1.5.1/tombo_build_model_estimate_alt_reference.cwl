@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_build_model_estimate_alt_reference.cwl
+id: tombo_build_model_estimate_alt_reference.cwl
 inputs:
 - id: in_tombo_model_alternative
   doc: "Tombo model for alternative likelihood ratio\nsignificance testing."

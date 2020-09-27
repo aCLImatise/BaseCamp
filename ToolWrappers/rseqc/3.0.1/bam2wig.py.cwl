@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2wig.py.cwl
+id: bam2wig.py.cwl
 inputs:
 - id: in_input_file
   doc: "Alignment file in BAM format. BAM file must be sorted\nand indexed using samTools.\

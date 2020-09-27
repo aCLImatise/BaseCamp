@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Newtonsoft.Json.dll.cwl
+id: Newtonsoft.Json.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

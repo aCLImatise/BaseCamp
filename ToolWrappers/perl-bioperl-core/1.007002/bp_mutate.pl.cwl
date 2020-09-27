@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_mutate.pl.cwl
+id: bp_mutate.pl.cwl
 inputs:
 - id: in_percent
   doc: mutagenized

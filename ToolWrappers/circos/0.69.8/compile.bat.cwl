@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compile.bat.cwl
+id: compile.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

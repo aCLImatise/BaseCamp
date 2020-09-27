@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go2error_report.cwl
+id: go2error_report.cwl
 inputs: []
 outputs:
 - id: out_stdout

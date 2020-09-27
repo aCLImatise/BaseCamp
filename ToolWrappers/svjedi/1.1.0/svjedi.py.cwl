@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svjedi.py.cwl
+id: svjedi.py.cwl
 inputs:
 - id: in_vcf
   doc: vcf format

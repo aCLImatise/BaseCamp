@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subseq.py.cwl
+id: subseq.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

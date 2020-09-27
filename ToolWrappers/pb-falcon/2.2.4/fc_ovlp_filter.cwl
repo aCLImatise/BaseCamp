@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_ovlp_filter.cwl
+id: fc_ovlp_filter.cwl
 inputs:
 - id: in_out_fn
   doc: 'Output filename (default: preads.m4)'

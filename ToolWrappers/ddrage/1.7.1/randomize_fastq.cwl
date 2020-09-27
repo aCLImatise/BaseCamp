@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomize_fastq.cwl
+id: randomize_fastq.cwl
 inputs:
 - id: in_force
   doc: overwrite existing output file(s)

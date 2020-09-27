@@ -3,10 +3,6 @@ version 1.0
 task Emapperpy {
   input {
     Boolean? guess_db
-    Boolean? database
-    String? dbtype
-    Boolean? data_dir
-    String? q_type
     Boolean? tax_scope
     String? target_orthologs
     Boolean? excluded_tax_a
@@ -45,16 +41,14 @@ task Emapperpy {
     Boolean? server_mode
     Boolean? use_mem
     Boolean? annotate_hits_table
+    String? dbtype
+    Boolean? database
     String files
   }
   command <<<
     emapper_py \
       ~{files} \
       ~{if (guess_db) then "--guessdb" else ""} \
-      ~{if (database) then "--database" else ""} \
-      ~{if defined(dbtype) then ("--dbtype " +  '"' + dbtype + '"') else ""} \
-      ~{if (data_dir) then "--data_dir" else ""} \
-      ~{if defined(q_type) then ("--qtype " +  '"' + q_type + '"') else ""} \
       ~{if (tax_scope) then "--tax_scope" else ""} \
       ~{if defined(target_orthologs) then ("--target_orthologs " +  '"' + target_orthologs + '"') else ""} \
       ~{if (excluded_tax_a) then "--excluded_taxa" else ""} \
@@ -92,14 +86,12 @@ task Emapperpy {
       ~{if (translate) then "--translate" else ""} \
       ~{if (server_mode) then "--servermode" else ""} \
       ~{if (use_mem) then "--usemem" else ""} \
-      ~{if (annotate_hits_table) then "--annotate_hits_table" else ""}
+      ~{if (annotate_hits_table) then "--annotate_hits_table" else ""} \
+      ~{if defined(dbtype) then ("--dbtype " +  '"' + dbtype + '"') else ""} \
+      ~{if (database) then "--database" else ""}
   >>>
   parameter_meta {
-    guess_db: "guess eggnog db based on the provided taxid"
-    database: ", -d       specify the target database for sequence searches.\\nChoose among: euk,bact,arch, host:port, or a local\\nhmmpressed database"
-    dbtype: ""
-    data_dir: "Directory to use for DATA_PATH."
-    q_type: ""
+    guess_db: "guess eggnog db based on the provided taxid\\n--database , -d       specify the target database for sequence searches.\\nChoose among: euk,bact,arch, host:port, or a local\\nhmmpressed database\\n--dbtype {hmmdb,seqdb}\\n--data_dir            Directory to use for DATA_PATH.\\n--qtype {hmm,seq}"
     tax_scope: "Fix the taxonomic scope used for annotation, so only\\northologs from a particular clade are used for\\nfunctional transfer. By default, this is automatically\\nadjusted for every query sequence."
     target_orthologs: "defines what type of orthologs should be used for\\nfunctional transfer"
     excluded_tax_a: "(for debugging and benchmark purposes)"
@@ -138,6 +130,8 @@ task Emapperpy {
     server_mode: "Loads target database in memory and keeps running in\\nserver mode, so another instance of eggnog-mapper can\\nconnect to this sever. Auto turns on the --usemem flag"
     use_mem: "If a local hmmpressed database is provided as target\\nusing --db, this flag will allocate the whole database\\nin memory using hmmpgmd. Database will be unloaded\\nafter execution."
     annotate_hits_table: "Annotatate TSV formatted table of query->hits. 4\\nfields required: query, hit, evalue, score. Implies\\n--no_search and --no_refine.\\n"
+    dbtype: ""
+    database: ""
     files: "--keep_mapping_files  Do not delete temporary mapping files used for"
   }
   output {

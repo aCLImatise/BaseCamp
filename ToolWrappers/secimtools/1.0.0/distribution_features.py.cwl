@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../distribution_features.py.cwl
+id: distribution_features.py.cwl
 inputs:
 - id: in_f
   doc: '[-pal PALETTE] [-col COLOR]'

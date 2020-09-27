@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prefetch.2.cwl
+id: prefetch.2.cwl
 inputs: []
 outputs:
 - id: out_stdout

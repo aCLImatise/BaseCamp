@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BasicInfoPaser.py.cwl
+id: BasicInfoPaser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

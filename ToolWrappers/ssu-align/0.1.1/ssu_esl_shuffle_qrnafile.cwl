@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_shuffle_qrnafile.cwl
+id: ssu_esl_shuffle_qrnafile.cwl
 inputs:
 - id: in_g
   doc: ''

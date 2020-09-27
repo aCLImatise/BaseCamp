@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtdbtk.cwl
+id: gtdbtk.cwl
 inputs:
 - id: in_error
   doc: ________________________________________________________________________________

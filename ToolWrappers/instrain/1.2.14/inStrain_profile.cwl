@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inStrain_profile.cwl
+id: inStrain_profile.cwl
 inputs:
 - id: in_output
   doc: 'Output prefix (default: inStrain)'

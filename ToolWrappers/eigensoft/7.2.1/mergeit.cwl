@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeit.cwl
+id: mergeit.cwl
 inputs:
 - id: in_bad
   doc: ''

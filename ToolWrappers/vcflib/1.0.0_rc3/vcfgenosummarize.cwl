@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfgenosummarize.cwl
+id: vcfgenosummarize.cwl
 inputs: []
 outputs:
 - id: out_stdout

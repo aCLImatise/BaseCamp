@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamclipper.sh.cwl
+id: bamclipper.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

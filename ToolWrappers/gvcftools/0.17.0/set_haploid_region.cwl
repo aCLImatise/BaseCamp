@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../set_haploid_region.cwl
+id: set_haploid_region.cwl
 inputs:
 - id: in_region_file
   doc: "A bed file specifying the regions to be converted\n(required)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_cpgreport.cwl
+id: _cpgreport.cwl
 inputs:
 - id: in_score
   doc: "integer    [17] This sets the score for each CG\nsequence found. A value of\

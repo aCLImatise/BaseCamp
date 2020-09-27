@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_compare.cwl
+id: whatshap_compare.cwl
 inputs:
 - id: in_sample
   doc: "Name of the sample to process. If not given, use first\nsample found in VCF."

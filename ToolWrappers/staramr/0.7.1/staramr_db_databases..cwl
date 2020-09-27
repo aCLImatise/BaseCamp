@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../staramr_db_databases..cwl
+id: staramr_db_databases..cwl
 inputs:
 - id: in_star_amr
   doc: ''

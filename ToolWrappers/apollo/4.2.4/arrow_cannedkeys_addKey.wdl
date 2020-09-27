@@ -11,7 +11,7 @@ task ArrowCannedkeysAddKey {
       ~{if defined(metadata) then ("--metadata " +  '"' + metadata + '"') else ""}
   >>>
   parameter_meta {
-    metadata: ""
+    metadata: "-h, --help       Show this message and exit.\\n"
     key: ""
   }
   output {

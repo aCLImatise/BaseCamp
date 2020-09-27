@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_index.cwl
+id: novoutil_index.cwl
 inputs:
 - id: in_genome_dot_nix
   doc: ''

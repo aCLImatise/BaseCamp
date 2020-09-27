@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_task_list.cwl
+id: funnel_task_list.cwl
 inputs:
 - id: in_all
   doc: List all tasks

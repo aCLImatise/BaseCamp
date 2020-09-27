@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UpdHunter.cwl
+id: UpdHunter.cwl
 inputs:
 - id: in_in
   doc: Input VCF file of trio.

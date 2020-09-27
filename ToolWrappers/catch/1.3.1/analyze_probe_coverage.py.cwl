@@ -1,9 +1,13 @@
 class: CommandLineTool
-id: ../../../analyze_probe_coverage.py.cwl
+id: analyze_probe_coverage.py.cwl
 inputs:
 - id: in_m
-  doc: ''
-  type: string
+  doc: "[--island-of-exact-match ISLAND_OF_EXACT_MATCH]\n[-e COVER_EXTENSION]\n[--limit-target-genomes\
+    \ LIMIT_TARGET_GENOMES]\n[--print-analysis]\n[--write-analysis-to-tsv WRITE_ANALYSIS_TO_TSV]\n\
+    [--write-sliding-window-coverage WRITE_SLIDING_WINDOW_COVERAGE]\n[--max-num-processes\
+    \ MAX_NUM_PROCESSES]\n[--kmer-probe-map-k KMER_PROBE_MAP_K]\n[--debug] [--verbose]\
+    \ [-V]"
+  type: long
   inputBinding:
     prefix: -m
 - id: in_dataset

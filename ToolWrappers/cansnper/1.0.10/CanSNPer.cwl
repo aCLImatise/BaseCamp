@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CanSNPer.cwl
+id: CanSNPer.cwl
 inputs:
 - id: in_reference
   doc: the name of the organism

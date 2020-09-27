@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PretextGraph.avx.cwl
+id: PretextGraph.avx.cwl
 inputs: []
 outputs:
 - id: out_stdout

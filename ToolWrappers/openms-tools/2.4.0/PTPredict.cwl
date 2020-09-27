@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PTPredict.cwl
+id: PTPredict.cwl
 inputs:
 - id: in_in
   doc: "*                    Input file  (valid formats: 'idXML')"

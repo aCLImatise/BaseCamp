@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../terminus_help.cwl
+id: terminus_help.cwl
 inputs:
 - id: in_for
   doc: ''

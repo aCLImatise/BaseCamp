@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotateTranscripts.pl.cwl
+id: annotateTranscripts.pl.cwl
 inputs:
 - id: in_no_repeats
   doc: (skip repeat annotation)

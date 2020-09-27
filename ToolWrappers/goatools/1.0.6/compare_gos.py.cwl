@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_gos.py.cwl
+id: compare_gos.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

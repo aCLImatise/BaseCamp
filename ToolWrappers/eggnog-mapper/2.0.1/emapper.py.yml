@@ -9,41 +9,13 @@ positional:
   optional: false
 named:
 - !Flag
-  description: guess eggnog db based on the provided taxid
+  description: "guess eggnog db based on the provided taxid\n--database , -d     \
+    \  specify the target database for sequence searches.\nChoose among: euk,bact,arch,\
+    \ host:port, or a local\nhmmpressed database\n--dbtype {hmmdb,seqdb}\n--data_dir\
+    \            Directory to use for DATA_PATH.\n--qtype {hmm,seq}"
   synonyms:
   - --guessdb
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ", -d       specify the target database for sequence searches.\nChoose\
-    \ among: euk,bact,arch, host:port, or a local\nhmmpressed database"
-  synonyms:
-  - --database
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --dbtype
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? seqdb
-      ? hmmdb
-  optional: true
-- !Flag
-  description: Directory to use for DATA_PATH.
-  synonyms:
-  - --data_dir
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --qtype
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? seq
-      ? hmm
   optional: true
 - !Flag
   description: "Fix the taxonomic scope used for annotation, so only\northologs from\
@@ -59,11 +31,11 @@ named:
   - --target_orthologs
   args: !ChoiceFlagArg
     choices: !!set
-      ? one2one
-      ? many2many
-      ? all
-      ? many2one
-      ? one2many
+      one2one:
+      many2one:
+      all:
+      one2many:
+      many2many:
   optional: true
 - !Flag
   description: (for debugging and benchmark purposes)
@@ -79,8 +51,8 @@ named:
   - --go_evidence
   args: !ChoiceFlagArg
     choices: !!set
-      ? non-electronic
-      ? experimental
+      experimental:
+      non-electronic:
   optional: true
 - !Flag
   description: Max number of hits to report. Default=1
@@ -132,14 +104,14 @@ named:
   - --matrix
   args: !ChoiceFlagArg
     choices: !!set
-      ? BLOSUM50
-      ? BLOSUM90
-      ? PAM250
-      ? BLOSUM80
-      ? PAM30
-      ? BLOSUM62
-      ? PAM70
-      ? BLOSUM45
+      BLOSUM50:
+      BLOSUM62:
+      BLOSUM90:
+      BLOSUM80:
+      PAM250:
+      PAM70:
+      PAM30:
+      BLOSUM45:
   optional: true
 - !Flag
   description: Gap open penalty
@@ -277,8 +249,8 @@ named:
   - --predict_output_format
   args: !ChoiceFlagArg
     choices: !!set
-      ? per_query
-      ? per_species
+      per_species:
+      per_query:
   optional: true
 - !Flag
   description: Default:hmmer
@@ -286,8 +258,8 @@ named:
   - -m
   args: !ChoiceFlagArg
     choices: !!set
-      ? diamond
-      ? hmmer
+      diamond:
+      hmmer:
   optional: true
 - !Flag
   description: Input FASTA file containing query sequences
@@ -325,23 +297,33 @@ named:
   - --annotate_hits_table
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --dbtype
+  args: !ChoiceFlagArg
+    choices: !!set
+      hmmdb:
+      seqdb:
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --database
+  args: !EmptyFlagArg {}
+  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n--version"
   synonyms:
   - -h
   - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: ''
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "/usr/local/bin/diamond /usr/local/lib/python2.7/site-packages\nusage:\
   \ emapper.py [-h] [--guessdb] [--database] [--dbtype {hmmdb,seqdb}]\n          \
   \        [--data_dir] [--qtype {hmm,seq}] [--tax_scope]\n                  [--target_orthologs\

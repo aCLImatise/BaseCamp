@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../athena_meta.cwl
+id: athena_meta.cwl
 inputs:
 - id: in_config
   doc: "input JSON config file for run, NOTE:\ndirname(config.json) specifies root\

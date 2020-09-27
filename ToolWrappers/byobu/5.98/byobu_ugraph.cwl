@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_ugraph.cwl
+id: byobu_ugraph.cwl
 inputs:
 - id: in_file_read_points
   doc: ": File to read data points from.\n(only required if no command specified)."

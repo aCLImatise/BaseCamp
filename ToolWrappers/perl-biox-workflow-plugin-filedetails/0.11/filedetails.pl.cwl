@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filedetails.pl.cwl
+id: filedetails.pl.cwl
 inputs:
 - id: in_check_dir
   doc: '- Str. Directory to check for files.'

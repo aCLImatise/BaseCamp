@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_preprocess_parclip_fastq.cwl
+id: mb_preprocess_parclip_fastq.cwl
 inputs:
 - id: in_log_level
   doc: ''

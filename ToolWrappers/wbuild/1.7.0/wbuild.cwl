@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wbuild.cwl
+id: wbuild.cwl
 inputs:
 - id: in_verbosity
   doc: Either CRITICAL, ERROR, WARNING, INFO or DEBUG

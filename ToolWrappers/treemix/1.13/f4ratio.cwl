@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../f4ratio.cwl
+id: f4ratio.cwl
 inputs:
 - id: in__input_file
   doc: '[file name] input file'

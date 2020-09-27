@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfplotaltdiscrepancy.sh.cwl
+id: vcfplotaltdiscrepancy.sh.cwl
 inputs:
 - id: in_g
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calculate_haplotype_statistics.py.cwl
+id: calculate_haplotype_statistics.py.cwl
 inputs:
 - id: in_v_two
   doc: optionally -h2 arguments). All files must contain information for one

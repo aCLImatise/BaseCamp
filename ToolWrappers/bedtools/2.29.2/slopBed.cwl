@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slopBed.cwl
+id: slopBed.cwl
 inputs:
 - id: in_increase_bedgffvcf_pairs
   doc: "Increase the BED/GFF/VCF entry -b base pairs in each direction.\n- (Integer)\
@@ -46,21 +46,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -i
-- id: in_chr_one
-  doc: '249250621'
-  type: long
+- id: in_bed_tools
+  doc: ''
+  type: string
   inputBinding:
     position: 0
-- id: in_chr_two
-  doc: '243199373'
-  type: long
+- id: in_slop
+  doc: ''
+  type: string
   inputBinding:
     position: 1
-- id: in_chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
-  doc: '4262'
-  type: long
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

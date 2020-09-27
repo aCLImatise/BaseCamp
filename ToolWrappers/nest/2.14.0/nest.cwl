@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nest.cwl
+id: nest.cwl
 inputs:
 - id: in_execute_cmd_exit
   doc: Execute cmd and exit

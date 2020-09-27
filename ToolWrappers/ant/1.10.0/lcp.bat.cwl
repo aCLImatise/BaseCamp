@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lcp.bat.cwl
+id: lcp.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../storescp.cwl
+id: storescp.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

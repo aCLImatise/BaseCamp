@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_cgsim.cwl
+id: rtg_cgsim.cwl
 inputs:
 - id: in_input
   doc: SDF containing input genome

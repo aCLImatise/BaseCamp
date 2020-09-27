@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_pubmlstget.cwl
+id: ariba_pubmlstget.cwl
 inputs:
 - id: in_verbose
   doc: Be verbose

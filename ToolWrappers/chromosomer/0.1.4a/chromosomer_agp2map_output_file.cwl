@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosomer_agp2map_output_file.cwl
+id: chromosomer_agp2map_output_file.cwl
 inputs:
 - id: in_chromosome_r
   doc: ''

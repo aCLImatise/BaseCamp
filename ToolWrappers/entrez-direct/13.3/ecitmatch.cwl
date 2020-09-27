@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ecitmatch.cwl
+id: ecitmatch.cwl
 inputs:
 - id: in_journal
   doc: Journal Title

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_to_fasta.cwl
+id: ReadSeq_to_fasta.cwl
 inputs:
 - id: in_mask
   doc: Mask sequence name indicating columns to drop

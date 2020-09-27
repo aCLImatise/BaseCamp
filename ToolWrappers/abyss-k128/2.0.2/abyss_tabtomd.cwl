@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_tabtomd.cwl
+id: abyss_tabtomd.cwl
 inputs: []
 outputs:
 - id: out_stdout

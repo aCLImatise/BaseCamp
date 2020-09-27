@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_oligo_count.pl.cwl
+id: bp_oligo_count.pl.cwl
 inputs:
 - id: in_lslash_length
   doc: ''

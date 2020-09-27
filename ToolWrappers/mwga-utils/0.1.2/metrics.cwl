@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metrics.cwl
+id: metrics.cwl
 inputs:
 - id: in_prefix_output_wig
   doc: 'Prefix for output wig files [default: metrics]'

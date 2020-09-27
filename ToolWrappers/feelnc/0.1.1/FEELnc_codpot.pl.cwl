@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FEELnc_codpot.pl.cwl
+id: FEELnc_codpot.pl.cwl
 inputs:
 - id: in_man
   doc: Open man page

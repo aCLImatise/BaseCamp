@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remap.cwl
+id: remap.cwl
 inputs:
 - id: in_enzymes
   doc: "string     [all] The name 'all' reads in all enzyme\nnames from the REBASE\

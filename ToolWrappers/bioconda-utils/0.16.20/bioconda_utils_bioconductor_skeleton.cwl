@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda_utils_bioconductor_skeleton.cwl
+id: bioconda_utils_bioconductor_skeleton.cwl
 inputs:
 - id: in_versioned
   doc: "If specified, recipe will be created in\nRECIPES/<package>/<version> (default:\

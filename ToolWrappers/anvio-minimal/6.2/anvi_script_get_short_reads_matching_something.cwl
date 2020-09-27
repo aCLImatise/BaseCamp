@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_get_short_reads_matching_something.cwl
+id: anvi_script_get_short_reads_matching_something.cwl
 inputs:
 - id: in_s
   doc: '[-O PATH]'
@@ -39,6 +39,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --stop-after
+- id: in_fast_q_files
+  doc: One or more FASTQ formatted files
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

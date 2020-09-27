@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../process_reads_fasta.py.cwl
+id: process_reads_fasta.py.cwl
 inputs:
 - id: in_fast_an
   doc: ''

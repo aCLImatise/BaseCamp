@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFlash_barplot.R.cwl
+id: phyloFlash_barplot.R.cwl
 inputs:
 - id: in_top_tax_a
   doc: "Number of taxa to display in the barplot. By default takes the top 10\nby\

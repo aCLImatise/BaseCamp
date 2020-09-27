@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_clusters_from_bed.cwl
+id: phyluce_probe_get_clusters_from_bed.cwl
 inputs:
 - id: in_bed
   doc: The BED directory you want to search for clusters

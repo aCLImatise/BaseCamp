@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ThermoFisher.CommonCore.MassPrecisionEstimator.dll.cwl
+id: ThermoFisher.CommonCore.MassPrecisionEstimator.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

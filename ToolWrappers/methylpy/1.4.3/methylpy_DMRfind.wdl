@@ -2,7 +2,7 @@ version 1.0
 
 task MethylpyDMRfind {
   input {
-    String? output_prefix
+    Int? output_prefix
     Array[String] all_c_files
     Array[String] samples
     Array[String] chrom_s
@@ -43,7 +43,7 @@ task MethylpyDMRfind {
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
   parameter_meta {
-    output_prefix: ""
+    output_prefix: "[--samples SAMPLES [SAMPLES ...]]\\n[--chroms CHROMS [CHROMS ...]]\\n[--mc-type MC_TYPE [MC_TYPE ...]]\\n[--num-procs NUM_PROCS] [--min-cov MIN_COV]\\n[--dmr-max-dist DMR_MAX_DIST]\\n[--sig-cutoff SIG_CUTOFF] [--num-sims NUM_SIMS]\\n[--min-tests MIN_TESTS] [--min-num-dms MIN_NUM_DMS]\\n[--sample-category SAMPLE_CATEGORY [SAMPLE_CATEGORY ...]]\\n[--mc-max-dist MC_MAX_DIST]\\n[--resid-cutoff RESID_CUTOFF]\\n[--keep-temp-files KEEP_TEMP_FILES]\\n[--min-cluster MIN_CLUSTER] [--seed SEED]"
     all_c_files: "List of allc files. (default: None)"
     samples: "List of space separated samples matching allc files.\\nBy default sample names will be inferred from allc\\nfilenames (default: None)"
     chrom_s: "Space separated listing of chromosomes where DMRs will\\nbe called. If not specified, DMRs will be called\\nacross the chromosomes/contigs that contained any data\\nin all allc files. (default: None)"

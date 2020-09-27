@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterGenesOut_mRNAname.pl.cwl
+id: filterGenesOut_mRNAname.pl.cwl
 inputs:
 - id: in_filter_genes
   doc: ''

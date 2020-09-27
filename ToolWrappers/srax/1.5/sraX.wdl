@@ -14,11 +14,81 @@ task SraX {
     Boolean? threads_number_running
     Boolean? version_displays_version
     Boolean? debug_verbose_output
-    String files_dot
+    String synopsis
+    String accomplished
+    String enclosing
+    String is
+    String presence
+    String repositories
+    String by
+    String designed
+    String of
+    String the
+    String antimicrobial
+    String running
+    String selected
+    String to
+    String var_26
+    String genome
+    String read
+    String resistance
+    String assembled
+    String genes
+    String single
+    String command_dot
+    String sequence
+    String under
+    String files
+    String default
+    String var_38
+    String required_dot
+    String fast_a
+    String var_41
+    String parameters
+    String addition
+    String format
+    String and
+    String systematically
+    String detect
   }
   command <<<
     sraX \
-      ~{files_dot} \
+      ~{synopsis} \
+      ~{accomplished} \
+      ~{enclosing} \
+      ~{is} \
+      ~{presence} \
+      ~{repositories} \
+      ~{by} \
+      ~{designed} \
+      ~{of} \
+      ~{the} \
+      ~{antimicrobial} \
+      ~{running} \
+      ~{selected} \
+      ~{to} \
+      ~{var_26} \
+      ~{genome} \
+      ~{read} \
+      ~{resistance} \
+      ~{assembled} \
+      ~{genes} \
+      ~{single} \
+      ~{command_dot} \
+      ~{sequence} \
+      ~{under} \
+      ~{files} \
+      ~{default} \
+      ~{var_38} \
+      ~{required_dot} \
+      ~{fast_a} \
+      ~{var_41} \
+      ~{parameters} \
+      ~{addition} \
+      ~{format} \
+      ~{and} \
+      ~{systematically} \
+      ~{detect} \
       ~{if (input_input_directory) then "-i" else ""} \
       ~{if (output_directory_store) then "-o" else ""} \
       ~{if (seqal_preferred_algorithm) then "-s" else ""} \
@@ -45,7 +115,42 @@ task SraX {
     threads_number_running: "|threads    Number of threads when running sraX. [number] Default: 6"
     version_displays_version: "|version    Displays version information and exits."
     debug_verbose_output: "|debug      Verbose output (for debugging).\\n'sraX' was last modified: 05th February 2020\\n"
-    files_dot: "--------------------"
+    synopsis: ""
+    accomplished: ""
+    enclosing: ""
+    is: ""
+    presence: ""
+    repositories: ""
+    by: ""
+    designed: ""
+    of: ""
+    the: ""
+    antimicrobial: ""
+    running: ""
+    selected: ""
+    to: ""
+    var_26: ""
+    genome: ""
+    read: ""
+    resistance: ""
+    assembled: ""
+    genes: ""
+    single: ""
+    command_dot: ""
+    sequence: ""
+    under: ""
+    files: ""
+    default: ""
+    var_38: ""
+    required_dot: ""
+    fast_a: ""
+    var_41: ""
+    parameters: ""
+    addition: ""
+    format: ""
+    and: ""
+    systematically: ""
+    detect: ""
   }
   output {
     File out_stdout = stdout()

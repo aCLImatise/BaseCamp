@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3ToPsl.cwl
+id: gff3ToPsl.cwl
 inputs:
 - id: in_drop_q
   doc: drop record when query not found in queryChromSizes

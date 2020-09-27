@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_hhsearch.cwl
+id: csb_hhsearch.cwl
 inputs:
 - id: in_binary
   doc: full path to the HHsearch binary (default=hhsearch)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../m2fmt_tier_hits.pl.cwl
+id: m2fmt_tier_hits.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addCols.cwl
+id: addCols.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtsv_build_FLAGS.cwl
+id: mtsv_build_FLAGS.cwl
 inputs:
 - id: in_fast_a
   doc: ''

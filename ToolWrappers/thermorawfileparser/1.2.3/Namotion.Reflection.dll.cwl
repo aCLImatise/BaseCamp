@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Namotion.Reflection.dll.cwl
+id: Namotion.Reflection.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

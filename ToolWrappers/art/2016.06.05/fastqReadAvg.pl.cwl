@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqReadAvg.pl.cwl
+id: fastqReadAvg.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

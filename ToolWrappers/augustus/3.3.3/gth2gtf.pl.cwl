@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gth2gtf.pl.cwl
+id: gth2gtf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

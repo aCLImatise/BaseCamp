@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rebaler_reads.cwl
+id: rebaler_reads.cwl
 inputs:
 - id: in_random
   doc: ''

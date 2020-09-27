@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_feature_delete_orphans.cwl
+id: tripaille_feature_delete_orphans.cwl
 inputs:
 - id: in_job_name
   doc: Name of the job

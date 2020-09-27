@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr_size_histogram.pl.cwl
+id: clstr_size_histogram.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

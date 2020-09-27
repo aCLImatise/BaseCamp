@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haystack_tf_activity_plane.cwl
+id: haystack_tf_activity_plane.cwl
 inputs:
 - id: in_tfs
   doc: on Gene Expression-
@@ -39,26 +39,16 @@ inputs:
   type: double
   inputBinding:
     prefix: --tf_value_cuttoff
-- id: in_var_7
-  doc: gene_expression_samples_filename
-  type: string
-  inputBinding:
-    position: 0
 - id: in_target_cell_type
   doc: HAYSTACK Parameters
   type: string
   inputBinding:
-    position: 1
-- id: in_path_folder_created
+    position: 0
+- id: in_haystack_motifs_output_folder
   doc: A path to a folder created by the haystack_motifs
   type: string
   inputBinding:
     position: 0
-- id: in_utility
-  doc: gene_expression_samples_filename
-  type: string
-  inputBinding:
-    position: 1
 - id: in_locations
   doc: target_cell_type      The sample name to use as a target for the analysis
   type: string

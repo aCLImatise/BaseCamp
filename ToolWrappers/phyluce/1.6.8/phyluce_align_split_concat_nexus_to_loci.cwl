@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_split_concat_nexus_to_loci.cwl
+id: phyluce_align_split_concat_nexus_to_loci.cwl
 inputs:
 - id: in_nexus
   doc: The input NEXUS file

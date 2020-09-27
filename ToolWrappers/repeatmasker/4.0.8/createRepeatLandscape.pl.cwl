@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createRepeatLandscape.pl.cwl
+id: createRepeatLandscape.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

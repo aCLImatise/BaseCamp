@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedItemOverlapCount.cwl
+id: bedItemOverlapCount.cwl
 inputs: []
 outputs:
 - id: out_stdout

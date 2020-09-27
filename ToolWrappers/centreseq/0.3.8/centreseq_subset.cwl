@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centreseq_subset.cwl
+id: centreseq_subset.cwl
 inputs:
 - id: in_input_samples
   doc: "Path to a new line separated text file containing\neach Sample ID to target\

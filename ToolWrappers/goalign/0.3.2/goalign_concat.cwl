@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_concat.cwl
+id: goalign_concat.cwl
 inputs:
 - id: in_output
   doc: Alignment output file (default "stdout")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_generate_exclusive_figures.cwl
+id: o_generate_exclusive_figures.cwl
 inputs: []
 outputs:
 - id: out_stdout

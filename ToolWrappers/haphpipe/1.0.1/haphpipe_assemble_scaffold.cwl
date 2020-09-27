@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_assemble_scaffold.cwl
+id: haphpipe_assemble_scaffold.cwl
 inputs:
 - id: in_contigs_fa
   doc: Fasta file with assembled contigs

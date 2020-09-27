@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halTreeNITurnover.py.cwl
+id: halTreeNITurnover.py.cwl
 inputs:
 - id: in_conserved_bed_name
   doc: "Name function for output bed files where genome name\nis specifed as %s (default:\

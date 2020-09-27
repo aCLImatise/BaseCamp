@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pvacseq_generate_protein_fasta.cwl
+id: pvacseq_generate_protein_fasta.cwl
 inputs:
 - id: in_downstream_sequence_length
   doc: "Cap to limit the downstream sequence length for\nframeshifts when creating\

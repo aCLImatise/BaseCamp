@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_juncs.cwl
+id: gtf_juncs.cwl
 inputs:
 - id: in_transcripts_dot_gtf
   doc: ''

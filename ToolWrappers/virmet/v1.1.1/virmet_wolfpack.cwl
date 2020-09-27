@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virmet_wolfpack.cwl
+id: virmet_wolfpack.cwl
 inputs:
 - id: in_run
   doc: Miseq run directory

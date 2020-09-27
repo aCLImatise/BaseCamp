@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plantcv_utils.py_json2csv.cwl
+id: plantcv_utils.py_json2csv.cwl
 inputs:
 - id: in_json
   doc: Input PlantCV JSON filename.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LuciphorAdapter.cwl
+id: LuciphorAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                        Input spectrum file (valid formats: 'mzML')"

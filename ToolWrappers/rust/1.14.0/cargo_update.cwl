@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_update.cwl
+id: cargo_update.cwl
 inputs:
 - id: in_package
   doc: to update

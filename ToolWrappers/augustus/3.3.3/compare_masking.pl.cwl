@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_masking.pl.cwl
+id: compare_masking.pl.cwl
 inputs:
 - id: in_file_one_dot_fa
   doc: softmasked fasta file

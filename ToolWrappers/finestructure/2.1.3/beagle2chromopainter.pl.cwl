@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../beagle2chromopainter.pl.cwl
+id: beagle2chromopainter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

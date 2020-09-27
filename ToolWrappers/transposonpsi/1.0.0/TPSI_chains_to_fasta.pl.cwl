@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TPSI_chains_to_fasta.pl.cwl
+id: TPSI_chains_to_fasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

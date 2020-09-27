@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../to_afg.cwl
+id: to_afg.cwl
 inputs:
 - id: in_reads
   doc: "(required)\ninput fasta/fastq reads file"

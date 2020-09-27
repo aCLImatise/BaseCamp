@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_count.cwl
+id: fastq_count.cwl
 inputs:
 - id: in_r_one_dot_fq
   doc: ''

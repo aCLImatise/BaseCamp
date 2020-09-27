@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../Qreport.cwl
+id: Qreport.cwl
 inputs:
-- id: in_o
-  doc: '[-t <NUMBER_OF_TILES>] [-q <MINQ>]'
-  type: File
-  inputBinding:
-    prefix: -o
 - id: in_package_version
   doc: package version.
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: long
   inputBinding:
     prefix: -l
+- id: in_file_prefix_extension
+  doc: file prefix (with NO extension). Mandatory option.
+  type: File
+  inputBinding:
+    prefix: -o
 - id: in_tiles_optional_default
   doc: of tiles. Optional (default 96).
   type: long
@@ -62,11 +62,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_o
-  doc: '[-t <NUMBER_OF_TILES>] [-q <MINQ>]'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_o)
 cwlVersion: v1.1
 baseCommand:
 - Qreport

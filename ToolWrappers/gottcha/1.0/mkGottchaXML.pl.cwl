@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkGottchaXML.pl.cwl
+id: mkGottchaXML.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

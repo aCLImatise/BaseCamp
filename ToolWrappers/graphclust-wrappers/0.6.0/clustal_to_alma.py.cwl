@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clustal_to_alma.py.cwl
+id: clustal_to_alma.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

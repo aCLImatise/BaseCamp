@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glpsol.cwl
+id: glpsol.cwl
 inputs:
 - id: in_mps
   doc: read LP/MIP problem in fixed MPS format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_genes.cwl
+id: gtf_genes.cwl
 inputs:
 - id: in_more_options
   doc: ''

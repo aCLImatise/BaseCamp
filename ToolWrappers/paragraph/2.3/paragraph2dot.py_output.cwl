@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paragraph2dot.py_output.cwl
+id: paragraph2dot.py_output.cwl
 inputs:
 - id: in_paragraph_two_dot_do_tpy
   doc: ''

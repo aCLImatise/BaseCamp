@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_arriba.sh.cwl
+id: run_arriba.sh.cwl
 inputs:
 - id: in_star_genome_dir_slash
   doc: ''

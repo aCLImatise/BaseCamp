@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../truspades.py.cwl
+id: truspades.py.cwl
 inputs:
 - id: in_h_slash_help
   doc: prints this usage message

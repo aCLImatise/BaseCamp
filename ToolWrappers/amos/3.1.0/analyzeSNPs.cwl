@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzeSNPs.cwl
+id: analyzeSNPs.cwl
 inputs:
 - id: in_bank
   doc: bank where assembly is stored

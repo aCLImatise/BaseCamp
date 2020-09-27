@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hartemink2psp.cwl
+id: hartemink2psp.cwl
 inputs:
 - id: in_mod
   doc: "|zoops|tcm   create MEME prior for given model\ndefault: zoops"

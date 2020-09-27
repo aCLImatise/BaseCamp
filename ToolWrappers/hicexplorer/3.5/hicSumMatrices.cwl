@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicSumMatrices.cwl
+id: hicSumMatrices.cwl
 inputs:
 - id: in_matrices
   doc: ".h5 or cooler file format [.h5 or cooler file format ...], -m .h5 or cooler\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuffle_embed.pl.cwl
+id: shuffle_embed.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

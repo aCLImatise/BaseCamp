@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cramtools_fastq.cwl
+id: cramtools_fastq.cwl
 inputs:
 - id: in_default_quality_score
   doc: 'Use this quality score (decimal representation of ASCII symbol) as a default

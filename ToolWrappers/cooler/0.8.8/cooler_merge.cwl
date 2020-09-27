@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_merge.cwl
+id: cooler_merge.cwl
 inputs:
 - id: in_chunksize
   doc: Size of the merge buffer in number of pixel table
@@ -18,11 +18,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_rows_dot
-  doc: '[default: 20000000]'
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SvmTheoreticalSpectrumGeneratorTrainer.cwl
+id: SvmTheoreticalSpectrumGeneratorTrainer.cwl
 inputs:
 - id: in_in_spectra
   doc: "*          Input Training Spectra in mzML (valid formats: 'mzML')"

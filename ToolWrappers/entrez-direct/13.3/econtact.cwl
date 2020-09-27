@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../econtact.cwl
+id: econtact.cwl
 inputs:
 - id: in_email
   doc: Contact person's address

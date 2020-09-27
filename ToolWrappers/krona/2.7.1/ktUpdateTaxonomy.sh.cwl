@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktUpdateTaxonomy.sh.cwl
+id: ktUpdateTaxonomy.sh.cwl
 inputs:
 - id: in_only_fetch
   doc: Only download source files; do not build.

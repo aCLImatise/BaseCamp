@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_sr_test.cwl
+id: svtk_sr_test.cwl
 inputs:
 - id: in_window
   doc: "Window around variant start/end to consider for split\nread support. [100]"

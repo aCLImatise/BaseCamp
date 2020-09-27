@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_join.cwl
+id: maf_join.cwl
 inputs:
 - id: in_sorted_file_two_dot_maf
   doc: ''

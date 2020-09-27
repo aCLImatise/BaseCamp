@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roary_create_pan_genome_plots.R.cwl
+id: roary_create_pan_genome_plots.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

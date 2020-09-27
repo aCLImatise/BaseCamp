@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_junction.cwl
+id: abyss_junction.cwl
 inputs:
 - id: in_ignore
   doc: ignore junctions seen in FILE

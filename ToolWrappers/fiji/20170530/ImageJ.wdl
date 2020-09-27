@@ -30,14 +30,7 @@ task ImageJ {
     String? run
     File? compile_and_run
     Boolean? edit
-    Boolean? update
-    Boolean? clo_jure
-    Boolean? beanshell
-    Boolean? bsh
-    Boolean? javascript
-    Boolean? js
-    File? main_class
-    Boolean? retro_translator
+    String? main_class
   }
   command <<<
     ImageJ \
@@ -69,14 +62,7 @@ task ImageJ {
       ~{if defined(run) then ("--run " +  '"' + run + '"') else ""} \
       ~{if defined(compile_and_run) then ("--compile-and-run " +  '"' + compile_and_run + '"') else ""} \
       ~{if (edit) then "--edit" else ""} \
-      ~{if (update) then "--update" else ""} \
-      ~{if (clo_jure) then "--clojure" else ""} \
-      ~{if (beanshell) then "--beanshell" else ""} \
-      ~{if (bsh) then "--bsh" else ""} \
-      ~{if (javascript) then "--javascript" else ""} \
-      ~{if (js) then "--js" else ""} \
-      ~{if defined(main_class) then ("--main-class " +  '"' + main_class + '"') else ""} \
-      ~{if (retro_translator) then "--retrotranslator" else ""}
+      ~{if defined(main_class) then ("--main-class " +  '"' + main_class + '"') else ""}
   >>>
   parameter_meta {
     dry_run: "show the command line, but do not run anything"
@@ -107,14 +93,7 @@ task ImageJ {
     run: "[<arg>]\\nrun <plugin> in ImageJ, optionally with arguments"
     compile_and_run: "compile and run <plugin> in ImageJ"
     edit: "[<file>...]\\nedit the given file in the script editor"
-    update: "start the command-line version of the ImageJ updater"
-    clo_jure: "start Clojure instead of ImageJ (this is the\\ndefault when called with a file ending in .clj)"
-    beanshell: ""
-    bsh: "start BeanShell instead of ImageJ (this is the\\ndefault when called with a file ending in .bs or .bsh"
-    javascript: ""
-    js: "start Javascript (the Rhino engine) instead of\\nImageJ (this is the default when called with a\\nfile ending in .js)"
-    main_class: "(this is the\\ndefault when called with a file ending in .class)\\nstart the given class instead of ImageJ"
-    retro_translator: "use Retrotranslator to support Java < 1.6\\n"
+    main_class: "(this is the"
   }
   output {
     File out_stdout = stdout()

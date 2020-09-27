@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_multistate.py.cwl
+id: design_multistate.py.cwl
 inputs:
 - id: in_file
   doc: Read file in *.inp format

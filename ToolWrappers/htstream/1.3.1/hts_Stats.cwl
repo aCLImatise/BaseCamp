@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_Stats.cwl
+id: hts_Stats.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

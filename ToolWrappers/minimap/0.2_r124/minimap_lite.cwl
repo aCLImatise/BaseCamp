@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minimap_lite.cwl
+id: minimap_lite.cwl
 inputs:
 - id: in_target_dot_fa
   doc: ''

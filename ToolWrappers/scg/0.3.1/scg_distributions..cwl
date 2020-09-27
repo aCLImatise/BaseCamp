@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scg_distributions..cwl
+id: scg_distributions..cwl
 inputs:
 - id: in_single
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamreset.cwl
+id: bamreset.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_vcfeval.cwl
+id: rtg_vcfeval.cwl
 inputs:
 - id: in_baseline
   doc: VCF file containing baseline variants

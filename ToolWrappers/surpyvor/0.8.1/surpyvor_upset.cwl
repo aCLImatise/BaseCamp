@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_upset.cwl
+id: surpyvor_upset.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.

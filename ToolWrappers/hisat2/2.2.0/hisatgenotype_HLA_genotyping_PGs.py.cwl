@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_HLA_genotyping_PGs.py.cwl
+id: hisatgenotype_HLA_genotyping_PGs.py.cwl
 inputs:
 - id: in_reference_type
   doc: "Reference type: gene, chromosome, and genome (default:\ngene)"

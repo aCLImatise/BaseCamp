@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../cromwell_tools_release_hold.cwl
+id: cromwell_tools_release_hold.cwl
 inputs:
-- id: in_uuid
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --uuid
 - id: in_url
   doc: "The URL to the Cromwell server. e.g.\n\"https://cromwell.server.org/\""
   type: string
@@ -31,6 +26,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --service-account-key
+- id: in_uuid
+  doc: "A Cromwell workflow UUID, which is the workflow\nidentifier.\n"
+  type: string
+  inputBinding:
+    prefix: --uuid
 outputs:
 - id: out_stdout
   doc: Standard output stream

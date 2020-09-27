@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../after.py.cwl
+id: after.py.cwl
 inputs:
 - id: in_read_one_file
   doc: "file name of read1, required. If input_dir is\nspecified, then this arg is\

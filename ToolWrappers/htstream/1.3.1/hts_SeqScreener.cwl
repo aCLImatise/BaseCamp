@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_SeqScreener.cwl
+id: hts_SeqScreener.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

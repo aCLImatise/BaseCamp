@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shannon_cpp.cwl
+id: shannon_cpp.cwl
 inputs:
 - id: in_subcommand
   doc: ''

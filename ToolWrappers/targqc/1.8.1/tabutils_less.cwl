@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tabutils_less.cwl
+id: tabutils_less.cwl
 inputs:
 - id: in_quit_end_reached
   doc: Quit once the end of a file is reached

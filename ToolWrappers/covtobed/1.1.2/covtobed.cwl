@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../covtobed.cwl
+id: covtobed.cwl
 inputs:
 - id: in_physical_coverage
   doc: compute physical coverage (needs paired alignments in input)

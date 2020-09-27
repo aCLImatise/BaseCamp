@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../berokka.cwl
+id: berokka.cwl
 inputs:
 - id: in_debug
   doc: Debug info.

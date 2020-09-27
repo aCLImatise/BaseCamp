@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_bedpetovcf.cwl
+id: svtools_bedpetovcf.cwl
 inputs:
 - id: in_input
   doc: 'BEDPE input (default: stdin)'

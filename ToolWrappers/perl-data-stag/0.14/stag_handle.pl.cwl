@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stag_handle.pl.cwl
+id: stag_handle.pl.cwl
 inputs:
 - id: in_module
   doc: "|m PERLMODULE\nA module that is used to transform the input events the module\n\

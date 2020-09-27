@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GeneFamilyIntegrator.cwl
+id: GeneFamilyIntegrator.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfServer.cwl
+id: gfServer.cwl
 inputs:
 - id: in_tile_size
   doc: "size of n-mers to index.  Default is 11 for nucleotides, 4 for\nproteins (or\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../demultiplex.py.cwl
+id: demultiplex.py.cwl
 inputs:
 - id: in_mismatches
   doc: 'Number of mismatches allowed in barcode. [Default: 0]'

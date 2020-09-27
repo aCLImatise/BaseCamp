@@ -14,7 +14,6 @@ task TOBIASATACorrect {
     Boolean? track_off
     Int? k_flank
     Int? read_shift
-    Boolean? five
     Int? bg_shift
     Int? window
     String? score_mat
@@ -38,7 +37,6 @@ task TOBIASATACorrect {
       ~{if (track_off) then "--track-off" else ""} \
       ~{if defined(k_flank) then ("--k_flank " +  '"' + k_flank + '"') else ""} \
       ~{if defined(read_shift) then ("--read_shift " +  '"' + read_shift + '"') else ""} \
-      ~{if (five) then "-5" else ""} \
       ~{if defined(bg_shift) then ("--bg_shift " +  '"' + bg_shift + '"') else ""} \
       ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
       ~{if defined(score_mat) then ("--score_mat " +  '"' + score_mat + '"') else ""} \
@@ -61,7 +59,6 @@ task TOBIASATACorrect {
     track_off: "[<track> [<track> ...]]\\nSwitch off writing of individual .bigwig-tracks\\n(uncorrected/bias/expected/corrected)"
     k_flank: "Flank +/- of cutsite to estimate bias from (default:\\n12)"
     read_shift: "<int>         Read shift for forward and reverse reads (default: 4"
-    five: ")"
     bg_shift: "Read shift for estimation of background frequencies\\n(default: 100)"
     window: "Window size for calculating expected signal (default:\\n100)"
     score_mat: "Type of matrix to use for bias estimation (PWM/DWM)\\n(default: DWM)"

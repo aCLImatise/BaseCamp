@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../estimateSelfSimilarity.pl.cwl
+id: estimateSelfSimilarity.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

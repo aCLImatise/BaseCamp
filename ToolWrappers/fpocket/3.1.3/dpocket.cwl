@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dpocket.cwl
+id: dpocket.cwl
 inputs:
 - id: in_prefix_output_file
   doc: ': Prefix of the output file.               (./dpout_*)'

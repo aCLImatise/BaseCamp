@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parmchk2.cwl
+id: parmchk2.cwl
 inputs: []
 outputs:
 - id: out_stdout

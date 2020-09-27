@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MassCalculator.cwl
+id: MassCalculator.cwl
 inputs:
 - id: in_in
   doc: "Input file with peptide sequences and optionally charge numbers (mutually\

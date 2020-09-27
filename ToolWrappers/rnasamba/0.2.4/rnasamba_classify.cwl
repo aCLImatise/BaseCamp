@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnasamba_classify.cwl
+id: rnasamba_classify.cwl
 inputs:
 - id: in_protein_fast_a
   doc: "output FASTA file containing translated sequences for\nthe predicted coding\

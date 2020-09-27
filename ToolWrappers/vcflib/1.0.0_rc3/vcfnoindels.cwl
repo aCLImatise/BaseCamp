@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfnoindels.cwl
+id: vcfnoindels.cwl
 inputs: []
 outputs:
 - id: out_stdout

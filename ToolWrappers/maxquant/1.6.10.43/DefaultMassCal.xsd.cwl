@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DefaultMassCal.xsd.cwl
+id: DefaultMassCal.xsd.cwl
 inputs: []
 outputs:
 - id: out_stdout

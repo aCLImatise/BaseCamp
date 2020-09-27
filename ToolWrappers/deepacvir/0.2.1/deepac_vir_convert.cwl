@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_vir_convert.cwl
+id: deepac_vir_convert.cwl
 inputs:
 - id: in_weights
   doc: Use prepared weights instead of the model file.

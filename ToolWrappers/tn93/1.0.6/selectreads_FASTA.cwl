@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../selectreads_FASTA.cwl
+id: selectreads_FASTA.cwl
 inputs:
 - id: in_q
   doc: ''

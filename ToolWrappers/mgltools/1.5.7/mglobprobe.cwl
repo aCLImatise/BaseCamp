@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobprobe.cwl
+id: mglobprobe.cwl
 inputs: []
 outputs:
 - id: out_stdout

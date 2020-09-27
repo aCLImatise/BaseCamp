@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_plot_per_read_roc.cwl
+id: tombo_plot_per_read_roc.cwl
 inputs:
 - id: in_binary_files_containing
   doc: "Binary files containing per-read statistics from\nstatistical testing."

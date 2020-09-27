@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getSiteConservation.pl.cwl
+id: getSiteConservation.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

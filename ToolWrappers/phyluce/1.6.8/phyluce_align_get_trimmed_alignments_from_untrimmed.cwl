@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_trimmed_alignments_from_untrimmed.cwl
+id: phyluce_align_get_trimmed_alignments_from_untrimmed.cwl
 inputs:
 - id: in_alignments
   doc: "The directory containing alignments to be trimmed.\n(default: None)"

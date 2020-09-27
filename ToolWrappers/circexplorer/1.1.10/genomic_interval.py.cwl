@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomic_interval.py.cwl
+id: genomic_interval.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

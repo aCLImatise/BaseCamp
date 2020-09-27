@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../identifyHMM.cwl
+id: identifyHMM.cwl
 inputs:
 - id: in_marker_db
   doc: "Provide HMM file of markers. Markers should have a\ndescriptive ID name."

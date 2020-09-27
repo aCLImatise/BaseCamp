@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clame.cwl
+id: clame.cwl
 inputs:
 - id: in_number_take_default
   doc: number of bases to take an alignment (default 70)

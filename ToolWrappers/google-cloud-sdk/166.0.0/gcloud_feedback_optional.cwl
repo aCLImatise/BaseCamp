@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_feedback_optional.cwl
+id: gcloud_feedback_optional.cwl
 inputs:
 - id: in_log_file
   doc: Path to the log file from a prior gcloud run.

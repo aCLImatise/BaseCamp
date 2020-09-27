@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_pipeline_tdc..cwl
+id: crux_pipeline_tdc..cwl
 inputs:
 - id: in_crux
   doc: ''

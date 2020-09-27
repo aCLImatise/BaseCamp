@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdistribution.cwl
+id: gdistribution.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ustacks.cwl
+id: ustacks.cwl
 inputs:
 - id: in_name
   doc: ': a name for the sample (default: input file name minus the suffix).'

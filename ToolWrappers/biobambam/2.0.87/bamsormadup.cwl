@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamsormadup.cwl
+id: bamsormadup.cwl
 inputs: []
 outputs:
 - id: out_stdout

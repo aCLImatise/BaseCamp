@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_refseqs.pl.cwl
+id: prepare_refseqs.pl.cwl
 inputs:
 - id: in_no_sort
   doc: "If using GFF or FASTA input, preserve the order of the reference\nsequences\

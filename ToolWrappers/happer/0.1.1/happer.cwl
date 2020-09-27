@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../happer.cwl
+id: happer.cwl
 inputs:
 - id: in_out
   doc: "write haplotype sequences to the specified file;\ndefault is the terminal\

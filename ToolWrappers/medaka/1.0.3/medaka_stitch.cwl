@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_stitch.cwl
+id: medaka_stitch.cwl
 inputs:
 - id: in_debug
   doc: 'Verbose logging of debug information. (default: 20)'

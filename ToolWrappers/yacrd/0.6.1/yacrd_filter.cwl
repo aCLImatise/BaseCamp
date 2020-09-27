@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yacrd_filter.cwl
+id: yacrd_filter.cwl
 inputs:
 - id: in_input
   doc: path to sequence input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)

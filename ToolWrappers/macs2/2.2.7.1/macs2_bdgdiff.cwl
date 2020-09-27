@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_bdgdiff.cwl
+id: macs2_bdgdiff.cwl
 inputs:
 - id: in_tone
   doc: "MACS pileup bedGraph for condition 1. Incompatible\nwith callpeak --SPMR output.\

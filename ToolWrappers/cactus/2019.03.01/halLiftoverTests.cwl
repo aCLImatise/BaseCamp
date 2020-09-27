@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halLiftoverTests.cwl
+id: halLiftoverTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

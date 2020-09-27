@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smix_hmm.cwl
+id: smix_hmm.cwl
 inputs: []
 outputs:
 - id: out_stdout

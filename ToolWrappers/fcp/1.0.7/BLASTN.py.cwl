@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BLASTN.py.cwl
+id: BLASTN.py.cwl
 inputs:
 - id: in_blastn_path
   doc: ''

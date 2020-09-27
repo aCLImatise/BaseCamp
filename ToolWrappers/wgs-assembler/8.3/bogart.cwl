@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bogart.cwl
+id: bogart.cwl
 inputs:
 - id: in_mandatory_path_ovlstore
   doc: Mandatory path to an ovlStore.
@@ -175,21 +175,16 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: in_mate_split_discontinuous
-  doc: mateSplitUnhappyContains
-  type: string
-  inputBinding:
-    position: 7
 - id: in_mate_split_coverage_plot
   doc: setParentAndHang
   type: string
   inputBinding:
-    position: 8
+    position: 7
 - id: in_stderr
   doc: No output prefix name (-o option) supplied.
   type: string
   inputBinding:
-    position: 9
+    position: 8
 outputs:
 - id: out_stdout
   doc: Standard output stream

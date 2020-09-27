@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clip_out_UMI_cellBC.py.cwl
+id: clip_out_UMI_cellBC.py.cwl
 inputs:
 - id: in_umi_len
   doc: Length of UMI

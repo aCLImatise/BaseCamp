@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_gtfs.pl.cwl
+id: filter_gtfs.pl.cwl
 inputs:
 - id: in_list_filter_types
   doc: ': List filter types'

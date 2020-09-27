@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sonLibTests.cwl
+id: sonLibTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

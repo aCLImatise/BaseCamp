@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpecLibSearcher.cwl
+id: SpecLibSearcher.cwl
 inputs:
 - id: in_in
   doc: "*                                      Input files (valid formats: 'mzML')"

@@ -1,26 +1,21 @@
 class: CommandLineTool
-id: ../../../hivtrace_strip_drams.cwl
+id: hivtrace_strip_drams.cwl
 inputs:
-- id: in_input
-  doc: The input FASTA file
-  type: File
-  inputBinding:
-    prefix: --input
-- id: in_var_1
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output
 - id: in_d
   doc: ''
   type: string
   inputBinding:
     prefix: -d
-- id: in_d
-  doc: -d {lewis,wheeler}, --dram {lewis,wheeler}
+- id: in_o
+  doc: ''
   type: string
   inputBinding:
-    position: 0
+    prefix: -o
+- id: in_i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 outputs:
 - id: out_stdout
   doc: Standard output stream

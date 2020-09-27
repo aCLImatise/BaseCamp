@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcffilter.cwl
+id: vcffilter.cwl
 inputs:
 - id: in_info_filter
   doc: "specifies a filter to apply to the info fields of records,\nremoves alleles\

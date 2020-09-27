@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mga.cwl
+id: mga.cwl
 inputs:
 - id: in_multiple_species_sequences
   doc: ': multiple species (sequences are individually treated)'

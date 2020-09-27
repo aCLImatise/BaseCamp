@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_ovl_hifi.cwl
+id: pancake_ovl_hifi.cwl
 inputs:
 - id: in_out_fmt
   doc: 'STR    Select the output format. Valid choices: (m4, ipa). [m4]'

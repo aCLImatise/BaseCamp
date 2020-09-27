@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaff2fasta.cwl
+id: scaff2fasta.cwl
 inputs: []
 outputs:
 - id: out_stdout

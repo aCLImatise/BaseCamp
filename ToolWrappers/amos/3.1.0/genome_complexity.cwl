@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genome_complexity.cwl
+id: genome_complexity.cwl
 inputs:
 - id: in_fasta_file_evaluate
   doc: fasta file to evaluate

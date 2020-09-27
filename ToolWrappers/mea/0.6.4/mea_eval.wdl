@@ -13,11 +13,13 @@ task MeaEval {
     Boolean? no_slide_rule
     Boolean? no_conflict_rule
     Boolean? verbose
-    File file
+    String me_a
+    String input_file
   }
   command <<<
     mea_eval \
-      ~{file} \
+      ~{me_a} \
+      ~{input_file} \
       ~{if defined(alpha) then ("--alpha " +  '"' + alpha + '"') else ""} \
       ~{if defined(beta) then ("--beta " +  '"' + beta + '"') else ""} \
       ~{if defined(gamma) then ("--gamma " +  '"' + gamma + '"') else ""} \
@@ -42,7 +44,8 @@ task MeaEval {
     no_slide_rule: "Use slide rule [default: use slide rule]"
     no_conflict_rule: "Use conflict rule [default: use conflict rule]"
     verbose: "Turn on verobose output"
-    file: "(default=`')"
+    me_a: ""
+    input_file: ""
   }
   output {
     File out_stdout = stdout()

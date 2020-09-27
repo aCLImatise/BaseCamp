@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../closeGaps.oneDirectory.perl.cwl
+id: closeGaps.oneDirectory.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

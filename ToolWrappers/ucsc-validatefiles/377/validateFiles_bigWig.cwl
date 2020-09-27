@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validateFiles_bigWig.cwl
+id: validateFiles_bigWig.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

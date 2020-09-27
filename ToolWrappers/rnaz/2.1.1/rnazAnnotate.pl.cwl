@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazAnnotate.pl.cwl
+id: rnazAnnotate.pl.cwl
 inputs:
 - id: in_bed
   doc: "Set the annotation BED file with this option.\n"

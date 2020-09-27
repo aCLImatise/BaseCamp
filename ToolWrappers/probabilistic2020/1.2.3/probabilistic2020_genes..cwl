@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../probabilistic2020_genes..cwl
+id: probabilistic2020_genes..cwl
 inputs:
 - id: in_v
   doc: ''

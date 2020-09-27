@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DB2Falcon.cwl
+id: DB2Falcon.cwl
 inputs:
 - id: in_u
   doc: ''

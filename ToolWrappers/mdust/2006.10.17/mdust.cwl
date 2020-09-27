@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdust.cwl
+id: mdust.cwl
 inputs:
 - id: in_value_lower_values
   doc: "<cut-off> value is 28 (lower values might mask more,\nbut possibly still useful\

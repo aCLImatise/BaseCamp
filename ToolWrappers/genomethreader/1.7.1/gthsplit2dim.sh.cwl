@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gthsplit2dim.sh.cwl
+id: gthsplit2dim.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

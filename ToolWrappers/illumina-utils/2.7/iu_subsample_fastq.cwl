@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_subsample_fastq.cwl
+id: iu_subsample_fastq.cwl
 inputs:
 - id: in_r_one
   doc: "FASTQ file to be subsampled. If you are subsampling a\nmerged FASTQ or you\

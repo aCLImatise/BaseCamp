@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_rewrite.cwl
+id: gsutil_rewrite.cwl
 inputs:
 - id: in_continues_silently_printing
   doc: "Continues silently (without printing error messages) despite\nerrors when\

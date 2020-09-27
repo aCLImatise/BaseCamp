@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assemblyget.cwl
+id: assemblyget.cwl
 inputs:
 - id: in_assembly
   doc: ': enter assembly value: Error: Unable to get reply from user - end of standard

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ibdseq.cwl
+id: ibdseq.cwl
 inputs:
 - id: in_jar
   doc: ''

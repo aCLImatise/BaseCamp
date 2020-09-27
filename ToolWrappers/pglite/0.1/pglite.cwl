@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pglite.cwl
+id: pglite.cwl
 inputs:
 - id: in_personality
   doc: "|postgres\nDefaults to `postgres`. The `pipeline` personality exists to support\n\

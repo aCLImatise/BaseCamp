@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_somaticFilter.cwl
+id: varscan_somaticFilter.cwl
 inputs:
 - id: in_min_coverage
   doc: Minimum read depth at a position to make a call [10]

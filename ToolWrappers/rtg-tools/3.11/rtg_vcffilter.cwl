@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_vcffilter.cwl
+id: rtg_vcffilter.cwl
 inputs:
 - id: in_clear_failed_samples
   doc: ', and --fail-samples options for alternatives.'

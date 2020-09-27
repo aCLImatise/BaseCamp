@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agfusion_download.cwl
+id: agfusion_download.cwl
 inputs:
 - id: in_dir
   doc: "(Optional) Directory to the database will be\ndownloaded to (defaults to current\

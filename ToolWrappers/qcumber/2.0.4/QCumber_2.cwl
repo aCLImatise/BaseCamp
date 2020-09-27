@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QCumber_2.cwl
+id: QCumber_2.cwl
 inputs:
 - id: in_threads
   doc: 'Number of threads. Default: 4'
@@ -69,15 +69,10 @@ inputs:
   inputBinding:
     prefix: --trimBetter
 - id: in_no_kraken
-  doc: ''
+  doc: --notrimming, -Q
   type: boolean
   inputBinding:
     prefix: --nokraken
-- id: in_not_rimming
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --notrimming
 - id: in_illumina_clip
   doc: "Illuminaclip option: <leading quality>:<trailing\nquality>:<sliding window>.\
     \ Default: 2:30:10"
@@ -102,20 +97,11 @@ inputs:
   inputBinding:
     prefix: --trimBetter_threshold
 - id: in_output
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output
-- id: in_rename
-  doc: "TSV File with two columns: <old sample name> <new\nsample name>"
+  doc: "--rename RENAME, -R RENAME\nTSV File with two columns: <old sample name> <new\n\
+    sample name>\n--save_mapping, -S"
   type: File
   inputBinding:
-    prefix: --rename
-- id: in_save_mapping
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --save_mapping
+    prefix: --output
 outputs:
 - id: out_stdout
   doc: Standard output stream

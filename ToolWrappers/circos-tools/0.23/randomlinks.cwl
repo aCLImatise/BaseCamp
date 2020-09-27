@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomlinks.cwl
+id: randomlinks.cwl
 inputs:
 - id: in_ruleset
   doc: ''

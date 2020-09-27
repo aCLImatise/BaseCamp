@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plncpro_format_ff.sh.cwl
+id: plncpro_format_ff.sh.cwl
 inputs:
 - id: in_do_prompt_overwriting
   doc: Don't prompt before overwriting

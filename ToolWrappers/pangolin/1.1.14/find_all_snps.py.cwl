@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../find_all_snps.py.cwl
+id: find_all_snps.py.cwl
 inputs:
-- id: in_a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -a
 - id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
+- id: in_a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
 outputs:
 - id: out_stdout
   doc: Standard output stream

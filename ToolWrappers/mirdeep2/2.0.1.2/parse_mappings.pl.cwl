@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_mappings.pl.cwl
+id: parse_mappings.pl.cwl
 inputs:
 - id: in_discard_mappings_higher
   doc: Discard mappings of edit distance higher than this

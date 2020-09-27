@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_a2ps.cwl
+id: arb_a2ps.cwl
 inputs:
 - id: in_one_page_sheet
   doc: one page per sheet

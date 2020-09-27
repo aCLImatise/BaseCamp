@@ -2,11 +2,7 @@ version 1.0
 
 task StrlingExtract {
   input {
-    File? fast_a
-    File? genome_repeats
-    String? proportion_repeat
-    Int? min_mapq
-    Boolean? verbose
+    Int? fast_a
     String bam
     String bin
   }
@@ -14,18 +10,10 @@ task StrlingExtract {
     strling extract \
       ~{bam} \
       ~{bin} \
-      ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
-      ~{if defined(genome_repeats) then ("--genome-repeats " +  '"' + genome_repeats + '"') else ""} \
-      ~{if defined(proportion_repeat) then ("--proportion-repeat " +  '"' + proportion_repeat + '"') else ""} \
-      ~{if defined(min_mapq) then ("--min-mapq " +  '"' + min_mapq + '"') else ""} \
-      ~{if (verbose) then "--verbose" else ""}
+      ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""}
   >>>
   parameter_meta {
-    fast_a: "path to fasta file (required for CRAM)"
-    genome_repeats: "optional path to genome repeats file. if it does not exist, it will be created"
-    proportion_repeat: "proportion of read that is repetitive to be considered as STR (default: 0.8)"
-    min_mapq: "minimum mapping quality (does not apply to STR reads) (default: 40)"
-    verbose: ""
+    fast_a: "path to fasta file (required for CRAM)\\n-g, --genome-repeats=GENOME_REPEATS\\noptional path to genome repeats file. if it does not exist, it will be created\\n-p, --proportion-repeat=PROPORTION_REPEAT\\nproportion of read that is repetitive to be considered as STR (default: 0.8)\\n-q, --min-mapq=MIN_MAPQ    minimum mapping quality (does not apply to STR reads) (default: 40)\\n-v, --verbose\\n-h, --help                 Show this help\\n"
     bam: "path to bam file"
     bin: "path bin to output bin file to be created"
   }

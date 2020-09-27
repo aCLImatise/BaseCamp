@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../docking_py.cwl
+id: docking_py.cwl
 inputs: []
 outputs:
 - id: out_stdout

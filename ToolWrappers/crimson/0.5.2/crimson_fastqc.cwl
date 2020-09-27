@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crimson_fastqc.cwl
+id: crimson_fastqc.cwl
 inputs:
 - id: in_input
   doc: ''

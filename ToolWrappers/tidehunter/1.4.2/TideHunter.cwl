@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TideHunter.cwl
+id: TideHunter.cwl
 inputs:
 - id: in_km_er_length
   doc: k-mer length (no larger than 16). [8]

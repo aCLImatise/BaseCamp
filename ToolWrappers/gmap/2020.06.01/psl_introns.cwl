@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psl_introns.cwl
+id: psl_introns.cwl
 inputs:
 - id: in_more_options
   doc: ''

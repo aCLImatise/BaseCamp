@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../moca_plot.cwl
+id: moca_plot.cwl
 inputs:
 - id: in_meme_dir
   doc: MEME output directory  [required]

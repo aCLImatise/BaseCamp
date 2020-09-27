@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_plot_by_lane.cwl
+id: interop_plot_by_lane.cwl
 inputs:
 - id: in_metric_name
   doc: '[ClusterCount]: Metric to plot'

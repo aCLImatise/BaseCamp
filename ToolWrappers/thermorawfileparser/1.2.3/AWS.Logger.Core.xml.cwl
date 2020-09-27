@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AWS.Logger.Core.xml.cwl
+id: AWS.Logger.Core.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

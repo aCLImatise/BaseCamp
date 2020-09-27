@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../error_corrected2frg.cwl
+id: error_corrected2frg.cwl
 inputs:
 - id: in_length_min
   doc: Minimum length of a read (64)

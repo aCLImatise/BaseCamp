@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ame.cwl
+id: ame.cwl
 inputs:
 - id: in_output_dir_directory
   doc: <output dir> output directory; default=ame_out

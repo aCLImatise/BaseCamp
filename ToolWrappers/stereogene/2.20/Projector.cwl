@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Projector.cwl
+id: Projector.cwl
 inputs:
 - id: in_v
   doc: verbose

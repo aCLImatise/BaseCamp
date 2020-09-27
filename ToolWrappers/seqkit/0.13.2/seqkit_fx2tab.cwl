@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_fx2tab.cwl
+id: seqkit_fx2tab.cwl
 inputs:
 - id: in_alphabet
   doc: print alphabet letters

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_nx_plot.cwl
+id: checkm_nx_plot.cwl
 inputs:
 - id: in_image_type
   doc: 'desired image type (default: png)'

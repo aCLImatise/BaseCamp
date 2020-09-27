@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_MaxPos.cwl
+id: TOBIAS_MaxPos.cwl
 inputs:
 - id: in_bed
   doc: Regions to search for max position within

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaxQuantPLib.dll.cwl
+id: MaxQuantPLib.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

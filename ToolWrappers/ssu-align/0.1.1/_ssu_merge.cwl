@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_ssu_merge.cwl
+id: _ssu_merge.cwl
 inputs: []
 outputs:
 - id: out_stdout

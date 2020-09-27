@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scran_post_install_tests.bats.cwl
+id: scran_post_install_tests.bats.cwl
 inputs: []
 outputs:
 - id: out_stdout

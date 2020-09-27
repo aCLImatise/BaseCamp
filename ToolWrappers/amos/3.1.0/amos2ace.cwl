@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amos2ace.cwl
+id: amos2ace.cwl
 inputs:
 - id: in_location_of_chromatograms
   doc: Location of the chromatograms

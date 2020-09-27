@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qdelaunay.cwl
+id: qdelaunay.cwl
 inputs: []
 outputs:
 - id: out_stdout

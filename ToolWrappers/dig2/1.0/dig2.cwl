@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dig2.cwl
+id: dig2.cwl
 inputs:
 - id: in_dig
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RELEASE_NOTES.cwl
+id: RELEASE_NOTES.cwl
 inputs: []
 outputs:
 - id: out_stdout

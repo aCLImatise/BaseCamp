@@ -75,7 +75,7 @@ subcommands:
     args: !SimpleFlagArg
       name: string
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -149,7 +149,7 @@ subcommands:
         args: !SimpleFlagArg
           name: string
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -223,7 +223,309 @@ subcommands:
             args: !SimpleFlagArg
               name: string
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: normal BAM file
+                synonyms:
+                - -b
+                - --bam
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: exome target file (.bed) for whole-exome sequencing[default:null]
+                synonyms:
+                - -t
+                - --target
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: the VCF file generated from the normal BAM
+                synonyms:
+                - -v
+                - --vcf
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: genome reference file (.fasta) to which the reads were
+                  aligned
+                synonyms:
+                - -r
+                - --ref
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: the length of windows used to infer GC-content bias[default:1000]
+                synonyms:
+                - -w
+                - --wsize
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: the length of kmer sequence [default:3]
+                synonyms:
+                - -k
+                - --kmer
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: output file
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: the path of samtools [default:samtools]
+                synonyms:
+                - -s
+                - --samtools
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: give this information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: scssim learn [options]\n\nOptions:\n    -h, --help\
+                \                      give this information\n    -b, --bam <string>\
+                \              normal BAM file\n    -t, --target <string>        \
+                \   exome target file (.bed) for whole-exome sequencing[default:null]\n\
+                \    -v, --vcf <string>              the VCF file generated from the\
+                \ normal BAM\n    -r, --ref <string>              genome reference\
+                \ file (.fasta) to which the reads were aligned\n    -w, --wsize <int>\
+                \               the length of windows used to infer GC-content bias[default:1000]\n\
+                \    -k, --kmer <int>                the length of kmer sequence [default:3]\n\
+                \    -o, --output <string>           output file\n    -s, --samtools\
+                \ <string>         the path of samtools [default:samtools]\n\nExample:\n\
+                \    scssim learn -b /path/to/normal.bam -t /path/to/normal.bed -v\
+                \ /path/to/normal.vcf -r /path/to/ref.fa > /path/to/results.profile\n\
+                \n    scssim learn -b /path/to/normal.bam -v /path/to/normal.vcf -r\
+                \ /path/to/ref.fa -o /path/to/results.profile -s /path/to/samtools\n\
+                \nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - scssim
+              - genreads
+              positional: []
+              named:
+              - !Flag
+                description: sequence file (.fasta) generated by simuVars program
+                synonyms:
+                - -i
+                - --input
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: the number of primers [Default:100000]
+                synonyms:
+                - -p
+                - --primers
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: a parameter controlling the number of primers used in
+                  each cycle [Default:1e-9]
+                synonyms:
+                - -r
+                - --gamma
+                args: !SimpleFlagArg
+                  name: float
+                optional: true
+              - !Flag
+                description: profile inferred from real sequencing data
+                synonyms:
+                - -m
+                - --model
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: read layout (SE for single end, PE for paired-end) [Default:PE]
+                synonyms:
+                - -l
+                - --layout
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: sequencing coverage [Default:5]
+                synonyms:
+                - -c
+                - --coverage
+                args: !SimpleFlagArg
+                  name: float
+                optional: true
+              - !Flag
+                description: mean insert size for paired-end sequencing [Default:260]
+                synonyms:
+                - -s
+                - --isize
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: number of threads to use [Default:1]
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: the prefix of output file
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: give this information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: scssim genreads [options]\n\nOptions:\n    -h, --help\
+                \                      give this information\n    -i, --input <string>\
+                \            sequence file (.fasta) generated by simuVars program\n\
+                \  MALBAC options:\n    -p, --primers <int>             the number\
+                \ of primers [Default:100000]\n    -r, --gamma <float>           \
+                \  a parameter controlling the number of primers used in each cycle\
+                \ [Default:1e-9]\n  Read simulation options:\n    -m, --model <string>\
+                \            profile inferred from real sequencing data\n    -l, --layout\
+                \ <string>           read layout (SE for single end, PE for paired-end)\
+                \ [Default:PE]\n    -c, --coverage <float>          sequencing coverage\
+                \ [Default:5]\n    -s, --isize <int>               mean insert size\
+                \ for paired-end sequencing [Default:260]\n    -t, --threads <int>\
+                \             number of threads to use [Default:1]\n    -o, --output\
+                \ <string>           the prefix of output file\n\nExample:\n    scssim\
+                \ genreads -i /path/to/ref.fa -m /path/to/hiseq2500.profile -t 5 -o\
+                \ /path/to/reads\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - scssim
+              - simuvars
+              positional: []
+              named:
+              - !Flag
+                description: reference file (.fasta)
+                synonyms:
+                - -r
+                - --ref
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: SNP file containing the SNPs to be simulated [Default:null]
+                synonyms:
+                - -s
+                - --snp
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: variation file containing the genomic variations to be
+                  simulated [Default:null]
+                synonyms:
+                - -v
+                - --var
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: output file (.fasta) to save generated sequences
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: give this information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: scssim simuvars [options]\n\nOptions:\n    -h, --help\
+                \                      give this information\n    -r, --ref <string>\
+                \              reference file (.fasta)\n    -s, --snp <string>   \
+                \           SNP file containing the SNPs to be simulated [Default:null]\n\
+                \    -v, --var <string>              variation file containing the\
+                \ genomic variations to be simulated [Default:null]\n    -o, --output\
+                \ <string>           output file (.fasta) to save generated sequences\n\
+                \nExample:\n    scssim simuvars -r /path/to/hg19.fa -s /path/to/hg19.snp138.1based.txt\
+                \ -v /path/to/variation.txt -o /path/to/results.fa\n\n    scssim simuvars\
+                \ -r /path/to/hg19.fa -v /path/to/variation.txt -o /path/to/results.fa\n\
+                \n    scssim simuvars -r /path/to/hg19.fa -s /path/to/hg19.snp138.1based.txt\
+                \ -o /path/to/results.fa\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\
+                \n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: give this information
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: print software version
+              synonyms:
+              - -v
+              - --version
+              args: !SimpleFlagArg
+                name: string
+              optional: true
+            help_text: "\nSCSsim version: 1.0\nUsage: scssim [subcommand] [options]\n\
+              \nOptional arguments:\n    -h, --help                      give this\
+              \ information\n    -v, --version <string>          print software version\n\
+              \nAvailable subcmds:\n    simuvars          simulate the genome sequence\
+              \ of single cells\n    learn             learn sequencing profiles from\
+              \ real sequencing data\n    genreads          simulate sequencing reads\
+              \ of single cell\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -250,12 +552,9 @@ subcommands:
             \ -r /path/to/ref.fa > /path/to/results.profile\n\n    scssim learn -b\
             \ /path/to/normal.bam -v /path/to/normal.vcf -r /path/to/ref.fa -o /path/to/results.profile\
             \ -s /path/to/samtools\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - scssim
-          - genreads
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -360,9 +659,7 @@ subcommands:
             \ -t 5 -o /path/to/reads\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - scssim
-          - simuvars
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -424,22 +721,9 @@ subcommands:
             \ -o /path/to/results.fa\n\nAuthor: Zhenhua Yu <qasim0208@163.com>\n\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: give this information
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: print software version
-          synonyms:
-          - -v
-          - --version
-          args: !SimpleFlagArg
-            name: string
-          optional: true
+        version_flag:
         help_text: "\nSCSsim version: 1.0\nUsage: scssim [subcommand] [options]\n\n\
           Optional arguments:\n    -h, --help                      give this information\n\
           \    -v, --version <string>          print software version\n\nAvailable\
@@ -552,7 +836,7 @@ subcommands:
         args: !SimpleFlagArg
           name: string
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -617,7 +901,7 @@ subcommands:
         args: !SimpleFlagArg
           name: string
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -756,7 +1040,7 @@ subcommands:
     args: !SimpleFlagArg
       name: string
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -820,7 +1104,7 @@ subcommands:
     args: !SimpleFlagArg
       name: string
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

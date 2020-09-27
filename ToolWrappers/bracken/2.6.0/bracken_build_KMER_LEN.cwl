@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../bracken_build_KMER_LEN.cwl
-inputs:
-- id: in_database
-  doc: '= '
-  type: string
-  inputBinding:
-    position: 0
-- id: in_threads
-  doc: = 1
-  type: string
-  inputBinding:
-    position: 1
+id: bracken_build_KMER_LEN.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

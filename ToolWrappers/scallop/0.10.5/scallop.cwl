@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scallop.cwl
+id: scallop.cwl
 inputs:
 - id: in_verbose
   doc: '<0, 1, 2>                         0: quiet; 1: one line for each graph; 2:

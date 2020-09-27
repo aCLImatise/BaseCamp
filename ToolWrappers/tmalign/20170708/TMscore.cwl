@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TMscore.cwl
+id: TMscore.cwl
 inputs: []
 outputs:
 - id: out_stdout

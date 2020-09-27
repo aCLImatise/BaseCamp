@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportBLAST.cwl
+id: ktImportBLAST.cwl
 inputs:
 - id: in_blast_output
   doc: "File containing BLAST results in tabular format (\"Hit table\n(text)\" when\

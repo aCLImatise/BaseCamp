@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedSubtract.cwl
+id: BedSubtract.cwl
 inputs:
 - id: in_in_two
   doc: Input BED file which is subtracted from 'in'.

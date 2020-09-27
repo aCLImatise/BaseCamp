@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_svlentruncate.cwl
+id: surpyvor_svlentruncate.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.

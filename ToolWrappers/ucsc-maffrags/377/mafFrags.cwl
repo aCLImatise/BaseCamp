@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafFrags.cwl
+id: mafFrags.cwl
 inputs:
 - id: in_orgs
   doc: '- File with list of databases/organisms in order'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclFilterFasta.cwl
+id: orthomclFilterFasta.cwl
 inputs:
 - id: in_input_dir
   doc: ''

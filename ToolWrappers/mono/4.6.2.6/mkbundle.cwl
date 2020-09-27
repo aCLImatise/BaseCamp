@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkbundle.cwl
+id: mkbundle.cwl
 inputs:
 - id: in_config
   doc: Bundle system config file `F'

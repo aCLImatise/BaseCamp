@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_PlotHeatmap.cwl
+id: TOBIAS_PlotHeatmap.cwl
 inputs:
 - id: in_tfbs
   doc: '[ [ ...]]           TFBS sites per column (*required)'

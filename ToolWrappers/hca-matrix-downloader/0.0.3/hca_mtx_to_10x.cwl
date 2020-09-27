@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_mtx_to_10x.cwl
+id: hca_mtx_to_10x.cwl
 inputs:
 - id: in_in
   doc: ''

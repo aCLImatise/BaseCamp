@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_aws_cluster.cwl
+id: bcbio_vm.py_aws_cluster.cwl
 inputs:
 - id: in_bootstrap
   doc: Update a bcbio AWS system with the latest code and

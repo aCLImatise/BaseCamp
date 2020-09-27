@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pubmlst_list.cwl
+id: pubmlst_list.cwl
 inputs:
 - id: in_pattern
   doc: regex pattern to filter scheme names

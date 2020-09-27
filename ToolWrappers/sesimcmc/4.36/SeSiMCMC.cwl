@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeSiMCMC.cwl
+id: SeSiMCMC.cwl
 inputs: []
 outputs:
 - id: out_stdout

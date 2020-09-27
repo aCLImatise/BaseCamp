@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeSTR.cwl
+id: mergeSTR.cwl
 inputs:
 - id: in_v_cfs
   doc: "Comma-separated list of VCF files to merge (must be\nsorted, bgzipped and\

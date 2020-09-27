@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../listGCContent.cwl
+id: listGCContent.cwl
 inputs:
 - id: in_disregard_bank_locks
   doc: Disregard bank locks and write permissions (spy mode)

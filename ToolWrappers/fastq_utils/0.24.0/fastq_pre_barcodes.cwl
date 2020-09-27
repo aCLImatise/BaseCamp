@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_pre_barcodes.cwl
+id: fastq_pre_barcodes.cwl
 inputs:
 - id: in_verbose
   doc: :increase level of messages printed to stderr
@@ -117,26 +117,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --sample_size
-- id: in_read_one_offset
-  doc: ':'
-  type: long
-  inputBinding:
-    prefix: --read1_offset
-- id: in_read_one_size
-  doc: ':'
-  type: long
-  inputBinding:
-    prefix: --read1_size
-- id: in_read_two_offset
-  doc: ':'
-  type: long
-  inputBinding:
-    prefix: --read2_offset
-- id: in_read_two_size
-  doc: ':'
-  type: long
-  inputBinding:
-    prefix: --read2_size
 - id: in_one_zero_x
   doc: ': use 10X UMI tags (UB and UY) instead of the default tags defined in the
     SAM specification'

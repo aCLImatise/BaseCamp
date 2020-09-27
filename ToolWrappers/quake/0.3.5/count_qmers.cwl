@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_qmers.cwl
+id: count_qmers.cwl
 inputs:
 - id: in_fastq_file_count
   doc: fastq file to count

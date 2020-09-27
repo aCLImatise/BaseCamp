@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amrfinder.pl.cwl
+id: amrfinder.pl.cwl
 inputs:
 - id: in_h_slash_help
   doc: help text

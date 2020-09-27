@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../vcf2ld_neighbor.cwl
-inputs:
-- id: in_people_include_id
-  doc: '[], --peopleIncludeFile []'
-  type: boolean
-  inputBinding:
-    prefix: --peopleIncludeID
-- id: in_people_exclude_id
-  doc: '[], --peopleExcludeFile []'
-  type: boolean
-  inputBinding:
-    prefix: --peopleExcludeID
+id: vcf2ld_neighbor.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribosum2cc.cwl
+id: ribosum2cc.cwl
 inputs:
 - id: in_ribo_sum_name
   doc: ''

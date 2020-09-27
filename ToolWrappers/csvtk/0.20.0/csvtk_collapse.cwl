@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_collapse.cwl
+id: csvtk_collapse.cwl
 inputs:
 - id: in_fields
   doc: key fields. e.g -f 1,2 or -f columnA,columnB (default "1")

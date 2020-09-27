@@ -33,7 +33,7 @@ task Gretelsnpper {
       ~{if defined(depth) then ("--depth " +  '"' + depth + '"') else ""}
   >>>
   parameter_meta {
-    contig: ""
+    contig: "[-s S] [-e E]\\n[--depth DEPTH]"
     bam: "bam of reads aligned to (psuedo)-reference"
     start_default_: "start (default = 1)"
     end_default_length: "end (default = length of the reference)"

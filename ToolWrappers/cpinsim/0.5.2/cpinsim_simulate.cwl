@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpinsim_simulate.cwl
+id: cpinsim_simulate.cwl
 inputs:
 - id: in_concentrations
   doc: "PATH/TO/CONCENTRATIONS, -c MAX-PROTEIN-INSTANCES PATH/TO/CONCENTRATIONS\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_show.cwl
+id: amptk_show.cwl
 inputs:
 - id: in_input
   doc: Input FASTQ file (.demux.fq)

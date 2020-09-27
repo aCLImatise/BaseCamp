@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmpair_sto file_max non_canonical pair freq.cwl
+id: hmmpair_sto file_max non_canonical pair freq.cwl
 inputs:
 - id: in_fragmentary_policy
   doc: ''

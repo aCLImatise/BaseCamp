@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_filter_merged_reads.cwl
+id: iu_filter_merged_reads.cwl
 inputs:
 - id: in_output
   doc: "Where filtered reads will be written (default:\n[-i]-MAX-MISMATCH-[-m]"

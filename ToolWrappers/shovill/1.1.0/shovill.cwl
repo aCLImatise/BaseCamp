@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shovill.cwl
+id: shovill.cwl
 inputs:
 - id: in_check
   doc: Check dependencies are installed

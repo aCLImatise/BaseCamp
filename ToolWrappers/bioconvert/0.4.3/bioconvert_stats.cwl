@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: ../../../bioconvert_stats.cwl
+id: bioconvert_stats.cwl
 inputs:
-- id: in_verbosity
-  doc: Set the outpout verbosity.
-  type: string
-  inputBinding:
-    prefix: --verbosity
 - id: in_no_plot
   doc: ''
   type: boolean
   inputBinding:
     prefix: --no-plot
-- id: in_formatted_dot
-  doc: 'optional arguments:'
+- id: in_v
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -v
+- id: in_bio_convert
+  doc: ''
   type: string
   inputBinding:
     position: 0

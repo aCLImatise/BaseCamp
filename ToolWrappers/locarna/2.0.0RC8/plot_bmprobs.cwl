@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_bmprobs.cwl
+id: plot_bmprobs.cwl
 inputs:
 - id: in_quiet
   doc: ''

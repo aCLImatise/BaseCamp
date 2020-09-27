@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gstacks.cwl
+id: gstacks.cwl
 inputs:
 - id: in_input_directory_containg
   doc: ": input directory containg '*.matches.bam' files created by the\nde novo Stacks\

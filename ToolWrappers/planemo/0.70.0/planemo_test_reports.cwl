@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_test_reports.cwl
+id: planemo_test_reports.cwl
 inputs:
 - id: in_test_output
   doc: "Output test report (HTML - for humans) defaults\nto tool_test_output.html."

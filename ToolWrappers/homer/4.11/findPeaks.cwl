@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findPeaks.cwl
+id: findPeaks.cwl
 inputs:
 - id: in_file_name_output
   doc: "(file name for to output peaks, default: stdout)\n\"-o auto\" will send output\

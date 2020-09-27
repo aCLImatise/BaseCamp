@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../imfusion_merge.cwl
+id: imfusion_merge.cwl
 inputs:
 - id: in_sample_dirs
   doc: Path to sample directories.

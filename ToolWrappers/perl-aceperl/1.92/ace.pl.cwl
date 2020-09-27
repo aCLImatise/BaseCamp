@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ace.pl.cwl
+id: ace.pl.cwl
 inputs:
 - id: in_host
   doc: Server host (localhost)

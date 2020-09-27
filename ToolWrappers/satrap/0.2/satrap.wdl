@@ -2,7 +2,6 @@ version 1.0
 
 task Satrap {
   input {
-    String? fast_a
     Boolean? step
     Boolean? bin
     Boolean? tmp_dir
@@ -30,7 +29,6 @@ task Satrap {
   }
   command <<<
     satrap \
-      ~{if defined(fast_a) then ("-fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (step) then "-step" else ""} \
       ~{if (bin) then "-bin" else ""} \
       ~{if (tmp_dir) then "-tmp_dir" else ""} \
@@ -57,7 +55,6 @@ task Satrap {
       ~{if (no_clustering) then "-no_clustering" else ""}
   >>>
   parameter_meta {
-    fast_a: ""
     step: "(vector<int>)     PLEASE SELECT THE DESIRED STEP OF THE ANALYSIS USING \\\"-step\\\" parameter:\\n\\\"1\\\" for STEP 1, \\\"2\\\" for STEP 2 etc. For instance the Oases pipeline\\nrequires: \\\"-step 1 2\\\". The steps 3 and 4 are set by default, so the\\nomitting of this parameter will erase the previous results in these steps"
     bin: "(string)        Set the directory path where binaries are located [bin/]"
     tmp_dir: "(string)        Set the temporary directory where results will be saved [tmp/]."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxrand.cwl
+id: mcxrand.cwl
 inputs:
 - id: in_print_this_help
   doc: print this help

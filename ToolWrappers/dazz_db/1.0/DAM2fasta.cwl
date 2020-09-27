@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DAM2fasta.cwl
+id: DAM2fasta.cwl
 inputs:
 - id: in_vu
   doc: ''

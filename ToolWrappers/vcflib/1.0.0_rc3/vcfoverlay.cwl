@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfoverlay.cwl
+id: vcfoverlay.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

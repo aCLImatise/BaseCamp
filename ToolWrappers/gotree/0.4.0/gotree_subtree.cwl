@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_subtree.cwl
+id: gotree_subtree.cwl
 inputs:
 - id: in_input
   doc: Input tree (default "stdin")

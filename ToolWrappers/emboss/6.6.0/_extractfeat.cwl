@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_extractfeat.cwl
+id: _extractfeat.cwl
 inputs:
 - id: in_before
   doc: "integer    [0] If this value is greater than 0 then\nthat number of bases\

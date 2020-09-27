@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../closest_features_typical.cwl
+id: closest_features_typical.cwl
 inputs:
 - id: in_chrom
   doc: Jump to and process data for given <chromosome> only.

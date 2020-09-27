@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosomer_assemble_fragment_fasta.cwl
+id: chromosomer_assemble_fragment_fasta.cwl
 inputs:
 - id: in_s
   doc: ''

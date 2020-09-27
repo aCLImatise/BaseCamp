@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulator.py_transcriptome.cwl
+id: simulator.py_transcriptome.cwl
 inputs:
 - id: in_ref_t
   doc: Input reference transcriptome

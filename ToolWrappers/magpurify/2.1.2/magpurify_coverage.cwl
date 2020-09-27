@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magpurify_coverage.cwl
+id: magpurify_coverage.cwl
 inputs:
 - id: in_max_deviation
   doc: "Contigs with coverage greater than [max-deviation *\nmean coverage] or less\

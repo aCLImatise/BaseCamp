@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aggregate_scores_in_intervals.py_score_file.cwl
+id: aggregate_scores_in_intervals.py_score_file.cwl
 inputs:
 - id: in_binned
   doc: "'score_file' is actually a directory of binned array"

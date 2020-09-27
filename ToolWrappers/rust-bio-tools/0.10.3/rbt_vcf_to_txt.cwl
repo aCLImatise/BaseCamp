@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_vcf_to_txt.cwl
+id: rbt_vcf_to_txt.cwl
 inputs:
 - id: in_genotypes
   doc: Display genotypes.

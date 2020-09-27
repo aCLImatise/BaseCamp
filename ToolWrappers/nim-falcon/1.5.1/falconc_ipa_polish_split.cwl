@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_ipa_polish_split.cwl
+id: falconc_ipa_polish_split.cwl
 inputs:
 - id: in_help_syntax
   doc: "advanced:prepen\nd,plurals,.."

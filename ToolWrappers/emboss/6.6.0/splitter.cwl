@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitter.cwl
+id: splitter.cwl
 inputs:
 - id: in_size
   doc: integer    [10000] Size to split at (Integer 1 or more)

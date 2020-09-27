@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ../../../tombo_plot_max_difference.cwl
+id: tombo_plot_max_difference.cwl
 inputs:
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
   type: long[]
   inputBinding:
     prefix: --fast5-basedirs
-- id: in_control_set_directories
+- id: in_control_fast_five_based_irs
   doc: "Control set of directories containing fast5 files.\nThese reads should contain\
     \ only standard nucleotides."
   type: long[]
@@ -60,11 +60,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_var_11
-  doc: '[CONTROL_FAST5_BASEDIRS ...]'
-  type: long
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

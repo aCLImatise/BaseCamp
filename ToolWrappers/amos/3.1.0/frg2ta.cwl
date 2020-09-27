@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../frg2ta.cwl
+id: frg2ta.cwl
 inputs:
 - id: in_check
   doc: Prints out those seqnames that are shorter than MINSEQ

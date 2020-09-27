@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslMapPostChain.cwl
+id: pslMapPostChain.cwl
 inputs: []
 outputs:
 - id: out_stdout

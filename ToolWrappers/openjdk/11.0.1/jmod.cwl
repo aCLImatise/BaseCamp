@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jmod.cwl
+id: jmod.cwl
 inputs:
 - id: in_class_path
   doc: Application jar files|dir containing

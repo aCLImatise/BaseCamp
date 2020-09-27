@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_RemoveN.pl.cwl
+id: centrifuge_RemoveN.pl.cwl
 inputs:
 - id: in_a_dot_pl
   doc: ''

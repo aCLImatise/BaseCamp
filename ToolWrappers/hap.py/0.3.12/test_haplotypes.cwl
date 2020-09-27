@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../test_haplotypes.cwl
+id: test_haplotypes.cwl
 inputs:
 - id: in_auto_start_dbg
   doc: "\e[1;33;49m[=<boolean value>]"
   type: boolean
   inputBinding:
     prefix: --auto_start_dbg
-- id: in_break_exec_path
-  doc: "\e[1;33;49m=<value>"
-  type: boolean
-  inputBinding:
-    prefix: --break_exec_path
 - id: in_build_info
   doc: "\e[1;33;49m[=<boolean value>]"
   type: boolean
@@ -31,11 +26,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --list_labels
-- id: in_log_format
-  doc: "\e[1;33;49m=<HRF|CLF|XML|JUNIT>"
-  type: boolean
-  inputBinding:
-    prefix: --log_format
 - id: in_log_level
   doc: "\e[1;33;49m=<all|success|test_suite|unit_scope|message|warning|error|cpp_exception|system_error|fatal_error|nothing>"
   type: boolean
@@ -51,21 +41,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --logger
-- id: in_output_format
-  doc: "\e[1;33;49m=<HRF|CLF|XML>"
-  type: boolean
-  inputBinding:
-    prefix: --output_format
-- id: in_random
-  doc: "\e[1;33;49m[=<seed>]"
-  type: boolean
-  inputBinding:
-    prefix: --random
-- id: in_report_format
-  doc: "\e[1;33;49m=<HRF|CLF|XML>"
-  type: boolean
-  inputBinding:
-    prefix: --report_format
 - id: in_report_level
   doc: "\e[1;33;49m=<confirm|short|detailed|no>"
   type: boolean

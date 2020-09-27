@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_midas.py_snps.cwl
+id: merge_midas.py_snps.cwl
 inputs:
 - id: in_threads
   doc: Number of CPUs to use (1)

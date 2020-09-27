@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../binhex.pl.cwl
+id: binhex.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

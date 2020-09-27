@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pirs_simulate.cwl
+id: pirs_simulate.cwl
 inputs:
 - id: in_read_len
   doc: 'Generate reads having a length of LEN.  Default: 100'
@@ -108,104 +108,38 @@ inputs:
   inputBinding:
     prefix: --quality-shift
 - id: in_no_quality_values
-  doc: ''
+  doc: "--fasta\nDo not simulate quality values.  The simulated reads will be\nwritten\
+    \ as a FASTA file rather than a FASTQ file.\nSubstitution errors may still be\
+    \ done; if you do not want\nto simulate any substition errors, provide --error-rate=0\
+    \ or\n--no-substitution-errors.\n--no-subst-errors\n--no-substitution-errors\n\
+    Do not simulate substitution errors.  Equivalent to\n--error-rate=0.\n--no-indels\n\
+    --no-indel-errors\nDo not simulate indels.  The indel error profile will not be\n\
+    used.\n--no-gc-bias\n--no-gc-content-bias\nDo not simulate GC bias.  The GC bias\
+    \ profile will not be\nused.\n-o PREFIX, --output-prefix=PREFIX\nUse PREFIX as\
+    \ the prefix of the output files.  Default:\n\"pirs_reads\"\n-c TYPE, --output-file-type=TYPE\n\
+    The string \"text\" or \"gzip\" to specify the type of\nthe output FASTQ files\
+    \ containing the simulated reads\nof the genome, as well as the log files.  Default:\
+    \ \"text\"\n-z, --compress\nEquivalent to -c gzip.\n-n, --no-logs, --no-log-files\n\
+    Do not write the log files.\n-S SEED, --random-seed=SEED\nUse SEED as the random\
+    \ seed. Default:\ntime(NULL) * getpid().  Note: If pIRS was not compiled with\n\
+    --disable-threads, each thread actually uses its own random\nnumber generator\
+    \ that is seeded by this base seed added to\nthe thread number; also, if you need\
+    \ pIRS's output to be\nexactly reproducible, you must specify the random seed\
+    \ as well\nas use only 1 simulator thread (--threads=1, or configure\nwith --disable-threads,\
+    \ or run on system with 4 or fewer\nprocessors).\n-t, --threads=NUM_THREADS\n\
+    Use NUM_THREADS threads to simulate reads.  This option is\nnot available if pIRS\
+    \ was compiled with the --disable-threads\noption.  Default: number of processors\
+    \ minus 2 if writing\nuncompressed output, or number of processors minus 3 if\n\
+    writing compressed output, or 1 if there are not this many\nprocessors.\n-q, --quiet\
+    \    Do not print informational messages.\n-h, --help     Show this help and exit.\n\
+    -V, --version  Show version information and exit.\n"
   type: boolean
   inputBinding:
     prefix: --no-quality-values
-- id: in_fast_a
-  doc: "Do not simulate quality values.  The simulated reads will be\nwritten as a\
-    \ FASTA file rather than a FASTQ file.\nSubstitution errors may still be done;\
-    \ if you do not want\nto simulate any substition errors, provide --error-rate=0\
-    \ or\n--no-substitution-errors."
-  type: boolean
-  inputBinding:
-    prefix: --fasta
-- id: in_no_subst_errors
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --no-subst-errors
-- id: in_no_substitution_errors
-  doc: "Do not simulate substitution errors.  Equivalent to\n--error-rate=0."
-  type: boolean
-  inputBinding:
-    prefix: --no-substitution-errors
-- id: in_no_indels
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --no-indels
-- id: in_no_in_del_errors
-  doc: "Do not simulate indels.  The indel error profile will not be\nused."
-  type: boolean
-  inputBinding:
-    prefix: --no-indel-errors
-- id: in_no_gc_bias
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --no-gc-bias
-- id: in_no_gc_content_bias
-  doc: "Do not simulate GC bias.  The GC bias profile will not be\nused."
-  type: boolean
-  inputBinding:
-    prefix: --no-gc-content-bias
-- id: in_output_prefix
-  doc: "Use PREFIX as the prefix of the output files.  Default:\n\"pirs_reads\""
-  type: string
-  inputBinding:
-    prefix: --output-prefix
-- id: in_output_file_type
-  doc: "The string \"text\" or \"gzip\" to specify the type of\nthe output FASTQ files\
-    \ containing the simulated reads\nof the genome, as well as the log files.  Default:\
-    \ \"text\""
-  type: File
-  inputBinding:
-    prefix: --output-file-type
-- id: in_compress
-  doc: Equivalent to -c gzip.
-  type: boolean
-  inputBinding:
-    prefix: --compress
-- id: in_no_log_files
-  doc: Do not write the log files.
-  type: boolean
-  inputBinding:
-    prefix: --no-log-files
-- id: in_random_seed
-  doc: "Use SEED as the random seed. Default:\ntime(NULL) * getpid().  Note: If pIRS\
-    \ was not compiled with\n--disable-threads, each thread actually uses its own\
-    \ random\nnumber generator that is seeded by this base seed added to\nthe thread\
-    \ number; also, if you need pIRS's output to be\nexactly reproducible, you must\
-    \ specify the random seed as well\nas use only 1 simulator thread (--threads=1,\
-    \ or configure\nwith --disable-threads, or run on system with 4 or fewer\nprocessors)."
-  type: long
-  inputBinding:
-    prefix: --random-seed
-- id: in_threads
-  doc: "Use NUM_THREADS threads to simulate reads.  This option is\nnot available\
-    \ if pIRS was compiled with the --disable-threads\noption.  Default: number of\
-    \ processors minus 2 if writing\nuncompressed output, or number of processors\
-    \ minus 3 if\nwriting compressed output, or 1 if there are not this many\nprocessors."
-  type: long
-  inputBinding:
-    prefix: --threads
-- id: in_quiet
-  doc: Do not print informational messages.
-  type: boolean
-  inputBinding:
-    prefix: --quiet
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_file_type
-  doc: "The string \"text\" or \"gzip\" to specify the type of\nthe output FASTQ files\
-    \ containing the simulated reads\nof the genome, as well as the log files.  Default:\
-    \ \"text\""
-  type: File
-  outputBinding:
-    glob: $(inputs.in_output_file_type)
 cwlVersion: v1.1
 baseCommand:
 - pirs

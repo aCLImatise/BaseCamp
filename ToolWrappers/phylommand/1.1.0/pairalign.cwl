@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairalign.cwl
+id: pairalign.cwl
 inputs:
 - id: in_aligned
   doc: / -A                  input file is already aligned.

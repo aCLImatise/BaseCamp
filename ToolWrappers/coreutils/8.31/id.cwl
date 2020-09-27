@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../id.cwl
+id: id.cwl
 inputs:
 - id: in_ignore_compatibility_other
   doc: ignore, for compatibility with other versions

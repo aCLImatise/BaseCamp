@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../pipits_uc2otutable.cwl
+id: pipits_uc2otutable.cwl
 inputs:
-- id: in_l
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -l
 - id: in_i
   doc: '[REQUIRED]'
   type: File
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -o
+- id: in_l
+  doc: '[REQUIRED]'
+  type: string
+  inputBinding:
+    prefix: -l
 - id: in_reads
   doc: ''
   type: string

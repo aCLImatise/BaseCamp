@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_rename.cwl
+id: fastq_rename.cwl
 inputs:
 - id: in_prefix
   doc: ': add prefix to each readname'

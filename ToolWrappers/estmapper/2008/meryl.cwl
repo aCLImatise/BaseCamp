@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meryl.cwl
+id: meryl.cwl
 inputs:
 - id: in__compute_parameters
   doc: -- compute parameters

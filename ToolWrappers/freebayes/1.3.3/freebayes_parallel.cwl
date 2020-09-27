@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../freebayes_parallel.cwl
+id: freebayes_parallel.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdoc_update.cwl
+id: mdoc_update.cwl
 inputs:
 - id: in_delete
   doc: Delete removed members from the XML files.

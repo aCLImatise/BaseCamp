@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_bgzf.cwl
+id: novoutil_bgzf.cwl
 inputs:
 - id: in_sets_number_server
   doc: "Sets the number of threads. Defaults to number of cores\non the server."

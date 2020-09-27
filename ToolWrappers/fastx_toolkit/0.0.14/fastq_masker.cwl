@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_masker.cwl
+id: fastq_masker.cwl
 inputs:
 - id: in_o
   doc: ''

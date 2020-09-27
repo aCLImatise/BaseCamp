@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_merge.cwl
+id: rnftools_merge.cwl
 inputs:
 - id: in_input_fastq_files
   doc: input FASTQ files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene_list_to_gff.pl.cwl
+id: gene_list_to_gff.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

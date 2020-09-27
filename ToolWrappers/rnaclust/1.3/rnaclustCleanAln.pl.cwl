@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaclustCleanAln.pl.cwl
+id: rnaclustCleanAln.pl.cwl
 inputs:
 - id: in_rna_clust_gen_report_do_tpl
   doc: ''

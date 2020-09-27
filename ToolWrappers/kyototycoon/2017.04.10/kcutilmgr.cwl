@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcutilmgr.cwl
+id: kcutilmgr.cwl
 inputs:
 - id: in_ic
   doc: ''

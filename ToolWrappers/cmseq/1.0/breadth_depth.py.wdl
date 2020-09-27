@@ -6,7 +6,6 @@ task BreadthDepthpy {
     Boolean? set_unmapped_fsecondary
     Boolean? sort_index
     Int? min_len
-    Int? minco_vdot
     Int? min_cov
     Int? truncate
     String considered
@@ -18,7 +17,6 @@ task BreadthDepthpy {
       ~{if (set_unmapped_fsecondary) then "-f" else ""} \
       ~{if (sort_index) then "--sortindex" else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
-      ~{if defined(minco_vdot) then ("--mincov. " +  '"' + minco_vdot + '"') else ""} \
       ~{if defined(min_cov) then ("--mincov " +  '"' + min_cov + '"') else ""} \
       ~{if defined(truncate) then ("--truncate " +  '"' + truncate + '"') else ""}
   >>>
@@ -27,7 +25,6 @@ task BreadthDepthpy {
     set_unmapped_fsecondary: "If set unmapped (FUNMAP), secondary (FSECONDARY), qc-\\nfail (FQCFAIL) and duplicate (FDUP) are excluded. If\\nunset ALL reads are considered (bedtools genomecov\\nstyle). Default: unset"
     sort_index: "Sort and index the file"
     min_len: "Minimum Reference Length for a reference to be"
-    minco_vdot: ": 30"
     min_cov: "Minimum position coverage to perform the polymorphism\\ncalculation. Position with a lower depth of coverage\\nwill be discarded (i.e. considered as zero-coverage\\npositions). This is calculated AFTER --minqual.\\nDefault: 1"
     truncate: "Number of nucleotides that are truncated at either\\ncontigs end before calculating coverage values.\\n"
     considered: "--minqual MINQUAL     Minimum base quality. Bases with quality score lower"

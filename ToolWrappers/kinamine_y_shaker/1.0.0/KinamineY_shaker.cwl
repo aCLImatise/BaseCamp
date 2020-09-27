@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KinamineY_shaker.cwl
+id: KinamineY_shaker.cwl
 inputs:
 - id: in_jar
   doc: ''

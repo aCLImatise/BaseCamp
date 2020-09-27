@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_spanner_instance_configs.cwl
+id: gcloud_spanner_instance_configs.cwl
 inputs:
 - id: in_optional
   doc: ''

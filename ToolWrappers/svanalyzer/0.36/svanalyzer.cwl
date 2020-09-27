@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svanalyzer.cwl
+id: svanalyzer.cwl
 inputs: []
 outputs:
 - id: out_stdout

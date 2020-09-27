@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ultraheatmap.cwl
+id: ultraheatmap.cwl
 inputs:
 - id: in_compute_ordered_matrix
   doc: addFeatureToMatrix

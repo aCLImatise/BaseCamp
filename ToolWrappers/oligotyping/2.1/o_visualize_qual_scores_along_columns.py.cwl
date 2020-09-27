@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_visualize_qual_scores_along_columns.py.cwl
+id: o_visualize_qual_scores_along_columns.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

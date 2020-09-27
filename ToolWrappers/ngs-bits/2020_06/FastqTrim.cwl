@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastqTrim.cwl
+id: FastqTrim.cwl
 inputs:
 - id: in_in
   doc: Input gzipped FASTQ file.

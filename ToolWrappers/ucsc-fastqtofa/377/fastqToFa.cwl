@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqToFa.cwl
+id: fastqToFa.cwl
 inputs:
 - id: in_name_verify
   doc: "='string' - for multi-line fastq files, 'string' must\nmatch somewhere in\

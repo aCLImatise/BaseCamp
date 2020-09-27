@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fahash.cwl
+id: fahash.cwl
 inputs:
 - id: in_print_word_usage
   doc: Print word usage statistics for hash-file

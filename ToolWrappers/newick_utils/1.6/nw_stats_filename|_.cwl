@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_stats_filename|_.cwl
+id: nw_stats_filename|_.cwl
 inputs:
 - id: in_format_lines_l
   doc: '[lc]: format in lines (l) or columns (c). Default is l.'

@@ -1,16 +1,12 @@
 class: CommandLineTool
-id: ../../../pybel_neo.cwl
+id: pybel_neo.cwl
 inputs:
 - id: in_connection
-  doc: Connection string for neo4j upload.
+  doc: "Connection string for neo4j upload.\n--password TEXT\n--help             Show\
+    \ this message and exit.\n"
   type: string
   inputBinding:
     prefix: --connection
-- id: in_password
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --password
 - id: in_path
   doc: ''
   type: File

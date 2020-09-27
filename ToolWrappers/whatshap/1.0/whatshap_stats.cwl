@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_stats.cwl
+id: whatshap_stats.cwl
 inputs:
 - id: in_gtf
   doc: Write phased blocks to GTF file.

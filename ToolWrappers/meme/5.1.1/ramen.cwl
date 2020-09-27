@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ramen.cwl
+id: ramen.cwl
 inputs:
 - id: in_log_f_scores
   doc: "[on|off] Regression on the log_e of the fluorescence scores\non: (Default)\

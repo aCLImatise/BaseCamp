@@ -7,14 +7,8 @@ task PyatacBiasVplot {
     File? bg
     File? fast_a
     Int? pwm
-    String? out
-    Int? cores
+    Int? out
     Int? lower
-    Int? upper
-    Int? flank
-    Boolean? scale
-    Int? weight
-    Int? strand
     Boolean? no_plot
     Boolean? plot_extra
   }
@@ -26,13 +20,7 @@ task PyatacBiasVplot {
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if defined(pwm) then ("--pwm " +  '"' + pwm + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
       ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
-      ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
-      ~{if defined(flank) then ("--flank " +  '"' + flank + '"') else ""} \
-      ~{if (scale) then "--scale" else ""} \
-      ~{if defined(weight) then ("--weight " +  '"' + weight + '"') else ""} \
-      ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""} \
       ~{if (no_plot) then "--no_plot" else ""} \
       ~{if (plot_extra) then "--plot_extra" else ""}
   >>>
@@ -42,14 +30,8 @@ task PyatacBiasVplot {
     bg: "Accepts tabix indexed file"
     fast_a: "Accepts indexed fasta file"
     pwm: "PWM descriptor file. Default is Human.PWM.txt included\\nin package"
-    out: ""
-    cores: "Number of cores to use"
-    lower: "lower limit on insert size"
-    upper: "upper limit on insert size"
-    flank: "how many bases on each side of site (or center of site)\\nto include"
-    scale: ""
-    weight: "column in which weight information is included"
-    strand: "column in which strand information is included"
+    out: "--cores int         Number of cores to use"
+    lower: "lower limit on insert size\\n--upper int         upper limit on insert size\\n--flank int         how many bases on each side of site (or center of site)\\nto include\\n--scale\\n--weight int        column in which weight information is included\\n--strand int        column in which strand information is included"
     no_plot: "Don't plot output"
     plot_extra: "Make some extra plots"
   }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scelvis_convert.cwl
+id: scelvis_convert.cwl
 inputs:
 - id: in_input_dir
   doc: path to input/pipeline output directory

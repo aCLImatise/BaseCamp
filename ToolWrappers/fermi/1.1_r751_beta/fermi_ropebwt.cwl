@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_ropebwt.cwl
+id: fermi_ropebwt.cwl
 inputs:
 - id: in_algorithm_bpr_bcr
   doc: 'algorithm: bpr or bcr [bpr]'

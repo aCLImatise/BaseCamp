@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findscu.cwl
+id: findscu.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

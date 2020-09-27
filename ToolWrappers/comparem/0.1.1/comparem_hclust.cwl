@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparem_hclust.cwl
+id: comparem_hclust.cwl
 inputs:
 - id: in_method
   doc: 'clustering method to use. (default: average)'

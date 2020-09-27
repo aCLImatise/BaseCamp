@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngshmmalign.cwl
+id: ngshmmalign.cwl
 inputs:
 - id: in_file_containing_profilemsa
   doc: File containing the profile/MSA of the

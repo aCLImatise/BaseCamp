@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pasapolyA2hints.pl.cwl
+id: pasapolyA2hints.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

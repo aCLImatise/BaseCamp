@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fu_derep.cwl
+id: fu_derep.cwl
 inputs: []
 outputs:
 - id: out_stdout

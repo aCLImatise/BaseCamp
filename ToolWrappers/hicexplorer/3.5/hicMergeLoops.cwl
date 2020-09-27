@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicMergeLoops.cwl
+id: hicMergeLoops.cwl
 inputs:
 - id: in_input_files
   doc: "The loop files from hicDetectLoops. To use files from\nother sources, please\

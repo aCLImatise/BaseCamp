@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProSampler.cwl
+id: ProSampler.cwl
 inputs:
 - id: in_name_input_file
   doc: ': Name of the input file in FASTA format'

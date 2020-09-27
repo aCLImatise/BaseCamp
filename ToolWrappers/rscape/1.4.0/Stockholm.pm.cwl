@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Stockholm.pm.cwl
+id: Stockholm.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

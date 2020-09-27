@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panaroo_qc.cwl
+id: panaroo_qc.cwl
 inputs:
 - id: in_threads
   doc: number of threads to use (default=1)

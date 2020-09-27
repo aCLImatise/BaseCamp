@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IPMach.py.cwl
+id: IPMach.py.cwl
 inputs:
 - id: in_input_file_name
   doc: Input file name

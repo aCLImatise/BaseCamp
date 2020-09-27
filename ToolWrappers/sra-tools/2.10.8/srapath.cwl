@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srapath.cwl
+id: srapath.cwl
 inputs:
 - id: in_function
   doc: "function to perform (resolve, names,\nsearch) default=resolve or names if\n\

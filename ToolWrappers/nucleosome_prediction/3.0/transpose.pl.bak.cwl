@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transpose.pl.bak.cwl
+id: transpose.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uropa2gtf.R.cwl
+id: uropa2gtf.R.cwl
 inputs:
 - id: in_input
   doc: file or folder with input table(s) which should be reformatted to gtf file
@@ -7,11 +7,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --input
-- id: in_gtf_source
-  doc: gtf_source
-  type: boolean
-  inputBinding:
-    prefix: --gtf_source
 - id: in_feature
   doc: feature
   type: boolean

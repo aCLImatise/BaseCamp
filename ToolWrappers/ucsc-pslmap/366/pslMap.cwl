@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslMap.cwl
+id: pslMap.cwl
 inputs: []
 outputs:
 - id: out_stdout

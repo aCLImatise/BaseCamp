@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kdbmeta.cwl
+id: kdbmeta.cwl
 inputs:
 - id: in_table
   doc: table-name

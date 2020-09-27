@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../README.Rmd.cwl
+id: README.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

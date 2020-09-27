@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../model_feature.cwl
+id: model_feature.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to file containing input. (default: None)'

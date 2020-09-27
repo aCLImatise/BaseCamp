@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CmpSeq.cwl
+id: CmpSeq.cwl
 inputs:
 - id: in_arg_one
   doc: ''

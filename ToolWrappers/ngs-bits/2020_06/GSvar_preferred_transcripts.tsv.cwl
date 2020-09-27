@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GSvar_preferred_transcripts.tsv.cwl
+id: GSvar_preferred_transcripts.tsv.cwl
 inputs: []
 outputs:
 - id: out_stdout

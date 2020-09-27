@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_blast_pairs.pl.cwl
+id: index_blast_pairs.pl.cwl
 inputs:
 - id: in_output_index_filename
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_test.cwl
+id: funannotate_test.cwl
 inputs:
 - id: in_tests
   doc: Test sets to run. [all,clean,mask,predict,busco,rna-seq,annotate,compare]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kinPlot.R.cwl
+id: kinPlot.R.cwl
 inputs:
 - id: in_input_file_header
   doc: "Input file has a header which is used to\nname the state columns."

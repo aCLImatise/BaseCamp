@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFit.cwl
+id: phyloFit.cwl
 inputs:
 - id: in_features
   doc: "Annotations file (GFF or BED format) describing features on\none or more sequences\

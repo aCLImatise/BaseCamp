@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchMakeTagDirectory.pl.cwl
+id: batchMakeTagDirectory.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

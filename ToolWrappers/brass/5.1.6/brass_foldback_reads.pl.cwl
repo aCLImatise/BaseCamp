@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brass_foldback_reads.pl.cwl
+id: brass_foldback_reads.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

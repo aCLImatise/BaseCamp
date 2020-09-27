@@ -27,7 +27,7 @@ task MethylpyFilterallc {
       ~{if defined(chrom_s) then ("--chroms " +  '"' + chrom_s + '"') else ""}
   >>>
   parameter_meta {
-    output_files: ""
+    output_files: "[--num-procs NUM_PROCS]\\n[--mc-type MC_TYPE [MC_TYPE ...]]\\n[--min-cov MIN_COV] [--max-cov MAX_COV]\\n[--max-mismatch MAX_MISMATCH [MAX_MISMATCH ...]]\\n[--max-mismatch-frac MAX_MISMATCH_FRAC [MAX_MISMATCH_FRAC ...]]\\n[--compress-output COMPRESS_OUTPUT]\\n[--chroms CHROMS [CHROMS ...]]"
     all_c_files: "allc files to filter. (default: None)"
     num_procs: "Number of processors you wish to use to parallelize\\nthis function (default: 1)"
     mc_type: "List of space separated cytosine nucleotide contexts\\nfor sites to be included in output file. These\\nclassifications may use the wildcards H (indicating\\nanything but a G) and N (indicating any nucleotide).\\n(default: None)"

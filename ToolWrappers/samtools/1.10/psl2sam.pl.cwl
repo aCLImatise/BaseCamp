@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psl2sam.pl.cwl
+id: psl2sam.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

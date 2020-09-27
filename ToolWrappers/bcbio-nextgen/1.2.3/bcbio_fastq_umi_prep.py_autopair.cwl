@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_fastq_umi_prep.py_autopair.cwl
+id: bcbio_fastq_umi_prep.py_autopair.cwl
 inputs:
 - id: in_cores
   doc: Number of cores, allowing running samples in parallel

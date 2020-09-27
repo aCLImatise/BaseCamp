@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mace.py.cwl
+id: mace.py.cwl
 inputs:
 - id: in_forward
   doc: "BigWig format file containing coverage calcualted from\nreads mapped to *forward*\

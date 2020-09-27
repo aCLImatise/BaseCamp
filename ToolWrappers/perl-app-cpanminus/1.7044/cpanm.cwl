@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpanm.cwl
+id: cpanm.cwl
 inputs:
 - id: in_verbose
   doc: Turns on chatty output

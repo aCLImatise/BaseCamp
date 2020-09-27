@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../demotePosMap.cwl
+id: demotePosMap.cwl
 inputs: []
 outputs:
 - id: out_stdout

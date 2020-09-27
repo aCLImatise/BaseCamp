@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rppr_pdprune.cwl
+id: rppr_pdprune.cwl
 inputs:
 - id: in_specify_filename_write
   doc: Specify the filename to write to.

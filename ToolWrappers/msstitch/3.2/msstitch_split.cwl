@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../msstitch_split.cwl
+id: msstitch_split.cwl
 inputs:
-- id: in_split_col
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --splitcol
 - id: in_input_file_format
   doc: Input file of {} format
   type: File
@@ -21,6 +16,13 @@ inputs:
   type: File
   inputBinding:
     prefix: -o
+- id: in_split_col
+  doc: "Either a column number to split a PSM table on, or\n\"TD\", \"bioset\" for\
+    \ splitting on target/decoy or\nbiological sample set columns (resulting from\
+    \ msstitch\nperco2psm or msstitch psmtable. First column is number\n1.\n"
+  type: long
+  inputBinding:
+    prefix: --splitcol
 outputs:
 - id: out_stdout
   doc: Standard output stream

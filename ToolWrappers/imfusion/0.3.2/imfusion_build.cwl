@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../imfusion_build.cwl
+id: imfusion_build.cwl
 inputs: []
 outputs:
 - id: out_stdout

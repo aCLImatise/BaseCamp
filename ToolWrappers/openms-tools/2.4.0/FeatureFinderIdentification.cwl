@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FeatureFinderIdentification.cwl
+id: FeatureFinderIdentification.cwl
 inputs:
 - id: in_in
   doc: "*                        Input file: LC-MS raw data (valid formats: 'mzML')"

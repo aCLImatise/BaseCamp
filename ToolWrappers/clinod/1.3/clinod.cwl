@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clinod.cwl
+id: clinod.cwl
 inputs:
 - id: in_in
   doc: "- required, absolute path to the input file.\nThe input file expected to contain\

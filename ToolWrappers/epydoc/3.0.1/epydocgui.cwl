@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epydocgui.cwl
+id: epydocgui.cwl
 inputs: []
 outputs:
 - id: out_stdout

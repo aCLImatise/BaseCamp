@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matam_compare_samples.py.cwl
+id: matam_compare_samples.py.cwl
 inputs:
 - id: in_samples_file
   doc: "A tabulated file with one sample by row. The first\ncolumn contains the sample\

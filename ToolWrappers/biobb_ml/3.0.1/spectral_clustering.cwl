@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectral_clustering.cwl
+id: spectral_clustering.cwl
 inputs:
 - id: in_config
   doc: Configuration file

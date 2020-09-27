@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grass.pl.cwl
+id: grass.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

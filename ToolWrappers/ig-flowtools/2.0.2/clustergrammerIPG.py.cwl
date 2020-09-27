@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clustergrammerIPG.py.cwl
+id: clustergrammerIPG.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

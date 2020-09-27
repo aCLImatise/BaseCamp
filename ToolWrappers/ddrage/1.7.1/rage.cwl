@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rage.cwl
+id: rage.cwl
 inputs:
 - id: in_verbose
   doc: "Increase verbosity of output. -v: Show progress of\nsimulation. -vv: Print\

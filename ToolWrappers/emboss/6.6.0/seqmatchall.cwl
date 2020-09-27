@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmatchall.cwl
+id: seqmatchall.cwl
 inputs:
 - id: in_word_size
   doc: integer    [4] Word size (Integer 2 or more)

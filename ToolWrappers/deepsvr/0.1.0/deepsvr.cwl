@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepsvr.cwl
+id: deepsvr.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqSample.cwl
+id: fastqSample.cwl
 inputs:
 - id: in_input_name_prefix
   doc: input name (prefix) of the reads

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kallisto_h5dump.cwl
+id: kallisto_h5dump.cwl
 inputs:
 - id: in_output_dir
   doc: Directory to write output to

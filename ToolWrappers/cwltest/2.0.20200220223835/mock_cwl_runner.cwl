@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../mock_cwl_runner.cwl
+id: mock_cwl_runner.cwl
 inputs:
-- id: in_outdir
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --outdir
 - id: in_quiet
   doc: ''
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: in_outdir
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --outdir
 - id: in_process_file
   doc: jobfile
   type: string

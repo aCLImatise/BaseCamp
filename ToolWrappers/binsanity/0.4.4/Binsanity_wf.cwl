@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Binsanity_wf.cwl
+id: Binsanity_wf.cwl
 inputs:
 - id: in_specify_coverage_log
   doc: "Specify a Transformed Coverage File\ne.g Log transformed"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GraphAligner.cwl
+id: GraphAligner.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protpred_Gromacs_Mono.cwl
+id: protpred_Gromacs_Mono.cwl
 inputs: []
 outputs:
 - id: out_stdout

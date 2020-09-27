@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../verifybamid2.cwl
+id: verifybamid2.cwl
 inputs:
 - id: in_bam_file
   doc: '[Empty],'
@@ -26,36 +26,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --Output
-- id: in_disable_sanity_check
-  doc: '[2],'
-  type: boolean
-  inputBinding:
-    prefix: --DisableSanityCheck
-- id: in_fix_pc
-  doc: '[Empty],'
-  type: boolean
-  inputBinding:
-    prefix: --FixPC
-- id: in_fix_alpha
-  doc: '[-1.0e+00],'
-  type: boolean
-  inputBinding:
-    prefix: --FixAlpha
-- id: in_known_af
-  doc: '[Empty], --NumThread [4],'
-  type: boolean
-  inputBinding:
-    prefix: --KnownAF
-- id: in_seed
-  doc: '[12345], --Epsilon [1.0e-08],'
-  type: boolean
-  inputBinding:
-    prefix: --Seed
-- id: in_output_pile_up
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --OutputPileup
 - id: in_ud_path
   doc: '[Empty], --MeanPath [Empty],'
   type: boolean

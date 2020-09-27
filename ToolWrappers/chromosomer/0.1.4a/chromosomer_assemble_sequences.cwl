@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosomer_assemble_sequences.cwl
+id: chromosomer_assemble_sequences.cwl
 inputs:
 - id: in_s
   doc: ''

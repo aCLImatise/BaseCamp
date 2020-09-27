@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_bad_reads.cwl
+id: extract_bad_reads.cwl
 inputs:
 - id: in_extract_reads_instead
   doc: '[ --all ]                        Extract all reads instead of only "bad"'

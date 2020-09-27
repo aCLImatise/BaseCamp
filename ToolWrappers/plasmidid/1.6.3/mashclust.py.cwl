@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mashclust.py.cwl
+id: mashclust.py.cwl
 inputs:
 - id: in_input
   doc: REQUIRED.Input FASTA file

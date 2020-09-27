@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_refine_assembly.cwl
+id: haphpipe_refine_assembly.cwl
 inputs:
 - id: in_ref_fa
   doc: '[--outdir OUTDIR]'

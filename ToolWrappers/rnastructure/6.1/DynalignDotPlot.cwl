@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DynalignDotPlot.cwl
+id: DynalignDotPlot.cwl
 inputs:
 - id: in_sequence_two
   doc: "Specifies that the dot plot should be the second sequence. If no sequence\n\

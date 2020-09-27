@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jaspar2meme.cwl
+id: jaspar2meme.cwl
 inputs:
 - id: in_bundle
   doc: "read a single file containing many JASPAR\ncount matrices in 2014 or 2016\

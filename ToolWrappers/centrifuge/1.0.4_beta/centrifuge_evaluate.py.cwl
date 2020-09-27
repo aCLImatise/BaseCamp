@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_evaluate.py.cwl
+id: centrifuge_evaluate.py.cwl
 inputs:
 - id: in_index_base_for_read
   doc: index base for read (default same as index base)

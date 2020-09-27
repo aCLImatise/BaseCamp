@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ericscript.pl.cwl
+id: ericscript.pl.cwl
 inputs:
 - id: in_man
   doc: print complete documentation

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ice_pbdagcon2.py.cwl
+id: ice_pbdagcon2.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

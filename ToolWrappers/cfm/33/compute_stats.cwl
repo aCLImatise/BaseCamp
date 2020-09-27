@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compute_stats.cwl
+id: compute_stats.cwl
 inputs:
 - id: in_input_filename
   doc: ''

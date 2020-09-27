@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SICER_df.sh.cwl
+id: SICER_df.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

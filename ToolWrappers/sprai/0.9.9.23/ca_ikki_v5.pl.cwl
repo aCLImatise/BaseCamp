@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ca_ikki_v5.pl.cwl
+id: ca_ikki_v5.pl.cwl
 inputs:
 - id: in_this
   doc: ''

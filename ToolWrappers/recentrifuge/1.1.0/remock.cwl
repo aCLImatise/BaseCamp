@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remock.cwl
+id: remock.cwl
 inputs:
 - id: in_file
   doc: 'Explicit source: Centrifuge output file as source'

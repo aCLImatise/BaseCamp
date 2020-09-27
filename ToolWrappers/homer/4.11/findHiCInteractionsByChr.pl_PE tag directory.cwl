@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findHiCInteractionsByChr.pl_PE tag directory.cwl
+id: findHiCInteractionsByChr.pl_PE tag directory.cwl
 inputs:
 - id: in_res
   doc: '<#> (resolution in bp, default: 2000)'

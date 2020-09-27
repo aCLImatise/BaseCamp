@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_construct.cwl
+id: esl_construct.cwl
 inputs:
 - id: in_print_info_conflicting
   doc: ': print info on all conflicting bps in individual structures'

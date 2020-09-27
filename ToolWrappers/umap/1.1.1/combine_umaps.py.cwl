@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_umaps.py.cwl
+id: combine_umaps.py.cwl
 inputs:
 - id: in_out_dir
   doc: "If not specified, a subfolder will be created in\nkmer_dir names as\nglobalmap_k<smallestkmer>tok<largestkmer>"

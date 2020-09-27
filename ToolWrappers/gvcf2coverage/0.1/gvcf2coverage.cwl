@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gvcf2coverage.cwl
+id: gvcf2coverage.cwl
 inputs:
 - id: in_n
   doc: ''

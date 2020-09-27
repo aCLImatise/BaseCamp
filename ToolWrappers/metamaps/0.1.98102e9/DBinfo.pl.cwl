@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBinfo.pl.cwl
+id: DBinfo.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

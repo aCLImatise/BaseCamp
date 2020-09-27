@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterIntronsFindStrand.pl.cwl
+id: filterIntronsFindStrand.pl.cwl
 inputs:
 - id: in_allowed
   doc: ',gcaag,atac       Allowed acceptor and donor splice site types'

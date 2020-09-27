@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyadam.cwl
+id: pyadam.cwl
 inputs: []
 outputs:
 - id: out_stdout

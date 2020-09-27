@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitDistCurve.R.cwl
+id: fitDistCurve.R.cwl
 inputs:
 - id: in_opts
   doc: RDS file containing argument values

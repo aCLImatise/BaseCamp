@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_update_dbxref.cwl
+id: arrow_annotations_update_dbxref.cwl
 inputs:
 - id: in_organism
   doc: Organism Common Name

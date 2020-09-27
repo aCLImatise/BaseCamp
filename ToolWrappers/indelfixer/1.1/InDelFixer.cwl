@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../InDelFixer.cwl
+id: InDelFixer.cwl
 inputs:
 - id: in_path_output_directory
   doc: ': Path to the output directory (default: current directory).'

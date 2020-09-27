@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roary2svg.pl.cwl
+id: roary2svg.pl.cwl
 inputs:
 - id: in_verbose
   doc: "!      Verbose output (default '0')."

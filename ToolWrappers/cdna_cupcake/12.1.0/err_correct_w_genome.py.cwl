@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../err_correct_w_genome.py.cwl
+id: err_correct_w_genome.py.cwl
 inputs:
 - id: in_generate
   doc: ''

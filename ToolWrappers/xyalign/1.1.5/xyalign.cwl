@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xyalign.cwl
+id: xyalign.cwl
 inputs:
 - id: in_bam
   doc: "[BAM [BAM ...]]\nFull path to input bam files. If more than one\nprovided,\

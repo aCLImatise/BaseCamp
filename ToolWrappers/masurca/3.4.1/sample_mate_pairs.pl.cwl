@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sample_mate_pairs.pl.cwl
+id: sample_mate_pairs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

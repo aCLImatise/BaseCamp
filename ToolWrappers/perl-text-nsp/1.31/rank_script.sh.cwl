@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rank_script.sh.cwl
+id: rank_script.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

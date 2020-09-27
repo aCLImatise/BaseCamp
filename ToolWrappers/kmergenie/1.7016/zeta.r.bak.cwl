@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zeta.r.bak.cwl
+id: zeta.r.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../countgc.sh.cwl
+id: countgc.sh.cwl
 inputs:
 - id: in_in
   doc: ''

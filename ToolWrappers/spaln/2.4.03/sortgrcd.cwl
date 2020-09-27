@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortgrcd.cwl
+id: sortgrcd.cwl
 inputs:
 - id: in_cn
   doc: ':    Minimum % of coverage (0-100)'

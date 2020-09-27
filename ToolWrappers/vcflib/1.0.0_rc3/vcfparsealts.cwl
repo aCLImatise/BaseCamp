@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfparsealts.cwl
+id: vcfparsealts.cwl
 inputs: []
 outputs:
 - id: out_stdout

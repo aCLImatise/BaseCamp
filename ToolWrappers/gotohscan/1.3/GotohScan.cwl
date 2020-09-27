@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GotohScan.cwl
+id: GotohScan.cwl
 inputs:
 - id: in_dbase
   doc: Input database FILE in FASTA format.

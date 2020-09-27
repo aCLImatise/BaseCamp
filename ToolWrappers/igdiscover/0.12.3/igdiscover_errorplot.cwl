@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_errorplot.cwl
+id: igdiscover_errorplot.cwl
 inputs:
 - id: in_minimum_group_size
   doc: "Plot only genes with at least N assigned sequences.\nDefault: 0.1% of assigned\

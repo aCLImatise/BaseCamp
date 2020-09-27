@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genometreetk_strip_output_tree.cwl
+id: genometreetk_strip_output_tree.cwl
 inputs:
 - id: in_silent
   doc: ''

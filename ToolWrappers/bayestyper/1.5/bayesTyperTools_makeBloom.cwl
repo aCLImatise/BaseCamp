@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bayesTyperTools_makeBloom.cwl
+id: bayesTyperTools_makeBloom.cwl
 inputs:
 - id: in_arg_kmc_kmer
   doc: '[ --kmc-table-prefix ] arg       KMC kmer table prefix. Output is written

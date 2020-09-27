@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromopainter2chromopainterv2.pl.cwl
+id: chromopainter2chromopainterv2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

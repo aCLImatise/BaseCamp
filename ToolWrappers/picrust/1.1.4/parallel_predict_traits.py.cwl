@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parallel_predict_traits.py.cwl
+id: parallel_predict_traits.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

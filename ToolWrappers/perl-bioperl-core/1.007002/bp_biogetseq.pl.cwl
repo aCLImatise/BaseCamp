@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_biogetseq.pl.cwl
+id: bp_biogetseq.pl.cwl
 inputs:
 - id: in_namespace
   doc: id [ ids... ]

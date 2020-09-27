@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitFastq.rb.cwl
+id: splitFastq.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

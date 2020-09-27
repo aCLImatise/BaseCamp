@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../physionet_utils.py.cwl
+id: physionet_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

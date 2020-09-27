@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_adam_egg.sh.cwl
+id: find_adam_egg.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_vcf_baf.cwl
+id: rbt_vcf_baf.cwl
 inputs:
 - id: in_rbt
   doc: ''

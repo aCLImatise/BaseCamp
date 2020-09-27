@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_clust.cwl
+id: mmseqs_clust.cwl
 inputs:
 - id: in_cluster_mode
   doc: '0               0: Setcover, 1: connected component, 2: Greedy clustering

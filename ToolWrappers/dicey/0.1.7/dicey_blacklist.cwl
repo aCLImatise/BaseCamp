@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dicey_blacklist.cwl
+id: dicey_blacklist.cwl
 inputs:
 - id: in_arg_blacklist_bed
   doc: "[ --blacklist ] arg (=\"blacklist.bed\")\nblacklist in BED format"

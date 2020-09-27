@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../demux_by_barcode_for_subsampling.py.cwl
+id: demux_by_barcode_for_subsampling.py.cwl
 inputs:
 - id: in_ignore_novel
   doc: 'Ignore novel genes/transcripts (default: off)'

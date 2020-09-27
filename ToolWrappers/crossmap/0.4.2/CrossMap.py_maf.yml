@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - CrossMap.py
 - maf
@@ -9,102 +9,7 @@ positional:
   name: CrossMap.py
   optional: false
 named: []
-parent: &id002 !Command
-  command:
-  - CrossMap.py
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - *id001
-  - !Command
-    command:
-    - CrossMap.py
-    - bam
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: chain_file
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: input_file
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: output_file
-      optional: false
-    named:
-    - !Flag
-      description: "Average insert size of pair-end sequencing (bp).\n[default=200.0]"
-      synonyms:
-      - -m
-      - --mean
-      args: !SimpleFlagArg
-        name: INSERT_SIZE
-      optional: true
-    - !Flag
-      description: Stanadard deviation of insert size. [default=30.0]
-      synonyms:
-      - -s
-      - --stdev
-      args: !SimpleFlagArg
-        name: INSERT_SIZE_STDEV
-      optional: true
-    - !Flag
-      description: "A mapped pair is considered as \"proper pair\" if both\nends mapped\
-        \ to different strand and the distance\nbetween them is less then '-t' * stdev\
-        \ from the mean.\n[default=3.0]"
-      synonyms:
-      - -t
-      - --times
-      args: !SimpleFlagArg
-        name: INSERT_SIZE_FOLD
-      optional: true
-    - !Flag
-      description: Add tag to each alignment.
-      synonyms:
-      - -a
-      - --append-tags
-      args: !EmptyFlagArg {}
-      optional: true
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag:
-    usage_flag:
-    version_flag:
-    help_text: "Usage: CrossMap.py bam chain_file input_file output_file [options]\n\
-      Note: If output_file == STDOUT or -, CrossMap will write BAM file to the screen\n\
-      \nOptions:\n  -m INSERT_SIZE, --mean=INSERT_SIZE\n                        Average\
-      \ insert size of pair-end sequencing (bp).\n                        [default=200.0]\n\
-      \  -s INSERT_SIZE_STDEV, --stdev=INSERT_SIZE_STDEV\n                       \
-      \ Stanadard deviation of insert size. [default=30.0]\n  -t INSERT_SIZE_FOLD,\
-      \ --times=INSERT_SIZE_FOLD\n                        A mapped pair is considered\
-      \ as \"proper pair\" if both\n                        ends mapped to different\
-      \ strand and the distance\n                        between them is less then\
-      \ '-t' * stdev from the mean.\n                        [default=3.0]\n  -a,\
-      \ --append-tags     Add tag to each alignment.\n"
-    generated_using: []
-  usage: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "Program: CrossMap (v0.4.2)\n\nDescription: \n  CrossMap is a program\
-    \ to convert genome coordinates between different reference\n  assemblies (e.g.\
-    \ from human hg18 to hg19 or vice versa). The supported file\n  formats include\
-    \ BAM, BED, BigWig, CRAM, GFF, GTF, GVCF, MAF (mutation annotation\n  format),\
-    \ SAM, Wiggle and VCF.\n\nUsage: CrossMap.py <command> [options]\n\n\t bam\tconvert\
-    \ BAM, CRAM or SAM format file.\n\t bed\tconvert BED, bedGraph or other BED-like\
-    \ file.\n\t bigwig\tconvert BigWig file.\n\t gff\tconvert GFF or GTF format file.\n\
-    \t gvcf\tconvert GVCF file.\n\t maf\tconvert MAF (mutation annotation format)\
-    \ file.\n\t vcf\tconvert VCF file.\n\t wig\tconvert Wiggle or bedGraph format\
-    \ file.\n\n"
-  generated_using: &id003
-  - --help
+parent:
 subcommands: []
 usage: []
 help_flag:
@@ -118,4 +23,5 @@ help_text: "\nusage\n-----\n  CrossMap.py maf chain_file input.maf refGenome.fa 
   \ is the name of the\n  *target_assembly* (eg \"GRCh38\")\n\nExample\n-------\n\
   \   CrossMap.py  maf       hg19ToHg38.over.chain.gz  test.hg19.maf  hg38.fa  GRCh38\n\
   \  test.hg38.maf\n"
-generated_using: *id003
+generated_using:
+- --help

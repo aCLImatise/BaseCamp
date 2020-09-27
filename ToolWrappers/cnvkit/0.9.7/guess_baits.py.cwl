@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guess_baits.py.cwl
+id: guess_baits.py.cwl
 inputs:
 - id: in_output
   doc: The inferred targets, in BED format.

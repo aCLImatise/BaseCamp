@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: ../../../hmm_assembler.pl.cwl
+id: hmm_assembler.pl.cwl
 inputs:
 - id: in_var_0
-  doc: <length>       [500]
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: in_e
-  doc: <length>       [1000]
-  type: boolean
-  inputBinding:
-    prefix: -e
-- id: in_var_2
   doc: <order:length> [0:30]
   type: boolean
   inputBinding:
@@ -31,21 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -S
-- id: in_var_6
-  doc: <order>        [4]
-  type: boolean
-  inputBinding:
-    prefix: -C
-- id: in_var_7
-  doc: <order>        [4]
-  type: boolean
-  inputBinding:
-    prefix: -I
-- id: in_n
-  doc: <order>        [4]
-  type: boolean
-  inputBinding:
-    prefix: -N
 - id: in_orderlength_include_utr_model_requires
   doc: <order:length> []  include 3'UTR model, requires -a
   type: boolean

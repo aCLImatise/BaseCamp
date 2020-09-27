@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastutils_format.cwl
+id: fastutils_format.cwl
 inputs:
 - id: in_in
   doc: input file in fasta/q format [stdin]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TRFMask.cwl
+id: TRFMask.cwl
 inputs:
 - id: in_repeat_modeler
   doc: COPYRIGHT

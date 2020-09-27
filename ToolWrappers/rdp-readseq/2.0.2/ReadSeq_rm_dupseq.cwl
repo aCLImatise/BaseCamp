@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_rm_dupseq.cwl
+id: ReadSeq_rm_dupseq.cwl
 inputs:
 - id: in_duplicates
   doc: remove identical sequence, or sequence contained by another sequence

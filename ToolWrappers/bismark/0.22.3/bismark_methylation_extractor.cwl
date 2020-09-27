@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bismark_methylation_extractor.cwl
+id: bismark_methylation_extractor.cwl
 inputs:
 - id: in_comprehensive
   doc: specified, see below). The output files can be imported into a genome

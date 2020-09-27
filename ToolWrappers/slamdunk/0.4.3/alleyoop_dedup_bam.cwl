@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_dedup_bam.cwl
+id: alleyoop_dedup_bam.cwl
 inputs:
 - id: in_t
   doc: ''

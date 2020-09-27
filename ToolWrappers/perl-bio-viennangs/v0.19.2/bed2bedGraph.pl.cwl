@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed2bedGraph.pl.cwl
+id: bed2bedGraph.pl.cwl
 inputs:
 - id: in_bed_file_conversion
   doc: BED file for conversion.

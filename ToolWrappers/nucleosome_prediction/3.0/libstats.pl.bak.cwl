@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../libstats.pl.bak.cwl
+id: libstats.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

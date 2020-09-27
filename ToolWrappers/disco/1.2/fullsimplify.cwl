@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fullsimplify.cwl
+id: fullsimplify.cwl
 inputs:
 - id: in_fs
   doc: contained single read reduction read filename(s) (comma separated fasta/fastq)

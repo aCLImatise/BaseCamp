@@ -3,10 +3,6 @@ version 1.0
 task TaxonutilsLcaLine {
   input {
     Boolean? verbose
-    File? taxonomy
-    File? no_lca
-    Boolean? only_ranked
-    String? separator
     String? input_file
     String? output_file
   }
@@ -14,18 +10,10 @@ task TaxonutilsLcaLine {
     taxon_utils lca_line \
       ~{input_file} \
       ~{output_file} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(taxonomy) then ("--taxonomy " +  '"' + taxonomy + '"') else ""} \
-      ~{if defined(no_lca) then ("--no-lca " +  '"' + no_lca + '"') else ""} \
-      ~{if (only_ranked) then "--only-ranked" else ""} \
-      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    taxonomy: "Taxonomy file  [required]"
-    no_lca: "File to which write records with no LCA"
-    only_ranked: "If set, only taxa that have a rank will be used in\\nthe lineageself. This is not advised for lineages\\nsuch as Viruses, where the top levels have no rank"
-    separator: "separator for taxon_ids (defaults to TAB)"
+    verbose: "-t, --taxonomy TEXT    Taxonomy file  [required]\\n-n, --no-lca FILENAME  File to which write records with no LCA\\n-a, --only-ranked      If set, only taxa that have a rank will be used in\\nthe lineageself. This is not advised for lineages\\nsuch as Viruses, where the top levels have no rank\\n-s, --separator TEXT   separator for taxon_ids (defaults to TAB)\\n--help                 Show this message and exit.\\n"
     input_file: ""
     output_file: ""
   }

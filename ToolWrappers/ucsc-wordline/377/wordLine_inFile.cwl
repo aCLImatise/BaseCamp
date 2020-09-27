@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wordLine_inFile.cwl
+id: wordLine_inFile.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

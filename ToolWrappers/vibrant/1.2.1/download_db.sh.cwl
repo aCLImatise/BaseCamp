@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_db.sh.cwl
+id: download_db.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

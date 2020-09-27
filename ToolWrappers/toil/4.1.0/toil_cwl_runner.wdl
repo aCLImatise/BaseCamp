@@ -2,27 +2,6 @@ version 1.0
 
 task Toilcwlrunner {
   input {
-    String? var_0
-    Boolean? not_strict
-    Boolean? enable_dev
-    Boolean? quiet
-    String? basedir
-    String? outdir
-    String? user_space_docker_cmd
-    Boolean? singularity
-    Boolean? no_container
-    Boolean? leave_container
-    String? beta_dependency_resolvers_configuration
-    Directory? beta_dependencies_directory
-    Boolean? beta_use_bio_containers
-    Boolean? beta_cond_a_dependencies
-    File? tmpdir_prefix
-    File? tmp_outdir_prefix
-    Boolean? force_docker_pull
-    Boolean? no_match_user
-    Boolean? no_read_only
-    Boolean? relax_path_checks
-    String? default_container
     Boolean? logoff
     Boolean? log_critical
     Boolean? log_error
@@ -66,9 +45,6 @@ task Toilcwlrunner {
     Float? default_cores
     Int? default_disk
     Boolean? default_preempt_able
-    Int? max_cores
-    Int? max_memory
-    Int? max_disk
     Int? retry_count
     Boolean? enable_unlimited_preempt_able_retries
     Int? max_job_duration
@@ -98,43 +74,14 @@ task Toilcwlrunner {
     Int? or_cid
     String? full_name
     String cwl_tool
-    String exit
-    String command_line_tools
-    String command_line_tools_dot
-    String only
-    String location_job_store
+    String job_store
     String provisioning_dot
   }
   command <<<
     toil_cwl_runner \
       ~{cwl_tool} \
-      ~{exit} \
-      ~{command_line_tools} \
-      ~{command_line_tools_dot} \
-      ~{only} \
-      ~{location_job_store} \
+      ~{job_store} \
       ~{provisioning_dot} \
-      ~{if defined(var_0) then ("--jobStore " +  '"' + var_0 + '"') else ""} \
-      ~{if (not_strict) then "--not-strict" else ""} \
-      ~{if (enable_dev) then "--enable-dev" else ""} \
-      ~{if (quiet) then "--quiet" else ""} \
-      ~{if defined(basedir) then ("--basedir " +  '"' + basedir + '"') else ""} \
-      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{if defined(user_space_docker_cmd) then ("--user-space-docker-cmd " +  '"' + user_space_docker_cmd + '"') else ""} \
-      ~{if (singularity) then "--singularity" else ""} \
-      ~{if (no_container) then "--no-container" else ""} \
-      ~{if (leave_container) then "--leave-container" else ""} \
-      ~{if defined(beta_dependency_resolvers_configuration) then ("--beta-dependency-resolvers-configuration " +  '"' + beta_dependency_resolvers_configuration + '"') else ""} \
-      ~{if defined(beta_dependencies_directory) then ("--beta-dependencies-directory " +  '"' + beta_dependencies_directory + '"') else ""} \
-      ~{if (beta_use_bio_containers) then "--beta-use-biocontainers" else ""} \
-      ~{if (beta_cond_a_dependencies) then "--beta-conda-dependencies" else ""} \
-      ~{if defined(tmpdir_prefix) then ("--tmpdir-prefix " +  '"' + tmpdir_prefix + '"') else ""} \
-      ~{if defined(tmp_outdir_prefix) then ("--tmp-outdir-prefix " +  '"' + tmp_outdir_prefix + '"') else ""} \
-      ~{if (force_docker_pull) then "--force-docker-pull" else ""} \
-      ~{if (no_match_user) then "--no-match-user" else ""} \
-      ~{if (no_read_only) then "--no-read-only" else ""} \
-      ~{if (relax_path_checks) then "--relax-path-checks" else ""} \
-      ~{if defined(default_container) then ("--default-container " +  '"' + default_container + '"') else ""} \
       ~{if (logoff) then "--logOff" else ""} \
       ~{if (log_critical) then "--logCritical" else ""} \
       ~{if (log_error) then "--logError" else ""} \
@@ -178,9 +125,6 @@ task Toilcwlrunner {
       ~{if defined(default_cores) then ("--defaultCores " +  '"' + default_cores + '"') else ""} \
       ~{if defined(default_disk) then ("--defaultDisk " +  '"' + default_disk + '"') else ""} \
       ~{if (default_preempt_able) then "--defaultPreemptable" else ""} \
-      ~{if defined(max_cores) then ("--maxCores " +  '"' + max_cores + '"') else ""} \
-      ~{if defined(max_memory) then ("--maxMemory " +  '"' + max_memory + '"') else ""} \
-      ~{if defined(max_disk) then ("--maxDisk " +  '"' + max_disk + '"') else ""} \
       ~{if defined(retry_count) then ("--retryCount " +  '"' + retry_count + '"') else ""} \
       ~{if (enable_unlimited_preempt_able_retries) then "--enableUnlimitedPreemptableRetries" else ""} \
       ~{if defined(max_job_duration) then ("--maxJobDuration " +  '"' + max_job_duration + '"') else ""} \
@@ -211,27 +155,6 @@ task Toilcwlrunner {
       ~{if defined(full_name) then ("--full-name " +  '"' + full_name + '"') else ""}
   >>>
   parameter_meta {
-    var_0: ""
-    not_strict: ""
-    enable_dev: "Enable loading and running development versions of CWL"
-    quiet: ""
-    basedir: ""
-    outdir: ""
-    user_space_docker_cmd: "(Linux/OS X only) Specify a user space docker command\\n(like udocker or dx-docker) that will be used to call\\n'pull' and 'run'"
-    singularity: "[experimental] Use Singularity runtime for running\\ncontainers. Requires Singularity v2.6.1+ and Linux\\nwith kernel version v3.18+ or with overlayfs support\\nbackported."
-    no_container: "Do not execute jobs in a Docker container, even when\\n`DockerRequirement` is specified under `hints`."
-    leave_container: "Do not delete Docker container used by jobs after they"
-    beta_dependency_resolvers_configuration: ""
-    beta_dependencies_directory: ""
-    beta_use_bio_containers: ""
-    beta_cond_a_dependencies: ""
-    tmpdir_prefix: "Path prefix for temporary directories"
-    tmp_outdir_prefix: "Path prefix for intermediate output directories"
-    force_docker_pull: "Pull latest docker image even if it is locally present"
-    no_match_user: "Disable passing the current uid to `docker run --user`"
-    no_read_only: "Do not set root directory in the container as read-"
-    relax_path_checks: "Relax requirements on path names to permit spaces and\\nhash characters."
-    default_container: "Specify a default docker container that will be used\\nif the workflow fails to specify one."
     logoff: "Same as --logCritical"
     log_critical: "Turn on logging at level CRITICAL and above. (default\\nis INFO)"
     log_error: "Turn on logging at level ERROR and above. (default is\\nINFO)"
@@ -274,10 +197,7 @@ task Toilcwlrunner {
     default_memory: "The default amount of memory to request for a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Standard suffixes\\nlike K, Ki, M, Mi, G or Gi are supported. Default is\\n2.0 Gi"
     default_cores: "The default number of CPU cores to dedicate a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Fractions of a\\ncore (for example 0.1) are supported on some batch\\nsystems, namely Mesos and singleMachine. Default is\\n1.0"
     default_disk: "The default amount of disk space to dedicate a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Standard suffixes\\nlike K, Ki, M, Mi, G or Gi are supported. Default is\\n2.0 Gi"
-    default_preempt_able: ""
-    max_cores: "The maximum number of CPU cores to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
-    max_memory: "The maximum amount of memory to request from the batch\\nsystem at any one time. Standard suffixes like K, Ki,\\nM, Mi, G or Gi are supported. Default is 8.0 Ei"
-    max_disk: "The maximum amount of disk space to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
+    default_preempt_able: "--maxCores INT        The maximum number of CPU cores to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei\\n--maxMemory INT       The maximum amount of memory to request from the batch\\nsystem at any one time. Standard suffixes like K, Ki,\\nM, Mi, G or Gi are supported. Default is 8.0 Ei\\n--maxDisk INT         The maximum amount of disk space to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
     retry_count: "Number of times to retry a failing job before giving\\nup and labeling job failed. default=1"
     enable_unlimited_preempt_able_retries: "If set, preemptable failures (or any failure due to an\\ninstance getting unexpectedly terminated) would not\\ncount towards job failures and --retryCount."
     max_job_duration: "Maximum runtime of a job (in seconds) before we kill\\nit (this is a lower bound, and the actual time before\\nkilling the job may be longer).\\ndefault=9223372036854775807"
@@ -307,16 +227,11 @@ task Toilcwlrunner {
     or_cid: "Record user ORCID identifier as part of provenance,\\ne.g. https://orcid.org/0000-0002-1825-0097 or\\n0000-0002-1825-0097. Alternatively the environment\\nvariable ORCID may be set."
     full_name: "Record full name of user as part of provenance, e.g.\\nJosiah Carberry. You may need to use shell quotes to\\npreserve spaces. Alternatively the environment\\nvariable CWL_FULL_NAME may be set.\\n"
     cwl_tool: "cwljob"
-    exit: "--preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]"
-    command_line_tools: "--preserve-entire-environment"
-    command_line_tools_dot: "--destBucket DESTBUCKET"
-    only: "--strict-memory-limit"
-    location_job_store: "The location of the job store for the workflow. A job\\nstore holds persistent information about the jobs and\\nfiles in a workflow. If the workflow is run with a\\ndistributed batch system, the job store must be\\naccessible by all worker nodes. Depending on the\\ndesired job store implementation, the location should\\nbe formatted according to one of the following\\nschemes: file:<path> where <path> points to a\\ndirectory on the file systen aws:<region>:<prefix>\\nwhere <region> is the name of an AWS region like us-\\nwest-2 and <prefix> will be prepended to the names of\\nany top-level AWS resources in use by job store, e.g.\\nS3 buckets. google:<project_id>:<prefix> TODO: explain\\nFor backwards compatibility, you may also specify\\n./foo (equivalent to file:./foo or just file:foo) or\\n/bar (equivalent to file:/bar)."
+    job_store: "The location of the job store for the workflow. A job\\nstore holds persistent information about the jobs and\\nfiles in a workflow. If the workflow is run with a\\ndistributed batch system, the job store must be\\naccessible by all worker nodes. Depending on the\\ndesired job store implementation, the location should\\nbe formatted according to one of the following\\nschemes: file:<path> where <path> points to a\\ndirectory on the file systen aws:<region>:<prefix>\\nwhere <region> is the name of an AWS region like us-\\nwest-2 and <prefix> will be prepended to the names of\\nany top-level AWS resources in use by job store, e.g.\\nS3 buckets. google:<project_id>:<prefix> TODO: explain\\nFor backwards compatibility, you may also specify\\n./foo (equivalent to file:./foo or just file:foo) or\\n/bar (equivalent to file:/bar)."
     provisioning_dot: "--provisioner {aws,gce}\\nThe provisioner for cluster auto-scaling. The\\ncurrently supported choices are'gce', or 'aws'. The\\ndefault is None."
   }
   output {
     File out_stdout = stdout()
-    File out_tmp_outdir_prefix = "${in_tmp_outdir_prefix}"
     File out_workdir = "${in_workdir}"
     File out_cluster_stats = "${in_cluster_stats}"
     File out_no_move_exports = "${in_no_move_exports}"

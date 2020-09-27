@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../weedMaf.pl.cwl
+id: weedMaf.pl.cwl
 inputs:
 - id: in_format
   doc: SYNOPSIS

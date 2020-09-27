@@ -1,18 +1,11 @@
 class: CommandLineTool
-id: ../../../msa_view.cwl
+id: msa_view.cwl
 inputs:
 - id: in_out_format
   doc: "|FASTA|MPM|SS\n(Default FASTA)  Output file format."
   type: File
   inputBinding:
     prefix: --out-format
-- id: in_tuple_size
-  doc: "(For use with --out-format SS).  Represent an alignment in\nterms of tuples\
-    \ of columns of the designated size.  Useful\nwith context-dependent phylogenetic\
-    \ models."
-  type: long
-  inputBinding:
-    prefix: --tuple-size
 - id: in_start
   doc: "Starting column of sub-alignment (indexing starts with 1).\nDefault is 1.\
     \  Note that coordinates use the frame of reference\nof the entire alignment unless\
@@ -178,6 +171,13 @@ inputs:
   type: long
   inputBinding:
     prefix: --window-summary
+- id: in_tuple_size
+  doc: "(For use with --out-format SS).  Represent an alignment in\nterms of tuples\
+    \ of columns of the designated size.  Useful\nwith context-dependent phylogenetic\
+    \ models."
+  type: long
+  inputBinding:
+    prefix: --tuple-size
 - id: in_unordered_ss
   doc: "(For use with --out-format SS).  Suppress the portion of the\nsufficient statistics\
     \ concerned with the order in which\ncolumns appear.  Useful for analyses for\

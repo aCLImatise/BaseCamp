@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_bcs.py.cwl
+id: extract_bcs.py.cwl
 inputs:
 - id: in_outfile
   doc: Write results to this file.

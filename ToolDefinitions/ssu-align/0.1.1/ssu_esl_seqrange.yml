@@ -21,7 +21,7 @@ subcommands:
     name: nproc
     optional: false
   named: []
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -41,17 +41,10 @@ subcommands:
         name: nproc
         optional: false
       named: []
-      parent: &id003 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: ': specify that input file is in format <s>'
-          synonyms:
-          - --informat
-          args: !SimpleFlagArg
-            name: s
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -68,7 +61,132 @@ subcommands:
             name: nproc
             optional: false
           named: []
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: ': specify that input file is in format <s>'
+              synonyms:
+              - --informat
+              args: !SimpleFlagArg
+                name: s
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: procidx
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: nproc
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Usage: ssu-esl-seqrange [options] <sqfile> <procidx> <nproc>\n\
+                \nTo see more help on available options, do ssu-esl-seqrange -h\n\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - ssu-esl-seqrange
+              - nproc
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ssu-esl-seqrange
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: sqfile
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: procidx
+                optional: false
+              - !Positional
+                description: ''
+                position: 3
+                name: nproc
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Usage: ssu-esl-seqrange [options] <sqfile> <procidx> <nproc>\n\
+                \nTo see more help on available options, do ssu-esl-seqrange -h\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - ssu-esl-seqrange
+              - procidx
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ssu-esl-seqrange
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: sqfile
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: procidx
+                optional: false
+              - !Positional
+                description: ''
+                position: 3
+                name: nproc
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Usage: ssu-esl-seqrange [options] <sqfile> <procidx> <nproc>\n\
+                \nTo see more help on available options, do ssu-esl-seqrange -h\n\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: ': help; show brief info on version and usage'
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "# ssu-esl-seqrange :: determine range of sequences for one\
+              \ of many parallel processes\n# Easel s0.1.1 (Feb 2016)\n# Copyright\
+              \ (C) 2016 HHMI Janelia Farm Research Campus\n# Freely distributed under\
+              \ the BSD open source license.\n# - - - - - - - - - - - - - - - - -\
+              \ - - - - - - - - - - - - - - - - - - -\nUsage: ssu-esl-seqrange [options]\
+              \ <sqfile> <procidx> <nproc>\n\n where general options are:\n  -h  \
+              \           : help; show brief info on version and usage\n  --informat\
+              \ <s> : specify that input file is in format <s>\n"
+            generated_using: &id007
+            - -h
           subcommands: []
           usage: []
           help_flag:
@@ -76,12 +194,9 @@ subcommands:
           version_flag:
           help_text: "Usage: ssu-esl-seqrange [options] <sqfile> <procidx> <nproc>\n\
             \nTo see more help on available options, do ssu-esl-seqrange -h\n\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - ssu-esl-seqrange
-          - nproc
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -114,9 +229,7 @@ subcommands:
             \nTo see more help on available options, do ssu-esl-seqrange -h\n\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - ssu-esl-seqrange
-          - procidx
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -149,12 +262,7 @@ subcommands:
             \nTo see more help on available options, do ssu-esl-seqrange -h\n\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: ': help; show brief info on version and usage'
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "# ssu-esl-seqrange :: determine range of sequences for one of\
@@ -165,8 +273,7 @@ subcommands:
           \ <procidx> <nproc>\n\n where general options are:\n  -h             : help;\
           \ show brief info on version and usage\n  --informat <s> : specify that\
           \ input file is in format <s>\n"
-        generated_using: &id007
-        - -h
+        generated_using: *id007
       subcommands: []
       usage: []
       help_flag:
@@ -199,7 +306,7 @@ subcommands:
         name: nproc
         optional: false
       named: []
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -232,7 +339,7 @@ subcommands:
         name: nproc
         optional: false
       named: []
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -285,7 +392,7 @@ subcommands:
     name: nproc
     optional: false
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -318,7 +425,7 @@ subcommands:
     name: nproc
     optional: false
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

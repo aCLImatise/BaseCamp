@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gnali.cwl
+id: gnali.cwl
 inputs:
 - id: in_input_file
   doc: 'File of genes to test. Accepted formats: csv, txt'

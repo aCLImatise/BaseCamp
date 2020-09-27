@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Manual_Aug28_2015.pdf.cwl
+id: Manual_Aug28_2015.pdf.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twins.cwl
+id: twins.cwl
 inputs:
 - id: in_ref
   doc: samtools reference sequence (required)

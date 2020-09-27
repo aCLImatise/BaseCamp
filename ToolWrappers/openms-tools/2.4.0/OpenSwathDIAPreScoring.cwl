@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathDIAPreScoring.cwl
+id: OpenSwathDIAPreScoring.cwl
 inputs:
 - id: in_tr
   doc: "*                    Transition file (valid formats: 'TraML')"

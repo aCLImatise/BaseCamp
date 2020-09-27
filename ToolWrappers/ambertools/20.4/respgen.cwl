@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../respgen.cwl
+id: respgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

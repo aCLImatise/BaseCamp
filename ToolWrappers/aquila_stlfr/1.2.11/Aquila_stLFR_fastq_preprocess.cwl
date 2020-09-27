@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_stLFR_fastq_preprocess.cwl
+id: Aquila_stLFR_fastq_preprocess.cwl
 inputs:
 - id: in_fast_q_one
   doc: origin stLFR fastq 1 (gz file)

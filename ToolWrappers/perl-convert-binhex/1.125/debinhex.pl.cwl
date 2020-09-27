@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../debinhex.pl.cwl
+id: debinhex.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../detectChimera.cwl
+id: detectChimera.cwl
 inputs: []
 outputs:
 - id: out_stdout

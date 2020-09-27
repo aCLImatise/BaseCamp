@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_create.cwl
+id: nf_core_create.cwl
 inputs:
 - id: in_name
   doc: The name of your new pipeline  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../molsurf.cwl
+id: molsurf.cwl
 inputs:
 - id: in_pqr_file
   doc: ''

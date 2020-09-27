@@ -1,22 +1,6 @@
 class: CommandLineTool
-id: ../../../setup_data_libraries.cwl
+id: setup_data_libraries.cwl
 inputs:
-- id: in_in_file
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --infile
-- id: in_training
-  doc: Set defaults that make sense for training data.
-  type: boolean
-  inputBinding:
-    prefix: --training
-- id: in_legacy
-  doc: "Use legacy APIs even for newer Galaxies that should\nhave a batch upload API\
-    \ enabled."
-  type: boolean
-  inputBinding:
-    prefix: --legacy
 - id: in_verbose
   doc: Increase output verbosity.
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hlatyper.py.cwl
+id: hlatyper.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

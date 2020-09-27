@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedAdd.cwl
+id: BedAdd.cwl
 inputs:
 - id: in_in
   doc: Input BED files.

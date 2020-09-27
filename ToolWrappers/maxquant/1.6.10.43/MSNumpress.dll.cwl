@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSNumpress.dll.cwl
+id: MSNumpress.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

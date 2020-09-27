@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseAligns.cwl
+id: ParseAligns.cwl
 inputs:
 - id: in_min_align
   doc: minimum alignment length

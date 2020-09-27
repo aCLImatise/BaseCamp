@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hapenum.cwl
+id: hapenum.cwl
 inputs:
 - id: in_input_file
   doc: "The input VCF/BCF file (use file:sample to specify\na sample)"

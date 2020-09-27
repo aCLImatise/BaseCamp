@@ -1,21 +1,15 @@
 class: CommandLineTool
-id: ../../../rappas.cwl
+id: rappas.cwl
 inputs:
-- id: in_w
-  doc: ''
-  type: string
+- id: in_placing_sequences_using
+  doc: "2. For placing sequences, using the database (DB) built in step 1:\njava -jar\
+    \ RAPPAS.jar -p p -d DB.union -q queries.fa\nNote: For large references or high\
+    \ values of k, allocate more RAM :\nex: java -Xms1024m -Xmx16g -jar RAPPAS.jar\
+    \ [options]\n-Xms -> memory allocated at startup. (m=MegaByte, g=GigaByte)\n-Xmx\
+    \ -> maximum memory allocated to the process."
+  type: long
   inputBinding:
     prefix: -w
-- id: in_xms
-  doc: -> memory allocated at startup. (m=MegaByte, g=GigaByte)
-  type: boolean
-  inputBinding:
-    prefix: -Xms
-- id: in_x_mx
-  doc: -> maximum memory allocated to the process.
-  type: boolean
-  inputBinding:
-    prefix: -Xmx
 - id: in__arbinary_binary
   doc: "(--arbinary)   [file] Binary for marginal AR, currently 'phyml' and\n'baseml'\
     \ (from PAML) are supported. (b phase)"

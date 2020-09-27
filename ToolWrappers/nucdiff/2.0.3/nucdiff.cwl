@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucdiff.cwl
+id: nucdiff.cwl
 inputs:
 - id: in_reloc_dist
   doc: "[int]    - Minimum distance between two relocated blocks\n[10000]"

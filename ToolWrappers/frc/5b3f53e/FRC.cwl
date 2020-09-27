@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FRC.cwl
+id: FRC.cwl
 inputs:
 - id: in_pe_sam
   doc: "paired end alignment file (in sam or bam format).\nOrientation must be ->\

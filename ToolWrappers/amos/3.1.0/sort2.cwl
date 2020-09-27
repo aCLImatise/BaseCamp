@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort2.cwl
+id: sort2.cwl
 inputs:
 - id: in_first_column_sort
   doc: '- First  column to sort after (Default 0)'

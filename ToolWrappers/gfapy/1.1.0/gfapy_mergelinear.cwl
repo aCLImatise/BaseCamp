@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfapy_mergelinear.cwl
+id: gfapy_mergelinear.cwl
 inputs:
 - id: in_redundant
   doc: "create redundant paths, similar to the contigs\nconstructed by Readjoiner"

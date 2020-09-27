@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erase_annoying_sequences.py.cwl
+id: erase_annoying_sequences.py.cwl
 inputs:
 - id: in_input
   doc: Input FASTA file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_match_contigs_to_barcodes.cwl
+id: phyluce_assembly_match_contigs_to_barcodes.cwl
 inputs: []
 outputs:
 - id: out_stdout

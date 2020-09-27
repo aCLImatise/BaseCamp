@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_trans.py.cwl
+id: filter_trans.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

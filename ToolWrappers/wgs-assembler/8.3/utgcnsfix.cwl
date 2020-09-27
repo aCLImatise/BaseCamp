@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../utgcnsfix.cwl
+id: utgcnsfix.cwl
 inputs:
 - id: in_show_multialigns
   doc: Show multialigns.

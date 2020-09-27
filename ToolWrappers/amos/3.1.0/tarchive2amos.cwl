@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tarchive2amos.cwl
+id: tarchive2amos.cwl
 inputs:
 - id: in_assembly
   doc: "- XML file containing assembly in assembly archive format\nhttp://www.ncbi.nlm.nih.gov/Traces/assembly/assmbrowser.cgi\n\

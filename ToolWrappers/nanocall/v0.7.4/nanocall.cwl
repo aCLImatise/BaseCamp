@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanocall.cwl
+id: nanocall.cwl
 inputs:
 - id: in__threads_intnumber
   doc: ",  --threads <int>\nNumber of parallel threads. (default: 1)"
@@ -149,10 +149,15 @@ inputs:
   inputBinding:
     prefix: --train-drift
 - id: in_stats
-  doc: ''
+  doc: Stats.
   type: File
   inputBinding:
     prefix: --stats
+- id: in_log
+  doc: "(accepted multiple times)\nLog level. (default: info)"
+  type: string
+  inputBinding:
+    prefix: --log
 - id: in_chunk_size
   doc: 'Thread chunk size. (default: 1)'
   type: long
@@ -184,11 +189,6 @@ inputs:
     position: 0
 - id: in_output_dot
   doc: --write-fast5
-  type: string
-  inputBinding:
-    position: 0
-- id: in_stats_dot
-  doc: --log <string>  (accepted multiple times)
   type: string
   inputBinding:
     position: 0

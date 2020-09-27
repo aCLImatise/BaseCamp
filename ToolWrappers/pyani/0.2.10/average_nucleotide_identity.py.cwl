@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../average_nucleotide_identity.py.cwl
+id: average_nucleotide_identity.py.cwl
 inputs:
 - id: in_outdir
   doc: Output directory (required)

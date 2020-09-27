@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fuzzpro.cwl
+id: fuzzpro.cwl
 inputs:
 - id: in_pattern
   doc: "pattern    The standard IUPAC one-letter codes for the\namino acids are used.\n\
@@ -19,11 +19,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pattern
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 outputs:
 - id: out_stdout
   doc: Standard output stream

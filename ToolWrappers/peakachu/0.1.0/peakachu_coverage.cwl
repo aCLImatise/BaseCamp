@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: ../../../peakachu_coverage.cwl
+id: peakachu_coverage.cwl
 inputs:
-- id: in_max_proc
+- id: in_p
   doc: ''
   type: long
   inputBinding:
-    prefix: --max_proc
+    prefix: -p
 - id: in_project_folder
-  doc: 'optional arguments:'
+  doc: ''
   type: string
   inputBinding:
     position: 0

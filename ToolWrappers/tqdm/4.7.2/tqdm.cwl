@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tqdm.cwl
+id: tqdm.cwl
 inputs:
 - id: in_desc
   doc: ": str, optional\nPrefix for the progressbar."

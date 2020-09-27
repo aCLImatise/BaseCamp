@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../weedamb.cwl
+id: weedamb.cwl
 inputs:
 - id: in_save_ambiguous_sequences
   doc: ': save ambiguous sequences to this file'

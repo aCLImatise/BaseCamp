@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build.sh.cwl
+id: build.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_vir_test.cwl
+id: deepac_vir_test.cwl
 inputs:
 - id: in_n_cpus
   doc: 'Number of CPU cores. Default: all.'

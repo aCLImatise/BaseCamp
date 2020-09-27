@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_sdf2fastq.cwl
+id: rtg_sdf2fastq.cwl
 inputs:
 - id: in_input
   doc: SDF containing sequences

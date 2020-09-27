@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_core_no_hw_accel_contig2fastg.cwl
+id: megahit_core_no_hw_accel_contig2fastg.cwl
 inputs:
 - id: in_contig_two_fast_g
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../curesim.cwl
+id: curesim.cwl
 inputs:
 - id: in_genome_fasta_file
   doc: '[mandatory] genome fasta file or reads fastq file'

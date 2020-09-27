@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamfilterlength.cwl
+id: bamfilterlength.cwl
 inputs: []
 outputs:
 - id: out_stdout

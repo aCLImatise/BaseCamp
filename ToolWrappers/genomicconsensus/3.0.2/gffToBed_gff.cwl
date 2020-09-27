@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffToBed_gff.cwl
+id: gffToBed_gff.cwl
 inputs:
 - id: in_emit_tool_contract
   doc: ''

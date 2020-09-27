@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeSwathFile.py.cwl
+id: makeSwathFile.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

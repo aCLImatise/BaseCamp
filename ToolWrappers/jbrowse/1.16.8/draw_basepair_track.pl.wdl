@@ -2,7 +2,6 @@ version 1.0
 
 task Drawbasepairtrackpl {
   input {
-    File? gff
     Directory? out
     File? track_label
     String? key
@@ -12,12 +11,9 @@ task Drawbasepairtrackpl {
     Int? width
     Int? height
     Boolean? no_links
-    String bin_slash_draw_base_pair_track_do_tpl
   }
   command <<<
     draw_basepair_track_pl \
-      ~{bin_slash_draw_base_pair_track_do_tpl} \
-      ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(track_label) then ("--trackLabel " +  '"' + track_label + '"') else ""} \
       ~{if defined(key) then ("--key " +  '"' + key + '"') else ""} \
@@ -29,7 +25,6 @@ task Drawbasepairtrackpl {
       ~{if (no_links) then "--nolinks" else ""}
   >>>
   parameter_meta {
-    gff: "\\"
     out: "Data directory to write to. Defaults to \\\"data/\\\"."
     track_label: "Unique name for the track. Defaults to the wiggle filename."
     key: "Human-readable name for the track. Defaults to be the same as the\\n\\\"--trackLabel\\\"."
@@ -39,7 +34,6 @@ task Drawbasepairtrackpl {
     width: "Width in pixels of each image tile. Defaults to 2000."
     height: "Height in pixels of the image track. Defaults to 100."
     no_links: "If passed, do not use filesystem hardlinks to compress duplicate\\ntiles.\\n"
-    bin_slash_draw_base_pair_track_do_tpl: "\\"
   }
   output {
     File out_stdout = stdout()

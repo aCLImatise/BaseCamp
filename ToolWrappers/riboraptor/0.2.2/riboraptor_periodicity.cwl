@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_periodicity.cwl
+id: riboraptor_periodicity.cwl
 inputs:
 - id: in_counts
   doc: Path to counts file (if not stdin)

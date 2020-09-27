@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_filter_max_wc.py.cwl
+id: maf_filter_max_wc.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

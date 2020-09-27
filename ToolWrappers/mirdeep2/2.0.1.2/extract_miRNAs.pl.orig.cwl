@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_miRNAs.pl.orig.cwl
+id: extract_miRNAs.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

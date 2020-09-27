@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_cloud_list.cwl
+id: nextflow.bak_cloud_list.cwl
 inputs:
 - id: in_region
   doc: "The region to use. Overrides config/env settings.\n"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyze_diff_expr.pl.cwl
+id: analyze_diff_expr.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

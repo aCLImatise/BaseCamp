@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcgrasstest.cwl
+id: kcgrasstest.cwl
 inputs:
 - id: in_pc_cap
   doc: ''

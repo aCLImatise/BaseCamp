@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mirtrace.cwl
+id: mirtrace.cwl
 inputs:
 - id: in_species
   doc: "Species (miRBase encoding). EXAMPLE: \"hsa\" for Homo sapiens.\nTo list all\

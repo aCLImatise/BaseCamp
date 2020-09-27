@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faRandomize.cwl
+id: faRandomize.cwl
 inputs:
 - id: in_seed
   doc: ''

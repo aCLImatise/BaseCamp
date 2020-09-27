@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iucn_sim_record.cwl
+id: iucn_sim_record.cwl
 inputs:
 - id: in_iucn_sim
   doc: ''

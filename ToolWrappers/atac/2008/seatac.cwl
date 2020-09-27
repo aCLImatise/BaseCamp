@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seatac.cwl
+id: seatac.cwl
 inputs: []
 outputs:
 - id: out_stdout

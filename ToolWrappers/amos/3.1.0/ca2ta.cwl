@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ca2ta.cwl
+id: ca2ta.cwl
 inputs:
 - id: in_select
   doc: "Only performs this operation for contigs and unitigs\nspecified in fname"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_jobutil_new_job.cwl
+id: dx_jobutil_new_job.cwl
 inputs:
 - id: in_input
   doc: "An input to be added using \"<input\nname>[:<class>]=<input value>\" (provide\

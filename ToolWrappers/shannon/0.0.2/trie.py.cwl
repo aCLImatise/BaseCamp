@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trie.py.cwl
+id: trie.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

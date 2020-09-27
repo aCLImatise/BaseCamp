@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaeuk_easy_predict.cwl
+id: metaeuk_easy_predict.cwl
 inputs:
 - id: in_comp_bias_corr
   doc: Correct for locally biased amino acid composition (range 0-1) [1]

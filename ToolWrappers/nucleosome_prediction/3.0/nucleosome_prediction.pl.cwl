@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucleosome_prediction.pl.cwl
+id: nucleosome_prediction.pl.cwl
 inputs:
 - id: in_raw_binding
   doc: ': Output the raw nucleosome binding log-ratio per basepair instead of the

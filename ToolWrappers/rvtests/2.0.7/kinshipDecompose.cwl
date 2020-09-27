@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kinshipDecompose.cwl
+id: kinshipDecompose.cwl
 inputs:
 - id: in_in
   doc: ': Input kinship file'

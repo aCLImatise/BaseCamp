@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniq.cwl
+id: uniq.cwl
 inputs:
 - id: in_count
   doc: prefix lines by the number of occurrences

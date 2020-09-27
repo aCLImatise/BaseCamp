@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly_stats.cwl
+id: assembly_stats.cwl
 inputs:
 - id: in_minimum_length_cutoff
   doc: "Minimum length cutoff for each sequence.\nSequences shorter than the cutoff\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runChicago.R.cwl
+id: runChicago.R.cwl
 inputs:
 - id: in_print_memory
   doc: Should chicagoPipeline print out memory use?

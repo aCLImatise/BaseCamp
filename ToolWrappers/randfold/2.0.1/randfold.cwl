@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randfold.cwl
+id: randfold.cwl
 inputs:
 - id: in_mononucleotide_shuffling
   doc: mononucleotide shuffling

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_xmlcatalog.cwl
+id: _xmlcatalog.cwl
 inputs:
 - id: in_sgml
   doc: ': handle SGML Super catalogs for --add and --del'

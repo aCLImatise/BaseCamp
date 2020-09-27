@@ -1,17 +1,16 @@
 class: CommandLineTool
-id: ../../../NormGeneCounts.py.cwl
+id: NormGeneCounts.py.cwl
 inputs:
-- id: in_frac_thresh
-  doc: "threshold for assigning gene to strain as fraction of\nreads deriving from\
-    \ it, defaults to 0.01"
-  type: double
-  inputBinding:
-    prefix: --frac_thresh
 - id: in_output_file
   doc: ''
   type: File
   inputBinding:
     prefix: --output_file
+- id: in_f
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -f
 outputs:
 - id: out_stdout
   doc: Standard output stream

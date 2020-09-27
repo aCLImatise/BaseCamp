@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetch_mrh_data.cwl
+id: fetch_mrh_data.cwl
 inputs:
 - id: in_chrom
   doc: The first region chromosome.

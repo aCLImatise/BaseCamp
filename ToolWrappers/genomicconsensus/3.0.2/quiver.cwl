@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quiver.cwl
+id: quiver.cwl
 inputs: []
 outputs:
 - id: out_stdout

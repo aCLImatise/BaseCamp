@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../group_humann2_uniref_abundances_to_GO.sh.cwl
+id: group_humann2_uniref_abundances_to_GO.sh.cwl
 inputs:
 - id: in_path_file_uniref_gene
   doc: Path to file with UniRef50 gene family abundance (HUMAnN2 output)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../divvier.cwl
+id: divvier.cwl
 inputs:
 - id: in_divvy
   doc: ': do standard divvying (DEFAULT)'

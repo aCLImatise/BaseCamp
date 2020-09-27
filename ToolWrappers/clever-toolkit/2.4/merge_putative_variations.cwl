@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_putative_variations.cwl
+id: merge_putative_variations.cwl
 inputs:
 - id: in_arg_minimal_weight
   doc: '[ --min_weight ] arg (=1) Minimal weight to be printed (default=1).'

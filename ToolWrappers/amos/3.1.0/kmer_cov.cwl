@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmer_cov.cwl
+id: kmer_cov.cwl
 inputs:
 - id: in_output_regions_features
   doc: Output regions as Features

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shiver_fastaq.cwl
+id: shiver_fastaq.cwl
 inputs: []
 outputs:
 - id: out_stdout

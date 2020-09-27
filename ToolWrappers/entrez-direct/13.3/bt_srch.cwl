@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bt_srch.cwl
+id: bt_srch.cwl
 inputs: []
 outputs:
 - id: out_stdout

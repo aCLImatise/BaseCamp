@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tag_sum.cwl
+id: tag_sum.cwl
 inputs:
 - id: in_gff_three
   doc: input file

@@ -1,16 +1,9 @@
 version 1.0
 
 task Yamlpp5events {
-  input {
-    Boolean? str
-  }
   command <<<
-    yamlpp5_events \
-      ~{if (str) then "-STR" else ""}
+    yamlpp5_events
   >>>
-  parameter_meta {
-    str: ""
-  }
   output {
     File out_stdout = stdout()
   }

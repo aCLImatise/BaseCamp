@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_wqb.cwl
+id: get_wqb.cwl
 inputs:
 - id: in_dir
   doc: Directory with location of OpenDUck data

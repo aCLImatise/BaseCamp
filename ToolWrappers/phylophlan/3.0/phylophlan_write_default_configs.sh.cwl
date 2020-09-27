@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan_write_default_configs.sh.cwl
+id: phylophlan_write_default_configs.sh.cwl
 inputs:
 - id: in_mode
   doc: Mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VariantPhaser.py.cwl
+id: VariantPhaser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

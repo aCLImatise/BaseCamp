@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../json2conf.pl.cwl
+id: json2conf.pl.cwl
 inputs:
 - id: in_track
   doc: "| -t\nThe file is a track configuration of the type used with\nadd-track-json.pl."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spliceai_wrapper.cwl
+id: spliceai_wrapper.cwl
 inputs: []
 outputs:
 - id: out_stdout

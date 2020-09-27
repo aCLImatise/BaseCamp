@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../show_diff.cwl
+id: show_diff.cwl
 inputs:
 - id: in_output_diff_information
   doc: Output diff information as AMOS features

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_thor_ma.cwl
+id: rgt_tools.py_thor_ma.cwl
 inputs:
 - id: in_input_data_config
   doc: Input data config.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_heteroatoms.cwl
+id: extract_heteroatoms.cwl
 inputs:
 - id: in_config
   doc: This file can be a YAML file, JSON file or JSON string

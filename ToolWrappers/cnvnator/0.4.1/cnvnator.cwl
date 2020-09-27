@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvnator.cwl
+id: cnvnator.cwl
 inputs:
 - id: in_lite
   doc: ''

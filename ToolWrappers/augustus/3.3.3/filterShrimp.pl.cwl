@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterShrimp.pl.cwl
+id: filterShrimp.pl.cwl
 inputs:
 - id: in_min_score
   doc: minimal percentage of identity (default 300)

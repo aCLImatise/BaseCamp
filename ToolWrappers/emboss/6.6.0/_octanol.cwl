@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_octanol.cwl
+id: _octanol.cwl
 inputs:
 - id: in_data_file
   doc: datafile   [Ewhite-wimley.dat] White-Wimley data file

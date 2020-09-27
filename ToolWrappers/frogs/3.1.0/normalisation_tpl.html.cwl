@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalisation_tpl.html.cwl
+id: normalisation_tpl.html.cwl
 inputs: []
 outputs:
 - id: out_stdout

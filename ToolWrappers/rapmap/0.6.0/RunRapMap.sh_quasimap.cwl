@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RunRapMap.sh_quasimap.cwl
+id: RunRapMap.sh_quasimap.cwl
 inputs:
 - id: in__index_pathrequired
   doc: ",  --index <path>\n(required)  The location of the quasiindex"

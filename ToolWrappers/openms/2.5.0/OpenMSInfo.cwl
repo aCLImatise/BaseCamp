@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenMSInfo.cwl
+id: OpenMSInfo.cwl
 inputs: []
 outputs:
 - id: out_stdout

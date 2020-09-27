@@ -9,7 +9,6 @@ task Clumpifysh {
     String reads_dot
     String non_duplicate_dot
     String next_seq
-    String nova_seq
     String y_axis_dot
     String correlations_dot
   }
@@ -19,7 +18,6 @@ task Clumpifysh {
       ~{reads_dot} \
       ~{non_duplicate_dot} \
       ~{next_seq} \
-      ~{nova_seq} \
       ~{y_axis_dot} \
       ~{correlations_dot} \
       ~{if (x_mx) then "-Xmx" else ""} \
@@ -34,7 +32,6 @@ task Clumpifysh {
     reads_dot: "Yields the highest compression."
     non_duplicate_dot: "Improves detection of inexact duplicates."
     next_seq: "40  (and spany=t)"
-    nova_seq: "12000"
     y_axis_dot: "Should only be enabled when looking for "
     correlations_dot: "Increasing this number can reduce false-"
   }

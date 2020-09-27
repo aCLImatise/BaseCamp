@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tantan.cwl
+id: tantan.cwl
 inputs:
 - id: in_interpret_sequences_proteins
   doc: interpret the sequences as proteins

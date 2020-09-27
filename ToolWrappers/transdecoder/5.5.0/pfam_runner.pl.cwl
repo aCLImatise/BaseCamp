@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pfam_runner.pl.cwl
+id: pfam_runner.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

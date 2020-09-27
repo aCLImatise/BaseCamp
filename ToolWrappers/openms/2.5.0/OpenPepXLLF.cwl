@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenPepXLLF.cwl
+id: OpenPepXLLF.cwl
 inputs:
 - id: in_in
   doc: "*                                       Input file containing the spectra.\

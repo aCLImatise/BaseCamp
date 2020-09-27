@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_index.cwl
+id: sparse_index.cwl
 inputs:
 - id: in_dbname
   doc: Name for the database folder. REQUIRED.

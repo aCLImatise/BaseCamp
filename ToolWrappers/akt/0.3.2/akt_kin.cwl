@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../akt_kin.cwl
+id: akt_kin.cwl
 inputs:
 - id: in_minkin
   doc: ':                   threshold for relatedness output (none)'

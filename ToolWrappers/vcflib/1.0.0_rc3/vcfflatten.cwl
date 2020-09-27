@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfflatten.cwl
+id: vcfflatten.cwl
 inputs:
 - id: in_file
   doc: ''

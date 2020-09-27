@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_add_transcript.cwl
+id: arrow_annotations_add_transcript.cwl
 inputs:
 - id: in_transcript
   doc: Transcript data

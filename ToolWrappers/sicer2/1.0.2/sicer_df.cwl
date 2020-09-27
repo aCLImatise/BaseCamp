@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sicer_df.cwl
+id: sicer_df.cwl
 inputs:
 - id: in_treatment_file
   doc: "Name of the sample file you wish to run SICER on. This\ncan either be the\

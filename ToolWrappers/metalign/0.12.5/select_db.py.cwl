@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../select_db.py.cwl
+id: select_db.py.cwl
 inputs:
 - id: in_c_mash_results
   doc: Give location of CMash query results if already done.

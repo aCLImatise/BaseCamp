@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VelvetOptimiser.pl.cwl
+id: VelvetOptimiser.pl.cwl
 inputs:
 - id: in_verbose_verbose_logging
   doc: "|verbose+    Verbose logging, includes all velvet output in the logfile. (default\

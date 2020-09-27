@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_taxid4species.pl.cwl
+id: bp_taxid4species.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

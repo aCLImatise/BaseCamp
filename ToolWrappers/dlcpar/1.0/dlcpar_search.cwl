@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dlcpar_search.cwl
+id: dlcpar_search.cwl
 inputs:
 - id: in_stree
   doc: species tree file in newick format

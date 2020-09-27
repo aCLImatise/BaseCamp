@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map.cwl
+id: map.cwl
 inputs:
 - id: in_from
   doc: Encoding of input files (default "ISO-8859-1")

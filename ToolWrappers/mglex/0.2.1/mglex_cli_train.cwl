@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglex_cli_train.cwl
+id: mglex_cli_train.cwl
 inputs:
 - id: in_responsibility
   doc: Responsibility (weight) matrix file; default standard input

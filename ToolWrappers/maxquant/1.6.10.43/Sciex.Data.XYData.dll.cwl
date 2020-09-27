@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sciex.Data.XYData.dll.cwl
+id: Sciex.Data.XYData.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

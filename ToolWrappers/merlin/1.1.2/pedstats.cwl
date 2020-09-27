@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pedstats.cwl
+id: pedstats.cwl
 inputs: []
 outputs:
 - id: out_stdout

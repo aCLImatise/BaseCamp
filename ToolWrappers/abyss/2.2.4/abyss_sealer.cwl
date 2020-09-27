@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_sealer.cwl
+id: abyss_sealer.cwl
 inputs:
 - id: in_print_flanks
   doc: outputs flank files

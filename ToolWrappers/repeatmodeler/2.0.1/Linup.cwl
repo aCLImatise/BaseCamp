@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Linup.cwl
+id: Linup.cwl
 inputs: []
 outputs:
 - id: out_stdout

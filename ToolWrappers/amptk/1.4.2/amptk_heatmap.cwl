@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_heatmap.cwl
+id: amptk_heatmap.cwl
 inputs:
 - id: in_input
   doc: Input OTU table (Required)

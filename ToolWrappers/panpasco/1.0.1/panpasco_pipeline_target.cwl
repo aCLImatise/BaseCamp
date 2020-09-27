@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panpasco_pipeline_target.cwl
+id: panpasco_pipeline_target.cwl
 inputs:
 - id: in__dryrun_execute
   doc: ',   --dryrun           do not execute anything'

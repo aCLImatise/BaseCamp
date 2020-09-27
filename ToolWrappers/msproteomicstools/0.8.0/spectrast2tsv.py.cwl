@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectrast2tsv.py.cwl
+id: spectrast2tsv.py.cwl
 inputs:
 - id: in_remove_duplicate_masses
   doc: Remove duplicate masses from labeling

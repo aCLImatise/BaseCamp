@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Chainer.cwl
+id: Chainer.cwl
 inputs: []
 outputs:
 - id: out_stdout

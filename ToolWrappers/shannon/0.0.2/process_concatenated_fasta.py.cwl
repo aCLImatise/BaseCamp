@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../process_concatenated_fasta.py.cwl
+id: process_concatenated_fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

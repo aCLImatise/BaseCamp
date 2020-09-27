@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignRecords.py_block.cwl
+id: AlignRecords.py_block.cwl
 inputs:
 - id: in_list_tab_defaultnone
   doc: "A list of tab delimited database files. (default:\nNone)"

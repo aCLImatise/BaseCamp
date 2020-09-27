@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5fc.cwl
+id: h5fc.cwl
 inputs:
 - id: in_echo
   doc: Show all the shell commands executed
@@ -48,21 +48,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_hdf_five_f_cflags
-  doc: '""'
-  type: long
-  inputBinding:
-    position: 1
-- id: in_hdf_five_ldflags
-  doc: '""'
-  type: long
-  inputBinding:
-    position: 2
-- id: in_hdf_five_libs
-  doc: '""'
-  type: long
-  inputBinding:
-    position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream

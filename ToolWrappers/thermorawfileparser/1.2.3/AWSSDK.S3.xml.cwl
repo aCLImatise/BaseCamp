@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AWSSDK.S3.xml.cwl
+id: AWSSDK.S3.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

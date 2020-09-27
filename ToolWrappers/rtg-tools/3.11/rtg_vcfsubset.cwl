@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_vcfsubset.cwl
+id: rtg_vcfsubset.cwl
 inputs:
 - id: in_bed_regions
   doc: "if set, only read VCF records that overlap\nthe ranges contained in the specified\

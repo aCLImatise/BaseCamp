@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_xmfa.cwl
+id: seq_seq_pan_xmfa.cwl
 inputs:
 - id: in_quiet
   doc: Suppress warnings.

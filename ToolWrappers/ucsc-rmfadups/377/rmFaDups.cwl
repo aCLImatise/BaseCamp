@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmFaDups.cwl
+id: rmFaDups.cwl
 inputs: []
 outputs:
 - id: out_stdout

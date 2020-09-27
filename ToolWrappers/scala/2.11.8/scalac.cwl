@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scalac.cwl
+id: scalac.cwl
 inputs:
 - id: in_d_property
   doc: Pass -Dproperty=value directly to the runtime system.

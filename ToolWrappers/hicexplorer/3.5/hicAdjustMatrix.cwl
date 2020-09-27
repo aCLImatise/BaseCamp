@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicAdjustMatrix.cwl
+id: hicAdjustMatrix.cwl
 inputs:
 - id: in_regions
   doc: "BED file which stores a list of regions to\nkeep/remove."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_gen_matching_fastq_files.cwl
+id: iu_gen_matching_fastq_files.cwl
 inputs:
 - id: in_r_one
   doc: R1

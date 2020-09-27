@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../atac.pl.cwl
+id: atac.pl.cwl
 inputs:
 - id: in_genome_dir
   doc: -- path to the GENOMES directory

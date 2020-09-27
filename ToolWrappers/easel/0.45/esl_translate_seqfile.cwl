@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_translate_seqfile.cwl
+id: esl_translate_seqfile.cwl
 inputs:
 - id: in_options
   doc: ''

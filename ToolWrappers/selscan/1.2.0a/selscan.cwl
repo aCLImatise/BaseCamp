@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../selscan.cwl
+id: selscan.cwl
 inputs: []
 outputs:
 - id: out_stdout

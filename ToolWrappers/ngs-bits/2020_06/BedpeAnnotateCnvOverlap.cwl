@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedpeAnnotateCnvOverlap.cwl
+id: BedpeAnnotateCnvOverlap.cwl
 inputs:
 - id: in_in
   doc: Input SV file (in Bedpe format).

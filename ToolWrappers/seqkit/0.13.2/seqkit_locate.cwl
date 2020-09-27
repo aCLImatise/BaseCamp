@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_locate.cwl
+id: seqkit_locate.cwl
 inputs:
 - id: in_bed
   doc: output in BED6 format

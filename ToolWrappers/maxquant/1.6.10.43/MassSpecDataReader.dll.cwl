@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MassSpecDataReader.dll.cwl
+id: MassSpecDataReader.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

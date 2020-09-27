@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clean.cwl
+id: clean.cwl
 inputs:
 - id: in_assembly
   doc: filename of assembly in FASTA format

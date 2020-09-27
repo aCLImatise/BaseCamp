@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biowdl_input_converter.cwl
+id: biowdl_input_converter.cwl
 inputs:
 - id: in_output
   doc: "The output file to which the json is written. Default:\nstdout"

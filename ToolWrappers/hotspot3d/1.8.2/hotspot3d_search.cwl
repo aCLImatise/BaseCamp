@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_search.cwl
+id: hotspot3d_search.cwl
 inputs:
 - id: in_prep_dir
   doc: "HotSpot3D preprocessing results directory\nREQUIRE AT LEAST ONE"

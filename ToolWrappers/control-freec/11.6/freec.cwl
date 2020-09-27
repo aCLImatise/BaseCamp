@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../freec.cwl
+id: freec.cwl
 inputs:
 - id: in_sample
   doc: ''

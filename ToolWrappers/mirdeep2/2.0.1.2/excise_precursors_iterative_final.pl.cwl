@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../excise_precursors_iterative_final.pl.cwl
+id: excise_precursors_iterative_final.pl.cwl
 inputs:
 - id: in_output_progress_screen
   doc: Output progress to screen

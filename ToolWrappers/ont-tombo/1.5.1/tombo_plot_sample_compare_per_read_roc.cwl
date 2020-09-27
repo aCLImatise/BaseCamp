@@ -1,26 +1,34 @@
 class: CommandLineTool
-id: ../../../tombo_plot_sample_compare_per_read_roc.cwl
+id: tombo_plot_sample_compare_per_read_roc.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_per_read_control_statistics_filenames
+  doc: "PER_READ_CONTROL_STATISTICS_FILENAMES\n[PER_READ_CONTROL_STATISTICS_FILENAMES\
+    \ ...]\n--motif-descriptions\nMOTIF_DESCRIPTIONS\n[MOTIF_DESCRIPTIONS ...]\n--genome-fasta\
+    \ GENOME_FASTA\n[--pdf-filename PDF_FILENAME]\n[--statistics-per-block STATISTICS_PER_BLOCK]\n\
+    [--total-statistics-limit TOTAL_STATISTICS_LIMIT]\n[--quiet] [--help]"
   type: boolean
   inputBinding:
     prefix: --per-read-control-statistics-filenames
-- id: in_var_1
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --motif-descriptions
-- id: in_genome_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --genome-fasta
-- id: in_binary_files_containing
+- id: in_per_read_statistics_filenames
   doc: "Binary files containing per-read statistics from\nstatistical testing."
   type: string[]
   inputBinding:
     prefix: --per-read-statistics-filenames
+- id: in_motif_descriptions
+  doc: "Ground truth, motif centered, modified base\ndescriptions for computing ROC\
+    \ and PR curves. Each\nstatistics file is associated with a set of motif\ndescriptions.\
+    \ Format descriptions as:\n\"motif:mod_pos:name[::motif2:mod_pos2:name2...]\"\
+    .\nmod_pos indicates the alternate-base within the motif\n(1-based index). Example:\
+    \ CCWGG:2:\"dcm\n5mC\"::GATC:2:\"dam 6mA\" would assess the performance of\na\
+    \ single Tombo statistics file for identification of\nE. coli dam and dcm methylation."
+  type: string[]
+  inputBinding:
+    prefix: --motif-descriptions
+- id: in_genome_fast_a
+  doc: "FASTA file used to re-squiggle. For faster sequence\naccess."
+  type: File
+  inputBinding:
+    prefix: --genome-fasta
 - id: in_pdf_filename
   doc: "PDF filename to store plot(s). Default:\ntombo_results.sample_compare.roc.pdf"
   type: File
@@ -43,21 +51,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_var_8
-  doc: '[PER_READ_STATISTICS_FILENAMES ...]'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_var_9
-  doc: '[PER_READ_CONTROL_STATISTICS_FILENAMES ...]'
-  type: string
-  inputBinding:
-    position: 1
-- id: in_var_10
-  doc: '[MOTIF_DESCRIPTIONS ...]'
-  type: string
-  inputBinding:
-    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

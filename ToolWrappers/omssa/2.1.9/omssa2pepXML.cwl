@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../omssa2pepXML.cwl
+id: omssa2pepXML.cwl
 inputs: []
 outputs:
 - id: out_stdout

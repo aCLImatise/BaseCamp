@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotateRelativePosition.pl.cwl
+id: annotateRelativePosition.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

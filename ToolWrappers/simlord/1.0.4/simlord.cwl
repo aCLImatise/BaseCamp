@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simlord.cwl
+id: simlord.cwl
 inputs:
 - id: in_fixed_read_length
   doc: Fixed read length for all reads.

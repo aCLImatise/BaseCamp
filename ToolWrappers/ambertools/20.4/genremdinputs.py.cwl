@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genremdinputs.py.cwl
+id: genremdinputs.py.cwl
 inputs:
 - id: in_author
   doc: show the program's author name and exit

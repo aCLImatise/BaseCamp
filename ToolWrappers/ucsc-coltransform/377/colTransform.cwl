@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../colTransform.cwl
+id: colTransform.cwl
 inputs:
 - id: in_column
   doc: ''

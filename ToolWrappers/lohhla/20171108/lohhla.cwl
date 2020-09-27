@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lohhla.cwl
+id: lohhla.cwl
 inputs:
 - id: in_patient_id
   doc: patient ID

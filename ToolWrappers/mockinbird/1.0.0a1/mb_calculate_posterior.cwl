@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_calculate_posterior.cwl
+id: mb_calculate_posterior.cwl
 inputs: []
 outputs:
 - id: out_stdout

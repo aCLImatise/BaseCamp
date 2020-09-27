@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_analysis_load_go.cwl
+id: tripaille_analysis_load_go.cwl
 inputs:
 - id: in_organism
   doc: Organism common name or abbreviation

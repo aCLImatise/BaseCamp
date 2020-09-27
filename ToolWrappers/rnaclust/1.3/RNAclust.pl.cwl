@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAclust.pl.cwl
+id: RNAclust.pl.cwl
 inputs:
 - id: in_file_name_fasta
   doc: "<file name>                     FASTA file\n(required)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_pep_prot.py.cwl
+id: count_pep_prot.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

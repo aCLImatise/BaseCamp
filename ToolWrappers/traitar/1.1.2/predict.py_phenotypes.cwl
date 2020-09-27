@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../predict.py_phenotypes.cwl
+id: predict.py_phenotypes.cwl
 inputs:
 - id: in_voters
   doc: "use this number of voters for the classification\n"

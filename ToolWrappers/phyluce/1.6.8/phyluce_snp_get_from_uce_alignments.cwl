@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_get_from_uce_alignments.cwl
+id: phyluce_snp_get_from_uce_alignments.cwl
 inputs: []
 outputs:
 - id: out_stdout

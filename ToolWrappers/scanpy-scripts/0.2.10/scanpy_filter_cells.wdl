@@ -13,11 +13,13 @@ task Scanpyfiltercells {
     Boolean? category
     File? subset
     Boolean? force_recalc
-    String format_dot
+    String input_obj
+    String output_obj
   }
   command <<<
     scanpy_filter_cells \
-      ~{format_dot} \
+      ~{input_obj} \
+      ~{output_obj} \
       ~{if (input_format) then "--input-format" else ""} \
       ~{if (output_format) then "--output-format" else ""} \
       ~{if defined(zarr_chunk_size) then ("--zarr-chunk-size " +  '"' + zarr_chunk_size + '"') else ""} \
@@ -42,7 +44,8 @@ task Scanpyfiltercells {
     category: "<TEXT TEXT[,TEXT...]>...\\nCategorical attributes used to filter the\\ndata, in the format of \\\"-c <name> <values>\\\",\\nwhere entries with attribute <name> with\\nvalue in <values> are kept. If <values> is\\npreceded by \\\"!\\\", entries with value in\\n<values> are removed. Multiple -c entries\\nallowed."
     subset: "...\\nSimilar to --category in the format of \\\"-s\\n<name> <file>\\\", but the <file> to be a one-\\ncolumn table that provides the values.\\nMultiple -s entries allowed."
     force_recalc: "When set, re-calculate\\n`pct_counts_<qc_variable>` and\\n`pct_counts_in_top_<n>_genes` even if they\\nexist."
-    format_dot: "[default: 1000]"
+    input_obj: ""
+    output_obj: ""
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_mergedbs.cwl
+id: mmseqs_mergedbs.cwl
 inputs:
 - id: in_prefixes
   doc: Comma separated list of prefixes for each entry

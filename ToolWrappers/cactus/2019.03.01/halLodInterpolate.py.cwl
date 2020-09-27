@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halLodInterpolate.py.cwl
+id: halLodInterpolate.py.cwl
 inputs:
 - id: in_max_block
   doc: "maximum desired number of blocks to ever display at\nonce. (default: 223)"

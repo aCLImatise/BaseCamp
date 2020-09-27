@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TargetedFileConverter.cwl
+id: TargetedFileConverter.cwl
 inputs:
 - id: in_in
   doc: "*        Input file to convert.\nSee http://www.openms.de/current_doxygen/html/UTILS_TargetedFileConverter.html\

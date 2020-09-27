@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../listcontigreads.cwl
+id: listcontigreads.cwl
 inputs:
 - id: in_h
   doc: Add 'filename:' prefix

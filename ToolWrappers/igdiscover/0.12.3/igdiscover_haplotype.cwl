@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_haplotype.cwl
+id: igdiscover_haplotype.cwl
 inputs:
 - id: in_v_gene
   doc: 'V gene to use for haplotyping J. Default: Auto-'

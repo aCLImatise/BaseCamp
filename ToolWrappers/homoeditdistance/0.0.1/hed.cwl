@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hed.cwl
+id: hed.cwl
 inputs:
 - id: in_string_one
   doc: "first string. Use quotation marks around your string\n(e.g. \"STRING\")for\

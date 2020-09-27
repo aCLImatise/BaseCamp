@@ -25,7 +25,7 @@ task RsatGenomeblast {
       ~{if defined(db_tax_on) then ("-dbtaxon " +  '"' + db_tax_on + '"') else ""}
   >>>
   parameter_meta {
-    db_tax_on: ""
+    db_tax_on: "In the latter case, there is no need to run the reciprocal blast, since\\nthe query yaxon is the same as the database taxon."
     genome_blast: "[1mDESCRIPTION[0m"
     util: "[1mINPUT FORMAT[0m"
     organism_dot: "Although the matching is performed at the protein level, the table"

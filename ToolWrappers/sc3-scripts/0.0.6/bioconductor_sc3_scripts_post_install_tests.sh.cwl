@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconductor_sc3_scripts_post_install_tests.sh.cwl
+id: bioconductor_sc3_scripts_post_install_tests.sh.cwl
 inputs:
 - id: in_r_seurat_workflow_post_install_tests_dots_h
   doc: ''

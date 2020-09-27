@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxgetup.cwl
+id: taxgetup.cwl
 inputs:
 - id: in_hidden
   doc: boolean    [N] Show taxons hidden in GenBank

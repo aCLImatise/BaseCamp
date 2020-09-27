@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MRMPairFinder.cwl
+id: MRMPairFinder.cwl
 inputs:
 - id: in_in
   doc: "*          Input featureXML file containing the features of the MRM experiment\

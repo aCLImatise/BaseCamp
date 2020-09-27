@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj.cwl
+id: cpptraj.cwl
 inputs:
 - id: in_load_top_topology
   doc: ': * Load <Top0> as a topology file.'

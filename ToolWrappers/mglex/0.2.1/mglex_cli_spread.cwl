@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglex_cli_spread.cwl
+id: mglex_cli_spread.cwl
 inputs:
 - id: in_data
   doc: Feature matrix; default standard input

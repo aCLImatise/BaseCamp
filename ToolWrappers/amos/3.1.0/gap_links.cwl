@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gap_links.cwl
+id: gap_links.cwl
 inputs: []
 outputs:
 - id: out_stdout

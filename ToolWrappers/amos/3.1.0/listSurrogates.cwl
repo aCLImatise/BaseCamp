@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../listSurrogates.cwl
+id: listSurrogates.cwl
 inputs: []
 outputs:
 - id: out_stdout

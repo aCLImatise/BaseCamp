@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_filter2.cwl
+id: csvtk_filter2.cwl
 inputs:
 - id: in_filter
   doc: awk-like filter condition. e.g. '$age>12' or '$1 > $3' or '$name=="abc"' or

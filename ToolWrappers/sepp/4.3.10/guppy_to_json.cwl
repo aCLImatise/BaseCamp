@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_to_json.cwl
+id: guppy_to_json.cwl
 inputs:
 - id: in_help
   doc: Display this list of options

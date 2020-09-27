@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cg_load.2.cwl
+id: cg_load.2.cwl
 inputs:
 - id: in_map
   doc: MAP input directory path containing files

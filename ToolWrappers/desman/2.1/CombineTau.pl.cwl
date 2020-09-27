@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CombineTau.pl.cwl
+id: CombineTau.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

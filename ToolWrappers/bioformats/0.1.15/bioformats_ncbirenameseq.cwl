@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_ncbirenameseq.cwl
+id: bioformats_ncbirenameseq.cwl
 inputs:
 - id: in_fast_a
   doc: the input file is of the FASTA format

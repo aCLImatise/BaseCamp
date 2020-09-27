@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_sample.cwl
+id: varda2_client_sample.cwl
 inputs:
 - id: in_uuid
   doc: Sample UUID

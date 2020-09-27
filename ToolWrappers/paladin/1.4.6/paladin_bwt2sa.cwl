@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paladin_bwt2sa.cwl
+id: paladin_bwt2sa.cwl
 inputs:
 - id: in_i
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wget.cwl
+id: wget.cwl
 inputs:
 - id: in__version_display
   doc: ',  --version                   display the version of Wget and exit'

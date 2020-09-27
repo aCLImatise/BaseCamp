@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snver.cwl
+id: snver.cwl
 inputs:
 - id: in_input_file_required
   doc: <input file (required) >

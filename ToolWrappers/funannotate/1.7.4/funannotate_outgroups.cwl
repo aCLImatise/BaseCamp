@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_outgroups.cwl
+id: funannotate_outgroups.cwl
 inputs:
 - id: in_input
   doc: Proteome multi-fasta file. Required.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../irb.cwl
+id: irb.cwl
 inputs:
 - id: in_suppress_read_of
   doc: Suppress read of ~/.irbrc

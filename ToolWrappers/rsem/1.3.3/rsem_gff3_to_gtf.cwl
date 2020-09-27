@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_gff3_to_gtf.cwl
+id: rsem_gff3_to_gtf.cwl
 inputs: []
 outputs:
 - id: out_stdout

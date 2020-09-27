@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oligotag.cwl
+id: oligotag.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

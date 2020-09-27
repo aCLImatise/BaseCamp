@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: ../../../real.cwl
+id: real.cwl
 inputs:
-- id: in_var_0
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -t
-- id: in_p
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -p
-- id: in_o
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -o
 - id: in_maximum_number_errors
   doc: <maximum number of errors in seed, default=2>
   type: boolean
@@ -90,11 +75,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_o
-  doc: ''
-  type: File
-  outputBinding:
-    glob: $(inputs.in_o)
 cwlVersion: v1.1
 baseCommand:
 - real

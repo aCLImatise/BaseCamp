@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runLSC.py.cwl
+id: runLSC.py.cwl
 inputs:
 - id: in_long_reads
   doc: "FASTAFILE Long reads to correct. Required in mode 0 or\n1. (default: None)"
@@ -62,15 +62,10 @@ inputs:
   inputBinding:
     prefix: --aligner
 - id: in_sort_mem_max
-  doc: ''
+  doc: '-S option for memory in unix sort (default: None)'
   type: long
   inputBinding:
     prefix: --sort_mem_max
-- id: in_memory_unix_sort
-  doc: 'for memory in unix sort (default: None)'
-  type: string
-  inputBinding:
-    prefix: -S
 - id: in_min_number_of_non_n
   doc: "Minimum number of non-N characters in the compressed\nread (default: 40)"
   type: long

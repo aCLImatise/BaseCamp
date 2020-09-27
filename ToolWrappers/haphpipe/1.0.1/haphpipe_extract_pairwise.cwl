@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_extract_pairwise.cwl
+id: haphpipe_extract_pairwise.cwl
 inputs:
 - id: in_align_json
   doc: "JSON file describing alignment (output of\npairwise_align stage)"

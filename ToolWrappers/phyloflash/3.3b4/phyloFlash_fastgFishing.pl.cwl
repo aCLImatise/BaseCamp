@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFlash_fastgFishing.pl.cwl
+id: phyloFlash_fastgFishing.pl.cwl
 inputs:
 - id: in_fast_g
   doc: "Input Fastg file from Megahit or Spades. NB: The de facto Fastg\nformat used\
@@ -26,18 +26,14 @@ inputs:
   inputBinding:
     prefix: --assembler
 - id: in_compare_ssu
-  doc: ''
+  doc: "--compare-zip FILE\nIf a targeted assembly of SSU rRNA has already been performed\n\
+    for this library, compare the sequences to those extracted from\nthe metagenome\
+    \ assembly by barrnap.\nThe sequences can be supplied either as a Fasta flie (option\n\
+    --compare-ssu) or as a phyloFlash tar.gz archive (option\n--compare-zip).\nDefault:\
+    \ None."
   type: File
   inputBinding:
     prefix: --compare-ssu
-- id: in_compare_zip
-  doc: "If a targeted assembly of SSU rRNA has already been performed\nfor this library,\
-    \ compare the sequences to those extracted from\nthe metagenome assembly by barrnap.\n\
-    The sequences can be supplied either as a Fasta flie (option\n--compare-ssu) or\
-    \ as a phyloFlash tar.gz archive (option\n--compare-zip).\nDefault: None."
-  type: File
-  inputBinding:
-    prefix: --compare-zip
 - id: in_out
   doc: "Output file name prefix\nDefault: 'test'"
   type: File

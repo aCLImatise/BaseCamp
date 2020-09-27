@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merger.cwl
+id: merger.cwl
 inputs:
 - id: in_data_file
   doc: "matrixf    [EBLOSUM62 for protein, EDNAFULL for DNA]\nThis is the scoring\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../outputLayout.cwl
+id: outputLayout.cwl
 inputs:
 - id: in_mandatory_path_gkpstore
   doc: Mandatory path to a gkpStore.

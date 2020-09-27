@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgFakeAgp.cwl
+id: hgFakeAgp.cwl
 inputs:
 - id: in_min_contig_gap
   doc: Minimum size for a gap between contigs.  Default 25

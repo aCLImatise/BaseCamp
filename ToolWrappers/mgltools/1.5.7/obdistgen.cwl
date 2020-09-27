@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obdistgen.cwl
+id: obdistgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_trim_reads.cwl
+id: haphpipe_trim_reads.cwl
 inputs:
 - id: in_fq_one
   doc: Fastq file with read 1

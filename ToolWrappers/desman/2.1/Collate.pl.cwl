@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Collate.pl.cwl
+id: Collate.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

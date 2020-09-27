@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parldyn.cwl
+id: parldyn.cwl
 inputs: []
 outputs:
 - id: out_stdout

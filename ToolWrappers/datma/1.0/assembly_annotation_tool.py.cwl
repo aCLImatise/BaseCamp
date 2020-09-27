@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly_annotation_tool.py.cwl
+id: assembly_annotation_tool.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

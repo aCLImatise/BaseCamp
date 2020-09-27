@@ -45,7 +45,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COVERAGE
     optional: true
-  parent: &id018 !Command
+  parent: &id022 !Command
     command: *id001
     positional: []
     named: []
@@ -89,7 +89,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COVERAGE
         optional: true
-      parent: &id003 !Command
+      parent: &id018 !Command
         command: *id001
         positional: []
         named: []
@@ -134,7 +134,333 @@ subcommands:
             args: !SimpleFlagArg
               name: COVERAGE
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: path to database directory
+                position: 0
+                name: databases
+                optional: false
+              - !Positional
+                description: forward read file
+                position: 1
+                name: read1
+                optional: false
+              - !Positional
+                description: backward read file
+                position: 2
+                name: read2
+                optional: false
+              - !Positional
+                description: unique prefix
+                position: 3
+                name: prefix
+                optional: false
+              named:
+              - !Flag
+                description: "Do not clean up intermediate files (assemblies, ariba\n\
+                  report)"
+                synonyms:
+                - --noclean
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "threshold for k-mer coverage of the reference sequence\n\
+                  , default = 20\n"
+                synonyms:
+                - --coverage
+                args: !SimpleFlagArg
+                  name: COVERAGE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: seroba runSerotyping [options]  <databases directory>\
+                \ <read1> <read2> <prefix>\n\nidentify serotype of your input data\n\
+                \npositional arguments:\n  databases            path to database directory\n\
+                \  read1                forward read file\n  read2               \
+                \ backward read file\n  prefix               unique prefix\n\noptional\
+                \ arguments:\n  -h, --help           show this help message and exit\n\
+                \nOther options:\n  --noclean            Do not clean up intermediate\
+                \ files (assemblies, ariba\n                       report)\n  --coverage\
+                \ COVERAGE  threshold for k-mer coverage of the reference sequence\n\
+                \                       , default = 20\n"
+              generated_using: &id005
+              - --help
+            - &id004 !Command
+              command: &id010
+              - seroba
+              - getPneumocat
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id011
+                - seroba
+                - getPneumocat
+                - database_dir
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: seroba
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: command
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 2
+                  name: options
+                  optional: false
+                named: []
+                parent: *id004
+                subcommands: []
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "usage: seroba <command> <options>\nseroba: error: unrecognized\
+                  \ arguments: --usage\n"
+                generated_using: &id007
+                - --usage
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: seroba getPneumocat  <database dir>\n\nDownlaods\
+                \ PneumoCat and build an tsv formated meta data file out of it\n\n\
+                positional arguments:\n  database_dir  output directory for PneumoCat\
+                \ Database\n\noptional arguments:\n  -h, --help    show this help\
+                \ message and exit\n"
+              generated_using: *id005
+            - !Command
+              command: &id012
+              - seroba
+              - results
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: seroba
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: command
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: options
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "usage: seroba <command> <options>\nseroba: error: argument\
+                \ : invalid choice: 'results' (choose from 'getPneumocat', 'createDBs',\
+                \ 'runSerotyping', 'summary', 'version')\n"
+              generated_using: *id005
+            - &id006 !Command
+              command: &id013
+              - seroba
+              - summary
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id014
+                - seroba
+                - summary
+                - out_dir
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: seroba
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: command
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 2
+                  name: options
+                  optional: false
+                named: []
+                parent: *id006
+                subcommands: []
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "usage: seroba <command> <options>\nseroba: error: unrecognized\
+                  \ arguments: --usage\n"
+                generated_using: *id007
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: seroba summary  <output folder>\n\nwrites all predictions\
+                \ in one tsv file\n\npositional arguments:\n  out_dir     path to\
+                \ output folder with results from runSerotyping\n\noptional arguments:\n\
+                \  -h, --help  show this help message and exit\n"
+              generated_using: *id005
+            - &id008 !Command
+              command: &id015
+              - seroba
+              - createDBs
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id016
+                - seroba
+                - createDBs
+                - kmer_size
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: seroba
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: createDBs
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 2
+                  name: database dir
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 3
+                  name: kmer size
+                  optional: false
+                named: []
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "usage: seroba createDBs  <database dir> <kmer size>\n\
+                  seroba <command> <options> createDBs: error: the following arguments\
+                  \ are required: kmer_size\n"
+                generated_using: &id009 []
+              - !Command
+                command: &id017
+                - seroba
+                - createDBs
+                - out_dir
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: seroba
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: createDBs
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 2
+                  name: database dir
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 3
+                  name: kmer size
+                  optional: false
+                named: []
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "usage: seroba createDBs  <database dir> <kmer size>\n\
+                  seroba <command> <options> createDBs: error: the following arguments\
+                  \ are required: kmer_size\n"
+                generated_using: *id009
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: seroba createDBs  <database dir> <kmer size>\n\n\
+                Creates a Database for kmc and ariba\n\npositional arguments:\n  out_dir\
+                \     output directory for kmc and ariba Database\n  kmer_size   kmer_size\
+                \ zou want to use for kmc , recommanded = 71\n\noptional arguments:\n\
+                \  -h, --help  show this help message and exit\n"
+              generated_using: *id005
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: seroba <command> <options>\n\noptional arguments:\n\
+              \  -h, --help     show this help message and exit\n\nAvailable commands:\n\
+              \  \n    getPneumocat\n                 downloads genetic information\
+              \ from PneumoCat\n    createDBs    creates Databases for kmc and ariba\n\
+              \    runSerotyping\n                 indetify serotype of your input\
+              \ data\n    summary      output folder has to contain all folders with\
+              \ prediction\n                 results\n    version      Get versions\
+              \ and exit\n"
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -156,21 +482,15 @@ subcommands:
             \ ariba\n                       report)\n  --coverage COVERAGE  threshold\
             \ for k-mer coverage of the reference sequence\n                     \
             \  , default = 20\n"
-          generated_using: &id005
-          - --help
-        - &id004 !Command
-          command: &id010
-          - seroba
-          - getPneumocat
+          generated_using: *id005
+        - &id019 !Command
+          command: *id010
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id011
-            - seroba
-            - getPneumocat
-            - database_dir
+            command: *id011
             positional:
             - !Positional
               description: ''
@@ -196,16 +516,9 @@ subcommands:
             version_flag:
             help_text: "usage: seroba <command> <options>\nseroba: error: unrecognized\
               \ arguments: --usage\n"
-            generated_using: &id007
-            - --usage
+            generated_using: *id007
           usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "usage: seroba getPneumocat  <database dir>\n\nDownlaods PneumoCat\
@@ -214,9 +527,7 @@ subcommands:
             \  -h, --help    show this help message and exit\n"
           generated_using: *id005
         - !Command
-          command: &id012
-          - seroba
-          - results
+          command: *id012
           positional:
           - !Positional
             description: ''
@@ -244,19 +555,14 @@ subcommands:
             \ invalid choice: 'results' (choose from 'getPneumocat', 'createDBs',\
             \ 'runSerotyping', 'summary', 'version')\n"
           generated_using: *id005
-        - &id006 !Command
-          command: &id013
-          - seroba
-          - summary
+        - &id020 !Command
+          command: *id013
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id014
-            - seroba
-            - summary
-            - out_dir
+            command: *id014
             positional:
             - !Positional
               description: ''
@@ -284,13 +590,7 @@ subcommands:
               \ arguments: --usage\n"
             generated_using: *id007
           usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "usage: seroba summary  <output folder>\n\nwrites all predictions\
@@ -298,19 +598,14 @@ subcommands:
             \ folder with results from runSerotyping\n\noptional arguments:\n  -h,\
             \ --help  show this help message and exit\n"
           generated_using: *id005
-        - &id008 !Command
-          command: &id015
-          - seroba
-          - createDBs
+        - &id021 !Command
+          command: *id015
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id016
-            - seroba
-            - createDBs
-            - kmer_size
+            command: *id016
             positional:
             - !Positional
               description: ''
@@ -342,12 +637,9 @@ subcommands:
             help_text: "usage: seroba createDBs  <database dir> <kmer size>\nseroba\
               \ <command> <options> createDBs: error: the following arguments are\
               \ required: kmer_size\n"
-            generated_using: &id009 []
+            generated_using: *id009
           - !Command
-            command: &id017
-            - seroba
-            - createDBs
-            - out_dir
+            command: *id017
             positional:
             - !Positional
               description: ''
@@ -381,13 +673,7 @@ subcommands:
               \ required: kmer_size\n"
             generated_using: *id009
           usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "usage: seroba createDBs  <database dir> <kmer size>\n\nCreates\
@@ -397,13 +683,7 @@ subcommands:
             \  -h, --help  show this help message and exit\n"
           generated_using: *id005
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: seroba <command> <options>\n\noptional arguments:\n  -h,\
@@ -435,11 +715,11 @@ subcommands:
         \            report)\n  --coverage COVERAGE  threshold for k-mer coverage\
         \ of the reference sequence\n                       , default = 20\n"
       generated_using: *id005
-    - &id019 !Command
+    - &id023 !Command
       command: *id010
       positional: []
       named: []
-      parent: *id003
+      parent: *id018
       subcommands:
       - !Command
         command: *id011
@@ -460,7 +740,7 @@ subcommands:
           name: options
           optional: false
         named: []
-        parent: *id004
+        parent: *id019
         subcommands: []
         usage: []
         help_flag:
@@ -497,7 +777,7 @@ subcommands:
         name: options
         optional: false
       named: []
-      parent: *id003
+      parent: *id018
       subcommands: []
       usage: []
       help_flag:
@@ -507,11 +787,11 @@ subcommands:
         \ choice: 'results' (choose from 'getPneumocat', 'createDBs', 'runSerotyping',\
         \ 'summary', 'version')\n"
       generated_using: *id005
-    - &id020 !Command
+    - &id024 !Command
       command: *id013
       positional: []
       named: []
-      parent: *id003
+      parent: *id018
       subcommands:
       - !Command
         command: *id014
@@ -532,7 +812,7 @@ subcommands:
           name: options
           optional: false
         named: []
-        parent: *id006
+        parent: *id020
         subcommands: []
         usage: []
         help_flag:
@@ -550,11 +830,11 @@ subcommands:
         \ with results from runSerotyping\n\noptional arguments:\n  -h, --help  show\
         \ this help message and exit\n"
       generated_using: *id005
-    - &id021 !Command
+    - &id025 !Command
       command: *id015
       positional: []
       named: []
-      parent: *id003
+      parent: *id018
       subcommands:
       - !Command
         command: *id016
@@ -580,7 +860,7 @@ subcommands:
           name: kmer size
           optional: false
         named: []
-        parent: *id008
+        parent: *id021
         subcommands: []
         usage: []
         help_flag:
@@ -613,7 +893,7 @@ subcommands:
           name: kmer size
           optional: false
         named: []
-        parent: *id008
+        parent: *id021
         subcommands: []
         usage: []
         help_flag:
@@ -669,7 +949,7 @@ subcommands:
   command: *id010
   positional: []
   named: []
-  parent: *id018
+  parent: *id022
   subcommands:
   - !Command
     command: *id011
@@ -690,7 +970,7 @@ subcommands:
       name: options
       optional: false
     named: []
-    parent: *id019
+    parent: *id023
     subcommands: []
     usage: []
     help_flag:
@@ -727,7 +1007,7 @@ subcommands:
     name: options
     optional: false
   named: []
-  parent: *id018
+  parent: *id022
   subcommands: []
   usage: []
   help_flag:
@@ -741,7 +1021,7 @@ subcommands:
   command: *id013
   positional: []
   named: []
-  parent: *id018
+  parent: *id022
   subcommands:
   - !Command
     command: *id014
@@ -762,7 +1042,7 @@ subcommands:
       name: options
       optional: false
     named: []
-    parent: *id020
+    parent: *id024
     subcommands: []
     usage: []
     help_flag:
@@ -784,7 +1064,7 @@ subcommands:
   command: *id015
   positional: []
   named: []
-  parent: *id018
+  parent: *id022
   subcommands:
   - !Command
     command: *id016
@@ -810,7 +1090,7 @@ subcommands:
       name: kmer size
       optional: false
     named: []
-    parent: *id021
+    parent: *id025
     subcommands: []
     usage: []
     help_flag:
@@ -843,7 +1123,7 @@ subcommands:
       name: kmer size
       optional: false
     named: []
-    parent: *id021
+    parent: *id025
     subcommands: []
     usage: []
     help_flag:

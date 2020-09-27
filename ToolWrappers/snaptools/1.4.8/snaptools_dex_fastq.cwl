@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snaptools_dex_fastq.cwl
+id: snaptools_dex_fastq.cwl
 inputs:
 - id: in_input_fast_q
   doc: "fastq file contains the sequencing reads (default:\nNone)"

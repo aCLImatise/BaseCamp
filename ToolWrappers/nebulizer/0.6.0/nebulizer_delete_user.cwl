@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_delete_user.cwl
+id: nebulizer_delete_user.cwl
 inputs:
 - id: in_purge
   doc: also purge (permanently delete) the user.

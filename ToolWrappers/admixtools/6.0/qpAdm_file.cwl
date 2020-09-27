@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpAdm_file.cwl
+id: qpAdm_file.cwl
 inputs:
 - id: in_bad
   doc: ''

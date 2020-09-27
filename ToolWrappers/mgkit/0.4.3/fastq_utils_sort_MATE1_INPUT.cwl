@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../fastq_utils_sort_MATE1_INPUT.cwl
+id: fastq_utils_sort_MATE1_INPUT.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "--help         Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose

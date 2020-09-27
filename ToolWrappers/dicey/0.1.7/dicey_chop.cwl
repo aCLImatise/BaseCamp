@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dicey_chop.cwl
+id: dicey_chop.cwl
 inputs:
 - id: in_f
   doc: '[ --fq1 ] arg (=read1)       read1 output prefix'

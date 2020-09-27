@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge2Dbed.pl.cwl
+id: merge2Dbed.pl.cwl
 inputs:
 - id: in_res
   doc: "<#> (maximum distance between endpoints to merge, default: 15000)\nUsually\

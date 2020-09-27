@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HomologyByXCorr.cwl
+id: HomologyByXCorr.cwl
 inputs:
 - id: in_string_query_sequence
   doc: '<string> : query fasta sequence'

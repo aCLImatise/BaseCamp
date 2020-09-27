@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../x2fa.py.cwl
+id: x2fa.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

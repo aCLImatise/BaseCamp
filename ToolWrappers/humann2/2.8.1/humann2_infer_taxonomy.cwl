@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_infer_taxonomy.cwl
+id: humann2_infer_taxonomy.cwl
 inputs: []
 outputs:
 - id: out_stdout

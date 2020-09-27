@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classifier_samplefile.cwl
+id: classifier_samplefile.cwl
 inputs:
 - id: in_classify
   doc: '- classify one or multiple samples'

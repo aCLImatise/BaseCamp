@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyGenomeTracks.cwl
+id: pyGenomeTracks.cwl
 inputs:
 - id: in_tracks
   doc: "File containing the instructions to plot the tracks.\nThe tracks.ini file\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../socru_species.cwl
+id: socru_species.cwl
 inputs:
 - id: in_extended
   doc: "Extended information about the species databases (default:\nFalse)"

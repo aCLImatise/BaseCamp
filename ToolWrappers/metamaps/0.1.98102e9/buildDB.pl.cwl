@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildDB.pl.cwl
+id: buildDB.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

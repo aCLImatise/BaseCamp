@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mod.cwl
+id: mod.cwl
 inputs:
 - id: in_url
   doc: ''

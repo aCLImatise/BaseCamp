@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tag2bed.pl.cwl
+id: tag2bed.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

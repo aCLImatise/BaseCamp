@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kat_distanalysis.cwl
+id: kat_distanalysis.cwl
 inputs:
 - id: in_output_prefix
   doc: "If present then plots are sent to files starting with\nthis prefix."

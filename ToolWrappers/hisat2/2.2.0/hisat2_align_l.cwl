@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_align_l.cwl
+id: hisat2_align_l.cwl
 inputs:
 - id: in_query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)

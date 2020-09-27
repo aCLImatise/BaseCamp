@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoSV.cwl
+id: NanoSV.cwl
 inputs:
 - id: in_threads
   doc: 'Number of threads [default: 4]'

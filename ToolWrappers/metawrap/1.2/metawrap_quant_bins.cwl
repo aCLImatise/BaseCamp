@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metawrap_quant_bins.cwl
+id: metawrap_quant_bins.cwl
 inputs:
 - id: in_folder_containing_bins
   doc: folder containing draft genomes (bins) in fasta format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scpred_post_install_tests.bats.cwl
+id: scpred_post_install_tests.bats.cwl
 inputs: []
 outputs:
 - id: out_stdout

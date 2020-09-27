@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../query_config.cwl
+id: query_config.cwl
 inputs:
 - id: in_machines
   doc: ; if you specify more than one of these arguments,

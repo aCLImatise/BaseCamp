@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktserver.cwl
+id: ktserver.cwl
 inputs:
 - id: in_log
   doc: ''

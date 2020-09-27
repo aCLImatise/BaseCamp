@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chmod.cwl
+id: chmod.cwl
 inputs:
 - id: in_changes
   doc: like verbose but report only when a change is made

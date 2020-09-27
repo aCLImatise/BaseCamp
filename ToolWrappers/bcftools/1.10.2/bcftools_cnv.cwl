@@ -1,51 +1,19 @@
 class: CommandLineTool
-id: ../../../bcftools_cnv.cwl
+id: bcftools_cnv.cwl
 inputs:
 - id: in_control_sample
-  doc: optional control sample name to highlight differences
-  type: string
-  inputBinding:
-    prefix: --control-sample
-- id: in_af_file
-  doc: read allele frequencies from file (CHR\tPOS\tREF,ALT\tAF)
-  type: File
-  inputBinding:
-    prefix: --AF-file
-- id: in_output_dir
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --output-dir
-- id: in_plot_threshold
-  doc: plot aberrant chromosomes with quality at least 'float'
+  doc: "optional control sample name to highlight differences\n-f, --AF-file <file>\
+    \               read allele frequencies from file (CHR\\tPOS\\tREF,ALT\\tAF)\n\
+    -o, --output-dir <path>\n-p, --plot-threshold <float>       plot aberrant chromosomes\
+    \ with quality at least 'float'\n-r, --regions <region>             restrict to\
+    \ comma-separated list of regions\n-R, --regions-file <file>          restrict\
+    \ to regions listed in a file\n-s, --query-sample <string>        query samply\
+    \ name\n-t, --targets <region>             similar to -r but streams rather than\
+    \ index-jumps\n-T, --targets-file <file>          similar to -R but streams rather\
+    \ than index-jumps"
   type: double
   inputBinding:
-    prefix: --plot-threshold
-- id: in_regions
-  doc: restrict to comma-separated list of regions
-  type: string
-  inputBinding:
-    prefix: --regions
-- id: in_regions_file
-  doc: restrict to regions listed in a file
-  type: File
-  inputBinding:
-    prefix: --regions-file
-- id: in_query_sample
-  doc: query samply name
-  type: string
-  inputBinding:
-    prefix: --query-sample
-- id: in_targets
-  doc: similar to -r but streams rather than index-jumps
-  type: string
-  inputBinding:
-    prefix: --targets
-- id: in_targets_file
-  doc: similar to -R but streams rather than index-jumps
-  type: File
-  inputBinding:
-    prefix: --targets-file
+    prefix: --control-sample
 - id: in_aberrant
   doc: <float[,float]>     fraction of aberrant cells in query and control [1.0,1.0]
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqStoreCreate.cwl
+id: sqStoreCreate.cwl
 inputs:
 - id: in_load_raw_reads
   doc: load raw reads into new seqStore
@@ -27,35 +27,11 @@ inputs:
   inputBinding:
     prefix: -technology-status
 - id: in_pac_bio_raw
-  doc: ''
+  doc: "-pacbio-corrected\n-pacbio-trimmed\n-pacbio-raw\n-nanopore-raw\n-nanopore-corrected\n\
+    -nanopore-trimmed"
   type: boolean
   inputBinding:
     prefix: -pacbio-raw
-- id: in_pac_bio_corrected
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -pacbio-corrected
-- id: in_pac_bio_trimmed
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -pacbio-trimmed
-- id: in_nano_pore_raw
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -nanopore-raw
-- id: in_nano_pore_corrected
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -nanopore-corrected
-- id: in_nano_pore_trimmed
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -nanopore-trimmed
 outputs:
 - id: out_stdout
   doc: Standard output stream

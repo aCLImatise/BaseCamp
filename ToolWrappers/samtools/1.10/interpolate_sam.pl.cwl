@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interpolate_sam.pl.cwl
+id: interpolate_sam.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

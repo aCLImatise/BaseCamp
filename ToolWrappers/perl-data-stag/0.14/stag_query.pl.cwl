@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stag_query.pl.cwl
+id: stag_query.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

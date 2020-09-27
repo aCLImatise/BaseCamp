@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../impute2.cwl
+id: impute2.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seedtop.cwl
+id: seedtop.cwl
 inputs:
 - id: in_database_default_nr
   doc: "Database [String]\ndefault = nr"

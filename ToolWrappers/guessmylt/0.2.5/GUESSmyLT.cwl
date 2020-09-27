@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GUESSmyLT.cwl
+id: GUESSmyLT.cwl
 inputs:
 - id: in_organism
   doc: "Mandatory when no annotation provided. What organism\nare you dealing with?\

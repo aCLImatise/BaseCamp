@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamtools_merge.cwl
+id: bamtools_merge.cwl
 inputs:
 - id: in_in
   doc: the input BAM file(s)

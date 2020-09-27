@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmsk2starch_megarow.cwl
+id: rmsk2starch_megarow.cwl
 inputs:
 - id: in_input
   doc: "=[bam|gff|gtf|gvf|psl|rmsk|sam|vcf|wig] (-i <fmt>)\nGenomic format of input\

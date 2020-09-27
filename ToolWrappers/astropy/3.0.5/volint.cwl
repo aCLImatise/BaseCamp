@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../volint.cwl
+id: volint.cwl
 inputs:
 - id: in_filename
   doc: Path to VOTable file to check

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xml2dcm.cwl
+id: xml2dcm.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

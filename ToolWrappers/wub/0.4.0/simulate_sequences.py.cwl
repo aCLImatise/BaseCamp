@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate_sequences.py.cwl
+id: simulate_sequences.py.cwl
 inputs:
 - id: in_number_of_sequences
   doc: Number of sequences (1).

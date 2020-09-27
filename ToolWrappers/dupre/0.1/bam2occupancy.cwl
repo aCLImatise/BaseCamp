@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2occupancy.cwl
+id: bam2occupancy.cwl
 inputs:
 - id: in_name
   doc: "name for this occupancy vector (prepended to occupancy\nvector)"

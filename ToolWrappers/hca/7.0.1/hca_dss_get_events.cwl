@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_get_events.cwl
+id: hca_dss_get_events.cwl
 inputs:
 - id: in_replica
   doc: '[--per-page PER_PAGE]'

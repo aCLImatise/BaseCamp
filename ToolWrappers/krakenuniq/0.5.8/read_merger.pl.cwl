@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_merger.pl.cwl
+id: read_merger.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contig_break_finder.cwl
+id: contig_break_finder.cwl
 inputs:
 - id: in_skip
   doc: File of contig ids to skip

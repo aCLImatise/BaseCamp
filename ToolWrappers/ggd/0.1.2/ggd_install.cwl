@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ggd_install.cwl
+id: ggd_install.cwl
 inputs:
 - id: in_channel
   doc: "The ggd channel the desired recipe is stored in.\n(Default = genomics)"

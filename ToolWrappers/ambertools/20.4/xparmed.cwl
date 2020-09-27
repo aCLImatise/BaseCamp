@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xparmed.cwl
+id: xparmed.cwl
 inputs: []
 outputs:
 - id: out_stdout

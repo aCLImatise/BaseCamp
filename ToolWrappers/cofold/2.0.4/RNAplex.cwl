@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAplex.cwl
+id: RNAplex.cwl
 inputs:
 - id: in_detailed_help
   doc: "Print help, including all details and hidden\noptions, and exit"
@@ -122,7 +122,7 @@ inputs:
   doc: (default=off)
   type: string
   inputBinding:
-    position: 2
+    position: 0
 - id: in_rna_plex
   doc: '-L, --WindowLength=INT        Tells how large the region around the target '
   type: string

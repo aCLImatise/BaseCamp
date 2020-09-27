@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_NTrimmer.cwl
+id: hts_NTrimmer.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

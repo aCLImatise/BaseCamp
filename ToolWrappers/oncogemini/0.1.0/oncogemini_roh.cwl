@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_roh.cwl
+id: oncogemini_roh.cwl
 inputs:
 - id: in_min_snps
   doc: "Minimum number of homozygous snps expected in a run\n(def. 25)"

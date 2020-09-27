@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup_module.pm.cwl
+id: hicup_module.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

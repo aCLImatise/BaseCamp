@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delly_call.cwl
+id: delly_call.cwl
 inputs:
 - id: in_arg_sv_type
   doc: "[ --svtype ] arg (=ALL)        SV type to compute [DEL, INS, DUP, INV,\nBND,\

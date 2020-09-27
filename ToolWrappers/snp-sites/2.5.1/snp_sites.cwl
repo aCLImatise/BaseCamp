@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snp_sites.cwl
+id: snp_sites.cwl
 inputs:
 - id: in_output_internal_pseudo
   doc: output internal pseudo reference sequence

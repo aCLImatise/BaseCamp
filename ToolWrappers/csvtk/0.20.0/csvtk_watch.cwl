@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_watch.cwl
+id: csvtk_watch.cwl
 inputs:
 - id: in_bins
   doc: number of histogram bins (default -1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_genomesim.cwl
+id: rtg_genomesim.cwl
 inputs:
 - id: in_output
   doc: output SDF

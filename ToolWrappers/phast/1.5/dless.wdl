@@ -4,7 +4,6 @@ task Dless {
   input {
     Float? rho
     Boolean? transitions
-    Boolean? phi
     Boolean? target_coverage
     Boolean? expected_length
     File? msa_format
@@ -21,7 +20,6 @@ task Dless {
       ~{phylo_hmm_dot} \
       ~{if defined(rho) then ("--rho " +  '"' + rho + '"') else ""} \
       ~{if (transitions) then "--transitions" else ""} \
-      ~{if (phi) then "--phi" else ""} \
       ~{if (target_coverage) then "--target-coverage" else ""} \
       ~{if (expected_length) then "--expected-length" else ""} \
       ~{if defined(msa_format) then ("--msa-format " +  '"' + msa_format + '"') else ""} \
@@ -35,7 +33,6 @@ task Dless {
   parameter_meta {
     rho: "(default 0.3)"
     transitions: "[~]<mu>,<nu>\\nSet the transition probabilities of the two-state HMM using\\nthe specified values of <mu> and <nu> (both between 0 and 1)."
-    phi: "[~]<phi>\\n(default 0.5)"
     target_coverage: "[~]<gamma>\\n(Alternative to transitions, use with --expected-length) Set\\nthe transition parameters such that the expected fraction of\\nsites in conserved elements is <gamma> (betwen 0 and 1).  This\\nis a *prior* rather than *posterior* expectation and assumes\\nstationarity of the state-transition process.  This option\\ncauses the ratio mu/nu to be fixed at (1-gamma)/gamma, and\\ntogether with --expected-length, completely defines the\\ntransition probabilities."
     expected_length: "[~]<omega>\\n(Alternative to --transitions, use with --target-coverage) Set\\ntransition probabilities such that the (prior) expected length\\nof a conserved element is <omega>.  The parameter mu is set to\\n1/omega."
     msa_format: "|PHYLIP|MPM|MAF|SS\\nAlignment format (default is to guess format from file contents).\\nNote that the program msa_view can be used for conversion."

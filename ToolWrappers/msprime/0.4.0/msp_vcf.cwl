@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_vcf.cwl
+id: msp_vcf.cwl
 inputs:
 - id: in_ploidy
   doc: "The ploidy level of samples\n"

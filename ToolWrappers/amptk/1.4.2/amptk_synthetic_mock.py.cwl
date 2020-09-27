@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_synthetic_mock.py.cwl
+id: amptk_synthetic_mock.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

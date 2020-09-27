@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepbgc_info.cwl
+id: deepbgc_info.cwl
 inputs:
 - id: in_debug
   doc: ''

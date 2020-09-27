@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_task_get.cwl
+id: funnel_task_get.cwl
 inputs:
 - id: in_view
   doc: Task view (default "full")

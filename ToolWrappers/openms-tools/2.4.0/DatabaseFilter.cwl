@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DatabaseFilter.cwl
+id: DatabaseFilter.cwl
 inputs:
 - id: in_in
   doc: "*        Input FASTA file, containing a database. (valid formats: 'fasta')"

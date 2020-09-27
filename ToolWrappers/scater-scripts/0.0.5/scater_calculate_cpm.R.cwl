@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scater_calculate_cpm.R.cwl
+id: scater_calculate_cpm.R.cwl
 inputs:
 - id: in_input_object_file
   doc: File name containing serialized SingleCellExperiment object or count matrix.

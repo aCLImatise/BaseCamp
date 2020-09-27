@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_db_csv_SQLite_repository.cwl
+id: abyss_db_csv_SQLite_repository.cwl
 inputs:
 - id: in_table_name
   doc: ''

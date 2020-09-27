@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conus_compare_BJK.cwl
+id: conus_compare_BJK.cwl
 inputs:
 - id: in_options
   doc: ''

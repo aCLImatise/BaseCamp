@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../velvetg.cwl
+id: velvetg.cwl
 inputs:
 - id: in_cov_cut_off
   doc: ": removal of low coverage nodes AFTER tour bus or allow the system to infer\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterPolishes.cwl
+id: filterPolishes.cwl
 inputs: []
 outputs:
 - id: out_stdout

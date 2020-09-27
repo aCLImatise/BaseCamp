@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../showfeat.cwl
+id: showfeat.cwl
 inputs:
 - id: in_source_match
   doc: "string     [*] By default any feature source in the\nfeature table is shown.\

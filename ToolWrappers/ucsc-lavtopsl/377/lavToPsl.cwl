@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lavToPsl.cwl
+id: lavToPsl.cwl
 inputs:
 - id: in_target_strand
   doc: set the target strand to c (default is no strand)

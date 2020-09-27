@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqlitebrowser.cwl
+id: sqlitebrowser.cwl
 inputs: []
 outputs:
 - id: out_stdout

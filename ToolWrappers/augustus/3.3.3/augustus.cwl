@@ -1,62 +1,6 @@
 class: CommandLineTool
-id: ../../../augustus.cwl
+id: augustus.cwl
 inputs:
-- id: in_strand
-  doc: or --strand=backward
-  type: string
-  inputBinding:
-    prefix: --strand
-- id: in_gene_model
-  doc: "or --genemodel=exactlyone\npartial      : allow prediction of incomplete genes\
-    \ at the sequence boundaries (default)\nintronless   : only predict single-exon\
-    \ genes like in prokaryotes and some eukaryotes\ncomplete     : only predict complete\
-    \ genes\natleastone   : predict at least one complete gene\nexactlyone   : predict\
-    \ exactly one complete gene"
-  type: string
-  inputBinding:
-    prefix: --genemodel
-- id: in_single_strand
-  doc: "predict genes independently on each strand, allow overlapping genes on opposite\
-    \ strands\nThis option is turned off by default."
-  type: string
-  inputBinding:
-    prefix: --singlestrand
-- id: in_hints_file
-  doc: "When this option is used the prediction considering hints (extrinsic information)\
-    \ is turned on.\nhintsfilename contains the hints in gff format."
-  type: File
-  inputBinding:
-    prefix: --hintsfile
-- id: in_augustus_config_path
-  doc: path to config directory (if not specified as environment variable)
-  type: File
-  inputBinding:
-    prefix: --AUGUSTUS_CONFIG_PATH
-- id: in_alternatives_from_evidence
-  doc: report alternative transcripts when they are suggested by hints
-  type: string
-  inputBinding:
-    prefix: --alternatives-from-evidence
-- id: in_alternatives_from_sampling
-  doc: report alternative transcripts generated through probabilistic sampling
-  type: string
-  inputBinding:
-    prefix: --alternatives-from-sampling
-- id: in_sample
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --sample
-- id: in_min_exon_intron_prob
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --minexonintronprob
-- id: in_min_mean_exon_intron_prob
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --minmeanexonintronprob
 - id: in_max_tracks
   doc: For a description of these parameters see section 4 of README.TXT.
   type: long
@@ -112,16 +56,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --species
-- id: in_parameters
-  doc: ''
+- id: in_partial
+  doc: ': allow prediction of incomplete genes at the sequence boundaries (default)'
   type: string
   inputBinding:
     position: 0
-- id: in_query_filename
-  doc: ''
+- id: in_intron_less
+  doc: ': only predict single-exon genes like in prokaryotes and some eukaryotes'
   type: string
   inputBinding:
     position: 1
+- id: in_complete
+  doc: ': only predict complete genes'
+  type: string
+  inputBinding:
+    position: 2
+- id: in_at_least_one
+  doc: ': predict at least one complete gene'
+  type: string
+  inputBinding:
+    position: 3
+- id: in_exactly_one
+  doc: ': predict exactly one complete gene'
+  type: string
+  inputBinding:
+    position: 4
 outputs:
 - id: out_stdout
   doc: Standard output stream

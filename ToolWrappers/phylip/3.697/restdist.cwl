@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../restdist.cwl
+id: restdist.cwl
 inputs: []
 outputs:
 - id: out_stdout

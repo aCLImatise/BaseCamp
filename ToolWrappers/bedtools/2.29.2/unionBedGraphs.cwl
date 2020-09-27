@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unionBedGraphs.cwl
+id: unionBedGraphs.cwl
 inputs:
 - id: in_header
   doc: "Print a header line.\n(chrom/start/end + names of each file)."

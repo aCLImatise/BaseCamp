@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_best.cwl
+id: treebest_best.cwl
 inputs:
 - id: in_skip_phyml
   doc: skip PHYML

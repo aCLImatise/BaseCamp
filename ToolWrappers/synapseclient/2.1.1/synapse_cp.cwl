@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_cp.cwl
+id: synapse_cp.cwl
 inputs:
 - id: in_destination_id
   doc: "Synapse ID of project or folder where file will be\ncopied to."

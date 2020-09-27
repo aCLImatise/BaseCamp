@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_unpack.cwl
+id: fermi_unpack.cwl
 inputs:
 - id: in_index_read_starting
   doc: index of the read to output, starting from 0 [null]

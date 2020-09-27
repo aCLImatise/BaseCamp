@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpDpart.cwl
+id: qpDpart.cwl
 inputs:
 - id: in_use_val_low
   doc: '... use <val> as low count value.'

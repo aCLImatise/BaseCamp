@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meryl.cwl
+id: meryl.cwl
 inputs:
 - id: in_print
   doc: display kmers on the screen as 'kmer<tab>count'.  accepts exactly one input.

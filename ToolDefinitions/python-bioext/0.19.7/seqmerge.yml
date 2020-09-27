@@ -23,7 +23,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SEP
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -45,18 +45,10 @@ subcommands:
         args: !SimpleFlagArg
           name: SEP
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: "sequence count will be appended as '(SEP)COUNT'\n"
-          synonyms:
-          - -s
-          - --separator
-          args: !SimpleFlagArg
-            name: SEP
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -75,7 +67,112 @@ subcommands:
             args: !SimpleFlagArg
               name: SEP
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: "sequence count will be appended as '(SEP)COUNT'\n"
+              synonyms:
+              - -s
+              - --separator
+              args: !SimpleFlagArg
+                name: SEP
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: OUTPUT
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -s
+                args: !SimpleFlagArg
+                  name: SEP
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error:\
+                \ argument INPUT: can't open 'INPUT': [Errno 2] No such file or directory:\
+                \ 'INPUT'\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - seqmerge
+              - OUTPUT
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: seqmerge
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: INPUT
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: OUTPUT
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -s
+                args: !SimpleFlagArg
+                  name: SEP
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error:\
+                \ argument INPUT: can't open 'OUTPUT': [Errno 2] No such file or directory:\
+                \ 'OUTPUT'\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\n\nscreen for duplicate\
+              \ sequences and squash them\n\npositional arguments:\n  INPUT      \
+              \           input FASTA MSA file\n  OUTPUT                output FASTA\
+              \ MSA file\n\noptional arguments:\n  -h, --help            show this\
+              \ help message and exit\n  -s SEP, --separator SEP\n               \
+              \         sequence count will be appended as '(SEP)COUNT'\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -89,12 +186,9 @@ subcommands:
           help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\nseqmerge: error:\
             \ argument INPUT: can't open 'INPUT': [Errno 2] No such file or directory:\
             \ 'INPUT'\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - seqmerge
-          - OUTPUT
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -135,13 +229,7 @@ subcommands:
             \ 'OUTPUT'\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: seqmerge [-h] [-s SEP] INPUT OUTPUT\n\nscreen for duplicate\
@@ -190,7 +278,7 @@ subcommands:
         args: !SimpleFlagArg
           name: SEP
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -254,7 +342,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SEP
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

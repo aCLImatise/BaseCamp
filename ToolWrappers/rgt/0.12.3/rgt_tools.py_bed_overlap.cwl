@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_bed_overlap.cwl
+id: rgt_tools.py_bed_overlap.cwl
 inputs:
 - id: in_input_bed_files
   doc: Input BED files or directory

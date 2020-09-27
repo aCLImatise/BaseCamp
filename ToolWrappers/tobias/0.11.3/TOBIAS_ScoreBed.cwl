@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_ScoreBed.cwl
+id: TOBIAS_ScoreBed.cwl
 inputs:
 - id: in_math
   doc: be used to adjust scoring scheme.

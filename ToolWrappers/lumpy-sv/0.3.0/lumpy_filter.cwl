@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lumpy_filter.cwl
+id: lumpy_filter.cwl
 inputs: []
 outputs:
 - id: out_stdout

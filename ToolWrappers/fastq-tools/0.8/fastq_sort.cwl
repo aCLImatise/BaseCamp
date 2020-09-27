@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_sort.cwl
+id: fastq_sort.cwl
 inputs:
 - id: in_reverse
   doc: sort in reverse (i.e., descending) order

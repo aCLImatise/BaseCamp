@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseSim4Output.pl.cwl
+id: parseSim4Output.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

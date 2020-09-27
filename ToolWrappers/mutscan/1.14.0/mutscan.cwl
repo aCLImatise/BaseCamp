@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mutscan.cwl
+id: mutscan.cwl
 inputs:
 - id: in_read_one
   doc: read1 file name (string)

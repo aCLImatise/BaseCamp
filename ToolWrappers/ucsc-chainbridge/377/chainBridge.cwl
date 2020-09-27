@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainBridge.cwl
+id: chainBridge.cwl
 inputs:
 - id: in_max_gap
   doc: "Maximum size of double-sided gap to try to bridge (default: 6000)\nNote: there\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fsc.cwl
+id: fsc.cwl
 inputs:
 - id: in_ipv_four
   doc: Use IPv4 rather than IPv6 for the server socket

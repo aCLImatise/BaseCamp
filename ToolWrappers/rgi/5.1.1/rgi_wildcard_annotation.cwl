@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_wildcard_annotation.cwl
+id: rgi_wildcard_annotation.cwl
 inputs:
 - id: in_input_directory
   doc: input directory for wildcard

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brass_group.cwl
+id: brass_group.cwl
 inputs:
 - id: in_discard_read_pairs_groups
   doc: Discard read pairs or groups matching condition TYPE

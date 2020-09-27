@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LiverAllProteins.csv.cwl
+id: LiverAllProteins.csv.cwl
 inputs: []
 outputs:
 - id: out_stdout

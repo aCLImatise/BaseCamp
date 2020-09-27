@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_call_variants.cwl
+id: haphpipe_call_variants.cwl
 inputs:
 - id: in_aln_bam
   doc: Alignment file.

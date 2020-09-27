@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfroc.cwl
+id: vcfroc.cwl
 inputs:
 - id: in_truth_vcf
   doc: use this VCF as ground truth for ROC generation

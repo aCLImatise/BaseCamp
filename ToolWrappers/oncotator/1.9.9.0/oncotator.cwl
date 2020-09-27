@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncotator.cwl
+id: oncotator.cwl
 inputs:
 - id: in_verbose
   doc: 'set verbosity level [default: 5]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_gc_plot.cwl
+id: checkm_gc_plot.cwl
 inputs:
 - id: in_image_type
   doc: 'desired image type (default: png)'

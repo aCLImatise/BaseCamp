@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_germlinefilter.cwl
+id: igdiscover_germlinefilter.cwl
 inputs:
 - id: in_cluster_size
   doc: "Consensus must represent at least N sequences.\nDefault: 0"

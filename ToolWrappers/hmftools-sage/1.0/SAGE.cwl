@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SAGE.cwl
+id: SAGE.cwl
 inputs:
 - id: in_known_hotspots
   doc: Tab separated file of known hotspot

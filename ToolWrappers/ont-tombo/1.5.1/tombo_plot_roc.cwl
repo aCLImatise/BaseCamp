@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_plot_roc.cwl
+id: tombo_plot_roc.cwl
 inputs:
 - id: in_statistics_filenames
   doc: Files to load genomic base anchored statistics.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scHicMergeToSCool.cwl
+id: scHicMergeToSCool.cwl
 inputs:
 - id: in_matrices
   doc: 'input file(s). (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_redundancy.pl.cwl
+id: check_redundancy.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

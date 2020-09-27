@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_accpetable..cwl
+id: macs2_accpetable..cwl
 inputs:
 - id: in_macs_two
   doc: ''

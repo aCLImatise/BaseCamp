@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kccachetest.cwl
+id: kccachetest.cwl
 inputs:
 - id: in_lv
   doc: ''

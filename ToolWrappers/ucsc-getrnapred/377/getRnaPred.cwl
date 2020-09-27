@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getRnaPred.cwl
+id: getRnaPred.cwl
 inputs:
 - id: in_weird
   doc: '- only get ones with weird splice sites'

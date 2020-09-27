@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_extract_rows.cwl
+id: crux_extract_rows.cwl
 inputs:
 - id: in_tsv_file
   doc: ''

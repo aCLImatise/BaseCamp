@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_convertprofiledb.cwl
+id: mmseqs_convertprofiledb.cwl
 inputs:
 - id: in_profile_type
   doc: '0               0: HMM (HHsuite) 1: PSSM or 2: HMMER3'

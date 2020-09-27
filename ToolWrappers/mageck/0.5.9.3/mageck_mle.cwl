@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mageck_mle.cwl
+id: mageck_mle.cwl
 inputs:
 - id: in_count_table
   doc: "Provide a tab-separated count table. Each line in the\ntable should include\

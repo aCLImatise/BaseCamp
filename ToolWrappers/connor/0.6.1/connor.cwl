@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../connor.cwl
+id: connor.cwl
 inputs:
 - id: in_verbose
   doc: print all log messages to console

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chira_collapse.py.cwl
+id: chira_collapse.py.cwl
 inputs:
 - id: in__fastq_input
   doc: ', --fastq          Input fastq file (default: None)'

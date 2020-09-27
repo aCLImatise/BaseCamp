@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_compare_trees.cwl
+id: gotree_compare_trees.cwl
 inputs:
 - id: in_binary
   doc: If true, then just print true (identical tree) or false (different tree) for

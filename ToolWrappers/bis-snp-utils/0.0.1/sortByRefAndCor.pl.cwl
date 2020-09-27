@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortByRefAndCor.pl.cwl
+id: sortByRefAndCor.pl.cwl
 inputs:
 - id: in_contig_name_field
   doc: ":   contig name is in the field POS (1-based)\nof input lines."

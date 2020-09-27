@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pm_merge.cwl
+id: pm_merge.cwl
 inputs:
 - id: in_follow
   doc: Follow symlinks

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kwip_stats.cwl
+id: kwip_stats.cwl
 inputs:
 - id: in_threads
   doc: Number of threads to utilise. [default N_CPUS]

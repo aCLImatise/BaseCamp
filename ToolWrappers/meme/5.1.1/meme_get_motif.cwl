@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme_get_motif.cwl
+id: meme_get_motif.cwl
 inputs:
 - id: in_id
   doc: id of motif to extract from the MEME file

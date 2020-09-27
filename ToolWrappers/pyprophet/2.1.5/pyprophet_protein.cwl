@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_protein.cwl
+id: pyprophet_protein.cwl
 inputs:
 - id: in_in
   doc: PyProphet input file.  [required]

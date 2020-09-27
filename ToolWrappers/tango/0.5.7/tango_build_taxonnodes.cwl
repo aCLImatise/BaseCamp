@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tango_build_taxonnodes.cwl
+id: tango_build_taxonnodes.cwl
 inputs:
 - id: in_p
   doc: ''

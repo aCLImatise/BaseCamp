@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmdir.cwl
+id: rmdir.cwl
 inputs:
 - id: in_ignore_fail_on_non_empty
   doc: "ignore each failure that is solely because a directory\nis non-empty"

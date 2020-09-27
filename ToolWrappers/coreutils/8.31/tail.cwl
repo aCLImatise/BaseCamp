@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tail.cwl
+id: tail.cwl
 inputs:
 - id: in_bytes
   doc: "=[+]NUM       output the last NUM bytes; or use -c +NUM to\noutput starting\

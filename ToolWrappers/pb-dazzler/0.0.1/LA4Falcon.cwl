@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LA4Falcon.cwl
+id: LA4Falcon.cwl
 inputs:
 - id: in_smfocargyufmpi
   doc: ''

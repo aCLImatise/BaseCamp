@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_wgsim2rnf.cwl
+id: rnftools_wgsim2rnf.cwl
 inputs:
 - id: in_wg_sim_fast_q_one
   doc: First WgSim FASTQ file (- for standard input)

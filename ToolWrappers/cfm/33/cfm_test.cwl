@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfm_test.cwl
+id: cfm_test.cwl
 inputs: []
 outputs:
 - id: out_stdout

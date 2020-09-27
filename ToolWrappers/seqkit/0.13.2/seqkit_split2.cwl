@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_split2.cwl
+id: seqkit_split2.cwl
 inputs:
 - id: in_by_length
   doc: split sequences into chunks of N bases, supports K/M/G suffix

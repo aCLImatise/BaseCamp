@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../parallel_blat.cwl
+id: parallel_blat.cwl
 inputs:
 - id: in_num_threads
   doc: (=8)             number of threads
   type: long
   inputBinding:
     prefix: --num_threads
-- id: in_similar
-  doc: (=0.95)              similarity
-  type: double
-  inputBinding:
-    prefix: --similar
 - id: in_ref_dot_fa
   doc: ''
   type: string

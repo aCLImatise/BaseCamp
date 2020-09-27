@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_tracks_file.cwl
+id: make_tracks_file.cwl
 inputs:
 - id: in_track_files
   doc: "Files to use in for the tracks. The ending of the file\nis used to define\

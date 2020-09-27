@@ -3,22 +3,19 @@ version 1.0
 task PlanemoCwlScript {
   input {
     Boolean? no_container
-    File? output_dir
-    File? base_dir
-    String script_dot
+    String tool_path
+    String job_path
   }
   command <<<
     planemo cwl_script \
-      ~{script_dot} \
-      ~{if (no_container) then "--no_container" else ""} \
-      ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""} \
-      ~{if defined(base_dir) then ("--base_dir " +  '"' + base_dir + '"') else ""}
+      ~{tool_path} \
+      ~{job_path} \
+      ~{if (no_container) then "--no_container" else ""}
   >>>
   parameter_meta {
-    no_container: ""
-    output_dir: ""
-    base_dir: ""
-    script_dot: "Options:"
+    no_container: "--output_dir PATH\\n--base_dir PATH\\n--help             Show this message and exit.\\n"
+    tool_path: ""
+    job_path: ""
   }
   output {
     File out_stdout = stdout()

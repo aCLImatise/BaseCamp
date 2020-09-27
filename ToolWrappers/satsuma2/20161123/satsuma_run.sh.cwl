@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../satsuma_run.sh.cwl
+id: satsuma_run.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

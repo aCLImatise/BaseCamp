@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_metaphlan_tables.py.cwl
+id: merge_metaphlan_tables.py.cwl
 inputs:
 - id: in_name_output_file
   doc: Name of output file in which joined tables are saved

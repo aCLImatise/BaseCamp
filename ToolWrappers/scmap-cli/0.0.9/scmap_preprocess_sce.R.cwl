@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scmap_preprocess_sce.R.cwl
+id: scmap_preprocess_sce.R.cwl
 inputs:
 - id: in_input_object
   doc: Path to an SCE object in .rds format

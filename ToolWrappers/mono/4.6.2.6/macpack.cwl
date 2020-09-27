@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macpack.cwl
+id: macpack.cwl
 inputs:
 - id: in_appname
   doc: :appname    Application Name

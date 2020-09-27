@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_contig.cwl
+id: filter_contig.cwl
 inputs:
 - id: in_contig_file
   doc: ''

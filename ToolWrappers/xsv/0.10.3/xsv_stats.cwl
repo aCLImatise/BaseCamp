@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_stats.cwl
+id: xsv_stats.cwl
 inputs:
 - id: in_select
   doc: "Select a subset of columns to compute stats for.\nSee 'xsv select --help'\

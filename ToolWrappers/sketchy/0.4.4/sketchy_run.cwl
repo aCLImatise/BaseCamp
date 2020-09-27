@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_run.cwl
+id: sketchy_run.cwl
 inputs:
 - id: in_fast_q
   doc: Path to input Fastq containing basecalled nanopore

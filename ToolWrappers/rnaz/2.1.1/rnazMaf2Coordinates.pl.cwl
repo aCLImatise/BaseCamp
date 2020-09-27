@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazMaf2Coordinates.pl.cwl
+id: rnazMaf2Coordinates.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

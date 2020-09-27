@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_profit.cwl
+id: _profit.cwl
 inputs: []
 outputs:
 - id: out_stdout

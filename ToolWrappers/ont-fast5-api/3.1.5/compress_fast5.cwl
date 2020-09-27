@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../compress_fast5.cwl
+id: compress_fast5.cwl
 inputs:
-- id: in_c
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -c
 - id: in_i
   doc: ''
   type: File

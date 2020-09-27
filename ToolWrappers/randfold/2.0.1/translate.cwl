@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../translate.cwl
+id: translate.cwl
 inputs:
 - id: in_translate_full_stops
   doc: ': translate in full, with stops; no individual ORFs'

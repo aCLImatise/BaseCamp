@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phastOdds.cwl
+id: phastOdds.cwl
 inputs:
 - id: in_background_mods
   doc: "(Required) Comma-delimited list of tree model (*.mod) files for\nbackground.\
@@ -39,11 +39,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --feature-hmm
-- id: in_output_bed
-  doc: (For use with -g) Generate output in bed format rather than GFF.
-  type: boolean
-  inputBinding:
-    prefix: --output-bed
 - id: in_base_by_base
   doc: "(Can be used instead of -g or -y) Output base-by-base scores, in\nthe coordinate\
     \ frame of the reference sequence (or of the sequence\nspecified by --refidx).\
@@ -72,6 +67,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --refidx
+- id: in_output_bed
+  doc: (For use with -g) Generate output in bed format rather than GFF.
+  type: boolean
+  inputBinding:
+    prefix: --output-bed
 - id: in_verbose
   doc: "Verbose mode.  Print messages to stderr describing what the\nprogram is doing."
   type: boolean

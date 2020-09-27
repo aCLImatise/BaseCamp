@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../indexdb_cat.cwl
+id: indexdb_cat.cwl
 inputs:
 - id: in_destdir
   doc: "Directory where to write cmet index files (default is\nvalue of -F, if provided;\

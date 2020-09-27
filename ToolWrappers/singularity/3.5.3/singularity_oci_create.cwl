@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_oci_create.cwl
+id: singularity_oci_create.cwl
 inputs:
 - id: in_bundle
   doc: specify the OCI bundle path (required)

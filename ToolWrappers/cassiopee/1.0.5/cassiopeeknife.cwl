@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cassiopeeknife.cwl
+id: cassiopeeknife.cwl
 inputs:
 - id: in__sequence_convert
   doc: ': sequence to convert'

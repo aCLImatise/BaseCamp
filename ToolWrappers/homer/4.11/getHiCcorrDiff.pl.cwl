@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getHiCcorrDiff.pl.cwl
+id: getHiCcorrDiff.pl.cwl
 inputs:
 - id: in_res
   doc: '<#> (resolution in bp, default: 50000)'

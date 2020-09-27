@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miranda.cwl
+id: miranda.cwl
 inputs:
 - id: in_license
   doc: Display license information

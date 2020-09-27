@@ -15,7 +15,6 @@ task Unlz4 {
     Boolean? test_compressed_integrity
     Boolean? multiple_input_files
     Boolean? compress_using_compression
-    Boolean? block_size_default
     Boolean? bd
     Boolean? no_frame_crc
     Boolean? content_size
@@ -37,7 +36,6 @@ task Unlz4 {
       ~{if (test_compressed_integrity) then "-t" else ""} \
       ~{if (multiple_input_files) then "-m" else ""} \
       ~{if (compress_using_compression) then "-l" else ""} \
-      ~{if (block_size_default) then "-B" else ""} \
       ~{if (bd) then "-BD" else ""} \
       ~{if (no_frame_crc) then "--no-frame-crc" else ""} \
       ~{if (content_size) then "--content-size" else ""} \
@@ -58,7 +56,6 @@ task Unlz4 {
     test_compressed_integrity: ": test compressed file integrity"
     multiple_input_files: ": multiple input files (implies automatic output filenames)"
     compress_using_compression: ": compress using Legacy format (Linux kernel compression)"
-    block_size_default: "#    : Block size [4-7](default : 7)"
     bd: ": Block dependency (improve compression ratio)"
     no_frame_crc: ": disable stream checksum (default:enabled)"
     content_size: ": compressed frame includes original size (default:not present)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nad.cwl
+id: nad.cwl
 inputs:
 - id: in_molecule
   doc: 'Molecule type to download. Default: nucleotide'

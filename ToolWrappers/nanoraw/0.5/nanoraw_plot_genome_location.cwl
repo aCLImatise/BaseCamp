@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoraw_plot_genome_location.cwl
+id: nanoraw_plot_genome_location.cwl
 inputs:
 - id: in_base_call_subgroups
   doc: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual template\

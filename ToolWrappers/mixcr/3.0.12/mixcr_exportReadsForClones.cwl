@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_exportReadsForClones.cwl
+id: mixcr_exportReadsForClones.cwl
 inputs:
 - id: in_id
   doc: '[<ids>...]      [cloneId1 [cloneId2 [cloneId3]]]'

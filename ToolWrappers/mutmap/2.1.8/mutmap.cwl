@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mutmap.cwl
+id: mutmap.cwl
 inputs:
 - id: in_var_0
   doc: '[-T] [-e <DATABASE>]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svdb.cwl
+id: svdb.cwl
 inputs:
 - id: in_build
   doc: create a db

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaquantome.cwl
+id: metaquantome.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deleteDATMAfiles.py.cwl
+id: deleteDATMAfiles.py.cwl
 inputs:
 - id: in_file
   doc: configuration file

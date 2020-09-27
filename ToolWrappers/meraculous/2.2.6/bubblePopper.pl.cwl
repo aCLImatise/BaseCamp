@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bubblePopper.pl.cwl
+id: bubblePopper.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

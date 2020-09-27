@@ -1,8 +1,22 @@
 !Command
 command:
 - findjuncs
-positional: []
+positional:
+- !Positional
+  description: Basename for output files
+  position: 0
+  name: outbase
+  optional: false
 named:
+- !Flag
+  description: "# merge unique annotations from annotation.bed and newly_discovered.bed,\n\
+    # export only unique junctions to 'merged_unique.bed'\n$ findjuncs merged_unique\
+    \ --annotation_format BED \\\n--annotation_files annotation.bed newly_discovered.bed"
+  synonyms:
+  - --annotation_files
+  args: !SimpleFlagArg
+    name: transcripts.gtf
+  optional: true
 - !Flag
   description: Export tophat `.juncs` file in addition to BED output
   synonyms:
@@ -26,25 +40,17 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "[BED | BigBed | GTF2 | GFF3 | PSL] [infile.[BED | BigBed | GTF2 |\
-    \ GFF3 | PSL] ...]\nZero or more annotation files (max 1 file if BigBed)"
-  synonyms:
-  - --annotation_files
-  args: !SimpleFlagArg
-    name: infile.
-  optional: true
-- !Flag
   description: "Format of annotation_files (Default: GTF2). Note: GFF3\nassembly assumes\
     \ SO v.2.5.2 feature ontologies, which\nmay or may not match your specific file."
   synonyms:
   - --annotation_format
   args: !ChoiceFlagArg
     choices: !!set
-      ? BED
-      ? GTF2
-      ? GFF3
-      ? PSL
-      ? BigBed
+      BED:
+      BigBed:
+      GFF3:
+      GTF2:
+      PSL:
   optional: true
 - !Flag
   description: "If supplied, coding regions will be extended by 3\nnucleotides at\

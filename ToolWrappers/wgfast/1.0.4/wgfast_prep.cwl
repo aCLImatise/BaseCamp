@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgfast_prep.cwl
+id: wgfast_prep.cwl
 inputs:
 - id: in_snp_matrix
   doc: path to NASP snp_matrix [REQUIRED]

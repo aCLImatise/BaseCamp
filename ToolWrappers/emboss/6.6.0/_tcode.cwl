@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_tcode.cwl
+id: _tcode.cwl
 inputs:
 - id: in_window
   doc: "integer    [200] This is the number of nucleotide bases\nover which the TESTCODE\
@@ -8,11 +8,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -window
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_data_file
   doc: "datafile   [Etcode.dat] The default data file is\nEtcode.dat and contains\
     \ coding probabilities\nfor each base. The probabilities are for\nboth positional\

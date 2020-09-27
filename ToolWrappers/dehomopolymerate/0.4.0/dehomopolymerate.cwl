@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dehomopolymerate.cwl
+id: dehomopolymerate.cwl
 inputs:
 - id: in_print_version_exit
   doc: Print version and exit

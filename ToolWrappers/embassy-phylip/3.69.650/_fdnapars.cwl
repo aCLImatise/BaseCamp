@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdnapars.cwl
+id: _fdnapars.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

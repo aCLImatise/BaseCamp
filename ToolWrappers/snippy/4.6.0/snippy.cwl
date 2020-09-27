@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snippy.cwl
+id: snippy.cwl
 inputs:
 - id: in_citation
   doc: Print citation for referencing snippy

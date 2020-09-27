@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polymut.py.cwl
+id: polymut.py.cwl
 inputs:
 - id: in_id__contig
   doc: "ID, --contig REFERENCE ID\nFocus on a subset of references in the BAM file.\

@@ -1,9 +1,11 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_run_raxml_multilocus_bootstraps.cwl
+id: phyluce_genetrees_run_raxml_multilocus_bootstraps.cwl
 inputs:
 - id: in_best_trees
-  doc: ''
-  type: boolean
+  doc: "BEST_TREES --output\nOUTPUT\n[--bootreps BOOTREPS]\n[--outgroup OUTGROUP]\n\
+    [--threads THREADS]\n[--cores CORES]\n[--quiet]\n[--verbosity {INFO,WARN,CRITICAL}]\n\
+    [--log-path LOG_PATH]"
+  type: File
   inputBinding:
     prefix: --best-trees
 - id: in_input
@@ -11,7 +13,7 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --input
-- id: in_output_directory_hold
+- id: in_output
   doc: The output directory to hold alignments
   type: Directory
   inputBinding:
@@ -51,11 +53,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-path
-- id: in_var_10
-  doc: '[--bootreps BOOTREPS]'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_format
   doc: --best-trees BEST_TREES
   type: string
@@ -65,11 +62,18 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_directory_hold
+- id: out_best_trees
+  doc: "BEST_TREES --output\nOUTPUT\n[--bootreps BOOTREPS]\n[--outgroup OUTGROUP]\n\
+    [--threads THREADS]\n[--cores CORES]\n[--quiet]\n[--verbosity {INFO,WARN,CRITICAL}]\n\
+    [--log-path LOG_PATH]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_best_trees)
+- id: out_output
   doc: The output directory to hold alignments
   type: Directory
   outputBinding:
-    glob: $(inputs.in_output_directory_hold)
+    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_genetrees_run_raxml_multilocus_bootstraps

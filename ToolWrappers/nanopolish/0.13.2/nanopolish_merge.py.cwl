@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanopolish_merge.py.cwl
+id: nanopolish_merge.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

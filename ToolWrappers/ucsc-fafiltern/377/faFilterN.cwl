@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../faFilterN.cwl
+id: faFilterN.cwl
 inputs:
-- id: in_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -out
-- id: in_uniq
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -uniq
 - id: in_in_dot_fa
   doc: ''
   type: string

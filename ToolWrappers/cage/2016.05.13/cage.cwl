@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cage.cwl
+id: cage.cwl
 inputs:
 - id: in__outputvcf_vcfoutputfileor
   doc: ",  --output_vcf <VCF_output_file>\n(OR required)  File to output variants\
@@ -17,12 +17,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -v
-- id: in_cage
-  doc: "{-o <VCF_output_file>|-s <SNP_input_db>} [-v] [--] [--version]\n[-h] <contig>\
-    \ <start> <end> <stepsize> <beta> <cage_output_file>"
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosomer_simulator_output_dir.cwl
+id: chromosomer_simulator_output_dir.cwl
 inputs:
 - id: in_p
   doc: ''

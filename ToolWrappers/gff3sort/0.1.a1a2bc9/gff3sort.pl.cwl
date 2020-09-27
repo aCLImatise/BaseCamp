@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3sort.pl.cwl
+id: gff3sort.pl.cwl
 inputs:
 - id: in_precise
   doc: in precise mode, about 2X~3X slower than the default mode.

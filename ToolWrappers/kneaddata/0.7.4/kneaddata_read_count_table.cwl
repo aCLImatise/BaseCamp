@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kneaddata_read_count_table.cwl
+id: kneaddata_read_count_table.cwl
 inputs:
 - id: in_input
   doc: the input folder with kneaddata log files

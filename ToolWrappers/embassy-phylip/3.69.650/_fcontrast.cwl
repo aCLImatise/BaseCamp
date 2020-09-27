@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fcontrast.cwl
+id: _fcontrast.cwl
 inputs:
 - id: in_vary_within
   doc: boolean    [N] Within-population variation in data

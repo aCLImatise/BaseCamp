@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_phase.py.cwl
+id: fc_phase.py.cwl
 inputs:
 - id: in_logging_config_fn
   doc: "Optional standard Python logging config (default: None)\n"

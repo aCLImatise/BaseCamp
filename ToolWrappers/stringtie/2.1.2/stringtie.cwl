@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stringtie.cwl
+id: stringtie.cwl
 inputs:
 - id: in_conservative
   doc: ': conservative transcriptome assembly, same as -t -c 1.5 -f 0.05'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../neokit_list.cwl
+id: neokit_list.cwl
 inputs:
 - id: in_list
   doc: ''

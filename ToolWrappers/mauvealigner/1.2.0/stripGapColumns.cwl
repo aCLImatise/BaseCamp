@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stripGapColumns.cwl
+id: stripGapColumns.cwl
 inputs:
 - id: in_input_x_mfa
   doc: ''

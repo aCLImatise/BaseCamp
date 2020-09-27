@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi_extract_entrez2gene.py.cwl
+id: ncbi_extract_entrez2gene.py.cwl
 inputs:
 - id: in_gene_two_acc_file
   doc: "Path of gene2accession.gz file (from\nftp://ftp.ncbi.nlm.nih.gov/gene/DATA),\

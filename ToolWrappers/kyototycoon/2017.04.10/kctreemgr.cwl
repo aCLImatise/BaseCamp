@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kctreemgr.cwl
+id: kctreemgr.cwl
 inputs:
 - id: in_otr
   doc: ''

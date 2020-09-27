@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_inspect.cwl
+id: hisat2_inspect.cwl
 inputs:
 - id: in_large_index
   doc: "force inspection of the 'large' index, even if a\n'small' one is present."

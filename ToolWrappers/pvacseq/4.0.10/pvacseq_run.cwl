@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pvacseq_run.cwl
+id: pvacseq_run.cwl
 inputs:
 - id: in_epitope_length
   doc: "Length of subpeptides (neoepitopes) to predict.\nMultiple epitope lengths\

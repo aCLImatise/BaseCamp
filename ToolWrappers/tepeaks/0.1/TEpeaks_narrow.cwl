@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TEpeaks_narrow.cwl
+id: TEpeaks_narrow.cwl
 inputs:
 - id: in_treatment
   doc: IP sample ( BAM )

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapping_to_query.py.cwl
+id: mapping_to_query.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

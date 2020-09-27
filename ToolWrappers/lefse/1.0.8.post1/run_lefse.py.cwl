@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_lefse.py.cwl
+id: run_lefse.py.cwl
 inputs:
 - id: in_set_file_textualform
   doc: "set the file for exporting the result (only concise textual\nform)"

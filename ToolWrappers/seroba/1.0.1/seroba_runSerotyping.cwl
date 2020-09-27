@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seroba_runSerotyping.cwl
+id: seroba_runSerotyping.cwl
 inputs:
 - id: in_no_clean
   doc: "Do not clean up intermediate files (assemblies, ariba\nreport)"

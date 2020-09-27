@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_reverse_comp.cwl
+id: ReadSeq_reverse_comp.cwl
 inputs:
 - id: in_check
   doc: If set, will check orientation of the rRNA sequenc, only reverse complement

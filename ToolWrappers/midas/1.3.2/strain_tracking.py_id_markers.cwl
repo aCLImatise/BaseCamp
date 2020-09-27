@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strain_tracking.py_id_markers.cwl
+id: strain_tracking.py_id_markers.cwl
 inputs:
 - id: in_in_dir
   doc: "path to input snps directory for one species (contains files 'snps_*.txt')\n\

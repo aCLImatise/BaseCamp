@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halWiggleLiftover.cwl
+id: halWiggleLiftover.cwl
 inputs:
 - id: in_append
   doc: ":               append/merge results into tgtWig.  Note that the entire\n\

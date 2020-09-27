@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka_clusters_to_hmm.cwl
+id: prokka_clusters_to_hmm.cwl
 inputs:
 - id: in_verbose
   doc: "!      Verbose output (default '0')."

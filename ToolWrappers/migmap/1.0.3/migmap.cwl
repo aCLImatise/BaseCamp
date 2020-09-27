@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../migmap.cwl
+id: migmap.cwl
 inputs:
 - id: in_all_alleles
   doc: "Will use all alleles during\nalignment (this is going to be\nslower). [default\

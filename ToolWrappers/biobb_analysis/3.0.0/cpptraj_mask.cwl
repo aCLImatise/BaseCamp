@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_mask.cwl
+id: cpptraj_mask.cwl
 inputs:
 - id: in_config
   doc: Configuration file

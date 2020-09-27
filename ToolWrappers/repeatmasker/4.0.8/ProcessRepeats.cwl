@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProcessRepeats.cwl
+id: ProcessRepeats.cwl
 inputs:
 - id: in_species
   doc: "Post process RepeatMasker results run on sequence from this species.\nDefault\

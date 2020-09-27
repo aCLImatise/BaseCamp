@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../rsat_IUPAC_to_regular_util.cwl
-inputs:
-- id: in_age
-  doc: '[cg]age'
-  type: boolean
-  inputBinding:
-    prefix: --u
+id: rsat_IUPAC_to_regular_util.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../datma.py.cwl
+id: datma.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

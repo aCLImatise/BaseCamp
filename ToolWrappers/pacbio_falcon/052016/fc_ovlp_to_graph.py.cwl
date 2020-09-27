@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_ovlp_to_graph.py.cwl
+id: fc_ovlp_to_graph.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

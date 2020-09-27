@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Trinity_gene_splice_modeler.py.cwl
+id: Trinity_gene_splice_modeler.py.cwl
 inputs:
 - id: in_trinity_fast_a
   doc: 'Trinity.fasta file (default: )'

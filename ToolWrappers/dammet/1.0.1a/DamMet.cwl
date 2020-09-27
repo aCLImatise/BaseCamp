@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DamMet.cwl
+id: DamMet.cwl
 inputs: []
 outputs:
 - id: out_stdout

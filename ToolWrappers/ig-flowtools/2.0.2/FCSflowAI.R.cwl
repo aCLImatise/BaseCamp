@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSflowAI.R.cwl
+id: FCSflowAI.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

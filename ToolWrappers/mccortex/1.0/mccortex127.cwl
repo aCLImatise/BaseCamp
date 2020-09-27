@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mccortex127.cwl
+id: mccortex127.cwl
 inputs:
 - id: in_quiet
   doc: Silence status output normally printed to STDERR

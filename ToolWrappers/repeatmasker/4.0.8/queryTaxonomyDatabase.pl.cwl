@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../queryTaxonomyDatabase.pl.cwl
+id: queryTaxonomyDatabase.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

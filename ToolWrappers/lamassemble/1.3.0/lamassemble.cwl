@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lamassemble.cwl
+id: lamassemble.cwl
 inputs:
 - id: in_alignment
   doc: print an alignment, not a consensus

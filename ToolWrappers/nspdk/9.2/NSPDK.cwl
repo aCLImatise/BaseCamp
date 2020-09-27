@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NSPDK.cwl
+id: NSPDK.cwl
 inputs: []
 outputs:
 - id: out_stdout

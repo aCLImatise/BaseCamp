@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../setreg.cwl
+id: setreg.cwl
 inputs: []
 outputs:
 - id: out_stdout

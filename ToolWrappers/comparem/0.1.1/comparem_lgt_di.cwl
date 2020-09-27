@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparem_lgt_di.cwl
+id: comparem_lgt_di.cwl
 inputs:
 - id: in_file_ext
   doc: 'extension of files to process (default: fna)'

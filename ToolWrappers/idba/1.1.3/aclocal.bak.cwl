@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aclocal.bak.cwl
+id: aclocal.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_build_db_index_5_critical.cwl
+id: deblur_build_db_index_5_critical.cwl
 inputs:
 - id: in_de_blur
   doc: ''

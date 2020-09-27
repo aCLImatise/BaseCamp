@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../referenceseeker_db_import.cwl
+id: referenceseeker_db_import.cwl
 inputs:
 - id: in_db
   doc: ReferenceSeeker database path

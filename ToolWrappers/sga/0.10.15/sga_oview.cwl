@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_oview.cwl
+id: sga_oview.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

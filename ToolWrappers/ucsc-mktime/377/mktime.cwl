@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mktime.cwl
+id: mktime.cwl
 inputs:
 - id: in_yyyy_mm_dd
   doc: ''

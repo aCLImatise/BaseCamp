@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadtool_plot.cwl
+id: tadtool_plot.cwl
 inputs:
 - id: in_window_sizes
   doc: "Window sizes in base pairs used for TAD calculation.\nYou can pass (1) a filename\

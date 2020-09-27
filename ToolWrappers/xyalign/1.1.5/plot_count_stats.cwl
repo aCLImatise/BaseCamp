@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../plot_count_stats.cwl
+id: plot_count_stats.cwl
 inputs:
 - id: in_second_chr
-  doc: ''
-  type: string
+  doc: "--const_chr CONST_CHR\n[--var1_marker {color,shape,size}]\n[--var1_marker_vals\
+    \ VAR1_MARKER_VALS [VAR1_MARKER_VALS ...]]\n[--var2_marker {color,shape,size,none}]\n\
+    [--var2_marker_vals [VAR2_MARKER_VALS [VAR2_MARKER_VALS ...]]]\n[--marker_size\
+    \ MARKER_SIZE]\n[--marker_color MARKER_COLOR]\n[--marker_shape MARKER_SHAPE]\n\
+    [--marker_alpha MARKER_ALPHA]\n[--legend_marker_scale LEGEND_MARKER_SCALE]\n[--x_title\
+    \ X_TITLE] [--y_title Y_TITLE]"
+  type: long
   inputBinding:
     prefix: --second_chr
-- id: in_const_chr
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --const_chr
 - id: in_input
   doc: Full path to file containing table output by
   type: File
@@ -29,6 +29,13 @@ inputs:
   type: File
   inputBinding:
     prefix: --exclude_suffix
+- id: in_const_chr
+  doc: "Chromosome to use denominator on both the X- and\nY-axis. For example, if\
+    \ one was comparing chrX and\nchrY, and using chr19 to normalize, recommended\
+    \ values\nwould be: --first_chr chrX --second_chr chrY\n--const_chr chr19."
+  type: long
+  inputBinding:
+    prefix: --const_chr
 - id: in_var_one_marker
   doc: "Way of designating variable 1 values in plot. Choices\nare 'color', 'shape',\
     \ or 'size'. Must be used in\nconjunction with --var1_marker_vals. Default is\n\

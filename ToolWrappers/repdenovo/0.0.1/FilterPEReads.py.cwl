@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterPEReads.py.cwl
+id: FilterPEReads.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

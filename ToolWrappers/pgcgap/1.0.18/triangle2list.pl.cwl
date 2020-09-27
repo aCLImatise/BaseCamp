@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../triangle2list.pl.cwl
+id: triangle2list.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

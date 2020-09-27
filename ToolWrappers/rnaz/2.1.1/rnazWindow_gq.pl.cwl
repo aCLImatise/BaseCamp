@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazWindow_gq.pl.cwl
+id: rnazWindow_gq.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

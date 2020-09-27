@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../README.autoAug.cwl
+id: README.autoAug.cwl
 inputs: []
 outputs:
 - id: out_stdout

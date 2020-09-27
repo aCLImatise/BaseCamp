@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preseq_bound_pop.cwl
+id: preseq_bound_pop.cwl
 inputs:
 - id: in_output
   doc: 'species richness output file (default: stdout)'

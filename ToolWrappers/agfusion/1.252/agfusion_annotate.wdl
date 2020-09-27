@@ -2,7 +2,6 @@ version 1.0
 
 task AgfusionAnnotate {
   input {
-    Int? j_three
     Int? gene_five_prime
     Int? gene_three_prime
     Int? junction_five_prime
@@ -28,7 +27,6 @@ task AgfusionAnnotate {
   command <<<
     agfusion annotate \
       ~{png} \
-      ~{if defined(j_three) then ("-j3 " +  '"' + j_three + '"') else ""} \
       ~{if defined(gene_five_prime) then ("--gene5prime " +  '"' + gene_five_prime + '"') else ""} \
       ~{if defined(gene_three_prime) then ("--gene3prime " +  '"' + gene_three_prime + '"') else ""} \
       ~{if defined(junction_five_prime) then ("--junction5prime " +  '"' + junction_five_prime + '"') else ""} \
@@ -51,7 +49,6 @@ task AgfusionAnnotate {
       ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""}
   >>>
   parameter_meta {
-    j_three: "[-nc]"
     gene_five_prime: "5' gene partner"
     gene_three_prime: "3' gene partner"
     junction_five_prime: "Genomic location of predicted fuins for the 5' gene\\npartner. The 1-based position that is the last\\nnucleotide included in the fusion before the junction."

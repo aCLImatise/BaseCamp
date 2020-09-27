@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../involucro.cwl
+id: involucro.cwl
 inputs:
 - id: in_set_url_docker
   doc: Set the URL of the Docker instance (default "unix:///var/run/docker.sock")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_AF1.py.cwl
+id: fix_AF1.py.cwl
 inputs:
 - id: in_input_file
   doc: ''

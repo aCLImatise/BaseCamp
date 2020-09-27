@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConvertDb.py_changeo.cwl
+id: ConvertDb.py_changeo.cwl
 inputs:
 - id: in_list_tab_defaultnone
   doc: "A list of tab delimited database files. (default:\nNone)"

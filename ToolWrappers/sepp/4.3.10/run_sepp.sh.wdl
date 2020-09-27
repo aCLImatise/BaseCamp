@@ -2,14 +2,14 @@ version 1.0
 
 task Runseppsh {
   input {
-    Int? x
+    Int? make_us_threads
   }
   command <<<
     run_sepp_sh \
-      ~{if defined(x) then ("-x " +  '"' + x + '"') else ""}
+      ~{if defined(make_us_threads) then ("-x " +  '"' + make_us_threads + '"') else ""}
   >>>
   parameter_meta {
-    x: ""
+    make_us_threads: "to make SEPP us 8 threads\\n"
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../longshot_FLAGS.cwl
+id: longshot_FLAGS.cwl
 inputs:
 - id: in_ref
   doc: ''

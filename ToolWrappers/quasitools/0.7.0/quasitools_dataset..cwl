@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quasitools_dataset..cwl
+id: quasitools_dataset..cwl
 inputs:
 - id: in_quasi_tools
   doc: ''

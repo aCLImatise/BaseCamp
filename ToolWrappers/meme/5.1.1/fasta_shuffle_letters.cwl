@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_shuffle_letters.cwl
+id: fasta_shuffle_letters.cwl
 inputs:
 - id: in_sequence_file
   doc: ''

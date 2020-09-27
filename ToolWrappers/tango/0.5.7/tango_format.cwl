@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tango_format.cwl
+id: tango_format.cwl
 inputs:
 - id: in_force
   doc: Force overwrite of existing reformatted fastafile

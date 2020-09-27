@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgLoadMaf.cwl
+id: hgLoadMaf.cwl
 inputs:
 - id: in_warn_instead_error_emptyincomplete
   doc: warn instead of error upon empty/incomplete alignments

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_len_hist.cwl
+id: checkm_len_hist.cwl
 inputs:
 - id: in_image_type
   doc: 'desired image type (default: png)'

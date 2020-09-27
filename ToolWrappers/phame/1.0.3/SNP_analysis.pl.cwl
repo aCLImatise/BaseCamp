@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SNP_analysis.pl.cwl
+id: SNP_analysis.pl.cwl
 inputs:
 - id: in_gff
   doc: GFF is an alternative to genbank. Use either one.

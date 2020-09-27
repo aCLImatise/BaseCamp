@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mashmap.cwl
+id: mashmap.cwl
 inputs:
 - id: in_ref
   doc: an input reference file (fasta/fastq)[.gz]

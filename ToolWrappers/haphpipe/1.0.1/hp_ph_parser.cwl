@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_ph_parser.cwl
+id: hp_ph_parser.cwl
 inputs:
 - id: in_haplotypes_fa
   doc: Haplotype file created by PredictHaplo.

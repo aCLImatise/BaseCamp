@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_ssu_finder.cwl
+id: checkm_ssu_finder.cwl
 inputs:
 - id: in_extension
   doc: 'extension of bins (other files in directory are ignored) (default: fna)'

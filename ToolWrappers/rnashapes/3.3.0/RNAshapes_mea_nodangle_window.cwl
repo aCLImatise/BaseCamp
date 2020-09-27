@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAshapes_mea_nodangle_window.cwl
+id: RNAshapes_mea_nodangle_window.cwl
 inputs:
 - id: in_specify_window_size
   doc: Specify the window size.

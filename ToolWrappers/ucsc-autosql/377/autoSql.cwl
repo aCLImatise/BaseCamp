@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoSql.cwl
+id: autoSql.cwl
 inputs: []
 outputs:
 - id: out_stdout

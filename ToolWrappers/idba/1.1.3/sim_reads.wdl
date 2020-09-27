@@ -6,7 +6,6 @@ task SimReads {
     Float? error_rate
     Int? read_length
     Boolean? paired
-    Int? sd
     Int? insert_distance
     Boolean? print_correct
     String ref_dot_fa
@@ -20,7 +19,6 @@ task SimReads {
       ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""} \
       ~{if defined(read_length) then ("--read_length " +  '"' + read_length + '"') else ""} \
       ~{if (paired) then "--paired" else ""} \
-      ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""} \
       ~{if defined(insert_distance) then ("--insert_distance " +  '"' + insert_distance + '"') else ""} \
       ~{if (print_correct) then "--print_correct" else ""}
   >>>
@@ -29,7 +27,6 @@ task SimReads {
     error_rate: "(=0.01)           error rate"
     read_length: "(=100)           read length"
     paired: "if paired-end"
-    sd: "(=-1)                     sd"
     insert_distance: "(=500)       insert distance"
     print_correct: "output correct reads"
     ref_dot_fa: ""

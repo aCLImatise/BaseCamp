@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randRemoveBackground.pl.cwl
+id: randRemoveBackground.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

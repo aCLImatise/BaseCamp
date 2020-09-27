@@ -8,11 +8,9 @@ task Fast5seek {
     Boolean? mapped
     Boolean? no_progress_bar
     String? log_level
-    String files_dot
   }
   command <<<
     fast5seek \
-      ~{files_dot} \
       ~{if defined(fast_five_dir) then ("--fast5_dir " +  '"' + fast_five_dir + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(filename_write_paths) then ("--output " +  '"' + filename_write_paths + '"') else ""} \
@@ -27,7 +25,6 @@ task Fast5seek {
     mapped: "Only extract read ids for mapped reads in BAM/SAM"
     no_progress_bar: "Do not display progress bar."
     log_level: ""
-    files_dot: "--log_level {0,1,2,3,4,5}"
   }
   output {
     File out_stdout = stdout()

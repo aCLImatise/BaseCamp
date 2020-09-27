@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wiggletools.cwl
+id: wiggletools.cwl
 inputs: []
 outputs:
 - id: out_stdout

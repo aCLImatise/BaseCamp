@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pash_3.0lx.cwl
+id: pash_3.0lx.cwl
 inputs:
 - id: in_vertical_input
   doc: "| -v <verticalFile>  Vertical sequence as a fasta input file with full path;\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dev_config.cwl
+id: hailctl_dev_config.cwl
 inputs:
 - id: in_location
   doc: 'Location. (default: external)'

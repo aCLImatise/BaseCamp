@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TMalign.cwl
+id: TMalign.cwl
 inputs: []
 outputs:
 - id: out_stdout

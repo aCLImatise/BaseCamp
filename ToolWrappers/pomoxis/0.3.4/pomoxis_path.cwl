@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pomoxis_path.cwl
+id: pomoxis_path.cwl
 inputs:
 - id: in_program
   doc: name of program.

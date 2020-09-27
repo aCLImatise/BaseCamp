@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runInteMAP.py.cwl
+id: runInteMAP.py.cwl
 inputs:
 - id: in_outfile
   doc: Output contig file

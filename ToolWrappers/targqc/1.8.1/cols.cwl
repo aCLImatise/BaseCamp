@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cols.cwl
+id: cols.cwl
 inputs:
 - id: in_number_estimate_size
   doc: "The number of lines to read in to estimate the size of a column.\n[default\

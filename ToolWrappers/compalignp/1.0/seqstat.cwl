@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqstat.cwl
+id: seqstat.cwl
 inputs:
 - id: in_report_info_just
   doc: ': report per-sequence info, not just a summary'

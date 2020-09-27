@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../STAR_Fusion.cwl
+id: STAR_Fusion.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbiproxy.cwl
+id: dbiproxy.cwl
 inputs: []
 outputs:
 - id: out_stdout

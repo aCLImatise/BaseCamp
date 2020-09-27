@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gen_paths.sh.cwl
+id: gen_paths.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rchive.Linux.cwl
+id: rchive.Linux.cwl
 inputs: []
 outputs:
 - id: out_stdout

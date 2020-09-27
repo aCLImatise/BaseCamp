@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msms.cwl
+id: msms.cwl
 inputs:
 - id: in_probe_radius
   doc: ': probe sphere radius, [1.5]'

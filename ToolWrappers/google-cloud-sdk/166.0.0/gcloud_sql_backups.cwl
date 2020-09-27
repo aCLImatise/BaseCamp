@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_backups.cwl
+id: gcloud_sql_backups.cwl
 inputs:
 - id: in_instances
   doc: SYNOPSIS

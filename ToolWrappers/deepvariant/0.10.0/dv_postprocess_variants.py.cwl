@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dv_postprocess_variants.py.cwl
+id: dv_postprocess_variants.py.cwl
 inputs:
 - id: in_outfile
   doc: ''

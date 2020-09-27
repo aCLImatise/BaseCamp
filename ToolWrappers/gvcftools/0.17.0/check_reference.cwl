@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_reference.cwl
+id: check_reference.cwl
 inputs:
 - id: in_ref
   doc: samtools reference sequence (required)

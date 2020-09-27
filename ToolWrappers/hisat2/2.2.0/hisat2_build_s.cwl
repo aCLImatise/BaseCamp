@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_build_s.cwl
+id: hisat2_build_s.cwl
 inputs:
 - id: in_reference_sequences_given
   doc: "reference sequences given on cmd line (as\n<reference_in>)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_peaks.cwl
+id: combine_peaks.cwl
 inputs:
 - id: in_macs_summit_files
   doc: "[FNAME [FNAME ...]], --input [FNAME [FNAME ...]]\nMACS2 summit or narrowPeak\

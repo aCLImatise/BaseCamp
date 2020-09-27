@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclSingletons.cwl
+id: orthomclSingletons.cwl
 inputs:
 - id: in_good_proteins
   doc: ''

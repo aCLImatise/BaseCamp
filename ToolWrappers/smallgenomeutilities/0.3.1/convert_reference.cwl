@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_reference.cwl
+id: convert_reference.cwl
 inputs:
 - id: in_name_target_contig
   doc: Name of target contig

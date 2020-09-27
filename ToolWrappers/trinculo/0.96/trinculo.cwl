@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trinculo.cwl
+id: trinculo.cwl
 inputs: []
 outputs:
 - id: out_stdout

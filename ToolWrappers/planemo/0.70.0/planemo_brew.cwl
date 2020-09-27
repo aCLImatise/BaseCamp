@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_brew.cwl
+id: planemo_brew.cwl
 inputs:
 - id: in_brew
   doc: Homebrew 'brew' executable to use.

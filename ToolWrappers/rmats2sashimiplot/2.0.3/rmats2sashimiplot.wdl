@@ -19,7 +19,6 @@ task Rmats2sashimiplot {
     Int? color
     Int? font_size
     Boolean? hide_number
-    Boolean? no_text_background
     String usage
   }
   command <<<
@@ -41,8 +40,7 @@ task Rmats2sashimiplot {
       ~{if defined(min_counts) then ("--min-counts " +  '"' + min_counts + '"') else ""} \
       ~{if defined(color) then ("--color " +  '"' + color + '"') else ""} \
       ~{if defined(font_size) then ("--font-size " +  '"' + font_size + '"') else ""} \
-      ~{if (hide_number) then "--hide-number" else ""} \
-      ~{if (no_text_background) then "--no-text-background" else ""}
+      ~{if (hide_number) then "--hide-number" else ""}
   >>>
   parameter_meta {
     type_event_rmats: "Type of event from rMATS result used in the\\nanalysis.eventType is 'SE', 'A5SS', 'A3SS', 'MXE' or\\n'RI'.'SE' is for skipped exon events,'A5SS' is for\\nalternative 5' splice site events,'A3SS' is for\\nalternative 3' splice site events,'MXE' is for\\nmutually exclusive exons events and 'RI' is for\\nretained intron events (Only if using rMATS format\\nresult as event file)."
@@ -61,8 +59,7 @@ task Rmats2sashimiplot {
     min_counts: "If the junction count is smaller than this number,\\nthis single junction's count would be omitted in the\\nplot."
     color: "Set the color in format(\\\"#CC0011\\\"[,\\\"#CC0011\\\"]). The\\nnumber of the colors equal to the total number of bam\\nfiles in different samples."
     font_size: "Set the font size."
-    hide_number: ""
-    no_text_background: ""
+    hide_number: "--no-text-background\\n"
     usage: ""
   }
   output {

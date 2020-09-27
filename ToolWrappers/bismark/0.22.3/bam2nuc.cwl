@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2nuc.cwl
+id: bam2nuc.cwl
 inputs:
 - id: in_dir
   doc: Output directory. Output is written to the current directory if not specified

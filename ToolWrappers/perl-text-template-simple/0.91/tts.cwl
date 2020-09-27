@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tts.cwl
+id: tts.cwl
 inputs:
 - id: in_string_template_execute
   doc: String template to execute

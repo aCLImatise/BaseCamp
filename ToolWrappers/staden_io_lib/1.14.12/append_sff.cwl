@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../append_sff.cwl
+id: append_sff.cwl
 inputs:
 - id: in_add_me_dots_ff
   doc: ''

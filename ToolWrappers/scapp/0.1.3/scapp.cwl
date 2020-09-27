@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scapp.cwl
+id: scapp.cwl
 inputs:
 - id: in_graph
   doc: Assembly graph FASTG file to process

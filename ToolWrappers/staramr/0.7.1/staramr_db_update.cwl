@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../staramr_db_update.cwl
+id: staramr_db_update.cwl
 inputs:
 - id: in_update_default
   doc: Updates default database directory (/usr/local/lib/python3.7/site-packages/staramr/databases/data).

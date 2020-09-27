@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_spark.sh.cwl
+id: find_spark.sh.cwl
 inputs:
 - id: in_which
   doc: ''

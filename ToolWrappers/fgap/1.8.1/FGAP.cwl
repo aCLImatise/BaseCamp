@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FGAP.cwl
+id: FGAP.cwl
 inputs:
 - id: in__draftfile_draft
   doc: "/--draft-file        Draft genome file [fasta format - Ex: 'draft.fasta']"

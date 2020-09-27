@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoencoder_neural_network.cwl
+id: autoencoder_neural_network.cwl
 inputs: []
 outputs:
 - id: out_stdout

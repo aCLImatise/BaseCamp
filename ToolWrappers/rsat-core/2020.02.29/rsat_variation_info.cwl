@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: ../../../rsat_variation_info.cwl
+id: rsat_variation_info.cwl
 inputs:
+- id: in_type
+  doc: "Example 2: only accept deletions and insertions\n-type insertion,deletion"
+  type: long
+  inputBinding:
+    prefix: -type
 - id: in_variation_info
   doc: "\e[1mVERSION\e[0m"
   type: string
@@ -41,11 +46,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_insertion
-  doc: http://www.sequenceontology.org/browser/release_2.5/term/SO:0000667
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

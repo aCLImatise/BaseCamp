@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mzml2isa.cwl
+id: mzml2isa.cwl
 inputs:
 - id: in_input_folder_archive
   doc: input folder or archive containing mzML files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanonet2d.cwl
+id: nanonet2d.cwl
 inputs:
 - id: in_no_fast_q
   doc: "Output fastq rather than fasta. (Default: --no-fastq)\n(default: False)"

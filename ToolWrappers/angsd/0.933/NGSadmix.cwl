@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSadmix.cwl
+id: NGSadmix.cwl
 inputs:
 - id: in_likes
   doc: likelihood filename

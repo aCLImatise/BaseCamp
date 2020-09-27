@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsrc.cwl
+id: dsrc.cwl
 inputs:
 - id: in_n_dna_compression
   doc: '<n>   : DNA compression mode: 0-3, default: 0'

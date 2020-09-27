@@ -1,16 +1,13 @@
 class: CommandLineTool
-id: ../../../add_gff_info_coverage.cwl
+id: add_gff_info_coverage.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "-a, --sample-alignment TEXT  sample name and correspondent alignment file\n\
+    separated by comma  [required]\n--help                       Show this message\
+    \ and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_sample_alignment
-  doc: "sample name and correspondent alignment file\nseparated by comma  [required]"
-  type: File
-  inputBinding:
-    prefix: --sample-alignment
 - id: in_input_file
   doc: ''
   type: string

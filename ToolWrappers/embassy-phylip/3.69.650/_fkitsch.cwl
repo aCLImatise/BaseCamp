@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fkitsch.cwl
+id: _fkitsch.cwl
 inputs:
 - id: in_matrix_type
   doc: "menu       [s] Type of data matrix (Values: s (Square);\nu (Upper triangular);\

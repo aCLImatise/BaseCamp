@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../suppa.py_joinFiles.cwl
+id: suppa.py_joinFiles.cwl
 inputs:
 - id: in_input_files
   doc: "Space separated list of the files to be joined. If the\nabsolute path is not\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obtautomer.cwl
+id: obtautomer.cwl
 inputs: []
 outputs:
 - id: out_stdout

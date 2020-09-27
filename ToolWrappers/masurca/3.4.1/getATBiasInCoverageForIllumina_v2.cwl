@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getATBiasInCoverageForIllumina_v2.cwl
+id: getATBiasInCoverageForIllumina_v2.cwl
 inputs: []
 outputs:
 - id: out_stdout

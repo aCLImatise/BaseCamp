@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpuid.cwl
+id: cpuid.cwl
 inputs: []
 outputs:
 - id: out_stdout

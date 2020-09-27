@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../malt_build.cwl
+id: malt_build.cwl
 inputs:
 - id: in_input
   doc: '[string(s)]              Input reference files in FastA format (or specify

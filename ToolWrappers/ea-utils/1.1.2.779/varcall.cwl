@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varcall.cwl
+id: varcall.cwl
 inputs:
 - id: in_calculate_statistics
   doc: Calculate statistics

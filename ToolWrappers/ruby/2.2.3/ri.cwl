@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ri.cwl
+id: ri.cwl
 inputs:
 - id: in__interactive_interactive
   doc: ", --[no-]interactive           In interactive mode you can repeatedly\nlook\

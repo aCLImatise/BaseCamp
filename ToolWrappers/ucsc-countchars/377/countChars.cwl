@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../countChars.cwl
+id: countChars.cwl
 inputs:
 - id: in_char
   doc: ''

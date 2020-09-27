@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getOntology.R.cwl
+id: getOntology.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

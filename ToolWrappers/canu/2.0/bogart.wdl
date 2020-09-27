@@ -31,7 +31,6 @@ task Bogart {
     String error_profiles
     String chunk_graph
     String place_unplaced
-    String split_discontinuous
     String setparent_and_hang
   }
   command <<<
@@ -40,7 +39,6 @@ task Bogart {
       ~{error_profiles} \
       ~{chunk_graph} \
       ~{place_unplaced} \
-      ~{split_discontinuous} \
       ~{setparent_and_hang} \
       ~{if defined(mandatory_path_existing_seqstore) then ("-S " +  '"' + mandatory_path_existing_seqstore + '"') else ""} \
       ~{if defined(mandatory_path_existing_ovlstore) then ("-O " +  '"' + mandatory_path_existing_ovlstore + '"') else ""} \
@@ -98,7 +96,6 @@ task Bogart {
     error_profiles: "optimizePositions"
     chunk_graph: "buildUnitig"
     place_unplaced: "orphans"
-    split_discontinuous: "intermediateTigs"
     setparent_and_hang: "stderr"
   }
   output {

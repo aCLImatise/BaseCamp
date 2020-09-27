@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dazcon.cwl
+id: dazcon.cwl
 inputs:
 - id: in__verboseturns_verbose
   doc: ",  --verbose\nTurns on verbose logging"
@@ -52,12 +52,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -j
-- id: in_daz_con
-  doc: "[-v] [-o] [-x] [-m <uint>] -s <string> -a <string> [-t <uint>]\n[-l <uint>]\
-    \ [-c <uint>] [-j <int>] [--] [--version] [-h] <list\nof ints> ..."
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

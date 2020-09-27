@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bufet.py.cwl
+id: bufet.py.cwl
 inputs:
 - id: in_mirna
   doc: ': path to the miRNA group file'

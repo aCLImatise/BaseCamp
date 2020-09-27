@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addFeatureToMatrix.cwl
+id: addFeatureToMatrix.cwl
 inputs:
 - id: in_matrix
   doc: 'deeptools matrix (default: None)'

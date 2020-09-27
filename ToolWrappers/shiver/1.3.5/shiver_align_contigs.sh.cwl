@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shiver_align_contigs.sh.cwl
+id: shiver_align_contigs.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_conda_lint.cwl
+id: planemo_conda_lint.cwl
 inputs:
 - id: in_report_level
   doc: '[all|warn|error]'

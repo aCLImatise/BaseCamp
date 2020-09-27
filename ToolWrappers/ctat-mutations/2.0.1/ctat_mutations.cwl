@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctat_mutations.cwl
+id: ctat_mutations.cwl
 inputs:
 - id: in_left
   doc: Path to one of the two paired RNAseq samples (left)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedCommonRegions.cwl
+id: bedCommonRegions.cwl
 inputs: []
 outputs:
 - id: out_stdout

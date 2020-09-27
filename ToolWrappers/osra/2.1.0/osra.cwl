@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../osra.cwl
+id: osra.cwl
 inputs:
 - id: in_learn
   doc: Print out all structure guesses with confidence parameters
@@ -122,12 +122,23 @@ inputs:
   type: long
   inputBinding:
     prefix: -R
-- id: in_osra
-  doc: "[--learn] [-w <filename>] [--preview <filename>] [-s <dimensions,\n300x400>]\
-    \ [-o <filename prefix>] [-v] [-d] [-a <configfile>] [-l\n<configfile>] [-b] [-c]\
-    \ [-e] [-g] [-p] [--embedded-format\n<inchi/smi/can>] [-f <can/smi/sdf>] [-i]\
-    \ [-j] [-u <default: 0\nrounds>] [-t <0.2..0.8>] [-r <default: auto>] [-n] [-R\
-    \ <0..360>]\n[--] [--version] [-h] <filename>"
+- id: in_three_zero_zero_x_four_zero_zero
+  doc: ''
+  type: long
+  inputBinding:
+    position: 0
+- id: in_config_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_inch_i_slash_smi_slash_can
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_rounds
+  doc: ''
   type: string
   inputBinding:
     position: 0

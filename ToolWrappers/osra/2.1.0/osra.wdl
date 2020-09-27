@@ -25,11 +25,17 @@ task Osra {
     Boolean? default_auto_autoresolution
     Boolean? _negateinvert_color
     Int? _rotate_rotate
-    String osra
+    Int three_zero_zero_x_four_zero_zero
+    String config_file
+    String inch_i_slash_smi_slash_can
+    String rounds
   }
   command <<<
     osra \
-      ~{osra} \
+      ~{three_zero_zero_x_four_zero_zero} \
+      ~{config_file} \
+      ~{inch_i_slash_smi_slash_can} \
+      ~{rounds} \
       ~{if (learn) then "--learn" else ""} \
       ~{if defined(_write_filenamewrite) then ("-w " +  '"' + _write_filenamewrite + '"') else ""} \
       ~{if defined(preview) then ("--preview " +  '"' + preview + '"') else ""} \
@@ -78,7 +84,10 @@ task Osra {
     default_auto_autoresolution: "<default: auto>,  --resolution <default: auto>\\nResolution in dots per inch"
     _negateinvert_color: ",  --negate\\nInvert color (white on black)"
     _rotate_rotate: ",  --rotate <0..360>\\nRotate image clockwise by specified number of degrees"
-    osra: "[--learn] [-w <filename>] [--preview <filename>] [-s <dimensions,\\n300x400>] [-o <filename prefix>] [-v] [-d] [-a <configfile>] [-l\\n<configfile>] [-b] [-c] [-e] [-g] [-p] [--embedded-format\\n<inchi/smi/can>] [-f <can/smi/sdf>] [-i] [-j] [-u <default: 0\\nrounds>] [-t <0.2..0.8>] [-r <default: auto>] [-n] [-R <0..360>]\\n[--] [--version] [-h] <filename>"
+    three_zero_zero_x_four_zero_zero: ""
+    config_file: ""
+    inch_i_slash_smi_slash_can: ""
+    rounds: ""
   }
   output {
     File out_stdout = stdout()

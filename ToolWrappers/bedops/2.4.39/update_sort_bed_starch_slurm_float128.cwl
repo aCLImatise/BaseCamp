@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_sort_bed_starch_slurm_float128.cwl
+id: update_sort_bed_starch_slurm_float128.cwl
 inputs: []
 outputs:
 - id: out_stdout

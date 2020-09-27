@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../draw_model_graph_sequence_number.cwl
+id: draw_model_graph_sequence_number.cwl
 inputs:
 - id: in_draw_model_graph
   doc: ''

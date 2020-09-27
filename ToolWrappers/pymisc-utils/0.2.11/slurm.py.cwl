@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slurm.py.cwl
+id: slurm.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

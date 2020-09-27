@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runByDirectory.cwl
+id: runByDirectory.cwl
 inputs:
 - id: in_num_threads
   doc: Number of threads (1)

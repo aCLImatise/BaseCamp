@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calc_expected_accuracy_from_fastq.py.cwl
+id: calc_expected_accuracy_from_fastq.py.cwl
 inputs:
 - id: in_qv_trim_five
   doc: "Ignore length on 5' for QV calculation (default: 100\nbp)"

@@ -2,7 +2,6 @@ version 1.0
 
 task PdbSearcherpy {
   input {
-    File? e_slash_env
     String? ion
     File? list
     File? env
@@ -13,7 +12,6 @@ task PdbSearcherpy {
   }
   command <<<
     PdbSearcher_py \
-      ~{if defined(e_slash_env) then ("-e/--env " +  '"' + e_slash_env + '"') else ""} \
       ~{if defined(ion) then ("--ion " +  '"' + ion + '"') else ""} \
       ~{if defined(list) then ("--list " +  '"' + list + '"') else ""} \
       ~{if defined(env) then ("--env " +  '"' + env + '"') else ""} \
@@ -23,7 +21,6 @@ task PdbSearcherpy {
       ~{if defined(i_slash_ion) then ("-i/--ion " +  '"' + i_slash_ion + '"') else ""}
   >>>
   parameter_meta {
-    e_slash_env: ""
     ion: "Element symbol of ion, e.g. Zn"
     list: "List file name, list file contains one PDB file name\\nper line"
     env: "Environment file name. An environment file is used to\\nstore the metal center environment information such as\\nligating atoms, distance, geometry etc. For each bond,\\nthere is a record."

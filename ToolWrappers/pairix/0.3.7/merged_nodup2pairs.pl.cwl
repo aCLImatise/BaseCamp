@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merged_nodup2pairs.pl.cwl
+id: merged_nodup2pairs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

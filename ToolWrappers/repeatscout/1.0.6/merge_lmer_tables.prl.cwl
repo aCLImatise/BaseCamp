@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_lmer_tables.prl.cwl
+id: merge_lmer_tables.prl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BtToxin_scanner.cwl
+id: BtToxin_scanner.cwl
 inputs:
 - id: in_exit
   doc: '[--threads (INT)]             Number of threads to be used ( Default 4 )'

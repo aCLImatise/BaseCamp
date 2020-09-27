@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deprecated_decorator.py.cwl
+id: deprecated_decorator.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

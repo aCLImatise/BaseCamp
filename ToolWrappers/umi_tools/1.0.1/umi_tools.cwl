@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umi_tools.cwl
+id: umi_tools.cwl
 inputs: []
 outputs:
 - id: out_stdout

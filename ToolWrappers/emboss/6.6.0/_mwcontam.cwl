@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_mwcontam.cwl
+id: _mwcontam.cwl
 inputs:
 - id: in_tolerance
   doc: float      [50.0] Ppm tolerance (Any numeric value)

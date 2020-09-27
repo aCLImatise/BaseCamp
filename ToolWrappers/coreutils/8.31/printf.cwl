@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../printf.cwl
+id: printf.cwl
 inputs:
 - id: in_format
   doc: ''

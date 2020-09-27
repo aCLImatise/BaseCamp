@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fill_read_coverage.cwl
+id: fill_read_coverage.cwl
 inputs:
 - id: in_depot
   doc: depot path (string)

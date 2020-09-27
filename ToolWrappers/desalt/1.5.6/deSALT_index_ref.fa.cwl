@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deSALT_index_ref.fa.cwl
+id: deSALT_index_ref.fa.cwl
 inputs:
 - id: in_de_bga
   doc: ''

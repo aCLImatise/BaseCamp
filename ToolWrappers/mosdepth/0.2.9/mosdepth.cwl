@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mosdepth.cwl
+id: mosdepth.cwl
 inputs:
 - id: in_threads
   doc: 'number of BAM decompression threads [default: 0]'

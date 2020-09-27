@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapper.pl.orig.cwl
+id: mapper.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

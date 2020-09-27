@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summary_table.sh.cwl
+id: summary_table.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

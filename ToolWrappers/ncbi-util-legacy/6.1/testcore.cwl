@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../testcore.cwl
+id: testcore.cwl
 inputs:
 - id: in_test_boolean_default
   doc: "test Boolean [T/F]\ndefault = T"

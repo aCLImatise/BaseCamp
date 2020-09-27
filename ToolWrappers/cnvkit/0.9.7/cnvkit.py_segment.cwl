@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_segment.cwl
+id: cnvkit.py_segment.cwl
 inputs:
 - id: in_output
   doc: "Output table file name (CNR-like table of segments,\n.cns)."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene_order.pl.cwl
+id: gene_order.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

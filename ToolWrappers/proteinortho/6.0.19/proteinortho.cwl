@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho.cwl
+id: proteinortho.cwl
 inputs:
 - id: in_project
   doc: '=    prefix for all result file names [default: myproject]'

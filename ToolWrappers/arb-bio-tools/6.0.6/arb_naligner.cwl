@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_naligner.cwl
+id: arb_naligner.cwl
 inputs: []
 outputs:
 - id: out_stdout

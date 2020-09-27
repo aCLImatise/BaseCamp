@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../finalFusion.cwl
+id: finalFusion.cwl
 inputs:
 - id: in_library_file
   doc: Library file.

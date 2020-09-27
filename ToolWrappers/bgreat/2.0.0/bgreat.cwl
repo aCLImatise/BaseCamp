@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgreat.cwl
+id: bgreat.cwl
 inputs:
 - id: in_file_unpaired
   doc: file (unpaired)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_reference.py.cwl
+id: prepare_reference.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

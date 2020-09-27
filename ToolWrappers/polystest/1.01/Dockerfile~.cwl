@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Dockerfile~.cwl
+id: Dockerfile~.cwl
 inputs: []
 outputs:
 - id: out_stdout

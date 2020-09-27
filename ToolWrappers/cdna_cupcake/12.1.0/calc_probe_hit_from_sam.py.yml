@@ -3,49 +3,35 @@ command:
 - calc_probe_hit_from_sam.py
 positional:
 - !Positional
-  description: input_fasta_or_fastq
-  position: 0
-  name: bed_filename
-  optional: false
-- !Positional
-  description: 'positional arguments:'
-  position: 1
-  name: sam_or_gtf
-  optional: false
-- !Positional
-  description: input_fasta_or_fastq
-  position: 2
-  name: bed_filename
-  optional: false
-- !Positional
   description: 'optional arguments:'
-  position: 3
+  position: 0
   name: sam_or_gtf
   optional: false
 named:
 - !Flag
-  description: ''
+  description: "--end_base {0,1}\n[-o OUTPUT]\nbed_filename\ninput_fasta_or_fastq\n\
+    sam_or_gtf"
   synonyms:
   - --start_base
   args: !ChoiceFlagArg
     choices: !!set
-      ? "1"
-      ? "0"
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --end_base
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? "1"
-      ? "0"
+      '1':
+      '0':
   optional: true
 - !Flag
   description: Input is GTF instead of SAM
   synonyms:
   - --gtf
   args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: End base is 0 or 1-based index
+  synonyms:
+  - --end_base
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
   optional: true
 - !Flag
   description: "Output filename (default: stdout)\n"

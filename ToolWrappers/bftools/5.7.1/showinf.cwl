@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../showinf.cwl
+id: showinf.cwl
 inputs:
 - id: in_version
   doc: ": print the library version and exit\nfile: the image file to read"

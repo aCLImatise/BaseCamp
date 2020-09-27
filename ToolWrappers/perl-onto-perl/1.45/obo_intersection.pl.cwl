@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obo_intersection.pl.cwl
+id: obo_intersection.pl.cwl
 inputs:
 - id: in_l
   doc: OBO input file 1
@@ -16,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_options
-  doc: ':'
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

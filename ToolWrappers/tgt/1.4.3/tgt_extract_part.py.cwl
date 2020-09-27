@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgt_extract_part.py.cwl
+id: tgt_extract_part.py.cwl
 inputs:
 - id: in_start_time_interval
   doc: Start time of the interval to be extracted.

@@ -1,9 +1,12 @@
 class: CommandLineTool
-id: ../../../phyluce_align_convert_one_align_to_another.cwl
+id: phyluce_align_convert_one_align_to_another.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--input-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\n\
+    [--output-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\n\
+    [--cores CORES]\n[--shorten-names]\n[--name-conf NAME_CONF]\n[--verbosity {INFO,WARN,CRITICAL}]\n\
+    [--log-path LOG_PATH]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_alignments

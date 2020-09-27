@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trnanalysis.cwl
+id: trnanalysis.cwl
 inputs: []
 outputs:
 - id: out_stdout

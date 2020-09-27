@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exclude_similar_proteins.pl.cwl
+id: exclude_similar_proteins.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

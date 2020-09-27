@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_config.cwl
+id: gsutil_config.cwl
 inputs:
 - id: in_see_options_cause
   doc: (see OPTIONS below) cause gsutil config to request a token
@@ -71,46 +71,31 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_gs_o_auth_two_refresh_token
-  doc: gs_port
-  type: long
-  inputBinding:
-    position: 3
-- id: in_gs_secret_access_key
-  doc: s3_host
-  type: string
-  inputBinding:
-    position: 4
 - id: in_s_three_port
   doc: '[Boto]'
   type: long
   inputBinding:
-    position: 5
+    position: 3
 - id: in_proxy
   doc: proxy_port
   type: string
   inputBinding:
-    position: 6
+    position: 4
 - id: in_proxy_user
   doc: proxy_pass
   type: string
   inputBinding:
-    position: 7
+    position: 5
 - id: in_proxy_rdns
   doc: http_socket_timeout
   type: string
   inputBinding:
-    position: 8
+    position: 6
 - id: in_https_validate_certificates
   doc: debug
   type: string
   inputBinding:
-    position: 9
-- id: in_max_retry_delay
-  doc: num_retries
-  type: string
-  inputBinding:
-    position: 10
+    position: 7
 - id: in_service_account
   doc: '[GSUtil]'
   type: string
@@ -156,46 +141,26 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: in_rsync_buffer_lines
-  doc: software_update_check_period
-  type: string
-  inputBinding:
-    position: 0
-- id: in_state_dir
-  doc: tab_completion_time_logs
-  type: string
-  inputBinding:
-    position: 1
-- id: in_tab_completion_timeout
-  doc: task_estimation_threshold
-  type: string
-  inputBinding:
-    position: 2
 - id: in_use_magic_file
   doc: '[OAuth2]'
   type: string
   inputBinding:
-    position: 3
+    position: 0
 - id: in_client_id
   doc: client_secret
   type: string
   inputBinding:
-    position: 4
+    position: 1
 - id: in_o_auth_two_refresh_retries
   doc: provider_authorization_uri
   type: long
   inputBinding:
-    position: 5
-- id: in_provider_label
-  doc: provider_token_uri
-  type: string
-  inputBinding:
-    position: 6
+    position: 2
 - id: in_token_cache
   doc: UPDATING TO THE LATEST CONFIGURATION FILE
   type: string
   inputBinding:
-    position: 7
+    position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream

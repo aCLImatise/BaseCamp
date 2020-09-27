@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_exportReads.cwl
+id: mixcr_exportReads.cwl
 inputs:
 - id: in_verbose
   doc: Verbose warning messages.

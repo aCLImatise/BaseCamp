@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: ../../../secapr_find_target_contigs.cwl
+id: secapr_find_target_contigs.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--min-coverage MIN_COVERAGE]\n[--min-identity MIN_IDENTITY]\n[--keep-duplicates]\
+    \ [--keep-paralogs]\n[--disable_stats]"
+  type: long
   inputBinding:
     prefix: --output
 - id: in_contigs

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minimize_pdb.py.cwl
+id: minimize_pdb.py.cwl
 inputs:
 - id: in_input_pdb_file
   doc: Input PDB file

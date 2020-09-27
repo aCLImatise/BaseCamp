@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_phased_ovlp_to_graph.py.cwl
+id: fc_phased_ovlp_to_graph.py.cwl
 inputs:
 - id: in_min_len
   doc: 'minimum length of the reads to be considered for assembling (default: 4000)'
@@ -18,16 +18,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --lfc
-- id: in_c_path
-  doc: ctg_paths
-  type: string
-  inputBinding:
-    position: 0
-- id: in_sg_edges_list
-  doc: utg_data
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

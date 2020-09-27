@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pispino_createreadpairslist.cwl
+id: pispino_createreadpairslist.cwl
 inputs:
 - id: in_directory_raw_sequences
   doc: "[REQUIRED] Directory with your raw sequences in\ngzipped FASTQ"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAPhylo.cwl
+id: RNAPhylo.cwl
 inputs:
 - id: in__phylogeny_tree
   doc: ': The phylogeny tree'

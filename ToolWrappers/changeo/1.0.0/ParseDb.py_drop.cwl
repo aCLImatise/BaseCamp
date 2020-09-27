@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseDb.py_drop.cwl
+id: ParseDb.py_drop.cwl
 inputs:
 - id: in_list_tab_defaultnone
   doc: "A list of tab delimited database files. (default:\nNone)"

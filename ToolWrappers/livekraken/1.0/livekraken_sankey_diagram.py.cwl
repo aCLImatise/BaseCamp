@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../livekraken_sankey_diagram.py.cwl
+id: livekraken_sankey_diagram.py.cwl
 inputs:
 - id: in_in_file
   doc: "Used to list input files, can be used several times to\ninput an ordered list\

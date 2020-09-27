@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_gen_programs_vignette.cwl
+id: anvi_script_gen_programs_vignette.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.

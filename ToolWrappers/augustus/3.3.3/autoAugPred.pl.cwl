@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoAugPred.pl.cwl
+id: autoAugPred.pl.cwl
 inputs:
 - id: in_genome
   doc: fasta file with DNA sequences for training

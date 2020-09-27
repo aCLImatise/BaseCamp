@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeTagDirectory.cwl
+id: makeTagDirectory.cwl
 inputs:
 - id: in_frag_length
   doc: "<# | given | pe> (Set estimated fragment length or use PE length - given:\
@@ -86,79 +86,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -minlen
-- id: in_genome
-  doc: (To see available genomes, use "-genome list")
-  type: string
-  inputBinding:
-    prefix: -genome
-- id: in_or
-  doc: '(for custom genomes):'
-  type: boolean
-  inputBinding:
-    prefix: -or-
-- id: in_check_gc
-  doc: (check Sequence bias, requires "-genome")
-  type: boolean
-  inputBinding:
-    prefix: -checkGC
-- id: in_freq_start
-  doc: '<#> (offset to start calculating frequency, default: -50)'
-  type: boolean
-  inputBinding:
-    prefix: -freqStart
-- id: in_freq_end
-  doc: '<#> (distance past fragment length to calculate frequency, default: +50)'
-  type: boolean
-  inputBinding:
-    prefix: -freqEnd
-- id: in_oligo_start
-  doc: <#> (oligo bias start)
-  type: boolean
-  inputBinding:
-    prefix: -oligoStart
-- id: in_oligo_end
-  doc: <#> (oligo bias end)
-  type: boolean
-  inputBinding:
-    prefix: -oligoEnd
-- id: in_norm_gc
-  doc: "(i.e. tagGCcontent.txt file from control experiment)\nUse \"-normGC default\"\
-    \ to match the genomic GC distribution"
-  type: File
-  inputBinding:
-    prefix: -normGC
-- id: in_norm_fixed_oligo
-  doc: (normalize 5' end bias, "-normFixedOligo default" ok)
-  type: File
-  inputBinding:
-    prefix: -normFixedOligo
-- id: in_norm_length
-  doc: (i.e. tagLengthDistribution.txt file from control experiment)
-  type: long
-  inputBinding:
-    prefix: -normLength
-- id: in_min_norm_ratio
-  doc: '<#> (Minimum deflation ratio of tag counts, default: 0.25)'
-  type: boolean
-  inputBinding:
-    prefix: -minNormRatio
-- id: in_max_norm_ratio
-  doc: '<#> (Maximum inflation ratio of tag counts, default: 2.0)'
-  type: boolean
-  inputBinding:
-    prefix: -maxNormRatio
-- id: in_iter_norm
-  doc: "<#> (Sets -max/minNormRatio to 1 and 0, iteratively normalizes such that the\n\
-    resulting distrubtion is no more than #% different than target, i.e. 0.1,default:\
-    \ off)"
-  type: boolean
-  inputBinding:
-    prefix: -iterNorm
-- id: in_filter_reads
-  doc: <offset> <keep|remove> (filter reads based on oligo sequence in the genome)
-  type: string
-  inputBinding:
-    prefix: -filterReads
 - id: in_remove_pe_bg
   doc: (remove paired end tags within 1.5x fragment length on same chr)
   type: boolean

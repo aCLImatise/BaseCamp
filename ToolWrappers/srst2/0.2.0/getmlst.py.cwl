@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getmlst.py.cwl
+id: getmlst.py.cwl
 inputs:
 - id: in_repository_url
   doc: URL for MLST repository XML index

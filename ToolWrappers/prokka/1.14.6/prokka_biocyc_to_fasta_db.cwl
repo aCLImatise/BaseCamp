@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka_biocyc_to_fasta_db.cwl
+id: prokka_biocyc_to_fasta_db.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_contig_annotate.cwl
+id: fc_contig_annotate.cwl
 inputs: []
 outputs:
 - id: out_stdout

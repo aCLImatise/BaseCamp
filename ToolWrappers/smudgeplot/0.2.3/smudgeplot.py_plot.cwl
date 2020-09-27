@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smudgeplot.py_plot.cwl
+id: smudgeplot.py_plot.cwl
 inputs:
 - id: in_pattern_used_name
   doc: The pattern used to name the output (smudgeplot).

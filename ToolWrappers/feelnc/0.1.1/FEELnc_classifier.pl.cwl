@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FEELnc_classifier.pl.cwl
+id: FEELnc_classifier.pl.cwl
 inputs:
 - id: in_biotype
   doc: Print the biotype of each transcripts in the output

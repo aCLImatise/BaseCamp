@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uri_unescape.pl.cwl
+id: uri_unescape.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refgenieserver_archive.cwl
+id: refgenieserver_archive.cwl
 inputs:
 - id: in_config
   doc: "A path to the refgenie config file (YAML). If not\nprovided, the first available\

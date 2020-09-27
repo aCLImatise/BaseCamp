@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sindex.cwl
+id: sindex.cwl
 inputs:
 - id: in_output_ssi_index
   doc: ': output the SSI index to file named <f>'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ENA_phyloFlash.pl.cwl
+id: ENA_phyloFlash.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

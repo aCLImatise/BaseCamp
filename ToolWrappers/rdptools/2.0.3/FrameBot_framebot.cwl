@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FrameBot_framebot.cwl
+id: FrameBot_framebot.cwl
 inputs:
 - id: in_alignment_mode
   doc: 'Alignment mode: glocal, local or global (default = glocal)'

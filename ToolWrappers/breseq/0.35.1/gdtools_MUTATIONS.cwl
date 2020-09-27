@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_MUTATIONS.cwl
+id: gdtools_MUTATIONS.cwl
 inputs:
 - id: in_output
   doc: Path to output GD file with mutations predicted from evidence. (DEFAULT=output.gd)

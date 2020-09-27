@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate.cwl
+id: simulate.cwl
 inputs:
 - id: in_vcf
   doc: "(required)\nName of input VCF file"

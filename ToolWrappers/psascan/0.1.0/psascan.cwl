@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psascan.cwl
+id: psascan.cwl
 inputs:
 - id: in_gap
   doc: "specify the file holding the gap array (default:\nFILE.sa5.gap)"

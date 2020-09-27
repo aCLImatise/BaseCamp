@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iHS.cwl
+id: iHS.cwl
 inputs:
 - id: in_region
   doc: :1-1000 > STDOUT 2> STDERR

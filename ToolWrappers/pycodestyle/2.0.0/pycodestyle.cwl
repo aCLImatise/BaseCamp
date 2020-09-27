@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pycodestyle.cwl
+id: pycodestyle.cwl
 inputs:
 - id: in_verbose
   doc: print status messages, or debug with -vv

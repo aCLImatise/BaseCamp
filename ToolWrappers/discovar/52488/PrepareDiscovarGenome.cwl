@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrepareDiscovarGenome.cwl
+id: PrepareDiscovarGenome.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pandaseq_hang.cwl
+id: pandaseq_hang.cwl
 inputs: []
 outputs:
 - id: out_stdout

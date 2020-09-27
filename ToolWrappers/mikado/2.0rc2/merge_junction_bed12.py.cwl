@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_junction_bed12.py.cwl
+id: merge_junction_bed12.py.cwl
 inputs:
 - id: in_delim
   doc: 'Delimiter for merged names. Default: ;'

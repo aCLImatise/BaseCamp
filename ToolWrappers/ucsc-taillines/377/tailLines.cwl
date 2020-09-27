@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tailLines.cwl
+id: tailLines.cwl
 inputs:
 - id: in_file
   doc: ''

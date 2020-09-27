@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../udocker.py.cwl
+id: udocker.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

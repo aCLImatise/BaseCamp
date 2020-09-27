@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_collect.cwl
+id: sketchy_collect.cwl
 inputs:
 - id: in_directory
   doc: Path to directory to collect {prefix}.data.tsv

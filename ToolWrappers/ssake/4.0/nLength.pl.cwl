@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nLength.pl.cwl
+id: nLength.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

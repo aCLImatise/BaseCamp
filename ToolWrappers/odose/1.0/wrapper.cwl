@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wrapper.cwl
+id: wrapper.cwl
 inputs: []
 outputs:
 - id: out_stdout

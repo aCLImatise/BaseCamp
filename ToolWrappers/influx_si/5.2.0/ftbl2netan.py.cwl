@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2netan.py.cwl
+id: ftbl2netan.py.cwl
 inputs:
 - id: in_network
   doc: ''

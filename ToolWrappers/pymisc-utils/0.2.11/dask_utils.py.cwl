@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dask_utils.py.cwl
+id: dask_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

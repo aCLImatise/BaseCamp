@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stacks_dist_extract.cwl
+id: stacks_dist_extract.cwl
 inputs:
 - id: in_dist_file
   doc: ''

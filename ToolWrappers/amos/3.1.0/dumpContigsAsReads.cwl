@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpContigsAsReads.cwl
+id: dumpContigsAsReads.cwl
 inputs:
 - id: in_bank
   doc: bank where assembly is stored

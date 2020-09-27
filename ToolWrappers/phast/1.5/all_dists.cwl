@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../all_dists.cwl
+id: all_dists.cwl
 inputs:
 - id: in_mod
   doc: Read from tree model (*.mod) file(s) instead of Newick file.

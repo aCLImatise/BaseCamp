@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runMIRfix.sh.cwl
+id: runMIRfix.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

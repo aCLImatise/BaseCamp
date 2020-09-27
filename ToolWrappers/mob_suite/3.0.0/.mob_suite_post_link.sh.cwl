@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.mob_suite_post_link.sh.cwl
+id: .mob_suite_post_link.sh.cwl
 inputs:
 - id: in_d_load
   doc: Upload   Total   Spent    Left  Speed

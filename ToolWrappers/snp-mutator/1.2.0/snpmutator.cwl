@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snpmutator.cwl
+id: snpmutator.cwl
 inputs:
 - id: in_num_simulations
   doc: "Number of mutated sequences to generate. (default:\n100)"

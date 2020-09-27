@@ -2,7 +2,7 @@ version 1.0
 
 task SvtkResolve {
   input {
-    String? cytoband_s
+    Int? cytoband_s
     File? disc_file
     File? disc_file_list
     Int? min_rescan_pe_support
@@ -27,7 +27,7 @@ task SvtkResolve {
       ~{if defined(quiet) then ("--quiet " +  '"' + quiet + '"') else ""}
   >>>
   parameter_meta {
-    cytoband_s: ""
+    cytoband_s: "[--min-rescan-pe-support MIN_RESCAN_PE_SUPPORT]\\n[-x BED.GZ] [-u UNRESOLVED] [-p PREFIX] [-q QUIET]\\nraw resolved"
     disc_file: "Scraped discordant pairs. Required to attempt to\\nresolve single-ender inversions."
     disc_file_list: "Tab-delimited list of discordant pair files and\\nindices"
     min_rescan_pe_support: "Minumum discordant pairs required during single-ender\\nrescan."

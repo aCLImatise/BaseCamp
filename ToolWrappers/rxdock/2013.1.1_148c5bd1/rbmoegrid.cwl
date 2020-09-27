@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbmoegrid.cwl
+id: rbmoegrid.cwl
 inputs:
 - id: in_output
   doc: "output file name prefix (.grd is suffixed)\n(default: moegrid)"

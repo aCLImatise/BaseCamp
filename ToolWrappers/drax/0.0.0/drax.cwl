@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drax.cwl
+id: drax.cwl
 inputs:
 - id: in_exports_current_system
   doc: "Exports all current system environment\nDefault: false"

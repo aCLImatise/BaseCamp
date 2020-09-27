@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterSpliceHints.pl.cwl
+id: filterSpliceHints.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

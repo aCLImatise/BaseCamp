@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonkit_children.sh.cwl
+id: taxonkit_children.sh.cwl
 inputs:
 - id: in_file_tax_ids
   doc: ''

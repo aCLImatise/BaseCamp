@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../versions.cwl
+id: versions.cwl
 inputs:
 - id: in_target
   doc: Target output file for version numbers

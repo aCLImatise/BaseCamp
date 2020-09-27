@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trim.py.cwl
+id: trim.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_cache_clean.cwl
+id: singularity_cache_clean.cwl
 inputs:
 - id: in_name
   doc: "specify a container cache to clean (will clear all\ncache with the same name)"

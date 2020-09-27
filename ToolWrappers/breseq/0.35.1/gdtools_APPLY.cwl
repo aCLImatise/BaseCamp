@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_APPLY.cwl
+id: gdtools_APPLY.cwl
 inputs:
 - id: in_output
   doc: Output file name (DEFAULT=output.*)

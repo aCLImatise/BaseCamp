@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclLoadBlast.sql.cwl
+id: orthomclLoadBlast.sql.cwl
 inputs: []
 outputs:
 - id: out_stdout

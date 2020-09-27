@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf2bed.pl.cwl
+id: gtf2bed.pl.cwl
 inputs:
 - id: in_input_gtf
   doc: ''

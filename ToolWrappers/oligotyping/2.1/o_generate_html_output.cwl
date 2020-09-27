@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_generate_html_output.cwl
+id: o_generate_html_output.cwl
 inputs:
 - id: in_output_directory
   doc: Output directory for HTML output to be stored

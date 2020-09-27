@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../select_best_ORFs_per_transcript.pl.cwl
+id: select_best_ORFs_per_transcript.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

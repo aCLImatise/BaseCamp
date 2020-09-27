@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_energyshift.py.cwl
+id: design_energyshift.py.cwl
 inputs:
 - id: in_file
   doc: Read file in *.inp format

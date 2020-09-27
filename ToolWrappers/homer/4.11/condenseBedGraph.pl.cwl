@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../condenseBedGraph.pl.cwl
+id: condenseBedGraph.pl.cwl
 inputs:
-- id: in_s
-  doc: ''
+- id: in_log_output_log
+  doc: "-log (output log2)\n"
   type: File
   inputBinding:
     prefix: -s
-- id: in_log
-  doc: (output log2)
-  type: boolean
-  inputBinding:
-    prefix: -log
 outputs:
 - id: out_stdout
   doc: Standard output stream

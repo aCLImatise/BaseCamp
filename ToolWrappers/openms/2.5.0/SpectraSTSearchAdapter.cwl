@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpectraSTSearchAdapter.cwl
+id: SpectraSTSearchAdapter.cwl
 inputs:
 - id: in_executable
   doc: '*                                                            Path to the SpectraST

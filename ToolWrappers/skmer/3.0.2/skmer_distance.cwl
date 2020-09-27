@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skmer_distance.cwl
+id: skmer_distance.cwl
 inputs:
 - id: in_output_distances_prefix
   doc: 'Output (distances) prefix. Default: ref-dist-mat'

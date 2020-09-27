@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shims.py.cwl
+id: shims.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

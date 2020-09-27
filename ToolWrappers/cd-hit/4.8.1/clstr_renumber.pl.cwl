@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr_renumber.pl.cwl
+id: clstr_renumber.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

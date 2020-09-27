@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xaLeap.cwl
+id: xaLeap.cwl
 inputs: []
 outputs:
 - id: out_stdout

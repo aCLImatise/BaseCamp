@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_nexus2nh.pl.cwl
+id: bp_nexus2nh.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

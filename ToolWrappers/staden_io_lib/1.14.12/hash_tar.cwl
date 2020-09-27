@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hash_tar.cwl
+id: hash_tar.cwl
 inputs:
 - id: in_tar_archive_filename
   doc: 'Tar archive filename: use if reading from stdin'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamcat.cwl
+id: bamcat.cwl
 inputs: []
 outputs:
 - id: out_stdout

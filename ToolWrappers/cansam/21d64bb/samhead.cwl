@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samhead.cwl
+id: samhead.cwl
 inputs:
 - id: in_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tree.py.cwl
+id: tree.py.cwl
 inputs:
 - id: in_debug
   doc: Keep temporary files to debug program.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bfc.cwl
+id: bfc.cwl
 inputs:
 - id: in_approx_genome_size
   doc: approx genome size (k/m/g allowed; change -k and -b) [unset]

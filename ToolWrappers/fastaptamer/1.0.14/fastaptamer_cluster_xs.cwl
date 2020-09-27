@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaptamer_cluster_xs.cwl
+id: fastaptamer_cluster_xs.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -20,7 +20,6 @@ task Grmpy {
     File? arg_output_file
     Boolean? arg_folder_paragraph
     File? path_sequence_matching
-    Boolean? progress
     Boolean? arg_reference_genome
     File? response_file
     Boolean? print_program_version
@@ -51,7 +50,6 @@ task Grmpy {
       ~{if (arg_output_file) then "-o" else ""} \
       ~{if (arg_folder_paragraph) then "-O" else ""} \
       ~{if defined(path_sequence_matching) then ("--path-sequence-matching " +  '"' + path_sequence_matching + '"') else ""} \
-      ~{if (progress) then "--progress" else ""} \
       ~{if (arg_reference_genome) then "-r" else ""} \
       ~{if defined(response_file) then ("--response-file " +  '"' + response_file + '"') else ""} \
       ~{if (print_program_version) then "-v" else ""}
@@ -75,7 +73,6 @@ task Grmpy {
     arg_output_file: "[ --output-file ] arg                  Output file name. Will output to\\nstdout if omitted or '-'."
     arg_folder_paragraph: "[ --output-folder ] arg                Output folder path. paragraph will\\nattempt to create the folder but\\nnot the entire path. Will output to\\nstdout if neither of output-file or\\noutput-folder provided. If\\nspecified, paragraph will produce\\none output file for each input file\\nbearing the same name."
     path_sequence_matching: "(=0)         Enables alignment to paths"
-    progress: "[=arg(=1)] (=1)"
     arg_reference_genome: "[ --reference ] arg                    Reference genome fasta file."
     response_file: "file with more command line"
     print_program_version: "[ --version ]                          print program version information"

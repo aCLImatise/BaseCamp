@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../group_ORF_sequences.py.cwl
+id: group_ORF_sequences.py.cwl
 inputs:
 - id: in_is_p_bid
   doc: ''

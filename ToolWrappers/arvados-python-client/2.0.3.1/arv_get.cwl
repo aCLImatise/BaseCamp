@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_get.cwl
+id: arv_get.cwl
 inputs:
 - id: in_retries
   doc: "Maximum number of times to retry server requests that\nencounter temporary\

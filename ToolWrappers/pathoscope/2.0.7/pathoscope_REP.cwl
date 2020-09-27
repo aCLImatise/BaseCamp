@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathoscope_REP.cwl
+id: pathoscope_REP.cwl
 inputs:
 - id: in_sam_tools_home
   doc: "Full Path to samtools binary directory (Default: Uses\nsamtools in system\

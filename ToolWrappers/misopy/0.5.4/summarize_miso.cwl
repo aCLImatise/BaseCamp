@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarize_miso.cwl
+id: summarize_miso.cwl
 inputs:
 - id: in_summarize_samples
   doc: "Compute summary statistics of the given set of\nsamples. Expects a directory\

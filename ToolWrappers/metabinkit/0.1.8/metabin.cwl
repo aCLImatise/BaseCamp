@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metabin.cwl
+id: metabin.cwl
 inputs:
 - id: in_input
   doc: TSV file name

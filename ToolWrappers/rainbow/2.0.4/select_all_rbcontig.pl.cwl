@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../select_all_rbcontig.pl.cwl
+id: select_all_rbcontig.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

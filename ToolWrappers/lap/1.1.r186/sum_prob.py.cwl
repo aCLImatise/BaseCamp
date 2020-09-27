@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sum_prob.py.cwl
+id: sum_prob.py.cwl
 inputs:
 - id: in_threshold
   doc: "any probabilities below this threshold are\nset to the threshold value. (default\

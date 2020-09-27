@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_bed.py.cwl
+id: map_bed.py.cwl
 inputs:
 - id: in_wig_dir
   doc: use a faster algorithm.

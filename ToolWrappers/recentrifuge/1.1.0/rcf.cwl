@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rcf.cwl
+id: rcf.cwl
 inputs:
 - id: in_nodes_path
   doc: "path for the nodes information files (nodes.dmp and\nnames.dmp from NCBI)"

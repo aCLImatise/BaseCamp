@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_analyze_shotgun.cwl
+id: mixcr_analyze_shotgun.cwl
 inputs:
 - id: in_no_warnings
   doc: Suppress all warning messages.

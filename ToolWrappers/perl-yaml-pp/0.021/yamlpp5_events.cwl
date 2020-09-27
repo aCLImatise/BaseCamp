@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../yamlpp5_events.cwl
-inputs:
-- id: in_str
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -STR
+id: yamlpp5_events.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

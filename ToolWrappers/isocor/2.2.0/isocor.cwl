@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isocor.cwl
+id: isocor.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recover_fusion_alignments_order.cwl
+id: recover_fusion_alignments_order.cwl
 inputs: []
 outputs:
 - id: out_stdout

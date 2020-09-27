@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spamo.cwl
+id: spamo.cwl
 inputs:
 - id: in_create_directory_write
   doc: "create the directory and write output files in it;\nnot compatible with -oc"

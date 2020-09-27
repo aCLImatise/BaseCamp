@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../planemo_config_init.cwl
+id: planemo_config_init.cwl
 inputs:
 - id: in_template
-  doc: ''
+  doc: "--help           Show this message and exit.\n"
   type: string
   inputBinding:
     prefix: --template

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_celltype.cwl
+id: MotifRaptor_celltype.cwl
 inputs:
 - id: in_snp_hit_with_seq
   doc: "need header and columns in this text file with\nsequence (CHR is only a number):\

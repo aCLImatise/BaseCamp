@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipyrad.cwl
+id: ipyrad.cwl
 inputs:
 - id: in_results
   doc: show results summary for Assembly in params.txt and

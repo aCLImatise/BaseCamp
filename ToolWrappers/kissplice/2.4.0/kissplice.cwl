@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kissplice.cwl
+id: kissplice.cwl
 inputs:
 - id: in_input_fastaq_read
   doc: "input fasta/q read files or compressed (.gz) fasta/q\nfiles (mutiple, such\

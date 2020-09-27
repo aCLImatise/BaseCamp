@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus2hal_stitch.sh.cwl
+id: cactus2hal_stitch.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

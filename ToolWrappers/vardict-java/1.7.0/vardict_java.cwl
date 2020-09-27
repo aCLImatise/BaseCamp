@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vardict_java.cwl
+id: vardict_java.cwl
 inputs:
 - id: in_indicate_move_indels
   doc: Indicate to move indels to 3-prime if alternative alignment can be achieved.
@@ -296,47 +296,24 @@ inputs:
   type: string
   inputBinding:
     prefix: -VS
-- id: in_insert_size
-  doc: 'The insert size.  Used for SV calling.  Default: 300'
+- id: in_insert_std
+  doc: "The insert size STD.  Used for SV calling.  Default: 100\n-w,--insert-size\
+    \ <INT>              The insert size.  Used for SV calling.  Default: 300\n-X\
+    \ <INT>                            Extension of bp to look for mismatches after\
+    \ insersion or deletion.  Default to 2 bp, or only calls when\nthey're within\
+    \ 2 bp.\n-x <INT>                            The number of nucleotide to extend\
+    \ for each segment, default: 0\n-Y,--ref-extension <INT>            Extension\
+    \ of bp of reference to build lookup table. Default to 1200 bp. Increase the number\
+    \ will slowdown\nthe program. The main purpose is to call large indels with 1000\
+    \ bp that can be missed by discordant mate\npairs.\n-y,--verbose\n-Z,--downsample\
+    \ <double>            For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.\
+    \  Default: No downsampling.  Use with\ncaution.  The\ndownsampling will be random\
+    \ and non-reproducible.\n-z <0/1>                            Indicate whether\
+    \ coordinates are zero-based, as IGV uses.  Default: 1 for BED file or amplicon\
+    \ BED file.\nUse 0 to turn it off. When using the -R option, it's set to 0"
   type: long
   inputBinding:
-    prefix: --insert-size
-- id: in_extension_look_bp
-  doc: "Extension of bp to look for mismatches after insersion or deletion.  Default\
-    \ to 2 bp, or only calls when\nthey're within 2 bp."
-  type: long
-  inputBinding:
-    prefix: -X
-- id: in_number_nucleotide_extend
-  doc: 'The number of nucleotide to extend for each segment, default: 0'
-  type: long
-  inputBinding:
-    prefix: -x
-- id: in_ref_extension
-  doc: "Extension of bp of reference to build lookup table. Default to 1200 bp. Increase\
-    \ the number will slowdown\nthe program. The main purpose is to call large indels\
-    \ with 1000 bp that can be missed by discordant mate\npairs."
-  type: long
-  inputBinding:
-    prefix: --ref-extension
-- id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: in_down_sample
-  doc: 'For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default:
-    No downsampling.  Use with'
-  type: double
-  inputBinding:
-    prefix: --downsample
-- id: in_indicate_zerobased_uses
-  doc: "Indicate whether coordinates are zero-based, as IGV uses.  Default: 1 for\
-    \ BED file or amplicon BED file.\nUse 0 to turn it off. When using the -R option,\
-    \ it's set to 0"
-  type: long
-  inputBinding:
-    prefix: -z
+    prefix: --insert-std
 - id: in_insert_std_dot
   doc: 'Default: 4'
   type: string
@@ -363,7 +340,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_emit_warnings_keep
+- id: in_lenient
   doc: '- Emit warnings but keep going if possible.'
   type: string
   inputBinding:
@@ -373,17 +350,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_winsertstd_int_insert
-  doc: '-W,--insert-std <INT>               The insert size STD.  Used for SV calling.  Default:
-    100'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_caution_dot
-  doc: The
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../promer.cwl
+id: promer.cwl
 inputs:
 - id: in_mum
   doc: "Use anchor matches that are unique in both the reference\nand query"
@@ -51,50 +51,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -g
-- id: in_help
-  doc: Display help information and exit.
-  type: boolean
-  inputBinding:
-    prefix: --help
-- id: in_minmatch_set_length
-  doc: "|minmatch     Set the minimum length of a single match, measured in amino\n\
-    acids (default 6)"
-  type: boolean
-  inputBinding:
-    prefix: -l
-- id: in_masklen_set_masking
-  doc: "|masklen      Set the maximum bookend masking lenth, measured in amino\nacids\
-    \ (default 8)"
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: in_o
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -o
-- id: in_coords
-  doc: "Automatically generate the original PROmer1.1 \".coords\"\noutput file using\
-    \ the \"show-coords\" program"
-  type: File
-  inputBinding:
-    prefix: --coords
-- id: in_prefix_set_prefix
-  doc: '|prefix       Set the prefix of the output files (default "out")'
-  type: boolean
-  inputBinding:
-    prefix: -p
-- id: in_v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -V
-- id: in_matrix_set_number
-  doc: "|matrix       Set the alignment matrix number to 1 [BLOSUM 45], 2 [BLOSUM\n\
-    62] or 3 [BLOSUM 80] (default 2)\n"
-  type: boolean
-  inputBinding:
-    prefix: -x
 - id: in_reference
   doc: Set the input reference multi-FASTA DNA file
   type: string
@@ -109,12 +65,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_coords
-  doc: "Automatically generate the original PROmer1.1 \".coords\"\noutput file using\
-    \ the \"show-coords\" program"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_coords)
 cwlVersion: v1.1
 baseCommand:
 - promer

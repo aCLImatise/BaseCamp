@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getreads.sh.cwl
+id: getreads.sh.cwl
 inputs:
 - id: in_in
   doc: ''

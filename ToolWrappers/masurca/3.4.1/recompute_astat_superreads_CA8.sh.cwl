@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recompute_astat_superreads_CA8.sh.cwl
+id: recompute_astat_superreads_CA8.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

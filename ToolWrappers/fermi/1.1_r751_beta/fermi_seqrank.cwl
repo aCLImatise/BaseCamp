@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_seqrank.cwl
+id: fermi_seqrank.cwl
 inputs:
 - id: in_fermi
   doc: ''

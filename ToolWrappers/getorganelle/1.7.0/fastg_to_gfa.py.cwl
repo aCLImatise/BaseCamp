@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastg_to_gfa.py.cwl
+id: fastg_to_gfa.py.cwl
 inputs:
 - id: in_fastgtwogfadotpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequence_subtract.py_input_fastx_bait.cwl
+id: sequence_subtract.py_input_fastx_bait.cwl
 inputs:
 - id: in_o
   doc: ''

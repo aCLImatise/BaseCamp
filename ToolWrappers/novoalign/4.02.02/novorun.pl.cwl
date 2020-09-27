@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novorun.pl.cwl
+id: novorun.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

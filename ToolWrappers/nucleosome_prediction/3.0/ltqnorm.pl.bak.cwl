@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ltqnorm.pl.bak.cwl
+id: ltqnorm.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_filter_zeros..cwl
+id: lyner_filter_zeros..cwl
 inputs:
 - id: in_lyne_r
   doc: ''

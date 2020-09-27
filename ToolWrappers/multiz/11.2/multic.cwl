@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multic.cwl
+id: multic.cwl
 inputs: []
 outputs:
 - id: out_stdout

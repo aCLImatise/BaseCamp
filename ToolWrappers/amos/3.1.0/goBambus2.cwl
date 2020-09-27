@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goBambus2.cwl
+id: goBambus2.cwl
 inputs:
 - id: in_all
   doc: ': run ALL steps (irrespective of flags)'

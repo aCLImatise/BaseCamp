@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_nodesdb.cwl
+id: blobtools_nodesdb.cwl
 inputs:
 - id: in_nodes
   doc: NCBI nodes.dmp file.

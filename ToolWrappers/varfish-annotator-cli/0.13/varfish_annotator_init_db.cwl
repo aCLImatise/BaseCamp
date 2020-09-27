@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varfish_annotator_init_db.cwl
+id: varfish_annotator_init_db.cwl
 inputs:
 - id: in_clin_var_path
   doc: "Path to Clinvar TSV file(s) to use for import, see documentation for\nmore\
@@ -29,12 +29,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gnomad-genomes-path
-- id: in_hgmd_public
-  doc: "Path to HTMD Public TSV file to use for import, see documentation for\nmore\
-    \ information"
-  type: boolean
-  inputBinding:
-    prefix: --hgmd-public
 - id: in_region
   doc: Genomic region CHR:START-END (1-based) to import
   type: boolean

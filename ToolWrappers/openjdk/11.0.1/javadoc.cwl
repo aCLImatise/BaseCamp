@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../javadoc.cwl
+id: javadoc.cwl
 inputs:
 - id: in_add_modules
   doc: "(,<module>)*\nRoot modules to resolve in addition to the initial modules,\n\

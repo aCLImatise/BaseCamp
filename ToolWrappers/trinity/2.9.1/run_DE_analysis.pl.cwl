@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_DE_analysis.pl.cwl
+id: run_DE_analysis.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

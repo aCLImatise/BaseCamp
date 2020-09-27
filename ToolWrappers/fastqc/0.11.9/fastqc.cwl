@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqc.cwl
+id: fastqc.cwl
 inputs:
 - id: in_outdir
   doc: "Create all output files in the specified output directory.\nPlease note that\

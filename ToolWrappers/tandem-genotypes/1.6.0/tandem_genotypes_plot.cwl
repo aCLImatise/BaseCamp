@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tandem_genotypes_plot.cwl
+id: tandem_genotypes_plot.cwl
 inputs:
 - id: in_rows
   doc: arrange the graphs in this many rows (default=4)

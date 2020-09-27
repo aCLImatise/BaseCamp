@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2fasta.cwl
+id: bam2fasta.cwl
 inputs:
 - id: in_command
   doc: 'optional arguments:'

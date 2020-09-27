@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scancel_range.py_end.cwl
+id: scancel_range.py_end.cwl
 inputs:
 - id: in_s_cancel_range_do_tpy
   doc: ''

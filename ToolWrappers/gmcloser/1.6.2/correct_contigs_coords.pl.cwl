@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correct_contigs_coords.pl.cwl
+id: correct_contigs_coords.pl.cwl
 inputs:
 - id: in_query
   doc: input contig fasta file (e.g., contig1.fa)

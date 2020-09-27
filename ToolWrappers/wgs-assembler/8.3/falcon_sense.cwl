@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falcon_sense.cwl
+id: falcon_sense.cwl
 inputs:
 - id: in_n_core
   doc: number of processes used for generating consensus

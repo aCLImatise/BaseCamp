@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_transform.cwl
+id: lyner_transform.cwl
 inputs:
 - id: in_log_two_vertical_line_log_one_zero_vertical_line_log_vertical_line_exp_vertical_line_logo_nep_vertical_line_ex_pm_one_vertical_line_transpose
   doc: ''

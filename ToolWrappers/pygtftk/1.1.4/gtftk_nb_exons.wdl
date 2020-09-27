@@ -13,11 +13,9 @@ task GtftkNbExons {
     Boolean? keep_all
     Boolean? logger_file
     Boolean? write_message_to_file
-    String feature_dot
   }
   command <<<
     gtftk nb_exons \
-      ~{feature_dot} \
       ~{if (input_file) then "--inputfile" else ""} \
       ~{if (output_file) then "--outputfile" else ""} \
       ~{if (text_format) then "--text-format" else ""} \
@@ -42,7 +40,6 @@ task GtftkNbExons {
     keep_all: "Try to keep all temporary files even if process does not terminate normally. (default: False)"
     logger_file: "Stores the arguments passed to the command into a file. (default: None)"
     write_message_to_file: "Store all message into a file. (default: None)"
-    feature_dot: "Version:  2018-01-20"
   }
   output {
     File out_stdout = stdout()

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../crossSampleOverview.py.cwl
+id: crossSampleOverview.py.cwl
 inputs:
-- id: in_m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -m
 - id: in_file_location_summary
   doc: File location for the summary statistics from
   type: File
@@ -16,12 +11,27 @@ inputs:
   type: File
   inputBinding:
     prefix: -o
+- id: in_file_location_mfi
+  doc: File location for the MFI from FLOCK.
+  type: File
+  inputBinding:
+    prefix: -m
+- id: in_directory_location_html
+  doc: Directory location for the html supporting files.
+  type: Directory
+  inputBinding:
+    prefix: -d
+- id: in_location_sharetemplates_directory
+  doc: Location of the /share/templates Directory.
+  type: Directory
+  inputBinding:
+    prefix: -t
 - id: in_s
   doc: ''
   type: string
   inputBinding:
     prefix: -s
-- id: in_var_4
+- id: in_var_6
   doc: ''
   type: string
   inputBinding:
@@ -40,6 +50,11 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_file_location_html)
+- id: out_directory_location_html
+  doc: Directory location for the html supporting files.
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_directory_location_html)
 cwlVersion: v1.1
 baseCommand:
 - crossSampleOverview.py

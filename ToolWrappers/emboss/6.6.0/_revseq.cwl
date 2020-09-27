@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_revseq.cwl
+id: _revseq.cwl
 inputs:
 - id: in_description
   doc: 'General qualifiers:'

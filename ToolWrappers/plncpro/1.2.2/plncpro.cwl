@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plncpro.cwl
+id: plncpro.cwl
 inputs: []
 outputs:
 - id: out_stdout

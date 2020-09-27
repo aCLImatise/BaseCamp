@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_secondaryDatabase.cwl
+id: cactus_secondaryDatabase.cwl
 inputs: []
 outputs:
 - id: out_stdout

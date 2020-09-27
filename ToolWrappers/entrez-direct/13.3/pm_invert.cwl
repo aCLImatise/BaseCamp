@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pm_invert.cwl
+id: pm_invert.cwl
 inputs: []
 outputs:
 - id: out_stdout

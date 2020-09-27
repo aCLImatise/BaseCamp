@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_fusions.cwl
+id: oncogemini_fusions.cwl
 inputs:
 - id: in_in_cosmic_census
   doc: One or both genes in fusion is in COSMIC cancer census

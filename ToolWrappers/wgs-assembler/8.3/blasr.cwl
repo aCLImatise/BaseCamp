@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blasr.cwl
+id: blasr.cwl
 inputs:
 - id: in_ctab
   doc: "A table of tuple counts used to estimate match significance.  This is\nby\

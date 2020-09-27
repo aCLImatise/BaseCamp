@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_sam_for_rsem.cwl
+id: convert_sam_for_rsem.cwl
 inputs:
 - id: in_p_slash_num_threads
   doc: 'Set the number of threads to be used for converting. (Default: 1)'

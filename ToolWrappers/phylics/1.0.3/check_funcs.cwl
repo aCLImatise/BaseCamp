@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_funcs.cwl
+id: check_funcs.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BASIC.py.cwl
+id: BASIC.py.cwl
 inputs:
 - id: in_type_receptor_choices
   doc: "Type of receptor. Choices: \"BCR\" or \"TCR\" (default:\nBCR)"

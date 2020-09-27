@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GNPSExport.cwl
+id: GNPSExport.cwl
 inputs:
 - id: in_in_cm
   doc: "*                        Input file containing consensus elements with 'peptide'\

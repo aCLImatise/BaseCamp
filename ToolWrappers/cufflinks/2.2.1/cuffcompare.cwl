@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cuffcompare.cwl
+id: cuffcompare.cwl
 inputs:
 - id: in_text_file_process
   doc: "a text file with a list of Cufflinks GTF files to process instead\nof expecting\

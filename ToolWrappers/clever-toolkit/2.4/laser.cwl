@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../laser.cwl
+id: laser.cwl
 inputs:
 - id: in_extra_sensitive
   doc: Be more sensitive (at the expense of runtime).

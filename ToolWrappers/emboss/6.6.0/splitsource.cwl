@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitsource.cwl
+id: splitsource.cwl
 inputs:
 - id: in_feature
   doc: boolean    [N] Retain feature information

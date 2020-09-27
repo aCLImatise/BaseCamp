@@ -2,9 +2,9 @@ version 1.0
 
 task PipitsUc2otutable {
   input {
-    String? l
     File? i
     String? o
+    String? l
     String reads
     String and
     String writes
@@ -26,14 +26,14 @@ task PipitsUc2otutable {
       ~{a} \
       ~{single} \
       ~{file_dot} \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
   parameter_meta {
-    l: ""
     i: "[REQUIRED]"
     o: "[REQUIRED]"
+    l: "[REQUIRED]"
     reads: ""
     and: ""
     writes: ""

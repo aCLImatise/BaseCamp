@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contig_overlap_trimmer.cwl
+id: contig_overlap_trimmer.cwl
 inputs:
 - id: in_no_trim
   doc: Do not trim overlaps

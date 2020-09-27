@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../genPoHoLandscape.cwl
+id: genPoHoLandscape.cwl
 inputs:
-- id: in_nan
-  doc: 0      0
-  type: boolean
-  inputBinding:
-    prefix: -nan
 - id: in_p_q_h
   doc: P:2 Q2 H-3
   type: boolean

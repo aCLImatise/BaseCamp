@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM_setup.py_import_config.cwl
+id: DRAM_setup.py_import_config.cwl
 inputs:
 - id: in_config_loc
   doc: "CONFIG file to replace current CONFIG with (default:\nNone)\n"

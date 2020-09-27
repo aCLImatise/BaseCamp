@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactusAPITests.cwl
+id: cactusAPITests.cwl
 inputs: []
 outputs:
 - id: out_stdout

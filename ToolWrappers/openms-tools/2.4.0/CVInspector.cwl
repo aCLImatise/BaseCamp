@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CVInspector.cwl
+id: CVInspector.cwl
 inputs:
 - id: in_cv_files
   doc: "*    List of ontology files in OBO format. (valid formats: 'obo')"

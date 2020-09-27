@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../morpheus.cwl
+id: morpheus.cwl
 inputs: []
 outputs:
 - id: out_stdout

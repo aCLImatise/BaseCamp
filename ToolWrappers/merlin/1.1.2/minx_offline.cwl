@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../minx_offline.cwl
+id: minx_offline.cwl
 inputs:
-- id: in_dat_infer
-  doc: '[merlin-infer.dat],'
-  type: boolean
-  inputBinding:
-    prefix: --datinfer
 - id: in_ped_infer
   doc: '[merlin-infer.ped]'
   type: boolean

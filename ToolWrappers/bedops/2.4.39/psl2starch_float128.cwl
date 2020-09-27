@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psl2starch_float128.cwl
+id: psl2starch_float128.cwl
 inputs:
 - id: in_keep_header
   doc: "(-k)\nPreserve header section as pseudo-BED elements (requires --headered)"

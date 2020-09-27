@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yes.cwl
+id: yes.cwl
 inputs:
 - id: in_string
   doc: ''

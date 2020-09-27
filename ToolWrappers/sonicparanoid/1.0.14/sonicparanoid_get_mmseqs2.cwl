@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sonicparanoid_get_mmseqs2.cwl
+id: sonicparanoid_get_mmseqs2.cwl
 inputs:
 - id: in_output_directory
   doc: "The directory in which the source files of MMseqs2\nwill be stored."

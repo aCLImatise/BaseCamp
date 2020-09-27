@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tst_efetch.txt.cwl
+id: tst_efetch.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

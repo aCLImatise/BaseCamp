@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk_extract_distances.py.cwl
+id: poppunk_extract_distances.py.cwl
 inputs:
 - id: in_distances
   doc: "Prefix of input pickle and numpy file of pre-\ncalculated distances (required)"

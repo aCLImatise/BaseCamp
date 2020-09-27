@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ThermoRawFileParser.cwl
+id: ThermoRawFileParser.cwl
 inputs:
 - id: in_input
   doc: "The raw file input (Required). Specify this or an\ninput directory -d."
@@ -83,11 +83,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --s3_bucketName
-- id: in_verbose_dot
-  doc: -e, --ignoreInstrumentErrors
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jf_aligner.cwl
+id: jf_aligner.cwl
 inputs:
 - id: in_size
   doc: '*Number of k-mers in SuperReads'

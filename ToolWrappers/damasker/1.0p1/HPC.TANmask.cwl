@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HPC.TANmask.cwl
+id: HPC.TANmask.cwl
 inputs:
 - id: in_v
   doc: ''

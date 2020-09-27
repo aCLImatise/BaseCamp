@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MindTheGap_find.cwl
+id: MindTheGap_find.cwl
 inputs:
 - id: in_in
   doc: "(1 arg) :    input read file(s)  [default '']"

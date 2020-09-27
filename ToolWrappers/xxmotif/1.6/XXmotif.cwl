@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../XXmotif.cwl
+id: XXmotif.cwl
 inputs:
 - id: in_neg_set
   doc: sequence set which has to be used as a reference set

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_pan_genome_plots.R.cwl
+id: create_pan_genome_plots.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

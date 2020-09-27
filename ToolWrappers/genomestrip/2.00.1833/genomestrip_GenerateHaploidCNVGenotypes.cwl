@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomestrip_GenerateHaploidCNVGenotypes.cwl
+id: genomestrip_GenerateHaploidCNVGenotypes.cwl
 inputs:
 - id: in_vcf_file
   doc: Input file (vcf)

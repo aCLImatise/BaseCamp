@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM_setup.py_update_dram_forms.cwl
+id: DRAM_setup.py_update_dram_forms.cwl
 inputs:
 - id: in_output_dir
   doc: "Directory to store newly downloaded files, may want\nthis to be the same directory\

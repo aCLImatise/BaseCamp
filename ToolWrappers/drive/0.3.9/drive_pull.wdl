@@ -14,9 +14,6 @@ task DrivePull {
     Boolean? files
     Boolean? fix_clashes
     Boolean? force
-    Boolean? hidden
-    Boolean? id
-    Boolean? ignore_checksum
     Boolean? ignore_conflict
     Boolean? ignore_name_clashes
     Boolean? matches
@@ -46,9 +43,6 @@ task DrivePull {
       ~{if (files) then "-files" else ""} \
       ~{if (fix_clashes) then "-fix-clashes" else ""} \
       ~{if (force) then "-force" else ""} \
-      ~{if (hidden) then "-hidden" else ""} \
-      ~{if (id) then "-id" else ""} \
-      ~{if (ignore_checksum) then "-ignore-checksum" else ""} \
       ~{if (ignore_conflict) then "-ignore-conflict" else ""} \
       ~{if (ignore_name_clashes) then "-ignore-name-clashes" else ""} \
       ~{if (matches) then "-matches" else ""} \
@@ -77,9 +71,6 @@ task DrivePull {
     files: "pull only files"
     fix_clashes: "fix clashes by renaming or trashing files"
     force: "forces a pull even if no changes present"
-    hidden: "allows pulling of hidden paths"
-    id: "pull by id instead of path"
-    ignore_checksum: "avoids computation of checksums as a final check."
     ignore_conflict: "turns off the conflict resolution safety"
     ignore_name_clashes: "ignore name clashes"
     matches: "search by prefix"

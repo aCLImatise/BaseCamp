@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_remap.cwl
+id: fermi_remap.cwl
 inputs:
 - id: in_skip_ending_bases
   doc: skip ending INT bases of a read pair [0]

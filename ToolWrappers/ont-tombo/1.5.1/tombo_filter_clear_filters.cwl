@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_filter_clear_filters.cwl
+id: tombo_filter_clear_filters.cwl
 inputs:
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_todot.cwl
+id: abyss_todot.cwl
 inputs:
 - id: in_km_er
   doc: "report the mean k-mer coverage, otherwise\nthe sum k-mer coverage is reported"

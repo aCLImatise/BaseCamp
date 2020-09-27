@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_dependencies.pl.cwl
+id: test_dependencies.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

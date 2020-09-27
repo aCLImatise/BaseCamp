@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_snap_batch.cwl
+id: mimodd_snap_batch.cwl
 inputs:
 - id: in_one_more_completely
   doc: "\"COMMAND\" [\"COMMAND\" ...]\none or more completely specified command line\

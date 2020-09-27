@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme_rename.cwl
+id: meme_rename.cwl
 inputs:
 - id: in_options
   doc: "<dir>+          full path of MEME Suite program output directory\n[-d <dest>]\

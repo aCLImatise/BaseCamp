@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_ltrdetector.pl.cwl
+id: convert_ltrdetector.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

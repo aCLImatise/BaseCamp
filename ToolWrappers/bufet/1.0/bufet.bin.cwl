@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bufet.bin.cwl
+id: bufet.bin.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare.cwl
+id: compare.cwl
 inputs:
 - id: in_an_not
   doc: ''

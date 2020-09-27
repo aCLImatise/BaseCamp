@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reverse_bed_bed_out.cwl
+id: reverse_bed_bed_out.cwl
 inputs:
 - id: in_reverse_bed
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequnwinder.cwl
+id: sequnwinder.cwl
 inputs:
 - id: in_out
   doc: ': Ouput file prefix. All output will be put into a directory with the prefix

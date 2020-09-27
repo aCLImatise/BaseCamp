@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_overlap.cwl
+id: bedtools_overlap.cwl
 inputs:
 - id: in_input_file_use
   doc: Input file. Use "stdin" for pipes.

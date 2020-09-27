@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../head.cwl
+id: head.cwl
 inputs:
 - id: in_bytes
   doc: "=[-]NUM       print the first NUM bytes of each file;\nwith the leading '-',\

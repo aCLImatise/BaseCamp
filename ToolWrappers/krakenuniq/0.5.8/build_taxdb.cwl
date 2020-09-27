@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_taxdb.cwl
+id: build_taxdb.cwl
 inputs:
 - id: in_with
   doc: ''

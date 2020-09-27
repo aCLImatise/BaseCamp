@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../traitar_remove_phenotypes.cwl
+id: traitar_remove_phenotypes.cwl
 inputs:
 - id: in_keep
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_dedup_h_tigs.py.cwl
+id: fc_dedup_h_tigs.py.cwl
 inputs:
 - id: in_ctg_id
   doc: 'optional arguments:'

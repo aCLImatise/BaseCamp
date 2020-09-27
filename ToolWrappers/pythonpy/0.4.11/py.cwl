@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../py.cwl
+id: py.cwl
 inputs:
 - id: in_treat_row_x
   doc: treat each row of stdin as x

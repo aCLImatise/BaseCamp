@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed2DtoUCSCbed.pl.cwl
+id: bed2DtoUCSCbed.pl.cwl
 inputs:
 - id: in_ucsc
   doc: (outputs BED12 format for visualizing 2D BED file in the UCSC browser)

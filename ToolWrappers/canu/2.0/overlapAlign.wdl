@@ -5,8 +5,6 @@ task OverlapAlign {
     File? mandatory_path_seqstore
     File? mandatorym_path_overlaps
     String? process_reads_bgnid
-    String? trim
-    File? apply
     String? erate
     Boolean? partial
     String? memory
@@ -18,8 +16,6 @@ task OverlapAlign {
       ~{if defined(mandatory_path_seqstore) then ("-S " +  '"' + mandatory_path_seqstore + '"') else ""} \
       ~{if defined(mandatorym_path_overlaps) then ("-O " +  '"' + mandatorym_path_overlaps + '"') else ""} \
       ~{if defined(process_reads_bgnid) then ("-r " +  '"' + process_reads_bgnid + '"') else ""} \
-      ~{if defined(trim) then ("-trim " +  '"' + trim + '"') else ""} \
-      ~{if defined(apply) then ("-apply " +  '"' + apply + '"') else ""} \
       ~{if defined(erate) then ("-erate " +  '"' + erate + '"') else ""} \
       ~{if (partial) then "-partial" else ""} \
       ~{if defined(memory) then ("-memory " +  '"' + memory + '"') else ""} \
@@ -30,8 +26,6 @@ task OverlapAlign {
     mandatory_path_seqstore: "Mandatory, path to seqStore sequences."
     mandatorym_path_overlaps: "Mandatorym path to ovlStore overlaps."
     process_reads_bgnid: "[-endID]  Process reads bgnID to endID, inclusive."
-    trim: ""
-    apply: "<...>"
     erate: "Overlaps are computed at 'e' fraction error; must be larger than the original erate"
     partial: "Overlaps are 'overlapInCore -S' partial overlaps"
     memory: "Use up to 'm' GB of memory"

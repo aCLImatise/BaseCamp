@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PeptideIndexer.cwl
+id: PeptideIndexer.cwl
 inputs:
 - id: in_in
   doc: "*                      Input idXML file containing the identifications. (valid\

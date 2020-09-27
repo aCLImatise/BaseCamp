@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../advntr_delmodel_genotype.cwl
+id: advntr_delmodel_genotype.cwl
 inputs:
 - id: in_vid_slash_vntr_id
   doc: VNTR ID

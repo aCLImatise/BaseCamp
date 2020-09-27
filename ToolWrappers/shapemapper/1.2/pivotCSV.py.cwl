@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pivotCSV.py.cwl
+id: pivotCSV.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

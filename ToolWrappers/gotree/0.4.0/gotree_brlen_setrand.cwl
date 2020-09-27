@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_brlen_setrand.cwl
+id: gotree_brlen_setrand.cwl
 inputs:
 - id: in_max_mean
   doc: Mean of the exponential distribution of branch lengths will be drawn uniformly

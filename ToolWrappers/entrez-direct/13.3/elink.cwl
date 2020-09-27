@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../elink.cwl
+id: elink.cwl
 inputs:
 - id: in_related
   doc: Neighbors in same database

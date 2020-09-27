@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_dependencyTest.cwl
+id: watchdog_dependencyTest.cwl
 inputs: []
 outputs:
 - id: out_stdout

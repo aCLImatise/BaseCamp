@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_encode.cwl
+id: rgt_tools.py_encode.cwl
 inputs:
 - id: in_input_file_list
   doc: Input file list downloaded from ENCODE

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ansible_playbook.cwl
+id: ansible_playbook.cwl
 inputs:
 - id: in_ask_become_pass
   doc: ask for privilege escalation password

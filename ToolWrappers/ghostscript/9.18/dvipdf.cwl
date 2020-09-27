@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dvipdf.cwl
+id: dvipdf.cwl
 inputs:
 - id: in_options_dot_dot_dot
   doc: ''

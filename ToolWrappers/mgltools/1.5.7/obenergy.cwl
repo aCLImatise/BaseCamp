@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obenergy.cwl
+id: obenergy.cwl
 inputs: []
 outputs:
 - id: out_stdout

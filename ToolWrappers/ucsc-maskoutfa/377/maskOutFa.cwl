@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maskOutFa.cwl
+id: maskOutFa.cwl
 inputs:
 - id: in_soft
   doc: '- puts masked parts in lower case other in upper.'

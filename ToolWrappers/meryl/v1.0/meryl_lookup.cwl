@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meryl_lookup.cwl
+id: meryl_lookup.cwl
 inputs:
 - id: in_sequence_two
   doc: only required for -include and -exclude

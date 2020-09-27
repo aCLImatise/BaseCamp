@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metilene.cwl
+id: metilene.cwl
 inputs:
 - id: in_max_dist
   doc: maximum distance (default:300)

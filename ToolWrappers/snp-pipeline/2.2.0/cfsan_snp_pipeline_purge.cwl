@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfsan_snp_pipeline_purge.cwl
+id: cfsan_snp_pipeline_purge.cwl
 inputs:
 - id: in_verbose
   doc: 'Verbose message level (0=no info, 5=lots) (default: 1)'

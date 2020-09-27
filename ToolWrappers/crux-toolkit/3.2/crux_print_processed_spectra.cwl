@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_print_processed_spectra.cwl
+id: crux_print_processed_spectra.cwl
 inputs:
 - id: in_ms_two_file
   doc: ''

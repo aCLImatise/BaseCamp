@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../REALPHY_v112.cwl
+id: REALPHY_v112.cwl
 inputs:
 - id: in_read_length
   doc: '[integer] default=50 Possible values: Integer greater than 30; Size of fragments

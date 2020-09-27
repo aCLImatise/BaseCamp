@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TQSfastq.py.cwl
+id: TQSfastq.py.cwl
 inputs:
 - id: in_fast_q
   doc: "=FASTQFILE\nfastq (fq) file - standard (ASCII+33) encoded PHRED\nquality scores\

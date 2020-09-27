@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goetia.cwl
+id: goetia.cwl
 inputs: []
 outputs:
 - id: out_stdout

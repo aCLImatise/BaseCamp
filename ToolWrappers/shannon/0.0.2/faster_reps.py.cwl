@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faster_reps.py.cwl
+id: faster_reps.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

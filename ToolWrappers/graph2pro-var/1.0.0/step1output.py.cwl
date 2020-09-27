@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../step1output.py.cwl
+id: step1output.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

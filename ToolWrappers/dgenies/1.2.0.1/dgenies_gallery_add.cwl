@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dgenies_gallery_add.cwl
+id: dgenies_gallery_add.cwl
 inputs:
 - id: in_id_job
   doc: Id (name) of the job to add to the gallery

@@ -1,29 +1,32 @@
 class: CommandLineTool
-id: ../../../preprocess.py_454.cwl
+id: preprocess.py_454.cwl
 inputs:
 - id: in_input_archive
-  doc: '| --input-R1 R1_FILE [R1_FILE ...]'
+  doc: "| --input-R1 R1_FILE [R1_FILE ...]\n--min-amplicon-size MIN_AMPLICON_SIZE\n\
+    --max-amplicon-size MAX_AMPLICON_SIZE\n--five-prim-primer FIVE_PRIM_PRIMER\n--three-prim-primer\
+    \ THREE_PRIM_PRIMER\n[--fungi {ITS1,ITS2}]\n[-p NB_CPUS] [--debug] [-v]\n[-d DEREPLICATED_FILE]\
+    \ [-c COUNT_FILE]\n[-s SUMMARY_FILE] [-l LOG_FILE]"
   type: File
   inputBinding:
     prefix: --input-archive
 - id: in_min_amplicon_size
-  doc: ''
+  doc: The minimum size for the amplicons (with primers).
   type: long
   inputBinding:
     prefix: --min-amplicon-size
 - id: in_max_amplicon_size
-  doc: ''
+  doc: The maximum size for the amplicons (with primers).
   type: long
   inputBinding:
     prefix: --max-amplicon-size
 - id: in_five_prim_primer
-  doc: ''
-  type: string
+  doc: The 5' primer sequence (wildcards are accepted).
+  type: long
   inputBinding:
     prefix: --five-prim-primer
 - id: in_three_prim_primer
-  doc: ''
-  type: string
+  doc: The 3' primer sequence (wildcards are accepted).
+  type: long
   inputBinding:
     prefix: --three-prim-primer
 - id: in_nb_cpus

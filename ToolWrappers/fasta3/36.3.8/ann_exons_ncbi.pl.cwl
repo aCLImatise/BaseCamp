@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ann_exons_ncbi.pl.cwl
+id: ann_exons_ncbi.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sgen.cwl
+id: sgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

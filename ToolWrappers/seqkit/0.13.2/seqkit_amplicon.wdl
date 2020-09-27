@@ -3,7 +3,6 @@ version 1.0
 task SeqkitAmplicon {
   input {
     Boolean? xy
-    Boolean? three
     Boolean? y_invalid
     Boolean? xy_xyf_r
     Boolean? bed
@@ -28,7 +27,6 @@ task SeqkitAmplicon {
   command <<<
     seqkit amplicon \
       ~{if (xy) then "-5-3-1" else ""} \
-      ~{if (three) then "-3" else ""} \
       ~{if (y_invalid) then "-x" else ""} \
       ~{if (xy_xyf_r) then "-3-1" else ""} \
       ~{if (bed) then "--bed" else ""} \
@@ -52,7 +50,6 @@ task SeqkitAmplicon {
   >>>
   parameter_meta {
     xy: "x/y"
-    three: ""
     y_invalid: ":y (invalid)"
     xy_xyf_r: "x/y\\n1 3 5    x/y\\nF             R"
     bed: "output in BED6+1 format with amplicon as 7th columns"

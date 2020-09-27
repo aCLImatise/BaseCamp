@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_export_gene_coverages.cwl
+id: riboraptor_export_gene_coverages.cwl
 inputs:
 - id: in_bigwig
   doc: Path to bigwig  [required]

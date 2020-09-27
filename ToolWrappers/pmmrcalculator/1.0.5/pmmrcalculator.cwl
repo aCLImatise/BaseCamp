@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pmmrcalculator.cwl
+id: pmmrcalculator.cwl
 inputs:
 - id: in_input
   doc: "The desired input file prefix. Input files are assumed\nto be <INPUT PREFIX>.geno,\

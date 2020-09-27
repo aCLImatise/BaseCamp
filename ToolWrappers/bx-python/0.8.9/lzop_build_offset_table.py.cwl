@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lzop_build_offset_table.py.cwl
+id: lzop_build_offset_table.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

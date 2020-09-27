@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertOverlap.cwl
+id: convertOverlap.cwl
 inputs:
 - id: in_convert_overlap_file
   doc: convert to ASCII, from a BINARY overlap file.

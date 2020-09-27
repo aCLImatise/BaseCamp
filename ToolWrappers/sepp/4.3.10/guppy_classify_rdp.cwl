@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_classify_rdp.cwl
+id: guppy_classify_rdp.cwl
 inputs:
 - id: in_csv
   doc: Write .class.csv files containing CSV data.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bxtools_split.cwl
+id: bxtools_split.cwl
 inputs:
 - id: in_verbose
   doc: 'Select verbosity level (0-4). Default: 0'

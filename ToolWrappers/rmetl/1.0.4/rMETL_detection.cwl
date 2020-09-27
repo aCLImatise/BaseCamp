@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rMETL_detection.cwl
+id: rMETL_detection.cwl
 inputs:
 - id: in_min_support
   doc: Mininum number of reads that support a ME.[5]

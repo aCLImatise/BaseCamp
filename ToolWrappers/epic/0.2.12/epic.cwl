@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic.cwl
+id: epic.cwl
 inputs:
 - id: in_treatment
   doc: "Treatment (pull-down) file(s) in (b/gzipped) bed/bedpe\nformat."

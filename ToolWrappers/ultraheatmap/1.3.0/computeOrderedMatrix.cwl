@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../computeOrderedMatrix.cwl
+id: computeOrderedMatrix.cwl
 inputs:
 - id: in_score_filename
   doc: "bigwig files, the ordered matrix is computedfrom.\n(default: None)"

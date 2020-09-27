@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paraNode.cwl
+id: paraNode.cwl
 inputs:
 - id: in_log_facility
   doc: Log to the specified syslog facility - default local0.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../notseq.cwl
+id: notseq.cwl
 inputs:
 - id: in_junk_out_seq
   doc: "seqoutall  [/dev/null] This file collects the sequences\nwhich you have excluded\

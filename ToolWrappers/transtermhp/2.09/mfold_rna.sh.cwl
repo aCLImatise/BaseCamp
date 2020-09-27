@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mfold_rna.sh.cwl
+id: mfold_rna.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

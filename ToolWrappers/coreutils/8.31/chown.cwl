@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chown.cwl
+id: chown.cwl
 inputs:
 - id: in_changes
   doc: like verbose but report only when a change is made

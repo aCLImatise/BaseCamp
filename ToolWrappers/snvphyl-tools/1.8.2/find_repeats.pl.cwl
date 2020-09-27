@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_repeats.pl.cwl
+id: find_repeats.pl.cwl
 inputs:
 - id: in_min_length
   doc: ': Minimum length of repeat region (150).'

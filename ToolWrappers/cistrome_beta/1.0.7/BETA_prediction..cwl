@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BETA_prediction..cwl
+id: BETA_prediction..cwl
 inputs:
 - id: in_beta
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Mono.Options.dll.cwl
+id: Mono.Options.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

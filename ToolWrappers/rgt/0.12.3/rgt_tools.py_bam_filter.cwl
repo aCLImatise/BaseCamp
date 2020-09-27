@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_bam_filter.cwl
+id: rgt_tools.py_bam_filter.cwl
 inputs:
 - id: in_input_bam_file
   doc: Input BAM file

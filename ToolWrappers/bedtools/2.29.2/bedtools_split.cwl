@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_split.cwl
+id: bedtools_split.cwl
 inputs:
 - id: in_input
   doc: (file)       BED input file (req'd).

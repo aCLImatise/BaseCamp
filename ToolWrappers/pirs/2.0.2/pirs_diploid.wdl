@@ -2,7 +2,6 @@ version 1.0
 
 task PirsDiploid {
   input {
-    String? enable_multiple
     Int? snp_rate
     Int? in_del_rate
     Int? sv_rate
@@ -38,7 +37,6 @@ task PirsDiploid {
       ~{five_zero_zero_bp} \
       ~{one_zero_zero_zero_bp} \
       ~{two_zero_zero_zero_bp} \
-      ~{if defined(enable_multiple) then ("--enable-multiple " +  '"' + enable_multiple + '"') else ""} \
       ~{if defined(snp_rate) then ("--snp-rate " +  '"' + snp_rate + '"') else ""} \
       ~{if defined(in_del_rate) then ("--indel-rate " +  '"' + in_del_rate + '"') else ""} \
       ~{if defined(sv_rate) then ("--sv-rate " +  '"' + sv_rate + '"') else ""} \
@@ -51,7 +49,6 @@ task PirsDiploid {
       ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    enable_multiple: ""
     snp_rate: "A floating-point number in the interval [0, 1] that\\nspecifies the heterozygous SNP rate.  Default: 0.001"
     in_del_rate: "A floating-point number in the interval [0, 1] that\\nspecifies the heterozygous indel rate.\\nDefault: 0.0001"
     sv_rate: "A floating-point number in the interval [0, 1] that\\nspecifies the large-scale structural variation\\n(insertion, deletion, inversion) rate in the diploid\\ngenome. Default: 0.000001"

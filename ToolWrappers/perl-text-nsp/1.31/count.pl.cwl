@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count.pl.cwl
+id: count.pl.cwl
 inputs:
 - id: in_n_gram
   doc: Creates n-grams of N tokens each. N = 2 by

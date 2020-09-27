@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainSplit.cwl
+id: chainSplit.cwl
 inputs:
 - id: in_split_query_default
   doc: '- Split on query (default is on target)'

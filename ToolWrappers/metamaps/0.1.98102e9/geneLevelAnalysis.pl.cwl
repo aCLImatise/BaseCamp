@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../geneLevelAnalysis.pl.cwl
+id: geneLevelAnalysis.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

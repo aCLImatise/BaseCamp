@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_data_managers.cwl
+id: run_data_managers.cwl
 inputs:
 - id: in_config
   doc: "Path to the YAML config file with the list of data\nmanagers and data to install."

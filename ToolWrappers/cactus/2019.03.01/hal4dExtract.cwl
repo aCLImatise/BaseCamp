@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hal4dExtract.cwl
+id: hal4dExtract.cwl
 inputs:
 - id: in_append
   doc: ':               append to instead of overwrite output file. [default = 0]'

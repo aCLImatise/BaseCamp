@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_not_empty.cwl
+id: fastq_not_empty.cwl
 inputs:
 - id: in_fast_q_file
   doc: ''

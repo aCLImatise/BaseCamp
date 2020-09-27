@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../findTADsAndLoops.pl.cwl
+id: findTADsAndLoops.pl.cwl
 inputs:
 - id: in_cpu
   doc: <#> (max CPUs to use)
   type: boolean
   inputBinding:
     prefix: -cpu
-- id: in_res
-  doc: '<#> (resolution, default: 3000)'
-  type: boolean
-  inputBinding:
-    prefix: -res
 - id: in_window
   doc: '<#> (overlapping window size, i.e. superRes, default: 15000)'
   type: boolean
@@ -36,11 +31,6 @@ inputs:
   type: Directory
   inputBinding:
     prefix: -o
-- id: in_mint_ad_size
-  doc: '<#> (default: 45000)'
-  type: boolean
-  inputBinding:
-    prefix: -minTADsize
 - id: in_mint_ad_score
   doc: '<#> (minimum inclusion score to call TAD, default: 1.5)'
   type: boolean

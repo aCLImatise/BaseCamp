@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaskPrimers.py_mask_pass.cwl
+id: MaskPrimers.py_mask_pass.cwl
 inputs:
 - id: in_mask_primers_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fixTri.sh_FILE.cwl
+id: fixTri.sh_FILE.cwl
 inputs:
 - id: in_file
   doc: ''

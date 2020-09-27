@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lav_to_maf.py.cwl
+id: lav_to_maf.py.cwl
 inputs:
 - id: in_silent
   doc: ''

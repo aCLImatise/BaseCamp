@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faidx.cwl
+id: faidx.cwl
 inputs:
 - id: in_no_rebuild
   doc: "do not rebuild the .fai index even if it is out of\ndate. default: False"

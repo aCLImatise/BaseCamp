@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CalcGeneCov.py.cwl
+id: CalcGeneCov.py.cwl
 inputs:
 - id: in_gene_freq_file
   doc: input gene base frequencies

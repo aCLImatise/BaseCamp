@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_split_allseq.py.cwl
+id: prophyle_split_allseq.py.cwl
 inputs:
 - id: in_fasta_file
   doc: Fasta file [stdin]

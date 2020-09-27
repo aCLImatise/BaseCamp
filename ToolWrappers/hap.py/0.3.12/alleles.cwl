@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleles.cwl
+id: alleles.cwl
 inputs:
 - id: in_input_file
   doc: Input VCF file.

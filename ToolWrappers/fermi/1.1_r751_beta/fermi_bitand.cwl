@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_bitand.cwl
+id: fermi_bitand.cwl
 inputs:
 - id: in_in_one_dot_bit
   doc: ''

@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceAlignGetRyRecodedAlignments {
   input {
-    String? var_output
+    File? var_output
     Directory? alignments
     String? input_format
     String? output_format
@@ -23,7 +23,7 @@ task PhyluceAlignGetRyRecodedAlignments {
       ~{if (binary) then "--binary" else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--input-format {fasta,nexus,phylip,phylip-relaxed,clustal,emboss,stockholm}]\\n[--output-format {fasta,nexus,phylip,phylip-relaxed,clustal,emboss,stockholm}]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]\\n[--cores CORES] [--binary]"
     alignments: "The input directory containing nexus files to filter"
     input_format: "The input alignment format."
     output_format: "The output alignment format."

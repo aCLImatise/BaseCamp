@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blast_formatter.cwl
+id: blast_formatter.cwl
 inputs: []
 outputs:
 - id: out_stdout

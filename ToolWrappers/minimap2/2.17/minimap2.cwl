@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minimap2.cwl
+id: minimap2.cwl
 inputs:
 - id: in_use_kmer_preferrable
   doc: use homopolymer-compressed k-mer (preferrable for PacBio)

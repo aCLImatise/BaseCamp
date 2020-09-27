@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../densitree.cwl
+id: densitree.cwl
 inputs: []
 outputs:
 - id: out_stdout

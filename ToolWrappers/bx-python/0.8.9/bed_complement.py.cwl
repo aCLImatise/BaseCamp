@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_complement.py.cwl
+id: bed_complement.py.cwl
 inputs:
 - id: in_bed_file
   doc: ''

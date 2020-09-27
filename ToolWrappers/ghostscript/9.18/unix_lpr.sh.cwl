@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unix_lpr.sh.cwl
+id: unix_lpr.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

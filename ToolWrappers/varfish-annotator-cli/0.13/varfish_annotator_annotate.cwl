@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varfish_annotator_annotate.cwl
+id: varfish_annotator_annotate.cwl
 inputs:
 - id: in_case_id
   doc: "The value to use for case ID\nDefault: ."
@@ -11,11 +11,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --contig-regex
-- id: in_set_id
-  doc: "The value to use for set ID\nDefault: .\n"
-  type: boolean
-  inputBinding:
-    prefix: --set-id
 - id: in_annotate
   doc: ''
   type: string

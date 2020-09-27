@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_bracken.out.py.cwl
+id: filter_bracken.out.py.cwl
 inputs:
 - id: in_input_file
   doc: Input bracken OUTPUT file. [NOT the report file]

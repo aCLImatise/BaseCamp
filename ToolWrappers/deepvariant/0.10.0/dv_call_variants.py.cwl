@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dv_call_variants.py.cwl
+id: dv_call_variants.py.cwl
 inputs:
 - id: in_examples
   doc: ''

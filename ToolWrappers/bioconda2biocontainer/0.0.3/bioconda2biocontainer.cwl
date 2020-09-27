@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda2biocontainer.cwl
+id: bioconda2biocontainer.cwl
 inputs:
 - id: in_package_name
   doc: Bioconda package name

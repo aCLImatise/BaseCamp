@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkv_quality_summary.cwl
+id: checkv_quality_summary.cwl
 inputs:
 - id: in_quiet
   doc: Suppress logging messages

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_to_fasta.py.cwl
+id: fastq_to_fasta.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

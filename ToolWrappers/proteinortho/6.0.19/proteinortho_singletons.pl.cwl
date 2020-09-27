@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_singletons.pl.cwl
+id: proteinortho_singletons.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

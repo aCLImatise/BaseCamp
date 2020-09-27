@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_bv.cwl
+id: generate_bv.cwl
 inputs: []
 outputs:
 - id: out_stdout

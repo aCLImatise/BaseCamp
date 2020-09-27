@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfhethomratio.cwl
+id: vcfhethomratio.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hardklor.cwl
+id: hardklor.cwl
 inputs:
 - id: in_config_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polish_with_illumina_assembly.sh.cwl
+id: polish_with_illumina_assembly.sh.cwl
 inputs:
 - id: in_m
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iucn_sim_get_iucn_data.cwl
+id: iucn_sim_get_iucn_data.cwl
 inputs:
 - id: in_reference_group
   doc: "Name of taxonomic group (or list of groups) to be used\nfor calculating status\

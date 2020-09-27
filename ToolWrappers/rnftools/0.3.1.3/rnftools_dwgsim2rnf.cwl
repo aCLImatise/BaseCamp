@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_dwgsim2rnf.cwl
+id: rnftools_dwgsim2rnf.cwl
 inputs:
 - id: in_dwg_sim_prefix
   doc: Prefix for DwgSim.

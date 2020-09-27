@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hint_pre.cwl
+id: hint_pre.cwl
 inputs:
 - id: in_data
   doc: "Hi-C raw data with fastq format, two mates seperate\nwith a comma ',', or\

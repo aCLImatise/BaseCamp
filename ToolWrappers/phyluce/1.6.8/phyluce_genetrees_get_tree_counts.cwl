@@ -1,16 +1,12 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_get_tree_counts.cwl
+id: phyluce_genetrees_get_tree_counts.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_locus_support_output
+  doc: "LOCUS_SUPPORT_OUTPUT\n[--schema {nexus,newick,nexml,fasta,phylip}]\n--root\
+    \ ROOT --extension EXTENSION\n[--exclude EXCLUDE [EXCLUDE ...]]"
   type: boolean
   inputBinding:
     prefix: --locus-support-output
-- id: in_extension
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --extension
 - id: in_trees
   doc: Tree file
   type: File
@@ -21,16 +17,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --schema
+- id: in_root
+  doc: The taxon on which to root trees
+  type: string
+  inputBinding:
+    prefix: --root
+- id: in_extension
+  doc: File extension used with each 'best' tree
+  type: File
+  inputBinding:
+    prefix: --extension
 - id: in_exclude
   doc: "Loci to exclude\n"
   type: string[]
   inputBinding:
     prefix: --exclude
-- id: in_var_5
-  doc: '[--schema {nexus,newick,nexml,fasta,phylip}]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_prophecy.cwl
+id: _prophecy.cwl
 inputs:
 - id: in_type
   doc: "menu       [F] Select type (Values: F (Frequency); G\n(Gribskov); H (Henikoff))"

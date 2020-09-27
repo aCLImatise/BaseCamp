@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyqi_make_bash_completion.cwl
+id: pyqi_make_bash_completion.cwl
 inputs:
 - id: in_command_config_module
   doc: CLI command configuration module [REQUIRED]

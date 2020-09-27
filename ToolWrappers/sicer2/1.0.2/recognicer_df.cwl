@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recognicer_df.cwl
+id: recognicer_df.cwl
 inputs:
 - id: in_treatment_file
   doc: "Names of the sample file you wish to run RECOGNICER\non. This can either be\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_list.cwl
+id: gcloud_service_management_list.cwl
 inputs:
 - id: in_enabled
   doc: "(DEFAULT) Return the services which the project has enabled. Or use one\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_licences.cwl
+id: nf_core_licences.cwl
 inputs:
 - id: in_json
   doc: Print output in JSON

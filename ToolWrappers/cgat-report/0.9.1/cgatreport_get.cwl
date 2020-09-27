@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgatreport_get.cwl
+id: cgatreport_get.cwl
 inputs:
 - id: in_verbose
   doc: loglevel. The higher, the more output [default=2]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_completion.cwl
+id: funnel_completion.cwl
 inputs:
 - id: in_bash
   doc: Generate bash completion code

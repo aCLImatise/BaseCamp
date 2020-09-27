@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../model_matrix.cwl
+id: model_matrix.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to file containing input. (default: None)'

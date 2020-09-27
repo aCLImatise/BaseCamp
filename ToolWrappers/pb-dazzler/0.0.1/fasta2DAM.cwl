@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2DAM.cwl
+id: fasta2DAM.cwl
 inputs:
 - id: in_import_files_listed
   doc: ': import files listed 1/line in given file.'

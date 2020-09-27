@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ann_exons_ens.pl.cwl
+id: ann_exons_ens.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

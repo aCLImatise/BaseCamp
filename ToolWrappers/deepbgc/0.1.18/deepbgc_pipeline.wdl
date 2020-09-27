@@ -2,12 +2,6 @@ version 1.0
 
 task DeepbgcPipeline {
   input {
-    Boolean? debug
-    File? custom_output_directory
-    String? limit_to_record
-    File? minimal_output
-    Boolean? prodigal_meta_mode
-    Boolean? protein
     File? detector
     Boolean? no_detector
     String? label
@@ -21,17 +15,13 @@ task DeepbgcPipeline {
     File? classifier
     Boolean? no_classifier
     Float? classifier_score
+    String? o
+    Boolean? debug
     String inputs
   }
   command <<<
     deepbgc pipeline \
       ~{inputs} \
-      ~{if (debug) then "--debug" else ""} \
-      ~{if defined(custom_output_directory) then ("--output " +  '"' + custom_output_directory + '"') else ""} \
-      ~{if defined(limit_to_record) then ("--limit-to-record " +  '"' + limit_to_record + '"') else ""} \
-      ~{if (minimal_output) then "--minimal-output" else ""} \
-      ~{if (prodigal_meta_mode) then "--prodigal-meta-mode" else ""} \
-      ~{if (protein) then "--protein" else ""} \
       ~{if defined(detector) then ("--detector " +  '"' + detector + '"') else ""} \
       ~{if (no_detector) then "--no-detector" else ""} \
       ~{if defined(label) then ("--label " +  '"' + label + '"') else ""} \
@@ -44,15 +34,11 @@ task DeepbgcPipeline {
       ~{if defined(min_bio_domains) then ("--min-bio-domains " +  '"' + min_bio_domains + '"') else ""} \
       ~{if defined(classifier) then ("--classifier " +  '"' + classifier + '"') else ""} \
       ~{if (no_classifier) then "--no-classifier" else ""} \
-      ~{if defined(classifier_score) then ("--classifier-score " +  '"' + classifier_score + '"') else ""}
+      ~{if defined(classifier_score) then ("--classifier-score " +  '"' + classifier_score + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
-    debug: ""
-    custom_output_directory: "Custom output directory path"
-    limit_to_record: "Process only specific record ID. Can be provided multiple times"
-    minimal_output: "Produce minimal output with just the GenBank sequence file"
-    prodigal_meta_mode: "Run Prodigal in '-p meta' mode to enable detecting genes in short contigs"
-    protein: "Accept amino-acid protein sequences as input (experimental). Will treat each file as a single record with multiple proteins."
     detector: "Trained detection model name (run \\\"deepbgc download\\\" to download models) or path to trained model pickle file. Can be provided multiple times (-d first -d second)"
     no_detector: "Disable BGC detection"
     label: "Label for detected clusters (equal to --detector by default). If multiple detectors are provided, a label should be provided for each one"
@@ -66,11 +52,11 @@ task DeepbgcPipeline {
     classifier: "Trained classification model name (run \\\"deepbgc download\\\" to download models) or path to trained model pickle file. Can be provided multiple times (-c first -c second)"
     no_classifier: "Disable BGC classification"
     classifier_score: "DeepBGC classification score threshold for assigning classes to BGCs (default: 0.5)\\n"
+    o: ""
+    debug: ""
     inputs: "Input sequence file path (FASTA, GenBank, Pfam CSV)"
   }
   output {
     File out_stdout = stdout()
-    File out_custom_output_directory = "${in_custom_output_directory}"
-    File out_minimal_output = "${in_minimal_output}"
   }
 }

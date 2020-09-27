@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_markers.py.cwl
+id: extract_markers.py.cwl
 inputs:
 - id: in_database
   doc: The input MetaPhlAn dtabase

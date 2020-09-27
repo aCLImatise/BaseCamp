@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_https_health_checks.cwl
+id: gcloud_compute_https_health_checks.cwl
 inputs:
 - id: in_create
   doc: Create an HTTPS health check to monitor load balanced instances.

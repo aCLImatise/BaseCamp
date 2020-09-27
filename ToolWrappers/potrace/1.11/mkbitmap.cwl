@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkbitmap.cwl
+id: mkbitmap.cwl
 inputs:
 - id: in_license
   doc: '- print license info and exit'

@@ -2,7 +2,8 @@ version 1.0
 
 task LocarnaRnafoldPp {
   input {
-    Boolean? var_0
+    Boolean? verbose
+    Boolean? use_struct_constraints
     Boolean? no_lp
     Int? max_bp_span
     Boolean? stacking
@@ -13,14 +14,11 @@ task LocarnaRnafoldPp {
     Float? p_base_pair_in_loop
     File? output_file
     Boolean? force_ali_fold
-    String help
-    String cusestructconstraints
   }
   command <<<
     locarna_rnafold_pp \
-      ~{help} \
-      ~{cusestructconstraints} \
-      ~{if (var_0) then "--verbose" else ""} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (use_struct_constraints) then "--use-struct-constraints" else ""} \
       ~{if (no_lp) then "--noLP" else ""} \
       ~{if defined(max_bp_span) then ("--maxBPspan " +  '"' + max_bp_span + '"') else ""} \
       ~{if (stacking) then "--stacking" else ""} \
@@ -33,7 +31,8 @@ task LocarnaRnafoldPp {
       ~{if (force_ali_fold) then "--force-alifold" else ""}
   >>>
   parameter_meta {
-    var_0: ""
+    verbose: "Verbose"
+    use_struct_constraints: "Use structural constraints"
     no_lp: "No lonely pairs"
     max_bp_span: "(-1)\\nLimit maximum base pair span (default=off)"
     stacking: "Compute stacking terms"
@@ -44,8 +43,6 @@ task LocarnaRnafoldPp {
     p_base_pair_in_loop: "(0.0005)\\nThreshold for prob_basepair_in_loop"
     output_file: "()\\nOutput file"
     force_ali_fold: "Force alifold for single sequences\\n"
-    help: "-V,--version"
-    cusestructconstraints: "-C,--use-struct-constraints"
   }
   output {
     File out_stdout = stdout()

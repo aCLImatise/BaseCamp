@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_decompress.cwl
+id: prophyle_decompress.cwl
 inputs:
 - id: in_skip_klcp_construction
   doc: skip k-LCP construction

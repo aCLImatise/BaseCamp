@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seqfeature_gff3.pl.cwl
+id: bp_seqfeature_gff3.pl.cwl
 inputs:
 - id: in_dsn
   doc: The database name ()

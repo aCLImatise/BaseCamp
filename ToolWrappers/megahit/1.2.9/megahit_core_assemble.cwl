@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_core_assemble.cwl
+id: megahit_core_assemble.cwl
 inputs:
 - id: in_s_dbg_name
   doc: succinct de Bruijn graph name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_run_workflow.cwl
+id: anvi_run_workflow.cwl
 inputs:
 - id: in_workflow
   doc: "You must specify a workflow name. To see a list of\navailable workflows run\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qcat.cwl
+id: qcat.cwl
 inputs:
 - id: in_log
   doc: Print debug information

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go2obo_text.cwl
+id: go2obo_text.cwl
 inputs:
 - id: in_writes_errors_defaults
   doc: "writes parse errors in XML - defaults to STDERR (there should be no\nparse\

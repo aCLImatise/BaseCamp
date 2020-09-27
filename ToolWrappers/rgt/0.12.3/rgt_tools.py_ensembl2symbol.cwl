@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_ensembl2symbol.cwl
+id: rgt_tools.py_ensembl2symbol.cwl
 inputs:
 - id: in_input_gene_list
   doc: Input gene list

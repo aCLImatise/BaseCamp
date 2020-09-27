@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ecodbtaxstat.cwl
+id: ecodbtaxstat.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

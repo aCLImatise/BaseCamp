@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_backpropagate_file..cwl
+id: pyprophet_backpropagate_file..cwl
 inputs:
 - id: in_py_prophet
   doc: ''

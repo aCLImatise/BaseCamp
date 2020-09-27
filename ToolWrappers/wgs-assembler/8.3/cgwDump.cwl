@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgwDump.cwl
+id: cgwDump.cwl
 inputs:
 - id: in_mandatory_path_gkpstore
   doc: mandatory path to the gkpStore
@@ -48,20 +48,11 @@ inputs:
   inputBinding:
     prefix: -scaffolds
 - id: in_dumps_objects_iid
-  doc: dumps objects bgnIID <= IID <= endIID
+  doc: "dumps objects bgnIID <= IID <= endIID\n-e endIID\n-i singleIID           \
+    \ dumps a specific object (multiple -i allowed)"
   type: string
   inputBinding:
     prefix: -b
-- id: in_e
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -e
-- id: in_dumps_specific_multiple
-  doc: dumps a specific object (multiple -i allowed)
-  type: string
-  inputBinding:
-    prefix: -i
 - id: in_consensus
   doc: dumps consensus sequence
   type: boolean

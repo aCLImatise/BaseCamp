@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaffold.o.cwl
+id: scaffold.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

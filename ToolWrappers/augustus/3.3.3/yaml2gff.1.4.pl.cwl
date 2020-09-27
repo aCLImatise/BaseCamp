@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yaml2gff.1.4.pl.cwl
+id: yaml2gff.1.4.pl.cwl
 inputs:
 - id: in_filter_status
   doc: filter out alignments with given status, e.g. 'incomplete'

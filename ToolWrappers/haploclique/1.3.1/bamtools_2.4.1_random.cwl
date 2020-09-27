@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamtools_2.4.1_random.cwl
+id: bamtools_2.4.1_random.cwl
 inputs:
 - id: in_in
   doc: the input BAM file [stdin]

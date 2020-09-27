@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prep_reads.cwl
+id: prep_reads.cwl
 inputs:
 - id: in_filter_multi
   doc: ''

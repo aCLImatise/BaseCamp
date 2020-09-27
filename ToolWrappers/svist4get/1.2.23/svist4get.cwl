@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svist4get.cwl
+id: svist4get.cwl
 inputs: []
 outputs:
 - id: out_stdout

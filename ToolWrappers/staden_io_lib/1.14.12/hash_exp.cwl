@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hash_exp.cwl
+id: hash_exp.cwl
 inputs:
 - id: in_exp_file_ball
   doc: ''

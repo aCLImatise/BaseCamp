@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../7z.cwl
+id: 7z.cwl
 inputs:
 - id: in_a_i
   doc: '[r[-|0]]{@listfile|!wildcard} : Include archives'

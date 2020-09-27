@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazCMsearch.pl.cwl
+id: rnazCMsearch.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

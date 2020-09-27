@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runHiCpca.pl.cwl
+id: runHiCpca.pl.cwl
 inputs:
 - id: in_res
   doc: '<#> (resolution in bp, default: 50000)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spaligner.cwl
+id: spaligner.cwl
 inputs:
 - id: in_datatype
   doc: 'type of sequences: nanopore, pacbio'

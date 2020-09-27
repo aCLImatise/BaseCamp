@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Snakefile.cwl
+id: Snakefile.cwl
 inputs: []
 outputs:
 - id: out_stdout

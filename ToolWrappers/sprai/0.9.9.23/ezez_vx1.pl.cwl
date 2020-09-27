@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ezez_vx1.pl.cwl
+id: ezez_vx1.pl.cwl
 inputs:
 - id: in_this
   doc: ''

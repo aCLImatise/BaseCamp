@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mismatchCounter.cwl
+id: mismatchCounter.cwl
 inputs: []
 outputs:
 - id: out_stdout

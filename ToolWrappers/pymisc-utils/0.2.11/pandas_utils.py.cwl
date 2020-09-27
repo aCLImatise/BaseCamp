@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pandas_utils.py.cwl
+id: pandas_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

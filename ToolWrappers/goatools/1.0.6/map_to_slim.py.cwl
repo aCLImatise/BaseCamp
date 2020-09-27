@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_to_slim.py.cwl
+id: map_to_slim.py.cwl
 inputs:
 - id: in_term
   doc: "a term (association id) to map to slim IDs. This can\nnot be used together\

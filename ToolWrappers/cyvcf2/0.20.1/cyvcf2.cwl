@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cyvcf2.cwl
+id: cyvcf2.cwl
 inputs:
 - id: in_chrom
   doc: Specify what chromosome to include.

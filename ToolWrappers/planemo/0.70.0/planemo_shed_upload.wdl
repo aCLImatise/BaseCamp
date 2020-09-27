@@ -16,13 +16,11 @@ task PlanemoShedUpload {
     Boolean? check_diff
     Boolean? tar_only
     File? tar
-    String test_data_slash_blast_db_dot_loc
     String tools_slash_ncbi_blast_plus_slash_tool_dependencies_dot_xml
     Int one_ones_even
   }
   command <<<
     planemo shed_upload \
-      ~{test_data_slash_blast_db_dot_loc} \
       ~{tools_slash_ncbi_blast_plus_slash_tool_dependencies_dot_xml} \
       ~{one_ones_even} \
       ~{if (recursive) then "--recursive" else ""} \
@@ -55,7 +53,6 @@ task PlanemoShedUpload {
     check_diff: "Skip uploading if the shed_diff detects there\\nwould be no 'difference' (only attributes\\npopulated by the shed would be updated.)"
     tar_only: "Produce tar file for upload but do not publish\\nto a tool shed."
     tar: "Specify a pre-existing tar file instead of\\nautomatically building one as part of this\\ncommand."
-    test_data_slash_blast_db_dot_loc: "..."
     tools_slash_ncbi_blast_plus_slash_tool_dependencies_dot_xml: "% tar -tzf shed_upload.tar.gz | wc -l"
     one_ones_even: "Options:"
   }

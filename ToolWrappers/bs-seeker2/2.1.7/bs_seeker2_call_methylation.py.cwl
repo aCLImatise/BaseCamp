@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bs_seeker2_call_methylation.py.cwl
+id: bs_seeker2_call_methylation.py.cwl
 inputs:
 - id: in_input
   doc: BAM output from bs_seeker2-align.py

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../STViewer.py.cwl
+id: STViewer.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

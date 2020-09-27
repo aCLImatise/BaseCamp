@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../binreads.cwl
+id: binreads.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'

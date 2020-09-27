@@ -37,7 +37,7 @@ task Metaquant {
       ~{if (paired) then "--paired" else ""}
   >>>
   parameter_meta {
-    pep_colname: ""
+    pep_colname: "[--func_file FUNC_FILE] [--ontology {go,cog}]\\n[--obo_path OBO_PATH] [--slim_path SLIM_PATH] [--slim_down]\\n[--update_obo] [--tax_file TAX_FILE]\\n[--tax_colname TAX_COLNAME] [--test] [--paired]\\n[--threshold THRESHOLD]"
     mode: "Analysis mode. If taxfun is chosen, both function and\\ntaxonomy files must be provided"
     s_amps: "Give the column names in the intensity file that\\ncorrespond to a given sample group. This can either be\\nJSON formatted or be a path to a tabular file. JSON\\nexample of two experimental groups and two samples in\\neach group: {\\\"A\\\": [\\\"A1\\\", \\\"A2\\\"], \\\"B\\\": [\\\"B1\\\", \\\"B2\\\"]}"
     int_file: "Path to the file with intensity data. Must be tabular,\\nhave a peptide sequence column, and be raw,\\nuntransformed intensity values. Missing values can be\\n0, NA, or NaN- transformed to NA for analysis"

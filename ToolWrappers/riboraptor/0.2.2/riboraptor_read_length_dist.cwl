@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_read_length_dist.cwl
+id: riboraptor_read_length_dist.cwl
 inputs:
 - id: in_bam
   doc: Path to BAM file  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SomaticQC.cwl
+id: SomaticQC.cwl
 inputs:
 - id: in_tumor_bam
   doc: Input tumor BAM file.

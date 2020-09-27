@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_by_name.sh.cwl
+id: sort_by_name.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

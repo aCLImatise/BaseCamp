@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanpy_cli_norm.cwl
+id: scanpy_cli_norm.cwl
 inputs:
 - id: in_input_format
   doc: "[anndata|loom]\nInput object format.  [default: anndata]"
@@ -50,11 +50,16 @@ inputs:
   type: double
   inputBinding:
     prefix: --fraction
-- id: in_format_dot
-  doc: '[default: 1000]'
+- id: in_input_obj
+  doc: ''
   type: string
   inputBinding:
     position: 0
+- id: in_output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

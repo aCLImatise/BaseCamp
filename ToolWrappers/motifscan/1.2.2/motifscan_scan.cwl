@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../motifscan_scan.cwl
+id: motifscan_scan.cwl
 inputs:
-- id: in_m
-  doc: '[-p {1e-2,1e-3,1e-4,1e-5,1e-6}]'
-  type: double
-  inputBinding:
-    prefix: -m
 - id: in_verbose
   doc: Enable verbose log messages.
   type: boolean

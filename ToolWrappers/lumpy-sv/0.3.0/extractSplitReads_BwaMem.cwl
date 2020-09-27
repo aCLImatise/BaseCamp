@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractSplitReads_BwaMem.cwl
+id: extractSplitReads_BwaMem.cwl
 inputs:
 - id: in_in_file
   doc: A SAM file or standard input (-i stdin).

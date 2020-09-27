@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBrm.cwl
+id: DBrm.cwl
 inputs:
 - id: in_v
   doc: ''

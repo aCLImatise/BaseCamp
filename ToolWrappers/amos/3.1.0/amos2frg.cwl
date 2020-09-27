@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amos2frg.cwl
+id: amos2frg.cwl
 inputs:
 - id: in_extension
   doc: otherwise -i and -o are those specified in the command line

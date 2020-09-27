@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prosolo_control_fdr.cwl
+id: prosolo_control_fdr.cwl
 inputs:
 - id: in_fdr
   doc: 'FDR to control for. [default: 0.05]'

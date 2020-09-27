@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmapindex.cwl
+id: gmapindex.cwl
 inputs: []
 outputs:
 - id: out_stdout

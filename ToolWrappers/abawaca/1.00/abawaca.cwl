@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abawaca.cwl
+id: abawaca.cwl
 inputs: []
 outputs:
 - id: out_stdout

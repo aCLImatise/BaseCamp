@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../som.py.cwl
+id: som.py.cwl
 inputs:
 - id: in_output
   doc: "Output file prefix for statistics and feature table\n(when selected)"

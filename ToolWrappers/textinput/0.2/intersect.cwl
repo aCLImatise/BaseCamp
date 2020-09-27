@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersect.cwl
+id: intersect.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../list_of_files.cwl
+id: list_of_files.cwl
 inputs: []
 outputs:
 - id: out_stdout

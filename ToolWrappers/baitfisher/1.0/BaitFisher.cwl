@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BaitFisher.cwl
+id: BaitFisher.cwl
 inputs:
 - id: in_parameter_file
   doc: ''

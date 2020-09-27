@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FALCON_headerConverter.pl.cwl
+id: FALCON_headerConverter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

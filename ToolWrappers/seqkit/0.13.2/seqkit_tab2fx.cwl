@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_tab2fx.cwl
+id: seqkit_tab2fx.cwl
 inputs:
 - id: in_comment_line_prefix
   doc: comment line prefix (default [#,//])

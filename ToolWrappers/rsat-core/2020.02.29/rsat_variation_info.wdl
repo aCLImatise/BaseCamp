@@ -2,6 +2,7 @@ version 1.0
 
 task RsatVariationinfo {
   input {
+    Int? type
     String variation_info
     String util
     String ignored_dot
@@ -10,7 +11,6 @@ task RsatVariationinfo {
     String regions_dot
     Int mdeletionm
     String deletion
-    String insertion
   }
   command <<<
     rsat variation_info \
@@ -22,9 +22,10 @@ task RsatVariationinfo {
       ~{regions_dot} \
       ~{mdeletionm} \
       ~{deletion} \
-      ~{insertion}
+      ~{if defined(type) then ("-type " +  '"' + type + '"') else ""}
   >>>
   parameter_meta {
+    type: "Example 2: only accept deletions and insertions\\n-type insertion,deletion"
     variation_info: "[1mVERSION[0m"
     util: "[1mUSAGE[0m"
     ignored_dot: "The definition of the BED format is provided on the UCSC Genome Browser"
@@ -33,7 +34,6 @@ task RsatVariationinfo {
     regions_dot: "Supported formats:"
     mdeletionm: "[33mdeletion[0m"
     deletion: "http://www.sequenceontology.org/browser/release_2.5/term/SO:0000159"
-    insertion: "http://www.sequenceontology.org/browser/release_2.5/term/SO:0000667"
   }
   output {
     File out_stdout = stdout()

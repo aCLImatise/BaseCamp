@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cestat_cov.cwl
+id: cestat_cov.cwl
 inputs:
 - id: in_display_compatible_version
   doc: Display the compatible bank version

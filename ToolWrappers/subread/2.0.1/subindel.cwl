@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subindel.cwl
+id: subindel.cwl
 inputs:
 - id: in_o
   doc: ''

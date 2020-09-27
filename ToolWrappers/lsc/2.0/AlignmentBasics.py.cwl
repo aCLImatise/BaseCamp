@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignmentBasics.py.cwl
+id: AlignmentBasics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

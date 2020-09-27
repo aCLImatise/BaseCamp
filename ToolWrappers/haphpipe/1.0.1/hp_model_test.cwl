@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_model_test.cwl
+id: hp_model_test.cwl
 inputs:
 - id: in_seqs
   doc: Alignment in FASTA or PHYLIP format

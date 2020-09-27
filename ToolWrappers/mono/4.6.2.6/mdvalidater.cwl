@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdvalidater.cwl
+id: mdvalidater.cwl
 inputs: []
 outputs:
 - id: out_stdout

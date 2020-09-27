@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_export_structures.cwl
+id: anvi_export_structures.cwl
 inputs:
 - id: in_structure_db
   doc: Anvi'o structure database.

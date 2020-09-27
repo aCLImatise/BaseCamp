@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PATHOGIST_distance.cwl
+id: PATHOGIST_distance.cwl
 inputs:
 - id: in_bed
   doc: bed file of unwanted SNP positions in the genome

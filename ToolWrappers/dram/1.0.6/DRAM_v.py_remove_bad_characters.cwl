@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../DRAM_v.py_remove_bad_characters.cwl
+id: DRAM_v.py_remove_bad_characters.cwl
 inputs:
-- id: in_o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
 - id: in_input_fast_a
   doc: "Fasta file to remove ; and = from headers (default:\nNone)"
   type: File

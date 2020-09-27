@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfsamplediff.cwl
+id: vcfsamplediff.cwl
 inputs:
 - id: in_strict
   doc: Require that no observations in the germline support the somatic alternate.

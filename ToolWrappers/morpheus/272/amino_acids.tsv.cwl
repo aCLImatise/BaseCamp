@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amino_acids.tsv.cwl
+id: amino_acids.tsv.cwl
 inputs: []
 outputs:
 - id: out_stdout

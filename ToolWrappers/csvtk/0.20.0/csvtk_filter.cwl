@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_filter.cwl
+id: csvtk_filter.cwl
 inputs:
 - id: in_any
   doc: print record if any of the field satisfy the condition

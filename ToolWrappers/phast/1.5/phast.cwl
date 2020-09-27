@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phast.cwl
+id: phast.cwl
 inputs:
 - id: in_all_dists
   doc: hmm_view        phastBias

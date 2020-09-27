@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unitig_caller.cwl
+id: unitig_caller.cwl
 inputs:
 - id: in_build
   doc: Build coloured/uncoloured de Bruijn graph using

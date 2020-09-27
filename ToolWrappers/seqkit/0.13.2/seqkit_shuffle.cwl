@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_shuffle.cwl
+id: seqkit_shuffle.cwl
 inputs:
 - id: in_keep_temp
   doc: keep tempory FASTA and .fai file when using 2-pass mode

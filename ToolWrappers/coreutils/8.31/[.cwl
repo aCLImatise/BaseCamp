@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../[.cwl
+id: '[.cwl'
 inputs:
 - id: in_length_string_nonzero
   doc: the length of STRING is nonzero

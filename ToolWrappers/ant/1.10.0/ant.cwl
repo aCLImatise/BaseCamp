@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ant.cwl
+id: ant.cwl
 inputs:
 - id: in_no_config
   doc: "suppress sourcing of /etc/ant.conf,\n$HOME/.ant/ant.conf, and $HOME/.antrc\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eagle_meta.cwl
+id: eagle_meta.cwl
 inputs:
 - id: in_write_value_meta
   doc: write this value as meta information

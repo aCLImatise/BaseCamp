@@ -1,36 +1,36 @@
 class: CommandLineTool
-id: ../../../gen_reliab_dot.pl.cwl
+id: gen_reliab_dot.pl.cwl
 inputs:
-- id: in_man
-  doc: documentation
-  type: string
-  inputBinding:
-    prefix: --man
-- id: in_verbose
+- id: in_s
   doc: ''
-  type: string
-  inputBinding:
-    prefix: --verbose
-- id: in_quiet
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --quiet
-- id: in_reliability_file
-  doc: reliability file
-  type: File
-  inputBinding:
-    prefix: -f
-- id: in_alignment_file
-  doc: alignment file
-  type: File
-  inputBinding:
-    prefix: -a
-- id: in_probabilities
-  doc: probabilities
   type: string
   inputBinding:
     prefix: -s
+- id: in_a
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -a
+- id: in_f
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -f
+- id: in_q
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -q
+- id: in_v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_man
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --man
 - id: in_alignment
   doc: ''
   type: string

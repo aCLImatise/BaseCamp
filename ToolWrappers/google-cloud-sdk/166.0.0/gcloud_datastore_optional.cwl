@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_datastore_optional.cwl
+id: gcloud_datastore_optional.cwl
 inputs:
 - id: in_flags
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_gen_scg_domain_classifier.cwl
+id: anvi_script_gen_scg_domain_classifier.cwl
 inputs:
 - id: in_genomes_dir
   doc: "This should be a directory that contains a directory\nper domain for single-copy\

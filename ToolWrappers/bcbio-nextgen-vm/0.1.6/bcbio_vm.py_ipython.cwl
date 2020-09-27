@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_ipython.cwl
+id: bcbio_vm.py_ipython.cwl
 inputs:
 - id: in_fc_dir
   doc: A directory of Illumina output or fastq files to

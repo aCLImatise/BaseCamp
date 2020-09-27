@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gc_skew.cwl
+id: gc_skew.cwl
 inputs:
 - id: in__fastas
   doc: '[F [F ...]]  fasta(s)'

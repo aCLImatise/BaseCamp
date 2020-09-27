@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obo_tab_to_sqlite_db.pl.cwl
+id: obo_tab_to_sqlite_db.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

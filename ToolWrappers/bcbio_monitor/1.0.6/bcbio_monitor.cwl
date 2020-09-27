@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_monitor.cwl
+id: bcbio_monitor.cwl
 inputs:
 - id: in_config
   doc: "PAth to the configuration file, defaults to\n~/.bcbio/monitor.yaml"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedRemoveOverlap.cwl
+id: bedRemoveOverlap.cwl
 inputs: []
 outputs:
 - id: out_stdout

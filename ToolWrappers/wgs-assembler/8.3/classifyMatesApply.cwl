@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classifyMatesApply.cwl
+id: classifyMatesApply.cwl
 inputs:
 - id: in_read_fragments_here
   doc: Read fragments from here

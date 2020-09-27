@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdoc_assemble.cwl
+id: mdoc_assemble.cwl
 inputs:
 - id: in_format
   doc: "The documentation FORMAT used in DIRECTORIES.\nValid formats include:\necma\n\

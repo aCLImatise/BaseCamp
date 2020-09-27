@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SamToNavBasics.py.cwl
+id: SamToNavBasics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

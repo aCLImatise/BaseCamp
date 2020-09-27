@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SequenceCompressionBasics.py.cwl
+id: SequenceCompressionBasics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

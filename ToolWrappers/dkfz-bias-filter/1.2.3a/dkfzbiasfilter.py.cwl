@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dkfzbiasfilter.py.cwl
+id: dkfzbiasfilter.py.cwl
 inputs:
 - id: in_temp_folder
   doc: "Path to the folder where temporary files are stored\n[default: /tmp]"

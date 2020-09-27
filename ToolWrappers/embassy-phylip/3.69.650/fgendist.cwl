@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fgendist.cwl
+id: fgendist.cwl
 inputs:
 - id: in_method
   doc: "menu       [n] Which method to use (Values: n (Nei\ngenetic distance); c (Cavalli-Sforza\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_plot_fields.cwl
+id: vtools_report_plot_fields.cwl
 inputs:
 - id: in_variants
   doc: "Limit value of fields to variant in specified variant\ntable. Default to all\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../k_neighbors.cwl
+id: k_neighbors.cwl
 inputs:
 - id: in_config
   doc: Configuration file

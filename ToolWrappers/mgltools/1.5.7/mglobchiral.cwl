@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobchiral.cwl
+id: mglobchiral.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../verifyBamID.cwl
+id: verifyBamID.cwl
 inputs:
 - id: in_vcf
   doc: '[vcf file] required'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SCNIC_analysis.py_modules.cwl
+id: SCNIC_analysis.py_modules.cwl
 inputs:
 - id: in_input_loc
   doc: "location of output from SCNIC_analysis.py within\n(default: None)"

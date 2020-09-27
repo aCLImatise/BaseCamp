@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genRandomReads.cwl
+id: genRandomReads.cwl
 inputs:
 - id: in_transcript_fast_a
   doc: '[--simpleTranscriptId]'

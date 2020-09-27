@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_motif_pos.py.cwl
+id: generate_motif_pos.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

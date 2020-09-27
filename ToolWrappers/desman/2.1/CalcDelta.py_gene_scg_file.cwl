@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CalcDelta.py_gene_scg_file.cwl
+id: CalcDelta.py_gene_scg_file.cwl
 inputs:
 - id: in_calc_delta_do_tpy
   doc: ''

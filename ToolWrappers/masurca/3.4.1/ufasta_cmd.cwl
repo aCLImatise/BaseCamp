@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ufasta_cmd.cwl
+id: ufasta_cmd.cwl
 inputs:
 - id: in_arg_dot_dot_dot
   doc: ''

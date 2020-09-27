@@ -47,403 +47,529 @@ subcommands:
         args: !SimpleFlagArg
           name: input
         optional: true
-      parent: &id006 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Keep containment overlap
-          synonyms:
-          - -c
-          - --containment
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Keep internal match overlap
-          synonyms:
-          - -i
-          - --internalmatch
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Write mapping passing filter in gfa1 graph format in path passed
-            as parameter
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
-        parent: &id003 !Command
-          command:
-          - fpa
-          positional: []
+        named: []
+        parent:
+        subcommands:
+        - !Command
+          command: *id002
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: fpa
+            optional: false
           named:
           - !Flag
-            description: "Output compression format, the input compression format\
-              \ is chosen by default [possible values: gzip, bzip2,\nlzma, no]"
+            description: ''
             synonyms:
-            - -z
-            - --compression-out
-            args: !SimpleFlagArg
-              name: compression-out
-            optional: true
-          - !Flag
-            description: 'Force the format used [possible values: paf, m4]'
-            synonyms:
-            - -F
-            - --format
-            args: !SimpleFlagArg
-              name: format
-            optional: true
-          - !Flag
-            description: "Path to input file, use '-' for stdin [default: -]"
-            synonyms:
-            - -i
             - --input
             args: !SimpleFlagArg
               name: input
             optional: true
-          - !Flag
-            description: "A match is internal match if overhang length > match length\
-              \ * internal threshold this option set internal\nmatch [default: 0.8]"
-            synonyms:
-            - --internal-threshold
-            args: !SimpleFlagArg
-              name: internal-match-threshold
-            optional: true
-          - !Flag
-            description: "Path to output file, use '-' for stdout [default: -]"
-            synonyms:
-            - -o
-            - --output
-            args: !SimpleFlagArg
-              name: output
-            optional: true
-          parent:
-          subcommands:
-          - &id004 !Command
-            command:
-            - fpa
-            - keep
+          parent: &id006 !Command
+            command: *id001
             positional: []
             named:
             - !Flag
-              description: Keep only containment mapping
+              description: Keep containment overlap
               synonyms:
               - -c
               - --containment
               args: !EmptyFlagArg {}
               optional: true
             - !Flag
-              description: Keep only dovetail mapping
-              synonyms:
-              - -d
-              - --dovetail
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Keep only internal mapping
+              description: Keep internal match overlap
               synonyms:
               - -i
               - --internalmatch
               args: !EmptyFlagArg {}
               optional: true
             - !Flag
-              description: Keep only mapping where reads have same name
-              synonyms:
-              - -m
-              - --same-name
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Keep only mapping with length lower than value
-              synonyms:
-              - -l
-              - --length-lower
-              args: !SimpleFlagArg
-                name: length_lower
-              optional: true
-            - !Flag
-              description: Keep only mapping with length upper than value
-              synonyms:
-              - -L
-              - --length-upper
-              args: !SimpleFlagArg
-                name: length_upper
-              optional: true
-            - !Flag
-              description: Keep only mapping where one reads match with regex
-              synonyms:
-              - -n
-              - --name-match
-              args: !SimpleFlagArg
-                name: name_match
-              optional: true
-            - !Flag
-              description: Keep only mapping where one reads have length lower than
-                value
-              synonyms:
-              - -s
-              - --sequence-length-lower
-              args: !SimpleFlagArg
-                name: sequence_length_lower
-              optional: true
-            - !Flag
-              description: "Keep only mapping where one reads have length upper than\
-                \ value\n"
-              synonyms:
-              - -S
-              - --sequence-length-upper
-              args: !SimpleFlagArg
-                name: sequence_length_upper
-              optional: true
-            parent: *id003
-            subcommands:
-            - !Command
-              command:
-              - fpa
-              - keep
-              - FLAGS
-              positional:
-              - !Positional
-                description: ''
-                position: 0
-                name: fpa
-                optional: false
-              named:
-              - !Flag
-                description: ''
-                synonyms:
-                - --input
-                args: !SimpleFlagArg
-                  name: input
-                optional: true
-              parent: *id004
-              subcommands: []
-              usage: []
-              help_flag:
-              usage_flag:
-              version_flag:
-              help_text: "error: Found argument 'FLAGS' which wasn't expected, or\
-                \ isn't valid in this context\n\nUSAGE:\n    fpa --input <input> --output\
-                \ <output>\n\nFor more information try --help\n"
-              generated_using: &id005
-              - --help
-            usage: []
-            help_flag: !Flag
-              description: Prints help information
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
-            usage_flag:
-            version_flag: !Flag
-              description: Prints version information
-              synonyms:
-              - -V
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
-            help_text: "fpa-keep \nfpa keep only mapping match this constraints\n\n\
-              USAGE:\n    fpa keep [FLAGS] [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -c,\
-              \ --containment      Keep only containment mapping\n    -d, --dovetail\
-              \         Keep only dovetail mapping\n    -h, --help             Prints\
-              \ help information\n    -i, --internalmatch    Keep only internal mapping\n\
-              \    -m, --same-name        Keep only mapping where reads have same\
-              \ name\n    -V, --version          Prints version information\n\nOPTIONS:\n\
-              \    -l, --length-lower <length_lower>                      Keep only\
-              \ mapping with length lower than value\n    -L, --length-upper <length_upper>\
-              \                      Keep only mapping with length upper than value\n\
-              \    -n, --name-match <name_match>                          Keep only\
-              \ mapping where one reads match with regex\n    -s, --sequence-length-lower\
-              \ <sequence_length_lower>\n            Keep only mapping where one reads\
-              \ have length lower than value\n\n    -S, --sequence-length-upper <sequence_length_upper>\n\
-              \            Keep only mapping where one reads have length upper than\
-              \ value\n\n"
-            generated_using: *id005
-          - !Command
-            command:
-            - fpa
-            - rename
-            positional: []
-            named:
-            - !Flag
-              description: Rename reads with value in path passed as parameter
-              synonyms:
-              - -i
-              - --input
-              args: !SimpleFlagArg
-                name: input
-              optional: true
-            - !Flag
-              description: Write rename table in path passed as parameter
+              description: Write mapping passing filter in gfa1 graph format in path
+                passed as parameter
               synonyms:
               - -o
               - --output
               args: !SimpleFlagArg
                 name: output
               optional: true
-            parent: *id003
-            subcommands: []
-            usage: []
-            help_flag: !Flag
-              description: Prints help information
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
-            usage_flag:
-            version_flag: !Flag
-              description: Prints version information
-              synonyms:
-              - -V
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
-            help_text: "fpa-rename \nfpa rename reads with name you chose or with\
-              \ incremental counter\n\nUSAGE:\n    fpa rename [OPTIONS] [SUBCOMMAND]\n\
-              \nFLAGS:\n    -h, --help       Prints help information\n    -V, --version\
-              \    Prints version information\n\nOPTIONS:\n    -i, --input <input>\
-              \      Rename reads with value in path passed as parameter\n    -o,\
-              \ --output <output>    Write rename table in path passed as parameter\n"
-            generated_using: *id005
-          - *id006
-          - !Command
-            command:
-            - fpa
-            - index
-            positional: []
-            named:
-            - !Flag
-              description: Write index of mapping passing filter in path passed as
-                parameter
-              synonyms:
-              - -f
-              - --filename
-              args: !SimpleFlagArg
-                name: filename
-              optional: true
-            - !Flag
-              description: "Type of index, only reference read when it's query, target\
-                \ or both of them [default:\nboth]  [possible values: query, target,\
-                \ both]\n"
-              synonyms:
-              - -t
-              - --type
-              args: !SimpleFlagArg
-                name: type
-              optional: true
-            parent: *id003
-            subcommands: []
-            usage: []
-            help_flag: !Flag
-              description: Prints help information
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
-            usage_flag:
-            version_flag: !Flag
-              description: Prints version information
-              synonyms:
-              - -V
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
-            help_text: "fpa-index \nfpa generate a index of mapping passing filter\n\
-              \nUSAGE:\n    fpa index [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -h, --help\
-              \       Prints help information\n    -V, --version    Prints version\
-              \ information\n\nOPTIONS:\n    -f, --filename <filename>    Write index\
-              \ of mapping passing filter in path passed as parameter\n    -t, --type\
-              \ <type>            Type of index, only reference read when it's query,\
-              \ target or both of them [default:\n                               \
-              \  both]  [possible values: query, target, both]\n"
-            generated_using: *id005
-          - &id007 !Command
-            command:
-            - fpa
-            - drop
-            positional: []
-            named:
-            - !Flag
-              description: Drop containment mapping
-              synonyms:
-              - -c
-              - --containment
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Drop dovetail mapping
-              synonyms:
-              - -d
-              - --dovetail
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Drop internal mapping
-              synonyms:
-              - -i
-              - --internalmatch
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Drop mapping where reads have same name
-              synonyms:
-              - -m
-              - --same-name
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Drop mapping with length lower than value
-              synonyms:
-              - -l
-              - --length-lower
-              args: !SimpleFlagArg
-                name: length_lower
-              optional: true
-            - !Flag
-              description: Drop mapping with length upper than value
-              synonyms:
-              - -L
-              - --length-upper
-              args: !SimpleFlagArg
-                name: length_upper
-              optional: true
-            - !Flag
-              description: Drop mapping where one reads match with regex
-              synonyms:
-              - -n
-              - --name-match
-              args: !SimpleFlagArg
-                name: name_match
-              optional: true
-            - !Flag
-              description: Drop mapping where one reads have length lower than value
-              synonyms:
-              - -s
-              - --sequence-length-lower
-              args: !SimpleFlagArg
-                name: sequence_length_lower
-              optional: true
-            - !Flag
-              description: Drop mapping where one reads have length upper than value
-              synonyms:
-              - -S
-              - --sequence-length-upper
-              args: !SimpleFlagArg
-                name: sequence_length_upper
-              optional: true
-            parent: *id003
-            subcommands:
-            - !Command
+            parent: &id003 !Command
               command:
               - fpa
-              - drop
-              - FLAGS
+              positional: []
+              named:
+              - !Flag
+                description: "Output compression format, the input compression format\
+                  \ is chosen by default [possible values: gzip, bzip2,\nlzma, no]"
+                synonyms:
+                - -z
+                - --compression-out
+                args: !SimpleFlagArg
+                  name: compression-out
+                optional: true
+              - !Flag
+                description: 'Force the format used [possible values: paf, m4]'
+                synonyms:
+                - -F
+                - --format
+                args: !SimpleFlagArg
+                  name: format
+                optional: true
+              - !Flag
+                description: "Path to input file, use '-' for stdin [default: -]"
+                synonyms:
+                - -i
+                - --input
+                args: !SimpleFlagArg
+                  name: input
+                optional: true
+              - !Flag
+                description: "A match is internal match if overhang length > match\
+                  \ length * internal threshold this option set internal\nmatch [default:\
+                  \ 0.8]"
+                synonyms:
+                - --internal-threshold
+                args: !SimpleFlagArg
+                  name: internal-match-threshold
+                optional: true
+              - !Flag
+                description: "Path to output file, use '-' for stdout [default: -]"
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: output
+                optional: true
+              parent:
+              subcommands:
+              - &id004 !Command
+                command:
+                - fpa
+                - keep
+                positional: []
+                named:
+                - !Flag
+                  description: Keep only containment mapping
+                  synonyms:
+                  - -c
+                  - --containment
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Keep only dovetail mapping
+                  synonyms:
+                  - -d
+                  - --dovetail
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Keep only internal mapping
+                  synonyms:
+                  - -i
+                  - --internalmatch
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Keep only mapping where reads have same name
+                  synonyms:
+                  - -m
+                  - --same-name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Keep only mapping with length lower than value
+                  synonyms:
+                  - -l
+                  - --length-lower
+                  args: !SimpleFlagArg
+                    name: length_lower
+                  optional: true
+                - !Flag
+                  description: Keep only mapping with length upper than value
+                  synonyms:
+                  - -L
+                  - --length-upper
+                  args: !SimpleFlagArg
+                    name: length_upper
+                  optional: true
+                - !Flag
+                  description: Keep only mapping where one reads match with regex
+                  synonyms:
+                  - -n
+                  - --name-match
+                  args: !SimpleFlagArg
+                    name: name_match
+                  optional: true
+                - !Flag
+                  description: Keep only mapping where one reads have length lower
+                    than value
+                  synonyms:
+                  - -s
+                  - --sequence-length-lower
+                  args: !SimpleFlagArg
+                    name: sequence_length_lower
+                  optional: true
+                - !Flag
+                  description: "Keep only mapping where one reads have length upper\
+                    \ than value\n"
+                  synonyms:
+                  - -S
+                  - --sequence-length-upper
+                  args: !SimpleFlagArg
+                    name: sequence_length_upper
+                  optional: true
+                parent: *id003
+                subcommands:
+                - !Command
+                  command:
+                  - fpa
+                  - keep
+                  - FLAGS
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: fpa
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --input
+                    args: !SimpleFlagArg
+                      name: input
+                    optional: true
+                  parent: *id004
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "error: Found argument 'FLAGS' which wasn't expected,\
+                    \ or isn't valid in this context\n\nUSAGE:\n    fpa --input <input>\
+                    \ --output <output>\n\nFor more information try --help\n"
+                  generated_using: &id005
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: Prints help information
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Prints version information
+                  synonyms:
+                  - -V
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "fpa-keep \nfpa keep only mapping match this constraints\n\
+                  \nUSAGE:\n    fpa keep [FLAGS] [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n\
+                  \    -c, --containment      Keep only containment mapping\n    -d,\
+                  \ --dovetail         Keep only dovetail mapping\n    -h, --help\
+                  \             Prints help information\n    -i, --internalmatch \
+                  \   Keep only internal mapping\n    -m, --same-name        Keep\
+                  \ only mapping where reads have same name\n    -V, --version   \
+                  \       Prints version information\n\nOPTIONS:\n    -l, --length-lower\
+                  \ <length_lower>                      Keep only mapping with length\
+                  \ lower than value\n    -L, --length-upper <length_upper>      \
+                  \                Keep only mapping with length upper than value\n\
+                  \    -n, --name-match <name_match>                          Keep\
+                  \ only mapping where one reads match with regex\n    -s, --sequence-length-lower\
+                  \ <sequence_length_lower>\n            Keep only mapping where one\
+                  \ reads have length lower than value\n\n    -S, --sequence-length-upper\
+                  \ <sequence_length_upper>\n            Keep only mapping where one\
+                  \ reads have length upper than value\n\n"
+                generated_using: *id005
+              - !Command
+                command:
+                - fpa
+                - rename
+                positional: []
+                named:
+                - !Flag
+                  description: Rename reads with value in path passed as parameter
+                  synonyms:
+                  - -i
+                  - --input
+                  args: !SimpleFlagArg
+                    name: input
+                  optional: true
+                - !Flag
+                  description: Write rename table in path passed as parameter
+                  synonyms:
+                  - -o
+                  - --output
+                  args: !SimpleFlagArg
+                    name: output
+                  optional: true
+                parent: *id003
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Prints help information
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Prints version information
+                  synonyms:
+                  - -V
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "fpa-rename \nfpa rename reads with name you chose or with\
+                  \ incremental counter\n\nUSAGE:\n    fpa rename [OPTIONS] [SUBCOMMAND]\n\
+                  \nFLAGS:\n    -h, --help       Prints help information\n    -V,\
+                  \ --version    Prints version information\n\nOPTIONS:\n    -i, --input\
+                  \ <input>      Rename reads with value in path passed as parameter\n\
+                  \    -o, --output <output>    Write rename table in path passed\
+                  \ as parameter\n"
+                generated_using: *id005
+              - *id006
+              - !Command
+                command:
+                - fpa
+                - index
+                positional: []
+                named:
+                - !Flag
+                  description: Write index of mapping passing filter in path passed
+                    as parameter
+                  synonyms:
+                  - -f
+                  - --filename
+                  args: !SimpleFlagArg
+                    name: filename
+                  optional: true
+                - !Flag
+                  description: "Type of index, only reference read when it's query,\
+                    \ target or both of them [default:\nboth]  [possible values: query,\
+                    \ target, both]\n"
+                  synonyms:
+                  - -t
+                  - --type
+                  args: !SimpleFlagArg
+                    name: type
+                  optional: true
+                parent: *id003
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Prints help information
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Prints version information
+                  synonyms:
+                  - -V
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "fpa-index \nfpa generate a index of mapping passing filter\n\
+                  \nUSAGE:\n    fpa index [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -h,\
+                  \ --help       Prints help information\n    -V, --version    Prints\
+                  \ version information\n\nOPTIONS:\n    -f, --filename <filename>\
+                  \    Write index of mapping passing filter in path passed as parameter\n\
+                  \    -t, --type <type>            Type of index, only reference\
+                  \ read when it's query, target or both of them [default:\n     \
+                  \                            both]  [possible values: query, target,\
+                  \ both]\n"
+                generated_using: *id005
+              - &id007 !Command
+                command:
+                - fpa
+                - drop
+                positional: []
+                named:
+                - !Flag
+                  description: Drop containment mapping
+                  synonyms:
+                  - -c
+                  - --containment
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Drop dovetail mapping
+                  synonyms:
+                  - -d
+                  - --dovetail
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Drop internal mapping
+                  synonyms:
+                  - -i
+                  - --internalmatch
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Drop mapping where reads have same name
+                  synonyms:
+                  - -m
+                  - --same-name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Drop mapping with length lower than value
+                  synonyms:
+                  - -l
+                  - --length-lower
+                  args: !SimpleFlagArg
+                    name: length_lower
+                  optional: true
+                - !Flag
+                  description: Drop mapping with length upper than value
+                  synonyms:
+                  - -L
+                  - --length-upper
+                  args: !SimpleFlagArg
+                    name: length_upper
+                  optional: true
+                - !Flag
+                  description: Drop mapping where one reads match with regex
+                  synonyms:
+                  - -n
+                  - --name-match
+                  args: !SimpleFlagArg
+                    name: name_match
+                  optional: true
+                - !Flag
+                  description: Drop mapping where one reads have length lower than
+                    value
+                  synonyms:
+                  - -s
+                  - --sequence-length-lower
+                  args: !SimpleFlagArg
+                    name: sequence_length_lower
+                  optional: true
+                - !Flag
+                  description: Drop mapping where one reads have length upper than
+                    value
+                  synonyms:
+                  - -S
+                  - --sequence-length-upper
+                  args: !SimpleFlagArg
+                    name: sequence_length_upper
+                  optional: true
+                parent: *id003
+                subcommands:
+                - !Command
+                  command:
+                  - fpa
+                  - drop
+                  - FLAGS
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: fpa
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --input
+                    args: !SimpleFlagArg
+                      name: input
+                    optional: true
+                  parent: *id007
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "error: Found argument 'FLAGS' which wasn't expected,\
+                    \ or isn't valid in this context\n\nUSAGE:\n    fpa --input <input>\
+                    \ --output <output>\n\nFor more information try --help\n"
+                  generated_using: *id005
+                usage: []
+                help_flag: !Flag
+                  description: Prints help information
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Prints version information
+                  synonyms:
+                  - -V
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "fpa-drop \nfpa drop mapping match this constraints\n\n\
+                  USAGE:\n    fpa drop [FLAGS] [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n\
+                  \    -c, --containment      Drop containment mapping\n    -d, --dovetail\
+                  \         Drop dovetail mapping\n    -h, --help             Prints\
+                  \ help information\n    -i, --internalmatch    Drop internal mapping\n\
+                  \    -m, --same-name        Drop mapping where reads have same name\n\
+                  \    -V, --version          Prints version information\n\nOPTIONS:\n\
+                  \    -l, --length-lower <length_lower>                      Drop\
+                  \ mapping with length lower than value\n    -L, --length-upper <length_upper>\
+                  \                      Drop mapping with length upper than value\n\
+                  \    -n, --name-match <name_match>                          Drop\
+                  \ mapping where one reads match with regex\n    -s, --sequence-length-lower\
+                  \ <sequence_length_lower>    Drop mapping where one reads have length\
+                  \ lower than value\n    -S, --sequence-length-upper <sequence_length_upper>\
+                  \    Drop mapping where one reads have length upper than value\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Prints help information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Prints version information
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "fpa 0.5.1 Sandslash\nPierre Marijon <pierre.marijon@inria.fr>\n\
+                fpa take long read mapping information and filter them\n\nUSAGE:\n\
+                \    fpa [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -h, --help       Prints\
+                \ help information\n    -V, --version    Prints version information\n\
+                \nOPTIONS:\n    -z, --compression-out <compression-out>\n        \
+                \    Output compression format, the input compression format is chosen\
+                \ by default [possible values: gzip, bzip2,\n            lzma, no]\n\
+                \    -F, --format <format>                                  Force\
+                \ the format used [possible values: paf, m4]\n    -i, --input <input>\
+                \                                    Path to input file, use '-' for\
+                \ stdin [default: -]\n        --internal-threshold <internal-match-threshold>\n\
+                \            A match is internal match if overhang length > match\
+                \ length * internal threshold this option set internal\n         \
+                \   match [default: 0.8]\n    -o, --output <output>              \
+                \                    Path to output file, use '-' for stdout [default:\
+                \ -]\n\nSUBCOMMANDS:\n    drop      fpa drop mapping match this constraints\n\
+                \    gfa       fpa generate a overlap graph in gfa1 format with mapping\
+                \ passing filter\n    help      Prints this message or the help of\
+                \ the given subcommand(s)\n    index     fpa generate a index of mapping\
+                \ passing filter\n    keep      fpa keep only mapping match this constraints\n\
+                \    rename    fpa rename reads with name you chose or with incremental\
+                \ counter\n"
+              generated_using: *id005
+            subcommands:
+            - !Command
+              command: *id002
               positional:
               - !Positional
                 description: ''
@@ -458,7 +584,7 @@ subcommands:
                 args: !SimpleFlagArg
                   name: input
                 optional: true
-              parent: *id007
+              parent: *id006
               subcommands: []
               usage: []
               help_flag:
@@ -484,78 +610,14 @@ subcommands:
               - --version
               args: !EmptyFlagArg {}
               optional: true
-            help_text: "fpa-drop \nfpa drop mapping match this constraints\n\nUSAGE:\n\
-              \    fpa drop [FLAGS] [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -c, --containment\
-              \      Drop containment mapping\n    -d, --dovetail         Drop dovetail\
-              \ mapping\n    -h, --help             Prints help information\n    -i,\
-              \ --internalmatch    Drop internal mapping\n    -m, --same-name    \
-              \    Drop mapping where reads have same name\n    -V, --version    \
-              \      Prints version information\n\nOPTIONS:\n    -l, --length-lower\
-              \ <length_lower>                      Drop mapping with length lower\
-              \ than value\n    -L, --length-upper <length_upper>                \
-              \      Drop mapping with length upper than value\n    -n, --name-match\
-              \ <name_match>                          Drop mapping where one reads\
-              \ match with regex\n    -s, --sequence-length-lower <sequence_length_lower>\
-              \    Drop mapping where one reads have length lower than value\n   \
-              \ -S, --sequence-length-upper <sequence_length_upper>    Drop mapping\
-              \ where one reads have length upper than value\n"
+            help_text: "fpa-gfa \nfpa generate a overlap graph in gfa1 format with\
+              \ mapping passing filter\n\nUSAGE:\n    fpa gfa [FLAGS] [OPTIONS] [SUBCOMMAND]\n\
+              \nFLAGS:\n    -c, --containment      Keep containment overlap\n    -h,\
+              \ --help             Prints help information\n    -i, --internalmatch\
+              \    Keep internal match overlap\n    -V, --version          Prints\
+              \ version information\n\nOPTIONS:\n    -o, --output <output>    Write\
+              \ mapping passing filter in gfa1 graph format in path passed as parameter\n"
             generated_using: *id005
-          usage: []
-          help_flag: !Flag
-            description: Prints help information
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag: !Flag
-            description: Prints version information
-            synonyms:
-            - -V
-            - --version
-            args: !EmptyFlagArg {}
-            optional: true
-          help_text: "fpa 0.5.1 Sandslash\nPierre Marijon <pierre.marijon@inria.fr>\n\
-            fpa take long read mapping information and filter them\n\nUSAGE:\n   \
-            \ fpa [OPTIONS] [SUBCOMMAND]\n\nFLAGS:\n    -h, --help       Prints help\
-            \ information\n    -V, --version    Prints version information\n\nOPTIONS:\n\
-            \    -z, --compression-out <compression-out>\n            Output compression\
-            \ format, the input compression format is chosen by default [possible\
-            \ values: gzip, bzip2,\n            lzma, no]\n    -F, --format <format>\
-            \                                  Force the format used [possible values:\
-            \ paf, m4]\n    -i, --input <input>                                  \
-            \  Path to input file, use '-' for stdin [default: -]\n        --internal-threshold\
-            \ <internal-match-threshold>\n            A match is internal match if\
-            \ overhang length > match length * internal threshold this option set\
-            \ internal\n            match [default: 0.8]\n    -o, --output <output>\
-            \                                  Path to output file, use '-' for stdout\
-            \ [default: -]\n\nSUBCOMMANDS:\n    drop      fpa drop mapping match this\
-            \ constraints\n    gfa       fpa generate a overlap graph in gfa1 format\
-            \ with mapping passing filter\n    help      Prints this message or the\
-            \ help of the given subcommand(s)\n    index     fpa generate a index\
-            \ of mapping passing filter\n    keep      fpa keep only mapping match\
-            \ this constraints\n    rename    fpa rename reads with name you chose\
-            \ or with incremental counter\n"
-          generated_using: *id005
-        subcommands:
-        - !Command
-          command: *id002
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: fpa
-            optional: false
-          named:
-          - !Flag
-            description: ''
-            synonyms:
-            - --input
-            args: !SimpleFlagArg
-              name: input
-            optional: true
-          parent: *id006
           subcommands: []
           usage: []
           help_flag:
@@ -566,21 +628,9 @@ subcommands:
             \nFor more information try --help\n"
           generated_using: *id005
         usage: []
-        help_flag: !Flag
-          description: Prints help information
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Prints version information
-          synonyms:
-          - -V
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "fpa-gfa \nfpa generate a overlap graph in gfa1 format with mapping\
           \ passing filter\n\nUSAGE:\n    fpa gfa [FLAGS] [OPTIONS] [SUBCOMMAND]\n\
           \nFLAGS:\n    -c, --containment      Keep containment overlap\n    -h, --help\

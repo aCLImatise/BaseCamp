@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_miRNAs.pl.cwl
+id: extract_miRNAs.pl.cwl
 inputs:
 - id: in_e_dot_gdot
   doc: ''

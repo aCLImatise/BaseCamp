@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffgbsa.cwl
+id: ffgbsa.cwl
 inputs:
 - id: in_pdb
   doc: = PDB file name

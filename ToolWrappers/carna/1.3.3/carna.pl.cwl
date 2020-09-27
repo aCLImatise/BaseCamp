@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../carna.pl.cwl
+id: carna.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

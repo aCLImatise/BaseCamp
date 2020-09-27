@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diff.cwl
+id: diff.cwl
 inputs:
 - id: in_normal
   doc: output a normal diff (the default)

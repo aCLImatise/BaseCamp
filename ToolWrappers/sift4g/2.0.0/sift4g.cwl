@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sift4g.cwl
+id: sift4g.cwl
 inputs: []
 outputs:
 - id: out_stdout

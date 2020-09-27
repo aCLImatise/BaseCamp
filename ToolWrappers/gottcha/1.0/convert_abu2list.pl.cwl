@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_abu2list.pl.cwl
+id: convert_abu2list.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnv_annotate.py_cnv_file.cwl
+id: cnv_annotate.py_cnv_file.cwl
 inputs:
 - id: in_o
   doc: ''

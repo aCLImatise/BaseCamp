@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_du.cwl
+id: gsutil_du.cwl
 inputs:
 - id: in_ends_output_line
   doc: "Ends each output line with a 0 byte rather than a newline. This\ncan be useful\

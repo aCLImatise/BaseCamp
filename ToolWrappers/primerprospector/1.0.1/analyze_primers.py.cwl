@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyze_primers.py.cwl
+id: analyze_primers.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ragout_overlap.cwl
+id: ragout_overlap.cwl
 inputs:
 - id: in_hist
   doc: ''

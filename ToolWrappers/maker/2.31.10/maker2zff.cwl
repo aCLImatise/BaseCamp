@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker2zff.cwl
+id: maker2zff.cwl
 inputs:
 - id: in_fraction_confirmed_est
   doc: The fraction of splice sites confirmed by an EST alignment, default 0.5

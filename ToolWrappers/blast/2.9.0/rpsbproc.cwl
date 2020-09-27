@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rpsbproc.cwl
+id: rpsbproc.cwl
 inputs: []
 outputs:
 - id: out_stdout

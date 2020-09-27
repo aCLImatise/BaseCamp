@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerStreamEstimate.py.cwl
+id: KmerStreamEstimate.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_prep.cwl
+id: hotspot3d_prep.cwl
 inputs:
 - id: in_output_dir
   doc: "Output directory of proximity files\nOPTIONAL"

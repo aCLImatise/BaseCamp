@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scluster.cwl
+id: scluster.cwl
 inputs: []
 outputs:
 - id: out_stdout

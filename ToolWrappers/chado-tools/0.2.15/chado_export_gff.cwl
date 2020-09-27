@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chado_export_gff.cwl
+id: chado_export_gff.cwl
 inputs:
 - id: in_verbose
   doc: verbose mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parallel_tools.py.cwl
+id: parallel_tools.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

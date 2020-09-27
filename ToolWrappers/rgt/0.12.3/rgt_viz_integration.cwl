@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_viz_integration.cwl
+id: rgt_viz_integration.cwl
 inputs:
 - id: in_i_html
   doc: "Integrate all the html files within the given directory and\ngenerate index.html\

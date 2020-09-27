@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_map.cwl
+id: mimodd_map.cwl
 inputs:
 - id: in_ofile
   doc: "redirect the binned variant counts to this file\n(default: stdout)."

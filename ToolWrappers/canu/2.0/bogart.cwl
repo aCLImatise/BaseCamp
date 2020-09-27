@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bogart.cwl
+id: bogart.cwl
 inputs:
 - id: in_mandatory_path_existing_seqstore
   doc: Mandatory path to an existing seqStore.
@@ -159,16 +159,11 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_split_discontinuous
-  doc: intermediateTigs
-  type: string
-  inputBinding:
-    position: 4
 - id: in_setparent_and_hang
   doc: stderr
   type: string
   inputBinding:
-    position: 5
+    position: 4
 outputs:
 - id: out_stdout
   doc: Standard output stream

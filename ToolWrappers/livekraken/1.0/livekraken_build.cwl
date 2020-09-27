@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../livekraken_build.cwl
+id: livekraken_build.cwl
 inputs:
 - id: in_download_taxonomy
   doc: Download NCBI taxonomic information
@@ -55,11 +55,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --db
-- id: in_help_slash_version
-  doc: )
-  type: boolean
-  inputBinding:
-    prefix: --help/--version
 - id: in_threads
   doc: '#                Number of threads (def: 1)'
   type: boolean

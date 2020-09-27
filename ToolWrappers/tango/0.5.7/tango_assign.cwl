@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tango_assign.cwl
+id: tango_assign.cwl
 inputs:
 - id: in_format
   doc: "Type of file format for diamond results. blast=blast\ntabular output, 'tango'=blast\

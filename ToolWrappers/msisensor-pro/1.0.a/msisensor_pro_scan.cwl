@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msisensor_pro_scan.cwl
+id: msisensor_pro_scan.cwl
 inputs:
 - id: in_string_sequences_file
   doc: <string>   reference genome sequences file, *.fasta or *.fa format

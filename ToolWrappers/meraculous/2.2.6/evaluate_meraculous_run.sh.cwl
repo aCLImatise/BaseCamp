@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evaluate_meraculous_run.sh.cwl
+id: evaluate_meraculous_run.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

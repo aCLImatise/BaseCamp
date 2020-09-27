@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../geneorder.py.cwl
+id: geneorder.py.cwl
 inputs:
 - id: in_outfile
   doc: 'write values to FILE (default: stdout)'

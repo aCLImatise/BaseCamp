@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../openslide_show_properties.cwl
+id: openslide_show_properties.cwl
 inputs: []
 outputs:
 - id: out_stdout

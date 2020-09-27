@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findspl.cwl
+id: findspl.cwl
 inputs:
 - id: in_gi_number_protein
   doc: "Gi number of protein [Integer]\ndefault = 0\nrange from 1 to 99999999"

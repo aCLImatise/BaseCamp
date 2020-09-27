@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merfishtools_est_error_rates_cell.cwl
+id: merfishtools_est_error_rates_cell.cwl
 inputs:
 - id: in_mer_fish_tools
   doc: ''

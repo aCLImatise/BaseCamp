@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splash_eval_reads_bam.cwl
+id: splash_eval_reads_bam.cwl
 inputs:
 - id: in_r
   doc: ''

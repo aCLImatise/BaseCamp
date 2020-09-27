@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../similarity_pyseer.cwl
+id: similarity_pyseer.cwl
 inputs:
 - id: in_km_ers
   doc: Kmers file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConvertHeaders.py_454.cwl
+id: ConvertHeaders.py_454.cwl
 inputs:
 - id: in_list_fastafastq_files
   doc: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default: None)"

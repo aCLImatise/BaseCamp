@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank_transact.cwl
+id: bank_transact.cwl
 inputs:
 - id: in_directory_path_open
   doc: The directory path of the banks to open or create

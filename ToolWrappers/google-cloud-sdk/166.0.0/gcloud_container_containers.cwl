@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_container_containers.cwl
+id: gcloud_container_containers.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

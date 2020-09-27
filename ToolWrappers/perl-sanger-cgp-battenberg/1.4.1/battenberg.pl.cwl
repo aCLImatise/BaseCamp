@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../battenberg.pl.cwl
+id: battenberg.pl.cwl
 inputs:
 - id: in_outdir
   doc: -o   Folder to output result to.

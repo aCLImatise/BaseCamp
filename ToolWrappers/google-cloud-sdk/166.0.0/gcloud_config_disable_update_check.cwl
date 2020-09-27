@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_disable_update_check.cwl
+id: gcloud_config_disable_update_check.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

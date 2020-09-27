@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cuffmerge.cwl
+id: cuffmerge.cwl
 inputs:
 - id: in_h_slash_help
   doc: Prints the help message and exits

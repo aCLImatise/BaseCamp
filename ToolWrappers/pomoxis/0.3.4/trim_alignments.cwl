@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trim_alignments.cwl
+id: trim_alignments.cwl
 inputs:
 - id: in_ref_name
   doc: "Reference to process, only needed if bams contain\nmultiple references. (default:\

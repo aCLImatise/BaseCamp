@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_load.cwl
+id: cooler_load.cwl
 inputs:
 - id: in_format
   doc: "[coo|bg2]          'coo' refers to a tab-delimited sparse\ntriplet file (bin1,\

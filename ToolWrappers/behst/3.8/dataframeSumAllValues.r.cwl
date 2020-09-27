@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dataframeSumAllValues.r.cwl
+id: dataframeSumAllValues.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

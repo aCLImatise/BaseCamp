@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protpred_Gromacs_Test_rotation.cwl
+id: protpred_Gromacs_Test_rotation.cwl
 inputs: []
 outputs:
 - id: out_stdout

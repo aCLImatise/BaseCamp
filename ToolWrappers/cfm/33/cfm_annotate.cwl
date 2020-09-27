@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfm_annotate.cwl
+id: cfm_annotate.cwl
 inputs:
 - id: in_smiles_or_inch_i
   doc: ''

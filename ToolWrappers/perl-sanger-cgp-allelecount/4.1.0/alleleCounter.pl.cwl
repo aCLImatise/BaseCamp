@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleleCounter.pl.cwl
+id: alleleCounter.pl.cwl
 inputs:
 - id: in_bam
   doc: "-b      BAM/CRAM file (expects co-located index)\n- if CRAM see '-ref'"

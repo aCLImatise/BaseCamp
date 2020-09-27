@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../geo2fasta.pl.orig.cwl
+id: geo2fasta.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

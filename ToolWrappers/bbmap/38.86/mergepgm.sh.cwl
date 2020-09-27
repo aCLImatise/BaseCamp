@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergepgm.sh.cwl
+id: mergepgm.sh.cwl
 inputs:
 - id: in_in
   doc: ''

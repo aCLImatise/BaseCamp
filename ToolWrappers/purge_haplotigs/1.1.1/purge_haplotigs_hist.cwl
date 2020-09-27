@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purge_haplotigs_hist.cwl
+id: purge_haplotigs_hist.cwl
 inputs:
 - id: in_bam_bam_file
   doc: / -bam       BAM file of aligned and sorted reads/subreads to the reference

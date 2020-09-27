@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdust.cwl
+id: sdust.cwl
 inputs:
 - id: in_t
   doc: ''

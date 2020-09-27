@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda_utils_duplicates.cwl
+id: bioconda_utils_duplicates.cwl
 inputs:
 - id: in_strict_version
   doc: 'Require version to strictly match. (default: False)'

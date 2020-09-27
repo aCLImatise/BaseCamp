@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../configManta.py.cwl
+id: configManta.py.cwl
 inputs:
 - id: in_config
   doc: "provide a configuration file to override defaults in\nglobal config file (/usr/local/share/manta-1.6.0-0/bin\n\

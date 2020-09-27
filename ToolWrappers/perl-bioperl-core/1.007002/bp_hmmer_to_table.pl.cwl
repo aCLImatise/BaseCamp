@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_hmmer_to_table.pl.cwl
+id: bp_hmmer_to_table.pl.cwl
 inputs:
 - id: in_e_slash_evalue
   doc: -- filter by evalue

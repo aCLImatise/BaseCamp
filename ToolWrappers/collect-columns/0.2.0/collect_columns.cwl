@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collect_columns.cwl
+id: collect_columns.cwl
 inputs:
 - id: in_feature_column
   doc: "The position of the column with the (unique) feature\nids. Default to 0."

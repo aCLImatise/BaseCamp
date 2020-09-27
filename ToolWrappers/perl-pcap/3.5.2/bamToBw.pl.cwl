@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamToBw.pl.cwl
+id: bamToBw.pl.cwl
 inputs:
 - id: in_bam
   doc: -b   BAM/CRAM file to be processed.

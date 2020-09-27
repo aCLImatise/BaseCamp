@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../broad_utils.py_get_bustard_dir.cwl
+id: broad_utils.py_get_bustard_dir.cwl
 inputs:
 - id: in_loglevel
   doc: "Verboseness of output. [default: ERROR]\n"

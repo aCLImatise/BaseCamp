@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimfrg.cwl
+id: trimfrg.cwl
 inputs: []
 outputs:
 - id: out_stdout

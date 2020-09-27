@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_bar.pl.cwl
+id: fix_bar.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

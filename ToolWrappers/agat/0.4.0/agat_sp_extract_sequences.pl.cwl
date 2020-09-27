@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_extract_sequences.pl.cwl
+id: agat_sp_extract_sequences.pl.cwl
 inputs:
 - id: in_gff
   doc: String - Input GTF/GFF file.

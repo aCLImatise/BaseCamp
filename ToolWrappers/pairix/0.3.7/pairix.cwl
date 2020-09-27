@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairix.cwl
+id: pairix.cwl
 inputs:
 - id: in_preset_pairs_mergednodups
   doc: 'preset: pairs, merged_nodups, old_merged_nodups, gff, bed, sam, vcf, psltbl

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../depth_bias_scripts.py.cwl
+id: depth_bias_scripts.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

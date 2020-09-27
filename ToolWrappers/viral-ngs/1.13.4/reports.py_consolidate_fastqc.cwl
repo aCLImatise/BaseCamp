@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reports.py_consolidate_fastqc.cwl
+id: reports.py_consolidate_fastqc.cwl
 inputs:
 - id: in_reports_do_tpy
   doc: ''

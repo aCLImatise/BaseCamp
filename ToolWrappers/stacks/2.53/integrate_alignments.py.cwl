@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../integrate_alignments.py.cwl
+id: integrate_alignments.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

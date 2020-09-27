@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_multicov.cwl
+id: bedtools_multicov.cwl
 inputs:
 - id: in_bams
   doc: The bam files.

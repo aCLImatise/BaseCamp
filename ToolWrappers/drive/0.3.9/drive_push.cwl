@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drive_push.cwl
+id: drive_push.cwl
 inputs:
 - id: in_coerced_mime
   doc: the mimeType you are trying to coerce this file to be
@@ -51,16 +51,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -force
-- id: in_hidden
-  doc: allows pushing of hidden paths
-  type: boolean
-  inputBinding:
-    prefix: -hidden
-- id: in_ignore_checksum
-  doc: avoids computation of checksums as a final check.
-  type: boolean
-  inputBinding:
-    prefix: -ignore-checksum
 - id: in_ignore_conflict
   doc: turns off the conflict resolution safety
   type: boolean

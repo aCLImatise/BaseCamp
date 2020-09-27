@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyseer.cwl
+id: pyseer.cwl
 inputs:
 - id: in_phenotypes
   doc: Phenotypes file (whitespace separated)

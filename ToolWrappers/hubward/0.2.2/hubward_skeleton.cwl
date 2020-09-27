@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../hubward_skeleton.cwl
+id: hubward_skeleton.cwl
 inputs:
 - id: in_host
-  doc: \
+  doc: "\\\n--hub_remote <remotepath>"
   type: string
   inputBinding:
     prefix: --host
-- id: in_hub_remote
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --hub_remote
 - id: in_use_metadata_builder
   doc: "Sets up a metadata-builder.py script instead of a\nmetadata.yaml config file.\
     \ Useful for more complicated\nstudies (default: False)\n"

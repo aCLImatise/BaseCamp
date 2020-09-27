@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nmerge.cwl
+id: nmerge.cwl
 inputs:
 - id: in_dbn
   doc: ''

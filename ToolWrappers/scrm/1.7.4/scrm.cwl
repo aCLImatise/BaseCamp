@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scrm.cwl
+id: scrm.cwl
 inputs:
 - id: in_l_set_rate
   doc: <L>       Set recombination rate to R and locus length to L.
@@ -165,10 +165,10 @@ inputs:
   inputBinding:
     prefix: -p
 - id: in_print_model
-  doc: ','
+  doc: Prints information about the demographic model.
   type: boolean
   inputBinding:
-    prefix: -print-model
+    prefix: --print-model
 outputs:
 - id: out_stdout
   doc: Standard output stream

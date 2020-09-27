@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_auth_revoke.cwl
+id: gcloud_auth_revoke.cwl
 inputs:
 - id: in_accounts
   doc: ''

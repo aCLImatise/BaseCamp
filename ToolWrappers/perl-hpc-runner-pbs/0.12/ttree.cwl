@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ttree.cwl
+id: ttree.cwl
 inputs:
 - id: in__process_files
   doc: (--all)          Process all files, regardless of modification

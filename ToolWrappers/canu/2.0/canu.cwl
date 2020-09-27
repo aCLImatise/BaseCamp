@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../canu.cwl
+id: canu.cwl
 inputs:
-- id: in_p
-  doc: \
-  type: string
-  inputBinding:
-    prefix: -p
-- id: in_d
-  doc: \
-  type: Directory
-  inputBinding:
-    prefix: -d
 - id: in_pac_bio_hifi
   doc: '] file1 file2 ...'
   type: boolean
@@ -52,17 +42,12 @@ inputs:
   inputBinding:
     prefix: -haplotypeBILLY
 - id: in_corrected
-  doc: ''
+  doc: -trimmed
   type: boolean
   inputBinding:
     prefix: -corrected
-- id: in_trimmed
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -trimmed
 - id: in_pac_bio
-  doc: <files>
+  doc: "<files>\n-nanopore    <files>\n-pacbio-hifi <files>"
   type: boolean
   inputBinding:
     prefix: -pacbio

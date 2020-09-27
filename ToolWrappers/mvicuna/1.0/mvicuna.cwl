@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mvicuna.cwl
+id: mvicuna.cwl
 inputs:
 - id: in_i_pfq
   doc: ': comma separated input paired fastq files; the ith and (i+1)th files form

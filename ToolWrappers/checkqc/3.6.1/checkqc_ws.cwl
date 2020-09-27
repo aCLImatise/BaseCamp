@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkqc_ws.cwl
+id: checkqc_ws.cwl
 inputs:
 - id: in_port
   doc: 'Port which checkqc-ws will listen to (default: 9999).'

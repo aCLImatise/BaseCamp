@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../telescope_assign.cwl
+id: telescope_assign.cwl
 inputs:
 - id: in_attribute
   doc: "GTF attribute that defines a transposable element\nlocus. GTF features that\

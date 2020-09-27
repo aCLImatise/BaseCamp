@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_multiinter.cwl
+id: bedtools_multiinter.cwl
 inputs:
 - id: in_cluster
   doc: Invoke Ryan Layers's clustering algorithm.

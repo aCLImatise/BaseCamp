@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../perform_controls.pl.cwl
+id: perform_controls.pl.cwl
 inputs:
 - id: in_output_progress_screen
   doc: Output progress to screen

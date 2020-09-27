@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNARedPrint.cwl
+id: RNARedPrint.cwl
 inputs:
 - id: in_num
   doc: '- Sets number of generated sequences (default 10)'

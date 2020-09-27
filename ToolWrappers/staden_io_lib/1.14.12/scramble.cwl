@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scramble.cwl
+id: scramble.cwl
 inputs:
 - id: in_set_input_format
   doc: 'Set input format:  "bam", "sam" or "cram".'

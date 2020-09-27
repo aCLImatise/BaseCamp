@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_notify.cwl
+id: arb_notify.cwl
 inputs:
 - id: in_id
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sim4db.cwl
+id: sim4db.cwl
 inputs:
 - id: in_print_status_running
   doc: print status to stderr while running

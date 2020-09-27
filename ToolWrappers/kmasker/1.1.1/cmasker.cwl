@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmasker.cwl
+id: cmasker.cwl
 inputs:
 - id: in_fasta_input
   doc: FASTA Input

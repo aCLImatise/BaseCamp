@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_heatmap_outputdir.cwl
+id: mb_plot_heatmap_outputdir.cwl
 inputs:
 - id: in_upstream
   doc: ''

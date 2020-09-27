@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeOldMutationStrings.py.cwl
+id: makeOldMutationStrings.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

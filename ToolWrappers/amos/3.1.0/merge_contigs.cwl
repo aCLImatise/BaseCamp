@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_contigs.cwl
+id: merge_contigs.cwl
 inputs:
 - id: in_output_outprefixmali_file
   doc: Output the <out-prefix>.mali file

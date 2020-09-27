@@ -48,16 +48,6 @@ positional:
   position: 1
   name: analyzed
   optional: false
-- !Positional
-  description: Print HMM model parameters and exit
-  position: 0
-  name: printHMM
-  optional: false
-- !Positional
-  description: Print HMM transition matrix for user-requested genomic distances
-  position: 0
-  name: transition
-  optional: false
 named:
 - !Flag
   description: "Print help, including all details and hidden\noptions, and exit"
@@ -89,265 +79,70 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: ''
+  description: "--targets=STRING          Input targets lists\n--mergedTargets=STRING\
+    \    Output targets list  (default=`-')"
   synonyms:
   - -S
   - --prepareTargets
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Input targets lists
-  synonyms:
-  - --targets
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: Output targets list  (default=`-')
-  synonyms:
-  - --mergedTargets
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: ''
+  description: "--GATKdepths=STRING       GATK sample_interval_summary output file(s)\
+    \ to\nbe merged [must have *IDENTICAL* target\nlists]\n--GATKdepthsList=STRING\
+    \   A file containing a list of GATK\nsample_interval_summary output files to\
+    \ be\nmerged [must have *IDENTICAL* target lists]\n--sampleIDmap=STRING      File\
+    \ containing mappings of sample names to new\nsample names (in columns designated\
+    \ by\nfromID, toID)\n--fromID=INT              Column number of OLD sample IDs\
+    \ to map\n(default=`1')\n--toID=INT                Column number of NEW sample\
+    \ IDs to map\n(default=`2')\n--columnSuffix=STRING     Suffix of columns to be\
+    \ used for merging [where\ncolumns are in the form: SAMPLE +\ncolumnSuffix]  (default=`_mean_cvg')\n\
+    --rdPrecision=INT         Decimal precision of read depths output\n(default=`2')\n\
+    --outputTargetsBySamples  Output targets x samples (instead of samples x\ntargets)\
+    \  (default=off)"
   synonyms:
   - -A
   - --mergeGATKdepths
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "GATK sample_interval_summary output file(s) to\nbe merged [must have\
-    \ *IDENTICAL* target\nlists]"
-  synonyms:
-  - --GATKdepths
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: "A file containing a list of GATK\nsample_interval_summary output files\
-    \ to be\nmerged [must have *IDENTICAL* target lists]"
-  synonyms:
-  - --GATKdepthsList
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: "File containing mappings of sample names to new\nsample names (in\
-    \ columns designated by\nfromID, toID)"
-  synonyms:
-  - --sampleIDmap
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: "Column number of OLD sample IDs to map\n(default=`1')"
-  synonyms:
-  - --fromID
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "Column number of NEW sample IDs to map\n(default=`2')"
-  synonyms:
-  - --toID
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "Suffix of columns to be used for merging [where\ncolumns are in the\
-    \ form: SAMPLE +\ncolumnSuffix]  (default=`_mean_cvg')"
-  synonyms:
-  - --columnSuffix
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: "Decimal precision of read depths output\n(default=`2')"
-  synonyms:
-  - --rdPrecision
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "Output targets x samples (instead of samples x\ntargets)  (default=off)"
-  synonyms:
-  - --outputTargetsBySamples
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
+  description: "--excludeTargets=STRING   File(s) of targets to exclude\n--excludeChromosomeTargets=STRING\n\
+    Target chromosome(s) to exclude\n--excludeSamples=STRING   File(s) of samples\
+    \ to exclude\n--minTargetSize=INT       Minimum size of target (in bp) to process\n\
+    (default=`0')\n--maxTargetSize=INT       Maximum size of target (in bp) to process\n\
+    --minMeanTargetRD=DOUBLE  Minimum per-target mean RD to require for\ntarget to\
+    \ be processed\n--maxMeanTargetRD=DOUBLE  Maximum per-target mean RD to require\
+    \ for\ntarget to be processed\n--minSdTargetRD=DOUBLE    Minimum per-target standard\
+    \ deviation of RD to\nrequire for target to be processed\n(default=`0')\n--maxSdTargetRD=DOUBLE\
+    \    Maximum per-target standard deviation of RD to\nrequire for target to be\
+    \ processed\n--minMeanSampleRD=DOUBLE  Minimum per-sample mean RD to require for\n\
+    sample to be processed\n--maxMeanSampleRD=DOUBLE  Maximum per-sample mean RD to\
+    \ require for\nsample to be processed\n--minSdSampleRD=DOUBLE    Minimum per-sample\
+    \ standard deviation of RD to\nrequire for sample to be processed\n(default=`0')\n\
+    --maxSdSampleRD=DOUBLE    Maximum per-sample standard deviation of RD to\nrequire\
+    \ for sample to be processed\n--scaleDataBySum          After any filtering, scale\
+    \ read-depth matrix\nvalues by sample- or target- sums (as per\n--scaleDataBySumType)\
+    \ [i.e., divide by row or\ncolumn sums], but multiply by factor\nspecificied by\
+    \ --scaleDataBySumFactor\n(default=off)\n--scaleDataBySumType=ENUM If --scaleDataBySum\
+    \ given, then scale the data\nwithin this dimension  (possible\nvalues=\"target\"\
+    , \"sample\")\n--scaleDataBySumFactor=DOUBLE\nIf --scaleDataBySum given, then\
+    \ divide by\nappropriate sum (but multiply by this factor)\n(default=`1e6')\n\
+    --log10=DOUBLE            After any filtering and optional scaling steps\n(but\
+    \ before any optional centering steps),\nconvert the matrix to log10 values. To\
+    \ deal\nwith non-positive and small positive values,\na truncation and then pseudocount\
+    \ approach is\ntaken. Specifically, denote the original\nmatrix value as x and\
+    \ this parameter's\npseudocount value as v (say, 0.5). The matrix\nvalue used\
+    \ is then log10(max(x, 0) + v)\n--centerData              Output sample- or target-\
+    \ centered read-depth\nmatrix (as per --centerType)  (default=off)\n--centerType=ENUM\
+    \         If --centerData given, then center the data\naround this dimension \
+    \ (possible\nvalues=\"target\", \"sample\")\n--zScoreData              If --centerData\
+    \ given, then additionally\nnormalize by standard deviation (outputting\nz-scores)\
+    \  (default=off)\n--outputExcludedTargets=STRING\nFile in which to output targets\
+    \ excluded by\nsome criterion\n--outputExcludedSamples=STRING\nFile in which to\
+    \ output samples excluded by\nsome criterion"
   synonyms:
   - -M
   - --matrix
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: File(s) of targets to exclude
-  synonyms:
-  - --excludeTargets
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: Target chromosome(s) to exclude
-  synonyms:
-  - --excludeChromosomeTargets
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: File(s) of samples to exclude
-  synonyms:
-  - --excludeSamples
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: "Minimum size of target (in bp) to process\n(default=`0')"
-  synonyms:
-  - --minTargetSize
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: Maximum size of target (in bp) to process
-  synonyms:
-  - --maxTargetSize
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "Minimum per-target mean RD to require for\ntarget to be processed"
-  synonyms:
-  - --minMeanTargetRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Maximum per-target mean RD to require for\ntarget to be processed"
-  synonyms:
-  - --maxMeanTargetRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Minimum per-target standard deviation of RD to\nrequire for target\
-    \ to be processed\n(default=`0')"
-  synonyms:
-  - --minSdTargetRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Maximum per-target standard deviation of RD to\nrequire for target\
-    \ to be processed"
-  synonyms:
-  - --maxSdTargetRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Minimum per-sample mean RD to require for\nsample to be processed"
-  synonyms:
-  - --minMeanSampleRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Maximum per-sample mean RD to require for\nsample to be processed"
-  synonyms:
-  - --maxMeanSampleRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Minimum per-sample standard deviation of RD to\nrequire for sample\
-    \ to be processed\n(default=`0')"
-  synonyms:
-  - --minSdSampleRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Maximum per-sample standard deviation of RD to\nrequire for sample\
-    \ to be processed"
-  synonyms:
-  - --maxSdSampleRD
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "After any filtering, scale read-depth matrix\nvalues by sample- or\
-    \ target- sums (as per\n--scaleDataBySumType) [i.e., divide by row or\ncolumn\
-    \ sums], but multiply by factor\nspecificied by --scaleDataBySumFactor\n(default=off)"
-  synonyms:
-  - --scaleDataBySum
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If --scaleDataBySum given, then scale the data\nwithin this dimension\
-    \  (possible\nvalues=\"target\", \"sample\")"
-  synonyms:
-  - --scaleDataBySumType
-  args: !SimpleFlagArg
-    name: ENUM
-  optional: true
-- !Flag
-  description: "If --scaleDataBySum given, then divide by\nappropriate sum (but multiply\
-    \ by this factor)\n(default=`1e6')"
-  synonyms:
-  - --scaleDataBySumFactor
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "After any filtering and optional scaling steps\n(but before any optional\
-    \ centering steps),\nconvert the matrix to log10 values. To deal\nwith non-positive\
-    \ and small positive values,\na truncation and then pseudocount approach is\n\
-    taken. Specifically, denote the original\nmatrix value as x and this parameter's\n\
-    pseudocount value as v (say, 0.5). The matrix\nvalue used is then log10(max(x,\
-    \ 0) + v)"
-  synonyms:
-  - --log10
-  args: !SimpleFlagArg
-    name: DOUBLE
-  optional: true
-- !Flag
-  description: "Output sample- or target- centered read-depth\nmatrix (as per --centerType)\
-    \  (default=off)"
-  synonyms:
-  - --centerData
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "If --centerData given, then center the data\naround this dimension\
-    \  (possible\nvalues=\"target\", \"sample\")"
-  synonyms:
-  - --centerType
-  args: !SimpleFlagArg
-    name: ENUM
-  optional: true
-- !Flag
-  description: "If --centerData given, then additionally\nnormalize by standard deviation\
-    \ (outputting\nz-scores)  (default=off)"
-  synonyms:
-  - --zScoreData
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "File in which to output targets excluded by\nsome criterion"
-  synonyms:
-  - --outputExcludedTargets
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: "File in which to output samples excluded by\nsome criterion"
-  synonyms:
-  - --outputExcludedSamples
-  args: !SimpleFlagArg
-    name: STRING
   optional: true
 - !Flag
   description: Read-depth matrix output file  (default=`-')
@@ -492,25 +287,12 @@ named:
     name: DOUBLE
   optional: true
 - !Flag
-  description: ''
+  description: "--mergeVCF=STRING         VCF file(s) to be merged [must have *IDENTICAL*\n\
+    genotyped intervals]\n--mergeVCFlist=STRING     A file containing a list of VCF\
+    \ files to be\nmerged [must have *IDENTICAL* genotyped\nintervals]"
   synonyms:
   - --mergeVCFs
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "VCF file(s) to be merged [must have *IDENTICAL*\ngenotyped intervals]"
-  synonyms:
-  - --mergeVCF
-  args: !SimpleFlagArg
-    name: STRING
-  optional: true
-- !Flag
-  description: "A file containing a list of VCF files to be\nmerged [must have *IDENTICAL*\
-    \ genotyped\nintervals]"
-  synonyms:
-  - --mergeVCFlist
-  args: !SimpleFlagArg
-    name: STRING
   optional: true
 - !Flag
   description: (Initial) model parameters file
@@ -595,15 +377,10 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: ''
+  description: "Mode: transition\nPrint HMM transition matrix for user-requested genomic\
+    \ distances\n--transition\n"
   synonyms:
   - --printHMM
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --transition
   args: !EmptyFlagArg {}
   optional: true
 parent:

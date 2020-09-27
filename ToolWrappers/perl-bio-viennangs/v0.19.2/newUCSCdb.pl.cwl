@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../newUCSCdb.pl.cwl
+id: newUCSCdb.pl.cwl
 inputs:
 - id: in_db
   doc: <string>  new database name                        ()

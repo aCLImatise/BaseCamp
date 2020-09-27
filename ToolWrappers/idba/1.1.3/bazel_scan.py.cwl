@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bazel_scan.py.cwl
+id: bazel_scan.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

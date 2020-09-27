@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslRc.cwl
+id: pslRc.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

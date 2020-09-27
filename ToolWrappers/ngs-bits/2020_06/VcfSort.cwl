@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfSort.cwl
+id: VcfSort.cwl
 inputs:
 - id: in_in
   doc: Input variant list.

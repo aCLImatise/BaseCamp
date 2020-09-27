@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.vmatch_pre_unlink.sh.cwl
+id: .vmatch_pre_unlink.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

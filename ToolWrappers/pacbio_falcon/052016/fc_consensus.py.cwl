@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_consensus.py.cwl
+id: fc_consensus.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

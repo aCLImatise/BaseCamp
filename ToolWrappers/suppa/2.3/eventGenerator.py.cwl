@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eventGenerator.py.cwl
+id: eventGenerator.py.cwl
 inputs:
 - id: in_o
   doc: ''

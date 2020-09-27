@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglenv.csh.cwl
+id: mglenv.csh.cwl
 inputs: []
 outputs:
 - id: out_stdout

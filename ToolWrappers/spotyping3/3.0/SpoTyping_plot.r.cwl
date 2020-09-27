@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpoTyping_plot.r.cwl
+id: SpoTyping_plot.r.cwl
 inputs:
 - id: in_nobs
   doc: "The following object is masked from 'package:utils':"

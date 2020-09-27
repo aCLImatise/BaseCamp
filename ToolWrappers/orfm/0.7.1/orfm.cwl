@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orfm.cwl
+id: orfm.cwl
 inputs:
 - id: in_minimum_number_nucleotides
   doc: "minimum number of nucleotides (not amino acids) to call\nan ORF on [default:\

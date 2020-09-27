@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../counts_in_region.cwl
+id: counts_in_region.cwl
 inputs:
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
@@ -207,17 +207,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mask_sorted
-- id: in___
-  doc: '------------------------------------------------------------------------------'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_plastid_dot_genomics_do_troi_tools_dot_segment_chain_dot_from_str
   doc: '`counts`                  Number of reads mapping to region'
   type: string
   inputBinding:
     position: 0
-- id: in_output_filename
+- id: in_outfile
   doc: Output filename
   type: string
   inputBinding:

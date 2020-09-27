@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_dbxflat.cwl
+id: _dbxflat.cwl
 inputs:
 - id: in_id_format
   doc: "menu       [SWISS] Entry format (Values: EMBL (EMBL);\nSWISS (Swiss-Prot,\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_spacing.cwl
+id: bedtools_spacing.cwl
 inputs:
 - id: in_bed
   doc: If using BAM input, write output as BED.

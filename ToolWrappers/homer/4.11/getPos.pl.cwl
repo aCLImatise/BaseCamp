@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getPos.pl.cwl
+id: getPos.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

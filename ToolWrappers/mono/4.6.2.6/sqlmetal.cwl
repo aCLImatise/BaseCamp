@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqlmetal.cwl
+id: sqlmetal.cwl
 inputs:
 - id: in_conn
   doc: "STRING\nDatabase CONNECTION STRING. Cannot be used with\n/server, /user or\

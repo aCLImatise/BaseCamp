@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmap.cwl
+id: rmap.cwl
 inputs:
 - id: in_output
   doc: output file name

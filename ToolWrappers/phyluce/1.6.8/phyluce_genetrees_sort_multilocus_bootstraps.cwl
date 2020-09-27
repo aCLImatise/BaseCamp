@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_sort_multilocus_bootstraps.cwl
+id: phyluce_genetrees_sort_multilocus_bootstraps.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_bootstrap_replicates
+  doc: "BOOTSTRAP_REPLICATES\n--output OUTPUT"
   type: boolean
   inputBinding:
     prefix: --bootstrap_replicates
@@ -16,11 +16,6 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --output
-- id: in__output_output
-  doc: --output OUTPUT
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

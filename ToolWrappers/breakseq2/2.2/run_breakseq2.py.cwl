@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_breakseq2.py.cwl
+id: run_breakseq2.py.cwl
 inputs:
 - id: in_reference
   doc: '[--sample SAMPLE] [--keep_temp]'

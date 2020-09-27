@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mothur.cwl
+id: mothur.cwl
 inputs:
 - id: in_path_to_old_version
   doc: 'for example: yourusername$ which mothur'

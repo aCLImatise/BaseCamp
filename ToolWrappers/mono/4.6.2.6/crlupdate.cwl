@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crlupdate.cwl
+id: crlupdate.cwl
 inputs:
 - id: in_use_store_default
   doc: use the machine certificate store (default to user)

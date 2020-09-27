@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../statal.cwl
+id: statal.cwl
 inputs:
 - id: in_in
   doc: Input file in several formats (clustal, fasta, nexus, phylip, etc).

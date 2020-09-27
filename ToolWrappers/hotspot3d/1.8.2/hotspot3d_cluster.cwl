@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_cluster.cwl
+id: hotspot3d_cluster.cwl
 inputs:
 - id: in_sites_file
   doc: A .sites file with site-site pairs

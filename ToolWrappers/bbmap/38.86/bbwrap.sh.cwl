@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbwrap.sh.cwl
+id: bbwrap.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

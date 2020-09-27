@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_cleanupblastgraph.cwl
+id: proteinortho_cleanupblastgraph.cwl
 inputs:
 - id: in_blast_graph
   doc: ''

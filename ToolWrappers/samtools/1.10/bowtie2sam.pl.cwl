@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bowtie2sam.pl.cwl
+id: bowtie2sam.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../weave.cwl
+id: weave.cwl
 inputs:
 - id: in_assembly
   doc: filename of assembly in FASTA format (required)

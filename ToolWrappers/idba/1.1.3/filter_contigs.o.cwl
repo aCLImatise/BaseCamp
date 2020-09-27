@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_contigs.o.cwl
+id: filter_contigs.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

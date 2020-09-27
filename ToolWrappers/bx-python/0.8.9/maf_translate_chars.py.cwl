@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_translate_chars.py.cwl
+id: maf_translate_chars.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

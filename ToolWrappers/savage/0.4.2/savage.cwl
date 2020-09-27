@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../savage.cwl
+id: savage.cwl
 inputs:
 - id: in_path_input_fastq
   doc: path to input fastq containing single-end reads

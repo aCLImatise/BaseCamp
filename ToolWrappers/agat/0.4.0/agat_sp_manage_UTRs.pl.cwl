@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_manage_UTRs.pl.cwl
+id: agat_sp_manage_UTRs.pl.cwl
 inputs:
 - id: in_ref_file
   doc: Input GTF/GFF file.

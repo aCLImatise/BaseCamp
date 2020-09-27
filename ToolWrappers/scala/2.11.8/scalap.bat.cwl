@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scalap.bat.cwl
+id: scalap.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

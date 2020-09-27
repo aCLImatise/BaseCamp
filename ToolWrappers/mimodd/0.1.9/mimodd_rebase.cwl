@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_rebase.cwl
+id: mimodd_rebase.cwl
 inputs:
 - id: in_v
   doc: ''

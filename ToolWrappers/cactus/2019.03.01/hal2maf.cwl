@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hal2maf.cwl
+id: hal2maf.cwl
 inputs:
 - id: in_append
   doc: ":                      append to instead of overwrite output file. [default\

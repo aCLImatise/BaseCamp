@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_flip.cwl
+id: pairtools_flip.cwl
 inputs:
 - id: in_chrom_s_path
   doc: "Chromosome order used to flip interchromosomal\nmates: path to a chromosomes\

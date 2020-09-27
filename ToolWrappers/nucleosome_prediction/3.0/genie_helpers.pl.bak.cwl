@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genie_helpers.pl.bak.cwl
+id: genie_helpers.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_splicesites.cwl
+id: gtf_splicesites.cwl
 inputs:
 - id: in_more_options
   doc: ''

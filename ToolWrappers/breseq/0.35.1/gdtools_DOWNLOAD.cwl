@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_DOWNLOAD.cwl
+id: gdtools_DOWNLOAD.cwl
 inputs:
 - id: in_login
   doc: Login user:password information for private server access.

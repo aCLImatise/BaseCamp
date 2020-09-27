@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ginkgo.sh.cwl
+id: ginkgo.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

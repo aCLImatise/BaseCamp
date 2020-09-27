@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNASeq_MATS.py.cwl
+id: RNASeq_MATS.py.cwl
 inputs:
 - id: in_gtf
   doc: An annotation of genes and transcripts in GTF format

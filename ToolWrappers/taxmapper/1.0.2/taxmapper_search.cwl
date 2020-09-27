@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxmapper_search.cwl
+id: taxmapper_search.cwl
 inputs:
 - id: in_forward
   doc: Forward reads in fasta or fastq format

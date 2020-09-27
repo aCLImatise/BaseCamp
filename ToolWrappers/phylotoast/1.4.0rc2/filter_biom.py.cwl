@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_biom.py.cwl
+id: filter_biom.py.cwl
 inputs:
 - id: in_filter_ot_uids_fnh
   doc: "Path to file to write out the list of OTUIDs not\npresent in any SampleIDs\

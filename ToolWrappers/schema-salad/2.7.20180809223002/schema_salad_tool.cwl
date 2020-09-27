@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../schema_salad_tool.cwl
+id: schema_salad_tool.cwl
 inputs:
 - id: in_rdf_serializer
   doc: "Output RDF serialization format used by --print-rdf\n(one of turtle (default),\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../behst.orig.cwl
+id: behst.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

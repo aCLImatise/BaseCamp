@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createIGVhtml.pl.cwl
+id: createIGVhtml.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fclique.cwl
+id: _fclique.cwl
 inputs:
 - id: in_anc_file
   doc: properties Phylip ancestral states file (optional)

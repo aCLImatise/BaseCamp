@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioportal_csv2obo.pl.cwl
+id: bioportal_csv2obo.pl.cwl
 inputs:
 - id: in_csv_input_file
   doc: CSV input file
@@ -11,11 +11,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_options
-  doc: ':'
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../codcopy.cwl
+id: codcopy.cwl
 inputs: []
 outputs:
 - id: out_stdout

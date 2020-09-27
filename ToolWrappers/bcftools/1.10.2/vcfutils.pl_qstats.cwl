@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfutils.pl_qstats.cwl
+id: vcfutils.pl_qstats.cwl
 inputs:
 - id: in_more_options
   doc: ''

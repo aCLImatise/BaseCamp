@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cPecanModifyHmm.cwl
+id: cPecanModifyHmm.cwl
 inputs: []
 outputs:
 - id: out_stdout

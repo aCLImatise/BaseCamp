@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_vcfview.cwl
+id: htsbox_vcfview.cwl
 inputs:
 - id: in_output_in_bcf
   doc: output in BCF

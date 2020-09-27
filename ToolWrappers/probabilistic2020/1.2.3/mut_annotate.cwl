@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mut_annotate.cwl
+id: mut_annotate.cwl
 inputs:
 - id: in_b
   doc: '[-s SCORE_DIR] [-p PROCESSES] [-n NUM_ITERATIONS]'

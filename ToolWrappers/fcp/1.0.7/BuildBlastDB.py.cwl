@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BuildBlastDB.py.cwl
+id: BuildBlastDB.py.cwl
 inputs:
 - id: in_make_blast_db_path
   doc: ''

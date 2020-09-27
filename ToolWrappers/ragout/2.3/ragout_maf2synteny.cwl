@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ragout_maf2synteny.cwl
+id: ragout_maf2synteny.cwl
 inputs:
 - id: in_path_output_directory
   doc: path to the output directory [default = .]

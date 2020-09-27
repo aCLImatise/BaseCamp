@@ -22,15 +22,12 @@ task FunannotateTrain {
     Boolean? coverage
     Boolean? min_coverage
     Boolean? pasa_db
-    Float? stringent_alignment_overlap_dot
     Boolean? aligners
     Boolean? max_intron_len
     Boolean? species
     Boolean? strain
     Boolean? isolate
     Boolean? cpus
-    Boolean? pasa_home
-    Boolean? trinity_home
     String arguments
   }
   command <<<
@@ -56,15 +53,12 @@ task FunannotateTrain {
       ~{if (coverage) then "--coverage" else ""} \
       ~{if (min_coverage) then "--min_coverage" else ""} \
       ~{if (pasa_db) then "--pasa_db" else ""} \
-      ~{if defined(stringent_alignment_overlap_dot) then ("--stringent_alignment_overlap. " +  '"' + stringent_alignment_overlap_dot + '"') else ""} \
       ~{if (aligners) then "--aligners" else ""} \
       ~{if (max_intron_len) then "--max_intronlen" else ""} \
       ~{if (species) then "--species" else ""} \
       ~{if (strain) then "--strain" else ""} \
       ~{if (isolate) then "--isolate" else ""} \
-      ~{if (cpus) then "--cpus" else ""} \
-      ~{if (pasa_home) then "--PASAHOME" else ""} \
-      ~{if (trinity_home) then "--TRINITYHOME" else ""}
+      ~{if (cpus) then "--cpus" else ""}
   >>>
   parameter_meta {
     genome_multifasta_file: "Genome multi-fasta file"
@@ -87,15 +81,12 @@ task FunannotateTrain {
     coverage: "Depth to normalize reads. Default: 50"
     min_coverage: "Min depth for normalizing reads. Default: 5"
     pasa_db: "Database to use. Default: sqlite [mysql,sqlite]"
-    stringent_alignment_overlap_dot: ": 30.0"
     aligners: "Aligners to use with PASA: Default: minimap2 blat [gmap]"
     max_intron_len: "Maximum intron length. Default: 3000"
     species: "Species name, use quotes for binomial, e.g. \\\"Aspergillus fumigatus\\\""
     strain: "Strain name"
     isolate: "Isolate name"
     cpus: "Number of CPUs to use. Default: 2"
-    pasa_home: ""
-    trinity_home: ""
     arguments: ""
   }
   output {

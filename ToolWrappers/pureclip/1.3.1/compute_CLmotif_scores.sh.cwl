@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compute_CLmotif_scores.sh.cwl
+id: compute_CLmotif_scores.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

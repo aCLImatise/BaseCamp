@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_seqCache.cwl
+id: test_seqCache.cwl
 inputs: []
 outputs:
 - id: out_stdout

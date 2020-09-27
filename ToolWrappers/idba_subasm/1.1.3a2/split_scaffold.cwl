@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_scaffold.cwl
+id: split_scaffold.cwl
 inputs:
 - id: in_scaffold_dot_fa
   doc: ''

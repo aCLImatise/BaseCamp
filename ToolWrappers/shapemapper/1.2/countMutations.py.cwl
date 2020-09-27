@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../countMutations.py.cwl
+id: countMutations.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

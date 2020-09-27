@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../switch_BEDOPS_binary_type.cwl
+id: switch_BEDOPS_binary_type.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../set_finder.cwl
+id: set_finder.cwl
 inputs:
 - id: in__find_cliques
   doc: --all          Find all cliques.

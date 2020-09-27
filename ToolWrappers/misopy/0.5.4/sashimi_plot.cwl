@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sashimi_plot.cwl
+id: sashimi_plot.cwl
 inputs:
 - id: in_plot_insert_len
   doc: "Plot the insert length distribution from a given\ninsert length (*.insert_len)\

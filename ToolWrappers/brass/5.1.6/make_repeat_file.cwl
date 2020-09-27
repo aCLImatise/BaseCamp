@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_repeat_file.cwl
+id: make_repeat_file.cwl
 inputs: []
 outputs:
 - id: out_stdout

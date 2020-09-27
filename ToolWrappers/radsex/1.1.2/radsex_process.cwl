@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../radsex_process.cwl
+id: radsex_process.cwl
 inputs:
 - id: in_input_dir
   doc: TEXT:DIR                  Path to a directory contains demultiplexed sequence

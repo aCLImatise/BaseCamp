@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../etraining.cwl
+id: etraining.cwl
 inputs:
 - id: in_species
   doc: ''

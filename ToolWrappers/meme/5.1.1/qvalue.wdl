@@ -3,45 +3,15 @@ version 1.0
 task Qvalue {
   input {
     File? null
-    String? good_score
-    Boolean? pi_zero
-    File? pi_zero_file
-    Boolean? fdr
-    Int? bootstraps
-    Int? header
-    Int? column
-    Boolean? append
-    Int? seed
-    Int? verbosity
     String p_values
   }
   command <<<
     qvalue \
       ~{p_values} \
-      ~{if defined(null) then ("--null " +  '"' + null + '"') else ""} \
-      ~{if defined(good_score) then ("--good-score " +  '"' + good_score + '"') else ""} \
-      ~{if (pi_zero) then "--pi-zero" else ""} \
-      ~{if defined(pi_zero_file) then ("--pi-zero-file " +  '"' + pi_zero_file + '"') else ""} \
-      ~{if (fdr) then "--fdr" else ""} \
-      ~{if defined(bootstraps) then ("--bootstraps " +  '"' + bootstraps + '"') else ""} \
-      ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
-      ~{if defined(column) then ("--column " +  '"' + column + '"') else ""} \
-      ~{if (append) then "--append" else ""} \
-      ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""}
+      ~{if defined(null) then ("--null " +  '"' + null + '"') else ""}
   >>>
   parameter_meta {
-    null: ""
-    good_score: "|low"
-    pi_zero: ""
-    pi_zero_file: ""
-    fdr: ""
-    bootstraps: "(default=1000)"
-    header: "(default=0)"
-    column: "(default=1)"
-    append: ""
-    seed: "(default from clock)"
-    verbosity: "|2|3|4 (default = 2)"
+    null: "--good-score high|low\\n--pi-zero\\n--pi-zero-file <file>\\n--fdr\\n--bootstraps <int> (default=1000)\\n--header <int> (default=0)\\n--column <int> (default=1)\\n--append\\n--seed <int> (default from clock)\\n--verbosity 1|2|3|4 (default = 2)\\n"
     p_values: ""
   }
   output {

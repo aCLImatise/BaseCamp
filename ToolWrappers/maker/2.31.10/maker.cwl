@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker.cwl
+id: maker.cwl
 inputs:
 - id: in_genome
   doc: '|g <file>    Overrides the genome file path in the control files'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicDifferentialTAD.cwl
+id: hicDifferentialTAD.cwl
 inputs:
 - id: in_target_matrix
   doc: The matrix which was used to compute the TADs

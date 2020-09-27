@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../amb2gro_top_gro.py.cwl
+id: amb2gro_top_gro.py.cwl
 inputs:
-- id: in_g
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -g
 - id: in_prmtop_file
   doc: Prmtop file
   type: File
@@ -21,6 +16,16 @@ inputs:
   type: File
   inputBinding:
     prefix: -t
+- id: in_gromacs_gro_file
+  doc: GROMACS gro file
+  type: File
+  inputBinding:
+    prefix: -g
+- id: in_pdb_file_generate
+  doc: A PDB file to generate
+  type: File
+  inputBinding:
+    prefix: -b
 outputs:
 - id: out_stdout
   doc: Standard output stream

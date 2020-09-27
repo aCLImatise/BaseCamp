@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../atropos_trim.cwl
+id: atropos_trim.cwl
 inputs:
 - id: in_debug
   doc: Print debugging information. (no)

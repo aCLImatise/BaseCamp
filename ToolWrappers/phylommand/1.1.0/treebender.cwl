@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebender.cwl
+id: treebender.cwl
 inputs:
 - id: in_fdot
   doc: taxa should be given as extra arguments they can be given in a text

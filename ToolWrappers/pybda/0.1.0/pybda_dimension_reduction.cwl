@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybda_dimension_reduction.cwl
+id: pybda_dimension_reduction.cwl
 inputs:
 - id: in_config
   doc: ''

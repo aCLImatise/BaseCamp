@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cs_Calculate.cwl
+id: cs_Calculate.cwl
 inputs:
 - id: in_cs
   doc: ''

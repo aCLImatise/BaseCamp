@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loadChemistry.py.cwl
+id: loadChemistry.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

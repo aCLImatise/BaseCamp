@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mendelscan_score.cwl
+id: mendelscan_score.cwl
 inputs:
 - id: in_vep_file
   doc: Variant annotation in VEP format

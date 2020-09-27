@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dataproc_modify.cwl
+id: hailctl_dataproc_modify.cwl
 inputs:
 - id: in_wheel
   doc: New Hail installation.

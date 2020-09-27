@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnammer_supperscaffold_gff_to_indiv_transcripts.pl.cwl
+id: rnammer_supperscaffold_gff_to_indiv_transcripts.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

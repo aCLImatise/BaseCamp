@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertPolishes.cwl
+id: convertPolishes.cwl
 inputs:
 - id: in_input_file
   doc: ''

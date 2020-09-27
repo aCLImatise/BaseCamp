@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hivnetworkannotate.cwl
+id: hivnetworkannotate.cwl
 inputs:
 - id: in_output_annotated_file
   doc: "[OUTPUT], --output [OUTPUT]\nOutput the annotated JSON network file to"

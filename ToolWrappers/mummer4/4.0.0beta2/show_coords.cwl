@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../show_coords.cwl
+id: show_coords.cwl
 inputs:
 - id: in_merges_overlapping_alignments
   doc: "Merges overlapping alignments regardless of match dir\nor frame and does not\

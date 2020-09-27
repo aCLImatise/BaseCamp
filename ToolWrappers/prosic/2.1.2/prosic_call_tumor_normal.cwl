@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prosic_call_tumor_normal.cwl
+id: prosic_call_tumor_normal.cwl
 inputs:
 - id: in_exclusive_end
   doc: "Assume that the END tag is exclusive (i.e. it points to the position after\

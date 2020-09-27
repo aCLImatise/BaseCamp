@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../raw_vcf_parse.py.cwl
+id: raw_vcf_parse.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

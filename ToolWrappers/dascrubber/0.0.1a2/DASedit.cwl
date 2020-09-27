@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DASedit.cwl
+id: DASedit.cwl
 inputs:
 - id: in_x
   doc: ''

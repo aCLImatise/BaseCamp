@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SSeq_tsv2vcf.py.cwl
+id: SSeq_tsv2vcf.py.cwl
 inputs:
 - id: in_tsv_in
   doc: 'TSV in (default: None)'

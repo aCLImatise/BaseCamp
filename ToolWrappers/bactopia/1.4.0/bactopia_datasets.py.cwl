@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bactopia_datasets.py.cwl
+id: bactopia_datasets.py.cwl
 inputs:
 - id: in_ariba
   doc: "Setup Ariba datasets for a given reference or a list of\nreferences in a text\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aquila_umap.cwl
+id: aquila_umap.cwl
 inputs:
 - id: in_fa_folder
   doc: "Required parameter; The folder path where fasta files\nare saved eg: /path/to/fasta/"

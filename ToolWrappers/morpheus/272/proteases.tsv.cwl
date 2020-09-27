@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteases.tsv.cwl
+id: proteases.tsv.cwl
 inputs: []
 outputs:
 - id: out_stdout

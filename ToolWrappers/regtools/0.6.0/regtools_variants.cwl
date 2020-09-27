@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../regtools_variants.cwl
+id: regtools_variants.cwl
 inputs:
 - id: in_command
   doc: ''

@@ -46,21 +46,15 @@ task Dbgh5 {
     Boolean? redo_links
     Boolean? skip_links
     Boolean? nb_glue_partitions
-    String version
     Int git_sha_one
-    String build_date
     String build_system
     String build_compiler
-    String build_km_er_size
   }
   command <<<
     dbgh5 \
-      ~{version} \
       ~{git_sha_one} \
-      ~{build_date} \
       ~{build_system} \
       ~{build_compiler} \
-      ~{build_km_er_size} \
       ~{if (no_mph_f) then "-no-mphf" else ""} \
       ~{if (in) then "-in" else ""} \
       ~{if (km_er_size) then "-kmer-size" else ""} \
@@ -151,12 +145,9 @@ task Dbgh5 {
     redo_links: "(0 arg) :    same, but       redo     links"
     skip_links: "(0 arg) :    same, but       skip     links"
     nb_glue_partitions: "(1 arg) :    number of glue partitions (automatically calculated by default)  [default '0']"
-    version: ": 1.4.2"
     git_sha_one: ": notset"
-    build_date: ": 2020-06-22/10:21:26"
     build_system: ": Linux-4.4.0-96-generic"
     build_compiler: ": /opt/conda/conda-bld/mindthegap_1592821143845/_build_env/bin/x86_64-conda_cos6-linux-gnu-cc  (7.5.0)"
-    build_km_er_size: ": 32 64 96 128"
   }
   output {
     File out_stdout = stdout()

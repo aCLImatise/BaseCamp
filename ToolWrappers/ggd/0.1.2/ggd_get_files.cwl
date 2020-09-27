@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ggd_get_files.cwl
+id: ggd_get_files.cwl
 inputs:
 - id: in_channel
   doc: "The ggd channel of the recipe to find. (Default =\ngenomics)"

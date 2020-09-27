@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swarm.cwl
+id: swarm.cwl
 inputs:
 - id: in_threads
   doc: number of threads to use (1)

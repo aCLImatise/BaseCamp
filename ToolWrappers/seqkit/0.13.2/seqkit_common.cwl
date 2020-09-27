@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_common.cwl
+id: seqkit_common.cwl
 inputs:
 - id: in_by_name
   doc: match by full name instead of just id

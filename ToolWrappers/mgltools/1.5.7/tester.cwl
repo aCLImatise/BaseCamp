@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tester.cwl
+id: tester.cwl
 inputs:
 - id: in_quiet
   doc: quiet

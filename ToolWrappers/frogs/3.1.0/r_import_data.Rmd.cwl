@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_import_data.Rmd.cwl
+id: r_import_data.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

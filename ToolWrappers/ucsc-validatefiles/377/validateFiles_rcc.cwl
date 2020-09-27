@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validateFiles_rcc.cwl
+id: validateFiles_rcc.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

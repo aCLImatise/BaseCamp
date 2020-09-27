@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TsvSlice.cwl
+id: TsvSlice.cwl
 inputs:
 - id: in_cols
   doc: Comma-separated list of column names to extract.

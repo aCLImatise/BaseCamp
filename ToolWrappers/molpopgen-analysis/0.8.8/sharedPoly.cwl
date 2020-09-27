@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sharedPoly.cwl
+id: sharedPoly.cwl
 inputs:
 - id: in_infile_sequence_data
   doc: infile (for sequence data in FASTA format)

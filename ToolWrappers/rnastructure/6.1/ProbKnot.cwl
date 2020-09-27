@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProbKnot.cwl
+id: ProbKnot.cwl
 inputs:
 - id: in_dna
   doc: "This flag only matters if the input file is a sequence file or an ensemble\n\

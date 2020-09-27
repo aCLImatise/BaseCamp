@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeLookupTable.cwl
+id: MakeLookupTable.cwl
 inputs:
 - id: in_arg_one
   doc: ''

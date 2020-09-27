@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribotish_predict.cwl
+id: ribotish_predict.cwl
 inputs:
 - id: in_tis_enriched_seperated
   doc: TIS enriched riboseq bam files, comma seperated

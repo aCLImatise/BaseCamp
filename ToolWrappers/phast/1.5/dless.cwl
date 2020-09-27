@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dless.cwl
+id: dless.cwl
 inputs:
 - id: in_rho
   doc: (default 0.3)
@@ -12,11 +12,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --transitions
-- id: in_phi
-  doc: "[~]<phi>\n(default 0.5)"
-  type: boolean
-  inputBinding:
-    prefix: --phi
 - id: in_target_coverage
   doc: "[~]<gamma>\n(Alternative to transitions, use with --expected-length) Set\n\
     the transition parameters such that the expected fraction of\nsites in conserved\

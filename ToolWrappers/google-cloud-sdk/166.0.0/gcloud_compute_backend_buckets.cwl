@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_backend_buckets.cwl
+id: gcloud_compute_backend_buckets.cwl
 inputs:
 - id: in_create
   doc: Create a backend bucket.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recognizer.py.cwl
+id: recognizer.py.cwl
 inputs:
 - id: in_threads
   doc: "Number of threads for reCOGnizer to use. Default is\nnumber of CPUs available\

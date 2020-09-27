@@ -45,7 +45,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TAG2
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -89,7 +89,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TAG2
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
         named: []
@@ -133,7 +133,164 @@ subcommands:
             args: !SimpleFlagArg
               name: TAG2
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: All fastq files to pair and process
+                position: 0
+                name: files
+                optional: false
+              named:
+              - !Flag
+                description: Number of cores, allowing running samples in parallel
+                synonyms:
+                - -c
+                - --cores
+                args: !SimpleFlagArg
+                  name: CORES
+                optional: true
+              - !Flag
+                description: Output directory to write UMI prepped fastqs
+                synonyms:
+                - --outdir
+                args: !SimpleFlagArg
+                  name: OUTDIR
+                optional: true
+              - !Flag
+                description: Duplex read 1 tag -- bases to trim from 5' end
+                synonyms:
+                - --tag1
+                args: !SimpleFlagArg
+                  name: TAG1
+                optional: true
+              - !Flag
+                description: Duplex read 2 tag -- bases to trim from 5' end
+                synonyms:
+                - --tag2
+                args: !SimpleFlagArg
+                  name: TAG2
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: bcbio_fastq_umi_prep.py autopair [-h] [-c CORES]\
+                \ [--outdir OUTDIR]\n                                        [--tag1\
+                \ TAG1] [--tag2 TAG2]\n                                        [files\
+                \ [files ...]]\n\npositional arguments:\n  files                 All\
+                \ fastq files to pair and process\n\noptional arguments:\n  -h, --help\
+                \            show this help message and exit\n  -c CORES, --cores\
+                \ CORES\n                        Number of cores, allowing running\
+                \ samples in parallel\n  --outdir OUTDIR       Output directory to\
+                \ write UMI prepped fastqs\n  --tag1 TAG1           Duplex read 1\
+                \ tag -- bases to trim from 5' end\n  --tag2 TAG2           Duplex\
+                \ read 2 tag -- bases to trim from 5' end\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - bcbio_fastq_umi_prep.py
+              - single
+              positional:
+              - !Positional
+                description: "Base name for output files -- you get\n<base_name>_R1.fq.gz"
+                position: 0
+                name: out_base
+                optional: false
+              - !Positional
+                description: Input fastq, read 1
+                position: 1
+                name: read1_fq
+                optional: false
+              - !Positional
+                description: Input fastq, read 2
+                position: 2
+                name: read2_fq
+                optional: false
+              - !Positional
+                description: Input fastq, UMIs
+                position: 3
+                name: umi_fq
+                optional: false
+              named:
+              - !Flag
+                description: Number of cores to use for parallel bgzip
+                synonyms:
+                - -c
+                - --cores
+                args: !SimpleFlagArg
+                  name: CORES
+                optional: true
+              - !Flag
+                description: Duplex read 1 tag -- bases to trim from 5' end
+                synonyms:
+                - --tag1
+                args: !SimpleFlagArg
+                  name: TAG1
+                optional: true
+              - !Flag
+                description: Duplex read 2 tag -- bases to trim from 5' end
+                synonyms:
+                - --tag2
+                args: !SimpleFlagArg
+                  name: TAG2
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: bcbio_fastq_umi_prep.py single [-h] [-c CORES] [--tag1\
+                \ TAG1]\n                                      [--tag2 TAG2]\n   \
+                \                                   out_base read1_fq read2_fq [umi_fq]\n\
+                \npositional arguments:\n  out_base              Base name for output\
+                \ files -- you get\n                        <base_name>_R1.fq.gz\n\
+                \  read1_fq              Input fastq, read 1\n  read2_fq         \
+                \     Input fastq, read 2\n  umi_fq                Input fastq, UMIs\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  -c CORES, --cores CORES\n                        Number\
+                \ of cores to use for parallel bgzip\n  --tag1 TAG1           Duplex\
+                \ read 1 tag -- bases to trim from 5' end\n  --tag2 TAG2         \
+                \  Duplex read 2 tag -- bases to trim from 5' end\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: bcbio_fastq_umi_prep.py [-h] {autopair,single} ...\n\
+              \nAdd UMIs to fastq read names\n\noptional arguments:\n  -h, --help\
+              \         show this help message and exit\n\n[sub-commands]:\n  {autopair,single}\n\
+              \    autopair         Automatically pair R1/R2 (and maybe R3) fastq\
+              \ inputs\n    single           Run single set of fastq files with UMIs/duplexes\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -155,12 +312,9 @@ subcommands:
             \ OUTDIR       Output directory to write UMI prepped fastqs\n  --tag1\
             \ TAG1           Duplex read 1 tag -- bases to trim from 5' end\n  --tag2\
             \ TAG2           Duplex read 2 tag -- bases to trim from 5' end\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - bcbio_fastq_umi_prep.py
-          - single
+          command: *id005
           positional:
           - !Positional
             description: "Base name for output files -- you get\n<base_name>_R1.fq.gz"
@@ -231,13 +385,7 @@ subcommands:
             \ 5' end\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: bcbio_fastq_umi_prep.py [-h] {autopair,single} ...\n\n\
@@ -314,7 +462,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TAG2
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -415,7 +563,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TAG2
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

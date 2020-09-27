@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterCtgCov.cwl
+id: FilterCtgCov.cwl
 inputs: []
 outputs:
 - id: out_stdout

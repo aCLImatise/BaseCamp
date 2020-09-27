@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_sort.cwl
+id: bcftools_sort.cwl
 inputs:
 - id: in_max_mem
   doc: '[kMG]    maximum memory to use [768M]'

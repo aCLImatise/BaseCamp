@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam12split.cwl
+id: bam12split.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../saxs_md.cwl
+id: saxs_md.cwl
 inputs:
 - id: in__solvent_file
   doc: --solvent      pdb file of the solvent

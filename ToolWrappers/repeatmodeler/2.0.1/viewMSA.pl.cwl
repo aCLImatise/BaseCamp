@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../viewMSA.pl.cwl
+id: viewMSA.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

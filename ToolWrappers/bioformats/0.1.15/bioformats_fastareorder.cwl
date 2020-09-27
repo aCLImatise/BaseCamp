@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_fastareorder.cwl
+id: bioformats_fastareorder.cwl
 inputs:
 - id: in_ignore_missing
   doc: "ignore sequences in the specified order file that are\nmissing in the input\

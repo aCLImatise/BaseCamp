@@ -12,14 +12,12 @@ task Aligncache2 {
     File src_db_path
     File new_cache_db_path
     String quit_dot
-    File file_dot
   }
   command <<<
     align_cache_2 \
       ~{src_db_path} \
       ~{new_cache_db_path} \
       ~{quit_dot} \
-      ~{file_dot} \
       ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
       ~{if defined(cursor_cache) then ("--cursor-cache " +  '"' + cursor_cache + '"') else ""} \
       ~{if defined(min_cache_count) then ("--min-cache-count " +  '"' + min_cache_count + '"') else ""} \
@@ -39,7 +37,6 @@ task Aligncache2 {
     src_db_path: "Path to the database"
     new_cache_db_path: "Path to the new cache database to be created"
     quit_dot: "-L|--log-level <level>           Logging level as number or enum string. One "
-    file_dot: "align-cache.2 : 2.10.8"
   }
   output {
     File out_stdout = stdout()

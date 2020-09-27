@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unimod2storable.pl.cwl
+id: unimod2storable.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

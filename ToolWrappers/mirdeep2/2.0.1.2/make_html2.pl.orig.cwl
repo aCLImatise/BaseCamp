@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_html2.pl.orig.cwl
+id: make_html2.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

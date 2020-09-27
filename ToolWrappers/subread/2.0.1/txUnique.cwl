@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../txUnique.cwl
+id: txUnique.cwl
 inputs: []
 outputs:
 - id: out_stdout

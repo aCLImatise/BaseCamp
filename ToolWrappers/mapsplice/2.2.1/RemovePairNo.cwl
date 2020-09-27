@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RemovePairNo.cwl
+id: RemovePairNo.cwl
 inputs: []
 outputs:
 - id: out_stdout

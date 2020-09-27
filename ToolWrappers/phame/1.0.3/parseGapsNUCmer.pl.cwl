@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseGapsNUCmer.pl.cwl
+id: parseGapsNUCmer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

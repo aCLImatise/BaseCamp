@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_organizations_list.cwl
+id: gcloud_organizations_list.cwl
 inputs:
 - id: in_filter
   doc: "Apply a Boolean filter EXPRESSION to each resource item to be listed.\nIf\

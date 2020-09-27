@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_add_start_and_stop.pl.cwl
+id: agat_sp_add_start_and_stop.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

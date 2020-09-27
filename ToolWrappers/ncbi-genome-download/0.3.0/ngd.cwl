@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngd.cwl
+id: ngd.cwl
 inputs:
 - id: in_section
   doc: 'NCBI section to download (default: refseq)'

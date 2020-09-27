@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_threshold.cwl
+id: bl_threshold.cwl
 inputs:
 - id: in_nonnegative_length
   doc: non-negative length

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makmdm.cwl
+id: makmdm.cwl
 inputs:
 - id: in_suppress_output_average
   doc: ':    Suppress output of average compositions'
@@ -21,11 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -p
-- id: in_f_seven_eight
-  doc: '|91'
-  type: boolean
-  inputBinding:
-    prefix: -f78
 - id: in__brosum_series
   doc: ':     Brosum series'
   type: boolean

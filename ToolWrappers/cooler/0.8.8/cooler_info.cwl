@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_info.cwl
+id: cooler_info.cwl
 inputs:
 - id: in_field
   doc: Print the value of a specific info field.

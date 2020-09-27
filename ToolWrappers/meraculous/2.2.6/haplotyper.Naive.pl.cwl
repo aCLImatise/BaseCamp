@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haplotyper.Naive.pl.cwl
+id: haplotyper.Naive.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

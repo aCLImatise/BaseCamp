@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chewBBACA.py.cwl
+id: chewBBACA.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

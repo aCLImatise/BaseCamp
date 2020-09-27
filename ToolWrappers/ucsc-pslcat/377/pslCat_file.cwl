@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslCat_file.cwl
+id: pslCat_file.cwl
 inputs:
 - id: in_match
   doc: match           count   bases   count   bases           name            size    start   end     name            size    start   end     count

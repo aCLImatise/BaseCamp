@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classify_reads.pl.cwl
+id: classify_reads.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

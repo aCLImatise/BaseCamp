@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoXml.cwl
+id: autoXml.cwl
 inputs: []
 outputs:
 - id: out_stdout

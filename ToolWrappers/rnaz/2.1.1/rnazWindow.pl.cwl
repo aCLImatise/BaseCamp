@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazWindow.pl.cwl
+id: rnazWindow.pl.cwl
 inputs:
 - id: in_window
   doc: 'Size of the window (Default: 120)'
@@ -83,55 +83,30 @@ inputs:
   inputBinding:
     prefix: --max-id
 - id: in_forward
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --forward
-- id: in_reverse
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --reverse
-- id: in_both_strands
-  doc: "Output forward, reverse complement or both of the sequences in\nthe windows.\
-    \ Please note: \"RNAz\" has the same options, so if you\nuse \"rnazWindow.pl\"\
-    \ for an RNAz screen, we recommend to set the\noption directly in \"RNAz\" and\
-    \ leave the default here. (Default:\n---forward)"
-  type: boolean
-  inputBinding:
-    prefix: --both-strands
-- id: in_no_reference
-  doc: "By default the first sequence is interpreted as reference\nsequence. This\
-    \ means, for example, that if the reference\nsequence is removed during filtering\
-    \ steps the complete\nalignment is discarded. Also, if there are too many sequences\
+  doc: "--reverse\n--both-strands\nOutput forward, reverse complement or both of the\
+    \ sequences in\nthe windows. Please note: \"RNAz\" has the same options, so if\
+    \ you\nuse \"rnazWindow.pl\" for an RNAz screen, we recommend to set the\noption\
+    \ directly in \"RNAz\" and leave the default here. (Default:\n---forward)\n--no-reference\n\
+    By default the first sequence is interpreted as reference\nsequence. This means,\
+    \ for example, that if the reference\nsequence is removed during filtering steps\
+    \ the complete\nalignment is discarded. Also, if there are too many sequences\
     \ in\nthe alignment, the reference sequence is never removed when\nchoosing an\
     \ appropriate subset. Having a reference sequence is\ncrucial if you are doing\
     \ screens of genomic regions. For some\nother applications it might not be necessary\
-    \ and in such cases\nyou can change the default behaviour by setting this option."
-  type: boolean
-  inputBinding:
-    prefix: --no-reference
-- id: in_no_range_check
-  doc: "By default, all sequences of all windows are discarded, if the\nlength or\
-    \ base composition is outside the training range of\nRNAz, independent of the\
-    \ window-size commandline parameter.\nHowever with the flag --no-rangecheck such\
-    \ sequences outside the\ntraining range are not discarded. As of version 2.0,\
-    \ RNAz can\ncope with sequences outside this traning range. However the same\n\
+    \ and in such cases\nyou can change the default behaviour by setting this option.\n\
+    --no-rangecheck\nBy default, all sequences of all windows are discarded, if the\n\
+    length or base composition is outside the training range of\nRNAz, independent\
+    \ of the window-size commandline parameter.\nHowever with the flag --no-rangecheck\
+    \ such sequences outside the\ntraining range are not discarded. As of version\
+    \ 2.0, RNAz can\ncope with sequences outside this traning range. However the same\n\
     quality of the RNAz results cannot be guaranteed if sequences\noutside the default\
-    \ range are present."
+    \ range are present.\n--verbose\nVerbose output on STDERR, describing all performed\
+    \ filtering\nsteps.\n-v, --version\nPrints version information and exits.\n-h,\
+    \ --help\nPrints a short help message and exits.\n--man   Prints a detailed manual\
+    \ page and exits.\n"
   type: boolean
   inputBinding:
-    prefix: --no-rangecheck
-- id: in_verbose
-  doc: "Verbose output on STDERR, describing all performed filtering\nsteps."
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: in_man
-  doc: Prints a detailed manual page and exits.
-  type: boolean
-  inputBinding:
-    prefix: --man
+    prefix: --forward
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gatekeeperbench.cwl
+id: gatekeeperbench.cwl
 inputs:
 - id: in_gkpstorename_createreadwrite_store
   doc: gkpStoreName    create/read/write the store called 'gkpStoreName'

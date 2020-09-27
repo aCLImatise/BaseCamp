@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqlite.pl.cwl
+id: sqlite.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

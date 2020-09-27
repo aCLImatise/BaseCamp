@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_dependency_script.cwl
+id: planemo_dependency_script.cwl
 inputs:
 - id: in_recursive
   doc: "Recursively perform command for nested\nrepository directories."

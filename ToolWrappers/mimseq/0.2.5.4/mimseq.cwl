@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimseq.cwl
+id: mimseq.cwl
 inputs:
 - id: in_species
   doc: "Species being analyzed for which to load pre-packaged\ndata files (prioritized\

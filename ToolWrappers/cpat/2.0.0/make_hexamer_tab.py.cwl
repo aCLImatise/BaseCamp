@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_hexamer_tab.py.cwl
+id: make_hexamer_tab.py.cwl
 inputs:
 - id: in_cod
   doc: "Coding sequence (must be CDS without UTR, i.e. from\nstart coden to stop coden)\

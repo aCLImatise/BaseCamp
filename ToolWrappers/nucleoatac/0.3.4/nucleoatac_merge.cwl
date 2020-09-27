@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucleoatac_merge.cwl
+id: nucleoatac_merge.cwl
 inputs:
 - id: in_occ_peaks
   doc: Output from occ utility

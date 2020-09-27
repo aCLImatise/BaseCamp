@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mm_pbsa_nabnmode.cwl
+id: mm_pbsa_nabnmode.cwl
 inputs: []
 outputs:
 - id: out_stdout

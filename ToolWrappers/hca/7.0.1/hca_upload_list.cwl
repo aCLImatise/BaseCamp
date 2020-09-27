@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_upload_list.cwl
+id: hca_upload_list.cwl
 inputs:
 - id: in_log_level
   doc: ''

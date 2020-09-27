@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dxua.cwl
+id: dxua.cwl
 inputs:
 - id: in_print_environment_information
   doc: '[ --env ]                       Print environment information'

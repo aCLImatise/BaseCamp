@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsget.cwl
+id: htsget.cwl
 inputs:
 - id: in_verbose
   doc: Increase verbosity.

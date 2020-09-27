@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interleafq.cwl
+id: interleafq.cwl
 inputs:
 - id: in_output_prefix
   doc: "Basename for the output file when deinterleaving. Will produce by\ndefault\

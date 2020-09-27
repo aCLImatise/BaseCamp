@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rppr_rppr.cwl
+id: rppr_rppr.cwl
 inputs:
 - id: in_rp_pr
   doc: check          checks a reference package

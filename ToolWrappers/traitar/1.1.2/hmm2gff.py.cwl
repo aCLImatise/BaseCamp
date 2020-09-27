@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmm2gff.py.cwl
+id: hmm2gff.py.cwl
 inputs:
 - id: in_map
   doc: ''

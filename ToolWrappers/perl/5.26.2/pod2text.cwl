@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pod2text.cwl
+id: pod2text.cwl
 inputs:
 - id: in_alt
   doc: "Use an alternate output format that, among other things, uses a\ndifferent\

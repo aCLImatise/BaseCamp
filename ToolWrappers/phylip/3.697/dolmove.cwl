@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dolmove.cwl
+id: dolmove.cwl
 inputs: []
 outputs:
 - id: out_stdout

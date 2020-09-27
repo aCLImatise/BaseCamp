@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnase_wig_tracks.py_reads.cwl
+id: dnase_wig_tracks.py_reads.cwl
 inputs:
 - id: in_a
   doc: ''

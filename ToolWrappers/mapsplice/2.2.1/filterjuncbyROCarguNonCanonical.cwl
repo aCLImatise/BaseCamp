@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterjuncbyROCarguNonCanonical.cwl
+id: filterjuncbyROCarguNonCanonical.cwl
 inputs: []
 outputs:
 - id: out_stdout

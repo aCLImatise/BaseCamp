@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClusterSets.py_barcode.cwl
+id: ClusterSets.py_barcode.cwl
 inputs:
 - id: in_list_fastafastq_files
   doc: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default: None)"

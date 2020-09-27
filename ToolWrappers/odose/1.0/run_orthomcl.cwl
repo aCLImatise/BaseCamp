@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_orthomcl.cwl
+id: run_orthomcl.cwl
 inputs: []
 outputs:
 - id: out_stdout

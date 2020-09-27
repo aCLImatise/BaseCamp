@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igphyml.cwl
+id: igphyml.cwl
 inputs:
 - id: in_run_id
   doc: "\e[00;04mID_string\e[00;00m\n\e[00;00mAppend the string \e[00;04mID_string\e\

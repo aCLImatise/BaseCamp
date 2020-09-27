@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_csv2md.cwl
+id: csvtk_csv2md.cwl
 inputs:
 - id: in_alignments
   doc: comma separated alignments. e.g. -a l,c,c,c or -a c (default "l")

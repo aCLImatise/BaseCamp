@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoplexer.cwl
+id: nanoplexer.cwl
 inputs:
 - id: in_file_barcode_file
   doc: FILE    barcode file

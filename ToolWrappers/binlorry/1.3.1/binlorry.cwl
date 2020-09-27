@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../binlorry.cwl
+id: binlorry.cwl
 inputs:
 - id: in_input
   doc: "FASTA/FASTQ of input reads or a directory which will\nbe recursively searched\

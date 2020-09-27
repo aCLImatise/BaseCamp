@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tree_doctor.cwl
+id: tree_doctor.cwl
 inputs:
 - id: in_prune
   doc: "Remove all leaves whose names are included in the given list\n(comma-separated),\

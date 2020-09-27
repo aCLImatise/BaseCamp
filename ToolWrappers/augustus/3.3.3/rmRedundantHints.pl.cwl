@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmRedundantHints.pl.cwl
+id: rmRedundantHints.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

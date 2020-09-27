@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grabdp_03.cwl
+id: grabdp_03.cwl
 inputs:
 - id: in_required_or_modelfile
   doc: required (or -modelfile)

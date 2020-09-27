@@ -88,7 +88,7 @@ subcommands:
     - --log-file
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -175,7 +175,7 @@ subcommands:
         - --log-file
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -263,7 +263,853 @@ subcommands:
             - --log-file
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: STR   Output file for the fetched sequences.
+                position: 0
+                name: out_fn
+                optional: false
+              - !Positional
+                description: STR   List of sequences to fetch, one per line.
+                position: 1
+                name: fetch_list
+                optional: false
+              - !Positional
+                description: 'Algorithm Options:'
+                position: 0
+                name: formats.
+                optional: false
+              named:
+              - !Flag
+                description: "STR   Output format. If an input file is FASTA and out\
+                  \ format is FASTQ, dummy QVs\nwill be added. Valid choices: (fasta,\
+                  \ fastq). [fasta]"
+                synonyms:
+                - --out-fmt
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "STR   Dummy QV to be added to sequences when input format\
+                  \ is FASTA and output\nFASTQ. [!]"
+                synonyms:
+                - --dummy-qv
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "STR   SeqDB file path. If provided, the SeqDB will be\
+                  \ used to look-up the\nprovided sequences by their IDs."
+                synonyms:
+                - --alias
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Exit non-zero if not all seqs are found.
+                synonyms:
+                - --fail
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "The output sequence names will be replaced by their\
+                  \ IDs in the SeqDB, if\nthe SeqDB was provided as input."
+                synonyms:
+                - --write-ids
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Fetch homopolymer compressed sequences.
+                synonyms:
+                - --use-hpc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write a run-length-encoded file alongside to the output\
+                  \ file. The RLE file\ncontains conversion coordinates from the HPC\
+                  \ space to the original space\ninstead of the run-length-encoding.\
+                  \ This option does not write the HPC\nsequence, for that please\
+                  \ specify '--user-hpc'."
+                synonyms:
+                - --use-rle
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO,
+                  WARN, FATAL). [WARN]'
+                synonyms:
+                - --log-level
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FILE  Log to a file, instead of stderr.
+                synonyms:
+                - --log-file
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this help and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Show application version and exit.
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "pancake seqfetch - Fetches a set of sequences in random\
+                \ access from a list of specified indexed sequence files.\n\nUsage:\n\
+                \  pancake seqfetch [options] <out_fn> <fetch_list> <<input.fasta/fastq/bam/fofn>\
+                \ [...]>\n\n  out_fn                              STR   Output file\
+                \ for the fetched sequences.\n  fetch_list                       \
+                \   STR   List of sequences to fetch, one per line.\n  <input.fasta/fastq/bam/fofn>\
+                \ [...]  STR   One or more input sequence files, in FASTA, FASTQ,\
+                \ BAM, SeqDB or FOFN\n                                           \
+                \ formats.\n\nAlgorithm Options:\n  --out-fmt                    \
+                \       STR   Output format. If an input file is FASTA and out format\
+                \ is FASTQ, dummy QVs\n                                          \
+                \  will be added. Valid choices: (fasta, fastq). [fasta]\n  --dummy-qv\
+                \                          STR   Dummy QV to be added to sequences\
+                \ when input format is FASTA and output\n                        \
+                \                    FASTQ. [!]\n  --alias                       \
+                \      STR   SeqDB file path. If provided, the SeqDB will be used\
+                \ to look-up the\n                                            provided\
+                \ sequences by their IDs.\n  --fail                              \
+                \      Exit non-zero if not all seqs are found.\n  --write-ids   \
+                \                            The output sequence names will be replaced\
+                \ by their IDs in the SeqDB, if\n                                \
+                \            the SeqDB was provided as input.\n  --use-hpc       \
+                \                          Fetch homopolymer compressed sequences.\n\
+                \  --use-rle                                 Write a run-length-encoded\
+                \ file alongside to the output file. The RLE file\n              \
+                \                              contains conversion coordinates from\
+                \ the HPC space to the original space\n                          \
+                \                  instead of the run-length-encoding. This option\
+                \ does not write the HPC\n                                       \
+                \     sequence, for that please specify '--user-hpc'.\n\n  -h,--help\
+                \                                 Show this help and exit.\n  --version\
+                \                                 Show application version and exit.\n\
+                \  --log-level                         STR   Set log level. Valid\
+                \ choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
+                \                          FILE  Log to a file, instead of stderr.\n\
+                \n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - pancake
+              - ovl-hifi
+              positional:
+              - !Positional
+                description: STR    Prefix of the target SeqDB and SeedDB files. It
+                  should match.
+                position: 0
+                name: target_prefix
+                optional: false
+              - !Positional
+                description: STR    Prefix of the query SeqDB and SeedDB files. It
+                  should match.
+                position: 1
+                name: query_prefix
+                optional: false
+              - !Positional
+                description: INT    Block ID from the target DB. Queries will be mapped
+                  only onto this block.
+                position: 2
+                name: target_block
+                optional: false
+              - !Positional
+                description: INT    Start block ID for a range of blocks to map. Zero
+                  based.
+                position: 3
+                name: query_block_start
+                optional: false
+              - !Positional
+                description: "INT    Start block ID for a range of blocks to map.\
+                  \ Zero based, non-inclusive. Value == 0 runs\nuntil the end block."
+                position: 4
+                name: query_block_end
+                optional: false
+              - !Positional
+                description: --no-indels                  Ignore indels when computing
+                  the identity for an overlap. This only works in the
+                position: 0
+                name: mode.
+                optional: false
+              - !Positional
+                description: --mask-repeats               Mask indels in simple exact
+                  repeats when traceback is generated. This will impact
+                position: 0
+                name: calculation.
+                optional: false
+              named:
+              - !Flag
+                description: 'STR    Select the output format. Valid choices: (m4,
+                  ipa). [m4]'
+                synonyms:
+                - --out-fmt
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT  Filter frequent kmers. [0.0002]
+                synonyms:
+                - --freq-percentile
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Ignore queries shorter than this. [50]
+                synonyms:
+                - --min-qlen
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Ignore targets shorter than this. [50]
+                synonyms:
+                - --min-tlen
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Maximum distance between two seeds to join into
+                  an anchor. [5000]
+                synonyms:
+                - --max-seed-dist
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Minimum number of seeds in an anchor. [3]
+                synonyms:
+                - --min-num-seeds
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Minimum number of bases covered by kmers in an
+                  anchor. [30]
+                synonyms:
+                - --min-cov-bases
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Minimum chain span to retain it. [1000]
+                synonyms:
+                - --min-anchor-span
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Diagonal bandwidth to merge seeds into chains.
+                  [100]
+                synonyms:
+                - --chain-bw
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT  Bandwidth for alignment, fraction of the query
+                  span. [0.01]
+                synonyms:
+                - --aln-bw
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT  Expected maximum diff rate between sequences.
+                  [0.03]
+                synonyms:
+                - --aln-diff-rate
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "FLOAT  Minimum percent alignment identity allowed to\
+                  \ report the alignment. This is an overall\nthreshold which takes\
+                  \ into account both indels and SNPs. [98]"
+                synonyms:
+                - --min-idt
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Ignore SNPs when computing the identity for an overlap.
+                  This only works in the traceback
+                synonyms:
+                - --no-snps
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Output only alignments above this length. [1000]
+                synonyms:
+                - --min-map-len
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: If Aid < Bid, only compute overlap Aid->Bid and skip
+                  computing overlap for Bid->Aid.
+                synonyms:
+                - --skip-sym
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Allow only one alignment per query/target pair.
+                synonyms:
+                - --one-hit-per-target
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: For eveery overlap, write out its reverse complement
+                  too.
+                synonyms:
+                - --write-rev
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Output overlaps will contain numeric IDs for the A and
+                  B reads (instead of names).
+                synonyms:
+                - --write-ids
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Write the CIGAR string if the sensitive alignment mode
+                  is applied.
+                synonyms:
+                - --write-cigar
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "INT    Allowed distance of an overlap from the beginning\
+                  \ of the sequences to call the overlap a\ndovetail. [0]"
+                synonyms:
+                - --dt-dist
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "INT    Heuristically modify the coordinats of an overlap\
+                  \ into a dovetail overlap if are within\nthis distance from the\
+                  \ edges of the reads. [0]"
+                synonyms:
+                - --ext-dist
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Combines this many query blocks into one larger
+                  block for processing. [1]
+                synonyms:
+                - --combine
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Output only best N alignments. [0]
+                synonyms:
+                - --bestn
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Enable homopolymer compression.
+                synonyms:
+                - --use-hpc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Run alignment traceback and compute mismatches.
+                synonyms:
+                - --traceback
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Mask homopolymer errors when traceback is generated.
+                  This will impact identity
+                synonyms:
+                - --mask-hp
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Number of threads to use, 0 means autodetection.
+                  [0]
+                synonyms:
+                - -j
+                - --num-threads
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'STR    Set log level. Valid choices: (TRACE, DEBUG,
+                  INFO, WARN, FATAL). [WARN]'
+                synonyms:
+                - --log-level
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FILE   Log to a file, instead of stderr.
+                synonyms:
+                - --log-file
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this help and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Show application version and exit.
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "pancake - HiFi overlapping.\n\nUsage:\n  pancake [options]\
+                \ <target_prefix> <query_prefix> <target_block> <query_block_start>\
+                \ <query_block_end>\n\n  target_prefix         STR    Prefix of the\
+                \ target SeqDB and SeedDB files. It should match.\n  query_prefix\
+                \          STR    Prefix of the query SeqDB and SeedDB files. It should\
+                \ match.\n  target_block          INT    Block ID from the target\
+                \ DB. Queries will be mapped only onto this block.\n  query_block_start\
+                \     INT    Start block ID for a range of blocks to map. Zero based.\n\
+                \  query_block_end       INT    Start block ID for a range of blocks\
+                \ to map. Zero based, non-inclusive. Value == 0 runs\n           \
+                \                    until the end block.\n\nInput/Output Options:\n\
+                \  --out-fmt             STR    Select the output format. Valid choices:\
+                \ (m4, ipa). [m4]\n\nAlgorithm Options:\n  --freq-percentile     FLOAT\
+                \  Filter frequent kmers. [0.0002]\n  --min-qlen            INT  \
+                \  Ignore queries shorter than this. [50]\n  --min-tlen          \
+                \  INT    Ignore targets shorter than this. [50]\n  --max-seed-dist\
+                \       INT    Maximum distance between two seeds to join into an\
+                \ anchor. [5000]\n  --min-num-seeds       INT    Minimum number of\
+                \ seeds in an anchor. [3]\n  --min-cov-bases       INT    Minimum\
+                \ number of bases covered by kmers in an anchor. [30]\n  --min-anchor-span\
+                \     INT    Minimum chain span to retain it. [1000]\n  --chain-bw\
+                \            INT    Diagonal bandwidth to merge seeds into chains.\
+                \ [100]\n  --aln-bw              FLOAT  Bandwidth for alignment, fraction\
+                \ of the query span. [0.01]\n  --aln-diff-rate       FLOAT  Expected\
+                \ maximum diff rate between sequences. [0.03]\n  --min-idt       \
+                \      FLOAT  Minimum percent alignment identity allowed to report\
+                \ the alignment. This is an overall\n                            \
+                \   threshold which takes into account both indels and SNPs. [98]\n\
+                \  --no-snps                    Ignore SNPs when computing the identity\
+                \ for an overlap. This only works in the traceback\n             \
+                \                  mode.\n  --no-indels                  Ignore indels\
+                \ when computing the identity for an overlap. This only works in the\n\
+                \                               traceback mode.\n  --min-map-len \
+                \        INT    Output only alignments above this length. [1000]\n\
+                \  --skip-sym                   If Aid < Bid, only compute overlap\
+                \ Aid->Bid and skip computing overlap for Bid->Aid.\n  --one-hit-per-target\
+                \         Allow only one alignment per query/target pair.\n  --write-rev\
+                \                  For eveery overlap, write out its reverse complement\
+                \ too.\n  --write-ids                  Output overlaps will contain\
+                \ numeric IDs for the A and B reads (instead of names).\n  --write-cigar\
+                \                Write the CIGAR string if the sensitive alignment\
+                \ mode is applied.\n  --dt-dist             INT    Allowed distance\
+                \ of an overlap from the beginning of the sequences to call the overlap\
+                \ a\n                               dovetail. [0]\n  --ext-dist  \
+                \          INT    Heuristically modify the coordinats of an overlap\
+                \ into a dovetail overlap if are within\n                        \
+                \       this distance from the edges of the reads. [0]\n  --combine\
+                \             INT    Combines this many query blocks into one larger\
+                \ block for processing. [1]\n  --bestn               INT    Output\
+                \ only best N alignments. [0]\n  --use-hpc                    Enable\
+                \ homopolymer compression.\n  --traceback                  Run alignment\
+                \ traceback and compute mismatches.\n  --mask-hp                 \
+                \   Mask homopolymer errors when traceback is generated. This will\
+                \ impact identity\n                               calculation.\n \
+                \ --mask-repeats               Mask indels in simple exact repeats\
+                \ when traceback is generated. This will impact\n                \
+                \               identity calculation.\n\n  -h,--help             \
+                \       Show this help and exit.\n  --version                    Show\
+                \ application version and exit.\n  -j,--num-threads      INT    Number\
+                \ of threads to use, 0 means autodetection. [0]\n  --log-level   \
+                \        STR    Set log level. Valid choices: (TRACE, DEBUG, INFO,\
+                \ WARN, FATAL). [WARN]\n  --log-file            FILE   Log to a file,\
+                \ instead of stderr.\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - pancake
+              - seqdb
+              positional:
+              - !Positional
+                description: STR    The prefix of the DB files.
+                position: 0
+                name: prefix
+                optional: false
+              named:
+              - !Flag
+                description: INT    Compression level for output sequences. [1]
+                synonyms:
+                - -c
+                - --compression
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT  Sequence buffer size in megabytes. Has to be >=
+                  0.0. [1000]
+                synonyms:
+                - --buffer-size
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "FLOAT  Block size in megabases. Value 0 means one sequnece\
+                  \ per block, value < 0 all sequences in\none block. [1000]"
+                synonyms:
+                - --block-size
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Write seeds for each block into a separate file.
+                synonyms:
+                - --split-blocks
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Number of threads to use, 0 means autodetection.
+                  [0]
+                synonyms:
+                - -j
+                - --num-threads
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'STR    Set log level. Valid choices: (TRACE, DEBUG,
+                  INFO, WARN, FATAL). [WARN]'
+                synonyms:
+                - --log-level
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FILE   Log to a file, instead of stderr.
+                synonyms:
+                - --log-file
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this help and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Show application version and exit.
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "pancake - Convert FASTA/FASTQ sequences to SeqDB.\n\nUsage:\n\
+                \  pancake [options] <prefix> <<input.fasta> [...]>\n\n  prefix  \
+                \             STR    The prefix of the DB files.\n  <input.fasta>\
+                \ [...]  STR    One or more input sequence files, in FASTA, FASTQ\
+                \ or FOFN formats.\n\nAlgorithm Options:\n  -c,--compression     INT\
+                \    Compression level for output sequences. [1]\n  --buffer-size\
+                \        FLOAT  Sequence buffer size in megabytes. Has to be >= 0.0.\
+                \ [1000]\n  --block-size         FLOAT  Block size in megabases. Value\
+                \ 0 means one sequnece per block, value < 0 all sequences in\n   \
+                \                           one block. [1000]\n  --split-blocks  \
+                \            Write seeds for each block into a separate file.\n\n\
+                \  -h,--help                   Show this help and exit.\n  --version\
+                \                   Show application version and exit.\n  -j,--num-threads\
+                \     INT    Number of threads to use, 0 means autodetection. [0]\n\
+                \  --log-level          STR    Set log level. Valid choices: (TRACE,\
+                \ DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file           FILE \
+                \  Log to a file, instead of stderr.\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - pancake
+              - seeddb
+              positional:
+              - !Positional
+                description: STR   Path to the SeqDB to process.
+                position: 0
+                name: input.seqdb
+                optional: false
+              - !Positional
+                description: STR   The prefix of the output SeedDB files.
+                position: 1
+                name: prefix
+                optional: false
+              named:
+              - !Flag
+                description: Write seeds for each block into a separate file.
+                synonyms:
+                - --split-blocks
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT   Kmer size for indexing. [30]
+                synonyms:
+                - -k
+                - --kmer-size
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT   Minimizer window size for indexing. [80]
+                synonyms:
+                - -w
+                - --window
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT   Seed spacing. [0]
+                synonyms:
+                - -s
+                - --space
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Enable homopolymer compression.
+                synonyms:
+                - --use-hpc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT   Maximum length of a homopolymer to compress. [10]
+                synonyms:
+                - --max-hpc-len
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Do not produce seeds from the reverse complement strand.
+                synonyms:
+                - --no-rc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT   Number of threads to use, 0 means autodetection.
+                  [0]
+                synonyms:
+                - -j
+                - --num-threads
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO,
+                  WARN, FATAL). [WARN]'
+                synonyms:
+                - --log-level
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FILE  Log to a file, instead of stderr.
+                synonyms:
+                - --log-file
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this help and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Show application version and exit.
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "pancake - Compute seeds from a SeqDB.\n\nUsage:\n  pancake\
+                \ [options] <input.seqdb> <prefix>\n\n  input.seqdb       STR   Path\
+                \ to the SeqDB to process.\n  prefix            STR   The prefix of\
+                \ the output SeedDB files.\n\nAlgorithm Options:\n  --split-blocks\
+                \          Write seeds for each block into a separate file.\n  -k,--kmer-size\
+                \    INT   Kmer size for indexing. [30]\n  -w,--window       INT \
+                \  Minimizer window size for indexing. [80]\n  -s,--space        INT\
+                \   Seed spacing. [0]\n  --use-hpc               Enable homopolymer\
+                \ compression.\n  --max-hpc-len     INT   Maximum length of a homopolymer\
+                \ to compress. [10]\n  --no-rc                 Do not produce seeds\
+                \ from the reverse complement strand.\n\n  -h,--help             \
+                \  Show this help and exit.\n  --version               Show application\
+                \ version and exit.\n  -j,--num-threads  INT   Number of threads to\
+                \ use, 0 means autodetection. [0]\n  --log-level       STR   Set log\
+                \ level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n\
+                \  --log-file        FILE  Log to a file, instead of stderr.\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - pancake
+              - dbfilter
+              positional:
+              - !Positional
+                description: STR    The prefix of the input DB files.
+                position: 0
+                name: in_prefix
+                optional: false
+              - !Positional
+                description: STR    The prefix of the output DB files.
+                position: 1
+                name: out_prefix
+                optional: false
+              named:
+              - !Flag
+                description: 'STR    Select sampling type: none, linear, random. Valid
+                  choices: (none, linear, random). [none]'
+                synonyms:
+                - --sampling
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Number of bases to sample. [0]
+                synonyms:
+                - --sample-bases
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "FLOAT  Block size in megabases. Value 0 means one sequnece\
+                  \ per block, value < 0 all sequences in\none block. [1000]"
+                synonyms:
+                - --block-size
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Random seed for sampling. [-1]
+                synonyms:
+                - --random-seed
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: STR    A text file containing headers of blacklisted
+                  sequences, one per line.
+                synonyms:
+                - --filter-list
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'STR    Select from: whitelist, blacklist, none. Valid
+                  choices: (none, whitelist, blacklist). [none]'
+                synonyms:
+                - --filter-type
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Create the new data files in addition to filtering the
+                  DB.
+                synonyms:
+                - --consolidate
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Compression level for output sequences. [1]
+                synonyms:
+                - -c
+                - --compression
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT  Sequence buffer size in megabytes. Has to be >=
+                  0.0. [1000]
+                synonyms:
+                - --buffer-size
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Write seeds for each block into a separate file.
+                synonyms:
+                - --split-blocks
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: INT    Number of threads to use, 0 means autodetection.
+                  [0]
+                synonyms:
+                - -j
+                - --num-threads
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'STR    Set log level. Valid choices: (TRACE, DEBUG,
+                  INFO, WARN, FATAL). [WARN]'
+                synonyms:
+                - --log-level
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FILE   Log to a file, instead of stderr.
+                synonyms:
+                - --log-file
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this help and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Show application version and exit.
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "pancake - Convert FASTA/FASTQ sequences to SeqDB.\n\nUsage:\n\
+                \  pancake [options] <in_prefix> <out_prefix>\n\n  in_prefix     \
+                \    STR    The prefix of the input DB files.\n  out_prefix      \
+                \  STR    The prefix of the output DB files.\n\nAlgorithm Options:\n\
+                \  --sampling        STR    Select sampling type: none, linear, random.\
+                \ Valid choices: (none, linear, random). [none]\n  --sample-bases\
+                \    INT    Number of bases to sample. [0]\n  --block-size      FLOAT\
+                \  Block size in megabases. Value 0 means one sequnece per block,\
+                \ value < 0 all sequences in\n                           one block.\
+                \ [1000]\n  --random-seed     INT    Random seed for sampling. [-1]\n\
+                \  --filter-list     STR    A text file containing headers of blacklisted\
+                \ sequences, one per line.\n  --filter-type     STR    Select from:\
+                \ whitelist, blacklist, none. Valid choices: (none, whitelist, blacklist).\
+                \ [none]\n  --consolidate            Create the new data files in\
+                \ addition to filtering the DB.\n\nConsolidation Options:\n  -c,--compression\
+                \  INT    Compression level for output sequences. [1]\n  --buffer-size\
+                \     FLOAT  Sequence buffer size in megabytes. Has to be >= 0.0.\
+                \ [1000]\n  --split-blocks           Write seeds for each block into\
+                \ a separate file.\n\n  -h,--help                Show this help and\
+                \ exit.\n  --version                Show application version and exit.\n\
+                \  -j,--num-threads  INT    Number of threads to use, 0 means autodetection.\
+                \ [0]\n  --log-level       STR    Set log level. Valid choices: (TRACE,\
+                \ DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file        FILE   Log\
+                \ to a file, instead of stderr.\n\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: Show this help and exit.
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: Show application version and exit.
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "pancake - PacBio HiFi overlapper.\n\nUsage:\n  pancake <tool>\n\
+              \n  -h,--help    Show this help and exit.\n  --version    Show application\
+              \ version and exit.\n\nTools:\n  seqdb      Convert FASTA/FASTQ sequences\
+              \ to SeqDB.\n  seeddb     Compute seeds from a SeqDB.\n  ovl-hifi  \
+              \ HiFi overlapping.\n  dbfilter   Convert FASTA/FASTQ sequences to SeqDB.\n\
+              \  seqfetch   Fetches a set of sequences in random access from a list\
+              \ of specified indexed sequence files.\n\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -313,12 +1159,9 @@ subcommands:
             \ version and exit.\n  --log-level                         STR   Set log\
             \ level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file\
             \                          FILE  Log to a file, instead of stderr.\n\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - pancake
-          - ovl-hifi
+          command: *id005
           positional:
           - !Positional
             description: STR    Prefix of the target SeqDB and SeedDB files. It should
@@ -632,9 +1475,7 @@ subcommands:
             \ to a file, instead of stderr.\n\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - pancake
-          - seqdb
+          command: *id006
           positional:
           - !Positional
             description: STR    The prefix of the DB files.
@@ -724,9 +1565,7 @@ subcommands:
             \ to a file, instead of stderr.\n\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - pancake
-          - seeddb
+          command: *id007
           positional:
           - !Positional
             description: STR   Path to the SeqDB to process.
@@ -839,9 +1678,7 @@ subcommands:
             \ stderr.\n\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - pancake
-          - dbfilter
+          command: *id008
           positional:
           - !Positional
             description: STR    The prefix of the input DB files.
@@ -982,20 +1819,9 @@ subcommands:
             \ a file, instead of stderr.\n\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Show this help and exit.
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Show application version and exit.
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "pancake - PacBio HiFi overlapper.\n\nUsage:\n  pancake <tool>\n\
           \n  -h,--help    Show this help and exit.\n  --version    Show application\
           \ version and exit.\n\nTools:\n  seqdb      Convert FASTA/FASTQ sequences\
@@ -1286,7 +2112,7 @@ subcommands:
         - --log-file
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1415,7 +2241,7 @@ subcommands:
         - --log-file
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1527,7 +2353,7 @@ subcommands:
         - --log-file
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1659,7 +2485,7 @@ subcommands:
         - --log-file
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1989,7 +2815,7 @@ subcommands:
     - --log-file
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2115,7 +2941,7 @@ subcommands:
     - --log-file
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2226,7 +3052,7 @@ subcommands:
     - --log-file
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2357,7 +3183,7 @@ subcommands:
     - --log-file
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag

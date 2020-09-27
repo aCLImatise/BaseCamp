@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_intensity_range_standardization.py.cwl
+id: medpy_intensity_range_standardization.py.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output

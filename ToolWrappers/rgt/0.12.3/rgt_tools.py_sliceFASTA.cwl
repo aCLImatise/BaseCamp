@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_sliceFASTA.cwl
+id: rgt_tools.py_sliceFASTA.cwl
 inputs:
 - id: in_input_fasta_file
   doc: Input FASTA file

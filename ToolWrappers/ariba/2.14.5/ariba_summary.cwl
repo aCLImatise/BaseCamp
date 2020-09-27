@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_summary.cwl
+id: ariba_summary.cwl
 inputs:
 - id: in_fof_n
   doc: "File of filenames of ariba reports to be summarised.\nMust be used if no input\

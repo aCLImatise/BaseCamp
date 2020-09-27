@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_addns.cwl
+id: novoutil_addns.cwl
 inputs:
 - id: in_number_add_default
   doc: 99      Number of Ns to add. default 50.

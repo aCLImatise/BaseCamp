@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../knock_knock_table.cwl
+id: knock_knock_table.cwl
 inputs:
 - id: in_group
   doc: "if specified, the single group name to generate tables\nfor; if not specified,\

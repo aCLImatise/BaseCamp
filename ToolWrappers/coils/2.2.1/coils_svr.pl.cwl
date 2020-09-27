@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coils_svr.pl.cwl
+id: coils_svr.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

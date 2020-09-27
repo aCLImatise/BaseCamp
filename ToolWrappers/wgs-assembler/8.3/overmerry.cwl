@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overmerry.cwl
+id: overmerry.cwl
 inputs:
 - id: in_path_to_gkpstore
   doc: path to the gkpStore

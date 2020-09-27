@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_rnaseq.cwl
+id: bcbio_rnaseq.cwl
 inputs:
 - id: in_subcommand
   doc: ''

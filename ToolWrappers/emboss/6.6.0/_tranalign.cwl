@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_tranalign.cwl
+id: _tranalign.cwl
 inputs:
 - id: in_table
   doc: "menu       [0] Code to use (Values: 0 (Standard); 1\n(Standard (with alternative\

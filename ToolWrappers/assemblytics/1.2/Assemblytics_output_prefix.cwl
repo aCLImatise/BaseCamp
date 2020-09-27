@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Assemblytics_output_prefix.cwl
+id: Assemblytics_output_prefix.cwl
 inputs:
 - id: in_assembly_tics
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_restover.cwl
+id: _restover.cwl
 inputs:
 - id: in_data_file
   doc: datafile   Restriction enzyme data file (optional)

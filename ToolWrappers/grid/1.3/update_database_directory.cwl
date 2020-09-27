@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_database_directory.cwl
+id: update_database_directory.cwl
 inputs:
 - id: in__is_required
   doc: '[option] is required'

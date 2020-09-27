@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_html_report.cwl
+id: segtools_html_report.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.

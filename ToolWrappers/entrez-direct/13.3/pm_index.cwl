@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pm_index.cwl
+id: pm_index.cwl
 inputs: []
 outputs:
 - id: out_stdout

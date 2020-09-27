@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mateclever.cwl
+id: mateclever.cwl
 inputs:
 - id: in_threads
   doc: Threads.

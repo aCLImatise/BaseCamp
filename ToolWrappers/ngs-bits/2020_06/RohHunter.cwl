@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RohHunter.cwl
+id: RohHunter.cwl
 inputs:
 - id: in_in
   doc: Input variant list in VCF or GSvar format.

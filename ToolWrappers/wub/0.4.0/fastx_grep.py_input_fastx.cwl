@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_grep.py_input_fastx.cwl
+id: fastx_grep.py_input_fastx.cwl
 inputs:
 - id: in_n
   doc: ''

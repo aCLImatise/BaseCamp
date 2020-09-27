@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmph5tools.py_equal.cwl
+id: cmph5tools.py_equal.cwl
 inputs:
 - id: in_cmp_doth_five_dot_one
   doc: filename 1

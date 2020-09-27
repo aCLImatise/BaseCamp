@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fast_circ.py.cwl
+id: fast_circ.py.cwl
 inputs:
 - id: in_ref
   doc: Gene annotation.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_barplot.cwl
+id: humann2_barplot.cwl
 inputs:
 - id: in_input
   doc: HUMAnN2 table with optional metadata

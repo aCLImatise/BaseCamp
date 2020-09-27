@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../pslxToFa.cwl
+id: pslxToFa.cwl
 inputs:
 - id: in_lift_target
-  doc: ''
+  doc: "-liftQuery=liftQuery.lft\n"
   type: string
   inputBinding:
     prefix: -liftTarget
-- id: in_lift_query
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -liftQuery
 - id: in_in_dot_psl
   doc: ''
   type: string

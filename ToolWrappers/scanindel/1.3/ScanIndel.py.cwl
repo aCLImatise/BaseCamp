@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ScanIndel.py.cwl
+id: ScanIndel.py.cwl
 inputs:
 - id: in_setting_default_directory
   doc: :setting the output directory (default current working directory)

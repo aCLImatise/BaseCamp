@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf2bed_typical.cwl
+id: gtf2bed_typical.cwl
 inputs:
 - id: in_input
   doc: "=[bam|gff|gtf|gvf|psl|rmsk|sam|vcf|wig] (-i <fmt>)\nGenomic format of input\

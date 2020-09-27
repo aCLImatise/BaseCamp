@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../catrep.cwl
+id: catrep.cwl
 inputs: []
 outputs:
 - id: out_stdout

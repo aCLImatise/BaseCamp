@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prove.cwl
+id: prove.cwl
 inputs:
 - id: in__verbose_print
   doc: ',  --verbose         Print all test lines.'

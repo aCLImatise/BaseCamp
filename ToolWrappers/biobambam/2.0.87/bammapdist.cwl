@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bammapdist.cwl
+id: bammapdist.cwl
 inputs: []
 outputs:
 - id: out_stdout

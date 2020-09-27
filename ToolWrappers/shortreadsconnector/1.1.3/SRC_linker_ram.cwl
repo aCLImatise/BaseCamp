@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SRC_linker_ram.cwl
+id: SRC_linker_ram.cwl
 inputs:
 - id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"
@@ -31,11 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -query
-- id: in_out
-  doc: '(1 arg) :    output_file'
-  type: boolean
-  inputBinding:
-    prefix: -out
 - id: in_km_er_threshold
   doc: "(1 arg) :    Minimal percentage of shared kmer span for considering 2 reads\
     \ as similar.  The kmer span is the number of bases from the read query covered\

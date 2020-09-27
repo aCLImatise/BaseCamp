@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_calibrate_modified_bases.cwl
+id: megalodon_extras_calibrate_modified_bases.cwl
 inputs:
 - id: in_ground_truth_ll_rs
   doc: "Ground truth log-likelihood ratio statistics (produced\nby `megalodon_extras\

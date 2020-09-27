@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchmedo_options..cwl
+id: watchmedo_options..cwl
 inputs:
 - id: in_watch_me_do
   doc: ''

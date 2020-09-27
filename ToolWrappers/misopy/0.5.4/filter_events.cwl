@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_events.cwl
+id: filter_events.cwl
 inputs:
 - id: in_filter
   doc: "Comparison file to filter or list of replicate files\nto filter."

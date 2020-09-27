@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonkit_name2taxid.cwl
+id: taxonkit_name2taxid.cwl
 inputs:
 - id: in_name_field
   doc: field index of name. data should be tab-separated (default 1)

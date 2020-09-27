@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../processFragOut.py.cwl
+id: processFragOut.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lastz_D.cwl
+id: lastz_D.cwl
 inputs:
 - id: in_self
   doc: "the target sequence is also the query\n(this replaces the query file)"

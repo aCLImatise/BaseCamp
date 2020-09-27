@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_covered.cwl
+id: get_covered.cwl
 inputs: []
 outputs:
 - id: out_stdout

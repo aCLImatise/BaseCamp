@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_spanner_instances.cwl
+id: gcloud_spanner_instances.cwl
 inputs:
 - id: in_add_i_am_policy_binding
   doc: Add an IAM policy binding to a Cloud Spanner instance.

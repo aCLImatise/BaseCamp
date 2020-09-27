@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../server.R~.cwl
+id: server.R~.cwl
 inputs: []
 outputs:
 - id: out_stdout

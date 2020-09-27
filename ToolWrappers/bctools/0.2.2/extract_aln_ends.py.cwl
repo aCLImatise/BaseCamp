@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_aln_ends.py.cwl
+id: extract_aln_ends.py.cwl
 inputs:
 - id: in_outfile
   doc: 'Write results to this file. (default: None)'

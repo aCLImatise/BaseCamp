@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quasitools_distance.cwl
+id: quasitools_distance.cwl
 inputs:
 - id: in_normalize
   doc: "/ -dn, --dont_normalize\nNormalize read count data so that the read\ncounts\

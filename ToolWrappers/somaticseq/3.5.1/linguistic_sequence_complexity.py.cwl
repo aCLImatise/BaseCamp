@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../linguistic_sequence_complexity.py.cwl
+id: linguistic_sequence_complexity.py.cwl
 inputs:
 - id: in_sequence
   doc: "input vcf file (default: None)\n"

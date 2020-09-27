@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removesmartbell.sh.cwl
+id: removesmartbell.sh.cwl
 inputs:
 - id: in_in
   doc: ''

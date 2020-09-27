@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../starfish_validate_codebook.cwl
+id: starfish_validate_codebook.cwl
 inputs:
 - id: in_fuzz
-  doc: ''
+  doc: "--help  Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --fuzz

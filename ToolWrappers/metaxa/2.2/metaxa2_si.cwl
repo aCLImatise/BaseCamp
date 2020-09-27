@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaxa2_si.cwl
+id: metaxa2_si.cwl
 inputs:
 - id: in_input_taxonomy_file
   doc: ': Input taxonomy file from Metaxa2'

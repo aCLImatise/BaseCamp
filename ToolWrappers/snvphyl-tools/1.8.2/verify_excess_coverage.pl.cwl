@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../verify_excess_coverage.pl.cwl
+id: verify_excess_coverage.pl.cwl
 inputs:
 - id: in_bam
   doc: "[REQUIRED]\nThe location for a specific BAM file in the dataset. Multiple\

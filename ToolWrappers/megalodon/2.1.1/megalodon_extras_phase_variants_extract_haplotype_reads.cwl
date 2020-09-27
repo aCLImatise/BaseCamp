@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_phase_variants_extract_haplotype_reads.cwl
+id: megalodon_extras_phase_variants_extract_haplotype_reads.cwl
 inputs:
 - id: in_alignment_filename
   doc: Alignment filename.

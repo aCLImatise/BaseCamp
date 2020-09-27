@@ -1,26 +1,21 @@
 class: CommandLineTool
-id: ../../../pick_long_reads.cwl
+id: pick_long_reads.cwl
 inputs:
-- id: in_input_files
+- id: in_o
   doc: ''
   type: string
   inputBinding:
-    prefix: --input_files
+    prefix: -o
 - id: in_length
   doc: ''
   type: long
   inputBinding:
     prefix: --length
-- id: in_output
+- id: in_i
   doc: ''
   type: string
   inputBinding:
-    prefix: --output
-- id: in_cut_stars
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --cut_stars
+    prefix: -i
 outputs:
 - id: out_stdout
   doc: Standard output stream

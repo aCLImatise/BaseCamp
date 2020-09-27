@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subtractBed.cwl
+id: subtractBed.cwl
 inputs:
 - id: in_remove_entire_feature
   doc: "Remove entire feature if any overlap.  That is, by default,\nonly subtract\

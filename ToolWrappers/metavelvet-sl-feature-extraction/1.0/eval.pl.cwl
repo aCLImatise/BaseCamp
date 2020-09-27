@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eval.pl.cwl
+id: eval.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tigmint_make.cwl
+id: tigmint_make.cwl
 inputs: []
 outputs:
 - id: out_stdout

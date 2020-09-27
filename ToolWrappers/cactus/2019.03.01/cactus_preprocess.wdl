@@ -2,7 +2,6 @@ version 1.0
 
 task CactusPreprocess {
   input {
-    File? config_file
     Boolean? logoff
     Boolean? log_critical
     Boolean? log_error
@@ -43,9 +42,6 @@ task CactusPreprocess {
     Float? default_cores
     Int? default_disk
     Boolean? default_preempt_able
-    Int? max_cores
-    Int? max_memory
-    Int? max_disk
     Int? retry_count
     Int? max_job_duration
     Int? rescue_jobs_frequency
@@ -72,7 +68,6 @@ task CactusPreprocess {
       ~{input_sequences} \
       ~{job_store} \
       ~{provisioning_dot} \
-      ~{if defined(config_file) then ("--configFile " +  '"' + config_file + '"') else ""} \
       ~{if (logoff) then "--logOff" else ""} \
       ~{if (log_critical) then "--logCritical" else ""} \
       ~{if (log_error) then "--logError" else ""} \
@@ -113,9 +108,6 @@ task CactusPreprocess {
       ~{if defined(default_cores) then ("--defaultCores " +  '"' + default_cores + '"') else ""} \
       ~{if defined(default_disk) then ("--defaultDisk " +  '"' + default_disk + '"') else ""} \
       ~{if (default_preempt_able) then "--defaultPreemptable" else ""} \
-      ~{if defined(max_cores) then ("--maxCores " +  '"' + max_cores + '"') else ""} \
-      ~{if defined(max_memory) then ("--maxMemory " +  '"' + max_memory + '"') else ""} \
-      ~{if defined(max_disk) then ("--maxDisk " +  '"' + max_disk + '"') else ""} \
       ~{if defined(retry_count) then ("--retryCount " +  '"' + retry_count + '"') else ""} \
       ~{if defined(max_job_duration) then ("--maxJobDuration " +  '"' + max_job_duration + '"') else ""} \
       ~{if defined(rescue_jobs_frequency) then ("--rescueJobsFrequency " +  '"' + rescue_jobs_frequency + '"') else ""} \
@@ -133,7 +125,6 @@ task CactusPreprocess {
       ~{if defined(bad_worker_fail_interval) then ("--badWorkerFailInterval " +  '"' + bad_worker_fail_interval + '"') else ""}
   >>>
   parameter_meta {
-    config_file: ""
     logoff: "Same as --logCritical"
     log_critical: "Turn on logging at level CRITICAL and above. (default\\nis INFO)"
     log_error: "Turn on logging at level ERROR and above. (default is\\nINFO)"
@@ -173,10 +164,7 @@ task CactusPreprocess {
     default_memory: "The default amount of memory to request for a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Standard suffixes\\nlike K, Ki, M, Mi, G or Gi are supported. Default is\\n2.0 Gi"
     default_cores: "The default number of CPU cores to dedicate a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Fractions of a\\ncore (for example 0.1) are supported on some batch\\nsystems, namely Mesos and singleMachine. Default is\\n1.0"
     default_disk: "The default amount of disk space to dedicate a job.\\nOnly applicable to jobs that do not specify an\\nexplicit value for this requirement. Standard suffixes\\nlike K, Ki, M, Mi, G or Gi are supported. Default is\\n2.0 Gi"
-    default_preempt_able: ""
-    max_cores: "The maximum number of CPU cores to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
-    max_memory: "The maximum amount of memory to request from the batch\\nsystem at any one time. Standard suffixes like K, Ki,\\nM, Mi, G or Gi are supported. Default is 8.0 Ei"
-    max_disk: "The maximum amount of disk space to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
+    default_preempt_able: "--maxCores INT        The maximum number of CPU cores to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei\\n--maxMemory INT       The maximum amount of memory to request from the batch\\nsystem at any one time. Standard suffixes like K, Ki,\\nM, Mi, G or Gi are supported. Default is 8.0 Ei\\n--maxDisk INT         The maximum amount of disk space to request from the\\nbatch system at any one time. Standard suffixes like\\nK, Ki, M, Mi, G or Gi are supported. Default is 8.0 Ei"
     retry_count: "Number of times to retry a failing job before giving\\nup and labeling job failed. default=1"
     max_job_duration: "Maximum runtime of a job (in seconds) before we kill\\nit (this is a lower bound, and the actual time before\\nkilling the job may be longer).\\ndefault=9223372036854775807"
     rescue_jobs_frequency: "Period of time to wait (in seconds) between checking\\nfor missing/overlong jobs, that is jobs which get lost\\nby the batch system. Expert parameter. default=3600"

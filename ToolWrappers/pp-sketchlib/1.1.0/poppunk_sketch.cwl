@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk_sketch.cwl
+id: poppunk_sketch.cwl
 inputs:
 - id: in_sketch
   doc: Create a database of sketches

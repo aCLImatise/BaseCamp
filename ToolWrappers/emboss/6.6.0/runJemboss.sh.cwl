@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runJemboss.sh.cwl
+id: runJemboss.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

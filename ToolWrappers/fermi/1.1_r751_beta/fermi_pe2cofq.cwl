@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_pe2cofq.cwl
+id: fermi_pe2cofq.cwl
 inputs:
 - id: in_in_one_dot_fq
   doc: ''

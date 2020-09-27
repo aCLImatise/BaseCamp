@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vawk_vcf.cwl
+id: vawk_vcf.cwl
 inputs:
 - id: in_debug
   doc: ''

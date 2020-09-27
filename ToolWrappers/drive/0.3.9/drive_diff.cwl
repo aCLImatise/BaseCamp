@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drive_diff.cwl
+id: drive_diff.cwl
 inputs:
 - id: in_base_local
   doc: when set uses local as the base other remote will be used as the base (default
@@ -12,16 +12,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -depth
-- id: in_hidden
-  doc: allows pulling of hidden paths
-  type: boolean
-  inputBinding:
-    prefix: -hidden
-- id: in_ignore_checksum
-  doc: avoids computation of checksums as a final check.
-  type: boolean
-  inputBinding:
-    prefix: -ignore-checksum
 - id: in_ignore_conflict
   doc: turns off the conflict resolution safety
   type: boolean

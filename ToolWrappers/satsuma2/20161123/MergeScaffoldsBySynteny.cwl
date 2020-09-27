@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MergeScaffoldsBySynteny.cwl
+id: MergeScaffoldsBySynteny.cwl
 inputs:
 - id: in_string_input_summary
   doc: '<string> : input file (satsuma summary)'

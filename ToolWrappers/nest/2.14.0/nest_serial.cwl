@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nest_serial.cwl
+id: nest_serial.cwl
 inputs:
 - id: in_script
   doc: ''

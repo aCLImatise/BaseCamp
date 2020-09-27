@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_tool_performance_table.R.cwl
+id: get_tool_performance_table.R.cwl
 inputs:
 - id: in_input_dir
   doc: "Path to the directory with standardised output .tsv files from multiple\n\

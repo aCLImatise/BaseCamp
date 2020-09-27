@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqboot.cwl
+id: seqboot.cwl
 inputs: []
 outputs:
 - id: out_stdout

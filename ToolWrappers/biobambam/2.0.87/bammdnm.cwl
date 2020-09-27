@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bammdnm.cwl
+id: bammdnm.cwl
 inputs: []
 outputs:
 - id: out_stdout

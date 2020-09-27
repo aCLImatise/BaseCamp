@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ndisasm.cwl
+id: ndisasm.cwl
 inputs:
 - id: in_auto_intelligent_sync
   doc: auto (intelligent) sync

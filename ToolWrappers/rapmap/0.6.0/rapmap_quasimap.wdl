@@ -102,7 +102,7 @@ task RapmapQuasimap {
     double_fraction_covered: "<double in [0,1]>,  --quasiCoverage <double in [0,1]>\\nRequire that this fraction of a read is covered by MMPs before it is\\nconsidered mappable."
     _maxnumhits_integerreads: ",  --maxNumHits <positive integer>\\nReads mapping to more than this many loci are discarded"
     _nooutputdont_write: ",  --noOutput\\nDon't write out any alignments (for speed testing purposes)"
-    rap_map: "-i <path> [-1 <path>] [-2 <path>] [-r <path>] [-o <path>] [-x]\\n[-t <positive integer>] [-s] [--mimicBT2] [--mimicStrictBT2]\\n[--minScoreFrac <ratio in (0,1]>] [--maxMMPExtension <positive\\ninteger > 1>] [--consensusSlack <ratio in (0,1]>] [--ma\\n<positive integer>] [--mm <negative integer>] [--go <positive\\ninteger>] [--ge <positive integer>] [--dpBandwidth <positive\\ninteger>] [--noOrphans] [--noDovetail] [--recoverOrphans]\\n[--hardFilter] [-u] [-q] [-c] [-f] [--noStrictCheck]\\n[--noSensitive] [-z <double in [0,1]>] [-m <positive integer>]\\n[-n] [--] [--version] [-h]"
+    rap_map: ""
   }
   output {
     File out_stdout = stdout()

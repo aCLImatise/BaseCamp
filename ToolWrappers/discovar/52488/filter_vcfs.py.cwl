@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_vcfs.py.cwl
+id: filter_vcfs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

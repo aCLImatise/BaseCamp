@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbFilter.cwl
+id: bbFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

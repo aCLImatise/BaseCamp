@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dr_disco_is_blacklisted_reported..cwl
+id: dr_disco_is_blacklisted_reported..cwl
 inputs:
 - id: in_dr_disco
   doc: ''

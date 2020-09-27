@@ -128,7 +128,7 @@ subcommands:
     - -trf
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -256,7 +256,7 @@ subcommands:
         - -trf
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
         named: []
@@ -384,7 +384,521 @@ subcommands:
             - -trf
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: args
+                optional: true
+              named:
+              - !Flag
+                description: "[sample <required> [sample <required> ...]]\ntwo options:\
+                  \ 1. A file where each row represents one\nsample name; 2. *.fastq\
+                  \ *.fastq ... Or *.fastq.gz\n*.fastq.gz ..."
+                synonyms:
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the directory of the outputs (default: current\ndirectory)"
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: dir
+                optional: true
+              - !Flag
+                description: "the miRNA database (default: miRBase. miRGeneDB is\n\
+                  optional)"
+                synonyms:
+                - -d
+                args: !SimpleFlagArg
+                  name: string required
+                optional: true
+              - !Flag
+                description: the path to the system's bowtie binary
+                synonyms:
+                - -pb
+                args: !SimpleFlagArg
+                  name: dir required
+                optional: true
+              - !Flag
+                description: the path to the miRge libraries
+                synonyms:
+                - -lib
+                args: !SimpleFlagArg
+                  name: dir required
+                optional: true
+              - !Flag
+                description: "the species can be human, mouse, fruitfly, nematode,\n\
+                  rat and zebrafish (novel miRNA detection is confined\nin human and\
+                  \ mouse)"
+                synonyms:
+                - -sp
+                args: !SimpleFlagArg
+                  name: string required
+                optional: true
+              - !Flag
+                description: "the threshold of the proportion of canonical reads for\n\
+                  the miRNAs to determine whether keeping them or not\nwhen counting.\
+                  \ Users can set it between 0 and 0.5.\n(default: 0.1)"
+                synonyms:
+                - -ex
+                args: !SimpleFlagArg
+                  name: float
+                optional: true
+              - !Flag
+                description: "the adapter need to be removed which could be\nillumina,\
+                  \ ion or a defined sequence (default: none)"
+                synonyms:
+                - -ad
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: 'phred64 format (default: 64)'
+                synonyms:
+                - -phred64
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "switch to annotate spike-ins if the bowtie index files\n\
+                  are loacted at the path of bowtie's index files\n(default: off)"
+                synonyms:
+                - -spikeIn
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "switch to write trimmed and collapsed fasta file\n(default:\
+                  \ off)"
+                synonyms:
+                - -tcf
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'switch to calculate of isomirs entropy (default: off)'
+                synonyms:
+                - -di
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the number of processors to use for trimming, qc, and\n\
+                  alignment (default: 1)"
+                synonyms:
+                - -cpu
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: 'switch to calculate of A to I editing (default: off)'
+                synonyms:
+                - -ai
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'switch to output results in gff format (default: off)'
+                synonyms:
+                - -gff
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'switch to analyze tRNA fragment (default: off)'
+                synonyms:
+                - -trf
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: \r##################################################################################\n\
+                ##                                                               \
+                \               ##\n##      miRge2.0 (Comprehensive analysis of miRNA\
+                \ sequencing Data)              ##\n##                           \
+                \                                                   ##\n##      last\
+                \ change: 06/26/2018                                             \
+                \    ##\n##                                                      \
+                \                        ##\n##                                  \
+                \                                            ##\n##################################################################################\n\
+                \nUsage: miRge2.0 annotate [-h] [<args>]\n\nExample:\nmiRge2.0 annotate\
+                \ -s seq_file.fastq -d miRBase -pb /home/yin/tools/bowtie-1.1.1 -lib\
+                \ /home/yin/miRge.Libs -sp human -ad illumina -ai -gff -trf -cpu 4\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  -s [sample <required> [sample <required> ...]]\n   \
+                \                     two options: 1. A file where each row represents\
+                \ one\n                        sample name; 2. *.fastq *.fastq ...\
+                \ Or *.fastq.gz\n                        *.fastq.gz ...\n  -o <dir>\
+                \              the directory of the outputs (default: current\n  \
+                \                      directory)\n  -d <string required>  the miRNA\
+                \ database (default: miRBase. miRGeneDB is\n                     \
+                \   optional)\n  -pb <dir required>    the path to the system's bowtie\
+                \ binary\n  -lib <dir required>   the path to the miRge libraries\n\
+                \  -sp <string required>\n                        the species can\
+                \ be human, mouse, fruitfly, nematode,\n                        rat\
+                \ and zebrafish (novel miRNA detection is confined\n             \
+                \           in human and mouse)\n  -ex <float>           the threshold\
+                \ of the proportion of canonical reads for\n                     \
+                \   the miRNAs to determine whether keeping them or not\n        \
+                \                when counting. Users can set it between 0 and 0.5.\n\
+                \                        (default: 0.1)\n  -ad <string>          the\
+                \ adapter need to be removed which could be\n                    \
+                \    illumina, ion or a defined sequence (default: none)\n  -phred64\
+                \              phred64 format (default: 64)\n  -spikeIn          \
+                \    switch to annotate spike-ins if the bowtie index files\n    \
+                \                    are loacted at the path of bowtie's index files\n\
+                \                        (default: off)\n  -tcf                  switch\
+                \ to write trimmed and collapsed fasta file\n                    \
+                \    (default: off)\n  -di                   switch to calculate of\
+                \ isomirs entropy (default: off)\n  -cpu <int>            the number\
+                \ of processors to use for trimming, qc, and\n                   \
+                \     alignment (default: 1)\n  -ai                   switch to calculate\
+                \ of A to I editing (default: off)\n  -gff                  switch\
+                \ to output results in gff format (default: off)\n  -trf         \
+                \         switch to analyze tRNA fragment (default: off)\n  --version\
+                \             show program's version number and exit\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - miRge2.0
+              - predict
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: args
+                optional: true
+              named:
+              - !Flag
+                description: "[sample <required> [sample <required> ...]]\ntwo options:\
+                  \ 1. A file where each row represents one\nsample name; 2. *.fastq\
+                  \ *.fastq ... Or *.fastq.gz\n*.fastq.gz ..."
+                synonyms:
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the directory of the outputs (default: current\ndirectory)"
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: dir
+                optional: true
+              - !Flag
+                description: "the miRNA database (default: miRBase. miRGeneDB is\n\
+                  optional)"
+                synonyms:
+                - -d
+                args: !SimpleFlagArg
+                  name: string required
+                optional: true
+              - !Flag
+                description: the path to the system's bowtie binary
+                synonyms:
+                - -pb
+                args: !SimpleFlagArg
+                  name: dir required
+                optional: true
+              - !Flag
+                description: the path to the miRge libraries
+                synonyms:
+                - -lib
+                args: !SimpleFlagArg
+                  name: dir required
+                optional: true
+              - !Flag
+                description: "the species can be human, mouse, fruitfly, nematode,\n\
+                  rat and zebrafish (novel miRNA detection is confined\nin human and\
+                  \ mouse)"
+                synonyms:
+                - -sp
+                args: !SimpleFlagArg
+                  name: string required
+                optional: true
+              - !Flag
+                description: the path to the system's samtools binary
+                synonyms:
+                - -ps
+                args: !SimpleFlagArg
+                  name: dir required
+                optional: true
+              - !Flag
+                description: the path to the system's rnafold binary
+                synonyms:
+                - -pr
+                args: !SimpleFlagArg
+                  name: dir required
+                optional: true
+              - !Flag
+                description: "the threshold of the proportion of canonical reads for\n\
+                  the miRNAs to determine whether keeping them or not\nwhen counting.\
+                  \ Users can set it between 0 and 0.5.\n(default: 0.1)"
+                synonyms:
+                - -ex
+                args: !SimpleFlagArg
+                  name: float
+                optional: true
+              - !Flag
+                description: "the adapter need to be removed which could be\nillumina,\
+                  \ ion or a defined sequence (default: none)"
+                synonyms:
+                - -ad
+                args: !SimpleFlagArg
+                  name: string
+                optional: true
+              - !Flag
+                description: 'phred64 format(default: 64)'
+                synonyms:
+                - -phred64
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "switch to annotate spike-ins if the bowtie index files\n\
+                  are loacted at the path of bowtie's index files\n(default: off)"
+                synonyms:
+                - -spikeIn
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "switch to write trimmed and collapsed fasta file\n(default:\
+                  \ off)"
+                synonyms:
+                - -tcf
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'switch to calculate of isomirs entropy (default: off)'
+                synonyms:
+                - -di
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the number of processors to use for trimming, qc, and\n\
+                  alignment (default: 1)"
+                synonyms:
+                - -cpu
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: 'switch to calculate of A to I editing (default: off)'
+                synonyms:
+                - -ai
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'switch to output results in gff format (default: off)'
+                synonyms:
+                - -gff
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'switch to analyze tRNA fragment (default: off)'
+                synonyms:
+                - -trf
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the file containing the overall samples to analysis\n\
+                  for novel miRNA prediction. No header, just a list of\n*.fastq file\
+                  \ names in a column. Names of files can be\nto your choosing (e.g.\
+                  \ filestochecknovel.txt)"
+                synonyms:
+                - -ws
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "the minimum length of the reatined reads for novel\n\
+                  miRNA detection (default: 16)"
+                synonyms:
+                - -minl
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: "the maximum length of the reatined reads for novel\n\
+                  miRNA detection (default: 25)"
+                synonyms:
+                - -maxl
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: "the maximum read count of the reatined reads for novel\n\
+                  miRNA detection (default: 2)"
+                synonyms:
+                - -cc
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: "the maximum number of mapping loci for the retained\n\
+                  reads for novel miRNA detection (default: 3)"
+                synonyms:
+                - -ml
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: "the seed length when invoking Bowtie for novel miRNA\n\
+                  detection (default: 25)"
+                synonyms:
+                - -sl
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: "the length of overlapped seqence when joining reads\n\
+                  into longer sequences based on the coordinate on the\ngenome for\
+                  \ novel miRNA detection (default: 14)"
+                synonyms:
+                - -olc
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: "the maximum length of the clustered sequences for\n\
+                  novel miRNA detection (default: 30)"
+                synonyms:
+                - -clc
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: \r##################################################################################\n\
+                ##                                                               \
+                \               ##\n##      miRge2.0 (Comprehensive analysis of miRNA\
+                \ sequencing Data)              ##\n##                           \
+                \                                                   ##\n##      last\
+                \ change: 06/26/2018                                             \
+                \    ##\n##                                                      \
+                \                        ##\n##                                  \
+                \                                            ##\n##################################################################################\n\
+                \nUsage: miRge2.0 predict [-h] [<args>]\n\nExample:\nmiRge2.0 predict\
+                \ -s seq_file.fastq -d miRBase -pb /home/yin/tools/bowtie-1.1.1 -lib\
+                \ /home/yin/miRge.Libs -ps /usr/local/bin -pr /usr/local/bin -sp human\
+                \ -ad illumina -ai -gff -trf -cpu 4\n\noptional arguments:\n  -h,\
+                \ --help            show this help message and exit\n  -s [sample\
+                \ <required> [sample <required> ...]]\n                        two\
+                \ options: 1. A file where each row represents one\n             \
+                \           sample name; 2. *.fastq *.fastq ... Or *.fastq.gz\n  \
+                \                      *.fastq.gz ...\n  -o <dir>              the\
+                \ directory of the outputs (default: current\n                   \
+                \     directory)\n  -d <string required>  the miRNA database (default:\
+                \ miRBase. miRGeneDB is\n                        optional)\n  -pb\
+                \ <dir required>    the path to the system's bowtie binary\n  -lib\
+                \ <dir required>   the path to the miRge libraries\n  -sp <string\
+                \ required>\n                        the species can be human, mouse,\
+                \ fruitfly, nematode,\n                        rat and zebrafish (novel\
+                \ miRNA detection is confined\n                        in human and\
+                \ mouse)\n  -ps <dir required>    the path to the system's samtools\
+                \ binary\n  -pr <dir required>    the path to the system's rnafold\
+                \ binary\n  -ex <float>           the threshold of the proportion\
+                \ of canonical reads for\n                        the miRNAs to determine\
+                \ whether keeping them or not\n                        when counting.\
+                \ Users can set it between 0 and 0.5.\n                        (default:\
+                \ 0.1)\n  -ad <string>          the adapter need to be removed which\
+                \ could be\n                        illumina, ion or a defined sequence\
+                \ (default: none)\n  -phred64              phred64 format(default:\
+                \ 64)\n  -spikeIn              switch to annotate spike-ins if the\
+                \ bowtie index files\n                        are loacted at the path\
+                \ of bowtie's index files\n                        (default: off)\n\
+                \  -tcf                  switch to write trimmed and collapsed fasta\
+                \ file\n                        (default: off)\n  -di            \
+                \       switch to calculate of isomirs entropy (default: off)\n  -cpu\
+                \ <int>            the number of processors to use for trimming, qc,\
+                \ and\n                        alignment (default: 1)\n  -ai     \
+                \              switch to calculate of A to I editing (default: off)\n\
+                \  -gff                  switch to output results in gff format (default:\
+                \ off)\n  -trf                  switch to analyze tRNA fragment (default:\
+                \ off)\n  -ws <file>            the file containing the overall samples\
+                \ to analysis\n                        for novel miRNA prediction.\
+                \ No header, just a list of\n                        *.fastq file\
+                \ names in a column. Names of files can be\n                     \
+                \   to your choosing (e.g. filestochecknovel.txt)\n  -minl <int> \
+                \          the minimum length of the reatined reads for novel\n  \
+                \                      miRNA detection (default: 16)\n  -maxl <int>\
+                \           the maximum length of the reatined reads for novel\n \
+                \                       miRNA detection (default: 25)\n  -cc <int>\
+                \             the maximum read count of the reatined reads for novel\n\
+                \                        miRNA detection (default: 2)\n  -ml <int>\
+                \             the maximum number of mapping loci for the retained\n\
+                \                        reads for novel miRNA detection (default:\
+                \ 3)\n  -sl <int>             the seed length when invoking Bowtie\
+                \ for novel miRNA\n                        detection (default: 25)\n\
+                \  -olc <int>            the length of overlapped seqence when joining\
+                \ reads\n                        into longer sequences based on the\
+                \ coordinate on the\n                        genome for novel miRNA\
+                \ detection (default: 14)\n  -clc <int>            the maximum length\
+                \ of the clustered sequences for\n                        novel miRNA\
+                \ detection (default: 30)\n  --version             show program's\
+                \ version number and exit\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "\r##################################################################################\n\
+              ##                                                                 \
+              \             ##\n##      miRge2.0 (Comprehensive analysis of miRNA\
+              \ sequencing Data)              ##\n##                             \
+              \                                                 ##\n##      last change:\
+              \ 06/26/2018                                                 ##\n##\
+              \                                                                  \
+              \            ##\n##                                                \
+              \                              ##\n##################################################################################\n\
+              \nUsage: miRge2.0 <command> [<args>]\nThe two functions of miRge2.0are:\n\
+              \   annotate      Annotate the reads from miRNA sequencing data\n  \
+              \               Type \"miRge2.0 annotate -h\" to show the help message\
+              \ of this funtion\n   predict       Detect novel miRNAs from miRNA sequencing\
+              \ data\n                 Type \"miRge2.0 predict -h\" to show the help\
+              \ message of this funtion\n\npositional arguments:\n  {annotate,predict}\
+              \  sub-command help\n\noptional arguments:\n  -h, --help          show\
+              \ this help message and exit\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -444,12 +958,9 @@ subcommands:
             \ output results in gff format (default: off)\n  -trf                \
             \  switch to analyze tRNA fragment (default: off)\n  --version       \
             \      show program's version number and exit\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - miRge2.0
-          - predict
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -531,12 +1042,6 @@ subcommands:
             - -ad
             args: !SimpleFlagArg
               name: string
-            optional: true
-          - !Flag
-            description: 'phred64 format(default: 64)'
-            synonyms:
-            - -phred64
-            args: !EmptyFlagArg {}
             optional: true
           - !Flag
             description: "switch to annotate spike-ins if the bowtie index files\n\
@@ -733,13 +1238,7 @@ subcommands:
             \ --version             show program's version number and exit\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "\r##################################################################################\n\
@@ -1013,7 +1512,7 @@ subcommands:
         args: !SimpleFlagArg
           name: int
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1362,7 +1861,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

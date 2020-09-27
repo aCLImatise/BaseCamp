@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../canu.defaults.cwl
+id: canu.defaults.cwl
 inputs: []
 outputs:
 - id: out_stdout

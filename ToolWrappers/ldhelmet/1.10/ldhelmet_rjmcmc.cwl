@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ldhelmet_rjmcmc.cwl
+id: ldhelmet_rjmcmc.cwl
 inputs:
 - id: in__display_version
   doc: '[ --version ]                      Display version.'

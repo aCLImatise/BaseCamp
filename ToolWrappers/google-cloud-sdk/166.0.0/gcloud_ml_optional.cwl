@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_ml_optional.cwl
+id: gcloud_ml_optional.cwl
 inputs:
 - id: in_flags
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xcorrhelper.r.cwl
+id: xcorrhelper.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

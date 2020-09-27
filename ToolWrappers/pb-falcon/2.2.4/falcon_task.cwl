@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falcon_task.cwl
+id: falcon_task.cwl
 inputs:
 - id: in_task
   doc: ''

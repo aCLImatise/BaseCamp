@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ivar_removereads.cwl
+id: ivar_removereads.cwl
 inputs:
 - id: in_required_input_bam
   doc: (Required) Input BAM file  trimmed with ‘ivar trim’. Must be sorted which can

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unlink.cwl
+id: unlink.cwl
 inputs:
 - id: in_file
   doc: ''

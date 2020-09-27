@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_sequences_for_meme.py_outhead.cwl
+id: get_sequences_for_meme.py_outhead.cwl
 inputs:
 - id: in_p
   doc: ''

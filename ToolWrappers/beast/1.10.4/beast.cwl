@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../beast.cwl
+id: beast.cwl
 inputs:
 - id: in_verbose
   doc: verbose XML parsing messages

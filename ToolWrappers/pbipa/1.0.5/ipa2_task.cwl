@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipa2_task.cwl
+id: ipa2_task.cwl
 inputs: []
 outputs:
 - id: out_stdout

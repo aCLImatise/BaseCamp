@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_em.py.cwl
+id: run_em.py.cwl
 inputs:
 - id: in_input
   doc: Input FASTA file

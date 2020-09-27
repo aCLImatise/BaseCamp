@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../Refiner.cwl
+id: Refiner.cwl
 inputs:
 - id: in_foo
-  doc: ''
+  doc: bar
   type: boolean
   inputBinding:
     prefix: -foo
@@ -65,11 +65,6 @@ inputs:
     prefix: -genometools_dir
 - id: in_instances
   doc: "SYNOPSIS\nRefiner [-options] <family fasta sequences>"
-  type: string
-  inputBinding:
-    position: 0
-- id: in_bar
-  doc: CONFIGURATION OVERRIDES
   type: string
   inputBinding:
     position: 0

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipcontext_exb.cwl
+id: clipcontext_exb.cwl
 inputs:
 - id: in_max_dist
   doc: "Maximum distance of CLIP peak region end to nearest exon end\nfor CLIP region\

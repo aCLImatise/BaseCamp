@@ -1,9 +1,11 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_ry_recoded_alignments.cwl
+id: phyluce_align_get_ry_recoded_alignments.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--input-format {fasta,nexus,phylip,phylip-relaxed,clustal,emboss,stockholm}]\n\
+    [--output-format {fasta,nexus,phylip,phylip-relaxed,clustal,emboss,stockholm}]\n\
+    [--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n[--cores CORES] [--binary]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_alignments

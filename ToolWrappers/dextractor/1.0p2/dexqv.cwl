@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dexqv.cwl
+id: dexqv.cwl
 inputs:
 - id: in_v_kl
   doc: ''

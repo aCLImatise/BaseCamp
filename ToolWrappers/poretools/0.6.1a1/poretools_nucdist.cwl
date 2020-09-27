@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poretools_nucdist.cwl
+id: poretools_nucdist.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr

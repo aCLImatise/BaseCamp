@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bs_seeker2_build.py.cwl
+id: bs_seeker2_build.py.cwl
 inputs:
 - id: in_file
   doc: Input your reference genome file (fasta)

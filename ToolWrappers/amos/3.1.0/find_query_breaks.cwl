@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_query_breaks.cwl
+id: find_query_breaks.cwl
 inputs:
 - id: in_minimum_length_alignment
   doc: 'Minimum length of alignment break to report (Default: 10)'

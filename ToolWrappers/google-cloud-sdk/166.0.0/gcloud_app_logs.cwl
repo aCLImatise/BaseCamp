@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_logs.cwl
+id: gcloud_app_logs.cwl
 inputs:
 - id: in_optional
   doc: ''

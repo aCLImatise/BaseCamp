@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gseapy_biomart.cwl
+id: gseapy_biomart.cwl
 inputs:
 - id: in_value__filter
   doc: "VALUE, --filter NAME VALUE\nWhich filter to use. Input filter name, and value.\

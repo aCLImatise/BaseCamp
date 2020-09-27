@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualimap_multi_bamqc.cwl
+id: qualimap_multi_bamqc.cwl
 inputs:
 - id: in_paint_chromosome_limits
   doc: "Only for -r mode. Paint chromosome limits\ninside charts"

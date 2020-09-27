@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hops.cwl
+id: hops.cwl
 inputs:
 - id: in_config_file
   doc: Path to Config File

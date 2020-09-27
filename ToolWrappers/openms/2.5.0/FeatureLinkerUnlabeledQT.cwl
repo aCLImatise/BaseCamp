@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FeatureLinkerUnlabeledQT.cwl
+id: FeatureLinkerUnlabeledQT.cwl
 inputs:
 - id: in_in
   doc: "*        Input files separated by blanks (valid formats: 'featureXML', 'consensusXML')"

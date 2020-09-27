@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../localtime.cwl
+id: localtime.cwl
 inputs:
 - id: in_time_stamp
   doc: ''

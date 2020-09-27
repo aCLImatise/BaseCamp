@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RealPhy_v112.jar.cwl
+id: RealPhy_v112.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

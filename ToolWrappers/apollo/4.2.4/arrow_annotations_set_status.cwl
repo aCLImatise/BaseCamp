@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_set_status.cwl
+id: arrow_annotations_set_status.cwl
 inputs:
 - id: in_organism
   doc: Organism Common Name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertToPBCNS.cwl
+id: convertToPBCNS.cwl
 inputs:
 - id: in_coverage
   doc: Minimum coverage in a consensus region to keep, default 0.

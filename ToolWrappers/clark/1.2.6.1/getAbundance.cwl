@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getAbundance.cwl
+id: getAbundance.cwl
 inputs:
 - id: in_filter_assignments_based
   doc: "To filter assignments based on their gamma score (if available) using the\n\

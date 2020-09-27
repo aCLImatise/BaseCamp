@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../processspeed.sh.cwl
+id: processspeed.sh.cwl
 inputs:
 - id: in_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptrepack.cwl
+id: ptrepack.cwl
 inputs:
 - id: in_verbose
   doc: show verbose information

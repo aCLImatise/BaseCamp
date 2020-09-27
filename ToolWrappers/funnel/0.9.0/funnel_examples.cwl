@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_examples.cwl
+id: funnel_examples.cwl
 inputs:
 - id: in_name
   doc: ''

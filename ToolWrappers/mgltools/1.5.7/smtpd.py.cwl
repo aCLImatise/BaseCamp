@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smtpd.py.cwl
+id: smtpd.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GeneFamilyClassifier.cwl
+id: GeneFamilyClassifier.cwl
 inputs: []
 outputs:
 - id: out_stdout

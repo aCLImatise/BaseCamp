@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnasamba_train.cwl
+id: rnasamba_train.cwl
 inputs:
 - id: in_early_stopping
   doc: "number of epochs after lowest validation loss before\nstopping training (a\

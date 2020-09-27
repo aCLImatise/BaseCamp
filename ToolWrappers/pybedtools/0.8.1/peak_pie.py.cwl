@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peak_pie.py.cwl
+id: peak_pie.py.cwl
 inputs:
 - id: in_bed
   doc: BED file of e.g. peaks

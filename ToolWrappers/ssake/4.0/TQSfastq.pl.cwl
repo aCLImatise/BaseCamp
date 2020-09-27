@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TQSfastq.pl.cwl
+id: TQSfastq.pl.cwl
 inputs:
 - id: in_file_corresponding_fastafastq
   doc: "File of filenames corresponding to fasta/fastq files with reads to interrogate\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paraHub.cwl
+id: paraHub.cwl
 inputs:
 - id: in_spokes
   doc: Number of processes that feed jobs to nodes - default 30.

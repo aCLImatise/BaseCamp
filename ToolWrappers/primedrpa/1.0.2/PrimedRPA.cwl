@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrimedRPA.cwl
+id: PrimedRPA.cwl
 inputs:
 - id: in_run_id
   doc: Desired Run ID

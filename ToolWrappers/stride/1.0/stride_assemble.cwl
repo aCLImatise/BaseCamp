@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stride_assemble.cwl
+id: stride_assemble.cwl
 inputs:
 - id: in_read_length
   doc: original read length

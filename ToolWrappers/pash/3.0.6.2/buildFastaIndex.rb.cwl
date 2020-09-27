@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildFastaIndex.rb.cwl
+id: buildFastaIndex.rb.cwl
 inputs:
 - id: in_fast_a_file
   doc: '|-r   => FASTA sequence file'
@@ -31,11 +31,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -f
-- id: in_build_fast_a_index_do_trb
-  doc: '-f allReads.fof -o offsets.txt -s sequence.txt '
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

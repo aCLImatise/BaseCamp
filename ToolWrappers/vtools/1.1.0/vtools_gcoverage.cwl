@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_gcoverage.cwl
+id: vtools_gcoverage.cwl
 inputs:
 - id: in_input_gvc_f
   doc: Path to input VCF file  [required]

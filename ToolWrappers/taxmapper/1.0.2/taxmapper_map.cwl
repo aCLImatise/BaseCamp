@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxmapper_map.cwl
+id: taxmapper_map.cwl
 inputs:
 - id: in_maximum_read_length
   doc: Maximum read length

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagenomics.py_kraken.cwl
+id: metagenomics.py_kraken.cwl
 inputs:
 - id: in_out_report
   doc: Kraken report output file.

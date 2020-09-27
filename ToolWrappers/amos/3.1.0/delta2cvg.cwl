@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delta2cvg.cwl
+id: delta2cvg.cwl
 inputs:
 - id: in_min_coverage_display
   doc: '- Min coverage to display'

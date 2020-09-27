@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../b2sum.cwl
+id: b2sum.cwl
 inputs:
 - id: in_binary
   doc: read in binary mode

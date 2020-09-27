@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2json.py.cwl
+id: vcf2json.py.cwl
 inputs:
 - id: in_input
   doc: path to a VCF file

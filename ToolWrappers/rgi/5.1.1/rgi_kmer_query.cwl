@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_kmer_query.cwl
+id: rgi_kmer_query.cwl
 inputs:
 - id: in_o
   doc: '[--local] [--debug]'

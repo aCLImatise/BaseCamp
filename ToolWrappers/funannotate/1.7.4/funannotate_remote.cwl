@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_remote.cwl
+id: funannotate_remote.cwl
 inputs:
 - id: in_methods
   doc: Which services to run, space separated [phobius,antismash,all]

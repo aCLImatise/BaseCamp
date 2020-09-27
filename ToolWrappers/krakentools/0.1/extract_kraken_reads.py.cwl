@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_kraken_reads.py.cwl
+id: extract_kraken_reads.py.cwl
 inputs:
 - id: in_kraken_output_file
   doc: Kraken output file to parse

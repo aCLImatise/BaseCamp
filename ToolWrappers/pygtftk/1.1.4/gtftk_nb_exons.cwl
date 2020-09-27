@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_nb_exons.cwl
+id: gtftk_nb_exons.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
@@ -57,11 +57,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --write-message-to-file
-- id: in_feature_dot
-  doc: 'Version:  2018-01-20'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

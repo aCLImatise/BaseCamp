@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_upgrade_table_output_file.cwl
+id: mb_upgrade_table_output_file.cwl
 inputs:
 - id: in_mb_upgrade_table
   doc: ''

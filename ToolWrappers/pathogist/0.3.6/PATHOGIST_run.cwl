@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PATHOGIST_run.cwl
+id: PATHOGIST_run.cwl
 inputs:
 - id: in_new_config
   doc: write a blank configuration file at path given by CONFIG

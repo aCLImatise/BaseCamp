@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makePairedOutput2EQUALfiles.pl.cwl
+id: makePairedOutput2EQUALfiles.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

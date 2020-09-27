@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HomologyByXCorrSlave.cwl
+id: HomologyByXCorrSlave.cwl
 inputs:
 - id: in_master
   doc: '<string> : name of the submit host'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_sync.cwl
+id: nf_core_sync.cwl
 inputs:
 - id: in_make_template_branch
   doc: Create a TEMPLATE branch if none is found.

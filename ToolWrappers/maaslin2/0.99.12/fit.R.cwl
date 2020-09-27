@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fit.R.cwl
+id: fit.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

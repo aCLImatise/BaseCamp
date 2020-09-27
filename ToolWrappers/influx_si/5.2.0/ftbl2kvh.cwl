@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2kvh.cwl
+id: ftbl2kvh.cwl
 inputs:
 - id: in_network
   doc: ''

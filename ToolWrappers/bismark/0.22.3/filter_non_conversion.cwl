@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_non_conversion.cwl
+id: filter_non_conversion.cwl
 inputs: []
 outputs:
 - id: out_stdout

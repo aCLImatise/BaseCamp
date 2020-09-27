@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonomy_util_get_lineage.cwl
+id: taxonomy_util_get_lineage.cwl
 inputs:
 - id: in_show_names
   doc: Show taxon names, not just IDs

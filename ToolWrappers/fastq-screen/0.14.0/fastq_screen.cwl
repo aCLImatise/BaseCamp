@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_screen.cwl
+id: fastq_screen.cwl
 inputs:
 - id: in_add_genome
   doc: "Edits the file 'fastq_screen.conf' (in the folder where\nthis script is saved)\

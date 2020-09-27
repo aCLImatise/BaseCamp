@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqt_align.cwl
+id: sqt_align.cwl
 inputs:
 - id: in_semi_global
   doc: "Run a semi-global alignment (for detecting overlaps).\nDefault: global alignment."

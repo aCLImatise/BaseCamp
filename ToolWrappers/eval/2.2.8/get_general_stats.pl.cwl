@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_general_stats.pl.cwl
+id: get_general_stats.pl.cwl
 inputs:
 - id: in_input_files_gtf
   doc: ': Input files are gtf not lists'

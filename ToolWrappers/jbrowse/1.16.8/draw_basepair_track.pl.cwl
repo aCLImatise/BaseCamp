@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../draw_basepair_track.pl.cwl
+id: draw_basepair_track.pl.cwl
 inputs:
-- id: in_gff
-  doc: \
-  type: File
-  inputBinding:
-    prefix: --gff
 - id: in_out
   doc: Data directory to write to. Defaults to "data/".
   type: Directory
@@ -54,11 +49,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nolinks
-- id: in_bin_slash_draw_base_pair_track_do_tpl
-  doc: \
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

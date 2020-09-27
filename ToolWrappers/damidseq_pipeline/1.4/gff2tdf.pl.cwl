@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff2tdf.pl.cwl
+id: gff2tdf.pl.cwl
 inputs:
 - id: in_format
   doc: "input format to use (gff or bedgraph)\n[Current value: gff]"

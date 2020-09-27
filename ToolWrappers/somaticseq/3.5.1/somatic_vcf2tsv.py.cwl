@@ -1,8 +1,13 @@
 class: CommandLineTool
-id: ../../../somatic_vcf2tsv.py.cwl
+id: somatic_vcf2tsv.py.cwl
 inputs:
 - id: in_nba_m
-  doc: ''
+  doc: "[-truth GROUND_TRUTH_VCF] [-dbsnp DBSNP_VCF]\n[-cosmic COSMIC_VCF] [-mutect\
+    \ MUTECT_VCF]\n[-strelka STRELKA_VCF] [-sniper SOMATICSNIPER_VCF]\n[-varscan VARSCAN_VCF]\
+    \ [-jsm JSM_VCF]\n[-vardict VARDICT_VCF] [-muse MUSE_VCF]\n[-lofreq LOFREQ_VCF]\
+    \ [-scalpel SCALPEL_VCF]\n[-tnscope TNSCOPE_VCF] [-platypus PLATYPUS_VCF] -ref\n\
+    GENOME_REFERENCE [-dedup]\n[-minMQ MINIMUM_MAPPING_QUALITY]\n[-minBQ MINIMUM_BASE_QUALITY]\n\
+    [-mincaller MINIMUM_NUM_CALLERS] [-scale P_SCALE]\n[-outfile OUTPUT_TSV_FILE]"
   type: File
   inputBinding:
     prefix: -nbam

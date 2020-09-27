@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_isoncorrect.cwl
+id: run_isoncorrect.cwl
 inputs:
 - id: in_fast_q_folder
   doc: "Path to input fastq folder with reads in clusters\n(default: False)"

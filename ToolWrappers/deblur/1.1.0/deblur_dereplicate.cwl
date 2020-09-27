@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_dereplicate.cwl
+id: deblur_dereplicate.cwl
 inputs:
 - id: in_min_size
   doc: "Discard sequences with an abundance value smaller\nthan min-size  [default:\
@@ -17,11 +17,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-file
-- id: in_five_critical
-  doc: '[default: 2]'
-  type: long
+- id: in_seqs_fp
+  doc: ''
+  type: string
   inputBinding:
     position: 0
+- id: in_output_fp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

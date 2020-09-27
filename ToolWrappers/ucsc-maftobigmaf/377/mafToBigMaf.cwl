@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../mafToBigMaf.cwl
+id: mafToBigMaf.cwl
 inputs:
-- id: in_xxx
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -xxx
 - id: in_referenced_b
   doc: ''
   type: string

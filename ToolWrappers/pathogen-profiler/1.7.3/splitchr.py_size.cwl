@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitchr.py_size.cwl
+id: splitchr.py_size.cwl
 inputs:
 - id: in_reformat
   doc: ''

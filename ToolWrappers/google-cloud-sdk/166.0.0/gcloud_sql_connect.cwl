@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_connect.cwl
+id: gcloud_sql_connect.cwl
 inputs:
 - id: in_instance
   doc: ''

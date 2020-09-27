@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../itolexport.py.cwl
+id: itolexport.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

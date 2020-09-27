@@ -9,7 +9,7 @@ task LynerFrequentsets {
       ~{if defined(min_support) then ("--min-support " +  '"' + min_support + '"') else ""}
   >>>
   parameter_meta {
-    min_support: ""
+    min_support: "--help                   Show this message and exit.\\n"
   }
   output {
     File out_stdout = stdout()

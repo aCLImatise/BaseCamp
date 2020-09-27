@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../perlivp.cwl
+id: perlivp.cwl
 inputs:
 - id: in_preface_test_telling
   doc: a preface before each test telling what it will test.

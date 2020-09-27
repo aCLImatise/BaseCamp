@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chira_quantify.py.cwl
+id: chira_quantify.py.cwl
 inputs:
 - id: in__bed_input
   doc: ', --bed            Input BED file (default: None)'

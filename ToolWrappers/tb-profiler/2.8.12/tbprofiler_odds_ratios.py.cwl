@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_odds_ratios.py.cwl
+id: tbprofiler_odds_ratios.py.cwl
 inputs:
 - id: in_samples
   doc: 'NGS Platform (default: None)'

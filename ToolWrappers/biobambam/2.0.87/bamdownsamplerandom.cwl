@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamdownsamplerandom.cwl
+id: bamdownsamplerandom.cwl
 inputs: []
 outputs:
 - id: out_stdout

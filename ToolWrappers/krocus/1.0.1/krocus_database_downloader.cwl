@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krocus_database_downloader.cwl
+id: krocus_database_downloader.cwl
 inputs:
 - id: in_list_species
   doc: 'List all available species (default: False)'

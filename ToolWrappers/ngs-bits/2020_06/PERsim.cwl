@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PERsim.cwl
+id: PERsim.cwl
 inputs:
 - id: in_roi
   doc: Target region BED file.

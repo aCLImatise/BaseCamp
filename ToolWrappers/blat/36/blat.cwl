@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blat.cwl
+id: blat.cwl
 inputs:
 - id: in_ooc
   doc: "tells the program to load over-occurring 11-mers from\nan external file. \

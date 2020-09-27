@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_ls.cwl
+id: cooler_ls.cwl
 inputs:
 - id: in_long
   doc: Long listing format

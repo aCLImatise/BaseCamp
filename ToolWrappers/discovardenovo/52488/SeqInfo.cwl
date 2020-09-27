@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeqInfo.cwl
+id: SeqInfo.cwl
 inputs:
 - id: in_arg_one
   doc: ''

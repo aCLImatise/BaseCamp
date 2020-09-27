@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractScaffold.cwl
+id: extractScaffold.cwl
 inputs:
 - id: in__bank_operated
   doc: '- The bank to be operated on.'

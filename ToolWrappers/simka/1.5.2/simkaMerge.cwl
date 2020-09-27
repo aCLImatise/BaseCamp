@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaMerge.cwl
+id: simkaMerge.cwl
 inputs:
 - id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

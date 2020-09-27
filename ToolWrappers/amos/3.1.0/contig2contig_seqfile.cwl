@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contig2contig_seqfile.cwl
+id: contig2contig_seqfile.cwl
 inputs:
 - id: in_contig_file
   doc: ''

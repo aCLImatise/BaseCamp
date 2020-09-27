@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_run_functional_enrichment_stats.cwl
+id: anvi_script_run_functional_enrichment_stats.cwl
 inputs: []
 outputs:
 - id: out_stdout

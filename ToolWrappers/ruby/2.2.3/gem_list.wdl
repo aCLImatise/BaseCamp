@@ -19,7 +19,6 @@ task GemList {
     File? config_file
     Boolean? backtrace
     Boolean? debug
-    Boolean? no_details
     String regexp
   }
   command <<<
@@ -41,8 +40,7 @@ task GemList {
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(config_file) then ("--config-file " +  '"' + config_file + '"') else ""} \
       ~{if (backtrace) then "--backtrace" else ""} \
-      ~{if (debug) then "--debug" else ""} \
-      ~{if (no_details) then "--no-details" else ""}
+      ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
     _installed_check: ", --[no-]installed             Check for installed gem"
@@ -62,7 +60,6 @@ task GemList {
     config_file: "Use this config file instead of default"
     backtrace: "Show stack backtrace on errors"
     debug: "Turn on Ruby debugging"
-    no_details: ""
     regexp: "regexp to look for in gem name"
   }
   output {

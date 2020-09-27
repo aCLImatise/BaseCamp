@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2bed.NOME.pl.cwl
+id: vcf2bed.NOME.pl.cwl
 inputs:
 - id: in_perl
   doc: ''

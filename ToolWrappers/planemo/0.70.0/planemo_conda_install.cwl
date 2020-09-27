@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_conda_install.cwl
+id: planemo_conda_install.cwl
 inputs:
 - id: in_recursive
   doc: Recursively perform command for

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Tamir.SharpSSH.dll.cwl
+id: Tamir.SharpSSH.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

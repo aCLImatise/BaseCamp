@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_einfo.cwl
+id: bp_einfo.cwl
 inputs:
 - id: in_e_slash_email
   doc: Valid email (required by NCBI policy)
@@ -22,7 +22,7 @@ inputs:
   inputBinding:
     prefix: -l/--link
 - id: in_oslash_out
-  doc: ''
+  doc: "outfile\n(default = STDOUT)"
   type: boolean
   inputBinding:
     prefix: -o/--out
@@ -31,11 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -h/--help
-- id: in_outfile
-  doc: (default = STDOUT)
-  type: string
-  inputBinding:
-    position: 0
 - id: in_bioperl_lat_bioperl_dot_org
   doc: '- General discussion'
   type: string

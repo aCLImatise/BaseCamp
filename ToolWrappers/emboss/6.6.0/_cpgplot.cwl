@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_cpgplot.cwl
+id: _cpgplot.cwl
 inputs:
 - id: in_window
   doc: "integer    [100] The percentage CG content and the\nObserved frequency of\

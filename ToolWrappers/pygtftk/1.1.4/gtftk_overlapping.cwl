@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_overlapping.cwl
+id: gtftk_overlapping.cwl
 inputs:
 - id: in_annotate_gtf
   doc: 'All lines of the original GTF will be printed. (default: False)'

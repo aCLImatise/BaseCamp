@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_vcf_fix_iupac_alleles.cwl
+id: rbt_vcf_fix_iupac_alleles.cwl
 inputs:
 - id: in_rbt
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2starch_slurm_float128.cwl
+id: bam2starch_slurm_float128.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mark_nonconverted_reads.py.cwl
+id: mark_nonconverted_reads.py.cwl
 inputs:
 - id: in_reference
   doc: Reference fasta file

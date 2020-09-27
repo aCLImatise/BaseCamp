@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split.py.cwl
+id: split.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

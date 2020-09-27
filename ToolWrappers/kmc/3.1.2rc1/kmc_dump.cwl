@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmc_dump.cwl
+id: kmc_dump.cwl
 inputs:
 - id: in_ci
   doc: <value> - exclude k-mers occurring less than <value> times

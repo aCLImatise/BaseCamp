@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mrnaToGene.cwl
+id: mrnaToGene.cwl
 inputs:
 - id: in_db
   doc: '- get PSLs and CDS from this database, psl specifies the table.'

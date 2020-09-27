@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_reverse_complement.cwl
+id: fastx_reverse_complement.cwl
 inputs:
 - id: in_o
   doc: ''

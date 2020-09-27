@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paf_to_CARNAC.py.cwl
+id: paf_to_CARNAC.py.cwl
 inputs:
 - id: in_file_dot_paf
   doc: ''

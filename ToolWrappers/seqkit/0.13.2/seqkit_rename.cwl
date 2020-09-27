@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_rename.cwl
+id: seqkit_rename.cwl
 inputs:
 - id: in_by_name
   doc: check duplication by full name instead of just id

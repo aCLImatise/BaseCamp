@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falcon_phase.cwl
+id: falcon_phase.cwl
 inputs:
 - id: in_command
   doc: ''

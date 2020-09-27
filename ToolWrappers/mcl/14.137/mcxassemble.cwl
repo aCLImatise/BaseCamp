@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxassemble.cwl
+id: mcxassemble.cwl
 inputs:
 - id: in_use_baseraw_basehdr
   doc: use base.raw, base.hdr, and optionally base.map

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_mft.cwl
+id: guppy_mft.cwl
 inputs:
 - id: in_specify_filename_write
   doc: Specify the filename to write to.

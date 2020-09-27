@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_shed_update.cwl
+id: planemo_shed_update.cwl
 inputs:
 - id: in_report_x_unit
   doc: Output an XUnit report, useful for CI testing

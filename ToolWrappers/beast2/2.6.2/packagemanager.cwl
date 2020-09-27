@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../packagemanager.cwl
+id: packagemanager.cwl
 inputs:
 - id: in_list
   doc: available packages

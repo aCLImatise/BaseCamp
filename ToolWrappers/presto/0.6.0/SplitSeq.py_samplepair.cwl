@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SplitSeq.py_samplepair.cwl
+id: SplitSeq.py_samplepair.cwl
 inputs:
 - id: in_ordered_list_containingheadprimary
   doc: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences. (default:\

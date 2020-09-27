@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../computeconf.cwl
+id: computeconf.cwl
 inputs:
 - id: in_at_call_aside
   doc: File "/usr/local/lib/python3.4/site-packages/pkg_resources/__init__.py", line

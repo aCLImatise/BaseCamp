@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inStrain_genome_wide.cwl
+id: inStrain_genome_wide.cwl
 inputs:
 - id: in_scaffold_bin_can
   doc: "[STB [STB ...]], --stb [STB [STB ...]]\nScaffold to bin. This can be a file\

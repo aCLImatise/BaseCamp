@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../frgs2clones.cwl
+id: frgs2clones.cwl
 inputs:
 - id: in_read_fragments_gatekeeper
   doc: read fragments from this gatekeeper store

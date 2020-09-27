@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jar.cwl
+id: jar.cwl
 inputs:
 - id: in_create
   doc: Create the archive

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getDifferentialPeaksReplicates.pl.cwl
+id: getDifferentialPeaksReplicates.pl.cwl
 inputs:
 - id: in_b
   doc: '[background tagdir2] ...'
@@ -21,11 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -q
-- id: in_fdr
-  doc: <#>, -F <#>, -L <#> (parameters for findPeaks)
-  type: boolean
-  inputBinding:
-    prefix: -fdr
 - id: in_genome
   doc: (genome version to use for annotation)
   type: string

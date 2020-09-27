@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../imputation.py.cwl
+id: imputation.py.cwl
 inputs:
 - id: in_s
   doc: '[-noz] [-noneg]'

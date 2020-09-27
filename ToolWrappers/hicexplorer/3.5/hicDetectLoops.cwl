@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicDetectLoops.cwl
+id: hicDetectLoops.cwl
 inputs:
 - id: in_matrix
   doc: The matrix to compute the loop detection on.

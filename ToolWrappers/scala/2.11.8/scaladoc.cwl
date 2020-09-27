@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaladoc.cwl
+id: scaladoc.cwl
 inputs:
 - id: in_author
   doc: Include authors.

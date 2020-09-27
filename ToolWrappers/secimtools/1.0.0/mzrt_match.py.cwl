@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mzrt_match.py.cwl
+id: mzrt_match.py.cwl
 inputs:
 - id: in_an_no_one
   doc: Out path for first file

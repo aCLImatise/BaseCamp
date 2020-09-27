@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../transcov_generate_coverage.cwl
+id: transcov_generate_coverage.cwl
 inputs:
 - id: in_output_file
-  doc: ''
+  doc: "--help                  Show this message and exit.\n"
   type: File
   inputBinding:
     prefix: --output-file
@@ -21,7 +21,7 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_output_file
-  doc: ''
+  doc: "--help                  Show this message and exit.\n"
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idr.cwl
+id: idr.cwl
 inputs:
 - id: in_samples_samples_samplesfiles
   doc: "SAMPLES, -s SAMPLES SAMPLES\nFiles containing peaks and scores."

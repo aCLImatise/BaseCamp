@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_sample.cwl
+id: xsv_sample.cwl
 inputs:
 - id: in_output
   doc: Write output to <file> instead of stdout.

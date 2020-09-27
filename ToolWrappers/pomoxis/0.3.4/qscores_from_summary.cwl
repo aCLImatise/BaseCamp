@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qscores_from_summary.cwl
+id: qscores_from_summary.cwl
 inputs:
 - id: in_median
   doc: 'Use median. If false, use mean. (default: False)'

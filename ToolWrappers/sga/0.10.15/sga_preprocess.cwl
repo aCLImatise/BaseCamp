@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_preprocess.cwl
+id: sga_preprocess.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output
@@ -93,20 +93,11 @@ inputs:
   inputBinding:
     prefix: --suffix
 - id: in_no_primer_check
-  doc: disable the default check for primer sequences
+  doc: "disable the default check for primer sequences\n-r, --remove-adapter-fwd=STRING\n\
+    -c, --remove-adapter-rev=STRING  Remove the adapter STRING from input reads."
   type: boolean
   inputBinding:
     prefix: --no-primer-check
-- id: in_remove_adapter_fwd
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --remove-adapter-fwd
-- id: in_remove_adapter_rev
-  doc: Remove the adapter STRING from input reads.
-  type: string
-  inputBinding:
-    prefix: --remove-adapter-rev
 - id: in_prepare
   doc: ''
   type: string

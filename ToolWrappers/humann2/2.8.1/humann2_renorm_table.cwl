@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_renorm_table.cwl
+id: humann2_renorm_table.cwl
 inputs:
 - id: in_input
   doc: Original output table (tsv or biom format); default=[TSV/STDIN]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotHapLrt.R.cwl
+id: plotHapLrt.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

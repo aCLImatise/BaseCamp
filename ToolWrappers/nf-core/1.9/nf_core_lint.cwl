@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_lint.cwl
+id: nf_core_lint.cwl
 inputs:
 - id: in_release
   doc: Execute additional checks for release-ready workflows.

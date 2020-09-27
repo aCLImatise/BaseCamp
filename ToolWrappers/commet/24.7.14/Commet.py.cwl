@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Commet.py.cwl
+id: Commet.py.cwl
 inputs:
 - id: in_sge
   doc: indicates the usage of SGE cluster commands
@@ -17,11 +17,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --one_vs_all
-- id: in___binariesdirectory
-  doc: ', --binaries_directory'
-  type: boolean
-  inputBinding:
-    prefix: -b
 - id: in__outputdirectorydirectory_results
   doc: ", --output_directory\ndirectory in which results will be output [default:\n\
     \"output_commet\"]"
@@ -60,6 +55,11 @@ inputs:
   type: long
   inputBinding:
     prefix: -m
+- id: in_b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
 outputs:
 - id: out_stdout
   doc: Standard output stream

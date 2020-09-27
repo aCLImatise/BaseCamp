@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pal2nal.pl.cwl
+id: pal2nal.pl.cwl
 inputs:
 - id: in_output
   doc: "(clustal|paml|fasta|codon)\nOutput format; default = clustal"

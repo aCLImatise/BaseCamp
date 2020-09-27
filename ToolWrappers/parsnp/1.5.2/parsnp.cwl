@@ -1,37 +1,17 @@
 class: CommandLineTool
-id: ../../../parsnp.cwl
+id: parsnp.cwl
 inputs:
 - id: in_curated
-  doc: (c)urated genome directory, use all genomes in dir and ignore MUMi?
-  type: boolean
+  doc: "(c)urated genome directory, use all genomes in dir and ignore MUMi?\n-d SEQUENCES\
+    \ [SEQUENCES ...], --sequences SEQUENCES [SEQUENCES ...]\nA list of files containing\
+    \ genomes/contigs/scaffolds\n-r REFERENCE, --reference REFERENCE\n(r)eference\
+    \ genome (set to ! to pick random one from sequence dir)\n-g GENBANK [GENBANK\
+    \ ...], --genbank GENBANK [GENBANK ...]\nA list of Genbank file(s) (gbk)\n-o OUTPUT_DIR,\
+    \ --output-dir OUTPUT_DIR\n-q QUERY, --query QUERY\nSpecify (assembled) query\
+    \ genome to use, in addition to genomes found in genome dir"
+  type: File
   inputBinding:
     prefix: --curated
-- id: in_sequences
-  doc: A list of files containing genomes/contigs/scaffolds
-  type: string[]
-  inputBinding:
-    prefix: --sequences
-- id: in_reference
-  doc: (r)eference genome (set to ! to pick random one from sequence dir)
-  type: string
-  inputBinding:
-    prefix: --reference
-- id: in_genbank
-  doc: A list of Genbank file(s) (gbk)
-  type: string[]
-  inputBinding:
-    prefix: --genbank
-- id: in_output_dir
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output-dir
-- id: in_query
-  doc: Specify (assembled) query genome to use, in addition to genomes found in genome
-    dir
-  type: string
-  inputBinding:
-    prefix: --query
 - id: in_max_mumi_distr_dist
   doc: Max MUMi distance value for MUMi distribution
   type: long
@@ -108,44 +88,39 @@ inputs:
   inputBinding:
     prefix: --unaligned
 - id: in_use_fast_tree
-  doc: Use fasttree instead of RaxML
+  doc: "Use fasttree instead of RaxML\n-p THREADS, --threads THREADS\nNumber of threads\
+    \ to use\n-P MAX_PARTITION_SIZE, --max-partition-size MAX_PARTITION_SIZE\nMax\
+    \ partition size (limits memory usage)\n-v, --verbose         Verbose output\n\
+    -x, --xtrafast\n-i INIFILE, --inifile INIFILE, --ini-file INIFILE\n-e, --extend\n\
+    -V, --version         show program's version number and exit\n"
   type: boolean
   inputBinding:
     prefix: --use-fasttree
-- id: in_threads
-  doc: Number of threads to use
-  type: long
-  inputBinding:
-    prefix: --threads
-- id: in_max_partition_size
-  doc: Max partition size (limits memory usage)
-  type: long
-  inputBinding:
-    prefix: --max-partition-size
-- id: in_verbose
-  doc: Verbose output
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: in_xtra_fast
+- id: in_r
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
-    prefix: --xtrafast
-- id: in_ini_file
+    prefix: -r
+- id: in_d
   doc: ''
-  type: File
+  type: string[]
   inputBinding:
-    prefix: --ini-file
-- id: in_extend
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --extend
+    prefix: -d
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_curated
+  doc: "(c)urated genome directory, use all genomes in dir and ignore MUMi?\n-d SEQUENCES\
+    \ [SEQUENCES ...], --sequences SEQUENCES [SEQUENCES ...]\nA list of files containing\
+    \ genomes/contigs/scaffolds\n-r REFERENCE, --reference REFERENCE\n(r)eference\
+    \ genome (set to ! to pick random one from sequence dir)\n-g GENBANK [GENBANK\
+    \ ...], --genbank GENBANK [GENBANK ...]\nA list of Genbank file(s) (gbk)\n-o OUTPUT_DIR,\
+    \ --output-dir OUTPUT_DIR\n-q QUERY, --query QUERY\nSpecify (assembled) query\
+    \ genome to use, in addition to genomes found in genome dir"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_curated)
 cwlVersion: v1.1
 baseCommand:
 - parsnp

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_bigbed2bed.cwl
+id: bioconvert_bigbed2bed.cwl
 inputs:
 - id: in_force
   doc: "if outfile exists, it is overwritten with this option\n(default: False)"

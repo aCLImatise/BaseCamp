@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pygmes.cwl
+id: pygmes.cwl
 inputs:
 - id: in_input
   doc: "path to the fasta file, or in metagenome mode path to\nbin folder"

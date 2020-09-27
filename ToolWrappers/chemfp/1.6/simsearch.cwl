@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simsearch.cwl
+id: simsearch.cwl
 inputs:
 - id: in_k_nearest
   doc: "select the k nearest neighbors (use 'all' for all\nneighbors)"

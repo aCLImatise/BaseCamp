@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_hdf5_pls_to_txt.cwl
+id: dimspy_hdf5_pls_to_txt.cwl
 inputs:
 - id: in_input
   doc: "HDF5 file that contains a list of peaklist objects\nfrom one of the processing\

@@ -1,9 +1,9 @@
 class: CommandLineTool
-id: ../../../singlem_seqs.cwl
+id: singlem_seqs.cwl
 inputs:
 - id: in_alignment_type
-  doc: ''
-  type: string
+  doc: '[--window_size INT]'
+  type: long
   inputBinding:
     prefix: --alignment_type
 - id: in_debug

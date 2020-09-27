@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_quality_converter.cwl
+id: fastq_quality_converter.cwl
 inputs:
 - id: in_f
   doc: ''

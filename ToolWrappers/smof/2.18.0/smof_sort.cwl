@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_sort.cwl
+id: smof_sort.cwl
 inputs:
 - id: in_regex
   doc: sort by single regex capture

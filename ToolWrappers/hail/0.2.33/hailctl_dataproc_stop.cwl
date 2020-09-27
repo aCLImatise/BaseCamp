@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dataproc_stop.cwl
+id: hailctl_dataproc_stop.cwl
 inputs:
 - id: in_async
   doc: Do not wait for cluster deletion.

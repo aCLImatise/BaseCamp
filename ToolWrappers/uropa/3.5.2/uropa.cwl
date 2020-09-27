@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uropa.cwl
+id: uropa.cwl
 inputs:
 - id: in__bed_filename
   doc: ', --bed                       Filename of .bed-file to annotate'

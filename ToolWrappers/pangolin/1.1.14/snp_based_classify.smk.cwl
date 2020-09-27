@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snp_based_classify.smk.cwl
+id: snp_based_classify.smk.cwl
 inputs: []
 outputs:
 - id: out_stdout

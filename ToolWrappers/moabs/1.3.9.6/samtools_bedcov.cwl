@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_bedcov.cwl
+id: samtools_bedcov.cwl
 inputs:
 - id: in_in_dot_bed
   doc: ''

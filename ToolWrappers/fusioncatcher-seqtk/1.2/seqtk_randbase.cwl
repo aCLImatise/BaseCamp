@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_randbase.cwl
+id: seqtk_randbase.cwl
 inputs:
 - id: in_in_dot_fa
   doc: ''

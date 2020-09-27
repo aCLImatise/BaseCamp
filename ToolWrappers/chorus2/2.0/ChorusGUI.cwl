@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ChorusGUI.cwl
+id: ChorusGUI.cwl
 inputs: []
 outputs:
 - id: out_stdout

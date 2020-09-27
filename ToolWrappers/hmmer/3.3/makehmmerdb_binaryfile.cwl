@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makehmmerdb_binaryfile.cwl
+id: makehmmerdb_binaryfile.cwl
 inputs:
 - id: in_make_hmmer_db
   doc: ''

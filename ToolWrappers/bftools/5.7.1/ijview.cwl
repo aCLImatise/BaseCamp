@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ijview.cwl
+id: ijview.cwl
 inputs: []
 outputs:
 - id: out_stdout

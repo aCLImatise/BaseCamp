@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnaplotter.cwl
+id: dnaplotter.cwl
 inputs:
 - id: in_read_template_file
   doc: Read a template file

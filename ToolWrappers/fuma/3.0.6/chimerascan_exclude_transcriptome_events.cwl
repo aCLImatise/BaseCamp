@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chimerascan_exclude_transcriptome_events.cwl
+id: chimerascan_exclude_transcriptome_events.cwl
 inputs:
 - id: in_h
   doc: Add 'filename:' prefix

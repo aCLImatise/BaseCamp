@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findGffNamesInFasta.pl.cwl
+id: findGffNamesInFasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

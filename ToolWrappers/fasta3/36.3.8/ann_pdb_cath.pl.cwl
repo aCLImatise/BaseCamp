@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ann_pdb_cath.pl.cwl
+id: ann_pdb_cath.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

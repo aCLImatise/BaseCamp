@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kinSimRiboswitch.cwl
+id: kinSimRiboswitch.cwl
 inputs:
 - id: in_energy_band_width
   doc: ":    Energy band width (in kcal) in which structures are completely\nenumerated.\

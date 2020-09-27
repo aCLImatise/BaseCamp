@@ -2,9 +2,6 @@ version 1.0
 
 task Real {
   input {
-    File? var_0
-    File? p
-    File? o
     Boolean? maximum_number_errors
     Boolean? total_maximum_number
     Boolean? length_seed_default
@@ -22,9 +19,6 @@ task Real {
   }
   command <<<
     real \
-      ~{if defined(var_0) then ("-t " +  '"' + var_0 + '"') else ""} \
-      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if (maximum_number_errors) then "-s" else ""} \
       ~{if (total_maximum_number) then "-e" else ""} \
       ~{if (length_seed_default) then "-l" else ""} \
@@ -41,9 +35,6 @@ task Real {
       ~{if (filter_level) then "-filter_level" else ""}
   >>>
   parameter_meta {
-    var_0: ""
-    p: ""
-    o: ""
     maximum_number_errors: "<maximum number of errors in seed, default=2>"
     total_maximum_number: "<total maximum number of errors, default=5>"
     length_seed_default: "<length of seed, default=32>"
@@ -61,6 +52,5 @@ task Real {
   }
   output {
     File out_stdout = stdout()
-    File out_o = "${in_o}"
   }
 }

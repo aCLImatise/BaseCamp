@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_buildhmm.cwl
+id: csb_buildhmm.cwl
 inputs:
 - id: in_query_id
   doc: "ID of the query, in PDB-like format\n(accessionCHAIN).Used for naming the\

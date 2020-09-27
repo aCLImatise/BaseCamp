@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faFrag.cwl
+id: faFrag.cwl
 inputs:
 - id: in_mixed
   doc: '- preserve mixed-case in FASTA file'

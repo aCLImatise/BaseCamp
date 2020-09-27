@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_newseq.cwl
+id: _newseq.cwl
 inputs: []
 outputs:
 - id: out_stdout

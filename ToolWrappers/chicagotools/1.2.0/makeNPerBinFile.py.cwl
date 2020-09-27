@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeNPerBinFile.py.cwl
+id: makeNPerBinFile.py.cwl
 inputs:
 - id: in_remove_adjacent
   doc: ''

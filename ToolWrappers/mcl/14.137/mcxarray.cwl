@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxarray.cwl
+id: mcxarray.cwl
 inputs:
 - id: in_data
   doc: data file name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../var2vcf_paired.pl.cwl
+id: var2vcf_paired.pl.cwl
 inputs:
 - id: in_print_this_usage
   doc: Print this usage.

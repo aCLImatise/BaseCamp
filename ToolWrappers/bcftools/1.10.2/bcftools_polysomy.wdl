@@ -3,12 +3,6 @@ version 1.0
 task BcftoolsPolysomy {
   input {
     File? output_dir
-    String? regions
-    File? regions_file
-    String? sample
-    String? targets
-    File? targets_file
-    Boolean? verbose
     Float? peak_size
     Float? cn_penalty
     Float? fit_th
@@ -21,12 +15,6 @@ task BcftoolsPolysomy {
     bcftools polysomy \
       ~{file_dot_vcf} \
       ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
-      ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
-      ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
-      ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
-      ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
-      ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
-      ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(peak_size) then ("--peak-size " +  '"' + peak_size + '"') else ""} \
       ~{if defined(cn_penalty) then ("--cn-penalty " +  '"' + cn_penalty + '"') else ""} \
       ~{if defined(fit_th) then ("--fit-th " +  '"' + fit_th + '"') else ""} \
@@ -35,13 +23,7 @@ task BcftoolsPolysomy {
       ~{if defined(peak_symmetry) then ("--peak-symmetry " +  '"' + peak_symmetry + '"') else ""}
   >>>
   parameter_meta {
-    output_dir: ""
-    regions: "restrict to comma-separated list of regions"
-    regions_file: "restrict to regions listed in a file"
-    sample: "sample to analyze"
-    targets: "similar to -r but streams rather than index-jumps"
-    targets_file: "similar to -R but streams rather than index-jumps"
-    verbose: ""
+    output_dir: "-r, --regions <region>         restrict to comma-separated list of regions\\n-R, --regions-file <file>      restrict to regions listed in a file\\n-s, --sample <name>            sample to analyze\\n-t, --targets <region>         similar to -r but streams rather than index-jumps\\n-T, --targets-file <file>      similar to -R but streams rather than index-jumps\\n-v, --verbose"
     peak_size: "minimum peak size (0-1, larger is stricter) [0.1]"
     cn_penalty: "penalty for increasing CN (0-1, larger is stricter) [0.7]"
     fit_th: "goodness of fit threshold (>0, smaller is stricter) [3.3]"

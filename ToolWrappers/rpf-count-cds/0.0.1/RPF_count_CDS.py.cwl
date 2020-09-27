@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RPF_count_CDS.py.cwl
+id: RPF_count_CDS.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

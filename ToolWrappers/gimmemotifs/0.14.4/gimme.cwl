@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gimme.cwl
+id: gimme.cwl
 inputs:
 - id: in_subcommand
   doc: ''

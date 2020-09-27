@@ -2,40 +2,17 @@ version 1.0
 
 task NcbiDatabaseFetchersh {
   input {
-    String? key_terms_included
-    String? key_terms_excluded
-    String? to_filter
-    String? type_default_nucleotide
-    File? directory_optional_default
-    File? name_optional_default
-    String? q
-    String? v
-    String? usage_message
+    File? key_terms_separated
   }
   command <<<
     ncbi_database_fetcher_sh \
-      ~{if defined(key_terms_included) then ("-y " +  '"' + key_terms_included + '"') else ""} \
-      ~{if defined(key_terms_excluded) then ("-n " +  '"' + key_terms_excluded + '"') else ""} \
-      ~{if defined(to_filter) then ("-O " +  '"' + to_filter + '"') else ""} \
-      ~{if defined(type_default_nucleotide) then ("-d " +  '"' + type_default_nucleotide + '"') else ""} \
-      ~{if defined(directory_optional_default) then ("-o " +  '"' + directory_optional_default + '"') else ""} \
-      ~{if defined(name_optional_default) then ("-f " +  '"' + name_optional_default + '"') else ""} \
-      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
-      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
-      ~{if defined(usage_message) then ("-h " +  '"' + usage_message + '"') else ""}
+      ~{if defined(key_terms_separated) then ("-y " +  '"' + key_terms_separated + '"') else ""}
   >>>
   parameter_meta {
-    key_terms_included: "of key terms separated by space to be INCLUDED in sequences title"
-    key_terms_excluded: "of key terms separated by space to be EXCLUDED in sequences title"
-    to_filter: "to filter"
-    type_default_nucleotide: "type, default nucleotide"
-    directory_optional_default: "directory (optional). By default the file is placed in cwd"
-    name_optional_default: "name (optional). By default is the first term used as query"
-    q: ""
-    v: ""
-    usage_message: "usage message"
+    key_terms_separated: "of key terms separated by space to be INCLUDED in sequences title\\n-n list of key terms separated by space to be EXCLUDED in sequences title\\n-O organism to filter\\n-d database type, default nucleotide\\n-o output directory (optional). By default the file is placed in cwd\\n-f file name (optional). By default is the first term used as query\\n-q quiet\\n-v version\\n-h display usage message"
   }
   output {
     File out_stdout = stdout()
+    File out_key_terms_separated = "${in_key_terms_separated}"
   }
 }

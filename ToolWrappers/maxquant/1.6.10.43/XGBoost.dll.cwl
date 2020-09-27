@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../XGBoost.dll.cwl
+id: XGBoost.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

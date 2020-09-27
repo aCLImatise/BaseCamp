@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclInstallSchema.cwl
+id: orthomclInstallSchema.cwl
 inputs:
 - id: in_config_file
   doc: ''

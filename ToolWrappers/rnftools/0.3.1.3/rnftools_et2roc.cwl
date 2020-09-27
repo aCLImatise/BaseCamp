@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_et2roc.cwl
+id: rnftools_et2roc.cwl
 inputs:
 - id: in_et
   doc: "Input ET file (evaluated read tuples, - for standard\ninput)."

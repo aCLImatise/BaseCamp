@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../partition_gtf2gb.pl.cwl
+id: partition_gtf2gb.pl.cwl
 inputs:
 - id: in_min_cluster_size
   doc: "minimal number of genes in a one cluster,\ndefault n=20"
@@ -37,11 +37,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_source
-  doc: 1..1367
-  type: string
-  inputBinding:
-    position: 2
 - id: in_origin
   doc: "1 aatgcggtaa cttagagatt aggattgcgg agaataacaa ccgccgttct catcgagtaa\n61 tctccggata\
     \ tcgacccata acgggcaatg ataaaaggag taacctgtga aaaagatgca\n...\n1261 cagcgtatag\

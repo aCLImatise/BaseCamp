@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_simulate_sample_size.cwl
+id: msp_simulate_sample_size.cwl
 inputs:
 - id: in_length
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pos2bed.pl.cwl
+id: pos2bed.pl.cwl
 inputs:
 - id: in_output_to_file
   doc: (Output to file)

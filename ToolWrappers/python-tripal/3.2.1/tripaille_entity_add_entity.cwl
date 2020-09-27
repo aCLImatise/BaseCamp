@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_entity_add_entity.cwl
+id: tripaille_entity_add_entity.cwl
 inputs:
 - id: in_params
   doc: Values to populate the entity fields

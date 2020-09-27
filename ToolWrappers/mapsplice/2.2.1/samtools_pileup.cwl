@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_pileup.cwl
+id: samtools_pileup.cwl
 inputs:
 - id: in_simple_incomplete_pileup
   doc: simple (yet incomplete) pileup format

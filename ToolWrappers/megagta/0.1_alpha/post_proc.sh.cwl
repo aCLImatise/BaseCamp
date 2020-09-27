@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../post_proc.sh.cwl
+id: post_proc.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

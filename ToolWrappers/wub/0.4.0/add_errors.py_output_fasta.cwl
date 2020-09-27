@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_errors.py_output_fasta.cwl
+id: add_errors.py_output_fasta.cwl
 inputs:
 - id: in_t
   doc: ''

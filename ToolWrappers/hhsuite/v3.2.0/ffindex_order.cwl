@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_order.cwl
+id: ffindex_order.cwl
 inputs:
 - id: in_order_filename
   doc: ''

@@ -1,27 +1,14 @@
 class: CommandLineTool
-id: ../../../MosaikAligner.cwl
+id: MosaikAligner.cwl
 inputs:
 - id: in_in
-  doc: the input read file
+  doc: "the input read file\n-out <MOSAIK alignment filename>  the output alignment\
+    \ file\n-ibs <MOSAIK reference filename>  enables colorspace to basespace conversion\n\
+    using the supplied BASESPACE reference\narchive\n-annpe <Neural network filename>\n\
+    -annse <Neural network filename>"
   type: File
   inputBinding:
     prefix: -in
-- id: in_out
-  doc: the output alignment file
-  type: File
-  inputBinding:
-    prefix: -out
-- id: in_ibs
-  doc: "enables colorspace to basespace conversion\nusing the supplied BASESPACE reference\n\
-    archive"
-  type: File
-  inputBinding:
-    prefix: -ibs
-- id: in_an_npe
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -annpe
 - id: in_hs
   doc: 'hash size [4 - 32]. def: 15'
   type: long
@@ -142,11 +129,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_out
-  doc: the output alignment file
-  type: File
-  outputBinding:
-    glob: $(inputs.in_out)
 cwlVersion: v1.1
 baseCommand:
 - MosaikAligner

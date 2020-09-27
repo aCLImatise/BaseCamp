@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../jass_preprocessing.cwl
+id: jass_preprocessing.cwl
 inputs:
 - id: in_diagnostic_folder
-  doc: ''
+  doc: "DIAGNOSTIC_FOLDER --output-folder OUTPUT_FOLDER\n[--output-folder-1-file OUTPUT_FOLDER_1_FILE]\n\
+    [--percent-sample-size PERCENT_SAMPLE_SIZE]\n[--minimum-MAF MINIMUM_MAF] [--mask-MHC\
+    \ MASK_MHC]\n[--additional-masked-region ADDITIONAL_MASKED_REGION]"
   type: Directory
   inputBinding:
     prefix: --diagnostic-folder

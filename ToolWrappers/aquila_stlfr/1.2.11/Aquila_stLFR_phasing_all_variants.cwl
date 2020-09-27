@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_stLFR_phasing_all_variants.cwl
+id: Aquila_stLFR_phasing_all_variants.cwl
 inputs:
 - id: in_assembly_vcf
   doc: vcf file

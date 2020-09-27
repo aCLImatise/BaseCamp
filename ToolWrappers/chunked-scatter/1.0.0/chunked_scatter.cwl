@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chunked_scatter.cwl
+id: chunked_scatter.cwl
 inputs:
 - id: in_prefix
   doc: "The prefix of the ouput files. Output will be named\nlike: <PREFIX><N>.bed,\

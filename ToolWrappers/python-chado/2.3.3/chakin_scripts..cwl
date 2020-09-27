@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_scripts..cwl
+id: chakin_scripts..cwl
 inputs:
 - id: in_chak_in
   doc: ''

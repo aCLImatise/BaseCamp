@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_species_taxids.sh.bak.cwl
+id: get_species_taxids.sh.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

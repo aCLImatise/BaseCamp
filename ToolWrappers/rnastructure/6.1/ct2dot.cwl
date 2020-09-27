@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ct2dot.cwl
+id: ct2dot.cwl
 inputs:
 - id: in_quiet
   doc: "Suppress unnecessary output. This option is implied when the output file is\n\

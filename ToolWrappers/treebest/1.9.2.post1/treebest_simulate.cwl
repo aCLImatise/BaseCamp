@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_simulate.cwl
+id: treebest_simulate.cwl
 inputs:
 - id: in_duplication_probability
   doc: duplication probability [0.05]

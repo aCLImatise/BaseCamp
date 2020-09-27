@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infoseq.cwl
+id: infoseq.cwl
 inputs:
 - id: in_outfile
   doc: "outfile    [stdout] If you enter the name of a file\nhere then this program\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SatsumaToFASTA.cwl
+id: SatsumaToFASTA.cwl
 inputs:
 - id: in_string_satsuma_file
   doc: '<string> : satsuma file'

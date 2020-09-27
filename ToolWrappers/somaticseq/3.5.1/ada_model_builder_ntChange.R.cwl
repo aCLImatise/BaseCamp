@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ada_model_builder_ntChange.R.cwl
+id: ada_model_builder_ntChange.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

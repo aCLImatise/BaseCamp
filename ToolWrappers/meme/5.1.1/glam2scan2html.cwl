@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glam2scan2html.cwl
+id: glam2scan2html.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cramtools_merge.cwl
+id: cramtools_merge.cwl
 inputs:
 - id: in_output_file
   doc: Path to the output BAM file. Omit for stdout.

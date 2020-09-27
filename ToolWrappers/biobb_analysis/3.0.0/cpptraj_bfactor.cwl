@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_bfactor.cwl
+id: cpptraj_bfactor.cwl
 inputs:
 - id: in_config
   doc: Configuration file

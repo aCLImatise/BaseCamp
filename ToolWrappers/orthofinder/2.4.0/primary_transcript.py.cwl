@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../primary_transcript.py.cwl
+id: primary_transcript.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

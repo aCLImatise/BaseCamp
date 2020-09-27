@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_alignments_compare.py.cwl
+id: bam_alignments_compare.py.cwl
 inputs:
 - id: in_tolerance_when_performing
   doc: "Tolerance when performing coarse comparison of\nalignments (50)."

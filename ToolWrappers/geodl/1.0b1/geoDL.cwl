@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../geoDL.cwl
+id: geoDL.cwl
 inputs:
 - id: in_meta
   doc: Use metadata file instead of fetching it on EBI

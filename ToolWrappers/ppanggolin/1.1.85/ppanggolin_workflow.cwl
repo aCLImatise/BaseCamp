@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanggolin_workflow.cwl
+id: ppanggolin_workflow.cwl
 inputs:
 - id: in_fast_a
   doc: "A tab-separated file listing the organism names, and\nthe fasta filepath of\

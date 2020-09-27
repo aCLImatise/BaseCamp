@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validatevcf.cwl
+id: validatevcf.cwl
 inputs:
 - id: in_input_vcf
   doc: VCF file to validate.

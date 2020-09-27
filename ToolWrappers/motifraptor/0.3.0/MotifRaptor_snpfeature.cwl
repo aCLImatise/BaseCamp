@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_snpfeature.cwl
+id: MotifRaptor_snpfeature.cwl
 inputs:
 - id: in_workdir
   doc: Working directory

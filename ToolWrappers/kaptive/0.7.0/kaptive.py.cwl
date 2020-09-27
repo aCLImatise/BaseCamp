@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaptive.py.cwl
+id: kaptive.py.cwl
 inputs:
 - id: in_assembly
   doc: 'FASTA file(s) for assemblies (default: None)'

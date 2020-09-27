@@ -11,7 +11,7 @@ task PlanemoVirtualenv {
       ~{if defined(python) then ("--python " +  '"' + python + '"') else ""}
   >>>
   parameter_meta {
-    python: ""
+    python: "--help                   Show this message and exit.\\n"
     virtual_env_path: ""
   }
   output {

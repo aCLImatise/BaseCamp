@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toRawSequence.cwl
+id: toRawSequence.cwl
 inputs: []
 outputs:
 - id: out_stdout

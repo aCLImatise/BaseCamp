@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starcode.cwl
+id: starcode.cwl
 inputs:
 - id: in_dist
   doc: ': maximum Levenshtein distance (default auto)'

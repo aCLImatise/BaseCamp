@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_nexus2clustal.cwl
+id: bioconvert_nexus2clustal.cwl
 inputs:
 - id: in_force
   doc: "if outfile exists, it is overwritten with this option\n(default: False)"

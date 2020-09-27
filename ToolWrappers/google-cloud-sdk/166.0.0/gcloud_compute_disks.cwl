@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_disks.cwl
+id: gcloud_compute_disks.cwl
 inputs:
 - id: in_add_labels
   doc: Add labels to Google Compute Engine persistent disks.

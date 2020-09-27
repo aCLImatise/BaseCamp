@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runECC.sh.cwl
+id: runECC.sh.cwl
 inputs:
 - id: in_ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).

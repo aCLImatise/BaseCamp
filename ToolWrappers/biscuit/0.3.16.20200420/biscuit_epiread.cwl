@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_epiread.cwl
+id: biscuit_epiread.cwl
 inputs:
 - id: in_bed_input_snp
   doc: bed input for SNP display in epiread output [no SNP]

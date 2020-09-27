@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runerrcor.py.cwl
+id: runerrcor.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

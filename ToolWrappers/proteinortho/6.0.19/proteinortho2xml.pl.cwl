@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho2xml.pl.cwl
+id: proteinortho2xml.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

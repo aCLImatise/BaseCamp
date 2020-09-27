@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ttest.py.cwl
+id: ttest.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

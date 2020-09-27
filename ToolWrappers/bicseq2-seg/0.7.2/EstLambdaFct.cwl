@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EstLambdaFct.cwl
+id: EstLambdaFct.cwl
 inputs: []
 outputs:
 - id: out_stdout

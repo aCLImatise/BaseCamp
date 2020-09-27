@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_informative_sites.cwl
+id: phyluce_align_get_informative_sites.cwl
 inputs:
 - id: in_alignments
   doc: The directory containing the alignment files

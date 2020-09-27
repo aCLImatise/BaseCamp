@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../WhatsGNU_get_GenBank_genomes.py.cwl
+id: WhatsGNU_get_GenBank_genomes.py.cwl
 inputs:
 - id: in_faa
   doc: protein faa file from GenBank

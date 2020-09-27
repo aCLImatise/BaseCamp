@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snpiphy.cwl
+id: snpiphy.cwl
 inputs:
 - id: in_fast_q_dir
   doc: "Path to a directory with your interleaved fastq\nsequencing reads or fasta\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kraken_build.cwl
+id: kraken_build.cwl
 inputs:
 - id: in_download_taxonomy
   doc: Download NCBI taxonomic information
@@ -51,15 +51,10 @@ inputs:
   inputBinding:
     prefix: --upgrade
 - id: in_db
-  doc: Kraken DB/library name (mandatory except for
+  doc: "Kraken DB/library name (mandatory except for\n--help/--version)"
   type: string
   inputBinding:
     prefix: --db
-- id: in_help_slash_version
-  doc: )
-  type: boolean
-  inputBinding:
-    prefix: --help/--version
 - id: in_threads
   doc: '#                Number of threads (def: 1)'
   type: boolean
@@ -93,15 +88,10 @@ inputs:
   inputBinding:
     prefix: --max-db-size
 - id: in_use_wget
-  doc: Use wget for downloading instead of RSYNC; used with
+  doc: "Use wget for downloading instead of RSYNC; used with\n--download-library/--standard"
   type: boolean
   inputBinding:
     prefix: --use-wget
-- id: in_download_library_slash_standard
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --download-library/--standard
 - id: in_shrink_block_offset
   doc: "When shrinking, select the k-mer that is NUM\npositions from the end of a\
     \ block of k-mers\n(default: 1)"

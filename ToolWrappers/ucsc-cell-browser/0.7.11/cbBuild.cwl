@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbBuild.cwl
+id: cbBuild.cwl
 inputs:
 - id: in_in_it
   doc: copy sample cellbrowser.conf and desc.conf to current

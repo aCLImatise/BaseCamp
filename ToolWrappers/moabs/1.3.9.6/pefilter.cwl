@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pefilter.cwl
+id: pefilter.cwl
 inputs:
 - id: in_arg_input_bam
   doc: '[ --infile ] arg          Input BAM file. It should be indexed.'

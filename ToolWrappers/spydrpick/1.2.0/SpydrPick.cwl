@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpydrPick.cwl
+id: SpydrPick.cwl
 inputs:
 - id: in__be_verbose
   doc: '[ --verbose ]                      Be verbose.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bubbleScout.pl.cwl
+id: bubbleScout.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

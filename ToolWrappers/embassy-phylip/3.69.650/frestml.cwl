@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../frestml.cwl
+id: frestml.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

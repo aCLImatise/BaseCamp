@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_depths.pl.cwl
+id: merge_depths.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

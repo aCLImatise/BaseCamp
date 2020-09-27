@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_version.cwl
+id: gsutil_version.cwl
 inputs:
 - id: in_prints_additional_information
   doc: "Prints additional information, such as the version of Python\nbeing used,\

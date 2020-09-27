@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../breakdancer_max.cwl
+id: breakdancer_max.cwl
 inputs:
 - id: in_operate_single_chromosome
   doc: operate on a single chromosome [all chromosome]

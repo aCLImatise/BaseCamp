@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tpage.cwl
+id: tpage.cwl
 inputs:
 - id: in_define
   doc: =value       Define template variable

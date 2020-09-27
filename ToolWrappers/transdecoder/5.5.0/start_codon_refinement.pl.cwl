@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../start_codon_refinement.pl.cwl
+id: start_codon_refinement.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

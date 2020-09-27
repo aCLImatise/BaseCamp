@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: ../../../exparna_p.cwl
+id: exparna_p.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_verbose
+  doc: Verbose
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: in_quiet
+  doc: Quiet
+  type: boolean
+  inputBinding:
+    prefix: --quiet
 - id: in_no_stacking
   doc: Do not use stacking terms (otherwise needs stacking probs by RNAfold -p2)
   type: boolean
@@ -181,19 +186,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --stopwatch
-- id: in_help
-  doc: -V,--version
-  type: string
+- id: in_input_one
+  doc: ''
+  type: long
   inputBinding:
     position: 0
-- id: in_qquiet
-  doc: -q,--quiet
-  type: string
-  inputBinding:
-    position: 0
-- id: in_quiet
-  doc: 'Scoring parameters:'
-  type: string
+- id: in_input_two
+  doc: ''
+  type: long
   inputBinding:
     position: 1
 outputs:

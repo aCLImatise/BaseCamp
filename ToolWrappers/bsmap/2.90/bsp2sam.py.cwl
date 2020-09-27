@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bsp2sam.py.cwl
+id: bsp2sam.py.cwl
 inputs:
 - id: in_out
   doc: output file name. (required)

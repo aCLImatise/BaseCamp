@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_filter.cwl
+id: HLAProfiler.pl_filter.cwl
 inputs:
 - id: in_fast_q_one
   doc: '|fq1             read1 fastq.(required)'

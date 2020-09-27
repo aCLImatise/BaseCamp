@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../augur_translate.cwl
+id: augur_translate.cwl
 inputs:
 - id: in_reference_sequence
-  doc: ''
+  doc: "[--genes GENES [GENES ...]]\n[--output-node-data OUTPUT_NODE_DATA]\n[--alignment-output\
+    \ ALIGNMENT_OUTPUT]\n[--vcf-reference-output VCF_REFERENCE_OUTPUT]\n[--vcf-reference\
+    \ VCF_REFERENCE]"
   type: string
   inputBinding:
     prefix: --reference-sequence

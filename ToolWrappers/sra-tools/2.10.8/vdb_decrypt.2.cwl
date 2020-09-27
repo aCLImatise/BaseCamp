@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_decrypt.2.cwl
+id: vdb_decrypt.2.cwl
 inputs:
 - id: in_force
   doc: Force overwrite of existing files

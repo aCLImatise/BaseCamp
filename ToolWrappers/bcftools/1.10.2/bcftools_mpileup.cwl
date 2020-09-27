@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_mpileup.cwl
+id: bcftools_mpileup.cwl
 inputs:
 - id: in_illumina_one_dot_three
   doc: +      quality is in the Illumina-1.3+ encoding

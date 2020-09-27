@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shapeit.cwl
+id: shapeit.cwl
 inputs:
 - id: in_produce_help_message
   doc: '[ --help ]                         Produce help message.'

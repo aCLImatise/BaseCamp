@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Build_Trinotate_Boilerplate_SQLite_db.pl.cwl
+id: Build_Trinotate_Boilerplate_SQLite_db.pl.cwl
 inputs:
 - id: in_uniprot_sprot_dot_dat_do_tgz
   doc: "0% |                               |    17k  9:28:30 ETA\runiprot_sprot.dat.gz\

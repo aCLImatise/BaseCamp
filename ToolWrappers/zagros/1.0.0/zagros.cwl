@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zagros.cwl
+id: zagros.cwl
 inputs:
 - id: in_output
   doc: 'output file name (default: stdout)'

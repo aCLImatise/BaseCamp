@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bats.cwl
+id: bats.cwl
 inputs:
 - id: in_count
   doc: Count the number of test cases without running any tests

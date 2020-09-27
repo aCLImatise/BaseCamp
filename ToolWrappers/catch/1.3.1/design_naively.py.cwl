@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_naively.py.cwl
+id: design_naively.py.cwl
 inputs:
 - id: in_probe_length
   doc: (Optional) The number of bp in each probe

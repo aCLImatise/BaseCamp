@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iit_get.cwl
+id: iit_get.cwl
 inputs:
 - id: in_field
   doc: Show given field part of the annotation

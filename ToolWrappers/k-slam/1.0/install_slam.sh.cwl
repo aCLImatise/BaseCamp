@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../install_slam.sh.cwl
+id: install_slam.sh.cwl
 inputs:
 - id: in_mode
   doc: Mode

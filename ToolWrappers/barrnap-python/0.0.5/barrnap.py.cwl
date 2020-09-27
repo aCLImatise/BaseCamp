@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../barrnap.py.cwl
+id: barrnap.py.cwl
 inputs:
 - id: in_kingdom
   doc: "whether to look for eukaryotic, archaeal, or bacterial\nrDNA; default: bac"

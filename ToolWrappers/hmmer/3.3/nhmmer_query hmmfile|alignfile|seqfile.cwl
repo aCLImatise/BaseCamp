@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nhmmer_query hmmfile|alignfile|seqfile.cwl
+id: nhmmer_query hmmfile|alignfile|seqfile.cwl
 inputs:
 - id: in_target_seq_file
   doc: ''

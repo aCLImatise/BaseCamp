@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_delete_collection.cwl
+id: hca_dss_delete_collection.cwl
 inputs:
 - id: in_uuid
   doc: A RFC4122-compliant ID for the collection.

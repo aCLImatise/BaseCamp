@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClonalFrameML.cwl
+id: ClonalFrameML.cwl
 inputs:
 - id: in_em
   doc: true (default) or false   Estimate parameters by a Baum-Welch expectation maximization

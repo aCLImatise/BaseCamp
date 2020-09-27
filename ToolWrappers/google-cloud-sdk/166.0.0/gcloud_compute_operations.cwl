@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_operations.cwl
+id: gcloud_compute_operations.cwl
 inputs:
 - id: in_operations
   doc: SYNOPSIS

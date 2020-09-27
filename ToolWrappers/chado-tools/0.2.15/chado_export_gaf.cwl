@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../chado_export_gaf.cwl
+id: chado_export_gaf.cwl
 inputs:
-- id: in_a
-  doc: ''
+- id: in_dbname
+  doc: "[-L {default,gene,transcript,protein}]\n[--include_obsolete]\ndbname"
   type: string
   inputBinding:
     prefix: -A
@@ -47,6 +47,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --include_obsolete
+- id: in_dbname
+  doc: name of the database
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

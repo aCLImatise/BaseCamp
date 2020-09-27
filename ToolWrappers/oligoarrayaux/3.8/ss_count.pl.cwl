@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ss_count.pl.cwl
+id: ss_count.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

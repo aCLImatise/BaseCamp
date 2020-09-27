@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bmge.cwl
+id: bmge.cwl
 inputs: []
 outputs:
 - id: out_stdout

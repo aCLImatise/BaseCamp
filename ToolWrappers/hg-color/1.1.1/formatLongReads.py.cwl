@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../formatLongReads.py.cwl
+id: formatLongReads.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

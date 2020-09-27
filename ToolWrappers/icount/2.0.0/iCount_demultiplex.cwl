@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_demultiplex.cwl
+id: iCount_demultiplex.cwl
 inputs:
 - id: in_mis
   doc: ', --mismatches   Number of tolerated mismatches when comparing barcodes (default:

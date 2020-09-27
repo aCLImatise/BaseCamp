@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_snapshots.cwl
+id: gcloud_compute_snapshots.cwl
 inputs:
 - id: in_snapshots
   doc: SYNOPSIS

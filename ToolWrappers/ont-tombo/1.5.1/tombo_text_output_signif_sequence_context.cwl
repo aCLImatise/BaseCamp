@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_text_output_signif_sequence_context.cwl
+id: tombo_text_output_signif_sequence_context.cwl
 inputs:
 - id: in_file_saveload_base
   doc: File to save/load genomic base anchored statistics.

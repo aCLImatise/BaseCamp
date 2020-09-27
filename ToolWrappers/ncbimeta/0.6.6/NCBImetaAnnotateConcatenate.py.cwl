@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NCBImetaAnnotateConcatenate.py.cwl
+id: NCBImetaAnnotateConcatenate.py.cwl
 inputs:
 - id: in_an_not_file
   doc: '[--version]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plasmidspades.py.cwl
+id: plasmidspades.py.cwl
 inputs:
 - id: in_directory_store_files
   doc: directory to store all the resulting files (required)

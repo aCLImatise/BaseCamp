@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mob_recon.cwl
+id: mob_recon.cwl
 inputs:
 - id: in_outdir
   doc: Output Directory to put results

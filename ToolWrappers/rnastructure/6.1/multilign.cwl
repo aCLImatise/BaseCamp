@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multilign.cwl
+id: multilign.cwl
 inputs:
 - id: in_configuration_file
   doc: ''

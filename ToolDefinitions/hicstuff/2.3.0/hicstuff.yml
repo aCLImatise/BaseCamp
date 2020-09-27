@@ -85,7 +85,7 @@ subcommands:
     args: !SimpleFlagArg
       name: bowtie2
     optional: true
-  parent: &id014 !Command
+  parent: &id015 !Command
     command: *id001
     positional: []
     named: []
@@ -170,16 +170,10 @@ subcommands:
         args: !SimpleFlagArg
           name: bowtie2
         optional: true
-      parent: &id003 !Command
+      parent: &id014 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - -hv
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -263,7 +257,1436 @@ subcommands:
             args: !SimpleFlagArg
               name: bowtie2
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - -hv
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: Fastq file containing the reads to be aligned
+                position: 0
+                name: reads.fq
+                optional: false
+              - !Positional
+                description: -a, --aligner=bowtie2    Choose alignment software between
+                  bowtie2,
+                position: 0
+                name: directory.
+                optional: false
+              named:
+              - !Flag
+                description: "The genome on which to map the reads. Must be\nthe path\
+                  \ to the bowtie2/bwa index if using bowtie2/bwa\nor to the genome\
+                  \ in fasta format if using minimap2."
+                synonyms:
+                - -g
+                - --genome
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Number of parallel threads allocated for the\nalignment\
+                  \ [default: 1]."
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: Temporary directory. Defaults to current
+                synonyms:
+                - -T
+                - --tempdir
+                args: !SimpleFlagArg
+                  name: DIR
+                optional: true
+              - !Flag
+                description: "Length to which the reads should be\ntruncated [default:\
+                  \ 20]."
+                synonyms:
+                - -l
+                - --min-len
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Path where the alignment will be written in\nBAM format."
+                synonyms:
+                - -o
+                - --out-bam
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Read length in input FASTQ file. If not provided,\n\
+                  this is estimated from the first read in the file.\n"
+                synonyms:
+                - -R
+                - --read-len
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -a
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --aligner
+                args: !SimpleFlagArg
+                  name: bowtie2
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Iterative mapping command\n\n    Truncate reads from a fastq\
+                \ file to 20 basepairs and iteratively extend and\n    re-align the\
+                \ unmapped reads to optimize the proportion of uniquely aligned\n\
+                \    reads in a 3C library.\n\n    usage:\n        iteralign [--aligner=bowtie2]\
+                \ [--threads=1] [--min-len=20] [--read-len=INT]\n                \
+                \  [--tempdir=DIR] --out-bam=FILE --genome=FILE <reads.fq>\n\n   \
+                \ arguments:\n        reads.fq                Fastq file containing\
+                \ the reads to be aligned\n\n    options:\n        -g, --genome=FILE\
+                \        The genome on which to map the reads. Must be\n         \
+                \                        the path to the bowtie2/bwa index if using\
+                \ bowtie2/bwa\n                                 or to the genome in\
+                \ fasta format if using minimap2.\n        -t, --threads=INT     \
+                \   Number of parallel threads allocated for the\n               \
+                \                  alignment [default: 1].\n        -T, --tempdir=DIR\
+                \        Temporary directory. Defaults to current\n              \
+                \                   directory.\n        -a, --aligner=bowtie2    Choose\
+                \ alignment software between bowtie2,\n                          \
+                \       minimap2 or bwa. minimap2 should only be used for\n      \
+                \                           reads > 100 bp. [default: bowtie2]\n \
+                \       -l, --min-len=INT        Length to which the reads should\
+                \ be\n                                 truncated [default: 20].\n\
+                \        -o, --out-bam=FILE       Path where the alignment will be\
+                \ written in\n                                 BAM format.\n     \
+                \   -R, --read-len=INT       Read length in input FASTQ file. If not\
+                \ provided,\n                                 this is estimated from\
+                \ the first read in the file.\n    \n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - hicstuff
+              - rebin
+              positional:
+              - !Positional
+                description: Sparse contact matrix in graal, cool or bg2 format.
+                position: 0
+                name: contact_map
+                optional: false
+              - !Positional
+                description: Prefix path (without extension) for the output files.
+                position: 1
+                name: out_prefix
+                optional: false
+              named:
+              - !Flag
+                description: "[bp|kb|Mb|Gb]   Subsampling factor or fix value in\n\
+                  basepairs to use for binning\n[default: 1]."
+                synonyms:
+                - -b
+                - --binning
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Tab-separated file with headers,\ncontaining fragments\
+                  \ start position in\nthe 3rd column. This is the file\n\"fragments_list.txt\"\
+                  \ generated by\nhicstuff pipeline. Required for graal\nmatrices\
+                  \ and recommended for bg2."
+                synonyms:
+                - -f
+                - --frags
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: Write even if the output file already exists.
+                synonyms:
+                - -F
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Tab-separated with headers, containing\nchromosome names,\
+                  \ size, number of\nrestriction fragments. This is the file\n\"info_contigs.txt\"\
+                  \ generated by hicstuff\npipeline.\n"
+                synonyms:
+                - -c
+                - --chroms
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "    Rebins a Hi-C matrix and modifies its fragment and chrom\
+                \ files accordingly.\n    Output files are in the same format as the\
+                \ input files (cool, graal or bg2).\n    usage:\n        rebin [--binning=1]\
+                \ [--frags=FILE] [--force] [--chroms=FILE] <contact_map> <out_prefix>\n\
+                \n    arguments:\n        contact_map             Sparse contact matrix\
+                \ in graal, cool or bg2 format.\n        out_prefix              Prefix\
+                \ path (without extension) for the output files.\n\n    options:\n\
+                \        -b, --binning=INT[bp|kb|Mb|Gb]   Subsampling factor or fix\
+                \ value in\n                                         basepairs to\
+                \ use for binning\n                                         [default:\
+                \ 1].\n        -f, --frags=FILE                 Tab-separated file\
+                \ with headers,\n                                         containing\
+                \ fragments start position in\n                                  \
+                \       the 3rd column. This is the file\n                       \
+                \                  \"fragments_list.txt\" generated by\n         \
+                \                                hicstuff pipeline. Required for graal\n\
+                \                                         matrices and recommended\
+                \ for bg2.\n        -F, --force                      Write even if\
+                \ the output file already exists.\n        -c, --chroms=FILE     \
+                \           Tab-separated with headers, containing\n             \
+                \                            chromosome names, size, number of\n \
+                \                                        restriction fragments. This\
+                \ is the file\n                                         \"info_contigs.txt\"\
+                \ generated by hicstuff\n                                        \
+                \ pipeline.\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - hicstuff
+              - filter
+              positional:
+              - !Positional
+                description: "2D BED file containing coordinates of Hi-C interacting\n\
+                  pairs, the index of their restriction fragment and their\nstrands."
+                position: 0
+                name: input
+                optional: false
+              - !Positional
+                description: Path to the filtered file, in the same format as the
+                  input.
+                position: 1
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: "Path to the output figure directory.\nBy default, the\
+                  \ figure is only shown\nbut not saved."
+                synonyms:
+                - -f
+                - --figdir
+                args: !SimpleFlagArg
+                  name: DIR
+                optional: true
+              - !Flag
+                description: "Interactively shows plots and asks\nfor thresholds."
+                synonyms:
+                - -i
+                - --interactive
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Shows plots of library composition\nand 3C events abundance."
+                synonyms:
+                - -p
+                - --plot
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "If the library has a name, it will\nbe shown on the\
+                  \ figures."
+                synonyms:
+                - -P
+                - --prefix
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: "Manually defines integer values for\nthe thresholds\
+                  \ in the order\n[uncut, loop]. Reads above those values\nare kept.\n"
+                synonyms:
+                - -t
+                - --thresholds
+                args: !SimpleFlagArg
+                  name: INT-INT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Mapping event filtering command\n\n    Filters spurious\
+                \ 3C events such as loops and uncuts from the library based\n    on\
+                \ a minimum distance threshold automatically estimated from the library\
+                \ by\n    default. Can also plot 3C library statistics.\n\n    usage:\n\
+                \        filter [--interactive | --thresholds INT-INT] [--plot]\n\
+                \               [--figdir FILE] [--prefix STR] <input> <output>\n\n\
+                \    arguments:\n        input       2D BED file containing coordinates\
+                \ of Hi-C interacting\n                    pairs, the index of their\
+                \ restriction fragment and their\n                    strands.\n \
+                \       output      Path to the filtered file, in the same format\
+                \ as the input.\n\n    options:\n        -f, --figdir=DIR        \
+                \          Path to the output figure directory.\n                \
+                \                          By default, the figure is only shown\n\
+                \                                          but not saved.\n      \
+                \  -i, --interactive                 Interactively shows plots and\
+                \ asks\n                                          for thresholds.\n\
+                \        -p, --plot                        Shows plots of library\
+                \ composition\n                                          and 3C events\
+                \ abundance.\n        -P, --prefix STR                  If the library\
+                \ has a name, it will\n                                          be\
+                \ shown on the figures.\n        -t, --thresholds=INT-INT        \
+                \  Manually defines integer values for\n                         \
+                \                 the thresholds in the order\n                  \
+                \                        [uncut, loop]. Reads above those values\n\
+                \                                          are kept.\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - hicstuff
+              - view
+              positional:
+              - !Positional
+                description: Sparse contact matrix in bg2, cool or graal format
+                position: 0
+                name: contact_map
+                optional: false
+              - !Positional
+                description: "Sparse contact matrix in bg2, cool or graal format,\n\
+                  if given, the log ratio of contact_map/contact_map2\nwill be shown."
+                position: 1
+                name: contact_map2
+                optional: false
+              named:
+              - !Flag
+                description: "[bp|kb|Mb|Gb]   Subsampling factor or fix value in\n\
+                  basepairs to use for binning\n[default: 1]."
+                synonyms:
+                - -b
+                - --binning
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "The name of a matplotlib colormap to\nuse for the matrix.\
+                  \ [default: Reds]"
+                synonyms:
+                - -c
+                - --cmap
+                args: !SimpleFlagArg
+                  name: CMAP
+                optional: true
+              - !Flag
+                description: Use if the genome is circular.
+                synonyms:
+                - -C
+                - --circular
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Remove sharp increases in long range\ncontact by averaging\
+                  \ surrounding\nvalues."
+                synonyms:
+                - -d
+                - --despeckle
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Map resolution in DPI (dots per inch). [default: 300]'
+                synonyms:
+                - -D
+                - --dpi
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Required for bp binning. Tab-separated\nfile with headers,\
+                  \ containing\nfragments start position in the 3rd\ncolumn, as generated\
+                  \ by hicstuff\npipeline."
+                synonyms:
+                - -f
+                - --frags
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Apply a mathematical transformation to pixel values\n\
+                  to improve visibility of long range signals. Possible\nvalues are:\
+                  \ log2, log10, ln, sqrt, exp0.2."
+                synonyms:
+                - -T
+                - --transform
+                args: !SimpleFlagArg
+                  name: FUN
+                optional: true
+              - !Flag
+                description: "Saturation threshold. Maximum pixel\nvalue is set to\
+                  \ this number. Can be\nfollowed by % to use a percentile of\nnonzero\
+                  \ pixels in the contact\nmap. [default: 99%]"
+                synonyms:
+                - -M
+                - --max
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Minimum of the colorscale, works\nidentically to --max.\
+                  \ [default: 0]"
+                synonyms:
+                - -m
+                - --min
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Number of median absolute deviations (MAD) from the\
+                  \ median\nof log bin sums allowed to keep bins in the normalization\n\
+                  procedure [default: 3]."
+                synonyms:
+                - -N
+                - --n-mad
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Should ICE normalization be performed\nbefore rendering\
+                  \ the matrix ?"
+                synonyms:
+                - -n
+                - --normalize
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Name of the image file where the view is stored.
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: IMG
+                optional: true
+              - !Flag
+                description: "[;STR]           Only view a region of the contact map.\n\
+                  Regions are specified as UCSC strings.\n(e.g.:chr1:1000-12000).\
+                  \ If only one\nregion is given, it is viewed on the\ndiagonal. If\
+                  \ two regions are given,\nThe contacts between both are shown."
+                synonyms:
+                - -r
+                - --region
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: "Trims outlier rows/columns from the\nmatrix if the sum\
+                  \ of their contacts\ndeviates from the mean by more than\nINT standard\
+                  \ deviations.\n"
+                synonyms:
+                - -t
+                - --trim
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Contact map visualization command\n\n    Visualize a Hi-C\
+                \ matrix file as a heatmap of contact frequencies. Allows to\n   \
+                \ tune visualisation by binning and normalizing the matrix, and to\
+                \ save the\n    output image to disk. If no output is specified, the\
+                \ output is displayed.\n\n    usage:\n        view [--binning=1] [--despeckle]\
+                \ [--frags FILE] [--trim INT] [--n-mad FLOAT]\n             [--normalize]\
+                \ [--min=0] [--max=99%] [--output=IMG] [--cmap=CMAP] [--dpi=INT]\n\
+                \             [--transform=FUN] [--circular] [--region=STR] <contact_map>\
+                \ [<contact_map2>]\n\n    arguments:\n        contact_map        \
+                \     Sparse contact matrix in bg2, cool or graal format\n       \
+                \ contact_map2            Sparse contact matrix in bg2, cool or graal\
+                \ format,\n                                if given, the log ratio\
+                \ of contact_map/contact_map2\n                                will\
+                \ be shown.\n\n\n    options:\n        -b, --binning=INT[bp|kb|Mb|Gb]\
+                \   Subsampling factor or fix value in\n                         \
+                \                basepairs to use for binning\n                  \
+                \                       [default: 1].\n        -c, --cmap=CMAP   \
+                \               The name of a matplotlib colormap to\n           \
+                \                              use for the matrix. [default: Reds]\n\
+                \        -C, --circular                   Use if the genome is circular.\n\
+                \        -d, --despeckle                  Remove sharp increases in\
+                \ long range\n                                         contact by\
+                \ averaging surrounding\n                                        \
+                \ values.\n        -D, --dpi=INT                    Map resolution\
+                \ in DPI (dots per inch). [default: 300]\n        -f, --frags=FILE\
+                \                 Required for bp binning. Tab-separated\n       \
+                \                                  file with headers, containing\n\
+                \                                         fragments start position\
+                \ in the 3rd\n                                         column, as\
+                \ generated by hicstuff\n                                        \
+                \ pipeline.\n        -T, --transform=FUN              Apply a mathematical\
+                \ transformation to pixel values \n                              \
+                \           to improve visibility of long range signals. Possible\n\
+                \                                         values are: log2, log10,\
+                \ ln, sqrt, exp0.2.\n        -M, --max=INT                    Saturation\
+                \ threshold. Maximum pixel\n                                     \
+                \    value is set to this number. Can be\n                       \
+                \                  followed by % to use a percentile of\n        \
+                \                                 nonzero pixels in the contact\n\
+                \                                         map. [default: 99%]\n  \
+                \      -m, --min=INT                    Minimum of the colorscale,\
+                \ works\n                                         identically to --max.\
+                \ [default: 0]\n        -N, --n-mad=INT                  Number of\
+                \ median absolute deviations (MAD) from the median\n             \
+                \                            of log bin sums allowed to keep bins\
+                \ in the normalization\n                                         procedure\
+                \ [default: 3].\n        -n, --normalize                  Should ICE\
+                \ normalization be performed\n                                   \
+                \      before rendering the matrix ?\n        -o, --output=IMG   \
+                \              Name of the image file where the view is stored.\n\
+                \        -r, --region=STR[;STR]           Only view a region of the\
+                \ contact map.\n                                         Regions are\
+                \ specified as UCSC strings.\n                                   \
+                \      (e.g.:chr1:1000-12000). If only one\n                     \
+                \                    region is given, it is viewed on the\n      \
+                \                                   diagonal. If two regions are given,\n\
+                \                                         The contacts between both\
+                \ are shown.\n        -t, --trim=INT                   Trims outlier\
+                \ rows/columns from the\n                                        \
+                \ matrix if the sum of their contacts\n                          \
+                \               deviates from the mean by more than\n            \
+                \                             INT standard deviations.\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - hicstuff
+              - convert
+              positional:
+              - !Positional
+                description: The file containing the contact frequencies.
+                position: 0
+                name: contact_map
+                optional: false
+              - !Positional
+                description: "The prefix path for output files. An extension\nwill\
+                  \ be added to the files depending on the\noutput format."
+                position: 1
+                name: prefix
+                optional: false
+              named:
+              - !Flag
+                description: "Tab-separated file with headers,\ncontaining columns\
+                  \ id, chrom, start_pos,\nend_pos size. This is the file\n\"fragments_list.txt\"\
+                  \ generated by\nhicstuff pipeline. Required for graal\nmatrices\
+                  \ and recommended for bg2."
+                synonyms:
+                - -f
+                - --frags
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: Write even if the output file already exists.
+                synonyms:
+                - -F
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Tab-separated with headers, containing\ncolumns contig,\
+                  \ length, n_frags, cumul_length.\nThis is the file \"info_contigs.txt\"\
+                  \ generated\nby hicstuff pipeline."
+                synonyms:
+                - -c
+                - --chroms
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "The format to which files should be\nconverted. [default:\
+                  \ cool]\n"
+                synonyms:
+                - -T
+                - --to
+                args: !SimpleFlagArg
+                  name: FORMAT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "    Convert between different Hi-C dataformats. Currently\
+                \ supports tsv (graal),\n    bedgraph2D (bg2) and cooler (cool). Input\
+                \ format is automatically inferred.\n\n    usage:\n        convert\
+                \ [--frags=FILE] [--chroms=FILE] [--force]\n                [--to=FORMAT]\
+                \ <contact_map> <prefix>\n\n    arguments:\n        contact_map  \
+                \             The file containing the contact frequencies.\n     \
+                \   prefix                    The prefix path for output files. An\
+                \ extension\n                                  will be added to the\
+                \ files depending on the\n                                  output\
+                \ format.\n\n    options:\n        -f, --frags=FILE          Tab-separated\
+                \ file with headers,\n                                  containing\
+                \ columns id, chrom, start_pos,\n                                \
+                \  end_pos size. This is the file\n                              \
+                \    \"fragments_list.txt\" generated by\n                       \
+                \           hicstuff pipeline. Required for graal\n              \
+                \                    matrices and recommended for bg2.\n        -F,\
+                \ --force               Write even if the output file already exists.\n\
+                \        -c, --chroms=FILE         Tab-separated with headers, containing\n\
+                \                                  columns contig, length, n_frags,\
+                \ cumul_length.\n                                  This is the file\
+                \ \"info_contigs.txt\" generated\n                               \
+                \   by hicstuff pipeline.\n        -T, --to=FORMAT           The format\
+                \ to which files should be\n                                  converted.\
+                \ [default: cool]\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - hicstuff
+              - distancelaw
+              positional: []
+              named:
+              - !Flag
+                description: "If set, calculate the average of the distance\nlaw of\
+                  \ the different chromosomes/arms in each\ncondition. If two file\
+                  \ given average is\nmandatory."
+                synonyms:
+                - -a
+                - --average
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Integer. It given will take only the arms bigger\nthan\
+                  \ the value given as argument."
+                synonyms:
+                - -b
+                - --big-arm-only
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Float corresponding of the base of the log to\nmake\
+                  \ the logspace which will slice the genomes in\nlogbins. These slices\
+                  \ will be in basepairs unit.\nDefault is 1.1."
+                synonyms:
+                - -B
+                - --base
+                args: !SimpleFlagArg
+                  name: FLOAT
+                optional: true
+              - !Flag
+                description: "Positions of the centromeres separated by\na space and\
+                  \ in the same order than the\nchromosomes. Discordant with the circular\n\
+                  option."
+                synonyms:
+                - -c
+                - --centromeres
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Enable if the genome is circular. Discordant\nwith the\
+                  \ centromeres option."
+                synonyms:
+                - -C
+                - --circular
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[,FILE2,...]    Directory to the file or files containing\
+                  \ the\ncompute distance law. File should have the same\nformat than\
+                  \ the ones made by hicstuff pipeline."
+                synonyms:
+                - -d
+                - --dist-tbl
+                args: !SimpleFlagArg
+                  name: FILE1
+                optional: true
+              - !Flag
+                description: "Tab-separated file with headers, containing\ncolumns\
+                  \ id, chrom, start_pos, end_pos size.\nThis is the file \"fragments_list.txt\"\
+                  \ generated by\nhicstuff pipeline. Required if pairs are given."
+                synonyms:
+                - -f
+                - --frags
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Inferior born to plot the distance law. By\ndefault\
+                  \ the value is 3000 bp (3 kb). Have to\nbe strictly positive."
+                synonyms:
+                - -i
+                - --inf
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: ",STR2...           List of string of the labels for\
+                  \ the plot\nseparated by a coma. If no labels given, give\nthe names\
+                  \ \"Sample 1\", \"Sample 2\"..."
+                synonyms:
+                - -l
+                - --labels
+                args: !SimpleFlagArg
+                  name: STR1
+                optional: true
+              - !Flag
+                description: "Output file. Format must be compatible with\nplt.savefig.\
+                  \ Default : None."
+                synonyms:
+                - -o
+                - --outputfile-img
+                args: !SimpleFlagArg
+                  name: IMG
+                optional: true
+              - !Flag
+                description: 'Output file. Default : None.'
+                synonyms:
+                - -O
+                - --outputfile-tabl
+                args: !SimpleFlagArg
+                  name: TABLE
+                optional: true
+              - !Flag
+                description: "Pairs file. Format from 4D Nucleome Omics Data\nStandards\
+                  \ Working Group with the 8th and 9th\ncoulumns are the ID of the\
+                  \ fragments of the\nreads 1 and 2. Only add if no distance_law table\n\
+                  given. It will compute the table from these pairs\nand the fragments\
+                  \ from the fragments file."
+                synonyms:
+                - -p
+                - --pairs
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Integer. Number of kb that will be remove around\nthe\
+                  \ centromere position given by in the centromere\nfile. Default\
+                  \ is zero."
+                synonyms:
+                - -r
+                - --remove-centromeres
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Superior born to plot the distance law. By\ndefault\
+                  \ the value is the maximum length of all\nthe dataset given. Also\
+                  \ if big arm only set, it\nwill be the minimum size of the arms/chromosomes\n\
+                  taken to make the average.\n"
+                synonyms:
+                - -s
+                - --sup
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Distance law tools.\n    Take the distance law file from\
+                \ hicstuff and can average it, normalize it compute the\n    slope\
+                \ of the curve and plot it.\n    \n    usage:\n        distancelaw\
+                \ [--average] [--big-arm-only=INT] [--base=FLOAT] [--centromeres=FILE]\
+                \ \n                    [--circular] [--frags=FILE] [--inf=INT] [--outputfile-img=IMG]\
+                \ \n                    [--outputfile-tabl=TABLE] [--labels=DIR] [--sup=INT]\
+                \ \n                    [--remove-centromeres=INT] (--pairs=FILE |\
+                \ --dist-tbl=FILE1[,FILE2,...])\n    \n    options:\n        -a, --average\
+                \                       If set, calculate the average of the distance\
+                \ \n                                            law of the different\
+                \ chromosomes/arms in each\n                                     \
+                \       condition. If two file given average is\n                \
+                \                            mandatory.\n        -b, --big-arm-only=INT\
+                \              Integer. It given will take only the arms bigger\n\
+                \                                            than the value given\
+                \ as argument.\n        -B, --base=FLOAT                    Float\
+                \ corresponding of the base of the log to \n                     \
+                \                       make the logspace which will slice the genomes\
+                \ in\n                                            logbins. These slices\
+                \ will be in basepairs unit.\n                                   \
+                \         Default is 1.1.\n        -c, --centromeres=FILE        \
+                \      Positions of the centromeres separated by\n               \
+                \                             a space and in the same order than the\
+                \ \n                                            chromosomes. Discordant\
+                \ with the circular\n                                            option.\n\
+                \        -C, --circular                      Enable if the genome\
+                \ is circular. Discordant \n                                     \
+                \       with the centromeres option.\n        -d, --dist-tbl=FILE1[,FILE2,...]\
+                \    Directory to the file or files containing the \n            \
+                \                                compute distance law. File should\
+                \ have the same\n                                            format\
+                \ than the ones made by hicstuff pipeline.\n        -f, --frags=FILE\
+                \                    Tab-separated file with headers, containing\n\
+                \                                            columns id, chrom, start_pos,\
+                \ end_pos size.\n                                            This\
+                \ is the file \"fragments_list.txt\" generated by\n              \
+                \                              hicstuff pipeline. Required if pairs\
+                \ are given. \n        -i, --inf=INT                       Inferior\
+                \ born to plot the distance law. By \n                           \
+                \                 default the value is 3000 bp (3 kb). Have to\n \
+                \                                           be strictly positive.\n\
+                \        -l, --labels=STR1,STR2...           List of string of the\
+                \ labels for the plot \n                                         \
+                \   separated by a coma. If no labels given, give \n             \
+                \                               the names \"Sample 1\", \"Sample 2\"\
+                ...\n        -o, --outputfile-img=IMG            Output file. Format\
+                \ must be compatible with \n                                     \
+                \       plt.savefig. Default : None.\n        -O, --outputfile-tabl=TABLE\
+                \         Output file. Default : None.\n        -p, --pairs=FILE \
+                \                   Pairs file. Format from 4D Nucleome Omics Data\
+                \ \n                                            Standards Working\
+                \ Group with the 8th and 9th \n                                  \
+                \          coulumns are the ID of the fragments of the \n        \
+                \                                    reads 1 and 2. Only add if no\
+                \ distance_law table\n                                           \
+                \ given. It will compute the table from these pairs\n            \
+                \                                and the fragments from the fragments\
+                \ file.\n        -r, --remove-centromeres=INT        Integer. Number\
+                \ of kb that will be remove around \n                            \
+                \                the centromere position given by in the centromere\n\
+                \                                            file. Default is zero.\
+                \ \n        -s, --sup=INT                       Superior born to plot\
+                \ the distance law. By \n                                        \
+                \    default the value is the maximum length of all\n            \
+                \                                the dataset given. Also if big arm\
+                \ only set, it\n                                            will be\
+                \ the minimum size of the arms/chromosomes\n                     \
+                \                       taken to make the average.\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - hicstuff
+              - digest
+              positional:
+              - !Positional
+                description: Fasta file to be digested
+                position: 0
+                name: fasta
+                optional: false
+              named:
+              - !Flag
+                description: Specify if the genome is circular.
+                synonyms:
+                - -c
+                - --circular
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[,ENZ2,...]     A restriction enzyme or an integer\n\
+                  representing fixed chunk sizes (in bp).\nMultiple comma-separated\
+                  \ enzymes can\nbe given."
+                synonyms:
+                - -e
+                - --enzyme
+                args: !SimpleFlagArg
+                  name: ENZ
+                optional: true
+              - !Flag
+                description: Write even if the output file already exists.
+                synonyms:
+                - -F
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Minimum size threshold to keep\nfragments. [default:\
+                  \ 0]"
+                synonyms:
+                - -s
+                - --size
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Directory where the fragments and\ncontigs files will\
+                  \ be written.\nDefaults to current directory."
+                synonyms:
+                - -o
+                - --outdir
+                args: !SimpleFlagArg
+                  name: DIR
+                optional: true
+              - !Flag
+                description: "Show a histogram of fragment length\ndistribution after\
+                  \ digestion."
+                synonyms:
+                - -p
+                - --plot
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Path to directory of the output figure.\nBy default,\
+                  \ the figure is only shown\nbut not saved."
+                synonyms:
+                - -f
+                - --figdir
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Genome chunking command\n\n    Digests a fasta file into\
+                \ fragments based on a restriction enzyme or a\n    fixed chunk size.\
+                \ Generates two output files into the target directory\n    named\
+                \ \"info_contigs.txt\" and \"fragments_list.txt\"\n\n    usage:\n\
+                \        digest [--plot] [--figdir=FILE] [--force] [--circular] [--size=INT]\n\
+                \               [--outdir=DIR] --enzyme=ENZ <fasta>\n\n    arguments:\n\
+                \        fasta                     Fasta file to be digested\n\n \
+                \   options:\n        -c, --circular                  Specify if the\
+                \ genome is circular.\n        -e, --enzyme=ENZ[,ENZ2,...]     A restriction\
+                \ enzyme or an integer\n                                        representing\
+                \ fixed chunk sizes (in bp).\n                                   \
+                \     Multiple comma-separated enzymes can\n                     \
+                \                   be given.\n        -F, --force               \
+                \      Write even if the output file already exists.\n        -s,\
+                \ --size=INT                  Minimum size threshold to keep\n   \
+                \                                     fragments. [default: 0]\n  \
+                \      -o, --outdir=DIR                Directory where the fragments\
+                \ and\n                                        contigs files will\
+                \ be written.\n                                        Defaults to\
+                \ current directory.\n        -p, --plot                      Show\
+                \ a histogram of fragment length\n                               \
+                \         distribution after digestion.\n        -f, --figdir=FILE\
+                \               Path to directory of the output figure.\n        \
+                \                                By default, the figure is only shown\n\
+                \                                        but not saved.\n\n    output:\n\
+                \        fragments_list.txt: information about restriction fragments\
+                \ (or chunks)\n        info_contigs.txt: information about contigs\
+                \ or chromosomes\n\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id011
+              - hicstuff
+              - pipeline
+              positional:
+              - !Positional
+                description: -e, --enzyme=ENZ              Restriction enzyme if a
+                  string, or chunk
+                position: 0
+                name: positions.
+                optional: false
+              - !Positional
+                description: -p, --plot                    Generates plots in the
+                  output directory
+                position: 0
+                name: directory.
+                optional: false
+              named:
+              - !Flag
+                description: "Alignment software to use. Can be either\nbowtie2, minimap2\
+                  \ or bwa. minimap2 should\nonly be used for reads > 100 bp.\n[default:\
+                  \ bowtie2]"
+                synonyms:
+                - -a
+                - --aligner
+                args: !SimpleFlagArg
+                  name: bowtie2
+                optional: true
+              - !Flag
+                description: "Positions of the centromeres separated by\na space and\
+                  \ in the same order than the\nchromosomes. Discordant with the circular\n\
+                  option."
+                synonyms:
+                - -c
+                - --centromeres
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Enable if the genome is circular.\nDiscordant with the\
+                  \ centromeres option."
+                synonyms:
+                - -C
+                - --circular
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "If enabled, generates a distance law file\nwith the\
+                  \ values of the probabilities to\nhave a contact between two distances\
+                  \ for\neach chromosomes or arms if the file with\nthe positions\
+                  \ has been given. The values\nare not normalized, or averaged."
+                synonyms:
+                - -d
+                - --distance-law
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Filter out PCR duplicates based on read
+                synonyms:
+                - -D
+                - --duplicates
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Filter out spurious 3C events (loops and\nuncuts) using\
+                  \ hicstuff filter. Requires\n\"-e\" to be a restriction enzyme,\
+                  \ not a\nchunk size. For more informations, see\nCournac et al.\
+                  \ BMC Genomics, 2012."
+                synonyms:
+                - -f
+                - --filter
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Write even if the output file already exists.
+                synonyms:
+                - -F
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Map reads iteratively using hicstuff\niteralign, by\
+                  \ truncating reads to 20bp\nand then repeatedly extending and\n\
+                  aligning them."
+                synonyms:
+                - -i
+                - --iterative
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Reference genome to map against. Path to\nthe bowtie2/bwa\
+                  \ index if using bowtie2/bwa,\nor to a FASTA file if using minimap2."
+                synonyms:
+                - -g
+                - --genome
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "The format of the output sparse matrix.\nCan be \"bg2\"\
+                  \ for 2D Bedgraph format,\n\"cool\" for Mirnylab's cooler software,\
+                  \ or\n\"graal\" for graal-compatible plain text\nCOO format. [default:\
+                  \ graal]"
+                synonyms:
+                - -M
+                - --matfmt
+                args: !SimpleFlagArg
+                  name: FMT
+                optional: true
+              - !Flag
+                description: "If enabled, intermediary BED files will\nbe kept after\
+                  \ generating the contact map.\nDisabled by defaut."
+                synonyms:
+                - -n
+                - --no-cleanup
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Output directory. Defaults to the current
+                synonyms:
+                - -o
+                - --outdir
+                args: !SimpleFlagArg
+                  name: DIR
+                optional: true
+              - !Flag
+                description: "Overrides default filenames and prefixes all\noutput\
+                  \ files with a custom name."
+                synonyms:
+                - -P
+                - --prefix
+                args: !SimpleFlagArg
+                  name: PREFIX
+                optional: true
+              - !Flag
+                description: "Minimum mapping quality for selecting\ncontacts. [default:\
+                  \ 30]."
+                synonyms:
+                - -q
+                - --quality-min
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Integer. Number of kb that will be remove around\nthe\
+                  \ centromere position given by in the centromere\nfile. [default:\
+                  \ 0]"
+                synonyms:
+                - -r
+                - --remove-centromeres
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Maximum read length in the fastq file. Optionally\n\
+                  used in iterative alignment mode. Estimated from\nthe first read\
+                  \ by default. Useful if input fastq\nis a composite of different\
+                  \ read lengths."
+                synonyms:
+                - -R
+                - --read-len
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Minimum size threshold to consider\ncontigs. Keep all\
+                  \ contigs by default.\n[default: 0]"
+                synonyms:
+                - -s
+                - --size
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Define the starting point of the pipeline\nto skip some\
+                  \ steps. Default is \"fastq\" to\nrun from the start. Can also be\
+                  \ \"bam\" to\nskip the alignment, \"pairs\" to start from a\nsingle\
+                  \ pairs file or \"pairs_idx\" to skip\nfragment attribution and\
+                  \ only build the\nmatrix. [default: fastq]"
+                synonyms:
+                - -S
+                - --start-stage
+                args: !SimpleFlagArg
+                  name: STAGE
+                optional: true
+              - !Flag
+                description: "Number of threads to allocate.\n[default: 1]."
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Directory for storing intermediary BED\nfiles and temporary\
+                  \ sort files. Defaults\nto the output directory."
+                synonyms:
+                - -T
+                - --tmpdir
+                args: !SimpleFlagArg
+                  name: DIR
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -p
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -e
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Whole (end-to-end) contact map generation command\n\n  \
+                \  Entire Pipeline to process fastq files into a Hi-C matrix. Uses\
+                \ all the\n    individual components of hicstuff.\n\n    usage:\n\
+                \        pipeline [--aligner=bowtie2] [--centromeres=FILE] [--circular]\
+                \ [--distance-law]\n                 [--duplicates] [--enzyme=ENZ]\
+                \ [--filter] [--force] [--iterative] \n                 [--matfmt=FMT]\
+                \ [--no-cleanup] [--outdir=DIR] [--plot] [--prefix=PREFIX]\n     \
+                \            [--quality-min=INT] [--read-len=INT] [--remove-centromeres=INT]\
+                \ [--size=INT]\n                 [--start-stage=STAGE] [--threads=INT]\
+                \ [--tmpdir=DIR] --genome=FILE <input1> [<input2>]\n\n    arguments:\n\
+                \        input1:             Forward fastq file, if start_stage is\
+                \ \"fastq\", sam\n                            file for aligned forward\
+                \ reads if start_stage is\n                            \"bam\", or\
+                \ a .pairs file if start_stage is \"pairs\".\n        input2:    \
+                \         Reverse fastq file, if start_stage is \"fastq\", sam\n \
+                \                           file for aligned reverse reads if start_stage\
+                \ is\n                            \"bam\", or nothing if start_stage\
+                \ is \"pairs\".\n\n\n    options:\n        -a, --aligner=bowtie2 \
+                \        Alignment software to use. Can be either\n              \
+                \                        bowtie2, minimap2 or bwa. minimap2 should\n\
+                \                                      only be used for reads > 100\
+                \ bp. \n                                      [default: bowtie2]\n\
+                \        -c, --centromeres=FILE        Positions of the centromeres\
+                \ separated by\n                                      a space and\
+                \ in the same order than the \n                                  \
+                \    chromosomes. Discordant with the circular\n                 \
+                \                     option.\n        -C, --circular            \
+                \    Enable if the genome is circular. \n                        \
+                \              Discordant with the centromeres option.   \n      \
+                \  -d, --distance-law            If enabled, generates a distance\
+                \ law file\n                                      with the values\
+                \ of the probabilities to \n                                     \
+                \ have a contact between two distances for\n                     \
+                \                 each chromosomes or arms if the file with\n    \
+                \                                  the positions has been given. The\
+                \ values\n                                      are not normalized,\
+                \ or averaged.\n        -D, --duplicates              Filter out PCR\
+                \ duplicates based on read\n                                     \
+                \ positions.\n        -e, --enzyme=ENZ              Restriction enzyme\
+                \ if a string, or chunk\n                                      size\
+                \ (i.e. resolution) if a number. Can\n                           \
+                \           also be multiple comma-separated enzymes.\n          \
+                \                            [default: 5000]\n        -f, --filter\
+                \                  Filter out spurious 3C events (loops and\n    \
+                \                                  uncuts) using hicstuff filter.\
+                \ Requires\n                                      \"-e\" to be a restriction\
+                \ enzyme, not a\n                                      chunk size.\
+                \ For more informations, see\n                                   \
+                \   Cournac et al. BMC Genomics, 2012.\n        -F, --force      \
+                \             Write even if the output file already exists.\n    \
+                \    -i, --iterative               Map reads iteratively using hicstuff\n\
+                \                                      iteralign, by truncating reads\
+                \ to 20bp\n                                      and then repeatedly\
+                \ extending and\n                                      aligning them.\n\
+                \        -g, --genome=FILE             Reference genome to map against.\
+                \ Path to\n                                      the bowtie2/bwa index\
+                \ if using bowtie2/bwa, \n                                      or\
+                \ to a FASTA file if using minimap2.\n        -M, --matfmt=FMT   \
+                \           The format of the output sparse matrix.\n            \
+                \                          Can be \"bg2\" for 2D Bedgraph format,\
+                \ \n                                      \"cool\" for Mirnylab's\
+                \ cooler software, or\n                                      \"graal\"\
+                \ for graal-compatible plain text\n                              \
+                \        COO format. [default: graal]\n        -n, --no-cleanup  \
+                \            If enabled, intermediary BED files will\n           \
+                \                           be kept after generating the contact map.\n\
+                \                                      Disabled by defaut.\n     \
+                \   -o, --outdir=DIR              Output directory. Defaults to the\
+                \ current\n                                      directory.\n    \
+                \    -p, --plot                    Generates plots in the output directory\n\
+                \                                      at different steps of the pipeline.\n\
+                \        -P, --prefix=PREFIX           Overrides default filenames\
+                \ and prefixes all\n                                      output files\
+                \ with a custom name.\n        -q, --quality-min=INT         Minimum\
+                \ mapping quality for selecting\n                                \
+                \      contacts. [default: 30].\n        -r, --remove-centromeres=INT\
+                \  Integer. Number of kb that will be remove around \n           \
+                \                           the centromere position given by in the\
+                \ centromere\n                                      file. [default:\
+                \ 0]\n        -R, --read-len=INT            Maximum read length in\
+                \ the fastq file. Optionally\n                                   \
+                \   used in iterative alignment mode. Estimated from\n           \
+                \                           the first read by default. Useful if input\
+                \ fastq\n                                      is a composite of different\
+                \ read lengths.\n        -s, --size=INT                Minimum size\
+                \ threshold to consider\n                                      contigs.\
+                \ Keep all contigs by default.\n                                 \
+                \     [default: 0]\n        -S, --start-stage=STAGE       Define the\
+                \ starting point of the pipeline\n                               \
+                \       to skip some steps. Default is \"fastq\" to\n            \
+                \                          run from the start. Can also be \"bam\"\
+                \ to\n                                      skip the alignment, \"\
+                pairs\" to start from a\n                                      single\
+                \ pairs file or \"pairs_idx\" to skip\n                          \
+                \            fragment attribution and only build the \n          \
+                \                            matrix. [default: fastq]\n        -t,\
+                \ --threads=INT             Number of threads to allocate.\n     \
+                \                                 [default: 1].\n        -T, --tmpdir=DIR\
+                \              Directory for storing intermediary BED\n          \
+                \                            files and temporary sort files. Defaults\n\
+                \                                      to the output directory.\n\n\
+                \    output:\n        abs_fragments_contacts_weighted.txt: the sparse\
+                \ contact map\n        fragments_list.txt: information about restriction\
+                \ fragments (or chunks)\n        info_contigs.txt: information about\
+                \ contigs or chromosomes\n        hicstuff.log: details and statistics\
+                \ about the run.\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id012
+              - hicstuff
+              - subsample
+              positional:
+              - !Positional
+                description: '[--prop=FLOAT] [--force] <contact_map> <subsampled_prefix>'
+                position: 0
+                name: subsample
+                optional: false
+              - !Positional
+                description: Sparse contact matrix in graal, bg2 or cool format.
+                position: 0
+                name: contact_map
+                optional: false
+              - !Positional
+                description: "Path without extension to the output map in the same\n\
+                  format as the input containing only a fraction of the\ncontacts."
+                position: 1
+                name: subsampled_prefix
+                optional: false
+              named:
+              - !Flag
+                description: "Proportion of contacts to sample from the input matrix\n\
+                  if between 0 and 1. Raw number of contacts to keep if\nsuperior\
+                  \ to 1. [default: 0.1]"
+                synonyms:
+                - -p
+                - --prop
+                args: !SimpleFlagArg
+                  name: FLOAT
+                optional: true
+              - !Flag
+                description: Write even if the output file already exists.
+                synonyms:
+                - -F
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "    Subsample contacts from a Hi-C matrix. Probability of\
+                \ sampling is proportional\n    to the intensity of the bin.\n   \
+                \ usage:\n        subsample  [--prop=FLOAT] [--force] <contact_map>\
+                \ <subsampled_prefix>\n\n    arguments:\n        contact_map     \
+                \        Sparse contact matrix in graal, bg2 or cool format.\n   \
+                \     subsampled_prefix       Path without extension to the output\
+                \ map in the same\n                                format as the input\
+                \ containing only a fraction of the\n                            \
+                \    contacts.\n\n    options:\n        -p, --prop=FLOAT        Proportion\
+                \ of contacts to sample from the input matrix\n                  \
+                \              if between 0 and 1. Raw number of contacts to keep\
+                \ if\n                                superior to 1. [default: 0.1]\n\
+                \        -F, --force             Write even if the output file already\
+                \ exists.\n    \n"
+              generated_using: *id004
+            - !Command
+              command: &id013
+              - hicstuff
+              - missview
+              positional:
+              - !Positional
+                description: Genome file in fasta format.
+                position: 0
+                name: genome
+                optional: false
+              - !Positional
+                description: Path to the output image.
+                position: 1
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: "The read alignment software to use. Can be either\n\
+                  bowtie2, minimap2 or bwa. minimap2 should only be\nused for reads\
+                  \ > 100 bp. [default: bowtie2]"
+                synonyms:
+                - -a
+                - --aligner
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: 'Resolution to use to preview the Hi-C map. [default:
+                  5000]'
+                synonyms:
+                - -b
+                - --binning
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: Write even if the output file already exists.
+                synonyms:
+                - -F
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Write even if the output file already exists.
+                synonyms:
+                - -R
+                - --read-len
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: 'Number of CPUs to use in parallel. [default: 1]'
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: Directory where temporary files will be generated.
+                synonyms:
+                - -T
+                - --tmpdir
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "    Previews bins that will be missing in a Hi-C map with\
+                \ a given read length by\n    finding repetitive regions in the genome.\n\
+                \n    usage:\n        missview [--aligner=bowtie2] [--force] [--binning=5000]\n\
+                \                 [--threads=1] [--tmpdir=STR] --read-len=INT <genome>\
+                \ <output>\n\n    arguments:\n        genome               Genome\
+                \ file in fasta format.\n        output               Path to the\
+                \ output image.\n\n    options:\n        -a, --aligner=STR    The\
+                \ read alignment software to use. Can be either\n                \
+                \             bowtie2, minimap2 or bwa. minimap2 should only be \n\
+                \                             used for reads > 100 bp. [default: bowtie2]\n\
+                \        -b, --binning=INT    Resolution to use to preview the Hi-C\
+                \ map. [default: 5000]\n        -F, --force          Write even if\
+                \ the output file already exists.\n        -R, --read-len=INT   Write\
+                \ even if the output file already exists.\n        -t, --threads=INT\
+                \    Number of CPUs to use in parallel. [default: 1]\n        -T,\
+                \ --tmpdir=STR     Directory where temporary files will be generated.\n\
+                \    \n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: shows the help
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: shows the version
+              synonyms:
+              - -v
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "Simple Hi-C pipeline for generating and manipulating contact\
+              \ matrices.\n\nusage:\n    hicstuff [-hv] <command> [<args>...]\n\n\
+              options:\n    -h, --help                  shows the help\n    -v, --version\
+              \               shows the version\n\nThe subcommands are:\n    convert\
+              \         Convert Hi-C data between different formats.\n    digest \
+              \         Digest genome into a list of fragments.\n    distancelaw \
+              \    Analyse and plot distance law.\n    filter          Filters Hi-C\
+              \ pairs to exclude spurious events.\n    iteralign       Iteratively\
+              \ aligns reads to a reference genome.\n    missview        Preview missing\
+              \ Hi-C bins in based on the genome and read length.\n    pipeline  \
+              \      Hi-C pipeline to generate contact matrix from fastq files.\n\
+              \    rebin           Bin the matrix and regenerate files accordingly.\n\
+              \    subsample       Bootstrap subsampling of contacts from a Hi-C map.\n\
+              \    view            Visualize a Hi-C matrix.    \n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag:
@@ -293,12 +1716,9 @@ subcommands:
             \           BAM format.\n        -R, --read-len=INT       Read length\
             \ in input FASTQ file. If not provided,\n                            \
             \     this is estimated from the first read in the file.\n    \n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - hicstuff
-          - rebin
+          command: *id005
           positional:
           - !Positional
             description: Sparse contact matrix in graal, cool or bg2 format.
@@ -380,9 +1800,7 @@ subcommands:
             \  \n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - hicstuff
-          - filter
+          command: *id006
           positional:
           - !Positional
             description: "2D BED file containing coordinates of Hi-C interacting\n\
@@ -468,9 +1886,7 @@ subcommands:
             \    \n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - hicstuff
-          - view
+          command: *id007
           positional:
           - !Positional
             description: Sparse contact matrix in bg2, cool or graal format
@@ -677,9 +2093,7 @@ subcommands:
             \  INT standard deviations.\n    \n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - hicstuff
-          - convert
+          command: *id008
           positional:
           - !Positional
             description: The file containing the contact frequencies.
@@ -761,9 +2175,7 @@ subcommands:
             \ [default: cool]\n    \n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - hicstuff
-          - distancelaw
+          command: *id009
           positional: []
           named:
           - !Flag
@@ -972,9 +2384,7 @@ subcommands:
             \       taken to make the average.\n    \n"
           generated_using: *id004
         - !Command
-          command: &id010
-          - hicstuff
-          - digest
+          command: *id010
           positional:
           - !Positional
             description: Fasta file to be digested
@@ -1074,9 +2484,7 @@ subcommands:
             \ or chromosomes\n\n    \n"
           generated_using: *id004
         - !Command
-          command: &id011
-          - hicstuff
-          - pipeline
+          command: *id011
           positional:
           - !Positional
             description: -e, --enzyme=ENZ              Restriction enzyme if a string,
@@ -1390,9 +2798,7 @@ subcommands:
             \        hicstuff.log: details and statistics about the run.\n    \n"
           generated_using: *id004
         - !Command
-          command: &id012
-          - hicstuff
-          - subsample
+          command: *id012
           positional:
           - !Positional
             description: '[--prop=FLOAT] [--force] <contact_map> <subsampled_prefix>'
@@ -1449,9 +2855,7 @@ subcommands:
             \ output file already exists.\n    \n"
           generated_using: *id004
         - !Command
-          command: &id013
-          - hicstuff
-          - missview
+          command: *id013
           positional:
           - !Positional
             description: Genome file in fasta format.
@@ -1537,21 +2941,9 @@ subcommands:
             \ be generated.\n    \n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: shows the help
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: shows the version
-          synonyms:
-          - -v
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "Simple Hi-C pipeline for generating and manipulating contact matrices.\n\
           \nusage:\n    hicstuff [-hv] <command> [<args>...]\n\noptions:\n    -h,\
           \ --help                  shows the help\n    -v, --version            \
@@ -1646,7 +3038,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -1730,7 +3122,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT-INT
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -1900,7 +3292,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2014,7 +3406,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FORMAT
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2177,7 +3569,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2310,7 +3702,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2544,7 +3936,7 @@ subcommands:
         - -e
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2681,7 +4073,7 @@ subcommands:
         - --force
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2763,7 +4155,7 @@ subcommands:
         args: !SimpleFlagArg
           name: STR
         optional: true
-      parent: *id003
+      parent: *id014
       subcommands: []
       usage: []
       help_flag:
@@ -2881,7 +4273,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -2964,7 +4356,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT-INT
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -3131,7 +4523,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -3241,7 +4633,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FORMAT
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -3402,7 +4794,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -3532,7 +4924,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -3765,7 +5157,7 @@ subcommands:
     - -e
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -3898,7 +5290,7 @@ subcommands:
     - --force
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:
@@ -3979,7 +5371,7 @@ subcommands:
     args: !SimpleFlagArg
       name: STR
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag:

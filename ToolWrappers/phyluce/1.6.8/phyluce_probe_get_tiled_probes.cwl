@@ -1,9 +1,12 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_tiled_probes.cwl
+id: phyluce_probe_get_tiled_probes.cwl
 inputs:
 - id: in_probe_prefix
-  doc: ''
-  type: string
+  doc: "DESIGNER --design DESIGN\n[--probe-length LENGTH]\n[--tiling-density DENSITY]\n\
+    [--overlap {middle,flush-left}]\n[--probe-bed PROBE_BED]\n[--locus-bed LOCUS_BED]\
+    \ [--masking MASK]\n[--do-not-remove-ambiguous]\n[--remove-gc]\n[--start-index\
+    \ START_INDEX]\n[--two-probes]"
+  type: long
   inputBinding:
     prefix: --probe-prefix
 - id: in_input

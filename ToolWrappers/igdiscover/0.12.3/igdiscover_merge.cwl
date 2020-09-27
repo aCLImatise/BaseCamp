@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_merge.cwl
+id: igdiscover_merge.cwl
 inputs:
 - id: in_threads
   doc: Number of threads

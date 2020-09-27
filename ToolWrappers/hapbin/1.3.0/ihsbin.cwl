@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ihsbin.cwl
+id: ihsbin.cwl
 inputs:
 - id: in_hap
   doc: Hap file

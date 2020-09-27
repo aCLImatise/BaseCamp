@@ -2,12 +2,12 @@ version 1.0
 
 task PhyluceProbeGetTiledProbeFromMultipleInputs {
   input {
-    Boolean? var_0
-    Boolean? var_1
-    String? design
+    Boolean? multi_fast_a_output
     Directory? fast_as
     File? file_store_output
+    String? probe_prefix
     String? designer
+    String? design
     Int? probe_length
     String? tiling_density
     String? overlap
@@ -18,19 +18,15 @@ task PhyluceProbeGetTiledProbeFromMultipleInputs {
     Boolean? remove_gc
     Int? start_index
     Boolean? two_probes
-    String _output_output
-    String _designer_designer
   }
   command <<<
     phyluce_probe_get_tiled_probe_from_multiple_inputs \
-      ~{_output_output} \
-      ~{_designer_designer} \
-      ~{if (var_0) then "--multi-fasta-output" else ""} \
-      ~{if (var_1) then "--probe-prefix" else ""} \
-      ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
+      ~{if (multi_fast_a_output) then "--multi-fasta-output" else ""} \
       ~{if defined(fast_as) then ("--fastas " +  '"' + fast_as + '"') else ""} \
       ~{if defined(file_store_output) then ("--output " +  '"' + file_store_output + '"') else ""} \
+      ~{if defined(probe_prefix) then ("--probe-prefix " +  '"' + probe_prefix + '"') else ""} \
       ~{if defined(designer) then ("--designer " +  '"' + designer + '"') else ""} \
+      ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
       ~{if defined(probe_length) then ("--probe-length " +  '"' + probe_length + '"') else ""} \
       ~{if defined(tiling_density) then ("--tiling-density " +  '"' + tiling_density + '"') else ""} \
       ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""} \
@@ -43,12 +39,12 @@ task PhyluceProbeGetTiledProbeFromMultipleInputs {
       ~{if (two_probes) then "--two-probes" else ""}
   >>>
   parameter_meta {
-    var_0: ""
-    var_1: ""
-    design: ""
+    multi_fast_a_output: "MULTI_FASTA_OUTPUT\\n--output OUTPUT\\n--probe-prefix\\nPROBE_PREFIX\\n--designer DESIGNER\\n--design DESIGN\\n[--probe-length LENGTH]\\n[--tiling-density DENSITY]\\n[--overlap {middle,flush-left}]\\n[--probe-bed PROBE_BED]\\n[--locus-bed LOCUS_BED]\\n[--masking MASK]\\n[--do-not-remove-ambiguous]\\n[--remove-gc]\\n[--start-index START_INDEX]\\n[--two-probes]"
     fast_as: "The folder of fasta files from which to design probes"
     file_store_output: "The file in which to store the output"
+    probe_prefix: "The prefix (e.g. \\\"uce-\\\") to add to all probes designed"
     designer: "Your last name (to indicate who designed the probes)"
+    design: "The design name."
     probe_length: "The length of the probes sequence to design"
     tiling_density: "The tiling density"
     overlap: "The method of tiling"
@@ -59,8 +55,6 @@ task PhyluceProbeGetTiledProbeFromMultipleInputs {
     remove_gc: "Remove loci with GC content outside 30 <= GC <= 70"
     start_index: "The starting UCE index number to use."
     two_probes: "Design only two probes for a given locus."
-    _output_output: "--output OUTPUT"
-    _designer_designer: "--designer DESIGNER"
   }
   output {
     File out_stdout = stdout()

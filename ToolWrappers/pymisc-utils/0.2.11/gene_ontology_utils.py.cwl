@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene_ontology_utils.py.cwl
+id: gene_ontology_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

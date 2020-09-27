@@ -65,18 +65,10 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTPUT_PREFIX
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: "Prefix for outputs. (default: common_errors)\n"
-          synonyms:
-          - -o
-          - --output_prefix
-          args: !SimpleFlagArg
-            name: OUTPUT_PREFIX
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -105,7 +97,82 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTPUT_PREFIX
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: "Prefix for outputs. (default: common_errors)\n"
+              synonyms:
+              - -o
+              - --output_prefix
+              args: !SimpleFlagArg
+                name: OUTPUT_PREFIX
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: common_errors_from_bam
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: bam
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: ref_fasta
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: OUTPUT_PREFIX
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: common_errors_from_bam [-h] [-o OUTPUT_PREFIX] bam\
+                \ ref_fasta\ncommon_errors_from_bam: error: the following arguments\
+                \ are required: ref_fasta\n"
+              generated_using: &id004 []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: common_errors_from_bam [-h] [-o OUTPUT_PREFIX] bam\
+              \ ref_fasta\n\nGet errors common to multiple assemblies aligned to ref.\n\
+              \npositional arguments:\n  bam                   input bam file containing\
+              \ assemblies trimmed to a\n                        common alignment\
+              \ window\n  ref_fasta             reference fasta file of the reference\
+              \ over that\n                        alignment window\n\noptional arguments:\n\
+              \  -h, --help            show this help message and exit\n  -o OUTPUT_PREFIX,\
+              \ --output_prefix OUTPUT_PREFIX\n                        Prefix for\
+              \ outputs. (default: common_errors)\n"
+            generated_using: &id005
+            - --help
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -118,15 +185,9 @@ subcommands:
           version_flag:
           help_text: "usage: common_errors_from_bam [-h] [-o OUTPUT_PREFIX] bam ref_fasta\n\
             common_errors_from_bam: error: the following arguments are required: ref_fasta\n"
-          generated_using: &id004 []
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: common_errors_from_bam [-h] [-o OUTPUT_PREFIX] bam ref_fasta\n\
@@ -137,8 +198,7 @@ subcommands:
           \                alignment window\n\noptional arguments:\n  -h, --help \
           \           show this help message and exit\n  -o OUTPUT_PREFIX, --output_prefix\
           \ OUTPUT_PREFIX\n                        Prefix for outputs. (default: common_errors)\n"
-        generated_using: &id005
-        - --help
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag: !Flag

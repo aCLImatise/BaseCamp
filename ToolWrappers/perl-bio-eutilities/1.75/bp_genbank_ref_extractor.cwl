@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_genbank_ref_extractor.cwl
+id: bp_genbank_ref_extractor.cwl
 inputs:
 - id: in_assembly
   doc: "When retrieving the sequence, a specific assemly can be defined. The\nvalue\

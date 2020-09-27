@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../penny.cwl
+id: penny.cwl
 inputs: []
 outputs:
 - id: out_stdout

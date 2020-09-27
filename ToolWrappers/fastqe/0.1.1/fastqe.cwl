@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqe.cwl
+id: fastqe.cwl
 inputs:
 - id: in_min_len
   doc: Minimum length sequence to include in stats (default 0)

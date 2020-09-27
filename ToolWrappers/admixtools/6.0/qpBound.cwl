@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpBound.cwl
+id: qpBound.cwl
 inputs:
 - id: in_use_nam_snp
   doc: '... use <nam> as snp details name.'

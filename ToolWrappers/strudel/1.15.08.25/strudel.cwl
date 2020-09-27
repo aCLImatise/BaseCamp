@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strudel.cwl
+id: strudel.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../var_agg.cwl
+id: var_agg.cwl
 inputs:
 - id: in_verbose
   doc: Increase verbosity

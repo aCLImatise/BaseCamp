@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_genome_evaluations.py.cwl
+id: run_genome_evaluations.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

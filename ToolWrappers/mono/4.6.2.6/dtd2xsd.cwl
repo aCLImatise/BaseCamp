@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dtd2xsd.cwl
+id: dtd2xsd.cwl
 inputs:
 - id: in_instance_xml_file
   doc: ''

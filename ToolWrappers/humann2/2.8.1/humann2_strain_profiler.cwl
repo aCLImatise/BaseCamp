@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_strain_profiler.cwl
+id: humann2_strain_profiler.cwl
 inputs:
 - id: in_input
   doc: Original output table (tsv or biom format); default=[TSV/STDIN]

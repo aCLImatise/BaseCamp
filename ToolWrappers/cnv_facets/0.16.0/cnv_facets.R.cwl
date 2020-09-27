@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnv_facets.R.cwl
+id: cnv_facets.R.cwl
 inputs:
 - id: in_out
   doc: Output prefix for the output files

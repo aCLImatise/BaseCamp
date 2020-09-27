@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafFind.cwl
+id: mafFind.cwl
 inputs: []
 outputs:
 - id: out_stdout

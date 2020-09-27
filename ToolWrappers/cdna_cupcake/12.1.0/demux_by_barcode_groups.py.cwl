@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../demux_by_barcode_groups.py.cwl
+id: demux_by_barcode_groups.py.cwl
 inputs:
 - id: in_pooled_fast_x
   doc: "Pooled FASTA/FASTQ (optional, if given, will also\noutput demux fa/fq)\n"

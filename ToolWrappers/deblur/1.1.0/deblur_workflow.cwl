@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_workflow.cwl
+id: deblur_workflow.cwl
 inputs:
 - id: in_seqs_fp
   doc: "Either a Demultiplexed FASTA or FASTQ file\nincluding all samples, or a directory\

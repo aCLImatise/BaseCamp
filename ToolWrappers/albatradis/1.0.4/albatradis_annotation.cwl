@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../albatradis_annotation.cwl
+id: albatradis_annotation.cwl
 inputs:
 - id: in_feature_size
   doc: 'Feature size (default: 198)'

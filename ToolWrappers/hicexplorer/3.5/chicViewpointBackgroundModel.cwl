@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chicViewpointBackgroundModel.cwl
+id: chicViewpointBackgroundModel.cwl
 inputs:
 - id: in_reference_points
   doc: "Bed file contains all reference points which should be\nused to build the\

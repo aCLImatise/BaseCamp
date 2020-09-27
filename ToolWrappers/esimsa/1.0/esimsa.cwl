@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esimsa.cwl
+id: esimsa.cwl
 inputs:
 - id: in_peak_list
   doc: ''

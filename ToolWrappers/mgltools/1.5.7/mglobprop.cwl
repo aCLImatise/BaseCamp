@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobprop.cwl
+id: mglobprop.cwl
 inputs: []
 outputs:
 - id: out_stdout

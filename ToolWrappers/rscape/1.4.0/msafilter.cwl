@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msafilter.cwl
+id: msafilter.cwl
 inputs:
 - id: in_outdir
   doc: ': specify a directory for all output files'

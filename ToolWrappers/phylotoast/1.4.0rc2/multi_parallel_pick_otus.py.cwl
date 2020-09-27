@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multi_parallel_pick_otus.py.cwl
+id: multi_parallel_pick_otus.py.cwl
 inputs:
 - id: in_input_fna
   doc: "The names of the sequence files that will be have job\nscripts generated to\

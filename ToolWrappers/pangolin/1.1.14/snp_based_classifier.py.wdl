@@ -2,20 +2,17 @@ version 1.0
 
 task SnpBasedClassifierpy {
   input {
-    String? defining_snps
-    File? query_snps
-    String? outfile
+    String? q
+    String? snps
   }
   command <<<
     snp_based_classifier_py \
-      ~{if defined(defining_snps) then ("--defining-snps " +  '"' + defining_snps + '"') else ""} \
-      ~{if defined(query_snps) then ("--query-snps " +  '"' + query_snps + '"') else ""} \
-      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
+      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
+      ~{if defined(snps) then ("-snps " +  '"' + snps + '"') else ""}
   >>>
   parameter_meta {
-    defining_snps: ""
-    query_snps: "A fasta file containing the query sequences"
-    outfile: ""
+    q: ""
+    snps: ""
   }
   output {
     File out_stdout = stdout()

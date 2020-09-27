@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intervene_pairwise.cwl
+id: intervene_pairwise.cwl
 inputs:
 - id: in_input_genomic_regions
   doc: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic regions in\

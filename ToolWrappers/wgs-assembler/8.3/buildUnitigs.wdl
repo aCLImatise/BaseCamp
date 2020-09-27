@@ -21,7 +21,6 @@ task BuildUnitigs {
     String intersection_joining
     String contained_placement
     String intermediate_unit_igs
-    String mate_split_discontinuous
     String mate_split_coverage_plot
   }
   command <<<
@@ -33,7 +32,6 @@ task BuildUnitigs {
       ~{intersection_joining} \
       ~{contained_placement} \
       ~{intermediate_unit_igs} \
-      ~{mate_split_discontinuous} \
       ~{mate_split_coverage_plot} \
       ~{if (mandatory_path_ovlstore) then "-O" else ""} \
       ~{if (mandatory_path_gkpstore) then "-G" else ""} \
@@ -68,7 +66,6 @@ task BuildUnitigs {
     intersection_joining: "intersectionJoiningDebug"
     contained_placement: "happiness"
     intermediate_unit_igs: "mateSplitAnalysis"
-    mate_split_discontinuous: "mateSplitUnhappyContains"
     mate_split_coverage_plot: "stderr"
   }
   output {

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MIT_License.Morpheus.txt.cwl
+id: MIT_License.Morpheus.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyze_read_depth.cwl
+id: analyze_read_depth.cwl
 inputs:
 - id: in_verbose
   doc: a verbose output
@@ -48,8 +48,8 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -u
-- id: in_options
-  doc: '-------------------'
+- id: in_bank
+  doc: ''
   type: string
   inputBinding:
     position: 0

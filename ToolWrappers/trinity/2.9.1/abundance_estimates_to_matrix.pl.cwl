@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abundance_estimates_to_matrix.pl.cwl
+id: abundance_estimates_to_matrix.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

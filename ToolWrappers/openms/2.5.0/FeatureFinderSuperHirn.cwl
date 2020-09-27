@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FeatureFinderSuperHirn.cwl
+id: FeatureFinderSuperHirn.cwl
 inputs:
 - id: in_in
   doc: "*        Input profile data file  (valid formats: 'mzML')"

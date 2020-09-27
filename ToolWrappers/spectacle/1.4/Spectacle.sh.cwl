@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Spectacle.sh.cwl
+id: Spectacle.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

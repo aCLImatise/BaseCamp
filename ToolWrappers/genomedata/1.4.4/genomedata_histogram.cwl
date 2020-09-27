@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_histogram.cwl
+id: genomedata_histogram.cwl
 inputs:
 - id: in_include_coords
   doc: limit summary to genomic coordinates in FILE

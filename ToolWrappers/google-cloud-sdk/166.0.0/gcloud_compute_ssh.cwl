@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_ssh.cwl
+id: gcloud_compute_ssh.cwl
 inputs:
 - id: in_instance
   doc: :%INSTANCE%:80
@@ -75,11 +75,6 @@ inputs:
     prefix: --zone
 - id: in_address_dot
   doc: This command ensures that the user's public SSH key is present in the
-  type: string
-  inputBinding:
-    position: 0
-- id: in_into_dot
-  doc: '[-- SSH_ARGS ...]'
   type: string
   inputBinding:
     position: 0

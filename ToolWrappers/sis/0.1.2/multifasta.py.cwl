@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multifasta.py.cwl
+id: multifasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_container_builds.cwl
+id: gcloud_container_builds.cwl
 inputs:
 - id: in_cancel
   doc: Cancel an ongoing build.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kallisto_inspect.cwl
+id: kallisto_inspect.cwl
 inputs:
 - id: in_gfa
   doc: Filename for GFA output of T-DBG

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matrix_to_fasta.py.cwl
+id: matrix_to_fasta.py.cwl
 inputs:
 - id: in_input_matrix
   doc: /path/to/NASP_matrix [REQUIRED]

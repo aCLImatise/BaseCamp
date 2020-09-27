@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_sort.cwl
+id: maf_sort.cwl
 inputs: []
 outputs:
 - id: out_stdout

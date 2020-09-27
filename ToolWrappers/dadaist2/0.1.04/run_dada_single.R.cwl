@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_dada_single.R.cwl
+id: run_dada_single.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

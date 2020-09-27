@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fusioncatcher_to_CG.cwl
+id: fusioncatcher_to_CG.cwl
 inputs:
 - id: in_input_format
   doc: File type of the file to convert

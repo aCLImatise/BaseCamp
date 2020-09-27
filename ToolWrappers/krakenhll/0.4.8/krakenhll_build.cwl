@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krakenhll_build.cwl
+id: krakenhll_build.cwl
 inputs:
 - id: in_download_taxonomy
   doc: Download NCBI taxonomic information

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_dbnsfp.cwl
+id: SnpSift_dbnsfp.cwl
 inputs:
 - id: in_annotate_fields_even_database
   doc: ": Annotate fields, even if the database has an empty value (annotates using\

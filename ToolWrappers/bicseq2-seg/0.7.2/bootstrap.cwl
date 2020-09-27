@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bootstrap.cwl
+id: bootstrap.cwl
 inputs: []
 outputs:
 - id: out_stdout

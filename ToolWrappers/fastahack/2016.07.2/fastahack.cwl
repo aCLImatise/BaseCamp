@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastahack.cwl
+id: fastahack.cwl
 inputs:
 - id: in_index
   doc: generate fasta index <fasta reference>.fai

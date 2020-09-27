@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfnull2ref.cwl
+id: vcfnull2ref.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

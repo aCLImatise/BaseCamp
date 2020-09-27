@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfm_id_precomputed.cwl
+id: cfm_id_precomputed.cwl
 inputs:
 - id: in_cfm_id_dot_exe
   doc: ''

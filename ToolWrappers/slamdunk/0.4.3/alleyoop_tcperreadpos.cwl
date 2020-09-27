@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_tcperreadpos.cwl
+id: alleyoop_tcperreadpos.cwl
 inputs:
 - id: in_reference
   doc: Reference fasta file

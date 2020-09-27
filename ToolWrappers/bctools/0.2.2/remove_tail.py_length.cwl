@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_tail.py_length.cwl
+id: remove_tail.py_length.cwl
 inputs:
 - id: in_d
   doc: ''

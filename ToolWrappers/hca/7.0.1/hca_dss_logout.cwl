@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_logout.cwl
+id: hca_dss_logout.cwl
 inputs:
 - id: in_log_level
   doc: ''

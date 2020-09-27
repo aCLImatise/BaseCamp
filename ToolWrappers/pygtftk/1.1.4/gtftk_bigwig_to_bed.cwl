@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_bigwig_to_bed.cwl
+id: gtftk_bigwig_to_bed.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the bigwig file (default: None)'

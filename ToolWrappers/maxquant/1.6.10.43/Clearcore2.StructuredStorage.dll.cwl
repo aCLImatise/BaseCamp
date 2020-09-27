@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clearcore2.StructuredStorage.dll.cwl
+id: Clearcore2.StructuredStorage.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

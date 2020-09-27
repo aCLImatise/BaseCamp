@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclExtractProteinIdsFromGroupsFile.cwl
+id: orthomclExtractProteinIdsFromGroupsFile.cwl
 inputs: []
 outputs:
 - id: out_stdout

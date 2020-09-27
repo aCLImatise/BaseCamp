@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subColumn.cwl
+id: subColumn.cwl
 inputs:
 - id: in_list
   doc: '- Column is a comma-separated list.  Substitute all elements in list'

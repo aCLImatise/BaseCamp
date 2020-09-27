@@ -2,7 +2,6 @@ version 1.0
 
 task MsstitchEnsg {
   input {
-    String? decoy_fast_a
     File? input_file_format
     Directory? directory_to_output
     File? output_file
@@ -17,12 +16,12 @@ task MsstitchEnsg {
     String? fast_a_delim
     Int? gene_field
     File? target_fast_a
+    File? decoy_fast_a
     String values_dot
   }
   command <<<
     msstitch ensg \
       ~{values_dot} \
-      ~{if defined(decoy_fast_a) then ("--decoyfasta " +  '"' + decoy_fast_a + '"') else ""} \
       ~{if defined(input_file_format) then ("-i " +  '"' + input_file_format + '"') else ""} \
       ~{if defined(directory_to_output) then ("-d " +  '"' + directory_to_output + '"') else ""} \
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
@@ -36,10 +35,10 @@ task MsstitchEnsg {
       ~{if defined(psm_table) then ("--psmtable " +  '"' + psm_table + '"') else ""} \
       ~{if defined(fast_a_delim) then ("--fastadelim " +  '"' + fast_a_delim + '"') else ""} \
       ~{if defined(gene_field) then ("--genefield " +  '"' + gene_field + '"') else ""} \
-      ~{if defined(target_fast_a) then ("--targetfasta " +  '"' + target_fast_a + '"') else ""}
+      ~{if defined(target_fast_a) then ("--targetfasta " +  '"' + target_fast_a + '"') else ""} \
+      ~{if defined(decoy_fast_a) then ("--decoyfasta " +  '"' + decoy_fast_a + '"') else ""}
   >>>
   parameter_meta {
-    decoy_fast_a: ""
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"
     output_file: "Output file"
@@ -54,6 +53,7 @@ task MsstitchEnsg {
     fast_a_delim: "Delimiter in FASTA header, used to parse gene names in\\ncase of non-ENSEMBL/Uniprot"
     gene_field: "Field nr (first=1) in FASTA that contains gene name\\nwhen using --fastadelim to parse the gene names"
     target_fast_a: "FASTA file with target proteins to determine best\\nscoring proteins of target/decoy pairs for picked FDR.\\nIn case using --picktype ensg/genename"
+    decoy_fast_a: "FASTA file with decoy proteins to determine best\\nscoring proteins of target/decoy pairs for picked FDR.\\nIn case using --picktype ensg/genename\\n"
     values_dot: "--isobquantcolpattern QUANTCOLPATTERN"
   }
   output {

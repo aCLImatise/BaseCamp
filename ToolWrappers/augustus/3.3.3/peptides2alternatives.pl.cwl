@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peptides2alternatives.pl.cwl
+id: peptides2alternatives.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaphylerTrain.cwl
+id: metaphylerTrain.cwl
 inputs: []
 outputs:
 - id: out_stdout

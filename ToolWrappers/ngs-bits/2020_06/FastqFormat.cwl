@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastqFormat.cwl
+id: FastqFormat.cwl
 inputs:
 - id: in_in
   doc: Input FASTQ file (gzipped or plain).

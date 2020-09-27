@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_process_genbank_metadata.cwl
+id: anvi_script_process_genbank_metadata.cwl
 inputs:
 - id: in_metadata
   doc: "This is the file you get from the program `ncbi-\ngenome-download` when you\

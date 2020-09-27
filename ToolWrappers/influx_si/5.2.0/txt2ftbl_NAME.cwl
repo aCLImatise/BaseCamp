@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../txt2ftbl_NAME.cwl
+id: txt2ftbl_NAME.cwl
 inputs:
 - id: in_txttwoftbldotpy
   doc: ''

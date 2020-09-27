@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ibs.cwl
+id: ibs.cwl
 inputs:
 - id: in_glf_slash_f
   doc: 'input GLF filename:'

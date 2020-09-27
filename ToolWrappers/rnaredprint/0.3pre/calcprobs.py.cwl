@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calcprobs.py.cwl
+id: calcprobs.py.cwl
 inputs:
 - id: in_input
   doc: "Read structures from input file. Format must be dot-\nbracket structures,\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_package_data.smk.cwl
+id: prepare_package_data.smk.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_rename2.cwl
+id: csvtk_rename2.cwl
 inputs:
 - id: in_fields
   doc: select only these fields. e.g -f 1,2 or -f columnA,columnB

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_IceArrow2.py.cwl
+id: run_IceArrow2.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

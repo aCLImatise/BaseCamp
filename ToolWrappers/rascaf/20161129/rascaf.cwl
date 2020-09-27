@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rascaf.cwl
+id: rascaf.cwl
 inputs:
 - id: in_required_path_coordinatesorted
   doc: '(required): the path to the coordinate-sorted alignment BAM file'

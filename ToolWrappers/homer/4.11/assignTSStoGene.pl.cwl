@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assignTSStoGene.pl.cwl
+id: assignTSStoGene.pl.cwl
 inputs:
 - id: in_genome
   doc: (use default homer gene annotation/RefSeq)

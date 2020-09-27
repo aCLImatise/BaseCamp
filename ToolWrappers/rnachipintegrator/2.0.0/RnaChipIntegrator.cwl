@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RnaChipIntegrator.cwl
+id: RnaChipIntegrator.cwl
 inputs:
 - id: in_cut_off
   doc: "Maximum distance allowed between peaks and genes\nbefore being omitted from\

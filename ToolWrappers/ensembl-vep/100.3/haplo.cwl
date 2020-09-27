@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haplo.cwl
+id: haplo.cwl
 inputs:
 - id: in__inputfile_input
   doc: '| --input_file      Input file'
@@ -21,31 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --species
-- id: in_ensembl
-  doc: ': 100.171092c'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_ensembl_func_gen
-  doc: ': 100.f0c3948'
-  type: string
-  inputBinding:
-    position: 1
-- id: in_ensembl_io
-  doc: ': 100.f87ae4f'
-  type: string
-  inputBinding:
-    position: 2
-- id: in_ensembl_variation
-  doc: ': 100.b220ff4'
-  type: string
-  inputBinding:
-    position: 3
-- id: in_ensembl_vep
-  doc: ': 100.3'
-  type: string
-  inputBinding:
-    position: 4
 outputs:
 - id: out_stdout
   doc: Standard output stream

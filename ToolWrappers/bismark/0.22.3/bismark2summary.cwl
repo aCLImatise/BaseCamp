@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bismark2summary.cwl
+id: bismark2summary.cwl
 inputs:
 - id: in_oslash_basename
   doc: "Basename of the output file (optional). Generate a text file with all relevant\

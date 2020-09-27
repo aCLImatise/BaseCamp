@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bttcmp.cwl
+id: bttcmp.cwl
 inputs:
 - id: in_example
   doc: ''

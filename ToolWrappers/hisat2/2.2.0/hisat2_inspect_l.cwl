@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_inspect_l.cwl
+id: hisat2_inspect_l.cwl
 inputs:
 - id: in_a_slash_across
   doc: 'Number of characters across in FASTA output (default: 60)'

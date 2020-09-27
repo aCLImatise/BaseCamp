@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqdb_perf.cwl
+id: seqdb_perf.cwl
 inputs: []
 outputs:
 - id: out_stdout

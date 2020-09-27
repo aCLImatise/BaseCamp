@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gxwf_lint.cwl
+id: gxwf_lint.cwl
 inputs:
 - id: in_training_topic
   doc: "If this is a training workflow, specify a training\ntopic.\n"

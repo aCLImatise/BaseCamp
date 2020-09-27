@@ -2,7 +2,6 @@ version 1.0
 
 task Mclblastline {
   input {
-    String? parser_tag
     Boolean? what_if
     Boolean? start_assemble
     Boolean? start_mcl
@@ -16,6 +15,7 @@ task Mclblastline {
     File? xe_mcl
     String? xo_fmt
     String? parser
+    String? parser_tag
     Int? ass_repeat
     Boolean? ass_no_map
     Boolean? ass
@@ -42,7 +42,6 @@ task Mclblastline {
     mclblastline \
       ~{mcl_pipeline} \
       ~{file_name} \
-      ~{if defined(parser_tag) then ("--parser-tag " +  '"' + parser_tag + '"') else ""} \
       ~{if (what_if) then "--whatif" else ""} \
       ~{if (start_assemble) then "--start-assemble" else ""} \
       ~{if (start_mcl) then "--start-mcl" else ""} \
@@ -56,6 +55,7 @@ task Mclblastline {
       ~{if defined(xe_mcl) then ("--xe-mcl " +  '"' + xe_mcl + '"') else ""} \
       ~{if defined(xo_fmt) then ("--xo-fmt " +  '"' + xo_fmt + '"') else ""} \
       ~{if defined(parser) then ("--parser " +  '"' + parser + '"') else ""} \
+      ~{if defined(parser_tag) then ("--parser-tag " +  '"' + parser_tag + '"') else ""} \
       ~{if defined(ass_repeat) then ("--ass-repeat " +  '"' + ass_repeat + '"') else ""} \
       ~{if (ass_no_map) then "--ass-nomap" else ""} \
       ~{if (ass) then "--ass" else ""} \
@@ -77,7 +77,6 @@ task Mclblastline {
       ~{if defined(xi_dat) then ("--xi-dat " +  '"' + xi_dat + '"') else ""}
   >>>
   parameter_meta {
-    parser_tag: "."
     what_if: "shows only what would be done."
     start_assemble: "skip the parse step, assume needed files exist already."
     start_mcl: "start running mcl immediately, as above."
@@ -91,6 +90,7 @@ task Mclblastline {
     xe_mcl: "append to mcl file name."
     xo_fmt: "attach <suf> to clmformat result.\\nmnemonics: eXtension In, Out, Append, Extra."
     parser: "name of parse script"
+    parser_tag: "tag of options to pass to parse script."
     ass_repeat: "str in <add|max|mul|left|right>"
     ass_no_map: "map file does not exist or should be ignored."
     ass: "<-opt[=val]> add '-opt [val]' to mcxassemble command line."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validateDB.pl.cwl
+id: validateDB.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

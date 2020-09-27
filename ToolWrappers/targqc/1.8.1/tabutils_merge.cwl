@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tabutils_merge.cwl
+id: tabutils_merge.cwl
 inputs:
 - id: in_header_comment
   doc: the header is last commented line ('#')
@@ -33,9 +33,9 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -keydesc
-- id: in_one_four
-  doc: 1-4,5
-  type: long
+- id: in_tab_merge_do_tpy
+  doc: ''
+  type: string
   inputBinding:
     position: 0
 outputs:

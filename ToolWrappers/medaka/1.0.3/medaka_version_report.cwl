@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_version_report.cwl
+id: medaka_version_report.cwl
 inputs: []
 outputs:
 - id: out_stdout

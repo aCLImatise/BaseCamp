@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka_build_kingdom_dbs.cwl
+id: prokka_build_kingdom_dbs.cwl
 inputs: []
 outputs:
 - id: out_stdout

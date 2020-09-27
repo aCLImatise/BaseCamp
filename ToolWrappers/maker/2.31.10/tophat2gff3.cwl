@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tophat2gff3.cwl
+id: tophat2gff3.cwl
 inputs:
 - id: in_description
   doc: ''

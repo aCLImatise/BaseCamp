@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbGuessGencode.cwl
+id: cbGuessGencode.cwl
 inputs:
 - id: in_debug
   doc: show debug messages

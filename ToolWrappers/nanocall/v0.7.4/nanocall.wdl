@@ -32,18 +32,17 @@ task Nanocall {
     Int? trim_ed_hp_end
     Int? train_drift
     File? stats
+    String? log
     Int? chunk_size
     Int? ed_group
     Boolean? write_fast_five
     String nano_call
     String output_dot
-    String stats_dot
   }
   command <<<
     nanocall \
       ~{nano_call} \
       ~{output_dot} \
-      ~{stats_dot} \
       ~{if defined(_threads_intnumber) then ("-t " +  '"' + _threads_intnumber + '"') else ""} \
       ~{if defined(_output_file) then ("-o " +  '"' + _output_file + '"') else ""} \
       ~{if defined(pore) then ("--pore " +  '"' + pore + '"') else ""} \
@@ -74,6 +73,7 @@ task Nanocall {
       ~{if defined(trim_ed_hp_end) then ("--trim-ed-hp-end " +  '"' + trim_ed_hp_end + '"') else ""} \
       ~{if defined(train_drift) then ("--train-drift " +  '"' + train_drift + '"') else ""} \
       ~{if defined(stats) then ("--stats " +  '"' + stats + '"') else ""} \
+      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if defined(chunk_size) then ("--chunk-size " +  '"' + chunk_size + '"') else ""} \
       ~{if defined(ed_group) then ("--ed-group " +  '"' + ed_group + '"') else ""} \
       ~{if (write_fast_five) then "--write-fast5" else ""}
@@ -108,13 +108,13 @@ task Nanocall {
     trim_ed_hp_start: "Number of events to trim before hairpin start. (default: 50)"
     trim_ed_hp_end: "Number of events to trim after hairpin end. (default: 50)"
     train_drift: "Train drift parameter. (default: yes for R73, no for R9)"
-    stats: ""
+    stats: "Stats."
+    log: "(accepted multiple times)\\nLog level. (default: info)"
     chunk_size: "Thread chunk size. (default: 1)"
     ed_group: "EventDetection group to use. (default: smallest available)"
     write_fast_five: ""
     nano_call: "[-t <int>] [-o <file>] [--write-fast5] [--pore <r73|r9>] [-m\\n<strand:file>] ...  [--model-fofn <file>] [-s <file>]\\n[--pr-stay <float>] [--pr-skip <float>] [--no-basecall]\\n[--basecall] [--no-train] [--train] [--no-train-scaling]\\n[--no-train-transitions] [--double-strand-scaling]\\n[--single-strand-scaling] [--1d] [--scaling-num-events <int>]\\n[--scaling-max-rounds <int>] [--scaling-min-progress <float>]\\n[--scaling-select-threshold <float>] [--fasta-line-width\\n<int>] [--min-ed-events <int>] [--max-ed-events <int>]\\n[--trim-ed-sq-start <int>] [--trim-ed-sq-end <int>]\\n[--trim-ed-hp-start <int>] [--trim-ed-hp-end <int>]\\n[--train-drift <0|1>] [--stats <file>] [--log <string>] ...\\n[--chunk-size <int>] [--ed-group <000|001|...>] [--]\\n[--version] [-h] <path> ..."
     output_dot: "--write-fast5"
-    stats_dot: "--log <string>  (accepted multiple times)"
   }
   output {
     File out_stdout = stdout()

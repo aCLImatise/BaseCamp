@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IntaRNAhelix.cwl
+id: IntaRNAhelix.cwl
 inputs:
 - id: in_q
   doc: "[ --query ] arg            either an RNA sequence or the stream/file name\n\

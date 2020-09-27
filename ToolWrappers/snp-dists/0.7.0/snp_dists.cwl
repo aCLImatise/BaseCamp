@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snp_dists.cwl
+id: snp_dists.cwl
 inputs:
 - id: in_print_version_exit
   doc: Print version and exit

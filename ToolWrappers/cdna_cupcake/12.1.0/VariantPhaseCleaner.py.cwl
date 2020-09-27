@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VariantPhaseCleaner.py.cwl
+id: VariantPhaseCleaner.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

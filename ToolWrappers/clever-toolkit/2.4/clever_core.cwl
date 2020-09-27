@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clever_core.cwl
+id: clever_core.cwl
 inputs:
 - id: in_verbose_output_additionalstatistics
   doc: "[ --verbose ]                      Be verbose: output additional\nstatistics\

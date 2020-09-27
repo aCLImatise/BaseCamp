@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../portcullis_rule_filter.cwl
+id: portcullis_rule_filter.cwl
 inputs:
 - id: in_script
   doc: ''

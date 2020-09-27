@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easypqp_reduce.cwl
+id: easypqp_reduce.cwl
 inputs:
 - id: in_in
   doc: Input PQP file.  [required]

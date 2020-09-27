@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ThermoRawFileParser.exe.cwl
+id: ThermoRawFileParser.exe.cwl
 inputs: []
 outputs:
 - id: out_stdout

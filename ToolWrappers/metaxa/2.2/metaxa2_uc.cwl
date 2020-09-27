@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaxa2_uc.cwl
+id: metaxa2_uc.cwl
 inputs:
 - id: in_input_count_table
   doc: ': Input count table (e.g. derived from metaxa2_dc)'

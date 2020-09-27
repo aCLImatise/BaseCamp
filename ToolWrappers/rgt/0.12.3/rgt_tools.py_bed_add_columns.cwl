@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_bed_add_columns.cwl
+id: rgt_tools.py_bed_add_columns.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file

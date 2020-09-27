@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_from_fasta_with_split.cwl
+id: ffindex_from_fasta_with_split.cwl
 inputs:
 - id: in_sort_index_file
   doc: sort index file

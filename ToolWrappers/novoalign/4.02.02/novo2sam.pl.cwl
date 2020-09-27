@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novo2sam.pl.cwl
+id: novo2sam.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

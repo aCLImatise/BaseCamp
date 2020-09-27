@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_phybase.cwl
+id: phyluce_genetrees_phybase.cwl
 inputs: []
 outputs:
 - id: out_stdout

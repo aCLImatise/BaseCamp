@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_performance.py_print.cwl
+id: tbprofiler_performance.py_print.cwl
 inputs:
 - id: in_drugs
   doc: "NGS Platform (default: None)\n"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_select_by_max_exon_nb.cwl
+id: gtftk_select_by_max_exon_nb.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
@@ -47,11 +47,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --write-message-to-file
-- id: in_encountered_dot
-  doc: 'Version:  2018-02-11'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

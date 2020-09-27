@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_fpd.cwl
+id: guppy_fpd.cwl
 inputs:
 - id: in_pp
   doc: Use posterior probability for the weight.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../td_bignet.cwl
+id: td_bignet.cwl
 inputs:
 - id: in_link_definition
   doc: ''

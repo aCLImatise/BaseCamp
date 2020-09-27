@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go.mod.cwl
+id: go.mod.cwl
 inputs: []
 outputs:
 - id: out_stdout

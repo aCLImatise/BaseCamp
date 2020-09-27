@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makemat.cwl
+id: makemat.cwl
 inputs:
 - id: in_database_name_profile
   doc: "Database name for profile database [File In]\ndefault = stdin"

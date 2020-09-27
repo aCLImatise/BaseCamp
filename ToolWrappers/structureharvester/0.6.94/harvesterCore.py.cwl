@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../harvesterCore.py.cwl
+id: harvesterCore.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

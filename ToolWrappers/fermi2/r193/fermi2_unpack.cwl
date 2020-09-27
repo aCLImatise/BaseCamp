@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2_unpack.cwl
+id: fermi2_unpack.cwl
 inputs:
 - id: in_reads_dot_rld
   doc: ''

@@ -2,17 +2,17 @@ version 1.0
 
 task HcaAuthPutv1rolepolicy {
   input {
-    String? policy
     String? role_id
+    String? policy
   }
   command <<<
     hca auth put_v1_role_policy \
-      ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""} \
-      ~{if defined(role_id) then ("--role-id " +  '"' + role_id + '"') else ""}
+      ~{if defined(role_id) then ("--role-id " +  '"' + role_id + '"') else ""} \
+      ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""}
   >>>
   parameter_meta {
-    policy: ""
     role_id: "The name of the role."
+    policy: ""
   }
   output {
     File out_stdout = stdout()

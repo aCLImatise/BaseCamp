@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../panaroo_img.cwl
+id: panaroo_img.cwl
 inputs:
-- id: in_d
-  doc: '[--no_essential] [--no_constraint]'
-  type: string
-  inputBinding:
-    prefix: -D
 - id: in_tree
   doc: A dated phylogeny.
   type: string
@@ -21,6 +16,12 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --out_dir
+- id: in_number_seperate_use
+  doc: "Number of seperate rate classes to use for the\ndispensable genome. Can be\
+    \ either 1 or 2."
+  type: string
+  inputBinding:
+    prefix: -D
 - id: in_no_essential
   doc: Removes essential gene class from model
   type: boolean

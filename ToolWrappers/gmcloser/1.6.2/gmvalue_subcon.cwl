@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmvalue_subcon.cwl
+id: gmvalue_subcon.cwl
 inputs:
 - id: in_input_scaffold_fasta
   doc: input scaffold fasta file (e.g., scaf1.fa)

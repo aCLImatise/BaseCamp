@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_bdgopt.cwl
+id: macs2_bdgopt.cwl
 inputs:
 - id: in_i_file
   doc: "MACS score in bedGraph. Note: this must be a bedGraph\nfile covering the ENTIRE\

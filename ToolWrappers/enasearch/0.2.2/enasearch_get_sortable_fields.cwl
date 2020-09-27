@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enasearch_get_sortable_fields.cwl
+id: enasearch_get_sortable_fields.cwl
 inputs:
 - id: in_result
   doc: Id of a result (accessible with get_results)  [required]

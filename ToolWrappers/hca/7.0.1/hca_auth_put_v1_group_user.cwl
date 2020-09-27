@@ -1,21 +1,16 @@
 class: CommandLineTool
-id: ../../../hca_auth_put_v1_group_user.cwl
+id: hca_auth_put_v1_group_user.cwl
 inputs:
-- id: in_action
-  doc: ''
+- id: in_group_id
+  doc: "The name of the group.\n--action ACTION\n"
   type: string
   inputBinding:
-    prefix: --action
+    prefix: --group-id
 - id: in_users
   doc: ''
   type: string
   inputBinding:
     prefix: --users
-- id: in_group_id
-  doc: The name of the group.
-  type: string
-  inputBinding:
-    prefix: --group-id
 outputs:
 - id: out_stdout
   doc: Standard output stream

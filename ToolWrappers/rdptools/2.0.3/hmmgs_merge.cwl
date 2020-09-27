@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmgs_merge.cwl
+id: hmmgs_merge.cwl
 inputs:
 - id: in_all
   doc: "Generate all combinations for multiple\npaths, instead of just the best"

@@ -11,20 +11,12 @@ task H5cc {
     Int hdf_five_cc
     Int hdf_five_clinker
     String variable
-    Int hdf_five_cppflags
-    Int hdf_five_cflags
-    Int hdf_five_ldflags
-    Int hdf_five_libs
   }
   command <<<
     h5cc \
       ~{hdf_five_cc} \
       ~{hdf_five_clinker} \
       ~{variable} \
-      ~{hdf_five_cppflags} \
-      ~{hdf_five_cflags} \
-      ~{hdf_five_ldflags} \
-      ~{hdf_five_libs} \
       ~{if (echo) then "-echo" else ""} \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
       ~{if (show) then "-show" else ""} \
@@ -42,10 +34,6 @@ task H5cc {
     hdf_five_cc: "-  use a different C compiler"
     hdf_five_clinker: "-  use a different linker"
     variable: "Current value to be replaced"
-    hdf_five_cppflags: "\\\"\\\""
-    hdf_five_cflags: "\\\"\\\""
-    hdf_five_ldflags: "\\\"\\\""
-    hdf_five_libs: "\\\"\\\""
   }
   output {
     File out_stdout = stdout()

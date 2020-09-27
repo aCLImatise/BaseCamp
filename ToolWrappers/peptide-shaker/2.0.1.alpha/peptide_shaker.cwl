@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peptide_shaker.cwl
+id: peptide_shaker.cwl
 inputs: []
 outputs:
 - id: out_stdout

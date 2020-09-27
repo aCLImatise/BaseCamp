@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_container_get_server_config.cwl
+id: gcloud_container_get_server_config.cwl
 inputs:
 - id: in_optional
   doc: ''

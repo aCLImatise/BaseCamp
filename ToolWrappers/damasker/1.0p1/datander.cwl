@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../datander.cwl
+id: datander.cwl
 inputs:
 - id: in_v
   doc: ''

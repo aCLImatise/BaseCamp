@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abruijn_assemble.cwl
+id: abruijn_assemble.cwl
 inputs:
 - id: in_kmer_size
   doc: k-mer size [default = 15]

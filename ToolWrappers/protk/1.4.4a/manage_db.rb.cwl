@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../manage_db.rb.cwl
+id: manage_db.rb.cwl
 inputs:
 - id: in_command
   doc: ''

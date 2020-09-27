@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_overlap_stats.pl.cwl
+id: get_overlap_stats.pl.cwl
 inputs:
 - id: in_specify_overlap_mode
   doc: ": Specify overlap mode.  Must be a number selected from the list below.\n\

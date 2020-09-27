@@ -15,11 +15,13 @@ task Datamash {
     Boolean? narm
     Boolean? whitespace
     Boolean? zero_terminated
-    Int five_five
+    String op
+    String? fld
   }
   command <<<
     datamash \
-      ~{five_five} \
+      ~{op} \
+      ~{fld} \
       ~{if (full) then "--full" else ""} \
       ~{if defined(group) then ("--group " +  '"' + group + '"') else ""} \
       ~{if (header_in) then "--header-in" else ""} \
@@ -48,7 +50,8 @@ task Datamash {
     narm: "skip NA/NaN values"
     whitespace: "use whitespace (one or more spaces and/or tabs)\\nfor field delimiters"
     zero_terminated: "end lines with 0 byte, not newline"
-    five_five: "5.5"
+    op: ""
+    fld: ""
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_covered_intervals.cwl
+id: cactus_covered_intervals.cwl
 inputs:
 - id: in_query_offsets
   doc: "input query names contain offsets, as described below\n(by default input query\

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../umis_mb_filter.cwl
+id: umis_mb_filter.cwl
 inputs:
 - id: in_cores
-  doc: ''
+  doc: "--help           Show this message and exit.\n"
   type: long
   inputBinding:
     prefix: --cores

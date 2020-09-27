@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteins_not_in_library.py.cwl
+id: proteins_not_in_library.py.cwl
 inputs:
 - id: in_a_fasta_file
   doc: A fasta file

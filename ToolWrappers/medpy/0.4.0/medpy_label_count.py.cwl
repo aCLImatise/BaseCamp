@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_label_count.py.cwl
+id: medpy_label_count.py.cwl
 inputs:
 - id: in_display_more_information
   doc: Display more information.

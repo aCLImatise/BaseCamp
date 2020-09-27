@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removehuman2.sh.cwl
+id: removehuman2.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

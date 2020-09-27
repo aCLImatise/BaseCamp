@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../dx_mount_all_inputs.cwl
+id: dx_mount_all_inputs.cwl
 inputs:
 - id: in_except
   doc: "Do not mount the input with this name. (May be used\nmultiple times.)\n"
   type: string
   inputBinding:
     prefix: --except
-- id: in_one_slash_b_dot_vcf
-  doc: 2/C.vcf
-  type: long
-  inputBinding:
-    position: 0
 - id: in_one_one_slash_l_dot_vcf
   doc: This allows using shell globbing (FOO/*/*.vcf) to get all the files in the
   type: long

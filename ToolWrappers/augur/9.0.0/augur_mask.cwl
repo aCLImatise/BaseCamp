@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_mask.cwl
+id: augur_mask.cwl
 inputs:
 - id: in_sequences
   doc: 'sequences in VCF or FASTA format (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastzWrapper.cwl
+id: blastzWrapper.cwl
 inputs: []
 outputs:
 - id: out_stdout

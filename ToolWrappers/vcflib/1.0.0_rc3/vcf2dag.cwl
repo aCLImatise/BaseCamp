@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2dag.cwl
+id: vcf2dag.cwl
 inputs:
 - id: in_reference
   doc: FASTA reference file.

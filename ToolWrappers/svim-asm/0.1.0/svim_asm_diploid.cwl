@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svim_asm_diploid.cwl
+id: svim_asm_diploid.cwl
 inputs:
 - id: in_min_mapq
   doc: "Minimum mapping quality of alignments to consider\n(default: 20). Alignments\

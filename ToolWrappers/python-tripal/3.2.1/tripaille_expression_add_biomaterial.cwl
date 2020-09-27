@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_expression_add_biomaterial.cwl
+id: tripaille_expression_add_biomaterial.cwl
 inputs:
 - id: in_analysis_id
   doc: The id of the associated analysis. Required for TripalV3

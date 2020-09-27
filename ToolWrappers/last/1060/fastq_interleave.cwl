@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_interleave.cwl
+id: fastq_interleave.cwl
 inputs: []
 outputs:
 - id: out_stdout

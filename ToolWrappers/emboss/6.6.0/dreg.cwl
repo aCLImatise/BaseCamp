@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../dreg.cwl
-inputs:
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
+id: dreg.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

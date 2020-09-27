@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zerone.cwl
+id: zerone.cwl
 inputs:
 - id: in_mock
   doc: ': given file is a mock control'

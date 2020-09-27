@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../select_for_randfold.pl.cwl
+id: select_for_randfold.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

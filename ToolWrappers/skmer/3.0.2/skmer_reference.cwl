@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skmer_reference.cwl
+id: skmer_reference.cwl
 inputs:
 - id: in_directory_output_reference
   doc: 'Directory of output (reference) library. Default:'

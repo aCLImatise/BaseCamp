@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucmer_backbone.pl.cwl
+id: nucmer_backbone.pl.cwl
 inputs:
 - id: in_alignment_oordinates_file
   doc: "alignment [C]oordinates file. Produced by numcer alignment of\nall genomes\

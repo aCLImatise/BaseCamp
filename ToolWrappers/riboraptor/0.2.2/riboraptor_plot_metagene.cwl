@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_plot_metagene.cwl
+id: riboraptor_plot_metagene.cwl
 inputs:
 - id: in_counts
   doc: Path to counts file (if not stdin)

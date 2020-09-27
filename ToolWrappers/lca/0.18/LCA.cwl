@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LCA.cwl
+id: LCA.cwl
 inputs:
 - id: in_assignments_tab_format
   doc: assignments of sequences to ref database in blast .m8 tab delimited format

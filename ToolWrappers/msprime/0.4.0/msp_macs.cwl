@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_macs.cwl
+id: msp_macs.cwl
 inputs:
 - id: in_history_file
   doc: The msprime history file in HDF5 format

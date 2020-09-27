@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rearr2bedpe.cwl
+id: rearr2bedpe.cwl
 inputs: []
 outputs:
 - id: out_stdout

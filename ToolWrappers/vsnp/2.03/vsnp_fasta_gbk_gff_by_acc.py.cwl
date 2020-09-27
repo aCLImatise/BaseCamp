@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_fasta_gbk_gff_by_acc.py.cwl
+id: vsnp_fasta_gbk_gff_by_acc.py.cwl
 inputs:
 - id: in_accession
   doc: NCBI chromosome number

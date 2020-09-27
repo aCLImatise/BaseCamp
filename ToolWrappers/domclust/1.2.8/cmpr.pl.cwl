@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmpr.pl.cwl
+id: cmpr.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AdjList.cwl
+id: AdjList.cwl
 inputs:
 - id: in_length_kmer_when
   doc: "the length of a k-mer (when -K is not set)\nor the span of a k-mer pair (when\

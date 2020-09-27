@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_get_gff3.cwl
+id: arrow_annotations_get_gff3.cwl
 inputs:
 - id: in_organism
   doc: Organism Common Name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotPMD.cwl
+id: plotPMD.cwl
 inputs: []
 outputs:
 - id: out_stdout

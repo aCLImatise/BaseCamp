@@ -10,10 +10,7 @@ task Mashtree {
     Boolean? citation
     Boolean? trunc_length
     Boolean? sort_order
-    Boolean? genome_size
     Boolean? min_depth
-    Boolean? km_er_length
-    Boolean? sketch_size
     Boolean? seed
     Boolean? save_sketches
   }
@@ -27,10 +24,7 @@ task Mashtree {
       ~{if (citation) then "--citation" else ""} \
       ~{if (trunc_length) then "--truncLength" else ""} \
       ~{if (sort_order) then "--sort-order" else ""} \
-      ~{if (genome_size) then "--genomesize" else ""} \
       ~{if (min_depth) then "--mindepth" else ""} \
-      ~{if (km_er_length) then "--kmerlength" else ""} \
-      ~{if (sketch_size) then "--sketch-size" else ""} \
       ~{if (seed) then "--seed" else ""} \
       ~{if (save_sketches) then "--save-sketches" else ""}
   >>>
@@ -43,10 +37,7 @@ task Mashtree {
     citation: "Display the preferred citation and exit"
     trunc_length: "250  How many characters to keep in a filename"
     sort_order: "ABC  For neighbor-joining, the sort order can\\nmake a difference. Options include:\\nABC (alphabetical), random, input-order"
-    genome_size: "5000000"
     min_depth: "5    If mindepth is zero, then it will be\\nchosen in a smart but slower method,\\nto discard lower-abundance kmers."
-    km_er_length: "21"
-    sketch_size: "10000"
     seed: "42   Seed for mash sketch"
     save_sketches: "''   If a directory is supplied, then sketches\\nwill be saved in it.\\nIf no directory is supplied, then sketches\\nwill be saved alongside source files.\\n"
   }

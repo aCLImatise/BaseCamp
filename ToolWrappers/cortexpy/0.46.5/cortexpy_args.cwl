@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cortexpy_args.cwl
+id: cortexpy_args.cwl
 inputs:
 - id: in_cortex_py
   doc: ''

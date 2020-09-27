@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_auth_post_oauth_token.cwl
+id: hca_auth_post_oauth_token.cwl
 inputs:
 - id: in_log_level
   doc: ''

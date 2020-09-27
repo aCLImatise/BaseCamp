@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AWSSDK.Core.xml.cwl
+id: AWSSDK.Core.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

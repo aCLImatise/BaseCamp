@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monocle3_plotCells.cwl
+id: monocle3_plotCells.cwl
 inputs:
 - id: in_input_object_format
   doc: 'Format of input object. [Default: cds3]'

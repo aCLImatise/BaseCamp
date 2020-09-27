@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delly_filter.cwl
+id: delly_filter.cwl
 inputs:
 - id: in_arg_somatic_mode
   doc: '[ --filter ] arg (=somatic)        Filter mode (somatic, germline)'

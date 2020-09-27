@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glimmhmm.pl.cwl
+id: glimmhmm.pl.cwl
 inputs:
 - id: in_glimmer_hmm_program
   doc: ''

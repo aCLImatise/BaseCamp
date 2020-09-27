@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_get_orthologs.cwl
+id: rsat_get_orthologs.cwl
 inputs:
 - id: in_unique_species
   doc: ', but at the level of the genus. At this level we'
@@ -7,15 +7,10 @@ inputs:
   inputBinding:
     prefix: -unique_species
 - id: in_return
-  doc: '50'
-  type: long
+  doc: -return query_id,e_value,rank
+  type: string
   inputBinding:
     prefix: -return
-- id: in_uth
-  doc: '1'
-  type: long
-  inputBinding:
-    prefix: -uth
 - id: in_get_orthologs
   doc: "\e[1mDESCRIPTION\e[0m"
   type: string

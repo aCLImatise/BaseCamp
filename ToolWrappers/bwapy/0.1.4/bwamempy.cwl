@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwamempy.cwl
+id: bwamempy.cwl
 inputs:
 - id: in_align
   doc: ''

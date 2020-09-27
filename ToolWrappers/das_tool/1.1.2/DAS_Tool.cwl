@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../DAS_Tool.cwl
+id: DAS_Tool.cwl
 inputs:
-- id: in_methodn_c_contigsfa
-  doc: ',...,methodN -c contigs.fa -o myOutput'
-  type: string
-  inputBinding:
-    prefix: -l
 - id: in_bins
   doc: Comma separated list of tab separated scaffolds to bin tables.
   type: boolean

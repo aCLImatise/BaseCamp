@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edd_output_dir.cwl
+id: edd_output_dir.cwl
 inputs:
 - id: in_fdr
   doc: ''

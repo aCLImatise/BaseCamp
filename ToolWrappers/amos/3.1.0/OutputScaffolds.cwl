@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OutputScaffolds.cwl
+id: OutputScaffolds.cwl
 inputs:
 - id: in_b
   doc: ''

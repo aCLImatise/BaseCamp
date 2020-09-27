@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_library_summary.py_compare.cwl
+id: tbprofiler_library_summary.py_compare.cwl
 inputs:
 - id: in_drugs
   doc: 'NGS Platform (default: None)'

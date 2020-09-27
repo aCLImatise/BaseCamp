@@ -87,28 +87,10 @@ subcommands:
         - -v
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Display more information.
-          synonyms:
-          - -v
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Display debug information.
-          synonyms:
-          - -d
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Silently override existing output images.
-          synonyms:
-          - -f
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -148,7 +130,104 @@ subcommands:
             - -v
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Display more information.
+              synonyms:
+              - -v
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Display debug information.
+              synonyms:
+              - -d
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Silently override existing output images.
+              synonyms:
+              - -f
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: medpy_diff.py
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: input1
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: input2
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -d
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -v
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: medpy_diff.py [-h] [-v] [-d] [-f] input1 input2\n\
+                medpy_diff.py: error: the following arguments are required: input2\n"
+              generated_using: &id004 []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: medpy_diff.py [-h] [-v] [-d] [-f] input1 input2\n\n\
+              Compares the pixel values of two images and gives a measure of the difference.\n\
+              Also compares the dtype and shape. Copyright (C) 2013 Oskar Maier This\
+              \ program\ncomes with ABSOLUTELY NO WARRANTY; This is free software,\
+              \ and you are welcome\nto redistribute it under certain conditions;\
+              \ see the LICENSE file or\n<http://www.gnu.org/licenses/> for details.\n\
+              \npositional arguments:\n  input1      Source volume one.\n  input2\
+              \      Source volume two.\n\noptional arguments:\n  -h, --help  show\
+              \ this help message and exit\n  -v          Display more information.\n\
+              \  -d          Display debug information.\n  -f          Silently override\
+              \ existing output images.\n"
+            generated_using: &id005
+            - --help
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -161,15 +240,9 @@ subcommands:
           version_flag:
           help_text: "usage: medpy_diff.py [-h] [-v] [-d] [-f] input1 input2\nmedpy_diff.py:\
             \ error: the following arguments are required: input2\n"
-          generated_using: &id004 []
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: medpy_diff.py [-h] [-v] [-d] [-f] input1 input2\n\nCompares\
@@ -182,8 +255,7 @@ subcommands:
           \ show this help message and exit\n  -v          Display more information.\n\
           \  -d          Display debug information.\n  -f          Silently override\
           \ existing output images.\n"
-        generated_using: &id005
-        - --help
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag: !Flag

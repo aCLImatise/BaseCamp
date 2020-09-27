@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_orthomcl.py.cwl
+id: run_orthomcl.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

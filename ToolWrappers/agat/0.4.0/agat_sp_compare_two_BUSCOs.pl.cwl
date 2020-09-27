@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_compare_two_BUSCOs.pl.cwl
+id: agat_sp_compare_two_BUSCOs.pl.cwl
 inputs:
 - id: in_fone
   doc: 'STRING: Input busco folder1'

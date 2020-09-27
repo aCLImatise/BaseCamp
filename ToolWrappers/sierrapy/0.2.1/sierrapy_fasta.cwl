@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sierrapy_fasta.cwl
+id: sierrapy_fasta.cwl
 inputs:
 - id: in_query
   doc: "A file contains GraphQL fragment definition on\n`SequenceAnalysis`."

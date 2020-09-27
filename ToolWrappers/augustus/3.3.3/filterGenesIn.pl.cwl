@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterGenesIn.pl.cwl
+id: filterGenesIn.pl.cwl
 inputs:
 - id: in_name_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_update.cwl
+id: oncogemini_update.cwl
 inputs:
 - id: in_devel
   doc: Get the latest development version instead of the

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngsArchiveLinker.pl.cwl
+id: ngsArchiveLinker.pl.cwl
 inputs:
 - id: in_project_id
   doc: "[ARG]\nThe ID of the project to get data from. (required)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_bedcov.cwl
+id: flye_samtools_bedcov.cwl
 inputs:
 - id: in_mapping_quality_threshold
   doc: mapping quality threshold [0]

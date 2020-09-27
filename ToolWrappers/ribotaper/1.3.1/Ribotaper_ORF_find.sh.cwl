@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Ribotaper_ORF_find.sh.cwl
+id: Ribotaper_ORF_find.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

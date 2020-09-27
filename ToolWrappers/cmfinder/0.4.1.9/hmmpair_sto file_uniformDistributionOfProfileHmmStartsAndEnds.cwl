@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmpair_sto file_uniformDistributionOfProfileHmmStartsAndEnds.cwl
+id: hmmpair_sto file_uniformDistributionOfProfileHmmStartsAndEnds.cwl
 inputs:
 - id: in_hmm_pair
   doc: ''

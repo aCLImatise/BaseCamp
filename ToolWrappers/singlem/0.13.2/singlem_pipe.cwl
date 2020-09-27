@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../singlem_pipe.cwl
+id: singlem_pipe.cwl
 inputs:
-- id: in_sequences
-  doc: ) [sequence_file(s) ...]
-  type: string
-  inputBinding:
-    prefix: --sequences
 - id: in_full_help
   doc: ''
   type: boolean

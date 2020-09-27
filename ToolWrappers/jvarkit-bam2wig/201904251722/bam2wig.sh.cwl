@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2wig.sh.cwl
+id: bam2wig.sh.cwl
 inputs:
 - id: in_bed_graph
   doc: "Produce a BED GRAPH instead of a WIGGLE file.\nDefault: false"

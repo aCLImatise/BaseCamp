@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_consensus.cwl
+id: make_consensus.cwl
 inputs:
 - id: in_output_alignments_instead
   doc: Output alignments instead of consensus messages

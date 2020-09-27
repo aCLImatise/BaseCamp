@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastuniq.cwl
+id: fastuniq.cwl
 inputs:
 - id: in_input_file_list
   doc: ": The input file list of paired FSATQ sequence files [FILE IN]\nMaximum 1000\

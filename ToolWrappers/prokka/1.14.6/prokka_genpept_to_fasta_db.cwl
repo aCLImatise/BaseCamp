@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka_genpept_to_fasta_db.cwl
+id: prokka_genpept_to_fasta_db.cwl
 inputs:
 - id: in_verbose
   doc: "!      Verbose progress (default '0')."

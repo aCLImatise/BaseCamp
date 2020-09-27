@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbdagcon.cwl
+id: pbdagcon.cwl
 inputs:
 - id: in_increase_logging_verbosity
   doc: '[ --verbose ]               Increase logging verbosity'

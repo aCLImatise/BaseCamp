@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sff2fastq.cwl
+id: sff2fastq.cwl
 inputs:
 - id: in_program_version_information
   doc: Program and version information

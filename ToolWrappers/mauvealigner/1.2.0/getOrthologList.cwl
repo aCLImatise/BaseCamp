@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getOrthologList.cwl
+id: getOrthologList.cwl
 inputs:
 - id: in_input_x_mfa
   doc: ''

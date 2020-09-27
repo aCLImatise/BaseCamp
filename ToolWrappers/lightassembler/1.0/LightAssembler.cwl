@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LightAssembler.cwl
+id: LightAssembler.cwl
 inputs: []
 outputs:
 - id: out_stdout

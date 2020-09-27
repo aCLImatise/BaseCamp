@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniqueJunctionFilter.cwl
+id: uniqueJunctionFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

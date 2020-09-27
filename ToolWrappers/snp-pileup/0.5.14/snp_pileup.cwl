@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snp_pileup.cwl
+id: snp_pileup.cwl
 inputs:
 - id: in_count_orphans
   doc: Do not discard anomalous read pairs.

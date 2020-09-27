@@ -1,6 +1,13 @@
 class: CommandLineTool
-id: ../../../findjuncs.cwl
+id: findjuncs.cwl
 inputs:
+- id: in_annotation_files
+  doc: "# merge unique annotations from annotation.bed and newly_discovered.bed,\n\
+    # export only unique junctions to 'merged_unique.bed'\n$ findjuncs merged_unique\
+    \ --annotation_format BED \\\n--annotation_files annotation.bed newly_discovered.bed"
+  type: string
+  inputBinding:
+    prefix: --annotation_files
 - id: in_export_top_hat
   doc: Export tophat `.juncs` file in addition to BED output
   type: File
@@ -18,12 +25,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_annotation_files
-  doc: "[BED | BigBed | GTF2 | GFF3 | PSL] [infile.[BED | BigBed | GTF2 | GFF3 | PSL]\
-    \ ...]\nZero or more annotation files (max 1 file if BigBed)"
-  type: File
-  inputBinding:
-    prefix: --annotation_files
 - id: in_annotation_format
   doc: "Format of annotation_files (Default: GTF2). Note: GFF3\nassembly assumes SO\
     \ v.2.5.2 feature ontologies, which\nmay or may not match your specific file."
@@ -78,6 +79,11 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --gff_cds_types
+- id: in_out_base
+  doc: Basename for output files
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

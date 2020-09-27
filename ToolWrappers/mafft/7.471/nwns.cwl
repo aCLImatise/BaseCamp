@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nwns.cwl
+id: nwns.cwl
 inputs:
 - id: in_op
   doc: '# :         Gap opening penalty, default: 1.53'

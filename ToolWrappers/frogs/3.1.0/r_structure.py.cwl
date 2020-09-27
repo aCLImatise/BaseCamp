@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_structure.py.cwl
+id: r_structure.py.cwl
 inputs:
 - id: in_debug
   doc: Keep temporary files to debug program.

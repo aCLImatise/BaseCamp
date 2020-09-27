@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DNA2StdRegion.cwl
+id: DNA2StdRegion.cwl
 inputs: []
 outputs:
 - id: out_stdout

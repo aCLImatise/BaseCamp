@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_hits.pl.cwl
+id: combine_hits.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

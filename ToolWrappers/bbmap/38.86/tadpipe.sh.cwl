@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadpipe.sh.cwl
+id: tadpipe.sh.cwl
 inputs:
 - id: in_in
   doc: ''

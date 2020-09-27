@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amplicons_histograms.py.cwl
+id: amplicons_histograms.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

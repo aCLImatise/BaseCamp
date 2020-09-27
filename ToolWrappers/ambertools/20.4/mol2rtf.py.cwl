@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mol2rtf.py.cwl
+id: mol2rtf.py.cwl
 inputs:
 - id: in_n
   doc: '[--ref reference_rtf_file]'

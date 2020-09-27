@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_test.cwl
+id: HLAProfiler.pl_test.cwl
 inputs:
 - id: in_test
   doc: "|t         Denotes the module to test\nAvailable_tests:\nall\nSequenceFunctions\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipkit.cwl
+id: clipkit.cwl
 inputs:
 - id: in_output
   doc: "output file name\n(default: input file named with '.clipkit' suffix)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_export_items_order.cwl
+id: anvi_export_items_order.cwl
 inputs:
 - id: in_path__dbpath
   doc: "PATH, --db-path DB PATH\nAn appropriate anvi'o database."

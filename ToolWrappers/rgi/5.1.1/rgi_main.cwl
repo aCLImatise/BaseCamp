@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_main.cwl
+id: rgi_main.cwl
 inputs:
 - id: in_input_sequence
   doc: "input file must be in either FASTA (contig and\nprotein) or gzip format! e.g\

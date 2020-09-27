@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epydoc.cwl
+id: epydoc.cwl
 inputs:
 - id: in_config
   doc: "A configuration file, specifying additional OPTIONS\nand/or NAMES.  This option\

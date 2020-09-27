@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../saxs_rism.cwl
+id: saxs_rism.cwl
 inputs:
 - id: in__solute_pdb
   doc: --solute       pdb file of the solute

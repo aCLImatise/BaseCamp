@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2maf.pl.cwl
+id: vcf2maf.pl.cwl
 inputs:
 - id: in_input_vcf
   doc: Path to input file in VCF format

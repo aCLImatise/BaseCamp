@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sword.cwl
+id: sword.cwl
 inputs:
 - id: in_query
   doc: "(required)\ninput fasta database query file"

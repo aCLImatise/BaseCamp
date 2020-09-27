@@ -34,7 +34,6 @@ task PhaseBySize {
     Boolean? stylesheet
     String out_base_phasing_dot_txt
     String out_base_phasing_dot_svg
-    String gene_dot
     String roi_file
     String out_base
   }
@@ -42,7 +41,6 @@ task PhaseBySize {
     phase_by_size \
       ~{out_base_phasing_dot_txt} \
       ~{out_base_phasing_dot_svg} \
-      ~{gene_dot} \
       ~{roi_file} \
       ~{out_base} \
       ~{if defined(codon_buffer) then ("--codon_buffer " +  '"' + codon_buffer + '"') else ""} \
@@ -109,7 +107,6 @@ task PhaseBySize {
     stylesheet: "{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}\\nUse this matplotlib stylesheet instead of matplotlibrc\\nparams\\n"
     out_base_phasing_dot_txt: "Read phasing for each read length"
     out_base_phasing_dot_svg: "Plot of phasing by read length"
-    gene_dot: "------------------------------------------------------------------------------"
     roi_file: "Optional. ROI file of maximal spanning windows\\nsurrounding start codons, from ``metagene generate``\\nsubprogram. Using this instead of `--annotation_files`\\nprevents double-counting of codons when multiple\\ntranscript isoforms exist for a gene. See the\\ndocumentation for `metagene` for more info about ROI\\nfiles.If an ROI file is not given, supply an\\nannotation with ``--annotation_files``"
     out_base: "Required. Basename for output files"
   }

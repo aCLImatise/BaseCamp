@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../artificial_errors.py.cwl
+id: artificial_errors.py.cwl
 inputs:
 - id: in_ase
   doc: '<i>     : add substitution error at <location> for <length>'

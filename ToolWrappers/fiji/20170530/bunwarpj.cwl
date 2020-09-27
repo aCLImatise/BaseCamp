@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bunwarpj.cwl
+id: bunwarpj.cwl
 inputs:
 - id: in_align
   doc: ': ALIGN TWO IMAGES'
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: -align
 - id: in_landmarks
-  doc: ''
+  doc: "Landmark_weight  : Weight of the landmarks\nLandmark_file    : Landmark file"
   type: boolean
   inputBinding:
     prefix: -landmarks
@@ -121,16 +121,6 @@ inputs:
   type: string
   inputBinding:
     position: 11
-- id: in_landmark_weight
-  doc: ': Weight of the landmarks'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_landmark_file
-  doc: ': Landmark file'
-  type: string
-  inputBinding:
-    position: 1
 - id: in_affine_file_one
   doc: ': Initial source affine matrix transformation'
   type: long
@@ -139,6 +129,16 @@ inputs:
 - id: in_affine_file_two
   doc: ': Initial target affine matrix transformation'
   type: long
+  inputBinding:
+    position: 1
+- id: in_var_26
+  doc: ': In any image format'
+  type: string
+  inputBinding:
+    position: 0
+- id: in_var_27
+  doc: ': In any image format'
+  type: string
   inputBinding:
     position: 1
 - id: in_var_28
@@ -227,16 +227,6 @@ inputs:
   inputBinding:
     position: 0
 - id: in_var_45
-  doc: ': In any image format'
-  type: string
-  inputBinding:
-    position: 1
-- id: in_var_46
-  doc: ': In any image format'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_var_47
   doc: ': In any image format'
   type: string
   inputBinding:

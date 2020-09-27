@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combinedAvg.pl.cwl
+id: combinedAvg.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

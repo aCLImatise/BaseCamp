@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_VALIDATE.cwl
+id: gdtools_VALIDATE.cwl
 inputs:
 - id: in_reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. If provided,

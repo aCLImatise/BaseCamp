@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitscheck.cwl
+id: fitscheck.cwl
 inputs:
 - id: in_choose_fits_checksum
   doc: "[standard | remove | none], --checksum=[standard | remove | none]\nChoose\

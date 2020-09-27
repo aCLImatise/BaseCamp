@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_deblur_seqs.cwl
+id: deblur_deblur_seqs.cwl
 inputs:
 - id: in_mean_error
   doc: "The mean per nucleotide error, used for original\nsequence estimate. If not\
@@ -35,9 +35,9 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-file
-- id: in_five_critical
-  doc: '[default: 2]'
-  type: long
+- id: in_seqs_fp
+  doc: ''
+  type: string
   inputBinding:
     position: 0
 outputs:

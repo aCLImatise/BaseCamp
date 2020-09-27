@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dgenies_inforun.cwl
+id: dgenies_inforun.cwl
 inputs:
 - id: in_message
   doc: Message to add

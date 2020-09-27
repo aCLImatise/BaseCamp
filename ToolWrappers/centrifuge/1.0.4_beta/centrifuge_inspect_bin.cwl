@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_inspect_bin.cwl
+id: centrifuge_inspect_bin.cwl
 inputs:
 - id: in_a_slash_across
   doc: 'Number of characters across in FASTA output (default: 60)'

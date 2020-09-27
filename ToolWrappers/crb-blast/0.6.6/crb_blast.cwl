@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crb_blast.cwl
+id: crb_blast.cwl
 inputs:
 - id: in_query
   doc: query fasta file

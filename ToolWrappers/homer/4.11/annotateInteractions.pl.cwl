@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotateInteractions.pl.cwl
+id: annotateInteractions.pl.cwl
 inputs:
 - id: in_res
   doc: '<#> (Resolution of analysis, default: auto detect)'

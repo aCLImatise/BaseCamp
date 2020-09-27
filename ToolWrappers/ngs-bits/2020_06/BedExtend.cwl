@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedExtend.cwl
+id: BedExtend.cwl
 inputs:
 - id: in_number_bases_extend
   doc: The number of bases to extend (on both sides of each region).

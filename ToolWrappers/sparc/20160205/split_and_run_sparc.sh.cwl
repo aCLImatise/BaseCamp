@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_and_run_sparc.sh.cwl
+id: split_and_run_sparc.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

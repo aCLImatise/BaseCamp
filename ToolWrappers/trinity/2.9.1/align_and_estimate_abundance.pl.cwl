@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align_and_estimate_abundance.pl.cwl
+id: align_and_estimate_abundance.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

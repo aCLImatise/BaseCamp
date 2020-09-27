@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../writeResultsPage.pl.cwl
+id: writeResultsPage.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

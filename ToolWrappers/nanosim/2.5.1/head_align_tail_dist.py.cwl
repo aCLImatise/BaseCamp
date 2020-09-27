@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../head_align_tail_dist.py.cwl
+id: head_align_tail_dist.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

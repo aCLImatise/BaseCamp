@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafCoverage.cwl
+id: mafCoverage.cwl
 inputs:
 - id: in_restrict
   doc: Restrict to parts in restrict.bed

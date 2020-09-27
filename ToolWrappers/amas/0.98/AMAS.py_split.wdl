@@ -25,7 +25,7 @@ task AMASpySplit {
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
+    i: "{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}"
     split_by: "File name for partitions to be used for alignment\\nsplitting."
     remove_empty: "Remove taxa with sequences composed of only\\nundetermined characters? Default: Don't remove"
     out_format: "File format for the output alignment. Default: fasta"

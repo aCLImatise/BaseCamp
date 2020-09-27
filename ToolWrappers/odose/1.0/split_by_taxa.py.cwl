@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_by_taxa.py.cwl
+id: split_by_taxa.py.cwl
 inputs:
 - id: in_genomes_a
   doc: file with genome GenBank Project ID and Organism name on each line for taxon

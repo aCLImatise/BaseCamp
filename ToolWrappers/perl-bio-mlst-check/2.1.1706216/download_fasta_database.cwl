@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_fasta_database.cwl
+id: download_fasta_database.cwl
 inputs: []
 outputs:
 - id: out_stdout

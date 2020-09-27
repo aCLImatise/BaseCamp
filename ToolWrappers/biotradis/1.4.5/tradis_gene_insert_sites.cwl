@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tradis_gene_insert_sites.cwl
+id: tradis_gene_insert_sites.cwl
 inputs:
 - id: in_trim_five
   doc: <trim insertion sites from 5' end of gene (optional, default = 0)>

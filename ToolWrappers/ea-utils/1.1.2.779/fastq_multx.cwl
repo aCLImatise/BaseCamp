@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_multx.cwl
+id: fastq_multx.cwl
 inputs:
 - id: in_output_files_one
   doc: Output files (one per input, required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_count.py.cwl
+id: maf_count.py.cwl
 inputs:
 - id: in_cols
   doc: count alignment columns rather than number of

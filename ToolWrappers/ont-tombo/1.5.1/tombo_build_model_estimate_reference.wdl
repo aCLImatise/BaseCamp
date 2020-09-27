@@ -2,7 +2,7 @@ version 1.0
 
 task TomboBuildModelEstimateReference {
   input {
-    Boolean? var_0
+    Boolean? tombo_model_filename
     Array[Int] fast_five_based_irs
     Boolean? estimate_mean
     Boolean? km_er_specific_sd
@@ -15,14 +15,12 @@ task TomboBuildModelEstimateReference {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
-    String var_13
     String individually_dot
   }
   command <<<
     tombo build_model estimate_reference \
-      ~{var_13} \
       ~{individually_dot} \
-      ~{if (var_0) then "--tombo-model-filename" else ""} \
+      ~{if (tombo_model_filename) then "--tombo-model-filename" else ""} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
       ~{if (estimate_mean) then "--estimate-mean" else ""} \
       ~{if (km_er_specific_sd) then "--kmer-specific-sd" else ""} \
@@ -37,7 +35,7 @@ task TomboBuildModelEstimateReference {
       ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    var_0: ""
+    tombo_model_filename: "TOMBO_MODEL_FILENAME\\n[--estimate-mean]\\n[--kmer-specific-sd]\\n[--upstream-bases {0,1,2,3,4}]\\n[--downstream-bases {0,1,2,3,4}]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--coverage-threshold COVERAGE_THRESHOLD]\\n[--minimum-kmer-observations MINIMUM_KMER_OBSERVATIONS]\\n[--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\\n[--processes PROCESSES]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
     estimate_mean: "Use the mean instead of median for model level\\nestimation. Note: This can cause poor fits due to\\noutliers"
     km_er_specific_sd: "Estimate standard deviation for each k-mers"
@@ -50,7 +48,6 @@ task TomboBuildModelEstimateReference {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under /Analyses/[--basecall-\\ngroup]/) containing basecalls and created within\\n[--corrected-group] containing re-squiggle results.\\nDefault: ['BaseCalled_template']"
     quiet: "Don't print status information."
-    var_13: "[--estimate-mean]"
     individually_dot: "--upstream-bases {0,1,2,3,4}"
   }
   output {

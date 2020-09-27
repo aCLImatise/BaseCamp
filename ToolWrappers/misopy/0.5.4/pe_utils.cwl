@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pe_utils.cwl
+id: pe_utils.cwl
 inputs:
 - id: in_compute_insert_len
   doc: "Compute insert length for given sample. Takes as input\n(1) a comma-separated\

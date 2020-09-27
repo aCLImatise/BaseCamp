@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimmer.py_reads.filt_2.fq.cwl
+id: trimmer.py_reads.filt_2.fq.cwl
 inputs:
 - id: in_trimmer_do_tpy
   doc: ''

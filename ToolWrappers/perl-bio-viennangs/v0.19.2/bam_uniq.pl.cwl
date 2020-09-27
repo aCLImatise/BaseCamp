@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_uniq.pl.cwl
+id: bam_uniq.pl.cwl
 inputs:
 - id: in_bam
   doc: BAM file to extract unique and multi mappers from

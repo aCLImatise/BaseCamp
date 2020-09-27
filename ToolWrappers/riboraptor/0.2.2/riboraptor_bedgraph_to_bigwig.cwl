@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_bedgraph_to_bigwig.cwl
+id: riboraptor_bedgraph_to_bigwig.cwl
 inputs:
 - id: in_bed_graph
   doc: Path to bedgraph file (optional)

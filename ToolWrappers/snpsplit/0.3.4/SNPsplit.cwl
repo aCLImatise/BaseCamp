@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SNPsplit.cwl
+id: SNPsplit.cwl
 inputs:
 - id: in_snp_file
   doc: "Mandatory file specifying SNP positions to be considered; may be a plain text\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigtax_format.cwl
+id: contigtax_format.cwl
 inputs:
 - id: in_force
   doc: Force overwrite of existing reformatted fastafile

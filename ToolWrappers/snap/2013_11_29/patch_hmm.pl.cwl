@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../patch_hmm.pl.cwl
+id: patch_hmm.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

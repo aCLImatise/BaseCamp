@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwameth.py.cwl
+id: bwameth.py.cwl
 inputs:
 - id: in_map
   doc: ''

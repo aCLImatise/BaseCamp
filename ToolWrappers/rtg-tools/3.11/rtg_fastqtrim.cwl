@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_fastqtrim.cwl
+id: rtg_fastqtrim.cwl
 inputs:
 - id: in_input
   doc: "input FASTQ file, Use '-' to read from\nstandard input"

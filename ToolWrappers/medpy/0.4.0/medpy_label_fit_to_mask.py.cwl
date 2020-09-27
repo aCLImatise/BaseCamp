@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_label_fit_to_mask.py.cwl
+id: medpy_label_fit_to_mask.py.cwl
 inputs:
 - id: in_display_more_information
   doc: Display more information.

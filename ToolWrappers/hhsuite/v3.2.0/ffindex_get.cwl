@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_get.cwl
+id: ffindex_get.cwl
 inputs:
 - id: in_use_index_name
   doc: use index of entry instead of entry name

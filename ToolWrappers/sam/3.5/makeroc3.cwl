@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeroc3.cwl
+id: makeroc3.cwl
 inputs:
 - id: in_distfile
   doc: .dist    Score file to read (required).

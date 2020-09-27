@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdassembler.cwl
+id: mdassembler.cwl
 inputs:
 - id: in_format
   doc: "The documentation FORMAT used in DIRECTORIES.\nValid formats include:\necma\n\

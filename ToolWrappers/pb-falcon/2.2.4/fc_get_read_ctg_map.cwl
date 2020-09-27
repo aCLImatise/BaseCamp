@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_get_read_ctg_map.cwl
+id: fc_get_read_ctg_map.cwl
 inputs:
 - id: in_basedir
   doc: 'the base working dir of a FALCON assembly (default: ./)'

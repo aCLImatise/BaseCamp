@@ -1,43 +1,17 @@
 class: CommandLineTool
-id: ../../../scg_run_dirichlet_mixture_model.cwl
+id: scg_run_dirichlet_mixture_model.cwl
 inputs:
-- id: in_path_yaml_format
-  doc: Path to YAML format configuration file.
-  type: File
-  inputBinding:
-    prefix: --config_file
-- id: in_lower_bound_file
-  doc: Path of file where lower bound will be written.
-  type: File
-  inputBinding:
-    prefix: --lower_bound_file
-- id: in_out_dir
-  doc: Path where output files will be written.
-  type: File
-  inputBinding:
-    prefix: --out_dir
-- id: in_convergence_tolerance
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --convergence_tolerance
-- id: in_max_num_iters
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --max_num_iters
 - id: in_seed
-  doc: "Set random seed so results can be reproduced. By\ndefault a random seed is\
-    \ chosen."
+  doc: Set random seed so results can be reproduced. By
   type: string
   inputBinding:
     prefix: --seed
-- id: in_labels_file
-  doc: "Path of file with initial labels to use.\n"
-  type: File
+- id: in_var_1
+  doc: ''
+  type: boolean
   inputBinding:
-    prefix: --labels_file
-- id: in_var_7
+    prefix: --config_file
+- id: in_var_2
   doc: '[--lower_bound_file LOWER_BOUND_FILE]'
   type: string
   inputBinding:
@@ -46,11 +20,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_out_dir
-  doc: Path where output files will be written.
-  type: File
-  outputBinding:
-    glob: $(inputs.in_out_dir)
 cwlVersion: v1.1
 baseCommand:
 - scg

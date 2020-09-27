@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../copy_accesion.py.cwl
+id: copy_accesion.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

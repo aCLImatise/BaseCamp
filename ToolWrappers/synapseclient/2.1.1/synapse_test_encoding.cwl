@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_test_encoding.cwl
+id: synapse_test_encoding.cwl
 inputs:
 - id: in_p
   doc: ''

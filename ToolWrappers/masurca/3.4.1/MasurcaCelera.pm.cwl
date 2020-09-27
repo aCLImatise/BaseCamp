@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MasurcaCelera.pm.cwl
+id: MasurcaCelera.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

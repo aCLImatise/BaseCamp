@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2ld_window.cwl
+id: vcf2ld_window.cwl
 inputs:
 - id: in_in_vcf
   doc: ': input VCF File'

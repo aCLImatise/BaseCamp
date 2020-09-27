@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_2_snps.py.cwl
+id: sam_2_snps.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

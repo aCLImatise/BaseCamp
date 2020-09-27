@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../curl.cwl
+id: curl.cwl
 inputs:
 - id: in_abstract_unix_socket
   doc: Connect via abstract Unix domain socket

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slamdunk_map.cwl
+id: slamdunk_map.cwl
 inputs:
 - id: in_reference
   doc: Reference fasta file

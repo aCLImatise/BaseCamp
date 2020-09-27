@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../syco.cwl
+id: syco.cwl
 inputs:
 - id: in_c_file
   doc: codon      Codon usage file

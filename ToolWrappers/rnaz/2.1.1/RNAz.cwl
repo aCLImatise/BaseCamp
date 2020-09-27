@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAz.cwl
+id: RNAz.cwl
 inputs:
 - id: in_forward
   doc: Score forward strand

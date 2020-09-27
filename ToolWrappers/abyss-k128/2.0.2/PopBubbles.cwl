@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PopBubbles.cwl
+id: PopBubbles.cwl
 inputs:
 - id: in_km_er
   doc: k-mer size

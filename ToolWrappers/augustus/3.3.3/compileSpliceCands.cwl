@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compileSpliceCands.cwl
+id: compileSpliceCands.cwl
 inputs:
 - id: in_filename_potential_splice
   doc: <filename>      The potential splice sites in gff format

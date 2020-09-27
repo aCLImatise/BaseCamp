@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../msstitch_isosummarize.cwl
+id: msstitch_isosummarize.cwl
 inputs:
 - id: in_is_ob_quant_col_pattern
-  doc: ''
+  doc: "[--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\n[--denomcols DENOMCOLS\
+    \ [DENOMCOLS ...]]\n[--minint MININT] [--targettable TARGETTABLE]\n[--featcol\
+    \ FEATCOL]"
   type: string
   inputBinding:
     prefix: --isobquantcolpattern

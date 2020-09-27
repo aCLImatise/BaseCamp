@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jaotc.cwl
+id: jaotc.cwl
 inputs:
 - id: in_output
   doc: Output file name

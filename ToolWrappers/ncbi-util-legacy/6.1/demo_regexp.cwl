@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../demo_regexp.cwl
+id: demo_regexp.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq2fasta.pl.cwl
+id: fastq2fasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

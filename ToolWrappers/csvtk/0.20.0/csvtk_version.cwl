@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_version.cwl
+id: csvtk_version.cwl
 inputs:
 - id: in_check_update
   doc: check update

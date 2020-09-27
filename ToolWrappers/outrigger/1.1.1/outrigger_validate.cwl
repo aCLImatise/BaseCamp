@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../outrigger_validate.cwl
+id: outrigger_validate.cwl
 inputs:
 - id: in_fast_a
   doc: "Location of the genome fasta file for which to get the\nsplice site sequences\

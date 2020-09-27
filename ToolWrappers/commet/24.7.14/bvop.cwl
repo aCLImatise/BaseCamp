@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bvop.cwl
+id: bvop.cwl
 inputs:
 - id: in_performs_not_filebv
   doc: ': performs NOT on file1.bv'

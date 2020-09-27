@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_MUSIC.csh.cwl
+id: run_MUSIC.csh.cwl
 inputs:
 - id: in_preprocess
   doc: '[Reads file path] [Output dir]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_duplicate_transcript.cwl
+id: arrow_annotations_duplicate_transcript.cwl
 inputs:
 - id: in_organism
   doc: Organism Common Name

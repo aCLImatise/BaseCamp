@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_retrain_rdp.cwl
+id: pipits_retrain_rdp.cwl
 inputs:
 - id: in_rdp_classifier_file
   doc: '[REQUIRED] RDP Classifier .jar file'

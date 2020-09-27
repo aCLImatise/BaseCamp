@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_gene_probe.cwl
+id: arb_gene_probe.cwl
 inputs:
 - id: in_input_database
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmer2gff_aa_file.cwl
+id: hmmer2gff_aa_file.cwl
 inputs:
 - id: in_db
   doc: ''

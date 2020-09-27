@@ -1,8 +1,11 @@
 class: CommandLineTool
-id: ../../../taxon_filter.py_deplete_human.cwl
+id: taxon_filter.py_deplete_human.cwl
 inputs:
 - id: in_bm_tagger_dbs
-  doc: ''
+  doc: "BLASTDBS [BLASTDBS ...]\n[--lastDb LASTDB]\n[--threads THREADS]\n[--JVMmemory\
+    \ JVMMEMORY]\n[--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n[--version]\n\
+    [--tmp_dir TMP_DIR]\n[--tmp_dirKeep]\ninBam [revertBam] bmtaggerBam\nrmdupBam\
+    \ blastnBam"
   type: string[]
   inputBinding:
     prefix: --bmtaggerDbs

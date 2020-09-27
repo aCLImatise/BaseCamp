@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_seqrange_sqfile.cwl
+id: ssu_esl_seqrange_sqfile.cwl
 inputs:
 - id: in_proc_idx
   doc: ''

@@ -39,7 +39,7 @@ task NanorawWriteMostSignificantFasta {
       ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    fast_five_based_irs_two: ""
+    fast_five_based_irs_two: "[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\\n| --2d]\\n[--obs-per-base-filter OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER ...]]\\n[--test-type {mw_utest,ttest}]\\n[--fishers-method-offset FISHERS_METHOD_OFFSET]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--genome-fasta GENOME_FASTA]\\n[--sequences-filename SEQUENCES_FILENAME]\\n[--statistics-filename STATISTICS_FILENAME]\\n[--num-regions NUM_REGIONS]\\n[--q-value-threshold Q_VALUE_THRESHOLD]\\n[--num-bases NUM_BASES] [--quiet]\\n[--help]"
     base_call_subgroups: "FAST5 subgroup (under Analyses/[corrected-group])\\nwhere individual template and/or complement reads are\\nstored. Default: ['BaseCalled_template']"
     two_d: "Input contains 2D reads. Equivalent to `--basecall-\\nsubgroups BaseCalled_template BaseCalled_complement`"
     fast_five_based_irs: "Directories containing fast5 files."

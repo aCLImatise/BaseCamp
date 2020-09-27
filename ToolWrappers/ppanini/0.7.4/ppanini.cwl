@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini.cwl
+id: ppanini.cwl
 inputs:
 - id: in_input_table
   doc: 'REQUIRED: Gene abundance table with metadata'

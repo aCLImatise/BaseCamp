@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_bamtofastq.cwl
+id: bedtools_bamtofastq.cwl
 inputs:
 - id: in_fq_two
   doc: "FASTQ for second end.  Used if BAM contains paired-end data.\nBAM should be\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cvgChop.cwl
+id: cvgChop.cwl
 inputs:
 - id: in_sum
   doc: '- summarize the coverages'

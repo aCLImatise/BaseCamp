@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polyA2hints.pl.cwl
+id: polyA2hints.pl.cwl
 inputs:
 - id: in_swap_strand
   doc: swap strand, currently use this for polyT files

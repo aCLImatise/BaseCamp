@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methdiff.py.cwl
+id: methdiff.py.cwl
 inputs:
 - id: in_out
   doc: output differential methylation file name. (required)

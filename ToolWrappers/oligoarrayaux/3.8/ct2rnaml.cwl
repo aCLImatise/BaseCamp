@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ct2rnaml.cwl
+id: ct2rnaml.cwl
 inputs:
 - id: in_help_dot_ct
   doc: ': No such file or directory'

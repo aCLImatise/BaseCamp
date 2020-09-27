@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_sfetch_sqfile.cwl
+id: ssu_esl_sfetch_sqfile.cwl
 inputs:
 - id: in_index
   doc: ''

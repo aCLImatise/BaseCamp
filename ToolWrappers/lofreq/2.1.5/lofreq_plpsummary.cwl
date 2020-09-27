@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_plpsummary.cwl
+id: lofreq_plpsummary.cwl
 inputs:
 - id: in__ref_file
   doc: '| --ref FILE              Indexed reference fasta file (gzip supported) [null]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EstimateError.py_set.cwl
+id: EstimateError.py_set.cwl
 inputs:
 - id: in_list_fastafastq_files
   doc: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default: None)"

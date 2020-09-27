@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miRDeep2.pl.cwl
+id: miRDeep2.pl.cwl
 inputs:
 - id: in_minimum_read_stack
   doc: "minimum read stack height that triggers analysis. Using this option disables\n\

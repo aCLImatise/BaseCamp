@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metabat.cwl
+id: metabat.cwl
 inputs:
 - id: in_i
   doc: '[ --inFile ] arg               Contigs in (gzipped) fasta file format [Mandatory]'

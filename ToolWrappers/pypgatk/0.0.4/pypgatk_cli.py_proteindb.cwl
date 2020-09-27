@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pypgatk_cli.py_proteindb.cwl
+id: pypgatk_cli.py_proteindb.cwl
 inputs:
 - id: in_p_ypg_atk_cli_do_tpy
   doc: ''

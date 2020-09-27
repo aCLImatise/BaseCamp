@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purityEM.cwl
+id: purityEM.cwl
 inputs:
 - id: in_output_name_default
   doc: ': the output name; default <stdout>'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_metasv.py.cwl
+id: run_metasv.py.cwl
 inputs:
 - id: in_sample
   doc: 'Sample name (default: None)'

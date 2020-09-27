@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../arb_name_server.cwl
+id: arb_name_server.cwl
 inputs:
-- id: in_kill
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -kill
-- id: in_look
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -look
 - id: in_name_sets_species
   doc: <name>        sets species name to '<name>'
   type: boolean

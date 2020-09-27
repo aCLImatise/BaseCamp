@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_enrichment.py.cwl
+id: find_enrichment.py.cwl
 inputs:
 - id: in_alpha
   doc: ": test-wise alpha; for each GO term, what significance level to apply\n(most\

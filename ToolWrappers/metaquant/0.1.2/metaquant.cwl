@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../metaquant.cwl
+id: metaquant.cwl
 inputs:
 - id: in_pep_colname
-  doc: ''
+  doc: "[--func_file FUNC_FILE] [--ontology {go,cog}]\n[--obo_path OBO_PATH] [--slim_path\
+    \ SLIM_PATH] [--slim_down]\n[--update_obo] [--tax_file TAX_FILE]\n[--tax_colname\
+    \ TAX_COLNAME] [--test] [--paired]\n[--threshold THRESHOLD]"
   type: string
   inputBinding:
     prefix: --pep_colname

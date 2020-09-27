@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeparateNormalFromFusionJunc.cwl
+id: SeparateNormalFromFusionJunc.cwl
 inputs: []
 outputs:
 - id: out_stdout

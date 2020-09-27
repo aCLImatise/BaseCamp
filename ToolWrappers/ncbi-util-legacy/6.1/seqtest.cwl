@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtest.cwl
+id: seqtest.cwl
 inputs:
 - id: in_filename_asn_input
   doc: "Filename for asn.1 input [File In]\ndefault = stdin"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dust.cwl
+id: dust.cwl
 inputs:
 - id: in_fast_a_file
   doc: ''

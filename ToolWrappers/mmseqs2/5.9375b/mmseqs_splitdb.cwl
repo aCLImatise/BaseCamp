@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_splitdb.cwl
+id: mmseqs_splitdb.cwl
 inputs:
 - id: in_split
   doc: 0               Splits input sets into N equally distributed chunks. The default

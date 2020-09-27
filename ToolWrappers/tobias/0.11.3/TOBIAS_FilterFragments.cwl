@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_FilterFragments.cwl
+id: TOBIAS_FilterFragments.cwl
 inputs:
 - id: in_bam
   doc: .bam-file to filter

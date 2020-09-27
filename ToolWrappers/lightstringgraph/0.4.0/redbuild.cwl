@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../redbuild.cwl
+id: redbuild.cwl
 inputs:
 - id: in_b
   doc: '# (required)'

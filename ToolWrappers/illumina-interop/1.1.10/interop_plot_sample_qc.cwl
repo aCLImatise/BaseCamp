@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_plot_sample_qc.cwl
+id: interop_plot_sample_qc.cwl
 inputs: []
 outputs:
 - id: out_stdout

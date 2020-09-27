@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_sequences.py.cwl
+id: split_sequences.py.cwl
 inputs:
 - id: in_threshold
   doc: Split based on this threshold of length

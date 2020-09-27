@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_bed.cwl
+id: sort_bed.cwl
 inputs:
 - id: in_tmpdir
   doc: useful only with --max-mem.

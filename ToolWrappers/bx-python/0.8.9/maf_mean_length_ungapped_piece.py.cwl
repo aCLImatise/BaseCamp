@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_mean_length_ungapped_piece.py.cwl
+id: maf_mean_length_ungapped_piece.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

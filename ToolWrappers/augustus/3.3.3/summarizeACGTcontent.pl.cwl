@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarizeACGTcontent.pl.cwl
+id: summarizeACGTcontent.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

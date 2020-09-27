@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_rnacma.cwl
+id: arb_rnacma.cwl
 inputs: []
 outputs:
 - id: out_stdout

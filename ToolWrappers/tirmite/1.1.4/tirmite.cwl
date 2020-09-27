@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tirmite.cwl
+id: tirmite.cwl
 inputs:
 - id: in_genome
   doc: Path to target genome that will be queried with HMMs.

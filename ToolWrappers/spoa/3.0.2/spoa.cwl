@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spoa.cwl
+id: spoa.cwl
 inputs:
 - id: in_default_score_matching
   doc: "default: 5\nscore for matching bases"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ega2.cwl
+id: ega2.cwl
 inputs: []
 outputs:
 - id: out_stdout

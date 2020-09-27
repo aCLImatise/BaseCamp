@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfnosnps.cwl
+id: vcfnosnps.cwl
 inputs: []
 outputs:
 - id: out_stdout

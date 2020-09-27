@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_multi_seq.pl.cwl
+id: make_multi_seq.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

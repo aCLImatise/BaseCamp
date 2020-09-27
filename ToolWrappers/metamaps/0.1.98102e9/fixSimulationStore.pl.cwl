@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fixSimulationStore.pl.cwl
+id: fixSimulationStore.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cluster_submit.sh.cwl
+id: cluster_submit.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

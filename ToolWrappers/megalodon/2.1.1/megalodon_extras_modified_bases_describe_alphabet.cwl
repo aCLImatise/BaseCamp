@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_modified_bases_describe_alphabet.cwl
+id: megalodon_extras_modified_bases_describe_alphabet.cwl
 inputs:
 - id: in_guppy_config
   doc: "Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\ndcm-cpg_hac.cfg"

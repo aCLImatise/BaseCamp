@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jarsigner.cwl
+id: jarsigner.cwl
 inputs:
 - id: in_jar_file
   doc: ''

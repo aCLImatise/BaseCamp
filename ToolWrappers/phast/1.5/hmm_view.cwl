@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmm_view.cwl
+id: hmm_view.cwl
 inputs:
 - id: in_assume_separate_version
   doc: "Assume a separate version of each state for each of\n<nrcats> rate categories."

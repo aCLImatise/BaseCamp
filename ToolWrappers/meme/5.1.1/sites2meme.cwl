@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sites2meme.cwl
+id: sites2meme.cwl
 inputs:
 - id: in_ext
   doc: "the file extension (with '.') of the sites files;\nthe file name minus the\

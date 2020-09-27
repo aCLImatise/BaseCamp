@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faToTwoBit.cwl
+id: faToTwoBit.cwl
 inputs:
 - id: in_long
   doc: "use 64-bit offsets for index.   Allow for twoBit to contain more than 4Gb\

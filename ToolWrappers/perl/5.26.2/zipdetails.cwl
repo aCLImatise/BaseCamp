@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zipdetails.cwl
+id: zipdetails.cwl
 inputs:
 - id: in_verbose_output_stuff
   doc: Verbose - output more stuff

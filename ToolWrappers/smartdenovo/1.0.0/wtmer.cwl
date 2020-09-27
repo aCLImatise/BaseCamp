@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtmer.cwl
+id: wtmer.cwl
 inputs:
 - id: in_long_reads_file
   doc: Long reads sequences file, + *
@@ -21,11 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -H
-- id: in_kmer_size_k
-  doc: Kmer size, 5 <= <-k> <= 16, [16]
-  type: long
-  inputBinding:
-    prefix: -k
 outputs:
 - id: out_stdout
   doc: Standard output stream

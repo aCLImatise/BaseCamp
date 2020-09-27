@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_merge.cwl
+id: samtools_merge.cwl
 inputs:
 - id: in_input_files_sorted_read
   doc: Input files are sorted by read name

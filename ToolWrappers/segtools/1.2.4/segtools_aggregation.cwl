@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_aggregation.cwl
+id: segtools_aggregation.cwl
 inputs:
 - id: in_mnemonic_file
   doc: "If specified, labels will be shown using mnemonics\nfound in FILE"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genometreetk_pd.cwl
+id: genometreetk_pd.cwl
 inputs:
 - id: in_per_tax_a_pg_file
   doc: "file to record phylogenetic gain of each ingroup taxa\nrelative to the outgroup"

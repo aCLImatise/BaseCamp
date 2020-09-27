@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findcsRNATSS.pl_tag directory.cwl
+id: findcsRNATSS.pl_tag directory.cwl
 inputs:
 - id: in_o
   doc: (*see note below)

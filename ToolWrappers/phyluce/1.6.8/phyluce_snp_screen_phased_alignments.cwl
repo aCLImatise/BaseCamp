@@ -1,9 +1,12 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_screen_phased_alignments.cwl
+id: phyluce_snp_screen_phased_alignments.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n[--output-format\
+    \ {fasta,nexus,phylip,clustal,emboss,stockholm}]\n[--include-missing] [--random]\n\
+    [--numerical-encoding]\n[--cores CORES]\n[--verbosity {INFO,WARN,CRITICAL}]\n\
+    [--log-path LOG_PATH]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_alignments

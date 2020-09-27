@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Fast5_to_seq_summary.cwl
+id: Fast5_to_seq_summary.cwl
 inputs:
 - id: in_seq_summary_fn
   doc: "path of the summary sequencing file where to write the\ndata extracted from\

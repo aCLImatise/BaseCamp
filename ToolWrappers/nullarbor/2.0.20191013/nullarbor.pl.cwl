@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nullarbor.pl.cwl
+id: nullarbor.pl.cwl
 inputs:
 - id: in_name
   doc: Job name

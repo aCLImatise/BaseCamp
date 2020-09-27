@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../signcode.cwl
+id: signcode.cwl
 inputs:
 - id: in_spc
   doc: Software Publisher Certificate file

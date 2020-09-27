@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_inbreeding_coefficient.cwl
+id: vtools_report_inbreeding_coefficient.cwl
 inputs:
 - id: in_maf_field
   doc: "Name of the field that holds minor allele frequency\nfor sample variants,\
@@ -20,6 +20,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --verbosity
+- id: in_table
+  doc: "Variants based on which individual inbreeding\ncoefficients are evaluated."
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

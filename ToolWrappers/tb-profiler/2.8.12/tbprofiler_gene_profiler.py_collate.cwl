@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_gene_profiler.py_collate.cwl
+id: tbprofiler_gene_profiler.py_collate.cwl
 inputs:
 - id: in_dir
   doc: 'Result directory (default: .)'

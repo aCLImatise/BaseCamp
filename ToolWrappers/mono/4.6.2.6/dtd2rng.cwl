@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dtd2rng.cwl
+id: dtd2rng.cwl
 inputs:
 - id: in_compact
   doc: ': output compact syntax.'

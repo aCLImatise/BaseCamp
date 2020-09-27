@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncoils.cwl
+id: ncoils.cwl
 inputs: []
 outputs:
 - id: out_stdout

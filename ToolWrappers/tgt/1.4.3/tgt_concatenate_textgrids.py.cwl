@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgt_concatenate_textgrids.py.cwl
+id: tgt_concatenate_textgrids.py.cwl
 inputs:
 - id: in_input_files
   doc: "Space-separated list of paths to TextGrid files in the\norder they should\

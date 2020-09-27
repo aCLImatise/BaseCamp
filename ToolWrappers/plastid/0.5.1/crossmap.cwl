@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crossmap.cwl
+id: crossmap.cwl
 inputs:
 - id: in_kmer_length_generate
   doc: "K-mer length to generate from input file. (Default:\n29)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prj2make.cwl
+id: prj2make.cwl
 inputs: []
 outputs:
 - id: out_stdout

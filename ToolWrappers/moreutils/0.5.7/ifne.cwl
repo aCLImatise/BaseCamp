@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ifne.cwl
+id: ifne.cwl
 inputs:
 - id: in_n
   doc: ''

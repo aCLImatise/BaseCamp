@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfgenotypecompare.cwl
+id: vcfgenotypecompare.cwl
 inputs:
 - id: in_other_genotype_tag
   doc: ''

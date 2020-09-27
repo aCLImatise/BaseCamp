@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easydev_buildPackage.cwl
+id: easydev_buildPackage.cwl
 inputs:
 - id: in_pkgname
   doc: Name of the package to be created

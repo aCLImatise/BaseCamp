@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpectraMerger.cwl
+id: SpectraMerger.cwl
 inputs:
 - id: in_in
   doc: "*               Input mzML file. (valid formats: 'mzML')"

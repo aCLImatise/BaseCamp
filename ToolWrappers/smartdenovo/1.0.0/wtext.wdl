@@ -11,7 +11,6 @@ task Wtext {
     Float? overlap_files_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar
     File? output_file_extended
     Boolean? force_overwrite
-    Float? bandwidth
     Int? alignment_penalty_match
     Int? alignment_penalty_mismatch
     Int? alignment_penalty_insertion
@@ -30,7 +29,6 @@ task Wtext {
       ~{if defined(overlap_files_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar) then ("-j " +  '"' + overlap_files_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar + '"') else ""} \
       ~{if defined(output_file_extended) then ("-o " +  '"' + output_file_extended + '"') else ""} \
       ~{if (force_overwrite) then "-f" else ""} \
-      ~{if defined(bandwidth) then ("-W " +  '"' + bandwidth + '"') else ""} \
       ~{if defined(alignment_penalty_match) then ("-M " +  '"' + alignment_penalty_match + '"') else ""} \
       ~{if defined(alignment_penalty_mismatch) then ("-X " +  '"' + alignment_penalty_mismatch + '"') else ""} \
       ~{if defined(alignment_penalty_insertion) then ("-O " +  '"' + alignment_penalty_insertion + '"') else ""} \
@@ -48,7 +46,6 @@ task Wtext {
     overlap_files_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar: "Overlap file(s), + *\\nFormat: reads1\\t+/-\\tlen1\\tbeg1\\tend1\\treads2\\t+/-\\tlen2\\tbeg2\\tend2\\tscore\\tidentity<float>\\tmat\\tmis\\tins\\tdel\\tcigar"
     output_file_extended: "Output file of extended alignments, -:stdout, *"
     force_overwrite: "Force overwrite"
-    bandwidth: "Bandwidth, [800]"
     alignment_penalty_match: "Alignment penalty: match, [2]"
     alignment_penalty_mismatch: "Alignment penalty: mismatch, [-5]"
     alignment_penalty_insertion: "Alignment penalty: insertion or deletion, [-3]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oligotype.cwl
+id: oligotype.cwl
 inputs: []
 outputs:
 - id: out_stdout

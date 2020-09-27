@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pblayout_tp2seq.cwl
+id: pblayout_tp2seq.cwl
 inputs:
 - id: in_use_seq_ids
   doc: "The input tiling path contains sequence IDs instead\nof read names."

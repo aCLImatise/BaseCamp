@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2xgmml.py.cwl
+id: ftbl2xgmml.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

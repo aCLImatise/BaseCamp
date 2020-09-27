@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PLEK_generate_scripts.R.cwl
+id: PLEK_generate_scripts.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

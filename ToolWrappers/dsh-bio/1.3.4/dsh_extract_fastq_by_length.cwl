@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_extract_fastq_by_length.cwl
+id: dsh_extract_fastq_by_length.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

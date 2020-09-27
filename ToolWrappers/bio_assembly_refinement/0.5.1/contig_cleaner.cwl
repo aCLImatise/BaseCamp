@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contig_cleaner.cwl
+id: contig_cleaner.cwl
 inputs:
 - id: in_cut_off_length
   doc: Minimum acceptable contig length [2000]

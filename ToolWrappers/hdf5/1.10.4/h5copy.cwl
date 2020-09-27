@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5copy.cwl
+id: h5copy.cwl
 inputs:
 - id: in_output
   doc: output file name

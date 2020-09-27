@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Lace.py.cwl
+id: Lace.py.cwl
 inputs:
 - id: in_cores
   doc: "The number of cores you wish to run the job on\n(default = 1)"

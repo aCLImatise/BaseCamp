@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapidVis.sh.cwl
+id: rapidVis.sh.cwl
 inputs:
 - id: in_type
   doc: = stats/Compare - Choose basic statistics, or comparison plots

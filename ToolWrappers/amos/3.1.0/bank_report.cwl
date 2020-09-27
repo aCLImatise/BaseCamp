@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank_report.cwl
+id: bank_report.cwl
 inputs:
 - id: in_directory_path_report
   doc: The directory path of the bank to report

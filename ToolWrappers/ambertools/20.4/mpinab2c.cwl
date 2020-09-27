@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mpinab2c.cwl
+id: mpinab2c.cwl
 inputs: []
 outputs:
 - id: out_stdout

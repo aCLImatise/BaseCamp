@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vidir.cwl
+id: vidir.cwl
 inputs: []
 outputs:
 - id: out_stdout

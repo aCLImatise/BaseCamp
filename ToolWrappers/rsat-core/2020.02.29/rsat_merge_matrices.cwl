@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_merge_matrices.cwl
+id: rsat_merge_matrices.cwl
 inputs:
 - id: in_merge_matrices
   doc: "\e[1mVERSION\e[0m"

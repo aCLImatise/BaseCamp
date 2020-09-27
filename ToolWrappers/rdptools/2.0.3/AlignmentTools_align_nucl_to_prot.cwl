@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignmentTools_align_nucl_to_prot.cwl
+id: AlignmentTools_align_nucl_to_prot.cwl
 inputs:
 - id: in_align_nucleotide_to_protein
   doc: ''

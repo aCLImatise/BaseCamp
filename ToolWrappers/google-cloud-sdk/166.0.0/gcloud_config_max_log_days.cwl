@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_max_log_days.cwl
+id: gcloud_config_max_log_days.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

@@ -14,6 +14,7 @@ task Ssucmsearch {
     File? in_format
     Int? mx_size
     Boolean? devhelp
+    Boolean? inside
     Boolean? cy_k
     Boolean? forward
     Boolean? viterbi
@@ -68,6 +69,7 @@ task Ssucmsearch {
       ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
       ~{if defined(mx_size) then ("--mxsize " +  '"' + mx_size + '"') else ""} \
       ~{if (devhelp) then "--devhelp" else ""} \
+      ~{if (inside) then "--inside" else ""} \
       ~{if (cy_k) then "--cyk" else ""} \
       ~{if (forward) then "--forward" else ""} \
       ~{if (viterbi) then "--viterbi" else ""} \
@@ -117,6 +119,7 @@ task Ssucmsearch {
     in_format: ": specify the input file is in format <x>, not FASTA"
     mx_size: ": set maximum allowable HMM banded DP matrix size to <x> Mb"
     devhelp: ": show list of undocumented developer options"
+    inside: ": use scanning CM Inside algorithm  [default]"
     cy_k: ": use scanning CM CYK algorithm"
     forward: ": use scanning HMM Forward algorithm"
     viterbi: ": use scanning HMM Viterbi algorithm"

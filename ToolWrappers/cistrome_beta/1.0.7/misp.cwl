@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../misp.cwl
+id: misp.cwl
 inputs: []
 outputs:
 - id: out_stdout

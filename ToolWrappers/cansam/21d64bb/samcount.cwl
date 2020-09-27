@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samcount.cwl
+id: samcount.cwl
 inputs:
 - id: in_display_statistics_library
   doc: Display statistics for each library

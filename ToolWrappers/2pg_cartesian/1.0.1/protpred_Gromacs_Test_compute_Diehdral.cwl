@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protpred_Gromacs_Test_compute_Diehdral.cwl
+id: protpred_Gromacs_Test_compute_Diehdral.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -5,7 +5,6 @@ task Gerpelem {
     Boolean? verbose_mode
     File? column_scores_filename
     String? c
-    Int? s
     String? suffix_naming_files
     File? suffix_naming_exclusion
     Int? minimum_element_length
@@ -24,7 +23,6 @@ task Gerpelem {
       ~{if (verbose_mode) then "-v" else ""} \
       ~{if defined(column_scores_filename) then ("-f " +  '"' + column_scores_filename + '"') else ""} \
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(suffix_naming_files) then ("-x " +  '"' + suffix_naming_files + '"') else ""} \
       ~{if defined(suffix_naming_exclusion) then ("-w " +  '"' + suffix_naming_exclusion + '"') else ""} \
       ~{if defined(minimum_element_length) then ("-l " +  '"' + minimum_element_length + '"') else ""} \
@@ -42,7 +40,6 @@ task Gerpelem {
     verbose_mode: "verbose mode"
     column_scores_filename: "column scores filename"
     c: "[default = none]"
-    s: "[default = 0]"
     suffix_naming_files: "suffix for naming output files [default = \\\".elems\\\"]"
     suffix_naming_exclusion: "suffix for naming exclusion region file [default = no output]"
     minimum_element_length: "minimum element length [default = 4]"

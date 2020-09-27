@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmentation_fold_utils_estimate_energy.cwl
+id: segmentation_fold_utils_estimate_energy.cwl
 inputs:
 - id: in_temp_dir
   doc: "Ppath in which temporary conifig files will\nbe stored (default: /tmp)"

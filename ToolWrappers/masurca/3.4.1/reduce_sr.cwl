@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reduce_sr.cwl
+id: reduce_sr.cwl
 inputs:
 - id: in_maximum_search_depth
   doc: Check at most this many possible containing SuperReads (100)

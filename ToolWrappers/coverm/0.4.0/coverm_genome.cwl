@@ -1,51 +1,13 @@
 class: CommandLineTool
-id: ../../../coverm_genome.cwl
+id: coverm_genome.cwl
 inputs:
 - id: in_coupled
-  doc: '...'
-  type: string
-  inputBinding:
-    prefix: --coupled
-- id: in_genome_definition
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --genome-definition
-- id: in_genome_fast_a_directory
-  doc: ''
+  doc: "...\n--genome-definition <genome-definition>\n--genome-fasta-directory <genome-fasta-directory>\n\
+    --genome-fasta-files <genome-fasta-files>...\n--interleaved <interleaved>...\n\
+    -1 <read1>...\n-2 <read2>...\n--separator <separator>\n--single <single>..."
   type: Directory
   inputBinding:
-    prefix: --genome-fasta-directory
-- id: in_genome_fast_a_files
-  doc: '...'
-  type: string
-  inputBinding:
-    prefix: --genome-fasta-files
-- id: in_interleaved
-  doc: '...'
-  type: string
-  inputBinding:
-    prefix: --interleaved
-- id: in_one
-  doc: '...'
-  type: long
-  inputBinding:
-    prefix: '-1'
-- id: in_two
-  doc: '...'
-  type: long
-  inputBinding:
-    prefix: '-2'
-- id: in_separator
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --separator
-- id: in_single
-  doc: '...'
-  type: string
-  inputBinding:
-    prefix: --single
+    prefix: --coupled
 - id: in_contig_end_exclusion
   doc: ''
   type: string

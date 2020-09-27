@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_organelle_from_assembly.py.cwl
+id: get_organelle_from_assembly.py.cwl
 inputs:
 - id: in_flag_should_followed
   doc: "This flag should be followed with embplant_pt\n(embryophyta plant plastome),\

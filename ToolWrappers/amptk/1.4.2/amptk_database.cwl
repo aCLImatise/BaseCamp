@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_database.cwl
+id: amptk_database.cwl
 inputs:
 - id: in_fast_a
   doc: Input FASTA file

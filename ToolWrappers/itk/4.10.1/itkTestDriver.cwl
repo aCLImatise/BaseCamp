@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../itkTestDriver.cwl
+id: itkTestDriver.cwl
 inputs:
 - id: in_add_before_libpath
   doc: "Add a path to the library path environment. This option take care of\nchoosing\

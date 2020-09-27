@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_standard....cwl
+id: arrow_annotations_standard....cwl
 inputs:
 - id: in_arrow
   doc: ''

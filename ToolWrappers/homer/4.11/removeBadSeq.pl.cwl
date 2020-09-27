@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeBadSeq.pl.cwl
+id: removeBadSeq.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

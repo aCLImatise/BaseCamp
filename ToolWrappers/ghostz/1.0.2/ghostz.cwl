@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ghostz.cwl
+id: ghostz.cwl
 inputs:
 - id: in_protein_sequences_fasta
   doc: Protein sequences in FASTA format for a database

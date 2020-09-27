@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: ../../../filter_seq.cwl
+id: filter_seq.cwl
 inputs:
 - id: in_index
   doc: an index file of the copy file
   type: File
   inputBinding:
     prefix: -index
-- id: in_options
-  doc: '-------'
+- id: in_good_dot
+  doc: ''
   type: string
   inputBinding:
     position: 0

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_sfetch_name.cwl
+id: esl_sfetch_name.cwl
 inputs:
 - id: in_index
   doc: ''

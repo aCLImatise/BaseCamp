@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Circos.pl.cwl
+id: Circos.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

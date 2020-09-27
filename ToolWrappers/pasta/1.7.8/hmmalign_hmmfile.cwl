@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmalign_hmmfile.cwl
+id: hmmalign_hmmfile.cwl
 inputs:
 - id: in_options
   doc: ''

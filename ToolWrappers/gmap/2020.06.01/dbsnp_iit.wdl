@@ -9,11 +9,9 @@ task DbsnpIit {
     String flank_mismatch_genome_shorter
     String mixed_observed
     String named_deletion_zero_span
-    String non_integer_chrom_count
     String observed_mismatch
     String observed_wrong_format
     String ref_allele_rev_comp
-    String single_class_longer_span
     String single_class_tri_allelic
   }
   command <<<
@@ -23,11 +21,9 @@ task DbsnpIit {
       ~{flank_mismatch_genome_shorter} \
       ~{mixed_observed} \
       ~{named_deletion_zero_span} \
-      ~{non_integer_chrom_count} \
       ~{observed_mismatch} \
       ~{observed_wrong_format} \
       ~{ref_allele_rev_comp} \
-      ~{single_class_longer_span} \
       ~{single_class_tri_allelic} \
       ~{if (more_options) then "-MORE_OPTIONS" else ""} \
       ~{if (options) then "-OPTIONS" else ""}
@@ -40,11 +36,9 @@ task DbsnpIit {
     flank_mismatch_genome_shorter: "InconsistentAlleles"
     mixed_observed: "MultipleAlignments"
     named_deletion_zero_span: "NamedInsertionNonzeroSpan"
-    non_integer_chrom_count: "ObservedContainsIupac"
     observed_mismatch: "ObservedTooLong"
     observed_wrong_format: "RefAlleleMismatch"
     ref_allele_rev_comp: "SingleAlleleFreq"
-    single_class_longer_span: "SingleClassQuadAllelic"
     single_class_tri_allelic: "SingleClassZeroSpan"
   }
   output {

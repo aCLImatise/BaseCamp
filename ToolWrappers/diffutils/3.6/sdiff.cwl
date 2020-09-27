@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdiff.cwl
+id: sdiff.cwl
 inputs:
 - id: in_output
   doc: operate interactively, sending output to FILE

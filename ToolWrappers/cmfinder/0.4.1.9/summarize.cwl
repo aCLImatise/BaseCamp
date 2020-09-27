@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarize.cwl
+id: summarize.cwl
 inputs:
 - id: in_background_gc_content
   doc: ': Background GC content'

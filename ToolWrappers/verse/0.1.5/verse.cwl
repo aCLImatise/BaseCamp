@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../verse.cwl
+id: verse.cwl
 inputs:
 - id: in_give_name_annotation
   doc: "Give the name of the annotation file. The program currently only\nsupports\

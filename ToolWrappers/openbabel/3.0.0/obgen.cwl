@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obgen.cwl
+id: obgen.cwl
 inputs:
 - id: in_ff
   doc: select a forcefield

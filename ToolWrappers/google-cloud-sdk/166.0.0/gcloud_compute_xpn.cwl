@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_xpn.cwl
+id: gcloud_compute_xpn.cwl
 inputs:
 - id: in_associated_projects
   doc: Configure associated projects for cross-project networking (XPN).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../utgcns.cwl
+id: utgcns.cwl
 inputs:
 - id: in_load_reads_partition
   doc: Load reads from partition file 'f'

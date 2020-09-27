@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagene_OUTBASE_mask.txt.cwl
+id: metagene_OUTBASE_mask.txt.cwl
 inputs:
 - id: in_meta_gene
   doc: ''

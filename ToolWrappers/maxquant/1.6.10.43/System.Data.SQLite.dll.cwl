@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../System.Data.SQLite.dll.cwl
+id: System.Data.SQLite.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

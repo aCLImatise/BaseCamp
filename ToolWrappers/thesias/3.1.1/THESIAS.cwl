@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../THESIAS.cwl
+id: THESIAS.cwl
 inputs: []
 outputs:
 - id: out_stdout

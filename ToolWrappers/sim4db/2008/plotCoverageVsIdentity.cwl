@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotCoverageVsIdentity.cwl
+id: plotCoverageVsIdentity.cwl
 inputs: []
 outputs:
 - id: out_stdout

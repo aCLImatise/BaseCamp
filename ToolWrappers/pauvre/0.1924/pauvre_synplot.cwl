@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pauvre_synplot.cwl
+id: pauvre_synplot.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr
@@ -11,11 +11,6 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --aln_dir
-- id: in_center_on
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --center_on
 - id: in_dpi
   doc: Change the dpi from the default 600 if you need it
   type: long
@@ -82,6 +77,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --transparent
+- id: in_center_on
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --center_on
 - id: in_contained_dot
   doc: --center_on CENTER_ON
   type: string

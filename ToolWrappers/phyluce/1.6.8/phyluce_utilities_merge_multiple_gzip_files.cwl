@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: ../../../phyluce_utilities_merge_multiple_gzip_files.cwl
+id: phyluce_utilities_merge_multiple_gzip_files.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--section SECTION]\n[--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n\
+    [--trimmed]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_config

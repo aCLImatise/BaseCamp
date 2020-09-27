@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2bed_gnuParallel_typical.cwl
+id: bam2bed_gnuParallel_typical.cwl
 inputs: []
 outputs:
 - id: out_stdout

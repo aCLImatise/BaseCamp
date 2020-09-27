@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tedna.cwl
+id: tedna.cwl
 inputs:
 - id: in_file_one
   doc: First FASTQ file.

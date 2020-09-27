@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cameo_search_ID..cwl
+id: cameo_search_ID..cwl
 inputs:
 - id: in_cameo
   doc: ''

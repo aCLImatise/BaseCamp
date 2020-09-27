@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_region.cwl
+id: oncogemini_region.cwl
 inputs:
 - id: in_reg
   doc: Specify a chromosomal region chr:start-end

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfutils.pl_varFilter.cwl
+id: vcfutils.pl_varFilter.cwl
 inputs:
 - id: in_more_options
   doc: ''

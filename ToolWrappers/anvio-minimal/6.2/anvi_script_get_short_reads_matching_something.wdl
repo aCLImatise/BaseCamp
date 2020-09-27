@@ -9,9 +9,11 @@ task Anviscriptgetshortreadsmatchingsomething {
     Directory? output_directory
     Boolean? report_raw
     Int? stop_after
+    String fast_q_files
   }
   command <<<
     anvi_script_get_short_reads_matching_something \
+      ~{fast_q_files} \
       ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
       ~{if defined(match_sequence) then ("--match-sequence " +  '"' + match_sequence + '"') else ""} \
       ~{if defined(min_remainder_length) then ("--min-remainder-length " +  '"' + min_remainder_length + '"') else ""} \
@@ -28,6 +30,7 @@ task Anviscriptgetshortreadsmatchingsomething {
     output_directory: "Output directory for results to be stored. The default\\nis the current working directory."
     report_raw: "Just report them raw. Don't bother trimming."
     stop_after: "Stop after X number of hits because who needs data."
+    fast_q_files: "One or more FASTQ formatted files"
   }
   output {
     File out_stdout = stdout()

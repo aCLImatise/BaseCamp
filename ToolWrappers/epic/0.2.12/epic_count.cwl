@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic_count.cwl
+id: epic_count.cwl
 inputs:
 - id: in_in_files
   doc: ChIP files to count reads in (bed/bedpe format).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rascaf_join.cwl
+id: rascaf_join.cwl
 inputs:
 - id: in_path_rascaf_output
   doc: ': the path to the rascaf output. Can use multiple of -r. (required)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../piler.cwl
+id: piler.cwl
 inputs:
 - id: in_trs
   doc: ":\n-mincover <n>\n-maxlengthdiffpct <n>\n-piles <pilefile>\n-images <imagefile>\n\

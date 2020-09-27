@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../alimask.cwl
+id: alimask.cwl
 inputs:
 - id: in_direct_summary_output
   doc: ': direct summary output to file <f>, not stdout'
   type: File
   inputBinding:
     prefix: -o
-- id: in_xxx
-  doc: ',30-40 ) :'
-  type: long
-  inputBinding:
-    prefix: --xxx
 - id: in_model_range
   doc: ': range(s) for mask(s) in model coordinates'
   type: string

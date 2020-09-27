@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LCA.py.cwl
+id: LCA.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

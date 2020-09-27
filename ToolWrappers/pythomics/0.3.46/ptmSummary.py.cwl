@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptmSummary.py.cwl
+id: ptmSummary.py.cwl
 inputs:
 - id: in_threads_to_run
   doc: Threads to run

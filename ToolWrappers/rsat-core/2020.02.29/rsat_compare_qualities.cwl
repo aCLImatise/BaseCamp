@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_compare_qualities.cwl
+id: rsat_compare_qualities.cwl
 inputs:
 - id: in_compare_qualities
   doc: "\e[1mVERSION\e[0m"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isoseq3_cluster.cwl
+id: isoseq3_cluster.cwl
 inputs:
 - id: in_poa_cov
   doc: INT   Maximum number of CCS reads used for POA consensus. [10]

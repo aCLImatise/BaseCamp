@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ABYSS_P.cwl
+id: ABYSS_P.cwl
 inputs:
 - id: in_chastity
   doc: discard unchaste reads [default]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDFilter.cwl
+id: IDFilter.cwl
 inputs:
 - id: in_in
   doc: "*                                               Input file  (valid formats:\

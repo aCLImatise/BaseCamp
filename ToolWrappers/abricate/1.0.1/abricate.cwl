@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abricate.cwl
+id: abricate.cwl
 inputs:
 - id: in_debug
   doc: Verbose debug output.

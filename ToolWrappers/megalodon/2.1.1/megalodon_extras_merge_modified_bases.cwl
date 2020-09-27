@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_merge_modified_bases.cwl
+id: megalodon_extras_merge_modified_bases.cwl
 inputs:
 - id: in_output_megalodon_results_dir
   doc: "Output directory. Cannot exist before this command.\nDefault: megalodon_merge_mods_results"

@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceAlignConvertOneAlignToAnother {
   input {
-    String? var_output
+    File? var_output
     Directory? alignments
     String? input_format
     String? output_format
@@ -25,7 +25,7 @@ task PhyluceAlignConvertOneAlignToAnother {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--input-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\\n[--output-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\\n[--cores CORES]\\n[--shorten-names]\\n[--name-conf NAME_CONF]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]"
     alignments: "The directory containing the alignments to convert."
     input_format: "The input alignment format"
     output_format: "The input alignment format"

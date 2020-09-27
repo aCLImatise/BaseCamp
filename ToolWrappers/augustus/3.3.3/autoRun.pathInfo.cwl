@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoRun.pathInfo.cwl
+id: autoRun.pathInfo.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan_strain_finder.cwl
+id: phylophlan_strain_finder.cwl
 inputs:
 - id: in_input
   doc: "Specify the file of the phylogenetic tree as generated\nfrom phylophlan.py\

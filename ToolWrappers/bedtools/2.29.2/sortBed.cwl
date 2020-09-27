@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortBed.cwl
+id: sortBed.cwl
 inputs:
 - id: in_size_a
   doc: Sort by feature size in ascending order.

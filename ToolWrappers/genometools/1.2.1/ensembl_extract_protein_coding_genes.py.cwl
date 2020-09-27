@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ensembl_extract_protein_coding_genes.py.cwl
+id: ensembl_extract_protein_coding_genes.py.cwl
 inputs:
 - id: in_annotation_file
   doc: "Path of Ensembl gene annotation file (in GTF format). The file\nmay be gzip'ed.\

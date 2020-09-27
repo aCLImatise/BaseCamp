@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scmap_get_std_output.R.cwl
+id: scmap_get_std_output.R.cwl
 inputs:
 - id: in_predictions_file
   doc: Path to the predictions file in text format

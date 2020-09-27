@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compareMS2.cwl
+id: compareMS2.cwl
 inputs:
 - id: in_p
   doc: ''

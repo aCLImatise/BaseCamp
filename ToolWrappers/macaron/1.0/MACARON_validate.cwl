@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MACARON_validate.cwl
+id: MACARON_validate.cwl
 inputs: []
 outputs:
 - id: out_stdout

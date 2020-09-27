@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_compress_bam.cwl
+id: medaka_compress_bam.cwl
 inputs:
 - id: in_debug
   doc: 'Verbose logging of debug information. (default: 20)'

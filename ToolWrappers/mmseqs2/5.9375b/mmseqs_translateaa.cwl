@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_translateaa.cwl
+id: mmseqs_translateaa.cwl
 inputs:
 - id: in_threads
   doc: 8               number of cores used for the computation (uses all cores by

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafft_xinsi.cwl
+id: mafft_xinsi.cwl
 inputs:
 - id: in_op
   doc: '# :         Gap opening penalty, default: 1.53'

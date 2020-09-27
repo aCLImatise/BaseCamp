@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfstats.cwl
+id: vcfstats.cwl
 inputs:
 - id: in_region
   doc: "specify a region on which to target the stats, requires a BGZF\ncompressed\

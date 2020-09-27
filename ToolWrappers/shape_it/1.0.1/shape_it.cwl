@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shape_it.cwl
+id: shape_it.cwl
 inputs:
 - id: in_reference
   doc: "File of the reference molecule with 3D coordinates.\nOnly the first molecule\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainToAxt.cwl
+id: chainToAxt.cwl
 inputs:
 - id: in_max_gap
   doc: gap sized allowed without breaking, default 100

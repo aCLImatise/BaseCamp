@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jaffa_direct.cwl
+id: jaffa_direct.cwl
 inputs: []
 outputs:
 - id: out_stdout

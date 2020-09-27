@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank2scaff.cwl
+id: bank2scaff.cwl
 inputs:
 - id: in_display_compatible_version
   doc: Display the compatible bank version

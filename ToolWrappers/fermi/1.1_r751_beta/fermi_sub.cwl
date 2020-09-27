@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_sub.cwl
+id: fermi_sub.cwl
 inputs:
 - id: in_t
   doc: ''

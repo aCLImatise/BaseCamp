@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nxtrim.cwl
+id: nxtrim.cwl
 inputs:
 - id: in_one
   doc: '[ --r1 ] arg                 read 1 in fastq format (gzip allowed)'

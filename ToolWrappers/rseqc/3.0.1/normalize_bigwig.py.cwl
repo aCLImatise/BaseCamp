@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalize_bigwig.py.cwl
+id: normalize_bigwig.py.cwl
 inputs:
 - id: in_bw_file
   doc: Input BigWig file. [required]

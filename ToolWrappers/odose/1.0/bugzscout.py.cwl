@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bugzscout.py.cwl
+id: bugzscout.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

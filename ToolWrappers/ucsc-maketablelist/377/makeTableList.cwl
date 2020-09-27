@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeTableList.cwl
+id: makeTableList.cwl
 inputs:
 - id: in_host
   doc: 'show tables: mysql host'

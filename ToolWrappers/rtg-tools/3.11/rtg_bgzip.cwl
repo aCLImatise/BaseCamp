@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_bgzip.cwl
+id: rtg_bgzip.cwl
 inputs:
 - id: in_compression_level
   doc: "the compression level to use, between 1 (least\nbut fast) and 9 (highest but\

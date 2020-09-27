@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_info.cwl
+id: gcloud_info.cwl
 inputs:
 - id: in_anonymize
   doc: "Minimize any personal identifiable information. Use it when sharing\noutput\

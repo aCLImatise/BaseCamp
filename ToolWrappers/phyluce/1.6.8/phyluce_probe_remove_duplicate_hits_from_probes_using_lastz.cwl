@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_remove_duplicate_hits_from_probes_using_lastz.cwl
+id: phyluce_probe_remove_duplicate_hits_from_probes_using_lastz.cwl
 inputs:
 - id: in_fast_a
   doc: The fasta file to screen

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../behst_download_data.sh.cwl
+id: behst_download_data.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

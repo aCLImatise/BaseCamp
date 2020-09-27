@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../libbaf2sql_c.so.cwl
+id: libbaf2sql_c.so.cwl
 inputs: []
 outputs:
 - id: out_stdout

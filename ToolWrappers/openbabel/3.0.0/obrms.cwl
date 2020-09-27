@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obrms.cwl
+id: obrms.cwl
 inputs:
 - id: in_out
   doc: re-oriented test structure output

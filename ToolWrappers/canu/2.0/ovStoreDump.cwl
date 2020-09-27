@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ovStoreDump.cwl
+id: ovStoreDump.cwl
 inputs:
 - id: in_mandatory_path_sequence
   doc: mandatory path to a sequence store

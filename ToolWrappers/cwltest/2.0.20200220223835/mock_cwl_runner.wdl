@@ -2,19 +2,19 @@ version 1.0
 
 task Mockcwlrunner {
   input {
-    String? outdir
     Boolean? quiet
+    String? outdir
     String process_file
   }
   command <<<
     mock_cwl_runner \
       ~{process_file} \
-      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
-      ~{if (quiet) then "--quiet" else ""}
+      ~{if (quiet) then "--quiet" else ""} \
+      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
   parameter_meta {
-    outdir: ""
     quiet: ""
+    outdir: ""
     process_file: "jobfile"
   }
   output {

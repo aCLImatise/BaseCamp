@@ -3,7 +3,6 @@ version 1.0
 task Freebayes {
   input {
     Int? max_complex_gap
-    Int? haplotype_length
     Int? min_alternate_fraction
     File? bam
     File? bam_list
@@ -78,7 +77,6 @@ task Freebayes {
   command <<<
     freebayes \
       ~{if defined(max_complex_gap) then ("--max-complex-gap " +  '"' + max_complex_gap + '"') else ""} \
-      ~{if defined(haplotype_length) then ("--haplotype-length " +  '"' + haplotype_length + '"') else ""} \
       ~{if defined(min_alternate_fraction) then ("--min-alternate-fraction " +  '"' + min_alternate_fraction + '"') else ""} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(bam_list) then ("--bam-list " +  '"' + bam_list + '"') else ""} \
@@ -151,8 +149,7 @@ task Freebayes {
       ~{if (dd) then "-dd" else ""}
   >>>
   parameter_meta {
-    max_complex_gap: ""
-    haplotype_length: "aln.bam"
+    max_complex_gap: "--haplotype-length N\\nAllow haplotype calls with contiguous embedded matches of up\\nto this length. Set N=-1 to disable clumping. (default: 3)"
     min_alternate_fraction: "Require at least this fraction of observations supporting\\nan alternate allele within a single individual in the\\nin order to evaluate the position.  default: 0.05"
     bam: "Add FILE to the set of BAM files to be analyzed."
     bam_list: "A file containing a list of BAM files to be analyzed."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitbytaxa.sh.cwl
+id: splitbytaxa.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding automatic\nmemory detection.\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../knock_knock_indices.cwl
+id: knock_knock_indices.cwl
 inputs:
 - id: in_knock_knock
   doc: ''

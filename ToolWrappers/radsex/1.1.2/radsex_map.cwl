@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../radsex_map.cwl
+id: radsex_map.cwl
 inputs:
 - id: in_markers_file
   doc: TEXT:FILE                 Path to a set of markers to align, either a depth

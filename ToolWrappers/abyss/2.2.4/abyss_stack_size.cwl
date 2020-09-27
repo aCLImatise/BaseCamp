@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_stack_size.cwl
+id: abyss_stack_size.cwl
 inputs:
 - id: in_stack_size
   doc: ''

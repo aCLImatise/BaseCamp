@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sNMF.cwl
+id: sNMF.cwl
 inputs:
 - id: in__genotype_file
   doc: -- genotype file (in .geno format)

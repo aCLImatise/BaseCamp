@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_coarsen.cwl
+id: cooler_coarsen.cwl
 inputs:
 - id: in_factor
   doc: "Gridding factor. The contact matrix is\ncoarsegrained by grouping each chromosomal\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bax2bam.cwl
+id: bax2bam.cwl
 inputs:
 - id: in_xml
   doc: DataSet XML file containing a list of movie names

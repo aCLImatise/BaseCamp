@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_create_library_folder_GALAXY..cwl
+id: nebulizer_create_library_folder_GALAXY..cwl
 inputs:
 - id: in_nebulizer
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertToFullMatrix.py_outputMatrix.cwl
+id: convertToFullMatrix.py_outputMatrix.cwl
 inputs:
 - id: in_convert_to_full_matrix_do_tpy
   doc: ''

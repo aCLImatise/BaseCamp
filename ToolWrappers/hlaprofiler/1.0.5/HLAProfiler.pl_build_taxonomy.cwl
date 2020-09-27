@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_build_taxonomy.cwl
+id: HLAProfiler.pl_build_taxonomy.cwl
 inputs:
 - id: in_transcripts
   doc: '|t          location of fasta file containing transcripts. Currently only

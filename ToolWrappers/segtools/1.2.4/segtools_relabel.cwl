@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_relabel.cwl
+id: segtools_relabel.cwl
 inputs:
 - id: in_quiet
   doc: Do not print diagnostic messages.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Chromosemble.cwl
+id: Chromosemble.cwl
 inputs:
 - id: in_string_target_file
   doc: '<string> : target fasta file (in chromosome coordinates)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merauder_OPTION....cwl
+id: merauder_OPTION....cwl
 inputs:
 - id: in_max
   doc: ''

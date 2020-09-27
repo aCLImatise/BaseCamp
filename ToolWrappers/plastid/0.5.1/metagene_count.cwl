@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagene_count.cwl
+id: metagene_count.cwl
 inputs:
 - id: in_min_counts
   doc: "Minimum counts required in normalization region to be\nincluded in metagene\

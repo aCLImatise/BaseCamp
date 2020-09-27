@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Rsample.cwl
+id: Rsample.cwl
 inputs:
 - id: in_dna
   doc: "Specify that the sequence is DNA, and DNA parameters are to be used.\nDefault\
@@ -59,11 +59,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --temperature
-- id: in_written_dot
-  doc: =========================================
-  type: string
+- id: in_seq_file
+  doc: ''
+  type: File
   inputBinding:
     position: 0
+- id: in_shape_file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
+- id: in_pfs_file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

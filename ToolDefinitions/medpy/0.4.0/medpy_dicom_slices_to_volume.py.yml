@@ -99,34 +99,10 @@ subcommands:
         - -s
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Just print spacing and exit.
-          synonyms:
-          - -s
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Display more information.
-          synonyms:
-          - -v
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Display debug information.
-          synonyms:
-          - -d
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Silently override existing output images.
-          synonyms:
-          - -f
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -172,7 +148,118 @@ subcommands:
             - -s
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Just print spacing and exit.
+              synonyms:
+              - -s
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Display more information.
+              synonyms:
+              - -v
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Display debug information.
+              synonyms:
+              - -d
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Silently override existing output images.
+              synonyms:
+              - -f
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: medpy_dicom_slices_to_volume.py
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: input
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -d
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -v
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: medpy_dicom_slices_to_volume.py [-h] [-s] [-v] [-d]\
+                \ [-f] input output\nmedpy_dicom_slices_to_volume.py: error: the following\
+                \ arguments are required: output\n"
+              generated_using: &id004 []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: medpy_dicom_slices_to_volume.py [-h] [-s] [-v] [-d]\
+              \ [-f] input output\n\nConverts a collection of DICOM slices (a DICOM\
+              \ series) into a proper image\nvolume. Note that this operation does\
+              \ not preserve header information.\nCopyright (C) 2013 Oskar Maier This\
+              \ program comes with ABSOLUTELY NO WARRANTY;\nThis is free software,\
+              \ and you are welcome to redistribute it under certain\nconditions;\
+              \ see the LICENSE file or <http://www.gnu.org/licenses/> for\ndetails.\n\
+              \npositional arguments:\n  input       Source folder.\n  output    \
+              \  Target volume.\n\noptional arguments:\n  -h, --help  show this help\
+              \ message and exit\n  -s          Just print spacing and exit.\n  -v\
+              \          Display more information.\n  -d          Display debug information.\n\
+              \  -f          Silently override existing output images.\n"
+            generated_using: &id005
+            - --help
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -186,15 +273,9 @@ subcommands:
           help_text: "usage: medpy_dicom_slices_to_volume.py [-h] [-s] [-v] [-d] [-f]\
             \ input output\nmedpy_dicom_slices_to_volume.py: error: the following\
             \ arguments are required: output\n"
-          generated_using: &id004 []
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: medpy_dicom_slices_to_volume.py [-h] [-s] [-v] [-d] [-f]\
@@ -209,8 +290,7 @@ subcommands:
           \    Just print spacing and exit.\n  -v          Display more information.\n\
           \  -d          Display debug information.\n  -f          Silently override\
           \ existing output images.\n"
-        generated_using: &id005
-        - --help
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag: !Flag

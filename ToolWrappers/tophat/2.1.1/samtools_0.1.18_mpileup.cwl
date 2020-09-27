@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_0.1.18_mpileup.cwl
+id: samtools_0.1.18_mpileup.cwl
 inputs:
 - id: in_assume_quality_illumina
   doc: assume the quality is in the Illumina-1.3+ encoding

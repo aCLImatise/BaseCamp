@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bowtie2_align_l.cwl
+id: bowtie2_align_l.cwl
 inputs:
 - id: in_query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)
@@ -84,46 +84,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --int-quals
-- id: in_very_fast
-  doc: -D 5 -R 1 -N 0 -L 22 -i S,0,2.50
-  type: boolean
-  inputBinding:
-    prefix: --very-fast
-- id: in_fast
-  doc: -D 10 -R 2 -N 0 -L 22 -i S,0,2.50
-  type: boolean
-  inputBinding:
-    prefix: --fast
-- id: in_sensitive
-  doc: -D 15 -R 2 -N 0 -L 22 -i S,1,1.15 (default)
-  type: boolean
-  inputBinding:
-    prefix: --sensitive
-- id: in_very_sensitive
-  doc: -D 20 -R 3 -N 0 -L 20 -i S,1,0.50
-  type: boolean
-  inputBinding:
-    prefix: --very-sensitive
-- id: in_very_fast_local
-  doc: -D 5 -R 1 -N 0 -L 25 -i S,1,2.00
-  type: boolean
-  inputBinding:
-    prefix: --very-fast-local
-- id: in_fast_local
-  doc: -D 10 -R 2 -N 0 -L 22 -i S,1,1.75
-  type: boolean
-  inputBinding:
-    prefix: --fast-local
-- id: in_sensitive_local
-  doc: -D 15 -R 2 -N 0 -L 20 -i S,1,0.75 (default)
-  type: boolean
-  inputBinding:
-    prefix: --sensitive-local
-- id: in_very_sensitive_local
-  doc: ',1,0.50'
+- id: in_max_mismatches_seed
+  doc: 'max # mismatches in seed alignment; can be 0 or 1 (0)'
   type: long
   inputBinding:
-    prefix: --very-sensitive-local
+    prefix: -N
+- id: in_length_seed_substrings
+  doc: length of seed substrings; must be >3, <32 (22)
+  type: long
+  inputBinding:
+    prefix: -L
+- id: in_interval_seed_substrings
+  doc: interval between seed substrings w/r/t read len (S,1,1.15)
+  type: double
+  inputBinding:
+    prefix: -i
 - id: in_n_ceil
   doc: 'func for max # non-A/C/G/Ts permitted in aln (L,0,0.15)'
   type: long
@@ -196,6 +171,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --score-min
+- id: in_give_extending_failed
+  doc: give up extending after <int> failed extends in a row (15)
+  type: long
+  inputBinding:
+    prefix: -D
+- id: in_reads_repetitive_seeds
+  doc: for reads w/ repetitive seeds, try <int> sets of seeds (2)
+  type: long
+  inputBinding:
+    prefix: -R
 - id: in_i_slash_mini_ns
   doc: minimum fragment length (0)
   type: long
@@ -360,7 +345,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_70
+- id: in_var_67
   doc: ''
   type: string
   inputBinding:
@@ -375,7 +360,7 @@ inputs:
   type: long
   inputBinding:
     position: 0
-- id: in_i
+- id: in_var_70
   doc: ''
   type: string
   inputBinding:
@@ -390,12 +375,12 @@ inputs:
   type: long
   inputBinding:
     position: 0
-- id: in_var_76
+- id: in_var_73
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_var_77
+- id: in_var_74
   doc: ''
   type: string
   inputBinding:
@@ -455,7 +440,7 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_var_89
+- id: in_var_86
   doc: ''
   type: string
   inputBinding:
@@ -480,7 +465,7 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_var_94
+- id: in_var_91
   doc: ''
   type: string
   inputBinding:

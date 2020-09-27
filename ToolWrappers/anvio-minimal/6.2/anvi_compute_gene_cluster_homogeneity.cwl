@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_compute_gene_cluster_homogeneity.cwl
+id: anvi_compute_gene_cluster_homogeneity.cwl
 inputs:
 - id: in_pan_db
   doc: Anvi'o pan database

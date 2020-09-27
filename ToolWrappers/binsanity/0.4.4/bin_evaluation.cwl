@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bin_evaluation.cwl
+id: bin_evaluation.cwl
 inputs:
 - id: in_specify_directory_containing_putative_genomes
   doc: Specify the directory containing Putative genomes

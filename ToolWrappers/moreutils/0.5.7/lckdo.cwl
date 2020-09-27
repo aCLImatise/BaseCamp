@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lckdo.cwl
+id: lckdo.cwl
 inputs:
 - id: in_lock_already_held
   doc: "- if the lock is already held by another process,\nwait for it to complete\

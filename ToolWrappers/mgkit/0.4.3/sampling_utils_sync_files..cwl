@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sampling_utils_sync_files..cwl
+id: sampling_utils_sync_files..cwl
 inputs:
 - id: in_sampling_utils
   doc: ''

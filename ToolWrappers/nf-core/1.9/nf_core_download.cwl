@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_download.cwl
+id: nf_core_download.cwl
 inputs:
 - id: in_release
   doc: Pipeline release

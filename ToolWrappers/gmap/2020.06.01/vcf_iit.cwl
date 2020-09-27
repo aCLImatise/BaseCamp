@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_iit.cwl
+id: vcf_iit.cwl
 inputs:
 - id: in_more_options
   doc: ''

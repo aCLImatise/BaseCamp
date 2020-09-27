@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicPlotMatrix.cwl
+id: hicPlotMatrix.cwl
 inputs:
 - id: in_matrix
   doc: Path of the Hi-C matrix to plot.
@@ -45,107 +45,39 @@ inputs:
   type: long
   inputBinding:
     prefix: --region
-- id: in_region_one_dot
-  doc: ''
-  type: boolean
+- id: in_region_two
+  doc: "If given, then only the region defined by --region and\n--region2 is given.\
+    \ The format is the same as\n--region1."
+  type: long
   inputBinding:
-    prefix: --region1.
+    prefix: --region2
 - id: in_logo_nep
-  doc: Plot the log1p of the matrix values.
+  doc: "Plot the log1p of the matrix values.\n--log                 Plot the *MINUS*\
+    \ log of the matrix values.\n--colorMap COLORMAP   Color map to use for the heatmap.\
+    \ Available values can\nbe seen here: http://matplotlib.org/examples/color/col\n\
+    ormaps_reference.html\n--vMin VMIN           Minimum score value.\n--vMax VMAX\
+    \           Maximum score value.\n--dpi DPI             Resolution for the image\
+    \ in case theoutput is a raster\ngraphics image (e.g png, jpg).\n--bigwig BIGWIG\
+    \ [BIGWIG ...]\nBigwig file to plot below the matrix. This can for\nexample be\
+    \ used to visualize A/B compartments or ChIP-\nseq data.\n--bigwigAdditionalVerticalAxis\n\
+    Add an additional axis to determine the values of a\nbigwig file in 2D better.\n\
+    --vMinBigwig VMINBIGWIG\nMinimum score value for bigwig.\n--vMaxBigwig VMAXBIGWIG\n\
+    Maximum score value for bigwig\n--flipBigwigSign      The sign of the bigwig values\
+    \ are flipped. Useful if\nhicPCA gives inverted values.\n--scaleFactorBigwig SCALEFACTORBIGWIG\n\
+    Scale the values of a bigwig file by the given factor.\n--fontsize FONTSIZE  \
+    \ Fontsize in the plot for x and y axis.\n--rotationX ROTATIONX\nRotation in degrees\
+    \ for the labels of x axis.\n--rotationY ROTATIONY\nRotation in degrees for the\
+    \ labels of y axis.\n--increaseFigureWidth INCREASEFIGUREWIDTH\nPlotting additional\
+    \ bigwig tracks can cause\ncompression in x or y direction of the heatmap. Set\n\
+    this factor to a value unequal to 0 to correct this.\n--increaseFigureHeight INCREASEFIGUREHEIGHT\n\
+    Plotting additional bigwig tracks can cause\ncompression in x or y direction of\
+    \ the heatmap. Set\nthis factor to a value unequal to 0 to correct this.\n--loops\
+    \ LOOPS         Bedgraph file to plot detected long range contacts\nfrom hicDetectLoops.\n\
+    --help, -h            show this help message and exit\n--version             show\
+    \ program's version number and exit\n"
   type: boolean
   inputBinding:
     prefix: --log1p
-- id: in_log
-  doc: Plot the *MINUS* log of the matrix values.
-  type: boolean
-  inputBinding:
-    prefix: --log
-- id: in_colormap
-  doc: "Color map to use for the heatmap. Available values can\nbe seen here: http://matplotlib.org/examples/color/col\n\
-    ormaps_reference.html"
-  type: string
-  inputBinding:
-    prefix: --colorMap
-- id: in_vmin
-  doc: Minimum score value.
-  type: string
-  inputBinding:
-    prefix: --vMin
-- id: in_vmax
-  doc: Maximum score value.
-  type: string
-  inputBinding:
-    prefix: --vMax
-- id: in_dpi
-  doc: "Resolution for the image in case theoutput is a raster\ngraphics image (e.g\
-    \ png, jpg)."
-  type: string
-  inputBinding:
-    prefix: --dpi
-- id: in_bigwig
-  doc: "Bigwig file to plot below the matrix. This can for\nexample be used to visualize\
-    \ A/B compartments or ChIP-\nseq data."
-  type: string[]
-  inputBinding:
-    prefix: --bigwig
-- id: in_bigwig_additional_vertical_axis
-  doc: "Add an additional axis to determine the values of a\nbigwig file in 2D better."
-  type: boolean
-  inputBinding:
-    prefix: --bigwigAdditionalVerticalAxis
-- id: in_vmin_bigwig
-  doc: Minimum score value for bigwig.
-  type: string
-  inputBinding:
-    prefix: --vMinBigwig
-- id: in_vmax_bigwig
-  doc: Maximum score value for bigwig
-  type: string
-  inputBinding:
-    prefix: --vMaxBigwig
-- id: in_flip_bigwig_sign
-  doc: "The sign of the bigwig values are flipped. Useful if\nhicPCA gives inverted\
-    \ values."
-  type: boolean
-  inputBinding:
-    prefix: --flipBigwigSign
-- id: in_scale_factor_bigwig
-  doc: Scale the values of a bigwig file by the given factor.
-  type: File
-  inputBinding:
-    prefix: --scaleFactorBigwig
-- id: in_font_size
-  doc: Fontsize in the plot for x and y axis.
-  type: long
-  inputBinding:
-    prefix: --fontsize
-- id: in_rotation_x
-  doc: Rotation in degrees for the labels of x axis.
-  type: string
-  inputBinding:
-    prefix: --rotationX
-- id: in_rotation_y
-  doc: Rotation in degrees for the labels of y axis.
-  type: string
-  inputBinding:
-    prefix: --rotationY
-- id: in_increase_figure_width
-  doc: "Plotting additional bigwig tracks can cause\ncompression in x or y direction\
-    \ of the heatmap. Set\nthis factor to a value unequal to 0 to correct this."
-  type: long
-  inputBinding:
-    prefix: --increaseFigureWidth
-- id: in_increase_figure_height
-  doc: "Plotting additional bigwig tracks can cause\ncompression in x or y direction\
-    \ of the heatmap. Set\nthis factor to a value unequal to 0 to correct this."
-  type: long
-  inputBinding:
-    prefix: --increaseFigureHeight
-- id: in_loops
-  doc: "Bedgraph file to plot detected long range contacts\nfrom hicDetectLoops."
-  type: File
-  inputBinding:
-    prefix: --loops
 outputs:
 - id: out_stdout
   doc: Standard output stream

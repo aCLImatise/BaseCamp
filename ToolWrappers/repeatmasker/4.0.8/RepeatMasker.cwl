@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepeatMasker.cwl
+id: RepeatMasker.cwl
 inputs:
 - id: in_pa
   doc: "(rallel) [number]\nThe number of processors to use in parallel (only works\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_translatenucs.cwl
+id: mmseqs_translatenucs.cwl
 inputs:
 - id: in_translation_table
   doc: 1               1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL,

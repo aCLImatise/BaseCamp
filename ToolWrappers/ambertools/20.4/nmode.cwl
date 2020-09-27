@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../nmode.cwl
+id: nmode.cwl
 inputs:
-- id: in_ref
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -ref
 - id: in_r
   doc: ''
   type: string
@@ -21,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -p
-- id: in_var_4
+- id: in_var_3
   doc: ''
   type: string
   inputBinding:
@@ -31,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -i
-- id: in_var_6
+- id: in_var_5
   doc: ''
   type: boolean
   inputBinding:

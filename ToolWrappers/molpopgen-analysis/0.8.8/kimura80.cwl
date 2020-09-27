@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kimura80.cwl
+id: kimura80.cwl
 inputs: []
 outputs:
 - id: out_stdout

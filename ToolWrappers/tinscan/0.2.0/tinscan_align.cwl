@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tinscan_align.cwl
+id: tinscan_align.cwl
 inputs:
 - id: in_a_dir
   doc: Name of directory containing sequences from A genome.

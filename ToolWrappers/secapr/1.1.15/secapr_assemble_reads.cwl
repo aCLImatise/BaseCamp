@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_assemble_reads.cwl
+id: secapr_assemble_reads.cwl
 inputs:
 - id: in_input
   doc: "Call the folder that contains the trimmed reads,\norganized in a separate\

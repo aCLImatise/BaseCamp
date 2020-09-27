@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_lca.cwl
+id: mmseqs_lca.cwl
 inputs:
 - id: in_lca_ranks
   doc: Ranks to return in LCA computation

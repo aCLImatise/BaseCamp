@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../promoterwise.cwl
+id: promoterwise.cwl
 inputs:
 - id: in_align
   doc: '[normal/motif] use normal DBA or motif alignment [normal]'

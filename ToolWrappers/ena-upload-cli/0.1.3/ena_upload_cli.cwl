@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ena_upload_cli.cwl
+id: ena_upload_cli.cwl
 inputs:
 - id: in_action
   doc: "add: add an object to the archive\nmodify: modify an object in the archive\n\

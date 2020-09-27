@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_psiphi.cwl
+id: _psiphi.cwl
 inputs:
 - id: in_chain_number
   doc: "integer    [1] Number of the chain for which torsion\nangles should be calculated\
@@ -19,11 +19,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -finishresiduenumber
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 outputs:
 - id: out_stdout
   doc: Standard output stream

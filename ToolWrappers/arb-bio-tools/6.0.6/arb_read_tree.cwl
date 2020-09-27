@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_read_tree.cwl
+id: arb_read_tree.cwl
 inputs: []
 outputs:
 - id: out_stdout

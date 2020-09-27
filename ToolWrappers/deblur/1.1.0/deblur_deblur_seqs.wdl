@@ -8,11 +8,11 @@ task DeblurDeblurseqs {
     Int? in_del_max
     Int? log_level
     File? log_file
-    Int five_critical
+    String seqs_fp
   }
   command <<<
     deblur deblur_seqs \
-      ~{five_critical} \
+      ~{seqs_fp} \
       ~{if defined(mean_error) then ("--mean-error " +  '"' + mean_error + '"') else ""} \
       ~{if defined(error_dist) then ("--error-dist " +  '"' + error_dist + '"') else ""} \
       ~{if defined(in_del_prob) then ("--indel-prob " +  '"' + in_del_prob + '"') else ""} \
@@ -27,7 +27,7 @@ task DeblurDeblurseqs {
     in_del_max: "Maximal indel number"
     log_level: "RANGE  Level of messages for log file(range 1-debug to"
     log_file: "log file name  [default: deblur.log]"
-    five_critical: "[default: 2]"
+    seqs_fp: ""
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NumPluginBase2.dll.cwl
+id: NumPluginBase2.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

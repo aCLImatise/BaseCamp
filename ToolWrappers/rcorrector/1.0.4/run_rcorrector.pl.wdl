@@ -6,9 +6,6 @@ task RunRcorrectorpl {
     Int? comma_separated_first
     Int? comma_separated_second
     String? comma_sperated_files
-    Int? _default
-    File? od
-    Int? default
     Int? max_cork
     Float? wk
     Int? ek
@@ -24,9 +21,6 @@ task RunRcorrectorpl {
       ~{if defined(comma_separated_first) then ("-1 " +  '"' + comma_separated_first + '"') else ""} \
       ~{if defined(comma_separated_second) then ("-2 " +  '"' + comma_separated_second + '"') else ""} \
       ~{if defined(comma_sperated_files) then ("-i " +  '"' + comma_sperated_files + '"') else ""} \
-      ~{if defined(_default) then ("-k " +  '"' + _default + '"') else ""} \
-      ~{if defined(od) then ("-od " +  '"' + od + '"') else ""} \
-      ~{if defined(default) then ("-t " +  '"' + default + '"') else ""} \
       ~{if defined(max_cork) then ("-maxcorK " +  '"' + max_cork + '"') else ""} \
       ~{if defined(wk) then ("-wk " +  '"' + wk + '"') else ""} \
       ~{if defined(ek) then ("-ek " +  '"' + ek + '"') else ""} \
@@ -39,9 +33,6 @@ task RunRcorrectorpl {
     comma_separated_first: ": comma separated files for the first mate in the paried-end data sets"
     comma_separated_second: ": comma separated files for the second mate in the paired-end data sets"
     comma_sperated_files: ": comma sperated files for interleaved paired-end data sets"
-    _default: "(<=32, default: 23)"
-    od: "(default: ./)"
-    default: "(default: 1)"
     max_cork: ": the maximum number of correction within k-bp window (default: 4)"
     wk: ": the proportion of kmers that are used to estimate weak kmer count threshold, lower for more divergent genome (default: 0.95)"
     ek: ": does not affect the correctness of program but affect the memory usage (default: 100000000)"
@@ -52,6 +43,5 @@ task RunRcorrectorpl {
   }
   output {
     File out_stdout = stdout()
-    File out_od = "${in_od}"
   }
 }

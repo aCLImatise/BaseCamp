@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treekin.cwl
+id: treekin.cwl
 inputs:
 - id: in_absorb
   doc: Make a state absorbing

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../elprep.cwl
+id: elprep.cwl
 inputs: []
 outputs:
 - id: out_stdout

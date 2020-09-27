@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dna_mutation_blastn_mutation.cwl
+id: dna_mutation_blastn_mutation.cwl
 inputs:
 - id: in_organism
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_rr_hctg_track2.py.cwl
+id: fc_rr_hctg_track2.py.cwl
 inputs:
 - id: in_n_core
   doc: "number of processes used for for tracking reads; 0 for\nmain process only\

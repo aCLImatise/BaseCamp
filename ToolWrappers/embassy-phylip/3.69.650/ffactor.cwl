@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffactor.cwl
+id: ffactor.cwl
 inputs:
 - id: in_anc
   doc: boolean    [N] Put ancestral states in output file

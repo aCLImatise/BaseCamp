@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../advntr_genotype.cwl
+id: advntr_genotype.cwl
 inputs:
 - id: in_a_slash_alignment_file
   doc: alignment file in SAM/BAM/CRAM format

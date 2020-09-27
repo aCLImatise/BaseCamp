@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafsInRegion.cwl
+id: mafsInRegion.cwl
 inputs:
 - id: in_outdir
   doc: '- output separate files named by bed name field to outDir'

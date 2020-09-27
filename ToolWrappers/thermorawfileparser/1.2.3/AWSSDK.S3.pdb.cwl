@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AWSSDK.S3.pdb.cwl
+id: AWSSDK.S3.pdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

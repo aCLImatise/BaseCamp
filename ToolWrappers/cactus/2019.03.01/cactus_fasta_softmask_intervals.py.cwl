@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_fasta_softmask_intervals.py.cwl
+id: cactus_fasta_softmask_intervals.py.cwl
 inputs:
 - id: in_chrom
   doc: "copy (and mask) only the specified sequence(s)\n<sequence_names> is a comma-separated\

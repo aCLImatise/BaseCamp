@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../difference_from_first_TSS_script_mordor_chrom_wide.r.cwl
+id: difference_from_first_TSS_script_mordor_chrom_wide.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

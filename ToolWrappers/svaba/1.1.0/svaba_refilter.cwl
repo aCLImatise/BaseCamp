@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svaba_refilter.cwl
+id: svaba_refilter.cwl
 inputs:
 - id: in_verbose
   doc: 'Select verbosity level (0-4). Default: 1'

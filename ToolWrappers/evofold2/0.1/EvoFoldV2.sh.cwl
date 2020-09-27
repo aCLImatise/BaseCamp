@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EvoFoldV2.sh.cwl
+id: EvoFoldV2.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

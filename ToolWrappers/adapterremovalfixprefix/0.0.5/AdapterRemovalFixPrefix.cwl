@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AdapterRemovalFixPrefix.cwl
+id: AdapterRemovalFixPrefix.cwl
 inputs: []
 outputs:
 - id: out_stdout

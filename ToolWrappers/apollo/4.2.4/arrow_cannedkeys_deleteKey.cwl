@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_cannedkeys_deleteKey.cwl
+id: arrow_cannedkeys_deleteKey.cwl
 inputs:
 - id: in_id_number
   doc: ''

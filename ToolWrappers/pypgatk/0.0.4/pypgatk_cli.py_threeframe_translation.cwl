@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pypgatk_cli.py_threeframe_translation.cwl
+id: pypgatk_cli.py_threeframe_translation.cwl
 inputs:
 - id: in_config_file
   doc: "Configuration to perform conversion between\nENSEMBL Files"

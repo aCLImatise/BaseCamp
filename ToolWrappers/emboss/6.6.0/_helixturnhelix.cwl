@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_helixturnhelix.cwl
+id: _helixturnhelix.cwl
 inputs:
 - id: in_mean
   doc: "float      [238.71] Mean value (Number from 1.000 to\n10000.000)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purge_haplotigs_place.cwl
+id: purge_haplotigs_place.cwl
 inputs:
 - id: in_primary_primary_contigs
   doc: / -primary       Primary contigs fasta file

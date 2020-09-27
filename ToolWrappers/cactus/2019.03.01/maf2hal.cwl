@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf2hal.cwl
+id: maf2hal.cwl
 inputs:
 - id: in_append
   doc: ":                  append maf as subtree to existing alignment. reference\n\

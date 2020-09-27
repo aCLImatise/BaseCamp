@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jalview.cwl
+id: jalview.cwl
 inputs:
 - id: in_no_display
   doc: Run Jalview without User Interface.

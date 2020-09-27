@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdnamove.cwl
+id: _fdnamove.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file - ignore sites with weight zero

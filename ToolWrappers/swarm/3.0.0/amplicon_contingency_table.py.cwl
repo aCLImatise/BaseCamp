@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amplicon_contingency_table.py.cwl
+id: amplicon_contingency_table.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

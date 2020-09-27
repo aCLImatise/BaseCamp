@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglex_cli_significance.cwl
+id: mglex_cli_significance.cwl
 inputs:
 - id: in_data
   doc: Log-likelihood matrix for which to calculate p-values; default standard input

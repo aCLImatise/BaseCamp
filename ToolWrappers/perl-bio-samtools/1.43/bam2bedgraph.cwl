@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2bedgraph.cwl
+id: bam2bedgraph.cwl
 inputs:
 - id: in_in_dot_bam
   doc: ''

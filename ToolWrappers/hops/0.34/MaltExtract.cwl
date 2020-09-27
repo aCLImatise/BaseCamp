@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaltExtract.cwl
+id: MaltExtract.cwl
 inputs:
 - id: in_top
   doc: Use top scoring 0.XX of alignments by defualt 0.01

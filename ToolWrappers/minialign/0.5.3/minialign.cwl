@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minialign.cwl
+id: minialign.cwl
 inputs:
 - id: in_load_preset_params
   doc: load preset params {pacbio,ont,ava} [ont]

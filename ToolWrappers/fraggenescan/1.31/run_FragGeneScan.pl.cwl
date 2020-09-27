@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_FragGeneScan.pl.cwl
+id: run_FragGeneScan.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

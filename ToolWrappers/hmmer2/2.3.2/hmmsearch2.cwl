@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmsearch2.cwl
+id: hmmsearch2.cwl
 inputs:
 - id: in_sets_alignment_limit
   doc: ': sets alignment output limit to <n> best domain alignments'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tradis_essentiality.R.cwl
+id: tradis_essentiality.R.cwl
 inputs:
 - id: in_data_dot_tab
   doc: ''

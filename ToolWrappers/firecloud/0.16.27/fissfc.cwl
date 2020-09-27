@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fissfc.cwl
+id: fissfc.cwl
 inputs:
 - id: in_url
   doc: "Firecloud API root URL [default:\nhttps://api.firecloud.org/api/]"

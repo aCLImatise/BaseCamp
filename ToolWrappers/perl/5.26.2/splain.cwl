@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splain.cwl
+id: splain.cwl
 inputs:
 - id: in_more_options
   doc: ''

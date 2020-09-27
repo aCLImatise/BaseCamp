@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rMETL_OPTIONS.cwl
+id: rMETL_OPTIONS.cwl
 inputs:
 - id: in_rm_etl
   doc: ''

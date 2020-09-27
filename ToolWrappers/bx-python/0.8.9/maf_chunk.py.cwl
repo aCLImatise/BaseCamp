@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_chunk.py.cwl
+id: maf_chunk.py.cwl
 inputs:
 - id: in_prob
   doc: Probability of writing a given chunk

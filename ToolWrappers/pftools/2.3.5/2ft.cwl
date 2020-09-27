@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../2ft.cwl
+id: 2ft.cwl
 inputs:
 - id: in_translate_only_reverse
   doc: ': translate only reverse (antisense) strand.'

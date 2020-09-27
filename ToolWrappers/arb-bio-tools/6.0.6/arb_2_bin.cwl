@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_2_bin.cwl
+id: arb_2_bin.cwl
 inputs:
 - id: in_create_map_file
   doc: create map file too

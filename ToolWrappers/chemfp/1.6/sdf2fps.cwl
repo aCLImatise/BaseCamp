@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdf2fps.cwl
+id: sdf2fps.cwl
 inputs:
 - id: in_id_tag
   doc: "get the record id from TAG instead of the first line\nof the record"

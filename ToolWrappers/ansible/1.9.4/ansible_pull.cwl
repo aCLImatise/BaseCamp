@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ansible_pull.cwl
+id: ansible_pull.cwl
 inputs:
 - id: in_accept_host_key
   doc: adds the hostkey for the repo url if not already added

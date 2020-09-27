@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbAnalyze.cwl
+id: bbAnalyze.cwl
 inputs: []
 outputs:
 - id: out_stdout

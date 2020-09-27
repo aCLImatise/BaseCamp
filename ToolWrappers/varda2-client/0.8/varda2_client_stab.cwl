@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_stab.cwl
+id: varda2_client_stab.cwl
 inputs:
 - id: in_start
   doc: Start of region

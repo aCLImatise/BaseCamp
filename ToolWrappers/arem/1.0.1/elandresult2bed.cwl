@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../elandresult2bed.cwl
+id: elandresult2bed.cwl
 inputs: []
 outputs:
 - id: out_stdout

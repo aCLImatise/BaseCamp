@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../optimir_libprep.cwl
+id: optimir_libprep.cwl
 inputs:
 - id: in_vcf
   doc: Full path of the input VCF file.

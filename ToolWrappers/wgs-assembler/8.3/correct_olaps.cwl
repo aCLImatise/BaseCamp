@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correct_olaps.cwl
+id: correct_olaps.cwl
 inputs:
 - id: in_specifies_binary_file
   doc: "specifies binary file to dump corrected erates to\nfor later updating of olap\

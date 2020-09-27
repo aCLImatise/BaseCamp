@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmcloser_blast_LR_MT.pl_bowtie2.cwl
+id: gmcloser_blast_LR_MT.pl_bowtie2.cwl
 inputs:
 - id: in_target_s_caf
   doc: 'is not specied:'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_gff2to3.cwl
+id: bioformats_gff2to3.cwl
 inputs:
 - id: in_ignore_incorrect_records
   doc: "ignore incorrect records in the specified input GFF2\nfile\n"

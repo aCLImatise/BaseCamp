@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_pasta.py.cwl
+id: run_pasta.py.cwl
 inputs:
 - id: in_aligned
   doc: "If used, then the input file be will treated as\naligned for the purposes\

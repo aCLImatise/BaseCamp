@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diversity.py.cwl
+id: diversity.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methylpy_allc_to_bigwig.cwl
+id: methylpy_allc_to_bigwig.cwl
 inputs:
 - id: in_all_c_file
   doc: "input allc file to be converted to bigwig format\n(default: None)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_intersections.cwl
+id: run_intersections.cwl
 inputs:
 - id: in_chri
   doc: 850     879     +       L1P5    LINE    L1

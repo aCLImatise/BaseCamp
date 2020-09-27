@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dba.cwl
+id: dba.cwl
 inputs:
 - id: in_match_a
   doc: '[0.65]     match level A'

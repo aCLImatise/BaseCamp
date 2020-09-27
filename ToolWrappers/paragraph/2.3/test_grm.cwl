@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_grm.cwl
+id: test_grm.cwl
 inputs:
 - id: in_g_test_list_tests
   doc: "List the names of all tests instead of running them. The name of\nTEST(Foo,\

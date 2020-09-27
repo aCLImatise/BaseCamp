@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../libnetcfg.cwl
+id: libnetcfg.cwl
 inputs:
 - id: in_the_configuration
   doc: the configuration

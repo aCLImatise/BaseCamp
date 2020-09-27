@@ -23,7 +23,7 @@ task PhyluceGenetreesRenameTreeLeaves {
       ~{if defined(do_not_preserve_spaces) then ("--do-not-preserve-spaces " +  '"' + do_not_preserve_spaces + '"') else ""}
   >>>
   parameter_meta {
-    section: ""
+    section: "[--order {left:right,right:left}]\\n[--input-format {nexus,newick,fasta,phylip}]\\n[--output-format {nexus,newick,fasta,phylip}]\\n[--reroot REROOT]\\n[--do-not-preserve-spaces DO_NOT_PRESERVE_SPACES]"
     input_tree_file: "The input tree file"
     config: "A python config file mapping one name to another"
     order: "{left:right,right:left}\\nMap the names as entered or in reverse"

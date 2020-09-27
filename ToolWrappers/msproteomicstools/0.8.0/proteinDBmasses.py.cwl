@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinDBmasses.py.cwl
+id: proteinDBmasses.py.cwl
 inputs:
 - id: in_protein_abundance_file
   doc: abundancefile   Protein abundance file. If not used, the script will just report

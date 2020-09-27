@@ -2,8 +2,8 @@ version 1.0
 
 task Trimmomatic {
   input {
-    Boolean? version
     String? threads
+    Boolean? version
     String pe
     String or
   }
@@ -11,12 +11,12 @@ task Trimmomatic {
     trimmomatic \
       ~{pe} \
       ~{or} \
-      ~{if (version) then "-version" else ""} \
-      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""}
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if (version) then "-version" else ""}
   >>>
   parameter_meta {
-    version: ""
     threads: ""
+    version: ""
     pe: ""
     or: ""
   }

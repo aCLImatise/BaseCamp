@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmconvert_hmmfile.cwl
+id: hmmconvert_hmmfile.cwl
 inputs:
 - id: in_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xgboost_model_predictor.R.cwl
+id: xgboost_model_predictor.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

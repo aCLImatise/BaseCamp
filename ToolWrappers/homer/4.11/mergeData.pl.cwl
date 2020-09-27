@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeData.pl.cwl
+id: mergeData.pl.cwl
 inputs:
 - id: in_file_one
   doc: ''

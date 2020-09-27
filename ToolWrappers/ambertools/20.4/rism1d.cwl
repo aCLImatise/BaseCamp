@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rism1d.cwl
+id: rism1d.cwl
 inputs: []
 outputs:
 - id: out_stdout

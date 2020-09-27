@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fdr_cutoff.py.cwl
+id: fdr_cutoff.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

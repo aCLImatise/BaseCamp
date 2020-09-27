@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_view.cwl
+id: bcftools_view.cwl
 inputs:
 - id: in__dropgenotypes_drop
   doc: ',   --drop-genotypes              drop individual genotype information (after

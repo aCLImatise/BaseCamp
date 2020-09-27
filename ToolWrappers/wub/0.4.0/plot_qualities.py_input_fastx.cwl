@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_qualities.py_input_fastx.cwl
+id: plot_qualities.py_input_fastx.cwl
 inputs:
 - id: in_r
   doc: ''

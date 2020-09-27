@@ -3,8 +3,7 @@ version 1.0
 task RsatGetorthologs {
   input {
     Boolean? unique_species
-    Int? return
-    Int? uth
+    String? return
     String get_orthologs
     String ref_id
     String ref_organism
@@ -39,13 +38,11 @@ task RsatGetorthologs {
       ~{rank} \
       ~{s_rank} \
       ~{if (unique_species) then "-unique_species" else ""} \
-      ~{if defined(return) then ("-return " +  '"' + return + '"') else ""} \
-      ~{if defined(uth) then ("-uth " +  '"' + uth + '"') else ""}
+      ~{if defined(return) then ("-return " +  '"' + return + '"') else ""}
   >>>
   parameter_meta {
     unique_species: ", but at the level of the genus. At this level we"
-    return: "50"
-    uth: "1"
+    return: "-return query_id,e_value,rank"
     get_orthologs: "[1mDESCRIPTION[0m"
     ref_id: "ID of the reference (target) gene"
     ref_organism: "Name of the reference (target) organism"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_uniq_mapping_count.cwl
+id: riboraptor_uniq_mapping_count.cwl
 inputs:
 - id: in_bam
   doc: Path to BAM file  [required]

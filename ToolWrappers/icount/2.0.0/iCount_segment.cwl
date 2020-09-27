@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_segment.cwl
+id: iCount_segment.cwl
 inputs:
 - id: in_report_progress
   doc: 'Switch to show progress (default: False)'

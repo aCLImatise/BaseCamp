@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isoseq3_polish.cwl
+id: isoseq3_polish.cwl
 inputs:
 - id: in_rq_cut_off
   doc: FLOAT  RQ cutoff for fastx output. [0.99]

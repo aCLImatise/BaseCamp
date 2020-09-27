@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parallel_all_against_all_blastp.cwl
+id: parallel_all_against_all_blastp.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

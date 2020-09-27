@@ -65,18 +65,10 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTPUT
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: "Output filename.\n"
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: OUTPUT
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -105,7 +97,78 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTPUT
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: "Output filename.\n"
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: OUTPUT
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: cnv_annotate.py
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: annotate
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: cnv_file
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: OUTPUT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: cnv_annotate.py [-h] [-o OUTPUT] annotate cnv_file\n\
+                cnv_annotate.py: error: the following arguments are required: cnv_file\n"
+              generated_using: &id004 []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: cnv_annotate.py [-h] [-o OUTPUT] annotate cnv_file\n\
+              \nUpdate gene names in CNVkit .cnn/.cnr files.\n\npositional arguments:\n\
+              \  annotate              Genome annotations.\n  cnv_file           \
+              \   CNVkit .cnn or .cnr file.\n\noptional arguments:\n  -h, --help \
+              \           show this help message and exit\n  -o OUTPUT, --output OUTPUT\n\
+              \                        Output filename.\n"
+            generated_using: &id005
+            - --help
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -118,15 +181,9 @@ subcommands:
           version_flag:
           help_text: "usage: cnv_annotate.py [-h] [-o OUTPUT] annotate cnv_file\n\
             cnv_annotate.py: error: the following arguments are required: cnv_file\n"
-          generated_using: &id004 []
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: cnv_annotate.py [-h] [-o OUTPUT] annotate cnv_file\n\n\
@@ -135,8 +192,7 @@ subcommands:
           \ .cnn or .cnr file.\n\noptional arguments:\n  -h, --help            show\
           \ this help message and exit\n  -o OUTPUT, --output OUTPUT\n           \
           \             Output filename.\n"
-        generated_using: &id005
-        - --help
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag: !Flag

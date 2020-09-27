@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../airr_tools_validate_repertoire.cwl
+id: airr_tools_validate_repertoire.cwl
 inputs:
 - id: in_list_airr_repertoire
   doc: "A list of AIRR repertoire metadata files.\n"

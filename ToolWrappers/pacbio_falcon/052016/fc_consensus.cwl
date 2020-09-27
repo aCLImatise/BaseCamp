@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_consensus.cwl
+id: fc_consensus.cwl
 inputs:
 - id: in_n_core
   doc: "number of processes used for generating consensus; 0\nfor main process only\

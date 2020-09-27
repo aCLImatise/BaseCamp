@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../piret.cwl
+id: piret.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Plot_COG_Abundance.R.cwl
+id: Plot_COG_Abundance.R.cwl
 inputs:
 - id: in_lowess
   doc: 'Error in file(file, "rt") : cannot open the connection'

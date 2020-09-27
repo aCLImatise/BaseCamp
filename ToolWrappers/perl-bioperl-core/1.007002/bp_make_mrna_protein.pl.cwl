@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_make_mrna_protein.pl.cwl
+id: bp_make_mrna_protein.pl.cwl
 inputs:
 - id: in_f_slash_frame
   doc: Translation Frame (0,1,2) are valid (defaults to '0')

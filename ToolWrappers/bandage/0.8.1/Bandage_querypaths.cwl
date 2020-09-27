@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bandage_querypaths.cwl
+id: Bandage_querypaths.cwl
 inputs:
 - id: in_path_fast_a
   doc: Put all query path sequences in a multi-FASTA file, not in the TSV file

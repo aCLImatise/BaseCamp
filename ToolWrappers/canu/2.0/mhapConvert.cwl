@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mhapConvert.cwl
+id: mhapConvert.cwl
 inputs:
 - id: in_o
   doc: ''

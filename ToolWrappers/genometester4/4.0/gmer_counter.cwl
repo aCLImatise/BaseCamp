@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmer_counter.cwl
+id: gmer_counter.cwl
 inputs:
 - id: in_db
   doc: '- SNP/KMER database file'

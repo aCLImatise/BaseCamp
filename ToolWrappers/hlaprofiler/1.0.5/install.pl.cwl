@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../install.pl.cwl
+id: install.pl.cwl
 inputs:
 - id: in_make
   doc: make install

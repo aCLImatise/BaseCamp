@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_feature_load_featureprops.cwl
+id: chakin_feature_load_featureprops.cwl
 inputs:
 - id: in_feature_type
   doc: "Type of the target features in sequence ontology (will\nspeed up loading if\

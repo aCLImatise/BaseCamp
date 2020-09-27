@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qv_to_bqv.py.cwl
+id: qv_to_bqv.py.cwl
 inputs:
 - id: in_qual_file
   doc: ''

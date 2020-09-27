@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scHicDemultiplex.cwl
+id: scHicDemultiplex.cwl
 inputs:
 - id: in_fastq_files_demultiplex_files
   doc: "of fastq files to demultiplex [list of fastq files to demultiplex ...], -f\

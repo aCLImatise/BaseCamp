@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../a5_pipeline.pl.cwl
+id: a5_pipeline.pl.cwl
 inputs:
 - id: in_meta_genome
   doc: ''

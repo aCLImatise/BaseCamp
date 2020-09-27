@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_connect_to_serial_port.cwl
+id: gcloud_compute_connect_to_serial_port.cwl
 inputs:
 - id: in_dry_run
   doc: "If provided, the ssh command is printed to standard out rather than\nbeing\

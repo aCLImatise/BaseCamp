@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kallisto_index.cwl
+id: kallisto_index.cwl
 inputs:
 - id: in_index
   doc: Filename for the kallisto index to be constructed

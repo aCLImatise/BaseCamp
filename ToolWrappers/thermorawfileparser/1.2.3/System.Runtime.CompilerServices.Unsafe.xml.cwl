@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../System.Runtime.CompilerServices.Unsafe.xml.cwl
+id: System.Runtime.CompilerServices.Unsafe.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

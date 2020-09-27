@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_export_bed.cwl
+id: cnvkit.py_export_bed.cwl
 inputs:
 - id: in_sample_id
   doc: "Identifier to write in the 4th column of the BED file.\n[Default: use the\

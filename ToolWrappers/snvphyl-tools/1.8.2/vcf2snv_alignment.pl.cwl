@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2snv_alignment.pl.cwl
+id: vcf2snv_alignment.pl.cwl
 inputs:
 - id: in_consolidate_vcf
   doc: =files/dataset2.dat --consolidate_vcf

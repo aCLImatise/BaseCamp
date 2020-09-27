@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicBuildMatrix.cwl
+id: hicBuildMatrix.cwl
 inputs:
 - id: in_sam_files
   doc: "sam files two sam files, -s two sam files two sam files\nThe two PE alignment\

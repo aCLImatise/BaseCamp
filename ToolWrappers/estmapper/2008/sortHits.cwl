@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortHits.cwl
+id: sortHits.cwl
 inputs:
 - id: in_t
   doc: ''

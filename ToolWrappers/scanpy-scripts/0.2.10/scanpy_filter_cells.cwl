@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanpy_filter_cells.cwl
+id: scanpy_filter_cells.cwl
 inputs:
 - id: in_input_format
   doc: "[anndata|loom]\nInput object format.  [default: anndata]"
@@ -65,11 +65,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force-recalc
-- id: in_format_dot
-  doc: '[default: 1000]'
+- id: in_input_obj
+  doc: ''
   type: string
   inputBinding:
     position: 0
+- id: in_output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

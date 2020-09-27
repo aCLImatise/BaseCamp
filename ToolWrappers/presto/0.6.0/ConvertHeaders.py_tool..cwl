@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConvertHeaders.py_tool..cwl
+id: ConvertHeaders.py_tool..cwl
 inputs:
 - id: in_convert_headers_do_tpy
   doc: ''

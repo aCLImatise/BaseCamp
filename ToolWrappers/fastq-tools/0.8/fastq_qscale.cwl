@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_qscale.cwl
+id: fastq_qscale.cwl
 inputs: []
 outputs:
 - id: out_stdout

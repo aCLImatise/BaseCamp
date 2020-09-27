@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getOntology.py.cwl
+id: getOntology.py.cwl
 inputs:
 - id: in_m
   doc: marker queries.

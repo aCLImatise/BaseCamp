@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../show_snps.cwl
+id: show_snps.cwl
 inputs:
 - id: in_report_snps_alignments
   doc: "Do not report SNPs from alignments with an ambiguous\nmapping, i.e. only report\

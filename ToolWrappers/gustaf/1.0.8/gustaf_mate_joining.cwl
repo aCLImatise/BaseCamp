@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gustaf_mate_joining.cwl
+id: gustaf_mate_joining.cwl
 inputs:
 - id: in_version_check
   doc: "Turn this option off to disable version update notifications of the\napplication.\

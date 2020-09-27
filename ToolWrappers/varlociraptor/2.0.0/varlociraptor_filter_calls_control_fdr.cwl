@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_filter_calls_control_fdr.cwl
+id: varlociraptor_filter_calls_control_fdr.cwl
 inputs:
 - id: in_events
   doc: '...    Events to consider.'

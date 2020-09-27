@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tagore.cwl
+id: tagore.cwl
 inputs:
 - id: in_input
   doc: Input BED-like file

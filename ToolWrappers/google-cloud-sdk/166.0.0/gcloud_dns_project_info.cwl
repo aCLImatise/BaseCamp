@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_dns_project_info.cwl
+id: gcloud_dns_project_info.cwl
 inputs:
 - id: in_optional
   doc: ''

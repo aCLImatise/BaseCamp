@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../capC_MAP_getchromsizes.cwl
+id: capC_MAP_getchromsizes.cwl
 inputs:
 - id: in_bed_file_continaing
   doc: "bed file continaing list of restriction enzyme fragments\nfor genome"

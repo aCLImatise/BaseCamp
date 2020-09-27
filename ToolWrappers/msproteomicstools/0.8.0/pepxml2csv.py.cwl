@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pepxml2csv.py.cwl
+id: pepxml2csv.py.cwl
 inputs:
 - id: in_in_file
   doc: = sys.argv[1]

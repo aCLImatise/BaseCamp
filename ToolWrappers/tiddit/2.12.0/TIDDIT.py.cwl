@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TIDDIT.py.cwl
+id: TIDDIT.py.cwl
 inputs:
 - id: in_sv
   doc: call structural variation

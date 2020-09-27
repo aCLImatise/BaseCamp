@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../truvari.cwl
+id: truvari.cwl
 inputs:
 - id: in_base
   doc: Baseline truth-set calls

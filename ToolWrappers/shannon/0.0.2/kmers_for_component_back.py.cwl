@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmers_for_component_back.py.cwl
+id: kmers_for_component_back.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

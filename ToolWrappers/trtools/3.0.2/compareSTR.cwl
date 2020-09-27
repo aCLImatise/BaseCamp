@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compareSTR.cwl
+id: compareSTR.cwl
 inputs:
 - id: in_vcf_one
   doc: "First VCF file to compare (must be sorted, bgzipped,\nand indexed)"

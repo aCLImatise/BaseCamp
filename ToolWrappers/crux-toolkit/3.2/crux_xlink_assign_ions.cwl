@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_xlink_assign_ions.cwl
+id: crux_xlink_assign_ions.cwl
 inputs:
 - id: in_peptide_a
   doc: ''

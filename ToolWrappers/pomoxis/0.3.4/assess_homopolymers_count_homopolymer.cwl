@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assess_homopolymers_count_homopolymer.cwl
+id: assess_homopolymers_count_homopolymer.cwl
 inputs:
 - id: in_output_dir
   doc: "Output directory (will be created). (default:\nhomopolymers)"

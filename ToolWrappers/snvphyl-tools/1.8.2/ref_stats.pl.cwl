@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ref_stats.pl.cwl
+id: ref_stats.pl.cwl
 inputs:
 - id: in_specify_bin_size
   doc: '#          specify bin size for histogram (default 100)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepMat.cwl
+id: prepMat.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simuReads.cwl
+id: simuReads.cwl
 inputs: []
 outputs:
 - id: out_stdout

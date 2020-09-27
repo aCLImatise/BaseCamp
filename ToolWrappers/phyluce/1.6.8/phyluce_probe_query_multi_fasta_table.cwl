@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_query_multi_fasta_table.cwl
+id: phyluce_probe_query_multi_fasta_table.cwl
 inputs:
 - id: in_base_tax_on
-  doc: ''
+  doc: '[--specific-counts SPECIFIC_COUNTS]'
   type: string
   inputBinding:
     prefix: --base-taxon

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_embossversion.cwl
+id: _embossversion.cwl
 inputs:
 - id: in_full
   doc: boolean    Show all EMBOSS version information fields

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamToGBrowse.pl.cwl
+id: bamToGBrowse.pl.cwl
 inputs:
 - id: in_bed_graph_to_bigwig
   doc: "-- download from http://hgdownload.cse.ucsc.edu/admin/exe\nor build from source\

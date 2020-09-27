@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fml_asm.cwl
+id: fml_asm.cwl
 inputs:
 - id: in_kmer_length_error
   doc: k-mer length for error correction (0 for auto; -1 to disable) [0]

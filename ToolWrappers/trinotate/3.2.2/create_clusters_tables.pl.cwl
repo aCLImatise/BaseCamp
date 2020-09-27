@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_clusters_tables.pl.cwl
+id: create_clusters_tables.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

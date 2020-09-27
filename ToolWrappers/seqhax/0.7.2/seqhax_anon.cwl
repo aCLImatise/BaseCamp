@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_anon.cwl
+id: seqhax_anon.cwl
 inputs:
 - id: in_use_base_ids
   doc: Use base-16 sequence IDs.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk_references.cwl
+id: poppunk_references.cwl
 inputs:
 - id: in_network
   doc: gpickle file of network (required)

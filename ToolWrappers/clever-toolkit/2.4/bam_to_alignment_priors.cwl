@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_to_alignment_priors.cwl
+id: bam_to_alignment_priors.cwl
 inputs:
 - id: in_skip_reads_exist
   doc: "[ --dont_skip_non_xa ]             Do not skip reads for which other\nalignments\

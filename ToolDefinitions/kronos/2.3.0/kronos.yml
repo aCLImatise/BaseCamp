@@ -16,7 +16,7 @@ subcommands:
     name: component_name
     optional: false
   named: []
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -31,24 +31,10 @@ subcommands:
         name: component_name
         optional: false
       named: []
-      parent: &id003 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: path to the working dir
-          synonyms:
-          - -w
-          - --working_dir
-          args: !SimpleFlagArg
-            name: WORKING_DIR
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -v
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -60,7 +46,392 @@ subcommands:
             name: component_name
             optional: false
           named: []
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: path to the working dir
+              synonyms:
+              - -w
+              - --working_dir
+              args: !SimpleFlagArg
+                name: WORKING_DIR
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - -v
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: a name for the component to be generated
+                position: 0
+                name: component_name
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: kronos make_component [-h] component_name\n\nmake\
+                \ a template component\n\npositional arguments:\n  component_name\
+                \  a name for the component to be generated\n\noptional arguments:\n\
+                \  -h, --help      show this help message and exit\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - kronos
+              - run
+              positional: []
+              named:
+              - !Flag
+                description: job scheduler used to manage jobs on the cluster
+                synonyms:
+                - -b
+                - --job_scheduler
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? sge
+                    ? drmaa
+                optional: true
+              - !Flag
+                description: path to components_dir
+                synonyms:
+                - -c
+                - --components_dir
+                args: !SimpleFlagArg
+                  name: COMPONENTS_DIR
+                optional: true
+              - !Flag
+                description: path of drmaa library
+                synonyms:
+                - -d
+                - --drmaa_library_path
+                args: !SimpleFlagArg
+                  name: DRMAA_LIBRARY_PATH
+                optional: true
+              - !Flag
+                description: pipeline name
+                synonyms:
+                - -e
+                - --pipeline_name
+                args: !SimpleFlagArg
+                  name: PIPELINE_NAME
+                optional: true
+              - !Flag
+                description: path to the input samples file
+                synonyms:
+                - -i
+                - --input_samples
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: maximum number of simultaneous jobs per pipeline
+                synonyms:
+                - -j
+                - --num_jobs
+                args: !SimpleFlagArg
+                  name: NUM_JOBS
+                optional: true
+              - !Flag
+                description: path to kronos-made pipeline script.
+                synonyms:
+                - -k
+                - --kronos_pipeline
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: maximum number of simultaneous running pipelines
+                synonyms:
+                - -n
+                - --num_pipelines
+                args: !SimpleFlagArg
+                  name: NUM_PIPELINES
+                optional: true
+              - !Flag
+                description: path to python executable
+                synonyms:
+                - -p
+                - --python_installation
+                args: !SimpleFlagArg
+                  name: PYTHON_INSTALLATION
+                optional: true
+              - !Flag
+                description: "native qsub specifications for the cluster in a single\n\
+                  string"
+                synonyms:
+                - -q
+                - --qsub_options
+                args: !SimpleFlagArg
+                  name: QSUB_OPTIONS
+                optional: true
+              - !Flag
+                description: pipeline run id
+                synonyms:
+                - -r
+                - --run_id
+                args: !SimpleFlagArg
+                  name: RUN_ID
+                optional: true
+              - !Flag
+                description: path to the setup file
+                synonyms:
+                - -s
+                - --setup_file
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: path to the working_dir
+                synonyms:
+                - -w
+                - --working_dir
+                args: !SimpleFlagArg
+                  name: WORKING_DIR
+                optional: true
+              - !Flag
+                description: path to the config_file.yaml
+                synonyms:
+                - -y
+                - --config_file
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "switch off the prefix that is added to all the output\n\
+                  files.\n"
+                synonyms:
+                - --no_prefix
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: kronos run [-h] [-b {sge,drmaa}] -c COMPONENTS_DIR\n\
+                \                  [-d DRMAA_LIBRARY_PATH] [-e PIPELINE_NAME] [-i\
+                \ FILE]\n                  [-j NUM_JOBS] [-k FILE] [-n NUM_PIPELINES]\n\
+                \                  [-p PYTHON_INSTALLATION] [-q QSUB_OPTIONS] [-r\
+                \ RUN_ID]\n                  [-s FILE] [-w WORKING_DIR] [-y FILE]\
+                \ [--no_prefix]\n\nrun kronos-made pipelines with optional initialization\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  -b {sge,drmaa}, --job_scheduler {sge,drmaa}\n      \
+                \                  job scheduler used to manage jobs on the cluster\n\
+                \  -c COMPONENTS_DIR, --components_dir COMPONENTS_DIR\n          \
+                \              path to components_dir\n  -d DRMAA_LIBRARY_PATH, --drmaa_library_path\
+                \ DRMAA_LIBRARY_PATH\n                        path of drmaa library\n\
+                \  -e PIPELINE_NAME, --pipeline_name PIPELINE_NAME\n             \
+                \           pipeline name\n  -i FILE, --input_samples FILE\n     \
+                \                   path to the input samples file\n  -j NUM_JOBS,\
+                \ --num_jobs NUM_JOBS\n                        maximum number of simultaneous\
+                \ jobs per pipeline\n  -k FILE, --kronos_pipeline FILE\n         \
+                \               path to kronos-made pipeline script.\n  -n NUM_PIPELINES,\
+                \ --num_pipelines NUM_PIPELINES\n                        maximum number\
+                \ of simultaneous running pipelines\n  -p PYTHON_INSTALLATION, --python_installation\
+                \ PYTHON_INSTALLATION\n                        path to python executable\n\
+                \  -q QSUB_OPTIONS, --qsub_options QSUB_OPTIONS\n                \
+                \        native qsub specifications for the cluster in a single\n\
+                \                        string\n  -r RUN_ID, --run_id RUN_ID\n  \
+                \                      pipeline run id\n  -s FILE, --setup_file FILE\n\
+                \                        path to the setup file\n  -w WORKING_DIR,\
+                \ --working_dir WORKING_DIR\n                        path to the working_dir\n\
+                \  -y FILE, --config_file FILE\n                        path to the\
+                \ config_file.yaml\n  --no_prefix           switch off the prefix\
+                \ that is added to all the output\n                        files.\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - kronos
+              - update_config
+              positional:
+              - !Positional
+                description: "paths to the config files, e.g. update_config\n<old_config.yaml>\
+                  \ <new_config.yaml>"
+                position: 0
+                name: FILE
+                optional: false
+              named:
+              - !Flag
+                description: "a name for the output file\n"
+                synonyms:
+                - -o
+                - --output_filename
+                args: !SimpleFlagArg
+                  name: OUTPUT_FILENAME
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: kronos update_config [-h] -o OUTPUT_FILENAME FILE\
+                \ [FILE ...]\n\nupdate the fields of a config file based on the ones\
+                \ from another one\n\npositional arguments:\n  FILE              \
+                \    paths to the config files, e.g. update_config\n             \
+                \           <old_config.yaml> <new_config.yaml>\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -o OUTPUT_FILENAME,\
+                \ --output_filename OUTPUT_FILENAME\n                        a name\
+                \ for the output file\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - kronos
+              - make_config
+              positional:
+              - !Positional
+                description: list of component names
+                position: 0
+                name: components
+                optional: false
+              named:
+              - !Flag
+                description: "a name for the resultant config file\n"
+                synonyms:
+                - -o
+                - --output_filename
+                args: !SimpleFlagArg
+                  name: OUTPUT_FILENAME
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: kronos make_config [-h] -o OUTPUT_FILENAME components\
+                \ [components ...]\n\nmake a template config file\n\npositional arguments:\n\
+                \  components            list of component names\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -o OUTPUT_FILENAME,\
+                \ --output_filename OUTPUT_FILENAME\n                        a name\
+                \ for the resultant config file\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - kronos
+              - init
+              positional: []
+              named:
+              - !Flag
+                description: a name for the resultant pipeline
+                synonyms:
+                - -e
+                - --pipeline_name
+                args: !SimpleFlagArg
+                  name: PIPELINE_NAME
+                optional: true
+              - !Flag
+                description: path to the samples file
+                synonyms:
+                - -i
+                - --input_samples
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: path to the setup file
+                synonyms:
+                - -s
+                - --setup_file
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "path to the config_file.yaml\n"
+                synonyms:
+                - -y
+                - --config_file
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: kronos init [-h] -e PIPELINE_NAME [-i FILE] [-s FILE]\
+                \ -y FILE\n\ninitialize a pipeline from a given config file\n\noptional\
+                \ arguments:\n  -h, --help            show this help message and exit\n\
+                \  -e PIPELINE_NAME, --pipeline_name PIPELINE_NAME\n             \
+                \           a name for the resultant pipeline\n  -i FILE, --input_samples\
+                \ FILE\n                        path to the samples file\n  -s FILE,\
+                \ --setup_file FILE\n                        path to the setup file\n\
+                \  -y FILE, --config_file FILE\n                        path to the\
+                \ config_file.yaml\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: show program's version number and exit
+              synonyms:
+              - -v
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "usage: kronos [-h] [-w WORKING_DIR] [-v]\n              {make_component,make_config,update_config,init,run}\
+              \ ...\n\nKronos: a workflow assembler for genome analytics and informatics\n\
+              \npositional arguments:\n  {make_component,make_config,update_config,init,run}\n\
+              \    make_component      make a template component\n    make_config\
+              \         make a template config file\n    update_config       update\
+              \ the fields of a config file based on the ones\n                  \
+              \      from another one\n    init                initialize a pipeline\
+              \ from a given config file\n    run                 run kronos-made\
+              \ pipelines with optional initialization\n\noptional arguments:\n  -h,\
+              \ --help            show this help message and exit\n  -w WORKING_DIR,\
+              \ --working_dir WORKING_DIR\n                        path to the working\
+              \ dir\n  -v, --version         show program's version number and exit\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -76,12 +447,9 @@ subcommands:
             \ component\n\npositional arguments:\n  component_name  a name for the\
             \ component to be generated\n\noptional arguments:\n  -h, --help     \
             \ show this help message and exit\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - kronos
-          - run
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -91,8 +459,8 @@ subcommands:
             - --job_scheduler
             args: !ChoiceFlagArg
               choices: !!set
-                ? sge
                 ? drmaa
+                ? sge
             optional: true
           - !Flag
             description: path to components_dir
@@ -249,9 +617,7 @@ subcommands:
             \ output\n                        files.\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - kronos
-          - update_config
+          command: *id006
           positional:
           - !Positional
             description: "paths to the config files, e.g. update_config\n<old_config.yaml>\
@@ -289,9 +655,7 @@ subcommands:
             \ OUTPUT_FILENAME\n                        a name for the output file\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - kronos
-          - make_config
+          command: *id007
           positional:
           - !Positional
             description: list of component names
@@ -327,9 +691,7 @@ subcommands:
             \ the resultant config file\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - kronos
-          - init
+          command: *id008
           positional: []
           named:
           - !Flag
@@ -386,21 +748,9 @@ subcommands:
             \ FILE\n                        path to the config_file.yaml\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: show program's version number and exit
-          synonyms:
-          - -v
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "usage: kronos [-h] [-w WORKING_DIR] [-v]\n              {make_component,make_config,update_config,init,run}\
           \ ...\n\nKronos: a workflow assembler for genome analytics and informatics\n\
           \npositional arguments:\n  {make_component,make_config,update_config,init,run}\n\
@@ -441,8 +791,8 @@ subcommands:
         - --job_scheduler
         args: !ChoiceFlagArg
           choices: !!set
-            ? drmaa
             ? sge
+            ? drmaa
         optional: true
       - !Flag
         description: path to components_dir
@@ -554,7 +904,7 @@ subcommands:
         - --no_prefix
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -613,7 +963,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTPUT_FILENAME
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -650,7 +1000,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTPUT_FILENAME
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -705,7 +1055,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -883,7 +1233,7 @@ subcommands:
     - --no_prefix
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -940,7 +1290,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTPUT_FILENAME
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -977,7 +1327,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTPUT_FILENAME
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1031,7 +1381,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag

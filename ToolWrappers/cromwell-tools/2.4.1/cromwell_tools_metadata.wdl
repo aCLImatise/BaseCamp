@@ -25,7 +25,7 @@ task CromwelltoolsMetadata {
       ~{if defined(expand_sub_workflows) then ("--expandSubWorkflows " +  '"' + expand_sub_workflows + '"') else ""}
   >>>
   parameter_meta {
-    uuid: ""
+    uuid: "[--includeKey INCLUDEKEY [INCLUDEKEY ...]]\\n[--excludeKey EXCLUDEKEY [EXCLUDEKEY ...]]\\n[--expandSubWorkflows EXPANDSUBWORKFLOWS]"
     url: "The URL to the Cromwell server. e.g.\\n\\\"https://cromwell.server.org/\\\""
     username: "Cromwell username for HTTPBasicAuth."
     password: "Cromwell password for HTTPBasicAuth."

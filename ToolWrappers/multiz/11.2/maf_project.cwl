@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_project.cwl
+id: maf_project.cwl
 inputs: []
 outputs:
 - id: out_stdout

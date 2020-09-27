@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClassifyContigNR.py.cwl
+id: ClassifyContigNR.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_test.cwl
+id: humann2_test.cwl
 inputs:
 - id: in_run_functional_tests_tools
   doc: run the functional tests for tools

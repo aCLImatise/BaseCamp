@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prodigal.py.cwl
+id: prodigal.py.cwl
 inputs:
 - id: in_input
   doc: Input FASTA file or dir containing fasta files

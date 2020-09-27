@@ -11,17 +11,7 @@ task Nucmer {
     Boolean? depend
     Boolean? diagdiff_set_difference
     Boolean? diagfactor_set_difference
-    Boolean? f
-    Boolean? forward
-    Boolean? maxgap_set_gap
-    Boolean? help
-    Boolean? minmatch_set_length
-    Boolean? o
-    File? coords
-    Boolean? prefix_set_prefix
-    Boolean? r
-    Boolean? reverse
-    Boolean? v
+    Boolean? _forward_use
     String reference
     String query
   }
@@ -38,17 +28,7 @@ task Nucmer {
       ~{if (depend) then "--depend" else ""} \
       ~{if (diagdiff_set_difference) then "-D" else ""} \
       ~{if (diagfactor_set_difference) then "-d" else ""} \
-      ~{if (f) then "-f" else ""} \
-      ~{if (forward) then "--forward" else ""} \
-      ~{if (maxgap_set_gap) then "-g" else ""} \
-      ~{if (help) then "--help" else ""} \
-      ~{if (minmatch_set_length) then "-l" else ""} \
-      ~{if (o) then "-o" else ""} \
-      ~{if (coords) then "--coords" else ""} \
-      ~{if (prefix_set_prefix) then "-p" else ""} \
-      ~{if (r) then "-r" else ""} \
-      ~{if (reverse) then "--reverse" else ""} \
-      ~{if (v) then "-V" else ""}
+      ~{if (_forward_use) then "-f" else ""}
   >>>
   parameter_meta {
     mum: "Use anchor matches that are unique in both the reference\\nand query"
@@ -60,22 +40,11 @@ task Nucmer {
     depend: "Print the dependency information and exit"
     diagdiff_set_difference: "|diagdiff     Set the maximum diagonal difference between two adjacent\\nanchors in a cluster (default 5)"
     diagfactor_set_difference: "|diagfactor   Set the maximum diagonal difference between two adjacent\\nanchors in a cluster as a differential fraction of the gap\\nlength (default 0.12)"
-    f: ""
-    forward: "Use only the forward strand of the Query sequences"
-    maxgap_set_gap: "|maxgap       Set the maximum gap between two adjacent matches in a\\ncluster (default 90)"
-    help: "Display help information and exit"
-    minmatch_set_length: "|minmatch     Set the minimum length of a single match (default 20)"
-    o: ""
-    coords: "Automatically generate the original NUCmer1.1 coords\\noutput file using the 'show-coords' program"
-    prefix_set_prefix: "|prefix       Set the prefix of the output files (default \\\"out\\\")"
-    r: ""
-    reverse: "Use only the reverse complement of the Query sequences"
-    v: ""
+    _forward_use: "--forward       Use only the forward strand of the Query sequences\\n-g|maxgap       Set the maximum gap between two adjacent matches in a\\ncluster (default 90)\\n-h\\n--help          Display help information and exit\\n-l|minmatch     Set the minimum length of a single match (default 20)\\n-o\\n--coords        Automatically generate the original NUCmer1.1 coords\\noutput file using the 'show-coords' program\\n--[no]optimize  Toggle alignment score optimization, i.e. if an alignment\\nextension reaches the end of a sequence, it will backtrack\\nto optimize the alignment score instead of terminating the\\nalignment at the end of the sequence (default --optimize)\\n-p|prefix       Set the prefix of the output files (default \\\"out\\\")\\n-r\\n--reverse       Use only the reverse complement of the Query sequences\\n--[no]simplify  Simplify alignments by removing shadowed clusters. Turn\\nthis option off if aligning a sequence to itself to look\\nfor repeats (default --simplify)\\n-V\\n--version       Display the version information and exit\\n"
     reference: "Set the input reference multi-FASTA filename"
     query: "Set the input query multi-FASTA filename"
   }
   output {
     File out_stdout = stdout()
-    File out_coords = "${in_coords}"
   }
 }

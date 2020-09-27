@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClusterPicker.cwl
+id: ClusterPicker.cwl
 inputs: []
 outputs:
 - id: out_stdout

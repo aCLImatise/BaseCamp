@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_only_loci_with_min_taxa.cwl
+id: phyluce_align_get_only_loci_with_min_taxa.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--percent PERCENT]\n[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+    [--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n[--cores CORES]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_alignments

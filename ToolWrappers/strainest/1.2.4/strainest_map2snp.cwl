@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainest_map2snp.cwl
+id: strainest_map2snp.cwl
 inputs:
 - id: in_reference
   doc: ''

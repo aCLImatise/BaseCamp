@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../babel_minimize.cwl
+id: babel_minimize.cwl
 inputs:
 - id: in_config
   doc: Configuration file

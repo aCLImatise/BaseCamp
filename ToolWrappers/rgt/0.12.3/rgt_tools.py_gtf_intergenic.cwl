@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_gtf_intergenic.cwl
+id: rgt_tools.py_gtf_intergenic.cwl
 inputs:
 - id: in_input_gtf_file
   doc: Input GTF file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_reformat.cwl
+id: esl_reformat.cwl
 inputs:
 - id: in_convert_dna_alphabet
   doc: ': convert to DNA alphabet (U->T)'

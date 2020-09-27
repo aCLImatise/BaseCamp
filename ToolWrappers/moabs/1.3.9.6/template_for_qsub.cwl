@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../template_for_qsub.cwl
+id: template_for_qsub.cwl
 inputs: []
 outputs:
 - id: out_stdout

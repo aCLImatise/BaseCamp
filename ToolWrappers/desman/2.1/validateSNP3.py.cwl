@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validateSNP3.py.cwl
+id: validateSNP3.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

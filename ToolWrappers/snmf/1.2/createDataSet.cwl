@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createDataSet.cwl
+id: createDataSet.cwl
 inputs:
 - id: in__genotype_file
   doc: -- genotype file (in .geno format)

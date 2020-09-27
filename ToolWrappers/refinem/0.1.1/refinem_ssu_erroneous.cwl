@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refinem_ssu_erroneous.cwl
+id: refinem_ssu_erroneous.cwl
 inputs:
 - id: in_genome_ext
   doc: "extension of genomes (other files in directory are\nignored) (default: fna)"

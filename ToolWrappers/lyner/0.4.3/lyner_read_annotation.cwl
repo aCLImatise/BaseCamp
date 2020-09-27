@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_read_annotation.cwl
+id: lyner_read_annotation.cwl
 inputs:
 - id: in_file
   doc: ''

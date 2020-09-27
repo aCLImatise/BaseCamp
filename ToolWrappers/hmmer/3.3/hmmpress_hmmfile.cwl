@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmpress_hmmfile.cwl
+id: hmmpress_hmmfile.cwl
 inputs:
 - id: in_options
   doc: ''

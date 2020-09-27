@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_convert_codis.py.cwl
+id: hisatgenotype_convert_codis.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

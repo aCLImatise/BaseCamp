@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf2gff.pl.cwl
+id: gtf2gff.pl.cwl
 inputs:
 - id: in_print_exon
   doc: print exon features (may include CDS and UTR parts)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_convertChr_bedfile.cwl
+id: bedparse_convertChr_bedfile.cwl
 inputs:
 - id: in_target
   doc: ''

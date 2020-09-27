@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../valid_cells.cwl
+id: valid_cells.cwl
 inputs:
 - id: in_verbose
   doc: Verbose execution.

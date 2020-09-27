@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2kvh.py.cwl
+id: ftbl2kvh.py.cwl
 inputs:
 - id: in_network
   doc: ''

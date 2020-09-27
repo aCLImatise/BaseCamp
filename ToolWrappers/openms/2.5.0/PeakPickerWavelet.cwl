@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PeakPickerWavelet.cwl
+id: PeakPickerWavelet.cwl
 inputs:
 - id: in_in
   doc: "*        Input profile data file  (valid formats: 'mzML')"

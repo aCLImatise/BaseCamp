@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_bed12tobed6.cwl
+id: bedtools_bed12tobed6.cwl
 inputs:
 - id: in_force_score_based
   doc: Force the score to be the (1-based) block number from the BED12.

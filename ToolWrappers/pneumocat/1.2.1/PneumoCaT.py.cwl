@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PneumoCaT.py.cwl
+id: PneumoCaT.py.cwl
 inputs:
 - id: in_input_directory
   doc: "please provide the path to the directory contains the\nfastq files [REQUIRED\

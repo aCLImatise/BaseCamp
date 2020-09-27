@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngm_utils_debug_interleave.cwl
+id: ngm_utils_debug_interleave.cwl
 inputs:
 - id: in__m_upstream
   doc: ",  --m1 <file>\n(required)  Upstream mates (FASTA/Q)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_graphMinusRemovegraph.cwl
+id: proteinortho_graphMinusRemovegraph.cwl
 inputs: []
 outputs:
 - id: out_stdout

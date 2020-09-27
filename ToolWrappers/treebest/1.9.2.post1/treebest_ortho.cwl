@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_ortho.cwl
+id: treebest_ortho.cwl
 inputs:
 - id: in_tree
   doc: ''

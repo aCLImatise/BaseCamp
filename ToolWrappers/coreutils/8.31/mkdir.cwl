@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkdir.cwl
+id: mkdir.cwl
 inputs:
 - id: in_mode
   doc: set file mode (as in chmod), not a=rwx - umask

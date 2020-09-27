@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rfheader.cwl
+id: rfheader.cwl
 inputs:
 - id: in_refine
   doc: ''

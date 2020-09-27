@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snpgenie.pl.cwl
+id: snpgenie.pl.cwl
 inputs:
 - id: in_fast_a_file
   doc: ": FASTA file containing exactly one (1) reference sequence.\nAll positions\

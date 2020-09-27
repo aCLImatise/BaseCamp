@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blast2lca.cwl
+id: blast2lca.cwl
 inputs:
 - id: in_format
   doc: '[string]                BLAST format. Default value: Unknown. Legal values:

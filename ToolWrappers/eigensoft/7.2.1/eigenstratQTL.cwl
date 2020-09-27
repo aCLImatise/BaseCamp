@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eigenstratQTL.cwl
+id: eigenstratQTL.cwl
 inputs:
 - id: in_o
   doc: ''

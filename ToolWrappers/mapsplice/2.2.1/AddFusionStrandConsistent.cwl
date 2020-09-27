@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AddFusionStrandConsistent.cwl
+id: AddFusionStrandConsistent.cwl
 inputs: []
 outputs:
 - id: out_stdout

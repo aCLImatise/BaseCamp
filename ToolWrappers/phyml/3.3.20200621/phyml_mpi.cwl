@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyml_mpi.cwl
+id: phyml_mpi.cwl
 inputs: []
 outputs:
 - id: out_stdout

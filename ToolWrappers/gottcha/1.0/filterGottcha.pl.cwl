@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterGottcha.pl.cwl
+id: filterGottcha.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

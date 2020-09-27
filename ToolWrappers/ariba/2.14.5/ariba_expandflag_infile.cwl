@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_expandflag_infile.cwl
+id: ariba_expandflag_infile.cwl
 inputs:
 - id: in_ariba
   doc: ''

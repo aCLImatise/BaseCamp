@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bandage_load.cwl
+id: Bandage_load.cwl
 inputs:
 - id: in_draw
   doc: Draw graph after loading

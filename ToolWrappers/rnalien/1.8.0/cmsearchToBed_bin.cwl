@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmsearchToBed_bin.cwl
+id: cmsearchToBed_bin.cwl
 inputs:
 - id: in_cm_search_path
   doc: Path to input cmsearch file

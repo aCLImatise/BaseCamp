@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isONclust2.cwl
+id: isONclust2.cwl
 inputs:
 - id: in_batch_size
   doc: 'Batch size in kilobases (default: 50000)'

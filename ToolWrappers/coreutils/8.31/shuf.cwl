@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuf.cwl
+id: shuf.cwl
 inputs:
 - id: in_echo
   doc: treat each ARG as an input line

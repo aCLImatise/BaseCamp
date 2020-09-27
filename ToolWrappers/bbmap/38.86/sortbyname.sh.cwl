@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortbyname.sh.cwl
+id: sortbyname.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding\nautodetection.  -Xmx20g will\

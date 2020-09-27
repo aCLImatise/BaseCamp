@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_contigs.cwl
+id: filter_contigs.cwl
 inputs:
 - id: in_min_contig
   doc: (=100)            filter out reads containing 'N'

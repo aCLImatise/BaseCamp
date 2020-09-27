@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CalcDelta.py_output_stub.cwl
+id: CalcDelta.py_output_stub.cwl
 inputs:
 - id: in_calc_delta_do_tpy
   doc: ''

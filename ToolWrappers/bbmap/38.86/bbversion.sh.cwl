@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbversion.sh.cwl
+id: bbversion.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

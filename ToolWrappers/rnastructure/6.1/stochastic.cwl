@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stochastic.cwl
+id: stochastic.cwl
 inputs:
 - id: in_dna
   doc: "This flag only matters if the input file is a sequence file and has been\n\

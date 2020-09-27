@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../join.pl.cwl
+id: join.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_callpeak.cwl
+id: macs2_callpeak.cwl
 inputs:
 - id: in_treatment
   doc: "ChIP-seq treatment file. If multiple files are given\nas '-t A B C', then\

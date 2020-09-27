@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filtlong.cwl
+id: filtlong.cwl
 inputs:
 - id: in_keep_only_best
   doc: '[int], --target_bases [int]          keep only the best reads up to this many

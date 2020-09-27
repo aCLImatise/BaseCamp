@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmapConvert.cwl
+id: mmapConvert.cwl
 inputs:
 - id: in_output_file
   doc: output file

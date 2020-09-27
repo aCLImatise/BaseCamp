@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pandaxs.cwl
+id: pandaxs.cwl
 inputs: []
 outputs:
 - id: out_stdout

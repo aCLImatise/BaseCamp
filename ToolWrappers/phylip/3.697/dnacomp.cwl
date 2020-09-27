@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnacomp.cwl
+id: dnacomp.cwl
 inputs: []
 outputs:
 - id: out_stdout

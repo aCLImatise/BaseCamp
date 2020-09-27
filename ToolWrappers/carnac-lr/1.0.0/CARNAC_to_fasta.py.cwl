@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CARNAC_to_fasta.py.cwl
+id: CARNAC_to_fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

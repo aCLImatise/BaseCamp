@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapidStats.r.cwl
+id: rapidStats.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta_translate.cwl
+id: megagta_translate.cwl
 inputs:
 - id: in_translate
   doc: ''

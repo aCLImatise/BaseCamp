@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualimap_bamqc.cwl
+id: qualimap_bamqc.cwl
 inputs:
 - id: in_bam
   doc: Input mapping file in BAM format

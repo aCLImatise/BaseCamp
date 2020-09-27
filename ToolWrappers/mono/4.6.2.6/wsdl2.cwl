@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wsdl2.cwl
+id: wsdl2.cwl
 inputs:
 - id: in_domain
   doc: :domain           Domain of username for server authentication.

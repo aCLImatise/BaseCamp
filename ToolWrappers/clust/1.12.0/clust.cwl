@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clust.cwl
+id: clust.cwl
 inputs:
 - id: in_normalisation_file_list
   doc: "[<file or int> ...]\nNormalisation file or list of codes (default: 1000)"
@@ -106,9 +106,9 @@ inputs:
   type: long
   inputBinding:
     prefix: -np
-- id: in_file_or_int
-  doc: ''
-  type: long
+- id: in_data_path
+  doc: Data file path or directory with data file(s).
+  type: string
   inputBinding:
     position: 0
 outputs:

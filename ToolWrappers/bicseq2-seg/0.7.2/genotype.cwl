@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genotype.cwl
+id: genotype.cwl
 inputs: []
 outputs:
 - id: out_stdout

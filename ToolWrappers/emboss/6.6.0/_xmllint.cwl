@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_xmllint.cwl
+id: _xmllint.cwl
 inputs:
 - id: in_debug
   doc: ': dump a debug tree of the in-memory document'

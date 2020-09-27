@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_trace.cwl
+id: convert_trace.cwl
 inputs:
 - id: in_format_input_defaults
   doc: Format for input (defaults to any

@@ -12,11 +12,17 @@ task Rsamplesmp {
     Boolean? react_unpaired
     Boolean? seed
     Boolean? temperature
-    String written_dot
+    String r_sample
+    File seq_file
+    File shape_file
+    File pfs_file
   }
   command <<<
     Rsample_smp \
-      ~{written_dot} \
+      ~{r_sample} \
+      ~{seq_file} \
+      ~{shape_file} \
+      ~{pfs_file} \
       ~{if (dna) then "--DNA" else ""} \
       ~{if (c_param) then "--cparam" else ""} \
       ~{if (max_distance) then "--maxdistance" else ""} \
@@ -39,7 +45,10 @@ task Rsamplesmp {
     react_unpaired: "Give full path to file with unpaired nucleotide reactivities dataset.\\nDefault values are in rsample directory in $DATAPATH"
     seed: "Specify a random seed.\\nDefault is to set random seed from current time."
     temperature: "Specify the temperature at which calculation takes place in Kelvin.\\nDefault is 310.15 K, which is 37 degrees C.\\n"
-    written_dot: "========================================="
+    r_sample: ""
+    seq_file: ""
+    shape_file: ""
+    pfs_file: ""
   }
   output {
     File out_stdout = stdout()

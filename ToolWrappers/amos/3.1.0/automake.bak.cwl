@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../automake.bak.cwl
+id: automake.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

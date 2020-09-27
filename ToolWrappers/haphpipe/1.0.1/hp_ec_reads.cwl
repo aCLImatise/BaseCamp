@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_ec_reads.cwl
+id: hp_ec_reads.cwl
 inputs:
 - id: in_fq_one
   doc: Fastq file with read 1

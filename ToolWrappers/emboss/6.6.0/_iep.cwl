@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_iep.cwl
+id: _iep.cwl
 inputs:
 - id: in_amino
   doc: integer    [1] Number of N-termini (Integer 0 or more)

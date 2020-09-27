@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedSort.cwl
+id: bedSort.cwl
 inputs:
 - id: in_in_dot_bed
   doc: ''

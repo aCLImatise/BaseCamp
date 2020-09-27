@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../retaxdump.cwl
+id: retaxdump.cwl
 inputs:
 - id: in_nodes_path
   doc: "path for the nodes information files (nodes.dmp and\nnames.dmp from NCBI)"

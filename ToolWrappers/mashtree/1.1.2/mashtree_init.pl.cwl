@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mashtree_init.pl.cwl
+id: mashtree_init.pl.cwl
 inputs:
 - id: in_outfile
   doc: "''   Required output sqlite file"
@@ -29,27 +29,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sort-order
-- id: in_genome_size
-  doc: '5000000'
-  type: boolean
-  inputBinding:
-    prefix: --genomesize
 - id: in_min_depth
   doc: "5    If mindepth is zero, then it will be\nchosen in a smart but slower method,\n\
     to discard lower-abundance kmers."
   type: boolean
   inputBinding:
     prefix: --mindepth
-- id: in_km_er_length
-  doc: '21'
-  type: boolean
-  inputBinding:
-    prefix: --kmerlength
-- id: in_sketch_size
-  doc: '10000'
-  type: boolean
-  inputBinding:
-    prefix: --sketch-size
 outputs:
 - id: out_stdout
   doc: Standard output stream

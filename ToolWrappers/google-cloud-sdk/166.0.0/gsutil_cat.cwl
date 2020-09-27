@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_cat.cwl
+id: gsutil_cat.cwl
 inputs:
 - id: in_causes_gsutil_range
   doc: "Causes gsutil to output just the specified byte range of the\nobject. Ranges\

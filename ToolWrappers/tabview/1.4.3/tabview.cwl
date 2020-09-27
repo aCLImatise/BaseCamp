@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tabview.cwl
+id: tabview.cwl
 inputs:
 - id: in_encoding
   doc: "Encoding, if required. If the file is UTF-8,\nLatin-1(iso8859-1) or a few\

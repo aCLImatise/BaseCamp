@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psl_genes.cwl
+id: psl_genes.cwl
 inputs:
 - id: in_more_options
   doc: ''

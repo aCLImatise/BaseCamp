@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intervene_venn.cwl
+id: intervene_venn.cwl
 inputs:
 - id: in_input_genomic_regions
   doc: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic regions in\

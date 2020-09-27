@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_make_Nbase_bed.pl.cwl
+id: fasta_make_Nbase_bed.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

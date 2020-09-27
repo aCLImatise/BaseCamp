@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../estOrient.cwl
+id: estOrient.cwl
 inputs:
 - id: in_chrom
   doc: '- process this chromosome, maybe repeated'

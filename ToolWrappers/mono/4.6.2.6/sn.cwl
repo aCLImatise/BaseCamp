@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sn.cwl
+id: sn.cwl
 inputs:
 - id: in_quiet_quiet_mode
   doc: '| -quiet            Quiet mode (minimal display)'

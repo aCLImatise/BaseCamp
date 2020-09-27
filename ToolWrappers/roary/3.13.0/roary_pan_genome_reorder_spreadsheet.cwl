@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roary_pan_genome_reorder_spreadsheet.cwl
+id: roary_pan_genome_reorder_spreadsheet.cwl
 inputs:
 - id: in_tree_filename
   doc: tree filename []

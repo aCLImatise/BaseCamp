@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_seq.cwl
+id: seqkit_seq.cwl
 inputs:
 - id: in_color
   doc: colorize sequences - to be piped into "less -R"

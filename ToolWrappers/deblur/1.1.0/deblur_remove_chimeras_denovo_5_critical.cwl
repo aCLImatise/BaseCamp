@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_remove_chimeras_denovo_5_critical.cwl
+id: deblur_remove_chimeras_denovo_5_critical.cwl
 inputs:
 - id: in_de_blur
   doc: ''

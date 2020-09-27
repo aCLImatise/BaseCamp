@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runAllSim4.pl.cwl
+id: runAllSim4.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wifi_status.cwl
+id: wifi_status.cwl
 inputs: []
 outputs:
 - id: out_stdout

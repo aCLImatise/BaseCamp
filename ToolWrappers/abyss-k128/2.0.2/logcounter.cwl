@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../logcounter.cwl
+id: logcounter.cwl
 inputs:
 - id: in_threads
   doc: use N parallel threads [1]

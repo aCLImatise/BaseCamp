@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hitea.cwl
+id: hitea.cwl
 inputs:
 - id: in_input_file_pairsam
   doc: ':          Input file in pairsam format or unsorted-lossless bam format'

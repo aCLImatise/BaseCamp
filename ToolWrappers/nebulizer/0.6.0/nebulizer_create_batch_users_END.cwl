@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_create_batch_users_END.cwl
+id: nebulizer_create_batch_users_END.cwl
 inputs:
 - id: in_nebulizer
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ORFcount.cwl
+id: ORFcount.cwl
 inputs:
 - id: in_stranded
   doc: "whether the data is strand-specific, reverse means\nreversed strand interpretation.\

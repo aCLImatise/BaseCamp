@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtpoa_cns.cwl
+id: wtpoa_cns.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [4]

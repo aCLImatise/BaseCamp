@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbcavity.cwl
+id: rbcavity.cwl
 inputs:
 - id: in_receptor_param
   doc: "receptor param file (contains active site\nparams)"

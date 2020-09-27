@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnase_average_profile.py.cwl
+id: dnase_average_profile.py.cwl
 inputs:
 - id: in_window_size
   doc: "Size of flanking area around centre of the regions to\nplot (default: 100)"

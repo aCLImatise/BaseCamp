@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerStreamJoin.cwl
+id: KmerStreamJoin.cwl
 inputs:
 - id: in_output
   doc: "Filename for output\n--verbose            Print output at the end\n"

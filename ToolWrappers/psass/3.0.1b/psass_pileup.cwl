@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psass_pileup.cwl
+id: psass_pileup.cwl
 inputs:
 - id: in_reference
   doc: TEXT:FILE    Reference file in fasta format, required with CRAM input files

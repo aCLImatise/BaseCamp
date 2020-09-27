@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_set.cwl
+id: MotifRaptor_set.cwl
 inputs:
 - id: in_parameter_name
   doc: Parameter Name

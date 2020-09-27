@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kssd_reverse.cwl
+id: kssd_reverse.cwl
 inputs:
 - id: in_by_reads
   doc: recover k-mer from sketched reads .

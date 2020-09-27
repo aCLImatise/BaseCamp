@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Corrector_AR.cwl
+id: Corrector_AR.cwl
 inputs:
 - id: in_set_size_consecutive_defaultnote
   doc: "Set size of consecutive kmer, default=17.\nNote: this value must be set to\

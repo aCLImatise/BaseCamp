@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paraNodeStatus.cwl
+id: paraNodeStatus.cwl
 inputs:
 - id: in_retries
   doc: "Number of retries to get in touch with machine.\nThe first retry is after\

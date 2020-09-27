@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracearchiveToCA.cwl
+id: tracearchiveToCA.cwl
 inputs: []
 outputs:
 - id: out_stdout

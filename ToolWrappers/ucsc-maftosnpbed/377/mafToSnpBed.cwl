@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../mafToSnpBed.cwl
+id: mafToSnpBed.cwl
 inputs:
-- id: in_xxx
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -xxx
 - id: in_database
   doc: ''
   type: string

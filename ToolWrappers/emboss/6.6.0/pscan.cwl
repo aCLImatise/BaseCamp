@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pscan.cwl
+id: pscan.cwl
 inputs:
 - id: in_emin
   doc: "integer    [2] Minimum number of elements per\nfingerprint (Integer from 1\

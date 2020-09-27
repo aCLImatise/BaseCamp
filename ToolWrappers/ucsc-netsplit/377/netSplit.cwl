@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../netSplit.cwl
+id: netSplit.cwl
 inputs:
-- id: in_xxx
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -xxx
 - id: in_in_dotnet
   doc: ''
   type: string

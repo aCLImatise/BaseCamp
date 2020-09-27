@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmentation_fold_utils_filter_by_energy.cwl
+id: segmentation_fold_utils_filter_by_energy.cwl
 inputs:
 - id: in_energy
   doc: "Entries with transitions with energy smaller than energy\n(< e) or without\

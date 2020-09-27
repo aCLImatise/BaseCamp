@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_unique_names.cwl
+id: fasta_unique_names.cwl
 inputs:
 - id: in_copyright
   doc: (1999) The Regents of the University of California.

@@ -1,38 +1,17 @@
 class: CommandLineTool
-id: ../../../add_gff_info_cov_samtools.cwl
+id: add_gff_info_cov_samtools.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "-m, --average           if one or more samples are provided, the average\n\
+    coverage is calculated\n-s, --samples TEXT      Sample name, will add a `sample_cov`\
+    \ in the GFF\nfile. If not passed, the attribute will be `cov`\n-d, --depths TEXT\
+    \       `samtools depth -aa` file  [required]\n-n, --num-seqs INTEGER  Number\
+    \ of sequences to update the log. If 0, no\nmessage is logged  [default: 0]\n\
+    --progress              Shows Progress Bar\n--help                  Show this\
+    \ message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_average
-  doc: "if one or more samples are provided, the average\ncoverage is calculated"
-  type: boolean
-  inputBinding:
-    prefix: --average
-- id: in_samples
-  doc: "Sample name, will add a `sample_cov` in the GFF\nfile. If not passed, the\
-    \ attribute will be `cov`"
-  type: File
-  inputBinding:
-    prefix: --samples
-- id: in_depths
-  doc: '`samtools depth -aa` file  [required]'
-  type: File
-  inputBinding:
-    prefix: --depths
-- id: in_num_seqs
-  doc: "Number of sequences to update the log. If 0, no\nmessage is logged  [default:\
-    \ 0]"
-  type: long
-  inputBinding:
-    prefix: --num-seqs
-- id: in_progress
-  doc: Shows Progress Bar
-  type: boolean
-  inputBinding:
-    prefix: --progress
 - id: in_input_file
   doc: ''
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_normalize.cwl
+id: planemo_normalize.cwl
 inputs:
 - id: in_expand_macros
   doc: "Expand macros while normalizing tool XML - useful to see\nhow macros are evaluated."

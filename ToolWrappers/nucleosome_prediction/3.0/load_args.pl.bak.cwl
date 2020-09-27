@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../load_args.pl.bak.cwl
+id: load_args.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

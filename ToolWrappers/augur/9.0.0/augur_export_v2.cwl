@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_export_v2.cwl
+id: augur_export_v2.cwl
 inputs:
 - id: in_tree
   doc: Phylogenetic tree, usually output from `augur refine`

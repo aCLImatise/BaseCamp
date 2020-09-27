@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerFreq_AR.cwl
+id: KmerFreq_AR.cwl
 inputs:
 - id: in_set_kmer_size
   doc: "Set the kmer size, default=17.\nNote: when k=17, kmer theoretic number is\

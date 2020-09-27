@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lrztar.cwl
+id: lrztar.cwl
 inputs:
 - id: in_path_will_decompress_lrzip_tarball
   doc: ': <path1> will decompress a <path1> lrzip tarball to current directory.'

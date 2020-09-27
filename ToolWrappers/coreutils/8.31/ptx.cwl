@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptx.cwl
+id: ptx.cwl
 inputs:
 - id: in_auto_reference
   doc: output automatically generated references

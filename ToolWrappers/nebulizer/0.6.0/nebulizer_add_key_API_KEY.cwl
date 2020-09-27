@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_add_key_API_KEY.cwl
+id: nebulizer_add_key_API_KEY.cwl
 inputs:
 - id: in_nebulizer
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazOutputSort.pl.cwl
+id: rnazOutputSort.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

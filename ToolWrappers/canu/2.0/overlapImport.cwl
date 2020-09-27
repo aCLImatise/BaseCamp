@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapImport.cwl
+id: overlapImport.cwl
 inputs:
 - id: in_path_valid_sequence
   doc: path to valid sequence store

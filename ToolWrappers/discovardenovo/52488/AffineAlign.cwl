@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AffineAlign.cwl
+id: AffineAlign.cwl
 inputs:
 - id: in_arg_one
   doc: ''

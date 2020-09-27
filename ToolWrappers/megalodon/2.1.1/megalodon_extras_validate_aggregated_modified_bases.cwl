@@ -1,9 +1,13 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_validate_aggregated_modified_bases.cwl
+id: megalodon_extras_validate_aggregated_modified_bases.cwl
 inputs:
-- id: in_var_0
-  doc: ''
-  type: boolean
+- id: in_modified_bed_methyl_files
+  doc: "MODIFIED_BED_METHYL_FILES\n[MODIFIED_BED_METHYL_FILES ...]\n[--ground-truth-csvs\
+    \ GROUND_TRUTH_CSVS [GROUND_TRUTH_CSVS ...]]\n[--control-bed-methyl-files CONTROL_BED_METHYL_FILES\
+    \ [CONTROL_BED_METHYL_FILES ...]]\n[--valid-positions VALID_POSITIONS]\n[--coverage-threshold\
+    \ COVERAGE_THRESHOLD]\n[--strand-offset STRAND_OFFSET]\n[--allow-unbalance-classes]\n\
+    [--out-pdf OUT_PDF]\n[--out-filename OUT_FILENAME]"
+  type: File
   inputBinding:
     prefix: --modified-bed-methyl-files
 - id: in_ground_truth_csv_s
@@ -44,11 +48,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --out-pdf
-- id: in_var_8
-  doc: '[MODIFIED_BED_METHYL_FILES ...]'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_megalodon_agg_validation_dot_pdf
   doc: --out-filename OUT_FILENAME
   type: string
@@ -58,6 +57,15 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_modified_bed_methyl_files
+  doc: "MODIFIED_BED_METHYL_FILES\n[MODIFIED_BED_METHYL_FILES ...]\n[--ground-truth-csvs\
+    \ GROUND_TRUTH_CSVS [GROUND_TRUTH_CSVS ...]]\n[--control-bed-methyl-files CONTROL_BED_METHYL_FILES\
+    \ [CONTROL_BED_METHYL_FILES ...]]\n[--valid-positions VALID_POSITIONS]\n[--coverage-threshold\
+    \ COVERAGE_THRESHOLD]\n[--strand-offset STRAND_OFFSET]\n[--allow-unbalance-classes]\n\
+    [--out-pdf OUT_PDF]\n[--out-filename OUT_FILENAME]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_modified_bed_methyl_files)
 - id: out_out_pdf
   doc: 'Output pdf filename. Default:'
   type: File

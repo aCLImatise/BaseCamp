@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeqc.pl.cwl
+id: mergeqc.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

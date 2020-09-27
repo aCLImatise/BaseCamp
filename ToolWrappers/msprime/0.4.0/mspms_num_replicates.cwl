@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mspms_num_replicates.cwl
+id: mspms_num_replicates.cwl
 inputs:
 - id: in_trees
   doc: ''

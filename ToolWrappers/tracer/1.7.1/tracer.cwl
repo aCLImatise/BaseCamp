@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracer.cwl
+id: tracer.cwl
 inputs: []
 outputs:
 - id: out_stdout

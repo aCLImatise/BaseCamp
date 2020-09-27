@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitFile.cwl
+id: splitFile.cwl
 inputs:
 - id: in_head
   doc: '- put head in front of each output'

@@ -1,16 +1,9 @@
 version 1.0
 
 task Abyssdbtxt {
-  input {
-    String? e
-  }
   command <<<
-    abyss_db_txt \
-      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""}
+    abyss_db_txt
   >>>
-  parameter_meta {
-    e: ":"
-  }
   output {
     File out_stdout = stdout()
   }

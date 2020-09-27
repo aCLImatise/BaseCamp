@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nunit.framework.xml.cwl
+id: nunit.framework.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

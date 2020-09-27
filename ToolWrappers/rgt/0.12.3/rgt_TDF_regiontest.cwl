@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_TDF_regiontest.cwl
+id: rgt_TDF_regiontest.cwl
 inputs:
 - id: in_input_file_name
   doc: Input file name for RNA sequence (in fasta format)

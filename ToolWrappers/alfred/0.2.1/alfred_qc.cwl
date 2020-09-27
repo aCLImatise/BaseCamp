@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alfred_qc.cwl
+id: alfred_qc.cwl
 inputs:
 - id: in_arg_reference_fasta
   doc: '[ --reference ] arg   reference fasta file (required)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kp1mer_to_kmer.py.cwl
+id: kp1mer_to_kmer.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iTol.py.cwl
+id: iTol.py.cwl
 inputs:
 - id: in_otu_table
   doc: The biom-format file with OTU-Sample abundance data.

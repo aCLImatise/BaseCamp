@@ -37,7 +37,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: &id017 !Command
+  parent: &id019 !Command
     command: *id001
     positional: []
     named: []
@@ -73,7 +73,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: &id003 !Command
+      parent: &id017 !Command
         command: *id001
         positional: []
         named: []
@@ -109,7 +109,934 @@ subcommands:
             args: !SimpleFlagArg
               name: FILE
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: The input uc filepath.  [required]
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: The output BIOM filepath  [required]
+                synonyms:
+                - -o
+                - --output-fp
+                args: !SimpleFlagArg
+                  name: PATH
+                optional: true
+              - !Flag
+                description: "Fasta file containing representative sequences with\n\
+                  where sequences are labeled with OTU identifiers, and\ndescription\
+                  \ fields contain original sequence\nidentifiers. This output is\
+                  \ created, for example, by\nvsearch with the --relabel_sha1 --relabel_keep\n\
+                  options."
+                synonyms:
+                - --rep-set-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom from-uc [OPTIONS]\n\n  Create a BIOM table from\
+                \ a vsearch/uclust/usearch BIOM file.\n\n  Example usage:\n\n  Simple\
+                \ BIOM creation:\n\n  $ biom from-uc -i in.uc -o out.biom\n\n  BIOM\
+                \ creation with OTU re-naming:\n\n  $ biom from-uc -i in.uc -o out.biom\
+                \ --rep-set-fp rep-set.fna\n\nOptions:\n  -i, --input-fp FILE   The\
+                \ input uc filepath.  [required]\n  -o, --output-fp PATH  The output\
+                \ BIOM filepath  [required]\n  --rep-set-fp FILE     Fasta file containing\
+                \ representative sequences with\n                        where sequences\
+                \ are labeled with OTU identifiers, and\n                        description\
+                \ fields contain original sequence\n                        identifiers.\
+                \ This output is created, for example, by\n                      \
+                \  vsearch with the --relabel_sha1 --relabel_keep\n              \
+                \          options.\n  -h, --help            Show this message and\
+                \ exit.\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id006
+              - biom
+              - normalize-table
+              positional: []
+              named:
+              - !Flag
+                description: The input BIOM table  [required]
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: An output file-path
+                synonyms:
+                - -o
+                - --output-fp
+                args: !SimpleFlagArg
+                  name: PATH
+                optional: true
+              - !Flag
+                description: convert table to relative abundance
+                synonyms:
+                - -r
+                - --relative-abund
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: convert table to presence/absence
+                synonyms:
+                - -p
+                - --presence-absence
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[sample|observation]\nThe axis to normalize over"
+                synonyms:
+                - -a
+                - --axis
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom normalize-table [OPTIONS]\n\n  Normalize a BIOM\
+                \ table.\n\n  Normalize the values of a BIOM table through various\
+                \ methods. Relative\n  abundance will take the relative abundance\
+                \ of each observation in terms of\n  samples or observations.  Presence\
+                \ absensece will convert observations to\n  1's and 0's based on presence\
+                \ of the observation.\n\n  Example usage:\n\n  Normalizing a BIOM\
+                \ table to relative abundnace:\n\n  $ biom normalize-table -i table.biom\
+                \ -r -o normalized_table.biom\n\n  Converting a BIOM table to a presence/absence\
+                \ table:\n\n  $ biom normalize-table -i table.biom -p -o converted_table.biom\n\
+                \nOptions:\n  -i, --input-fp FILE             The input BIOM table\
+                \  [required]\n  -o, --output-fp PATH            An output file-path\n\
+                \  -r, --relative-abund            convert table to relative abundance\n\
+                \  -p, --presence-absence          convert table to presence/absence\n\
+                \  -a, --axis [sample|observation]\n                             \
+                \     The axis to normalize over\n  -h, --help                   \
+                \   Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - biom
+              - table-ids
+              positional: []
+              named:
+              - !Flag
+                description: The input BIOM table  [required]
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: Grab observation IDs
+                synonyms:
+                - --observations
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom table-ids [OPTIONS]\n\n  Dump IDs in a table.\n\
+                \n  Dump out the IDs found within a table:\n\n  Example usage:\n\n\
+                \  Get the sample IDs within a table:\n\n  $ biom table-ids -i table.biom\n\
+                \n  Get the observation IDs within a table:\n\n  $ biom table-ids\
+                \ -i table.biom --observations\n\nOptions:\n  -i, --input-fp FILE\
+                \  The input BIOM table  [required]\n  --observations       Grab observation\
+                \ IDs\n  -h, --help           Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - biom
+              - subset-table
+              positional: []
+              named:
+              - !Flag
+                description: the input hdf5 BIOM table filepath to subset
+                synonyms:
+                - -i
+                - --input-hdf5-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: the input json BIOM table filepath to subset
+                synonyms:
+                - -j
+                - --input-json-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "[sample|observation]\nthe axis to subset over, either\
+                  \ sample or\nobservation  [required]"
+                synonyms:
+                - -a
+                - --axis
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "a file containing a single column of IDs to\nretain\
+                  \ (either sample IDs or observation\nIDs, depending on the axis)\
+                  \  [required]"
+                synonyms:
+                - -s
+                - --ids
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: the output BIOM table filepath  [required]
+                synonyms:
+                - -o
+                - --output-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom subset-table [OPTIONS]\n\n  Subset a BIOM table.\n\
+                \n  Subset a BIOM table, over either observations or samples, without\
+                \ fully\n  parsing it. This command is intended to assist in working\
+                \ with very large\n  tables when tight on memory, or as a lightweight\
+                \ way to subset a full\n  table. Currently, it is possible to produce\
+                \ tables with rows or columns\n  (observations or samples) that are\
+                \ fully zeroed.\n\n  Example usage:\n\n  Choose a subset of the observations\
+                \ in table.biom (JSON) and write them to\n  subset.biom:\n\n  $ biom\
+                \ subset-table -j table.biom -a observations -s observation_ids.txt\n\
+                \  -o subset.biom\n\n  Choose a subset of the observations in table.biom\
+                \ (HDF5) and write them to\n  subset.biom:\n\n  $ biom subset-table\
+                \ -i table.biom -a observations -s observation_ids.txt\n  -o subset.biom\n\
+                \nOptions:\n  -i, --input-hdf5-fp FILE        the input hdf5 BIOM\
+                \ table filepath to subset\n  -j, --input-json-fp FILE        the\
+                \ input json BIOM table filepath to subset\n  -a, --axis [sample|observation]\n\
+                \                                  the axis to subset over, either\
+                \ sample or\n                                  observation  [required]\n\
+                \  -s, --ids FILE                  a file containing a single column\
+                \ of IDs to\n                                  retain (either sample\
+                \ IDs or observation\n                                  IDs, depending\
+                \ on the axis)  [required]\n  -o, --output-fp FILE            the\
+                \ output BIOM table filepath  [required]\n  -h, --help           \
+                \           Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - biom
+              - add-metadata
+              positional: []
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -m
+                args: !SimpleFlagArg
+                  name: sample_metadata.txt
+                optional: true
+              - !Flag
+                description: The input BIOM table  [required]
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: The output BIOM table  [required]
+                synonyms:
+                - -o
+                - --output-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "The sample metadata mapping file (will add\nsample metadata\
+                  \ to the input BIOM table, if\nprovided)."
+                synonyms:
+                - -m
+                - --sample-metadata-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "The observation metadata mapping file (will\nadd observation\
+                  \ metadata to the input BIOM\ntable, if provided)."
+                synonyms:
+                - --observation-metadata-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Comma-separated list of the metadata fields\nto split\
+                  \ on semicolons. This is useful for\nhierarchical data such as taxonomy\
+                  \ or\nfunctional categories."
+                synonyms:
+                - --sc-separated
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Comma-separated list of the metadata fields\nto split\
+                  \ on semicolons and pipes (\"|\"). This\nis useful for hierarchical\
+                  \ data such as\nfunctional categories with one-to-many\nmappings\
+                  \ (e.g. x;y;z|x;y;w))."
+                synonyms:
+                - --sc-pipe-separated
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Comma-separated list of the metadata fields\nto cast\
+                  \ to integers. This is useful for\ninteger data such as \"DaysSinceStart\"\
+                  ."
+                synonyms:
+                - --int-fields
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Comma-separated list of the metadata fields\nto cast\
+                  \ to floating point numbers. This is\nuseful for real number data\
+                  \ such as \"pH\"."
+                synonyms:
+                - --float-fields
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Comma-separated list of the sample metadata\nfield names.\
+                  \ This is useful if a header line\nis not provided with the metadata,\
+                  \ if you\nwant to rename the fields, or if you want to\ninclude\
+                  \ only the first n fields where n is\nthe number of entries provided\
+                  \ here."
+                synonyms:
+                - --sample-header
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Comma-separated list of the observation\nmetadata field\
+                  \ names. This is useful if a\nheader line is not provided with the\n\
+                  metadata, if you want to rename the fields,\nor if you want to include\
+                  \ only the first n\nfields where n is the number of entries\nprovided\
+                  \ here."
+                synonyms:
+                - --observation-header
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Write the output file in JSON format.
+                synonyms:
+                - --output-as-json
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom add-metadata [OPTIONS]\n\n  Add metadata to\
+                \ a BIOM table.\n\n  Add sample and/or observation metadata to BIOM-formatted\
+                \ files. See\n  examples here: http://biom-format.org/documentation/adding_metadata.html\n\
+                \n  Example usage:\n\n  Add sample metadata to a BIOM table:\n\n \
+                \ $ biom add-metadata -i otu_table.biom -o table_with_sample_metadata.biom\n\
+                \  -m sample_metadata.txt\n\nOptions:\n  -i, --input-fp FILE     \
+                \        The input BIOM table  [required]\n  -o, --output-fp FILE\
+                \            The output BIOM table  [required]\n  -m, --sample-metadata-fp\
+                \ FILE   The sample metadata mapping file (will add\n            \
+                \                      sample metadata to the input BIOM table, if\n\
+                \                                  provided).\n  --observation-metadata-fp\
+                \ FILE  The observation metadata mapping file (will\n            \
+                \                      add observation metadata to the input BIOM\n\
+                \                                  table, if provided).\n  --sc-separated\
+                \ TEXT             Comma-separated list of the metadata fields\n \
+                \                                 to split on semicolons. This is\
+                \ useful for\n                                  hierarchical data\
+                \ such as taxonomy or\n                                  functional\
+                \ categories.\n  --sc-pipe-separated TEXT        Comma-separated list\
+                \ of the metadata fields\n                                  to split\
+                \ on semicolons and pipes (\"|\"). This\n                        \
+                \          is useful for hierarchical data such as\n             \
+                \                     functional categories with one-to-many\n   \
+                \                               mappings (e.g. x;y;z|x;y;w)).\n  --int-fields\
+                \ TEXT               Comma-separated list of the metadata fields\n\
+                \                                  to cast to integers. This is useful\
+                \ for\n                                  integer data such as \"DaysSinceStart\"\
+                .\n  --float-fields TEXT             Comma-separated list of the metadata\
+                \ fields\n                                  to cast to floating point\
+                \ numbers. This is\n                                  useful for real\
+                \ number data such as \"pH\".\n  --sample-header TEXT            Comma-separated\
+                \ list of the sample metadata\n                                  field\
+                \ names. This is useful if a header line\n                       \
+                \           is not provided with the metadata, if you\n          \
+                \                        want to rename the fields, or if you want\
+                \ to\n                                  include only the first n fields\
+                \ where n is\n                                  the number of entries\
+                \ provided here.\n  --observation-header TEXT       Comma-separated\
+                \ list of the observation\n                                  metadata\
+                \ field names. This is useful if a\n                             \
+                \     header line is not provided with the\n                     \
+                \             metadata, if you want to rename the fields,\n      \
+                \                            or if you want to include only the first\
+                \ n\n                                  fields where n is the number\
+                \ of entries\n                                  provided here.\n \
+                \ --output-as-json                Write the output file in JSON format.\n\
+                \  -h, --help                      Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - biom
+              - convert
+              positional:
+              - !Positional
+                description: 'Example usage:'
+                position: 0
+                name: format.org/documentation/biom_conversion.html
+                optional: false
+              named:
+              - !Flag
+                description: The input BIOM table  [required]
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: The output BIOM table  [required]
+                synonyms:
+                - -o
+                - --output-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "The sample metadata mapping file (will add\nsample metadata\
+                  \ to the input BIOM table, if\nprovided)."
+                synonyms:
+                - -m
+                - --sample-metadata-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "The observation metadata mapping file (will\nadd observation\
+                  \ metadata to the input BIOM\ntable, if provided)."
+                synonyms:
+                - --observation-metadata-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: Output as JSON-formatted table.
+                synonyms:
+                - --to-json
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Output as HDF5-formatted table.
+                synonyms:
+                - --to-hdf5
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Output as TSV-formatted (classic) table.
+                synonyms:
+                - --to-tsv
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "If --to_hdf5 is passed and the original\ntable is a\
+                  \ BIOM table with collapsed\nsamples, this will update the sample\n\
+                  metadata of the table to the supported HDF5\ncollapsed format."
+                synonyms:
+                - --collapsed-samples
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "If --to_hdf5 is passed and the original\ntable is a\
+                  \ BIOM table with collapsed\nobservations, this will update the\n\
+                  observation metadata of the table to the\nsupported HDF5 collapsed\
+                  \ format."
+                synonyms:
+                - --collapsed-observations
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "The observation metadata to include from the\ninput\
+                  \ BIOM table file when creating a tsv\ntable file. By default no\
+                  \ observation\nmetadata will be included."
+                synonyms:
+                - --header-key
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "The name to be given to the observation\nmetadata column\
+                  \ when creating a tsv table\nfile if the column should be renamed."
+                synonyms:
+                - --output-metadata-id
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "[OTU table|Pathway table|Function table|Ortholog table|Gene\
+                  \ table|Metabolite table|Taxon table|Table]\nThe type of the table."
+                synonyms:
+                - --table-type
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[taxonomy|naive|sc_separated]\nProcess metadata associated\
+                  \ with\nobservations when converting from a classic\ntable."
+                synonyms:
+                - --process-obs-metadata
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[naive|sc_separated]\nMethod for formatting the observation\n\
+                  metadata."
+                synonyms:
+                - --tsv-metadata-formatter
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom convert [OPTIONS]\n\n  Convert to/from the BIOM\
+                \ table format.\n\n  Convert between BIOM table formats. See examples\
+                \ here: http://biom-\n  format.org/documentation/biom_conversion.html\n\
+                \n  Example usage:\n\n  Convert a \"classic\" BIOM file (tab-separated\
+                \ text) to an HDF5 BIOM\n  formatted OTU table:\n\n  $ biom convert\
+                \ -i table.txt -o table.biom --to-hdf5\n\nOptions:\n  -i, --input-fp\
+                \ FILE             The input BIOM table  [required]\n  -o, --output-fp\
+                \ FILE            The output BIOM table  [required]\n  -m, --sample-metadata-fp\
+                \ FILE   The sample metadata mapping file (will add\n            \
+                \                      sample metadata to the input BIOM table, if\n\
+                \                                  provided).\n  --observation-metadata-fp\
+                \ FILE  The observation metadata mapping file (will\n            \
+                \                      add observation metadata to the input BIOM\n\
+                \                                  table, if provided).\n  --to-json\
+                \                       Output as JSON-formatted table.\n  --to-hdf5\
+                \                       Output as HDF5-formatted table.\n  --to-tsv\
+                \                        Output as TSV-formatted (classic) table.\n\
+                \  --collapsed-samples             If --to_hdf5 is passed and the\
+                \ original\n                                  table is a BIOM table\
+                \ with collapsed\n                                  samples, this\
+                \ will update the sample\n                                  metadata\
+                \ of the table to the supported HDF5\n                           \
+                \       collapsed format.\n  --collapsed-observations        If --to_hdf5\
+                \ is passed and the original\n                                  table\
+                \ is a BIOM table with collapsed\n                               \
+                \   observations, this will update the\n                         \
+                \         observation metadata of the table to the\n             \
+                \                     supported HDF5 collapsed format.\n  --header-key\
+                \ TEXT               The observation metadata to include from the\n\
+                \                                  input BIOM table file when creating\
+                \ a tsv\n                                  table file. By default\
+                \ no observation\n                                  metadata will\
+                \ be included.\n  --output-metadata-id TEXT       The name to be given\
+                \ to the observation\n                                  metadata column\
+                \ when creating a tsv table\n                                  file\
+                \ if the column should be renamed.\n  --table-type [OTU table|Pathway\
+                \ table|Function table|Ortholog table|Gene table|Metabolite table|Taxon\
+                \ table|Table]\n                                  The type of the\
+                \ table.\n  --process-obs-metadata [taxonomy|naive|sc_separated]\n\
+                \                                  Process metadata associated with\n\
+                \                                  observations when converting from\
+                \ a classic\n                                  table.\n  --tsv-metadata-formatter\
+                \ [naive|sc_separated]\n                                  Method for\
+                \ formatting the observation\n                                  metadata.\n\
+                \  -h, --help                      Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id011
+              - biom
+              - head
+              positional: []
+              named:
+              - !Flag
+                description: The input BIOM table  [required]
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: An output file-path
+                synonyms:
+                - -o
+                - --output-fp
+                args: !SimpleFlagArg
+                  name: PATH
+                optional: true
+              - !Flag
+                description: The number of observations to show
+                synonyms:
+                - -n
+                - --n-obs
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: The number of samples to show
+                synonyms:
+                - -m
+                - --n-samp
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom head [OPTIONS]\n\n  Dump the first bit of a\
+                \ table.\n\n  Example usage:\n\n  Print out the upper left corner\
+                \ of a BIOM table to standard out:\n\n  $ biom head -i table.biom\n\
+                \nOptions:\n  -i, --input-fp FILE   The input BIOM table  [required]\n\
+                \  -o, --output-fp PATH  An output file-path\n  -n, --n-obs INTEGER\
+                \   The number of observations to show\n  -m, --n-samp INTEGER  The\
+                \ number of samples to show\n  -h, --help            Show this message\
+                \ and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id012
+              - biom
+              - summarize-table
+              positional:
+              - !Positional
+                description: 'Example usage:'
+                position: 0
+                name: observations.
+                optional: false
+              named:
+              - !Flag
+                description: The input BIOM table  [required]
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: An output file-path
+                synonyms:
+                - -o
+                - --output-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: "Present counts as number of unique observation ids per\n\
+                  sample, rather than counts of observations per sample."
+                synonyms:
+                - --qualitative
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Summarize over observations
+                synonyms:
+                - --observations
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom summarize-table [OPTIONS]\n\n  Summarize sample\
+                \ or observation data in a BIOM table.\n\n  Provides details on the\
+                \ observation counts per sample, including summary\n  statistics,\
+                \ as well as metadata categories associated with samples and\n  observations.\n\
+                \n  Example usage:\n\n  Write a summary of table.biom to table_summary.txt:\n\
+                \n  $ biom summarize-table -i table.biom -o table_summary.txt\n\n\
+                Options:\n  -i, --input-fp FILE   The input BIOM table  [required]\n\
+                \  -o, --output-fp FILE  An output file-path\n  --qualitative    \
+                \     Present counts as number of unique observation ids per\n   \
+                \                     sample, rather than counts of observations per\
+                \ sample.\n  --observations        Summarize over observations\n \
+                \ -h, --help            Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id013
+              - biom
+              - validate-table
+              positional:
+              - !Positional
+                description: 'Example usage:'
+                position: 0
+                name: format.org
+                optional: false
+              - !Positional
+                description: $ biom validate-table -i table.biom
+                position: 0
+                name: specification
+                optional: false
+              named:
+              - !Flag
+                description: "The input filpath to validate against the BIOM\nformat\
+                  \ specification  [required]"
+                synonyms:
+                - -i
+                - --input-fp
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: The specific format version to validate against
+                synonyms:
+                - -f
+                - --format-version
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Include more details in the output report
+                synonyms:
+                - --detailed-report
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom validate-table [OPTIONS]\n\n  Validate a BIOM-formatted\
+                \ file.\n\n  Test a file for adherence to the Biological Observation\
+                \ Matrix (BIOM)\n  format specification. This specification is defined\
+                \ at http://biom-\n  format.org\n\n  Example usage:\n\n  Validate\
+                \ the contents of table.biom for adherence to the BIOM format\n  specification\n\
+                \n  $ biom validate-table -i table.biom\n\nOptions:\n  -i, --input-fp\
+                \ FILE        The input filpath to validate against the BIOM\n   \
+                \                          format specification  [required]\n  -f,\
+                \ --format-version TEXT  The specific format version to validate against\n\
+                \  --detailed-report          Include more details in the output report\n\
+                \  -h, --help                 Show this message and exit.\n"
+              generated_using: *id004
+            - &id005 !Command
+              command: &id014
+              - biom
+              - show-install-info
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id015
+                - biom
+                - show-install-info
+                - format.org
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: biom
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: show-install-info
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "/usr/local/lib/python2.7/site-packages/pandas/_libs/__init__.py:4:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from .tslib import iNaT,\
+                  \ NaT, Timestamp, Timedelta, OutOfBoundsDatetime\n/usr/local/lib/python2.7/site-packages/pandas/__init__.py:26:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ (hashtable as _hashtable,\n/usr/local/lib/python2.7/site-packages/pandas/core/dtypes/common.py:6:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ algos, lib\n/usr/local/lib/python2.7/site-packages/pandas/core/util/hashing.py:7:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ hashing, tslib\n/usr/local/lib/python2.7/site-packages/pandas/core/indexes/base.py:7:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ (lib, index as libindex, tslib as libts,\n/usr/local/lib/python2.7/site-packages/pandas/tseries/offsets.py:21:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  import pandas._libs.tslibs.offsets\
+                  \ as liboffsets\n/usr/local/lib/python2.7/site-packages/pandas/core/ops.py:16:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ algos as libalgos, ops as libops\n/usr/local/lib/python2.7/site-packages/pandas/core/indexes/interval.py:32:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs.interval\
+                  \ import (\n/usr/local/lib/python2.7/site-packages/pandas/core/internals.py:14:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ internals as libinternals\n/usr/local/lib/python2.7/site-packages/pandas/core/sparse/array.py:33:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  import pandas._libs.sparse\
+                  \ as splib\n/usr/local/lib/python2.7/site-packages/pandas/core/window.py:36:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  import pandas._libs.window\
+                  \ as _window\n/usr/local/lib/python2.7/site-packages/pandas/core/groupby/groupby.py:68:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ (lib, reduction,\n/usr/local/lib/python2.7/site-packages/pandas/core/reshape/reshape.py:30:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ algos as _algos, reshape as _reshape\n/usr/local/lib/python2.7/site-packages/pandas/io/parsers.py:45:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  import pandas._libs.parsers\
+                  \ as parsers\n/usr/local/lib/python2.7/site-packages/pandas/io/pytables.py:50:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from pandas._libs import\
+                  \ algos, lib, writers as libwriters\n/usr/local/lib/python2.7/site-packages/h5py/__init__.py:36:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from ._conv import register_converters\
+                  \ as _register_converters\n/usr/local/lib/python2.7/site-packages/h5py/__init__.py:45:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from . import h5a, h5d,\
+                  \ h5ds, h5f, h5fd, h5g, h5r, h5s, h5t, h5p, h5z\n/usr/local/lib/python2.7/site-packages/h5py/_hl/group.py:22:\
+                  \ RuntimeWarning: numpy.dtype size changed, may indicate binary\
+                  \ incompatibility. Expected 96, got 88\n  from .. import h5g, h5i,\
+                  \ h5o, h5r, h5t, h5l, h5p\nUsage: biom show-install-info [OPTIONS]\n\
+                  Try \"biom show-install-info -h\" for help.\n\nError: Got unexpected\
+                  \ extra argument (format.org)\n"
+                generated_using: &id016 []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: biom show-install-info [OPTIONS]\n\n  Provide information\
+                \ about the biom-format installation.\n\n  Provide information about\
+                \ the biom-format installation, including settings\n  pulled from\
+                \ the configuration file. For more details, see http://biom-\n  format.org\n\
+                \n  Example usage:\n\n  Display biom-format installation information:\n\
+                \n  $ biom show-install-info\n\nOptions:\n  -h, --help  Show this\
+                \ message and exit.\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: Show this message and exit.
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: Show the version and exit.
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "Usage: biom [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --version\
+              \   Show the version and exit.\n  -h, --help  Show this message and\
+              \ exit.\n\nCommands:\n  add-metadata       Add metadata to a BIOM table.\n\
+              \  convert            Convert to/from the BIOM table format.\n  from-uc\
+              \            Create a BIOM table from a vsearch/uclust/usearch BIOM...\n\
+              \  head               Dump the first bit of a table.\n  normalize-table\
+              \    Normalize a BIOM table.\n  show-install-info  Provide information\
+              \ about the biom-format installation.\n  subset-table       Subset a\
+              \ BIOM table.\n  summarize-table    Summarize sample or observation\
+              \ data in a BIOM table.\n  table-ids          Dump IDs in a table.\n\
+              \  validate-table     Validate a BIOM-formatted file.\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -134,12 +1061,9 @@ subcommands:
             \ by\n                        vsearch with the --relabel_sha1 --relabel_keep\n\
             \                        options.\n  -h, --help            Show this message\
             \ and exit.\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id006
-          - biom
-          - normalize-table
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -208,9 +1132,7 @@ subcommands:
             \                      Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - biom
-          - table-ids
+          command: *id007
           positional: []
           named:
           - !Flag
@@ -248,11 +1170,18 @@ subcommands:
             \           Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - biom
-          - subset-table
+          command: *id008
           positional: []
           named:
+          - !Flag
+            description: "Choose a subset of the observations in table.biom (HDF5)\
+              \ and write them to\nsubset.biom:\n$ biom subset-table -i table.biom\
+              \ -a observations -s observation_ids.txt\n-o subset.biom"
+            synonyms:
+            - -o
+            args: !SimpleFlagArg
+              name: subset.biom
+            optional: true
           - !Flag
             description: the input hdf5 BIOM table filepath to subset
             synonyms:
@@ -330,18 +1259,9 @@ subcommands:
             \ this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - biom
-          - add-metadata
+          command: *id009
           positional: []
           named:
-          - !Flag
-            description: ''
-            synonyms:
-            - -m
-            args: !SimpleFlagArg
-              name: sample_metadata.txt
-            optional: true
           - !Flag
             description: The input BIOM table  [required]
             synonyms:
@@ -498,9 +1418,7 @@ subcommands:
             \ and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id010
-          - biom
-          - convert
+          command: *id010
           positional:
           - !Positional
             description: 'Example usage:'
@@ -670,9 +1588,7 @@ subcommands:
             \ --help                      Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id011
-          - biom
-          - head
+          command: *id011
           positional: []
           named:
           - !Flag
@@ -728,9 +1644,7 @@ subcommands:
             \ --help            Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id012
-          - biom
-          - summarize-table
+          command: *id012
           positional:
           - !Positional
             description: 'Example usage:'
@@ -793,9 +1707,7 @@ subcommands:
             \ and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id013
-          - biom
-          - validate-table
+          command: *id013
           positional:
           - !Positional
             description: 'Example usage:'
@@ -855,19 +1767,14 @@ subcommands:
             \ in the output report\n  -h, --help                 Show this message\
             \ and exit.\n"
           generated_using: *id004
-        - &id005 !Command
-          command: &id014
-          - biom
-          - show-install-info
+        - &id018 !Command
+          command: *id014
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id015
-            - biom
-            - show-install-info
-            - format.org
+            command: *id015
             positional:
             - !Positional
               description: ''
@@ -936,15 +1843,9 @@ subcommands:
               \ Expected 96, got 88\n  from .. import h5g, h5i, h5o, h5r, h5t, h5l,\
               \ h5p\nUsage: biom show-install-info [OPTIONS]\nTry \"biom show-install-info\
               \ -h\" for help.\n\nError: Got unexpected extra argument (format.org)\n"
-            generated_using: &id016 []
+            generated_using: *id016
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: biom show-install-info [OPTIONS]\n\n  Provide information\
@@ -955,20 +1856,9 @@ subcommands:
             \ show-install-info\n\nOptions:\n  -h, --help  Show this message and exit.\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Show this message and exit.
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Show the version and exit.
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "Usage: biom [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --version\
           \   Show the version and exit.\n  -h, --help  Show this message and exit.\n\
           \nCommands:\n  add-metadata       Add metadata to a BIOM table.\n  convert\
@@ -1046,7 +1936,7 @@ subcommands:
         - --axis
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1092,7 +1982,7 @@ subcommands:
         - --observations
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1166,7 +2056,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1297,7 +2187,7 @@ subcommands:
         - --output-as-json
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1467,7 +2357,7 @@ subcommands:
         - --tsv-metadata-formatter
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1557,7 +2447,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INTEGER
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1615,7 +2505,7 @@ subcommands:
         - --observations
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1676,7 +2566,7 @@ subcommands:
         - --detailed-report
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1699,11 +2589,11 @@ subcommands:
         \ validate against\n  --detailed-report          Include more details in the\
         \ output report\n  -h, --help                 Show this message and exit.\n"
       generated_using: *id004
-    - &id018 !Command
+    - &id020 !Command
       command: *id014
       positional: []
       named: []
-      parent: *id003
+      parent: *id017
       subcommands:
       - !Command
         command: *id015
@@ -1719,7 +2609,7 @@ subcommands:
           name: show-install-info
           optional: false
         named: []
-        parent: *id005
+        parent: *id018
         subcommands: []
         usage: []
         help_flag:
@@ -1866,7 +2756,7 @@ subcommands:
     - --axis
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1911,7 +2801,7 @@ subcommands:
     - --observations
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1984,7 +2874,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2113,7 +3003,7 @@ subcommands:
     - --output-as-json
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2281,7 +3171,7 @@ subcommands:
     - --tsv-metadata-formatter
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2368,7 +3258,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2426,7 +3316,7 @@ subcommands:
     - --observations
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2486,7 +3376,7 @@ subcommands:
     - --detailed-report
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2513,7 +3403,7 @@ subcommands:
   command: *id014
   positional: []
   named: []
-  parent: *id017
+  parent: *id019
   subcommands:
   - !Command
     command: *id015
@@ -2529,7 +3419,7 @@ subcommands:
       name: show-install-info
       optional: false
     named: []
-    parent: *id018
+    parent: *id020
     subcommands: []
     usage: []
     help_flag:

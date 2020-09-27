@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../geneAssociationZscore.py.cwl
+id: geneAssociationZscore.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

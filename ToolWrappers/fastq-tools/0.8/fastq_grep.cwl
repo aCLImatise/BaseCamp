@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_grep.cwl
+id: fastq_grep.cwl
 inputs:
 - id: in_id
   doc: match the read id (by default, sequence is matched)

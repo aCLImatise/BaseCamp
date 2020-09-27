@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmap_build.cwl
+id: gmap_build.cwl
 inputs:
 - id: in_dir
   doc: "Destination directory for installation (defaults to gmapdb\ndirectory specified\

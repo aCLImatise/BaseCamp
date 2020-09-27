@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refseqsplit.py.cwl
+id: refseqsplit.py.cwl
 inputs:
 - id: in_file
   doc: read from FILE

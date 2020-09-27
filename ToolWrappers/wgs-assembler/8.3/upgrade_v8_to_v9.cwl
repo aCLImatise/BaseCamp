@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../upgrade_v8_to_v9.cwl
+id: upgrade_v8_to_v9.cwl
 inputs: []
 outputs:
 - id: out_stdout

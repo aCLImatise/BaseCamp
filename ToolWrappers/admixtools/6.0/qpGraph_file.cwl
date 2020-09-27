@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpGraph_file.cwl
+id: qpGraph_file.cwl
 inputs:
 - id: in_bad
   doc: ''

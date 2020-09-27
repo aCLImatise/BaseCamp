@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_gen_stats_for_single_copy_genes.py.cwl
+id: anvi_script_gen_stats_for_single_copy_genes.py.cwl
 inputs:
 - id: in_list_sources
   doc: Show available single-copy gene search results and exit.

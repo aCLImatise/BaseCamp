@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wellington_bootstrap.py.cwl
+id: wellington_bootstrap.py.cwl
 inputs:
 - id: in_footprint_sizes
   doc: "Range of footprint sizes to try in format\n\"from,to,step\" (default: 11,26,2)"

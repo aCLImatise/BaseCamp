@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augment_bam.cwl
+id: augment_bam.cwl
 inputs:
 - id: in_augment_output_records
   doc: Augment output records with original fields from FILE (required)

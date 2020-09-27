@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_fasta_from_fastg.py.cwl
+id: make_fasta_from_fastg.py.cwl
 inputs:
 - id: in_graph
   doc: "(spades 3.50+) FASTG file to process [recommended:\nbefore_rr.fastg]"

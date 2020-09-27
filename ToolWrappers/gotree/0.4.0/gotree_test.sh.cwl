@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_test.sh.cwl
+id: gotree_test.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

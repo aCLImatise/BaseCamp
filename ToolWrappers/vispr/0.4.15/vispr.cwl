@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vispr.cwl
+id: vispr.cwl
 inputs:
 - id: in_debug
   doc: Print debug info.

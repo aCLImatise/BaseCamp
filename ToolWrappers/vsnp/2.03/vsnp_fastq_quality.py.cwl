@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_fastq_quality.py.cwl
+id: vsnp_fastq_quality.py.cwl
 inputs:
 - id: in_read_one
   doc: 'Required: single read, R1 if Illumina read'

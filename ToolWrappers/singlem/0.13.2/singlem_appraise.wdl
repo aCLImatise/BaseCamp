@@ -15,7 +15,7 @@ task SinglemAppraise {
       ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
-    meta_genome_otu_tables: ""
+    meta_genome_otu_tables: "[--genome_otu_tables GENOME_OTU_TABLES [GENOME_OTU_TABLES ...]]\\n[--assembly_otu_tables ASSEMBLY_OTU_TABLES [ASSEMBLY_OTU_TABLES ...]]\\n[--imperfect] [--sequence_identity SEQUENCE_IDENTITY]\\n[--plot PLOT] [--plot_marker PLOT_MARKER]\\n[--plot_basename PLOT_BASENAME]\\n[--output_binned_otu_table OUTPUT_BINNED_OTU_TABLE]\\n[--output_unbinned_otu_table OUTPUT_UNBINNED_OTU_TABLE]\\n[--output_assembled_otu_table OUTPUT_ASSEMBLED_OTU_TABLE]\\n[--output_unaccounted_for_otu_table OUTPUT_UNACCOUNTED_FOR_OTU_TABLE]"
     full_help: ""
     quiet: ""
     debug: ""

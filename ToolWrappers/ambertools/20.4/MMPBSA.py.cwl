@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MMPBSA.py.cwl
+id: MMPBSA.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AMAS.py_command.cwl
+id: AMAS.py_command.cwl
 inputs:
 - id: in_concat
   doc: Concatenate input alignments

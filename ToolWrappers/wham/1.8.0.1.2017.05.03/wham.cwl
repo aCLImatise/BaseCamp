@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wham.cwl
+id: wham.cwl
 inputs:
 - id: in_if
   doc: find a bug, please open a report on github!

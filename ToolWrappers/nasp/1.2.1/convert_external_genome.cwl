@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_external_genome.cwl
+id: convert_external_genome.cwl
 inputs:
 - id: in_nuc_me_rpath
   doc: Path to the 'nucmer' executable.

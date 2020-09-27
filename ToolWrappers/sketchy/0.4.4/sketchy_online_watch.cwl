@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_online_watch.cwl
+id: sketchy_online_watch.cwl
 inputs:
 - id: in_directory
   doc: Path to directory to watch [required]  [required]

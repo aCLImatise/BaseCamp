@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffutils_cli_rmdups.cwl
+id: gffutils_cli_rmdups.cwl
 inputs:
 - id: in_in_place
   doc: "Remove duplicates in place (overwrite current file.) (default:\nFalse)\n"

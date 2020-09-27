@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../call_program.py.cwl
+id: call_program.py.cwl
 inputs:
 - id: in_cmd
   doc: 'optional arguments:'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamfilterflags.cwl
+id: bamfilterflags.cwl
 inputs: []
 outputs:
 - id: out_stdout

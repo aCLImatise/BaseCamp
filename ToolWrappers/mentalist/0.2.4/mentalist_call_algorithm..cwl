@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mentalist_call_algorithm..cwl
+id: mentalist_call_algorithm..cwl
 inputs:
 - id: in_kt
   doc: ''

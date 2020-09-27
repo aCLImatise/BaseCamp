@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_super_locus.pl.cwl
+id: make_super_locus.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

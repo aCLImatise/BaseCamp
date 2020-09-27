@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sciex.FMan.dll.cwl
+id: Sciex.FMan.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

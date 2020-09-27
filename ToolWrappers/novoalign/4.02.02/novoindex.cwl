@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoindex.cwl
+id: novoindex.cwl
 inputs:
 - id: in_kmer_length_used
   doc: 99        is the k-mer length to be used for the index. Typically 14.

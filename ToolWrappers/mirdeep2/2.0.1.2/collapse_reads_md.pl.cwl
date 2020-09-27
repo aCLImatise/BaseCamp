@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collapse_reads_md.pl.cwl
+id: collapse_reads_md.pl.cwl
 inputs:
 - id: in_outputs_progress
   doc: outputs progress

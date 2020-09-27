@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msgfplus_search.rb.cwl
+id: msgfplus_search.rb.cwl
 inputs:
 - id: in_replace_output
   doc: Dont skip analyses for which the output file already exists [false]
@@ -103,11 +103,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --decoy-search
-- id: in_protocol
-  doc: '0: NoProtocol (Default), 1: Phosphorylation, 2: iTRAQ, 3: iTRAQPhospho [0]'
-  type: long
-  inputBinding:
-    prefix: --protocol
 - id: in_min_pep_length
   doc: Minimum peptide length to consider [6]
   type: long

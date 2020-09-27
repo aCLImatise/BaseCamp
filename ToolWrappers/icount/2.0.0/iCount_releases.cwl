@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_releases.cwl
+id: iCount_releases.cwl
 inputs:
 - id: in__stdoutlog_threshold
   doc: ', --stdout_log     Threshold value (0-50) for logging to stdout. If 0, logging

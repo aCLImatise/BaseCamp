@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isoseq3_collapse.cwl
+id: isoseq3_collapse.cwl
 inputs:
 - id: in_min_aln_coverage
   doc: FLOAT  Ignore alignments with less than minimum query read coverage. [0.99]

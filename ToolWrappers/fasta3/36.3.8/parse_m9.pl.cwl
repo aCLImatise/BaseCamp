@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_m9.pl.cwl
+id: parse_m9.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

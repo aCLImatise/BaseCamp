@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count2huge.pl.cwl
+id: count2huge.pl.cwl
 inputs:
 - id: in_split
   doc: "Split the bigrams list into smaller pieces. Each file has\nN bigrams. N is\

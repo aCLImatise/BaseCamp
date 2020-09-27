@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_common_fragment_interactions.pl.cwl
+id: find_common_fragment_interactions.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

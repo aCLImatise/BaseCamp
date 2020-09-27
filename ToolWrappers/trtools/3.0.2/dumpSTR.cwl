@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpSTR.cwl
+id: dumpSTR.cwl
 inputs:
 - id: in_vcf
   doc: Input STR VCF file

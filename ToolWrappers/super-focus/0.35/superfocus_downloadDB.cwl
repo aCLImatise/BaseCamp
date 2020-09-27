@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../superfocus_downloadDB.cwl
+id: superfocus_downloadDB.cwl
 inputs:
 - id: in_aligner
   doc: Aligner name separed by ',' if more than one

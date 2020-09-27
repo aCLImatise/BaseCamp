@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cds_trainer.pl.cwl
+id: cds_trainer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

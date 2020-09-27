@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocess_novoalign.sh.cwl
+id: preprocess_novoalign.sh.cwl
 inputs:
 - id: in_output_bam
   doc: output BAM

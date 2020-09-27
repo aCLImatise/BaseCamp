@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_target_https_proxies.cwl
+id: gcloud_compute_target_https_proxies.cwl
 inputs:
 - id: in_proxies
   doc: SYNOPSIS

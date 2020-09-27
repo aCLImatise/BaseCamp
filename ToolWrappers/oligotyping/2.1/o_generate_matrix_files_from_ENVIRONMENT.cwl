@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_generate_matrix_files_from_ENVIRONMENT.cwl
+id: o_generate_matrix_files_from_ENVIRONMENT.cwl
 inputs: []
 outputs:
 - id: out_stdout

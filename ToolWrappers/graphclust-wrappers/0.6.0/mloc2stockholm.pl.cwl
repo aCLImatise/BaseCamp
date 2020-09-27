@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mloc2stockholm.pl.cwl
+id: mloc2stockholm.pl.cwl
 inputs:
 - id: in_file
   doc: '[MANDATORY]     File to convert into stockholm format'

@@ -3,7 +3,6 @@ version 1.0
 task Alimask {
   input {
     File? direct_summary_output
-    Int? xxx
     String? model_range
     String? ali_range
     Boolean? ap_end_mask
@@ -34,7 +33,6 @@ task Alimask {
       ~{msa_file} \
       ~{post_msa_file} \
       ~{if defined(direct_summary_output) then ("-o " +  '"' + direct_summary_output + '"') else ""} \
-      ~{if defined(xxx) then ("--xxx " +  '"' + xxx + '"') else ""} \
       ~{if defined(model_range) then ("--modelrange " +  '"' + model_range + '"') else ""} \
       ~{if defined(ali_range) then ("--alirange " +  '"' + ali_range + '"') else ""} \
       ~{if (ap_end_mask) then "--apendmask" else ""} \
@@ -60,7 +58,6 @@ task Alimask {
   >>>
   parameter_meta {
     direct_summary_output: ": direct summary output to file <f>, not stdout"
-    xxx: ",30-40 ) :"
     model_range: ": range(s) for mask(s) in model coordinates"
     ali_range: ": range(s) for mask(s) in alignment coordinates"
     ap_end_mask: ": add to existing mask (default ignores to existing mask)"

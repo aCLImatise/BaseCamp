@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gifrop_plots.R.cwl
+id: gifrop_plots.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

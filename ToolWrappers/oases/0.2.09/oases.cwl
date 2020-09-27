@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oases.cwl
+id: oases.cwl
 inputs:
 - id: in_citation
   doc: ': print citation to Oases manuscript and exit'

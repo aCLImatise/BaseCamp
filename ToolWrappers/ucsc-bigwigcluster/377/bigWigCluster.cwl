@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigWigCluster.cwl
+id: bigWigCluster.cwl
 inputs: []
 outputs:
 - id: out_stdout

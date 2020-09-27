@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_kmer_distribution.py.cwl
+id: generate_kmer_distribution.py.cwl
 inputs:
 - id: in_input
   doc: "Kraken counts file for each genome mapped to the\noverall database."

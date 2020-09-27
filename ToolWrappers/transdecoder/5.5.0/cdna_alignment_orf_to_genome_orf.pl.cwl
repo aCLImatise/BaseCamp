@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cdna_alignment_orf_to_genome_orf.pl.cwl
+id: cdna_alignment_orf_to_genome_orf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

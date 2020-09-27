@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucleoatac_run.cwl
+id: nucleoatac_run.cwl
 inputs:
 - id: in_fast_a
   doc: '[--pwm Tn5_PWM] [--cores num_cores]'

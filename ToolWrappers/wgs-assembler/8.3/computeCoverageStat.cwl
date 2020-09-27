@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../computeCoverageStat.cwl
+id: computeCoverageStat.cwl
 inputs:
 - id: in_mandatory_path_g
   doc: Mandatory, path G to a gkpStore directory.

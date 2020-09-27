@@ -1,28 +1,28 @@
 class: CommandLineTool
-id: ../../../qcat_eval_truth.cwl
+id: qcat_eval_truth.cwl
 inputs:
-- id: in_tsv
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --tsv
-- id: in_name
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --name
-- id: in_genomes
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --genomes
 - id: in_max
   doc: ''
   type: long
   inputBinding:
     prefix: --max
+- id: in_g
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -g
+- id: in_n
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -n
+- id: in_t
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -t
 - id: in_fast_q
-  doc: 'optional arguments:'
+  doc: ''
   type: string
   inputBinding:
     position: 0

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filteroriginalfusion.cwl
+id: filteroriginalfusion.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_display_pan.cwl
+id: anvi_display_pan.cwl
 inputs:
 - id: in_pan_db
   doc: Anvi'o pan database

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioruby.cwl
+id: bioruby.cwl
 inputs: []
 outputs:
 - id: out_stdout

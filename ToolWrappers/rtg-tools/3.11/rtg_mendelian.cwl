@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_mendelian.cwl
+id: rtg_mendelian.cwl
 inputs:
 - id: in_input
   doc: "VCF file containing multi-sample variant\ncalls. Use '-' to read from standard\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_merge.cwl
+id: bcftools_merge.cwl
 inputs:
 - id: in_force_samples
   doc: resolve duplicate sample names

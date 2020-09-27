@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Antisense.py.cwl
+id: Antisense.py.cwl
 inputs:
 - id: in_input_file_format
   doc: 'input file, format: qseq/fastq/fasta/sequence'

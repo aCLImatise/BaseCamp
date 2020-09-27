@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rm.cwl
+id: rm.cwl
 inputs:
 - id: in_force
   doc: ignore nonexistent files and arguments, never prompt

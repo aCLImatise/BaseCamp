@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clumpify.sh.cwl
+id: clumpify.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g will\
@@ -36,11 +36,6 @@ inputs:
     position: 0
 - id: in_next_seq
   doc: 40  (and spany=t)
-  type: string
-  inputBinding:
-    position: 0
-- id: in_nova_seq
-  doc: '12000'
   type: string
   inputBinding:
     position: 0

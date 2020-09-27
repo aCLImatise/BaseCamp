@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_ncbi_prep_uce_align_files_for_ncbi_targeted_locus_db.cwl
+id: phyluce_ncbi_prep_uce_align_files_for_ncbi_targeted_locus_db.cwl
 inputs:
 - id: in_alignments
   doc: The directory containing alignments

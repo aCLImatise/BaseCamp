@@ -1,9 +1,14 @@
 class: CommandLineTool
-id: ../../../tombo_plot_motif_centered.cwl
+id: tombo_plot_motif_centered.cwl
 inputs:
 - id: in_genome_fast_a
-  doc: ''
-  type: string
+  doc: "[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]]\n\
+    [--plot-standard-model]\n[--plot-alternate-model {dam,CpG,5mC,dcm,6mA}]\n[--overplot-threshold\
+    \ OVERPLOT_THRESHOLD]\n[--overplot-type {Downsample,Boxplot,Quantile,Density}]\n\
+    [--num-regions NUM_REGIONS]\n[--num-bases NUM_BASES] [--deepest-coverage]\n[--pdf-filename\
+    \ PDF_FILENAME]\n[--corrected-group CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS\
+    \ [BASECALL_SUBGROUPS ...]]\n[--quiet] [--help]"
+  type: long
   inputBinding:
     prefix: --genome-fasta
 - id: in_fast_five_based_irs

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BamCleanHaloplex.cwl
+id: BamCleanHaloplex.cwl
 inputs:
 - id: in_in
   doc: Input bam file.

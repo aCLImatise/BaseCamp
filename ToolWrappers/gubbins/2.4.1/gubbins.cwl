@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gubbins.cwl
+id: gubbins.cwl
 inputs:
 - id: in_newick_tree_file
   doc: Newick tree file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigMafToMaf.cwl
+id: bigMafToMaf.cwl
 inputs: []
 outputs:
 - id: out_stdout

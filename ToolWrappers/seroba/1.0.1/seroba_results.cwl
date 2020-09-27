@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seroba_results.cwl
+id: seroba_results.cwl
 inputs:
 - id: in_se_rob_a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rank_cmfinder.pl.cwl
+id: rank_cmfinder.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

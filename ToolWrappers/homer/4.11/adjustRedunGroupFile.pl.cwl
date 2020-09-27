@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../adjustRedunGroupFile.pl.cwl
+id: adjustRedunGroupFile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

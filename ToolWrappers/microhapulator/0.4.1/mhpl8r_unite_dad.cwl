@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mhpl8r_unite_dad.cwl
+id: mhpl8r_unite_dad.cwl
 inputs:
 - id: in_s
   doc: ''

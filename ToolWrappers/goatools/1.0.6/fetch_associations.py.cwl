@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetch_associations.py.cwl
+id: fetch_associations.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

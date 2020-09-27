@@ -13,16 +13,6 @@ positional:
   position: 0
   name: '0.'
   optional: false
-- !Positional
-  description: --invert-anyway       Force LDSC to attempt to invert ill-conditioned
-  position: 0
-  name: Score.
-  optional: false
-- !Positional
-  description: --n-blocks N_BLOCKS   Number of block jackknife blocks.
-  position: 1
-  name: matrices.
-  optional: false
 named:
 - !Flag
   description: "Output filename prefix. If --out is not set, LDSC will\nuse ldsc as\
@@ -167,176 +157,85 @@ named:
     name: MAF
   optional: true
 - !Flag
-  description: "Filename for a .sumstats[.gz] file for cell-type-\nspecific analysis.\
-    \ --h2-cts requires the --ref-ld-chr,\n--w-ld, and --ref-ld-chr-cts flags."
+  description: ', and --ref-ld-chr-cts flags.'
   synonyms:
-  - --h2-cts
-  args: !SimpleFlagArg
-    name: H2_CTS
+  - --w-ld
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Comma-separated list of prefixes of .chisq filed for\ngenetic correlation\
-    \ estimation."
+  description: Comma-separated list of prefixes of .chisq filed for
   synonyms:
   - --rg
   args: !SimpleFlagArg
     name: RG
   optional: true
 - !Flag
-  description: "Use --ref-ld to tell LDSC which LD Scores to use as\nthe predictors\
-    \ in the LD Score regression. LDSC will\nautomatically append .l2.ldscore/.l2.ldscore.gz\
-    \ to the\nfilename prefix."
+  description: Use --ref-ld to tell LDSC which LD Scores to use as
   synonyms:
   - --ref-ld
   args: !SimpleFlagArg
     name: REF_LD
   optional: true
 - !Flag
-  description: "Same as --ref-ld, but will automatically concatenate\n.l2.ldscore\
-    \ files split across 22 chromosomes. LDSC\nwill automatically append .l2.ldscore/.l2.ldscore.gz\n\
-    to the filename prefix. If the filename prefix\ncontains the symbol @, LDSC will\
-    \ replace the @ symbol\nwith chromosome numbers. Otherwise, LDSC will append\n\
-    chromosome numbers to the end of the filename\nprefix.Example 1: --ref-ld-chr\
-    \ ld/ will read\nld/1.l2.ldscore.gz ... ld/22.l2.ldscore.gzExample 2:\n--ref-ld-chr\
-    \ ld/@_kg will read ld/1_kg.l2.ldscore.gz\n... ld/22_kg.l2.ldscore.gz"
-  synonyms:
-  - --ref-ld-chr
-  args: !SimpleFlagArg
-    name: REF_LD_CHR
-  optional: true
-- !Flag
-  description: "Filename prefix for file with LD Scores with sum r^2\ntaken over SNPs\
-    \ included in the regression. LDSC will\nautomatically append .l2.ldscore/.l2.ldscore.gz."
-  synonyms:
-  - --w-ld
-  args: !SimpleFlagArg
-    name: W_LD
-  optional: true
-- !Flag
-  description: "Same as --w-ld, but will read files split into 22\nchromosomes in\
-    \ the same manner as --ref-ld-chr."
+  description: Same as --w-ld, but will read files split into 22
   synonyms:
   - --w-ld-chr
   args: !SimpleFlagArg
     name: W_LD_CHR
   optional: true
 - !Flag
-  description: "This flag informs LDSC that the partitioned LD Scores\nwere generates\
-    \ using an annot matrix with overlapping\ncategories (i.e., not all row sums equal\
-    \ 1), and\nprevents LDSC from displaying output that is\nmeaningless with overlapping\
-    \ categories."
+  description: This flag informs LDSC that the partitioned LD Scores
   synonyms:
   - --overlap-annot
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "when categories are overlapping, print coefficients as\nwell as heritabilities."
+  description: when categories are overlapping, print coefficients as
   synonyms:
   - --print-coefficients
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "For use with --overlap-annot. Provides allele\nfrequencies to prune\
-    \ to common snps if --not-M-5-50 is\nnot set."
+  description: For use with --overlap-annot. Provides allele
   synonyms:
   - --frqfile
   args: !SimpleFlagArg
     name: FRQFILE
   optional: true
 - !Flag
-  description: Prefix for --frqfile files split over chromosome.
-  synonyms:
-  - --frqfile-chr
-  args: !SimpleFlagArg
-    name: FRQFILE_CHR
-  optional: true
-- !Flag
-  description: "If used with --h2, this constrains the LD Score\nregression intercept\
-    \ to equal 1. If used with --rg,\nthis constrains the LD Score regression intercepts\
-    \ for\nthe h2 estimates to be one and the intercept for the\ngenetic covariance\
-    \ estimate to be zero."
+  description: If used with --h2, this constrains the LD Score
   synonyms:
   - --no-intercept
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Intercepts for constrained-intercept single-trait LD\nScore regression."
-  synonyms:
-  - --intercept-h2
-  args: !SimpleFlagArg
-    name: INTERCEPT_H2
-  optional: true
-- !Flag
-  description: "Intercepts for constrained-intercept cross-trait LD\nScore regression.\
-    \ Must have same length as --rg. The\nfirst entry is ignored."
-  synonyms:
-  - --intercept-gencov
-  args: !SimpleFlagArg
-    name: INTERCEPT_GENCOV
-  optional: true
-- !Flag
-  description: "# of SNPs (if you don't want to use the .l2.M files\nthat came with\
-    \ your .l2.ldscore.gz files)"
+  description: "# of SNPs (if you don't want to use the .l2.M files"
   synonyms:
   - --M
   args: !SimpleFlagArg
     name: M
   optional: true
 - !Flag
-  description: "Test statistic bound for use with the two-step\nestimator. Not compatible\
-    \ with --no-intercept and\n--constrain-intercept."
+  description: Test statistic bound for use with the two-step
   synonyms:
   - --two-step
   args: !SimpleFlagArg
     name: TWO_STEP
   optional: true
 - !Flag
-  description: Max chi^2.
-  synonyms:
-  - --chisq-max
-  args: !SimpleFlagArg
-    name: CHISQ_MAX
-  optional: true
-- !Flag
-  description: "Name of a file that has a list of file name prefixes\nfor cell-type-specific\
-    \ analysis."
-  synonyms:
-  - --ref-ld-chr-cts
-  args: !SimpleFlagArg
-    name: REF_LD_CHR_CTS
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --print-all-cts
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "For use with --h2/--rg. This flag tells LDSC to print\nthe covaraince\
-    \ matrix of the estimates."
+  description: For use with --h2/--rg. This flag tells LDSC to print
   synonyms:
   - --print-cov
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "If this flag is set, LDSC will print the block\njackknife delete-values\
-    \ (i.e., the regression\ncoefficeints estimated from the data with a block\nremoved).\
-    \ The delete-values are formatted as a matrix\nwith (# of jackknife blocks) rows\
-    \ and (# of LD Scores)\ncolumns."
+  description: If this flag is set, LDSC will print the block
   synonyms:
   - --print-delete-vals
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Chunk size for LD Score calculation. Use the default.
-  synonyms:
-  - --chunk-size
-  args: !SimpleFlagArg
-    name: CHUNK_SIZE
-  optional: true
-- !Flag
-  description: "Store .l2.ldscore files as pickles instead of gzipped\ntab-delimited\
-    \ text."
+  description: Store .l2.ldscore files as pickles instead of gzipped
   synonyms:
   - --pickle
   args: !EmptyFlagArg {}
@@ -348,37 +247,32 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "This flag tells LDSC to use the .l2.M file instead of\nthe .l2.M_5_50\
-    \ file."
+  description: Force LDSC to attempt to invert ill-conditioned
+  synonyms:
+  - --invert-anyway
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of block jackknife blocks.
+  synonyms:
+  - --n-blocks
+  args: !SimpleFlagArg
+    name: N_BLOCKS
+  optional: true
+- !Flag
+  description: This flag tells LDSC to use the .l2.M file instead of
   synonyms:
   - --not-M-5-50
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Force ldsc to return silly genetic correlation\nestimates."
-  synonyms:
-  - --return-silly-things
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "For rg estimation, skip checking whether the alleles\nmatch. This\
-    \ check is redundant for pairs of chisq\nfiles generated using munge_sumstats.py\
-    \ and the same\nargument to the --merge-alleles flag."
+  description: For rg estimation, skip checking whether the alleles
   synonyms:
   - --no-check-alleles
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Sample prevalence of binary phenotype (for conversion\nto liability\
-    \ scale)."
-  synonyms:
-  - --samp-prev
-  args: !SimpleFlagArg
-    name: SAMP_PREV
-  optional: true
-- !Flag
-  description: "Population prevalence of binary phenotype (for\nconversion to liability\
-    \ scale).\n"
+  description: Population prevalence of binary phenotype (for
   synonyms:
   - --pop-prev
   args: !SimpleFlagArg

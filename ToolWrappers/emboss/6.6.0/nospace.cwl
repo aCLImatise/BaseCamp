@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nospace.cwl
+id: nospace.cwl
 inputs:
 - id: in_menu
   doc: "menu       [all] Remove whitespace (Values: all (all\nwhitespace); end (trailing\

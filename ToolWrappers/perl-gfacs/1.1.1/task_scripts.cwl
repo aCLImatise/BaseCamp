@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../task_scripts.cwl
+id: task_scripts.cwl
 inputs: []
 outputs:
 - id: out_stdout

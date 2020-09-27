@@ -10,7 +10,6 @@ task Pbsrunnerpl {
     Boolean? partition
     Boolean? man
     Boolean? wall_time
-    Boolean? cpus_per_task
     Boolean? commands_per_node
     Boolean? mem
     Boolean? nodes_count
@@ -47,7 +46,6 @@ task Pbsrunnerpl {
       ~{if (partition) then "--partition" else ""} \
       ~{if (man) then "--man" else ""} \
       ~{if (wall_time) then "--walltime" else ""} \
-      ~{if (cpus_per_task) then "--cpus_per_task" else ""} \
       ~{if (commands_per_node) then "--commands_per_node" else ""} \
       ~{if (mem) then "--mem" else ""} \
       ~{if (nodes_count) then "--nodes_count" else ""} \
@@ -83,7 +81,6 @@ task Pbsrunnerpl {
     partition: "- Str|Undef. Default=. Slurm partition to\\nsubmit jobs to. Defaults to the partition\\nwith the most available nodes"
     man: "- Bool. Display man page"
     wall_time: "- Str. Default=04:00:00."
-    cpus_per_task: "- Str. Default=4."
     commands_per_node: "- Str. Default=8. Commands to run on each node.\\nThis is not the same as\\nconcurrent_commands_per_node!"
     mem: "- Str|Undef. Supply a memory limit"
     nodes_count: "- Str. Default=1. Number of nodes requested.\\nYou should only use this if submitting\\nparallel jobs."

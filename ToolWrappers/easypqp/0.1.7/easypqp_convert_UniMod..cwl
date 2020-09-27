@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easypqp_convert_UniMod..cwl
+id: easypqp_convert_UniMod..cwl
 inputs:
 - id: in_easy_pqp
   doc: ''

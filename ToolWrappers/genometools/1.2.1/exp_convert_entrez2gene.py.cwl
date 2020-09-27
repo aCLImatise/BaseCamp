@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exp_convert_entrez2gene.py.cwl
+id: exp_convert_entrez2gene.py.cwl
 inputs:
 - id: in_expression_file
   doc: The expression file.

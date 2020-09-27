@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_filter.cwl
+id: hicstuff_filter.cwl
 inputs:
 - id: in_fig_dir
   doc: "Path to the output figure directory.\nBy default, the figure is only shown\n\

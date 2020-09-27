@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mgaps.cwl
+id: mgaps.cwl
 inputs:
 - id: in_check_fasta_labels
   doc: Check that fasta header labels alternately have "Reverse"

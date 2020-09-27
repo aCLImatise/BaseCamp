@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treedist.cwl
+id: treedist.cwl
 inputs: []
 outputs:
 - id: out_stdout

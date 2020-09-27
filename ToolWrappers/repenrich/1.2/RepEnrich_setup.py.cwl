@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepEnrich_setup.py.cwl
+id: RepEnrich_setup.py.cwl
 inputs:
 - id: in_n_fragments_file_one
   doc: "Output location of a description file that saves the\nnumber of fragments\

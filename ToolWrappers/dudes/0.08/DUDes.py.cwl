@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DUDes.py.cwl
+id: DUDes.py.cwl
 inputs:
 - id: in_alignmentmapping_file_sam
   doc: "Alignment/mapping file in SAM format. DUDes does not\ndepend on any specific\

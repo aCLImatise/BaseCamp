@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_sequence_traits.cwl
+id: augur_sequence_traits.cwl
 inputs:
 - id: in_ancestral_sequences
   doc: "nucleotide alignment (VCF) to search for sequence\ntraits in (can be generated\

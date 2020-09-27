@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CollectGridssMetricsAndExtractSVReads.cwl
+id: CollectGridssMetricsAndExtractSVReads.cwl
 inputs: []
 outputs:
 - id: out_stdout

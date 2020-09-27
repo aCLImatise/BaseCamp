@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dconvlum.cwl
+id: dconvlum.cwl
 inputs:
 - id: in_in_file
   doc: VeriLUM characteristic curve file to be converted

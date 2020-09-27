@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VariantFilterAnnotations.cwl
+id: VariantFilterAnnotations.cwl
 inputs:
 - id: in_in
   doc: Input variant list in GSvar format.

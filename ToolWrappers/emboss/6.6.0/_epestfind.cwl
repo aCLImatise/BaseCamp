@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_epestfind.cwl
+id: _epestfind.cwl
 inputs:
 - id: in_window
   doc: "integer    [10] Minimal distance between positively\ncharged amino acids.\

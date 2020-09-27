@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclBlastParser.cwl
+id: orthomclBlastParser.cwl
 inputs:
 - id: in_orthomcl_adjust_fast_a
   doc: 'm8 format has these columns:'

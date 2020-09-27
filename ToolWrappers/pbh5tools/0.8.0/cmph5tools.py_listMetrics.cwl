@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmph5tools.py_listMetrics.cwl
+id: cmph5tools.py_listMetrics.cwl
 inputs:
 - id: in_debug
   doc: ''

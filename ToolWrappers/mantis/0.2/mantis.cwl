@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mantis.cwl
+id: mantis.cwl
 inputs: []
 outputs:
 - id: out_stdout

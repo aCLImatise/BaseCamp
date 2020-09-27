@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../concoct_refine.cwl
+id: concoct_refine.cwl
 inputs:
 - id: in_expansion_factor
   doc: number of clusters to expand by

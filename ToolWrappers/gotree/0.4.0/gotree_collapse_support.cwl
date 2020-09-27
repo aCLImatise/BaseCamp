@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_collapse_support.cwl
+id: gotree_collapse_support.cwl
 inputs:
 - id: in_support
   doc: Support cutoff to collapse branches

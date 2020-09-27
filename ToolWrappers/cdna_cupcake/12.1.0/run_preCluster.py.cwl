@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_preCluster.py.cwl
+id: run_preCluster.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

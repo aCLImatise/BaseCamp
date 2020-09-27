@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_create_bam_statistics.cwl
+id: mb_create_bam_statistics.cwl
 inputs:
 - id: in_gff_file
   doc: ''

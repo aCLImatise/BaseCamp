@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_ffreqboot.cwl
+id: _ffreqboot.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

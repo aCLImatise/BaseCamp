@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obs_skmeans.cwl
+id: obs_skmeans.cwl
 inputs: []
 outputs:
 - id: out_stdout

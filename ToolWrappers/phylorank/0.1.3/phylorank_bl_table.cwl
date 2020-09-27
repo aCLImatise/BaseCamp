@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_bl_table.cwl
+id: phylorank_bl_table.cwl
 inputs:
 - id: in_step_size
   doc: "step size for mean branch length criterion (default:\n0.01)\n"

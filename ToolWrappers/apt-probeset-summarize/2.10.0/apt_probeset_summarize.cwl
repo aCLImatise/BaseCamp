@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../apt_probeset_summarize.cwl
+id: apt_probeset_summarize.cwl
 inputs:
-- id: in_cel
-  doc: '*.cel'
-  type: string
-  inputBinding:
-    prefix: -p
 - id: in_verbose
   doc: "verbose to be with status messages 0 -\nquiet, 1 - usual messages, 2 - more\n\
     messages. [default '1']"
@@ -299,6 +294,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --precision
+- id: in_explain
+  doc: a particular operation (i.e.
+  type: string
+  inputBinding:
+    prefix: --explain
 - id: in_kill_list
   doc: "not use the PM probes specified in file\nfor computing results. [experimental]\n\
     [default '']"

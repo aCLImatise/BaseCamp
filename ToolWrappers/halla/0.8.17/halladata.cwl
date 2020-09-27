@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halladata.cwl
+id: halladata.cwl
 inputs:
 - id: in_verbose
   doc: additional output is printed

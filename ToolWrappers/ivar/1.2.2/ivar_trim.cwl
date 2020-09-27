@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ivar_trim.cwl
+id: ivar_trim.cwl
 inputs:
 - id: in_required_sorted_bam
   doc: (Required) Sorted bam file, with aligned reads, to trim primers and quality

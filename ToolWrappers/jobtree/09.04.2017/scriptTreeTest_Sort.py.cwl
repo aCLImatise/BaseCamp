@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scriptTreeTest_Sort.py.cwl
+id: scriptTreeTest_Sort.py.cwl
 inputs:
 - id: in_file_to_sort
   doc: The file you wish to sort

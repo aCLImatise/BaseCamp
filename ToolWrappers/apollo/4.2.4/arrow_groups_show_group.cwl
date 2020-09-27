@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_groups_show_group.cwl
+id: arrow_groups_show_group.cwl
 inputs:
 - id: in_group_id
   doc: ''

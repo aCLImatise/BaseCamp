@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PluginRawThermo2.dll.cwl
+id: PluginRawThermo2.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

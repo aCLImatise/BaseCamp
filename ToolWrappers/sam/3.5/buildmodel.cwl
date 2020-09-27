@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildmodel.cwl
+id: buildmodel.cwl
 inputs:
 - id: in_train
   doc: ': File to read sequences from.'

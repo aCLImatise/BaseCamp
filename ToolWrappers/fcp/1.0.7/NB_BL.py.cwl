@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NB_BL.py.cwl
+id: NB_BL.py.cwl
 inputs:
 - id: in_nb_results
   doc: ''

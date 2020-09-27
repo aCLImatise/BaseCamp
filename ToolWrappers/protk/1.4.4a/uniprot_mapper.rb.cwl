@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniprot_mapper.rb.cwl
+id: uniprot_mapper.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

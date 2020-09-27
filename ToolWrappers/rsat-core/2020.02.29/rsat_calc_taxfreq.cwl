@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_calc_taxfreq.cwl
+id: rsat_calc_taxfreq.cwl
 inputs:
 - id: in_calc_tax_freq
   doc: "\e[1mDESCRIPTION\e[0m"

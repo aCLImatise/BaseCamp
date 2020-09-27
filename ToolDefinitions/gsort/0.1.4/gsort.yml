@@ -91,36 +91,10 @@ subcommands:
         args: !SimpleFlagArg
           name: CHROMOSOMEMAPPINGS
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: a file used to re-map chromosome names for example from hg19
-            to GRCh37
-          synonyms:
-          - --chromosomemappings
-          - -c
-          args: !SimpleFlagArg
-            name: CHROMOSOMEMAPPINGS
-          optional: true
-        - !Flag
-          description: 'megabytes of memory to use before writing to temp files. [default:
-            2800]'
-          synonyms:
-          - --memory
-          - -m
-          args: !SimpleFlagArg
-            name: MEMORY
-          optional: true
-        - !Flag
-          description: for gff only. given rows with same chrom and start put those
-            with a 'Parent' attribute first
-          synonyms:
-          - --parent
-          - -p
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -162,7 +136,110 @@ subcommands:
             args: !SimpleFlagArg
               name: CHROMOSOMEMAPPINGS
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: a file used to re-map chromosome names for example from
+                hg19 to GRCh37
+              synonyms:
+              - --chromosomemappings
+              - -c
+              args: !SimpleFlagArg
+                name: CHROMOSOMEMAPPINGS
+              optional: true
+            - !Flag
+              description: 'megabytes of memory to use before writing to temp files.
+                [default: 2800]'
+              synonyms:
+              - --memory
+              - -m
+              args: !SimpleFlagArg
+                name: MEMORY
+              optional: true
+            - !Flag
+              description: for gff only. given rows with same chrom and start put
+                those with a 'Parent' attribute first
+              synonyms:
+              - --parent
+              - -p
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: gsort
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: PATH
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: GENOME
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --parent
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --memory
+                args: !SimpleFlagArg
+                  name: MEMORY
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --chromosomemappings
+                args: !SimpleFlagArg
+                  name: CHROMOSOMEMAPPINGS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "> gsort version 0.1.4\nUsage: gsort [--chromosomemappings\
+                \ CHROMOSOMEMAPPINGS] [--memory MEMORY] [--parent] PATH GENOME\nerror:\
+                \ must specify a tab-delimited file and a genome file\n"
+              generated_using: &id004 []
+            usage: []
+            help_flag: !Flag
+              description: display this help and exit
+              synonyms:
+              - --help
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "Usage: gsort [--chromosomemappings CHROMOSOMEMAPPINGS] [--memory\
+              \ MEMORY] [--parent] PATH GENOME\n\nPositional arguments:\n  PATH  \
+              \                 a tab-delimited file to sort\n  GENOME           \
+              \      a genome file of chromosome sizes and order\n\nOptions:\n  --chromosomemappings\
+              \ CHROMOSOMEMAPPINGS, -c CHROMOSOMEMAPPINGS\n                      \
+              \   a file used to re-map chromosome names for example from hg19 to\
+              \ GRCh37\n  --memory MEMORY, -m MEMORY\n                         megabytes\
+              \ of memory to use before writing to temp files. [default: 2800]\n \
+              \ --parent, -p           for gff only. given rows with same chrom and\
+              \ start put those with a 'Parent' attribute first\n  --help, -h    \
+              \         display this help and exit\n"
+            generated_using: &id005
+            - --help
           subcommands: []
           usage: []
           help_flag:
@@ -171,15 +248,9 @@ subcommands:
           help_text: "> gsort version 0.1.4\nUsage: gsort [--chromosomemappings CHROMOSOMEMAPPINGS]\
             \ [--memory MEMORY] [--parent] PATH GENOME\nerror: must specify a tab-delimited\
             \ file and a genome file\n"
-          generated_using: &id004 []
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: display this help and exit
-          synonyms:
-          - --help
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "Usage: gsort [--chromosomemappings CHROMOSOMEMAPPINGS] [--memory\
@@ -193,8 +264,7 @@ subcommands:
           \          for gff only. given rows with same chrom and start put those\
           \ with a 'Parent' attribute first\n  --help, -h             display this\
           \ help and exit\n"
-        generated_using: &id005
-        - --help
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag:

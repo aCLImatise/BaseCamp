@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_yank.cwl
+id: _yank.cwl
 inputs:
 - id: in_new_file
   doc: boolean    [N] Overwrite existing output file

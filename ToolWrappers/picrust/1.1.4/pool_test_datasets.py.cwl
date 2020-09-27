@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pool_test_datasets.py.cwl
+id: pool_test_datasets.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

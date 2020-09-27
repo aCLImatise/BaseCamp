@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_get_sequences_for_gene_clusters.cwl
+id: anvi_get_sequences_for_gene_clusters.cwl
 inputs:
 - id: in_pan_db
   doc: Anvi'o pan database

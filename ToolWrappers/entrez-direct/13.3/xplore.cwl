@@ -1,31 +1,11 @@
 class: CommandLineTool
-id: ../../../xplore.cwl
+id: xplore.cwl
 inputs:
 - id: in_link
-  doc: ''
+  doc: "-load\n-save\n-search\n-version\n-help"
   type: boolean
   inputBinding:
     prefix: -link
-- id: in_load
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -load
-- id: in_save
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -save
-- id: in_search
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -search
-- id: in_version
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -version
 outputs:
 - id: out_stdout
   doc: Standard output stream

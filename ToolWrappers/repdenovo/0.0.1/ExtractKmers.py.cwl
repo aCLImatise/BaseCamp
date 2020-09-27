@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExtractKmers.py.cwl
+id: ExtractKmers.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

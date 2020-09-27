@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brassI_prep_bam.pl.cwl
+id: brassI_prep_bam.pl.cwl
 inputs:
 - id: in_bas
   doc: -b    Bas statistics file for BAM being streame

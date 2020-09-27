@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msstitch_storequant.cwl
+id: msstitch_storequant.cwl
 inputs:
 - id: in_dbfile
   doc: Database lookup file

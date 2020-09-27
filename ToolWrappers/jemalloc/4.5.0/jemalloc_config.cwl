@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jemalloc_config.cwl
+id: jemalloc_config.cwl
 inputs:
 - id: in_revision
   doc: ': Print shared library revision number.'

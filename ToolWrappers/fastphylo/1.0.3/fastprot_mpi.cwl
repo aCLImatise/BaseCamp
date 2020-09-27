@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastprot_mpi.cwl
+id: fastprot_mpi.cwl
 inputs: []
 outputs:
 - id: out_stdout

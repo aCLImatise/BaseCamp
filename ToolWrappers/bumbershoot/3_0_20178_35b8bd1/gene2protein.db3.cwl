@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene2protein.db3.cwl
+id: gene2protein.db3.cwl
 inputs: []
 outputs:
 - id: out_stdout

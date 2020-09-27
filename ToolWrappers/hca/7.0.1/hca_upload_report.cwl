@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_upload_report.cwl
+id: hca_upload_report.cwl
 inputs:
 - id: in_env
   doc: "Environment the upload area was created in (default is\nbased on currently\

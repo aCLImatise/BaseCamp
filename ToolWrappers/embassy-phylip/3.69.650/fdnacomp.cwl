@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fdnacomp.cwl
+id: fdnacomp.cwl
 inputs:
 - id: in_weights
   doc: properties Phylip weights file (optional)

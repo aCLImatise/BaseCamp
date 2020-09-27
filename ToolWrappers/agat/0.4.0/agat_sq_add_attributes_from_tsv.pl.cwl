@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sq_add_attributes_from_tsv.pl.cwl
+id: agat_sq_add_attributes_from_tsv.pl.cwl
 inputs:
 - id: in_gff
   doc: 'STRING: Input GTF/GFF file.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_super_read_sizes.cwl
+id: get_super_read_sizes.cwl
 inputs:
 - id: in_kuni_tig_lenghts_file
   doc: '*file with k-unitig lengths, two columns: kunitig length'

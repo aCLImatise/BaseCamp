@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_version.cwl
+id: seqkit_version.cwl
 inputs:
 - id: in_check_update
   doc: check update

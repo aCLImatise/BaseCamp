@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CrossOut.cwl
+id: CrossOut.cwl
 inputs:
 - id: in_arg_one
   doc: ''

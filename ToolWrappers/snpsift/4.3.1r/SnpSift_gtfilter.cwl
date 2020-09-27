@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_gtfilter.cwl
+id: SnpSift_gtfilter.cwl
 inputs:
 - id: in__exprfile_file
   doc: '| --exprFile <file>    : Read expression from a file'

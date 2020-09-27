@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Newtonsoft.Json.xml.cwl
+id: Newtonsoft.Json.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

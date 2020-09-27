@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmpbsa_py_energy.cwl
+id: mmpbsa_py_energy.cwl
 inputs: []
 outputs:
 - id: out_stdout

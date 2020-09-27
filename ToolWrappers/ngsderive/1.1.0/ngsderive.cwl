@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngsderive.cwl
+id: ngsderive.cwl
 inputs: []
 outputs:
 - id: out_stdout

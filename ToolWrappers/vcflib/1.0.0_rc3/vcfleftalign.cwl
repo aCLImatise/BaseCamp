@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfleftalign.cwl
+id: vcfleftalign.cwl
 inputs:
 - id: in_reference
   doc: Use this reference as a basis for realignment.

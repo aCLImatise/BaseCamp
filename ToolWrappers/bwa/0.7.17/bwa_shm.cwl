@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_shm.cwl
+id: bwa_shm.cwl
 inputs:
 - id: in_destroy_indices_shared
   doc: destroy all indices in shared memory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pir2gsi.pl.cwl
+id: pir2gsi.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

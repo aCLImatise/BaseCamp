@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_predict.cwl
+id: funannotate_predict.cwl
 inputs:
 - id: in_input
   doc: Genome multi-FASTA file (softmasked repeats)
@@ -216,26 +216,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cpus
-- id: in_evm_home
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --EVM_HOME
-- id: in_augustus_config_path
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --AUGUSTUS_CONFIG_PATH
-- id: in_genemark_path
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --GENEMARK_PATH
-- id: in_bam_tools_path
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --BAMTOOLS_PATH
 - id: in_arguments
   doc: ''
   type: string

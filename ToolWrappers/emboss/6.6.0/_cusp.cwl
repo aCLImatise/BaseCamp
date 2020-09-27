@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_cusp.cwl
+id: _cusp.cwl
 inputs: []
 outputs:
 - id: out_stdout

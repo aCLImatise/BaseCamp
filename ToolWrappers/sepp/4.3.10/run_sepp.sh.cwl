@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../run_sepp.sh.cwl
+id: run_sepp.sh.cwl
 inputs:
-- id: in_x
-  doc: ''
+- id: in_make_us_threads
+  doc: "to make SEPP us 8 threads\n"
   type: long
   inputBinding:
     prefix: -x

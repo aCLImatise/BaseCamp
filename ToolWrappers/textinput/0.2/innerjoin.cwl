@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../innerjoin.cwl
+id: innerjoin.cwl
 inputs:
 - id: in_empty
   doc: replace missing input fields with EMPTY

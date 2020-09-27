@@ -2,8 +2,7 @@ version 1.0
 
 task RsatMatrixquality {
   input {
-    Int? no_cv
-    String? o
+    Int? perm
     Boolean? h_dot
     String? plot
     String matrix_quality
@@ -43,15 +42,13 @@ task RsatMatrixquality {
       ~{convert_background_model_dot} \
       ~{sequence_type} \
       ~{statistics_dot} \
-      ~{if defined(no_cv) then ("-no_cv " +  '"' + no_cv + '"') else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(perm) then ("-perm " +  '"' + perm + '"') else ""} \
       ~{if (h_dot) then "-h." else ""} \
       ~{if defined(plot) then ("-plot " +  '"' + plot + '"') else ""}
   >>>
   parameter_meta {
-    no_cv: "0 -bgfile my_background.txt \\"
-    o: ""
-    h_dot: ""
+    perm: "0 -bgfile my_background.txt \\\\n-o my_matrix_quality"
+    h_dot: "Multiple image formats can be specified either by using iteratively\\nthe option, or by separating them by commas.\\nExample: -img_format png,pdf"
     plot: ""
     matrix_quality: "[1mDESCRIPTION[0m"
     interest_dot: "[1mMatrix sites[0m"

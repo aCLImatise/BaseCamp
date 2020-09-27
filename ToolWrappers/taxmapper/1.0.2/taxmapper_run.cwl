@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxmapper_run.cwl
+id: taxmapper_run.cwl
 inputs:
 - id: in_database
   doc: Database path for RAPseach database index

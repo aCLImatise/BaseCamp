@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mini_align.cwl
+id: mini_align.cwl
 inputs:
 - id: in_reference_should_fasta
   doc: "reference, should be a fasta file. If correspondng minimap indices\ndo not\

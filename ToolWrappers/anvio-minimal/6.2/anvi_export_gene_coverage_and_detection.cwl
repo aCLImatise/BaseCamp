@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_export_gene_coverage_and_detection.cwl
+id: anvi_export_gene_coverage_and_detection.cwl
 inputs:
 - id: in_profile_db
   doc: Anvi'o profile database

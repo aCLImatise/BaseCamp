@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfqualfilter.cwl
+id: vcfqualfilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

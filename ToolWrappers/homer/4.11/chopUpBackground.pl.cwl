@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chopUpBackground.pl.cwl
+id: chopUpBackground.pl.cwl
 inputs:
 - id: in_target_seq_file
   doc: ''

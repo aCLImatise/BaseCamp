@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_fusiongene_convert_coordinate_trim_dRanger.cwl
+id: generate_fusiongene_convert_coordinate_trim_dRanger.cwl
 inputs: []
 outputs:
 - id: out_stdout

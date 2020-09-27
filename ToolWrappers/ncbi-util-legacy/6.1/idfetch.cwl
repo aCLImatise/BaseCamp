@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idfetch.cwl
+id: idfetch.cwl
 inputs:
 - id: in_filename_output_default
   doc: "Filename for output  [File Out]\ndefault = stdout"

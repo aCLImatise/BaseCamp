@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scran_denoise_pca.R.cwl
+id: scran_denoise_pca.R.cwl
 inputs:
 - id: in_input_sce_object
   doc: Path to the input SCE object in rds format.

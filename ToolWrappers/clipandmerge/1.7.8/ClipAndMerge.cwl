@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClipAndMerge.cwl
+id: ClipAndMerge.cwl
 inputs:
 - id: in_discard_bad_reads
   doc: ": Discard reads after merging that do not fulfill the quality criteria. (default:\n\

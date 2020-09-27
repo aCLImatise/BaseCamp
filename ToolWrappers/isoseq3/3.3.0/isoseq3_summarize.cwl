@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isoseq3_summarize.cwl
+id: isoseq3_summarize.cwl
 inputs:
 - id: in_log_level
   doc: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]'

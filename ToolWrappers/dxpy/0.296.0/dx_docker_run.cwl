@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_docker_run.cwl
+id: dx_docker_run.cwl
 inputs:
 - id: in_volume
   doc: "Directory to mount inside the container. Can be\nsupplied multiple times (e.g.\

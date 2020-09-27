@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expand_uniref50.pl.cwl
+id: expand_uniref50.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

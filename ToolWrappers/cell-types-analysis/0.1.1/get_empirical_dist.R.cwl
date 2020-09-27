@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_empirical_dist.R.cwl
+id: get_empirical_dist.R.cwl
 inputs:
 - id: in_input_ref_file
   doc: Path to file with reference cell types

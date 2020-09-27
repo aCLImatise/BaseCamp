@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pseudoreverseDB.py.cwl
+id: pseudoreverseDB.py.cwl
 inputs:
 - id: in_inputfasta_input_fasta
   doc: input.fasta input fasta file

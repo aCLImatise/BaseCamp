@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_dedup_a_tigs.py.cwl
+id: fc_dedup_a_tigs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

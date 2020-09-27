@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathchk.cwl
+id: pathchk.cwl
 inputs:
 - id: in_check_most_posix
   doc: check for most POSIX systems

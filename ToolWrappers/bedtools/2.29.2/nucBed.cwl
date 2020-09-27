@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucBed.cwl
+id: nucBed.cwl
 inputs:
 - id: in_fi
   doc: Input FASTA file

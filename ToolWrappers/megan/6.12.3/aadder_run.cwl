@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aadder_run.cwl
+id: aadder_run.cwl
 inputs:
 - id: in_input
   doc: '[string(s)]              Input SAM file(s) (.gz ok). Mandatory option.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../picard.cwl
+id: picard.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta_buildgraph.cwl
+id: megagta_buildgraph.cwl
 inputs:
 - id: in_km_er_k
   doc: (=21)                 kmer size

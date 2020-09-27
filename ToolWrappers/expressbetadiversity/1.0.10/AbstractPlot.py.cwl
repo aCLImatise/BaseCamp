@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AbstractPlot.py.cwl
+id: AbstractPlot.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

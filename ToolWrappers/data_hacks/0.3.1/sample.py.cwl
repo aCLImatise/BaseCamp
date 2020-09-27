@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../sample.py.cwl
+id: sample.py.cwl
 inputs:
-- id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
 - id: in_cat
   doc: ''
   type: string

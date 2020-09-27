@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkCoverageGaps.cwl
+id: checkCoverageGaps.cwl
 inputs:
 - id: in_all_parts
   doc: If set then include _hap and _random and other wierd chroms

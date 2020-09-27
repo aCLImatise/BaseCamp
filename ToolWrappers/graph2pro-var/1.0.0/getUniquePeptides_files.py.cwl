@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getUniquePeptides_files.py.cwl
+id: getUniquePeptides_files.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_seqrange_nproc.cwl
+id: esl_seqrange_nproc.cwl
 inputs:
 - id: in_esl_seq_range
   doc: ''

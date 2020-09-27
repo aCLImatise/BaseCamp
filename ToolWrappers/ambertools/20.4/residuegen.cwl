@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../residuegen.cwl
+id: residuegen.cwl
 inputs: []
 outputs:
 - id: out_stdout

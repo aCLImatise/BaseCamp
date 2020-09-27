@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_sigclus.cwl
+id: hotspot3d_sigclus.cwl
 inputs:
 - id: in_prep_dir
   doc: Preprocessing directory

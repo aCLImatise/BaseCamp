@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quameter.cwl
+id: quameter.cwl
 inputs: []
 outputs:
 - id: out_stdout

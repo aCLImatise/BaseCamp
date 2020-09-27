@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hifive.cwl
+id: hifive.cwl
 inputs: []
 outputs:
 - id: out_stdout

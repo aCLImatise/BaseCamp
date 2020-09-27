@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeGraph_Chromosome.R.cwl
+id: makeGraph_Chromosome.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

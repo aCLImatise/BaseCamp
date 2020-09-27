@@ -9,7 +9,6 @@ task MysqlConfig {
     Boolean? libs_r
     Boolean? plugin_dir
     Boolean? socket
-    Boolean? port
     String? variable
   }
   command <<<
@@ -21,7 +20,6 @@ task MysqlConfig {
       ~{if (libs_r) then "--libs_r" else ""} \
       ~{if (plugin_dir) then "--plugindir" else ""} \
       ~{if (socket) then "--socket" else ""} \
-      ~{if (port) then "--port" else ""} \
       ~{if defined(variable) then ("--variable " +  '"' + variable + '"') else ""}
   >>>
   parameter_meta {
@@ -32,7 +30,6 @@ task MysqlConfig {
     libs_r: "[-L/usr/local/lib -lmysqlclient -lpthread -lm -lrt -ldl]"
     plugin_dir: "[/usr/local/lib/plugin]"
     socket: "[/tmp/mysql.sock]"
-    port: "[0]"
     variable: "VAR is one of:\\npkgincludedir [/usr/local/include]\\npkglibdir     [/usr/local/lib]\\nplugindir     [/usr/local/lib/plugin]\\n"
   }
   output {

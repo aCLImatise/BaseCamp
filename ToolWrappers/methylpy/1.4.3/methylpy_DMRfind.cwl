@@ -1,9 +1,14 @@
 class: CommandLineTool
-id: ../../../methylpy_DMRfind.cwl
+id: methylpy_DMRfind.cwl
 inputs:
 - id: in_output_prefix
-  doc: ''
-  type: string
+  doc: "[--samples SAMPLES [SAMPLES ...]]\n[--chroms CHROMS [CHROMS ...]]\n[--mc-type\
+    \ MC_TYPE [MC_TYPE ...]]\n[--num-procs NUM_PROCS] [--min-cov MIN_COV]\n[--dmr-max-dist\
+    \ DMR_MAX_DIST]\n[--sig-cutoff SIG_CUTOFF] [--num-sims NUM_SIMS]\n[--min-tests\
+    \ MIN_TESTS] [--min-num-dms MIN_NUM_DMS]\n[--sample-category SAMPLE_CATEGORY [SAMPLE_CATEGORY\
+    \ ...]]\n[--mc-max-dist MC_MAX_DIST]\n[--resid-cutoff RESID_CUTOFF]\n[--keep-temp-files\
+    \ KEEP_TEMP_FILES]\n[--min-cluster MIN_CLUSTER] [--seed SEED]"
+  type: long
   inputBinding:
     prefix: --output-prefix
 - id: in_all_c_files

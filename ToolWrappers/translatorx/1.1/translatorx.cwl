@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../translatorx.cwl
+id: translatorx.cwl
 inputs:
 - id: in_file_containing_sequences
   doc: ': the file containing the nucleotide sequences in FASTA format (Required)'

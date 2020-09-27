@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimReads.cwl
+id: trimReads.cwl
 inputs:
 - id: in_path_read_store
   doc: path to read store

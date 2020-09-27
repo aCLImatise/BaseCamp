@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eqtlbma_avg_bfs.cwl
+id: eqtlbma_avg_bfs.cwl
 inputs:
 - id: in_verbose
   doc: level (0/default=1/2/3)

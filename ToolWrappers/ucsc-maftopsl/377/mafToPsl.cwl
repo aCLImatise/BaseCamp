@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafToPsl.cwl
+id: mafToPsl.cwl
 inputs:
 - id: in_query_src
   doc: ''

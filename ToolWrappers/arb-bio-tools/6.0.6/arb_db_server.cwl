@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_db_server.cwl
+id: arb_db_server.cwl
 inputs:
 - id: in_use_asciidbversion
   doc: use ASCII-DB-version

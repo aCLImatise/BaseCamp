@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../a3m_database_reduce.cwl
+id: a3m_database_reduce.cwl
 inputs: []
 outputs:
 - id: out_stdout

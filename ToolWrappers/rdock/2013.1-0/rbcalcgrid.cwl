@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbcalcgrid.cwl
+id: rbcalcgrid.cwl
 inputs:
 - id: in_suffix_grid_is
   doc: <OutputSuffix> - suffix for grid (.grd IS required)

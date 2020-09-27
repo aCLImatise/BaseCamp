@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maskAlignedReads.py.cwl
+id: maskAlignedReads.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

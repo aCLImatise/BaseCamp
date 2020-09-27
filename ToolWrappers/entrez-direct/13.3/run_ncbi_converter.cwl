@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_ncbi_converter.cwl
+id: run_ncbi_converter.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_iupac.cwl
+id: novoutil_iupac.cwl
 inputs:
 - id: in_lower_quality_limit
   doc: "<99>    Lower quality limit for SNPs. Default 30.\nSNPs with quality of '.'\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TrioMaternalContamination.cwl
+id: TrioMaternalContamination.cwl
 inputs:
 - id: in_bam_m
   doc: Input BAM file of mother.

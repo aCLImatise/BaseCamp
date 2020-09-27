@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamhash_checksum_fasta.cwl
+id: bamhash_checksum_fasta.cwl
 inputs:
 - id: in_debug
   doc: Debug mode. Prints full hex for each read to stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_execute.cwl
+id: vtools_execute.cwl
 inputs:
 - id: in_jobs
   doc: "Execute the pipeline in parallel model if a number\nother than 1 is specified.\

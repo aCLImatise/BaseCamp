@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_contrast.cwl
+id: fermi_contrast.cwl
 inputs:
 - id: in_minimum_occurrence
   doc: minimum occurrence [3]

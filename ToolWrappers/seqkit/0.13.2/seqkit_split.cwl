@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_split.cwl
+id: seqkit_split.cwl
 inputs:
 - id: in_n__c
   doc: ":-1                      n\n2:-2      C G T N a c g t\n1:-1    A C G T N a\

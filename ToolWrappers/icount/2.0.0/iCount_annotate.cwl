@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_annotate.cwl
+id: iCount_annotate.cwl
 inputs:
 - id: in_subtype
   doc: 'Subtype (default: biotype)'

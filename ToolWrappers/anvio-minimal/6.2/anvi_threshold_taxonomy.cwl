@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_threshold_taxonomy.cwl
+id: anvi_threshold_taxonomy.cwl
 inputs: []
 outputs:
 - id: out_stdout

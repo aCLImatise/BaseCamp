@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../old_scran_cli_filter_sce.R.cwl
+id: old_scran_cli_filter_sce.R.cwl
 inputs:
 - id: in_input_sce_object
   doc: File name in which a serialized R SingleCellExperiment object where object

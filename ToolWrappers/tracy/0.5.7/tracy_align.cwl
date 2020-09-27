@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracy_align.cwl
+id: tracy_align.cwl
 inputs:
 - id: in_arg_gzipped_fasta
   doc: '[ --reference ] arg              (gzipped) fasta or wildtype ab1 file'

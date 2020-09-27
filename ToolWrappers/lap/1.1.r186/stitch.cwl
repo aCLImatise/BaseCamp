@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stitch.cwl
+id: stitch.cwl
 inputs:
 - id: in_file_containing_first_read
   doc: The file containing the first read of each pair

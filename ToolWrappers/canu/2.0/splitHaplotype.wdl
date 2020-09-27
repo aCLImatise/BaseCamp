@@ -5,7 +5,6 @@ task SplitHaplotype {
     String? range_reads_operate
     File? path_input_fasta
     String? parentkmershistogram_haplooutputfastagz
-    String? a
     String? cr
     Int? cl
     Boolean? report_batches_processed
@@ -26,7 +25,6 @@ task SplitHaplotype {
       ~{if defined(range_reads_operate) then ("-r " +  '"' + range_reads_operate + '"') else ""} \
       ~{if defined(path_input_fasta) then ("-R " +  '"' + path_input_fasta + '"') else ""} \
       ~{if defined(parentkmershistogram_haplooutputfastagz) then ("-H " +  '"' + parentkmershistogram_haplooutputfastagz + '"') else ""} \
-      ~{if defined(a) then ("-A " +  '"' + a + '"') else ""} \
       ~{if defined(cr) then ("-cr " +  '"' + cr + '"') else ""} \
       ~{if defined(cl) then ("-cl " +  '"' + cl + '"') else ""} \
       ~{if (report_batches_processed) then "-v" else ""} \
@@ -36,7 +34,6 @@ task SplitHaplotype {
     range_reads_operate: "[-end]                     range of reads to operate on."
     path_input_fasta: "path to input FASTA or FASTQ of reads to classify.\\nthese may be uncompressed, gzip, bzip2 or xz compressed."
     parentkmershistogram_haplooutputfastagz: "parent-kmers.histogram haplo-output.fasta.gz"
-    a: ""
     cr: "minimum ratio between best and second best to classify"
     cl: "minimum length of output read"
     report_batches_processed: "report how many batches per second are being processed"

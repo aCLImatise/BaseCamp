@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_distancelaw.cwl
+id: hicstuff_distancelaw.cwl
 inputs:
 - id: in_average
   doc: "If set, calculate the average of the distance\nlaw of the different chromosomes/arms\

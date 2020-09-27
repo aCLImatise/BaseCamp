@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDConflictResolver.cwl
+id: IDConflictResolver.cwl
 inputs:
 - id: in_in
   doc: "*                                           Input file (data annotated with\

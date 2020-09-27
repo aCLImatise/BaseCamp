@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expressionFromGenomicSet.py.cwl
+id: expressionFromGenomicSet.py.cwl
 inputs:
 - id: in_dist
   doc: "threshDist of GenomicReginSet.filter_by_gene_association_old.\n[default: 50000]\n"

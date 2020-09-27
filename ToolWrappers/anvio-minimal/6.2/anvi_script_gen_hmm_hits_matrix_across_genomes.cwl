@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_gen_hmm_hits_matrix_across_genomes.cwl
+id: anvi_script_gen_hmm_hits_matrix_across_genomes.cwl
 inputs:
 - id: in_external_genomes
   doc: "A two-column TAB-delimited flat text file that lists\nanvi'o contigs databases.\

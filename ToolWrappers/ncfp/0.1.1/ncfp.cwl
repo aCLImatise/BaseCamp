@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncfp.cwl
+id: ncfp.cwl
 inputs:
 - id: in_uniprot
   doc: "treat input sequences as UniProt FASTA (default:\nFalse)"

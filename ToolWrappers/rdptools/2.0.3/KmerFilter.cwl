@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerFilter.cwl
+id: KmerFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

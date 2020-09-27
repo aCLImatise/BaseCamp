@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stream_atac.cwl
+id: stream_atac.cwl
 inputs:
 - id: in_file_count
   doc: 'scATAC-seq counts file name (default: None)'

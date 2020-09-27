@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collate_rg_regions.pl.cwl
+id: collate_rg_regions.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

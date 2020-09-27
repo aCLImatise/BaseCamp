@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq2bam.cwl
+id: fastq2bam.cwl
 inputs:
 - id: in_cell_barcode_offset
   doc: ': cell barcode offset'

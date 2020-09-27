@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../raven.cwl
+id: raven.cwl
 inputs:
 - id: in_weaken
   doc: use larger (k, w) when assembling highly accurate sequences

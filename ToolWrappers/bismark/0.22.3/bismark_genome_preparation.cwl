@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bismark_genome_preparation.cwl
+id: bismark_genome_preparation.cwl
 inputs:
 - id: in_verbose
   doc: Print verbose output for more details or debugging.

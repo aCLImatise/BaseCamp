@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h2ph.cwl
+id: h2ph.cwl
 inputs:
 - id: in_more_options
   doc: ''

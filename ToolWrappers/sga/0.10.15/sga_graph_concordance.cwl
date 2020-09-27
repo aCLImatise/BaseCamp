@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_graph_concordance.cwl
+id: sga_graph_concordance.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedops_megarow.cwl
+id: bedops_megarow.cwl
 inputs:
 - id: in_chrom
   doc: Jump to and process data for given <chromosome> only.
@@ -21,11 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help-
-- id: in_complement
-  doc: '[-L] File1 [File]*'
-  type: boolean
-  inputBinding:
-    prefix: --complement
 - id: in_difference
   doc: File2 [File]*
   type: File

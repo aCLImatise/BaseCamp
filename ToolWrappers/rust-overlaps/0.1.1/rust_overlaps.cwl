@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rust_overlaps.cwl
+id: rust_overlaps.cwl
 inputs:
 - id: in_edit_distance
   doc: Uses Levenshtein / edit distance instead of Hamming distance

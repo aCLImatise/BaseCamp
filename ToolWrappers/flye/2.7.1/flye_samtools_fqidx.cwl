@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_fqidx.cwl
+id: flye_samtools_fqidx.cwl
 inputs:
 - id: in_output
   doc: Write FASTQ to file.

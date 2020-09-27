@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dgenies_clear.cwl
+id: dgenies_clear.cwl
 inputs:
 - id: in_clear_crons
   doc: "[CRONS], --crons [CRONS]\nClear crons"

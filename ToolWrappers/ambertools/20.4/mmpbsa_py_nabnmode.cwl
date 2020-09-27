@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmpbsa_py_nabnmode.cwl
+id: mmpbsa_py_nabnmode.cwl
 inputs: []
 outputs:
 - id: out_stdout

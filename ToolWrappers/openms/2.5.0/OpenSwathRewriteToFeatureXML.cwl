@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathRewriteToFeatureXML.cwl
+id: OpenSwathRewriteToFeatureXML.cwl
 inputs:
 - id: in_csv
   doc: "MProphet tsv output file: \"all_peakgroups.xls\" (valid formats: 'csv')"

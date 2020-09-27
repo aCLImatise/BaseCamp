@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calib.cwl
+id: calib.cwl
 inputs:
 - id: in__inputforward_type
   doc: '--input-forward                   (type: string;   REQUIRED paramter)'

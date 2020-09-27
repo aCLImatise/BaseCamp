@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dendrogram.cwl
+id: dendrogram.cwl
 inputs:
 - id: in_config
   doc: Configuration file

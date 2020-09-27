@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pdf2ps.cwl
+id: pdf2ps.cwl
 inputs:
 - id: in_d_ascii_eight_five_encode_pages
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_convert_sp_gxf2gxf.pl.cwl
+id: agat_convert_sp_gxf2gxf.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

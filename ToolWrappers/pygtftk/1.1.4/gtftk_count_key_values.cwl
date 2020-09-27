@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_count_key_values.cwl
+id: gtftk_count_key_values.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN. (default: <stdin>)'

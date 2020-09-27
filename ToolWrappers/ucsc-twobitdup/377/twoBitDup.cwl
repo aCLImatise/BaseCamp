@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twoBitDup.cwl
+id: twoBitDup.cwl
 inputs:
 - id: in_key_list
   doc: "- file to write a key list, two columns: md5sum and sequenceName\nNOTE: use\

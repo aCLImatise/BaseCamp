@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_for_ebseq_find_DE.cwl
+id: rsem_for_ebseq_find_DE.cwl
 inputs:
 - id: in_number_of_replicate_for_condition_two
   doc: ''

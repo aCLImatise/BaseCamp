@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_bio.cwl
+id: dsh_bio.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

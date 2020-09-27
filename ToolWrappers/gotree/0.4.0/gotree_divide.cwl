@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_divide.cwl
+id: gotree_divide.cwl
 inputs:
 - id: in_input
   doc: Input tree(s) file (default "stdin")

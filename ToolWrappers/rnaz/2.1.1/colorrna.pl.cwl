@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../colorrna.pl.cwl
+id: colorrna.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

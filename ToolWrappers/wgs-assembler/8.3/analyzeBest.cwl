@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzeBest.cwl
+id: analyzeBest.cwl
 inputs:
 - id: in_c
   doc: ''

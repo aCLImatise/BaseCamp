@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_gwasCat.cwl
+id: SnpSift_gwasCat.cwl
 inputs:
 - id: in_config_file_specify
   doc: ', -config <file>  : Specify config file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate_partitions.py.cwl
+id: annotate_partitions.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

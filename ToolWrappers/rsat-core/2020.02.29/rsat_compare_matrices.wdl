@@ -2,8 +2,6 @@ version 1.0
 
 task RsatComparematrices {
   input {
-    Boolean? format_two
-    Boolean? format_one
     String compare_matrices
     String sequences
     String pssm
@@ -40,13 +38,9 @@ task RsatComparematrices {
       ~{symmetry_dot} \
       ~{mode_dot} \
       ~{graph_exported_yet} \
-      ~{matches_dot} \
-      ~{if (format_two) then "-format2" else ""} \
-      ~{if (format_one) then "-format1" else ""}
+      ~{matches_dot}
   >>>
   parameter_meta {
-    format_two: ")."
-    format_one: ")."
     compare_matrices: "[1mVERSION[0m"
     sequences: "pattern matching"
     pssm: "[1mUSAGE[0m"

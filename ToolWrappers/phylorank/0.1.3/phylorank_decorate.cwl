@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_decorate.cwl
+id: phylorank_decorate.cwl
 inputs:
 - id: in_viral
   doc: indicates a viral input tree and taxonomy

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EvaluateBlastResults.pl.cwl
+id: EvaluateBlastResults.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

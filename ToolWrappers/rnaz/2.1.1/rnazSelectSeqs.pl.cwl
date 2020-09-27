@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazSelectSeqs.pl.cwl
+id: rnazSelectSeqs.pl.cwl
 inputs:
 - id: in_num_seqs
   doc: Number of sequences in the output alignment(s). (Default:6)

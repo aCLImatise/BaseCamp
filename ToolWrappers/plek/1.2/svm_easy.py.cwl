@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svm_easy.py.cwl
+id: svm_easy.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

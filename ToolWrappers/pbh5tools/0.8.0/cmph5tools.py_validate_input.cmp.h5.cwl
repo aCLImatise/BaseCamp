@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmph5tools.py_validate_input.cmp.h5.cwl
+id: cmph5tools.py_validate_input.cmp.h5.cwl
 inputs:
 - id: in_debug
   doc: ''

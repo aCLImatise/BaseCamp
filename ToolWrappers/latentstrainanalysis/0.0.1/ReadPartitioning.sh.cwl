@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadPartitioning.sh.cwl
+id: ReadPartitioning.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

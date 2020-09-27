@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rcexplain.2.cwl
+id: rcexplain.2.cwl
 inputs:
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\
@@ -20,11 +20,6 @@ inputs:
 - id: in_quit_dot
   doc: '-L|--log-level <level>           Logging level as number or enum string. One '
   type: string
-  inputBinding:
-    position: 0
-- id: in_file_dot
-  doc: 'rcexplain.2 : 2.10.8'
-  type: File
   inputBinding:
     position: 0
 outputs:

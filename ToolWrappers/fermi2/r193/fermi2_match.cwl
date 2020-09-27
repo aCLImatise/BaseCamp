@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2_match.cwl
+id: fermi2_match.cwl
 inputs:
 - id: in_find_smems_req
   doc: find SMEMs (req. both strands in one index)

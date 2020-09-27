@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_k_unitigs_large_k2.cwl
+id: create_k_unitigs_large_k2.cwl
 inputs:
 - id: in_mer
   doc: '*k-mer size'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hlp_xtract.txt.cwl
+id: hlp_xtract.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -31,10 +31,6 @@ task F2py {
     Boolean? noarch
     Boolean? debug
     Boolean? lslash_path_slash_to_slash_lib_slash
-    Boolean? define_uname
-    Boolean? i_slash_path_slash_to_slash_include_slash
-    Boolean? d_no_append_fortran
-    Boolean? d_underscore_g_seven_seven
     String directories_dot
   }
   command <<<
@@ -68,11 +64,7 @@ task F2py {
       ~{if (no_opt) then "--noopt" else ""} \
       ~{if (noarch) then "--noarch" else ""} \
       ~{if (debug) then "--debug" else ""} \
-      ~{if (lslash_path_slash_to_slash_lib_slash) then "-L/path/to/lib/" else ""} \
-      ~{if (define_uname) then "-D" else ""} \
-      ~{if (i_slash_path_slash_to_slash_include_slash) then "-I/path/to/include/" else ""} \
-      ~{if (d_no_append_fortran) then "-DNO_APPEND_FORTRAN" else ""} \
-      ~{if (d_underscore_g_seven_seven) then "-DUNDERSCORE_G77" else ""}
+      ~{if (lslash_path_slash_to_slash_lib_slash) then "-L/path/to/lib/" else ""}
   >>>
   parameter_meta {
     two_d_numpy: "Use numpy.f2py tool with NumPy support. [DEFAULT]"
@@ -103,11 +95,7 @@ task F2py {
     no_opt: "Compile without optimization"
     noarch: "Compile without arch-dependent optimization"
     debug: "Compile with debugging information"
-    lslash_path_slash_to_slash_lib_slash: "<libname>"
-    define_uname: "<define> -U<name>"
-    i_slash_path_slash_to_slash_include_slash: ""
-    d_no_append_fortran: ""
-    d_underscore_g_seven_seven: ""
+    lslash_path_slash_to_slash_lib_slash: "<libname>\\n-D<define> -U<name>\\n-I/path/to/include/\\n<filename>.o <filename>.so <filename>.a\\nUsing the following macros may be required with non-gcc Fortran\\ncompilers:\\n-DPREPEND_FORTRAN -DNO_APPEND_FORTRAN -DUPPERCASE_FORTRAN\\n-DUNDERSCORE_G77\\nWhen using -DF2PY_REPORT_ATEXIT, a performance report of F2PY\\ninterface is printed out at exit (platforms: Linux).\\nWhen using -DF2PY_REPORT_ON_ARRAY_COPY=<int>, a message is\\nsent to stderr whenever F2PY interface makes a copy of an\\narray. Integer <int> sets the threshold for array sizes when\\na message should be shown."
     directories_dot: "--help-link [..] List system resources found by system_info.py. See also"
   }
   output {

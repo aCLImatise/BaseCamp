@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scoary.cwl
+id: scoary.cwl
 inputs:
 - id: in_traits
   doc: "Input trait table (comma-separated-values). Trait\npresence is indicated by\

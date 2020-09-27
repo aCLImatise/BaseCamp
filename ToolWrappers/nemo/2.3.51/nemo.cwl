@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nemo.cwl
+id: nemo.cwl
 inputs: []
 outputs:
 - id: out_stdout

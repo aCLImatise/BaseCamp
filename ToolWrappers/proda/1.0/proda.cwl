@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proda.cwl
+id: proda.cwl
 inputs:
 - id: in_fast_a
   doc: ''

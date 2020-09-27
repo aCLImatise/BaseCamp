@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multijob.cwl
+id: multijob.cwl
 inputs: []
 outputs:
 - id: out_stdout

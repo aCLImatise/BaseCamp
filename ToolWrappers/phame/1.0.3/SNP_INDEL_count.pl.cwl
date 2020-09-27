@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SNP_INDEL_count.pl.cwl
+id: SNP_INDEL_count.pl.cwl
 inputs:
 - id: in_perl
   doc: ''

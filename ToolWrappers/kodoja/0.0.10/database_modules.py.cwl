@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../database_modules.py.cwl
+id: database_modules.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

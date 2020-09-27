@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBdust.cwl
+id: DBdust.cwl
 inputs:
 - id: in_b
   doc: ''

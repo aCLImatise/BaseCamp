@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../daligner_p.cwl
+id: daligner_p.cwl
 inputs:
 - id: in_kmer_size_must
   doc: ': k-mer size (must be <= 32).'

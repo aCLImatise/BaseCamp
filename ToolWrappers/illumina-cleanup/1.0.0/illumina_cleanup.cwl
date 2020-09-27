@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illumina_cleanup.cwl
+id: illumina_cleanup.cwl
 inputs:
 - id: in_exports_current_system
   doc: "Exports all current system environment\nDefault: false"

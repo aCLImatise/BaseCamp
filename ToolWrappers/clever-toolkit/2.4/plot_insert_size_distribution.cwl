@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_insert_size_distribution.cwl
+id: plot_insert_size_distribution.cwl
 inputs:
 - id: in_name_output_file
   doc: 'Name of output file (default: <data-file>.pdf).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miso.cwl
+id: miso.cwl
 inputs:
 - id: in_run
   doc: "Compute Psi values for a given GFF annotation of\neither whole mRNA isoforms\

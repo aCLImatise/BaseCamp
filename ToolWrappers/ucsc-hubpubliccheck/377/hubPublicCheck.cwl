@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hubPublicCheck.cwl
+id: hubPublicCheck.cwl
 inputs:
 - id: in_udc_dir
   doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs

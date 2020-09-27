@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipcontext_lst.cwl
+id: clipcontext_lst.cwl
 inputs:
 - id: in_min_len
   doc: "Accept only transcripts with length >= --min-len (default:\nFalse)"

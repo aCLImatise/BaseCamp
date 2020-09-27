@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeidx.pl.cwl
+id: makeidx.pl.cwl
 inputs:
 - id: in_g
   doc: ''

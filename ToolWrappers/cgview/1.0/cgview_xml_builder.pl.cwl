@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgview_xml_builder.pl.cwl
+id: cgview_xml_builder.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

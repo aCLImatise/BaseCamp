@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hulk_sketch.cwl
+id: hulk_sketch.cwl
 inputs:
 - id: in_fast_q
   doc: FASTQ file(s) to sketch (can also pipe in STDIN)

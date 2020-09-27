@@ -16,20 +16,6 @@ task PirsSimulate {
     String? ea_mss
     Int? quality_shift
     Boolean? no_quality_values
-    Boolean? fast_a
-    Boolean? no_subst_errors
-    Boolean? no_substitution_errors
-    Boolean? no_indels
-    Boolean? no_in_del_errors
-    Boolean? no_gc_bias
-    Boolean? no_gc_content_bias
-    String? output_prefix
-    File? output_file_type
-    Boolean? compress
-    Boolean? no_log_files
-    Int? random_seed
-    Int? threads
-    Boolean? quiet
   }
   command <<<
     pirs simulate \
@@ -46,21 +32,7 @@ task PirsSimulate {
       ~{if defined(substitution_error_algorithm) then ("--substitution-error-algorithm " +  '"' + substitution_error_algorithm + '"') else ""} \
       ~{if defined(ea_mss) then ("--eamss " +  '"' + ea_mss + '"') else ""} \
       ~{if defined(quality_shift) then ("--quality-shift " +  '"' + quality_shift + '"') else ""} \
-      ~{if (no_quality_values) then "--no-quality-values" else ""} \
-      ~{if (fast_a) then "--fasta" else ""} \
-      ~{if (no_subst_errors) then "--no-subst-errors" else ""} \
-      ~{if (no_substitution_errors) then "--no-substitution-errors" else ""} \
-      ~{if (no_indels) then "--no-indels" else ""} \
-      ~{if (no_in_del_errors) then "--no-indel-errors" else ""} \
-      ~{if (no_gc_bias) then "--no-gc-bias" else ""} \
-      ~{if (no_gc_content_bias) then "--no-gc-content-bias" else ""} \
-      ~{if defined(output_prefix) then ("--output-prefix " +  '"' + output_prefix + '"') else ""} \
-      ~{if defined(output_file_type) then ("--output-file-type " +  '"' + output_file_type + '"') else ""} \
-      ~{if (compress) then "--compress" else ""} \
-      ~{if (no_log_files) then "--no-log-files" else ""} \
-      ~{if defined(random_seed) then ("--random-seed " +  '"' + random_seed + '"') else ""} \
-      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{if (quiet) then "--quiet" else ""}
+      ~{if (no_quality_values) then "--no-quality-values" else ""}
   >>>
   parameter_meta {
     read_len: "Generate reads having a length of LEN.  Default: 100"
@@ -76,24 +48,9 @@ task PirsSimulate {
     substitution_error_algorithm: "Set the algorithm used for simulating substitition errors.\\nIt may be set to the string \\\"dist\\\" or \\\"qtrans\\\".  The\\ndefault is \\\"qtrans\\\".\\nThe \\\"dist\\\" algorithm looks up the substitution error rate\\nfor each base pair based on the current cycle and the true\\nbase.  This lookup produces a quality score and a called base\\nthat may or may not be the same as the true base.  In the\\nbase-calling profile, the matrix we use is marked as the\\n[DistMatrix].\\nThe \\\"qtrans\\\" algorithm is a Markov-chain model based on the\\nprevious quality score and current cycle.  The next quality\\nscore is looked up with a certain probability based on these\\nparameters.  The matrix used for this is marked as\\n[QTransMatrix] in the base-calling profile. Then, the the\\nDistMatrix is used to find a called base for the quality score.\\nThe DistMatrix is also used to call the base in the first\\ncycle."
     ea_mss: "Use the EAMSS algorithm for masking read quality.  MODE may be\\nthe string \\\"quality\\\" or \\\"lowercase\\\".  The EAMSS algorithm\\nidentifies low-quality, GC-rich regions near the ends of reads.\\n\\\"quality\\\" mode will change the quality scores on these\\nregions to (2 + quality_shift), while \\\"lowercase\\\" mode\\nwill change the base pairs to lower case, but not change\\nthe quality values.  Default: Do not use EAMSS."
     quality_shift: "Set the ASCII shift of the quality value (usually 64 or 33 for\\nIllumina data).  Default: 33"
-    no_quality_values: ""
-    fast_a: "Do not simulate quality values.  The simulated reads will be\\nwritten as a FASTA file rather than a FASTQ file.\\nSubstitution errors may still be done; if you do not want\\nto simulate any substition errors, provide --error-rate=0 or\\n--no-substitution-errors."
-    no_subst_errors: ""
-    no_substitution_errors: "Do not simulate substitution errors.  Equivalent to\\n--error-rate=0."
-    no_indels: ""
-    no_in_del_errors: "Do not simulate indels.  The indel error profile will not be\\nused."
-    no_gc_bias: ""
-    no_gc_content_bias: "Do not simulate GC bias.  The GC bias profile will not be\\nused."
-    output_prefix: "Use PREFIX as the prefix of the output files.  Default:\\n\\\"pirs_reads\\\""
-    output_file_type: "The string \\\"text\\\" or \\\"gzip\\\" to specify the type of\\nthe output FASTQ files containing the simulated reads\\nof the genome, as well as the log files.  Default: \\\"text\\\""
-    compress: "Equivalent to -c gzip."
-    no_log_files: "Do not write the log files."
-    random_seed: "Use SEED as the random seed. Default:\\ntime(NULL) * getpid().  Note: If pIRS was not compiled with\\n--disable-threads, each thread actually uses its own random\\nnumber generator that is seeded by this base seed added to\\nthe thread number; also, if you need pIRS's output to be\\nexactly reproducible, you must specify the random seed as well\\nas use only 1 simulator thread (--threads=1, or configure\\nwith --disable-threads, or run on system with 4 or fewer\\nprocessors)."
-    threads: "Use NUM_THREADS threads to simulate reads.  This option is\\nnot available if pIRS was compiled with the --disable-threads\\noption.  Default: number of processors minus 2 if writing\\nuncompressed output, or number of processors minus 3 if\\nwriting compressed output, or 1 if there are not this many\\nprocessors."
-    quiet: "Do not print informational messages."
+    no_quality_values: "--fasta\\nDo not simulate quality values.  The simulated reads will be\\nwritten as a FASTA file rather than a FASTQ file.\\nSubstitution errors may still be done; if you do not want\\nto simulate any substition errors, provide --error-rate=0 or\\n--no-substitution-errors.\\n--no-subst-errors\\n--no-substitution-errors\\nDo not simulate substitution errors.  Equivalent to\\n--error-rate=0.\\n--no-indels\\n--no-indel-errors\\nDo not simulate indels.  The indel error profile will not be\\nused.\\n--no-gc-bias\\n--no-gc-content-bias\\nDo not simulate GC bias.  The GC bias profile will not be\\nused.\\n-o PREFIX, --output-prefix=PREFIX\\nUse PREFIX as the prefix of the output files.  Default:\\n\\\"pirs_reads\\\"\\n-c TYPE, --output-file-type=TYPE\\nThe string \\\"text\\\" or \\\"gzip\\\" to specify the type of\\nthe output FASTQ files containing the simulated reads\\nof the genome, as well as the log files.  Default: \\\"text\\\"\\n-z, --compress\\nEquivalent to -c gzip.\\n-n, --no-logs, --no-log-files\\nDo not write the log files.\\n-S SEED, --random-seed=SEED\\nUse SEED as the random seed. Default:\\ntime(NULL) * getpid().  Note: If pIRS was not compiled with\\n--disable-threads, each thread actually uses its own random\\nnumber generator that is seeded by this base seed added to\\nthe thread number; also, if you need pIRS's output to be\\nexactly reproducible, you must specify the random seed as well\\nas use only 1 simulator thread (--threads=1, or configure\\nwith --disable-threads, or run on system with 4 or fewer\\nprocessors).\\n-t, --threads=NUM_THREADS\\nUse NUM_THREADS threads to simulate reads.  This option is\\nnot available if pIRS was compiled with the --disable-threads\\noption.  Default: number of processors minus 2 if writing\\nuncompressed output, or number of processors minus 3 if\\nwriting compressed output, or 1 if there are not this many\\nprocessors.\\n-q, --quiet    Do not print informational messages.\\n-h, --help     Show this help and exit.\\n-V, --version  Show version information and exit.\\n"
   }
   output {
     File out_stdout = stdout()
-    File out_output_file_type = "${in_output_file_type}"
   }
 }

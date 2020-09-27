@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kchashtest.cwl
+id: kchashtest.cwl
 inputs:
 - id: in_hard
   doc: ''

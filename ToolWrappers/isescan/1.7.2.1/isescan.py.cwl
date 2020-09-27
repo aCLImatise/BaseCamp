@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isescan.py.cwl
+id: isescan.py.cwl
 inputs:
 - id: in_remove_short_is
   doc: "remove incomplete (partial) IS elements which include IS\nelement with length\

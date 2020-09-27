@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_random.cwl
+id: goalign_random.cwl
 inputs:
 - id: in_amino_acids
   doc: Aminoacid sequences (otherwise, nucleotides)

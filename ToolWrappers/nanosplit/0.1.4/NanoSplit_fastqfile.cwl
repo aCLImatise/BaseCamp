@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoSplit_fastqfile.cwl
+id: NanoSplit_fastqfile.cwl
 inputs:
 - id: in_outdir
   doc: ''

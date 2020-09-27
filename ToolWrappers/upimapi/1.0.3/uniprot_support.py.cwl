@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniprot_support.py.cwl
+id: uniprot_support.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

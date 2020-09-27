@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intrahost.py_Fws.cwl
+id: intrahost.py_Fws.cwl
 inputs:
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'

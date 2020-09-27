@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_mk_matrix.cwl
+id: gtftk_mk_matrix.cwl
 inputs:
 - id: in_input_file
   doc: 'A GTF file or bed file. A GTF if <stdin>. (default: <stdin>)'

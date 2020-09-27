@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_sizes.cwl
+id: pyatac_sizes.cwl
 inputs:
 - id: in_bam
   doc: Aligned reads

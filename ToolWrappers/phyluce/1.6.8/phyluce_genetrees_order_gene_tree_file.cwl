@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_order_gene_tree_file.cwl
+id: phyluce_genetrees_order_gene_tree_file.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bar_chart.py.cwl
+id: bar_chart.py.cwl
 inputs:
 - id: in_agg
   doc: "Two column input format, space seperated with\nvalue<space>key"

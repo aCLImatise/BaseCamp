@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runcon.cwl
+id: runcon.cwl
 inputs:
 - id: in_compute
   doc: compute process transition context before modifying

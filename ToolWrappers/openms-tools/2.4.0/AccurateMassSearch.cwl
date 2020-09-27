@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AccurateMassSearch.cwl
+id: AccurateMassSearch.cwl
 inputs:
 - id: in_in
   doc: "*                FeatureXML or consensusXML file (valid formats: 'featureXML',\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamrecompress.cwl
+id: bamrecompress.cwl
 inputs: []
 outputs:
 - id: out_stdout

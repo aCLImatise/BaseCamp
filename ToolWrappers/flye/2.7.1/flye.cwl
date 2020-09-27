@@ -1,16 +1,14 @@
 class: CommandLineTool
-id: ../../../flye.cwl
+id: flye.cwl
 inputs:
 - id: in_nano_corr
-  doc: '| --subassemblies) file1 [file_2 ...]'
+  doc: "| --subassemblies) file1 [file_2 ...]\n--genome-size SIZE --out-dir PATH\n\
+    [--threads int] [--iterations int] [--min-overlap int]\n[--meta] [--plasmids]\
+    \ [--trestle] [--polish-target]\n[--keep-haplotypes] [--debug] [--version] [--help]\n\
+    [--resume] [--resume-from] [--stop-after]"
   type: boolean
   inputBinding:
     prefix: --nano-corr
-- id: in_genome_size
-  doc: estimated genome size (for example, 5m or 2.6g)
-  type: long
-  inputBinding:
-    prefix: --genome-size
 - id: in_pac_bio_raw
   doc: PacBio raw reads
   type: File[]
@@ -36,6 +34,11 @@ inputs:
   type: File[]
   inputBinding:
     prefix: --subassemblies
+- id: in_genome_size
+  doc: estimated genome size (for example, 5m or 2.6g)
+  type: long
+  inputBinding:
+    prefix: --genome-size
 - id: in_out_dir
   doc: Output directory
   type: Directory

@@ -33,7 +33,7 @@ subcommands:
     - --all-occurrences
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id029 !Command
+  parent: &id031 !Command
     command: *id001
     positional: []
     named: []
@@ -65,7 +65,7 @@ subcommands:
         - --all-occurrences
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id029 !Command
         command: *id001
         positional: []
         named: []
@@ -97,7 +97,1162 @@ subcommands:
             - --all-occurrences
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: FASTQ file to be validated.
+                synonyms:
+                - -i
+                - --fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Treat warnings as errors.
+                synonyms:
+                - -w
+                - --warnings-as-errors
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Report all occurrences of warnings and errors.\n"
+                synonyms:
+                - -a
+                - --all-occurrences
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools validate [-h] -i file [-w] [-a]\n\nValidate\
+                \ RNF names in a FASTQ file.\n\noptional arguments:\n  -h, --help\
+                \            show this help message and exit\n  -i file, --fastq file\n\
+                \                        FASTQ file to be validated.\n  -w, --warnings-as-errors\n\
+                \                        Treat warnings as errors.\n  -a, --all-occurrences\n\
+                \                        Report all occurrences of warnings and errors.\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id006
+              - rnftools
+              - curesim2rnf
+              positional: []
+              named:
+              - !Flag
+                description: CuReSim FASTQ file (- for standard input).
+                synonyms:
+                - -c
+                - --curesim-fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Output FASTQ file (- for standard output).
+                synonyms:
+                - -o
+                - --rnf-fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "FAI index of the reference FASTA file (- for standard\n\
+                  input). It can be created using 'samtools faidx'."
+                synonyms:
+                - -x
+                - --faidx
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Genome ID in RNF (default: 1).\n"
+                synonyms:
+                - -g
+                - --genome-id
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools curesim2rnf [-h] -c file -o file -x file\
+                \ [-g int]\n\nConvert a CuReSim FASTQ file to RNF-FASTQ.\n\noptional\
+                \ arguments:\n  -h, --help            show this help message and exit\n\
+                \  -c file, --curesim-fastq file\n                        CuReSim\
+                \ FASTQ file (- for standard input).\n  -o file, --rnf-fastq file\n\
+                \                        Output FASTQ file (- for standard output).\n\
+                \  -x file, --faidx file\n                        FAI index of the\
+                \ reference FASTA file (- for standard\n                        input).\
+                \ It can be created using 'samtools faidx'.\n  -g int, --genome-id\
+                \ int\n                        Genome ID in RNF (default: 1).\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - rnftools
+              - dwgsim2rnf
+              positional: []
+              named:
+              - !Flag
+                description: Prefix for DwgSim.
+                synonyms:
+                - -p
+                - --dwgsim-prefix
+                args: !SimpleFlagArg
+                  name: str
+                optional: true
+              - !Flag
+                description: Estimate unknown values.
+                synonyms:
+                - -e
+                - --estimate-unknown
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Output FASTQ file (- for standard output).
+                synonyms:
+                - -o
+                - --rnf-fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "FAI index of the reference FASTA file (- for standard\n\
+                  input). It can be created using 'samtools faidx'."
+                synonyms:
+                - -x
+                - --faidx
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Genome ID in RNF (default: 1).\n"
+                synonyms:
+                - -g
+                - --genome-id
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools dwgsim2rnf [-h] -p str [-e] -o file -x file\
+                \ [-g int]\n\nConvert a DwgSim FASTQ file (dwgsim_prefix.bfast.fastq)\
+                \ to RNF-FASTQ.\n\noptional arguments:\n  -h, --help            show\
+                \ this help message and exit\n  -p str, --dwgsim-prefix str\n    \
+                \                    Prefix for DwgSim.\n  -e, --estimate-unknown\n\
+                \                        Estimate unknown values.\n  -o file, --rnf-fastq\
+                \ file\n                        Output FASTQ file (- for standard\
+                \ output).\n  -x file, --faidx file\n                        FAI index\
+                \ of the reference FASTA file (- for standard\n                  \
+                \      input). It can be created using 'samtools faidx'.\n  -g int,\
+                \ --genome-id int\n                        Genome ID in RNF (default:\
+                \ 1).\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - rnftools
+              - check
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: rnftools
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools [-h]\n                {,check,publication,validate,liftover,sam2rnf,art2rnf,curesim2rnf,dwgsim2rnf,mason2rnf,wgsim2rnf,merge,sam2es,es2et,et2roc,sam2roc}\n\
+                \                ...\nrnftools: error: unrecognized arguments: --usage\n"
+              generated_using: &id009
+              - --usage
+            - !Command
+              command: &id010
+              - rnftools
+              - merge
+              positional: []
+              named:
+              - !Flag
+                description: input FASTQ files
+                synonyms:
+                - -i
+                args: !RepeatFlagArg
+                  name: inp
+                optional: true
+              - !Flag
+                description: mode for mergeing files (single-end / paired-end-bwa
+                  / paired-end-bfast)
+                synonyms:
+                - -m
+                args: !SimpleFlagArg
+                  name: mode
+                optional: true
+              - !Flag
+                description: output prefix
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: out
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools merge [-h] -i inp [inp ...] -m mode -o out\n\
+                \ntodo\n\noptional arguments:\n  -h, --help        show this help\
+                \ message and exit\n  -i inp [inp ...]  input FASTQ files\n  -m mode\
+                \           mode for mergeing files (single-end / paired-end-bwa /\
+                \ paired-end-bfast)\n  -o out            output prefix\n\nSource RNF-FASTQ\
+                \ files should satisfy the following conditions:\n\t1) Each file contains\
+                \ only reads corresponding to one genome (with the\n\t   same genome\
+                \ id).\n\t2) All files contain reads of the same type (single-end\
+                \ / paired-end).\n\t3) Reads with more reads per tuple (e.g., paired-end)\
+                \ have '/1', etc.\n\t   in suffix (for identification of nb of read).\n"
+              generated_using: *id004
+            - !Command
+              command: &id011
+              - rnftools
+              - sam2rnf
+              positional: []
+              named:
+              - !Flag
+                description: "Input SAM/BAM with true (expected) alignments of the\n\
+                  reads (- for standard input)."
+                synonyms:
+                - -s
+                - --sam
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Output FASTQ file (- for standard output).
+                synonyms:
+                - -o
+                - --rnf-fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "FAI index of the reference FASTA file (- for standard\n\
+                  input). It can be created using 'samtools faidx'."
+                synonyms:
+                - -x
+                - --faidx
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: 'Genome ID in RNF (default: 1).'
+                synonyms:
+                - -g
+                - --genome-id
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: Allow unmapped reads.
+                synonyms:
+                - -u
+                - --allow-unmapped
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools sam2rnf [-h] -s file -o file -x file [-g\
+                \ int] [-u]\n\nConvert a SAM/BAM file to RNF-FASTQ.\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -s file,\
+                \ --sam file   Input SAM/BAM with true (expected) alignments of the\n\
+                \                        reads (- for standard input).\n  -o file,\
+                \ --rnf-fastq file\n                        Output FASTQ file (- for\
+                \ standard output).\n  -x file, --faidx file\n                   \
+                \     FAI index of the reference FASTA file (- for standard\n    \
+                \                    input). It can be created using 'samtools faidx'.\n\
+                \  -g int, --genome-id int\n                        Genome ID in RNF\
+                \ (default: 1).\n  -u, --allow-unmapped  Allow unmapped reads.\n"
+              generated_using: *id004
+            - !Command
+              command: &id012
+              - rnftools
+              - liftover
+              positional:
+              - !Positional
+                description: Input file to be transformed (- for standard input).
+                position: 0
+                name: input
+                optional: false
+              - !Positional
+                description: Output file to be transformed (- for standard output).
+                position: 1
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: "Chain liftover file for coordinates transformation.\n\
+                  [no transformation]"
+                synonyms:
+                - -c
+                - --chain
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: ID of genome to be transformed.
+                synonyms:
+                - -g
+                - --genome-id
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: "Fasta index of the reference sequence. [extract from\n\
+                  chain file]"
+                synonyms:
+                - -x
+                - --faidx
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Invert chain file (transformation in the other\ndirection)."
+                synonyms:
+                - --invert
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Input format (SAM/BAM/FASTQ). [autodetect]
+                synonyms:
+                - --input-format
+                args: !SimpleFlagArg
+                  name: str
+                optional: true
+              - !Flag
+                description: Output format (SAM/BAM/FASTQ). [autodetect]
+                synonyms:
+                - --output-format
+                args: !SimpleFlagArg
+                  name: str
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools liftover [-h] [-c file] -g int [-x file]\
+                \ [--invert]\n                         [--input-format str] [--output-format\
+                \ str]\n                         input output\n\nLiftover genomic\
+                \ coordinates in RNF names in a SAM/BAM files or in a FASTQ\nfile.\n\
+                \npositional arguments:\n  input                 Input file to be\
+                \ transformed (- for standard input).\n  output                Output\
+                \ file to be transformed (- for standard output).\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -c file,\
+                \ --chain file\n                        Chain liftover file for coordinates\
+                \ transformation.\n                        [no transformation]\n \
+                \ -g int, --genome-id int\n                        ID of genome to\
+                \ be transformed.\n  -x file, --faidx file\n                     \
+                \   Fasta index of the reference sequence. [extract from\n       \
+                \                 chain file]\n  --invert              Invert chain\
+                \ file (transformation in the other\n                        direction).\n\
+                \  --input-format str    Input format (SAM/BAM/FASTQ). [autodetect]\n\
+                \  --output-format str   Output format (SAM/BAM/FASTQ). [autodetect]\n"
+              generated_using: *id004
+            - !Command
+              command: &id013
+              - rnftools
+              - art2rnf
+              positional: []
+              named:
+              - !Flag
+                description: "Input SAM/BAM with true (expected) alignments of the\n\
+                  reads (- for standard input)."
+                synonyms:
+                - -s
+                - --sam
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Output FASTQ file (- for standard output).
+                synonyms:
+                - -o
+                - --rnf-fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "FAI index of the reference FASTA file (- for standard\n\
+                  input). It can be created using 'samtools faidx'."
+                synonyms:
+                - -x
+                - --faidx
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: 'Genome ID in RNF (default: 1).'
+                synonyms:
+                - -g
+                - --genome-id
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: Allow unmapped reads.
+                synonyms:
+                - -u
+                - --allow-unmapped
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Name of the simulator (for RNF).\n"
+                synonyms:
+                - -n
+                - --simulator-name
+                args: !SimpleFlagArg
+                  name: str
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools art2rnf [-h] -s file -o file -x file [-g\
+                \ int] [-u] [-n str]\n\nConvert an Art SAM file to RNF-FASTQ. Note\
+                \ that Art produces non-standard SAM\nfiles and manual editation might\
+                \ be necessary. In particular, when a FASTA\nfile contains comments,\
+                \ Art left them in the sequence name. Comments must be\nremoved in\
+                \ their corresponding @SQ headers in the SAM file, otherwise all\n\
+                reads are considered to be unmapped by this script.\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -s file,\
+                \ --sam file   Input SAM/BAM with true (expected) alignments of the\n\
+                \                        reads (- for standard input).\n  -o file,\
+                \ --rnf-fastq file\n                        Output FASTQ file (- for\
+                \ standard output).\n  -x file, --faidx file\n                   \
+                \     FAI index of the reference FASTA file (- for standard\n    \
+                \                    input). It can be created using 'samtools faidx'.\n\
+                \  -g int, --genome-id int\n                        Genome ID in RNF\
+                \ (default: 1).\n  -u, --allow-unmapped  Allow unmapped reads.\n \
+                \ -n str, --simulator-name str\n                        Name of the\
+                \ simulator (for RNF).\n"
+              generated_using: *id004
+            - !Command
+              command: &id014
+              - rnftools
+              - wgsim2rnf
+              positional: []
+              named:
+              - !Flag
+                description: First WgSim FASTQ file (- for standard input)
+                synonyms:
+                - '-1'
+                - --wgsim-fastq-1
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Second WgSim FASTQ file (in case of paired-end reads,\n\
+                  default: none)."
+                synonyms:
+                - '-2'
+                - --wgsim-fastq-2
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Output FASTQ file (- for standard output).
+                synonyms:
+                - -o
+                - --rnf-fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "FAI index of the reference FASTA file (- for standard\n\
+                  input). It can be created using 'samtools faidx'."
+                synonyms:
+                - -x
+                - --faidx
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: 'Genome ID in RNF (default: 1).'
+                synonyms:
+                - -g
+                - --genome-id
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: Allow unmapped reads.
+                synonyms:
+                - -u
+                - --allow-unmapped
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools wgsim2rnf [-h] -1 file [-2 file] -o file\
+                \ -x file [-g int] [-u]\n\nConvert WgSim FASTQ files to RNF-FASTQ.\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  -1 file, --wgsim-fastq-1 file\n                    \
+                \    First WgSim FASTQ file (- for standard input)\n  -2 file, --wgsim-fastq-2\
+                \ file\n                        Second WgSim FASTQ file (in case of\
+                \ paired-end reads,\n                        default: none).\n  -o\
+                \ file, --rnf-fastq file\n                        Output FASTQ file\
+                \ (- for standard output).\n  -x file, --faidx file\n            \
+                \            FAI index of the reference FASTA file (- for standard\n\
+                \                        input). It can be created using 'samtools\
+                \ faidx'.\n  -g int, --genome-id int\n                        Genome\
+                \ ID in RNF (default: 1).\n  -u, --allow-unmapped  Allow unmapped\
+                \ reads.\n"
+              generated_using: *id004
+            - !Command
+              command: &id015
+              - rnftools
+              - mason2rnf
+              positional: []
+              named:
+              - !Flag
+                description: "Input SAM/BAM with true (expected) alignments of the\n\
+                  reads (- for standard input)."
+                synonyms:
+                - -s
+                - --sam
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Output FASTQ file (- for standard output).
+                synonyms:
+                - -o
+                - --rnf-fastq
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "FAI index of the reference FASTA file (- for standard\n\
+                  input). It can be created using 'samtools faidx'."
+                synonyms:
+                - -x
+                - --faidx
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: 'Genome ID in RNF (default: 1).'
+                synonyms:
+                - -g
+                - --genome-id
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              - !Flag
+                description: Allow unmapped reads.
+                synonyms:
+                - -u
+                - --allow-unmapped
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Name of the simulator (for RNF).\n"
+                synonyms:
+                - -n
+                - --simulator-name
+                args: !SimpleFlagArg
+                  name: str
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools mason2rnf [-h] -s file -o file -x file [-g\
+                \ int] [-u] [-n str]\n\nConvert a Mason SAM file to RNF-FASTQ.\n\n\
+                optional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  -s file, --sam file   Input SAM/BAM with true (expected)\
+                \ alignments of the\n                        reads (- for standard\
+                \ input).\n  -o file, --rnf-fastq file\n                        Output\
+                \ FASTQ file (- for standard output).\n  -x file, --faidx file\n \
+                \                       FAI index of the reference FASTA file (- for\
+                \ standard\n                        input). It can be created using\
+                \ 'samtools faidx'.\n  -g int, --genome-id int\n                 \
+                \       Genome ID in RNF (default: 1).\n  -u, --allow-unmapped  Allow\
+                \ unmapped reads.\n  -n str, --simulator-name str\n              \
+                \          Name of the simulator (for RNF).\n"
+              generated_using: *id004
+            - !Command
+              command: &id016
+              - rnftools
+              - sam2es
+              positional: []
+              named:
+              - !Flag
+                description: SAM/BAM with aligned RNF reads(- for standard input).
+                synonyms:
+                - -i
+                - --sam
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Output ES file (evaluated segments, - for standard\n\
+                  output)."
+                synonyms:
+                - -o
+                - --es
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Tolerance of difference of coordinates between true\n\
+                  (i.e., expected) alignment and real alignment (very\nimportant parameter!)\
+                  \ (default: 5).\n"
+                synonyms:
+                - -d
+                - --allowed-delta
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools sam2es [-h] -i file -o file [-d int]\n\n\
+                todo\n\noptional arguments:\n  -h, --help            show this help\
+                \ message and exit\n  -i file, --sam file   SAM/BAM with aligned RNF\
+                \ reads(- for standard input).\n  -o file, --es file    Output ES\
+                \ file (evaluated segments, - for standard\n                     \
+                \   output).\n  -d int, --allowed-delta int\n                    \
+                \    Tolerance of difference of coordinates between true\n       \
+                \                 (i.e., expected) alignment and real alignment (very\n\
+                \                        important parameter!) (default: 5).\n"
+              generated_using: *id004
+            - !Command
+              command: &id017
+              - rnftools
+              - es2et
+              positional: []
+              named:
+              - !Flag
+                description: "Input ES file (evaluated segments, - for standard\n\
+                  input)."
+                synonyms:
+                - -i
+                - --es
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Output ET file (evaluated read tuples, - for standard\n\
+                  output).\n"
+                synonyms:
+                - -o
+                - --et
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools es2et [-h] -i file -o file\n\ntodo\n\noptional\
+                \ arguments:\n  -h, --help          show this help message and exit\n\
+                \  -i file, --es file  Input ES file (evaluated segments, - for standard\n\
+                \                      input).\n  -o file, --et file  Output ET file\
+                \ (evaluated read tuples, - for standard\n                      output).\n"
+              generated_using: *id004
+            - !Command
+              command: &id018
+              - rnftools
+              - et2roc
+              positional: []
+              named:
+              - !Flag
+                description: "Input ET file (evaluated read tuples, - for standard\n\
+                  input)."
+                synonyms:
+                - -i
+                - --et
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Output ROC file (evaluated reads, - for standard\noutput).\n"
+                synonyms:
+                - -o
+                - --roc
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools et2roc [-h] -i file -o file\n\ntodo\n\n\
+                optional arguments:\n  -h, --help           show this help message\
+                \ and exit\n  -i file, --et file   Input ET file (evaluated read tuples,\
+                \ - for standard\n                       input).\n  -o file, --roc\
+                \ file  Output ROC file (evaluated reads, - for standard\n       \
+                \                output).\n"
+              generated_using: *id004
+            - &id005 !Command
+              command: &id019
+              - rnftools
+              - publication
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id020
+                - rnftools
+                - publication
+                - pmid
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: rnftools
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: publication
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: rnftools publication [-h]\n\nPrint information\
+                  \ about the associated publication.\n\noptional arguments:\n  -h,\
+                  \ --help  show this help message and exit\n"
+                generated_using: *id004
+              - !Command
+                command: &id021
+                - rnftools
+                - publication
+                - doi
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: rnftools
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: publication
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: rnftools publication [-h]\n\nPrint information\
+                  \ about the associated publication.\n\noptional arguments:\n  -h,\
+                  \ --help  show this help message and exit\n"
+                generated_using: *id004
+              - !Command
+                command: &id022
+                - rnftools
+                - publication
+                - title
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: rnftools
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: publication
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: rnftools publication [-h]\n\nPrint information\
+                  \ about the associated publication.\n\noptional arguments:\n  -h,\
+                  \ --help  show this help message and exit\n"
+                generated_using: *id004
+              - !Command
+                command: &id023
+                - rnftools
+                - publication
+                - number
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: rnftools
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: publication
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: rnftools publication [-h]\n\nPrint information\
+                  \ about the associated publication.\n\noptional arguments:\n  -h,\
+                  \ --help  show this help message and exit\n"
+                generated_using: *id004
+              - !Command
+                command: &id024
+                - rnftools
+                - publication
+                - year
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: rnftools
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: publication
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: rnftools publication [-h]\n\nPrint information\
+                  \ about the associated publication.\n\noptional arguments:\n  -h,\
+                  \ --help  show this help message and exit\n"
+                generated_using: *id004
+              - !Command
+                command: &id025
+                - rnftools
+                - publication
+                - author
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: rnftools
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: publication
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: rnftools publication [-h]\n\nPrint information\
+                  \ about the associated publication.\n\noptional arguments:\n  -h,\
+                  \ --help  show this help message and exit\n"
+                generated_using: *id004
+              - !Command
+                command: &id026
+                - rnftools
+                - publication
+                - volume
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: rnftools
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: publication
+                  optional: false
+                named: []
+                parent: *id005
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: rnftools publication [-h]\n\nPrint information\
+                  \ about the associated publication.\n\noptional arguments:\n  -h,\
+                  \ --help  show this help message and exit\n"
+                generated_using: *id004
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "\n--------------------------------------------------------------------------------------------\n\
+                \  K. Brinda, V. Boeva, G. Kucherov: RNF: a general framework to evaluate\
+                \ NGS read mappers.\n        Bioinformatics (2016) 32(1): 136-139.\
+                \ [DOI:10.1093/bioinformatics/btv524].\n--------------------------------------------------------------------------------------------\n\
+                \n@article{rnftools,\n\tauthor  = {B{\\v r}inda, Karel AND Boeva,\
+                \ Valentina AND Kucherov, Gregory},\n\ttitle   = {RNF: a general framework\
+                \ to evaluate NGS read mappers},\n\tjournal = {Bioinformatics},\n\t\
+                year    = {2016},\n\tnumber  = {1},\n\tvolume  = {32},\n\tpmid   \
+                \ = {26353839},\n\tdoi     = {10.1093/bioinformatics/btv524}\n}\n\n"
+              generated_using: &id027 []
+            - !Command
+              command: &id028
+              - rnftools
+              - sam2roc
+              positional: []
+              named:
+              - !Flag
+                description: SAM/BAM with aligned RNF reads(- for standard input).
+                synonyms:
+                - -i
+                - --sam
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Output ROC file (- for standard output).
+                synonyms:
+                - -o
+                - --roc
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: "Tolerance of difference of coordinates between true\n\
+                  (i.e., expected) alignment and real alignment (very\nimportant parameter!)\
+                  \ (default: 5).\n"
+                synonyms:
+                - -d
+                - --allowed-delta
+                args: !SimpleFlagArg
+                  name: int
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rnftools sam2roc [-h] -i file -o file [-d int]\n\n\
+                todo\n\noptional arguments:\n  -h, --help            show this help\
+                \ message and exit\n  -i file, --sam file   SAM/BAM with aligned RNF\
+                \ reads(- for standard input).\n  -o file, --roc file   Output ROC\
+                \ file (- for standard output).\n  -d int, --allowed-delta int\n \
+                \                       Tolerance of difference of coordinates between\
+                \ true\n                        (i.e., expected) alignment and real\
+                \ alignment (very\n                        important parameter!) (default:\
+                \ 5).\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: rnftools [-h]\n                {,check,publication,validate,liftover,sam2rnf,art2rnf,curesim2rnf,dwgsim2rnf,mason2rnf,wgsim2rnf,merge,sam2es,es2et,et2roc,sam2roc}\n\
+              \                ...\n\n==================================================\n\
+              RNFtools -  http://karel-brinda.github.io/rnftools\n--------------------------------------------------\n\
+              version: 0.3.1.3\ncontact: Karel Brinda (karel.brinda@univ-mlv.fr)\n\
+              ==================================================\n\npositional arguments:\n\
+              \  {,check,publication,validate,liftover,sam2rnf,art2rnf,curesim2rnf,dwgsim2rnf,mason2rnf,wgsim2rnf,merge,sam2es,es2et,et2roc,sam2roc}\n\
+              \    \n    check               Check for the latest version.\n    publication\
+              \         Print information about the associated publication.\n    validate\
+              \            Validate RNF names in a FASTQ file.\n    liftover     \
+              \       Liftover genomic coordinates in RNF names.\n    \n         \
+              \               ---------------------[MIShmash]---------------------\n\
+              \    sam2rnf             Convert a SAM/BAM file to RNF-FASTQ.\n    art2rnf\
+              \             Convert output of Art to RNF-FASTQ.\n    curesim2rnf \
+              \        Convert output of CuReSim to RNF-FASTQ.\n    dwgsim2rnf   \
+              \       Convert output of DwgSim to RNF-FASTQ.\n    mason2rnf      \
+              \     Convert output of Mason to RNF-FASTQ.\n    wgsim2rnf         \
+              \  Convert output of WgSim to RNF-FASTQ.\n    merge               Merge\
+              \ RNF-FASTQ files and convert the output to\n                      \
+              \  'traditional' FASTQ.\n    \n                        ---------------------[LAVEnder]---------------------\n\
+              \    sam2es              Convert SAM/BAM with reads in RNF to ES (evaluation\
+              \ of\n                        segments).\n    es2et               Convert\
+              \ ES to ET (evaluation of read tuples).\n    et2roc              Convert\
+              \ ET to ROC (final statistics).\n    sam2roc             Previous three\
+              \ steps in a single command.\n\noptional arguments:\n  -h, --help  \
+              \          show this help message and exit\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -115,12 +1270,9 @@ subcommands:
             \                      FASTQ file to be validated.\n  -w, --warnings-as-errors\n\
             \                        Treat warnings as errors.\n  -a, --all-occurrences\n\
             \                        Report all occurrences of warnings and errors.\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id006
-          - rnftools
-          - curesim2rnf
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -180,9 +1332,7 @@ subcommands:
             \ 1).\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - rnftools
-          - dwgsim2rnf
+          command: *id007
           positional: []
           named:
           - !Flag
@@ -250,9 +1400,7 @@ subcommands:
             \                 Genome ID in RNF (default: 1).\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - rnftools
-          - check
+          command: *id008
           positional:
           - !Positional
             description: ''
@@ -273,12 +1421,9 @@ subcommands:
           version_flag:
           help_text: "usage: rnftools [-h]\n                {,check,publication,validate,liftover,sam2rnf,art2rnf,curesim2rnf,dwgsim2rnf,mason2rnf,wgsim2rnf,merge,sam2es,es2et,et2roc,sam2roc}\n\
             \                ...\nrnftools: error: unrecognized arguments: --usage\n"
-          generated_using: &id009
-          - --usage
+          generated_using: *id009
         - !Command
-          command: &id010
-          - rnftools
-          - merge
+          command: *id010
           positional: []
           named:
           - !Flag
@@ -326,9 +1471,7 @@ subcommands:
             \ identification of nb of read).\n"
           generated_using: *id004
         - !Command
-          command: &id011
-          - rnftools
-          - sam2rnf
+          command: *id011
           positional: []
           named:
           - !Flag
@@ -397,9 +1540,7 @@ subcommands:
             \  Allow unmapped reads.\n"
           generated_using: *id004
         - !Command
-          command: &id012
-          - rnftools
-          - liftover
+          command: *id012
           positional:
           - !Positional
             description: Input file to be transformed (- for standard input).
@@ -489,9 +1630,7 @@ subcommands:
             \ [autodetect]\n"
           generated_using: *id004
         - !Command
-          command: &id013
-          - rnftools
-          - art2rnf
+          command: *id013
           positional: []
           named:
           - !Flag
@@ -574,9 +1713,7 @@ subcommands:
             \             Name of the simulator (for RNF).\n"
           generated_using: *id004
         - !Command
-          command: &id014
-          - rnftools
-          - wgsim2rnf
+          command: *id014
           positional: []
           named:
           - !Flag
@@ -655,9 +1792,7 @@ subcommands:
             \  Allow unmapped reads.\n"
           generated_using: *id004
         - !Command
-          command: &id015
-          - rnftools
-          - mason2rnf
+          command: *id015
           positional: []
           named:
           - !Flag
@@ -735,9 +1870,7 @@ subcommands:
             \ str\n                        Name of the simulator (for RNF).\n"
           generated_using: *id004
         - !Command
-          command: &id016
-          - rnftools
-          - sam2es
+          command: *id016
           positional: []
           named:
           - !Flag
@@ -789,9 +1922,7 @@ subcommands:
             \ parameter!) (default: 5).\n"
           generated_using: *id004
         - !Command
-          command: &id017
-          - rnftools
-          - es2et
+          command: *id017
           positional: []
           named:
           - !Flag
@@ -830,9 +1961,7 @@ subcommands:
             \ read tuples, - for standard\n                      output).\n"
           generated_using: *id004
         - !Command
-          command: &id018
-          - rnftools
-          - et2roc
+          command: *id018
           positional: []
           named:
           - !Flag
@@ -869,19 +1998,14 @@ subcommands:
             \                       input).\n  -o file, --roc file  Output ROC file\
             \ (evaluated reads, - for standard\n                       output).\n"
           generated_using: *id004
-        - &id005 !Command
-          command: &id019
-          - rnftools
-          - publication
+        - &id030 !Command
+          command: *id019
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id020
-            - rnftools
-            - publication
-            - pmid
+            command: *id020
             positional:
             - !Positional
               description: ''
@@ -911,10 +2035,7 @@ subcommands:
               \ show this help message and exit\n"
             generated_using: *id004
           - !Command
-            command: &id021
-            - rnftools
-            - publication
-            - doi
+            command: *id021
             positional:
             - !Positional
               description: ''
@@ -944,10 +2065,7 @@ subcommands:
               \ show this help message and exit\n"
             generated_using: *id004
           - !Command
-            command: &id022
-            - rnftools
-            - publication
-            - title
+            command: *id022
             positional:
             - !Positional
               description: ''
@@ -977,10 +2095,7 @@ subcommands:
               \ show this help message and exit\n"
             generated_using: *id004
           - !Command
-            command: &id023
-            - rnftools
-            - publication
-            - number
+            command: *id023
             positional:
             - !Positional
               description: ''
@@ -1010,10 +2125,7 @@ subcommands:
               \ show this help message and exit\n"
             generated_using: *id004
           - !Command
-            command: &id024
-            - rnftools
-            - publication
-            - year
+            command: *id024
             positional:
             - !Positional
               description: ''
@@ -1043,10 +2155,7 @@ subcommands:
               \ show this help message and exit\n"
             generated_using: *id004
           - !Command
-            command: &id025
-            - rnftools
-            - publication
-            - author
+            command: *id025
             positional:
             - !Positional
               description: ''
@@ -1076,10 +2185,7 @@ subcommands:
               \ show this help message and exit\n"
             generated_using: *id004
           - !Command
-            command: &id026
-            - rnftools
-            - publication
-            - volume
+            command: *id026
             positional:
             - !Positional
               description: ''
@@ -1121,11 +2227,9 @@ subcommands:
             \ NGS read mappers},\n\tjournal = {Bioinformatics},\n\tyear    = {2016},\n\
             \tnumber  = {1},\n\tvolume  = {32},\n\tpmid    = {26353839},\n\tdoi  \
             \   = {10.1093/bioinformatics/btv524}\n}\n\n"
-          generated_using: &id027 []
+          generated_using: *id027
         - !Command
-          command: &id028
-          - rnftools
-          - sam2roc
+          command: *id028
           positional: []
           named:
           - !Flag
@@ -1176,13 +2280,7 @@ subcommands:
             \   important parameter!) (default: 5).\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: rnftools [-h]\n                {,check,publication,validate,liftover,sam2rnf,art2rnf,curesim2rnf,dwgsim2rnf,mason2rnf,wgsim2rnf,merge,sam2es,es2et,et2roc,sam2roc}\n\
@@ -1265,7 +2363,7 @@ subcommands:
         args: !SimpleFlagArg
           name: int
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1331,7 +2429,7 @@ subcommands:
         args: !SimpleFlagArg
           name: int
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1363,7 +2461,7 @@ subcommands:
         name: rnftools
         optional: false
       named: []
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1402,7 +2500,7 @@ subcommands:
         args: !SimpleFlagArg
           name: out
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1470,7 +2568,7 @@ subcommands:
         - --allow-unmapped
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1552,7 +2650,7 @@ subcommands:
         args: !SimpleFlagArg
           name: str
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1633,7 +2731,7 @@ subcommands:
         args: !SimpleFlagArg
           name: str
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1715,7 +2813,7 @@ subcommands:
         - --allow-unmapped
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1793,7 +2891,7 @@ subcommands:
         args: !SimpleFlagArg
           name: str
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1848,7 +2946,7 @@ subcommands:
         args: !SimpleFlagArg
           name: int
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1889,7 +2987,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1927,7 +3025,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1945,11 +3043,11 @@ subcommands:
         \                       input).\n  -o file, --roc file  Output ROC file (evaluated\
         \ reads, - for standard\n                       output).\n"
       generated_using: *id004
-    - &id030 !Command
+    - &id032 !Command
       command: *id019
       positional: []
       named: []
-      parent: *id003
+      parent: *id029
       subcommands:
       - !Command
         command: *id020
@@ -1965,7 +3063,7 @@ subcommands:
           name: publication
           optional: false
         named: []
-        parent: *id005
+        parent: *id030
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1995,7 +3093,7 @@ subcommands:
           name: publication
           optional: false
         named: []
-        parent: *id005
+        parent: *id030
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2025,7 +3123,7 @@ subcommands:
           name: publication
           optional: false
         named: []
-        parent: *id005
+        parent: *id030
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2055,7 +3153,7 @@ subcommands:
           name: publication
           optional: false
         named: []
-        parent: *id005
+        parent: *id030
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2085,7 +3183,7 @@ subcommands:
           name: publication
           optional: false
         named: []
-        parent: *id005
+        parent: *id030
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2115,7 +3213,7 @@ subcommands:
           name: publication
           optional: false
         named: []
-        parent: *id005
+        parent: *id030
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2145,7 +3243,7 @@ subcommands:
           name: publication
           optional: false
         named: []
-        parent: *id005
+        parent: *id030
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2205,7 +3303,7 @@ subcommands:
         args: !SimpleFlagArg
           name: int
         optional: true
-      parent: *id003
+      parent: *id029
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2308,7 +3406,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2374,7 +3472,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2406,7 +3504,7 @@ subcommands:
     name: rnftools
     optional: false
   named: []
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2445,7 +3543,7 @@ subcommands:
     args: !SimpleFlagArg
       name: out
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2512,7 +3610,7 @@ subcommands:
     - --allow-unmapped
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2593,7 +3691,7 @@ subcommands:
     args: !SimpleFlagArg
       name: str
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2674,7 +3772,7 @@ subcommands:
     args: !SimpleFlagArg
       name: str
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2755,7 +3853,7 @@ subcommands:
     - --allow-unmapped
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2833,7 +3931,7 @@ subcommands:
     args: !SimpleFlagArg
       name: str
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2886,7 +3984,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2927,7 +4025,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2965,7 +4063,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2987,7 +4085,7 @@ subcommands:
   command: *id019
   positional: []
   named: []
-  parent: *id029
+  parent: *id031
   subcommands:
   - !Command
     command: *id020
@@ -3003,7 +4101,7 @@ subcommands:
       name: publication
       optional: false
     named: []
-    parent: *id030
+    parent: *id032
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3033,7 +4131,7 @@ subcommands:
       name: publication
       optional: false
     named: []
-    parent: *id030
+    parent: *id032
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3063,7 +4161,7 @@ subcommands:
       name: publication
       optional: false
     named: []
-    parent: *id030
+    parent: *id032
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3093,7 +4191,7 @@ subcommands:
       name: publication
       optional: false
     named: []
-    parent: *id030
+    parent: *id032
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3123,7 +4221,7 @@ subcommands:
       name: publication
       optional: false
     named: []
-    parent: *id030
+    parent: *id032
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3153,7 +4251,7 @@ subcommands:
       name: publication
       optional: false
     named: []
-    parent: *id030
+    parent: *id032
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3183,7 +4281,7 @@ subcommands:
       name: publication
       optional: false
     named: []
-    parent: *id030
+    parent: *id032
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3242,7 +4340,7 @@ subcommands:
     args: !SimpleFlagArg
       name: int
     optional: true
-  parent: *id029
+  parent: *id031
   subcommands: []
   usage: []
   help_flag: !Flag

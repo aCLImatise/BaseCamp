@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_translate.cwl
+id: goalign_translate.cwl
 inputs:
 - id: in_genetic_code
   doc: 'Genetic Code: standard, mitoi (invertebrate mitochondrial) or mitov (vertebrate

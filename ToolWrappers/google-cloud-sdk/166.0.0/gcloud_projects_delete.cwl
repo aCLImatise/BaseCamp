@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_projects_delete.cwl
+id: gcloud_projects_delete.cwl
 inputs:
 - id: in_project_id
   doc: ''

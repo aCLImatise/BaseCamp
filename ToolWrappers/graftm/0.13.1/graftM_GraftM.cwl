@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graftM_GraftM.cwl
+id: graftM_GraftM.cwl
 inputs:
 - id: in_graft_m
   doc: ''

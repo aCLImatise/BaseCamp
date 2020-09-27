@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2svg.sh.cwl
+id: bam2svg.sh.cwl
 inputs:
 - id: in_filter
   doc: "A filter expression. Reads matching the expression will be filtered-out.\n\

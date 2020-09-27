@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_dbsplit.pl.cwl
+id: bp_dbsplit.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

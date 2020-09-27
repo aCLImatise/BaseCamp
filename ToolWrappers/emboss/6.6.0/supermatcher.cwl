@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../supermatcher.cwl
+id: supermatcher.cwl
 inputs:
 - id: in_gap_open
   doc: "float      [10.0 for any sequence type] Gap opening\npenalty (Number from\

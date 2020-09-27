@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_install.cwl
+id: bcbio_vm.py_install.cwl
 inputs:
 - id: in_genomes
   doc: Genomes to download

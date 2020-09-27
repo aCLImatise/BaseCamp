@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RiboCode_onestep.cwl
+id: RiboCode_onestep.cwl
 inputs:
 - id: in_gtf
   doc: "Default, suitable for GENCODE and ENSEMBL GTF file,\nplease refer: https://en.wikipedia.org/wiki/GENCODE"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MRMMapper.cwl
+id: MRMMapper.cwl
 inputs:
 - id: in_in
   doc: "*        Input file containing chromatograms (converted mzXML file) (valid\

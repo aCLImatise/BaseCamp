@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqcluster.cwl
+id: seqcluster.cwl
 inputs: []
 outputs:
 - id: out_stdout

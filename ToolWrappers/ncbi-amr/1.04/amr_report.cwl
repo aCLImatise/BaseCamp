@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amr_report.cwl
+id: amr_report.cwl
 inputs:
 - id: in_threads
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SCFtoCTG.cwl
+id: SCFtoCTG.cwl
 inputs:
 - id: in_input_file
   doc: ''

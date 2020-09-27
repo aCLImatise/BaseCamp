@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_merge.py_input2.cwl
+id: medpy_merge.py_input2.cwl
 inputs:
 - id: in_f
   doc: ''

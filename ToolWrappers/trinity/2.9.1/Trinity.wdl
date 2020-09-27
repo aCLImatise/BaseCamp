@@ -19,11 +19,11 @@ task Trinity {
     Boolean? lines_terminated_newline
     Boolean? mst
     Boolean? nrugmcszbdfimstokt
-    Float trinity_v_two_dot_nine_dot_one
+    String sort
   }
   command <<<
     Trinity \
-      ~{trinity_v_two_dot_nine_dot_one} \
+      ~{sort} \
       ~{if (ignore_leading_blanks) then "-b" else ""} \
       ~{if (check_input_sorted) then "-c" else ""} \
       ~{if (dictionary_order_blank) then "-d" else ""} \
@@ -60,7 +60,7 @@ task Trinity {
     lines_terminated_newline: "Lines are terminated by NUL, not newline"
     mst: "Ignored for GNU compatibility"
     nrugmcszbdfimstokt: ""
-    trinity_v_two_dot_nine_dot_one: "#"
+    sort: ""
   }
   output {
     File out_stdout = stdout()

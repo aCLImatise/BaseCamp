@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_xlsites.cwl
+id: iCount_xlsites.cwl
 inputs:
 - id: in__groupby_assign
   doc: ", --group_by       Assign score of a read to either 'start', 'middle' or 'end'\

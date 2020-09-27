@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_select.cwl
+id: vtools_select.cwl
 inputs:
 - id: in_limiting_variants_samples
   doc: "[COND [COND ...]], --samples [COND [COND ...]]\nLimiting variants from samples\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MPSSam2fq.cwl
+id: MPSSam2fq.cwl
 inputs: []
 outputs:
 - id: out_stdout

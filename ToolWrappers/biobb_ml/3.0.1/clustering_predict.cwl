@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clustering_predict.cwl
+id: clustering_predict.cwl
 inputs:
 - id: in_config
   doc: Configuration file

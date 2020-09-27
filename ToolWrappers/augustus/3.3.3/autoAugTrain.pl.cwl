@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoAugTrain.pl.cwl
+id: autoAugTrain.pl.cwl
 inputs:
 - id: in_genome
   doc: "FASTA file with DNA sequences for training\ngenome.fa should include the corresponding\

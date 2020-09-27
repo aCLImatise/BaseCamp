@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Epifany.cwl
+id: Epifany.cwl
 inputs:
 - id: in_in
   doc: "*                            Input: identification results (valid formats:\

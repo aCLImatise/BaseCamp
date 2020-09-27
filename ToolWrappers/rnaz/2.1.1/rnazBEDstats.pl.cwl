@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazBEDstats.pl.cwl
+id: rnazBEDstats.pl.cwl
 inputs:
 - id: in_man
   doc: Prints a detailed manual page and exits.

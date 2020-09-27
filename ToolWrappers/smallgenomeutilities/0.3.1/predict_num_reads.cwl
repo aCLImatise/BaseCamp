@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../predict_num_reads.cwl
+id: predict_num_reads.cwl
 inputs:
 - id: in_length_sliding_window
   doc: "Length of the sliding window for emulating read trimming\n(default: 10)"

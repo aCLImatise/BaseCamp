@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoraw_plot_most_significant.cwl
+id: nanoraw_plot_most_significant.cwl
 inputs:
 - id: in_base_call_subgroups
   doc: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual template\

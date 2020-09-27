@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_component.o.cwl
+id: validate_component.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

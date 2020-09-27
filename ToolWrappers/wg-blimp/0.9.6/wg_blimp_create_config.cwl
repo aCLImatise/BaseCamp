@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wg_blimp_create_config.cwl
+id: wg_blimp_create_config.cwl
 inputs:
 - id: in_genome_build
   doc: "[hg19|hg38|mmul10|None]\nBuild of the reference used for annotation."

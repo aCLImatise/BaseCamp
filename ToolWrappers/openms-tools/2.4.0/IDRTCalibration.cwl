@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDRTCalibration.cwl
+id: IDRTCalibration.cwl
 inputs:
 - id: in_in
   doc: "*                  Input file  (valid formats: 'idXML')"

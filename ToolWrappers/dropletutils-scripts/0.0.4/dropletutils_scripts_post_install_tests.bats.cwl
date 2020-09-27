@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dropletutils_scripts_post_install_tests.bats.cwl
+id: dropletutils_scripts_post_install_tests.bats.cwl
 inputs: []
 outputs:
 - id: out_stdout

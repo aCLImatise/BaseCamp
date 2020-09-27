@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../location_predictor_predict.cwl
+id: location_predictor_predict.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to file containing input. (default: None)'

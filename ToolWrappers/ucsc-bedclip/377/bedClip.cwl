@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedClip.cwl
+id: bedClip.cwl
 inputs:
 - id: in_truncate
   doc: "- truncate items that span ends of chrom instead of the\ndefault of dropping\

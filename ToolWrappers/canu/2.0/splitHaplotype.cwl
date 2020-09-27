@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitHaplotype.cwl
+id: splitHaplotype.cwl
 inputs:
 - id: in_range_reads_operate
   doc: '[-end]                     range of reads to operate on.'
@@ -17,11 +17,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -H
-- id: in_a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -A
 - id: in_cr
   doc: minimum ratio between best and second best to classify
   type: string

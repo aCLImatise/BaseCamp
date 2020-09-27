@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bayescan2.cwl
+id: bayescan2.cwl
 inputs:
 - id: in_optional_input_file
   doc: Optional input file containing list of loci to discard

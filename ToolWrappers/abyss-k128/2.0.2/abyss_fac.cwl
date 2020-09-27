@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_fac.cwl
+id: abyss_fac.cwl
 inputs:
 - id: in_genome_size
   doc: "expected genome size. Used to calculate NG50\nand associated stats [disabled]"

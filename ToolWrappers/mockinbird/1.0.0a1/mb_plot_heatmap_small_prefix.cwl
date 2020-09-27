@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_heatmap_small_prefix.cwl
+id: mb_plot_heatmap_small_prefix.cwl
 inputs:
 - id: in_downstream
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_db_functions.jl.cwl
+id: build_db_functions.jl.cwl
 inputs: []
 outputs:
 - id: out_stdout

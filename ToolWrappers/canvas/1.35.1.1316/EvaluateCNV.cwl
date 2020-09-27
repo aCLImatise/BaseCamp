@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EvaluateCNV.cwl
+id: EvaluateCNV.cwl
 inputs: []
 outputs:
 - id: out_stdout

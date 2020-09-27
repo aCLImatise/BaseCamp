@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hm_cluster_predict.py.cwl
+id: hm_cluster_predict.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

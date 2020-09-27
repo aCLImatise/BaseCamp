@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../impute2chromopainter.pl.cwl
+id: impute2chromopainter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

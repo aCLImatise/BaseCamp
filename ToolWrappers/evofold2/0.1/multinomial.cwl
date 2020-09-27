@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multinomial.cwl
+id: multinomial.cwl
 inputs:
 - id: in_arg_output_precision
   doc: '[ --precision ] arg (=5) Output precision of real numbers.'

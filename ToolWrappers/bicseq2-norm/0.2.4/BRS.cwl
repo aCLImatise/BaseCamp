@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BRS.cwl
+id: BRS.cwl
 inputs:
 - id: in_quantile_used_identification
   doc: ': the quantile used for identification of the singular genomic positions;

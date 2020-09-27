@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_core_popcnt_filterbylen.cwl
+id: megahit_core_popcnt_filterbylen.cwl
 inputs:
 - id: in_cat
   doc: ''

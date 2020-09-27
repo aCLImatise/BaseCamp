@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sexdeterrmine.cwl
+id: sexdeterrmine.cwl
 inputs:
 - id: in_input
   doc: "The input samtools depth file. Omit to read from\nstdin."

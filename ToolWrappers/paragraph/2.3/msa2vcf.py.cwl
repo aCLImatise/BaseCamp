@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msa2vcf.py.cwl
+id: msa2vcf.py.cwl
 inputs:
 - id: in_reference_sequence
   doc: '[--bcftools BCFTOOLS]'

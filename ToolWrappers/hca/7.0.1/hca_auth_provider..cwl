@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_auth_provider..cwl
+id: hca_auth_provider..cwl
 inputs:
 - id: in_hca
   doc: ''

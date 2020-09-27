@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cphstats.cwl
+id: cphstats.cwl
 inputs:
 - id: in_overwrite
   doc: Allow existing outputs to be overwritten.

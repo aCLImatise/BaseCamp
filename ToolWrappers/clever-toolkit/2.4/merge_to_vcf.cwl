@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_to_vcf.cwl
+id: merge_to_vcf.cwl
 inputs:
 - id: in_arg_maximum_allowed_distance
   doc: "[ --max_offset ] arg (=100)        Maximum allowed distance between split\n\

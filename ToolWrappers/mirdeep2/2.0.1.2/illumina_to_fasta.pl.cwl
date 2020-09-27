@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illumina_to_fasta.pl.cwl
+id: illumina_to_fasta.pl.cwl
 inputs:
 - id: in_format_is_qseqtxt
   doc: format is qseq.txt

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_fixmate.cwl
+id: flye_samtools_fixmate.cwl
 inputs:
 - id: in_remove_unmapped_reads
   doc: Remove unmapped reads and secondary alignments

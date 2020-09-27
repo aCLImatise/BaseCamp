@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stubmaker.pl.cwl
+id: stubmaker.pl.cwl
 inputs:
 - id: in_verbose_outputbe_quiet
   doc: Verbose Outputbe quiet

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_paired_end.py_reads_2.cwl
+id: prophyle_paired_end.py_reads_2.cwl
 inputs:
 - id: in_o
   doc: ''

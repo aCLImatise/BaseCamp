@@ -61,7 +61,7 @@ subcommands:
     - --ignore_tx_version
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id015 !Command
+  parent: &id016 !Command
     command: *id001
     positional: []
     named: []
@@ -121,7 +121,7 @@ subcommands:
         - --ignore_tx_version
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id015 !Command
         command: *id001
         positional: []
         named: []
@@ -181,7 +181,657 @@ subcommands:
             - --ignore_tx_version
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: Path to bigwig  [required]
+                synonyms:
+                - -bw
+                - --bigwig
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Path to bed file or a genome name (hg38_utr5,\nhg38_cds,\
+                  \ hg38_utr3)  [required]"
+                synonyms:
+                - --region_bed
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to write metagene coverage tsv file
+                synonyms:
+                - --saveto
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: maximum positions to count
+                synonyms:
+                - --max_positions
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: Number of upstream bases to count(5')
+                synonyms:
+                - --offset_5p
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: Number of downstream bases to count(3')
+                synonyms:
+                - --offset_3p
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: Ignore version (.xyz) in gene names
+                synonyms:
+                - --ignore_tx_version
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor export-metagene-coverage [OPTIONS]\n\n\
+                \  Export metagene coverage for given region\n\nOptions:\n  -bw, --bigwig\
+                \ TEXT       Path to bigwig  [required]\n  --region_bed TEXT     \
+                \   Path to bed file or a genome name (hg38_utr5,\n              \
+                \             hg38_cds, hg38_utr3)  [required]\n  --saveto TEXT  \
+                \          Path to write metagene coverage tsv file\n  --max_positions\
+                \ INTEGER  maximum positions to count\n  --offset_5p INTEGER     \
+                \ Number of upstream bases to count(5')\n  --offset_3p INTEGER   \
+                \   Number of downstream bases to count(3')\n  --ignore_tx_version\
+                \      Ignore version (.xyz) in gene names\n  -h, --help         \
+                \      Show this message and exit.\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - riboraptor
+              - periodicity
+              positional: []
+              named:
+              - !Flag
+                description: Path to counts file (if not stdin)
+                synonyms:
+                - --counts
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor periodicity [OPTIONS]\n\n  Calculate periodicity\n\
+                \nOptions:\n  --counts TEXT  Path to counts file (if not stdin)\n\
+                \  -h, --help     Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - riboraptor
+              - plot-read-length
+              positional: []
+              named:
+              - !Flag
+                description: Path to read length pickle file
+                synonyms:
+                - --read-lengths
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Plot Title
+                synonyms:
+                - --title
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Convert labels on Y-axis to concise form?
+                synonyms:
+                - --millify_labels
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Path to file (png/pdf) to save to
+                synonyms:
+                - --saveto
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Do not plot ascii
+                synonyms:
+                - --ascii
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor plot-read-length [OPTIONS]\n\n  Plot read\
+                \ length distribution\n\nOptions:\n  --read-lengths TEXT  Path to\
+                \ read length pickle file\n  --title TEXT         Plot Title\n  --millify_labels\
+                \     Convert labels on Y-axis to concise form?\n  --saveto TEXT \
+                \       Path to file (png/pdf) to save to\n  --ascii             \
+                \ Do not plot ascii\n  -h, --help           Show this message and\
+                \ exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - riboraptor
+              - bam-to-bedgraph
+              positional: []
+              named:
+              - !Flag
+                description: Path to BAM file  [required]
+                synonyms:
+                - -i
+                - --bam
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: '[+|-|both]         Count from strand of this type only'
+                synonyms:
+                - -s
+                - --strand
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[5prime|3prime|either]\nPileup 5' / 3'/ either ends"
+                synonyms:
+                - -e
+                - --end_type
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Path to write bedgraph output
+                synonyms:
+                - -o
+                - --saveto
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor bam-to-bedgraph [OPTIONS]\n\n  Convert\
+                \ bam to bedgraph\n\nOptions:\n  -i, --bam TEXT                  Path\
+                \ to BAM file  [required]\n  -s, --strand [+|-|both]         Count\
+                \ from strand of this type only\n  -e, --end_type [5prime|3prime|either]\n\
+                \                                  Pileup 5' / 3'/ either ends\n \
+                \ -o, --saveto TEXT               Path to write bedgraph output\n\
+                \  -h, --help                      Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - riboraptor
+              - bedgraph-to-bigwig
+              positional: []
+              named:
+              - !Flag
+                description: Path to bedgraph file (optional)
+                synonyms:
+                - -bg
+                - -i
+                - --bedgraph
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to genome chrom.sizes file  [required]
+                synonyms:
+                - -s
+                - --sizes
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to write bigwig output  [required]
+                synonyms:
+                - -o
+                - --saveto
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor bedgraph-to-bigwig [OPTIONS]\n\n  Convert\
+                \ bedgraph to bigwig\n\nOptions:\n  -bg, -i, --bedgraph TEXT  Path\
+                \ to bedgraph file (optional)\n  -s, --sizes TEXT          Path to\
+                \ genome chrom.sizes file  [required]\n  -o, --saveto TEXT       \
+                \  Path to write bigwig output  [required]\n  -h, --help         \
+                \       Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - riboraptor
+              - read-length-dist
+              positional: []
+              named:
+              - !Flag
+                description: Path to BAM file  [required]
+                synonyms:
+                - --bam
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to write read length dist tsv output
+                synonyms:
+                - --saveto
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor read-length-dist [OPTIONS]\n\n  Calculate\
+                \ read length distribution\n\nOptions:\n  --bam TEXT     Path to BAM\
+                \ file  [required]\n  --saveto TEXT  Path to write read length dist\
+                \ tsv output\n  -h, --help     Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - riboraptor
+              - export-bed-fasta
+              positional: []
+              named:
+              - !Flag
+                description: Path to bed file  [required]
+                synonyms:
+                - --region_bed
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to fasta file  [required]
+                synonyms:
+                - --fasta
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to write output
+                synonyms:
+                - -o
+                - --prefix
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to chrom.sizes  [required]
+                synonyms:
+                - --chrom_sizes
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Number of upstream bases to count(5')
+                synonyms:
+                - --offset_5p
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: Number of downstream bases to count(3')
+                synonyms:
+                - --offset_3p
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: Ignore version (.xyz) in gene names
+                synonyms:
+                - --ignore_tx_version
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor export-bed-fasta [OPTIONS]\n\n  Export\
+                \ gene level fasta from specified bed regions\n\nOptions:\n  --region_bed\
+                \ TEXT    Path to bed file  [required]\n  --fasta TEXT         Path\
+                \ to fasta file  [required]\n  -o, --prefix TEXT    Path to write\
+                \ output\n  --chrom_sizes TEXT   Path to chrom.sizes  [required]\n\
+                \  --offset_5p INTEGER  Number of upstream bases to count(5')\n  --offset_3p\
+                \ INTEGER  Number of downstream bases to count(3')\n  --ignore_tx_version\
+                \  Ignore version (.xyz) in gene names\n  -h, --help           Show\
+                \ this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id011
+              - riboraptor
+              - plot-metagene
+              positional: []
+              named:
+              - !Flag
+                description: Path to counts file (if not stdin)
+                synonyms:
+                - --counts
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Plot Title
+                synonyms:
+                - --title
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: '[o|x]    Marker (o/x) for plots'
+                synonyms:
+                - --marker
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Color
+                synonyms:
+                - --color
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Convert labels on Y-axis to concise form?
+                synonyms:
+                - --millify_labels
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Identify Peak?
+                synonyms:
+                - --identify_peak
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Range of positions to plot
+                synonyms:
+                - --positions
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to file (png/pdf) to save to
+                synonyms:
+                - --saveto
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Y axix label
+                synonyms:
+                - --ylabel
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Do not plot ascii
+                synonyms:
+                - --ascii
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor plot-metagene [OPTIONS]\n\n  Plot metagene\
+                \ profile\n\nOptions:\n  --counts TEXT     Path to counts file (if\
+                \ not stdin)\n  --title TEXT      Plot Title\n  --marker [o|x]   \
+                \ Marker (o/x) for plots\n  --color TEXT      Color\n  --millify_labels\
+                \  Convert labels on Y-axis to concise form?\n  --identify_peak  \
+                \ Identify Peak?\n  --positions TEXT  Range of positions to plot\n\
+                \  --saveto TEXT     Path to file (png/pdf) to save to\n  --ylabel\
+                \ TEXT     Y axix label\n  --ascii           Do not plot ascii\n \
+                \ -h, --help        Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id012
+              - riboraptor
+              - uniq-bam
+              positional: []
+              named:
+              - !Flag
+                description: '[required]'
+                synonyms:
+                - --inbam
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: '[required]'
+                synonyms:
+                - --outbam
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor uniq-bam [OPTIONS]\n\n  Create a new bam\
+                \ with unique mapping reads only\n\nOptions:\n  --inbam TEXT   [required]\n\
+                \  --outbam TEXT  [required]\n  -h, --help     Show this message and\
+                \ exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id013
+              - riboraptor
+              - uniq-mapping-count
+              positional: []
+              named:
+              - !Flag
+                description: Path to BAM file  [required]
+                synonyms:
+                - --bam
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor uniq-mapping-count [OPTIONS]\n\n  Count\
+                \ number of unique mapping reads\n\nOptions:\n  --bam TEXT  Path to\
+                \ BAM file  [required]\n  -h, --help  Show this message and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id014
+              - riboraptor
+              - export-gene-coverages
+              positional: []
+              named:
+              - !Flag
+                description: Path to bigwig  [required]
+                synonyms:
+                - -bw
+                - --bigwig
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to bed file  [required]
+                synonyms:
+                - --region_bed
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Path to write gene coverages tsv file
+                synonyms:
+                - --saveto
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: Number of upstream bases to count(5')
+                synonyms:
+                - --offset_5p
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: Number of downstream bases to count(3')
+                synonyms:
+                - --offset_3p
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: Ignore version (.xyz) in gene names
+                synonyms:
+                - --ignore_tx_version
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: riboraptor export-gene-coverages [OPTIONS]\n\n  Export\
+                \ gene level coverage for all genes for given region\n\nOptions:\n\
+                \  -bw, --bigwig TEXT   Path to bigwig  [required]\n  --region_bed\
+                \ TEXT    Path to bed file  [required]\n  --saveto TEXT        Path\
+                \ to write gene coverages tsv file\n  --offset_5p INTEGER  Number\
+                \ of upstream bases to count(5')\n  --offset_3p INTEGER  Number of\
+                \ downstream bases to count(3')\n  --ignore_tx_version  Ignore version\
+                \ (.xyz) in gene names\n  -h, --help           Show this message and\
+                \ exit.\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: Show this message and exit.
+              synonyms:
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: Show the version and exit.
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "Usage: riboraptor [OPTIONS] COMMAND [ARGS]...\n\n  riboraptor:\
+              \ Tool for ribosome profiling analysis\n\nOptions:\n  --version  Show\
+              \ the version and exit.\n  --help     Show this message and exit.\n\n\
+              Commands:\n  bam-to-bedgraph           Convert bam to bedgraph\n  bedgraph-to-bigwig\
+              \        Convert bedgraph to bigwig\n  export-bed-fasta          Export\
+              \ gene level fasta from specified bed...\n  export-gene-coverages  \
+              \   Export gene level coverage for all genes for...\n  export-metagene-coverage\
+              \  Export metagene coverage for given region\n  periodicity        \
+              \       Calculate periodicity\n  plot-metagene             Plot metagene\
+              \ profile\n  plot-read-length          Plot read length distribution\n\
+              \  read-length-dist          Calculate read length distribution\n  uniq-bam\
+              \                  Create a new bam with unique mapping reads only\n\
+              \  uniq-mapping-count        Count number of unique mapping reads\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -203,12 +853,9 @@ subcommands:
             \ INTEGER      Number of downstream bases to count(3')\n  --ignore_tx_version\
             \      Ignore version (.xyz) in gene names\n  -h, --help             \
             \  Show this message and exit.\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - riboraptor
-          - periodicity
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -235,9 +882,7 @@ subcommands:
             \ --help     Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - riboraptor
-          - plot-read-length
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -293,9 +938,7 @@ subcommands:
             \ ascii\n  -h, --help           Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - riboraptor
-          - bam-to-bedgraph
+          command: *id007
           positional: []
           named:
           - !Flag
@@ -349,9 +992,7 @@ subcommands:
             \                 Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - riboraptor
-          - bedgraph-to-bigwig
+          command: *id008
           positional: []
           named:
           - !Flag
@@ -399,9 +1040,7 @@ subcommands:
             \ and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - riboraptor
-          - read-length-dist
+          command: *id009
           positional: []
           named:
           - !Flag
@@ -436,9 +1075,7 @@ subcommands:
             \  -h, --help     Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id010
-          - riboraptor
-          - export-bed-fasta
+          command: *id010
           positional: []
           named:
           - !Flag
@@ -512,9 +1149,7 @@ subcommands:
             \ gene names\n  -h, --help           Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id011
-          - riboraptor
-          - plot-metagene
+          command: *id011
           positional: []
           named:
           - !Flag
@@ -605,9 +1240,7 @@ subcommands:
             \ not plot ascii\n  -h, --help        Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id012
-          - riboraptor
-          - uniq-bam
+          command: *id012
           positional: []
           named:
           - !Flag
@@ -641,9 +1274,7 @@ subcommands:
             \  --outbam TEXT  [required]\n  -h, --help     Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id013
-          - riboraptor
-          - uniq-mapping-count
+          command: *id013
           positional: []
           named:
           - !Flag
@@ -670,9 +1301,7 @@ subcommands:
             \  [required]\n  -h, --help  Show this message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id014
-          - riboraptor
-          - export-gene-coverages
+          command: *id014
           positional: []
           named:
           - !Flag
@@ -739,19 +1368,9 @@ subcommands:
             \ message and exit.\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Show this message and exit.
-          synonyms:
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Show the version and exit.
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "Usage: riboraptor [OPTIONS] COMMAND [ARGS]...\n\n  riboraptor:\
           \ Tool for ribosome profiling analysis\n\nOptions:\n  --version  Show the\
           \ version and exit.\n  --help     Show this message and exit.\n\nCommands:\n\
@@ -799,7 +1418,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -852,7 +1471,7 @@ subcommands:
         - --ascii
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -905,7 +1524,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -954,7 +1573,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -990,7 +1609,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1060,7 +1679,7 @@ subcommands:
         - --ignore_tx_version
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1151,7 +1770,7 @@ subcommands:
         - --ascii
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1190,7 +1809,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1217,7 +1836,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1279,7 +1898,7 @@ subcommands:
         - --ignore_tx_version
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id015
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1349,7 +1968,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1402,7 +2021,7 @@ subcommands:
     - --ascii
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1455,7 +2074,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1503,7 +2122,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1539,7 +2158,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1609,7 +2228,7 @@ subcommands:
     - --ignore_tx_version
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1700,7 +2319,7 @@ subcommands:
     - --ascii
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1739,7 +2358,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1766,7 +2385,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1828,7 +2447,7 @@ subcommands:
     - --ignore_tx_version
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id015
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag

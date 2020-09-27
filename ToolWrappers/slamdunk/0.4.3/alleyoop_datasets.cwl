@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_datasets.cwl
+id: alleyoop_datasets.cwl
 inputs:
 - id: in_alley_oop
   doc: ''

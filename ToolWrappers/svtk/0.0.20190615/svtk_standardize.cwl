@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_standardize.cwl
+id: svtk_standardize.cwl
 inputs:
 - id: in_prefix
   doc: "If provided, variant names will be overwritten with\nthis prefix."

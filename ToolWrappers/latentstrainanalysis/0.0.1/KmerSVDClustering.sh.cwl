@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerSVDClustering.sh.cwl
+id: KmerSVDClustering.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

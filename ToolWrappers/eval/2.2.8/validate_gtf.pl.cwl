@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_gtf.pl.cwl
+id: validate_gtf.pl.cwl
 inputs:
 - id: in_output_transcript_file
   doc: ': output transcript file'

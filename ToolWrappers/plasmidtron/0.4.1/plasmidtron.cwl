@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plasmidtron.cwl
+id: plasmidtron.cwl
 inputs:
 - id: in_action
   doc: "Control how the traits kmers are filtered for assembly\n[union]"

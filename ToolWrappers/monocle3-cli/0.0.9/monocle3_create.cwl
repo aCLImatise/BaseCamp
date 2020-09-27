@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monocle3_create.cwl
+id: monocle3_create.cwl
 inputs:
 - id: in_output_object_format
   doc: 'Format of output object. [Default: cds3]'

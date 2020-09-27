@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refine_hexamer_scores.pl.cwl
+id: refine_hexamer_scores.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

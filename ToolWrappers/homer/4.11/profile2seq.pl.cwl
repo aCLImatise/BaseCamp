@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../profile2seq.pl.cwl
+id: profile2seq.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

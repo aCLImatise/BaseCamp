@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5redeploy.cwl
+id: h5redeploy.cwl
 inputs:
 - id: in_echo
   doc: Show all the shell commands executed

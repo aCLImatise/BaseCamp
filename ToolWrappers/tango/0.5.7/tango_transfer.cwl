@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tango_transfer.cwl
+id: tango_transfer.cwl
 inputs:
 - id: in_ignore_unc_rank
   doc: Ignore ORFs unclassified at <rank>

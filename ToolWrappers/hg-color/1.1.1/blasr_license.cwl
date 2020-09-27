@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blasr_license.cwl
+id: blasr_license.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kallisto_bus.cwl
+id: kallisto_bus.cwl
 inputs:
 - id: in_index
   doc: "Filename for the kallisto index to be used for\npseudoalignment"

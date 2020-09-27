@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_subgraph.cwl
+id: sga_subgraph.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

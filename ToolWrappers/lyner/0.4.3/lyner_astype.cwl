@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_astype.cwl
+id: lyner_astype.cwl
 inputs:
 - id: in_type
   doc: ''

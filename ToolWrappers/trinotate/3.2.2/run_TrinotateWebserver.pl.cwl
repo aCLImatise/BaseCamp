@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_TrinotateWebserver.pl.cwl
+id: run_TrinotateWebserver.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

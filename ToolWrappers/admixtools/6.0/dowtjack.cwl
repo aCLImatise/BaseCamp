@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dowtjack.cwl
+id: dowtjack.cwl
 inputs:
 - id: in_bad
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_realign.cwl
+id: seq_seq_pan_realign.cwl
 inputs:
 - id: in_quiet
   doc: Suppress warnings.

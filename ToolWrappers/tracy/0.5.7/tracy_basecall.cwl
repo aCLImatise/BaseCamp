@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracy_basecall.cwl
+id: tracy_basecall.cwl
 inputs:
 - id: in_arg_peak_ratio
   doc: '[ --pratio ] arg (=0.330000013)  peak ratio to call a base'

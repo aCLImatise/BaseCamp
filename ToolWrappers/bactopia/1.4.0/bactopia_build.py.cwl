@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bactopia_build.py.cwl
+id: bactopia_build.py.cwl
 inputs:
 - id: in_ext
   doc: 'Extension of the Conda environment files. Default: .yml'

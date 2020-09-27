@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protobuf_net.dll.cwl
+id: protobuf_net.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

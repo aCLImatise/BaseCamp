@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: ../../../mb_extract_sites.cwl
+id: mb_extract_sites.cwl
 inputs:
-- id: in_transition_from
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --transition_from
 - id: in_gff_file
   doc: ''
   type: File
   inputBinding:
     prefix: --gff_file
-- id: in_fast_a_file
-  doc: output_file
+- id: in_transition_from
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --transition_from
+- id: in_extract_sites
+  doc: ''
   type: string
   inputBinding:
     position: 0

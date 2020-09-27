@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../freq2group.pl.cwl
+id: freq2group.pl.cwl
 inputs:
 - id: in_freq
   doc: Bin     Count

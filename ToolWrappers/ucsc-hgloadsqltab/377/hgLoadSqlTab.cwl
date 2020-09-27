@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgLoadSqlTab.cwl
+id: hgLoadSqlTab.cwl
 inputs:
 - id: in_warn
   doc: '- warn instead of abort on mysql errors or warnings'

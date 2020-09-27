@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rism3d.thermo.cwl
+id: rism3d.thermo.cwl
 inputs: []
 outputs:
 - id: out_stdout

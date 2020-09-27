@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_somaticsniper.cwl
+id: bam_somaticsniper.cwl
 inputs:
 - id: in_required_reference_sequence
   doc: REQUIRED reference sequence in the FASTA format

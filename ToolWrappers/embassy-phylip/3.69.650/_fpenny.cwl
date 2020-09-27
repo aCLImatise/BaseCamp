@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fpenny.cwl
+id: _fpenny.cwl
 inputs:
 - id: in_weights
   doc: properties Phylip weights file (optional)

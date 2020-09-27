@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dustmasker.cwl
+id: dustmasker.cwl
 inputs: []
 outputs:
 - id: out_stdout

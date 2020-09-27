@@ -30,7 +30,7 @@ subcommands:
     args: !SimpleFlagArg
       name: CLIP_LEN
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -59,57 +59,10 @@ subcommands:
         args: !SimpleFlagArg
           name: CLIP_LEN
         optional: true
-      parent: &id003 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: partial adapter size required for clipping (in bp)
-          synonyms:
-          - --clip_len
-          args: !SimpleFlagArg
-            name: CLIP_LEN
-          optional: true
-        - !Flag
-          description: minimum read size required after clipping
-          synonyms:
-          - --min_len
-          args: !SimpleFlagArg
-            name: MIN_LEN
-          optional: true
-        - !Flag
-          description: size of the 5' barcode (in bp)
-          synonyms:
-          - --nt_barcode_5prime
-          args: !SimpleFlagArg
-            name: NT_BARCODE_5PRIME
-          optional: true
-        - !Flag
-          description: size of the 3' barcode (in bp)
-          synonyms:
-          - --nt_barcode_3prime
-          args: !SimpleFlagArg
-            name: NT_BARCODE_3PRIME
-          optional: true
-        - !Flag
-          description: verbose output
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: 5prime barcode already clipped
-          synonyms:
-          - --clipped_5prime_bc
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: output directory for supplementary plots
-          synonyms:
-          - --plot_dir
-          args: !SimpleFlagArg
-            name: PLOT_DIR
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -135,7 +88,262 @@ subcommands:
             args: !SimpleFlagArg
               name: CLIP_LEN
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: partial adapter size required for clipping (in bp)
+              synonyms:
+              - --clip_len
+              args: !SimpleFlagArg
+                name: CLIP_LEN
+              optional: true
+            - !Flag
+              description: minimum read size required after clipping
+              synonyms:
+              - --min_len
+              args: !SimpleFlagArg
+                name: MIN_LEN
+              optional: true
+            - !Flag
+              description: size of the 5' barcode (in bp)
+              synonyms:
+              - --nt_barcode_5prime
+              args: !SimpleFlagArg
+                name: NT_BARCODE_5PRIME
+              optional: true
+            - !Flag
+              description: size of the 3' barcode (in bp)
+              synonyms:
+              - --nt_barcode_3prime
+              args: !SimpleFlagArg
+                name: NT_BARCODE_3PRIME
+              optional: true
+            - !Flag
+              description: verbose output
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: 5prime barcode already clipped
+              synonyms:
+              - --clipped_5prime_bc
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: output directory for supplementary plots
+              synonyms:
+              - --plot_dir
+              args: !SimpleFlagArg
+                name: PLOT_DIR
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-adapter-clipper
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --min_len
+                args: !SimpleFlagArg
+                  name: MIN_LEN
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --clip_len
+                args: !SimpleFlagArg
+                  name: CLIP_LEN
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-adapter-clipper [-h] [--clip_len CLIP_LEN] [--min_len\
+                \ MIN_LEN]\n                          [--nt_barcode_5prime NT_BARCODE_5PRIME]\n\
+                \                          [--nt_barcode_3prime NT_BARCODE_3PRIME]\
+                \ [--verbose]\n                          [--clipped_5prime_bc] [--plot_dir\
+                \ PLOT_DIR]\n                          input_fastq output_fastq prime5_adapter\n\
+                \                          prime3_adapter\nmb-adapter-clipper: error:\
+                \ argument input_fastq: 'prime5_adapter' does not exist\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - mb-adapter-clipper
+              - prime3_adapter
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-adapter-clipper
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --min_len
+                args: !SimpleFlagArg
+                  name: MIN_LEN
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --clip_len
+                args: !SimpleFlagArg
+                  name: CLIP_LEN
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-adapter-clipper [-h] [--clip_len CLIP_LEN] [--min_len\
+                \ MIN_LEN]\n                          [--nt_barcode_5prime NT_BARCODE_5PRIME]\n\
+                \                          [--nt_barcode_3prime NT_BARCODE_3PRIME]\
+                \ [--verbose]\n                          [--clipped_5prime_bc] [--plot_dir\
+                \ PLOT_DIR]\n                          input_fastq output_fastq prime5_adapter\n\
+                \                          prime3_adapter\nmb-adapter-clipper: error:\
+                \ argument input_fastq: 'prime3_adapter' does not exist\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - mb-adapter-clipper
+              - input_fastq
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-adapter-clipper
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --min_len
+                args: !SimpleFlagArg
+                  name: MIN_LEN
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --clip_len
+                args: !SimpleFlagArg
+                  name: CLIP_LEN
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-adapter-clipper [-h] [--clip_len CLIP_LEN] [--min_len\
+                \ MIN_LEN]\n                          [--nt_barcode_5prime NT_BARCODE_5PRIME]\n\
+                \                          [--nt_barcode_3prime NT_BARCODE_3PRIME]\
+                \ [--verbose]\n                          [--clipped_5prime_bc] [--plot_dir\
+                \ PLOT_DIR]\n                          input_fastq output_fastq prime5_adapter\n\
+                \                          prime3_adapter\nmb-adapter-clipper: error:\
+                \ argument input_fastq: 'input_fastq' does not exist\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - mb-adapter-clipper
+              - output_fastq
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-adapter-clipper
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --min_len
+                args: !SimpleFlagArg
+                  name: MIN_LEN
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --clip_len
+                args: !SimpleFlagArg
+                  name: CLIP_LEN
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-adapter-clipper [-h] [--clip_len CLIP_LEN] [--min_len\
+                \ MIN_LEN]\n                          [--nt_barcode_5prime NT_BARCODE_5PRIME]\n\
+                \                          [--nt_barcode_3prime NT_BARCODE_3PRIME]\
+                \ [--verbose]\n                          [--clipped_5prime_bc] [--plot_dir\
+                \ PLOT_DIR]\n                          input_fastq output_fastq prime5_adapter\n\
+                \                          prime3_adapter\nmb-adapter-clipper: error:\
+                \ argument input_fastq: 'output_fastq' does not exist\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: mb-adapter-clipper [-h] [--clip_len CLIP_LEN] [--min_len\
+              \ MIN_LEN]\n                          [--nt_barcode_5prime NT_BARCODE_5PRIME]\n\
+              \                          [--nt_barcode_3prime NT_BARCODE_3PRIME] [--verbose]\n\
+              \                          [--clipped_5prime_bc] [--plot_dir PLOT_DIR]\n\
+              \                          input_fastq output_fastq prime5_adapter\n\
+              \                          prime3_adapter\n\npositional arguments:\n\
+              \  input_fastq           path to input fastq\n  output_fastq       \
+              \   path to output fastq\n  prime5_adapter        5' adapter sequence\n\
+              \  prime3_adapter        3' adapter sequence\n\noptional arguments:\n\
+              \  -h, --help            show this help message and exit\n  --clip_len\
+              \ CLIP_LEN   partial adapter size required for clipping (in bp)\n  --min_len\
+              \ MIN_LEN     minimum read size required after clipping\n  --nt_barcode_5prime\
+              \ NT_BARCODE_5PRIME\n                        size of the 5' barcode\
+              \ (in bp)\n  --nt_barcode_3prime NT_BARCODE_3PRIME\n               \
+              \         size of the 3' barcode (in bp)\n  --verbose             verbose\
+              \ output\n  --clipped_5prime_bc   5prime barcode already clipped\n \
+              \ --plot_dir PLOT_DIR   output directory for supplementary plots\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -153,12 +361,9 @@ subcommands:
             \                          input_fastq output_fastq prime5_adapter\n \
             \                         prime3_adapter\nmb-adapter-clipper: error: argument\
             \ input_fastq: 'prime5_adapter' does not exist\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - mb-adapter-clipper
-          - prime3_adapter
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -200,9 +405,7 @@ subcommands:
             \ input_fastq: 'prime3_adapter' does not exist\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - mb-adapter-clipper
-          - input_fastq
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -244,9 +447,7 @@ subcommands:
             \ input_fastq: 'input_fastq' does not exist\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - mb-adapter-clipper
-          - output_fastq
+          command: *id007
           positional:
           - !Positional
             description: ''
@@ -288,13 +489,7 @@ subcommands:
             \ input_fastq: 'output_fastq' does not exist\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: mb-adapter-clipper [-h] [--clip_len CLIP_LEN] [--min_len\
@@ -356,7 +551,7 @@ subcommands:
         args: !SimpleFlagArg
           name: CLIP_LEN
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -398,7 +593,7 @@ subcommands:
         args: !SimpleFlagArg
           name: CLIP_LEN
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -440,7 +635,7 @@ subcommands:
         args: !SimpleFlagArg
           name: CLIP_LEN
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -521,7 +716,7 @@ subcommands:
     args: !SimpleFlagArg
       name: CLIP_LEN
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -563,7 +758,7 @@ subcommands:
     args: !SimpleFlagArg
       name: CLIP_LEN
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -605,7 +800,7 @@ subcommands:
     args: !SimpleFlagArg
       name: CLIP_LEN
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

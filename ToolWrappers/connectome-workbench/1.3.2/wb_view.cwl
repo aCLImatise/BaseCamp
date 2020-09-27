@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wb_view.cwl
+id: wb_view.cwl
 inputs:
 - id: in_graphics_size
   doc: "<X Y>\nSet the size of the graphics region.\nIf this option is used you WILL\

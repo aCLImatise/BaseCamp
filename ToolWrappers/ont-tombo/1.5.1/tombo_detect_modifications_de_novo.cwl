@@ -1,8 +1,15 @@
 class: CommandLineTool
-id: ../../../tombo_detect_modifications_de_novo.cwl
+id: tombo_detect_modifications_de_novo.cwl
 inputs:
 - id: in_statistics_file_basename
-  doc: ''
+  doc: "STATISTICS_FILE_BASENAME [--dna]\n[--rna]\n[--fishers-method-context FISHERS_METHOD_CONTEXT]\n\
+    [--minimum-test-reads MINIMUM_TEST_READS]\n[--single-read-threshold SINGLE_READ_THRESHOLD\
+    \ [SINGLE_READ_THRESHOLD ...]]\n[--coverage-dampen-counts COVERAGE_DAMPEN_COUNTS\
+    \ COVERAGE_DAMPEN_COUNTS]\n[--per-read-statistics-basename PER_READ_STATISTICS_BASENAME]\n\
+    [--num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED]\n[--multiprocess-region-size\
+    \ MULTIPROCESS_REGION_SIZE]\n[--processes PROCESSES]\n[--corrected-group CORRECTED_GROUP]\n\
+    [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n[--quiet]\
+    \ [--help]"
   type: boolean
   inputBinding:
     prefix: --statistics-file-basename

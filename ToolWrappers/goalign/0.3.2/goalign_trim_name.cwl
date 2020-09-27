@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_trim_name.cwl
+id: goalign_trim_name.cwl
 inputs:
 - id: in_auto
   doc: Automatically generates sequence identifiers (priority over --nb-cchar)

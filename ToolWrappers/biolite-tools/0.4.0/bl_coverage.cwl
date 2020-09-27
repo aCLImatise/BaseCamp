@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_coverage.cwl
+id: bl_coverage.cwl
 inputs:
 - id: in_specify_sam_file
   doc: specify SAM input file

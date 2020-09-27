@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pepquery.cwl
+id: pepquery.cwl
 inputs:
 - id: in_an_no
   doc: Annotation files folder for VCF/BED/GTF

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ThermoFisher.CommonCore.Data.dll.cwl
+id: ThermoFisher.CommonCore.Data.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank2contig.cwl
+id: bank2contig.cwl
 inputs:
 - id: in_display_compatible_version
   doc: Display the compatible bank version

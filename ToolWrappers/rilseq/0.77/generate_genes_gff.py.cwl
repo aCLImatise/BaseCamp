@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_genes_gff.py.cwl
+id: generate_genes_gff.py.cwl
 inputs:
 - id: in_bc_chr_list
   doc: "A comma separated dictionary of chromosome names from\nthe BioCyc name to\

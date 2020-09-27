@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../join.cwl
+id: join.cwl
 inputs:
 - id: in_also_print_lines
   doc: "also print unpairable lines from file FILENUM, where\nFILENUM is 1 or 2, corresponding\

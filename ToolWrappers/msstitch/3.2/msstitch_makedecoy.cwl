@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msstitch_makedecoy.cwl
+id: msstitch_makedecoy.cwl
 inputs:
 - id: in_input_file_format
   doc: Input file of {} format

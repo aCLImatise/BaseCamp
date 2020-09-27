@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_trim.cwl
+id: o_trim.cwl
 inputs:
 - id: in_trim_from
   doc: Start position

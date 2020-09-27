@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../laagc.cwl
+id: laagc.cwl
 inputs:
 - id: in_rng_seed
   doc: RNG seed, modulates reservoir filtering of reads. [42]

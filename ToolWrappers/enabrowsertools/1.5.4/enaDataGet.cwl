@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enaDataGet.cwl
+id: enaDataGet.cwl
 inputs:
 - id: in_format
   doc: "File format required. Format requested must be\npermitted for data type selected.\

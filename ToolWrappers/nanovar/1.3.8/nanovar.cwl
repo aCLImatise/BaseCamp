@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanovar.cwl
+id: nanovar.cwl
 inputs:
 - id: in_data_type
   doc: "type of long-read data [ont]\nont - Oxford Nanopore Technologies\npacbio-clr\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfprintaltdiscrepancy.r.cwl
+id: vcfprintaltdiscrepancy.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

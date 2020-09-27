@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine.cwl
+id: combine.cwl
 inputs: []
 outputs:
 - id: out_stdout

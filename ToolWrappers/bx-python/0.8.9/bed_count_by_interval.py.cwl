@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_count_by_interval.py.cwl
+id: bed_count_by_interval.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

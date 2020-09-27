@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../my_print_defaults.cwl
+id: my_print_defaults.cwl
 inputs:
 - id: in_config_file
   doc: "Deprecated, please use --defaults-file instead. Name of\nconfig file to read;\

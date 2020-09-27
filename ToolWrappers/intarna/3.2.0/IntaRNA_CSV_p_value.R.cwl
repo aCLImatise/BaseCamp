@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IntaRNA_CSV_p_value.R.cwl
+id: IntaRNA_CSV_p_value.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

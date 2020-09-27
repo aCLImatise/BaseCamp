@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../excl_seqs.cwl
+id: excl_seqs.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_retention_times.rb.cwl
+id: add_retention_times.rb.cwl
 inputs:
 - id: in_replace_output
   doc: Dont skip analyses for which the output file already exists [false]

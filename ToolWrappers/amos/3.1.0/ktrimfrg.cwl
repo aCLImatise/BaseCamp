@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktrimfrg.cwl
+id: ktrimfrg.cwl
 inputs: []
 outputs:
 - id: out_stdout

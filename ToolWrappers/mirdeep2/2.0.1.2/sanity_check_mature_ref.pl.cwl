@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sanity_check_mature_ref.pl.cwl
+id: sanity_check_mature_ref.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

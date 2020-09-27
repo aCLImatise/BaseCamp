@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_samview.cwl
+id: htsbox_samview.cwl
 inputs:
 - id: in_e
   doc: ''

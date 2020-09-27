@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxaranks.cwl
+id: taxaranks.cwl
 inputs:
 - id: in_file_can_list
   doc: "A file can be a list of ncbi taxa id or species names (or higher\nranks, e.g.\

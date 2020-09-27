@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genoStats.cwl
+id: genoStats.cwl
 inputs:
 - id: in_freq_sum
   doc: "a freqsum file to read as input. Use - to read from\nstdin (the default) (default:\

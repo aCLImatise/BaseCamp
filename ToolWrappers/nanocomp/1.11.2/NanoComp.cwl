@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoComp.cwl
+id: NanoComp.cwl
 inputs:
 - id: in_threads
   doc: Set the allowed number of threads to be used by the script

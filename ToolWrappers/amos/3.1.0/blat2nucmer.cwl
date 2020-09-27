@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blat2nucmer.cwl
+id: blat2nucmer.cwl
 inputs: []
 outputs:
 - id: out_stdout

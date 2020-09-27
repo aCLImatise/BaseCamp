@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summary_get_organelle_output.py.cwl
+id: summary_get_organelle_output.py.cwl
 inputs:
 - id: in_output_csv_file
   doc: Output csv file.

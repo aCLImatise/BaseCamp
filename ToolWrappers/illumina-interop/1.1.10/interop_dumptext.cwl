@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_dumptext.cwl
+id: interop_dumptext.cwl
 inputs:
 - id: in_subset
   doc: '[0]: Number of metrics to subsample'

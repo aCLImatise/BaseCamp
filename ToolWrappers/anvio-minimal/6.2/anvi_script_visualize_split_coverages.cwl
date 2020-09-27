@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_visualize_split_coverages.cwl
+id: anvi_script_visualize_split_coverages.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msaprobs.cwl
+id: msaprobs.cwl
 inputs:
 - id: in_outfile
   doc: specify the output file name (STDOUT by default)

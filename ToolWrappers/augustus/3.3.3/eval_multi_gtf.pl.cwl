@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eval_multi_gtf.pl.cwl
+id: eval_multi_gtf.pl.cwl
 inputs:
 - id: in_eval_path
   doc: path to eval package (will try to guess from availability of evaluate_gtf.pl,

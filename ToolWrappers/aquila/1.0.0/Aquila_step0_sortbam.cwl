@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_step0_sortbam.cwl
+id: Aquila_step0_sortbam.cwl
 inputs:
 - id: in_bam_file
   doc: "Required parameter, BAM file, called by \"longranger\nalign\""

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProtFDRmProphet2Mayu.py.cwl
+id: ProtFDRmProphet2Mayu.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

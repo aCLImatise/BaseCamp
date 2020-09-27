@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swap_dRanger_and_MPS_matched.cwl
+id: swap_dRanger_and_MPS_matched.cwl
 inputs: []
 outputs:
 - id: out_stdout

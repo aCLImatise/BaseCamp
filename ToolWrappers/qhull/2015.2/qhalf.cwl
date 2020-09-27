@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qhalf.cwl
+id: qhalf.cwl
 inputs: []
 outputs:
 - id: out_stdout

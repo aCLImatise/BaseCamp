@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_calculate_pn_ps_ratio.cwl
+id: anvi_script_calculate_pn_ps_ratio.cwl
 inputs:
 - id: in_engine
   doc: and the output filename.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asm_collect.py.cwl
+id: asm_collect.py.cwl
 inputs:
 - id: in_script
   doc: ''

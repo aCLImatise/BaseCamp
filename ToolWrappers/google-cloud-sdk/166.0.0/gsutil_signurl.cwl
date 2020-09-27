@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_signurl.cwl
+id: gsutil_signurl.cwl
 inputs:
 - id: in_specifies_http_method
   doc: "Specifies the HTTP method to be authorized for use\nwith the signed url, default\

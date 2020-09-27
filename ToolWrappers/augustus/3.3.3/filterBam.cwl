@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterBam.cwl
+id: filterBam.cwl
 inputs:
 - id: in_best
   doc: output all best matches that satisfy minId and minCover (default 0)

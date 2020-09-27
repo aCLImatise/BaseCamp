@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deBWT.cwl
+id: deBWT.cwl
 inputs:
 - id: in_output_bwt_filebinary
   doc: ': output bwt file(binary)'

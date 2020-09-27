@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sentieon.cwl
+id: sentieon.cwl
 inputs: []
 outputs:
 - id: out_stdout

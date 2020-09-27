@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enasearch_type....cwl
+id: enasearch_type....cwl
 inputs:
 - id: in_ena_search
   doc: ''

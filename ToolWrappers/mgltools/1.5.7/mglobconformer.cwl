@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobconformer.cwl
+id: mglobconformer.cwl
 inputs: []
 outputs:
 - id: out_stdout

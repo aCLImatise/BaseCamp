@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cov_model.py.cwl
+id: cov_model.py.cwl
 inputs:
 - id: in_int
   doc: "Kmers were counted as integers w/o the use of quality values\n[default: False]"

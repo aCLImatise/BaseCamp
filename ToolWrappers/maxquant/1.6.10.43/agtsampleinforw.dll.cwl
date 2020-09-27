@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agtsampleinforw.dll.cwl
+id: agtsampleinforw.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

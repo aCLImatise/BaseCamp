@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RRA.cwl
+id: RRA.cwl
 inputs:
 - id: in_format_item_i
   doc: '. Format: <item id> <group id> <list id> <value> [<probability>] [<chosen>]'

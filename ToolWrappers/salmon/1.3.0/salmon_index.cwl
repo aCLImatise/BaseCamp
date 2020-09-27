@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../salmon_index.cwl
+id: salmon_index.cwl
 inputs:
 - id: in_print_version_string
   doc: '[ --version ]              print version string'

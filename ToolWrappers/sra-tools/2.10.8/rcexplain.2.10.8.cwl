@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rcexplain.2.10.8.cwl
+id: rcexplain.2.10.8.cwl
 inputs:
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\

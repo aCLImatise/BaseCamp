@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mltree.cwl
+id: mltree.cwl
 inputs:
 - id: in_rate_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fdnadist_alignments.cwl
+id: fdnadist_alignments.cwl
 inputs:
 - id: in_method
   doc: "menu       [F84 distance model] Choose the method to\nuse (Values: f (F84\

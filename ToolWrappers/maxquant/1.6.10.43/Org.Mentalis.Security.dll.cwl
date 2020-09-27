@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Org.Mentalis.Security.dll.cwl
+id: Org.Mentalis.Security.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_seq_stats.py.cwl
+id: get_seq_stats.py.cwl
 inputs:
 - id: in_b
   doc: ''

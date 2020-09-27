@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tinscan_prep.cwl
+id: tinscan_prep.cwl
 inputs:
 - id: in_target
   doc: Multifasta containing A genome.

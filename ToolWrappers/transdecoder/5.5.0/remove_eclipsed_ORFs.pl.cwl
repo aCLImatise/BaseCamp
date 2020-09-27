@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_eclipsed_ORFs.pl.cwl
+id: remove_eclipsed_ORFs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

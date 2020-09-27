@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_overlap.cwl
+id: segtools_overlap.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.

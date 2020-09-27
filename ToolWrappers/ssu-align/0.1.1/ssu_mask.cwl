@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_mask.cwl
+id: ssu_mask.cwl
 inputs:
 - id: in_commandline_argument_stockholm
   doc: ': the command-line argument is a stockholm alignment, not a directory'

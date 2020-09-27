@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlay_bigwig.py.cwl
+id: overlay_bigwig.py.cwl
 inputs:
 - id: in_bw_file_one
   doc: One BigWig file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rrbsreference.cwl
+id: rrbsreference.cwl
 inputs:
 - id: in_ref_dot_nix
   doc: is an unmasked indexed reference genome from novoindex

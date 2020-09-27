@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncrf_to_bed.py.cwl
+id: ncrf_to_bed.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

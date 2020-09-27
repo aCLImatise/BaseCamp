@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_seq.cwl
+id: extract_seq.cwl
 inputs:
 - id: in_name_write_sequence
   doc: Name of output file to write sequence to

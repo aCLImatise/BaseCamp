@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polydNdS.cwl
+id: polydNdS.cwl
 inputs: []
 outputs:
 - id: out_stdout

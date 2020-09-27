@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_run_em.cwl
+id: rsem_run_em.cwl
 inputs:
 - id: in_number_user_wants
   doc: ': number of threads which user wants to use. (default: 1)'

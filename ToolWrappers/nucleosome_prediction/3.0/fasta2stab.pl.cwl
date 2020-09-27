@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2stab.pl.cwl
+id: fasta2stab.pl.cwl
 inputs:
 - id: in_extract_only_line
   doc: ": Extract only line <num> of the fasta from each sequence\n(useful for parsing\

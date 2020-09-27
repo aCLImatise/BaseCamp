@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../finestructure.cwl
+id: finestructure.cwl
 inputs:
 - id: in_method_use_omcmcmethod
   doc: "Method to use.  Default: oMCMC.\n<method> is either MCMCwithTree, oMCMC (MCMC\

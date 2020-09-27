@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_toolkit_filterbylen.cwl
+id: megahit_toolkit_filterbylen.cwl
 inputs:
 - id: in_cat
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idba_tran.cwl
+id: idba_tran.cwl
 inputs:
 - id: in_out
   doc: (=out)                   output directory

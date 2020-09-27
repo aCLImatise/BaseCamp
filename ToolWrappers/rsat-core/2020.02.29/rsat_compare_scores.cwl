@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_compare_scores.cwl
+id: rsat_compare_scores.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
@@ -95,11 +95,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_headers_dot
-  doc: -lc, -uc
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

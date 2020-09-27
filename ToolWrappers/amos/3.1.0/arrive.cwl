@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrive.cwl
+id: arrive.cwl
 inputs: []
 outputs:
 - id: out_stdout

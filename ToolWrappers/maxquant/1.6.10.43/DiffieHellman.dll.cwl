@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DiffieHellman.dll.cwl
+id: DiffieHellman.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

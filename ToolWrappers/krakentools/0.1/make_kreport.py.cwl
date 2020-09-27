@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_kreport.py.cwl
+id: make_kreport.py.cwl
 inputs:
 - id: in_kraken
   doc: "Kraken output file (5 tab-delimited columns, taxid in\n3rd column)"

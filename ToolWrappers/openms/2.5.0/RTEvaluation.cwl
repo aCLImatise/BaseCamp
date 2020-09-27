@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RTEvaluation.cwl
+id: RTEvaluation.cwl
 inputs:
 - id: in_in
   doc: "*             Input file (valid formats: 'idXML')"

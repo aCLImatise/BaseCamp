@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_bedcluster.cwl
+id: svtk_bedcluster.cwl
 inputs:
 - id: in_frac
   doc: "Minimum reciprocal overlap fraction to link variants.\n[0.8]"

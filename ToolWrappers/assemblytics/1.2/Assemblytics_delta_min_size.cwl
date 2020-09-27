@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Assemblytics_delta_min_size.cwl
+id: Assemblytics_delta_min_size.cwl
 inputs:
 - id: in_assembly_tics
   doc: ''

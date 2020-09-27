@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceNcbiPrepUceAlignFilesForNcbi {
   input {
-    String? var_output
+    File? var_output
     Directory? alignments
     String? input_format
     String? verbosity
@@ -17,7 +17,7 @@ task PhyluceNcbiPrepUceAlignFilesForNcbi {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--input-format {fasta,nexus,phylip,phylip-relaxed,clustal,emboss,stockholm}]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]"
     alignments: "The directory containing alignments"
     input_format: "The input alignment format"
     verbosity: "The logging level to use."

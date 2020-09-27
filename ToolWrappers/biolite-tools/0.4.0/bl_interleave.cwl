@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_interleave.cwl
+id: bl_interleave.cwl
 inputs:
 - id: in_specify_multiple_files
   doc: specify multiple INPUT files

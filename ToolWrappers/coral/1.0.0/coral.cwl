@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coral.cwl
+id: coral.cwl
 inputs:
 - id: in_preview
   doc: determine fragment-length-range and library-type and exit

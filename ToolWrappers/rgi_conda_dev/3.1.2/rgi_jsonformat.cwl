@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_jsonformat.cwl
+id: rgi_jsonformat.cwl
 inputs:
 - id: in_in_file
   doc: input file must be in JSON format e.g Report.json

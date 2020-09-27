@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TdrMappingScripts.pl.cwl
+id: TdrMappingScripts.pl.cwl
 inputs:
 - id: in_reference_trna_dot_fa
   doc: ''

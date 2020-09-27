@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertToExtent.cwl
+id: convertToExtent.cwl
 inputs:
 - id: in_be_chatty
   doc: be chatty

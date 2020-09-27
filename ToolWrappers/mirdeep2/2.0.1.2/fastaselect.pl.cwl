@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaselect.pl.cwl
+id: fastaselect.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

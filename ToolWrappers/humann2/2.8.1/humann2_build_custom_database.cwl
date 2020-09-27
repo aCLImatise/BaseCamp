@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_build_custom_database.cwl
+id: humann2_build_custom_database.cwl
 inputs:
 - id: in_input
   doc: the fasta input file

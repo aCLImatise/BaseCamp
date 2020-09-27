@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainAntiRepeat.cwl
+id: chainAntiRepeat.cwl
 inputs: []
 outputs:
 - id: out_stdout

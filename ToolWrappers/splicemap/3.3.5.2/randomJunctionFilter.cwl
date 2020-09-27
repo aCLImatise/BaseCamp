@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomJunctionFilter.cwl
+id: randomJunctionFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

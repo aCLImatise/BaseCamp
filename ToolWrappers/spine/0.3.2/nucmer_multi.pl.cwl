@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucmer_multi.pl.cwl
+id: nucmer_multi.pl.cwl
 inputs:
 - id: in_input_fasta_file
   doc: input fasta file

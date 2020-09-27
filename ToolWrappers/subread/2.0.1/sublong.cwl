@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sublong.cwl
+id: sublong.cwl
 inputs:
 - id: in_base_name_index
   doc: "Base name of the index. The index must be built as a full index\nand has only\

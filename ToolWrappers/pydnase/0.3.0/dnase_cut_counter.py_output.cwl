@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnase_cut_counter.py_output.cwl
+id: dnase_cut_counter.py_output.cwl
 inputs:
 - id: in_a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam2bed_typical.cwl
+id: sam2bed_typical.cwl
 inputs:
 - id: in_keep_header
   doc: to preserve the header data from the SAM input as

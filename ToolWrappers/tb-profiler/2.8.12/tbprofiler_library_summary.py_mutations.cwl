@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_library_summary.py_mutations.cwl
+id: tbprofiler_library_summary.py_mutations.cwl
 inputs:
 - id: in_drugs
   doc: 'NGS Platform (default: None)'

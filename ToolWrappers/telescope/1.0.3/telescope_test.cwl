@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../telescope_test.cwl
+id: telescope_test.cwl
 inputs:
 - id: in_telescope
   doc: ''

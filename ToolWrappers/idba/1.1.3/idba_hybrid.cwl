@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idba_hybrid.cwl
+id: idba_hybrid.cwl
 inputs:
 - id: in_out
   doc: (=out)                   output directory

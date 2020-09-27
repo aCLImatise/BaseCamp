@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_output_list_of_taxon_counts.cwl
+id: phyluce_align_output_list_of_taxon_counts.cwl
 inputs:
 - id: in_fast_as
   doc: "The directory containing fastas to checked. (default:\nNone)"

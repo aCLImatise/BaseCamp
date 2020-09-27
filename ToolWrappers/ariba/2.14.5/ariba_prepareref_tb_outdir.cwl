@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_prepareref_tb_outdir.cwl
+id: ariba_prepareref_tb_outdir.cwl
 inputs:
 - id: in_ariba
   doc: ''

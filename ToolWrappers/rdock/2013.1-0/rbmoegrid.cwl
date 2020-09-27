@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbmoegrid.cwl
+id: rbmoegrid.cwl
 inputs:
 - id: in_grd_is_suffixed
   doc: (.grd is suffixed)

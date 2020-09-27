@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readlength.sh.cwl
+id: readlength.sh.cwl
 inputs:
 - id: in_in
   doc: ''

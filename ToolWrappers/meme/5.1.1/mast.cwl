@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mast.cwl
+id: mast.cwl
 inputs:
 - id: in_b_file
   doc: read background frequencies from <bf>

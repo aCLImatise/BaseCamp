@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractBCITrees.cwl
+id: extractBCITrees.cwl
 inputs:
 - id: in_random_seed
   doc: ''

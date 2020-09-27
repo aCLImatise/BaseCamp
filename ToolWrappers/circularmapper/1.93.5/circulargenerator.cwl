@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../circulargenerator.cwl
+id: circulargenerator.cwl
 inputs:
 - id: in_input
   doc: the input FastA File

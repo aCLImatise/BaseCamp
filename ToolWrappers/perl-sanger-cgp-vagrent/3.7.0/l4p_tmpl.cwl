@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../l4p_tmpl.cwl
+id: l4p_tmpl.cwl
 inputs: []
 outputs:
 - id: out_stdout

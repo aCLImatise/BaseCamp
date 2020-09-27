@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbxreport.cwl
+id: dbxreport.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [*.dbxreport] Output file name

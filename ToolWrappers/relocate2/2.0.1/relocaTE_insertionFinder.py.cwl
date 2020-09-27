@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../relocaTE_insertionFinder.py.cwl
+id: relocaTE_insertionFinder.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.deepvariant_pre_unlink.sh.cwl
+id: .deepvariant_pre_unlink.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

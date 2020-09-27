@@ -5,7 +5,6 @@ task Md5cp {
     Boolean? force
     Boolean? preserve
     Boolean? recursive
-    Boolean? test
     Boolean? verbose
     Boolean? quiet
     File? option_file
@@ -19,7 +18,6 @@ task Md5cp {
       ~{if (force) then "--force" else ""} \
       ~{if (preserve) then "--preserve" else ""} \
       ~{if (recursive) then "--recursive" else ""} \
-      ~{if (test) then "--test" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(option_file) then ("--option-file " +  '"' + option_file + '"') else ""}
@@ -28,7 +26,6 @@ task Md5cp {
     force: "overwrite existing columns"
     preserve: "force replacement of existing modes on files\\nand directories"
     recursive: "Recurses over source directories\\n(directories are ignored otherwise)."
-    test: "?"
     verbose: "Increase the verbosity of the program\\nstatus messages. Use multiple times for more\\nverbosity. Negates quiet."
     quiet: "Turn off all status messages for the\\nprogram. Negated by verbose."
     option_file: "Read more options and parameters from the"

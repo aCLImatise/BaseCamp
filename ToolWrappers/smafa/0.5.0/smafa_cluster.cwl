@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smafa_cluster.cwl
+id: smafa_cluster.cwl
 inputs:
 - id: in_amino_acid
   doc: 'Sequences are amino acid [default: nucleotide]'

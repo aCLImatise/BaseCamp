@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_genome_sequences_from_bed.cwl
+id: phyluce_probe_get_genome_sequences_from_bed.cwl
 inputs:
 - id: in_bed
   doc: The input BED file

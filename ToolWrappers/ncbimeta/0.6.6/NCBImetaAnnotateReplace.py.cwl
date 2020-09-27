@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NCBImetaAnnotateReplace.py.cwl
+id: NCBImetaAnnotateReplace.py.cwl
 inputs:
 - id: in_an_not_file
   doc: '[--version]'

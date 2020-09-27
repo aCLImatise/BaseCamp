@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_test.cwl
+id: csb_test.cwl
 inputs:
 - id: in_type
   doc: "Type of tests to load from each namespace\n(default=any)"

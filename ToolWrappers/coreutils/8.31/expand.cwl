@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expand.cwl
+id: expand.cwl
 inputs:
 - id: in_initial
   doc: do not convert tabs after non blanks

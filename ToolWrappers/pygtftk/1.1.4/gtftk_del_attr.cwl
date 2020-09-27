@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_del_attr.cwl
+id: gtftk_del_attr.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

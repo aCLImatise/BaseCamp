@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../streamsam.sh.cwl
+id: streamsam.sh.cwl
 inputs:
 - id: in_in
   doc: ''

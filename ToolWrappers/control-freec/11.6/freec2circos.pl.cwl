@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../freec2circos.pl.cwl
+id: freec2circos.pl.cwl
 inputs:
 - id: in_file_file_ratio
   doc: file                   file with ratio

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isoseq3_refine.cwl
+id: isoseq3_refine.cwl
 inputs:
 - id: in_min_polya_length
   doc: INT   Minimum poly(A) tail length. [20]

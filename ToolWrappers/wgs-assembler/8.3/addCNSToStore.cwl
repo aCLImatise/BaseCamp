@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addCNSToStore.cwl
+id: addCNSToStore.cwl
 inputs:
 - id: in_path
   doc: Path to smrtportal installation. Required if smrtportal is not in path.

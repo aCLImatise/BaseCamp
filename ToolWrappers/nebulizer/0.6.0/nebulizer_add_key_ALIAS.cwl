@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_add_key_ALIAS.cwl
+id: nebulizer_add_key_ALIAS.cwl
 inputs:
 - id: in_galaxy_url
   doc: ''

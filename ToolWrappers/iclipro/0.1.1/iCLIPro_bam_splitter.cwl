@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCLIPro_bam_splitter.cwl
+id: iCLIPro_bam_splitter.cwl
 inputs:
 - id: in_output_folder_default
   doc: output folder (default is cwd - current working directory)

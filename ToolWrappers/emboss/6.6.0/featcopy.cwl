@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../featcopy.cwl
+id: featcopy.cwl
 inputs: []
 outputs:
 - id: out_stdout

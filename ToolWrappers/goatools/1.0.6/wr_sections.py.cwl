@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wr_sections.py.cwl
+id: wr_sections.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

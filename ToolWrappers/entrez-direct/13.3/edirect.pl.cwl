@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edirect.pl.cwl
+id: edirect.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

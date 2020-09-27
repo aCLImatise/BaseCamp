@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dottup.cwl
+id: dottup.cwl
 inputs:
 - id: in_word_size
   doc: integer    [10] Word size (Integer 2 or more)

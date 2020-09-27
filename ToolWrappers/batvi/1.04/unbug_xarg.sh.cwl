@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unbug_xarg.sh.cwl
+id: unbug_xarg.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

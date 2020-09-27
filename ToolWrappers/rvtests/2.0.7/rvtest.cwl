@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rvtest.cwl
+id: rvtest.cwl
 inputs:
 - id: in_in_vcf
   doc: ': Input VCF File'

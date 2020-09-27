@@ -17,8 +17,6 @@ task MapAndProfilepy {
     String required_dot
     String setup_data_dots_h
     String processing_dot
-    String hit_dot
-    String estimation_dot
   }
   command <<<
     map_and_profile_py \
@@ -26,8 +24,6 @@ task MapAndProfilepy {
       ~{required_dot} \
       ~{setup_data_dots_h} \
       ~{processing_dot} \
-      ~{hit_dot} \
-      ~{estimation_dot} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(db_info) then ("--dbinfo " +  '"' + db_info + '"') else ""} \
       ~{if defined(input_type) then ("--input_type " +  '"' + input_type + '"') else ""} \
@@ -56,8 +52,6 @@ task MapAndProfilepy {
     required_dot: "data                  Path to data/ directory with the files from"
     setup_data_dots_h: "optional arguments:"
     processing_dot: "--min_abundance MIN_ABUNDANCE"
-    hit_dot: "--no_quantify_unmapped"
-    estimation_dot: "--read_cutoff READ_CUTOFF"
   }
   output {
     File out_stdout = stdout()

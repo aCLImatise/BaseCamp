@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_es2et.cwl
+id: rnftools_es2et.cwl
 inputs:
 - id: in_es
   doc: "Input ES file (evaluated segments, - for standard\ninput)."

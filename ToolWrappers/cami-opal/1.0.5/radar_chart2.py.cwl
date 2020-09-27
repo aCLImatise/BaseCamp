@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../radar_chart2.py.cwl
+id: radar_chart2.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

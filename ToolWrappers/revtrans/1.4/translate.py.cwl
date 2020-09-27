@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../translate.py.cwl
+id: translate.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

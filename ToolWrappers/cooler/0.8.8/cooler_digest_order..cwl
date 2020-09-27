@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_digest_order..cwl
+id: cooler_digest_order..cwl
 inputs:
 - id: in_cooler
   doc: ''

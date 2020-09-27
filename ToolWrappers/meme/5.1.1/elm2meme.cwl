@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../elm2meme.cwl
+id: elm2meme.cwl
 inputs:
 - id: in_allow_anchored_motifs
   doc: "allow anchored motifs;\ndefault: skip anchored motifs"

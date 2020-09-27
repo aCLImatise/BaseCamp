@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophex_bwt2fa.cwl
+id: prophex_bwt2fa.cwl
 inputs:
 - id: in_idx_base
   doc: ''

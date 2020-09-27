@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../callpeaks.sh.cwl
+id: callpeaks.sh.cwl
 inputs:
 - id: in_increases_dot
   doc: Useful for kmer-frequency histograms.

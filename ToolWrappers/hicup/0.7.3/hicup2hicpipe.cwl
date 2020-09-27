@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup2hicpipe.cwl
+id: hicup2hicpipe.cwl
 inputs: []
 outputs:
 - id: out_stdout

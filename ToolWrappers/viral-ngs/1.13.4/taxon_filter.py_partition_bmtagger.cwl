@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxon_filter.py_partition_bmtagger.cwl
+id: taxon_filter.py_partition_bmtagger.cwl
 inputs:
 - id: in_out_match
   doc: "OUTMATCH\nFilenames for fastq output of matching reads."

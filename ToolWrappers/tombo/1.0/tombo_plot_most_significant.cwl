@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_plot_most_significant.cwl
+id: tombo_plot_most_significant.cwl
 inputs:
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.

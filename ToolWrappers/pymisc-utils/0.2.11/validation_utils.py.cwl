@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validation_utils.py.cwl
+id: validation_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

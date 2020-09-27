@@ -2,17 +2,17 @@ version 1.0
 
 task HcaDssLogin {
   input {
-    String? access_token
     Boolean? remote
+    String? access_token
   }
   command <<<
     hca dss login \
-      ~{if defined(access_token) then ("--access-token " +  '"' + access_token + '"') else ""} \
-      ~{if (remote) then "--remote" else ""}
+      ~{if (remote) then "--remote" else ""} \
+      ~{if defined(access_token) then ("--access-token " +  '"' + access_token + '"') else ""}
   >>>
   parameter_meta {
-    access_token: ""
     remote: ""
+    access_token: ""
   }
   output {
     File out_stdout = stdout()

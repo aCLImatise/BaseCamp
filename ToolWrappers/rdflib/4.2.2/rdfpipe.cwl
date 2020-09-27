@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rdfpipe.cwl
+id: rdfpipe.cwl
 inputs:
 - id: in_input_format
   doc: "Format of the input document(s). Available input\nformats are: application/rdf+xml,\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDMapper.cwl
+id: IDMapper.cwl
 inputs:
 - id: in_id
   doc: "*                  Protein/peptide identifications file (valid formats: 'mzid',\

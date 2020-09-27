@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2metxml.cwl
+id: ftbl2metxml.cwl
 inputs:
 - id: in_network
   doc: ''

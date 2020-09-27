@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starchcluster_gnuParallel_typical.cwl
+id: starchcluster_gnuParallel_typical.cwl
 inputs: []
 outputs:
 - id: out_stdout

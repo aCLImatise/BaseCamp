@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastBlockSearch.cwl
+id: fastBlockSearch.cwl
 inputs:
 - id: in_fast_blocks_search
   doc: ''

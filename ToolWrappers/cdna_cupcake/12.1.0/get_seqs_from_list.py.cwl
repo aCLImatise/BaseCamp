@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_seqs_from_list.py.cwl
+id: get_seqs_from_list.py.cwl
 inputs:
 - id: in_partial
   doc: OK if seq IDs only match the beginning

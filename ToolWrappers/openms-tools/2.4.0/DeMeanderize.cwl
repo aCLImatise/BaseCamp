@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DeMeanderize.cwl
+id: DeMeanderize.cwl
 inputs:
 - id: in_in
   doc: "*              Input experiment file, containing the wrongly sorted spectra.\

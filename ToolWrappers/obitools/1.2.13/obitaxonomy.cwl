@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obitaxonomy.cwl
+id: obitaxonomy.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

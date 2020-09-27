@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_split.cwl
+id: xsv_split.cwl
 inputs:
 - id: in_size
   doc: "The number of records to write into each chunk.\n[default: 500]"

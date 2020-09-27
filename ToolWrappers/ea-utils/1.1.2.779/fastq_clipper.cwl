@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_clipper.cwl
+id: fastq_clipper.cwl
 inputs:
 - id: in_output_file_stats
   doc: Output file (stats to stdout)

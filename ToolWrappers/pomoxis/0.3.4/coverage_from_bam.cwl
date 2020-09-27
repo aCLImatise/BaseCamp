@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_from_bam.cwl
+id: coverage_from_bam.cwl
 inputs:
 - id: in_regions
   doc: 'Only process given regions. (default: None)'

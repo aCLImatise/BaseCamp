@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dropReport.Rsc.cwl
+id: dropReport.Rsc.cwl
 inputs: []
 outputs:
 - id: out_stdout

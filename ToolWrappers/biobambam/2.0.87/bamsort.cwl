@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamsort.cwl
+id: bamsort.cwl
 inputs: []
 outputs:
 - id: out_stdout

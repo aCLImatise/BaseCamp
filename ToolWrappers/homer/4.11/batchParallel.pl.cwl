@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchParallel.pl.cwl
+id: batchParallel.pl.cwl
 inputs:
 - id: in_cpu
   doc: '<#> (max number of parallel processes, default: 20)'

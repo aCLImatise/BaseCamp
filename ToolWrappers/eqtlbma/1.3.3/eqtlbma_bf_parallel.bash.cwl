@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eqtlbma_bf_parallel.bash.cwl
+id: eqtlbma_bf_parallel.bash.cwl
 inputs:
 - id: in_verbose
   doc: level (0/default=1/2/3)

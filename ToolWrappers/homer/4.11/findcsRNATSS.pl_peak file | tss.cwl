@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findcsRNATSS.pl_peak file | tss.cwl
+id: findcsRNATSS.pl_peak file | tss.cwl
 inputs:
 - id: in_o
   doc: (*see note below)

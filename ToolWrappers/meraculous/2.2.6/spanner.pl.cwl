@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spanner.pl.cwl
+id: spanner.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

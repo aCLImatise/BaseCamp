@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaCount.cwl
+id: simkaCount.cwl
 inputs:
 - id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

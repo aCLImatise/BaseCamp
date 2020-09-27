@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: ../../../gcloud_topic_formats.cwl
+id: gcloud_topic_formats.cwl
 inputs:
-- id: in_i_am_account
-  doc: \
-  type: boolean
-  inputBinding:
-    prefix: --iam-account
-- id: in_project
-  doc: \
-  type: long
-  inputBinding:
-    prefix: --project
-- id: in_format
-  doc: ="table(name.scope(serviceAccounts).segment(0):label='se\
-  type: boolean
-  inputBinding:
-    prefix: --format
 - id: in_formats
   doc: "A format expression is used to change the default output format of a\ncommand.\
     \ Many output formats are available; some for pretty printing\nhuman-readable\

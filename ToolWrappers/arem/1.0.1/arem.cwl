@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arem.cwl
+id: arem.cwl
 inputs:
 - id: in_treatment
   doc: "ChIP-seq treatment files. REQUIRED. When ELANDMULTIPET\nis selected, you must\

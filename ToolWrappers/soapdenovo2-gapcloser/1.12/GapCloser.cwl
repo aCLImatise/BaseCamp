@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GapCloser.cwl
+id: GapCloser.cwl
 inputs:
 - id: in_string_name_required
   doc: <string>        input scaffold file name, required.

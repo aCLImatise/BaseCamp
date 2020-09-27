@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaxa2_dc.cwl
+id: metaxa2_dc.cwl
 inputs:
 - id: in__output_file
   doc: ': Output file'

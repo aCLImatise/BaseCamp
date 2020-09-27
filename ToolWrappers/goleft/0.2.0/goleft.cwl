@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goleft.cwl
+id: goleft.cwl
 inputs: []
 outputs:
 - id: out_stdout

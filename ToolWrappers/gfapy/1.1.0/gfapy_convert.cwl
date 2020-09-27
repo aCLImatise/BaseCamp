@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfapy_convert.cwl
+id: gfapy_convert.cwl
 inputs:
 - id: in_filename
   doc: 'optional arguments:'

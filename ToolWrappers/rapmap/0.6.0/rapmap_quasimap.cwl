@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapmap_quasimap.cwl
+id: rapmap_quasimap.cwl
 inputs:
 - id: in__index_pathrequired
   doc: ",  --index <path>\n(required)  The location of the quasiindex"
@@ -163,14 +163,7 @@ inputs:
   inputBinding:
     prefix: -n
 - id: in_rap_map
-  doc: "-i <path> [-1 <path>] [-2 <path>] [-r <path>] [-o <path>] [-x]\n[-t <positive\
-    \ integer>] [-s] [--mimicBT2] [--mimicStrictBT2]\n[--minScoreFrac <ratio in (0,1]>]\
-    \ [--maxMMPExtension <positive\ninteger > 1>] [--consensusSlack <ratio in (0,1]>]\
-    \ [--ma\n<positive integer>] [--mm <negative integer>] [--go <positive\ninteger>]\
-    \ [--ge <positive integer>] [--dpBandwidth <positive\ninteger>] [--noOrphans]\
-    \ [--noDovetail] [--recoverOrphans]\n[--hardFilter] [-u] [-q] [-c] [-f] [--noStrictCheck]\n\
-    [--noSensitive] [-z <double in [0,1]>] [-m <positive integer>]\n[-n] [--] [--version]\
-    \ [-h]"
+  doc: ''
   type: string
   inputBinding:
     position: 0

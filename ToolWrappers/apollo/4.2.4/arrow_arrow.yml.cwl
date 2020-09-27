@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_arrow.yml.cwl
+id: arrow_arrow.yml.cwl
 inputs:
 - id: in_arrow
   doc: ''

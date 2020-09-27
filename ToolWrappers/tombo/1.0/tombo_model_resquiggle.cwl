@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_model_resquiggle.cwl
+id: tombo_model_resquiggle.cwl
 inputs:
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.

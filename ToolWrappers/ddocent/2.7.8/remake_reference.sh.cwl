@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remake_reference.sh.cwl
+id: remake_reference.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

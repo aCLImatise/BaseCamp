@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_convert_embl2gff.pl.cwl
+id: agat_convert_embl2gff.pl.cwl
 inputs:
 - id: in_embl
   doc: Input EMBL file that will be read

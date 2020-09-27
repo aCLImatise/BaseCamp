@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FlowSOMCompare.R.cwl
+id: FlowSOMCompare.R.cwl
 inputs:
 - id: in_union
   doc: "Attaching package: 'flowCore'"

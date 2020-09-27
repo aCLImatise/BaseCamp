@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertFastaQualToFastQ.rb.cwl
+id: convertFastaQualToFastQ.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

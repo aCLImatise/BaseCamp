@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../notab.cwl
+id: notab.cwl
 inputs: []
 outputs:
 - id: out_stdout

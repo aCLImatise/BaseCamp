@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crisprtools_merge.cwl
+id: crisprtools_merge.cwl
 inputs:
 - id: in_output_file_
   doc: 'output file  [default: crisprtools_merged.crispr]'

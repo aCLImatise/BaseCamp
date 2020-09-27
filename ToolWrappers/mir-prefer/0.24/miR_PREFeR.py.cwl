@@ -1,22 +1,6 @@
 class: CommandLineTool
-id: ../../../miR_PREFeR.py.cwl
+id: miR_PREFeR.py.cwl
 inputs:
-- id: in_log
-  doc: Generate a log file.
-  type: boolean
-  inputBinding:
-    prefix: --log
-- id: in_keep_tmp
-  doc: "After finish the whole pipeline, do not remove the\ntemporary folder that\
-    \ contains the intermidate files."
-  type: boolean
-  inputBinding:
-    prefix: --keep-tmp
-- id: in_output_detail_for_debug
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --output-detail-for-debug
 - id: in_command
   doc: ''
   type: string

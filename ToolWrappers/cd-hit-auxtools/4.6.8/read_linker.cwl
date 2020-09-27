@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_linker.cwl
+id: read_linker.cwl
 inputs:
 - id: in_input_file_first_end
   doc: Input file, first end;

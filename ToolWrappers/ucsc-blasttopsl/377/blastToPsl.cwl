@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastToPsl.cwl
+id: blastToPsl.cwl
 inputs: []
 outputs:
 - id: out_stdout

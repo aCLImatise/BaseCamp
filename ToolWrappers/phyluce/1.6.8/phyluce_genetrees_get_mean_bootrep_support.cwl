@@ -1,17 +1,12 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_get_mean_bootrep_support.cwl
+id: phyluce_genetrees_get_mean_bootrep_support.cwl
 inputs:
-- id: in_root
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --root
 - id: in_trees
   doc: Tree file
   type: File
   inputBinding:
     prefix: --trees
-- id: in_config_file
+- id: in_config
   doc: config file
   type: File
   inputBinding:
@@ -21,11 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --schema
-- id: in_var_4
-  doc: '[--schema {nexus,newick,nexml,fasta,phylip}]'
+- id: in_root
+  doc: The taxon on which to root trees
   type: string
   inputBinding:
-    position: 0
+    prefix: --root
 outputs:
 - id: out_stdout
   doc: Standard output stream

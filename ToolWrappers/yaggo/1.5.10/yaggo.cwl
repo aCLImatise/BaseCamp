@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yaggo.cwl
+id: yaggo.cwl
 inputs:
 - id: in_output
   doc: Output file

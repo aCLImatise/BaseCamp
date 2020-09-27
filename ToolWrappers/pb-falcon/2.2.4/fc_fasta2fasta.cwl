@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_fasta2fasta.cwl
+id: fc_fasta2fasta.cwl
 inputs:
 - id: in_gzip
   doc: "Compress intermediate fasta with gzip. (Not currently\nimplemented.)"

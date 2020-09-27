@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tee.cwl
+id: tee.cwl
 inputs:
 - id: in_append
   doc: append to the given FILEs, do not overwrite

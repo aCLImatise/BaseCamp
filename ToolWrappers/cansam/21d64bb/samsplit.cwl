@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samsplit.cwl
+id: samsplit.cwl
 inputs:
 - id: in_write_output_files
   doc: Write output files in BAM format

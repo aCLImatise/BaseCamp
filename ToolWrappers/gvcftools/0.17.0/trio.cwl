@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trio.cwl
+id: trio.cwl
 inputs:
 - id: in_ref
   doc: samtools reference sequence (required)

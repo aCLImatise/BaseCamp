@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cvbio.cwl
+id: cvbio.cwl
 inputs: []
 outputs:
 - id: out_stdout

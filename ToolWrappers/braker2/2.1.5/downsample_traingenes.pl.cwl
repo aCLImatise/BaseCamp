@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../downsample_traingenes.pl.cwl
+id: downsample_traingenes.pl.cwl
 inputs:
 - id: in_lambda
   doc: "Parameter lambda of Poisson distribution\n(default value is 0)"

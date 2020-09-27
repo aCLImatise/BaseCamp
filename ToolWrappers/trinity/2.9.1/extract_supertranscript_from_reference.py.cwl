@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_supertranscript_from_reference.py.cwl
+id: extract_supertranscript_from_reference.py.cwl
 inputs:
 - id: in_gtf
   doc: Path to gtf annotation file.

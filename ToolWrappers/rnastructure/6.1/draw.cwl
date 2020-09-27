@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../draw.cwl
+id: draw.cwl
 inputs:
 - id: in_circle
   doc: "Specify that the structure should be drawn with its backbone stretched\naround\

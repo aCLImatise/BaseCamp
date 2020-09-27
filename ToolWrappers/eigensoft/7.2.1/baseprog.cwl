@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../baseprog.cwl
+id: baseprog.cwl
 inputs:
 - id: in_bad
   doc: ''

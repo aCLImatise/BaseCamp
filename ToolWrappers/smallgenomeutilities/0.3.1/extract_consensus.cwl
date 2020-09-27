@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_consensus.cwl
+id: extract_consensus.cwl
 inputs:
 - id: in_fasta_file_containing
   doc: 'Fasta file containing the reference sequence (default: None)'

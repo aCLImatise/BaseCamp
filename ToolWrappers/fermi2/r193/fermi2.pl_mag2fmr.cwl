@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2.pl_mag2fmr.cwl
+id: fermi2.pl_mag2fmr.cwl
 inputs:
 - id: in_more_options
   doc: ''

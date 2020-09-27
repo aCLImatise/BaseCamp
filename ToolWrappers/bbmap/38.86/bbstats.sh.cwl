@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbstats.sh.cwl
+id: bbstats.sh.cwl
 inputs:
 - id: in_stats_dots_h
   doc: ''

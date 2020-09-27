@@ -59,14 +59,14 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        EXCEPTION:
         WARNING:
-        ERROR:
-        INFO:
         CRITICAL:
+        ERROR:
         DEBUG:
+        INFO:
+        EXCEPTION:
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -124,14 +124,14 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? DEBUG
-            ? ERROR
             ? EXCEPTION
-            ? CRITICAL
-            ? INFO
             ? WARNING
+            ? ERROR
+            ? INFO
+            ? CRITICAL
+            ? DEBUG
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -190,14 +190,512 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
+                ? DEBUG
                 ? ERROR
                 ? EXCEPTION
-                ? INFO
-                ? DEBUG
-                ? WARNING
                 ? CRITICAL
+                ? INFO
+                ? WARNING
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: Input sequence of reference genome
+                position: 0
+                name: ref_fasta
+                optional: false
+              - !Positional
+                description: Input reference annotations (NCBI TBL format)
+                position: 1
+                name: ref_tbl
+                optional: false
+              - !Positional
+                description: Input sequence of new genome
+                position: 2
+                name: alt_fasta
+                optional: false
+              - !Positional
+                description: Output file with transferred annotations
+                position: 3
+                name: out_tbl
+                optional: false
+              named:
+              - !Flag
+                description: "Out of bounds feature behavior. False: drop all\nfeatures\
+                  \ that are completely or partly out of bounds\nTrue: drop all features\
+                  \ completely out of bounds but\ntruncate any features that are partly\
+                  \ out of bounds"
+                synonyms:
+                - --oob_clip
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Base directory for temp files. [default: /tmp]'
+                synonyms:
+                - --tmp_dir
+                args: !SimpleFlagArg
+                  name: TMP_DIR
+                optional: true
+              - !Flag
+                description: "Keep the tmp_dir if an exception occurs while running.\n\
+                  Default is to delete all temp files at the end, even\nif there's\
+                  \ a failure."
+                synonyms:
+                - --tmp_dirKeep
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Verboseness of output. [default: DEBUG]'
+                synonyms:
+                - --loglevel
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? ERROR
+                    ? EXCEPTION
+                    ? INFO
+                    ? DEBUG
+                    ? WARNING
+                    ? CRITICAL
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                - -V
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: ncbi.py subcommand tbl_transfer [-h] [--oob_clip]\
+                \ [--tmp_dir TMP_DIR]\n                                       [--tmp_dirKeep]\n\
+                \                                       [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                \                                       [--version]\n            \
+                \                           ref_fasta ref_tbl alt_fasta out_tbl\n\n\
+                This function takes an NCBI TBL file describing features on a genome\
+                \ (genes,\netc) and transfers them to a new genome.\n\npositional\
+                \ arguments:\n  ref_fasta             Input sequence of reference\
+                \ genome\n  ref_tbl               Input reference annotations (NCBI\
+                \ TBL format)\n  alt_fasta             Input sequence of new genome\n\
+                \  out_tbl               Output file with transferred annotations\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  --oob_clip            Out of bounds feature behavior.\
+                \ False: drop all\n                        features that are completely\
+                \ or partly out of bounds\n                        True: drop all\
+                \ features completely out of bounds but\n                        truncate\
+                \ any features that are partly out of bounds\n  --tmp_dir TMP_DIR\
+                \     Base directory for temp files. [default: /tmp]\n  --tmp_dirKeep\
+                \         Keep the tmp_dir if an exception occurs while running.\n\
+                \                        Default is to delete all temp files at the\
+                \ end, even\n                        if there's a failure.\n  --loglevel\
+                \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                \
+                \        Verboseness of output. [default: DEBUG]\n  --version, -V\
+                \         show program's version number and exit\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - ncbi.py
+              - fetch_genbank_records
+              positional:
+              - !Positional
+                description: '[accession_IDs ...]'
+                position: 0
+                name: accession_IDs
+                optional: false
+              - !Positional
+                description: "Your email address. To access the Genbank\nCoreNucleotide\
+                  \ database, NCBI requires you to specify\nyour email address with\
+                  \ each request. In case of\nexcessive usage of the E-utilities,\
+                  \ NCBI will attempt\nto contact a user at the email address provided\
+                  \ before\nblocking access. This email address should be\nregistered\
+                  \ with NCBI. To register an email address,\nsimply send an email\
+                  \ to eutilities@ncbi.nlm.nih.gov\nincluding your email address and\
+                  \ the tool name\n(tool='https://github.com/broadinstitute/viral-ngs')."
+                position: 0
+                name: emailAddress
+                optional: false
+              - !Positional
+                description: "Output directory with where .fasta and .tbl files will\n\
+                  be saved"
+                position: 1
+                name: destinationDir
+                optional: false
+              - !Positional
+                description: List of Genbank nuccore accession IDs
+                position: 2
+                name: accession_IDs
+                optional: false
+              named:
+              - !Flag
+                description: Overwrite existing files, if present.
+                synonyms:
+                - --forceOverwrite
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "The prefix of the file containing the combined\nconcatenated\
+                  \ results returned by the list of accession\nIDs, in the order provided."
+                synonyms:
+                - --combinedFilePrefix
+                args: !SimpleFlagArg
+                  name: COMBINEDFILEPREFIX
+                optional: true
+              - !Flag
+                description: The extension to use for the downloaded files
+                synonyms:
+                - --fileExt
+                args: !SimpleFlagArg
+                  name: FILEEXT
+                optional: true
+              - !Flag
+                description: "If specified, remove the individual files and leave\n\
+                  only the combined file."
+                synonyms:
+                - --removeSeparateFiles
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Causes files to be downloaded from GenBank in chunks\n\
+                  of N accessions. Each chunk will be its own combined\nfile, separate\
+                  \ from any combined file created via\n--combinedFilePrefix (default:\
+                  \ 1). If chunkSize is\nunspecified and >500 accessions are provided,\n\
+                  chunkSize will be set to 500 to adhere to the NCBI\nguidelines on\
+                  \ information retreival."
+                synonyms:
+                - --chunkSize
+                args: !SimpleFlagArg
+                  name: CHUNKSIZE
+                optional: true
+              - !Flag
+                description: 'Base directory for temp files. [default: /tmp]'
+                synonyms:
+                - --tmp_dir
+                args: !SimpleFlagArg
+                  name: TMP_DIR
+                optional: true
+              - !Flag
+                description: "Keep the tmp_dir if an exception occurs while running.\n\
+                  Default is to delete all temp files at the end, even\nif there's\
+                  \ a failure."
+                synonyms:
+                - --tmp_dirKeep
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Verboseness of output. [default: DEBUG]'
+                synonyms:
+                - --loglevel
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? ERROR
+                    ? EXCEPTION
+                    ? INFO
+                    ? DEBUG
+                    ? WARNING
+                    ? CRITICAL
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                - -V
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: ncbi.py subcommand fetch_genbank_records [-h] [--forceOverwrite]\n\
+                \                                                [--combinedFilePrefix\
+                \ COMBINEDFILEPREFIX]\n                                          \
+                \      [--fileExt FILEEXT]\n                                     \
+                \           [--removeSeparateFiles]\n                            \
+                \                    [--chunkSize CHUNKSIZE]\n                   \
+                \                             [--tmp_dir TMP_DIR]\n              \
+                \                                  [--tmp_dirKeep]\n             \
+                \                                   [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                \                                                [--version]\n   \
+                \                                             emailAddress destinationDir\n\
+                \                                                accession_IDs\n \
+                \                                               [accession_IDs ...]\n\
+                \nThis function downloads and saves full flat text records from Genbank\n\
+                CoreNucleotide database given a given list of accession IDs.\n\npositional\
+                \ arguments:\n  emailAddress          Your email address. To access\
+                \ the Genbank\n                        CoreNucleotide database, NCBI\
+                \ requires you to specify\n                        your email address\
+                \ with each request. In case of\n                        excessive\
+                \ usage of the E-utilities, NCBI will attempt\n                  \
+                \      to contact a user at the email address provided before\n  \
+                \                      blocking access. This email address should\
+                \ be\n                        registered with NCBI. To register an\
+                \ email address,\n                        simply send an email to\
+                \ eutilities@ncbi.nlm.nih.gov\n                        including your\
+                \ email address and the tool name\n                        (tool='https://github.com/broadinstitute/viral-ngs').\n\
+                \  destinationDir        Output directory with where .fasta and .tbl\
+                \ files will\n                        be saved\n  accession_IDs  \
+                \       List of Genbank nuccore accession IDs\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  --forceOverwrite\
+                \      Overwrite existing files, if present.\n  --combinedFilePrefix\
+                \ COMBINEDFILEPREFIX\n                        The prefix of the file\
+                \ containing the combined\n                        concatenated results\
+                \ returned by the list of accession\n                        IDs,\
+                \ in the order provided.\n  --fileExt FILEEXT     The extension to\
+                \ use for the downloaded files\n  --removeSeparateFiles\n        \
+                \                If specified, remove the individual files and leave\n\
+                \                        only the combined file.\n  --chunkSize CHUNKSIZE\n\
+                \                        Causes files to be downloaded from GenBank\
+                \ in chunks\n                        of N accessions. Each chunk will\
+                \ be its own combined\n                        file, separate from\
+                \ any combined file created via\n                        --combinedFilePrefix\
+                \ (default: 1). If chunkSize is\n                        unspecified\
+                \ and >500 accessions are provided,\n                        chunkSize\
+                \ will be set to 500 to adhere to the NCBI\n                     \
+                \   guidelines on information retreival.\n  --tmp_dir TMP_DIR    \
+                \ Base directory for temp files. [default: /tmp]\n  --tmp_dirKeep\
+                \         Keep the tmp_dir if an exception occurs while running.\n\
+                \                        Default is to delete all temp files at the\
+                \ end, even\n                        if there's a failure.\n  --loglevel\
+                \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                \
+                \        Verboseness of output. [default: DEBUG]\n  --version, -V\
+                \         show program's version number and exit\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - ncbi.py
+              - fetch_fastas
+              positional:
+              - !Positional
+                description: "Your email address. To access the Genbank\nCoreNucleotide\
+                  \ database, NCBI requires you to specify\nyour email address with\
+                  \ each request. In case of\nexcessive usage of the E-utilities,\
+                  \ NCBI will attempt\nto contact a user at the email address provided\
+                  \ before\nblocking access. This email address should be\nregistered\
+                  \ with NCBI. To register an email address,\nsimply send an email\
+                  \ to eutilities@ncbi.nlm.nih.gov\nincluding your email address and\
+                  \ the tool name\n(tool='https://github.com/broadinstitute/viral-ngs')."
+                position: 0
+                name: emailAddress
+                optional: false
+              - !Positional
+                description: "Output directory with where .fasta and .tbl files will\n\
+                  be saved"
+                position: 1
+                name: destinationDir
+                optional: false
+              - !Positional
+                description: List of Genbank nuccore accession IDs
+                position: 2
+                name: accession_IDs
+                optional: false
+              named:
+              - !Flag
+                description: Overwrite existing files, if present.
+                synonyms:
+                - --forceOverwrite
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "The prefix of the file containing the combined\nconcatenated\
+                  \ results returned by the list of accession\nIDs, in the order provided."
+                synonyms:
+                - --combinedFilePrefix
+                args: !SimpleFlagArg
+                  name: COMBINEDFILEPREFIX
+                optional: true
+              - !Flag
+                description: The extension to use for the downloaded files
+                synonyms:
+                - --fileExt
+                args: !SimpleFlagArg
+                  name: FILEEXT
+                optional: true
+              - !Flag
+                description: "If specified, remove the individual files and leave\n\
+                  only the combined file."
+                synonyms:
+                - --removeSeparateFiles
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Causes files to be downloaded from GenBank in chunks\n\
+                  of N accessions. Each chunk will be its own combined\nfile, separate\
+                  \ from any combined file created via\n--combinedFilePrefix (default:\
+                  \ 1). If chunkSize is\nunspecified and >500 accessions are provided,\n\
+                  chunkSize will be set to 500 to adhere to the NCBI\nguidelines on\
+                  \ information retreival."
+                synonyms:
+                - --chunkSize
+                args: !SimpleFlagArg
+                  name: CHUNKSIZE
+                optional: true
+              - !Flag
+                description: 'Base directory for temp files. [default: /tmp]'
+                synonyms:
+                - --tmp_dir
+                args: !SimpleFlagArg
+                  name: TMP_DIR
+                optional: true
+              - !Flag
+                description: "Keep the tmp_dir if an exception occurs while running.\n\
+                  Default is to delete all temp files at the end, even\nif there's\
+                  \ a failure."
+                synonyms:
+                - --tmp_dirKeep
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Verboseness of output. [default: DEBUG]'
+                synonyms:
+                - --loglevel
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? ERROR
+                    ? EXCEPTION
+                    ? INFO
+                    ? DEBUG
+                    ? WARNING
+                    ? CRITICAL
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                - -V
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: ncbi.py subcommand fetch_fastas [-h] [--forceOverwrite]\n\
+                \                                       [--combinedFilePrefix COMBINEDFILEPREFIX]\n\
+                \                                       [--fileExt FILEEXT]\n    \
+                \                                   [--removeSeparateFiles]\n    \
+                \                                   [--chunkSize CHUNKSIZE]\n    \
+                \                                   [--tmp_dir TMP_DIR] [--tmp_dirKeep]\n\
+                \                                       [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                \                                       [--version]\n            \
+                \                           emailAddress destinationDir\n        \
+                \                               accession_IDs [accession_IDs ...]\n\
+                \nThis function downloads and saves the FASTA files from the Genbank\n\
+                CoreNucleotide database given a given list of accession IDs.\n\npositional\
+                \ arguments:\n  emailAddress          Your email address. To access\
+                \ the Genbank\n                        CoreNucleotide database, NCBI\
+                \ requires you to specify\n                        your email address\
+                \ with each request. In case of\n                        excessive\
+                \ usage of the E-utilities, NCBI will attempt\n                  \
+                \      to contact a user at the email address provided before\n  \
+                \                      blocking access. This email address should\
+                \ be\n                        registered with NCBI. To register an\
+                \ email address,\n                        simply send an email to\
+                \ eutilities@ncbi.nlm.nih.gov\n                        including your\
+                \ email address and the tool name\n                        (tool='https://github.com/broadinstitute/viral-ngs').\n\
+                \  destinationDir        Output directory with where .fasta and .tbl\
+                \ files will\n                        be saved\n  accession_IDs  \
+                \       List of Genbank nuccore accession IDs\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  --forceOverwrite\
+                \      Overwrite existing files, if present.\n  --combinedFilePrefix\
+                \ COMBINEDFILEPREFIX\n                        The prefix of the file\
+                \ containing the combined\n                        concatenated results\
+                \ returned by the list of accession\n                        IDs,\
+                \ in the order provided.\n  --fileExt FILEEXT     The extension to\
+                \ use for the downloaded files\n  --removeSeparateFiles\n        \
+                \                If specified, remove the individual files and leave\n\
+                \                        only the combined file.\n  --chunkSize CHUNKSIZE\n\
+                \                        Causes files to be downloaded from GenBank\
+                \ in chunks\n                        of N accessions. Each chunk will\
+                \ be its own combined\n                        file, separate from\
+                \ any combined file created via\n                        --combinedFilePrefix\
+                \ (default: 1). If chunkSize is\n                        unspecified\
+                \ and >500 accessions are provided,\n                        chunkSize\
+                \ will be set to 500 to adhere to the NCBI\n                     \
+                \   guidelines on information retreival.\n  --tmp_dir TMP_DIR    \
+                \ Base directory for temp files. [default: /tmp]\n  --tmp_dirKeep\
+                \         Keep the tmp_dir if an exception occurs while running.\n\
+                \                        Default is to delete all temp files at the\
+                \ end, even\n                        if there's a failure.\n  --loglevel\
+                \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                \
+                \        Verboseness of output. [default: DEBUG]\n  --version, -V\
+                \         show program's version number and exit\n"
+              generated_using: *id004
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "\nEnter a subcommand to view additional information:\n\n \
+              \    ncbi.py \e[1mtbl_transfer\e[0m [...]\n          This function takes\
+              \ an NCBI TBL file describing features on\n          a genome(genes,\
+              \ etc) and transfers them to a new genome.\n\n     ncbi.py \e[1mtbl_transfer_prealigned\e\
+              [0m [...]\n          This breaks out the ref and alt sequences into\
+              \ separate\n          fasta files, and thencreates unified files containing\
+              \ the\n          reference sequence first and the alt second. Each of\
+              \ these\n          unified filesis then passed as a cmap to\n      \
+              \    tbl_transfer_common. This function expects to receive one\n   \
+              \       fasta file containing a multialignment of a single\n       \
+              \   segment/chromosome alongwith the respective reference\n        \
+              \  sequence for that segment/chromosome. It also expects a\n       \
+              \   reference containing allreference segments/chromosomes, so\n   \
+              \       that the reference sequence can be identified in the input\n\
+              \          file by name. Italso expects a list of reference tbl files,\n\
+              \          where each file is named according to the ID present for\n\
+              \          itscorresponding sequence in the refFasta. For each non-\n\
+              \          reference sequence present in the inputFasta, two files\n\
+              \          arewritten: a fasta containing the segment/chromosome for\n\
+              \          the same, along with its corresponding feature table\n  \
+              \        ascreated by tbl_transfer_common.\n\n     ncbi.py \e[1mfetch_fastas\e\
+              [0m [...]\n          This function downloads and saves the FASTA filesfrom\
+              \ the\n          Genbank CoreNucleotide database given a given list\
+              \ of\n          accession IDs.\n\n     ncbi.py \e[1mfetch_feature_tables\e\
+              [0m [...]\n          This function downloads and savesfeature tables\
+              \ from the\n          Genbank CoreNucleotide database given a given\
+              \ list of\n          accession IDs.\n\n     ncbi.py \e[1mfetch_genbank_records\e\
+              [0m [...]\n          This function downloads and savesfull flat text\
+              \ records from\n          Genbank CoreNucleotide database given a given\
+              \ list of\n          accession IDs.\n\n     ncbi.py \e[1mprep_genbank_files\e\
+              [0m [...]\n          Prepare genbank submission files. Requires .fasta\
+              \ and .tbl\n          files as input,as well as numerous other metadata\
+              \ files for\n          the submission. Creates adirectory full of files\
+              \ (.sqn in\n          particular) that can be sent to GenBank.\n\n \
+              \    ncbi.py \e[1mprep_sra_table\e[0m [...]\n          This is a very\
+              \ lazy hack that creates a basic table that can\n          bepasted\
+              \ into various columns of an SRA submission\n          spreadsheet.\
+              \ It probablydoesn't work in all cases.\n\nusage: ncbi.py subcommand\n\
+              \nThis script contains a number of utilities for submitting our analyses\
+              \ to\nNCBI's Genbank and SRA databases, as well as retreiving records\
+              \ from Genbank.\n\nsubcommands:\n  \e[F\n    tbl_transfer\n    tbl_transfer_prealigned\n\
+              \    fetch_fastas\n    fetch_feature_tables\n    fetch_genbank_records\n\
+              \    prep_genbank_files\n    prep_sra_table\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -238,18 +736,10 @@ subcommands:
             \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n        \
             \                Verboseness of output. [default: DEBUG]\n  --version,\
             \ -V         show program's version number and exit\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - ncbi.py
-          - fetch_genbank_records
+          command: *id005
           positional:
-          - !Positional
-            description: '[accession_IDs ...]'
-            position: 0
-            name: accession_IDs
-            optional: false
           - !Positional
             description: "Your email address. To access the Genbank\nCoreNucleotide\
               \ database, NCBI requires you to specify\nyour email address with each\
@@ -333,12 +823,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
+                ? DEBUG
                 ? ERROR
                 ? EXCEPTION
-                ? INFO
-                ? DEBUG
-                ? WARNING
                 ? CRITICAL
+                ? INFO
+                ? WARNING
             optional: true
           parent: *id003
           subcommands: []
@@ -411,9 +901,7 @@ subcommands:
             \ -V         show program's version number and exit\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - ncbi.py
-          - fetch_fastas
+          command: *id006
           positional:
           - !Positional
             description: "Your email address. To access the Genbank\nCoreNucleotide\
@@ -498,12 +986,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
+                ? DEBUG
                 ? ERROR
                 ? EXCEPTION
-                ? INFO
-                ? DEBUG
-                ? WARNING
                 ? CRITICAL
+                ? INFO
+                ? WARNING
             optional: true
           parent: *id003
           subcommands: []
@@ -742,14 +1230,14 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? DEBUG
-            ? ERROR
             ? EXCEPTION
-            ? CRITICAL
-            ? INFO
             ? WARNING
+            ? ERROR
+            ? INFO
+            ? CRITICAL
+            ? DEBUG
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -900,14 +1388,14 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? DEBUG
-            ? ERROR
             ? EXCEPTION
-            ? CRITICAL
-            ? INFO
             ? WARNING
+            ? ERROR
+            ? INFO
+            ? CRITICAL
+            ? DEBUG
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1139,14 +1627,14 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        EXCEPTION:
         WARNING:
-        ERROR:
-        INFO:
         CRITICAL:
+        ERROR:
         DEBUG:
+        INFO:
+        EXCEPTION:
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1295,14 +1783,14 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        EXCEPTION:
         WARNING:
-        ERROR:
-        INFO:
         CRITICAL:
+        ERROR:
         DEBUG:
+        INFO:
+        EXCEPTION:
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

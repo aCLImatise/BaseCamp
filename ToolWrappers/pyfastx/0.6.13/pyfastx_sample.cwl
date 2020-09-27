@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfastx_sample.cwl
+id: pyfastx_sample.cwl
 inputs:
 - id: in_number_sequences_sampled
   doc: number of sequences to be sampled

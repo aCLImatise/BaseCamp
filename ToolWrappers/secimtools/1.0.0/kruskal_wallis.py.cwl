@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kruskal_wallis.py.cwl
+id: kruskal_wallis.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../daa_meganizer.cwl
+id: daa_meganizer.cwl
 inputs:
 - id: in_metadata_file
   doc: '[string(s)]     Files containing metadata to be included in files.'

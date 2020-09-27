@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeSummaryTables.cwl
+id: makeSummaryTables.cwl
 inputs: []
 outputs:
 - id: out_stdout

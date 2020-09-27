@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterTADsAndLoops.pl.cwl
+id: filterTADsAndLoops.pl.cwl
 inputs:
 - id: in_def_out
   doc: '(def: out)'
@@ -62,15 +62,10 @@ inputs:
   inputBinding:
     prefix: -minCoverageAnchor
 - id: in_tad_score
-  doc: ''
+  doc: -LoopScore <loop score file>
   type: File
   inputBinding:
     prefix: -TADscore
-- id: in_loop_score
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -LoopScore
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preseq_gc_extrap.cwl
+id: preseq_gc_extrap.cwl
 inputs:
 - id: in_output
   doc: 'coverage yield output file (default: stdout)'

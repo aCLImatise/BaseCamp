@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_prior.cwl
+id: hotspot3d_prior.cwl
 inputs:
 - id: in_output_dir
   doc: "Output directory\nOPTIONAL"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_tfm.cwl
+id: _tfm.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [stdout] Program documentation text output

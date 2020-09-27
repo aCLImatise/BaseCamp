@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_hash.cwl
+id: gsutil_hash.cwl
 inputs:
 - id: in_calculate_crcc_hash
   doc: Calculate a CRC32c hash for the file.

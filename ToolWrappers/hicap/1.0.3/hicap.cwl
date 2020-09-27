@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicap.cwl
+id: hicap.cwl
 inputs:
 - id: in_query_fp
   doc: Input FASTA query

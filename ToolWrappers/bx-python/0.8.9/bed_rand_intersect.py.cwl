@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_rand_intersect.py.cwl
+id: bed_rand_intersect.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

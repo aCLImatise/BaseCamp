@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netToAxt.cwl
+id: netToAxt.cwl
 inputs:
 - id: in_q_chain
   doc: '- net is with respect to the q side of chains.'

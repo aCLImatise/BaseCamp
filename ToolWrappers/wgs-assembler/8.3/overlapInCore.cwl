@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapInCore.cwl
+id: overlapInCore.cwl
 inputs:
 - id: in_contig_mode_specify
   doc: in contig mode, specify the output file

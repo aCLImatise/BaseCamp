@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_contigs_blat.o.cwl
+id: validate_contigs_blat.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

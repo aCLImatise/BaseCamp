@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_consensus_from_features.cwl
+id: medaka_consensus_from_features.cwl
 inputs:
 - id: in_debug
   doc: 'Verbose logging of debug information. (default: 20)'

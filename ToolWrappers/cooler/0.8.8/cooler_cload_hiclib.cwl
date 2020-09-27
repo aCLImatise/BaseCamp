@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_cload_hiclib.cwl
+id: cooler_cload_hiclib.cwl
 inputs:
 - id: in_metadata
   doc: Path to JSON file containing user metadata.

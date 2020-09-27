@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correctOverlaps.cwl
+id: correctOverlaps.cwl
 inputs:
 - id: in_seqstore_path_sequence
   doc: seqStore           path to a sequence store

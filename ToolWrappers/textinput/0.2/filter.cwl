@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter.cwl
+id: filter.cwl
 inputs:
 - id: in_no_header
   doc: input does not contain a header line

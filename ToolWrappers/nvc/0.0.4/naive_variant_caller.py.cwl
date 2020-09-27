@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../naive_variant_caller.py.cwl
+id: naive_variant_caller.py.cwl
 inputs:
 - id: in_bam
   doc: "BAM filename, optionally index filename. Multiple\nallowed."

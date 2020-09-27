@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpancover.cwl
+id: cpancover.cwl
 inputs: []
 outputs:
 - id: out_stdout

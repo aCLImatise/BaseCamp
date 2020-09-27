@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dedup.cwl
+id: dedup.cwl
 inputs:
 - id: in_input
   doc: "the input file if this option is not specified,\nthe input is expected to\

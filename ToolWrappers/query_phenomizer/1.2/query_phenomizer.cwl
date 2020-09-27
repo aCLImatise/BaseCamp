@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../query_phenomizer.cwl
+id: query_phenomizer.cwl
 inputs:
 - id: in_username
   doc: A username for phenomizer
@@ -22,15 +22,11 @@ inputs:
   inputBinding:
     prefix: --output
 - id: in_to_json
-  doc: If result should be printed to json format
+  doc: "If result should be printed to json format\n-v, --verbose\n--help        \
+    \         Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --to-json
-- id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
 - id: in_output_dot
   doc: --p-value-limit FLOAT  Specify the highest p-value that you want included.
   type: string

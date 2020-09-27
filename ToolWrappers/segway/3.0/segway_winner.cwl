@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segway_winner.cwl
+id: segway_winner.cwl
 inputs:
 - id: in_input_master
   doc: print input master file name

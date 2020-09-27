@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_stats.cwl
+id: seqhax_stats.cwl
 inputs:
 - id: in_number_parallel_jobs
   doc: Number of parallel jobs [1]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_gccalc.pl.cwl
+id: bp_gccalc.pl.cwl
 inputs:
 - id: in_i
   doc: ''

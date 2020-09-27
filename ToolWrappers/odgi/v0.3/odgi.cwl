@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../odgi.cwl
+id: odgi.cwl
 inputs:
 - id: in_command
   doc: ''

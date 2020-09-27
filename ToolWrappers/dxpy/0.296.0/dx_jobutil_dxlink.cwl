@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_jobutil_dxlink.cwl
+id: dx_jobutil_dxlink.cwl
 inputs:
 - id: in_object
   doc: "Data object ID or \"<Project ID>:<Data object ID>\" to package\ninto a DNAnexus\

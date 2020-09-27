@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AMAS.py_convert.cwl
+id: AMAS.py_convert.cwl
 inputs:
 - id: in_out_format
   doc: 'File format for the output alignment. Default: fasta'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mea_mix.cwl
+id: mea_mix.cwl
 inputs:
 - id: in_gamma_one
   doc: "base pair weight factor, first pair probabilities\n(default=`1.0')"

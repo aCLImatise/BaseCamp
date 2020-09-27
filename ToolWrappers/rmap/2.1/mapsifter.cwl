@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapsifter.cwl
+id: mapsifter.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'

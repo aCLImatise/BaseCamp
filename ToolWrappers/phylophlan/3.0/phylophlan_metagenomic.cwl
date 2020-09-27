@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan_metagenomic.cwl
+id: phylophlan_metagenomic.cwl
 inputs:
 - id: in_input
   doc: "Input folder containing the metagenomic bins to be\nindexed (default: None)"

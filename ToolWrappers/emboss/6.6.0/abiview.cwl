@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abiview.cwl
+id: abiview.cwl
 inputs:
 - id: in_graph
   doc: "xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type\n(ps, hpgl, hp7470,\

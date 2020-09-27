@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucmer2ovl.cwl
+id: nucmer2ovl.cwl
 inputs:
 - id: in_tab
   doc: '- Output format (Default: AMOS)'

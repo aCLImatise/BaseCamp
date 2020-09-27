@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reconcile_tree_alignment.cwl
+id: reconcile_tree_alignment.cwl
 inputs:
 - id: in_input_tree
   doc: ''

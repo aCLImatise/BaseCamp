@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pangolin.cwl
+id: pangolin.cwl
 inputs:
 - id: in_outdir
   doc: 'Output directory. Default: current working directory'

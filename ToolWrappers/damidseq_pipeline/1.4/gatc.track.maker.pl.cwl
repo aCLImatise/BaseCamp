@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gatc.track.maker.pl.cwl
+id: gatc.track.maker.pl.cwl
 inputs:
 - id: in_mi_to
   doc: Process mitochondrial chromosome (not recommended)

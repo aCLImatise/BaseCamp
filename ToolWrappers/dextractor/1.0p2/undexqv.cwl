@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../undexqv.cwl
+id: undexqv.cwl
 inputs:
 - id: in_v_ku
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fretree.cwl
+id: fretree.cwl
 inputs:
 - id: in_initial_tree
   doc: "menu       [Arbitary] Initial tree (Values: a\n(Arbitary); u (User); s (Specify))"

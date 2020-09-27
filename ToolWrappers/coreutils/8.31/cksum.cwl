@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cksum.cwl
+id: cksum.cwl
 inputs:
 - id: in_file
   doc: ''

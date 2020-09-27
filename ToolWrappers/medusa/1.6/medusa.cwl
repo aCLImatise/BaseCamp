@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medusa.cwl
+id: medusa.cwl
 inputs:
 - id: in_optional_parameterthe_option_dallows
   doc: "OPTIONAL PARAMETER;The option *-d*\nallows for the estimation of the\ndistance\

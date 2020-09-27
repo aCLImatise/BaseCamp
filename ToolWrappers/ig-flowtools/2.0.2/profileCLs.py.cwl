@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../profileCLs.py.cwl
+id: profileCLs.py.cwl
 inputs:
 - id: in_file_location_profiletxt
   doc: File location for the profile.txt from FLOCK.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_split.cwl
+id: SnpSift_split.cwl
 inputs:
 - id: in_join_files_stdout
   doc: ': Join all files in command line (output = STDOUT).'

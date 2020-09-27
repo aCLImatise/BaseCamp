@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../draff.cwl
+id: draff.cwl
 inputs: []
 outputs:
 - id: out_stdout

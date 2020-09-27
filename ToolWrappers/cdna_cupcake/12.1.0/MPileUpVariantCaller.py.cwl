@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MPileUpVariantCaller.py.cwl
+id: MPileUpVariantCaller.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

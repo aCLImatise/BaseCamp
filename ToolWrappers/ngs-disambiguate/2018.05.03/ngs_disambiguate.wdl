@@ -6,11 +6,11 @@ task NgsDisambiguate {
     String? _prefix_stringrequired
     Directory? _outputdir_stringrequired
     String? _aligner_stringaligner
-    String ngs_disambiguate
+    String var_4
   }
   command <<<
     ngs_disambiguate \
-      ~{ngs_disambiguate} \
+      ~{var_4} \
       ~{if (_nosortdeprecated_option) then "-d" else ""} \
       ~{if defined(_prefix_stringrequired) then ("-s " +  '"' + _prefix_stringrequired + '"') else ""} \
       ~{if defined(_outputdir_stringrequired) then ("-o " +  '"' + _outputdir_stringrequired + '"') else ""} \
@@ -21,7 +21,7 @@ task NgsDisambiguate {
     _prefix_stringrequired: ",  --prefix <string>\\n(required)  Sample ID or name used as prefix. Do not include .bam"
     _outputdir_stringrequired: ",  --output-dir <string>\\n(required)  Output directory"
     _aligner_stringaligner: ",  --aligner <string>\\nAligner option {tophat(default),hisat2,bwa,star}"
-    ngs_disambiguate: "[-d] -s <string> -o <string> [-a <string>] [--]\\n[--version] [-h] <A> <B>"
+    var_4: ""
   }
   output {
     File out_stdout = stdout()

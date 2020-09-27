@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gvf2starch.cwl
+id: gvf2starch.cwl
 inputs:
 - id: in_input
   doc: "=[bam|gff|gtf|gvf|psl|rmsk|sam|vcf|wig] (-i <fmt>)\nGenomic format of input\

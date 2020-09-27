@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepMedicRun.cwl
+id: deepMedicRun.cwl
 inputs:
 - id: in_new_model
   doc: Create a new CNN model with model parameters at given config file [MODEL_CONF].

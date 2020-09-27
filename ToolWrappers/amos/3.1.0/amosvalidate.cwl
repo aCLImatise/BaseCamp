@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amosvalidate.cwl
+id: amosvalidate.cwl
 inputs:
 - id: in_use_clear_range
   doc: "=<n>   Use the clear range of the reads? (0:no 1:yes,\ndefault: 1)\n"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NucleicAcidSearchEngine.cwl
+id: NucleicAcidSearchEngine.cwl
 inputs:
 - id: in_in
   doc: "*                                  Input file: spectra (valid formats: 'mzML')"

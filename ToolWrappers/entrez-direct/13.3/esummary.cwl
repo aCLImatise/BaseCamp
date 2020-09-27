@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esummary.cwl
+id: esummary.cwl
 inputs:
 - id: in_format
   doc: Format of record or report

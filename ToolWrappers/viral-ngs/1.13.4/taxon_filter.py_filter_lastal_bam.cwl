@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxon_filter.py_filter_lastal_bam.cwl
+id: taxon_filter.py_filter_lastal_bam.cwl
 inputs:
 - id: in_maximum_gapless_alignments
   doc: "maximum gapless alignments per query position\n(default: 1)"

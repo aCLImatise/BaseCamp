@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../package_stash_conflicts.cwl
+id: package_stash_conflicts.cwl
 inputs: []
 outputs:
 - id: out_stdout

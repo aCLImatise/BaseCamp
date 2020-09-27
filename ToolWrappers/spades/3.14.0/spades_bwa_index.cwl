@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_bwa_index.cwl
+id: spades_bwa_index.cwl
 inputs:
 - id: in_bwt_construction_algorithm
   doc: 'BWT construction algorithm: is or rb2 [auto]'

@@ -38,7 +38,7 @@ subcommands:
     - -q
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -75,7 +75,7 @@ subcommands:
         - -q
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -113,7 +113,299 @@ subcommands:
             - -q
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: ALIGNMENT_FILES...
+                optional: false
+              named:
+              - !Flag
+                description: TEXT:FILE    Reference file in fasta format, required
+                  with CRAM input files
+                synonyms:
+                - --reference
+                - -r
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: TEXT         Write to an output file instead of stdout
+                synonyms:
+                - --output-file
+                - -o
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: UINT         Minimum mapping quality to include a read
+                  in pileup                        [0]
+                synonyms:
+                - --min-map-quality
+                - -q
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Print this help message and exit
+                synonyms:
+                - --help
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: psass pileup [OPTIONS] ALIGNMENT_FILES...\n\nPositionals:\n\
+                ALIGNMENT_FILES        TEXT:FILE    Alignment files to include in\
+                \ pileup, in bam or cram format and indexed    [REQUIRED]\n\nOptions:\n\
+                --help, -h                          Print this help message and exit\
+                \                                           \n--reference, -r    \
+                \    TEXT:FILE    Reference file in fasta format, required with CRAM\
+                \ input files             \n--output-file, -o      TEXT         Write\
+                \ to an output file instead of stdout                            \
+                \      \n--min-map-quality, -q  UINT         Minimum mapping quality\
+                \ to include a read in pileup                        [0]\n\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - psass
+              - convert
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: INPUT
+                optional: false
+              named:
+              - !Flag
+                description: TEXT    Write to an output file instead of stdout
+                synonyms:
+                - --output-file
+                - -o
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Print this help message and exit
+                synonyms:
+                - --help
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: psass convert [OPTIONS] INPUT\n\nPositionals:\nINPUT\
+                \              TEXT    Either a path to a samtools pileup output file\
+                \ or \"-\" for stdin    [REQUIRED]\n\nOptions:\n--help, -h       \
+                \          Print this help message and exit                      \
+                \             \n--output-file, -o  TEXT    Write to an output file\
+                \ instead of stdout                          \n\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - psass
+              - analyze
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: INPUT_FILE
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: OUTPUT_FILE
+                optional: false
+              named:
+              - !Flag
+                description: TEXT         Name of the first pool (order in the pileup
+                  file)                        [females]
+                synonyms:
+                - --pool1
+                - -p
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: TEXT         Name of the second pool (order in the pileup
+                  file)                       [males]
+                synonyms:
+                - --pool2
+                - -q
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: TEXT         Path to a GFF file for gene-specific output
+                synonyms:
+                - --gff-file
+                - -g
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: If set, assumes the input file was generated with popoolation2
+                synonyms:
+                - --popoolation
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: TEXT         Output sex-biased SNPs to this file
+                synonyms:
+                - --snp-file
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: TEXT         Output high FST positions to this file
+                synonyms:
+                - --fst-file
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: UINT         Minimum depth to include a site in the analyses                          [10]
+                synonyms:
+                - --min-depth
+                - -d
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: UINT         Size of the sliding window (in bp)                                       [100000]
+                synonyms:
+                - --window-size
+                - -w
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: UINT         Output resolution for sliding window metrics
+                  (in bp)                     [10000]
+                synonyms:
+                - --output-resolution
+                - -r
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT        Frequency of a sex-linked SNP in the heterogametic
+                  sex                   [0.5]
+                synonyms:
+                - --freq-het
+                - -e
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT        Range of frequency for a sex-linked SNP
+                  in the heterogametic sex         [0.15]
+                synonyms:
+                - --range-het
+                - -u
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT        Frequency of a sex-linked SNP in the homogametic
+                  sex                     [1]
+                synonyms:
+                - --freq-hom
+                - -o
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT        Range of frequency for a sex-linked SNP
+                  in the homogametic sex           [0.05]
+                synonyms:
+                - --range-hom
+                - -v
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: FLOAT        Minimum FST to output a site in the FST
+                  positions file                   [0.1]
+                synonyms:
+                - --min-fst
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: If set, group consecutive snps to count them as a single
+                  polymorphism
+                synonyms:
+                - --group-snps
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Print this help message and exit
+                synonyms:
+                - --help
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: psass analyze [OPTIONS] INPUT_FILE OUTPUT_FILE\n\n\
+                Positionals:\nINPUT_FILE               TEXT:FILE    Path to a sync\
+                \ file generated by psass pileup or popoolation2            [REQUIRED]\n\
+                OUTPUT_FILE              TEXT         Path to an output file for sliding\
+                \ window metrics                        [REQUIRED]\n\nOptions:\n--help,\
+                \ -h                            Print this help message and exit \
+                \                                        \n\n\nInput/Output:\n--pool1,\
+                \ -p              TEXT         Name of the first pool (order in the\
+                \ pileup file)                        [females]\n--pool2, -q     \
+                \         TEXT         Name of the second pool (order in the pileup\
+                \ file)                       [males]\n--gff-file, -g           TEXT\
+                \         Path to a GFF file for gene-specific output            \
+                \                  \n--popoolation                         If set,\
+                \ assumes the input file was generated with popoolation2         \
+                \  \n--snp-file, -s           TEXT         Output sex-biased SNPs\
+                \ to this file                                      \n--fst-file,\
+                \ -f           TEXT         Output high FST positions to this file\
+                \                                   \n\n\nAnalysis:\n--min-depth,\
+                \ -d          UINT         Minimum depth to include a site in the\
+                \ analyses                          [10]\n--window-size, -w      \
+                \  UINT         Size of the sliding window (in bp)               \
+                \                        [100000]\n--output-resolution, -r  UINT \
+                \        Output resolution for sliding window metrics (in bp)    \
+                \                 [10000]\n--freq-het, -e           FLOAT        Frequency\
+                \ of a sex-linked SNP in the heterogametic sex                   [0.5]\n\
+                --range-het, -u          FLOAT        Range of frequency for a sex-linked\
+                \ SNP in the heterogametic sex         [0.15]\n--freq-hom, -o    \
+                \       FLOAT        Frequency of a sex-linked SNP in the homogametic\
+                \ sex                     [1]\n--range-hom, -v          FLOAT    \
+                \    Range of frequency for a sex-linked SNP in the homogametic sex\
+                \           [0.05]\n--min-fst, -t            FLOAT        Minimum\
+                \ FST to output a site in the FST positions file                 \
+                \  [0.1]\n--group-snps                          If set, group consecutive\
+                \ snps to count them as a single polymorphism    \n\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: Print this help message and exit
+              synonyms:
+              - --help
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "Usage: psass [OPTIONS] SUBCOMMAND\n\nOptions:\n--help, -h\
+              \        Print this help message and exit                      \n\n\
+              Subcommands:\n  analyze                     Compute metrics from a sync\
+              \ file generated with psass pileup or by popoolation2 mpileup2sync\n\
+              \  convert                     Convert a pileup file from samtools to\
+              \ a synchronized pool file (deprecated, use psass pileup)\n  pileup\
+              \                      Generate a psass pileup file from several alignment\
+              \ files\n\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -135,12 +427,9 @@ subcommands:
             \ instead of stdout                                  \n--min-map-quality,\
             \ -q  UINT         Minimum mapping quality to include a read in pileup\
             \                        [0]\n\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - psass
-          - convert
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -175,9 +464,7 @@ subcommands:
             \ stdout                          \n\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - psass
-          - analyze
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -348,13 +635,7 @@ subcommands:
             \ count them as a single polymorphism    \n\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Print this help message and exit
-          synonyms:
-          - --help
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "Usage: psass [OPTIONS] SUBCOMMAND\n\nOptions:\n--help, -h    \
@@ -402,7 +683,7 @@ subcommands:
         - -o
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -544,7 +825,7 @@ subcommands:
         - --group-snps
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -636,7 +917,7 @@ subcommands:
     - -o
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -773,7 +1054,7 @@ subcommands:
     - --group-snps
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

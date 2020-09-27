@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmp.cwl
+id: cmp.cwl
 inputs:
 - id: in_print_bytes
   doc: print differing bytes

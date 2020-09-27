@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phase_by_size.cwl
+id: phase_by_size.cwl
 inputs:
 - id: in_codon_buffer
   doc: "Codons before and after start codon to ignore\n(Default: 5)"
@@ -189,11 +189,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_gene_dot
-  doc: '------------------------------------------------------------------------------'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_roi_file
   doc: "Optional. ROI file of maximal spanning windows\nsurrounding start codons,\
     \ from ``metagene generate``\nsubprogram. Using this instead of `--annotation_files`\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tiffcomment.cwl
+id: tiffcomment.cwl
 inputs:
 - id: in_edit
   doc: ''

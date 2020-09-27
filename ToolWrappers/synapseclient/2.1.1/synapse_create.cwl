@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_create.cwl
+id: synapse_create.cwl
 inputs:
 - id: in_parentid
   doc: "Synapse ID of project or folder where to place folder\n[not used with project]"

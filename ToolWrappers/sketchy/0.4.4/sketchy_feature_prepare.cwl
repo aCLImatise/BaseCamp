@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_feature_prepare.cwl
+id: sketchy_feature_prepare.cwl
 inputs:
 - id: in_index
   doc: Path to feature index input file  [required]

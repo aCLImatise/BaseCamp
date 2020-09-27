@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ivar_filtervariants.cwl
+id: ivar_filtervariants.cwl
 inputs:
 - id: in_minimum_fration_files
   doc: 'Minimum fration of files required to contain the same variant. Specify value

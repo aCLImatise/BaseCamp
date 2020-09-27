@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Compiler_Module.py.cwl
+id: Compiler_Module.py.cwl
 inputs:
 - id: in_output_tag
   doc: "Enter a tag name that will be appended to end of each\noutput file."

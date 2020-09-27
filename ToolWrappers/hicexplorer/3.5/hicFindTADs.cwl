@@ -1,8 +1,11 @@
 class: CommandLineTool
-id: ../../../hicFindTADs.cwl
+id: hicFindTADs.cwl
 inputs:
 - id: in_correct_for_multiple_testing
-  doc: ''
+  doc: "[--minDepth INT bp] [--maxDepth INT bp] [--step INT bp]\n[--TAD_sep_score_prefix\
+    \ TAD_SEP_SCORE_PREFIX]\n[--thresholdComparisons THRESHOLDCOMPARISONS]\n[--delta\
+    \ DELTA] [--minBoundaryDistance MINBOUNDARYDISTANCE]\n[--chromosomes CHROMOSOMES\
+    \ [CHROMOSOMES ...]]\n[--numberOfProcessors NUMBEROFPROCESSORS] [--help]\n[--version]"
   type: string
   inputBinding:
     prefix: --correctForMultipleTesting

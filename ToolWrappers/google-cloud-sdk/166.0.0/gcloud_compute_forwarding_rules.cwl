@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_forwarding_rules.cwl
+id: gcloud_compute_forwarding_rules.cwl
 inputs:
 - id: in_create
   doc: Create a forwarding rule to direct network traffic to a load balancer.

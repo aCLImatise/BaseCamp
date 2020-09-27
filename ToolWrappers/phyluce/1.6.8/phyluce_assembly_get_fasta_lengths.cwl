@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_get_fasta_lengths.cwl
+id: phyluce_assembly_get_fasta_lengths.cwl
 inputs:
 - id: in_input
   doc: The fasta file to summarize

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prep_nuc_prot_set_for_trinotate_loading.pl.cwl
+id: prep_nuc_prot_set_for_trinotate_loading.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

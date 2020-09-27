@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mummer.cwl
+id: mummer.cwl
 inputs:
 - id: in_mum
   doc: compute maximal matches that are unique in both sequences

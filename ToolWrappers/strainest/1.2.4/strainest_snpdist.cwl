@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainest_snpdist.cwl
+id: strainest_snpdist.cwl
 inputs:
 - id: in_snp
   doc: ''

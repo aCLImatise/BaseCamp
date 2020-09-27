@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadQC.cwl
+id: ReadQC.cwl
 inputs:
 - id: in_in_one
   doc: Forward input gzipped FASTQ file(s).

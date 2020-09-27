@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslSort.cwl
+id: pslSort.cwl
 inputs:
 - id: in_no_head
   doc: Do not write psl header.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scran_get_clustered_pcs.R.cwl
+id: scran_get_clustered_pcs.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

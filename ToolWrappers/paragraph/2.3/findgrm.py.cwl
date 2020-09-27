@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findgrm.py.cwl
+id: findgrm.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

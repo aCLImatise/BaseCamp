@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_mlst_databases.cwl
+id: download_mlst_databases.cwl
 inputs:
 - id: in_config_file_containing
   doc: Config file containing details of MLST databases from pubMLST

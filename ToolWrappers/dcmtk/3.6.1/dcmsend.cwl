@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmsend.cwl
+id: dcmsend.cwl
 inputs:
 - id: in_list_decoders
   doc: list transfer syntaxes of decoders and exit

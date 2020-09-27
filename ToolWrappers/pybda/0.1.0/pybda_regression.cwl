@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybda_regression.cwl
+id: pybda_regression.cwl
 inputs:
 - id: in_config
   doc: ''

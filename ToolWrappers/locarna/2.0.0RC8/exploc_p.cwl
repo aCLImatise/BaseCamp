@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exploc_p.cwl
+id: exploc_p.cwl
 inputs:
 - id: in_man
   doc: full documentation

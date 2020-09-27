@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pynast.cwl
+id: pynast.cwl
 inputs: []
 outputs:
 - id: out_stdout

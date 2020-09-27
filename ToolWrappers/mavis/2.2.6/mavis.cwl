@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mavis.cwl
+id: mavis.cwl
 inputs:
 - id: in_v
   doc: ''

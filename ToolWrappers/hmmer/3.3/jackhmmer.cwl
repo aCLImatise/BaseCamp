@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jackhmmer.cwl
+id: jackhmmer.cwl
 inputs:
 - id: in_set_maximum_number
   doc: ': set maximum number of iterations to <n>  [5]  (n>0)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subseq.cwl
+id: subseq.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_variation.cwl
+id: bcbio_variation.cwl
 inputs:
 - id: in_analysis_type
   doc: Name of the tool to run

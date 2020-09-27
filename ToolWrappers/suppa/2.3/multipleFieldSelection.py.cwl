@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multipleFieldSelection.py.cwl
+id: multipleFieldSelection.py.cwl
 inputs:
 - id: in_input_files
   doc: spaced separated list of files to join.

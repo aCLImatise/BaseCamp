@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_unique.cwl
+id: checkm_unique.cwl
 inputs:
 - id: in_extension
   doc: 'extension of bins (all other files in bin directory are ignored) (default:

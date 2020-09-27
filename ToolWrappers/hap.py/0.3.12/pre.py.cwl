@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pre.py.cwl
+id: pre.py.cwl
 inputs:
 - id: in_location
   doc: "Comma-separated list of locations [use naming after\npreprocessing], when\

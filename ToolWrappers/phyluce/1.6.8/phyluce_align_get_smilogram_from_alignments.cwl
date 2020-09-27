@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_smilogram_from_alignments.cwl
+id: phyluce_align_get_smilogram_from_alignments.cwl
 inputs:
 - id: in_alignments
   doc: The directory containing the alignment files

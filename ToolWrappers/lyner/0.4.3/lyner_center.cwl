@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_center.cwl
+id: lyner_center.cwl
 inputs:
 - id: in_method
   doc: '[mean|median]'

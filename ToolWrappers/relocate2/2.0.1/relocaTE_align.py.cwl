@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../relocaTE_align.py.cwl
+id: relocaTE_align.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

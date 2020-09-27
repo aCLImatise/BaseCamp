@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_cut.cwl
+id: smof_cut.cwl
 inputs:
 - id: in_fields
   doc: Indices to print, comma delimited, with ranges

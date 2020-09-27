@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mzid_to_pepxml.rb.cwl
+id: mzid_to_pepxml.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biopython.convert.cwl
+id: biopython.convert.cwl
 inputs:
 - id: in_records_seperate_files
   doc: records into seperate files

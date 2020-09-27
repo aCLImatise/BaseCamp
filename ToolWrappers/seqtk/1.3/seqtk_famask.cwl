@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_famask.cwl
+id: seqtk_famask.cwl
 inputs:
 - id: in_src_dot_fa
   doc: ''

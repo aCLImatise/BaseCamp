@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genpept2gsi.pl.cwl
+id: genpept2gsi.pl.cwl
 inputs:
 - id: in_help_dot_gsi
   doc: 0 sequence names.

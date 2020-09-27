@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../islandpath.cwl
+id: islandpath.cwl
 inputs: []
 outputs:
 - id: out_stdout

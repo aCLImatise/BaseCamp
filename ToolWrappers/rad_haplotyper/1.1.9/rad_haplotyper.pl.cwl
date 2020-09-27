@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rad_haplotyper.pl.cwl
+id: rad_haplotyper.pl.cwl
 inputs:
 - id: in_input_vcf_file
   doc: input vcf file

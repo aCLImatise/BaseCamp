@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../capCpileup2binned.cwl
+id: capCpileup2binned.cwl
 inputs:
 - id: in_pileupfile_input_pileup
   doc: pileupfile  is the input pile-up file name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unpack200.cwl
+id: unpack200.cwl
 inputs:
 - id: in_override_transmitted_deflate
   doc: "{h}, --deflate-hint={h}     override transmitted deflate hint:\ntrue, false,\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_stage_1.prl.cwl
+id: filter_stage_1.prl.cwl
 inputs:
 - id: in_output_dot
   doc: SYNOPSIS

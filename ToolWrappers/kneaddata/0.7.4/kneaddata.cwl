@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kneaddata.cwl
+id: kneaddata.cwl
 inputs:
 - id: in_verbose
   doc: additional output is printed

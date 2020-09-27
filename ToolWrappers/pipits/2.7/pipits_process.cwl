@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_process.cwl
+id: pipits_process.cwl
 inputs:
 - id: in_sequences_fasta_typically
   doc: "[REQUIRED] ITS sequences in FASTA. Typically output\nfrom pipits_funits"

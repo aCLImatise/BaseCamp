@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../terminator.cwl
+id: terminator.cwl
 inputs:
 - id: in_mandatory_path_gkpstore
   doc: mandatory path to the gkpStore

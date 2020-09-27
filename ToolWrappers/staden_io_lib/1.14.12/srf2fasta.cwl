@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf2fasta.cwl
+id: srf2fasta.cwl
 inputs:
 - id: in_c
   doc: ''

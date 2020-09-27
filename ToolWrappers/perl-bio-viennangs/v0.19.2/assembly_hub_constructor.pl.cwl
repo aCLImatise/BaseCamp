@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly_hub_constructor.pl.cwl
+id: assembly_hub_constructor.pl.cwl
 inputs:
 - id: in_fa
   doc: Input file in Fasta format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HMMRATAC.cwl
+id: HMMRATAC.cwl
 inputs:
 - id: in__bam_bam
   doc: ', --bam <BAM> Sorted BAM file containing the ATAC-seq reads'

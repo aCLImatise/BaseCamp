@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_traits.cwl
+id: augur_traits.cwl
 inputs:
 - id: in_columns
   doc: '[--confidence]'

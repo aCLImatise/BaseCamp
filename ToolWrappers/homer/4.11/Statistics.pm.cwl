@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Statistics.pm.cwl
+id: Statistics.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

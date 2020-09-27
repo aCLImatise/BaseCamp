@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairs_triplet_dist.cwl
+id: pairs_triplet_dist.cwl
 inputs:
 - id: in_v
   doc: ''

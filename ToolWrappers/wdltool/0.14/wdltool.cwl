@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wdltool.cwl
+id: wdltool.cwl
 inputs:
 - id: in_workflow_dot
   doc: Fill in the values in this JSON document and

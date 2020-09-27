@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzeRepeats.pl.cwl
+id: analyzeRepeats.pl.cwl
 inputs:
 - id: in_lone
   doc: (level one 'repeat name', i.e. AluSx3)

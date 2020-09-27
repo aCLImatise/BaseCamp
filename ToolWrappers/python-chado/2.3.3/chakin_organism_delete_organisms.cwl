@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_organism_delete_organisms.cwl
+id: chakin_organism_delete_organisms.cwl
 inputs:
 - id: in_organism_id
   doc: organism_id filter

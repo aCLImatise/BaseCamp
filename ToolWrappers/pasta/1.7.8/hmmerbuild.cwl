@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmerbuild.cwl
+id: hmmerbuild.cwl
 inputs:
 - id: in_name_hmm_s
   doc: ': name the HMM <s>'

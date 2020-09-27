@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pswdb.cwl
+id: pswdb.cwl
 inputs:
 - id: in_penalty_default
   doc: penalty (default 12)

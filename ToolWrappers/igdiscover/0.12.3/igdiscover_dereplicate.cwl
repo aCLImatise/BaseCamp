@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_dereplicate.cwl
+id: igdiscover_dereplicate.cwl
 inputs:
 - id: in_limit
   doc: Limit processing to the first N reads

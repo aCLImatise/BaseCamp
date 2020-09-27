@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_peovlp.cwl
+id: htsbox_peovlp.cwl
 inputs:
 - id: in_barcode_file_overriding
   doc: barcode file (overriding -B) []

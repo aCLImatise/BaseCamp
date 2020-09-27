@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DecoyDatabase.cwl
+id: DecoyDatabase.cwl
 inputs:
 - id: in_in
   doc: "<file(s)>*                   Input FASTA file(s), each containing a database.\

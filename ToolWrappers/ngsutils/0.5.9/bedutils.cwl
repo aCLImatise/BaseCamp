@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedutils.cwl
+id: bedutils.cwl
 inputs:
 - id: in_command
   doc: ''

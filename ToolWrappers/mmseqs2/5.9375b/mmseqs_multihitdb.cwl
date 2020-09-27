@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_multihitdb.cwl
+id: mmseqs_multihitdb.cwl
 inputs:
 - id: in_dont_split_seq_by_len
   doc: true            Dont split sequences by --max-seq-len

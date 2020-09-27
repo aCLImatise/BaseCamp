@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mspms_sample_size.cwl
+id: mspms_sample_size.cwl
 inputs:
 - id: in_trees
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purge_haplotigs_clip.cwl
+id: purge_haplotigs_clip.cwl
 inputs:
 - id: in_primary_primary_contigs
   doc: / -primary       Primary contigs (curated.fasta by default) from the 'purge'

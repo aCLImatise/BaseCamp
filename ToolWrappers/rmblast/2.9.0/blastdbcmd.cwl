@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastdbcmd.cwl
+id: blastdbcmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

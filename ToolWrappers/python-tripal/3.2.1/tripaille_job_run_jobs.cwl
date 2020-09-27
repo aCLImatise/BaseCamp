@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_job_run_jobs.cwl
+id: tripaille_job_run_jobs.cwl
 inputs:
 - id: in_wait
   doc: 'Wait for job completion  [default: True]'

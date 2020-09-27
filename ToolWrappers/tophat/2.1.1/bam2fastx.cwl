@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2fastx.cwl
+id: bam2fastx.cwl
 inputs:
 - id: in_all
   doc: "convert all reads (mapped and unmapped)\n(but discarding those flagged as\

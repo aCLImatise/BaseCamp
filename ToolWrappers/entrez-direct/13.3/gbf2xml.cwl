@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gbf2xml.cwl
+id: gbf2xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

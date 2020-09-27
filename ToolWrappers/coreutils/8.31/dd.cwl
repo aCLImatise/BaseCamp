@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dd.cwl
+id: dd.cwl
 inputs:
 - id: in_ascii
   doc: from EBCDIC to ASCII

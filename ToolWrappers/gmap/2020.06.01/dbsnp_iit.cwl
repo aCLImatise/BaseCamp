@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbsnp_iit.cwl
+id: dbsnp_iit.cwl
 inputs:
 - id: in_more_options
   doc: ''
@@ -36,36 +36,26 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: in_non_integer_chrom_count
-  doc: ObservedContainsIupac
-  type: string
-  inputBinding:
-    position: 5
 - id: in_observed_mismatch
   doc: ObservedTooLong
   type: string
   inputBinding:
-    position: 6
+    position: 5
 - id: in_observed_wrong_format
   doc: RefAlleleMismatch
   type: string
   inputBinding:
-    position: 7
+    position: 6
 - id: in_ref_allele_rev_comp
   doc: SingleAlleleFreq
   type: string
   inputBinding:
-    position: 8
-- id: in_single_class_longer_span
-  doc: SingleClassQuadAllelic
-  type: string
-  inputBinding:
-    position: 9
+    position: 7
 - id: in_single_class_tri_allelic
   doc: SingleClassZeroSpan
   type: string
   inputBinding:
-    position: 10
+    position: 8
 outputs:
 - id: out_stdout
   doc: Standard output stream

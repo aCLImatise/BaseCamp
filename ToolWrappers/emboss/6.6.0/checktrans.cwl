@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checktrans.cwl
+id: checktrans.cwl
 inputs:
 - id: in_or_fml
   doc: "integer    [100] Minimum ORF Length to report (Integer\n1 or more)"

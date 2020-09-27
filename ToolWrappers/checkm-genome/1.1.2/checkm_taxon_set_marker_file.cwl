@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_taxon_set_marker_file.cwl
+id: checkm_taxon_set_marker_file.cwl
 inputs:
 - id: in_tmpdir
   doc: ''

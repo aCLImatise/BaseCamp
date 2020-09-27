@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDAnnotateCNV.cwl
+id: NGSDAnnotateCNV.cwl
 inputs:
 - id: in_in
   doc: TSV file containing CNV.

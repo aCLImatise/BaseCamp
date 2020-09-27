@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktutiltest.cwl
+id: ktutiltest.cwl
 inputs:
 - id: in_u_lim
   doc: ''

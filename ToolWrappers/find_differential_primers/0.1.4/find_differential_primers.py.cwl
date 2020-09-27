@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_differential_primers.py.cwl
+id: find_differential_primers.py.cwl
 inputs:
 - id: in_in_file
   doc: location of configuration file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../f2py.cwl
+id: f2py.cwl
 inputs:
 - id: in_two_d_numpy
   doc: Use numpy.f2py tool with NumPy support. [DEFAULT]
@@ -147,30 +147,16 @@ inputs:
   inputBinding:
     prefix: --debug
 - id: in_lslash_path_slash_to_slash_lib_slash
-  doc: <libname>
+  doc: "<libname>\n-D<define> -U<name>\n-I/path/to/include/\n<filename>.o <filename>.so\
+    \ <filename>.a\nUsing the following macros may be required with non-gcc Fortran\n\
+    compilers:\n-DPREPEND_FORTRAN -DNO_APPEND_FORTRAN -DUPPERCASE_FORTRAN\n-DUNDERSCORE_G77\n\
+    When using -DF2PY_REPORT_ATEXIT, a performance report of F2PY\ninterface is printed\
+    \ out at exit (platforms: Linux).\nWhen using -DF2PY_REPORT_ON_ARRAY_COPY=<int>,\
+    \ a message is\nsent to stderr whenever F2PY interface makes a copy of an\narray.\
+    \ Integer <int> sets the threshold for array sizes when\na message should be shown."
   type: boolean
   inputBinding:
     prefix: -L/path/to/lib/
-- id: in_define_uname
-  doc: <define> -U<name>
-  type: boolean
-  inputBinding:
-    prefix: -D
-- id: in_i_slash_path_slash_to_slash_include_slash
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -I/path/to/include/
-- id: in_d_no_append_fortran
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -DNO_APPEND_FORTRAN
-- id: in_d_underscore_g_seven_seven
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -DUNDERSCORE_G77
 - id: in_directories_dot
   doc: --help-link [..] List system resources found by system_info.py. See also
   type: string

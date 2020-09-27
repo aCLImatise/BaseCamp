@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaparse.pl.orig.cwl
+id: fastaparse.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

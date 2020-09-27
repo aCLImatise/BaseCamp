@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_convert_sp_gff2gtf.pl.cwl
+id: agat_convert_sp_gff2gtf.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GFF file that will be read

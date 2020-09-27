@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_randomize.cwl
+id: bl_randomize.cwl
 inputs:
 - id: in_specify_multiple_input_files
   doc: specify multiple INPUT files

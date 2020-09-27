@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterTagDirectory.pl.cwl
+id: filterTagDirectory.pl.cwl
 inputs:
 - id: in_strand
   doc: (filter reads from the same strand only)

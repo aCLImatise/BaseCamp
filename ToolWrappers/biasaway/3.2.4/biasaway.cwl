@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biasaway.cwl
+id: biasaway.cwl
 inputs:
 - id: in_v
   doc: ''

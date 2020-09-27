@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vipe.cwl
+id: vipe.cwl
 inputs: []
 outputs:
 - id: out_stdout

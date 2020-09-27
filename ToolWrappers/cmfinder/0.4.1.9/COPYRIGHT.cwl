@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../COPYRIGHT.cwl
+id: COPYRIGHT.cwl
 inputs: []
 outputs:
 - id: out_stdout

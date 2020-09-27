@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clearcut.cwl
+id: clearcut.cwl
 inputs:
 - id: in_verbose
   doc: 'More output. (Default: OFF)'

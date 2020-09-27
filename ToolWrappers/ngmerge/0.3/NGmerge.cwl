@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGmerge.cwl
+id: NGmerge.cwl
 inputs:
 - id: in_file_input_forward
   doc: <file>       Input FASTQ file with reads from forward direction

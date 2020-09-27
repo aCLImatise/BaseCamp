@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_sort.cwl
+id: pairtools_sort.cwl
 inputs:
 - id: in_output
   doc: "output pairs file. If the path ends with .gz or\n.lz4, the output is compressed\
@@ -58,11 +58,6 @@ inputs:
     prefix: --cmd-out
 - id: in_pair_type_dot
   doc: 'PAIRS_PATH : input .pairs/.pairsam file. If the path ends with .gz or'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_between_dot
-  doc: '[default: 8]'
   type: string
   inputBinding:
     position: 0

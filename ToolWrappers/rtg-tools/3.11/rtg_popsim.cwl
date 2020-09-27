@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_popsim.cwl
+id: rtg_popsim.cwl
 inputs:
 - id: in_output
   doc: output VCF file name

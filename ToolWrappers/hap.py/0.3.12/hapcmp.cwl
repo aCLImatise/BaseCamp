@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hapcmp.cwl
+id: hapcmp.cwl
 inputs:
 - id: in_input_regions
   doc: "The input bed file specifying haplotype block\nregions (use - for stdin)."

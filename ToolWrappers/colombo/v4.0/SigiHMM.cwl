@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SigiHMM.cwl
+id: SigiHMM.cwl
 inputs: []
 outputs:
 - id: out_stdout

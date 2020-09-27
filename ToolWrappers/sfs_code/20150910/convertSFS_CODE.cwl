@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertSFS_CODE.cwl
+id: convertSFS_CODE.cwl
 inputs:
 - id: in_alignment
   doc: "(-a) [A] [F <filename>] [P <#pops> <P1>..<P#pops>]\n[I <#indiv> <I1>..<I#indiv>]\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brass_bedpe2vcf.pl.cwl
+id: brass_bedpe2vcf.pl.cwl
 inputs:
 - id: in_species
   doc: ': species (HUMAN, MOUSE, DOG etc)'

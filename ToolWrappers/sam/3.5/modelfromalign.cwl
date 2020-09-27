@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../modelfromalign.cwl
+id: modelfromalign.cwl
 inputs:
 - id: in_align_file
   doc: ': Aligned sequences to read. Required.'

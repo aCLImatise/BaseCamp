@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcall.cwl
+id: mcall.cwl
 inputs:
 - id: in_arg_specify_names
   doc: "[ --mappedFiles ] arg           Specify the names of RRBS/WGBS alignment\n\

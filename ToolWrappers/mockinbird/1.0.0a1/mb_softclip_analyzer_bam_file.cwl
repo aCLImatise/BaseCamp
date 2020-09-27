@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_softclip_analyzer_bam_file.cwl
+id: mb_softclip_analyzer_bam_file.cwl
 inputs:
 - id: in_top_n
   doc: ''

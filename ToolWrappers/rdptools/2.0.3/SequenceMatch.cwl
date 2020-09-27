@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SequenceMatch.cwl
+id: SequenceMatch.cwl
 inputs:
 - id: in_seq_match_main
   doc: ''

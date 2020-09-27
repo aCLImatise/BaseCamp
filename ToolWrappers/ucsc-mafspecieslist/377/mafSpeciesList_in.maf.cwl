@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafSpeciesList_in.maf.cwl
+id: mafSpeciesList_in.maf.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

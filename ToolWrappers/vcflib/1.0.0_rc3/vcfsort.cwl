@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfsort.cwl
+id: vcfsort.cwl
 inputs:
 - id: in_invalid_option_
   doc: ": invalid option -- '-'"

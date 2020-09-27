@@ -1,69 +1,107 @@
 class: CommandLineTool
-id: ../../../medaka_consensus.cwl
+id: medaka_consensus.cwl
 inputs:
-- id: in_fastx_input_basecalls
-  doc: fastx input basecalls (required).
+- id: in_debug
+  doc: 'Verbose logging of debug information. (default: 20)'
   type: boolean
   inputBinding:
-    prefix: -i
-- id: in_fasta_input_assembly
-  doc: fasta input assembly (required).
+    prefix: --debug
+- id: in_quiet
+  doc: 'Minimal logging; warnings only). (default: 20)'
   type: boolean
   inputBinding:
-    prefix: -d
-- id: in_output_folder_default
-  doc: 'output folder (default: medaka).'
-  type: Directory
+    prefix: --quiet
+- id: in_batch_size
+  doc: 'Inference batch size. (default: 100)'
+  type: long
   inputBinding:
-    prefix: -o
-- id: in_output_vcf_slows
-  doc: "output vcf of changes, and bed file of polished regions.\n(note that this\
-    \ slows down consensus calculation)."
+    prefix: --batch_size
+- id: in_regions
+  doc: "Genomic regions to analyse, or a bed file. (default:\nNone)"
+  type: string[]
+  inputBinding:
+    prefix: --regions
+- id: in_chunk_len
+  doc: 'Chunk length of samples. (default: 10000)'
+  type: long
+  inputBinding:
+    prefix: --chunk_len
+- id: in_chunk_ovlp
+  doc: 'Overlap of chunks. (default: 1000)'
+  type: long
+  inputBinding:
+    prefix: --chunk_ovlp
+- id: in_model
+  doc: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\
+    \ r103_prom_snp_g3210,\nr103_prom_variant_g3210, r10_min_high_g303,\nr10_min_high_g340,\
+    \ r941_min_fast_g303,\nr941_min_high_g303, r941_min_high_g330,\nr941_min_high_g340_rle,\
+    \ r941_min_high_g344,\nr941_min_high_g351, r941_min_high_g360,\nr941_prom_fast_g303,\
+    \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
+    \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
+    \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
+  type: long
+  inputBinding:
+    prefix: --model
+- id: in_disable_cu_dnn
+  doc: 'Disable use of cuDNN model layers. (default: False)'
+  type: boolean
+  inputBinding:
+    prefix: --disable_cudnn
+- id: in_threads
+  doc: 'Number of threads used by inference. (default: 1)'
+  type: long
+  inputBinding:
+    prefix: --threads
+- id: in_check_output
+  doc: "Verify integrity of output file after inference.\n(default: False)"
   type: File
   inputBinding:
-    prefix: -v
-- id: in_medaka_model_default
-  doc: "medaka model, (default: r941_min_high_g360).\nAvailable: r103_min_high_g345,\
-    \ r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210,\
-    \ r10_min_high_g303, r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303,\
-    \ r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351,\
-    \ r941_min_high_g360, r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330,\
-    \ r941_prom_high_g344, r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322,\
-    \ r941_prom_snp_g360, r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\n\
-    Alternatively a .hdf file from 'medaka train'."
+    prefix: --check_output
+- id: in_save_features
+  doc: "Save features with consensus probabilities. (default:\nFalse)"
   type: boolean
   inputBinding:
-    prefix: -m
-- id: in_force_overwrite_outputs
-  doc: Force overwrite of outputs (default will reuse existing outputs).
+    prefix: --save_features
+- id: in_rg
+  doc: 'Read group to select. (default: None)'
+  type: string
+  inputBinding:
+    prefix: --RG
+- id: in_tag_name
+  doc: 'Two-letter tag name. (default: None)'
+  type: string
+  inputBinding:
+    prefix: --tag_name
+- id: in_tag_value
+  doc: 'Value of tag. (default: None)'
+  type: string
+  inputBinding:
+    prefix: --tag_value
+- id: in_tag_keep_missing
+  doc: 'Keep alignments when tag is missing. (default: False)'
   type: boolean
   inputBinding:
-    prefix: -f
-- id: in_number_threads_create
-  doc: 'number of threads with which to create features (default: 1).'
-  type: boolean
+    prefix: --tag_keep_missing
+- id: in_bam
+  doc: Input alignments.
+  type: string
   inputBinding:
-    prefix: -t
-- id: in_batchsize_use_default
-  doc: 'batchsize, controls memory use (default: 100).'
-  type: boolean
+    position: 0
+- id: in_output
+  doc: Output file.
+  type: string
   inputBinding:
-    prefix: -b
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_folder_default
-  doc: 'output folder (default: medaka).'
-  type: Directory
-  outputBinding:
-    glob: $(inputs.in_output_folder_default)
-- id: out_output_vcf_slows
-  doc: "output vcf of changes, and bed file of polished regions.\n(note that this\
-    \ slows down consensus calculation)."
+- id: out_check_output
+  doc: "Verify integrity of output file after inference.\n(default: False)"
   type: File
   outputBinding:
-    glob: $(inputs.in_output_vcf_slows)
+    glob: $(inputs.in_check_output)
 cwlVersion: v1.1
 baseCommand:
-- medaka_consensus
+- medaka
+- consensus

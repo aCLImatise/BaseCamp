@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuffle_reads.o.cwl
+id: shuffle_reads.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

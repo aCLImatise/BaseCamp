@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toGrimmFormat.cwl
+id: toGrimmFormat.cwl
 inputs:
 - id: in_genome_n_chr_lengths
   doc: ''

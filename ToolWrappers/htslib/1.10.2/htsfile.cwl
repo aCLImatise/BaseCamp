@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsfile.cwl
+id: htsfile.cwl
 inputs:
 - id: in_view
   doc: Write textual form of FILEs to standard output

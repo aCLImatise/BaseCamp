@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halChainTests.cwl
+id: halChainTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

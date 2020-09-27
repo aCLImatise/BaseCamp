@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_cut_matrix.cwl
+id: make_cut_matrix.cwl
 inputs:
 - id: in_aggregate_output
   doc: "Requests a matrix in which each row represents a\nposition in the extended\

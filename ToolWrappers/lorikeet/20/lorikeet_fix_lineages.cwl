@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lorikeet_fix_lineages.cwl
+id: lorikeet_fix_lineages.cwl
 inputs:
 - id: in__input_output
   doc: "| --input <value>\nInput lineage information. (Output of merge-spoligotypes)"

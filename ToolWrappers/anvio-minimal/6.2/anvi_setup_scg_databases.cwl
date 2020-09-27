@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_setup_scg_databases.cwl
+id: anvi_setup_scg_databases.cwl
 inputs:
 - id: in_num_threads
   doc: "Maximum number of threads to use for multithreading\nwhenever possible. Very\

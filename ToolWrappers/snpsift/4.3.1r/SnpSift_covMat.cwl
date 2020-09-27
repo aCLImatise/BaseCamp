@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_covMat.cwl
+id: SnpSift_covMat.cwl
 inputs:
 - id: in_jar
   doc: ''

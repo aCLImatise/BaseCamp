@@ -12,12 +12,10 @@ task PairtoolsSort {
     File? cmd_in
     File? cmd_out
     String pair_type_dot
-    String between_dot
   }
   command <<<
     pairtools sort \
       ~{pair_type_dot} \
-      ~{between_dot} \
       ~{if defined(output_pairs_file) then ("--output " +  '"' + output_pairs_file + '"') else ""} \
       ~{if defined(nproc) then ("--nproc " +  '"' + nproc + '"') else ""} \
       ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
@@ -39,7 +37,6 @@ task PairtoolsSort {
     cmd_in: "A command to decompress the input file. If\\nprovided, fully overrides the auto-guessed command.\\nDoes not work with stdin. Must read input from\\nstdin and print output into stdout. EXAMPLE: pbgzip\\n-dc -n 3"
     cmd_out: "A command to compress the output file. If provided,\\nfully overrides the auto-guessed command. Does not\\nwork with stdout. Must read input from stdin and\\nprint output into stdout. EXAMPLE: pbgzip -c -n 8"
     pair_type_dot: "PAIRS_PATH : input .pairs/.pairsam file. If the path ends with .gz or"
-    between_dot: "[default: 8]"
   }
   output {
     File out_stdout = stdout()

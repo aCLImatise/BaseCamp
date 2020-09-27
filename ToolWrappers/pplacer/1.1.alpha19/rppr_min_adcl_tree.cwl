@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rppr_min_adcl_tree.cwl
+id: rppr_min_adcl_tree.cwl
 inputs:
 - id: in_specify_filename_write
   doc: Specify the filename to write to.

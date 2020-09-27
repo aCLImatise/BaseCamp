@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbisort.cwl
+id: ncbisort.cwl
 inputs:
 - id: in_t
   doc: ''

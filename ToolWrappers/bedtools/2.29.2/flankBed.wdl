@@ -10,15 +10,13 @@ task FlankBed {
     File? header
     String? g
     String? i
-    Int chr_one
-    Int chr_two
-    Int chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+    String bed_tools
+    String flank
   }
   command <<<
     flankBed \
-      ~{chr_one} \
-      ~{chr_two} \
-      ~{chr_one_eight_gl_zero_zero_zero_two_zero_seven_random} \
+      ~{bed_tools} \
+      ~{flank} \
       ~{if (create_flanking_intervals) then "-b" else ""} \
       ~{if (flank_should_start) then "-l" else ""} \
       ~{if (flank_should_end) then "-r" else ""} \
@@ -37,9 +35,8 @@ task FlankBed {
     header: "the header from the input file prior to results."
     g: ""
     i: ""
-    chr_one: "249250621"
-    chr_two: "243199373"
-    chr_one_eight_gl_zero_zero_zero_two_zero_seven_random: "4262"
+    bed_tools: ""
+    flank: ""
   }
   output {
     File out_stdout = stdout()

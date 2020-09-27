@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jp.py.cwl
+id: jp.py.cwl
 inputs:
 - id: in_filename
   doc: "The filename containing the input data. If a filename\nis not given then data\

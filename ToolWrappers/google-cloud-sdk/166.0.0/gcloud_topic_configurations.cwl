@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_topic_configurations.cwl
+id: gcloud_topic_configurations.cwl
 inputs:
 - id: in_configuration
   doc: ', or environment variable'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.pasa_post_link.sh.cwl
+id: .pasa_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

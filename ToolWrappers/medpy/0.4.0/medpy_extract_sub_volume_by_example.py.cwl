@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_extract_sub_volume_by_example.py.cwl
+id: medpy_extract_sub_volume_by_example.py.cwl
 inputs:
 - id: in_offset
   doc: Set an offset by which the extracted sub-volume size should be increased in

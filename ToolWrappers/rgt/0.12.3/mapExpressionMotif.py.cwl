@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapExpressionMotif.py.cwl
+id: mapExpressionMotif.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

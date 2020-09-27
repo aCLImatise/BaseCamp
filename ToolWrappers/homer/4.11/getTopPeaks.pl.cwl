@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getTopPeaks.pl.cwl
+id: getTopPeaks.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

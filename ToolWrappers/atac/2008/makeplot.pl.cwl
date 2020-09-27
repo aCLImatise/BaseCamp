@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeplot.pl.cwl
+id: makeplot.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

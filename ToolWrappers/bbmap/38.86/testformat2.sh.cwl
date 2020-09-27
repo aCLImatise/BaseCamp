@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../testformat2.sh.cwl
+id: testformat2.sh.cwl
 inputs:
 - id: in_junk_reads
   doc: Reads with invalid bases or other problems.

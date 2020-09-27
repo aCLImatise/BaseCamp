@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_export_bed_fasta.cwl
+id: riboraptor_export_bed_fasta.cwl
 inputs:
 - id: in_region_bed
   doc: Path to bed file  [required]

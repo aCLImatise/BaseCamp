@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_pairwise_align.cwl
+id: hp_pairwise_align.cwl
 inputs:
 - id: in_ref_gtf
   doc: '[--outdir OUTDIR] [--keep_tmp]'

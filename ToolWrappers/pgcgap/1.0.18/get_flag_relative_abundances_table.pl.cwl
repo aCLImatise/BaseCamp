@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_flag_relative_abundances_table.pl.cwl
+id: get_flag_relative_abundances_table.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

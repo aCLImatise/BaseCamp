@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_rmdup.cwl
+id: samtools_rmdup.cwl
 inputs:
 - id: in_rmdup_se_reads
   doc: rmdup for SE reads

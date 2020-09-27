@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_cwl.cwl
+id: bcbio_vm.py_cwl.cwl
 inputs:
 - id: in_system_config
   doc: "Global YAML configuration file specifying system\ndetails. Defaults to installed\

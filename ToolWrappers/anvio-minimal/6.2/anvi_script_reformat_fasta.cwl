@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_reformat_fasta.cwl
+id: anvi_script_reformat_fasta.cwl
 inputs:
 - id: in_min_len
   doc: "Minimum length of contigs to keep (contigs shorter\nthan this value will not\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_analysis_load_fasta.cwl
+id: tripaille_analysis_load_fasta.cwl
 inputs:
 - id: in_organism
   doc: Organism common name or abbreviation

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_core_read2sdbg.cwl
+id: megahit_core_read2sdbg.cwl
 inputs:
 - id: in_km_er_k
   doc: (=21)                 kmer size

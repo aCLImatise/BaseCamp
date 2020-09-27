@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../octopus.cwl
+id: octopus.cwl
 inputs:
 - id: in_config
   doc: "A config file, used to populate command\nline options"

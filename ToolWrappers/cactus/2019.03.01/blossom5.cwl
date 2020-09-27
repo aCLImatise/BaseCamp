@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blossom5.cwl
+id: blossom5.cwl
 inputs:
 - id: in_see
   doc: ''

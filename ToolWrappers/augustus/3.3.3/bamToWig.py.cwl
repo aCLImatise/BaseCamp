@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamToWig.py.cwl
+id: bamToWig.py.cwl
 inputs:
 - id: in_bam_file
   doc: Input file in Bam format.

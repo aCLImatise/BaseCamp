@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_cache_populate.pl.cwl
+id: seq_cache_populate.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

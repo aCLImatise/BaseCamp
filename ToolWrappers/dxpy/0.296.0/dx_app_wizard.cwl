@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_app_wizard.cwl
+id: dx_app_wizard.cwl
 inputs:
 - id: in_json_file
   doc: Use the metadata and IO spec found in the given file

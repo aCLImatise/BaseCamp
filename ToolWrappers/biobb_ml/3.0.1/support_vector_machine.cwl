@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../support_vector_machine.cwl
+id: support_vector_machine.cwl
 inputs:
 - id: in_config
   doc: Configuration file

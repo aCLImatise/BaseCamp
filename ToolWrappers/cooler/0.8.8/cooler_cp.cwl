@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_cp.cwl
+id: cooler_cp.cwl
 inputs:
 - id: in_overwrite
   doc: Truncate and replace destination file if it already exists.

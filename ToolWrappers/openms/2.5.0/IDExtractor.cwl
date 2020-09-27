@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDExtractor.cwl
+id: IDExtractor.cwl
 inputs:
 - id: in_in
   doc: "*                        Input file (valid formats: 'idXML')"

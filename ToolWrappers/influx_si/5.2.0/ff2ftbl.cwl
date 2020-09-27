@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ff2ftbl.cwl
+id: ff2ftbl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runContigNUCmer.pl.cwl
+id: runContigNUCmer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

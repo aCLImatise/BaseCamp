@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeqSplitter.py.cwl
+id: SeqSplitter.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

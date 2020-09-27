@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TSSAR.cwl
+id: TSSAR.cwl
 inputs:
 - id: in_libp
   doc: "*libraryP.sam* AND --libM *libraryM.sam*\nInput library (P .. Plus; M .. Minus)\

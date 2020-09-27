@@ -1,16 +1,9 @@
 version 1.0
 
 task Dreg {
-  input {
-    String? r_format
-  }
   command <<<
-    dreg \
-      ~{if defined(r_format) then ("-rformat " +  '"' + r_format + '"') else ""}
+    dreg
   >>>
-  parameter_meta {
-    r_format: ")"
-  }
   output {
     File out_stdout = stdout()
   }

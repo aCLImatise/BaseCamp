@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OrientContigs.cwl
+id: OrientContigs.cwl
 inputs:
 - id: in_skip
   doc: ''

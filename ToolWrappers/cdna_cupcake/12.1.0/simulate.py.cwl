@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate.py.cwl
+id: simulate.py.cwl
 inputs:
 - id: in_dele
   doc: ''

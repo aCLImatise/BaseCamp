@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_subsample.cwl
+id: hicstuff_subsample.cwl
 inputs:
 - id: in_prop
   doc: "Proportion of contacts to sample from the input matrix\nif between 0 and 1.\

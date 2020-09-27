@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SEACR_1.3.sh.cwl
+id: SEACR_1.3.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

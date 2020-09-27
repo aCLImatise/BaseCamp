@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_cluster.cwl
+id: amptk_cluster.cwl
 inputs:
 - id: in_fast_q
   doc: Input FASTQ file (Required)

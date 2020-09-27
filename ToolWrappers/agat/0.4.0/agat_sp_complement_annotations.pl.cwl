@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_complement_annotations.pl.cwl
+id: agat_sp_complement_annotations.pl.cwl
 inputs:
 - id: in_ref
   doc: Input GTF/GFF file used as reference.

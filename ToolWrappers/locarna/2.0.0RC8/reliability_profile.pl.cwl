@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reliability_profile.pl.cwl
+id: reliability_profile.pl.cwl
 inputs:
 - id: in_man
   doc: Full documentation

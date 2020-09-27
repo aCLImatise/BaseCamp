@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaWRAP_binning.cwl
+id: metaWRAP_binning.cwl
 inputs:
 - id: in_metagenomic_assembly_file
   doc: metagenomic assembly file

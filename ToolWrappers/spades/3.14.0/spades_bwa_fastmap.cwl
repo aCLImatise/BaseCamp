@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_bwa_fastmap.cwl
+id: spades_bwa_fastmap.cwl
 inputs:
 - id: in_min_smem_length
   doc: min SMEM length to output [17]

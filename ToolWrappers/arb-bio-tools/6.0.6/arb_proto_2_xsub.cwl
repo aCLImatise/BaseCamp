@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_proto_2_xsub.cwl
+id: arb_proto_2_xsub.cwl
 inputs:
 - id: in_prototypes_doth
   doc: ''

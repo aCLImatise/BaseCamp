@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbox_scan.cwl
+id: tbox_scan.cwl
 inputs:
 - id: in_save_final_results
   doc: ": save final results in <file> as .csv\ndefault: out.csv"

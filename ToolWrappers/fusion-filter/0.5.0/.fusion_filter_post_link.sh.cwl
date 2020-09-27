@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.fusion_filter_post_link.sh.cwl
+id: .fusion_filter_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

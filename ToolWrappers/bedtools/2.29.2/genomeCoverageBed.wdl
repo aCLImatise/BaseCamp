@@ -20,16 +20,10 @@ task GenomeCoverageBed {
     String? g
     String? i
     String genome_dot_ucsc_dot_edu_slash_goldenpath_slash_help_slash_bed_graph_dot_html
-    Int chr_one
-    Int chr_two
-    Int chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
   }
   command <<<
     genomeCoverageBed \
       ~{genome_dot_ucsc_dot_edu_slash_goldenpath_slash_help_slash_bed_graph_dot_html} \
-      ~{chr_one} \
-      ~{chr_two} \
-      ~{chr_one_eight_gl_zero_zero_zero_two_zero_seven_random} \
       ~{if (i_bam) then "-ibam" else ""} \
       ~{if (report_depth_onebased) then "-d" else ""} \
       ~{if (dz) then "-dz" else ""} \
@@ -67,9 +61,6 @@ task GenomeCoverageBed {
     g: ""
     i: ""
     genome_dot_ucsc_dot_edu_slash_goldenpath_slash_help_slash_bed_graph_dot_html: "-bga            Report depth in BedGraph format, as above (-bg)."
-    chr_one: "249250621"
-    chr_two: "243199373"
-    chr_one_eight_gl_zero_zero_zero_two_zero_seven_random: "4262"
   }
   output {
     File out_stdout = stdout()

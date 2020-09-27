@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kttimedmgr.cwl
+id: kttimedmgr.cwl
 inputs:
 - id: in_otr
   doc: ''

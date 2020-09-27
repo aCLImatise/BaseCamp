@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CreateGermlines.py.cwl
+id: CreateGermlines.py.cwl
 inputs:
 - id: in_list_tab_defaultnone
   doc: "A list of tab delimited database files. (default:\nNone)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aws_completer.cwl
+id: aws_completer.cwl
 inputs: []
 outputs:
 - id: out_stdout

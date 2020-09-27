@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../STAR.cwl
+id: STAR.cwl
 inputs:
 - id: in__map_all_reads
   doc: ': map all reads'

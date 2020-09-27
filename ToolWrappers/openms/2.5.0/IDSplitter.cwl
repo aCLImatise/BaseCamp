@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDSplitter.cwl
+id: IDSplitter.cwl
 inputs:
 - id: in_in
   doc: "*        Input file (data annotated with identifications) (valid formats:\

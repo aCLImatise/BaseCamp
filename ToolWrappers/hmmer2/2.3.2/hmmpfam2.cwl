@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmpfam2.cwl
+id: hmmpfam2.cwl
 inputs:
 - id: in_nucleic_acid_modelssequence
   doc: ': nucleic acid models/sequence (default protein)'

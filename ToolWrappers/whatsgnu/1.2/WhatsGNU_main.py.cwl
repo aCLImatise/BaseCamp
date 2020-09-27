@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../WhatsGNU_main.py.cwl
+id: WhatsGNU_main.py.cwl
 inputs:
 - id: in_mk_database
   doc: "you have to provide path to faa file or a folder of\nmultiple faa files for\

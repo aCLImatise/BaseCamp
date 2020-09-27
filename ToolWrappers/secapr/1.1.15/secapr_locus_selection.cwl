@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_locus_selection.cwl
+id: secapr_locus_selection.cwl
 inputs:
 - id: in_input
   doc: The folder with the results of the reference based

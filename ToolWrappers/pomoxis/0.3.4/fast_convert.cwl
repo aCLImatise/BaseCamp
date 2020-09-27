@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fast_convert.cwl
+id: fast_convert.cwl
 inputs:
 - id: in_discard_q
   doc: "Discard quality information from fastq, use with --mock_q.\n(default: False)"

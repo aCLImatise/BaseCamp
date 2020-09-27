@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addSurrogatesToFrgCtgFile.cwl
+id: addSurrogatesToFrgCtgFile.cwl
 inputs: []
 outputs:
 - id: out_stdout

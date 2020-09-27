@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jsearch.cwl
+id: jsearch.cwl
 inputs:
 - id: in_amino_acid_similarity
   doc: //amino acid similarity matrix

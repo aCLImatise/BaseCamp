@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runBESST.cwl
+id: runBESST.cwl
 inputs:
 - id: in_deactivate_pathfinder_module
   doc: Deactivate pathfinder module for including smaller

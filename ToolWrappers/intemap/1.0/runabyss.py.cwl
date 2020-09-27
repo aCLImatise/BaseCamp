@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runabyss.py.cwl
+id: runabyss.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

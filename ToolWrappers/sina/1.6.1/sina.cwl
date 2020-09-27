@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sina.cwl
+id: sina.cwl
 inputs:
 - id: in_show_full_help
   doc: '[ --help-all ]        show full help (long)'

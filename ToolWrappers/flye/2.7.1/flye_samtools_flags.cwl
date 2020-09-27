@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_flags.cwl
+id: flye_samtools_flags.cwl
 inputs:
 - id: in_zero_x_one
   doc: PAIRED        .. paired-end (or multiple-segment) sequencing technology

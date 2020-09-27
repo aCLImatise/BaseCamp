@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../senergy.cwl
+id: senergy.cwl
 inputs:
 - id: in_etot
   doc: EKtot       EPtot        BOND       ANGLE       DIHED      1-4 NB     1-4 EEL     VDWAALS       EELEC      EHBOND  CONSTRAINT      EAMBER

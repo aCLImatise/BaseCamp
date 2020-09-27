@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_bloom_dist.mk.cwl
+id: abyss_bloom_dist.mk.cwl
 inputs:
 - id: in_ignored_for_compatibility
   doc: Ignored for compatibility.

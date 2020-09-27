@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pepdigest.cwl
+id: pepdigest.cwl
 inputs:
 - id: in_menu
   doc: "menu       [1] Select number (Values: 1 (Trypsin); 2\n(Lys-C); 3 (Arg-C);\

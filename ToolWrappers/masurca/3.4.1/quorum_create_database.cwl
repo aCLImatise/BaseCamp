@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quorum_create_database.cwl
+id: quorum_create_database.cwl
 inputs:
 - id: in_size
   doc: '*Initial hash size'

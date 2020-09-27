@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_locus.cwl
+id: validate_locus.cwl
 inputs:
 - id: in_input
   doc: Path to input locus file

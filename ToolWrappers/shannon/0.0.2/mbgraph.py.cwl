@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mbgraph.py.cwl
+id: mbgraph.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

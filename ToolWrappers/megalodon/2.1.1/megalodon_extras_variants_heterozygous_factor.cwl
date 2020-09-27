@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_variants_heterozygous_factor.cwl
+id: megalodon_extras_variants_heterozygous_factor.cwl
 inputs:
 - id: in_calls_dot
   doc: megalodon_variants    VCF file containing diploid variant calls from

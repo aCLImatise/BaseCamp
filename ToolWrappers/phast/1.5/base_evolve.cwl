@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../base_evolve.cwl
+id: base_evolve.cwl
 inputs:
 - id: in_n_sites
   doc: Generate an alignment with <nsites> columns.  Default is 1000.

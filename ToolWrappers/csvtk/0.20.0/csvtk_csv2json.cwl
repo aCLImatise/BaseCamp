@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_csv2json.cwl
+id: csvtk_csv2json.cwl
 inputs:
 - id: in_indent
   doc: indent. if given blank, output json in one line. (default "  ")

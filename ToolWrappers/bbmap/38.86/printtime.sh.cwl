@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../printtime.sh.cwl
+id: printtime.sh.cwl
 inputs:
 - id: in_filename
   doc: ''

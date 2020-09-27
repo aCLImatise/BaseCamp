@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ete3.cwl
+id: ete3.cwl
 inputs: []
 outputs:
 - id: out_stdout

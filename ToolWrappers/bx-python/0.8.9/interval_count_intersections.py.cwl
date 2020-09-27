@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interval_count_intersections.py.cwl
+id: interval_count_intersections.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

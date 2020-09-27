@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plink2chromopainter.pl.cwl
+id: plink2chromopainter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

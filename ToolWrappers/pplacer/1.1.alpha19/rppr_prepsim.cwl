@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rppr_prepsim.cwl
+id: rppr_prepsim.cwl
 inputs:
 - id: in_reference_package_path
   doc: Reference package path. Required.

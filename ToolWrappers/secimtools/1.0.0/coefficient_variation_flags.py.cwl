@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coefficient_variation_flags.py.cwl
+id: coefficient_variation_flags.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

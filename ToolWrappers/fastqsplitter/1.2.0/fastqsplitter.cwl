@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqsplitter.cwl
+id: fastqsplitter.cwl
 inputs:
 - id: in_input
   doc: The fastq file to be scattered.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan_get_reference.cwl
+id: phylophlan_get_reference.cwl
 inputs:
 - id: in_get
   doc: "Specify the taxonomic label for which download the set\nof reference genomes.\

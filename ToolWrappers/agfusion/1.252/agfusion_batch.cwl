@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agfusion_batch.cwl
+id: agfusion_batch.cwl
 inputs:
 - id: in_file
   doc: Output file from fusion-finding algorithm.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredHisto.cwl
+id: genePredHisto.cwl
 inputs:
 - id: in_ids
   doc: '- a second column with the gene name, useful for finding outliers.'

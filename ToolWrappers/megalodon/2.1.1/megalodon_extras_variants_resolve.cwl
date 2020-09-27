@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_variants_resolve.cwl
+id: megalodon_extras_variants_resolve.cwl
 inputs:
 - id: in_output_filename
   doc: "Output filename. Default:\nmegalodon.consolidated_variants.vcf"

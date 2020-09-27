@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcast.cwl
+id: mcast.cwl
 inputs:
 - id: in_alpha
   doc: "The fraction of all TF binding sites that are binding sites\nfor the TF of\

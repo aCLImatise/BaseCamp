@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../barriers_RNA2.cwl
+id: barriers_RNA2.cwl
 inputs:
 - id: in_full_help
   doc: Print help, including hidden options, and exit

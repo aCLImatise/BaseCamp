@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PBcR.cwl
+id: PBcR.cwl
 inputs:
 - id: in_length
   doc: Minimum length of PacBio sequences to correct/output.

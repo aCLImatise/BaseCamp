@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakachu_commands.cwl
+id: peakachu_commands.cwl
 inputs:
 - id: in_peak_a_chu
   doc: ''

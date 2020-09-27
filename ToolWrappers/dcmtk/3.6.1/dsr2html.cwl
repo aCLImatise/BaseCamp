@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsr2html.cwl
+id: dsr2html.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

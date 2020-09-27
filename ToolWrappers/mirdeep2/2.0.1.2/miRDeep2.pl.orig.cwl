@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miRDeep2.pl.orig.cwl
+id: miRDeep2.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

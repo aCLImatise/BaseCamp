@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rism3d.orave.cwl
+id: rism3d.orave.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_splitxlsx.cwl
+id: csvtk_splitxlsx.cwl
 inputs:
 - id: in_fields
   doc: comma separated key fields, column name or index. e.g. -f 1-3 or -f id,id2

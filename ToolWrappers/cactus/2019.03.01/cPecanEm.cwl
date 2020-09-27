@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cPecanEm.cwl
+id: cPecanEm.cwl
 inputs: []
 outputs:
 - id: out_stdout

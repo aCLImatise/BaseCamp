@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq.cwl
+id: seq.cwl
 inputs:
 - id: in_format
   doc: use printf style floating-point FORMAT

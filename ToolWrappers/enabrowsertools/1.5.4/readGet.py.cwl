@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readGet.py.cwl
+id: readGet.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

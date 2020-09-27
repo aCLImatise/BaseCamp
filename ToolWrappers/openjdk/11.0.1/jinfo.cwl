@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jinfo.cwl
+id: jinfo.cwl
 inputs:
 - id: in_flags
   doc: to print VM flags

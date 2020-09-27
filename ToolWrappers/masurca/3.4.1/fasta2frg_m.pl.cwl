@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2frg_m.pl.cwl
+id: fasta2frg_m.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

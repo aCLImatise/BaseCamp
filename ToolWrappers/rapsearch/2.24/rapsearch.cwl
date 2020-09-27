@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapsearch.cwl
+id: rapsearch.cwl
 inputs:
 - id: in_query_file_fasta
   doc: ': query file or stdin (FASTA or FASTQ format)'

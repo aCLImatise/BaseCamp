@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kraken_biom.cwl
+id: kraken_biom.cwl
 inputs:
 - id: in_max
   doc: "Assigned reads will be recorded only if they are at or\nbelow max rank. Default:\

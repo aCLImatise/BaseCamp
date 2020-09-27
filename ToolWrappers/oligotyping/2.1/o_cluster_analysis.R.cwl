@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_cluster_analysis.R.cwl
+id: o_cluster_analysis.R.cwl
 inputs:
 - id: in_permute
   doc: 'Error in X11(width = 12, height = 10) : X11 module cannot be loaded'

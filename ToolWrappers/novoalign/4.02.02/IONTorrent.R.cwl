@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IONTorrent.R.cwl
+id: IONTorrent.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obminimize.cwl
+id: obminimize.cwl
 inputs:
 - id: in_set_convergence_criteria
   doc: set convergence criteria (default=1e-6)

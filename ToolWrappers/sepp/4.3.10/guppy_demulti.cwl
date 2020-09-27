@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_demulti.cwl
+id: guppy_demulti.cwl
 inputs:
 - id: in_out_dir
   doc: Specify the directory to write files to.

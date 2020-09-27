@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crTreeSearchBed.cwl
+id: crTreeSearchBed.cwl
 inputs:
 - id: in_file_dot_bed
   doc: ''

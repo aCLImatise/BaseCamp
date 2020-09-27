@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../happy_clones_span_clumps.cwl
+id: happy_clones_span_clumps.cwl
 inputs: []
 outputs:
 - id: out_stdout

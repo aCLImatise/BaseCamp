@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_convertNR.cwl
+id: kaiju_convertNR.cwl
 inputs:
 - id: in_name_nodesdmp_file
   doc: Name of nodes.dmp file.

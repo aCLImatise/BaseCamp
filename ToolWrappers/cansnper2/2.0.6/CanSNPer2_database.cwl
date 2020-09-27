@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CanSNPer2_database.cwl
+id: CanSNPer2_database.cwl
 inputs:
 - id: in_db
   doc: ', --database   CanSNPer2 database name'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaden_predict.cwl
+id: scaden_predict.cwl
 inputs:
 - id: in_model_dir
   doc: Path to trained model

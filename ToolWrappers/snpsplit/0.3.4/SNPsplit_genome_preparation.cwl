@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SNPsplit_genome_preparation.cwl
+id: SNPsplit_genome_preparation.cwl
 inputs:
 - id: in_vcf_file
   doc: "Mandatory file specifying SNP information for mouse strains from the Mouse\

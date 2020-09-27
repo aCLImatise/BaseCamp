@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hilive_out.cwl
+id: hilive_out.cwl
 inputs:
 - id: in_path_hilive_config
   doc: "[ --config ]\nPath to a HiLive config file (in general, this should be\n'hilive_config.ini'\

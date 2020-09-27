@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rpsblast.cwl
+id: rpsblast.cwl
 inputs:
 - id: in_input_query_sequence
   doc: "Input query sequence (this parameter must be set) [File In]\ndefault = stdin"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyrpipe_diagnostic.py_report.cwl
+id: pyrpipe_diagnostic.py_report.cwl
 inputs:
 - id: in_file_default_same
   doc: 'out file default: same as input logfile'

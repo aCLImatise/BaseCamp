@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refinem_taxon_filter.cwl
+id: refinem_taxon_filter.cwl
 inputs:
 - id: in_consensus_tax_on
   doc: "threshold for accepting a consensus taxon (default:\n50.0)"

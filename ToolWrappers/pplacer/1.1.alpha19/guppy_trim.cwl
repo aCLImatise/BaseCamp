@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_trim.cwl
+id: guppy_trim.cwl
 inputs:
 - id: in_point_mass
   doc: Treat every pquery as a point mass concentrated on the highest-weight placement.

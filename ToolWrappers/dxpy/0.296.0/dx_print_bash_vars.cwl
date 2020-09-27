@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_print_bash_vars.cwl
+id: dx_print_bash_vars.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ace2contig.cwl
+id: ace2contig.cwl
 inputs:
 - id: in_file
   doc: file

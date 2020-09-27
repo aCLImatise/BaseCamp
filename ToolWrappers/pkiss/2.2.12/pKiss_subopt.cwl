@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pKiss_subopt.cwl
+id: pKiss_subopt.cwl
 inputs:
 - id: in_read_energy_parameters
   doc: "Read energy parameters from paramfile, instead of using the default parameter\n\

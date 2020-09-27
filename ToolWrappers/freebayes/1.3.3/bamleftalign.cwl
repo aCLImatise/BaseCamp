@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamleftalign.cwl
+id: bamleftalign.cwl
 inputs:
 - id: in_fast_a_reference
   doc: FASTA reference file to use for realignment (required)

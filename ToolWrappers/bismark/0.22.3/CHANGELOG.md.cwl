@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CHANGELOG.md.cwl
+id: CHANGELOG.md.cwl
 inputs: []
 outputs:
 - id: out_stdout

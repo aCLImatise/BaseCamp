@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_fasta_fragments.py.cwl
+id: cactus_fasta_fragments.py.cwl
 inputs:
 - id: in_fragment
   doc: "length of each fragment\n(default is 100)"

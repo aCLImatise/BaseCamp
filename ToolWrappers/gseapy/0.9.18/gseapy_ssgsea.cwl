@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gseapy_ssgsea.cwl
+id: gseapy_ssgsea.cwl
 inputs:
 - id: in_data
   doc: "Input gene expression dataset file in txt format. Same\nwith GSEA."

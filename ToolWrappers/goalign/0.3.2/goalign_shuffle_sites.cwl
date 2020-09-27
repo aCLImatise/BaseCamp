@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_shuffle_sites.cwl
+id: goalign_shuffle_sites.cwl
 inputs:
 - id: in_rate
   doc: Rate of shuffled sites (>=0 and <=1) (default 0.5)

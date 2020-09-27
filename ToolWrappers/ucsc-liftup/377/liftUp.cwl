@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../liftUp.cwl
+id: liftUp.cwl
 inputs:
 - id: in_no_head
   doc: No header written for .psl files

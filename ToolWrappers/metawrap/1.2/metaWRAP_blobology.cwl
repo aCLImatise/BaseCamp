@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaWRAP_blobology.cwl
+id: metaWRAP_blobology.cwl
 inputs:
 - id: in_assembly_fasta_file
   doc: assembly fasta file

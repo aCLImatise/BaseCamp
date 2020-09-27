@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_dump.cwl
+id: oncogemini_dump.cwl
 inputs:
 - id: in_variants
   doc: Report all rows/columns from the variants table.

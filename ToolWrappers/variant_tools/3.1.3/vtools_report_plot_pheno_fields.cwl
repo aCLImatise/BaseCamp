@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_plot_pheno_fields.cwl
+id: vtools_report_plot_pheno_fields.cwl
 inputs:
 - id: in_samples
   doc: "[SAMPLES [SAMPLES ...]]\nConditions based on which samples are selected.\n\

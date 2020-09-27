@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../phizz_init.cwl
+id: phizz_init.cwl
 inputs:
 - id: in_db_name
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --db_name
-- id: in_path
-  doc: ''
+  doc: "--path TEXT\n--help          Show this message and exit.\n"
   type: File
   inputBinding:
-    prefix: --path
+    prefix: --db_name
 outputs:
 - id: out_stdout
   doc: Standard output stream

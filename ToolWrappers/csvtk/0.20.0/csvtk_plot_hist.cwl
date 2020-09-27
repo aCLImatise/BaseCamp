@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_plot_hist.cwl
+id: csvtk_plot_hist.cwl
 inputs:
 - id: in_bins
   doc: number of bins (default 50)

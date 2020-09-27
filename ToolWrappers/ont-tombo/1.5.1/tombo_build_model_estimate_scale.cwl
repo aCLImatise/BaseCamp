@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_build_model_estimate_scale.cwl
+id: tombo_build_model_estimate_scale.cwl
 inputs:
 - id: in_quiet
   doc: Don't print status information.

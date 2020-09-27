@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpCloneMiddles.cwl
+id: dumpCloneMiddles.cwl
 inputs:
 - id: in__attempt_guess
   doc: "-- attempt to guess all the required options, if your assembly\nfollows runCA-OBT\
@@ -17,26 +17,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -scf
-- id: in_g
-  doc: ''
+- id: in_ovlstorenamec_ckptfilenamen_ckpptnum
+  doc: "-o <OVLStoreName>\n-c <CkptFileName>\n-n <CkpPtNum>"
   type: string
   inputBinding:
     prefix: -g
-- id: in_o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
-- id: in_c
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -c
-- id: in_n
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -n
 - id: in__generate_contig
   doc: -- generate a single contig or scaffold
   type: string
@@ -53,6 +38,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -S
+- id: in_n
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -n
+- id: in_c
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -c
+- id: in_o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
 - id: in_other
   doc: ''
   type: string

@@ -10,20 +10,16 @@ task PbsTrain {
     File? log
     String dimension_dot
     Int size_dot
-    Int one_seven_zero_zero_eight_five
     Int one_five_eight_zero_zero_six
     Int two_two_one_nine_three_seven
-    Int two_two_one_five_eight_five
     Int one_five_nine_four_seven_two
   }
   command <<<
     pbsTrain \
       ~{dimension_dot} \
       ~{size_dot} \
-      ~{one_seven_zero_zero_eight_five} \
       ~{one_five_eight_zero_zero_six} \
       ~{two_two_one_nine_three_seven} \
-      ~{two_two_one_five_eight_five} \
       ~{one_five_nine_four_seven_two} \
       ~{if defined(suff_stats) then ("--suff-stats " +  '"' + suff_stats + '"') else ""} \
       ~{if defined(nbytes) then ("--nbytes " +  '"' + nbytes + '"') else ""} \
@@ -41,10 +37,8 @@ task PbsTrain {
     log: "write log of optimization procedure to specified file."
     dimension_dot: "By default, n is given the largest possible value such"
     size_dot: "EXAMPLES:"
-    one_seven_zero_zero_eight_five: "0.043485        0.797886        0.029534        0.129096"
     one_five_eight_zero_zero_six: "0.191119        0.046081        0.695205        0.067595"
     two_two_one_nine_three_seven: "0.047309        0.122834        0.043852        0.786004"
-    two_two_one_five_eight_five: "0.781156        0.044520        0.126179        0.048146"
     one_five_nine_four_seven_two: "0.067254        0.697947        0.045959        0.188840"
   }
   output {

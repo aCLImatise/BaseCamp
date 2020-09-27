@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_calculate_credibility_intervals.cwl
+id: rsem_calculate_credibility_intervals.cwl
 inputs:
 - id: in_reference_name
   doc: ''

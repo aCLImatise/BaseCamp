@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scalpel_discovery.cwl
+id: scalpel_discovery.cwl
 inputs:
 - id: in_verbose
   doc: ': verbose mode'

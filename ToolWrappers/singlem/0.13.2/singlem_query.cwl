@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singlem_query.cwl
+id: singlem_query.cwl
 inputs:
 - id: in_quiet
   doc: ''

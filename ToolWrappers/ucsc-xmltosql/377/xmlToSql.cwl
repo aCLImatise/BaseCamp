@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmlToSql.cwl
+id: xmlToSql.cwl
 inputs:
 - id: in_prefix
   doc: '- A name to prefix all tables with'

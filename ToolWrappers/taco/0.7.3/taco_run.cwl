@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taco_run.cwl
+id: taco_run.cwl
 inputs:
 - id: in_output_dir
   doc: "directory where output files will be stored (if\nalready exists then --resume\

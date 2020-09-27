@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslMrnaCover.cwl
+id: pslMrnaCover.cwl
 inputs:
 - id: in_minsize
   doc: '- default 100.  Minimum size of mRNA considered'

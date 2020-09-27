@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../select_cmfinder.pl.cwl
+id: select_cmfinder.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

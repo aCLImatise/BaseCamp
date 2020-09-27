@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trafoXML_visualize.py.cwl
+id: trafoXML_visualize.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

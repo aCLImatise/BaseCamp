@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../setup_deps.pl.cwl
+id: setup_deps.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaspades.py.cwl
+id: rnaspades.py.cwl
 inputs:
 - id: in_directory_store_files
   doc: directory to store all the resulting files (required)

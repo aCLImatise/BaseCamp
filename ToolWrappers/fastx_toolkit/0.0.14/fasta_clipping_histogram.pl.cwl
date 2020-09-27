@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_clipping_histogram.pl.cwl
+id: fasta_clipping_histogram.pl.cwl
 inputs:
 - id: in_input_file_dot_fa
   doc: = input file (in FASTA format, can be GZIPped)

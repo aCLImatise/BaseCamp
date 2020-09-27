@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_tile.py.cwl
+id: maf_tile.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_eval.cwl
+id: deepac_eval.cwl
 inputs:
 - id: in_species
   doc: Species-wise evaluation.

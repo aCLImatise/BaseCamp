@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_unset.cwl
+id: gcloud_config_unset.cwl
 inputs:
 - id: in_section_slash_property
   doc: "The property to be unset. Note that SECTION/ is optional while\nreferring\

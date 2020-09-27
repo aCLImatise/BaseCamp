@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme2images.cwl
+id: meme2images.cwl
 inputs:
 - id: in_motif
   doc: output only a selected motif; repeatable

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../call_consensus.py.cwl
+id: call_consensus.py.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result file already exists\nand is newer than inputs.\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../outputAlekseysJellyfishReductionFile.perl.cwl
+id: outputAlekseysJellyfishReductionFile.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

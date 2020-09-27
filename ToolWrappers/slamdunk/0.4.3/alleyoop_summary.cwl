@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_summary.cwl
+id: alleyoop_summary.cwl
 inputs:
 - id: in_output
   doc: Output file

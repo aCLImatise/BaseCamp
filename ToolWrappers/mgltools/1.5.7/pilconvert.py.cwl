@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pilconvert.py.cwl
+id: pilconvert.py.cwl
 inputs:
 - id: in_convert_format_default
   doc: convert to format (default is given by extension)

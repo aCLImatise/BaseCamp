@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netChainSubset.cwl
+id: netChainSubset.cwl
 inputs:
 - id: in_gap_out
   doc: '- Output gap sizes to file'

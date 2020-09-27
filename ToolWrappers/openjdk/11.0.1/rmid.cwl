@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmid.cwl
+id: rmid.cwl
 inputs:
 - id: in_port
   doc: Specify port for rmid to use

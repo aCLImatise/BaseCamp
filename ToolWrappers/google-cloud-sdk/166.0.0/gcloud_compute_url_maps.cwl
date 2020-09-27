@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_url_maps.cwl
+id: gcloud_compute_url_maps.cwl
 inputs:
 - id: in_add_host_rule
   doc: Add a rule to a URL map to map hosts to a path matcher.

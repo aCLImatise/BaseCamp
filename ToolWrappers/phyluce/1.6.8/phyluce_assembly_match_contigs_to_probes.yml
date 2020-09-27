@@ -1,26 +1,17 @@
 !Command
 command:
 - phyluce_assembly_match_contigs_to_probes
-positional:
-- !Positional
-  description: '[--verbosity {INFO,WARN,CRITICAL}]'
-  position: 0
-  name: OUTPUT
-  optional: false
+positional: []
 named:
 - !Flag
-  description: ''
+  description: "OUTPUT\n[--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n\
+    [--min-coverage MIN_COVERAGE]\n[--min-identity MIN_IDENTITY]\n[--dupefile DUPEFILE]\n\
+    [--regex REGEX]\n[--keep-duplicates KEEP_DUPLICATES]"
   synonyms:
   - --probes
   - --output
   args: !SimpleFlagArg
     name: PROBES
-  optional: true
-- !Flag
-  description: ='^(MyProbe-\W+)(?:_probe\d+.*)'
-  synonyms:
-  - --regex
-  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: "The directory containing the assembled contigs in\nwhich you are searching\
@@ -36,9 +27,9 @@ named:
   - --verbosity
   args: !ChoiceFlagArg
     choices: !!set
-      ? CRITICAL
-      ? WARN
-      ? INFO
+      INFO:
+      WARN:
+      CRITICAL:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -68,6 +59,14 @@ named:
   - --dupefile
   args: !SimpleFlagArg
     name: DUPEFILE
+  optional: true
+- !Flag
+  description: "A regular expression to apply to the probe names for\nreplacement\
+    \ [default='^(uce-\\d+)(?:_p\\d+.*)']."
+  synonyms:
+  - --regex
+  args: !SimpleFlagArg
+    name: REGEX
   optional: true
 - !Flag
   description: "A optional output file in which to store those loci\nthat appear to\

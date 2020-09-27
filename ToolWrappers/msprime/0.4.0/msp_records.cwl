@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_records.cwl
+id: msp_records.cwl
 inputs:
 - id: in_header
   doc: Print a header line in the output.

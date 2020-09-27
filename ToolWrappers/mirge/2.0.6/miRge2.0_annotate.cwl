@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miRge2.0_annotate.cwl
+id: miRge2.0_annotate.cwl
 inputs:
 - id: in_two_options_file
   doc: "[sample <required> [sample <required> ...]]\ntwo options: 1. A file where\

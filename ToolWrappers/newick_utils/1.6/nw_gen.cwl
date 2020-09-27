@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_gen.cwl
+id: nw_gen.cwl
 inputs:
 - id: in_sets_time_limit
   doc: ": sets the maximum depth (time limit). Default: 3.0\nOnly for time-limited\

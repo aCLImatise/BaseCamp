@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../complete_locus.cwl
+id: complete_locus.cwl
 inputs:
 - id: in_input
   doc: Path to input locus file

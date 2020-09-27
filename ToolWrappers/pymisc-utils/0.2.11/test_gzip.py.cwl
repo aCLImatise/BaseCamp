@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: ../../../test_gzip.py.cwl
+id: test_gzip.py.cwl
 inputs:
-- id: in_block_size
-  doc: "The size of blocks for reading and writing (default:\n4k)"
-  type: long
-  inputBinding:
-    prefix: --blocksize
-- id: in_num_iterations
-  doc: 'The number of iterations (default: 30)'
-  type: long
-  inputBinding:
-    prefix: --num-iterations
-- id: in_read_file
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --read-file
-- id: in_write_file
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --write-file
 - id: in_log_file
   doc: "This option specifies a file to which logging\nstatements will be written\
     \ (in addition to stdout and\nstderr, if specified) (default: )"
@@ -62,6 +42,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --stderr-logging-level
+- id: in_block_size
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: --blocksize
 outputs:
 - id: out_stdout
   doc: Standard output stream

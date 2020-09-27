@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pysradb_metadata.cwl
+id: pysradb_metadata.cwl
 inputs:
 - id: in_save_to
   doc: Save metadata dataframe to file

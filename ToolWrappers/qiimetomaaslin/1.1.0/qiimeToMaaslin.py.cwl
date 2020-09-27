@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qiimeToMaaslin.py.cwl
+id: qiimeToMaaslin.py.cwl
 inputs:
 - id: in_normalize_data_values
   doc: Don't normalize data values by column sums

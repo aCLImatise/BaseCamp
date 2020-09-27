@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arachne2scaff.cwl
+id: arachne2scaff.cwl
 inputs: []
 outputs:
 - id: out_stdout

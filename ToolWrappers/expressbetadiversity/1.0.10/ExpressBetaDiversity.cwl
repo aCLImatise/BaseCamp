@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExpressBetaDiversity.cwl
+id: ExpressBetaDiversity.cwl
 inputs:
 - id: in_list_calc
   doc: List all supported calculators.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trim_long_introns.py.cwl
+id: trim_long_introns.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

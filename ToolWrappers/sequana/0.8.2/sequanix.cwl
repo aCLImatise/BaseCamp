@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequanix.cwl
+id: sequanix.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagene_OUTBASE_metagene_profile.txt.cwl
+id: metagene_OUTBASE_metagene_profile.txt.cwl
 inputs:
 - id: in_meta_gene
   doc: ''

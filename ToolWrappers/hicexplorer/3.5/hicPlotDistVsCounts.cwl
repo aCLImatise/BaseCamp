@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicPlotDistVsCounts.cwl
+id: hicPlotDistVsCounts.cwl
 inputs:
 - id: in_matrices
   doc: "Hi-C normalized (corrected) matrices. Each path should\nbe separated by a\

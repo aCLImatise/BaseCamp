@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../db_graph.jl.cwl
+id: db_graph.jl.cwl
 inputs: []
 outputs:
 - id: out_stdout

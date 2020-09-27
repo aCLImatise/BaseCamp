@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_load_assembly.cwl
+id: genomedata_load_assembly.cwl
 inputs:
 - id: in_assembly
   doc: SEQFILE contains assembly (AGP) files instead of

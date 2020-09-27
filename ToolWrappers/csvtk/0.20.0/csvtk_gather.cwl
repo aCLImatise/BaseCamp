@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_gather.cwl
+id: csvtk_gather.cwl
 inputs:
 - id: in_fields
   doc: fields for gathering. e.g -f 1,2 or -f columnA,columnB, or -f -columnA for

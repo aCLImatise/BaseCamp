@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_auth_get_login.cwl
+id: hca_auth_get_login.cwl
 inputs:
 - id: in_redirect_uri
   doc: Where to redirect to once login is complete.

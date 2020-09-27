@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Parquet.dll.cwl
+id: Parquet.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_table.py.cwl
+id: convert_table.py.cwl
 inputs:
 - id: in_output
   doc: "Path to output. Corresponds to folder name if multiple\nfiles are output,\

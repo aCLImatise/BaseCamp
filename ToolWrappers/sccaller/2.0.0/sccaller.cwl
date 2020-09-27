@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sccaller.cwl
+id: sccaller.cwl
 inputs:
 - id: in_bam
   doc: ':      bamfile of a single cell'

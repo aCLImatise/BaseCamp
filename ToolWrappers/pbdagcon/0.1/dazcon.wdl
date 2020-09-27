@@ -12,11 +12,9 @@ task Dazcon {
     Int? _minlen_uintminimum
     Int? _mincoverage_uintminimum
     Int? _threads_intnumber
-    String daz_con
   }
   command <<<
     dazcon \
-      ~{daz_con} \
       ~{if (_verboseturns_verbose) then "-v" else ""} \
       ~{if (_onlyproperoverlapsuse_only) then "-o" else ""} \
       ~{if (_coveragesortsort_hits) then "-x" else ""} \
@@ -39,7 +37,6 @@ task Dazcon {
     _minlen_uintminimum: ",  --min-len <uint>\\nMinimum length for correction"
     _mincoverage_uintminimum: ",  --min-coverage <uint>\\nMinimum coverage for correction"
     _threads_intnumber: ",  --threads <int>\\nNumber of consensus threads"
-    daz_con: "[-v] [-o] [-x] [-m <uint>] -s <string> -a <string> [-t <uint>]\\n[-l <uint>] [-c <uint>] [-j <int>] [--] [--version] [-h] <list\\nof ints> ..."
   }
   output {
     File out_stdout = stdout()

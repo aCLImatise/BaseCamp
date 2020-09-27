@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker2eval_gtf.cwl
+id: maker2eval_gtf.cwl
 inputs:
 - id: in_this
   doc: ''

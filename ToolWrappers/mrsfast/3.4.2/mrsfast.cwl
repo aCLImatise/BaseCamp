@@ -1,8 +1,12 @@
 class: CommandLineTool
-id: ../../../mrsfast.cwl
+id: mrsfast.cwl
 inputs:
 - id: in_max
-  doc: ''
+  doc: "$ ./mrsfast --search refgen.fasta --pe --seq1 first-mates.fastq  --seq2\n\
+    second-mates.fastq -e 3 --threads 4\n$  ./mrsfast --search refgen.fasta --pe --seq1\
+    \ first-mates.fastq --seq2\nsecond-mates.fastq --min 100 --max 400 --best -o output\n\
+    Discordant mapping:\n$  ./mrsfast   --search   refgen.fasta   --pe   --discordant-vh\
+    \   --seq\nreads.fastq --min 100 --max 400"
   type: long
   inputBinding:
     prefix: --max
@@ -46,6 +50,11 @@ inputs:
   type: string
   inputBinding:
     position: 0
+- id: in_only_dot
+  doc: "-\b--\b-s\bse\beq\bq2\b2 _\bf_\bi_\bl_\be"
+  type: string
+  inputBinding:
+    position: 1
 - id: in_length
   doc: will  be  calculated  if  not  provided by corresponding
   type: long

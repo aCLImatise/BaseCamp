@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignSets.py_align_fail.cwl
+id: AlignSets.py_align_fail.cwl
 inputs:
 - id: in_align_sets_do_tpy
   doc: ''

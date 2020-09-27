@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_remove.cwl
+id: fasta_remove.cwl
 inputs:
 - id: in_fast_a
   doc: (string)                  Fasta file as input.

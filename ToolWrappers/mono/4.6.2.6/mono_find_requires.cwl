@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_find_requires.cwl
+id: mono_find_requires.cwl
 inputs: []
 outputs:
 - id: out_stdout

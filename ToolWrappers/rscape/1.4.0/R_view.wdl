@@ -9,7 +9,6 @@ task Rview {
     Boolean? cb
     Boolean? inter
     File? send_output_file
-    Float? to_l
     Int? seed
     String peptides
   }
@@ -23,7 +22,6 @@ task Rview {
       ~{if (cb) then "--CB" else ""} \
       ~{if (inter) then "--inter" else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
-      ~{if defined(to_l) then ("--tol " +  '"' + to_l + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""}
   >>>
   parameter_meta {
@@ -34,7 +32,6 @@ task Rview {
     cb: ": Distance btw beta Carbors (alphaC for Gly)"
     inter: ": TRUE to calculate inter-chain contacts"
     send_output_file: ": send output to file <f>, not stdout"
-    to_l: ": tolerance  [1e-6]"
     seed: ": set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)"
     peptides: ""
   }

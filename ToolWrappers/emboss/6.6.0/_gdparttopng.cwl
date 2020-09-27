@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_gdparttopng.cwl
+id: _gdparttopng.cwl
 inputs:
 - id: in_gd_part_to_png
   doc: ''

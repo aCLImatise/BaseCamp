@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmoment.cwl
+id: hmoment.cwl
 inputs:
 - id: in_window
   doc: integer    [10] Window (Any integer value)

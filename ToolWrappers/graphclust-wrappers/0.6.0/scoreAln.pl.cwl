@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scoreAln.pl.cwl
+id: scoreAln.pl.cwl
 inputs:
 - id: in_an_alignment_file
   doc: An alignment file                       [REQUIRED]

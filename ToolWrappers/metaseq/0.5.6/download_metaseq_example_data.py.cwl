@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_metaseq_example_data.py.cwl
+id: download_metaseq_example_data.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

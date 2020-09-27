@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comp_fusiondb_offset.cwl
+id: comp_fusiondb_offset.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -3,37 +3,19 @@ version 1.0
 task FiltergffValues {
   input {
     Boolean? verbose
-    String? str_eq
-    String? str_in
-    Int? num_eq
-    Int? num_ge
-    Int? num_le
-    Int? num_gt
-    Boolean? progress
-    String than
+    String? input_file
+    String? output_file
   }
   command <<<
     filter_gff values \
-      ~{than} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(str_eq) then ("--str-eq " +  '"' + str_eq + '"') else ""} \
-      ~{if defined(str_in) then ("--str-in " +  '"' + str_in + '"') else ""} \
-      ~{if defined(num_eq) then ("--num-eq " +  '"' + num_eq + '"') else ""} \
-      ~{if defined(num_ge) then ("--num-ge " +  '"' + num_ge + '"') else ""} \
-      ~{if defined(num_le) then ("--num-le " +  '"' + num_le + '"') else ""} \
-      ~{if defined(num_gt) then ("--num-gt " +  '"' + num_gt + '"') else ""} \
-      ~{if (progress) then "--progress" else ""}
+      ~{input_file} \
+      ~{output_file} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    str_eq: "filter by custom key:value, if the argument is 'key:value'\\nthe annotation is kept if it contains an attribute 'key'\\nwhose value is exactly 'value' as a string"
-    str_in: "Same as '--str-eq' but 'value' is contained in the attribute"
-    num_eq: "Same as '--str-eq' but 'value' is a number which is equal or\\ngreater than"
-    num_ge: "Same as '--str-eq' but 'value' is a number which is equal or\\ngreater than"
-    num_le: "Same as '--num-ge' but 'value' is a number which is equal or\\nless than"
-    num_gt: "Same as '--str-eq' but 'value' is a number which is greater"
-    progress: "Shows Progress Bar"
-    than: "--num-lt TEXT  Same as '--num-ge' but 'value' is a number which is less than"
+    verbose: "--str-eq TEXT  filter by custom key:value, if the argument is 'key:value'\\nthe annotation is kept if it contains an attribute 'key'\\nwhose value is exactly 'value' as a string\\n--str-in TEXT  Same as '--str-eq' but 'value' is contained in the attribute\\n--num-eq TEXT  Same as '--str-eq' but 'value' is a number which is equal or\\ngreater than\\n--num-ge TEXT  Same as '--str-eq' but 'value' is a number which is equal or\\ngreater than\\n--num-le TEXT  Same as '--num-ge' but 'value' is a number which is equal or\\nless than\\n--num-gt TEXT  Same as '--str-eq' but 'value' is a number which is greater\\nthan\\n--num-lt TEXT  Same as '--num-ge' but 'value' is a number which is less than\\n--progress     Shows Progress Bar\\n--help         Show this message and exit.\\n"
+    input_file: ""
+    output_file: ""
   }
   output {
     File out_stdout = stdout()

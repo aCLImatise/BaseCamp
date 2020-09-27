@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gvf_iit.cwl
+id: gvf_iit.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_run_logger.cwl
+id: fc_run_logger.cwl
 inputs:
 - id: in_fc_run
   doc: ''

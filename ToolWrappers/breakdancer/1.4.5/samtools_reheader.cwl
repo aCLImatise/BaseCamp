@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_reheader.cwl
+id: samtools_reheader.cwl
 inputs:
 - id: in_in_dot_header_dots_am
   doc: ''

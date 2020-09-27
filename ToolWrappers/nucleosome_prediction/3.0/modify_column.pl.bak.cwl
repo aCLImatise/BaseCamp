@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../modify_column.pl.bak.cwl
+id: modify_column.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

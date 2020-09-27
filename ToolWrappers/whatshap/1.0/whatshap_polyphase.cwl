@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_polyphase.cwl
+id: whatshap_polyphase.cwl
 inputs:
 - id: in_ploidy
   doc: The ploidy of the sample(s). Argument is required.

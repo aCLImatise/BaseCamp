@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_roc.r.cwl
+id: plot_roc.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

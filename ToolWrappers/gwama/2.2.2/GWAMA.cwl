@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GWAMA.cwl
+id: GWAMA.cwl
 inputs:
 - id: in_random
   doc: Use random effect correction

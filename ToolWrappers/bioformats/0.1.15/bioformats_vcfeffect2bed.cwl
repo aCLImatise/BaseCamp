@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_vcfeffect2bed.cwl
+id: bioformats_vcfeffect2bed.cwl
 inputs:
 - id: in_impacts_effects_reported
   doc: "[{HIGH,MODERATE,LOW,MODIFIER} ...], --impacts {HIGH,MODERATE,LOW,MODIFIER}\

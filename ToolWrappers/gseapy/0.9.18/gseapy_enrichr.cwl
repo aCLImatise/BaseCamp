@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gseapy_enrichr.cwl
+id: gseapy_enrichr.cwl
 inputs:
 - id: in_input_list
   doc: Enrichr uses a list of gene names as input.

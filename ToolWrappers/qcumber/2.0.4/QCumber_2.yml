@@ -54,8 +54,8 @@ named:
   - -T
   args: !ChoiceFlagArg
     choices: !!set
-      ? IonTorrent
-      ? Illumina
+      IonTorrent:
+      Illumina:
   optional: true
 - !Flag
   description: 'Adapter name for trimming. Default: all'
@@ -64,12 +64,12 @@ named:
   - -a
   args: !ChoiceFlagArg
     choices: !!set
-      ? TruSeq2-PE
-      ? TruSeq2-SE
-      ? TruSeq3-PE
-      ? TruSeq3-PE-2
-      ? TruSeq3-SE
-      ? NexteraPE-PE
+      TruSeq2-PE:
+      TruSeq2-SE:
+      TruSeq3-PE-2:
+      TruSeq3-SE:
+      NexteraPE-PE:
+      TruSeq3-PE:
   optional: true
 - !Flag
   description: "Map reads against reference. Reference needs to be in\nfasta-format."
@@ -112,22 +112,15 @@ named:
   - --trimBetter
   args: !ChoiceFlagArg
     choices: !!set
-      ? mapping
-      ? default
-      ? assembly
+      mapping:
+      assembly:
+      default:
   optional: true
 - !Flag
-  description: ''
+  description: --notrimming, -Q
   synonyms:
   - --nokraken
   - -K
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --notrimming
-  - -Q
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -167,27 +160,13 @@ named:
     name: TRIMBETTER_THRESHOLD
   optional: true
 - !Flag
-  description: ''
+  description: "--rename RENAME, -R RENAME\nTSV File with two columns: <old sample\
+    \ name> <new\nsample name>\n--save_mapping, -S"
   synonyms:
   - --output
   - -o
   args: !SimpleFlagArg
     name: OUTPUT
-  optional: true
-- !Flag
-  description: "TSV File with two columns: <old sample name> <new\nsample name>"
-  synonyms:
-  - --rename
-  - -R
-  args: !SimpleFlagArg
-    name: RENAME
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --save_mapping
-  - -S
-  args: !EmptyFlagArg {}
   optional: true
 parent:
 subcommands: []

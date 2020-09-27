@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgsim_eval.pl.cwl
+id: wgsim_eval.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

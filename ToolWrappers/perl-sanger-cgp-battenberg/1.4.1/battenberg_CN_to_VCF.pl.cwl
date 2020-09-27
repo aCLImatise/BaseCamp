@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../battenberg_CN_to_VCF.pl.cwl
+id: battenberg_CN_to_VCF.pl.cwl
 inputs:
 - id: in_sample_bam_mut
   doc: -sbm  Mutant sample bam file.

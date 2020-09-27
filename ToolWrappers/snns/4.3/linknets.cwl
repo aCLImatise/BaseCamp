@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../linknets.cwl
+id: linknets.cwl
 inputs:
 - id: in_in_units
   doc: use copies of input units

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scran_correlate_pairs.R.cwl
+id: scran_correlate_pairs.R.cwl
 inputs:
 - id: in_input_sce_object
   doc: Path to the input SCE object in rds format.

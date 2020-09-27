@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obgrep.cwl
+id: obgrep.cwl
 inputs: []
 outputs:
 - id: out_stdout

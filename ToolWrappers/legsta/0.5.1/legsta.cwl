@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../legsta.cwl
+id: legsta.cwl
 inputs:
 - id: in_quiet
   doc: Don't print anything to stderr.

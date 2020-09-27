@@ -1,31 +1,12 @@
 class: CommandLineTool
-id: ../../../drawmodel.cwl
+id: drawmodel.cwl
 inputs:
-- id: in_s
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -s
 - id: in_landscape
-  doc: ''
+  doc: "-mod  [n]      Draw first or nth model\n-reg  [n]      Draw first or nth regularizer\n\
+    -freq [n]      Draw first or nth frequencies\n"
   type: boolean
   inputBinding:
     prefix: -landscape
-- id: in_mod
-  doc: '[n]      Draw first or nth model'
-  type: boolean
-  inputBinding:
-    prefix: -mod
-- id: in_reg
-  doc: '[n]      Draw first or nth regularizer'
-  type: boolean
-  inputBinding:
-    prefix: -reg
-- id: in_freq
-  doc: '[n]      Draw first or nth frequencies'
-  type: boolean
-  inputBinding:
-    prefix: -freq
 - id: in_model_file
   doc: ''
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../consolidate_vcfs.pl.cwl
+id: consolidate_vcfs.pl.cwl
 inputs:
 - id: in_snv_abundance_ratio
   doc: /opt/bcftools/bcftools

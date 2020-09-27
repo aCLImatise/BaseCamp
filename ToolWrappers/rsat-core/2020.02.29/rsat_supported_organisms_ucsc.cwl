@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_supported_organisms_ucsc.cwl
+id: rsat_supported_organisms_ucsc.cwl
 inputs:
 - id: in_suu_ported_organism_uscs
   doc: "\e[1mAUTHORS\e[0m"

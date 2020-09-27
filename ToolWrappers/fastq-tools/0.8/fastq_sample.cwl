@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_sample.cwl
+id: fastq_sample.cwl
 inputs:
 - id: in_number_sample_default
   doc: 'the number of reads to sample (default: 10000)'

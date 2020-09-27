@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mageckGSEA.cwl
+id: mageckGSEA.cwl
 inputs:
 - id: in__reversevaluereverse_order
   doc: ",  --reverse_value\nReverse the order of the gene."
@@ -46,9 +46,8 @@ inputs:
   type: File
   inputBinding:
     prefix: -g
-- id: in_mage_ckg_sea
-  doc: "[-e] [-s] [-c <score_column>] [-p <perm_time>] [-n\n<pathway_name>] [-o <output_file>]\
-    \ -r <rank_file> -g\n<gmt_file> [--] [--version] [-h]"
+- id: in_pathway_name
+  doc: ''
   type: string
   inputBinding:
     position: 0

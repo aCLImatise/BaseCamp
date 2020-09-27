@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sli.cwl
+id: sli.cwl
 inputs:
 - id: in_execute_cmd_exit
   doc: Execute cmd and exit

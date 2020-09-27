@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BamToFastq.cwl
+id: BamToFastq.cwl
 inputs:
 - id: in_in
   doc: Input BAM file.

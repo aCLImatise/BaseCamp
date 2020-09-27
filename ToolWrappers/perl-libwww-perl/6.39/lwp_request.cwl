@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lwp_request.cwl
+id: lwp_request.cwl
 inputs:
 - id: in_use_method_request
   doc: use method for the request (default is 'GET')

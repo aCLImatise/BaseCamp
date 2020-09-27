@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kronos_init.cwl
+id: kronos_init.cwl
 inputs:
 - id: in_pipeline_name
   doc: a name for the resultant pipeline

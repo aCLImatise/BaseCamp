@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_wrapper.py.cwl
+id: merge_wrapper.py.cwl
 inputs:
 - id: in_prefix
   doc: the prefix for all output files

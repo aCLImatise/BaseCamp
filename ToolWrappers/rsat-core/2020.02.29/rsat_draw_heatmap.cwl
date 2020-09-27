@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../rsat_draw_heatmap.cwl
+id: rsat_draw_heatmap.cwl
 inputs:
-- id: in_r_plot
-  doc: (2016-02-29).
-  type: boolean
-  inputBinding:
-    prefix: -r_plot
 - id: in_out_format
   doc: '[png|jpeg]'
   type: boolean
   inputBinding:
     prefix: -out_format
-- id: in_o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
 - id: in_draw_heat_map
   doc: "\e[1mVERSION\e[0m"
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_setup_pfams.cwl
+id: anvi_setup_pfams.cwl
 inputs:
 - id: in_pfam_data_dir
   doc: "The directory for Pfam data to be stored. If you leave\nit as is without specifying\

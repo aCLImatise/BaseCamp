@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_subset.cwl
+id: goalign_subset.cwl
 inputs:
 - id: in_indices
   doc: If true, extracts given sequence indices instead of sequence names (0-based)

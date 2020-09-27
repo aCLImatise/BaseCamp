@@ -29,7 +29,6 @@ task Acdiamond {
     Int? un_gapped_score
     Int? hit_score
     Int? band
-    Int? index_mode
     Int? fetch_size
     Boolean? single_domain
     File? arg_output_file
@@ -73,7 +72,6 @@ task Acdiamond {
       ~{if defined(un_gapped_score) then ("--ungapped-score " +  '"' + un_gapped_score + '"') else ""} \
       ~{if defined(hit_score) then ("--hit-score " +  '"' + hit_score + '"') else ""} \
       ~{if defined(band) then ("--band " +  '"' + band + '"') else ""} \
-      ~{if defined(index_mode) then ("--index-mode " +  '"' + index_mode + '"') else ""} \
       ~{if defined(fetch_size) then ("--fetch-size " +  '"' + fetch_size + '"') else ""} \
       ~{if (single_domain) then "--single-domain" else ""} \
       ~{if (arg_output_file) then "-o" else ""} \
@@ -108,7 +106,6 @@ task Acdiamond {
     un_gapped_score: "(=0)       minimum raw alignment score to continue local"
     hit_score: "(=0)            minimum score to keep a tentative alignment"
     band: "(=0)                 band for dynamic programming computation"
-    index_mode: "(=0)           index mode (1=10x1, 2=10x8)"
     fetch_size: "(=4096)        trace point fetch size"
     single_domain: "Discard secondary domains within one target"
     arg_output_file: "[ --out ] arg           output file"

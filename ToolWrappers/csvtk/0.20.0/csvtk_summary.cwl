@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_summary.cwl
+id: csvtk_summary.cwl
 inputs:
 - id: in_decimal_width
   doc: limit floats to N decimal points (default 2)

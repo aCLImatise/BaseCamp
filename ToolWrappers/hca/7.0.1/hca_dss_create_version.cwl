@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_create_version.cwl
+id: hca_dss_create_version.cwl
 inputs:
 - id: in_log_level
   doc: ''

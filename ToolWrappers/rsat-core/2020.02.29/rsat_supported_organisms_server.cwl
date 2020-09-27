@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_supported_organisms_server.cwl
+id: rsat_supported_organisms_server.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options

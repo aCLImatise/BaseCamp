@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EnsembleEnergy.cwl
+id: EnsembleEnergy.cwl
 inputs:
 - id: in_dna
   doc: "This flag only matters if the input file is a sequence file and has been\n\
@@ -19,9 +19,9 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sequence
-- id: in_specified_dot
-  doc: =========================================
-  type: string
+- id: in_input_file
+  doc: ''
+  type: File
   inputBinding:
     position: 0
 outputs:

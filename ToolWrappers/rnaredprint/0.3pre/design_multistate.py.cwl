@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_multistate.py.cwl
+id: design_multistate.py.cwl
 inputs:
 - id: in_input
   doc: "Read structures from input file. Default: read from\nstdin. Format must be\

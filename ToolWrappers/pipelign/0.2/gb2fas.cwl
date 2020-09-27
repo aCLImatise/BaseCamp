@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gb2fas.cwl
+id: gb2fas.cwl
 inputs:
 - id: in_input_dot_gb
   doc: ''

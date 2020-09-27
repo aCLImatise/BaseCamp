@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../InspectAdapter.cwl
+id: InspectAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                      Input file in mzXML or mzData format.\nNote: In mode\

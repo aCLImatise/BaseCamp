@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_to_int_seqs.py.cwl
+id: maf_to_int_seqs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

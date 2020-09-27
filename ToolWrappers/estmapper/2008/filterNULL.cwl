@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterNULL.cwl
+id: filterNULL.cwl
 inputs: []
 outputs:
 - id: out_stdout

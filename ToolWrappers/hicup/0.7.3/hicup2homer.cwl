@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup2homer.cwl
+id: hicup2homer.cwl
 inputs:
 - id: in_zip
   doc: Write output to a gzip file

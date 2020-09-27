@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scssim_learn.cwl
+id: scssim_learn.cwl
 inputs:
 - id: in_bam
   doc: normal BAM file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngs_disambiguate.cwl
+id: ngs_disambiguate.cwl
 inputs:
 - id: in__nosortdeprecated_option
   doc: ",  --no-sort\n(Deprecated option for backwards compatibility)"
@@ -22,8 +22,8 @@ inputs:
   type: string
   inputBinding:
     prefix: -a
-- id: in_ngs_disambiguate
-  doc: "[-d] -s <string> -o <string> [-a <string>] [--]\n[--version] [-h] <A> <B>"
+- id: in_var_4
+  doc: ''
   type: string
   inputBinding:
     position: 0

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_genome.cwl
+id: make_genome.cwl
 inputs:
 - id: in_parquet_block_size
   doc: ': Parquet block size (default = 128mb) (default: 134217728)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NOMe_filtering.cwl
+id: NOMe_filtering.cwl
 inputs:
 - id: in_genome_folder
   doc: "Enter the genome folder you wish to use to extract sequences from (full path\

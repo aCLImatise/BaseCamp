@@ -4,9 +4,7 @@ task Admixture {
   input {
     Boolean? jx
     String? seed
-    Boolean? m
     Boolean? method
-    Boolean? a
     String? acceleration
     String? set_major_criterion
     String? set_minor_criterion
@@ -16,9 +14,7 @@ task Admixture {
     admixture \
       ~{if (jx) then "-jX" else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
-      ~{if (m) then "-m" else ""} \
       ~{if (method) then "--method" else ""} \
-      ~{if (a) then "-a" else ""} \
       ~{if defined(acceleration) then ("--acceleration " +  '"' + acceleration + '"') else ""} \
       ~{if defined(set_major_criterion) then ("-C " +  '"' + set_major_criterion + '"') else ""} \
       ~{if defined(set_minor_criterion) then ("-c " +  '"' + set_minor_criterion + '"') else ""} \
@@ -27,9 +23,7 @@ task Admixture {
   parameter_meta {
     jx: ": do computation on X threads"
     seed: ": use random seed X for initialization"
-    m: "="
     method: "=[em|block]     : set method.  block is default"
-    a: "="
     acceleration: "|\\nsqs<X> |\\nqn<X>      : set acceleration"
     set_major_criterion: ": set major convergence criterion (for point estimation)"
     set_minor_criterion: ": set minor convergence criterion (for bootstrap and CV reestimates)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafSplitPos.cwl
+id: mafSplitPos.cwl
 inputs:
 - id: in_chrom
   doc: Restrict to one chromosome

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapidVis.r.cwl
+id: rapidVis.r.cwl
 inputs:
 - id: in_viridis_pal
   doc: "Attaching package: 'gplots'"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graph_to_fasta.cwl
+id: graph_to_fasta.cwl
 inputs:
 - id: in_arg_json_files
   doc: '[ --graph-spec ] arg    JSON file(s) describing the graph'

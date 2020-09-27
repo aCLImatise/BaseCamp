@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../report_classes.py.cwl
+id: report_classes.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

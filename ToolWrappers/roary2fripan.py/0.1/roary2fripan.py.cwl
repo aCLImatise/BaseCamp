@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roary2fripan.py.cwl
+id: roary2fripan.py.cwl
 inputs:
 - id: in_input
   doc: Specify Roary output (default = "gene_presence_absence.csv")

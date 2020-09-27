@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emmtyper.cwl
+id: emmtyper.cwl
 inputs:
 - id: in_workflow
   doc: '[blast|pcr]      Choose workflow  [default: blast]'
@@ -96,16 +96,11 @@ inputs:
   type: File
   inputBinding:
     position: 0
-- id: in_sequence_dot
-  doc: '[default: 95]'
-  type: string
-  inputBinding:
-    position: 1
 - id: in__primerdb_text
   doc: --primer-db TEXT                [isPcr] PCR primer. Text file with 3
   type: string
   inputBinding:
-    position: 2
+    position: 1
 - id: in_primer_dot
   doc: '[default:'
   type: string

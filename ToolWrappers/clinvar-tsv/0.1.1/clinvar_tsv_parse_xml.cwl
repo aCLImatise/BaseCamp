@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clinvar_tsv_parse_xml.cwl
+id: clinvar_tsv_parse_xml.cwl
 inputs:
 - id: in_output_multi
   doc: '[--max-rows MAX_ROWS]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_wga_target.cwl
+id: seq_seq_pan_wga_target.cwl
 inputs:
 - id: in_dry_run
   doc: do not execute anything

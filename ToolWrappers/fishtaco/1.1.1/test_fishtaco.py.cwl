@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_fishtaco.py.cwl
+id: test_fishtaco.py.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output

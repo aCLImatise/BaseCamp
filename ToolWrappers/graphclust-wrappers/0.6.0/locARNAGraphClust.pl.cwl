@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locARNAGraphClust.pl.cwl
+id: locARNAGraphClust.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

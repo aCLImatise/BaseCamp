@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oe2fps.cwl
+id: oe2fps.cwl
 inputs: []
 outputs:
 - id: out_stdout

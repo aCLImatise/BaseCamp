@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novasplice.cwl
+id: novasplice.cwl
 inputs:
 - id: in_vcf
   doc: Full path to the sorted vcf file being used

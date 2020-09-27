@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_locus_bed_from_lastz_files.cwl
+id: phyluce_probe_get_locus_bed_from_lastz_files.cwl
 inputs:
 - id: in_output
-  doc: ''
+  doc: '[--regex REGEX]'
   type: string
   inputBinding:
     prefix: --output

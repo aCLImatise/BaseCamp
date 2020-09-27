@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../thermo.cwl
+id: thermo.cwl
 inputs:
 - id: in_output
   doc: 'output file name (default: stdout)'

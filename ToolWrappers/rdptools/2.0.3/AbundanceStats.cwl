@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AbundanceStats.cwl
+id: AbundanceStats.cwl
 inputs:
 - id: in_jaccard
   doc: Compute jaccard abundance stats

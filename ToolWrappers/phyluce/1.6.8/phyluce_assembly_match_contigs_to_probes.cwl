@@ -1,16 +1,13 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_match_contigs_to_probes.cwl
+id: phyluce_assembly_match_contigs_to_probes.cwl
 inputs:
 - id: in_probes
-  doc: ''
-  type: string
+  doc: "OUTPUT\n[--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n[--min-coverage\
+    \ MIN_COVERAGE]\n[--min-identity MIN_IDENTITY]\n[--dupefile DUPEFILE]\n[--regex\
+    \ REGEX]\n[--keep-duplicates KEEP_DUPLICATES]"
+  type: long
   inputBinding:
     prefix: --probes
-- id: in_regex
-  doc: ='^(MyProbe-\W+)(?:_probe\d+.*)'
-  type: boolean
-  inputBinding:
-    prefix: --regex
 - id: in_contigs
   doc: "The directory containing the assembled contigs in\nwhich you are searching\
     \ for UCE loci."
@@ -43,16 +40,17 @@ inputs:
   type: File
   inputBinding:
     prefix: --dupefile
+- id: in_regex
+  doc: "A regular expression to apply to the probe names for\nreplacement [default='^(uce-\\\
+    d+)(?:_p\\d+.*)']."
+  type: string
+  inputBinding:
+    prefix: --regex
 - id: in_keep_duplicates
   doc: "A optional output file in which to store those loci\nthat appear to be duplicates.\n"
   type: File
   inputBinding:
     prefix: --keep-duplicates
-- id: in_output
-  doc: '[--verbosity {INFO,WARN,CRITICAL}]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

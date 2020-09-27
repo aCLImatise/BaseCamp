@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easel_filter_maxid.cwl
+id: easel_filter_maxid.cwl
 inputs:
 - id: in_options
   doc: ''

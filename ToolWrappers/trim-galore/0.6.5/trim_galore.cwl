@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trim_galore.cwl
+id: trim_galore.cwl
 inputs:
 - id: in_h_slash_help
   doc: Print this help message and exits.

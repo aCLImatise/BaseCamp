@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reads_bx_sqlite3.py.cwl
+id: reads_bx_sqlite3.py.cwl
 inputs:
 - id: in_fast_q
   doc: "gzipped barcoded Fastq file from reads obtained with\nlongranger basic"

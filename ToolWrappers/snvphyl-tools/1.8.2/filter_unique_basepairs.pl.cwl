@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_unique_basepairs.pl.cwl
+id: filter_unique_basepairs.pl.cwl
 inputs:
 - id: in_tsv
   doc: The tsv file containing the snv_alignment

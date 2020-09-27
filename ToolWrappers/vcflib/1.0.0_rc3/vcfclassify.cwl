@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfclassify.cwl
+id: vcfclassify.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

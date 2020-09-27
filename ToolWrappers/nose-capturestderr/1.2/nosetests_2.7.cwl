@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nosetests_2.7.cwl
+id: nosetests_2.7.cwl
 inputs:
 - id: in_plugins
   doc: "Output list of available plugins and exit. Combine\nwith higher verbosity\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unique.pl.cwl
+id: unique.pl.cwl
 inputs:
 - id: in_input_file
   doc: ''

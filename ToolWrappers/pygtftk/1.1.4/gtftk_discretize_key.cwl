@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_discretize_key.cwl
+id: gtftk_discretize_key.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_0.1.18_faidx.cwl
+id: samtools_0.1.18_faidx.cwl
 inputs:
 - id: in_fa_idx
   doc: ''

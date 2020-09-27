@@ -1,33 +1,17 @@
 class: CommandLineTool
-id: ../../../phrase_search.cwl
+id: phrase_search.cwl
 inputs:
 - id: in_count
   doc: '| -counts | -query | -filter | -exact | -terms'
   type: boolean
   inputBinding:
     prefix: -count
-- id: in_phrasesearch_count_case
-  doc: "phrase-search -count \"$var* [TREE]\"\ncase \"$var\" in\n*.* ) var=\"${var%????}\"\
-    \ ;;\n*   ) break             ;;\nesac"
-  type: string
-  inputBinding:
-    position: 0
-- id: in_var_2
-  doc: '}'
-  type: string
-  inputBinding:
-    position: 1
-- id: in_numphrasesearch_query_wc
-  doc: "num=$(phrase-search -query \"$thm [THME]\" | wc -l)\necho -e \"$thm\\t$num\""
-  type: string
-  inputBinding:
-    position: 0
-- id: in_declare_a_themes
+- id: in_done
   doc: declare -a THEMES
   type: string
   inputBinding:
     position: 1
-- id: in_numphrasesearch_for_scd
+- id: in_do
   doc: "num=$(phrase-search -query \"$fst [THME]\" | wc -l)\necho -e \"$fst\\t \\\
     t$num\"\nfor scd in ${REMAINS[@]}\ndo\nnum=$(phrase-search -query \"$fst [THME]\
     \ AND $scd [THME]\" | wc -l)\necho -e \"$fst\\t$scd\\t$num\"\necho -e \"$scd\\\
@@ -220,7 +204,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_43
+- id: in_var_40
   doc: affects expression/production (neutral)
   type: string
   inputBinding:

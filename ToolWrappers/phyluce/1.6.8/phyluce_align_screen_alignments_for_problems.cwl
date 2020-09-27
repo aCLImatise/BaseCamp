@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_screen_alignments_for_problems.cwl
+id: phyluce_align_screen_alignments_for_problems.cwl
 inputs:
 - id: in_alignments
   doc: "The directory containing alignments to be screened.\n(default: None)"

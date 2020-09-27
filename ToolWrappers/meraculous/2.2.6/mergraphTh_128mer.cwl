@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergraphTh_128mer.cwl
+id: mergraphTh_128mer.cwl
 inputs:
 - id: in_mer_count_file_prefix
   doc: ''

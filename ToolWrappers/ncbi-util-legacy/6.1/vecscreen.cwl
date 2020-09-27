@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vecscreen.cwl
+id: vecscreen.cwl
 inputs:
 - id: in_query_file_default
   doc: "Query File [File In]\ndefault = stdin"

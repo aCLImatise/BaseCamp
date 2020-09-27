@@ -2,8 +2,8 @@ version 1.0
 
 task KnockknockProcess {
   input {
-    Boolean? progress
     String? stages
+    Boolean? progress
     String project_directory
     String group
     String sample
@@ -13,12 +13,12 @@ task KnockknockProcess {
       ~{project_directory} \
       ~{group} \
       ~{sample} \
-      ~{if (progress) then "--progress" else ""} \
-      ~{if defined(stages) then ("--stages " +  '"' + stages + '"') else ""}
+      ~{if defined(stages) then ("--stages " +  '"' + stages + '"') else ""} \
+      ~{if (progress) then "--progress" else ""}
   >>>
   parameter_meta {
-    progress: "show progress bars"
     stages: ""
+    progress: ""
     project_directory: "the base directory to store input data, reference\\nannotations, and analysis output for a project"
     group: "group name"
     sample: "sample name"

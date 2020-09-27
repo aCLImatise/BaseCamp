@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../obiannotate.cwl
+id: obiannotate.cwl
 inputs:
-- id: in_with_tax_on_at_rank
-  doc: seq1.fasta > seq2.fasta
-  type: long
-  inputBinding:
-    prefix: --with-taxon-at-rank
 - id: in_debug
   doc: Set logging in debug mode
   type: boolean
@@ -170,6 +165,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --length
+- id: in_with_tax_on_at_rank
+  doc: add taxonomy annotation at a specified rank level
+  type: string
+  inputBinding:
+    prefix: --with-taxon-at-rank
 - id: in_mcl
   doc: "add cluster tag to sequences according to a mcl graph\nclustering partition"
   type: File
@@ -266,11 +266,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --uppercase
-- id: in_bash
-  doc: '> obiannotate -d my_ecopcr_database \'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../replaceUIDwithName_posmap.cwl
+id: replaceUIDwithName_posmap.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../PdbSearcher.py.cwl
+id: PdbSearcher.py.cwl
 inputs:
-- id: in_e_slash_env
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -e/--env
 - id: in_ion
   doc: Element symbol of ion, e.g. Zn
   type: string

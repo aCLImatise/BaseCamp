@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readshifter.pl.cwl
+id: readshifter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

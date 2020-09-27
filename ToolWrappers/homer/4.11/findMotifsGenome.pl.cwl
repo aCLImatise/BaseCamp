@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findMotifsGenome.pl.cwl
+id: findMotifsGenome.pl.cwl
 inputs:
 - id: in_mask
   doc: (mask repeats/lower case sequence, can also add 'r' to genome, i.e. mm9r)

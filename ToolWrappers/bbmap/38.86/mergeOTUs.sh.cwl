@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeOTUs.sh.cwl
+id: mergeOTUs.sh.cwl
 inputs:
 - id: in_in
   doc: ''

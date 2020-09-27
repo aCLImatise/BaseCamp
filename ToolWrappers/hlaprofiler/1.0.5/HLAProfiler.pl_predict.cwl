@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_predict.cwl
+id: HLAProfiler.pl_predict.cwl
 inputs:
 - id: in_fast_q_one
   doc: '|fq1             location of read1 fastq (required)'

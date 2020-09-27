@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazMafSplit.pl.cwl
+id: rnazMafSplit.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

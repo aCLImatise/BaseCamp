@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MosaikText.cwl
+id: MosaikText.cwl
 inputs:
 - id: in_fast_q
   doc: stores the data in a FASTQ file

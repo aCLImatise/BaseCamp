@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../3EdgeTests.cwl
+id: 3EdgeTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

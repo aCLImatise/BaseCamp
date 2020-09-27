@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2fasta.py.cwl
+id: vcf2fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_build_options....cwl
+id: singularity_build_options....cwl
 inputs:
 - id: in_singularity
   doc: ''

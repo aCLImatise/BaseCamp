@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_rr_hctg_track1.cwl
+id: falconc_rr_hctg_track1.cwl
 inputs:
 - id: in_help_syntax
   doc: "advanced:prepen\nd,plurals,.."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_show.cwl
+id: cooler_show.cwl
 inputs:
 - id: in_range_two
   doc: "The coordinates of a genomic region shown\nalong the column dimension. If\

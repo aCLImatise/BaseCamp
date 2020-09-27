@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_build_app.cwl
+id: dx_build_app.cwl
 inputs: []
 outputs:
 - id: out_stdout

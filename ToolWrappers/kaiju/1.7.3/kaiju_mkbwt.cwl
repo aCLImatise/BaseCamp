@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_mkbwt.cwl
+id: kaiju_mkbwt.cwl
 inputs:
 - id: in_out_filename
   doc: "(string)\nName of output. Several files with different extensions are produced\n\

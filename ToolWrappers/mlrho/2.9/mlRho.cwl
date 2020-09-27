@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mlRho.cwl
+id: mlRho.cwl
 inputs: []
 outputs:
 - id: out_stdout

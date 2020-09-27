@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minced.cwl
+id: minced.cwl
 inputs:
 - id: in_search_wl
   doc: 'Length of search window used to discover CRISPRs (range: 6-9). Default: 8'

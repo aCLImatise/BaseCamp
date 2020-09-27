@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NAPSS.cwl
+id: NAPSS.cwl
 inputs:
 - id: in_pseudoknot_free
   doc: "Specify pseudoknot-free prediction mode.\nDefault is to predict pseudoknots."

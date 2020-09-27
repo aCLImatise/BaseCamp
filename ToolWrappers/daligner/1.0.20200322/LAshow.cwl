@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAshow.cwl
+id: LAshow.cwl
 inputs:
 - id: in_show_cartoon_la
   doc: ': Show a cartoon of the LA between reads.'

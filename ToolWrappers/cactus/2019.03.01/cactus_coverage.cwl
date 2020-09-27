@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_coverage.cwl
+id: cactus_coverage.cwl
 inputs:
 - id: in_only_contig_one
   doc: ': Only print coverage that occurs when a sequence from the fasta is in the

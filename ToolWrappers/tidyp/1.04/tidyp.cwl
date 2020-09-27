@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tidyp.cwl
+id: tidyp.cwl
 inputs:
 - id: in_output
   doc: write output to the specified <file>

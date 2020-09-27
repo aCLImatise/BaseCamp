@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miRDeep2_core_algorithm.pl.cwl
+id: miRDeep2_core_algorithm.pl.cwl
 inputs:
 - id: in_this_usage
   doc: this usage

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_md5sum.cwl
+id: smof_md5sum.cwl
 inputs:
 - id: in_ignore_case
   doc: convert all to uppercase, before hashing

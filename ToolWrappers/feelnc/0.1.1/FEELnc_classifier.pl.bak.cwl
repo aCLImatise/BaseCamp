@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FEELnc_classifier.pl.bak.cwl
+id: FEELnc_classifier.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

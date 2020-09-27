@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_meta.cwl
+id: amptk_meta.cwl
 inputs:
 - id: in_input
   doc: Input OTU table

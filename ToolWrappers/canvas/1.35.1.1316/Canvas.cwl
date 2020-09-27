@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Canvas.cwl
+id: Canvas.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanopolish_variants.cwl
+id: nanopolish_variants.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequence_sample.cwl
+id: sequence_sample.cwl
 inputs:
 - id: in_paired
   doc: "treat inputs as paired sequences; the first two files form the\nfirst pair,\
@@ -8,45 +8,15 @@ inputs:
   inputBinding:
     prefix: -paired
 - id: in_copies
-  doc: write C different copies of the sampling (without replacement).
-  type: string
-  inputBinding:
-    prefix: -copies
-- id: in_output
-  doc: write output sequences to file O.  If paired, two files must be supplied.
-  type: File
-  inputBinding:
-    prefix: -output
-- id: in_coverage
-  doc: output C coverage of sequences, based on genome size G.
+  doc: "write C different copies of the sampling (without replacement).\n-output O\
+    \           write output sequences to file O.  If paired, two files must be supplied.\n\
+    -coverage C         output C coverage of sequences, based on genome size G.\n\
+    -genomesize G\n-bases B            output B bases.\n-reads R            output\
+    \ R reads.\n-pairs P            output P pairs (only if -paired).\n-fraction F\
+    \         output fraction F of the input bases."
   type: long
   inputBinding:
-    prefix: -coverage
-- id: in_genome_size
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -genomesize
-- id: in_bases
-  doc: output B bases.
-  type: string
-  inputBinding:
-    prefix: -bases
-- id: in_reads
-  doc: output R reads.
-  type: string
-  inputBinding:
-    prefix: -reads
-- id: in_pairs
-  doc: output P pairs (only if -paired).
-  type: string
-  inputBinding:
-    prefix: -pairs
-- id: in_fraction
-  doc: output fraction F of the input bases.
-  type: string
-  inputBinding:
-    prefix: -fraction
+    prefix: -copies
 - id: in_sequence
   doc: ''
   type: string
@@ -66,11 +36,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output
-  doc: write output sequences to file O.  If paired, two files must be supplied.
-  type: File
-  outputBinding:
-    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - sequence

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../categorize_by_function.py.cwl
+id: categorize_by_function.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2sequence.cwl
+id: vcf2sequence.cwl
 inputs:
 - id: in_vcf
   doc: Path to input VCF  [required]

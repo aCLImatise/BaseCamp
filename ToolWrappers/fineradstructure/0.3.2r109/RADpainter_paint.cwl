@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RADpainter_paint.cwl
+id: RADpainter_paint.cwl
 inputs:
 - id: in_ploidy
   doc: ploidy of the species being analysed (default is 2N, i.e. diploid)

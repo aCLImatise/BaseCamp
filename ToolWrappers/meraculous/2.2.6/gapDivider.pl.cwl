@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gapDivider.pl.cwl
+id: gapDivider.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

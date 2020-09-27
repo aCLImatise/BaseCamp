@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pacBioToCA.cwl
+id: pacBioToCA.cwl
 inputs:
 - id: in_length
   doc: Minimum length of PacBio sequences to correct/output.

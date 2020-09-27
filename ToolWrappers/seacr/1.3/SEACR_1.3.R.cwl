@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SEACR_1.3.R.cwl
+id: SEACR_1.3.R.cwl
 inputs:
 - id: in_exp
   doc: '- Input AUC values from experiment CUT&RUN'

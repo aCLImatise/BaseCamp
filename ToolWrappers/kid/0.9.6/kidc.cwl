@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kidc.cwl
+id: kidc.cwl
 inputs:
 - id: in_force
   doc: Force compilation even if .pyc file already exists.

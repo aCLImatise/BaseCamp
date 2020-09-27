@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ontotext.cwl
+id: ontotext.cwl
 inputs:
 - id: in_subclasses
   doc: "boolean    [N] Extend the query matches to include all\nterms which are specialisations\n\

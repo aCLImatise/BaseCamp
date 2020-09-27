@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DaisySuite_stats.cwl
+id: DaisySuite_stats.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seroba_createDBs_kmer_size.cwl
+id: seroba_createDBs_kmer_size.cwl
 inputs:
 - id: in_se_rob_a
   doc: ''

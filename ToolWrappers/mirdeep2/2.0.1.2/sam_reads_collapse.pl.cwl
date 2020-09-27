@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_reads_collapse.pl.cwl
+id: sam_reads_collapse.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

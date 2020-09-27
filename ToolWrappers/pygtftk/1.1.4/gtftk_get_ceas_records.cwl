@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_get_ceas_records.cwl
+id: gtftk_get_ceas_records.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the CEAS file. (default: None)'

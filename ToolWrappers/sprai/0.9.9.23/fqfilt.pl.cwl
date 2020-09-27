@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fqfilt.pl.cwl
+id: fqfilt.pl.cwl
 inputs:
 - id: in_this
   doc: ''

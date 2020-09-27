@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cstranslate.cwl
+id: cstranslate.cwl
 inputs:
 - id: in_in_file
   doc: Input file with alignment or sequence

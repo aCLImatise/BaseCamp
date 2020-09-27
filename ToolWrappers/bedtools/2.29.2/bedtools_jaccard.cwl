@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_jaccard.cwl
+id: bedtools_jaccard.cwl
 inputs:
 - id: in_require_same_strandedness
   doc: "Require same strandedness.  That is, only report hits in B\nthat overlap A\

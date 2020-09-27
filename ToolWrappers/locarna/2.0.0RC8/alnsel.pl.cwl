@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alnsel.pl.cwl
+id: alnsel.pl.cwl
 inputs:
 - id: in_input_dot_aln
   doc: ''

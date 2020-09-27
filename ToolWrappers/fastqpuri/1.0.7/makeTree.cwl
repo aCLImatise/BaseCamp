@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeTree.cwl
+id: makeTree.cwl
 inputs:
 - id: in_fast_a
   doc: Fasta input file. Mandatory option.

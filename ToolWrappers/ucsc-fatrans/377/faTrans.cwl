@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faTrans.cwl
+id: faTrans.cwl
 inputs:
 - id: in_stop
   doc: at first stop codon (otherwise puts in Z for stop codons)

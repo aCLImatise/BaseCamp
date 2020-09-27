@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi.cwl
+id: rgi.cwl
 inputs:
 - id: in_input_type
   doc: "must be one of contig, orf, protein, read (default:\ncontig)"

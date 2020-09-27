@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bustools.cwl
+id: bustools.cwl
 inputs:
 - id: in_cmd
   doc: ''

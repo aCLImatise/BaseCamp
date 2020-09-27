@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene_fourfold_sites.py.cwl
+id: gene_fourfold_sites.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

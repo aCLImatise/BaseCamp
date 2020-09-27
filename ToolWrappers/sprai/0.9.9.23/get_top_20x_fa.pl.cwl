@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_top_20x_fa.pl.cwl
+id: get_top_20x_fa.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

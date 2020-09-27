@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sciex.Clearcore.FMan.dll.cwl
+id: Sciex.Clearcore.FMan.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

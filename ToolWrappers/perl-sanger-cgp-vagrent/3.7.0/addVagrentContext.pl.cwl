@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addVagrentContext.pl.cwl
+id: addVagrentContext.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sumlabels.py.cwl
+id: sumlabels.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

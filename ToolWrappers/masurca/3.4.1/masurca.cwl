@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../masurca.cwl
+id: masurca.cwl
 inputs:
 - id: in_output
   doc: Assembly script (assemble.sh)

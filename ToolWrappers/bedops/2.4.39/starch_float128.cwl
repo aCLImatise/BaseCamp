@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starch_float128.cwl
+id: starch_float128.cwl
 inputs:
 - id: in_note
   doc: ="foo bar..."   Append note to output archive metadata (optional).

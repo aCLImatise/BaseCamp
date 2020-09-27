@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metamaps.cwl
+id: metamaps.cwl
 inputs: []
 outputs:
 - id: out_stdout

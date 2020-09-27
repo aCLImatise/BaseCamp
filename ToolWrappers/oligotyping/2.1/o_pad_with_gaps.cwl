@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_pad_with_gaps.cwl
+id: o_pad_with_gaps.cwl
 inputs:
 - id: in_reverse
   doc: "Pad the beginning of reads, instead of the end\n(default: False)"

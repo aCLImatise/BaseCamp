@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transabyss_merge_PATH.cwl
+id: transabyss_merge_PATH.cwl
 inputs:
 - id: in_max_k
   doc: ''

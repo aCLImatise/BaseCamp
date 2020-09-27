@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_reads.cwl
+id: filter_reads.cwl
 inputs:
 - id: in_file_where_written
   doc: ': file where the boolean vector will be written [default=input_file.bv]'

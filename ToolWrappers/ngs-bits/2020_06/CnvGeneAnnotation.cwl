@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CnvGeneAnnotation.cwl
+id: CnvGeneAnnotation.cwl
 inputs:
 - id: in_in
   doc: Input TSV file containing the CNVs.

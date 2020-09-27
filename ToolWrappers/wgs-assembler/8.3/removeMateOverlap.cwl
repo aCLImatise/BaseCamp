@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeMateOverlap.cwl
+id: removeMateOverlap.cwl
 inputs:
 - id: in_opts
   doc: ''

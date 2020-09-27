@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slim_graph.py.cwl
+id: slim_graph.py.cwl
 inputs:
 - id: in_followed_commas_corresponds
   doc: "followed with mode embplant_pt, other_pt, embplant_mt,\nembplant_nr, animal_mt,\

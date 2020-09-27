@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../place_seqs.py.cwl
+id: place_seqs.py.cwl
 inputs:
 - id: in_study_fast_a
   doc: FASTA of unaligned study sequences.

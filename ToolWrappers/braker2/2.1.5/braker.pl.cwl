@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../braker.pl.cwl
+id: braker.pl.cwl
 inputs:
 - id: in_genome
   doc: fasta file with DNA sequences

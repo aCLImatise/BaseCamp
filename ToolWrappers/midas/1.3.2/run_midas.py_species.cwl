@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_midas.py_species.cwl
+id: run_midas.py_species.cwl
 inputs:
 - id: in_fastafastq_file_containing_st_mate
   doc: "FASTA/FASTQ file containing 1st mate if using paired-end reads.\nOtherwise\

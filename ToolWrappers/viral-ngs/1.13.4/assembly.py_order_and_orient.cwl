@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly.py_order_and_orient.cwl
+id: assembly.py_order_and_orient.cwl
 inputs:
 - id: in_out_alternate_contigs
   doc: "Output sequences (FASTA format) from alternative\ncontigs that mapped, but\

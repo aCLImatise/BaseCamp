@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_pe.cwl
+id: abyss_pe.cwl
 inputs:
 - id: in_ignored_for_compatibility
   doc: Ignored for compatibility.

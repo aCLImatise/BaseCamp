@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicexplorer.cwl
+id: hicexplorer.cwl
 inputs: []
 outputs:
 - id: out_stdout

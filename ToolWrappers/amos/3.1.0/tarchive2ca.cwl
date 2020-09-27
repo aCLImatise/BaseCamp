@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tarchive2ca.cwl
+id: tarchive2ca.cwl
 inputs:
 - id: in_prefix_output_files
   doc: prefix for the output files

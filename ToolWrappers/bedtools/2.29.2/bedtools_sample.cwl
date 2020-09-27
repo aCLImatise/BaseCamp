@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_sample.cwl
+id: bedtools_sample.cwl
 inputs:
 - id: in_number_generate_default
   doc: "The number of records to generate.\n- Default = 1,000,000.\n- (INTEGER)"

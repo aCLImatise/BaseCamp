@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../load_overlaps.cwl
+id: load_overlaps.cwl
 inputs:
 - id: in_set_path_populate
   doc: Set path of the AMOS bank to populate

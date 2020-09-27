@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../basename.cwl
+id: basename.cwl
 inputs:
 - id: in_multiple
   doc: support multiple arguments and treat each as a NAME

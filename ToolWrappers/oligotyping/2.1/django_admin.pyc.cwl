@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../django_admin.pyc.cwl
+id: django_admin.pyc.cwl
 inputs: []
 outputs:
 - id: out_stdout

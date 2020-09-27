@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_read_count.pl.orig.cwl
+id: find_read_count.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

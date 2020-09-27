@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../needleall.cwl
+id: needleall.cwl
 inputs:
 - id: in_gap_open
   doc: "float      [10.0 for any sequence] The gap open penalty\nis the score taken\

@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceGenetreesRunRaxmlMultilocusBootstraps {
   input {
-    Boolean? best_trees
+    File? best_trees
     Directory? input_directory_containing
     Directory? output_directory_hold
     Int? boot_reps
@@ -12,12 +12,10 @@ task PhyluceGenetreesRunRaxmlMultilocusBootstraps {
     Boolean? quiet
     String? verbosity
     File? log_path
-    String var_10
     String format
   }
   command <<<
     phyluce_genetrees_run_raxml_multilocus_bootstraps \
-      ~{var_10} \
       ~{format} \
       ~{if (best_trees) then "--best-trees" else ""} \
       ~{if defined(input_directory_containing) then ("--input " +  '"' + input_directory_containing + '"') else ""} \
@@ -31,7 +29,7 @@ task PhyluceGenetreesRunRaxmlMultilocusBootstraps {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
   parameter_meta {
-    best_trees: ""
+    best_trees: "BEST_TREES --output\\nOUTPUT\\n[--bootreps BOOTREPS]\\n[--outgroup OUTGROUP]\\n[--threads THREADS]\\n[--cores CORES]\\n[--quiet]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]"
     input_directory_containing: "The input directory containing alignments in phylip"
     output_directory_hold: "The output directory to hold alignments"
     boot_reps: "The number of bootstrap replicates to run"
@@ -41,11 +39,11 @@ task PhyluceGenetreesRunRaxmlMultilocusBootstraps {
     quiet: "Suppress the CPU usage question"
     verbosity: "The logging level to use."
     log_path: "The path to a directory to hold logs."
-    var_10: "[--bootreps BOOTREPS]"
     format: "--best-trees BEST_TREES"
   }
   output {
     File out_stdout = stdout()
+    File out_best_trees = "${in_best_trees}"
     Directory out_output_directory_hold = "${in_output_directory_hold}"
   }
 }

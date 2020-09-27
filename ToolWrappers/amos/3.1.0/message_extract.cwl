@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../message_extract.cwl
+id: message_extract.cwl
 inputs:
 - id: in_file_path_input
   doc: The file path of the input message

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ghost_tree_extensions_ARGS.cwl
+id: ghost_tree_extensions_ARGS.cwl
 inputs:
 - id: in_ghost_tree
   doc: ''

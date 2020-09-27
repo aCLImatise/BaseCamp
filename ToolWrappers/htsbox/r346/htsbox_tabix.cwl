@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_tabix.cwl
+id: htsbox_tabix.cwl
 inputs:
 - id: in_preset_gff_bed
   doc: 'preset: gff, bed, sam or vcf [gff]'

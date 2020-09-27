@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../2to3.cwl
+id: 2to3.cwl
 inputs:
 - id: in_doc_tests_only
   doc: Fix up doctests only

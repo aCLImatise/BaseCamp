@@ -13,7 +13,7 @@ task MsstitchStorespectra {
       ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""}
   >>>
   parameter_meta {
-    set_names: ""
+    set_names: "SETNAMES [SETNAMES ...]"
     dbfile: "Database lookup file"
     output_file: "Output file"
   }

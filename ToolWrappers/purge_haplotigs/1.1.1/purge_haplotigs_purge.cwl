@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purge_haplotigs_purge.cwl
+id: purge_haplotigs_purge.cwl
 inputs:
 - id: in_genome_genome_assembly
   doc: / -genome        Genome assembly in fasta format. Needs to be indexed with

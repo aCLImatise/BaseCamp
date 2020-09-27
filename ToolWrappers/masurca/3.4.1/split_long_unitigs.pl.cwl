@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_long_unitigs.pl.cwl
+id: split_long_unitigs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

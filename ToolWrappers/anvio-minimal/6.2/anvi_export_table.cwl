@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_export_table.cwl
+id: anvi_export_table.cwl
 inputs:
 - id: in_table
   doc: Table name to export.

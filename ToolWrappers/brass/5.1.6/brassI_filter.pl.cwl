@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brassI_filter.pl.cwl
+id: brassI_filter.pl.cwl
 inputs:
 - id: in_in_file
   doc: ': Name of the input brassI marked groups file'

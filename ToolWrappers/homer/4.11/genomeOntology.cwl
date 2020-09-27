@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomeOntology.cwl
+id: genomeOntology.cwl
 inputs:
 - id: in_given_maximum_distance
   doc: "<#|given> (Maximum distance between peak centers to consider, default: 100)\n\

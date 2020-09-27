@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abritamr.cwl
+id: abritamr.cwl
 inputs:
 - id: in_mdu_qc
   doc: "Set if running on MDU QC data. If set please provide\nthe MDU QC .csv as further\

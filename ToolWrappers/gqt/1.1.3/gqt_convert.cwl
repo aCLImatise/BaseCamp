@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gqt_convert.cwl
+id: gqt_convert.cwl
 inputs:
 - id: in_ped_file_name
   doc: PED file name (opt.)

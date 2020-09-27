@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chisel_cloning.cwl
+id: chisel_cloning.cwl
 inputs:
 - id: in_run_dir
   doc: 'Running directory (default: current directory)'

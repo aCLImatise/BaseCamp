@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stringMLST.py.cwl
+id: stringMLST.py.cwl
 inputs:
 - id: in_build_db
   doc: Identifier for build db module

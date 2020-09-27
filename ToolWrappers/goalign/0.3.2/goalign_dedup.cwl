@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_dedup.cwl
+id: goalign_dedup.cwl
 inputs:
 - id: in_log
   doc: Deduplicated output log file (default "none")

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../unstarch_megarow.cwl
+id: unstarch_megarow.cwl
 inputs:
-- id: in_elements_max_string_length
-  doc: '| --bases-uniq |'
-  type: boolean
-  inputBinding:
-    prefix: --elements-max-string-length
 - id: in_has_duplicates
   doc: '| --has-nested | --list |'
   type: boolean
@@ -37,6 +32,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --elements
+- id: in_elements_max_string_length
+  doc: "Show the maximum string length over all\nelements in <chromosome>, if specified.\n\
+    If <chromosome> is not specified, the\nmaximum string length is shown over all\n\
+    chromosomes."
+  type: boolean
+  inputBinding:
+    prefix: --elements-max-string-length
 - id: in_bases_uniq
   doc: "Show total and unique base counts,\nrespectively, for archive. If\n<chromosome>\
     \ is specified, the count is\nspecific to the chromosome, if available."
@@ -70,11 +72,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --list-json-no-trailing-newline
-- id: in_list_chr
-  doc: ','
-  type: boolean
-  inputBinding:
-    prefix: --list-chr
 - id: in_list_chromosomes
   doc: "List all or specified chromosome in\nstarch archive (like \"bedextract --list-\n\
     chr\"). If <chromosome> is specified but\nis not in the output list, nothing is\n\
@@ -105,11 +102,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --is-starch
-- id: in_modifiers
-  doc: '--------------------------------------------------------------------------'
+- id: in_un_starch
+  doc: ''
   type: string
   inputBinding:
     position: 0
+- id: in_chromosome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

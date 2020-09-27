@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_bowtie.py.cwl
+id: run_bowtie.py.cwl
 inputs:
 - id: in_bis_map
   doc: Run bowtie with --norc

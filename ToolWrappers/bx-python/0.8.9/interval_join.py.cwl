@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interval_join.py.cwl
+id: interval_join.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

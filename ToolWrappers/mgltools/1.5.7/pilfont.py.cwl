@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pilfont.py.cwl
+id: pilfont.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

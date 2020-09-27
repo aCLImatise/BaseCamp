@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../behst_download_data.cwl
+id: behst_download_data.cwl
 inputs:
 - id: in_data
   doc: "Folder where to download the default data files\n(default $XDG_DATA_HOME/behst,\

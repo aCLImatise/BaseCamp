@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clustal2link.cwl
+id: clustal2link.cwl
 inputs:
 - id: in_aln
   doc: ''

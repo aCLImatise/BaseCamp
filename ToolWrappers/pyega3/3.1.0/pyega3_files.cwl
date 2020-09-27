@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyega3_files.cwl
+id: pyega3_files.cwl
 inputs:
 - id: in_identifier
   doc: Dataset ID (e.g. EGAD00000000001)

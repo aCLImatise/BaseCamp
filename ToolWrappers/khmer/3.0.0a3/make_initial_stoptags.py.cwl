@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_initial_stoptags.py.cwl
+id: make_initial_stoptags.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

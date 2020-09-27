@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_gene_profiler.py_profile.cwl
+id: tbprofiler_gene_profiler.py_profile.cwl
 inputs:
 - id: in_bam
   doc: 'BAM file (default: None)'

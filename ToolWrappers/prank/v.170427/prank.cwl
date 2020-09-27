@@ -1,71 +1,17 @@
 class: CommandLineTool
-id: ../../../prank.cwl
+id: prank.cwl
 inputs:
-- id: in_in_fasta_format
-  doc: (in FASTA format)
+- id: in_fasta_formatttreefile_ooutputfile
+  doc: "(in FASTA format)\n-t=tree_file [default: no tree, generate approximate NJ\
+    \ tree]\n-o=output_file [default: 'output']\n-f=output_format ['fasta' (default),\
+    \ 'phylipi', 'phylips', 'paml', 'nexus']\n-showxml [output xml-files]\n-showtree\
+    \ [output dnd-files]\n-showanc [output ancestral sequences]\n-showevents [output\
+    \ evolutioanry events]\n-showall [output all of these]\n-support [compute posterior\
+    \ support]\n-njtree [estimate tree from input alignment (and realign)]\n-treeonly\
+    \ [estimate tree only]\n-quiet"
   type: File
   inputBinding:
     prefix: -d
-- id: in_t
-  doc: '[default: no tree, generate approximate NJ tree]'
-  type: File
-  inputBinding:
-    prefix: -t
-- id: in_o
-  doc: "[default: 'output']"
-  type: File
-  inputBinding:
-    prefix: -o
-- id: in_f
-  doc: "['fasta' (default), 'phylipi', 'phylips', 'paml', 'nexus']"
-  type: string
-  inputBinding:
-    prefix: -f
-- id: in_show_xml
-  doc: '[output xml-files]'
-  type: boolean
-  inputBinding:
-    prefix: -showxml
-- id: in_show_tree
-  doc: '[output dnd-files]'
-  type: boolean
-  inputBinding:
-    prefix: -showtree
-- id: in_show_an_c
-  doc: '[output ancestral sequences]'
-  type: boolean
-  inputBinding:
-    prefix: -showanc
-- id: in_show_events
-  doc: '[output evolutioanry events]'
-  type: boolean
-  inputBinding:
-    prefix: -showevents
-- id: in_show_all
-  doc: '[output all of these]'
-  type: boolean
-  inputBinding:
-    prefix: -showall
-- id: in_support
-  doc: '[compute posterior support]'
-  type: boolean
-  inputBinding:
-    prefix: -support
-- id: in_nj_tree
-  doc: '[estimate tree from input alignment (and realign)]'
-  type: boolean
-  inputBinding:
-    prefix: -njtree
-- id: in_tree_only
-  doc: '[estimate tree only]'
-  type: boolean
-  inputBinding:
-    prefix: -treeonly
-- id: in_quiet
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -quiet
 - id: in_gap_rate
   doc: '=# [gap opening rate; default: dna 0.025 / prot 0.005]'
   type: boolean
@@ -155,11 +101,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_o
-  doc: "[default: 'output']"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_o)
 cwlVersion: v1.1
 baseCommand:
 - prank

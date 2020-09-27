@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pilfile.py_files....cwl
+id: pilfile.py_files....cwl
 inputs:
 - id: in_such_file_directory
   doc: ": [Errno 2] No such file or directory: '-h'"

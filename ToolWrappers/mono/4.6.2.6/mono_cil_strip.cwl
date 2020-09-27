@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_cil_strip.cwl
+id: mono_cil_strip.cwl
 inputs:
 - id: in_file
   doc: ''

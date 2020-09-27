@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_ml_engine_predict.cwl
+id: gcloud_ml_engine_predict.cwl
 inputs:
 - id: in_model
   doc: Name of the model.

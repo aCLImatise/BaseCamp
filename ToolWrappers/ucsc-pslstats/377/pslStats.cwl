@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslStats.cwl
+id: pslStats.cwl
 inputs:
 - id: in_query_stats
   doc: '- output per-query statistics, the default is per-alignment stats'

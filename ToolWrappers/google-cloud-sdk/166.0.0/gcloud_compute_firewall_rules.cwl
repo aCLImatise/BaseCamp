@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_firewall_rules.cwl
+id: gcloud_compute_firewall_rules.cwl
 inputs:
 - id: in_create
   doc: Create a Google Compute Engine firewall rule.

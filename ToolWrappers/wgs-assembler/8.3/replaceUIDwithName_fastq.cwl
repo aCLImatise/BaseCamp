@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../replaceUIDwithName_fastq.cwl
+id: replaceUIDwithName_fastq.cwl
 inputs: []
 outputs:
 - id: out_stdout

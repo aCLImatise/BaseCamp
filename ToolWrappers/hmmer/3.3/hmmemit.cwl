@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmemit.cwl
+id: hmmemit.cwl
 inputs:
 - id: in_send_sequence_output
   doc: ': send sequence output to file <f>, not stdout'

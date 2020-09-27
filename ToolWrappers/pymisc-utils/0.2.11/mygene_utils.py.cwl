@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mygene_utils.py.cwl
+id: mygene_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

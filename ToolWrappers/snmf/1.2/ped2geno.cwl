@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../ped2geno.cwl
+id: ped2geno.cwl
 inputs:
 - id: in_input
   doc: --help
   type: File
   inputBinding:
     prefix: -input
-- id: in_output
-  doc: --help.geno
-  type: File
-  inputBinding:
-    prefix: -output
 outputs:
 - id: out_stdout
   doc: Standard output stream

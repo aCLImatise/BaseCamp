@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqmetrics.cwl
+id: fastqmetrics.cwl
 inputs:
 - id: in_threads
   doc: "Set the allowed number of threads to be used by the\nscript. This only applies\

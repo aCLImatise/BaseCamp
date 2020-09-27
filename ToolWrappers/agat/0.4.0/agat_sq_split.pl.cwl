@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sq_split.pl.cwl
+id: agat_sq_split.pl.cwl
 inputs:
 - id: in_input
   doc: 'STRING: Input GTF/GFF file.'

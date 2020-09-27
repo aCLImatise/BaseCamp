@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAcat.cwl
+id: LAcat.cwl
 inputs:
 - id: in_v
   doc: ''

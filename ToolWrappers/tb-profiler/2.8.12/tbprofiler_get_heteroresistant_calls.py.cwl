@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_get_heteroresistant_calls.py.cwl
+id: tbprofiler_get_heteroresistant_calls.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

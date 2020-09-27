@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isnovoindex.cwl
+id: isnovoindex.cwl
 inputs:
 - id: in_filename_valid_novoindex
   doc: "filename is not a valid novoindex\n0 is a nucleotide space index\n1 is a bisulphite\

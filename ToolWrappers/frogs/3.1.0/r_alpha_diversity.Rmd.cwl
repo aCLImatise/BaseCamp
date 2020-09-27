@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_alpha_diversity.Rmd.cwl
+id: r_alpha_diversity.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

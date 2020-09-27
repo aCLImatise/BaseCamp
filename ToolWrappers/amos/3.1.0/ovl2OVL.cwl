@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ovl2OVL.cwl
+id: ovl2OVL.cwl
 inputs:
 - id: in_version_print_version
   doc: '|version      - Print the version and exit;'

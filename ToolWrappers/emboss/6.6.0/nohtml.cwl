@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nohtml.cwl
+id: nohtml.cwl
 inputs: []
 outputs:
 - id: out_stdout

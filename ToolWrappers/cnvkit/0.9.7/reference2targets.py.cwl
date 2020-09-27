@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reference2targets.py.cwl
+id: reference2targets.py.cwl
 inputs:
 - id: in_output
   doc: "Output base name (extensions added automatically).\n"

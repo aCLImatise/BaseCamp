@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_rewrite_evidence_bam.cwl
+id: sga_rewrite_evidence_bam.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

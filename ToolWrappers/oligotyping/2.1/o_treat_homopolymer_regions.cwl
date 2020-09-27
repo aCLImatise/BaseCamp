@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_treat_homopolymer_regions.cwl
+id: o_treat_homopolymer_regions.cwl
 inputs:
 - id: in_input_alignment
   doc: align2first output (.paf file)

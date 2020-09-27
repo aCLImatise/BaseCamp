@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgatreport_clean.cwl
+id: cgatreport_clean.cwl
 inputs:
 - id: in_python
   doc: ''

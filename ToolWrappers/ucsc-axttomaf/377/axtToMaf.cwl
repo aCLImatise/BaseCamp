@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axtToMaf.cwl
+id: axtToMaf.cwl
 inputs: []
 outputs:
 - id: out_stdout

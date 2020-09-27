@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigtax_build.cwl
+id: contigtax_build.cwl
 inputs:
 - id: in_dbfile
   doc: "Name of diamond database file. Defaults to\ndiamond.dmnd in same directory\

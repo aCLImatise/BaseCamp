@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastpgp.cwl
+id: blastpgp.cwl
 inputs:
 - id: in_database_default_nr
   doc: "Database [String]\ndefault = nr"

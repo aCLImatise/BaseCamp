@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_pileup.cwl
+id: htsbox_pileup.cwl
 inputs:
 - id: in_reference_genome
   doc: reference genome [null]

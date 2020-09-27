@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExpansionHunterDenovo_merge.cwl
+id: ExpansionHunterDenovo_merge.cwl
 inputs:
 - id: in_reference
   doc: FASTA file with reference assembly

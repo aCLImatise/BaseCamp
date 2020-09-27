@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centreseq_genome.cwl
+id: centreseq_genome.cwl
 inputs:
 - id: in_centre_seq
   doc: ''

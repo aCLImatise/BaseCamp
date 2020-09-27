@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_mango_assembly.sh.cwl
+id: find_mango_assembly.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

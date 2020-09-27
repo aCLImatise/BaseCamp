@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_unmapped_and_oneside.sh.cwl
+id: extract_unmapped_and_oneside.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GetVariantsEta.py.cwl
+id: GetVariantsEta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

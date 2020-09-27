@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtmsa.cwl
+id: wtmsa.cwl
 inputs:
 - id: in_total_parallel_jobs
   doc: Total parallel jobs, [1]
@@ -42,11 +42,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -H
-- id: in_zmer_size_z
-  doc: Zmer size, 5 <= <-z> <= 16, [10]
-  type: long
-  inputBinding:
-    prefix: -z
 - id: in_zmer_window
   doc: Zmer window, [800]
   type: long

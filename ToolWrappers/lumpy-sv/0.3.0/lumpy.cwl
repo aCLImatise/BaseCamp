@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lumpy.cwl
+id: lumpy.cwl
 inputs:
 - id: in_genome_file_defines
   doc: Genome file (defines chromosome order)

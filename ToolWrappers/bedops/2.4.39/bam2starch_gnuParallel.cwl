@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2starch_gnuParallel.cwl
+id: bam2starch_gnuParallel.cwl
 inputs: []
 outputs:
 - id: out_stdout

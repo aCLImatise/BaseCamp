@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfcommonsamples.cwl
+id: vcfcommonsamples.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_add_header.cwl
+id: csvtk_add_header.cwl
 inputs:
 - id: in_names
   doc: column names to add, in CSV format

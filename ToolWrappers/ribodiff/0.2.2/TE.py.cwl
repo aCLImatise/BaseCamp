@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TE.py.cwl
+id: TE.py.cwl
 inputs:
 - id: in_text_file_describing
   doc: "Text file describing experiment Outline. Must follow\nrequired format, please\

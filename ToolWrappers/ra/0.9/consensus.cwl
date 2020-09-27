@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../consensus.cwl
+id: consensus.cwl
 inputs:
 - id: in_reads
   doc: reads file (string)

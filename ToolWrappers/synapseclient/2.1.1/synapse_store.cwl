@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_store.cwl
+id: synapse_store.cwl
 inputs:
 - id: in_parentid
   doc: "Synapse ID of project or folder where to upload data\n(must be specified if\

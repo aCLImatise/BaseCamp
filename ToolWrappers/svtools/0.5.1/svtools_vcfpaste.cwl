@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_vcfpaste.cwl
+id: svtools_vcfpaste.cwl
 inputs:
 - id: in_vcf_list
   doc: "file containing a line-delimited list of VCF files to\npaste (required)"

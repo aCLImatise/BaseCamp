@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_intersect_bed.cwl
+id: dsh_intersect_bed.cwl
 inputs:
 - id: in_a_input_file
   doc: '[class java.io.File]  A input BED file, default stdin [optional]'

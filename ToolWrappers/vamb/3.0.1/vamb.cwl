@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vamb.cwl
+id: vamb.cwl
 inputs:
 - id: in_output_directory_create
   doc: output directory to create

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amb2chm_psf_crd.py.cwl
+id: amb2chm_psf_crd.py.cwl
 inputs:
 - id: in_d
   doc: '[--dict dict_file]'

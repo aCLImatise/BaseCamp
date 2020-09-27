@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tblastn.cwl
+id: tblastn.cwl
 inputs: []
 outputs:
 - id: out_stdout

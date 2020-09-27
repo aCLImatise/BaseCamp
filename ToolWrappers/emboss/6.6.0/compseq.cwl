@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compseq.cwl
+id: compseq.cwl
 inputs:
 - id: in_word
   doc: integer    [2] This is the size of word (n-mer) to

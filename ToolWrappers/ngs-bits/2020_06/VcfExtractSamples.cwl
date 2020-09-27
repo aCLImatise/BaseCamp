@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfExtractSamples.cwl
+id: VcfExtractSamples.cwl
 inputs:
 - id: in_samples
   doc: Comma-separated list of samples to extract (in the given order).

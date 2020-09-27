@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_ultrametric.py.cwl
+id: make_ultrametric.py.cwl
 inputs:
 - id: in_root_age
   doc: "Rescale branch lengths by a multiplicative factor to\nachieve requested root\

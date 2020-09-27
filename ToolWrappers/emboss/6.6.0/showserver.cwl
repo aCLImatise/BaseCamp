@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../showserver.cwl
+id: showserver.cwl
 inputs:
 - id: in_servername
   doc: "string     Name of a single server to give information\non (Any string)"

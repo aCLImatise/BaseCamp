@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seedme.cwl
+id: seedme.cwl
 inputs:
 - id: in_api_key
   doc: Specify your apikey at SeedMe.org

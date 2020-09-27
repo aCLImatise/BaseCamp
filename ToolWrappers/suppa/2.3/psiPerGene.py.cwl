@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psiPerGene.py.cwl
+id: psiPerGene.py.cwl
 inputs:
 - id: in_m
   doc: ''

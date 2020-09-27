@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sourcetracker2_gibbs.cwl
+id: sourcetracker2_gibbs.cwl
 inputs:
 - id: in_table_fp
   doc: Path to input BIOM table.  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../est_genomic_kmers.r.bak.cwl
+id: est_genomic_kmers.r.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

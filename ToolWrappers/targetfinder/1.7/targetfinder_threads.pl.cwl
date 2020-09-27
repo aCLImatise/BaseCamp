@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../targetfinder_threads.pl.cwl
+id: targetfinder_threads.pl.cwl
 inputs:
 - id: in_input_small_rna
   doc: Input small RNA sequences file (FASTA-format)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tagDir2bed.pl_FILE.cwl
+id: tagDir2bed.pl_FILE.cwl
 inputs:
 - id: in_len
   doc: '<#> (read length to report, default: given sizes in tags.tsv file)'

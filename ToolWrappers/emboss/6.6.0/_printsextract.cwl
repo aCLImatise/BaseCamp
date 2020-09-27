@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_printsextract.cwl
+id: _printsextract.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_passwd.2.10.8.cwl
+id: vdb_passwd.2.10.8.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asp_ls.cwl
+id: asp_ls.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportMGRAST.cwl
+id: ktImportMGRAST.cwl
 inputs:
 - id: in_mgr_ast_table
   doc: "A table exported from MG-RAST. It can be from organism or\nfunctional analysis,\

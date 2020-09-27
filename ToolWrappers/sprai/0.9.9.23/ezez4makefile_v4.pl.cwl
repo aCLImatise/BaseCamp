@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ezez4makefile_v4.pl.cwl
+id: ezez4makefile_v4.pl.cwl
 inputs:
 - id: in_this
   doc: ''

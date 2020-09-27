@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_graph.cwl
+id: fastx_graph.cwl
 inputs: []
 outputs:
 - id: out_stdout

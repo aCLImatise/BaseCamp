@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../httpcfg.cwl
+id: httpcfg.cwl
 inputs: []
 outputs:
 - id: out_stdout

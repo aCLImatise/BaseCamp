@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_compress.pl.cwl
+id: centrifuge_compress.pl.cwl
 inputs:
 - id: in_no_dust_masker
   doc: ''

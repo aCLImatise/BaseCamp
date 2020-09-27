@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gkpStoreCreate.cwl
+id: gkpStoreCreate.cwl
 inputs:
 - id: in_create_this_gkpstore
   doc: create this gkpStore

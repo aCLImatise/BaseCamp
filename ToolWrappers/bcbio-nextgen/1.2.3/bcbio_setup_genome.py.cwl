@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_setup_genome.py.cwl
+id: bcbio_setup_genome.py.cwl
 inputs:
 - id: in_cores
   doc: number of cores to use

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paladin_prepare.cwl
+id: paladin_prepare.cwl
 inputs:
 - id: in_reference_database_uniprotkb
   doc: "<#>         Reference Database:\n1: UniProtKB Reviewed (Swiss-Prot)\n2: UniProtKB\

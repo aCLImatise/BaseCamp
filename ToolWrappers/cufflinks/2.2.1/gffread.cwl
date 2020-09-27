@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffread.cwl
+id: gffread.cwl
 inputs:
 - id: in_full_path_mappings
   doc: "full path to a multi-fasta file with the genomic sequences\nfor all input\

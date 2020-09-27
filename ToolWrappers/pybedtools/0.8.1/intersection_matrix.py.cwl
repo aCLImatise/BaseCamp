@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersection_matrix.py.cwl
+id: intersection_matrix.py.cwl
 inputs:
 - id: in_n
   doc: ''

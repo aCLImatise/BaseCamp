@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzeHiC.cwl
+id: analyzeHiC.cwl
 inputs:
 - id: in_res
   doc: '<#> (Resolution of matrix in bp or use "-res site" [see below], default: 10000000)'
@@ -247,55 +247,20 @@ inputs:
   inputBinding:
     prefix: -boundary
 - id: in_ped
-  doc: ''
+  doc: "Creating BED file to view with Wash U Epigenome Browser:\n-washu (Both matrix\
+    \ and interaction outputs will be in WashH BED format)\nCreating Circos Diagrams:\n\
+    -circos <filename prefix> (creates circos files with the given prefix)\n-d <tag\
+    \ directory 1> [tag directory 2] ... (will plot tag densities with circos)\n-b\
+    \ <peak/BED file> (similar to visiualization of genes/-g, but no labels)\n-g <gene\
+    \ location file> (shows gene locations)\nMaking Histograms:\n-hist <#> (create\
+    \ a histogram matrix around peak positions, # is the resolution)\n-size <#> (size\
+    \ of region in histogram, default = 100 * resolution)\nGiven Interaction Analysis\
+    \ Mode (no matrix is produced):\n-i <interaction input file> (for analyzing specific\
+    \ sets of interactions)\n-iraw <output BED filename> (output raw reads from interactions,\
+    \ or -irawtags <file>)\n"
   type: Directory
   inputBinding:
     prefix: -ped
-- id: in_washu
-  doc: (Both matrix and interaction outputs will be in WashH BED format)
-  type: boolean
-  inputBinding:
-    prefix: -washu
-- id: in_circo_s
-  doc: (creates circos files with the given prefix)
-  type: File
-  inputBinding:
-    prefix: -circos
-- id: in_will_plot_densities
-  doc: '[tag directory 2] ... (will plot tag densities with circos)'
-  type: Directory
-  inputBinding:
-    prefix: -d
-- id: in_similar_visiualization_labels
-  doc: (similar to visiualization of genes/-g, but no labels)
-  type: File
-  inputBinding:
-    prefix: -b
-- id: in_shows_gene_locations
-  doc: (shows gene locations)
-  type: File
-  inputBinding:
-    prefix: -g
-- id: in_hist
-  doc: '<#> (create a histogram matrix around peak positions, # is the resolution)'
-  type: boolean
-  inputBinding:
-    prefix: -hist
-- id: in_size
-  doc: <#> (size of region in histogram, default = 100 * resolution)
-  type: boolean
-  inputBinding:
-    prefix: -size
-- id: in_analyzing_specific_sets
-  doc: (for analyzing specific sets of interactions)
-  type: File
-  inputBinding:
-    prefix: -i
-- id: in_i_raw
-  doc: (output raw reads from interactions, or -irawtags <file>)
-  type: File
-  inputBinding:
-    prefix: -iraw
 - id: in_pe_tag_directory
   doc: ''
   type: Directory
@@ -341,11 +306,6 @@ outputs:
   type: File
   outputBinding:
     glob: $(inputs.in_randomize)
-- id: out_i_raw
-  doc: (output raw reads from interactions, or -irawtags <file>)
-  type: File
-  outputBinding:
-    glob: $(inputs.in_i_raw)
 cwlVersion: v1.1
 baseCommand:
 - analyzeHiC

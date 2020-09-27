@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfremovesamples.cwl
+id: vcfremovesamples.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

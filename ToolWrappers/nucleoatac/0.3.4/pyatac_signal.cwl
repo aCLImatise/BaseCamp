@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_signal.cwl
+id: pyatac_signal.cwl
 inputs:
 - id: in_bed
   doc: Positions around which to generate VPlot

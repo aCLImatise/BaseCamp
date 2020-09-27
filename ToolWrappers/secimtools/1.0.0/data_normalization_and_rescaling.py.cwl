@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../data_normalization_and_rescaling.py.cwl
+id: data_normalization_and_rescaling.py.cwl
 inputs:
-- id: in_m
-  doc: ''
+- id: in_o_out
+  doc: "{mean,sum,median,centering,auto,range,pareto,level,vast}\n-o OUT"
   type: boolean
   inputBinding:
     prefix: -m
-- id: in_o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
 - id: in_input
   doc: Input dataset in wide format.
   type: string

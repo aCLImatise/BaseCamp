@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biodiff.cwl
+id: biodiff.cwl
 inputs: []
 outputs:
 - id: out_stdout

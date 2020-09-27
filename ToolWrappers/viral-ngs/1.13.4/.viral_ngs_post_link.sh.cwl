@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.viral_ngs_post_link.sh.cwl
+id: .viral_ngs_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

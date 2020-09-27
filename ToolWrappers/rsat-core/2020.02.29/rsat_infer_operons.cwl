@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_infer_operons.cwl
+id: rsat_infer_operons.cwl
 inputs:
 - id: in_return
   doc: ',leader,operon'
@@ -7,15 +7,13 @@ inputs:
   inputBinding:
     prefix: -return
 - id: in_no_orf
-  doc: ''
+  doc: "\e[1mExample 5\e[0m\nNote that operons can contain non-coding genes. For example,\
+    \ the\nmetT operon contains a series of tRNA genes for methionine, leucine\nand\
+    \ glutamina, respectively.\ninfer-operons -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+    \ -q glnV\n-q metU -q ileV \\ -return q_info,up_info,operon"
   type: long
   inputBinding:
     prefix: -noorf
-- id: in__return_qinfoupinfooperon
-  doc: \ -return q_info,up_info,operon
-  type: string
-  inputBinding:
-    prefix: -q
 - id: in_infer_operons
   doc: "\e[1mDESCRIPTION\e[0m"
   type: string

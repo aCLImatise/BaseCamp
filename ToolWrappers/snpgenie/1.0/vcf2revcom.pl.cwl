@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2revcom.pl.cwl
+id: vcf2revcom.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

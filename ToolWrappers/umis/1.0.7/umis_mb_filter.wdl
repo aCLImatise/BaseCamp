@@ -11,7 +11,7 @@ task UmisMbFilter {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
   parameter_meta {
-    cores: ""
+    cores: "--help           Show this message and exit.\\n"
     fast_q: ""
   }
   output {

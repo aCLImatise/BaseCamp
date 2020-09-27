@@ -26,12 +26,7 @@ task Lima {
     Boolean? keep_tag_idx_order
     Boolean? keep_split_idx_order
     Boolean? ccs
-    Int? a
     Boolean? match_score
-    Boolean? mismatch_penalty
-    Boolean? deletion_penalty
-    Boolean? insertion_penalty
-    Boolean? branch_penalty
     Boolean? split_bam
     Boolean? split_bam_named
     Boolean? files_per_directory
@@ -86,12 +81,7 @@ task Lima {
       ~{if (keep_tag_idx_order) then "--keep-tag-idx-order" else ""} \
       ~{if (keep_split_idx_order) then "--keep-split-idx-order" else ""} \
       ~{if (ccs) then "--ccs" else ""} \
-      ~{if defined(a) then ("-A " +  '"' + a + '"') else ""} \
       ~{if (match_score) then "--match-score" else ""} \
-      ~{if (mismatch_penalty) then "--mismatch-penalty" else ""} \
-      ~{if (deletion_penalty) then "--deletion-penalty" else ""} \
-      ~{if (insertion_penalty) then "--insertion-penalty" else ""} \
-      ~{if (branch_penalty) then "--branch-penalty" else ""} \
       ~{if (split_bam) then "--split-bam" else ""} \
       ~{if (split_bam_named) then "--split-bam-named" else ""} \
       ~{if (files_per_directory) then "--files-per-directory" else ""} \
@@ -136,13 +126,8 @@ task Lima {
     min_score_lead: "INT    The minimal score lead required to call\\na barcode pair significant. [10]"
     keep_tag_idx_order: "Keep identified order of barcode pair\\nindices in BC tag; CCS only."
     keep_split_idx_order: "Keep identified order of barcode pair\\nindices in split BAM names; CCS only."
-    ccs: "CCS mode, use optimal alignment options"
-    a: ""
-    match_score: "INT    Score for a sequence match. [4]"
-    mismatch_penalty: "INT    Penalty for a mismatch. [13]"
-    deletion_penalty: "INT    Deletions penalty. [7]"
-    insertion_penalty: "INT    Insertion penalty. [7]"
-    branch_penalty: "INT    Branch penalty. [4]"
+    ccs: "CCS mode, use optimal alignment options\\n-A 1 -B 4 -D 3 -I 3 -X 4."
+    match_score: "INT    Score for a sequence match. [4]\\n-B,--mismatch-penalty          INT    Penalty for a mismatch. [13]\\n-D,--deletion-penalty          INT    Deletions penalty. [7]\\n-I,--insertion-penalty         INT    Insertion penalty. [7]\\n-X,--branch-penalty            INT    Branch penalty. [4]"
     split_bam: "Split BAM output by barcode pair."
     split_bam_named: "Split BAM output by resolved barcode\\npair name."
     files_per_directory: "INT    Group maximum numbers of split barcode\\noutput files per directory; 0 means\\ndeactivated. [0]"

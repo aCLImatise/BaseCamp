@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SampleAncestry.cwl
+id: SampleAncestry.cwl
 inputs:
 - id: in_in
   doc: Input variant list(s) in VCF format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_build_biom_table.cwl
+id: deblur_build_biom_table.cwl
 inputs:
 - id: in_min_reads
   doc: "In output biom table - keep only sequences\nappearing at least min-reads in\
@@ -33,11 +33,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_five_critical
-  doc: '[default: 2]'
-  type: long
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

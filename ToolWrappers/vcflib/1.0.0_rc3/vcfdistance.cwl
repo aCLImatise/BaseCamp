@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfdistance.cwl
+id: vcfdistance.cwl
 inputs:
 - id: in_custom_tag_name
   doc: ''

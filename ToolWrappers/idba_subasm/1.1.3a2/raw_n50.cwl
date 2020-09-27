@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../raw_n50.cwl
+id: raw_n50.cwl
 inputs:
-- id: in_min_contig
-  doc: (=100)
-  type: long
-  inputBinding:
-    prefix: --min_contig
-- id: in_ref_length
-  doc: (=0)
-  type: long
-  inputBinding:
-    prefix: --ref_length
 - id: in_contigs_dot_fa
   doc: ''
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dataproc_start.cwl
+id: hailctl_dataproc_start.cwl
 inputs:
 - id: in_master_machine_type
   doc: 'Master machine type (default: n1-highmem-8).'

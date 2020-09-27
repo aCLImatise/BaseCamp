@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fuzznuc.cwl
+id: fuzznuc.cwl
 inputs:
 - id: in_pattern
   doc: "pattern    The standard IUPAC one-letter codes for the\nnucleotides are used.\n\
@@ -19,11 +19,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pattern
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_complement
   doc: boolean    [N] Search complementary strand
   type: boolean

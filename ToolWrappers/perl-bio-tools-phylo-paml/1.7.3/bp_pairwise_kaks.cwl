@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_pairwise_kaks.cwl
+id: bp_pairwise_kaks.cwl
 inputs: []
 outputs:
 - id: out_stdout

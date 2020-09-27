@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_parser_hits.cwl
+id: rgi_parser_hits.cwl
 inputs:
 - id: in_t
   doc: ''

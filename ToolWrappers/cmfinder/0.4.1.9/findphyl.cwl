@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findphyl.cwl
+id: findphyl.cwl
 inputs:
 - id: in_limit
   doc: ''

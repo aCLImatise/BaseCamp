@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamtofastq.cwl
+id: bamtofastq.cwl
 inputs: []
 outputs:
 - id: out_stdout

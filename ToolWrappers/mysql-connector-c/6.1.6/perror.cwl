@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../perror.cwl
+id: perror.cwl
 inputs:
 - id: in_info
   doc: Synonym for --help.

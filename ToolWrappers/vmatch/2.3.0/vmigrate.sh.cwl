@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vmigrate.sh.cwl
+id: vmigrate.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

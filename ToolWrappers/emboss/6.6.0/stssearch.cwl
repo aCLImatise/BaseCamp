@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stssearch.cwl
+id: stssearch.cwl
 inputs: []
 outputs:
 - id: out_stdout

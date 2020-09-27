@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flowcraft_inspect.cwl
+id: flowcraft_inspect.cwl
 inputs:
 - id: in_specify_nextflow_file
   doc: Specify the nextflow trace file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TICCalculator.cwl
+id: TICCalculator.cwl
 inputs: []
 outputs:
 - id: out_stdout

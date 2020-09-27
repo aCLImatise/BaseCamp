@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gridss_somatic_filter.cwl
+id: gridss_somatic_filter.cwl
 inputs:
 - id: in_gc
   doc: "Perform garbage collection after freeing of\nlarge objects."

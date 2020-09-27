@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virmet_fetch.cwl
+id: virmet_fetch.cwl
 inputs:
 - id: in_viral
   doc: viral [nucleic acids/proteins]

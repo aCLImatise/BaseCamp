@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strain_ml.cwl
+id: strain_ml.cwl
 inputs:
 - id: in_use_string_defaults
   doc: ': Use grammar <string>, defaults to STA'

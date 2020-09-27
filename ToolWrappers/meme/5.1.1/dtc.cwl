@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dtc.cwl
+id: dtc.cwl
 inputs:
 - id: in_min_sum
   doc: ''

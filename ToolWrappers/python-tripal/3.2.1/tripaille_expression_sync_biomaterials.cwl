@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_expression_sync_biomaterials.cwl
+id: tripaille_expression_sync_biomaterials.cwl
 inputs:
 - id: in_ids
   doc: "JSON list of ids of biomaterials to be synced (default:\nall)  [default: []]"

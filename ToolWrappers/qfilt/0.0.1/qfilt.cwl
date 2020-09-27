@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qfilt.cwl
+id: qfilt.cwl
 inputs:
 - id: in_qual_fasta_files
   doc: QUAL            FASTA and QUAL files

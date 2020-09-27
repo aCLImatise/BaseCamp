@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixdata.cwl
+id: mixdata.cwl
 inputs:
 - id: in_output_bam
   doc: output BAM

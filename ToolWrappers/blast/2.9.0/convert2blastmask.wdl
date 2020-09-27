@@ -9,7 +9,7 @@ task Convert2blastmask {
       ~{if defined(masking_algorithm) then ("-masking_algorithm " +  '"' + masking_algorithm + '"') else ""}
   >>>
   parameter_meta {
-    masking_algorithm: ""
+    masking_algorithm: "[-version]"
   }
   output {
     File out_stdout = stdout()

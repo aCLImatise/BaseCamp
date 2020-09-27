@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_dia_windows.py.cwl
+id: plot_dia_windows.py.cwl
 inputs:
 - id: in_window_file
   doc: ''

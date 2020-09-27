@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_private.cwl
+id: SnpSift_private.cwl
 inputs:
 - id: in_jar
   doc: ''

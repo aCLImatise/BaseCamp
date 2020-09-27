@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alfred_annotate.cwl
+id: alfred_annotate.cwl
 inputs:
 - id: in_arg_max_distance
   doc: "[ --distance ] arg (=0)            max. distance (0: overlapping features\n\

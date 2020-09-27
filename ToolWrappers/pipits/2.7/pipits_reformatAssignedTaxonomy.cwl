@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_reformatAssignedTaxonomy.cwl
+id: pipits_reformatAssignedTaxonomy.cwl
 inputs:
 - id: in_in
   doc: '[REQUIRED] taxonomy assignment output from RDP-CLASSIFIER'

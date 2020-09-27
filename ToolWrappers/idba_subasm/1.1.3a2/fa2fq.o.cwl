@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fa2fq.o.cwl
+id: fa2fq.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

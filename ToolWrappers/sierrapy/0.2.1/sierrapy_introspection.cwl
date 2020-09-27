@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sierrapy_introspection.cwl
+id: sierrapy_introspection.cwl
 inputs:
 - id: in_output
   doc: File path to store the JSON result.

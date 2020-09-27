@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpFeatures.cwl
+id: dumpFeatures.cwl
 inputs:
 - id: in_report_contig_iids
   doc: report contig iids instead of eids

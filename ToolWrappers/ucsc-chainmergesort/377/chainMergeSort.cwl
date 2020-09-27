@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainMergeSort.cwl
+id: chainMergeSort.cwl
 inputs: []
 outputs:
 - id: out_stdout

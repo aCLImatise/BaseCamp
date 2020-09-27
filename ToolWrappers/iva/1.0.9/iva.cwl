@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iva.cwl
+id: iva.cwl
 inputs:
 - id: in_name_forward_reads
   doc: "[.gz], --reads_fwd filename[.gz]\nName of forward reads fasta/q file. Must\

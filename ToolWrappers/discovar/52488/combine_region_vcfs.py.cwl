@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_region_vcfs.py.cwl
+id: combine_region_vcfs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

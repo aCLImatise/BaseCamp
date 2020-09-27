@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_parse_trinity_coverage_for_uce_loci_log.cwl
+id: phyluce_assembly_parse_trinity_coverage_for_uce_loci_log.cwl
 inputs:
 - id: in_log
   doc: The log file to parse

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hyphy_sw.cwl
+id: hyphy_sw.cwl
 inputs:
 - id: in_mpireceive__fromnode
   doc: MPIReceive(-1, fromNode, result_String);

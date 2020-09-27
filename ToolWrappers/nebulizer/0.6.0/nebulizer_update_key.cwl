@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_update_key.cwl
+id: nebulizer_update_key.cwl
 inputs:
 - id: in_new_url
   doc: specify new URL for Galaxy instance

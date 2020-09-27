@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TsvMerge.cwl
+id: TsvMerge.cwl
 inputs:
 - id: in_in
   doc: Input TSV files that are merged. If only one file is given, each line in this

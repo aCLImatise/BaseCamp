@@ -2,7 +2,7 @@ version 1.0
 
 task QuasitoolsAacoverage {
   input {
-    File? var_output
+    File? _help_show
     String bam
     String reference
     Int bed_four_file
@@ -12,10 +12,10 @@ task QuasitoolsAacoverage {
       ~{bam} \
       ~{reference} \
       ~{bed_four_file} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""}
+      ~{if defined(_help_show) then ("--output " +  '"' + _help_show + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    _help_show: "--help                 Show this message and exit.\\n"
     bam: ""
     reference: ""
     bed_four_file: ""

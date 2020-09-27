@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclMclToGroups.cwl
+id: orthomclMclToGroups.cwl
 inputs:
 - id: in_prefix
   doc: a prefix to use when generating group ids.  For example OG2_

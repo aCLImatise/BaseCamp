@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merci.cwl
+id: merci.cwl
 inputs:
 - id: in_verbose
   doc: "(1 arg) :    verbosity level  [default '1']"

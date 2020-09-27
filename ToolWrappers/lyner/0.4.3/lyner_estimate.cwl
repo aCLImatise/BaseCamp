@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_estimate.cwl
+id: lyner_estimate.cwl
 inputs:
 - id: in_distribution
   doc: "May be any of ['negbinom', 'gamma', 'laisson', 't',\n'norm', 'cauchy', 'lognorm']\

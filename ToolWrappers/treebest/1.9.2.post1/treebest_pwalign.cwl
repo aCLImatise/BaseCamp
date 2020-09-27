@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_pwalign.cwl
+id: treebest_pwalign.cwl
 inputs:
 - id: in_generate_full_alignment
   doc: generate full alignment

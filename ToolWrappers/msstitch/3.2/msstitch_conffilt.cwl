@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msstitch_conffilt.cwl
+id: msstitch_conffilt.cwl
 inputs:
 - id: in_input_file_format
   doc: Input file of {} format

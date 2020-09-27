@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krakenuniq_mpa_report.cwl
+id: krakenuniq_mpa_report.cwl
 inputs:
 - id: in_db
   doc: "Name of Kraken database\n(default: none)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeSomaticScripts.py.cwl
+id: makeSomaticScripts.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

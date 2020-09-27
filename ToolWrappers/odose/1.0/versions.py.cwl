@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../versions.py.cwl
+id: versions.py.cwl
 inputs:
 - id: in_target
   doc: Target output file for version numbers

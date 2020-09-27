@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../squizz.cwl
+id: squizz.cwl
 inputs:
 - id: in_detect_alignment_formats
   doc: '... Detect alignment formats only.'

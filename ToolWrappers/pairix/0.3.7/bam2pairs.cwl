@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2pairs.cwl
+id: bam2pairs.cwl
 inputs: []
 outputs:
 - id: out_stdout

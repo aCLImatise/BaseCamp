@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runPolySTestCLI.R.cwl
+id: runPolySTestCLI.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

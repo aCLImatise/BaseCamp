@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcpp.cwl
+id: gcpp.cwl
 inputs:
 - id: in_reference
   doc: FILE   The filename of the reference FASTA file.

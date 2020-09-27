@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SVG.dll.cwl
+id: SVG.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

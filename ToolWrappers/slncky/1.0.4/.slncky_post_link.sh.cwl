@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.slncky_post_link.sh.cwl
+id: .slncky_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

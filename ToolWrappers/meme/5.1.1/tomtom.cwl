@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tomtom.cwl
+id: tomtom.cwl
 inputs:
 - id: in_name_directory_not
   doc: "Name of directory for output files;\nwill not replace existing directory"

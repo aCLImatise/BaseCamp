@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nonpareil.cwl
+id: nonpareil.cwl
 inputs: []
 outputs:
 - id: out_stdout

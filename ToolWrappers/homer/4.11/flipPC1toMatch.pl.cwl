@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flipPC1toMatch.pl.cwl
+id: flipPC1toMatch.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

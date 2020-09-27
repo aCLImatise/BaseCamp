@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_contained.cwl
+id: filter_contained.cwl
 inputs:
 - id: in_depot
   doc: depot path (string)

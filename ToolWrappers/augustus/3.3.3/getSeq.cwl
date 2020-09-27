@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getSeq.cwl
+id: getSeq.cwl
 inputs:
 - id: in_rc
   doc: output the reverse complement of the sequence

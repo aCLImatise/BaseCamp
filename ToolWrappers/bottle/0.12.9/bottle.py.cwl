@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bottle.py.cwl
+id: bottle.py.cwl
 inputs:
 - id: in_bind
   doc: bind socket to ADDRESS.

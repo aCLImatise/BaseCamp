@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sq_repeats_analyzer.pl.cwl
+id: agat_sq_repeats_analyzer.pl.cwl
 inputs:
 - id: in_input
   doc: "STRING: Input GTF/GFF file(s). Several files can be processed at\nonce: -i\

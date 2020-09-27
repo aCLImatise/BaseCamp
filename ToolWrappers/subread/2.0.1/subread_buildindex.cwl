@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subread_buildindex.cwl
+id: subread_buildindex.cwl
 inputs:
 - id: in_base_name_index
   doc: base name of the index to be created

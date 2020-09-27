@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslSelect.cwl
+id: pslSelect.cwl
 inputs:
 - id: in_qt_pairs
   doc: '- file is tab-separated qName and tName pairs to select'

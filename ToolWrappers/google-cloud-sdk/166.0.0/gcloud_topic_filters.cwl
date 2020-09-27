@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_topic_filters.cwl
+id: gcloud_topic_filters.cwl
 inputs:
 - id: in_format
   doc: '[ATTRIBUTES](PROJECTION) and --filter=EXPRESSION flags along'

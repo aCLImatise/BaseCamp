@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../changeNewLine.pl.cwl
+id: changeNewLine.pl.cwl
 inputs:
 - id: in_do_prompt_overwriting
   doc: Don't prompt before overwriting

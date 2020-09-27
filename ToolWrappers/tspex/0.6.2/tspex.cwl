@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tspex.cwl
+id: tspex.cwl
 inputs:
 - id: in_log
   doc: 'Log-transform expression values. (default: False)'

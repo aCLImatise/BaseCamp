@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pydoc.cwl
+id: pydoc.cwl
 inputs:
 - id: in_package_dot
   doc: If <name> contains a '/', it is used as the path to a

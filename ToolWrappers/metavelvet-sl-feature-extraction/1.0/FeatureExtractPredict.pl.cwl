@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FeatureExtractPredict.pl.cwl
+id: FeatureExtractPredict.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

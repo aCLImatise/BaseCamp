@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_components.py_outfile.cwl
+id: filter_components.py_outfile.cwl
 inputs:
 - id: in_filter_components_do_tpy
   doc: ''

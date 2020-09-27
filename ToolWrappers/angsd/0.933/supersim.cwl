@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../supersim.cwl
+id: supersim.cwl
 inputs:
-- id: in_out_files
-  doc: PREFIX.seq PREFIX.glf PREFIX.frq PREFIX.arg
-  type: string
-  inputBinding:
-    prefix: -outfiles
 - id: in_n_pop
   doc: Number of populations. This MUST be set before -nind [1]
   type: boolean

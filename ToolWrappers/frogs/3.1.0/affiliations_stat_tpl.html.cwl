@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../affiliations_stat_tpl.html.cwl
+id: affiliations_stat_tpl.html.cwl
 inputs: []
 outputs:
 - id: out_stdout

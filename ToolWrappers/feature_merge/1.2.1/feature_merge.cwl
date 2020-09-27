@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../feature_merge.cwl
+id: feature_merge.cwl
 inputs:
 - id: in_version_and_exit
   doc: version and exit

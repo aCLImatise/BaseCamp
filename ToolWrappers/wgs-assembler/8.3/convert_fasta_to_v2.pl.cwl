@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_fasta_to_v2.pl.cwl
+id: convert_fasta_to_v2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

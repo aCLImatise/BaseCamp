@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildG_MPIRMA.cwl
+id: buildG_MPIRMA.cwl
 inputs: []
 outputs:
 - id: out_stdout

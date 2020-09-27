@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../backspin.cwl
+id: backspin.cwl
 inputs:
 - id: in_i
   doc: '[inputfile]'

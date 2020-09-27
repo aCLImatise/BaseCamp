@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_compareProteinorthoGraphs.pl.cwl
+id: proteinortho_compareProteinorthoGraphs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

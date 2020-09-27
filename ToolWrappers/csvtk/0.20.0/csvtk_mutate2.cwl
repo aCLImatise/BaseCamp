@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_mutate2.cwl
+id: csvtk_mutate2.cwl
 inputs:
 - id: in_digits
   doc: number of digits after the dot (default 2)

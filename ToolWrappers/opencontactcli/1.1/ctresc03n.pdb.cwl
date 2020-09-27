@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctresc03n.pdb.cwl
+id: ctresc03n.pdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

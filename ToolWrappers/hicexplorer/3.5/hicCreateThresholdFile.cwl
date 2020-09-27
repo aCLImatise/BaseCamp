@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicCreateThresholdFile.cwl
+id: hicCreateThresholdFile.cwl
 inputs:
 - id: in_range
   doc: ''

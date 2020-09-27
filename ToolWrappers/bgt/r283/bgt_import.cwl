@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgt_import.cwl
+id: bgt_import.cwl
 inputs:
 - id: in_input_is_vcf
   doc: input is VCF

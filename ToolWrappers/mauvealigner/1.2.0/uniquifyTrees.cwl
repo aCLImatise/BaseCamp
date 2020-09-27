@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniquifyTrees.cwl
+id: uniquifyTrees.cwl
 inputs:
 - id: in_nexus_input_file
   doc: ''

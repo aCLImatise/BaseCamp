@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CAT_bin.cwl
+id: CAT_bin.cwl
 inputs:
 - id: in__path_bin
   doc: ', --bin_fasta      Path to bin fasta file.'

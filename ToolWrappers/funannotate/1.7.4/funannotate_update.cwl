@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_update.cwl
+id: funannotate_update.cwl
 inputs:
 - id: in_input
   doc: Funannotate folder or Genome in GenBank format (.gbk,.gbff).
@@ -116,11 +116,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pasa_db
-- id: in_stringent_alignment_overlap_dot
-  doc: ': 30.0'
-  type: double
-  inputBinding:
-    prefix: --stringent_alignment_overlap.
 - id: in_aligners
   doc: 'Aligners to use with PASA: Default: minimap2 blat [gmap]'
   type: boolean
@@ -186,16 +181,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cpus
-- id: in_pasa_home
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --PASAHOME
-- id: in_trinity_home
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --TRINITYHOME
 - id: in_or
   doc: -f, --fasta              Genome in FASTA format
   type: string

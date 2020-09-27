@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_fasta_length_distribution.cwl
+id: o_fasta_length_distribution.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_organelle_from_reads.py.cwl
+id: get_organelle_from_reads.py.cwl
 inputs:
 - id: in_help
   doc: print verbose introduction for all options.

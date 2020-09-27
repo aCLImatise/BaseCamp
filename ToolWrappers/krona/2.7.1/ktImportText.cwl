@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportText.cwl
+id: ktImportText.cwl
 inputs:
 - id: in_text
   doc: "Tab-delimited text file. Each line should be a number followed by a\nlist\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crisprtools_extract.cwl
+id: crisprtools_extract.cwl
 inputs:
 - id: in_output_file_directory
   doc: 'output file directory  [default: .]'

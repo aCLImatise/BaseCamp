@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_scan_for_paired_end_reads.cwl
+id: rsem_scan_for_paired_end_reads.cwl
 inputs:
 - id: in_input_dots_am
   doc: ''

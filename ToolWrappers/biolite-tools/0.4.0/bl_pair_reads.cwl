@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_pair_reads.cwl
+id: bl_pair_reads.cwl
 inputs:
 - id: in_specify_input_files
   doc: specify multiple input FASTQ files

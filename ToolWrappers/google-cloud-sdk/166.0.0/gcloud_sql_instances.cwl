@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_instances.cwl
+id: gcloud_sql_instances.cwl
 inputs:
 - id: in_clone
   doc: Clones a Cloud SQL instance.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_generate_negative_set_outdir.cwl
+id: mb_generate_negative_set_outdir.cwl
 inputs:
 - id: in_v
   doc: ''

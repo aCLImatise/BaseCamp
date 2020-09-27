@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../determineUnjoinablePacbioSubmegas.perl.cwl
+id: determineUnjoinablePacbioSubmegas.perl.cwl
 inputs:
 - id: in_inputfile_name_file
   doc: (inputFile is the name of the file with k-unitig pairs and gap sizes)

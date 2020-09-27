@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gomerge.sh.cwl
+id: gomerge.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

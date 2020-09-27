@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CycleFold.cwl
+id: CycleFold.cwl
 inputs:
 - id: in_big_loops
   doc: "Toggle whether large hairpins and internal loops are permitted in the\nstructure.\n\

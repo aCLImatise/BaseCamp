@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../envset.cmd.cwl
+id: envset.cmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

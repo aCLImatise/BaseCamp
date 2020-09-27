@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pls_components.cwl
+id: pls_components.cwl
 inputs:
 - id: in_config
   doc: Configuration file

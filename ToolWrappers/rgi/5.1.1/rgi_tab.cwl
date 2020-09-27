@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_tab.cwl
+id: rgi_tab.cwl
 inputs:
 - id: in_a_file
   doc: "must be a rgi json result file\n"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FeatureFinderMultiplex.cwl
+id: FeatureFinderMultiplex.cwl
 inputs:
 - id: in_in
   doc: "*                              LC-MS dataset in either centroid or profile\

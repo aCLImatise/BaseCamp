@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Genrich.cwl
+id: Genrich.cwl
 inputs:
 - id: in_file_input_experimental
   doc: <file>       Input SAM/BAM file(s) for experimental sample(s)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_sra.2.10.8.cwl
+id: test_sra.2.10.8.cwl
 inputs:
 - id: in_xml_text_generate
   doc: < xml | text > - whether to generate well-formed XML

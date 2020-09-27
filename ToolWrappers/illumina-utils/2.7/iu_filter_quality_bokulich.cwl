@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_filter_quality_bokulich.cwl
+id: iu_filter_quality_bokulich.cwl
 inputs:
 - id: in_minimal_highquality_read
   doc: 'Minimal high-quality read length (default: 0.75)'

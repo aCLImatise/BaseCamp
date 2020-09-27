@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgzip.cwl
+id: bgzip.cwl
 inputs:
 - id: in_offset
   doc: decompress at virtual file pointer (0-based uncompressed offset)

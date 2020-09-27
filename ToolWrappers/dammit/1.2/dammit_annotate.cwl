@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dammit_annotate.cwl
+id: dammit_annotate.cwl
 inputs:
 - id: in_name
   doc: "Base name to use for renaming the input transcripts.\nThe new names will be\

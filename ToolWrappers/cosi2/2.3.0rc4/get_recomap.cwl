@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_recomap.cwl
+id: get_recomap.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequence_filter.py_input_fastx.cwl
+id: sequence_filter.py_input_fastx.cwl
 inputs:
 - id: in_q
   doc: ''

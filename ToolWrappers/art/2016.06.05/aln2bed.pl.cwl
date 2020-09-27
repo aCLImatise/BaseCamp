@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aln2bed.pl.cwl
+id: aln2bed.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

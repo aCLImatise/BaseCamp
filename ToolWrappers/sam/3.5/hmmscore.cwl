@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmscore.cwl
+id: hmmscore.cwl
 inputs:
 - id: in_db
   doc: '[-db seq_filen]*     one or more sequence files'
@@ -16,16 +16,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -trackprior
-- id: in_i
-  doc: .
-  type: string[]
-  inputBinding:
-    prefix: -i
-- id: in_model_file
-  doc: .
-  type: string[]
-  inputBinding:
-    prefix: -modelfile
 - id: in_track_mod
   doc: ',file2,...         or ....'
   type: File

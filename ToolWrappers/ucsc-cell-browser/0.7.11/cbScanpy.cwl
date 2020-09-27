@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbScanpy.cwl
+id: cbScanpy.cwl
 inputs:
 - id: in_expr_matrix
   doc: "gene-cell expression matrix file, possible formats:\n.csv, .h5, .mtx, .txt,\

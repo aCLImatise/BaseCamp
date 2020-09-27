@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbTrash.cwl
+id: dbTrash.cwl
 inputs:
 - id: in_age
   doc: '- number of hours old to qualify for drop.  N can be a float.'

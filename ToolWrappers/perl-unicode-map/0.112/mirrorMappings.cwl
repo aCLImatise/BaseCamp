@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mirrorMappings.cwl
+id: mirrorMappings.cwl
 inputs: []
 outputs:
 - id: out_stdout

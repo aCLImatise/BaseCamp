@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../babel_add_hydrogens.cwl
+id: babel_add_hydrogens.cwl
 inputs:
 - id: in_config
   doc: Configuration file

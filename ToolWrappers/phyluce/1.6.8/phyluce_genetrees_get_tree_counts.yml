@@ -1,26 +1,14 @@
 !Command
 command:
 - phyluce_genetrees_get_tree_counts
-positional:
-- !Positional
-  description: '[--schema {nexus,newick,nexml,fasta,phylip}]'
-  position: 0
-  name: LOCUS_SUPPORT_OUTPUT
-  optional: false
+positional: []
 named:
 - !Flag
-  description: ''
+  description: "LOCUS_SUPPORT_OUTPUT\n[--schema {nexus,newick,nexml,fasta,phylip}]\n\
+    --root ROOT --extension EXTENSION\n[--exclude EXCLUDE [EXCLUDE ...]]"
   synonyms:
   - --locus-support-output
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --root
-  - --extension
-  args: !SimpleFlagArg
-    name: ROOT
   optional: true
 - !Flag
   description: Tree file
@@ -35,11 +23,25 @@ named:
   - --schema
   args: !ChoiceFlagArg
     choices: !!set
-      ? newick
-      ? fasta
-      ? phylip
-      ? nexus
-      ? nexml
+      newick:
+      nexml:
+      phylip:
+      fasta:
+      nexus:
+  optional: true
+- !Flag
+  description: The taxon on which to root trees
+  synonyms:
+  - --root
+  args: !SimpleFlagArg
+    name: ROOT
+  optional: true
+- !Flag
+  description: File extension used with each 'best' tree
+  synonyms:
+  - --extension
+  args: !SimpleFlagArg
+    name: EXTENSION
   optional: true
 - !Flag
   description: "Loci to exclude\n"

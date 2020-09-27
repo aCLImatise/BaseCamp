@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka_tigrfams_to_hmm.cwl
+id: prokka_tigrfams_to_hmm.cwl
 inputs: []
 outputs:
 - id: out_stdout

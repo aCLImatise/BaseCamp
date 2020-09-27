@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterfa.cwl
+id: filterfa.cwl
 inputs:
 - id: in_paired
   doc: if the reads are paired-end

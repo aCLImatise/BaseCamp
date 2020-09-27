@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transposonPSI.pl.cwl
+id: transposonPSI.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

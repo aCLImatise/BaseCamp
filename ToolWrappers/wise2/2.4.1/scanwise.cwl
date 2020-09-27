@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanwise.cwl
+id: scanwise.cwl
 inputs:
 - id: in_db_size
   doc: '[number] effective db size for Evalue calculation [300000]'

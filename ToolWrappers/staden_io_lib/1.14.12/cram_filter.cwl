@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cram_filter.cwl
+id: cram_filter.cwl
 inputs:
 - id: in_only_emit_containers
   doc: "[-end]    Only emit containers 'start' to 'end' inclusive.\n'-n 100' is equivalent\

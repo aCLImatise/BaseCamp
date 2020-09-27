@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HiLine_same_frag_and_strand.cwl
+id: HiLine_same_frag_and_strand.cwl
 inputs:
 - id: in_sort
   doc: / --no-sort  Sort and index output. Default=sort

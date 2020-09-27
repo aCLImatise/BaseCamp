@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../retest.cwl
+id: retest.cwl
 inputs:
 - id: in_debug
   doc: increase output verbosity and perform additional

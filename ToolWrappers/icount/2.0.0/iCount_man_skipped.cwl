@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_skipped.cwl
+id: iCount_man_skipped.cwl
 inputs:
 - id: in_mode
   doc: ''

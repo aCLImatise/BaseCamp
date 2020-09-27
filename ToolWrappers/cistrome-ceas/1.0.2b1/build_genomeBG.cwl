@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_genomeBG.cwl
+id: build_genomeBG.cwl
 inputs:
 - id: in_db
   doc: "Genome of UCSC (eg hg18). If -d (--db) is not given,\nthis script searches\

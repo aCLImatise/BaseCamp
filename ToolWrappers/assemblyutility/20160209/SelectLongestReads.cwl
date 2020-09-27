@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SelectLongestReads.cwl
+id: SelectLongestReads.cwl
 inputs: []
 outputs:
 - id: out_stdout

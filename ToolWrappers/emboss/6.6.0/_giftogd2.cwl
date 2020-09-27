@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_giftogd2.cwl
+id: _giftogd2.cwl
 inputs:
 - id: in_gift_ogd_two
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sickle.cwl
+id: sickle.cwl
 inputs:
 - id: in_command
   doc: ''

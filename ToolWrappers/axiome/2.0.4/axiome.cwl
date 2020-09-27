@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axiome.cwl
+id: axiome.cwl
 inputs: []
 outputs:
 - id: out_stdout

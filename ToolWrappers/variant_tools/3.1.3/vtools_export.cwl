@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_export.cwl
+id: vtools_export.cwl
 inputs:
 - id: in_name_output_file
   doc: "[OUTPUT], --output [OUTPUT]\nName of output file. Output will be written to\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cPecanRealign.cwl
+id: cPecanRealign.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'

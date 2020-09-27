@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protectionScore.py.cwl
+id: protectionScore.py.cwl
 inputs:
 - id: in_footprint_file
   doc: ''

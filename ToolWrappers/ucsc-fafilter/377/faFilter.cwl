@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faFilter.cwl
+id: faFilter.cwl
 inputs:
 - id: in_name
   doc: "- Only pass records where name matches wildcard\n* matches any string or no\

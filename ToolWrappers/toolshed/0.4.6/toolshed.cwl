@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toolshed.cwl
+id: toolshed.cwl
 inputs: []
 outputs:
 - id: out_stdout

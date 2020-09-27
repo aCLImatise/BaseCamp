@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../feht.cwl
+id: feht.cwl
 inputs:
 - id: in_info_file
   doc: File of metadata information

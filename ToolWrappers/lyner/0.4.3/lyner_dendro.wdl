@@ -3,25 +3,13 @@ version 1.0
 task LynerDendro {
   input {
     Int? axis
-    String? methods
-    Boolean? mode
-    Int? num_components
-    Int? num_runs
   }
   command <<<
     lyner dendro \
-      ~{if defined(axis) then ("--axis " +  '"' + axis + '"') else ""} \
-      ~{if defined(methods) then ("--methods " +  '"' + methods + '"') else ""} \
-      ~{if (mode) then "--mode" else ""} \
-      ~{if defined(num_components) then ("--num-components " +  '"' + num_components + '"') else ""} \
-      ~{if defined(num_runs) then ("--num-runs " +  '"' + num_runs + '"') else ""}
+      ~{if defined(axis) then ("--axis " +  '"' + axis + '"') else ""}
   >>>
   parameter_meta {
-    axis: "RANGE"
-    methods: ""
-    mode: "[consensus|each]"
-    num_components: ""
-    num_runs: ""
+    axis: "RANGE\\n-m, --methods LIST\\n--mode [consensus|each]\\n-c, --num-components LIST\\n-r, --num-runs INTEGER\\n--help                     Show this message and exit.\\n"
   }
   output {
     File out_stdout = stdout()

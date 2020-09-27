@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_container_images.cwl
+id: gcloud_container_images.cwl
 inputs:
 - id: in_images
   doc: SYNOPSIS

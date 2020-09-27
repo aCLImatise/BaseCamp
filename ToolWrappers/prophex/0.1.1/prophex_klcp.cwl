@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophex_klcp.cwl
+id: prophex_klcp.cwl
 inputs:
 - id: in_length_of_kmer
   doc: length of k-mer

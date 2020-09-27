@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clean_run.sh.cwl
+id: clean_run.sh.cwl
 inputs:
 - id: in_always_prompt_removing
   doc: Always prompt before removing

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsltproc_lite.cwl
+id: xsltproc_lite.cwl
 inputs: []
 outputs:
 - id: out_stdout

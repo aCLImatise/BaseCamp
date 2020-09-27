@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_data_ids.cwl
+id: map_data_ids.cwl
 inputs:
 - id: in_col
   doc: "The column number (1 based) in the data file that\ncorresponds to old_name\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h52gif.cwl
+id: h52gif.cwl
 inputs:
 - id: in_i
   doc: ''

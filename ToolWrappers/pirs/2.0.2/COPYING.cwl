@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../COPYING.cwl
+id: COPYING.cwl
 inputs: []
 outputs:
 - id: out_stdout

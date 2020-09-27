@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_add_default_collection.cwl
+id: anvi_script_add_default_collection.cwl
 inputs:
 - id: in_pan_or_profile_db
   doc: "Anvi'o pan or profile database (and even genes\ndatabase in appropriate contexts)."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicHyperoptDetectLoopsHiCCUPS.cwl
+id: hicHyperoptDetectLoopsHiCCUPS.cwl
 inputs:
 - id: in_maximum_number_of_loops
   doc: "The maximum number of loops that should be used for\noptimization computation."
@@ -16,7 +16,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --proteinFile
-- id: in_path_to_juicerjar
+- id: in_juicer_path
   doc: path to juicer.jar
   type: File
   inputBinding:
@@ -56,11 +56,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --restricted
-- id: in_var_11
-  doc: '[--outputFileName OUTPUTFILENAME]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

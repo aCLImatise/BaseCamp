@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../optimir_summarize.cwl
+id: optimir_summarize.cwl
 inputs:
 - id: in_dir
   doc: Full path of the directory containing results

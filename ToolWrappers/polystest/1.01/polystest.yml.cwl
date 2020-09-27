@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polystest.yml.cwl
+id: polystest.yml.cwl
 inputs: []
 outputs:
 - id: out_stdout

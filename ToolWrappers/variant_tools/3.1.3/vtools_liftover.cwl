@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_liftover.cwl
+id: vtools_liftover.cwl
 inputs:
 - id: in_flip
   doc: "Flip primary and alternative reference genomes so that\nthe specified build\

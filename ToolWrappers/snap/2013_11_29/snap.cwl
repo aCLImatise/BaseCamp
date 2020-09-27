@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snap.cwl
+id: snap.cwl
 inputs:
 - id: in_lc_mask
   doc: treat lowercase as N

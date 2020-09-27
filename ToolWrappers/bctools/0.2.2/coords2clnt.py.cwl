@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coords2clnt.py.cwl
+id: coords2clnt.py.cwl
 inputs:
 - id: in_outfile
   doc: Write results to this file.

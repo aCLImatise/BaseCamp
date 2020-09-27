@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_aacomp.pl.cwl
+id: bp_aacomp.pl.cwl
 inputs:
 - id: in_f
   doc: ''

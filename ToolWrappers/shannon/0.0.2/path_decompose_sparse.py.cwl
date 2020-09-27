@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../path_decompose_sparse.py.cwl
+id: path_decompose_sparse.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

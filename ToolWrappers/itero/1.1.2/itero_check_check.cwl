@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../itero_check_check.cwl
+id: itero_check_check.cwl
 inputs:
 - id: in_it_ero
   doc: ''

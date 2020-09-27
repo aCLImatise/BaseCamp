@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sha256sum.cwl
+id: sha256sum.cwl
 inputs:
 - id: in_binary
   doc: read in binary mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../legacy_blast.pl.cwl
+id: legacy_blast.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

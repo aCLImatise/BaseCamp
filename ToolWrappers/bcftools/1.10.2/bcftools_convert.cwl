@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_convert.cwl
+id: bcftools_convert.cwl
 inputs:
 - id: in_exclude
   doc: exclude sites for which the expression is true
@@ -123,15 +123,13 @@ inputs:
   inputBinding:
     prefix: --haplegendsample2vcf
 - id: in_tsv_two_vcf
-  doc: ''
+  doc: "-c, --columns <string>      columns of the input tsv file [ID,CHROM,POS,AA]\n\
+    -f, --fasta-ref <file>      reference sequence in fasta format\n-s, --samples\
+    \ <list>        list of sample names\n-S, --samples-file <file>   file of sample\
+    \ names\n"
   type: File
   inputBinding:
     prefix: --tsv2vcf
-- id: in_columns
-  doc: columns of the input tsv file [ID,CHROM,POS,AA]
-  type: File
-  inputBinding:
-    prefix: --columns
 - id: in_input_file
   doc: ''
   type: string

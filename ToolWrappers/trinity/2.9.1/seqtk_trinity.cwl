@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_trinity.cwl
+id: seqtk_trinity.cwl
 inputs:
 - id: in_seq_tk
   doc: ''

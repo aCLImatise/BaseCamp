@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../descseq.cwl
+id: descseq.cwl
 inputs:
 - id: in_name
   doc: string     Name of the sequence (Any string)

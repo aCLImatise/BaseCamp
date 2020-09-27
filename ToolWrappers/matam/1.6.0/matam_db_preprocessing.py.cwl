@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matam_db_preprocessing.py.cwl
+id: matam_db_preprocessing.py.cwl
 inputs:
 - id: in_input_ref
   doc: Input reference file (fasta format). Silva-formated taxonomies will be used

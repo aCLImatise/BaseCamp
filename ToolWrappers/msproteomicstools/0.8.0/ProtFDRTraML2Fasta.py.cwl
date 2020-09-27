@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProtFDRTraML2Fasta.py.cwl
+id: ProtFDRTraML2Fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

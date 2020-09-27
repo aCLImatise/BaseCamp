@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank_tutorial.cwl
+id: bank_tutorial.cwl
 inputs:
 - id: in_bank_name_slash
   doc: ''

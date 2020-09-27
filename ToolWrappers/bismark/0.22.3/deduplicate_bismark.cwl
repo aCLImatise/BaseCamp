@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deduplicate_bismark.cwl
+id: deduplicate_bismark.cwl
 inputs:
 - id: in_s_slash_single
   doc: 'deduplicate single-end BAM/SAM Bismark files. Default: [AUTO-DETECT]'

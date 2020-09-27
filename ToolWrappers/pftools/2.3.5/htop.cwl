@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htop.cwl
+id: htop.cwl
 inputs:
 - id: in_emulate_hmm_fragment
   doc: ': emulate HMM fragment search (HMMER1 specific).'

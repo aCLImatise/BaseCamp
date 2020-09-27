@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfm_train.cwl
+id: cfm_train.cwl
 inputs:
 - id: in_input_filename
   doc: ''

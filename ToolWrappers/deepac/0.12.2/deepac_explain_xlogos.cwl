@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_explain_xlogos.cwl
+id: deepac_explain_xlogos.cwl
 inputs:
 - id: in_fast_a_dir
   doc: Directory containing motifs per filter (.fasta)

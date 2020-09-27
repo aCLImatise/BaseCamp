@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_bulk_load_gff.pl.cwl
+id: bp_bulk_load_gff.pl.cwl
 inputs:
 - id: in_of__database
   doc: of --database.

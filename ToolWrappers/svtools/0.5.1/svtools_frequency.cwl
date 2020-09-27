@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_frequency.cwl
+id: svtools_frequency.cwl
 inputs:
 - id: in_support
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../editconf.cwl
+id: editconf.cwl
 inputs:
 - id: in_config
   doc: This file can be a YAML file, JSON file or JSON string
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --config
 - id: in_input_gro_path
-  doc: ''
+  doc: "--output_gro_path OUTPUT_GRO_PATH\n"
   type: File
   inputBinding:
     prefix: --input_gro_path

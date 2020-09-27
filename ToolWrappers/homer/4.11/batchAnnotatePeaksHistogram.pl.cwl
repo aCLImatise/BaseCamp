@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchAnnotatePeaksHistogram.pl.cwl
+id: batchAnnotatePeaksHistogram.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

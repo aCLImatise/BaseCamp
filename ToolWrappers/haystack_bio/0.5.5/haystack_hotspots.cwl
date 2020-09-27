@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haystack_hotspots.cwl
+id: haystack_hotspots.cwl
 inputs:
 - id: in_selection
   doc: VARIABLE REGIONS-

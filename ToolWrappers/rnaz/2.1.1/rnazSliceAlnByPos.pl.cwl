@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazSliceAlnByPos.pl.cwl
+id: rnazSliceAlnByPos.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

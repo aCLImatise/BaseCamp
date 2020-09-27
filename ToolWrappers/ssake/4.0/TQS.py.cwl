@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TQS.py.cwl
+id: TQS.py.cwl
 inputs:
 - id: in_sequence
   doc: "=SEQFILE\nIllumina sequence file - Output format from the 1G\nGenome Analyzer\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jimage_info.cwl
+id: jimage_info.cwl
 inputs:
 - id: in_j_image
   doc: ''

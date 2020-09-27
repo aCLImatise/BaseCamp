@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_stats.cwl
+id: samtools_stats.cwl
 inputs:
 - id: in_coverage
   doc: ',<int>,<int>    Coverage distribution min,max,step [1,1000,1]'

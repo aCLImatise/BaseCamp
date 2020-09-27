@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GSvar_special_regions.tsv.cwl
+id: GSvar_special_regions.tsv.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_thermoswitch.py.cwl
+id: design_thermoswitch.py.cwl
 inputs:
 - id: in_package
   doc: "Chose the calculation package: hotknots, pkiss,\nnupack, or vrna/ViennaRNA\

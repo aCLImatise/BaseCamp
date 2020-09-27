@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed2pos.pl.cwl
+id: bed2pos.pl.cwl
 inputs:
 - id: in_check
   doc: (Checks if the file is already peak/pos formatted)

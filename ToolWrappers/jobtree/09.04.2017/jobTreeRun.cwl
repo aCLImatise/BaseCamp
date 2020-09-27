@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jobTreeRun.cwl
+id: jobTreeRun.cwl
 inputs:
 - id: in_logoff
   doc: Turn off logging. (default is CRITICAL)

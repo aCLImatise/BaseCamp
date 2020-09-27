@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtdbg_cns.cwl
+id: wtdbg_cns.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [1]
@@ -48,11 +48,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -H
-- id: in_high_coverage_cutoff
-  doc: High coverage cutoff = avg_cov / <-L> [10]
-  type: long
-  inputBinding:
-    prefix: -L
 - id: in_candidate_strategy_bestkmers
   doc: "Candidate strategy, 0: best-kmers, 1: median length, 2: first (include), 3:\
     \ first (exclude), 4: longest, 5, shortest, [0]\nIn DAG correction, force to use\

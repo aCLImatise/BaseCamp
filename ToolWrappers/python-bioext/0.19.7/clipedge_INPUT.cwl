@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipedge_INPUT.cwl
+id: clipedge_INPUT.cwl
 inputs:
 - id: in_r
   doc: ''

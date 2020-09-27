@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Circle_Map_bam2bam.cwl
+id: Circle_Map_bam2bam.cwl
 inputs:
 - id: in_input_bam_file
   doc: 'Input: bam file containing the reads extracted by'

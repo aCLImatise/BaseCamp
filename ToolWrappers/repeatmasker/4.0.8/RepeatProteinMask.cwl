@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepeatProteinMask.cwl
+id: RepeatProteinMask.cwl
 inputs:
 - id: in_engine
   doc: "|abblast|wublast\nUse the provided search engine to run the blastx runs."

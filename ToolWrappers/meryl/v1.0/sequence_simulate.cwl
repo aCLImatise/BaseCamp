@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequence_simulate.cwl
+id: sequence_simulate.cwl
 inputs:
 - id: in_genome
   doc: sample reads from these sequences

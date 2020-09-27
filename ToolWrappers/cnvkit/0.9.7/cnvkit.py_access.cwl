@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_access.cwl
+id: cnvkit.py_access.cwl
 inputs:
 - id: in_min_gap_size
   doc: "Minimum gap size between accessible sequence regions.\nRegions separated by\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ref_eval_estimate_true_assembly.cwl
+id: ref_eval_estimate_true_assembly.cwl
 inputs:
 - id: in_reference
   doc: "The prefix of the reference built by rsem-prepare-reference.\nRequired."

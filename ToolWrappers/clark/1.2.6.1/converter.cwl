@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../converter.cwl
+id: converter.cwl
 inputs: []
 outputs:
 - id: out_stdout

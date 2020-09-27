@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crossrates.pl.cwl
+id: crossrates.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

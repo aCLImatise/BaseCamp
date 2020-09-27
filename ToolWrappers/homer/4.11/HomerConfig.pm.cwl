@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HomerConfig.pm.cwl
+id: HomerConfig.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.ngsplotdb_ngsplotdb_hg19_post_link.sh.cwl
+id: .ngsplotdb_ngsplotdb_hg19_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

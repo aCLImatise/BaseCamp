@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_adpred.cwl
+id: run_adpred.cwl
 inputs:
 - id: in_id
   doc: '| --uniprot-id'

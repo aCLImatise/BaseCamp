@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_lineage_wf.cwl
+id: checkm_lineage_wf.cwl
 inputs:
 - id: in_reduced_tree
   doc: use reduced tree (requires <16GB of memory) for determining lineage of each

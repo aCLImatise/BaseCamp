@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_kmer_build.cwl
+id: rgi_kmer_build.cwl
 inputs:
 - id: in_input_directory
   doc: input directory of prevalence data

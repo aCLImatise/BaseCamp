@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_TFBScan.cwl
+id: TOBIAS_TFBScan.cwl
 inputs:
 - id: in__motifs_file
   doc: ', --motifs         File containing motifs in either MEME, PFM or JASPAR format'

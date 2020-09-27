@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netfetch.cwl
+id: netfetch.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportRDPComparison.cwl
+id: ktImportRDPComparison.cwl
 inputs:
 - id: in_rdp_comparison
   doc: RDP comparison result downloaded as text.

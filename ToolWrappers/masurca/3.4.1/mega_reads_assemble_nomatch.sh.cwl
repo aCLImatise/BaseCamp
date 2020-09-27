@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mega_reads_assemble_nomatch.sh.cwl
+id: mega_reads_assemble_nomatch.sh.cwl
 inputs:
 - id: in_a
   doc: ''

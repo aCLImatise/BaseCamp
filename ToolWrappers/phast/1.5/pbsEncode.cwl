@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbsEncode.cwl
+id: pbsEncode.cwl
 inputs:
 - id: in_discard_gaps
   doc: "Discard gaps in the PBS.  Gaps in the input data are assumed\nto be represented\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_codon_alignment.cwl
+id: extract_codon_alignment.cwl
 inputs:
 - id: in_aligned_cds
   doc: The CDS alignment.

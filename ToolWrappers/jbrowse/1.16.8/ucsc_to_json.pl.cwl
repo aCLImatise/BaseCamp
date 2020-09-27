@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: ../../../ucsc_to_json.pl.cwl
+id: ucsc_to_json.pl.cwl
 inputs:
+- id: in_in
+  doc: "directory containing the UCSC database dump (lots of .txt.gz and\n.sql files)"
+  type: Directory
+  inputBinding:
+    prefix: --in
 - id: in_out
   doc: output directory for JSON, defaults to "data/"
   type: Directory
@@ -66,16 +71,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_var_11
-  doc: \
+- id: in__subfeatureclasses_
+  doc: "\\\n--subfeatureClasses '{\"CDS\":\"transcript-CDS\", \"UTR\": \"transcript-UTR\"\
+    }' \\\n--arrowheadClass transcript-arrowhead\n"
   type: string
   inputBinding:
     prefix: --cssclass
-- id: in_ucsc_to_json_do_tpl
-  doc: \
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

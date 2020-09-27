@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnapi.py.cwl
+id: dnapi.py.cwl
 inputs:
 - id: in_range_single_kmer
   doc: "[KMER_BEG:KMER_END:INCREMENT | KMER_LEN]\nrange of kmers or a single kmer\

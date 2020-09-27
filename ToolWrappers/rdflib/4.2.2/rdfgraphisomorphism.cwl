@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rdfgraphisomorphism.cwl
+id: rdfgraphisomorphism.cwl
 inputs:
 - id: in_stdin
   doc: Load from STDIN as well

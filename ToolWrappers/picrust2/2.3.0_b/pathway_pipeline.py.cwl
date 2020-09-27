@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathway_pipeline.py.cwl
+id: pathway_pipeline.py.cwl
 inputs:
 - id: in_input
   doc: "Input TSV table of gene family abundances (either the\nunstratified or stratified\

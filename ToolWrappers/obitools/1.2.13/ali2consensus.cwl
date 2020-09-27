@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ali2consensus.cwl
+id: ali2consensus.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

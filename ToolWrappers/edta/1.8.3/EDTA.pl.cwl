@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EDTA.pl.cwl
+id: EDTA.pl.cwl
 inputs:
 - id: in_genome
   doc: '[File]  The genome FASTA'

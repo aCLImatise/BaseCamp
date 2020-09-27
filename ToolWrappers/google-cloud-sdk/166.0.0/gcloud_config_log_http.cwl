@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_log_http.cwl
+id: gcloud_config_log_http.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

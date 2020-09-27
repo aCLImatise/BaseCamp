@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drive_pull.cwl
+id: drive_pull.cwl
 inputs:
 - id: in_all
   doc: all the starred files
@@ -62,21 +62,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -force
-- id: in_hidden
-  doc: allows pulling of hidden paths
-  type: boolean
-  inputBinding:
-    prefix: -hidden
-- id: in_id
-  doc: pull by id instead of path
-  type: boolean
-  inputBinding:
-    prefix: -id
-- id: in_ignore_checksum
-  doc: avoids computation of checksums as a final check.
-  type: boolean
-  inputBinding:
-    prefix: -ignore-checksum
 - id: in_ignore_conflict
   doc: turns off the conflict resolution safety
   type: boolean

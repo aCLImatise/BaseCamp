@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaeuk_taxtocontig.cwl
+id: metaeuk_taxtocontig.cwl
 inputs:
 - id: in_comp_bias_corr
   doc: Correct for locally biased amino acid composition (range 0-1) [1]

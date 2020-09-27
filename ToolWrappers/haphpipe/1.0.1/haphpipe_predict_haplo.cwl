@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_predict_haplo.cwl
+id: haphpipe_predict_haplo.cwl
 inputs:
 - id: in_fq_one
   doc: Fastq file with read 1

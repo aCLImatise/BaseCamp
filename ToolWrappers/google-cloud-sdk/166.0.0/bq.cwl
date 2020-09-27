@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bq.cwl
+id: bq.cwl
 inputs:
 - id: in_api
   doc: ": API endpoint to talk to.\n(default: 'https://www.googleapis.com')"

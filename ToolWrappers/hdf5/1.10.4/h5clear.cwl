@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5clear.cwl
+id: h5clear.cwl
 inputs:
 - id: in_status
   doc: Clear the status_flags field in the file's superblock

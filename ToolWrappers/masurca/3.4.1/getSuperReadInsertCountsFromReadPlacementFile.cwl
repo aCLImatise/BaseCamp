@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getSuperReadInsertCountsFromReadPlacementFile.cwl
+id: getSuperReadInsertCountsFromReadPlacementFile.cwl
 inputs:
 - id: in_input
   doc: Input file (/dev/fd/0)

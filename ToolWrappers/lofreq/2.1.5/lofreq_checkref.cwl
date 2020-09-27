@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_checkref.cwl
+id: lofreq_checkref.cwl
 inputs:
 - id: in_ref_dot_fa
   doc: ''

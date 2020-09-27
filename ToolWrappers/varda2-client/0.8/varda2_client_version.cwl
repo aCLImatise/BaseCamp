@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_version.cwl
+id: varda2_client_version.cwl
 inputs:
 - id: in_v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgSpeciesRna.cwl
+id: hgSpeciesRna.cwl
 inputs:
 - id: in_est
   doc: '- If set will get ESTs rather than mRNAs'

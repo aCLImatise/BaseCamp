@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../opal_stats.py.cwl
+id: opal_stats.py.cwl
 inputs:
 - id: in_input_dir
   doc: Input directory containing gzipped FASTQ files

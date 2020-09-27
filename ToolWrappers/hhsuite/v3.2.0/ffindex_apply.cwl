@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_apply.cwl
+id: ffindex_apply.cwl
 inputs:
 - id: in_i
   doc: ''

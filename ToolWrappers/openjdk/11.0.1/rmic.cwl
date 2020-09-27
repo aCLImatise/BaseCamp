@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmic.cwl
+id: rmic.cwl
 inputs:
 - id: in_invalid_option_argument
   doc: an invalid option or argument.

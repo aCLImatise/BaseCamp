@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_mrtrans.pl.cwl
+id: bp_mrtrans.pl.cwl
 inputs:
 - id: in__output_filename
   doc: '- the output filename [default STDOUT]'

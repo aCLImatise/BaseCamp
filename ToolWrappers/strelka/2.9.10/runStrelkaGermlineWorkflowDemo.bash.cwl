@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runStrelkaGermlineWorkflowDemo.bash.cwl
+id: runStrelkaGermlineWorkflowDemo.bash.cwl
 inputs: []
 outputs:
 - id: out_stdout

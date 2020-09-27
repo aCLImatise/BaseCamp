@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_ssu_mask.cwl
+id: _ssu_mask.cwl
 inputs: []
 outputs:
 - id: out_stdout

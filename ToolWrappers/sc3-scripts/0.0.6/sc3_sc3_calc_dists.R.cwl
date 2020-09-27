@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sc3_sc3_calc_dists.R.cwl
+id: sc3_sc3_calc_dists.R.cwl
 inputs:
 - id: in_input_object_file
   doc: File name in which a serialized R SingleCellExperiment object where object

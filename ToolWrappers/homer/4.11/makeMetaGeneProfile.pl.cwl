@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeMetaGeneProfile.pl.cwl
+id: makeMetaGeneProfile.pl.cwl
 inputs:
 - id: in_min
   doc: "<#> (minimum size of genes/regions to use, default: 3000)\n(This prevents\

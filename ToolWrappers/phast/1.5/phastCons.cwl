@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phastCons.cwl
+id: phastCons.cwl
 inputs:
 - id: in_msa_format
   doc: "|FASTA|MPM|SS|MAF\nAlignment file format.  Default is to guess format based\
@@ -13,17 +13,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --estimate-rho
-- id: in_transitions
-  doc: "[~]<mu>,<nu>\nFix the transition probabilities of the two-state HMM as\nspecified,\
-    \ rather than estimating them by maximum likelihood.\nAlternatively, if first\
-    \ character of argument is '~', estimate\nparameters, but initialize to specified\
-    \ values.  The argument\n<mu> is the probability of transitioning from the conserved\
-    \ to\nthe non-conserved state, and <nu> is the probability of the\nreverse transition.\
-    \  The probabilities of self transitions are\nthus 1-<mu> and 1-<nu> and the expected\
-    \ lengths of conserved\nand nonconserved elements are 1/<mu> and 1/<nu>, respectively."
+- id: in_score
+  doc: "(Optionally use with --viterbi) Assign a log-odds score to\neach prediction."
   type: boolean
   inputBinding:
-    prefix: --transitions
+    prefix: --score
 - id: in_expected_length
   doc: "[~]<omega>  {--expected-lengths also allowed,\nfor backward compatibility}\n\
     (For use with --target-coverage, alternative to --transitions)\nSet transition\
@@ -33,40 +27,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --expected-length
-- id: in_target_coverage
-  doc: "(Alternative to --transitions) Constrain transition parameters\nsuch that\
-    \ the expected fraction of sites in conserved elements\nis <gamma> (0 < <gamma>\
-    \ < 1).  This is a *prior* rather than\n*posterior* expectation and assumes stationarity\
-    \ of the\nstate-transition process.  Adding this constraint causes the\nratio\
-    \ mu/nu to be fixed at (1-<gamma>)/<gamma>.  If used with\n--expected-length,\
-    \ the transition probabilities will be\ncompletely fixed; otherwise the expected-length\
-    \ parameter\n<omega> will be estimated by maximum likelihood."
-  type: long
-  inputBinding:
-    prefix: --target-coverage
-- id: in_ref_idx
-  doc: "Use coordinate frame of specified sequence in output.  Default\nvalue is 1,\
-    \ first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
-    \ alignment."
-  type: long
-  inputBinding:
-    prefix: --refidx
-- id: in_most_conserved
-  doc: (aka --viterbi) option, is a set of discrete
-  type: boolean
-  inputBinding:
-    prefix: --most-conserved
-- id: in_score
-  doc: "(Optionally use with --viterbi) Assign a log-odds score to\neach prediction."
-  type: boolean
-  inputBinding:
-    prefix: --score
-- id: in_estimate_trees
-  doc: "Estimate free parameters of tree models and write new models\nto <fname_root>.cons.mod\
-    \ and <fname_root>.noncons.mod."
-  type: string
-  inputBinding:
-    prefix: --estimate-trees
 - id: in_rho
   doc: "Set the *scale* (overall evolutionary rate) of the model for\nthe conserved\
     \ state to be <rho> times that of the model for\nthe non-conserved state (0 <\
@@ -76,6 +36,12 @@ inputs:
   type: double
   inputBinding:
     prefix: --rho
+- id: in_estimate_trees
+  doc: "Estimate free parameters of tree models and write new models\nto <fname_root>.cons.mod\
+    \ and <fname_root>.noncons.mod."
+  type: string
+  inputBinding:
+    prefix: --estimate-trees
 - id: in_gc
   doc: "(Optionally use with --estimate-trees or --estimate-rho)\nAssume a background\
     \ nucleotide distribution consistent with\nthe given average G+C content (0 <\
@@ -97,6 +63,28 @@ inputs:
   type: long
   inputBinding:
     prefix: --nrates
+- id: in_transitions
+  doc: "[~]<mu>,<nu>\nFix the transition probabilities of the two-state HMM as\nspecified,\
+    \ rather than estimating them by maximum likelihood.\nAlternatively, if first\
+    \ character of argument is '~', estimate\nparameters, but initialize to specified\
+    \ values.  The argument\n<mu> is the probability of transitioning from the conserved\
+    \ to\nthe non-conserved state, and <nu> is the probability of the\nreverse transition.\
+    \  The probabilities of self transitions are\nthus 1-<mu> and 1-<nu> and the expected\
+    \ lengths of conserved\nand nonconserved elements are 1/<mu> and 1/<nu>, respectively."
+  type: boolean
+  inputBinding:
+    prefix: --transitions
+- id: in_target_coverage
+  doc: "(Alternative to --transitions) Constrain transition parameters\nsuch that\
+    \ the expected fraction of sites in conserved elements\nis <gamma> (0 < <gamma>\
+    \ < 1).  This is a *prior* rather than\n*posterior* expectation and assumes stationarity\
+    \ of the\nstate-transition process.  Adding this constraint causes the\nratio\
+    \ mu/nu to be fixed at (1-<gamma>)/<gamma>.  If used with\n--expected-length,\
+    \ the transition probabilities will be\ncompletely fixed; otherwise the expected-length\
+    \ parameter\n<omega> will be estimated by maximum likelihood."
+  type: long
+  inputBinding:
+    prefix: --target-coverage
 - id: in_viterbi
   doc: "[alternatively --most-conserved], -V <fname>\nPredict discrete elements using\
     \ the Viterbi algorithm and\nwrite to specified file.  Output is in BED format,\
@@ -122,6 +110,13 @@ inputs:
   type: File
   inputBinding:
     prefix: --log
+- id: in_ref_idx
+  doc: "Use coordinate frame of specified sequence in output.  Default\nvalue is 1,\
+    \ first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
+    \ alignment."
+  type: long
+  inputBinding:
+    prefix: --refidx
 - id: in_seqname
   doc: "(Optionally use with --viterbi) Use specified string\nfor 'seqname' (GFF)\
     \ or 'chrom' field in output file.  Default\nis obtained from input file name\
@@ -302,26 +297,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore-missing
-- id: in_algorithm_dot
-  doc: To specify them at the command line, use either the
-  type: string
-  inputBinding:
-    position: 0
-- id: in_alignment_dot
-  doc: They can be suppressed with the --no-post-probs
-  type: string
-  inputBinding:
-    position: 0
-- id: in_option_dot
-  doc: The secondary type of output, activated with the
-  type: string
-  inputBinding:
-    position: 1
-- id: in_here_dot
-  doc: For example, it is possible to produce conservation scores
-  type: string
-  inputBinding:
-    position: 0
 - id: in_parameter_dot
   doc: Also predict conserved elements as well as
   type: string

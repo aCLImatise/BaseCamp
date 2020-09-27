@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_flanks.pl.cwl
+id: bp_flanks.pl.cwl
 inputs:
 - id: in_position_uses_table
   doc: Position uses simple nucleotide sequence feature table

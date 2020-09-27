@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../commonkmers.sh.cwl
+id: commonkmers.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g will\

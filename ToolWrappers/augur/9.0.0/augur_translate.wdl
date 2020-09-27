@@ -23,7 +23,7 @@ task AugurTranslate {
       ~{if defined(vcf_reference) then ("--vcf-reference " +  '"' + vcf_reference + '"') else ""}
   >>>
   parameter_meta {
-    reference_sequence: ""
+    reference_sequence: "[--genes GENES [GENES ...]]\\n[--output-node-data OUTPUT_NODE_DATA]\\n[--alignment-output ALIGNMENT_OUTPUT]\\n[--vcf-reference-output VCF_REFERENCE_OUTPUT]\\n[--vcf-reference VCF_REFERENCE]"
     tree: "prebuilt Newick -- no tree will be built if provided\\n(default: None)"
     ancestral_sequences: "JSON (fasta input) or VCF (VCF input) containing\\nancestral and tip sequences (default: None)"
     genes: "genes to translate (list or file containing list)\\n(default: None)"

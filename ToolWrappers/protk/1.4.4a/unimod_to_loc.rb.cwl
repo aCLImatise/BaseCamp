@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unimod_to_loc.rb.cwl
+id: unimod_to_loc.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

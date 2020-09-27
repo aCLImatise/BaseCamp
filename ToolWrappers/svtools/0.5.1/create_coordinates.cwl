@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_coordinates.cwl
+id: create_coordinates.cwl
 inputs:
 - id: in_input_vcf
   doc: VCF input

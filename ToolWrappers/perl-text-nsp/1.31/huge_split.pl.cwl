@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../huge_split.pl.cwl
+id: huge_split.pl.cwl
 inputs:
 - id: in_split
   doc: "Split the bigram file into smaller files. Every\nsmaller file contains N bigrams.\

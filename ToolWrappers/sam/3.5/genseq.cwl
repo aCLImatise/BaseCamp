@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genseq.cwl
+id: genseq.cwl
 inputs:
 - id: in_n_seq
   doc: number of sequences to generate

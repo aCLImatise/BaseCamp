@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_miso.cwl
+id: compare_miso.cwl
 inputs:
 - id: in_compare_samples
   doc: "Compute comparison statistics between the two given\nsamples. Expects three\

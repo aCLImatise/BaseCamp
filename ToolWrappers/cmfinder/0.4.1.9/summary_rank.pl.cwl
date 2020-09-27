@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summary_rank.pl.cwl
+id: summary_rank.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

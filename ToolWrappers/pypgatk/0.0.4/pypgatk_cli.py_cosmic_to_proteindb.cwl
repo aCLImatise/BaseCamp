@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pypgatk_cli.py_cosmic_to_proteindb.cwl
+id: pypgatk_cli.py_cosmic_to_proteindb.cwl
 inputs:
 - id: in_config_file
   doc: Configuration file for the cosmic data pipelines

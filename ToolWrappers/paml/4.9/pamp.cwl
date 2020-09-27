@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pamp.cwl
+id: pamp.cwl
 inputs: []
 outputs:
 - id: out_stdout

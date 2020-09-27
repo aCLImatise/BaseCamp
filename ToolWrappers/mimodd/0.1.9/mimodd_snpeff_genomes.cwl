@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_snpeff_genomes.cwl
+id: mimodd_snpeff_genomes.cwl
 inputs:
 - id: in_config
   doc: "location of the SnpEff installation directory. Will\noverride MiModD config\

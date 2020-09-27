@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../configureStrelkaSomaticWorkflow.py.cwl
+id: configureStrelkaSomaticWorkflow.py.cwl
 inputs:
 - id: in_config
   doc: "provide a configuration file to override defaults in\nglobal config file (/usr/local/share/strelka-2.9.10-0/\n\

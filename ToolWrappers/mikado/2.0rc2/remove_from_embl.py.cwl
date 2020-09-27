@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_from_embl.py.cwl
+id: remove_from_embl.py.cwl
 inputs:
 - id: in_script
   doc: ''

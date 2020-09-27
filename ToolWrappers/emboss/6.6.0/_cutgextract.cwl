@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_cutgextract.cwl
+id: _cutgextract.cwl
 inputs:
 - id: in_release
   doc: string     CUTG release (Any string)

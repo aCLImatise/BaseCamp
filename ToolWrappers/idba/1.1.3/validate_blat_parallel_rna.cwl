@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_blat_parallel_rna.cwl
+id: validate_blat_parallel_rna.cwl
 inputs: []
 outputs:
 - id: out_stdout

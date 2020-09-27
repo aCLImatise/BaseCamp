@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amalgamateSAM.cwl
+id: amalgamateSAM.cwl
 inputs: []
 outputs:
 - id: out_stdout

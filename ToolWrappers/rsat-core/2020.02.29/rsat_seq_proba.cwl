@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_seq_proba.cwl
+id: rsat_seq_proba.cwl
 inputs:
 - id: in_seq_proba
   doc: "\e[1mDESCRIPTION\e[0m"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffutils_cli_fetch_ids.cwl
+id: gffutils_cli_fetch_ids.cwl
 inputs:
 - id: in_gff_utils_cli
   doc: ''

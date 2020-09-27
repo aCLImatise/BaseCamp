@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FET.pl.cwl
+id: FET.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

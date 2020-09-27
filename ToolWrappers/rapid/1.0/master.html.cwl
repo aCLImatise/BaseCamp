@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../master.html.cwl
+id: master.html.cwl
 inputs: []
 outputs:
 - id: out_stdout

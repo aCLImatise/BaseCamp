@@ -16,11 +16,15 @@ task Partitionsmp {
     Boolean? experimental_pair_bonus
     Boolean? xo
     Boolean? xs
-    String written_dot
+    String partition
+    File sequence_file
+    File pfs_file
   }
   command <<<
     partition_smp \
-      ~{written_dot} \
+      ~{partition} \
+      ~{sequence_file} \
+      ~{pfs_file} \
       ~{if (dna) then "--DNA" else ""} \
       ~{if (disable_coax) then "--disablecoax" else ""} \
       ~{if (quiet) then "--quiet" else ""} \
@@ -51,7 +55,9 @@ task Partitionsmp {
     experimental_pair_bonus: "Input text file with bonuses (in kcal) as a matrix. As with SHAPE, bonuses\\nwill be applied twice to internal base pairs, once to edge base pairs, and\\nnot at all to single stranded regions.\\nDefault is no experimental pair bonus file specified."
     xo: "Specify an intercept (overall offset) to use with the 2D experimental pair\\nbonus file.\\nDefault is 0.0 (no change to input bonuses)."
     xs: "Specify a number to multiply the experimental pair bonus matrix by.\\nDefault is 1.0 (no change to input bonuses).\\n"
-    written_dot: "========================================="
+    partition: ""
+    sequence_file: ""
+    pfs_file: ""
   }
   output {
     File out_stdout = stdout()

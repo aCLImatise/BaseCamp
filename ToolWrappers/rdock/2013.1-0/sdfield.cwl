@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdfield.cwl
+id: sdfield.cwl
 inputs:
 - id: in_field_name
   doc: ''

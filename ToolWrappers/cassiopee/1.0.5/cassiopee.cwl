@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cassiopee.cwl
+id: cassiopee.cwl
 inputs:
 - id: in_maximum_index_depth
   doc: ': maximum index depth / max pattern size'

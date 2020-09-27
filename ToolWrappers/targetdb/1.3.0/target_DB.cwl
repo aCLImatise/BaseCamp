@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../target_DB.cwl
+id: target_DB.cwl
 inputs:
 - id: in__gene_enter
   doc: ', --gene           enter a single gene name'

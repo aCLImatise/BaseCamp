@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HTseq2DIEGO.pl.cwl
+id: HTseq2DIEGO.pl.cwl
 inputs:
 - id: in_file_containing_files
   doc: "file containing input files and ids\nid [tab] path.to/file"

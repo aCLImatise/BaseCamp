@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosomer_transfer_annotation.cwl
+id: chromosomer_transfer_annotation.cwl
 inputs:
 - id: in_f
   doc: ''

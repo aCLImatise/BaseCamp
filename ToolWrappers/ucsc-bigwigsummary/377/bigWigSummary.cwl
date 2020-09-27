@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigWigSummary.cwl
+id: bigWigSummary.cwl
 inputs:
 - id: in_type
   doc: "where X is one of:\nmean - average value in region (default)\nmin - minimum\

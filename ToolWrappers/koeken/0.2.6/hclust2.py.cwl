@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hclust2.py.cwl
+id: hclust2.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

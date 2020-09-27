@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lordec_stat.cwl
+id: lordec_stat.cwl
 inputs: []
 outputs:
 - id: out_stdout

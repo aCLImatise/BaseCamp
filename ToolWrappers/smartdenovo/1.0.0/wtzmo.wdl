@@ -14,7 +14,6 @@ task Wtzmo {
     Int? record_pairs_sequences
     Boolean? force_overwrite
     Int? option_homopolymer_compression
-    Int? kmer_size_k
     Int? filter_high_frequency_kmers
     Int? minimum_size_kmer
     Int? subsampling_kmers_s
@@ -57,7 +56,6 @@ task Wtzmo {
       ~{if defined(record_pairs_sequences) then ("-9 " +  '"' + record_pairs_sequences + '"') else ""} \
       ~{if (force_overwrite) then "-f" else ""} \
       ~{if defined(option_homopolymer_compression) then ("-H " +  '"' + option_homopolymer_compression + '"') else ""} \
-      ~{if defined(kmer_size_k) then ("-k " +  '"' + kmer_size_k + '"') else ""} \
       ~{if defined(filter_high_frequency_kmers) then ("-K " +  '"' + filter_high_frequency_kmers + '"') else ""} \
       ~{if defined(minimum_size_kmer) then ("-d " +  '"' + minimum_size_kmer + '"') else ""} \
       ~{if defined(subsampling_kmers_s) then ("-S " +  '"' + subsampling_kmers_s + '"') else ""} \
@@ -99,7 +97,6 @@ task Wtzmo {
     record_pairs_sequences: "Record pairs of sequences have beed aligned regardless of successful, including pairs from '-L'\\nFormat: read1\\tread2"
     force_overwrite: "Force overwrite"
     option_homopolymer_compression: "Option of homopolymer compression, [3]\\n1: trun on compression on kmer\\n2: trun on compression on small-kmer(zmer)"
-    kmer_size_k: "Kmer size, 5 <= <-k> <= 32, [16]"
     filter_high_frequency_kmers: "Filter high frequency kmers, maybe repetitive, [0]\\n0: set K to 5 * <average_kmer_depth>, but no less than 100"
     minimum_size_kmer: "Minimum size of total seeding region for kmer windows, [300]"
     subsampling_kmers_s: "Subsampling kmers, 1/<-S> kmers are indexed, [4]"

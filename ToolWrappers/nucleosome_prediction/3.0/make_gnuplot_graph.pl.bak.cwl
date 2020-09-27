@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_gnuplot_graph.pl.bak.cwl
+id: make_gnuplot_graph.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

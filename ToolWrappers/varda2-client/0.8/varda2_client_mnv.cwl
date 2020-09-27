@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_mnv.cwl
+id: varda2_client_mnv.cwl
 inputs:
 - id: in_start
   doc: Start of region

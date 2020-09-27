@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getLikelyAdapters.pl.cwl
+id: getLikelyAdapters.pl.cwl
 inputs:
 - id: in_len
   doc: '<#,#,...,#> (lengths of oligos to look for, default: 10,20,25,30)'

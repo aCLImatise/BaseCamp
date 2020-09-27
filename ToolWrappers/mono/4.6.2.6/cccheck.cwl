@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cccheck.cwl
+id: cccheck.cwl
 inputs:
 - id: in_assembly
   doc: Assembly to check.

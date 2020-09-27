@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmer_count.cwl
+id: kmer_count.cwl
 inputs:
 - id: in_km_er_cov
   doc: ''

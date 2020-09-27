@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idpAssemble.cwl
+id: idpAssemble.cwl
 inputs: []
 outputs:
 - id: out_stdout

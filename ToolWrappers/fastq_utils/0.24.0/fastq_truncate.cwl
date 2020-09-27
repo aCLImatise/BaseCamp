@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_truncate.cwl
+id: fastq_truncate.cwl
 inputs:
 - id: in_fast_q_one
   doc: ''

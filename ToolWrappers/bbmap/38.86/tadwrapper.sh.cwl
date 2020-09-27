@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadwrapper.sh.cwl
+id: tadwrapper.sh.cwl
 inputs:
 - id: in_in
   doc: ''

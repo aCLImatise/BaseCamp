@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../libtimsdata.so.cwl
+id: libtimsdata.so.cwl
 inputs: []
 outputs:
 - id: out_stdout

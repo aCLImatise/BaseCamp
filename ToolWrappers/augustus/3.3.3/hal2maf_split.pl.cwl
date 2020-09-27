@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hal2maf_split.pl.cwl
+id: hal2maf_split.pl.cwl
 inputs:
 - id: in_hal_file
   doc: F is the input hal file

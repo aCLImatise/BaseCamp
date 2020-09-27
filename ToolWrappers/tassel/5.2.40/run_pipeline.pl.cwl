@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_pipeline.pl.cwl
+id: run_pipeline.pl.cwl
 inputs:
 - id: in_format
   doc: ': Import file format [SqrMatrix, Sequence, Unknown, Fasta, Hapmap, HapmapLIX,

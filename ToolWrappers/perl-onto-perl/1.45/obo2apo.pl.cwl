@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obo2apo.pl.cwl
+id: obo2apo.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

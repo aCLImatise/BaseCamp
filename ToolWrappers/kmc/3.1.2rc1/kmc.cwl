@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmc.cwl
+id: kmc.cwl
 inputs:
 - id: in_verbose_mode_shows
   doc: '- verbose mode (shows all parameter settings); default: false'
@@ -21,11 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sm
-- id: in_par_signature_length
-  doc: '<par> - signature length (5, 6, 7, 8, 9, 10, 11); default: 9'
-  type: boolean
-  inputBinding:
-    prefix: -p
 - id: in_aqmbam_input_fasta
   doc: '<a/q/m/bam> - input in FASTA format (-fa), FASTQ format (-fq), multi FASTA
     (-fm) or BAM (-fbam); default: FASTQ'

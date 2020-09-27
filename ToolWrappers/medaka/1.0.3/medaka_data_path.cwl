@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_data_path.cwl
+id: medaka_data_path.cwl
 inputs: []
 outputs:
 - id: out_stdout

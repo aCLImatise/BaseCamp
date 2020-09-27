@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convgraph.pl.cwl
+id: convgraph.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

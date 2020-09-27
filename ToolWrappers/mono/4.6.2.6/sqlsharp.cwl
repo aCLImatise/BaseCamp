@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqlsharp.cwl
+id: sqlsharp.cwl
 inputs: []
 outputs:
 - id: out_stdout

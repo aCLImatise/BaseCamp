@@ -45,7 +45,7 @@ task SvmClassifierpy {
       ~{if defined(out_prediction_accuracy) then ("--outPredictionAccuracy " +  '"' + out_prediction_accuracy + '"') else ""}
   >>>
   parameter_meta {
-    ted: ""
+    ted: "DEGREE -c C -cv CROSS_VALIDATION\\n[-c_lower_bound C_LOWER_BOUND]\\n[-c_upper_bound C_UPPER_BOUND] -a A -b B -oc\\nOUTCLASSIFICATION -oca OUTCLASSIFICATIONACCURACY -op\\nOUTPREDICTION -opa OUTPREDICTIONACCURACY"
     train_wide: "wide part of the train dataset."
     train_design: "design part of the train dataset."
     test_wide: "wide part of the test dataset."

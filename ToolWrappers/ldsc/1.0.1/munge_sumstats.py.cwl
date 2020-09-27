@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../munge_sumstats.py.cwl
+id: munge_sumstats.py.cwl
 inputs:
 - id: in_sum_stats
   doc: Input filename.
@@ -65,10 +65,15 @@ inputs:
   inputBinding:
     prefix: --n-min
 - id: in_chunksize
-  doc: ''
+  doc: Chunksize.
   type: string
   inputBinding:
     prefix: --chunksize
+- id: in_snp
+  doc: "Name of SNP column (if not a name that ldsc\nunderstands). NB: case insensitive."
+  type: string
+  inputBinding:
+    prefix: --snp
 - id: in_n_col
   doc: "Name of N column (if not a name that ldsc\nunderstands). NB: case insensitive."
   type: string
@@ -133,27 +138,14 @@ inputs:
   inputBinding:
     prefix: --nstudy-min
 - id: in_ignore
-  doc: Comma-separated list of column names to ignore.
-  type: string
+  doc: "Comma-separated list of column names to ignore.\n--a1-inc              A1\
+    \ is the increasing allele.\n--keep-maf            Keep the MAF column (if one\
+    \ exists).\n"
+  type: long
   inputBinding:
     prefix: --ignore
-- id: in_a_one_inc
-  doc: A1 is the increasing allele.
-  type: boolean
-  inputBinding:
-    prefix: --a1-inc
-- id: in_keep_maf
-  doc: Keep the MAF column (if one exists).
-  type: boolean
-  inputBinding:
-    prefix: --keep-maf
 - id: in_format_dot
   doc: --daner-n             Use this flag to parse more recent daner* formatted
-  type: string
-  inputBinding:
-    position: 0
-- id: in_chunksize_dot
-  doc: --snp SNP             Name of SNP column (if not a name that ldsc
   type: string
   inputBinding:
     position: 0

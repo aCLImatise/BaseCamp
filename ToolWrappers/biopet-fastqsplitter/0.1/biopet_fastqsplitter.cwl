@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biopet_fastqsplitter.cwl
+id: biopet_fastqsplitter.cwl
 inputs:
 - id: in_log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\

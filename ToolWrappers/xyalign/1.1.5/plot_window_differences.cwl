@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_window_differences.cwl
+id: plot_window_differences.cwl
 inputs:
 - id: in_before
   doc: Full path to dataframe 1 (will be treated) as 'before'

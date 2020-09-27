@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novope2bed.pl.cwl
+id: novope2bed.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

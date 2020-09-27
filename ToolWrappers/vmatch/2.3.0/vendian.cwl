@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vendian.cwl
+id: vendian.cwl
 inputs:
 - id: in_bytes
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../solvebio.cwl
+id: solvebio.cwl
 inputs:
 - id: in_api_host
   doc: Override the default SolveBio API host

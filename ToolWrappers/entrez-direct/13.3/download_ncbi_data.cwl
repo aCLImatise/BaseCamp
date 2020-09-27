@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_ncbi_data.cwl
+id: download_ncbi_data.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../datatool.cwl
+id: datatool.cwl
 inputs: []
 outputs:
 - id: out_stdout

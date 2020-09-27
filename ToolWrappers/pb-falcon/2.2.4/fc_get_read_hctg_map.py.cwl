@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_get_read_hctg_map.py.cwl
+id: fc_get_read_hctg_map.py.cwl
 inputs:
 - id: in_base_dir
   doc: "Substituted as {base_dir} into default inputs.\n(default: .)"

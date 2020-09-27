@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../train_start_PWM.pl.cwl
+id: train_start_PWM.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

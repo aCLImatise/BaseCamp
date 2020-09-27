@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CnvFilterAnnotations.cwl
+id: CnvFilterAnnotations.cwl
 inputs:
 - id: in_in
   doc: Input structural variant list in Bedpe format.

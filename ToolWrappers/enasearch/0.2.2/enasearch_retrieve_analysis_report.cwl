@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enasearch_retrieve_analysis_report.cwl
+id: enasearch_retrieve_analysis_report.cwl
 inputs:
 - id: in_accession
   doc: "Accession id (study accessions (ERP, SRP, DRP, PRJ\nprefixes), experiment\

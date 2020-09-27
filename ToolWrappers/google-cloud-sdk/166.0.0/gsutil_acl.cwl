@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_acl.cwl
+id: gsutil_acl.cwl
 inputs:
 - id: in_u
   doc: :<perm>

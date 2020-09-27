@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gs.cwl
+id: gs.cwl
 inputs:
 - id: in_d_no_pause
   doc: no pause after page   | -q       `quiet', fewer messages

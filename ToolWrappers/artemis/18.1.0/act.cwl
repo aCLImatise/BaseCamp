@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../act.cwl
+id: act.cwl
 inputs:
 - id: in_options
   doc: Read a text file of options from FILE

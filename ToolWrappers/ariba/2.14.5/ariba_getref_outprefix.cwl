@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_getref_outprefix.cwl
+id: ariba_getref_outprefix.cwl
 inputs:
 - id: in_ariba
   doc: ''

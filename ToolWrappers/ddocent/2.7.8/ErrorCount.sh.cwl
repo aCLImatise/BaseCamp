@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ErrorCount.sh.cwl
+id: ErrorCount.sh.cwl
 inputs:
 - id: in_individuals_equals_genotypes
   doc: of individuals and 0 equals 0 total genotypes

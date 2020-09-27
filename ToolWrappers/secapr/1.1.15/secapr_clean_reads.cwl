@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_clean_reads.cwl
+id: secapr_clean_reads.cwl
 inputs:
 - id: in_input
   doc: "The directory containing the unzipped .fastq or .fq\nfiles (raw read files)"

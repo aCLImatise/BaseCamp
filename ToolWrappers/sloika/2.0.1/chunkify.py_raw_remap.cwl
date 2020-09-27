@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chunkify.py_raw_remap.cwl
+id: chunkify.py_raw_remap.cwl
 inputs:
 - id: in_alphabet
   doc: "Alphabet of the sequences (default: b'ACGT')"

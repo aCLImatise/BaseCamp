@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_CutTrim.cwl
+id: hts_CutTrim.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

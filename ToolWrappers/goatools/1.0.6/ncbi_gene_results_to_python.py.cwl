@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi_gene_results_to_python.py.cwl
+id: ncbi_gene_results_to_python.py.cwl
 inputs:
 - id: in_outfile
   doc: "Write current citation report to an ASCII text file.\n"

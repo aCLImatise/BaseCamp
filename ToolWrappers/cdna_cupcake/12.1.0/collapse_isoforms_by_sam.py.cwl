@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collapse_isoforms_by_sam.py.cwl
+id: collapse_isoforms_by_sam.py.cwl
 inputs:
 - id: in_input
   doc: Input FA/FQ filename

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MzTabExporter.cwl
+id: MzTabExporter.cwl
 inputs:
 - id: in_in
   doc: "Input files used to generate the mzTab file. (valid formats: 'featureXML',\

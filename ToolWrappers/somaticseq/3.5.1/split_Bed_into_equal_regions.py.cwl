@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../split_Bed_into_equal_regions.py.cwl
+id: split_Bed_into_equal_regions.py.cwl
 inputs:
 - id: in_input_file
   doc: 'Input merged BED file (default: None)'
   type: File
   inputBinding:
     prefix: --input-file
-- id: in_num_of_files
-  doc: '1 (default: 1)'
-  type: long
-  inputBinding:
-    prefix: --num-of-files
 - id: in_output_files
   doc: "Output BED file (default: <_io.TextIOWrapper\nname='<stdout>' mode='w' encoding='utf-8'>)\n"
   type: File

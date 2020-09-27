@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krakenhll_extract_reads.cwl
+id: krakenhll_extract_reads.cwl
 inputs:
 - id: in_input_fasta_file
   doc: 'input is FASTA file (default: FASTQ)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pilon.cwl
+id: pilon.cwl
 inputs:
 - id: in_genome
   doc: "The input genome we are trying to improve, which must be the reference used\n\

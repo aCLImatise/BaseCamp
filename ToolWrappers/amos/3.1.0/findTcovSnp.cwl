@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findTcovSnp.cwl
+id: findTcovSnp.cwl
 inputs:
 - id: in_prune_quality_discrepancies
   doc: Prune low quality discrepancies from report (no qv > 30)
@@ -26,8 +26,8 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -qvs
-- id: in_options
-  doc: '-------'
+- id: in_prefix
+  doc: ''
   type: string
   inputBinding:
     position: 0

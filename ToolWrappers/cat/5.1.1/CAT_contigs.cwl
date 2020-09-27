@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CAT_contigs.cwl
+id: CAT_contigs.cwl
 inputs:
 - id: in__contigsfastapath_contigs
   doc: ", --contigs_fasta\nPath to contigs fasta file."

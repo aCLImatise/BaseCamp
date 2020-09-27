@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rppr_min_adcl.cwl
+id: rppr_min_adcl.cwl
 inputs:
 - id: in_point_mass
   doc: Treat every pquery as a point mass concentrated on the highest-weight placement.

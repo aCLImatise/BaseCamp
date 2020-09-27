@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_addReferenceCoordinates.cwl
+id: cactus_addReferenceCoordinates.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'

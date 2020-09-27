@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kraken_report.cwl
+id: kraken_report.cwl
 inputs:
 - id: in_show_zeros
   doc: ''

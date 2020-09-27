@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../acpype_params_ac.cwl
+id: acpype_params_ac.cwl
 inputs:
 - id: in_config
   doc: Configuration file

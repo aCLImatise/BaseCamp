@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../javac_source files.cwl
+id: javac_source files.cwl
 inputs:
 - id: in_javac
   doc: ''

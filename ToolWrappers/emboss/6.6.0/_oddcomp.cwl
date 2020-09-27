@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_oddcomp.cwl
+id: _oddcomp.cwl
 inputs:
 - id: in_full_window
   doc: "toggle     [N] Set this option on (Y) if you want the\nwindow size to be set\

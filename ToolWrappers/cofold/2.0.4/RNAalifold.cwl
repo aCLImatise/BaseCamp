@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAalifold.cwl
+id: RNAalifold.cwl
 inputs:
 - id: in_detailed_help
   doc: "Print help, including all details and hidden\noptions, and exit"
@@ -143,16 +143,11 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_structure_dot
-  doc: (default=`1.')
-  type: string
-  inputBinding:
-    position: 0
 - id: in_molecule_dot
   doc: (default=off)
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_characters_dot
   doc: (default=off)
   type: string

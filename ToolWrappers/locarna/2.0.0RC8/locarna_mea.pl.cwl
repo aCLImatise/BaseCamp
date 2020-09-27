@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarna_mea.pl.cwl
+id: locarna_mea.pl.cwl
 inputs:
 - id: in_man
   doc: documentation

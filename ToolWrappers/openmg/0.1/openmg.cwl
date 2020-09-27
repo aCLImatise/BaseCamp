@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../openmg.cwl
+id: openmg.cwl
 inputs:
 - id: in_ec
   doc: ':  elemental composition of the molecules to be generated.'

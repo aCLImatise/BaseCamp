@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqt_cutvect.cwl
+id: sqt_cutvect.cwl
 inputs:
 - id: in_vector
   doc: FASTA with vector sequence(s)

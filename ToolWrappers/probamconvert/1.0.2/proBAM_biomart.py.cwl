@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proBAM_biomart.py.cwl
+id: proBAM_biomart.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

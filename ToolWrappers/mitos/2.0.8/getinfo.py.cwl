@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getinfo.py.cwl
+id: getinfo.py.cwl
 inputs:
 - id: in_outfile
   doc: 'write values to FILE (default: stdout)'

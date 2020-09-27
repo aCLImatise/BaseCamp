@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigBedSummary.cwl
+id: bigBedSummary.cwl
 inputs: []
 outputs:
 - id: out_stdout

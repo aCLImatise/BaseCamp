@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainSort.cwl
+id: chainSort.cwl
 inputs:
 - id: in_target
   doc: on target start rather than score

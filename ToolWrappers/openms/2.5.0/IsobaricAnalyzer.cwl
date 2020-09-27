@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IsobaricAnalyzer.cwl
+id: IsobaricAnalyzer.cwl
 inputs:
 - id: in_type
   doc: "Isobaric Quantitation method used in the experiment. (default: 'itraq4plex'\

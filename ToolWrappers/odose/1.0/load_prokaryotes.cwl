@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../load_prokaryotes.cwl
+id: load_prokaryotes.cwl
 inputs: []
 outputs:
 - id: out_stdout

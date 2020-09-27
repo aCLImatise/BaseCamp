@@ -31,7 +31,7 @@ task RemoveSelectedFeaturesSamplespy {
       ~{if defined(out_flags) then ("--outFlags " +  '"' + out_flags + '"') else ""}
   >>>
   parameter_meta {
-    fft: ""
+    fft: "[-fid FLAGUNIQID] -fd FLAGDROP\\n[-val VALUE] [-con CONDITION] -ow\\nOUTWIDE -of OUTFLAGS"
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."
     id: "Name of the column with unique identifiers."

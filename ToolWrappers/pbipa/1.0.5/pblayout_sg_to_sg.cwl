@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pblayout_sg_to_sg.cwl
+id: pblayout_sg_to_sg.cwl
 inputs:
 - id: in_in_dots_g
   doc: STR  Input SG.

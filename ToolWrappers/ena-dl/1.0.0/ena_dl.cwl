@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ena_dl.cwl
+id: ena_dl.cwl
 inputs:
 - id: in_aspera
   doc: "Path to the Aspera Connect tool \"ascp\" (Default:\n\"which ascp\")"

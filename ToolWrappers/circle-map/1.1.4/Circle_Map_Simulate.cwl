@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Circle_Map_Simulate.cwl
+id: Circle_Map_Simulate.cwl
 inputs:
 - id: in_genome_fasta_file
   doc: "Genome fasta file (Needs to be indexed with samtools\nfaidx)"

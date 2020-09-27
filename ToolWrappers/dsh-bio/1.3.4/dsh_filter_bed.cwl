@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_filter_bed.cwl
+id: dsh_filter_bed.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

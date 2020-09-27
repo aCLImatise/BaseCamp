@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportRDP.cwl
+id: ktImportRDP.cwl
 inputs:
 - id: in_rdp_details
   doc: "RDP assignment details downloaded as text from the RDP\nClassifier web portal\

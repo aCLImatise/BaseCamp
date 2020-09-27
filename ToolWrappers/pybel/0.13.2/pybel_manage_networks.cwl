@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_manage_networks.cwl
+id: pybel_manage_networks.cwl
 inputs:
 - id: in_drop
   doc: Drop a network by its identifier or drop all networks.

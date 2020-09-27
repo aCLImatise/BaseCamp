@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psiCalculator.py.cwl
+id: psiCalculator.py.cwl
 inputs:
 - id: in_o
   doc: ''

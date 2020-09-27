@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AdapterRemoval.cwl
+id: AdapterRemoval.cwl
 inputs:
 - id: in_file_one
   doc: "Input files containing mate 1 reads or single-ended reads; one or\nmore files\

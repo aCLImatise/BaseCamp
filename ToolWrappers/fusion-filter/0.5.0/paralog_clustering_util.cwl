@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paralog_clustering_util.cwl
+id: paralog_clustering_util.cwl
 inputs: []
 outputs:
 - id: out_stdout

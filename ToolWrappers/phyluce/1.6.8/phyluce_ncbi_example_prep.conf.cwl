@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_ncbi_example_prep.conf.cwl
+id: phyluce_ncbi_example_prep.conf.cwl
 inputs: []
 outputs:
 - id: out_stdout

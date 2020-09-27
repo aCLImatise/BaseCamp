@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualimap_rnaseq.cwl
+id: qualimap_rnaseq.cwl
 inputs:
 - id: in_algorithm
   doc: "Counting algorithm:\nuniquely-mapped-reads(default) or\nproportional."

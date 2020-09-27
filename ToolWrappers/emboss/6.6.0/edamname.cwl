@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edamname.cwl
+id: edamname.cwl
 inputs:
 - id: in_namespace
   doc: "menu       [*] By default all terms are returned.\nSearches can be limited\

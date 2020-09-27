@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xhmm.cwl
+id: xhmm.cwl
 inputs:
 - id: in_detailed_help
   doc: "Print help, including all details and hidden\noptions, and exit"
@@ -23,198 +23,64 @@ inputs:
   inputBinding:
     prefix: --readDepths
 - id: in_prepare_targets
-  doc: ''
+  doc: "--targets=STRING          Input targets lists\n--mergedTargets=STRING    Output\
+    \ targets list  (default=`-')"
   type: boolean
   inputBinding:
     prefix: --prepareTargets
-- id: in_targets
-  doc: Input targets lists
-  type: string
-  inputBinding:
-    prefix: --targets
-- id: in_merged_targets
-  doc: Output targets list  (default=`-')
-  type: string
-  inputBinding:
-    prefix: --mergedTargets
 - id: in_merge_g_atk_depths
-  doc: ''
+  doc: "--GATKdepths=STRING       GATK sample_interval_summary output file(s) to\n\
+    be merged [must have *IDENTICAL* target\nlists]\n--GATKdepthsList=STRING   A file\
+    \ containing a list of GATK\nsample_interval_summary output files to be\nmerged\
+    \ [must have *IDENTICAL* target lists]\n--sampleIDmap=STRING      File containing\
+    \ mappings of sample names to new\nsample names (in columns designated by\nfromID,\
+    \ toID)\n--fromID=INT              Column number of OLD sample IDs to map\n(default=`1')\n\
+    --toID=INT                Column number of NEW sample IDs to map\n(default=`2')\n\
+    --columnSuffix=STRING     Suffix of columns to be used for merging [where\ncolumns\
+    \ are in the form: SAMPLE +\ncolumnSuffix]  (default=`_mean_cvg')\n--rdPrecision=INT\
+    \         Decimal precision of read depths output\n(default=`2')\n--outputTargetsBySamples\
+    \  Output targets x samples (instead of samples x\ntargets)  (default=off)"
   type: boolean
   inputBinding:
     prefix: --mergeGATKdepths
-- id: in_g_atk_depths
-  doc: "GATK sample_interval_summary output file(s) to\nbe merged [must have *IDENTICAL*\
-    \ target\nlists]"
-  type: File
-  inputBinding:
-    prefix: --GATKdepths
-- id: in_g_atk_depths_list
-  doc: "A file containing a list of GATK\nsample_interval_summary output files to\
-    \ be\nmerged [must have *IDENTICAL* target lists]"
-  type: File
-  inputBinding:
-    prefix: --GATKdepthsList
-- id: in_sample_id_map
-  doc: "File containing mappings of sample names to new\nsample names (in columns\
-    \ designated by\nfromID, toID)"
-  type: File
-  inputBinding:
-    prefix: --sampleIDmap
-- id: in_from_id
-  doc: "Column number of OLD sample IDs to map\n(default=`1')"
-  type: long
-  inputBinding:
-    prefix: --fromID
-- id: in_to_id
-  doc: "Column number of NEW sample IDs to map\n(default=`2')"
-  type: long
-  inputBinding:
-    prefix: --toID
-- id: in_column_suffix
-  doc: "Suffix of columns to be used for merging [where\ncolumns are in the form:\
-    \ SAMPLE +\ncolumnSuffix]  (default=`_mean_cvg')"
-  type: string
-  inputBinding:
-    prefix: --columnSuffix
-- id: in_rd_precision
-  doc: "Decimal precision of read depths output\n(default=`2')"
-  type: long
-  inputBinding:
-    prefix: --rdPrecision
-- id: in_output_targets_by_samples
-  doc: "Output targets x samples (instead of samples x\ntargets)  (default=off)"
-  type: boolean
-  inputBinding:
-    prefix: --outputTargetsBySamples
-- id: in_var_16
-  doc: ''
+- id: in__excludetargetsstring_files
+  doc: "--excludeTargets=STRING   File(s) of targets to exclude\n--excludeChromosomeTargets=STRING\n\
+    Target chromosome(s) to exclude\n--excludeSamples=STRING   File(s) of samples\
+    \ to exclude\n--minTargetSize=INT       Minimum size of target (in bp) to process\n\
+    (default=`0')\n--maxTargetSize=INT       Maximum size of target (in bp) to process\n\
+    --minMeanTargetRD=DOUBLE  Minimum per-target mean RD to require for\ntarget to\
+    \ be processed\n--maxMeanTargetRD=DOUBLE  Maximum per-target mean RD to require\
+    \ for\ntarget to be processed\n--minSdTargetRD=DOUBLE    Minimum per-target standard\
+    \ deviation of RD to\nrequire for target to be processed\n(default=`0')\n--maxSdTargetRD=DOUBLE\
+    \    Maximum per-target standard deviation of RD to\nrequire for target to be\
+    \ processed\n--minMeanSampleRD=DOUBLE  Minimum per-sample mean RD to require for\n\
+    sample to be processed\n--maxMeanSampleRD=DOUBLE  Maximum per-sample mean RD to\
+    \ require for\nsample to be processed\n--minSdSampleRD=DOUBLE    Minimum per-sample\
+    \ standard deviation of RD to\nrequire for sample to be processed\n(default=`0')\n\
+    --maxSdSampleRD=DOUBLE    Maximum per-sample standard deviation of RD to\nrequire\
+    \ for sample to be processed\n--scaleDataBySum          After any filtering, scale\
+    \ read-depth matrix\nvalues by sample- or target- sums (as per\n--scaleDataBySumType)\
+    \ [i.e., divide by row or\ncolumn sums], but multiply by factor\nspecificied by\
+    \ --scaleDataBySumFactor\n(default=off)\n--scaleDataBySumType=ENUM If --scaleDataBySum\
+    \ given, then scale the data\nwithin this dimension  (possible\nvalues=\"target\"\
+    , \"sample\")\n--scaleDataBySumFactor=DOUBLE\nIf --scaleDataBySum given, then\
+    \ divide by\nappropriate sum (but multiply by this factor)\n(default=`1e6')\n\
+    --log10=DOUBLE            After any filtering and optional scaling steps\n(but\
+    \ before any optional centering steps),\nconvert the matrix to log10 values. To\
+    \ deal\nwith non-positive and small positive values,\na truncation and then pseudocount\
+    \ approach is\ntaken. Specifically, denote the original\nmatrix value as x and\
+    \ this parameter's\npseudocount value as v (say, 0.5). The matrix\nvalue used\
+    \ is then log10(max(x, 0) + v)\n--centerData              Output sample- or target-\
+    \ centered read-depth\nmatrix (as per --centerType)  (default=off)\n--centerType=ENUM\
+    \         If --centerData given, then center the data\naround this dimension \
+    \ (possible\nvalues=\"target\", \"sample\")\n--zScoreData              If --centerData\
+    \ given, then additionally\nnormalize by standard deviation (outputting\nz-scores)\
+    \  (default=off)\n--outputExcludedTargets=STRING\nFile in which to output targets\
+    \ excluded by\nsome criterion\n--outputExcludedSamples=STRING\nFile in which to\
+    \ output samples excluded by\nsome criterion"
   type: boolean
   inputBinding:
     prefix: --matrix
-- id: in_exclude_targets
-  doc: File(s) of targets to exclude
-  type: File
-  inputBinding:
-    prefix: --excludeTargets
-- id: in_exclude_chromosome_targets
-  doc: Target chromosome(s) to exclude
-  type: string
-  inputBinding:
-    prefix: --excludeChromosomeTargets
-- id: in_exclude_samples
-  doc: File(s) of samples to exclude
-  type: File
-  inputBinding:
-    prefix: --excludeSamples
-- id: in_min_target_size
-  doc: "Minimum size of target (in bp) to process\n(default=`0')"
-  type: long
-  inputBinding:
-    prefix: --minTargetSize
-- id: in_max_target_size
-  doc: Maximum size of target (in bp) to process
-  type: long
-  inputBinding:
-    prefix: --maxTargetSize
-- id: in_min_mean_target_rd
-  doc: "Minimum per-target mean RD to require for\ntarget to be processed"
-  type: string
-  inputBinding:
-    prefix: --minMeanTargetRD
-- id: in_max_mean_target_rd
-  doc: "Maximum per-target mean RD to require for\ntarget to be processed"
-  type: string
-  inputBinding:
-    prefix: --maxMeanTargetRD
-- id: in_mins_d_target_rd
-  doc: "Minimum per-target standard deviation of RD to\nrequire for target to be processed\n\
-    (default=`0')"
-  type: long
-  inputBinding:
-    prefix: --minSdTargetRD
-- id: in_max_sd_target_rd
-  doc: "Maximum per-target standard deviation of RD to\nrequire for target to be processed"
-  type: string
-  inputBinding:
-    prefix: --maxSdTargetRD
-- id: in_min_mean_sample_rd
-  doc: "Minimum per-sample mean RD to require for\nsample to be processed"
-  type: string
-  inputBinding:
-    prefix: --minMeanSampleRD
-- id: in_max_mean_sample_rd
-  doc: "Maximum per-sample mean RD to require for\nsample to be processed"
-  type: string
-  inputBinding:
-    prefix: --maxMeanSampleRD
-- id: in_mins_d_sample_rd
-  doc: "Minimum per-sample standard deviation of RD to\nrequire for sample to be processed\n\
-    (default=`0')"
-  type: long
-  inputBinding:
-    prefix: --minSdSampleRD
-- id: in_max_sd_sample_rd
-  doc: "Maximum per-sample standard deviation of RD to\nrequire for sample to be processed"
-  type: string
-  inputBinding:
-    prefix: --maxSdSampleRD
-- id: in_scale_data_by_sum
-  doc: "After any filtering, scale read-depth matrix\nvalues by sample- or target-\
-    \ sums (as per\n--scaleDataBySumType) [i.e., divide by row or\ncolumn sums], but\
-    \ multiply by factor\nspecificied by --scaleDataBySumFactor\n(default=off)"
-  type: boolean
-  inputBinding:
-    prefix: --scaleDataBySum
-- id: in_scale_data_by_sum_type
-  doc: "If --scaleDataBySum given, then scale the data\nwithin this dimension  (possible\n\
-    values=\"target\", \"sample\")"
-  type: string
-  inputBinding:
-    prefix: --scaleDataBySumType
-- id: in_scale_data_by_sum_factor
-  doc: "If --scaleDataBySum given, then divide by\nappropriate sum (but multiply by\
-    \ this factor)\n(default=`1e6')"
-  type: double
-  inputBinding:
-    prefix: --scaleDataBySumFactor
-- id: in_log_one_zero
-  doc: "After any filtering and optional scaling steps\n(but before any optional centering\
-    \ steps),\nconvert the matrix to log10 values. To deal\nwith non-positive and\
-    \ small positive values,\na truncation and then pseudocount approach is\ntaken.\
-    \ Specifically, denote the original\nmatrix value as x and this parameter's\n\
-    pseudocount value as v (say, 0.5). The matrix\nvalue used is then log10(max(x,\
-    \ 0) + v)"
-  type: long
-  inputBinding:
-    prefix: --log10
-- id: in_center_data
-  doc: "Output sample- or target- centered read-depth\nmatrix (as per --centerType)\
-    \  (default=off)"
-  type: boolean
-  inputBinding:
-    prefix: --centerData
-- id: in_center_type
-  doc: "If --centerData given, then center the data\naround this dimension  (possible\n\
-    values=\"target\", \"sample\")"
-  type: string
-  inputBinding:
-    prefix: --centerType
-- id: in_zscore_data
-  doc: "If --centerData given, then additionally\nnormalize by standard deviation\
-    \ (outputting\nz-scores)  (default=off)"
-  type: boolean
-  inputBinding:
-    prefix: --zScoreData
-- id: in_output_excluded_targets
-  doc: "File in which to output targets excluded by\nsome criterion"
-  type: File
-  inputBinding:
-    prefix: --outputExcludedTargets
-- id: in_output_excluded_samples
-  doc: "File in which to output samples excluded by\nsome criterion"
-  type: File
-  inputBinding:
-    prefix: --outputExcludedSamples
 - id: in_output_matrix
   doc: Read-depth matrix output file  (default=`-')
   type: File
@@ -271,7 +137,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --PCAfiles
-- id: in_var_49
+- id: in_var_17
   doc: Matrix is read from --readDepths argument
   type: boolean
   inputBinding:
@@ -292,7 +158,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --posteriorFiles
-- id: in_var_53
+- id: in_var_21
   doc: Matrix is read from --readDepths argument
   type: boolean
   inputBinding:
@@ -315,21 +181,12 @@ inputs:
   inputBinding:
     prefix: --genotypeQualThresholdWhenNoExact
 - id: in_merge_v_cfs
-  doc: ''
+  doc: "--mergeVCF=STRING         VCF file(s) to be merged [must have *IDENTICAL*\n\
+    genotyped intervals]\n--mergeVCFlist=STRING     A file containing a list of VCF\
+    \ files to be\nmerged [must have *IDENTICAL* genotyped\nintervals]"
   type: boolean
   inputBinding:
     prefix: --mergeVCFs
-- id: in_merge_vcf
-  doc: "VCF file(s) to be merged [must have *IDENTICAL*\ngenotyped intervals]"
-  type: File
-  inputBinding:
-    prefix: --mergeVCF
-- id: in_merge_vcf_list
-  doc: "A file containing a list of VCF files to be\nmerged [must have *IDENTICAL*\
-    \ genotyped\nintervals]"
-  type: File
-  inputBinding:
-    prefix: --mergeVCFlist
 - id: in_param_file
   doc: (Initial) model parameters file
   type: File
@@ -382,16 +239,12 @@ inputs:
   type: File
   inputBinding:
     prefix: --vcf
-- id: in_var_70
-  doc: ''
+- id: in_print_hmm
+  doc: "Mode: transition\nPrint HMM transition matrix for user-requested genomic distances\n\
+    --transition\n"
   type: boolean
   inputBinding:
     prefix: --printHMM
-- id: in_var_71
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --transition
 - id: in_process_filter_center
   doc: 'Process (filter, center, etc.) a read depth matrix and output the resulting '
   type: string
@@ -437,42 +290,10 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_print_hmm_model
-  doc: Print HMM model parameters and exit
-  type: string
-  inputBinding:
-    position: 0
-- id: in_print_hmm_transition
-  doc: Print HMM transition matrix for user-requested genomic distances
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_g_atk_depths
-  doc: "GATK sample_interval_summary output file(s) to\nbe merged [must have *IDENTICAL*\
-    \ target\nlists]"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_g_atk_depths)
-- id: out_g_atk_depths_list
-  doc: "A file containing a list of GATK\nsample_interval_summary output files to\
-    \ be\nmerged [must have *IDENTICAL* target lists]"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_g_atk_depths_list)
-- id: out_output_excluded_targets
-  doc: "File in which to output targets excluded by\nsome criterion"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_output_excluded_targets)
-- id: out_output_excluded_samples
-  doc: "File in which to output samples excluded by\nsome criterion"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_output_excluded_samples)
 - id: out_output_matrix
   doc: Read-depth matrix output file  (default=`-')
   type: File

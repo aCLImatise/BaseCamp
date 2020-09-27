@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multi_qsub.py.cwl
+id: multi_qsub.py.cwl
 inputs:
 - id: in_test
   doc: "Only print each of the qsub commands instead of actually\nrunning the commands.\n"

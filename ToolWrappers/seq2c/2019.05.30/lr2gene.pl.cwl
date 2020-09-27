@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lr2gene.pl.cwl
+id: lr2gene.pl.cwl
 inputs:
 - id: in_control_sample_used
   doc: that control sample is used for normalization

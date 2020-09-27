@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nmrml2isa.cwl
+id: nmrml2isa.cwl
 inputs:
 - id: in_input_folder_archive
   doc: input folder or archive containing nmrML files

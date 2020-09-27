@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: ../../../locarnap_predict_and_plot.pl.cwl
+id: locarnap_predict_and_plot.pl.cwl
 inputs:
 - id: in_man
   doc: Full documentation
   type: boolean
   inputBinding:
     prefix: --man
-- id: in_var_1
-  doc: ''
+- id: in_test
+  doc: Test
   type: boolean
   inputBinding:
     prefix: --test
+- id: in_output_dir
+  doc: Output directory (def=Relplots)
+  type: Directory
+  inputBinding:
+    prefix: --output-dir
 - id: in_dont_plot
   doc: Skip plotting, only output
   type: boolean
@@ -36,15 +41,15 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-format
-- id: in__outputdird
-  doc: --output-dir=d
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_output_dir
+  doc: Output directory (def=Relplots)
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in_output_dir)
 cwlVersion: v1.1
 baseCommand:
 - locarnap-predict-and-plot.pl

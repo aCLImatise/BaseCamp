@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mageck_pathway.cwl
+id: mageck_pathway.cwl
 inputs:
 - id: in_gene_ranking
   doc: "The gene summary file (containing both positive and\nnegative selection tests)\

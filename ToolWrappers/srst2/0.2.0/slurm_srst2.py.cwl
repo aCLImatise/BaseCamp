@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slurm_srst2.py.cwl
+id: slurm_srst2.py.cwl
 inputs:
 - id: in_output
   doc: '[--input_se INPUT_SE [INPUT_SE ...]]'

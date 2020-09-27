@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fmlrc_convert.cwl
+id: fmlrc_convert.cwl
 inputs:
 - id: in_print_version_number
   doc: print version number and exit

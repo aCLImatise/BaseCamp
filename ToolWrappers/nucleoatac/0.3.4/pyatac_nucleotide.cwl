@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_nucleotide.cwl
+id: pyatac_nucleotide.cwl
 inputs:
 - id: in_fast_a
   doc: Accepts fasta file

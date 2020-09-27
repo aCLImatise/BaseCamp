@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umi_reformat_sra_fastq.cwl
+id: umi_reformat_sra_fastq.cwl
 inputs:
 - id: in_input
   doc: 'the input fastq file. (default: None)'

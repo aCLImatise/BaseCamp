@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_list_keys.cwl
+id: nebulizer_list_keys.cwl
 inputs:
 - id: in_name
   doc: list only aliases matching name. Can include glob-style

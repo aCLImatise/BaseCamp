@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_juncs.cwl
+id: sam_juncs.cwl
 inputs:
 - id: in_hits_dots_am
   doc: ''

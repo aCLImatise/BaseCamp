@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmc_tools_transform.cwl
+id: kmc_tools_transform.cwl
 inputs:
 - id: in_ci
   doc: <value> - exclude k-mers occurring less than <value> times

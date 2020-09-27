@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../last_train.cwl
+id: last_train.cwl
 inputs:
 - id: in_verbose
   doc: show more details of intermediate steps

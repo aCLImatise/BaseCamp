@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graph_plot.py.cwl
+id: graph_plot.py.cwl
 inputs:
 - id: in_swarms
   doc: <FILENAME> contains swarm's results

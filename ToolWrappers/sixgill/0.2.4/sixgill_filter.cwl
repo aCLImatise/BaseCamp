@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sixgill_filter.cwl
+id: sixgill_filter.cwl
 inputs:
 - id: in_out
   doc: output metapeptide database file

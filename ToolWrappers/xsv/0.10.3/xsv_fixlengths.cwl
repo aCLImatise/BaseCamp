@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_fixlengths.cwl
+id: xsv_fixlengths.cwl
 inputs:
 - id: in_length
   doc: "Forcefully set the length of each record. If a\nrecord is not the size given,\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_group_multiline.py.cwl
+id: vcf_group_multiline.py.cwl
 inputs:
 - id: in_vcf
   doc: 'VCF input (default: stdin)'

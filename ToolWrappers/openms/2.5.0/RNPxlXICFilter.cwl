@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNPxlXICFilter.cwl
+id: RNPxlXICFilter.cwl
 inputs:
 - id: in_control
   doc: "*    Input mzML file (valid formats: 'mzML')"

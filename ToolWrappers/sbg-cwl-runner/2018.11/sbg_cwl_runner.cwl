@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sbg_cwl_runner.cwl
+id: sbg_cwl_runner.cwl
 inputs:
 - id: in_outdir
   doc: 'Directory to put results in [default: ./]'

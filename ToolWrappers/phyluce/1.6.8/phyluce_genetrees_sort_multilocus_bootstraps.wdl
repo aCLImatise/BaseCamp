@@ -2,23 +2,20 @@ version 1.0
 
 task PhyluceGenetreesSortMultilocusBootstraps {
   input {
-    Boolean? var_0
+    Boolean? bootstrap_replicates
     Directory? input_directory_containing
     Directory? output_directory_multilocus
-    String _output_output
   }
   command <<<
     phyluce_genetrees_sort_multilocus_bootstraps \
-      ~{_output_output} \
-      ~{if (var_0) then "--bootstrap_replicates" else ""} \
+      ~{if (bootstrap_replicates) then "--bootstrap_replicates" else ""} \
       ~{if defined(input_directory_containing) then ("--input " +  '"' + input_directory_containing + '"') else ""} \
       ~{if defined(output_directory_multilocus) then ("--output " +  '"' + output_directory_multilocus + '"') else ""}
   >>>
   parameter_meta {
-    var_0: ""
+    bootstrap_replicates: "BOOTSTRAP_REPLICATES\\n--output OUTPUT"
     input_directory_containing: "The input directory containing bootstrap replicates\\nfor each locus"
     output_directory_multilocus: "The output directory to multi-locus bootstraps"
-    _output_output: "--output OUTPUT"
   }
   output {
     File out_stdout = stdout()

@@ -14,6 +14,7 @@ task MungeSumstatspy {
     File? merge_alleles
     Int? n_min
     String? chunksize
+    String? snp
     String? n_col
     String? n_cas_col
     String? n_con_col
@@ -26,16 +27,12 @@ task MungeSumstatspy {
     String? info_list
     String? n_study
     Int? n_study_min
-    String? ignore
-    Boolean? a_one_inc
-    Boolean? keep_maf
+    Int? ignore
     String format_dot
-    String chunksize_dot
   }
   command <<<
     munge_sumstats_py \
       ~{format_dot} \
-      ~{chunksize_dot} \
       ~{if defined(sum_stats) then ("--sumstats " +  '"' + sum_stats + '"') else ""} \
       ~{if defined(sample_size_option) then ("--N " +  '"' + sample_size_option + '"') else ""} \
       ~{if defined(n_cas) then ("--N-cas " +  '"' + n_cas + '"') else ""} \
@@ -48,6 +45,7 @@ task MungeSumstatspy {
       ~{if defined(merge_alleles) then ("--merge-alleles " +  '"' + merge_alleles + '"') else ""} \
       ~{if defined(n_min) then ("--n-min " +  '"' + n_min + '"') else ""} \
       ~{if defined(chunksize) then ("--chunksize " +  '"' + chunksize + '"') else ""} \
+      ~{if defined(snp) then ("--snp " +  '"' + snp + '"') else ""} \
       ~{if defined(n_col) then ("--N-col " +  '"' + n_col + '"') else ""} \
       ~{if defined(n_cas_col) then ("--N-cas-col " +  '"' + n_cas_col + '"') else ""} \
       ~{if defined(n_con_col) then ("--N-con-col " +  '"' + n_con_col + '"') else ""} \
@@ -60,9 +58,7 @@ task MungeSumstatspy {
       ~{if defined(info_list) then ("--info-list " +  '"' + info_list + '"') else ""} \
       ~{if defined(n_study) then ("--nstudy " +  '"' + n_study + '"') else ""} \
       ~{if defined(n_study_min) then ("--nstudy-min " +  '"' + n_study_min + '"') else ""} \
-      ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""} \
-      ~{if (a_one_inc) then "--a1-inc" else ""} \
-      ~{if (keep_maf) then "--keep-maf" else ""}
+      ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""}
   >>>
   parameter_meta {
     sum_stats: "Input filename."
@@ -76,7 +72,8 @@ task MungeSumstatspy {
     no_alleles: "Don't require alleles. Useful if only unsigned summary\\nstatistics are available and the goal is h2 /\\npartitioned h2 estimation rather than rg estimation."
     merge_alleles: "Same as --merge, except the file should have three\\ncolumns: SNP, A1, A2, and all alleles will be matched\\nto the --merge-alleles file alleles."
     n_min: "Minimum N (sample size). Default is (90th percentile\\nN) / 2."
-    chunksize: ""
+    chunksize: "Chunksize."
+    snp: "Name of SNP column (if not a name that ldsc\\nunderstands). NB: case insensitive."
     n_col: "Name of N column (if not a name that ldsc\\nunderstands). NB: case insensitive."
     n_cas_col: "Name of N column (if not a name that ldsc\\nunderstands). NB: case insensitive."
     n_con_col: "Name of N column (if not a name that ldsc\\nunderstands). NB: case insensitive."
@@ -89,11 +86,8 @@ task MungeSumstatspy {
     info_list: "Comma-separated list of INFO columns. Will filter on\\nthe mean. NB: case insensitive."
     n_study: "Name of NSTUDY column (if not a name that ldsc\\nunderstands). NB: case insensitive."
     n_study_min: "Minimum # of studies. Default is to remove everything\\nbelow the max, unless there is an N column, in which\\ncase do nothing."
-    ignore: "Comma-separated list of column names to ignore."
-    a_one_inc: "A1 is the increasing allele."
-    keep_maf: "Keep the MAF column (if one exists)."
+    ignore: "Comma-separated list of column names to ignore.\\n--a1-inc              A1 is the increasing allele.\\n--keep-maf            Keep the MAF column (if one exists).\\n"
     format_dot: "--daner-n             Use this flag to parse more recent daner* formatted"
-    chunksize_dot: "--snp SNP             Name of SNP column (if not a name that ldsc"
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../leaff.cwl
+id: leaff.cwl
 inputs: []
 outputs:
 - id: out_stdout

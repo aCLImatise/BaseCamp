@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NLStradamus.cwl
+id: NLStradamus.cwl
 inputs:
 - id: in_file
   doc: file

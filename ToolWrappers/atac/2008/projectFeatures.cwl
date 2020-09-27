@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../projectFeatures.cwl
+id: projectFeatures.cwl
 inputs: []
 outputs:
 - id: out_stdout

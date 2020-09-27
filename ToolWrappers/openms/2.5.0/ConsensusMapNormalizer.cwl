@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConsensusMapNormalizer.cwl
+id: ConsensusMapNormalizer.cwl
 inputs:
 - id: in_in
   doc: "*               Input file (valid formats: 'consensusXML')"

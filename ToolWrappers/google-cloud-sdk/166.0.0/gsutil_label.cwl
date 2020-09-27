@@ -1,14 +1,9 @@
 class: CommandLineTool
-id: ../../../gsutil_label.cwl
+id: gsutil_label.cwl
 inputs:
-- id: in_value
-  doc: :<value>
-  type: string
-  inputBinding:
-    prefix: -l
-- id: in_d
-  doc: ''
-  type: string
+- id: in_remove_label_specified
+  doc: Remove the label with the specified key.
+  type: boolean
   inputBinding:
     prefix: -d
 - id: in_command_dot

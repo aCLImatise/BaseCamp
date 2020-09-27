@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sitepro.cwl
+id: sitepro.cwl
 inputs:
 - id: in_wig
   doc: "input WIG file. WARNING: both fixedStep and\nvariableStep WIG formats are\

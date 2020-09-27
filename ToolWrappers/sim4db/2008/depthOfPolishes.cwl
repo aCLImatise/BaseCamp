@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../depthOfPolishes.cwl
+id: depthOfPolishes.cwl
 inputs: []
 outputs:
 - id: out_stdout

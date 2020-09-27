@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abi_dump.cwl
+id: abi_dump.cwl
 inputs:
 - id: in_accession
   doc: "Replaces accession derived from <path> in\nfilename(s) and deflines (only\

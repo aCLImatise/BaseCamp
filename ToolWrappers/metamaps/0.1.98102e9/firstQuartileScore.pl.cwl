@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../firstQuartileScore.pl.cwl
+id: firstQuartileScore.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

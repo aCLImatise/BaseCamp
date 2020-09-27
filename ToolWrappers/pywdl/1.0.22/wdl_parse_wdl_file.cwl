@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wdl_parse_wdl_file.cwl
+id: wdl_parse_wdl_file.cwl
 inputs:
 - id: in_no_color
   doc: ''

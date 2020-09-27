@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novomethyl.cwl
+id: novomethyl.cwl
 inputs:
 - id: in_colheader_select_columns
   doc: ',COL2=HEADER     Select columns for display'

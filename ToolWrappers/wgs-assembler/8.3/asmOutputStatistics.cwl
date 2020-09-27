@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asmOutputStatistics.cwl
+id: asmOutputStatistics.cwl
 inputs:
 - id: in_read_assembly_here
   doc: read the assembly from here

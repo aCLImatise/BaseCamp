@@ -122,7 +122,7 @@ subcommands:
     args: !SimpleFlagArg
       name: '5'
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -245,17 +245,10 @@ subcommands:
         args: !SimpleFlagArg
           name: '5'
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: <upper threshold> -o corrected_matrix
-          synonyms:
-          - --filterThreshold
-          args: !SimpleFlagArg
-            name: lower threshold
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -378,7 +371,352 @@ subcommands:
             args: !SimpleFlagArg
               name: '5'
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: <upper threshold> -o corrected_matrix
+              synonyms:
+              - --filterThreshold
+              args: !SimpleFlagArg
+                name: lower threshold
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: "Name of the Hi-C matrix to correct in .h5 format.\n\
+                  (default: None)"
+                synonyms:
+                - --matrix
+                - -m
+                args: !SimpleFlagArg
+                  name: MATRIX
+                optional: true
+              - !Flag
+                description: "File name to save the resulting matrix. The output is\n\
+                  a .h5 file. (default: None)"
+                synonyms:
+                - --outFileName
+                - -o
+                args: !SimpleFlagArg
+                  name: OUTFILENAME
+                optional: true
+              - !Flag
+                description: "Method to be used for matrix correction. It can be set\n\
+                  to KR or ICE. (default: KR)"
+                synonyms:
+                - --correctionMethod
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: "FILTERTHRESHOLD, -t FILTERTHRESHOLD FILTERTHRESHOLD\n\
+                  Removes bins of low or large coverage. Usually these\nbins do not\
+                  \ contain valid Hi-C data or represent\nregions that accumulate\
+                  \ reads and thus must be\ndiscarded. Use hicCorrectMatrix diagnostic_plot\
+                  \ to\nidentify the modified z-value thresholds. A lower and\nupper\
+                  \ threshold are required separated by space, e.g.\n--filterThreshold\
+                  \ -1.5 5. Applied only for ICE!\n(default: None)"
+                synonyms:
+                - --filterThreshold
+                args: !SimpleFlagArg
+                  name: FILTERTHRESHOLD
+                optional: true
+              - !Flag
+                description: "Number of iterations to compute.only for ICE!\n(default:\
+                  \ 500)"
+                synonyms:
+                - --iterNum
+                - -n
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: "Value corresponding to the maximum number of times a\n\
+                  bin can be scaled up during the iterative correction.\nFor example,\
+                  \ an inflation cutoff of 3 will filter out\nall bins that were expanded\
+                  \ 3 times or more during the\niterative correctionself.Only for\
+                  \ ICE! (default: None)"
+                synonyms:
+                - --inflationCutoff
+                args: !SimpleFlagArg
+                  name: INFLATIONCUTOFF
+                optional: true
+              - !Flag
+                description: "Clip high counts in the top -transcut trans regions\n\
+                  (i.e. between chromosomes). A usual value is 0.05.\nOnly for ICE!\
+                  \ (default: None)"
+                synonyms:
+                - --transCutoff
+                - -transcut
+                args: !SimpleFlagArg
+                  name: TRANSCUTOFF
+                optional: true
+              - !Flag
+                description: "Each bin receives a value indicating the fraction that\n\
+                  is covered by reads. A cutoff of 0.5 will discard all\nthose bins\
+                  \ that have less than half of the bin\ncovered. Only for ICE! (default:\
+                  \ None)"
+                synonyms:
+                - --sequencedCountCutoff
+                args: !SimpleFlagArg
+                  name: SEQUENCEDCOUNTCUTOFF
+                optional: true
+              - !Flag
+                description: "List of chromosomes to be included in the iterative\n\
+                  correction. The order of the given chromosomes will be\nthen kept\
+                  \ for the resulting corrected matrix (default:\nNone)"
+                synonyms:
+                - --chromosomes
+                args: !RepeatFlagArg
+                  name: CHROMOSOMES
+                optional: true
+              - !Flag
+                description: "If set, diagonal counts are not included. Only for\n\
+                  ICE! (default: False)"
+                synonyms:
+                - --skipDiagonal
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Normalize each chromosome separately. This is useful\n\
+                  for samples from cells with uneven number of\nchromosomes and/or\
+                  \ translocations. (default: False)"
+                synonyms:
+                - --perchr
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Print processing status. (default: False)'
+                synonyms:
+                - --verbose
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - '-1.2'
+                args: !SimpleFlagArg
+                  name: '5'
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: hicCorrectMatrix correct --matrix hic_matrix.h5 --filterThreshold\
+                \ -1.2 5 (Only if ICE)-out corrected_matrix.h5 \n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n\nRequired\
+                \ arguments:\n  --matrix MATRIX, -m MATRIX\n                     \
+                \   Name of the Hi-C matrix to correct in .h5 format.\n          \
+                \              (default: None)\n  --outFileName OUTFILENAME, -o OUTFILENAME\n\
+                \                        File name to save the resulting matrix. The\
+                \ output is\n                        a .h5 file. (default: None)\n\
+                \nOptional arguments:\n  --correctionMethod STR\n                \
+                \        Method to be used for matrix correction. It can be set\n\
+                \                        to KR or ICE. (default: KR)\n  --filterThreshold\
+                \ FILTERTHRESHOLD FILTERTHRESHOLD, -t FILTERTHRESHOLD FILTERTHRESHOLD\n\
+                \                        Removes bins of low or large coverage. Usually\
+                \ these\n                        bins do not contain valid Hi-C data\
+                \ or represent\n                        regions that accumulate reads\
+                \ and thus must be\n                        discarded. Use hicCorrectMatrix\
+                \ diagnostic_plot to\n                        identify the modified\
+                \ z-value thresholds. A lower and\n                        upper threshold\
+                \ are required separated by space, e.g.\n                        --filterThreshold\
+                \ -1.5 5. Applied only for ICE!\n                        (default:\
+                \ None)\n  --iterNum INT, -n INT\n                        Number of\
+                \ iterations to compute.only for ICE!\n                        (default:\
+                \ 500)\n  --inflationCutoff INFLATIONCUTOFF\n                    \
+                \    Value corresponding to the maximum number of times a\n      \
+                \                  bin can be scaled up during the iterative correction.\n\
+                \                        For example, an inflation cutoff of 3 will\
+                \ filter out\n                        all bins that were expanded\
+                \ 3 times or more during the\n                        iterative correctionself.Only\
+                \ for ICE! (default: None)\n  --transCutoff TRANSCUTOFF, -transcut\
+                \ TRANSCUTOFF\n                        Clip high counts in the top\
+                \ -transcut trans regions\n                        (i.e. between chromosomes).\
+                \ A usual value is 0.05.\n                        Only for ICE! (default:\
+                \ None)\n  --sequencedCountCutoff SEQUENCEDCOUNTCUTOFF\n         \
+                \               Each bin receives a value indicating the fraction\
+                \ that\n                        is covered by reads. A cutoff of 0.5\
+                \ will discard all\n                        those bins that have less\
+                \ than half of the bin\n                        covered. Only for\
+                \ ICE! (default: None)\n  --chromosomes CHROMOSOMES [CHROMOSOMES ...]\n\
+                \                        List of chromosomes to be included in the\
+                \ iterative\n                        correction. The order of the\
+                \ given chromosomes will be\n                        then kept for\
+                \ the resulting corrected matrix (default:\n                     \
+                \   None)\n  --skipDiagonal, -s    If set, diagonal counts are not\
+                \ included. Only for\n                        ICE! (default: False)\n\
+                \  --perchr              Normalize each chromosome separately. This\
+                \ is useful\n                        for samples from cells with uneven\
+                \ number of\n                        chromosomes and/or translocations.\
+                \ (default: False)\n  --verbose             Print processing status.\
+                \ (default: False)\n  --version             show program's version\
+                \ number and exit\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - hicCorrectMatrix
+              - diagnostic_plot
+              positional: []
+              named:
+              - !Flag
+                description: "Name of the Hi-C matrix to correct in .h5 format.\n\
+                  (default: None)"
+                synonyms:
+                - --matrix
+                - -m
+                args: !SimpleFlagArg
+                  name: MATRIX
+                optional: true
+              - !Flag
+                description: 'File name to save the diagnostic plot. (default: None)'
+                synonyms:
+                - --plotName
+                - -o
+                args: !SimpleFlagArg
+                  name: PLOTNAME
+                optional: true
+              - !Flag
+                description: "List of chromosomes to be included in the iterative\n\
+                  correction. The order of the given chromosomes will be\nthen kept\
+                  \ for the resulting corrected matrix.\n(default: None)"
+                synonyms:
+                - --chromosomes
+                args: !RepeatFlagArg
+                  name: CHROMOSOMES
+                optional: true
+              - !Flag
+                description: "Max value for the x-axis in counts per bin. (default:\n\
+                  None)"
+                synonyms:
+                - --xMax
+                args: !SimpleFlagArg
+                  name: XMAX
+                optional: true
+              - !Flag
+                description: "Compute histogram per chromosome. For samples from\n\
+                  cells with uneven number of chromosomes and/or\ntranslocations it\
+                  \ is advisable to check the histograms\nper chromosome to find the\
+                  \ most conservative\n`filterThreshold`. (default: False)"
+                synonyms:
+                - --perchr
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Print processing status. (default: False)'
+                synonyms:
+                - --verbose
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: hicCorrectMatrix diagnostic_plot --matrix hic_matrix.h5\
+                \ -o file.png\n\noptional arguments:\n  -h, --help            show\
+                \ this help message and exit\n\nRequired arguments:\n  --matrix MATRIX,\
+                \ -m MATRIX\n                        Name of the Hi-C matrix to correct\
+                \ in .h5 format.\n                        (default: None)\n  --plotName\
+                \ PLOTNAME, -o PLOTNAME\n                        File name to save\
+                \ the diagnostic plot. (default: None)\n\nOptional arguments:\n  --chromosomes\
+                \ CHROMOSOMES [CHROMOSOMES ...]\n                        List of chromosomes\
+                \ to be included in the iterative\n                        correction.\
+                \ The order of the given chromosomes will be\n                   \
+                \     then kept for the resulting corrected matrix.\n            \
+                \            (default: None)\n  --xMax XMAX           Max value for\
+                \ the x-axis in counts per bin. (default:\n                      \
+                \  None)\n  --perchr              Compute histogram per chromosome.\
+                \ For samples from\n                        cells with uneven number\
+                \ of chromosomes and/or\n                        translocations it\
+                \ is advisable to check the histograms\n                        per\
+                \ chromosome to find the most conservative\n                     \
+                \   `filterThreshold`. (default: False)\n  --verbose             Print\
+                \ processing status. (default: False)\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: show program's version number and exit
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "usage: hicCorrectMatrix [-h] [--version]  ...\n\nThis function\
+              \ provides 2 balancing methods which can be applied on a raw\nmatrix.\n\
+              \nI. KR: It balances a matrix using a fast balancing algorithm introduced\
+              \ by\nKnight and Ruiz (2012).\n\nII. ICE: Iterative correction of a\
+              \ Hi-C matrix (see Imakaev et al. 2012\nNature Methods for details).\
+              \ For this method to work correctly, bins with\nzero reads assigned\
+              \ to them should be removed as they cannot be corrected.\nAlso, bins\
+              \ with low number of reads should be removed,\notherwise, during the\
+              \ correction step, the counts associated with\nthose bins will be amplified\
+              \ (usually, zero and low coverage bins\ntend to contain repetitive regions).\
+              \ Bins with extremely high number\nof reads can also be removed from\
+              \ the correction as they may represent\ncopy number variations.\n\n\
+              To aid in the identification of bins with low and high read coverage,\
+              \ the\nhistogram of the number of reads can be plotted together with\
+              \ the\nMedian Absolute Deviation (MAD).\n\nIt is recommended to run\
+              \ hicCorrectMatrix as follows:\n\n    $ hicCorrectMatrix diagnostic_plot\
+              \ --matrix hic_matrix.h5 -o plot_file.png\n\nThen, after revising the\
+              \ plot and deciding on the threshold values:\n\n    $ hicCorrectMatrix\
+              \ correct --correctionMethod ICE --matrix hic_matrix.h5 \r\n    --filterThreshold\
+              \ <lower threshold> <upper threshold> -o corrected_matrix\n\nFor a more\
+              \ in-depth review of how to determine the threshold values,\nplease\
+              \ visit:\nhttp://hicexplorer.readthedocs.io/en/latest/content/example_usage.html#correction-of-hi-c-matrix\n\
+              \nWe recommend to compute first the normalization (with hicNormalize)\
+              \ and correct the data (with hicCorrectMatrix) in a second step.\n\n\
+              optional arguments:\n  -h, --help       show this help message and exit\n\
+              \  --version        show program's version number and exit\n\nOptions:\n\
+              \                   To get detailed help on each of the options: \n\
+              \                   \n                       $ hicCorrectMatrix diagnostic_plot\
+              \ -h \n                   \n                       $ hicCorrectMatrix\
+              \ correct -h\n                       \n    diagnostic_plot\n       \
+              \            Plots a histogram of the coverage per bin together with\
+              \ the\n                           modified z-score based on the median\
+              \ absolute deviation method\n                   (see Boris Iglewicz\
+              \ and David Hoaglin 1993, Volume 16: How to Detect\n               \
+              \    and Handle Outliers The ASQC Basic References in Quality Control:\n\
+              \                   Statistical Techniques, Edward F. Mykytka, Ph.D.,\
+              \ Editor).\n                           \n    correct        Run Knight-Ruiz\
+              \ matrix balancing algorithm (KR) or the iterative matrix correction\
+              \ (ICE) .\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -443,12 +781,9 @@ subcommands:
             \ translocations. (default: False)\n  --verbose             Print processing\
             \ status. (default: False)\n  --version             show program's version\
             \ number and exit\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - hicCorrectMatrix
-          - diagnostic_plot
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -533,20 +868,9 @@ subcommands:
             \             Print processing status. (default: False)\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: show program's version number and exit
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "usage: hicCorrectMatrix [-h] [--version]  ...\n\nThis function\
           \ provides 2 balancing methods which can be applied on a raw\nmatrix.\n\n\
           I. KR: It balances a matrix using a fast balancing algorithm introduced\
@@ -699,7 +1023,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -880,7 +1204,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

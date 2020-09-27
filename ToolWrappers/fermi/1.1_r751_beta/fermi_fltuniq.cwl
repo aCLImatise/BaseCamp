@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_fltuniq.cwl
+id: fermi_fltuniq.cwl
 inputs:
 - id: in_in_dot_fa
   doc: ''

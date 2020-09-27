@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanggolin_write.cwl
+id: ppanggolin_write.cwl
 inputs:
 - id: in_pan_genome
   doc: 'The pangenome .h5 file (default: None)'

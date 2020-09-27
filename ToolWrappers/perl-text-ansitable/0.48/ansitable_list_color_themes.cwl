@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ansitable_list_color_themes.cwl
+id: ansitable_list_color_themes.cwl
 inputs: []
 outputs:
 - id: out_stdout

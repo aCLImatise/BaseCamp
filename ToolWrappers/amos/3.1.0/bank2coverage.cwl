@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank2coverage.cwl
+id: bank2coverage.cwl
 inputs:
 - id: in_bank_name
   doc: ''

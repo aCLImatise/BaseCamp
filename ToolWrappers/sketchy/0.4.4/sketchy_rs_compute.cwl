@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_rs_compute.cwl
+id: sketchy_rs_compute.cwl
 inputs:
 - id: in_progress
   doc: progress switch > 0

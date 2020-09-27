@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../packmol.cwl
+id: packmol.cwl
 inputs: []
 outputs:
 - id: out_stdout

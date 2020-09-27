@@ -1,42 +1,23 @@
 class: CommandLineTool
-id: ../../../msa_split.cwl
+id: msa_split.cwl
 inputs:
+- id: in_out_root
+  doc: Filename root for output files (default "msa_split").
+  type: File
+  inputBinding:
+    prefix: --out-root
 - id: in_windows
   doc: "<win_size,win_overlap>\nSplit the alignment into \"windows\" of size <win_size>\
     \ bases,\noverlapping by <win_overlap>."
   type: boolean
   inputBinding:
     prefix: --windows
-- id: in_between_blocks
-  doc: "(Not for use with --by-category or --for-features) Try to\npartition at sites\
-    \ between alignment blocks.  Assumes a\nreference sequence alignment, with the\
-    \ first sequence as the\nreference seq (as created by multiz).  Blocks of 30 sites\
-    \ with\ngaps in all sequences but the reference seq are assumed to\nindicate boundaries\
-    \ between alignment blocks.  Partition\nindices will not be moved more than <radius>\
-    \ sites."
-  type: long
-  inputBinding:
-    prefix: --between-blocks
 - id: in_by_category
   doc: "(Requires --features) Split by category, as defined by\nannotations file and\
     \ (optionally) category map (see\n--catmap)"
   type: boolean
   inputBinding:
     prefix: --by-category
-- id: in_reverse_compl
-  doc: "Reverse complement all segments having at least one feature on\nthe reverse\
-    \ strand and none on the positive strand.  For use\nwith --by-group.  Can also\
-    \ be used with --by-category to ensure\nall sites in a category are represented\
-    \ in the same strand\norientation."
-  type: boolean
-  inputBinding:
-    prefix: --reverse-compl
-- id: in_for_features
-  doc: "(Requires --features) Extract section of alignment\ncorresponding to every\
-    \ feature.  There will be no output for\nregions not covered by features."
-  type: boolean
-  inputBinding:
-    prefix: --for-features
 - id: in_by_group
   doc: "(Requires --features) Split by groups in annotation file,\nas defined by specified\
     \ tag.  Splits midway between every\npair of consecutive groups.  Features will\
@@ -45,6 +26,12 @@ inputs:
   type: File
   inputBinding:
     prefix: --by-group
+- id: in_for_features
+  doc: "(Requires --features) Extract section of alignment\ncorresponding to every\
+    \ feature.  There will be no output for\nregions not covered by features."
+  type: boolean
+  inputBinding:
+    prefix: --for-features
 - id: in_by_index
   doc: "List of explicit indices at which to split alignment\n(comma-separated). \
     \ If the list of indices is \"10,20\",\nthen sub-alignments will be output for\
@@ -58,6 +45,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --npartitions
+- id: in_between_blocks
+  doc: "(Not for use with --by-category or --for-features) Try to\npartition at sites\
+    \ between alignment blocks.  Assumes a\nreference sequence alignment, with the\
+    \ first sequence as the\nreference seq (as created by multiz).  Blocks of 30 sites\
+    \ with\ngaps in all sequences but the reference seq are assumed to\nindicate boundaries\
+    \ between alignment blocks.  Partition\nindices will not be moved more than <radius>\
+    \ sites."
+  type: long
+  inputBinding:
+    prefix: --between-blocks
 - id: in_features
   doc: "(For use with --by-category, --by-group, --for-features, or\n--windows) Annotations\
     \ file.  May be GFF, BED, or genepred\nformat.  Coordinates are assumed to be\
@@ -97,11 +94,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --out-format
-- id: in_out_root
-  doc: Filename root for output files (default "msa_split").
-  type: File
-  inputBinding:
-    prefix: --out-root
 - id: in_sub_features
   doc: "(For use with --features)  Output subsets of features\ncorresponding to subalignments.\
     \  Features overlapping\npartition boundaries will be discarded.  Not permitted\
@@ -109,6 +101,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sub-features
+- id: in_reverse_compl
+  doc: "Reverse complement all segments having at least one feature on\nthe reverse\
+    \ strand and none on the positive strand.  For use\nwith --by-group.  Can also\
+    \ be used with --by-category to ensure\nall sites in a category are represented\
+    \ in the same strand\norientation."
+  type: boolean
+  inputBinding:
+    prefix: --reverse-compl
 - id: in_gap_strip
   doc: "|ANY|<seqno>\nStrip columns in output alignments containing all gaps, any\n\
     gaps, or gaps in the specified sequence (<seqno>; indexing\nbegins with one).\
@@ -173,8 +173,8 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_format_dot
-  doc: msa_split mydata.fa --features conserved.bed --by-category \
+- id: in_fname
+  doc: ''
   type: string
   inputBinding:
     position: 0
@@ -182,16 +182,16 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_out_format
-  doc: "|PHYLIP|MPM|SS\nOutput alignment file format.  Default is FASTA."
-  type: File
-  outputBinding:
-    glob: $(inputs.in_out_format)
 - id: out_out_root
   doc: Filename root for output files (default "msa_split").
   type: File
   outputBinding:
     glob: $(inputs.in_out_root)
+- id: out_out_format
+  doc: "|PHYLIP|MPM|SS\nOutput alignment file format.  Default is FASTA."
+  type: File
+  outputBinding:
+    glob: $(inputs.in_out_format)
 - id: out_summary
   doc: "Output summary of each output alignment to a file with suffix\n\".sum\" (includes\
     \ base frequencies and numbers of gapped columns)."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_phylotype_biom.cwl
+id: pipits_phylotype_biom.cwl
 inputs:
 - id: in__biom_file
   doc: '[REQUIRED] BIOM file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_mem2.avx2_mem.cwl
+id: bwa_mem2.avx2_mem.cwl
 inputs:
 - id: in_output_sam_file
   doc: Output SAM file name

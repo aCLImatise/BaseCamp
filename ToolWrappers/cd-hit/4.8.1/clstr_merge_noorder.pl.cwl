@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr_merge_noorder.pl.cwl
+id: clstr_merge_noorder.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

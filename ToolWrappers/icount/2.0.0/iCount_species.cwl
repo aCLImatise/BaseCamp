@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_species.cwl
+id: iCount_species.cwl
 inputs:
 - id: in__release_release
   doc: ', --release        Release number. Only ENSEMBL releases 59-88 are available

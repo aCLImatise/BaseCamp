@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_snv.cwl
+id: varda2_client_snv.cwl
 inputs:
 - id: in_position
   doc: Locus position

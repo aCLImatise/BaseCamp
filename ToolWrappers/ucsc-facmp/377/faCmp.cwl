@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faCmp.cwl
+id: faCmp.cwl
 inputs:
 - id: in_soft_mask
   doc: "- use the soft masking information during the compare\nDifferences will be\

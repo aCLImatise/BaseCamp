@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nest_indirect_nest.cwl
+id: nest_indirect_nest.cwl
 inputs:
 - id: in_nest_indirect
   doc: ''

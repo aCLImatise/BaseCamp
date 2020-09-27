@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go_apply_xslt.cwl
+id: go_apply_xslt.cwl
 inputs: []
 outputs:
 - id: out_stdout

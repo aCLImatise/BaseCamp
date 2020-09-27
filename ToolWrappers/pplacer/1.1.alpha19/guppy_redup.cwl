@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_redup.cwl
+id: guppy_redup.cwl
 inputs:
 - id: in_specify_filename_write
   doc: Specify the filename to write to.

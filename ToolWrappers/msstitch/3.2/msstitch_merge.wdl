@@ -31,7 +31,7 @@ task MsstitchMerge {
       ~{if (gene_centric) then "--genecentric" else ""}
   >>>
   parameter_meta {
-    fdr_col_pattern: ""
+    fdr_col_pattern: "[--featcol FEATCOL] --dbfile LOOKUPFN\\n[--mergecutoff MERGECUTOFF] [--no-group-annotation]\\n[--genecentric]"
     directory_to_output: "Directory to output in"
     output_file: "Output file"
     set_names: "Names of biological sets. Can be specified with\\nquotation marks if spaces are used"

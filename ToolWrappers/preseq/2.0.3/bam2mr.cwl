@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2mr.cwl
+id: bam2mr.cwl
 inputs:
 - id: in_output
   doc: Name of output file

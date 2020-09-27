@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../adjustScanRankerScoreByGroup.cwl
+id: adjustScanRankerScoreByGroup.cwl
 inputs:
 - id: in_group_file
   doc: ''

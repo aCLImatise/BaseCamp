@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpff3base.cwl
+id: qpff3base.cwl
 inputs:
 - id: in_use_nam_fixname
   doc: '... use <nam> sa fixname.'
@@ -16,21 +16,11 @@ inputs:
   type: File
   inputBinding:
     prefix: -p
-- id: in_g
-  doc: <>   ... .
-  type: boolean
-  inputBinding:
-    prefix: -g
 - id: in_use_val_seed
   doc: '... use <val> as seed.'
   type: string
   inputBinding:
     prefix: -s
-- id: in_o
-  doc: <>   ... .
-  type: boolean
-  inputBinding:
-    prefix: -o
 - id: in_use_val_lambda
   doc: '... use <val> as lambda scale.'
   type: string

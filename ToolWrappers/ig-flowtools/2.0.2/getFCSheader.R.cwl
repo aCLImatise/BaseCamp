@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getFCSheader.R.cwl
+id: getFCSheader.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_nucleotide_changer.cwl
+id: fasta_nucleotide_changer.cwl
 inputs:
 - id: in_d
   doc: ''

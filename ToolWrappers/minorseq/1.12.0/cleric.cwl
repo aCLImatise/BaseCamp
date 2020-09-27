@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cleric.cwl
+id: cleric.cwl
 inputs:
 - id: in_aln
   doc: Pairwise alignment of reference to target

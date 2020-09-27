@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_bloom.cwl
+id: abyss_bloom.cwl
 inputs:
 - id: in_km_er
   doc: the size of a k-mer [<=128]

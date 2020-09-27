@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../link.cwl
+id: link.cwl
 inputs:
 - id: in_file_one
   doc: ''

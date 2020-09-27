@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2shrep_gspan.pl.cwl
+id: fasta2shrep_gspan.pl.cwl
 inputs:
 - id: in_man
   doc: full documentation
@@ -167,11 +167,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -debug
-- id: in_wins
-  doc: '""'
-  type: boolean
-  inputBinding:
-    prefix: -wins
 - id: in_help
   doc: -help   brief help message
   type: string

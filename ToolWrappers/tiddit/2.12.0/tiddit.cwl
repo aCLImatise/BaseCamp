@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tiddit.cwl
+id: tiddit.cwl
 inputs:
 - id: in_sv
   doc: call structural variation

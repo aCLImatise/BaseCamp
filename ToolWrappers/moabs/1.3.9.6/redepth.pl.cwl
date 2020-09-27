@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../redepth.pl.cwl
+id: redepth.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

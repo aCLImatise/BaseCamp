@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomeCoverageBed.cwl
+id: genomeCoverageBed.cwl
 inputs:
 - id: in_i_bam
   doc: "The input file is in BAM format.\nNote: BAM _must_ be sorted by position"
@@ -106,21 +106,6 @@ inputs:
 - id: in_genome_dot_ucsc_dot_edu_slash_goldenpath_slash_help_slash_bed_graph_dot_html
   doc: -bga            Report depth in BedGraph format, as above (-bg).
   type: string
-  inputBinding:
-    position: 0
-- id: in_chr_one
-  doc: '249250621'
-  type: long
-  inputBinding:
-    position: 0
-- id: in_chr_two
-  doc: '243199373'
-  type: long
-  inputBinding:
-    position: 1
-- id: in_chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
-  doc: '4262'
-  type: long
   inputBinding:
     position: 0
 outputs:

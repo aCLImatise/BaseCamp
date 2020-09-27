@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulatION.cwl
+id: simulatION.cwl
 inputs:
 - id: in_v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_cluster.cwl
+id: Clustering_cluster.cwl
 inputs:
 - id: in_no_clust_out
   doc: Don't write out clustering

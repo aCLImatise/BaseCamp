@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_duplicate_reads.cwl
+id: find_duplicate_reads.cwl
 inputs:
 - id: in_bank_name
   doc: ''

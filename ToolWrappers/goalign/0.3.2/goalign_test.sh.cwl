@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_test.sh.cwl
+id: goalign_test.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

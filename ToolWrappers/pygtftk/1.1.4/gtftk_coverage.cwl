@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_coverage.cwl
+id: gtftk_coverage.cwl
 inputs:
 - id: in_input_file
   doc: 'The input GTF/BED file. Only GTF file if <stdin> is used. (default: <stdin>)'

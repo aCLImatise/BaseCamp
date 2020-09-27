@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../basemlg.cwl
+id: basemlg.cwl
 inputs: []
 outputs:
 - id: out_stdout

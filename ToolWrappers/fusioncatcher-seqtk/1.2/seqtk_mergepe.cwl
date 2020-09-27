@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_mergepe.cwl
+id: seqtk_mergepe.cwl
 inputs:
 - id: in_in_one_dot_fq
   doc: ''

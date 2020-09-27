@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../specialk.cwl
+id: specialk.cwl
 inputs:
 - id: in_o
   doc: ''

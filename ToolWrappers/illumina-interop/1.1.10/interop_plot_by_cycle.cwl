@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_plot_by_cycle.cwl
+id: interop_plot_by_cycle.cwl
 inputs:
 - id: in_metric_name
   doc: '[Intensity]: Metric to plot'

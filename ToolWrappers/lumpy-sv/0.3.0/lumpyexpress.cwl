@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lumpyexpress.cwl
+id: lumpyexpress.cwl
 inputs:
 - id: in_full_bam_files
   doc: full BAM or CRAM file(s) (comma separated) (required)

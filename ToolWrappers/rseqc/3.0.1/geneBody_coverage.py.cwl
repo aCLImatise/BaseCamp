@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../geneBody_coverage.py.cwl
+id: geneBody_coverage.py.cwl
 inputs:
 - id: in_input
   doc: "Input file(s) in BAM format. \"-i\" takes these input:\n1) a single BAM file.\

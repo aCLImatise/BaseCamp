@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicPlotViewpoint.cwl
+id: hicPlotViewpoint.cwl
 inputs:
 - id: in_reference_point
   doc: "Reference point. Needs to be in the format: 'chr:100'\nfor a single reference\

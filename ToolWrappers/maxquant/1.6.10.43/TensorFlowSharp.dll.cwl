@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TensorFlowSharp.dll.cwl
+id: TensorFlowSharp.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

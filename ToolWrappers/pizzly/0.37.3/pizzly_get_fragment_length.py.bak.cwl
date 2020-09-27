@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pizzly_get_fragment_length.py.bak.cwl
+id: pizzly_get_fragment_length.py.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

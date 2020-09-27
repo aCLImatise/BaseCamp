@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_FL_accs.pl.cwl
+id: get_FL_accs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

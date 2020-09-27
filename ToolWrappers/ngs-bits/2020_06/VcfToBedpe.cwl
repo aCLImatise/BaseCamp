@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfToBedpe.cwl
+id: VcfToBedpe.cwl
 inputs:
 - id: in_in
   doc: Input structural variant list in VCF format.

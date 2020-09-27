@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HMMV.cwl
+id: HMMV.cwl
 inputs:
 - id: in_model_file
   doc: Path to hidden Markov model file

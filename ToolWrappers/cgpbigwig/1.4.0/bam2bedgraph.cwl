@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2bedgraph.cwl
+id: bam2bedgraph.cwl
 inputs:
 - id: in_input
   doc: 'Path to bam/cram input file. [default: stdin]'

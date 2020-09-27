@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicConvertFormat.cwl
+id: hicConvertFormat.cwl
 inputs:
 - id: in_matrices
   doc: "input file(s). Could be one or many files. (default:\nNone)"

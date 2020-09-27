@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runAssembly.sh.cwl
+id: runAssembly.sh.cwl
 inputs:
 - id: in_ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).

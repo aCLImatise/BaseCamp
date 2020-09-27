@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzePosMap.cwl
+id: analyzePosMap.cwl
 inputs:
 - id: in_prefix_posmap_files
   doc: prefix of posmap files (e.g., posmap-prefix.posmap.frgctg)

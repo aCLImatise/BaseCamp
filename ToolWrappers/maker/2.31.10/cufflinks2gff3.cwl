@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cufflinks2gff3.cwl
+id: cufflinks2gff3.cwl
 inputs:
 - id: in_this
   doc: ''

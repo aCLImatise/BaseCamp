@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5repart.cwl
+id: h5repart.cwl
 inputs:
 - id: in_produce_verbose_output
   doc: Produce verbose output

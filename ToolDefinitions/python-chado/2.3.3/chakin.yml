@@ -11,58 +11,1913 @@ subcommands:
   - export
   positional: []
   named: []
-  parent: &id046 !Command
+  parent: &id054 !Command
     command: *id001
     positional: []
     named: []
     parent:
     subcommands:
-    - &id045 !Command
+    - &id053 !Command
       command: *id002
       positional: []
       named: []
-      parent: &id003 !Command
+      parent: &id046 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Enables verbose mode.
-          synonyms:
-          - -v
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Name of instance in /root/.chakin.yml. This parameter\ncan\
-            \ also be set via the environment variable\nCHADO_INSTANCE  [default:\
-            \ __default; required]"
-          synonyms:
-          - -i
-          - --instance
-          args: !SimpleFlagArg
-            name: TEXT
-          optional: true
-        - !Flag
-          description: config file path
-          synonyms:
-          - -f
-          - --path
-          args: !SimpleFlagArg
-            name: TEXT
-          optional: true
+        named: []
         parent:
         subcommands:
-        - &id004 !Command
+        - &id045 !Command
           command: *id002
           positional: []
           named: []
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Enables verbose mode.
+              synonyms:
+              - -v
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Name of instance in /root/.chakin.yml. This parameter\n\
+                can also be set via the environment variable\nCHADO_INSTANCE  [default:\
+                \ __default; required]"
+              synonyms:
+              - -i
+              - --instance
+              args: !SimpleFlagArg
+                name: TEXT
+              optional: true
+            - !Flag
+              description: config file path
+              synonyms:
+              - -f
+              - --path
+              args: !SimpleFlagArg
+                name: TEXT
+              optional: true
+            parent:
+            subcommands:
+            - &id004 !Command
+              command: *id002
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id012
+                - chakin
+                - export
+                - export_fasta
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: If true, write to files in CWD
+                  synonyms:
+                  - --file
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id004
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin export export_fasta [OPTIONS] ORGANISM_ID\n\
+                  \n  Export reference sequences as fasta.\n\n  Output:\n\n      None\n\
+                  \nOptions:\n  --file      If true, write to files in CWD\n  -h,\
+                  \ --help  Show this message and exit.\n"
+                generated_using: &id005
+                - --help
+              - !Command
+                command: &id013
+                - chakin
+                - export
+                - export_gbk
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named: []
+                parent: *id004
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin export export_gbk [OPTIONS] ORGANISM_ID\n\
+                  \n  Export organism features as genbank\n\n  Output:\n\n      None\n\
+                  \nOptions:\n  -h, --help  Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id014
+                - chakin
+                - export
+                - export_gff3
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named: []
+                parent: *id004
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin export export_gff3 [OPTIONS] ORGANISM_ID\n\
+                  \n  Export organism features as GFF3\n\n  Output:\n\n      None\n\
+                  \nOptions:\n  -h, --help  Show this message and exit.\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: chakin export [OPTIONS] COMMAND [ARGS]...\n\n  Export\
+                \ data from the chado database\n\nOptions:\n  -h, --help  Show this\
+                \ message and exit.\n\nCommands:\n  export_fasta  Export reference\
+                \ sequences as fasta.\n  export_gbk    Export organism features as\
+                \ genbank Output: None\n  export_gff3   Export organism features as\
+                \ GFF3 Output: None\n"
+              generated_using: *id005
+            - &id006 !Command
+              command: &id015
+              - chakin
+              - phylogeny
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id016
+                - chakin
+                - phylogeny
+                - load_tree
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: NEWICK
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: ANALYSIS_ID
+                  optional: false
+                named:
+                - !Flag
+                  description: "The name given to the phylotree entry in the database\n\
+                    (default=<filename>)"
+                  synonyms:
+                  - --name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "The name of the db to link dbxrefs for the trees\n\
+                    (default: \"null\")  [default: null]"
+                  synonyms:
+                  - --xref_db
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "The accession to use for dbxrefs for the trees\n(assumed\
+                    \ same as name unless otherwise specified)"
+                  synonyms:
+                  - --xref_accession
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Match polypeptide features using their name instead\n\
+                    of their uniquename"
+                  synonyms:
+                  - --match_on_name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Comma-separated list of prefix to be removed from\n\
+                    identifiers (e.g species prefixes when loading\nOrthoFinder output)"
+                  synonyms:
+                  - --prefix
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id006
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin phylogeny load_tree [OPTIONS] NEWICK ANALYSIS_ID\n\
+                  \n  Load a phylogenetic tree (Newick format) into Chado db\n\n \
+                  \ Output:\n\n      Number of inserted trees\n\nOptions:\n  --name\
+                  \ TEXT            The name given to the phylotree entry in the database\n\
+                  \                         (default=<filename>)\n\n  --xref_db TEXT\
+                  \         The name of the db to link dbxrefs for the trees\n   \
+                  \                      (default: \"null\")  [default: null]\n\n\
+                  \  --xref_accession TEXT  The accession to use for dbxrefs for the\
+                  \ trees\n                         (assumed same as name unless otherwise\
+                  \ specified)\n\n  --match_on_name        Match polypeptide features\
+                  \ using their name instead\n                         of their uniquename\n\
+                  \n  --prefix TEXT          Comma-separated list of prefix to be\
+                  \ removed from\n                         identifiers (e.g species\
+                  \ prefixes when loading\n                         OrthoFinder output)\n\
+                  \n  -h, --help             Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id017
+                - chakin
+                - phylogeny
+                - gene_order
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: Removes all previous gene ordering data
+                  synonyms:
+                  - --nuke
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id006
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin phylogeny gene_order [OPTIONS]\n\n  Orders\
+                  \ all the genes in the database by their order on their respective\n\
+                  \  chromosomes in the gene_order table (for use in\n  https://github.com/legumeinfo/lis_context_viewer/).\n\
+                  \n  Output:\n\n      None\n\nOptions:\n  --nuke      Removes all\
+                  \ previous gene ordering data\n  -h, --help  Show this message and\
+                  \ exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id018
+                - chakin
+                - phylogeny
+                - gene_families
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: Restrict to families beginning with given prefix
+                  synonyms:
+                  - --family_name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Removes all previous gene families data
+                  synonyms:
+                  - --nuke
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id006
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin phylogeny gene_families [OPTIONS]\n\n  Adds\
+                  \ an entry in the featureprop table in a chado database for each\
+                  \ family\n  a gene belongs to (for use in\n  https://github.com/legumeinfo/lis_context_viewer/).\n\
+                  \n  Output:\n\n      None\n\nOptions:\n  --family_name TEXT  Restrict\
+                  \ to families beginning with given prefix\n  --nuke            \
+                  \  Removes all previous gene families data\n  -h, --help       \
+                  \   Show this message and exit.\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: chakin phylogeny [OPTIONS] COMMAND [ARGS]...\n\n\
+                \  Access to the chado phylogeny content\n\nOptions:\n  -h, --help\
+                \  Show this message and exit.\n\nCommands:\n  add_cvterms    Make\
+                \ sure required cvterms are loaded Output: created...\n  gene_families\
+                \  Adds an entry in the featureprop table in a chado database...\n\
+                \  gene_order     Orders all the genes in the database by their order\
+                \ on...\n  load_tree      Load a phylogenetic tree (Newick format)\
+                \ into Chado db...\n"
+              generated_using: *id005
+            - &id007 !Command
+              command: &id019
+              - chakin
+              - organism
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id020
+                - chakin
+                - organism
+                - add_organism
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: GENUS
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: SPECIES
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 2
+                  name: COMMON
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 3
+                  name: ABBR
+                  optional: false
+                named:
+                - !Flag
+                  description: A comment / description
+                  synonyms:
+                  - --comment
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id007
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin organism add_organism [OPTIONS] GENUS SPECIES\
+                  \ COMMON ABBR\n\n  Add a new organism to the Chado database\n\n\
+                  \  Output:\n\n      Organism information\n\nOptions:\n  --comment\
+                  \ TEXT  A comment / description\n  -h, --help      Show this message\
+                  \ and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id021
+                - chakin
+                - organism
+                - delete_organisms
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: organism_id filter
+                  synonyms:
+                  - --organism_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: genus filter
+                  synonyms:
+                  - --genus
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: species filter
+                  synonyms:
+                  - --species
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: common filter
+                  synonyms:
+                  - --common
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: abbr filter
+                  synonyms:
+                  - --abbr
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: comment filter
+                  synonyms:
+                  - --comment
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id007
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin organism delete_organisms [OPTIONS]\n\n\
+                  \  Delete all organisms\n\n  Output:\n\n      None\n\nOptions:\n\
+                  \  --organism_id INTEGER  organism_id filter\n  --genus TEXT   \
+                  \        genus filter\n  --species TEXT         species filter\n\
+                  \  --common TEXT          common filter\n  --abbr TEXT         \
+                  \   abbr filter\n  --comment TEXT         comment filter\n  -h,\
+                  \ --help             Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id022
+                - chakin
+                - organism
+                - delete_all_organisms
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: Confirm that you really do want to delete ALL of the
+                    organisms.
+                  synonyms:
+                  - --confirm
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id007
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin organism delete_all_organisms [OPTIONS]\n\
+                  \n  Delete all organisms\n\n  Output:\n\n      None\n\nOptions:\n\
+                  \  --confirm   Confirm that you really do want to delete ALL of\
+                  \ the organisms.\n  -h, --help  Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id023
+                - chakin
+                - organism
+                - get_organisms
+                positional: []
+                named:
+                - !Flag
+                  description: organism_id filter
+                  synonyms:
+                  - --organism_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: genus filter
+                  synonyms:
+                  - --genus
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: species filter
+                  synonyms:
+                  - --species
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: common filter
+                  synonyms:
+                  - --common
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: abbr filter
+                  synonyms:
+                  - --abbr
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: comment filter
+                  synonyms:
+                  - --comment
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id007
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin organism get_organisms [OPTIONS]\n\n  Get\
+                  \ all or some organisms\n\n  Output:\n\n      Organisms information\n\
+                  \nOptions:\n  --organism_id INTEGER  organism_id filter\n  --genus\
+                  \ TEXT           genus filter\n  --species TEXT         species\
+                  \ filter\n  --common TEXT          common filter\n  --abbr TEXT\
+                  \            abbr filter\n  --comment TEXT         comment filter\n\
+                  \  -h, --help             Show this message and exit.\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: chakin organism [OPTIONS] COMMAND [ARGS]...\n\n \
+                \ Access to the chado organism table\n\nOptions:\n  -h, --help  Show\
+                \ this message and exit.\n\nCommands:\n  add_organism          Add\
+                \ a new organism to the Chado database Output:...\n  delete_all_organisms\
+                \  Delete all organisms Output: None\n  delete_organisms      Delete\
+                \ all organisms Output: None\n  get_organisms         Get all or some\
+                \ organisms Output: Organisms...\n"
+              generated_using: *id005
+            - &id008 !Command
+              command: &id024
+              - chakin
+              - feature
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id025
+                - chakin
+                - feature
+                - get_features
+                positional: []
+                named:
+                - !Flag
+                  description: organism_id filter
+                  synonyms:
+                  - --organism_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: analysis_id filter
+                  synonyms:
+                  - --analysis_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: name filter
+                  synonyms:
+                  - --name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: uniquename filter
+                  synonyms:
+                  - --uniquename
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature get_features [OPTIONS]\n\n  Get\
+                  \ all or some features\n\n  Output:\n\n      Features information\n\
+                  \nOptions:\n  --organism_id INTEGER  organism_id filter\n  --analysis_id\
+                  \ INTEGER  analysis_id filter\n  --name TEXT            name filter\n\
+                  \  --uniquename TEXT      uniquename filter\n  -h, --help      \
+                  \       Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id026
+                - chakin
+                - feature
+                - load_featureprops
+                positional:
+                - !Positional
+                  description: -h, --help           Show this message and exit.
+                  position: 0
+                  name: uniquename
+                  optional: false
+                named:
+                - !Flag
+                  description: "Type of the target features in sequence ontology (will\n\
+                    speed up loading if specified)"
+                  synonyms:
+                  - --feature_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Match features using their name instead of their
+                  synonyms:
+                  - --match_on_name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature load_featureprops [OPTIONS] TAB_FILE\
+                  \ ANALYSIS_ID\n                                        ORGANISM_ID\
+                  \ PROP_TYPE\n\n  Load feature properties from a tabular file (Column1:\
+                  \ feature name or\n  uniquename, Column2: property value)\n\n  Output:\n\
+                  \n      Number of inserted featureprop\n\nOptions:\n  --feature_type\
+                  \ TEXT  Type of the target features in sequence ontology (will\n\
+                  \                       speed up loading if specified)\n\n  --match_on_name\
+                  \      Match features using their name instead of their\n      \
+                  \                 uniquename\n\n  -h, --help           Show this\
+                  \ message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id027
+                - chakin
+                - feature
+                - get_feature_analyses
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: FEATURE_ID
+                  optional: false
+                named: []
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature get_feature_analyses [OPTIONS] FEATURE_ID\n\
+                  \n  Get analyses associated with a feature\n\n  Output:\n\n    \
+                  \  Feature analyses\n\nOptions:\n  -h, --help  Show this message\
+                  \ and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id028
+                - chakin
+                - feature
+                - load_go
+                positional:
+                - !Positional
+                  description: --name_column INTEGER  Column containing the feature
+                    identifiers (2, 3, 10
+                  position: 0
+                  name: uniquename
+                  optional: false
+                named:
+                - !Flag
+                  description: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n\
+                    'contig') of the query. It must be a valid Sequence\nOntology\
+                    \ term.  [default: polypeptide]"
+                  synonyms:
+                  - --query_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Match features using their name instead of their
+                  synonyms:
+                  - --match_on_name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Column containing the GO id (default=5).  [default:\n\
+                    5]"
+                  synonyms:
+                  - --go_column
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract the feature name from\n\
+                    the input file (first capturing group will be used)."
+                  synonyms:
+                  - --re_name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Skip lines with unknown features or GO id instead\
+                    \ of\naborting everything."
+                  synonyms:
+                  - --skip_missing
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature load_go [OPTIONS] INPUT ORGANISM_ID\
+                  \ ANALYSIS_ID\n\n  Load GO annotation from a tabular file\n\n  Output:\n\
+                  \n      Number of inserted GO terms\n\nOptions:\n  --query_type\
+                  \ TEXT      The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n\
+                  \                         'contig') of the query. It must be a valid\
+                  \ Sequence\n                         Ontology term.  [default: polypeptide]\n\
+                  \n  --match_on_name        Match features using their name instead\
+                  \ of their\n                         uniquename\n\n  --name_column\
+                  \ INTEGER  Column containing the feature identifiers (2, 3, 10\n\
+                  \                         or 11; default=2).  [default: 2]\n\n \
+                  \ --go_column INTEGER    Column containing the GO id (default=5).\
+                  \  [default:\n                         5]\n\n  --re_name TEXT  \
+                  \       Regular expression to extract the feature name from\n  \
+                  \                       the input file (first capturing group will\
+                  \ be used).\n\n  --skip_missing         Skip lines with unknown\
+                  \ features or GO id instead of\n                         aborting\
+                  \ everything.\n\n  -h, --help             Show this message and\
+                  \ exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id029
+                - chakin
+                - feature
+                - get_feature_cvterms
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: FEATURE_ID
+                  optional: false
+                named: []
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature get_feature_cvterms [OPTIONS] FEATURE_ID\n\
+                  \n  Get cvterms associated with a feature\n\n  Output:\n\n     \
+                  \ Feature cvterms\n\nOptions:\n  -h, --help  Show this message and\
+                  \ exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id030
+                - chakin
+                - feature
+                - load_gff
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: "Type of the landmarks (will speed up loading if\n\
+                    provided, e.g. contig, should be a term of the\nSequence ontology)"
+                  synonyms:
+                  - --landmark_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Replacement string for the protein name using\ncapturing\
+                    \ groups defined by --re_protein_capture"
+                  synonyms:
+                  - --re_protein
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Regular expression to capture groups in mRNA name\n\
+                    to use in --re_protein (e.g. \"^(.*?)-R([A-Z]+)$\",\ndefault=\"\
+                    ^(.*?)$\")  [default: ^(.*?)$]"
+                  synonyms:
+                  - --re_protein_capture
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Path to a Fasta containing sequences for some\nfeatures.\
+                    \ When creating a feature, if its\nsequence is in this fasta file\
+                    \ it will be loaded.\nOtherwise for mRNA and polypeptides it will\
+                    \ be\ncomputed from the genome sequence (if available),\notherwise\
+                    \ it will be left empty."
+                  synonyms:
+                  - --fasta
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Disable the computation of mRNA and polypeptides\n\
+                    sequences based on genome sequence and positions."
+                  synonyms:
+                  - --no_seq_compute
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Hide progress information
+                  synonyms:
+                  - --quiet
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Use this flag if you're not updating existing\nfeatures,\
+                    \ but just adding new features to the\nselected analysis and organism.\
+                    \ It will speedup\nloading, and reduce memory usage, but might\n\
+                    produce errors in case of already existing\nfeature."
+                  synonyms:
+                  - --add_only
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Attribute containing the protein uniquename. It\n\
+                    is searched at the mRNA level, and if not found\nat CDS level."
+                  synonyms:
+                  - --protein_id_attr
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature load_gff [OPTIONS] GFF ANALYSIS_ID\
+                  \ ORGANISM_ID\n\n  Load features from a gff file\n\n  Output:\n\n\
+                  \      None\n\nOptions:\n  --landmark_type TEXT       Type of the\
+                  \ landmarks (will speed up loading if\n                        \
+                  \     provided, e.g. contig, should be a term of the\n         \
+                  \                    Sequence ontology)\n\n  --re_protein TEXT \
+                  \         Replacement string for the protein name using\n      \
+                  \                       capturing groups defined by --re_protein_capture\n\
+                  \n  --re_protein_capture TEXT  Regular expression to capture groups\
+                  \ in mRNA name\n                             to use in --re_protein\
+                  \ (e.g. \"^(.*?)-R([A-Z]+)$\",\n                             default=\"\
+                  ^(.*?)$\")  [default: ^(.*?)$]\n\n  --fasta TEXT               Path\
+                  \ to a Fasta containing sequences for some\n                   \
+                  \          features. When creating a feature, if its\n         \
+                  \                    sequence is in this fasta file it will be loaded.\n\
+                  \                             Otherwise for mRNA and polypeptides\
+                  \ it will be\n                             computed from the genome\
+                  \ sequence (if available),\n                             otherwise\
+                  \ it will be left empty.\n\n  --no_seq_compute           Disable\
+                  \ the computation of mRNA and polypeptides\n                   \
+                  \          sequences based on genome sequence and positions.\n\n\
+                  \  --quiet                    Hide progress information\n  --add_only\
+                  \                 Use this flag if you're not updating existing\n\
+                  \                             features, but just adding new features\
+                  \ to the\n                             selected analysis and organism.\
+                  \ It will speedup\n                             loading, and reduce\
+                  \ memory usage, but might\n                             produce\
+                  \ errors in case of already existing\n                         \
+                  \    feature.\n\n  --protein_id_attr TEXT     Attribute containing\
+                  \ the protein uniquename. It\n                             is searched\
+                  \ at the mRNA level, and if not found\n                        \
+                  \     at CDS level.\n\n  -h, --help                 Show this message\
+                  \ and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id031
+                - chakin
+                - feature
+                - delete_features
+                positional: []
+                named:
+                - !Flag
+                  description: organism_id filter
+                  synonyms:
+                  - --organism_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: analysis_id filter
+                  synonyms:
+                  - --analysis_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: name filter
+                  synonyms:
+                  - --name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: uniquename filter
+                  synonyms:
+                  - --uniquename
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature delete_features [OPTIONS]\n\n  Get\
+                  \ all or some features\n\n  Output:\n\n      Features information\n\
+                  \nOptions:\n  --organism_id INTEGER  organism_id filter\n  --analysis_id\
+                  \ INTEGER  analysis_id filter\n  --name TEXT            name filter\n\
+                  \  --uniquename TEXT      uniquename filter\n  -h, --help      \
+                  \       Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id032
+                - chakin
+                - feature
+                - load_fasta
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: FASTA
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: ORGANISM_ID
+                  optional: false
+                named:
+                - !Flag
+                  description: 'Sequence type  [default: contig]'
+                  synonyms:
+                  - --sequence_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Analysis ID
+                  synonyms:
+                  - --analysis_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract the feature name from\n\
+                    the fasta sequence id (first capturing group will be\nused)."
+                  synonyms:
+                  - --re_name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract the feature name from\n\
+                    the fasta sequence id (first capturing group will be\nused)."
+                  synonyms:
+                  - --re_uniquename
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Match existing features using their name instead of\n\
+                    their uniquename"
+                  synonyms:
+                  - --match_on_name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Update existing feature with new sequence instead\
+                    \ of\nthrowing an error"
+                  synonyms:
+                  - --update
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: External database to cross reference to.
+                  synonyms:
+                  - --db
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract an external database\n\
+                    accession from the fasta sequence id (first\ncapturing group will\
+                    \ be used)."
+                  synonyms:
+                  - --re_db_accession
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Relation type to parent feature ('part_of' or\n'derives_from')."
+                  synonyms:
+                  - --rel_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract parent uniquename from\n\
+                    the fasta sequence id (first capturing group will be\nused)."
+                  synonyms:
+                  - --re_parent
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Sequence type of the parent feature
+                  synonyms:
+                  - --parent_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id008
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin feature load_fasta [OPTIONS] FASTA ORGANISM_ID\n\
+                  \n  Load features from a fasta file\n\n  Output:\n\n      Number\
+                  \ of inserted sequences\n\nOptions:\n  --sequence_type TEXT    Sequence\
+                  \ type  [default: contig]\n  --analysis_id INTEGER   Analysis ID\n\
+                  \  --re_name TEXT          Regular expression to extract the feature\
+                  \ name from\n                          the fasta sequence id (first\
+                  \ capturing group will be\n                          used).\n\n\
+                  \  --re_uniquename TEXT    Regular expression to extract the feature\
+                  \ name from\n                          the fasta sequence id (first\
+                  \ capturing group will be\n                          used).\n\n\
+                  \  --match_on_name         Match existing features using their name\
+                  \ instead of\n                          their uniquename\n\n  --update\
+                  \                Update existing feature with new sequence instead\
+                  \ of\n                          throwing an error\n\n  --db INTEGER\
+                  \            External database to cross reference to.\n  --re_db_accession\
+                  \ TEXT  Regular expression to extract an external database\n   \
+                  \                       accession from the fasta sequence id (first\n\
+                  \                          capturing group will be used).\n\n  --rel_type\
+                  \ TEXT         Relation type to parent feature ('part_of' or\n \
+                  \                         'derives_from').\n\n  --re_parent TEXT\
+                  \        Regular expression to extract parent uniquename from\n\
+                  \                          the fasta sequence id (first capturing\
+                  \ group will be\n                          used).\n\n  --parent_type\
+                  \ TEXT      Sequence type of the parent feature\n  -h, --help  \
+                  \            Show this message and exit.\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: chakin feature [OPTIONS] COMMAND [ARGS]...\n\n  Access\
+                \ to the chado features\n\nOptions:\n  -h, --help  Show this message\
+                \ and exit.\n\nCommands:\n  delete_features       Get all or some\
+                \ features Output: Features...\n  get_feature_analyses  Get analyses\
+                \ associated with a feature Output:...\n  get_feature_cvterms   Get\
+                \ cvterms associated with a feature Output:...\n  get_features   \
+                \       Get all or some features Output: Features...\n  load_fasta\
+                \            Load features from a fasta file Output: Number of...\n\
+                \  load_featureprops     Load feature properties from a tabular file...\n\
+                \  load_gff              Load features from a gff file Output: None\n\
+                \  load_go               Load GO annotation from a tabular file Output:...\n"
+              generated_using: *id005
+            - !Command
+              command: &id033
+              - chakin
+              - scripts.
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: chakin
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: COMMAND
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: ARGS
+                optional: true
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Problem loading command scripts., exception No module named\
+                \ 'chakin.commands.cmd_scripts'\nUsage: chakin [OPTIONS] COMMAND [ARGS]...\n\
+                Try 'chakin -h' for help.\n\nError: No such command 'scripts.'.\n"
+              generated_using: *id005
+            - &id009 !Command
+              command: &id034
+              - chakin
+              - load
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id035
+                - chakin
+                - load
+                - interpro
+                positional:
+                - !Positional
+                  description: --skip_missing     Skip lines with unknown features
+                    or GO id instead of
+                  position: 0
+                  name: uniquename
+                  optional: false
+                named:
+                - !Flag
+                  description: Load GO annotation to the database
+                  synonyms:
+                  - --parse_go
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract the feature name from\
+                    \ the\ninput file (first capturing group will be used)."
+                  synonyms:
+                  - --re_name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n\
+                    'contig') of the query. It must be a valid Sequence\nOntology\
+                    \ term.  [default: polypeptide]"
+                  synonyms:
+                  - --query_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Match features using their name instead of their
+                  synonyms:
+                  - --match_on_name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id009
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin load interpro [OPTIONS] ANALYSIS_ID ORGANISM_ID\
+                  \ INPUT\n\n  Load an InterProScan analysis, in the same way as does\
+                  \ the\n  tripal_analysis_intepro module\n\n  Output:\n\n      Number\
+                  \ of processed hits\n\nOptions:\n  --parse_go         Load GO annotation\
+                  \ to the database\n  --re_name TEXT     Regular expression to extract\
+                  \ the feature name from the\n                     input file (first\
+                  \ capturing group will be used).\n\n  --query_type TEXT  The feature\
+                  \ type (e.g. 'gene', 'mRNA', 'polypeptide',\n                  \
+                  \   'contig') of the query. It must be a valid Sequence\n      \
+                  \               Ontology term.  [default: polypeptide]\n\n  --match_on_name\
+                  \    Match features using their name instead of their\n        \
+                  \             uniquename\n\n  --skip_missing     Skip lines with\
+                  \ unknown features or GO id instead of\n                     aborting\
+                  \ everything.\n\n  -h, --help         Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id036
+                - chakin
+                - load
+                - go
+                positional:
+                - !Positional
+                  description: --name_column INTEGER  Column containing the feature
+                    identifiers (2, 3, 10
+                  position: 0
+                  name: uniquename
+                  optional: false
+                named:
+                - !Flag
+                  description: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n\
+                    'contig') of the query. It must be a valid Sequence\nOntology\
+                    \ term.  [default: polypeptide]"
+                  synonyms:
+                  - --query_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Match features using their name instead of their
+                  synonyms:
+                  - --match_on_name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Column containing the GO id (default=5).  [default:\n\
+                    5]"
+                  synonyms:
+                  - --go_column
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract the feature name from\n\
+                    the input file (first capturing group will be used)."
+                  synonyms:
+                  - --re_name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "Skip lines with unknown features or GO id instead\
+                    \ of\naborting everything."
+                  synonyms:
+                  - --skip_missing
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id009
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin load go [OPTIONS] INPUT ORGANISM_ID ANALYSIS_ID\n\
+                  \n  Load GO annotation from a tabular file, in the same way as does\
+                  \ the\n  tripal_analysis_go module\n\n  Output:\n\n      Number\
+                  \ of inserted GO terms\n\nOptions:\n  --query_type TEXT      The\
+                  \ feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n          \
+                  \               'contig') of the query. It must be a valid Sequence\n\
+                  \                         Ontology term.  [default: polypeptide]\n\
+                  \n  --match_on_name        Match features using their name instead\
+                  \ of their\n                         uniquename\n\n  --name_column\
+                  \ INTEGER  Column containing the feature identifiers (2, 3, 10\n\
+                  \                         or 11; default=2).  [default: 2]\n\n \
+                  \ --go_column INTEGER    Column containing the GO id (default=5).\
+                  \  [default:\n                         5]\n\n  --re_name TEXT  \
+                  \       Regular expression to extract the feature name from\n  \
+                  \                       the input file (first capturing group will\
+                  \ be used).\n\n  --skip_missing         Skip lines with unknown\
+                  \ features or GO id instead of\n                         aborting\
+                  \ everything.\n\n  -h, --help             Show this message and\
+                  \ exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id037
+                - chakin
+                - load
+                - blast
+                positional:
+                - !Positional
+                  description: "Output:\nNumber of processed hits"
+                  position: 0
+                  name: module
+                  optional: false
+                - !Positional
+                  description: --skip_missing        Skip lines with unknown features
+                    or GO id instead of
+                  position: 0
+                  name: uniquename
+                  optional: false
+                named:
+                - !Flag
+                  description: "Name of the database blasted against (must be in the\n\
+                    Chado db table)"
+                  synonyms:
+                  - --blastdb
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "ID of the database blasted against (must be in the\n\
+                    Chado db table)"
+                  synonyms:
+                  - --blastdb_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: "Regular expression to extract the feature name from\n\
+                    the input file (first capturing group will be used)."
+                  synonyms:
+                  - --re_name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n\
+                    'contig') of the query. It must be a valid Sequence\nOntology\
+                    \ term.  [default: polypeptide]"
+                  synonyms:
+                  - --query_type
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: Match features using their name instead of their
+                  synonyms:
+                  - --match_on_name
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id009
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin load blast [OPTIONS] ANALYSIS_ID ORGANISM_ID\
+                  \ INPUT\n\n  Load a blast analysis, in the same way as does the\
+                  \ tripal_analysis_blast\n  module\n\n  Output:\n\n      Number of\
+                  \ processed hits\n\nOptions:\n  --blastdb TEXT        Name of the\
+                  \ database blasted against (must be in the\n                   \
+                  \     Chado db table)\n\n  --blastdb_id INTEGER  ID of the database\
+                  \ blasted against (must be in the\n                        Chado\
+                  \ db table)\n\n  --re_name TEXT        Regular expression to extract\
+                  \ the feature name from\n                        the input file\
+                  \ (first capturing group will be used).\n\n  --query_type TEXT \
+                  \    The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n   \
+                  \                     'contig') of the query. It must be a valid\
+                  \ Sequence\n                        Ontology term.  [default: polypeptide]\n\
+                  \n  --match_on_name       Match features using their name instead\
+                  \ of their\n                        uniquename\n\n  --skip_missing\
+                  \        Skip lines with unknown features or GO id instead of\n\
+                  \                        aborting everything.\n\n  -h, --help  \
+                  \          Show this message and exit.\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: chakin load [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
+                \  -h, --help  Show this message and exit.\n\nCommands:\n  blast \
+                \    Load a blast analysis, in the same way as does the...\n  go \
+                \       Load GO annotation from a tabular file, in the same way as\
+                \ does...\n  interpro  Load an InterProScan analysis, in the same\
+                \ way as does the...\n"
+              generated_using: *id005
+            - &id010 !Command
+              command: &id038
+              - chakin
+              - analysis
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id039
+                - chakin
+                - analysis
+                - get_analyses
+                positional: []
+                named:
+                - !Flag
+                  description: analysis_id filter
+                  synonyms:
+                  - --analysis_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: analysis name filter
+                  synonyms:
+                  - --name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis program filter
+                  synonyms:
+                  - --program
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis programversion filter
+                  synonyms:
+                  - --programversion
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis algorithm filter
+                  synonyms:
+                  - --algorithm
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourcename filter
+                  synonyms:
+                  - --sourcename
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourceversion filter
+                  synonyms:
+                  - --sourceversion
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourceuri filter
+                  synonyms:
+                  - --sourceuri
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis description
+                  synonyms:
+                  - --description
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id010
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin analysis get_analyses [OPTIONS]\n\n  Get\
+                  \ all or some analyses\n\n  Output:\n\n      Analysis information\n\
+                  \nOptions:\n  --analysis_id INTEGER  analysis_id filter\n  --name\
+                  \ TEXT            analysis name filter\n  --program TEXT       \
+                  \  analysis program filter\n  --programversion TEXT  analysis programversion\
+                  \ filter\n  --algorithm TEXT       analysis algorithm filter\n \
+                  \ --sourcename TEXT      analysis sourcename filter\n  --sourceversion\
+                  \ TEXT   analysis sourceversion filter\n  --sourceuri TEXT     \
+                  \  analysis sourceuri filter\n  --description TEXT     analysis\
+                  \ description\n  -h, --help             Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id040
+                - chakin
+                - analysis
+                - delete_analyses
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: analysis_id filter
+                  synonyms:
+                  - --analysis_id
+                  args: !SimpleFlagArg
+                    name: INTEGER
+                  optional: true
+                - !Flag
+                  description: analysis name filter
+                  synonyms:
+                  - --name
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis program filter
+                  synonyms:
+                  - --program
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis programversion filter
+                  synonyms:
+                  - --programversion
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis algorithm filter
+                  synonyms:
+                  - --algorithm
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourcename filter
+                  synonyms:
+                  - --sourcename
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourceversion filter
+                  synonyms:
+                  - --sourceversion
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourceuri filter
+                  synonyms:
+                  - --sourceuri
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis description
+                  synonyms:
+                  - --description
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id010
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin analysis delete_analyses [OPTIONS]\n\n \
+                  \ Delete analysis\n\n  Output:\n\n      None\n\nOptions:\n  --analysis_id\
+                  \ INTEGER  analysis_id filter\n  --name TEXT            analysis\
+                  \ name filter\n  --program TEXT         analysis program filter\n\
+                  \  --programversion TEXT  analysis programversion filter\n  --algorithm\
+                  \ TEXT       analysis algorithm filter\n  --sourcename TEXT    \
+                  \  analysis sourcename filter\n  --sourceversion TEXT   analysis\
+                  \ sourceversion filter\n  --sourceuri TEXT       analysis sourceuri\
+                  \ filter\n  --description TEXT     analysis description\n  -h, --help\
+                  \             Show this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id041
+                - chakin
+                - analysis
+                - add_analysis
+                positional:
+                - !Positional
+                  description: Create an analysis
+                  position: 0
+                  name: SOURCENAME
+                  optional: false
+                named:
+                - !Flag
+                  description: analysis algorithm
+                  synonyms:
+                  - --algorithm
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourceversion
+                  synonyms:
+                  - --sourceversion
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis sourceuri
+                  synonyms:
+                  - --sourceuri
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis description
+                  synonyms:
+                  - --description
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                - !Flag
+                  description: analysis date_executed (yyyy-mm-dd)
+                  synonyms:
+                  - --date_executed
+                  args: !SimpleFlagArg
+                    name: TEXT
+                  optional: true
+                parent: *id010
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin analysis add_analysis [OPTIONS] NAME PROGRAM\
+                  \ PROGRAMVERSION\n                                    SOURCENAME\n\
+                  \n  Create an analysis\n\n  Output:\n\n      Analysis information\n\
+                  \nOptions:\n  --algorithm TEXT      analysis algorithm\n  --sourceversion\
+                  \ TEXT  analysis sourceversion\n  --sourceuri TEXT      analysis\
+                  \ sourceuri\n  --description TEXT    analysis description\n  --date_executed\
+                  \ TEXT  analysis date_executed (yyyy-mm-dd)\n  -h, --help      \
+                  \      Show this message and exit.\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: chakin analysis [OPTIONS] COMMAND [ARGS]...\n\n \
+                \ Access to the chado analysis table\n\nOptions:\n  -h, --help  Show\
+                \ this message and exit.\n\nCommands:\n  add_analysis     Create an\
+                \ analysis Output: Analysis information\n  delete_analyses  Delete\
+                \ analysis Output: None\n  get_analyses     Get all or some analyses\
+                \ Output: Analysis information\n"
+              generated_using: *id005
+            - &id011 !Command
+              command: &id042
+              - chakin
+              - util
+              positional: []
+              named: []
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id043
+                - chakin
+                - util
+                - launch_docker_image
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named:
+                - !Flag
+                  description: Launch the image in the background
+                  synonyms:
+                  - --background
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Disable loading of example yeast data
+                  synonyms:
+                  - --no_yeast
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent: *id011
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin util launch_docker_image [OPTIONS]\n\n \
+                  \ Launch a chado docker image.\n\n  Output:\n\n      None\n\nOptions:\n\
+                  \  --background  Launch the image in the background\n  --no_yeast\
+                  \    Disable loading of example yeast data\n  -h, --help    Show\
+                  \ this message and exit.\n"
+                generated_using: *id005
+              - !Command
+                command: &id044
+                - chakin
+                - util
+                - dbshell
+                positional:
+                - !Positional
+                  description: 'Options:'
+                  position: 0
+                  name: None
+                  optional: false
+                named: []
+                parent: *id011
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: chakin util dbshell [OPTIONS]\n\n  Open a psql\
+                  \ session to the database\n\n  Output:\n\n      None\n\nOptions:\n\
+                  \  -h, --help  Show this message and exit.\n"
+                generated_using: *id005
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: chakin util [OPTIONS] COMMAND [ARGS]...\n\n  Some\
+                \ chado utilities\n\nOptions:\n  -h, --help  Show this message and\
+                \ exit.\n\nCommands:\n  dbshell              Open a psql session to\
+                \ the database Output: None\n  launch_docker_image  Launch a chado\
+                \ docker image.\n"
+              generated_using: *id005
+            usage: []
+            help_flag: !Flag
+              description: Show this message and exit.
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: Show the version and exit.
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "Usage: chakin [OPTIONS] COMMAND [ARGS]...\n\n  Command line\
+              \ wrappers around Python-Chado functions. While this sounds\n  unexciting,\
+              \ with chakin and jq you can easily build powerful command line\n  scripts.\n\
+              \nOptions:\n  --version            Show the version and exit.\n  -v,\
+              \ --verbose        Enables verbose mode.\n  -i, --instance TEXT  Name\
+              \ of instance in /root/.chakin.yml. This parameter\n               \
+              \        can also be set via the environment variable\n            \
+              \           CHADO_INSTANCE  [default: __default; required]\n\n  -f,\
+              \ --path TEXT      config file path\n  -h, --help           Show this\
+              \ message and exit.\n\nCommands:\n  init        Help initialize global\
+              \ configuration (in home directory)\n  organism    Access to the chado\
+              \ organism table\n  export      Export data from the chado database\n\
+              \  util        Some chado utilities\n  analysis    Access to the chado\
+              \ analysis table\n  feature     Access to the chado features\n  phylogeny\
+              \   Access to the chado phylogeny content\n  load\n  expression  Interact\
+              \ with expressions\n"
+            generated_using: *id005
           subcommands:
           - !Command
-            command: &id012
-            - chakin
-            - export
-            - export_fasta
+            command: *id012
             positional:
             - !Positional
               description: 'Options:'
@@ -92,13 +1947,9 @@ subcommands:
               \  Export reference sequences as fasta.\n\n  Output:\n\n      None\n\
               \nOptions:\n  --file      If true, write to files in CWD\n  -h, --help\
               \  Show this message and exit.\n"
-            generated_using: &id005
-            - --help
+            generated_using: *id005
           - !Command
-            command: &id013
-            - chakin
-            - export
-            - export_gbk
+            command: *id013
             positional:
             - !Positional
               description: 'Options:'
@@ -123,10 +1974,7 @@ subcommands:
               Options:\n  -h, --help  Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id014
-            - chakin
-            - export
-            - export_gff3
+            command: *id014
             positional:
             - !Positional
               description: 'Options:'
@@ -151,13 +1999,7 @@ subcommands:
               \  -h, --help  Show this message and exit.\n"
             generated_using: *id005
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: chakin export [OPTIONS] COMMAND [ARGS]...\n\n  Export\
@@ -166,19 +2008,14 @@ subcommands:
             \ fasta.\n  export_gbk    Export organism features as genbank Output:\
             \ None\n  export_gff3   Export organism features as GFF3 Output: None\n"
           generated_using: *id005
-        - &id006 !Command
-          command: &id015
-          - chakin
-          - phylogeny
+        - &id047 !Command
+          command: *id015
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id016
-            - chakin
-            - phylogeny
-            - load_tree
+            command: *id016
             positional:
             - !Positional
               description: ''
@@ -259,10 +2096,7 @@ subcommands:
               \       Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id017
-            - chakin
-            - phylogeny
-            - gene_order
+            command: *id017
             positional:
             - !Positional
               description: 'Options:'
@@ -295,10 +2129,7 @@ subcommands:
               \ gene ordering data\n  -h, --help  Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id018
-            - chakin
-            - phylogeny
-            - gene_families
+            command: *id018
             positional:
             - !Positional
               description: 'Options:'
@@ -340,13 +2171,7 @@ subcommands:
               \ and exit.\n"
             generated_using: *id005
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: chakin phylogeny [OPTIONS] COMMAND [ARGS]...\n\n  Access\
@@ -357,19 +2182,14 @@ subcommands:
             \ all the genes in the database by their order on...\n  load_tree    \
             \  Load a phylogenetic tree (Newick format) into Chado db...\n"
           generated_using: *id005
-        - &id007 !Command
-          command: &id019
-          - chakin
-          - organism
+        - &id048 !Command
+          command: *id019
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id020
-            - chakin
-            - organism
-            - add_organism
+            command: *id020
             positional:
             - !Positional
               description: ''
@@ -417,10 +2237,7 @@ subcommands:
               \ / description\n  -h, --help      Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id021
-            - chakin
-            - organism
-            - delete_organisms
+            command: *id021
             positional:
             - !Positional
               description: 'Options:'
@@ -491,10 +2308,7 @@ subcommands:
               \ exit.\n"
             generated_using: *id005
           - !Command
-            command: &id022
-            - chakin
-            - organism
-            - delete_all_organisms
+            command: *id022
             positional:
             - !Positional
               description: 'Options:'
@@ -526,10 +2340,7 @@ subcommands:
               \  -h, --help  Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id023
-            - chakin
-            - organism
-            - get_organisms
+            command: *id023
             positional: []
             named:
             - !Flag
@@ -595,13 +2406,7 @@ subcommands:
               \         Show this message and exit.\n"
             generated_using: *id005
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: chakin organism [OPTIONS] COMMAND [ARGS]...\n\n  Access\
@@ -611,19 +2416,14 @@ subcommands:
             \ Output: None\n  delete_organisms      Delete all organisms Output: None\n\
             \  get_organisms         Get all or some organisms Output: Organisms...\n"
           generated_using: *id005
-        - &id008 !Command
-          command: &id024
-          - chakin
-          - feature
+        - &id049 !Command
+          command: *id024
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id025
-            - chakin
-            - feature
-            - get_features
+            command: *id025
             positional: []
             named:
             - !Flag
@@ -674,10 +2474,7 @@ subcommands:
               \ and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id026
-            - chakin
-            - feature
-            - load_featureprops
+            command: *id026
             positional:
             - !Positional
               description: -h, --help           Show this message and exit.
@@ -716,10 +2513,7 @@ subcommands:
               \  uniquename\n\n  -h, --help           Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id027
-            - chakin
-            - feature
-            - get_feature_analyses
+            command: *id027
             positional:
             - !Positional
               description: ''
@@ -744,10 +2538,7 @@ subcommands:
               \ analyses\n\nOptions:\n  -h, --help  Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id028
-            - chakin
-            - feature
-            - load_go
+            command: *id028
             positional:
             - !Positional
               description: --name_column INTEGER  Column containing the feature identifiers
@@ -825,10 +2616,7 @@ subcommands:
               \  Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id029
-            - chakin
-            - feature
-            - get_feature_cvterms
+            command: *id029
             positional:
             - !Positional
               description: ''
@@ -853,10 +2641,7 @@ subcommands:
               \ cvterms\n\nOptions:\n  -h, --help  Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id030
-            - chakin
-            - feature
-            - load_gff
+            command: *id030
             positional:
             - !Positional
               description: 'Options:'
@@ -975,10 +2760,7 @@ subcommands:
               \       Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id031
-            - chakin
-            - feature
-            - delete_features
+            command: *id031
             positional: []
             named:
             - !Flag
@@ -1029,10 +2811,7 @@ subcommands:
               \ and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id032
-            - chakin
-            - feature
-            - load_fasta
+            command: *id032
             positional:
             - !Positional
               description: ''
@@ -1164,13 +2943,7 @@ subcommands:
               \        Show this message and exit.\n"
             generated_using: *id005
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: chakin feature [OPTIONS] COMMAND [ARGS]...\n\n  Access\
@@ -1186,9 +2959,7 @@ subcommands:
             \ a tabular file Output:...\n"
           generated_using: *id005
         - !Command
-          command: &id033
-          - chakin
-          - scripts.
+          command: *id033
           positional:
           - !Positional
             description: ''
@@ -1216,19 +2987,14 @@ subcommands:
             \ 'chakin.commands.cmd_scripts'\nUsage: chakin [OPTIONS] COMMAND [ARGS]...\n\
             Try 'chakin -h' for help.\n\nError: No such command 'scripts.'.\n"
           generated_using: *id005
-        - &id009 !Command
-          command: &id034
-          - chakin
-          - load
+        - &id050 !Command
+          command: *id034
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id035
-            - chakin
-            - load
-            - interpro
+            command: *id035
             positional:
             - !Positional
               description: --skip_missing     Skip lines with unknown features or
@@ -1294,10 +3060,7 @@ subcommands:
               \     Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id036
-            - chakin
-            - load
-            - go
+            command: *id036
             positional:
             - !Positional
               description: --name_column INTEGER  Column containing the feature identifiers
@@ -1375,10 +3138,7 @@ subcommands:
               \n  -h, --help             Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id037
-            - chakin
-            - load
-            - blast
+            command: *id037
             positional:
             - !Positional
               description: "Output:\nNumber of processed hits"
@@ -1462,13 +3222,7 @@ subcommands:
               \ this message and exit.\n"
             generated_using: *id005
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: chakin load [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
@@ -1477,19 +3231,14 @@ subcommands:
             \ annotation from a tabular file, in the same way as does...\n  interpro\
             \  Load an InterProScan analysis, in the same way as does the...\n"
           generated_using: *id005
-        - &id010 !Command
-          command: &id038
-          - chakin
-          - analysis
+        - &id051 !Command
+          command: *id038
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id039
-            - chakin
-            - analysis
-            - get_analyses
+            command: *id039
             positional: []
             named:
             - !Flag
@@ -1579,10 +3328,7 @@ subcommands:
               \             Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id040
-            - chakin
-            - analysis
-            - delete_analyses
+            command: *id040
             positional:
             - !Positional
               description: 'Options:'
@@ -1676,10 +3422,7 @@ subcommands:
               \ description\n  -h, --help             Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id041
-            - chakin
-            - analysis
-            - add_analysis
+            command: *id041
             positional:
             - !Positional
               description: Create an analysis
@@ -1744,13 +3487,7 @@ subcommands:
               \ this message and exit.\n"
             generated_using: *id005
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: chakin analysis [OPTIONS] COMMAND [ARGS]...\n\n  Access\
@@ -1759,19 +3496,14 @@ subcommands:
             \ Analysis information\n  delete_analyses  Delete analysis Output: None\n\
             \  get_analyses     Get all or some analyses Output: Analysis information\n"
           generated_using: *id005
-        - &id011 !Command
-          command: &id042
-          - chakin
-          - util
+        - &id052 !Command
+          command: *id042
           positional: []
           named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id043
-            - chakin
-            - util
-            - launch_docker_image
+            command: *id043
             positional:
             - !Positional
               description: 'Options:'
@@ -1809,10 +3541,7 @@ subcommands:
               \ of example yeast data\n  -h, --help    Show this message and exit.\n"
             generated_using: *id005
           - !Command
-            command: &id044
-            - chakin
-            - util
-            - dbshell
+            command: *id044
             positional:
             - !Positional
               description: 'Options:'
@@ -1837,13 +3566,7 @@ subcommands:
               \  Show this message and exit.\n"
             generated_using: *id005
           usage: []
-          help_flag: !Flag
-            description: Show this message and exit.
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "Usage: chakin util [OPTIONS] COMMAND [ARGS]...\n\n  Some chado\
@@ -1852,20 +3575,9 @@ subcommands:
             \ Output: None\n  launch_docker_image  Launch a chado docker image.\n"
           generated_using: *id005
         usage: []
-        help_flag: !Flag
-          description: Show this message and exit.
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Show the version and exit.
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "Usage: chakin [OPTIONS] COMMAND [ARGS]...\n\n  Command line wrappers\
           \ around Python-Chado functions. While this sounds\n  unexciting, with chakin\
           \ and jq you can easily build powerful command line\n  scripts.\n\nOptions:\n\
@@ -1897,7 +3609,7 @@ subcommands:
           - --file
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id004
+        parent: *id045
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1923,7 +3635,7 @@ subcommands:
           name: None
           optional: false
         named: []
-        parent: *id004
+        parent: *id045
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1948,7 +3660,7 @@ subcommands:
           name: None
           optional: false
         named: []
-        parent: *id004
+        parent: *id045
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1974,11 +3686,11 @@ subcommands:
         \  export_gbk    Export organism features as genbank Output: None\n  export_gff3\
         \   Export organism features as GFF3 Output: None\n"
       generated_using: *id005
-    - &id047 !Command
+    - &id055 !Command
       command: *id015
       positional: []
       named: []
-      parent: *id003
+      parent: *id046
       subcommands:
       - !Command
         command: *id016
@@ -2032,7 +3744,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id006
+        parent: *id047
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2074,7 +3786,7 @@ subcommands:
           - --nuke
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id006
+        parent: *id047
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2114,7 +3826,7 @@ subcommands:
           - --nuke
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id006
+        parent: *id047
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2146,11 +3858,11 @@ subcommands:
         \ database by their order on...\n  load_tree      Load a phylogenetic tree\
         \ (Newick format) into Chado db...\n"
       generated_using: *id005
-    - &id048 !Command
+    - &id056 !Command
       command: *id019
       positional: []
       named: []
-      parent: *id003
+      parent: *id046
       subcommands:
       - !Command
         command: *id020
@@ -2183,7 +3895,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id007
+        parent: *id048
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2251,7 +3963,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id007
+        parent: *id048
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2285,7 +3997,7 @@ subcommands:
           - --confirm
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id007
+        parent: *id048
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2348,7 +4060,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id007
+        parent: *id048
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2379,11 +4091,11 @@ subcommands:
         \ None\n  delete_organisms      Delete all organisms Output: None\n  get_organisms\
         \         Get all or some organisms Output: Organisms...\n"
       generated_using: *id005
-    - &id049 !Command
+    - &id057 !Command
       command: *id024
       positional: []
       named: []
-      parent: *id003
+      parent: *id046
       subcommands:
       - !Command
         command: *id025
@@ -2417,7 +4129,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2458,7 +4170,7 @@ subcommands:
           - --match_on_name
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag:
@@ -2483,7 +4195,7 @@ subcommands:
           name: FEATURE_ID
           optional: false
         named: []
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2546,7 +4258,7 @@ subcommands:
           - --skip_missing
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2584,7 +4296,7 @@ subcommands:
           name: FEATURE_ID
           optional: false
         named: []
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2674,7 +4386,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2748,7 +4460,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2861,7 +4573,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id008
+        parent: *id049
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -2931,7 +4643,7 @@ subcommands:
         name: ARGS
         optional: true
       named: []
-      parent: *id003
+      parent: *id046
       subcommands: []
       usage: []
       help_flag:
@@ -2941,11 +4653,11 @@ subcommands:
         Usage: chakin [OPTIONS] COMMAND [ARGS]...\nTry 'chakin -h' for help.\n\nError:\
         \ No such command 'scripts.'.\n"
       generated_using: *id005
-    - &id050 !Command
+    - &id058 !Command
       command: *id034
       positional: []
       named: []
-      parent: *id003
+      parent: *id046
       subcommands:
       - !Command
         command: *id035
@@ -2986,7 +4698,7 @@ subcommands:
           - --match_on_name
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id009
+        parent: *id050
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3059,7 +4771,7 @@ subcommands:
           - --skip_missing
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id009
+        parent: *id050
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3143,7 +4855,7 @@ subcommands:
           - --match_on_name
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id009
+        parent: *id050
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3182,11 +4894,11 @@ subcommands:
         \ from a tabular file, in the same way as does...\n  interpro  Load an InterProScan\
         \ analysis, in the same way as does the...\n"
       generated_using: *id005
-    - &id051 !Command
+    - &id059 !Command
       command: *id038
       positional: []
       named: []
-      parent: *id003
+      parent: *id046
       subcommands:
       - !Command
         command: *id039
@@ -3255,7 +4967,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id010
+        parent: *id051
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3349,7 +5061,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id010
+        parent: *id051
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3415,7 +5127,7 @@ subcommands:
           args: !SimpleFlagArg
             name: TEXT
           optional: true
-        parent: *id010
+        parent: *id051
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3445,11 +5157,11 @@ subcommands:
         \ information\n  delete_analyses  Delete analysis Output: None\n  get_analyses\
         \     Get all or some analyses Output: Analysis information\n"
       generated_using: *id005
-    - &id052 !Command
+    - &id060 !Command
       command: *id042
       positional: []
       named: []
-      parent: *id003
+      parent: *id046
       subcommands:
       - !Command
         command: *id043
@@ -3472,7 +5184,7 @@ subcommands:
           - --no_yeast
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id011
+        parent: *id052
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3498,7 +5210,7 @@ subcommands:
           name: None
           optional: false
         named: []
-        parent: *id011
+        parent: *id052
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -3558,7 +5270,7 @@ subcommands:
       - --file
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id045
+    parent: *id053
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3583,7 +5295,7 @@ subcommands:
       name: None
       optional: false
     named: []
-    parent: *id045
+    parent: *id053
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3608,7 +5320,7 @@ subcommands:
       name: None
       optional: false
     named: []
-    parent: *id045
+    parent: *id053
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3638,7 +5350,7 @@ subcommands:
   command: *id015
   positional: []
   named: []
-  parent: *id046
+  parent: *id054
   subcommands:
   - !Command
     command: *id016
@@ -3692,7 +5404,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id047
+    parent: *id055
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3733,7 +5445,7 @@ subcommands:
       - --nuke
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id047
+    parent: *id055
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3773,7 +5485,7 @@ subcommands:
       - --nuke
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id047
+    parent: *id055
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3807,7 +5519,7 @@ subcommands:
   command: *id019
   positional: []
   named: []
-  parent: *id046
+  parent: *id054
   subcommands:
   - !Command
     command: *id020
@@ -3840,7 +5552,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id048
+    parent: *id056
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3908,7 +5620,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id048
+    parent: *id056
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -3942,7 +5654,7 @@ subcommands:
       - --confirm
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id048
+    parent: *id056
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4005,7 +5717,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id048
+    parent: *id056
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4039,7 +5751,7 @@ subcommands:
   command: *id024
   positional: []
   named: []
-  parent: *id046
+  parent: *id054
   subcommands:
   - !Command
     command: *id025
@@ -4073,7 +5785,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4114,7 +5826,7 @@ subcommands:
       - --match_on_name
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag:
@@ -4138,7 +5850,7 @@ subcommands:
       name: FEATURE_ID
       optional: false
     named: []
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4200,7 +5912,7 @@ subcommands:
       - --skip_missing
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4237,7 +5949,7 @@ subcommands:
       name: FEATURE_ID
       optional: false
     named: []
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4326,7 +6038,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4399,7 +6111,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4511,7 +6223,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id049
+    parent: *id057
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4579,7 +6291,7 @@ subcommands:
     name: ARGS
     optional: true
   named: []
-  parent: *id046
+  parent: *id054
   subcommands: []
   usage: []
   help_flag:
@@ -4593,7 +6305,7 @@ subcommands:
   command: *id034
   positional: []
   named: []
-  parent: *id046
+  parent: *id054
   subcommands:
   - !Command
     command: *id035
@@ -4633,7 +6345,7 @@ subcommands:
       - --match_on_name
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id050
+    parent: *id058
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4704,7 +6416,7 @@ subcommands:
       - --skip_missing
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id050
+    parent: *id058
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4784,7 +6496,7 @@ subcommands:
       - --match_on_name
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id050
+    parent: *id058
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4826,7 +6538,7 @@ subcommands:
   command: *id038
   positional: []
   named: []
-  parent: *id046
+  parent: *id054
   subcommands:
   - !Command
     command: *id039
@@ -4895,7 +6607,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id051
+    parent: *id059
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -4989,7 +6701,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id051
+    parent: *id059
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -5055,7 +6767,7 @@ subcommands:
       args: !SimpleFlagArg
         name: TEXT
       optional: true
-    parent: *id051
+    parent: *id059
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -5089,7 +6801,7 @@ subcommands:
   command: *id042
   positional: []
   named: []
-  parent: *id046
+  parent: *id054
   subcommands:
   - !Command
     command: *id043
@@ -5112,7 +6824,7 @@ subcommands:
       - --no_yeast
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id052
+    parent: *id060
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -5138,7 +6850,7 @@ subcommands:
       name: None
       optional: false
     named: []
-    parent: *id052
+    parent: *id060
     subcommands: []
     usage: []
     help_flag: !Flag

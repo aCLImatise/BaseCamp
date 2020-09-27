@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_limit_to_species.py.cwl
+id: maf_limit_to_species.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../entrcmd.cwl
+id: entrcmd.cwl
 inputs:
 - id: in_initial_database_optionaldefault
   doc: "Initial database [String]  Optional\ndefault = m"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DB2fasta.cwl
+id: DB2fasta.cwl
 inputs:
 - id: in_use_upper_case
   doc: ': Use upper case for DNA (default is lower case).'

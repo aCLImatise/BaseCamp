@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_plot_line.cwl
+id: csvtk_plot_line.cwl
 inputs:
 - id: in_color_index
   doc: color index, 1-7 (default 1)

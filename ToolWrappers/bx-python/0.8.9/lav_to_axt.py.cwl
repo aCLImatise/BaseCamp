@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lav_to_axt.py.cwl
+id: lav_to_axt.py.cwl
 inputs:
 - id: in_silent
   doc: ''

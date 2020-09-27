@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seurat_find_markers.R.cwl
+id: seurat_find_markers.R.cwl
 inputs:
 - id: in_input_object_file
   doc: File name in which a serialized R matrix object may be found.

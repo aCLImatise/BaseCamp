@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ting.cwl
+id: ting.cwl
 inputs:
 - id: in_tcr_sequences
   doc: File holding TCRs

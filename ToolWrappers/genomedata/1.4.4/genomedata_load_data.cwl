@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_load_data.cwl
+id: genomedata_load_data.cwl
 inputs:
 - id: in_verbose
   doc: Print status and diagnostic messages

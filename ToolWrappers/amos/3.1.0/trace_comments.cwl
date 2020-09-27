@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trace_comments.cwl
+id: trace_comments.cwl
 inputs:
 - id: in_get_comment
   doc: dir

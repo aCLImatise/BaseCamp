@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ntresc03n.pdb.cwl
+id: ntresc03n.pdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

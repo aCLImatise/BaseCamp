@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfa2fasta.py.cwl
+id: gfa2fasta.py.cwl
 inputs:
 - id: in_in
   doc: "GFA 1.0 file (format: 'xxx.gfa')"

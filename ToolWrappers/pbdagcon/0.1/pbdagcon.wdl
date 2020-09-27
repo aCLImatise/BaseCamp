@@ -8,11 +8,9 @@ task Pbdagcon {
     Int? _minlength_uintminimum
     Int? _mincoverage_uintminimum
     Int? _threads_intnumber
-    String pbd_agc_on
   }
   command <<<
     pbdagcon \
-      ~{pbd_agc_on} \
       ~{if (_verboseturns_verbose) then "-v" else ""} \
       ~{if (_alignalign_sequences) then "-a" else ""} \
       ~{if defined(_trim_uinttrim) then ("-t " +  '"' + _trim_uinttrim + '"') else ""} \
@@ -27,7 +25,6 @@ task Pbdagcon {
     _minlength_uintminimum: ",  --min-length <uint>\\nMinimum length for correction"
     _mincoverage_uintminimum: ",  --min-coverage <uint>\\nMinimum coverage for correction"
     _threads_intnumber: ",  --threads <int>\\nNumber of consensus threads"
-    pbd_agc_on: "[-v] [-a] [-t <uint>] [-m <uint>] [-c <uint>] [-j <int>] [--]\\n[--version] [-h] <either file path or stdin>"
   }
   output {
     File out_stdout = stdout()

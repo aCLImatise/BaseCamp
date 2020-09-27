@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_backtranseq.cwl
+id: _backtranseq.cwl
 inputs:
 - id: in_c_file
   doc: codon      [Ehuman.cut] Codon usage table name

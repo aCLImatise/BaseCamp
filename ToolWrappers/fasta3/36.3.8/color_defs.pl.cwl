@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../color_defs.pl.cwl
+id: color_defs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

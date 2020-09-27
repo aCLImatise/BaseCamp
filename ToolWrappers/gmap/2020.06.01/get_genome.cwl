@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_genome.cwl
+id: get_genome.cwl
 inputs:
 - id: in_dir
   doc: Genome directory

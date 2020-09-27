@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kissreads_graph.cwl
+id: kissreads_graph.cwl
 inputs:
 - id: in_this_message_exit
   doc: this message and exit

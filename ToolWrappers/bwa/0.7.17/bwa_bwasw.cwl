@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_bwasw.cwl
+id: bwa_bwasw.cwl
 inputs:
 - id: in_score_for_match
   doc: score for a match [1]

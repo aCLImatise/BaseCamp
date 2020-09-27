@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meraculous4h.pl.cwl
+id: meraculous4h.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

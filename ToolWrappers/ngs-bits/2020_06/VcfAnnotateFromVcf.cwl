@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfAnnotateFromVcf.cwl
+id: VcfAnnotateFromVcf.cwl
 inputs:
 - id: in_config_file
   doc: "TSV file containing the annotation file path, the prefix, the INFO ids and\

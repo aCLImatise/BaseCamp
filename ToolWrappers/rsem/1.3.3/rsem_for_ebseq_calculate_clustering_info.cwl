@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_for_ebseq_calculate_clustering_info.cwl
+id: rsem_for_ebseq_calculate_clustering_info.cwl
 inputs:
 - id: in_k
   doc: ''

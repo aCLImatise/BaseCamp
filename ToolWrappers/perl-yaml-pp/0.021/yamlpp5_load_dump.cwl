@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yamlpp5_load_dump.cwl
+id: yamlpp5_load_dump.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtyper.cwl
+id: svtyper.cwl
 inputs:
 - id: in_input_vcf
   doc: 'VCF input (default: stdin)'

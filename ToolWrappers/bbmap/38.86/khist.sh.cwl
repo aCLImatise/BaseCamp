@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../khist.sh.cwl
+id: khist.sh.cwl
 inputs:
 - id: in_in
   doc: ''

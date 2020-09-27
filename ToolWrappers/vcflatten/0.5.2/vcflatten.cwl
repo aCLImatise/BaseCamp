@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcflatten.cwl
+id: vcflatten.cwl
 inputs:
 - id: in__info_keysspecify
   doc: "| --info <keys>\nSpecify a semicolon-separated list of INFO IDs to output\

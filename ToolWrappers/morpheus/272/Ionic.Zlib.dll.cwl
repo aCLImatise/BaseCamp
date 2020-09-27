@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Ionic.Zlib.dll.cwl
+id: Ionic.Zlib.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

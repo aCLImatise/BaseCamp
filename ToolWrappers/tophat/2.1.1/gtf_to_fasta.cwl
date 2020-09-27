@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_to_fasta.cwl
+id: gtf_to_fasta.cwl
 inputs:
 - id: in_transcripts_dot_gtf
   doc: ''

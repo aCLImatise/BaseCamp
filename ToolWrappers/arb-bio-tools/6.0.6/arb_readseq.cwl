@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_readseq.cwl
+id: arb_readseq.cwl
 inputs:
 - id: in_change_lower_case
   doc: '[aselower]   change to lower case'

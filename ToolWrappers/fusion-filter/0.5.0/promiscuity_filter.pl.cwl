@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../promiscuity_filter.pl.cwl
+id: promiscuity_filter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

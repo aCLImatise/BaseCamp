@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SampleDist.py.cwl
+id: SampleDist.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

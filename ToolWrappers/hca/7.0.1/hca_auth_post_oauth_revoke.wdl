@@ -11,8 +11,8 @@ task HcaAuthPostoauthrevoke {
       ~{if defined(token) then ("--token " +  '"' + token + '"') else ""}
   >>>
   parameter_meta {
-    client_id: ""
-    token: "The refresh token to revoke."
+    client_id: "--token TOKEN         The refresh token to revoke.\\n"
+    token: ""
   }
   output {
     File out_stdout = stdout()

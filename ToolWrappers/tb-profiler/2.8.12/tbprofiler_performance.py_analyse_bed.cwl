@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_performance.py_analyse_bed.cwl
+id: tbprofiler_performance.py_analyse_bed.cwl
 inputs:
 - id: in_it_ol
   doc: ''

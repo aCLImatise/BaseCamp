@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyega3_fetch.cwl
+id: pyega3_fetch.cwl
 inputs:
 - id: in_reference_name
   doc: "The reference sequence name, for example 'chr1', '1',\nor 'chrX'. If unspecified,\

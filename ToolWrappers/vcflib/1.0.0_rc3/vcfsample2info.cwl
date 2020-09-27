@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfsample2info.cwl
+id: vcfsample2info.cwl
 inputs:
 - id: in_field
   doc: Add information about this field in samples to INFO column

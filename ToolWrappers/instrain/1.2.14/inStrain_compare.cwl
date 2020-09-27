@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inStrain_compare.cwl
+id: inStrain_compare.cwl
 inputs:
 - id: in_list_instrain_objects
   doc: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nA list of inStrain objects,\

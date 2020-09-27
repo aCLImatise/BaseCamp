@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gthsplit.cwl
+id: gthsplit.cwl
 inputs:
 - id: in_alignment_score
   doc: "split according to the overall alignment score (scr)\ndefault: no"

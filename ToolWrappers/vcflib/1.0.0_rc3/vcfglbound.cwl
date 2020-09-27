@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfglbound.cwl
+id: vcfglbound.cwl
 inputs:
 - id: in_bound
   doc: Bound GLs to this limit.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfftoDIEGObed.pl.cwl
+id: gfftoDIEGObed.pl.cwl
 inputs:
 - id: in_gff_file_eg
   doc: gff file e.g. from ENSMBL

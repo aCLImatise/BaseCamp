@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmsign.cwl
+id: dcmsign.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

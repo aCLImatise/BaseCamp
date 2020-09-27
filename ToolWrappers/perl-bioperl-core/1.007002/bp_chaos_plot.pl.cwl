@@ -1,16 +1,13 @@
 class: CommandLineTool
-id: ../../../bp_chaos_plot.pl.cwl
+id: bp_chaos_plot.pl.cwl
 inputs:
 - id: in_g_slash_graphics
-  doc: TYPE
+  doc: "TYPE\n-w/--width=600 -h/--height=400\nValid graphics formats: (wbmp,gd,gif,jpeg,png,gd2)\n\
+    Image size defaults to 600x400, SEQFORMAT to fasta\nINPUTFILE can also be read\
+    \ from STDIN\n"
   type: File
   inputBinding:
     prefix: -g/--graphics
-- id: in_h_slash_height
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -h/--height
 - id: in_f_slash_format
   doc: ''
   type: string
@@ -31,7 +28,9 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_g_slash_graphics
-  doc: TYPE
+  doc: "TYPE\n-w/--width=600 -h/--height=400\nValid graphics formats: (wbmp,gd,gif,jpeg,png,gd2)\n\
+    Image size defaults to 600x400, SEQFORMAT to fasta\nINPUTFILE can also be read\
+    \ from STDIN\n"
   type: File
   outputBinding:
     glob: $(inputs.in_g_slash_graphics)

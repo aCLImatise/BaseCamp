@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msa_diff.cwl
+id: msa_diff.cwl
 inputs:
 - id: in_format_one
   doc: "|SS|PHYLIP|MPM|MAF\nFormat of first alignment (default is to guess format\

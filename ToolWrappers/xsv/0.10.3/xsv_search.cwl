@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_search.cwl
+id: xsv_search.cwl
 inputs:
 - id: in_ignore_case
   doc: "Case insensitive search. This is equivalent to\nprefixing the regex with '(?i)'."

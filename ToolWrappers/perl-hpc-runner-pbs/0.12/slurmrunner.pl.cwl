@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slurmrunner.pl.cwl
+id: slurmrunner.pl.cwl
 inputs:
 - id: in_in_file
   doc: "- Str. File of commands separated by newline.\nThe command 'wait' indicates\
@@ -27,11 +27,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
-- id: in_cpus_per_task
-  doc: '- Str. Default=4.'
-  type: boolean
-  inputBinding:
-    prefix: --cpus_per_task
 - id: in_commands_per_node
   doc: "- Str. Default=8. Commands to run on each node.\nThis is not the same as\n\
     concurrent_commands_per_node!"

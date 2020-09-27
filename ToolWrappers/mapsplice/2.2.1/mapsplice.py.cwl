@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../mapsplice.py.cwl
+id: mapsplice.py.cwl
 inputs:
-- id: in_x
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -x
 - id: in_c_slash_chromosome_dir
   doc: <string>     reference sequence directory
   type: boolean
   inputBinding:
     prefix: -c/--chromosome-dir
+- id: in_string_path_prefix
+  doc: <string>     path and prefix of bowtie index
+  type: boolean
+  inputBinding:
+    prefix: -x
 - id: in_one_slash
   doc: <string>     end 1 reads / single end reads
   type: boolean

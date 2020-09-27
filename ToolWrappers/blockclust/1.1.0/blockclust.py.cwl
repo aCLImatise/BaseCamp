@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blockclust.py.cwl
+id: blockclust.py.cwl
 inputs:
 - id: in_mode
   doc: "Mode of operationPRE = Preprocessing mode. convert\nfrom reads BAM to tags\

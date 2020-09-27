@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_test.cwl
+id: ppanini_test.cwl
 inputs: []
 outputs:
 - id: out_stdout

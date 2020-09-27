@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../show_corrects.cwl
+id: show_corrects.cwl
 inputs:
 - id: in_filename
   doc: ''

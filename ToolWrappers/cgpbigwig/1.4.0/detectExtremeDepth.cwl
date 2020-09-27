@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../detectExtremeDepth.cwl
+id: detectExtremeDepth.cwl
 inputs:
 - id: in_bigwig
   doc: '[file]     BigWig file path.'

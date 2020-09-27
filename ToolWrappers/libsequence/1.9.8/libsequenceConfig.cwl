@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../libsequenceConfig.cwl
+id: libsequenceConfig.cwl
 inputs:
 - id: in_print
   doc: ''

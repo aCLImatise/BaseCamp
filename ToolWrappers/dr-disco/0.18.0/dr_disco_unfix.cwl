@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dr_disco_unfix.cwl
+id: dr_disco_unfix.cwl
 inputs:
 - id: in_temp_dir
   doc: 'Path in which temp files are stored (default: /tmp)'

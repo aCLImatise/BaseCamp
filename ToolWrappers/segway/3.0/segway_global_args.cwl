@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segway_global_args.cwl
+id: segway_global_args.cwl
 inputs:
 - id: in_command
   doc: ''

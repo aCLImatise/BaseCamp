@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halStats.cwl
+id: halStats.cwl
 inputs:
 - id: in_all_coverage
   doc: ":              print histogram of coverage from all genomes to all\ngenomes\

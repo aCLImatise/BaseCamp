@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../denovo_map.pl.cwl
+id: denovo_map.pl.cwl
 inputs:
 - id: in_samples
   doc: ': path to the directory containing the samples reads files.'

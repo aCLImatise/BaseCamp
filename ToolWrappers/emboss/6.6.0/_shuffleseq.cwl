@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_shuffleseq.cwl
+id: _shuffleseq.cwl
 inputs:
 - id: in_shuffle
   doc: integer    [1] Number of shuffles (Any integer value)

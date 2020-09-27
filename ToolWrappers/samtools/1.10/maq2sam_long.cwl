@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maq2sam_long.cwl
+id: maq2sam_long.cwl
 inputs:
 - id: in_maq_two_sam
   doc: ''

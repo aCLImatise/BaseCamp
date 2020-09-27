@@ -18,14 +18,10 @@ task GoalignSubseq {
     Boolean? phylip
     Int? seed
     Int? threads
-    Int one_two_three_four_five
-    Int three_four_five_six_seven
     Int warning_output_stdout
   }
   command <<<
     goalign subseq \
-      ~{one_two_three_four_five} \
-      ~{three_four_five_six_seven} \
       ~{warning_output_stdout} \
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
       ~{if defined(alignment_output_file) then ("--output " +  '"' + alignment_output_file + '"') else ""} \
@@ -61,8 +57,6 @@ task GoalignSubseq {
     phylip: "Alignment is in phylip? default fasta"
     seed: "Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)"
     threads: "Number of threads (default 1)"
-    one_two_three_four_five: "23456"
-    three_four_five_six_seven: "45678"
     warning_output_stdout: "Warning: If output is stdout, it works only if input format is Phylip, because "
   }
   output {

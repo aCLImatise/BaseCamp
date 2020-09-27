@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hyphy_sa.cwl
+id: hyphy_sa.cwl
 inputs:
 - id: in_fprintfstdout
   doc: fprintf(stdout, "Input file contained 3 or fewer sequences - not much inference

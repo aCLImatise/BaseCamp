@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runCA_dedupe.cwl
+id: runCA_dedupe.cwl
 inputs: []
 outputs:
 - id: out_stdout

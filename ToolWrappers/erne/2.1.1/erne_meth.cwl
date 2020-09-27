@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erne_meth.cwl
+id: erne_meth.cwl
 inputs:
 - id: in_fast_a
   doc: "reference fasta file (can be repeated several\ntime). [REQUIRED]"

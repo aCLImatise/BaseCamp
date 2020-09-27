@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_biome.cwl
+id: extract_biome.cwl
 inputs:
 - id: in_in
   doc: '[string]                    Input MEGAN comparison file (.megan file). Mandatory

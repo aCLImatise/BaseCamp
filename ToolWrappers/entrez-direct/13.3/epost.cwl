@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epost.cwl
+id: epost.cwl
 inputs:
 - id: in_db
   doc: Database name

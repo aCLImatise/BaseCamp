@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_umi_count.cwl
+id: bam_umi_count.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../relocaTE2.py.cwl
+id: relocaTE2.py.cwl
 inputs:
 - id: in_bam
   doc: Name of BAM file of read mapped reference genome

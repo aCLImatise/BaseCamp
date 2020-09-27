@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edd_ip_bam.cwl
+id: edd_ip_bam.cwl
 inputs:
 - id: in_fdr
   doc: ''

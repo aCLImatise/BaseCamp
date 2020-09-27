@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wrapper.py.cwl
+id: wrapper.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

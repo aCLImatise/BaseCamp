@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparegff.sh.cwl
+id: comparegff.sh.cwl
 inputs:
 - id: in_in
   doc: ''

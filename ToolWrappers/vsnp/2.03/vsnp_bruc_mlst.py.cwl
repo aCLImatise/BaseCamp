@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_bruc_mlst.py.cwl
+id: vsnp_bruc_mlst.py.cwl
 inputs:
 - id: in_read_one
   doc: 'Required: single read'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../airr_tools_merge.cwl
+id: airr_tools_merge.cwl
 inputs:
 - id: in_output_file_name
   doc: Output file name.

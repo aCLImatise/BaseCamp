@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagenomics.py_krona.cwl
+id: metagenomics.py_krona.cwl
 inputs:
 - id: in_query_column
   doc: Column of query id. (default 2)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_phastCons.cwl
+id: SnpSift_phastCons.cwl
 inputs:
 - id: in_bed
   doc: ': Input is a BED file.'

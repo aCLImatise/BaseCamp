@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psw.cwl
+id: psw.cwl
 inputs:
 - id: in_penatly_default
   doc: penatly (default 2)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_copy.cwl
+id: arv_copy.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output.

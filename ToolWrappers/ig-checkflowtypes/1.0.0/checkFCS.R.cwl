@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkFCS.R.cwl
+id: checkFCS.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

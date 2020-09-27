@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sctools_demultiplex.cwl
+id: sctools_demultiplex.cwl
 inputs:
 - id: in_barcodes_csv
   doc: "Path to the CSV file storing the barcodes to be de-multiplexed.\nNotice that\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bowtie_align_l.cwl
+id: bowtie_align_l.cwl
 inputs:
 - id: in_query_input_files_fastq
   doc: query input files are FASTQ .fq/.fastq (default)

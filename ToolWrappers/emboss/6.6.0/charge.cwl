@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../charge.cwl
+id: charge.cwl
 inputs:
 - id: in_window
   doc: integer    [5] Window length (Integer 1 or more)

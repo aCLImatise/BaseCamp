@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_diff.cwl
+id: vdb_diff.cwl
 inputs:
 - id: in_rows
   doc: set of rows to be comparend (default all)

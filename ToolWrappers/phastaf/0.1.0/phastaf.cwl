@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phastaf.cwl
+id: phastaf.cwl
 inputs:
 - id: in_check
   doc: Check dependencies are installed

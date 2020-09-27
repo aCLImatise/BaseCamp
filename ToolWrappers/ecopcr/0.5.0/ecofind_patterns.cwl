@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ecofind_patterns.cwl
+id: ecofind_patterns.cwl
 inputs:
 - id: in_s
   doc: ''

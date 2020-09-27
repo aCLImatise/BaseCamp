@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../just_blast_test.pl.cwl
+id: just_blast_test.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

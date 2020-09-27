@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakfinder.r.cwl
+id: peakfinder.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

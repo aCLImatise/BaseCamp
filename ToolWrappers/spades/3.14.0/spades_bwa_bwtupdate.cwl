@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_bwa_bwtupdate.cwl
+id: spades_bwa_bwtupdate.cwl
 inputs:
 - id: in_bwa
   doc: ''

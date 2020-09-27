@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoLyse.cwl
+id: NanoLyse.cwl
 inputs:
 - id: in_reference
   doc: Specify a reference fasta file against which to filter.

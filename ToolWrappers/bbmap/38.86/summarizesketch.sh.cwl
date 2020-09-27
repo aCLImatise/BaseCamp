@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarizesketch.sh.cwl
+id: summarizesketch.sh.cwl
 inputs:
 - id: in_in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asntool.cwl
+id: asntool.cwl
 inputs:
 - id: in_asn_module_file
   doc: ASN.1 Module File [File In]

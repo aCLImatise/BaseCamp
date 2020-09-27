@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_mixdchlet_score.cwl
+id: esl_mixdchlet_score.cwl
 inputs:
 - id: in_options
   doc: ''

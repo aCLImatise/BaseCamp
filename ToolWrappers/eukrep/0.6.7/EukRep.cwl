@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EukRep.cwl
+id: EukRep.cwl
 inputs:
 - id: in_input_fasta_file
   doc: input fasta file

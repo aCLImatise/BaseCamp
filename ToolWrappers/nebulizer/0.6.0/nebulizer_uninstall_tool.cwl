@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_uninstall_tool.cwl
+id: nebulizer_uninstall_tool.cwl
 inputs:
 - id: in_remove_from_disk
   doc: "remove the uninstalled tool from disk (otherwise tool is\njust deactivated)."

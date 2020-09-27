@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan_write_config_file.cwl
+id: phylophlan_write_config_file.cwl
 inputs:
 - id: in_output
   doc: "Specify the output file where to write the\nconfigurations (default: None)"

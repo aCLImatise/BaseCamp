@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_clusters.cwl
+id: iCount_clusters.cwl
 inputs:
 - id: in_dist
   doc: 'Distance between two peaks to merge into same cluster (default: 20)'

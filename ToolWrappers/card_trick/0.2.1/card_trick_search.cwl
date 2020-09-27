@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../card_trick_search.cwl
+id: card_trick_search.cwl
 inputs:
 - id: in_input
   doc: "Input term to search in CARD ontology. Provide a\nunique term o several using\

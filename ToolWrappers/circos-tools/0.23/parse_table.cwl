@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_table.cwl
+id: parse_table.cwl
 inputs:
 - id: in_cat
   doc: ''

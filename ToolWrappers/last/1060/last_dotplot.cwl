@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../last_dotplot.cwl
+id: last_dotplot.cwl
 inputs:
 - id: in_verbose
   doc: show progress messages & data about the plot

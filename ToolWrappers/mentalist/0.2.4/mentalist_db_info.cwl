@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mentalist_db_info.cwl
+id: mentalist_db_info.cwl
 inputs:
 - id: in_db
   doc: MentaLiST kmer database

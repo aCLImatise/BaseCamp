@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sbpipe_move_datasets.cwl
+id: sbpipe_move_datasets.cwl
 inputs:
 - id: in_model_name
   doc: the model name without extension

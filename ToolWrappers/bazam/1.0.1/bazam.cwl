@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bazam.cwl
+id: bazam.cwl
 inputs:
 - id: in_bam
   doc: BAM file to extract read pairs from

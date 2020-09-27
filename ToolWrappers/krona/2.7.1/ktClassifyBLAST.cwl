@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktClassifyBLAST.cwl
+id: ktClassifyBLAST.cwl
 inputs:
 - id: in_blast_output
   doc: "File containing BLAST results in tabular format (\"Hit table\n(text)\" when\

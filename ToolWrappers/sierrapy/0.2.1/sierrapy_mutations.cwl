@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sierrapy_mutations.cwl
+id: sierrapy_mutations.cwl
 inputs:
 - id: in_query
   doc: "A file contains GraphQL fragment definition on\n`MutationsAnalysis`."

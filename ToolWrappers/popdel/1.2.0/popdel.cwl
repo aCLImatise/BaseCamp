@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../popdel.cwl
+id: popdel.cwl
 inputs: []
 outputs:
 - id: out_stdout

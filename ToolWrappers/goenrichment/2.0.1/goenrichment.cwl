@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goenrichment.cwl
+id: goenrichment.cwl
 inputs:
 - id: in_go
   doc: Path to the Gene Ontology OBO or OWL file

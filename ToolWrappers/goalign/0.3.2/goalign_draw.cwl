@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_draw.cwl
+id: goalign_draw.cwl
 inputs:
 - id: in_output
   doc: Alignment draw output file (default "stdout")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAplot.cwl
+id: RNAplot.cwl
 inputs:
 - id: in_layout_type
   doc: "Choose the layout algorithm. Simple radial\nlayout if 0, or naview if 1\n\

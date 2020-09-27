@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfhdr2json.cwl
+id: vcfhdr2json.cwl
 inputs:
 - id: in_input_file
   doc: The input files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sviol2.cwl
+id: sviol2.cwl
 inputs: []
 outputs:
 - id: out_stdout

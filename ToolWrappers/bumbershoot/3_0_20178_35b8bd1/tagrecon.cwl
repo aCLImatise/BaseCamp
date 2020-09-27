@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tagrecon.cwl
+id: tagrecon.cwl
 inputs: []
 outputs:
 - id: out_stdout

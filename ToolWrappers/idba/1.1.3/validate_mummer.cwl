@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_mummer.cwl
+id: validate_mummer.cwl
 inputs: []
 outputs:
 - id: out_stdout

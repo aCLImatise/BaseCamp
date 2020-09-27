@@ -8,11 +8,9 @@ task BuildFastaIndexrb {
     Boolean? sequence_file
     String? o
     String? f
-    String build_fast_a_index_do_trb
   }
   command <<<
     buildFastaIndex_rb \
-      ~{build_fast_a_index_do_trb} \
       ~{if (fast_a_file) then "--fastaFile" else ""} \
       ~{if (f_of_file) then "--fofFile" else ""} \
       ~{if (offset_file) then "--offsetFile" else ""} \
@@ -27,7 +25,6 @@ task BuildFastaIndexrb {
     sequence_file: "|-s   => file containing concatenated nucleotide sequence"
     o: ""
     f: ""
-    build_fast_a_index_do_trb: "-f allReads.fof -o offsets.txt -s sequence.txt "
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sensv.cwl
+id: sensv.cwl
 inputs:
 - id: in_sample_name
   doc: sample name

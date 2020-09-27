@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed2nt2aa.pl.cwl
+id: bed2nt2aa.pl.cwl
 inputs:
 - id: in_bed
   doc: Input file in BED6 format (mandatory)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcdirtest.cwl
+id: kcdirtest.cwl
 inputs:
 - id: in_hard
   doc: ''

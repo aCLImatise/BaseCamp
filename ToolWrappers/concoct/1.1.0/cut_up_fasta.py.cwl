@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cut_up_fasta.py.cwl
+id: cut_up_fasta.py.cwl
 inputs:
 - id: in_chunk_size
   doc: Chunk size

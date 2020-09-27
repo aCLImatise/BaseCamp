@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_bary.cwl
+id: guppy_bary.cwl
 inputs:
 - id: in_reference_package_path
   doc: Reference package path.

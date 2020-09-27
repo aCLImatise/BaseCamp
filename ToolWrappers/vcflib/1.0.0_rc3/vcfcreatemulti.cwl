@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfcreatemulti.cwl
+id: vcfcreatemulti.cwl
 inputs:
 - id: in_file
   doc: ''

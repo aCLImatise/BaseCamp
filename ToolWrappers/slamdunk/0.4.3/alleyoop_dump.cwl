@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_dump.cwl
+id: alleyoop_dump.cwl
 inputs:
 - id: in_reference
   doc: Reference fasta file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbbamify.cwl
+id: pbbamify.cwl
 inputs:
 - id: in_input
   doc: FILE  The aligned non-PacBio BAM file. If not provided, stdin will be used

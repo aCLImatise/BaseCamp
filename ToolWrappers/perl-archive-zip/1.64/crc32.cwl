@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crc32.cwl
+id: crc32.cwl
 inputs: []
 outputs:
 - id: out_stdout

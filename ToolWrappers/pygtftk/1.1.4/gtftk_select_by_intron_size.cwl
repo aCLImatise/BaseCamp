@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../gtftk_select_by_intron_size.cwl
+id: gtftk_select_by_intron_size.cwl
 inputs:
-- id: in_ddot
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -d.
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
   type: boolean
@@ -80,11 +75,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --write-message-to-file
-- id: in_arguments
-  doc: 'Arguments:'
-  type: long
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

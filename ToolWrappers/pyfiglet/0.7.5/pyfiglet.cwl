@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfiglet.cwl
+id: pyfiglet.cwl
 inputs:
 - id: in_font
   doc: 'font to render with (default: standard)'

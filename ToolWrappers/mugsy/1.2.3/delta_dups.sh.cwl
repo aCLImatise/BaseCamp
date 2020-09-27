@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delta_dups.sh.cwl
+id: delta_dups.sh.cwl
 inputs:
 - id: in_always_prompt_removing
   doc: Always prompt before removing

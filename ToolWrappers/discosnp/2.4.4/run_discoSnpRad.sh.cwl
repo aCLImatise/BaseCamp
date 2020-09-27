@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_discoSnpRad.sh.cwl
+id: run_discoSnpRad.sh.cwl
 inputs:
 - id: in_f_of
   doc: "<file name of a file of file(s)>\nThe input read files indicated in a file\

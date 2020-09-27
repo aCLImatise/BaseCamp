@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../drive_url.cwl
-inputs:
-- id: in_id
-  doc: "resolve url by id instead of path\n"
-  type: boolean
-  inputBinding:
-    prefix: -id
+id: drive_url.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

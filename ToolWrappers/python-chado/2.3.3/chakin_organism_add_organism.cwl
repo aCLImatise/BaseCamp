@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_organism_add_organism.cwl
+id: chakin_organism_add_organism.cwl
 inputs:
 - id: in_comment
   doc: A comment / description

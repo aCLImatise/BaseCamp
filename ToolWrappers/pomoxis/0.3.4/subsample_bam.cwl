@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subsample_bam.cwl
+id: subsample_bam.cwl
 inputs:
 - id: in_output_prefix
   doc: 'Output prefix (default: sub_sampled)'

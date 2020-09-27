@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smashpp.cwl
+id: smashpp.cwl
 inputs: []
 outputs:
 - id: out_stdout

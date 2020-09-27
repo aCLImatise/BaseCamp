@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimspace.cwl
+id: trimspace.cwl
 inputs: []
 outputs:
 - id: out_stdout

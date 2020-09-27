@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UnitTest_LV.cwl
+id: UnitTest_LV.cwl
 inputs:
 - id: in_list_tests
   doc: list all/matching test cases

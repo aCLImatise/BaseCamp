@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ALE_low_scores.py.cwl
+id: ALE_low_scores.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

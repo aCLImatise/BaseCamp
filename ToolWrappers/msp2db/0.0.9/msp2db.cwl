@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp2db.cwl
+id: msp2db.cwl
 inputs:
 - id: in_msp_pth
   doc: Path to the MSP file (or directory of msp files)

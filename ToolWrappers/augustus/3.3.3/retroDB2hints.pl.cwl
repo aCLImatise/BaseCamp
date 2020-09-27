@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../retroDB2hints.pl.cwl
+id: retroDB2hints.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

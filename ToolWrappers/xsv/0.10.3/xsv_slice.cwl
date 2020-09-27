@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_slice.cwl
+id: xsv_slice.cwl
 inputs:
 - id: in_start
   doc: The index of the record to slice from.

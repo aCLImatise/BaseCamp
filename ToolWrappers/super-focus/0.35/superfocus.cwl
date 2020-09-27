@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../superfocus.cwl
+id: superfocus.cwl
 inputs:
 - id: in_query
   doc: Path to FAST(A/Q) file or directory with these files.

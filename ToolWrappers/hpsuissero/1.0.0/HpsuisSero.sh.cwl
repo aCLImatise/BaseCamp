@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HpsuisSero.sh.cwl
+id: HpsuisSero.sh.cwl
 inputs:
 - id: in_input_raw_reads
   doc: input raw reads

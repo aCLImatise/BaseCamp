@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_cutadapt.cwl
+id: iCount_cutadapt.cwl
 inputs:
 - id: in_qual_trim
   doc: 'Trim low-quality bases before adapter removal (default: None)'

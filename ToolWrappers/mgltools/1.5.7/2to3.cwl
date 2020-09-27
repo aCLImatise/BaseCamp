@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../2to3.cwl
+id: 2to3.cwl
 inputs: []
 outputs:
 - id: out_stdout

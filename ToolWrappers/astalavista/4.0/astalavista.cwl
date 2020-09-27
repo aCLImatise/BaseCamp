@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../astalavista.cwl
+id: astalavista.cwl
 inputs: []
 outputs:
 - id: out_stdout

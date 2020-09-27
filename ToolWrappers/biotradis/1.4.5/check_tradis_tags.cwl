@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_tradis_tags.cwl
+id: check_tradis_tags.cwl
 inputs:
 - id: in_bam_file_tradis
   doc: ': bam file with tradis tags'

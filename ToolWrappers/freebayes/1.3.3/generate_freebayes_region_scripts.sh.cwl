@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_freebayes_region_scripts.sh.cwl
+id: generate_freebayes_region_scripts.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

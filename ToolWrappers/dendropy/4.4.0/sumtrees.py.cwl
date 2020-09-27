@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sumtrees.py.cwl
+id: sumtrees.py.cwl
 inputs:
 - id: in_source_format
   doc: "Format of all input trees (defaults to handling either\nNEXUS or NEWICK through\

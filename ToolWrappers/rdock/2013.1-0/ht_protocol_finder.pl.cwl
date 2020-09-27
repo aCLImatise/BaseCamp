@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ht_protocol_finder.pl.cwl
+id: ht_protocol_finder.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_phylogeny_gene_families.cwl
+id: chakin_phylogeny_gene_families.cwl
 inputs:
 - id: in_family_name
   doc: Restrict to families beginning with given prefix

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_mask.cwl
+id: funannotate_mask.cwl
 inputs:
 - id: in_input
   doc: Multi-FASTA genome file. (Required)

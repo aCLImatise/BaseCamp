@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../barrnap.cwl
+id: barrnap.cwl
 inputs:
 - id: in_citation
   doc: Print citation for referencing barrnap

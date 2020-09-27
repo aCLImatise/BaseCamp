@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MyriMatchAdapter.cwl
+id: MyriMatchAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                            Input file (valid formats: 'mzML')"

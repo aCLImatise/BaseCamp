@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chembl_act.cwl
+id: chembl_act.cwl
 inputs:
 - id: in_input
   doc: input file with names, one line each

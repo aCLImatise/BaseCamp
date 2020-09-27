@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hubward_upload.cwl
+id: hubward_upload.cwl
 inputs:
 - id: in_hub_only
   doc: been specified, only these files will be uploaded to the

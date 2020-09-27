@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../postprocessing.AMPS.r.cwl
+id: postprocessing.AMPS.r.cwl
 inputs:
 - id: in_rmaexdotoutdotfld
   doc: MALTextract output folder.

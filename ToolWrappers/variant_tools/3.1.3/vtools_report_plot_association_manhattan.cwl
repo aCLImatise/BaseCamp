@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_plot_association_manhattan.cwl
+id: vtools_report_plot_association_manhattan.cwl
 inputs:
 - id: in_chrom
   doc: "Specify the particular chromosome(s) to display. Can\nbe one or multiple in\

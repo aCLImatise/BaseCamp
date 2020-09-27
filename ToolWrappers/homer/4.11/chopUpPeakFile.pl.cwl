@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chopUpPeakFile.pl.cwl
+id: chopUpPeakFile.pl.cwl
 inputs:
 - id: in_target_peak_file
   doc: ''

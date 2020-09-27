@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobenergy.cwl
+id: mglobenergy.cwl
 inputs: []
 outputs:
 - id: out_stdout

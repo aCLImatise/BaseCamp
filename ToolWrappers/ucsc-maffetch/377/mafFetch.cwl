@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafFetch.cwl
+id: mafFetch.cwl
 inputs:
 - id: in_db
   doc: ''

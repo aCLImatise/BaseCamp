@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeRC.py.cwl
+id: removeRC.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

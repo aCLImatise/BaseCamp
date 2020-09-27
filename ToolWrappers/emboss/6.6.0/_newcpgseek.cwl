@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_newcpgseek.cwl
+id: _newcpgseek.cwl
 inputs:
 - id: in_score
   doc: integer    [17] CpG score (Integer from 1 to 200)

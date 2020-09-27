@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_components_list.cwl
+id: gcloud_components_list.cwl
 inputs:
 - id: in_show_versions
   doc: Show installed and available versions of all components.

@@ -2,7 +2,6 @@ version 1.0
 
 task MotifscanScan {
   input {
-    Float? m
     Boolean? verbose
     File? input_genomic_regions
     String? format_input_file
@@ -34,7 +33,6 @@ task MotifscanScan {
       ~{bed} \
       ~{site_dot} \
       ~{sites_dot} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(input_genomic_regions) then ("-i " +  '"' + input_genomic_regions + '"') else ""} \
       ~{if defined(format_input_file) then ("-f " +  '"' + format_input_file + '"') else ""} \
@@ -55,7 +53,6 @@ task MotifscanScan {
       ~{if (site) then "--site" else ""}
   >>>
   parameter_meta {
-    m: "[-p {1e-2,1e-3,1e-4,1e-5,1e-6}]"
     verbose: "Enable verbose log messages."
     input_genomic_regions: "Input genomic regions (peaks) to be scanned."
     format_input_file: "Format of the input file. Default: bed"

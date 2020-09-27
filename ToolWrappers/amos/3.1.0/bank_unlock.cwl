@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank_unlock.cwl
+id: bank_unlock.cwl
 inputs: []
 outputs:
 - id: out_stdout

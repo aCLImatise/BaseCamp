@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosomer_fragmentmap.cwl
+id: chromosomer_fragmentmap.cwl
 inputs:
 - id: in_ratio_threshold
   doc: "the least ratio of two greatest fragment alignment\nscores to determine the\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TransComb.cwl
+id: TransComb.cwl
 inputs:
 - id: in_bam_file_produced
   doc: ': BAM file produced by Tophat or Tophat2.'

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../cactus_preprocess.cwl
+id: cactus_preprocess.cwl
 inputs:
-- id: in_config_file
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --configFile
 - id: in_logoff
   doc: Same as --logCritical
   type: boolean
@@ -268,31 +263,17 @@ inputs:
   inputBinding:
     prefix: --defaultDisk
 - id: in_default_preempt_able
-  doc: ''
+  doc: "--maxCores INT        The maximum number of CPU cores to request from the\n\
+    batch system at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are\
+    \ supported. Default is 8.0 Ei\n--maxMemory INT       The maximum amount of memory\
+    \ to request from the batch\nsystem at any one time. Standard suffixes like K,\
+    \ Ki,\nM, Mi, G or Gi are supported. Default is 8.0 Ei\n--maxDisk INT        \
+    \ The maximum amount of disk space to request from the\nbatch system at any one\
+    \ time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default is\
+    \ 8.0 Ei"
   type: boolean
   inputBinding:
     prefix: --defaultPreemptable
-- id: in_max_cores
-  doc: "The maximum number of CPU cores to request from the\nbatch system at any one\
-    \ time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default is\
-    \ 8.0 Ei"
-  type: long
-  inputBinding:
-    prefix: --maxCores
-- id: in_max_memory
-  doc: "The maximum amount of memory to request from the batch\nsystem at any one\
-    \ time. Standard suffixes like K, Ki,\nM, Mi, G or Gi are supported. Default is\
-    \ 8.0 Ei"
-  type: long
-  inputBinding:
-    prefix: --maxMemory
-- id: in_max_disk
-  doc: "The maximum amount of disk space to request from the\nbatch system at any\
-    \ one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default\
-    \ is 8.0 Ei"
-  type: long
-  inputBinding:
-    prefix: --maxDisk
 - id: in_retry_count
   doc: "Number of times to retry a failing job before giving\nup and labeling job\
     \ failed. default=1"

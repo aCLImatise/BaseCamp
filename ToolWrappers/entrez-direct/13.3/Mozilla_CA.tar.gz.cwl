@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Mozilla_CA.tar.gz.cwl
+id: Mozilla_CA.tar.gz.cwl
 inputs: []
 outputs:
 - id: out_stdout

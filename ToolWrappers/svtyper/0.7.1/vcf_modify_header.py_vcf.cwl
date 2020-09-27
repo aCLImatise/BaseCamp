@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_modify_header.py_vcf.cwl
+id: vcf_modify_header.py_vcf.cwl
 inputs:
 - id: in_d
   doc: ''

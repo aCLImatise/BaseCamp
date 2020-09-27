@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../insert_sizes.cwl
+id: insert_sizes.cwl
 inputs:
 - id: in_disregard_bank_locks
   doc: Disregard bank locks and write permissions (spy mode)

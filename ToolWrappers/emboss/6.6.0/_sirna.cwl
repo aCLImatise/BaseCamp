@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_sirna.cwl
+id: _sirna.cwl
 inputs:
 - id: in_pol_iii
   doc: "boolean    [N] This option allows you to select only\nthe 21 base probes that\

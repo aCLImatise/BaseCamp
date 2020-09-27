@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Nucmer_contig_validate.pl.cwl
+id: Nucmer_contig_validate.pl.cwl
 inputs:
 - id: in_query
   doc: input contig fasta file (e.g., contig1.fa)

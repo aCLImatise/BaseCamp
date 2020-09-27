@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tab2feature_gxt.pl.bak.cwl
+id: tab2feature_gxt.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

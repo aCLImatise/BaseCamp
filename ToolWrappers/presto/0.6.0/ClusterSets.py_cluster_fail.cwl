@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClusterSets.py_cluster_fail.cwl
+id: ClusterSets.py_cluster_fail.cwl
 inputs:
 - id: in_cluster_sets_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbilogstrip.cwl
+id: dbilogstrip.cwl
 inputs: []
 outputs:
 - id: out_stdout

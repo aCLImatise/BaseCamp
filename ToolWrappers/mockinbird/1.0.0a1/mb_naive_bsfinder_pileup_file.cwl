@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_naive_bsfinder_pileup_file.cwl
+id: mb_naive_bsfinder_pileup_file.cwl
 inputs:
 - id: in_min_transitions
   doc: ''

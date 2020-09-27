@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_transpose_matrix.cwl
+id: anvi_script_transpose_matrix.cwl
 inputs:
 - id: in_output_file
   doc: "File path to store results.\n"

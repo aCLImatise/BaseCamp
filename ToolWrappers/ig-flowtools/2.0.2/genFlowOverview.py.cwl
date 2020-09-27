@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genFlowOverview.py.cwl
+id: genFlowOverview.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

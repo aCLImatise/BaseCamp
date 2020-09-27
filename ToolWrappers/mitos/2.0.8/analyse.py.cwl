@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyse.py.cwl
+id: analyse.py.cwl
 inputs:
 - id: in_size
   doc: "length of the sequence (mandatory for circular\nsequences)"

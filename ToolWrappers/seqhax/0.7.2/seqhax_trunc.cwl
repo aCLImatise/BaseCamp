@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_trunc.cwl
+id: seqhax_trunc.cwl
 inputs:
 - id: in_fixed_integer_length
   doc: Fixed (integer) length to truncate at.

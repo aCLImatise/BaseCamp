@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../output_reconciled_scaffolds.pl.cwl
+id: output_reconciled_scaffolds.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

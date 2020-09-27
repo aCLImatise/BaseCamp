@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagene_OUTBASE_rois.bed.cwl
+id: metagene_OUTBASE_rois.bed.cwl
 inputs:
 - id: in_meta_gene
   doc: ''

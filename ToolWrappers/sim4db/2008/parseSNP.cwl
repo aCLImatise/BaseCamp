@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseSNP.cwl
+id: parseSNP.cwl
 inputs:
 - id: in_filter_matches_percent_identity
   doc: filter matches on percent identity

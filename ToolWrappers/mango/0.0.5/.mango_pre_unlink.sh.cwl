@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.mango_pre_unlink.sh.cwl
+id: .mango_pre_unlink.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -9,7 +9,6 @@ task Wtcns {
     File? output_file_consensus
     Boolean? force_overwrite
     Boolean? trun_homopolymer_compression
-    Int? zmer_size_z
     Int? zmer_window
     Int? minimum_size_seeding
     Int? maximum_variant_uncompressed
@@ -43,7 +42,6 @@ task Wtcns {
       ~{if defined(output_file_consensus) then ("-o " +  '"' + output_file_consensus + '"') else ""} \
       ~{if (force_overwrite) then "-f" else ""} \
       ~{if (trun_homopolymer_compression) then "-H" else ""} \
-      ~{if defined(zmer_size_z) then ("-z " +  '"' + zmer_size_z + '"') else ""} \
       ~{if defined(zmer_window) then ("-y " +  '"' + zmer_window + '"') else ""} \
       ~{if defined(minimum_size_seeding) then ("-R " +  '"' + minimum_size_seeding + '"') else ""} \
       ~{if defined(maximum_variant_uncompressed) then ("-l " +  '"' + maximum_variant_uncompressed + '"') else ""} \
@@ -76,7 +74,6 @@ task Wtcns {
     output_file_consensus: "Output file, consensus sequences, [STDOUT]"
     force_overwrite: "Force overwrite"
     trun_homopolymer_compression: "Trun on homopolymer compression"
-    zmer_size_z: "Zmer size, 5 <= <-z> <= 16, [10]"
     zmer_window: "Zmer window, [800]"
     minimum_size_seeding: "Minimum size of seeding region within zmer window, [200]"
     maximum_variant_uncompressed: "Maximum variant of uncompressed sizes between two matched zmer, [2]"

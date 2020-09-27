@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_sdrf_validate_sdrf.cwl
+id: parse_sdrf_validate_sdrf.cwl
 inputs:
 - id: in_sd_rf_file
   doc: SDRF file to be validated

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SiriusAdapter.cwl
+id: SiriusAdapter.cwl
 inputs:
 - id: in_executable
   doc: The Sirius executable. Provide a full or relative path, or make sure it can

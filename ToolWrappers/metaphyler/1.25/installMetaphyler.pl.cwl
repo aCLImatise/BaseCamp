@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../installMetaphyler.pl.cwl
+id: installMetaphyler.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

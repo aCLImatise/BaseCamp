@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slamdunk_snp_bam.cwl
+id: slamdunk_snp_bam.cwl
 inputs:
 - id: in_t
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paladin_fa2pac.cwl
+id: paladin_fa2pac.cwl
 inputs:
 - id: in_f
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_variant_filter_input_file.cwl
+id: tb_variant_filter_input_file.cwl
 inputs:
 - id: in_region_filter
   doc: ''

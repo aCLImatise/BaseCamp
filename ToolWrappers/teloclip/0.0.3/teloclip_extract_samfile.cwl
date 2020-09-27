@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../teloclip_extract_samfile.cwl
+id: teloclip_extract_samfile.cwl
 inputs:
 - id: in_prefix
   doc: ''

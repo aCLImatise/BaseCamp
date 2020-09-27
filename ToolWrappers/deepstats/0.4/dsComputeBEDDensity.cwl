@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsComputeBEDDensity.cwl
+id: dsComputeBEDDensity.cwl
 inputs:
 - id: in_input
   doc: "BED files from which features density will be\ncalculated."

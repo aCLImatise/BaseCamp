@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_clone.cwl
+id: create_clone.cwl
 inputs:
 - id: in_debug
   doc: Print debug information (very verbose) to file /create_clone.log

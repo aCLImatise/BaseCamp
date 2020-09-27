@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panphlan_profiling.py.cwl
+id: panphlan_profiling.py.cwl
 inputs:
 - id: in_i_dna
   doc: "Input directory of panphlan_map.py results, containing\nSAMPLE.csv.bz2 files"

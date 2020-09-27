@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathoscope_MAP.cwl
+id: pathoscope_MAP.cwl
 inputs:
 - id: in_input_read_file
   doc: Input Read Fastq File (Unpaired/Single-end)

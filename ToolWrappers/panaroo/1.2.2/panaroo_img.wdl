@@ -2,10 +2,10 @@ version 1.0
 
 task Panarooimg {
   input {
-    String? d
     String? tree
     String? pa
     Directory? out_dir
+    String? number_seperate_use
     Boolean? no_essential
     Boolean? no_constraint
     String? fit
@@ -20,10 +20,10 @@ task Panarooimg {
   command <<<
     panaroo_img \
       ~{size_dot} \
-      ~{if defined(d) then ("-D " +  '"' + d + '"') else ""} \
       ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
       ~{if defined(pa) then ("--pa " +  '"' + pa + '"') else ""} \
       ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""} \
+      ~{if defined(number_seperate_use) then ("-D " +  '"' + number_seperate_use + '"') else ""} \
       ~{if (no_essential) then "--no_essential" else ""} \
       ~{if (no_constraint) then "--no_constraint" else ""} \
       ~{if defined(fit) then ("--fit " +  '"' + fit + '"') else ""} \
@@ -35,10 +35,10 @@ task Panarooimg {
       ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    d: "[--no_essential] [--no_constraint]"
     tree: "A dated phylogeny."
     pa: "A presence/absence produced by Panaroo."
     out_dir: "location of an output directory"
+    number_seperate_use: "Number of seperate rate classes to use for the\\ndispensable genome. Can be either 1 or 2."
     no_essential: "Removes essential gene class from model"
     no_constraint: "Removes constraint that u/v must equal the genome"
     fit: "Whether to use the gene frequency spectrum or the\\ncore/pangeome size for fitting (default=gf)"

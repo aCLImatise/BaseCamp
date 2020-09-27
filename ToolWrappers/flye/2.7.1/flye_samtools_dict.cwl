@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_dict.cwl
+id: flye_samtools_dict.cwl
 inputs:
 - id: in_assembly
   doc: assembly

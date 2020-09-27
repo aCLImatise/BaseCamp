@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxmapper_count.cwl
+id: taxmapper_count.cwl
 inputs:
 - id: in_tax
   doc: Filtered taxonomy mapping file.

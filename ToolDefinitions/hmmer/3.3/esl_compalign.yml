@@ -32,7 +32,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -63,61 +63,10 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: ': print per column statistics instead of per sequence stats'
-          synonyms:
-          - -c
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ': print stats on accuracy versus posterior probability (PP)'
-          synonyms:
-          - -p
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ": with -p, only consider columns within mask ('1' columns)\
-            \ in <f>"
-          synonyms:
-          - --p-mask
-          args: !SimpleFlagArg
-            name: f
-          optional: true
-        - !Flag
-          description: ': print per column stats to esl-ssdraw --dfile file <f>'
-          synonyms:
-          - --c2dfile
-          args: !SimpleFlagArg
-            name: f
-          optional: true
-        - !Flag
-          description: ': <msafile> contains protein alignments'
-          synonyms:
-          - --amino
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ': <msafile> contains DNA alignments'
-          synonyms:
-          - --dna
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ': <msafile> contains RNA alignments'
-          synonyms:
-          - --rna
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -options
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -145,7 +94,166 @@ subcommands:
             - -options
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: ': print per column statistics instead of per sequence
+                stats'
+              synonyms:
+              - -c
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ': print stats on accuracy versus posterior probability
+                (PP)'
+              synonyms:
+              - -p
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ": with -p, only consider columns within mask ('1' columns)\
+                \ in <f>"
+              synonyms:
+              - --p-mask
+              args: !SimpleFlagArg
+                name: f
+              optional: true
+            - !Flag
+              description: ': print per column stats to esl-ssdraw --dfile file <f>'
+              synonyms:
+              - --c2dfile
+              args: !SimpleFlagArg
+                name: f
+              optional: true
+            - !Flag
+              description: ': <msafile> contains protein alignments'
+              synonyms:
+              - --amino
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ': <msafile> contains DNA alignments'
+              synonyms:
+              - --dna
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ': <msafile> contains RNA alignments'
+              synonyms:
+              - --rna
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - -options
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: esl-compalign
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: trusted file
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: test file
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -options
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Incorrect number of command line arguments.\nUsage: esl-compalign\
+                \ [-options] <trusted file> <test file>\n  Both files must be in Stockholm\
+                \ format with #=GC RF markup.\n  Sequences must occur in the same\
+                \ order in the two files.\n  Number of non-gap characters in #=GC\
+                \ RF markup must be identical.\n  Note: accuracy is computed differently\
+                \ than in Squid's compalign.\n  See the manual page for details on\
+                \ how accuracy is computed.\n\nTo see more help on available options,\
+                \ do esl-compalign -h\n\n"
+              generated_using: &id004 []
+            - !Command
+              command: &id005
+              - esl-compalign
+              - trusted file
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: test file
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -options
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Incorrect number of command line arguments.\nUsage: esl-compalign\
+                \ [-options] <trusted file> <test file>\n  Both files must be in Stockholm\
+                \ format with #=GC RF markup.\n  Sequences must occur in the same\
+                \ order in the two files.\n  Number of non-gap characters in #=GC\
+                \ RF markup must be identical.\n  Note: accuracy is computed differently\
+                \ than in Squid's compalign.\n  See the manual page for details on\
+                \ how accuracy is computed.\n\nTo see more help on available options,\
+                \ do esl-compalign -h\n\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: ': help; show brief info on version and usage'
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "# esl-compalign :: compare two multiple sequence alignments\n\
+              # Easel 0.46 (Nov 2019)\n# Copyright (C) 2019 Howard Hughes Medical\
+              \ Institute.\n# Freely distributed under the BSD open source license.\n\
+              # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\
+              \ - - -\nUsage: esl-compalign [-options] <trusted file> <test file>\n\
+              \  Both files must be in Stockholm format with #=GC RF markup.\n  Sequences\
+              \ must occur in the same order in the two files.\n  Number of non-gap\
+              \ characters in #=GC RF markup must be identical.\n  Note: accuracy\
+              \ is computed differently than in Squid's compalign.\n  See the manual\
+              \ page for details on how accuracy is computed.\n\n where options are:\n\
+              \  -h            : help; show brief info on version and usage\n  -c\
+              \            : print per column statistics instead of per sequence stats\n\
+              \  -p            : print stats on accuracy versus posterior probability\
+              \ (PP)\n  --p-mask <f>  : with -p, only consider columns within mask\
+              \ ('1' columns) in <f>\n  --c2dfile <f> : print per column stats to\
+              \ esl-ssdraw --dfile file <f>\n  --amino : <msafile> contains protein\
+              \ alignments\n  --dna   : <msafile> contains DNA alignments\n  --rna\
+              \   : <msafile> contains RNA alignments\n"
+            generated_using: &id006
+            - -h
           subcommands: []
           usage: []
           help_flag:
@@ -159,11 +267,9 @@ subcommands:
             \ Squid's compalign.\n  See the manual page for details on how accuracy\
             \ is computed.\n\nTo see more help on available options, do esl-compalign\
             \ -h\n\n"
-          generated_using: &id004 []
+          generated_using: *id004
         - !Command
-          command: &id005
-          - esl-compalign
-          - trusted file
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -193,12 +299,7 @@ subcommands:
             \ -h\n\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: ': help; show brief info on version and usage'
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "# esl-compalign :: compare two multiple sequence alignments\n\
@@ -218,8 +319,7 @@ subcommands:
           \ esl-ssdraw --dfile file <f>\n  --amino : <msafile> contains protein alignments\n\
           \  --dna   : <msafile> contains DNA alignments\n  --rna   : <msafile> contains\
           \ RNA alignments\n"
-        generated_using: &id006
-        - -h
+        generated_using: *id006
       subcommands: []
       usage: []
       help_flag:
@@ -248,7 +348,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag:
@@ -311,7 +411,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag:

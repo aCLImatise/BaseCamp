@@ -1,31 +1,21 @@
 class: CommandLineTool
-id: ../../../seqcluster_install.cwl
+id: seqcluster_install.cwl
 inputs:
-- id: in_tools
-  doc: install tools
-  type: string
-  inputBinding:
-    prefix: --tools
-- id: in_data
-  doc: path install data
-  type: File
-  inputBinding:
-    prefix: --data
 - id: in_upgrade
-  doc: upgrade seqcluster
+  doc: ''
   type: boolean
   inputBinding:
     prefix: --upgrade
-- id: in_genomes
+- id: in_data
   doc: ''
   type: string
   inputBinding:
-    prefix: --genomes
-- id: in_aligners
+    prefix: --data
+- id: in_tools
   doc: ''
   type: string
   inputBinding:
-    prefix: --aligners
+    prefix: --tools
 outputs:
 - id: out_stdout
   doc: Standard output stream

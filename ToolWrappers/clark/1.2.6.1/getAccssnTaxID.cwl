@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getAccssnTaxID.cwl
+id: getAccssnTaxID.cwl
 inputs: []
 outputs:
 - id: out_stdout

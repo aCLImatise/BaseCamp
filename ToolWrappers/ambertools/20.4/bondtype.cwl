@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bondtype.cwl
+id: bondtype.cwl
 inputs: []
 outputs:
 - id: out_stdout

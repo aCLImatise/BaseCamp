@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_remove_samples.cwl
+id: dimspy_remove_samples.cwl
 inputs:
 - id: in_input
   doc: "HDF5 file that contains a peak matrix object or list\nof peaklist objects\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RankMotifs.cwl
+id: RankMotifs.cwl
 inputs:
 - id: in_version
   doc: ''

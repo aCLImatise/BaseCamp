@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_stb.py.cwl
+id: parse_stb.py.cwl
 inputs:
 - id: in_stb
   doc: 'scaffold to bin file (default: None)'

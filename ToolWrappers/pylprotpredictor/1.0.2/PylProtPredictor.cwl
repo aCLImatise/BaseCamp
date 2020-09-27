@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PylProtPredictor.cwl
+id: PylProtPredictor.cwl
 inputs:
 - id: in_genome
   doc: "path to a FASTA file with full or contig sequences of\na genome to analyze"

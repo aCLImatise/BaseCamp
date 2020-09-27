@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ambtest.cwl
+id: ambtest.cwl
 inputs:
 - id: in_req_use_model
   doc: ': (req) Use model <file>'

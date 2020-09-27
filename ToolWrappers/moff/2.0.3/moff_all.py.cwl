@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../moff_all.py.cwl
+id: moff_all.py.cwl
 inputs:
 - id: in_loc_in
   doc: specify the folder of the input MS2 peptide list files

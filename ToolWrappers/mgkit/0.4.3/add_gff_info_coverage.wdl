@@ -3,7 +3,6 @@ version 1.0
 task AddgffinfoCoverage {
   input {
     Boolean? verbose
-    File? sample_alignment
     String? input_file
     String? output_file
   }
@@ -11,12 +10,10 @@ task AddgffinfoCoverage {
     add_gff_info coverage \
       ~{input_file} \
       ~{output_file} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(sample_alignment) then ("--sample-alignment " +  '"' + sample_alignment + '"') else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    sample_alignment: "sample name and correspondent alignment file\\nseparated by comma  [required]"
+    verbose: "-a, --sample-alignment TEXT  sample name and correspondent alignment file\\nseparated by comma  [required]\\n--help                       Show this message and exit.\\n"
     input_file: ""
     output_file: ""
   }

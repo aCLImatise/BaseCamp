@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_cmbuild.cwl
+id: ssu_cmbuild.cwl
 inputs:
 - id: in_name_cms_s
   doc: ': name the CM(s) <s>, (only if single aln in file)'

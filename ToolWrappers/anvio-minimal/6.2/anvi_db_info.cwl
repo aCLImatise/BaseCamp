@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_db_info.cwl
+id: anvi_db_info.cwl
 inputs:
 - id: in_self_key
   doc: The key you wish to set or change.

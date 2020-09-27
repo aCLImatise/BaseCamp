@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_card_annotation.cwl
+id: rgi_card_annotation.cwl
 inputs:
 - id: in_input
   doc: card.json file

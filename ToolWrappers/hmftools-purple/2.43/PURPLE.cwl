@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PURPLE.cwl
+id: PURPLE.cwl
 inputs:
 - id: in_circo_s
   doc: "Location of\ncircos binary"

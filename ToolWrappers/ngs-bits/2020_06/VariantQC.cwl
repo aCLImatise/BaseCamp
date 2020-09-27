@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VariantQC.cwl
+id: VariantQC.cwl
 inputs:
 - id: in_in
   doc: Input variant list in VCF format.

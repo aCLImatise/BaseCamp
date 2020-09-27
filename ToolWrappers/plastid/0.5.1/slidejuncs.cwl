@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slidejuncs.cwl
+id: slidejuncs.cwl
 inputs:
 - id: in_max_slide
   doc: "Maximum number of nt to search 5' and 3' of intron\nboundaries (Default: 10)"
@@ -103,16 +103,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_position
-  doc: 0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22  23
-  type: string
-  inputBinding:
-    position: 1
-- id: in_repeated
-  doc: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  type: string
-  inputBinding:
-    position: 2
 - id: in_one_dot
   doc: "If a mask file from crossmap\nis provided, junctions in which one or more\
     \ of the 5' and 3' splice\nsites appear in a repetitive region of the genome are\

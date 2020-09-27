@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skmer_query_estimated..cwl
+id: skmer_query_estimated..cwl
 inputs:
 - id: in_p
   doc: ''

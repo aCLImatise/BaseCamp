@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqdiff.cwl
+id: seqdiff.cwl
 inputs:
 - id: in_first
   doc: ',      First sequence file (required)'

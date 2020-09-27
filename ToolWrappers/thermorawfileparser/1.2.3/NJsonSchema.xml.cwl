@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NJsonSchema.xml.cwl
+id: NJsonSchema.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

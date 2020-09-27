@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novosort.cwl
+id: novosort.cwl
 inputs:
 - id: in_umi
   doc: "UMI is part of Illumina read header '@Instrument:RunID:FlowCellID:Lane:Tile:X:Y:UMI'\n\

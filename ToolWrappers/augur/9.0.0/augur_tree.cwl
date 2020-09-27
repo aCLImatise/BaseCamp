@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_tree.cwl
+id: augur_tree.cwl
 inputs:
 - id: in_alignment
   doc: 'alignment in fasta or VCF format (default: None)'

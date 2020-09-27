@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abpoa.cwl
+id: abpoa.cwl
 inputs:
 - id: in_aln_mode
   doc: "alignment mode [0]\n0: global, 1: local, 2: extension"

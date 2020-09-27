@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_lsort.cwl
+id: svtools_lsort.cwl
 inputs:
 - id: in_vcf_list
   doc: "file containing a line-delimited list of VCF files to\ncombine and sort"

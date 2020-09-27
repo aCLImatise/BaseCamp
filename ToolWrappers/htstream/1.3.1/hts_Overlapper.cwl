@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_Overlapper.cwl
+id: hts_Overlapper.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

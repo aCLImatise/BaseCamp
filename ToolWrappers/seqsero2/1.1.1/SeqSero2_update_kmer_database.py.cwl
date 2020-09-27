@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeqSero2_update_kmer_database.py.cwl
+id: SeqSero2_update_kmer_database.py.cwl
 inputs:
 - id: in_just
   doc: ''

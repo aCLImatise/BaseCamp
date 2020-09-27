@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_besthitperset.cwl
+id: mmseqs_besthitperset.cwl
 inputs:
 - id: in_simple_best_hit
   doc: false           Update the e-value by the best p-value

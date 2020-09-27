@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sim_reads_tran.cwl
+id: sim_reads_tran.cwl
 inputs:
 - id: in_error_rate
   doc: (=0.01)           error rate
@@ -16,11 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --paired
-- id: in_sd
-  doc: (=-1)                     sd
-  type: long
-  inputBinding:
-    prefix: --sd
 - id: in_insert_distance
   doc: (=500)       insert distance
   type: long

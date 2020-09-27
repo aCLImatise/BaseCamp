@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scmap_cli_post_install_tests.bats.cwl
+id: scmap_cli_post_install_tests.bats.cwl
 inputs: []
 outputs:
 - id: out_stdout

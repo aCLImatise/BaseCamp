@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../rsat_genome_blast.cwl
+id: rsat_genome_blast.cwl
 inputs:
 - id: in_db_tax_on
-  doc: ''
+  doc: "In the latter case, there is no need to run the reciprocal blast, since\n\
+    the query yaxon is the same as the database taxon."
   type: string
   inputBinding:
     prefix: -dbtaxon

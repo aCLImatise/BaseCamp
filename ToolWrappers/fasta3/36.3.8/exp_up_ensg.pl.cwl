@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exp_up_ensg.pl.cwl
+id: exp_up_ensg.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

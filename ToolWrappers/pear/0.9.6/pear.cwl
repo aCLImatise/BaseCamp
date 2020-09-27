@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pear.cwl
+id: pear.cwl
 inputs:
 - id: in_forward_fast_q
   doc: <str>     Forward paired-end FASTQ file.

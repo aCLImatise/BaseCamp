@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sciphi.cwl
+id: sciphi.cwl
 inputs:
 - id: in_in
   doc: Name of the BAM files used to create the mpileup.

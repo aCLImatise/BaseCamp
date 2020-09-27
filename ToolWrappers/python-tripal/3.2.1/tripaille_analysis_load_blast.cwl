@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_analysis_load_blast.cwl
+id: tripaille_analysis_load_blast.cwl
 inputs:
 - id: in_blast_ext
   doc: "If looking for files in a directory, extension of\nthe blast result files"

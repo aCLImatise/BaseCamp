@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SSAKE.cwl
+id: SSAKE.cwl
 inputs:
 - id: in_file_containing_reads
   doc: "File containing all the [paired (-p 1)] reads (required)\nWith -p 1:"

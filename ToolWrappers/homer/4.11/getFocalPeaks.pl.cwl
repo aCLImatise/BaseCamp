@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getFocalPeaks.pl.cwl
+id: getFocalPeaks.pl.cwl
 inputs:
 - id: in_min
   doc: '<#> (minimum focus ratio threshold, default: 0.75)'

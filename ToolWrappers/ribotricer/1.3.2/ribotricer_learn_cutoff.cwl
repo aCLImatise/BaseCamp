@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribotricer_learn_cutoff.cwl
+id: ribotricer_learn_cutoff.cwl
 inputs:
 - id: in_ribo_bams
   doc: Path(s) to Ribo-seq BAM file separated by

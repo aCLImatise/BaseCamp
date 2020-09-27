@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_publication_number.cwl
+id: rnftools_publication_number.cwl
 inputs:
 - id: in_rnf_tools
   doc: ''

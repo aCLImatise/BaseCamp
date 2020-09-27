@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_5pUTR.cwl
+id: bedparse_5pUTR.cwl
 inputs:
 - id: in_bed_file
   doc: Path to the BED file.

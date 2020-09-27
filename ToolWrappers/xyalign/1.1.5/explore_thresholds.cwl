@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../explore_thresholds.cwl
+id: explore_thresholds.cwl
 inputs:
 - id: in_data_frame
   doc: "Full path to csv output of pandas dataframe from\nBAM_ANALYSIS module"
@@ -81,11 +81,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --plot_snp_distance
-- id: in_module
-  doc: --output_prefix OUTPUT_PREFIX
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

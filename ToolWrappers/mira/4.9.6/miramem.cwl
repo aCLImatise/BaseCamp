@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miramem.cwl
+id: miramem.cwl
 inputs:
 - id: in_as
   doc: :amm, -AS:kpmf, -AS:mps

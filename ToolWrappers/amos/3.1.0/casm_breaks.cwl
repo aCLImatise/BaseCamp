@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../casm_breaks.cwl
+id: casm_breaks.cwl
 inputs:
 - id: in_bank_materead_info
   doc: Bank for mate/read info and layout/scaffold output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_matrix_from_patterns.cwl
+id: rsat_matrix_from_patterns.cwl
 inputs:
 - id: in_matrix_from_patterns
   doc: "\e[1mDESCRIPTION\e[0m"

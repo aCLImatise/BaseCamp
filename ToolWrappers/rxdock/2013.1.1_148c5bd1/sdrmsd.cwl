@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdrmsd.cwl
+id: sdrmsd.cwl
 inputs:
 - id: in_fit
   doc: Superpose molecules before RMSD calculation

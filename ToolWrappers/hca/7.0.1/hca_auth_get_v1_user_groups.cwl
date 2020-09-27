@@ -1,26 +1,12 @@
 class: CommandLineTool
-id: ../../../hca_auth_get_v1_user_groups.cwl
+id: hca_auth_get_v1_user_groups.cwl
 inputs:
 - id: in_user_id
-  doc: User ID (email).
+  doc: "User ID (email).\n--next-token NEXT_TOKEN\n--per-page PER_PAGE\n--no-paginate\
+    \         Do not automatically page the responses\n"
   type: string
   inputBinding:
     prefix: --user-id
-- id: in_next_token
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --next-token
-- id: in_per_page
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --per-page
-- id: in_no_paginate
-  doc: Do not automatically page the responses
-  type: boolean
-  inputBinding:
-    prefix: --no-paginate
 outputs:
 - id: out_stdout
   doc: Standard output stream

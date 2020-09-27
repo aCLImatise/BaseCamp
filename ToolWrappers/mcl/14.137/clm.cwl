@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clm.cwl
+id: clm.cwl
 inputs:
 - id: in_nop
   doc: ''

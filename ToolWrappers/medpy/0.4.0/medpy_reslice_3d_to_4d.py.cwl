@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_reslice_3d_to_4d.py.cwl
+id: medpy_reslice_3d_to_4d.py.cwl
 inputs:
 - id: in_display_more_information
   doc: Display more information.

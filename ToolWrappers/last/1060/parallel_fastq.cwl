@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parallel_fastq.cwl
+id: parallel_fastq.cwl
 inputs:
 - id: in_run_jobs_parallel
   doc: Run n jobs in parallel

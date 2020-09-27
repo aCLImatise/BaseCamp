@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../screamingBackpack.cwl
+id: screamingBackpack.cwl
 inputs: []
 outputs:
 - id: out_stdout

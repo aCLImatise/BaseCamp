@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quick_hierarchical_clustering.cwl
+id: quick_hierarchical_clustering.cwl
 inputs: []
 outputs:
 - id: out_stdout

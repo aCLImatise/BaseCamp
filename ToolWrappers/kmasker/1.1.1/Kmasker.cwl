@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Kmasker.cwl
+id: Kmasker.cwl
 inputs:
 - id: in_build
   doc: construction of new index (requires --seq)

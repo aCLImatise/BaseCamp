@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigOverlaps.cwl
+id: contigOverlaps.cwl
 inputs:
 - id: in_percent_identity
   doc: 'arg  The minimum end-to-end % identity of qualifying reads (default: 97)'

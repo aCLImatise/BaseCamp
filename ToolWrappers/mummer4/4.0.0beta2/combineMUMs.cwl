@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineMUMs.cwl
+id: combineMUMs.cwl
 inputs:
 - id: in_only_output_stdout
   doc: "Only output to stdout the difference positions\nand characters"

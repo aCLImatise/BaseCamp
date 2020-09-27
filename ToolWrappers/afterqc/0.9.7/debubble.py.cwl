@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../debubble.py.cwl
+id: debubble.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

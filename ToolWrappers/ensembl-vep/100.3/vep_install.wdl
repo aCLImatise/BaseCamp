@@ -18,19 +18,15 @@ task VepInstall {
     Boolean? _convert_convert
     Boolean? _cacheurl_override
     Boolean? _fastaurl_override
-    String ensembl
-    String ensembl_func_gen
-    String ensembl_io
-    String ensembl_variation
-    String ensembl_vep
+    String perl
+    String install_do_tpl
+    String? arguments
   }
   command <<<
     vep_install \
-      ~{ensembl} \
-      ~{ensembl_func_gen} \
-      ~{ensembl_io} \
-      ~{ensembl_variation} \
-      ~{ensembl_vep} \
+      ~{perl} \
+      ~{install_do_tpl} \
+      ~{arguments} \
       ~{if (_destdir_directory) then "-d" else ""} \
       ~{if (cache_version) then "--CACHE_VERSION" else ""} \
       ~{if (_cachedir_set) then "-c" else ""} \
@@ -65,11 +61,9 @@ task VepInstall {
     _convert_convert: "| --CONVERT     Convert downloaded caches to use tabix for retrieving\\nco-located variants (requires tabix)"
     _cacheurl_override: "| --CACHEURL    Override default cache URL; this may be a local directory or\\na remote (e.g. FTP) address."
     _fastaurl_override: "| --FASTAURL    Override default FASTA URL; this may be a local directory or\\na remote (e.g. FTP) address. The FASTA URL/directory must have\\ngzipped FASTA files under the following structure:\\n[species]/[dna]/\\n"
-    ensembl: ": 100.171092c"
-    ensembl_func_gen: ": 100.f0c3948"
-    ensembl_io: ": 100.f87ae4f"
-    ensembl_variation: ": 100.b220ff4"
-    ensembl_vep: ": 100.3"
+    perl: ""
+    install_do_tpl: ""
+    arguments: ""
   }
   output {
     File out_stdout = stdout()

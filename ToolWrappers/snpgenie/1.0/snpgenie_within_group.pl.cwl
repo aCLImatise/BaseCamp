@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snpgenie_within_group.pl.cwl
+id: snpgenie_within_group.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

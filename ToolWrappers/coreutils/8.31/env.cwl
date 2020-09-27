@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../env.cwl
+id: env.cwl
 inputs:
 - id: in_ignore_environment
   doc: start with an empty environment

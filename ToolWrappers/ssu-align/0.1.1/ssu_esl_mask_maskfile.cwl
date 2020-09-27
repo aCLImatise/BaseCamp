@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_mask_maskfile.cwl
+id: ssu_esl_mask_maskfile.cwl
 inputs:
 - id: in_ssu_esl_mask
   doc: ''

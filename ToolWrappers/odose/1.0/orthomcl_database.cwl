@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomcl_database.cwl
+id: orthomcl_database.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pod_cover.cwl
+id: pod_cover.cwl
 inputs: []
 outputs:
 - id: out_stdout

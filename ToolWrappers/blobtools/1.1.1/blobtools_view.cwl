@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_view.cwl
+id: blobtools_view.cwl
 inputs:
 - id: in_input
   doc: BlobDB file (created with "blobtools create")

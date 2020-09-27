@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../browse.cwl
+id: browse.cwl
 inputs: []
 outputs:
 - id: out_stdout

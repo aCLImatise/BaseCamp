@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfToTsv.cwl
+id: VcfToTsv.cwl
 inputs:
 - id: in_in
   doc: Input variant list in VCF format.

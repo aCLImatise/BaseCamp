@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr_list_sort.pl.cwl
+id: clstr_list_sort.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

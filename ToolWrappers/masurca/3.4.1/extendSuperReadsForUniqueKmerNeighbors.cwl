@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extendSuperReadsForUniqueKmerNeighbors.cwl
+id: extendSuperReadsForUniqueKmerNeighbors.cwl
 inputs:
 - id: in_dir
   doc: '*Directory where the super-reads work is done'

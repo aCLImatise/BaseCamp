@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqtofasta.cwl
+id: fastqtofasta.cwl
 inputs:
 - id: in_in_fast_q_file
   doc: ''

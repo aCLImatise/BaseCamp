@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deduplicate_unitigs.sh.cwl
+id: deduplicate_unitigs.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

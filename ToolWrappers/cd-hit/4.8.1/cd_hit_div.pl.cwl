@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cd_hit_div.pl.cwl
+id: cd_hit_div.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comppair_seqfile in.cwl
+id: comppair_seqfile in.cwl
 inputs:
 - id: in_options
   doc: ''

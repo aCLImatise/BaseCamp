@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getBamAvgChromDepth.pl.cwl
+id: getBamAvgChromDepth.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

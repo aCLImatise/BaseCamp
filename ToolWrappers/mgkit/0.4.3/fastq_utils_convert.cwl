@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../fastq_utils_convert.cwl
+id: fastq_utils_convert.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "--help         Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose

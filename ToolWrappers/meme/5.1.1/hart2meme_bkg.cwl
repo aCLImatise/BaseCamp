@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hart2meme_bkg.cwl
+id: hart2meme_bkg.cwl
 inputs:
 - id: in_hart_two_meme_bkg
   doc: Convert a Hartemink style conditional probability file into

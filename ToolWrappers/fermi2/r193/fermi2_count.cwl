@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2_count.cwl
+id: fermi2_count.cwl
 inputs:
 - id: in_kmer_length
   doc: k-mer length [51]

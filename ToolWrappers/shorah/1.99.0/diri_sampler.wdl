@@ -2,32 +2,14 @@ version 1.0
 
 task DiriSampler {
   input {
-    String? a
-    Int? var_1
-    Int? var_2
-    String? t
-    String? r
-    String files
-    String parameters
+    File? sampling_iterationsa_alphak
   }
   command <<<
     diri_sampler \
-      ~{files} \
-      ~{parameters} \
-      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
-      ~{if defined(var_1) then ("-K " +  '"' + var_1 + '"') else ""} \
-      ~{if defined(var_2) then ("-k " +  '"' + var_2 + '"') else ""} \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
-      ~{if defined(r) then ("-R " +  '"' + r + '"') else ""}
+      ~{if defined(sampling_iterationsa_alphak) then ("-i " +  '"' + sampling_iterationsa_alphak + '"') else ""}
   >>>
   parameter_meta {
-    a: ""
-    var_1: "not compat. with -k"
-    var_2: "not compat. with -K"
-    t: ""
-    r: ""
-    files: "-i <input data file>"
-    parameters: "-j <sampling iterations>"
+    sampling_iterationsa_alphak: "parameters\\n-j <sampling iterations>\\n-a <alpha>\\n-K <startvalue for number of clusters> not compat. with -k\\n-k <avg. number of reads in each startcluster> not compat. with -K\\n-t <history time>\\n-R <randomseed>"
   }
   output {
     File out_stdout = stdout()

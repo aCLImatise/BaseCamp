@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uptime.cwl
+id: uptime.cwl
 inputs: []
 outputs:
 - id: out_stdout

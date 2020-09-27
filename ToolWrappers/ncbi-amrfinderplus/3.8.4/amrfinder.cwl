@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amrfinder.cwl
+id: amrfinder.cwl
 inputs:
 - id: in_update
   doc: Update the AMRFinder database

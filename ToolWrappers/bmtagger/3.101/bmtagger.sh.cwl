@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bmtagger.sh.cwl
+id: bmtagger.sh.cwl
 inputs:
 - id: in_hv
   doc: ''

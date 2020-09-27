@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_whoami.cwl
+id: nebulizer_whoami.cwl
 inputs:
 - id: in_galaxy
   doc: ''

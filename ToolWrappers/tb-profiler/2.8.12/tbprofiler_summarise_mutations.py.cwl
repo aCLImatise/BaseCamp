@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_summarise_mutations.py.cwl
+id: tbprofiler_summarise_mutations.py.cwl
 inputs:
 - id: in_dir
   doc: 'NGS Platform (default: results)'

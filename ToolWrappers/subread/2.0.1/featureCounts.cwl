@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../featureCounts.cwl
+id: featureCounts.cwl
 inputs:
 - id: in_name_annotation_file
   doc: Name of an annotation file. GTF/GFF format by default. See

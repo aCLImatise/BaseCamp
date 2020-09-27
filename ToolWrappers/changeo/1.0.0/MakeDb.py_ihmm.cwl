@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeDb.py_ihmm.cwl
+id: MakeDb.py_ihmm.cwl
 inputs:
 - id: in_explicit_output_file
   doc: "Explicit output file name. Note, this argument cannot\nbe used with the --failed,\

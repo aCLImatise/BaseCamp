@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dynalign_smp.cwl
+id: dynalign_smp.cwl
 inputs:
 - id: in_dyn_align
   doc: ''

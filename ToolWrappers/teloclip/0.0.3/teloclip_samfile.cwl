@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../teloclip_samfile.cwl
+id: teloclip_samfile.cwl
 inputs:
 - id: in_max_break
   doc: ''

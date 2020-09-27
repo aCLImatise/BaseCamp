@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../irida_uploader.cwl
+id: irida_uploader.cwl
 inputs:
 - id: in_directory
   doc: "Location of sequencing run to upload.\nDirectory must be writable."

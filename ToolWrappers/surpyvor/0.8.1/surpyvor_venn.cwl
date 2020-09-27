@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_venn.cwl
+id: surpyvor_venn.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.

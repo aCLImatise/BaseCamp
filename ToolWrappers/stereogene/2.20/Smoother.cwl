@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Smoother.cwl
+id: Smoother.cwl
 inputs:
 - id: in_v
   doc: verbose

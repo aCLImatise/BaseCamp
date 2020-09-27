@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pan_genome_post_analysis.cwl
+id: pan_genome_post_analysis.cwl
 inputs:
 - id: in_delete_intermediate_files
   doc: dont delete intermediate files

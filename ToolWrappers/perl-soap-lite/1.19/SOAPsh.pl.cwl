@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SOAPsh.pl.cwl
+id: SOAPsh.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

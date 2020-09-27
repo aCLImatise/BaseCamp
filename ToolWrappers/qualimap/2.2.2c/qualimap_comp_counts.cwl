@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualimap_comp_counts.cwl
+id: qualimap_comp_counts.cwl
 inputs:
 - id: in_algorithm
   doc: "Counting algorithm:\nuniquely-mapped-reads(default) or proportional"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_create_taxonomy.cwl
+id: HLAProfiler.pl_create_taxonomy.cwl
 inputs:
 - id: in_reference
   doc: '|r    HLA reference fasta (required)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../huge_sort.pl.cwl
+id: huge_sort.pl.cwl
 inputs:
 - id: in_keep
   doc: "keep the unsorted file\nThe default is to delete the unsorted file."

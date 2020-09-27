@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_prep.cwl
+id: ssu_prep.cwl
 inputs:
 - id: in_force_dir_named
   doc: ': force; if dir named <output dir> already exists, empty it first'

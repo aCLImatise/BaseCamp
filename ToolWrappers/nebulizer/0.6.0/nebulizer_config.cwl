@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_config.cwl
+id: nebulizer_config.cwl
 inputs:
 - id: in_name
   doc: "only show configuration items that match NAME. Can include\nglob-style wild-cards."

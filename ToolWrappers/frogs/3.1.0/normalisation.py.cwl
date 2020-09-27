@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalisation.py.cwl
+id: normalisation.py.cwl
 inputs:
 - id: in_num_reads
   doc: Number of reads per sample after normalisation

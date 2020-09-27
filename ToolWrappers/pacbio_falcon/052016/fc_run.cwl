@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_run.cwl
+id: fc_run.cwl
 inputs: []
 outputs:
 - id: out_stdout

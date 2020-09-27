@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../patmatmotifs.cwl
+id: patmatmotifs.cwl
 inputs:
 - id: in_full
   doc: boolean    [N] Provide full documentation for matching

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DAssembler.cwl
+id: DAssembler.cwl
 inputs:
 - id: in_max_overlap
   doc: maximum tier overlap for consensus calling [10]

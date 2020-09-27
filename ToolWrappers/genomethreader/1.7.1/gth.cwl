@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gth.cwl
+id: gth.cwl
 inputs:
 - id: in_genomic
   doc: "specify input files containing genomic sequences\nmandatory option"

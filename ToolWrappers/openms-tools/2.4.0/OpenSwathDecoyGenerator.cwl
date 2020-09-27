@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathDecoyGenerator.cwl
+id: OpenSwathDecoyGenerator.cwl
 inputs:
 - id: in_in
   doc: "*             Input file (valid formats: 'tsv', 'mrm', 'pqp', 'TraML')"

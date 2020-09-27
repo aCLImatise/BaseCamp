@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QCMerger.cwl
+id: QCMerger.cwl
 inputs:
 - id: in_in
   doc: "*       List of qcml files to be merged. (valid formats: 'qcML')"

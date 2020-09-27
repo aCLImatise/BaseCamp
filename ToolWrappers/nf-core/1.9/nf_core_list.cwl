@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_list.cwl
+id: nf_core_list.cwl
 inputs:
 - id: in_sort
   doc: "[release|pulled|name|stars]\nHow to sort listed pipelines"

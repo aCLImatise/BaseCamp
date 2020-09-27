@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../picopore_rename.cwl
+id: picopore_rename.cwl
 inputs:
 - id: in_pattern
   doc: String or regex to replace

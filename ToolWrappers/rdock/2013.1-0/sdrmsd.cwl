@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdrmsd.cwl
+id: sdrmsd.cwl
 inputs: []
 outputs:
 - id: out_stdout

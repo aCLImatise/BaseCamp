@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapsembler2_extremities.cwl
+id: mapsembler2_extremities.cwl
 inputs:
 - id: in_arg_kmer_size
   doc: "(1 arg) :    kmer size that will be used for mapsembler2  [default '']"

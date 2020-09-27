@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pepwindowall.cwl
+id: pepwindowall.cwl
 inputs:
 - id: in_data_file
   doc: datafile   [Enakai.dat] AAINDEX entry data file

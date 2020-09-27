@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tryptic.py.cwl
+id: tryptic.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

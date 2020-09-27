@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axtSwap.cwl
+id: axtSwap.cwl
 inputs: []
 outputs:
 - id: out_stdout

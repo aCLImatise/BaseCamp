@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getNumBasesPerReadInFastaFile.perl.cwl
+id: getNumBasesPerReadInFastaFile.perl.cwl
 inputs:
 - id: in_zcat
   doc: ''

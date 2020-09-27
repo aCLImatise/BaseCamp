@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_get_reads_from_fasta_ids_file.cwl
+id: o_get_reads_from_fasta_ids_file.cwl
 inputs:
 - id: in_s
   doc: ''

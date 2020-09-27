@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapCounter.cwl
+id: mapCounter.cwl
 inputs:
 - id: in_seg
   doc: Outputs in SEG format

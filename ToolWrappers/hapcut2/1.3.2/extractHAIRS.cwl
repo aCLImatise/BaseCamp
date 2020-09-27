@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractHAIRS.cwl
+id: extractHAIRS.cwl
 inputs:
 - id: in_qv_offset
   doc: ': quality value offset, 33/64 depending on how quality values were encoded,

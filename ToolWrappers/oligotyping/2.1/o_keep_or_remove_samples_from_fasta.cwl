@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_keep_or_remove_samples_from_fasta.cwl
+id: o_keep_or_remove_samples_from_fasta.cwl
 inputs:
 - id: in_retain
   doc: "If declared, resulting FASTA file would contain\nsamples that \"match\" sample\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_add_missing_sequences.cwl
+id: secapr_add_missing_sequences.cwl
 inputs:
 - id: in_input
   doc: The directory containing fasta alignments

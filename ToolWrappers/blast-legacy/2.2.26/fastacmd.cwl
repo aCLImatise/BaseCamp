@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastacmd.cwl
+id: fastacmd.cwl
 inputs:
 - id: in_database_optionaldefault_nr
   doc: "Database [String]  Optional\ndefault = nr"

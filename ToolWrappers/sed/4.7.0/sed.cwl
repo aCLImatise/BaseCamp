@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sed.cwl
+id: sed.cwl
 inputs:
 - id: in_silent
   doc: suppress automatic printing of pattern space

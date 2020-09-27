@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_preprocess_variants.cwl
+id: varlociraptor_preprocess_variants.cwl
 inputs:
 - id: in_omit_insert_size
   doc: "Do not consider insert size when calculating support for a variant. Use this\

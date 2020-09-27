@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obo_union.pl.cwl
+id: obo_union.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../partial_least_squares.py.cwl
+id: partial_least_squares.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribo_structure.cwl
+id: ribo_structure.cwl
 inputs:
 - id: in_k
   doc: ''

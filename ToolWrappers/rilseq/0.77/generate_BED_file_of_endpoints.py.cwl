@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_BED_file_of_endpoints.py.cwl
+id: generate_BED_file_of_endpoints.py.cwl
 inputs:
 - id: in_reverse
   doc: "The original bam file is the reverse complement of the\nRNA. (default: False)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../effectivet3.cwl
+id: effectivet3.cwl
 inputs:
 - id: in_q
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_region.cwl
+id: remove_region.cwl
 inputs:
 - id: in_region_file
   doc: "A bed file specifying regions which should be excluded\nfrom the gVCF. Any\

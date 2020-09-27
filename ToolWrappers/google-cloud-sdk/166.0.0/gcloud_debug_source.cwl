@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_debug_source.cwl
+id: gcloud_debug_source.cwl
 inputs:
 - id: in_optional
   doc: ''

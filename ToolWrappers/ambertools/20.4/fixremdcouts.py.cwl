@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fixremdcouts.py.cwl
+id: fixremdcouts.py.cwl
 inputs:
 - id: in_author
   doc: show the program's author name and exit

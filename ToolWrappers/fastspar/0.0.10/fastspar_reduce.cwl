@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastspar_reduce.cwl
+id: fastspar_reduce.cwl
 inputs:
 - id: in_r_slash_correlation_table
   doc: Correlation input table

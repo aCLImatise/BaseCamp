@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_plot_association_qq.cwl
+id: vtools_report_plot_association_qq.cwl
 inputs:
 - id: in_shape
   doc: "Choose a shape theme (integer 1 to 16) for dots on QQ\nplot. Default set to\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnase_ddhs_scorer.py.cwl
+id: dnase_ddhs_scorer.py.cwl
 inputs:
 - id: in_low_ram_mode
   doc: 'low RAM mode (disables caching) (Default: False)'

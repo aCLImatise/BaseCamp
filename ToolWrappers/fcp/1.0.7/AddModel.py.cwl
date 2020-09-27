@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AddModel.py.cwl
+id: AddModel.py.cwl
 inputs:
 - id: in_n
   doc: ''

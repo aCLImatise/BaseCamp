@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_musicc.py.cwl
+id: run_musicc.py.cwl
 inputs:
 - id: in_out
   doc: "Output destination for corrected abundance (default:\nMUSiCC.tab)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAI.cwl
+id: LAI.cwl
 inputs:
 - id: in_genome
   doc: '[file]  The genome file that is used to generate everything.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_stackbar.R.cwl
+id: o_stackbar.R.cwl
 inputs:
 - id: in_output_file_prefix
   doc: Output file prefix for visualization files [default "unknown"]

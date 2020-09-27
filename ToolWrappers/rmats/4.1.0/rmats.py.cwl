@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmats.py.cwl
+id: rmats.py.cwl
 inputs:
 - id: in_gtf
   doc: An annotation of genes and transcripts in GTF format

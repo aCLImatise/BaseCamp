@@ -2,19 +2,19 @@ version 1.0
 
 task ShigatyperRead1 {
   input {
-    String? name
     Boolean? verbose
+    String? n
     Int read_one
   }
   command <<<
     shigatyper read1 \
       ~{read_one} \
-      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
-      ~{if (verbose) then "--verbose" else ""}
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
   parameter_meta {
-    name: ""
     verbose: ""
+    n: ""
     read_one: "read2"
   }
   output {

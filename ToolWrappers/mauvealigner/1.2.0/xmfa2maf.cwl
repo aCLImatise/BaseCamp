@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmfa2maf.cwl
+id: xmfa2maf.cwl
 inputs:
 - id: in_x_mfa_input
   doc: ''

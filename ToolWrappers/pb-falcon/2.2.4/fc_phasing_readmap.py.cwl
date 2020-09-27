@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../fc_phasing_readmap.py.cwl
+id: fc_phasing_readmap.py.cwl
 inputs:
 - id: in_p_read_to_contigs_fn
-  doc: ''
+  doc: --the-ctg-id THE_CTG_ID
   type: string
   inputBinding:
     prefix: --pread-to-contigs-fn
-- id: in_the_ctg_id
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --the-ctg-id
 - id: in_phased_reads
   doc: 'path to read vs. phase map (default: None)'
   type: File
@@ -28,6 +23,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --pread-ids-fn
+- id: in_the_ctg_id
+  doc: "contig identifier in the bam file (default: None)\n"
+  type: File
+  inputBinding:
+    prefix: --the-ctg-id
 outputs:
 - id: out_stdout
   doc: Standard output stream

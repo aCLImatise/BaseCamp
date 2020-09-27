@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_pileup_stats.cwl
+id: bl_pileup_stats.cwl
 inputs:
 - id: in_specify_pileup_file
   doc: specify the PILEUP input file

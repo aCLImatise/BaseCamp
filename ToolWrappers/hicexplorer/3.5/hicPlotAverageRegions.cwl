@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicPlotAverageRegions.cwl
+id: hicPlotAverageRegions.cwl
 inputs:
 - id: in_matrix
   doc: "The averaged regions file computed by\nhicAverageRegions (npz file)."

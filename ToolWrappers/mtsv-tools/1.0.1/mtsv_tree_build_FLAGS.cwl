@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtsv_tree_build_FLAGS.cwl
+id: mtsv_tree_build_FLAGS.cwl
 inputs:
 - id: in_index
   doc: ''

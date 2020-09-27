@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pashToLff.rb.cwl
+id: pashToLff.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

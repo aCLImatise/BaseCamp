@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../memtime.cwl
+id: memtime.cwl
 inputs: []
 outputs:
 - id: out_stdout

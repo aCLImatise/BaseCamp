@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_seq.cwl
+id: varda2_client_seq.cwl
 inputs:
 - id: in_sequence
   doc: "Sequence\n"

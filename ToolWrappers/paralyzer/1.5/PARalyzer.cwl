@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PARalyzer.cwl
+id: PARalyzer.cwl
 inputs: []
 outputs:
 - id: out_stdout

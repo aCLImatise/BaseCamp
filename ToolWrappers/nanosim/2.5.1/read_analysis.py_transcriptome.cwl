@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_analysis.py_transcriptome.cwl
+id: read_analysis.py_transcriptome.cwl
 inputs:
 - id: in_read
   doc: Input read for training

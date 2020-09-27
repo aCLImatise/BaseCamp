@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertsegfilestopdf.cwl
+id: convertsegfilestopdf.cwl
 inputs:
 - id: in_where
   doc: "pagedir:  input directory for image files\npagesubstr:  Use 'allfiles' to\

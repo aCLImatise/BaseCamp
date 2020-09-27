@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tigmint_arcs_tsv_out_file.cwl
+id: tigmint_arcs_tsv_out_file.cwl
 inputs:
 - id: in_tig_mint_arcs_tsv
   doc: ''

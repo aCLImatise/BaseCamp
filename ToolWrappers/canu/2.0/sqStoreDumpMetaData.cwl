@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqStoreDumpMetaData.cwl
+id: sqStoreDumpMetaData.cwl
 inputs:
 - id: in_dump_reads_from
   doc: dump reads from 'seqStore'

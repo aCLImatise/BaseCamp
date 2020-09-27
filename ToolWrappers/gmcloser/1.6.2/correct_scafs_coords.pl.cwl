@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correct_scafs_coords.pl.cwl
+id: correct_scafs_coords.pl.cwl
 inputs:
 - id: in_query
   doc: input scaffold fasta file (e.g., scaf.fa)

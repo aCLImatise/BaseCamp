@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_deployment_manager_types.cwl
+id: gcloud_deployment_manager_types.cwl
 inputs:
 - id: in_optional
   doc: ''

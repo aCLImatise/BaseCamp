@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../json_xs.cwl
+id: json_xs.cwl
 inputs: []
 outputs:
 - id: out_stdout

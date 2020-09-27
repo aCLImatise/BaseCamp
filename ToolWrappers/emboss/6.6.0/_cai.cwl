@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_cai.cwl
+id: _cai.cwl
 inputs:
 - id: in_c_file
   doc: codon      [Eyeast_cai.cut] Codon usage table name

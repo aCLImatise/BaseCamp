@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CrossMap.py_bam.cwl
+id: CrossMap.py_bam.cwl
 inputs:
 - id: in_mean
   doc: "Average insert size of pair-end sequencing (bp).\n[default=200.0]"

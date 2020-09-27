@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeDIST_RST.cwl
+id: makeDIST_RST.cwl
 inputs:
 - id: in_up_b
   doc: ': 7-col_NOE (necessary) distance bound file, OR'

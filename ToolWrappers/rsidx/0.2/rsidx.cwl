@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsidx.cwl
+id: rsidx.cwl
 inputs:
 - id: in_v
   doc: ''

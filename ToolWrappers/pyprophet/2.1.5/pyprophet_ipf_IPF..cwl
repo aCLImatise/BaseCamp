@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_ipf_IPF..cwl
+id: pyprophet_ipf_IPF..cwl
 inputs:
 - id: in_py_prophet
   doc: ''

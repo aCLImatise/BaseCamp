@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_discordance_rate.cwl
+id: vtools_report_discordance_rate.cwl
 inputs:
 - id: in_samples_dot
   doc: command output a n by n matrix with sample names in the

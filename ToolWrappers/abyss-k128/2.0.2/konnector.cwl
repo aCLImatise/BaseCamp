@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../konnector.cwl
+id: konnector.cwl
 inputs:
 - id: in_threads
   doc: use N parallel threads [1]

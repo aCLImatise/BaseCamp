@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tab2ovls.cwl
+id: tab2ovls.cwl
 inputs: []
 outputs:
 - id: out_stdout

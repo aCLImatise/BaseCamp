@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaMinCore_sketch.cwl
+id: simkaMinCore_sketch.cwl
 inputs:
 - id: in_in
   doc: '(1 arg) :    input filename | TODO SPECIF'

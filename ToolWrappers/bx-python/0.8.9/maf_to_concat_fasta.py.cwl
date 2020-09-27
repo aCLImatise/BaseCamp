@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../maf_to_concat_fasta.py.cwl
-inputs:
-- id: in_nowrap
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --nowrap
+id: maf_to_concat_fasta.py.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

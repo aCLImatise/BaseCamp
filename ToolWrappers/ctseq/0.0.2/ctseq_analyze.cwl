@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctseq_analyze.cwl
+id: ctseq_analyze.cwl
 inputs:
 - id: in_umi_type
   doc: "Choose 'separate' if the UMIs for the reads are\ncontained in a separate fastq\

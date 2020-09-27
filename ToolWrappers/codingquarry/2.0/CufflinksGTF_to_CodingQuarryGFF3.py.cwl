@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CufflinksGTF_to_CodingQuarryGFF3.py.cwl
+id: CufflinksGTF_to_CodingQuarryGFF3.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

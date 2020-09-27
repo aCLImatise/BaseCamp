@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../efetch.cwl
+id: efetch.cwl
 inputs:
 - id: in_format
   doc: Format of record or report

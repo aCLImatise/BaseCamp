@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_auth_login.cwl
+id: gcloud_auth_login.cwl
 inputs:
 - id: in_activate
   doc: "Set the new account to active. Enabled by default, use --no-activate to\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DaisySuite_target.cwl
+id: DaisySuite_target.cwl
 inputs:
 - id: in_cores
   doc: number of cores

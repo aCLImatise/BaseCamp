@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methplotlib.cwl
+id: methplotlib.cwl
 inputs:
 - id: in_methylation
   doc: "methylation data in nanopolish, nanocompore or ont-\ncram format"

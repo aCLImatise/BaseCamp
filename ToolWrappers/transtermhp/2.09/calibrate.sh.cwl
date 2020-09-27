@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calibrate.sh.cwl
+id: calibrate.sh.cwl
 inputs:
 - id: in_output_file_dot_dat
   doc: ''

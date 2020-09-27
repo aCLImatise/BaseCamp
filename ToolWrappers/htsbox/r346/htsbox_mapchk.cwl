@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_mapchk.cwl
+id: htsbox_mapchk.cwl
 inputs:
 - id: in_region
   doc: region [null]

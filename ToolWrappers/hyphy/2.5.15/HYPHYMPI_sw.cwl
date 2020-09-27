@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HYPHYMPI_sw.cwl
+id: HYPHYMPI_sw.cwl
 inputs:
 - id: in_to
   doc: firstTime=0;

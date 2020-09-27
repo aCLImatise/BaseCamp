@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitgl.cwl
+id: splitgl.cwl
 inputs: []
 outputs:
 - id: out_stdout

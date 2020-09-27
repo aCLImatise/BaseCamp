@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mysql_config.cwl
+id: mysql_config.cwl
 inputs:
 - id: in_cflags
   doc: '[-I/usr/local/include]'
@@ -36,11 +36,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --socket
-- id: in_port
-  doc: '[0]'
-  type: boolean
-  inputBinding:
-    prefix: --port
 - id: in_variable
   doc: "VAR is one of:\npkgincludedir [/usr/local/include]\npkglibdir     [/usr/local/lib]\n\
     plugindir     [/usr/local/lib/plugin]\n"

@@ -1,26 +1,16 @@
 class: CommandLineTool
-id: ../../../calculate_distances.py.cwl
+id: calculate_distances.py.cwl
 inputs:
-- id: in_out
+- id: in_l
   doc: ''
   type: string
   inputBinding:
-    prefix: --out
-- id: in_log
+    prefix: -l
+- id: in_o
   doc: ''
   type: string
   inputBinding:
-    prefix: --log
-- id: in_log_level
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --log-level
-- id: in_procs
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --procs
+    prefix: -o
 outputs:
 - id: out_stdout
   doc: Standard output stream

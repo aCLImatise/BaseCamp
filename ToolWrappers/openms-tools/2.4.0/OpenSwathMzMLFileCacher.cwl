@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathMzMLFileCacher.cwl
+id: OpenSwathMzMLFileCacher.cwl
 inputs:
 - id: in_in
   doc: "*                Input mzML file (valid formats: 'mzML', 'sqMass')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_analyze.cwl
+id: prophyle_analyze.cwl
 inputs:
 - id: in_statistics_use_default
   doc: "['w', 'u', 'wl', 'ul']\nstatistics to use for the computation of\nhistograms:\

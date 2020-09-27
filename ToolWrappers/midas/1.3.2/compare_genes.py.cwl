@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_genes.py.cwl
+id: compare_genes.py.cwl
 inputs:
 - id: in_out
   doc: Path to output file

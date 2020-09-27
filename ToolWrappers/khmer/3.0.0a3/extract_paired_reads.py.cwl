@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_paired_reads.py.cwl
+id: extract_paired_reads.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsd.cwl
+id: xsd.cwl
 inputs:
 - id: in_help
   doc: "Print usage information and exit. Use\n'help <cmd>' for command-specific options."

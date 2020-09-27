@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfindelproximity.cwl
+id: vcfindelproximity.cwl
 inputs: []
 outputs:
 - id: out_stdout

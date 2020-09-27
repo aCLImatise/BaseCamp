@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_corrected_reads.py.cwl
+id: filter_corrected_reads.py.cwl
 inputs:
 - id: in_coverage_threshold
   doc: ''

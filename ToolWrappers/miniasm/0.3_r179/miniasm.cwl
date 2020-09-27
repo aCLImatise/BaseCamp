@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miniasm.cwl
+id: miniasm.cwl
 inputs:
 - id: in_prefilter_clearly_contained
   doc: prefilter clearly contained reads (2-pass required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EMBLmyGFF3.cwl
+id: EMBLmyGFF3.cwl
 inputs:
 - id: in_accession
   doc: "Bolean. Accession number(s) for the entry. Default\nvalue: XXX. The proper\

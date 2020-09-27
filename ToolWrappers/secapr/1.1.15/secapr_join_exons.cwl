@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_join_exons.cwl
+id: secapr_join_exons.cwl
 inputs:
 - id: in_input
   doc: The directory containing the fasta-alignment-files

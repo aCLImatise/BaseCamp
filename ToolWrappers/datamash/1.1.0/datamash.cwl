@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../datamash.cwl
+id: datamash.cwl
 inputs:
 - id: in_full
   doc: "print entire input line before op results\n(default: print only the grouped\
@@ -69,11 +69,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
-- id: in_five_five
-  doc: '5.5'
-  type: long
+- id: in_op
+  doc: ''
+  type: string
   inputBinding:
     position: 0
+- id: in_fld
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

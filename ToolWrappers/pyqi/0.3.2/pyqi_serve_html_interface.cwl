@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyqi_serve_html_interface.cwl
+id: pyqi_serve_html_interface.cwl
 inputs:
 - id: in_port
   doc: 'The port to run the server on [default: 8080]'

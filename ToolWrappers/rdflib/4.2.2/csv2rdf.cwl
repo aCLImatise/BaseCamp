@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csv2rdf.cwl
+id: csv2rdf.cwl
 inputs:
 - id: in_read_config_iniconfig
   doc: to read config from a .ini/config file - the file must contain one

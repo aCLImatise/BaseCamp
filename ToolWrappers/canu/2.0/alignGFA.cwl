@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignGFA.cwl
+id: alignGFA.cwl
 inputs:
 - id: in_load_tigs_tgstore
   doc: v         Load tigs from tgStore 't', version 'v'.

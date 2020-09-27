@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomGeneSample.cwl
+id: randomGeneSample.cwl
 inputs:
 - id: in_input_x_mfa
   doc: ''

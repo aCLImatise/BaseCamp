@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_seealso.cwl
+id: _seealso.cwl
 inputs:
 - id: in_explode
   doc: "boolean    [N] The groups that EMBOSS applications\nbelong to have two forms,\

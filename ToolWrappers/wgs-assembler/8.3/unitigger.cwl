@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unitigger.cwl
+id: unitigger.cwl
 inputs:
 - id: in_specifies_target_number
   doc: Specifies the target number of fragments per partition.

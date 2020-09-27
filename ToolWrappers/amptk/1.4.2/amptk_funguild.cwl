@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_funguild.cwl
+id: amptk_funguild.cwl
 inputs:
 - id: in_o
   doc: ''

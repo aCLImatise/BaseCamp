@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../groot_get.cwl
+id: groot_get.cwl
 inputs:
 - id: in_database
   doc: 'database to download (please choose: arg-annot/resfinder/card/groot-db/groot-core-db)

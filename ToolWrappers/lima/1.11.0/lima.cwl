@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lima.cwl
+id: lima.cwl
 inputs:
 - id: in_same
   doc: "Only keep same barcodes in a pair in\nBAM output."
@@ -128,40 +128,18 @@ inputs:
   inputBinding:
     prefix: --keep-split-idx-order
 - id: in_ccs
-  doc: CCS mode, use optimal alignment options
+  doc: "CCS mode, use optimal alignment options\n-A 1 -B 4 -D 3 -I 3 -X 4."
   type: boolean
   inputBinding:
     prefix: --ccs
-- id: in_a
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -A
 - id: in_match_score
-  doc: INT    Score for a sequence match. [4]
+  doc: "INT    Score for a sequence match. [4]\n-B,--mismatch-penalty          INT\
+    \    Penalty for a mismatch. [13]\n-D,--deletion-penalty          INT    Deletions\
+    \ penalty. [7]\n-I,--insertion-penalty         INT    Insertion penalty. [7]\n\
+    -X,--branch-penalty            INT    Branch penalty. [4]"
   type: boolean
   inputBinding:
     prefix: --match-score
-- id: in_mismatch_penalty
-  doc: INT    Penalty for a mismatch. [13]
-  type: boolean
-  inputBinding:
-    prefix: --mismatch-penalty
-- id: in_deletion_penalty
-  doc: INT    Deletions penalty. [7]
-  type: boolean
-  inputBinding:
-    prefix: --deletion-penalty
-- id: in_insertion_penalty
-  doc: INT    Insertion penalty. [7]
-  type: boolean
-  inputBinding:
-    prefix: --insertion-penalty
-- id: in_branch_penalty
-  doc: INT    Branch penalty. [4]
-  type: boolean
-  inputBinding:
-    prefix: --branch-penalty
 - id: in_split_bam
   doc: Split BAM output by barcode pair.
   type: boolean

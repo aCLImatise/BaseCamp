@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../StereoGene.cwl
+id: StereoGene.cwl
 inputs:
 - id: in_v
   doc: verbose

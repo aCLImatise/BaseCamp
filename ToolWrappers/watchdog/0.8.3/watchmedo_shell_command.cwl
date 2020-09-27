@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchmedo_shell_command.cwl
+id: watchmedo_shell_command.cwl
 inputs:
 - id: in_command
   doc: "shell command executed in response to matching events.\nThese interpolation\

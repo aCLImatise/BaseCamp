@@ -14,15 +14,13 @@ task ShuffleBed {
     Boolean? allow_beyond_chrome_nd
     String? g
     String? i
-    Int chr_one
-    Int chr_two
-    Int chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+    String bed_tools
+    String shuffle
   }
   command <<<
     shuffleBed \
-      ~{chr_one} \
-      ~{chr_two} \
-      ~{chr_one_eight_gl_zero_zero_zero_two_zero_seven_random} \
+      ~{bed_tools} \
+      ~{shuffle} \
       ~{if (excl) then "-excl" else ""} \
       ~{if (incl) then "-incl" else ""} \
       ~{if (chrom) then "-chrom" else ""} \
@@ -49,9 +47,8 @@ task ShuffleBed {
     allow_beyond_chrome_nd: "Allow shuffled intervals to be relocated to a position\\nin which the entire original interval cannot fit w/o exceeding\\nthe end of the chromosome.  In this case, the end coordinate of the\\nshuffled interval will be set to the chromosome's length.\\nBy default, an interval's original length must be fully-contained\\nwithin the chromosome."
     g: ""
     i: ""
-    chr_one: "249250621"
-    chr_two: "243199373"
-    chr_one_eight_gl_zero_zero_zero_two_zero_seven_random: "4262"
+    bed_tools: ""
+    shuffle: ""
   }
   output {
     File out_stdout = stdout()

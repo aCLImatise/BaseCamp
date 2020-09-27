@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_brlen_round.cwl
+id: gotree_brlen_round.cwl
 inputs:
 - id: in_output
   doc: Rounded length output tree file (default "stdout")

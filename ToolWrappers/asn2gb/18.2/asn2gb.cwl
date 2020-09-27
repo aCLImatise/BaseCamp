@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asn2gb.cwl
+id: asn2gb.cwl
 inputs:
 - id: in_input_file_name
   doc: "Input File Name [File In]\ndefault = stdin"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_store.cwl
+id: lyner_store.cwl
 inputs:
 - id: in_mode
   doc: '[csv|pickle|auto]'

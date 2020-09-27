@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_collapse_reads_to_fragments_help.cwl
+id: rbt_collapse_reads_to_fragments_help.cwl
 inputs:
 - id: in_for
   doc: ''

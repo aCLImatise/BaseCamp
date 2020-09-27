@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_sort_order.cwl
+id: check_sort_order.cwl
 inputs:
 - id: in_genome
   doc: a genome file of chromosome sizes and order

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_wig_trim_end.cwl
+id: rgt_tools.py_wig_trim_end.cwl
 inputs:
 - id: in_input_wig_file
   doc: Input WIG file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MosaikJump.cwl
+id: MosaikJump.cwl
 inputs:
 - id: in_mem
   doc: "the amount memory used when sorting\nhashes. def: 2"

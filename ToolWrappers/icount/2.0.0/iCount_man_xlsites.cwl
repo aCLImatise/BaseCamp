@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_xlsites.cwl
+id: iCount_man_xlsites.cwl
 inputs:
 - id: in_mode
   doc: ''

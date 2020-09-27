@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../workflow_to_tools.cwl
+id: workflow_to_tools.cwl
 inputs:
 - id: in_workflow
   doc: "A space separated list of galaxy workflow description\nfiles in json format"

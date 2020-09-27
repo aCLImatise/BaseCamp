@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nice.cwl
+id: nice.cwl
 inputs:
 - id: in_most_favorable_favorable
   doc: (most favorable to the process) to 19 (least favorable to the process).

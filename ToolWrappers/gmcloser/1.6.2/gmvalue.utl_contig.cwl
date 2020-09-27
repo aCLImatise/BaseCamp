@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmvalue.utl_contig.cwl
+id: gmvalue.utl_contig.cwl
 inputs:
 - id: in_query
   doc: input contig fasta file (e.g., contig1.fa)

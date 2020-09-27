@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../libSQLite.Interop.so.cwl
+id: libSQLite.Interop.so.cwl
 inputs: []
 outputs:
 - id: out_stdout

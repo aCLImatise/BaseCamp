@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_reverse.cwl
+id: smof_reverse.cwl
 inputs:
 - id: in_set_alphabet_supported
   doc: is set. The extended nucleotide alphabet is supported.

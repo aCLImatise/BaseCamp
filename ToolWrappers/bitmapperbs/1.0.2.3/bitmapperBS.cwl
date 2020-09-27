@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bitmapperBS.cwl
+id: bitmapperBS.cwl
 inputs:
 - id: in_index
   doc: '[file]         Generate an index from the specified fasta file.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aws_subcommand.cwl
+id: aws_subcommand.cwl
 inputs:
 - id: in_aws
   doc: ''

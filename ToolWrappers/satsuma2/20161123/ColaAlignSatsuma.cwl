@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ColaAlignSatsuma.cwl
+id: ColaAlignSatsuma.cwl
 inputs:
 - id: in_string_query_sequence
   doc: '<string> : query sequence'

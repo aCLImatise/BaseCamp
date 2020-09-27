@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmToUCSCTables.pl.cwl
+id: rmToUCSCTables.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inStrain_filter_reads.cwl
+id: inStrain_filter_reads.cwl
 inputs:
 - id: in_output
   doc: "Location of folder to store read report(s) (default:\nNone)"

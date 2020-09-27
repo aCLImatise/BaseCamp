@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene2xml.cwl
+id: gene2xml.cwl
 inputs:
 - id: in_path_files_optional
   doc: Path to Files [String]  Optional

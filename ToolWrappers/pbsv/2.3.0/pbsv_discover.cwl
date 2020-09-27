@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbsv_discover.cwl
+id: pbsv_discover.cwl
 inputs:
 - id: in_sample
   doc: STR   Override sample name tag from BAM read group.

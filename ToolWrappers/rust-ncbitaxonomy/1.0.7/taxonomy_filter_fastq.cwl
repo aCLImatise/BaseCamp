@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonomy_filter_fastq.cwl
+id: taxonomy_filter_fastq.cwl
 inputs:
 - id: in_output_dir
   doc: Directory to deposited filtered output files in

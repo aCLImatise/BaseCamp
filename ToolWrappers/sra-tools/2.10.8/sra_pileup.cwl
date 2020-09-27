@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sra_pileup.cwl
+id: sra_pileup.cwl
 inputs:
 - id: in_aligned_region
   doc: "<name[:from-to]>[,...]\nFilter by position on genome. Name can\neither be\

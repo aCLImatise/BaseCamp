@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multiple_testing_adjustment.py.cwl
+id: multiple_testing_adjustment.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

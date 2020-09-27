@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../InternalCalibration.cwl
+id: InternalCalibration.cwl
 inputs:
 - id: in_in
   doc: "*                                Input peak file (valid formats: 'mzML')"

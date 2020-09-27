@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../borf.cwl
+id: borf.cwl
 inputs:
 - id: in_output_path
   doc: "path to write output files. [OUTPUT_PATH].pep and\n[OUTPUT_PATH].txt (default:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_toolkit_readstat.cwl
+id: megahit_toolkit_readstat.cwl
 inputs:
 - id: in_cat
   doc: ''

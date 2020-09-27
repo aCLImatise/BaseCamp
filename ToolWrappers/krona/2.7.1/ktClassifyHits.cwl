@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktClassifyHits.cwl
+id: ktClassifyHits.cwl
 inputs:
 - id: in_hits
   doc: "Tabular file whose fields are [query, subject, score]. Subject must\nbe an\

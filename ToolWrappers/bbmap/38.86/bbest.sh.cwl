@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbest.sh.cwl
+id: bbest.sh.cwl
 inputs:
 - id: in_in
   doc: ''

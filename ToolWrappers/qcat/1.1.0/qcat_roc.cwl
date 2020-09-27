@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qcat_roc.cwl
+id: qcat_roc.cwl
 inputs:
 - id: in_fast_q
   doc: 'optional arguments:'

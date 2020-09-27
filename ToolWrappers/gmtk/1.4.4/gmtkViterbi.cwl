@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmtkViterbi.cwl
+id: gmtkViterbi.cwl
 inputs: []
 outputs:
 - id: out_stdout

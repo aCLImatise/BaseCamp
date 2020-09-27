@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bealign_OUTPUT.cwl
+id: bealign_OUTPUT.cwl
 inputs:
 - id: in_a
   doc: ''

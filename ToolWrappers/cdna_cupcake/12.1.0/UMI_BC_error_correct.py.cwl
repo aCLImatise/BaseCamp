@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UMI_BC_error_correct.py.cwl
+id: UMI_BC_error_correct.py.cwl
 inputs:
 - id: in_bc_rank_file
   doc: (Optional) cell barcode rank file from short read data

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmftest.cwl
+id: dcmftest.cwl
 inputs:
 - id: in_file_dot_dot_dot
   doc: ''

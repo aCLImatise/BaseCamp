@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nthll.cwl
+id: nthll.cwl
 inputs:
 - id: in_threads
   doc: use N parallel threads [1] (N>=2 should be used when input files are >=2)

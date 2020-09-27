@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../phyluce_align_format_nexus_files_for_mrbayes.cwl
+id: phyluce_align_format_nexus_files_for_mrbayes.cwl
 inputs:
 - id: in_output
-  doc: ''
+  doc: "[--fully-partition]\n[--interleave] [--unlink]"
   type: string
   inputBinding:
     prefix: --output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_get_aa_counts.cwl
+id: anvi_get_aa_counts.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.

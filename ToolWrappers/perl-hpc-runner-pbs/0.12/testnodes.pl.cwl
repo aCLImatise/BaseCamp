@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../testnodes.pl.cwl
+id: testnodes.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

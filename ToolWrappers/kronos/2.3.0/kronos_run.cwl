@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kronos_run.cwl
+id: kronos_run.cwl
 inputs:
 - id: in_job_scheduler
   doc: job scheduler used to manage jobs on the cluster

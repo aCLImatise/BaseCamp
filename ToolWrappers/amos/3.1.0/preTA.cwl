@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preTA.cwl
+id: preTA.cwl
 inputs: []
 outputs:
 - id: out_stdout

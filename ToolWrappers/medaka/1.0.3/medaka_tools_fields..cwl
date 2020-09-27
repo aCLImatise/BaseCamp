@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_tools_fields..cwl
+id: medaka_tools_fields..cwl
 inputs:
 - id: in_medaka
   doc: ''

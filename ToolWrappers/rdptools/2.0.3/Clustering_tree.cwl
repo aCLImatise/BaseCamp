@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_tree.cwl
+id: Clustering_tree.cwl
 inputs:
 - id: in_tree_builder
   doc: ''

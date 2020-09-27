@@ -11,7 +11,7 @@ task Orderchr {
       ~{if defined(links) then ("-links " +  '"' + links + '"') else ""}
   >>>
   parameter_meta {
-    karyotype: ""
+    karyotype: "{ -shuffle_file chrs_to_shuffle.txt | -shuffle LIST | -shuffle_rx REGEX_LIST }\\n{-static LIST} {-static_rx REGEX_LIST}\\n{-init_order LIST} {-init_order_rx REGEX_LIST}\\n"
     links: ""
   }
   output {

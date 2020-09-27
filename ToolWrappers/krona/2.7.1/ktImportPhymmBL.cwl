@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportPhymmBL.cwl
+id: ktImportPhymmBL.cwl
 inputs:
 - id: in_phy_mm_bl_results
   doc: "PhymmBL results files (results.03.*). Results can also be\nfrom Phymm alone\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../picrust2_pipeline.py.cwl
+id: picrust2_pipeline.py.cwl
 inputs:
 - id: in_study_fast_a
   doc: "FASTA of unaligned study sequences (i.e. OTUs or\nASVs)."

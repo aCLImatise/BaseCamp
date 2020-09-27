@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta_denovo.cwl
+id: megagta_denovo.cwl
 inputs:
 - id: in_s_dbg_name
   doc: succinct de Bruijn graph name

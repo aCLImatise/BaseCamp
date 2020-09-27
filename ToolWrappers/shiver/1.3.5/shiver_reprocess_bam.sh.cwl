@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shiver_reprocess_bam.sh.cwl
+id: shiver_reprocess_bam.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

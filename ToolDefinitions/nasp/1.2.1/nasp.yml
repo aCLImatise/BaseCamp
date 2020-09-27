@@ -65,17 +65,10 @@ subcommands:
         args: !SimpleFlagArg
           name: CONFIG
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Path to the configuration xml file.
-          synonyms:
-          - --config
-          args: !SimpleFlagArg
-            name: CONFIG
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -104,7 +97,78 @@ subcommands:
             args: !SimpleFlagArg
               name: CONFIG
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Path to the configuration xml file.
+              synonyms:
+              - --config
+              args: !SimpleFlagArg
+                name: CONFIG
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: nasp
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: reference_fasta
+                optional: true
+              - !Positional
+                description: ''
+                position: 2
+                name: output_folder
+                optional: true
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --config
+                args: !SimpleFlagArg
+                  name: CONFIG
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: nasp [-h] [--config CONFIG] [reference_fasta] [output_folder]\n\
+                nasp: error: unrecognized arguments: --usage\n"
+              generated_using: &id004
+              - --usage
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: nasp [-h] [--config CONFIG] [reference_fasta] [output_folder]\n\
+              \nThis is the \"Northern Arizona SNP Pipeline\", version 1.2.0\n\npositional\
+              \ arguments:\n  reference_fasta  Path to the reference fasta.\n  output_folder\
+              \    Folder to store the output files.\n\noptional arguments:\n  -h,\
+              \ --help       show this help message and exit\n  --config CONFIG  Path\
+              \ to the configuration xml file.\n"
+            generated_using: &id005
+            - --help
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -117,16 +181,9 @@ subcommands:
           version_flag:
           help_text: "usage: nasp [-h] [--config CONFIG] [reference_fasta] [output_folder]\n\
             nasp: error: unrecognized arguments: --usage\n"
-          generated_using: &id004
-          - --usage
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: nasp [-h] [--config CONFIG] [reference_fasta] [output_folder]\n\
@@ -135,8 +192,7 @@ subcommands:
           \    Folder to store the output files.\n\noptional arguments:\n  -h, --help\
           \       show this help message and exit\n  --config CONFIG  Path to the\
           \ configuration xml file.\n"
-        generated_using: &id005
-        - --help
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag: !Flag

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_badlist.pl.cwl
+id: filter_badlist.pl.cwl
 inputs:
 - id: in_flag_fix_file
   doc: Flag to fix the file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findGapsInCoverageOfPacbios.cwl
+id: findGapsInCoverageOfPacbios.cwl
 inputs:
 - id: in_input_file
   doc: '*Pacbio read-super-read match file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmsip.cwl
+id: cmsip.cwl
 inputs:
 - id: in_config
   doc: Configuration file in YAML format.

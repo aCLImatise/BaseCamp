@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psp_gen.cwl
+id: psp_gen.cwl
 inputs:
 - id: in_min_w
   doc: "minimum width of motif to consider\ndefault: 4"

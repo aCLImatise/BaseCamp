@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../adamR.cwl
+id: adamR.cwl
 inputs:
 - id: in_master
   doc: "spark://host:port, mesos://host:port, yarn,\nk8s://https://host:port, or local\

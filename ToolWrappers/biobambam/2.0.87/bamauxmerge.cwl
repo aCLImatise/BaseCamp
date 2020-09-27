@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamauxmerge.cwl
+id: bamauxmerge.cwl
 inputs: []
 outputs:
 - id: out_stdout

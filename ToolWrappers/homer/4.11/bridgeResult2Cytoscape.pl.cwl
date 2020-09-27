@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bridgeResult2Cytoscape.pl.cwl
+id: bridgeResult2Cytoscape.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

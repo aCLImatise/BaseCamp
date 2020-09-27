@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../git_lfs.cwl
+id: git_lfs.cwl
 inputs: []
 outputs:
 - id: out_stdout

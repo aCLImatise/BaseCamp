@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genewise.cwl
+id: genewise.cwl
 inputs: []
 outputs:
 - id: out_stdout

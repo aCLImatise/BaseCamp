@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glistquery.cwl
+id: glistquery.cwl
 inputs:
 - id: in_stat
   doc: '- print statistics of the list file and exit'

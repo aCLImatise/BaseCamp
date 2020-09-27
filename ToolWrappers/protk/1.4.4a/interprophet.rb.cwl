@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interprophet.rb.cwl
+id: interprophet.rb.cwl
 inputs:
 - id: in_output_prefix
   doc: A string to prepend to the name of output files

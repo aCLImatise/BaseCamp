@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectrast_updateiRTs.py.cwl
+id: spectrast_updateiRTs.py.cwl
 inputs:
 - id: in__autoalign_calculates
   doc: --auto-align  Calculates automatically the alignment models based on the internal

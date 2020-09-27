@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosight.cwl
+id: chromosight.cwl
 inputs:
 - id: in_preset
   doc: "Generate a preset config for the given pattern.\nPreset configs available\

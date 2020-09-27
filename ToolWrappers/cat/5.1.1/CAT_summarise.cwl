@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CAT_summarise.cwl
+id: CAT_summarise.cwl
 inputs:
 - id: in__inputfile_path
   doc: ", --input_file     Path to named CAT contig classification file or BAT\nbin\

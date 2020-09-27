@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnv_expression_correlate.py_RNA_FILE.cwl
+id: cnv_expression_correlate.py_RNA_FILE.cwl
 inputs:
 - id: in_o
   doc: ''

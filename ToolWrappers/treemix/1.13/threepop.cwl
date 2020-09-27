@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../threepop.cwl
+id: threepop.cwl
 inputs:
 - id: in__input_file
   doc: '[file name] input file'

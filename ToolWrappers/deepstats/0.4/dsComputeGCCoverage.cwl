@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsComputeGCCoverage.cwl
+id: dsComputeGCCoverage.cwl
 inputs:
 - id: in_input
   doc: "Fasta files from which you want the GC content to be\ncalculated."

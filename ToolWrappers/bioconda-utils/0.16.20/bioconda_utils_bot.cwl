@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda_utils_bot.cwl
+id: bioconda_utils_bot.cwl
 inputs:
 - id: in_loglevel
   doc: "Log level (default: 'info')"

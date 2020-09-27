@@ -66,7 +66,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PRESETS
     optional: true
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -131,7 +131,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PRESETS
         optional: true
-      parent: &id003 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -196,7 +196,426 @@ subcommands:
             args: !SimpleFlagArg
               name: PRESETS
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: The reference genome in fasta format.
+                position: 0
+                name: REFERENCE
+                optional: false
+              - !Positional
+                description: Temporary directory to use for distributed jobs.
+                position: 1
+                name: temp_dir
+                optional: false
+              - !Positional
+                description: Directory to output potential ME loci.
+                position: 2
+                name: output_dir
+                optional: false
+              named:
+              - !Flag
+                description: Mininum number of reads that support a ME.[5]
+                synonyms:
+                - -s
+                - --min_support
+                args: !SimpleFlagArg
+                  name: MIN_SUPPORT
+                optional: true
+              - !Flag
+                description: Mininum length of ME to be reported.[50]
+                synonyms:
+                - -l
+                - --min_length
+                args: !SimpleFlagArg
+                  name: MIN_LENGTH
+                optional: true
+              - !Flag
+                description: "Mininum distance of two ME signatures to be\nintergrated.[20]"
+                synonyms:
+                - -d
+                - --min_distance
+                args: !SimpleFlagArg
+                  name: MIN_DISTANCE
+                optional: true
+              - !Flag
+                description: Number of threads to use.[8]
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              - !Flag
+                description: "The sequencing platform <pacbio,ont> of the\nreads.[pacbio]\n"
+                synonyms:
+                - -x
+                - --presets
+                args: !SimpleFlagArg
+                  name: PRESETS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rMETL detection [-h] [-s MIN_SUPPORT] [-l MIN_LENGTH]\
+                \ [-d MIN_DISTANCE]\n                       [-t THREADS] [-x PRESETS]\n\
+                \                       [SAM,BAM,FASTA,FASTQ] REFERENCE temp_dir output_dir\n\
+                \n           _  ___  _   _____   _______   _\n     _ _  | ^_   _^\
+                \ | |  ___| |__   __| | |\n    | ^_| | | | | | | | |__      | |  \
+                \  | |\n    | |   | | | | | | |  __|     | |    | |\n    | |   | |\
+                \ | | | | | |___     | |    | |___\n    |_|   |_| |_| |_| |_____|\
+                \    |_|    |_____|\n\n    rMETL - realignment-based Mobile Element\
+                \ insertion detection Tool for Long read\n\n\tSupport reads aligned\
+                \ with Ngmlr and sorted with Samtools\n\n\tIf input is a fastq or\
+                \ fasta format file, rMETL generates\n\talignments with Ngmlr at first;\n\
+                \n\tIf input is a sam format file, rMETL converts and sorts it\n\t\
+                to be a bam format file;\n\n\tIf your input is a bam format file with\
+                \ index, rMETL extracts\n\tthe ME signatures and collects the sub-sequence\
+                \ of them.\n\n\tThe output is a fasta format file called 'potential.fa'\
+                \ \n\tcontains potentials non-reference ME clusters.\n\n\trMETL V1.0.4\n\
+                \tAuthor: Jiang Tao\n\tContact: tjiang@hit.edu.cn\n\npositional arguments:\n\
+                \  [SAM,BAM,FASTA,FASTQ]\n                        Input reads with/without\
+                \ alignment.\n  REFERENCE             The reference genome in fasta\
+                \ format.\n  temp_dir              Temporary directory to use for\
+                \ distributed jobs.\n  output_dir            Directory to output potential\
+                \ ME loci.\n\noptional arguments:\n  -h, --help            show this\
+                \ help message and exit\n  -s MIN_SUPPORT, --min_support MIN_SUPPORT\n\
+                \                        Mininum number of reads that support a ME.[5]\n\
+                \  -l MIN_LENGTH, --min_length MIN_LENGTH\n                      \
+                \  Mininum length of ME to be reported.[50]\n  -d MIN_DISTANCE, --min_distance\
+                \ MIN_DISTANCE\n                        Mininum distance of two ME\
+                \ signatures to be\n                        intergrated.[20]\n  -t\
+                \ THREADS, --threads THREADS\n                        Number of threads\
+                \ to use.[8]\n  -x PRESETS, --presets PRESETS\n                  \
+                \      The sequencing platform <pacbio,ont> of the\n             \
+                \           reads.[pacbio]\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - rMETL
+              - OPTIONS
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: rMETL
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rMETL [-h] STAGE ...\nrMETL: error: argument STAGE:\
+                \ invalid choice: 'OPTIONS' (choose from 'detection', 'realignment',\
+                \ 'calling')\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - rMETL
+              - STAGE
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: rMETL
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rMETL [-h] STAGE ...\nrMETL: error: argument STAGE:\
+                \ invalid choice: 'STAGE' (choose from 'detection', 'realignment',\
+                \ 'calling')\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - rMETL
+              - calling
+              positional:
+              - !Positional
+                description: 'positional arguments:'
+                position: 0
+                name: tjiang@hit.edu.cn
+                optional: false
+              - !Positional
+                description: Input cluster.sam on STAGE realignment.
+                position: 1
+                name: SAM
+                optional: false
+              - !Positional
+                description: The reference genome in fasta format.
+                position: 2
+                name: REFERENCE
+                optional: false
+              - !Positional
+                description: Directory to output final callset.
+                position: 0
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: "The mininum score of a genotyping reported as a\nhomozygous.[0.8]"
+                synonyms:
+                - -hom
+                - --homozygous
+                args: !SimpleFlagArg
+                  name: HOMOZYGOUS
+                optional: true
+              - !Flag
+                description: "The mininum score of a genotyping reported as a\nheterozygous.[0.3]"
+                synonyms:
+                - -het
+                - --heterozygous
+                args: !SimpleFlagArg
+                  name: HETEROZYGOUS
+                optional: true
+              - !Flag
+                description: Mininum mapping quality.[20]
+                synonyms:
+                - -q
+                - --min_mapq
+                args: !SimpleFlagArg
+                  name: MIN_MAPQ
+                optional: true
+              - !Flag
+                description: Mininum threshold of realignment clipping.[0.5]
+                synonyms:
+                - -c
+                - --clipping_threshold
+                args: !SimpleFlagArg
+                  name: CLIPPING_THRESHOLD
+                optional: true
+              - !Flag
+                description: Sample description
+                synonyms:
+                - --sample
+                args: !SimpleFlagArg
+                  name: SAMPLE
+                optional: true
+              - !Flag
+                description: Enables rMETL to display MEI/MED only.[True]
+                synonyms:
+                - --MEI
+                args: !SimpleFlagArg
+                  name: MEI
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rMETL calling [-h] [-hom HOMOZYGOUS] [-het HETEROZYGOUS]\
+                \ [-q MIN_MAPQ]\n                     [-c CLIPPING_THRESHOLD] [--sample\
+                \ SAMPLE] [--MEI MEI]\n                     SAM REFERENCE [BED,VCF]\
+                \ output\n\n           _  ___  _   _____   _______   _\n     _ _ \
+                \ | ^_   _^ | |  ___| |__   __| | |\n    | ^_| | | | | | | | |__ \
+                \     | |    | |\n    | |   | | | | | | |  __|     | |    | |\n  \
+                \  | |   | | | | | | | |___     | |    | |___\n    |_|   |_| |_| |_|\
+                \ |_____|    |_|    |_____|\n\n    rMETL - realignment-based Mobile\
+                \ Element insertion detection Tool for Long read\n\n\tGenerate final\
+                \ MEI/MED callset in bed or vcf file.\n\t\n\tThe output file called\
+                \ 'calling.bed' or 'calling.vcf'\n\tstores in output directory.\n\t\
+                \n\trMETL V1.0.4\n\tAuthor: Jiang Tao\n\tContact: tjiang@hit.edu.cn\n\
+                \npositional arguments:\n  SAM                   Input cluster.sam\
+                \ on STAGE realignment.\n  REFERENCE             The reference genome\
+                \ in fasta format.\n  [BED,VCF]             The format of the output\
+                \ file. [bed]\n  output                Directory to output final callset.\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  -hom HOMOZYGOUS, --homozygous HOMOZYGOUS\n         \
+                \               The mininum score of a genotyping reported as a\n\
+                \                        homozygous.[0.8]\n  -het HETEROZYGOUS, --heterozygous\
+                \ HETEROZYGOUS\n                        The mininum score of a genotyping\
+                \ reported as a\n                        heterozygous.[0.3]\n  -q\
+                \ MIN_MAPQ, --min_mapq MIN_MAPQ\n                        Mininum mapping\
+                \ quality.[20]\n  -c CLIPPING_THRESHOLD, --clipping_threshold CLIPPING_THRESHOLD\n\
+                \                        Mininum threshold of realignment clipping.[0.5]\n\
+                \  --sample SAMPLE       Sample description\n  --MEI MEI         \
+                \    Enables rMETL to display MEI/MED only.[True]\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - rMETL
+              - realignment
+              positional:
+              - !Positional
+                description: 'positional arguments:'
+                position: 0
+                name: tjiang@hit.edu.cn
+                optional: false
+              - !Positional
+                description: Input potential_ME.fa on STAGE detection.
+                position: 1
+                name: FASTA
+                optional: false
+              - !Positional
+                description: The transposable element concensus in fasta format.
+                position: 2
+                name: ME_Ref
+                optional: false
+              - !Positional
+                description: Directory to output realignments.
+                position: 3
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: Number of threads to use.[8]
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              - !Flag
+                description: "The sequencing platform <pacbio,ont> of the\nreads.[pacbio]"
+                synonyms:
+                - -x
+                - --presets
+                args: !SimpleFlagArg
+                  name: PRESETS
+                optional: true
+              - !Flag
+                description: Length of fragments reads are split into [128]
+                synonyms:
+                - --subread_length
+                args: !SimpleFlagArg
+                  name: SUBREAD_LENGTH
+                optional: true
+              - !Flag
+                description: "Length of corridor sub-reads are aligned with [20]\n"
+                synonyms:
+                - --subread_corridor
+                args: !SimpleFlagArg
+                  name: SUBREAD_CORRIDOR
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rMETL realignment [-h] [-t THREADS] [-x PRESETS]\n\
+                \                         [--subread_length SUBREAD_LENGTH]\n    \
+                \                     [--subread_corridor SUBREAD_CORRIDOR]\n    \
+                \                     FASTA ME_Ref output\n\n           _  ___  _\
+                \   _____   _______   _\n     _ _  | ^_   _^ | |  ___| |__   __| |\
+                \ |\n    | ^_| | | | | | | | |__      | |    | |\n    | |   | | |\
+                \ | | | |  __|     | |    | |\n    | |   | | | | | | | |___     |\
+                \ |    | |___\n    |_|   |_| |_| |_| |_____|    |_|    |_____|\n\n\
+                \    rMETL - realignment-based Mobile Element insertion detection\
+                \ Tool for Long read\n\n\tRealignment of chimeric read parts.\n\n\t\
+                Aligner: NGMLR version 0.2.6\n\tTE refs: Alu concensus\n\t\t L1 concensus\n\
+                \t\t SVA concensus\n\tThe output is a sam format file called 'cluster.sam'.\n\
+                \n\trMETL V1.0.4\n\tAuthor: Jiang Tao\n\tContact: tjiang@hit.edu.cn\n\
+                \npositional arguments:\n  FASTA                 Input potential_ME.fa\
+                \ on STAGE detection.\n  ME_Ref                The transposable element\
+                \ concensus in fasta format.\n  output                Directory to\
+                \ output realignments.\n\noptional arguments:\n  -h, --help      \
+                \      show this help message and exit\n  -t THREADS, --threads THREADS\n\
+                \                        Number of threads to use.[8]\n  -x PRESETS,\
+                \ --presets PRESETS\n                        The sequencing platform\
+                \ <pacbio,ont> of the\n                        reads.[pacbio]\n  --subread_length\
+                \ SUBREAD_LENGTH\n                        Length of fragments reads\
+                \ are split into [128]\n  --subread_corridor SUBREAD_CORRIDOR\n  \
+                \                      Length of corridor sub-reads are aligned with\
+                \ [20]\n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - rMETL
+              - tjiang@hit.edu.cn
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: rMETL
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: rMETL [-h] STAGE ...\nrMETL: error: argument STAGE:\
+                \ invalid choice: 'tjiang@hit.edu.cn' (choose from 'detection', 'realignment',\
+                \ 'calling')\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: rMETL [-h] STAGE ...\n\n           _  ___  _   _____\
+              \   _______   _\n     _ _  | ^_   _^ | |  ___| |__   __| | |\n    |\
+              \ ^_| | | | | | | | |__      | |    | |\n    | |   | | | | | | |  __|\
+              \     | |    | |\n    | |   | | | | | | | |___     | |    | |___\n \
+              \   |_|   |_| |_| |_| |_____|    |_|    |_____|\n\n    rMETL - realignment-based\
+              \ Mobile Element insertion detection Tool for Long read\n\n  STAGE is\
+              \ one of\n    detection    Inference of putative MEI loci.\n    realignment\
+              \  Realignment of chimeric read parts.\n    calling      Mobile Element\
+              \ Insertion/Deletion calling.\n    \n  See README.md for documentation\
+              \ or --help for details\n  Strongly recommend making output directory\
+              \ manually at first.\n  \n  rMETL V1.0.4\n  Author: Jiang Tao\n  Contact:\
+              \ tjiang@hit.edu.cn\n\npositional arguments:\n  STAGE       Stage to\
+              \ execute\n  OPTIONS     Options to pass to the stage\n\noptional arguments:\n\
+              \  -h, --help  show this help message and exit\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -239,12 +658,9 @@ subcommands:
             \ to use.[8]\n  -x PRESETS, --presets PRESETS\n                      \
             \  The sequencing platform <pacbio,ont> of the\n                     \
             \   reads.[pacbio]\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - rMETL
-          - OPTIONS
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -267,9 +683,7 @@ subcommands:
             \ choice: 'OPTIONS' (choose from 'detection', 'realignment', 'calling')\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - rMETL
-          - STAGE
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -292,9 +706,7 @@ subcommands:
             \ choice: 'STAGE' (choose from 'detection', 'realignment', 'calling')\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - rMETL
-          - calling
+          command: *id007
           positional:
           - !Positional
             description: 'positional arguments:'
@@ -403,9 +815,7 @@ subcommands:
             \ rMETL to display MEI/MED only.[True]\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - rMETL
-          - realignment
+          command: *id008
           positional:
           - !Positional
             description: 'positional arguments:'
@@ -495,9 +905,7 @@ subcommands:
             \              Length of corridor sub-reads are aligned with [20]\n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - rMETL
-          - tjiang@hit.edu.cn
+          command: *id009
           positional:
           - !Positional
             description: ''
@@ -521,13 +929,7 @@ subcommands:
             \ 'calling')\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: rMETL [-h] STAGE ...\n\n           _  ___  _   _____  \
@@ -595,7 +997,7 @@ subcommands:
         name: rMETL
         optional: false
       named: []
-      parent: *id003
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -618,7 +1020,7 @@ subcommands:
         name: rMETL
         optional: false
       named: []
-      parent: *id003
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -702,7 +1104,7 @@ subcommands:
         args: !SimpleFlagArg
           name: MEI
         optional: true
-      parent: *id003
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -794,7 +1196,7 @@ subcommands:
         args: !SimpleFlagArg
           name: SUBREAD_CORRIDOR
         optional: true
-      parent: *id003
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -838,7 +1240,7 @@ subcommands:
         name: rMETL
         optional: false
       named: []
-      parent: *id003
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -918,7 +1320,7 @@ subcommands:
     name: rMETL
     optional: false
   named: []
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -941,7 +1343,7 @@ subcommands:
     name: rMETL
     optional: false
   named: []
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1025,7 +1427,7 @@ subcommands:
     args: !SimpleFlagArg
       name: MEI
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1115,7 +1517,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SUBREAD_CORRIDOR
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1158,7 +1560,7 @@ subcommands:
     name: rMETL
     optional: false
   named: []
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag

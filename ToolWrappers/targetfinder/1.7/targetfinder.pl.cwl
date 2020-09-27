@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../targetfinder.pl.cwl
+id: targetfinder.pl.cwl
 inputs:
 - id: in_small_rna_sequence
   doc: Small RNA sequence (RNA or DNA, 5'->3')

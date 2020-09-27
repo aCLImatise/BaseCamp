@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkTagBias.pl.cwl
+id: checkTagBias.pl.cwl
 inputs:
 - id: in_start
   doc: <#> (offset to start frequency calculation, default=-50)
@@ -56,16 +56,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mask
-- id: in_tag_freq_dot_txt
-  doc: tagGCcontent.txt
-  type: string
-  inputBinding:
-    position: 0
 - id: in_tag_cpg_content_dot_txt
   doc: chr(N).tags.tsv.seq (if -keep is used)
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

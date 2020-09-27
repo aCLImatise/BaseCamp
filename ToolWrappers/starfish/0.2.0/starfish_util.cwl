@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starfish_util.cwl
+id: starfish_util.cwl
 inputs:
 - id: in_install_strict_dependencies
   doc: warning! updates different packages in your...

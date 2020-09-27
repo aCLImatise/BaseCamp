@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../truncate.cwl
+id: truncate.cwl
 inputs:
 - id: in_no_create
   doc: do not create any files

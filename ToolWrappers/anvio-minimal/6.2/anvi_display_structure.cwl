@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_display_structure.cwl
+id: anvi_display_structure.cwl
 inputs:
 - id: in_profile_db
   doc: Anvi'o profile database

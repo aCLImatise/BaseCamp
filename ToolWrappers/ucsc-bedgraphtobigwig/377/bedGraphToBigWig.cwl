@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedGraphToBigWig.cwl
+id: bedGraphToBigWig.cwl
 inputs:
 - id: in_block_size
   doc: '- Number of items to bundle in r-tree.  Default 256'

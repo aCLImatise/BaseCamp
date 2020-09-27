@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbginfo.cwl
+id: dbginfo.cwl
 inputs:
 - id: in_in
   doc: '(1 arg) :    graph file'

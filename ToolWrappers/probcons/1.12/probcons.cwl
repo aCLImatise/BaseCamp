@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../probcons.cwl
+id: probcons.cwl
 inputs:
 - id: in_clustalw
   doc: use CLUSTALW output format instead of MFA

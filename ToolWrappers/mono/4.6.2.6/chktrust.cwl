@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chktrust.cwl
+id: chktrust.cwl
 inputs:
 - id: in_quiet_mode_gui
   doc: quiet mode (no gui)

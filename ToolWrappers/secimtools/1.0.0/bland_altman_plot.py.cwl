@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bland_altman_plot.py.cwl
+id: bland_altman_plot.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

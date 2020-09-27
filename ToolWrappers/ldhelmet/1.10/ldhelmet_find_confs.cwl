@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ldhelmet_find_confs.cwl
+id: ldhelmet_find_confs.cwl
 inputs:
 - id: in__display_version
   doc: '[ --version ]                Display version.'

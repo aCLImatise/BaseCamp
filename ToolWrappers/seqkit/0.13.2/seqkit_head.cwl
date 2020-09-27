@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_head.cwl
+id: seqkit_head.cwl
 inputs:
 - id: in_number
   doc: print first N FASTA/Q records (default 10)

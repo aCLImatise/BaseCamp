@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapid_ToFasta.pl.cwl
+id: rapid_ToFasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

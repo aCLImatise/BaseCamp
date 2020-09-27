@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_convert_bed2gff.pl.cwl
+id: agat_convert_bed2gff.pl.cwl
 inputs:
 - id: in_bed
   doc: Input bed file that will be convert.

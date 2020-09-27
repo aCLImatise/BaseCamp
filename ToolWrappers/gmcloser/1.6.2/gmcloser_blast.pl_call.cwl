@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmcloser_blast.pl_call.cwl
+id: gmcloser_blast.pl_call.cwl
 inputs:
 - id: in_target_s_caf
   doc: 'is not specied:'

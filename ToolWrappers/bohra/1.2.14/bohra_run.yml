@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - bohra
 - run
@@ -56,9 +56,9 @@ named:
   - -p
   args: !ChoiceFlagArg
     choices: !!set
-      ? preview
-      ? all
-      ? sa
+      sa:
+      preview:
+      all:
   optional: true
 - !Flag
   description: 'Assembler to use. (default: shovill)'
@@ -67,9 +67,9 @@ named:
   - -a
   args: !ChoiceFlagArg
     choices: !!set
-      ? spades
-      ? shovill
-      ? skesa
+      spades:
+      shovill:
+      skesa:
   optional: true
 - !Flag
   description: "Number of CPU cores to run, will define how many rules\nare run at\
@@ -184,52 +184,10 @@ named:
   - --keep
   args: !ChoiceFlagArg
     choices: !!set
-      ? Y
-      ? N
+      Y:
+      N:
   optional: true
-parent: !Command
-  command:
-  - bohra
-  positional: []
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - -v
-    args: !EmptyFlagArg {}
-    optional: true
-  parent:
-  subcommands:
-  - *id001
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: show program's version number and exit
-    synonyms:
-    - -v
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: bohra [-h] [-v] {run,nulla2bohra,check} ...\n\nBohra - a bacterial\
-    \ genomics pipeline - version 1.2.14\n\npositional arguments:\n  {run,nulla2bohra,check}\n\
-    \                        Task to perform\n    run                 Initial run\
-    \ of Bohra\n    nulla2bohra         Ensure that bohra can be rerun over an existing\n\
-    \                        nullarbor folder. Can also be used to update older\n\
-    \                        bohra directories. Must supply name of nullarbor\n  \
-    \                      directory, and your isolates.tab file\n    check      \
-    \         Check that all dependencies for bohra have been\n                  \
-    \      installed.\n\noptional arguments:\n  -h, --help            show this help\
-    \ message and exit\n  -v, --version         show program's version number and\
-    \ exit\n"
-  generated_using: &id002
-  - --help
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -299,4 +257,5 @@ help_text: "usage: bohra run [-h] [--input_file INPUT_FILE] [--job_id JOB_ID]\n 
   \  --keep {Y,N}          If you are rerunning bohra over an exisiting directory\n\
   \                        set --keep to 'Y' to archive report files - otherwise\n\
   \                        previous reprot files will be removed. (default: N)\n"
-generated_using: *id002
+generated_using:
+- --help

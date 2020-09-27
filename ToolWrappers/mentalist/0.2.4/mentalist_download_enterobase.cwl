@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../mentalist_download_enterobase.cwl
+id: mentalist_download_enterobase.cwl
 inputs:
-- id: in_o
-  doc: '[-h]'
-  type: string
-  inputBinding:
-    prefix: -o
 - id: in_db
   doc: Output file (kmer database)
   type: File

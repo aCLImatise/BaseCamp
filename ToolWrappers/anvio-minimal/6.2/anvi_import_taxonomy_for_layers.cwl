@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_import_taxonomy_for_layers.cwl
+id: anvi_import_taxonomy_for_layers.cwl
 inputs:
 - id: in_profile_db
   doc: Anvi'o profile database

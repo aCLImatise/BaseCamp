@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../column_remover.pl.cwl
+id: column_remover.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

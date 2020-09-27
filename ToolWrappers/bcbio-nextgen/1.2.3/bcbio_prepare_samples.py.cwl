@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_prepare_samples.py.cwl
+id: bcbio_prepare_samples.py.cwl
 inputs:
 - id: in_csv
   doc: csv file with metadata

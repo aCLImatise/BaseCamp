@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phmmer_seqdb.cwl
+id: phmmer_seqdb.cwl
 inputs:
 - id: in_options
   doc: ''

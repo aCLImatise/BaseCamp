@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_api_html.cwl
+id: mono_api_html.cwl
 inputs:
 - id: in_diff
   doc: HTML diff file out output (omit for stdout)

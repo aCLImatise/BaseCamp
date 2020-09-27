@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enasearch_search_data.cwl
+id: enasearch_search_data.cwl
 inputs:
 - id: in_free_text_search
   doc: "Use free text search, otherwise the data warehouse\nis used"

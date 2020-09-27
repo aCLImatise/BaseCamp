@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TextExporter.cwl
+id: TextExporter.cwl
 inputs:
 - id: in_in
   doc: "*                                     Input file  (valid formats: 'featureXML',\

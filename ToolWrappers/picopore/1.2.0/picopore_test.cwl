@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../picopore_test.cwl
+id: picopore_test.cwl
 inputs:
 - id: in_mode
   doc: choose compression mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgfast_genbankqc_species.cwl
+id: wgfast_genbankqc_species.cwl
 inputs:
 - id: in_unknowns
   doc: Maximum number of unknown bases (not A, T, C, G)

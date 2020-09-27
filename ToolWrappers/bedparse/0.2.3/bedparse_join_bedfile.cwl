@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_join_bedfile.cwl
+id: bedparse_join_bedfile.cwl
 inputs:
 - id: in_column
   doc: ''

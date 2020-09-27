@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_gce.cwl
+id: funnel_gce.cwl
 inputs:
 - id: in_run
   doc: 'Flags:'

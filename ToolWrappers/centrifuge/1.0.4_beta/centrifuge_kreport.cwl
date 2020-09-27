@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_kreport.cwl
+id: centrifuge_kreport.cwl
 inputs:
 - id: in_required_centrifuge_index
   doc: (REQUIRED) Centrifuge index

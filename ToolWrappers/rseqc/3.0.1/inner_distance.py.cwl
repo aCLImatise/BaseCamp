@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inner_distance.py.cwl
+id: inner_distance.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.

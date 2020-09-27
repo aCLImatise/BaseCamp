@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blast_filter.pl.cwl
+id: blast_filter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

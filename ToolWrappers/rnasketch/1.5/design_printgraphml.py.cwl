@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_printgraphml.py.cwl
+id: design_printgraphml.py.cwl
 inputs:
 - id: in_graph_ml
   doc: Read graphml file with the given filename.

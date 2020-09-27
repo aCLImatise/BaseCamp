@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5perf_serial.cwl
+id: h5perf_serial.cwl
 inputs:
 - id: in_which_apis_test
   doc: "Which APIs to test\n[default: all of them]"

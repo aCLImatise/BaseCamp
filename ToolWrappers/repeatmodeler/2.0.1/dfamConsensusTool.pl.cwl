@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dfamConsensusTool.pl.cwl
+id: dfamConsensusTool.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

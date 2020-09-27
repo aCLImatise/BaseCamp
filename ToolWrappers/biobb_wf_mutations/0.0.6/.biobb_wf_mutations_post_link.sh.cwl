@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.biobb_wf_mutations_post_link.sh.cwl
+id: .biobb_wf_mutations_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

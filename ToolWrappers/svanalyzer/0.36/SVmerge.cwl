@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SVmerge.cwl
+id: SVmerge.cwl
 inputs:
 - id: in_prefix
   doc: "Specify a prefix to be used to create output file names: files of\ndistance\

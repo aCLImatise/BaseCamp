@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metalpdb2mol2.py.cwl
+id: metalpdb2mol2.py.cwl
 inputs:
 - id: in_input_pdb_file
   doc: Input PDB file

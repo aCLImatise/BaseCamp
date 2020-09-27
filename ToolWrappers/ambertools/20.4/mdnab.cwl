@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdnab.cwl
+id: mdnab.cwl
 inputs:
 - id: in_pdb
   doc: = PDB file name

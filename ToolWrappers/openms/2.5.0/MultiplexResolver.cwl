@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MultiplexResolver.cwl
+id: MultiplexResolver.cwl
 inputs:
 - id: in_in
   doc: "*            Peptide multiplets with assigned sequence information (valid\

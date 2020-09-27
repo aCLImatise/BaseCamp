@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastxTrimmer.py.cwl
+id: fastxTrimmer.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

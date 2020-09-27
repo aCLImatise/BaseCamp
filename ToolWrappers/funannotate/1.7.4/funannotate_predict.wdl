@@ -45,10 +45,6 @@ task FunannotatePredict {
     Boolean? seq_accession
     Boolean? force
     Boolean? cpus
-    Boolean? evm_home
-    Boolean? augustus_config_path
-    Boolean? genemark_path
-    Boolean? bam_tools_path
     String arguments
   }
   command <<<
@@ -96,11 +92,7 @@ task FunannotatePredict {
       ~{if (seq_center) then "--SeqCenter" else ""} \
       ~{if (seq_accession) then "--SeqAccession" else ""} \
       ~{if (force) then "--force" else ""} \
-      ~{if (cpus) then "--cpus" else ""} \
-      ~{if (evm_home) then "--EVM_HOME" else ""} \
-      ~{if (augustus_config_path) then "--AUGUSTUS_CONFIG_PATH" else ""} \
-      ~{if (genemark_path) then "--GENEMARK_PATH" else ""} \
-      ~{if (bam_tools_path) then "--BAMTOOLS_PATH" else ""}
+      ~{if (cpus) then "--cpus" else ""}
   >>>
   parameter_meta {
     genome_multifasta_file: "Genome multi-FASTA file (softmasked repeats)"
@@ -146,10 +138,6 @@ task FunannotatePredict {
     seq_accession: "Sequence accession number for NCBI tbl file. Default: 12345"
     force: "Annotated unmasked genome"
     cpus: "Number of CPUs to use. Default: 2"
-    evm_home: ""
-    augustus_config_path: ""
-    genemark_path: ""
-    bam_tools_path: ""
     arguments: ""
   }
   output {

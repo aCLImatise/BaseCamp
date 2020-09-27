@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eproxy.cwl
+id: eproxy.cwl
 inputs:
 - id: in_alias
   doc: File of aliases

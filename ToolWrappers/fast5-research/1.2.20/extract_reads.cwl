@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_reads.cwl
+id: extract_reads.cwl
 inputs: []
 outputs:
 - id: out_stdout

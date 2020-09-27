@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzeChIP_Seq.pl.cwl
+id: analyzeChIP_Seq.pl.cwl
 inputs:
 - id: in_or
   doc: (or)
@@ -62,31 +62,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tagGO
-- id: in_normally_a_experimentsam
-  doc: (normally -A experiment1.sam  ...)
-  type: Directory
-  inputBinding:
-    prefix: -A
-- id: in_b
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -B
-- id: in_c
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -C
-- id: in_inputdirectory_go_expdirectorygoanalysis
-  doc: INPUT_DIRECTORY -go EXP_DIRECTORY/GOanalysis
-  type: Directory
-  inputBinding:
-    prefix: -D
-- id: in_len
-  doc: ',10,12 -S 25 -size 200'
-  type: long
-  inputBinding:
-    prefix: -len
 - id: in_exp_tag_directory
   doc: ''
   type: Directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_meta_pan_genome.cwl
+id: anvi_meta_pan_genome.cwl
 inputs:
 - id: in_pan_db
   doc: Anvi'o pan database

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../domainsToBed.pl.cwl
+id: domainsToBed.pl.cwl
 inputs:
 - id: in_binwidththe_width_bin
   doc: "BIN_WIDTH\nThe width of the bin.  Default is 1000bp."

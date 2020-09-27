@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wb_command.cwl
+id: wb_command.cwl
 inputs:
 - id: in_arguments_help
   doc: explain the format of subcommand help info

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_pdb.cwl
+id: add_pdb.cwl
 inputs:
 - id: in_guess
   doc: ": Guess atomic elements when absent from the PDB file.\n(default assumes proper\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3_from_fasta.cwl
+id: gff3_from_fasta.cwl
 inputs:
 - id: in_more_options
   doc: ''

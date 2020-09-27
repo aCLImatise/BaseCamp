@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigtax_download.cwl
+id: contigtax_download.cwl
 inputs:
 - id: in_dl_dir
   doc: "Write files to this directory. Defaults to db name in\ncurrent directory.\

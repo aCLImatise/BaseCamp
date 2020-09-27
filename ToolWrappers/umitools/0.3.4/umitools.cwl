@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umitools.cwl
+id: umitools.cwl
 inputs:
 - id: in_subcommand
   doc: "See https://github.com/weng-lab/umitools for more information.\nFor UMI RNA-seq:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haplotyper.pl.cwl
+id: haplotyper.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

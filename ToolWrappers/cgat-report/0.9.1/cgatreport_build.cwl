@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgatreport_build.cwl
+id: cgatreport_build.cwl
 inputs:
 - id: in_num_jobs
   doc: number of parallel jobs to run [default=2]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magpurify_conspecific.cwl
+id: magpurify_conspecific.cwl
 inputs:
 - id: in_mash_dist
   doc: 'Mash distance to reference genomes (default: 0.05)'

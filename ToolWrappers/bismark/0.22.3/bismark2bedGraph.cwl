@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bismark2bedGraph.cwl
+id: bismark2bedGraph.cwl
 inputs:
 - id: in_oslash_output
   doc: Name of the output file, mandatory.

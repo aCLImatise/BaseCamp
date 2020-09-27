@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mageck_vispr_control.cwl
+id: mageck_vispr_control.cwl
 inputs:
 - id: in_mage_ck_vis_pr
   doc: ''

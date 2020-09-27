@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_survey_construct.cwl
+id: sketchy_survey_construct.cwl
 inputs:
 - id: in_directory
   doc: Input directory with collected output from Pathfinder

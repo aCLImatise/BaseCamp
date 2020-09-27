@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_kmers.sh.cwl
+id: map_kmers.sh.cwl
 inputs:
 - id: in_h
   doc: Add 'filename:' prefix

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_mulled_init.cwl
+id: planemo_mulled_init.cwl
 inputs:
 - id: in_mulled_cond_a_version
   doc: "Install a specific version of Conda before\nrunning the command, by default\

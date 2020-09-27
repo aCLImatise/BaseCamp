@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../missing_regions.cwl
+id: missing_regions.cwl
 inputs:
 - id: in_h
   doc: ''

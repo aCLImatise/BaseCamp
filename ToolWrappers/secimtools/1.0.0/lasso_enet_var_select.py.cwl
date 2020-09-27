@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lasso_enet_var_select.py.cwl
+id: lasso_enet_var_select.py.cwl
 inputs:
 - id: in_a
   doc: '[-c COEFFICIENTS] [-f FLAGS]'

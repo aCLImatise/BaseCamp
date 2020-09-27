@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxdeblast.cwl
+id: mcxdeblast.cwl
 inputs:
 - id: in_m_nine
   doc: Expect column (-m 9) input.

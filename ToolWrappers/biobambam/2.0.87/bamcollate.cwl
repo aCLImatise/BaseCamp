@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamcollate.cwl
+id: bamcollate.cwl
 inputs: []
 outputs:
 - id: out_stdout

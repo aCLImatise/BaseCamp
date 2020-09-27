@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_xxmotif.cwl
+id: mb_xxmotif.cwl
 inputs:
 - id: in_neg_set
   doc: set path to negative set if available.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tr.cwl
+id: tr.cwl
 inputs:
 - id: in_complement
   doc: use the complement of SET1

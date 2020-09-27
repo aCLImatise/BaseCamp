@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csharp.cwl
+id: csharp.cwl
 inputs:
 - id: in_about
   doc: About the Mono C# compiler

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prettyseq.cwl
+id: prettyseq.cwl
 inputs:
 - id: in_range
   doc: range      [Whole sequence] Range(s) to translate

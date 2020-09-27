@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcCounter.cwl
+id: gcCounter.cwl
 inputs:
 - id: in_seg
   doc: Outputs in SEG format

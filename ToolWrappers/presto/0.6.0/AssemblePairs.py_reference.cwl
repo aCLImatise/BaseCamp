@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AssemblePairs.py_reference.cwl
+id: AssemblePairs.py_reference.cwl
 inputs:
 - id: in_ordered_list_containingheadprimary
   doc: "An ordered list of FASTA/FASTQ files containing\nhead/primary sequences. (default:\

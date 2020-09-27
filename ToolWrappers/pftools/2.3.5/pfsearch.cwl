@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pfsearch.cwl
+id: pfsearch.cwl
 inputs:
 - id: in_report_optimal_alignment
   doc: ': report optimal alignment for all sequences.'

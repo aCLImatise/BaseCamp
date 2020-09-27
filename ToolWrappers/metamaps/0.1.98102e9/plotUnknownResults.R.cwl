@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotUnknownResults.R.cwl
+id: plotUnknownResults.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

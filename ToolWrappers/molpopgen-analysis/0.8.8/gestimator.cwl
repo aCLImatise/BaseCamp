@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gestimator.cwl
+id: gestimator.cwl
 inputs:
 - id: in_write_results_outfile
   doc: ': write results to outfile'

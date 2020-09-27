@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BAMscale_cov.cwl
+id: BAMscale_cov.cwl
 inputs:
 - id: in_bed
   doc: Input BED file

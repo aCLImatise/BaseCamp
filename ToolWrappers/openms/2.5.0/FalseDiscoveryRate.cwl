@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FalseDiscoveryRate.cwl
+id: FalseDiscoveryRate.cwl
 inputs:
 - id: in_in
   doc: "*              Identifications from searching a target-decoy database. (valid\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jq.cwl
+id: jq.cwl
 inputs:
 - id: in_compact_instead_prettyprinted
   doc: compact instead of pretty-printed output;

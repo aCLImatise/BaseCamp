@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_callers_from_somaticseq_tsv.py.cwl
+id: remove_callers_from_somaticseq_tsv.py.cwl
 inputs:
 - id: in_in_file
   doc: 'input file (default: None)'

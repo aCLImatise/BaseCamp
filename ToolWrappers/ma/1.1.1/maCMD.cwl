@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maCMD.cwl
+id: maCMD.cwl
 inputs:
 - id: in_presetting
   doc: "[Default]              Optimize aligner parameters for a selected\nsequencing\
@@ -347,11 +347,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --Z_Drop_Inversions
-- id: in_flag_dot
-  doc: -d, --Mean_Distance_of_Paired_Reads <double> [400]
-  type: string
-  inputBinding:
-    position: 0
 - id: in_limit_dot
   doc: "-M, --Minimal_Number_of_SoC's <int> [1]        Always consider the first <val>\
     \ SoC's no matter the "

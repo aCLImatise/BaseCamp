@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cache_mgr.2.10.8.cwl
+id: cache_mgr.2.10.8.cwl
 inputs:
 - id: in_report
   doc: report objects in cache

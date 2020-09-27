@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmcloser_heterozygosity.cwl
+id: gmcloser_heterozygosity.cwl
 inputs:
 - id: in_target_s_caf
   doc: 'is not specied:'

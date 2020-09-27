@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stats2plot.pl.cwl
+id: stats2plot.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TeamCity.ServiceMessages.dll.cwl
+id: TeamCity.ServiceMessages.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

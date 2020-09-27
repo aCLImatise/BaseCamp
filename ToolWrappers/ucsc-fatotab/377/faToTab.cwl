@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faToTab.cwl
+id: faToTab.cwl
 inputs:
 - id: in_type
   doc: sequence type, dna or protein, default is dna

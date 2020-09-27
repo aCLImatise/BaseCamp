@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_Omixon_HLA.py.cwl
+id: extract_Omixon_HLA.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

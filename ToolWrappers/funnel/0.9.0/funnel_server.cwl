@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_server.cwl
+id: funnel_server.cwl
 inputs:
 - id: in_aws_batch_dot_job_definition
   doc: AWS Batch job definition name or ARN

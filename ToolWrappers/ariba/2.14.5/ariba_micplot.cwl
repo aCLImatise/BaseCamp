@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_micplot.cwl
+id: ariba_micplot.cwl
 inputs:
 - id: in_out_format
   doc: "Output format of image file. Use anything that\nmatplotlib can save to, eg\

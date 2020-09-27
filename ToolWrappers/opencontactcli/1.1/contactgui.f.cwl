@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contactgui.f.cwl
+id: contactgui.f.cwl
 inputs: []
 outputs:
 - id: out_stdout

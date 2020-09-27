@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_preds.py.cwl
+id: merge_preds.py.cwl
 inputs:
 - id: in_combine
   doc: ''

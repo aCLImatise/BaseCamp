@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pandoc_citeproc.cwl
+id: pandoc_citeproc.cwl
 inputs:
 - id: in_man
   doc: print man page to stdout

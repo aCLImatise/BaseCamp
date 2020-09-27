@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmph_keysfile.cwl
+id: cmph_keysfile.cwl
 inputs:
 - id: in_c_value_determines
   doc: "c value determines:\n* the number of vertices in the graph for the algorithms\

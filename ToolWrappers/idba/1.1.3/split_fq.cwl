@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_fq.cwl
+id: split_fq.cwl
 inputs:
 - id: in_paired
   doc: if the reads are paired-end in one file

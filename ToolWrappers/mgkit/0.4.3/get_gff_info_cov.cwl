@@ -1,36 +1,16 @@
 class: CommandLineTool
-id: ../../../get_gff_info_cov.cwl
+id: get_gff_info_cov.cwl
 inputs:
 - id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: in_reference
-  doc: Reference FASTA file for the GFF  [required]
+  doc: "-f, --reference FILENAME  Reference FASTA file for the GFF  [required]\n-j,\
+    \ --json-out            The output will be a JSON dictionary\n-s, --strand-specific\
+    \     If the coverage must be calculated on each strand\n-r, --rename        \
+    \      Emulate BLAST output (use only the header part\nbefore the first space)\n\
+    --progress                Shows Progress Bar\n--help                    Show this\
+    \ message and exit.\n"
   type: File
   inputBinding:
-    prefix: --reference
-- id: in_json_out
-  doc: The output will be a JSON dictionary
-  type: boolean
-  inputBinding:
-    prefix: --json-out
-- id: in_strand_specific
-  doc: If the coverage must be calculated on each strand
-  type: boolean
-  inputBinding:
-    prefix: --strand-specific
-- id: in_rename
-  doc: "Emulate BLAST output (use only the header part\nbefore the first space)"
-  type: boolean
-  inputBinding:
-    prefix: --rename
-- id: in_progress
-  doc: Shows Progress Bar
-  type: boolean
-  inputBinding:
-    prefix: --progress
+    prefix: --verbose
 - id: in_gff_file
   doc: ''
   type: string
@@ -45,6 +25,16 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_verbose
+  doc: "-f, --reference FILENAME  Reference FASTA file for the GFF  [required]\n-j,\
+    \ --json-out            The output will be a JSON dictionary\n-s, --strand-specific\
+    \     If the coverage must be calculated on each strand\n-r, --rename        \
+    \      Emulate BLAST output (use only the header part\nbefore the first space)\n\
+    --progress                Shows Progress Bar\n--help                    Show this\
+    \ message and exit.\n"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_verbose)
 cwlVersion: v1.1
 baseCommand:
 - get-gff-info

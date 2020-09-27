@@ -75,39 +75,11 @@ subcommands:
         - --pretty
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Pretty-print the output file
-          synonyms:
-          - --pretty
-          args: !EmptyFlagArg {}
-          optional: true
-        parent: !Command
-          command:
-          - slicedimage
-          positional: []
-          named: []
-          parent:
-          subcommands:
-          - *id003
-          usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
-          usage_flag:
-          version_flag:
-          help_text: "usage: slicedimage [-h] {checksum} ...\n\npositional arguments:\n\
-            \  {checksum}\n    checksum  Read a partition file and add missing checksums.\n\
-            \noptional arguments:\n  -h, --help  show this help message and exit\n"
-          generated_using: &id004
-          - --help
+        named: []
+        parent:
         subcommands:
         - !Command
           command: *id002
@@ -139,7 +111,102 @@ subcommands:
             - --pretty
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Pretty-print the output file
+              synonyms:
+              - --pretty
+              args: !EmptyFlagArg {}
+              optional: true
+            parent: !Command
+              command:
+              - slicedimage
+              positional: []
+              named: []
+              parent:
+              subcommands:
+              - *id003
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: slicedimage [-h] {checksum} ...\n\npositional arguments:\n\
+                \  {checksum}\n    checksum  Read a partition file and add missing\
+                \ checksums.\n\noptional arguments:\n  -h, --help  show this help\
+                \ message and exit\n"
+              generated_using: &id004
+              - --help
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: slicedimage
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: checksum
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: in_url
+                optional: false
+              - !Positional
+                description: ''
+                position: 3
+                name: out_path
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --pretty
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: slicedimage checksum [-h] [--pretty] in_url out_path\n\
+                slicedimage checksum: error: the following arguments are required:\
+                \ out_path\n"
+              generated_using: &id005 []
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: slicedimage checksum [-h] [--pretty] in_url out_path\n\
+              \npositional arguments:\n  in_url      URL for the source partition\
+              \ file\n  out_path    Path to write partition file with checksums\n\n\
+              optional arguments:\n  -h, --help  show this help message and exit\n\
+              \  --pretty    Pretty-print the output file\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -152,15 +219,9 @@ subcommands:
           version_flag:
           help_text: "usage: slicedimage checksum [-h] [--pretty] in_url out_path\n\
             slicedimage checksum: error: the following arguments are required: out_path\n"
-          generated_using: &id005 []
+          generated_using: *id005
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: slicedimage checksum [-h] [--pretty] in_url out_path\n\n\

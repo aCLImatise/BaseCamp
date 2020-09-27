@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kissreads.cwl
+id: kissreads.cwl
 inputs:
 - id: in_will_use_seeds
   doc: ': will use seeds of length size_seed. Default: 25.'

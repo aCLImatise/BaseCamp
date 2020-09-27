@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../patchpos.py.cwl
+id: patchpos.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

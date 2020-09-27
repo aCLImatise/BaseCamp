@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapBed.cwl
+id: mapBed.cwl
 inputs:
 - id: in_specify_columns_map
   doc: "Specify columns from the B file to map onto intervals in A.\nDefault: 5.\n\

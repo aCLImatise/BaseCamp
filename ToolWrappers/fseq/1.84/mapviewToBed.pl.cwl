@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapviewToBed.pl.cwl
+id: mapviewToBed.pl.cwl
 inputs:
 - id: in_min_qual
   doc: = Exclude alignments with <= this mapping quality score.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertIDs.pl.cwl
+id: convertIDs.pl.cwl
 inputs:
 - id: in_input_file
   doc: ''

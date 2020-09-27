@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_convert_mfannot2gff.pl.cwl
+id: agat_convert_mfannot2gff.pl.cwl
 inputs:
 - id: in_m_fan_not
   doc: The mfannot input file

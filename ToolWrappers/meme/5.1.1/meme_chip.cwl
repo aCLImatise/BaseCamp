@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme_chip.cwl
+id: meme_chip.cwl
 inputs:
 - id: in_failing_directory_exists
   doc: '<dir>   : output to the specified directory, failing if the directory exists'

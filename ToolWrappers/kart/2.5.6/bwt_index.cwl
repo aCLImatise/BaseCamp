@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwt_index.cwl
+id: bwt_index.cwl
 inputs:
 - id: in_ref_file
   doc: ''

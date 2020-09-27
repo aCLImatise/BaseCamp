@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../doPlots.R.cwl
+id: doPlots.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

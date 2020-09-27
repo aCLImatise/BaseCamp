@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker2wap.cwl
+id: maker2wap.cwl
 inputs: []
 outputs:
 - id: out_stdout

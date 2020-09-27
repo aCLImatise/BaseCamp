@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reports.py_assembly_stats.cwl
+id: reports.py_assembly_stats.cwl
 inputs:
 - id: in_cov_thresholds
   doc: "Genome coverage thresholds to report on. (default: (1,\n5, 20, 100))"

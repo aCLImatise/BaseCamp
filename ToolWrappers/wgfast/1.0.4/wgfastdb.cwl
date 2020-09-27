@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgfastdb.cwl
+id: wgfastdb.cwl
 inputs:
 - id: in_log
   doc: 'Set log file path (default: ./wgfastdb.log)'

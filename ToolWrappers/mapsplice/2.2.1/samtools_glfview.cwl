@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_glfview.cwl
+id: samtools_glfview.cwl
 inputs:
 - id: in_glf_view
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gif2h5.cwl
+id: gif2h5.cwl
 inputs:
 - id: in_gif_file
   doc: ''

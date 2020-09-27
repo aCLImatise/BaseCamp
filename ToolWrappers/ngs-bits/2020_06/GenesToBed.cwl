@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GenesToBed.cwl
+id: GenesToBed.cwl
 inputs:
 - id: in_source
   doc: "Transcript source database.\nValid: 'ccds,ensembl'"

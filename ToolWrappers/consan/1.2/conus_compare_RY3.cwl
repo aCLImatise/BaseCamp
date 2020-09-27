@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conus_compare_RY3.cwl
+id: conus_compare_RY3.cwl
 inputs:
 - id: in_options
   doc: ''

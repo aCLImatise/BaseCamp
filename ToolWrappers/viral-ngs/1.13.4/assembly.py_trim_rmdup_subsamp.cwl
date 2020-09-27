@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly.py_trim_rmdup_subsamp.cwl
+id: assembly.py_trim_rmdup_subsamp.cwl
 inputs:
 - id: in_n_reads
   doc: "Subsample reads to no more than this many individual\nreads. Note that paired\

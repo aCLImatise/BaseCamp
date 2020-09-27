@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../pepcoil.cwl
+id: pepcoil.cwl
 inputs:
 - id: in_window
   doc: integer    [28] Window size (Integer from 7 to 28)
   type: boolean
   inputBinding:
     prefix: -window
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_frame
   doc: boolean    [Yes if -coil is true] Show coil frameshifts
   type: boolean

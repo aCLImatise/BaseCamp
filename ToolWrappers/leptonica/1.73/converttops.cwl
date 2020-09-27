@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../converttops.cwl
+id: converttops.cwl
 inputs: []
 outputs:
 - id: out_stdout

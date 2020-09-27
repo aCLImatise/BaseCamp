@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sigoverlap.cwl
+id: sigoverlap.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'

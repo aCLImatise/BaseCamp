@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../softcore_setup.py.cwl
+id: softcore_setup.py.cwl
 inputs:
 - id: in_to
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monop2.cwl
+id: monop2.cwl
 inputs:
 - id: in_declared_only
   doc: Only show members declared in the Type

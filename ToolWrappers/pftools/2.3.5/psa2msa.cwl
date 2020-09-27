@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psa2msa.cwl
+id: psa2msa.cwl
 inputs:
 - id: in_replace_periods_dashes
   doc: ': replace periods by dashes on output.'

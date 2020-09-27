@@ -2,7 +2,7 @@ version 1.0
 
 task PlanemoShedDiff {
   input {
-    String? shed_target_source
+    File? shed_target_source
     Boolean? recursive
     String? owner
     Directory? name
@@ -33,7 +33,7 @@ task PlanemoShedDiff {
       ~{if defined(report_x_unit) then ("--report_xunit " +  '"' + report_x_unit + '"') else ""}
   >>>
   parameter_meta {
-    shed_target_source: ""
+    shed_target_source: "This command will return an exit code of:\\n- 0 if there are no detected differences. - 1 if there are differences. -\\n2 if the target repository doesn't exist. - >200 if there are errors\\nattempting to perform a diff.\\n**Warning:** ``shed_diff`` doesn't inspect repository metadata, this\\ndifference applies only to the file contents of files that would actually\\nbe uploaded to the repository."
     recursive: "Recursively perform command for nested repository"
     owner: "Tool Shed repository owner (username)."
     name: "Tool Shed repository name (defaults to the\\ninferred tool directory name)."

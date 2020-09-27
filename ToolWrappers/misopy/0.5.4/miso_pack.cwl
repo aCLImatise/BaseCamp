@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miso_pack.cwl
+id: miso_pack.cwl
 inputs:
 - id: in_pack
   doc: "Pack a MISO output containing dir(s). Takes as input a\ndirectory or a comma-separated\

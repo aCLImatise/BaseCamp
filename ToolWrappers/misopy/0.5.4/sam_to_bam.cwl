@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_to_bam.cwl
+id: sam_to_bam.cwl
 inputs:
 - id: in_convert
   doc: "Convert given SAM file to indexed, sorted BAM file with\nheaders. Takes SAM\

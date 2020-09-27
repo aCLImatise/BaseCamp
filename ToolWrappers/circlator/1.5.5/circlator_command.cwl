@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../circlator_command.cwl
+id: circlator_command.cwl
 inputs:
 - id: in_required_arguments
   doc: ''

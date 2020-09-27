@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrecursorMassCorrector.cwl
+id: PrecursorMassCorrector.cwl
 inputs:
 - id: in_in
   doc: "*                            Input mzML file containing the spectra. (valid\

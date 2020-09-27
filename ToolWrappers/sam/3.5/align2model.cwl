@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align2model.cwl
+id: align2model.cwl
 inputs:
 - id: in__contains_model
   doc: ', which contains a MODEL, or'

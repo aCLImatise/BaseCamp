@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collapse_pops.py.cwl
+id: collapse_pops.py.cwl
 inputs:
 - id: in_file_location_text
   doc: File location for the text file.

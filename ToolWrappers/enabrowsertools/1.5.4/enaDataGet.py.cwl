@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enaDataGet.py.cwl
+id: enaDataGet.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

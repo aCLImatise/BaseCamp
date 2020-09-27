@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fmix.cwl
+id: fmix.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

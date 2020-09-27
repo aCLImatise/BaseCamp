@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cs2bs_assembly.cwl
+id: cs2bs_assembly.cwl
 inputs:
 - id: in_fast_a
   doc: (string)         Double encoded color space assembly in FASTA format.

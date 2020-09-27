@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xtandem.cwl
+id: xtandem.cwl
 inputs:
 - id: in_tandem
   doc: ''

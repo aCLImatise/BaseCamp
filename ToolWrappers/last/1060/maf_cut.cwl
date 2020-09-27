@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_cut.cwl
+id: maf_cut.cwl
 inputs:
 - id: in_chr_n
   doc: ''

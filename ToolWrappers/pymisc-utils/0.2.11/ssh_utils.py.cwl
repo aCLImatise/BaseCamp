@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssh_utils.py.cwl
+id: ssh_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

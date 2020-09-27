@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rewriteCache.cwl
+id: rewriteCache.cwl
 inputs: []
 outputs:
 - id: out_stdout

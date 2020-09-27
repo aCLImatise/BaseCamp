@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rm_dup.pl.cwl
+id: rm_dup.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

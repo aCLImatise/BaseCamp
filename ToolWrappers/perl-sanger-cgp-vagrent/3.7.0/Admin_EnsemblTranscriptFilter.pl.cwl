@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Admin_EnsemblTranscriptFilter.pl.cwl
+id: Admin_EnsemblTranscriptFilter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

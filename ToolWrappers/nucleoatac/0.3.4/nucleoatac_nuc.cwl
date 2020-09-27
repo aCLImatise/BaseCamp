@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucleoatac_nuc.cwl
+id: nucleoatac_nuc.cwl
 inputs:
 - id: in_out
   doc: '[--fasta genome_seq] [--pwm Tn5_PWM]'

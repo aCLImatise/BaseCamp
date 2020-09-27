@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_text_output_browser_files.cwl
+id: tombo_text_output_browser_files.cwl
 inputs:
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_intron_lenght_vs_performance_graph.pl.cwl
+id: make_intron_lenght_vs_performance_graph.pl.cwl
 inputs:
 - id: in_sets_minimum_start
   doc: ': Sets the minimum bin start [default: min intron length];'

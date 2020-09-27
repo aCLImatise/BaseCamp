@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_map.cwl
+id: mmseqs_map.cwl
 inputs:
 - id: in_sensitivity_faster_fast
   doc: '2.000           sensitivity: 1.0 faster; 4.0 fast default; 7.5 sensitive [1.0,7.5]'

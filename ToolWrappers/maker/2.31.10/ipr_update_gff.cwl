@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipr_update_gff.cwl
+id: ipr_update_gff.cwl
 inputs:
 - id: in_in_place
   doc: Modify GFF3 files inplace, otherwise it prints to STDOUT

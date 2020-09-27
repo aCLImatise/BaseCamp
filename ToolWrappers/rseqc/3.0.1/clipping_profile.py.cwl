@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipping_profile.py.cwl
+id: clipping_profile.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.

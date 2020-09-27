@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_install_repositories.cwl
+id: nebulizer_install_repositories.cwl
 inputs:
 - id: in_install_tool_dependencies
   doc: "[yes|no]\ninstall tool dependencies via the toolshed,\nif any are defined\

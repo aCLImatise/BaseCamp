@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obrotamer.cwl
+id: obrotamer.cwl
 inputs:
 - id: in_file
   doc: ''

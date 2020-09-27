@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_stats.pl.cwl
+id: filter_stats.pl.cwl
 inputs:
 - id: in_input
   doc: The psudo-alignment positions tab delimited file

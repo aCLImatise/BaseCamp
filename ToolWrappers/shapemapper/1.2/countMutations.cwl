@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../countMutations.cwl
+id: countMutations.cwl
 inputs: []
 outputs:
 - id: out_stdout

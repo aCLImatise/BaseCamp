@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sq_add_locus_tag.pl.cwl
+id: agat_sq_add_locus_tag.pl.cwl
 inputs:
 - id: in_input
   doc: 'STRING: Input GTF/GFF file.'

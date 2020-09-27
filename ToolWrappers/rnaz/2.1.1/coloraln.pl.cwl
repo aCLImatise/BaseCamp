@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coloraln.pl.cwl
+id: coloraln.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getGWASoverlap.pl.cwl
+id: getGWASoverlap.pl.cwl
 inputs:
 - id: in_overlap_distance_default
   doc: '<#> (Overlap distance, default: 1000)'

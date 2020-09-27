@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UnifyHeaders.py_unify_fail.cwl
+id: UnifyHeaders.py_unify_fail.cwl
 inputs:
 - id: in_unify_headers_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stat.cwl
+id: stat.cwl
 inputs:
 - id: in_dereference
   doc: follow links

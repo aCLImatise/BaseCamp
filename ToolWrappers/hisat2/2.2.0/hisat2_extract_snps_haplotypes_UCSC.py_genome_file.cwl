@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_extract_snps_haplotypes_UCSC.py_genome_file.cwl
+id: hisat2_extract_snps_haplotypes_UCSC.py_genome_file.cwl
 inputs:
 - id: in_inter_gap
   doc: ''

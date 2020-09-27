@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dgenies_gallery_del.cwl
+id: dgenies_gallery_del.cwl
 inputs:
 - id: in_id_job
   doc: Id (name) of the job to delete from the gallery

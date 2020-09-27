@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_run.cwl
+id: funnel_run.cwl
 inputs:
 - id: in_server
   doc: 'Address of Funnel server. Default: http://localhost:8000'

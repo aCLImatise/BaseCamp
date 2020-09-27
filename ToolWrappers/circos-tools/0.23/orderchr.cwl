@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../orderchr.cwl
+id: orderchr.cwl
 inputs:
 - id: in_karyotype
-  doc: ''
+  doc: "{ -shuffle_file chrs_to_shuffle.txt | -shuffle LIST | -shuffle_rx REGEX_LIST\
+    \ }\n{-static LIST} {-static_rx REGEX_LIST}\n{-init_order LIST} {-init_order_rx\
+    \ REGEX_LIST}\n"
   type: string
   inputBinding:
     prefix: -karyotype

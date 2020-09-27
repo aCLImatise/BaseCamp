@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfasta.cwl
+id: pyfasta.cwl
 inputs:
 - id: in_valid_actionavailable_actionsextract
   doc: "a valid action\navailable actions:\n`extract`: extract sequences from a fasta\

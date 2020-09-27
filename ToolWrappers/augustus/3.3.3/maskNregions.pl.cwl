@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maskNregions.pl.cwl
+id: maskNregions.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

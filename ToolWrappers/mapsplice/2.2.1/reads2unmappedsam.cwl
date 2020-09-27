@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reads2unmappedsam.cwl
+id: reads2unmappedsam.cwl
 inputs: []
 outputs:
 - id: out_stdout

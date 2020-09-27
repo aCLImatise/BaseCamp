@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unimod.xml.cwl
+id: unimod.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

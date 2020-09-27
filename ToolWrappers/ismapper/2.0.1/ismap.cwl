@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ismap.cwl
+id: ismap.cwl
 inputs:
 - id: in_reads
   doc: Paired end reads for analysing (can be gzipped)

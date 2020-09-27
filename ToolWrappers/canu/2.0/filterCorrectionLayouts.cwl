@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterCorrectionLayouts.cwl
+id: filterCorrectionLayouts.cwl
 inputs:
 - id: in_input_reads
   doc: input reads

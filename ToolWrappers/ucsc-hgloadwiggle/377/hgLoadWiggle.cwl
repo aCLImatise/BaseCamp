@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgLoadWiggle.cwl
+id: hgLoadWiggle.cwl
 inputs:
 - id: in_no_bin
   doc: suppress bin field

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrimedLAMP_Amplicon_Success.cwl
+id: PrimedLAMP_Amplicon_Success.cwl
 inputs:
 - id: in_input_fast_a
   doc: '[--Threads THREADS]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../search_unmapped_reads.cwl
+id: search_unmapped_reads.cwl
 inputs: []
 outputs:
 - id: out_stdout

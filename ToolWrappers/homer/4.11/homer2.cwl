@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../homer2.cwl
+id: homer2.cwl
 inputs: []
 outputs:
 - id: out_stdout

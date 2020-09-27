@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../JARVIS.cwl
+id: JARVIS.cwl
 inputs:
 - id: in__versiondisplay_program
   doc: ",  --version\nDisplay program and version information."

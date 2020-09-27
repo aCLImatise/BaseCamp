@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_bam2tsv.cwl
+id: bioconvert_bam2tsv.cwl
 inputs:
 - id: in_force
   doc: "if outfile exists, it is overwritten with this option\n(default: False)"

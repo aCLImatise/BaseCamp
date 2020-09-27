@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_toolkit_count.cwl
+id: megahit_toolkit_count.cwl
 inputs:
 - id: in_km_er_k
   doc: (=21)                 kmer size

@@ -3,7 +3,6 @@ version 1.0
 task GetgffinfoGtf {
   input {
     Boolean? verbose
-    String? gene_id
     String? gff_file
     String? gtf_file
   }
@@ -11,12 +10,10 @@ task GetgffinfoGtf {
     get_gff_info gtf \
       ~{gff_file} \
       ~{gtf_file} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(gene_id) then ("--gene-id " +  '"' + gene_id + '"') else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    gene_id: "GFF attribute to use for the GTF *gene_id* attribute\\n[default: gene_id]"
+    verbose: "-g, --gene-id TEXT  GFF attribute to use for the GTF *gene_id* attribute\\n[default: gene_id]\\n--help              Show this message and exit.\\n"
     gff_file: ""
     gtf_file: ""
   }

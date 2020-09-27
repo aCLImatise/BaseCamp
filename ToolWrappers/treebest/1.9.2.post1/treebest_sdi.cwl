@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_sdi.cwl
+id: treebest_sdi.cwl
 inputs:
 - id: in_reroot
   doc: reroot

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_metagene_nobs_parclip.cwl
+id: mb_plot_metagene_nobs_parclip.cwl
 inputs:
 - id: in_downstream
   doc: ''

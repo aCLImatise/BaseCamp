@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildPosMap.cwl
+id: buildPosMap.cwl
 inputs:
 - id: in_write_output_here
   doc: write the output here

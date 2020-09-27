@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clearcore2.Domain.Acquisition.dll.cwl
+id: Clearcore2.Domain.Acquisition.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

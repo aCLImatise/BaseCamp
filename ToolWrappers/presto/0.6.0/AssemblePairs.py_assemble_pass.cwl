@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AssemblePairs.py_assemble_pass.cwl
+id: AssemblePairs.py_assemble_pass.cwl
 inputs:
 - id: in_assemble_pairs_do_tpy
   doc: ''

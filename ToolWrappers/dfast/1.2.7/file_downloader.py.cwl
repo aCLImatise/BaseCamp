@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../file_downloader.py.cwl
+id: file_downloader.py.cwl
 inputs:
 - id: in_protein
   doc: ": For DFAST reference libraries.\nFiles will be downloaded to DB root directory\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_intersect_basewise.py.cwl
+id: bed_intersect_basewise.py.cwl
 inputs:
 - id: in_bed_file_one
   doc: ''

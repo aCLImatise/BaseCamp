@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_fastx.py.cwl
+id: read_fastx.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

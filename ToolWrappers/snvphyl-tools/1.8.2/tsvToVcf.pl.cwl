@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsvToVcf.pl.cwl
+id: tsvToVcf.pl.cwl
 inputs:
 - id: in_tsv_file_containing
   doc: tsv file containing the snv_alignment

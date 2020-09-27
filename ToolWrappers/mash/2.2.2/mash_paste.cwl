@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mash_paste.cwl
+id: mash_paste.cwl
 inputs:
 - id: in_input_files_lists
   doc: Input files are lists of file names.

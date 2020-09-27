@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_auth_login.cwl
+id: hailctl_auth_login.cwl
 inputs:
 - id: in_namespace
   doc: "Specify namespace for auth server. (default: from\ndeploy configuration)\n"

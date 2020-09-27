@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_samplereplay.cwl
+id: rtg_samplereplay.cwl
 inputs:
 - id: in_input
   doc: input VCF containing the sample genotype

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkFlowSet.R.cwl
+id: checkFlowSet.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

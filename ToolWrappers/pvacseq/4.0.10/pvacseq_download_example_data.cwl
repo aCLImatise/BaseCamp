@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pvacseq_download_example_data.cwl
+id: pvacseq_download_example_data.cwl
 inputs:
 - id: in_destination_directory
   doc: Directory for downloading example data

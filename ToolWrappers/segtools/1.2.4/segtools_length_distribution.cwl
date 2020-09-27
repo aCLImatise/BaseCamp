@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_length_distribution.cwl
+id: segtools_length_distribution.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.

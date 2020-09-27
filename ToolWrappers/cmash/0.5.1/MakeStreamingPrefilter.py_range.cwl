@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeStreamingPrefilter.py_range.cwl
+id: MakeStreamingPrefilter.py_range.cwl
 inputs:
 - id: in_make_streaming_prefilter_do_tpy
   doc: ''

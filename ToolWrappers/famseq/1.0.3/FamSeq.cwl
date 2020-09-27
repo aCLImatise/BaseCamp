@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FamSeq.cwl
+id: FamSeq.cwl
 inputs:
 - id: in_vcf_file
   doc: The name of input vcf file.

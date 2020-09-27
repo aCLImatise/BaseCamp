@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stacks_integrate_alignments.cwl
+id: stacks_integrate_alignments.cwl
 inputs:
 - id: in_b
   doc: ''

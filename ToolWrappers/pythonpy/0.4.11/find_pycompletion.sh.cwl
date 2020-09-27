@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_pycompletion.sh.cwl
+id: find_pycompletion.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

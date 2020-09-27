@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcpp.py.cwl
+id: gcpp.py.cwl
 inputs:
 - id: in_ref
   doc: reference genetic code

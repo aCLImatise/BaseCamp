@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_shed_lint.cwl
+id: planemo_shed_lint.cwl
 inputs:
 - id: in_recursive
   doc: "Recursively perform command for nested\nrepository directories."

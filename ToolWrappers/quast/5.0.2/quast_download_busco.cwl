@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quast_download_busco.cwl
+id: quast_download_busco.cwl
 inputs:
 - id: in_done
   doc: Downloading BUSCO database...

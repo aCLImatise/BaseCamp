@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxknife.cwl
+id: taxknife.cwl
 inputs:
 - id: in_arg_annotate_choose
   doc: "[ --mode ] arg (=annotate)       choose mode:\n\"traverse\": follow nodes\

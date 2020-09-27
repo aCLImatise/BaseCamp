@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_databases.cwl
+id: humann2_databases.cwl
 inputs:
 - id: in_available
   doc: print the available databases

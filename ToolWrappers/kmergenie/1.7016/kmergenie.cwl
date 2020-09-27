@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmergenie.cwl
+id: kmergenie.cwl
 inputs:
 - id: in_diploid
   doc: 'use the diploid model (default: haploid model)'

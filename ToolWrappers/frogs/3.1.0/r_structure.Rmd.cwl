@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_structure.Rmd.cwl
+id: r_structure.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

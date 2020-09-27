@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pred.py.cwl
+id: pred.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

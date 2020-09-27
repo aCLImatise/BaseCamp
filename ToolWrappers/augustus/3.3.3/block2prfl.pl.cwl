@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../block2prfl.pl.cwl
+id: block2prfl.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

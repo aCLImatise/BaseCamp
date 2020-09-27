@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plantcv_train.py_naive_bayes.cwl
+id: plantcv_train.py_naive_bayes.cwl
 inputs:
 - id: in_img_dir
   doc: Input directory containing images.

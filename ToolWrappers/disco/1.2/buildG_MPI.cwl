@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildG_MPI.cwl
+id: buildG_MPI.cwl
 inputs: []
 outputs:
 - id: out_stdout

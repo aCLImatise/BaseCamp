@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fmove.cwl
+id: _fmove.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

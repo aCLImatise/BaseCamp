@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segway_task.cwl
+id: segway_task.cwl
 inputs: []
 outputs:
 - id: out_stdout

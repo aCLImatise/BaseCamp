@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_bed_divide.cwl
+id: rgt_tools.py_bed_divide.cwl
 inputs:
 - id: in_bed
   doc: Input BED file

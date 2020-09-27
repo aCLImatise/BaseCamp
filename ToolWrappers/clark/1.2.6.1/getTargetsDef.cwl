@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getTargetsDef.cwl
+id: getTargetsDef.cwl
 inputs:
 - id: in_files_to_tax_ids
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_discover.cwl
+id: igdiscover_discover.cwl
 inputs:
 - id: in_threads
   doc: "Number of threads. Default: no. of available CPUs, but\nat most 4"

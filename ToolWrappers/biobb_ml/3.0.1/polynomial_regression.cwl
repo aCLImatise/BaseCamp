@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polynomial_regression.cwl
+id: polynomial_regression.cwl
 inputs:
 - id: in_config
   doc: Configuration file

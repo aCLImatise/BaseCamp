@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_captured_reads.cwl
+id: get_captured_reads.cwl
 inputs:
 - id: in_baits
   doc: Baits format file

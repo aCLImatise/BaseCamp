@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_addreplacerg.cwl
+id: flye_samtools_addreplacerg.cwl
 inputs:
 - id: in_set_mode_orphanonly
   doc: Set the mode of operation from one of overwrite_all, orphan_only [overwrite_all]

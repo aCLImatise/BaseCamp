@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pKiss_mfe_window.cwl
+id: pKiss_mfe_window.cwl
 inputs:
 - id: in_specify_window_size
   doc: Specify the window size.

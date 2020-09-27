@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mirabait.cwl
+id: mirabait.cwl
 inputs:
 - id: in_load_bait_sequences
   doc: "Load bait sequences from file\n(multiple -b allowed)"

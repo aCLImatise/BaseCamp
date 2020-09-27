@@ -7,7 +7,6 @@ task VarfishannotatorInitdb {
     Boolean? ex_ac_path
     Boolean? g_nomad_exo_mes_path
     Boolean? g_nomad_genomes_path
-    Boolean? hgmd_public
     Boolean? region
     Boolean? thousand_genomes_path
     String in_it_db
@@ -20,7 +19,6 @@ task VarfishannotatorInitdb {
       ~{if (ex_ac_path) then "--exac-path" else ""} \
       ~{if (g_nomad_exo_mes_path) then "--gnomad-exomes-path" else ""} \
       ~{if (g_nomad_genomes_path) then "--gnomad-genomes-path" else ""} \
-      ~{if (hgmd_public) then "--hgmd-public" else ""} \
       ~{if (region) then "--region" else ""} \
       ~{if (thousand_genomes_path) then "--thousand-genomes-path" else ""}
   >>>
@@ -30,7 +28,6 @@ task VarfishannotatorInitdb {
     ex_ac_path: "Path to ExAC VCF file to use for import, see documentation for more\\ninformation"
     g_nomad_exo_mes_path: "Path to gnomAD exomes VCF file to use for import, see documentation for\\nmore information"
     g_nomad_genomes_path: "Path to gnomAD genomes VCF file to use for import, see documentation for\\nmore information"
-    hgmd_public: "Path to HTMD Public TSV file to use for import, see documentation for\\nmore information"
     region: "Genomic region CHR:START-END (1-based) to import"
     thousand_genomes_path: "Path to 1000 genomes VCF file to use for import, see documentation for\\nmore information\\n"
     in_it_db: ""

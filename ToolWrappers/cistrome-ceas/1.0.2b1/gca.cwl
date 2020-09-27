@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gca.cwl
+id: gca.cwl
 inputs:
 - id: in_bed
   doc: BED file of ChIP regions.

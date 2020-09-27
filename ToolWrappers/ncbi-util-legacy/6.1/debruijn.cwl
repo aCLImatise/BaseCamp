@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../debruijn.cwl
+id: debruijn.cwl
 inputs:
 - id: in_word_size
   doc: word size [Integer]

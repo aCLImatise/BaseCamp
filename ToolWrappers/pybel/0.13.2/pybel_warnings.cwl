@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_warnings.cwl
+id: pybel_warnings.cwl
 inputs:
 - id: in_path
   doc: ''

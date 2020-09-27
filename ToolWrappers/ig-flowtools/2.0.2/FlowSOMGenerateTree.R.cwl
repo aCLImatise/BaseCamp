@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FlowSOMGenerateTree.R.cwl
+id: FlowSOMGenerateTree.R.cwl
 inputs:
 - id: in_union
   doc: "Attaching package: 'flowCore'"

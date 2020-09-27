@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_to_csv.cwl
+id: guppy_to_csv.cwl
 inputs:
 - id: in_specify_filename_write
   doc: Specify the filename to write to.

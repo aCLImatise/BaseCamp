@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transabyss.cwl
+id: transabyss.cwl
 inputs:
 - id: in_se
   doc: single-end read files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_flagstat.cwl
+id: samtools_flagstat.cwl
 inputs:
 - id: in_input_fmt_option
   doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\

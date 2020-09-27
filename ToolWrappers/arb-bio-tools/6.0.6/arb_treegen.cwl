@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_treegen.cwl
+id: arb_treegen.cwl
 inputs: []
 outputs:
 - id: out_stdout

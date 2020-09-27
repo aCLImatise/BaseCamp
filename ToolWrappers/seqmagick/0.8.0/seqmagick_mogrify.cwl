@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmagick_mogrify.cwl
+id: seqmagick_mogrify.cwl
 inputs:
 - id: in_alphabet
   doc: Input alphabet. Required for writing NEXUS.

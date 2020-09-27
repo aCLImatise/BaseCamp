@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sv2.cwl
+id: sv2.cwl
 inputs:
 - id: in_bam
   doc: '...     bam file(s)'

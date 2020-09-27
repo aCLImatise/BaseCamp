@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_index.cwl
+id: bcftools_index.cwl
 inputs:
 - id: in_csi
   doc: generate CSI-format index for VCF/BCF files [default]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainphlan.cwl
+id: strainphlan.cwl
 inputs:
 - id: in_database
   doc: The input MetaPhlAn 3.0 database

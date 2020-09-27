@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../COG.pl.cwl
+id: COG.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

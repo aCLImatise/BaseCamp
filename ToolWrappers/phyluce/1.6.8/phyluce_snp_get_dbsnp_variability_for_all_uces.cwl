@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_get_dbsnp_variability_for_all_uces.cwl
+id: phyluce_snp_get_dbsnp_variability_for_all_uces.cwl
 inputs:
 - id: in_dbsnp
   doc: CSV input from dbSNP giving SNP positions within UCE

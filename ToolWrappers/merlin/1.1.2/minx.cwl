@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minx.cwl
+id: minx.cwl
 inputs:
 - id: in_tabulate
   doc: '[merlin]'

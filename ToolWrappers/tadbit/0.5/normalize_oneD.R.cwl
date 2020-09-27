@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalize_oneD.R.cwl
+id: normalize_oneD.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

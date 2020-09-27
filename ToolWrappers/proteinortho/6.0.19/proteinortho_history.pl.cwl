@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_history.pl.cwl
+id: proteinortho_history.pl.cwl
 inputs:
 - id: in_project
   doc: The project name (as specified in proteinortho with -project) (default:auto

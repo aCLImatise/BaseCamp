@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runDATMA.sh.cwl
+id: runDATMA.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

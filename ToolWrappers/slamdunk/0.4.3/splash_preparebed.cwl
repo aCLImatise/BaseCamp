@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splash_preparebed.cwl
+id: splash_preparebed.cwl
 inputs:
 - id: in_bed
   doc: BED file

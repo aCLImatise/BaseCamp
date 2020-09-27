@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psite.cwl
+id: psite.cwl
 inputs:
 - id: in_min_counts
   doc: "Minimum counts required in normalization region to be\nincluded in metagene\

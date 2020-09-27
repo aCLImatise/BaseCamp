@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5import_MIPS.cwl
+id: h5import_MIPS.cwl
 inputs:
 - id: in_h_five_import
   doc: ''

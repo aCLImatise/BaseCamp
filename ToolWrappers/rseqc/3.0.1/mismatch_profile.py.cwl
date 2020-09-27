@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mismatch_profile.py.cwl
+id: mismatch_profile.py.cwl
 inputs:
 - id: in_input
   doc: Input BAM file. [required]

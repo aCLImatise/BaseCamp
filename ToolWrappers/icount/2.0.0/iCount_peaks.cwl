@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_peaks.cwl
+id: iCount_peaks.cwl
 inputs:
 - id: in_scores
   doc: "File name for \"scores\" output. File reports all cross-link events,\nindependent\

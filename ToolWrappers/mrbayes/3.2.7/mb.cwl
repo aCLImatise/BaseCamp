@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb.cwl
+id: mb.cwl
 inputs:
 - id: in_force_interactive_modenoninteractive
   doc: "Force interactive mode\nNon-interactive mode is the default when a filename\

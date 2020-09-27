@@ -2,7 +2,7 @@ version 1.0
 
 task Anvidereplicategenomes {
   input {
-    String? similarity_threshold
+    Int? similarity_threshold
     File? internal_genomes
     File? external_genomes
     File? fast_a_text_file
@@ -57,7 +57,7 @@ task Anvidereplicategenomes {
       ~{if (just_do_it) then "--just-do-it" else ""}
   >>>
   parameter_meta {
-    similarity_threshold: ""
+    similarity_threshold: "[--cluster-method {simple_greedy}]\\n[--representative-method {Qscore,length,centrality}]\\n[-T NUM_THREADS] [--just-do-it]\\n[--log-file FILE_PATH]"
     internal_genomes: "A five-column TAB-delimited flat text file. The header\\nline must contain these columns: 'name', 'bin_id',\\n'collection_id', 'profile_db_path', 'contigs_db_path'.\\nEach line should list a single entry, where 'name' can\\nbe any name to describe the anvi'o bin identified as\\n'bin_id' that is stored in a collection."
     external_genomes: "A two-column TAB-delimited flat text file that lists\\nanvi'o contigs databases. The first item in the header\\nline should read 'name', and the second should read\\n'contigs_db_path'. Each line in the file should\\ndescribe a single entry, where the first column is the\\nname of the genome (or MAG), and the second column is\\nthe anvi'o contigs database generated for this genome."
     fast_a_text_file: "A two-column TAB-delimited file that lists multiple\\nFASTA files to import for analysis. If using for\\n`anvi-dereplicate-genomes` or `anvi-compute-distance`,\\neach FASTA is assumed to be a genome. The first item\\nin the header line should read 'name', and the second\\nitem should read 'path'. Each line in the field should\\ndescribe a single entry, where the first column is the\\nname of the FASTA file or corresponding sequence, and\\nthe second column is the path to the FASTA file\\nitself."

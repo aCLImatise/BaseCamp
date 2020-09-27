@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_clean.cwl
+id: smof_clean.cwl
 inputs:
 - id: in__type_np
   doc: '|p, --type n|p    sequence type'

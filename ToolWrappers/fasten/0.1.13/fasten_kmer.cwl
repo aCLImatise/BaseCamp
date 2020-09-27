@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasten_kmer.cwl
+id: fasten_kmer.cwl
 inputs:
 - id: in_num_cpus
   doc: 'Number of CPUs (default: 1)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda_utils_build.cwl
+id: bioconda_utils_build.cwl
 inputs:
 - id: in_packages
   doc: "Glob for package[s] to build. Default is to build all\npackages. Can be specified\

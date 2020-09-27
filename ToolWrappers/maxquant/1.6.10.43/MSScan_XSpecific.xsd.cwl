@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSScan_XSpecific.xsd.cwl
+id: MSScan_XSpecific.xsd.cwl
 inputs: []
 outputs:
 - id: out_stdout

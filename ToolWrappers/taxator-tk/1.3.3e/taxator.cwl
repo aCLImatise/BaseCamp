@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxator.cwl
+id: taxator.cwl
 inputs:
 - id: in_citation
   doc: show citation info

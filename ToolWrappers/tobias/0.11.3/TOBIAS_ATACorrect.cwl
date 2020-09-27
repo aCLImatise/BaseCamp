@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_ATACorrect.cwl
+id: TOBIAS_ATACorrect.cwl
 inputs:
 - id: in_bam
   doc: A .bam-file containing reads to be corrected
@@ -62,11 +62,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --read_shift
-- id: in_five
-  doc: )
-  type: boolean
-  inputBinding:
-    prefix: '-5'
 - id: in_bg_shift
   doc: "Read shift for estimation of background frequencies\n(default: 100)"
   type: long

@@ -1,36 +1,16 @@
 class: CommandLineTool
-id: ../../../interleave_reads.py.cwl
+id: interleave_reads.py.cwl
 inputs:
-- id: in_info
-  doc: print citation information
-  type: boolean
-  inputBinding:
-    prefix: --info
-- id: in_output
+- id: in_o
   doc: ''
   type: File
   inputBinding:
-    prefix: --output
-- id: in_no_reformat
-  doc: "Do not reformat read names or enforce consistency\n(default: False)"
+    prefix: -o
+- id: in_info
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --no-reformat
-- id: in_force
-  doc: 'Overwrite output file if it exists (default: False)'
-  type: File
-  inputBinding:
-    prefix: --force
-- id: in_gzip
-  doc: 'Compress output using gzip (default: False)'
-  type: boolean
-  inputBinding:
-    prefix: --gzip
-- id: in_bzip
-  doc: 'Compress output using bzip2 (default: False)'
-  type: boolean
-  inputBinding:
-    prefix: --bzip
+    prefix: --info
 - id: in_left
   doc: right
   type: string
@@ -40,11 +20,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_force
-  doc: 'Overwrite output file if it exists (default: False)'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_force)
 cwlVersion: v1.1
 baseCommand:
 - interleave-reads.py

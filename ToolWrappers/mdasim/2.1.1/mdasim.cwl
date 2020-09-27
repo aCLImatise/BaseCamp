@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdasim.cwl
+id: mdasim.cwl
 inputs:
 - id: in_log
   doc: = file name for a log file of all single nucleotide errors that happen during

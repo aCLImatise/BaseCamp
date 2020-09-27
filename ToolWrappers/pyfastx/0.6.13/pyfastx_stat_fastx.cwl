@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfastx_stat_fastx.cwl
+id: pyfastx_stat_fastx.cwl
 inputs:
 - id: in_py_fast_x
   doc: ''

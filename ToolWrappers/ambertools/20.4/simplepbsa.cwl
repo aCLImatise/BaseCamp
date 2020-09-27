@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simplepbsa.cwl
+id: simplepbsa.cwl
 inputs:
 - id: in_is_required
   doc: is required

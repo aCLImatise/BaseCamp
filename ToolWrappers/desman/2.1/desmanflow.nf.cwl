@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../desmanflow.nf.cwl
+id: desmanflow.nf.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cdbyank.cwl
+id: cdbyank.cwl
 inputs:
 - id: in_sequence_name_accession
   doc: "the sequence name (accession) for a fasta record to be\nretrieved; if not\

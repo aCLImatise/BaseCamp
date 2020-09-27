@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../realpath.cwl
+id: realpath.cwl
 inputs:
 - id: in_canonicalize_existing
   doc: all components of the path must exist

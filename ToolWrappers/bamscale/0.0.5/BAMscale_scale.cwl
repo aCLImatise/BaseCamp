@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BAMscale_scale.cwl
+id: BAMscale_scale.cwl
 inputs:
 - id: in_bam
   doc: Input BAM file. This has to be specified at least two times.

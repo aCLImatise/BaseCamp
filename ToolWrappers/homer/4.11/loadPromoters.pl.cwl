@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loadPromoters.pl.cwl
+id: loadPromoters.pl.cwl
 inputs:
 - id: in_name
   doc: (used to refer to it later with findMotifs.pl)

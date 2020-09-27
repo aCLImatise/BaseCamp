@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_snp_pipeline.py.cwl
+id: run_snp_pipeline.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

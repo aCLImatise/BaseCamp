@@ -21,7 +21,6 @@ task MsgfplusSearchrb {
     Int? isotope_error_range
     Int? fragment_method
     Boolean? decoy_search
-    Int? protocol
     Int? min_pep_length
     Int? max_pep_length
     Int? min_pep_charge
@@ -53,7 +52,6 @@ task MsgfplusSearchrb {
       ~{if defined(isotope_error_range) then ("--isotope-error-range " +  '"' + isotope_error_range + '"') else ""} \
       ~{if defined(fragment_method) then ("--fragment-method " +  '"' + fragment_method + '"') else ""} \
       ~{if (decoy_search) then "--decoy-search" else ""} \
-      ~{if defined(protocol) then ("--protocol " +  '"' + protocol + '"') else ""} \
       ~{if defined(min_pep_length) then ("--min-pep-length " +  '"' + min_pep_length + '"') else ""} \
       ~{if defined(max_pep_length) then ("--max-pep-length " +  '"' + max_pep_length + '"') else ""} \
       ~{if defined(min_pep_charge) then ("--min-pep-charge " +  '"' + min_pep_charge + '"') else ""} \
@@ -82,7 +80,6 @@ task MsgfplusSearchrb {
     isotope_error_range: "Takes into account of the error introduced by chooosing a non-monoisotopic peak for fragmentation. [0,1]"
     fragment_method: "Fragment method 0: As written in the spectrum or CID if no info (Default), 1: CID, 2: ETD, 3: HCD, 4: Merge spectra from the same precursor [0]"
     decoy_search: "Build and search a decoy database on the fly. Input db should not contain decoys if this option is used [false]"
-    protocol: "0: NoProtocol (Default), 1: Phosphorylation, 2: iTRAQ, 3: iTRAQPhospho [0]"
     min_pep_length: "Minimum peptide length to consider [6]"
     max_pep_length: "Maximum peptide length to consider [40]"
     min_pep_charge: "Minimum precursor charge to consider if charges are not specified in the spectrum file [2]"

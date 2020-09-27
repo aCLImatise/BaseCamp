@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_backend_services.cwl
+id: gcloud_compute_backend_services.cwl
 inputs:
 - id: in_add_backend
   doc: Add a backend to a backend service.

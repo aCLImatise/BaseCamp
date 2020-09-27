@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graphembed.cwl
+id: graphembed.cwl
 inputs:
 - id: in_specify_input_data
   doc: Specify input data file in CSV format.

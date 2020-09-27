@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exon_utils.cwl
+id: exon_utils.cwl
 inputs:
 - id: in_to
   doc: ''

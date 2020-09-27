@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arachne2ctg.cwl
+id: arachne2ctg.cwl
 inputs: []
 outputs:
 - id: out_stdout

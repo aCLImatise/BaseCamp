@@ -7,7 +7,6 @@ task Slurmrunnerpl {
     Boolean? module
     Boolean? after_ok
     Boolean? man
-    Boolean? cpus_per_task
     Boolean? commands_per_node
     Boolean? nodes_count
     Boolean? partition
@@ -41,7 +40,6 @@ task Slurmrunnerpl {
       ~{if (module) then "--module" else ""} \
       ~{if (after_ok) then "--afterok" else ""} \
       ~{if (man) then "--man" else ""} \
-      ~{if (cpus_per_task) then "--cpus_per_task" else ""} \
       ~{if (commands_per_node) then "--commands_per_node" else ""} \
       ~{if (nodes_count) then "--nodes_count" else ""} \
       ~{if (partition) then "--partition" else ""} \
@@ -74,7 +72,6 @@ task Slurmrunnerpl {
     module: "- ArrayRef. List of modules to load ex. R2,\\nsamtools, etc"
     after_ok: "- ArrayRef."
     man: "- Bool. Display man page"
-    cpus_per_task: "- Str. Default=4."
     commands_per_node: "- Str. Default=8. Commands to run on each node.\\nThis is not the same as\\nconcurrent_commands_per_node!"
     nodes_count: "- Str. Default=1. Number of nodes requested.\\nYou should only use this if submitting\\nparallel jobs."
     partition: "- Str. Default=. Slurm partition to submit jobs\\nto. Defaults to the partition with the most\\navailable nodes"

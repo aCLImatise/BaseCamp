@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gc_align_clusters.pl.cwl
+id: gc_align_clusters.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

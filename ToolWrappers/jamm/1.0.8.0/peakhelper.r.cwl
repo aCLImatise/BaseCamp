@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakhelper.r.cwl
+id: peakhelper.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

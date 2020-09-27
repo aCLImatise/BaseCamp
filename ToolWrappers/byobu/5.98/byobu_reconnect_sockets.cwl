@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_reconnect_sockets.cwl
+id: byobu_reconnect_sockets.cwl
 inputs: []
 outputs:
 - id: out_stdout

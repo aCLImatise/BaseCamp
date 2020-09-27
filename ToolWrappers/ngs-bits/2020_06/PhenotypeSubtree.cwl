@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PhenotypeSubtree.cwl
+id: PhenotypeSubtree.cwl
 inputs:
 - id: in_in
   doc: HPO phenotype identifier, e.g. HP:0002066.

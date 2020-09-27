@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trfMask.cwl
+id: trfMask.cwl
 inputs: []
 outputs:
 - id: out_stdout

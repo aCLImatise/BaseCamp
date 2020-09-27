@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../callCentrifugeOnConvertedDB.pl.cwl
+id: callCentrifugeOnConvertedDB.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

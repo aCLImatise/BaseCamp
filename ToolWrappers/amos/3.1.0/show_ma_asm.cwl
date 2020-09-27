@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../show_ma_asm.cwl
+id: show_ma_asm.cwl
 inputs:
 - id: in_count_gaps_printed
   doc: Count gaps in printed consensus positions

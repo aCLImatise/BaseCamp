@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5jam.cwl
+id: h5jam.cwl
 inputs:
 - id: in_specifies_input_file
   doc: Specifies the input HDF5 file.

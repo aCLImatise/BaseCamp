@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_mark_tree.cwl
+id: phylorank_mark_tree.cwl
 inputs:
 - id: in_thresholds
   doc: "relative divergence thresholds for taxonomic ranks\n(default: {\"d\": 0.33,\

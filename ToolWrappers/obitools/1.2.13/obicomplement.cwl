@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obicomplement.cwl
+id: obicomplement.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

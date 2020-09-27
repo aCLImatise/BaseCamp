@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runReadsToGenome.pl.cwl
+id: runReadsToGenome.pl.cwl
 inputs:
 - id: in_spaceseparated_pairedend_reads
   doc: "'leftSequenceFile rightSequenceFile'\nSpace-separated paired-end reads in\

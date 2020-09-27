@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EukHighConfidenceFilter.cwl
+id: EukHighConfidenceFilter.cwl
 inputs:
 - id: in_result
   doc: tRNAscan-SE output file used as input

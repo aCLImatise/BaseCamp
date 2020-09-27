@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAaliduplex.cwl
+id: RNAaliduplex.cwl
 inputs:
 - id: in_detailed_help
   doc: "Print help, including all details and hidden\noptions, and exit"

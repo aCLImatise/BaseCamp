@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_exportAlignmentsPretty.cwl
+id: mixcr_exportAlignmentsPretty.cwl
 inputs:
 - id: in_filter
   doc: Custom filter

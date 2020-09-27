@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_alimask_coords.cwl
+id: ssu_esl_alimask_coords.cwl
 inputs:
 - id: in_rf_is_mask
   doc: ''

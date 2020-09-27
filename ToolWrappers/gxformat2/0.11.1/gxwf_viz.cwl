@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gxwf_viz.cwl
+id: gxwf_viz.cwl
 inputs: []
 outputs:
 - id: out_stdout

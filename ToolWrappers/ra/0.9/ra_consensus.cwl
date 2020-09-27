@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ra_consensus.cwl
+id: ra_consensus.cwl
 inputs:
 - id: in_reads
   doc: "(required)\ninput afg reads file"

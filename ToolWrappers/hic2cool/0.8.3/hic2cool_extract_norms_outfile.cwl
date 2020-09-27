@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hic2cool_extract_norms_outfile.cwl
+id: hic2cool_extract_norms_outfile.cwl
 inputs:
 - id: in_w
   doc: ''

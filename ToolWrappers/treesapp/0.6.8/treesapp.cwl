@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treesapp.cwl
+id: treesapp.cwl
 inputs:
 - id: in_command
   doc: 'optional arguments:'

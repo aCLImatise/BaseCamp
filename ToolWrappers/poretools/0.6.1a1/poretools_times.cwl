@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poretools_times.cwl
+id: poretools_times.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr

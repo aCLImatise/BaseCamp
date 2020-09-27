@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkHierarchy.py.cwl
+id: checkHierarchy.py.cwl
 inputs:
 - id: in_stamp_profile
   doc: STAMP profile to evaluate

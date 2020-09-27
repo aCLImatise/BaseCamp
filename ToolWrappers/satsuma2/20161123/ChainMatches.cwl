@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ChainMatches.cwl
+id: ChainMatches.cwl
 inputs:
 - id: in_string_output_binary
   doc: '<string> : output file (binary)'

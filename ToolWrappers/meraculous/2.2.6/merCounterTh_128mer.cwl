@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merCounterTh_128mer.cwl
+id: merCounterTh_128mer.cwl
 inputs:
 - id: in_mer_size
   doc: ''

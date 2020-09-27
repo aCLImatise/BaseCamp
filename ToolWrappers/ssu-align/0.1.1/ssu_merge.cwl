@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_merge.cwl
+id: ssu_merge.cwl
 inputs:
 - id: in_force_allow_clobbering
   doc: ': force; allow file clobbering'

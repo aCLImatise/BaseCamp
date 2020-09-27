@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dump_json.py.cwl
+id: dump_json.py.cwl
 inputs:
 - id: in_out_file
   doc: 'Output JSON file to this file location (default: None)'

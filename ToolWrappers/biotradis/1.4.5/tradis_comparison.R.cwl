@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tradis_comparison.R.cwl
+id: tradis_comparison.R.cwl
 inputs:
 - id: in_controls
   doc: ": 'control' libraries, generally growth in a permissive"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tophat_recondition.cwl
+id: tophat_recondition.cwl
 inputs:
 - id: in_log_file
   doc: "log file (optional, (default: result_dir/tophat-\nrecondition.log)"

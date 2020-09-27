@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamsort.sh.cwl
+id: bamsort.sh.cwl
 inputs:
 - id: in_not_exist
   doc: not exist.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spacepharer_filtermatchbyfdr.cwl
+id: spacepharer_filtermatchbyfdr.cwl
 inputs:
 - id: in_fdr
   doc: FDR cutoff for filtering matches[0.0, 1.0] [0.050]

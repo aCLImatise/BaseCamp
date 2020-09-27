@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_storage.cwl
+id: funnel_storage.cwl
 inputs:
 - id: in_config
   doc: Config File

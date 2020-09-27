@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_tradis_tags.cwl
+id: filter_tradis_tags.cwl
 inputs:
 - id: in_fastq_file_tradis
   doc: ': fastq file with tradis tags attached'

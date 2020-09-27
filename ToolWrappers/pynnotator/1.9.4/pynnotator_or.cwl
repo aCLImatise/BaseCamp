@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pynnotator_or.cwl
+id: pynnotator_or.cwl
 inputs:
 - id: in_vcf_file_annotated
   doc: a VCF file to be annotated

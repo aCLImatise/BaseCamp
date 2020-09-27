@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../settings_nightly.ini.cwl
+id: settings_nightly.ini.cwl
 inputs: []
 outputs:
 - id: out_stdout

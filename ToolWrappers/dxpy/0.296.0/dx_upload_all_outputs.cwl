@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_upload_all_outputs.cwl
+id: dx_upload_all_outputs.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_create_library.cwl
+id: nebulizer_create_library.cwl
 inputs:
 - id: in_description
   doc: description of the new library

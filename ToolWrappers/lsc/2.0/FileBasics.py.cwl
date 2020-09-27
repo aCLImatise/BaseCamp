@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FileBasics.py.cwl
+id: FileBasics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

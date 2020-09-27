@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msstitch_trypsinize.cwl
+id: msstitch_trypsinize.cwl
 inputs:
 - id: in_input_file_format
   doc: Input file of {} format

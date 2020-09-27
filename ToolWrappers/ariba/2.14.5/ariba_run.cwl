@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_run.cwl
+id: ariba_run.cwl
 inputs:
 - id: in_nuc_mer_min_id
   doc: Minimum alignment identity (delta-filter -i) [90]

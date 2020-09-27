@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MetaProb.cwl
+id: MetaProb.cwl
 inputs: []
 outputs:
 - id: out_stdout

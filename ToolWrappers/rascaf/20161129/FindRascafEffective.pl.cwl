@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FindRascafEffective.pl.cwl
+id: FindRascafEffective.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

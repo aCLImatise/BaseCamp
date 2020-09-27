@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkv_end_to_end.cwl
+id: checkv_end_to_end.cwl
 inputs:
 - id: in_reference_database_path
   doc: "Reference database path. By default the CHECKVDB environment\nvariable is\

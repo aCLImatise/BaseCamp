@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapper.pl.cwl
+id: mapper.pl.cwl
 inputs:
 - id: in_input_file_seqtxt
   doc: input file is seq.txt format

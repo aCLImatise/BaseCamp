@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineAndAnnotateReferences.pl.cwl
+id: combineAndAnnotateReferences.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

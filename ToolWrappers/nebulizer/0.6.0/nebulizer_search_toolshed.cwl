@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_search_toolshed.cwl
+id: nebulizer_search_toolshed.cwl
 inputs:
 - id: in_toolshed
   doc: "specify a toolshed URL to search, or 'main' (the main\nGalaxy toolshed, the\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graftM_archive.cwl
+id: graftM_archive.cwl
 inputs:
 - id: in_create
   doc: Create a new GraftM package archive

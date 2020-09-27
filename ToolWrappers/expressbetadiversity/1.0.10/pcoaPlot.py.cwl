@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pcoaPlot.py.cwl
+id: pcoaPlot.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

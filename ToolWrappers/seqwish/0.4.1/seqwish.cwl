@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqwish.cwl
+id: seqwish.cwl
 inputs:
 - id: in_induce_graph_pafformatted
   doc: "[FILE], --paf-alns=[FILE]       Induce the graph from these PAF\nformatted\

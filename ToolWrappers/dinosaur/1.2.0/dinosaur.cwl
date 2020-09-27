@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dinosaur.cwl
+id: dinosaur.cwl
 inputs:
 - id: in_adv_params
   doc: path to adv param file

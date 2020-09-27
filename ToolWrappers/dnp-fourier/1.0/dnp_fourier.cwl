@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnp_fourier.cwl
+id: dnp_fourier.cwl
 inputs:
 - id: in_sequence
   doc: sequence

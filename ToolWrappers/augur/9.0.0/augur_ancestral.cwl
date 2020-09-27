@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_ancestral.cwl
+id: augur_ancestral.cwl
 inputs:
 - id: in_tree
   doc: 'prebuilt Newick (default: None)'

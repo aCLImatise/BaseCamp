@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_generate_gephi_network_file.cwl
+id: o_generate_gephi_network_file.cwl
 inputs:
 - id: in_sample_mapping
   doc: "Providing a sample mapping file will make Gephi file\nmuch more useful."

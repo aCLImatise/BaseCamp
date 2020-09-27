@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ThermoFisher.CommonCore.RawFileReader.dll.cwl
+id: ThermoFisher.CommonCore.RawFileReader.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

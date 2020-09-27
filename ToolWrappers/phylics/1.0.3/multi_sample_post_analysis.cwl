@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multi_sample_post_analysis.cwl
+id: multi_sample_post_analysis.cwl
 inputs:
 - id: in_n_permutations
   doc: "Number of permutations to execute the permutation test\nfor sample coesion\

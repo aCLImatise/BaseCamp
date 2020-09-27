@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CRISPR_Studio.cwl
+id: CRISPR_Studio.cwl
 inputs:
 - id: in_in_file
   doc: "GFF3 file generated with CRISPRDetect (Local\ninstallation or web platform\

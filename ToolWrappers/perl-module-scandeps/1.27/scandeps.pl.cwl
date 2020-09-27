@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scandeps.pl.cwl
+id: scandeps.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

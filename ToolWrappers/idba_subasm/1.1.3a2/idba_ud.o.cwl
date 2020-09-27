@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idba_ud.o.cwl
+id: idba_ud.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

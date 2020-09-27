@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_cwlrun_toolargs.cwl
+id: bcbio_vm.py_cwlrun_toolargs.cwl
 inputs:
 - id: in_no_container
   doc: ''

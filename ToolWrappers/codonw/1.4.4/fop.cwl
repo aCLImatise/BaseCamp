@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fop.cwl
+id: fop.cwl
 inputs:
 - id: in_no_menu
   doc: Prevent the menu interface being displayed

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_consensi.py.cwl
+id: make_consensi.py.cwl
 inputs:
 - id: in_dcs_one
   doc: "The file to output the first mates of the\nduplex consensus sequences into.\
@@ -83,7 +83,7 @@ inputs:
   inputBinding:
     prefix: --galaxy
 - id: in_test
-  doc: If reporting usage data, mark this as a test
+  doc: "If reporting usage data, mark this as a test\nrun."
   type: boolean
   inputBinding:
     prefix: --test
@@ -94,20 +94,10 @@ inputs:
   inputBinding:
     prefix: --log
 - id: in_quiet
-  doc: ''
+  doc: "-V, --verbose\n-D, --debug"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: in_debug
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --debug
 - id: in_processes
   doc: "Number of worker subprocesses to use. If 0, no\nsubprocesses will be started\
     \ and everything\nwill be done inside one process. Give \"auto\"\nto use as many\
@@ -125,11 +115,6 @@ inputs:
   doc: "The output of align_families.py. 6 columns:\n1. (canonical) barcode\n2. order\
     \ (\"ab\" or \"ba\")\n3. mate (\"1\" or \"2\")\n4. read name\n5. aligned sequence\n\
     6. aligned quality scores."
-  type: string
-  inputBinding:
-    position: 0
-- id: in_run_dot
-  doc: 'Logging:'
   type: string
   inputBinding:
     position: 0

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qtip.cwl
+id: qtip.cwl
 inputs:
 - id: in_ref
   doc: "FASTA file, or many FASTAs separated by spaces,\ncontaining reference genome\

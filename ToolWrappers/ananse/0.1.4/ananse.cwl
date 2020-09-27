@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ananse.cwl
+id: ananse.cwl
 inputs:
 - id: in_subcommand
   doc: ''

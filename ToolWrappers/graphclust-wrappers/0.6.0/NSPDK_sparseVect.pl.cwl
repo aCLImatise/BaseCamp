@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NSPDK_sparseVect.pl.cwl
+id: NSPDK_sparseVect.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

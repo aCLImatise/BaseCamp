@@ -23,7 +23,7 @@ task AMASpyReplicate {
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
+    i: "{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}"
     replicateargs__repaln: "REPLICATE_ARGS, --rep-aln REPLICATE_ARGS REPLICATE_ARGS\\nCreate replicate data sets for phylogenetic jackknife\\n[replicates, no alignments for each replicate]"
     out_format: "File format for the output alignment. Default: fasta"
     check_align: "Check if input sequences are aligned. Default: no"

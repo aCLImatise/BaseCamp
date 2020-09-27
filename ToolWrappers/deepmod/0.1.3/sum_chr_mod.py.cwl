@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sum_chr_mod.py.cwl
+id: sum_chr_mod.py.cwl
 inputs:
 - id: in_python
   doc: ''

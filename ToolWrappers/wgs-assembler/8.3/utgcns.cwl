@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../utgcns.cwl
+id: utgcns.cwl
 inputs:
 - id: in_test_computation_unitig
   doc: Test the computation of the unitig layout in 'file'

@@ -32,7 +32,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREADS
     optional: true
-  parent: &id021 !Command
+  parent: &id024 !Command
     command: *id001
     positional: []
     named: []
@@ -63,7 +63,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREADS
         optional: true
-      parent: &id003 !Command
+      parent: &id021 !Command
         command: *id001
         positional: []
         named: []
@@ -94,7 +94,1037 @@ subcommands:
             args: !SimpleFlagArg
               name: THREADS
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: Tcount file(s)
+                position: 0
+                name: tcount
+                optional: false
+              named:
+              - !Flag
+                description: Output directory for mapped BAM files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop collapse [-h] -o OUTPUTDIR [-t THREADS]\
+                \ tcount [tcount ...]\n\npositional arguments:\n  tcount         \
+                \       Tcount file(s)\n\noptional arguments:\n  -h, --help      \
+                \      show this help message and exit\n  -o OUTPUTDIR, --outputDir\
+                \ OUTPUTDIR\n                        Output directory for mapped BAM\
+                \ files.\n  -t THREADS, --threads THREADS\n                      \
+                \  Thread number (default: 1)\n"
+              generated_using: &id005
+              - --help
+            - &id004 !Command
+              command: &id008
+              - alleyoop
+              - dedup
+              positional: []
+              named:
+              - !Flag
+                description: Output directory for mapped BAM files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: "Only select reads with x number of T>C mutations.\n\
+                  (default: 0)"
+                synonyms:
+                - -tc
+                - --tcMutations
+                args: !SimpleFlagArg
+                  name: TCMUTATIONS
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id009
+                - alleyoop
+                - dedup
+                - bam
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: alleyoop
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: dedup
+                  optional: false
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -t
+                  args: !SimpleFlagArg
+                    name: THREADS
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -tc
+                  args: !SimpleFlagArg
+                    name: TCMUTATIONS
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -o
+                  args: !SimpleFlagArg
+                    name: OUTPUTDIR
+                  optional: true
+                parent: *id004
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: ''
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: alleyoop dedup [-h] -o OUTPUTDIR [-tc TCMUTATIONS]\
+                  \ [-t THREADS]\n                      bam [bam ...]\nalleyoop dedup:\
+                  \ error: the following arguments are required: -o/--outputDir\n"
+                generated_using: &id007 []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop dedup [-h] -o OUTPUTDIR [-tc TCMUTATIONS]\
+                \ [-t THREADS]\n                      bam [bam ...]\n\npositional\
+                \ arguments:\n  bam                   Bam file(s)\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -o OUTPUTDIR,\
+                \ --outputDir OUTPUTDIR\n                        Output directory\
+                \ for mapped BAM files.\n  -tc TCMUTATIONS, --tcMutations TCMUTATIONS\n\
+                \                        Only select reads with x number of T>C mutations.\n\
+                \                        (default: 0)\n  -t THREADS, --threads THREADS\n\
+                \                        Thread number (default: 1)\n"
+              generated_using: *id005
+            - !Command
+              command: &id010
+              - alleyoop
+              - read-separator
+              positional:
+              - !Positional
+                description: Bam file(s)
+                position: 0
+                name: bam
+                optional: false
+              named:
+              - !Flag
+                description: Output directory for bam files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: Directory containing SNP files.
+                synonyms:
+                - -s
+                - --snp-directory
+                args: !SimpleFlagArg
+                  name: SNPDIR
+                optional: true
+              - !Flag
+                description: Skip SNP step and provide custom variant file.
+                synonyms:
+                - -v
+                - --vcf
+                args: !SimpleFlagArg
+                  name: VCFFILE
+                optional: true
+              - !Flag
+                description: Reference fasta file
+                synonyms:
+                - -r
+                - --reference
+                args: !SimpleFlagArg
+                  name: REF
+                optional: true
+              - !Flag
+                description: "Number of T>C conversions required to count read as\n\
+                  T>C read (default: 1)"
+                synonyms:
+                - -c
+                - --conversion-threshold
+                args: !SimpleFlagArg
+                  name: CONVERSIONTHRESHOLD
+                optional: true
+              - !Flag
+                description: 'Min base quality for T -> C conversions (default: 27)'
+                synonyms:
+                - -q
+                - --min-base-qual
+                args: !SimpleFlagArg
+                  name: MINQUAL
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop read-separator [-h] -o OUTPUTDIR [-s SNPDIR]\
+                \ [-v VCFFILE] -r\n                               REF [-c CONVERSIONTHRESHOLD]\
+                \ [-q MINQUAL]\n                               [-t THREADS]\n    \
+                \                           bam [bam ...]\n\npositional arguments:\n\
+                \  bam                   Bam file(s)\n\noptional arguments:\n  -h,\
+                \ --help            show this help message and exit\n  -o OUTPUTDIR,\
+                \ --outputDir OUTPUTDIR\n                        Output directory\
+                \ for bam files.\n  -s SNPDIR, --snp-directory SNPDIR\n          \
+                \              Directory containing SNP files.\n  -v VCFFILE, --vcf\
+                \ VCFFILE\n                        Skip SNP step and provide custom\
+                \ variant file.\n  -r REF, --reference REF\n                     \
+                \   Reference fasta file\n  -c CONVERSIONTHRESHOLD, --conversion-threshold\
+                \ CONVERSIONTHRESHOLD\n                        Number of T>C conversions\
+                \ required to count read as\n                        T>C read (default:\
+                \ 1)\n  -q MINQUAL, --min-base-qual MINQUAL\n                    \
+                \    Min base quality for T -> C conversions (default: 27)\n  -t THREADS,\
+                \ --threads THREADS\n                        Thread number (default:\
+                \ 1)\n"
+              generated_using: *id005
+            - !Command
+              command: &id011
+              - alleyoop
+              - dump
+              positional:
+              - !Positional
+                description: Bam file(s)
+                position: 0
+                name: bam
+                optional: false
+              named:
+              - !Flag
+                description: Reference fasta file
+                synonyms:
+                - -r
+                - --reference
+                args: !SimpleFlagArg
+                  name: REFERENCEFILE
+                optional: true
+              - !Flag
+                description: Directory containing SNP files.
+                synonyms:
+                - -s
+                - --snp-directory
+                args: !SimpleFlagArg
+                  name: SNPDIR
+                optional: true
+              - !Flag
+                description: Skip SNP step and provide custom variant file.
+                synonyms:
+                - -v
+                - --vcf
+                args: !SimpleFlagArg
+                  name: VCFFILE
+                optional: true
+              - !Flag
+                description: Output directory for mapped BAM files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: 'Minimal base quality for SNPs (default: 0)'
+                synonyms:
+                - -mq
+                - --min-basequality
+                args: !SimpleFlagArg
+                  name: MQ
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop dump [-h] -r REFERENCEFILE [-s SNPDIR] [-v\
+                \ VCFFILE] -o\n                     OUTPUTDIR [-mq MQ] [-t THREADS]\n\
+                \                     bam [bam ...]\n\npositional arguments:\n  bam\
+                \                   Bam file(s)\n\noptional arguments:\n  -h, --help\
+                \            show this help message and exit\n  -r REFERENCEFILE,\
+                \ --reference REFERENCEFILE\n                        Reference fasta\
+                \ file\n  -s SNPDIR, --snp-directory SNPDIR\n                    \
+                \    Directory containing SNP files.\n  -v VCFFILE, --vcf VCFFILE\n\
+                \                        Skip SNP step and provide custom variant\
+                \ file.\n  -o OUTPUTDIR, --outputDir OUTPUTDIR\n                 \
+                \       Output directory for mapped BAM files.\n  -mq MQ, --min-basequality\
+                \ MQ\n                        Minimal base quality for SNPs (default:\
+                \ 0)\n  -t THREADS, --threads THREADS\n                        Thread\
+                \ number (default: 1)\n"
+              generated_using: *id005
+            - &id006 !Command
+              command: &id012
+              - alleyoop
+              - rates
+              positional: []
+              named:
+              - !Flag
+                description: Output directory for mapped BAM files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: Reference fasta file
+                synonyms:
+                - -r
+                - --reference
+                args: !SimpleFlagArg
+                  name: REFERENCEFILE
+                optional: true
+              - !Flag
+                description: 'Minimal base quality for SNPs (default: 27)'
+                synonyms:
+                - -mq
+                - --min-basequality
+                args: !SimpleFlagArg
+                  name: MQ
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands:
+              - !Command
+                command: &id013
+                - alleyoop
+                - rates
+                - bam
+                positional:
+                - !Positional
+                  description: ''
+                  position: 0
+                  name: alleyoop
+                  optional: false
+                - !Positional
+                  description: ''
+                  position: 1
+                  name: rates
+                  optional: false
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -t
+                  args: !SimpleFlagArg
+                    name: THREADS
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -mq
+                  args: !SimpleFlagArg
+                    name: MQ
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -r
+                  args: !SimpleFlagArg
+                    name: REFERENCEFILE
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -o
+                  args: !SimpleFlagArg
+                    name: OUTPUTDIR
+                  optional: true
+                parent: *id006
+                subcommands: []
+                usage: []
+                help_flag: !Flag
+                  description: ''
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: alleyoop rates [-h] -o OUTPUTDIR -r REFERENCEFILE\
+                  \ [-mq MQ] [-t THREADS]\n                      bam [bam ...]\nalleyoop\
+                  \ rates: error: the following arguments are required: -o/--outputDir,\
+                  \ -r/--reference\n"
+                generated_using: *id007
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop rates [-h] -o OUTPUTDIR -r REFERENCEFILE\
+                \ [-mq MQ] [-t THREADS]\n                      bam [bam ...]\n\npositional\
+                \ arguments:\n  bam                   Bam file(s)\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -o OUTPUTDIR,\
+                \ --outputDir OUTPUTDIR\n                        Output directory\
+                \ for mapped BAM files.\n  -r REFERENCEFILE, --reference REFERENCEFILE\n\
+                \                        Reference fasta file\n  -mq MQ, --min-basequality\
+                \ MQ\n                        Minimal base quality for SNPs (default:\
+                \ 27)\n  -t THREADS, --threads THREADS\n                        Thread\
+                \ number (default: 1)\n"
+              generated_using: *id005
+            - !Command
+              command: &id014
+              - alleyoop
+              - tcperreadpos
+              positional:
+              - !Positional
+                description: Bam file(s)
+                position: 0
+                name: bam
+                optional: false
+              named:
+              - !Flag
+                description: Reference fasta file
+                synonyms:
+                - -r
+                - --reference
+                args: !SimpleFlagArg
+                  name: REFERENCEFILE
+                optional: true
+              - !Flag
+                description: Directory containing SNP files.
+                synonyms:
+                - -s
+                - --snp-directory
+                args: !SimpleFlagArg
+                  name: SNPDIR
+                optional: true
+              - !Flag
+                description: Skip SNP step and provide custom variant file.
+                synonyms:
+                - -v
+                - --vcf
+                args: !SimpleFlagArg
+                  name: VCFFILE
+                optional: true
+              - !Flag
+                description: Max read length in BAM file
+                synonyms:
+                - -l
+                - --max-read-length
+                args: !SimpleFlagArg
+                  name: MAXLENGTH
+                optional: true
+              - !Flag
+                description: Output directory for mapped BAM files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: 'Minimal base quality for SNPs (default: 27)'
+                synonyms:
+                - -mq
+                - --min-basequality
+                args: !SimpleFlagArg
+                  name: MQ
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop tcperreadpos [-h] -r REFERENCEFILE [-s SNPDIR]\
+                \ [-v VCFFILE]\n                             [-l MAXLENGTH] -o OUTPUTDIR\
+                \ [-mq MQ] [-t THREADS]\n                             bam [bam ...]\n\
+                \npositional arguments:\n  bam                   Bam file(s)\n\noptional\
+                \ arguments:\n  -h, --help            show this help message and exit\n\
+                \  -r REFERENCEFILE, --reference REFERENCEFILE\n                 \
+                \       Reference fasta file\n  -s SNPDIR, --snp-directory SNPDIR\n\
+                \                        Directory containing SNP files.\n  -v VCFFILE,\
+                \ --vcf VCFFILE\n                        Skip SNP step and provide\
+                \ custom variant file.\n  -l MAXLENGTH, --max-read-length MAXLENGTH\n\
+                \                        Max read length in BAM file\n  -o OUTPUTDIR,\
+                \ --outputDir OUTPUTDIR\n                        Output directory\
+                \ for mapped BAM files.\n  -mq MQ, --min-basequality MQ\n        \
+                \                Minimal base quality for SNPs (default: 27)\n  -t\
+                \ THREADS, --threads THREADS\n                        Thread number\
+                \ (default: 1)\n"
+              generated_using: *id005
+            - !Command
+              command: &id015
+              - alleyoop
+              - numbers
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: alleyoop
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: alleyoop [-h] [--version]\n                {dedup,collapse,positional-tracks,read-separator,rates,tccontext,utrrates,snpeval,summary,merge,tcperreadpos,tcperutrpos,dump}\n\
+                \                ...\nalleyoop: error: argument command: invalid choice:\
+                \ 'numbers' (choose from 'dedup', 'collapse', 'positional-tracks',\
+                \ 'read-separator', 'rates', 'tccontext', 'utrrates', 'snpeval', 'summary',\
+                \ 'merge', 'tcperreadpos', 'tcperutrpos', 'dump')\n"
+              generated_using: *id005
+            - !Command
+              command: &id016
+              - alleyoop
+              - positional-tracks
+              positional:
+              - !Positional
+                description: Bam file(s)
+                position: 0
+                name: bam
+                optional: false
+              named:
+              - !Flag
+                description: '[-c CONVERSIONTHRESHOLD]'
+                synonyms:
+                - -r
+                args: !SimpleFlagArg
+                  name: REF
+                optional: true
+              - !Flag
+                description: Output directory for bedGraph files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: Directory containing SNP files.
+                synonyms:
+                - -s
+                - --snp-directory
+                args: !SimpleFlagArg
+                  name: SNPDIR
+                optional: true
+              - !Flag
+                description: Skip SNP step and provide custom variant file.
+                synonyms:
+                - -v
+                - --vcf
+                args: !SimpleFlagArg
+                  name: VCFFILE
+                optional: true
+              - !Flag
+                description: Reference fasta file
+                synonyms:
+                - -r
+                - --reference
+                args: !SimpleFlagArg
+                  name: REF
+                optional: true
+              - !Flag
+                description: "Number of T>C conversions required to count read as\n\
+                  T>C read (default: 1)"
+                synonyms:
+                - -c
+                - --conversion-threshold
+                args: !SimpleFlagArg
+                  name: CONVERSIONTHRESHOLD
+                optional: true
+              - !Flag
+                description: "Minimum coverage required to report nucleotide-\nconversion\
+                  \ rate (default: 1). Anything less than 1\nwill be set to 1 to avoid\
+                  \ division by zero."
+                synonyms:
+                - -a
+                - --coverage-cutoff
+                args: !SimpleFlagArg
+                  name: COVERAGECUTOFF
+                optional: true
+              - !Flag
+                description: 'Min base quality for T -> C conversions (default: 27)'
+                synonyms:
+                - -q
+                - --min-base-qual
+                args: !SimpleFlagArg
+                  name: MINQUAL
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop positional-tracks [-h] -o OUTPUTDIR [-s\
+                \ SNPDIR] [-v VCFFILE]\n                                  -r REF [-c\
+                \ CONVERSIONTHRESHOLD]\n                                  [-a COVERAGECUTOFF]\
+                \ [-q MINQUAL]\n                                  [-t THREADS]\n \
+                \                                 bam [bam ...]\n\npositional arguments:\n\
+                \  bam                   Bam file(s)\n\noptional arguments:\n  -h,\
+                \ --help            show this help message and exit\n  -o OUTPUTDIR,\
+                \ --outputDir OUTPUTDIR\n                        Output directory\
+                \ for bedGraph files.\n  -s SNPDIR, --snp-directory SNPDIR\n     \
+                \                   Directory containing SNP files.\n  -v VCFFILE,\
+                \ --vcf VCFFILE\n                        Skip SNP step and provide\
+                \ custom variant file.\n  -r REF, --reference REF\n              \
+                \          Reference fasta file\n  -c CONVERSIONTHRESHOLD, --conversion-threshold\
+                \ CONVERSIONTHRESHOLD\n                        Number of T>C conversions\
+                \ required to count read as\n                        T>C read (default:\
+                \ 1)\n  -a COVERAGECUTOFF, --coverage-cutoff COVERAGECUTOFF\n    \
+                \                    Minimum coverage required to report nucleotide-\n\
+                \                        conversion rate (default: 1). Anything less\
+                \ than 1\n                        will be set to 1 to avoid division\
+                \ by zero.\n  -q MINQUAL, --min-base-qual MINQUAL\n              \
+                \          Min base quality for T -> C conversions (default: 27)\n\
+                \  -t THREADS, --threads THREADS\n                        Thread number\
+                \ (default: 1)\n"
+              generated_using: *id005
+            - !Command
+              command: &id017
+              - alleyoop
+              - summary
+              positional:
+              - !Positional
+                description: "Filtered BAM files (produced by slamdunk filter or\n\
+                  all)"
+                position: 0
+                name: bam
+                optional: false
+              named:
+              - !Flag
+                description: Output file
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: OUTPUTFILE
+                optional: true
+              - !Flag
+                description: "Folder containing tcount files\n"
+                synonyms:
+                - -t
+                - --tcountDir
+                args: !SimpleFlagArg
+                  name: COUNTDIRECTORY
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop summary [-h] -o OUTPUTFILE [-t COUNTDIRECTORY]\
+                \ bam [bam ...]\n\npositional arguments:\n  bam                  \
+                \ Filtered BAM files (produced by slamdunk filter or\n           \
+                \             all)\n\noptional arguments:\n  -h, --help          \
+                \  show this help message and exit\n  -o OUTPUTFILE, --output OUTPUTFILE\n\
+                \                        Output file\n  -t COUNTDIRECTORY, --tcountDir\
+                \ COUNTDIRECTORY\n                        Folder containing tcount\
+                \ files\n"
+              generated_using: *id005
+            - !Command
+              command: &id018
+              - alleyoop
+              - datasets
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: alleyoop
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: alleyoop [-h] [--version]\n                {dedup,collapse,positional-tracks,read-separator,rates,tccontext,utrrates,snpeval,summary,merge,tcperreadpos,tcperutrpos,dump}\n\
+                \                ...\nalleyoop: error: argument command: invalid choice:\
+                \ 'datasets' (choose from 'dedup', 'collapse', 'positional-tracks',\
+                \ 'read-separator', 'rates', 'tccontext', 'utrrates', 'snpeval', 'summary',\
+                \ 'merge', 'tcperreadpos', 'tcperutrpos', 'dump')\n"
+              generated_using: *id005
+            - !Command
+              command: &id019
+              - alleyoop
+              - tcperutrpos
+              positional:
+              - !Positional
+                description: Bam file(s)
+                position: 0
+                name: bam
+                optional: false
+              named:
+              - !Flag
+                description: Reference fasta file
+                synonyms:
+                - -r
+                - --reference
+                args: !SimpleFlagArg
+                  name: REFERENCEFILE
+                optional: true
+              - !Flag
+                description: BED file
+                synonyms:
+                - -b
+                - --bed
+                args: !SimpleFlagArg
+                  name: BED
+                optional: true
+              - !Flag
+                description: Directory containing SNP files.
+                synonyms:
+                - -s
+                - --snp-directory
+                args: !SimpleFlagArg
+                  name: SNPDIR
+                optional: true
+              - !Flag
+                description: Skip SNP step and provide custom variant file.
+                synonyms:
+                - -v
+                - --vcf
+                args: !SimpleFlagArg
+                  name: VCFFILE
+                optional: true
+              - !Flag
+                description: Max read length in BAM file
+                synonyms:
+                - -l
+                - --max-read-length
+                args: !SimpleFlagArg
+                  name: MAXLENGTH
+                optional: true
+              - !Flag
+                description: Output directory for mapped BAM files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: 'Minimal base quality for SNPs (default: 27)'
+                synonyms:
+                - -mq
+                - --min-basequality
+                args: !SimpleFlagArg
+                  name: MQ
+                optional: true
+              - !Flag
+                description: "Thread number (default: 1)\n"
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop tcperutrpos [-h] -r REFERENCEFILE -b BED\
+                \ [-s SNPDIR]\n                            [-v VCFFILE] [-l MAXLENGTH]\
+                \ -o OUTPUTDIR [-mq MQ]\n                            [-t THREADS]\n\
+                \                            bam [bam ...]\n\npositional arguments:\n\
+                \  bam                   Bam file(s)\n\noptional arguments:\n  -h,\
+                \ --help            show this help message and exit\n  -r REFERENCEFILE,\
+                \ --reference REFERENCEFILE\n                        Reference fasta\
+                \ file\n  -b BED, --bed BED     BED file\n  -s SNPDIR, --snp-directory\
+                \ SNPDIR\n                        Directory containing SNP files.\n\
+                \  -v VCFFILE, --vcf VCFFILE\n                        Skip SNP step\
+                \ and provide custom variant file.\n  -l MAXLENGTH, --max-read-length\
+                \ MAXLENGTH\n                        Max read length in BAM file\n\
+                \  -o OUTPUTDIR, --outputDir OUTPUTDIR\n                        Output\
+                \ directory for mapped BAM files.\n  -mq MQ, --min-basequality MQ\n\
+                \                        Minimal base quality for SNPs (default: 27)\n\
+                \  -t THREADS, --threads THREADS\n                        Thread number\
+                \ (default: 1)\n"
+              generated_using: *id005
+            - !Command
+              command: &id020
+              - alleyoop
+              - utrrates
+              positional:
+              - !Positional
+                description: Bam file(s)
+                position: 0
+                name: bam
+                optional: false
+              named:
+              - !Flag
+                description: Output directory for mapped BAM files.
+                synonyms:
+                - -o
+                - --outputDir
+                args: !SimpleFlagArg
+                  name: OUTPUTDIR
+                optional: true
+              - !Flag
+                description: Reference fasta file
+                synonyms:
+                - -r
+                - --reference
+                args: !SimpleFlagArg
+                  name: REFERENCEFILE
+                optional: true
+              - !Flag
+                description: 'Minimal base quality for SNPs (default: 27)'
+                synonyms:
+                - -mq
+                - --min-basequality
+                args: !SimpleFlagArg
+                  name: MQ
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -m
+                - --multiTCStringency
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Thread number (default: 1)'
+                synonyms:
+                - -t
+                - --threads
+                args: !SimpleFlagArg
+                  name: THREADS
+                optional: true
+              - !Flag
+                description: BED file
+                synonyms:
+                - -b
+                - --bed
+                args: !SimpleFlagArg
+                  name: BED
+                optional: true
+              - !Flag
+                description: "Max read length in BAM file (default: None)\n"
+                synonyms:
+                - -l
+                - --max-read-length
+                args: !SimpleFlagArg
+                  name: MAXLENGTH
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: alleyoop utrrates [-h] -o OUTPUTDIR -r REFERENCEFILE\
+                \ [-mq MQ] [-m]\n                         [-t THREADS] -b BED [-l\
+                \ MAXLENGTH]\n                         bam [bam ...]\n\npositional\
+                \ arguments:\n  bam                   Bam file(s)\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  -o OUTPUTDIR,\
+                \ --outputDir OUTPUTDIR\n                        Output directory\
+                \ for mapped BAM files.\n  -r REFERENCEFILE, --reference REFERENCEFILE\n\
+                \                        Reference fasta file\n  -mq MQ, --min-basequality\
+                \ MQ\n                        Minimal base quality for SNPs (default:\
+                \ 27)\n  -m, --multiTCStringency\n  -t THREADS, --threads THREADS\n\
+                \                        Thread number (default: 1)\n  -b BED, --bed\
+                \ BED     BED file\n  -l MAXLENGTH, --max-read-length MAXLENGTH\n\
+                \                        Max read length in BAM file (default: None)\n"
+              generated_using: *id005
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: show program's version number and exit
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "usage: alleyoop [-h] [--version]\n                {dedup,collapse,positional-tracks,read-separator,rates,tccontext,utrrates,snpeval,summary,merge,tcperreadpos,tcperutrpos,dump}\n\
+              \                ...\n\nAlleyOop utility tools and diagnostics for SLAMSeq\
+              \ data\n\npositional arguments:\n  {dedup,collapse,positional-tracks,read-separator,rates,tccontext,utrrates,snpeval,summary,merge,tcperreadpos,tcperutrpos,dump}\n\
+              \    dedup               Deduplicate SLAM-seq aligned data\n    collapse\
+              \            Collapse UTRs\n    positional-tracks   Genome-wide positional\
+              \ tracks as bedgraph\n    read-separator      Separate TC-reads from\
+              \ background reads genome-wide\n    rates               Calculate overall\
+              \ conversion rates on SLAM-seq\n                        datasets\n \
+              \   tccontext           Calculate T->C conversion context on SLAM-seq\
+              \ datasets\n    utrrates            Calculate conversion rates per UTR\
+              \ on SLAM-seq\n                        datasets\n    snpeval       \
+              \      Evaluate SNP calling\n    summary             Display summary\
+              \ information and statistics on read\n                        numbers\n\
+              \    merge               Merge T->C rates from multiple sample in one\
+              \ TSV file\n    tcperreadpos        Calculate conversion rates per read\
+              \ position on SLAM-\n                        seq datasets\n    tcperutrpos\
+              \         Calculate conversion rates per UTR position on SLAM-\n   \
+              \                     seq datasets\n    dump                Print all\
+              \ info available for slamdunk reads\n\noptional arguments:\n  -h, --help\
+              \            show this help message and exit\n  --version          \
+              \   show program's version number and exit\n"
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -112,46 +1142,15 @@ subcommands:
             \ message and exit\n  -o OUTPUTDIR, --outputDir OUTPUTDIR\n          \
             \              Output directory for mapped BAM files.\n  -t THREADS, --threads\
             \ THREADS\n                        Thread number (default: 1)\n"
-          generated_using: &id005
-          - --help
-        - &id004 !Command
-          command: &id008
-          - alleyoop
-          - dedup
+          generated_using: *id005
+        - &id022 !Command
+          command: *id008
           positional: []
-          named:
-          - !Flag
-            description: Output directory for mapped BAM files.
-            synonyms:
-            - -o
-            - --outputDir
-            args: !SimpleFlagArg
-              name: OUTPUTDIR
-            optional: true
-          - !Flag
-            description: "Only select reads with x number of T>C mutations.\n(default:\
-              \ 0)"
-            synonyms:
-            - -tc
-            - --tcMutations
-            args: !SimpleFlagArg
-              name: TCMUTATIONS
-            optional: true
-          - !Flag
-            description: "Thread number (default: 1)\n"
-            synonyms:
-            - -t
-            - --threads
-            args: !SimpleFlagArg
-              name: THREADS
-            optional: true
+          named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id009
-            - alleyoop
-            - dedup
-            - bam
+            command: *id009
             positional:
             - !Positional
               description: ''
@@ -199,15 +1198,9 @@ subcommands:
             help_text: "usage: alleyoop dedup [-h] -o OUTPUTDIR [-tc TCMUTATIONS]\
               \ [-t THREADS]\n                      bam [bam ...]\nalleyoop dedup:\
               \ error: the following arguments are required: -o/--outputDir\n"
-            generated_using: &id007 []
+            generated_using: *id007
           usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "usage: alleyoop dedup [-h] -o OUTPUTDIR [-tc TCMUTATIONS] [-t\
@@ -221,9 +1214,7 @@ subcommands:
             \            Thread number (default: 1)\n"
           generated_using: *id005
         - !Command
-          command: &id010
-          - alleyoop
-          - read-separator
+          command: *id010
           positional:
           - !Positional
             description: Bam file(s)
@@ -319,9 +1310,7 @@ subcommands:
             \ number (default: 1)\n"
           generated_using: *id005
         - !Command
-          command: &id011
-          - alleyoop
-          - dump
+          command: *id011
           positional:
           - !Positional
             description: Bam file(s)
@@ -403,51 +1392,14 @@ subcommands:
             \ 0)\n  -t THREADS, --threads THREADS\n                        Thread\
             \ number (default: 1)\n"
           generated_using: *id005
-        - &id006 !Command
-          command: &id012
-          - alleyoop
-          - rates
+        - &id023 !Command
+          command: *id012
           positional: []
-          named:
-          - !Flag
-            description: Output directory for mapped BAM files.
-            synonyms:
-            - -o
-            - --outputDir
-            args: !SimpleFlagArg
-              name: OUTPUTDIR
-            optional: true
-          - !Flag
-            description: Reference fasta file
-            synonyms:
-            - -r
-            - --reference
-            args: !SimpleFlagArg
-              name: REFERENCEFILE
-            optional: true
-          - !Flag
-            description: 'Minimal base quality for SNPs (default: 27)'
-            synonyms:
-            - -mq
-            - --min-basequality
-            args: !SimpleFlagArg
-              name: MQ
-            optional: true
-          - !Flag
-            description: "Thread number (default: 1)\n"
-            synonyms:
-            - -t
-            - --threads
-            args: !SimpleFlagArg
-              name: THREADS
-            optional: true
+          named: []
           parent: *id003
           subcommands:
           - !Command
-            command: &id013
-            - alleyoop
-            - rates
-            - bam
+            command: *id013
             positional:
             - !Positional
               description: ''
@@ -504,13 +1456,7 @@ subcommands:
               \ error: the following arguments are required: -o/--outputDir, -r/--reference\n"
             generated_using: *id007
           usage: []
-          help_flag: !Flag
-            description: show this help message and exit
-            synonyms:
-            - -h
-            - --help
-            args: !EmptyFlagArg {}
-            optional: true
+          help_flag:
           usage_flag:
           version_flag:
           help_text: "usage: alleyoop rates [-h] -o OUTPUTDIR -r REFERENCEFILE [-mq\
@@ -525,9 +1471,7 @@ subcommands:
             \ number (default: 1)\n"
           generated_using: *id005
         - !Command
-          command: &id014
-          - alleyoop
-          - tcperreadpos
+          command: *id014
           positional:
           - !Positional
             description: Bam file(s)
@@ -620,9 +1564,7 @@ subcommands:
             \              Thread number (default: 1)\n"
           generated_using: *id005
         - !Command
-          command: &id015
-          - alleyoop
-          - numbers
+          command: *id015
           positional:
           - !Positional
             description: ''
@@ -653,9 +1595,7 @@ subcommands:
             \ 'tcperutrpos', 'dump')\n"
           generated_using: *id005
         - !Command
-          command: &id016
-          - alleyoop
-          - positional-tracks
+          command: *id016
           positional:
           - !Positional
             description: Bam file(s)
@@ -773,9 +1713,7 @@ subcommands:
             \ number (default: 1)\n"
           generated_using: *id005
         - !Command
-          command: &id017
-          - alleyoop
-          - summary
+          command: *id017
           positional:
           - !Positional
             description: "Filtered BAM files (produced by slamdunk filter or\nall)"
@@ -820,9 +1758,7 @@ subcommands:
             \                       Folder containing tcount files\n"
           generated_using: *id005
         - !Command
-          command: &id018
-          - alleyoop
-          - datasets
+          command: *id018
           positional:
           - !Positional
             description: ''
@@ -853,9 +1789,7 @@ subcommands:
             \ 'tcperutrpos', 'dump')\n"
           generated_using: *id005
         - !Command
-          command: &id019
-          - alleyoop
-          - tcperutrpos
+          command: *id019
           positional:
           - !Positional
             description: Bam file(s)
@@ -957,9 +1891,7 @@ subcommands:
             \              Thread number (default: 1)\n"
           generated_using: *id005
         - !Command
-          command: &id020
-          - alleyoop
-          - utrrates
+          command: *id020
           positional:
           - !Positional
             description: Bam file(s)
@@ -968,68 +1900,39 @@ subcommands:
             optional: false
           named:
           - !Flag
-            description: Output directory for mapped BAM files.
+            description: ''
             synonyms:
-            - -o
-            - --outputDir
-            args: !SimpleFlagArg
-              name: OUTPUTDIR
+            - -m
+            args: !EmptyFlagArg {}
             optional: true
           - !Flag
-            description: Reference fasta file
-            synonyms:
-            - -r
-            - --reference
-            args: !SimpleFlagArg
-              name: REFERENCEFILE
-            optional: true
-          - !Flag
-            description: 'Minimal base quality for SNPs (default: 27)'
+            description: ''
             synonyms:
             - -mq
-            - --min-basequality
             args: !SimpleFlagArg
               name: MQ
             optional: true
           - !Flag
             description: ''
             synonyms:
-            - -m
-            - --multiTCStringency
-            args: !EmptyFlagArg {}
+            - -r
+            args: !SimpleFlagArg
+              name: REFERENCEFILE
             optional: true
           - !Flag
-            description: 'Thread number (default: 1)'
+            description: ''
             synonyms:
-            - -t
-            - --threads
+            - -o
             args: !SimpleFlagArg
-              name: THREADS
-            optional: true
-          - !Flag
-            description: BED file
-            synonyms:
-            - -b
-            - --bed
-            args: !SimpleFlagArg
-              name: BED
-            optional: true
-          - !Flag
-            description: "Max read length in BAM file (default: None)\n"
-            synonyms:
-            - -l
-            - --max-read-length
-            args: !SimpleFlagArg
-              name: MAXLENGTH
+              name: OUTPUTDIR
             optional: true
           parent: *id003
           subcommands: []
           usage: []
           help_flag: !Flag
-            description: show this help message and exit
+            description: ''
             synonyms:
             - -h
-            - --help
             args: !EmptyFlagArg {}
             optional: true
           usage_flag:
@@ -1049,20 +1952,9 @@ subcommands:
             \ None)\n"
           generated_using: *id005
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: show program's version number and exit
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "usage: alleyoop [-h] [--version]\n                {dedup,collapse,positional-tracks,read-separator,rates,tccontext,utrrates,snpeval,summary,merge,tcperreadpos,tcperutrpos,dump}\n\
           \                ...\n\nAlleyOop utility tools and diagnostics for SLAMSeq\
           \ data\n\npositional arguments:\n  {dedup,collapse,positional-tracks,read-separator,rates,tccontext,utrrates,snpeval,summary,merge,tcperreadpos,tcperutrpos,dump}\n\
@@ -1102,11 +1994,11 @@ subcommands:
         \ for mapped BAM files.\n  -t THREADS, --threads THREADS\n               \
         \         Thread number (default: 1)\n"
       generated_using: *id005
-    - &id022 !Command
+    - &id025 !Command
       command: *id008
       positional: []
       named: []
-      parent: *id003
+      parent: *id021
       subcommands:
       - !Command
         command: *id009
@@ -1143,7 +2035,7 @@ subcommands:
           args: !SimpleFlagArg
             name: OUTPUTDIR
           optional: true
-        parent: *id004
+        parent: *id022
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1237,7 +2129,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREADS
         optional: true
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1323,7 +2215,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREADS
         optional: true
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1348,11 +2240,11 @@ subcommands:
         \                  Minimal base quality for SNPs (default: 0)\n  -t THREADS,\
         \ --threads THREADS\n                        Thread number (default: 1)\n"
       generated_using: *id005
-    - &id023 !Command
+    - &id026 !Command
       command: *id012
       positional: []
       named: []
-      parent: *id003
+      parent: *id021
       subcommands:
       - !Command
         command: *id013
@@ -1396,7 +2288,7 @@ subcommands:
           args: !SimpleFlagArg
             name: OUTPUTDIR
           optional: true
-        parent: *id006
+        parent: *id023
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1490,7 +2382,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREADS
         optional: true
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1526,7 +2418,7 @@ subcommands:
         name: alleyoop
         optional: false
       named: []
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1631,7 +2523,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREADS
         optional: true
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1690,7 +2582,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COUNTDIRECTORY
         optional: true
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1719,7 +2611,7 @@ subcommands:
         name: alleyoop
         optional: false
       named: []
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1814,7 +2706,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREADS
         optional: true
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1878,7 +2770,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTPUTDIR
         optional: true
-      parent: *id003
+      parent: *id021
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1948,7 +2840,7 @@ subcommands:
   command: *id008
   positional: []
   named: []
-  parent: *id021
+  parent: *id024
   subcommands:
   - !Command
     command: *id009
@@ -1985,7 +2877,7 @@ subcommands:
       args: !SimpleFlagArg
         name: OUTPUTDIR
       optional: true
-    parent: *id022
+    parent: *id025
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2079,7 +2971,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREADS
     optional: true
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2164,7 +3056,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREADS
     optional: true
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2193,7 +3085,7 @@ subcommands:
   command: *id012
   positional: []
   named: []
-  parent: *id021
+  parent: *id024
   subcommands:
   - !Command
     command: *id013
@@ -2237,7 +3129,7 @@ subcommands:
       args: !SimpleFlagArg
         name: OUTPUTDIR
       optional: true
-    parent: *id023
+    parent: *id026
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2331,7 +3223,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREADS
     optional: true
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2366,7 +3258,7 @@ subcommands:
     name: alleyoop
     optional: false
   named: []
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2471,7 +3363,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREADS
     optional: true
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2529,7 +3421,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COUNTDIRECTORY
     optional: true
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2557,7 +3449,7 @@ subcommands:
     name: alleyoop
     optional: false
   named: []
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2652,7 +3544,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREADS
     optional: true
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2715,7 +3607,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTPUTDIR
     optional: true
-  parent: *id021
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeRedundant.cwl
+id: removeRedundant.cwl
 inputs:
 - id: in_gff_three
   doc: ''

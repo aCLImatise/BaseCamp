@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../perform_controls.pl.orig.cwl
+id: perform_controls.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_remove_key.cwl
+id: nebulizer_remove_key.cwl
 inputs:
 - id: in_alias
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reverse_bed_ref_fasta.cwl
+id: reverse_bed_ref_fasta.cwl
 inputs:
 - id: in_reverse_bed
   doc: ''

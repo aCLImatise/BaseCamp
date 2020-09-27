@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_profile.cwl
+id: checkm_profile.cwl
 inputs:
 - id: in_file
   doc: 'print results to file (default: stdout)'

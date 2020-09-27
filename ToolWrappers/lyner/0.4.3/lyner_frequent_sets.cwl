@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../lyner_frequent_sets.cwl
+id: lyner_frequent_sets.cwl
 inputs:
 - id: in_min_support
-  doc: ''
+  doc: "--help                   Show this message and exit.\n"
   type: double
   inputBinding:
     prefix: --min-support

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicQC.cwl
+id: hicQC.cwl
 inputs:
 - id: in_log_files
   doc: Path to the log files to be processed

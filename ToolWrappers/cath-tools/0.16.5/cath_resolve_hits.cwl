@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cath_resolve_hits.cwl
+id: cath_resolve_hits.cwl
 inputs:
 - id: in_output_version_information
   doc: '[ --version ]                               Output version information'

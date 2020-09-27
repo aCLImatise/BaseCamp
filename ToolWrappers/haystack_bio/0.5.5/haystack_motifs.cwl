@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haystack_motifs.cwl
+id: haystack_motifs.cwl
 inputs:
 - id: in_motif
   doc: ANALYSIS- [Luca Pinello - lpinello@jimmy.harvard.edu]

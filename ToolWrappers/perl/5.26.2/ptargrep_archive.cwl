@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptargrep_archive.cwl
+id: ptargrep_archive.cwl
 inputs:
 - id: in_basename
   doc: ignore directory paths from archive

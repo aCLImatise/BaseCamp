@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CorrectFromMapBasics.py.cwl
+id: CorrectFromMapBasics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

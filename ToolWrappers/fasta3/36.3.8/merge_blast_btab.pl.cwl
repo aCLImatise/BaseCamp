@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_blast_btab.pl.cwl
+id: merge_blast_btab.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

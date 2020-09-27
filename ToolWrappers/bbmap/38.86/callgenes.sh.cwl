@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../callgenes.sh.cwl
+id: callgenes.sh.cwl
 inputs:
 - id: in_in
   doc: ''

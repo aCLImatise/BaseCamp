@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpPBRLayoutStore.cwl
+id: dumpPBRLayoutStore.cwl
 inputs: []
 outputs:
 - id: out_stdout

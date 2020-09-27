@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mutplot.cwl
+id: mutplot.cwl
 inputs:
 - id: in__vcf_vcf
   doc: ", --vcf            VCF file which contains cultivar and mutant bulk.\nin this\

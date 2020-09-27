@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runGMES.cwl
+id: runGMES.cwl
 inputs:
 - id: in_basename
   doc: ''

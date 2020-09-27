@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spacedToTab_in.txt.cwl
+id: spacedToTab_in.txt.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

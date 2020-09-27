@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ShortStack.cwl
+id: ShortStack.cwl
 inputs:
 - id: in_genome_file
   doc: '[string] : path to reference genome in .fasta or .fa format. Required for

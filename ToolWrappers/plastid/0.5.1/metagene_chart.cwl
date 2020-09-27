@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagene_chart.cwl
+id: metagene_chart.cwl
 inputs:
 - id: in_labels
   doc: Sample names for each metagene profile (optional).

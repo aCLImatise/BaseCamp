@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_pp_rst_file.py.cwl
+id: make_pp_rst_file.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rdkit2fps.cwl
+id: rdkit2fps.cwl
 inputs:
 - id: in_fp_size
   doc: "number of bits in the fingerprint. Default of 2048 for\nRDK, Morgan, topological\

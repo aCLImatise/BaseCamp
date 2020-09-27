@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarnap_realign_all.pl.cwl
+id: locarnap_realign_all.pl.cwl
 inputs:
 - id: in_man
   doc: Full documentation

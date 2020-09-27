@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_resume.pl.cwl
+id: ffindex_resume.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

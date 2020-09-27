@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtsv_chunk_FLAGS.cwl
+id: mtsv_chunk_FLAGS.cwl
 inputs:
 - id: in_output
   doc: ''

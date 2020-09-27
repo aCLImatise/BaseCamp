@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refinem_genome_stats.cwl
+id: refinem_genome_stats.cwl
 inputs:
 - id: in_cpus
   doc: 'number of CPUs to use (default: 1)'

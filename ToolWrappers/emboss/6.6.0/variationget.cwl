@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../variationget.cwl
+id: variationget.cwl
 inputs:
 - id: in_variation
   doc: ': enter variation value: Error: Unable to get reply from user - end of standard

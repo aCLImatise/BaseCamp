@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minipolish.cwl
+id: minipolish.cwl
 inputs:
 - id: in_threads
   doc: "Number of threads to use for alignment and polishing\n(default: 8)"

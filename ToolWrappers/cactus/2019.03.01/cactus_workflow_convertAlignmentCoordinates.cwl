@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_workflow_convertAlignmentCoordinates.cwl
+id: cactus_workflow_convertAlignmentCoordinates.cwl
 inputs: []
 outputs:
 - id: out_stdout

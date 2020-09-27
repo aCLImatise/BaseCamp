@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_metagene_pc_table.cwl
+id: mb_plot_metagene_pc_table.cwl
 inputs:
 - id: in_downstream_bp
   doc: ''

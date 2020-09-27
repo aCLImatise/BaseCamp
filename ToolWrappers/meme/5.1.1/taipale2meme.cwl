@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taipale2meme.cwl
+id: taipale2meme.cwl
 inputs:
 - id: in_postfix
   doc: text to append to motif names.

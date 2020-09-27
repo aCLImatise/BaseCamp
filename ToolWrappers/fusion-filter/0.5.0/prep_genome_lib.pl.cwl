@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prep_genome_lib.pl.cwl
+id: prep_genome_lib.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

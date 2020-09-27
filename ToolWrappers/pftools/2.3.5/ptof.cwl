@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptof.cwl
+id: ptof.cwl
 inputs:
 - id: in_impose_limit_line
   doc: ': do not impose limit on line length.'

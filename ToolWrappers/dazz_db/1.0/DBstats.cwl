@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBstats.cwl
+id: DBstats.cwl
 inputs:
 - id: in_nu
   doc: ''

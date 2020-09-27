@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgt_print_tiernames.py.cwl
+id: tgt_print_tiernames.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

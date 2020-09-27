@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_dump.cwl
+id: sam_dump.cwl
 inputs:
 - id: in_unaligned
   doc: output unaligned reads along with aligned

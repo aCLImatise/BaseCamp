@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafft_sparsecore.rb.cwl
+id: mafft_sparsecore.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

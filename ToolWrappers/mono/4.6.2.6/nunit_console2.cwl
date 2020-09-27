@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nunit_console2.cwl
+id: nunit_console2.cwl
 inputs:
 - id: in_fixture
   doc: 'Test fixture to be loaded (Short format: -load=STR)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graftM_graft.cwl
+id: graftM_graft.cwl
 inputs:
 - id: in_forward
   doc: Path to the reads you wish to run through GraftM, either in fasta (.fa) or

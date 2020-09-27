@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gem.pmemd.cwl
+id: gem.pmemd.cwl
 inputs:
 - id: in_r
   doc: ''

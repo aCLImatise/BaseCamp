@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chgrp.cwl
+id: chgrp.cwl
 inputs:
 - id: in_changes
   doc: like verbose but report only when a change is made

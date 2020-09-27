@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_task.cwl
+id: varda2_client_task.cwl
 inputs:
 - id: in_uuid
   doc: Task UUID

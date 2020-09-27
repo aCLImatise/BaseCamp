@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_3.6_xml.cwl
+id: coverage_3.6_xml.cwl
 inputs:
 - id: in_fail_under
   doc: "Exit with a status of 2 if the total coverage is less\nthan MIN."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_ssdraw_msafile.cwl
+id: esl_ssdraw_msafile.cwl
 inputs:
 - id: in_ss_postscript_template
   doc: ''

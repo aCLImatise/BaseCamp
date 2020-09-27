@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go.sum.cwl
+id: go.sum.cwl
 inputs: []
 outputs:
 - id: out_stdout

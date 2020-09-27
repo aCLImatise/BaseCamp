@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSE2mzML.py.cwl
+id: MSE2mzML.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

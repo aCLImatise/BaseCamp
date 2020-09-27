@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctgvalidate.cwl
+id: ctgvalidate.cwl
 inputs: []
 outputs:
 - id: out_stdout

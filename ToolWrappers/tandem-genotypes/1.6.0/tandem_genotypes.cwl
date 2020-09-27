@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tandem_genotypes.cwl
+id: tandem_genotypes.cwl
 inputs:
 - id: in_genes
   doc: read genes from a genePred or BED file

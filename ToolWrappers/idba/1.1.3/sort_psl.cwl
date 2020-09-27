@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_psl.cwl
+id: sort_psl.cwl
 inputs:
 - id: in_validate_contigs_blat
   doc: ''

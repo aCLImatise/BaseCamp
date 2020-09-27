@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_tail.cwl
+id: smof_tail.cwl
 inputs:
 - id: in_entries
   doc: "print last K entries; or use -n +K to output starting\nwith the Kth"

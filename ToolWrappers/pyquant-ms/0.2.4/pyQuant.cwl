@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyQuant.cwl
+id: pyQuant.cwl
 inputs:
 - id: in_threads_run_default
   doc: 'Threads to run (default: 1)'

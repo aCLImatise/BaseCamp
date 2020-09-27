@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaptamer_compare.cwl
+id: fastaptamer_compare.cwl
 inputs:
 - id: in_a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_version.cwl
+id: ariba_version.cwl
 inputs:
 - id: in_ariba
   doc: ''

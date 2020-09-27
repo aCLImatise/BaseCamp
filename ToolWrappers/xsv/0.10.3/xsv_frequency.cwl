@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_frequency.cwl
+id: xsv_frequency.cwl
 inputs:
 - id: in_select
   doc: "Select a subset of columns to compute frequencies\nfor. See 'xsv select --help'\

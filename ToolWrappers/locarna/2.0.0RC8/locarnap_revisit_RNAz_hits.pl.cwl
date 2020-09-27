@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarnap_revisit_RNAz_hits.pl.cwl
+id: locarnap_revisit_RNAz_hits.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

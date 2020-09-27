@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simple_numeric_bow_union.py.cwl
+id: simple_numeric_bow_union.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

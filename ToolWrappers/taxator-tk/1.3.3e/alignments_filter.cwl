@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignments_filter.cwl
+id: alignments_filter.cwl
 inputs:
 - id: in_arg_set_filter_value
   doc: '[ --min-score ] arg (=0)           set min-score filter value'

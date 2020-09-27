@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadbit_segment.cwl
+id: tadbit_segment.cwl
 inputs:
 - id: in_workdir
   doc: path to working directory (generated with the tool tadbit mapper)

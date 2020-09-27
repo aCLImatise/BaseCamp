@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MAnormFast.cwl
+id: MAnormFast.cwl
 inputs: []
 outputs:
 - id: out_stdout

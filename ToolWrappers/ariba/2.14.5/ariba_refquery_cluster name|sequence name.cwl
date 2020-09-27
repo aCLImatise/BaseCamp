@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_refquery_cluster name|sequence name.cwl
+id: ariba_refquery_cluster name|sequence name.cwl
 inputs:
 - id: in_ariba
   doc: ''

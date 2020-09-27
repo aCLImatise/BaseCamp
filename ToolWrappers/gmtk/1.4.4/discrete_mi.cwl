@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../discrete_mi.cwl
+id: discrete_mi.cwl
 inputs:
 - id: in_input_pfile
   doc: input pfile

@@ -2,7 +2,7 @@ version 1.0
 
 task TomboPlotMotifCentered {
   input {
-    String? genome_fast_a
+    Int? genome_fast_a
     Array[Int] fast_five_based_irs
     String? motif
     Array[Int] control_fast_five_based_irs
@@ -41,7 +41,7 @@ task TomboPlotMotifCentered {
       ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    genome_fast_a: ""
+    genome_fast_a: "[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]]\\n[--tombo-model-filename TOMBO_MODEL_FILENAME]\\n[--alternate-model-filename ALTERNATE_MODEL_FILENAME]\\n[--plot-standard-model]\\n[--plot-alternate-model {5mC}]\\n[--overplot-threshold OVERPLOT_THRESHOLD]\\n[--overplot-type {Downsample,Boxplot,Quantile,Density}]\\n[--num-regions NUM_REGIONS]\\n[--num-bases NUM_BASES] [--deepest-coverage]\\n[--pdf-filename PDF_FILENAME]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
     fast_five_based_irs: "Directories containing fast5 files."
     motif: "Motif of interest at which to plot signal and\\nstatsitics. Supports IUPAC single letter codes (use T\\nfor RNA)."
     control_fast_five_based_irs: "Control set of directories containing fast5 files.\\nThese reads should contain only standard nucleotides."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../curlywhirly.cwl
+id: curlywhirly.cwl
 inputs: []
 outputs:
 - id: out_stdout

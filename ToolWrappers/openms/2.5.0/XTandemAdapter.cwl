@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../XTandemAdapter.cwl
+id: XTandemAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                        Input file containing MS2 spectra (valid formats:\

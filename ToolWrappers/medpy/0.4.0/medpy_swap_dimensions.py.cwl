@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_swap_dimensions.py.cwl
+id: medpy_swap_dimensions.py.cwl
 inputs:
 - id: in_display_more_information
   doc: Display more information.

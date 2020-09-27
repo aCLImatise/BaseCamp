@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly.py_trim_fasta.cwl
+id: assembly.py_trim_fasta.cwl
 inputs:
 - id: in_loglevel
   doc: 'Verboseness of output. [default: DEBUG]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rust_predict_profiles.cwl
+id: rust_predict_profiles.cwl
 inputs:
 - id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "predict_profiles"

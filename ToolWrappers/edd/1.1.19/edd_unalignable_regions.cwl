@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edd_unalignable_regions.cwl
+id: edd_unalignable_regions.cwl
 inputs:
 - id: in_fdr
   doc: ''

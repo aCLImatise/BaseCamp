@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclLoadBlast.cwl
+id: orthomclLoadBlast.cwl
 inputs:
 - id: in_config_file
   doc: ''

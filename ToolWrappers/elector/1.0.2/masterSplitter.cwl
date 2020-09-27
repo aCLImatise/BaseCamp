@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../masterSplitter.cwl
+id: masterSplitter.cwl
 inputs: []
 outputs:
 - id: out_stdout

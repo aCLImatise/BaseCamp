@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rMETL_STAGE.cwl
+id: rMETL_STAGE.cwl
 inputs:
 - id: in_rm_etl
   doc: ''

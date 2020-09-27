@@ -1,32 +1,14 @@
 class: CommandLineTool
-id: ../../../emapper.py.cwl
+id: emapper.py.cwl
 inputs:
 - id: in_guess_db
-  doc: guess eggnog db based on the provided taxid
+  doc: "guess eggnog db based on the provided taxid\n--database , -d       specify\
+    \ the target database for sequence searches.\nChoose among: euk,bact,arch, host:port,\
+    \ or a local\nhmmpressed database\n--dbtype {hmmdb,seqdb}\n--data_dir        \
+    \    Directory to use for DATA_PATH.\n--qtype {hmm,seq}"
   type: boolean
   inputBinding:
     prefix: --guessdb
-- id: in_database
-  doc: ", -d       specify the target database for sequence searches.\nChoose among:\
-    \ euk,bact,arch, host:port, or a local\nhmmpressed database"
-  type: boolean
-  inputBinding:
-    prefix: --database
-- id: in_dbtype
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --dbtype
-- id: in_data_dir
-  doc: Directory to use for DATA_PATH.
-  type: boolean
-  inputBinding:
-    prefix: --data_dir
-- id: in_q_type
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --qtype
 - id: in_tax_scope
   doc: "Fix the taxonomic scope used for annotation, so only\northologs from a particular\
     \ clade are used for\nfunctional transfer. By default, this is automatically\n\
@@ -234,6 +216,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --annotate_hits_table
+- id: in_dbtype
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --dbtype
+- id: in_database
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --database
 - id: in_files
   doc: --keep_mapping_files  Do not delete temporary mapping files used for
   type: string

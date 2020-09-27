@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitevd.cwl
+id: fitevd.cwl
 inputs:
 - id: in_q
   doc: ''

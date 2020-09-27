@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_zones.cwl
+id: gcloud_compute_zones.cwl
 inputs:
 - id: in_optional
   doc: ''

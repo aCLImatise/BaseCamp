@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../optimir_process.cwl
+id: optimir_process.cwl
 inputs:
 - id: in_fq
   doc: "Full path of the sample fastq file (accepted formats\nand extensions: fastq,\

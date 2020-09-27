@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertrecfile.pl.cwl
+id: convertrecfile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

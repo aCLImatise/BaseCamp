@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_modify.cwl
+id: ffindex_modify.cwl
 inputs:
 - id: in_sort_index_file
   doc: sort index file

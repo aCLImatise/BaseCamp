@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_sample_arguments.cwl
+id: amptk_sample_arguments.cwl
 inputs:
 - id: in_o
   doc: ''

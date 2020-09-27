@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersect_uid_lists.cwl
+id: intersect_uid_lists.cwl
 inputs:
 - id: in_ignore_leading_blanks
   doc: Ignore leading blanks

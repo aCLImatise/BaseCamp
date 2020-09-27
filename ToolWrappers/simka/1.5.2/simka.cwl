@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simka.cwl
+id: simka.cwl
 inputs:
 - id: in_in
   doc: '(1 arg) :    input file of samples. One sample per line: id1: filename1...'

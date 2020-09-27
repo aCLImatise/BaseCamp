@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophane_target.cwl
+id: prophane_target.cwl
 inputs:
 - id: in_list_dbs
   doc: "print list of configured databases\ndatabases are looked up in 'db_base_dir'\

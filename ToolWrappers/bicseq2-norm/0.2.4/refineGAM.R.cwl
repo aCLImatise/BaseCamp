@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refineGAM.R.cwl
+id: refineGAM.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

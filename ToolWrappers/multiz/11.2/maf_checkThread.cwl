@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_checkThread.cwl
+id: maf_checkThread.cwl
 inputs: []
 outputs:
 - id: out_stdout

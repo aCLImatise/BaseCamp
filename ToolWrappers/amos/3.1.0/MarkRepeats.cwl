@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MarkRepeats.cwl
+id: MarkRepeats.cwl
 inputs:
 - id: in_no_coverage_repeats
   doc: ''

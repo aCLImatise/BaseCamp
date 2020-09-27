@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_strain_test.cwl
+id: deepac_strain_test.cwl
 inputs:
 - id: in_n_cpus
   doc: Number of CPU cores.

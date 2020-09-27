@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_filtergraph.cwl
+id: abyss_filtergraph.cwl
 inputs:
 - id: in_km_er
   doc: k-mer size

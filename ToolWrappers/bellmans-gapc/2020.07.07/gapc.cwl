@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gapc.cwl
+id: gapc.cwl
 inputs:
 - id: in_try_inline_nts
   doc: '[ --inline ]              try to inline NTs'

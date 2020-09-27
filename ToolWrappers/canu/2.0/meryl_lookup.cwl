@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meryl_lookup.cwl
+id: meryl_lookup.cwl
 inputs:
 - id: in_sequence
   doc: '[<input2.fasta>] \'
@@ -16,11 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mers
-- id: in_labels
-  doc: <input1name>   [<input2name>]   [...]
-  type: boolean
-  inputBinding:
-    prefix: -labels
 - id: in_min
   doc: m    Ignore kmers with value below m
   type: boolean

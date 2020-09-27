@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cd_hit_div.cwl
+id: cd_hit_div.cwl
 inputs:
 - id: in_i
   doc: ', required'

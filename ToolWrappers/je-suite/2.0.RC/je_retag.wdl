@@ -3,8 +3,6 @@ version 1.0
 task JeRetag {
   input {
     Boolean? displays_options_specific
-    Boolean? std_help
-    Boolean? displays_options_and
     String header_dot
     String using
     String line_dot
@@ -18,14 +16,10 @@ task JeRetag {
       ~{line_dot} \
       ~{act_gtac} \
       ~{null_dot} \
-      ~{if (displays_options_specific) then "-h" else ""} \
-      ~{if (std_help) then "--stdhelp" else ""} \
-      ~{if (displays_options_and) then "-H" else ""}
+      ~{if (displays_options_specific) then "-H" else ""}
   >>>
   parameter_meta {
-    displays_options_specific: "Displays options specific to this tool."
-    std_help: ""
-    displays_options_and: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
+    displays_options_specific: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
     header_dot: "Counting starts at 1 and negative numbers can be used to start counting from the end "
     using: "a hyphen ('-'). The order of concatenation follows the order of UMI_SLOT in the command "
     line_dot: "For example, consider the following read name that lists 3 different sequence codes in "

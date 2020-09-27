@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zlib.net.dll.cwl
+id: zlib.net.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

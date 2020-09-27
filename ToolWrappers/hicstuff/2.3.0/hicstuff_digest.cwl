@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_digest.cwl
+id: hicstuff_digest.cwl
 inputs:
 - id: in_circular
   doc: Specify if the genome is circular.

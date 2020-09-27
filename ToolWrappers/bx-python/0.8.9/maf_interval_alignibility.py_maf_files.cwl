@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_interval_alignibility.py_maf_files.cwl
+id: maf_interval_alignibility.py_maf_files.cwl
 inputs:
 - id: in_species
   doc: ': Comma separated list of species to include'

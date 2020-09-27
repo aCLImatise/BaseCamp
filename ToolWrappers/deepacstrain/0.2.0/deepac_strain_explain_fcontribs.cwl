@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_strain_explain_fcontribs.cwl
+id: deepac_strain_explain_fcontribs.cwl
 inputs:
 - id: in_model
   doc: Model file (.h5)
@@ -85,11 +85,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -t
-- id: in_centered
-  doc: -t TEST_DATA, --test_data TEST_DATA
+- id: in_deep_ac
+  doc: ''
   type: string
   inputBinding:
     position: 0
+- id: in_explain
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_f_contribs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

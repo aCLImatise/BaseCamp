@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxon_filter.py_deplete_blastn_bam.cwl
+id: taxon_filter.py_deplete_blastn_bam.cwl
 inputs:
 - id: in_threads
   doc: The number of threads to use in running blastn.

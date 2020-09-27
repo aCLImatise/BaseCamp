@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersectBed.cwl
+id: intersectBed.cwl
 inputs:
 - id: in_wa
   doc: Write the original entry in A for each overlap.

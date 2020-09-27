@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gof3r.cwl
+id: gof3r.cwl
 inputs:
 - id: in_man_page
   doc: Create gof3r.man man page in current directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_reps_blat.py.cwl
+id: find_reps_blat.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

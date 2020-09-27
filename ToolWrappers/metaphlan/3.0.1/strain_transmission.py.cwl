@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strain_transmission.py.cwl
+id: strain_transmission.py.cwl
 inputs:
 - id: in_tree
   doc: The input tree file

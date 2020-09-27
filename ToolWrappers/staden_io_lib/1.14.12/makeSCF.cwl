@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeSCF.cwl
+id: makeSCF.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_hint_tracks.cwl
+id: rgt_hint_tracks.cwl
 inputs:
 - id: in_organism
   doc: "Organism considered on the analysis. Must have been\nsetup in the RGTDATA\

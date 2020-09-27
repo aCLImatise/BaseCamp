@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CometAdapter.cwl
+id: CometAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                            Input file (valid formats: 'mzML')"

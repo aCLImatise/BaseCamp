@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roc.cwl
+id: roc.cwl
 inputs:
 - id: in_verbose
   doc: show verbose information (to stderr)

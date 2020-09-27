@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slivar_duo_del.cwl
+id: slivar_duo_del.cwl
 inputs:
 - id: in_ped
   doc: required ped file describing the duos in the VCF

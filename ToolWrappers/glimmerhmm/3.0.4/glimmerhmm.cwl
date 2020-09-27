@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glimmerhmm.cwl
+id: glimmerhmm.cwl
 inputs:
 - id: in_protein_domain_searches
   doc: If protein domain searches are available, read them from file file_name

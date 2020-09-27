@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_interleave_fastq.cwl
+id: dsh_interleave_fastq.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

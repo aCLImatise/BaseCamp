@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pan_pipe.cwl
+id: pan_pipe.cwl
 inputs:
 - id: in_threads
   doc: Number of threads to use for parallel commands. Will be overridden by values

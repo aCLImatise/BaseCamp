@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mpiswipe.cwl
+id: mpiswipe.cwl
 inputs: []
 outputs:
 - id: out_stdout

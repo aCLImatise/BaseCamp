@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../long_spanning_reads.cwl
+id: long_spanning_reads.cwl
 inputs:
 - id: in_reads_dot_fa_slashdot_fq
   doc: ''

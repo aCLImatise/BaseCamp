@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scpred_train_test_split.R.cwl
+id: scpred_train_test_split.R.cwl
 inputs:
 - id: in_input_sce_object
   doc: Path to the input SCE object in .rds format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_export.cwl
+id: treebest_export.cwl
 inputs:
 - id: in_width
   doc: width [640]

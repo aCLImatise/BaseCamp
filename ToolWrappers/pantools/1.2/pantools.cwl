@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pantools.cwl
+id: pantools.cwl
 inputs: []
 outputs:
 - id: out_stdout

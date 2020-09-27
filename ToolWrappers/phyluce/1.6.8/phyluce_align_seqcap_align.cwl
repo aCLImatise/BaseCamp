@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_seqcap_align.cwl
+id: phyluce_align_seqcap_align.cwl
 inputs:
 - id: in_fast_a
   doc: "The file containing FASTA reads associated with\ntargted loci from get_fastas_from_match_counts.py\n\

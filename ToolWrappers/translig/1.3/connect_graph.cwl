@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../connect_graph.cwl
+id: connect_graph.cwl
 inputs: []
 outputs:
 - id: out_stdout

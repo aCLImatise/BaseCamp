@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dataproc_diagnose.cwl
+id: hailctl_dataproc_diagnose.cwl
 inputs:
 - id: in_dest
   doc: Directory for diagnose output -- must be local.

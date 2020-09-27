@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_jsontab.cwl
+id: rgi_jsontab.cwl
 inputs:
 - id: in_a_file
   doc: "must be a json file generated from RGI in JSON or gzip\nformat e.g out.json,\

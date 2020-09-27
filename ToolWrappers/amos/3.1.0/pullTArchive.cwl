@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pullTArchive.cwl
+id: pullTArchive.cwl
 inputs: []
 outputs:
 - id: out_stdout

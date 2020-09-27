@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../initializeDatasource.cwl
+id: initializeDatasource.cwl
 inputs:
-- id: in_ds_folder_name
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --ds_foldername
-- id: in_genome_build
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --genome_build
 - id: in_ds_type
   doc: datasource type.  Type of datasource to create.
   type: string
@@ -27,6 +17,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --name
+- id: in_db_dir
+  doc: Main datasource directory that contains other datasources.  I.e. the destination
+    directory for the newly created datasource.
+  type: Directory
+  inputBinding:
+    prefix: --dbDir
+- id: in_ds_folder_name
+  doc: Name of the folder that should appear in dbDir
+  type: Directory
+  inputBinding:
+    prefix: --ds_foldername
+- id: in_genome_build
+  doc: Genome build.  For example, hg19.
+  type: string
+  inputBinding:
+    prefix: --genome_build
 - id: in_index_columns
   doc: Comma separated list of index columns.  MUST be the name of the columns and
     each row must have unique values across all index columns.

@@ -9,8 +9,6 @@ task ChicAggregateStatistic {
     File? target_file_folder
     Directory? output_folder
     File? write_filenames_to_file
-    Boolean? batch_mode
-    Int? threads
   }
   command <<<
     chicAggregateStatistic \
@@ -20,9 +18,7 @@ task ChicAggregateStatistic {
       ~{if defined(interaction_file_folder) then ("--interactionFileFolder " +  '"' + interaction_file_folder + '"') else ""} \
       ~{if defined(target_file_folder) then ("--targetFileFolder " +  '"' + target_file_folder + '"') else ""} \
       ~{if defined(output_folder) then ("--outputFolder " +  '"' + output_folder + '"') else ""} \
-      ~{if defined(write_filenames_to_file) then ("--writeFileNamesToFile " +  '"' + write_filenames_to_file + '"') else ""} \
-      ~{if (batch_mode) then "--batchMode" else ""} \
-      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
+      ~{if defined(write_filenames_to_file) then ("--writeFileNamesToFile " +  '"' + write_filenames_to_file + '"') else ""}
   >>>
   parameter_meta {
     interaction_file: "path to the interaction files which should be used for\\naggregation of the statistics."
@@ -31,9 +27,7 @@ task ChicAggregateStatistic {
     interaction_file_folder: "Folder where the interaction files are stored. Applies\\nonly for batch mode."
     target_file_folder: "Folder where the target files are stored. Applies only\\nfor batch mode."
     output_folder: "Output folder containing the files."
-    write_filenames_to_file: ""
-    batch_mode: "turns on batch mode. The files provided by"
-    threads: "Number of threads (uses the python multiprocessing\\nmodule)."
+    write_filenames_to_file: "--batchMode, -bm      turns on batch mode. The files provided by\\n--interactionFile and/or --targetFile contain a list\\nof the files to be processed.\\n--threads THREADS, -t THREADS\\nNumber of threads (uses the python multiprocessing\\nmodule).\\n--help, -h            show this help message and exit\\n--version             show program's version number and exit\\n"
   }
   output {
     File out_stdout = stdout()

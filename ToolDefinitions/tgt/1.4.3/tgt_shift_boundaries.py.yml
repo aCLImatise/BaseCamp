@@ -37,7 +37,7 @@ subcommands:
     args: !SimpleFlagArg
       name: ENCODING
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -73,34 +73,10 @@ subcommands:
         args: !SimpleFlagArg
           name: ENCODING
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: file encoding (default "utf-8")
-          synonyms:
-          - -e
-          - --encoding
-          args: !SimpleFlagArg
-            name: ENCODING
-          optional: true
-        - !Flag
-          description: the output format (default "short")
-          synonyms:
-          - -f
-          - --format
-          args: !SimpleFlagArg
-            name: FORMAT
-          optional: true
-        - !Flag
-          description: "the output file (defaults to\ninputfile.shifted.Extension)\n"
-          synonyms:
-          - -o
-          - --outfile
-          args: !SimpleFlagArg
-            name: OUTFILE
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -133,7 +109,151 @@ subcommands:
             args: !SimpleFlagArg
               name: ENCODING
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: file encoding (default "utf-8")
+              synonyms:
+              - -e
+              - --encoding
+              args: !SimpleFlagArg
+                name: ENCODING
+              optional: true
+            - !Flag
+              description: the output format (default "short")
+              synonyms:
+              - -f
+              - --format
+              args: !SimpleFlagArg
+                name: FORMAT
+              optional: true
+            - !Flag
+              description: "the output file (defaults to\ninputfile.shifted.Extension)\n"
+              synonyms:
+              - -o
+              - --outfile
+              args: !SimpleFlagArg
+                name: OUTFILE
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: tgt-shift-boundaries.py
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: OUTFILE
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -f
+                args: !SimpleFlagArg
+                  name: FORMAT
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -e
+                args: !SimpleFlagArg
+                  name: ENCODING
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: tgt-shift-boundaries.py [-h] [-e ENCODING] [-f FORMAT]\
+                \ [-o OUTFILE]\n                               shift file\ntgt-shift-boundaries.py:\
+                \ error: argument shift: invalid float value: 'file'\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - tgt-shift-boundaries.py
+              - shift
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: tgt-shift-boundaries.py
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: OUTFILE
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -f
+                args: !SimpleFlagArg
+                  name: FORMAT
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -e
+                args: !SimpleFlagArg
+                  name: ENCODING
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: tgt-shift-boundaries.py [-h] [-e ENCODING] [-f FORMAT]\
+                \ [-o OUTFILE]\n                               shift file\ntgt-shift-boundaries.py:\
+                \ error: argument shift: invalid float value: 'shift'\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: tgt-shift-boundaries.py [-h] [-e ENCODING] [-f FORMAT]\
+              \ [-o OUTFILE]\n                               shift file\n\npositional\
+              \ arguments:\n  shift                 offset by which to shift the boundaries\
+              \ (positive or\n                        negative)\n  file          \
+              \        the textgrid file\n\noptional arguments:\n  -h, --help    \
+              \        show this help message and exit\n  -e ENCODING, --encoding\
+              \ ENCODING\n                        file encoding (default \"utf-8\"\
+              )\n  -f FORMAT, --format FORMAT\n                        the output\
+              \ format (default \"short\")\n  -o OUTFILE, --outfile OUTFILE\n    \
+              \                    the output file (defaults to\n                \
+              \        inputfile.shifted.Extension)\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -147,12 +267,9 @@ subcommands:
           help_text: "usage: tgt-shift-boundaries.py [-h] [-e ENCODING] [-f FORMAT]\
             \ [-o OUTFILE]\n                               shift file\ntgt-shift-boundaries.py:\
             \ error: argument shift: invalid float value: 'file'\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - tgt-shift-boundaries.py
-          - shift
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -197,13 +314,7 @@ subcommands:
             \ error: argument shift: invalid float value: 'shift'\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: tgt-shift-boundaries.py [-h] [-e ENCODING] [-f FORMAT]\
@@ -261,7 +372,7 @@ subcommands:
         args: !SimpleFlagArg
           name: ENCODING
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -334,7 +445,7 @@ subcommands:
     args: !SimpleFlagArg
       name: ENCODING
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

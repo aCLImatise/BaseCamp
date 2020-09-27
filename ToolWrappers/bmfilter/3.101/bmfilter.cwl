@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bmfilter.cwl
+id: bmfilter.cwl
 inputs:
 - id: in_quality_channels
   doc: -q 0           Number of quality channers for reads (0|1)

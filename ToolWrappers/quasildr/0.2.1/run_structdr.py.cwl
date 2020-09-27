@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_structdr.py.cwl
+id: run_structdr.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

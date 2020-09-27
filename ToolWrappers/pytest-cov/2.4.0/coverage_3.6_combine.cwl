@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_3.6_combine.cwl
+id: coverage_3.6_combine.cwl
 inputs:
 - id: in_append
   doc: "Append coverage data to .coverage, otherwise it starts\nclean each time."

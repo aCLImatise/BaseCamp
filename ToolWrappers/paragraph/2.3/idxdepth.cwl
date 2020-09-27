@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idxdepth.cwl
+id: idxdepth.cwl
 inputs:
 - id: in_arg_bam_file
   doc: '[ --bam ] arg                      BAM / CRAM input file'

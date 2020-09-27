@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_get_bed_for_genome_enabled_taxon.cwl
+id: phyluce_assembly_get_bed_for_genome_enabled_taxon.cwl
 inputs:
 - id: in_locus_db
   doc: The probe.matches.sqlite database

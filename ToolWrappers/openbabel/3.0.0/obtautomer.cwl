@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obtautomer.cwl
+id: obtautomer.cwl
 inputs:
 - id: in_canonical_tautomer_only
   doc: ': Canonical tautomer only'

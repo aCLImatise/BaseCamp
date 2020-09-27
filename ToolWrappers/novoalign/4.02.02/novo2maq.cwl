@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novo2maq.cwl
+id: novo2maq.cwl
 inputs:
 - id: in_turns_smithwaterman_check
   doc: '|off Turns on or off the Smith-Waterman check of indels. When only indels

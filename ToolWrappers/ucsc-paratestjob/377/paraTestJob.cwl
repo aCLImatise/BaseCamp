@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paraTestJob.cwl
+id: paraTestJob.cwl
 inputs:
 - id: in_crash
   doc: Try to write to NULL when done.

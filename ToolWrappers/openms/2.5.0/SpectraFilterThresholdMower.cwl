@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpectraFilterThresholdMower.cwl
+id: SpectraFilterThresholdMower.cwl
 inputs:
 - id: in_in
   doc: "*        Input file  (valid formats: 'mzML')"

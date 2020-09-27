@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PLEK.model.cwl
+id: PLEK.model.cwl
 inputs: []
 outputs:
 - id: out_stdout

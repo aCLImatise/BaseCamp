@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mktemp.cwl
+id: mktemp.cwl
 inputs:
 - id: in_directory
   doc: create a directory, not a file

@@ -1,16 +1,14 @@
 class: CommandLineTool
-id: ../../../hca_dss_put_subscription.cwl
+id: hca_dss_put_subscription.cwl
 inputs:
 - id: in_callback_url
-  doc: ''
+  doc: "[--encoding {application/json,multipart/form-data}]\n[--es-query ES_QUERY]\n\
+    [--form-fields FORM_FIELDS]\n[--hmac-key-id HMAC_KEY_ID]\n[--hmac-secret-key HMAC_SECRET_KEY]\n\
+    [--jmespath-query JMESPATH_QUERY]\n[--method {POST,PUT}]\n[--payload-form-field\
+    \ PAYLOAD_FORM_FIELD]\n--replica {aws,gcp}"
   type: string
   inputBinding:
     prefix: --callback-url
-- id: in_replica
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --replica
 - id: in_attachments
   doc: "The set of bundle metadata items to be included in the payload of a notification\
     \ request to a subscription endpoint. Each property in this object represents\
@@ -100,6 +98,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --payload-form-field
+- id: in_replica
+  doc: Replica to write to.
+  type: string
+  inputBinding:
+    prefix: --replica
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../corelist.cwl
+id: corelist.cwl
 inputs:
 - id: in_lists_versions_given
   doc: "lists all versions of the given module (or the matching modules, in\ncase\

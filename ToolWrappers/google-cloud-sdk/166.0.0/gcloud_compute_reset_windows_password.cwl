@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_reset_windows_password.cwl
+id: gcloud_compute_reset_windows_password.cwl
 inputs:
 - id: in_user
   doc: "USER specifies the username to get the password for. If omitted, the\nusername\

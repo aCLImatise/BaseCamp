@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hilive_build.cwl
+id: hilive_build.cwl
 inputs:
 - id: in_print_licensing_information
   doc: '[ --license ]         Print licensing information and exit'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_species_taxids.sh.cwl
+id: get_species_taxids.sh.cwl
 inputs:
 - id: in_taxonomy_ids_input
   doc: Get taxonomy IDs at or below input taxonomy ID level

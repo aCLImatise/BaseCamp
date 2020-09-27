@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fgwas.cwl
+id: fgwas.cwl
 inputs:
 - id: in_input_file_w
   doc: '[file name] input file w/ Z-scores'

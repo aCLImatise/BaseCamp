@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtclp.cwl
+id: wtclp.cwl
 inputs:
 - id: in_overlap_file_readsttlentbegtendtreadsttlentbegtendtscoretidentityfloattmattmistinstdeltcigar
   doc: "Overlap file from wtzmo, +, *\nFormat: reads1\\t+/-\\tlen1\\tbeg1\\tend1\\\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scater_calculate_qc_metrics.R.cwl
+id: scater_calculate_qc_metrics.R.cwl
 inputs:
 - id: in_input_object_file
   doc: singleCellExperiment object containing expression values and experimental information.

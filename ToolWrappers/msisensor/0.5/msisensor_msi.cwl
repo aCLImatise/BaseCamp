@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msisensor_msi.cwl
+id: msisensor_msi.cwl
 inputs:
 - id: in_string_homopolymer_file
   doc: <string>   homopolymer and microsates file

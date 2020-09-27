@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_gt.cwl
+id: SnpSift_gt.cwl
 inputs:
 - id: in_uncompress_restore_fields
   doc: ': Uncompress (restore genotype fields).'

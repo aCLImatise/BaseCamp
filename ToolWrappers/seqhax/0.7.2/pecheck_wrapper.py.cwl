@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pecheck_wrapper.py.cwl
+id: pecheck_wrapper.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

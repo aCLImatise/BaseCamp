@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../not_acgt.awk.cwl
+id: not_acgt.awk.cwl
 inputs: []
 outputs:
 - id: out_stdout

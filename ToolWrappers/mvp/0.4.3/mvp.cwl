@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mvp.cwl
+id: mvp.cwl
 inputs:
 - id: in_outfile
   doc: 'results table (default: stdout)'

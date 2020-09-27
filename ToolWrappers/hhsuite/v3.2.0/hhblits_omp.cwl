@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hhblits_omp.cwl
+id: hhblits_omp.cwl
 inputs:
 - id: in_inputquery_single_sequence
   doc: "input/query: single sequence or multiple sequence alignment (MSA)\nin a3m,\

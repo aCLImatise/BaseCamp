@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_positions_used.pl.cwl
+id: find_positions_used.pl.cwl
 inputs:
 - id: in_core_pos
   doc: ':  Core positions file from vcf2core.pl (GFF format).'

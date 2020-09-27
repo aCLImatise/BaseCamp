@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rseg_diff.cwl
+id: rseg_diff.cwl
 inputs:
 - id: in_out
   doc: domain output file

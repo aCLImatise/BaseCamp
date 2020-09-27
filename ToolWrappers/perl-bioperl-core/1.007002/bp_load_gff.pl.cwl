@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_load_gff.pl.cwl
+id: bp_load_gff.pl.cwl
 inputs:
 - id: in_dsn
   doc: "'dbi:mysql:database=dmel_r5_1;host=myhost;port=myport'\ndna1.fa dna2.fa features1.gff\

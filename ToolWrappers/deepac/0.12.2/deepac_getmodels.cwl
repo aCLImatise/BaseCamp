@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_getmodels.cwl
+id: deepac_getmodels.cwl
 inputs:
 - id: in_debug_tf
   doc: ''

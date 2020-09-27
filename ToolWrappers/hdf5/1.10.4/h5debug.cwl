@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5debug.cwl
+id: h5debug.cwl
 inputs:
 - id: in_filename
   doc: ''

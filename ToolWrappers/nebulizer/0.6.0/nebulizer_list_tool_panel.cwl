@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_list_tool_panel.cwl
+id: nebulizer_list_tool_panel.cwl
 inputs:
 - id: in_name
   doc: "only list tool panel sections where name or id match NAME. Can\ninclude glob-style\

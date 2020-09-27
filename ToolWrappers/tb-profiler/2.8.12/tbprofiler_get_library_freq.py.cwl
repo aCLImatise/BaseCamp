@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_get_library_freq.py.cwl
+id: tbprofiler_get_library_freq.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

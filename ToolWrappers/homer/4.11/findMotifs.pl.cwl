@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findMotifs.pl.cwl
+id: findMotifs.pl.cwl
 inputs:
 - id: in_len
   doc: "<#>[,<#>,<#>...] (motif length, default=8,10,12) [NOTE: values greater 12\

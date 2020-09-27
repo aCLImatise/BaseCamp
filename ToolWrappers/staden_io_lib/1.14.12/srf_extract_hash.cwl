@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf_extract_hash.cwl
+id: srf_extract_hash.cwl
 inputs:
 - id: in_c
   doc: ''

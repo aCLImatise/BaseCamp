@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_clusters.cwl
+id: iCount_man_clusters.cwl
 inputs:
 - id: in_mode
   doc: ''

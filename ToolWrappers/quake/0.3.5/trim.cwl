@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trim.cwl
+id: trim.cwl
 inputs:
 - id: in_fastq_file_reads
   doc: Fastq file of reads

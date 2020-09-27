@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_incomplete_matrix_estimates.cwl
+id: phyluce_align_get_incomplete_matrix_estimates.cwl
 inputs:
 - id: in_db
   doc: The probe.matches.sqlite database to query

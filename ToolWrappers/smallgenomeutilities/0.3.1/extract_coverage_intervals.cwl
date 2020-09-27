@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_coverage_intervals.cwl
+id: extract_coverage_intervals.cwl
 inputs:
 - id: in_region_interested_eghxb
   doc: "Region of interested in BED format, e.g.\nHXB2:2253-3869. Loci are interpreted\

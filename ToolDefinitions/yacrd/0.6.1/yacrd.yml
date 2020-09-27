@@ -27,7 +27,7 @@ subcommands:
     args: !SimpleFlagArg
       name: output
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -54,66 +54,10 @@ subcommands:
         args: !SimpleFlagArg
           name: output
         optional: true
-      parent: &id003 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: 'if coverage reach this value region is mark as bad [default:
-            0]'
-          synonyms:
-          - -c
-          - --coverage
-          args: !SimpleFlagArg
-            name: coverage
-          optional: true
-        - !Flag
-          description: "path to input file overlap (.paf|.m4|.mhap) or yacrd report\
-            \ (.yacrd), format is autodetect and compression\ninput is allowed (gz|bzip2|lzma)"
-          synonyms:
-          - -i
-          - --input
-          args: !SimpleFlagArg
-            name: input
-          optional: true
-        - !Flag
-          description: "if the ratio of bad region length on total length is lower\
-            \ than this value, read is marked as NotCovered\n[default: 0.8]"
-          synonyms:
-          - -n
-          - --not-coverage
-          args: !SimpleFlagArg
-            name: not-coverage
-          optional: true
-        - !Flag
-          description: "yacrd switches to 'ondisk' mode which will reduce memory usage\
-            \ but increase computation time. The value\npassed as a parameter is used\
-            \ as a prefix for the temporary files created by yacrd. Be careful if\
-            \ the prefix\ncontains path separators (`/` for unix or `\\` for windows)\
-            \ this folder will be deleted"
-          synonyms:
-          - -d
-          - --ondisk
-          args: !SimpleFlagArg
-            name: ondisk
-          optional: true
-        - !Flag
-          description: "with the default value yacrd in 'ondisk' mode use around 1\
-            \ GBytes, you can increase to reduce runtime but\nincrease memory usage\
-            \ [default: 64000000]"
-          synonyms:
-          - --ondisk-buffer-size
-          args: !SimpleFlagArg
-            name: ondisk-buffer-size
-          optional: true
-        - !Flag
-          description: path output file
-          synonyms:
-          - -o
-          - --output
-          args: !SimpleFlagArg
-            name: output
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -137,7 +81,327 @@ subcommands:
             args: !SimpleFlagArg
               name: output
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: 'if coverage reach this value region is mark as bad [default:
+                0]'
+              synonyms:
+              - -c
+              - --coverage
+              args: !SimpleFlagArg
+                name: coverage
+              optional: true
+            - !Flag
+              description: "path to input file overlap (.paf|.m4|.mhap) or yacrd report\
+                \ (.yacrd), format is autodetect and compression\ninput is allowed\
+                \ (gz|bzip2|lzma)"
+              synonyms:
+              - -i
+              - --input
+              args: !SimpleFlagArg
+                name: input
+              optional: true
+            - !Flag
+              description: "if the ratio of bad region length on total length is lower\
+                \ than this value, read is marked as NotCovered\n[default: 0.8]"
+              synonyms:
+              - -n
+              - --not-coverage
+              args: !SimpleFlagArg
+                name: not-coverage
+              optional: true
+            - !Flag
+              description: "yacrd switches to 'ondisk' mode which will reduce memory\
+                \ usage but increase computation time. The value\npassed as a parameter\
+                \ is used as a prefix for the temporary files created by yacrd. Be\
+                \ careful if the prefix\ncontains path separators (`/` for unix or\
+                \ `\\` for windows) this folder will be deleted"
+              synonyms:
+              - -d
+              - --ondisk
+              args: !SimpleFlagArg
+                name: ondisk
+              optional: true
+            - !Flag
+              description: "with the default value yacrd in 'ondisk' mode use around\
+                \ 1 GBytes, you can increase to reduce runtime but\nincrease memory\
+                \ usage [default: 64000000]"
+              synonyms:
+              - --ondisk-buffer-size
+              args: !SimpleFlagArg
+                name: ondisk-buffer-size
+              optional: true
+            - !Flag
+              description: path output file
+              synonyms:
+              - -o
+              - --output
+              args: !SimpleFlagArg
+                name: output
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: path to sequence input (fasta|fastq) compression is autodetect
+                  (none|gzip|bzip2|lzma)
+                synonyms:
+                - -i
+                - --input
+                args: !SimpleFlagArg
+                  name: input
+                optional: true
+              - !Flag
+                description: path to output file, format and compression of input
+                  is preserved
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: output
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Prints help information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Prints version information
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "yacrd-split 0.6.1\nRecord mark as chimeric or NotCovered\
+                \ is split\n\nUSAGE:\n    yacrd --input <input> --output <output>\
+                \ split --input <input> --output <output>\n\nFLAGS:\n    -h, --help\
+                \       Prints help information\n    -V, --version    Prints version\
+                \ information\n\nOPTIONS:\n    -i, --input <input>      path to sequence\
+                \ input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)\n\
+                \    -o, --output <output>    path to output file, format and compression\
+                \ of input is preserved\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - yacrd
+              - scrubb
+              positional: []
+              named:
+              - !Flag
+                description: path to sequence input (fasta|fastq) compression is autodetect
+                  (none|gzip|bzip2|lzma)
+                synonyms:
+                - -i
+                - --input
+                args: !SimpleFlagArg
+                  name: input
+                optional: true
+              - !Flag
+                description: path to output file, format and compression of input
+                  is preserved
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: output
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Prints help information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Prints version information
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "yacrd-scrubb 0.6.1\nAll bad region of read is removed\n\n\
+                USAGE:\n    yacrd --input <input> --output <output> scrubb --input\
+                \ <input> --output <output>\n\nFLAGS:\n    -h, --help       Prints\
+                \ help information\n    -V, --version    Prints version information\n\
+                \nOPTIONS:\n    -i, --input <input>      path to sequence input (fasta|fastq)\
+                \ compression is autodetect (none|gzip|bzip2|lzma)\n    -o, --output\
+                \ <output>    path to output file, format and compression of input\
+                \ is preserved\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - yacrd
+              - extract
+              positional: []
+              named:
+              - !Flag
+                description: path to sequence input (fasta|fastq) compression is autodetect
+                  (none|gzip|bzip2|lzma)
+                synonyms:
+                - -i
+                - --input
+                args: !SimpleFlagArg
+                  name: input
+                optional: true
+              - !Flag
+                description: path to output file, format and compression of input
+                  is preserved
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: output
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Prints help information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Prints version information
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "yacrd-extract 0.6.1\nRecord mark as chimeric or NotCovered\
+                \ is extract\n\nUSAGE:\n    yacrd --input <input> --output <output>\
+                \ extract --input <input> --output <output>\n\nFLAGS:\n    -h, --help\
+                \       Prints help information\n    -V, --version    Prints version\
+                \ information\n\nOPTIONS:\n    -i, --input <input>      path to sequence\
+                \ input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)\n\
+                \    -o, --output <output>    path to output file, format and compression\
+                \ of input is preserved\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - yacrd
+              - filter
+              positional: []
+              named:
+              - !Flag
+                description: path to sequence input (fasta|fastq) compression is autodetect
+                  (none|gzip|bzip2|lzma)
+                synonyms:
+                - -i
+                - --input
+                args: !SimpleFlagArg
+                  name: input
+                optional: true
+              - !Flag
+                description: path to output file, format and compression of input
+                  is preserved
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: output
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Prints help information
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: Prints version information
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "yacrd-filter 0.6.1\nRecord mark as chimeric or NotCovered\
+                \ is filter\n\nUSAGE:\n    yacrd --input <input> --output <output>\
+                \ filter --input <input> --output <output>\n\nFLAGS:\n    -h, --help\
+                \       Prints help information\n    -V, --version    Prints version\
+                \ information\n\nOPTIONS:\n    -i, --input <input>      path to sequence\
+                \ input (fasta|fastq) compression is autodetect (none|gzip|bzip2|lzma)\n\
+                \    -o, --output <output>    path to output file, format and compression\
+                \ of input is preserved\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: Prints help information
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: Prints version information
+              synonyms:
+              - -V
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "yacrd 0.6.1 Flareon\nPierre Marijon <pmarijon@mpi-inf.mpg.de>\n\
+              \nYacrd use overlap between reads, to detect 'good' and 'bad' region,\n\
+              a region with coverage over the threshold is 'good' others are 'bad'.\n\
+              If read has a 'bad' region in middle this reads is mark as 'Chimeric'.\n\
+              If the ratio of 'bad' region length on total read length is larger than\
+              \ threshold this reads is mark as 'Not_covered'.\n\nYacrd can make some\
+              \ other actions:\n- filter: for sequence or overlap file, record with\
+              \ reads marked as Chimeric or NotCovered isn't written in the output\n\
+              - extract: for sequence or overlap file, record contains reads marked\
+              \ as Chimeric or NotCovered is written in the output\n- split: for sequence\
+              \ file bad region in the middle of reads are removed, NotCovered read\
+              \ is removed\n- scrubb: for sequence file all bad region are removed,\
+              \ NotCovered read is removed\n\nUSAGE:\n    yacrd [OPTIONS] --input\
+              \ <input> --output <output> [SUBCOMMAND]\n\nFLAGS:\n    -h, --help \
+              \      Prints help information\n    -V, --version    Prints version\
+              \ information\n\nOPTIONS:\n    -c, --coverage <coverage>           \
+              \             if coverage reach this value region is mark as bad [default:\
+              \ 0]\n    -i, --input <input>\n            path to input file overlap\
+              \ (.paf|.m4|.mhap) or yacrd report (.yacrd), format is autodetect and\
+              \ compression\n            input is allowed (gz|bzip2|lzma)\n    -n,\
+              \ --not-coverage <not-coverage>\n            if the ratio of bad region\
+              \ length on total length is lower than this value, read is marked as\
+              \ NotCovered\n            [default: 0.8]\n    -d, --ondisk <ondisk>\n\
+              \            yacrd switches to 'ondisk' mode which will reduce memory\
+              \ usage but increase computation time. The value\n            passed\
+              \ as a parameter is used as a prefix for the temporary files created\
+              \ by yacrd. Be careful if the prefix\n            contains path separators\
+              \ (`/` for unix or `\\` for windows) this folder will be deleted\n \
+              \       --ondisk-buffer-size <ondisk-buffer-size>\n            with\
+              \ the default value yacrd in 'ondisk' mode use around 1 GBytes, you\
+              \ can increase to reduce runtime but\n            increase memory usage\
+              \ [default: 64000000]\n    -o, --output <output>                   \
+              \         path output file\n\nSUBCOMMANDS:\n    extract    Record mark\
+              \ as chimeric or NotCovered is extract\n    filter     Record mark as\
+              \ chimeric or NotCovered is filter\n    help       Prints this message\
+              \ or the help of the given subcommand(s)\n    scrubb     All bad region\
+              \ of read is removed\n    split      Record mark as chimeric or NotCovered\
+              \ is split\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -162,12 +426,9 @@ subcommands:
             \    -i, --input <input>      path to sequence input (fasta|fastq) compression\
             \ is autodetect (none|gzip|bzip2|lzma)\n    -o, --output <output>    path\
             \ to output file, format and compression of input is preserved\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - yacrd
-          - scrubb
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -214,9 +475,7 @@ subcommands:
             \ file, format and compression of input is preserved\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - yacrd
-          - extract
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -263,9 +522,7 @@ subcommands:
             \    path to output file, format and compression of input is preserved\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - yacrd
-          - filter
+          command: *id007
           positional: []
           named:
           - !Flag
@@ -312,21 +569,9 @@ subcommands:
             \    path to output file, format and compression of input is preserved\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Prints help information
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Prints version information
-          synonyms:
-          - -V
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "yacrd 0.6.1 Flareon\nPierre Marijon <pmarijon@mpi-inf.mpg.de>\n\
           \nYacrd use overlap between reads, to detect 'good' and 'bad' region,\n\
           a region with coverage over the threshold is 'good' others are 'bad'.\n\
@@ -410,7 +655,7 @@ subcommands:
         args: !SimpleFlagArg
           name: output
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -457,7 +702,7 @@ subcommands:
         args: !SimpleFlagArg
           name: output
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -504,7 +749,7 @@ subcommands:
         args: !SimpleFlagArg
           name: output
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -613,7 +858,7 @@ subcommands:
     args: !SimpleFlagArg
       name: output
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -659,7 +904,7 @@ subcommands:
     args: !SimpleFlagArg
       name: output
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -705,7 +950,7 @@ subcommands:
     args: !SimpleFlagArg
       name: output
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

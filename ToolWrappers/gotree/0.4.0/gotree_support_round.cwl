@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_support_round.cwl
+id: gotree_support_round.cwl
 inputs:
 - id: in_precision
   doc: Rounding support precision (x means 10^-x) (default 3)

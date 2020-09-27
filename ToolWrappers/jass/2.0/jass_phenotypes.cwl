@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jass_phenotypes.cwl
+id: jass_phenotypes.cwl
 inputs:
 - id: in_jass
   doc: ''

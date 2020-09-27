@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho2tree.pl.cwl
+id: proteinortho2tree.pl.cwl
 inputs:
 - id: in_ortho_matrix
   doc: ''

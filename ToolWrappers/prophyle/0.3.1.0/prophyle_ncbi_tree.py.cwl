@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_ncbi_tree.py.cwl
+id: prophyle_ncbi_tree.py.cwl
 inputs:
 - id: in_log_file
   doc: log file [stderr]

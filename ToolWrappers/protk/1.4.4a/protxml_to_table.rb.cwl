@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protxml_to_table.rb.cwl
+id: protxml_to_table.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_create_sequence_dictionary.cwl
+id: dsh_create_sequence_dictionary.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

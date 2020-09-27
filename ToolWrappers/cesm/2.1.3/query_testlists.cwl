@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../query_testlists.cwl
+id: query_testlists.cwl
 inputs:
 - id: in_debug
   doc: Print debug information (very verbose) to file /query_testlists.log

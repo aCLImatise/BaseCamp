@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_intervals.cwl
+id: SnpSift_intervals.cwl
 inputs:
 - id: in_vcf_file_default
   doc: ':     VCF file. Default STDIN'

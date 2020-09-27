@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../show_aligns.cwl
+id: show_aligns.cwl
 inputs:
 - id: in_sort_alignments_query
   doc: Sort alignments by the query start coordinate

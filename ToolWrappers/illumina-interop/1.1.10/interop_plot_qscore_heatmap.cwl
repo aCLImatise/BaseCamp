@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_plot_qscore_heatmap.cwl
+id: interop_plot_qscore_heatmap.cwl
 inputs:
 - id: in_filter_by_lane
   doc: '[]: Only the data for the selected lane will be displayed'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../velocyto_run10x.cwl
+id: velocyto_run10x.cwl
 inputs:
 - id: in_metadata_table
   doc: Table containing metadata of the various samples (csv fortmated rows are samples

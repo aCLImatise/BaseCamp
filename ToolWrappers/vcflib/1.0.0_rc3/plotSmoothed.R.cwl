@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotSmoothed.R.cwl
+id: plotSmoothed.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

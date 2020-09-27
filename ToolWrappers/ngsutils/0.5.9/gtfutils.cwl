@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtfutils.cwl
+id: gtfutils.cwl
 inputs:
 - id: in_command
   doc: ''

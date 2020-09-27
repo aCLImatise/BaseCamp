@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_vcfdecompose.cwl
+id: rtg_vcfdecompose.cwl
 inputs:
 - id: in_input
   doc: "VCF file containing variants to decompose. Use '-' to read\nfrom standard\

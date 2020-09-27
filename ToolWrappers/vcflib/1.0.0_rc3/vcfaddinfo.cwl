@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfaddinfo.cwl
+id: vcfaddinfo.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

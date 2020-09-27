@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fit_histogram.r.cwl
+id: fit_histogram.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

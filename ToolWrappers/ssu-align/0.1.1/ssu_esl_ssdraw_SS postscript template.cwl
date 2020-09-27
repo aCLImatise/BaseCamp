@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_ssdraw_SS postscript template.cwl
+id: ssu_esl_ssdraw_SS postscript template.cwl
 inputs:
 - id: in_ssu_esl_ss_draw
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_discoverjd.cwl
+id: igdiscover_discoverjd.cwl
 inputs:
 - id: in_database
   doc: FASTA file with reference gene sequences

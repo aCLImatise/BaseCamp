@@ -1,26 +1,16 @@
 class: CommandLineTool
-id: ../../../nanopore_transcript_abundance.py.cwl
+id: nanopore_transcript_abundance.py.cwl
 inputs:
-- id: in_input
+- id: in_c
   doc: ''
   type: string
   inputBinding:
-    prefix: --input
-- id: in_compatibility
+    prefix: -c
+- id: in_i
   doc: ''
   type: string
   inputBinding:
-    prefix: --compatibility
-- id: in_em_iterations
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --em-iterations
-- id: in_verbose
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --verbose
+    prefix: -i
 outputs:
 - id: out_stdout
   doc: Standard output stream

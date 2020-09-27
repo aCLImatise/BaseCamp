@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BlockDisplaySatsuma.cwl
+id: BlockDisplaySatsuma.cwl
 inputs:
 - id: in_string_satsuma_file
   doc: '<string> : satsuma summary file'

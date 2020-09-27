@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_fasta2bp.cwl
+id: rgt_tools.py_fasta2bp.cwl
 inputs:
 - id: in_input_fasta_file
   doc: Input FASTA file or directory

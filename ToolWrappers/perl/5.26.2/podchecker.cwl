@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../podchecker.cwl
+id: podchecker.cwl
 inputs:
 - id: in_man
   doc: Print the manual page and exit.

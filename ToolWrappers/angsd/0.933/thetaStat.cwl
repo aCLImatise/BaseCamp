@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../thetaStat.cwl
+id: thetaStat.cwl
 inputs: []
 outputs:
 - id: out_stdout

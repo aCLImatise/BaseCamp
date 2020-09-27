@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bt_link.cwl
+id: bt_link.cwl
 inputs: []
 outputs:
 - id: out_stdout

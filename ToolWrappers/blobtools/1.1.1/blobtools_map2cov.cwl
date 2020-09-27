@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_map2cov.cwl
+id: blobtools_map2cov.cwl
 inputs:
 - id: in_in_file
   doc: FASTA file of assembly. Headers are split at whitespaces.

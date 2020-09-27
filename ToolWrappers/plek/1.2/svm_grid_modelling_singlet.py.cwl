@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svm_grid_modelling_singlet.py.cwl
+id: svm_grid_modelling_singlet.py.cwl
 inputs:
 - id: in_log_two_c
   doc: "{begin,end,step | \"null\"} : set the range of c (default -5,15,2)\nbegin,end,step\

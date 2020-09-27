@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BuildSuperTranscript.py.cwl
+id: BuildSuperTranscript.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

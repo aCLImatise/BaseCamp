@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_to_matrix.cwl
+id: vcf_to_matrix.cwl
 inputs:
 - id: in_mode
   doc: "Data passing mode, must be set to 'commandline' or\n'xml'."

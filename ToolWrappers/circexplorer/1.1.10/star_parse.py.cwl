@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../star_parse.py.cwl
+id: star_parse.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

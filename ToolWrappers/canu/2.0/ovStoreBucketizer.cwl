@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ovStoreBucketizer.cwl
+id: ovStoreBucketizer.cwl
 inputs:
 - id: in_path_overlap_store
   doc: path to overlap store to create

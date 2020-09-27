@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unfazed.cwl
+id: unfazed.cwl
 inputs:
 - id: in_dn_ms
   doc: "valid VCF OR BED file of the DNMs of interest> If BED,\nmust contain chrom,\

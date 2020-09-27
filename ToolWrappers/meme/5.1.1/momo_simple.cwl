@@ -1,71 +1,18 @@
 class: CommandLineTool
-id: ../../../momo_simple.cwl
+id: momo_simple.cwl
 inputs:
-- id: in_o
-  doc: '(default: momo_out)'
-  type: string
-  inputBinding:
-    prefix: --o
-- id: in_oc
-  doc: '(default: momo_out)'
-  type: string
-  inputBinding:
-    prefix: --oc
-- id: in_psm_type
-  doc: '|ms-gf+|tide|percolator'
-  type: string
-  inputBinding:
-    prefix: --psm-type
-- id: in_sequence_column
-  doc: '[column name]'
-  type: boolean
-  inputBinding:
-    prefix: --sequence-column
-- id: in_width
-  doc: '[positive odd integer] (default: 7)'
-  type: boolean
-  inputBinding:
-    prefix: --width
-- id: in_protein_database
-  doc: '(default: None)'
-  type: File
-  inputBinding:
-    prefix: --protein-database
-- id: in_filter
-  doc: '[field],lt|le|eq|ge|gt,[threshold] (default: no filter)'
-  type: boolean
-  inputBinding:
-    prefix: --filter
-- id: in_remove_unknowns
-  doc: '|F (default: F)'
-  type: string
-  inputBinding:
-    prefix: --remove-unknowns
-- id: in_eliminate_repeats
-  doc: '[positive odd integer or 0 for no elimination] (default: width)'
-  type: boolean
-  inputBinding:
-    prefix: --eliminate-repeats
-- id: in_min_occurrences
-  doc: '[non-negative] (default: 5)'
-  type: boolean
-  inputBinding:
-    prefix: --min-occurrences
-- id: in_single_motif_per_mass
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --single-motif-per-mass
-- id: in_hash_fast_a
-  doc: '[positive integer or 0 for linear search] (default: 0)'
-  type: boolean
-  inputBinding:
-    prefix: --hash-fasta
-- id: in_verbosity
-  doc: '|2|3|4|5 (default: 2)'
+- id: in_default_momooutoc_output
+  doc: "(default: momo_out)\n--oc <output dir> (default: momo_out)\n--psm-type comet|ms-gf+|tide|percolator\n\
+    --sequence-column [column name]\n--width [positive odd integer] (default: 7)\n\
+    --protein-database <protein sequence file> (default: None)\n--filter [field],lt|le|eq|ge|gt,[threshold]\
+    \ (default: no filter)\n--remove-unknowns T|F (default: F)\n--eliminate-repeats\
+    \ [positive odd integer or 0 for no elimination] (default: width)\n--min-occurrences\
+    \ [non-negative] (default: 5)\n--single-motif-per-mass\n--hash-fasta [positive\
+    \ integer or 0 for linear search] (default: 0)\n--verbosity 1|2|3|4|5 (default:\
+    \ 2)\n--version (print the version and exit)\n"
   type: long
   inputBinding:
-    prefix: --verbosity
+    prefix: --o
 - id: in_ptm_file
   doc: ''
   type: File

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_transition.cwl
+id: segtools_transition.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.

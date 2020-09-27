@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../neighborFilter.cwl
+id: neighborFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

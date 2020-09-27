@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SRC_counter.cwl
+id: SRC_counter.cwl
 inputs:
 - id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"
@@ -31,11 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -query
-- id: in_out
-  doc: '(1 arg) :    output_file'
-  type: boolean
-  inputBinding:
-    prefix: -out
 - id: in_keep_low_complexity
   doc: '(0 arg) :    Conserve low complexity sequences during indexing and querying'
   type: boolean

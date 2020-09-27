@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../df.cwl
+id: df.cwl
 inputs:
 - id: in_all
   doc: include pseudo, duplicate, inaccessible file systems

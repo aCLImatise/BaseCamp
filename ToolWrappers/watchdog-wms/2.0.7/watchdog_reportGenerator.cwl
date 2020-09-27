@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_reportGenerator.cwl
+id: watchdog_reportGenerator.cwl
 inputs: []
 outputs:
 - id: out_stdout

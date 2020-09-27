@@ -2,15 +2,9 @@ version 1.0
 
 task Velveth {
   input {
-    Boolean? fast_a
     Boolean? interleaved
     Boolean? separate
     Boolean? short_paired
-    Boolean? short_paired_two
-    Boolean? short_paired_three
-    Boolean? short_paired_four
-    Boolean? long
-    Boolean? reference
     Boolean? strand_specific
     Boolean? reuse_sequences
     Boolean? reuse_binary
@@ -25,15 +19,9 @@ task Velveth {
       ~{directory} \
       ~{hash_length} \
       ~{filename} \
-      ~{if (fast_a) then "-fasta" else ""} \
       ~{if (interleaved) then "-interleaved" else ""} \
       ~{if (separate) then "-separate" else ""} \
       ~{if (short_paired) then "-shortPaired" else ""} \
-      ~{if (short_paired_two) then "-shortPaired2" else ""} \
-      ~{if (short_paired_three) then "-shortPaired3" else ""} \
-      ~{if (short_paired_four) then "-shortPaired4" else ""} \
-      ~{if (long) then "-long" else ""} \
-      ~{if (reference) then "-reference" else ""} \
       ~{if (strand_specific) then "-strand_specific" else ""} \
       ~{if (reuse_sequences) then "-reuse_Sequences" else ""} \
       ~{if (reuse_binary) then "-reuse_binary" else ""} \
@@ -41,15 +29,9 @@ task Velveth {
       ~{if (create_binary) then "-create_binary" else ""}
   >>>
   parameter_meta {
-    fast_a: "-fasta.gz       -fastq.gz       -raw.gz -sam    -bam    -fmtAuto"
     interleaved: ": File contains paired reads interleaved in the one file (default)"
     separate: ": Read 2 separate files for paired reads"
-    short_paired: ""
-    short_paired_two: ""
-    short_paired_three: ""
-    short_paired_four: ""
-    long: "-longPaired"
-    reference: ""
+    short_paired: "-short2 -shortPaired2\\n-short3 -shortPaired3\\n-short4 -shortPaired4\\n-long   -longPaired\\n-reference"
     strand_specific: ": for strand specific transcriptome sequencing data (default: off)"
     reuse_sequences: ": reuse Sequences file (or link) already in directory (no need to provide original filenames in this case (default: off)"
     reuse_binary: ": reuse binary sequences file (or link) already in directory (no need to provide original filenames in this case (default: off)"

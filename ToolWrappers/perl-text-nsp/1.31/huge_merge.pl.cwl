@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../huge_merge.pl.cwl
+id: huge_merge.pl.cwl
 inputs:
 - id: in_keep
   doc: "Keep the unmerged files.\nThe unmerged files are deleted by default."

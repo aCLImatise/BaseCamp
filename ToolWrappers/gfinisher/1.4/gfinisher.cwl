@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfinisher.cwl
+id: gfinisher.cwl
 inputs:
 - id: in_contigsscaffolds_input_file
   doc: contigs/scaffolds input file

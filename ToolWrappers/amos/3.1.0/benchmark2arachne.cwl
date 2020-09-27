@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../benchmark2arachne.cwl
+id: benchmark2arachne.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastclust.cwl
+id: blastclust.cwl
 inputs:
 - id: in_fasta_input_file
   doc: "FASTA input file (program will format the database and remove files in the\

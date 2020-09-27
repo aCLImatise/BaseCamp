@@ -2,9 +2,7 @@ version 1.0
 
 task Rappas {
   input {
-    String? w
-    Boolean? xms
-    Boolean? x_mx
+    Int? placing_sequences_using
     Boolean? _arbinary_binary
     Boolean? _database_database
     Boolean? _phase_one
@@ -42,9 +40,7 @@ task Rappas {
   }
   command <<<
     rappas \
-      ~{if defined(w) then ("-w " +  '"' + w + '"') else ""} \
-      ~{if (xms) then "-Xms" else ""} \
-      ~{if (x_mx) then "-Xmx" else ""} \
+      ~{if defined(placing_sequences_using) then ("-w " +  '"' + placing_sequences_using + '"') else ""} \
       ~{if (_arbinary_binary) then "-b" else ""} \
       ~{if (_database_database) then "-d" else ""} \
       ~{if (_phase_one) then "-p" else ""} \
@@ -81,9 +77,7 @@ task Rappas {
       ~{if (threads) then "--threads" else ""}
   >>>
   parameter_meta {
-    w: ""
-    xms: "-> memory allocated at startup. (m=MegaByte, g=GigaByte)"
-    x_mx: "-> maximum memory allocated to the process."
+    placing_sequences_using: "2. For placing sequences, using the database (DB) built in step 1:\\njava -jar RAPPAS.jar -p p -d DB.union -q queries.fa\\nNote: For large references or high values of k, allocate more RAM :\\nex: java -Xms1024m -Xmx16g -jar RAPPAS.jar [options]\\n-Xms -> memory allocated at startup. (m=MegaByte, g=GigaByte)\\n-Xmx -> maximum memory allocated to the process."
     _arbinary_binary: "(--arbinary)   [file] Binary for marginal AR, currently 'phyml' and\\n'baseml' (from PAML) are supported. (b phase)"
     _database_database: "(--database)   [file] The database of ancestral kmers. (b|p phase)"
     _phase_one: "(--phase)      [b|p] One of 'b' for \\\"Build\\\" or 'p' for \\\"Place\\\"\\nb: Build DB of phylo-kmers (done 1 time).\\np: Phylogenetic placement itself (done n times)\\nrequires the DB generated during 'build' phase."

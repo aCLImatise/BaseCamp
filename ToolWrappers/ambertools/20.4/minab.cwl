@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minab.cwl
+id: minab.cwl
 inputs:
 - id: in_pdb
   doc: = PDB file with initial coordinates

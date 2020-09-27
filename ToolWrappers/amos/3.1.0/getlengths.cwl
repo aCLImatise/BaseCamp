@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getlengths.cwl
+id: getlengths.cwl
 inputs: []
 outputs:
 - id: out_stdout

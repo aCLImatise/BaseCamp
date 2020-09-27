@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProScrs.py.cwl
+id: ProScrs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

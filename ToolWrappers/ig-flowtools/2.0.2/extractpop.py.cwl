@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractpop.py.cwl
+id: extractpop.py.cwl
 inputs:
 - id: in_file_location_text
   doc: File location for the text file.

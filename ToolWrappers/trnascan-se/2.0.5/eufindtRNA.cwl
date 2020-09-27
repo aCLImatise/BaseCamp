@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eufindtRNA.cwl
+id: eufindtRNA.cwl
 inputs:
 - id: in_save_trnas_outfile
   doc: ': save tRNAs in <outfile>'

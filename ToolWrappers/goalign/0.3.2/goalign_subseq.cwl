@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_subseq.cwl
+id: goalign_subseq.cwl
 inputs:
 - id: in_length
   doc: Length of the sub alignment (default 10)
@@ -82,21 +82,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
-- id: in_one_two_three_four_five
-  doc: '23456'
-  type: long
-  inputBinding:
-    position: 0
-- id: in_three_four_five_six_seven
-  doc: '45678'
-  type: long
-  inputBinding:
-    position: 1
 - id: in_warning_output_stdout
   doc: 'Warning: If output is stdout, it works only if input format is Phylip, because '
   type: long
   inputBinding:
-    position: 2
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

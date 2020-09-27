@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_comet_0..cwl
+id: crux_comet_0..cwl
 inputs:
 - id: in_crux
   doc: ''

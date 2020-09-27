@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_create_GG_alignment_template_from_taxon.cwl
+id: o_create_GG_alignment_template_from_taxon.cwl
 inputs:
 - id: in_output
   doc: "Path to the output folder\n"

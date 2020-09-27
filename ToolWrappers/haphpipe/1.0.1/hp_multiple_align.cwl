@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_multiple_align.cwl
+id: hp_multiple_align.cwl
 inputs:
 - id: in_ref_gtf
   doc: (unless --alignall option included).

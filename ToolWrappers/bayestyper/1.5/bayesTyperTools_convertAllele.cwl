@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bayesTyperTools_convertAllele.cwl
+id: bayesTyperTools_convertAllele.cwl
 inputs:
 - id: in_arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snoscan.cwl
+id: snoscan.cwl
 inputs:
 - id: in_specify_methylation_sites
   doc: ': specify methylation sites'

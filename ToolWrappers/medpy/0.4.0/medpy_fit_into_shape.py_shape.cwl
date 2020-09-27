@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_fit_into_shape.py_shape.cwl
+id: medpy_fit_into_shape.py_shape.cwl
 inputs:
 - id: in_f
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortsam.cwl
+id: sortsam.cwl
 inputs:
 - id: in_pos
   doc: -- Sort by chromosome position

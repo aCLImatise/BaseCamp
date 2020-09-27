@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fast5seek.cwl
+id: fast5seek.cwl
 inputs:
 - id: in_fast_five_dir
   doc: "Directory of fast5 files you want to query. Program\nwill walk recursively\
@@ -33,11 +33,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --log_level
-- id: in_files_dot
-  doc: --log_level {0,1,2,3,4,5}
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

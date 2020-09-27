@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QuantWiz_IQ.cwl
+id: QuantWiz_IQ.cwl
 inputs: []
 outputs:
 - id: out_stdout

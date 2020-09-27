@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_white_space_in_id.pl.orig.cwl
+id: remove_white_space_in_id.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

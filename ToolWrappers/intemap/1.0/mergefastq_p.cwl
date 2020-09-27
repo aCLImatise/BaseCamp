@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergefastq_p.cwl
+id: mergefastq_p.cwl
 inputs:
 - id: in_merge
   doc: ''

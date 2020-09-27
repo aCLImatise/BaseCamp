@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_uniq.cwl
+id: smof_uniq.cwl
 inputs:
 - id: in_count
   doc: writes (count|header) in tab-delimited format

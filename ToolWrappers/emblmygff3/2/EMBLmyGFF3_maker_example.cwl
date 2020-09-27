@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EMBLmyGFF3_maker_example.cwl
+id: EMBLmyGFF3_maker_example.cwl
 inputs: []
 outputs:
 - id: out_stdout

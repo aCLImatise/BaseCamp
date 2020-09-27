@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rexpfit.r.cwl
+id: rexpfit.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

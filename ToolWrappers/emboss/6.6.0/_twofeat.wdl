@@ -6,7 +6,6 @@ task Twofeat {
     Boolean? b_type
     Boolean? min_range
     Boolean? max_range
-    String? r_format
     Boolean? a_source
     Boolean? a_sense
     Boolean? am_in_score
@@ -31,7 +30,6 @@ task Twofeat {
       ~{if (b_type) then "-btype" else ""} \
       ~{if (min_range) then "-minrange" else ""} \
       ~{if (max_range) then "-maxrange" else ""} \
-      ~{if defined(r_format) then ("-rformat " +  '"' + r_format + '"') else ""} \
       ~{if (a_source) then "-asource" else ""} \
       ~{if (a_sense) then "-asense" else ""} \
       ~{if (am_in_score) then "-aminscore" else ""} \
@@ -55,7 +53,6 @@ task Twofeat {
     b_type: "string     [*] By default every feature in the feature\\ntable is allowed. You can set this to be any\\nfeature type you wish to allow.\\nSee http://www.ebi.ac.uk/embl/WebFeat/ for a\\nlist of the EMBL feature types and see\\nAppendix A of the Swissprot user manual in\\nhttp://www.expasy.org/sprot/userman.html for\\na list of the Swissprot feature types.\\nThe type may be wildcarded by using '*'.\\nIf you wish to allow more than one type,\\nseparate their names with the character '|',\\neg:\\n*UTR | intron (Any string)"
     min_range: "integer    [0] If this is greater or equal to\\n'maxrange', then no min or max range is\\nspecified (Any integer value)"
     max_range: "integer    [0] If this is less than or equal to\\n'minrange', then no min or max range is\\nspecified (Any integer value)"
-    r_format: ")"
     a_source: "string     [*] By default any feature source in the\\nfeature table is allowed. You can set this\\nto match any feature source you wish to\\nallow.\\nThe source name is usually either the name\\nof the program that detected the feature or\\nit is the feature table (eg: EMBL) that the\\nfeature came from.\\nThe source may be wildcarded by using '*'.\\nIf you wish to allow more than one source,\\nseparate their names with the character '|',\\neg:\\ngene* | embl (Any string)"
     a_sense: "menu       [0] By default any feature sense is allowed.\\nYou can set this to match the required\\nsense. (Values: 0 (Any sense); + (Forward\\nsense); - (Reverse sense))"
     am_in_score: "float      [0.0] If this is greater than or equal to\\nthe maximum score, then any score is\\nallowed. (Any numeric value)"

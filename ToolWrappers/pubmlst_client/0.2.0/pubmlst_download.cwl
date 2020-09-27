@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pubmlst_download.cwl
+id: pubmlst_download.cwl
 inputs:
 - id: in_scheme_name
   doc: scheme name

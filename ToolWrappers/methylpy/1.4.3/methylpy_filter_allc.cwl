@@ -1,8 +1,11 @@
 class: CommandLineTool
-id: ../../../methylpy_filter_allc.cwl
+id: methylpy_filter_allc.cwl
 inputs:
 - id: in_output_files
-  doc: ''
+  doc: "[--num-procs NUM_PROCS]\n[--mc-type MC_TYPE [MC_TYPE ...]]\n[--min-cov MIN_COV]\
+    \ [--max-cov MAX_COV]\n[--max-mismatch MAX_MISMATCH [MAX_MISMATCH ...]]\n[--max-mismatch-frac\
+    \ MAX_MISMATCH_FRAC [MAX_MISMATCH_FRAC ...]]\n[--compress-output COMPRESS_OUTPUT]\n\
+    [--chroms CHROMS [CHROMS ...]]"
   type: string[]
   inputBinding:
     prefix: --output-files

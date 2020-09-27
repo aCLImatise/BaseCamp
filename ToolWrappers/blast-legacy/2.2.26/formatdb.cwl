@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../formatdb.cwl
+id: formatdb.cwl
 inputs:
 - id: in_title_database_file
   doc: Title for database file [String]  Optional

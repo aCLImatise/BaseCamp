@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineFragandDBGraph_fastg.py.cwl
+id: combineFragandDBGraph_fastg.py.cwl
 inputs:
 - id: in_continue
   doc: ^

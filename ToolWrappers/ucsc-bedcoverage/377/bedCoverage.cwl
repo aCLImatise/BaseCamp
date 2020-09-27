@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedCoverage.cwl
+id: bedCoverage.cwl
 inputs: []
 outputs:
 - id: out_stdout

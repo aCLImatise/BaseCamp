@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdoc_validate.cwl
+id: mdoc_validate.cwl
 inputs:
 - id: in_format
   doc: "The documentation FORMAT used within PATHS.  Valid\nformats include:\necma\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_correct.cwl
+id: fermi_correct.cwl
 inputs:
 - id: in_kmer_length_auto
   doc: k-mer length; -1 for auto [-1]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_run_gibbs.cwl
+id: rsem_run_gibbs.cwl
 inputs:
 - id: in_reference_name
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gendb.cwl
+id: gendb.cwl
 inputs:
 - id: in_alph
   doc: Set the alphabet (overrides -type)

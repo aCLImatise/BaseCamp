@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../showtable.cwl
+id: showtable.cwl
 inputs:
 - id: in_format
   doc: "input table format, should be specified if it cannot\nbe automatically detected"

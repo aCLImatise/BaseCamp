@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_test_outdir.cwl
+id: ariba_test_outdir.cwl
 inputs:
 - id: in_ariba
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../digestiflow_cli_ingest.cwl
+id: digestiflow_cli_ingest.cwl
 inputs:
 - id: in_analyze_adapters
   doc: Read adapters from binary base call files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skesa.cwl
+id: skesa.cwl
 inputs:
 - id: in__print_version
   doc: '[ --version ]              Print version'

@@ -21,7 +21,6 @@ task Sreformat {
     String gcg
     String gcg_data
     String pir
-    String raw
   }
   command <<<
     sreformat \
@@ -31,7 +30,6 @@ task Sreformat {
       ~{gcg} \
       ~{gcg_data} \
       ~{pir} \
-      ~{raw} \
       ~{if (force_dna_alphabet) then "-d" else ""} \
       ~{if (force_rna_alphabet) then "-r" else ""} \
       ~{if (force_lower_case) then "-l" else ""} \
@@ -66,7 +64,6 @@ task Sreformat {
     gcg: "phylip"
     gcg_data: "clustal"
     pir: "selex"
-    raw: "eps"
   }
   output {
     File out_stdout = stdout()

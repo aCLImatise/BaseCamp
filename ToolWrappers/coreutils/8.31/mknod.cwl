@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mknod.cwl
+id: mknod.cwl
 inputs:
 - id: in_mode
   doc: set file permission bits to MODE, not a=rw - umask

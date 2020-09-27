@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grammarTrain.cwl
+id: grammarTrain.cwl
 inputs:
 - id: in_arg_file_newick
   doc: '[ --treeFile ] arg                 File with Newick tree used with phylo'

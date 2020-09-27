@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertOrganismID.pl_new organism.cwl
+id: convertOrganismID.pl_new organism.cwl
 inputs:
 - id: in_convert_organ_is_middot_pl
   doc: ''

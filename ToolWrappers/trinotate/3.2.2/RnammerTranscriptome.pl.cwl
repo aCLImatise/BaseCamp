@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RnammerTranscriptome.pl.cwl
+id: RnammerTranscriptome.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

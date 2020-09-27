@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../juicer_shortform2pairs.pl.cwl
+id: juicer_shortform2pairs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

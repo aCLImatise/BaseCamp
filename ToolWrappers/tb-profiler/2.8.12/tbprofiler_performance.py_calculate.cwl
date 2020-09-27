@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_performance.py_calculate.cwl
+id: tbprofiler_performance.py_calculate.cwl
 inputs:
 - id: in_dir
   doc: 'NGS Platform (default: results/)'

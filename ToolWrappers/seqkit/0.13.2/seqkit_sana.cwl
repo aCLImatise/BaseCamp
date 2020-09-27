@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_sana.cwl
+id: seqkit_sana.cwl
 inputs:
 - id: in_allow_gaps
   doc: allow gap character (-) in sequences

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic_cluster.cwl
+id: epic_cluster.cwl
 inputs:
 - id: in_matrix
   doc: Matrix to run clustering algorithm on.

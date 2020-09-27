@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeOutOfBoundsReads.pl.cwl
+id: removeOutOfBoundsReads.pl.cwl
 inputs:
 - id: in_chrom_sizes
   doc: '(specify the chromosome sizes, default: automatic)'

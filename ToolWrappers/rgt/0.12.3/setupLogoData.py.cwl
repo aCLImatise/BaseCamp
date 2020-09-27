@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../setupLogoData.py.cwl
+id: setupLogoData.py.cwl
 inputs:
 - id: in_all
   doc: Fetch all data sets.

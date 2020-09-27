@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Admin_EnsemblReferenceFileGenerator.pl.cwl
+id: Admin_EnsemblReferenceFileGenerator.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

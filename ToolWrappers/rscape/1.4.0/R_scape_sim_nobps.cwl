@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../R_scape_sim_nobps.cwl
+id: R_scape_sim_nobps.cwl
 inputs:
 - id: in__be_verbose
   doc: ': be verbose'
@@ -36,11 +36,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --onemsa
-- id: in_to_l
-  doc: ': tolerance  [1e-3]'
-  type: double
-  inputBinding:
-    prefix: --tol
 - id: in_seed
   doc: ': set RNG seed to <n>  [0]'
   type: long

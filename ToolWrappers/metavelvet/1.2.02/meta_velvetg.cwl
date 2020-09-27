@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meta_velvetg.cwl
+id: meta_velvetg.cwl
 inputs: []
 outputs:
 - id: out_stdout

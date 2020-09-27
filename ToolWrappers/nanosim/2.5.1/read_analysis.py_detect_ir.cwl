@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_analysis.py_detect_ir.cwl
+id: read_analysis.py_detect_ir.cwl
 inputs:
 - id: in_annotation
   doc: Annotation file in ensemble GTF/GFF formats

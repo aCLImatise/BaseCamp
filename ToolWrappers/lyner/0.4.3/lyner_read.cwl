@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_read.cwl
+id: lyner_read.cwl
 inputs:
 - id: in_matrix
   doc: ''

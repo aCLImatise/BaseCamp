@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainToPslBasic.cwl
+id: chainToPslBasic.cwl
 inputs:
 - id: in_chain_top_sl
   doc: ''

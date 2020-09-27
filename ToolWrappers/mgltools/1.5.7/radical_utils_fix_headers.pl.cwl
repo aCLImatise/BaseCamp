@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../radical_utils_fix_headers.pl.cwl
+id: radical_utils_fix_headers.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotateRefSeqSequencesWithUniqueTaxonIDs.pl.cwl
+id: annotateRefSeqSequencesWithUniqueTaxonIDs.pl.cwl
 inputs:
 - id: in_taxonomy_in_directory
   doc: ''

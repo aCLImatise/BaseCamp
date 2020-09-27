@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_3Dpie.R.cwl
+id: plot_3Dpie.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

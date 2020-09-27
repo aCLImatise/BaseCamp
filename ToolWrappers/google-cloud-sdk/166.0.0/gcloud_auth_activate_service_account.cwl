@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_auth_activate_service_account.cwl
+id: gcloud_auth_activate_service_account.cwl
 inputs:
 - id: in_key_file
   doc: Path to the private key file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../colorinterpolate.cwl
+id: colorinterpolate.cwl
 inputs:
 - id: in_start
   doc: ',y1,z1 -end x2,y2,z2 -steps STEPS'

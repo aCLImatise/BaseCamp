@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_filter.cwl
+id: fastq_filter.cwl
 inputs: []
 outputs:
 - id: out_stdout

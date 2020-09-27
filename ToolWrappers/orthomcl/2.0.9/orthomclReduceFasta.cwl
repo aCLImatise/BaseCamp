@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclReduceFasta.cwl
+id: orthomclReduceFasta.cwl
 inputs:
 - id: in_fast_a_file
   doc: ''

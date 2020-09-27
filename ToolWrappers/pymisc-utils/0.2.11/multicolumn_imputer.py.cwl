@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multicolumn_imputer.py.cwl
+id: multicolumn_imputer.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

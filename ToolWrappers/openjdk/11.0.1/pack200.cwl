@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pack200.cwl
+id: pack200.cwl
 inputs:
 - id: in_repack
   doc: "repack or normalize a jar, suitable for\nsigning with jarsigner"

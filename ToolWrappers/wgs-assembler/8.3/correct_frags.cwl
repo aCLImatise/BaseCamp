@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correct_frags.cwl
+id: correct_frags.cwl
 inputs:
 - id: in_set_keep_flag
   doc: set keep flag on end of frags with less than this many olaps

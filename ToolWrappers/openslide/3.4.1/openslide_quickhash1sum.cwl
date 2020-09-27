@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../openslide_quickhash1sum.cwl
+id: openslide_quickhash1sum.cwl
 inputs: []
 outputs:
 - id: out_stdout

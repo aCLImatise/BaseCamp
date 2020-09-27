@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanpy_scripts_tests.bats.cwl
+id: scanpy_scripts_tests.bats.cwl
 inputs: []
 outputs:
 - id: out_stdout

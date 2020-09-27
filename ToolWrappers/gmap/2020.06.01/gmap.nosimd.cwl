@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmap.nosimd.cwl
+id: gmap.nosimd.cwl
 inputs:
 - id: in_dir
   doc: "Genome directory.  Default (as specified by --with-gmapdb to the configure\

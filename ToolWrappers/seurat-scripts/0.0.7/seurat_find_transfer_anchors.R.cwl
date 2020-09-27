@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seurat_find_transfer_anchors.R.cwl
+id: seurat_find_transfer_anchors.R.cwl
 inputs:
 - id: in_query_file
   doc: File containing seurat object to use as the query.

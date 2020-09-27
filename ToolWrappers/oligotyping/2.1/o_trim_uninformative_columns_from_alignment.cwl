@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_trim_uninformative_columns_from_alignment.cwl
+id: o_trim_uninformative_columns_from_alignment.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_simulate.cwl
+id: vtools_simulate.cwl
 inputs:
 - id: in_seed
   doc: "Random seed for the simulation. A random seed will be\nused by default but\

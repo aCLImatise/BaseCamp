@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_analyse_variants.py.cwl
+id: tbprofiler_analyse_variants.py.cwl
 inputs:
 - id: in_mutations
   doc: 'NGS Platform (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EstimateError.py_REFERENCE.cwl
+id: EstimateError.py_REFERENCE.cwl
 inputs:
 - id: in_estimate_error_do_tpy
   doc: ''

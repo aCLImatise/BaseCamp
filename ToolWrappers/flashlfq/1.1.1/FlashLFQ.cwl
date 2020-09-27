@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FlashLFQ.cwl
+id: FlashLFQ.cwl
 inputs:
 - id: in_idt
   doc: Required. string; identification file path

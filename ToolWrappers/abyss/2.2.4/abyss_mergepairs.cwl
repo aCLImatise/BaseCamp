@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_mergepairs.cwl
+id: abyss_mergepairs.cwl
 inputs:
 - id: in_prefix
   doc: the prefix of all output files [out]

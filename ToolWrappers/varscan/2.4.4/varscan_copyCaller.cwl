@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_copyCaller.cwl
+id: varscan_copyCaller.cwl
 inputs:
 - id: in_output_file
   doc: Output file to contain the calls

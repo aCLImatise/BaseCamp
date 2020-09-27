@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runant.pl.cwl
+id: runant.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

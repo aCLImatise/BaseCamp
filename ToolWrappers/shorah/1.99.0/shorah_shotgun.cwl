@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shorah_shotgun.cwl
+id: shorah_shotgun.cwl
 inputs:
 - id: in_alpha
   doc: alpha in dpm sampling

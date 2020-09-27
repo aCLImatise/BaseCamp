@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_debug_snapshots.cwl
+id: gcloud_debug_snapshots.cwl
 inputs:
 - id: in_target
   doc: "=(ID|DESCRIPTION_REGEXP)\nThe debug target. It may be a target ID or name\

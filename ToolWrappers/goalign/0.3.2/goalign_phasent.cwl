@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_phasent.cwl
+id: goalign_phasent.cwl
 inputs:
 - id: in_aa_output
   doc: Output translated sequences FASTA file (default "none")

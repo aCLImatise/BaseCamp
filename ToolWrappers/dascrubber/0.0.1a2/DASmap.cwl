@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DASmap.cwl
+id: DASmap.cwl
 inputs:
 - id: in_p
   doc: ''

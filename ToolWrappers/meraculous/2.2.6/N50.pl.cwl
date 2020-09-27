@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../N50.pl.cwl
+id: N50.pl.cwl
 inputs:
 - id: in_g
   doc: ''

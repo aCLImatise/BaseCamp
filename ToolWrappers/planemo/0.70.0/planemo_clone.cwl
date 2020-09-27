@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../planemo_clone.cwl
+id: planemo_clone.cwl
 inputs:
-- id: in_fork
-  doc: / --skip_fork
-  type: boolean
-  inputBinding:
-    prefix: --fork
 - id: in_branch
   doc: Create a named branch on result.
   type: string

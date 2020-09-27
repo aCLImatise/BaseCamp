@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_ref_base_coverage.py.cwl
+id: bam_ref_base_coverage.py.cwl
 inputs:
 - id: in_reference_fasta
   doc: Reference fasta.

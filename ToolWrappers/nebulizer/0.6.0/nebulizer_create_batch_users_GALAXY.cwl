@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_create_batch_users_GALAXY.cwl
+id: nebulizer_create_batch_users_GALAXY.cwl
 inputs:
 - id: in_password
   doc: "specify password for new user accounts (otherwise\nprogram will prompt for\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_assign_confidence_decoy_..cwl
+id: crux_assign_confidence_decoy_..cwl
 inputs:
 - id: in_crux
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_keepdocker.cwl
+id: arv_keepdocker.cwl
 inputs:
 - id: in_force
   doc: Re-upload the image even if it already exists on the

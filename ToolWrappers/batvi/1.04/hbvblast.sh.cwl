@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hbvblast.sh.cwl
+id: hbvblast.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

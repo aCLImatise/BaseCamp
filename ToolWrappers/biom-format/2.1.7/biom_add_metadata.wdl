@@ -2,7 +2,6 @@ version 1.0
 
 task BiomAddmetadata {
   input {
-    String? m
     File? input_fp
     File? output_fp
     File? sample_metadata_fp
@@ -17,7 +16,6 @@ task BiomAddmetadata {
   }
   command <<<
     biom add_metadata \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(input_fp) then ("--input-fp " +  '"' + input_fp + '"') else ""} \
       ~{if defined(output_fp) then ("--output-fp " +  '"' + output_fp + '"') else ""} \
       ~{if defined(sample_metadata_fp) then ("--sample-metadata-fp " +  '"' + sample_metadata_fp + '"') else ""} \
@@ -31,7 +29,6 @@ task BiomAddmetadata {
       ~{if (output_as_json) then "--output-as-json" else ""}
   >>>
   parameter_meta {
-    m: ""
     input_fp: "The input BIOM table  [required]"
     output_fp: "The output BIOM table  [required]"
     sample_metadata_fp: "The sample metadata mapping file (will add\\nsample metadata to the input BIOM table, if\\nprovided)."

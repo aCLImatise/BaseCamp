@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_batch_for_iteratively_mapping_assembling.py.cwl
+id: make_batch_for_iteratively_mapping_assembling.py.cwl
 inputs:
 - id: in_input_st_fastq
   doc: Input 1st fastq format file as pool

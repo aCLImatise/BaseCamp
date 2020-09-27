@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matrix_scan_quick.cwl
+id: matrix_scan_quick.cwl
 inputs:
 - id: in_read_sequence_filename
   doc: "#                  read sequence from filename # (FASTA format).\nif not specified,\

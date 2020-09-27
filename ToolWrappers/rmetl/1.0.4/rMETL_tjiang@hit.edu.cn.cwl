@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rMETL_tjiang@hit.edu.cn.cwl
+id: rMETL_tjiang@hit.edu.cn.cwl
 inputs:
 - id: in_rm_etl
   doc: ''

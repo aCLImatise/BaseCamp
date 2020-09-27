@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../albatradis_gene_reports.cwl
+id: albatradis_gene_reports.cwl
 inputs:
 - id: in_prefix
   doc: 'Output directory prefix (default: output)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rearrange_snv_matrix.pl.cwl
+id: rearrange_snv_matrix.pl.cwl
 inputs:
 - id: in_tree
   doc: "[required]\nNewick input file describing the phylogenetic tree."

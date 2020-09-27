@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comb_p_filter.cwl
+id: comb_p_filter.cwl
 inputs:
 - id: in_pvalue_column_from
   doc: p-value column from `p_bed`

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignSets.py_table.cwl
+id: AlignSets.py_table.cwl
 inputs:
 - id: in_outdir
   doc: "Specify to changes the output directory to the\nlocation specified. The input\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_funits.cwl
+id: pipits_funits.cwl
 inputs:
 - id: in_joined_filtered_sequences
   doc: "[REQUIRED] Joined, quality filtered sequences in FASTA.\nTypically output\

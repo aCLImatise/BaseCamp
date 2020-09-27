@@ -14,12 +14,10 @@ task Scanpyrunpca {
     Boolean? use_all
     Boolean? chunked
     Int? chunk_size
-    String format_dot
     String table_dot
   }
   command <<<
     scanpy_run_pca \
-      ~{format_dot} \
       ~{table_dot} \
       ~{if (input_format) then "--input-format" else ""} \
       ~{if (output_format) then "--output-format" else ""} \
@@ -47,7 +45,6 @@ task Scanpyrunpca {
     use_all: "When set, use all genes for PCA, otherwise\\nuse highly-variable genes by default."
     chunked: "When set, perform an incremental PCA on\\nsegments of --chunk-size, which\\nautomatically zero centers and ignore\\nsettings of --random-state and --svd-solver."
     chunk_size: "Number of observations to include in each\\nchunk, required by --chunked."
-    format_dot: "[default: 1000]"
     table_dot: "--n-comps INTEGER               Number of components to compute  [default:"
   }
   output {

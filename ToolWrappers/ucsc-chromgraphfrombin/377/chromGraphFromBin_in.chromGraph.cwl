@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromGraphFromBin_in.chromGraph.cwl
+id: chromGraphFromBin_in.chromGraph.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

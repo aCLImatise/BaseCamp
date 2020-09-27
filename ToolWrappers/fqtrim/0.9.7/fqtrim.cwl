@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fqtrim.cwl
+id: fqtrim.cwl
 inputs:
 - id: in_rename_reads_using
   doc: "rename the reads using the <prefix> followed by a read counter;\nif -C option\

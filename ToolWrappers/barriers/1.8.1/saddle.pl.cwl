@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../saddle.pl.cwl
+id: saddle.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -9,7 +9,6 @@ task RsatRandomseq {
     String? prefix
     String? format
     Boolean? lw
-    Boolean? type
     Boolean? seed
     File? generate_random_sequences
     Int? template_format
@@ -36,7 +35,6 @@ task RsatRandomseq {
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
       ~{if defined(format) then ("-format " +  '"' + format + '"') else ""} \
       ~{if (lw) then "-lw" else ""} \
-      ~{if (type) then "-type" else ""} \
       ~{if (seed) then "-seed" else ""} \
       ~{if defined(generate_random_sequences) then ("-i " +  '"' + generate_random_sequences + '"') else ""} \
       ~{if defined(template_format) then ("-template_format " +  '"' + template_format + '"') else ""} \
@@ -56,7 +54,6 @@ task RsatRandomseq {
     prefix: "for sequence identifiers (default: rand)."
     format: "format.\\nTwo options are available:\\nIG      IG suite from IntelliGenetics\\nraw     (default)"
     lw: "##  Line width. A newline character will be inserted in the\\nsequence every ## bases. Default is 70.\\n-lw 0 will prevent newline insertion."
-    type: "protein|DNA|other"
     seed: "# seed for the random generator"
     generate_random_sequences: "Generate random sequences with lengths specified in a template\\nfile.\\nVarious template types are supported (option -template_format):\\nsequences (in fasta), genomic coordinates (in bed), sequence\\nlengths.\\nThis option is incompatible with options -l and -n."
     template_format: "Format for the template set (specified with the option -i).\\nSupported formats:\\nfasta (default)\\nTemplates are provided as a fasta-formatted sequence file. The\\nprogram random-genome-fragments calls sequence-lengths to define\\nthe template lengths.\\nbed\\nTemplates are provided as a bed-formatted file of genomic\\ncoordinates. The program random-genome-fragments calls\\nsequence-lengths -format bed to define the lengths of the bed\\nfeatures.\\nBed file must contain at least 3 columns, indicating, for each\\nfeature:\\n1. id (ignored)\\n2. start coordinate\\n3. end coordinate\\nlen\\nTemplates are provided as a tab-delimited file indicating the\\nlength of each template sequence (this file can be produced by\\nsequence-lengths)."

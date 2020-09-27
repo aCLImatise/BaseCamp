@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaclustAlignRange.pl.cwl
+id: rnaclustAlignRange.pl.cwl
 inputs:
 - id: in_range
   doc: "<i-j>                          specifies pairwise alignments which will be\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_dict.cwl
+id: samtools_dict.cwl
 inputs:
 - id: in_assembly
   doc: assembly

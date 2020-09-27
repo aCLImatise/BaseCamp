@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: ../../../phyluce_align_reduce_alignments_with_raxml.cwl
+id: phyluce_align_reduce_alignments_with_raxml.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--input-format {fasta,phylip,phylip-relaxed}]\n[--cores CORES]\n[--verbosity\
+    \ {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_alignments

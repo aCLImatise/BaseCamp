@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimeo_self.cwl
+id: mimeo_self.cwl
 inputs:
 - id: in_a_dir
   doc: "Name of directory containing sequences from genome.\nWrite split files here\

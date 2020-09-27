@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmlget.cwl
+id: xmlget.cwl
 inputs:
 - id: in_xml
   doc: ': enter xml value: Error: Unable to get reply from user - end of standard

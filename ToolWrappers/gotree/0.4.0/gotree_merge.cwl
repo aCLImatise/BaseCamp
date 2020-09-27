@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_merge.cwl
+id: gotree_merge.cwl
 inputs:
 - id: in_compared
   doc: Compared tree input file (default "stdin")

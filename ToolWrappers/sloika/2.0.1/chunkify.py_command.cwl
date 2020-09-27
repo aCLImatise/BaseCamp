@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chunkify.py_command.cwl
+id: chunkify.py_command.cwl
 inputs:
 - id: in_chunk_if_y_do_tpy
   doc: ''

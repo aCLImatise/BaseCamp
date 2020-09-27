@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dropletutils_read_10x_counts.R.cwl
+id: dropletutils_read_10x_counts.R.cwl
 inputs:
 - id: in_samples
   doc: "A comma-separated list containing one or more directory names, each\ncorresponding\

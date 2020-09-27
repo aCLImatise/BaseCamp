@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribotricer_count_orfs_codon.cwl
+id: ribotricer_count_orfs_codon.cwl
 inputs:
 - id: in_ribot_ricer_index
   doc: "Path to the index file of ribotricer This\nfile should be generated using\

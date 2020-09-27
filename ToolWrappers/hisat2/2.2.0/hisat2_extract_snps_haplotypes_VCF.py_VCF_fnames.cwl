@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_extract_snps_haplotypes_VCF.py_VCF_fnames.cwl
+id: hisat2_extract_snps_haplotypes_VCF.py_VCF_fnames.cwl
 inputs:
 - id: in_his_at_two_extract_snps_haplotypes_vcf_do_tpy
   doc: ''

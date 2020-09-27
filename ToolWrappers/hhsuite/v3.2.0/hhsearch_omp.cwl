@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hhsearch_omp.cwl
+id: hhsearch_omp.cwl
 inputs:
 - id: in_inputquery_multiple_sequence
   doc: input/query multiple sequence alignment (a2m, a3m, FASTA) or HMM

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mikado_util_util.cwl
+id: mikado_util_util.cwl
 inputs:
 - id: in_mikado
   doc: ''

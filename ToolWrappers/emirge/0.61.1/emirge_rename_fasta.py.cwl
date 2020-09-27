@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emirge_rename_fasta.py.cwl
+id: emirge_rename_fasta.py.cwl
 inputs:
 - id: in_prob_min
   doc: "Only include sequences in output with prior\nprobability above PROB_MIN (Default:\

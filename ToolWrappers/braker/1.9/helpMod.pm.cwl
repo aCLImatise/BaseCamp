@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../helpMod.pm.cwl
+id: helpMod.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

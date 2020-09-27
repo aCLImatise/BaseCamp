@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_ws.cwl
+id: arv_ws.cwl
 inputs:
 - id: in_uuid
   doc: Filter events on object_uuid

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_shuffle_seqfile.cwl
+id: esl_shuffle_seqfile.cwl
 inputs:
 - id: in_g
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SelectClusterCogs.pl.cwl
+id: SelectClusterCogs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

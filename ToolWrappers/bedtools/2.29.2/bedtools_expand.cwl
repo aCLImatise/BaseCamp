@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_expand.cwl
+id: bedtools_expand.cwl
 inputs:
 - id: in_input_file_assumes
   doc: Input file. Assumes "stdin" if omitted.

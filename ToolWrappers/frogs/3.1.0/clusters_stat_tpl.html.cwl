@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clusters_stat_tpl.html.cwl
+id: clusters_stat_tpl.html.cwl
 inputs: []
 outputs:
 - id: out_stdout

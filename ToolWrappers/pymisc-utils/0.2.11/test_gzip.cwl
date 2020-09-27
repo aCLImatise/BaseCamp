@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_gzip.cwl
+id: test_gzip.cwl
 inputs:
 - id: in_at_call_aside
   doc: File "/usr/local/lib/python3.6/site-packages/pkg_resources/__init__.py", line

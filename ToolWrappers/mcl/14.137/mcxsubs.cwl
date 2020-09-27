@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxsubs.cwl
+id: mcxsubs.cwl
 inputs:
 - id: in_imx
   doc: matrix/graph file name

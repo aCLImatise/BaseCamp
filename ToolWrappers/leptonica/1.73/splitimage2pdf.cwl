@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitimage2pdf.cwl
+id: splitimage2pdf.cwl
 inputs: []
 outputs:
 - id: out_stdout

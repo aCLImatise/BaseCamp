@@ -1,115 +1,6 @@
 class: CommandLineTool
-id: ../../../toil_cwl_runner.cwl
+id: toil_cwl_runner.cwl
 inputs:
-- id: in_var_0
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --jobStore
-- id: in_not_strict
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --not-strict
-- id: in_enable_dev
-  doc: Enable loading and running development versions of CWL
-  type: boolean
-  inputBinding:
-    prefix: --enable-dev
-- id: in_quiet
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --quiet
-- id: in_basedir
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --basedir
-- id: in_outdir
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --outdir
-- id: in_user_space_docker_cmd
-  doc: "(Linux/OS X only) Specify a user space docker command\n(like udocker or dx-docker)\
-    \ that will be used to call\n'pull' and 'run'"
-  type: string
-  inputBinding:
-    prefix: --user-space-docker-cmd
-- id: in_singularity
-  doc: "[experimental] Use Singularity runtime for running\ncontainers. Requires Singularity\
-    \ v2.6.1+ and Linux\nwith kernel version v3.18+ or with overlayfs support\nbackported."
-  type: boolean
-  inputBinding:
-    prefix: --singularity
-- id: in_no_container
-  doc: "Do not execute jobs in a Docker container, even when\n`DockerRequirement`\
-    \ is specified under `hints`."
-  type: boolean
-  inputBinding:
-    prefix: --no-container
-- id: in_leave_container
-  doc: Do not delete Docker container used by jobs after they
-  type: boolean
-  inputBinding:
-    prefix: --leave-container
-- id: in_beta_dependency_resolvers_configuration
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --beta-dependency-resolvers-configuration
-- id: in_beta_dependencies_directory
-  doc: ''
-  type: Directory
-  inputBinding:
-    prefix: --beta-dependencies-directory
-- id: in_beta_use_bio_containers
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --beta-use-biocontainers
-- id: in_beta_cond_a_dependencies
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --beta-conda-dependencies
-- id: in_tmpdir_prefix
-  doc: Path prefix for temporary directories
-  type: File
-  inputBinding:
-    prefix: --tmpdir-prefix
-- id: in_tmp_outdir_prefix
-  doc: Path prefix for intermediate output directories
-  type: File
-  inputBinding:
-    prefix: --tmp-outdir-prefix
-- id: in_force_docker_pull
-  doc: Pull latest docker image even if it is locally present
-  type: boolean
-  inputBinding:
-    prefix: --force-docker-pull
-- id: in_no_match_user
-  doc: Disable passing the current uid to `docker run --user`
-  type: boolean
-  inputBinding:
-    prefix: --no-match-user
-- id: in_no_read_only
-  doc: Do not set root directory in the container as read-
-  type: boolean
-  inputBinding:
-    prefix: --no-read-only
-- id: in_relax_path_checks
-  doc: "Relax requirements on path names to permit spaces and\nhash characters."
-  type: boolean
-  inputBinding:
-    prefix: --relax-path-checks
-- id: in_default_container
-  doc: "Specify a default docker container that will be used\nif the workflow fails\
-    \ to specify one."
-  type: string
-  inputBinding:
-    prefix: --default-container
 - id: in_logoff
   doc: Same as --logCritical
   type: boolean
@@ -402,31 +293,17 @@ inputs:
   inputBinding:
     prefix: --defaultDisk
 - id: in_default_preempt_able
-  doc: ''
+  doc: "--maxCores INT        The maximum number of CPU cores to request from the\n\
+    batch system at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are\
+    \ supported. Default is 8.0 Ei\n--maxMemory INT       The maximum amount of memory\
+    \ to request from the batch\nsystem at any one time. Standard suffixes like K,\
+    \ Ki,\nM, Mi, G or Gi are supported. Default is 8.0 Ei\n--maxDisk INT        \
+    \ The maximum amount of disk space to request from the\nbatch system at any one\
+    \ time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default is\
+    \ 8.0 Ei"
   type: boolean
   inputBinding:
     prefix: --defaultPreemptable
-- id: in_max_cores
-  doc: "The maximum number of CPU cores to request from the\nbatch system at any one\
-    \ time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default is\
-    \ 8.0 Ei"
-  type: long
-  inputBinding:
-    prefix: --maxCores
-- id: in_max_memory
-  doc: "The maximum amount of memory to request from the batch\nsystem at any one\
-    \ time. Standard suffixes like K, Ki,\nM, Mi, G or Gi are supported. Default is\
-    \ 8.0 Ei"
-  type: long
-  inputBinding:
-    prefix: --maxMemory
-- id: in_max_disk
-  doc: "The maximum amount of disk space to request from the\nbatch system at any\
-    \ one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default\
-    \ is 8.0 Ei"
-  type: long
-  inputBinding:
-    prefix: --maxDisk
 - id: in_retry_count
   doc: "Number of times to retry a failing job before giving\nup and labeling job\
     \ failed. default=1"
@@ -611,27 +488,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_exit
-  doc: --preserve-environment VAR1 VAR2 [VAR1 VAR2 ...]
-  type: string
-  inputBinding:
-    position: 0
-- id: in_command_line_tools
-  doc: --preserve-entire-environment
-  type: string
-  inputBinding:
-    position: 0
-- id: in_command_line_tools_dot
-  doc: --destBucket DESTBUCKET
-  type: string
-  inputBinding:
-    position: 0
-- id: in_only
-  doc: --strict-memory-limit
-  type: string
-  inputBinding:
-    position: 0
-- id: in_location_job_store
+- id: in_job_store
   doc: "The location of the job store for the workflow. A job\nstore holds persistent\
     \ information about the jobs and\nfiles in a workflow. If the workflow is run\
     \ with a\ndistributed batch system, the job store must be\naccessible by all worker\
@@ -656,11 +513,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_tmp_outdir_prefix
-  doc: Path prefix for intermediate output directories
-  type: File
-  outputBinding:
-    glob: $(inputs.in_tmp_outdir_prefix)
 - id: out_workdir
   doc: "Absolute path to directory where temporary files\ngenerated during the Toil\
     \ run should be placed.\nStandard output and error from batch system jobs\n(unless\

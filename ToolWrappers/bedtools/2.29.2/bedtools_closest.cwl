@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_closest.cwl
+id: bedtools_closest.cwl
 inputs:
 - id: in_addition_closest_feature
   doc: "In addition to the closest feature in B,\nreport its distance to A as an extra\

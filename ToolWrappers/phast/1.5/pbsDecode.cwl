@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbsDecode.cwl
+id: pbsDecode.cwl
 inputs:
 - id: in_start
   doc: "Decode only the subsequence starting at position <sidx>.\nIndexing starts\

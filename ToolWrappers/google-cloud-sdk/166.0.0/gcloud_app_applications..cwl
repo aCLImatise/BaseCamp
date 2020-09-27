@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_applications..cwl
+id: gcloud_app_applications..cwl
 inputs:
 - id: in_versions
   doc: command may be         browse | create | deploy | describe | open-console

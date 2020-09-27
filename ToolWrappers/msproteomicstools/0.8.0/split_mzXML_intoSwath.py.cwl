@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_mzXML_intoSwath.py.cwl
+id: split_mzXML_intoSwath.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

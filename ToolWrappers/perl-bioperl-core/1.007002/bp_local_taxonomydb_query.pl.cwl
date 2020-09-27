@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_local_taxonomydb_query.pl.cwl
+id: bp_local_taxonomydb_query.pl.cwl
 inputs:
 - id: in_taxonid
   doc: DESCRIPTION

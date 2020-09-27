@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_config.2.cwl
+id: vdb_config.2.cwl
 inputs:
 - id: in_all
   doc: print all information [default]

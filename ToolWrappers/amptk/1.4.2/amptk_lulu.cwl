@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_lulu.cwl
+id: amptk_lulu.cwl
 inputs:
 - id: in_fast_a
   doc: Input OTUs in FASTA format (Required)

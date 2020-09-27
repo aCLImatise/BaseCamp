@@ -6,12 +6,10 @@ task Obo2owlpl {
     Boolean? url
     Boolean? obo_owl_url
     String usage
-    String options
   }
   command <<<
     obo2owl_pl \
       ~{usage} \
-      ~{options} \
       ~{if (obo_input_file) then "-f" else ""} \
       ~{if (url) then "-u" else ""} \
       ~{if (obo_owl_url) then "-w" else ""}
@@ -21,7 +19,6 @@ task Obo2owlpl {
     url: "URL"
     obo_owl_url: "obo in owl url"
     usage: ": obo2owl.pl [options]"
-    options: ":"
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAindex.cwl
+id: LAindex.cwl
 inputs:
 - id: in_v
   doc: ''

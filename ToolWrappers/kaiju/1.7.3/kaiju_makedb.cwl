@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_makedb.cwl
+id: kaiju_makedb.cwl
 inputs:
 - id: in_set_number_parallel
   doc: "Set number of parallel threads for index construction to X \\(default:5\\\

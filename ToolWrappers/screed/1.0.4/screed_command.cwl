@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../screed_command.cwl
+id: screed_command.cwl
 inputs:
 - id: in_command
   doc: 'optional arguments:'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastutils_subsample.cwl
+id: fastutils_subsample.cwl
 inputs:
 - id: in_in
   doc: input file in fasta/q format. This options is required if -r or -l are used

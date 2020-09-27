@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_missview.cwl
+id: hicstuff_missview.cwl
 inputs:
 - id: in_aligner
   doc: "The read alignment software to use. Can be either\nbowtie2, minimap2 or bwa.\

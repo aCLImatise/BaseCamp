@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multiBamCov.cwl
+id: multiBamCov.cwl
 inputs:
 - id: in_bams
   doc: The bam files.

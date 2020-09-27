@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlap_partition.cwl
+id: overlap_partition.cwl
 inputs:
 - id: in_opts
   doc: ''

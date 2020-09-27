@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brassI_pre_filter.pl.cwl
+id: brassI_pre_filter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

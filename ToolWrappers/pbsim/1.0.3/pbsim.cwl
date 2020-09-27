@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbsim.cwl
+id: pbsim.cwl
 inputs:
 - id: in_prefix
   doc: prefix of output files (sd).

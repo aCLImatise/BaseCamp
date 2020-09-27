@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_gff_ids.cwl
+id: map_gff_ids.cwl
 inputs: []
 outputs:
 - id: out_stdout

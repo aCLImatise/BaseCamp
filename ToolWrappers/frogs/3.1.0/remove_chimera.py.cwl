@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_chimera.py.cwl
+id: remove_chimera.py.cwl
 inputs:
 - id: in_nb_cpus
   doc: 'The maximum number of CPUs used. [Default: 1]'

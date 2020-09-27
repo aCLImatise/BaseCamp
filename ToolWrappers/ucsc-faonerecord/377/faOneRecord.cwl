@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faOneRecord.cwl
+id: faOneRecord.cwl
 inputs:
 - id: in_in_dot_fa
   doc: ''

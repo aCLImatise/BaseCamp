@@ -1,62 +1,22 @@
 class: CommandLineTool
-id: ../../../SeqPrep.cwl
+id: SeqPrep.cwl
 inputs:
-- id: in_f
-  doc: ''
+- id: in_second_read_input
+  doc: "-r <second read input fastq filename>\n-1 <first read output fastq filename>\n\
+    -2 <second read output fastq filename>"
   type: File
   inputBinding:
     prefix: -f
-- id: in_r
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -r
-- id: in_one
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: '-1'
-- id: in_two
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: '-2'
-- id: in_the_spinner
-  doc: the spinner?
-  type: string
-  inputBinding:
-    prefix: -S
-- id: in_three
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: '-3'
-- id: in_four
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: '-4'
-- id: in_help_message_works
-  doc: this help message and exit (also works with no args)
-  type: string
-  inputBinding:
-    prefix: -h
-- id: in_sequence_phred_rather
-  doc: sequence is in phred+64 rather than phred+33 format, the output will still
-    be phred+33
+- id: in_spinner__first
+  doc: "the spinner?\n-3 <first read discarded fastq filename>\n-4 <second read discarded\
+    \ fastq filename>\n-h Display this help message and exit (also works with no args)\n\
+    -6 Input sequence is in phred+64 rather than phred+33 format, the output will\
+    \ still be phred+33\n-q <Quality score cutoff for mismatches to be counted in\
+    \ overlap; default = 13>\n-L <Minimum length of a trimmed or merged read to print\
+    \ it; default = 30>"
   type: long
   inputBinding:
-    prefix: '-6'
-- id: in_quality_score_cutoff
-  doc: <Quality score cutoff for mismatches to be counted in overlap; default = 13>
-  type: boolean
-  inputBinding:
-    prefix: -q
-- id: in_minimum_length_trimmed
-  doc: <Minimum length of a trimmed or merged read to print it; default = 30>
-  type: boolean
-  inputBinding:
-    prefix: -L
+    prefix: -S
 - id: in_forward_read_sequence
   doc: "<forward read primer/adapter sequence to trim as it would appear at the end\
     \ of a read (recommend about 20bp of this)\n(should validate by grepping a file);\
@@ -71,19 +31,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -B
-- id: in_minimum_overall_base_pair_overlap_trim
+- id: in_minimum_overall_base
   doc: <minimum overall base pair overlap with adapter sequence to trim; default =
     10>
   type: boolean
   inputBinding:
     prefix: -O
-- id: in_maximum_for_primeradapter
+- id: in_maximum_fraction_mismatching
   doc: <maximum fraction of good quality mismatching bases for primer/adapter overlap;
     default = 0.020000>
   type: boolean
   inputBinding:
     prefix: -M
-- id: in_minimum_fraction_matching_bases_primeradapter
+- id: in_minimum_fraction_matching
   doc: <minimum fraction of matching bases for primer/adapter overlap; default = 0.870000>
   type: boolean
   inputBinding:
@@ -146,47 +106,17 @@ inputs:
   inputBinding:
     prefix: -z
 - id: in_maximum_quality_score
-  doc: <maximum quality score in output ((phred 33) default = ']' )>
+  doc: "<maximum quality score in output ((phred 33) default = ']' )>\n-g <print overhang\
+    \ when adapters are present and stripped (use this if reads are different length)>\n\
+    -s <perform merging and output the merged reads to this file>\n-E <write pretty\
+    \ alignments to this file for visual Examination>\n-x <max number of pretty alignments\
+    \ to write (if -E provided); default = 10000>\n-o <minimum overall base pair overlap\
+    \ to merge two reads; default = 15>\n-m <maximum fraction of good quality mismatching\
+    \ bases to overlap reads; default = 0.020000>\n-n <minimum fraction of matching\
+    \ bases to overlap reads; default = 0.900000>\n"
   type: boolean
   inputBinding:
     prefix: -y
-- id: in_print_overhang_when
-  doc: <print overhang when adapters are present and stripped (use this if reads are
-    different length)>
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: in_var_29
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -s
-- id: in_var_30
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -E
-- id: in_max_number_provided
-  doc: <max number of pretty alignments to write (if -E provided); default = 10000>
-  type: boolean
-  inputBinding:
-    prefix: -x
-- id: in_minimum_overall_base_pair_overlap_merge
-  doc: <minimum overall base pair overlap to merge two reads; default = 15>
-  type: boolean
-  inputBinding:
-    prefix: -o
-- id: in_maximum_fraction_to
-  doc: <maximum fraction of good quality mismatching bases to overlap reads; default
-    = 0.020000>
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: in_minimum_fraction_matching_bases_overlap
-  doc: <minimum fraction of matching bases to overlap reads; default = 0.900000>
-  type: boolean
-  inputBinding:
-    prefix: -n
 - id: in_required
   doc: ''
   type: string
@@ -201,21 +131,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_one
-  doc: ''
-  type: File
-  outputBinding:
-    glob: $(inputs.in_one)
-- id: out_two
-  doc: ''
-  type: File
-  outputBinding:
-    glob: $(inputs.in_two)
-- id: out_var_29
-  doc: ''
-  type: File
-  outputBinding:
-    glob: $(inputs.in_var_29)
 cwlVersion: v1.1
 baseCommand:
 - SeqPrep

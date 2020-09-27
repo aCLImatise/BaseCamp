@@ -13,7 +13,7 @@ task PhyluceProbeGetLocusBedFromLastzFiles {
       ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--regex REGEX]"
     input_directory_containing: "The input directory containing lastz files"
     regex: "A regular expression to apply to the probe sequences for\\nreplacement\\n"
   }

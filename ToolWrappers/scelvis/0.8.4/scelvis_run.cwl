@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scelvis_run.cwl
+id: scelvis_run.cwl
 inputs:
 - id: in_debug
   doc: Enable debug mode

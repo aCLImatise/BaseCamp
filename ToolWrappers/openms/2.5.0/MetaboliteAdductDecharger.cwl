@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MetaboliteAdductDecharger.cwl
+id: MetaboliteAdductDecharger.cwl
 inputs:
 - id: in_in
   doc: "*        Input file  (valid formats: 'featureXML')"

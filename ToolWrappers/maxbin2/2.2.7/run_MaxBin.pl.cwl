@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_MaxBin.pl.cwl
+id: run_MaxBin.pl.cwl
 inputs:
 - id: in_out
   doc: (output file)

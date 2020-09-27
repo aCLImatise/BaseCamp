@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportMETAREP_EC.cwl
+id: ktImportMETAREP_EC.cwl
 inputs:
 - id: in_meta_rep_folder
   doc: "Unpacked METAREP data folder. By default, separate datasets\nwill be created\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parsimplify.cwl
+id: parsimplify.cwl
 inputs: []
 outputs:
 - id: out_stdout

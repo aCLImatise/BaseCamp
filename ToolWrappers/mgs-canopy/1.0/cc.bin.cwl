@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cc.bin.cwl
+id: cc.bin.cwl
 inputs:
 - id: in_arg_path_input
   doc: '[ --input_file_path ] arg          Path to the input file'

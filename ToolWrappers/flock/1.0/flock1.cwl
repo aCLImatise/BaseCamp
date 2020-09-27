@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flock1.cwl
+id: flock1.cwl
 inputs: []
 outputs:
 - id: out_stdout

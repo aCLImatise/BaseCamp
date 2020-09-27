@@ -2,12 +2,12 @@ version 1.0
 
 task Genreliabdotpl {
   input {
+    String? s
+    File? a
+    File? f
+    Boolean? q
+    Boolean? v
     String? man
-    String? verbose
-    String? quiet
-    File? reliability_file
-    File? alignment_file
-    String? probabilities
     String alignment
     String help
     String reliability
@@ -17,20 +17,20 @@ task Genreliabdotpl {
       ~{alignment} \
       ~{help} \
       ~{reliability} \
-      ~{if defined(man) then ("--man " +  '"' + man + '"') else ""} \
-      ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
-      ~{if defined(quiet) then ("--quiet " +  '"' + quiet + '"') else ""} \
-      ~{if defined(reliability_file) then ("-f " +  '"' + reliability_file + '"') else ""} \
-      ~{if defined(alignment_file) then ("-a " +  '"' + alignment_file + '"') else ""} \
-      ~{if defined(probabilities) then ("-s " +  '"' + probabilities + '"') else ""}
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if (q) then "-q" else ""} \
+      ~{if (v) then "-v" else ""} \
+      ~{if defined(man) then ("--man " +  '"' + man + '"') else ""}
   >>>
   parameter_meta {
-    man: "documentation"
-    verbose: ""
-    quiet: ""
-    reliability_file: "reliability file"
-    alignment_file: "alignment file"
-    probabilities: "probabilities"
+    s: ""
+    a: ""
+    f: ""
+    q: ""
+    v: ""
+    man: ""
     alignment: ""
     help: ""
     reliability: ""

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyensembl_genomes..cwl
+id: pyensembl_genomes..cwl
 inputs:
 - id: in_manipulate
   doc: ''

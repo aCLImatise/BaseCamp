@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krakenhll_translate.cwl
+id: krakenhll_translate.cwl
 inputs:
 - id: in_mpa_format
   doc: ''

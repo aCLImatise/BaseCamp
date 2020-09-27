@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fmt.cwl
+id: fmt.cwl
 inputs:
 - id: in_crown_margin
   doc: preserve indentation of first two lines

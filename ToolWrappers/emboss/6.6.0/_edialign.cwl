@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_edialign.cwl
+id: _edialign.cwl
 inputs:
 - id: in_overlap_w
   doc: "selection  [default (when Nseq =< 35)] By default\noverlap weights are used\

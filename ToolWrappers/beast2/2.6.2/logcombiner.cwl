@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../logcombiner.cwl
+id: logcombiner.cwl
 inputs:
 - id: in_log
   doc: specify the name of the log file, each log file must be specified with separate

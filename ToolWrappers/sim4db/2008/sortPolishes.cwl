@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortPolishes.cwl
+id: sortPolishes.cwl
 inputs:
 - id: in_c_sort_cdna
   doc: (-C)    Sort by the cDNA index (defline).

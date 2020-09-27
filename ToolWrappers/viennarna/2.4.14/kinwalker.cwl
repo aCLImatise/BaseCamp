@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kinwalker.cwl
+id: kinwalker.cwl
 inputs:
 - id: in_in_it_structure
   doc: Start with a structure other than the open chain.

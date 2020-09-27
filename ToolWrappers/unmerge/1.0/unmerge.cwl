@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unmerge.cwl
+id: unmerge.cwl
 inputs: []
 outputs:
 - id: out_stdout

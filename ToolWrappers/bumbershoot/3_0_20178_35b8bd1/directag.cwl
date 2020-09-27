@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../directag.cwl
+id: directag.cwl
 inputs: []
 outputs:
 - id: out_stdout

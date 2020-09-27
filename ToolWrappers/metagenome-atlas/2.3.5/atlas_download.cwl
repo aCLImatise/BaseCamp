@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../atlas_download.cwl
+id: atlas_download.cwl
 inputs:
 - id: in_db_dir
   doc: location to store databases  [required]

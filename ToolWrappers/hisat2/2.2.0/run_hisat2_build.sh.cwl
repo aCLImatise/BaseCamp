@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_hisat2_build.sh.cwl
+id: run_hisat2_build.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expr.cwl
+id: expr.cwl
 inputs:
 - id: in_expression
   doc: ''

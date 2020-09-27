@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ilasm.cwl
+id: ilasm.cwl
 inputs:
 - id: in_about
   doc: About the Mono ILasm compiler

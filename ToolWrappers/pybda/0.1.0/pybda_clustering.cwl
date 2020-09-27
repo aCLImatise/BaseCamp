@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybda_clustering.cwl
+id: pybda_clustering.cwl
 inputs:
 - id: in_config
   doc: ''

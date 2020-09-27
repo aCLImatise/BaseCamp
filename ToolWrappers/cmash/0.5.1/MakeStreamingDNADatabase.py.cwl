@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeStreamingDNADatabase.py.cwl
+id: MakeStreamingDNADatabase.py.cwl
 inputs:
 - id: in_prime
   doc: 'Prime (for modding hashes) (default: 9999999999971)'

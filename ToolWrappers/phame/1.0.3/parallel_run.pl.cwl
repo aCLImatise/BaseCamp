@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parallel_run.pl.cwl
+id: parallel_run.pl.cwl
 inputs:
 - id: in_file_directory
   doc: File directory

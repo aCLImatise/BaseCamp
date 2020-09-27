@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_file_management.py.cwl
+id: vsnp_file_management.py.cwl
 inputs:
 - id: in_codes
   doc: "Excel file containing genotype code Column 1: to match\nsample name minus\

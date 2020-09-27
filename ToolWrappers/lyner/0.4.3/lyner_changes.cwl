@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_changes.cwl
+id: lyner_changes.cwl
 inputs:
 - id: in_mode
   doc: '[likelihood|cdf]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_convertMAR.py.cwl
+id: kaiju_convertMAR.py.cwl
 inputs:
 - id: in_ref
   doc: 'MarRef TSV file path (default: MarRef.tsv)'

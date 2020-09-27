@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../codcmp.cwl
+id: codcmp.cwl
 inputs: []
 outputs:
 - id: out_stdout

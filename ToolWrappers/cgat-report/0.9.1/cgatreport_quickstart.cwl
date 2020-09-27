@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgatreport_quickstart.cwl
+id: cgatreport_quickstart.cwl
 inputs:
 - id: in_dest
   doc: "destination directory.\n"

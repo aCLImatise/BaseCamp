@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_iteralign.cwl
+id: hicstuff_iteralign.cwl
 inputs:
 - id: in_genome
   doc: "The genome on which to map the reads. Must be\nthe path to the bowtie2/bwa\

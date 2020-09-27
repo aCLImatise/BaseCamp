@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainNet.cwl
+id: chainNet.cwl
 inputs:
 - id: in_min_space
   doc: '- minimum gap size to fill, default 25'

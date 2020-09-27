@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LICENSE.cwl
+id: LICENSE.cwl
 inputs: []
 outputs:
 - id: out_stdout

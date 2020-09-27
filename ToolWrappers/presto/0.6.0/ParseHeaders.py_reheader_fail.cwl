@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseHeaders.py_reheader_fail.cwl
+id: ParseHeaders.py_reheader_fail.cwl
 inputs:
 - id: in_parse_headers_do_tpy
   doc: ''

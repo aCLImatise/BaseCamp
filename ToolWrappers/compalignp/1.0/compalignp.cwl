@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compalignp.cwl
+id: compalignp.cwl
 inputs:
 - id: in_r
   doc: ''

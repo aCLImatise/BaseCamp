@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../binning.cwl
+id: binning.cwl
 inputs:
 - id: in_dm
   doc: MAD processs (default enabled)

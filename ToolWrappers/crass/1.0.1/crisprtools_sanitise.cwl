@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crisprtools_sanitise.cwl
+id: crisprtools_sanitise.cwl
 inputs:
 - id: in_output_file_name
   doc: 'Output file name, creates a sanitised copy of the input file  [default: sanitise

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classifyMatesPairwise.cwl
+id: classifyMatesPairwise.cwl
 inputs:
 - id: in_test
   doc: ''

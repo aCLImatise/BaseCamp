@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_ml_engine_versions.cwl
+id: gcloud_ml_engine_versions.cwl
 inputs:
 - id: in_create
   doc: Create a new Cloud ML Engine version.

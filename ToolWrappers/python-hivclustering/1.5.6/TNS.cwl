@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TNS.cwl
+id: TNS.cwl
 inputs:
 - id: in_input
   doc: "Input CSV file with inferred genetic links (or stdin\nif omitted). Can be\

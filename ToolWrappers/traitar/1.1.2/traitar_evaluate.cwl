@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../traitar_evaluate.cwl
+id: traitar_evaluate.cwl
 inputs:
 - id: in_are_pt_ids
   doc: "set if the gold standard phenotype are index via\nphenotype ids rather than\

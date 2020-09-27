@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deduplicate.cwl
+id: deduplicate.cwl
 inputs:
 - id: in_erate
   doc: filter overlaps above this fraction error; default 0.015 (== 1.5% error)

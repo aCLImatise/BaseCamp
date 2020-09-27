@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cestats.cwl
+id: cestats.cwl
 inputs:
 - id: in_overwrite
   doc: Allow existing outputs to be overwritten.

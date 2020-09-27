@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_matrix_distrib.cwl
+id: rsat_matrix_distrib.cwl
 inputs:
 - id: in_bg_format_dot_supported
   doc: ': oligo-analysis, MotifSampler, meme. Default is:'

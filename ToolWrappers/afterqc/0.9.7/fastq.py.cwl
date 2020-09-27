@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq.py.cwl
+id: fastq.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

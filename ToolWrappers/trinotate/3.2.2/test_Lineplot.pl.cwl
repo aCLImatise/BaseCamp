@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_Lineplot.pl.cwl
+id: test_Lineplot.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

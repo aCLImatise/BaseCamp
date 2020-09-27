@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_export_export_gbk.cwl
+id: chakin_export_export_gbk.cwl
 inputs:
 - id: in_none
   doc: 'Options:'

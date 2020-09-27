@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runBrowser.cwl
+id: runBrowser.cwl
 inputs:
 - id: in_config
   doc: "Configuration file with genomic tracks. (default:\nNone)"

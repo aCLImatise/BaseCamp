@@ -3,7 +3,6 @@ version 1.0
 task RsatConvertseq {
   input {
     String? id
-    String? from
     Boolean? _verbose_level
     File? specified_standard_input
     String? mask
@@ -16,9 +15,11 @@ task RsatConvertseq {
     Int? first
     File? skip
     File? specified_standard_output
+    Boolean? from
     Boolean? id_col
     Boolean? seq_col
     Boolean? comment_col
+    Boolean? to
     Boolean? lw
     Boolean? add_rc
     Boolean? lc
@@ -38,13 +39,12 @@ task RsatConvertseq {
     String tab
     String w_consensus
     String fastq
-    String ft
     String var_37
     String tab
     String wc
     String input_file_should
     String multi
-    String file_list_line
+    String file_list
     String fasta_format
     String intelligenetics_formatthe_first
   }
@@ -61,17 +61,15 @@ task RsatConvertseq {
       ~{tab} \
       ~{w_consensus} \
       ~{fastq} \
-      ~{ft} \
       ~{var_37} \
       ~{tab} \
       ~{wc} \
       ~{input_file_should} \
       ~{multi} \
-      ~{file_list_line} \
+      ~{file_list} \
       ~{fasta_format} \
       ~{intelligenetics_formatthe_first} \
       ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
-      ~{if defined(from) then ("-from " +  '"' + from + '"') else ""} \
       ~{if (_verbose_level) then "-v" else ""} \
       ~{if defined(specified_standard_input) then ("-i " +  '"' + specified_standard_input + '"') else ""} \
       ~{if defined(mask) then ("-mask " +  '"' + mask + '"') else ""} \
@@ -84,9 +82,11 @@ task RsatConvertseq {
       ~{if defined(first) then ("-first " +  '"' + first + '"') else ""} \
       ~{if defined(skip) then ("-skip " +  '"' + skip + '"') else ""} \
       ~{if defined(specified_standard_output) then ("-o " +  '"' + specified_standard_output + '"') else ""} \
+      ~{if (from) then "-from" else ""} \
       ~{if (id_col) then "-id_col" else ""} \
       ~{if (seq_col) then "-seq_col" else ""} \
       ~{if (comment_col) then "-comment_col" else ""} \
+      ~{if (to) then "-to" else ""} \
       ~{if (lw) then "-lw" else ""} \
       ~{if (add_rc) then "-addrc" else ""} \
       ~{if (lc) then "-lc" else ""} \
@@ -97,8 +97,7 @@ task RsatConvertseq {
       ~{if (no_check_id) then "-nocheckid" else ""}
   >>>
   parameter_meta {
-    id: ""
-    from: ""
+    id: "-from inputformat -to outputformat\\n[-lw line_width]"
     _verbose_level: "#    verbose level"
     specified_standard_input: "if not specified, the standard input is used.\\nThis allows to place the command within a pipe."
     mask: "|lower|non-dna\\nMask lowercases, uppercases, or non-dna characters, respecively.\\nMasked characters are replaced by by N characters, or\\nby a dot (option -dotmask)."
@@ -111,9 +110,11 @@ task RsatConvertseq {
     first: "Start at the Nth sequence (skip the N-1 first\\nsequences)."
     skip: "Skip the N first sequences (start at sequence N+1).\\nOptions -first (or -skip) and -top can be combined to\\nextract a subset from the i^th to the j^th sequence (a\\n\\\"slice\\\" of the sequence file).\\nExample:\\nconvert-seq -skip 100 -last 200\\nequivalent to\\nconvert-seq -first 101 -last 200\\nwill extract the sequences 101 to 200 from the input\\nfile."
     specified_standard_output: "if not specified, the standard output is used.\\nThis allows to place the command within a pipe."
+    from: "input format\\nSupported input formats :\\nembl\\nfasta\\nfilelist\\nft\\ngcg\\ngenbank\\nig\\nmaf\\nmulti\\nncbi\\nraw\\ntab\\nwc\\nwconsensus"
     id_col: "column containing sequence identifiers in tab format\\n(default: 1)."
     seq_col: "column containing sequence sequences in tab format\\n(default: 2)."
     comment_col: "column containing sequence comments (sequence\\ndescription) in tab format (default:\\n)."
+    to: "output format\\nSupported output formats :\\nfasta\\nfastq\\nfilelist\\nft\\nig\\nmulti\\nraw\\ntab\\nwc\\nwconsensus"
     lw: "#   line width. A carriage return is inserted every #\\ncharacters within the output sequence.\\nDefault is 60. A 0 value indicates that no carriage\\nreturn must be inserted."
     add_rc: "adds the reverse complement of each input sequence\\nto the output file. This is usefull for programs that\\ncannot handle reverse complement (like the Gibbs Sampler)."
     lc: "lowercase. the sequence is printed in lowercase."
@@ -126,7 +127,7 @@ task RsatConvertseq {
     util: "sequences"
     embl: "embl"
     filelist: "filelist"
-    ft: "ft"
+    ft: "gcg"
     genbank: "ig"
     maf: "multi"
     ncbi: "raw"
@@ -137,7 +138,7 @@ task RsatConvertseq {
     wc: "wconsensus"
     input_file_should: "The input file should contain raw sequences without any\\ncomment or other text. Tabs (\\t), blank spaces and newline\\ncharacters (\\n) are accepted (they will be automatically\\nremoved before analysis). The sequence must be terminated by\\na newline character."
     multi: "same as raw except than each new line is considered to contain\\na new independent sequence in raw format."
-    file_list_line: "file list. Each line of the input file contains the\\nname of a file containing a single sequence."
+    file_list: "file list. Each line of the input file contains the\\nname of a file containing a single sequence."
     fasta_format: "FastA format."
     intelligenetics_formatthe_first: "IntelliGenetics format.\\nThe first non-comment line must be the sequence identifier\\n(a single word without spaces).\\nThe sequence follows the identifier line identifier. It can\\ninclude spaces, tabs or newlines, that will be removed for\\nsequence analysis.\\nThe end of one sequence is indicated by termination character:\\n1 for linear, 2 for circular sequences.\\nA single file may contain several sequences.\\nEXAMPLE of IG suite:\\n; sequence of the region upstream from NIL1\\n; Locus GAT1\\n; ORF YFL021W  coord:   6 95964 97496\\n; upstream region size: 100\\n; upstream region coord:        6 95864 95963\\nGAT1\\nACAGAGCAACAATAATAACAGCACTATGAGTCGCACACTT\\nGCGGTGCCCGGCCCAGCCACATATATATAGGTGTGTGCCA\\nCTCCCGGCCCCGGTATTAGC\\n1\\n; sequence of the region upstream from PUT4\\n; Locus PUT4\\n; ORF YOR348C  coord:   15 988773 986890\\n; upstream region size: 100\\n; upstream region coord:        15 988873 988774\\nPUT4\\nGGGTTTGTGTTCCTCTTCCTTTCCTTTTTTTTTCTCTCTT\\nCCCTTCCAGTTTCTTTTATTCTTTGCTGTTTCGAAGAATC\\nACACCATCAATGAATAAATC\\n1"
   }

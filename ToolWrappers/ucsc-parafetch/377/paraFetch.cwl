@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paraFetch.cwl
+id: paraFetch.cwl
 inputs:
 - id: in_newer
   doc: only download a file if it is newer than the version we already have.

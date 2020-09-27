@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../del_from_prfl.pl.cwl
+id: del_from_prfl.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

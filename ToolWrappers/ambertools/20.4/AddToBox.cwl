@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AddToBox.cwl
+id: AddToBox.cwl
 inputs:
 - id: in_molecule_cell_pdb
   doc: ': the molecule cell (PDB format)'

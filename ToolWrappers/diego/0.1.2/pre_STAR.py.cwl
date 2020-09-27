@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pre_STAR.py.cwl
+id: pre_STAR.py.cwl
 inputs:
 - id: in_list
   doc: sampleName tab-delimiter path/to/fileName

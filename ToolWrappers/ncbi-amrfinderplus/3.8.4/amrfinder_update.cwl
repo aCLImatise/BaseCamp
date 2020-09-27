@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amrfinder_update.cwl
+id: amrfinder_update.cwl
 inputs:
 - id: in_database
   doc: "Directory for all versions of AMRFinder databases\nDefault: /usr/local/bin/data"

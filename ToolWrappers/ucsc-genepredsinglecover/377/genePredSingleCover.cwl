@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredSingleCover.cwl
+id: genePredSingleCover.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

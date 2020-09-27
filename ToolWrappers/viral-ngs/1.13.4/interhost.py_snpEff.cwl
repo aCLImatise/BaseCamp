@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interhost.py_snpEff.cwl
+id: interhost.py_snpEff.cwl
 inputs:
 - id: in_tmp_dir
   doc: 'Base directory for temp files. [default: /tmp]'

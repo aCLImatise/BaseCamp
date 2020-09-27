@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitch.cwl
+id: fitch.cwl
 inputs: []
 outputs:
 - id: out_stdout

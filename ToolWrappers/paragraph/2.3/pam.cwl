@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pam.cwl
+id: pam.cwl
 inputs:
 - id: in_arg_bam_file
   doc: '[ --bam ] arg                      Input BAM file for read extraction'

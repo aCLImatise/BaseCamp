@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmer_mask.cwl
+id: kmer_mask.cwl
 inputs:
 - id: in_mdb
   doc: load masking kmers from meryl 'mer-database'
@@ -83,16 +83,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nomasking
-- id: in_low_threshold
-  doc: (0.3333)
-  type: double
-  inputBinding:
-    prefix: -lowthreshold
-- id: in_high_threshold
-  doc: (0.6667)
-  type: double
-  inputBinding:
-    prefix: -highthreshold
 - id: in_write_histogram_amount
   doc: write a histogram of the amount of sequence RETAINED
   type: string

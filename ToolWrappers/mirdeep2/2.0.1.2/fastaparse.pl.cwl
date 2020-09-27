@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaparse.pl.cwl
+id: fastaparse.pl.cwl
 inputs:
 - id: in_only_output_entries
   doc: only output entries where the sequence is minimum int nts long

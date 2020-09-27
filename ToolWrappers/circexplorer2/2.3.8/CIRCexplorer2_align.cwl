@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CIRCexplorer2_align.cwl
+id: CIRCexplorer2_align.cwl
 inputs:
 - id: in_gtf
   doc: Annotation GTF file.

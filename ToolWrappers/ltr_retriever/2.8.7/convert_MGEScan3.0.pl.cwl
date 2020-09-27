@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_MGEScan3.0.pl.cwl
+id: convert_MGEScan3.0.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

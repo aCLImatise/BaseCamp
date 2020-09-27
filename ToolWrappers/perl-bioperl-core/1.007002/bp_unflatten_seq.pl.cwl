@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_unflatten_seq.pl.cwl
+id: bp_unflatten_seq.pl.cwl
 inputs:
 - id: in_input_fileinput_file
   doc: "|input FILE\ninput file (can also be specified as last argument)"

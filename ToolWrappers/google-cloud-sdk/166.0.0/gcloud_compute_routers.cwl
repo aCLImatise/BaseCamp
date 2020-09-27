@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_routers.cwl
+id: gcloud_compute_routers.cwl
 inputs:
 - id: in_routers
   doc: SYNOPSIS

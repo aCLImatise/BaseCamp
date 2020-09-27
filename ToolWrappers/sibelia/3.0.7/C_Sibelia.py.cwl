@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../C_Sibelia.py.cwl
+id: C_Sibelia.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

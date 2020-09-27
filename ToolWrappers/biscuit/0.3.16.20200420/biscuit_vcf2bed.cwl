@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_vcf2bed.cwl
+id: biscuit_vcf2bed.cwl
 inputs:
 - id: in_extract_type_
   doc: extract type {c, cg, ch, hcg, gch, snp} [CG]

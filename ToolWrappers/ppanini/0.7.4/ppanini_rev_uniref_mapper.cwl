@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_rev_uniref_mapper.cwl
+id: ppanini_rev_uniref_mapper.cwl
 inputs: []
 outputs:
 - id: out_stdout

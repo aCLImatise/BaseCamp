@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faRc.cwl
+id: faRc.cwl
 inputs:
 - id: in_keep_name
   doc: "- keep name identical (don't prepend RC)"

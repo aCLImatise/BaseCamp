@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fgbio.cwl
+id: fgbio.cwl
 inputs: []
 outputs:
 - id: out_stdout

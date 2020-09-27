@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../untangle.cwl
+id: untangle.cwl
 inputs: []
 outputs:
 - id: out_stdout

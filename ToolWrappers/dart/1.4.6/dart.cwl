@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dart.cwl
+id: dart.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [4]

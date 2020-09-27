@@ -15,7 +15,7 @@ task GcloudAuthApplicationdefault {
       ~{if defined(i_am_account) then ("--iam-account " +  '"' + i_am_account + '"') else ""}
   >>>
   parameter_meta {
-    i_am_account: ""
+    i_am_account: "$ export GOOGLE_APPLICATION_CREDENTIALS=key.json\\n$ ./my_application.sh"
     credentials: "SYNOPSIS"
     application_dot: "More information on ADC and how they work can be found here:"
     login: "Acquire new user credentials to use for Application Default"

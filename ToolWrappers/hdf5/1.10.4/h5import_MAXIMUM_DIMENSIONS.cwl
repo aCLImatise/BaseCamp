@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5import_MAXIMUM_DIMENSIONS.cwl
+id: h5import_MAXIMUM_DIMENSIONS.cwl
 inputs:
 - id: in_h_five_import
   doc: ''

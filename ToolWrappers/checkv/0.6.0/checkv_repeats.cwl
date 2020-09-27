@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkv_repeats.cwl
+id: checkv_repeats.cwl
 inputs:
 - id: in_min_tr_len
   doc: Min length of TR

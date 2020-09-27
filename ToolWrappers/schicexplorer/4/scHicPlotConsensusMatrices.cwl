@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scHicPlotConsensusMatrices.cwl
+id: scHicPlotConsensusMatrices.cwl
 inputs:
 - id: in_schic_matrix_m
   doc: "scHi-C matrix, -m scool scHi-C matrix\nThe consensus matrix created by scHicConsensusMatrices\n\

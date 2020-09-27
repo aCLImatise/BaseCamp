@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msalign2.cwl
+id: msalign2.cwl
 inputs:
 - id: in_e
   doc: ''

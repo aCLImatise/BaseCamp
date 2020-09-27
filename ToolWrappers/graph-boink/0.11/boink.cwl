@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../boink.cwl
+id: boink.cwl
 inputs: []
 outputs:
 - id: out_stdout

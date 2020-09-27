@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocess.cwl
+id: preprocess.cwl
 inputs:
 - id: in_input_vcf
   doc: "VCF files to preprocess (use file:sample for\na specific sample column)."

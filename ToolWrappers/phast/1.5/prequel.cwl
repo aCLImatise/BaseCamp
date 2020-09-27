@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prequel.cwl
+id: prequel.cwl
 inputs:
 - id: in_seqs
   doc: "Only produce output for specified sequences.  Argument should\nbe comma-separated\
@@ -68,55 +68,35 @@ inputs:
   inputBinding:
     position: 0
 - id: in___
-  doc: 0.000039        0.998460        0.000052
-  type: double
-  inputBinding:
-    position: 0
-- id: in___
   doc: 0.000065        0.001755        0.000030
   type: double
   inputBinding:
-    position: 1
+    position: 0
 - id: in_zero_dot_zero_zero_zero_four_two_seven
   doc: 0.271307        0.000599        0.727668
   type: double
   inputBinding:
-    position: 2
-- id: in___
-  doc: 0.000039        0.998460        0.000052
-  type: double
-  inputBinding:
-    position: 3
+    position: 1
 - id: in_zero_dot_zero_two_five_eight_two_six
   doc: 0.000179        0.973813        0.000182
   type: double
   inputBinding:
-    position: 4
+    position: 2
 - id: in___
   doc: 0.000065        0.001755        0.000030
   type: double
   inputBinding:
     position: 0
-- id: in___
-  doc: 0.000039        0.998460        0.000052
-  type: double
-  inputBinding:
-    position: 1
 - id: in_zero_do_tone_two_five_eight_one_one
   doc: 0.000393        0.873431        0.000365
   type: double
   inputBinding:
-    position: 2
-- id: in_zero_dot_zero_zero_four_eight_seven_eight
-  doc: 0.018097        0.118851        0.858174
-  type: double
-  inputBinding:
-    position: 0
+    position: 1
 - id: in_zero_dot_zero_zero_zero_zero_three_zero
   doc: 0.001637        0.000064        0.998269
   type: double
   inputBinding:
-    position: 1
+    position: 0
 - id: in_data_dot
   doc: The --suff-stats option produces a more compact output
   type: string

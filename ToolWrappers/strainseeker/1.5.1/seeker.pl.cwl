@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seeker.pl.cwl
+id: seeker.pl.cwl
 inputs:
 - id: in_none_input_file
   doc: ', none         - Input file (can be multiple, each with own flag)'

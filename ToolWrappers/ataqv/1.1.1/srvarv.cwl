@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srvarv.cwl
+id: srvarv.cwl
 inputs:
 - id: in_port
   doc: "The TCP port on which to serve the viewer (default:\n8000).\n"

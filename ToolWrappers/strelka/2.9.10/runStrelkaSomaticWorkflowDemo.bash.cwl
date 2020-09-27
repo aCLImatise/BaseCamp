@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runStrelkaSomaticWorkflowDemo.bash.cwl
+id: runStrelkaSomaticWorkflowDemo.bash.cwl
 inputs: []
 outputs:
 - id: out_stdout

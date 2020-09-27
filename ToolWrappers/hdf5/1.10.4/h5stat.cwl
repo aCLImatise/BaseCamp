@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5stat.cwl
+id: h5stat.cwl
 inputs:
 - id: in_file
   doc: Print file information

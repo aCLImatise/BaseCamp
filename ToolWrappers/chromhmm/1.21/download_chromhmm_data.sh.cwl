@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_chromhmm_data.sh.cwl
+id: download_chromhmm_data.sh.cwl
 inputs:
 - id: in_mode
   doc: Mode

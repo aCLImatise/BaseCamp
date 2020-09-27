@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qiime2lefse.py.cwl
+id: qiime2lefse.py.cwl
 inputs:
 - id: in_in
   doc: '[INPUT_FILE]     the Qiime OTU table file [ stdin if not present ]'

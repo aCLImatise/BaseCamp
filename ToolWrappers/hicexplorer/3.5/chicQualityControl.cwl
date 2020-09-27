@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chicQualityControl.cwl
+id: chicQualityControl.cwl
 inputs:
 - id: in_matrices
   doc: The input matrices to apply the QC on.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rotateHiCmatrix.pl.cwl
+id: rotateHiCmatrix.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

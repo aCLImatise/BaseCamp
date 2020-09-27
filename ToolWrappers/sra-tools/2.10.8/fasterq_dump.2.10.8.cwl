@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasterq_dump.2.10.8.cwl
+id: fasterq_dump.2.10.8.cwl
 inputs:
 - id: in_outfile
   doc: "full path of outputfile (overrides usage\nof current directory and given accession)"

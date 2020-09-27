@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_fetch.pl.cwl
+id: bp_fetch.pl.cwl
 inputs:
 - id: in_fmt
   doc: "<format> - Output format\nFasta (default), EMBL, Raw, swiss or GCG"

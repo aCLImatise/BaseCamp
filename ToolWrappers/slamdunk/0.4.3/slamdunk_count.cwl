@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slamdunk_count.cwl
+id: slamdunk_count.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory for mapped BAM files.

@@ -2,7 +2,6 @@ version 1.0
 
 task Primer3Masker {
   input {
-    Boolean? probability_cut_off
     Boolean? km_er_lists_path
     Boolean? list_prefix
     Boolean? absolute_value_cut_off
@@ -15,7 +14,6 @@ task Primer3Masker {
   }
   command <<<
     primer3_masker \
-      ~{if (probability_cut_off) then "--probability_cutoff" else ""} \
       ~{if (km_er_lists_path) then "--kmer_lists_path" else ""} \
       ~{if (list_prefix) then "--list_prefix" else ""} \
       ~{if (absolute_value_cut_off) then "--absolute_value_cutoff" else ""} \
@@ -27,7 +25,6 @@ task Primer3Masker {
       ~{if (masking_direction) then "--masking_direction" else ""}
   >>>
   parameter_meta {
-    probability_cut_off: "- masking cutoff [0, 1] (default: >=0.1)"
     km_er_lists_path: "- path to the kmer list files (default: ../kmer_lists/)"
     list_prefix: "- prefix of the k-mer lists to use with default model (default: homo_sapiens)"
     absolute_value_cut_off: "- masking cutoff based on k-mer count; requires a single list name, defined with -l"

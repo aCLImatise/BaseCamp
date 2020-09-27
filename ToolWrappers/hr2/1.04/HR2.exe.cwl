@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HR2.exe.cwl
+id: HR2.exe.cwl
 inputs:
 - id: in_display_version_information
   doc: Display version information.
@@ -48,56 +48,21 @@ inputs:
   type: long
   inputBinding:
     prefix: -X
-- id: in_ic
-  doc: "-1       13.003355\nH     -H        1.007825"
-  type: string
-  inputBinding:
-    position: 0
-- id: in_ih
-  doc: "-D        2.014102\nN     -N       14.003074"
-  type: string
-  inputBinding:
-    position: 1
 - id: in_in
   doc: "-M       15.000109\nO     -O       15.994915\nF     -F       18.998403"
   type: string
   inputBinding:
-    position: 2
-- id: in_na
-  doc: -A       22.989769
-  type: string
-  inputBinding:
-    position: 3
+    position: 0
 - id: in_si
   doc: "-I       27.976927\nP     -P       30.973762\nS     -S       31.972071"
   type: string
   inputBinding:
-    position: 4
-- id: in_cl
-  doc: -L       34.968853
-  type: string
-  inputBinding:
-    position: 5
-- id: in_icl
-  doc: -E       36.965903
-  type: string
-  inputBinding:
-    position: 6
-- id: in_br
-  doc: -B       78.918337
-  type: string
-  inputBinding:
-    position: 7
+    position: 1
 - id: in_ibr
   doc: "-G       80.916291\nK     -K       38.963707"
   type: string
   inputBinding:
-    position: 8
-- id: in_ik
-  doc: -J       40.961826
-  type: string
-  inputBinding:
-    position: 9
+    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

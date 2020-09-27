@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nudup.py.cwl
+id: nudup.py.cwl
 inputs:
 - id: in_paired_end
   doc: "use paired end deduping with template. SAM/BAM\nalignment must contain paired\

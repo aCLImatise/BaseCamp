@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfsan_snp_pipeline_distance.cwl
+id: cfsan_snp_pipeline_distance.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result file already exists\nand is newer than inputs\

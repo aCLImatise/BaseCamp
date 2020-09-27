@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffmunger.cwl
+id: gffmunger.cwl
 inputs:
 - id: in_verbose
   doc: Turn on debugging [False]

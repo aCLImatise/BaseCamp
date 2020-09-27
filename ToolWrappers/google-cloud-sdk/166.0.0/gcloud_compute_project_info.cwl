@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_project_info.cwl
+id: gcloud_compute_project_info.cwl
 inputs:
 - id: in_add_metadata
   doc: Add or update project-wide metadata.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qconvex.cwl
+id: qconvex.cwl
 inputs: []
 outputs:
 - id: out_stdout

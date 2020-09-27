@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_saveconfig.cwl
+id: bcbio_vm.py_saveconfig.cwl
 inputs:
 - id: in_datadir
   doc: ''

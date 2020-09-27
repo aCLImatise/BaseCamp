@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stacks_hist2d_loci_samples_coverage.cwl
+id: stacks_hist2d_loci_samples_coverage.cwl
 inputs: []
 outputs:
 - id: out_stdout

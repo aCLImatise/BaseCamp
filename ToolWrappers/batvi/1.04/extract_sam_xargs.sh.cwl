@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_sam_xargs.sh.cwl
+id: extract_sam_xargs.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_markasdup.cwl
+id: pairtools_markasdup.cwl
 inputs:
 - id: in_output
   doc: "output .pairsam file. If the path ends with .gz or\n.lz4, the output is pbgzip-/lz4c-compressed.\

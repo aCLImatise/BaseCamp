@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simpleFastaHeaders.pl.cwl
+id: simpleFastaHeaders.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

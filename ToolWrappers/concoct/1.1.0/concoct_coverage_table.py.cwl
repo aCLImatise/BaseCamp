@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../concoct_coverage_table.py.cwl
+id: concoct_coverage_table.py.cwl
 inputs:
 - id: in_sample_names
   doc: "File with sample names, one line each. Should be same\nnr of bamfiles. Default\

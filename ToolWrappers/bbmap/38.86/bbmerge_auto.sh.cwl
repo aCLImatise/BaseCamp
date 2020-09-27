@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbmerge_auto.sh.cwl
+id: bbmerge_auto.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

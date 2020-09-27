@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignmentTools_rm_partialseq.cwl
+id: AlignmentTools_rm_partialseq.cwl
 inputs:
 - id: in_alignment_mode
   doc: "Alignment mode: overlap, glocal, local or global.\ndefault = overlap"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_makeprotseq.cwl
+id: _makeprotseq.cwl
 inputs:
 - id: in_pep_stats_file
   doc: "infile     This file should be a pepstats output file.\nProtein sequences\

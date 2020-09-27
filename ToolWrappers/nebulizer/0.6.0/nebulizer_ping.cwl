@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_ping.cwl
+id: nebulizer_ping.cwl
 inputs:
 - id: in_count
   doc: "if set then stop after sending COUNT requests\n(default is to send requests\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbxuncompress.cwl
+id: dbxuncompress.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [*.dbxuncompress] Output file name

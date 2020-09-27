@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../verify_low_depth.pl.cwl
+id: verify_low_depth.pl.cwl
 inputs:
 - id: in_bam
   doc: "[REQUIRED]\nThe location for a specific BAM file in the dataset. Multiple\

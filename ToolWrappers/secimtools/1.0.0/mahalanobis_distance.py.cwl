@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mahalanobis_distance.py.cwl
+id: mahalanobis_distance.py.cwl
 inputs:
 - id: in_input
   doc: Dataset in Wide format

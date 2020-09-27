@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sonicparanoid_extract.cwl
+id: sonicparanoid_extract.cwl
 inputs:
 - id: in_input_table
   doc: "Table with output groups generated using\nSonicParanoid. NOTE: the headers\

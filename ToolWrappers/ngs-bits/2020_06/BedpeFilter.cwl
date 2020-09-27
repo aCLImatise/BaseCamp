@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedpeFilter.cwl
+id: BedpeFilter.cwl
 inputs:
 - id: in_in
   doc: "Input BEDPE file. If unset, reads from STDIN.\nDefault value: ''"

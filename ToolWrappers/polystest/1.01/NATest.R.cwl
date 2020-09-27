@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NATest.R.cwl
+id: NATest.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

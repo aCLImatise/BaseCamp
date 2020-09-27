@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nimnexus.cwl
+id: nimnexus.cwl
 inputs: []
 outputs:
 - id: out_stdout

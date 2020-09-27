@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jaspextract.cwl
+id: jaspextract.cwl
 inputs: []
 outputs:
 - id: out_stdout

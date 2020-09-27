@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFlash.pl.cwl
+id: phyloFlash.pl.cwl
 inputs:
 - id: in_read_one
   doc: ''

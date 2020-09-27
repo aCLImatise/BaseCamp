@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_region_list_to_bed_output_file.cwl
+id: tb_region_list_to_bed_output_file.cwl
 inputs:
 - id: in_chromosome_name
   doc: ''

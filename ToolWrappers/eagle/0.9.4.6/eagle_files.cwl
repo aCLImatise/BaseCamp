@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eagle_files.cwl
+id: eagle_files.cwl
 inputs:
 - id: in_eagle
   doc: ''

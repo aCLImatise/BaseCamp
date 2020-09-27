@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MetamakeDemos.pl.cwl
+id: MetamakeDemos.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

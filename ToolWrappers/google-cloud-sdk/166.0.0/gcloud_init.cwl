@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_init.cwl
+id: gcloud_init.cwl
 inputs:
 - id: in_console_only
   doc: Prevent the command from launching a browser for authorization.

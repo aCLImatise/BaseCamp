@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnase_bias_estimator.py.cwl
+id: dnase_bias_estimator.py.cwl
 inputs:
 - id: in_calculates_mer_bias
   doc: Calculates the 6-mer 5' insertion bias for a NGS dataset

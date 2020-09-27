@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smudgeplot_plot.R.cwl
+id: smudgeplot_plot.R.cwl
 inputs:
 - id: in_homozygous
   doc: "Assume no heterozygosity in the genome - plotting a\nparalog structure; [default\

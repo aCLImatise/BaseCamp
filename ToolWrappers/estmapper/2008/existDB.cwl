@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../existDB.cwl
+id: existDB.cwl
 inputs:
 - id: in_mer_size
   doc: -- Use the specified mersize when building existDB tables.

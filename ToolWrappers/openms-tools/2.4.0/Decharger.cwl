@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Decharger.cwl
+id: Decharger.cwl
 inputs:
 - id: in_in
   doc: "*        Input file  (valid formats: 'featureXML')"

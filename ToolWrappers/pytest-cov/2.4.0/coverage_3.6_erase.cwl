@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_3.6_erase.cwl
+id: coverage_3.6_erase.cwl
 inputs:
 - id: in_debug
   doc: Debug options, separated by commas

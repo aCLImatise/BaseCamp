@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterRascafConnection.pl.cwl
+id: FilterRascafConnection.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

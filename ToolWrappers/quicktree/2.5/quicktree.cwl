@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quicktree.cwl
+id: quicktree.cwl
 inputs:
 - id: in_in
   doc: ": input file is a distance matrix in phylip format (m)\nor an alignment in\

@@ -1,16 +1,9 @@
 version 1.0
 
 task Preg {
-  input {
-    String? r_format
-  }
   command <<<
-    preg \
-      ~{if defined(r_format) then ("-rformat " +  '"' + r_format + '"') else ""}
+    preg
   >>>
-  parameter_meta {
-    r_format: ")"
-  }
   output {
     File out_stdout = stdout()
   }

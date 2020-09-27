@@ -2,7 +2,8 @@ version 1.0
 
 task ExparnaP {
   input {
-    Boolean? var_0
+    Boolean? verbose
+    Boolean? quiet
     Boolean? no_stacking
     Int? alpha_one
     Int? alpha_two
@@ -37,16 +38,15 @@ task ExparnaP {
     Int? max_bp_span
     Boolean? relaxed_anchors
     Boolean? stopwatch
-    String help
-    String qquiet
-    String quiet
+    Int input_one
+    Int input_two
   }
   command <<<
     exparna_p \
-      ~{help} \
-      ~{qquiet} \
-      ~{quiet} \
-      ~{if (var_0) then "--verbose" else ""} \
+      ~{input_one} \
+      ~{input_two} \
+      ~{if (verbose) then "--verbose" else ""} \
+      ~{if (quiet) then "--quiet" else ""} \
       ~{if (no_stacking) then "--no-stacking" else ""} \
       ~{if defined(alpha_one) then ("--alpha_1 " +  '"' + alpha_one + '"') else ""} \
       ~{if defined(alpha_two) then ("--alpha_2 " +  '"' + alpha_two + '"') else ""} \
@@ -83,7 +83,8 @@ task ExparnaP {
       ~{if (stopwatch) then "--stopwatch" else ""}
   >>>
   parameter_meta {
-    var_0: ""
+    verbose: "Verbose"
+    quiet: "Quiet"
     no_stacking: "Do not use stacking terms (otherwise needs stacking probs by RNAfold -p2)"
     alpha_one: "(1)\\nMultiplier for sequential score"
     alpha_two: "(5)\\nMultiplier for structural score"
@@ -118,9 +119,8 @@ task ExparnaP {
     max_bp_span: "(-1)\\nLimit maximum base pair span (default=off)"
     relaxed_anchors: "Relax anchor constraints (default=off)"
     stopwatch: "Print run time information."
-    help: "-V,--version"
-    qquiet: "-q,--quiet"
-    quiet: "Scoring parameters:"
+    input_one: ""
+    input_two: ""
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfremovenonATGC.cwl
+id: vcfremovenonATGC.cwl
 inputs: []
 outputs:
 - id: out_stdout

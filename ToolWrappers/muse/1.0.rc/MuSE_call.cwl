@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MuSE_call.cwl
+id: MuSE_call.cwl
 inputs:
 - id: in_faidx_indexed_reference
   doc: faidx indexed reference sequence file

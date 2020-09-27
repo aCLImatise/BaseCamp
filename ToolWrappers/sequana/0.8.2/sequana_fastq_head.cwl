@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequana_fastq_head.cwl
+id: sequana_fastq_head.cwl
 inputs:
 - id: in_nlines
   doc: Number of lines to extract.

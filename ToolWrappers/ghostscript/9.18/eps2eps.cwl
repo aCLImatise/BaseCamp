@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eps2eps.cwl
+id: eps2eps.cwl
 inputs:
 - id: in_switches_dot_dot_dot
   doc: ''

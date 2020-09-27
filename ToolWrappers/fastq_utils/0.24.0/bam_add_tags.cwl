@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_add_tags.cwl
+id: bam_add_tags.cwl
 inputs:
 - id: in_tx_two_gx
   doc: ''

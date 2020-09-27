@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skg_convert.py.cwl
+id: skg_convert.py.cwl
 inputs:
 - id: in_output
   doc: 'Output filename. [Default: stdout]'

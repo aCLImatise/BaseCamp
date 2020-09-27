@@ -20,7 +20,6 @@ task Emmtyper {
     Int? max_size
     File? is_pcr_path
     File file_dot
-    String sequence_dot
     String _primerdb_text
     String primer_dot
     String _help_show
@@ -28,7 +27,6 @@ task Emmtyper {
   command <<<
     emmtyper \
       ~{file_dot} \
-      ~{sequence_dot} \
       ~{_primerdb_text} \
       ~{primer_dot} \
       ~{_help_show} \
@@ -69,7 +67,6 @@ task Emmtyper {
     max_size: "[isPcr] Maximum size of PCR product.\\n[default: 2000]"
     is_pcr_path: "[isPcr] Specify full path to isPcr"
     file_dot: "[default: stdout]"
-    sequence_dot: "[default: 95]"
     _primerdb_text: "--primer-db TEXT                [isPcr] PCR primer. Text file with 3"
     primer_dot: "[default:"
     _help_show: "--help                          Show this message and exit."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_ologram.cwl
+id: gtftk_ologram.cwl
 inputs:
 - id: in_more_bed
   doc: 'A list of bed files to be considered as additional genomic annotations. (default:

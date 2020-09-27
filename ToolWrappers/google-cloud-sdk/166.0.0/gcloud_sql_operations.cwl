@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_operations.cwl
+id: gcloud_sql_operations.cwl
 inputs:
 - id: in_instance_dot
   doc: GCLOUD WIDE FLAGS

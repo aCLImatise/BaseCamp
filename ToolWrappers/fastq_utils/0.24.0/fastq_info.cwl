@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_info.cwl
+id: fastq_info.cwl
 inputs:
 - id: in_reads_two_fastq
   doc: ': the reads in the two fastq files have the same ordering'

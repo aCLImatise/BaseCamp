@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoStat.cwl
+id: NanoStat.cwl
 inputs:
 - id: in_outdir
   doc: Specify directory for output, only in combination with -n.

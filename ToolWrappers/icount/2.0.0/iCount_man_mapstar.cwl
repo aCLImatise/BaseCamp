@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_mapstar.cwl
+id: iCount_man_mapstar.cwl
 inputs:
 - id: in_mode
   doc: ''

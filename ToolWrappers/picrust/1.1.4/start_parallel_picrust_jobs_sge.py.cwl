@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../start_parallel_picrust_jobs_sge.py.cwl
+id: start_parallel_picrust_jobs_sge.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

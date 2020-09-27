@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate.py.cwl
+id: annotate.py.cwl
 inputs:
 - id: in_downstream
   doc: not specified only 2 colummns are added to the

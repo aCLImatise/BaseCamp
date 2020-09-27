@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../rsat_convert_seq.cwl
+id: rsat_convert_seq.cwl
 inputs:
 - id: in_id
-  doc: ''
+  doc: "-from inputformat -to outputformat\n[-lw line_width]"
   type: string
   inputBinding:
     prefix: -id
-- id: in_from
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -from
 - id: in__verbose_level
   doc: '#    verbose level'
   type: boolean
@@ -83,6 +78,12 @@ inputs:
   type: File
   inputBinding:
     prefix: -o
+- id: in_from
+  doc: "input format\nSupported input formats :\nembl\nfasta\nfilelist\nft\ngcg\n\
+    genbank\nig\nmaf\nmulti\nncbi\nraw\ntab\nwc\nwconsensus"
+  type: boolean
+  inputBinding:
+    prefix: -from
 - id: in_id_col
   doc: "column containing sequence identifiers in tab format\n(default: 1)."
   type: boolean
@@ -99,6 +100,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -comment_col
+- id: in_to
+  doc: "output format\nSupported output formats :\nfasta\nfastq\nfilelist\nft\nig\n\
+    multi\nraw\ntab\nwc\nwconsensus"
+  type: boolean
+  inputBinding:
+    prefix: -to
 - id: in_lw
   doc: "#   line width. A carriage return is inserted every #\ncharacters within the\
     \ output sequence.\nDefault is 60. A 0 value indicates that no carriage\nreturn\
@@ -200,26 +207,21 @@ inputs:
   type: string
   inputBinding:
     position: 8
-- id: in_ft
-  doc: ft
-  type: string
-  inputBinding:
-    position: 9
 - id: in_var_37
   doc: multi
   type: string
   inputBinding:
-    position: 10
+    position: 9
 - id: in_tab
   doc: tab
   type: string
   inputBinding:
-    position: 11
+    position: 10
 - id: in_wc
   doc: wconsensus
   type: string
   inputBinding:
-    position: 12
+    position: 11
 - id: in_input_file_should
   doc: "The input file should contain raw sequences without any\ncomment or other\
     \ text. Tabs (\\t), blank spaces and newline\ncharacters (\\n) are accepted (they\
@@ -234,7 +236,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_file_list_line
+- id: in_file_list
   doc: "file list. Each line of the input file contains the\nname of a file containing\
     \ a single sequence."
   type: string

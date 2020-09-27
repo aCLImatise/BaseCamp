@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mconfig.cwl
+id: mconfig.cwl
 inputs:
 - id: in_config
   doc: "Read the specified config file in addition to\nthe standard ones. Settings\

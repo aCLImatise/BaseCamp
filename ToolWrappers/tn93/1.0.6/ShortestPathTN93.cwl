@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ShortestPathTN93.cwl
+id: ShortestPathTN93.cwl
 inputs: []
 outputs:
 - id: out_stdout

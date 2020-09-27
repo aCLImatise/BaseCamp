@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmgs_search.cwl
+id: hmmgs_search.cwl
 inputs:
 - id: in_do_normalize_input
   doc: don't normalize the hmm input

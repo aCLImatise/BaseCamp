@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../formatrpsdb.cwl
+id: formatrpsdb.cwl
 inputs:
 - id: in_title_database_file
   doc: Title for database file [String]  Optional

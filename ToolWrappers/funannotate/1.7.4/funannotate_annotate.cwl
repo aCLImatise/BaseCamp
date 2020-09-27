@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_annotate.cwl
+id: funannotate_annotate.cwl
 inputs:
 - id: in_input
   doc: Folder from funannotate predict

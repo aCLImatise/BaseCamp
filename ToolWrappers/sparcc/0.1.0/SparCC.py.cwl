@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SparCC.py.cwl
+id: SparCC.py.cwl
 inputs:
 - id: in_cor_file
   doc: File to which correlation matrix will be written.

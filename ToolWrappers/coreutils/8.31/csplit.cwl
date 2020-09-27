@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csplit.cwl
+id: csplit.cwl
 inputs:
 - id: in_suffix_format
   doc: use sprintf FORMAT instead of %02d

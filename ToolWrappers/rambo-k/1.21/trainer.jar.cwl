@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trainer.jar.cwl
+id: trainer.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

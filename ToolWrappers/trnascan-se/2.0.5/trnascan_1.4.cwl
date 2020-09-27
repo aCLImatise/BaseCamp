@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trnascan_1.4.cwl
+id: trnascan_1.4.cwl
 inputs:
 - id: in_use_original_trnascan
   doc: ': use original tRNAscan 1.3 parameters (default)'

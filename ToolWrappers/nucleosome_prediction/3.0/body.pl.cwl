@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../body.pl.cwl
+id: body.pl.cwl
 inputs:
 - id: in_include_blank_lines
   doc: ': Do *not* include blank lines when counting (default counts them).'

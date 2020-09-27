@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../basil.cwl
+id: basil.cwl
 inputs:
 - id: in_quiet
   doc: Only print on errors.

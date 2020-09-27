@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qarrayrun.cwl
+id: qarrayrun.cwl
 inputs: []
 outputs:
 - id: out_stdout

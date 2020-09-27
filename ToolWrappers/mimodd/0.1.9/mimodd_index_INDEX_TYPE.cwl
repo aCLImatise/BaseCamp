@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_index_INDEX_TYPE.cwl
+id: mimodd_index_INDEX_TYPE.cwl
 inputs:
 - id: in_s
   doc: ''

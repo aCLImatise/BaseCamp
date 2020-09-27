@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subtractBedGraphs.pl.cwl
+id: subtractBedGraphs.pl.cwl
 inputs:
 - id: in_cov
   doc: (to remove regions with low coverage)

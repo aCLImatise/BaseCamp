@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedpeGeneAnnotation.cwl
+id: BedpeGeneAnnotation.cwl
 inputs:
 - id: in_in
   doc: Input BEDPE file containing the SVs.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correctPacBio.cwl
+id: correctPacBio.cwl
 inputs:
 - id: in_mandatory_path_gkpstore
   doc: Mandatory path to a gkpStore.

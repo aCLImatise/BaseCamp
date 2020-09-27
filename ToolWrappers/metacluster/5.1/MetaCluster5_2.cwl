@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MetaCluster5_2.cwl
+id: MetaCluster5_2.cwl
 inputs: []
 outputs:
 - id: out_stdout

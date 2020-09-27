@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_prune_label.cwl
+id: nw_prune_label.cwl
 inputs:
 - id: in_node_labels_file
   doc: ": node labels are in a file whose name is the second argument,\ninstead of\

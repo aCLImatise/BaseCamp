@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_melt.cwl
+id: vcf_melt.cwl
 inputs: []
 outputs:
 - id: out_stdout

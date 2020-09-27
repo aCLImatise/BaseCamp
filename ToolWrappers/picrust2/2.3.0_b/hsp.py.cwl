@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hsp.py.cwl
+id: hsp.py.cwl
 inputs:
 - id: in_tree
   doc: "The full reference tree in newick format containing\nboth study sequences\

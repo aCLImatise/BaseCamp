@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_0.1.18_cat.cwl
+id: samtools_0.1.18_cat.cwl
 inputs:
 - id: in_o
   doc: ''

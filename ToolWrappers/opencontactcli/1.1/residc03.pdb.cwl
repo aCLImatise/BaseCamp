@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../residc03.pdb.cwl
+id: residc03.pdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

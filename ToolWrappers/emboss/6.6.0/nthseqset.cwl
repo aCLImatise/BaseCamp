@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nthseqset.cwl
+id: nthseqset.cwl
 inputs:
 - id: in_number
   doc: "integer    [1] The number of the sequence set to output\n(Integer 1 or more)"

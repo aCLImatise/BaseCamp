@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_rescan_matrix.cwl
+id: rsat_rescan_matrix.cwl
 inputs:
 - id: in_iterations
   doc: ) of site detection <-> matrix building. The process stops at

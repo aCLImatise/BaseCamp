@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_analysis.py_quantify.cwl
+id: read_analysis.py_quantify.cwl
 inputs:
 - id: in_read
   doc: Input reads for quantification

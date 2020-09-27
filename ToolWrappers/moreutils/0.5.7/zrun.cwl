@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zrun.cwl
+id: zrun.cwl
 inputs: []
 outputs:
 - id: out_stdout

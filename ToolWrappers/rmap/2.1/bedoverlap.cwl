@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedoverlap.cwl
+id: bedoverlap.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'

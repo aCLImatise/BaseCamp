@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../norm_distr.py.cwl
+id: norm_distr.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

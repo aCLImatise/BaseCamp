@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../augur_titers_sub.cwl
+id: augur_titers_sub.cwl
 inputs:
-- id: in_output
-  doc: "JSON file to save titer model\n"
-  type: File
-  inputBinding:
-    prefix: --output
 - id: in_titers
   doc: file with titer measurements
   type: string[]
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --allow-empty-model
+- id: in_output
+  doc: "JSON file to save titer model\n"
+  type: File
+  inputBinding:
+    prefix: --output
 outputs:
 - id: out_stdout
   doc: Standard output stream

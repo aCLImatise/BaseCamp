@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pauda_run.cwl
+id: pauda_run.cwl
 inputs: []
 outputs:
 - id: out_stdout

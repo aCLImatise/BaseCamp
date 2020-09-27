@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDScoreSwitcher.cwl
+id: IDScoreSwitcher.cwl
 inputs:
 - id: in_in
   doc: "*                       Input file (valid formats: 'idXML')"

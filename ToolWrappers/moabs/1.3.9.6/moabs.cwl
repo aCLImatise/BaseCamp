@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../moabs.cwl
+id: moabs.cwl
 inputs:
 - id: in_str_input_files
   doc: <str>   input files.

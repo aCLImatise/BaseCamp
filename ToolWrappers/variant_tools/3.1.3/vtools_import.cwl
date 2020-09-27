@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_import.cwl
+id: vtools_import.cwl
 inputs:
 - id: in_build
   doc: "Build version of the reference genome (e.g. hg18) of\nthe input data. If unspecified,\

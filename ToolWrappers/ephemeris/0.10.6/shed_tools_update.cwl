@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shed_tools_update.cwl
+id: shed_tools_update.cwl
 inputs:
 - id: in_tools_file
   doc: Tools file to use (see tool_list.yaml.sample)

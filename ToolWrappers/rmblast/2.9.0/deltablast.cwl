@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deltablast.cwl
+id: deltablast.cwl
 inputs: []
 outputs:
 - id: out_stdout

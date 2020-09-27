@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeDup.cwl
+id: removeDup.cwl
 inputs:
 - id: in_name_input_file
   doc: Name of input file in SAM/BAM format.

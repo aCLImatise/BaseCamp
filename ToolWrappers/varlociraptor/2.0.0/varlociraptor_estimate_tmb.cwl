@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_estimate_tmb.cwl
+id: varlociraptor_estimate_tmb.cwl
 inputs:
 - id: in_coding_genome_size
   doc: 'Size (in bases) of the covered coding genome. [default: 3e7]'

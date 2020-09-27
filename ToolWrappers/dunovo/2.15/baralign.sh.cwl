@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../baralign.sh.cwl
+id: baralign.sh.cwl
 inputs:
 - id: in_include_alphabeta_betaalpha
   doc: ": Don't include reversed barcodes (alpha+beta -> beta+alpha) in the alignment\

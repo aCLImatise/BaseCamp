@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkFlowframe.R.cwl
+id: checkFlowframe.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

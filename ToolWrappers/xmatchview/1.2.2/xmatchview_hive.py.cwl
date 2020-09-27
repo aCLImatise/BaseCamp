@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmatchview_hive.py.cwl
+id: xmatchview_hive.py.cwl
 inputs:
 - id: in_x
   doc: file [1 vs. 2] (cross_match .rep or Pairwise mApping Format .paf)

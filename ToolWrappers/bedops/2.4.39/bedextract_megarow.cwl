@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedextract_megarow.cwl
+id: bedextract_megarow.cwl
 inputs:
 - id: in_zero
   doc: ''

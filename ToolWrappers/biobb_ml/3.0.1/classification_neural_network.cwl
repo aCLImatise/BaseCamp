@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classification_neural_network.cwl
+id: classification_neural_network.cwl
 inputs: []
 outputs:
 - id: out_stdout

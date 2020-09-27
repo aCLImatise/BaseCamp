@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_submit.cwl
+id: varda2_client_submit.cwl
 inputs:
 - id: in_disease_code
   doc: Disease indication code

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_sample.cwl
+id: seqtk_sample.cwl
 inputs:
 - id: in_rng_seed
   doc: RNG seed [11]

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../density.cwl
+id: density.cwl
 inputs:
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_window
   doc: integer    [100] Window length (Integer 1 or more)
   type: boolean

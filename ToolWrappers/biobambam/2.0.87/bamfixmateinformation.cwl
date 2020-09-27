@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamfixmateinformation.cwl
+id: bamfixmateinformation.cwl
 inputs: []
 outputs:
 - id: out_stdout

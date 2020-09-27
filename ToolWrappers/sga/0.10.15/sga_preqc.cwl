@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_preqc.cwl
+id: sga_preqc.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

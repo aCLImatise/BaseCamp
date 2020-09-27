@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_pull.cwl
+id: nextflow.bak_pull.cwl
 inputs:
 - id: in_all
   doc: "Update all downloaded projects\nDefault: false"

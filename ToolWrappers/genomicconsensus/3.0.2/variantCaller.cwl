@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../variantCaller.cwl
+id: variantCaller.cwl
 inputs: []
 outputs:
 - id: out_stdout

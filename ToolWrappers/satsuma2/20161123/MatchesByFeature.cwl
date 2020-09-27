@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MatchesByFeature.cwl
+id: MatchesByFeature.cwl
 inputs:
 - id: in_gff_three_file
   doc: ''

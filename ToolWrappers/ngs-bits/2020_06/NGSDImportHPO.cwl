@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDImportHPO.cwl
+id: NGSDImportHPO.cwl
 inputs:
 - id: in_obo
   doc: HPO ontology file from 'http://purl.obolibrary.org/obo/hp.obo'.

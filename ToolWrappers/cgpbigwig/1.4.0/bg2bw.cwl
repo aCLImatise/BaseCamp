@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bg2bw.cwl
+id: bg2bw.cwl
 inputs:
 - id: in_input
   doc: '[file]           Path to the input [b|cr]am file.'

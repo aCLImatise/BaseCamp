@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedToIgv.cwl
+id: bedToIgv.cwl
 inputs:
 - id: in_path
   doc: "The full path to which the IGV snapshots should be written.\n(STRING) Default:\

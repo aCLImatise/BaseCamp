@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yamllint.cwl
+id: yamllint.cwl
 inputs:
 - id: in_config_file
   doc: path to a custom configuration

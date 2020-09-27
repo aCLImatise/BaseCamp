@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_snvs_to_interactive.cwl
+id: anvi_script_snvs_to_interactive.cwl
 inputs:
 - id: in_min_departure_from_consensus
   doc: "Minimum departure from consensus at a given variable\nnucleotide position.\

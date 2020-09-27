@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfold.cwl
+id: gfold.cwl
 inputs:
 - id: in_g_fold
   doc: ":   Generalized fold change for ranking differentially expressed   \ngenes\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dep_check.cwl
+id: dep_check.cwl
 inputs:
 - id: in_suppress_nonerror_output
   doc: 'Suppress non-error output (default: false)'

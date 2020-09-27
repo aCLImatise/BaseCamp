@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../domclust.cwl
+id: domclust.cwl
 inputs:
 - id: in_use_similarity_measure
   doc: use similarity as a measure of relatedness [on]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_mergecg.cwl
+id: biscuit_mergecg.cwl
 inputs:
 - id: in_nomeseq_mode_only
   doc: NOMe-seq mode, only merge C,G both in HCGD context

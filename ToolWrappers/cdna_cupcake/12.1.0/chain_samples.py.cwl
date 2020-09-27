@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chain_samples.py.cwl
+id: chain_samples.py.cwl
 inputs:
 - id: in_fuzzy_junction
   doc: "Max allowed distance in junction to be considered\nidentical (default: 0 bp)"

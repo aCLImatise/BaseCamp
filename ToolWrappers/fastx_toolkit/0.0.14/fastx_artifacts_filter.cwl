@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_artifacts_filter.cwl
+id: fastx_artifacts_filter.cwl
 inputs:
 - id: in_o
   doc: ''

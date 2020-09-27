@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../homGeneMapping.cwl
+id: homGeneMapping.cwl
 inputs:
 - id: in_hal_file
   doc: input hal file

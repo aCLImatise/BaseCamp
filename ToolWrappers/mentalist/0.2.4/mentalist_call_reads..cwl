@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mentalist_call_reads..cwl
+id: mentalist_call_reads..cwl
 inputs:
 - id: in_kt
   doc: ''

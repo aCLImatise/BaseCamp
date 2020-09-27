@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_replace.cwl
+id: seqkit_replace.cwl
 inputs:
 - id: in_by_seq
   doc: replace seq

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fa2htgs.cwl
+id: fa2htgs.cwl
 inputs:
 - id: in_filename_fasta_input
   doc: "Filename for fasta input [File In]  Optional\ndefault = stdin"

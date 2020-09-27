@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanocompore_plot.cwl
+id: nanocompore_plot.cwl
 inputs:
 - id: in_nano_compo_re
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msgf_plus.cwl
+id: msgf_plus.cwl
 inputs:
 - id: in_jar
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classifier.jar.cwl
+id: classifier.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

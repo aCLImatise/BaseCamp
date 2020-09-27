@@ -327,90 +327,10 @@ subcommands:
         args: !SimpleFlagArg
           name: FLOAT
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Minimum mapping quality [35]
-          synonyms:
-          - -q
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Using mapping quality instead of alternative mapping quality
-          synonyms:
-          - -m
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Minimal mean insert size [50]
-          synonyms:
-          - -s
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Change default system from Illumina to SOLiD
-          synonyms:
-          - -C
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Cutoff in unit of standard deviation [4]
-          synonyms:
-          - -c
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: Number of observation required to estimate mean and s.d. insert
-            size [10000]
-          synonyms:
-          - -n
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Cutoff on coefficients of variation [1]
-          synonyms:
-          - -v
-          args: !SimpleFlagArg
-            name: FLOAT
-          optional: true
-        - !Flag
-          description: A two column tab-delimited text file (RG, LIB) specify the
-            RG=>LIB mapping, useful when BAM header is incomplete
-          synonyms:
-          - -f
-          args: !SimpleFlagArg
-            name: STRING
-          optional: true
-        - !Flag
-          description: Number of bins in the histogram [50]
-          synonyms:
-          - -b
-          args: !SimpleFlagArg
-            name: INT
-          optional: true
-        - !Flag
-          description: Output mapping flag distribution
-          synonyms:
-          - -g
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -MORE_OPTIONS
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - -OPTIONS
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -571,7 +491,351 @@ subcommands:
             args: !SimpleFlagArg
               name: FLOAT
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Minimum mapping quality [35]
+              synonyms:
+              - -q
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Using mapping quality instead of alternative mapping quality
+              synonyms:
+              - -m
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Minimal mean insert size [50]
+              synonyms:
+              - -s
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Change default system from Illumina to SOLiD
+              synonyms:
+              - -C
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Cutoff in unit of standard deviation [4]
+              synonyms:
+              - -c
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: Number of observation required to estimate mean and s.d.
+                insert size [10000]
+              synonyms:
+              - -n
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Cutoff on coefficients of variation [1]
+              synonyms:
+              - -v
+              args: !SimpleFlagArg
+                name: FLOAT
+              optional: true
+            - !Flag
+              description: A two column tab-delimited text file (RG, LIB) specify
+                the RG=>LIB mapping, useful when BAM header is incomplete
+              synonyms:
+              - -f
+              args: !SimpleFlagArg
+                name: STRING
+              optional: true
+            - !Flag
+              description: Number of bins in the histogram [50]
+              synonyms:
+              - -b
+              args: !SimpleFlagArg
+                name: INT
+              optional: true
+            - !Flag
+              description: Output mapping flag distribution
+              synonyms:
+              - -g
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - -MORE_OPTIONS
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - -OPTIONS
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: samtools
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: view
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: in.bam
+                optional: false
+              named:
+              - !Flag
+                description: output BAM
+                synonyms:
+                - -b
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: print header only (no alignments)
+                synonyms:
+                - -H
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: input is SAM
+                synonyms:
+                - -S
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: uncompressed BAM output (force -b)
+                synonyms:
+                - -u
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: fast compression (force -b)
+                synonyms:
+                - '-1'
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: output FLAG in HEX (samtools-C specific)
+                synonyms:
+                - -x
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: output FLAG in string (samtools-C specific)
+                synonyms:
+                - -X
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: print only the count of matching records
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: collapse the backward CIGAR operation
+                synonyms:
+                - -B
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: number of BAM compression threads [0]
+                synonyms:
+                - -@
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: output alignments overlapping the input BED FILE [null]
+                synonyms:
+                - -L
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: list of reference names and lengths (force -S) [null]
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: reference sequence file (force -S) [null]
+                synonyms:
+                - -T
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: output file name [stdout]
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: list of read groups to be outputted [null]
+                synonyms:
+                - -R
+                args: !SimpleFlagArg
+                  name: FILE
+                optional: true
+              - !Flag
+                description: required flag, 0 for unset [0]
+                synonyms:
+                - -f
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: filtering flag, 0 for unset [0]
+                synonyms:
+                - -F
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: minimum mapping quality [0]
+                synonyms:
+                - -q
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: only output reads in library STR [null]
+                synonyms:
+                - -l
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: only output reads in read group STR [null]
+                synonyms:
+                - -r
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: fraction of templates to subsample; integer part as seed
+                  [-1]
+                synonyms:
+                - -s
+                args: !SimpleFlagArg
+                  name: FLOAT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: print header for the SAM output
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "[Wed Sep  9 18:31:11 2020 /usr/local/bin/bam2cfg.pl] Processing\
+                \ bam: bam files\nopen: No such file or directory\n[main_samview]\
+                \ fail to open \"bam\" for reading.\n[Wed Sep  9 18:31:11 2020 /usr/local/bin/bam2cfg.pl]\
+                \ Closing BAM file\n[Wed Sep  9 18:31:11 2020 /usr/local/bin/bam2cfg.pl]\
+                \ Send TERM signal for 37\n[Wed Sep  9 18:31:13 2020 /usr/local/bin/bam2cfg.pl]\
+                \ samtools pid process 37 is still there...\n[Wed Sep  9 18:31:13\
+                \ 2020 /usr/local/bin/bam2cfg.pl] invoking kill -9 on 37 ...\n[Wed\
+                \ Sep  9 18:31:13 2020 /usr/local/bin/bam2cfg.pl] Closing samtools\
+                \ process : 37\n[Wed Sep  9 18:31:13 2020 /usr/local/bin/bam2cfg.pl]\
+                \ Processing bam: --help\nview: invalid option -- '-'\nview: invalid\
+                \ option -- 'e'\n\nUsage:   samtools view [options] <in.bam>|<in.sam>\
+                \ [region1 [...]]\n\nOptions: -b       output BAM\n         -h   \
+                \    print header for the SAM output\n         -H       print header\
+                \ only (no alignments)\n         -S       input is SAM\n         -u\
+                \       uncompressed BAM output (force -b)\n         -1       fast\
+                \ compression (force -b)\n         -x       output FLAG in HEX (samtools-C\
+                \ specific)\n         -X       output FLAG in string (samtools-C specific)\n\
+                \         -c       print only the count of matching records\n    \
+                \     -B       collapse the backward CIGAR operation\n         -@\
+                \ INT   number of BAM compression threads [0]\n         -L FILE  output\
+                \ alignments overlapping the input BED FILE [null]\n         -t FILE\
+                \  list of reference names and lengths (force -S) [null]\n       \
+                \  -T FILE  reference sequence file (force -S) [null]\n         -o\
+                \ FILE  output file name [stdout]\n         -R FILE  list of read\
+                \ groups to be outputted [null]\n         -f INT   required flag,\
+                \ 0 for unset [0]\n         -F INT   filtering flag, 0 for unset [0]\n\
+                \         -q INT   minimum mapping quality [0]\n         -l STR  \
+                \ only output reads in library STR [null]\n         -r STR   only\
+                \ output reads in read group STR [null]\n         -s FLOAT fraction\
+                \ of templates to subsample; integer part as seed [-1]\n         -?\
+                \       longer help\n\nNotes:\n\n  1. By default, this command assumes\
+                \ the file on the command line is in\n     the BAM format and it prints\
+                \ the alignments in SAM. If `-t' is\n     applied, the input file\
+                \ is assumed to be in the SAM format. The\n     file supplied with\
+                \ `-t' is SPACE/TAB delimited with the first two\n     fields of each\
+                \ line consisting of the reference name and the\n     corresponding\
+                \ sequence length. The `.fai' file generated by `faidx'\n     can\
+                \ be used here. This file may be empty if reads are unaligned.\n\n\
+                \  2. SAM->BAM conversion: `samtools view -bT ref.fa in.sam.gz'.\n\
+                \n  3. BAM->SAM conversion: `samtools view in.bam'.\n\n  4. A region\
+                \ should be presented in one of the following formats:\n     `chr1',\
+                \ `chr2:1,000' and `chr3:1000-2,000'. When a region is\n     specified,\
+                \ the input alignment file must be an indexed BAM file.\n\n  5. Option\
+                \ `-u' is preferred over `-b' when the output is piped to\n     another\
+                \ samtools command.\n\n  6. In a string FLAG, each character represents\
+                \ one bit with\n     p=0x1 (paired), P=0x2 (properly paired), u=0x4\
+                \ (unmapped),\n     U=0x8 (mate unmapped), r=0x10 (reverse), R=0x20\
+                \ (mate reverse)\n     1=0x40 (first), 2=0x80 (second), s=0x100 (not\
+                \ primary), \n     f=0x200 (failure) and d=0x400 (duplicate). Note\
+                \ that `-x' and\n     `-X' are samtools-C specific. Picard and older\
+                \ samtools do not\n     support HEX or string flags.\n\n[Wed Sep \
+                \ 9 18:31:13 2020 /usr/local/bin/bam2cfg.pl] Closing BAM file\n[Wed\
+                \ Sep  9 18:31:13 2020 /usr/local/bin/bam2cfg.pl] Send TERM signal\
+                \ for 38\n[Wed Sep  9 18:31:15 2020 /usr/local/bin/bam2cfg.pl] samtools\
+                \ pid process 38 is still there...\n[Wed Sep  9 18:31:15 2020 /usr/local/bin/bam2cfg.pl]\
+                \ invoking kill -9 on 38 ...\n[Wed Sep  9 18:31:15 2020 /usr/local/bin/bam2cfg.pl]\
+                \ Closing samtools process : 38\n"
+              generated_using: &id004
+              - --help
+            usage: []
+            help_flag: !Flag
+              description: Plot insert size histogram for each BAM library
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "/usr/local/bin/bam2cfg.pl version [unknown] calling Getopt::Std::getopts\
+              \ (version 1.12 [paranoid]),\nrunning under Perl version 5.26.2.\n\n\
+              Usage: bam2cfg.pl [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]\n\
+              \nThe following single-character options are accepted:\n\tWith arguments:\
+              \ -q -n -c -b -p -s -f -v\n\tBoolean (without arguments): -h -m -g -C\n\
+              \nOptions may be merged together.  -- stops processing of options.\n\
+              Space is not required between options and their arguments.\n  [Now continuing\
+              \ due to backward compatibility and excessive paranoia.\n   See 'perldoc\
+              \ Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]\n\nUsage:\
+              \   bam2cfg.pl <bam files>\nOptions:\n         -q INT    Minimum mapping\
+              \ quality [35]\n         -m        Using mapping quality instead of\
+              \ alternative mapping quality\n         -s        Minimal mean insert\
+              \ size [50]\n         -C        Change default system from Illumina\
+              \ to SOLiD\n         -c FLOAT  Cutoff in unit of standard deviation\
+              \ [4]\n         -n INT    Number of observation required to estimate\
+              \ mean and s.d. insert size [10000]\n         -v FLOAT  Cutoff on coefficients\
+              \ of variation [1]\n         -f STRING A two column tab-delimited text\
+              \ file (RG, LIB) specify the RG=>LIB mapping, useful when BAM header\
+              \ is incomplete\n\t -b INT\t   Number of bins in the histogram [50]\
+              \ \n         -g        Output mapping flag distribution\n         -h\
+              \        Plot insert size histogram for each BAM library\n\n\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -636,15 +900,9 @@ subcommands:
             \ pid process 38 is still there...\n[Wed Sep  9 18:31:15 2020 /usr/local/bin/bam2cfg.pl]\
             \ invoking kill -9 on 38 ...\n[Wed Sep  9 18:31:15 2020 /usr/local/bin/bam2cfg.pl]\
             \ Closing samtools process : 38\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Plot insert size histogram for each BAM library
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "/usr/local/bin/bam2cfg.pl version [unknown] calling Getopt::Std::getopts\

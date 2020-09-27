@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_preapp.cwl
+id: seqhax_preapp.cwl
 inputs:
 - id: in_add_seq_adding
   doc: Add SEQ as prefix, adding quality charachters if fastq.

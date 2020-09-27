@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Fexact.cwl
+id: Fexact.cwl
 inputs:
 - id: in_i
   doc: ''

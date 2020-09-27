@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchFindMotifs.pl.cwl
+id: batchFindMotifs.pl.cwl
 inputs:
 - id: in_cpu
   doc: (# of concurrent jobs, -p controls CPUs used by each findMotifsGenome.pl instance)

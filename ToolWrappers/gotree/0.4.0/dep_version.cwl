@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dep_version.cwl
+id: dep_version.cwl
 inputs:
 - id: in_version
   doc: ': devel'

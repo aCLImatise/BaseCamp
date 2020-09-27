@@ -2,9 +2,9 @@ version 1.0
 
 task TomboDetectModificationsModelSampleCompare {
   input {
-    Boolean? var_0
-    Array[Int] directories_containing_files
-    Array[Int] set_directories_containing
+    Boolean? statistics_file_basename
+    Array[Int] fast_five_based_irs
+    Array[Int] control_fast_five_based_irs
     Boolean? sample_only_estimates
     Int? model_prior_weights
     Boolean? dna
@@ -20,18 +20,12 @@ task TomboDetectModificationsModelSampleCompare {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
-    Int var_18
-    String _controlfastbasedirs
-    Int var_20
   }
   command <<<
     tombo detect_modifications model_sample_compare \
-      ~{var_18} \
-      ~{_controlfastbasedirs} \
-      ~{var_20} \
-      ~{if (var_0) then "--statistics-file-basename" else ""} \
-      ~{if defined(directories_containing_files) then ("--fast5-basedirs " +  '"' + directories_containing_files + '"') else ""} \
-      ~{if defined(set_directories_containing) then ("--control-fast5-basedirs " +  '"' + set_directories_containing + '"') else ""} \
+      ~{if (statistics_file_basename) then "--statistics-file-basename" else ""} \
+      ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
+      ~{if defined(control_fast_five_based_irs) then ("--control-fast5-basedirs " +  '"' + control_fast_five_based_irs + '"') else ""} \
       ~{if (sample_only_estimates) then "--sample-only-estimates" else ""} \
       ~{if defined(model_prior_weights) then ("--model-prior-weights " +  '"' + model_prior_weights + '"') else ""} \
       ~{if (dna) then "--dna" else ""} \
@@ -49,9 +43,9 @@ task TomboDetectModificationsModelSampleCompare {
       ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    var_0: ""
-    directories_containing_files: "Directories containing fast5 files."
-    set_directories_containing: "Set of directories containing fast5 files for control\\nreads, containing only canonical nucleotides."
+    statistics_file_basename: "STATISTICS_FILE_BASENAME\\n--control-fast5-basedirs\\nCONTROL_FAST5_BASEDIRS\\n[CONTROL_FAST5_BASEDIRS ...]\\n[--sample-only-estimates]\\n[--model-prior-weights MODEL_PRIOR_WEIGHTS MODEL_PRIOR_WEIGHTS]\\n[--dna] [--rna]\\n[--fishers-method-context FISHERS_METHOD_CONTEXT]\\n[--minimum-test-reads MINIMUM_TEST_READS]\\n[--single-read-threshold SINGLE_READ_THRESHOLD [SINGLE_READ_THRESHOLD ...]]\\n[--coverage-dampen-counts COVERAGE_DAMPEN_COUNTS COVERAGE_DAMPEN_COUNTS]\\n[--per-read-statistics-basename PER_READ_STATISTICS_BASENAME]\\n[--num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED]\\n[--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\\n[--processes PROCESSES]\\n[--corrected-group CORRECTED_GROUP]\\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\\n[--quiet] [--help]"
+    fast_five_based_irs: "Directories containing fast5 files."
+    control_fast_five_based_irs: "Set of directories containing fast5 files for control\\nreads, containing only canonical nucleotides."
     sample_only_estimates: "Only use canonical sample to estimate expected signal\\nlevel and spread. Default: Use canonical model to\\nimprove estimtates (esp. for low coverage regions)\\nusing baysian posterior estimates."
     model_prior_weights: "MODEL_PRIOR_WEIGHTS\\nPrior weights (one each for mean and spread) applied\\nto canonical base model for estimating posterior model\\nparameters for sample comparison. Default: [5, 40]"
     dna: "Explicitly select canonical DNA model. Default:\\nAutomatically determine from FAST5s"
@@ -67,9 +61,6 @@ task TomboDetectModificationsModelSampleCompare {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under /Analyses/[--basecall-\\ngroup]/) containing basecalls and created within\\n[--corrected-group] containing re-squiggle results.\\nDefault: ['BaseCalled_template']"
     quiet: "Don't print status information."
-    var_18: "[FAST5_BASEDIRS ...]"
-    _controlfastbasedirs: "--control-fast5-basedirs"
-    var_20: "[CONTROL_FAST5_BASEDIRS ...]"
   }
   output {
     File out_stdout = stdout()

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../gretel_snpper.cwl
+id: gretel_snpper.cwl
 inputs:
 - id: in_contig
-  doc: ''
+  doc: "[-s S] [-e E]\n[--depth DEPTH]"
   type: string
   inputBinding:
     prefix: --contig

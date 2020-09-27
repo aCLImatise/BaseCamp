@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clustalw.cwl
+id: clustalw.cwl
 inputs: []
 outputs:
 - id: out_stdout

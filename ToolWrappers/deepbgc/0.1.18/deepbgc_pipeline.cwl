@@ -1,37 +1,6 @@
 class: CommandLineTool
-id: ../../../deepbgc_pipeline.cwl
+id: deepbgc_pipeline.cwl
 inputs:
-- id: in_debug
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --debug
-- id: in_output
-  doc: Custom output directory path
-  type: File
-  inputBinding:
-    prefix: --output
-- id: in_limit_to_record
-  doc: Process only specific record ID. Can be provided multiple times
-  type: string
-  inputBinding:
-    prefix: --limit-to-record
-- id: in_minimal_output
-  doc: Produce minimal output with just the GenBank sequence file
-  type: File
-  inputBinding:
-    prefix: --minimal-output
-- id: in_prodigal_meta_mode
-  doc: Run Prodigal in '-p meta' mode to enable detecting genes in short contigs
-  type: boolean
-  inputBinding:
-    prefix: --prodigal-meta-mode
-- id: in_protein
-  doc: Accept amino-acid protein sequences as input (experimental). Will treat each
-    file as a single record with multiple proteins.
-  type: boolean
-  inputBinding:
-    prefix: --protein
 - id: in_detector
   doc: Trained detection model name (run "deepbgc download" to download models) or
     path to trained model pickle file. Can be provided multiple times (-d first -d
@@ -105,6 +74,16 @@ inputs:
   type: double
   inputBinding:
     prefix: --classifier-score
+- id: in_o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: in_debug
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --debug
 - id: in_inputs
   doc: Input sequence file path (FASTA, GenBank, Pfam CSV)
   type: string
@@ -114,16 +93,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output
-  doc: Custom output directory path
-  type: File
-  outputBinding:
-    glob: $(inputs.in_output)
-- id: out_minimal_output
-  doc: Produce minimal output with just the GenBank sequence file
-  type: File
-  outputBinding:
-    glob: $(inputs.in_minimal_output)
 cwlVersion: v1.1
 baseCommand:
 - deepbgc

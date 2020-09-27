@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shorah_amplicon.cwl
+id: shorah_amplicon.cwl
 inputs:
 - id: in_alpha
   doc: alpha in dpm sampling

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nmica2meme.cwl
+id: nmica2meme.cwl
 inputs:
 - id: in_skip
   doc: skip this ID (may be repeated)

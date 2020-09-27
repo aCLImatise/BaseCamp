@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuffle.cwl
+id: shuffle.cwl
 inputs:
 - id: in_make_samples_seq
   doc: ': make <n> samples per input seq (default 1)'

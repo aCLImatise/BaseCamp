@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../clustalw2fasta.cwl
+id: clustalw2fasta.cwl
 inputs:
 - id: in_no_gap
-  doc: ''
+  doc: "-consensus <threshold>\n-seqorder <seqorder filename>\n"
   type: boolean
   inputBinding:
     prefix: -nogap
-- id: in_consensus
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -consensus
-- id: in_seq_order
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -seqorder
 - id: in_alignment_file
   doc: ''
   type: File

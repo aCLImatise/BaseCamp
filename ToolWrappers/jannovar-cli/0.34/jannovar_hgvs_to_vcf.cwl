@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jannovar_hgvs_to_vcf.cwl
+id: jannovar_hgvs_to_vcf.cwl
 inputs:
 - id: in_i
   doc: '[--show-all SHOW_ALL]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twstats.cwl
+id: twstats.cwl
 inputs:
 - id: in_bad
   doc: ''

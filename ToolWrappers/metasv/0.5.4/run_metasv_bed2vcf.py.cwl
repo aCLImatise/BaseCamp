@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_metasv_bed2vcf.py.cwl
+id: run_metasv_bed2vcf.py.cwl
 inputs:
 - id: in_sample
   doc: 'Sample name (default: None)'

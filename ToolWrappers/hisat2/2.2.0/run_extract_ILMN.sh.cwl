@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_extract_ILMN.sh.cwl
+id: run_extract_ILMN.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

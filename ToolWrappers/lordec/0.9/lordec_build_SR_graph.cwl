@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lordec_build_SR_graph.cwl
+id: lordec_build_SR_graph.cwl
 inputs: []
 outputs:
 - id: out_stdout

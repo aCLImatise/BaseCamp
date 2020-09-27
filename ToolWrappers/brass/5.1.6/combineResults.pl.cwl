@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineResults.pl.cwl
+id: combineResults.pl.cwl
 inputs:
 - id: in_x_ann_dot_groups
   doc: ''

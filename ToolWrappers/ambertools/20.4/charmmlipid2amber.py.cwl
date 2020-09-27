@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../charmmlipid2amber.py.cwl
+id: charmmlipid2amber.py.cwl
 inputs:
 - id: in_o
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smshrink.cwl
+id: smshrink.cwl
 inputs:
 - id: in_bad
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucmer.cwl
+id: nucmer.cwl
 inputs:
 - id: in_max_match
   doc: different bevahiors.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtzmo.cwl
+id: wtzmo.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [1]
@@ -68,11 +68,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -H
-- id: in_kmer_size_k
-  doc: Kmer size, 5 <= <-k> <= 32, [16]
-  type: long
-  inputBinding:
-    prefix: -k
 - id: in_filter_high_frequency_kmers
   doc: "Filter high frequency kmers, maybe repetitive, [0]\n0: set K to 5 * <average_kmer_depth>,\
     \ but no less than 100"

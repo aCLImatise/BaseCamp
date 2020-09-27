@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeBloom.cwl
+id: makeBloom.cwl
 inputs:
 - id: in_fast_a
   doc: Fasta input file. Mandatory option.

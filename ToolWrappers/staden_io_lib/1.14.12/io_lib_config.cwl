@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../io_lib_config.cwl
+id: io_lib_config.cwl
 inputs:
 - id: in_cflags
   doc: C and preprocessor flags (eg -I/foo/include)

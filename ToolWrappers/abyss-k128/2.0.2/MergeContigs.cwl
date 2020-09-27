@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MergeContigs.cwl
+id: MergeContigs.cwl
 inputs:
 - id: in_km_er
   doc: k-mer size

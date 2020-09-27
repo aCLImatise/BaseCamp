@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractreads.cwl
+id: extractreads.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

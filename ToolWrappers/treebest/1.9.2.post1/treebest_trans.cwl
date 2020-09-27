@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_trans.cwl
+id: treebest_trans.cwl
 inputs:
 - id: in_nucl_alignment
   doc: ''

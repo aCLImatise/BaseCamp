@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergesam.sh.cwl
+id: mergesam.sh.cwl
 inputs:
 - id: in_da
   doc: Disable assertions.

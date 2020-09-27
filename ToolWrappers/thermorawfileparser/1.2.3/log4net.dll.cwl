@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../log4net.dll.cwl
+id: log4net.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

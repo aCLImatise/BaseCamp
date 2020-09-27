@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../radical_utils_mongodb.py.cwl
+id: radical_utils_mongodb.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

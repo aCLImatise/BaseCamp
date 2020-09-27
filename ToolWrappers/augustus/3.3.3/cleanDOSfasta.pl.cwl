@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cleanDOSfasta.pl.cwl
+id: cleanDOSfasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_fasta2fastq.cwl
+id: bl_fasta2fastq.cwl
 inputs:
 - id: in_specify_multiple_fasta
   doc: specify multiple FASTA input files

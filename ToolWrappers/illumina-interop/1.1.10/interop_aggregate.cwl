@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_aggregate.cwl
+id: interop_aggregate.cwl
 inputs:
 - id: in_max_tile
   doc: '[0]: Maximum tile number to include'

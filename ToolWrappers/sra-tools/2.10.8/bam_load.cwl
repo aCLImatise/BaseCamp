@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_load.cwl
+id: bam_load.cwl
 inputs:
 - id: in_output
   doc: Path and Name of the output database.

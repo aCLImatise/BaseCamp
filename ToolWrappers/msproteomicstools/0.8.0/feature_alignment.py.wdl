@@ -18,13 +18,9 @@ task FeatureAlignmentpy {
     Boolean? matrix_output_method
     String? realign_method
     Boolean? force
-    Boolean? disable_isotopic_grouping
-    Boolean? use_d_score_filter
     Int? d_score_cut_off
     Int? nr_high_conf_exp
     String? read_method
-    Directory? tmpdir
-    Int? alignment_score
     Boolean? realign_runs
     Boolean? use_external_r
     String features
@@ -48,13 +44,9 @@ task FeatureAlignmentpy {
       ~{if (matrix_output_method) then "--matrix_output_method" else ""} \
       ~{if defined(realign_method) then ("--realign_method " +  '"' + realign_method + '"') else ""} \
       ~{if (force) then "--force" else ""} \
-      ~{if (disable_isotopic_grouping) then "--disable_isotopic_grouping" else ""} \
-      ~{if (use_d_score_filter) then "--use_dscore_filter" else ""} \
       ~{if defined(d_score_cut_off) then ("--dscore_cutoff " +  '"' + d_score_cut_off + '"') else ""} \
       ~{if defined(nr_high_conf_exp) then ("--nr_high_conf_exp " +  '"' + nr_high_conf_exp + '"') else ""} \
       ~{if defined(read_method) then ("--readmethod " +  '"' + read_method + '"') else ""} \
-      ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""} \
-      ~{if defined(alignment_score) then ("--alignment_score " +  '"' + alignment_score + '"') else ""} \
       ~{if (realign_runs) then "--realign_runs" else ""} \
       ~{if (use_external_r) then "--use_external_r" else ""}
   >>>
@@ -75,15 +67,11 @@ task FeatureAlignmentpy {
     matrix_output_method: "Which columns are written besides Intensity (none, RT,\\nscore, source or full)"
     realign_method: "RT alignment method (diRT, linear, splineR,\\nsplineR_external, splinePy, lowess, lowess_biostats,\\nlowess_statsmodels, lowess_cython, nonCVSpline,\\nCVSpline, Earth, WeightedNearestNeighbour,\\nSmoothLLDMedian, None)"
     force: "Force alignment"
-    disable_isotopic_grouping: "Disable grouping of isotopic variants by\\npeptide_group_label"
-    use_d_score_filter: ""
     d_score_cut_off: "Discard all peakgroups below this d-score"
-    nr_high_conf_exp: "Number of experiments in which the peptide needs to be\\nidentified with confidence above fdr_cutoff"
-    read_method: "Read full or minimal transition groups\\n(cminimal,minimal,full)"
-    tmpdir: "Temporary directory"
-    alignment_score: "Minimal score needed for a feature to be considered\\nfor alignment between runs"
-    realign_runs: "Deprecated option (equals '--realign_method\\nexternal_r')"
-    use_external_r: "Deprecated option (equals '--realign_method\\nexternal_r')\\n"
+    nr_high_conf_exp: "Number of experiments in which the peptide needs to be"
+    read_method: "Read full or minimal transition groups"
+    realign_runs: "Deprecated option (equals '--realign_method"
+    use_external_r: "Deprecated option (equals '--realign_method"
     features: "--iso_max_rt_diff 30  Maximal difference in RT (in seconds) for two isotopic"
   }
   output {

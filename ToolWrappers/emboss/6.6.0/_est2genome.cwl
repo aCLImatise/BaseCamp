@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_est2genome.cwl
+id: _est2genome.cwl
 inputs:
 - id: in_match
   doc: "integer    [1] Score for matching two bases (Any\ninteger value)"

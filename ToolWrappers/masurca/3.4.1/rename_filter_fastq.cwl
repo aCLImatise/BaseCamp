@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rename_filter_fastq.cwl
+id: rename_filter_fastq.cwl
 inputs:
 - id: in_output
   doc: Output file (stdout)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BamDownsample.cwl
+id: BamDownsample.cwl
 inputs:
 - id: in_in
   doc: Input BAM file.

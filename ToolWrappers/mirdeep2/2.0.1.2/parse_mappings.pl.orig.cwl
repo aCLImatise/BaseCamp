@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_mappings.pl.orig.cwl
+id: parse_mappings.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

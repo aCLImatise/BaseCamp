@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdnapenny.cwl
+id: _fdnapenny.cwl
 inputs:
 - id: in_weights
   doc: properties (no help text) properties value

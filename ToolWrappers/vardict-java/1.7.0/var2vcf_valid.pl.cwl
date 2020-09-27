@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../var2vcf_valid.pl.cwl
+id: var2vcf_valid.pl.cwl
 inputs:
 - id: in_var_0
   doc: this usage.

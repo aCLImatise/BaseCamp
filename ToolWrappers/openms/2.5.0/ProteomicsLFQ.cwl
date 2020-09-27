@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProteomicsLFQ.cwl
+id: ProteomicsLFQ.cwl
 inputs:
 - id: in_in
   doc: "*                                           Input files (valid formats: 'mzML')"

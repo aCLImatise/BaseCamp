@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trumicount.cwl
+id: trumicount.cwl
 inputs:
 - id: in_input_bam
   doc: read UMIs from FILE (uses `umi_tools group`)

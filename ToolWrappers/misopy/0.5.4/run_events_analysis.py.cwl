@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_events_analysis.py.cwl
+id: run_events_analysis.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

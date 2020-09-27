@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualimap_counts.cwl
+id: qualimap_counts.cwl
 inputs:
 - id: in_compare
   doc: "Perform comparison of conditions. Currently 2 maximum\nis possible."

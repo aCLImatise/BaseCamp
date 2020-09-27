@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate_mq_ionmobility.py.cwl
+id: annotate_mq_ionmobility.py.cwl
 inputs:
 - id: in_mq_out_dir
   doc: ''

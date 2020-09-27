@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_fix_cds_phases.pl.cwl
+id: agat_sp_fix_cds_phases.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

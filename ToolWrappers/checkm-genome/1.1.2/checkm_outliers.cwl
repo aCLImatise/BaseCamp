@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_outliers.cwl
+id: checkm_outliers.cwl
 inputs:
 - id: in_distributions
   doc: 'reference distribution used to identify outliers; integer between 0 and 100

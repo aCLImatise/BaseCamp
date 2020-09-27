@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_workflow_getFlowers.cwl
+id: cactus_workflow_getFlowers.cwl
 inputs: []
 outputs:
 - id: out_stdout

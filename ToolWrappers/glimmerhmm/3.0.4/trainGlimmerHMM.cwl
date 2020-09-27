@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trainGlimmerHMM.cwl
+id: trainGlimmerHMM.cwl
 inputs:
 - id: in_i_considered_eg
   doc: ",i2,...,in\nisochores to be considered (e.g. if two isochores are desired\

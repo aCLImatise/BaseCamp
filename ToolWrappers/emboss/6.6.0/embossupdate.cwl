@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../embossupdate.cwl
+id: embossupdate.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [stdout] EMBOSS update output file

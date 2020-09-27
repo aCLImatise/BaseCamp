@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createSuperReadsForDirectory.perl.cwl
+id: createSuperReadsForDirectory.perl.cwl
 inputs:
 - id: in_length_kmer_use
   doc: ': the length of the k-mer to use for the calculations (31)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ChromosomePaint.cwl
+id: ChromosomePaint.cwl
 inputs:
 - id: in_string_mizbee_file
   doc: '<string> : MizBee file'

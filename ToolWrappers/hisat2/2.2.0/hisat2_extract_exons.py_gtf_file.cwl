@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_extract_exons.py_gtf_file.cwl
+id: hisat2_extract_exons.py_gtf_file.cwl
 inputs:
 - id: in_v
   doc: ''

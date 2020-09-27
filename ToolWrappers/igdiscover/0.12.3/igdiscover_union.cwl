@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_union.cwl
+id: igdiscover_union.cwl
 inputs:
 - id: in_fast_a
   doc: FASTA file

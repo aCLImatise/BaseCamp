@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slivar_ddc.cwl
+id: slivar_ddc.cwl
 inputs:
 - id: in_chrom
   doc: "limit to this chromosome only. use '-3' for all chromosomes (in the case of\

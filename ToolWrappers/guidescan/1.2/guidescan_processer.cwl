@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guidescan_processer.cwl
+id: guidescan_processer.cwl
 inputs:
 - id: in_path_fasta_file
   doc: "path to fasta file or folder with fasta files (will\nuse all .fa, .fasta,\

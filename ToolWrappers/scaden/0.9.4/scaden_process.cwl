@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaden_process.cwl
+id: scaden_process.cwl
 inputs:
 - id: in_processed_path
   doc: Path of processed file. Must end with .h5ad

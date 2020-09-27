@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cegma2gff.pl.cwl
+id: cegma2gff.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

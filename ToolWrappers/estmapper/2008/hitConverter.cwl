@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hitConverter.cwl
+id: hitConverter.cwl
 inputs: []
 outputs:
 - id: out_stdout

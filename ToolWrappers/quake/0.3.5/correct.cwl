@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../correct.cwl
+id: correct.cwl
 inputs:
 - id: in_fastq_file_reads
   doc: Fastq file of reads

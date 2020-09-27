@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cutadapt.cwl
+id: cutadapt.cwl
 inputs:
 - id: in_debug
   doc: "[{trace}]     Print debug log. 'trace' prints also DP matrices"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_mcf.cwl
+id: fastq_mcf.cwl
 inputs:
 - id: in_output_file_stats
   doc: Output file (stats to stdout)

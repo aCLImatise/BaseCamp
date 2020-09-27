@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FidoAdapter.cwl
+id: FidoAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                 Input: identification results (valid formats: 'idXML')"

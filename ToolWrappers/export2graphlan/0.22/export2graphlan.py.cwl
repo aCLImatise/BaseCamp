@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../export2graphlan.py.cwl
+id: export2graphlan.py.cwl
 inputs:
 - id: in_annotations
   doc: "List which levels should be annotated in the tree. Use\na comma separate values\
@@ -146,54 +146,22 @@ inputs:
   inputBinding:
     prefix: --annotation
 - id: in_sep
-  doc: ''
-  type: string
+  doc: "--out_table OUT_TABLE\nWrite processed data matrix to file\n--fname_row FNAME_ROW\n\
+    row number containing the names of the features\n[default 0, specify -1 if no\
+    \ names are present in the\nmatrix\n--sname_row SNAME_ROW\ncolumn number containing\
+    \ the names of the samples\n[default 0, specify -1 if no names are present in\
+    \ the\nmatrix\n--metadata_rows METADATA_ROWS\nRow numbers to use as metadata[default\
+    \ None, meaning\nno metadata\n--skip_rows SKIP_ROWS\nRow numbers to skip (0-indexed,\
+    \ comma separated) from\nthe input file[default None, meaning no rows skipped\n\
+    --sperc SPERC         Percentile of sample value distribution for sample\nselection\n\
+    --fperc FPERC         Percentile of feature value distribution for sample\nselection\n\
+    --stop STOP           Number of top samples to select (ordering based on\npercentile\
+    \ specified by --sperc)\n--ftop FTOP           Number of top features to select\
+    \ (ordering based on\npercentile specified by --fperc)\n--def_na DEF_NA      \
+    \ Set the default value for missing values [default None\nwhich means no replacement]\n"
+  type: long
   inputBinding:
     prefix: --sep
-- id: in_out_table
-  doc: Write processed data matrix to file
-  type: File
-  inputBinding:
-    prefix: --out_table
-- id: in_fname_row
-  doc: "row number containing the names of the features\n[default 0, specify -1 if\
-    \ no names are present in the\nmatrix"
-  type: long
-  inputBinding:
-    prefix: --fname_row
-- id: in_sname_row
-  doc: "column number containing the names of the samples\n[default 0, specify -1\
-    \ if no names are present in the\nmatrix"
-  type: long
-  inputBinding:
-    prefix: --sname_row
-- id: in_metadata_rows
-  doc: "Row numbers to use as metadata[default None, meaning\nno metadata"
-  type: string
-  inputBinding:
-    prefix: --metadata_rows
-- id: in_skip_rows
-  doc: "Row numbers to skip (0-indexed, comma separated) from\nthe input file[default\
-    \ None, meaning no rows skipped"
-  type: File
-  inputBinding:
-    prefix: --skip_rows
-- id: in_s_perc
-  doc: Percentile of sample value distribution for sample
-  type: string
-  inputBinding:
-    prefix: --sperc
-- id: in_f_top
-  doc: "Number of top features to select (ordering based on\npercentile specified\
-    \ by --fperc)"
-  type: long
-  inputBinding:
-    prefix: --ftop
-- id: in_def_na
-  doc: "Set the default value for missing values [default None\nwhich means no replacement]\n"
-  type: string
-  inputBinding:
-    prefix: --def_na
 outputs:
 - id: out_stdout
   doc: Standard output stream

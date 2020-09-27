@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tal_AA.fa.cwl
+id: tal_AA.fa.cwl
 inputs: []
 outputs:
 - id: out_stdout

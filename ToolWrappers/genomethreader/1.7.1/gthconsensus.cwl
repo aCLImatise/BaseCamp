@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gthconsensus.cwl
+id: gthconsensus.cwl
 inputs:
 - id: in_translation_table
   doc: "set the codon translation table used for codon translation in\nmatching, DP,\

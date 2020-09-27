@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_Trinity_gene_to_trans_map.pl.cwl
+id: get_Trinity_gene_to_trans_map.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

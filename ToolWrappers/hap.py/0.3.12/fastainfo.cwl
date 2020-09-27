@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastainfo.cwl
+id: fastainfo.cwl
 inputs:
 - id: in_input_file
   doc: The input files

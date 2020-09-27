@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UVP.cwl
+id: UVP.cwl
 inputs:
 - id: in_fast_q
   doc: Input FASTQ file

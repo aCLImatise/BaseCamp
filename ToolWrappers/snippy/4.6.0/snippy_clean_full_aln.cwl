@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snippy_clean_full_aln.cwl
+id: snippy_clean_full_aln.cwl
 inputs:
 - id: in_debug
   doc: "!      Output verbose debug info (default '0')."

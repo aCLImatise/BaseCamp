@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SepSamUnmapped.cwl
+id: SepSamUnmapped.cwl
 inputs: []
 outputs:
 - id: out_stdout

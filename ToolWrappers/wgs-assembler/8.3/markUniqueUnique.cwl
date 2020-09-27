@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../markUniqueUnique.cwl
+id: markUniqueUnique.cwl
 inputs:
 - id: in_path_assembly_file
   doc: path to the assembly .asm file

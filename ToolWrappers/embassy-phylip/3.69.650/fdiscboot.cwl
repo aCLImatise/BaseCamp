@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fdiscboot.cwl
+id: fdiscboot.cwl
 inputs:
 - id: in_mix_file
   doc: properties File of mixtures

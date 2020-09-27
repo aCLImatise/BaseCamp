@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mason_methylation.cwl
+id: mason_methylation.cwl
 inputs:
 - id: in_version_check
   doc: "Turn this option off to disable version update notifications of the\napplication.\

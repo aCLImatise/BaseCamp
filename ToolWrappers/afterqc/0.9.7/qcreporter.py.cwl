@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qcreporter.py.cwl
+id: qcreporter.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

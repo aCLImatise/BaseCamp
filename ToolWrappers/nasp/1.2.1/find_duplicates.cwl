@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_duplicates.cwl
+id: find_duplicates.cwl
 inputs:
 - id: in_nuc_me_rpath
   doc: Path to the 'nucmer' executable.

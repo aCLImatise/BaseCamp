@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../muscle.cwl
+id: muscle.cwl
 inputs:
 - id: in_in
   doc: Input file in FASTA format (default stdin)

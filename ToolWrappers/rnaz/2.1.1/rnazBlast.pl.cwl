@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazBlast.pl.cwl
+id: rnazBlast.pl.cwl
 inputs:
 - id: in_blast_dir
   doc: "The directory with your BLAST database. If not set, the value\nfrom the \"\

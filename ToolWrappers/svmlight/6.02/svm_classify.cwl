@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svm_classify.cwl
+id: svm_classify.cwl
 inputs:
 - id: in_verbosity_level_default
   doc: '[0..3]  -> verbosity level (default 2)'

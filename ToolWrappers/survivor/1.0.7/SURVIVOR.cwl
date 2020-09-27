@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SURVIVOR.cwl
+id: SURVIVOR.cwl
 inputs:
 - id: in_sims_v
   doc: Simulates SVs and SNPs on a reference genome.

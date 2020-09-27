@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_addTaxonNames.cwl
+id: kaiju_addTaxonNames.cwl
 inputs:
 - id: in_name_input_file
   doc: Name of input file

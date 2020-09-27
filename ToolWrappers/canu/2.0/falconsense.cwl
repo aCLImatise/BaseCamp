@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconsense.cwl
+id: falconsense.cwl
 inputs:
 - id: in_mandatory_path_to_seqstore
   doc: mandatory path to seqStore

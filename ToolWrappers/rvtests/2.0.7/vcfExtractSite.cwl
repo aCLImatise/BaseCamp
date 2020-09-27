@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../vcfExtractSite.cwl
-inputs:
-- id: in_site
-  doc: '[], --inverse, --rangeList [], --rangeFile []'
-  type: boolean
-  inputBinding:
-    prefix: --site
-- id: in_snp_only
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --snpOnly
+id: vcfExtractSite.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

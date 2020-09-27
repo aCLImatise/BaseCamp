@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_random_graph.pl.cwl
+id: generate_random_graph.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

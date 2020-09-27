@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_html.pl.cwl
+id: make_html.pl.cwl
 inputs:
 - id: in_only_output_hairpins
   doc: only output hairpins with score above 2

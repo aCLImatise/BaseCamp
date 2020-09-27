@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erb.cwl
+id: erb.cwl
 inputs:
 - id: in_print_ruby_script
   doc: print ruby script

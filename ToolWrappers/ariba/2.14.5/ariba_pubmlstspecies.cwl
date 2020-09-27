@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_pubmlstspecies.cwl
+id: ariba_pubmlstspecies.cwl
 inputs:
 - id: in_ariba
   doc: ''

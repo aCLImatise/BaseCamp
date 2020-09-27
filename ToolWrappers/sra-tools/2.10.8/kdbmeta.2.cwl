@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kdbmeta.2.cwl
+id: kdbmeta.2.cwl
 inputs:
 - id: in_table
   doc: table-name
@@ -76,11 +76,6 @@ inputs:
 - id: in_quit_dot
   doc: '-L|--log-level <level>           Logging level as number or enum string. One '
   type: string
-  inputBinding:
-    position: 0
-- id: in_file_dot
-  doc: 'kdbmeta.2 : 2.10.8'
-  type: File
   inputBinding:
     position: 0
 outputs:

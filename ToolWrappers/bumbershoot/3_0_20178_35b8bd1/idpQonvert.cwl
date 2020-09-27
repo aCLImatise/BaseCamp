@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idpQonvert.cwl
+id: idpQonvert.cwl
 inputs: []
 outputs:
 - id: out_stdout

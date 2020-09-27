@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../init_Trinotate_sqlite_db.pl.cwl
+id: init_Trinotate_sqlite_db.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

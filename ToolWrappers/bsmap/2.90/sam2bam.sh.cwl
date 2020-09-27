@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam2bam.sh.cwl
+id: sam2bam.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq2science_init.cwl
+id: seq2science_init.cwl
 inputs:
 - id: in_dir
   doc: "The path to the directory where to initialise the\nconfig and samples files.\n"

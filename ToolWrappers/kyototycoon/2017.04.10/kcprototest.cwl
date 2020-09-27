@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcprototest.cwl
+id: kcprototest.cwl
 inputs:
 - id: in_it
   doc: ''

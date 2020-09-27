@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalizeScaffold.cwl
+id: normalizeScaffold.cwl
 inputs:
 - id: in_display_compatible_version
   doc: Display the compatible bank version

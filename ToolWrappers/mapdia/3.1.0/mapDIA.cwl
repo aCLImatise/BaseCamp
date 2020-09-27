@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapDIA.cwl
+id: mapDIA.cwl
 inputs:
 - id: in_input
   doc: ''

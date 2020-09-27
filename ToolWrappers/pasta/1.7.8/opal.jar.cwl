@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../opal.jar.cwl
+id: opal.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

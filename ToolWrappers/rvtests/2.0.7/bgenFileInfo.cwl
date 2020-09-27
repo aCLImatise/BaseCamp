@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgenFileInfo.cwl
+id: bgenFileInfo.cwl
 inputs:
 - id: in_in_bg_en
   doc: ': Input BGEN File'

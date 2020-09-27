@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purity.R.cwl
+id: purity.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

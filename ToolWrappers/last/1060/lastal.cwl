@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lastal.cwl
+id: lastal.cwl
 inputs:
 - id: in_verbose_write_messages
   doc: ': be verbose: write messages about what lastal is doing'

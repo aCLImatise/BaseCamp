@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fftwl_wisdom.cwl
+id: fftwl_wisdom.cwl
 inputs:
 - id: in_verbose
   doc: ': verbose output'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersection_matrix.pyc.cwl
+id: intersection_matrix.pyc.cwl
 inputs: []
 outputs:
 - id: out_stdout

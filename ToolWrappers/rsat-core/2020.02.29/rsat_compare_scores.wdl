@@ -18,13 +18,11 @@ task RsatComparescores {
     Boolean? subst
     String compare_scores
     String util
-    String headers_dot
   }
   command <<<
     rsat compare_scores \
       ~{compare_scores} \
       ~{util} \
-      ~{headers_dot} \
       ~{if (help) then "-help" else ""} \
       ~{if (verbose) then "-v" else ""} \
       ~{if defined(use_recursively_indicate) then ("-i " +  '"' + use_recursively_indicate + '"') else ""} \
@@ -57,7 +55,6 @@ task RsatComparescores {
     subst: "Substitute a given substring from file names in the header\\nby a specified substring.\\nExample:\\n-subst 'oligo_' 'ol'"
     compare_scores: "1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)"
     util: "OPTIONS"
-    headers_dot: "-lc, -uc"
   }
   output {
     File out_stdout = stdout()

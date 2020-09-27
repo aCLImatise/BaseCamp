@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_splitbed.cwl
+id: novoutil_splitbed.cwl
 inputs:
 - id: in_add
   doc: "\e[3m99\e[0m            Number of bp to add or to each input bed file region."

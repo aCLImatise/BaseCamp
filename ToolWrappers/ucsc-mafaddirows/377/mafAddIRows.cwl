@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafAddIRows.cwl
+id: mafAddIRows.cwl
 inputs:
 - id: in_n_beds
   doc: reads in list of bed files, one per species, with N locations

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_bioflat_index.pl.cwl
+id: bp_bioflat_index.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../WhatsGNU_database_customizer.py.cwl
+id: WhatsGNU_database_customizer.py.cwl
 inputs:
 - id: in_genbank_refseq
   doc: faa files from GenBank or RefSeq

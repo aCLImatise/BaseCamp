@@ -1,8 +1,14 @@
 class: CommandLineTool
-id: ../../../nanoraw_write_most_significant_fasta.cwl
+id: nanoraw_write_most_significant_fasta.cwl
 inputs:
 - id: in_fast_five_based_irs_two
-  doc: ''
+  doc: "[--corrected-group CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS\
+    \ [BASECALL_SUBGROUPS ...]\n| --2d]\n[--obs-per-base-filter OBS_PER_BASE_FILTER\
+    \ [OBS_PER_BASE_FILTER ...]]\n[--test-type {mw_utest,ttest}]\n[--fishers-method-offset\
+    \ FISHERS_METHOD_OFFSET]\n[--minimum-test-reads MINIMUM_TEST_READS]\n[--genome-fasta\
+    \ GENOME_FASTA]\n[--sequences-filename SEQUENCES_FILENAME]\n[--statistics-filename\
+    \ STATISTICS_FILENAME]\n[--num-regions NUM_REGIONS]\n[--q-value-threshold Q_VALUE_THRESHOLD]\n\
+    [--num-bases NUM_BASES] [--quiet]\n[--help]"
   type: long[]
   inputBinding:
     prefix: --fast5-basedirs2

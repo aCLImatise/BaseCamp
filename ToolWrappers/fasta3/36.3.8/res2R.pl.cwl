@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../res2R.pl.cwl
+id: res2R.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

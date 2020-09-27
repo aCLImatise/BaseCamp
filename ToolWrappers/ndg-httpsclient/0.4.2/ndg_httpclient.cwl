@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ndg_httpclient.cwl
+id: ndg_httpclient.cwl
 inputs:
 - id: in_certificate
   doc: Certificate file - defaults to $HOME/credentials.pem

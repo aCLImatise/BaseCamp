@@ -19,7 +19,6 @@ task TEtranscripts {
     Boolean? min_l
     Boolean? average_fragment_length
     Boolean? verbose
-    String? sort_by_pos
     String analysis_dot
     String de_seq_default
   }
@@ -43,8 +42,7 @@ task TEtranscripts {
       ~{if (max_l) then "--maxL" else ""} \
       ~{if (min_l) then "--minL" else ""} \
       ~{if (average_fragment_length) then "-L" else ""} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(sort_by_pos) then ("--sortByPos " +  '"' + sort_by_pos + '"') else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     te: "[--format [input file format]]"
@@ -64,7 +62,6 @@ task TEtranscripts {
     min_l: "[minL]         minimum fragment length. DEFAULT:0"
     average_fragment_length: "[fragLength], --fragmentLength [fragLength]\\naverage fragment length for single end reads. For\\npaired-end, estimated from the input alignment file.\\nDEFAULT: for paired-end, estimate from the input\\nalignment file; for single-end, ignored by default."
     verbose: "[verbose]   Set verbose level. 0: only show critical message, 1:\\nshow additional warning message, 2: show process\\ninformation, 3: show debug messages. DEFAULT:2"
-    sort_by_pos: ""
     analysis_dot: "-n [normalization], --norm [normalization]"
     de_seq_default: "--sortByPos           Alignment files are sorted by chromosome position."
   }

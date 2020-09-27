@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtsv_signature_FLAGS.cwl
+id: mtsv_signature_FLAGS.cwl
 inputs:
 - id: in_lca
   doc: ''

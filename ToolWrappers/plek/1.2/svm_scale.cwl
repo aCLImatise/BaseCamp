@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svm_scale.cwl
+id: svm_scale.cwl
 inputs:
 - id: in_scaling_lower_default
   doc: ': x scaling lower limit (default -1)'

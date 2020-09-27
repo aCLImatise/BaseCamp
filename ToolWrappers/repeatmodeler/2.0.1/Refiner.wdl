@@ -15,12 +15,10 @@ task Refiner {
     File? recon_dir
     File? genome_tools_dir
     String instances
-    String bar
   }
   command <<<
     Refiner \
       ~{instances} \
-      ~{bar} \
       ~{if (foo) then "-foo" else ""} \
       ~{if defined(trf_prgm) then ("-trf_prgm " +  '"' + trf_prgm + '"') else ""} \
       ~{if defined(cd_hit_dir) then ("-cdhit_dir " +  '"' + cd_hit_dir + '"') else ""} \
@@ -35,7 +33,7 @@ task Refiner {
       ~{if defined(genome_tools_dir) then ("-genometools_dir " +  '"' + genome_tools_dir + '"') else ""}
   >>>
   parameter_meta {
-    foo: ""
+    foo: "bar"
     trf_prgm: "The full path including the name for the TRF program ( 4.0.9 or\\nhigher )"
     cd_hit_dir: "The path to the installation of the CD-Hit sequence clustering\\npackage."
     maff_t_dir: "The path to the installation of the MAFFT multiple alignment\\nprogram."
@@ -48,7 +46,6 @@ task Refiner {
     recon_dir: "The path to the installation of the RECON de-novo repeatfinding\\nprogram."
     genome_tools_dir: "The path to the installation of the GenomeTools package."
     instances: "SYNOPSIS\\nRefiner [-options] <family fasta sequences>"
-    bar: "CONFIGURATION OVERRIDES"
   }
   output {
     File out_stdout = stdout()

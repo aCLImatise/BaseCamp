@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PIRATE.cwl
+id: PIRATE.cwl
 inputs:
 - id: in_input
   doc: input directory containing gffs [mandatory]

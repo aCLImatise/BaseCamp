@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbTestScript.cwl
+id: dbTestScript.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'

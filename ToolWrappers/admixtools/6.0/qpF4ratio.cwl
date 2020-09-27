@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpF4ratio.cwl
+id: qpF4ratio.cwl
 inputs:
 - id: in_use_parameters_file
   doc: '... use parameters from <file> .'

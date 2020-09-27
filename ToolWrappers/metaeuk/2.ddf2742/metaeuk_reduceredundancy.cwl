@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaeuk_reduceredundancy.cwl
+id: metaeuk_reduceredundancy.cwl
 inputs:
 - id: in_overlap
   doc: allow predictions to overlap another on the same strand. when not allowed (default),

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetch_pubmed.cwl
+id: fetch_pubmed.cwl
 inputs: []
 outputs:
 - id: out_stdout

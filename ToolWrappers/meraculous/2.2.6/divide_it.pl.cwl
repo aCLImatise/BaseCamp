@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../divide_it.pl.cwl
+id: divide_it.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

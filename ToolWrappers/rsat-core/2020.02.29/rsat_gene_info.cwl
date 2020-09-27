@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_gene_info.cwl
+id: rsat_gene_info.cwl
 inputs:
 - id: in_help
   doc: display options

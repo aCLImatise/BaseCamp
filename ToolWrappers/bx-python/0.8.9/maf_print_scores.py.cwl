@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_print_scores.py.cwl
+id: maf_print_scores.py.cwl
 inputs:
 - id: in_recalculate
   doc: "don't use the score from the maf, recalculate (using\nhox70 matrix)"

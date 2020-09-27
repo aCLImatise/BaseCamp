@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_filter_search.pl.cwl
+id: bp_filter_search.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

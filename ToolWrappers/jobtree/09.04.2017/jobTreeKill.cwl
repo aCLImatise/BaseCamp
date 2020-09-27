@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jobTreeKill.cwl
+id: jobTreeKill.cwl
 inputs:
 - id: in_tempdir_root
   doc: "Path to where temporary directory containing all temp\nfiles are created,\

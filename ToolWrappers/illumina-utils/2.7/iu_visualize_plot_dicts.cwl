@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_visualize_plot_dicts.cwl
+id: iu_visualize_plot_dicts.cwl
 inputs:
 - id: in_dest
   doc: Figure destination

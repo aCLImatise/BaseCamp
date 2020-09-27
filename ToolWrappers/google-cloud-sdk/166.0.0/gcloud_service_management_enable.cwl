@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_enable.cwl
+id: gcloud_service_management_enable.cwl
 inputs:
 - id: in_async
   doc: "Display information about the operation in progress, without waiting\nfor\

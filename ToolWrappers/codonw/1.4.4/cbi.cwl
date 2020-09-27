@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbi.cwl
+id: cbi.cwl
 inputs:
 - id: in_no_menu
   doc: Prevent the menu interface being displayed

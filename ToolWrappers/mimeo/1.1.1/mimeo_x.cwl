@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimeo_x.cwl
+id: mimeo_x.cwl
 inputs:
 - id: in_a_dir
   doc: Name of directory containing sequences from A genome.

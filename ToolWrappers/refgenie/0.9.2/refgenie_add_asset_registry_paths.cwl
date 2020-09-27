@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refgenie_add_asset_registry_paths.cwl
+id: refgenie_add_asset_registry_paths.cwl
 inputs:
 - id: in_p
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_truseq_scfcorrection.cwl
+id: spades_truseq_scfcorrection.cwl
 inputs: []
 outputs:
 - id: out_stdout

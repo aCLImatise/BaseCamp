@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_formatter.cwl
+id: fasta_formatter.cwl
 inputs:
 - id: in_e
   doc: ''

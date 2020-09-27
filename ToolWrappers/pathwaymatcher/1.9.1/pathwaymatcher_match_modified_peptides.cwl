@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../pathwaymatcher_match_modified_peptides.cwl
+id: pathwaymatcher_match_modified_peptides.cwl
 inputs:
-- id: in_f
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -f
-- id: in_i
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -i
 - id: in_mapping
   doc: "Path to directory with the static mapping files. By\ndefault uses the mapping\
     \ files integrated in the jar\nfile."

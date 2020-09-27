@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sanity_check_reads_ready_file.pl.cwl
+id: sanity_check_reads_ready_file.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

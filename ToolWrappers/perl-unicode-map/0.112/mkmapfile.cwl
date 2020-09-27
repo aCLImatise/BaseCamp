@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkmapfile.cwl
+id: mkmapfile.cwl
 inputs:
 - id: in_mapfile_output_write
   doc: Mapfile output. Write created mapping to this file.

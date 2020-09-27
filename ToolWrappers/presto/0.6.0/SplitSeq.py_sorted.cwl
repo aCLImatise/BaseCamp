@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SplitSeq.py_sorted.cwl
+id: SplitSeq.py_sorted.cwl
 inputs:
 - id: in_split_seq_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_retrieve.cwl
+id: gtftk_retrieve.cwl
 inputs:
 - id: in_species_name
   doc: 'The species name. (default: homo_sapiens)'

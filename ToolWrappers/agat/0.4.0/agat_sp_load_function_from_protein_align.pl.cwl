@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_load_function_from_protein_align.pl.cwl
+id: agat_sp_load_function_from_protein_align.pl.cwl
 inputs:
 - id: in_annotation
   doc: Input gtf/gff file of an annotation.

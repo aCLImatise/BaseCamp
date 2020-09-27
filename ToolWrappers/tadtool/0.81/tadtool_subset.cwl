@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadtool_subset.cwl
+id: tadtool_subset.cwl
 inputs:
 - id: in_matrix
   doc: "Square Hi-C Matrix as tab-delimited or .npy file (created\nwith numpy.save)\

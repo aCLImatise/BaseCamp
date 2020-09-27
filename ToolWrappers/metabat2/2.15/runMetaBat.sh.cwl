@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../runMetaBat.sh.cwl
+id: runMetaBat.sh.cwl
 inputs:
 - id: in_in_file
-  doc: ''
+  doc: "-o --outFile\n-a --abdFile"
   type: boolean
   inputBinding:
     prefix: --inFile
-- id: in_outfile
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --outFile
-- id: in_abd_file
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --abdFile
 outputs:
 - id: out_stdout
   doc: Standard output stream

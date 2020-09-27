@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../socru.cwl
+id: socru.cwl
 inputs:
 - id: in_db_dir
   doc: "Base directory for species databases, defaults to\nbundled (default: None)"

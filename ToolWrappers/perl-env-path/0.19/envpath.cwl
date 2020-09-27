@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../envpath.cwl
+id: envpath.cwl
 inputs:
 - id: in_append_token_path
   doc: Append TOKEN to the path variable named 'VAR'

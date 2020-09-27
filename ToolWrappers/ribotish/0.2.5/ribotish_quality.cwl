@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribotish_quality.cwl
+id: ribotish_quality.cwl
 inputs:
 - id: in_riboseq_bam_file
   doc: Riboseq bam file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graftM_create.cwl
+id: graftM_create.cwl
 inputs:
 - id: in_taxonomy
   doc: File containing two tab separated columns, the first with the ID of the sequences,
@@ -100,11 +100,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --log
-- id: in_graft_m_package
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --graftm_package
 - id: in_sequence_one
   doc: k__kingdom1; p__phylum2
   type: long

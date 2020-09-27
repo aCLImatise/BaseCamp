@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffread.cwl
+id: gffread.cwl
 inputs:
 - id: in_discard_transcripts_having
   doc: discard transcripts having an intron larger than <maxintron>

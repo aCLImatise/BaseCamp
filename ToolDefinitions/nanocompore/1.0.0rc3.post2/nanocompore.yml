@@ -31,7 +31,7 @@ subcommands:
         name: nanocompore
         optional: false
       named: []
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
         named: []
@@ -46,7 +46,68 @@ subcommands:
             name: nanocompore
             optional: false
           named: []
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: nanocompore
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
+                \ ...\nnanocompore: error: unrecognized arguments: --usage\n"
+              generated_using: &id004
+              - --usage
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: show program's version number and exit
+              synonyms:
+              - --version
+              - -v
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
+              \ ...\n\nSoftware package that identifies raw signal changes between\
+              \ two conditions\nfrom https://github.com/jts/nanopolish resquiggled\
+              \ dRNA-Seq data.\n\npositional arguments:\n  {sampcomp,simreads,plot}\n\
+              \                        Nanocompore implements the following subcommands\n\
+              \    plot                Run downstream analysis and plot results\n\n\
+              optional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  --version, -v         show program's version number and\
+              \ exit\n"
+            generated_using: &id005
+            - --help
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -64,24 +125,11 @@ subcommands:
             optional: true
           help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot}\
             \ ...\nnanocompore: error: unrecognized arguments: --usage\n"
-          generated_using: &id004
-          - --usage
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: show program's version number and exit
-          synonyms:
-          - --version
-          - -v
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "usage: nanocompore [-h] [--version] {sampcomp,simreads,plot} ...\n\
           \nSoftware package that identifies raw signal changes between two conditions\n\
           from https://github.com/jts/nanopolish resquiggled dRNA-Seq data.\n\npositional\
@@ -90,8 +138,7 @@ subcommands:
           \ analysis and plot results\n\noptional arguments:\n  -h, --help       \
           \     show this help message and exit\n  --version, -v         show program's\
           \ version number and exit\n"
-        generated_using: &id005
-        - --help
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag: !Flag

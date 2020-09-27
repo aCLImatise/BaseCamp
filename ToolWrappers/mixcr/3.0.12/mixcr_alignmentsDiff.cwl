@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_alignmentsDiff.cwl
+id: mixcr_alignmentsDiff.cwl
 inputs:
 - id: in_no_warnings
   doc: Suppress all warning messages.

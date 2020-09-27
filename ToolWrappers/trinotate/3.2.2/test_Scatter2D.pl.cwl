@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_Scatter2D.pl.cwl
+id: test_Scatter2D.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

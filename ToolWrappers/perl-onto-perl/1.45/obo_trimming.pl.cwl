@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obo_trimming.pl.cwl
+id: obo_trimming.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

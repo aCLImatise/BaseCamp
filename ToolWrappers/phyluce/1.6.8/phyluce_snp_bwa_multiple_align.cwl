@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_bwa_multiple_align.cwl
+id: phyluce_snp_bwa_multiple_align.cwl
 inputs:
 - id: in_config
   doc: "A configuration file containing the reference-to-read\nsample mapping and\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualityScores.cwl
+id: qualityScores.cwl
 inputs:
 - id: in_name_input_file
   doc: Name of input file including read data. The default format is

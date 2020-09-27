@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_consensus_poly.cwl
+id: make_consensus_poly.cwl
 inputs:
 - id: in_output_alignments_instead
   doc: Output alignments instead of consensus messages

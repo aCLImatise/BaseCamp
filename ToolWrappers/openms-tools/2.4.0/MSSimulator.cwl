@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSSimulator.cwl
+id: MSSimulator.cwl
 inputs:
 - id: in_in
   doc: "*       Input protein sequences (valid formats: 'FASTA')"

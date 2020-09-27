@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_components_repositories.cwl
+id: gcloud_components_repositories.cwl
 inputs:
 - id: in_add
   doc: Add a new Trusted Tester component repository.

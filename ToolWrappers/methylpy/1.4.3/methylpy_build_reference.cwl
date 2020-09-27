@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methylpy_build_reference.cwl
+id: methylpy_build_reference.cwl
 inputs:
 - id: in_input_files
   doc: "List of genome fasta files to build a reference from.\n(default: None)"

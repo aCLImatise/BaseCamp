@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diagnostic_modules.py.cwl
+id: diagnostic_modules.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

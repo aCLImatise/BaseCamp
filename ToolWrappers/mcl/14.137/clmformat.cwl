@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clmformat.cwl
+id: clmformat.cwl
 inputs:
 - id: in_icl
   doc: read clustering matrix from file

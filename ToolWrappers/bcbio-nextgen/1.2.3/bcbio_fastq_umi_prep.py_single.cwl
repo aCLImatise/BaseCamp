@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_fastq_umi_prep.py_single.cwl
+id: bcbio_fastq_umi_prep.py_single.cwl
 inputs:
 - id: in_cores
   doc: Number of cores to use for parallel bgzip

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepeatScout.cwl
+id: RepeatScout.cwl
 inputs:
 - id: in_size_region_extend
   doc: '# size of region to extend left or right (10000)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getSuperReadInsertCountsFromReadPlacementFileTwoPasses.cwl
+id: getSuperReadInsertCountsFromReadPlacementFileTwoPasses.cwl
 inputs:
 - id: in_output
   doc: Output file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zipHomerResults.pl.cwl
+id: zipHomerResults.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

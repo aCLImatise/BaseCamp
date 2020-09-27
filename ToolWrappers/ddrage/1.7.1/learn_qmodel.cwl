@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../learn_qmodel.cwl
+id: learn_qmodel.cwl
 inputs:
 - id: in_p_five
   doc: Path to a forward (p5) read file.

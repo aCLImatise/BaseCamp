@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: ../../../anvi_dereplicate_genomes.cwl
+id: anvi_dereplicate_genomes.cwl
 inputs:
 - id: in_similarity_threshold
-  doc: ''
-  type: string
+  doc: "[--cluster-method {simple_greedy}]\n[--representative-method {Qscore,length,centrality}]\n\
+    [-T NUM_THREADS] [--just-do-it]\n[--log-file FILE_PATH]"
+  type: long
   inputBinding:
     prefix: --similarity-threshold
 - id: in_internal_genomes

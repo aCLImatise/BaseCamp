@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_call.cwl
+id: bcftools_call.cwl
 inputs:
 - id: in_no_version
   doc: do not append version and command line to the header

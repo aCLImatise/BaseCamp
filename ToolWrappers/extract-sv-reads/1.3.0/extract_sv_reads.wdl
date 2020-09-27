@@ -2,9 +2,11 @@ version 1.0
 
 task Extractsvreads {
   input {
-    String? i
     File? only_useful_when
     Boolean? _output_version
+    Boolean? arg_input_bamcramsam
+    File? arg_output_split
+    File? arg_output_discordant
     Boolean? exclude_duplicate_reads
     Boolean? remove_sequences_qualities
     Int? max_unmapped_bases
@@ -16,9 +18,11 @@ task Extractsvreads {
   command <<<
     extract_sv_reads \
       ~{bams} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(only_useful_when) then ("-T " +  '"' + only_useful_when + '"') else ""} \
       ~{if (_output_version) then "-v" else ""} \
+      ~{if (arg_input_bamcramsam) then "-i" else ""} \
+      ~{if (arg_output_split) then "-s" else ""} \
+      ~{if (arg_output_discordant) then "-d" else ""} \
       ~{if (exclude_duplicate_reads) then "-e" else ""} \
       ~{if (remove_sequences_qualities) then "-r" else ""} \
       ~{if defined(max_unmapped_bases) then ("--max-unmapped-bases " +  '"' + max_unmapped_bases + '"') else ""} \
@@ -27,9 +31,11 @@ task Extractsvreads {
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
     only_useful_when: "only useful when the input file is a CRAM."
     _output_version: "[ --version ]               output the version"
+    arg_input_bamcramsam: "[ --input ] arg (=-)        input BAM/CRAM/SAM. Use '-' for stdin if using\\npositional arguments"
+    arg_output_split: "[ --splitter ] arg          output split reads to this file in BAM format\\n(Required)"
+    arg_output_discordant: "[ --discordant ] arg        output discordant reads to this file in BAM\\nformat (Required)"
     exclude_duplicate_reads: "[ --exclude-dups ]          exclude duplicate reads from output"
     remove_sequences_qualities: "[ --reduce-output-bams ]    remove sequences and qualities from output"
     max_unmapped_bases: "(=50) maximum number of unaligned bases between two\\nalignments to be included in the splitter file"
@@ -40,5 +46,7 @@ task Extractsvreads {
   }
   output {
     File out_stdout = stdout()
+    File out_arg_output_split = "${in_arg_output_split}"
+    File out_arg_output_discordant = "${in_arg_output_discordant}"
   }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../XrayPrep.cwl
+id: XrayPrep.cwl
 inputs: []
 outputs:
 - id: out_stdout

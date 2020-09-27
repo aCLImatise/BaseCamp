@@ -24,10 +24,6 @@ task FastqPreBarcodes {
     Boolean? sample_read
     Int? sample_offset
     Int? sample_size
-    Int? read_one_offset
-    Int? read_one_size
-    Int? read_two_offset
-    Int? read_two_size
     Boolean? one_zero_x
     String? optional
     String? parameters
@@ -58,10 +54,6 @@ task FastqPreBarcodes {
       ~{if (sample_read) then "--sample_read" else ""} \
       ~{if defined(sample_offset) then ("--sample_offset " +  '"' + sample_offset + '"') else ""} \
       ~{if defined(sample_size) then ("--sample_size " +  '"' + sample_size + '"') else ""} \
-      ~{if defined(read_one_offset) then ("--read1_offset " +  '"' + read_one_offset + '"') else ""} \
-      ~{if defined(read_one_size) then ("--read1_size " +  '"' + read_one_size + '"') else ""} \
-      ~{if defined(read_two_offset) then ("--read2_offset " +  '"' + read_two_offset + '"') else ""} \
-      ~{if defined(read_two_size) then ("--read2_size " +  '"' + read_two_size + '"') else ""} \
       ~{if (one_zero_x) then "--10x" else ""}
   >>>
   parameter_meta {
@@ -87,10 +79,6 @@ task FastqPreBarcodes {
     sample_read: "(read1|read2|index1|index2|index3)    :in which input file can the sample barcode be found"
     sample_offset: ":offset"
     sample_size: ":number of bases after the offset"
-    read_one_offset: ":"
-    read_one_size: ":"
-    read_two_offset: ":"
-    read_two_size: ":"
     one_zero_x: ": use 10X UMI tags (UB and UY) instead of the default tags defined in the SAM specification"
     optional: ""
     parameters: ""

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fu_extract.cwl
+id: fu_extract.cwl
 inputs:
 - id: in_pattern
   doc: STRING
@@ -26,11 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --column
-- id: in_separator
-  doc: '(default: "\t")'
-  type: string
+- id: in_s
+  doc: ''
+  type: boolean
   inputBinding:
-    prefix: --separator
+    prefix: -s
 - id: in_input_file_dot_fa
   doc: ''
   type: string

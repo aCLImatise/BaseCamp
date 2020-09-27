@@ -2,7 +2,6 @@ version 1.0
 
 task Pindel2vcf {
   input {
-    String? var_0
     Float? is
     String? li
     Boolean? r_slash_reference
@@ -33,12 +32,11 @@ task Pindel2vcf {
     Boolean? ss_slash_minimum_strand_support
     Boolean? g_slash_g_atk_compatible
     Boolean? h_slash_help
-    File? var_31
+    File? r
     File? p
   }
   command <<<
     pindel2vcf \
-      ~{if defined(var_0) then ("-R " +  '"' + var_0 + '"') else ""} \
       ~{if defined(is) then ("-is " +  '"' + is + '"') else ""} \
       ~{if defined(li) then ("-LI " +  '"' + li + '"') else ""} \
       ~{if (r_slash_reference) then "-r/--reference" else ""} \
@@ -69,11 +67,10 @@ task Pindel2vcf {
       ~{if (ss_slash_minimum_strand_support) then "-ss/--minimum_strand_support" else ""} \
       ~{if (g_slash_g_atk_compatible) then "-G/--gatk_compatible" else ""} \
       ~{if (h_slash_help) then "-h/--help" else ""} \
-      ~{if defined(var_31) then ("-r " +  '"' + var_31 + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
       ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
   parameter_meta {
-    var_0: ""
     is: "guaranteed to work correctly on output files produced by pindel version 0.2.3 and above."
     li: "BP files (long insertion and break point files) have a different type of header and\\nare not supported yet."
     r_slash_reference: "The name of the file containing the reference genome: required parameter"
@@ -104,7 +101,7 @@ task Pindel2vcf {
     ss_slash_minimum_strand_support: "Only count a sample as supporting an event if at least one of its strands is supported by X reads (default 1)"
     g_slash_g_atk_compatible: "calls genotypes which could either be homozygous or heterozygous not as ./1 but as 0/1, to ensure compatibility with GATK"
     h_slash_help: "Print the help of this converter"
-    var_31: ""
+    r: ""
     p: ""
   }
   output {

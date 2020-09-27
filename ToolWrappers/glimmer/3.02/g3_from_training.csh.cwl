@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../g3_from_training.csh.cwl
+id: g3_from_training.csh.cwl
 inputs: []
 outputs:
 - id: out_stdout

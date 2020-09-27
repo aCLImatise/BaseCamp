@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../speedtest.py.cwl
+id: speedtest.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

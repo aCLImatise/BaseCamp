@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../repair.cwl
+id: repair.cwl
 inputs:
 - id: in_name_input_file
   doc: Name of input file. BAM format by default.

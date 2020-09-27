@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RAMBOK.py.cwl
+id: RAMBOK.py.cwl
 inputs:
 - id: in_ref_file_one
   doc: "Reference file of species 1 in fasta-format. Should\npair with name1"

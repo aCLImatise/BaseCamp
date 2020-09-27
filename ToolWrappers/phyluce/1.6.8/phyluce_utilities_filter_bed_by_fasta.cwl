@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_utilities_filter_bed_by_fasta.cwl
+id: phyluce_utilities_filter_bed_by_fasta.cwl
 inputs:
 - id: in_bed
   doc: The BED file to filter.

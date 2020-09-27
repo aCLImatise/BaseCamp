@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAparconv.cwl
+id: RNAparconv.cwl
 inputs:
 - id: in_full_help
   doc: Print help, including hidden options, and exit

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pan_genome_assembly_statistics.cwl
+id: pan_genome_assembly_statistics.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

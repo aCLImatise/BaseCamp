@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromGraphToBin_in.tab.cwl
+id: chromGraphToBin_in.tab.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

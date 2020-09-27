@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sum.cwl
+id: sum.cwl
 inputs:
 - id: in_use_bsd_use
   doc: use BSD sum algorithm, use 1K blocks

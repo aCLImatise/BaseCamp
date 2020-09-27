@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_pbcromwell_rm_las.cwl
+id: falconc_pbcromwell_rm_las.cwl
 inputs:
 - id: in__command_string
   doc: =, --command=  string  "find . -name \'*.las\'"  set command

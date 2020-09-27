@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Blacklist.cwl
+id: Blacklist.cwl
 inputs: []
 outputs:
 - id: out_stdout

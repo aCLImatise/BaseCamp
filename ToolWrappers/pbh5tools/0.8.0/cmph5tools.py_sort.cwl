@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmph5tools.py_sort.cwl
+id: cmph5tools.py_sort.cwl
 inputs:
 - id: in_outfile
   doc: output filename

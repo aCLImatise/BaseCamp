@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cwl2wdl.cwl
+id: cwl2wdl.cwl
 inputs:
 - id: in_format
   doc: 'specify the output format (default: wdl)'

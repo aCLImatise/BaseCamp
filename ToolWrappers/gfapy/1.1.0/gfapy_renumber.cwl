@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfapy_renumber.cwl
+id: gfapy_renumber.cwl
 inputs:
 - id: in_out
   doc: output GFA file [/dev/stdout]

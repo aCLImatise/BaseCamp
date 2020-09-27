@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../consense.cwl
+id: consense.cwl
 inputs: []
 outputs:
 - id: out_stdout

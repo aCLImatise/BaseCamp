@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_remove_artifacts.cwl
+id: deblur_remove_artifacts.cwl
 inputs:
 - id: in_ref_fp
   doc: "Keep all sequences aligning to this FASTA\ndatabase (for multiple databases,\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaSNV.py.cwl
+id: metaSNV.py.cwl
 inputs:
 - id: in_db_ann
   doc: Database gene annotation.

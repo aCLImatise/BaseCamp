@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../catass.cwl
+id: catass.cwl
 inputs: []
 outputs:
 - id: out_stdout

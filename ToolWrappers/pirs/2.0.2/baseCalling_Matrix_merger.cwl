@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../baseCalling_Matrix_merger.cwl
+id: baseCalling_Matrix_merger.cwl
 inputs:
 - id: in_base_calling_matrix_merger_do_tpl
   doc: Description

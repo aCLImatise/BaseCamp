@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_naive_bsfinder_output_table.cwl
+id: mb_naive_bsfinder_output_table.cwl
 inputs:
 - id: in_min_transitions
   doc: ''

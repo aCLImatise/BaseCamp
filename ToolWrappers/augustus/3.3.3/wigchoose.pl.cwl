@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wigchoose.pl.cwl
+id: wigchoose.pl.cwl
 inputs:
 - id: in_min_cov
   doc: 'minimal coverage for each position of the interval (default: 1)'

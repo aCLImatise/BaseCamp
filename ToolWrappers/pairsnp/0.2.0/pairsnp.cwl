@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairsnp.cwl
+id: pairsnp.cwl
 inputs:
 - id: in_print_version_exit
   doc: Print version and exit

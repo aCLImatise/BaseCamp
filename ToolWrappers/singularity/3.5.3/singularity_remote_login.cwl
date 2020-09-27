@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_remote_login.cwl
+id: singularity_remote_login.cwl
 inputs:
 - id: in_token_file
   doc: path to the file holding token

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ifdata.cwl
+id: ifdata.cwl
 inputs:
 - id: in_reports_interface_existence
   doc: Reports interface existence via return code

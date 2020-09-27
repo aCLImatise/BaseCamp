@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assess_significance.R.cwl
+id: assess_significance.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

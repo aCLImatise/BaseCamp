@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BlastAlign.py.cwl
+id: BlastAlign.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

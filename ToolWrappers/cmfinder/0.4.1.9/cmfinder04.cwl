@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmfinder04.cwl
+id: cmfinder04.cwl
 inputs:
 - id: in_input_alignment_file
   doc: ': input alignment file (.sto)'

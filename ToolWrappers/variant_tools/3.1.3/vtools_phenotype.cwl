@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_phenotype.cwl
+id: vtools_phenotype.cwl
 inputs:
 - id: in_import_phenotype_tab
   doc: "[INPUT_FILE [INPUT_FILE ...]], --from_file [INPUT_FILE [INPUT_FILE ...]],\

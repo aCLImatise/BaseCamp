@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracy_index.cwl
+id: tracy_index.cwl
 inputs:
 - id: in_arg_output_file
   doc: '[ --output ] arg (="genome.fm9")  output file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastTree.cwl
+id: FastTree.cwl
 inputs:
 - id: in_fastest
   doc: "-- search the visible set (the top hit for each node) only\nUnlike the original\

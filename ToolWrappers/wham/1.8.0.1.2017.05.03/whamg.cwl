@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whamg.cwl
+id: whamg.cwl
 inputs:
 - id: in_string_list_include
   doc: "<STRING>  A list of seqids to include or exclude while\nsampling insert and\

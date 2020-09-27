@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_orftocontig.cwl
+id: mmseqs_orftocontig.cwl
 inputs:
 - id: in_threads
   doc: 8               number of cores used for the computation (uses all cores by

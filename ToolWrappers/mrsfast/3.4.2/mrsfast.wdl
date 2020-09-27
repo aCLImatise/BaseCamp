@@ -11,6 +11,7 @@ task Mrsfast {
     String use_dot
     String t_number_cores
     String set
+    String only_dot
     Int length
     String options_dot
     String maxdiscordantlength_maximum_length
@@ -39,6 +40,7 @@ task Mrsfast {
       ~{use_dot} \
       ~{t_number_cores} \
       ~{set} \
+      ~{only_dot} \
       ~{length} \
       ~{options_dot} \
       ~{maxdiscordantlength_maximum_length} \
@@ -59,7 +61,7 @@ task Mrsfast {
       ~{if defined(max) then ("--max " +  '"' + max + '"') else ""}
   >>>
   parameter_meta {
-    max: ""
+    max: "$ ./mrsfast --search refgen.fasta --pe --seq1 first-mates.fastq  --seq2\\nsecond-mates.fastq -e 3 --threads 4\\n$  ./mrsfast --search refgen.fasta --pe --seq1 first-mates.fastq --seq2\\nsecond-mates.fastq --min 100 --max 400 --best -o output\\nDiscordant mapping:\\n$  ./mrsfast   --search   refgen.fasta   --pe   --discordant-vh   --seq\\nreads.fastq --min 100 --max 400"
     mrs_fast_ultra: "DDEESSCCRRIIPPTTIIOONN"
     treated: "sequences are not supported in this version."
     to: "install  mrsFAST-ultra, please download the source zip package from"
@@ -68,6 +70,7 @@ task Mrsfast {
     use_dot: "$ unzip mrsfast-ultra-3.X.X.zip"
     t_number_cores: "_t  number  of cores for mapping the sequences (default: 1)."
     set: "the  input sequence (left mate) to _f_i_l_e_.  Paired-end option"
+    only_dot: "----sseeqq22 _f_i_l_e"
     length: "will  be  calculated  if  not  provided by corresponding"
     options_dot: "----mmiinn _m_i_n_-_d_i_s_c_o_r_d_a_n_t_-_l_e_n_g_t_h"
     maxdiscordantlength_maximum_length: "_m_a_x_-_d_i_s_c_o_r_d_a_n_t_-_l_e_n_g_t_h for maximum length of concordant map-"

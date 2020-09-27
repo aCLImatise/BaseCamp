@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go2chadoxml.cwl
+id: go2chadoxml.cwl
 inputs:
 - id: in_basename
   doc: ''

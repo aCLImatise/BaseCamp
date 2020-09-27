@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_convert_vcf_to_structure.cwl
+id: phyluce_snp_convert_vcf_to_structure.cwl
 inputs:
 - id: in_input
   doc: The VCF file to process

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildSNPDB.pl.cwl
+id: buildSNPDB.pl.cwl
 inputs:
 - id: in_in_directory_name
   doc: in directory name

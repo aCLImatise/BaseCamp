@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5ls.cwl
+id: h5ls.cwl
 inputs:
 - id: in_address
   doc: "Print raw data address.  If dataset is contiguous, address\nis offset in file\

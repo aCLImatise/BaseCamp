@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_proteinaln2nucl.cwl
+id: mmseqs_proteinaln2nucl.cwl
 inputs:
 - id: in_threads
   doc: 8               number of cores used for the computation (uses all cores by

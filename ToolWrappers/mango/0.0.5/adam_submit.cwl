@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../adam_submit.cwl
+id: adam_submit.cwl
 inputs:
 - id: in_d_eight_b
   doc: 888   \       d8b          d8b  d8b

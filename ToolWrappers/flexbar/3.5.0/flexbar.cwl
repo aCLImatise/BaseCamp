@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flexbar.cwl
+id: flexbar.cwl
 inputs:
 - id: in_full_help
   doc: Display the help message with advanced options.

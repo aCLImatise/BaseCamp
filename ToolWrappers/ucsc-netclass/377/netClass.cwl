@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netClass.cwl
+id: netClass.cwl
 inputs:
 - id: in_t_new_r
   doc: "- Dir of chrN.out.spec files, with RepeatMasker .out format\nlines describing\

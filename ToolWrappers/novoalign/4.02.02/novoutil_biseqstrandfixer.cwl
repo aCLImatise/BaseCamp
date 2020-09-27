@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_biseqstrandfixer.cwl
+id: novoutil_biseqstrandfixer.cwl
 inputs:
 - id: in_input_dots_am
   doc: ''

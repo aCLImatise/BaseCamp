@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: ../../../hca_auth_post_oauth_revoke.cwl
+id: hca_auth_post_oauth_revoke.cwl
 inputs:
 - id: in_client_id
-  doc: ''
+  doc: "--token TOKEN         The refresh token to revoke.\n"
   type: string
   inputBinding:
     prefix: --client-id
 - id: in_token
-  doc: The refresh token to revoke.
+  doc: ''
   type: string
   inputBinding:
     prefix: --token

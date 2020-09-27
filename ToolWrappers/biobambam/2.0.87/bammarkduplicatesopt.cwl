@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bammarkduplicatesopt.cwl
+id: bammarkduplicatesopt.cwl
 inputs: []
 outputs:
 - id: out_stdout

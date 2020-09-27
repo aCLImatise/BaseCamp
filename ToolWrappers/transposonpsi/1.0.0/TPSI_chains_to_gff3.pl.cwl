@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TPSI_chains_to_gff3.pl.cwl
+id: TPSI_chains_to_gff3.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TETyper.py.cwl
+id: TETyper.py.cwl
 inputs:
 - id: in_out_prefix
   doc: Prefix to use for output files. Required.

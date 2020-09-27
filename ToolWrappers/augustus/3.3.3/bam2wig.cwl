@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2wig.cwl
+id: bam2wig.cwl
 inputs:
 - id: in_allows_specify_eg
   doc: "Allows to specify a target region, e.g. 'chr3L:10-250'\nThis option can only\

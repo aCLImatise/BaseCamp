@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_setup.cwl
+id: funannotate_setup.cwl
 inputs:
 - id: in_install
   doc: "Download format databases. Default: all\n[merops,uniprot,dbCAN,pfam,repeats,go,\n\

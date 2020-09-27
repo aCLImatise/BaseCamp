@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamtagconversion.cwl
+id: bamtagconversion.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAlocmin.cwl
+id: RNAlocmin.cwl
 inputs:
 - id: in_detailed_help
   doc: "Print help, including all details and hidden\noptions, and exit"
@@ -161,16 +161,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --eRange
-- id: in_this
-  doc: (default=`0.0')
-  type: string
-  inputBinding:
-    position: 0
 - id: in_postprocessing_dot
   doc: (default=off)
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_flag_dot
   doc: (default=`treeRNAloc.ps')
   type: string

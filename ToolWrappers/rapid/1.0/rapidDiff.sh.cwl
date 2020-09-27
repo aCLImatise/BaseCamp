@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapidDiff.sh.cwl
+id: rapidDiff.sh.cwl
 inputs:
 - id: in_out
   doc: ': path to the output directory, directory will be created if non-existent'

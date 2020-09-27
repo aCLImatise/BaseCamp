@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_cloud_create.cwl
+id: nextflow.bak_cloud_create.cwl
 inputs:
 - id: in_instance_count
   doc: Instances count

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamalignfrac.cwl
+id: bamalignfrac.cwl
 inputs: []
 outputs:
 - id: out_stdout

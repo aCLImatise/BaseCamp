@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbindexdump.cwl
+id: pbindexdump.cwl
 inputs:
 - id: in_format
   doc: 'STR   Output format. Valid choices: (json, cpp). [json]'

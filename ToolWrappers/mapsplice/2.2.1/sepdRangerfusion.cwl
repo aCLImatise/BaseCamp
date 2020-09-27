@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sepdRangerfusion.cwl
+id: sepdRangerfusion.cwl
 inputs: []
 outputs:
 - id: out_stdout

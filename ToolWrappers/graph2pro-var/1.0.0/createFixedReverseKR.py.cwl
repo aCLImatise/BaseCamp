@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createFixedReverseKR.py.cwl
+id: createFixedReverseKR.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

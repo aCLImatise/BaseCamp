@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_diffseqdbs.cwl
+id: mmseqs_diffseqdbs.cwl
 inputs:
 - id: in_use_seq_id
   doc: false           Sequence ID (Uniprot, GenBank, ...) is used for identifying

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matchfusion2normal.cwl
+id: matchfusion2normal.cwl
 inputs: []
 outputs:
 - id: out_stdout

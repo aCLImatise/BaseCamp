@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../format_xml.pl.cwl
+id: format_xml.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

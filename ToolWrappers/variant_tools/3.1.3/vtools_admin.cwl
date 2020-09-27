@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_admin.cwl
+id: vtools_admin.cwl
 inputs:
 - id: in_verbosity
   doc: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\

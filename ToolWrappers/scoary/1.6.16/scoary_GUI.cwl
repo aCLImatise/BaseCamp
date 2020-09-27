@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scoary_GUI.cwl
+id: scoary_GUI.cwl
 inputs: []
 outputs:
 - id: out_stdout

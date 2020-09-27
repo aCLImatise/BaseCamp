@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapConvert.cwl
+id: overlapConvert.cwl
 inputs:
 - id: in_seqstore_needed_default
   doc: seqStore (needed for -coords, the default)

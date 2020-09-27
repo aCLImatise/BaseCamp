@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IntaRNA_plotRegions.R.cwl
+id: IntaRNA_plotRegions.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

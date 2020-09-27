@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axtChain.cwl
+id: axtChain.cwl
 inputs: []
 outputs:
 - id: out_stdout

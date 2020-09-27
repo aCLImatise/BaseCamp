@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TAPIR.py.cwl
+id: TAPIR.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

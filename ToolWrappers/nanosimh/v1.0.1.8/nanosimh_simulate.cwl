@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanosimh_simulate.cwl
+id: nanosimh_simulate.cwl
 inputs:
 - id: in_reference
   doc: reference genome in fasta file

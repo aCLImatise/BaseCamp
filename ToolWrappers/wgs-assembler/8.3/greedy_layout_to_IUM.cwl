@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../greedy_layout_to_IUM.cwl
+id: greedy_layout_to_IUM.cwl
 inputs: []
 outputs:
 - id: out_stdout

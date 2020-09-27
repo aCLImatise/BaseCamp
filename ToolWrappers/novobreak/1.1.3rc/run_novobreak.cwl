@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_novobreak.cwl
+id: run_novobreak.cwl
 inputs: []
 outputs:
 - id: out_stdout

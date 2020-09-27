@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq2_call_pparallel.py.cwl
+id: lofreq2_call_pparallel.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

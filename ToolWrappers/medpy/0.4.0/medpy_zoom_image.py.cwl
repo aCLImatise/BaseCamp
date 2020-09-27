@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_zoom_image.py.cwl
+id: medpy_zoom_image.py.cwl
 inputs:
 - id: in_display_more_information
   doc: Display more information.

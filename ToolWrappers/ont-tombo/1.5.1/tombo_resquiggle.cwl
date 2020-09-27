@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_resquiggle.cwl
+id: tombo_resquiggle.cwl
 inputs:
 - id: in_dna
   doc: "Explicitly select canonical DNA model. Default:\nAutomatically determine from\

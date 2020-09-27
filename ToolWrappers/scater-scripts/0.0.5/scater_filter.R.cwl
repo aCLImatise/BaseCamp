@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scater_filter.R.cwl
+id: scater_filter.R.cwl
 inputs:
 - id: in_input_object_file
   doc: A serialized SingleCellExperiment object file in RDS format.

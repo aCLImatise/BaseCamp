@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../utrgff2gbrowse.pl.cwl
+id: utrgff2gbrowse.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

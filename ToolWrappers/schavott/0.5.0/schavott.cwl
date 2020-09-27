@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../schavott.cwl
+id: schavott.cwl
 inputs:
 - id: in_run_mode
   doc: Run scaffolding or assembly

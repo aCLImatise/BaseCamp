@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracedb_to_frg.pl.cwl
+id: tracedb_to_frg.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

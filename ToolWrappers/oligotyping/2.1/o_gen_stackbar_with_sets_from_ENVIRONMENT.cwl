@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_gen_stackbar_with_sets_from_ENVIRONMENT.cwl
+id: o_gen_stackbar_with_sets_from_ENVIRONMENT.cwl
 inputs: []
 outputs:
 - id: out_stdout

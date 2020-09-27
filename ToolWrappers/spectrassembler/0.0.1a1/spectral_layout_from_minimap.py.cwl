@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectral_layout_from_minimap.py.cwl
+id: spectral_layout_from_minimap.py.cwl
 inputs:
 - id: in_root
   doc: directory where to store layout files.

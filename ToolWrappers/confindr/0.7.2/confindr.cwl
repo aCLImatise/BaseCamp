@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../confindr.cwl
+id: confindr.cwl
 inputs:
 - id: in_input_directory
   doc: "Folder that contains fastq files you want to check for\ncontamination. Will\

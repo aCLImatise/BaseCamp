@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_cap_occupancy_inputfile.cwl
+id: mb_cap_occupancy_inputfile.cwl
 inputs:
 - id: in_quantile
   doc: ''

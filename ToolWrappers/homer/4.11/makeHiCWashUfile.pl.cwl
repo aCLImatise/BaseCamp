@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeHiCWashUfile.pl.cwl
+id: makeHiCWashUfile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

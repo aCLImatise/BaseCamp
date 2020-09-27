@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmentation_fold_utils_find_boxes.cwl
+id: segmentation_fold_utils_find_boxes.cwl
 inputs:
 - id: in_box_one
   doc: "Sequence of box1 (default = C-box: 'NRUGAUG')"

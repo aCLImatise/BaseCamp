@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathAnalyzer.cwl
+id: OpenSwathAnalyzer.cwl
 inputs:
 - id: in_in
   doc: "*                    Input file containing the chromatograms. (valid formats:\

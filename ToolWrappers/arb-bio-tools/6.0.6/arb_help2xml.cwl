@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_help2xml.cwl
+id: arb_help2xml.cwl
 inputs:
 - id: in_arb_help_file
   doc: ''

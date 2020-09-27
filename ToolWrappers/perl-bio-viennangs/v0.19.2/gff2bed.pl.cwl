@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff2bed.pl.cwl
+id: gff2bed.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GFF file.

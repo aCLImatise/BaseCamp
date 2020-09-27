@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_baits_annotation.cwl
+id: rgi_baits_annotation.cwl
 inputs:
 - id: in_index_file
   doc: "index file with baits information\n"

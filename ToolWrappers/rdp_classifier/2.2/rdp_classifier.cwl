@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rdp_classifier.cwl
+id: rdp_classifier.cwl
 inputs:
 - id: in_format
   doc: "all tab delimited output format: [allrank|fixrank|db]. Default is allrank.\n\

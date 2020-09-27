@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_info_para.cwl
+id: MotifRaptor_info_para.cwl
 inputs:
 - id: in_motif_raptor
   doc: ''

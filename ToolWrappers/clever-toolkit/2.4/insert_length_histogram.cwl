@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../insert_length_histogram.cwl
+id: insert_length_histogram.cwl
 inputs: []
 outputs:
 - id: out_stdout

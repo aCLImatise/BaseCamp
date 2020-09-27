@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gp2othergp.pl.cwl
+id: gp2othergp.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

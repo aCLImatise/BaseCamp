@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prt_terms.py.cwl
+id: prt_terms.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

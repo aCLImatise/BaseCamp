@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../System.Runtime.CompilerServices.Unsafe.dll.cwl
+id: System.Runtime.CompilerServices.Unsafe.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

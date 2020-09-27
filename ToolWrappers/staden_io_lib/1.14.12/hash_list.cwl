@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hash_list.cwl
+id: hash_list.cwl
 inputs: []
 outputs:
 - id: out_stdout

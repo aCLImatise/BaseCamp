@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reads_stats.py.cwl
+id: reads_stats.py.cwl
 inputs:
 - id: in_fast_x
   doc: input file fastq or fasta

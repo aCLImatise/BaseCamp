@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sciex.Data.SimpleTypes.dll.cwl
+id: Sciex.Data.SimpleTypes.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

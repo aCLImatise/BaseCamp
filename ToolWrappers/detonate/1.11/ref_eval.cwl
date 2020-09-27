@@ -1,56 +1,6 @@
 class: CommandLineTool
-id: ../../../ref_eval.cwl
+id: ref_eval.cwl
 inputs:
-- id: in_weighted
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --weighted
-- id: in_a_seqs
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --A-seqs
-- id: in_b_seqs
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --B-seqs
-- id: in_a_expr
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --A-expr
-- id: in_b_expr
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --B-expr
-- id: in_a_to_b
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --A-to-B
-- id: in_b_to_a
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --B-to-A
-- id: in_num_reads
-  doc: \
-  type: long
-  inputBinding:
-    prefix: --num-reads
-- id: in_read_len
-  doc: \
-  type: long
-  inputBinding:
-    prefix: --readlen
-- id: in_k_merle_n
-  doc: \
-  type: long
-  inputBinding:
-    prefix: --kmerlen
 - id: in_scores
   doc: "The groups of scores to compute, separated by commas (e.g.,\n--scores=nucl,contig,kc).\
     \ It is more efficient to compute all\nthe scores you are interested in using\
@@ -64,6 +14,20 @@ inputs:
   type: long
   inputBinding:
     prefix: --scores
+- id: in_weighted
+  doc: "A string indicating whether to compute weighted or unweighted\nvariants of\
+    \ scores, or both (e.g., --weighted=yes):\n* yes: compute weighted variants of\
+    \ scores.\n* no: compute unweighted variants of scores.\n* both: compute both\
+    \ weighted and unweighted variants of\nscores.\nIn weighted variants, the expression\
+    \ levels (TPM) of the\nassembly and reference sequences are taken into account,\
+    \ and\nhence need to be specified using --A-expr and --B-expr.\nUnweighted variants\
+    \ are equivalent to weighted variants with\nuniform expression.\nThe distinction\
+    \ between weighted and unweighted variants\ndoesn't make sense for the KC score,\
+    \ so this option is\nignored by the KC score.\nRequired unless --paper or only\
+    \ --score=kc is given."
+  type: string
+  inputBinding:
+    prefix: --weighted
 - id: in_paper
   doc: "As an alternative to the above, if you are only interested in\ncomputing the\
     \ scores described in the main text of our paper\n[1], you can pass the --paper\
@@ -77,6 +41,40 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --paper
+- id: in_a_seqs
+  doc: The assembly sequences, in FASTA format. Required.
+  type: string
+  inputBinding:
+    prefix: --A-seqs
+- id: in_b_seqs
+  doc: The reference sequences, in FASTA format. Required.
+  type: string
+  inputBinding:
+    prefix: --B-seqs
+- id: in_a_expr
+  doc: "The assembly expression, for use in weighted scores, as\nproduced by RSEM\
+    \ in a file called *.isoforms.results.\nRequired for weighted variants of scores."
+  type: File
+  inputBinding:
+    prefix: --A-expr
+- id: in_b_expr
+  doc: "The reference expression, for use in weighted scores, as\nproduced by RSEM\
+    \ in a file called *.isoforms.results.\nRequired for weighted variants of scores."
+  type: File
+  inputBinding:
+    prefix: --B-expr
+- id: in_a_to_b
+  doc: "The alignments of the assembly to the reference. The file\nformat is specified\
+    \ by --alignment-type. Required for\nalignment-based scores."
+  type: File
+  inputBinding:
+    prefix: --A-to-B
+- id: in_b_to_a
+  doc: "The alignments of the reference to the assembly. The file\nformat is specified\
+    \ by --alignment-type. Required for\nalignment-based scores."
+  type: File
+  inputBinding:
+    prefix: --B-to-A
 - id: in_alignment_type
   doc: "The type of alignments used, either blast or psl. Default:\npsl. Currently\
     \ BLAST support is experimental, not well\ntested, and not recommended."
@@ -90,6 +88,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strand-specific
+- id: in_read_len
+  doc: "This option only applies to the KC scores. The read length of\nthe reads used\
+    \ to build the assembly, used in the denominator\nof the ICR. Required for KC\
+    \ scores."
+  type: long
+  inputBinding:
+    prefix: --readlen
+- id: in_num_reads
+  doc: "This option only applies to the KC scores. The number of\nreads used to build\
+    \ the assembly, used in the denominator of\nthe ICR. Required for KC scores."
+  type: long
+  inputBinding:
+    prefix: --num-reads
+- id: in_k_merle_n
+  doc: "This option only applies to the kmer and KC scores. This is\nthe length (\"\
+    k\") of the kmers used in the definition of the\nKC and kmer scores. Required\
+    \ for KC and kmer scores."
+  type: long
+  inputBinding:
+    prefix: --kmerlen
 - id: in_min_frac_identity
   doc: "This option only applies to contig scores. Alignments with\nfraction identity\
     \ less than this threshold are ignored. The\nfraction identity of an alignment\
@@ -178,7 +196,24 @@ inputs:
   inputBinding:
     prefix: --trace
 - id: in_b_expr_dot
-  doc: ''
+  doc: "If --weighted=no, we construct the kmer occurrence frequency profiles\n$p_A$\
+    \ and $p_B$ in the same way, except that uniform relative\nabundances are used,\
+    \ i.e., $\\tau(a) = 1/|A|$ for all $a$ in $A$, and\n$\\tau(b) = 1/|B|$ for all\
+    \ $b$ in $B$, where $|A|$ is the number of\ncontigs in $A$, and $|B|$ is the number\
+    \ of reference sequences in\n$B$.\nLet $m$ be the \"mean\" profile of $p_A$ and\
+    \ $p_B$:\n$$ m(r) = (1/2) (p_A(r) + p_B(r)) \\qquad\\hbox{for every kmer $r$}.\
+    \ $$\nThe Jensen-Shannon divergence between $p_A$ and $p_B$ is defined in\nterms\
+    \ of the KL divergence between $p_A$ and the mean, and $p_B$ and\nthe mean, as\
+    \ follows:\n* Let $KL(p_A || m) = \\sum_r p_A(r) (\\log_2(p_A(r)) -\n\\log_2(m(r)))$.\n\
+    * Let $KL(p_B || m) = \\sum_r p_B(r) (\\log_2(p_B(r)) -\n\\log_2(m(r)))$.\n* Let\
+    \ $JS(p_A || p_B) = (1/2) (KL(p_A || m) + KL(p_B || m))$.\nIn the output file,\
+    \ these three scores are denoted\n(un)weighted_kmer_KL_A_to_M, (un)weighted_kmer_KL_B_to_M,\
+    \ and\n(un)weighted_kmer_jensen_shannon, respectively.\nThe Hellinger distance\
+    \ between $p_A$ and $p_B$ is defined as\n$$ \\sqrt{ (1/2) \\sum_r (\\sqrt{p_A(r)}\
+    \ - \\sqrt{p_B(r)})^2 } $$\nThe total variation distance between $p_A$ and $p_B$\
+    \ is defined as\n$$ (1/2) \\sum_r |p_A(r) - p_B(r)|, $$\nwhere $|\\cdot|$ denotes\
+    \ absolute value. Above, $\\sum_r$ denotes a sum\nover all possible kmers $r$\
+    \ (most of which will have $p_A(r) = p_B(r)\n= 0$)."
   type: boolean
   inputBinding:
     prefix: --B-expr.

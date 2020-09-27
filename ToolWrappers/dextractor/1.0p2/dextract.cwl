@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dextract.cwl
+id: dextract.cwl
 inputs:
 - id: in_o
   doc: ''

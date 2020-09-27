@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_fasta_database.cwl
+id: validate_fasta_database.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../format_number.pl.bak.cwl
+id: format_number.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

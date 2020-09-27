@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_kmers.cwl
+id: count_kmers.cwl
 inputs: []
 outputs:
 - id: out_stdout

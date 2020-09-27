@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmm_tweak.cwl
+id: hmm_tweak.cwl
 inputs:
 - id: in_var_0
   doc: "Operate on transitions *from* states corresponding to the\nspecified category\

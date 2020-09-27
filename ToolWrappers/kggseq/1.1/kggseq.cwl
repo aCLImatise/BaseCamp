@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kggseq.cwl
+id: kggseq.cwl
 inputs:
 - id: in_jar
   doc: ''

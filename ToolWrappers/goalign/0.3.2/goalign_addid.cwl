@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_addid.cwl
+id: goalign_addid.cwl
 inputs:
 - id: in_name
   doc: String to add to sequence names (default "none")

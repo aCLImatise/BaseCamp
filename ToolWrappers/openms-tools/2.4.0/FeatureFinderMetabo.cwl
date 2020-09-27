@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FeatureFinderMetabo.cwl
+id: FeatureFinderMetabo.cwl
 inputs:
 - id: in_in
   doc: "*        Centroided mzML file (valid formats: 'mzML')"

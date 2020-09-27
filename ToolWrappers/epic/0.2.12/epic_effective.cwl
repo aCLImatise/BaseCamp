@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic_effective.cwl
+id: epic_effective.cwl
 inputs:
 - id: in_read_length
   doc: length of reads

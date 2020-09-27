@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synthReadGen_inputFile.cwl
+id: synthReadGen_inputFile.cwl
 inputs:
 - id: in_output_file
   doc: ''

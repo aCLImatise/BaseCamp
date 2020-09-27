@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shrec.py.cwl
+id: shrec.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

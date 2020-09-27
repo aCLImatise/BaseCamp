@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_gtf2bed_gtf.cwl
+id: bedparse_gtf2bed_gtf.cwl
 inputs:
 - id: in_extrafields
   doc: ''

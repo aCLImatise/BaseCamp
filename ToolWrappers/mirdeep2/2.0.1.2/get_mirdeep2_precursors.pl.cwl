@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_mirdeep2_precursors.pl.cwl
+id: get_mirdeep2_precursors.pl.cwl
 inputs:
 - id: in_s
   doc: '[int]        output only precursors with min-score >= [int]'

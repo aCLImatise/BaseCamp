@@ -1,16 +1,13 @@
 class: CommandLineTool
-id: ../../../kneaddata_bowtie2_discordant_pairs.cwl
+id: kneaddata_bowtie2_discordant_pairs.cwl
 inputs:
 - id: in_un_pair
-  doc: ''
-  type: string
+  doc: "--un-single UN_SINGLE --al-single\nAL_SINGLE [-U ORPHAN] [-S SAM]\n[--bowtie2\
+    \ BOWTIE2]\n[--threads THREADS]\n[--bowtie2-options BOWTIE2_OPTIONS]\n[--cat-pairs]\
+    \ [--reorder]"
+  type: long
   inputBinding:
     prefix: --un-pair
-- id: in_un_single
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --un-single
 - id: in_one
   doc: the fastq file of pair1 reads
   type: long
@@ -26,6 +23,16 @@ inputs:
   type: File
   inputBinding:
     prefix: -x
+- id: in_un_single
+  doc: the name of the output files for the orphan reads without alignments
+  type: string
+  inputBinding:
+    prefix: --un-single
+- id: in_al_single
+  doc: the name of the output files for the orphan reads with alignments
+  type: string
+  inputBinding:
+    prefix: --al-single
 - id: in_fastq_files_orphan
   doc: the fastq files of orphan reads in comma-delimited list
   type: string

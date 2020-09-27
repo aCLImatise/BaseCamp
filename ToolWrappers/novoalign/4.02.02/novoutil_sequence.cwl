@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_sequence.cwl
+id: novoutil_sequence.cwl
 inputs:
 - id: in_seq_id
   doc: is either a numerical seqidx or a unique string from the desired sequence header.

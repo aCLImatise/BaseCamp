@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../radical_utils_version.cwl
+id: radical_utils_version.cwl
 inputs: []
 outputs:
 - id: out_stdout

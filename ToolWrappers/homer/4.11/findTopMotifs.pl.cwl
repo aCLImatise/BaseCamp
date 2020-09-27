@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findTopMotifs.pl.cwl
+id: findTopMotifs.pl.cwl
 inputs:
 - id: in_top
   doc: <#> (number of times to find top motif default:5)

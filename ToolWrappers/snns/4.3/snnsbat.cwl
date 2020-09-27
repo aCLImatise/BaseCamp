@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snnsbat.cwl
+id: snnsbat.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hcluster_sg.cwl
+id: hcluster_sg.cwl
 inputs:
 - id: in_minimum_edge_weight
   doc: minimum edge weight [20]

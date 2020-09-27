@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ontogetup.cwl
+id: ontogetup.cwl
 inputs:
 - id: in_obsolete
   doc: "boolean    [N] The default behaviour is to not use or\nreturn obsolete terms.\

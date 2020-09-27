@@ -9,156 +9,54 @@ positional:
   optional: false
 named:
 - !Flag
-  description: "Type of VCF file for each sample, specified as\n<sample>=<vcf_type>.\
-    \ Valid VCF types are strelka,mutec\nt_pcawg,dkfz,muse,vardict,mutect_smchet,mutect_tcga,sa\n\
-    nger,pcawg_consensus. (default: None)"
+  description: ''
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: ERROR_RATE
+  optional: true
+- !Flag
+  description: ''
   synonyms:
   - --vcf-type
   args: !SimpleFlagArg
     name: VCF_TYPES
   optional: true
-- !Flag
-  description: "Expected error rate of sequencing platform (default:\n0.001)"
-  synonyms:
-  - -e
-  - --error-rate
-  args: !SimpleFlagArg
-    name: ERROR_RATE
-  optional: true
-- !Flag
-  description: "Confidence in range [0, 1] that SSMs missing from a\nsample are indeed\
-    \ not present in that sample (default:\n1.0)"
-  synonyms:
-  - --missing-variant-confidence
-  args: !SimpleFlagArg
-    name: MISSING_VARIANT_CONFIDENCE
-  optional: true
-- !Flag
-  description: "Subsample SSMs to reduce PhyloWGS runtime (default:\nNone)"
-  synonyms:
-  - -s
-  - --sample-size
-  args: !SimpleFlagArg
-    name: SAMPLE_SIZE
-  optional: true
-- !Flag
-  description: "File containing newline-separated list of SSMs in\n\"<chr>_<locus>\"\
-    \ format to prioritize for inclusion\n(default: None)"
-  synonyms:
-  - -P
-  - --priority-ssms
-  args: !SimpleFlagArg
-    name: PRIORITY_SSM_FILENAME
-  optional: true
-- !Flag
-  description: "Only sample variants provided on priority list\n(default: False)"
-  synonyms:
-  - --only-priority
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Path to CNV file created with parse_cnvs.py for each\nsample. Specified\
-    \ as <sample>=<CNV path>. (default:\nNone)"
-  synonyms:
-  - --cnvs
-  args: !SimpleFlagArg
-    name: CNV_FILES
-  optional: true
-- !Flag
-  description: "Which regions to use variants from. Refer to the\nparser README for\
-    \ more details. (default:\nnormal_and_abnormal_cn)"
-  synonyms:
-  - --regions
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? normal_and_abnormal_cn
-      ? normal_cn
-      ? all
-  optional: true
-- !Flag
-  description: 'Output destination for CNVs (default: cnv_data.txt)'
-  synonyms:
-  - --output-cnvs
-  args: !SimpleFlagArg
-    name: OUTPUT_CNVS
-  optional: true
-- !Flag
-  description: "Output destination for variants (default:\nssm_data.txt)"
-  synonyms:
-  - --output-variants
-  args: !SimpleFlagArg
-    name: OUTPUT_VARIANTS
-  optional: true
-- !Flag
-  description: "Output destination for run parameters (default:\nparams.json)"
-  synonyms:
-  - --output-params
-  args: !SimpleFlagArg
-    name: OUTPUT_PARAMS
-  optional: true
-- !Flag
-  description: "Name of the tumor sample in the input VCF file.\nDefaults to last\
-    \ sample if not specified. (default:\nNone)"
-  synonyms:
-  - --tumor-sample
-  args: !SimpleFlagArg
-    name: TUMOR_SAMPLE
-  optional: true
-- !Flag
-  description: 'Maximum MuSE tier to include (default: 0)'
-  synonyms:
-  - --muse-tier
-  args: !SimpleFlagArg
-    name: MUSE_TIER
-  optional: true
-- !Flag
-  description: "If subsampling, write nonsubsampled variants to\nseparate file, in\
-    \ addition to subsampled variants\n(default: None)"
-  synonyms:
-  - --nonsubsampled-variants
-  args: !SimpleFlagArg
-    name: OUTPUT_NONSUBSAMPLED_VARIANTS
-  optional: true
-- !Flag
-  description: "If subsampling, write CNVs for nonsubsampled variants\nto separate\
-    \ file (default: None)"
-  synonyms:
-  - --nonsubsampled-variants-cnvs
-  args: !SimpleFlagArg
-    name: OUTPUT_NONSUBSAMPLED_VARIANTS_CNVS
-  optional: true
-- !Flag
-  description: "Sex of patient. Used to adjust expected variant\nfrequencies on sex\
-    \ chromosomes. If auto, patient is\nset to male if any variants are provided on\
-    \ the Y\nchromosome, and female otherwise. (default: auto)"
-  synonyms:
-  - --sex
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? male
-      ? auto
-      ? female
-  optional: true
-- !Flag
-  description: "Average number of heterozygous SNPs per base used to\ncall copy number.\
-    \ This determines how heavily we\nweight somatic CNAs relative to SNVs. Defaults\
-    \ to 7\nSNPs per 10 kb, as per Battenberg. (default: 0.0007)"
-  synonyms:
-  - --het-snp-rate
-  args: !SimpleFlagArg
-    name: HETSNP_RATE
-  optional: true
-- !Flag
-  description: ''
-  synonyms:
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n--vcf-type VCF_TYPES  Type of VCF\
+    \ file for each sample, specified as\n<sample>=<vcf_type>. Valid VCF types are\
+    \ strelka,mutec\nt_pcawg,dkfz,muse,vardict,mutect_smchet,mutect_tcga,sa\nnger,pcawg_consensus.\
+    \ (default: None)\n-e ERROR_RATE, --error-rate ERROR_RATE\nExpected error rate\
+    \ of sequencing platform (default:\n0.001)\n--missing-variant-confidence MISSING_VARIANT_CONFIDENCE\n\
+    Confidence in range [0, 1] that SSMs missing from a\nsample are indeed not present\
+    \ in that sample (default:\n1.0)\n-s SAMPLE_SIZE, --sample-size SAMPLE_SIZE\n\
+    Subsample SSMs to reduce PhyloWGS runtime (default:\nNone)\n-P PRIORITY_SSM_FILENAME,\
+    \ --priority-ssms PRIORITY_SSM_FILENAME\nFile containing newline-separated list\
+    \ of SSMs in\n\"<chr>_<locus>\" format to prioritize for inclusion\n(default:\
+    \ None)\n--only-priority       Only sample variants provided on priority list\n\
+    (default: False)\n--cnvs CNV_FILES      Path to CNV file created with parse_cnvs.py\
+    \ for each\nsample. Specified as <sample>=<CNV path>. (default:\nNone)\n--regions\
+    \ {normal_cn,normal_and_abnormal_cn,all}\nWhich regions to use variants from.\
+    \ Refer to the\nparser README for more details. (default:\nnormal_and_abnormal_cn)\n\
+    --output-cnvs OUTPUT_CNVS\nOutput destination for CNVs (default: cnv_data.txt)\n\
+    --output-variants OUTPUT_VARIANTS\nOutput destination for variants (default:\n\
+    ssm_data.txt)\n--output-params OUTPUT_PARAMS\nOutput destination for run parameters\
+    \ (default:\nparams.json)\n--tumor-sample TUMOR_SAMPLE\nName of the tumor sample\
+    \ in the input VCF file.\nDefaults to last sample if not specified. (default:\n\
+    None)\n--muse-tier MUSE_TIER\nMaximum MuSE tier to include (default: 0)\n--nonsubsampled-variants\
+    \ OUTPUT_NONSUBSAMPLED_VARIANTS\nIf subsampling, write nonsubsampled variants\
+    \ to\nseparate file, in addition to subsampled variants\n(default: None)\n--nonsubsampled-variants-cnvs\
+    \ OUTPUT_NONSUBSAMPLED_VARIANTS_CNVS\nIf subsampling, write CNVs for nonsubsampled\
+    \ variants\nto separate file (default: None)\n--sex {auto,male,female}\nSex of\
+    \ patient. Used to adjust expected variant\nfrequencies on sex chromosomes. If\
+    \ auto, patient is\nset to male if any variants are provided on the Y\nchromosome,\
+    \ and female otherwise. (default: auto)\n--het-snp-rate HETSNP_RATE\nAverage number\
+    \ of heterozygous SNPs per base used to\ncall copy number. This determines how\
+    \ heavily we\nweight somatic CNAs relative to SNVs. Defaults to 7\nSNPs per 10\
+    \ kb, as per Battenberg. (default: 0.0007)\n--verbose\n"
   synonyms:
   - -h
   - --help

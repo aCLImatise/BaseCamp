@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unitigger.cwl
+id: unitigger.cwl
 inputs:
 - id: in_spec_file
   doc: spec file (string [=])

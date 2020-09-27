@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createFastaSuperReadSequences.cwl
+id: createFastaSuperReadSequences.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_hety.cwl
+id: seqtk_hety.cwl
 inputs:
 - id: in_window_size
   doc: window size [50000]

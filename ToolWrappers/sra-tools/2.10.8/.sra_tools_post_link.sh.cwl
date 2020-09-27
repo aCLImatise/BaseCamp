@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.sra_tools_post_link.sh.cwl
+id: .sra_tools_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

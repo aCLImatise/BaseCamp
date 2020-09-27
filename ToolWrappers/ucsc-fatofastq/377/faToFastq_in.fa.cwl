@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faToFastq_in.fa.cwl
+id: faToFastq_in.fa.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

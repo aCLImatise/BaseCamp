@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDAddVariantsGermline.cwl
+id: NGSDAddVariantsGermline.cwl
 inputs:
 - id: in_ps
   doc: Processed sample name

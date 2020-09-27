@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclRemoveIdenticalGroups.cwl
+id: orthomclRemoveIdenticalGroups.cwl
 inputs:
 - id: in_groups_dot_txt
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmtkParmConvert.cwl
+id: gmtkParmConvert.cwl
 inputs: []
 outputs:
 - id: out_stdout

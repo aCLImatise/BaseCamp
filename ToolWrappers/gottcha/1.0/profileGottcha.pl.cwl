@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../profileGottcha.pl.cwl
+id: profileGottcha.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

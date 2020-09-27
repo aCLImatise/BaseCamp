@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metawrap_kraken.cwl
+id: metawrap_kraken.cwl
 inputs:
 - id: in_output_directory
   doc: output directory

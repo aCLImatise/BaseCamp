@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findTADsAndLoopsFromRelMatrix.cwl
+id: findTADsAndLoopsFromRelMatrix.cwl
 inputs:
 - id: in_prefix
   doc: '(Filename prefix for output files, default: out)'

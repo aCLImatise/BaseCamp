@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_extract_vars.py.cwl
+id: hisatgenotype_extract_vars.py.cwl
 inputs:
 - id: in_base
   doc: "base filename for backbone sequence, variants, and\nlinking info (Default:\

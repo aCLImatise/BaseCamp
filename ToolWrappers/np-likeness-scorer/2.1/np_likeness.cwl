@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../np_likeness.cwl
+id: np_likeness.cwl
 inputs:
 - id: in_in
   doc: Input structure file to score or to

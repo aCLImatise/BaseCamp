@@ -2,7 +2,6 @@ version 1.0
 
 task Aptprobesetsummarize {
   input {
-    String? cel
     Int? verbose
     String? console_off
     String? use_socket
@@ -53,6 +52,7 @@ task Aptprobesetsummarize {
     String? write_profile
     File? set_analysis_name
     Float? precision
+    String? explain
     File? kill_list
     String? use_disk
     Int? disk_cache
@@ -140,7 +140,6 @@ task Aptprobesetsummarize {
       ~{expr} \
       ~{pc_a_select} \
       ~{spect_select} \
-      ~{if defined(cel) then ("-p " +  '"' + cel + '"') else ""} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(console_off) then ("--console-off " +  '"' + console_off + '"') else ""} \
       ~{if defined(use_socket) then ("--use-socket " +  '"' + use_socket + '"') else ""} \
@@ -191,6 +190,7 @@ task Aptprobesetsummarize {
       ~{if defined(write_profile) then ("--write-profile " +  '"' + write_profile + '"') else ""} \
       ~{if defined(set_analysis_name) then ("--set-analysis-name " +  '"' + set_analysis_name + '"') else ""} \
       ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""} \
+      ~{if defined(explain) then ("--explain " +  '"' + explain + '"') else ""} \
       ~{if defined(kill_list) then ("--kill-list " +  '"' + kill_list + '"') else ""} \
       ~{if defined(use_disk) then ("--use-disk " +  '"' + use_disk + '"') else ""} \
       ~{if defined(disk_cache) then ("--disk-cache " +  '"' + disk_cache + '"') else ""} \
@@ -225,7 +225,6 @@ task Aptprobesetsummarize {
       ~{if defined(analysis_guid) then ("--analysis-guid " +  '"' + analysis_guid + '"') else ""}
   >>>
   parameter_meta {
-    cel: "*.cel"
     verbose: "verbose to be with status messages 0 -\\nquiet, 1 - usual messages, 2 - more\\nmessages. [default '1']"
     console_off: "off the default messages to the\\nconsole but not logging or sockets.\\n[default 'false']"
     use_socket: "and port to print messages over in\\nlocalhost:port format [default '']"
@@ -276,6 +275,7 @@ task Aptprobesetsummarize {
     write_profile: "reference profile. [default 'false']"
     set_analysis_name: "set the analysis name. This\\naffects output file names (ie prefix) and\\nvarious meta info. [default '']"
     precision: "many digits of precision to use after\\ndecimal. [default '5']"
+    explain: "a particular operation (i.e."
     kill_list: "not use the PM probes specified in file\\nfor computing results. [experimental]\\n[default '']"
     use_disk: "CEL intensities to be analyzed on\\ndisk. [default 'true']"
     disk_cache: "of intensity memory cache in millions\\nof intensities (when --use-disk=true).\\n[default '50']"

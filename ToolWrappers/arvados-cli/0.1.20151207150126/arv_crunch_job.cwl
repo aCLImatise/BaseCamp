@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_crunch_job.cwl
+id: arv_crunch_job.cwl
 inputs: []
 outputs:
 - id: out_stdout

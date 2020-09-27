@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppi2html.cwl
+id: ppi2html.cwl
 inputs: []
 outputs:
 - id: out_stdout

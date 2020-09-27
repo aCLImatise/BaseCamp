@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scheck.cwl
+id: scheck.cwl
 inputs:
 - id: in_assume_khs_reversed
   doc: ': Assume KHS is reversed -- as in Infernal output'

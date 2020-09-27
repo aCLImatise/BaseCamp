@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qp4diff.cwl
+id: qp4diff.cwl
 inputs:
 - id: in_use_parameters_file
   doc: '... use parameters from <file> .'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_dataproc.cwl
+id: gcloud_dataproc.cwl
 inputs:
 - id: in_region
   doc: "Specifies the Cloud Dataproc region to use. Each Cloud Dataproc region\nconstitutes\

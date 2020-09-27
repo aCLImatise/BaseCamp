@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_to_regions.py.cwl
+id: coverage_to_regions.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

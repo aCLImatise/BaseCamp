@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_filter.cwl
+id: pyprophet_filter.cwl
 inputs:
 - id: in_in
   doc: PyProphet input file.  [required]

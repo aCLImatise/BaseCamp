@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gomo_highlight.cwl
+id: gomo_highlight.cwl
 inputs:
 - id: in_go_dag
   doc: ''

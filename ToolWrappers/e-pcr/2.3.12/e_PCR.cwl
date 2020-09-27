@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../e_PCR.cwl
+id: e_PCR.cwl
 inputs:
 - id: in__margin_default
   doc: '##   Margin (default 50)'

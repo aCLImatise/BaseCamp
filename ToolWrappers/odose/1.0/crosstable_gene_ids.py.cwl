@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crosstable_gene_ids.py.cwl
+id: crosstable_gene_ids.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

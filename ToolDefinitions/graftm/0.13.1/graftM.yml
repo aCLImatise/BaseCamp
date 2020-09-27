@@ -149,7 +149,7 @@ subcommands:
     args: !SimpleFlagArg
       name: logfile
     optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -300,7 +300,7 @@ subcommands:
         args: !SimpleFlagArg
           name: logfile
         optional: true
-      parent: &id003 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -452,15 +452,934 @@ subcommands:
             args: !SimpleFlagArg
               name: logfile
             optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - --output
-            - --graftm_package
-            args: !SimpleFlagArg
-              name: new_graftm_package.gpkg
-            optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: k__kingdom1; p__phylum2
+                position: 0
+                name: sequence1
+                optional: false
+              named:
+              - !Flag
+                description: File containing two tab separated columns, the first
+                  with the ID of the sequences, the second with the taxonomy string
+                  (required unless --rerooted_annotated_tree or --taxtastic_taxonomy
+                  and --taxtastic_seqinfo are specified)
+                synonyms:
+                - --taxonomy
+                args: !SimpleFlagArg
+                  name: TAX
+                optional: true
+              - !Flag
+                description: Unaligned sequences (required)
+                synonyms:
+                - --sequences
+                args: !SimpleFlagArg
+                  name: FASTA
+                optional: true
+              - !Flag
+                description: 'A tree with which to build the reference package, appropriately
+                  rooted. (default: generate tree with FastTree and attempt reroot
+                  with taxtastic)'
+                synonyms:
+                - --rerooted_tree
+                args: !SimpleFlagArg
+                  name: REROOTED_TREE
+                optional: true
+              - !Flag
+                description: An alignment with which to build a custom HMM and tree
+                  in aligned FASTA format
+                synonyms:
+                - --alignment
+                args: !SimpleFlagArg
+                  name: ALN
+                optional: true
+              - !Flag
+                description: Define taxonomy through this annotated newick file.
+                synonyms:
+                - --rerooted_annotated_tree
+                args: !SimpleFlagArg
+                  name: newick_tree
+                optional: true
+              - !Flag
+                description: Specify an unrooted tree, GraftM will attempt to reroot
+                  it.
+                synonyms:
+                - --tree
+                args: !SimpleFlagArg
+                  name: newick_tree
+                optional: true
+              - !Flag
+                description: .hmm file       Use this HMM for alignment, and search
+                  unless --search_hmm_files is specified.
+                synonyms:
+                - --hmm
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: taxonomic rank at which to dereplicate the sequences
+                  to create the HMM. Provide an integer that corresponds to the rank
+                  (from left to right) will be dereplicated. For example --dereplication_level
+                  3 will omit all sequences that are redundant at the 3rd rank (from
+                  left to right in the taxonomy file) from the search HMM.  (0 ==
+                  No dereplication)
+                synonyms:
+                - --dereplication_level
+                args: !SimpleFlagArg
+                  name: integer
+                optional: true
+              - !Flag
+                description: ".hmm files [.hmm files ...]\nUse these HMM(s) for search."
+                synonyms:
+                - --search_hmm_files
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Remove sequences from the alignment which do not cover
+                  at least this percentage of the HMM (default: 30)'
+                synonyms:
+                - --min_aligned_percent
+                args: !SimpleFlagArg
+                  name: percent
+                optional: true
+              - !Flag
+                description: Name of output GraftM package.
+                synonyms:
+                - --output
+                args: !SimpleFlagArg
+                  name: PATH
+                optional: true
+              - !Flag
+                description: A log file for the tree.
+                synonyms:
+                - --tree_log
+                args: !SimpleFlagArg
+                  name: TREE_LOG
+                optional: true
+              - !Flag
+                description: 'A taxtastic format taxonomy file. (default: use taxonomy
+                  from --taxonomy)'
+                synonyms:
+                - --taxtastic_taxonomy
+                args: !SimpleFlagArg
+                  name: TAXTASTIC_TAXONOMY
+                optional: true
+              - !Flag
+                description: 'A taxtastic format seqinfo file. (default: use taxonomy
+                  from --taxonomy)'
+                synonyms:
+                - --taxtastic_seqinfo
+                args: !SimpleFlagArg
+                  name: TAXTASTIC_SEQINFO
+                optional: true
+              - !Flag
+                description: Overwrite output gpkg directory if it exists.
+                synonyms:
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Number of threads to use (default: 5)'
+                synonyms:
+                - --threads
+                args: !SimpleFlagArg
+                  name: threads
+                optional: true
+              - !Flag
+                description: '1 - 5, 1 being silent, 5 being noisy indeed (default:
+                  4)'
+                synonyms:
+                - --verbosity
+                args: !SimpleFlagArg
+                  name: verbosity
+                optional: true
+              - !Flag
+                description: output logging information to file
+                synonyms:
+                - --log
+                args: !SimpleFlagArg
+                  name: logfile
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --output
+                - --graftm_package
+                args: !SimpleFlagArg
+                  name: new_graftm_package.gpkg
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: graftM create [-h] [--taxonomy TAX] --sequences FASTA\n\
+                \                     [--rerooted_tree REROOTED_TREE] [--alignment\
+                \ ALN]\n                     [--rerooted_annotated_tree newick_tree]\n\
+                \                     [--tree newick_tree] [--hmm .hmm file]\n   \
+                \                  [--dereplication_level integer]\n             \
+                \        [--search_hmm_files .hmm files [.hmm files ...]]\n      \
+                \               [--min_aligned_percent percent] [--output PATH]\n\
+                \                     [--tree_log TREE_LOG]\n                    \
+                \ [--taxtastic_taxonomy TAXTASTIC_TAXONOMY]\n                    \
+                \ [--taxtastic_seqinfo TAXTASTIC_SEQINFO] [--force]\n            \
+                \         [--threads threads] [--verbosity verbosity]\n          \
+                \           [--log logfile]\n\nCreate a GraftM package from sequence\
+                \ alignments and classifications\n\noptional arguments:\n  -h, --help\
+                \            show this help message and exit\n\nCommon options:\n\
+                \  --taxonomy TAX        File containing two tab separated columns,\
+                \ the first with the ID of the sequences, the second with the taxonomy\
+                \ string (required unless --rerooted_annotated_tree or --taxtastic_taxonomy\
+                \ and --taxtastic_seqinfo are specified)\n  --sequences FASTA    \
+                \ Unaligned sequences (required)\n  --rerooted_tree REROOTED_TREE\n\
+                \                        A tree with which to build the reference\
+                \ package, appropriately rooted. (default: generate tree with FastTree\
+                \ and attempt reroot with taxtastic)\n\nLesser used options:\n  --alignment\
+                \ ALN       An alignment with which to build a custom HMM and tree\
+                \ in aligned FASTA format\n  --rerooted_annotated_tree newick_tree\n\
+                \                        Define taxonomy through this annotated newick\
+                \ file.\n  --tree newick_tree    Specify an unrooted tree, GraftM\
+                \ will attempt to reroot it.\n  --hmm .hmm file       Use this HMM\
+                \ for alignment, and search unless --search_hmm_files is specified.\n\
+                \  --dereplication_level integer\n                        taxonomic\
+                \ rank at which to dereplicate the sequences to create the HMM. Provide\
+                \ an integer that corresponds to the rank (from left to right) will\
+                \ be dereplicated. For example --dereplication_level 3 will omit all\
+                \ sequences that are redundant at the 3rd rank (from left to right\
+                \ in the taxonomy file) from the search HMM.  (0 == No dereplication)\n\
+                \  --search_hmm_files .hmm files [.hmm files ...]\n              \
+                \          Use these HMM(s) for search.\n  --min_aligned_percent percent\n\
+                \                        Remove sequences from the alignment which\
+                \ do not cover at least this percentage of the HMM (default: 30)\n\
+                \  --output PATH         Name of output GraftM package.\n  --tree_log\
+                \ TREE_LOG   A log file for the tree.\n  --taxtastic_taxonomy TAXTASTIC_TAXONOMY\n\
+                \                        A taxtastic format taxonomy file. (default:\
+                \ use taxonomy from --taxonomy)\n  --taxtastic_seqinfo TAXTASTIC_SEQINFO\n\
+                \                        A taxtastic format seqinfo file. (default:\
+                \ use taxonomy from --taxonomy)\n  --force               Overwrite\
+                \ output gpkg directory if it exists.\n  --threads threads     Number\
+                \ of threads to use (default: 5)\n\nLogging options:\n  --verbosity\
+                \ verbosity\n                        1 - 5, 1 being silent, 5 being\
+                \ noisy indeed (default: 4)\n  --log logfile         output logging\
+                \ information to file\n\n###############################################################################\n\
+                graftm create is used to create custom graftm packages (gpkgs).\n\n\
+                With an alignment of sequences, and a taxonomy file specifying the\
+                \ taxonomy of\neach:\n $ graftM create --alignment my_alignment.fasta\
+                \ --taxonomy my_taxonomy.tsv\n                 --sequences my_sequences.fasta\n\
+                \nTo update a graftm package with new sequences, you just need to\
+                \ provide the\nsame arguments as above, but also pass a graftm package\
+                \ to the --graftm_package\nflag. Giving a package to graftm create\
+                \ will automatically execute the update\npipeline. If nooutput name\
+                \ is provided, a default suffix of \"-updated.gpkg\"\nwill be appended\
+                \ to the current name. If no taxonomy for the new sequences is\nprovided,\
+                \ graftm will attempt to decorate using the surrounding sequences,\
+                \ but\nthis is an imperfect method, so the --taxonomy flag should\
+                \ be used where\npossible.\n $ graftM create --sequences new_sequences.fasta\
+                \ --taxonomy new_taxonomy.tsv\n    --output new_graftm_package.gpkg\
+                \ --graftm_package old_graftm_package.gpkg\n\nThe taxonomy file is\
+                \ a 2 column tab separated file, where the first column is\nthe sequence\
+                \ identifier and the second a taxonomy string describing that\nsequence\
+                \ e.g.\n\n    sequence1    k__kingdom1; p__phylum2\n\nInternally,\
+                \ the taxonomic levels separated by '; ' are assumed to be kingdom,\n\
+                phylum, class, order, family, genus, species. However, this may not\
+                \ matter for\nthe purposes of using graftm. The prefixes e.g. 'k__'\
+                \ are also not required.\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - graftM
+              - graft
+              positional: []
+              named:
+              - !Flag
+                description: Path to the reads you wish to run through GraftM, either
+                  in fasta (.fa) or fastq (.fq), optionally gzip-compressed (.gz).
+                  If you would like to run multiple samples at once, provide a space
+                  separated list of the file paths
+                synonyms:
+                - --forward
+                args: !RepeatFlagArg
+                  name: forward_read
+                optional: true
+              - !Flag
+                description: "read [reverse read ...]\nIf you have paired end data,\
+                  \ you may wish to provide the reverse reads. If you are running\
+                  \ more than one dataset, please ensure that the order of the files\
+                  \ passed to the --forward and --reverse flags is consistent."
+                synonyms:
+                - --reverse
+                args: !SimpleFlagArg
+                  name: reverse
+                optional: true
+              - !Flag
+                description: Path to the reads you wish to run through GraftM, either
+                  in fasta (.fa) or fastq (.fq), optionally gzip-compressed (.gz).
+                  If you would like to run multiple samples at once, provide a space
+                  separated list of the file paths
+                synonyms:
+                - --interleaved
+                args: !RepeatFlagArg
+                  name: interleaved_read
+                optional: true
+              - !Flag
+                description: Path to the gene specific GraftM package (gpkg).
+                synonyms:
+                - --graftm_package
+                args: !SimpleFlagArg
+                  name: reference_package
+                optional: true
+              - !Flag
+                description: 'The number of threads to be used when running hmmsearch
+                  and pplacer (default: 5)'
+                synonyms:
+                - --threads
+                args: !SimpleFlagArg
+                  name: threads
+                optional: true
+              - !Flag
+                description: 'Specify whether the input sequence is "nucleotide" or
+                  "aminoacid" sequence data (default: guess)'
+                synonyms:
+                - --input_sequence_type
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? nucleotide
+                    ? aminoacid
+                optional: true
+              - !Flag
+                description: 'Minimum number of positions that must be aligned for
+                  a sequence to be placed in the phylogenetic tree (default: 95bp
+                  for nucleotide packages, 30 aa for protein packages)'
+                synonyms:
+                - --filter_minimum
+                args: !SimpleFlagArg
+                  name: filter_minimum
+                optional: true
+              - !Flag
+                description: 'Specify the evalue cutoff for the hmmsearch, if you
+                  would like to use a cutoff different to the default or the trusted
+                  cutoff (TC) within the HMM. (default: 1e-5)'
+                synonyms:
+                - --evalue
+                args: !SimpleFlagArg
+                  name: evalue
+                optional: true
+              - !Flag
+                description: Stop GraftM running after reads have been identified
+                  and aligned (i.e. no placement step)
+                synonyms:
+                - --search_and_align_only
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Stop GraftM running after reads have been identified
+                  (i.e. no alignment or placement steps)
+                synonyms:
+                - --search_only
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Cross check identified reads using an 18S specific HMM
+                  to help filter out eukaryotic ribosomal reads
+                synonyms:
+                - --euk_check
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "{hmmsearch,diamond,hmmsearch+diamond}\nSearch method\
+                  \ (default: hmmsearch)"
+                synonyms:
+                - --search_method
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Path to a diamond database. Sequences with better hits
+                  to these proteins will be excluded.
+                synonyms:
+                - --decoy_database
+                args: !SimpleFlagArg
+                  name: DECOY_DATABASE
+                optional: true
+              - !Flag
+                description: Maximum range to use when searching for potentially linked
+                  reads (when searching contigs)
+                synonyms:
+                - --maximum_range
+                args: !SimpleFlagArg
+                  name: MAXIMUM_RANGE
+                optional: true
+              - !Flag
+                description: Provide an assembly of the sample being searched. This
+                  assembly will initially be searched for full length genes, from
+                  which a sample specific HMM model will be created and used in the
+                  search step of graftM.
+                synonyms:
+                - --expand_search_contigs
+                args: !RepeatFlagArg
+                  name: EXPAND_SEARCH_CONTIGS
+                optional: true
+              - !Flag
+                description: Specify a list of paths to custom HMM(s) to search the
+                  data with.
+                synonyms:
+                - --search_hmm_files
+                args: !RepeatFlagArg
+                  name: SEARCH_HMM_FILES
+                optional: true
+              - !Flag
+                description: a file containing a list of paths to custom HMM(s) to
+                  search the data with (one per line).
+                synonyms:
+                - --search_hmm_list_file
+                args: !SimpleFlagArg
+                  name: Specify
+                optional: true
+              - !Flag
+                description: Specify a DIAMOND database with which to search/classify
+                  the reads.
+                synonyms:
+                - --search_diamond_file
+                args: !SimpleFlagArg
+                  name: SEARCH_DIAMOND_FILE
+                optional: true
+              - !Flag
+                description: Reads will be aligned to this HMM after identification.
+                  N.B. This option can only be used if no placement is required.
+                synonyms:
+                - --aln_hmm_file
+                args: !SimpleFlagArg
+                  name: ALN_HMM_FILE
+                optional: true
+              - !Flag
+                description: 'Taxonomic assignment method, either pplacer (phylogenetic)
+                  or DIAMOND (pairwise). default = pplacer (default: pplacer)'
+                synonyms:
+                - --assignment_method
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? diamond
+                    ? pplacer
+                optional: true
+              - !Flag
+                description: 'This flag allows you to change the likelihood cutoff
+                  for phylogenetic placement of reads. (default: 0.75)'
+                synonyms:
+                - --placements_cutoff
+                args: !SimpleFlagArg
+                  name: confidence
+                optional: true
+              - !Flag
+                description: Ignore the placements cutoff and simply use the best
+                  placement assigned to the read.
+                synonyms:
+                - --resolve_placements
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: When this flag is specified, the alignment of the forward
+                  and reverse reads will not be merged before placement. If paired
+                  reads are provided, pair with the most confident placement will
+                  be used for classification.
+                synonyms:
+                - --no_merge_reads
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Use this flag to specify the HMM that is used in the
+                  Eukaryotic contamination screen
+                synonyms:
+                - --euk_hmm_file
+                args: !SimpleFlagArg
+                  name: EUK_HMM_FILE
+                optional: true
+              - !Flag
+                description: 'Minimum number of nucleotides in an open reading frame
+                  (default: 96)'
+                synonyms:
+                - --min_orf_length
+                args: !SimpleFlagArg
+                  name: length
+                optional: true
+              - !Flag
+                description: Only use this many base pairs at the start of each sequence
+                  searched
+                synonyms:
+                - --restrict_read_length
+                args: !SimpleFlagArg
+                  name: length
+                optional: true
+              - !Flag
+                description: '1 - 5, 1 being silent, 5 being noisy indeed. (default:
+                  4)'
+                synonyms:
+                - --verbosity
+                args: !SimpleFlagArg
+                  name: verbosity
+                optional: true
+              - !Flag
+                description: Output logging information to this file
+                synonyms:
+                - --log
+                args: !SimpleFlagArg
+                  name: logfile
+                optional: true
+              - !Flag
+                description: 'Output directory name (default: GraftM_output)'
+                synonyms:
+                - --output_directory
+                args: !SimpleFlagArg
+                  name: reference_package
+                optional: true
+              - !Flag
+                description: Force overwrite the output directory if one already exists
+                  with the same name
+                synonyms:
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'If the number of samples is greater than this, do not
+                  output KRONA diagram (default: 100)'
+                synonyms:
+                - --max_samples_for_krona
+                args: !SimpleFlagArg
+                  name: MAX_SAMPLES_FOR_KRONA
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: graftM graft [-h] [--forward forward_read [forward_read\
+                \ ...]]\n                    [--reverse reverse read [reverse read\
+                \ ...]]\n                    [--interleaved interleaved_read [interleaved_read\
+                \ ...]]\n                    [--graftm_package reference_package]\
+                \ [--threads threads]\n                    [--input_sequence_type\
+                \ {aminoacid,nucleotide}]\n                    [--filter_minimum filter_minimum]\
+                \ [--evalue evalue]\n                    [--search_and_align_only]\
+                \ [--search_only] [--euk_check]\n                    [--search_method\
+                \ {hmmsearch,diamond,hmmsearch+diamond}]\n                    [--decoy_database\
+                \ DECOY_DATABASE]\n                    [--maximum_range MAXIMUM_RANGE]\n\
+                \                    [--expand_search_contigs EXPAND_SEARCH_CONTIGS\
+                \ [EXPAND_SEARCH_CONTIGS ...]]\n                    [--search_hmm_files\
+                \ SEARCH_HMM_FILES [SEARCH_HMM_FILES ...]]\n                    [--search_hmm_list_file\
+                \ Specify a file containing a list of paths to custom HMMs) to search\
+                \ the data with (one per line.]\n                    [--search_diamond_file\
+                \ SEARCH_DIAMOND_FILE]\n                    [--aln_hmm_file ALN_HMM_FILE]\n\
+                \                    [--assignment_method {pplacer,diamond}]\n   \
+                \                 [--placements_cutoff confidence] [--resolve_placements]\n\
+                \                    [--no_merge_reads] [--euk_hmm_file EUK_HMM_FILE]\n\
+                \                    [--min_orf_length length] [--restrict_read_length\
+                \ length]\n                    [--verbosity verbosity] [--log logfile]\n\
+                \                    [--output_directory reference_package] [--force]\n\
+                \                    [--max_samples_for_krona MAX_SAMPLES_FOR_KRONA]\n\
+                \nSearch and classify marker genes to construct community profiles\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n\ninput options:\n  --forward forward_read [forward_read\
+                \ ...]\n                        Path to the reads you wish to run\
+                \ through GraftM, either in fasta (.fa) or fastq (.fq), optionally\
+                \ gzip-compressed (.gz). If you would like to run multiple samples\
+                \ at once, provide a space separated list of the file paths\n  --reverse\
+                \ reverse read [reverse read ...]\n                        If you\
+                \ have paired end data, you may wish to provide the reverse reads.\
+                \ If you are running more than one dataset, please ensure that the\
+                \ order of the files passed to the --forward and --reverse flags is\
+                \ consistent.\n  --interleaved interleaved_read [interleaved_read\
+                \ ...]\n                        Path to the reads you wish to run\
+                \ through GraftM, either in fasta (.fa) or fastq (.fq), optionally\
+                \ gzip-compressed (.gz). If you would like to run multiple samples\
+                \ at once, provide a space separated list of the file paths\n  --graftm_package\
+                \ reference_package\n                        Path to the gene specific\
+                \ GraftM package (gpkg).\n\nrunning options:\n  --threads threads\
+                \     The number of threads to be used when running hmmsearch and\
+                \ pplacer (default: 5)\n  --input_sequence_type {aminoacid,nucleotide}\n\
+                \                        Specify whether the input sequence is \"\
+                nucleotide\" or \"aminoacid\" sequence data (default: guess)\n  --filter_minimum\
+                \ filter_minimum\n                        Minimum number of positions\
+                \ that must be aligned for a sequence to be placed in the phylogenetic\
+                \ tree (default: 95bp for nucleotide packages, 30 aa for protein packages)\n\
+                \nsearching options:\n  --evalue evalue       Specify the evalue cutoff\
+                \ for the hmmsearch, if you would like to use a cutoff different to\
+                \ the default or the trusted cutoff (TC) within the HMM. (default:\
+                \ 1e-5)\n  --search_and_align_only\n                        Stop GraftM\
+                \ running after reads have been identified and aligned (i.e. no placement\
+                \ step)\n  --search_only         Stop GraftM running after reads have\
+                \ been identified (i.e. no alignment or placement steps)\n  --euk_check\
+                \           Cross check identified reads using an 18S specific HMM\
+                \ to help filter out eukaryotic ribosomal reads\n  --search_method\
+                \ {hmmsearch,diamond,hmmsearch+diamond}\n                        Search\
+                \ method (default: hmmsearch)\n  --decoy_database DECOY_DATABASE\n\
+                \                        Path to a diamond database. Sequences with\
+                \ better hits to these proteins will be excluded.\n  --maximum_range\
+                \ MAXIMUM_RANGE\n                        Maximum range to use when\
+                \ searching for potentially linked reads (when searching contigs)\n\
+                \  --expand_search_contigs EXPAND_SEARCH_CONTIGS [EXPAND_SEARCH_CONTIGS\
+                \ ...]\n                        Provide an assembly of the sample\
+                \ being searched. This assembly will initially be searched for full\
+                \ length genes, from which a sample specific HMM model will be created\
+                \ and used in the search step of graftM.\n  --search_hmm_files SEARCH_HMM_FILES\
+                \ [SEARCH_HMM_FILES ...]\n                        Specify a list of\
+                \ paths to custom HMM(s) to search the data with.\n  --search_hmm_list_file\
+                \ Specify a file containing a list of paths to custom HMM(s) to search\
+                \ the data with (one per line).\n  --search_diamond_file SEARCH_DIAMOND_FILE\n\
+                \                        Specify a DIAMOND database with which to\
+                \ search/classify the reads.\n  --aln_hmm_file ALN_HMM_FILE\n    \
+                \                    Reads will be aligned to this HMM after identification.\
+                \ N.B. This option can only be used if no placement is required.\n\
+                \ntaxonomic assignment options:\n  --assignment_method {pplacer,diamond}\n\
+                \                        Taxonomic assignment method, either pplacer\
+                \ (phylogenetic) or DIAMOND (pairwise). default = pplacer (default:\
+                \ pplacer)\n\npplacer assignment options:\n  --placements_cutoff confidence\n\
+                \                        This flag allows you to change the likelihood\
+                \ cutoff for phylogenetic placement of reads. (default: 0.75)\n  --resolve_placements\
+                \  Ignore the placements cutoff and simply use the best placement\
+                \ assigned to the read.\n  --no_merge_reads      When this flag is\
+                \ specified, the alignment of the forward and reverse reads will not\
+                \ be merged before placement. If paired reads are provided, pair with\
+                \ the most confident placement will be used for classification.\n\n\
+                nucleotide search-specific options:\n  --euk_hmm_file EUK_HMM_FILE\n\
+                \                        Use this flag to specify the HMM that is\
+                \ used in the Eukaryotic contamination screen\n\nprotein search-specific\
+                \ options:\n  --min_orf_length length\n                        Minimum\
+                \ number of nucleotides in an open reading frame (default: 96)\n \
+                \ --restrict_read_length length\n                        Only use\
+                \ this many base pairs at the start of each sequence searched\n\n\
+                logging options:\n  --verbosity verbosity\n                      \
+                \  1 - 5, 1 being silent, 5 being noisy indeed. (default: 4)\n  --log\
+                \ logfile         Output logging information to this file\n\noutput\
+                \ options:\n  --output_directory reference_package\n             \
+                \           Output directory name (default: GraftM_output)\n  --force\
+                \               Force overwrite the output directory if one already\
+                \ exists with the same name\n  --max_samples_for_krona MAX_SAMPLES_FOR_KRONA\n\
+                \                        If the number of samples is greater than\
+                \ this, do not output KRONA diagram (default: 100)\n\n###############################################################################\n\
+                \n'graft' is the main analysis pipeline of GraftM. To run graft, a\
+                \ GraftM\npackage (gpkg) is required, the key components of which\
+                \ are a HMM and DIAMOND\ndatabase for searching (with hmmsearch or\
+                \ DIAMOND) and a phylogenetic tree.\nInput sequence data may be provided\
+                \ in fasta (.fa) or fastq (.fq) format,\neither gzipped or uncompressed.\
+                \ Protein or nucleotide sequences may be\nprovided as input and multiple\
+                \ datasets may be included in one run.\n\nFor a single file of reads:\n\
+                \ $ graftM graft --forward my_reads.fa --graftm_package my_graftm_package.gpkg\n\
+                \nFor paired reads:\n $ graftM graft --forward my_reads.1.fa --graftm_package\
+                \ my_graftm_package.gpkg\n                --reverse my_reads.2.fa\n\
+                \nUsing an assembly to create a \"expand_search\" database:\n $ graftM\
+                \ graft --forward my_reads.fa --graftm_package my_graftm_package.gpkg\n\
+                \                --expand_search_contigs my_assembly_of_my_reads.fa\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - graftM
+              - set.
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: graftM
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: graftM [--version] {graft,create,update,expand_search,tree,archive}\
+                \ ...\ngraftM: error: argument subparser_name: invalid choice: 'set.'\
+                \ (choose from 'graft', 'create', 'update', 'expand_search', 'tree',\
+                \ 'archive')\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - graftM
+              - GraftM
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: graftM
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: graftM [--version] {graft,create,update,expand_search,tree,archive}\
+                \ ...\ngraftM: error: argument subparser_name: invalid choice: 'GraftM'\
+                \ (choose from 'graft', 'create', 'update', 'expand_search', 'tree',\
+                \ 'archive')\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - graftM
+              - update
+              positional: []
+              named:
+              - !Flag
+                description: GraftM package to update
+                synonyms:
+                - --graftm_package
+                args: !SimpleFlagArg
+                  name: GRAFTM_PACKAGE
+                optional: true
+              - !Flag
+                description: Recreate the diamond DB in the package
+                synonyms:
+                - --regenerate_diamond_db
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: File containing two tab separated columns, the first
+                  with the ID of the sequences, the second with the taxonomy string
+                  (required unless --rerooted_annotated_tree or --taxtastic_taxonomy
+                  and --taxtastic_seqinfo are specified)
+                synonyms:
+                - --taxonomy
+                args: !SimpleFlagArg
+                  name: TAX
+                optional: true
+              - !Flag
+                description: Unaligned sequences (required unless --regenerate_diamond_db
+                  is set)
+                synonyms:
+                - --sequences
+                args: !SimpleFlagArg
+                  name: FASTA
+                optional: true
+              - !Flag
+                description: Name of output GraftM package
+                synonyms:
+                - --output
+                args: !SimpleFlagArg
+                  name: PATH
+                optional: true
+              - !Flag
+                description: '1 - 5, 1 being silent, 5 being noisy indeed (default:
+                  4)'
+                synonyms:
+                - --verbosity
+                args: !SimpleFlagArg
+                  name: verbosity
+                optional: true
+              - !Flag
+                description: output logging information to file
+                synonyms:
+                - --log
+                args: !SimpleFlagArg
+                  name: logfile
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: graftM update [-h] --graftm_package GRAFTM_PACKAGE\n\
+                \                     [--regenerate_diamond_db] [--taxonomy TAX]\n\
+                \                     [--sequences FASTA] [--output PATH]\n      \
+                \               [--verbosity verbosity] [--log logfile]\n\nUpdate\
+                \ a GraftM package with new sequences\n\noptional arguments:\n  -h,\
+                \ --help            show this help message and exit\n\nCommon options:\n\
+                \  --graftm_package GRAFTM_PACKAGE\n                        GraftM\
+                \ package to update\n  --regenerate_diamond_db\n                 \
+                \       Recreate the diamond DB in the package\n  --taxonomy TAX \
+                \       File containing two tab separated columns, the first with\
+                \ the ID of the sequences, the second with the taxonomy string (required\
+                \ unless --rerooted_annotated_tree or --taxtastic_taxonomy and --taxtastic_seqinfo\
+                \ are specified)\n  --sequences FASTA     Unaligned sequences (required\
+                \ unless --regenerate_diamond_db is set)\n  --output PATH        \
+                \ Name of output GraftM package\n\nLogging options:\n  --verbosity\
+                \ verbosity\n                        1 - 5, 1 being silent, 5 being\
+                \ noisy indeed (default: 4)\n  --log logfile         output logging\
+                \ information to file\n\n###############################################################################\n\
+                \nWith an alignment of sequences, and a taxonomy file specifying the\
+                \ taxonomy of\neach:\n $ graftM update --sequences new_sequences.fasta\
+                \ --taxonomy new_taxonomy.tsv\n                 --graftm_package old.gpkg\
+                \ --output new.gpkg\n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - graftM
+              - Utilities
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: graftM
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: graftM [--version] {graft,create,update,expand_search,tree,archive}\
+                \ ...\ngraftM: error: argument subparser_name: invalid choice: 'Utilities'\
+                \ (choose from 'graft', 'create', 'update', 'expand_search', 'tree',\
+                \ 'archive')\n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - graftM
+              - archive
+              positional: []
+              named:
+              - !Flag
+                description: Create a new GraftM package archive
+                synonyms:
+                - --create
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Extract a archived GraftM package into a regular one
+                synonyms:
+                - --extract
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Path to a GraftM package to inspect. GraftM will decorate
+                  the rooted tree within using the taxonomy within.
+                synonyms:
+                - --graftm_package
+                args: !SimpleFlagArg
+                  name: GRAFTM_PACKAGE
+                optional: true
+              - !Flag
+                description: Path to archived GraftM package, canonically ending in
+                  '.gpkg.tar.gz'
+                synonyms:
+                - --archive
+                args: !SimpleFlagArg
+                  name: ARCHIVE
+                optional: true
+              - !Flag
+                description: Force overwrite the output archive/gpkg, even if one
+                  already exists with the same name
+                synonyms:
+                - --force
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '1 - 5, 1 being silent, 5 being noisy indeed. Default
+                  = 4 (default: 4)'
+                synonyms:
+                - --verbosity
+                args: !SimpleFlagArg
+                  name: verbosity
+                optional: true
+              - !Flag
+                description: Output logging information to file
+                synonyms:
+                - --log
+                args: !SimpleFlagArg
+                  name: logfile
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: graftM archive [-h] [--create] [--extract] --graftm_package\n\
+                \                      GRAFTM_PACKAGE --archive ARCHIVE [--force]\n\
+                \                      [--verbosity verbosity] [--log logfile]\n\n\
+                Compress or decompress GraftM packages.\n\noptional arguments:\n \
+                \ -h, --help            show this help message and exit\n  --create\
+                \              Create a new GraftM package archive\n  --extract  \
+                \           Extract a archived GraftM package into a regular one\n\
+                \  --graftm_package GRAFTM_PACKAGE\n                        Path to\
+                \ a GraftM package to inspect. GraftM will decorate the rooted tree\
+                \ within using the taxonomy within.\n  --archive ARCHIVE     Path\
+                \ to archived GraftM package, canonically ending in '.gpkg.tar.gz'\n\
+                \  --force               Force overwrite the output archive/gpkg,\
+                \ even if one already exists with the same name\n\nlogging options:\n\
+                \  --verbosity verbosity\n                        1 - 5, 1 being silent,\
+                \ 5 being noisy indeed. Default = 4 (default: 4)\n  --log logfile\
+                \         Output logging information to file\n\n###############################################################################\n\
+                \n Compress a GraftM package:\n\n    $ graftM archive --create --graftm_package\
+                \ my.gpkg --archive my.gpkg.tar.gz\n\n Decompress a GraftM package:\n\
+                \n    $ graftM archive --extract --archive my.gpkg.tar.gz --graftm_package\
+                \ my.gpkg\n"
+              generated_using: *id004
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "\n                                  GraftM  0.13.1\n\n   \
+              \                         Joel Boyd, Ben Woodcroft\n\n    GraftM is\
+              \ a tool for rapid, phylogenetically informed gene-centric\n    analysis\
+              \ of sequence data. The main 'graft' pipeline identifies short read\n\
+              \    sequences with homology to genes of interest (16S rRNA or protein\
+              \ coding)\n    using Hidden Markov Models (HMMs), which are then placed\
+              \ into a\n    phylogenetic tree. The classification of sequences is\
+              \ inferred by their\n    placement relative to annotated reference sequences\
+              \ in the tree. For\n    protein coding genes, a 'best BLAST hit' style\
+              \ analysis can also be used.\n\n    A manuscript describing and benchmarking\
+              \ the tool is in preparation:\n\n    Boyd, J., Woodcroft B., Tyson,\
+              \ G. \"GraftM: A tool for scalable,\n    phylogenetically informed classification\
+              \ of genes within metagenomes (in\n    preparation).\n\n  -----------------------------------------------------------------------------\n\
+              \n  Community profiling\n    graft         ->  Identify and phylogenetically\
+              \ classify sequences\n                      belonging to a gene family\
+              \ in a metagenome.\n    expand_search ->  Create a sample-specific HMM\
+              \ from an assembly or genome\n                      set.\n\n  Gpkg creation\n\
+              \    create        ->  Create a gene family specific graftm package\
+              \ (gpkg).\n    update        ->  Update an existing graftm packages\
+              \ with new sequences.\n\n  Utilities\n    tree          ->  Decorate\
+              \ or reroot phylogenetic trees for graft packages.\n    archive    \
+              \   ->  Compress or decompress a graftm package.\n\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -538,12 +1457,9 @@ subcommands:
             \ kingdom,\nphylum, class, order, family, genus, species. However, this\
             \ may not matter for\nthe purposes of using graftm. The prefixes e.g.\
             \ 'k__' are also not required.\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - graftM
-          - graft
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -598,8 +1514,8 @@ subcommands:
             - --input_sequence_type
             args: !ChoiceFlagArg
               choices: !!set
-                ? nucleotide
                 ? aminoacid
+                ? nucleotide
             optional: true
           - !Flag
             description: 'Minimum number of positions that must be aligned for a sequence
@@ -711,8 +1627,8 @@ subcommands:
             - --assignment_method
             args: !ChoiceFlagArg
               choices: !!set
-                ? diamond
                 ? pplacer
+                ? diamond
             optional: true
           - !Flag
             description: 'This flag allows you to change the likelihood cutoff for
@@ -922,9 +1838,7 @@ subcommands:
             \ my_assembly_of_my_reads.fa\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - graftM
-          - set.
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -948,9 +1862,7 @@ subcommands:
             \ (choose from 'graft', 'create', 'update', 'expand_search', 'tree', 'archive')\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - graftM
-          - GraftM
+          command: *id007
           positional:
           - !Positional
             description: ''
@@ -974,9 +1886,7 @@ subcommands:
             \ (choose from 'graft', 'create', 'update', 'expand_search', 'tree', 'archive')\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - graftM
-          - update
+          command: *id008
           positional: []
           named:
           - !Flag
@@ -1065,9 +1975,7 @@ subcommands:
             \ new.gpkg\n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - graftM
-          - Utilities
+          command: *id009
           positional:
           - !Positional
             description: ''
@@ -1091,9 +1999,7 @@ subcommands:
             \ (choose from 'graft', 'create', 'update', 'expand_search', 'tree', 'archive')\n"
           generated_using: *id004
         - !Command
-          command: &id010
-          - graftM
-          - archive
+          command: *id010
           positional: []
           named:
           - !Flag
@@ -1335,8 +2241,8 @@ subcommands:
         - --input_sequence_type
         args: !ChoiceFlagArg
           choices: !!set
-            ? aminoacid
             ? nucleotide
+            ? aminoacid
         optional: true
       - !Flag
         description: 'Minimum number of positions that must be aligned for a sequence
@@ -1447,8 +2353,8 @@ subcommands:
         - --assignment_method
         args: !ChoiceFlagArg
           choices: !!set
-            ? pplacer
             ? diamond
+            ? pplacer
         optional: true
       - !Flag
         description: 'This flag allows you to change the likelihood cutoff for phylogenetic
@@ -1532,7 +2438,7 @@ subcommands:
         args: !SimpleFlagArg
           name: MAX_SAMPLES_FOR_KRONA
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1660,7 +2566,7 @@ subcommands:
         name: graftM
         optional: false
       named: []
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -1684,7 +2590,7 @@ subcommands:
         name: graftM
         optional: false
       named: []
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -1755,7 +2661,7 @@ subcommands:
         args: !SimpleFlagArg
           name: logfile
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1796,7 +2702,7 @@ subcommands:
         name: graftM
         optional: false
       named: []
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -1864,7 +2770,7 @@ subcommands:
         args: !SimpleFlagArg
           name: logfile
         optional: true
-      parent: *id003
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2046,8 +2952,8 @@ subcommands:
     - --input_sequence_type
     args: !ChoiceFlagArg
       choices: !!set
-        nucleotide:
         aminoacid:
+        nucleotide:
     optional: true
   - !Flag
     description: 'Minimum number of positions that must be aligned for a sequence
@@ -2156,8 +3062,8 @@ subcommands:
     - --assignment_method
     args: !ChoiceFlagArg
       choices: !!set
-        diamond:
         pplacer:
+        diamond:
     optional: true
   - !Flag
     description: 'This flag allows you to change the likelihood cutoff for phylogenetic
@@ -2241,7 +3147,7 @@ subcommands:
     args: !SimpleFlagArg
       name: MAX_SAMPLES_FOR_KRONA
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2364,7 +3270,7 @@ subcommands:
     name: graftM
     optional: false
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -2388,7 +3294,7 @@ subcommands:
     name: graftM
     optional: false
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -2457,7 +3363,7 @@ subcommands:
     args: !SimpleFlagArg
       name: logfile
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2497,7 +3403,7 @@ subcommands:
     name: graftM
     optional: false
   named: []
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -2565,7 +3471,7 @@ subcommands:
     args: !SimpleFlagArg
       name: logfile
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag

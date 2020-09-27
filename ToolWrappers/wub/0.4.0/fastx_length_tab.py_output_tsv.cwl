@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_length_tab.py_output_tsv.cwl
+id: fastx_length_tab.py_output_tsv.cwl
 inputs:
 - id: in_i
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_unzip.cwl
+id: dimspy_unzip.cwl
 inputs:
 - id: in_input
   doc: file[.zip]

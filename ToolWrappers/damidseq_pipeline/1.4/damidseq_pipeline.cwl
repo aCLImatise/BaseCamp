@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../damidseq_pipeline.cwl
+id: damidseq_pipeline.cwl
 inputs:
 - id: in_bam_files
   doc: Only process BAM files

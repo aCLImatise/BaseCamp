@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rpkmforgenes.py.cwl
+id: rpkmforgenes.py.cwl
 inputs:
 - id: in_by_output_file
   doc: by output file

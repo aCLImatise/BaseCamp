@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_get_tx_seq.cwl
+id: gtftk_get_tx_seq.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

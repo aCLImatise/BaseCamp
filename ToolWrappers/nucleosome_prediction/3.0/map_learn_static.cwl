@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_learn_static.cwl
+id: map_learn_static.cwl
 inputs:
 - id: in_map_learn
   doc: ''

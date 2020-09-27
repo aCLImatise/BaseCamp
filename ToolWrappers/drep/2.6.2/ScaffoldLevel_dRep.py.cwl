@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ScaffoldLevel_dRep.py.cwl
+id: ScaffoldLevel_dRep.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

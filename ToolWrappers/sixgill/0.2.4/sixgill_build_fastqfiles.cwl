@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sixgill_build_fastqfiles.cwl
+id: sixgill_build_fastqfiles.cwl
 inputs:
 - id: in_minlength
   doc: ''

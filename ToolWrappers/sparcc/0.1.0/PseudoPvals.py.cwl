@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PseudoPvals.py.cwl
+id: PseudoPvals.py.cwl
 inputs:
 - id: in_type
   doc: "Type of p-values to computed.  oned-sided | two-sided\n(default)."

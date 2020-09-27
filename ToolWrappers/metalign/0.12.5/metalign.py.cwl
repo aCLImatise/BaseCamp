@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metalign.py.cwl
+id: metalign.py.cwl
 inputs:
 - id: in_cut_off
   doc: CMash cutoff value. Default is 0.01.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umis_umi_histogram.cwl
+id: umis_umi_histogram.cwl
 inputs:
 - id: in_fast_q
   doc: ''

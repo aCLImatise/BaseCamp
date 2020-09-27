@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diamond_add_taxonomy.cwl
+id: diamond_add_taxonomy.cwl
 inputs:
 - id: in_tax_dump_filename
   doc: Path to local copy of NCBI taxdump.tar.gz file

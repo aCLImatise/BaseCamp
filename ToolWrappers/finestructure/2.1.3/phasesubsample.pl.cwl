@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phasesubsample.pl.cwl
+id: phasesubsample.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

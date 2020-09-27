@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_seqtools.py.cwl
+id: run_seqtools.py.cwl
 inputs:
 - id: in_in_file
   doc: '[INFILE]      name of the input file (default: standard input)'

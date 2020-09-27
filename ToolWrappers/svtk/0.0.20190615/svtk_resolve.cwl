@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: ../../../svtk_resolve.cwl
+id: svtk_resolve.cwl
 inputs:
 - id: in_cytoband_s
-  doc: ''
-  type: string
+  doc: "[--min-rescan-pe-support MIN_RESCAN_PE_SUPPORT]\n[-x BED.GZ] [-u UNRESOLVED]\
+    \ [-p PREFIX] [-q QUIET]\nraw resolved"
+  type: long
   inputBinding:
     prefix: --cytobands
 - id: in_disc_file

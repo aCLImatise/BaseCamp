@@ -1,8 +1,12 @@
 class: CommandLineTool
-id: ../../../tombo_plot_per_read.cwl
+id: tombo_plot_per_read.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_per_read_statistics_filename
+  doc: "PER_READ_STATISTICS_FILENAME\n[--genome-fasta GENOME_FASTA]\n[--fast5-basedirs\
+    \ FAST5_BASEDIRS [FAST5_BASEDIRS ...]]\n[--num-reads NUM_READS] [--num-bases NUM_BASES]\n\
+    [--box-center] [--pdf-filename PDF_FILENAME]\n[--corrected-group CORRECTED_GROUP]\n\
+    [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n[--quiet]\
+    \ [--help]"
   type: boolean
   inputBinding:
     prefix: --per-read-statistics-filename
@@ -59,11 +63,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_var_11
-  doc: '[--genome-fasta GENOME_FASTA]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

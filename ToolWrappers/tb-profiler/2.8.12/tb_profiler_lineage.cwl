@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_lineage.cwl
+id: tb_profiler_lineage.cwl
 inputs:
 - id: in_bam
   doc: "BAM file. Make sure it has been generated using the\nH37Rv genome (GCA_000195955.2)\

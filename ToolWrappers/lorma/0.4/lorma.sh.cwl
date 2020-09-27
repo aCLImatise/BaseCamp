@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lorma.sh.cwl
+id: lorma.sh.cwl
 inputs:
 - id: in_sequence_data_intermediate
   doc: the sequence data of intermediate LoRDEC steps

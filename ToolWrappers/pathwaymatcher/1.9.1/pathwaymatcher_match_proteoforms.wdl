@@ -2,7 +2,6 @@ version 1.0
 
 task PathwaymatcherMatchproteoforms {
   input {
-    File? i
     File? mapping
     Boolean? graph
     Boolean? graph_gene
@@ -22,7 +21,6 @@ task PathwaymatcherMatchproteoforms {
     pathwaymatcher match_proteoforms \
       ~{java} \
       ~{match_proteo_forms} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(mapping) then ("--mapping " +  '"' + mapping + '"') else ""} \
       ~{if (graph) then "--graph" else ""} \
       ~{if (graph_gene) then "--graphGene" else ""} \
@@ -37,7 +35,6 @@ task PathwaymatcherMatchproteoforms {
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
     mapping: "Path to directory with the static mapping files. By\\ndefault uses the mapping files integrated in the jar\\nfile."
     graph: "Create default connection graph according to input type."
     graph_gene: "Create gene connection graph"

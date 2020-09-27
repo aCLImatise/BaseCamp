@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_bed12tobed6_bedfile.cwl
+id: bedparse_bed12tobed6_bedfile.cwl
 inputs:
 - id: in_which_exon
   doc: ''

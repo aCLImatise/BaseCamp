@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tiptoft_database_downloader.cwl
+id: tiptoft_database_downloader.cwl
 inputs:
 - id: in_verbose
   doc: 'Turn on debugging (default: False)'

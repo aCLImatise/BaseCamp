@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mMK_bitset.py.cwl
+id: mMK_bitset.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

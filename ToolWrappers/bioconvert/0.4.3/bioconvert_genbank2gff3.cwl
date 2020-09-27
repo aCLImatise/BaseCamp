@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_genbank2gff3.cwl
+id: bioconvert_genbank2gff3.cwl
 inputs:
 - id: in_force
   doc: "if outfile exists, it is overwritten with this option\n(default: False)"

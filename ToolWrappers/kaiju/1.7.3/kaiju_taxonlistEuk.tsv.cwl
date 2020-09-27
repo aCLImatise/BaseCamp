@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_taxonlistEuk.tsv.cwl
+id: kaiju_taxonlistEuk.tsv.cwl
 inputs: []
 outputs:
 - id: out_stdout

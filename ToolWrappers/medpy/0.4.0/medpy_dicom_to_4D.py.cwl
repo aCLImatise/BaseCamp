@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_dicom_to_4D.py.cwl
+id: medpy_dicom_to_4D.py.cwl
 inputs:
 - id: in_display_more_information
   doc: Display more information.

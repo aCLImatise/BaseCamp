@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_topic_arg_files.cwl
+id: gcloud_topic_arg_files.cwl
 inputs:
 - id: in_device_ids
   doc: ',htc_m8,g3'

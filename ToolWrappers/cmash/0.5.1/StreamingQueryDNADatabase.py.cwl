@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../StreamingQueryDNADatabase.py.cwl
+id: StreamingQueryDNADatabase.py.cwl
 inputs:
 - id: in_threads
   doc: 'Number of threads to use (default: 8)'

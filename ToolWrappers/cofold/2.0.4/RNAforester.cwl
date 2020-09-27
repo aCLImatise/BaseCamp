@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAforester.cwl
+id: RNAforester.cwl
 inputs: []
 outputs:
 - id: out_stdout

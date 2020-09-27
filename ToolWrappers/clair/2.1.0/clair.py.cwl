@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clair.py.cwl
+id: clair.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

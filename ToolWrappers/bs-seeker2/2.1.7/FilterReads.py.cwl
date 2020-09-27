@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterReads.py.cwl
+id: FilterReads.py.cwl
 inputs:
 - id: in_name_input_qseqfastqfastasequence
   doc: Name of the input qseq/fastq/fasta/sequence file

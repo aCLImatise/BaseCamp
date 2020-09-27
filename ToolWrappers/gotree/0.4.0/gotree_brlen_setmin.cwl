@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_brlen_setmin.cwl
+id: gotree_brlen_setmin.cwl
 inputs:
 - id: in_length
   doc: Min Length cutoff

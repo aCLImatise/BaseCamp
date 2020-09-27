@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../structure_2_gspan.pl.cwl
+id: structure_2_gspan.pl.cwl
 inputs:
 - id: in_man
   doc: full documentation

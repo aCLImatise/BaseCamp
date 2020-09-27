@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_transcript_sets.pl.cwl
+id: merge_transcript_sets.pl.cwl
 inputs:
 - id: in_transcripts_dot
   doc: 'Attention: nonredundant transcript names over all sets are assumed!'

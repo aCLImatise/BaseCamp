@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extendSuperReadsBasedOnUniqueExtensions.cwl
+id: extendSuperReadsBasedOnUniqueExtensions.cwl
 inputs:
 - id: in_dir
   doc: '*Directory where the super-reads work is done'

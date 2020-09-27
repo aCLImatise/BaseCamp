@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_search_for_xlinks_mass..cwl
+id: crux_search_for_xlinks_mass..cwl
 inputs:
 - id: in_crux
   doc: ''

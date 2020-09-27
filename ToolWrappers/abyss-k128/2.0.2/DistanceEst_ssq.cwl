@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DistanceEst_ssq.cwl
+id: DistanceEst_ssq.cwl
 inputs:
 - id: in_mind
   doc: minimum distance between contigs [-(k-1)]

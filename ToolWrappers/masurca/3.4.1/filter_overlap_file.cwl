@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_overlap_file.cwl
+id: filter_overlap_file.cwl
 inputs:
 - id: in_threads
   doc: Number of threads (1)

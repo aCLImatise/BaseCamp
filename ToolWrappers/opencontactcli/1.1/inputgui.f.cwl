@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inputgui.f.cwl
+id: inputgui.f.cwl
 inputs: []
 outputs:
 - id: out_stdout

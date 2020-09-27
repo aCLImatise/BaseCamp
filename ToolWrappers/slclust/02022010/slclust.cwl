@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slclust.cwl
+id: slclust.cwl
 inputs:
 - id: in__verbosity_at
   doc: "[v] verbosity at 'info', 'debug'"

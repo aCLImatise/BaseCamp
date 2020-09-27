@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_set_pixel_spacing.py_spacing.cwl
+id: medpy_set_pixel_spacing.py_spacing.cwl
 inputs:
 - id: in_d
   doc: ''

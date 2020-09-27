@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sleep.cwl
+id: sleep.cwl
 inputs:
 - id: in_number
   doc: ''

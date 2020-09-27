@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../permuteGPAT++.cwl
+id: permuteGPAT++.cwl
 inputs: []
 outputs:
 - id: out_stdout

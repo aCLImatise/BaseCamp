@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runrfh.py.cwl
+id: runrfh.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

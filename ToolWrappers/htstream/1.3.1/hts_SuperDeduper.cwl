@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_SuperDeduper.cwl
+id: hts_SuperDeduper.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

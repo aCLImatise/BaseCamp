@@ -2,7 +2,6 @@ version 1.0
 
 task DimspyReplicatefilter {
   input {
-    Int? m
     File? hdf_file_peaklist
     File? hdf_file_save
     String? ppm
@@ -16,7 +15,6 @@ task DimspyReplicatefilter {
   }
   command <<<
     dimspy replicate_filter \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
       ~{if defined(hdf_file_peaklist) then ("--input " +  '"' + hdf_file_peaklist + '"') else ""} \
       ~{if defined(hdf_file_save) then ("--output " +  '"' + hdf_file_save + '"') else ""} \
       ~{if defined(ppm) then ("--ppm " +  '"' + ppm + '"') else ""} \
@@ -29,7 +27,6 @@ task DimspyReplicatefilter {
       ~{if defined(n_cpus) then ("--ncpus " +  '"' + n_cpus + '"') else ""}
   >>>
   parameter_meta {
-    m: "[-d RSD_THRESHOLD]"
     hdf_file_peaklist: "HDF5 file (Peaklist objects) from step 'process-scans'\\nor directory path that contains tab-delimited\\npeaklists."
     hdf_file_save: "HDF5 file to save the peaklist objects to."
     ppm: "Mass tolerance in Parts per million to group peaks\\nacross scans / mass spectra."

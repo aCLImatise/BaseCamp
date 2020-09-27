@@ -7,11 +7,9 @@ task CapCpair2bg {
     Boolean? targetname_name_target
     Boolean? chromstartend_genomic_location
     Boolean? inter_chrom
-    String options
   }
   command <<<
     capCpair2bg \
-      ~{options} \
       ~{if (pairfile_input_file) then "-i" else ""} \
       ~{if (bgfile_file_name) then "-o" else ""} \
       ~{if (targetname_name_target) then "-n" else ""} \
@@ -24,7 +22,6 @@ task CapCpair2bg {
     targetname_name_target: "targetname     is the name of the target"
     chromstartend_genomic_location: "chrom:start-end  is the genomic location of the target site; can\\nuse this option more than once if multiple pair\\nfiles are specified."
     inter_chrom: "flag to specify interchromosomal interactions are present"
-    options: ":"
   }
   output {
     File out_stdout = stdout()

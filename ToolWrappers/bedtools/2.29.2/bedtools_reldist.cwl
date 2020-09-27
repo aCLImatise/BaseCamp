@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_reldist.cwl
+id: bedtools_reldist.cwl
 inputs:
 - id: in_detail
   doc: the relativedistance for each interval in A

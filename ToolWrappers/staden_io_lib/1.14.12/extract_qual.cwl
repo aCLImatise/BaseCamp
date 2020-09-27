@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_qual.cwl
+id: extract_qual.cwl
 inputs:
 - id: in_r
   doc: ''

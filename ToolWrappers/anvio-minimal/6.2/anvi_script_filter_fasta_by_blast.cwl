@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_filter_fasta_by_blast.cwl
+id: anvi_script_filter_fasta_by_blast.cwl
 inputs:
 - id: in_fast_a_file
   doc: A FASTA-formatted input file

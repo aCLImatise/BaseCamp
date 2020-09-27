@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OptC4.py.cwl
+id: OptC4.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

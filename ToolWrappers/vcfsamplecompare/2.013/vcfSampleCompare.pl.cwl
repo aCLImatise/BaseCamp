@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfSampleCompare.pl.cwl
+id: vcfSampleCompare.pl.cwl
 inputs:
 - id: in_vcf_outfile_suffix
   doc: VCF outfile suffix (appended to -i).

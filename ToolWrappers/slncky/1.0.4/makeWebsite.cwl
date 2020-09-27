@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeWebsite.cwl
+id: makeWebsite.cwl
 inputs:
 - id: in_file
   doc: ''

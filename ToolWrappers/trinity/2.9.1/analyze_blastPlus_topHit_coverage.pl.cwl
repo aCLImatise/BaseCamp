@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyze_blastPlus_topHit_coverage.pl.cwl
+id: analyze_blastPlus_topHit_coverage.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

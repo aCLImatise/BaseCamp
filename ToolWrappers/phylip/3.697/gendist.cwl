@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gendist.cwl
+id: gendist.cwl
 inputs: []
 outputs:
 - id: out_stdout

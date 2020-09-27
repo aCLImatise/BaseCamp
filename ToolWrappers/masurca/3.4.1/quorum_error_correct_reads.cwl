@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quorum_error_correct_reads.cwl
+id: quorum_error_correct_reads.cwl
 inputs:
 - id: in_thread
   doc: Number of threads (1)

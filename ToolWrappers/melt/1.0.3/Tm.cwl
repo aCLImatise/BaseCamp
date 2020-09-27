@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Tm.cwl
+id: Tm.cwl
 inputs:
 - id: in_uncorrected
   doc: Do not use monovalent/divalent cation corrections

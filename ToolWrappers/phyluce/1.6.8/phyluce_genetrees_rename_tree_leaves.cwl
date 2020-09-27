@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_rename_tree_leaves.cwl
+id: phyluce_genetrees_rename_tree_leaves.cwl
 inputs:
 - id: in_section
-  doc: ''
+  doc: "[--order {left:right,right:left}]\n[--input-format {nexus,newick,fasta,phylip}]\n\
+    [--output-format {nexus,newick,fasta,phylip}]\n[--reroot REROOT]\n[--do-not-preserve-spaces\
+    \ DO_NOT_PRESERVE_SPACES]"
   type: string
   inputBinding:
     prefix: --section

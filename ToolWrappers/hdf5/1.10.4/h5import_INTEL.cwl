@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5import_INTEL.cwl
+id: h5import_INTEL.cwl
 inputs:
 - id: in_h_five_import
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../andi.cwl
+id: andi.cwl
 inputs:
 - id: in_bootstrap
   doc: Print additional bootstrap matrices

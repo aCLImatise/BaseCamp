@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_somatic.cwl
+id: varscan_somatic.cwl
 inputs:
 - id: in_output_snp
   doc: '- Output file for SNP calls [output.snp]'

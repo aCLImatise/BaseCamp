@@ -15,7 +15,6 @@ task Reaper {
     Boolean? three_p_prefix
     Int? three_p_barcode
     Int? five_p_barcode
-    Int? five_p_s_insert
     Boolean? mr_tabu
     Int? three_p_head_to_tail
     Int? swp
@@ -36,9 +35,6 @@ task Reaper {
     Int? trim_length
     Int? polya
     Int? sc_max
-    Int? three_pa
-    Int? five_psi
-    String? tabu
   }
   command <<<
     reaper \
@@ -55,7 +51,6 @@ task Reaper {
       ~{if (three_p_prefix) then "-3p-prefix" else ""} \
       ~{if defined(three_p_barcode) then ("-3p-barcode " +  '"' + three_p_barcode + '"') else ""} \
       ~{if defined(five_p_barcode) then ("-5p-barcode " +  '"' + five_p_barcode + '"') else ""} \
-      ~{if defined(five_p_s_insert) then ("-5p-sinsert " +  '"' + five_p_s_insert + '"') else ""} \
       ~{if (mr_tabu) then "-mr-tabu" else ""} \
       ~{if defined(three_p_head_to_tail) then ("-3p-head-to-tail " +  '"' + three_p_head_to_tail + '"') else ""} \
       ~{if defined(swp) then ("-swp " +  '"' + swp + '"') else ""} \
@@ -75,10 +70,7 @@ task Reaper {
       ~{if (keep_all) then "--keep-all" else ""} \
       ~{if defined(trim_length) then ("-trim-length " +  '"' + trim_length + '"') else ""} \
       ~{if defined(polya) then ("-polya " +  '"' + polya + '"') else ""} \
-      ~{if defined(sc_max) then ("-sc-max " +  '"' + sc_max + '"') else ""} \
-      ~{if defined(three_pa) then ("-3pa " +  '"' + three_pa + '"') else ""} \
-      ~{if defined(five_psi) then ("-5psi " +  '"' + five_psi + '"') else ""} \
-      ~{if defined(tabu) then ("-tabu " +  '"' + tabu + '"') else ""}
+      ~{if defined(sc_max) then ("-sc-max " +  '"' + sc_max + '"') else ""}
   >>>
   parameter_meta {
     geom: "mode in {no-bc, 3p-bc, 5p-bc}"
@@ -94,7 +86,6 @@ task Reaper {
     three_p_prefix: "l/e[/g[/o]]  (default 8/2/0/2)"
     three_p_barcode: "[/g[/o]]  (default 0/6/1/0)"
     five_p_barcode: "[/g[/o]]  (default 0/0/0/2)"
-    five_p_s_insert: "[/g[/o]]  (default 0/2/1/10)"
     mr_tabu: "l/e[/g[/o]]  (default 16/2/1/0)"
     three_p_head_to_tail: "minimal trailing perfect match length (default 0)\\nsyntax used in the above:\\nl  <int> minimum length required to count sub-alignment as match\\ne  <int> maximum allowed edit distance\\ng  <int> [optional, not active when set to 0] maximum allowed number of gaps\\no  <int> [optional, not active when set to 0] offset:\\no= 5  requires alignment to start in the first five bases of adaptor\\no=-5  requires alignment to end in the last five bases of adaptor"
     swp: "match/substitution/gap gain/cost/cost (default 4/1/3)"
@@ -115,9 +106,6 @@ task Reaper {
     trim_length: "cut reads back to length <int>"
     polya: "remove trailing A's if length exceeds <int>"
     sc_max: "threshold for complexity of suffix following prefix match (default 0.25)"
-    three_pa: ""
-    five_psi: ""
-    tabu: ""
   }
   output {
     File out_stdout = stdout()

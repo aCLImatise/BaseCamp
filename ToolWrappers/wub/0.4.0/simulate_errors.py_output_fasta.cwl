@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate_errors.py_output_fasta.cwl
+id: simulate_errors.py_output_fasta.cwl
 inputs:
 - id: in_w
   doc: ''

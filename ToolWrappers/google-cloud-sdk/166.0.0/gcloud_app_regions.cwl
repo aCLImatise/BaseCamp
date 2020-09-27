@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_regions.cwl
+id: gcloud_app_regions.cwl
 inputs:
 - id: in_environments
   doc: SYNOPSIS

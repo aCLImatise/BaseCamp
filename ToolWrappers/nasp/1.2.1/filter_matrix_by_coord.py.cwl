@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_matrix_by_coord.py.cwl
+id: filter_matrix_by_coord.py.cwl
 inputs:
 - id: in_in_matrix
   doc: /path/to/file [REQUIRED]

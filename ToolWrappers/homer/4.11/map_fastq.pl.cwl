@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_fastq.pl.cwl
+id: map_fastq.pl.cwl
 inputs:
 - id: in_number_cpus_instance
   doc: '<#> (Number of cpus per instance, default: 1)'

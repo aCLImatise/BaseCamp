@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_repopulate.cwl
+id: gotree_repopulate.cwl
 inputs:
 - id: in_id_groups
   doc: File with groups of identical tips (default "none")

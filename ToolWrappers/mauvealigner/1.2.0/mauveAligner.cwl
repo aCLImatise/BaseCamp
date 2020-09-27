@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mauveAligner.cwl
+id: mauveAligner.cwl
 inputs:
 - id: in_output
   doc: Output file name.  Prints to screen by default

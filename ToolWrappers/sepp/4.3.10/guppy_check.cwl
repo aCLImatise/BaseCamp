@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_check.cwl
+id: guppy_check.cwl
 inputs:
 - id: in_help
   doc: Display this list of options

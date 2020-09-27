@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extendClearRangesPartition.cwl
+id: extendClearRangesPartition.cwl
 inputs:
 - id: in_the_gatekeeper_store
   doc: The gatekeeper store

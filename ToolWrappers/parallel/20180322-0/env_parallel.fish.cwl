@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../env_parallel.fish.cwl
+id: env_parallel.fish.cwl
 inputs: []
 outputs:
 - id: out_stdout

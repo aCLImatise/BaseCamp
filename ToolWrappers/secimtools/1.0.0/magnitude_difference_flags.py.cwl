@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magnitude_difference_flags.py.cwl
+id: magnitude_difference_flags.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findopt.cwl
+id: findopt.cwl
 inputs:
 - id: in_use_model_file
   doc: ': Use model <file>'

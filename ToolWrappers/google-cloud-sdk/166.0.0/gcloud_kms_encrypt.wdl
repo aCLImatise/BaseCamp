@@ -19,7 +19,7 @@ task GcloudKmsEncrypt {
       ~{if defined(location) then ("--location " +  '"' + location + '"') else ""}
   >>>
   parameter_meta {
-    plain_text_file: ""
+    plain_text_file: "[--additional-authenticated-data-file=ADDITIONAL_AUTHENTICATED_DATA_FILE]\\n[--key=KEY] [--keyring=KEYRING] [--location=LOCATION]\\n[--version=VERSION] [GCLOUD_WIDE_FLAG ...]"
     ciphertext_file: "Path to the ciphertext file to output."
     additional_authenticated_data_file: "Path to the optional file containing the additional authenticated data."
     key: "The key to use for encryption."

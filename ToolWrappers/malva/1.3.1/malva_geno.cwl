@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../malva_geno.cwl
+id: malva_geno.cwl
 inputs:
 - id: in_km_er_size
   doc: size of the kmers to index (default:35)

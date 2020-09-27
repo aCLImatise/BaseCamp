@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enet_predict_pyseer.cwl
+id: enet_predict_pyseer.cwl
 inputs:
 - id: in_threshold
   doc: Threshold to pick binary predictions

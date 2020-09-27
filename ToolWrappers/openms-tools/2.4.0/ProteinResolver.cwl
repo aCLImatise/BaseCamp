@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProteinResolver.cwl
+id: ProteinResolver.cwl
 inputs:
 - id: in_fast_a
   doc: "*                       Input database file (valid formats: 'fasta')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halApiTests.cwl
+id: halApiTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

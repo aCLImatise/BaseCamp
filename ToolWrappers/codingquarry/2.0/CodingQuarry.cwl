@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CodingQuarry.cwl
+id: CodingQuarry.cwl
 inputs:
 - id: in_file_name_genome
   doc: by file name of genome sequence

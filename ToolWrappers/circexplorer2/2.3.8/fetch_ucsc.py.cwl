@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetch_ucsc.py.cwl
+id: fetch_ucsc.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineThree_o.py.cwl
+id: combineThree_o.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

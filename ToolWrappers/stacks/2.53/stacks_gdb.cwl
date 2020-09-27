@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stacks_gdb.cwl
+id: stacks_gdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

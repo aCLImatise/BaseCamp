@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nlp_utils.py.cwl
+id: nlp_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

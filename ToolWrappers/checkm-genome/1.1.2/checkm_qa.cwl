@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_qa.cwl
+id: checkm_qa.cwl
 inputs:
 - id: in_out_format
   doc: "desired output: (default: 1)\n1. summary of bin completeness and contamination\n\

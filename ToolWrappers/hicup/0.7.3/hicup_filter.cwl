@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup_filter.cwl
+id: hicup_filter.cwl
 inputs:
 - id: in_config
   doc: Specify the optional configuration file

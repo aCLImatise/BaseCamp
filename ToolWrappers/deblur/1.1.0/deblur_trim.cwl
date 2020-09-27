@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_trim.cwl
+id: deblur_trim.cwl
 inputs:
 - id: in_trim_length
   doc: Sequence trim length  [required]
@@ -16,11 +16,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-file
-- id: in_five_critical
-  doc: '[default: 2]'
-  type: long
+- id: in_seqs_fp
+  doc: ''
+  type: string
   inputBinding:
     position: 0
+- id: in_output_fp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cutoff.r.bak.cwl
+id: cutoff.r.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

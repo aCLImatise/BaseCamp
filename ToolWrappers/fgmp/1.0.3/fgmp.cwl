@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fgmp.cwl
+id: fgmp.cwl
 inputs: []
 outputs:
 - id: out_stdout

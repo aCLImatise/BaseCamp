@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../seqkit_amplicon.cwl
+id: seqkit_amplicon.cwl
 inputs:
 - id: in_xy
   doc: x/y
   type: boolean
   inputBinding:
     prefix: -5-3-1
-- id: in_three
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: '-3'
 - id: in_y_invalid
   doc: :y (invalid)
   type: boolean

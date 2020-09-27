@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cachedas.cwl
+id: cachedas.cwl
 inputs:
 - id: in_sequence_sources_only
   doc: '[N] Display DAS sequence sources only'

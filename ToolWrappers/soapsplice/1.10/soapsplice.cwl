@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../soapsplice.cwl
+id: soapsplice.cwl
 inputs:
 - id: in_prefix_reference_index
   doc: '* Prefix of reference index files'

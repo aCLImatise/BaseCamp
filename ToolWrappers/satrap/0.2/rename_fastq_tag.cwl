@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rename_fastq_tag.cwl
+id: rename_fastq_tag.cwl
 inputs:
 - id: in_fast_q
   doc: (string)        input fastq file.

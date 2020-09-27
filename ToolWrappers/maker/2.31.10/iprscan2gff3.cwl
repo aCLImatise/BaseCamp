@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iprscan2gff3.cwl
+id: iprscan2gff3.cwl
 inputs:
 - id: in_ipr
   doc: ''

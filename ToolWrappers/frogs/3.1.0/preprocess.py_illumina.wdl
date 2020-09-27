@@ -3,20 +3,20 @@ version 1.0
 task PreprocesspyIllumina {
   input {
     Array[File] input_r_one
-    Boolean? already_contig_ed
-    Int? min_amplicon_size
-    Int? max_amplicon_size
-    Boolean? without_primers
     File? input_archive
     String? merge_software
     Boolean? keep_un_merged
+    Int? min_amplicon_size
+    Int? max_amplicon_size
     Int? expected_amplicon_size
     Int? five_prim_primer
     Int? three_prim_primer
+    Boolean? without_primers
     Int? r_one_size
     Int? r_two_size
     Float? mismatch_rate
     String? quality_scale
+    Boolean? already_contig_ed
     Int? nb_cpus
     Boolean? debug
     Array[String] samples_names
@@ -37,20 +37,20 @@ task PreprocesspyIllumina {
       ~{archive} \
       ~{files} \
       ~{if defined(input_r_one) then ("--input-R1 " +  '"' + input_r_one + '"') else ""} \
-      ~{if (already_contig_ed) then "--already-contiged" else ""} \
-      ~{if defined(min_amplicon_size) then ("--min-amplicon-size " +  '"' + min_amplicon_size + '"') else ""} \
-      ~{if defined(max_amplicon_size) then ("--max-amplicon-size " +  '"' + max_amplicon_size + '"') else ""} \
-      ~{if (without_primers) then "--without-primers" else ""} \
       ~{if defined(input_archive) then ("--input-archive " +  '"' + input_archive + '"') else ""} \
       ~{if defined(merge_software) then ("--merge-software " +  '"' + merge_software + '"') else ""} \
       ~{if (keep_un_merged) then "--keep-unmerged" else ""} \
+      ~{if defined(min_amplicon_size) then ("--min-amplicon-size " +  '"' + min_amplicon_size + '"') else ""} \
+      ~{if defined(max_amplicon_size) then ("--max-amplicon-size " +  '"' + max_amplicon_size + '"') else ""} \
       ~{if defined(expected_amplicon_size) then ("--expected-amplicon-size " +  '"' + expected_amplicon_size + '"') else ""} \
       ~{if defined(five_prim_primer) then ("--five-prim-primer " +  '"' + five_prim_primer + '"') else ""} \
       ~{if defined(three_prim_primer) then ("--three-prim-primer " +  '"' + three_prim_primer + '"') else ""} \
+      ~{if (without_primers) then "--without-primers" else ""} \
       ~{if defined(r_one_size) then ("--R1-size " +  '"' + r_one_size + '"') else ""} \
       ~{if defined(r_two_size) then ("--R2-size " +  '"' + r_two_size + '"') else ""} \
       ~{if defined(mismatch_rate) then ("--mismatch-rate " +  '"' + mismatch_rate + '"') else ""} \
       ~{if defined(quality_scale) then ("--quality-scale " +  '"' + quality_scale + '"') else ""} \
+      ~{if (already_contig_ed) then "--already-contiged" else ""} \
       ~{if defined(nb_cpus) then ("--nb-cpus " +  '"' + nb_cpus + '"') else ""} \
       ~{if (debug) then "--debug" else ""} \
       ~{if defined(samples_names) then ("--samples-names " +  '"' + samples_names + '"') else ""} \
@@ -61,21 +61,21 @@ task PreprocesspyIllumina {
       ~{if defined(log_file) then ("--log-file " +  '"' + log_file + '"') else ""}
   >>>
   parameter_meta {
-    input_r_one: ""
-    already_contig_ed: "| --input-R2 R2_FILE [R2_FILE ...] --R1-size R1_SIZE --R2-size R2_SIZE [--mismatch-rate RATE ] [--quality-scale SCALE ] [--merge-software {vsearch,flash,pear} [--expected-amplicon-size]] [--keep-unmerged]"
-    min_amplicon_size: ""
-    max_amplicon_size: ""
-    without_primers: "| --five-prim-primer FIVE_PRIM_PRIMER --three-prim-primer THREE_PRIM_PRIMER"
-    input_archive: ""
+    input_r_one: "--already-contiged | --input-R2 R2_FILE [R2_FILE ...] --R1-size R1_SIZE --R2-size R2_SIZE [--mismatch-rate RATE ] [--quality-scale SCALE ] [--merge-software {vsearch,flash,pear} [--expected-amplicon-size]] [--keep-unmerged]\\n--min-amplicon-size MIN_AMPLICON_SIZE\\n--max-amplicon-size MAX_AMPLICON_SIZE\\n--without-primers | --five-prim-primer FIVE_PRIM_PRIMER --three-prim-primer THREE_PRIM_PRIMER\\n[--fungi {ITS1,ITS2}] [--keep-unmerged]\\n[--samples-names SAMPLE_NAME [SAMPLE_NAME ...]]\\n[-p NB_CPUS] [--debug] [-v]\\n[-d DEREPLICATED_FILE] [-c COUNT_FILE]\\n[-s SUMMARY_FILE] [-l LOG_FILE]"
+    input_archive: "--already-contiged | --R1-size R1_SIZE --R2-size R2_SIZE [--mismatch-rate RATE ] [--quality-scale SCALE ] [--merge-software {vsearch,flash,pear} [--expected-amplicon-size] ] [--keep-unmerged]\\n--min-amplicon-size MIN_AMPLICON_SIZE\\n--max-amplicon-size MAX_AMPLICON_SIZE\\n--without-primers | --five-prim-primer FIVE_PRIM_PRIMER --three-prim-primer THREE_PRIM_PRIMER\\n[--fungi {ITS1,ITS2}]\\n[-p NB_CPUS] [--debug] [-v]\\n[-d DEREPLICATED_FILE] [-c COUNT_FILE] [-c COUNT_FILE] [--artComb-output-dereplicated ART_DEREPLICATED_FILE] [--artComb-output-count ART_COUNT_FILE]\\n[-s SUMMARY_FILE] [-l LOG_FILE]"
     merge_software: "Software used to merge paired reads"
     keep_un_merged: "In case of uncontiged paired reads, keep unmerged, and\\nartificially combined them with 100 Ns."
+    min_amplicon_size: "The minimum size for the amplicons (with primers)."
+    max_amplicon_size: "The maximum size for the amplicons (with primers)."
     expected_amplicon_size: "The expected size for the majority of the amplicons\\n(with primers), if using Flash as read pair merge\\nsoftware."
     five_prim_primer: "The 5' primer sequence (wildcards are accepted)."
     three_prim_primer: "The 3' primer sequence (wildcards are accepted)."
+    without_primers: "Use this option when you use custom sequencing primers\\nand these primers are the PCR primers. In this case\\nthe reads do not contain the PCR primers."
     r_one_size: "The read1 size."
     r_two_size: "The read2 size."
     mismatch_rate: "Maxi mismatch rate in overlap region. [Default: 0.1]"
     quality_scale: "The phred base quality scale, either 33 or 64 if using\\nVsearch as read pair merge software [Default: 33]"
+    already_contig_ed: "The archive contains 1 file by sample : Reads 1 and\\nReads 2 are already contiged by pair."
     nb_cpus: "The maximum number of CPUs used. [Default: 1]"
     debug: "Keep temporary files to debug program."
     samples_names: "The sample name for each R1/R2-files."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pycoQC.cwl
+id: pycoQC.cwl
 inputs:
 - id: in_verbose
   doc: Increase verbosity

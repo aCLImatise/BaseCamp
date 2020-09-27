@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hostid.cwl
+id: hostid.cwl
 inputs: []
 outputs:
 - id: out_stdout

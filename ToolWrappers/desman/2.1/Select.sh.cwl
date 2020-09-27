@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Select.sh.cwl
+id: Select.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

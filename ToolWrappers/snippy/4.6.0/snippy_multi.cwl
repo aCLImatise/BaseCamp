@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snippy_multi.cwl
+id: snippy_multi.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_vep.cwl
+id: filter_vep.cwl
 inputs:
 - id: in_input_file
   doc: "[file]  -i   Specify the input file (i.e. the VEP results file).\nIf no input\

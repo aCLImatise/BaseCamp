@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../excise_precursors.pl.cwl
+id: excise_precursors.pl.cwl
 inputs:
 - id: in_only_excise_potential
   doc: "Only excise if the potential mature microRNA is represented\nby a number of\

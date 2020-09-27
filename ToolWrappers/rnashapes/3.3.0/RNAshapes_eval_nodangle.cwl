@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAshapes_eval_nodangle.cwl
+id: RNAshapes_eval_nodangle.cwl
 inputs:
 - id: in_read_energy_parameters
   doc: "Read energy parameters from paramfile, instead of using the default parameter\n\

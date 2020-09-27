@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pModel.cwl
+id: pModel.cwl
 inputs:
 - id: in_print_transition_parameters
   doc: ': Print transition parameters'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_roh.py.cwl
+id: plot_roh.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comet.cwl
+id: comet.cwl
 inputs:
 - id: in_print_cometparams_file
   doc: to print out a comet.params file (named comet.params.new)

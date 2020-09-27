@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicCompartmentalization.cwl
+id: hicCompartmentalization.cwl
 inputs:
 - id: in_output_file_name
   doc: "Plot to represent the polarization of A/B\ncompartments."
