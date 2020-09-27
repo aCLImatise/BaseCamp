@@ -1,0 +1,256 @@
+!Command
+command:
+- csvtk
+- replace
+positional: []
+named:
+- !Flag
+  description: select only these fields. e.g -f 1,2 or -f columnA,columnB (default
+    "1")
+  synonyms:
+  - -f
+  - --fields
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: using fuzzy fields, e.g., -F -f "*name" or -F -f "id123*"
+  synonyms:
+  - -F
+  - --fuzzy-fields
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore case
+  synonyms:
+  - -i
+  - --ignore-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep the key as value when no value found for the key
+  synonyms:
+  - -K
+  - --keep-key
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: capture variable index of key (1-based) (default 1)
+  synonyms:
+  - --key-capt-idx
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: replacement for key with no corresponding value
+  synonyms:
+  - --key-miss-repl
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: tab-delimited key-value file for replacing key with value when using
+    "{kv}" in -r (--replacement)
+  synonyms:
+  - -k
+  - --kv-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: treat all columns except 1th one as value for kv-file with more than
+    2 columns
+  synonyms:
+  - -A
+  - --kv-file-all-left-columns-as-value
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum width for {nr} in flag -r/--replacement. e.g., formating "1"
+    to "001" by --nr-width 3 (default 1)
+  synonyms:
+  - --nr-width
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: search regular expression
+  synonyms:
+  - -p
+  - --pattern
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'replacement. supporting capture variables.  e.g. $1 represents the
+    text of the first submatch. ATTENTION: for *nix OS, use SINGLE quote NOT double
+    quotes or use the \ escape character. Record number is also supported by "{nr}".use
+    ${1} instead of $1 when {kv} given!'
+  synonyms:
+  - -r
+  - --replacement
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: chunk size of CSV reader (default 50)
+  synonyms:
+  - -c
+  - --chunk-size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: lines starting with commment-character will be ignored. if your header
+    row starts with '#', please assign "-C" another rare symbol, e.g. '$' (default
+    "#")
+  synonyms:
+  - -C
+  - --comment-char
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: delimiting character of the input CSV file (default ",")
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ignore empty rows
+  synonyms:
+  - -E
+  - --ignore-empty-row
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore illegal rows
+  synonyms:
+  - -I
+  - --ignore-illegal-row
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: if given, a quote may appear in an unquoted field and a non-doubled
+    quote may appear in a quoted field
+  synonyms:
+  - -l
+  - --lazy-quotes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specifies that the input CSV file does not have header row
+  synonyms:
+  - -H
+  - --no-header-row
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of CPUs to use (default value depends on your computer) (default
+    8)
+  synonyms:
+  - -j
+  - --num-cpus
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: delimiting character of the output CSV file, e.g., -D $'\t' for tab
+    (default ",")
+  synonyms:
+  - -D
+  - --out-delimiter
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: specifies that the output is delimited with tabs. Overrides "-D"
+  synonyms:
+  - -T
+  - --out-tabs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specifies that the input CSV file is delimited with tabs. Overrides
+    "-d" and "-D"
+  synonyms:
+  - -t
+  - --tabs
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for replace
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "replace data of selected fields by regular expression\n\nNote that the\
+  \ replacement supports capture variables.\ne.g. $1 represents the text of the first\
+  \ submatch.\nATTENTION: use SINGLE quote NOT double quotes in *nix OS.\n\nExamples:\
+  \ Adding space to all bases.\n\n  csvtk replace -p \"(.)\" -r '$1 ' -s\n\nOr use\
+  \ the \\ escape character.\n\n  csvtk replace -p \"(.)\" -r \"\\$1 \" -s\n\nmore\
+  \ on: http://shenwei356.github.io/csvtk/usage/#replace\n\nSpecial replacement symbols:\n\
+  \n  {nr}    Record number, starting from 1\n  {kv}    Corresponding value of the\
+  \ key (captured variable $n) by key-value file,\n          n can be specified by\
+  \ flag --key-capt-idx (default: 1)\n\nUsage:\n  csvtk replace [flags]\n\nFlags:\n\
+  \  -f, --fields string                       select only these fields. e.g -f 1,2\
+  \ or -f columnA,columnB (default \"1\")\n  -F, --fuzzy-fields                  \
+  \      using fuzzy fields, e.g., -F -f \"*name\" or -F -f \"id123*\"\n  -h, --help\
+  \                                help for replace\n  -i, --ignore-case         \
+  \                ignore case\n  -K, --keep-key                            keep the\
+  \ key as value when no value found for the key\n      --key-capt-idx int       \
+  \             capture variable index of key (1-based) (default 1)\n      --key-miss-repl\
+  \ string                replacement for key with no corresponding value\n  -k, --kv-file\
+  \ string                      tab-delimited key-value file for replacing key with\
+  \ value when using \"{kv}\" in -r (--replacement)\n  -A, --kv-file-all-left-columns-as-value\
+  \   treat all columns except 1th one as value for kv-file with more than 2 columns\n\
+  \      --nr-width int                        minimum width for {nr} in flag -r/--replacement.\
+  \ e.g., formating \"1\" to \"001\" by --nr-width 3 (default 1)\n  -p, --pattern\
+  \ string                      search regular expression\n  -r, --replacement string\
+  \                  replacement. supporting capture variables.  e.g. $1 represents\
+  \ the text of the first submatch. ATTENTION: for *nix OS, use SINGLE quote NOT double\
+  \ quotes or use the \\ escape character. Record number is also supported by \"{nr}\"\
+  .use ${1} instead of $1 when {kv} given!\n\nGlobal Flags:\n  -c, --chunk-size int\
+  \         chunk size of CSV reader (default 50)\n  -C, --comment-char string   \
+  \ lines starting with commment-character will be ignored. if your header row starts\
+  \ with '#', please assign \"-C\" another rare symbol, e.g. '$' (default \"#\")\n\
+  \  -d, --delimiter string       delimiting character of the input CSV file (default\
+  \ \",\")\n  -E, --ignore-empty-row       ignore empty rows\n  -I, --ignore-illegal-row\
+  \     ignore illegal rows\n      --infile-list string     file of input files list\
+  \ (one file per line), if given, they are appended to files from cli arguments\n\
+  \  -l, --lazy-quotes            if given, a quote may appear in an unquoted field\
+  \ and a non-doubled quote may appear in a quoted field\n  -H, --no-header-row  \
+  \        specifies that the input CSV file does not have header row\n  -j, --num-cpus\
+  \ int           number of CPUs to use (default value depends on your computer) (default\
+  \ 8)\n  -D, --out-delimiter string   delimiting character of the output CSV file,\
+  \ e.g., -D $'\\t' for tab (default \",\")\n  -o, --out-file string        out file\
+  \ (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n  -T, --out-tabs\
+  \               specifies that the output is delimited with tabs. Overrides \"-D\"\
+  \n  -t, --tabs                   specifies that the input CSV file is delimited\
+  \ with tabs. Overrides \"-d\" and \"-D\"\n"
+generated_using:
+- --help

@@ -1,0 +1,196 @@
+!Command
+command:
+- virsorter
+- run
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: all|classify
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: SNAKEMAKE_ARGS
+  optional: true
+named:
+- !Flag
+  description: output directory
+  synonyms:
+  - -w
+  - --working-dir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "database directory, default to the --db-dir\nset during installation"
+  synonyms:
+  - -d
+  - --db-dir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "sequence file in fa or fq format (could be\ncompressed by gzip or\
+    \ bz2)  [required]"
+  synonyms:
+  - -i
+  - --seqfile
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "classifiers of viral groups to included (comma\nseparated and no space\
+    \ in between)  [default:\ndsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae]"
+  synonyms:
+  - --include-groups
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "max # of jobs allowed in parallel.  [default:\n8]"
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "minimal score to be identified as viral\n[default: 0.5]"
+  synonyms:
+  - --min-score
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "require hallmark gene short seqs (length\ncutoff as \"short\" were\
+    \ set in template-\nconfig.yaml file); this can reduce false\npositives at reasonable\
+    \ cost of sensitivity\n[default: False]"
+  synonyms:
+  - --hallmark-required-on-short
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "To turn off extracting provirus after\nclassifying full contig seqs;\
+    \ Togetehr with\nlower --max-orf-per-seq, can speed up a run\nsignificantly  [default:\
+    \ False]"
+  synonyms:
+  - --provirus-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Max # of orf used for computing taxonomic\nfeatures; if # of orf in\
+    \ a seq exceeds the max\nlimit, it is sub-sampled to this # to reduce\ncomputation;\
+    \ to turn off this, set it to -1;\nthis option must be used together with\n--provirus-off\
+    \ option  [default: 20]"
+  synonyms:
+  - --max-orf-per-seq
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "minimal seq length required; all seqs shorter\nthan this will be removed\
+    \  [default: 0]"
+  synonyms:
+  - --min-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Directory name for intermediate files
+  synonyms:
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'shows detailed rules output  [default: False]'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: snakemake profile e.g. for cluster execution.
+  synonyms:
+  - --profile
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Check rules to run and files to produce\n[default: False]"
+  synonyms:
+  - -n
+  - --dryrun
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Stop using the conda envs (vs2.yaml) that come\nwith this package\
+    \ and use what are installed\nin current system; Only useful when you want\nto\
+    \ install dependencies on your own with your\nown prefer versions  [default: False]"
+  synonyms:
+  - --use-conda-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Remove intermediate file directory (--tmpdir)\n[default: False]"
+  synonyms:
+  - --rm-tmpdir
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: virsorter run [OPTIONS] [[all|classify]] [SNAKEMAKE_ARGS]...\n\n\
+  \  Runs the virsorter main function: to classify viral sequences\n\n  By default\
+  \ all steps are executed. The \"classify\" rerun classify step\n  without previous\
+  \ steps that are computationally heavy. Most snakemake\n  arguments can be appended\
+  \ to the command for more info see 'snakemake\n  --help'. For more details, see:\
+  \ github\n\nOptions:\n  -w, --working-dir PATH        output directory\n  -d, --db-dir\
+  \ PATH             database directory, default to the --db-dir\n               \
+  \                 set during installation\n\n  -i, --seqfile PATH            sequence\
+  \ file in fa or fq format (could be\n                                compressed\
+  \ by gzip or bz2)  [required]\n\n  --include-groups TEXT         classifiers of\
+  \ viral groups to included (comma\n                                separated and\
+  \ no space in between)  [default:\n                                dsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae]\n\
+  \n  -j, --jobs INTEGER            max # of jobs allowed in parallel.  [default:\n\
+  \                                8]\n\n  --min-score FLOAT             minimal score\
+  \ to be identified as viral\n                                [default: 0.5]\n\n\
+  \  --hallmark-required-on-short  require hallmark gene short seqs (length\n    \
+  \                            cutoff as \"short\" were set in template-\n       \
+  \                         config.yaml file); this can reduce false\n           \
+  \                     positives at reasonable cost of sensitivity\n            \
+  \                    [default: False]\n\n  --provirus-off                To turn\
+  \ off extracting provirus after\n                                classifying full\
+  \ contig seqs; Togetehr with\n                                lower --max-orf-per-seq,\
+  \ can speed up a run\n                                significantly  [default: False]\n\
+  \n  --max-orf-per-seq INTEGER     Max # of orf used for computing taxonomic\n  \
+  \                              features; if # of orf in a seq exceeds the max\n\
+  \                                limit, it is sub-sampled to this # to reduce\n\
+  \                                computation; to turn off this, set it to -1;\n\
+  \                                this option must be used together with\n      \
+  \                          --provirus-off option  [default: 20]\n\n  --min-length\
+  \ INTEGER          minimal seq length required; all seqs shorter\n             \
+  \                   than this will be removed  [default: 0]\n\n  --tmpdir TEXT \
+  \                Directory name for intermediate files\n  --verbose            \
+  \         shows detailed rules output  [default: False]\n  --profile TEXT      \
+  \          snakemake profile e.g. for cluster execution.\n  -n, --dryrun       \
+  \           Check rules to run and files to produce\n                          \
+  \      [default: False]\n\n  --use-conda-off               Stop using the conda\
+  \ envs (vs2.yaml) that come\n                                with this package and\
+  \ use what are installed\n                                in current system; Only\
+  \ useful when you want\n                                to install dependencies\
+  \ on your own with your\n                                own prefer versions  [default:\
+  \ False]\n\n  --rm-tmpdir                   Remove intermediate file directory (--tmpdir)\n\
+  \                                [default: False]\n\n  -h, --help              \
+  \      Show this message and exit.\n"
+generated_using:
+- --help

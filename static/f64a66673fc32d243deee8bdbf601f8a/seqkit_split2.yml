@@ -1,0 +1,169 @@
+!Command
+command:
+- seqkit
+- split2
+positional: []
+named:
+- !Flag
+  description: split sequences into chunks of N bases, supports K/M/G suffix
+  synonyms:
+  - -l
+  - --by-length
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: split sequences into N parts
+  synonyms:
+  - -p
+  - --by-part
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: split sequences into multi parts with N sequences
+  synonyms:
+  - -s
+  - --by-size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: overwrite output directory
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output directory (default value is $infile.split)
+  synonyms:
+  - -O
+  - --out-dir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: read1 file
+  synonyms:
+  - '-1'
+  - --read1
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: read2 file
+  synonyms:
+  - '-2'
+  - --read2
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  synonyms:
+  - --alphabet-guess-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  synonyms:
+  - --id-ncbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  synonyms:
+  - --id-regexp
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  synonyms:
+  - -w
+  - --line-width
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: be quiet and do not show extra information
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  synonyms:
+  - -t
+  - --seq-type
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for split2
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "split sequences into files by part size or number of parts\n\nThis command\
+  \ supports FASTA and paired- or single-end FASTQ with low memory\noccupation and\
+  \ fast speed.\n\nThe file extensions of output are automatically detected and created\n\
+  according to the input files.\n\nUsage:\n  seqkit split2 [flags]\n\nFlags:\n  -l,\
+  \ --by-length string   split sequences into chunks of N bases, supports K/M/G suffix\n\
+  \  -p, --by-part int        split sequences into N parts\n  -s, --by-size int  \
+  \      split sequences into multi parts with N sequences\n  -f, --force        \
+  \      overwrite output directory\n  -h, --help               help for split2\n\
+  \  -O, --out-dir string     output directory (default value is $infile.split)\n\
+  \  -1, --read1 string       read1 file\n  -2, --read2 string       read2 file\n\n\
+  Global Flags:\n      --alphabet-guess-seq-length int   length of sequence prefix\
+  \ of the first FASTA record based on which seqkit guesses the sequence type (0 for\
+  \ whole seq) (default 10000)\n      --id-ncbi                         FASTA head\
+  \ is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...\n      --id-regexp\
+  \ string                regular expression for parsing ID (default \"^(\\\\S+)\\\
+  \\s?\")\n      --infile-list string              file of input files list (one file\
+  \ per line), if given, they are appended to files from cli arguments\n  -w, --line-width\
+  \ int                  line width when outputing FASTA format (0 for no wrap) (default\
+  \ 60)\n  -o, --out-file string                 out file (\"-\" for stdout, suffix\
+  \ .gz for gzipped out) (default \"-\")\n      --quiet                          \
+  \ be quiet and do not show extra information\n  -t, --seq-type string          \
+  \       sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically\
+  \ detect by the first sequence) (default \"auto\")\n  -j, --threads int        \
+  \             number of CPUs. (default value: 1 for single-CPU PC, 2 for others.\
+  \ can also set with environment variable SEQKIT_THREADS) (default 2)\n"
+generated_using:
+- --help

@@ -1,0 +1,175 @@
+!Command
+command:
+- CopomuS.py
+positional: []
+named:
+- !Flag
+  description: The query sequence.
+  synonyms:
+  - -q
+  - --query
+  args: !SimpleFlagArg
+    name: QUERY
+  optional: true
+- !Flag
+  description: The target sequence.
+  synonyms:
+  - -t
+  - --target
+  args: !SimpleFlagArg
+    name: TARGET
+  optional: true
+- !Flag
+  description: 'The starting index for the query. (Default: 1)'
+  synonyms:
+  - --qIdxPos0
+  args: !SimpleFlagArg
+    name: QIDXPOS0
+  optional: true
+- !Flag
+  description: 'The starting index for the target. (Default: 1)'
+  synonyms:
+  - --tIdxPos0
+  args: !SimpleFlagArg
+    name: TIDXPOS0
+  optional: true
+- !Flag
+  description: "Which measure to add to the output, can be used\nmultiple times. Output\
+    \ will be sorted in order of\nmeasures specified. (Default: ['mfeCover', 'E',\n\
+    'minDeltaE'])"
+  synonyms:
+  - -m
+  - --measure
+  args: !ChoiceFlagArg
+    choices: !!set
+      cEDqi:
+      minDeltaE:
+      mfeCover:
+      EDqi:
+      Eti:
+      E:
+      Eqi:
+  optional: true
+- !Flag
+  description: "Defines the method used to select candidate base\npairs. (Default:\
+    \ mfe)"
+  synonyms:
+  - -s
+  - --candidateSelection
+  args: !ChoiceFlagArg
+    choices: !!set
+      mfeSO:
+      mfe:
+  optional: true
+- !Flag
+  description: "Filters candidate base pairs, can be used multiple\ntimes. (Default:\
+    \ [])"
+  synonyms:
+  - -f
+  - --candidateFilter
+  args: !ChoiceFlagArg
+    choices: !!set
+      lpMfe:
+      CG:
+      he:
+      GU:
+      heMfe:
+      AU:
+      lp:
+  optional: true
+- !Flag
+  description: "Defines the method used for generating mutated\nsequences. (Default:\
+    \ flip)"
+  synonyms:
+  - -g
+  - --generator
+  args: !ChoiceFlagArg
+    choices: !!set
+      flip:
+      any:
+  optional: true
+- !Flag
+  description: "Allows direct candidate selection by specifying a\nmutation encoding.\
+    \ Overwrites options -s, -f, and -g"
+  synonyms:
+  - --mutationEncoding
+  args: !SimpleFlagArg
+    name: MUTATION_ENCODING
+  optional: true
+- !Flag
+  description: "[OUTPUT], --output [OUTPUT]\nWhich file the output should be written\
+    \ to. (Default:\nSTDOUT)"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Defines the delimiter used to separate columns in the\noutput, default\
+    \ tab. (Default: \\t)"
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: "Optional parameter file for IntaRNA to provide further\nparameters\
+    \ and prediction constraints."
+  synonyms:
+  - -p
+  - --parameterFile
+  args: !SimpleFlagArg
+    name: PARAM_FILE
+  optional: true
+- !Flag
+  description: Threads used for IntaRNA call
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: CopomuS.py [-h] -q QUERY -t TARGET [--qIdxPos0 QIDXPOS0]\n    \
+  \              [--tIdxPos0 TIDXPOS0]\n                  [-m {E,minDeltaE,mfeCover,EDqi,cEDqi,Eqi,Eti}]\n\
+  \                  [-s {mfe,mfeSO}] [-f {GU,AU,CG,lp,lpMfe,he,heMfe}]\n        \
+  \          [-g {flip,any}] [--mutationEncoding MUTATION_ENCODING]\n            \
+  \      [-o [OUTPUT]] [-d DELIMITER] [-p PARAM_FILE]\n                  [--threads\
+  \ THREADS]\n\nChecks different measures for rating mutations\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -q QUERY, --query QUERY\n\
+  \                        The query sequence.\n  -t TARGET, --target TARGET\n   \
+  \                     The target sequence.\n  --qIdxPos0 QIDXPOS0   The starting\
+  \ index for the query. (Default: 1)\n  --tIdxPos0 TIDXPOS0   The starting index\
+  \ for the target. (Default: 1)\n  -m {E,minDeltaE,mfeCover,EDqi,cEDqi,Eqi,Eti},\
+  \ --measure {E,minDeltaE,mfeCover,EDqi,cEDqi,Eqi,Eti}\n                        Which\
+  \ measure to add to the output, can be used\n                        multiple times.\
+  \ Output will be sorted in order of\n                        measures specified.\
+  \ (Default: ['mfeCover', 'E',\n                        'minDeltaE'])\n  -s {mfe,mfeSO},\
+  \ --candidateSelection {mfe,mfeSO}\n                        Defines the method used\
+  \ to select candidate base\n                        pairs. (Default: mfe)\n  -f\
+  \ {GU,AU,CG,lp,lpMfe,he,heMfe}, --candidateFilter {GU,AU,CG,lp,lpMfe,he,heMfe}\n\
+  \                        Filters candidate base pairs, can be used multiple\n  \
+  \                      times. (Default: [])\n  -g {flip,any}, --generator {flip,any}\n\
+  \                        Defines the method used for generating mutated\n      \
+  \                  sequences. (Default: flip)\n  --mutationEncoding MUTATION_ENCODING\n\
+  \                        Allows direct candidate selection by specifying a\n   \
+  \                     mutation encoding. Overwrites options -s, -f, and -g\n  -o\
+  \ [OUTPUT], --output [OUTPUT]\n                        Which file the output should\
+  \ be written to. (Default:\n                        STDOUT)\n  -d DELIMITER, --delimiter\
+  \ DELIMITER\n                        Defines the delimiter used to separate columns\
+  \ in the\n                        output, default tab. (Default: \\t)\n  -p PARAM_FILE,\
+  \ --parameterFile PARAM_FILE\n                        Optional parameter file for\
+  \ IntaRNA to provide further\n                        parameters and prediction\
+  \ constraints.\n  --threads THREADS     Threads used for IntaRNA call\n"
+generated_using:
+- --help

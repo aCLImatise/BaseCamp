@@ -1,0 +1,77 @@
+!Command
+command:
+- megalodon_extras
+- modified_bases
+- create_ground_truth
+positional:
+- !Positional
+  description: --strand-offset STRAND_OFFSET
+  position: 0
+  name: ground_truth_modifications.csv
+  optional: false
+named:
+- !Flag
+  description: "BED_METHYL_FILES\n[BED_METHYL_FILES ...]\n[--coverage-threshold COVERAGE_THRESHOLD]\n\
+    [--pct-mod-thresholds PCT_MOD_THRESHOLDS PCT_MOD_THRESHOLDS]\n[--out-csv OUT_CSV]\n\
+    [--strand-offset STRAND_OFFSET]"
+  synonyms:
+  - --bed-methyl-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only include sites with sufficient coverage. Default:\n1 (= All sites)"
+  synonyms:
+  - --coverage-threshold
+  args: !SimpleFlagArg
+    name: COVERAGE_THRESHOLD
+  optional: true
+- !Flag
+  description: "PCT_MOD_THRESHOLDS\nLower and upper percent modified thresholds for\
+    \ ground\ntruth modified positions. Default: [10.0, 90.0]"
+  synonyms:
+  - --pct-mod-thresholds
+  args: !SimpleFlagArg
+    name: PCT_MOD_THRESHOLDS
+  optional: true
+- !Flag
+  description: 'Output filename for ground truth calls. Default:'
+  synonyms:
+  - --out-csv
+  args: !SimpleFlagArg
+    name: OUT_CSV
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras modified_bases create_ground_truth [-h]\n    \
+  \                                                       --bed-methyl-files\n   \
+  \                                                        BED_METHYL_FILES\n    \
+  \                                                       [BED_METHYL_FILES ...]\n\
+  \                                                           [--coverage-threshold\
+  \ COVERAGE_THRESHOLD]\n                                                        \
+  \   [--pct-mod-thresholds PCT_MOD_THRESHOLDS PCT_MOD_THRESHOLDS]\n             \
+  \                                              [--out-csv OUT_CSV]\n           \
+  \                                                [--strand-offset STRAND_OFFSET]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --bed-methyl-files BED_METHYL_FILES [BED_METHYL_FILES ...]\n                \
+  \        Bed methyl files.\n  --coverage-threshold COVERAGE_THRESHOLD\n        \
+  \                Only include sites with sufficient coverage. Default:\n       \
+  \                 1 (= All sites)\n  --pct-mod-thresholds PCT_MOD_THRESHOLDS PCT_MOD_THRESHOLDS\n\
+  \                        Lower and upper percent modified thresholds for ground\n\
+  \                        truth modified positions. Default: [10.0, 90.0]\n  --out-csv\
+  \ OUT_CSV     Output filename for ground truth calls. Default:\n               \
+  \         ground_truth_modifications.csv\n  --strand-offset STRAND_OFFSET\n    \
+  \                    Offset to combine stranded results. Positive value\n      \
+  \                  indicates reverse strand sites have higher position\n       \
+  \                 values. Default treat strands independently.\n"
+generated_using:
+- --help

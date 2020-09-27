@@ -1,0 +1,594 @@
+!Command
+command:
+- rsat
+- footprint-scan
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: footprint-scan
+  optional: false
+- !Positional
+  description: ECK12_ECK120012515_AgaR.24
+  position: 0
+  name: AC
+  optional: false
+- !Positional
+  description: The tutorial could cover the 3 interfaces (command-line, Web services
+  position: 0
+  name: result.
+  optional: false
+- !Positional
+  description: "\e[1m-bgfile background_file\e[0m"
+  position: 0
+  name: details.
+  optional: false
+- !Positional
+  description: The background model is calculated locally at each step of the scan,
+  position: 0
+  name: distributed.
+  optional: false
+- !Positional
+  description: "\e[1m-scan_opt\e[0m"
+  position: 0
+  name: XYgraph
+  optional: false
+- !Positional
+  description: "\e[1m-batch_matrix \e[0m"
+  position: 0
+  name: used.
+  optional: false
+named:
+- !Flag
+  description: "\\\n-bgfile ${RSAT}/public_html/data/taxon_frequencies/Enterobacteriaceae/dyads_3nt_sp0-20_upstream-noorf_Enterobacteriaceae-noov-1str.freq.gz\
+    \ \\\n-m MetJ_Regulon_matrix.tab \\\n-matrix_format tab \\\n-matrix_suffix RegulonDB\
+    \ \\\n-sep_genes"
+  synonyms:
+  - -taxon
+  - -all_genes
+  args: !SimpleFlagArg
+    name: Enterobacteriaceae
+  optional: true
+- !Flag
+  description: "whereas if your matrix files contains all the matrices from the\n\
+    RegulonDB database, you can specify\n-matrix_suffix RegulonDB\nThe matrix suffix\
+    \ will be concatenated to the output prefix, in\norder to maintain separate output\
+    \ files for distinct analyses\nperformed on the same promoter sequences. For example,\
+    \ if you run\nsuccessively the analysis with the matrix LexA, and then with the\n\
+    matrix CRP, you don't want to loose the results of the first\nscanning when running\
+    \ the second scanning."
+  synonyms:
+  - -matrix_suffix
+  args: !SimpleFlagArg
+    name: LexA
+  optional: true
+- !Flag
+  description: "If the option -matrix_table is used instead of the name of an\nspecific\
+    \ TF specify the names are in the file using:\n-tf file"
+  synonyms:
+  - -tf
+  args: !SimpleFlagArg
+    name: gene_name
+  optional: true
+- !Flag
+  description: "\e[1m-org_list organisms_list_file\e[0m\nThis option gives the posibility\
+    \ to analyse a user-specified set of\nreference organisms rather than a full taxon.\n\
+    File format: the first word of each line is used as organism ID. Any\nsubsequent\
+    \ text is ignored. The comment char is \";\".\nThis option is incompatible with\
+    \ the option \"-taxon\".\n\e[1m-unique_species\e[0m\nRetain at most one organism\
+    \ per species. This enables to filter out\nthe numerous strains sequences for\
+    \ some species of particular\ninterest. (e.g. Escherichia coli, Bacillus subtilis,\
+    \ ...).\n\e[1m-unique_genus\e[0m\nRetain at most one organism per genus. Same\
+    \ filter as for\n-unique_species, but at the level of the genus. At this level\
+    \ we\ndon't expect to have much redundancy, but this option can be useful\nto\
+    \ select a reasonable number of organisms, e.g. to draw\nphylogenetic profile\
+    \ heatmaps.\n\e[1m-no_purge\e[0m\nThis option can only be used combined with the\
+    \ -org_list option,\nthis gives the posibility to analyse a given set of sequences\n\
+    managing sequence redundancy using a list of \"no redundant\"\norganisms.\nThe\
+    \ file format is one organisms per line, the comment char is \";\"\n\e[1m-orthologs_list\
+    \ file\e[0m\nThis option gives the posibility to analyse a user-specified set\
+    \ of\northologs for specific reference organisms instead of using the BBH\nset\
+    \ of orthologs provided by RSAT.\nThe query genes included here will be the ones\
+    \ analyzed by the\nprogram.\nFile format: Tab delimited file with three columns.\n\
+    ID of the query gene (in the query organism)\nID of the reference gene\nID of\
+    \ the reference organism\nFurther columns will be ignored. The comment char is\
+    \ \";\".\nThis option is incompatible with the option \"-taxon\", and \"-bg_model\n\
+    taxfreq\" option.\n\e[1m-use_tree_org\e[0m\nOnly uses organisms in the phylogenetic\
+    \ tree for orthologs search.\nEspecified by option -tree. Incompatible with \"\
+    -taxon\",\n\"-orthologs_list\" and \"-org_list\".\n\e[1m-q query\e[0m\nQuery gene.\n\
+    This option can be used iteratively on the command line to specify\nmultiple genes.\n\
+    \e[1m-genes\e[0m\nSpecify a file containing a list of genes. Multiple genes can\
+    \ also\nbe specified by using iteratively the option -q.\n\e[1m-all_genes\e[0m\n\
+    Automatically analyze all the genes of a query genome, and store\neach result\
+    \ in a separate folder (the folder name is defined\nautomatically).\n\e[1m-max_genes\e\
+    [0m\nMaximal number of genes to analyze.\n\e[1m-skip #\e[0m\nSkip the first #\
+    \ genes (useful for quick testing and for resuming\ninterrupted tasks).\n\e[1m-last\
+    \ #\e[0m\nStop after having treated the first # genes (useful for quick\ntesting).\n\
+    \e[1m-o output_root_dir\e[0m\nMain output directory. The results will be dispatched\
+    \ in\nsub-directories, defined according to the taxon, query organism and\nquery\
+    \ gene name(s).\nIf the main output dir is not specified, the program automatically\n\
+    sets it to \"footprints\".\n\e[1m-batch\e[0m\nGenerate one command per query gene,\
+    \ and post it on the queue of a\nPC cluster.\n\e[1m-dry\e[0m\nDry run: print the\
+    \ commands but do not execute them.\n\e[1m-nodie\e[0m\nDo not die in case a sub-program\
+    \ returns an error.\nThe option -nodie allows you to circumvent problems with\
+    \ specific\nsub-tasks, but this is not recommended because the results may be\n\
+    incomplete.\n\e[1m-sep_genes\e[0m\nSearch footprints for each query gene separately.\
+    \ The results are\nstored in a separate folder for each gene. The folder name\
+    \ is\ndefined automatically.\nBy default, when several query genes are specified,\
+    \ the program\ncollects orthologs and analyzes their promoters altogether. The\n\
+    option \e[33m-sep\e[0m allows to automatize the detection of footprint in a set\n\
+    of genes that will be treated separately.\n\e[1m-infer_operons\e[0m\nInfer operons\
+    \ in order to retrieve the promoters of the predicted\noperon leader genes rather\
+    \ than those located immediately upstream\nof the orthologs. This method uses\
+    \ a threshold on the intergenic\ndistance.\n\e[1m-dist_thr value\e[0m\nSpecify\
+    \ here the intergenic distance threshold in base pairs. Pair\nof adjacent genes\
+    \ with intergenic distance equal or less than this\nvalue are predicted to be\
+    \ within operon. (default : 55)\n\e[1m-task\e[0m\nSpecify a subset of tasks to\
+    \ be executed.\nBy default, the program runs all necessary tasks. However, in\
+    \ some\ncases, it can be useful to select one or several tasks to be\nexecuted\
+    \ separately. For instance, after having collected all the\npromoter sequences\
+    \ of ortholog genes, one might desire to run the\npattern detection with various\
+    \ parameter values without having to\nretrieve the same sequences each time.\n\
+    Beware: task selection requires expertise, because most tasks\ndepends on the\
+    \ prior execution of some other tasks in the workflow.\nSelecting tasks before\
+    \ their prerequisite tasks have been completed\nwill provoke fatal errors.\n\e\
+    [1mSupported tasks:\e[0m\nFor all footprint programs (\e[33mfootprint-discovery\e\
+    [0m,\n\e[33mfootprint-scan\e[0m).\n\e[33mall\e[0m Run all supported tasks. If\
+    \ no task is specified, all tasks\nare performed.\n\e[33moperons\e[0m\nInfer operons\
+    \ (using \e[33minfer-operons\e[0m. This option should be\nused only for Bacteria.\n\
+    \e[33mquery_seq\e[0m\nRetrieve upstream sequence of the query genes (using\n\e\
+    [33mretrieve-seq\e[0m).\n\e[33morthologs\e[0m\nIdentify theorthologs of the query\
+    \ genes in the selected\ntaxon (using \e[33mget-orthologs\e[0m).\n\e[33mortho_seq\e\
+    [0m\nRetrieve upstream sequences of the orthologs (using\n\e[33mretrieve-seq-multigenome\e\
+    [0m).\n\e[33mpurge\e[0m\nPurge upstream sequences of the orthologs (using \e[33mpurge-seq\e\
+    [0m).\n\e[33mgene_index\e[0m\nGenerate an HTML index with links to the result\
+    \ files.\nWith the option -sep_genes, one index is generated for each\ngene separately.\
+    \ An index summarizing the results for all\ngenes can be generated using the option\
+    \ -index.\n\e[33mindex\e[0m\nGenerate a HTML table with links to the individual\
+    \ result\nfiles. The table contains one row per query gene, one column\nby output\
+    \ type (sequences, dyads, maps, ...) for\nfootpritn-discovery and for footprint-scan\
+    \ on line per\nTF-gene interacction.\nTasks specific to \e[33mfootprint-discovery\e\
+    [0m\n\e[33mfilter_dyads\e[0m\nDetect all dyads present with at elast one occurrence\
+    \ in the\nupstream sequence of the query gene (using \e[33mdyad-analysis\e[0m).\n\
+    Those dyads will be used as filter if the option \e[33m-filter\e[0m has\nbeen\
+    \ specifed.\n\e[33mdyads\e[0m\nDetect significantly over-represented in upstream\
+    \ sequences\nof orhtologs (using \e[33mdyad-analysis\e[0m).\n\e[33mmap\e[0m Draw\
+    \ feature maps showing the location of over-represented\ndyads in upstream sequences\
+    \ of promoters (using\n\e[33mfeature-map\e[0m).\n\e[33mnetwork\e[0m\nInfer a co-regulation\
+    \ network from the footprints, as\ndescribed in Brohee et al. (2011).\n\e[33mindex\e\
+    [0m\nGenerate an index file for each gene separately. The index\nfile is in the\
+    \ gene-specific directory, it is complementary\nto the general index file generated\
+    \ with the task\n\"synthesis\".\nTasks specific to \e[33mfootprint-scan\e[0m\n\
+    \e[33morthologs_tf\e[0m\nOrtholgous genes will be obtained for the genes realted\
+    \ to\nthe specified trasncription factors. This task shoulb be\nexecuted befor\
+    \ the option -orthologs when a tf is specified.\nSee -tf option description for\
+    \ more information.\n\e[33mocc_sig\e[0m\nCompute the significance of number of\
+    \ matrix hit occurrences\nas a function of the weight score (\e[33musing matrix-scan\e\
+    [0m and\n\e[33mmatrix-scan-quick\e[0m).\n\e[33mocc_sig_graph\e[0m\nGenerate graphs\
+    \ showing the distributions of occurrences and\ntheir significances, as a function\
+    \ of the weight score\n(using >XYgraph>).\n\e[33mscan\e[0m\nScan upstream sequences\
+    \ to detect hits above a given\nthreshold (using \e[33mmatrix-scan\e[0m).\n\e\
+    [33mmap\e[0m Draw the feature map of the hits (using \e[33mfeature-mp\e[0m).\n\
+    \e[1m-rand\e[0m\nWhen the option -rand is activated, the program replaces each\n\
+    ortholog by a gene selected at random in the genome where this\northolg was found.\n\
+    This option is used (for example by footprint-scan and\nfootprint-discovery to\
+    \ perform negative controls, i.e. check the\nrate of false positives in randomly\
+    \ selected promoters of the\nreference taxon.\n\e[1m-map_format\e[0m\nFormat for\
+    \ the feature map.\nSupported: any format supported by the program feature-map.\n\
+    \e[1m-index\e[0m\nDeprecated, replaced by the task \"index\".\n\e[1m-diamond\e\
+    [0m\nUse ranks_dmnd.tab from diamond blast computed in genome-blast.\n\e[1m-synthesis\e\
+    [0m\nThis option generated synthetic tables (in tab-delimited text and\nhtml)\
+    \ for all the results. It should be combined with the option\n\e[33m-sep_genes\e\
+    [0m. The synthetic tables contain one row per gene, and one\ncolumn per parameter.\
+    \ They summarize the results (maximal\nsignificance, top-ranking motifs) and give\
+    \ pointers to the detailed\nresult files.\n"
+  synonyms:
+  - -org_list.
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    footprint-scan\n\n\e[1mDESCRIPTION\e[0m\n    Scan\
+  \ promoters of orthologous genes with one or several\n    position-specific scoring\
+  \ matrices (PSSM) in order to detect enriched\n    motifs, and thereby predict phylogenetically\
+  \ conserved target genes.\n\n\e[1mAUTHORS\e[0m\n    Jacques.van. Helden <Jacques.van.Helden@ulb.ac.be>\n\
+  \    Alejandra Medina-Rivera <amedina@lcg.unam.mx>\n\n\e[1mCATEGORY\e[0m\n    comparative\
+  \ genomics\n\n\e[1mUSAGE\e[0m\n    footprint-scan [-m matrix_inputfile] [-o outputfile]\
+  \ [-v #] [...]\n\n\e[1mINPUT FORMAT\e[0m\n  \e[1mQuery gene(s)\e[0m\n    The analysis\
+  \ can be performed either on a single gene, or several genes\n    separately (option\
+  \ -sep_genes), or on a group of genes altogether.\n\n    Query genes can be entered\
+  \ on the command line (option -q) or in a text\n    file (option-genes). Alternatively,\
+  \ the option -all_genes will run the\n    analysis on all the genes of a genome.\n\
+  \n  \e[1mPosition-specific scoring matrices (PSSMs)\e[0m\n    \e[33mfootprint-scan\e\
+  [0m requires a collection of (at least one) position-specific\n    scoring matrices\
+  \ (PSSM).\n\n    All the format supported by \e[33mmatrix-scan\e[0m can be used\
+  \ to enter the\n    matrices. However, we recommend to use the TRANSFAC format,\
+  \ which\n    supports multiple matrices (we usually want tos can promoters with\
+  \ a\n    full collection of matrices), and associates an identifier with each\n\
+  \    matrix (e.g. the name of the transcription factor).\n\n   Example of TRANSFAC\
+  \ format\n    The following example shows a text file describing two matrices,\n\
+  \    representing the binding motifs annotated in RegulonDB for AgaR and\n    AraC,\
+  \ respectively. Motifs must be separated by a line containing a\n    double slash\
+  \ (//).\n\n    The complete file can be downloaded from RegulonDB\n    (http://regulondb.ccg.unam.mx/).\n\
+  \n     AC  ECK12_ECK120012515_AgaR.24\n     XX\n     ID  ECK12_ECK120012515_AgaR.24\n\
+  \     XX\n     P0       A     T     C     G\n     1        5     0     1     5\n\
+  \     2        6     1     4     0\n     3        4     0     5     2\n     4  \
+  \      5     4     0     2\n     5        4     6     0     1\n     6        1 \
+  \    5     3     2\n     7        0     2     8     1\n     8        4     1   \
+  \  1     5\n     9        4     5     1     1\n     10       3     8     0     0\n\
+  \     11       5     6     0     0\n     12       1     8     1     1\n     13 \
+  \      2     0     4     5\n     14       4     5     2     0\n     15       3 \
+  \    8     0     0\n     16       3     8     0     0\n     17       0     2   \
+  \  9     0\n     18       0     2     2     7\n     19       3     7     1     0\n\
+  \     20       4     7     0     0\n     21       3     8     0     0\n     22 \
+  \      3     4     0     4\n     23       3     4     0     4\n     24       3 \
+  \    4     3     1\n     25       3     8     0     0\n     XX\n     //\n     AC\
+  \  ECK12_ECK120012316_AraC.18\n     XX\n     ID  ECK12_ECK120012316_AraC.18\n  \
+  \   XX\n     P0       A     T     C     G\n     1        0    10     0     3\n \
+  \    2        7     4     1     1\n     3        0     6     5     2\n     4   \
+  \     2     2     3     6\n     5        0     0     6     7\n     6        9  \
+  \   0     0     4\n     7        0     2     9     2\n     8        2     7    \
+  \ 3     1\n     9        9     3     0     1\n     10       7     4     0     2\n\
+  \     11       4     8     0     1\n     12       3     3     5     2\n     13 \
+  \      2    10     0     1\n     14       2     7     1     3\n     15       6 \
+  \    1     6     0\n     16       0    11     2     0\n     17       1     0   \
+  \  3     9\n     18       1     5     5     2\n     19       5     2     0     6\n\
+  \     XX\n     //\n\n\e[1mOUTPUT FORMAT\e[0m\n    The result comprises several files\
+  \ for the orthologs, upstream\n    sequences, matrix-scan results, feature-maps.\
+  \ By default, a directory is\n    created for each query gene, with a name indicating\
+  \ the parameters:\n\n     footprints/[taxon]/[Organism]/[gene]\n\n    Alternatively,\
+  \ the output folder can be specified manually with the\n    option \e[33m-o\e[0m.\n\
+  \n\e[1mEXAMPLES OF UTILIZATION\e[0m\n  \e[1mDetecting trans-acting factors for single\
+  \ gene, with a collection of known motifs\e[0m\n    Let us assume that we have a\
+  \ collection of PSSMs annotated for a given\n    organism (e.g. the matrices for\
+  \ all the \e[33mEscherichia coli\e[0m transcription\n    factors annotated in RegulonDB).\
+  \ We would likt to scan the promoters of\n    orthologs of a given gene, in order\
+  \ to predict the transcription factors\n    that might be involved in its regulation.\
+  \ The program will count the\n    hits for each matrix, and report those showing\
+  \ a significant enrichment\n    in the promoters of its orthologs.\n\n    In this\
+  \ example, we use a slightly higher verbosity than usually (-v 2)\n    in order\
+  \ to keep track of the progress of the analysis. This also\n    reports the commands\
+  \ that are executed, and allows us to examine all\n    their parameters.\n\n   \
+  \  footprint-scan -v 2  -org Escherichia_coli_GCF_000005845.2_ASM584v2 \\\n    \
+  \    -taxon Enterobacteriaceae -q sodA -q lexA -q araC \\\n        -bgfile ${RSAT}/public_html/data/taxon_frequencies/Enterobacteriaceae/dyads_3nt_sp0-20_upstream-noorf_Enterobacteriaceae-noov-1str.freq.gz\
+  \ \\\n        -m RegulonDB_matrices_transfac_format.txt \\\n        -matrix_format\
+  \ transfac \\\n        -matrix_suffix RegulonDB \\\n        -sep_genes\n\n     footprint-scan\
+  \ -v 2  -org Escherichia_coli_GCF_000005845.2_ASM584v2 \\\n        -taxon Enterobacteriaceae\
+  \ -q sodA  \\\n        -bgfile ${RSAT}/public_html/data/taxon_frequencies/Enterobacteriaceae/dyads_3nt_sp0-20_upstream-noorf_Enterobacteriaceae-noov-1str.freq.gz\
+  \ \\\n        -m RegulonDB_matrices.tab \\\n        -matrix_format tab \\\n    \
+  \    -matrix_suffix RegulonDB \\\n        -sep_genes\n\n  \e[1mDetecting all putative\
+  \ target genes for a given transcription factor\e[0m\n    Given a PSSM we would\
+  \ like detect new putative binding sites for a given\n    transcription factor.\
+  \ The usual approach would be to retrieve all\n    upstream sequences of the organism\
+  \ of interest, and then search for\n    high-scoring sites with matrix-scan.\n\n\
+  \    However, observing a single high scoring site in one promoter does not\n  \
+  \  necessarily means that this gene is regulated by the potentially bound\n    transcription\
+  \ factor.\n\n    As we know sequences with a functional relevance migth be conserved\n\
+  \    througth some branches of phylogeny. So we expect binding sites with a\n  \
+  \  functional rele- vance to be conserved in a group of close othologous\n    sequences.\
+  \ footprint-scan can search for putative bindign sites in the\n    hole set of up-\
+  \ stream regions of an organism while evaluating if the\n    detected binding sites\
+  \ are conserved (over-represented) in the\n    respective orthologous sequences.\n\
+  \n     footprint-scan -v 2  -org Escherichia_coli_GCF_000005845.2_ASM584v2 \\\n\
+  \        -taxon Enterobacteriaceae -all_genes \\\n        -bgfile ${RSAT}/public_html/data/taxon_frequencies/Enterobacteriaceae/dyads_3nt_sp0-20_upstream-noorf_Enterobacteriaceae-noov-1str.freq.gz\
+  \ \\\n        -m MetJ_Regulon_matrix.tab \\\n        -matrix_format tab \\\n   \
+  \     -matrix_suffix RegulonDB \\\n        -sep_genes\n\n\e[1mSEE ALSO\e[0m\n  \e\
+  [1mfootprint-discovery\e[0m\n    The difference betsween \e[33mfootprint-scan\e\
+  [0m and \e[33mfootprint-discovery\e[0m is that\n    \e[33mfootprint-scan\e[0m requires\
+  \ prior knowledge of the motifs (in the form of\n    position-specific matrices),\
+  \ whereas \e[33mfootprint-discovery\e[0m perfoms \e[33mab\n    initio\e[0m motif\
+  \ discovery.\n\n\e[1mWISH LIST\e[0m\n  \e[1mOptions to be added\e[0m\n    \e[1m-rand\e\
+  [0m\n        When the option \e[33m-rand\e[0m is activated, \e[33mfootprint-scan\e\
+  [0m scans random\n        selections of promoters rather than promoters of orthologs.\n\
+  \n        This option serves to perform negative controls in orde to estimate\n\
+  \        empirically the rate of false prediction and check its\n        correspondence\
+  \ with the theoretical estimation of the significance.\n\n        The random selections\
+  \ are done by passing the option \e[33m-rand\e[0m to the\n        program \e[33mget-orthologs\e\
+  [0m.\n\n    \e[1m-crer\e[0m\n        Return Cis-Regulatory elements Enriched-Regions\
+  \ (CRER).\n\n        Calculate the statistical significance of the number of hits\
+  \ in\n        windows of variable sizes. The number of hits is the sum of matches\n\
+  \        above a predefined threshold set on hits p-values, for all matrices\n \
+  \       and on both strands (if -2str). The maximum size for a CRER is\n       \
+  \ defined by the option -crer_max.\n\n        The prior probability to find an instance\
+  \ of the motif is the same\n        for all matrices, and corresponds to the chosen\
+  \ pval threshold.\n        Within a region of maximal CRER size, subwindows are\
+  \ defined between\n        each hits, and the observed number of matches in a subwindow\
+  \ is the\n        sum of hits above the threshold. The significance of the observed\n\
+  \        number of matches in a subwindow is estimated by calculating a\n      \
+  \  P-value using the binomial distribution (Aerts et al., 2003).\n\n    \e[1m-lth_crer_size\e\
+  [0m\n        Minimal CRER size in bps\n\n    \e[1m-crer_pval\e[0m\n        Pval\
+  \ cutoff for selecting CRERs\n\n    \e[1m-uth_crer_size\e[0m\n        Maximal CRER\
+  \ size in bps\n\n  \e[1mRevise the manual\e[0m\n    The manual is still very incomplete,\
+  \ Jacques van Helden needs to revise\n    and complete it.\n\n  \e[1mSupport as\
+  \ Web services\e[0m\n    On the basis of the existing Web service for footprint-discovery.\n\
+  \n  \e[1mWeb interface\e[0m\n    Alejandra Medina-Rivera will implement the Web\
+  \ interface. It would be\n    more convenient to program the Web page after the\
+  \ Web services, in order\n    to benefit ffrom the support of Web services (including\
+  \ the token). To\n    be checked with Morgane Thomas-Chollier & Olivier Sand.\n\n\
+  \  \e[1mTutorial\e[0m\n    It would be worth preparing a tutorial (or a chapter\
+  \ in Methods in\n    Molecular Biology) to explain in detail the interpretation\
+  \ of the\n    result.\n\n    The tutorial could cover the 3 interfaces (command-line,\
+  \ Web services\n    and Web form).\n\n  \e[1mMotif co-occurrences\e[0m\n    After\
+  \ having detected the motifs in the different sequences, analyze\n    their co-occurrences\
+  \ in order to report the factors having sites in the\n    same sequences (putatively\
+  \ interacting factors). Actually , this option\n    should be implemented in matrix-scan\
+  \ rather than footprint-scan, because\n    it applies to any type of analysis.\n\
+  \n  \e[1mNeighbout gene name in output table\e[0m\n    Add name of upstream neighbour\
+  \ to the synthetic tables, in order to\n    detect pairs of gene sharing the same\
+  \ promoter.\n\n\e[1mOPTIONS\e[0m\n    \e[1m-m matrix_file\e[0m\n        Matrix file.\
+  \ This argument is mandatory.\n\n        This argument can be used iteratively to\
+  \ scan the sequence with\n        multiple matrices.\n\n    \e[1m-matrix_format\
+  \ matrix_format\e[0m\n        Matrix format. Default is tab. This argument is mandatory.\n\
+  \n    \e[1m-matrix_suffix matrix_suffix\e[0m\n        Matrix suffix. This argument\
+  \ is mandatory.\n\n        The matrix suffix indicates the nature of the matrix\
+  \ file. For\n        example, if your matrix file contains a single matrix for a\n\
+  \        transcription factor (say LexA), you can indicate it with\n\n        -matrix_suffix\
+  \ LexA\n\n        whereas if your matrix files contains all the matrices from the\n\
+  \        RegulonDB database, you can specify\n\n        -matrix_suffix RegulonDB\n\
+  \n        The matrix suffix will be concatenated to the output prefix, in\n    \
+  \    order to maintain separate output files for distinct analyses\n        performed\
+  \ on the same promoter sequences. For example, if you run\n        successively\
+  \ the analysis with the matrix LexA, and then with the\n        matrix CRP, you\
+  \ don't want to loose the results of the first\n        scanning when running the\
+  \ second scanning.\n\n    \e[1m-tf transcription_factor\e[0m\n        Most matrices\
+  \ are derived from specific TFBS, so they represent the\n        preferential sequence\
+  \ where a TF binds. This option will search for\n        all the genomes in the\
+  \ given taxon where there is an ortholog for\n        the specified tf. Orthologs\
+  \ for the query genes will only be\n        retrived if the organism has an ortholog\
+  \ for the TF.\n\n        -tf gene_name\n\n        If the option -matrix_table is\
+  \ used instead of the name of an\n        specific TF specify the names are in the\
+  \ file using:\n\n        -tf file\n\n    \e[1m-pseudo #\e[0m\n        Pseudo-count\
+  \ for the matrix (default: 1). See matrix-scan for\n        details.\n\n    \e[1m-bgfile\
+  \ background_file\e[0m\n        Background model file.\n\n    \e[1m-bg_format background_format\e\
+  [0m\n        Format of background model file. For supported formats see:\n     \
+  \   convert-background-model -h\n\n    \e[1m-bginput\e[0m\n        Calculate background\
+  \ model from the input sequence set.\n\n    \e[1m-markov\e[0m\n        Order of\
+  \ the markov chain for the background model.\n\n        This option is incompatible\
+  \ with the option -bgfile.\n\n    \e[1m-window\e[0m\n        Size of the sliding\
+  \ window for the background model calculation.\n        When this option is specified,\
+  \ the matrix pseudo-count is equally\n        distributed.\n\n        The background\
+  \ model is calculated locally at each step of the scan,\n        by computing transition\
+  \ frequencies from a sliding window centred\n        around the considered segment.\
+  \ The model is thus updated at each\n        scanned position. This model is called\
+  \ \"adaptive\". Note that the\n        sliding window must be large enough to train\
+  \ the local Markov model.\n        The required sequence length increases exponentially\
+  \ with the Markov\n        order. This option is thus usually suitable for low order\
+  \ models\n        only (-markov 0 to 1).\n\n        This option is incompatible\
+  \ with the option -bgfile.\n\n    \e[1m-tree\e[0m Phylogenetic tree use for the\
+  \ Bayesian Branch Length Scoring task,\n    it should be in Newick format with distances\
+  \ and leaf names.\n    \e[1m-bbls_draw\e[0m Fomat for the output image. Represents\
+  \ the phylogenetic tree\n    of organisms with ortholog genes. Shows the conservation\
+  \ of the motif\n    across the tree over the p-value. The default value is png (png,\
+  \ pdf or\n    none).\n    \e[1m-bg_pseudo #\e[0m\n        Pseudo frequency for the\
+  \ background model. Value must be a real\n        between 0 and 1.\n\n        If\
+  \ this option is not specified, the pseudo-frequency value depends\n        on the\
+  \ background calculation.\n\n        For -bginput and -window, the pseudo frequency\
+  \ is automatically\n        calculated from the length (L) of the sequence following\
+  \ this\n        formula:\n\n        sqrt(L)/(L+sqrt(L))\n\n        For -bgfile,\
+  \ default value is 0.05.\n\n        In other cases, if the length (L) of the training\
+  \ sequence is known\n        (e.g. all promoters for the considered organism), the\
+  \ value can be\n        set manually by using the option -bg_pseudo. In such case,\
+  \ the\n        background pseudo-frequency might be set, as suggested by Thijs et\n\
+  \        al., to the following value:\n\n        sqrt(L)/(L+sqrt(L))\n\n    \e[1m-filter\e\
+  [0m\n        Filter TF-interactions that are not present on the query organism.\n\
+  \        The option -filter_pval can be used to set the threshold for the\n    \
+  \    detected sites.\n\n    \e[1m-filter_bgfile\e[0m\n        Background model file\
+  \ for the scanning of query sequences for\n        filtering,.\n\n    \e[1m-filter_pval\e\
+  [0m\n        Set the threshold to filter out TF-interactions that are not present\n\
+  \        on the query organism.\n\n    \e[1m-pval\e[0m\n        Set the threshold\
+  \ on site p-value to report only the evaluated\n        over-representations of\
+  \ binding sites whenever the individual sites\n        crossed it. The default is\
+  \ set to 1e-4.\n\n    \e[1m-occ_th\e[0m\n        Threshold set on the occurrence\
+  \ significance (over-representation)\n        for scores that have p-value equal\
+  \ or smaller thant the one given as\n        threshold in the option \e[33m-pval\e\
+  [0m.\n\n        All genes are completely analyzed, only the genes that pass both\n\
+  \        threshold on pvalue and occ_sig will be included on the synthesis\n   \
+  \     table and html of the matrix.\n\n        Default is set to 5 .\n\n    \e[1m-occ_sig_opt\e\
+  [0m\n        Additional options passed to matrix-scan for the test of\n        over-representation\
+  \ of matrix hits.\n\n        Supported threshold fields for the matches : score\
+  \ pval eval sig\n        normw proba_M proba_B rank crer_sites crer_size\n\n   \
+  \     Supported threshold fields for score distributions: occ occ_sum\n        inv_cum\
+  \ exp_occ occ_pval occ_eval occ_sig occ_sig_rank\n\n        Examples: To return\
+  \ only the \"best\" score for each gene -occ_sig_opt\n        '-uth rank 1'\n\n\
+  \        To analyze the distribution only above a weight threshold of 7.\n     \
+  \   -occ_sig_opt '-lth score 7'\n\n        To analyze the distribution for sites\
+  \ having a P-value threshold of\n        1e-3. -occ_sig_opt '-uth pval 1e-3'\n\n\
+  \        Note: the argument passed to matrix-scan is delimited by single\n     \
+  \   quotes, and can thus not contain any quote.\n\n    \e[1m-info_lines\e[0m\n \
+  \       Draw reference lines on the significance profile plots, to highlight\n \
+  \       some particular values.\n\n        - horizontal axis (Y=0), in violet\n\n\
+  \        - vertical axis (X=0), in violet\n\n        - the weight value associated\
+  \ with maximal significance (only\n        weights >=0 are considered), in red\n\
+  \n    \e[1m-occ_sig_graph_opt\e[0m\n        Additional options passed to XYgraph\
+  \ for drawing the occurrence\n        significance graph.\n\n        Note: the argument\
+  \ passed to XYgraph is delimited by single quotes,\n        and can thus not contain\
+  \ any quote.\n\n    \e[1m-plot_format\e[0m\n        Format for the occurrence plots\
+  \ (occurrence frequencies, occurrence\n        sinificance). Supported: all formats\
+  \ supported by the program\n        XYgraph\n\n    \e[1m-scan_opt\e[0m\n       \
+  \ Additional options passed to matrix-scan for site detection and\n        feature-map\
+  \ drawing.\n\n        Examples:\n\n        Scan sequences with an upper threshold\
+  \ of 0.001 on pval. -scan_opt\n        '-uth pval 0.001'\n\n        Note: the argument\
+  \ passed to matrix-scan is delimited by single\n        quotes, and can thus not\
+  \ contain any quote.\n\n        Default: By default sites are filtered with a threshodl\
+  \ on p-value\n        on 1e-4\n\n    \e[1m-map_opt\e[0m\n        Additional options\
+  \ passed to feature-map for feature-map drawing.\n\n        Examples:\n\n      \
+  \  Change the thickness of the maps -map_opt '-mapthick 12'\n\n        Write the\
+  \ weight score above each site (also activate the auto\n        adjustment of map\
+  \ thickness to ensure there is enough space for\n        drawing the labels). -map_opt\
+  \ '-label score -mapthick auto'\n\n        Note: the argument passed to feature-map\
+  \ is delimited by single\n        quotes, and can thus not contain any quote.\n\n\
+  \        Default= \" -mlen 300 -mspacing 2\"\n\n    \e[1m-rand\e[0m\n        When\
+  \ the option -rand is activated, the program replaces each\n        ortholog by\
+  \ a gene selected at random in the genome where this\n        ortholg was found.\n\
+  \n        This option is used (for example by footprint-scan and\n        footprint-discovery\
+  \ to perform negative controls, i.e. check the\n        rate of false positives\
+  \ in randomly selected promoters of the\n        reference taxon.\n\n    \e[1m-matrix_table\
+  \ matrix_table_file.tab\e[0m\n        A table providing the paths to matrix files\
+  \ (one file per row) +\n        optional columns to specify parameters (factor name,\
+  \ format) for\n        each martrix.\n\n        The matrix list is provided as a\
+  \ tab-delimited text file, where each\n        row specifies one matrix.\n\n   \
+  \     - The first column indicates the path to a file containing a single\n    \
+  \    matrix (in the format specified with -matrix_format).\n\n        - The second\
+  \ column (optional) indicates a common name for the\n        matrix (e.g. transcription\
+  \ factor name) which will be displayed in\n        the synthetic report tables.\
+  \ If the option '\e[33m-tf file\e[0m' is used, this\n        column must indicate\
+  \ the name of the transcription factor on which\n        the taxonomic filter will\
+  \ be applied (i.e. the analysis will only be\n        led in species of the taxon\
+  \ where an ortholog has been found for the\n        factor).\n\n        - The third\
+  \ column (optional) indicates the format of each matrix,\n        in case the search\
+  \ would be done with matrices obtained from\n        different sources (e.g. TRANSFAC,\
+  \ consensus, meme). Note that if the\n        file contains a third column, the\
+  \ option -matrix_format cannot be\n        used.\n\n    \e[1m-batch_matrix \e[0m\n\
+  \        Generate one footprint-scan command per matrix and post it on the\n   \
+  \     queue of a PC cluster.\n\n    \e[1m-skip_m #\e[0m\n        Skip the first\
+  \ # matrices in the matrix_table (useful for quick\n        testing and for resuming\
+  \ interrupted tasks when using a matrix_table\n        or when several matrices\
+  \ are entered with the option -m ).\n\n    \e[1m-last_m #\e[0m\n        Stop after\
+  \ having treated the first # matrices in the matrix table\n        (useful for quick\
+  \ testing when using a matrix_table or when several\n        matrices are entered\
+  \ with the option -m ).\n\n    \e[1m-v #\e[0m\n        Level of verbosity (detail\
+  \ in the warning messages during execution)\n\n    \e[1m-h\e[0m  Display full help\
+  \ message.\n\n    \e[1m-help\e[0m\n        Same as -h\n\n    \e[1m-org query_organism\e\
+  [0m\n        Query organism, to which the query genes belong.\n\n    \e[1m-taxon\
+  \ reference_taxon\e[0m\n        Reference taxon, in which orthologous genes have\
+  \ to be collected.\n\n        Alternatively, reference organisms can be specified\
+  \ with the option\n        -org_list.\n\n    \e[1m-org_list organisms_list_file\e\
+  [0m\n        This option gives the posibility to analyse a user-specified set of\n\
+  \        reference organisms rather than a full taxon.\n\n        File format: the\
+  \ first word of each line is used as organism ID. Any\n        subsequent text is\
+  \ ignored. The comment char is \";\".\n\n        This option is incompatible with\
+  \ the option \"-taxon\".\n\n    \e[1m-unique_species\e[0m\n        Retain at most\
+  \ one organism per species. This enables to filter out\n        the numerous strains\
+  \ sequences for some species of particular\n        interest. (e.g. Escherichia\
+  \ coli, Bacillus subtilis, ...).\n\n    \e[1m-unique_genus\e[0m\n        Retain\
+  \ at most one organism per genus. Same filter as for\n        -unique_species, but\
+  \ at the level of the genus. At this level we\n        don't expect to have much\
+  \ redundancy, but this option can be useful\n        to select a reasonable number\
+  \ of organisms, e.g. to draw\n        phylogenetic profile heatmaps.\n\n    \e[1m-no_purge\e\
+  [0m\n        This option can only be used combined with the -org_list option,\n\
+  \        this gives the posibility to analyse a given set of sequences\n       \
+  \ managing sequence redundancy using a list of \"no redundant\"\n        organisms.\n\
+  \n        The file format is one organisms per line, the comment char is \";\"\n\
+  \n    \e[1m-orthologs_list file\e[0m\n        This option gives the posibility to\
+  \ analyse a user-specified set of\n        orthologs for specific reference organisms\
+  \ instead of using the BBH\n        set of orthologs provided by RSAT.\n\n     \
+  \   The query genes included here will be the ones analyzed by the\n        program.\n\
+  \n        File format: Tab delimited file with three columns.\n\n          ID of\
+  \ the query gene (in the query organism)\n          ID of the reference gene\n \
+  \         ID of the reference organism\n\n        Further columns will be ignored.\
+  \ The comment char is \";\".\n\n        This option is incompatible with the option\
+  \ \"-taxon\", and \"-bg_model\n        taxfreq\" option.\n\n    \e[1m-use_tree_org\e\
+  [0m\n        Only uses organisms in the phylogenetic tree for orthologs search.\n\
+  \        Especified by option -tree. Incompatible with \"-taxon\",\n        \"-orthologs_list\"\
+  \ and \"-org_list\".\n\n    \e[1m-q query\e[0m\n        Query gene.\n\n        This\
+  \ option can be used iteratively on the command line to specify\n        multiple\
+  \ genes.\n\n    \e[1m-genes\e[0m\n        Specify a file containing a list of genes.\
+  \ Multiple genes can also\n        be specified by using iteratively the option\
+  \ -q.\n\n    \e[1m-all_genes\e[0m\n        Automatically analyze all the genes of\
+  \ a query genome, and store\n        each result in a separate folder (the folder\
+  \ name is defined\n        automatically).\n\n    \e[1m-max_genes\e[0m\n       \
+  \ Maximal number of genes to analyze.\n\n    \e[1m-skip #\e[0m\n        Skip the\
+  \ first # genes (useful for quick testing and for resuming\n        interrupted\
+  \ tasks).\n\n    \e[1m-last #\e[0m\n        Stop after having treated the first\
+  \ # genes (useful for quick\n        testing).\n\n    \e[1m-o output_root_dir\e\
+  [0m\n        Main output directory. The results will be dispatched in\n        sub-directories,\
+  \ defined according to the taxon, query organism and\n        query gene name(s).\n\
+  \n        If the main output dir is not specified, the program automatically\n \
+  \       sets it to \"footprints\".\n\n    \e[1m-batch\e[0m\n        Generate one\
+  \ command per query gene, and post it on the queue of a\n        PC cluster.\n\n\
+  \    \e[1m-dry\e[0m\n        Dry run: print the commands but do not execute them.\n\
+  \n    \e[1m-nodie\e[0m\n        Do not die in case a sub-program returns an error.\n\
+  \n        The option -nodie allows you to circumvent problems with specific\n  \
+  \      sub-tasks, but this is not recommended because the results may be\n     \
+  \   incomplete.\n\n    \e[1m-sep_genes\e[0m\n        Search footprints for each\
+  \ query gene separately. The results are\n        stored in a separate folder for\
+  \ each gene. The folder name is\n        defined automatically.\n\n        By default,\
+  \ when several query genes are specified, the program\n        collects orthologs\
+  \ and analyzes their promoters altogether. The\n        option \e[33m-sep\e[0m allows\
+  \ to automatize the detection of footprint in a set\n        of genes that will\
+  \ be treated separately.\n\n    \e[1m-infer_operons\e[0m\n        Infer operons\
+  \ in order to retrieve the promoters of the predicted\n        operon leader genes\
+  \ rather than those located immediately upstream\n        of the orthologs. This\
+  \ method uses a threshold on the intergenic\n        distance.\n\n    \e[1m-dist_thr\
+  \ value\e[0m\n        Specify here the intergenic distance threshold in base pairs.\
+  \ Pair\n        of adjacent genes with intergenic distance equal or less than this\n\
+  \        value are predicted to be within operon. (default : 55)\n\n    \e[1m-task\e\
+  [0m\n        Specify a subset of tasks to be executed.\n\n        By default, the\
+  \ program runs all necessary tasks. However, in some\n        cases, it can be useful\
+  \ to select one or several tasks to be\n        executed separately. For instance,\
+  \ after having collected all the\n        promoter sequences of ortholog genes,\
+  \ one might desire to run the\n        pattern detection with various parameter\
+  \ values without having to\n        retrieve the same sequences each time.\n\n \
+  \       Beware: task selection requires expertise, because most tasks\n        depends\
+  \ on the prior execution of some other tasks in the workflow.\n        Selecting\
+  \ tasks before their prerequisite tasks have been completed\n        will provoke\
+  \ fatal errors.\n\n        \e[1mSupported tasks:\e[0m\n\n        For all footprint\
+  \ programs (\e[33mfootprint-discovery\e[0m,\n        \e[33mfootprint-scan\e[0m).\n\
+  \n            \e[33mall\e[0m Run all supported tasks. If no task is specified, all\
+  \ tasks\n                are performed.\n\n            \e[33moperons\e[0m\n    \
+  \            Infer operons (using \e[33minfer-operons\e[0m. This option should be\n\
+  \                used only for Bacteria.\n\n            \e[33mquery_seq\e[0m\n \
+  \               Retrieve upstream sequence of the query genes (using\n         \
+  \       \e[33mretrieve-seq\e[0m).\n\n            \e[33morthologs\e[0m\n        \
+  \        Identify theorthologs of the query genes in the selected\n            \
+  \    taxon (using \e[33mget-orthologs\e[0m).\n\n            \e[33mortho_seq\e[0m\n\
+  \                Retrieve upstream sequences of the orthologs (using\n         \
+  \       \e[33mretrieve-seq-multigenome\e[0m).\n\n            \e[33mpurge\e[0m\n\
+  \                Purge upstream sequences of the orthologs (using \e[33mpurge-seq\e\
+  [0m).\n\n            \e[33mgene_index\e[0m\n                Generate an HTML index\
+  \ with links to the result files.\n\n                With the option -sep_genes,\
+  \ one index is generated for each\n                gene separately. An index summarizing\
+  \ the results for all\n                genes can be generated using the option -index.\n\
+  \n            \e[33mindex\e[0m\n                Generate a HTML table with links\
+  \ to the individual result\n                files. The table contains one row per\
+  \ query gene, one column\n                by output type (sequences, dyads, maps,\
+  \ ...) for\n                footpritn-discovery and for footprint-scan on line per\n\
+  \                TF-gene interacction.\n\n        Tasks specific to \e[33mfootprint-discovery\e\
+  [0m\n\n            \e[33mfilter_dyads\e[0m\n                Detect all dyads present\
+  \ with at elast one occurrence in the\n                upstream sequence of the\
+  \ query gene (using \e[33mdyad-analysis\e[0m).\n                Those dyads will\
+  \ be used as filter if the option \e[33m-filter\e[0m has\n                been specifed.\n\
+  \n            \e[33mdyads\e[0m\n                Detect significantly over-represented\
+  \ in upstream sequences\n                of orhtologs (using \e[33mdyad-analysis\e\
+  [0m).\n\n            \e[33mmap\e[0m Draw feature maps showing the location of over-represented\n\
+  \                dyads in upstream sequences of promoters (using\n             \
+  \   \e[33mfeature-map\e[0m).\n\n            \e[33mnetwork\e[0m\n               \
+  \ Infer a co-regulation network from the footprints, as\n                described\
+  \ in Brohee et al. (2011).\n\n            \e[33mindex\e[0m\n                Generate\
+  \ an index file for each gene separately. The index\n                file is in\
+  \ the gene-specific directory, it is complementary\n                to the general\
+  \ index file generated with the task\n                \"synthesis\".\n\n       \
+  \ Tasks specific to \e[33mfootprint-scan\e[0m\n\n            \e[33morthologs_tf\e\
+  [0m\n                Ortholgous genes will be obtained for the genes realted to\n\
+  \                the specified trasncription factors. This task shoulb be\n    \
+  \            executed befor the option -orthologs when a tf is specified.\n    \
+  \            See -tf option description for more information.\n\n            \e\
+  [33mocc_sig\e[0m\n                Compute the significance of number of matrix hit\
+  \ occurrences\n                as a function of the weight score (\e[33musing matrix-scan\e\
+  [0m and\n                \e[33mmatrix-scan-quick\e[0m).\n\n            \e[33mocc_sig_graph\e\
+  [0m\n                Generate graphs showing the distributions of occurrences and\n\
+  \                their significances, as a function of the weight score\n      \
+  \          (using >XYgraph>).\n\n            \e[33mscan\e[0m\n                Scan\
+  \ upstream sequences to detect hits above a given\n                threshold (using\
+  \ \e[33mmatrix-scan\e[0m).\n\n            \e[33mmap\e[0m Draw the feature map of\
+  \ the hits (using \e[33mfeature-mp\e[0m).\n\n    \e[1m-rand\e[0m\n        When the\
+  \ option -rand is activated, the program replaces each\n        ortholog by a gene\
+  \ selected at random in the genome where this\n        ortholg was found.\n\n  \
+  \      This option is used (for example by footprint-scan and\n        footprint-discovery\
+  \ to perform negative controls, i.e. check the\n        rate of false positives\
+  \ in randomly selected promoters of the\n        reference taxon.\n\n    \e[1m-map_format\e\
+  [0m\n        Format for the feature map.\n\n        Supported: any format supported\
+  \ by the program feature-map.\n\n    \e[1m-index\e[0m\n        Deprecated, replaced\
+  \ by the task \"index\".\n\n    \e[1m-diamond\e[0m\n        Use ranks_dmnd.tab from\
+  \ diamond blast computed in genome-blast.\n\n    \e[1m-synthesis\e[0m\n        This\
+  \ option generated synthetic tables (in tab-delimited text and\n        html) for\
+  \ all the results. It should be combined with the option\n        \e[33m-sep_genes\e\
+  [0m. The synthetic tables contain one row per gene, and one\n        column per\
+  \ parameter. They summarize the results (maximal\n        significance, top-ranking\
+  \ motifs) and give pointers to the detailed\n        result files.\n\n"
+generated_using:
+- -h

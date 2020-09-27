@@ -1,0 +1,87 @@
+!Command
+command:
+- vtools_report
+- variant_stat
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 1
+  name: calculated.
+  optional: false
+named:
+- !Flag
+  description: "[SAMPLES [SAMPLES ...]], --samples [SAMPLES [SAMPLES ...]]\nLimiting\
+    \ variants from samples that match conditions\nthat use columns shown in command\
+    \ 'vtools show sample'\n(e.g. 'aff=1', 'filename like \"MG%\"'). If this\nparameter\
+    \ is specified without a value, variants\nbelonging to any of the samples will\
+    \ be counted. If\nthis parameter is left unspecified, all variants,\nincluding\
+    \ those that do not belong to any samples will\nbe counted."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[GROUP_BY [GROUP_BY ...]], --group_by [GROUP_BY [GROUP_BY ...]], --group-by\
+    \ [GROUP_BY [GROUP_BY ...]]\nGroup samples by certain conditions such as 'aff=1'.\
+    \ A\ncommon usage is to group variants by 'filename' and\n'sample_name' so that\
+    \ variant statistics are outputted\nfor each sample."
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools_report variant_stat [-h] [-s [SAMPLES [SAMPLES ...]]]\n\
+  \                                  [-g [GROUP_BY [GROUP_BY ...]]]\n            \
+  \                      [-v {0,1,2,3}]\n                                  table\n\
+  \nCommand 'vtools variant_stat' calculates the number of snps, insertions,\ndeletions\
+  \ and substitutions for groups of samples with some size metrics to\ncharacterize\
+  \ the indels. The statistics can be calculated for all samples\n(effectively for\
+  \ the master variant table when parameters --samples and\n--group_by are ignored),\
+  \ a subset of samples (e.g. --samples aff=1), grouped\nby samples (e.g. --group_by\
+  \ aff), or for each sample separately (e.g.\n--group_by filename sample_name, because\
+  \ those two fields in the sample table\nuniquely identify each sample.\n\npositional\
+  \ arguments:\n  table                 Variant table for which variant metrics are\n\
+  \                        calculated.\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  -s [SAMPLES [SAMPLES ...]], --samples\
+  \ [SAMPLES [SAMPLES ...]]\n                        Limiting variants from samples\
+  \ that match conditions\n                        that use columns shown in command\
+  \ 'vtools show sample'\n                        (e.g. 'aff=1', 'filename like \"\
+  MG%\"'). If this\n                        parameter is specified without a value,\
+  \ variants\n                        belonging to any of the samples will be counted.\
+  \ If\n                        this parameter is left unspecified, all variants,\n\
+  \                        including those that do not belong to any samples will\n\
+  \                        be counted.\n  -g [GROUP_BY [GROUP_BY ...]], --group_by\
+  \ [GROUP_BY [GROUP_BY ...]], --group-by [GROUP_BY [GROUP_BY ...]]\n            \
+  \            Group samples by certain conditions such as 'aff=1'. A\n          \
+  \              common usage is to group variants by 'filename' and\n           \
+  \             'sample_name' so that variant statistics are outputted\n         \
+  \               for each sample.\n  -v {0,1,2,3}, --verbosity {0,1,2,3}\n      \
+  \                  Output error and warning (0), info (1), debug (2) and\n     \
+  \                   trace (3) information to standard output (default to\n     \
+  \                   1).\n"
+generated_using:
+- --help

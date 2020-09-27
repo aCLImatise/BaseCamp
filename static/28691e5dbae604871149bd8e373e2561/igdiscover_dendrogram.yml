@@ -1,0 +1,63 @@
+!Command
+command:
+- igdiscover
+- dendrogram
+positional:
+- !Positional
+  description: Path to input FASTA file
+  position: 0
+  name: fasta
+  optional: false
+- !Positional
+  description: Path to output PDF or PNG
+  position: 1
+  name: plot
+  optional: false
+named:
+- !Flag
+  description: "Path to a FASTA file with a set of \"known\" sequences.\nSequences\
+    \ in the main file that do *not* occur here\nwill be marked with (new). If not\
+    \ given, no sequences\nwill be marked (use this to compare two databases)."
+  synonyms:
+  - --mark
+  - --db
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "Linkage method. Default: \"average\" (=UPGMA)\n"
+  synonyms:
+  - --method
+  args: !ChoiceFlagArg
+    choices: !!set
+      complete:
+      weighted:
+      average:
+      single:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: igdiscover dendrogram [-h] [--mark FASTA]\n                   \
+  \          [--method {single,complete,weighted,average}]\n                     \
+  \        fasta plot\n\nDraw a dendrogram of sequences in a FASTA file.\n\npositional\
+  \ arguments:\n  fasta                 Path to input FASTA file\n  plot         \
+  \         Path to output PDF or PNG\n\noptional arguments:\n  -h, --help       \
+  \     show this help message and exit\n  --mark FASTA, --db FASTA\n            \
+  \            Path to a FASTA file with a set of \"known\" sequences.\n         \
+  \               Sequences in the main file that do *not* occur here\n          \
+  \              will be marked with (new). If not given, no sequences\n         \
+  \               will be marked (use this to compare two databases).\n  --method\
+  \ {single,complete,weighted,average}\n                        Linkage method. Default:\
+  \ \"average\" (=UPGMA)\n"
+generated_using:
+- --help

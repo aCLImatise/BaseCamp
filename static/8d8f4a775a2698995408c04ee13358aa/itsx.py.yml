@@ -1,0 +1,147 @@
+!Command
+command:
+- itsx.py
+positional:
+- !Positional
+  description: --check-its-only      Check only if sequences seem to be an ITS
+  position: 0
+  name: ITS2
+  optional: false
+named:
+- !Flag
+  description: 'The maximum number of CPUs used. [Default: 1]'
+  synonyms:
+  - -p
+  - --nb-cpus
+  args: !SimpleFlagArg
+    name: NB_CPUS
+  optional: true
+- !Flag
+  description: Keep temporary files to debug program.
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Which fungal ITS region is targeted: either ITS1 or'
+  synonyms:
+  - --region
+  args: !ChoiceFlagArg
+    choices: !!set
+      ITS1:
+      ITS2:
+  optional: true
+- !Flag
+  description: 'The cluster sequences (format: fasta).'
+  synonyms:
+  - -f
+  - --input-fasta
+  args: !SimpleFlagArg
+    name: INPUT_FASTA
+  optional: true
+- !Flag
+  description: "The abundance file for clusters by sample (format:\nBIOM)."
+  synonyms:
+  - -b
+  - --input-biom
+  args: !SimpleFlagArg
+    name: INPUT_BIOM
+  optional: true
+- !Flag
+  description: "The abundance file for clusters by sample (format:\ncount)."
+  synonyms:
+  - -c
+  - --input-count
+  args: !SimpleFlagArg
+    name: INPUT_COUNT
+  optional: true
+- !Flag
+  description: "sequences file out from ITSx (format: fasta).\n[Default: itsx.fasta]"
+  synonyms:
+  - -n
+  - --out-fasta
+  args: !SimpleFlagArg
+    name: OUT_FASTA
+  optional: true
+- !Flag
+  description: "Abundance file without chimera (format: BIOM or\ncount)."
+  synonyms:
+  - -a
+  - --out-abundance
+  args: !SimpleFlagArg
+    name: OUT_ABUNDANCE
+  optional: true
+- !Flag
+  description: "sequences file removed (format: fasta). [Default:\nremoved.fasta]"
+  synonyms:
+  - -m
+  - --out-removed
+  args: !SimpleFlagArg
+    name: OUT_REMOVED
+  optional: true
+- !Flag
+  description: "Report of the results (format: HTML). [Default:\nsummary.html]"
+  synonyms:
+  - --summary
+  args: !SimpleFlagArg
+    name: SUMMARY
+  optional: true
+- !Flag
+  description: "This output file will contain several information on\nexecuted commands.\n"
+  synonyms:
+  - -l
+  - --log-file
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: itsx.py [-h] [-p NB_CPUS] [--debug] [-v] --region {ITS1,ITS2}\n\
+  \               [--check-its-only] -f INPUT_FASTA\n               [-b INPUT_BIOM\
+  \ | -c INPUT_COUNT] [-n OUT_FASTA]\n               [-a OUT_ABUNDANCE] [-m OUT_REMOVED]\
+  \ [--summary SUMMARY]\n               [-l LOG_FILE]\n\nRemoves PCR chimera.\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -p NB_CPUS, --nb-cpus NB_CPUS\n                        The maximum number of CPUs\
+  \ used. [Default: 1]\n  --debug               Keep temporary files to debug program.\n\
+  \  -v, --version         show program's version number and exit\n\nInputs:\n  --region\
+  \ {ITS1,ITS2}  Which fungal ITS region is targeted: either ITS1 or\n           \
+  \             ITS2\n  --check-its-only      Check only if sequences seem to be an\
+  \ ITS\n  -f INPUT_FASTA, --input-fasta INPUT_FASTA\n                        The\
+  \ cluster sequences (format: fasta).\n  -b INPUT_BIOM, --input-biom INPUT_BIOM\n\
+  \                        The abundance file for clusters by sample (format:\n  \
+  \                      BIOM).\n  -c INPUT_COUNT, --input-count INPUT_COUNT\n   \
+  \                     The abundance file for clusters by sample (format:\n     \
+  \                   count).\n\nOutputs:\n  -n OUT_FASTA, --out-fasta OUT_FASTA\n\
+  \                        sequences file out from ITSx (format: fasta).\n       \
+  \                 [Default: itsx.fasta]\n  -a OUT_ABUNDANCE, --out-abundance OUT_ABUNDANCE\n\
+  \                        Abundance file without chimera (format: BIOM or\n     \
+  \                   count).\n  -m OUT_REMOVED, --out-removed OUT_REMOVED\n     \
+  \                   sequences file removed (format: fasta). [Default:\n        \
+  \                removed.fasta]\n  --summary SUMMARY     Report of the results (format:\
+  \ HTML). [Default:\n                        summary.html]\n  -l LOG_FILE, --log-file\
+  \ LOG_FILE\n                        This output file will contain several information\
+  \ on\n                        executed commands.\n"
+generated_using:
+- --help

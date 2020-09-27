@@ -1,0 +1,55 @@
+!Command
+command:
+- planemo
+- brew_env
+positional:
+- !Positional
+  description: "% . <(planemo brew_env bowtie2.xml)\n% which bowtie2\n/home/john/.linuxbrew/Cellar/bowtie2/2.1.0/bin/bowtie2"
+  position: 0
+  name: dependencies.
+  optional: false
+- !Positional
+  description: --shell
+  position: 0
+  name: available.
+  optional: false
+named:
+- !Flag
+  description: Homebrew 'brew' executable to use.
+  synonyms:
+  - --brew
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Skip installation - only source requirements already
+  synonyms:
+  - --skip_install
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: planemo brew_env [OPTIONS] TOOL_PATH\n\n  List commands to inject\
+  \ brew dependencies.\n\n  Display commands used to modify environment to inject\
+  \ tool's brew\n  dependencies.\n\n      % . <(planemo brew_env bowtie2.xml)\n  \
+  \    % which bowtie2\n      /home/john/.linuxbrew/Cellar/bowtie2/2.1.0/bin/bowtie2\n\
+  \n  By default this will attempt to attempt to install these recipes as\n  needed.\
+  \ This automatic installation can be skipped with the\n  ``--skip_install`` flag.\n\
+  \n  Intead of injecting the enviornment into your current shell using the\n  above\
+  \ idiom, the ``--shell`` flag can be sent to launch a new subshell\n  when sourced.\n\
+  \n      % . <(planemo brew_env --skip_install --shell bowtie2.xml)\n      (bowtie2)\
+  \ % which bowtie2\n      /home/john/.linuxbrew/Cellar/bowtie2/2.1.0/bin/bowtie2\n\
+  \nOptions:\n  --brew FILE     Homebrew 'brew' executable to use.\n  --skip_install\
+  \  Skip installation - only source requirements already\n                  available.\n\
+  \  --shell\n  --help          Show this message and exit.\n"
+generated_using:
+- --help

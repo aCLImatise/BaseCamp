@@ -1,0 +1,209 @@
+!Command
+command:
+- rsat
+- download-organism
+positional:
+- !Positional
+  description: "\e[1mVERSION\e[0m"
+  position: 0
+  name: download-organism
+  optional: false
+- !Positional
+  description: "\e[1mCATEGORY\e[0m"
+  position: 0
+  name: Jacques.van.Helden@ulb.ac.be
+  optional: false
+- !Positional
+  description: The query to the remote server can also be restricted to a given taxon.
+  position: 0
+  name: supported-organisms-server
+  optional: false
+- !Positional
+  description: "This differs from \e[33mdownload-organism\e[0m, which transfers the\
+    \ RSAT-formatted"
+  position: 0
+  name: RSAT.
+  optional: false
+- !Positional
+  description: "\e[1manonymous rsync\e[0m"
+  position: 0
+  name: wget.
+  optional: false
+- !Positional
+  description: The option -org can be used iteratively on teh command line to
+  position: 0
+  name: Escherichia_coli_GCF_000005845.2_ASM584v2
+  optional: false
+named:
+- !Flag
+  description: "\\\n-org Saccharomyces_cerevisiae"
+  synonyms:
+  - -org
+  args: !SimpleFlagArg
+    name: Mycoplasma_genitalium
+  optional: true
+- !Flag
+  description: "\e[1m-no_blast\e[0m | \e[1m-blast\e[0m\nOptions to specify whether\
+    \ the cross-species blast files should be\ndownloaded or not together with the\
+    \ genome.\nDefault: -no_blast\nThese files are used by several comparative genomics\
+    \ programs\n(\e[33mget-orthologs\e[0m, \e[33mfootprint-discovery\e[0m, \e[33mfootprint-scan\e\
+    [0m...). With the\nincrease of th number of sequenced genomes, the blast-hit folder\n\
+    occupies a large disk space, and should be downloaded only\n\e[1m-dir output directory\e\
+    [0m\nDirectory for exporting the genome(s) of the selected organism(s).\nBy default,\
+    \ genomes are exported in the standar RSAT genome folder\n($RSAT/public_html/data/genomes/).\
+    \ This requires write permissions\non this folder. If you don't have those writing\
+    \ permissions,\nspecifying an alternative directory may be convenient for obtaining\n\
+    the data files, but the downloaded genoems will not be supported on\nthe local\
+    \ machine unless the configuration file is adapted (and this\nanyways requires\
+    \ the writing permission in the RSAT directory).\n\e[1m-o outputfile\e[0m\nThe\
+    \ output file contains timing and information about downloaded\norganisms (installation\
+    \ directories, ...).\nIf no output file is specified, the standard output is used.\
+    \ This\nallows to use the command within a pipe.\n\e[1m-server server/path\e[0m\n\
+    Specify an alternative server.\nDefault: http://rsat-tagc.univ-mrs.fr/rsat/\n\e\
+    [1m-rsync\e[0m\nThis option requires a ssh login on the main RSAT server, it is\n\
+    reserved for the RSAT maintenance team.\nWhen this option is activated, genomes\
+    \ are downloaded with the\nprogram \e[33mrsync\e[0m is used instead of \e[33mwget\e\
+    [0m. This ensures a faster\ntransfer (using the powerful featres of rsync such\
+    \ as on-the-fly\ncompression, smart updating, etc).\n\e[1m-ssh your.login@some.rsat.server\e\
+    [0m =item \e[1m-ssh\nyour.login@some.rsat.server:rsat_path_on_server\e[0m\nThis\
+    \ option requires a ssh login on the main RSAT server, it is\nreserved for the\
+    \ RSAT maintenance team.\nWhen this option is activated, genomes are downloaded\
+    \ with the\nprogram \e[33mrsync\e[0m is used instead of \e[33mwget\e[0m. This\
+    \ ensures a faster\ntransfer (using the powerful features of rsync such as on-the-fly\n\
+    compression, smart updating, etc).\nThe rsync connection however requires a user\
+    \ account enabled with\nssh access on the server, so it is reserved to the members\
+    \ of the\nRSAT team.\nThe RSAT path on the remote server can be specified in the\
+    \ argument.\nIf not, the program will attempt to obtain the RSAT environment\n\
+    variable by ssh connection to the server, but this might fail (e.g.\nif the server\
+    \ issues some message at login).\nExamples:\ndownload-organism -v 1 -org Saccharomyces_cerevisiae\
+    \ \\\n-ssh your.login@your.rsat.server.org\ndownload-organism -v 1 -org Saccharomyces_cerevisiae\
+    \ \\\n-ssh your.login@your.rsat.server.org:rsat_path_on_server\n\e[1m-bashrc bahrc_file\e\
+    [0m\nThis option is only used with the option -ssh.\nSpecify the path of the RSAT\
+    \ bashrc file. The ssh synchronization\nmode requires for the client to load the\
+    \ RSAT_config.bashrc file.\nDepending on server configuration, this file might\
+    \ not be loaded in\nnon-interactive secure shell mode. The file specified with\
+    \ the\noption -bashrc will be sourced as the first instruction of the\nremote\
+    \ ssh commands.\n\e[1m-upload\e[0m\nThis option is only possible with the ssh\
+    \ option.\n\e[1m-skip\e[0m\nSkip the N first organisms of the list. This option\
+    \ is useful for\nresuming an interrupted download.\n\e[1m-last\e[0m\nStop after\
+    \ the N first organisms of the list. This option is useful\nfor testing the options\
+    \ with taxon-wise queries.\n\e[1m-no_config\e[0m\nDownload (or upload) the files\
+    \ but do not run the configuration task\n(install-organisms -task config).\n\e\
+    [1m-dry\e[0m\nDry run: print the commands but do not execute them (just for\n\
+    testing).\n"
+  synonyms:
+  - -taxon
+  args: !SimpleFlagArg
+    name: Saccharomycetales
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    download-organism\n\n\e[1mVERSION\e[0m\n    $program_version\n\
+  \n\e[1mDESCRIPTION\e[0m\n    Download organism(s) from an RSAT server in order to\
+  \ support it on this\n    RSAT instance.\n\n    Organisms can be loaded one by one\
+  \ (option -org), or by taxon (option\n    -taxon).\n\n\e[1mAUTHORS\e[0m\n    Jacques.van.Helden@ulb.ac.be\n\
+  \n\e[1mCATEGORY\e[0m\n    Data management\n\n\e[1mREQUIREMENTS\e[0m\n    This program\
+  \ relies on a Web aspirator to download genomes from the\n    remote server to the\
+  \ local machine. By default, we use the freeware\n    program \e[33mwget\e[0m.\n\
+  \n\e[1mUSAGE\e[0m\n    Download one or several organisms by species identifiers.\n\
+  \n     download-organism -org Species_id_1 -org Species_id_2 ...\n\n    Download\
+  \ all the organisms belonging to a given taxon.\n\n     download-organism -taxon\
+  \ taxon\n\n\e[1mOUTPUT\e[0m\n    By default, the downloaded organisms are stored\
+  \ in the $RSAT genome\n    repository ($RSAT/public_html/data/genomes).\n\n\e[1mSEE\
+  \ ALSO\e[0m\n  \e[1msuported-organisms\e[0m\n    The program \e[33msupported-organism\e\
+  [0m can be used to obtain the list of\n    supported organisms on remote RSAT server.\n\
+  \n     supported-organisms-server\n\n    The query to the remote server can also\
+  \ be restricted to a given taxon.\n\n     supported-organisms-server -taxon Fungi\n\
+  \n  \e[1minstall-organism\e[0m\n    The program \e[33minstall-organism\e[0m performs\
+  \ all the formatting and calibration\n    tasks for importing genomes from the reference\
+  \ databases (NCBI, EMBL) to\n    RSAT.\n\n    This differs from \e[33mdownload-organism\e\
+  [0m, which transfers the RSAT-formatted\n    genomes from a RSAT server.\n\n   \
+  \ If a genome is available on the RSAT server, it is recommended to use\n    download-genomes\
+  \ in order to obtain it immediately in the RSAT format,\n    rather than install-genomes.\n\
+  \n\e[1mWISH LIST\e[0m\n    \e[1m-taxfreq\e[0m\n        Download the taxon-wise oligo\
+  \ and dyad frequencies. Those are\n        required for comparative genomics approaches\
+  \ (footprint-discovery,\n        footprint-scan).\n\n    \e[1m-get_command\e[0m\n\
+  \        Use an alternative program for downloading the genome data. Default:\n\
+  \        wget.\n\n    \e[1manonymous rsync\e[0m\n        Downloading with \e[33mrsync\e\
+  [0m is currently reserved to the RSAT team\n        because it requires a password\
+  \ on the RSAT server. We have currently\n        no way to ensure an anonymous rsync,\
+  \ but this may be envisaged in\n        the future for the convenience of external\
+  \ users.\n\n\e[1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n        Level of verbosity (detail\
+  \ in the warning messages during execution)\n\n    \e[1m-h\e[0m  Display full help\
+  \ message\n\n    \e[1m-help\e[0m\n        Same as -h\n\n    \e[1m-org organism\e\
+  [0m\n        ID of the organism to be downloaded. This ID is generally the full\n\
+  \        name of the organism, where spaces and weird characters have been\n   \
+  \     replaced by an underscore (_).\n\n        Ex: download-organism -v 1 -org\n\
+  \        Escherichia_coli_GCF_000005845.2_ASM584v2\n\n        The option -org can\
+  \ be used iteratively on teh command line to\n        specify multiple organisms.\n\
+  \n         download-organism -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ \\\n            -org Mycoplasma_genitalium \\\n            -org Saccharomyces_cerevisiae\n\
+  \n    \e[1m-org_list\e[0m\n        This option gives the posibility to specify a\
+  \ set of reference\n        organisms rather than a taxon. Orthologs will only be\
+  \ searched in\n        the organisms belonging to the given list.\n\n        File\
+  \ format: each row should contain the identifier of one organism.\n        Lines\
+  \ starting with a semicolumn are ignored.\n\n    \e[1m-taxon taxon\e[0m\n      \
+  \  Name of a taxon for which all organisms will be downloaded.\n\n        The option\
+  \ -taxon can be used iteratively on the command line to\n        specify multiple\
+  \ taxa.\n\n         download-organism -v 1 -taxon Enterobacteriaceae \\\n      \
+  \      -taxon Saccharomycetales\n\n    \e[1m-no_blast\e[0m | \e[1m-blast\e[0m\n\
+  \        Options to specify whether the cross-species blast files should be\n  \
+  \      downloaded or not together with the genome.\n\n        Default: -no_blast\n\
+  \n        These files are used by several comparative genomics programs\n      \
+  \  (\e[33mget-orthologs\e[0m, \e[33mfootprint-discovery\e[0m, \e[33mfootprint-scan\e\
+  [0m...). With the\n        increase of th number of sequenced genomes, the blast-hit\
+  \ folder\n        occupies a large disk space, and should be downloaded only\n\n\
+  \    \e[1m-dir output directory\e[0m\n        Directory for exporting the genome(s)\
+  \ of the selected organism(s).\n\n        By default, genomes are exported in the\
+  \ standar RSAT genome folder\n        ($RSAT/public_html/data/genomes/). This requires\
+  \ write permissions\n        on this folder. If you don't have those writing permissions,\n\
+  \        specifying an alternative directory may be convenient for obtaining\n \
+  \       the data files, but the downloaded genoems will not be supported on\n  \
+  \      the local machine unless the configuration file is adapted (and this\n  \
+  \      anyways requires the writing permission in the RSAT directory).\n\n    \e\
+  [1m-o outputfile\e[0m\n        The output file contains timing and information about\
+  \ downloaded\n        organisms (installation directories, ...).\n\n        If no\
+  \ output file is specified, the standard output is used. This\n        allows to\
+  \ use the command within a pipe.\n\n    \e[1m-server server/path\e[0m\n        Specify\
+  \ an alternative server.\n\n        Default: http://rsat-tagc.univ-mrs.fr/rsat/\n\
+  \n    \e[1m-rsync\e[0m\n        This option requires a ssh login on the main RSAT\
+  \ server, it is\n        reserved for the RSAT maintenance team.\n\n        When\
+  \ this option is activated, genomes are downloaded with the\n        program \e\
+  [33mrsync\e[0m is used instead of \e[33mwget\e[0m. This ensures a faster\n     \
+  \   transfer (using the powerful featres of rsync such as on-the-fly\n        compression,\
+  \ smart updating, etc).\n\n    \e[1m-ssh your.login@some.rsat.server\e[0m =item\
+  \ \e[1m-ssh\n    your.login@some.rsat.server:rsat_path_on_server\e[0m\n        This\
+  \ option requires a ssh login on the main RSAT server, it is\n        reserved for\
+  \ the RSAT maintenance team.\n\n        When this option is activated, genomes are\
+  \ downloaded with the\n        program \e[33mrsync\e[0m is used instead of \e[33mwget\e\
+  [0m. This ensures a faster\n        transfer (using the powerful features of rsync\
+  \ such as on-the-fly\n        compression, smart updating, etc).\n\n        The\
+  \ rsync connection however requires a user account enabled with\n        ssh access\
+  \ on the server, so it is reserved to the members of the\n        RSAT team.\n\n\
+  \        The RSAT path on the remote server can be specified in the argument.\n\
+  \        If not, the program will attempt to obtain the RSAT environment\n     \
+  \   variable by ssh connection to the server, but this might fail (e.g.\n      \
+  \  if the server issues some message at login).\n\n        Examples:\n\n       \
+  \   download-organism -v 1 -org Saccharomyces_cerevisiae \\\n            -ssh your.login@your.rsat.server.org\n\
+  \n          download-organism -v 1 -org Saccharomyces_cerevisiae \\\n          \
+  \  -ssh your.login@your.rsat.server.org:rsat_path_on_server\n\n    \e[1m-bashrc\
+  \ bahrc_file\e[0m\n        This option is only used with the option -ssh.\n\n  \
+  \      Specify the path of the RSAT bashrc file. The ssh synchronization\n     \
+  \   mode requires for the client to load the RSAT_config.bashrc file.\n        Depending\
+  \ on server configuration, this file might not be loaded in\n        non-interactive\
+  \ secure shell mode. The file specified with the\n        option -bashrc will be\
+  \ sourced as the first instruction of the\n        remote ssh commands.\n\n    \e\
+  [1m-upload\e[0m\n        This option is only possible with the ssh option.\n\n \
+  \   \e[1m-skip\e[0m\n        Skip the N first organisms of the list. This option\
+  \ is useful for\n        resuming an interrupted download.\n\n    \e[1m-last\e[0m\n\
+  \        Stop after the N first organisms of the list. This option is useful\n \
+  \       for testing the options with taxon-wise queries.\n\n    \e[1m-no_config\e\
+  [0m\n        Download (or upload) the files but do not run the configuration task\n\
+  \        (install-organisms -task config).\n\n    \e[1m-dry\e[0m\n        Dry run:\
+  \ print the commands but do not execute them (just for\n        testing).\n\n"
+generated_using:
+- -h

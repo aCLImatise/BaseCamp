@@ -1,0 +1,122 @@
+!Command
+command:
+- GatherMolecularBarcodeDistributionByGene
+positional: []
+named:
+- !Flag
+  description: (default 4g)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+  optional: true
+- !Flag
+  description: final command line before executing
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: echo
+  optional: true
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: /usr/local/bin/GatherMolecularBarcodeDistributionByGene [-m <jvm_heap_size>]\
+  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: GatherMolecularBarcodeDistributionByGene\
+  \ [options]\n\nFor each gene, count the number of times each molecular barcode is\
+  \ observed [The UMI]Similar to digital expression,\nreads are filtered on map quality,\
+  \ and must overlap exons as well as genes. This program requires a tag for what\
+  \ gene a\nread is on, a molecular barcode tag, and a exon tag.  The exon and gene\
+  \ tags may not be present on every read.When\nfiltering the data for a set of barcodes\
+  \ to use, the data is filtered by ONE of the following methods (and if multiple\n\
+  params are filled in, the top one takes precidence):\n1) CELL_BC_FILE, to filter\
+  \ by the some fixed list of cell barcodes2) MIN_NUM_GENES_PER_CELL 3)\nMIN_NUM_TRANSCRIPTS_PER_CELL\
+  \ 4) NUM_CORE_BARCODES 5) MIN_NUM_READS_PER_CELL\nVersion: 2.3.0(34e6572_1555443285)\n\
+  \n\nOptions:\n\n--help\n-h                            Displays options specific\
+  \ to this tool.\n\n--stdhelp\n-H                            Displays options specific\
+  \ to this tool AND options common to all Picard command line\n                 \
+  \             tools.\n\n--version                     Displays program version.\n\
+  \nOUTPUT=File\nO=File                        Output file of with 4 columns: CELL,\
+  \ GENE, MOLECULAR BC, #Observations. This supports\n                           \
+  \   zipped formats like gz and bz2.  Required. \n\nINPUT=File\nI=File          \
+  \              The input SAM or BAM file to analyze.  Required. \n\nCELL_BARCODE_TAG=String\
+  \       The cell barcode tag.  If there are no reads with this tag, the program\
+  \ will assume that\n                              all reads belong to the same cell\
+  \ and process in single sample mode.  Default value: XC.\n                     \
+  \         This option can be set to 'null' to clear the default value. \n\nMOLECULAR_BARCODE_TAG=String\
+  \  The molecular barcode tag.  Default value: XM. This option can be set to 'null'\
+  \ to clear\n                              the default value. \n\nEDIT_DISTANCE=Integer\
+  \         The edit distance that molecular barcodes should be combined at within\
+  \ a gene.  Default\n                              value: 1. This option can be set\
+  \ to 'null' to clear the default value. \n\nREAD_MQ=Integer               The map\
+  \ quality of the read to be included.  Default value: 10. This option can be set\
+  \ to\n                              'null' to clear the default value. \n\nMIN_BC_READ_THRESHOLD=Integer\
+  \ The minimum number of reads a molecular barcode should have to be considered.\
+  \  This is\n                              done AFTER edit distance collapse of barcodes.\
+  \  Default value: 0. This option can be set\n                              to 'null'\
+  \ to clear the default value. \n\nMIN_NUM_READS_PER_CELL=IntegerGather up all cell\
+  \ barcodes that have more than some number of reads.  Default value:\n         \
+  \                     null. \n\nMIN_NUM_GENES_PER_CELL=IntegerThe minumum number\
+  \ of genes for a cell barcode to be reported.  Default value: null. \n\nMIN_NUM_TRANSCRIPTS_PER_CELL=Integer\n\
+  \                              The minumum number of transcripts for a cell barcode\
+  \ to be reported.  Default value: null.\n\nNUM_CORE_BARCODES=Integer     Number\
+  \ of cells that you think are in the library.  This accomplishes the same goals\
+  \ as\n                              the MIN_NUM_READS_CORE argument, but instead\
+  \ of defining barcodes as important based on\n                              the\
+  \ number of reads, it picks the top  barcodes as core.  Default value: null. \n\n\
+  CELL_BC_FILE=File             Override CELL_BARCODE and MIN_NUM_READS_PER_CELL,\
+  \ and process reads that have the cell\n                              barcodes in\
+  \ this file instead.  The file has 1 column with no header.  Default value:\n  \
+  \                            null. \n\nUSE_STRAND_INFO=Boolean       Is the library\
+  \ stranded?  If so, use the strand info to more precisely place reads on the\n \
+  \                             correct gene, and ignore reads that are on the wrong\
+  \ strand.  Default value: true. This\n                              option can be\
+  \ set to 'null' to clear the default value. Possible values: {true, false} \n\n\
+  RARE_UMI_FILTER_THRESHOLD=Double\n                              Drop UMIs within\
+  \ a cell/gene pair that occur less than the average number of reads* for\n     \
+  \                         all UMIs in the cell/gene pair.  For example, if you had\
+  \ on average 1000 reads per UMI and\n                              a UMI with 1-10\
+  \ reads, those small UMIs would be removed when this frequency was set to\n    \
+  \                          0.01.This is off by default.  A sensible value might\
+  \ be 0.01.  Default value: 0.0. This\n                              option can be\
+  \ set to 'null' to clear the default value. \n\nGENE_NAME_TAG=String          Gene\
+  \ Name tag.  Takes on the gene name this read overlaps (if any)  Default value:\
+  \ gn.\n                              This option can be set to 'null' to clear the\
+  \ default value. \n\nGENE_STRAND_TAG=String        Gene Strand tag.  For a given\
+  \ gene name , this is the strand of the gene.  Default value:\n                \
+  \              gs. This option can be set to 'null' to clear the default value.\
+  \ \n\nGENE_FUNCTION_TAG=String      Gene Function tag.  For a given gene name ,\
+  \ this is the function of the gene at this\n                              read's\
+  \ position: UTR/CODING/INTRONIC/...  Default value: gf. This option can be set to\n\
+  \                              'null' to clear the default value. \n\nSTRAND_STRATEGY=StrandStrategyThe\
+  \ strand strategy decides which reads will be used by analysis.  The SENSE strategy\n\
+  \                              requires the read and annotation to have the same\
+  \ strand.  The ANTISENSE strategy requires\n                              the read\
+  \ and annotation to be on opposite strands.  The BOTH strategy is permissive, and\n\
+  \                              allows the read to be on either strand.  Default\
+  \ value: SENSE. This option can be set to\n                              'null'\
+  \ to clear the default value. Possible values: {SENSE, ANTISENSE, BOTH} \n\nLOCUS_FUNCTION_LIST=LocusFunction\n\
+  \                              A list of functional annotations that reads need\
+  \ to be completely contained by to be\n                              considered\
+  \ for analysis.  Default value: [CODING, UTR]. This option can be set to 'null'\n\
+  \                              to clear the default value. Possible values: {INTERGENIC,\
+  \ INTRONIC, UTR, CODING,\n                              RIBOSOMAL} This option may\
+  \ be specified 0 or more times. This option can be set to 'null'\n             \
+  \                 to clear the default list. \n\n"
+generated_using:
+- --help

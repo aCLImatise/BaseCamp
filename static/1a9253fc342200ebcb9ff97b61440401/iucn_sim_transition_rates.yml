@@ -1,0 +1,147 @@
+!Command
+command:
+- iucn_sim
+- transition_rates
+positional: []
+named:
+- !Flag
+  description: "File containing species list and current IUCN status\nof species,\
+    \ as well as generation length (GL) data\nestimates if available. GL data is only\
+    \ used for '--\nextinction_probs_mode 0' ('species_data.txt' output\nfrom get_iucn_data\
+    \ function)."
+  synonyms:
+  - --species_data
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "File containing IUCN history of the reference group\nfor transition\
+    \ rate estimation ('*_iucn_history.txt'\noutput of get_iucn_data function)."
+  synonyms:
+  - --iucn_history
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: Provide path to outdir where results will be saved.
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Set to '0' to use IUCN defined extinction\nprobabilities (e.g. Mooers\
+    \ et al, 2008 approach), also\nusing available GL data to estimate species-specific\n\
+    extinction probabilities. Set to '1' to simulate\nextinctions based on recorded\
+    \ extinctions in IUCN\nhistory (e.g. Monroe et al, 2019 approach, no GL data\n\
+    is being used)."
+  synonyms:
+  - --extinction_probs_mode
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "File containing list of taxa that are likely extinct,\nbut that are\
+    \ listed as extant in IUCN, including the\nyear of their assessment as possibly\
+    \ extinct\n('possibly_extinct_reference_taxa.txt' output from\nget_iucn_data function).\
+    \ These species will then be\nmodeled as extinct by the esimate_rates function,\n\
+    which will effect the estimated extinction\nprobabilities when chosing `--extinction_probs_mode\
+    \ 1`"
+  synonyms:
+  - --possibly_extinct_list
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "How many rates to sample from the posterior transition\nrate estimates.\
+    \ These rates will be used to populate\ntransition rate q-matrices for downstream\
+    \ simulations.\nLater on you can still chose to run more simulation\nreplicates\
+    \ than the here specified number of produced\ntransition rate q-matrices, in which\
+    \ case the\n`run_sim` function will randomely resample from the\navailable q-matrices\
+    \ (default=100, this is ususally\nsufficient, larger numbers can lead to very\
+    \ high\noutput file size volumes)."
+  synonyms:
+  - --rate_samples
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Number of generations for MCMC for transition rate\nestimation (default=100000)."
+  synonyms:
+  - --n_gen
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Burn-in for MCMC for transition rate estimation\n(default=1000)."
+  synonyms:
+  - --burnin
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Set random seed for the MCMC.
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: iucn_sim transition_rates [-h] --species_data <path> --iucn_history\n\
+  \                                 <path> --outdir <path>\n                     \
+  \            [--extinction_probs_mode N]\n                                 [--possibly_extinct_list\
+  \ <path>]\n                                 [--rate_samples N] [--n_gen N] [--burnin\
+  \ N]\n                                 [--seed SEED]\n\nMCMC-estimation of status\
+  \ transition rates from IUCN record Created on Mon Oct\n28 14:43:44 2019 @author:\
+  \ Tobias Andermann (tobias.andermann@bioenv.gu.se)\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --species_data <path>\n \
+  \                       File containing species list and current IUCN status\n \
+  \                       of species, as well as generation length (GL) data\n   \
+  \                     estimates if available. GL data is only used for '--\n   \
+  \                     extinction_probs_mode 0' ('species_data.txt' output\n    \
+  \                    from get_iucn_data function).\n  --iucn_history <path>\n  \
+  \                      File containing IUCN history of the reference group\n   \
+  \                     for transition rate estimation ('*_iucn_history.txt'\n   \
+  \                     output of get_iucn_data function).\n  --outdir <path>    \
+  \   Provide path to outdir where results will be saved.\n  --extinction_probs_mode\
+  \ N\n                        Set to '0' to use IUCN defined extinction\n       \
+  \                 probabilities (e.g. Mooers et al, 2008 approach), also\n     \
+  \                   using available GL data to estimate species-specific\n     \
+  \                   extinction probabilities. Set to '1' to simulate\n         \
+  \               extinctions based on recorded extinctions in IUCN\n            \
+  \            history (e.g. Monroe et al, 2019 approach, no GL data\n           \
+  \             is being used).\n  --possibly_extinct_list <path>\n              \
+  \          File containing list of taxa that are likely extinct,\n             \
+  \           but that are listed as extant in IUCN, including the\n             \
+  \           year of their assessment as possibly extinct\n                     \
+  \   ('possibly_extinct_reference_taxa.txt' output from\n                       \
+  \ get_iucn_data function). These species will then be\n                        modeled\
+  \ as extinct by the esimate_rates function,\n                        which will\
+  \ effect the estimated extinction\n                        probabilities when chosing\
+  \ `--extinction_probs_mode 1`\n  --rate_samples N      How many rates to sample\
+  \ from the posterior transition\n                        rate estimates. These rates\
+  \ will be used to populate\n                        transition rate q-matrices for\
+  \ downstream simulations.\n                        Later on you can still chose\
+  \ to run more simulation\n                        replicates than the here specified\
+  \ number of produced\n                        transition rate q-matrices, in which\
+  \ case the\n                        `run_sim` function will randomely resample from\
+  \ the\n                        available q-matrices (default=100, this is ususally\n\
+  \                        sufficient, larger numbers can lead to very high\n    \
+  \                    output file size volumes).\n  --n_gen N             Number\
+  \ of generations for MCMC for transition rate\n                        estimation\
+  \ (default=100000).\n  --burnin N            Burn-in for MCMC for transition rate\
+  \ estimation\n                        (default=1000).\n  --seed SEED           Set\
+  \ random seed for the MCMC.\n"
+generated_using:
+- --help

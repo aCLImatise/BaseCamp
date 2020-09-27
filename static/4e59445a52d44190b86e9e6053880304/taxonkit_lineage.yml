@@ -1,0 +1,115 @@
+!Command
+command:
+- taxonkit
+- lineage
+positional: []
+named:
+- !Flag
+  description: field delimiter in lineage (default ";")
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: appending lineage consisting of taxids
+  synonyms:
+  - -t
+  - --show-lineage-taxids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: appending rank of taxids
+  synonyms:
+  - -r
+  - --show-rank
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show status code between lineage
+  synonyms:
+  - -c
+  - --show-status-code
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: field index of taxid. data should be tab-separated (default 1)
+  synonyms:
+  - -i
+  - --taxid-field
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: directory containing nodes.dmp and names.dmp (default "/root/.taxonkit")
+  synonyms:
+  - --data-dir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: use line buffering on output, i.e., immediately writing to stdin/file
+    for every line of output
+  synonyms:
+  - --line-buffered
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'number of CPUs. 2 is enough (default value: 1 for single-CPU PC, 2
+    for others) (default 2)'
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: print verbose information
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for lineage
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "query lineage of given taxids\n\nInput:\n  - List of taxids, one taxid\
+  \ per line.\n  - Or tab-delimited format, please specify taxid field with flag -i/--taxid-field.\n\
+  \  - Supporting (gzipped) file or STDIN.\n\nOutput:\n  0. Input line.\n  1. Status\
+  \ code (optional with flag -c/--show-status-code)\n     - \"-1\" for queries not\
+  \ found in whole database.\n     - \"0\" for deleted taxids, provided by \"delnodes.dmp\"\
+  .\n     - New taxids for merged taxids, provided by \"merged.dmp\".\n     - Taxids\
+  \ for these found in \"nodes.dmp\".\n  2. Lineage, delimiter can be changed with\
+  \ flag -d/--delimiter.\n  3. Lineage taxids (optional with flag -t/--show-lineage-taxids)\n\
+  \  4. Rank (optional with flag -r/--show-rank)\n\nUsage:\n  taxonkit lineage [flags]\n\
+  \nFlags:\n  -d, --delimiter string      field delimiter in lineage (default \";\"\
+  )\n  -h, --help                  help for lineage\n  -t, --show-lineage-taxids \
+  \  appending lineage consisting of taxids\n  -r, --show-rank             appending\
+  \ rank of taxids\n  -c, --show-status-code      show status code between lineage\n\
+  \  -i, --taxid-field int       field index of taxid. data should be tab-separated\
+  \ (default 1)\n\nGlobal Flags:\n      --data-dir string   directory containing nodes.dmp\
+  \ and names.dmp (default \"/root/.taxonkit\")\n      --line-buffered     use line\
+  \ buffering on output, i.e., immediately writing to stdin/file for every line of\
+  \ output\n  -o, --out-file string   out file (\"-\" for stdout, suffix .gz for gzipped\
+  \ out) (default \"-\")\n  -j, --threads int       number of CPUs. 2 is enough (default\
+  \ value: 1 for single-CPU PC, 2 for others) (default 2)\n      --verbose       \
+  \    print verbose information\n"
+generated_using:
+- --help

@@ -1,0 +1,267 @@
+!Command
+command:
+- RNASeq-MATS.py
+positional: []
+named:
+- !Flag
+  description: An annotation of genes and transcripts in GTF format
+  synonyms:
+  - --gtf
+  args: !SimpleFlagArg
+    name: GTF
+  optional: true
+- !Flag
+  description: "A text file containing a comma separated list of the\nBAM files for\
+    \ sample_1. (Only if using BAM)"
+  synonyms:
+  - --b1
+  args: !SimpleFlagArg
+    name: B1
+  optional: true
+- !Flag
+  description: "A text file containing a comma separated list of the\nBAM files for\
+    \ sample_2. (Only if using BAM)"
+  synonyms:
+  - --b2
+  args: !SimpleFlagArg
+    name: B2
+  optional: true
+- !Flag
+  description: "A text file containing a comma separated list of the\nFASTQ files\
+    \ for sample_1. If using paired reads the\nformat is \":\" to separate pairs and\
+    \ \",\" to separate\nreplicates. (Only if using fastq)"
+  synonyms:
+  - --s1
+  args: !SimpleFlagArg
+    name: S1
+  optional: true
+- !Flag
+  description: "A text file containing a comma separated list of the\nFASTQ files\
+    \ for sample_2. If using paired reads the\nformat is \":\" to separate pairs and\
+    \ \",\" to separate\nreplicates. (Only if using fastq)"
+  synonyms:
+  - --s2
+  args: !SimpleFlagArg
+    name: S2
+  optional: true
+- !Flag
+  description: The directory for final output
+  synonyms:
+  - --od
+  args: !SimpleFlagArg
+    name: OD
+  optional: true
+- !Flag
+  description: "The directory for intermediate output such as \".rmats\"\nfiles from\
+    \ the prep step"
+  synonyms:
+  - --tmp
+  args: !SimpleFlagArg
+    name: TMP
+  optional: true
+- !Flag
+  description: "Type of read used in the analysis: either \"paired\" for\npaired-end\
+    \ data or \"single\" for single-end data.\nDefault: paired"
+  synonyms:
+  - -t
+  args: !ChoiceFlagArg
+    choices: !!set
+      paired:
+      single:
+  optional: true
+- !Flag
+  description: "Library type. Use fr-firststrand or fr-secondstrand\nfor strand-specific\
+    \ data. Default: fr-unstranded"
+  synonyms:
+  - --libType
+  args: !ChoiceFlagArg
+    choices: !!set
+      fr-unstranded:
+      fr-secondstrand:
+      fr-firststrand:
+  optional: true
+- !Flag
+  description: The length of each read
+  synonyms:
+  - --readLength
+  args: !SimpleFlagArg
+    name: READLENGTH
+  optional: true
+- !Flag
+  description: "Allow reads with lengths that differ from --readLength\nto be processed.\
+    \ --readLength will still be used to\ndetermine IncFormLen and SkipFormLen"
+  synonyms:
+  - --variable-read-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The anchor length. Default is 1
+  synonyms:
+  - --anchorLength
+  args: !SimpleFlagArg
+    name: ANCHORLENGTH
+  optional: true
+- !Flag
+  description: "The \"anchor length\" or \"overhang length\" used in the\naligner.\
+    \ At least \"anchor length\" NT must be mapped to\neach end of a given junction.\
+    \ The default is 6. (Only\nif using fastq)"
+  synonyms:
+  - --tophatAnchor
+  args: !SimpleFlagArg
+    name: TOPHATANCHOR
+  optional: true
+- !Flag
+  description: "The directory name of the STAR binary indices (name of\nthe directory\
+    \ that contains the SA file). (Only if\nusing fastq)"
+  synonyms:
+  - --bi
+  args: !SimpleFlagArg
+    name: BINDEX
+  optional: true
+- !Flag
+  description: "The number of threads. The optimal number of threads\nshould be equal\
+    \ to the number of CPU cores. Default: 1"
+  synonyms:
+  - --nthread
+  args: !SimpleFlagArg
+    name: NTHREAD
+  optional: true
+- !Flag
+  description: "The number of threads for the statistical model.\nDefault: 1"
+  synonyms:
+  - --tstat
+  args: !SimpleFlagArg
+    name: TSTAT
+  optional: true
+- !Flag
+  description: "The cutoff splicing difference. The cutoff used in the\nnull hypothesis\
+    \ test for differential splicing. The\ndefault is 0.0001 for 0.01% difference.\
+    \ Valid: 0 <=\ncutoff < 1. Does not apply to the paired stats model"
+  synonyms:
+  - --cstat
+  args: !SimpleFlagArg
+    name: CSTAT
+  optional: true
+- !Flag
+  description: "Specify which step(s) of rMATS to run. Default: both.\nprep: preprocess\
+    \ BAMs and generate a .rmats file.\npost: load .rmats file(s) into memory, detect\
+    \ and\ncount alternative splicing events, and calculate P\nvalue (if not --statoff).\
+    \ both: prep + post. inte\n(integrity): check that the BAM filenames recorded\
+    \ by\nthe prep task(s) match the BAM filenames for the\ncurrent command line"
+  synonyms:
+  - --task
+  args: !ChoiceFlagArg
+    choices: !!set
+      both:
+      prep:
+      post:
+      inte:
+  optional: true
+- !Flag
+  description: Skip the statistical analysis
+  synonyms:
+  - --statoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the paired stats model
+  synonyms:
+  - --paired-stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enable detection of novel splice sites (unannotated\nsplice sites).\
+    \ Default is no detection of novel splice\nsites"
+  synonyms:
+  - --novelSS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum Intron Length. Only impacts --novelSS\nbehavior. Default:\
+    \ 50"
+  synonyms:
+  - --mil
+  args: !SimpleFlagArg
+    name: MIL
+  optional: true
+- !Flag
+  description: "Maximum Exon Length. Only impacts --novelSS behavior.\nDefault: 500\n"
+  synonyms:
+  - --mel
+  args: !SimpleFlagArg
+    name: MEL
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: RNASeq-MATS.py [options]\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n  --version             show program's\
+  \ version number and exit\n  --gtf GTF             An annotation of genes and transcripts\
+  \ in GTF format\n  --b1 B1               A text file containing a comma separated\
+  \ list of the\n                        BAM files for sample_1. (Only if using BAM)\n\
+  \  --b2 B2               A text file containing a comma separated list of the\n\
+  \                        BAM files for sample_2. (Only if using BAM)\n  --s1 S1\
+  \               A text file containing a comma separated list of the\n         \
+  \               FASTQ files for sample_1. If using paired reads the\n          \
+  \              format is \":\" to separate pairs and \",\" to separate\n       \
+  \                 replicates. (Only if using fastq)\n  --s2 S2               A text\
+  \ file containing a comma separated list of the\n                        FASTQ files\
+  \ for sample_2. If using paired reads the\n                        format is \"\
+  :\" to separate pairs and \",\" to separate\n                        replicates.\
+  \ (Only if using fastq)\n  --od OD               The directory for final output\n\
+  \  --tmp TMP             The directory for intermediate output such as \".rmats\"\
+  \n                        files from the prep step\n  -t {paired,single}    Type\
+  \ of read used in the analysis: either \"paired\" for\n                        paired-end\
+  \ data or \"single\" for single-end data.\n                        Default: paired\n\
+  \  --libType {fr-unstranded,fr-firststrand,fr-secondstrand}\n                  \
+  \      Library type. Use fr-firststrand or fr-secondstrand\n                   \
+  \     for strand-specific data. Default: fr-unstranded\n  --readLength READLENGTH\n\
+  \                        The length of each read\n  --variable-read-length\n   \
+  \                     Allow reads with lengths that differ from --readLength\n \
+  \                       to be processed. --readLength will still be used to\n  \
+  \                      determine IncFormLen and SkipFormLen\n  --anchorLength ANCHORLENGTH\n\
+  \                        The anchor length. Default is 1\n  --tophatAnchor TOPHATANCHOR\n\
+  \                        The \"anchor length\" or \"overhang length\" used in the\n\
+  \                        aligner. At least \"anchor length\" NT must be mapped to\n\
+  \                        each end of a given junction. The default is 6. (Only\n\
+  \                        if using fastq)\n  --bi BINDEX           The directory\
+  \ name of the STAR binary indices (name of\n                        the directory\
+  \ that contains the SA file). (Only if\n                        using fastq)\n \
+  \ --nthread NTHREAD     The number of threads. The optimal number of threads\n \
+  \                       should be equal to the number of CPU cores. Default: 1\n\
+  \  --tstat TSTAT         The number of threads for the statistical model.\n    \
+  \                    Default: 1\n  --cstat CSTAT         The cutoff splicing difference.\
+  \ The cutoff used in the\n                        null hypothesis test for differential\
+  \ splicing. The\n                        default is 0.0001 for 0.01% difference.\
+  \ Valid: 0 <=\n                        cutoff < 1. Does not apply to the paired\
+  \ stats model\n  --task {prep,post,both,inte}\n                        Specify which\
+  \ step(s) of rMATS to run. Default: both.\n                        prep: preprocess\
+  \ BAMs and generate a .rmats file.\n                        post: load .rmats file(s)\
+  \ into memory, detect and\n                        count alternative splicing events,\
+  \ and calculate P\n                        value (if not --statoff). both: prep\
+  \ + post. inte\n                        (integrity): check that the BAM filenames\
+  \ recorded by\n                        the prep task(s) match the BAM filenames\
+  \ for the\n                        current command line\n  --statoff           \
+  \  Skip the statistical analysis\n  --paired-stats        Use the paired stats model\n\
+  \  --novelSS             Enable detection of novel splice sites (unannotated\n \
+  \                       splice sites). Default is no detection of novel splice\n\
+  \                        sites\n  --mil MIL             Minimum Intron Length. Only\
+  \ impacts --novelSS\n                        behavior. Default: 50\n  --mel MEL\
+  \             Maximum Exon Length. Only impacts --novelSS behavior.\n          \
+  \              Default: 500\n"
+generated_using:
+- --help

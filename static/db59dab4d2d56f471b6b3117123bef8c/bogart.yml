@@ -1,0 +1,282 @@
+!Command
+command:
+- bogart
+positional:
+- !Positional
+  description: overlapsUsed
+  position: 0
+  name: overlapQuality
+  optional: false
+- !Positional
+  description: intersections
+  position: 1
+  name: chunkGraph
+  optional: false
+- !Positional
+  description: intersectionBreaking
+  position: 2
+  name: populate
+  optional: false
+- !Positional
+  description: intersectionBubblesDebug
+  position: 3
+  name: intersectionBubbles
+  optional: false
+- !Positional
+  description: intersectionJoiningDebug
+  position: 4
+  name: intersectionJoining
+  optional: false
+- !Positional
+  description: happiness
+  position: 5
+  name: containedPlacement
+  optional: false
+- !Positional
+  description: mateSplitAnalysis
+  position: 6
+  name: intermediateUnitigs
+  optional: false
+- !Positional
+  description: setParentAndHang
+  position: 7
+  name: mateSplitCoveragePlot
+  optional: false
+- !Positional
+  description: No output prefix name (-o option) supplied.
+  position: 8
+  name: stderr
+  optional: false
+named:
+- !Flag
+  description: Mandatory path to an ovlStore.
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mandatory path to a gkpStore.
+  synonyms:
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mandatory path to a tigStore (can exist or not).
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mandatory name for the output files
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: Target number of fragments per tigStore (consensus) partition
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: b
+  optional: true
+- !Flag
+  description: Remove edges to spur reads from best overlap graph.
+  synonyms:
+  - -RS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't seed promiscuous unitigs with suspicious reads.
+  synonyms:
+  - -NS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't place contained reads in singleton unitigs.
+  synonyms:
+  - -CS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove weak overlaps, those in the lower t fraction of erates per overlap
+    end.
+  synonyms:
+  - -RW
+  args: !SimpleFlagArg
+    name: t
+  optional: true
+- !Flag
+  description: Join promiscuous unitigs using unused best edges.
+  synonyms:
+  - -J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Shatter repeats.  Enabled with -R and -E; if neither are supplied,\n\
+    repeat fragments are promoted to singleton unitigs (unless -DP)."
+  synonyms:
+  - -SR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shatter repeats, rebuild
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shatter repeats, extend unique unitigs
+  synonyms:
+  - -E
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "When -R or -E, don't promote shattered leftovers to unitigs.\nThis\
+    \ WILL cause CGW to fail; diagnostic only."
+  synonyms:
+  - -DP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Force reads below 'len' bases to be singletons.\nThis WILL cause CGW\
+    \ to fail; diagnostic only."
+  synonyms:
+  - -RL
+  args: !SimpleFlagArg
+    name: len
+  optional: true
+- !Flag
+  description: "Use N compute threads during repeat detection.\n0 - use OpenMP default\
+    \ (default)\n1 - use one thread"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: no more than 0.020 fraction (2.0%) error
+  synonyms:
+  - -eg
+  args: !SimpleFlagArg
+    name: '0.020'
+  optional: true
+- !Flag
+  description: no more than 2 errors (useful with short reads)
+  synonyms:
+  - -Eg
+  args: !SimpleFlagArg
+    name: '2'
+  optional: true
+- !Flag
+  description: no more than 0.045 fraction (4.5%) error when bubble popping and repeat
+    splitting
+  synonyms:
+  - -em
+  args: !SimpleFlagArg
+    name: '0.045'
+  optional: true
+- !Flag
+  description: no more than r errors (useful with short reads)
+  synonyms:
+  - -Em
+  args: !SimpleFlagArg
+    name: '4'
+  optional: true
+- !Flag
+  description: no shorter than 40 bases; AS_OVERLAP_MIN_LEN
+  synonyms:
+  - -el
+  args: !SimpleFlagArg
+    name: '40'
+  optional: true
+- !Flag
+  description: Use at most 'gb' gigabytes of memory for storing overlaps.
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: gb
+  optional: true
+- !Flag
+  description: Load at most 'num' overlaps per read.
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Only create the overlap graph, save to disk and quit.
+  synonyms:
+  - -create
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save the overlap graph to disk, and continue.
+  synonyms:
+  - -save
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enable logging/debugging for a specific component.
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: disable logging/debugging for a specific component.
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: bogart -o outputName -O ovlStore -G gkpStore -T tigStore\n\n  -O\
+  \         Mandatory path to an ovlStore.\n  -G         Mandatory path to a gkpStore.\n\
+  \  -T         Mandatory path to a tigStore (can exist or not).\n  -o prefix  Mandatory\
+  \ name for the output files\n\n  -B b       Target number of fragments per tigStore\
+  \ (consensus) partition\n\nAlgorithm Options\n\n  -RS        Remove edges to spur\
+  \ reads from best overlap graph.\n  -NS        Don't seed promiscuous unitigs with\
+  \ suspicious reads.\n  -CS        Don't place contained reads in singleton unitigs.\n\
+  \  -RW t      Remove weak overlaps, those in the lower t fraction of erates per\
+  \ overlap end.\n  -J         Join promiscuous unitigs using unused best edges.\n\
+  \  -SR        Shatter repeats.  Enabled with -R and -E; if neither are supplied,\n\
+  \               repeat fragments are promoted to singleton unitigs (unless -DP).\n\
+  \  -R         Shatter repeats, rebuild\n  -E         Shatter repeats, extend unique\
+  \ unitigs\n  -DP        When -R or -E, don't promote shattered leftovers to unitigs.\n\
+  \               This WILL cause CGW to fail; diagnostic only.\n  -RL len    Force\
+  \ reads below 'len' bases to be singletons.\n               This WILL cause CGW\
+  \ to fail; diagnostic only.\n\n  -threads N Use N compute threads during repeat\
+  \ detection.\n               0 - use OpenMP default (default)\n               1\
+  \ - use one thread\n\nOverlap Selection - an overlap will be considered for use\
+  \ in a unitig if either of\n                    the following conditions hold:\n\
+  \n  When constructing the Best Overlap Graph and Promiscuous Unitigs ('g'raph):\n\
+  \    -eg 0.020   no more than 0.020 fraction (2.0%) error\n    -Eg 2       no more\
+  \ than 2 errors (useful with short reads)\n\n  When popping bubbles and splitting\
+  \ repeat/unique junctions ('m'erging):\n    -em 0.045   no more than 0.045 fraction\
+  \ (4.5%) error when bubble popping and repeat splitting\n    -Em 4       no more\
+  \ than r errors (useful with short reads)\n\n  For both, the lower limit on overlap\
+  \ length\n    -el 40      no shorter than 40 bases; AS_OVERLAP_MIN_LEN\n\nOverlap\
+  \ Storage\n\n    -M gb    Use at most 'gb' gigabytes of memory for storing overlaps.\n\
+  \    -N num   Load at most 'num' overlaps per read.\n\n    -create  Only create\
+  \ the overlap graph, save to disk and quit.\n    -save    Save the overlap graph\
+  \ to disk, and continue.\n\nDebugging and Logging\n\n  -D <name>  enable logging/debugging\
+  \ for a specific component.\n  -d <name>  disable logging/debugging for a specific\
+  \ component.\n               overlapQuality\n               overlapsUsed\n     \
+  \          chunkGraph\n               intersections\n               populate\n \
+  \              intersectionBreaking\n               intersectionBubbles\n      \
+  \         intersectionBubblesDebug\n               intersectionJoining\n       \
+  \        intersectionJoiningDebug\n               containedPlacement\n         \
+  \      happiness\n               intermediateUnitigs\n               mateSplitAnalysis\n\
+  \               mateSplitDiscontinuous\n               mateSplitUnhappyContains\n\
+  \               mateSplitCoveragePlot\n               setParentAndHang\n       \
+  \        stderr\n\nNo output prefix name (-o option) supplied.\nNo gatekeeper store\
+  \ (-G option) supplied.\nNo overlap store (-O option) supplied.\nNo output tigStore\
+  \ (-T option) supplied.\n"
+generated_using:
+- --help

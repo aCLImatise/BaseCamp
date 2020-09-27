@@ -1,0 +1,84 @@
+!Command
+command:
+- merge_midas.py
+- species
+positional:
+- !Positional
+  description: Directory for output files
+  position: 0
+  name: outdir
+  optional: false
+named:
+- !Flag
+  description: Input to sample directories output by run_midas.py; see '-t' for details
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: "Specify one of the following:\nlist: -i is a comma-separated list\
+    \ (ex: /samples/sample_1,/samples/sample_2)\ndir: -i is a directory containing\
+    \ all samples (ex: /samples)\nfile: -i is a file of paths to samples (ex: /sample_paths.txt)"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INPUT_TYPE
+  optional: true
+- !Flag
+  description: "Path to reference database\nBy default the MIDAS_DB environmental\
+    \ variable is used"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: DB
+  optional: true
+- !Flag
+  description: Minimum per-sample marker-gene-depth for estimating species prevalence
+    (1.0)
+  synonyms:
+  - --sample_depth
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Maximum number of samples to process.\nUseful for testing (use all)"
+  synonyms:
+  - --max_samples
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Description: Merge species abundance files across samples\n\nUsage: merge_midas.py\
+  \ species <outdir> [options]\n\npositional arguments:\n  outdir                Directory\
+  \ for output files\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -i INPUT              Input to sample directories output by\
+  \ run_midas.py; see '-t' for details\n  -t INPUT_TYPE         Specify one of the\
+  \ following:\n                          list: -i is a comma-separated list (ex:\
+  \ /samples/sample_1,/samples/sample_2)\n                          dir: -i is a directory\
+  \ containing all samples (ex: /samples)\n                          file: -i is a\
+  \ file of paths to samples (ex: /sample_paths.txt)\n  -d DB                 Path\
+  \ to reference database\n                        By default the MIDAS_DB environmental\
+  \ variable is used\n  --sample_depth FLOAT  Minimum per-sample marker-gene-depth\
+  \ for estimating species prevalence (1.0)\n  --max_samples INT     Maximum number\
+  \ of samples to process.\n                        Useful for testing (use all)\n\
+  \nExamples:\n1) provide list of paths to sample directories:\nmerge_midas.py species\
+  \ /path/to/outdir -i /path/to/samples/sample_1,/path/to/samples/sample_2 -t list\n\
+  \n2) provide directory containing all samples:\nmerge_midas.py species /path/to/outdir\
+  \ -i /path/to/samples -t dir\n\n3) provide file containing paths to sample directories:\n\
+  merge_midas.py species /path/to/outdir -i /path/to/samples/sample_paths.txt -t file\n\
+  \n4) run a quick test:\nmerge_midas.py species /path/to/outdir -i /path/to/samples\
+  \ -t dir --max_samples 2\n\t\n"
+generated_using:
+- --help

@@ -1,0 +1,161 @@
+!Command
+command:
+- planemo
+- shed_diff
+positional:
+- !Positional
+  description: --fail_fast                If multiple repositories are specified and
+    an
+  position: 0
+  name: directories.
+  optional: false
+named:
+- !Flag
+  description: "This command will return an exit code of:\n- 0 if there are no detected\
+    \ differences. - 1 if there are differences. -\n2 if the target repository doesn't\
+    \ exist. - >200 if there are errors\nattempting to perform a diff.\n**Warning:**\
+    \ ``shed_diff`` doesn't inspect repository metadata, this\ndifference applies\
+    \ only to the file contents of files that would actually\nbe uploaded to the repository."
+  synonyms:
+  - --shed_target_source
+  args: !SimpleFlagArg
+    name: testtoolshed
+  optional: true
+- !Flag
+  description: Recursively perform command for nested repository
+  synonyms:
+  - -r
+  - --recursive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tool Shed repository owner (username).
+  synonyms:
+  - --owner
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Tool Shed repository name (defaults to the\ninferred tool directory\
+    \ name)."
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "E-mail for Tool Shed auth (required unless\nshed_key is specified)."
+  synonyms:
+  - --shed_email
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "API key for Tool Shed access. An API key is\nrequired unless e-mail\
+    \ and password is specified.\nThis key can be specified with either --shed_key\n\
+    or --shed_key_from_env."
+  synonyms:
+  - --shed_key
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Environment variable to read API key for Tool\nShed access from."
+  synonyms:
+  - --shed_key_from_env
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Password for Tool Shed auth (required unless\nshed_key is specified)."
+  synonyms:
+  - --shed_password
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Tool Shed to target (this can be 'toolshed',\n'testtoolshed', 'local'\
+    \ (alias for\nhttp://localhost:9009/), an arbitrary url or\nmappings defined ~/.planemo.yml."
+  synonyms:
+  - -t
+  - --shed_target
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Send diff output to specified file.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Do not attempt smart diff of XML to filter out\nattributes populated\
+    \ by the Tool Shed."
+  synonyms:
+  - --raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output an XUnit report, useful for CI testing
+  synonyms:
+  - --report_xunit
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: planemo shed_diff [OPTIONS] PROJECT\n\n  diff between local repository\
+  \ and Tool Shed.\n\n  By default, this will produce a diff between this repository\
+  \ and what\n  would be uploaded to the Tool Shed with the `shed_upload` command\
+  \ - but\n  this command can be made to compare other combinations of repositories.\n\
+  \  Here are some examples\n\n      $ # diff for this repository and the main Tool\
+  \ Shed\n      $ planemo shed_diff\n      $ # diff for this repository and the test\
+  \ Tool Shed\n      $ planemo shed_diff --shed_target testtoolshed\n      $ # diff\
+  \ for the test Tool Shed and main Tool Shed\n      $ planemo shed_diff --shed_target_source\
+  \ testtoolshed\n      $ # diff for two an explicitly specified repositories (ignores\n\
+  \      $ # current project's shed YAML file.)\n      $ planemo shed_diff --owner\
+  \ peterjc --name blast_rbh\n          --shed_target_source testtoolshed\n\n  This\
+  \ command will return an exit code of:\n\n  - 0 if there are no detected differences.\
+  \ - 1 if there are differences. -\n  2 if the target repository doesn't exist. -\
+  \ >200 if there are errors\n  attempting to perform a diff.\n\n  **Warning:** ``shed_diff``\
+  \ doesn't inspect repository metadata, this\n  difference applies only to the file\
+  \ contents of files that would actually\n  be uploaded to the repository.\n\nOptions:\n\
+  \  -r, --recursive            Recursively perform command for nested repository\n\
+  \                             directories.\n  --fail_fast                If multiple\
+  \ repositories are specified and an\n                             error occurs stop\
+  \ immediately instead of\n                             processing remaining repositories.\n\
+  \  --owner TEXT               Tool Shed repository owner (username).\n  --name TEXT\
+  \                Tool Shed repository name (defaults to the\n                  \
+  \           inferred tool directory name).\n  --shed_email TEXT          E-mail\
+  \ for Tool Shed auth (required unless\n                             shed_key is\
+  \ specified).\n  --shed_key TEXT            API key for Tool Shed access. An API\
+  \ key is\n                             required unless e-mail and password is specified.\n\
+  \                             This key can be specified with either --shed_key\n\
+  \                             or --shed_key_from_env.\n  --shed_key_from_env TEXT\
+  \   Environment variable to read API key for Tool\n                            \
+  \ Shed access from.\n  --shed_password TEXT       Password for Tool Shed auth (required\
+  \ unless\n                             shed_key is specified).\n  -t, --shed_target\
+  \ TEXT     Tool Shed to target (this can be 'toolshed',\n                      \
+  \       'testtoolshed', 'local' (alias for\n                             http://localhost:9009/),\
+  \ an arbitrary url or\n                             mappings defined ~/.planemo.yml.\n\
+  \  -o, --output PATH          Send diff output to specified file.\n  --shed_target_source\
+  \ TEXT  Source Tool Shed to diff against (will ignore\n                        \
+  \     local project info specified). To compare the\n                          \
+  \   main Tool Shed against the test, set this to\n                             testtoolshed.\n\
+  \  --raw                      Do not attempt smart diff of XML to filter out\n \
+  \                            attributes populated by the Tool Shed.\n  --report_xunit\
+  \ PATH        Output an XUnit report, useful for CI testing\n  --help          \
+  \           Show this message and exit.\n"
+generated_using:
+- --help

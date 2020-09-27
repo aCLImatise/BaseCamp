@@ -1,0 +1,90 @@
+!Command
+command:
+- fast5seek
+positional: []
+named:
+- !Flag
+  description: "Directory of fast5 files you want to query. Program\nwill walk recursively\
+    \ through subdirectories."
+  synonyms:
+  - -i
+  - --fast5_dir
+  args: !RepeatFlagArg
+    name: FAST5_DIR
+  optional: true
+- !Flag
+  description: Fastq or BAM/SAM file(s).
+  synonyms:
+  - -r
+  - --reference
+  args: !RepeatFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: "Filename to write fast5 paths to. If nothing is\nentered, it will\
+    \ write the paths to STDOUT."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Only extract read ids for mapped reads in BAM/SAM
+  synonyms:
+  - -m
+  - --mapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not display progress bar.
+  synonyms:
+  - --no_progress_bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --log_level
+  args: !ChoiceFlagArg
+    choices: !!set
+      '4':
+      '2':
+      '5':
+      '0':
+      '3':
+      '1':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: fast5seek [-h] -i FAST5_DIR [FAST5_DIR ...] -r REFERENCE\n    \
+  \             [REFERENCE ...] [-o OUTPUT] [-m] [--log_level {0,1,2,3,4,5}]\n   \
+  \              [--no_progress_bar]\n\nOutputs paths of all the fast5 files from\
+  \ a given directory that are contained within a fastq or BAM/SAM file.\n\nPlease\
+  \ see the github page for more detailed instructions.\nhttps://github.com/mbhall88/fast5seek/\n\
+  \nContributors:\nMichael Hall (github@mbhall88)\nDarrin Schultz (github@conchoecia)\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -i FAST5_DIR [FAST5_DIR ...], --fast5_dir FAST5_DIR [FAST5_DIR ...]\n       \
+  \                 Directory of fast5 files you want to query. Program\n        \
+  \                will walk recursively through subdirectories.\n  -r REFERENCE [REFERENCE\
+  \ ...], --reference REFERENCE [REFERENCE ...]\n                        Fastq or\
+  \ BAM/SAM file(s).\n  -o OUTPUT, --output OUTPUT\n                        Filename\
+  \ to write fast5 paths to. If nothing is\n                        entered, it will\
+  \ write the paths to STDOUT.\n  -m, --mapped          Only extract read ids for\
+  \ mapped reads in BAM/SAM\n                        files.\n  --log_level {0,1,2,3,4,5}\n\
+  \                        Level of logging. 0 is none, 5 is for debugging.\n    \
+  \                    Default is 4 which will report info, warnings, errors,\n  \
+  \                      and critical information.\n  --no_progress_bar     Do not\
+  \ display progress bar.\n"
+generated_using:
+- --help

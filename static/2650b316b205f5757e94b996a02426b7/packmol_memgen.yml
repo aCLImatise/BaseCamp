@@ -1,0 +1,793 @@
+!Command
+command:
+- packmol-memgen
+positional:
+- !Positional
+  description: --xygauss C D H       set parameters for a curved 2d gaussian in the
+    xy
+  position: 0
+  name: bilayer.
+  optional: false
+- !Positional
+  description: --output OUTPUT       name of the PACKMOL generated PDB file
+  position: 0
+  name: written
+  optional: false
+named:
+- !Flag
+  description: prints this help message and exits
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: list of available lipids and corresponding charges
+  synonyms:
+  - --available_lipids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "list all lipids including experimental. Huge output\n(~4000)!"
+  synonyms:
+  - --available_lipids_all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":LIP2//LIP3, --lipids LIP1:LIP2//LIP3\nLipid(s) to be used for embeding\
+    \ the protein. It\nshould be a single string separated by ':' . If\ndifferent\
+    \ composition is used in leaflets, add '//' as\na separator.[ex. CHL1:DOPC//DOPE\
+    \ for a lower leaflet\nwith CHL1+DOPC and an upper leaflet with DOPE]. Can be\n\
+    defined multiple times for multi-bilayer systems\n(stacks 'up' or 'outside')"
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: LIP1
+  optional: true
+- !Flag
+  description: ":R2//R3, --ratio R1:R2//R3\nmixture ratio (set to 1 if only one lipid\
+    \ required).\nMust be in the same order and syntax as in lipids, and\ndefined\
+    \ once per bilayer [ex. 1:2//1]"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: R1
+  optional: true
+- !Flag
+  description: "specify the minimum distance between the maxmin values\nfor x y and\
+    \ z to the box boundaries. Default = 15 A.\nWorst case scenario is considered,\
+    \ so real distance\ncould be larger"
+  synonyms:
+  - --dist
+  args: !SimpleFlagArg
+    name: DIST
+  optional: true
+- !Flag
+  description: "specify the width of the water layer over the membrane\nor protein\
+    \ in the z axis. Default = 17.5"
+  synonyms:
+  - --dist_wat
+  args: !SimpleFlagArg
+    name: DIST_WAT
+  optional: true
+- !Flag
+  description: "specify a predefined distance between the maxmin\nvalues for x and\
+    \ y to the box boundaries. By default\nis calculated flexibly for each system."
+  synonyms:
+  - --distxy_fix
+  args: !SimpleFlagArg
+    name: DISTXY_FIX
+  optional: true
+- !Flag
+  description: places lipids all over the packed box, and not in a
+  synonyms:
+  - --self_assembly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set the curvature of the membrane patch. By default,\nmembranes are\
+    \ flat."
+  synonyms:
+  - --curvature
+  args: !SimpleFlagArg
+    name: CURVATURE
+  optional: true
+- !Flag
+  description: "inverse of curvature. Set the curvature as if on a\nvesicle with the\
+    \ provided radius."
+  synonyms:
+  - --curv_radius
+  args: !SimpleFlagArg
+    name: CURV_RADIUS
+  optional: true
+- !Flag
+  description: "Y Z          box dimensions vector for the x y z axes. Be sure to\n\
+    use dimensions that cover the complete protein to be\npacked!!"
+  synonyms:
+  - --dims
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: "solvate the system without adding lipids. Disables the\nflag --dist_wat,\
+    \ using only --dist to set the box\nsize. Under development!"
+  synonyms:
+  - --solvate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: cube shaped box. Only works with --solvate
+  synonyms:
+  - --cubic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do the lipid number estimation based on the volume\noccupied by the\
+    \ leaflet instead of APL. This might\ncause a great overestimation of the number\
+    \ of lipid\nmolecules!"
+  synonyms:
+  - --vol
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set desired leaflet width. 23 by default.
+  synonyms:
+  - --leaflet
+  args: !SimpleFlagArg
+    name: LEAFLET
+  optional: true
+- !Flag
+  description: "factor that multiplies the x/y sizes for the lipid\nmembrane segment.\
+    \ Might improve packing and handling\nby AMBER"
+  synonyms:
+  - --lip_offset
+  args: !SimpleFlagArg
+    name: LIP_OFFSET
+  optional: true
+- !Flag
+  description: "factor that multiplies the default APL values. Helpful\nif packing\
+    \ stretched membranes."
+  synonyms:
+  - --apl_offset
+  args: !SimpleFlagArg
+    name: APL_OFFSET
+  optional: true
+- !Flag
+  description: "sets the position BELOW which the CH3 carbon atoms in\nthe tail should\
+    \ be. By default defined in parameter\nfile"
+  synonyms:
+  - --tailplane
+  args: !SimpleFlagArg
+    name: TAILPLANE
+  optional: true
+- !Flag
+  description: "sets the position ABOVE which the PO4 phosphorus and N\natoms in the\
+    \ polar head group should be.By default\ndefined in parameter file"
+  synonyms:
+  - --headplane
+  args: !SimpleFlagArg
+    name: HEADPLANE
+  optional: true
+- !Flag
+  description: "makes a simple plot of loop number vs GENCAN\noptimization function\
+    \ value, and outputs the values to\nGENCAN.dat"
+  synonyms:
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: saves all intermediate steps into separate pdb files
+  synonyms:
+  - --traj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "skips grid building for volume estimation, and the\ncalculation is\
+    \ done just by estimating density"
+  synonyms:
+  - --notgridvol
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skips protonation by reduce
+  synonyms:
+  - --notprotonate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "build step by reduce (protonation of His and side-\nchain flips).\
+    \ Use with care if parametrizing with the\nscript!"
+  synonyms:
+  - --reducebuild
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skips deleting temporary files
+  synonyms:
+  - --keep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "avoids the printing of progress bar with time\nestimation in the final\
+    \ stage. Recommended if the job\nis piped into a file"
+  synonyms:
+  - --noprogress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use experimental APL where available, like\nAmberTools18 release.\
+    \ Kept for consistency with older\nversions. By default, terms estimated with\
+    \ Lipid17 are\nused"
+  synonyms:
+  - --apl_exp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: load custom memgen.parm file with APL and VOL values
+  synonyms:
+  - --memgen_parm
+  args: !SimpleFlagArg
+    name: MEMGEN_PARM
+  optional: true
+- !Flag
+  description: overwrite, even if files are present
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: doesn't trim preexisting hydrogens in the structure
+  synonyms:
+  - --nottrim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: log file name where detailed information is to be
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: the output will be in CHARMM format instead of AMBER
+  synonyms:
+  - --charmm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "TRANSLATE TRANSLATE\npass a vector as x y z to translate the oriented\
+    \ pdb.\nEx. ' 0 0 4 '"
+  synonyms:
+  - --translate
+  args: !SimpleFlagArg
+    name: TRANSLATE
+  optional: true
+- !Flag
+  description: verbose mode
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "PDB file(s) to embed. If many bilayers, it has to be\nspecified once\
+    \ for each bilayer. 'None' can be\nspecified and a bilayer without protein will\
+    \ be\ngenerated [ex. --pdb PDB1.pdb --pdb None --pdb\nPDB2.pdb (3 bilayers without\
+    \ protein in the middle)].\nIf no PDB is provided, the bilayer(s) will be membrane\n\
+    only (--distxy_fix has to be defined)."
+  synonyms:
+  - -p
+  - --pdb
+  args: !SimpleFlagArg
+    name: PDB
+  optional: true
+- !Flag
+  description: "adds pdb as solute into the water. Concentration has\nto be specified"
+  synonyms:
+  - --solute
+  args: !SimpleFlagArg
+    name: SOLUTE
+  optional: true
+- !Flag
+  description: "number of molecules/concentration to be used.\nConcentrations are\
+    \ specified in Molar by adding an 'M'\nas a suffix (Ex. 0.15M). If not added,\
+    \ a number of\nmolecules is assumed."
+  synonyms:
+  - --solute_con
+  args: !SimpleFlagArg
+    name: SOLUTE_CON
+  optional: true
+- !Flag
+  description: "absolute charge of the included solute. To be\nconsidered in the system\
+    \ neutralization"
+  synonyms:
+  - --solute_charge
+  args: !SimpleFlagArg
+    name: SOLUTE_CHARGE
+  optional: true
+- !Flag
+  description: solute should be added to membrane fraction
+  synonyms:
+  - --solute_inmem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "establishes a cylindrical restraint using the protein\nxy radius and\
+    \ z height + the input value. A value of 0\nwill use the protein radius. By default,\
+    \ no restraint\nis imposed."
+  synonyms:
+  - --solute_prot_dist
+  args: !SimpleFlagArg
+    name: SOLUTE_PROT_DIST
+  optional: true
+- !Flag
+  description: "use this flag if the protein has been previosuly\noriented and you\
+    \ want to avoid running MEMEMBED (i.e.\nfrom OPM)"
+  synonyms:
+  - --preoriented
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'in' or 'out'. By default proteins are oriented with\nthe n_ter oriented\
+    \ 'in' (or 'down'). relevant for\nmulti layer system. If defined for one protein,\
+    \ it has\nto be defined for all of them, following previous\norder"
+  synonyms:
+  - --n_ter
+  args: !SimpleFlagArg
+    name: N_TER
+  optional: true
+- !Flag
+  description: use MEMEMBED in beta barrel mode
+  synonyms:
+  - --barrel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "MEMEMBED by default cleans the PDB. Use this flag to\nkeep the ligands\
+    \ on the original PDB"
+  synonyms:
+  - --keepligs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "MEMEMBED optimization algorithm. 0 = Genetic\nalgorithm, 1 = Grid,\
+    \ 2 = Direct, 3 = GA five times"
+  synonyms:
+  - --mem_opt
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+- !Flag
+  description: "number of nloops for GENCAN routine in PACKMOL.\nPACKMOL MEMGEN uses\
+    \ 20 by default; you might consider\nincreasing the number to improve packing.\
+    \ Increasing\nthe number of components requires more GENCAN loops."
+  synonyms:
+  - --nloop
+  args: !SimpleFlagArg
+    name: NLOOP
+  optional: true
+- !Flag
+  description: "number of nloops for all-together packing. PACKMOL\nMEMGEN uses 100\
+    \ by default."
+  synonyms:
+  - --nloop_all
+  args: !SimpleFlagArg
+    name: NLOOP_ALL
+  optional: true
+- !Flag
+  description: "tolerance for detecting clashes between molecules in\nPACKMOL (defined\
+    \ as radius1+radius2). PACKMOL uses 2.0\nby default."
+  synonyms:
+  - --tolerance
+  args: !SimpleFlagArg
+    name: TOLERANCE
+  optional: true
+- !Flag
+  description: "radius considered for protein atoms to establish the\ntolerance for\
+    \ detecting clashes. PACKMOL MEMGEN uses\n1.5 by default."
+  synonyms:
+  - --prot_rad
+  args: !SimpleFlagArg
+    name: PROT_RAD
+  optional: true
+- !Flag
+  description: "frequency for writing intermediate results. PACKMOL\nuses 10 by default."
+  synonyms:
+  - --writeout
+  args: !SimpleFlagArg
+    name: WRITEOUT
+  optional: true
+- !Flag
+  description: will not run PACKMOL, even if it's available
+  synonyms:
+  - --notrun
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "turns PACKMOL random seed generator on. If a previous\npacking failed\
+    \ in the minimization problem, repacking\nwith this feature on might solve the\
+    \ problem."
+  synonyms:
+  - --random
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skips initial individual packing steps
+  synonyms:
+  - --packall
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "randomizes positions of badly placed molecules in\ninitial guess"
+  synonyms:
+  - --movebadrandom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prefix for generated PACKMOL input and log files
+  synonyms:
+  - --packlog
+  args: !SimpleFlagArg
+    name: PACKLOG
+  optional: true
+- !Flag
+  description: "adds salt at a concentration of 0.15M by default. Salt\nis always\
+    \ added considering estimated charges for the\nsystem."
+  synonyms:
+  - --salt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "{K+,Na+,Ca2+,Mg2+}\ncation to add. (K+ by default)"
+  synonyms:
+  - --salt_c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: modifies the default concentration for KCl. [M]
+  synonyms:
+  - --saltcon
+  args: !SimpleFlagArg
+    name: SALTCON
+  optional: true
+- !Flag
+  description: "if the concentration of salt specified is less than\nthe required\
+    \ to neutralize, will try to continue\nomitting the warning"
+  synonyms:
+  - --salt_override
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "no counterions are added. Will depend on pmemd\n'plasma' neutralization"
+  synonyms:
+  - --nocounter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: performs minimization by using pmemd.
+  synonyms:
+  - --minimize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "in case of parametrizing or minimizing the system with\nnon-canonical\
+    \ molecules. Give frcmod and lib filenames\nseparated by ':' [ex. --ligand_param\
+    \ FRCMOD:LIB]."
+  synonyms:
+  - --ligand_param
+  args: !SimpleFlagArg
+    name: LIGAND_PARAM
+  optional: true
+- !Flag
+  description: "if ligand parameters are included, use GAFF2 during\nparametrization\
+    \ (GAFF is used by default)"
+  synonyms:
+  - --gaff2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "extra lines added to the leap parametrization process.\nDelimit the\
+    \ line with quotes. The system is called SYS\ninto leap [ex. --leapline 'bond\
+    \ SYS.4.SG SYS.122.SG'\nto form SS bond between SG atoms of residues 4 and\n122]"
+  synonyms:
+  - --leapline
+  args: !SimpleFlagArg
+    name: LEAPLINE
+  optional: true
+- !Flag
+  description: use sander instead of pmemd.
+  synonyms:
+  - --sander
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "parametrizes the system by using tleap. Uses LIPID17,\nff14SB and\
+    \ TIP3P by default (check --ffwat and\n--ffprot)"
+  synonyms:
+  - --parametrize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "water model to be used during parametrization.If not\nset explicitly,\
+    \ will change depending on the protein\nff (--ffprot)"
+  synonyms:
+  - --ffwat
+  args: !ChoiceFlagArg
+    choices: !!set
+      tip3p:
+      tip4pew:
+      fb3:
+      tip4pd:
+      spceb:
+      opc:
+      spce:
+  optional: true
+- !Flag
+  description: protein ff to be used during parametrization.
+  synonyms:
+  - --ffprot
+  args: !ChoiceFlagArg
+    choices: !!set
+      ff15ipq:
+      ff19SB:
+      ff14SB:
+  optional: true
+- !Flag
+  description: "sets box dimension according to restraints used during\nthe packing.\
+    \ The default uses a vdW distance to the\nboundary"
+  synonyms:
+  - --tight_box
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "asumes a stacked double bilayer system for CompEL. The\ncomposition\
+    \ in --lipids will be used for both bilayers\nflipping the leaflets"
+  synonyms:
+  - --double
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "sets a charge imbalance between compartments (in\nelectron charge\
+    \ units). A positive imbalance implies\nan increase (decrease) in cations (anions)\
+    \ in the\ncentral compartment."
+  synonyms:
+  - --charge_imbalance
+  args: !SimpleFlagArg
+    name: CHARGE_IMBALANCE
+  optional: true
+- !Flag
+  description: "sets if cations or anions are used to imbalance the\nsystem charges.\
+    \ ('cat' by default)\n"
+  synonyms:
+  - --imbalance_ion
+  args: !ChoiceFlagArg
+    choices: !!set
+      cat:
+      an:
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: prints a short help message and exits
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: packmol-memgen [-h] [--help] [--available_lipids]\n           \
+  \           [--available_lipids_all] [-l LIP1:LIP2//LIP3]\n                    \
+  \  [-r R1:R2//R3] [--dist DIST] [--dist_wat DIST_WAT]\n                      [--distxy_fix\
+  \ DISTXY_FIX] [--self_assembly]\n                      [--xygauss C D H] [--curvature\
+  \ CURVATURE]\n                      [--curv_radius CURV_RADIUS] [--dims X Y Z] [--solvate]\n\
+  \                      [--cubic] [--vol] [--leaflet LEAFLET]\n                 \
+  \     [--lip_offset LIP_OFFSET] [--apl_offset APL_OFFSET]\n                    \
+  \  [--tailplane TAILPLANE] [--headplane HEADPLANE] [--plot]\n                  \
+  \    [--traj] [--notgridvol] [--notprotonate] [--reducebuild]\n                \
+  \      [--keep] [--noprogress] [--apl_exp]\n                      [--memgen_parm\
+  \ MEMGEN_PARM] [--overwrite] [--nottrim]\n                      [--log LOG] [--output\
+  \ OUTPUT] [--charmm]\n                      [--translate TRANSLATE TRANSLATE TRANSLATE]\
+  \ [--verbose]\n                      [-p PDB] [--solute SOLUTE] [--solute_con SOLUTE_CON]\n\
+  \                      [--solute_charge SOLUTE_CHARGE] [--solute_inmem]\n      \
+  \                [--solute_prot_dist SOLUTE_PROT_DIST] [--preoriented]\n       \
+  \               [--n_ter N_TER] [--barrel] [--keepligs]\n                      [--mem_opt\
+  \ {0,1,2,3}] [--nloop NLOOP]\n                      [--nloop_all NLOOP_ALL] [--tolerance\
+  \ TOLERANCE]\n                      [--prot_rad PROT_RAD] [--writeout WRITEOUT]\
+  \ [--notrun]\n                      [--random] [--packall] [--movebadrandom]\n \
+  \                     [--packlog PACKLOG] [--salt]\n                      [--salt_c\
+  \ {K+,Na+,Ca2+,Mg2+}] [--saltcon SALTCON]\n                      [--salt_override]\
+  \ [--nocounter] [--minimize]\n                      [--ligand_param LIGAND_PARAM]\
+  \ [--gaff2]\n                      [--leapline LEAPLINE] [--sander] [--parametrize]\n\
+  \                      [--ffwat {tip3p,tip4pd,tip4pew,opc,spce,spceb,fb3}]\n   \
+  \                   [--ffprot {ff14SB,ff15ipq,ff19SB}] [--tight_box]\n         \
+  \             [--double] [--charge_imbalance CHARGE_IMBALANCE]\n               \
+  \       [--imbalance_ion {cat,an}]\n\nThe script creates an input file for PACKMOL\
+  \ for creating a bilayer system\nwith a protein inserted in it. The input pdb file\
+  \ will be protonated and\noriented by default by using reduce and MEMEMBED; the\
+  \ user is encouraged to\ncheck the input and output files carefully! If the protein\
+  \ is preoriented, for\nexample by using PPM webserver from OPM\n(http://opm.phar.umich.edu/server.php),\
+  \ be sure to set the corresponding flag\n(--preoriented). In some cases the packed\
+  \ system might crash during the first\nMD step, specially when the system is minimized\
+  \ by using pmemd GPU code\n(cudaFree Memory allocation error). It's highly recommended\
+  \ that the\nminimization steps are performed on cpus (--minimize), but also changes\
+  \ in the\nbox boundaries or repacking with --random as an argument might help. If\
+  \ you\nuse this script, you should cite and/or acknowledge: **Leandro Martinez (L.\n\
+  Martinez, R. Andrade, E. G. Birgin, J. M. Martinez. Packmol: A package for\nbuilding\
+  \ initial configurations for molecular dynamics simulations. Journal of\nComputational\
+  \ Chemistry, 30(13):2157-2164, 2009.) **Tim Nugent (Nugent T,\nJones DT. Membrane\
+  \ protein orientation and refinement using a knowledge-based\nstatistical potential.\
+  \ BMC Bioinformatics. 2013 Sep 18;14:276.) **Bosco K. Ho\n(http://boscoh.com/ ;\
+  \ https://github.com/boscoh/pdbremix) **Benjamin D. Madej\n(charmmlipid2amber.py)\n\
+  \noptional arguments:\n  -h                    prints a short help message and exits\n\
+  \  --help                prints this help message and exits\n  --available_lipids\
+  \    list of available lipids and corresponding charges\n  --available_lipids_all\n\
+  \                        list all lipids including experimental. Huge output\n \
+  \                       (~4000)!\n  -l LIP1:LIP2//LIP3, --lipids LIP1:LIP2//LIP3\n\
+  \                        Lipid(s) to be used for embeding the protein. It\n    \
+  \                    should be a single string separated by ':' . If\n         \
+  \               different composition is used in leaflets, add '//' as\n       \
+  \                 a separator.[ex. CHL1:DOPC//DOPE for a lower leaflet\n       \
+  \                 with CHL1+DOPC and an upper leaflet with DOPE]. Can be\n     \
+  \                   defined multiple times for multi-bilayer systems\n         \
+  \               (stacks 'up' or 'outside')\n  -r R1:R2//R3, --ratio R1:R2//R3\n\
+  \                        mixture ratio (set to 1 if only one lipid required).\n\
+  \                        Must be in the same order and syntax as in lipids, and\n\
+  \                        defined once per bilayer [ex. 1:2//1]\n  --dist DIST  \
+  \         specify the minimum distance between the maxmin values\n             \
+  \           for x y and z to the box boundaries. Default = 15 A.\n             \
+  \           Worst case scenario is considered, so real distance\n              \
+  \          could be larger\n  --dist_wat DIST_WAT   specify the width of the water\
+  \ layer over the membrane\n                        or protein in the z axis. Default\
+  \ = 17.5\n  --distxy_fix DISTXY_FIX\n                        specify a predefined\
+  \ distance between the maxmin\n                        values for x and y to the\
+  \ box boundaries. By default\n                        is calculated flexibly for\
+  \ each system.\n  --self_assembly       places lipids all over the packed box, and\
+  \ not in a\n                        bilayer.\n  --xygauss C D H       set parameters\
+  \ for a curved 2d gaussian in the xy\n                        plane. Parameters\
+  \ are uncertainty in x, uncertainty in\n                        y and gaussian height.\
+  \ By default, membranes are flat.\n  --curvature CURVATURE\n                   \
+  \     set the curvature of the membrane patch. By default,\n                   \
+  \     membranes are flat.\n  --curv_radius CURV_RADIUS\n                       \
+  \ inverse of curvature. Set the curvature as if on a\n                        vesicle\
+  \ with the provided radius.\n  --dims X Y Z          box dimensions vector for the\
+  \ x y z axes. Be sure to\n                        use dimensions that cover the\
+  \ complete protein to be\n                        packed!!\n  --solvate        \
+  \     solvate the system without adding lipids. Disables the\n                 \
+  \       flag --dist_wat, using only --dist to set the box\n                    \
+  \    size. Under development!\n  --cubic               cube shaped box. Only works\
+  \ with --solvate\n  --vol                 do the lipid number estimation based on\
+  \ the volume\n                        occupied by the leaflet instead of APL. This\
+  \ might\n                        cause a great overestimation of the number of lipid\n\
+  \                        molecules!\n  --leaflet LEAFLET     set desired leaflet\
+  \ width. 23 by default.\n  --lip_offset LIP_OFFSET\n                        factor\
+  \ that multiplies the x/y sizes for the lipid\n                        membrane\
+  \ segment. Might improve packing and handling\n                        by AMBER\n\
+  \  --apl_offset APL_OFFSET\n                        factor that multiplies the default\
+  \ APL values. Helpful\n                        if packing stretched membranes.\n\
+  \  --tailplane TAILPLANE\n                        sets the position BELOW which\
+  \ the CH3 carbon atoms in\n                        the tail should be. By default\
+  \ defined in parameter\n                        file\n  --headplane HEADPLANE\n\
+  \                        sets the position ABOVE which the PO4 phosphorus and N\n\
+  \                        atoms in the polar head group should be.By default\n  \
+  \                      defined in parameter file\n  --plot                makes\
+  \ a simple plot of loop number vs GENCAN\n                        optimization function\
+  \ value, and outputs the values to\n                        GENCAN.dat\n  --traj\
+  \                saves all intermediate steps into separate pdb files\n  --notgridvol\
+  \          skips grid building for volume estimation, and the\n                \
+  \        calculation is done just by estimating density\n  --notprotonate      \
+  \  skips protonation by reduce\n  --reducebuild         build step by reduce (protonation\
+  \ of His and side-\n                        chain flips). Use with care if parametrizing\
+  \ with the\n                        script!\n  --keep                skips deleting\
+  \ temporary files\n  --noprogress          avoids the printing of progress bar with\
+  \ time\n                        estimation in the final stage. Recommended if the\
+  \ job\n                        is piped into a file\n  --apl_exp             use\
+  \ experimental APL where available, like\n                        AmberTools18 release.\
+  \ Kept for consistency with older\n                        versions. By default,\
+  \ terms estimated with Lipid17 are\n                        used\n  --memgen_parm\
+  \ MEMGEN_PARM\n                        load custom memgen.parm file with APL and\
+  \ VOL values\n  --overwrite           overwrite, even if files are present\n  --nottrim\
+  \             doesn't trim preexisting hydrogens in the structure\n  --log LOG \
+  \            log file name where detailed information is to be\n               \
+  \         written\n  --output OUTPUT       name of the PACKMOL generated PDB file\n\
+  \  --charmm              the output will be in CHARMM format instead of AMBER\n\
+  \  --translate TRANSLATE TRANSLATE TRANSLATE\n                        pass a vector\
+  \ as x y z to translate the oriented pdb.\n                        Ex. ' 0 0 4 '\n\
+  \  --verbose             verbose mode\n\nInputs:\n  -p PDB, --pdb PDB     PDB file(s)\
+  \ to embed. If many bilayers, it has to be\n                        specified once\
+  \ for each bilayer. 'None' can be\n                        specified and a bilayer\
+  \ without protein will be\n                        generated [ex. --pdb PDB1.pdb\
+  \ --pdb None --pdb\n                        PDB2.pdb (3 bilayers without protein\
+  \ in the middle)].\n                        If no PDB is provided, the bilayer(s)\
+  \ will be membrane\n                        only (--distxy_fix has to be defined).\n\
+  \  --solute SOLUTE       adds pdb as solute into the water. Concentration has\n\
+  \                        to be specified\n  --solute_con SOLUTE_CON\n          \
+  \              number of molecules/concentration to be used.\n                 \
+  \       Concentrations are specified in Molar by adding an 'M'\n               \
+  \         as a suffix (Ex. 0.15M). If not added, a number of\n                 \
+  \       molecules is assumed.\n  --solute_charge SOLUTE_CHARGE\n               \
+  \         absolute charge of the included solute. To be\n                      \
+  \  considered in the system neutralization\n  --solute_inmem        solute should\
+  \ be added to membrane fraction\n  --solute_prot_dist SOLUTE_PROT_DIST\n       \
+  \                 establishes a cylindrical restraint using the protein\n      \
+  \                  xy radius and z height + the input value. A value of 0\n    \
+  \                    will use the protein radius. By default, no restraint\n   \
+  \                     is imposed.\n\nMEMEMBED options:\n  --preoriented        \
+  \ use this flag if the protein has been previosuly\n                        oriented\
+  \ and you want to avoid running MEMEMBED (i.e.\n                        from OPM)\n\
+  \  --n_ter N_TER         'in' or 'out'. By default proteins are oriented with\n\
+  \                        the n_ter oriented 'in' (or 'down'). relevant for\n   \
+  \                     multi layer system. If defined for one protein, it has\n \
+  \                       to be defined for all of them, following previous\n    \
+  \                    order\n  --barrel              use MEMEMBED in beta barrel\
+  \ mode\n  --keepligs            MEMEMBED by default cleans the PDB. Use this flag\
+  \ to\n                        keep the ligands on the original PDB\n  --mem_opt\
+  \ {0,1,2,3}   MEMEMBED optimization algorithm. 0 = Genetic\n                   \
+  \     algorithm, 1 = Grid, 2 = Direct, 3 = GA five times\n\nPACKMOL options:\n \
+  \ --nloop NLOOP         number of nloops for GENCAN routine in PACKMOL.\n      \
+  \                  PACKMOL MEMGEN uses 20 by default; you might consider\n     \
+  \                   increasing the number to improve packing. Increasing\n     \
+  \                   the number of components requires more GENCAN loops.\n  --nloop_all\
+  \ NLOOP_ALL\n                        number of nloops for all-together packing.\
+  \ PACKMOL\n                        MEMGEN uses 100 by default.\n  --tolerance TOLERANCE\n\
+  \                        tolerance for detecting clashes between molecules in\n\
+  \                        PACKMOL (defined as radius1+radius2). PACKMOL uses 2.0\n\
+  \                        by default.\n  --prot_rad PROT_RAD   radius considered\
+  \ for protein atoms to establish the\n                        tolerance for detecting\
+  \ clashes. PACKMOL MEMGEN uses\n                        1.5 by default.\n  --writeout\
+  \ WRITEOUT   frequency for writing intermediate results. PACKMOL\n             \
+  \           uses 10 by default.\n  --notrun              will not run PACKMOL, even\
+  \ if it's available\n  --random              turns PACKMOL random seed generator\
+  \ on. If a previous\n                        packing failed in the minimization\
+  \ problem, repacking\n                        with this feature on might solve the\
+  \ problem.\n  --packall             skips initial individual packing steps\n  --movebadrandom\
+  \       randomizes positions of badly placed molecules in\n                    \
+  \    initial guess\n  --packlog PACKLOG     prefix for generated PACKMOL input and\
+  \ log files\n\nSalts and charges:\n  --salt                adds salt at a concentration\
+  \ of 0.15M by default. Salt\n                        is always added considering\
+  \ estimated charges for the\n                        system.\n  --salt_c {K+,Na+,Ca2+,Mg2+}\n\
+  \                        cation to add. (K+ by default)\n  --saltcon SALTCON   \
+  \  modifies the default concentration for KCl. [M]\n  --salt_override       if the\
+  \ concentration of salt specified is less than\n                        the required\
+  \ to neutralize, will try to continue\n                        omitting the warning\n\
+  \  --nocounter           no counterions are added. Will depend on pmemd\n      \
+  \                  'plasma' neutralization\n\nAMBER options:\n  --minimize     \
+  \       performs minimization by using pmemd.\n  --ligand_param LIGAND_PARAM\n \
+  \                       in case of parametrizing or minimizing the system with\n\
+  \                        non-canonical molecules. Give frcmod and lib filenames\n\
+  \                        separated by ':' [ex. --ligand_param FRCMOD:LIB].\n  --gaff2\
+  \               if ligand parameters are included, use GAFF2 during\n          \
+  \              parametrization (GAFF is used by default)\n  --leapline LEAPLINE\
+  \   extra lines added to the leap parametrization process.\n                   \
+  \     Delimit the line with quotes. The system is called SYS\n                 \
+  \       into leap [ex. --leapline 'bond SYS.4.SG SYS.122.SG'\n                 \
+  \       to form SS bond between SG atoms of residues 4 and\n                   \
+  \     122]\n  --sander              use sander instead of pmemd.\n  --parametrize\
+  \         parametrizes the system by using tleap. Uses LIPID17,\n              \
+  \          ff14SB and TIP3P by default (check --ffwat and\n                    \
+  \    --ffprot)\n  --ffwat {tip3p,tip4pd,tip4pew,opc,spce,spceb,fb3}\n          \
+  \              water model to be used during parametrization.If not\n          \
+  \              set explicitly, will change depending on the protein\n          \
+  \              ff (--ffprot)\n  --ffprot {ff14SB,ff15ipq,ff19SB}\n             \
+  \           protein ff to be used during parametrization.\n  --tight_box       \
+  \    sets box dimension according to restraints used during\n                  \
+  \      the packing. The default uses a vdW distance to the\n                   \
+  \     boundary\n\nComputational electophysiology:\n  --double              asumes\
+  \ a stacked double bilayer system for CompEL. The\n                        composition\
+  \ in --lipids will be used for both bilayers\n                        flipping the\
+  \ leaflets\n  --charge_imbalance CHARGE_IMBALANCE\n                        sets\
+  \ a charge imbalance between compartments (in\n                        electron\
+  \ charge units). A positive imbalance implies\n                        an increase\
+  \ (decrease) in cations (anions) in the\n                        central compartment.\n\
+  \  --imbalance_ion {cat,an}\n                        sets if cations or anions are\
+  \ used to imbalance the\n                        system charges. ('cat' by default)\n"
+generated_using:
+- --help

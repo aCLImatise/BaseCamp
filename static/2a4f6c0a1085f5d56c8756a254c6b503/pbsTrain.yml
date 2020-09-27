@@ -1,0 +1,167 @@
+!Command
+command:
+- pbsTrain
+positional:
+- !Positional
+  description: By default, n is given the largest possible value such
+  position: 0
+  name: dimension.
+  optional: false
+- !Positional
+  description: 'EXAMPLES:'
+  position: 0
+  name: size.
+  optional: false
+- !Positional
+  description: 0.191119        0.046081        0.695205        0.067595
+  position: 0
+  name: '158006'
+  optional: false
+- !Positional
+  description: 0.047309        0.122834        0.043852        0.786004
+  position: 1
+  name: '221937'
+  optional: false
+- !Positional
+  description: 0.067254        0.697947        0.045959        0.188840
+  position: 2
+  name: '159472'
+  optional: false
+named:
+- !Flag
+  description: Output is a code file that can be used with
+  synonyms:
+  - --suff-stats
+  args: !SimpleFlagArg
+    name: option.
+  optional: true
+- !Flag
+  description: "Number of bytes per encoded probabilistic base (default 1).\nThe size\
+    \ of the code will be 256^b - 1 (one letter in the code\nis reserved for gaps).\
+    \  Values as large as 4 are allowed for\nb, but in the current implementation,\
+    \ performance\nconsiderations effectively limit it to 2 or 3."
+  synonyms:
+  - --nbytes
+  - -b
+  args: !SimpleFlagArg
+    name: b
+  optional: true
+- !Flag
+  description: "Number of \"rows\" per dimension in the simplex grid.  Default\nis\
+    \ maximum possible for code size."
+  synonyms:
+  - --nrows
+  - -n
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "Skip greedy optimization -- just assign a single\nrepresentative point\
+    \ to each region of the probability\nsimplex, equal to the (weighted) mean of\
+    \ all vectors from the\ntraining data that fall in that region."
+  synonyms:
+  - --no-greedy
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ignore the data entirely; just use the centroid of each\nsimplex partition.\
+    \  The dimension of the simplex must be given\n(<dim>) but no data file is required."
+  synonyms:
+  - --no-train
+  - -x
+  args: !SimpleFlagArg
+    name: dim
+  optional: true
+- !Flag
+  description: write log of optimization procedure to specified file.
+  synonyms:
+  - --log
+  - -l
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Print this help message.\n"
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nPROGRAM: pbsTrain\n\nUSAGE: pbsTrain [OPTIONS] file.stats > file.code\n\
+  \nDESCRIPTION: \n\n    Estimate a discrete encoding scheme for probabilistic biological\n\
+  \    sequences (PBSs) based on training data.  Input file should be a\n    table\
+  \ of probability vectors, with a row for each distinct vector,\n    and a column\
+  \ of counts (positive integers) followed by d columns\n    for the elements of the\
+  \ d-dimensional probability vectors (see\n    example below).  It may be produced\
+  \ with 'prequel' using the\n    --suff-stats option.  Output is a code file that\
+  \ can be used with\n    pbsEncode, pbsDecode, etc.  By default, a code of size 255\
+  \ is\n    created, so that encoded PBSs can be represented with one byte per\n \
+  \   position (the 256th letter in the code is reserved for gaps).  The\n    --nbytes\
+  \ option allows larger codes to be created, if desired.\n\n    The code is estimated\
+  \ by a two-part procedure designed to minimize\n    the \"training error\" (defined\
+  \ as the total KL divergence) of the\n    encoded training data with respect to\
+  \ the original training data.\n    First, a \"grid\" is defined for the probability\
+  \ simplex,\n    partitioning it into regions that intersect \"cells\" (hypercubes)\n\
+  \    in a matrix in d-dimensional space.  This grid has n \"rows\" per\n    dimension.\
+  \  By default, n is given the largest possible value such\n    that the number of\
+  \ simplex regions is no larger than the target\n    code size, but smaller values\
+  \ of n can be specified using --nrows.\n    Each simplex region is assigned a letter\
+  \ in the code, and the\n    representative point for that letter is set equal to\
+  \ the mean\n    (weighted by the counts) of all vectors in the training data that\n\
+  \    fall in that region.  This can be shown to minimize the training\n    error\
+  \ for this initial encoding scheme.  (If no vectors fall in a\n    region, then\
+  \ the representative point is set equal to the centroid\n    of the region, which\
+  \ can be shown to minimize the expected KL\n    divergence of points uniformly distributed\
+  \ in the region.)\n\n    In the second part of the estimation procedure, the remaining\n\
+  \    letters in the code are defined by a greedy algorithm, which\n    attempts\
+  \ to further minimize the training error.  Briefly, on\n    each step, the simplex\
+  \ region with the largest contribution to the\n    total error is identified, and\
+  \ the next letter in the code is\n    assigned to that region.  In this new encoding,\
+  \ there are multiple\n    letters, hence multiple representative points, per region;\
+  \ the\n    representative point for a given vector is taken to be the\n    closest,\
+  \ in terms of KL divergence, of the representative points\n    associated with the\
+  \ simplex region in which that vector falls.\n    When a new representative point\
+  \ is added to a region, all\n    representative points for that region are reoptimized\
+  \ using a\n    k-means type algorithm.  This procedure is repeated, letter by\n\
+  \    letter, until the number of code letters equals the target code\n    size.\n\
+  \nEXAMPLES:\n\n    Generate training data using prequel:\n\tprequel --suff-stats\
+  \ mammals.fa mytree.mod training\n\n    A file called \"training.stats\" will be\
+  \ generated.  It will look\n    something like this:\n\n        #count  p(A)   \
+  \ p(C)    p(G)    p(T)\n\t170085  0.043485        0.797886        0.029534     \
+  \   0.129096\n\t158006  0.191119        0.046081        0.695205        0.067595\n\
+  \t221937  0.047309        0.122834        0.043852        0.786004\n\t221585  0.781156\
+  \        0.044520        0.126179        0.048146\n\t159472  0.067254        0.697947\
+  \        0.045959        0.188840\n\t...\n\n    Now estimate a code from the training\
+  \ data:\n\tpbsTrain training.stats > mammals.code\n\n    The code file contains\
+  \ some metadata followed by a list of code\n    indices and representative points,\
+  \ e.g.,\n\n\t##NROWS = 7\n\t##DIMENSION = 4\n\t##NBYTES = 1\n\t##CODESIZE = 255\n\
+  \n\t# Code generated by pbsTrain, with argument(s) \"training.stats\"\n\t# acs,\
+  \ Mon Jul 18 23:29:07 2005\n\n\t# Average training error = 0.001298 bits\n\n\t#\
+  \ Each index of the code is shown below with its representative probability\n\t\
+  # vector (p1, p2, ..., pd).\n\n\t#code_index p1 p2 ...\n\t0       0.107143     \
+  \   0.107143        0.107143        0.678571\n\t1       0.033226        0.093854\
+  \        0.031987        0.840933\n\t2       0.000059        0.001645        0.000111\
+  \        0.998185\n\t3       0.139270        0.021059        0.278993        0.560678\n\
+  \t...\n\n    The reported \"average training error\" is the training error\n   \
+  \ divided by the number of data points (the sum of the counts).\n\nOPTIONS:\n\n\
+  \    --nrows, -n <n>  \n\tNumber of \"rows\" per dimension in the simplex grid.\
+  \  Default\n\tis maximum possible for code size.\n\n    --nbytes, -b <b>  \n\tNumber\
+  \ of bytes per encoded probabilistic base (default 1).\n\tThe size of the code will\
+  \ be 256^b - 1 (one letter in the code\n\tis reserved for gaps).  Values as large\
+  \ as 4 are allowed for\n\tb, but in the current implementation, performance\n\t\
+  considerations effectively limit it to 2 or 3.\n\n    --no-greedy, -G \n\tSkip greedy\
+  \ optimization -- just assign a single\n\trepresentative point to each region of\
+  \ the probability\n\tsimplex, equal to the (weighted) mean of all vectors from the\n\
+  \ttraining data that fall in that region.\n\n    --no-train, -x <dim> \n\tIgnore\
+  \ the data entirely; just use the centroid of each\n\tsimplex partition.  The dimension\
+  \ of the simplex must be given\n\t(<dim>) but no data file is required.\n\n    --log,\
+  \ -l <file> \n\twrite log of optimization procedure to specified file.\n\n    --help,\
+  \ -h\n\tPrint this help message.\n"
+generated_using:
+- --help

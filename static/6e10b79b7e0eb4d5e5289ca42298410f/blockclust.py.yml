@@ -1,0 +1,198 @@
+!Command
+command:
+- blockclust.py
+positional: []
+named:
+- !Flag
+  description: "Mode of operationPRE = Preprocessing mode. convert\nfrom reads BAM\
+    \ to tags BED.ANALYSIS = Clustering\nand/or Classification mode.POST = Post processing\
+    \ such\nas plotting and annotation with known Rfam families\netc. (default: ANALYSIS)"
+  synonyms:
+  - -m
+  - --mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      PRE:
+      POST:
+      ANALYSIS:
+  optional: true
+- !Flag
+  description: "Annotations of known ncRNAs in BED format (default:\nNone)"
+  synonyms:
+  - -a
+  - --accept
+  args: !SimpleFlagArg
+    name: ACCEPT_ANNOTATIONS
+  optional: true
+- !Flag
+  description: "Annotations of other known transcripts (eg. protein\ncoding) in BED\
+    \ format (default: None)"
+  synonyms:
+  - -r
+  - --reject
+  args: !SimpleFlagArg
+    name: REJECT_ANNOTATIONS
+  optional: true
+- !Flag
+  description: 'Output of preprocessing mode as input. (default: None)'
+  synonyms:
+  - -t
+  - --test_input
+  args: !SimpleFlagArg
+    name: TEST_INPUT
+  optional: true
+- !Flag
+  description: "Output directory path for the whole analysis (default:\nNone)"
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "blockClust configuration file. (default:\n/usr/local/share/blockclust_data/blockclust.config)"
+  synonyms:
+  - -f
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+  optional: true
+- !Flag
+  description: 'Classify the input blockgroups (default: False)'
+  synonyms:
+  - -c
+  - --classify
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Type of classificationMODEL = Model based\nclassificationNEAREST=\
+    \ Nearest neighbour\nclassification (default: MODEL)"
+  synonyms:
+  - -cm
+  - --clmode
+  args: !ChoiceFlagArg
+    choices: !!set
+      MODEL:
+      NEAREST:
+  optional: true
+- !Flag
+  description: "Directory containing trained models for classification\n(default:\
+    \ /usr/local/share/blockclust_data/models)"
+  synonyms:
+  - -md
+  - --model_dir
+  args: !SimpleFlagArg
+    name: MODEL_DIR
+  optional: true
+- !Flag
+  description: 'Output of cmsearch tool (default: None)'
+  synonyms:
+  - -cs
+  - --cmsearch_out
+  args: !SimpleFlagArg
+    name: CMSEARCH_OUT
+  optional: true
+- !Flag
+  description: "BED file containing clusters from ANALYSIS mode\n(default: None)"
+  synonyms:
+  - -cbed
+  - --clust_bed
+  args: !SimpleFlagArg
+    name: CLUSTERS_BED
+  optional: true
+- !Flag
+  description: 'Input bam file (default: None)'
+  synonyms:
+  - -bam
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: 'BED file of tags (default: None)'
+  synonyms:
+  - -tbed
+  - --tags_bed
+  args: !SimpleFlagArg
+    name: TAGS_BED
+  optional: true
+- !Flag
+  description: "Tabular file of pairwise blockgroup similarities\n(default: None)"
+  synonyms:
+  - -tab
+  - --sim_tab
+  args: !SimpleFlagArg
+    name: SIM_TAB
+  optional: true
+- !Flag
+  description: "Mapping of Rfam families (default:\n/usr/local/share/blockclust_data/rfam_map.txt)"
+  synonyms:
+  - -rfam
+  - --rfam_map
+  args: !SimpleFlagArg
+    name: RFAM_MAP
+  optional: true
+- !Flag
+  description: "Input blockgroups do not contain 'chr' in the begining\nof chromosome\
+    \ ids (for eg. Ensembl database do not use\n'chr'). (default: False)"
+  synonyms:
+  - -chr
+  - --no_chr
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: blockclust.py [-h] [-v,--version]\n\nEfficient clustering and classification\
+  \ of non-coding RNAs from short read\nRNA-seq profiles\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -m {PRE,ANALYSIS,POST},\
+  \ --mode {PRE,ANALYSIS,POST}\n                        Mode of operationPRE = Preprocessing\
+  \ mode. convert\n                        from reads BAM to tags BED.ANALYSIS = Clustering\n\
+  \                        and/or Classification mode.POST = Post processing such\n\
+  \                        as plotting and annotation with known Rfam families\n \
+  \                       etc. (default: ANALYSIS)\n  -a ACCEPT_ANNOTATIONS, --accept\
+  \ ACCEPT_ANNOTATIONS\n                        Annotations of known ncRNAs in BED\
+  \ format (default:\n                        None)\n  -r REJECT_ANNOTATIONS, --reject\
+  \ REJECT_ANNOTATIONS\n                        Annotations of other known transcripts\
+  \ (eg. protein\n                        coding) in BED format (default: None)\n\
+  \  -t TEST_INPUT, --test_input TEST_INPUT\n                        Output of preprocessing\
+  \ mode as input. (default: None)\n  -o OUTPUT_DIR, --out OUTPUT_DIR\n          \
+  \              Output directory path for the whole analysis (default:\n        \
+  \                None)\n  -f CONFIG_FILE, --config CONFIG_FILE\n               \
+  \         blockClust configuration file. (default:\n                        /usr/local/share/blockclust_data/blockclust.config)\n\
+  \  -c, --classify        Classify the input blockgroups (default: False)\n  -cm\
+  \ {NEAREST,MODEL}, --clmode {NEAREST,MODEL}\n                        Type of classificationMODEL\
+  \ = Model based\n                        classificationNEAREST= Nearest neighbour\n\
+  \                        classification (default: MODEL)\n  -md MODEL_DIR, --model_dir\
+  \ MODEL_DIR\n                        Directory containing trained models for classification\n\
+  \                        (default: /usr/local/share/blockclust_data/models)\n  -cs\
+  \ CMSEARCH_OUT, --cmsearch_out CMSEARCH_OUT\n                        Output of cmsearch\
+  \ tool (default: None)\n  -cbed CLUSTERS_BED, --clust_bed CLUSTERS_BED\n       \
+  \                 BED file containing clusters from ANALYSIS mode\n            \
+  \            (default: None)\n  -bam BAM, --bam BAM   Input bam file (default: None)\n\
+  \  -tbed TAGS_BED, --tags_bed TAGS_BED\n                        BED file of tags\
+  \ (default: None)\n  -tab SIM_TAB, --sim_tab SIM_TAB\n                        Tabular\
+  \ file of pairwise blockgroup similarities\n                        (default: None)\n\
+  \  -rfam RFAM_MAP, --rfam_map RFAM_MAP\n                        Mapping of Rfam\
+  \ families (default:\n                        /usr/local/share/blockclust_data/rfam_map.txt)\n\
+  \  -chr, --no_chr        Input blockgroups do not contain 'chr' in the begining\n\
+  \                        of chromosome ids (for eg. Ensembl database do not use\n\
+  \                        'chr'). (default: False)\n  -v, --version         show\
+  \ program's version number and exit\n"
+generated_using:
+- --help

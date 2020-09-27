@@ -1,0 +1,80 @@
+!Command
+command:
+- novoutil
+- rename
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: assembly_report.txt
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: assembly_regions.txt
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: bed/vcf file
+  optional: false
+named:
+- !Flag
+  description: "Assembly Report column name originally in the Chrom attribute.\nChoose\
+    \ from:\nSequence-Name, GenBank-Accn, RefSeq-Accn, UCSC-style-name\nDefault is\
+    \ 'RefSeq-Accn'"
+  synonyms:
+  - --original
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report or Region column name to replace the Chrom attribute.\nChoose\
+    \ from assembly_report columns:\nSequence-Name, GenBank-Accn, RefSeq-Accn, UCSC-style-name\n\
+    Default is not to change the name."
+  synonyms:
+  - --id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Exclude some sequence types from output file\nWhere <type> is one\
+    \ of MT, HLA, unplaced, unlocalised, or alt-scaffold\nAny sequence with a UCSC-Style-Name\
+    \ of 'na' is also excised from the file."
+  synonyms:
+  - --excise
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "Reorder sequences (Chrom) to match assembly_report.txt order.\nAssumes\
+    \ lines are grouped by Chrom attribute. If not sort before using this function.\n"
+  synonyms:
+  - --reorder
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:\n\nnovoutil rename [options] assembly_report.txt  assembly_regions.txt\
+  \ <bed/vcf file> > outputfile\n\nDescription:\n    Using NCBI assembly_report and\
+  \ Assembly_region files for the genome, rename BED/VCF entries.\n    Input files\
+  \ can be gzip'd or bzip2'd. Output is not compressed.\n    Any entries which have\
+  \ a UCSC-style-name of 'na' in the assembly_report.txt file are\n    not copied\
+  \ to the output file. This will be ones with Scaffold-Role of either\n    fix-patch\
+  \ or novel-patch\n    Any lines where Chrom does not match an entry in original\
+  \ column are output verbatim.\nOptions:\n    --original     Assembly Report column\
+  \ name originally in the Chrom attribute.\n             Choose from:\n         \
+  \        Sequence-Name, GenBank-Accn, RefSeq-Accn, UCSC-style-name\n           \
+  \  Default is 'RefSeq-Accn'\n\n    --id     Report or Region column name to replace\
+  \ the Chrom attribute.\n             Choose from assembly_report columns:\n    \
+  \             Sequence-Name, GenBank-Accn, RefSeq-Accn, UCSC-style-name\n\n    \
+  \         Default is not to change the name.\n    --excise <type>  Exclude some\
+  \ sequence types from output file\n             Where <type> is one of MT, HLA,\
+  \ unplaced, unlocalised, or alt-scaffold\n             Any sequence with a UCSC-Style-Name\
+  \ of 'na' is also excised from the file.\n    --reorder  Reorder sequences (Chrom)\
+  \ to match assembly_report.txt order.\n              Assumes lines are grouped by\
+  \ Chrom attribute. If not sort before using this function.\n\n"
+generated_using:
+- --help

@@ -1,0 +1,319 @@
+!Command
+command:
+- bioconda-utils
+- autobump
+positional:
+- !Positional
+  description: "Path to folder containing recipes (default: recipes/)\n(default: -)"
+  position: 0
+  name: recipe_folder
+  optional: false
+- !Positional
+  description: "Path to Bioconda config (default: config.yml)\n(default: -)"
+  position: 1
+  name: config
+  optional: false
+named:
+- !Flag
+  description: "Glob(s) for package[s] to scan. Can be specified more\nthan once (default:\
+    \ '*')"
+  synonyms:
+  - --packages
+  args: !RepeatFlagArg
+    name: PACKAGES
+  optional: true
+- !Flag
+  description: "Globs for package[s] to exclude from scan. Can be\nspecified more\
+    \ than once (default: -)"
+  synonyms:
+  - --exclude
+  args: !RepeatFlagArg
+    name: EXCLUDE
+  optional: true
+- !Flag
+  description: "To speed up debugging, use repodata cached locally in\nthe provided\
+    \ filename. If the file does not exist, it\nwill be created the first time. Caution:\
+    \ The cache\nwill not be updated if exclude-channels is changed\n(default: -)"
+  synonyms:
+  - --cache
+  args: !SimpleFlagArg
+    name: CACHE
+  optional: true
+- !Flag
+  description: "Write urls with permanent failure to this file\n(default: -)"
+  synonyms:
+  - --failed-urls
+  args: !SimpleFlagArg
+    name: FAILED_URLS
+  optional: true
+- !Flag
+  description: 'Write unrecognized urls to this file (default: -)'
+  synonyms:
+  - --unparsed-urls
+  args: !SimpleFlagArg
+    name: UNPARSED_URLS
+  optional: true
+- !Flag
+  description: 'Write status for each recipe to this file (default: -)'
+  synonyms:
+  - --recipe-status
+  args: !SimpleFlagArg
+    name: RECIPE_STATUS
+  optional: true
+- !Flag
+  description: "By default, only subrecipes explicitly enabled for\nwatch in meta.yaml\
+    \ are considered. Set to 'always' to\nexclude all subrecipes. Set to 'never' to\
+    \ include all\nsubrecipes (default: -)"
+  synonyms:
+  - --exclude-subrecipes
+  args: !SimpleFlagArg
+    name: EXCLUDE_SUBRECIPES
+  optional: true
+- !Flag
+  description: "Exclude recipes building packages present in other\nchannels. Set\
+    \ to 'none' to disable check. (default:\n'conda-forge')"
+  synonyms:
+  - --exclude-channels
+  args: !RepeatFlagArg
+    name: EXCLUDE_CHANNELS
+  optional: true
+- !Flag
+  description: 'Do not exclude recipes from blacklist (default: False)'
+  synonyms:
+  - --ignore-blacklists
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Try to fetch python requirements. Please note that\nthis requires\
+    \ downloading packages and executing\nsetup.py, so presents a potential security\
+    \ problem.\n(default: False)"
+  synonyms:
+  - --fetch-requirements
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Check if recipe has active branch (default: False)'
+  synonyms:
+  - --check-branch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Create branch for each update (default: False)'
+  synonyms:
+  - --create-branch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create PR for each update. Implies create-branch.\n(default: False)"
+  synonyms:
+  - --create-pr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Check only recipes with active update (default: False)'
+  synonyms:
+  - --only-active
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not shuffle recipe order (default: False)'
+  synonyms:
+  - --no-shuffle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Exit after ARG updates (default: 0)'
+  synonyms:
+  - --max-updates
+  args: !SimpleFlagArg
+    name: MAX_UPDATES
+  optional: true
+- !Flag
+  description: "Don't update remote git or github\" (default: False)"
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't check for pinning updates (default: False)"
+  synonyms:
+  - --no-check-pinnings
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't process recipes in graph order or add dependent\nrecipes to\
+    \ checks. Implies --no-skip-pending-deps.\n(default: False)"
+  synonyms:
+  - --no-follow-graph
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't check for version updates to recipes (default:\nFalse)"
+  synonyms:
+  - --no-check-version-update
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't check for recipes having a dependency with a\npending update.\
+    \ Update all recipes, including those\nhaving deps in need or rebuild. (default:\
+    \ False)"
+  synonyms:
+  - --no-check-pending-deps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Bump package build numbers even if the only applicable\npinning change\
+    \ is the python version. This is\ngenerally required unless you plan on building\n\
+    everything. (default: False)"
+  synonyms:
+  - --bump-only-python
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[SIGN]         Enable signing. Optionally takes keyid. (default: 0)'
+  synonyms:
+  - --sign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "COMMIT_AS\nSet user and email to use for committing. Takes\nexactly\
+    \ two arguments. (default: -)"
+  synonyms:
+  - --commit-as
+  args: !SimpleFlagArg
+    name: COMMIT_AS
+  optional: true
+- !Flag
+  description: 'Limit maximum number of processes used. (default: 16)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Drop into debugger on exception (default: False)'
+  synonyms:
+  - -P
+  - --pdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set logging level (debug, info, warning, error,\ncritical) (default:\
+    \ 'info')"
+  synonyms:
+  - --loglevel
+  args: !SimpleFlagArg
+    name: LOGLEVEL
+  optional: true
+- !Flag
+  description: 'Write log to file (default: -)'
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: "Log level for log file (default: 'debug')"
+  synonyms:
+  - --logfile-level
+  args: !SimpleFlagArg
+    name: LOGFILE_LEVEL
+  optional: true
+- !Flag
+  description: "Limit lines emitted for commands executed (default: -)\n"
+  synonyms:
+  - --log-command-max-lines
+  args: !SimpleFlagArg
+    name: LOG_COMMAND_MAX_LINES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: bioconda-utils autobump [-h] [--packages PACKAGES [PACKAGES ...]]\n\
+  \                               [--exclude EXCLUDE [EXCLUDE ...]]\n            \
+  \                   [--cache CACHE] [--failed-urls FAILED_URLS]\n              \
+  \                 [--unparsed-urls UNPARSED_URLS]\n                            \
+  \   [--recipe-status RECIPE_STATUS]\n                               [--exclude-subrecipes\
+  \ EXCLUDE_SUBRECIPES]\n                               [--exclude-channels EXCLUDE_CHANNELS\
+  \ [EXCLUDE_CHANNELS ...]]\n                               [--ignore-blacklists]\
+  \ [--fetch-requirements]\n                               [--check-branch] [--create-branch]\n\
+  \                               [--create-pr] [--only-active] [--no-shuffle]\n \
+  \                              [--max-updates MAX_UPDATES] [--dry-run]\n       \
+  \                        [--no-check-pinnings] [--no-follow-graph]\n           \
+  \                    [--no-check-version-update]\n                             \
+  \  [--no-check-pending-deps] [--bump-only-python]\n                            \
+  \   [--sign [SIGN]]\n                               [--commit-as COMMIT_AS COMMIT_AS]\
+  \ [-t THREADS]\n                               [-P] [--loglevel LOGLEVEL] [--logfile\
+  \ LOGFILE]\n                               [--logfile-level LOGFILE_LEVEL]\n   \
+  \                            [--log-command-max-lines LOG_COMMAND_MAX_LINES]\n \
+  \                              [recipe_folder] [config]\n\n    Updates recipes in\
+  \ recipe_folder\n    \n\npositional arguments:\n  recipe_folder         Path to\
+  \ folder containing recipes (default: recipes/)\n                        (default:\
+  \ -)\n  config                Path to Bioconda config (default: config.yml)\n  \
+  \                      (default: -)\n\noptional arguments:\n  -h, --help       \
+  \     show this help message and exit\n  --packages PACKAGES [PACKAGES ...]\n  \
+  \                      Glob(s) for package[s] to scan. Can be specified more\n \
+  \                       than once (default: '*')\n  --exclude EXCLUDE [EXCLUDE ...]\n\
+  \                        Globs for package[s] to exclude from scan. Can be\n   \
+  \                     specified more than once (default: -)\n  --cache CACHE   \
+  \      To speed up debugging, use repodata cached locally in\n                 \
+  \       the provided filename. If the file does not exist, it\n                \
+  \        will be created the first time. Caution: The cache\n                  \
+  \      will not be updated if exclude-channels is changed\n                    \
+  \    (default: -)\n  --failed-urls FAILED_URLS\n                        Write urls\
+  \ with permanent failure to this file\n                        (default: -)\n  --unparsed-urls\
+  \ UNPARSED_URLS\n                        Write unrecognized urls to this file (default:\
+  \ -)\n  --recipe-status RECIPE_STATUS\n                        Write status for\
+  \ each recipe to this file (default: -)\n  --exclude-subrecipes EXCLUDE_SUBRECIPES\n\
+  \                        By default, only subrecipes explicitly enabled for\n  \
+  \                      watch in meta.yaml are considered. Set to 'always' to\n \
+  \                       exclude all subrecipes. Set to 'never' to include all\n\
+  \                        subrecipes (default: -)\n  --exclude-channels EXCLUDE_CHANNELS\
+  \ [EXCLUDE_CHANNELS ...]\n                        Exclude recipes building packages\
+  \ present in other\n                        channels. Set to 'none' to disable check.\
+  \ (default:\n                        'conda-forge')\n  --ignore-blacklists   Do\
+  \ not exclude recipes from blacklist (default: False)\n  --fetch-requirements  Try\
+  \ to fetch python requirements. Please note that\n                        this requires\
+  \ downloading packages and executing\n                        setup.py, so presents\
+  \ a potential security problem.\n                        (default: False)\n  --check-branch\
+  \        Check if recipe has active branch (default: False)\n  --create-branch \
+  \      Create branch for each update (default: False)\n  --create-pr           Create\
+  \ PR for each update. Implies create-branch.\n                        (default:\
+  \ False)\n  --only-active         Check only recipes with active update (default:\
+  \ False)\n  --no-shuffle          Do not shuffle recipe order (default: False)\n\
+  \  --max-updates MAX_UPDATES\n                        Exit after ARG updates (default:\
+  \ 0)\n  --dry-run             Don't update remote git or github\" (default: False)\n\
+  \  --no-check-pinnings   Don't check for pinning updates (default: False)\n  --no-follow-graph\
+  \     Don't process recipes in graph order or add dependent\n                  \
+  \      recipes to checks. Implies --no-skip-pending-deps.\n                    \
+  \    (default: False)\n  --no-check-version-update\n                        Don't\
+  \ check for version updates to recipes (default:\n                        False)\n\
+  \  --no-check-pending-deps\n                        Don't check for recipes having\
+  \ a dependency with a\n                        pending update. Update all recipes,\
+  \ including those\n                        having deps in need or rebuild. (default:\
+  \ False)\n  --bump-only-python    Bump package build numbers even if the only applicable\n\
+  \                        pinning change is the python version. This is\n       \
+  \                 generally required unless you plan on building\n             \
+  \           everything. (default: False)\n  --sign [SIGN]         Enable signing.\
+  \ Optionally takes keyid. (default: 0)\n  --commit-as COMMIT_AS COMMIT_AS\n    \
+  \                    Set user and email to use for committing. Takes\n         \
+  \               exactly two arguments. (default: -)\n  -t THREADS, --threads THREADS\n\
+  \                        Limit maximum number of processes used. (default: 16)\n\
+  \  -P, --pdb             Drop into debugger on exception (default: False)\n  --loglevel\
+  \ LOGLEVEL   Set logging level (debug, info, warning, error,\n                 \
+  \       critical) (default: 'info')\n  --logfile LOGFILE     Write log to file (default:\
+  \ -)\n  --logfile-level LOGFILE_LEVEL\n                        Log level for log\
+  \ file (default: 'debug')\n  --log-command-max-lines LOG_COMMAND_MAX_LINES\n   \
+  \                     Limit lines emitted for commands executed (default: -)\n"
+generated_using:
+- --help

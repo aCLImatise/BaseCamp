@@ -1,0 +1,224 @@
+!Command
+command:
+- bamsieve
+positional:
+- !Positional
+  description: Input BAM or DataSet from which reads will be read
+  position: 0
+  name: input_bam
+  optional: false
+- !Positional
+  description: "Output BAM or DataSet to which filtered reads will be\nwritten (default:\
+    \ None)"
+  position: 1
+  name: output_bam
+  optional: false
+named:
+- !Flag
+  description: "Write the log to file. Default(None) will write to\nstdout. (default:\
+    \ None)"
+  synonyms:
+  - --log-file
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: 'Set log level (default: WARN)'
+  synonyms:
+  - --log-level
+  args: !ChoiceFlagArg
+    choices: !!set
+      WARNING:
+      CRITICAL:
+      ERROR:
+      DEBUG:
+      INFO:
+  optional: true
+- !Flag
+  description: 'Alias for setting log level to DEBUG (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Alias for setting log level to CRITICAL to suppress\noutput. (default:\
+    \ False)"
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set the verbosity level. (default: None)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print a list of ZMWs and exit (default: False)'
+  synonyms:
+  - --show-zmws
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Comma-separated list of ZMWs, or file containing\nwhitelist of one\
+    \ hole number per line, or BAM/DataSet\nfile from which to extract ZMWs (default:\
+    \ None)"
+  synonyms:
+  - --whitelist
+  args: !SimpleFlagArg
+    name: WHITELIST
+  optional: true
+- !Flag
+  description: "Opposite of --whitelist, specifies ZMWs to discard\n(default: None)"
+  synonyms:
+  - --blacklist
+  args: !SimpleFlagArg
+    name: BLACKLIST
+  optional: true
+- !Flag
+  description: "If set, the whitelist or blacklist will be assumed to\ncontain one\
+    \ subread name per line, or a BAM/DataSet\nfile from which to extract subreads\
+    \ (default: False)"
+  synonyms:
+  - --subreads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If you prefer to recover a percentage of a SMRTcell\nrather than a\
+    \ specific list of reads specify that\npercentage (range 0-100) here (default:\
+    \ None)"
+  synonyms:
+  - --percentage
+  args: !SimpleFlagArg
+    name: PERCENTAGE
+  optional: true
+- !Flag
+  description: "Recover a specific number of ZMWs picked at random\n(default: None)"
+  synonyms:
+  - -n
+  - --count
+  args: !SimpleFlagArg
+    name: COUNT
+  optional: true
+- !Flag
+  description: "Random seed for selecting a percentage of reads\n(default: None)"
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: 'Discard input DataSet metadata (default: False)'
+  synonyms:
+  - --ignore-metadata
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Make external resource paths relative (default: False)'
+  synonyms:
+  - --relative
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Randomize sequences for privacy (default: False)'
+  synonyms:
+  - --anonymize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Indicates that the whitelist or blacklist contains\nbarcode indices\
+    \ instead of ZMW numbers (default:\nFalse)"
+  synonyms:
+  - --barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If enabled, --percentage and --count will include hole\nnumbers from\
+    \ scraps BAM files when picking a random\nsample (default is to sample only ZMWs\
+    \ present in\nsubreads BAM). (default: False)"
+  synonyms:
+  - --sample-scraps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If enabled, the UUID from the input dataset will be\nused for the\
+    \ output as well. (default: False)"
+  synonyms:
+  - --keep-uuid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum number of adapters to filter for (default:\nNone)\n"
+  synonyms:
+  - --min-adapters
+  args: !SimpleFlagArg
+    name: MIN_ADAPTERS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: bamsieve [-h] [--version] [--log-file LOG_FILE]\n             \
+  \   [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL} | --debug | --quiet | -v]\n\
+  \                [--show-zmws] [--whitelist WHITELIST] [--blacklist BLACKLIST]\n\
+  \                [--subreads] [--percentage PERCENTAGE] [-n COUNT] [-s SEED]\n \
+  \               [--ignore-metadata] [--relative] [--anonymize] [--barcodes]\n  \
+  \              [--sample-scraps] [--keep-uuid] [--min-adapters MIN_ADAPTERS]\n \
+  \               input_bam [output_bam]\n\nTool for subsetting a BAM or PacBio DataSet\
+  \ file based on either a whitelist\nof hole numbers or a percentage of reads to\
+  \ be randomly selected.\n\npositional arguments:\n  input_bam             Input\
+  \ BAM or DataSet from which reads will be read\n  output_bam            Output BAM\
+  \ or DataSet to which filtered reads will be\n                        written (default:\
+  \ None)\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --version             show program's version number and exit\n  --log-file\
+  \ LOG_FILE   Write the log to file. Default(None) will write to\n              \
+  \          stdout. (default: None)\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n\
+  \                        Set log level (default: WARN)\n  --debug              \
+  \ Alias for setting log level to DEBUG (default: False)\n  --quiet             \
+  \  Alias for setting log level to CRITICAL to suppress\n                       \
+  \ output. (default: False)\n  -v, --verbose         Set the verbosity level. (default:\
+  \ None)\n  --show-zmws           Print a list of ZMWs and exit (default: False)\n\
+  \  --whitelist WHITELIST\n                        Comma-separated list of ZMWs,\
+  \ or file containing\n                        whitelist of one hole number per line,\
+  \ or BAM/DataSet\n                        file from which to extract ZMWs (default:\
+  \ None)\n  --blacklist BLACKLIST\n                        Opposite of --whitelist,\
+  \ specifies ZMWs to discard\n                        (default: None)\n  --subreads\
+  \            If set, the whitelist or blacklist will be assumed to\n           \
+  \             contain one subread name per line, or a BAM/DataSet\n            \
+  \            file from which to extract subreads (default: False)\n  --percentage\
+  \ PERCENTAGE\n                        If you prefer to recover a percentage of a\
+  \ SMRTcell\n                        rather than a specific list of reads specify\
+  \ that\n                        percentage (range 0-100) here (default: None)\n\
+  \  -n COUNT, --count COUNT\n                        Recover a specific number of\
+  \ ZMWs picked at random\n                        (default: None)\n  -s SEED, --seed\
+  \ SEED  Random seed for selecting a percentage of reads\n                      \
+  \  (default: None)\n  --ignore-metadata     Discard input DataSet metadata (default:\
+  \ False)\n  --relative            Make external resource paths relative (default:\
+  \ False)\n  --anonymize           Randomize sequences for privacy (default: False)\n\
+  \  --barcodes            Indicates that the whitelist or blacklist contains\n  \
+  \                      barcode indices instead of ZMW numbers (default:\n      \
+  \                  False)\n  --sample-scraps       If enabled, --percentage and\
+  \ --count will include hole\n                        numbers from scraps BAM files\
+  \ when picking a random\n                        sample (default is to sample only\
+  \ ZMWs present in\n                        subreads BAM). (default: False)\n  --keep-uuid\
+  \           If enabled, the UUID from the input dataset will be\n              \
+  \          used for the output as well. (default: False)\n  --min-adapters MIN_ADAPTERS\n\
+  \                        Minimum number of adapters to filter for (default:\n  \
+  \                      None)\n"
+generated_using:
+- --help

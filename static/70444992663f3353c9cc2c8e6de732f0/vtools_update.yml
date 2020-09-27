@@ -1,0 +1,232 @@
+!Command
+command:
+- vtools
+- update
+positional: []
+named:
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+- !Flag
+  description: "A list of files that will be used to add or update\nexisting fields\
+    \ of variants. The file should be\ndelimiter separated with format described by\
+    \ parameter\n--format. Gzipped files are acceptable. If input files\ncontains\
+    \ genotype information, have been inputted\nbefore, and can be linked to the samples\
+    \ they created\nwithout ambiguity (e.g. single sample, or samples with\ndetectable\
+    \ sample names), genotypes and their\ninformation will also be updated."
+  synonyms:
+  - --from_file
+  - --from-file
+  args: !RepeatFlagArg
+    name: FROM_FILE
+  optional: true
+- !Flag
+  description: "Build version of the reference genome (e.g. hg18) of\nthe input files,\
+    \ which should be the primary (used by\ndefault) or alternative (if available)\
+    \ reference\ngenome of the project. An alternative reference genome\nwill be added\
+    \ to the project if needed."
+  synonyms:
+  - --build
+  args: !SimpleFlagArg
+    name: BUILD
+  optional: true
+- !Flag
+  description: "Format of the input text file. It can be one of the\nvariant tools\
+    \ supported file types such as\nANNOVAR_output (cf. 'vtools show formats'), or\
+    \ a local\nformat specification file (with extension .fmt). Some\nformats accept\
+    \ parameters (cf. 'vtools show format\nFMT') and allow you to update additional\
+    \ or\nalternative fields from the input file."
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "Number of processes to import input file. Variant\ntools by default\
+    \ uses a single process for reading and\nwriting, and can use one or more dedicated\
+    \ reader\nprocesses (jobs=2 or more) to process input files. Due\nto the overhead\
+    \ of inter-process communication, more\njobs do not automatically lead to better\
+    \ performance."
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "[SAMPLE_NAME [SAMPLE_NAME ...]], --sample-name [SAMPLE_NAME [SAMPLE_NAME\
+    \ ...]]\nName of the samples to be updated by the input files.\nIf unspecified,\
+    \ headers of the genotype columns of the\nlast comment line (line starts with\
+    \ #) of the input\nfiles will be used (and thus allow different sample\nnames\
+    \ for input files). Sample names will be used to\nidentify samples to be updated.\
+    \ Filename will be used\nto uniquely identify a sample if mutliple samples with\n\
+    the same name exist in the project. No genotype info\nwill be updated if samples\
+    \ cannot be unquely\ndetermined."
+  synonyms:
+  - --sample_name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[EXPR [EXPR ...]]\nAdd a new field or updating an existing field using\
+    \ a\nconstant (e.g. mark=1) or an expression using other\nfields (e.g. freq=num/120,\
+    \ refgene=refGene.name). If\nmultiple values are returned for a variant, only\
+    \ one\nof them will be used. Parameter samples could be used\nto limit the affected\
+    \ variants. In addition, special\nfunction are provided, including 'HWE_exact'\
+    \ (exact\ntest of Hardy-Weinberg Equilibrium) and 'Fisher_exact'\n(Fisher's exact\
+    \ test for case/ctrl association)."
+  synonyms:
+  - --set
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[EXPR [EXPR ...]], --from-stat [EXPR [EXPR ...]]\nOne or more expressions\
+    \ such as meanQT=avg(QT) that\naggregate genotype info (e.g. QT) of variants in\
+    \ all\nor selected samples to specified fields (e.g. meanQT).\nFunctions sum,\
+    \ avg, max, and min are currently\nsupported. In addition, special functions #(GT),\n\
+    #(hom), #(het), #(alt), #(other), #(missing), #(wtGT),\n#(mutGT), and maf(), are\
+    \ provided to count the number\nof valid genotypes (not missing), homozygote\n\
+    genotypes, heterozygote genotypes, alternative alleles\n(#(het) + 2*#(hom) + #(other)),\
+    \ genotypes with two\ndifferent alternative alleles, missing genotypes\n(number\
+    \ of samples - #(GT)), number of non-missing\nwildtype genotypes (#(GT) - #(hom)\
+    \ - #(het) -\n#(other)), number of non-wildtype genotypes (#(hom) +\n#(het) +\
+    \ #(other)), and minor allele frequency. The\nmaf() function treats chromosomes\
+    \ 1 to 22 as\nautosomes, X and Y as sex chromosomes, and other\nchromosomes as\
+    \ single-copy manifolds. It requires a\nphenotype named sex or gender that codes\
+    \ male/female\nby 1/2, M/F or Male/Female if maf of variants on sex\nchromosomes\
+    \ are calculated. This function by default\ncalculates allele frequency among\
+    \ existing-alleles,\nbut will treat all missing values as wild type alleles\n\
+    if runtime option treat_missing_as_wildtype is set to\ntrue."
+  synonyms:
+  - --from_stat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[COND [COND ...]], --samples [COND [COND ...]]\nLimiting variants\
+    \ from samples that match conditions\nthat use columns shown in command 'vtools\
+    \ show sample'\n(e.g. 'aff=1', 'filename like \"MG%\"')."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[COND [COND ...]]\nLimiting variants from samples that match conditions\n\
+    that use columns shown in command 'vtools show\ngenotypes' (e.g. 'GQ>15').\n"
+  synonyms:
+  - --genotypes
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools update [-h] [--from_file FROM_FILE [FROM_FILE ...]]\n  \
+  \                   [--build BUILD] [--format FORMAT] [-j N]\n                 \
+  \    [--sample_name [SAMPLE_NAME [SAMPLE_NAME ...]]]\n                     [--set\
+  \ [EXPR [EXPR ...]]] [--from_stat [EXPR [EXPR ...]]]\n                     [-s [COND\
+  \ [COND ...]]] [--genotypes [COND [COND ...]]]\n                     [-v {0,1,2,3}]\n\
+  \                     table\n\nAdd or update fields of existing variants and genotype\
+  \ from other fields,\nstatistics of genotypes and genotype info, or files that annotate\
+  \ variants or\ntheir locations (e.g. Read annotation from ANNOVAR output files,\
+  \ import\nadditional variant or genotype fields from .vcf files).\n\npositional\
+  \ arguments:\n  table                 variants to be updated.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -v {0,1,2,3}, --verbosity\
+  \ {0,1,2,3}\n                        Output error and warning (0), info (1), debug\
+  \ (2) and\n                        trace (3) information to standard output (default\
+  \ to\n                        1).\n\nUpdate from files:\n  --from_file FROM_FILE\
+  \ [FROM_FILE ...], --from-file FROM_FILE [FROM_FILE ...]\n                     \
+  \   A list of files that will be used to add or update\n                       \
+  \ existing fields of variants. The file should be\n                        delimiter\
+  \ separated with format described by parameter\n                        --format.\
+  \ Gzipped files are acceptable. If input files\n                        contains\
+  \ genotype information, have been inputted\n                        before, and\
+  \ can be linked to the samples they created\n                        without ambiguity\
+  \ (e.g. single sample, or samples with\n                        detectable sample\
+  \ names), genotypes and their\n                        information will also be\
+  \ updated.\n  --build BUILD         Build version of the reference genome (e.g.\
+  \ hg18) of\n                        the input files, which should be the primary\
+  \ (used by\n                        default) or alternative (if available) reference\n\
+  \                        genome of the project. An alternative reference genome\n\
+  \                        will be added to the project if needed.\n  --format FORMAT\
+  \       Format of the input text file. It can be one of the\n                  \
+  \      variant tools supported file types such as\n                        ANNOVAR_output\
+  \ (cf. 'vtools show formats'), or a local\n                        format specification\
+  \ file (with extension .fmt). Some\n                        formats accept parameters\
+  \ (cf. 'vtools show format\n                        FMT') and allow you to update\
+  \ additional or\n                        alternative fields from the input file.\n\
+  \  -j N, --jobs N        Number of processes to import input file. Variant\n   \
+  \                     tools by default uses a single process for reading and\n \
+  \                       writing, and can use one or more dedicated reader\n    \
+  \                    processes (jobs=2 or more) to process input files. Due\n  \
+  \                      to the overhead of inter-process communication, more\n  \
+  \                      jobs do not automatically lead to better performance.\n \
+  \ --sample_name [SAMPLE_NAME [SAMPLE_NAME ...]], --sample-name [SAMPLE_NAME [SAMPLE_NAME\
+  \ ...]]\n                        Name of the samples to be updated by the input\
+  \ files.\n                        If unspecified, headers of the genotype columns\
+  \ of the\n                        last comment line (line starts with #) of the\
+  \ input\n                        files will be used (and thus allow different sample\n\
+  \                        names for input files). Sample names will be used to\n\
+  \                        identify samples to be updated. Filename will be used\n\
+  \                        to uniquely identify a sample if mutliple samples with\n\
+  \                        the same name exist in the project. No genotype info\n\
+  \                        will be updated if samples cannot be unquely\n        \
+  \                determined.\n\nSet value from existing fields:\n  --set [EXPR [EXPR\
+  \ ...]]\n                        Add a new field or updating an existing field using\
+  \ a\n                        constant (e.g. mark=1) or an expression using other\n\
+  \                        fields (e.g. freq=num/120, refgene=refGene.name). If\n\
+  \                        multiple values are returned for a variant, only one\n\
+  \                        of them will be used. Parameter samples could be used\n\
+  \                        to limit the affected variants. In addition, special\n\
+  \                        function are provided, including 'HWE_exact' (exact\n \
+  \                       test of Hardy-Weinberg Equilibrium) and 'Fisher_exact'\n\
+  \                        (Fisher's exact test for case/ctrl association).\n\nSet\
+  \ fields from sample statistics:\n  --from_stat [EXPR [EXPR ...]], --from-stat [EXPR\
+  \ [EXPR ...]]\n                        One or more expressions such as meanQT=avg(QT)\
+  \ that\n                        aggregate genotype info (e.g. QT) of variants in\
+  \ all\n                        or selected samples to specified fields (e.g. meanQT).\n\
+  \                        Functions sum, avg, max, and min are currently\n      \
+  \                  supported. In addition, special functions #(GT),\n          \
+  \              #(hom), #(het), #(alt), #(other), #(missing), #(wtGT),\n        \
+  \                #(mutGT), and maf(), are provided to count the number\n       \
+  \                 of valid genotypes (not missing), homozygote\n               \
+  \         genotypes, heterozygote genotypes, alternative alleles\n             \
+  \           (#(het) + 2*#(hom) + #(other)), genotypes with two\n               \
+  \         different alternative alleles, missing genotypes\n                   \
+  \     (number of samples - #(GT)), number of non-missing\n                     \
+  \   wildtype genotypes (#(GT) - #(hom) - #(het) -\n                        #(other)),\
+  \ number of non-wildtype genotypes (#(hom) +\n                        #(het) + #(other)),\
+  \ and minor allele frequency. The\n                        maf() function treats\
+  \ chromosomes 1 to 22 as\n                        autosomes, X and Y as sex chromosomes,\
+  \ and other\n                        chromosomes as single-copy manifolds. It requires\
+  \ a\n                        phenotype named sex or gender that codes male/female\n\
+  \                        by 1/2, M/F or Male/Female if maf of variants on sex\n\
+  \                        chromosomes are calculated. This function by default\n\
+  \                        calculates allele frequency among existing-alleles,\n \
+  \                       but will treat all missing values as wild type alleles\n\
+  \                        if runtime option treat_missing_as_wildtype is set to\n\
+  \                        true.\n  -s [COND [COND ...]], --samples [COND [COND ...]]\n\
+  \                        Limiting variants from samples that match conditions\n\
+  \                        that use columns shown in command 'vtools show sample'\n\
+  \                        (e.g. 'aff=1', 'filename like \"MG%\"').\n  --genotypes\
+  \ [COND [COND ...]]\n                        Limiting variants from samples that\
+  \ match conditions\n                        that use columns shown in command 'vtools\
+  \ show\n                        genotypes' (e.g. 'GQ>15').\n"
+generated_using:
+- --help

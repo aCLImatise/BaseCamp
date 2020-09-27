@@ -1,0 +1,184 @@
+!Command
+command:
+- leaff
+positional: []
+named:
+- !Flag
+  description: ":     use sequence in 'file' (-F is also allowed for historical reasons)"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ":     read actions from 'file'"
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ':          print the number of sequences in the fasta'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":     print an index, labelling the source 'name'"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "<#>:      insert a newline every 60 letters\n(if the next arg is a\
+    \ number, newlines are inserted every\nn letters, e.g., -6 80.  Disable line breaks\
+    \ with -6 0,\nor just don't use -6!)"
+  synonyms:
+  - '-6'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "end:  Print only the bases from position 'beg' to position 'end'\n\
+    (space based, relative to the FORWARD sequence!)  If\nbeg == end, then the entire\
+    \ sequence is printed.  It is an\nerror to specify beg > end, or beg > len, or\
+    \ end > len."
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: beg
+  optional: true
+- !Flag
+  description: "Print n bases from each end of the sequence.  One input\nsequence\
+    \ generates two output sequences, with '_5' or '_3'\nappended to the ID.  If 2n\
+    \ >= length of the sequence, the\nsequence itself is printed, no ends are extracted\
+    \ (they\noverlap)."
+  synonyms:
+  - -ends
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ':          complement the sequences'
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":          DON'T print the defline"
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':          reverse the sequences'
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':          uppercase all bases'
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 's l:    print n randomly generated sequences, 0 < s <= length <= l'
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: 'l:      print all sequences such that s <= length < l'
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: "h:      print all sequences such that l <= % N composition < h\n(NOTE\
+    \ 0.0 <= l < h < 100.0)\n(NOTE that you cannot print sequences with 100% N\nThis\
+    \ is a useful bug)."
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: l
+  optional: true
+- !Flag
+  description: ":     print sequences from the seqid list in 'file'"
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ":      print 'num' randomly picked sequences"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ":    print the single sequence 'seqid'"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: seqid
+  optional: true
+- !Flag
+  description: "l:      print all the sequences from ID 'f' to 'l' (inclusive)"
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ':          print all sequences (do the whole file)'
+  synonyms:
+  - -W
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: -help examples
+  synonyms:
+  - -help
+  args: !SimpleFlagArg
+    name: analysis
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: leaff [-f fasta-file] [options]\n\nSOURCE FILES\n   -f file:  \
+  \   use sequence in 'file' (-F is also allowed for historical reasons)\n   -A file:\
+  \     read actions from 'file'\n\nSOURCE FILE EXAMINATION\n   -d:          print\
+  \ the number of sequences in the fasta\n   -i name:     print an index, labelling\
+  \ the source 'name'\n\nOUTPUT OPTIONS\n   -6 <#>:      insert a newline every 60\
+  \ letters\n                  (if the next arg is a number, newlines are inserted\
+  \ every\n                  n letters, e.g., -6 80.  Disable line breaks with -6\
+  \ 0,\n                  or just don't use -6!)\n   -e beg end:  Print only the bases\
+  \ from position 'beg' to position 'end'\n                  (space based, relative\
+  \ to the FORWARD sequence!)  If\n                  beg == end, then the entire sequence\
+  \ is printed.  It is an\n                  error to specify beg > end, or beg >\
+  \ len, or end > len.\n   -ends n      Print n bases from each end of the sequence.\
+  \  One input\n                  sequence generates two output sequences, with '_5'\
+  \ or '_3'\n                  appended to the ID.  If 2n >= length of the sequence,\
+  \ the\n                  sequence itself is printed, no ends are extracted (they\n\
+  \                  overlap).\n   -C:          complement the sequences\n   -H: \
+  \         DON'T print the defline\n   -h:          Use the next word as the defline\
+  \ (\"-H -H\" will reset to the\n                  original defline\n   -R:     \
+  \     reverse the sequences\n   -u:          uppercase all bases\n\nSEQUENCE SELECTION\n\
+  \   -G n s l:    print n randomly generated sequences, 0 < s <= length <= l\n  \
+  \ -L s l:      print all sequences such that s <= length < l\n   -N l h:      print\
+  \ all sequences such that l <= % N composition < h\n                  (NOTE 0.0\
+  \ <= l < h < 100.0)\n                  (NOTE that you cannot print sequences with\
+  \ 100% N\n                   This is a useful bug).\n   -q file:     print sequences\
+  \ from the seqid list in 'file'\n   -r num:      print 'num' randomly picked sequences\n\
+  \   -s seqid:    print the single sequence 'seqid'\n   -S f l:      print all the\
+  \ sequences from ID 'f' to 'l' (inclusive)\n   -W:          print all sequences\
+  \ (do the whole file)\n\nLONGER HELP\n   -help analysis\n   -help examples\nUnknown\
+  \ option '--help'\n"
+generated_using:
+- --help

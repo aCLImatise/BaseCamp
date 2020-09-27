@@ -1,0 +1,175 @@
+!Command
+command:
+- augur
+- export
+- v2
+positional: []
+named:
+- !Flag
+  description: Phylogenetic tree, usually output from `augur refine`
+  synonyms:
+  - --tree
+  - -t
+  args: !SimpleFlagArg
+    name: newick
+  optional: true
+- !Flag
+  description: JSON files containing metadata for nodes in the tree
+  synonyms:
+  - --node-data
+  args: !RepeatFlagArg
+    name: JSON
+  optional: true
+- !Flag
+  description: Ouput file (typically for visualisation in auspice)
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: JSON
+  optional: true
+- !Flag
+  description: Auspice configuration file
+  synonyms:
+  - --auspice-config
+  args: !SimpleFlagArg
+    name: JSON
+  optional: true
+- !Flag
+  description: Title to be displayed by auspice
+  synonyms:
+  - --title
+  args: !SimpleFlagArg
+    name: title
+  optional: true
+- !Flag
+  description: "Analysis maintained by, in format 'Name <URL>' 'Name2\n<URL>', ..."
+  synonyms:
+  - --maintainers
+  args: !RepeatFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Build URL/repository to be displayed by Auspice
+  synonyms:
+  - --build-url
+  args: !SimpleFlagArg
+    name: url
+  optional: true
+- !Flag
+  description: "Markdown file with description of build and/or\nacknowledgements to\
+    \ be displayed by Auspice"
+  synonyms:
+  - --description
+  args: !SimpleFlagArg
+    name: description.md
+  optional: true
+- !Flag
+  description: Geographic traits to be displayed on map
+  synonyms:
+  - --geo-resolutions
+  args: !RepeatFlagArg
+    name: trait
+  optional: true
+- !Flag
+  description: Metadata columns to include as coloring options
+  synonyms:
+  - --color-by-metadata
+  args: !RepeatFlagArg
+    name: trait
+  optional: true
+- !Flag
+  description: "Restrict panel display in auspice. Options are tree,\nmap, entropy,\
+    \ frequencies. Ignore this option to\ndisplay all available panels."
+  synonyms:
+  - --panels
+  args: !RepeatFlagArg
+    name: panels
+  optional: true
+- !Flag
+  description: Additional metadata for strains in the tree
+  synonyms:
+  - --metadata
+  args: !SimpleFlagArg
+    name: TSV
+  optional: true
+- !Flag
+  description: Custom color definitions
+  synonyms:
+  - --colors
+  args: !SimpleFlagArg
+    name: TSV
+  optional: true
+- !Flag
+  description: "Latitudes and longitudes for geography traits\n(overrides built in\
+    \ mappings)"
+  synonyms:
+  - --lat-longs
+  args: !SimpleFlagArg
+    name: TSV
+  optional: true
+- !Flag
+  description: export JSONs without indentation or line returns
+  synonyms:
+  - --minify-json
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Export an additional JSON containing the root sequence\n(reference\
+    \ sequence for vcf) used to identify\nmutations. The filename will follow the\
+    \ pattern of\n<OUTPUT>_root-sequence.json for a main auspice JSON of\n<OUTPUT>.json\n"
+  synonyms:
+  - --include-root-sequence
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: augur export v2 [-h] --tree newick --node-data JSON [JSON ...]\
+  \ --output\n                       JSON [--auspice-config JSON] [--title title]\n\
+  \                       [--maintainers name [name ...]] [--build-url url]\n    \
+  \                   [--description description.md]\n                       [--geo-resolutions\
+  \ trait [trait ...]]\n                       [--color-by-metadata trait [trait ...]]\n\
+  \                       [--panels panels [panels ...]] [--metadata TSV]\n      \
+  \                 [--colors TSV] [--lat-longs TSV] [--minify-json]\n           \
+  \            [--include-root-sequence]\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n\nREQUIRED:\n  --tree newick, -t newick\n\
+  \                        Phylogenetic tree, usually output from `augur refine`\n\
+  \  --node-data JSON [JSON ...]\n                        JSON files containing metadata\
+  \ for nodes in the tree\n  --output JSON         Ouput file (typically for visualisation\
+  \ in auspice)\n\nDISPLAY CONFIGURATION:\n  These control the display settings for\
+  \ auspice. You can supply a config\n  JSON (which has all available options) or\
+  \ command line arguments (which\n  are more limited but great to get started). Supplying\
+  \ both is fine too,\n  command line args will overrule what is set in the config\
+  \ file!\n\n  --auspice-config JSON\n                        Auspice configuration\
+  \ file\n  --title title         Title to be displayed by auspice\n  --maintainers\
+  \ name [name ...]\n                        Analysis maintained by, in format 'Name\
+  \ <URL>' 'Name2\n                        <URL>', ...\n  --build-url url       Build\
+  \ URL/repository to be displayed by Auspice\n  --description description.md\n  \
+  \                      Markdown file with description of build and/or\n        \
+  \                acknowledgements to be displayed by Auspice\n  --geo-resolutions\
+  \ trait [trait ...]\n                        Geographic traits to be displayed on\
+  \ map\n  --color-by-metadata trait [trait ...]\n                        Metadata\
+  \ columns to include as coloring options\n  --panels panels [panels ...]\n     \
+  \                   Restrict panel display in auspice. Options are tree,\n     \
+  \                   map, entropy, frequencies. Ignore this option to\n         \
+  \               display all available panels.\n\nOPTIONAL INPUT FILES:\n  --metadata\
+  \ TSV        Additional metadata for strains in the tree\n  --colors TSV       \
+  \   Custom color definitions\n  --lat-longs TSV       Latitudes and longitudes for\
+  \ geography traits\n                        (overrides built in mappings)\n\nOPTIONAL\
+  \ SETTINGS:\n  --minify-json         export JSONs without indentation or line returns\n\
+  \  --include-root-sequence\n                        Export an additional JSON containing\
+  \ the root sequence\n                        (reference sequence for vcf) used to\
+  \ identify\n                        mutations. The filename will follow the pattern\
+  \ of\n                        <OUTPUT>_root-sequence.json for a main auspice JSON\
+  \ of\n                        <OUTPUT>.json\n"
+generated_using:
+- --help

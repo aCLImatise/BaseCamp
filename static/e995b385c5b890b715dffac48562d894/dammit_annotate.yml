@@ -1,0 +1,223 @@
+!Command
+command:
+- dammit
+- annotate
+positional:
+- !Positional
+  description: FASTA file with the transcripts to be annotated.
+  position: 0
+  name: transcriptome
+  optional: false
+named:
+- !Flag
+  description: "Base name to use for renaming the input transcripts.\nThe new names\
+    \ will be of the form <name>_<X>. It\nshould not have spaces, pipes, ampersands,\
+    \ or other\ncharacters with special meaning to BASH. (default:\nTranscript)"
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "e-value cutoff for similarity searches. (default:\n1e-05)"
+  synonyms:
+  - -e
+  - --evalue
+  args: !SimpleFlagArg
+    name: EVALUE
+  optional: true
+- !Flag
+  description: "Output directory. By default this will be the name of\nthe transcriptome\
+    \ file with `.dammit` appended\n(default: None)"
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "Optional additional protein databases. These will be\nsearched with\
+    \ CRB-blast. (default: [])"
+  synonyms:
+  - --user-databases
+  args: !RepeatFlagArg
+    name: USER_DATABASES
+  optional: true
+- !Flag
+  description: "Distribute execution across the specified nodes.\n(default: None)"
+  synonyms:
+  - --sshloginfile
+  args: !SimpleFlagArg
+    name: SSHLOGINFILE
+  optional: true
+- !Flag
+  description: "Directory to store databases. Existing databases will\nnot be overwritten.\
+    \ By default, the database directory\nis $HOME/.dammit/databases. (default:\n\
+    /root/.dammit/databases)"
+  synonyms:
+  - --database-dir
+  args: !SimpleFlagArg
+    name: DATABASE_DIR
+  optional: true
+- !Flag
+  description: "[metazoa, eukaryota, vertebrata, ...]\nWhich BUSCO group to use. Should\
+    \ be chosen based on\nthe organism being annotated. Full list of options is\n\
+    below. (default: metazoa)"
+  synonyms:
+  - --busco-group
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For annotate, number of threads to pass to programs\nsupporting multithreading.\
+    \ For databases, number of\nsimultaneous tasks to execute. (default: 1)"
+  synonyms:
+  - --n_threads
+  args: !SimpleFlagArg
+    name: N_THREADS
+  optional: true
+- !Flag
+  description: "A JSON file providing values to override built-in\nconfig. Advanced\
+    \ use only! (default: None)"
+  synonyms:
+  - --config-file
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+  optional: true
+- !Flag
+  description: "Path to an alternative BUSCO config file; otherwise,\nBUSCO will attempt\
+    \ to use its default installation\nwhich will likely only work on bioconda. Advanced\
+    \ use\nonly! (default: None)"
+  synonyms:
+  - --busco-config-file
+  args: !SimpleFlagArg
+    name: BUSCO_CONFIG_FILE
+  optional: true
+- !Flag
+  description: 'Verbosity level for doit tasks. (default: 0)'
+  synonyms:
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+  optional: true
+- !Flag
+  description: 'Profile task execution. (default: False)'
+  synonyms:
+  - --profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Ignore missing database tasks. (default: False)'
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Keep original transcript names. Note: make sure your\ntranscript names\
+    \ do not contain unusual characters.\n(default: False)"
+  synonyms:
+  - --no-rename
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Run a \"complete\" annotation; includes uniref90, which\nis left out\
+    \ of the default pipeline because it is huge\nand homology searches take a long\
+    \ time. (default:\nFalse)"
+  synonyms:
+  - --full
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Also include annotation to NR database, which is left\nout of the\
+    \ default and \"full\" pipelines because it is\nhuge and homology searches take\
+    \ a long time. (default:\nFalse)"
+  synonyms:
+  - --nr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Run a \"quick\" annotation; excludes the Infernal Rfam\ntasks, the\
+    \ HMMER Pfam tasks, and the LAST OrthoDB and\nuniref90 tasks. Best for users just\
+    \ looking to get\nbasic stats and conditional reciprocal best LAST from\na protein\
+    \ database. (default: False)"
+  synonyms:
+  - --quick
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: dammit annotate <transcriptome> [OPTIONS]\n\nThe main annotation\
+  \ pipeline. Calculates assembly stats; runs BUSCO; runs LAST\nagainst OrthoDB (and\
+  \ optionally uniref90), HMMER against Pfam, Inferal against\nRfam, and Conditional\
+  \ Reciprocal Best-hit Blast against user databases; and\naggregates all results\
+  \ in a properly formatted GFF3 file.\n\npositional arguments:\n  transcriptome \
+  \        FASTA file with the transcripts to be annotated.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -n NAME, --name NAME\
+  \  Base name to use for renaming the input transcripts.\n                      \
+  \  The new names will be of the form <name>_<X>. It\n                        should\
+  \ not have spaces, pipes, ampersands, or other\n                        characters\
+  \ with special meaning to BASH. (default:\n                        Transcript)\n\
+  \  -e EVALUE, --evalue EVALUE\n                        e-value cutoff for similarity\
+  \ searches. (default:\n                        1e-05)\n  -o OUTPUT_DIR, --output-dir\
+  \ OUTPUT_DIR\n                        Output directory. By default this will be\
+  \ the name of\n                        the transcriptome file with `.dammit` appended\n\
+  \                        (default: None)\n  --user-databases USER_DATABASES [USER_DATABASES\
+  \ ...]\n                        Optional additional protein databases. These will\
+  \ be\n                        searched with CRB-blast. (default: [])\n  --sshloginfile\
+  \ SSHLOGINFILE\n                        Distribute execution across the specified\
+  \ nodes.\n                        (default: None)\n  --database-dir DATABASE_DIR\n\
+  \                        Directory to store databases. Existing databases will\n\
+  \                        not be overwritten. By default, the database directory\n\
+  \                        is $HOME/.dammit/databases. (default:\n               \
+  \         /root/.dammit/databases)\n  --busco-group [metazoa, eukaryota, vertebrata,\
+  \ ...]\n                        Which BUSCO group to use. Should be chosen based\
+  \ on\n                        the organism being annotated. Full list of options\
+  \ is\n                        below. (default: metazoa)\n  --n_threads N_THREADS\n\
+  \                        For annotate, number of threads to pass to programs\n \
+  \                       supporting multithreading. For databases, number of\n  \
+  \                      simultaneous tasks to execute. (default: 1)\n  --config-file\
+  \ CONFIG_FILE\n                        A JSON file providing values to override\
+  \ built-in\n                        config. Advanced use only! (default: None)\n\
+  \  --busco-config-file BUSCO_CONFIG_FILE\n                        Path to an alternative\
+  \ BUSCO config file; otherwise,\n                        BUSCO will attempt to use\
+  \ its default installation\n                        which will likely only work\
+  \ on bioconda. Advanced use\n                        only! (default: None)\n  --verbosity\
+  \ {0,1,2}   Verbosity level for doit tasks. (default: 0)\n  --profile          \
+  \   Profile task execution. (default: False)\n  --force               Ignore missing\
+  \ database tasks. (default: False)\n  --no-rename           Keep original transcript\
+  \ names. Note: make sure your\n                        transcript names do not contain\
+  \ unusual characters.\n                        (default: False)\n  --full      \
+  \          Run a \"complete\" annotation; includes uniref90, which\n           \
+  \             is left out of the default pipeline because it is huge\n         \
+  \               and homology searches take a long time. (default:\n            \
+  \            False)\n  --nr                  Also include annotation to NR database,\
+  \ which is left\n                        out of the default and \"full\" pipelines\
+  \ because it is\n                        huge and homology searches take a long\
+  \ time. (default:\n                        False)\n  --quick               Run a\
+  \ \"quick\" annotation; excludes the Infernal Rfam\n                        tasks,\
+  \ the HMMER Pfam tasks, and the LAST OrthoDB and\n                        uniref90\
+  \ tasks. Best for users just looking to get\n                        basic stats\
+  \ and conditional reciprocal best LAST from\n                        a protein database.\
+  \ (default: False)\n\nAvailable BUSCO groups are: actinobacteria, actinopterygii,\n\
+  alveolata_stramenophiles, arthropoda, ascomycota, aves, bacillales, bacteria,\n\
+  bacteroidetes, basidiomycota, betaproteobacteria, clostridia, cyanobacteria,\ndeltaepsilonsub,\
+  \ dikarya, diptera, embryophyta, endopterygota,\nenterobacteriales, euarchontoglires,\
+  \ eukaryota, eurotiomycetes, firmicutes,\nfungi, gammaproteobacteria, hymenoptera,\
+  \ insecta, lactobacillales,\nlaurasiatheria, mammalia, metazoa, microsporidia, nematoda,\
+  \ pezizomycotina,\nproteobacteria, protists, rhizobiales, saccharomyceta, saccharomycetales,\n\
+  sordariomyceta, spirochaetes, tenericutes, tetrapoda, vertebrata\n"
+generated_using:
+- --help

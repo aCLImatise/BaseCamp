@@ -1,0 +1,141 @@
+!Command
+command:
+- nanopolish
+- call-methylation
+positional: []
+named:
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the ONT reads are in fasta/fastq FILE
+  synonyms:
+  - -r
+  - --reads
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: the reads aligned to the genome assembly are in bam FILE
+  synonyms:
+  - -b
+  - --bam
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: the genome we are calling methylation for is in fasta FILE
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: the type of methylation (cpg,gpc,dam,dcm)
+  synonyms:
+  - -q
+  - --methylation
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: 'use NUM threads (default: 1)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: watch the sequencing run directory DIR and call methylation as data
+    is generated
+  synonyms:
+  - --watch
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: in watch mode, write the alignments for each fastq
+  synonyms:
+  - --watch-write-bam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: in watch mode, there are TOTAL calling processes running against this
+    directory
+  synonyms:
+  - -c
+  - --watch-process-total
+  args: !SimpleFlagArg
+    name: TOTAL
+  optional: true
+- !Flag
+  description: "in watch mode, the index of this process is IDX\nthe previous two\
+    \ options allow you to run multiple independent methylation\ncalling processes\
+    \ against a single directory. Each process will only call\nfiles when X mod TOTAL\
+    \ == IDX, where X is the suffix of the fast5 file."
+  synonyms:
+  - -i
+  - --watch-process-index
+  args: !SimpleFlagArg
+    name: IDX
+  optional: true
+- !Flag
+  description: print out a progress message
+  synonyms:
+  - --progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the batch size (default: 512)'
+  synonyms:
+  - -K
+  - --batchsize
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: display version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: nanopolish call-methylation [OPTIONS] --reads reads.fa --bam alignments.bam\
+  \ --genome genome.fa --methylation cpg\nClassify nucleotides as methylated or not.\n\
+  \n  -v, --verbose                        display verbose output\n      --version\
+  \                        display version\n      --help                         \
+  \  display this help and exit\n  -r, --reads=FILE                     the ONT reads\
+  \ are in fasta/fastq FILE\n  -b, --bam=FILE                       the reads aligned\
+  \ to the genome assembly are in bam FILE\n  -g, --genome=FILE                  \
+  \  the genome we are calling methylation for is in fasta FILE\n  -q, --methylation=STRING\
+  \             the type of methylation (cpg,gpc,dam,dcm)\n  -t, --threads=NUM   \
+  \                 use NUM threads (default: 1)\n      --watch=DIR              \
+  \        watch the sequencing run directory DIR and call methylation as data is\
+  \ generated\n      --watch-write-bam                in watch mode, write the alignments\
+  \ for each fastq\n  -c, --watch-process-total=TOTAL      in watch mode, there are\
+  \ TOTAL calling processes running against this directory\n  -i, --watch-process-index=IDX\
+  \        in watch mode, the index of this process is IDX\n                     \
+  \                  the previous two options allow you to run multiple independent\
+  \ methylation\n                                       calling processes against\
+  \ a single directory. Each process will only call\n                            \
+  \           files when X mod TOTAL == IDX, where X is the suffix of the fast5 file.\n\
+  \      --progress                       print out a progress message\n  -K  --batchsize=NUM\
+  \                  the batch size (default: 512)\n\nReport bugs to https://github.com/jts/nanopolish/issues\n\
+  \n"
+generated_using:
+- --help

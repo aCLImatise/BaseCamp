@@ -1,0 +1,134 @@
+!Command
+command:
+- mikado
+- serialise
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --start-method
+  args: !ChoiceFlagArg
+    choices: !!set
+      spawn:
+      forkserver:
+      fork:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "show this help message and exit\n--start-method {fork,spawn,forkserver}\n\
+    Multiprocessing start method.\n-od OUTPUT_DIR, --output-dir OUTPUT_DIR\nOutput\
+    \ directory. Default: current working directory\n--orfs ORFS           ORF BED\
+    \ file(s), separated by commas\n--transcripts TRANSCRIPTS\nTranscript FASTA file(s)\
+    \ used for ORF calling and\nBLAST queries, separated by commas. If multiple files\n\
+    are given, they must be in the same order of the ORF\nfiles. E.g. valid command\
+    \ lines are:\n--transcript_fasta all_seqs1.fasta --orfs all_orfs.bed\n--transcript_fasta\
+    \ seq1.fasta,seq2.fasta --orfs\norfs1.bed,orf2.bed --transcript_fasta all_seqs.fasta\n\
+    --orfs orfs1.bed,orf2.bed These are invalid instead: #\nInverted order --transcript_fasta\n\
+    seq1.fasta,seq2.fasta --orfs orfs2.bed,orf1.bed #Two\ntranscript files, one ORF\
+    \ file --transcript_fasta\nseq1.fasta,seq2.fasta --orfs all_orfs.bed\n-mr MAX_REGRESSION,\
+    \ --max-regression MAX_REGRESSION\n\"Amount of sequence in the ORF (in %) to backtrack\
+    \ in\norder to find a valid START codon, if one is absent.\nDefault: None\n--codon-table\
+    \ CODON_TABLE\nCodon table to use. Default: 0 (ie Standard, NCBI #1,\nbut only\
+    \ ATG is considered a valid start codon.\n-nsa, --no-start-adjustment\nDisable\
+    \ the start adjustment algorithm. Useful when\nusing e.g. TransDecoder vs 5+.\n\
+    --max-target-seqs MAX_TARGET_SEQS\nMaximum number of target sequences.\n-bt BLAST_TARGETS,\
+    \ --blast-targets BLAST_TARGETS, --blast_targets BLAST_TARGETS\nTarget sequences\n\
+    --xml XML, --tsv XML  BLAST file(s) to parse. They can be provided in three\n\
+    ways: - a comma-separated list - as a base folder -\nusing bash-like name expansion\
+    \ (*,?, etc.). In this\ncase, you have to enclose the filename pattern in\ndouble\
+    \ quotes. Multiple folders/file patterns can be\ngiven, separated by a comma.\
+    \ BLAST files must be\neither of two formats: - BLAST XML - BLAST tabular\nformat,\
+    \ with the following **custom** fields: qseqid\nsseqid pident length mismatch\
+    \ gapopen qstart qend\nsstart send evalue bitscore ppos btop\n-p PROCS, --procs\
+    \ PROCS\nNumber of threads to use for analysing the BLAST\nfiles. This number\
+    \ should not be higher than the total\nnumber of XML files.\n--single-thread \
+    \      Force serialise to run with a single thread,\nirrespective of other configuration\
+    \ options.\n--genome_fai GENOME_FAI\n--junctions JUNCTIONS\n--external-scores\
+    \ EXTERNAL_SCORES\nTabular file containing external scores for the\ntranscripts.\
+    \ Each column should have a distinct name,\nand transcripts have to be listed\
+    \ on the first column.\n-mo MAX_OBJECTS, --max-objects MAX_OBJECTS\nMaximum number\
+    \ of objects to cache in memory before\ncommitting to the database. Default: 100,000\
+    \ i.e.\napproximately 450MB RAM usage for Drosophila.\n-f, --force           Flag.\
+    \ If set, an existing databse will be deleted\n(sqlite) or dropped (MySQL/PostGreSQL)\
+    \ before\nbeginning the serialisation.\n--json-conf JSON_CONF\n-l [LOG], --log\
+    \ [LOG]\nOptional log file. Default: stderr\n-lv {DEBUG,INFO,WARN,ERROR}, --log-level\
+    \ {DEBUG,INFO,WARN,ERROR}\nLog level. Default: derived from the configuration;\
+    \ if\nabsent, INFO\ndb                    Optional output database. Default: derived\
+    \ from\njson_conf\n--seed SEED           Random seed number.\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: Mikado serialise [-h] [--start-method {fork,spawn,forkserver}]\n\
+  \                        [--orfs ORFS] [--transcripts TRANSCRIPTS]\n           \
+  \             [-mr MAX_REGRESSION] [--codon-table CODON_TABLE]\n               \
+  \         [-nsa] [--max-target-seqs MAX_TARGET_SEQS]\n                        [-bt\
+  \ BLAST_TARGETS] [--xml XML] [-p PROCS]\n                        [--single-thread]\
+  \ [--genome_fai GENOME_FAI]\n                        [--junctions JUNCTIONS]\n \
+  \                       [--external-scores EXTERNAL_SCORES] [-mo MAX_OBJECTS]\n\
+  \                        [-f] [--json-conf JSON_CONF] [-l [LOG]]\n             \
+  \           [-od OUTPUT_DIR] [-lv {DEBUG,INFO,WARN,ERROR}]\n                   \
+  \     [--seed SEED]\n                        [db]\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --start-method {fork,spawn,forkserver}\n\
+  \                        Multiprocessing start method.\n  -od OUTPUT_DIR, --output-dir\
+  \ OUTPUT_DIR\n                        Output directory. Default: current working\
+  \ directory\n\n  --orfs ORFS           ORF BED file(s), separated by commas\n  --transcripts\
+  \ TRANSCRIPTS\n                        Transcript FASTA file(s) used for ORF calling\
+  \ and\n                        BLAST queries, separated by commas. If multiple files\n\
+  \                        are given, they must be in the same order of the ORF\n\
+  \                        files. E.g. valid command lines are:\n                \
+  \        --transcript_fasta all_seqs1.fasta --orfs all_orfs.bed\n              \
+  \          --transcript_fasta seq1.fasta,seq2.fasta --orfs\n                   \
+  \     orfs1.bed,orf2.bed --transcript_fasta all_seqs.fasta\n                   \
+  \     --orfs orfs1.bed,orf2.bed These are invalid instead: #\n                 \
+  \       Inverted order --transcript_fasta\n                        seq1.fasta,seq2.fasta\
+  \ --orfs orfs2.bed,orf1.bed #Two\n                        transcript files, one\
+  \ ORF file --transcript_fasta\n                        seq1.fasta,seq2.fasta --orfs\
+  \ all_orfs.bed\n  -mr MAX_REGRESSION, --max-regression MAX_REGRESSION\n        \
+  \                \"Amount of sequence in the ORF (in %) to backtrack in\n      \
+  \                  order to find a valid START codon, if one is absent.\n      \
+  \                  Default: None\n  --codon-table CODON_TABLE\n                \
+  \        Codon table to use. Default: 0 (ie Standard, NCBI #1,\n               \
+  \         but only ATG is considered a valid start codon.\n  -nsa, --no-start-adjustment\n\
+  \                        Disable the start adjustment algorithm. Useful when\n \
+  \                       using e.g. TransDecoder vs 5+.\n\n  --max-target-seqs MAX_TARGET_SEQS\n\
+  \                        Maximum number of target sequences.\n  -bt BLAST_TARGETS,\
+  \ --blast-targets BLAST_TARGETS, --blast_targets BLAST_TARGETS\n               \
+  \         Target sequences\n  --xml XML, --tsv XML  BLAST file(s) to parse. They\
+  \ can be provided in three\n                        ways: - a comma-separated list\
+  \ - as a base folder -\n                        using bash-like name expansion (*,?,\
+  \ etc.). In this\n                        case, you have to enclose the filename\
+  \ pattern in\n                        double quotes. Multiple folders/file patterns\
+  \ can be\n                        given, separated by a comma. BLAST files must\
+  \ be\n                        either of two formats: - BLAST XML - BLAST tabular\n\
+  \                        format, with the following **custom** fields: qseqid\n\
+  \                        sseqid pident length mismatch gapopen qstart qend\n   \
+  \                     sstart send evalue bitscore ppos btop\n  -p PROCS, --procs\
+  \ PROCS\n                        Number of threads to use for analysing the BLAST\n\
+  \                        files. This number should not be higher than the total\n\
+  \                        number of XML files.\n  --single-thread       Force serialise\
+  \ to run with a single thread,\n                        irrespective of other configuration\
+  \ options.\n\n  --genome_fai GENOME_FAI\n  --junctions JUNCTIONS\n\n  --external-scores\
+  \ EXTERNAL_SCORES\n                        Tabular file containing external scores\
+  \ for the\n                        transcripts. Each column should have a distinct\
+  \ name,\n                        and transcripts have to be listed on the first\
+  \ column.\n\n  -mo MAX_OBJECTS, --max-objects MAX_OBJECTS\n                    \
+  \    Maximum number of objects to cache in memory before\n                     \
+  \   committing to the database. Default: 100,000 i.e.\n                        approximately\
+  \ 450MB RAM usage for Drosophila.\n  -f, --force           Flag. If set, an existing\
+  \ databse will be deleted\n                        (sqlite) or dropped (MySQL/PostGreSQL)\
+  \ before\n                        beginning the serialisation.\n  --json-conf JSON_CONF\n\
+  \  -l [LOG], --log [LOG]\n                        Optional log file. Default: stderr\n\
+  \  -lv {DEBUG,INFO,WARN,ERROR}, --log-level {DEBUG,INFO,WARN,ERROR}\n          \
+  \              Log level. Default: derived from the configuration; if\n        \
+  \                absent, INFO\n  db                    Optional output database.\
+  \ Default: derived from\n                        json_conf\n  --seed SEED      \
+  \     Random seed number.\n"
+generated_using:
+- --help

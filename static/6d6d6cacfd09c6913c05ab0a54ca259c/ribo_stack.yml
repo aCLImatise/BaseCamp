@@ -1,0 +1,110 @@
+!Command
+command:
+- ribo
+- stack
+positional:
+- !Positional
+  description: 'required named arguments:'
+  position: 1
+  name: run.
+  optional: false
+named:
+- !Flag
+  description: 'output directory; default: /'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: 'BAM file; tested with BWA output; default: None'
+  synonyms:
+  - -b
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: look for BAM file in this riboSeed output directory
+  synonyms:
+  - -r
+  - --riboSeed_dir
+  args: !SimpleFlagArg
+    name: RIBOSEED_DIR
+  optional: true
+- !Flag
+  description: "Number of regions to compare rDNA depth to; must be\ngreater than\
+    \ 1; default: 10"
+  synonyms:
+  - -n
+  - --n_samples
+  args: !SimpleFlagArg
+    name: N_SAMPLES
+  optional: true
+- !Flag
+  description: 'prefix for results files; default: riboStack'
+  synonyms:
+  - -e
+  - --experiment_name
+  args: !SimpleFlagArg
+    name: EXPERIMENT_NAME
+  optional: true
+- !Flag
+  description: "If --infer, ignore the name and length of reference\nsequence, using\
+    \ the BAM header instead default: False"
+  synonyms:
+  - -i
+  - --infer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
+    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
+    \ critical();\ndefault: 2"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '4':
+      '2':
+      '5':
+      '3':
+      '1':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Displays this help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ribo stack -o OUTPUT [-b BAM] -r RIBOSEED_DIR [-n N_SAMPLES]\n\
+  \                  [-e EXPERIMENT_NAME] [-i] [-v {1,2,3,4,5}] [-h]\n           \
+  \       riboScan_dir\n\nThis facilitates the mapping of reads to a reference and\
+  \ comparison of\ncoverage depths in rDNA regions to assess disparity in rDNA counts\
+  \ between the\nreference and your reads\n\npositional arguments:\n  riboScan_dir\
+  \          We need the gff and fasta files from your riboScan\n                \
+  \        run.\n\nrequired named arguments:\n  -o OUTPUT, --output OUTPUT\n     \
+  \                   output directory; default: /\n\noptional arguments:\n  -b BAM,\
+  \ --bam BAM     BAM file; tested with BWA output; default: None\n  -r RIBOSEED_DIR,\
+  \ --riboSeed_dir RIBOSEED_DIR\n                        look for BAM file in this\
+  \ riboSeed output directory\n  -n N_SAMPLES, --n_samples N_SAMPLES\n           \
+  \             Number of regions to compare rDNA depth to; must be\n            \
+  \            greater than 1; default: 10\n  -e EXPERIMENT_NAME, --experiment_name\
+  \ EXPERIMENT_NAME\n                        prefix for results files; default: riboStack\n\
+  \  -i, --infer           If --infer, ignore the name and length of reference\n \
+  \                       sequence, using the BAM header instead default: False\n\
+  \  -v {1,2,3,4,5}, --verbosity {1,2,3,4,5}\n                        Logger writes\
+  \ debug to file in output dir; this sets\n                        verbosity level\
+  \ sent to stderr. 1 = debug(), 2 =\n                        info(), 3 = warning(),\
+  \ 4 = error() and 5 = critical();\n                        default: 2\n  -h, --help\
+  \            Displays this help message\n"
+generated_using:
+- --help

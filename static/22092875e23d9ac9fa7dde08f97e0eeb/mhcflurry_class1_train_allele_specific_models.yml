@@ -1,0 +1,200 @@
+!Command
+command:
+- mhcflurry-class1-train-allele-specific-models
+positional:
+- !Positional
+  description: --out-models-dir DIR  Directory to write models and manifest
+  position: 0
+  name: measurement_value
+  optional: false
+named:
+- !Flag
+  description: 'Training data CSV. Expected columns: allele, peptide,'
+  synonyms:
+  - --data
+  args: !SimpleFlagArg
+    name: FILE.csv
+  optional: true
+- !Flag
+  description: JSON or YAML of hyperparameters
+  synonyms:
+  - --hyperparameters
+  args: !SimpleFlagArg
+    name: FILE.json
+  optional: true
+- !Flag
+  description: "Alleles to train models for. If not specified, all\nalleles with enough\
+    \ measurements will be used."
+  synonyms:
+  - --allele
+  args: !RepeatFlagArg
+    name: ALLELE
+  optional: true
+- !Flag
+  description: Train models for alleles with >=N measurements.
+  synonyms:
+  - --min-measurements-per-allele
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Hold out 1/N fraction of data (for e.g. subsequent\nmodel selection.\
+    \ For example, specify 5 to hold out 20\npercent of the data."
+  synonyms:
+  - --held-out-fraction-reciprocal
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Seed for randomizing which measurements are held out.\nOnly matters\
+    \ when --held-out-fraction is specified.\nDefault: 0."
+  synonyms:
+  - --held-out-fraction-seed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Do not use affinity value inequalities even when\npresent in data"
+  synonyms:
+  - --ignore-inequalities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ensemble size, i.e. how many models to train for each\narchitecture.\
+    \ If specified here it overrides any\n'n_models' specified in the hyperparameters."
+  synonyms:
+  - --n-models
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Max training epochs. If specified here it overrides\nany 'max_epochs'\
+    \ specified in the hyperparameters."
+  synonyms:
+  - --max-epochs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Allele sequences file. Used for computing allele\nsimilarity matrix."
+  synonyms:
+  - --allele-sequences
+  args: !SimpleFlagArg
+    name: FILE.csv
+  optional: true
+- !Flag
+  description: "Write models to disk every N seconds. Only affects\nparallel runs;\
+    \ serial runs write each model to disk as\nit is trained."
+  synonyms:
+  - --save-interval
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Keras verbosity. Default: 0'
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: "Number of local processes to parallelize training\nover. Set to 0\
+    \ for serial run. Default: 0."
+  synonyms:
+  - --num-jobs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Keras backend. If not specified will use system\ndefault."
+  synonyms:
+  - --backend
+  args: !ChoiceFlagArg
+    choices: !!set
+      tensorflow-default:
+      tensorflow-cpu:
+      tensorflow-gpu:
+  optional: true
+- !Flag
+  description: "Number of GPUs to attempt to parallelize across.\nRequires running\
+    \ in parallel."
+  synonyms:
+  - --gpus
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Maximum number of workers to assign to a GPU.\nAdditional tasks will\
+    \ run on CPU."
+  synonyms:
+  - --max-workers-per-gpu
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Restart workers after N tasks. Workaround for\ntensorflow memory leaks.\
+    \ Requires Python >=3.2."
+  synonyms:
+  - --max-tasks-per-worker
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Write worker stdout and stderr logs to given\ndirectory.\n"
+  synonyms:
+  - --worker-log-dir
+  args: !SimpleFlagArg
+    name: WORKER_LOG_DIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "To show stack trace, run:\nkill -s USR1 183\nusage: \nTrain Class1 single\
+  \ allele models.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --data FILE.csv       Training data CSV. Expected columns:\
+  \ allele, peptide,\n                        measurement_value\n  --out-models-dir\
+  \ DIR  Directory to write models and manifest\n  --hyperparameters FILE.json\n \
+  \                       JSON or YAML of hyperparameters\n  --allele ALLELE [ALLELE\
+  \ ...]\n                        Alleles to train models for. If not specified, all\n\
+  \                        alleles with enough measurements will be used.\n  --min-measurements-per-allele\
+  \ N\n                        Train models for alleles with >=N measurements.\n \
+  \ --held-out-fraction-reciprocal N\n                        Hold out 1/N fraction\
+  \ of data (for e.g. subsequent\n                        model selection. For example,\
+  \ specify 5 to hold out 20\n                        percent of the data.\n  --held-out-fraction-seed\
+  \ N\n                        Seed for randomizing which measurements are held out.\n\
+  \                        Only matters when --held-out-fraction is specified.\n \
+  \                       Default: 0.\n  --ignore-inequalities\n                 \
+  \       Do not use affinity value inequalities even when\n                     \
+  \   present in data\n  --n-models N          Ensemble size, i.e. how many models\
+  \ to train for each\n                        architecture. If specified here it\
+  \ overrides any\n                        'n_models' specified in the hyperparameters.\n\
+  \  --max-epochs N        Max training epochs. If specified here it overrides\n \
+  \                       any 'max_epochs' specified in the hyperparameters.\n  --allele-sequences\
+  \ FILE.csv\n                        Allele sequences file. Used for computing allele\n\
+  \                        similarity matrix.\n  --save-interval N     Write models\
+  \ to disk every N seconds. Only affects\n                        parallel runs;\
+  \ serial runs write each model to disk as\n                        it is trained.\n\
+  \  --verbosity VERBOSITY\n                        Keras verbosity. Default: 0\n\n\
+  Local parallelism:\n  --num-jobs N          Number of local processes to parallelize\
+  \ training\n                        over. Set to 0 for serial run. Default: 0.\n\
+  \  --backend {tensorflow-gpu,tensorflow-cpu,tensorflow-default}\n              \
+  \          Keras backend. If not specified will use system\n                   \
+  \     default.\n  --gpus N              Number of GPUs to attempt to parallelize\
+  \ across.\n                        Requires running in parallel.\n  --max-workers-per-gpu\
+  \ N\n                        Maximum number of workers to assign to a GPU.\n   \
+  \                     Additional tasks will run on CPU.\n  --max-tasks-per-worker\
+  \ N\n                        Restart workers after N tasks. Workaround for\n   \
+  \                     tensorflow memory leaks. Requires Python >=3.2.\n  --worker-log-dir\
+  \ WORKER_LOG_DIR\n                        Write worker stdout and stderr logs to\
+  \ given\n                        directory.\n"
+generated_using:
+- --help

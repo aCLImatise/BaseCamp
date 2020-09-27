@@ -1,0 +1,111 @@
+!Command
+command:
+- vtools
+- execute
+positional:
+- !Positional
+  description: "Name of a pipeline configuration file, which can be a\npath to a .pipeline\
+    \ file (with or without extension)\nor one of the online pipelines listed by command\n\
+    \"vtools show pipelines\". For backward compatibility,\nif no input and output\
+    \ files are specified (options\n--input and --output), values of this option is\n\
+    treated as a SQL query that will be executed against\nthe project database, with\
+    \ project genotype database\nattached as \"genotype\" and annotation databases\n\
+    attached by their names."
+  position: 0
+  name: SPECFILE
+  optional: false
+- !Positional
+  description: "Name of one or more pipelines defined in SPECFILE,\nwhich can be ignored\
+    \ if the SPECFILE only defines one\npipeline. One or more steps can be specified\
+    \ in the\nform of 'pipeline:5' (step_5 only), 'pipeline:-5' (up\nto step 5), 'pipeline:5-'\
+    \ (from step 5),\n'pipeline:2,5' (step 2 and 5), 'pipeline:2-5' (step 2\nto 5).\
+    \ This essentially adds an option \"skip\" to the\nunselected pipeline steps and\
+    \ it is up to the user to\nensure that the pipeline is executable with only a\n\
+    subset of steps. Please use command \"vtools show\npipeline SPECFILE\" for details\
+    \ of available pipelines\nin SPECFILE, including pipeline-specific parameters\n\
+    that could be used to change the default behavior of\nthe pipelines."
+  position: 1
+  name: PIPELINES
+  optional: false
+named:
+- !Flag
+  description: "Execute the pipeline in parallel model if a number\nother than 1 is\
+    \ specified. In this mode, the\nRunCommand action will create a shell script and\n\
+    submit the job using a command specified by option\n``submitter``, if this parameter\
+    \ is defined."
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: JOBS
+  optional: true
+- !Flag
+  description: Delimiter used to output results of a SQL query.
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools execute [-h] [-j JOBS] [-d DELIMITER] [-v {0,1,2,3}]\n \
+  \                     SPECFILE [PIPELINES [PIPELINES ...]]\n\nExecute a SQL query\
+  \ or pipeline.\n\npositional arguments:\n  SPECFILE              Name of a pipeline\
+  \ configuration file, which can be a\n                        path to a .pipeline\
+  \ file (with or without extension)\n                        or one of the online\
+  \ pipelines listed by command\n                        \"vtools show pipelines\"\
+  . For backward compatibility,\n                        if no input and output files\
+  \ are specified (options\n                        --input and --output), values\
+  \ of this option is\n                        treated as a SQL query that will be\
+  \ executed against\n                        the project database, with project genotype\
+  \ database\n                        attached as \"genotype\" and annotation databases\n\
+  \                        attached by their names.\n  PIPELINES             Name\
+  \ of one or more pipelines defined in SPECFILE,\n                        which can\
+  \ be ignored if the SPECFILE only defines one\n                        pipeline.\
+  \ One or more steps can be specified in the\n                        form of 'pipeline:5'\
+  \ (step_5 only), 'pipeline:-5' (up\n                        to step 5), 'pipeline:5-'\
+  \ (from step 5),\n                        'pipeline:2,5' (step 2 and 5), 'pipeline:2-5'\
+  \ (step 2\n                        to 5). This essentially adds an option \"skip\"\
+  \ to the\n                        unselected pipeline steps and it is up to the\
+  \ user to\n                        ensure that the pipeline is executable with only\
+  \ a\n                        subset of steps. Please use command \"vtools show\n\
+  \                        pipeline SPECFILE\" for details of available pipelines\n\
+  \                        in SPECFILE, including pipeline-specific parameters\n \
+  \                       that could be used to change the default behavior of\n \
+  \                       the pipelines.\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  -j JOBS, --jobs JOBS  Execute the pipeline\
+  \ in parallel model if a number\n                        other than 1 is specified.\
+  \ In this mode, the\n                        RunCommand action will create a shell\
+  \ script and\n                        submit the job using a command specified by\
+  \ option\n                        ``submitter``, if this parameter is defined.\n\
+  \  -d DELIMITER, --delimiter DELIMITER\n                        Delimiter used to\
+  \ output results of a SQL query.\n  -v {0,1,2,3}, --verbosity {0,1,2,3}\n      \
+  \                  Output error and warning (0), info (1), debug (2) and\n     \
+  \                   trace (3) information to standard output (default to\n     \
+  \                   1).\n"
+generated_using:
+- --help

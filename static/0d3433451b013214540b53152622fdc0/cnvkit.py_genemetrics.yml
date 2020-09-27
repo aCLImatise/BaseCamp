@@ -1,0 +1,218 @@
+!Command
+command:
+- cnvkit.py
+- genemetrics
+positional: []
+named:
+- !Flag
+  description: "Segmentation calls (.cns), the output of the 'segment'\ncommand)."
+  synonyms:
+  - -s
+  - --segment
+  args: !SimpleFlagArg
+    name: SEGMENT
+  optional: true
+- !Flag
+  description: "Copy number change threshold to report a gene\ngain/loss. [Default:\
+    \ 0.2]"
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: "Minimum number of covered probes to report a\ngain/loss. [Default:\
+    \ 3]"
+  synonyms:
+  - -m
+  - --min-probes
+  args: !SimpleFlagArg
+    name: MIN_PROBES
+  optional: true
+- !Flag
+  description: "Drop very-low-coverage bins before segmentation to\navoid false-positive\
+    \ deletions in poor-quality tumor\nsamples."
+  synonyms:
+  - --drop-low-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Assume inputs were normalized to a male reference\n(i.e. female samples\
+    \ will have +1 log-coverage of\nchrX; otherwise male samples would have -1 chrX)."
+  synonyms:
+  - -y
+  - --male-reference
+  - --haploid-x-reference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the sample's chromosomal sex as male or\nfemale. (Otherwise\
+    \ guessed from X and Y coverage)."
+  synonyms:
+  - -x
+  - --sample-sex
+  - -g
+  - --gender
+  args: !ChoiceFlagArg
+    choices: !!set
+      Female:
+      m:
+      x:
+      male:
+      y:
+      f:
+      female:
+      Male:
+  optional: true
+- !Flag
+  description: Output table file name.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Mean log2-ratio (unweighted).
+  synonyms:
+  - --mean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Median.
+  synonyms:
+  - --median
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mode (i.e. peak density of log2 ratios).
+  synonyms:
+  - --mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: One-sample t-test of bin log2 ratios versus 0.0.
+  synonyms:
+  - --ttest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Standard deviation.
+  synonyms:
+  - --stdev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Standard error of the mean.
+  synonyms:
+  - --sem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Median absolute deviation (standardized).
+  synonyms:
+  - --mad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mean squared error.
+  synonyms:
+  - --mse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Inter-quartile range.
+  synonyms:
+  - --iqr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tukey's biweight midvariance.
+  synonyms:
+  - --bivar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Confidence interval (by bootstrap).
+  synonyms:
+  - --ci
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prediction interval.
+  synonyms:
+  - --pi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Level to estimate confidence and prediction intervals;\nuse with --ci\
+    \ and --pi. [Default: 0.05]"
+  synonyms:
+  - -a
+  - --alpha
+  args: !SimpleFlagArg
+    name: ALPHA
+  optional: true
+- !Flag
+  description: "Number of bootstrap iterations to estimate confidence\ninterval; use\
+    \ with --ci. [Default: 100]\n"
+  synonyms:
+  - -b
+  - --bootstrap
+  args: !SimpleFlagArg
+    name: BOOTSTRAP
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py genemetrics [-h] [-s SEGMENT] [-t THRESHOLD] [-m MIN_PROBES]\n\
+  \                             [--drop-low-coverage] [-y]\n                     \
+  \        [-x {m,y,male,Male,f,x,female,Female}]\n                             [-o\
+  \ FILENAME] [--mean] [--median] [--mode]\n                             [--ttest]\
+  \ [--stdev] [--sem] [--mad] [--mse]\n                             [--iqr] [--bivar]\
+  \ [--ci] [--pi] [-a ALPHA]\n                             [-b BOOTSTRAP]\n      \
+  \                       filename\n\npositional arguments:\n  filename          \
+  \    Processed sample coverage data file (*.cnr), the\n                        output\
+  \ of the 'fix' sub-command.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -s SEGMENT, --segment SEGMENT\n                \
+  \        Segmentation calls (.cns), the output of the 'segment'\n              \
+  \          command).\n  -t THRESHOLD, --threshold THRESHOLD\n                  \
+  \      Copy number change threshold to report a gene\n                        gain/loss.\
+  \ [Default: 0.2]\n  -m MIN_PROBES, --min-probes MIN_PROBES\n                   \
+  \     Minimum number of covered probes to report a\n                        gain/loss.\
+  \ [Default: 3]\n  --drop-low-coverage   Drop very-low-coverage bins before segmentation\
+  \ to\n                        avoid false-positive deletions in poor-quality tumor\n\
+  \                        samples.\n  -y, --male-reference, --haploid-x-reference\n\
+  \                        Assume inputs were normalized to a male reference\n   \
+  \                     (i.e. female samples will have +1 log-coverage of\n      \
+  \                  chrX; otherwise male samples would have -1 chrX).\n  -x {m,y,male,Male,f,x,female,Female},\
+  \ --sample-sex {m,y,male,Male,f,x,female,Female}, -g {m,y,male,Male,f,x,female,Female},\
+  \ --gender {m,y,male,Male,f,x,female,Female}\n                        Specify the\
+  \ sample's chromosomal sex as male or\n                        female. (Otherwise\
+  \ guessed from X and Y coverage).\n  -o FILENAME, --output FILENAME\n          \
+  \              Output table file name.\n\nStatistics available:\n  --mean      \
+  \          Mean log2-ratio (unweighted).\n  --median              Median.\n  --mode\
+  \                Mode (i.e. peak density of log2 ratios).\n  --ttest           \
+  \    One-sample t-test of bin log2 ratios versus 0.0.\n  --stdev               Standard\
+  \ deviation.\n  --sem                 Standard error of the mean.\n  --mad     \
+  \            Median absolute deviation (standardized).\n  --mse                \
+  \ Mean squared error.\n  --iqr                 Inter-quartile range.\n  --bivar\
+  \               Tukey's biweight midvariance.\n  --ci                  Confidence\
+  \ interval (by bootstrap).\n  --pi                  Prediction interval.\n  -a ALPHA,\
+  \ --alpha ALPHA\n                        Level to estimate confidence and prediction\
+  \ intervals;\n                        use with --ci and --pi. [Default: 0.05]\n\
+  \  -b BOOTSTRAP, --bootstrap BOOTSTRAP\n                        Number of bootstrap\
+  \ iterations to estimate confidence\n                        interval; use with\
+  \ --ci. [Default: 100]\n"
+generated_using:
+- --help

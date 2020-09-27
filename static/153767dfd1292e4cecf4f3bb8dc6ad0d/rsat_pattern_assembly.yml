@@ -1,0 +1,240 @@
+!Command
+command:
+- rsat
+- pattern-assembly
+positional:
+- !Positional
+  description: 1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
+  position: 0
+  name: pattern-assembly
+  optional: false
+- !Positional
+  description: OPTIONS
+  position: 0
+  name: sequences
+  optional: false
+- !Positional
+  description: These options are mutually incompatible.
+  position: 0
+  name: submitted.
+  optional: false
+named:
+- !Flag
+  description: (must be first argument) display options
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if not specified, the standard input is used.\nThis allows to place\
+    \ the command within a pipe."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: inputfile
+  optional: true
+- !Flag
+  description: "if not specified, the standard output is used.\nThis allows to place\
+    \ the command within a pipe."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: outputfile
+  optional: true
+- !Flag
+  description: "strand insensitive assembly (default).\nWith the strand insensitive\
+    \ option, patterns can be\nused either in direct or reverse complement\norientation\
+    \ for assembly. For each pattern, the\norientation which offers the best match\
+    \ is chosen."
+  synonyms:
+  - -2str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: strand sensitive assembly.
+  synonyms:
+  - -1str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#   score column\nPattern assembly is a NP-hard problem, i.e. the\
+    \ time\nof calculation increases exponentially with the number\nof patterns. Beyond\
+    \ a certain number of patterns, it\nis impossible to envisage all possible assemblie\
+    \ in\norder to select the best ones. pattern-assembly\nimplements a heuristic\
+    \ which is sensitive to the order\nof entry of the patterns. When a score column\
+    \ is\nspecified, patterns are incorporated accordingly to\ntheir scores (higher\
+    \ scores are incorporated first."
+  synonyms:
+  - -sc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "cluster column\nDefine a column containing cluster names or numbers.\n\
+    If cluster column is specified, each cluster is\ntreated as a separate set of\
+    \ patterns for assembly."
+  synonyms:
+  - -cc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nmaximum flanking segment size (default 1).\nThe flanking segment\
+    \ is the portion of a fragment that\nextends outside of the assembly on which\
+    \ it is aligned."
+  synonyms:
+  - -maxfl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nmaximum allowed substitutions (default 0)."
+  synonyms:
+  - -subst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nminimum number of matching residues to include a\npattern in an\
+    \ assembly (default 0)."
+  synonyms:
+  - -match
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nminimum matching weight to include a pattern in an\nassembly (default\
+    \ 0). The weight is the sum\nof informative residue matches. A single-letter match\n\
+    has weight 1. Matches between ambiguous nucleotides\nhave lower weight (for example\
+    \ A versus [AT] has\nweight 0.5)."
+  synonyms:
+  - -weight
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nmaximal number of assemblies (default: 5)"
+  synonyms:
+  - -max_asmb_nb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nmaximal number of assemblies per cluster\n(default: 2).\nThis option\
+    \ is only valid in combination with the\noption -cc."
+  synonyms:
+  - -max_asmb_per_cluster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nmaximal assembly size, i.e. the number of patterns per\nalignment\
+    \ group (default: 50)"
+  synonyms:
+  - -max_asmb_size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nmaximal width for an assembly (default: 0)"
+  synonyms:
+  - -max_asmb_width
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Report the isolated words (i.e. words that do not\nmatch any other\
+    \ words) separately. This was the\ndefault behaviour of the program before April\
+    \ 2011.\nThe separate list of isolaed words presents the\nadvantage of compacity\
+    \ (no need to create one assembly\nfor each isolated word), but a drawback is\
+    \ that some\nsignificant single words may appear after less\nsignificant assemblies\
+    \ of several words, and thus be\nignored for further processing (e.g. by\nmatrix-from-patterns)."
+  synonyms:
+  - -single_sep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nDefault: 100\nmaximum number of patterns to assemble.  If the number\n\
+    of patterns in the input file exceeds the maximal\nnumber, the assembly is restrictedd\
+    \ with the top patterns\nonly."
+  synonyms:
+  - -toppat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nmaximum number of allowed patterns (default\n0).  If the number\
+    \ of patterns in the\ninput file exceeds the maximal number, the program\ndoes\
+    \ not performa ny assembly, and returns a\ncancellation message."
+  synonyms:
+  - -maxpat
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: (must be first argument) display full help message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n\tpattern-assembly\n\n        1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
+  \nUSAGE\n        pattern-assembly [-i inputfile] [-o outputfile] [-v]\n\nDESCRIPTION\n\
+  \tAssemble a set of oligonucleotides or dyads into groups of\n\toverlapping patterns\
+  \ (assemblies).\n\nCATEGORY\n\tsequences\n\nOPTIONS\n        -h      (must be first\
+  \ argument) display full help message\n        -help   (must be first argument)\
+  \ display options\n\t-v\tverbose\n\n\t-i inputfile\n\t\tif not specified, the standard\
+  \ input is used.\n\t\tThis allows to place the command within a pipe.\n\n\t-o outputfile\n\
+  \t\tif not specified, the standard output is used.\n\t\tThis allows to place the\
+  \ command within a pipe.\n\n\t-2str\tstrand insensitive assembly (default).\n\t\t\
+  With the strand insensitive option, patterns can be\n\t\tused either in direct or\
+  \ reverse complement\n\t\torientation for assembly. For each pattern, the\n\t\t\
+  orientation which offers the best match is chosen.\n\n\t-1str\tstrand sensitive\
+  \ assembly.\n\n\t-sc #\tscore column\n\t\tPattern assembly is a NP-hard problem,\
+  \ i.e. the time\n\t\tof calculation increases exponentially with the number\n\t\t\
+  of patterns. Beyond a certain number of patterns, it\n\t\tis impossible to envisage\
+  \ all possible assemblie in\n\t\torder to select the best ones. pattern-assembly\n\
+  \t\timplements a heuristic which is sensitive to the order\n\t\tof entry of the\
+  \ patterns. When a score column is\n\t\tspecified, patterns are incorporated accordingly\
+  \ to\n\t\ttheir scores (higher scores are incorporated first.\n\n\t-cc\tcluster\
+  \ column\n\t\tDefine a column containing cluster names or numbers.\n\t\tIf cluster\
+  \ column is specified, each cluster is\n\t\ttreated as a separate set of patterns\
+  \ for assembly.\n\n\t-maxfl #\n\t\tmaximum flanking segment size (default 1).\n\t\
+  \tThe flanking segment is the portion of a fragment that\n\t\textends outside of\
+  \ the assembly on which it is aligned.\n\n\t-subst #\n\t\tmaximum allowed substitutions\
+  \ (default 0).\n\n\t-match #\n\t\tminimum number of matching residues to include\
+  \ a\n\t\tpattern in an assembly (default 0).\n\n\t-weight #\n\t\tminimum matching\
+  \ weight to include a pattern in an\n\t\tassembly (default 0). The weight is the\
+  \ sum\n\t\tof informative residue matches. A single-letter match\n\t\thas weight\
+  \ 1. Matches between ambiguous nucleotides\n\t\thave lower weight (for example A\
+  \ versus [AT] has\n\t\tweight 0.5).\n\n\t-max_asmb_nb #\n\t\tmaximal number of assemblies\
+  \ (default: 5)\n\n\t-max_asmb_per_cluster #\n\t\tmaximal number of assemblies per\
+  \ cluster\n \t\t(default: 2).\n\n\t\tThis option is only valid in combination with\
+  \ the\n\t\toption -cc. \n\n\t-max_asmb_size #\n\t\tmaximal assembly size, i.e. the\
+  \ number of patterns per\n\t\talignment group (default: 50)\n\n\t-max_asmb_width\
+  \ #\n\t\tmaximal width for an assembly (default: 0)\n\n\t-single_sep\n\n\t\tReport\
+  \ the isolated words (i.e. words that do not\n\t\tmatch any other words) separately.\
+  \ This was the\n\t\tdefault behaviour of the program before April 2011. \n\n\t\t\
+  The separate list of isolaed words presents the\n\t\tadvantage of compacity (no\
+  \ need to create one assembly\n\t\tfor each isolated word), but a drawback is that\
+  \ some\n\t\tsignificant single words may appear after less\n\t\tsignificant assemblies\
+  \ of several words, and thus be\n\t\tignored for further processing (e.g. by\n\t\
+  \tmatrix-from-patterns).\n\n\n    Restrictions in the number of patterns\n\n   \
+  \    \tThe time of assembly increases quadratically with the number\n       \tof\
+  \ patterns to assemble. When too many patterns are submitted,\n       \tthis can\
+  \ represent a huge time. Moreover, when too many\n       \tpatterns are returned\
+  \ by a motif discovery program, it\n       \tgenerally reflects a problem (redundant\
+  \ sequences, wrong\n       \tselection of the threshold). Two options (-toppat and\
+  \ -maxpat)\n       \tcan be used to treat the cases when too many patterns are\n\
+  \       \tsubmitted.  These options are mutually incompatible.\n\n\t-toppat #\n\t\
+  \tDefault: 100\n\t\tmaximum number of patterns to assemble.  If the number\n\t\t\
+  of patterns in the input file exceeds the maximal\n\t\tnumber, the assembly is restrictedd\
+  \ with the top patterns\n\t\tonly.\n\n\t-maxpat #\n\t\tmaximum number of allowed\
+  \ patterns (default\n\t\t0).  If the number of patterns in the\n\t\tinput file exceeds\
+  \ the maximal number, the program\n\t\tdoes not performa ny assembly, and returns\
+  \ a\n\t\tcancellation message.\n\n\nINPUT FORMAT\n\tEach pattern must appear as\
+  \ the first word of a line.\n\tLines starting with a semicolon (;) are ignored.\n\
+  \nOUTPUT FORMAT\n\n\tThe program returns groups of aligned patterns (oligonucleotides\
+  \ or\n\tdyads).  The information associated to each pattern in the input file\n\t\
+  is returned besides the same oligo in the output file.\n\nEXAMPLES\n       pattern-assembly\
+  \ -v -i mydata -o myresult -2str\n\n"
+generated_using:
+- -h

@@ -1,0 +1,54 @@
+!Command
+command:
+- hca
+- dss
+- get-subscription
+positional: []
+named:
+- !Flag
+  description: A RFC4122-compliant ID for the subscription.
+  synonyms:
+  - --uuid
+  args: !SimpleFlagArg
+    name: UUID
+  optional: true
+- !Flag
+  description: Replica to fetch from.
+  synonyms:
+  - --replica
+  args: !ChoiceFlagArg
+    choices: !!set
+      aws:
+      gcp:
+  optional: true
+- !Flag
+  description: "type of subscriptions to fetch (elasticsearch or jmespath)\n"
+  synonyms:
+  - --subscription-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      elasticsearch:
+      jmespath:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hca dss get-subscription [-h] --uuid UUID --replica {aws,gcp}\n\
+  \                                [--subscription-type {elasticsearch,jmespath}]\n\
+  \nGiven a subscription UUID, return the associated subscription.\n\nOptional Arguments:\n\
+  \  -h, --help            show this help message and exit\n\nRequired Arguments:\n\
+  \  --uuid UUID           A RFC4122-compliant ID for the subscription.\n  --replica\
+  \ {aws,gcp}   Replica to fetch from.\n  --subscription-type {elasticsearch,jmespath}\n\
+  \                        type of subscriptions to fetch (elasticsearch or jmespath)\n\
+  \n"
+generated_using:
+- --help

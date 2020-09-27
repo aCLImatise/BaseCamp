@@ -1,0 +1,163 @@
+!Command
+command:
+- datamash
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: op
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: fld
+  optional: true
+named:
+- !Flag
+  description: "print entire input line before op results\n(default: print only the\
+    \ grouped keys)"
+  synonyms:
+  - -f
+  - --full
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[,Y,Z]       group via fields X,[Y,Z];\nequivalent to primary operation\
+    \ 'groupby'"
+  synonyms:
+  - -g
+  - --group
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: first input line is column headers
+  synonyms:
+  - --header-in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print column headers as first line
+  synonyms:
+  - --header-out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: same as '--header-in --header-out'
+  synonyms:
+  - -H
+  - --headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ignore upper/lower case when comparing text;\nthis affects grouping,\
+    \ and string operations"
+  synonyms:
+  - -i
+  - --ignore-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "sort the input before grouping; this removes the\nneed to manually\
+    \ pipe the input through 'sort'"
+  synonyms:
+  - -s
+  - --sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: allow lines with varying number of fields
+  synonyms:
+  - --no-strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fill missing values with X (default %s)
+  synonyms:
+  - --filler
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: use X instead of TAB as field delimiter
+  synonyms:
+  - -t
+  - --field-separator
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: skip NA/NaN values
+  synonyms:
+  - --narm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use whitespace (one or more spaces and/or tabs)\nfor field delimiters"
+  synonyms:
+  - -W
+  - --whitespace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: end lines with 0 byte, not newline
+  synonyms:
+  - -z
+  - --zero-terminated
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: datamash [OPTION] op [fld] [op fld ...]\n\nPerforms numeric/string\
+  \ operations on input from stdin.\n\n'op' is the operation to perform.  If a primary\
+  \ operation is used,\nit must be listed first, optionally followed by other operations.\n\
+  'fld' is the input field to use.  'fld' can be a number (1=first field),\nor a field\
+  \ name when using the -H or --header-in options.\nMultiple fields can be listed\
+  \ with a comma (e.g. 1,6,8).  A range of\nfields can be listed with a dash (e.g.\
+  \ 2-8).  Use colons for operations\nwhich require a pair of fields (e.g. 'pcov 2:6').\n\
+  \n\nPrimary operations:\n  groupby, crosstab, transpose, reverse, check\nLine-Filtering\
+  \ operations:\n  rmdup\nPer-Line operations:\n  base64, debase64, md5, sha1, sha256,\
+  \ sha512,\n  bin, strbin, round, floor, ceil, trunc, frac\nNumeric Grouping operations:\n\
+  \  sum, min, max, absmin, absmax\nTextual/Numeric Grouping operations:\n  count,\
+  \ first, last, rand, unique, collapse, countunique\nStatistical Grouping operations:\n\
+  \  mean, median, q1, q3, iqr, mode, antimode, pstdev, sstdev, pvar,\n  svar, mad,\
+  \ madraw, pskew, sskew, pkurt, skurt, dpo, jarque,\n  scov, pcov, spearson, ppearson\n\
+  \n\nGrouping Options:\n  -f, --full                print entire input line before\
+  \ op results\n                              (default: print only the grouped keys)\n\
+  \  -g, --group=X[,Y,Z]       group via fields X,[Y,Z];\n                       \
+  \       equivalent to primary operation 'groupby'\n      --header-in           first\
+  \ input line is column headers\n      --header-out          print column headers\
+  \ as first line\n  -H, --headers             same as '--header-in --header-out'\n\
+  \  -i, --ignore-case         ignore upper/lower case when comparing text;\n    \
+  \                          this affects grouping, and string operations\n  -s, --sort\
+  \                sort the input before grouping; this removes the\n            \
+  \                  need to manually pipe the input through 'sort'\nFile Operation\
+  \ Options:\n      --no-strict           allow lines with varying number of fields\n\
+  \      --filler=X            fill missing values with X (default %s)\n\nGeneral\
+  \ Options:\n  -t, --field-separator=X   use X instead of TAB as field delimiter\n\
+  \      --narm                skip NA/NaN values\n  -W, --whitespace          use\
+  \ whitespace (one or more spaces and/or tabs)\n                              for\
+  \ field delimiters\n  -z, --zero-terminated     end lines with 0 byte, not newline\n\
+  \      --help     display this help and exit\n      --version  output version information\
+  \ and exit\n\n\nExamples:\n\nPrint the sum and the mean of values from column 1:\n\
+  \  $ seq 10 | datamash sum 1 mean 1\n  55  5.5\n\nTranspose input:\n  $ seq 10 |\
+  \ paste - - | datamash transpose\n  1    3    5    7    9\n  2    4    6    8  \
+  \  10\n\nFor detailed usage information and examples, see\n  man GNU datamash\n\
+  The manual and more examples are available at\n  http://www.gnu.org/software/datamash\n\
+  \n"
+generated_using:
+- --help

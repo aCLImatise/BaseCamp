@@ -1,0 +1,230 @@
+!Command
+command:
+- lofreq
+- somatic
+positional: []
+named:
+- !Flag
+  description: Be verbose
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Normal BAM file
+  synonyms:
+  - -n
+  - --normal
+  args: !SimpleFlagArg
+    name: NORMAL
+  optional: true
+- !Flag
+  description: Tumor BAM file
+  synonyms:
+  - -t
+  - --tumor
+  args: !SimpleFlagArg
+    name: TUMOR
+  optional: true
+- !Flag
+  description: Prefix for output files
+  synonyms:
+  - -o
+  - --outprefix
+  args: !SimpleFlagArg
+    name: OUTPREFIX
+  optional: true
+- !Flag
+  description: Reference fasta file
+  synonyms:
+  - -f
+  - --ref
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: BED file listing regions to restrict analysis to
+  synonyms:
+  - -l
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "vcf-file (bgzipped and index with tabix) containing\nknown germline\
+    \ variants (e.g. dbsnp for human"
+  synonyms:
+  - -d
+  - --dbsnp
+  args: !SimpleFlagArg
+    name: DBSNP
+  optional: true
+- !Flag
+  description: Use this many threads for each call
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: "Type of multiple testing correction for tumor\n(default: bonf)"
+  synonyms:
+  - --tumor-mtc
+  args: !ChoiceFlagArg
+    choices: !!set
+      bonf:
+      fdr:
+      holm-bonf:
+  optional: true
+- !Flag
+  description: "Multiple testing correction alpha for tumor (default:\n1.000000)"
+  synonyms:
+  - --tumor-mtc-alpha
+  args: !SimpleFlagArg
+    name: TUMOR_MTC_ALPHA
+  optional: true
+- !Flag
+  description: "Type of multiple testing correction for tumor\n(default: bonf)"
+  synonyms:
+  - --indel-tumor-mtc
+  args: !ChoiceFlagArg
+    choices: !!set
+      bonf:
+      fdr:
+      holm-bonf:
+  optional: true
+- !Flag
+  description: "Multiple testing correction alpha for tumor (default:\n0.010000)"
+  synonyms:
+  - --indel-tumor-mtc-alpha
+  args: !SimpleFlagArg
+    name: INDEL_TUMOR_MTC_ALPHA
+  optional: true
+- !Flag
+  description: "Also call indels (see documentation on how to\npreprocess your BAM\
+    \ files)"
+  synonyms:
+  - --call-indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum coverage for somatic calls (default: 7)'
+  synonyms:
+  - --min-cov
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: Also list germline calls in separate file
+  synonyms:
+  - --germline
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ignore variants in this vcf-file for source quality\ncomputation in\
+    \ tumor (collides with --no-src-qual).\nDefault is to use (stringently filtered)\
+    \ predictions\nin normal sample"
+  synonyms:
+  - -S
+  - --ign-vcf
+  args: !SimpleFlagArg
+    name: IGN_VCF
+  optional: true
+- !Flag
+  description: Use orphaned/anomalous reads from pairs in all samples
+  synonyms:
+  - --use-orphan
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Switch use of BAQ off in all samples
+  synonyms:
+  - --baq-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Extra arguments to call_rlx (replace dashes with @)
+  synonyms:
+  - --call-rlx-extra-args
+  args: !SimpleFlagArg
+    name: CALL_RLX_EXTRA_ARGS
+  optional: true
+- !Flag
+  description: Disable use of source quality in tumor (see also -V)
+  synonyms:
+  - --no-src-qual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable debugging
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "continue interrupted run. Will reuse existing files,\nassuming they\
+    \ are complete and created with identical\noptions!\n"
+  synonyms:
+  - --continue
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: lofreq somatic [-h] [-v] -n NORMAL -t TUMOR -o OUTPREFIX -f REF\n\
+  \                      [-l BED] [-d DBSNP] [--threads NUM_THREADS]\n           \
+  \           [--tumor-mtc {bonf,holm-bonf,fdr}]\n                      [--tumor-mtc-alpha\
+  \ TUMOR_MTC_ALPHA]\n                      [--indel-tumor-mtc {bonf,holm-bonf,fdr}]\n\
+  \                      [--indel-tumor-mtc-alpha INDEL_TUMOR_MTC_ALPHA]\n       \
+  \               [--call-indels] [--min-cov MIN_COV] [--germline]\n             \
+  \         [-S IGN_VCF] [--use-orphan] [--baq-off]\n                      [--call-rlx-extra-args\
+  \ CALL_RLX_EXTRA_ARGS]\n                      [--no-src-qual] [--debug] [--continue]\n\
+  \nLoFreq* Somatic SNV Caller: Predict somatic variants from a paired\nnormal/disease\
+  \ sample. The script will produce several output files using the\nprefix specified.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \nBasic Options:\n  -v, --verbose         Be verbose\n  -n NORMAL, --normal NORMAL\n\
+  \                        Normal BAM file\n  -t TUMOR, --tumor TUMOR\n          \
+  \              Tumor BAM file\n  -o OUTPREFIX, --outprefix OUTPREFIX\n         \
+  \               Prefix for output files\n  -f REF, --ref REF     Reference fasta\
+  \ file\n  -l BED, --bed BED     BED file listing regions to restrict analysis to\n\
+  \  -d DBSNP, --dbsnp DBSNP\n                        vcf-file (bgzipped and index\
+  \ with tabix) containing\n                        known germline variants (e.g.\
+  \ dbsnp for human\n  --threads NUM_THREADS\n                        Use this many\
+  \ threads for each call\n\nAdvanced Options (PLEASE read the documentation before\
+  \ changing any of these):\n  --tumor-mtc {bonf,holm-bonf,fdr}\n                \
+  \        Type of multiple testing correction for tumor\n                       \
+  \ (default: bonf)\n  --tumor-mtc-alpha TUMOR_MTC_ALPHA\n                       \
+  \ Multiple testing correction alpha for tumor (default:\n                      \
+  \  1.000000)\n  --indel-tumor-mtc {bonf,holm-bonf,fdr}\n                       \
+  \ Type of multiple testing correction for tumor\n                        (default:\
+  \ bonf)\n  --indel-tumor-mtc-alpha INDEL_TUMOR_MTC_ALPHA\n                     \
+  \   Multiple testing correction alpha for tumor (default:\n                    \
+  \    0.010000)\n  --call-indels         Also call indels (see documentation on how\
+  \ to\n                        preprocess your BAM files)\n  --min-cov MIN_COV  \
+  \   Minimum coverage for somatic calls (default: 7)\n  --germline            Also\
+  \ list germline calls in separate file\n\nExperts (PLEASE do not use/change these,\
+  \ unless you know exactly what you are doing and if you change them nevertheless,\
+  \ light a candle first):\n  -S IGN_VCF, --ign-vcf IGN_VCF\n                    \
+  \    Ignore variants in this vcf-file for source quality\n                     \
+  \   computation in tumor (collides with --no-src-qual).\n                      \
+  \  Default is to use (stringently filtered) predictions\n                      \
+  \  in normal sample\n  --use-orphan          Use orphaned/anomalous reads from pairs\
+  \ in all samples\n  --baq-off             Switch use of BAQ off in all samples\n\
+  \  --call-rlx-extra-args CALL_RLX_EXTRA_ARGS\n                        Extra arguments\
+  \ to call_rlx (replace dashes with @)\n  --no-src-qual         Disable use of source\
+  \ quality in tumor (see also -V)\n  --debug               Enable debugging\n  --continue\
+  \            continue interrupted run. Will reuse existing files,\n            \
+  \            assuming they are complete and created with identical\n           \
+  \             options!\n"
+generated_using:
+- --help

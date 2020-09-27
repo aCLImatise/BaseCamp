@@ -1,0 +1,190 @@
+!Command
+command:
+- dless
+positional:
+- !Positional
+  description: In particular, detects elements that have been under
+  position: 0
+  name: phylo-HMM.
+  optional: false
+named:
+- !Flag
+  description: (default 0.3)
+  synonyms:
+  - --rho
+  - -R
+  args: !SimpleFlagArg
+    name: rho
+  optional: true
+- !Flag
+  description: "[~]<mu>,<nu>\nSet the transition probabilities of the two-state HMM\
+    \ using\nthe specified values of <mu> and <nu> (both between 0 and 1)."
+  synonyms:
+  - --transitions
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[~]<gamma>\n(Alternative to transitions, use with --expected-length)\
+    \ Set\nthe transition parameters such that the expected fraction of\nsites in\
+    \ conserved elements is <gamma> (betwen 0 and 1).  This\nis a *prior* rather than\
+    \ *posterior* expectation and assumes\nstationarity of the state-transition process.\
+    \  This option\ncauses the ratio mu/nu to be fixed at (1-gamma)/gamma, and\ntogether\
+    \ with --expected-length, completely defines the\ntransition probabilities."
+  synonyms:
+  - --target-coverage
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[~]<omega>\n(Alternative to --transitions, use with --target-coverage)\
+    \ Set\ntransition probabilities such that the (prior) expected length\nof a conserved\
+    \ element is <omega>.  The parameter mu is set to\n1/omega."
+  synonyms:
+  - --expected-length
+  - -E
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from\
+    \ file contents).\nNote that the program msa_view can be used for conversion."
+  synonyms:
+  - --msa-format
+  - -i
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "(for use with --msa-format MAF) Read the complete text of the\nreference\
+    \ sequence from <fname> (FASTA format) and combine it\nwith the contents of the\
+    \ MAF file to produce a complete,\nordered representation of the alignment.  The\
+    \ reference\nsequence of the MAF file is assumed to be the one that appears\n\
+    first in each block."
+  synonyms:
+  - --refseq
+  - -M
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: "Use coordinate frame of specified sequence in output.  Default\nvalue\
+    \ is 1, first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
+    \ alignment."
+  synonyms:
+  - --refidx
+  - -r
+  args: !SimpleFlagArg
+    name: refseq_idx
+  optional: true
+- !Flag
+  description: "Use specified string for 'seqname' (GFF) or 'chrom' field in\noutput\
+    \ file.  Default is obtained from input file name (double\nfilename root, e.g.,\
+    \ \"chr22\" if input file is \"chr22.35.ss\")."
+  synonyms:
+  - --seqname
+  - -N
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "Use specified string as prefix of generated ids in output\nfile. \
+    \ Can be used to ensure ids are unique.  Default is\nobtained from input file\
+    \ name (single filename root, e.g.,\n\"chr22.35\" if input file is \"chr22.35.ss\"\
+    )."
+  synonyms:
+  - --idpref
+  - -P
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: ",beta,tau[,alpha2,beta2,tau2]\nUse a simple model of insertions and\
+    \ deletions that assumes a known\nindel history and at most one indel per branch\
+    \ of the tree at any\ngiven position.  The parameters alpha and beta are rates\
+    \ of\ninsertion and deletion, respectively, per expected substitution per\nsite,\
+    \ and the parameter tau is approximately the inverse of the\nexpected indel length\
+    \ (see indelFit).  If two sets are parameters\nare given the first will be used\
+    \ for nonconserved regions and the\nsecond for conserved regions.  If --indel-history\
+    \ is not used, a\nhistory will be inferred on the fly using a simple parsimony\n\
+    algorithm."
+  synonyms:
+  - --indel-model
+  - -I
+  args: !SimpleFlagArg
+    name: alpha
+  optional: true
+- !Flag
+  description: "(for use with --indel-model) Use the specified indel history (see\n\
+    indelHistory)."
+  synonyms:
+  - --indel-history
+  - -H
+  args: !SimpleFlagArg
+    name: file.ih
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Show this help message and exit.\n"
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nPROGRAM: dless (Detection of Lineage Specific Selection)\n\nUSAGE: dless\
+  \ [OPTIONS] alignment tree.mod > out.gff\n\nDESCRIPTION: \n\n    Attempts to identify\
+  \ elements under selection in all species or in\n    some subset of species, based\
+  \ on a multiple alignment and a\n    phylo-HMM.  In particular, detects elements\
+  \ that have been under\n    selection since the divergence of all species in the\
+  \ given set,\n    that were \"born\" on some branch of the tree since their divergence\n\
+  \    and have been under selection since, or that were present in the\n    common\
+  \ ancestor but \"died\" (ceased to be under selection) on some\n    branch of the\
+  \ tree.  Currently only detects negative selection,\n    but extensions to detect\
+  \ positive selection as well are planned.\n\nEXAMPLES:\n\nOPTIONS:\n\n    --rho,\
+  \ -R <rho>\n        (default 0.3)\n\n    --transitions, -t [~]<mu>,<nu> \n     \
+  \   Set the transition probabilities of the two-state HMM using\n        the specified\
+  \ values of <mu> and <nu> (both between 0 and 1).\n\n    --phi, -p [~]<phi>\n  \
+  \      (default 0.5)\n\n    --target-coverage, -C [~]<gamma>\n        (Alternative\
+  \ to transitions, use with --expected-length) Set\n        the transition parameters\
+  \ such that the expected fraction of\n        sites in conserved elements is <gamma>\
+  \ (betwen 0 and 1).  This\n        is a *prior* rather than *posterior* expectation\
+  \ and assumes\n        stationarity of the state-transition process.  This option\n\
+  \        causes the ratio mu/nu to be fixed at (1-gamma)/gamma, and\n        together\
+  \ with --expected-length, completely defines the\n        transition probabilities.\n\
+  \n    --expected-length, -E [~]<omega>\n        (Alternative to --transitions, use\
+  \ with --target-coverage) Set\n        transition probabilities such that the (prior)\
+  \ expected length\n        of a conserved element is <omega>.  The parameter mu\
+  \ is set to\n        1/omega.\n\n    --msa-format, -i FASTA|PHYLIP|MPM|MAF|SS\n\
+  \        Alignment format (default is to guess format from file contents).  \n\t\
+  Note that the program msa_view can be used for conversion.\n\n    --refseq, -M <fname>\n\
+  \        (for use with --msa-format MAF) Read the complete text of the\n       \
+  \ reference sequence from <fname> (FASTA format) and combine it\n        with the\
+  \ contents of the MAF file to produce a complete,\n        ordered representation\
+  \ of the alignment.  The reference\n        sequence of the MAF file is assumed\
+  \ to be the one that appears\n        first in each block.\n\n    --refidx, -r <refseq_idx>\n\
+  \        Use coordinate frame of specified sequence in output.  Default\n      \
+  \  value is 1, first sequence in alignment; 0 indicates\n        coordinate frame\
+  \ of entire multiple alignment.\n\n    --seqname, -N <name>\n        Use specified\
+  \ string for 'seqname' (GFF) or 'chrom' field in\n        output file.  Default\
+  \ is obtained from input file name (double\n        filename root, e.g., \"chr22\"\
+  \ if input file is \"chr22.35.ss\").\n\n    --idpref, -P <name>\n        Use specified\
+  \ string as prefix of generated ids in output\n        file.  Can be used to ensure\
+  \ ids are unique.  Default is\n        obtained from input file name (single filename\
+  \ root, e.g.,\n        \"chr22.35\" if input file is \"chr22.35.ss\").\n\n    --indel-model,\
+  \ -I alpha,beta,tau[,alpha2,beta2,tau2]\n        Use a simple model of insertions\
+  \ and deletions that assumes a known\n        indel history and at most one indel\
+  \ per branch of the tree at any\n        given position.  The parameters alpha and\
+  \ beta are rates of\n        insertion and deletion, respectively, per expected\
+  \ substitution per\n        site, and the parameter tau is approximately the inverse\
+  \ of the\n        expected indel length (see indelFit).  If two sets are parameters\n\
+  \        are given the first will be used for nonconserved regions and the\n   \
+  \     second for conserved regions.  If --indel-history is not used, a\n       \
+  \ history will be inferred on the fly using a simple parsimony\n        algorithm.\n\
+  \n    --indel-history, -H <file.ih>\n        (for use with --indel-model) Use the\
+  \ specified indel history (see\n        indelHistory).\n\n    --help, -h\n     \
+  \   Show this help message and exit.\n"
+generated_using:
+- --help

@@ -1,0 +1,161 @@
+!Command
+command:
+- vtools
+- use
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FIELD
+  optional: true
+named:
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+- !Flag
+  description: "An alternative name for the linked database. This\noption allows the\
+    \ use of shorter field names (e.g.\ntg.chr instead of thousandGenomes.chr) and\
+    \ the use of\nmultiple versions of the same database."
+  synonyms:
+  - --as
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "[FIELD [FIELD ...]], --linked_by [FIELD [FIELD ...]], --linked-by\
+    \ [FIELD [FIELD ...]]\nA list of fields that are used to link the annotation\n\
+    database to tables in the existing project. This\nparameter is required only for\
+    \ 'field' type of\nannotation databases that link to fields of existing\ntables."
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This option overrides type of an existing annotation\ndatabase when\
+    \ it is attached to a project. It\ncorresponds to key anno_type of the data sources\n\
+    section of an annotation file (with suffix .ann) but\ndoes not affect the .ann\
+    \ file or the database built\nfrom it."
+  synonyms:
+  - --anno_type
+  - --anno-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      variant:
+      field:
+      position:
+      range:
+  optional: true
+- !Flag
+  description: "[LINKED_FIELDS [LINKED_FIELDS ...]], --linked-fields [LINKED_FIELDS\
+    \ [LINKED_FIELDS ...]]\nAn alternative set of fields that are used to link the\n\
+    annotation database to the master variant table. It\nshould have four, two, and\
+    \ three values for database\nof type variant, position, and range. Similar to\n\
+    anno_type, this option does not affect the .ann file\nor the database built from\
+    \ it."
+  synonyms:
+  - --linked_fields
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[FILES [FILES ...]], --files [FILES [FILES ...]]\nA list of source\
+    \ files. If specified, vtools will not\ntry to download and select source files.\
+    \ These source\nfiles will be compiled into a local annotation\ndatabase. This\
+    \ is used only when no local annotation\ndatabase is specified."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, variant tools will always rebuild the\nannotation database\
+    \ from source, ignoring existing\nlocal and online database. In addition to $name.DB,\n\
+    variant tools will also create $name-$version.DB.gz\nthat can be readily distributed."
+  synonyms:
+  - --rebuild
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If need to build database from source, maximum number\nof processes\
+    \ to use.\n"
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools use [-h] [--as NAME] [-l [FIELD [FIELD ...]]]\n        \
+  \          [--anno_type {variant,position,range,field}]\n                  [--linked_fields\
+  \ [LINKED_FIELDS [LINKED_FIELDS ...]]]\n                  [-f [FILES [FILES ...]]]\
+  \ [--rebuild] [-j N] [-v {0,1,2,3}]\n                  source\n\nLink an annotation\
+  \ database to the project, download it from the variant tools\nwebsite or build\
+  \ it from source if needed.\n\npositional arguments:\n  source                Use\
+  \ an annotation database ($source.DB or\n                        $source.DB.gz)\
+  \ if it is available, download or build\n                        the database if\
+  \ a description file ($source.ann) is\n                        available. Otherwise,\
+  \ this command will download a\n                        description file and the\
+  \ corresponding database from\n                        web (c.f. runtime variable\
+  \ $search_path) and the\n                        latest version of the datavase).\
+  \ If all means fail,\n                        this command will try to download\
+  \ the source of the\n                        annotation database (or use source\
+  \ files provided by\n                        option --files).\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -v {0,1,2,3}, --verbosity\
+  \ {0,1,2,3}\n                        Output error and warning (0), info (1), debug\
+  \ (2) and\n                        trace (3) information to standard output (default\
+  \ to\n                        1).\n\nBasic link options:\n  --as NAME          \
+  \   An alternative name for the linked database. This\n                        option\
+  \ allows the use of shorter field names (e.g.\n                        tg.chr instead\
+  \ of thousandGenomes.chr) and the use of\n                        multiple versions\
+  \ of the same database.\n  -l [FIELD [FIELD ...]], --linked_by [FIELD [FIELD ...]],\
+  \ --linked-by [FIELD [FIELD ...]]\n                        A list of fields that\
+  \ are used to link the annotation\n                        database to tables in\
+  \ the existing project. This\n                        parameter is required only\
+  \ for 'field' type of\n                        annotation databases that link to\
+  \ fields of existing\n                        tables.\n\nAdvanced link options:\n\
+  \  --anno_type {variant,position,range,field}, --anno-type {variant,position,range,field}\n\
+  \                        This option overrides type of an existing annotation\n\
+  \                        database when it is attached to a project. It\n       \
+  \                 corresponds to key anno_type of the data sources\n           \
+  \             section of an annotation file (with suffix .ann) but\n           \
+  \             does not affect the .ann file or the database built\n            \
+  \            from it.\n  --linked_fields [LINKED_FIELDS [LINKED_FIELDS ...]], --linked-fields\
+  \ [LINKED_FIELDS [LINKED_FIELDS ...]]\n                        An alternative set\
+  \ of fields that are used to link the\n                        annotation database\
+  \ to the master variant table. It\n                        should have four, two,\
+  \ and three values for database\n                        of type variant, position,\
+  \ and range. Similar to\n                        anno_type, this option does not\
+  \ affect the .ann file\n                        or the database built from it.\n\
+  \nBuild database from source:\n  -f [FILES [FILES ...]], --files [FILES [FILES ...]]\n\
+  \                        A list of source files. If specified, vtools will not\n\
+  \                        try to download and select source files. These source\n\
+  \                        files will be compiled into a local annotation\n      \
+  \                  database. This is used only when no local annotation\n      \
+  \                  database is specified.\n  --rebuild             If set, variant\
+  \ tools will always rebuild the\n                        annotation database from\
+  \ source, ignoring existing\n                        local and online database.\
+  \ In addition to $name.DB,\n                        variant tools will also create\
+  \ $name-$version.DB.gz\n                        that can be readily distributed.\n\
+  \  -j N, --jobs N        If need to build database from source, maximum number\n\
+  \                        of processes to use.\n"
+generated_using:
+- --help

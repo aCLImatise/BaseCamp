@@ -1,0 +1,293 @@
+!Command
+command:
+- vtools
+- admin
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: TYPE
+  optional: true
+named:
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+- !Flag
+  description: "[TYPE], --update-resource [TYPE]\nDownload resources of specified\
+    \ type, which can be\n'current' (latest version of all resources), 'all'\n(all\
+    \ resources including obsolete databases),\n'existing' (only update resources\
+    \ that exist locally),\n'hg18' or 'hg19' (all resources for reference genome\n\
+    hg18 or hg19), 'annotation' (all current annotation\ndatabases), 'format' (all\
+    \ formats), and 'snapshot'\n(all online snapshots). Identical resources that are\n\
+    available locally (under ~/.variant_tools or runtime\noption $local_resource)\
+    \ are ignored. Note that option\n'all' will download all versions of annotation\n\
+    databases which can be slow and take a lot of disk\nspaces."
+  synonyms:
+  - --update_resource
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Mirror the main variant tools repository to a local\ndirectory. This\
+    \ command will check files under dest,\ndownload all missing or outdated files.\
+    \ Existing files\nthat do not belong to the repository will not be\nremoved."
+  synonyms:
+  - --mirror_repository
+  - --mirror-repository
+  args: !SimpleFlagArg
+    name: dest
+  optional: true
+- !Flag
+  description: "Merge samples with the same sample names by combining\ngenotypes belonging\
+    \ to these samples. Phenotypes\nrelated to individual samples will be merged."
+  synonyms:
+  - --merge_samples
+  - --merge-samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This argument takes a condition by which samples are\nselected, followed\
+    \ by either a new sample name (assign\na new name to selected samples) or an OLDNAME\
+    \ NEWNAME\npair of patterns for which the first instance of\nOLDNAME in sample\
+    \ names will be replaced by NEWNAME."
+  synonyms:
+  - --rename_samples
+  - --rename-samples
+  args: !RepeatFlagArg
+    name: COND
+  optional: true
+- !Flag
+  description: "NEW_NAME, --rename-table NAME NEW_NAME\nChange table NAME to a NEW_NAME."
+  synonyms:
+  - --rename_table
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "NEW_DESCRIPTION, --describe-table TABLE NEW_DESCRIPTION\nUpdate description\
+    \ for TABLE with a NEW_DESCRIPTION."
+  synonyms:
+  - --describe_table
+  args: !SimpleFlagArg
+    name: TABLE
+  optional: true
+- !Flag
+  description: "Validate the build of project's reference genome by\nchecking if the\
+    \ reference alleles of variants agree\nwith the reference genome sequence. A reference\
+    \ genome\nwill be automatically downloaded if it does not exist\nin the local\
+    \ resource directory."
+  synonyms:
+  - --validate_build
+  - --validate-build
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[{report,force-heterozygote}], --validate-sex [{report,force-heterozygote}]\n\
+    Validate the sex of samples by checking the genotypes\nof samples on sex chromosomes\
+    \ (excluding pseudo-\nautosomal regions). Sex of samples are determined by a\n\
+    phenotype named sex or gender with values 1/2, M/F or\nMale/Female. Inconsistency\
+    \ will be reported if, for\nexample, a female sample has genotypes on chromosome\n\
+    Y. This argument accepts an option argument, which is\nreport by default (report\
+    \ inconsistent genotype or\nsex), but can also be 'force-heterozygote' for male\n\
+    individuals on chromosome X."
+  synonyms:
+  - --validate_sex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "MESSAGE, --save-snapeshot NAME MESSAGE\nCreate a snapshot of the current\
+    \ project with NAME,\nwhich could be re-loaded using command 'vtools admin\n--load_snapshot'.\
+    \ A filename with extension .tar, .tgz\nor .tar.gz can be used to save the snapshot\
+    \ to a\nspecific directory with compression but such snapshots\nare not listed\
+    \ by command 'vtools show snapshots'."
+  synonyms:
+  - --save_snapshot
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "[FILE [FILE ...]], --extra-files [FILE [FILE ...]]\nAdditional files\
+    \ that will be saved along with the\nproject and genotype databases. This could\
+    \ include\ncustomized format files, project-specific annotations,\nand results.\
+    \ Files outside of the current project\ndirectory are not allowed due to security\n\
+    considerations."
+  synonyms:
+  - --extra_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Revert the current project to specified snapshot. All\nchanges since\
+    \ the that snapshot will be lost. The NAME\nshould be one of the project snapshots\
+    \ or online\nsnapshots listed by command 'vtools show snapshots',\nor name of\
+    \ a local snapshot file (with extension .tar,\n.tgz or .tar.gz)."
+  synonyms:
+  - --load_snapshot
+  - --load-snapshot
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Set value to internal options such as the batch size\nfor database\
+    \ options. The default values of these\noptions were chosen to fit most usage\
+    \ patterns but\ntweaking them might provide better performance under\ncertain\
+    \ circumstances. Please use command \"vtools show\nruntime_options\" to list all\
+    \ currently supported\nruntime options."
+  synonyms:
+  - --set_runtime_option
+  - --set-runtime-option
+  args: !RepeatFlagArg
+    name: OPTION
+  optional: true
+- !Flag
+  description: Reset value to a runtime option to its default value.
+  synonyms:
+  - --reset_runtime_option
+  - --reset-runtime-option
+  args: !SimpleFlagArg
+    name: OPT
+  optional: true
+- !Flag
+  description: "Save option to user_options.py so that it will be\nautomatically set\
+    \ for all user projects."
+  synonyms:
+  - -g
+  - --global
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Convert fasta files to a crr file (a binary format for\nfaster access)\
+    \ that can be used by variant tools. This\nis only needed if you are working with\
+    \ a reference\ngenome that is not supported by variant tools. This\nparameter\
+    \ accepts a list of fastq files (URLs and .gz\nformat are acceptable) followed\
+    \ by the name of the\n.crr file. The .crr file should be put under the\nproject\
+    \ directory or the local resource directory\n(under directory reference) to be\
+    \ usable by variant\ntools.\n"
+  synonyms:
+  - --fasta2crr
+  args: !RepeatFlagArg
+    name: FASTA
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools admin [-h] [--update_resource [TYPE]] [--mirror_repository\
+  \ dest]\n                    [--merge_samples] [--rename_samples COND [COND ...]]\n\
+  \                    [--rename_table NAME NEW_NAME]\n                    [--describe_table\
+  \ TABLE NEW_DESCRIPTION]\n                    [--validate_build]\n             \
+  \       [--validate_sex [{report,force-heterozygote}]]\n                    [--save_snapshot\
+  \ NAME MESSAGE]\n                    [--extra_files [FILE [FILE ...]]] [--load_snapshot\
+  \ NAME]\n                    [--set_runtime_option OPTION [OPTION ...]]\n      \
+  \              [--reset_runtime_option OPT] [-g]\n                    [--fasta2crr\
+  \ FASTA [FASTA ...]] [-v {0,1,2,3}]\n\nOptimize or modify projects. Currently supports\
+  \ merging and rename of samples\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  -v {0,1,2,3}, --verbosity {0,1,2,3}\n     \
+  \                   Output error and warning (0), info (1), debug (2) and\n    \
+  \                    trace (3) information to standard output (default to\n    \
+  \                    1).\n\nDownload or update resources:\n  --update_resource [TYPE],\
+  \ --update-resource [TYPE]\n                        Download resources of specified\
+  \ type, which can be\n                        'current' (latest version of all resources),\
+  \ 'all'\n                        (all resources including obsolete databases),\n\
+  \                        'existing' (only update resources that exist locally),\n\
+  \                        'hg18' or 'hg19' (all resources for reference genome\n\
+  \                        hg18 or hg19), 'annotation' (all current annotation\n \
+  \                       databases), 'format' (all formats), and 'snapshot'\n   \
+  \                     (all online snapshots). Identical resources that are\n   \
+  \                     available locally (under ~/.variant_tools or runtime\n   \
+  \                     option $local_resource) are ignored. Note that option\n  \
+  \                      'all' will download all versions of annotation\n        \
+  \                databases which can be slow and take a lot of disk\n          \
+  \              spaces.\n  --mirror_repository dest, --mirror-repository dest\n \
+  \                       Mirror the main variant tools repository to a local\n  \
+  \                      directory. This command will check files under dest,\n  \
+  \                      download all missing or outdated files. Existing files\n\
+  \                        that do not belong to the repository will not be\n    \
+  \                    removed.\n\nMerge samples:\n  --merge_samples, --merge-samples\n\
+  \                        Merge samples with the same sample names by combining\n\
+  \                        genotypes belonging to these samples. Phenotypes\n    \
+  \                    related to individual samples will be merged.\n\nRename samples:\n\
+  \  --rename_samples COND [COND ...], --rename-samples COND [COND ...]\n        \
+  \                This argument takes a condition by which samples are\n        \
+  \                selected, followed by either a new sample name (assign\n      \
+  \                  a new name to selected samples) or an OLDNAME NEWNAME\n     \
+  \                   pair of patterns for which the first instance of\n         \
+  \               OLDNAME in sample names will be replaced by NEWNAME.\n\nRename/describe\
+  \ tables:\n  --rename_table NAME NEW_NAME, --rename-table NAME NEW_NAME\n      \
+  \                  Change table NAME to a NEW_NAME.\n  --describe_table TABLE NEW_DESCRIPTION,\
+  \ --describe-table TABLE NEW_DESCRIPTION\n                        Update description\
+  \ for TABLE with a NEW_DESCRIPTION.\n\nValidate reference genome:\n  --validate_build,\
+  \ --validate-build\n                        Validate the build of project's reference\
+  \ genome by\n                        checking if the reference alleles of variants\
+  \ agree\n                        with the reference genome sequence. A reference\
+  \ genome\n                        will be automatically downloaded if it does not\
+  \ exist\n                        in the local resource directory.\n\nValidate reported\
+  \ sex:\n  --validate_sex [{report,force-heterozygote}], --validate-sex [{report,force-heterozygote}]\n\
+  \                        Validate the sex of samples by checking the genotypes\n\
+  \                        of samples on sex chromosomes (excluding pseudo-\n    \
+  \                    autosomal regions). Sex of samples are determined by a\n  \
+  \                      phenotype named sex or gender with values 1/2, M/F or\n \
+  \                       Male/Female. Inconsistency will be reported if, for\n  \
+  \                      example, a female sample has genotypes on chromosome\n  \
+  \                      Y. This argument accepts an option argument, which is\n \
+  \                       report by default (report inconsistent genotype or\n   \
+  \                     sex), but can also be 'force-heterozygote' for male\n    \
+  \                    individuals on chromosome X.\n\nSave and load snapshots:\n\
+  \  --save_snapshot NAME MESSAGE, --save-snapeshot NAME MESSAGE\n               \
+  \         Create a snapshot of the current project with NAME,\n                \
+  \        which could be re-loaded using command 'vtools admin\n                \
+  \        --load_snapshot'. A filename with extension .tar, .tgz\n              \
+  \          or .tar.gz can be used to save the snapshot to a\n                  \
+  \      specific directory with compression but such snapshots\n                \
+  \        are not listed by command 'vtools show snapshots'.\n  --extra_files [FILE\
+  \ [FILE ...]], --extra-files [FILE [FILE ...]]\n                        Additional\
+  \ files that will be saved along with the\n                        project and genotype\
+  \ databases. This could include\n                        customized format files,\
+  \ project-specific annotations,\n                        and results. Files outside\
+  \ of the current project\n                        directory are not allowed due\
+  \ to security\n                        considerations.\n  --load_snapshot NAME,\
+  \ --load-snapshot NAME\n                        Revert the current project to specified\
+  \ snapshot. All\n                        changes since the that snapshot will be\
+  \ lost. The NAME\n                        should be one of the project snapshots\
+  \ or online\n                        snapshots listed by command 'vtools show snapshots',\n\
+  \                        or name of a local snapshot file (with extension .tar,\n\
+  \                        .tgz or .tar.gz).\n\nSet values for some various internal\
+  \ options.:\n  --set_runtime_option OPTION [OPTION ...], --set-runtime-option OPTION\
+  \ [OPTION ...]\n                        Set value to internal options such as the\
+  \ batch size\n                        for database options. The default values of\
+  \ these\n                        options were chosen to fit most usage patterns\
+  \ but\n                        tweaking them might provide better performance under\n\
+  \                        certain circumstances. Please use command \"vtools show\n\
+  \                        runtime_options\" to list all currently supported\n   \
+  \                     runtime options.\n  --reset_runtime_option OPT, --reset-runtime-option\
+  \ OPT\n                        Reset value to a runtime option to its default value.\n\
+  \  -g, --global          Save option to user_options.py so that it will be\n   \
+  \                     automatically set for all user projects.\n\nMisc utilities:\n\
+  \  --fasta2crr FASTA [FASTA ...]\n                        Convert fasta files to\
+  \ a crr file (a binary format for\n                        faster access) that can\
+  \ be used by variant tools. This\n                        is only needed if you\
+  \ are working with a reference\n                        genome that is not supported\
+  \ by variant tools. This\n                        parameter accepts a list of fastq\
+  \ files (URLs and .gz\n                        format are acceptable) followed by\
+  \ the name of the\n                        .crr file. The .crr file should be put\
+  \ under the\n                        project directory or the local resource directory\n\
+  \                        (under directory reference) to be usable by variant\n \
+  \                       tools.\n"
+generated_using:
+- --help

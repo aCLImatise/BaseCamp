@@ -1,0 +1,169 @@
+!Command
+command:
+- rsat
+- sub-sequence
+positional:
+- !Positional
+  description: 1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
+  position: 0
+  name: sub-sequence
+  optional: false
+- !Positional
+  description: OPTIONS
+  position: 0
+  name: sequences
+  optional: false
+named:
+- !Flag
+  description: (must be first argument) display options
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if not specified, the standard input is used.\nThis allows to place\
+    \ the command within a pipe."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: inputfile
+  optional: true
+- !Flag
+  description: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected\
+    \ case by N characters."
+  synonyms:
+  - -mask
+  args: !SimpleFlagArg
+    name: upper
+  optional: true
+- !Flag
+  description: "if not specified, the standard output is used.\nThis allows to place\
+    \ the command within a pipe."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: outputfile
+  optional: true
+- !Flag
+  description: "fragment_file\nThis option allows to specify a list of fragments t\
+    \ be\nretrieved from each sequence of the input file.\nEach row contains the coordinates\
+    \ of a fragment in 4\nor 5 columns:\n1) fragment ID\n2) sequence ID (must be the\
+    \ same as in the sequence file)\n3) fragment start\n4) fragment end\n5) strand\
+    \ (optional). If not specified, all\nfragments are taken on the direct strand.\n\
+    example:\nfrag1   chr2L   344641  348496  D\nfrag2   chr2L   346419  350309  R\n\
+    frag3   chr2R   350781  354418  D"
+  synonyms:
+  - -frag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "| center | end\nReference for calculating positions.\nThe value should\
+    \ be chosen according to the sequence\ntype. For instance:\n-origin start for\
+    \ downstream sequences\n-origin end for promoter sequences\n-origin center can\
+    \ be useful for ChIP-seq peaks, which\ncan have variable lengths, but are supposed\
+    \ to\nbe more or less centred on the TF binding\nqsites."
+  synonyms:
+  - -origin
+  args: !SimpleFlagArg
+    name: start
+  optional: true
+- !Flag
+  description: "# starting position\nif not specified, the subsequence starts at 1st\
+    \ position."
+  synonyms:
+  - -from
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#   end position\nif not specified, the end of the sequence is used."
+  synonyms:
+  - -to
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input format. Default is fasta
+  synonyms:
+  - -iformat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output format. Default is fasta
+  synonyms:
+  - -oformat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: format. Default is fasta
+  synonyms:
+  - -format
+  args: !SimpleFlagArg
+    name: input-output
+  optional: true
+- !Flag
+  description: return the reverse complement of the sub-sequences
+  synonyms:
+  - -rc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "add a suffix to sequence IDs to indicate the limits of\nthe sub-sequence."
+  synonyms:
+  - -limits
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: (must be first argument) display full help message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n\tsub-sequence\n\n        1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
+  \nUSAGE\n        sub-sequence [-i inputfile] -from # -to # [-o outputfile] [-v]\n\
+  \nDESCRIPTION\n\tReturn a subset of input sequences, specified by a start and end\
+  \ positions.\n\nCATEGORY\n\tsequences\n\nOPTIONS\n        -h      (must be first\
+  \ argument) display full help message\n\n        -help   (must be first argument)\
+  \ display options\n\n\t-v\tverbose\n\n\t-i inputfile\n\t\tif not specified, the\
+  \ standard input is used.\n\t\tThis allows to place the command within a pipe.\n\
+  \n\t-mask upper|lower\n\t\tMask lower or uppercases, respecively, i.e. replace\n\
+  \t\tselected case by N characters.\n\n\t-o outputfile\n\t\tif not specified, the\
+  \ standard output is used.\n\t\tThis allows to place the command within a pipe.\n\
+  \n\t-frag\tfragment_file\n\n\t\tThis option allows to specify a list of fragments\
+  \ t be\n\t\tretrieved from each sequence of the input file.\n\n\t\tEach row contains\
+  \ the coordinates of a fragment in 4\n\t\tor 5 columns:\n\n\t\t     1) fragment\
+  \ ID\n\t\t     2) sequence ID (must be the same as in the sequence file)\n\t\t \
+  \    3) fragment start\n\t\t     4) fragment end\n\t\t     5) strand (optional).\
+  \ If not specified, all\n                        fragments are taken on the direct\
+  \ strand.\n\n    \t\texample:\n\t\tfrag1\tchr2L\t344641\t348496\tD\n\t\tfrag2\t\
+  chr2L\t346419\t350309\tR\n\t\tfrag3\tchr2R\t350781\t354418\tD\n\n\t-origin start\
+  \ | center | end\n\t\tReference for calculating positions.\n\n\t\tThe value should\
+  \ be chosen according to the sequence\n\t\ttype. For instance:\n\n\t\t-origin start\
+  \ for downstream sequences\n\n\t\t-origin end for promoter sequences\n\n\t\t-origin\
+  \ center can be useful for ChIP-seq peaks, which\n\t\t\tcan have variable lengths,\
+  \ but are supposed to\n\t\t\tbe more or less centred on the TF binding\n\t\t\tqsites.\n\
+  \n\t-from #\tstarting position\n\t\tif not specified, the subsequence starts at\
+  \ 1st position.\n\n\t-to #\tend position\n\t\tif not specified, the end of the sequence\
+  \ is used.\n\n\t-iformat\n\t\tinput format. Default is fasta\n\n\t-oformat\n\t\t\
+  output format. Default is fasta\n\n\t-format\tinput-output format. Default is fasta\n\
+  \n\t-rc\treturn the reverse complement of the sub-sequences\n\n\t-limits\n\t\tadd\
+  \ a suffix to sequence IDs to indicate the limits of\n\t\tthe sub-sequence.\n\n\
+  POSITION SPECIFICATION\n\tPositive position are used to refer to the sequence start.\
+  \ +1 is\n\tthe first residue from the sequence.\n\tNegative positions refer to the\
+  \ sequence end (-1 is the last residue\n\tfrom the sequence).\n\nINPUT-OUTPUT FORMAT\n\
+  \tVarious sequence formats are supported:\n\t- IG\n\t- Fasta\n\t- Wconsensus\n\t\
+  - raw\n\t- multi\n\tWhen the input contains several sequences in the same file,\
+  \ the\n\tprograms extracts the fragment at the specified positions from\n\teach\
+  \ of them.\n\nEXAMPLES\n\tsub-sequence -v -i mydata -o myresult -from -353 -to -397\n\
+  \n"
+generated_using:
+- -h

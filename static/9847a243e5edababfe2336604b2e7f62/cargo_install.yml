@@ -1,0 +1,197 @@
+!Command
+command:
+- cargo
+- install
+positional: []
+named:
+- !Flag
+  description: Specify a version to install from crates.io
+  synonyms:
+  - --vers
+  args: !SimpleFlagArg
+    name: VERS
+  optional: true
+- !Flag
+  description: Git URL to install the specified crate from
+  synonyms:
+  - --git
+  args: !SimpleFlagArg
+    name: URL
+  optional: true
+- !Flag
+  description: Branch to use when installing from git
+  synonyms:
+  - --branch
+  args: !SimpleFlagArg
+    name: BRANCH
+  optional: true
+- !Flag
+  description: Tag to use when installing from git
+  synonyms:
+  - --tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: Specific commit to use when installing from git
+  synonyms:
+  - --rev
+  args: !SimpleFlagArg
+    name: SHA
+  optional: true
+- !Flag
+  description: Filesystem path to local crate to install
+  synonyms:
+  - --path
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Number of parallel jobs, defaults to # of CPUs'
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Force overwriting existing crates or binaries
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Space-separated list of features to activate
+  synonyms:
+  - --features
+  args: !SimpleFlagArg
+    name: FEATURES
+  optional: true
+- !Flag
+  description: Build all available features
+  synonyms:
+  - --all-features
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not build the `default` feature
+  synonyms:
+  - --no-default-features
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Build in debug mode instead of release mode
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only install the binary NAME
+  synonyms:
+  - --bin
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Install the example EXAMPLE instead of binaries
+  synonyms:
+  - --example
+  args: !SimpleFlagArg
+    name: EXAMPLE
+  optional: true
+- !Flag
+  description: Directory to install packages into
+  synonyms:
+  - --root
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: '...         Use verbose output'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Less output printed to stdout
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Coloring: auto, always, never'
+  synonyms:
+  - --color
+  args: !SimpleFlagArg
+    name: WHEN
+  optional: true
+- !Flag
+  description: Require Cargo.lock and cache are up to date
+  synonyms:
+  - --frozen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Require Cargo.lock is up to date
+  synonyms:
+  - --locked
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Install a Rust binary\n\nUsage:\n    cargo install [options] [<crate>]\n\
+  \    cargo install [options] --list\n\nSpecifying what crate to install:\n    --vers\
+  \ VERS               Specify a version to install from crates.io\n    --git URL\
+  \                 Git URL to install the specified crate from\n    --branch BRANCH\
+  \           Branch to use when installing from git\n    --tag TAG              \
+  \   Tag to use when installing from git\n    --rev SHA                 Specific\
+  \ commit to use when installing from git\n    --path PATH               Filesystem\
+  \ path to local crate to install\n\nBuild and install options:\n    -h, --help \
+  \               Print this message\n    -j N, --jobs N            Number of parallel\
+  \ jobs, defaults to # of CPUs\n    -f, --force               Force overwriting existing\
+  \ crates or binaries\n    --features FEATURES       Space-separated list of features\
+  \ to activate\n    --all-features            Build all available features\n    --no-default-features\
+  \     Do not build the `default` feature\n    --debug                   Build in\
+  \ debug mode instead of release mode\n    --bin NAME                Only install\
+  \ the binary NAME\n    --example EXAMPLE         Install the example EXAMPLE instead\
+  \ of binaries\n    --root DIR                Directory to install packages into\n\
+  \    -v, --verbose ...         Use verbose output\n    -q, --quiet             \
+  \  Less output printed to stdout\n    --color WHEN              Coloring: auto,\
+  \ always, never\n    --frozen                  Require Cargo.lock and cache are\
+  \ up to date\n    --locked                  Require Cargo.lock is up to date\n\n\
+  This command manages Cargo's local set of installed binary crates. Only packages\n\
+  which have [[bin]] targets can be installed, and all binaries are installed into\n\
+  the installation root's `bin` folder. The installation root is determined, in\n\
+  order of precedence, by `--root`, `$CARGO_INSTALL_ROOT`, the `install.root`\nconfiguration\
+  \ key, and finally the home directory (which is either\n`$CARGO_HOME` if set or\
+  \ `$HOME/.cargo` by default).\n\nThere are multiple sources from which a crate can\
+  \ be installed. The default\nlocation is crates.io but the `--git` and `--path`\
+  \ flags can change this source.\nIf the source contains more than one package (such\
+  \ as crates.io or a git\nrepository with multiple crates) the `<crate>` argument\
+  \ is required to indicate\nwhich crate should be installed.\n\nCrates from crates.io\
+  \ can optionally specify the version they wish to install\nvia the `--vers` flags,\
+  \ and similarly packages from git repositories can\noptionally specify the branch,\
+  \ tag, or revision that should be installed. If a\ncrate has multiple binaries,\
+  \ the `--bin` argument can selectively install only\none of them, and if you'd rather\
+  \ install examples the `--example` argument can\nbe used as well.\n\nBy default\
+  \ cargo will refuse to overwrite existing binaries. The `--force` flag\nenables\
+  \ overwriting existing binaries. Thus you can reinstall a crate with\n`cargo install\
+  \ --force <crate>`.\n\nAs a special convenience, omitting the <crate> specification\
+  \ entirely will\ninstall the crate in the current directory. That is, `install`\
+  \ is equivalent to\nthe more explicit `install --path .`.\n\nThe `--list` option\
+  \ will list all installed packages (and their versions).\n"
+generated_using:
+- --help

@@ -1,0 +1,141 @@
+!Command
+command:
+- rsat
+- convert-background-model
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: convert-background-model
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: "\e[1mMEME (input/output)\e[0m"
+  position: 0
+  name: sequence.
+  optional: false
+- !Positional
+  description: MEME background files can be generated with the program
+  position: 0
+  name: models.
+  optional: false
+- !Positional
+  description: "\e[1mpatser (output)\e[0m"
+  position: 0
+  name: sequence.
+  optional: false
+- !Positional
+  description: Alternatively, the background model can be specified by combining
+  position: 0
+  name: formats.
+  optional: false
+- !Positional
+  description: "See \e[33moligo-analysis\e[0m for more details on this option"
+  position: 0
+  name: words.
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    convert-background-model\n\n\e[1mDESCRIPTION\e[0m\n\
+  \    Interconversions between formats of background models supported by\n    different\
+  \ programs (oligo-analysis, dyad-analysis, matrix-scan, patser,\n    consensus,\
+  \ MotifLocator, MotifSampler, MEME, ...).\n\n    Background models can be automatically\
+  \ loaded from the RSAT collection\n    of pre-calculated background models.\n\n\
+  \    This is a temporary version, with only some formats supported.\n    Additional\
+  \ formats will be progressively added.\n\n\e[1mAUTHORS\e[0m\n    Jacques van Helden\
+  \ Jacques.van-Helden\\@univ-amu.fr\n    Jean Valery Turatsinze jturatsi@bigre.ulb.ac.be\n\
+  \    Morgane Thomas-Chollier morgane@bigre.ulb.ac.be\n\n\e[1mCATEGORY\e[0m\n   \
+  \ util\n\n\e[1mUSAGE\e[0m\n    convert-background-model [-i inputfile] [-o outputfile]\
+  \ [-v]\n\n\e[1mBACKGROUND MODEL FORMATS\e[0m\n    \e[1mNote\e[0m: some formats are\
+  \ supported for both input and output, but some\n    formats are supported only\
+  \ for input or for output.\n\n  \e[1moligos (input/output)\e[0m\n    Oligonucleotide\
+  \ frequency table, as exported by the RSAT program\n    \e[33moligo-analysis\e[0m.\n\
+  \n    An oligo file containing k-mers frequencies corresponds to a Markov\n    model\
+  \ of order \e[33mm=k-1\e[0m. Frequencies are converted to transition\n    probabilities\
+  \ by calculating the relative frequencies of all oligomers\n    of size k having\
+  \ the same prefix (first m letters).\n\n    The oligo frequency table have one row\
+  \ per oligonucleotide. Columns\n    indicate respectively:\n\n     1. oligo sequence\n\
+  \     2. oligo ID (single ID for single strand models, ID|RC for two-strands models)\n\
+  \     3. frequency (probablity to find the oligo at a giben sequence position)\n\
+  \     4. occurrences (total number of occurrences in the training set)\n\n    Additional\
+  \ columns are ignored.\n\n    Oligo frequency files are generated using either \e\
+  [33mcount-words\e[0m or\n    \e[33moligo-analysis -return occ,freq\e[0m.\n\n  \e\
+  [1mdyads (input)\e[0m\n    Oligonucleotide frequency table, as exported by the RSAT\
+  \ program\n    \e[33mdyad-analysis\e[0m. Dyads with spacing 0 are converted to oligos,\
+  \ and\n    frequencies are converted into transition probabilities as for the\n\
+  \    format \"oligos\".\n\n  \e[1mMotifSampler (input/output)\e[0m\n    Also called\
+  \ \e[33minclusive\e[0m or \e[33mms\e[0m.\n\n    This format can be used by the various\
+  \ programs of the software suite\n    INCLUSive developed by Gert Thijs\n    (http://homes.esat.kuleuven.be/~thijs/download.html).\n\
+  \n    MotifSampler background files can be generated with the program\n    \e[33mCreateBackgroundModel\e\
+  [0m, which creates a Markov model from a background\n    sequence.\n\n  \e[1mMEME\
+  \ (input/output)\e[0m\n    MEME (http://meme.sdsc.edu/meme/) is a matrix-based motif\
+  \ discovery\n    program developed by Tim Bailey, and supporting Marckov chain background\n\
+  \    models.\n\n    MEME background files can be generated with the program\n  \
+  \  \e[33mfasta-get-markov\e[0m, which creates a Markov model from a background\n\
+  \    sequence.\n\n  \e[1mpatser (output)\e[0m\n    Export the Markov model in patser\
+  \ format. \e[33mpatser\e[0m isa pattern matching\n    program developed by Jerry\
+  \ Hertz.\n\n    WARNING: patser only supports Bernoulli models ! If the Markov order\
+  \ is\n    superior to 0, this function issues a fatal error.\n\n  \e[1mtransitions\
+  \ (output)\e[0m\n    Transition table with one row per prefix, one column per suffix,\
+  \ each\n    cell indicating the transition frequency.\n\n  \e[1mtables (output)\e\
+  [0m\n    Export tables with various statistics: - oligo frequencies\n\n     - frequencies:\
+  \ oligomer frequencies, presented in a\n       prefix/suffix table\n\n      - relative\
+  \ frequencies: relative oligomer frequencies. These differ\n        from the raw\
+  \ frequencies only i the input file contained\n        non-normalized frequencies\
+  \ (e.g. pattern occurrences).\n\n      - transition frequencies: see the format\
+  \ \"transitions\" above.\n\n    This output is convenient for understanding the\
+  \ different steps for the\n    conversion between oligomer frequencies (oligomer\
+  \ length k=m+1) and\n    transition tables.\n\n\e[1mOPTIONS\e[0m\n    \e[1m-v #\e\
+  [0m\n        Level of verbosity (detail in the warning messages during execution)\n\
+  \n    \e[1m-h\e[0m  Display full help message\n\n    \e[1m-help\e[0m\n        Same\
+  \ as -h\n\n    \e[1m-i input_file\e[0m\n        The input file contains a background\
+  \ model, in any of the supported\n        formats.\n\n        Alternatively, the\
+  \ background model can be specified by combining\n        the options \e[33m-org\e\
+  [0m, \e[33m-bg\e[0m.\n\n        If no input file is specified, the standard input\
+  \ is used. This\n        allows to use the command within a pipe.\n\n    \e[1m-org\
+  \ organism_name\e[0m\n        Specify an organism supported in RSAT, in order to\
+  \ load a background\n        model from the pre-computed organism-specific models\
+  \ supported in\n        RSAT. This option must be combined with the optin \e[33m-bg\e\
+  [0m.\n\n        \e[1mNote:\e[0m Specify the format of the background model with\
+  \ '-from'\n        option. Accepted values are oligos and dyad.\n\n    \e[1m-bg\
+  \ background model\e[0m\n        Type of sequences used as background model for\
+  \ estimating expected\n        oligonucleotide frequencies.\n\n        Supported\
+  \ models: see the help of \e[33mchoose-background-model\e[0m\n\n    \e[1m-seq_type\e\
+  [0m\n        Sequence type (dna | protein).\n\n    \e[1m-markov #\e[0m\n       \
+  \ Markov chain order for the background model.\n\n    \e[1m-noov\e[0m\n        Prevent\
+  \ overlap between successive occurrences of self-overlpping\n        words.\n\n\
+  \        See \e[33moligo-analysis\e[0m for more details on this option\n\n    \e\
+  [1m-ovlp\e[0m\n        Count overlapping occurrences of self-overlpping words.\n\
+  \n        See \e[33moligo-analysis\e[0m for more details on this option\n\n    \e\
+  [1m-1str\e[0m\n        Strand-sensitive background model\n\n    \e[1m-2str\e[0m\n\
+  \        Strand-insensitive background model\n\n    \e[1m-o outputfile\e[0m\n  \
+  \      If no output file is specified, the standard output is used. This\n     \
+  \   allows to use the command within a pipe.\n\n    \e[1m-from input_format\e[0m\n\
+  \        Input format.\n\n        Supported: motifsampler,ms,oligo-analysis,meme,oligos,dyads\
+  \ (see\n        description below).\n\n    \e[1m-to output_format\e[0m\n       \
+  \ Output format.\n\n        Supported: transitions, tab, oligo-analysis, oligos,\
+  \ meme,\n        motifsampler, ms, inclusive, patser, tables.\n\n    \e[1m-bg_pseudo\
+  \ #\e[0m\n        Pseudo frequency for the background models. Value must be a real\n\
+  \        between 0 and 1 (default: 0.01) If the training sequence length (L)\n \
+  \       is known, the value can be set to square-root of L divided by\n        L+squareroot\
+  \ of L\n\n    \e[1m-decimals #\e[0m\n        Number of decimals to print or the\
+  \ transition probabilities.\n\n    \e[1m-to2str\e[0m\n        Convert to a strand-insensitive\
+  \ background model, by averaging\n        transition frequencies on each pair of\
+  \ reverse complements.\n\n\e[1mSEE ALSO\e[0m\n    \e[1mchoose-background-model\e\
+  [0m\n        Indicate the file path of pre-computed background models for the\n\
+  \        organisms supported in RSAT.\n\n    \e[1mseq-proba\e[0m\n        Calculate\
+  \ the probability of a sequence fiven a background model.\n\n    \e[1mmatrix-scan\e\
+  [0m\n        Scan sequences with a PSSM, accepting various background models.\n\n\
+  \    \e[1mpatser\e[0m\n        Scan sequences with a PSSM. Program developed by\
+  \ Jerry Hertz.\n\n"
+generated_using:
+- -h

@@ -1,0 +1,374 @@
+!Command
+command:
+- rsat
+- dyad-analysis
+positional:
+- !Positional
+  description: pattern-discovery
+  position: 0
+  name: sequences
+  optional: false
+- !Positional
+  description: Sig value higher than 0
+  position: 0
+  name: oligonucleotide.
+  optional: false
+- !Positional
+  description: exp(dyad) = exp(oligo1)*exp(oligo2)
+  position: 0
+  name: Then
+  optional: false
+- !Positional
+  description: P(X>=x) =  1 - SUM P(j)
+  position: 0
+  name: x-1
+  optional: false
+- !Positional
+  description: 'Interpretation: the P-value (Pval) represents the nominal risk'
+  position: 0
+  name: accuracy.
+  optional: false
+- !Positional
+  description: "By default, the program calculates the P-value on the right\ntail\
+    \ of the probability distribution, which represents the\nprobability to observe\
+    \ at least x occurrences by chance:\nT\nP(X>=x) = SUM P(X=i)\ni=x\nWith the option\
+    \ -under, the P-value is calculated on the left\ntail of the distribution, which\
+    \ represents the probability of\nhaving at most x occurrences:\nx-1\nP(X<=x) =\
+    \  SUM P(X=i)\ni=0\nThe option -under does not affect the other statistics\n(zscore,\
+    \ loglikelihood). For z-score, the negative values\nindicate under-representation.\n\
+    With the option -two_tails, the P-value is calculated on\neither the left or the\
+    \ right-tail of the distribution,\ndepending on the observed/expected comparison:\n\
+    if k >= exp_occ, right tail (over-representation)\nif k < exp_occ, left tail (under-representation)"
+  position: 0
+  name: OVER/UNDER-REPRESENTATION
+  optional: false
+- !Positional
+  description: "The probability of occurrence by itself is not fully\ninformative,\
+    \ because the threshold must be adapted depending\non the number of patterns considered.\
+    \ Indeed, a simple\nhexanucleotide analysis amounts to consider 4096\nhypotheses.\n\
+    The E-value (Eval) represents the expected number of patterns\nwhich would be\
+    \ returned at random for a given threshold of\nnominal P-value.\nEval = NPO *\
+    \ P(X>=x)\nwhere NPO is the number of possible oligomers of the chosen\nlength\
+    \ (eg 4096 for hexanucleotides).\nNote that when searches are performed on both\
+    \ strands, NPO is\ncorrected for the fact that non-palindromic patterns are\n\
+    grouped by pairs (for example, there are 4096 possible\nhexanucleotides when the\
+    \ count is performed on a single\nstrand, but only 2080 when the count is performed\
+    \ on both\nstrands).\nInterpretation: the E-value (Eval) represents the expected\n\
+    number of false positives, for a given threshold of P-value\n(Pval)."
+  position: 1
+  name: E-VALUE
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "(must be first argument) display full help message\n-help   (must\
+    \ be first argument) display options\n-o output_file\n-i input_file\nThe sequence\
+    \ to be analyzed. Multiple sequences can\nbe entered at once with most sequence\
+    \ formats (see below).\n-mask upper|lower\nMask lower or uppercases, respecively,\
+    \ i.e. replace\nselected case by N characters.\n-format format\nInput sequence\
+    \ format. Various standards are\nsupported.\nraw: the raw sequence without any\
+    \ identifier or comment.\nmulti: several raw sequences concatenated.\nIG: IntelliGenetics\
+    \ format.\nFastA: the sequence format used by FastA, BLAST, Gibbs\nsampler and\
+    \ a lot of other bioinformatic programs.\nWconsensus: the format defined by Jerry\
+    \ Hertz for\nhis programs (patser, consensus, wconsensus).\n-l #    oligo_length\n\
+    Oligonucleotide size (default 3)\nThis is the size of a single element (a half\
+    \ dyad).\n-sp #-# spacing (default 0-20)\nSpacing between the elements of the\
+    \ dyad.\nThe spacing is the number of bases between the end of\nthe first element\
+    \ and the start of the second one.\nSpacing formats\n---------------\nA single\
+    \ integer value means that the spacing is fixed.\nVariable spacing can be introdued\
+    \ by entering the min and\nmax values separated by a hyphen.\nFor example 8-12\
+    \ means that all occurrences of the dyad\nwith a spacing between 8 and 12 qill\
+    \ be counted together\nand their significance estimated globally.\nWarning, this\
+    \ is different from scanning one by one the\nspacing values 8 to 12.\n-type dyad_type\
+    \ (dr|ir|any)\nIn order to fasten execution, the program can be asked\nto restrict\
+    \ its analysis to symmetric dyads.\nThree types are accepted\ndr   direct repeats:\
+    \ the second element is the same as the\nfirst one\nir   inverted repeats: the\
+    \ second element is the reverse\ncomplement of the first one.\nrep  repeats: direct\
+    \ and inverted repeats are evaluated\nany  (default)\nWhen selecting the option\
+    \ any, the analysis is\nperformed on all non-symmetric dyads as well.\n-accept\
+    \ accepted_dyad_file\nSpecify a file containing a list of accepted\ndyads. The\
+    \ analysis is then restricted to these\ndyads. Since the number of tested dyads\
+    \ is reduced by\nthis selection, the multitesting correction is\ngenerally lower,\
+    \ which increases the significance of\nthe accepted dyads, compared to the default\
+    \ situation\nwhere all dyads are analyzed.\nFile format: the first word of each\
+    \ row specifies a\ndyad. Subsequent words are ignored.\n-groupsp\nGroup dyads\
+    \ made of the same words (monads) but with\ndifferent spacings.\n-2str   count\
+    \ on oth strands\nThe occurrences of each oligonucleotide are summed on both\n\
+    strands. This allows to detect elements which act in an\norientation-insensitive\
+    \ way (as is generally the case for\nyeast upstream elements).\n-1str   single\
+    \ strand count\nonly the direct strand is considered for oligonucleotide and\n\
+    dyad occurrence counting.\n-prot   input sequence is proteic. In this case, the\
+    \ analysis\nconcerns pairs of oligopeptides instead of oligonucleotides\n-expfreq\
+    \        file with an expected frequency table\nBy default, the frequency expected\
+    \ for each dyad is the\nproduct of the frequency expected for each element\n(oligonucleotide):\n\
+    exp(dyad) = exp(oligo1)*exp(oligo2)\nBy default, the oligonucleotide frequencies\
+    \ observed in the\ninput sequences are used to estimate the expected oligo\nfrequencies.\n\
+    Alternatively, predefined frequency tables can be used.\nThese tables can for\
+    \ instance be calculated on basis of\n- the whole yeast genome\n- all yeast intergenic\
+    \ regions\n- all yeast gene regions\nThis allows to correct the bias due to the\
+    \ highly variable\ndistribution of oligonucleotides observed in the yeast genome.\n\
+    -ncf    (deprecated, use \"-bg intergenic\" instead)\nuse intergenic frequencies\
+    \ as background frequencies\n-bg     background model\nType of sequences used\
+    \ as background model for\nestimating expected dyad frequencies.\nEither -org\
+    \ or -taxon is required with the option -bg.\nSupported models:\n-bg upstream\n\
+    all upstream sequences, allowing overlap with\nupstream ORFs\n-bg upstream-noorf\n\
+    all upstream sequences, preventing overlap\nwith upstream ORFs\n-bg intergenic\n\
+    intergenic frequencies\nWhole set of intergenic regions, including\nupstream and\
+    \ downstream sequences\n-bg monads (default)\nCalcualte expected dyad frequency\
+    \ from the monad\nfrequencies observed in the input sequences.\n-bg input\nSame\
+    \ as -bg monads, allowed for consistency with\noligo-analysis.\n-org    organism\n\
+    -taxon  taxon\nOrganism or taxon that used as reference for the\nestimation of\
+    \ a background model based on a genome\nsubset (option -bg).  Either -org or -taxon\
+    \ is\nrequired with the option -bg.\nOptions -org and -taxon are mutually exclusive.\n\
+    -thosig #\nThreshold on occurrence significance.\n(obsolete: use -lth occ_sig\
+    \ instead)\n-lth param value\nLower threshold on some parameter. All patterns\
+    \ with a\nparameter value smaller than the threshold are\ndiscarded.\nSupported\
+    \ parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+    Example: select patterns with a positive value for the\noccurrence significance.\n\
+    -lth occ_sig 0\n-uth param value\nUpper threshold on some parameter. All patterns\
+    \ with a\nparameter value higher than the threshold are\ndiscarded.\nSupported\
+    \ parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+    Example: to select no more than 50 patterns\n-uth rank 50\n-sort   sort results\
+    \ by decreasing order of significance\n-return output_fields\noutput fields may\
+    \ contain one or several of the following\nwords:\nfreq\nocc\nproba (binomial\
+    \ probability)\nzscore\nratio\nrank\nthe fields have to be separated by commas\n\
+    By default, only occurrences are returned.\n-under\ndetect under-represented instead\
+    \ of over-represented\ndyads (left-tail significance test).\n-two_tails\ndetect\
+    \ under-represented and over-represented dyads\n(two-tail significance test).\n\
+    -zeroocc\nReport also dyads with zero occurrences (provided they\nfit the other\
+    \ thresholds).  By default, the program\nreports only patterns present in the\
+    \ sequence.  If the\nleft tail or two-tail test is applied, patterns with\nzero\
+    \ occurrences are automatically taken into\naccount.\nIn some other cases, one\
+    \ would also like to detect\npatterns absent from the sequence. This is the\n\
+    function of the option -zeroocc.\n-quick\nQuick count mode: delegate the counting\
+    \ of word\noccurrences to count-words, a program written in C by\nMatthieu Defrance.\n\
+    This option is incompatible with the following output\nfields:\n-noov   do not\
+    \ allow overlapping matches of the same word\n-timeout #\ntimeout (in seconds).\
+    \ Default = 3600.\ndyad-analysis can be time consuming. In order to\nprotect the\
+    \ server from endless queries, the program\nwill automatically stop after 1 hour\
+    \ (default) of\ncalculation. The time out value can be changed for\nheavy tasks.\n\
+    -seqtype  dna|prot|other\nInput sequence type\n. DNA (default)\nOnly A, C, G,\
+    \ and T residues are\naccepted. oligomers that contain partly defined\n(IUPAC\
+    \ code) or undefined nucleotides (N) are\ndiscarded from the countings.\n. protein\n\
+    Oligopeptide analysis instead of oligonucleotide.\nThis inactivates the grouping\
+    \ of oligomers with\ntheir reverse complements, and modifies the\nalphabet size.\n\
+    . other\nAny type of letters found in the input sequence is\nconsidered valid.\
+    \ This allows to analyze texts in\nhuman language."
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nNAME dyad-analysis\n\n\t1998 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
+  \nDESCRIPTION\n\tDetects overrepresented dyads (spaced pairs) in a set of DNA\n\t\
+  sequences. A dyad is defined here as a pair of\n\toligonucleotides of the same size\
+  \ separated by a fixed number\n\tof bases.\n\n\tThis algorithm is able to detect\
+  \ binding sites that escape detection by\n\toligo-analysis, because of the sequence\
+  \ degeneracy within the spacer\n\tregion. A typical example of patterns that are\
+  \ efficiently detected by\n\tthe dyad analysis is the binding site for the yeast\
+  \ Gal4p\n\ttranscription factor, which has the consensus CGGNNNNNWNNNNNCCG.\n\n\t\
+  The dyad-analysis is generally efficient to detect binding sites\n\tfor HTH factors\
+  \ from E.coli, and for C6 Zinc cluster proteins in yeast.\n\nCATEGORY\n\tstatistics\n\
+  \tsequences\n\tpattern-discovery\n\nOPTIONS\n\t-h      (must be first argument)\
+  \ display full help message\n\n\t-help   (must be first argument) display options\n\
+  \n\t-o output_file\n\n\t-i input_file\n\t\tThe sequence to be analyzed. Multiple\
+  \ sequences can\n\t\tbe entered at once with most sequence formats (see below).\n\
+  \n\t-mask upper|lower\n\t\tMask lower or uppercases, respecively, i.e. replace\n\
+  \t\tselected case by N characters.\n\n\t-format format\n\t\tInput sequence format.\
+  \ Various standards are\n\t\tsupported.\n\t\t   raw: the raw sequence without any\
+  \ identifier or comment.\n\t\t   multi: several raw sequences concatenated.\n\t\t\
+  \   IG: IntelliGenetics format.\n\t\t   FastA: the sequence format used by FastA,\
+  \ BLAST, Gibbs\n\t\t\t  sampler and a lot of other bioinformatic programs.\n\t\t\
+  \   Wconsensus: the format defined by Jerry Hertz for\n\t\t\t       his programs\
+  \ (patser, consensus, wconsensus).\n\t-l #\toligo_length\n\t\tOligonucleotide size\
+  \ (default 3)\n\t\tThis is the size of a single element (a half dyad).\n\t-sp #-#\t\
+  spacing (default 0-20)\n\t\tSpacing between the elements of the dyad.\n\t\tThe spacing\
+  \ is the number of bases between the end of\n\t\tthe first element and the start\
+  \ of the second one.\n\t\tSpacing formats\n\t\t---------------\n\t\tA single integer\
+  \ value means that the spacing is fixed.\n\t\tVariable spacing can be introdued\
+  \ by entering the min and\n\t\tmax values separated by a hyphen.\n\t\tFor example\
+  \ 8-12 means that all occurrences of the dyad\n\t\twith a spacing between 8 and\
+  \ 12 qill be counted together\n\t\tand their significance estimated globally.\n\t\
+  \tWarning, this is different from scanning one by one the\n\t\t spacing values 8\
+  \ to 12.\n\t-type dyad_type (dr|ir|any)\n\t\tIn order to fasten execution, the program\
+  \ can be asked\n\t\tto restrict its analysis to symmetric dyads.\n\t\tThree types\
+  \ are accepted\n\t\t   dr\tdirect repeats: the second element is the same as the\n\
+  \t\t\tfirst one\n\t\t   ir\tinverted repeats: the second element is the reverse\n\
+  \t\t\tcomplement of the first one.\n\t\t   rep  repeats: direct and inverted repeats\
+  \ are evaluated\n\t\t   any\t(default)\n\t\t\tWhen selecting the option any, the\
+  \ analysis is\n\t\t\tperformed on all non-symmetric dyads as well.\n\n\t-accept\
+  \ accepted_dyad_file\n\t\tSpecify a file containing a list of accepted\n\t\tdyads.\
+  \ The analysis is then restricted to these\n\t\tdyads. Since the number of tested\
+  \ dyads is reduced by\n\t\tthis selection, the multitesting correction is\n\t\t\
+  generally lower, which increases the significance of\n\t\tthe accepted dyads, compared\
+  \ to the default situation\n\t\twhere all dyads are analyzed.\n\n\t\tFile format:\
+  \ the first word of each row specifies a\n\t\tdyad. Subsequent words are ignored.\n\
+  \n\t-groupsp\n\t\tGroup dyads made of the same words (monads) but with\n\t\tdifferent\
+  \ spacings.\n\n\t-2str\tcount on oth strands\n\t\tThe occurrences of each oligonucleotide\
+  \ are summed on both\n\t\tstrands. This allows to detect elements which act in an\n\
+  \t\torientation-insensitive way (as is generally the case for\n\t\tyeast upstream\
+  \ elements).\n\n\t-1str\tsingle strand count\n\t\tonly the direct strand is considered\
+  \ for oligonucleotide and\n\t\tdyad occurrence counting.\n\n\t-prot\tinput sequence\
+  \ is proteic. In this case, the analysis\n\t\tconcerns pairs of oligopeptides instead\
+  \ of oligonucleotides\n\n\t-expfreq\tfile with an expected frequency table\n\t\t\
+  By default, the frequency expected for each dyad is the\n\t\tproduct of the frequency\
+  \ expected for each element\n\t\t(oligonucleotide):\n\n\t\t  exp(dyad) = exp(oligo1)*exp(oligo2)\n\
+  \n\t\tBy default, the oligonucleotide frequencies observed in the\n\t\tinput sequences\
+  \ are used to estimate the expected oligo\n\t\tfrequencies.\n\t\tAlternatively,\
+  \ predefined frequency tables can be used.\n\t\tThese tables can for instance be\
+  \ calculated on basis of\n\t\t- the whole yeast genome\n\t\t- all yeast intergenic\
+  \ regions\n\t\t- all yeast gene regions\n\t\tThis allows to correct the bias due\
+  \ to the highly variable\n\t\tdistribution of oligonucleotides observed in the yeast\
+  \ genome.\n\n\t-ncf\t(deprecated, use \"-bg intergenic\" instead)\n\t\tuse intergenic\
+  \ frequencies as background frequencies\n\n\t-bg\tbackground model\n\t\tType of\
+  \ sequences used as background model for\n\t\testimating expected dyad frequencies.\n\
+  \n\t\tEither -org or -taxon is required with the option -bg.\n\n\t\tSupported models:\n\
+  \t\t-bg upstream\n\t\t\t all upstream sequences, allowing overlap with\n\t\t   \
+  \      upstream ORFs\n\n\t\t-bg upstream-noorf\n\t\t\t  all upstream sequences,\
+  \ preventing overlap\n\t\t\t  with upstream ORFs\n\n\t\t-bg intergenic\n\t\t   \
+  \      intergenic frequencies\n\t\t\t Whole set of intergenic regions, including\n\
+  \t\t\t upstream and downstream sequences\n\n\t\t-bg monads (default)\n\t\t    Calcualte\
+  \ expected dyad frequency from the monad\n\t\t    frequencies observed in the input\
+  \ sequences.\n\n\t\t-bg input\n\t\t    Same as -bg monads, allowed for consistency\
+  \ with\n\t\t    oligo-analysis.\n\n\n\t-org\torganism\n\t-taxon\ttaxon\n\t\tOrganism\
+  \ or taxon that used as reference for the\n\t\testimation of a background model\
+  \ based on a genome\n\t\tsubset (option -bg).  Either -org or -taxon is\n\t\trequired\
+  \ with the option -bg.\n\n   \t\tOptions -org and -taxon are mutually exclusive.\n\
+  \n\t-thosig #\n\t\tThreshold on occurrence significance.\n\t\t(obsolete: use -lth\
+  \ occ_sig instead)\n\n\t-lth param value\n\t\tLower threshold on some parameter.\
+  \ All patterns with a\n\t\tparameter value smaller than the threshold are\n\t\t\
+  discarded.\n\t\tSupported parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+  \t      \tExample: select patterns with a positive value for the\n\t      \toccurrence\
+  \ significance.\n\n\t\t\t -lth occ_sig 0\n\n\t-uth param value\n\t\tUpper threshold\
+  \ on some parameter. All patterns with a\n\t\tparameter value higher than the threshold\
+  \ are\n\t\tdiscarded.\n\t\tSupported parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+  \t\tExample: to select no more than 50 patterns\n\t\t        -uth rank 50\n\n\t\
+  -sort\tsort results by decreasing order of significance\n\n\t-return\toutput_fields\n\
+  \t\toutput fields may contain one or several of the following\n\t\twords:\n\t\t\t\
+  freq\n\t\t\tocc\n\t\t\tproba (binomial probability)\n\t\t\tzscore\n\t\t\tratio\n\
+  \t\t\trank\n\t\tthe fields have to be separated by commas\n\t\tBy default, only\
+  \ occurrences are returned.\n\n\t-under\n                detect under-represented\
+  \ instead of over-represented\n         \tdyads (left-tail significance test).\n\
+  \n\t-two_tails\n\t\tdetect under-represented and over-represented dyads\n\t\t(two-tail\
+  \ significance test).\n\n\t-zeroocc\n\t\tReport also dyads with zero occurrences\
+  \ (provided they\n\t\tfit the other thresholds).  By default, the program\n\t\t\
+  reports only patterns present in the sequence.  If the\n\t\tleft tail or two-tail\
+  \ test is applied, patterns with\n\t\tzero occurrences are automatically taken into\n\
+  \t\taccount.\n\n\t\tIn some other cases, one would also like to detect\n\t\tpatterns\
+  \ absent from the sequence. This is the\n\t\tfunction of the option -zeroocc.\n\n\
+  \t-quick\n\t\tQuick count mode: delegate the counting of word\n\t\toccurrences to\
+  \ count-words, a program written in C by\n\t\tMatthieu Defrance.\n\n\t\tThis option\
+  \ is incompatible with the following output\n  \t        fields: \n\n\t-noov\tdo\
+  \ not allow overlapping matches of the same word\n\n\t-timeout #\n\t\ttimeout (in\
+  \ seconds). Default = 3600.\n\t\tdyad-analysis can be time consuming. In order to\n\
+  \t\tprotect the server from endless queries, the program\n\t\twill automatically\
+  \ stop after 1 hour (default) of\n\t\tcalculation. The time out value can be changed\
+  \ for\n\t\theavy tasks.\n\n\t-seqtype  dna|prot|other\n\t\tInput sequence type\n\
+  \t\t. DNA (default)\n\t\t    Only A, C, G, and T residues are\n\t\t    accepted.\
+  \ oligomers that contain partly defined\n\t\t    (IUPAC code) or undefined nucleotides\
+  \ (N) are\n\t\t    discarded from the countings.\n\t\t. protein\n\t\t    Oligopeptide\
+  \ analysis instead of oligonucleotide.\n\t\t    This inactivates the grouping of\
+  \ oligomers with\n\t\t    their reverse complements, and modifies the\n\t\t    alphabet\
+  \ size.\n\t\t. other\n\t\t    Any type of letters found in the input sequence is\n\
+  \t\t    considered valid. This allows to analyze texts in\n\t\t    human language.\n\
+  \nOUTPUT COLUMNS\n\tDyad pattern\n\tDyad identifier. Same as pattern, with th reverse\
+  \ complement added\n\t\twhen the counting was performed on both strands.\n\n\tExpected\
+  \ frequency (exp_frq): the probability to observe the dyad at\n\t\teach position.\
+  \ This value is calculated on basis of the\n\t\texpected frequency table (see above),\
+  \ or of the\n\t\toligonucleotide frequencies observed in the input sequences.\n\n\
+  \tObserved occurrences (occ): the number of ocurrences\n\t\tobserved for each dyad.\n\
+  \t\tOverlapping matches are detected and summed in the counting.\n\n\tExpected number\
+  \ of occurrences (exp_occ): the number of\tocurrences\n\t\texpected for each dyad.\
+  \ This value is calculated on basis of\n\t\tthe oligonucleotide frequency table\
+  \ selected.\n\n\tOccurrence P-value (occ_P): the probability to have N or more\n\
+  \t\toccurrences, given the expected number of occurrences\n\t\t(where N is the observed\
+  \ number of occurrences).\n\n\tOccurrence E-value (occ_E): the expected number of\
+  \ false\n\t\tpositives, given the number of false\n\t\t\tE-value = P-value * nb_tested_patterns\n\
+  \t\tThis is a correction for multi-testing, taking into\n\t\taccount the number\
+  \ of patterns for which a test of\n\t\tsignificance has been performed (which varies\
+  \ with the\n\t\tsize of the monad, and with the number of spacings\n\t\tsampled)/\n\
+  \n\tOccurrence Significance (occ_sig):\n\t\tA logarithmic transformation of the\
+  \ E-value.\n\t\t  \t      occ_sig = -log10(occ_E)\n\t\tThe highest sig correspond\
+  \ to the most overrepresented\n\t\toligonucleotide.  Sig value higher than 0\n\t\
+  \tindicate a significant overrepresentation (E-value < 1).\n\nPROBABILITIES\n\t\
+  Various calibration models can be used to estimate the probability of\n\teach oligonucleotide\
+  \ (see above). From there, and expected number of\n\toccurrences is calculated and\
+  \ compared to the observed number of\n\toccurrences. The significance of the observed\
+  \ number of occurrences\n\tis calculated with the binomial formulae.\n\n    EXPECTED\
+  \ DYAD FREQUENCY\n        If exp(oligo1) is the expected frequency for the first\
+  \ element, and\n           exp(oligo1) is the expected frequency for the second\
+  \ element\n\n        Then\n           exp(dyad) = exp(oligo1)*exp(oligo2)\n\n  \
+  \  NUMBER OF POSSIBLE DYADS\n        This number depends on the dyad type selected\
+  \ by the user.\n        When the analysis is restricted to inverted repeats, or\
+  \ to direct\n        repeats, the first element univocally determines the second\
+  \ one,\n        thus:\n                nb_poss_dyads = nb_poss_oligo\n         \
+  \                     = 4^w\n                where w is the oligonucleotide length.\n\
+  \         When any dyad is allowed, each oligonucleotide can combine with any\n\
+  \        other or itself, thus:\n                nb_poss_dyads = nb_poss_oligo *\
+  \ nb_poss_oligo\n                              = 4^2w\n    EXPECTED OCCURRENCES\n\
+  \                              r\n           Exp_occ = p * 2 * SUM (Lj + 1 - d)\
+  \ = p * T\n                             j=1\n\n        where   p  = expected dyad\
+  \ frequency\n                n  = number of input sequences\n                Lj\
+  \ = length of the jth input sequence\n                d  = length of the dyad, calculated\
+  \ as follows:\n                        d = 2w + s\n                        where\
+  \ w is the oligonucleotide length\n                              s is the spacer\
+  \ length\n                T  = the number of possible matching positions in the\n\
+  \                     whole set of input sequences.\n                The factor\
+  \ 2 stands for the fact that occurrences are summed\n                on both strands\
+  \ (it is omitted when the option -1str\n                is active).\n\n    PROBABILITY\
+  \ OF THE OBSERVED NUMBER OF OCCURRENCES\n        The probability to observe exactly\
+  \ obs occurrences in the whole set\n        of sequences is calculated by the binomial\n\
+  \n                                                    x     T-x\n            P(X=x)\
+  \ = bin(p,T,x) =       T!         p (1-p)\n                                   -------------\n\
+  \                                     x! (T-x)!\n\n        where   x is the observed\
+  \ number of dyad occurrences,\n                p   is the expected dyad frequency,\n\
+  \                T   is the number of possible matching positions,\n           \
+  \         as defined above.\n\n        The probability to observe obs or more occurrences\
+  \ in the\n        whole set of of sequences is calculated by the sum of\n      \
+  \  binomials:\n\n                            x-1\n             P(X>=x) =  1 - SUM\
+  \ P(j)\n                            j=0\n\n\n        Note that the the P-value (Pval)\
+  \ is not computed by directly\n        applying this formula, but by using an efficient\
+  \ algorithm\n        (based on recursion), which increases both computing speed\
+  \ and\n        accuracy.\n\n        Interpretation: the P-value (Pval) represents\
+  \ the nominal risk\n        of false positive, i.e. the risk to consider a given\
+  \ dyad as\n        over-represented whereas it is not.\n\n    OVER/UNDER-REPRESENTATION\n\
+  \n        By default, the program calculates the P-value on the right\n\ttail of\
+  \ the probability distribution, which represents the\n\tprobability to observe at\
+  \ least x occurrences by chance:\n\n\t\t\t               T\n\t\t\t    P(X>=x) =\
+  \ SUM P(X=i)\n\t\t\t              i=x\n\n\tWith the option -under, the P-value is\
+  \ calculated on the left\n\ttail of the distribution, which represents the probability\
+  \ of\n\thaving at most x occurrences:\n\n\t\t\t               x-1\n\t\t\t    P(X<=x)\
+  \ =  SUM P(X=i)\n\t\t\t               i=0\n\n\tThe option -under does not affect\
+  \ the other statistics\n\t(zscore, loglikelihood). For z-score, the negative values\n\
+  \tindicate under-representation.\n\n\tWith the option -two_tails, the P-value is\
+  \ calculated on\n\teither the left or the right-tail of the distribution,\n\tdepending\
+  \ on the observed/expected comparison:\n\t if k >= exp_occ, right tail (over-representation)\n\
+  \t if k < exp_occ, left tail (under-representation)\n\n\n    E-VALUE\n\n\tThe probability\
+  \ of occurrence by itself is not fully\n\tinformative, because the threshold must\
+  \ be adapted depending\n\ton the number of patterns considered. Indeed, a simple\n\
+  \thexanucleotide analysis amounts to consider 4096\n\thypotheses.\n\n\tThe E-value\
+  \ (Eval) represents the expected number of patterns\n\twhich would be returned at\
+  \ random for a given threshold of\n\tnominal P-value.\n\n\t      Eval = NPO * P(X>=x)\n\
+  \n\twhere NPO is the number of possible oligomers of the chosen\n\t          length\
+  \ (eg 4096 for hexanucleotides).\n\n        Note that when searches are performed\
+  \ on both strands, NPO is\n        corrected for the fact that non-palindromic patterns\
+  \ are\n        grouped by pairs (for example, there are 4096 possible\n        hexanucleotides\
+  \ when the count is performed on a single\n        strand, but only 2080 when the\
+  \ count is performed on both\n        strands).\n\n\tInterpretation: the E-value\
+  \ (Eval) represents the expected\n\tnumber of false positives, for a given threshold\
+  \ of P-value\n\t(Pval). \n\n    SIGNIFICANCE INDEX\n\n        The significance index\
+  \ is simply a negative logarithm\n        conversion of the E-value (in base 10).\n\
+  \n\tThe significance index is calculated as follows:\n\n\t      sig = -log10(E-value);\n\
+  \n\tThis index is very convenient to interpret : higher values\n\tcorrespond to\
+  \ exceptional patterns. A significance of 0\n\tcorresponds to an E-value of 1. A\
+  \ significance of 2 to an\n\tE-value of 1e-2 (i.e. one expects no more than 0.01\
+  \ false\n\tpositives in the whole collection of patterns).\n\nAVAILABILITY\n   \
+  \   The program can be used through its web interface at:\n      http://rsat.bigre.ulb.ac.be/rsat/\n\
+  \n      dyad-analysis is a perl script running on unix machines (SUN,\n      SGI,\
+  \ DEC Alpha, Max OSX have been tested). The web interface is\n      a perl-cgi script.\n\
+  \n"
+generated_using:
+- -h

@@ -1,0 +1,77 @@
+!Command
+command:
+- ggd
+- predict-path
+positional: []
+named:
+- !Flag
+  description: "The ggd channel of the recipe to find. (Default =\ngenomics)"
+  synonyms:
+  - -c
+  - --channel
+  args: !ChoiceFlagArg
+    choices: !!set
+      genomics:
+  optional: true
+- !Flag
+  description: "(Optional) The name or the full directory path to an\nconda environment.\
+    \ The predicted path will be based on\nthis conda environment. When installing,\
+    \ the data\npackage should also be installed in this environment.\n(Only needed\
+    \ if not predicting for a path in the\ncurrent conda enviroment)"
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "(Required) The name of the data package to predict a\nfile path for"
+  synonyms:
+  - -pn
+  - --package-name
+  args: !SimpleFlagArg
+    name: PACKAGE_NAME
+  optional: true
+- !Flag
+  description: "(Required) The name of the file to predict that path\nfor. It is best\
+    \ if you give the full and correct name\nof the file to predict the path for.\
+    \ If not, ggd will\ntry to identify the right file, but won't guarantee\nthat\
+    \ it is the rigth file\n"
+  synonyms:
+  - -fn
+  - --file-name
+  args: !SimpleFlagArg
+    name: FILE_NAME
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ggd predict-path [-h] [-c {genomics}] [--prefix PREFIX] -pn\n \
+  \                       PACKAGE_NAME -fn FILE_NAME\n\nGet a predicted install file\
+  \ path for a data package before it is installed.\n(Use for worklows, such as Snakemake)\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -c {genomics}, --channel {genomics}\n                        The ggd channel\
+  \ of the recipe to find. (Default =\n                        genomics)\n  --prefix\
+  \ PREFIX       (Optional) The name or the full directory path to an\n          \
+  \              conda environment. The predicted path will be based on\n        \
+  \                this conda environment. When installing, the data\n           \
+  \             package should also be installed in this environment.\n          \
+  \              (Only needed if not predicting for a path in the\n              \
+  \          current conda enviroment)\n\nrequired arguments:\n  -pn PACKAGE_NAME,\
+  \ --package-name PACKAGE_NAME\n                        (Required) The name of the\
+  \ data package to predict a\n                        file path for\n  -fn FILE_NAME,\
+  \ --file-name FILE_NAME\n                        (Required) The name of the file\
+  \ to predict that path\n                        for. It is best if you give the\
+  \ full and correct name\n                        of the file to predict the path\
+  \ for. If not, ggd will\n                        try to identify the right file,\
+  \ but won't guarantee\n                        that it is the rigth file\n"
+generated_using:
+- --help

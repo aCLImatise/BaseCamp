@@ -1,0 +1,101 @@
+!Command
+command:
+- igdiscover
+- count
+positional: []
+named:
+- !Flag
+  description: 'Which gene type: Choose V, D or J. Default: Default: V'
+  synonyms:
+  - --gene
+  args: !ChoiceFlagArg
+    choices: !!set
+      V:
+      D:
+      J:
+  optional: true
+- !Flag
+  description: "Compute expressions for the sequences that are named\nin the FASTA\
+    \ file. Only the sequence names in the file\nare used! This is the only way to\
+    \ also include genes\nwith an expression of zero."
+  synonyms:
+  - --database
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: Plot expressions to FILE (PDF or PNG)
+  synonyms:
+  - --plot
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Maximal allowed E-value for D gene match. Default:\n1E-4 if --gene=D,\
+    \ no restriction otherwise."
+  synonyms:
+  - --d-evalue
+  args: !SimpleFlagArg
+    name: D_EVALUE
+  optional: true
+- !Flag
+  description: "Minimum D coverage (in percent). Default: 70 if\n--gene=D, no restriction\
+    \ otherwise."
+  synonyms:
+  - --d-coverage
+  - --D-coverage
+  args: !SimpleFlagArg
+    name: D_COVERAGE
+  optional: true
+- !Flag
+  description: 'Maximum allowed D errors. Default: No limit.'
+  synonyms:
+  - --d-errors
+  args: !SimpleFlagArg
+    name: D_ERRORS
+  optional: true
+- !Flag
+  description: "Required allele ratio. Works only for genes named\n\"NAME*ALLELE\"\
+    . Default: Do not check allele ratio.\n"
+  synonyms:
+  - --allele-ratio
+  args: !SimpleFlagArg
+    name: RATIO
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: igdiscover count [-h] [--gene {V,D,J}] [--database FASTA] [--plot\
+  \ FILE]\n                        [--d-evalue D_EVALUE] [--d-coverage D_COVERAGE]\n\
+  \                        [--d-errors D_ERRORS] [--allele-ratio RATIO]\n        \
+  \                table\n\nCompute expression counts\n\nThis command takes a table\
+  \ of filtered IgBLAST results (filtered.tab.gz),\nfilters it by various criteria\
+  \ and then counts how often specific\ngenes are named.\n\nBy default, all genes\
+  \ with non-zero expression are listed, sorted by\nname. Use --database to change\
+  \ this.\n\npositional arguments:\n  table                 Table with parsed and\
+  \ filtered IgBLAST results\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --gene {V,D,J}        Which gene type: Choose V,\
+  \ D or J. Default: Default: V\n  --database FASTA      Compute expressions for the\
+  \ sequences that are named\n                        in the FASTA file. Only the\
+  \ sequence names in the file\n                        are used! This is the only\
+  \ way to also include genes\n                        with an expression of zero.\n\
+  \  --plot FILE           Plot expressions to FILE (PDF or PNG)\n\nInput table filtering:\n\
+  \  --d-evalue D_EVALUE   Maximal allowed E-value for D gene match. Default:\n  \
+  \                      1E-4 if --gene=D, no restriction otherwise.\n  --d-coverage\
+  \ D_COVERAGE, --D-coverage D_COVERAGE\n                        Minimum D coverage\
+  \ (in percent). Default: 70 if\n                        --gene=D, no restriction\
+  \ otherwise.\n  --d-errors D_ERRORS   Maximum allowed D errors. Default: No limit.\n\
+  \nExpression counts table filtering:\n  --allele-ratio RATIO  Required allele ratio.\
+  \ Works only for genes named\n                        \"NAME*ALLELE\". Default:\
+  \ Do not check allele ratio.\n"
+generated_using:
+- --help

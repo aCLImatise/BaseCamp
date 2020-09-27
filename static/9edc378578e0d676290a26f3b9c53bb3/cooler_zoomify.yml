@@ -1,0 +1,117 @@
+!Command
+command:
+- cooler
+- zoomify
+positional:
+- !Positional
+  description: -h, --help               Show this message and exit.
+  position: 0
+  name: levels.
+  optional: false
+named:
+- !Flag
+  description: "Number of processes to use for batch processing\nchunks of pixels\
+    \ [default: 1, i.e. no process pool]"
+  synonyms:
+  - -n
+  - -p
+  - --nproc
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Number of pixels allocated to each process\n[default: 10000000]"
+  synonyms:
+  - -c
+  - --chunksize
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Comma-separated list of target resolutions. Use\nsuffixes B or N to\
+    \ specify a progression: B for\nbinary (geometric steps of factor 2), N for nice\n\
+    (geometric steps of factor 10 interleaved with\nsteps of 2 and 5). Examples:\n\
+    1000B=1000,2000,4000,8000,...\n1000N=1000,2000,5000,10000,...\n5000N=5000,10000,25000,50000,...\
+    \ 4DN is an alias\nfor 1000,2000,5000N [default: B]"
+  synonyms:
+  - -r
+  - --resolutions
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Apply balancing to each zoom level. Off by default.
+  synonyms:
+  - --balance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Additional arguments to pass to cooler balance
+  synonyms:
+  - --balance-args
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "One or more additional base coolers to aggregate\nfrom, if needed."
+  synonyms:
+  - -i
+  - --base-uri
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Output file or URI
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Specify the names of value columns to merge as\n'<name>'. Repeat the\
+    \ `--field` option for each one.\nUse '<name>:dtype=<dtype>' to specify the dtype.\n\
+    Include ',agg=<agg>' to specify an aggregation\nfunction different from 'sum'."
+  synonyms:
+  - --field
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Use the legacy layout of integer-labeled zoom
+  synonyms:
+  - --legacy
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: cooler zoomify [OPTIONS] COOL_PATH\n\n  Generate a multi-resolution\
+  \ cooler file by coarsening.\n\n  COOL_PATH : Path to a COOL file or Cooler URI.\n\
+  \nOptions:\n  -n, -p, --nproc INTEGER  Number of processes to use for batch processing\n\
+  \                           chunks of pixels [default: 1, i.e. no process pool]\n\
+  \n  -c, --chunksize INTEGER  Number of pixels allocated to each process\n      \
+  \                     [default: 10000000]\n\n  -r, --resolutions TEXT   Comma-separated\
+  \ list of target resolutions. Use\n                           suffixes B or N to\
+  \ specify a progression: B for\n                           binary (geometric steps\
+  \ of factor 2), N for nice\n                           (geometric steps of factor\
+  \ 10 interleaved with\n                           steps of 2 and 5). Examples:\n\
+  \                           1000B=1000,2000,4000,8000,...\n                    \
+  \       1000N=1000,2000,5000,10000,...\n                           5000N=5000,10000,25000,50000,...\
+  \ 4DN is an alias\n                           for 1000,2000,5000N [default: B]\n\
+  \n  --balance                Apply balancing to each zoom level. Off by default.\n\
+  \  --balance-args TEXT      Additional arguments to pass to cooler balance\n  -i,\
+  \ --base-uri TEXT      One or more additional base coolers to aggregate\n      \
+  \                     from, if needed.\n\n  -o, --out TEXT           Output file\
+  \ or URI\n  --field TEXT             Specify the names of value columns to merge\
+  \ as\n                           '<name>'. Repeat the `--field` option for each\
+  \ one.\n                           Use '<name>:dtype=<dtype>' to specify the dtype.\n\
+  \                           Include ',agg=<agg>' to specify an aggregation\n   \
+  \                        function different from 'sum'.\n\n  --legacy          \
+  \       Use the legacy layout of integer-labeled zoom\n                        \
+  \   levels.\n\n  -h, --help               Show this message and exit.\n"
+generated_using:
+- --help

@@ -1,0 +1,151 @@
+!Command
+command:
+- pispino_seqprep
+positional:
+- !Positional
+  description: -o <DIR>              [REQUIRED] Directory to output results
+  position: 0
+  name: FASTQ
+  optional: false
+named:
+- !Flag
+  description: '[REQUIRED] Directory with raw sequences in gzipped'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: "Tap separated file with three columns for sample ids,\nforward-read\
+    \ filename and reverse-read filename. Only\nthe files listed in this file will\
+    \ be processed."
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "FASTX FASTQ_QUALITY_FILTER - Minimum quality score to\nkeep [default:\
+    \ 30]"
+  synonyms:
+  - --FASTX-q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "FASTX FASTQ_QUALITY_FILTER - Minimum percent of bases\nthat must have\
+    \ q quality [default: 80]"
+  synonyms:
+  - --FASTX-p
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "FASTX FASTQ_TO_FASTA - remove sequences with unknown\n(N) nucleotides\
+    \ [default: false]"
+  synonyms:
+  - --FASTX-n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Base PHRED quality score [default: 33]'
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Joiner method: \"PEAR\" and \"FASTQJOIN\" [default:\nVSEARCH]"
+  synonyms:
+  - --joiner_method
+  args: !ChoiceFlagArg
+    choices: !!set
+      FASTQJOIN:
+      PEAR:
+      VSEARCH:
+  optional: true
+- !Flag
+  description: "= <STR>\nUser customisable parameter: You can add/change PEAR\nparameters.\
+    \ Please use \"--PEAR_options=\" followed by\ncustom parameters wrapped around\
+    \ them. E.g.\n--PEAR_options=\"-v 8 -t 2\". Note that if you put two\nsame parameters\
+    \ such as \"-v 8 -v 15\", PEAR will use\nthe later."
+  synonyms:
+  - --PEAR_options
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Retain intermediate files (Beware intermediate files\nuse excessive\
+    \ disk space!)"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose mode
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of Threads [default: 1]'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Do NOT join paired-end sequences, but just use the\nforward reads.\n"
+  synonyms:
+  - --forwardreadsonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: pispino_seqprep [-h] -i <DIR> [-o <DIR>] [-l <FILE>] [--FASTX-q\
+  \ <INT>]\n                       [--FASTX-p <INT>] [--FASTX-n] [-b <INT>]\n    \
+  \                   [--joiner_method {VSEARCH,PEAR,FASTQJOIN}]\n               \
+  \        [--PEAR_options= <STR>] [-r] [-v] [-t <INT>]\n                       [--forwardreadsonly]\n\
+  \npispino_seqprep: reindex, join, quality filter, convert and merge!\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -i <DIR>\
+  \              [REQUIRED] Directory with raw sequences in gzipped\n            \
+  \            FASTQ\n  -o <DIR>              [REQUIRED] Directory to output results\n\
+  \  -l <FILE>             Tap separated file with three columns for sample ids,\n\
+  \                        forward-read filename and reverse-read filename. Only\n\
+  \                        the files listed in this file will be processed.\n  --FASTX-q\
+  \ <INT>       FASTX FASTQ_QUALITY_FILTER - Minimum quality score to\n          \
+  \              keep [default: 30]\n  --FASTX-p <INT>       FASTX FASTQ_QUALITY_FILTER\
+  \ - Minimum percent of bases\n                        that must have q quality [default:\
+  \ 80]\n  --FASTX-n             FASTX FASTQ_TO_FASTA - remove sequences with unknown\n\
+  \                        (N) nucleotides [default: false]\n  -b <INT>          \
+  \    Base PHRED quality score [default: 33]\n  --joiner_method {VSEARCH,PEAR,FASTQJOIN}\n\
+  \                        Joiner method: \"PEAR\" and \"FASTQJOIN\" [default:\n \
+  \                       VSEARCH]\n  --PEAR_options= <STR>\n                    \
+  \    User customisable parameter: You can add/change PEAR\n                    \
+  \    parameters. Please use \"--PEAR_options=\" followed by\n                  \
+  \      custom parameters wrapped around them. E.g.\n                        --PEAR_options=\"\
+  -v 8 -t 2\". Note that if you put two\n                        same parameters such\
+  \ as \"-v 8 -v 15\", PEAR will use\n                        the later.\n  -r   \
+  \                 Retain intermediate files (Beware intermediate files\n       \
+  \                 use excessive disk space!)\n  -v                    Verbose mode\n\
+  \  -t <INT>              Number of Threads [default: 1]\n  --forwardreadsonly  \
+  \  Do NOT join paired-end sequences, but just use the\n                        forward\
+  \ reads.\n"
+generated_using:
+- --help

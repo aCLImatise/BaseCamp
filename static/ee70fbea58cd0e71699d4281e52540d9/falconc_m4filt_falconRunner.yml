@@ -1,0 +1,170 @@
+!Command
+command:
+- falconc
+- m4filt-falconRunner
+positional:
+- !Positional
+  description: '--help-syntax                                     advanced: prepend,plurals,..'
+  position: 0
+  name: help
+  optional: false
+- !Positional
+  description: -m=, --min-len=          int     6000             Minimum read length,
+    reads
+  position: 1
+  name: filter
+  optional: false
+- !Positional
+  description: --min-cov=               int     2                Minimum number of
+    overlaps
+  position: 0
+  name: discarded
+  optional: false
+- !Positional
+  description: -f=, --filter-log-fn=    string  REQUIRED         Write read filter
+    stats to
+  position: 0
+  name: locally
+  optional: false
+named:
+- !Flag
+  description: =, --db=               string  REQUIRED         set db
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=, --las-json-fn=      string  REQUIRED         List of las files\
+    \ from\nfalcon, e.g../1-preads_ovl/\nlas-merge-combine/las_fofn.j\nson"
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=, --idt-stage1=       float   90.0             Stage one percent\
+    \ identity\nfilter, formatted as\npercentage, overlaps < %idt\nare skipped"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =            float   90.0             Stage two percent identify
+  synonyms:
+  - --idt-stage2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=               int     200              Maximum number of overlaps\n\
+    on either side of a read"
+  synonyms:
+  - --max-cov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=              int     100              Reads are skipped is\nabs(5p-3p)\
+    \ overlap counts >\nmaxDiff"
+  synonyms:
+  - --max-diff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=, --bestn=            int     10               Keep N best overlaps\
+    \ at\n5prime AND 3prime of a read"
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=             int     2                Depths lower than minDepth\n\
+    are considered gaps"
+  synonyms:
+  - --min-depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "bool    false            Run depth filter, takes a\nlittle more time"
+  synonyms:
+  - -g
+  - --gap-filt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bool    false            set keepIntermediates
+  synonyms:
+  - -k
+  - --keepIntermediates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =, --n-proc=           int     24               Number of processes
+    to run
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =          string  "LA4Falcon.log"  Write stderr to this file
+  synonyms:
+  - --debug-log-fn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =, --out-fn=           string  REQUIRED         Final m4 overlap file
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this cligen-erated
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "m4filt-falconRunner [required&optional-params] \nRuns the multi-stage\
+  \ m4 overlap filter for falcon. In stage one, reads that\ntrigger a filter are marked\
+  \ including containment, gaps in coverage along the\nA-read, and repeat reads. In\
+  \ stage two the filters are applied and the N-best\noverlaps are kept for the 5prime\
+  \ and 3prime of each read.\nOptions(opt-arg sep :|=|spc):\n  -h, --help        \
+  \                                print this cligen-erated\n                    \
+  \                                help\n  --help-syntax                         \
+  \            advanced: prepend,plurals,..\n  -d=, --db=               string  REQUIRED\
+  \         set db\n  -l=, --las-json-fn=      string  REQUIRED         List of las\
+  \ files from\n                                                    falcon, e.g../1-preads_ovl/\n\
+  \                                                    las-merge-combine/las_fofn.j\n\
+  \                                                    son\n  -i=, --idt-stage1= \
+  \      float   90.0             Stage one percent identity\n                   \
+  \                                 filter, formatted as\n                       \
+  \                             percentage, overlaps < %idt\n                    \
+  \                                are skipped\n  --idt-stage2=            float \
+  \  90.0             Stage two percent identify\n                               \
+  \                     filter\n  -m=, --min-len=          int     6000          \
+  \   Minimum read length, reads\n                                               \
+  \     shorter than minLen will be\n                                            \
+  \        discarded\n  --min-cov=               int     2                Minimum\
+  \ number of overlaps\n                                                    on either\
+  \ side of a read\n  --max-cov=               int     200              Maximum number\
+  \ of overlaps\n                                                    on either side\
+  \ of a read\n  --max-diff=              int     100              Reads are skipped\
+  \ is\n                                                    abs(5p-3p) overlap counts\
+  \ >\n                                                    maxDiff\n  -b=, --bestn=\
+  \            int     10               Keep N best overlaps at\n                \
+  \                                    5prime AND 3prime of a read\n  --min-depth=\
+  \             int     2                Depths lower than minDepth\n            \
+  \                                        are considered gaps\n  -g, --gap-filt \
+  \          bool    false            Run depth filter, takes a\n                \
+  \                                    little more time\n  -k, --keepIntermediates\
+  \  bool    false            set keepIntermediates\n  -n=, --n-proc=           int\
+  \     24               Number of processes to run\n                            \
+  \                        locally\n  -f=, --filter-log-fn=    string  REQUIRED  \
+  \       Write read filter stats to\n                                           \
+  \         this file\n  --debug-log-fn=          string  \"LA4Falcon.log\"  Write\
+  \ stderr to this file\n  -o=, --out-fn=           string  REQUIRED         Final\
+  \ m4 overlap file\n"
+generated_using:
+- --help

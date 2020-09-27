@@ -1,0 +1,207 @@
+!Command
+command:
+- metalign.py
+positional:
+- !Positional
+  description: Path to reads file.
+  position: 0
+  name: reads
+  optional: false
+- !Positional
+  description: Path to data/ directory with the files from
+  position: 1
+  name: data
+  optional: false
+- !Positional
+  description: 'optional arguments:'
+  position: 2
+  name: setup_data.sh
+  optional: false
+- !Positional
+  description: --dbinfo_in DBINFO_IN
+  position: 3
+  name: database.
+  optional: false
+- !Positional
+  description: --keep_temp_files     Retain KMC files after this script finishes.
+  position: 0
+  name: data/db_info.txt
+  optional: false
+- !Positional
+  description: --min_abundance MIN_ABUNDANCE
+  position: 1
+  name: processing.
+  optional: false
+- !Positional
+  description: --precise             Run in precise mode. Overwrites --read_cutoff
+    and
+  position: 0
+  name: hit.
+  optional: false
+named:
+- !Flag
+  description: CMash cutoff value. Default is 0.01.
+  synonyms:
+  - --cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: Directory with all organism files in the full
+  synonyms:
+  - --db_dir
+  args: !SimpleFlagArg
+    name: DB_DIR
+  optional: true
+- !Flag
+  description: "Type of input file (fastq/fasta). Default: try to\nauto-determine"
+  synonyms:
+  - --input_type
+  args: !ChoiceFlagArg
+    choices: !!set
+      AUTO:
+      fastq:
+      fasta:
+  optional: true
+- !Flag
+  description: Normalize abundances by genome length.
+  synonyms:
+  - --length_normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run in low memory mode, with inexact multimapped
+  synonyms:
+  - --low_mem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not factor in unmapped reads in abundance\nestimation."
+  synonyms:
+  - --no_quantify_unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output abundances file. Default: abundances.tsv'
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Minimum percent identity from reference to count a
+  synonyms:
+  - --pct_id
+  args: !SimpleFlagArg
+    name: PCT_ID
+  optional: true
+- !Flag
+  description: 100 and 0.1.
+  synonyms:
+  - --min_abundance
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: "Renormalize abundances to 100 pct. at each rank, e.g\nif an organism\
+    \ has a species but not genus label."
+  synonyms:
+  - --rank_renormalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of reads to count an organism as present.
+  synonyms:
+  - --read_cutoff
+  args: !SimpleFlagArg
+    name: READ_CUTOFF
+  optional: true
+- !Flag
+  description: Sample ID for output. Defaults to input file name(s).
+  synonyms:
+  - --sampleID
+  args: !SimpleFlagArg
+    name: SAMPLEID
+  optional: true
+- !Flag
+  description: Run in sensitive mode. Sets --cutoff value to 0.0.
+  synonyms:
+  - --sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Profile strains (off by default).
+  synonyms:
+  - --strain_level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory to write temporary files to.
+  synonyms:
+  - --temp_dir
+  args: !SimpleFlagArg
+    name: TEMP_DIR
+  optional: true
+- !Flag
+  description: 'Number of compute threads for Minimap2/KMC. Default: 4'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Print verbose output.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: metalign.py [-h] [--cutoff CUTOFF] [--db_dir DB_DIR]\n        \
+  \           [--dbinfo_in DBINFO_IN] [--keep_temp_files]\n                   [--input_type\
+  \ {fastq,fasta,AUTO}] [--length_normalize]\n                   [--low_mem] [--min_abundance\
+  \ MIN_ABUNDANCE]\n                   [--no_quantify_unmapped] [--output OUTPUT]\n\
+  \                   [--pct_id PCT_ID] [--precise] [--rank_renormalize]\n       \
+  \            [--read_cutoff READ_CUTOFF] [--sampleID SAMPLEID]\n               \
+  \    [--sensitive] [--strain_level] [--temp_dir TEMP_DIR]\n                   [--threads\
+  \ THREADS] [--verbose]\n                   reads data\n\nRuns full metalign pipeline\
+  \ on input reads file(s).\n\npositional arguments:\n  reads                 Path\
+  \ to reads file.\n  data                  Path to data/ directory with the files\
+  \ from\n                        setup_data.sh\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --cutoff CUTOFF       CMash cutoff\
+  \ value. Default is 0.01.\n  --db_dir DB_DIR       Directory with all organism files\
+  \ in the full\n                        database.\n  --dbinfo_in DBINFO_IN\n    \
+  \                    Location of db_info file. Default: data/db_info.txt\n  --keep_temp_files\
+  \     Retain KMC files after this script finishes.\n  --input_type {fastq,fasta,AUTO}\n\
+  \                        Type of input file (fastq/fasta). Default: try to\n   \
+  \                     auto-determine\n  --length_normalize    Normalize abundances\
+  \ by genome length.\n  --low_mem             Run in low memory mode, with inexact\
+  \ multimapped\n                        processing.\n  --min_abundance MIN_ABUNDANCE\n\
+  \                        Minimum abundance for a taxa to be included in the\n  \
+  \                      results. Default: 10^(-4).\n  --no_quantify_unmapped\n  \
+  \                      Do not factor in unmapped reads in abundance\n          \
+  \              estimation.\n  --output OUTPUT       Output abundances file. Default:\
+  \ abundances.tsv\n  --pct_id PCT_ID       Minimum percent identity from reference\
+  \ to count a\n                        hit.\n  --precise             Run in precise\
+  \ mode. Overwrites --read_cutoff and\n                        --min_abundance to\
+  \ 100 and 0.1.\n  --rank_renormalize    Renormalize abundances to 100 pct. at each\
+  \ rank, e.g\n                        if an organism has a species but not genus\
+  \ label.\n  --read_cutoff READ_CUTOFF\n                        Number of reads to\
+  \ count an organism as present.\n  --sampleID SAMPLEID   Sample ID for output. Defaults\
+  \ to input file name(s).\n  --sensitive           Run in sensitive mode. Sets --cutoff\
+  \ value to 0.0.\n  --strain_level        Profile strains (off by default).\n  --temp_dir\
+  \ TEMP_DIR   Directory to write temporary files to.\n  --threads THREADS     Number\
+  \ of compute threads for Minimap2/KMC. Default: 4\n  --verbose             Print\
+  \ verbose output.\n"
+generated_using:
+- --help

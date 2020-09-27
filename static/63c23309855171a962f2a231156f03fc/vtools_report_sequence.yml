@@ -1,0 +1,242 @@
+!Command
+command:
+- vtools_report
+- sequence
+positional:
+- !Positional
+  description: "One or more chromosome regions in the format of\nchr:start-end (e.g.\
+    \ chr21:33,031,597-33,041,570),\nField:Value from a region-based annotation database\n\
+    (e.g. refGene.name2:TRIM2 or\nrefGene_exon.name:NM_000947), or set options of\n\
+    several regions (&, |, -, and ^ for intersection,\nunion, difference, and symmetric\
+    \ difference). Several\nregions will be printed if the name matches more than\n\
+    one regions. Chromosome positions are 1-based and are\ninclusive at both ends\
+    \ so the chromosome region has a\nlength of end-start+1 bp. A reversed complementary\n\
+    sequence will be outputted if starting position is\nafter the ending position."
+  position: 0
+  name: regions
+  optional: false
+named:
+- !Flag
+  description: "[BUILD]       Output sequence at specified build of reference\ngenome.\
+    \ The primary reference genome of the project\nwill be used if by default."
+  synonyms:
+  - --build
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[{left,right}]\nIf specified, add position of the first or last\n\
+    basepair of each line to the left or right of the\nline, and insert a space at\
+    \ every 10 basepair"
+  synonyms:
+  - --numbered
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of characters (excluding space and leading\nnumbers) per line.\
+    \ Default to 70 in regular and 60 in\nnumbered format."
+  synonyms:
+  - --char_per_line
+  - --char-per-line
+  args: !SimpleFlagArg
+    name: CHAR_PER_LINE
+  optional: true
+- !Flag
+  description: "[GENE [GENE ...]]\nTranscribe DNA sequence into RNA sequence. variant\n\
+    tools will look in the refGene database, find all\ngenes that overlap with the\
+    \ region, locate exons and\ncoding regions, transcribe the DNA sequence to RNA\n\
+    sequence (basically discard introns, and complement if\non reverse strand). The\
+    \ complete mRNA sequence will be\nprinted regardless of the bounaries of specified\n\
+    regions. If one or more names (refGene.name) are\nspecified, only specified genes\
+    \ will be translated."
+  synonyms:
+  - --transcribe
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print U for T for RNA sequence. Otherwise use T.
+  synonyms:
+  - --TtoU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[GENE [GENE ...]]\nTranslate DNA sequence into protein sequence. variant\n\
+    tools will look in the refGene database, find all\ngenes that overlap with the\
+    \ region, locate exons and\ncoding regions, transcribe and translate the DNA\n\
+    sequence to protein sequence. The complete protein\nsequence will be printed regardless\
+    \ of the boundaries\nof specified regions. If one or more names\n(refGene.name)\
+    \ are specified, only specified genes\nwill be translated."
+  synonyms:
+  - --translate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[MARK [MARK ...]]\nMark a location (--mark chr pos), a variant (--mark\n\
+    chr pos ref alt), a region (e.g.\nrefGene_exon.name:NM_000947), or a particular\
+    \ sequence\n(e.g. TCGGA) in red in the output. If a variant is\nspecified, the\
+    \ changed nucleotide or amino acid will\nbe printed. Currently only single nucleotide\n\
+    polymorphisms are supported."
+  synonyms:
+  - --mark
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, also try to mark the complement of the\nspecified sequence"
+  synonyms:
+  - --mark_complement
+  - --mark-complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, also try to mark the reverse sequence of the\nspecified sequence.\
+    \ If both mark_complemnt and\nmark_reverse are set, four different sequences will\
+    \ be\nsearched."
+  synonyms:
+  - --mark_reverse
+  - --mark-reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, only display the first transcript of RNA or\nProtein sequence"
+  synonyms:
+  - --first_transcript
+  - --first-transcript
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Put transcript name before transcript
+  synonyms:
+  - --show_transcript
+  - --show-transcript
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[MARKED_REGION [MARKED_REGION ...]], --marked-region [MARKED_REGION\
+    \ [MARKED_REGION ...]]\nIf set to a number or pair of number, print only n bp\n\
+    to the left and m (m=n if only one number is\nspecified) of the marked region.\
+    \ The sequence itself\nis no longer marked. This option is not yet supported\n\
+    in all combinations of options."
+  synonyms:
+  - --marked_region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, only display regions with marked variants or\nsequences"
+  synonyms:
+  - --hide_unmatched
+  - --hide-unmatched
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, user input is zero based and will be\ntranslated to 1-based\
+    \ coordinates before query. The\noutput is always 1-based"
+  synonyms:
+  - --zero_based
+  - --zero-based
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools_report sequence [-h] [--build [BUILD]]\n               \
+  \               [--numbered [{left,right}]]\n                              [--char_per_line\
+  \ CHAR_PER_LINE]\n                              [--transcribe [GENE [GENE ...]]]\
+  \ [--TtoU]\n                              [--translate [GENE [GENE ...]]]\n    \
+  \                          [--mark [MARK [MARK ...]]] [--mark_complement]\n    \
+  \                          [--mark_reverse] [--first_transcript]\n             \
+  \                 [--show_transcript]\n                              [--marked_region\
+  \ [MARKED_REGION [MARKED_REGION ...]]]\n                              [--hide_unmatched]\
+  \ [--zero_based] [-v {0,1,2,3}]\n                              regions [regions\
+  \ ...]\n\npositional arguments:\n  regions               One or more chromosome\
+  \ regions in the format of\n                        chr:start-end (e.g. chr21:33,031,597-33,041,570),\n\
+  \                        Field:Value from a region-based annotation database\n \
+  \                       (e.g. refGene.name2:TRIM2 or\n                        refGene_exon.name:NM_000947),\
+  \ or set options of\n                        several regions (&, |, -, and ^ for\
+  \ intersection,\n                        union, difference, and symmetric difference).\
+  \ Several\n                        regions will be printed if the name matches more\
+  \ than\n                        one regions. Chromosome positions are 1-based and\
+  \ are\n                        inclusive at both ends so the chromosome region has\
+  \ a\n                        length of end-start+1 bp. A reversed complementary\n\
+  \                        sequence will be outputted if starting position is\n  \
+  \                      after the ending position.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --build [BUILD]       Output\
+  \ sequence at specified build of reference\n                        genome. The\
+  \ primary reference genome of the project\n                        will be used\
+  \ if by default.\n  --numbered [{left,right}]\n                        If specified,\
+  \ add position of the first or last\n                        basepair of each line\
+  \ to the left or right of the\n                        line, and insert a space\
+  \ at every 10 basepair\n  --char_per_line CHAR_PER_LINE, --char-per-line CHAR_PER_LINE\n\
+  \                        Number of characters (excluding space and leading\n   \
+  \                     numbers) per line. Default to 70 in regular and 60 in\n  \
+  \                      numbered format.\n  --transcribe [GENE [GENE ...]]\n    \
+  \                    Transcribe DNA sequence into RNA sequence. variant\n      \
+  \                  tools will look in the refGene database, find all\n         \
+  \               genes that overlap with the region, locate exons and\n         \
+  \               coding regions, transcribe the DNA sequence to RNA\n           \
+  \             sequence (basically discard introns, and complement if\n         \
+  \               on reverse strand). The complete mRNA sequence will be\n       \
+  \                 printed regardless of the bounaries of specified\n           \
+  \             regions. If one or more names (refGene.name) are\n               \
+  \         specified, only specified genes will be translated.\n  --TtoU        \
+  \        Print U for T for RNA sequence. Otherwise use T.\n  --translate [GENE [GENE\
+  \ ...]]\n                        Translate DNA sequence into protein sequence. variant\n\
+  \                        tools will look in the refGene database, find all\n   \
+  \                     genes that overlap with the region, locate exons and\n   \
+  \                     coding regions, transcribe and translate the DNA\n       \
+  \                 sequence to protein sequence. The complete protein\n         \
+  \               sequence will be printed regardless of the boundaries\n        \
+  \                of specified regions. If one or more names\n                  \
+  \      (refGene.name) are specified, only specified genes\n                    \
+  \    will be translated.\n  --mark [MARK [MARK ...]]\n                        Mark\
+  \ a location (--mark chr pos), a variant (--mark\n                        chr pos\
+  \ ref alt), a region (e.g.\n                        refGene_exon.name:NM_000947),\
+  \ or a particular sequence\n                        (e.g. TCGGA) in red in the output.\
+  \ If a variant is\n                        specified, the changed nucleotide or\
+  \ amino acid will\n                        be printed. Currently only single nucleotide\n\
+  \                        polymorphisms are supported.\n  --mark_complement, --mark-complement\n\
+  \                        If set, also try to mark the complement of the\n      \
+  \                  specified sequence\n  --mark_reverse, --mark-reverse\n      \
+  \                  If set, also try to mark the reverse sequence of the\n      \
+  \                  specified sequence. If both mark_complemnt and\n            \
+  \            mark_reverse are set, four different sequences will be\n          \
+  \              searched.\n  --first_transcript, --first-transcript\n           \
+  \             If set, only display the first transcript of RNA or\n            \
+  \            Protein sequence\n  --show_transcript, --show-transcript\n        \
+  \                Put transcript name before transcript\n  --marked_region [MARKED_REGION\
+  \ [MARKED_REGION ...]], --marked-region [MARKED_REGION [MARKED_REGION ...]]\n  \
+  \                      If set to a number or pair of number, print only n bp\n \
+  \                       to the left and m (m=n if only one number is\n         \
+  \               specified) of the marked region. The sequence itself\n         \
+  \               is no longer marked. This option is not yet supported\n        \
+  \                in all combinations of options.\n  --hide_unmatched, --hide-unmatched\n\
+  \                        If set, only display regions with marked variants or\n\
+  \                        sequences\n  --zero_based, --zero-based\n             \
+  \           If set, user input is zero based and will be\n                     \
+  \   translated to 1-based coordinates before query. The\n                      \
+  \  output is always 1-based\n  -v {0,1,2,3}, --verbosity {0,1,2,3}\n           \
+  \             Output error and warning (0), info (1), debug (2) and\n          \
+  \              trace (3) information to standard output (default to\n          \
+  \              1).\n"
+generated_using:
+- --help

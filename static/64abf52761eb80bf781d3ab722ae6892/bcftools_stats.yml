@@ -1,0 +1,209 @@
+!Command
+command:
+- bcftools
+- stats
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: A.vcf.gz
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: B.vcf.gz
+  optional: true
+named:
+- !Flag
+  description: allele frequency bins, a list (0.1,0.5,1) or a file (0.1\n0.5\n1)
+  synonyms:
+  - --af-bins
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: allele frequency tag to use, by default estimated from AN,AC or GT
+  synonyms:
+  - --af-tag
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: include only 1st allele at multiallelic sites
+  synonyms:
+  - '-1'
+  - --1st-allele-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: treat as identical records with <snps|indels|both|all|some|none>, see
+    man page for details [none]
+  synonyms:
+  - -c
+  - --collapse
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: '<int,int,int>          depth distribution: min,max,bin size [0,500,1]'
+  synonyms:
+  - -d
+  - --depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: exclude sites for which the expression is true (see man page for details)
+  synonyms:
+  - -e
+  - --exclude
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: tab-delimited file with exons for indel frameshifts (chr,from,to; 1-based,
+    inclusive, bgzip compressed)
+  synonyms:
+  - -E
+  - --exons
+  args: !SimpleFlagArg
+    name: file.gz
+  optional: true
+- !Flag
+  description: require at least one of the listed FILTER strings (e.g. "PASS,.")
+  synonyms:
+  - -f
+  - --apply-filters
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: faidx indexed reference sequence file to determine INDEL context
+  synonyms:
+  - -F
+  - --fasta-ref
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: select sites for which the expression is true (see man page for details)
+  synonyms:
+  - -i
+  - --include
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: collect stats for sites with ID separately (known vs novel)
+  synonyms:
+  - -I
+  - --split-by-ID
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: restrict to comma-separated list of regions
+  synonyms:
+  - -r
+  - --regions
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: restrict to regions listed in a file
+  synonyms:
+  - -R
+  - --regions-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: list of samples for sample stats, "-" to include all samples
+  synonyms:
+  - -s
+  - --samples
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: file of samples to include
+  synonyms:
+  - -S
+  - --samples-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: similar to -r but streams rather than index-jumps
+  synonyms:
+  - -t
+  - --targets
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: similar to -R but streams rather than index-jumps
+  synonyms:
+  - -T
+  - --targets-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: <TAG[:min:max:n]>  collect Ts/Tv stats for any tag using the given
+    binning [0:1:100]
+  synonyms:
+  - -u
+  - --user-tstv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use multithreading with <int> worker threads [0]
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: produce verbose per-site and per-sample output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout:   Parses VCF or BCF and produces stats which can be plotted using\
+  \ plot-vcfstats.\n         When two files are given, the program generates separate\
+  \ stats for intersection\n         and the complements. By default only sites are\
+  \ compared, -s/-S must given to include\n         also sample columns.\nUsage: \
+  \  bcftools stats [options] <A.vcf.gz> [<B.vcf.gz>]\n\nOptions:\n        --af-bins\
+  \ <list>               allele frequency bins, a list (0.1,0.5,1) or a file (0.1\\\
+  n0.5\\n1)\n        --af-tag <string>              allele frequency tag to use, by\
+  \ default estimated from AN,AC or GT\n    -1, --1st-allele-only              include\
+  \ only 1st allele at multiallelic sites\n    -c, --collapse <string>           \
+  \ treat as identical records with <snps|indels|both|all|some|none>, see man page\
+  \ for details [none]\n    -d, --depth <int,int,int>          depth distribution:\
+  \ min,max,bin size [0,500,1]\n    -e, --exclude <expr>               exclude sites\
+  \ for which the expression is true (see man page for details)\n    -E, --exons <file.gz>\
+  \              tab-delimited file with exons for indel frameshifts (chr,from,to;\
+  \ 1-based, inclusive, bgzip compressed)\n    -f, --apply-filters <list>        \
+  \ require at least one of the listed FILTER strings (e.g. \"PASS,.\")\n    -F, --fasta-ref\
+  \ <file>             faidx indexed reference sequence file to determine INDEL context\n\
+  \    -i, --include <expr>               select sites for which the expression is\
+  \ true (see man page for details)\n    -I, --split-by-ID                  collect\
+  \ stats for sites with ID separately (known vs novel)\n    -r, --regions <region>\
+  \             restrict to comma-separated list of regions\n    -R, --regions-file\
+  \ <file>          restrict to regions listed in a file\n    -s, --samples <list>\
+  \               list of samples for sample stats, \"-\" to include all samples\n\
+  \    -S, --samples-file <file>          file of samples to include\n    -t, --targets\
+  \ <region>             similar to -r but streams rather than index-jumps\n    -T,\
+  \ --targets-file <file>          similar to -R but streams rather than index-jumps\n\
+  \    -u, --user-tstv <TAG[:min:max:n]>  collect Ts/Tv stats for any tag using the\
+  \ given binning [0:1:100]\n        --threads <int>                use multithreading\
+  \ with <int> worker threads [0]\n    -v, --verbose                      produce\
+  \ verbose per-site and per-sample output\n\n"
+generated_using:
+- --help

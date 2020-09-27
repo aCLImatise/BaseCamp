@@ -1,0 +1,72 @@
+!Command
+command:
+- bcbio_fastq_umi_prep.py
+- single
+positional:
+- !Positional
+  description: "Base name for output files -- you get\n<base_name>_R1.fq.gz"
+  position: 0
+  name: out_base
+  optional: false
+- !Positional
+  description: Input fastq, read 1
+  position: 1
+  name: read1_fq
+  optional: false
+- !Positional
+  description: Input fastq, read 2
+  position: 2
+  name: read2_fq
+  optional: false
+- !Positional
+  description: Input fastq, UMIs
+  position: 3
+  name: umi_fq
+  optional: false
+named:
+- !Flag
+  description: Number of cores to use for parallel bgzip
+  synonyms:
+  - -c
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: Duplex read 1 tag -- bases to trim from 5' end
+  synonyms:
+  - --tag1
+  args: !SimpleFlagArg
+    name: TAG1
+  optional: true
+- !Flag
+  description: Duplex read 2 tag -- bases to trim from 5' end
+  synonyms:
+  - --tag2
+  args: !SimpleFlagArg
+    name: TAG2
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: bcbio_fastq_umi_prep.py single [-h] [-c CORES] [--tag1 TAG1]\n\
+  \                                      [--tag2 TAG2]\n                         \
+  \             out_base read1_fq read2_fq [umi_fq]\n\npositional arguments:\n  out_base\
+  \              Base name for output files -- you get\n                        <base_name>_R1.fq.gz\n\
+  \  read1_fq              Input fastq, read 1\n  read2_fq              Input fastq,\
+  \ read 2\n  umi_fq                Input fastq, UMIs\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -c CORES, --cores CORES\n\
+  \                        Number of cores to use for parallel bgzip\n  --tag1 TAG1\
+  \           Duplex read 1 tag -- bases to trim from 5' end\n  --tag2 TAG2      \
+  \     Duplex read 2 tag -- bases to trim from 5' end\n"
+generated_using:
+- --help

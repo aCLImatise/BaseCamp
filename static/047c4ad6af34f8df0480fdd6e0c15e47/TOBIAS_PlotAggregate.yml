@@ -1,0 +1,189 @@
+!Command
+command:
+- TOBIAS
+- PlotAggregate
+positional: []
+named:
+- !Flag
+  description: '[<bed> [<bed> ...]]           TFBS sites (*required)'
+  synonyms:
+  - --TFBS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[<bigwig> [<bigwig> ...]]  Signals in bigwig format (*required)'
+  synonyms:
+  - --signals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[<bed> [<bed> ...]]        Regions to overlap with TFBS (optional)'
+  synonyms:
+  - --regions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[<bed> [<bed> ...]]      Only plot sites overlapping whitelist (optional)'
+  synonyms:
+  - --whitelist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[<bed> [<bed> ...]]      Exclude sites overlapping blacklist (optional)'
+  synonyms:
+  - --blacklist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Path to output (default: TOBIAS_aggregate.pdf)'
+  synonyms:
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Title of plot (default: "Aggregated signals")'
+  synonyms:
+  - --title
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Flanking basepairs (+/-) to show in plot (counted\nfrom middle of\
+    \ the TFBS) (default: 60)"
+  synonyms:
+  - --flank
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ [ ...]]              Labels used for each TFBS file (default: prefix\
+    \ of\neach --TFBS)"
+  synonyms:
+  - --TFBS-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ [ ...]]            Labels used for each signal file (default: prefix\n\
+    of each --signals)"
+  synonyms:
+  - --signal-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ [ ...]]            Labels used for each regions file (default: prefix\n\
+    of each --regions)"
+  synonyms:
+  - --region-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Share y-axis range across plots\n(none/signals/sites/both). Use \"\
+    --share-y signals\"\nif bigwig signals have similar ranges. Use \"--\nshare_y\
+    \ sites\" if sites per bigwig are comparable,\nbut bigwigs themselves aren't comparable\
+    \ (default:\nnone)"
+  synonyms:
+  - --share-y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Normalize the aggregate signal(s) to be between 0-1\n(default: the\
+    \ true range of values is shown)"
+  synonyms:
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Negate overlap with regions
+  synonyms:
+  - --negate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Smooth output signal by taking the mean of <smooth>\nbp windows (default:\
+    \ 1 (no smooth)"
+  synonyms:
+  - --smooth
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Log transform the signals before aggregation
+  synonyms:
+  - --log-transform
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Plot TFBS boundaries (Note: estimated from first\nregion in each --TFBS)"
+  synonyms:
+  - --plot-boundaries
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show signals on x-axis and TFBSs on y-axis\n(default: signal is on\
+    \ y-axis)"
+  synonyms:
+  - --signal-on-x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Value between 0-1 indicating the percentile of\nregions to include,\
+    \ e.g. 0.99 to remove the sites\nwith 1% highest values (default: 1)"
+  synonyms:
+  - --remove-outliers
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Level of output logging (0: silent, 1:\nerrors/warnings, 2: info,\
+    \ 3: stats, 4: debug, 5:\nspam) (default: 3)\n"
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "__________________________________________________________________________________________\n\
+  \n                                  TOBIAS ~ PlotAggregate                     \
+  \             \n__________________________________________________________________________________________\n\
+  \nInput / output arguments:\n  --TFBS [<bed> [<bed> ...]]           TFBS sites (*required)\n\
+  \  --signals [<bigwig> [<bigwig> ...]]  Signals in bigwig format (*required)\n \
+  \ --regions [<bed> [<bed> ...]]        Regions to overlap with TFBS (optional)\n\
+  \  --whitelist [<bed> [<bed> ...]]      Only plot sites overlapping whitelist (optional)\n\
+  \  --blacklist [<bed> [<bed> ...]]      Exclude sites overlapping blacklist (optional)\n\
+  \  --output                             Path to output (default: TOBIAS_aggregate.pdf)\n\
+  \nPlot arguments:\n  --title                              Title of plot (default:\
+  \ \"Aggregated signals\")\n  --flank                              Flanking basepairs\
+  \ (+/-) to show in plot (counted\n                                       from middle\
+  \ of the TFBS) (default: 60)\n  --TFBS-labels [ [ ...]]              Labels used\
+  \ for each TFBS file (default: prefix of\n                                     \
+  \  each --TFBS)\n  --signal-labels [ [ ...]]            Labels used for each signal\
+  \ file (default: prefix\n                                       of each --signals)\n\
+  \  --region-labels [ [ ...]]            Labels used for each regions file (default:\
+  \ prefix\n                                       of each --regions)\n  --share-y\
+  \                            Share y-axis range across plots\n                 \
+  \                      (none/signals/sites/both). Use \"--share-y signals\"\n  \
+  \                                     if bigwig signals have similar ranges. Use\
+  \ \"--\n                                       share_y sites\" if sites per bigwig\
+  \ are comparable,\n                                       but bigwigs themselves\
+  \ aren't comparable (default:\n                                       none)\n  --normalize\
+  \                          Normalize the aggregate signal(s) to be between 0-1\n\
+  \                                       (default: the true range of values is shown)\n\
+  \  --negate                             Negate overlap with regions\n  --smooth\
+  \ <int>                       Smooth output signal by taking the mean of <smooth>\n\
+  \                                       bp windows (default: 1 (no smooth)\n  --log-transform\
+  \                      Log transform the signals before aggregation\n  --plot-boundaries\
+  \                    Plot TFBS boundaries (Note: estimated from first\n        \
+  \                               region in each --TFBS)\n  --signal-on-x        \
+  \                Show signals on x-axis and TFBSs on y-axis\n                  \
+  \                     (default: signal is on y-axis)\n  --remove-outliers <float>\
+  \            Value between 0-1 indicating the percentile of\n                  \
+  \                     regions to include, e.g. 0.99 to remove the sites\n      \
+  \                                 with 1% highest values (default: 1)\n\nRun arguments:\n\
+  \  --verbosity <int>                    Level of output logging (0: silent, 1:\n\
+  \                                       errors/warnings, 2: info, 3: stats, 4: debug,\
+  \ 5:\n                                       spam) (default: 3)\n"
+generated_using:
+- --help

@@ -1,0 +1,133 @@
+!Command
+command:
+- checkm
+- coding_plot
+positional:
+- !Positional
+  description: directory specified during qa command
+  position: 0
+  name: results_dir
+  optional: false
+- !Positional
+  description: directory containing bins to plot (fasta format)
+  position: 1
+  name: bin_dir
+  optional: false
+- !Positional
+  description: directory to hold plots
+  position: 2
+  name: output_dir
+  optional: false
+- !Positional
+  description: reference distribution(s) to plot; integer between 0 and 100
+  position: 3
+  name: dist_value
+  optional: false
+named:
+- !Flag
+  description: 'desired image type (default: png)'
+  synonyms:
+  - --image_type
+  args: !ChoiceFlagArg
+    choices: !!set
+      pdf:
+      ps:
+      png:
+      svg:
+      eps:
+  optional: true
+- !Flag
+  description: 'desired DPI of output image (default: 600)'
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: DPI
+  optional: true
+- !Flag
+  description: 'Desired font size (default: 8)'
+  synonyms:
+  - --font_size
+  args: !SimpleFlagArg
+    name: FONT_SIZE
+  optional: true
+- !Flag
+  description: 'extension of bins (other files in directory are ignored) (default:
+    fna)'
+  synonyms:
+  - -x
+  - --extension
+  args: !SimpleFlagArg
+    name: EXTENSION
+  optional: true
+- !Flag
+  description: 'width of output image (default: 6.5)'
+  synonyms:
+  - --width
+  args: !SimpleFlagArg
+    name: WIDTH
+  optional: true
+- !Flag
+  description: 'height of output image (default: 3.5)'
+  synonyms:
+  - --height
+  args: !SimpleFlagArg
+    name: HEIGHT
+  optional: true
+- !Flag
+  description: 'window size used to calculate CD histogram (default: 10000)'
+  synonyms:
+  - -w
+  - --cd_window_size
+  args: !SimpleFlagArg
+    name: CD_WINDOW_SIZE
+  optional: true
+- !Flag
+  description: 'width of CD bars in histogram (default: 0.01)'
+  synonyms:
+  - -b
+  - --cd_bin_width
+  args: !SimpleFlagArg
+    name: CD_BIN_WIDTH
+  optional: true
+- !Flag
+  description: suppress console output
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: checkm coding_plot [-h] [--image_type {eps,pdf,png,ps,svg}] [--dpi\
+  \ DPI]\n                          [--font_size FONT_SIZE] [-x EXTENSION]\n     \
+  \                     [--width WIDTH] [--height HEIGHT]\n                      \
+  \    [-w CD_WINDOW_SIZE] [-b CD_BIN_WIDTH] [-q]\n                          results_dir\
+  \ bin_dir output_dir dist_value\n                          [dist_value ...]\n\n\
+  Create coding density (CD) histogram and delta-CD plot.\n\npositional arguments:\n\
+  \  results_dir           directory specified during qa command\n  bin_dir      \
+  \         directory containing bins to plot (fasta format)\n  output_dir       \
+  \     directory to hold plots\n  dist_value            reference distribution(s)\
+  \ to plot; integer between 0 and 100\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  --image_type {eps,pdf,png,ps,svg}\n  \
+  \                      desired image type (default: png)\n  --dpi DPI          \
+  \   desired DPI of output image (default: 600)\n  --font_size FONT_SIZE\n      \
+  \                  Desired font size (default: 8)\n  -x, --extension EXTENSION\n\
+  \                        extension of bins (other files in directory are ignored)\
+  \ (default: fna)\n  --width WIDTH         width of output image (default: 6.5)\n\
+  \  --height HEIGHT       height of output image (default: 3.5)\n  -w, --cd_window_size\
+  \ CD_WINDOW_SIZE\n                        window size used to calculate CD histogram\
+  \ (default: 10000)\n  -b, --cd_bin_width CD_BIN_WIDTH\n                        width\
+  \ of CD bars in histogram (default: 0.01)\n  -q, --quiet           suppress console\
+  \ output\n\nExample: checkm coding_plot ./output ./bins ./plots 95\n"
+generated_using:
+- --help

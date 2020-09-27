@@ -1,0 +1,200 @@
+!Command
+command:
+- pauvre
+- redwood
+positional:
+- !Positional
+  description: --fileform STRING [STRING ...]
+  position: 0
+  name: higher
+  optional: false
+named:
+- !Flag
+  description: Do not output warnings to stderr
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[{main,rnaseq} ...], --doubled {main,rnaseq} [{main,rnaseq} ...]\n\
+    If your fasta file was doubled to map circularly, use\nthis flag or you may encounter\
+    \ plotting errors.\nAccepts multiple arguments. 'main' is for the sam file\npassed\
+    \ with --sam, 'rnaseq' is for the sam file passed\nwith --rnaseq"
+  synonyms:
+  - -d
+  args: !ChoiceFlagArg
+    choices: !!set
+      rnaseq:
+      main:
+  optional: true
+- !Flag
+  description: Change the dpi from the default 600 if you need it
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: dpi
+  optional: true
+- !Flag
+  description: The input filepath for the gff annotation to plot
+  synonyms:
+  - --gff
+  args: !SimpleFlagArg
+    name: gff
+  optional: true
+- !Flag
+  description: "Interlace the reads so the pileup plot looks better.\nDoesn't work\
+    \ currently"
+  synonyms:
+  - -I
+  - --interlace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "invert the image so that it looks better on a dark\nbackground. DOESN'T\
+    \ DO ANYTHING."
+  synonyms:
+  - -i
+  - --invert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Plot the RNAseq track with a log scale
+  synonyms:
+  - -L
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The input filepath for the bam file to plot. Ideally\nwas plotted\
+    \ with a fasta file that is two copies of\nthe mitochondrial genome concatenated.\
+    \ This should be\nlong reads (ONT, PB) and will be displayed in the\ninterior\
+    \ of the redwood plot."
+  synonyms:
+  - -M
+  - --main_bam
+  args: !SimpleFlagArg
+    name: mainbam
+  optional: true
+- !Flag
+  description: Turn off time stamps in the filename output.
+  synonyms:
+  - --no_timestamp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a base name for the output file(s). The input\nfile base name\
+    \ is the default."
+  synonyms:
+  - -o
+  - --output-base-name
+  args: !SimpleFlagArg
+    name: BASENAME
+  optional: true
+- !Flag
+  description: Query your reads to change plotting options
+  synonyms:
+  - --query
+  args: !RepeatFlagArg
+    name: QUERY
+  optional: true
+- !Flag
+  description: The input filepath for the rnaseq bam file to plot
+  synonyms:
+  - -R
+  - --rnaseq_bam
+  args: !SimpleFlagArg
+    name: rnabam
+  optional: true
+- !Flag
+  description: "This determines where the shortest of the filtered\nreads will appear\
+    \ on the redwood plot: on the outside\nor on the inside? The default option puts\
+    \ the longest\nreads on the outside and the shortest reads on the\ninside."
+  synonyms:
+  - --small_start
+  args: !ChoiceFlagArg
+    choices: !!set
+      inside:
+      outside:
+  optional: true
+- !Flag
+  description: "What value to use to sort the order in which the reads\nare plotted?"
+  synonyms:
+  - --sort
+  args: !ChoiceFlagArg
+    choices: !!set
+      TRULEN:
+      MAPLEN:
+      ALNLEN:
+      POS:
+  optional: true
+- !Flag
+  description: Specify control for the number of ticks.
+  synonyms:
+  - --ticks
+  args: !RepeatFlagArg
+    name: TICKS
+  optional: true
+- !Flag
+  description: "Specify this option if you DON'T want a transparent\nbackground. Default\
+    \ is on.\n"
+  synonyms:
+  - -T
+  - --transparent
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: pauvre redwood [-h] [-q] [-d {main,rnaseq} [{main,rnaseq} ...]]\n\
+  \                      [--dpi dpi] [--fileform STRING [STRING ...]] [--gff gff]\n\
+  \                      [-I] [-i] [-L] [-M mainbam] [--no_timestamp]\n          \
+  \            [-o BASENAME] [--query QUERY [QUERY ...]] [-R rnabam]\n           \
+  \           [--small_start {inside,outside}]\n                      [--sort {ALNLEN,TRULEN,MAPLEN,POS}]\n\
+  \                      [--ticks TICKS [TICKS ...]] [-T]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -q, --quiet        \
+  \   Do not output warnings to stderr\n  -d {main,rnaseq} [{main,rnaseq} ...], --doubled\
+  \ {main,rnaseq} [{main,rnaseq} ...]\n                        If your fasta file\
+  \ was doubled to map circularly, use\n                        this flag or you may\
+  \ encounter plotting errors.\n                        Accepts multiple arguments.\
+  \ 'main' is for the sam file\n                        passed with --sam, 'rnaseq'\
+  \ is for the sam file passed\n                        with --rnaseq\n  --dpi dpi\
+  \             Change the dpi from the default 600 if you need it\n             \
+  \           higher\n  --fileform STRING [STRING ...]\n                        Which\
+  \ output format would you like? Def.=png\n  --gff gff             The input filepath\
+  \ for the gff annotation to plot\n  -I, --interlace       Interlace the reads so\
+  \ the pileup plot looks better.\n                        Doesn't work currently\n\
+  \  -i, --invert          invert the image so that it looks better on a dark\n  \
+  \                      background. DOESN'T DO ANYTHING.\n  -L, --log           \
+  \  Plot the RNAseq track with a log scale\n  -M mainbam, --main_bam mainbam\n  \
+  \                      The input filepath for the bam file to plot. Ideally\n  \
+  \                      was plotted with a fasta file that is two copies of\n   \
+  \                     the mitochondrial genome concatenated. This should be\n  \
+  \                      long reads (ONT, PB) and will be displayed in the\n     \
+  \                   interior of the redwood plot.\n  --no_timestamp        Turn\
+  \ off time stamps in the filename output.\n  -o BASENAME, --output-base-name BASENAME\n\
+  \                        Specify a base name for the output file(s). The input\n\
+  \                        file base name is the default.\n  --query QUERY [QUERY\
+  \ ...]\n                        Query your reads to change plotting options\n  -R\
+  \ rnabam, --rnaseq_bam rnabam\n                        The input filepath for the\
+  \ rnaseq bam file to plot\n  --small_start {inside,outside}\n                  \
+  \      This determines where the shortest of the filtered\n                    \
+  \    reads will appear on the redwood plot: on the outside\n                   \
+  \     or on the inside? The default option puts the longest\n                  \
+  \      reads on the outside and the shortest reads on the\n                    \
+  \    inside.\n  --sort {ALNLEN,TRULEN,MAPLEN,POS}\n                        What\
+  \ value to use to sort the order in which the reads\n                        are\
+  \ plotted?\n  --ticks TICKS [TICKS ...]\n                        Specify control\
+  \ for the number of ticks.\n  -T, --transparent     Specify this option if you DON'T\
+  \ want a transparent\n                        background. Default is on.\n"
+generated_using:
+- --help

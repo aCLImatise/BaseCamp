@@ -1,0 +1,206 @@
+!Command
+command:
+- GWAMA
+positional:
+- !Positional
+  description: '--output {fileroot} or -o  {fileroot} Specify file   '
+  position: 0
+  name: gwama.in
+  optional: false
+named:
+- !Flag
+  description: Use random effect correction
+  synonyms:
+  - --random
+  - -r
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "Use genomic control for\nadjusting studies' result files"
+  synonyms:
+  - --genomic_control
+  - -gc
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "Use  genomic\ncontrol on meta-analysis summary.\n(i.e. results  of\
+    \ meta-\nanalysis are corrected for gc)"
+  synonyms:
+  - --genomic_control_output
+  - -gco
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "Use this option, if trait is\nquantitative (columns BETA & SE).\n\
+    Default is binary trait (columns OR,\nOR95_U, OR_95_L)"
+  synonyms:
+  - --quantitative
+  - -qt
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "or -t {0-1} The p-value threshold\nfor showing direction. Default\
+    \ = 1"
+  synonyms:
+  - --threshold
+  args: !ChoiceFlagArg
+    choices: !!set
+      0-1:
+  optional: true
+- !Flag
+  description: "or -m {filename} Marker position\nfile for chromosome and position\
+    \ info"
+  synonyms:
+  - --map
+  args: !ChoiceFlagArg
+    choices: !!set
+      filename:
+  optional: true
+- !Flag
+  description: "No allele information has been given.\nExpecting always the same EA."
+  synonyms:
+  - --no_alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Allele labes might contain more\nthan single letter. No strand checks."
+  synonyms:
+  - --indel_alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Run gender-differentiated and gender-\nheterogeneity analysis. Gender\
+    \ info\nmust be provided in filelist file.\n(second column after file names is\n\
+    either M or F) More info in tutorial."
+  synonyms:
+  - --sex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set a filtering based on column\nheader. It needs 3 arguments: column\n\
+    name, equation [>,<,>=,<=,==,!=],\nfilter value. Multiple filters can be\nset."
+  synonyms:
+  - --filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to marker name col
+  synonyms:
+  - --name_marker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to strand column
+  synonyms:
+  - --name_strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to sample size col
+  synonyms:
+  - --name_n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to EAF column
+  synonyms:
+  - --name_eaf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to beta column
+  synonyms:
+  - --name_beta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to std. err. col
+  synonyms:
+  - --name_se
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to OR column
+  synonyms:
+  - --name_or
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to OR 95L column
+  synonyms:
+  - --name_or_95l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alternative header to OR 95U column
+  synonyms:
+  - --name_or_95u
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help
+  synonyms:
+  - --help
+  - -h
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print GWAMA version number
+  synonyms:
+  - --version
+  - -v
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+help_text: "\n@----------------------------------------------------------@\n|    \
+  \  GWAMA        |      v2.2.2     |    May, 2010       |\n|----------------------------------------------------------|\n\
+  |           (C) 2008 Reedik Magi & Andrew P Morris         |\n|                \
+  \    BSD 3-Clause License                  |\n|----------------------------------------------------------|\n\
+  |  For documentation, citation & bug-report instructions:  |\n|              http://www.well.ox.ac.uk/GWAMA/\
+  \             |\n@----------------------------------------------------------@\n\n\
+  \nCommand line options:\n\nGWAMA --filelist {filename} or -i {filename} Specify\
+  \     \n                    studies' result files. Default =     \n            \
+  \        gwama.in                             \n\n    --output {fileroot} or -o\
+  \  {fileroot} Specify file   \n                    root for output of analysis.\
+  \ Default \n                    <gwama> (gwama.out)                  \n\n    --random\
+  \ or -r  Use random effect correction         \n\n    --genomic_control or -gc \
+  \ Use genomic control for    \n                    adjusting studies' result files\
+  \      \n\n    --genomic_control_output or -gco      Use  genomic   \n         \
+  \           control on meta-analysis summary.    \n                    (i.e. results\
+  \  of meta-              \n                    analysis are corrected for gc)  \
+  \     \n\n    --quantitative or -qt    Use this option, if trait is\n          \
+  \          quantitative (columns BETA & SE).    \n                    Default is\
+  \ binary trait (columns OR, \n                    OR95_U, OR_95_L)             \
+  \        \n\n    --threshold {0-1} or -t {0-1} The p-value threshold  \n       \
+  \             for showing direction. Default = 1   \n\n    --map {filename} or -m\
+  \ {filename} Marker position    \n                    file for chromosome and position\
+  \ info\n\n    --no_alleles    No allele information has been given.\n          \
+  \          Expecting always the same EA.        \n\n    --indel_alleles   Allele\
+  \ labes might contain more    \n                    than single letter. No strand\
+  \ checks.\n\n    --sex           Run gender-differentiated and gender-\n       \
+  \             heterogeneity analysis. Gender info  \n                    must be\
+  \ provided in filelist file.   \n                    (second column after file names\
+  \ is   \n                    either M or F) More info in tutorial.\n\n    --filter\
+  \        Set a filtering based on column      \n                    header. It needs\
+  \ 3 arguments: column \n                    name, equation [>,<,>=,<=,==,!=],  \
+  \  \n                    filter value. Multiple filters can be\n               \
+  \     set.                                 \n\n    --name_marker   alternative header\
+  \ to marker name col\n\n    --name_strand   alternative header to strand column\
+  \  \n\n    --name_n        alternative header to sample size col\n\n    --name_eaf\
+  \      alternative header to EAF column     \n\n    --name_beta     alternative\
+  \ header to beta column    \n\n    --name_se       alternative header to std. err.\
+  \ col  \n\n    --name_or\t    alternative header to OR column      \n\n    --name_or_95l\
+  \   alternative header to OR 95L column  \n\n    --name_or_95u   alternative header\
+  \ to OR 95U column  \n\n    --help or -h    Print this help                    \
+  \  \n\n    --version or -v  Print GWAMA version number          \n\n"
+generated_using:
+- --help

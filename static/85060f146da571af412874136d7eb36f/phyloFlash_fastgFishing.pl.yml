@@ -1,0 +1,166 @@
+!Command
+command:
+- phyloFlash_fastgFishing.pl
+positional: []
+named:
+- !Flag
+  description: "Input Fastg file from Megahit or Spades. NB: The de facto Fastg\n\
+    format used by these programs differs from the Fastg standard,\nas described in\
+    \ the Bandage documentation."
+  synonyms:
+  - --fastg
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Input Fasta file, to convert Fastg sequence identifiers to\ncorresponding\
+    \ Fasta sequence IDs.\nIf using MEGAHIT, this is the *.contigs.fa file. For SPAdes\
+    \ this\nis either the scaffolds or contigs file (after repeat\nresolution)."
+  synonyms:
+  - --fasta
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Input Paths file, to convert EDGE to NODE identifiers, if using\n\
+    SPAdes assembler."
+  synonyms:
+  - --paths
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Assembler used. Either \"megahit\" or \"spades\".\nDefault: 'megahit'"
+  synonyms:
+  - --assembler
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "--compare-zip FILE\nIf a targeted assembly of SSU rRNA has already\
+    \ been performed\nfor this library, compare the sequences to those extracted from\n\
+    the metagenome assembly by barrnap.\nThe sequences can be supplied either as a\
+    \ Fasta flie (option\n--compare-ssu) or as a phyloFlash tar.gz archive (option\n\
+    --compare-zip).\nDefault: None."
+  synonyms:
+  - --compare-ssu
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Output file name prefix\nDefault: 'test'"
+  synonyms:
+  - --out
+  - -o
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Do not search for SSU rRNA sequences, instead only report all\nconnected\
+    \ contig clusters above length threshold, regardless of\nwhether they have SSU\
+    \ rRNA or not\nDefault: Off"
+  synonyms:
+  - --clusteronly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum total sequence length of contig cluster to be reported\n(Default:\
+    \ 100000)"
+  synonyms:
+  - --cutoff
+  - -c
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Minimum fraction of SSU sequence to report (parameter passed to\n\
+    the '--reject' option in Barrnap)\nDefault: 0.2"
+  synonyms:
+  - --min-SSU-frac
+  args: !SimpleFlagArg
+    name: NUMERIC
+  optional: true
+- !Flag
+  description: "Logical: Output Fasta files for clusters with total length above\n\
+    cutoff?\nDefault: No"
+  synonyms:
+  - --outfasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of CPUs to use for Barrnap rRNA prediction\nDefault: 8"
+  synonyms:
+  - --CPUs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Path to barrnap executable\nDefault: Use version bundled with phyloFlash"
+  synonyms:
+  - --barnap-path
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Manual page
+  synonyms:
+  - --man
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Brief help message
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: "Report phyloFlash version\n"
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage:\n    ### Megahit assembly\n\n    phyloFlash_fastgFishing.pl --fasta\
+  \ [Fasta] --fastg [Fastg] --out\n    [PREFIX] --assembler megahit\n\n    ### SPAdes\
+  \ assembly\n\n    phyloFlash_fastgFishing.pl --fasta [Fasta] --fastg [Fastg] --paths\n\
+  \    [Paths] --out [PREFIX] --assembler spades\n\n    ### Help\n\n    phyloFlash_fastgFishing.pl\
+  \ --help\n\n    phyloFlash_fastgFishing.pl --man\n\nArguments:\n  Input:\n    --fastg\
+  \ FILE\n            Input Fastg file from Megahit or Spades. NB: The de facto Fastg\n\
+  \            format used by these programs differs from the Fastg standard,\n  \
+  \          as described in the Bandage documentation.\n\n    --fasta FILE\n    \
+  \        Input Fasta file, to convert Fastg sequence identifiers to\n          \
+  \  corresponding Fasta sequence IDs.\n\n            If using MEGAHIT, this is the\
+  \ *.contigs.fa file. For SPAdes this\n            is either the scaffolds or contigs\
+  \ file (after repeat\n            resolution).\n\n    --paths FILE\n           \
+  \ Input Paths file, to convert EDGE to NODE identifiers, if using\n            SPAdes\
+  \ assembler.\n\n    --assembler STRING\n            Assembler used. Either \"megahit\"\
+  \ or \"spades\".\n\n            Default: 'megahit'\n\n    --compare-ssu FILE\n \
+  \   --compare-zip FILE\n            If a targeted assembly of SSU rRNA has already\
+  \ been performed\n            for this library, compare the sequences to those extracted\
+  \ from\n            the metagenome assembly by barrnap.\n\n            The sequences\
+  \ can be supplied either as a Fasta flie (option\n            --compare-ssu) or\
+  \ as a phyloFlash tar.gz archive (option\n            --compare-zip).\n\n      \
+  \      Default: None.\n\n  Output Options:\n    --out|-o STRING\n            Output\
+  \ file name prefix\n\n            Default: 'test'\n\n    --clusteronly\n       \
+  \     Do not search for SSU rRNA sequences, instead only report all\n          \
+  \  connected contig clusters above length threshold, regardless of\n           \
+  \ whether they have SSU rRNA or not\n\n            Default: Off\n\n    --cutoff|-c\
+  \ INTEGER\n            Minimum total sequence length of contig cluster to be reported\n\
+  \            (Default: 100000)\n\n    --min-SSU-frac NUMERIC\n            Minimum\
+  \ fraction of SSU sequence to report (parameter passed to\n            the '--reject'\
+  \ option in Barrnap)\n\n            Default: 0.2\n\n    --outfasta\n           \
+  \ Logical: Output Fasta files for clusters with total length above\n           \
+  \ cutoff?\n\n            Default: No\n\n  Usage Options:\n    --CPUs INTEGER\n \
+  \           Number of CPUs to use for Barrnap rRNA prediction\n\n            Default:\
+  \ 8\n\n    --barnap-path PATH\n            Path to barrnap executable\n\n      \
+  \      Default: Use version bundled with phyloFlash\n\n    --help|-h\n         \
+  \   Brief help message\n\n    --man|-m\n            Manual page\n\n    --version|-v\n\
+  \            Report phyloFlash version\n\n"
+generated_using:
+- --help

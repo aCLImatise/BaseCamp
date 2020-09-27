@@ -1,0 +1,10 @@
+class: CommandLineTool
+id: gapDivider.pl.cwl
+inputs: []
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+cwlVersion: v1.1
+baseCommand:
+- gapDivider.pl

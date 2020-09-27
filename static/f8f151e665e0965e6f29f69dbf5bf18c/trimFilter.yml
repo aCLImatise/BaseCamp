@@ -1,0 +1,218 @@
+!Command
+command:
+- trimFilter
+positional: []
+named:
+- !Flag
+  description: output prefix (with path), optional (default ./out).
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "method used to look for contaminations:\nTREE:  uses a 4-ary tree.\
+    \ Index file optional,\nBLOOM: uses a bloom filter. Index file mandatory."
+  synonyms:
+  - -C
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "NO:       does nothing to low quality reads (default),\nALL:     \
+    \ removes all reads containing at least one low\nquality nucleotide.\nENDS:  \
+    \   trims the ends of the read if their quality is\nbelow the threshold -q,\n\
+    FRAC:     discards a read if the fraction of bases with\nlow quality scores (below\
+    \ -q) is over 5 percent\nor a user defined percentage (-p).\nENDSFRAC: trims the\
+    \ ends and then discards the read if\nthere are more low quality nucleotides than\n\
+    allowed by the option -p.\nGLOBAL:   removes n1 bases on the left and n2 on the\n\
+    right, specified in -g.\nAll reads are discarded if they are shorter than MINL\n\
+    (specified with -m or --minL)."
+  synonyms:
+  - -Q
+  - --trimQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "minimum length allowed for a read before it is discarded\n(default\
+    \ 25)."
+  synonyms:
+  - -m
+  - --minL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fastq input file [*fq|*fq.gz|*fq.bz2], mandatory option.
+  synonyms:
+  - -f
+  - --ifq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'read length: length of the reads, mandatory option.'
+  synonyms:
+  - -l
+  - --length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'gzip output files: yes or no (default yes)'
+  synonyms:
+  - -z
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "input. Three fields separated by colons:\n<ADAPTERS.fa>: fasta file\
+    \ containing adapters,\n<mismatches>: maximum mismatch count allowed,\n<score>:\
+    \ score threshold  for the aligner."
+  synonyms:
+  - -A
+  - --adapter
+  args: !SimpleFlagArg
+    name: adapter
+  optional: true
+- !Flag
+  description: "index input file. To be included with methods to remove.\ncontaminations\
+    \ (TREE, BLOOM). 3 fields separated by colons:\n<INDEX_FILE>: output of makeTree,\
+    \ makeBloom,\n<score>: score threshold to accept a match [0,1],\n[lmer_len]: the\
+    \ length of the lmers to be\nlooked for in the reads [1,READ_LENGTH]."
+  synonyms:
+  - -x
+  - --idx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "fasta input file of potential contaminations.\nTo be included only\
+    \ with method TREE\n(it excludes the option --idx). Otherwise, an\nindex file\
+    \ has to be precomputed and given as parameter\n(see option --idx). 3 fields separated\
+    \ by colons:\n<INPUT.fa>: fasta input file [*fa|*fa.gz|*fa.bz2],\n<score>: score\
+    \ threshold to accept a match [0,1],\n<lmer_len>: depth of the tree: [1,READ_LENGTH].\n\
+    Corresponds to the length of the lmers to be\nlooked for in the reads."
+  synonyms:
+  - -a
+  - --ifa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum quality allowed (int), optional (default 27).
+  synonyms:
+  - -q
+  - --minQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: value of ASCII character representing zero quality (int), optional
+    (default 33).
+  synonyms:
+  - '-0'
+  - --zeroQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "of low quality bases tolerated before\ndiscarding a read (default\
+    \ 5),"
+  synonyms:
+  - -p
+  - --percent
+  args: !SimpleFlagArg
+    name: percentage
+  optional: true
+- !Flag
+  description: "required option if --trimQ GLOBAL is passed. Two int,\nn1:n2, have\
+    \ to be passed specifying the number of bases\nto be globally cut from the left\
+    \ and right, respectively."
+  synonyms:
+  - -g
+  - --global
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "NO:     does nothing to reads containing N's,\nALL:    removes all\
+    \ reads containing N's,\nENDS:   trims ends of reads with N's,\nSTRIPS: looks\
+    \ for the largest substring with no N's.\nAll reads are discarded if they are\
+    \ shorter than the\nsequence length specified by -m/--minL.\n"
+  synonyms:
+  - -N
+  - --trimN
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: prints help dialog.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: package version.
+  synonyms:
+  - -v
+  - --version
+  args: !SimpleFlagArg
+    name: prints
+  optional: true
+help_text: "trimFilter from FastqPuri\nUsage: trimFilter --ifq <INPUT_FILE.fq> --length\
+  \ <READ_LENGTH> \n                  --output [O_PREFIX] --gzip [y|n]\n         \
+  \         --adapter [<ADAPTERS.fa>:<mismatches>:<score>]\n                  --method\
+  \ [TREE|BLOOM] \n                  (--idx [<INDEX_FILE>:<score>:<lmer_len>] |\n\
+  \                   --ifa [<INPUT.fa>:<score>:[lmer_len]])\n                  --trimQ\
+  \ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]\n                  --minL [MINL]  --minQ [MINQ]\
+  \ --zeroQ [ZEROQ]\n                  (--percent [percent] | --global [n1:n2])\n\
+  \                  --trimN [NO|ALL|ENDS|STRIP]  \nReads in a fq file (gz, bz2, z\
+  \ formats also accepted) and removes: \n  * low quality reads,\n  * reads containing\
+  \ N base callings,\n  * reads representing contaminations, belonging to sequences\
+  \ in INPUT.fa\nOutputs 4 [O_PREFIX]_fq.gz files containing: \"good\" reads, discarded\
+  \ \nlow Q reads, discarded reads containing N's, discarded contaminations.\nOptions:\n\
+  \ -v, --version prints package version.\n -h, --help    prints help dialog.\n -f,\
+  \ --ifq     fastq input file [*fq|*fq.gz|*fq.bz2], mandatory option.\n -l, --length\
+  \  read length: length of the reads, mandatory option.\n -o, --output  output prefix\
+  \ (with path), optional (default ./out).\n -z, --gzip    gzip output files: yes\
+  \ or no (default yes)\n -A, --adapter adapter input. Three fields separated by colons:\n\
+  \               <ADAPTERS.fa>: fasta file containing adapters,\n               <mismatches>:\
+  \ maximum mismatch count allowed,\n               <score>: score threshold  for\
+  \ the aligner.\n -x, --idx     index input file. To be included with methods to\
+  \ remove.\n               contaminations (TREE, BLOOM). 3 fields separated by colons:\
+  \ \n               <INDEX_FILE>: output of makeTree, makeBloom,\n              \
+  \ <score>: score threshold to accept a match [0,1],\n               [lmer_len]:\
+  \ the length of the lmers to be \n                        looked for in the reads\
+  \ [1,READ_LENGTH].\n -a, --ifa     fasta input file of potential contaminations.\n\
+  \               To be included only with method TREE\n               (it excludes\
+  \ the option --idx). Otherwise, an\n               index file has to be precomputed\
+  \ and given as parameter\n               (see option --idx). 3 fields separated\
+  \ by colons: \n               <INPUT.fa>: fasta input file [*fa|*fa.gz|*fa.bz2],\n\
+  \               <score>: score threshold to accept a match [0,1],\n            \
+  \   <lmer_len>: depth of the tree: [1,READ_LENGTH]. \n                        Corresponds\
+  \ to the length of the lmers to be \n                        looked for in the reads.\n\
+  \ -C, --method  method used to look for contaminations: \n               TREE: \
+  \ uses a 4-ary tree. Index file optional,\n               BLOOM: uses a bloom filter.\
+  \ Index file mandatory.\n -Q, --trimQ   NO:       does nothing to low quality reads\
+  \ (default),\n               ALL:      removes all reads containing at least one\
+  \ low\n                         quality nucleotide.\n               ENDS:     trims\
+  \ the ends of the read if their quality is\n                         below the threshold\
+  \ -q,\n               FRAC:     discards a read if the fraction of bases with\n\
+  \                         low quality scores (below -q) is over 5 percent\n    \
+  \                     or a user defined percentage (-p).\n               ENDSFRAC:\
+  \ trims the ends and then discards the read if \n                         there\
+  \ are more low quality nucleotides than \n                         allowed by the\
+  \ option -p.\n               GLOBAL:   removes n1 bases on the left and n2 on the\
+  \ \n                         right, specified in -g.\n               All reads are\
+  \ discarded if they are shorter than MINL\n               (specified with -m or\
+  \ --minL).\n -m, --minL    minimum length allowed for a read before it is discarded\n\
+  \               (default 25).\n -q, --minQ    minimum quality allowed (int), optional\
+  \ (default 27).\n -0, --zeroQ   value of ASCII character representing zero quality\
+  \ (int), optional (default 33).\n -p, --percent percentage of low quality bases\
+  \ tolerated before \n               discarding a read (default 5), \n -g, --global\
+  \  required option if --trimQ GLOBAL is passed. Two int,\n               n1:n2,\
+  \ have to be passed specifying the number of bases \n               to be globally\
+  \ cut from the left and right, respectively.\n -N, --trimN   NO:     does nothing\
+  \ to reads containing N's,\n               ALL:    removes all reads containing\
+  \ N's,\n               ENDS:   trims ends of reads with N's,\n               STRIPS:\
+  \ looks for the largest substring with no N's.\n               All reads are discarded\
+  \ if they are shorter than the\n               sequence length specified by -m/--minL.\n"
+generated_using:
+- --help

@@ -1,0 +1,161 @@
+!Command
+command:
+- decoypyrat
+positional: []
+named:
+- !Flag
+  description: "A list of amino acids at which to cleave during\ndigestion. Default\
+    \ = KR"
+  synonyms:
+  - --cleavage_sites
+  - -c
+  args: !SimpleFlagArg
+    name: CSITES
+  optional: true
+- !Flag
+  description: "A list of amino acids at which not to cleave if\nfollowing cleavage\
+    \ site ie. Proline. Default = none"
+  synonyms:
+  - --anti_cleavage_sites
+  - -a
+  args: !SimpleFlagArg
+    name: NOC
+  optional: true
+- !Flag
+  description: "Set cleavage to be c or n terminal of specified\ncleavage sites. Default\
+    \ = c"
+  synonyms:
+  - --cleavage_position
+  - -p
+  args: !ChoiceFlagArg
+    choices: !!set
+      n:
+      c:
+  optional: true
+- !Flag
+  description: "Set minimum length of peptides to compare between\ntarget and decoy.\
+    \ Default = 5"
+  synonyms:
+  - --min_peptide_length
+  - -l
+  args: !SimpleFlagArg
+    name: MINLEN
+  optional: true
+- !Flag
+  description: "Set maximum number of times to shuffle a peptide to\nmake it non-target\
+    \ before failing. Default=100"
+  synonyms:
+  - --max_iterations
+  - -n
+  args: !SimpleFlagArg
+    name: MAXIT
+  optional: true
+- !Flag
+  description: "Turn OFF shuffling of decoy peptides that are in the\ntarget database.\
+    \ Default=false"
+  synonyms:
+  - --do_not_shuffle
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Turn OFF switching of cleavage site with preceding\namino acid. Default=false"
+  synonyms:
+  - --do_not_switch
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set accesion prefix for decoy proteins in output.\nDefault=XXX"
+  synonyms:
+  - --decoy_prefix
+  - -d
+  args: !SimpleFlagArg
+    name: DPREFIX
+  optional: true
+- !Flag
+  description: Set file to write decoy proteins to. Default=decoy.fa
+  synonyms:
+  - --output_fasta
+  - -o
+  args: !SimpleFlagArg
+    name: DOUT
+  optional: true
+- !Flag
+  description: "Set temporary file to write decoys prior to shuffling.\nDefault=tmp.fa"
+  synonyms:
+  - --temp_file
+  - -t
+  args: !SimpleFlagArg
+    name: TOUT
+  optional: true
+- !Flag
+  description: Do not make decoy peptides isobaric. Default=false
+  synonyms:
+  - --no_isobaric
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Slower but uses less memory (does not store decoy\npeptide list).\
+    \ Default=false"
+  synonyms:
+  - --memory_save
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep sequence names in the decoy output. Default=false
+  synonyms:
+  - --keep_names
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: decoypyrat [-h] [--cleavage_sites CSITES] [--anti_cleavage_sites\
+  \ NOC]\n                  [--cleavage_position {c,n}] [--min_peptide_length MINLEN]\n\
+  \                  [--max_iterations MAXIT] [--do_not_shuffle]\n               \
+  \   [--do_not_switch] [--decoy_prefix DPREFIX]\n                  [--output_fasta\
+  \ DOUT] [--temp_file TOUT] [--no_isobaric]\n                  [--memory_save] [--keep_names]\n\
+  \                  *.fasta|*.fa\n\nCreate decoy protein sequences. Each protein\
+  \ is reversed and the cleavage\nsites switched with preceding amino acid. Peptides\
+  \ are checked for existence\nin target sequences if found the tool will attempt\
+  \ to shuffle them.\nJames.Wright@sanger.ac.uk 2015\n\npositional arguments:\n  *.fasta|*.fa\
+  \          FASTA file of target proteins sequences for which to\n              \
+  \          create decoys\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --cleavage_sites CSITES, -c CSITES\n                \
+  \        A list of amino acids at which to cleave during\n                     \
+  \   digestion. Default = KR\n  --anti_cleavage_sites NOC, -a NOC\n             \
+  \           A list of amino acids at which not to cleave if\n                  \
+  \      following cleavage site ie. Proline. Default = none\n  --cleavage_position\
+  \ {c,n}, -p {c,n}\n                        Set cleavage to be c or n terminal of\
+  \ specified\n                        cleavage sites. Default = c\n  --min_peptide_length\
+  \ MINLEN, -l MINLEN\n                        Set minimum length of peptides to compare\
+  \ between\n                        target and decoy. Default = 5\n  --max_iterations\
+  \ MAXIT, -n MAXIT\n                        Set maximum number of times to shuffle\
+  \ a peptide to\n                        make it non-target before failing. Default=100\n\
+  \  --do_not_shuffle, -x  Turn OFF shuffling of decoy peptides that are in the\n\
+  \                        target database. Default=false\n  --do_not_switch, -s \
+  \  Turn OFF switching of cleavage site with preceding\n                        amino\
+  \ acid. Default=false\n  --decoy_prefix DPREFIX, -d DPREFIX\n                  \
+  \      Set accesion prefix for decoy proteins in output.\n                     \
+  \   Default=XXX\n  --output_fasta DOUT, -o DOUT\n                        Set file\
+  \ to write decoy proteins to. Default=decoy.fa\n  --temp_file TOUT, -t TOUT\n  \
+  \                      Set temporary file to write decoys prior to shuffling.\n\
+  \                        Default=tmp.fa\n  --no_isobaric, -i     Do not make decoy\
+  \ peptides isobaric. Default=false\n  --memory_save, -m     Slower but uses less\
+  \ memory (does not store decoy\n                        peptide list). Default=false\n\
+  \  --keep_names, -k      Keep sequence names in the decoy output. Default=false\n"
+generated_using:
+- --help

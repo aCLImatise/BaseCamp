@@ -1,0 +1,97 @@
+!Command
+command:
+- anvi-analyze-synteny
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: NAME
+  optional: false
+named:
+- !Flag
+  description: FILE_PATH [--analyze-unknown-functions]
+  synonyms:
+  - --ngram-window-range
+  - -o
+  args: !SimpleFlagArg
+    name: NGRAM_WINDOW_RANGE
+  optional: true
+- !Flag
+  description: "A two-column TAB-delimited flat text file that lists\nanvi'o contigs\
+    \ databases. The first item in the header\nline should read 'name', and the second\
+    \ should read\n'contigs_db_path'. Each line in the file should\ndescribe a single\
+    \ entry, where the first column is the\nname of the genome (or MAG), and the second\
+    \ column is\nthe anvi'o contigs database generated for this genome."
+  synonyms:
+  - -e
+  - --external-genomes
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: "NAME\nGet functional annotations for a specific annotation\nsource.\
+    \ You can use the flag '--list-annotation-\nsources' to learn about what sources\
+    \ are available."
+  synonyms:
+  - --annotation-source
+  args: !SimpleFlagArg
+    name: SOURCE
+  optional: true
+- !Flag
+  description: File path to store results.
+  synonyms:
+  - -o
+  - --output-file
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: "Provide this flag if you want anvi-analyze-synteny to\ntake into account\
+    \ Ngrams that contain gene calls that\nhave no annotation.\n"
+  synonyms:
+  - --analyze-unknown-functions
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: anvi-analyze-synteny [-h] -e FILE_PATH --annotation-source SOURCE\
+  \ NAME\n                            --ngram-window-range NGRAM_WINDOW_RANGE -o\n\
+  \                            FILE_PATH [--analyze-unknown-functions]\n\nThis program\
+  \ helps you extract synteny patterns from a group of similar loci\nor genomes. This\
+  \ is accomplished by deconstructing contigs into Ngrams (group\nof neighboring genes\
+  \ of which N is the number of genes) of gene functions\nusing a sliding window method.\
+  \ Once completed, anvi'o will export a table with\nNgrams counts for you to work\
+  \ with. By default anvi'o will ignore Ngrams that\ncontain genes without annotations.\
+  \ If you would like to override this, you can\nuse the --analyze-unknown-functions\
+  \ flag.\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n\nEssential INPUT:\n  -e FILE_PATH, --external-genomes FILE_PATH\n     \
+  \                   A two-column TAB-delimited flat text file that lists\n     \
+  \                   anvi'o contigs databases. The first item in the header\n   \
+  \                     line should read 'name', and the second should read\n    \
+  \                    'contigs_db_path'. Each line in the file should\n         \
+  \               describe a single entry, where the first column is the\n       \
+  \                 name of the genome (or MAG), and the second column is\n      \
+  \                  the anvi'o contigs database generated for this genome.\n  --annotation-source\
+  \ SOURCE NAME\n                        Get functional annotations for a specific\
+  \ annotation\n                        source. You can use the flag '--list-annotation-\n\
+  \                        sources' to learn about what sources are available.\n \
+  \ --ngram-window-range NGRAM_WINDOW_RANGE\n                        The range of\
+  \ window sizes of Ngrams to analyze for\n                        synteny patterns.Please\
+  \ format the window-range as x:y\n                        (e.g. Window sizes 2 to\
+  \ 4 would be denoted as: 2:4)\n  -o FILE_PATH, --output-file FILE_PATH\n       \
+  \                 File path to store results.\n\nAdditonal INPUT:\n  --analyze-unknown-functions\n\
+  \                        Provide this flag if you want anvi-analyze-synteny to\n\
+  \                        take into account Ngrams that contain gene calls that\n\
+  \                        have no annotation.\n"
+generated_using:
+- --help

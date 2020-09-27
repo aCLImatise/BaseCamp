@@ -1,0 +1,169 @@
+!Command
+command:
+- macs2
+- bdgdiff
+positional: []
+named:
+- !Flag
+  description: "MACS pileup bedGraph for condition 1. Incompatible\nwith callpeak\
+    \ --SPMR output. REQUIRED"
+  synonyms:
+  - --t1
+  args: !SimpleFlagArg
+    name: T1BDG
+  optional: true
+- !Flag
+  description: "MACS pileup bedGraph for condition 2. Incompatible\nwith callpeak\
+    \ --SPMR output. REQUIRED"
+  synonyms:
+  - --t2
+  args: !SimpleFlagArg
+    name: T2BDG
+  optional: true
+- !Flag
+  description: "MACS control lambda bedGraph for condition 1.\nIncompatible with callpeak\
+    \ --SPMR output. REQUIRED"
+  synonyms:
+  - --c1
+  args: !SimpleFlagArg
+    name: C1BDG
+  optional: true
+- !Flag
+  description: "MACS control lambda bedGraph for condition 2.\nIncompatible with callpeak\
+    \ --SPMR output. REQUIRED"
+  synonyms:
+  - --c2
+  args: !SimpleFlagArg
+    name: C2BDG
+  optional: true
+- !Flag
+  description: 'logLR cutoff. DEFAULT: 3 (likelihood ratio=1000)'
+  synonyms:
+  - -C
+  - --cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: "Minimum length of differential region. Try bigger\nvalue to remove\
+    \ small regions. DEFAULT: 200"
+  synonyms:
+  - -l
+  - --min-len
+  args: !SimpleFlagArg
+    name: MINLEN
+  optional: true
+- !Flag
+  description: "Maximum gap to merge nearby differential regions.\nConsider a wider\
+    \ gap for broad marks. Maximum gap\nshould be smaller than minimum length (-g).\
+    \ DEFAULT:\n100"
+  synonyms:
+  - -g
+  - --max-gap
+  args: !SimpleFlagArg
+    name: MAXGAP
+  optional: true
+- !Flag
+  description: "Sequencing depth (# of non-redundant reads in million)\nfor condition\
+    \ 1. It will be used together with --d2.\nSee description for --d2 below for how\
+    \ to assign them.\nDefault: 1"
+  synonyms:
+  - --d1
+  - --depth1
+  args: !SimpleFlagArg
+    name: DEPTH1
+  optional: true
+- !Flag
+  description: "Sequencing depth (# of non-redundant reads in million)\nfor condition\
+    \ 2. It will be used together with --d1.\nDEPTH1 and DEPTH2 will be used to calculate\
+    \ scaling\nfactor for each sample, to down-scale larger sample to\nthe level of\
+    \ smaller one. For example, while comparing\n10 million condition 1 and 20 million\
+    \ condition 2, use\n--d1 10 --d2 20, then pileup value in bedGraph for\ncondition\
+    \ 2 will be divided by 2. Default: 1"
+  synonyms:
+  - --d2
+  - --depth2
+  args: !SimpleFlagArg
+    name: DEPTH2
+  optional: true
+- !Flag
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "Output file prefix. Actual files will be named as\nPREFIX_cond1.bed,\
+    \ PREFIX_cond2.bed and\nPREFIX_common.bed. Mutually exclusive with -o/--ofile."
+  synonyms:
+  - --o-prefix
+  args: !SimpleFlagArg
+    name: OPREFIX
+  optional: true
+- !Flag
+  description: "OFILE OFILE, --ofile OFILE OFILE OFILE\nOutput filenames. Must give\
+    \ three arguments in order:\n1. file for unique regions in condition 1; 2. file\
+    \ for\nunique regions in condition 2; 3. file for common\nregions in both conditions.\
+    \ Note: mutually exclusive\nwith --o-prefix.\n"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OFILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: macs2 bdgdiff [-h] --t1 T1BDG --t2 T2BDG --c1 C1BDG --c2 C2BDG\n\
+  \                     [-C CUTOFF] [-l MINLEN] [-g MAXGAP] [--d1 DEPTH1]\n      \
+  \               [--d2 DEPTH2] [--outdir OUTDIR]\n                     (--o-prefix\
+  \ OPREFIX | -o OFILE OFILE OFILE)\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n  --t1 T1BDG            MACS pileup bedGraph\
+  \ for condition 1. Incompatible\n                        with callpeak --SPMR output.\
+  \ REQUIRED\n  --t2 T2BDG            MACS pileup bedGraph for condition 2. Incompatible\n\
+  \                        with callpeak --SPMR output. REQUIRED\n  --c1 C1BDG   \
+  \         MACS control lambda bedGraph for condition 1.\n                      \
+  \  Incompatible with callpeak --SPMR output. REQUIRED\n  --c2 C2BDG            MACS\
+  \ control lambda bedGraph for condition 2.\n                        Incompatible\
+  \ with callpeak --SPMR output. REQUIRED\n  -C CUTOFF, --cutoff CUTOFF\n        \
+  \                logLR cutoff. DEFAULT: 3 (likelihood ratio=1000)\n  -l MINLEN,\
+  \ --min-len MINLEN\n                        Minimum length of differential region.\
+  \ Try bigger\n                        value to remove small regions. DEFAULT: 200\n\
+  \  -g MAXGAP, --max-gap MAXGAP\n                        Maximum gap to merge nearby\
+  \ differential regions.\n                        Consider a wider gap for broad\
+  \ marks. Maximum gap\n                        should be smaller than minimum length\
+  \ (-g). DEFAULT:\n                        100\n  --d1 DEPTH1, --depth1 DEPTH1\n\
+  \                        Sequencing depth (# of non-redundant reads in million)\n\
+  \                        for condition 1. It will be used together with --d2.\n\
+  \                        See description for --d2 below for how to assign them.\n\
+  \                        Default: 1\n  --d2 DEPTH2, --depth2 DEPTH2\n          \
+  \              Sequencing depth (# of non-redundant reads in million)\n        \
+  \                for condition 2. It will be used together with --d1.\n        \
+  \                DEPTH1 and DEPTH2 will be used to calculate scaling\n         \
+  \               factor for each sample, to down-scale larger sample to\n       \
+  \                 the level of smaller one. For example, while comparing\n     \
+  \                   10 million condition 1 and 20 million condition 2, use\n   \
+  \                     --d1 10 --d2 20, then pileup value in bedGraph for\n     \
+  \                   condition 2 will be divided by 2. Default: 1\n  --outdir OUTDIR\
+  \       If specified all output files will be written to that\n                \
+  \        directory. Default: the current working directory\n  --o-prefix OPREFIX\
+  \    Output file prefix. Actual files will be named as\n                       \
+  \ PREFIX_cond1.bed, PREFIX_cond2.bed and\n                        PREFIX_common.bed.\
+  \ Mutually exclusive with -o/--ofile.\n  -o OFILE OFILE OFILE, --ofile OFILE OFILE\
+  \ OFILE\n                        Output filenames. Must give three arguments in\
+  \ order:\n                        1. file for unique regions in condition 1; 2.\
+  \ file for\n                        unique regions in condition 2; 3. file for common\n\
+  \                        regions in both conditions. Note: mutually exclusive\n\
+  \                        with --o-prefix.\n"
+generated_using:
+- --help

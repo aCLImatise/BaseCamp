@@ -1,0 +1,216 @@
+!Command
+command:
+- pbvalidate
+positional: []
+named:
+- !Flag
+  description: "Write the log to file. Default(None) will write to\nstdout. (default:\
+    \ None)"
+  synonyms:
+  - --log-file
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: 'Set log level (default: CRITICAL)'
+  synonyms:
+  - --log-level
+  args: !ChoiceFlagArg
+    choices: !!set
+      WARNING:
+      CRITICAL:
+      ERROR:
+      DEBUG:
+      INFO:
+  optional: true
+- !Flag
+  description: 'Alias for setting log level to DEBUG (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Alias for setting log level to CRITICAL to suppress\noutput. (default:\
+    \ False)"
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set the verbosity level. (default: None)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Limits validation to the first 100 records (plus file\nheader); equivalent\
+    \ to --max-records=100 (default:\nFalse)"
+  synonyms:
+  - --quick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Exit after MAX_ERRORS have been recorded (DEFAULT:\ncheck entire file)\
+    \ (default: None)"
+  synonyms:
+  - --max
+  args: !SimpleFlagArg
+    name: MAX_ERRORS
+  optional: true
+- !Flag
+  description: "Exit after MAX_RECORDS have been inspected (DEFAULT:\ncheck entire\
+    \ file) (default: None)"
+  synonyms:
+  - --max-records
+  args: !SimpleFlagArg
+    name: MAX_RECORDS
+  optional: true
+- !Flag
+  description: "Use the specified file type instead of guessing\n(default: None)"
+  synonyms:
+  - --type
+  args: !ChoiceFlagArg
+    choices: !!set
+      Fasta:
+      ContigSet:
+      AlignmentSet:
+      TranscriptSet:
+      ReferenceSet:
+      SubreadSet:
+      BAM:
+      ConsensusAlignmentSet:
+      ConsensusSet:
+      BarcodeSet:
+      GmapReferenceSet:
+  optional: true
+- !Flag
+  description: 'Require index files (.fai or .pbi) (default: False)'
+  synonyms:
+  - --index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Turn on additional validation, primarily for DataSet\nXML (default:\
+    \ False)"
+  synonyms:
+  - --strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Xunit test results for Jenkins (default: None)'
+  synonyms:
+  - -x
+  - --xunit-out
+  args: !SimpleFlagArg
+    name: XUNIT_OUT
+  optional: true
+- !Flag
+  description: 'alarms.json for errors (default: None)'
+  synonyms:
+  - --alarms
+  args: !SimpleFlagArg
+    name: ALARMS_OUT
+  optional: true
+- !Flag
+  description: "Specify that the file should contain only unmapped\nalignments (DEFAULT:\
+    \ no requirement) (default: None)"
+  synonyms:
+  - --unaligned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for --unaligned (default: None)'
+  synonyms:
+  - --unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify that the file should contain only mapped\nalignments (DEFAULT:\
+    \ no requirement) (default: None)"
+  synonyms:
+  - --aligned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for --aligned (default: None)'
+  synonyms:
+  - --mapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Enforce read type (default: None)'
+  synonyms:
+  - --contents
+  args: !ChoiceFlagArg
+    choices: !!set
+      CCS:
+      SUBREAD:
+  optional: true
+- !Flag
+  description: "Path to optional reference FASTA file, used for\nadditional validation\
+    \ of mapped BAM records (default:\nNone)"
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: pbvalidate [-h] [--version] [--log-file LOG_FILE]\n           \
+  \       [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL} | --debug | --quiet | -v]\n\
+  \                  [--quick] [--max MAX_ERRORS] [--max-records MAX_RECORDS]\n  \
+  \                [--type {BAM,Fasta,AlignmentSet,ConsensusSet,ConsensusAlignmentSet,SubreadSet,TranscriptSet,BarcodeSet,ContigSet,ReferenceSet,GmapReferenceSet}]\n\
+  \                  [--index] [--strict] [-x XUNIT_OUT] [--alarms ALARMS_OUT]\n \
+  \                 [--unaligned] [--unmapped] [--aligned] [--mapped]\n          \
+  \        [--contents {SUBREAD,CCS}] [--reference REFERENCE]\n                  file\n\
+  \nUtility for validating files produced by PacBio software against our own\ninternal\
+  \ specifications.\n\npositional arguments:\n  file                  BAM, FASTA,\
+  \ or DataSet XML file\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n  --log-file LOG_FILE   Write the log to file. Default(None) will write\
+  \ to\n                        stdout. (default: None)\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n\
+  \                        Set log level (default: CRITICAL)\n  --debug          \
+  \     Alias for setting log level to DEBUG (default: False)\n  --quiet         \
+  \      Alias for setting log level to CRITICAL to suppress\n                   \
+  \     output. (default: False)\n  -v, --verbose         Set the verbosity level.\
+  \ (default: None)\n  --quick               Limits validation to the first 100 records\
+  \ (plus file\n                        header); equivalent to --max-records=100 (default:\n\
+  \                        False)\n  --max MAX_ERRORS      Exit after MAX_ERRORS have\
+  \ been recorded (DEFAULT:\n                        check entire file) (default:\
+  \ None)\n  --max-records MAX_RECORDS\n                        Exit after MAX_RECORDS\
+  \ have been inspected (DEFAULT:\n                        check entire file) (default:\
+  \ None)\n  --type {BAM,Fasta,AlignmentSet,ConsensusSet,ConsensusAlignmentSet,SubreadSet,TranscriptSet,BarcodeSet,ContigSet,ReferenceSet,GmapReferenceSet}\n\
+  \                        Use the specified file type instead of guessing\n     \
+  \                   (default: None)\n  --index               Require index files\
+  \ (.fai or .pbi) (default: False)\n  --strict              Turn on additional validation,\
+  \ primarily for DataSet\n                        XML (default: False)\n  -x XUNIT_OUT,\
+  \ --xunit-out XUNIT_OUT\n                        Xunit test results for Jenkins\
+  \ (default: None)\n  --alarms ALARMS_OUT   alarms.json for errors (default: None)\n\
+  \nbam:\n  BAM options\n\n  --unaligned           Specify that the file should contain\
+  \ only unmapped\n                        alignments (DEFAULT: no requirement) (default:\
+  \ None)\n  --unmapped            Alias for --unaligned (default: None)\n  --aligned\
+  \             Specify that the file should contain only mapped\n               \
+  \         alignments (DEFAULT: no requirement) (default: None)\n  --mapped     \
+  \         Alias for --aligned (default: None)\n  --contents {SUBREAD,CCS}\n    \
+  \                    Enforce read type (default: None)\n  --reference REFERENCE\n\
+  \                        Path to optional reference FASTA file, used for\n     \
+  \                   additional validation of mapped BAM records (default:\n    \
+  \                    None)\n\nfasta:\n  Fasta options\n"
+generated_using:
+- --help

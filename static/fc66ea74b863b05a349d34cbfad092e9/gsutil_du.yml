@@ -1,0 +1,90 @@
+!Command
+command:
+- gsutil
+- du
+positional: []
+named:
+- !Flag
+  description: "Ends each output line with a 0 byte rather than a newline. This\n\
+    can be useful to make the output more easily machine-readable."
+  synonyms:
+  - '-0'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Includes non-current object versions / generations in the listing\n\
+    (only useful with a versioning-enabled bucket). Also prints\ngeneration and metageneration\
+    \ for each listed object."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Includes a grand total at the end of the output.
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A pattern to exclude from reporting. Example: -e \"*.o\" would\nexclude\
+    \ any object that ends in \".o\". Can be specified multiple\ntimes."
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Displays only the grand total for each argument.
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Similar to -e, but excludes patterns from the given file. The\npatterns\
+    \ to exclude should be one per line."
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Prints object sizes in human-readable format (e.g., 1 KiB,\n234 MiB,\
+    \ 2GiB, etc.)"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n  du - Display object size usage\n\n\nSYNOPSIS\n\n  gsutil du url...\n\
+  \n\n\nDESCRIPTION\n  The du command displays the amount of space (in bytes) being\
+  \ used by the\n  objects in the file or object hierarchy under a given URL. The\
+  \ syntax emulates\n  the Linux du command (which stands for disk usage). For example,\
+  \ the command:\n\n  gsutil du -s gs://your-bucket/dir\n\n  will report the total\
+  \ space used by all objects under gs://your-bucket/dir and\n  any sub-directories.\n\
+  \n\nOPTIONS\n  -0          Ends each output line with a 0 byte rather than a newline.\
+  \ This\n              can be useful to make the output more easily machine-readable.\n\
+  \n  -a          Includes non-current object versions / generations in the listing\n\
+  \              (only useful with a versioning-enabled bucket). Also prints\n   \
+  \           generation and metageneration for each listed object.\n\n  -c      \
+  \    Includes a grand total at the end of the output.\n\n  -e          A pattern\
+  \ to exclude from reporting. Example: -e \"*.o\" would\n              exclude any\
+  \ object that ends in \".o\". Can be specified multiple\n              times.\n\n\
+  \  -h          Prints object sizes in human-readable format (e.g., 1 KiB,\n    \
+  \          234 MiB, 2GiB, etc.)\n\n  -s          Displays only the grand total for\
+  \ each argument.\n\n  -X          Similar to -e, but excludes patterns from the\
+  \ given file. The\n              patterns to exclude should be one per line.\n\n\
+  \nEXAMPLES\n  To list the size of all objects in a bucket:\n\n    gsutil du gs://bucketname\n\
+  \n  To list the size of all objects underneath a prefix:\n\n    gsutil du gs://bucketname/prefix/*\n\
+  \n  To print the total number of bytes in a bucket, in human-readable form:\n\n\
+  \    gsutil du -ch gs://bucketname\n\n  To see a summary of the total bytes in the\
+  \ two given buckets:\n\n    gsutil du -s gs://bucket1 gs://bucket2\n\n  To list\
+  \ the size of all objects in a versioned bucket, including objects that\n  are not\
+  \ the latest:\n\n    gsutil du -a gs://bucketname\n\n  To list all objects in a\
+  \ bucket, except objects that end in \".bak\",\n  with each object printed ending\
+  \ in a null byte:\n\n    gsutil du -e \"*.bak\" -0 gs://bucketname\n\n  To get a\
+  \ total of all buckets in a project with a grand total for an entire\n  project:\n\
+  \n      gsutil -o GSUtil:default_project_id=project-name du -shc\n"
+generated_using:
+- --help

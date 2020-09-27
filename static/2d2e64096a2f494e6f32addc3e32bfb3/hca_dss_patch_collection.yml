@@ -1,0 +1,102 @@
+!Command
+command:
+- hca
+- dss
+- patch-collection
+positional: []
+named:
+- !Flag
+  description: List of new items to add to the collection. Items are de-duplicated
+    (if an identical item is already present in the collection or given multiple times,
+    it will only be added once).
+  synonyms:
+  - --add-contents
+  args: !SimpleFlagArg
+    name: ADD_CONTENTS
+  optional: true
+- !Flag
+  description: New description for the collection.
+  synonyms:
+  - --description
+  args: !SimpleFlagArg
+    name: DESCRIPTION
+  optional: true
+- !Flag
+  description: New details for the collection.
+  synonyms:
+  - --details
+  args: !SimpleFlagArg
+    name: DETAILS
+  optional: true
+- !Flag
+  description: New name for the collection.
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: List of items to remove from the collection. Items must match exactly
+    to be removed. Items not found in the collection are ignored.
+  synonyms:
+  - --remove-contents
+  args: !SimpleFlagArg
+    name: REMOVE_CONTENTS
+  optional: true
+- !Flag
+  description: A RFC4122-compliant ID of the collection to update.
+  synonyms:
+  - --uuid
+  args: !SimpleFlagArg
+    name: UUID
+  optional: true
+- !Flag
+  description: Replica to update the collection on. Updates are propagated to other
+    replicas.
+  synonyms:
+  - --replica
+  args: !ChoiceFlagArg
+    choices: !!set
+      aws:
+      gcp:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Timestamp of the collection to update in DSS_VERSION format format
+    (required).
+  synonyms:
+  - --version
+  args: !SimpleFlagArg
+    name: VERSION
+  optional: true
+help_text: "usage: hca dss patch-collection [-h] [--add-contents ADD_CONTENTS]\n \
+  \                               [--description DESCRIPTION]\n                  \
+  \              [--details DETAILS] [--name NAME]\n                             \
+  \   [--remove-contents REMOVE_CONTENTS] --uuid\n                               \
+  \ UUID --replica {aws,gcp} --version VERSION\n\nAdd or remove items from a collection.\
+  \ A specific version of the collection to update must be provided, and a new version\
+  \ will be written.\n\nOptional Arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --add-contents ADD_CONTENTS\n                        List\
+  \ of new items to add to the collection. Items are de-duplicated (if an identical\
+  \ item is already present in the collection or given multiple times, it will only\
+  \ be added once).\n  --description DESCRIPTION\n                        New description\
+  \ for the collection.\n  --details DETAILS     New details for the collection.\n\
+  \  --name NAME           New name for the collection.\n  --remove-contents REMOVE_CONTENTS\n\
+  \                        List of items to remove from the collection. Items must\
+  \ match exactly to be removed. Items not found in the collection are ignored.\n\n\
+  Required Arguments:\n  --uuid UUID           A RFC4122-compliant ID of the collection\
+  \ to update.\n  --replica {aws,gcp}   Replica to update the collection on. Updates\
+  \ are propagated to other replicas.\n  --version VERSION     Timestamp of the collection\
+  \ to update in DSS_VERSION format format (required).\n\n"
+generated_using:
+- --help

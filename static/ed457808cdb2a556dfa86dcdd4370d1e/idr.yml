@@ -1,0 +1,303 @@
+!Command
+command:
+- idr
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: SAMPLES
+  optional: false
+named:
+- !Flag
+  description: "SAMPLES, -s SAMPLES SAMPLES\nFiles containing peaks and scores."
+  synonyms:
+  - --samples
+  args: !SimpleFlagArg
+    name: SAMPLES
+  optional: true
+- !Flag
+  description: If provided, all peaks will be taken from this file.
+  synonyms:
+  - --peak-list
+  - -p
+  args: !SimpleFlagArg
+    name: PEAK_LIST
+  optional: true
+- !Flag
+  description: File type of --samples and --peak-list.
+  synonyms:
+  - --input-file-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      narrowPeak:
+      broadPeak:
+      bed:
+      gff:
+  optional: true
+- !Flag
+  description: "Which column to use to rank peaks.\nOptions: signal.value p.value\
+    \ q.value columnIndex\nDefaults:\nnarrowPeak/broadPeak: signal.value\nbed: score"
+  synonyms:
+  - --rank
+  args: !SimpleFlagArg
+    name: RANK
+  optional: true
+- !Flag
+  description: "File to write output to.\nDefault: idrValues.txt"
+  synonyms:
+  - --output-file
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: Output file type. Defaults to input file type when available, otherwise
+    bed.
+  synonyms:
+  - --output-file-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      narrowPeak:
+      broadPeak:
+      bed:
+  optional: true
+- !Flag
+  description: 'File to write output to. Default: stderr'
+  synonyms:
+  - --log-output-file
+  - -l
+  args: !SimpleFlagArg
+    name: LOG_OUTPUT_FILE
+  optional: true
+- !Flag
+  description: "Only return peaks with a global idr threshold below this value.\n\
+    Default: report all peaks"
+  synonyms:
+  - --idr-threshold
+  - -i
+  args: !SimpleFlagArg
+    name: IDR_THRESHOLD
+  optional: true
+- !Flag
+  description: "Report statistics for peaks with a global idr below this value but\
+    \ return all peaks with an idr below --idr.\nDefault: 0.05"
+  synonyms:
+  - --soft-idr-threshold
+  args: !SimpleFlagArg
+    name: SOFT_IDR_THRESHOLD
+  optional: true
+- !Flag
+  description: Use old output format.
+  synonyms:
+  - --use-old-output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Plot the results to [OFNAME].png
+  synonyms:
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use peaks without an overlapping match and set the value to 0.
+  synonyms:
+  - --use-nonoverlapping-peaks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Which method to use for merging peaks.\nDefault: 'sum' for signal/score/column\
+    \ indexes, 'min' for p/q-value."
+  synonyms:
+  - --peak-merge-method
+  args: !ChoiceFlagArg
+    choices: !!set
+      max:
+      min:
+      sum:
+      avg:
+  optional: true
+- !Flag
+  description: 'Initial value of mu. Default: 0.10'
+  synonyms:
+  - --initial-mu
+  args: !SimpleFlagArg
+    name: INITIAL_MU
+  optional: true
+- !Flag
+  description: 'Initial value of sigma. Default: 1.00'
+  synonyms:
+  - --initial-sigma
+  args: !SimpleFlagArg
+    name: INITIAL_SIGMA
+  optional: true
+- !Flag
+  description: 'Initial value of rho. Default: 0.20'
+  synonyms:
+  - --initial-rho
+  args: !SimpleFlagArg
+    name: INITIAL_RHO
+  optional: true
+- !Flag
+  description: 'Initial value of the mixture params. Default: 0.50'
+  synonyms:
+  - --initial-mix-param
+  args: !SimpleFlagArg
+    name: INITIAL_MIX_PARAM
+  optional: true
+- !Flag
+  description: Fix mu to the starting point and do not let it vary.
+  synonyms:
+  - --fix-mu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fix sigma to the starting point and do not let it vary.
+  synonyms:
+  - --fix-sigma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow signal points that are below the noise mean (should only be used
+    if you know what you are doing).
+  synonyms:
+  - --dont-filter-peaks-below-noise-mean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the IDR value for a group of multi summit peaks (a group of peaks
+    with the same chr/start/stop but different summits) to the best value across all
+    of these peaks. This is a work around for peak callers that don't do a good job
+    splitting scores across multi summit peaks (e.g. MACS). If set in conjunction
+    with --plot two plots will be created - one with alternate summits and one without.  Use
+    this option with care.
+  synonyms:
+  - --use-best-multisummit-IDR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow negative values for scores. (should only be used if you know
+    what you are doing)
+  synonyms:
+  - --allow-negative-scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The random seed value (sor braking ties). Default: 0'
+  synonyms:
+  - --random-seed
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+  optional: true
+- !Flag
+  description: 'The maximum number of optimization iterations. Default: 3000'
+  synonyms:
+  - --max-iter
+  args: !SimpleFlagArg
+    name: MAX_ITER
+  optional: true
+- !Flag
+  description: 'The maximum change in parameter value changes for convergence. Default:
+    1.00e-06'
+  synonyms:
+  - --convergence-eps
+  args: !SimpleFlagArg
+    name: CONVERGENCE_EPS
+  optional: true
+- !Flag
+  description: Only return the merged peak list.
+  synonyms:
+  - --only-merge-peaks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print out additional debug information
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't print any status messages
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: idr [-h] --samples SAMPLES SAMPLES [--peak-list PEAK_LIST]\n  \
+  \         [--input-file-type {narrowPeak,broadPeak,bed,gff}] [--rank RANK]\n   \
+  \        [--output-file OUTPUT_FILE]\n           [--output-file-type {narrowPeak,broadPeak,bed}]\n\
+  \           [--log-output-file LOG_OUTPUT_FILE] [--idr-threshold IDR_THRESHOLD]\n\
+  \           [--soft-idr-threshold SOFT_IDR_THRESHOLD] [--use-old-output-format]\n\
+  \           [--plot] [--use-nonoverlapping-peaks]\n           [--peak-merge-method\
+  \ {sum,avg,min,max}] [--initial-mu INITIAL_MU]\n           [--initial-sigma INITIAL_SIGMA]\
+  \ [--initial-rho INITIAL_RHO]\n           [--initial-mix-param INITIAL_MIX_PARAM]\
+  \ [--fix-mu] [--fix-sigma]\n           [--dont-filter-peaks-below-noise-mean] [--use-best-multisummit-IDR]\n\
+  \           [--allow-negative-scores] [--random-seed RANDOM_SEED]\n           [--max-iter\
+  \ MAX_ITER] [--convergence-eps CONVERGENCE_EPS]\n           [--only-merge-peaks]\
+  \ [--verbose] [--quiet] [--version]\n\nProgram: IDR (Irreproducible Discovery Rate)\n\
+  Version: 2.0.4.2\nContact: Nathan Boley <npboley@gmail.com>\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --samples SAMPLES SAMPLES,\
+  \ -s SAMPLES SAMPLES\n                        Files containing peaks and scores.\n\
+  \  --peak-list PEAK_LIST, -p PEAK_LIST\n                        If provided, all\
+  \ peaks will be taken from this file.\n  --input-file-type {narrowPeak,broadPeak,bed,gff}\n\
+  \                        File type of --samples and --peak-list.\n  --rank RANK\
+  \           Which column to use to rank peaks.\t\n                        Options:\
+  \ signal.value p.value q.value columnIndex\n                        Defaults:\n\
+  \                        \tnarrowPeak/broadPeak: signal.value\n                \
+  \        \tbed: score\n  --output-file OUTPUT_FILE, -o OUTPUT_FILE\n           \
+  \             File to write output to.\n                        Default: idrValues.txt\n\
+  \  --output-file-type {narrowPeak,broadPeak,bed}\n                        Output\
+  \ file type. Defaults to input file type when available, otherwise bed.\n  --log-output-file\
+  \ LOG_OUTPUT_FILE, -l LOG_OUTPUT_FILE\n                        File to write output\
+  \ to. Default: stderr\n  --idr-threshold IDR_THRESHOLD, -i IDR_THRESHOLD\n     \
+  \                   Only return peaks with a global idr threshold below this value.\n\
+  \                        Default: report all peaks\n  --soft-idr-threshold SOFT_IDR_THRESHOLD\n\
+  \                        Report statistics for peaks with a global idr below this\
+  \ value but return all peaks with an idr below --idr.\n                        Default:\
+  \ 0.05\n  --use-old-output-format\n                        Use old output format.\n\
+  \  --plot                Plot the results to [OFNAME].png\n  --use-nonoverlapping-peaks\n\
+  \                        Use peaks without an overlapping match and set the value\
+  \ to 0.\n  --peak-merge-method {sum,avg,min,max}\n                        Which\
+  \ method to use for merging peaks.\n                        \tDefault: 'sum' for\
+  \ signal/score/column indexes, 'min' for p/q-value.\n  --initial-mu INITIAL_MU\n\
+  \                        Initial value of mu. Default: 0.10\n  --initial-sigma INITIAL_SIGMA\n\
+  \                        Initial value of sigma. Default: 1.00\n  --initial-rho\
+  \ INITIAL_RHO\n                        Initial value of rho. Default: 0.20\n  --initial-mix-param\
+  \ INITIAL_MIX_PARAM\n                        Initial value of the mixture params.\
+  \ Default: 0.50\n  --fix-mu              Fix mu to the starting point and do not\
+  \ let it vary.\n  --fix-sigma           Fix sigma to the starting point and do not\
+  \ let it vary.\n  --dont-filter-peaks-below-noise-mean\n                       \
+  \ Allow signal points that are below the noise mean (should only be used if you\
+  \ know what you are doing).\n  --use-best-multisummit-IDR\n                    \
+  \    Set the IDR value for a group of multi summit peaks (a group of peaks with\
+  \ the same chr/start/stop but different summits) to the best value across all of\
+  \ these peaks. This is a work around for peak callers that don't do a good job splitting\
+  \ scores across multi summit peaks (e.g. MACS). If set in conjunction with --plot\
+  \ two plots will be created - one with alternate summits and one without.  Use this\
+  \ option with care.\n  --allow-negative-scores\n                        Allow negative\
+  \ values for scores. (should only be used if you know what you are doing)\n  --random-seed\
+  \ RANDOM_SEED\n                        The random seed value (sor braking ties).\
+  \ Default: 0\n  --max-iter MAX_ITER   The maximum number of optimization iterations.\
+  \ Default: 3000\n  --convergence-eps CONVERGENCE_EPS\n                        The\
+  \ maximum change in parameter value changes for convergence. Default: 1.00e-06\n\
+  \  --only-merge-peaks    Only return the merged peak list.\n  --verbose        \
+  \     Print out additional debug information\n  --quiet               Don't print\
+  \ any status messages\n  --version             show program's version number and\
+  \ exit\n/usr/local/bin/idr --help\n"
+generated_using:
+- --help

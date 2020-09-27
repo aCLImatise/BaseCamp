@@ -1,0 +1,146 @@
+!Command
+command:
+- svtools
+- genotype
+positional: []
+named:
+- !Flag
+  description: 'VCF input (default: stdin)'
+  synonyms:
+  - -i
+  - --input_vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: 'output VCF to write (default: stdout)'
+  synonyms:
+  - -o
+  - --output_vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: BAM or CRAM file
+  synonyms:
+  - -B
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: "Indexed reference FASTA file (recommended for reading\nCRAM files)"
+  synonyms:
+  - -T
+  - --ref_fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: create/read JSON file of library information
+  synonyms:
+  - -l
+  - --lib_info
+  args: !SimpleFlagArg
+    name: JSON
+  optional: true
+- !Flag
+  description: "minimum number of aligned bases to consider read as\nevidence [20]"
+  synonyms:
+  - -m
+  - --min_aligned
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "number of pairs to sample from BAM file for building\ninsert size\
+    \ distribution [1000000]"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "add genotyping quality to existing QUAL (default:\noverwrite QUAL\
+    \ field)"
+  synonyms:
+  - -q
+  - --sum_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "maximum number of reads to assess at any variant\n(reduces processing\
+    \ time in high-depth regions,\ndefault: 10000)"
+  synonyms:
+  - --max_reads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "maximum size of a confidence interval before 95% CI is\nused intead\
+    \ (default: 1e10)"
+  synonyms:
+  - --max_ci_dist
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: weight for split reads [1]
+  synonyms:
+  - --split_weight
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: weight for discordant paired-end reads [1]
+  synonyms:
+  - --disc_weight
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "write relevant reads to BAM file\n"
+  synonyms:
+  - -w
+  - --write_alignment
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: svtools genotype [-h] [-i <VCF>] [-o <VCF>] -B <BAM> [-T <FASTA>]\n\
+  \                        [-l <JSON>] [-m <INT>] [-n <INT>] [-q]\n              \
+  \          [--max_reads <INT>] [--max_ci_dist <INT>]\n                        [--split_weight\
+  \ <FLOAT>] [--disc_weight <FLOAT>]\n                        [-w <BAM>]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -i <VCF>,\
+  \ --input_vcf <VCF>\n                        VCF input (default: stdin)\n  -o <VCF>,\
+  \ --output_vcf <VCF>\n                        output VCF to write (default: stdout)\n\
+  \  -B <BAM>, --bam <BAM>\n                        BAM or CRAM file\n  -T <FASTA>,\
+  \ --ref_fasta <FASTA>\n                        Indexed reference FASTA file (recommended\
+  \ for reading\n                        CRAM files)\n  -l <JSON>, --lib_info <JSON>\n\
+  \                        create/read JSON file of library information\n  -m <INT>,\
+  \ --min_aligned <INT>\n                        minimum number of aligned bases to\
+  \ consider read as\n                        evidence [20]\n  -n <INT>          \
+  \    number of pairs to sample from BAM file for building\n                    \
+  \    insert size distribution [1000000]\n  -q, --sum_quals       add genotyping\
+  \ quality to existing QUAL (default:\n                        overwrite QUAL field)\n\
+  \  --max_reads <INT>     maximum number of reads to assess at any variant\n    \
+  \                    (reduces processing time in high-depth regions,\n         \
+  \               default: 10000)\n  --max_ci_dist <INT>   maximum size of a confidence\
+  \ interval before 95% CI is\n                        used intead (default: 1e10)\n\
+  \  --split_weight <FLOAT>\n                        weight for split reads [1]\n\
+  \  --disc_weight <FLOAT>\n                        weight for discordant paired-end\
+  \ reads [1]\n  -w <BAM>, --write_alignment <BAM>\n                        write\
+  \ relevant reads to BAM file\n"
+generated_using:
+- --help

@@ -1,0 +1,145 @@
+!Command
+command:
+- bnMapper.py
+positional:
+- !Positional
+  description: "Input to process. If more than a file is specified,\nall files will\
+    \ be mapped and placed on --output, which\nshould be a directory."
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Alignment file (.chain or .pkl)
+  position: 1
+  name: alignment
+  optional: false
+named:
+- !Flag
+  description: "Output format. BED4 output reports all aligned blocks\nas separate\
+    \ BED records. BED12 reports a single BED\nrecord for each mapped element, with\
+    \ individual blocks\ngiven in the BED12 fields. NarrowPeak reports a single\n\
+    narrowPeak record for each mapped element, in which\nthe chromosome, start, end,\
+    \ and peak positions are\nmapped to the target species and all other columns are\n\
+    passed through unchanged. (default: BED4)"
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      narrowPeak:
+      BED12:
+      BED4:
+  optional: true
+- !Flag
+  description: "Output file. Mandatory if more than on file in input.\n(default: stdout)"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Mapping threshold i.e., |elem| * threshold <=\n|mapped_elem| (default:\
+    \ 0.0)"
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Only report elements in the alignment (without\nmapping). -t has not\
+    \ effect here (TODO) (default:\nFalse)"
+  synonyms:
+  - -s
+  - --screen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ignore elements with an insertion/deletion of this or\nbigger size.\
+    \ (default: -1)"
+  synonyms:
+  - -g
+  - --gap
+  args: !SimpleFlagArg
+    name: GAP
+  optional: true
+- !Flag
+  description: 'Verbosity level (default: info)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !ChoiceFlagArg
+    choices: !!set
+      silent:
+      info:
+      debug:
+  optional: true
+- !Flag
+  description: "If elements span multiple chains, report the segment\nwith the longest\
+    \ overlap instead of silently dropping\nthem. (This is the default behavior for\
+    \ liftOver.)\n(default: False)"
+  synonyms:
+  - -k
+  - --keep_split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Input file format. (default: BED)'
+  synonyms:
+  - -i
+  - --in_format
+  args: !ChoiceFlagArg
+    choices: !!set
+      BED:
+      narrowPeak:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: bnMapper.py [-h] [-f {BED4,BED12,narrowPeak}] [-o FILE] [-t FLOAT]\
+  \ [-s]\n                   [-g GAP] [-v {info,debug,silent}] [-k]\n            \
+  \       [-i {BED,narrowPeak}]\n                   input [input ...] alignment\n\n\
+  Map features from the target species to the query species of a chain alignment\n\
+  file. This is intended for mapping relatively short features such as Chip-Seq\n\
+  peaks on TF binding events. Features that when mapped span multiple chains or\n\
+  multiple chromosomes are silently filtered out. TODO: (1)for narrowPeak input,\n\
+  map the predicted peak position.\n\npositional arguments:\n  input             \
+  \    Input to process. If more than a file is specified,\n                     \
+  \   all files will be mapped and placed on --output, which\n                   \
+  \     should be a directory.\n  alignment             Alignment file (.chain or\
+  \ .pkl)\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -f {BED4,BED12,narrowPeak}, --format {BED4,BED12,narrowPeak}\n       \
+  \                 Output format. BED4 output reports all aligned blocks\n      \
+  \                  as separate BED records. BED12 reports a single BED\n       \
+  \                 record for each mapped element, with individual blocks\n     \
+  \                   given in the BED12 fields. NarrowPeak reports a single\n   \
+  \                     narrowPeak record for each mapped element, in which\n    \
+  \                    the chromosome, start, end, and peak positions are\n      \
+  \                  mapped to the target species and all other columns are\n    \
+  \                    passed through unchanged. (default: BED4)\n  -o FILE, --output\
+  \ FILE\n                        Output file. Mandatory if more than on file in input.\n\
+  \                        (default: stdout)\n  -t FLOAT, --threshold FLOAT\n    \
+  \                    Mapping threshold i.e., |elem| * threshold <=\n           \
+  \             |mapped_elem| (default: 0.0)\n  -s, --screen          Only report\
+  \ elements in the alignment (without\n                        mapping). -t has not\
+  \ effect here (TODO) (default:\n                        False)\n  -g GAP, --gap\
+  \ GAP     Ignore elements with an insertion/deletion of this or\n              \
+  \          bigger size. (default: -1)\n  -v {info,debug,silent}, --verbose {info,debug,silent}\n\
+  \                        Verbosity level (default: info)\n  -k, --keep_split   \
+  \   If elements span multiple chains, report the segment\n                     \
+  \   with the longest overlap instead of silently dropping\n                    \
+  \    them. (This is the default behavior for liftOver.)\n                      \
+  \  (default: False)\n  -i {BED,narrowPeak}, --in_format {BED,narrowPeak}\n     \
+  \                   Input file format. (default: BED)\n\nOlgert Denas (Taylor Lab)\n"
+generated_using:
+- --help

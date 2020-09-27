@@ -1,0 +1,163 @@
+!Command
+command:
+- rtg
+- format
+positional: []
+named:
+- !Flag
+  description: "format of input. Allowed values are [fasta,\nfastq, fastq-interleaved,\
+    \ sam-se, sam-pe]\n(Default is fasta)"
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "file containing a list of input read files (1\nper line)"
+  synonyms:
+  - -I
+  - --input-list-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: left input file for FASTA/FASTQ paired end
+  synonyms:
+  - -l
+  - --left
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "input is protein. If this option is not\nspecified, then the input\
+    \ is assumed to\nconsist of nucleotides"
+  synonyms:
+  - -p
+  - --protein
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "quality data encoding method used in FASTQ\ninput files (Illumina\
+    \ 1.8+ uses sanger).\nAllowed values are [sanger, solexa, illumina]\n(Default\
+    \ is sanger)"
+  synonyms:
+  - -q
+  - --quality-format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: right input file for FASTA/FASTQ paired end
+  synonyms:
+  - -r
+  - --right
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: treat lower case residues as unknowns
+  synonyms:
+  - --duster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "exclude input sequences based on their name.\nIf the input sequence\
+    \ contains the specified\nstring then that sequence is excluded from the\nSDF.\
+    \ May be specified 0 or more times"
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "when formatting from SAM/BAM input, only\ninclude reads with this\
+    \ read group ID"
+  synonyms:
+  - --select-read-group
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "trim read ends to maximise base quality above\nthe given threshold"
+  synonyms:
+  - --trim-threshold
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: disable checking for duplicate sequence names
+  synonyms:
+  - --allow-duplicate-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not include name data in the SDF output
+  synonyms:
+  - --no-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not include quality data in the SDF output
+  synonyms:
+  - --no-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|FILE       file containing a single valid read group SAM\nheader\
+    \ line or a string in the form\n\"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\
+    \n"
+  synonyms:
+  - --sam-rg
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print help on command-line flag usage
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: rtg format [OPTION]... -o SDF FILE+\n                  [OPTION]...\
+  \ -o SDF -I FILE\n                  [OPTION]... -o SDF -l FILE -r FILE\n\nConverts\
+  \ the contents of sequence data files (FASTA/FASTQ/SAM/BAM) into the RTG\nSequence\
+  \ Data File (SDF) format.\n\nFile Input/Output\n  -f, --format=FORMAT          \
+  \  format of input. Allowed values are [fasta,\n                               \
+  \  fastq, fastq-interleaved, sam-se, sam-pe]\n                                 (Default\
+  \ is fasta)\n  -I, --input-list-file=FILE     file containing a list of input read\
+  \ files (1\n                                 per line)\n  -l, --left=FILE      \
+  \          left input file for FASTA/FASTQ paired end\n                        \
+  \         data\n  -o, --output=SDF               name of output SDF\n  -p, --protein\
+  \                  input is protein. If this option is not\n                   \
+  \              specified, then the input is assumed to\n                       \
+  \          consist of nucleotides\n  -q, --quality-format=FORMAT    quality data\
+  \ encoding method used in FASTQ\n                                 input files (Illumina\
+  \ 1.8+ uses sanger).\n                                 Allowed values are [sanger,\
+  \ solexa, illumina]\n                                 (Default is sanger)\n  -r,\
+  \ --right=FILE               right input file for FASTA/FASTQ paired end\n     \
+  \                            data\n      FILE+                      input sequence\
+  \ files. May be specified 0 or\n                                 more times\n\n\
+  Filtering\n      --duster                   treat lower case residues as unknowns\n\
+  \      --exclude=STRING           exclude input sequences based on their name.\n\
+  \                                 If the input sequence contains the specified\n\
+  \                                 string then that sequence is excluded from the\n\
+  \                                 SDF. May be specified 0 or more times\n      --select-read-group=STRING\
+  \ when formatting from SAM/BAM input, only\n                                 include\
+  \ reads with this read group ID\n      --trim-threshold=INT       trim read ends\
+  \ to maximise base quality above\n                                 the given threshold\n\
+  \nUtility\n      --allow-duplicate-names    disable checking for duplicate sequence\
+  \ names\n  -h, --help                     print help on command-line flag usage\n\
+  \      --no-names                 do not include name data in the SDF output\n \
+  \     --no-quality               do not include quality data in the SDF output\n\
+  \      --sam-rg=STRING|FILE       file containing a single valid read group SAM\n\
+  \                                 header line or a string in the form\n        \
+  \                         \"@RG\\tID:READGROUP1\\tSM:BACT_SAMPLE\\tPL:ILLUMINA\"\
+  \n\n"
+generated_using:
+- --help

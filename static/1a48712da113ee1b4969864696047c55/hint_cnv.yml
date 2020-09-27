@@ -1,0 +1,170 @@
+!Command
+command:
+- hint
+- cnv
+positional: []
+named:
+- !Flag
+  description: "The matrix compressed file contains single or multiple\nresolutions\
+    \ Hi-C contact matrix files (multi-cool, or\nhic file), resolution should be set\
+    \ via parameter -r;\nor a sparse | dense format matrix file whole genome\nwidely\
+    \ (not suggest when using a high resolution)"
+  synonyms:
+  - -m
+  - --matrixfile
+  args: !SimpleFlagArg
+    name: MATRIXFILE
+  optional: true
+- !Flag
+  description: "the reference directory that downloaded from dropbox\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
+    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
+  synonyms:
+  - --refdir
+  args: !SimpleFlagArg
+    name: REFERENCEDIR
+  optional: true
+- !Flag
+  description: "Choose which ENCODE mappability track should be used\nfor regression.\
+    \ See more details\nhttp://genome.ucsc.edu/cgi-\nbin/hgTrackUi?db=hg18&g=wgEncodeMapability.\
+    \ DEFAULT:\n50mer"
+  synonyms:
+  - --maptrack
+  args: !ChoiceFlagArg
+    choices: !!set
+      50mer:
+      24mer:
+      36mer:
+  optional: true
+- !Flag
+  description: /path/to/bicseqDir/
+  synonyms:
+  - --bicseq
+  args: !SimpleFlagArg
+    name: BICSEQ
+  optional: true
+- !Flag
+  description: "If this switch is on, HiNT will do the iterative\nregression model\
+    \ by removing copy numer variated\nregions, DEFAULT=False"
+  synonyms:
+  - --doiter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Format for the output contact matrix, DEFAULT: cooler'
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      juicer:
+      cooler:
+  optional: true
+- !Flag
+  description: "enzyme used for the Hi-C experiments, will be used to\ncalculate enzyme\
+    \ sites"
+  synonyms:
+  - -e
+  - --enzyme
+  args: !ChoiceFlagArg
+    choices: !!set
+      DpnII:
+      HindIII:
+      MboI:
+  optional: true
+- !Flag
+  description: "Resolution for the Hi-C contact matrix used for the\nCNV detection,\
+    \ unit: kb, DEFAULT: 50kb"
+  synonyms:
+  - -r
+  - --resolution
+  args: !SimpleFlagArg
+    name: RESOLUTION
+  optional: true
+- !Flag
+  description: "Specify your species, choose form hg38, hg19, and\nmm10. DEFAULT:\
+    \ hg19"
+  synonyms:
+  - -g
+  - --genome
+  args: !ChoiceFlagArg
+    choices: !!set
+      hg38:
+      hg19:
+      mm10:
+  optional: true
+- !Flag
+  description: "Path to the output directory, where you want to store\nall the output\
+    \ files, if not set, the current\ndirectory will be used"
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Number of threads for running HiNT-cnv, DEFAULT: 16\n"
+  synonyms:
+  - -p
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hint cnv [-h] -m MATRIXFILE --refdir REFERENCEDIR\n           \
+  \     [--maptrack {24mer,36mer,50mer}] --bicseq BICSEQ [--doiter]\n            \
+  \    [-f {cooler,juicer}] [-e {MboI,HindIII,DpnII}] [-r RESOLUTION]\n          \
+  \      [-g {hg38,hg19,mm10}] [-o OUTDIR] [-n NAME] [-p THREADS]\n\nHiNT cnv: prediction\
+  \ of copy number information, as well as segmentation from\nHi-C. EXAMPLE: hint\
+  \ cnv -m contactMatrix.mcool -f cooler --refdir\n/path/to/HiNT_reference_dir/hg19\
+  \ -r 50 --bicseq /path/to/BICseq2-seg_v0.7.3 -g\nhg19 -n test -o /path/to/outputDir\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -m MATRIXFILE, --matrixfile MATRIXFILE\n                        The matrix compressed\
+  \ file contains single or multiple\n                        resolutions Hi-C contact\
+  \ matrix files (multi-cool, or\n                        hic file), resolution should\
+  \ be set via parameter -r;\n                        or a sparse | dense format matrix\
+  \ file whole genome\n                        widely (not suggest when using a high\
+  \ resolution)\n  --refdir REFERENCEDIR\n                        the reference directory\
+  \ that downloaded from dropbox\n                        dropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
+  \                        ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)\n  --maptrack {24mer,36mer,50mer}\n\
+  \                        Choose which ENCODE mappability track should be used\n\
+  \                        for regression. See more details\n                    \
+  \    http://genome.ucsc.edu/cgi-\n                        bin/hgTrackUi?db=hg18&g=wgEncodeMapability.\
+  \ DEFAULT:\n                        50mer\n  --bicseq BICSEQ       /path/to/bicseqDir/\n\
+  \  --doiter              If this switch is on, HiNT will do the iterative\n    \
+  \                    regression model by removing copy numer variated\n        \
+  \                regions, DEFAULT=False\n  -f {cooler,juicer}, --format {cooler,juicer}\n\
+  \                        Format for the output contact matrix, DEFAULT: cooler\n\
+  \  -e {MboI,HindIII,DpnII}, --enzyme {MboI,HindIII,DpnII}\n                    \
+  \    enzyme used for the Hi-C experiments, will be used to\n                   \
+  \     calculate enzyme sites\n  -r RESOLUTION, --resolution RESOLUTION\n       \
+  \                 Resolution for the Hi-C contact matrix used for the\n        \
+  \                CNV detection, unit: kb, DEFAULT: 50kb\n  -g {hg38,hg19,mm10},\
+  \ --genome {hg38,hg19,mm10}\n                        Specify your species, choose\
+  \ form hg38, hg19, and\n                        mm10. DEFAULT: hg19\n  -o OUTDIR,\
+  \ --outdir OUTDIR\n                        Path to the output directory, where you\
+  \ want to store\n                        all the output files, if not set, the current\n\
+  \                        directory will be used\n  -n NAME, --name NAME  Prefix\
+  \ for the result files. If not set, 'NA' will be\n                        used instead\n\
+  \  -p THREADS, --threads THREADS\n                        Number of threads for\
+  \ running HiNT-cnv, DEFAULT: 16\n"
+generated_using:
+- --help

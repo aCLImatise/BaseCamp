@@ -1,0 +1,78 @@
+!Command
+command:
+- medpy_join_masks.py
+positional:
+- !Positional
+  description: Target volume.
+  position: 0
+  name: output
+  optional: false
+- !Positional
+  description: Source volume(s).
+  position: 1
+  name: inputs
+  optional: false
+named:
+- !Flag
+  description: Combinatorial operation to conduct.
+  synonyms:
+  - -o
+  - --operation
+  args: !ChoiceFlagArg
+    choices: !!set
+      max:
+      min:
+      sum:
+      avg:
+  optional: true
+- !Flag
+  description: Display more information.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Silently override existing output images.
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: medpy_join_masks.py [-h] [-o {sum,avg,max,min}] [-v] [-d] [-f]\n\
+  \                           output inputs [inputs ...]\n\n                  Joins\
+  \ a number of binary images into a single conjunction.\n                  \n   \
+  \               The available combinatorial operations are sum, avg, max and min.\n\
+  \                  In the case of max and min, the output volumes are also binary\
+  \ images,\n                  in the case of sum they are uint8 and in the case of\
+  \ avg of type float.\n                  \n                  All input images must\
+  \ be of same shape and voxel spacing.\n                  \n                  WARNING:\
+  \ Does not consider image offset.\n                  \n                  Copyright\
+  \ (C) 2013 Oskar Maier\n                  This program comes with ABSOLUTELY NO\
+  \ WARRANTY; This is free software,\n                  and you are welcome to redistribute\
+  \ it under certain conditions; see\n                  the LICENSE file or <http://www.gnu.org/licenses/>\
+  \ for details.   \n                  \n\npositional arguments:\n  output       \
+  \         Target volume.\n  inputs                Source volume(s).\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -o {sum,avg,max,min},\
+  \ --operation {sum,avg,max,min}\n                        Combinatorial operation\
+  \ to conduct.\n  -v                    Display more information.\n  -d         \
+  \           Display debug information.\n  -f                    Silently override\
+  \ existing output images.\n"
+generated_using:
+- --help

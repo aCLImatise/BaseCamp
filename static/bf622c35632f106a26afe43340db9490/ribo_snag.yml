@@ -1,0 +1,235 @@
+!Command
+command:
+- ribo
+- snag
+positional:
+- !Positional
+  description: Genbank file (WITH SEQUENCE)
+  position: 0
+  name: genbank_genome
+  optional: false
+- !Positional
+  description: output from riboSelect
+  position: 1
+  name: clustered_loci
+  optional: false
+named:
+- !Flag
+  description: 'output directory; default: /'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "rename the contigs with this prefix; default: date\n(YYYYMMDD)"
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'length of flanking regions, in bp; default: 1000'
+  synonyms:
+  - -l
+  - --flanking_length
+  args: !SimpleFlagArg
+    name: FLANKING
+  optional: true
+- !Flag
+  description: "calculate kmer similarity based on aligned sequences\ninstead of raw\
+    \ sequences;default: False"
+  synonyms:
+  - --msa_kmers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Just plot entropy if MSAdefault: False'
+  synonyms:
+  - --skip_kmers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Skip running BLAST Comparisonsdefault: False'
+  synonyms:
+  - --skip_blast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if the genome is not circular, and an region of\ninterest (including\
+    \ flanking bits) extends past\nchromosome end, this extends the sequence past\n\
+    chromosome origin forward by 5kb; default: False"
+  synonyms:
+  - --linear
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if treating as circular, this controls the length of\nsequence added\
+    \ to the 5' and 3' ends to allow for\nselecting regions that cross the chromosome's\
+    \ origin;\ndefault: 5000"
+  synonyms:
+  - -p
+  - --padding
+  args: !SimpleFlagArg
+    name: PADDING
+  optional: true
+- !Flag
+  description: "1 = debug(), 2 = info(), 3 = warning(), 4 = error()\nand 5 = critical();\
+    \ default: 2"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: "String for plot title; uses matplotlib math processing\nfor italics\
+    \ (you know, the LaTeX $..$ syntax):\nhttps://matplotlib.org/users/mathtext.html\
+    \ default:\ninferred from --seq_name"
+  synonyms:
+  - --title
+  args: !SimpleFlagArg
+    name: TITLE
+  optional: true
+- !Flag
+  description: 'overwrite previous output files; default: False'
+  synonyms:
+  - --clobber
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "default returns reverse complimented seq if majority\nof regions on\
+    \ reverse strand. if --no_revcomp, this is\noverwridden; default: False"
+  synonyms:
+  - --no_revcomp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dont bother making an MSA, calculating Shannon\nEntropy, BLASTing,\
+    \ generating plots etc; just extract\nthe regions ; default: False"
+  synonyms:
+  - -j
+  - --just_extract
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Path to PRANK executable; default: mafft'
+  synonyms:
+  - --msa_tool
+  args: !ChoiceFlagArg
+    choices: !!set
+      prank:
+      mafft:
+  optional: true
+- !Flag
+  description: 'Path to PRANK executable; default: prank'
+  synonyms:
+  - --prank_exe
+  args: !SimpleFlagArg
+    name: PRANK_EXE
+  optional: true
+- !Flag
+  description: 'Path to MAFFT executable; default: mafft'
+  synonyms:
+  - --mafft_exe
+  args: !SimpleFlagArg
+    name: MAFFT_EXE
+  optional: true
+- !Flag
+  description: 'Path to barrnap executable; default: barrnap'
+  synonyms:
+  - --barrnap_exe
+  args: !SimpleFlagArg
+    name: BARRNAP_EXE
+  optional: true
+- !Flag
+  description: 'Path to makeblastdb executable; default: makeblastdb'
+  synonyms:
+  - --makeblastdb_exe
+  args: !SimpleFlagArg
+    name: MAKEBLASTDB_EXE
+  optional: true
+- !Flag
+  description: 'kingdom for barrnap; default: bac'
+  synonyms:
+  - --kingdom
+  args: !ChoiceFlagArg
+    choices: !!set
+      bac:
+      mito:
+      euk:
+      arc:
+  optional: true
+- !Flag
+  description: "name of genome; default: inferred from file name, as\nmany casesinvolve\
+    \ multiple contigs, etc, making\ninference from record intractable"
+  synonyms:
+  - -s
+  - --seq_name
+  args: !SimpleFlagArg
+    name: SEQ_NAME
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Displays this help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ribo snag [-o OUTPUT] [-n NAME] [-l FLANKING] [--msa_kmers]\n \
+  \                [--skip_kmers] [--skip_blast] [--linear] [-p PADDING]\n       \
+  \          [-v VERBOSITY] [--title TITLE] [--clobber] [--no_revcomp]\n         \
+  \        [-j] [--msa_tool {mafft,prank}] [--prank_exe PRANK_EXE]\n             \
+  \    [--mafft_exe MAFFT_EXE] [--barrnap_exe BARRNAP_EXE]\n                 [--makeblastdb_exe\
+  \ MAKEBLASTDB_EXE]\n                 [--kingdom {mito,euk,arc,bac}] [-s SEQ_NAME]\
+  \ [-h]\n                 genbank_genome clustered_loci\n\nUse to extract regions\
+  \ of interest based on supplied Locus tags and evaluate\nthe extracted regions\n\
+  \npositional arguments:\n  genbank_genome        Genbank file (WITH SEQUENCE)\n\
+  \  clustered_loci        output from riboSelect\n\nrequired named arguments:\n \
+  \ -o OUTPUT, --output OUTPUT\n                        output directory; default:\
+  \ /\n\noptional arguments:\n  -n NAME, --name NAME  rename the contigs with this\
+  \ prefix; default: date\n                        (YYYYMMDD)\n  -l FLANKING, --flanking_length\
+  \ FLANKING\n                        length of flanking regions, in bp; default:\
+  \ 1000\n  --msa_kmers           calculate kmer similarity based on aligned sequences\n\
+  \                        instead of raw sequences;default: False\n  --skip_kmers\
+  \          Just plot entropy if MSAdefault: False\n  --skip_blast          Skip\
+  \ running BLAST Comparisonsdefault: False\n  --linear              if the genome\
+  \ is not circular, and an region of\n                        interest (including\
+  \ flanking bits) extends past\n                        chromosome end, this extends\
+  \ the sequence past\n                        chromosome origin forward by 5kb; default:\
+  \ False\n  -p PADDING, --padding PADDING\n                        if treating as\
+  \ circular, this controls the length of\n                        sequence added\
+  \ to the 5' and 3' ends to allow for\n                        selecting regions\
+  \ that cross the chromosome's origin;\n                        default: 5000\n \
+  \ -v VERBOSITY, --verbosity VERBOSITY\n                        1 = debug(), 2 =\
+  \ info(), 3 = warning(), 4 = error()\n                        and 5 = critical();\
+  \ default: 2\n  --title TITLE         String for plot title; uses matplotlib math\
+  \ processing\n                        for italics (you know, the LaTeX $..$ syntax):\n\
+  \                        https://matplotlib.org/users/mathtext.html default:\n \
+  \                       inferred from --seq_name\n  --clobber             overwrite\
+  \ previous output files; default: False\n  --no_revcomp          default returns\
+  \ reverse complimented seq if majority\n                        of regions on reverse\
+  \ strand. if --no_revcomp, this is\n                        overwridden; default:\
+  \ False\n  -j, --just_extract    Dont bother making an MSA, calculating Shannon\n\
+  \                        Entropy, BLASTing, generating plots etc; just extract\n\
+  \                        the regions ; default: False\n  --msa_tool {mafft,prank}\n\
+  \                        Path to PRANK executable; default: mafft\n  --prank_exe\
+  \ PRANK_EXE\n                        Path to PRANK executable; default: prank\n\
+  \  --mafft_exe MAFFT_EXE\n                        Path to MAFFT executable; default:\
+  \ mafft\n  --barrnap_exe BARRNAP_EXE\n                        Path to barrnap executable;\
+  \ default: barrnap\n  --makeblastdb_exe MAKEBLASTDB_EXE\n                      \
+  \  Path to makeblastdb executable; default: makeblastdb\n  --kingdom {mito,euk,arc,bac}\n\
+  \                        kingdom for barrnap; default: bac\n  -s SEQ_NAME, --seq_name\
+  \ SEQ_NAME\n                        name of genome; default: inferred from file\
+  \ name, as\n                        many casesinvolve multiple contigs, etc, making\n\
+  \                        inference from record intractable\n  -h, --help       \
+  \     Displays this help message\n"
+generated_using:
+- --help

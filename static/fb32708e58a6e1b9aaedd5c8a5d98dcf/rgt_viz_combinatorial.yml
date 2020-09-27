@@ -1,0 +1,197 @@
+!Command
+command:
+- rgt-viz
+- combinatorial
+positional: []
+named:
+- !Flag
+  description: "The directory name for the output files. For example,\nproject name.\
+    \ (default: None)"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: O
+  optional: true
+- !Flag
+  description: "The file name of the reference Experimental Matrix.\nMultiple references\
+    \ are acceptable. (default: None)"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The file name of the query Experimental Matrix. Multiple\nqueries\
+    \ are acceptable. (default: None)"
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The title shown on the top of the plot and also the\nfolder name.\
+    \ (default: combinatorial_test)"
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Group the data by any optional column (for example,\n'cell') of experimental\
+    \ matrix, or None. (default: None)"
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: G
+  optional: true
+- !Flag
+  description: "Color the data by any optional column (for example,\n'cell') of experimental\
+    \ matrix, or None. (default:\nregions)"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: 'Define the organism. (default: hg19)'
+  synonyms:
+  - -organism
+  args: !SimpleFlagArg
+    name: ORGANISM
+  optional: true
+- !Flag
+  description: "Define a BED file as background. If not defined, the\nbackground is\
+    \ whole genome according to the given\norganism. (default: None)"
+  synonyms:
+  - -bg
+  args: !SimpleFlagArg
+    name: BG
+  optional: true
+- !Flag
+  description: "Define the mode of calculating intersection. 'count'\noutputs the\
+    \ number of overlapped regions.'bp' outputs\nthe coverage(basepair) of intersection.\
+    \ (default: count)"
+  synonyms:
+  - -m
+  args: !ChoiceFlagArg
+    choices: !!set
+      count:
+      bp:
+  optional: true
+- !Flag
+  description: "Define the threshold(in percentage) of reference length\nfor intersection\
+    \ counting. For example, '20' means that\nthe query which overlaps more than 20%\
+    \ of reference is\ncounted as intersection. (default: False)"
+  synonyms:
+  - -tc
+  args: !SimpleFlagArg
+    name: TC
+  optional: true
+- !Flag
+  description: "Define the extension(in percentage) of reference length\nfor intersection\
+    \ counting. For example, '20' means that\neach region of reference is extended\
+    \ by 20% in order to\ninclude proximal queries. (default: 0)"
+  synonyms:
+  - -ex
+  args: !SimpleFlagArg
+    name: EX
+  optional: true
+- !Flag
+  description: 'Set y axis of the plot in log scale. (default: False)'
+  synonyms:
+  - -log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Define the specific colors with the given column \"color\"\nin experimental\
+    \ matrix. The color should be in the\nformat of matplotlib.colors. For example,\
+    \ \"r\" for red,\n\"b\" for blue, or \"(100, 35, 138)\" for RGB. (default:\nFalse)"
+  synonyms:
+  - -color
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show the Venn diagram of the combinatorials of\nreferences. (default:\
+    \ False)"
+  synonyms:
+  - -venn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Show the figure in the screen. (default: False)'
+  synonyms:
+  - -show
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Define the repetition time of random subregion test\nbetween reference\
+    \ and query. (default: 0)"
+  synonyms:
+  - -stest
+  args: !SimpleFlagArg
+    name: STEST
+  optional: true
+- !Flag
+  description: 'Define the width of single panel. (default: 3)'
+  synonyms:
+  - -pw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Define the height of single panel. (default: 3)'
+  synonyms:
+  - -ph
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: rgt-viz combinatorial [-h] [-o O] [-r  ] [-q  ] [-t  ] [-g G] [-c\
+  \ C]\n                             [-organism ORGANISM] [-bg BG] [-m {count,bp}]\n\
+  \                             [-tc TC] [-ex EX] [-log] [-color] [-venn] [-show]\n\
+  \                             [-stest STEST] [-pw  ] [-ph  ]\n\noptional arguments:\n\
+  \  -h, --help          show this help message and exit\n  -o O                The\
+  \ directory name for the output files. For example,\n                      project\
+  \ name. (default: None)\n  -r                  The file name of the reference Experimental\
+  \ Matrix.\n                      Multiple references are acceptable. (default: None)\n\
+  \  -q                  The file name of the query Experimental Matrix. Multiple\n\
+  \                      queries are acceptable. (default: None)\n  -t           \
+  \       The title shown on the top of the plot and also the\n                  \
+  \    folder name. (default: combinatorial_test)\n  -g G                Group the\
+  \ data by any optional column (for example,\n                      'cell') of experimental\
+  \ matrix, or None. (default: None)\n  -c C                Color the data by any\
+  \ optional column (for example,\n                      'cell') of experimental matrix,\
+  \ or None. (default:\n                      regions)\n  -organism ORGANISM  Define\
+  \ the organism. (default: hg19)\n  -bg BG              Define a BED file as background.\
+  \ If not defined, the\n                      background is whole genome according\
+  \ to the given\n                      organism. (default: None)\n  -m {count,bp}\
+  \       Define the mode of calculating intersection. 'count'\n                 \
+  \     outputs the number of overlapped regions.'bp' outputs\n                  \
+  \    the coverage(basepair) of intersection. (default: count)\n  -tc TC        \
+  \      Define the threshold(in percentage) of reference length\n               \
+  \       for intersection counting. For example, '20' means that\n              \
+  \        the query which overlaps more than 20% of reference is\n              \
+  \        counted as intersection. (default: False)\n  -ex EX              Define\
+  \ the extension(in percentage) of reference length\n                      for intersection\
+  \ counting. For example, '20' means that\n                      each region of reference\
+  \ is extended by 20% in order to\n                      include proximal queries.\
+  \ (default: 0)\n  -log                Set y axis of the plot in log scale. (default:\
+  \ False)\n  -color              Define the specific colors with the given column\
+  \ \"color\"\n                      in experimental matrix. The color should be in\
+  \ the\n                      format of matplotlib.colors. For example, \"r\" for\
+  \ red,\n                      \"b\" for blue, or \"(100, 35, 138)\" for RGB. (default:\n\
+  \                      False)\n  -venn               Show the Venn diagram of the\
+  \ combinatorials of\n                      references. (default: False)\n  -show\
+  \               Show the figure in the screen. (default: False)\n  -stest STEST\
+  \        Define the repetition time of random subregion test\n                 \
+  \     between reference and query. (default: 0)\n  -pw                 Define the\
+  \ width of single panel. (default: 3)\n  -ph                 Define the height of\
+  \ single panel. (default: 3)\n"
+generated_using:
+- --help

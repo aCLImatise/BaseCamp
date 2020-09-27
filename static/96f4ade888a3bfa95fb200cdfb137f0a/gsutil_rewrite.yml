@@ -1,0 +1,121 @@
+!Command
+command:
+- gsutil
+- rewrite
+positional:
+- !Positional
+  description: "For example, the command:\ngsutil rewrite -k gs://bucket/**"
+  position: 0
+  name: objects.
+  optional: false
+named:
+- !Flag
+  description: "Continues silently (without printing error messages) despite\nerrors\
+    \ when rewriting multiple objects. If some of the objects\ncould not be rewritten,\
+    \ gsutil's exit status will be non-zero\neven if this flag is set. This option\
+    \ is implicitly set when\nrunning \"gsutil -m rewrite ...\"."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Causes gsutil to read the list of objects to rewrite from stdin.\n\
+    This allows you to run a program that generates the list of\nobjects to rewrite."
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Rewrite the objects to the current encryption key specific in\nyour\
+    \ boto configuration file. If encryption_key is specified,\nencrypt all objects\
+    \ with this key. If encryption_key is\nunspecified, decrypt all objects. See `gsutil\
+    \ help encryption`\nfor details on encryption configuration."
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Rewrite objects with the bucket's default object ACL instead of\n\
+    the existing object ACL. This is needed if you do not have\nOWNER permission on\
+    \ the object."
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The -R and -r options are synonymous. Causes bucket or bucket\nsubdirectory\
+    \ contents to be rewritten recursively."
+  synonyms:
+  - -R
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Rewrite objects using the specified storage class.
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: class
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n  rewrite - Rewrite objects\n\n\nSYNOPSIS\n\n  gsutil rewrite -k\
+  \ [-f] [-r] url...\n  gsutil rewrite -k [-f] [-r] -I\n\n\n\nDESCRIPTION\n  The gsutil\
+  \ rewrite command rewrites cloud objects, applying the specified\n  transformations\
+  \ to them. The transformation(s) are atomic and\n  applied based on the input transformation\
+  \ flags. Object metadata values are\n  preserved unless altered by a transformation.\n\
+  \n  The -k flag is supported to add, rotate, or remove encryption keys on\n  objects.\
+  \  For example, the command:\n\n    gsutil rewrite -k gs://bucket/**\n\n  will update\
+  \ all objects in gs://bucket with the current encryption key\n  from your boto config\
+  \ file.\n\n  You can also use the -r option to specify recursive object transform;\
+  \ this is\n  synonymous with the ** wildcard. Thus, either of the following two\
+  \ commands\n  will perform encryption key transforms on gs://bucket/subdir and all\
+  \ objects\n  and subdirectories under it:\n\n    gsutil rewrite -k gs://bucket/subdir**\n\
+  \    gsutil rewrite -k -r gs://bucket/subdir\n\n  The rewrite command acts only\
+  \ on live object versions, so specifying a\n  URL with a generation will fail. If\
+  \ you want to rewrite an archived\n  generation, first copy it to the live version,\
+  \ then rewrite it, for example:\n\n    gsutil cp gs://bucket/object#123 gs://bucket/object\n\
+  \    gsutil rewrite -k gs://bucket/object\n\n  You can use the -s option to specify\
+  \ a new storage class for objects.  For\n  example, the command:\n\n    gsutil rewrite\
+  \ -s nearline gs://bucket/foo\n\n  will rewrite the object, changing its storage\
+  \ class to nearline.\n\n  The rewrite command will skip objects that are already\
+  \ in the desired state.\n  For example, if you run:\n\n    gsutil rewrite -k gs://bucket/**\n\
+  \n  and gs://bucket contains objects that already match the encryption\n  configuration,\
+  \ gsutil will skip rewriting those objects and only rewrite\n  objects that do not\
+  \ match the encryption configuration. If you specify\n  multiple transformations,\
+  \ gsutil will only skip those that would not change\n  the object's state. For example,\
+  \ if you run:\n\n    gsutil rewrite -s nearline -k gs://bucket/**\n\n  and gs://bucket\
+  \ contains objects that already match the encryption\n  configuration but have a\
+  \ storage class of standard, the only transformation\n  applied to those objects\
+  \ would be the change in storage class.\n\n  You can pass a list of URLs (one per\
+  \ line) to rewrite on stdin instead of as\n  command line arguments by using the\
+  \ -I option. This allows you to use gsutil\n  in a pipeline to rewrite objects identified\
+  \ by a program, such as:\n\n    some_program | gsutil -m rewrite -k -I\n\n  The\
+  \ contents of stdin can name cloud URLs and wildcards of cloud URLs.\n\n  The rewrite\
+  \ command requires OWNER permissions on each object to preserve\n  object ACLs.\
+  \ You can bypass this by using the -O flag, which will cause\n  gsutil not to read\
+  \ the object's ACL and instead apply the default object ACL\n  to the rewritten\
+  \ object:\n\n    gsutil rewrite -k -O gs://bucket/**\n\n\nOPTIONS\n  -f        \
+  \  Continues silently (without printing error messages) despite\n              errors\
+  \ when rewriting multiple objects. If some of the objects\n              could not\
+  \ be rewritten, gsutil's exit status will be non-zero\n              even if this\
+  \ flag is set. This option is implicitly set when\n              running \"gsutil\
+  \ -m rewrite ...\".\n\n  -I          Causes gsutil to read the list of objects to\
+  \ rewrite from stdin.\n              This allows you to run a program that generates\
+  \ the list of\n              objects to rewrite.\n\n  -k          Rewrite the objects\
+  \ to the current encryption key specific in\n              your boto configuration\
+  \ file. If encryption_key is specified,\n              encrypt all objects with\
+  \ this key. If encryption_key is\n              unspecified, decrypt all objects.\
+  \ See `gsutil help encryption`\n              for details on encryption configuration.\n\
+  \n  -O          Rewrite objects with the bucket's default object ACL instead of\n\
+  \              the existing object ACL. This is needed if you do not have\n    \
+  \          OWNER permission on the object.\n\n  -R, -r      The -R and -r options\
+  \ are synonymous. Causes bucket or bucket\n              subdirectory contents to\
+  \ be rewritten recursively.\n\n  -s <class>  Rewrite objects using the specified\
+  \ storage class.\n"
+generated_using:
+- --help

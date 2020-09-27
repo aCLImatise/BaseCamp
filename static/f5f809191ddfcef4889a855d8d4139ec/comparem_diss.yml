@@ -1,0 +1,85 @@
+!Command
+command:
+- comparem
+- diss
+positional:
+- !Positional
+  description: file with usage profile for each genome
+  position: 0
+  name: profile_file
+  optional: false
+- !Positional
+  description: output file with pairwise dissimilarity between
+  position: 1
+  name: output_file
+  optional: false
+- !Positional
+  description: 'optional arguments:'
+  position: 2
+  name: genomes
+  optional: false
+named:
+- !Flag
+  description: 'distance metric to use (default: euclidean)'
+  synonyms:
+  - --metric
+  args: !ChoiceFlagArg
+    choices: !!set
+      dice:
+      canberra:
+      braycurtis:
+      seuclidean:
+      sokalsneath:
+      wminkowski:
+      correlation:
+      sqeuclidean:
+      chebyshev:
+      hamming:
+      minkowski:
+      cosine:
+      cityblock:
+      matching:
+      euclidean:
+      russellrao:
+      kulsinski:
+      rogerstanimoto:
+      mahalanobis:
+      sokalmichener:
+      yule:
+      jaccard:
+  optional: true
+- !Flag
+  description: output full dissimilarity matrix
+  synonyms:
+  - --full_matrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress output
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: comparem diss [-h]\n                     [--metric {euclidean,minkowski,cityblock,seuclidean,sqeuclidean,cosine,correlation,hamming,jaccard,chebyshev,canberra,braycurtis,mahalanobis,yule,matching,dice,kulsinski,rogerstanimoto,russellrao,sokalmichener,sokalsneath,wminkowski}]\n\
+  \                     [--full_matrix] [--silent]\n                     profile_file\
+  \ output_file\n\nCalculate the dissimilarity between usage profiles.\n\npositional\
+  \ arguments:\n  profile_file          file with usage profile for each genome\n\
+  \  output_file           output file with pairwise dissimilarity between\n     \
+  \                   genomes\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --metric {euclidean,minkowski,cityblock,seuclidean,sqeuclidean,cosine,correlation,hamming,jaccard,chebyshev,canberra,braycurtis,mahalanobis,yule,matching,dice,kulsinski,rogerstanimoto,russellrao,sokalmichener,sokalsneath,wminkowski}\n\
+  \                        distance metric to use (default: euclidean)\n  --full_matrix\
+  \         output full dissimilarity matrix\n  --silent              suppress output\n"
+generated_using:
+- --help

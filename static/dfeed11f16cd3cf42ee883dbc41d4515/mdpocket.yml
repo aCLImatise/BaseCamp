@@ -1,0 +1,81 @@
+!Command
+command:
+- mdpocket
+positional:
+- !Positional
+  description: '(netcdf)         '
+  position: 0
+  name: NetCDF
+  optional: false
+- !Positional
+  description: '(dcd)        '
+  position: 1
+  name: DCD
+  optional: false
+named:
+- !Flag
+  description: format
+  synonyms:
+  - --trajectory_format
+  args: !SimpleFlagArg
+    name: trajectory
+  optional: true
+- !Flag
+  description: PDB file
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: topology
+  optional: true
+- !Flag
+  description: "--topology_format topology_format (currently only prmtop is supported)\n\
+    -x set this flag to perform interaction energy grid calculations"
+  synonyms:
+  - --topology_file
+  args: !SimpleFlagArg
+    name: topology_file
+  optional: true
+- !Flag
+  description: ': specify the prefix of all output files here'
+  synonyms:
+  - -o
+  - --output_prefix
+  args: !SimpleFlagArg
+    name: output_prefix
+  optional: true
+- !Flag
+  description: ': put this flag to score pockets by druggability'
+  synonyms:
+  - -S
+  - --druggability_score
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n:||: \e[1mmdpocket (fpocket 3.0)\e[0m :||:\n        \n\e[1m1: Pocket\
+  \ Exploration: Mandatory parameters\e[0m : \n\t mdpocket --trajectory_file trajectory\
+  \ file \n\t          --trajectory_format trajectory format\n\t          -f topology\
+  \ PDB file\n\t[mdpocket --pdb_list pdb_list_file ]                             \
+  \     \n\n\e[1m2: Pocket Characterization: Mandatory parameters\e[0m : \n\t mdpocket\
+  \ --trajectory_file md_trajectory_file \n\t          --trajectory_format md_trajectory_format\n\
+  \t          --selected_pocket selectedPocket.pdb\n\t          -f topology PDB file\n\
+  \t[mdpocket --pdb_list pdb_list_file --selected_pocket selectedPocket.pdb]     \
+  \                             \n\n\t\e[1m2.1: Optional energy calculation during\
+  \ pocket characterization:\e[0m : \n\t\t          --topology_file topology_file\n\
+  \t\t          --topology_format topology_format (currently only prmtop is supported)\n\
+  \t\t          -x set this flag to perform interaction energy grid calculations\n\
+  \n\n\e[1mSupported trajectory formats\e[0m\n\tTrajectory format :\n\t\tAmber MDCRD\
+  \ without box information (crd)      \n\t\tAmber MDCRD with box information    (crdbox)\
+  \      \n\t\tNetCDF                              (netcdf)         \n\t\tDCD    \
+  \                             (dcd)        \n\t\tDESRES DTR                    \
+  \      (dtr)        \n\t\tGromacs TRR                         (trr)        \n\t\t\
+  Gromacs XTC                         (xtc)  \n\n\n\e[1mOptional output parameters\e\
+  [0m\n\t-o --output_prefix output_prefix\t: specify the prefix of all output files\
+  \ here\n\t-S --druggability_score\t: put this flag to score pockets by druggability\n\
+  \n\e[1mFor more information: http://fpocket.sourceforge.net\e[0m\n"
+generated_using:
+- --help

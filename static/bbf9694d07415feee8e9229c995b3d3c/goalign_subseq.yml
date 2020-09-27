@@ -1,0 +1,179 @@
+!Command
+command:
+- goalign
+- subseq
+positional:
+- !Positional
+  description: 'Warning: If output is stdout, it works only if input format is Phylip,
+    because '
+  position: 0
+  name: '56789'
+  optional: false
+named:
+- !Flag
+  description: Length of the sub alignment (default 10)
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Alignment output file (default "stdout")
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Start position (0-based inclusive)
+  synonyms:
+  - -s
+  - --start
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Step: If > 0, then will generate several alignments, for each window
+    of length l, with starts: [start,start+step, ..., end-l]*'
+  synonyms:
+  - --step
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Alignment input file (default "stdin")
+  synonyms:
+  - -i
+  - --align
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Auto detects input format (overrides -p, -x and -u)
+  synonyms:
+  - --auto-detect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in clustal? default fasta
+  synonyms:
+  - -u
+  - --clustal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore duplicated sequences that have the same name and same sequences
+  synonyms:
+  - --ignore-identical
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Strict phylip input format (only used with -p)
+  synonyms:
+  - --input-strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in nexus? default fasta
+  synonyms:
+  - -x
+  - --nexus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write Phylip sequences without space separated blocks (only used with
+    -p)
+  synonyms:
+  - --no-block
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write Phylip sequences on 1 line (only used with -p)
+  synonyms:
+  - --one-line
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Strict phylip output format (only used with -p)
+  synonyms:
+  - --output-strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in phylip? default fasta
+  synonyms:
+  - -p
+  - --phylip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Number of threads (default 1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for subseq
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Take a sub-alignment from the input alignment\n\nIt takes an alignment\
+  \ and extracts sub-sequences from it, given\na start position (0-based inclusive)\
+  \ and a length.\nIf the length is after the end of the alignment, will stop at the\
+  \ \nend of the alignment.\n\nFor example:\ngoalign subseq -p -i al.phy -s 9 -l 10\n\
+  \nThis will extract a sub-alignment going from 10th position, with a length of 10.\n\
+  \nThe output format is the same than input format.\n\nSliding window:\n---------------\n\
+  If --step is given and > 0, then Several sub-alignments will be produced,\nand corresponding\
+  \ to all alignments in windows of sizes -l, and with starts:\n[start, start+step,\
+  \ ..., end-length].\n\nExample with an alignment al.phy of size 10 (0123456789)\n\
+  \ngoalign subseq -i al.phy -s 0 -l 5 --step 1 will produce:\n\n01234\n 12345\n \
+  \ 23456\n   34567\n    45678\n     56789\n\nWarning: If output is stdout, it works\
+  \ only if input format is Phylip, because \nit is possible to split alignments afterwards\
+  \ (goalign divide for example).\n\nSeveral alignments:\n------------------\nIf several\
+  \ alignments are present in the input file and the output is a file \n(not stdout\
+  \ or -) , then :\n* First alignment, first subalignment: results will be placed\
+  \ in the given file\n  (ex out.fasta)\n* First alignment, other subalignments (sliding\
+  \ windows): results will be placed\n  in file with the given name with \"_sub<i>\"\
+  \ suffix (ex: out_sub1.fasta, out_sub2.fasta, etc.)\n* Other alignments, first subalignment:\
+  \ results will be placed in the given file\n  with \"_al<i>\" suffix (ex out_al1.fasta,\
+  \ out_al2.fasta, etc.)\n* Other alignments, other subalignments: results will be\
+  \ placed in the given file\n  with \"_al<i>\" and \"_sub<i> suffixes (ex out_al1_sub1.fasta,\
+  \ out_al1_sub2.fasta, etc.)\n\nVersion: 0.3.2\n\nUsage:\n  goalign subseq [flags]\n\
+  \nFlags:\n  -h, --help            help for subseq\n  -l, --length int      Length\
+  \ of the sub alignment (default 10)\n  -o, --output string   Alignment output file\
+  \ (default \"stdout\")\n  -s, --start int       Start position (0-based inclusive)\n\
+  \      --step int        Step: If > 0, then will generate several alignments, for\
+  \ each window of length l, with starts: [start,start+step, ..., end-l]*\n\nGlobal\
+  \ Flags:\n  -i, --align string       Alignment input file (default \"stdin\")\n\
+  \      --auto-detect        Auto detects input format (overrides -p, -x and -u)\n\
+  \  -u, --clustal            Alignment is in clustal? default fasta\n      --ignore-identical\
+  \   Ignore duplicated sequences that have the same name and same sequences\n   \
+  \   --input-strict       Strict phylip input format (only used with -p)\n  -x, --nexus\
+  \              Alignment is in nexus? default fasta\n      --no-block          \
+  \ Write Phylip sequences without space separated blocks (only used with -p)\n  \
+  \    --one-line           Write Phylip sequences on 1 line (only used with -p)\n\
+  \      --output-strict      Strict phylip output format (only used with -p)\n  -p,\
+  \ --phylip             Alignment is in phylip? default fasta\n      --seed int \
+  \          Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default -1)\n\
+  \  -t, --threads int        Number of threads (default 1)\n\n"
+generated_using:
+- --help

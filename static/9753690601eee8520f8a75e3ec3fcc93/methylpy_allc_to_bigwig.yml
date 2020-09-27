@@ -1,0 +1,161 @@
+!Command
+command:
+- methylpy
+- allc-to-bigwig
+positional: []
+named:
+- !Flag
+  description: "input allc file to be converted to bigwig format\n(default: None)"
+  synonyms:
+  - --allc-file
+  args: !SimpleFlagArg
+    name: ALLC_FILE
+  optional: true
+- !Flag
+  description: 'Name of output file (default: None)'
+  synonyms:
+  - --output-file
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: "string indicating the path to a fasta file containing\nthe genome\
+    \ sequences (default: None)"
+  synonyms:
+  - --ref-fasta
+  args: !SimpleFlagArg
+    name: REF_FASTA
+  optional: true
+- !Flag
+  description: "List of space separated mc nucleotide contexts for\nwhich you want\
+    \ to look for DMRs. These classifications\nmay use the wildcards H (indicating\
+    \ anything but a G)\nand N (indicating any nucleotide). (default: ['CGN'])"
+  synonyms:
+  - --mc-type
+  args: !RepeatFlagArg
+    name: MC_TYPE
+  optional: true
+- !Flag
+  description: "Genomic bin size for calculating methylation level\n(default: 100)"
+  synonyms:
+  - --bin-size
+  args: !SimpleFlagArg
+    name: BIN_SIZE
+  optional: true
+- !Flag
+  description: "Minimum sites in a bin for it to be included.\n(default: 0)"
+  synonyms:
+  - --min-bin-sites
+  args: !SimpleFlagArg
+    name: MIN_BIN_SITES
+  optional: true
+- !Flag
+  description: "Minimum total coverage of all sites in a bin for\nmethylation level\
+    \ to be calculated. (default: 0)"
+  synonyms:
+  - --min-bin-cov
+  args: !SimpleFlagArg
+    name: MIN_BIN_COV
+  optional: true
+- !Flag
+  description: "Minimum total coverage of a site for it to be\nincluded. (default:\
+    \ 0)"
+  synonyms:
+  - --min-site-cov
+  args: !SimpleFlagArg
+    name: MIN_SITE_COV
+  optional: true
+- !Flag
+  description: "Maximum total coverage of a site for it to be\nincluded. (default:\
+    \ None)"
+  synonyms:
+  - --max-site-cov
+  args: !SimpleFlagArg
+    name: MAX_SITE_COV
+  optional: true
+- !Flag
+  description: 'Path to wigToBigWig executable (default: )'
+  synonyms:
+  - --path-to-wigToBigWig
+  args: !SimpleFlagArg
+    name: PATH_TO_WIGTOBIGWIG
+  optional: true
+- !Flag
+  description: 'Path to samtools installation (default: )'
+  synonyms:
+  - --path-to-samtools
+  args: !SimpleFlagArg
+    name: PATH_TO_SAMTOOLS
+  optional: true
+- !Flag
+  description: "Boolean indicates whether to remove \"chr\" in the\nchromosome names\
+    \ in genome sequence file to match\nchromosome names in input allc file. (default:\
+    \ True)"
+  synonyms:
+  - --remove-chr-prefix
+  args: !SimpleFlagArg
+    name: REMOVE_CHR_PREFIX
+  optional: true
+- !Flag
+  description: "Boolean indicates whether to add \"chr\" in the\nchromosome names\
+    \ in input allc file to match\nchromosome names in genome sequence file. This\
+    \ option\noverrides --remove-chr-prefix. (default: False)\n"
+  synonyms:
+  - --add-chr-prefix
+  args: !SimpleFlagArg
+    name: ADD_CHR_PREFIX
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: methylpy allc-to-bigwig [-h] [--allc-file ALLC_FILE] --output-file\n\
+  \                               OUTPUT_FILE --ref-fasta REF_FASTA\n            \
+  \                   [--mc-type MC_TYPE [MC_TYPE ...]]\n                        \
+  \       [--bin-size BIN_SIZE]\n                               [--min-bin-sites MIN_BIN_SITES]\n\
+  \                               [--min-bin-cov MIN_BIN_COV]\n                  \
+  \             [--min-site-cov MIN_SITE_COV]\n                               [--max-site-cov\
+  \ MAX_SITE_COV]\n                               [--path-to-wigToBigWig PATH_TO_WIGTOBIGWIG]\n\
+  \                               [--path-to-samtools PATH_TO_SAMTOOLS]\n        \
+  \                       [--remove-chr-prefix REMOVE_CHR_PREFIX]\n              \
+  \                 [--add-chr-prefix ADD_CHR_PREFIX]\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n\nrequired inputs:\n  --allc-file\
+  \ ALLC_FILE\n                        input allc file to be converted to bigwig format\n\
+  \                        (default: None)\n  --output-file OUTPUT_FILE\n        \
+  \                Name of output file (default: None)\n  --ref-fasta REF_FASTA\n\
+  \                        string indicating the path to a fasta file containing\n\
+  \                        the genome sequences (default: None)\n\noptional inputs:\n\
+  \  --mc-type MC_TYPE [MC_TYPE ...]\n                        List of space separated\
+  \ mc nucleotide contexts for\n                        which you want to look for\
+  \ DMRs. These classifications\n                        may use the wildcards H (indicating\
+  \ anything but a G)\n                        and N (indicating any nucleotide).\
+  \ (default: ['CGN'])\n  --bin-size BIN_SIZE   Genomic bin size for calculating methylation\
+  \ level\n                        (default: 100)\n  --min-bin-sites MIN_BIN_SITES\n\
+  \                        Minimum sites in a bin for it to be included.\n       \
+  \                 (default: 0)\n  --min-bin-cov MIN_BIN_COV\n                  \
+  \      Minimum total coverage of all sites in a bin for\n                      \
+  \  methylation level to be calculated. (default: 0)\n  --min-site-cov MIN_SITE_COV\n\
+  \                        Minimum total coverage of a site for it to be\n       \
+  \                 included. (default: 0)\n  --max-site-cov MAX_SITE_COV\n      \
+  \                  Maximum total coverage of a site for it to be\n             \
+  \           included. (default: None)\n  --path-to-wigToBigWig PATH_TO_WIGTOBIGWIG\n\
+  \                        Path to wigToBigWig executable (default: )\n  --path-to-samtools\
+  \ PATH_TO_SAMTOOLS\n                        Path to samtools installation (default:\
+  \ )\n  --remove-chr-prefix REMOVE_CHR_PREFIX\n                        Boolean indicates\
+  \ whether to remove \"chr\" in the\n                        chromosome names in\
+  \ genome sequence file to match\n                        chromosome names in input\
+  \ allc file. (default: True)\n  --add-chr-prefix ADD_CHR_PREFIX\n              \
+  \          Boolean indicates whether to add \"chr\" in the\n                   \
+  \     chromosome names in input allc file to match\n                        chromosome\
+  \ names in genome sequence file. This option\n                        overrides\
+  \ --remove-chr-prefix. (default: False)\n"
+generated_using:
+- --help

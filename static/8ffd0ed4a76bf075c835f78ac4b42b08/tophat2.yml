@@ -1,0 +1,256 @@
+!Command
+command:
+- tophat2
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: tophat
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: bowtie_index
+  optional: false
+named:
+- !Flag
+  description: "-o/--output-dir                <string>    [ default: ./tophat_out\
+    \         ]\n--bowtie1                                  [ default: bowtie2   \
+    \           ]\n-N/--read-mismatches           <int>       [ default: 2       \
+    \             ]\n--read-gap-length              <int>       [ default: 2     \
+    \               ]\n--read-edit-dist               <int>       [ default: 2   \
+    \                 ]\n--read-realign-edit-dist       <int>       [ default: \"\
+    read-edit-dist\" + 1 ]\n-a/--min-anchor                <int>       [ default:\
+    \ 8                    ]\n-m/--splice-mismatches         <0-2>       [ default:\
+    \ 0                    ]\n-i/--min-intron-length         <int>       [ default:\
+    \ 50                   ]\n-I/--max-intron-length         <int>       [ default:\
+    \ 500000               ]\n-g/--max-multihits             <int>       [ default:\
+    \ 20                   ]\n--suppress-hits\n-x/--transcriptome-max-hits    <int>\
+    \       [ default: 60                   ]\n-M/--prefilter-multihits          \
+    \         ( for -G/--GTF option, enable\nan initial bowtie search\nagainst the\
+    \ genome )\n--max-insertion-length         <int>       [ default: 3          \
+    \          ]\n--max-deletion-length          <int>       [ default: 3        \
+    \            ]\n--solexa-quals\n--solexa1.3-quals                          (same\
+    \ as phred64-quals)\n--phred64-quals                            (same as solexa1.3-quals)\n\
+    -Q/--quals\n--integer-quals\n-C/--color                                 (Solid\
+    \ - color space)\n--color-out\n--library-type                 <string>    (fr-unstranded,\
+    \ fr-firststrand,\nfr-secondstrand)\n-p/--num-threads               <int>    \
+    \   [ default: 1                   ]\n-R/--resume                    <out_dir>\
+    \   ( try to resume execution )\n-G/--GTF                       <filename>  (GTF/GFF\
+    \ with known transcripts)\n--transcriptome-index          <bwtidx>    (transcriptome\
+    \ bowtie index)\n-T/--transcriptome-only                    (map only to the transcriptome)\n\
+    -j/--raw-juncs                 <filename>\n--insertions                   <filename>\n\
+    --deletions                    <filename>\n-r/--mate-inner-dist           <int>\
+    \       [ default: 50                  ]\n--mate-std-dev                 <int>\
+    \       [ default: 20                  ]\n--no-novel-juncs\n--no-novel-indels\n\
+    --no-gtf-juncs\n--no-coverage-search\n--coverage-search\n--microexon-search\n\
+    --keep-tmp\n--tmp-dir                      <dirname>   [ default: <output_dir>/tmp\
+    \ ]\n-z/--zpacker                   <program>   [ default: gzip             ]\n\
+    -X/--unmapped-fifo                         [use mkfifo to compress more temporary\n\
+    files for color space reads]"
+  synonyms:
+  - -v/--version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--no-discordant\n--no-mixed\n--segment-mismatches           <int>\
+    \       [ default: 2                ]\n--segment-length               <int>  \
+    \     [ default: 25               ]\n--bowtie-n                              \
+    \   [ default: bowtie -v        ]\n--min-coverage-intron          <int>      \
+    \ [ default: 50               ]\n--max-coverage-intron          <int>       [\
+    \ default: 20000            ]\n--min-segment-intron           <int>       [ default:\
+    \ 50               ]\n--max-segment-intron           <int>       [ default: 500000\
+    \           ]\n--no-sort-bam                              (Output BAM is not coordinate-sorted)\n\
+    --no-convert-bam                           (Do not output bam format.\nOutput\
+    \ is <output_dir>/accepted_hits.sam)\n--keep-fasta-order\n--allow-partial-mapping"
+  synonyms:
+  - --report-secondary-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<func>      [ default: S,1,1.25         ]'
+  synonyms:
+  - --b2-i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<func>      [ default: L,0,0.15         ]'
+  synonyms:
+  - --b2-n-ceil
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<int>,<int> [ default: 6,2              ]'
+  synonyms:
+  - --b2-mp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<int>,<int> [ default: 5,3              ]'
+  synonyms:
+  - --b2-rdg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<int>,<int> [ default: 5,3              ]'
+  synonyms:
+  - --b2-rfg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<func>      [ default: L,-0.6,-0.6      ]'
+  synonyms:
+  - --b2-score-min
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--fusion-anchor-length         <int>       [ default: 20         \
+    \      ]\n--fusion-min-dist              <int>       [ default: 10000000     \
+    \    ]\n--fusion-read-mismatches       <int>       [ default: 2              \
+    \  ]\n--fusion-multireads            <int>       [ default: 2                ]\n\
+    --fusion-multipairs            <int>       [ default: 2                ]\n--fusion-ignore-chromosomes\
+    \    <list>      [ e.g, <chrM,chrX>          ]\n--fusion-do-not-resolve-conflicts\
+    \          [this is for test purposes  ]"
+  synonyms:
+  - --fusion-search
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (read group ID)
+  synonyms:
+  - --rg-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (sample ID)
+  synonyms:
+  - --rg-sample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (library ID)
+  synonyms:
+  - --rg-library
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (descriptive string, no tabs allowed)
+  synonyms:
+  - --rg-description
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (e.g Illumina lane ID)
+  synonyms:
+  - --rg-platform-unit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (sequencing center name)
+  synonyms:
+  - --rg-center
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (ISO 8601 date of the sequencing run)
+  synonyms:
+  - --rg-date
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <string>    (Sequencing platform descriptor)
+  synonyms:
+  - --rg-platform
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "tophat: \nTopHat maps short sequences from spliced transcripts to whole\
+  \ genomes.\n\nUsage:\n    tophat [options] <bowtie_index> <reads1[,reads2,...]>\
+  \ [reads1[,reads2,...]] \\\n                                    [quals1,[quals2,...]]\
+  \ [quals1[,quals2,...]]\n\nOptions:\n    -v/--version\n    -o/--output-dir     \
+  \           <string>    [ default: ./tophat_out         ]\n    --bowtie1       \
+  \                           [ default: bowtie2              ]\n    -N/--read-mismatches\
+  \           <int>       [ default: 2                    ]\n    --read-gap-length\
+  \              <int>       [ default: 2                    ]\n    --read-edit-dist\
+  \               <int>       [ default: 2                    ]\n    --read-realign-edit-dist\
+  \       <int>       [ default: \"read-edit-dist\" + 1 ]\n    -a/--min-anchor   \
+  \             <int>       [ default: 8                    ]\n    -m/--splice-mismatches\
+  \         <0-2>       [ default: 0                    ]\n    -i/--min-intron-length\
+  \         <int>       [ default: 50                   ]\n    -I/--max-intron-length\
+  \         <int>       [ default: 500000               ]\n    -g/--max-multihits\
+  \             <int>       [ default: 20                   ]\n    --suppress-hits\n\
+  \    -x/--transcriptome-max-hits    <int>       [ default: 60                  \
+  \ ]\n    -M/--prefilter-multihits                   ( for -G/--GTF option, enable\n\
+  \                                                 an initial bowtie search\n   \
+  \                                              against the genome )\n    --max-insertion-length\
+  \         <int>       [ default: 3                    ]\n    --max-deletion-length\
+  \          <int>       [ default: 3                    ]\n    --solexa-quals\n \
+  \   --solexa1.3-quals                          (same as phred64-quals)\n    --phred64-quals\
+  \                            (same as solexa1.3-quals)\n    -Q/--quals\n    --integer-quals\n\
+  \    -C/--color                                 (Solid - color space)\n    --color-out\n\
+  \    --library-type                 <string>    (fr-unstranded, fr-firststrand,\n\
+  \                                                fr-secondstrand)\n    -p/--num-threads\
+  \               <int>       [ default: 1                   ]\n    -R/--resume  \
+  \                  <out_dir>   ( try to resume execution )\n    -G/--GTF       \
+  \                <filename>  (GTF/GFF with known transcripts)\n    --transcriptome-index\
+  \          <bwtidx>    (transcriptome bowtie index)\n    -T/--transcriptome-only\
+  \                    (map only to the transcriptome)\n    -j/--raw-juncs       \
+  \          <filename>\n    --insertions                   <filename>\n    --deletions\
+  \                    <filename>\n    -r/--mate-inner-dist           <int>      \
+  \ [ default: 50                  ]\n    --mate-std-dev                 <int>   \
+  \    [ default: 20                  ]\n    --no-novel-juncs\n    --no-novel-indels\n\
+  \    --no-gtf-juncs\n    --no-coverage-search\n    --coverage-search\n    --microexon-search\n\
+  \    --keep-tmp\n    --tmp-dir                      <dirname>   [ default: <output_dir>/tmp\
+  \ ]\n    -z/--zpacker                   <program>   [ default: gzip            \
+  \ ]\n    -X/--unmapped-fifo                         [use mkfifo to compress more\
+  \ temporary\n                                                 files for color space\
+  \ reads]\n\nAdvanced Options:\n    --report-secondary-alignments\n    --no-discordant\n\
+  \    --no-mixed\n\n    --segment-mismatches           <int>       [ default: 2 \
+  \               ]\n    --segment-length               <int>       [ default: 25\
+  \               ]\n\n    --bowtie-n                                 [ default: bowtie\
+  \ -v        ]\n    --min-coverage-intron          <int>       [ default: 50    \
+  \           ]\n    --max-coverage-intron          <int>       [ default: 20000 \
+  \           ]\n    --min-segment-intron           <int>       [ default: 50    \
+  \           ]\n    --max-segment-intron           <int>       [ default: 500000\
+  \           ]\n    --no-sort-bam                              (Output BAM is not\
+  \ coordinate-sorted)\n    --no-convert-bam                           (Do not output\
+  \ bam format.\n                                                Output is <output_dir>/accepted_hits.sam)\n\
+  \    --keep-fasta-order\n    --allow-partial-mapping\n\nBowtie2 related options:\n\
+  \  Preset options in --end-to-end mode (local alignment is not used in TopHat2)\n\
+  \    --b2-very-fast\n    --b2-fast\n    --b2-sensitive\n    --b2-very-sensitive\n\
+  \n  Alignment options\n    --b2-N                         <int>       [ default:\
+  \ 0                ]\n    --b2-L                         <int>       [ default:\
+  \ 20               ]\n    --b2-i                         <func>      [ default:\
+  \ S,1,1.25         ]\n    --b2-n-ceil                    <func>      [ default:\
+  \ L,0,0.15         ]\n    --b2-gbar                      <int>       [ default:\
+  \ 4                ]\n\n  Scoring options\n    --b2-mp                        <int>,<int>\
+  \ [ default: 6,2              ]\n    --b2-np                        <int>      \
+  \ [ default: 1                ]\n    --b2-rdg                       <int>,<int>\
+  \ [ default: 5,3              ]\n    --b2-rfg                       <int>,<int>\
+  \ [ default: 5,3              ]\n    --b2-score-min                 <func>     \
+  \ [ default: L,-0.6,-0.6      ]\n\n  Effort options\n    --b2-D                \
+  \         <int>       [ default: 15               ]\n    --b2-R                \
+  \         <int>       [ default: 2                ]\n\nFusion related options:\n\
+  \    --fusion-search\n    --fusion-anchor-length         <int>       [ default:\
+  \ 20               ]\n    --fusion-min-dist              <int>       [ default:\
+  \ 10000000         ]\n    --fusion-read-mismatches       <int>       [ default:\
+  \ 2                ]\n    --fusion-multireads            <int>       [ default:\
+  \ 2                ]\n    --fusion-multipairs            <int>       [ default:\
+  \ 2                ]\n    --fusion-ignore-chromosomes    <list>      [ e.g, <chrM,chrX>\
+  \          ]\n\n    --fusion-do-not-resolve-conflicts          [this is for test\
+  \ purposes  ]\n\nSAM Header Options (for embedding sequencing run metadata in output):\n\
+  \    --rg-id                        <string>    (read group ID)\n    --rg-sample\
+  \                    <string>    (sample ID)\n    --rg-library                 \
+  \  <string>    (library ID)\n    --rg-description               <string>    (descriptive\
+  \ string, no tabs allowed)\n    --rg-platform-unit             <string>    (e.g\
+  \ Illumina lane ID)\n    --rg-center                    <string>    (sequencing\
+  \ center name)\n    --rg-date                      <string>    (ISO 8601 date of\
+  \ the sequencing run)\n    --rg-platform                  <string>    (Sequencing\
+  \ platform descriptor)\n\n    for detailed help see http://ccb.jhu.edu/software/tophat/manual.shtml\n"
+generated_using:
+- --help

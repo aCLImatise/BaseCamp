@@ -1,0 +1,132 @@
+!Command
+command:
+- gcloud
+- compute
+- connect-to-serial-port
+positional:
+- !Positional
+  description: SYNOPSIS
+  position: 0
+  name: instance
+  optional: false
+named:
+- !Flag
+  description: "If provided, the ssh command is printed to standard out rather than\n\
+    being executed."
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=VALUE,[KEY=VALUE,...]\nOptional arguments can be passed to the serial\
+    \ port connection by\npassing key-value pairs to this flag, such as max-connections=N\
+    \ or\nreplay-lines=N. See\nhttps://cloud.google.com/compute/docs/instances/interacting-with-serial-console\n\
+    for additional options."
+  synonyms:
+  - --extra-args
+  args: !SimpleFlagArg
+    name: KEY
+  optional: true
+- !Flag
+  description: "If enabled gcloud will regenerate and overwrite the files associated\n\
+    with a broken SSH key without asking for confirmation in both\ninteractive and\
+    \ non-interactive environment.\nIf disabled gcloud will not attempt to regenerate\
+    \ the files associated\nwith a broken SSH key and fail in both interactive and\
+    \ non-interactive\nenvironment."
+  synonyms:
+  - --force-key-file-overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "; default=\"1\"\nThe number of the requested serial port. Can be 1-4,\
+    \ default is 1.\nInstances can support up to four serial ports. By default, this\
+    \ command\nwill connect to the first serial port. Setting this flag will connect\n\
+    to the requested serial port."
+  synonyms:
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+- !Flag
+  description: "The path to the SSH key file. By default, this is\n~/.ssh/google_compute_engine."
+  synonyms:
+  - --ssh-key-file
+  args: !SimpleFlagArg
+    name: SSH_KEY_FILE
+  optional: true
+- !Flag
+  description: "The zone of the instance to connect to. If not specified, you may\
+    \ be\nprompted to select a zone.\nTo avoid prompting when this flag is omitted,\
+    \ you can set the\ncompute/zone property:\n$ gcloud config set compute/zone ZONE\n\
+    A list of zones can be fetched by running:\n$ gcloud compute zones list\nTo unset\
+    \ the property, run:\n$ gcloud config unset compute/zone\nAlternatively, the zone\
+    \ can be stored in the environment variable\nCLOUDSDK_COMPUTE_ZONE."
+  synonyms:
+  - --zone
+  args: !SimpleFlagArg
+    name: ZONE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: $ gcloud help for details.
+  synonyms:
+  - --flatten
+  - --format
+  - --help
+  - --log-http
+  - --project
+  - --quiet
+  - --trace-token
+  - --user-output-enabled
+  - --verbosity.
+  args: !SimpleFlagArg
+    name: Run
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n    gcloud compute connect-to-serial-port - connect to the serial\
+  \ port of an\n        instance\n\nSYNOPSIS\n    gcloud compute connect-to-serial-port\
+  \ [USER@]INSTANCE [--dry-run]\n        [--extra-args=KEY=VALUE,[KEY=VALUE,...]]\
+  \ [--force-key-file-overwrite]\n        [--port=PORT; default=\"1\"] [--ssh-key-file=SSH_KEY_FILE]\
+  \ [--zone=ZONE]\n        [GCLOUD_WIDE_FLAG ...]\n\nDESCRIPTION\n    gcloud compute\
+  \ connect-to-serial-port allows users to connect to, and\n    interact with, a VM's\
+  \ virtual serial port using ssh as the secure,\n    authenticated transport protocol.\n\
+  \n    The user must first enable serial port access to a given VM by setting the\n\
+  \    'serial-port-enable=true' metadata key-value pair. Setting\n    'serial-port-enable'\
+  \ on the project-level metadata enables serial port\n    access to all VMs in the\
+  \ project.\n\n    This command uses the same SSH key pair as the gcloud compute\
+  \ ssh command\n    and also ensures that the user's public SSH key is present in\
+  \ the project's\n    metadata. If the user does not have a public SSH key, one is\
+  \ generated\n    using ssh-keygen.\n\nPOSITIONAL ARGUMENTS\n     [USER@]INSTANCE\n\
+  \        Specifies the user/instance for the serial port connection.\n\n       \
+  \ USER specifies the username to authenticate as. If omitted, the current\n    \
+  \    OS user is selected.\n\nFLAGS\n     --dry-run\n        If provided, the ssh\
+  \ command is printed to standard out rather than\n        being executed.\n\n  \
+  \   --extra-args=KEY=VALUE,[KEY=VALUE,...]\n        Optional arguments can be passed\
+  \ to the serial port connection by\n        passing key-value pairs to this flag,\
+  \ such as max-connections=N or\n        replay-lines=N. See\n        https://cloud.google.com/compute/docs/instances/interacting-with-serial-console\n\
+  \        for additional options.\n\n     --force-key-file-overwrite\n        If\
+  \ enabled gcloud will regenerate and overwrite the files associated\n        with\
+  \ a broken SSH key without asking for confirmation in both\n        interactive\
+  \ and non-interactive environment.\n\n        If disabled gcloud will not attempt\
+  \ to regenerate the files associated\n        with a broken SSH key and fail in\
+  \ both interactive and non-interactive\n        environment.\n\n     --port=PORT;\
+  \ default=\"1\"\n        The number of the requested serial port. Can be 1-4, default\
+  \ is 1.\n\n        Instances can support up to four serial ports. By default, this\
+  \ command\n        will connect to the first serial port. Setting this flag will\
+  \ connect\n        to the requested serial port.\n\n     --ssh-key-file=SSH_KEY_FILE\n\
+  \        The path to the SSH key file. By default, this is\n        ~/.ssh/google_compute_engine.\n\
+  \n     --zone=ZONE\n        The zone of the instance to connect to. If not specified,\
+  \ you may be\n        prompted to select a zone.\n\n        To avoid prompting when\
+  \ this flag is omitted, you can set the\n        compute/zone property:\n\n    \
+  \        $ gcloud config set compute/zone ZONE\n\n        A list of zones can be\
+  \ fetched by running:\n\n            $ gcloud compute zones list\n\n        To unset\
+  \ the property, run:\n\n            $ gcloud config unset compute/zone\n\n     \
+  \   Alternatively, the zone can be stored in the environment variable\n        CLOUDSDK_COMPUTE_ZONE.\n\
+  \nGCLOUD WIDE FLAGS\n    These flags are available to all commands: --account, --configuration,\n\
+  \    --flatten, --format, --help, --log-http, --project, --quiet, --trace-token,\n\
+  \    --user-output-enabled, --verbosity. Run $ gcloud help for details.\n"
+generated_using:
+- --help

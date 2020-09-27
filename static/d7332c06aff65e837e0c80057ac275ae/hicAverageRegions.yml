@@ -1,0 +1,104 @@
+!Command
+command:
+- hicAverageRegions
+positional: []
+named:
+- !Flag
+  description: File name to save the average regions TADs matrix.
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: "RANGE, -ra RANGE RANGE\nRange of region up- and downstream of each\
+    \ region to\ninclude in genomic units."
+  synonyms:
+  - --range
+  args: !SimpleFlagArg
+    name: RANGE
+  optional: true
+- !Flag
+  description: "RANGEINBINS, -rib RANGEINBINS RANGEINBINS\nRange of region up- and\
+    \ downstream of each region to\ninclude in bin units."
+  synonyms:
+  - --rangeInBins
+  args: !SimpleFlagArg
+    name: RANGEINBINS
+  optional: true
+- !Flag
+  description: The matrix to use for the average of TAD regions.
+  synonyms:
+  - --matrix
+  - -m
+  args: !SimpleFlagArg
+    name: MATRIX
+  optional: true
+- !Flag
+  description: "BED file which stores a list of regions that are\nsummed and averaged"
+  synonyms:
+  - --regions
+  - -r
+  args: !SimpleFlagArg
+    name: REGIONS
+  optional: true
+- !Flag
+  description: "If the region contains start and end coordinates,\ndefine if the start,\
+    \ center (start + (end-start) / 2)\nor end bin should be used as start for range.This\n\
+    parameter is only important to set if the given start\nand end coordinates are\
+    \ not in the same bin."
+  synonyms:
+  - --coordinatesToBinMapping
+  - -cb
+  args: !ChoiceFlagArg
+    choices: !!set
+      center:
+      end:
+      start:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicAverageRegions --matrix MATRIX --regions REGIONS\n         \
+  \                (--range RANGE RANGE | --rangeInBins RANGEINBINS RANGEINBINS)\n\
+  \                         --outFileName OUTFILENAME [--help]\n                 \
+  \        [--coordinatesToBinMapping {start,center,end}]\n                      \
+  \   [--version]\n\n       Sums Hi-C contacts around given reference points and computes\
+  \ their average. This tool is useful to detect differences at certain reference\
+  \ points as for example TAD boundaries between samples.\n\nWARNING: This tool can\
+  \ only be used with fixed bin size Hi-C matrices. No guarantees how and if it works\
+  \ on restriction site interaction matrices.\n\noptional arguments:\n  --range RANGE\
+  \ RANGE, -ra RANGE RANGE\n                        Range of region up- and downstream\
+  \ of each region to\n                        include in genomic units.\n  --rangeInBins\
+  \ RANGEINBINS RANGEINBINS, -rib RANGEINBINS RANGEINBINS\n                      \
+  \  Range of region up- and downstream of each region to\n                      \
+  \  include in bin units.\n\nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n\
+  \                        The matrix to use for the average of TAD regions.\n  --regions\
+  \ REGIONS, -r REGIONS\n                        BED file which stores a list of regions\
+  \ that are\n                        summed and averaged\n  --outFileName OUTFILENAME,\
+  \ -o OUTFILENAME\n                        File name to save the average regions\
+  \ TADs matrix.\n\nOptional arguments:\n  --help, -h            show this help message\
+  \ and exit\n  --coordinatesToBinMapping {start,center,end}, -cb {start,center,end}\n\
+  \                        If the region contains start and end coordinates,\n   \
+  \                     define if the start, center (start + (end-start) / 2)\n  \
+  \                      or end bin should be used as start for range.This\n     \
+  \                   parameter is only important to set if the given start\n    \
+  \                    and end coordinates are not in the same bin.\n  --version \
+  \            show program's version number and exit\n"
+generated_using:
+- --help

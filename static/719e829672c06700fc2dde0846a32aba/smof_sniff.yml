@@ -1,0 +1,61 @@
+!Command
+command:
+- smof
+- sniff
+positional:
+- !Positional
+  description: input fasta sequence (default = stdin)
+  position: 0
+  name: INPUT
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof sniff <options>\n\nIdentifies the sequence type\
+  \ and aids in diagnostics.\n\npositional arguments:\n  INPUT       input fasta sequence\
+  \ (default = stdin)\n\noptional arguments:\n  -h, --help  show this help message\
+  \ and exit\n\nThe output can be divided into 6 sections\n\n1. Overview and warnings\n\
+  \n  smof sniff counts the number of unique sequences and the number\n  of total\
+  \ sequences. It warns if there are any sequences with\n  illegal characters or if\
+  \ there are any duplicate headers. Example:\n\n  > 23 uniq sequences (24 total)\n\
+  \  > WARNING: headers are not unique (23/24)\n  > WARNING: illegal characters found\n\
+  \n  Illegal characters include any character that is neither\n  standard, ambiguous,\
+  \ a gap [_-.], or a stop [*].\n\n2. Sequence types\n\n  For each entry, it predicts\
+  \ whether it is protein, DNA, RNA, or\n  illegal. Example:\n\n  > Sequence types:\n\
+  \  >   prot:                20         83.3333%\n  >   dna:                 2  \
+  \        8.3333%\n  >   illegal:             1          4.1667%\n  >   rna:    \
+  \             1          4.1667%\n\n  The 2nd column is the count, 3rd percentage\n\
+  \n3. Sequence cases\n\n  Reports the case of the sequences, example:\n\n  > Sequences\
+  \ cases:\n  >   uppercase:           21         87.5000%\n  >   lowercase:     \
+  \      2          8.3333%\n  >   mixedcase:           1          4.1667%\n\n4. Nucleotide\
+  \ features\n\n  Reports a summary nucleotide features\n\n  The nucleotide features\
+  \ entry is comprised of four flags\n  which will all equal 1 for a proper nucleotide\
+  \ coding sequence\n  (0 otherwise). A sequence will be counted as 1111 if it:\n\n\
+  \    1) starts with a start codon (ATG)\n    2) ends with a stop codon (TAG, TAA,\
+  \ or TGA)\n    3) has a length that is a multiple of three\n    4) has no internal\
+  \ stop codon. If a sequence lacks a\n       start codon, but otherwise looks like\
+  \ a coding sequence,\n       it will have the value 0111.\n\n  For example:\n\n\
+  \  > Nucleotide Features\n  >   0000:                2          66.6667%\n  >  \
+  \ 1100:                1          33.3333%\n\n5. Protein features\n\n  1) terminal-stop\
+  \ - does the sequence end with '*'?\n  2) initial-Met - does the sequence start\
+  \ with 'M'?\n  3) internal-stop - does '*' appear within the sequence?\n  4) selenocysteine\
+  \ - does the sequence include 'U'?\n\n  Example:\n\n  > Protein Features:\n  > \
+  \  terminal-stop:       20         100.0000%\n  >   initial-Met:         19    \
+  \     95.0000%\n  >   internal-stop:       0          0.0000%\n  >   selenocysteine:\
+  \      0          0.0000%\n\n6. Universal features\n\n  Example:\n\n  > Universal\
+  \ Features:\n  >   ambiguous:           1          4.1667%\n  >   unknown:     \
+  \        0          0.0000%\n  >   gapped:              0          0.0000%\n\nAmbiguous\
+  \ characters are RYSWKMDBHV for nucleotides and BJZ\nfor proteins.\n\nUnknown characters\
+  \ are X for proteins and N for nucleotides\n\nGaps are '-_.'\n"
+generated_using:
+- --help

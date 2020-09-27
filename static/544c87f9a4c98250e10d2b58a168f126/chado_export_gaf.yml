@@ -1,0 +1,115 @@
+!Command
+command:
+- chado
+- export
+- gaf
+positional:
+- !Positional
+  description: name of the database
+  position: 0
+  name: dbname
+  optional: false
+named:
+- !Flag
+  description: "[-L {default,gene,transcript,protein}]\n[--include_obsolete]\ndbname"
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: DATABASE_AUTHORITY
+  optional: true
+- !Flag
+  description: verbose mode
+  synonyms:
+  - -V
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: YAML file containing connection details
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: 'connect with password (default: no password)'
+  synonyms:
+  - -p
+  - --use_password
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: GAF output file
+  synonyms:
+  - -f
+  - --output_file
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: abbreviation/short name of the organism
+  synonyms:
+  - -a
+  - --abbreviation
+  args: !SimpleFlagArg
+    name: ORGANISM
+  optional: true
+- !Flag
+  description: "database from which the file is created, e.g.\n'UniProtKB'"
+  synonyms:
+  - -A
+  - --database_authority
+  args: !SimpleFlagArg
+    name: DATABASE_AUTHORITY
+  optional: true
+- !Flag
+  description: "level to which GO terms are related in the output file\n(default:\
+    \ same level as in the database)"
+  synonyms:
+  - -L
+  - --annotation_level
+  args: !ChoiceFlagArg
+    choices: !!set
+      gene:
+      protein:
+      transcript:
+      default:
+  optional: true
+- !Flag
+  description: export all features, including obsoletes
+  synonyms:
+  - --include_obsolete
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: chado export gaf [-h] [-V] [-c CONFIG | -p] -f OUTPUT_FILE -a ORGANISM\n\
+  \                        -A DATABASE_AUTHORITY\n                        [-L {default,gene,transcript,protein}]\n\
+  \                        [--include_obsolete]\n                        dbname\n\n\
+  export gene annotation data from the CHADO database to a GAF file\n\npositional\
+  \ arguments:\n  dbname                name of the database\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -V, --verbose      \
+  \   verbose mode\n  -c CONFIG, --config CONFIG\n                        YAML file\
+  \ containing connection details\n  -p, --use_password    connect with password (default:\
+  \ no password)\n  -f OUTPUT_FILE, --output_file OUTPUT_FILE\n                  \
+  \      GAF output file\n  -a ORGANISM, --abbreviation ORGANISM\n               \
+  \         abbreviation/short name of the organism\n  -A DATABASE_AUTHORITY, --database_authority\
+  \ DATABASE_AUTHORITY\n                        database from which the file is created,\
+  \ e.g.\n                        'UniProtKB'\n  -L {default,gene,transcript,protein},\
+  \ --annotation_level {default,gene,transcript,protein}\n                       \
+  \ level to which GO terms are related in the output file\n                     \
+  \   (default: same level as in the database)\n  --include_obsolete    export all\
+  \ features, including obsoletes\n"
+generated_using:
+- --help

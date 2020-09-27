@@ -1,0 +1,296 @@
+!Command
+command:
+- gsutil
+- config
+positional:
+- !Positional
+  description: If you want to use credentials based on access key and secret (the
+    older
+  position: 0
+  name: scopes.
+  optional: false
+- !Positional
+  description: aws_secret_access_key
+  position: 0
+  name: aws_access_key_id
+  optional: false
+- !Positional
+  description: gs_host
+  position: 1
+  name: gs_access_key_id
+  optional: false
+- !Positional
+  description: gs_json_port
+  position: 2
+  name: gs_json_host
+  optional: false
+- !Positional
+  description: '[Boto]'
+  position: 3
+  name: s3_port
+  optional: false
+- !Positional
+  description: proxy_port
+  position: 4
+  name: proxy
+  optional: false
+- !Positional
+  description: proxy_pass
+  position: 5
+  name: proxy_user
+  optional: false
+- !Positional
+  description: http_socket_timeout
+  position: 6
+  name: proxy_rdns
+  optional: false
+- !Positional
+  description: debug
+  position: 7
+  name: https_validate_certificates
+  optional: false
+- !Positional
+  description: '[GSUtil]'
+  position: 0
+  name: service_account
+  optional: false
+- !Positional
+  description: content_language
+  position: 1
+  name: check_hashes
+  optional: false
+- !Positional
+  description: default_project_id
+  position: 0
+  name: default_api_version
+  optional: false
+- !Positional
+  description: encryption_key
+  position: 1
+  name: disable_analytics_prompt
+  optional: false
+- !Positional
+  description: parallel_composite_upload_component_size
+  position: 2
+  name: json_api_version
+  optional: false
+- !Positional
+  description: sliced_object_download_component_size
+  position: 3
+  name: parallel_composite_upload_threshold
+  optional: false
+- !Positional
+  description: sliced_object_download_threshold
+  position: 4
+  name: sliced_object_download_max_components
+  optional: false
+- !Positional
+  description: parallel_thread_count
+  position: 5
+  name: parallel_process_count
+  optional: false
+- !Positional
+  description: resumable_threshold
+  position: 6
+  name: prefer_api
+  optional: false
+- !Positional
+  description: '[OAuth2]'
+  position: 0
+  name: use_magicfile
+  optional: false
+- !Positional
+  description: client_secret
+  position: 1
+  name: client_id
+  optional: false
+- !Positional
+  description: provider_authorization_uri
+  position: 2
+  name: oauth2_refresh_retries
+  optional: false
+- !Positional
+  description: UPDATING TO THE LATEST CONFIGURATION FILE
+  position: 3
+  name: token_cache
+  optional: false
+named:
+- !Flag
+  description: (see OPTIONS below) cause gsutil config to request a token
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: options
+  optional: true
+- !Flag
+  description: "Prompt for Google Cloud Storage access key and secret (the older\n\
+    authentication method before OAuth2 was supported) instead of\nobtaining an OAuth2\
+    \ token."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Causes gsutil config to launch a browser to obtain OAuth2 approval\n\
+    and the project ID instead of showing the URL for each and asking\nthe user to\
+    \ open the browser. This will probably not work as\nexpected if you are running\
+    \ gsutil from an ssh window, or using\ngsutil on Windows."
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prompt for service account credentials. This option requires that
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write the configuration file without authentication configured.\n\
+    This flag is mutually exlusive with all flags other than -o."
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write the configuration to <file> instead of ~/.boto.\nUse '-' for\
+    \ stdout."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Request token restricted to read-only access.
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Request additional OAuth2 <scope>.
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: scope
+  optional: true
+- !Flag
+  description: Request token restricted to read-write access.
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n  config - Obtain credentials and create configuration file\n\n\n\
+  SYNOPSIS\n\n  gsutil [-D] config [-a] [-b] [-e] [-f] [-n] [-o <file>] [-r] [-s <scope>]\
+  \ [-w]\n\n\n\nDESCRIPTION\n  The gsutil config command obtains access credentials\
+  \ for Google Cloud\n  Storage and writes a boto/gsutil configuration file containing\
+  \ the obtained\n  credentials along with a number of other configuration-controllable\
+  \ values.\n\n  Unless specified otherwise (see OPTIONS), the configuration file\
+  \ is written\n  to ~/.boto (i.e., the file .boto under the user's home directory).\
+  \ If the\n  default file already exists, an attempt is made to rename the existing\
+  \ file\n  to ~/.boto.bak; if that attempt fails the command will exit. A different\n\
+  \  destination file can be specified with the -o option (see OPTIONS).\n\n  Because\
+  \ the boto configuration file contains your credentials you should\n  keep its file\
+  \ permissions set so no one but you has read access. (The file\n  is created read-only\
+  \ when you run gsutil config.)\n\n\nCREDENTIALS\n  By default gsutil config obtains\
+  \ OAuth2 credentials, and writes them\n  to the [Credentials] section of the configuration\
+  \ file. The -r, -w,\n  -f options (see OPTIONS below) cause gsutil config to request\
+  \ a token\n  with restricted scope; the resulting token will be restricted to read-only\n\
+  \  operations, read-write operations, or all operations (including acl get/set,\n\
+  \  defacl get/set, and logging get/'set on'/'set off' operations). In\n  addition,\
+  \ -s <scope> can be used to request additional (non-Google-Storage)\n  scopes.\n\
+  \n  If you want to use credentials based on access key and secret (the older\n \
+  \ authentication method before OAuth2 was supported) instead of OAuth2,\n  see help\
+  \ about the -a option in the OPTIONS section.\n\n  If you wish to use gsutil with\
+  \ other providers (or to copy data back and\n  forth between multiple providers)\
+  \ you can edit their credentials into the\n  [Credentials] section after creating\
+  \ the initial configuration file.\n\n\nCONFIGURING SERVICE ACCOUNT CREDENTIALS\n\
+  \  You can configure credentials for service accounts using the gsutil config -e\n\
+  \  option. Service accounts are useful for authenticating on behalf of a service\n\
+  \  or application (as opposed to a user).\n\n  When you run gsutil config -e, you\
+  \ will be prompted for your service account\n  email address and the path to your\
+  \ private key file. To get this data,\n  follow the instructions on\n  `Service\
+  \ Accounts <https://cloud.google.com/storage/docs/authentication#generating-a-private-key>`_.\n\
+  \n  Note that your service account will NOT be considered an Owner for the\n  purposes\
+  \ of API access (see \"gsutil help creds\" for more information about\n  this).\
+  \ See https://developers.google.com/identity/protocols/OAuth2ServiceAccount\n  for\
+  \ further information on service account authentication.\n\n\nCONFIGURATION FILE\
+  \ SELECTION PROCEDURE\n  By default, gsutil will look for the configuration file\
+  \ in /etc/boto.cfg and\n  ~/.boto. You can override this choice by setting the BOTO_CONFIG\
+  \ environment\n  variable. This is also useful if you have several different identities\
+  \ or\n  cloud storage environments: By setting up the credentials and any additional\n\
+  \  configuration in separate files for each, you can switch environments by\n  changing\
+  \ environment variables.\n\n  You can also set up a path of configuration files,\
+  \ by setting the BOTO_PATH\n  environment variable to contain a \":\" delimited\
+  \ path (or \";\" for Windows).\n  For example setting the BOTO_PATH environment\
+  \ variable to:\n\n    /etc/projects/my_group_project.boto.cfg:/home/mylogin/.boto\n\
+  \n  will cause gsutil to load each configuration file found in the path in\n  order.\
+  \ This is useful if you want to set up some shared configuration\n  state among\
+  \ many users: The shared state can go in the central shared file\n  ( /etc/projects/my_group_project.boto.cfg)\
+  \ and each user's individual\n  credentials can be placed in the configuration file\
+  \ in each of their home\n  directories. For security reasons, users should never\
+  \ share credentials\n  via a shared configuration file.\n\n\nCONFIGURATION FILE\
+  \ STRUCTURE\n  The configuration file contains a number of sections: [Credentials],\n\
+  \  [Boto], [GSUtil], and [OAuth2]. If you edit the file, make sure to edit the\n\
+  \  appropriate section (discussed below), and to be careful not to mis-edit\n  any\
+  \ of the setting names (like \"gs_access_key_id\") and not to remove the\n  section\
+  \ delimiters (like \"[Credentials]\").\n\n\nADDITIONAL CONFIGURATION-CONTROLLABLE\
+  \ FEATURES\n  With the exception of setting up gsutil to work through a proxy, most\
+  \ users\n  won't need to edit values in the boto configuration file; values found\
+  \ in\n  the file tend to be of more specialized use than command line\n  option-controllable\
+  \ features. For information on setting up gsutil to work\n  through a proxy, see\
+  \ the comments preceding the proxy settings in your\n  .boto file.\n\n  The following\
+  \ are the currently defined configuration settings, broken\n  down by section. Their\
+  \ use is documented in comments preceding each, in\n  the configuration file. If\
+  \ you see a setting you want to change that's not\n  listed in your current file,\
+  \ see the section below on Updating to the Latest\n  Configuration File.\n\n  The\
+  \ currently supported settings, are, by section:\n\n    [Credentials]\n      aws_access_key_id\n\
+  \      aws_secret_access_key\n      gs_access_key_id\n      gs_host\n      gs_json_host\n\
+  \      gs_json_port\n      gs_oauth2_refresh_token\n      gs_port\n      gs_secret_access_key\n\
+  \      s3_host\n      s3_port\n\n    [Boto]\n      proxy\n      proxy_port\n   \
+  \   proxy_user\n      proxy_pass\n      proxy_rdns\n      http_socket_timeout\n\
+  \      https_validate_certificates\n      debug\n      max_retry_delay\n      num_retries\n\
+  \n    [GoogleCompute]\n      service_account\n\n    [GSUtil]\n      check_hashes\n\
+  \      content_language\n      decryption_key1 ... 100\n      default_api_version\n\
+  \      default_project_id\n      disable_analytics_prompt\n      encryption_key\n\
+  \      json_api_version\n      parallel_composite_upload_component_size\n      parallel_composite_upload_threshold\n\
+  \      sliced_object_download_component_size\n      sliced_object_download_max_components\n\
+  \      sliced_object_download_threshold\n      parallel_process_count\n      parallel_thread_count\n\
+  \      prefer_api\n      resumable_threshold\n      resumable_tracker_dir (deprecated\
+  \ in 4.6, use state_dir)\n      rsync_buffer_lines\n      software_update_check_period\n\
+  \      state_dir\n      tab_completion_time_logs\n      tab_completion_timeout\n\
+  \      task_estimation_threshold\n      use_magicfile\n\n    [OAuth2]\n      client_id\n\
+  \      client_secret\n      oauth2_refresh_retries\n      provider_authorization_uri\n\
+  \      provider_label\n      provider_token_uri\n      token_cache\n\n\nUPDATING\
+  \ TO THE LATEST CONFIGURATION FILE\n  We add new configuration controllable features\
+  \ to the boto configuration file\n  over time, but most gsutil users create a configuration\
+  \ file once and then\n  keep it for a long time, so new features aren't apparent\
+  \ when you update\n  to a newer version of gsutil. If you want to get the latest\
+  \ configuration\n  file (which includes all the latest settings and documentation\
+  \ about each)\n  you can rename your current file (e.g., to '.boto_old'), run gsutil\
+  \ config,\n  and then edit any configuration settings you wanted from your old file\n\
+  \  into the newly created file. Note, however, that if you're using OAuth2\n  credentials\
+  \ and you go back through the OAuth2 configuration dialog it will\n  invalidate\
+  \ your previous OAuth2 credentials.\n\n  If no explicit scope option is given, -f\
+  \ (full control) is assumed by default.\n\n\nOPTIONS\n  -a          Prompt for Google\
+  \ Cloud Storage access key and secret (the older\n              authentication method\
+  \ before OAuth2 was supported) instead of\n              obtaining an OAuth2 token.\n\
+  \n  -b          Causes gsutil config to launch a browser to obtain OAuth2 approval\n\
+  \              and the project ID instead of showing the URL for each and asking\n\
+  \              the user to open the browser. This will probably not work as\n  \
+  \            expected if you are running gsutil from an ssh window, or using\n \
+  \             gsutil on Windows.\n\n  -e          Prompt for service account credentials.\
+  \ This option requires that\n              -a is not set.\n\n  -f          Request\
+  \ token with full-control access (default).\n\n  -n          Write the configuration\
+  \ file without authentication configured.\n              This flag is mutually exlusive\
+  \ with all flags other than -o.\n\n  -o <file>   Write the configuration to <file>\
+  \ instead of ~/.boto.\n              Use '-' for stdout.\n\n  -r          Request\
+  \ token restricted to read-only access.\n\n  -s <scope>  Request additional OAuth2\
+  \ <scope>.\n\n  -w          Request token restricted to read-write access.\n"
+generated_using:
+- --help

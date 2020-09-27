@@ -1,0 +1,89 @@
+!Command
+command:
+- flye-samtools
+- split
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: samtools
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: split
+  optional: false
+named:
+- !Flag
+  description: output filename format string ["%*_%#.%."]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: verbose output
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[=VAL]\nSpecify a single input file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  synonyms:
+  - --input-fmt-option
+  args: !SimpleFlagArg
+    name: OPT
+  optional: true
+- !Flag
+  description: "[,OPT[=VAL]]...\nSpecify output format (SAM, BAM, CRAM)"
+  synonyms:
+  - --output-fmt
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "[=VAL]\nSpecify a single output file format option in the form\nof\
+    \ OPTION or OPTION=VALUE"
+  synonyms:
+  - --output-fmt-option
+  args: !SimpleFlagArg
+    name: OPT
+  optional: true
+- !Flag
+  description: Reference sequence FASTA FILE [null]
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Number of additional threads to use [0]
+  synonyms:
+  - -@
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: samtools split [-u <unaccounted.bam>[:<unaccounted_header.sam>]]\n\
+  \                      [-f <format_string>] [-v] <merged.bam>\nOptions:\n  -f STRING\
+  \       output filename format string [\"%*_%#.%.\"]\n  -u FILE1        put reads\
+  \ with no RG tag or an unrecognised RG tag in FILE1\n  -u FILE1:FILE2  ...and override\
+  \ the header with FILE2\n  -v              verbose output\n      --input-fmt-option\
+  \ OPT[=VAL]\n               Specify a single input file format option in the form\n\
+  \               of OPTION or OPTION=VALUE\n      --output-fmt FORMAT[,OPT[=VAL]]...\n\
+  \               Specify output format (SAM, BAM, CRAM)\n      --output-fmt-option\
+  \ OPT[=VAL]\n               Specify a single output file format option in the form\n\
+  \               of OPTION or OPTION=VALUE\n      --reference FILE\n            \
+  \   Reference sequence FASTA FILE [null]\n  -@, --threads INT\n               Number\
+  \ of additional threads to use [0]\n\nFormat string expansions:\n  %%     %\n  %*\
+  \     basename\n  %#     @RG index\n  %!     @RG ID\n  %.     filename extension\
+  \ for output format\n"
+generated_using:
+- --help

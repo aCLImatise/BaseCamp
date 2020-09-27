@@ -1,0 +1,108 @@
+!Command
+command:
+- cnvkit.py
+- export
+- theta
+positional: []
+named:
+- !Flag
+  description: "Reference copy number profile (.cnn), or normal-sample\nbin-level\
+    \ log2 copy ratios (.cnr). Use if the\ntumor_segment input file does not contain\
+    \ a \"weight\"\ncolumn."
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: Output file name.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "VCF file containing SNVs observed in both the tumor\nand normal samples.\
+    \ Tumor sample ID should match the\n`tumor_segment` filename or be specified with\n\
+    -i/--sample-id."
+  synonyms:
+  - -v
+  - --vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: "Specify the name of the tumor sample in the VCF (given\nwith -v/--vcf).\
+    \ [Default: taken the tumor_segment file\nname]"
+  synonyms:
+  - -i
+  - --sample-id
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+  optional: true
+- !Flag
+  description: Corresponding normal sample ID in the input VCF.
+  synonyms:
+  - -n
+  - --normal-id
+  args: !SimpleFlagArg
+    name: NORMAL_ID
+  optional: true
+- !Flag
+  description: "Minimum read depth for a SNP in the VCF to be counted.\n[Default:\
+    \ 20]"
+  synonyms:
+  - -m
+  - --min-variant-depth
+  args: !SimpleFlagArg
+    name: MIN_VARIANT_DEPTH
+  optional: true
+- !Flag
+  description: "[ALT_FREQ], --zygosity-freq [ALT_FREQ]\nIgnore VCF's genotypes (GT\
+    \ field) and instead infer\nzygosity from allele frequencies. [Default if used\n\
+    without a number: 0.25]\n"
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: cnvkit.py export theta [-h] [-r REFERENCE] [-o FILENAME] [-v VCF]\n\
+  \                              [-i SAMPLE_ID] [-n NORMAL_ID]\n                 \
+  \             [-m MIN_VARIANT_DEPTH] [-z [ALT_FREQ]]\n                         \
+  \     tumor_segment\n\npositional arguments:\n  tumor_segment         Tumor-sample\
+  \ segmentation file from CNVkit (.cns).\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  -r REFERENCE, --reference REFERENCE\n\
+  \                        Reference copy number profile (.cnn), or normal-sample\n\
+  \                        bin-level log2 copy ratios (.cnr). Use if the\n       \
+  \                 tumor_segment input file does not contain a \"weight\"\n     \
+  \                   column.\n  -o FILENAME, --output FILENAME\n                \
+  \        Output file name.\n\nTo also output tables of SNP b-allele frequencies\
+  \ for THetA2:\n  -v VCF, --vcf VCF     VCF file containing SNVs observed in both\
+  \ the tumor\n                        and normal samples. Tumor sample ID should\
+  \ match the\n                        `tumor_segment` filename or be specified with\n\
+  \                        -i/--sample-id.\n  -i SAMPLE_ID, --sample-id SAMPLE_ID\n\
+  \                        Specify the name of the tumor sample in the VCF (given\n\
+  \                        with -v/--vcf). [Default: taken the tumor_segment file\n\
+  \                        name]\n  -n NORMAL_ID, --normal-id NORMAL_ID\n        \
+  \                Corresponding normal sample ID in the input VCF.\n  -m MIN_VARIANT_DEPTH,\
+  \ --min-variant-depth MIN_VARIANT_DEPTH\n                        Minimum read depth\
+  \ for a SNP in the VCF to be counted.\n                        [Default: 20]\n \
+  \ -z [ALT_FREQ], --zygosity-freq [ALT_FREQ]\n                        Ignore VCF's\
+  \ genotypes (GT field) and instead infer\n                        zygosity from\
+  \ allele frequencies. [Default if used\n                        without a number:\
+  \ 0.25]\n"
+generated_using:
+- --help

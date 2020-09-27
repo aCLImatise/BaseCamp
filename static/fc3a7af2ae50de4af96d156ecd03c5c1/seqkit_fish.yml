@@ -1,0 +1,226 @@
+!Command
+command:
+- seqkit
+- fish
+positional: []
+named:
+- !Flag
+  description: search all
+  synonyms:
+  - -a
+  - --all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alignment parameters in format "<match>,<mismatch>,<gap_open>,<gap_extend>"
+    (default "4,-4,-2,-1")
+  synonyms:
+  - -p
+  - --aln-params
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: print out references not matching with any query
+  synonyms:
+  - -i
+  - --invert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum mapping quality (default 5)
+  synonyms:
+  - -q
+  - --min-qual
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: save aligmnets to this BAM file (memory intensive)
+  synonyms:
+  - -b
+  - --out-bam
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: pass through mode (write input to stdout)
+  synonyms:
+  - -x
+  - --pass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print sequence alignments
+  synonyms:
+  - -g
+  - --print-aln
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print full sequence header
+  synonyms:
+  - -D
+  - --print-desc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: query fasta
+  synonyms:
+  - -f
+  - --query-fastx
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: query sequences
+  synonyms:
+  - -F
+  - --query-sequences
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'target ranges, for example: ":10,30:40,-20:"'
+  synonyms:
+  - -r
+  - --ranges
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: search + strand only
+  synonyms:
+  - -s
+  - --stranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: validate bases according to the alphabet
+  synonyms:
+  - -v
+  - --validate-seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: length of sequence to validate (0 for whole seq) (default 10000)
+  synonyms:
+  - -V
+  - --validate-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  synonyms:
+  - --alphabet-guess-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  synonyms:
+  - --id-ncbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  synonyms:
+  - --id-regexp
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  synonyms:
+  - -w
+  - --line-width
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: be quiet and do not show extra information
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  synonyms:
+  - -t
+  - --seq-type
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for fish
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "look for short sequences in larger sequences using local alignment\n\n\
+  Attention:\n  1. output coordinates are BED-like 0-based, left-close and right-open.\n\
+  \  2. alignment information are printed to STDERR.\n\nUsage:\n  seqkit fish [flags]\n\
+  \nFlags:\n  -a, --all                       search all\n  -p, --aln-params string\
+  \         alignment parameters in format \"<match>,<mismatch>,<gap_open>,<gap_extend>\"\
+  \ (default \"4,-4,-2,-1\")\n  -h, --help                      help for fish\n  -i,\
+  \ --invert                    print out references not matching with any query\n\
+  \  -q, --min-qual float            minimum mapping quality (default 5)\n  -b, --out-bam\
+  \ string            save aligmnets to this BAM file (memory intensive)\n  -x, --pass\
+  \                      pass through mode (write input to stdout)\n  -g, --print-aln\
+  \                 print sequence alignments\n  -D, --print-desc                print\
+  \ full sequence header\n  -f, --query-fastx string        query fasta\n  -F, --query-sequences\
+  \ string    query sequences\n  -r, --ranges string             target ranges, for\
+  \ example: \":10,30:40,-20:\"\n  -s, --stranded                  search + strand\
+  \ only\n  -v, --validate-seq              validate bases according to the alphabet\n\
+  \  -V, --validate-seq-length int   length of sequence to validate (0 for whole seq)\
+  \ (default 10000)\n\nGlobal Flags:\n      --alphabet-guess-seq-length int   length\
+  \ of sequence prefix of the first FASTA record based on which seqkit guesses the\
+  \ sequence type (0 for whole seq) (default 10000)\n      --id-ncbi             \
+  \            FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...\n\
+  \      --id-regexp string                regular expression for parsing ID (default\
+  \ \"^(\\\\S+)\\\\s?\")\n      --infile-list string              file of input files\
+  \ list (one file per line), if given, they are appended to files from cli arguments\n\
+  \  -w, --line-width int                  line width when outputing FASTA format\
+  \ (0 for no wrap) (default 60)\n  -o, --out-file string                 out file\
+  \ (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n      --quiet\
+  \                           be quiet and do not show extra information\n  -t, --seq-type\
+  \ string                 sequence type (dna|rna|protein|unlimit|auto) (for auto,\
+  \ it automatically detect by the first sequence) (default \"auto\")\n  -j, --threads\
+  \ int                     number of CPUs. (default value: 1 for single-CPU PC, 2\
+  \ for others. can also set with environment variable SEQKIT_THREADS) (default 2)\n"
+generated_using:
+- --help

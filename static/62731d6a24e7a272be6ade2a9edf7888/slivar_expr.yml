@@ -1,0 +1,162 @@
+!Command
+command:
+- slivar
+- expr
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: slivar
+  optional: false
+named:
+- !Flag
+  description: path to VCF/BCF
+  synonyms:
+  - -v
+  - --vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: optional region to limit evaluation. e.g. chr1 or 1:222-333 (or a BED
+    file of regions)
+  synonyms:
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: BED file of exclude regions (will never output excluded variants regardless
+    of pass-only flag)
+  synonyms:
+  - -x
+  - --exclude
+  args: !SimpleFlagArg
+    name: EXCLUDE
+  optional: true
+- !Flag
+  description: path to javascript functions to expose to user
+  synonyms:
+  - -j
+  - --js
+  args: !SimpleFlagArg
+    name: JS
+  optional: true
+- !Flag
+  description: pedigree file with family relations, sex, and affected status
+  synonyms:
+  - -p
+  - --ped
+  args: !SimpleFlagArg
+    name: PED
+  optional: true
+- !Flag
+  description: path to file of group aliases
+  synonyms:
+  - -a
+  - --alias
+  args: !SimpleFlagArg
+    name: ALIAS
+  optional: true
+- !Flag
+  description: 'path to output VCF/BCF (default: /dev/stdout)'
+  synonyms:
+  - -o
+  - --out-vcf
+  args: !SimpleFlagArg
+    name: OUT_VCF
+  optional: true
+- !Flag
+  description: only output variants that pass at least one of the filters
+  synonyms:
+  - --pass-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't evaluate expression unless at least 1 sample is variable at the
+    variant this can improve speed
+  synonyms:
+  - --skip-non-variable
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: expression(s) applied to each trio where 'mom', 'dad', 'kid' labels
+    are available; trios inferred from ped file.
+  synonyms:
+  - --trio
+  args: !SimpleFlagArg
+    name: TRIO
+  optional: true
+- !Flag
+  description: expression(s) applied to each family where 'fam' is available with
+    a list of samples in each family from ped file.
+  synonyms:
+  - --family-expr
+  args: !SimpleFlagArg
+    name: FAMILY_EXPR
+  optional: true
+- !Flag
+  description: 'expression(s) applied to the groups defined in the alias option [see:
+    https://github.com/brentp/slivar/wiki/groups-in-slivar].'
+  synonyms:
+  - --group-expr
+  args: !SimpleFlagArg
+    name: GROUP_EXPR
+  optional: true
+- !Flag
+  description: expression(s) applied to each sample in the VCF.
+  synonyms:
+  - --sample-expr
+  args: !SimpleFlagArg
+    name: SAMPLE_EXPR
+  optional: true
+- !Flag
+  description: expression using only attributes from  the INFO field or variant. If
+    this does not pass trio/group/sample expressions are not applied.
+  synonyms:
+  - --info
+  args: !SimpleFlagArg
+    name: INFO
+  optional: true
+- !Flag
+  description: path(s) to compressed gnotate file(s)
+  synonyms:
+  - -g
+  - --gnotate
+  args: !SimpleFlagArg
+    name: GNOTATE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "slivar expr\n\nUsage:\n  slivar expr [options] \n\nOptions:\n  -v, --vcf=VCF\
+  \              path to VCF/BCF\n  --region=REGION            optional region to\
+  \ limit evaluation. e.g. chr1 or 1:222-333 (or a BED file of regions)\n  -x, --exclude=EXCLUDE\
+  \      BED file of exclude regions (will never output excluded variants regardless\
+  \ of pass-only flag)\n  -j, --js=JS                path to javascript functions\
+  \ to expose to user\n  -p, --ped=PED              pedigree file with family relations,\
+  \ sex, and affected status\n  -a, --alias=ALIAS          path to file of group aliases\n\
+  \  -o, --out-vcf=OUT_VCF      path to output VCF/BCF (default: /dev/stdout)\n  --pass-only\
+  \                only output variants that pass at least one of the filters\n  --skip-non-variable\
+  \        don't evaluate expression unless at least 1 sample is variable at the variant\
+  \ this can improve speed\n  --trio=TRIO                expression(s) applied to\
+  \ each trio where 'mom', 'dad', 'kid' labels are available; trios inferred from\
+  \ ped file.\n  --family-expr=FAMILY_EXPR  expression(s) applied to each family where\
+  \ 'fam' is available with a list of samples in each family from ped file.\n  --group-expr=GROUP_EXPR\
+  \    expression(s) applied to the groups defined in the alias option [see: https://github.com/brentp/slivar/wiki/groups-in-slivar].\n\
+  \  --sample-expr=SAMPLE_EXPR  expression(s) applied to each sample in the VCF.\n\
+  \  --info=INFO                expression using only attributes from  the INFO field\
+  \ or variant. If this does not pass trio/group/sample expressions are not applied.\n\
+  \  -g, --gnotate=GNOTATE      path(s) to compressed gnotate file(s)\n  -h, --help\
+  \                 Show this help\n"
+generated_using:
+- --help

@@ -1,0 +1,102 @@
+!Command
+command:
+- comparem
+- hclust
+positional:
+- !Positional
+  description: "file with pairwise similarity or dissimilarity values\nbetween genomes"
+  position: 0
+  name: pairwise_value_file
+  optional: false
+- !Positional
+  description: name for output hierarchical cluster tree
+  position: 1
+  name: output_tree
+  optional: false
+named:
+- !Flag
+  description: 'clustering method to use. (default: average)'
+  synonyms:
+  - --method
+  args: !ChoiceFlagArg
+    choices: !!set
+      complete:
+      centroid:
+      median:
+      ward:
+      single:
+      weighted:
+      average:
+  optional: true
+- !Flag
+  description: indicates file contain similarity values
+  synonyms:
+  - --similarity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'maximum similarity value (default: 100)'
+  synonyms:
+  - --max_sim_value
+  args: !SimpleFlagArg
+    name: MAX_SIM_VALUE
+  optional: true
+- !Flag
+  description: 'index of first column with genome names (default: 0)'
+  synonyms:
+  - --name_col1
+  args: !SimpleFlagArg
+    name: NAME_COL1
+  optional: true
+- !Flag
+  description: 'index of second column with genome names (default: 1)'
+  synonyms:
+  - --name_col2
+  args: !SimpleFlagArg
+    name: NAME_COL2
+  optional: true
+- !Flag
+  description: "index of column with similarity or dissimilarity\nvalues (default:\
+    \ 2)"
+  synonyms:
+  - --value_col
+  args: !SimpleFlagArg
+    name: VALUE_COL
+  optional: true
+- !Flag
+  description: suppress output
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: comparem hclust [-h]\n                       [--method {single,complete,average,weighted,centroid,median,ward}]\n\
+  \                       [--similarity] [--max_sim_value MAX_SIM_VALUE]\n       \
+  \                [--name_col1 NAME_COL1] [--name_col2 NAME_COL2]\n             \
+  \          [--value_col VALUE_COL] [--silent]\n                       pairwise_value_file\
+  \ output_tree\n\nPerform hierarchical clustering.\n\npositional arguments:\n  pairwise_value_file\
+  \   file with pairwise similarity or dissimilarity values\n                    \
+  \    between genomes\n  output_tree           name for output hierarchical cluster\
+  \ tree\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --method {single,complete,average,weighted,centroid,median,ward}\n   \
+  \                     clustering method to use. (default: average)\n  --similarity\
+  \          indicates file contain similarity values\n  --max_sim_value MAX_SIM_VALUE\n\
+  \                        maximum similarity value (default: 100)\n  --name_col1\
+  \ NAME_COL1\n                        index of first column with genome names (default:\
+  \ 0)\n  --name_col2 NAME_COL2\n                        index of second column with\
+  \ genome names (default: 1)\n  --value_col VALUE_COL\n                        index\
+  \ of column with similarity or dissimilarity\n                        values (default:\
+  \ 2)\n  --silent              suppress output\n"
+generated_using:
+- --help

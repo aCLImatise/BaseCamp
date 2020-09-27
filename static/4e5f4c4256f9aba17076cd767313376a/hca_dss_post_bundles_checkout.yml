@@ -1,0 +1,73 @@
+!Command
+command:
+- hca
+- dss
+- post-bundles-checkout
+positional: []
+named:
+- !Flag
+  description: User-owned destination storage bucket.
+  synonyms:
+  - --destination
+  args: !SimpleFlagArg
+    name: DESTINATION
+  optional: true
+- !Flag
+  description: An email address to send status updates to.
+  synonyms:
+  - --email
+  args: !SimpleFlagArg
+    name: EMAIL
+  optional: true
+- !Flag
+  description: A RFC4122-compliant ID for the bundle.
+  synonyms:
+  - --uuid
+  args: !SimpleFlagArg
+    name: UUID
+  optional: true
+- !Flag
+  description: Replica to fetch from.
+  synonyms:
+  - --replica
+  args: !ChoiceFlagArg
+    choices: !!set
+      aws:
+      gcp:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Timestamp of file creation in DSS_VERSION format.  If this is not provided,
+    the latest version is returned.
+  synonyms:
+  - --version
+  args: !SimpleFlagArg
+    name: VERSION
+  optional: true
+help_text: "usage: hca dss post-bundles-checkout [-h] [--destination DESTINATION]\n\
+  \                                     [--email EMAIL] --uuid UUID\n            \
+  \                         [--version VERSION] --replica {aws,gcp}\n\nInitiate asynchronous\
+  \ checkout of a bundle. The response JSON contains a field, `checkout_job_id`, that\
+  \ can be used to query the status of the checkout via the `GET /bundles/checkout/{checkout_job_id}`\
+  \ API method. FIXME: document the error code returned when the bundle or specified\
+  \ version does not exist. TODO: After some time period, the data will be removed.\
+  \ TBD: This could be based on initial checkout time or last access time.\n\nOptional\
+  \ Arguments:\n  -h, --help            show this help message and exit\n  --destination\
+  \ DESTINATION\n                        User-owned destination storage bucket.\n\
+  \  --email EMAIL         An email address to send status updates to.\n\nRequired\
+  \ Arguments:\n  --uuid UUID           A RFC4122-compliant ID for the bundle.\n \
+  \ --version VERSION     Timestamp of file creation in DSS_VERSION format.  If this\
+  \ is not provided, the latest version is returned.\n  --replica {aws,gcp}   Replica\
+  \ to fetch from.\n\n"
+generated_using:
+- --help

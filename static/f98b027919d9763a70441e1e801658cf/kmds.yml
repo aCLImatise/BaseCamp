@@ -1,0 +1,124 @@
+!Command
+command:
+- kmds
+positional:
+- !Positional
+  description: --max_length arg (=100)  maximum kmer length
+  position: 0
+  name: file
+  optional: false
+named:
+- !Flag
+  description: '[ --kmers ] arg       dsm kmer output file (not needed if using'
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --pheno ] arg       .pheno metadata'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --output ] arg      output prefix for new dsm file'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not perform MDS; output subsampled matrix instead
+  synonyms:
+  - --no_mds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write csv of distance matrix
+  synonyms:
+  - --write_distances
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "list of subsampled matrices to use in MDS. Performs\nonly MDS; implies\
+    \ --no_filtering"
+  synonyms:
+  - --mds_concat
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=10)           number of principal coordinates to output
+  synonyms:
+  - --pc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=1000000)    number of kmers to use in MDS
+  synonyms:
+  - --size
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '(=1)       number of threads. Suggested: 8'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: turn off all filtering and do not output new kmer
+  synonyms:
+  - --no_filtering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=0.01)        minimum kmer frequency
+  synonyms:
+  - --maf
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: minimum kmer occurences. Overrides --maf
+  synonyms:
+  - --min_words
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]            full help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: prints version and exits
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "kmds: control for population structure\nkmds\n\t1) filter and subsample\
+  \ with --no_mds and --size\n\t2) combine, and do metric multidimensional scaling\
+  \ with --mds_concat\n\nRequired options:\n  -k [ --kmers ] arg       dsm kmer output\
+  \ file (not needed if using \n                           --mds_concat)\n  -p [ --pheno\
+  \ ] arg       .pheno metadata\n\nMDS options:\n  -o [ --output ] arg      output\
+  \ prefix for new dsm file\n  --no_mds                 do not perform MDS; output\
+  \ subsampled matrix instead\n  --write_distances        write csv of distance matrix\n\
+  \  --mds_concat arg         list of subsampled matrices to use in MDS. Performs\
+  \ \n                           only MDS; implies --no_filtering\n  --pc arg (=10)\
+  \           number of principal coordinates to output\n  --size arg (=1000000) \
+  \   number of kmers to use in MDS\n  --threads arg (=1)       number of threads.\
+  \ Suggested: 8\n\nFiltering options:\n  --no_filtering           turn off all filtering\
+  \ and do not output new kmer \n                           file\n  --max_length arg\
+  \ (=100)  maximum kmer length\n  --maf arg (=0.01)        minimum kmer frequency\n\
+  \  --min_words arg          minimum kmer occurences. Overrides --maf\n\nOther options:\n\
+  \  --version                prints version and exits\n  -h [ --help ]          \
+  \  full help message\n\n"
+generated_using:
+- --help

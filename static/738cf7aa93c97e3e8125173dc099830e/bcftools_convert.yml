@@ -1,0 +1,247 @@
+!Command
+command:
+- bcftools
+- convert
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_file
+  optional: false
+named:
+- !Flag
+  description: exclude sites for which the expression is true
+  synonyms:
+  - -e
+  - --exclude
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: select sites for which the expression is true
+  synonyms:
+  - -i
+  - --include
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: restrict to comma-separated list of regions
+  synonyms:
+  - -r
+  - --regions
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: restrict to regions listed in a file
+  synonyms:
+  - -R
+  - --regions-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: list of samples to include
+  synonyms:
+  - -s
+  - --samples
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: file of samples to include
+  synonyms:
+  - -S
+  - --samples-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: similar to -r but streams rather than index-jumps
+  synonyms:
+  - -t
+  - --targets
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: similar to -R but streams rather than index-jumps
+  synonyms:
+  - -T
+  - --targets-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: do not append version and command line to the header
+  synonyms:
+  - --no-version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output file name [stdout]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  synonyms:
+  - -O
+  - --output-type
+  args: !SimpleFlagArg
+    name: b|u|z|v
+  optional: true
+- !Flag
+  description: use multithreading with <int> worker threads [0]
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: <...>   <prefix>|<gen-file>,<sample-file>
+  synonyms:
+  - -G
+  - --gensample2vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <...>       <prefix>|<gen-file>,<sample-file>
+  synonyms:
+  - -g
+  - --gensample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'tag to take values for .gen file: GT,PL,GL,GP [GT]'
+  synonyms:
+  - --tag
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: output chromosome in first column instead of CHROM:POS_REF_ALT
+  synonyms:
+  - --chrom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'output sex column in the sample-file, input format is: Sample\t[MF]'
+  synonyms:
+  - --sex
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: output VCF IDs in second column instead of CHROM:POS_REF_ALT
+  synonyms:
+  - --vcf-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: expand gVCF reference blocks
+  synonyms:
+  - --gvcf2vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reference sequence in fasta format
+  synonyms:
+  - -f
+  - --fasta-ref
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: <...>   <prefix>|<hap-file>,<sample-file>
+  synonyms:
+  - --hapsample2vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <...>       <prefix>|<hap-file>,<sample-file>
+  synonyms:
+  - --hapsample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: convert haploid genotypes to diploid homozygotes
+  synonyms:
+  - --haploid2diploid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <...>  <prefix>|<hap-file>,<legend-file>,<sample-file>
+  synonyms:
+  - -H
+  - --haplegendsample2vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "-c, --columns <string>      columns of the input tsv file [ID,CHROM,POS,AA]\n\
+    -f, --fasta-ref <file>      reference sequence in fasta format\n-s, --samples\
+    \ <list>        list of sample names\n-S, --samples-file <file>   file of sample\
+    \ names\n"
+  synonyms:
+  - --tsv2vcf
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: <...>      <prefix>|<hap-file>,<legend-file>,<sample-file>
+  synonyms:
+  - -h
+  - --haplegendsample
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "convert: unrecognized option '--help'\n\nAbout:   Converts VCF/BCF to\
+  \ other formats and back. See man page for file\n         formats details. When\
+  \ specifying output files explicitly instead\n         of with <prefix>, one can\
+  \ use '-' for stdout and '.' to suppress.\nUsage:   bcftools convert [OPTIONS] <input_file>\n\
+  \nVCF input options:\n   -e, --exclude <expr>        exclude sites for which the\
+  \ expression is true\n   -i, --include <expr>        select sites for which the\
+  \ expression is true\n   -r, --regions <region>      restrict to comma-separated\
+  \ list of regions\n   -R, --regions-file <file>   restrict to regions listed in\
+  \ a file\n   -s, --samples <list>        list of samples to include\n   -S, --samples-file\
+  \ <file>   file of samples to include\n   -t, --targets <region>      similar to\
+  \ -r but streams rather than index-jumps\n   -T, --targets-file <file>   similar\
+  \ to -R but streams rather than index-jumps\n\nVCF output options:\n       --no-version\
+  \               do not append version and command line to the header\n   -o, --output\
+  \ <file>            output file name [stdout]\n   -O, --output-type <b|u|z|v>  \
+  \  b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed VCF\
+  \ [v]\n       --threads <int>            use multithreading with <int> worker threads\
+  \ [0]\n\nGEN/SAMPLE conversion (input/output from IMPUTE2):\n   -G, --gensample2vcf\
+  \ <...>   <prefix>|<gen-file>,<sample-file>\n   -g, --gensample <...>       <prefix>|<gen-file>,<sample-file>\n\
+  \       --tag <string>          tag to take values for .gen file: GT,PL,GL,GP [GT]\n\
+  \       --chrom                 output chromosome in first column instead of CHROM:POS_REF_ALT\n\
+  \       --sex <file>            output sex column in the sample-file, input format\
+  \ is: Sample\\t[MF]\n       --vcf-ids               output VCF IDs in second column\
+  \ instead of CHROM:POS_REF_ALT\n\ngVCF conversion:\n       --gvcf2vcf          \
+  \    expand gVCF reference blocks\n   -f, --fasta-ref <file>      reference sequence\
+  \ in fasta format\n\nHAP/SAMPLE conversion (output from SHAPEIT):\n       --hapsample2vcf\
+  \ <...>   <prefix>|<hap-file>,<sample-file>\n       --hapsample <...>       <prefix>|<hap-file>,<sample-file>\n\
+  \       --haploid2diploid       convert haploid genotypes to diploid homozygotes\n\
+  \       --sex <file>            output sex column in the sample-file, input format\
+  \ is: Sample\\t[MF]\n       --vcf-ids               output VCF IDs instead of CHROM:POS_REF_ALT\n\
+  \nHAP/LEGEND/SAMPLE conversion:\n   -H, --haplegendsample2vcf <...>  <prefix>|<hap-file>,<legend-file>,<sample-file>\n\
+  \   -h, --haplegendsample <...>      <prefix>|<hap-file>,<legend-file>,<sample-file>\n\
+  \       --haploid2diploid            convert haploid genotypes to diploid homozygotes\n\
+  \       --sex <file>                 output sex column in the sample-file, input\
+  \ format is: Sample\\t[MF]\n       --vcf-ids                    output VCF IDs instead\
+  \ of CHROM:POS_REF_ALT\n\nTSV conversion:\n       --tsv2vcf <file>        \n   -c,\
+  \ --columns <string>      columns of the input tsv file [ID,CHROM,POS,AA]\n   -f,\
+  \ --fasta-ref <file>      reference sequence in fasta format\n   -s, --samples <list>\
+  \        list of sample names\n   -S, --samples-file <file>   file of sample names\n\
+  \n"
+generated_using:
+- --help

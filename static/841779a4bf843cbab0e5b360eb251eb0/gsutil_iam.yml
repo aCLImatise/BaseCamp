@@ -1,0 +1,113 @@
+!Command
+command:
+- gsutil
+- iam
+positional:
+- !Positional
+  description: CH EXAMPLES
+  position: 0
+  name: efficiently.
+  optional: false
+named:
+- !Flag
+  description: ("user"|"serviceAccount"|"domain"|"group"):id
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Performs \"iam set\" recursively to all objects under the\nspecified\
+    \ bucket."
+  synonyms:
+  - -R
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Performs "iam set" request on all object versions.
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Performs the precondition check on each object with the\nspecified\
+    \ etag before setting the policy."
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: etag
+  optional: true
+- !Flag
+  description: "Default gsutil error handling is fail-fast. This flag\nchanges the\
+    \ request to fail-silent mode. This is implicitly\nset when invoking the gsutil\
+    \ -m option."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n  iam - Get, set, or change bucket and/or object IAM permissions.\n\
+  \n\nSYNOPSIS\n  gsutil iam set [-afRr] [-e <etag>] file url ...\n  gsutil iam get\
+  \ url\n  gsutil iam ch [-fRr] binding ...\n\n  where each binding is of the form:\n\
+  \n      [-d] (\"user\"|\"serviceAccount\"|\"domain\"|\"group\"):id:role[,...]\n\
+  \      [-d] (\"allUsers\"|\"allAuthenticatedUsers\"):role[,...]\n      -d (\"user\"\
+  |\"serviceAccount\"|\"domain\"|\"group\"):id\n      -d (\"allUsers\"|\"allAuthenticatedUsers\"\
+  )\n\n\n\nDESCRIPTION\n  The iam command has three sub-commands:\n\nGET\n  The \"\
+  iam get\" command gets the IAM policy for a bucket or object, which you\n  can save\
+  \ and edit for use with the \"iam set\" command.\n\n  For example:\n\n    gsutil\
+  \ iam get gs://example > bucket_iam.txt\n    gsutil iam get gs://example/important.txt\
+  \ > object_iam.txt\n\n  The IAM policy returned by \"iam get\" includes the etag\
+  \ of the IAM policy and\n  will be used in the precondition check for \"iam set\"\
+  , unless the etag is\n  overridden by setting the \"iam set\" -e option.\n\n\nSET\n\
+  \  The \"iam set\" command sets the IAM policy for one or more buckets and / or\n\
+  \  objects. It overwrites the current IAM policy that exists on a bucket (or\n \
+  \ object) with the policy specified in the input file. The \"iam set\" command\n\
+  \  takes as input a file with an IAM policy in the format of the output\n  generated\
+  \ by \"iam get\".\n\n  The \"iam ch\" command can be used to edit an existing policy.\
+  \ It works\n  correctly in the presence of concurrent updates. You may also do this\n\
+  \  manually by using the -e flag and overriding the etag returned in \"iam get\"\
+  .\n  Specifying -e with an empty string (i.e. \"gsutil iam set -e '' ...\") will\n\
+  \  instruct gsutil to skip the precondition check when setting the IAM policy.\n\
+  \n  If you wish to set an IAM policy on a large number of objects, you may want\n\
+  \  to use the gsutil -m option for concurrent processing. The following command\n\
+  \  will apply iam.txt to all objects in the \"cats\" bucket.\n\n    gsutil -m iam\
+  \ set -r iam.txt gs://cats\n\n  Note that only object-level IAM applications are\
+  \ parallelized; you do not\n  gain any additional performance when applying an IAM\
+  \ policy to a large\n  number of buckets with the -m flag.\n\nSET OPTIONS\n  The\
+  \ \"set\" sub-command has the following options\n\n    -R, -r      Performs \"iam\
+  \ set\" recursively to all objects under the\n                specified bucket.\n\
+  \n    -a          Performs \"iam set\" request on all object versions.\n\n    -e\
+  \ <etag>   Performs the precondition check on each object with the\n           \
+  \     specified etag before setting the policy.\n\n    -f          Default gsutil\
+  \ error handling is fail-fast. This flag\n                changes the request to\
+  \ fail-silent mode. This is implicitly\n                set when invoking the gsutil\
+  \ -m option.\n\n\nCH\n  The \"iam ch\" command incrementally updates IAM policies.\
+  \ You may specify\n  multiple access grants and removals in a single command invocation,\
+  \ which\n  will be batched and applied as a whole to each url via an IAM patch.\n\
+  \  The patch will be constructed by applying each access grant or removal in the\n\
+  \  order in which they appear in the command line arguments. Each access change\n\
+  \  specifies a member and the role that will be either granted or revoked.\n\n \
+  \ The gsutil -m option may be set to handle object-level operations more\n  efficiently.\n\
+  \nCH EXAMPLES\n  Examples for the \"ch\" sub-command:\n\n  To grant a single role\
+  \ to a single member for some targets:\n\n    gsutil iam ch user:john.doe@example.com:objectCreator\
+  \ gs://ex-bucket\n\n  To make a bucket's objects publically readable:\n\n    gsutil\
+  \ iam ch allUsers:objectViewer gs://ex-bucket\n\n  To grant multiple bindings to\
+  \ a bucket:\n\n    gsutil iam ch user:john.doe@example.com:objectCreator \\\n  \
+  \                domain:www.my-domain.org:objectViewer gs://ex-bucket\n\n  To specify\
+  \ more than one role for a particular member:\n\n    gsutil iam ch user:john.doe@example.com:objectCreator,objectViewer\
+  \ \\\n                  gs://ex-bucket\n\n  To apply a grant and simultaneously\
+  \ remove a binding to a bucket:\n\n    gsutil iam ch -d group:readers@example.com:legacyBucketReader\
+  \ \\\n                  group:viewers@example.com:objectViewer gs://ex-bucket\n\n\
+  \  To remove a user from all roles on a bucket:\n\n    gsutil iam ch -d user:john.doe@example.com\
+  \ gs://ex-bucket\n\nCH OPTIONS\n  The \"ch\" sub-command has the following options\n\
+  \n    -R, -r      Performs \"iam ch\" recursively to all objects under the\n   \
+  \             specified bucket.\n\n    -f          Default gsutil error handling\
+  \ is fail-fast. This flag\n                changes the request to fail-silent mode.\
+  \ This is implicitly\n                set when invoking the gsutil -m option.\n"
+generated_using:
+- --help

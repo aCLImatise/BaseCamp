@@ -1,0 +1,1172 @@
+!Command
+command:
+- atropos
+- trim
+positional: []
+named:
+- !Flag
+  description: Print debugging information. (no)
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Show progress. bar = show progress bar; msg = show a\nstatus message.\
+    \ (no)"
+  synonyms:
+  - --progress
+  args: !ChoiceFlagArg
+    choices: !!set
+      bar:
+      msg:
+  optional: true
+- !Flag
+  description: Print only error messages. (no)
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Logging level. (ERROR when --quiet else INFO)
+  synonyms:
+  - --log-level
+  args: !ChoiceFlagArg
+    choices: !!set
+      INFO:
+      WARN:
+      ERROR:
+      DEBUG:
+  optional: true
+- !Flag
+  description: File to write logging info. (stdout)
+  synonyms:
+  - --log-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: The first input file.
+  synonyms:
+  - -pe1
+  - --input1
+  args: !SimpleFlagArg
+    name: FILE1
+  optional: true
+- !Flag
+  description: The second input file.
+  synonyms:
+  - -pe2
+  - --input2
+  args: !SimpleFlagArg
+    name: FILE2
+  optional: true
+- !Flag
+  description: Interleaved input file.
+  synonyms:
+  - -l
+  - --interleaved-input
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: A single-end read file.
+  synonyms:
+  - -se
+  - --single-input
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "When treating an interleaved FASTQ or paired-end\nSAM/BAM file as\
+    \ single-end, this option specifies\nwhich of the two reads to process. (both\
+    \ reads used)"
+  synonyms:
+  - --single-input-read
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+  optional: true
+- !Flag
+  description: A single-end qual file.
+  synonyms:
+  - -sq
+  - --single-quals
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Accession to stream from SRA (requires optional NGS\ndependency to\
+    \ be installed)."
+  synonyms:
+  - -sra
+  - --sra-accession
+  args: !SimpleFlagArg
+    name: ACCN
+  optional: true
+- !Flag
+  description: "Input file format. Ignored when reading csfasta/qual\nfiles. (auto-detect\
+    \ from file name extension)"
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      bam:
+      fastq:
+      sam:
+      fasta:
+      sra-fastq:
+  optional: true
+- !Flag
+  description: "Assume that quality values in FASTQ are encoded as\nascii(quality\
+    \ + QUALITY_BASE). This needs to be set to\n64 for some old Illumina FASTQ files.\
+    \ (33)"
+  synonyms:
+  - -Q
+  - --quality-base
+  args: !SimpleFlagArg
+    name: QUALITY_BASE
+  optional: true
+- !Flag
+  description: "Enable colorspace mode: Also trim the color that is\nadjacent to the\
+    \ found adapter. (no)"
+  synonyms:
+  - -c
+  - --colorspace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum number of reads/pairs to process (no max)
+  synonyms:
+  - --max-reads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Subsample a fraction of reads. (no)
+  synonyms:
+  - --subsample
+  args: !SimpleFlagArg
+    name: PROB
+  optional: true
+- !Flag
+  description: "The seed to use for the pseudorandom number generator.\nUsing the\
+    \ same seed will result in the same\nsubsampling of reads."
+  synonyms:
+  - --subsample-seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: Number of records to process in each batch. (1000)
+  synonyms:
+  - --batch-size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: Optional sample ID. Added to the summary output.
+  synonyms:
+  - -D
+  - --sample-id
+  args: !SimpleFlagArg
+    name: ID
+  optional: true
+- !Flag
+  description: "Specify a sequence alphabet to use for validating\ninputs. Currently,\
+    \ only 'dna' is supported. (no\nvalidation)"
+  synonyms:
+  - --alphabet
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Sequence of an adapter ligated to the 3' end (paired\ndata: of the\
+    \ first read). The adapter and subsequent\nbases are trimmed. If a '$' character\
+    \ is appended\n('anchoring'), the adapter is only found if it is a\nsuffix of\
+    \ the read. (none)"
+  synonyms:
+  - -a
+  - --adapter
+  args: !SimpleFlagArg
+    name: ADAPTER
+  optional: true
+- !Flag
+  description: "Sequence of an adapter ligated to the 5' end (paired\ndata: of the\
+    \ first read). The adapter and any\npreceding bases are trimmed. Partial matches\
+    \ at the 5'\nend are allowed. If a '^' character is prepended\n('anchoring'),\
+    \ the adapter is only found if it is a\nprefix of the read. (none)"
+  synonyms:
+  - -g
+  - --front
+  args: !SimpleFlagArg
+    name: ADAPTER
+  optional: true
+- !Flag
+  description: "Sequence of an adapter that may be ligated to the 5'\nor 3' end (paired\
+    \ data: of the first read). Both types\nof matches as described under -a und -g\
+    \ are allowed.\nIf the first base of the read is part of the match,\nthe behavior\
+    \ is as with -g, otherwise as with -a. This\noption is mostly for rescuing failed\
+    \ library\npreparations - do not use if you know which end your\nadapter was ligated\
+    \ to! (none)"
+  synonyms:
+  - -b
+  - --anywhere
+  args: !SimpleFlagArg
+    name: ADAPTER
+  optional: true
+- !Flag
+  description: "Path or URL of a FASTA file containing adapter\nsequences."
+  synonyms:
+  - -F
+  - --known-adapters-file
+  args: !SimpleFlagArg
+    name: KNOWN_ADAPTERS_FILE
+  optional: true
+- !Flag
+  description: "Don't fetch the default adapter list (which is\ncurrently stored in\
+    \ GitHub)."
+  synonyms:
+  - --no-default-adapters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "File where adapter sequences will be cached, unless\n--no-cache-adapters\
+    \ is set."
+  synonyms:
+  - --adapter-cache-file
+  args: !SimpleFlagArg
+    name: ADAPTER_CACHE_FILE
+  optional: true
+- !Flag
+  description: "Don't cache adapters list as '.adapters' in the\nworking directory."
+  synonyms:
+  - --no-cache-adapters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Match and redirect reads to output/untrimmed-output as\nusual, but\
+    \ do not remove adapters. (no)"
+  synonyms:
+  - --no-trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Mask adapters with 'N' characters instead of trimming\nthem. (no)"
+  synonyms:
+  - --mask-adapter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expected GC content of sequences.
+  synonyms:
+  - --gc-content
+  args: !SimpleFlagArg
+    name: GC_CONTENT
+  optional: true
+- !Flag
+  description: "Which alignment algorithm to use for identifying\nadapters. Currently,\
+    \ you can choose between the semi-\nglobal alignment strategy used in Cutdapt\
+    \ ('adapter')\nor the more accurate insert-based alignment algorithm\n('insert').\
+    \ Note that insert-based alignment can only\nbe used with paired-end reads containing\
+    \ 3' adapters.\nNew algorithms are being implemented and the default\nis likely\
+    \ to change. (adapter)"
+  synonyms:
+  - --aligner
+  args: !ChoiceFlagArg
+    choices: !!set
+      adapter:
+      insert:
+  optional: true
+- !Flag
+  description: "Maximum allowed error rate for adapter match (no. of\nerrors divided\
+    \ by the length of the matching region).\n(0.1)"
+  synonyms:
+  - -e
+  - --error-rate
+  args: !SimpleFlagArg
+    name: ERROR_RATE
+  optional: true
+- !Flag
+  description: "Integer cost of insertions and deletions during\nadapter match. Substitutions\
+    \ always have a cost of 1.\n(1)"
+  synonyms:
+  - --indel-cost
+  args: !SimpleFlagArg
+    name: COST
+  optional: true
+- !Flag
+  description: "Allow only mismatches in alignments. (allow both\nmismatches and indels)"
+  synonyms:
+  - --no-indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove up to COUNT adapters from each read. (1)
+  synonyms:
+  - -n
+  - --times
+  args: !SimpleFlagArg
+    name: COUNT
+  optional: true
+- !Flag
+  description: Interpret IUPAC wildcards in reads. (no)
+  synonyms:
+  - --match-read-wildcards
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not interpret IUPAC wildcards in adapters. (no)
+  synonyms:
+  - -N
+  - --no-match-adapter-wildcards
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If the overlap between the read and the adapter is\nshorter than MINLENGTH,\
+    \ the read is not modified.\nReduces the no. of bases trimmed due to random adapter\n\
+    matches. (3)"
+  synonyms:
+  - -O
+  - --overlap
+  args: !SimpleFlagArg
+    name: MINLENGTH
+  optional: true
+- !Flag
+  description: "If no minimum overlap (-O) is specified, then adapters\nare only matched\
+    \ when the probabilty of observing k\nout of n matching bases is <= PROB. (1E-6)"
+  synonyms:
+  - --adapter-max-rmp
+  args: !SimpleFlagArg
+    name: PROB
+  optional: true
+- !Flag
+  description: "Overlapping inserts only match when the probablity of\nobserving k\
+    \ of n matching bases is <= PROB. (1E-6)"
+  synonyms:
+  - --insert-max-rmp
+  args: !SimpleFlagArg
+    name: PROB
+  optional: true
+- !Flag
+  description: "Maximum allowed error rate for insert match (no. of\nerrors divided\
+    \ by the length of the matching region).\n(0.2)"
+  synonyms:
+  - --insert-match-error-rate
+  args: !SimpleFlagArg
+    name: INSERT_MATCH_ERROR_RATE
+  optional: true
+- !Flag
+  description: "Maximum allowed error rate for matching adapters after\nsuccessful\
+    \ insert match (no. of errors divided by the\nlength of the matching region).\
+    \ (0.2)"
+  synonyms:
+  - --insert-match-adapter-error-rate
+  args: !SimpleFlagArg
+    name: INSERT_MATCH_ADAPTER_ERROR_RATE
+  optional: true
+- !Flag
+  description: "Merge read pairs that overlap into a single sequence.\nThis is experimental.\
+    \ (no)"
+  synonyms:
+  - -R
+  - --merge-overlapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The minimum overlap between reads required for\nmerging. If this number\
+    \ is (0,1.0], it specifies the\nminimum length as the fraction of the length of\
+    \ the\n*shorter* read in the pair; otherwise it specifies the\nminimum number\
+    \ of overlapping base pairs (with an\nabsolute minimum of 2 bp). (0.9)"
+  synonyms:
+  - --merge-min-overlap
+  args: !SimpleFlagArg
+    name: MERGE_MIN_OVERLAP
+  optional: true
+- !Flag
+  description: The maximum error rate for merging. (0.2)
+  synonyms:
+  - --merge-error-rate
+  args: !SimpleFlagArg
+    name: MERGE_ERROR_RATE
+  optional: true
+- !Flag
+  description: "How to handle mismatches while aligning/merging.\n'Liberal' and 'conservative'\
+    \ error correction both\ninvolve setting the base to the one with the best\nquality.\
+    \ They differ only when the qualities are equal\n-- liberal means set it to the\
+    \ base from the read with\nthe overall best median base quality, while\nconservative\
+    \ means to leave it unchanged. 'N' means to\nset the base to N. If exactly one\
+    \ base is ambiguous,\nthe non-ambiguous base is always used. (no error\ncorrection)"
+  synonyms:
+  - --correct-mismatches
+  args: !ChoiceFlagArg
+    choices: !!set
+      N:
+      conservative:
+      liberal:
+  optional: true
+- !Flag
+  description: "The order in which trimming operations are be applied.\nThis is a\
+    \ string of 1-5 of the following characters: A\n= adapter trimming; C = cutting\
+    \ (unconditional); G =\nNextSeq trimming; Q = quality trimming; W = overwrite\n\
+    poor quality reads. The default is 'WCGQA' to maintain\ncompatibility with Cutadapt;\
+    \ however, this is likely\nto change to 'GAWCQ' in the near future."
+  synonyms:
+  - --op-order
+  args: !SimpleFlagArg
+    name: OP_ORDER
+  optional: true
+- !Flag
+  description: "Remove bases from each read (first read only if\npaired). If LENGTH\
+    \ is positive, remove bases from the\nbeginning. If LENGTH is negative, remove\
+    \ bases from\nthe end. Can be used twice if LENGTHs have different\nsigns. (no)"
+  synonyms:
+  - -u
+  - --cut
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "[5'CUTOFF,]3'CUTOFF, --quality-cutoff [5'CUTOFF,]3'CUTOFF\nTrim low-quality\
+    \ bases from 5' and/or 3' ends of each\nread before adapter removal. Applied to\
+    \ both reads if\ndata is paired. If one value is given, only the 3' end\nis trimmed.\
+    \ If two comma-separated cutoffs are given,\nthe 5' end is trimmed with the first\
+    \ cutoff, the 3'\nend with the second. (no)"
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Similar to -u, except that cutting is done AFTER\nadapter trimming,\
+    \ and only if a minimum of LENGTH\nbases was not already removed. (no)"
+  synonyms:
+  - -i
+  - --cut-min
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "'CUTOFF\nNextSeq-specific quality trimming (each read). Trims\nalso\
+    \ dark cycles appearing as high-quality G bases\n(EXPERIMENTAL). (no)"
+  synonyms:
+  - --nextseq-trim
+  args: !SimpleFlagArg
+    name: '3'
+  optional: true
+- !Flag
+  description: Trim N's on ends of reads. (no)
+  synonyms:
+  - --trim-n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Add this prefix to read names. Use {name} to insert\nthe name of the\
+    \ matching adapter. (no)"
+  synonyms:
+  - -x
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "Add this suffix to read names; can also include\n{name}. (no)"
+  synonyms:
+  - -y
+  - --suffix
+  args: !SimpleFlagArg
+    name: SUFFIX
+  optional: true
+- !Flag
+  description: "Remove this suffix from read names if present. Can be\ngiven multiple\
+    \ times. (no)"
+  synonyms:
+  - --strip-suffix
+  args: !SimpleFlagArg
+    name: STRIP_SUFFIX
+  optional: true
+- !Flag
+  description: "Search for TAG followed by a decimal number in the\ndescription field\
+    \ of the read. Replace the decimal\nnumber with the correct length of the trimmed\
+    \ read.\nFor example, use --length-tag 'length=' to correct\nfields like 'length=123'.\
+    \ (no)"
+  synonyms:
+  - --length-tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: "Discard reads that contain an adapter. Also use -O to\navoid discarding\
+    \ too many randomly matching reads!\n(no)"
+  synonyms:
+  - --discard-trimmed
+  - --discard
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Discard reads that do not contain the adapter. (no)
+  synonyms:
+  - --discard-untrimmed
+  - --trimmed-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Discard trimmed reads that are shorter than LENGTH.\nReads that are\
+    \ too short even before adapter removal\nare also discarded. In colorspace, an\
+    \ initial primer\nis not counted. (0)"
+  synonyms:
+  - -m
+  - --minimum-length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "Discard trimmed reads that are longer than LENGTH.\nReads that are\
+    \ too long even before adapter removal\nare also discarded. In colorspace, an\
+    \ initial primer\nis not counted. (no limit)"
+  synonyms:
+  - -M
+  - --maximum-length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "Discard reads with too many N bases. If COUNT is an\ninteger, it is\
+    \ treated as the absolute number of N\nbases. If it is between 0 and 1, it is\
+    \ treated as the\nproportion of N's allowed in a read. (no)"
+  synonyms:
+  - --max-n
+  args: !SimpleFlagArg
+    name: COUNT
+  optional: true
+- !Flag
+  description: "Write trimmed reads to FILE. FASTQ or FASTA format is\nchosen depending\
+    \ on input. The summary report is sent\nto standard output. Use '{name}' in FILE\
+    \ to\ndemultiplex reads into multiple files. (write to\nstandard output)"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write information about each read and its adapter\nmatches into FILE.\
+    \ See the documentation for the file\nformat. (no)"
+  synonyms:
+  - --info-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "When the adapter matches in the middle of a read,\nwrite the rest\
+    \ (after the adapter) into FILE. (no)"
+  synonyms:
+  - -r
+  - --rest-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "When the adapter has N bases (wildcards), write\nadapter bases matching\
+    \ wildcard positions to FILE.\nWhen there are indels in the alignment, this will\n\
+    often not be accurate. (no)"
+  synonyms:
+  - --wildcard-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write reads that are too short (according to length\nspecified by\
+    \ -m) to FILE. (no - too short reads are\ndiscarded)"
+  synonyms:
+  - --too-short-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write reads that are too long (according to length\nspecified by -M)\
+    \ to FILE. (no - too long reads are\ndiscarded)"
+  synonyms:
+  - --too-long-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write reads that do not contain the adapter to FILE.\n(no - untrimmed\
+    \ reads are written to default output)"
+  synonyms:
+  - --untrimmed-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write reads that have been merged to this file.\n(merged reads are\
+    \ discarded)"
+  synonyms:
+  - --merged-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Write report to file rather than stdout/stderr. (no)
+  synonyms:
+  - --report-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "[FORMAT [FORMAT ...]]\nReport type(s) to generate. If multiple, '--report-\n\
+    file' is treated as a prefix and the appropriate\nextensions are appended. If\
+    \ unspecified, the format is\nguessed from the file extension. Supported formats\n\
+    are: txt (legacy text format), json, yaml, pickle. See\nthe documentation for\
+    \ a full description of the\nstructured output (json/yaml/pickle formats)."
+  synonyms:
+  - --report-formats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[STATS [STATS ...]]\nWhich read-level statistics to compute. Can be\
+    \ 'none'\n(default), 'pre': only compute pre-trimming stats;\n'post': only compute\
+    \ post-trimming stats; or 'both'.\nThe keyword can be followed by ':' and then\
+    \ additional\nconfiguration parameters. E.g. 'pre:tiles' means to\nalso collect\
+    \ tile-level statistics (Illumina data\nonly), and 'pre:tiles=<regexp>' means\
+    \ to use the\nspecified regular expression to extract key portions\nof read names\
+    \ to collect the tile statistics."
+  synonyms:
+  - --stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Double-encode colors (map 0,1,2,3,4 to A,C,G,T,N).\n(no)"
+  synonyms:
+  - -d
+  - --double-encode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Trim primer base and the first color (which is the\ntransition to\
+    \ the first nucleotide). (no)"
+  synonyms:
+  - -t
+  - --trim-primer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Strip the _F3 suffix of read names. (no)
+  synonyms:
+  - --strip-f3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "MAQ- and BWA-compatible colorspace output. This\nenables -c, -d, -t,\
+    \ --strip-f3 and -y '/1'. (no)"
+  synonyms:
+  - --maq
+  - --bwa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not change negative quality values to zero in\ncolorspace data.\
+    \ By default, they are since many tools\nhave problems with negative qualities.\
+    \ (no)"
+  synonyms:
+  - --no-zero-cap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Change negative quality values to zero. This is\nenabled by default\
+    \ when -c/--colorspace is also\nenabled. Use the above option to disable it. (no)"
+  synonyms:
+  - -z
+  - --zero-cap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "3' adapter to be removed from second read in a pair.\n(no)"
+  synonyms:
+  - -A
+  - --adapter2
+  args: !SimpleFlagArg
+    name: ADAPTER
+  optional: true
+- !Flag
+  description: "5' adapter to be removed from second read in a pair.\n(no)"
+  synonyms:
+  - -G
+  - --front2
+  args: !SimpleFlagArg
+    name: ADAPTER
+  optional: true
+- !Flag
+  description: "5'/3 adapter to be removed from second read in a pair.\n(no)"
+  synonyms:
+  - -B
+  - --anywhere2
+  args: !SimpleFlagArg
+    name: ADAPTER
+  optional: true
+- !Flag
+  description: "Remove LENGTH bases from second read in a pair (see\n--cut). (no)"
+  synonyms:
+  - -U
+  - --cut2
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "Similar to -U, except that cutting is done AFTER\nadapter trimming,\
+    \ and only if a minimum of LENGTH\nbases was not already removed (see --cut-min).\
+    \ (no)"
+  synonyms:
+  - -I
+  - --cut-min2
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: ",HIGHQ,WINDOW, --overwrite-low-quality LOWQ,HIGHQ,WINDOW\nWhen one\
+    \ read has mean quality < LOWQ and the other\nread has mean quality >= HIGHQ over\
+    \ the first WINDOW\nbases, overwrite the worse read with the better read."
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: LOWQ
+  optional: true
+- !Flag
+  description: Write second read in a pair to FILE. (no)
+  synonyms:
+  - -p
+  - --paired-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Write output to interleaved file.
+  synonyms:
+  - -L
+  - --interleaved-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "(any|both)\nWhich of the reads in a paired-end read have to match\n\
+    the filtering criterion in order for it to be\nfiltered. (any)"
+  synonyms:
+  - --pair-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write second read in a pair to this FILE when no\nadapter was found\
+    \ in the first read. Use this option\ntogether with --untrimmed-output when trimming\
+    \ paired-\nend reads. (no - output to same file as trimmed reads)"
+  synonyms:
+  - --untrimmed-paired-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write second read in a pair to this file if pair is\ntoo short. Use\
+    \ together with --too-short-output. (no -\ntoo short reads are discarded)"
+  synonyms:
+  - --too-short-paired-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Write second read in a pair to this file if pair is\ntoo long. Use\
+    \ together with --too-long-output. (no -\ntoo long reads are discarded)"
+  synonyms:
+  - --too-long-paired-output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Set default option values for bisulfite-treated data.\nThe argument\
+    \ specifies the type of bisulfite library\n(rrbs, non-directional, non-directional-rrbs,\
+    \ truseq,\nepignome, or swift) or custom parameters for trimming:\n'<read1>[;<read2>]'\
+    \ where trimming parameters for each\nread are: '<5' cut>,<3' cut>,<include trimmed>,<only\n\
+    trimmed>' where 'include trimmed' is 1 or 0 for\nwhether or not the bases already\
+    \ trimmed during/prior\nto adapter trimming should be counted towards the\ntotal\
+    \ bases to be cut and 'only trimmed' is 1 or 0 for\nwhether or not only trimmed\
+    \ reads should be further\ncut. (no)"
+  synonyms:
+  - --bisulfite
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: Set default option values for miRNA data. (no)
+  synonyms:
+  - --mirna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of threads to use for read trimming. Set to 0\nto use max available\
+    \ threads. (Do not use\nmultithreading)"
+  synonyms:
+  - -T
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Do not use a writer process; instead, each worker\nthread writes its\
+    \ own output to a file with a '.N'\nsuffix. (no)"
+  synonyms:
+  - --no-writer-process
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Preserve order of reads in input files (ignored if
+  synonyms:
+  - --preserve-order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of seconds process should wait before\nescalating messages\
+    \ to ERROR level. (60)"
+  synonyms:
+  - --process-timeout
+  args: !SimpleFlagArg
+    name: SECONDS
+  optional: true
+- !Flag
+  description: "Size of queue for batches of reads to be processed.\n(THREADS * 100)"
+  synonyms:
+  - --read-queue-size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: "Size of queue for batches of results to be written.\n(THREADS * 100)"
+  synonyms:
+  - --result-queue-size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: "Where data compression should be performed. Defaults\nto 'writer'\
+    \ if system-level compression can be used\nand (1 < threads < 8), otherwise defaults\
+    \ to 'worker'.\n"
+  synonyms:
+  - --compression
+  args: !ChoiceFlagArg
+    choices: !!set
+      writer:
+      worker:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version information and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: \natropos trim -a ADAPTER [options] [-o output.fastq] -se input.fastq\n\
+  atropos trim -a ADAPT1 -A ADAPT2 [options] -o out1.fastq -p out2.fastq -pe1 in1.fastq\
+  \ -pe2 in2.fastq\n\nAtropos version 1.1.28\n\nTrim adapters and low-quality bases,\
+  \ and perform other NGS preprocessing. This\ncommand provides most of Atropos' functionality.\n\
+  \nReplace \"ADAPTER\" with the actual sequence of your 3' adapter. IUPAC wildcard\n\
+  characters are supported. The reverse complement is *not* automatically\nsearched.\
+  \ All reads from input.fastq will be written to output.fastq with the\nadapter sequence\
+  \ removed. Adapter matching is error-tolerant. Multiple adapter\nsequences can be\
+  \ given (use further -a options), but only the best-matching\nadapter will be removed.\n\
+  \nInput may also be in FASTA, SAM, or BAM format. Compressed input and output is\n\
+  supported and auto-detected from the file name (.gz, .xz, .bz2). Use the file\n\
+  name '-' for standard input/output. Without the -o option, output is sent to\nstandard\
+  \ output.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --debug               Print debugging information. (no)\n  --progress\
+  \ {bar,msg}  Show progress. bar = show progress bar; msg = show a\n            \
+  \            status message. (no)\n  --quiet               Print only error messages.\
+  \ (no)\n  --log-level {DEBUG,INFO,WARN,ERROR}\n                        Logging level.\
+  \ (ERROR when --quiet else INFO)\n  --log-file FILE       File to write logging\
+  \ info. (stdout)\n  --version             Show version information and exit.\n\n\
+  Input:\n  -pe1 FILE1, --input1 FILE1\n                        The first input file.\n\
+  \  -pe2 FILE2, --input2 FILE2\n                        The second input file.\n\
+  \  -l FILE, --interleaved-input FILE\n                        Interleaved input\
+  \ file.\n  -se FILE, --single-input FILE\n                        A single-end read\
+  \ file.\n  --single-input-read {1,2}\n                        When treating an interleaved\
+  \ FASTQ or paired-end\n                        SAM/BAM file as single-end, this\
+  \ option specifies\n                        which of the two reads to process. (both\
+  \ reads used)\n  -sq FILE, --single-quals FILE\n                        A single-end\
+  \ qual file.\n  -sra ACCN, --sra-accession ACCN\n                        Accession\
+  \ to stream from SRA (requires optional NGS\n                        dependency\
+  \ to be installed).\n  -f {fasta,fastq,sra-fastq,sam,bam}, --format {fasta,fastq,sra-fastq,sam,bam}\n\
+  \                        Input file format. Ignored when reading csfasta/qual\n\
+  \                        files. (auto-detect from file name extension)\n  -Q QUALITY_BASE,\
+  \ --quality-base QUALITY_BASE\n                        Assume that quality values\
+  \ in FASTQ are encoded as\n                        ascii(quality + QUALITY_BASE).\
+  \ This needs to be set to\n                        64 for some old Illumina FASTQ\
+  \ files. (33)\n  -c, --colorspace      Enable colorspace mode: Also trim the color\
+  \ that is\n                        adjacent to the found adapter. (no)\n  --max-reads\
+  \ N         Maximum number of reads/pairs to process (no max)\n  --subsample PROB\
+  \      Subsample a fraction of reads. (no)\n  --subsample-seed SEED\n          \
+  \              The seed to use for the pseudorandom number generator.\n        \
+  \                Using the same seed will result in the same\n                 \
+  \       subsampling of reads.\n  --batch-size SIZE     Number of records to process\
+  \ in each batch. (1000)\n  -D ID, --sample-id ID\n                        Optional\
+  \ sample ID. Added to the summary output.\n  --alphabet NAME       Specify a sequence\
+  \ alphabet to use for validating\n                        inputs. Currently, only\
+  \ 'dna' is supported. (no\n                        validation)\n\nFinding adapters:\n\
+  \  Parameters -a, -g, -b specify adapters to be removed from each read (or\n  from\
+  \ the first read in a pair if data is paired). If specified multiple\n  times, only\
+  \ the best matching adapter is trimmed (but see the --times\n  option). When the\
+  \ special notation 'file:FILE' is used, adapter sequences\n  are read from the given\
+  \ FASTA file. When the --adapter-file option is\n  used, adapters can be specified\
+  \ by name rather than sequence.\n\n  -a ADAPTER, --adapter ADAPTER\n           \
+  \             Sequence of an adapter ligated to the 3' end (paired\n           \
+  \             data: of the first read). The adapter and subsequent\n           \
+  \             bases are trimmed. If a '$' character is appended\n              \
+  \          ('anchoring'), the adapter is only found if it is a\n               \
+  \         suffix of the read. (none)\n  -g ADAPTER, --front ADAPTER\n          \
+  \              Sequence of an adapter ligated to the 5' end (paired\n          \
+  \              data: of the first read). The adapter and any\n                 \
+  \       preceding bases are trimmed. Partial matches at the 5'\n               \
+  \         end are allowed. If a '^' character is prepended\n                   \
+  \     ('anchoring'), the adapter is only found if it is a\n                    \
+  \    prefix of the read. (none)\n  -b ADAPTER, --anywhere ADAPTER\n            \
+  \            Sequence of an adapter that may be ligated to the 5'\n            \
+  \            or 3' end (paired data: of the first read). Both types\n          \
+  \              of matches as described under -a und -g are allowed.\n          \
+  \              If the first base of the read is part of the match,\n           \
+  \             the behavior is as with -g, otherwise as with -a. This\n         \
+  \               option is mostly for rescuing failed library\n                 \
+  \       preparations - do not use if you know which end your\n                 \
+  \       adapter was ligated to! (none)\n  -F KNOWN_ADAPTERS_FILE, --known-adapters-file\
+  \ KNOWN_ADAPTERS_FILE\n                        Path or URL of a FASTA file containing\
+  \ adapter\n                        sequences.\n  --no-default-adapters\n       \
+  \                 Don't fetch the default adapter list (which is\n             \
+  \           currently stored in GitHub).\n  --adapter-cache-file ADAPTER_CACHE_FILE\n\
+  \                        File where adapter sequences will be cached, unless\n \
+  \                       --no-cache-adapters is set.\n  --no-cache-adapters   Don't\
+  \ cache adapters list as '.adapters' in the\n                        working directory.\n\
+  \  --no-trim             Match and redirect reads to output/untrimmed-output as\n\
+  \                        usual, but do not remove adapters. (no)\n  --mask-adapter\
+  \        Mask adapters with 'N' characters instead of trimming\n               \
+  \         them. (no)\n  --gc-content GC_CONTENT\n                        Expected\
+  \ GC content of sequences.\n  --aligner {adapter,insert}\n                     \
+  \   Which alignment algorithm to use for identifying\n                        adapters.\
+  \ Currently, you can choose between the semi-\n                        global alignment\
+  \ strategy used in Cutdapt ('adapter')\n                        or the more accurate\
+  \ insert-based alignment algorithm\n                        ('insert'). Note that\
+  \ insert-based alignment can only\n                        be used with paired-end\
+  \ reads containing 3' adapters.\n                        New algorithms are being\
+  \ implemented and the default\n                        is likely to change. (adapter)\n\
+  \  -e ERROR_RATE, --error-rate ERROR_RATE\n                        Maximum allowed\
+  \ error rate for adapter match (no. of\n                        errors divided by\
+  \ the length of the matching region).\n                        (0.1)\n  --indel-cost\
+  \ COST     Integer cost of insertions and deletions during\n                   \
+  \     adapter match. Substitutions always have a cost of 1.\n                  \
+  \      (1)\n  --no-indels           Allow only mismatches in alignments. (allow\
+  \ both\n                        mismatches and indels)\n  -n COUNT, --times COUNT\n\
+  \                        Remove up to COUNT adapters from each read. (1)\n  --match-read-wildcards\n\
+  \                        Interpret IUPAC wildcards in reads. (no)\n  -N, --no-match-adapter-wildcards\n\
+  \                        Do not interpret IUPAC wildcards in adapters. (no)\n  -O\
+  \ MINLENGTH, --overlap MINLENGTH\n                        If the overlap between\
+  \ the read and the adapter is\n                        shorter than MINLENGTH, the\
+  \ read is not modified.\n                        Reduces the no. of bases trimmed\
+  \ due to random adapter\n                        matches. (3)\n  --adapter-max-rmp\
+  \ PROB\n                        If no minimum overlap (-O) is specified, then adapters\n\
+  \                        are only matched when the probabilty of observing k\n \
+  \                       out of n matching bases is <= PROB. (1E-6)\n  --insert-max-rmp\
+  \ PROB\n                        Overlapping inserts only match when the probablity\
+  \ of\n                        observing k of n matching bases is <= PROB. (1E-6)\n\
+  \  --insert-match-error-rate INSERT_MATCH_ERROR_RATE\n                        Maximum\
+  \ allowed error rate for insert match (no. of\n                        errors divided\
+  \ by the length of the matching region).\n                        (0.2)\n  --insert-match-adapter-error-rate\
+  \ INSERT_MATCH_ADAPTER_ERROR_RATE\n                        Maximum allowed error\
+  \ rate for matching adapters after\n                        successful insert match\
+  \ (no. of errors divided by the\n                        length of the matching\
+  \ region). (0.2)\n  -R, --merge-overlapping\n                        Merge read\
+  \ pairs that overlap into a single sequence.\n                        This is experimental.\
+  \ (no)\n  --merge-min-overlap MERGE_MIN_OVERLAP\n                        The minimum\
+  \ overlap between reads required for\n                        merging. If this number\
+  \ is (0,1.0], it specifies the\n                        minimum length as the fraction\
+  \ of the length of the\n                        *shorter* read in the pair; otherwise\
+  \ it specifies the\n                        minimum number of overlapping base pairs\
+  \ (with an\n                        absolute minimum of 2 bp). (0.9)\n  --merge-error-rate\
+  \ MERGE_ERROR_RATE\n                        The maximum error rate for merging.\
+  \ (0.2)\n  --correct-mismatches {liberal,conservative,N}\n                     \
+  \   How to handle mismatches while aligning/merging.\n                        'Liberal'\
+  \ and 'conservative' error correction both\n                        involve setting\
+  \ the base to the one with the best\n                        quality. They differ\
+  \ only when the qualities are equal\n                        -- liberal means set\
+  \ it to the base from the read with\n                        the overall best median\
+  \ base quality, while\n                        conservative means to leave it unchanged.\
+  \ 'N' means to\n                        set the base to N. If exactly one base is\
+  \ ambiguous,\n                        the non-ambiguous base is always used. (no\
+  \ error\n                        correction)\n\nAdditional read modifications:\n\
+  \  --op-order OP_ORDER   The order in which trimming operations are be applied.\n\
+  \                        This is a string of 1-5 of the following characters: A\n\
+  \                        = adapter trimming; C = cutting (unconditional); G =\n\
+  \                        NextSeq trimming; Q = quality trimming; W = overwrite\n\
+  \                        poor quality reads. The default is 'WCGQA' to maintain\n\
+  \                        compatibility with Cutadapt; however, this is likely\n\
+  \                        to change to 'GAWCQ' in the near future.\n  -u LENGTH,\
+  \ --cut LENGTH\n                        Remove bases from each read (first read\
+  \ only if\n                        paired). If LENGTH is positive, remove bases\
+  \ from the\n                        beginning. If LENGTH is negative, remove bases\
+  \ from\n                        the end. Can be used twice if LENGTHs have different\n\
+  \                        signs. (no)\n  -q [5'CUTOFF,]3'CUTOFF, --quality-cutoff\
+  \ [5'CUTOFF,]3'CUTOFF\n                        Trim low-quality bases from 5' and/or\
+  \ 3' ends of each\n                        read before adapter removal. Applied\
+  \ to both reads if\n                        data is paired. If one value is given,\
+  \ only the 3' end\n                        is trimmed. If two comma-separated cutoffs\
+  \ are given,\n                        the 5' end is trimmed with the first cutoff,\
+  \ the 3'\n                        end with the second. (no)\n  -i LENGTH, --cut-min\
+  \ LENGTH\n                        Similar to -u, except that cutting is done AFTER\n\
+  \                        adapter trimming, and only if a minimum of LENGTH\n   \
+  \                     bases was not already removed. (no)\n  --nextseq-trim 3'CUTOFF\n\
+  \                        NextSeq-specific quality trimming (each read). Trims\n\
+  \                        also dark cycles appearing as high-quality G bases\n  \
+  \                      (EXPERIMENTAL). (no)\n  --trim-n              Trim N's on\
+  \ ends of reads. (no)\n  -x PREFIX, --prefix PREFIX\n                        Add\
+  \ this prefix to read names. Use {name} to insert\n                        the name\
+  \ of the matching adapter. (no)\n  -y SUFFIX, --suffix SUFFIX\n                \
+  \        Add this suffix to read names; can also include\n                     \
+  \   {name}. (no)\n  --strip-suffix STRIP_SUFFIX\n                        Remove\
+  \ this suffix from read names if present. Can be\n                        given\
+  \ multiple times. (no)\n  --length-tag TAG      Search for TAG followed by a decimal\
+  \ number in the\n                        description field of the read. Replace\
+  \ the decimal\n                        number with the correct length of the trimmed\
+  \ read.\n                        For example, use --length-tag 'length=' to correct\n\
+  \                        fields like 'length=123'. (no)\n\nFiltering of processed\
+  \ reads:\n  --discard-trimmed, --discard\n                        Discard reads\
+  \ that contain an adapter. Also use -O to\n                        avoid discarding\
+  \ too many randomly matching reads!\n                        (no)\n  --discard-untrimmed,\
+  \ --trimmed-only\n                        Discard reads that do not contain the\
+  \ adapter. (no)\n  -m LENGTH, --minimum-length LENGTH\n                        Discard\
+  \ trimmed reads that are shorter than LENGTH.\n                        Reads that\
+  \ are too short even before adapter removal\n                        are also discarded.\
+  \ In colorspace, an initial primer\n                        is not counted. (0)\n\
+  \  -M LENGTH, --maximum-length LENGTH\n                        Discard trimmed reads\
+  \ that are longer than LENGTH.\n                        Reads that are too long\
+  \ even before adapter removal\n                        are also discarded. In colorspace,\
+  \ an initial primer\n                        is not counted. (no limit)\n  --max-n\
+  \ COUNT         Discard reads with too many N bases. If COUNT is an\n          \
+  \              integer, it is treated as the absolute number of N\n            \
+  \            bases. If it is between 0 and 1, it is treated as the\n           \
+  \             proportion of N's allowed in a read. (no)\n\nOutput:\n  -o FILE, --output\
+  \ FILE\n                        Write trimmed reads to FILE. FASTQ or FASTA format\
+  \ is\n                        chosen depending on input. The summary report is sent\n\
+  \                        to standard output. Use '{name}' in FILE to\n         \
+  \               demultiplex reads into multiple files. (write to\n             \
+  \           standard output)\n  --info-file FILE      Write information about each\
+  \ read and its adapter\n                        matches into FILE. See the documentation\
+  \ for the file\n                        format. (no)\n  -r FILE, --rest-file FILE\n\
+  \                        When the adapter matches in the middle of a read,\n   \
+  \                     write the rest (after the adapter) into FILE. (no)\n  --wildcard-file\
+  \ FILE  When the adapter has N bases (wildcards), write\n                      \
+  \  adapter bases matching wildcard positions to FILE.\n                        When\
+  \ there are indels in the alignment, this will\n                        often not\
+  \ be accurate. (no)\n  --too-short-output FILE\n                        Write reads\
+  \ that are too short (according to length\n                        specified by\
+  \ -m) to FILE. (no - too short reads are\n                        discarded)\n \
+  \ --too-long-output FILE\n                        Write reads that are too long\
+  \ (according to length\n                        specified by -M) to FILE. (no -\
+  \ too long reads are\n                        discarded)\n  --untrimmed-output FILE\n\
+  \                        Write reads that do not contain the adapter to FILE.\n\
+  \                        (no - untrimmed reads are written to default output)\n\
+  \  --merged-output FILE  Write reads that have been merged to this file.\n     \
+  \                   (merged reads are discarded)\n  --report-file FILE    Write\
+  \ report to file rather than stdout/stderr. (no)\n  --report-formats [FORMAT [FORMAT\
+  \ ...]]\n                        Report type(s) to generate. If multiple, '--report-\n\
+  \                        file' is treated as a prefix and the appropriate\n    \
+  \                    extensions are appended. If unspecified, the format is\n  \
+  \                      guessed from the file extension. Supported formats\n    \
+  \                    are: txt (legacy text format), json, yaml, pickle. See\n  \
+  \                      the documentation for a full description of the\n       \
+  \                 structured output (json/yaml/pickle formats).\n  --stats [STATS\
+  \ [STATS ...]]\n                        Which read-level statistics to compute.\
+  \ Can be 'none'\n                        (default), 'pre': only compute pre-trimming\
+  \ stats;\n                        'post': only compute post-trimming stats; or 'both'.\n\
+  \                        The keyword can be followed by ':' and then additional\n\
+  \                        configuration parameters. E.g. 'pre:tiles' means to\n \
+  \                       also collect tile-level statistics (Illumina data\n    \
+  \                    only), and 'pre:tiles=<regexp>' means to use the\n        \
+  \                specified regular expression to extract key portions\n        \
+  \                of read names to collect the tile statistics.\n\nColorspace options:\n\
+  \  -d, --double-encode   Double-encode colors (map 0,1,2,3,4 to A,C,G,T,N).\n  \
+  \                      (no)\n  -t, --trim-primer     Trim primer base and the first\
+  \ color (which is the\n                        transition to the first nucleotide).\
+  \ (no)\n  --strip-f3            Strip the _F3 suffix of read names. (no)\n  --maq,\
+  \ --bwa          MAQ- and BWA-compatible colorspace output. This\n             \
+  \           enables -c, -d, -t, --strip-f3 and -y '/1'. (no)\n  --no-zero-cap  \
+  \       Do not change negative quality values to zero in\n                     \
+  \   colorspace data. By default, they are since many tools\n                   \
+  \     have problems with negative qualities. (no)\n  -z, --zero-cap        Change\
+  \ negative quality values to zero. This is\n                        enabled by default\
+  \ when -c/--colorspace is also\n                        enabled. Use the above option\
+  \ to disable it. (no)\n\nPaired-end options:\n  The -A/-G/-B/-U/-I options work\
+  \ like their -a/-b/-g/-u/-i counterparts,\n  but are applied to the second read\
+  \ in each pair.\n\n  -A ADAPTER, --adapter2 ADAPTER\n                        3'\
+  \ adapter to be removed from second read in a pair.\n                        (no)\n\
+  \  -G ADAPTER, --front2 ADAPTER\n                        5' adapter to be removed\
+  \ from second read in a pair.\n                        (no)\n  -B ADAPTER, --anywhere2\
+  \ ADAPTER\n                        5'/3 adapter to be removed from second read in\
+  \ a pair.\n                        (no)\n  -U LENGTH, --cut2 LENGTH\n          \
+  \              Remove LENGTH bases from second read in a pair (see\n           \
+  \             --cut). (no)\n  -I LENGTH, --cut-min2 LENGTH\n                   \
+  \     Similar to -U, except that cutting is done AFTER\n                       \
+  \ adapter trimming, and only if a minimum of LENGTH\n                        bases\
+  \ was not already removed (see --cut-min). (no)\n  -w LOWQ,HIGHQ,WINDOW, --overwrite-low-quality\
+  \ LOWQ,HIGHQ,WINDOW\n                        When one read has mean quality < LOWQ\
+  \ and the other\n                        read has mean quality >= HIGHQ over the\
+  \ first WINDOW\n                        bases, overwrite the worse read with the\
+  \ better read.\n  -p FILE, --paired-output FILE\n                        Write second\
+  \ read in a pair to FILE. (no)\n  -L FILE, --interleaved-output FILE\n         \
+  \               Write output to interleaved file.\n  --pair-filter (any|both)\n\
+  \                        Which of the reads in a paired-end read have to match\n\
+  \                        the filtering criterion in order for it to be\n       \
+  \                 filtered. (any)\n  --untrimmed-paired-output FILE\n          \
+  \              Write second read in a pair to this FILE when no\n              \
+  \          adapter was found in the first read. Use this option\n              \
+  \          together with --untrimmed-output when trimming paired-\n            \
+  \            end reads. (no - output to same file as trimmed reads)\n  --too-short-paired-output\
+  \ FILE\n                        Write second read in a pair to this file if pair\
+  \ is\n                        too short. Use together with --too-short-output. (no\
+  \ -\n                        too short reads are discarded)\n  --too-long-paired-output\
+  \ FILE\n                        Write second read in a pair to this file if pair\
+  \ is\n                        too long. Use together with --too-long-output. (no\
+  \ -\n                        too long reads are discarded)\n\nMethod-specific options:\n\
+  \  --bisulfite METHOD    Set default option values for bisulfite-treated data.\n\
+  \                        The argument specifies the type of bisulfite library\n\
+  \                        (rrbs, non-directional, non-directional-rrbs, truseq,\n\
+  \                        epignome, or swift) or custom parameters for trimming:\n\
+  \                        '<read1>[;<read2>]' where trimming parameters for each\n\
+  \                        read are: '<5' cut>,<3' cut>,<include trimmed>,<only\n\
+  \                        trimmed>' where 'include trimmed' is 1 or 0 for\n     \
+  \                   whether or not the bases already trimmed during/prior\n    \
+  \                    to adapter trimming should be counted towards the\n       \
+  \                 total bases to be cut and 'only trimmed' is 1 or 0 for\n     \
+  \                   whether or not only trimmed reads should be further\n      \
+  \                  cut. (no)\n  --mirna               Set default option values\
+  \ for miRNA data. (no)\n\nParallel (multi-core) options:\n  -T THREADS, --threads\
+  \ THREADS\n                        Number of threads to use for read trimming. Set\
+  \ to 0\n                        to use max available threads. (Do not use\n    \
+  \                    multithreading)\n  --no-writer-process   Do not use a writer\
+  \ process; instead, each worker\n                        thread writes its own output\
+  \ to a file with a '.N'\n                        suffix. (no)\n  --preserve-order\
+  \      Preserve order of reads in input files (ignored if\n                    \
+  \    --no-writer-process is set). (no)\n  --process-timeout SECONDS\n          \
+  \              Number of seconds process should wait before\n                  \
+  \      escalating messages to ERROR level. (60)\n  --read-queue-size SIZE\n    \
+  \                    Size of queue for batches of reads to be processed.\n     \
+  \                   (THREADS * 100)\n  --result-queue-size SIZE\n              \
+  \          Size of queue for batches of results to be written.\n               \
+  \         (THREADS * 100)\n  --compression {worker,writer}\n                   \
+  \     Where data compression should be performed. Defaults\n                   \
+  \     to 'writer' if system-level compression can be used\n                    \
+  \    and (1 < threads < 8), otherwise defaults to 'worker'.\n"
+generated_using:
+- --help

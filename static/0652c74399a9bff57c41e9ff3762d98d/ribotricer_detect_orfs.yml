@@ -1,0 +1,143 @@
+!Command
+command:
+- ribotricer
+- detect-orfs
+positional: []
+named:
+- !Flag
+  description: Path to BAM file  [required]
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Path to the index file of ribotricer This\nfile should be generated\
+    \ using ribotricer\nprepare-orfs  [required]"
+  synonyms:
+  - --ribotricer_index
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Prefix to output file  [required]
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "[yes|no|reverse]     whether the data is from a strand-specific\n\
+    assay If not provided, the experimental\nprotocol will be automatically inferred"
+  synonyms:
+  - --stranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Comma separated read lengths to be used,\nsuch as 28,29,30 If not\
+    \ provided, it will be\nautomatically determined by assessing the\nmetagene periodicity"
+  synonyms:
+  - --read_lengths
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Comma separated P-site offsets for each read\nlength matching the\
+    \ read lengths provided.\nIf not provided, reads from different read\nlengths\
+    \ will be automatically aligned using\ncross-correlation"
+  synonyms:
+  - --psite_offsets
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Phase score cutoff for determining active
+  synonyms:
+  - --phase_score_cutoff
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Minimum number of codons with non-zero reads\nfor determining active\
+    \ translation\n[default: 5]"
+  synonyms:
+  - --min_valid_codons
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Minimum number of reads per codon for\ndetermining active translation\
+    \  [default: 0]"
+  synonyms:
+  - --min_reads_per_codon
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Minimum ratio of codons with non-zero reads\nto total codons for determining\
+    \ active\ntranslation  [default: 0]"
+  synonyms:
+  - --min_valid_codons_ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Minimum read density (total_reads/length)\nover an ORF total codons\
+    \ for determining\nactive translation  [default: 0.0]"
+  synonyms:
+  - --min_read_density
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Whether output all ORFs including those non-\ntranslating ones"
+  synonyms:
+  - --report_all
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: ribotricer detect-orfs [OPTIONS]\n\n  Detect translating ORFs from\
+  \ BAM file\n\nOptions:\n  --bam TEXT                      Path to BAM file  [required]\n\
+  \  --ribotricer_index TEXT         Path to the index file of ribotricer This\n \
+  \                                 file should be generated using ribotricer\n  \
+  \                                prepare-orfs  [required]\n\n  --prefix TEXT   \
+  \                Prefix to output file  [required]\n  --stranded [yes|no|reverse]\
+  \     whether the data is from a strand-specific\n                             \
+  \     assay If not provided, the experimental\n                                \
+  \  protocol will be automatically inferred\n\n  --read_lengths TEXT            \
+  \ Comma separated read lengths to be used,\n                                  such\
+  \ as 28,29,30 If not provided, it will be\n                                  automatically\
+  \ determined by assessing the\n                                  metagene periodicity\n\
+  \n  --psite_offsets TEXT            Comma separated P-site offsets for each read\n\
+  \                                  length matching the read lengths provided.\n\
+  \                                  If not provided, reads from different read\n\
+  \                                  lengths will be automatically aligned using\n\
+  \                                  cross-correlation\n\n  --phase_score_cutoff FLOAT\
+  \      Phase score cutoff for determining active\n                             \
+  \     translation  [default: 0.428571428571]\n\n  --min_valid_codons INTEGER   \
+  \   Minimum number of codons with non-zero reads\n                             \
+  \     for determining active translation\n                                  [default:\
+  \ 5]\n\n  --min_reads_per_codon INTEGER   Minimum number of reads per codon for\n\
+  \                                  determining active translation  [default: 0]\n\
+  \n  --min_valid_codons_ratio FLOAT  Minimum ratio of codons with non-zero reads\n\
+  \                                  to total codons for determining active\n    \
+  \                              translation  [default: 0]\n\n  --min_read_density\
+  \ FLOAT        Minimum read density (total_reads/length)\n                     \
+  \             over an ORF total codons for determining\n                       \
+  \           active translation  [default: 0.0]\n\n  --report_all               \
+  \     Whether output all ORFs including those non-\n                           \
+  \       translating ones\n\n  -h, --help                      Show this message\
+  \ and exit.\n"
+generated_using:
+- --help

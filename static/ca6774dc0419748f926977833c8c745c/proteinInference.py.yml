@@ -1,0 +1,323 @@
+!Command
+command:
+- proteinInference.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FASTA
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: OUT
+  optional: true
+named:
+- !Flag
+  description: Threads to run
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: "[FASTA], --fasta [FASTA]\nThe fasta file to match peptides against."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[OUT], --out [OUT]\nThe name of the file you wish to create with results\n\
+    appended."
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[PEPTIDE_OUT]\nThe file to write digested products to."
+  synonyms:
+  - --peptide-out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[PROTEIN_OUT]\nThe file to write grouped products to."
+  synonyms:
+  - --protein-out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For numeric operations, fail if types are incorrect\n(converting NA\
+    \ to a float for instance)."
+  synonyms:
+  - --strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The delimited file.
+  synonyms:
+  - -t
+  - --tsv
+  args: !SimpleFlagArg
+    name: TSV
+  optional: true
+- !Flag
+  description: The delimiter for fields.
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: "The column of interest (default: 1). Can be a column\nname."
+  synonyms:
+  - --peptide-col
+  args: !SimpleFlagArg
+    name: PEPTIDE_COL
+  optional: true
+- !Flag
+  description: 'The number of headers lines (default: 1).'
+  synonyms:
+  - --header
+  args: !SimpleFlagArg
+    name: HEADER
+  optional: true
+- !Flag
+  description: "A perl regular expression determining which parts of\nthe header to\
+    \ capture."
+  synonyms:
+  - -r
+  - --regex
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: "The name you want to assign for protein inference (in\ncase you are\
+    \ regexing for gene names or something)."
+  synonyms:
+  - --inferred-name
+  args: !SimpleFlagArg
+    name: INFERRED_NAME
+  optional: true
+- !Flag
+  description: Do not append proteins inferred from sequences.
+  synonyms:
+  - --no-inference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not consider Leucine and Isoleucine equal for\npeptide mapping."
+  synonyms:
+  - --no-equality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[{trypsin,lysc,none,argc,gluc,aspn,V8} ...]\nThe enzyme used to digest\
+    \ the sample."
+  synonyms:
+  - --enzyme
+  args: !ChoiceFlagArg
+    choices: !!set
+      lysc:
+      none:
+      trypsin:
+      argc:
+      V8:
+      gluc:
+      aspn:
+  optional: true
+- !Flag
+  description: "A regex cleavage pattern such as [KR]|{P} to cleave\nproteins with."
+  synonyms:
+  - --enzyme-pattern
+  args: !SimpleFlagArg
+    name: ENZYME_PATTERN
+  optional: true
+- !Flag
+  description: Minimum cleavage length
+  synonyms:
+  - --min
+  args: !SimpleFlagArg
+    name: MIN
+  optional: true
+- !Flag
+  description: Maximum cleavage length
+  synonyms:
+  - --max
+  args: !SimpleFlagArg
+    name: MAX
+  optional: true
+- !Flag
+  description: "Provide to append iBAQ values as well (requires\nprotein inference)."
+  synonyms:
+  - --ibaq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The column with precursor area (defaults to header\nlines containing\
+    \ 'Precursor')."
+  synonyms:
+  - --precursors
+  args: !SimpleFlagArg
+    name: PRECURSORS
+  optional: true
+- !Flag
+  description: "The function to apply to groups of iBAQ values (for\nmultiple peptide\
+    \ matches). Options: concat, mean,\nmedian, var, std, sum, count"
+  synonyms:
+  - --ibaq-function
+  args: !ChoiceFlagArg
+    choices: !!set
+      median:
+      var:
+      count:
+      concat:
+      mean:
+      std:
+      sum:
+  optional: true
+- !Flag
+  description: "Use only non-redundant theoretical tryptic peptides\nfor the iBAQ\
+    \ denominator."
+  synonyms:
+  - --non-redundant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Normalize iBAQ to total intensity of column (useful\nfor comparing\
+    \ multiple samples)."
+  synonyms:
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only group proteins with unique peptides
+  synonyms:
+  - --unique-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write the position of the peptide matches.
+  synonyms:
+  - --position
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Treat peptides as case-sensitive (ie separate modified\npeptides)"
+  synonyms:
+  - --case-sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[MOD_OUT]   The file to write a modification-centric summary to.'
+  synonyms:
+  - --mod-out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Write the position in the parent protein of the\nmodification (requires\
+    \ case-sensitive and\nmodifications being lower-cased)."
+  synonyms:
+  - --modification-site
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The column containing modification information.
+  synonyms:
+  - --mod-col
+  args: !SimpleFlagArg
+    name: MOD_COL
+  optional: true
+- !Flag
+  description: "The function to apply. Options: concat, mean, median,\nvar, std, sum,\
+    \ count\n"
+  synonyms:
+  - --mod-col-func
+  args: !ChoiceFlagArg
+    choices: !!set
+      median:
+      var:
+      count:
+      concat:
+      mean:
+      std:
+      sum:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: proteinInference.py [-h] [-p P] -f [FASTA] [-o [OUT]]\n       \
+  \                    [--peptide-out [PEPTIDE_OUT]]\n                           [--protein-out\
+  \ [PROTEIN_OUT]] [--strict] -t TSV\n                           [-d DELIMITER] [--peptide-col\
+  \ PEPTIDE_COL]\n                           [--header HEADER] [-r REGEX]\n      \
+  \                     [--inferred-name INFERRED_NAME] [--no-inference]\n       \
+  \                    [--no-equality] [--ibaq] [--precursors PRECURSORS]\n      \
+  \                     [--ibaq-function {concat,mean,median,var,std,sum,count}]\n\
+  \                           [--non-redundant]\n                           [--enzyme\
+  \ {trypsin,lysc,none,argc,gluc,aspn,V8} [{trypsin,lysc,none,argc,gluc,aspn,V8} ...]]\n\
+  \                           [--enzyme-pattern ENZYME_PATTERN] [--min MIN]\n    \
+  \                       [--max MAX] [--normalize] [--unique-only]\n            \
+  \               [--position] [--case-sensitive]\n                           [--mod-out\
+  \ [MOD_OUT]] [--modification-site]\n                           [--mod-col MOD_COL]\n\
+  \                           [--mod-col-func {concat,mean,median,var,std,sum,count}]\n\
+  \                           [--motifs] [--motif-window MOTIF_WINDOW]\n         \
+  \                  [--motif-unique] [--motif-out MOTIF_OUT]\n\nThis script will\
+  \ annotate a tab delimited text file with peptides with\ncorresponding proteins\
+  \ present in an annotation file, and can also use this\nannotation to include iBAQ\
+  \ measures.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -p P                  Threads to run\n  -f [FASTA], --fasta [FASTA]\n\
+  \                        The fasta file to match peptides against.\n  -o [OUT],\
+  \ --out [OUT]\n                        The name of the file you wish to create with\
+  \ results\n                        appended.\n  --peptide-out [PEPTIDE_OUT]\n  \
+  \                      The file to write digested products to.\n  --protein-out\
+  \ [PROTEIN_OUT]\n                        The file to write grouped products to.\n\
+  \  --strict              For numeric operations, fail if types are incorrect\n \
+  \                       (converting NA to a float for instance).\n  -t TSV, --tsv\
+  \ TSV     The delimited file.\n  -d DELIMITER, --delimiter DELIMITER\n         \
+  \               The delimiter for fields.\n  --peptide-col PEPTIDE_COL\n       \
+  \                 The column of interest (default: 1). Can be a column\n       \
+  \                 name.\n  --header HEADER       The number of headers lines (default:\
+  \ 1).\n  -r REGEX, --regex REGEX\n                        A perl regular expression\
+  \ determining which parts of\n                        the header to capture.\n \
+  \ --inferred-name INFERRED_NAME\n                        The name you want to assign\
+  \ for protein inference (in\n                        case you are regexing for gene\
+  \ names or something).\n  --no-inference        Do not append proteins inferred\
+  \ from sequences.\n  --no-equality         Do not consider Leucine and Isoleucine\
+  \ equal for\n                        peptide mapping.\n  --enzyme {trypsin,lysc,none,argc,gluc,aspn,V8}\
+  \ [{trypsin,lysc,none,argc,gluc,aspn,V8} ...]\n                        The enzyme\
+  \ used to digest the sample.\n  --enzyme-pattern ENZYME_PATTERN\n              \
+  \          A regex cleavage pattern such as [KR]|{P} to cleave\n               \
+  \         proteins with.\n  --min MIN             Minimum cleavage length\n  --max\
+  \ MAX             Maximum cleavage length\n\niBAQ related options:\n  --ibaq   \
+  \             Provide to append iBAQ values as well (requires\n                \
+  \        protein inference).\n  --precursors PRECURSORS\n                      \
+  \  The column with precursor area (defaults to header\n                        lines\
+  \ containing 'Precursor').\n  --ibaq-function {concat,mean,median,var,std,sum,count}\n\
+  \                        The function to apply to groups of iBAQ values (for\n \
+  \                       multiple peptide matches). Options: concat, mean,\n    \
+  \                    median, var, std, sum, count\n  --non-redundant       Use only\
+  \ non-redundant theoretical tryptic peptides\n                        for the iBAQ\
+  \ denominator.\n  --normalize           Normalize iBAQ to total intensity of column\
+  \ (useful\n                        for comparing multiple samples).\n\nProtein Grouping\
+  \ Options:\n  --unique-only         Only group proteins with unique peptides\n \
+  \ --position            Write the position of the peptide matches.\n  --case-sensitive\
+  \      Treat peptides as case-sensitive (ie separate modified\n                \
+  \        peptides)\n\nPeptide Modification Options:\n  --mod-out [MOD_OUT]   The\
+  \ file to write a modification-centric summary to.\n  --modification-site   Write\
+  \ the position in the parent protein of the\n                        modification\
+  \ (requires case-sensitive and\n                        modifications being lower-cased).\n\
+  \  --mod-col MOD_COL     The column containing modification information.\n  --mod-col-func\
+  \ {concat,mean,median,var,std,sum,count}\n                        The function to\
+  \ apply. Options: concat, mean, median,\n                        var, std, sum,\
+  \ count\n"
+generated_using:
+- --help

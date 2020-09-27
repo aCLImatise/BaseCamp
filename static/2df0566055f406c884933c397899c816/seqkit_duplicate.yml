@@ -1,0 +1,116 @@
+!Command
+command:
+- seqkit
+- duplicate
+positional: []
+named:
+- !Flag
+  description: duplication number (default 1)
+  synonyms:
+  - -n
+  - --times
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  synonyms:
+  - --alphabet-guess-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  synonyms:
+  - --id-ncbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  synonyms:
+  - --id-regexp
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  synonyms:
+  - -w
+  - --line-width
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: be quiet and do not show extra information
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  synonyms:
+  - -t
+  - --seq-type
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for duplicate
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "duplicate sequences N times\n\nYou may need \"seqkit rename\" to make\
+  \ the the sequence IDs unique.\n\nUsage:\n  seqkit duplicate [flags]\n\nAliases:\n\
+  \  duplicate, dup\n\nFlags:\n  -h, --help        help for duplicate\n  -n, --times\
+  \ int   duplication number (default 1)\n\nGlobal Flags:\n      --alphabet-guess-seq-length\
+  \ int   length of sequence prefix of the first FASTA record based on which seqkit\
+  \ guesses the sequence type (0 for whole seq) (default 10000)\n      --id-ncbi \
+  \                        FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2|\
+  \ Pseud...\n      --id-regexp string                regular expression for parsing\
+  \ ID (default \"^(\\\\S+)\\\\s?\")\n      --infile-list string              file\
+  \ of input files list (one file per line), if given, they are appended to files\
+  \ from cli arguments\n  -w, --line-width int                  line width when outputing\
+  \ FASTA format (0 for no wrap) (default 60)\n  -o, --out-file string           \
+  \      out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n\
+  \      --quiet                           be quiet and do not show extra information\n\
+  \  -t, --seq-type string                 sequence type (dna|rna|protein|unlimit|auto)\
+  \ (for auto, it automatically detect by the first sequence) (default \"auto\")\n\
+  \  -j, --threads int                     number of CPUs. (default value: 1 for single-CPU\
+  \ PC, 2 for others. can also set with environment variable SEQKIT_THREADS) (default\
+  \ 2)\n"
+generated_using:
+- --help

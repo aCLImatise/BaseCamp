@@ -1,0 +1,96 @@
+!Command
+command:
+- pairtools
+- phase
+positional:
+- !Positional
+  description: --nproc-in INTEGER        Number of processes used by the auto-guessed
+    input
+  position: 0
+  name: phase1/2
+  optional: false
+named:
+- !Flag
+  description: "output file. If the path ends with .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed.\
+    \ By default,\nthe output is printed into stdout."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: phase suffixes.
+  synonyms:
+  - --phase-suffixes
+  args: !SimpleFlagArg
+    name: TEXT...
+  optional: true
+- !Flag
+  description: drop all columns besides the standard ones and
+  synonyms:
+  - --clean-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
+  synonyms:
+  - --nproc-out
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "A command to decompress the input file. If\nprovided, fully overrides\
+    \ the auto-guessed\ncommand. Does not work with stdin. Must read input\nfrom stdin\
+    \ and print output into stdout. EXAMPLE:\npbgzip -dc -n 3"
+  synonyms:
+  - --cmd-in
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "A command to compress the output file. If\nprovided, fully overrides\
+    \ the auto-guessed\ncommand. Does not work with stdout. Must read\ninput from\
+    \ stdin and print output into stdout.\nEXAMPLE: pbgzip -c -n 8"
+  synonyms:
+  - --cmd-out
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: pairtools phase [OPTIONS] [PAIRS_PATH]\n\n  Phase pairs mapped\
+  \ to a diploid genome.\n\n  PAIRS_PATH : input .pairs/.pairsam file. If the path\
+  \ ends with .gz or\n  .lz4, the input is decompressed by pbgzip/lz4c. By default,\
+  \ the input is\n  read from stdin.\n\nOptions:\n  -o, --output TEXT         output\
+  \ file. If the path ends with .gz or .lz4,\n                            the output\
+  \ is pbgzip-/lz4c-compressed. By default,\n                            the output\
+  \ is printed into stdout.\n  --phase-suffixes TEXT...  phase suffixes.\n  --clean-output\
+  \            drop all columns besides the standard ones and\n                  \
+  \          phase1/2\n  --nproc-in INTEGER        Number of processes used by the\
+  \ auto-guessed input\n                            decompressing command.  [default:\
+  \ 3]\n  --nproc-out INTEGER       Number of processes used by the auto-guessed\n\
+  \                            output compressing command.  [default: 8]\n  --cmd-in\
+  \ TEXT             A command to decompress the input file. If\n                \
+  \            provided, fully overrides the auto-guessed\n                      \
+  \      command. Does not work with stdin. Must read input\n                    \
+  \        from stdin and print output into stdout. EXAMPLE:\n                   \
+  \         pbgzip -dc -n 3\n  --cmd-out TEXT            A command to compress the\
+  \ output file. If\n                            provided, fully overrides the auto-guessed\n\
+  \                            command. Does not work with stdout. Must read\n   \
+  \                         input from stdin and print output into stdout.\n     \
+  \                       EXAMPLE: pbgzip -c -n 8\n  -h, --help                Show\
+  \ this message and exit.\n"
+generated_using:
+- --help

@@ -1,0 +1,113 @@
+!Command
+command:
+- DetectBeadSubstitutionErrors
+positional:
+- !Positional
+  description: OUTPUT_SUMMARY=File           Output the number of substitutions found
+    at each base, from intended sequence to neighbor
+  position: 0
+  name: null.
+  optional: false
+- !Positional
+  description: 'Default value: null. '
+  position: 1
+  name: sequence.
+  optional: false
+named:
+- !Flag
+  description: (default 4g)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: jvm_heap_size
+  optional: true
+- !Flag
+  description: final command line before executing
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: echo
+  optional: true
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "USAGE: /usr/local/bin/DetectBeadSubstitutionErrors [-m <jvm_heap_size>]\
+  \ [-v] program args...\n       -m <jvm_heap_size> (default 4g)\n       -v echo final\
+  \ command line before executing\n\nProgram options:\nUSAGE: DetectBeadSubstitutionErrors\
+  \ [options]\n\nCollapses umambiguously related small barcodes into larger neighbors.\
+  \  Unambiguously related barcodes are situations\nwhere a smaller barcodeonly has\
+  \ 1 neighbor within the edit distance threshold, so the barcode can not be collapsed\
+  \ to\nthe wrong neighbor.  These sorts of errors can be due to problems with barcode\
+  \ synthesis.Ambiguous barcodes are\nsituations where a smaller neighbor has multiple\
+  \ larger neighbors.  These barcodes can be optionally filtered.)\nVersion: 2.3.0(34e6572_1555443285)\n\
+  \n\nOptions:\n\n--help\n-h                            Displays options specific\
+  \ to this tool.\n\n--stdhelp\n-H                            Displays options specific\
+  \ to this tool AND options common to all Picard command line\n                 \
+  \             tools.\n\n--version                     Displays program version.\n\
+  \nINPUT=File\nI=File                        The input DropSeq BAM file to analyze\
+  \  Default value: null. This option must be specified\n                        \
+  \      at least 1 times. \n\nOUTPUT=File\nO=File                        Output BAM\
+  \ file with cell barcodes collapsed.  Default value: null. \n\nOUTPUT_REPORT=File\
+  \            Output report detailing which barcodes were merged, and what the position\
+  \ of the\n                              substitution and intended/changed bases\
+  \ were for each pair of barcordes merged.  Default\n                           \
+  \   value: null. \n\nOUTPUT_SUMMARY=File           Output the number of substitutions\
+  \ found at each base, from intended sequence to neighbor\n                     \
+  \         sequence.  Default value: null. \n\nOUT_CELL_BARCODE_TAG=String   The\
+  \ output barcode tag for the newly collapsed barcodes.  Defaults to the CELL_BARCODE_TAG\n\
+  \                              if not set.  Default value: null. \n\nFILTER_AMBIGUOUS=Boolean\
+  \      Remove smaller barcodes that map at the edit distance to multiple larger\
+  \ barcodes. \n                              Default value: true. This option can\
+  \ be set to 'null' to clear the default value. Possible\n                      \
+  \        values: {true, false} \n\nFREQ_COMMON_SUBSTITUTION=Double\n           \
+  \                   Only repair substitution patterns that occur at a base as more\
+  \ than  of the total changes.\n                              We expect there to\
+  \ be a single dominant barcode change [from say A->C at base 1] due to a\n     \
+  \                         synthesis error at that base.  In those cases, we want\
+  \ to perform repair, but we don't\n                              want to arbitrarily\
+  \ combine barcodes together.  Set this to 0 to combine everything...but\n      \
+  \                        testing has revealed that this will combine barcodes capriciously\
+  \ so we don't recommend\n                              it!  Default value: 0.8.\
+  \ This option can be set to 'null' to clear the default value. \n\nCELL_BARCODE_TAG=String\
+  \       The cell barcode tag.  Default value: XC. This option can be set to 'null'\
+  \ to clear the\n                              default value. \n\nMOLECULAR_BARCODE_TAG=String\
+  \  The molecular barcode tag.  Default value: XM. This option can be set to 'null'\
+  \ to clear\n                              the default value. \n\nMIN_UMIS_PER_CELL=Integer\
+  \     The minimum number of UMIs required to consider a cell barcode for collapse.\
+  \  Setting this\n                              number higher speeds up cleanup.\
+  \  Very small barcodes will not contribute many UMIs, so\n                     \
+  \         are not a useful return on investment.  Suggested values range from 20\
+  \ to 200.  Default\n                              value: 20. This option can be\
+  \ set to 'null' to clear the default value. \n\nUMI_BIAS_THRESHOLD=Double     The\
+  \ amount of bias (all UMIs for a cell have the same base) at which a cell barcode\
+  \ is\n                              considered biased?  Default value: 0.8. This\
+  \ option can be set to 'null' to clear the\n                              default\
+  \ value. \n\nUMI_BIAS_BASE=Integer         Which base to scan for UMI bias.  This\
+  \ is typically the last base of the UMI.  If set to\n                          \
+  \    null, program will use the last base of the UMI.  Default value: null. \n\n\
+  EDIT_DISTANCE=Integer         The edit distance to collapse barcodes  Default value:\
+  \ 1. This option can be set to 'null'\n                              to clear the\
+  \ default value. \n\nREAD_MQ=Integer               Read quality filter.  Filters\
+  \ all reads lower than this mapping quality.  Defaults to 10. \n               \
+  \               Set to 0 to not filter reads by map quality.  Default value: 10.\
+  \ This option can be set to\n                              'null' to clear the default\
+  \ value. \n\nNUM_THREADS=Integer           Number of threads to use.  Defaults to\
+  \ 1.  Default value: 1. This option can be set to\n                            \
+  \  'null' to clear the default value. \n\n"
+generated_using:
+- --help

@@ -1,0 +1,214 @@
+!Command
+command:
+- clust
+positional:
+- !Positional
+  description: Data file path or directory with data file(s).
+  position: 0
+  name: datapath
+  optional: false
+named:
+- !Flag
+  description: "[<file or int> ...]\nNormalisation file or list of codes (default:\
+    \ 1000)"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: file or int
+  optional: true
+- !Flag
+  description: Replicates structure file
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: OrthoGroups (OGs) mapping file
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Output directory
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: 'Cluster tightness (default: 1.0).'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: real number
+  optional: true
+- !Flag
+  description: "[<string> ...]\nOne or more base clustering methods (default: k-means)"
+  synonyms:
+  - -basemethods
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "[<integer> ...]\nK values, e.g. 2 4 6 10 ... (default: 4 to 20 (step=4))"
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'Outlier standard deviations (default: 3.0)'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: real number
+  optional: true
+- !Flag
+  description: 'Min datasets in which a gene must exist (default: 1)'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'Filtering: gene expression threshold (default: -inf)'
+  synonyms:
+  - -fil-v
+  args: !SimpleFlagArg
+    name: real number
+  optional: true
+- !Flag
+  description: 'Filtering: number of conditions (default: 0)'
+  synonyms:
+  - -fil-c
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'Filtering: number of datasets (default: 0)'
+  synonyms:
+  - -fil-d
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: Filter using absolute values of expression
+  synonyms:
+  - --fil-abs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -fil-v is a percentile of genes rather than raw value
+  synonyms:
+  - --fil-perc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter out genes with flat expression profiles (default)
+  synonyms:
+  - --fil-flat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Cancels the default --fil-flat option
+  synonyms:
+  - --no-fil-flat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Smallest cluster size (default: 11)'
+  synonyms:
+  - -cs
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: 'Q3s defining outliers (default: 2.0)'
+  synonyms:
+  - -q3s
+  args: !SimpleFlagArg
+    name: real number
+  optional: true
+- !Flag
+  description: Skip cluster optimsation & completion
+  synonyms:
+  - --no-optimisation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Obsolete. All steps are already deterministic (v1.7.4+)
+  synonyms:
+  - --deterministic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Obsolete. Number of parallel processes (default: 1)'
+  synonyms:
+  - -np
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: clust [-h] [-n <file or int> [<file or int> ...]] [-r <file>]\n\
+  \             [-m <file>] [-o <directory>] [-t <real number>]\n             [-basemethods\
+  \ <string> [<string> ...]]\n             [-K <integer> [<integer> ...]] [-s <real\
+  \ number>] [-d <integer>]\n             [-fil-v <real number>] [-fil-c <integer>]\
+  \ [-fil-d <integer>]\n             [--fil-abs] [--fil-perc] [--fil-flat] [--no-fil-flat]\n\
+  \             [-cs <integer>] [-q3s <real number>] [--no-optimisation]\n       \
+  \      [--deterministic] [-np <integer>]\n             datapath\n\n/===========================================================================\\\
+  \n|                                   Clust                                   |\n\
+  |     Optimised consensus clustering of multiple heterogeneous datasets     |\n\
+  |                              Version v1.12.0                              |\n\
+  |                                                                           |\n\
+  |                            By Basel Abu-Jamous                            |\n\
+  |                       Department of Plant Sciences                        |\n\
+  |                         The University of Oxford                          |\n\
+  |                      basel.abujamous@plants.ox.ac.uk                      |\n\
+  +---------------------------------------------------------------------------+\n\
+  |                                 Citation                                  |\n\
+  |                                 ~~~~~~~~                                  |\n\
+  | When publishing work that uses Clust, please cite:                        |\n\
+  | Basel Abu-Jamous and Steven Kelly (2018) Clust: automatic extraction of   |\n\
+  | optimal co-expressed gene clusters from gene expression data. Genome      |\n\
+  | Biology 19:172; doi: https://doi.org/10.1186/s13059-018-1536-8.           |\n\
+  +---------------------------------------------------------------------------+\n\
+  | Full description of usage can be found at:                                |\n\
+  | https://github.com/BaselAbujamous/clust                                   |\n\\\
+  ===========================================================================/\n\n\
+  positional arguments:\n  datapath              Data file path or directory with\
+  \ data file(s).\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -n <file or int> [<file or int> ...]\n                        Normalisation\
+  \ file or list of codes (default: 1000)\n  -r <file>             Replicates structure\
+  \ file\n  -m <file>             OrthoGroups (OGs) mapping file\n  -o <directory>\
+  \        Output directory\n  -t <real number>      Cluster tightness (default: 1.0).\n\
+  \  -basemethods <string> [<string> ...]\n                        One or more base\
+  \ clustering methods (default: k-means)\n  -K <integer> [<integer> ...]\n      \
+  \                  K values, e.g. 2 4 6 10 ... (default: 4 to 20 (step=4))\n  -s\
+  \ <real number>      Outlier standard deviations (default: 3.0)\n  -d <integer>\
+  \          Min datasets in which a gene must exist (default: 1)\n  -fil-v <real\
+  \ number>  Filtering: gene expression threshold (default: -inf)\n  -fil-c <integer>\
+  \      Filtering: number of conditions (default: 0)\n  -fil-d <integer>      Filtering:\
+  \ number of datasets (default: 0)\n  --fil-abs             Filter using absolute\
+  \ values of expression\n  --fil-perc            -fil-v is a percentile of genes\
+  \ rather than raw value\n  --fil-flat            Filter out genes with flat expression\
+  \ profiles (default)\n  --no-fil-flat         Cancels the default --fil-flat option\n\
+  \  -cs <integer>         Smallest cluster size (default: 11)\n  -q3s <real number>\
+  \    Q3s defining outliers (default: 2.0)\n  --no-optimisation     Skip cluster\
+  \ optimsation & completion\n  --deterministic       Obsolete. All steps are already\
+  \ deterministic (v1.7.4+)\n  -np <integer>         Obsolete. Number of parallel\
+  \ processes (default: 1)\n"
+generated_using:
+- --help

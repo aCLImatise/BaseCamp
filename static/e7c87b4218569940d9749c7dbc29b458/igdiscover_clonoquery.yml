@@ -1,0 +1,97 @@
+!Command
+command:
+- igdiscover
+- clonoquery
+positional:
+- !Positional
+  description: "Reference table with parsed and filtered IgBLAST\nresults (filtered.tab)"
+  position: 0
+  name: reftable
+  optional: false
+- !Positional
+  description: "Query table with IgBLAST results (assigned.tab or\nfiltered.tab)"
+  position: 1
+  name: querytable
+  optional: false
+named:
+- !Flag
+  description: 'Discard all rows with count less than N. Default: 1'
+  synonyms:
+  - --minimum-count
+  - -c
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: ":END\nSTART:END defines the non-junction region of CDR3\nsequences.\
+    \ Use negative numbers for END to count from\nthe end. Regions before and after\
+    \ are considered to be\njunction sequence, and for two CDR3s to be considered\n\
+    similar, at least one of the junctions must be\nidentical. Default: no junction\
+    \ region."
+  synonyms:
+  - --cdr3-core
+  args: !SimpleFlagArg
+    name: START
+  optional: true
+- !Flag
+  description: "No. of allowed mismatches between CDR3 sequences. Can\nalso be a fraction\
+    \ between 0 and 1 (such as 0.15),\ninterpreted relative to the length of the CDR3\
+    \ (minus\nthe front non-core). Default: 1"
+  synonyms:
+  - --mismatches
+  args: !SimpleFlagArg
+    name: MISMATCHES
+  optional: true
+- !Flag
+  description: "Count CDR3 mismatches on amino-acid level. Default:\nCompare nucleotides."
+  synonyms:
+  - --aa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write summary table to FILE
+  synonyms:
+  - --summary
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: igdiscover clonoquery [-h] [--minimum-count N] [--cdr3-core START:END]\n\
+  \                             [--mismatches MISMATCHES] [--aa] [--summary FILE]\n\
+  \                             reftable querytable\n\nQuery a table of assigned sequences\
+  \ by clonotype\n\nTwo sequences have the same clonotype if\n- their V and J assignments\
+  \ are the same\n- the length of their CDR3 is identical\n- the difference between\
+  \ their CDR3s (in terms of mismatches)\n  is not higher than a given threshold (by\
+  \ default 1)\n\nClonotypes for the query sequences are determined and sequences\n\
+  in the input table that have this clonotype are reported.\n\nThe table is written\
+  \ to standard output.\n\npositional arguments:\n  reftable              Reference\
+  \ table with parsed and filtered IgBLAST\n                        results (filtered.tab)\n\
+  \  querytable            Query table with IgBLAST results (assigned.tab or\n   \
+  \                     filtered.tab)\n\noptional arguments:\n  -h, --help       \
+  \     show this help message and exit\n  --minimum-count N, -c N\n             \
+  \           Discard all rows with count less than N. Default: 1\n  --cdr3-core START:END\n\
+  \                        START:END defines the non-junction region of CDR3\n   \
+  \                     sequences. Use negative numbers for END to count from\n  \
+  \                      the end. Regions before and after are considered to be\n\
+  \                        junction sequence, and for two CDR3s to be considered\n\
+  \                        similar, at least one of the junctions must be\n      \
+  \                  identical. Default: no junction region.\n  --mismatches MISMATCHES\n\
+  \                        No. of allowed mismatches between CDR3 sequences. Can\n\
+  \                        also be a fraction between 0 and 1 (such as 0.15),\n  \
+  \                      interpreted relative to the length of the CDR3 (minus\n \
+  \                       the front non-core). Default: 1\n  --aa                \
+  \  Count CDR3 mismatches on amino-acid level. Default:\n                       \
+  \ Compare nucleotides.\n  --summary FILE        Write summary table to FILE\n"
+generated_using:
+- --help

@@ -1,0 +1,118 @@
+!Command
+command:
+- PLEKModelling.py
+positional: []
+named:
+- !Flag
+  description: "-k k_mer -nfold n_fold_cross_validation -isbalanced 0_or_1\n-mRNA\
+    \          mRNA transcripts used to build predictor, in fasta format.\n-lncRNA\
+    \        lncRNA transcripts used to build predictor, in fasta format.\n-prefix\
+    \        Prefix of the output files.\n-log2c        (Optional) The specified range\
+    \ of C parameter for the svm parameter\nsearch. Default value: 0,5,1. (from, to,\
+    \ by; 0,1,2,3,4,5)\n-log2g        (Optional) The specified range of G parameter\
+    \ for the svm parameter\nsearch. Default value: 0,-5,-1.(from, to, by; 0,-1,-2,-3,-4,-5)\n\
+    -thread       (Optional) The number of threads for running the PLEKModelling\n\
+    program. The bigger this number is, the faster PLEKModelling runs.\nNote that\
+    \ a larger thread number means larger consumption of memory.\nDefault value: 12.\n\
+    -model        (Optional) The name of a predictor model file (an output file\n\
+    by PLEKModelling.py).\n-range        (Optional) The name of a svm range file (an\
+    \ output file by\nPLEKModelling.py).\n-minlength    (Optional) The minimum length\
+    \ of sequences. The sequences whose\nlengths are more than minlength will be processed.\
+    \ Default\nvalue: 200.\n-isoutmsg     (Optional) Output messages to stdout(screen)\
+    \ or not. \"0\" means\nthat PLEKModelling be run quietly. \"1\" means that PLEKModelling\n\
+    outputs the details of processing. Default value: 0.\n-isrmtempfile (Optional)\
+    \ Remove temporary files or not. \"0\" means that PLEKModelling\nretains temporary\
+    \ files. \"1\" means that PLEKModelling remove temporary\nfiles. Default value:\
+    \ 1.\n-k            (Optional) range of k. k=5 means that we will calculate usage\
+    \ of\n1364 k-mer patterns. (k=1, 4 patterns; k=2, 16; k=3, 64; k=4, 256;\nk=5,\
+    \ 1024; 1364=4+64+256+1024). Default value: 5.\n-nfold        (Optional) n-fold\
+    \ cross-validation in search for optimal parameters.\nDefault value: 10.\n-isbalanced\
+    \   (Optional) In the case of isbalanced=1, if the samples are\nunbalanced, it\
+    \ will subsample the overrepresented class to obtain an\nequal amount of positives\
+    \ and negatives.\nDefault value: 0."
+  synonyms:
+  - -prefix
+  - -log2c
+  - -log2g
+  - -thread
+  - -model
+  - -range
+  - -minlength
+  - -isoutmsg
+  - -isrmtempfile
+  args: !SimpleFlagArg
+    name: prefix_of_output
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "=====================\n  USAGE AND EXAMPLES\n=====================\nUsage\
+  \ of PLEK Modelling -- used to build your own classifier with your \n          \
+  \                 training data (mRNA/lncRNA transcripts):\n \npython PLEKModelling.py\
+  \ -mRNA mRNAs_fasta -lncRNA lncRNAs_fasta \n   -prefix prefix_of_output -log2c range_of_log2c\
+  \ -log2g range_of_log2g \n   -thread number_of_threads -model model_file -range\
+  \ range_file  \n   -minlength min_length_of_sequence -isoutmsg 0_or_1 -isrmtempfile\
+  \ 0_or_1\n   -k k_mer -nfold n_fold_cross_validation -isbalanced 0_or_1 \n   \n\
+  \   -mRNA          mRNA transcripts used to build predictor, in fasta format.\n\
+  \   \n   -lncRNA        lncRNA transcripts used to build predictor, in fasta format.\n\
+  \   \n   -prefix        Prefix of the output files.\n   \n   -log2c        (Optional)\
+  \ The specified range of C parameter for the svm parameter \n                  search.\
+  \ Default value: 0,5,1. (from, to, by; 0,1,2,3,4,5)   \n\t\t\t\t  \n   -log2g  \
+  \      (Optional) The specified range of G parameter for the svm parameter \n  \
+  \                search. Default value: 0,-5,-1.(from, to, by; 0,-1,-2,-3,-4,-5)\
+  \ \n\t\t\t\t  \n   -thread       (Optional) The number of threads for running the\
+  \ PLEKModelling \n                  program. The bigger this number is, the faster\
+  \ PLEKModelling runs.\n                  Note that a larger thread number means\
+  \ larger consumption of memory.\n                  Default value: 12.\n\t\t\t\t\
+  \  \n   -model        (Optional) The name of a predictor model file (an output file\n\
+  \                  by PLEKModelling.py).   \n\t\t\t\t  \n   -range        (Optional)\
+  \ The name of a svm range file (an output file by \n                  PLEKModelling.py).\
+  \   \n\t\t\t\t  \n   -minlength    (Optional) The minimum length of sequences. The\
+  \ sequences whose \n                  lengths are more than minlength will be processed.\
+  \ Default \n                  value: 200.             \n\t\t\t\t  \n   -isoutmsg\
+  \     (Optional) Output messages to stdout(screen) or not. \"0\" means \n      \
+  \           that PLEKModelling be run quietly. \"1\" means that PLEKModelling \n\
+  \                 outputs the details of processing. Default value: 0.   \n\t\t\t\
+  \t \n   -isrmtempfile (Optional) Remove temporary files or not. \"0\" means that\
+  \ PLEKModelling \n                  retains temporary files. \"1\" means that PLEKModelling\
+  \ remove temporary \n                  files. Default value: 1.\n\t\t\t\t  \n  \
+  \ -k            (Optional) range of k. k=5 means that we will calculate usage of\
+  \ \n                 1364 k-mer patterns. (k=1, 4 patterns; k=2, 16; k=3, 64; k=4,\
+  \ 256; \n                 k=5, 1024; 1364=4+64+256+1024). Default value: 5. \n\t\
+  \t\t\t \n   -nfold        (Optional) n-fold cross-validation in search for optimal\
+  \ parameters.\n                 Default value: 10.   \n   \n   -isbalanced   (Optional)\
+  \ In the case of isbalanced=1, if the samples are \n                 unbalanced,\
+  \ it will subsample the overrepresented class to obtain an \n                 equal\
+  \ amount of positives and negatives.\n                 Default value: 0.\n     \
+  \      \n\nExamples: \n1. $ python PLEKModelling.py -mRNA PLEK_mRNAs.fa -lncRNA\
+  \ PLEK_lncRNAs.fa -prefix 20140531 \n\n   NOTE: To train a classifier using the\
+  \ mRNA sequences in the 'PLEK_mRNAs.fa' file\n   and lncRNA in 'PLEK_lncRNAs.fa'.\
+  \ The program outputs the model in the file \n   '20140531.model' and the svm-scale\
+  \ range in '20140531.range'. \n   We can use the new model as follows:\n    python\
+  \ PLEK.py -fasta PLEK_test.fa -out 20140531.predicted -thread 10  \\\n    -range\
+  \ 20140531.range -model 20140531.model \n\t\n2. $ python PLEKModelling.py -mRNA\
+  \ PLEK_mRNAs.fa -lncRNA PLEK_lncRNAs.fa -prefix 20140601 \\\n     -log2c 1,3,1 -log2g\
+  \ -1,-3,-1 -nfold 2 -k 4      \n\n   NOTE: This example is used to demonstrate the\
+  \ usage of PLEKModelling.py\n   in a simple/quick way. User can run this to check\
+  \ if our program can run correctly.\n   To train a classifier using the mRNA sequences\
+  \ in the 'PLEK_mRNAs.fa' file\n   and lncRNA in 'PLEK_lncRNAs.fa'. The range of\
+  \ log2c is 1,2,3. The range of log2g\n   is -1,-2,-3. Use a 2-fold cross-validation.\
+  \ K is 4, it will calculate the usage\n   of 340 patterns (4+16+63+256=340). The\
+  \ program outputs the model in the file \n   '20140601.model' and the svm-scale\
+  \ range in '20140601.range'. \n   We can use the new model as follows:\n    python\
+  \ PLEK.py -fasta PLEK_test.fa -out 20140601.predicted -thread 10  \\\n    -range\
+  \ 20140601.range -model 20140601.model -k 4\n\nNotes:\n   (1) In general, it is\
+  \ time-consuming to build a new classifier.          \n   (2) The accuracy of a\
+  \ classifier model is connected with the quality and \n   quantity of training samples.\
+  \ We encourage users to supply as many reliable \n   samples as possible to PLEKModelling.py\
+  \ to train a classifier. We suggest\n   that transcripts annotated with 'pseudogene',\
+  \ 'predicted' and 'putative' \n   be removed before training models. \n   (3) To\
+  \ parallel run PLEKModelling.py in PBS, please see \n   PLEK_howto_generate_scripts.pdf\
+  \   \n   \n   \n=====================\n  CONTACTS\n=====================\nAimin\
+  \ Li: LiAiminMail@gmail.com\nJunying Zhang: jyzhang@mail.xidian.edu.cn     \n\n\
+  ======================\n  WEBSITE\n=====================\nhttps://sourceforge.net/projects/plek/\n\
+  \           \n"
+generated_using: []

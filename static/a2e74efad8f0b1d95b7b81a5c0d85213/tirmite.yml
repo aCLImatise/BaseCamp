@@ -1,0 +1,255 @@
+!Command
+command:
+- tirmite
+positional:
+- !Positional
+  description: --gffOut              If set report features as prefix.gff3. File saved
+    to
+  position: 0
+  name: pairing.
+  optional: false
+named:
+- !Flag
+  description: Path to target genome that will be queried with HMMs.
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: Directory containing pre-prepared TIR-pHMMs.
+  synonyms:
+  - --hmmDir
+  args: !SimpleFlagArg
+    name: HMMDIR
+  optional: true
+- !Flag
+  description: "Path to single TIR-pHMM file. Incompatible with \"--\nhmmDir\"."
+  synonyms:
+  - --hmmFile
+  args: !SimpleFlagArg
+    name: HMMFILE
+  optional: true
+- !Flag
+  description: "Path to directory containing only TIR alignments to be\nconverted\
+    \ to HMM."
+  synonyms:
+  - --alnDir
+  args: !SimpleFlagArg
+    name: ALNDIR
+  optional: true
+- !Flag
+  description: "Provide a single TIR alignment to be converted to HMM.\nIncompatible\
+    \ with \"--alnDir\"."
+  synonyms:
+  - --alnFile
+  args: !SimpleFlagArg
+    name: ALNFILE
+  optional: true
+- !Flag
+  description: "Alignments provided with \"--alnDir\" or \"--alnFile\" are\nall in\
+    \ this format."
+  synonyms:
+  - --alnFormat
+  args: !ChoiceFlagArg
+    choices: !!set
+      clustal:
+      stockholm:
+      phylip:
+      fasta:
+      nexus:
+  optional: true
+- !Flag
+  description: "If set TIRmite will preform pairing on TIRs from\ncustom bedfile only."
+  synonyms:
+  - --pairbed
+  args: !SimpleFlagArg
+    name: PAIRBED
+  optional: true
+- !Flag
+  description: "Number of times to iterate pairing procedure when no\nadditional pairs\
+    \ are found AND remaining unpaired hits\n> 0."
+  synonyms:
+  - --stableReps
+  args: !SimpleFlagArg
+    name: STABLEREPS
+  optional: true
+- !Flag
+  description: All output files will be written to this directory.
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "Add prefix to all TIRs and Paired elements detected in\nthis run.\
+    \ Useful when running same TIR-pHMM against\nmany genomes.(Default = None)"
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: If set, only report TIR-pHMM hits. Do not attempt
+  synonyms:
+  - --nopairing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Options for reporting TIRs in GFF annotation file.
+  synonyms:
+  - --reportTIR
+  args: !ChoiceFlagArg
+    choices: !!set
+      unpaired:
+      paired:
+      None:
+      all:
+  optional: true
+- !Flag
+  description: "Extract x bases either side of TIR when writing TIRs\nto fasta."
+  synonyms:
+  - --padlen
+  args: !SimpleFlagArg
+    name: PADLEN
+  optional: true
+- !Flag
+  description: If set do not delete temp file directory.
+  synonyms:
+  - --keeptemp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set syscall reporting to verbose.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set number of cores available to hmmer software.
+  synonyms:
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: Maximum e-value allowed for valid hit. Default = 0.001
+  synonyms:
+  - --maxeval
+  args: !SimpleFlagArg
+    name: MAXEVAL
+  optional: true
+- !Flag
+  description: "Maximum distance allowed between TIR candidates to\nconsider valid\
+    \ pairing."
+  synonyms:
+  - --maxdist
+  args: !SimpleFlagArg
+    name: MAXDIST
+  optional: true
+- !Flag
+  description: Turn OFF bias correction of scores in nhmmer.
+  synonyms:
+  - --nobias
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use custom DNA substitution matrix with nhmmer.
+  synonyms:
+  - --matrix
+  args: !SimpleFlagArg
+    name: MATRIX
+  optional: true
+- !Flag
+  description: "Minimum valid hit length as prop of model length.\nDefaults to 0.5"
+  synonyms:
+  - --mincov
+  args: !SimpleFlagArg
+    name: MINCOV
+  optional: true
+- !Flag
+  description: Set location of hmmpress if not in PATH.
+  synonyms:
+  - --hmmpress
+  args: !SimpleFlagArg
+    name: HMMPRESS
+  optional: true
+- !Flag
+  description: Set location of nhmmer if not in PATH.
+  synonyms:
+  - --nhmmer
+  args: !SimpleFlagArg
+    name: NHMMER
+  optional: true
+- !Flag
+  description: Set location of hmmbuild if not in PATH.
+  synonyms:
+  - --hmmbuild
+  args: !SimpleFlagArg
+    name: HMMBUILD
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: tirmite [-h] [--version] --genome GENOME [--hmmDir HMMDIR]\n  \
+  \             [--hmmFile HMMFILE] [--alnDir ALNDIR] [--alnFile ALNFILE]\n      \
+  \         [--alnFormat {clustal,fasta,nexus,phylip,stockholm}]\n               [--pairbed\
+  \ PAIRBED] [--stableReps STABLEREPS] [--outdir OUTDIR]\n               [--prefix\
+  \ PREFIX] [--nopairing] [--gffOut]\n               [--reportTIR {None,all,paired,unpaired}]\
+  \ [--padlen PADLEN]\n               [--keeptemp] [-v] [--cores CORES] [--maxeval\
+  \ MAXEVAL]\n               [--maxdist MAXDIST] [--nobias] [--matrix MATRIX]\n  \
+  \             [--mincov MINCOV] [--hmmpress HMMPRESS] [--nhmmer NHMMER]\n      \
+  \         [--hmmbuild HMMBUILD]\n\nMap TIR-pHMM models to genomic sequences for\
+  \ annotation of MITES and complete\nDNA-Transposons.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --version             show\
+  \ program's version number and exit\n  --genome GENOME       Path to target genome\
+  \ that will be queried with HMMs.\n  --hmmDir HMMDIR       Directory containing\
+  \ pre-prepared TIR-pHMMs.\n  --hmmFile HMMFILE     Path to single TIR-pHMM file.\
+  \ Incompatible with \"--\n                        hmmDir\".\n  --alnDir ALNDIR \
+  \      Path to directory containing only TIR alignments to be\n                \
+  \        converted to HMM.\n  --alnFile ALNFILE     Provide a single TIR alignment\
+  \ to be converted to HMM.\n                        Incompatible with \"--alnDir\"\
+  .\n  --alnFormat {clustal,fasta,nexus,phylip,stockholm}\n                      \
+  \  Alignments provided with \"--alnDir\" or \"--alnFile\" are\n                \
+  \        all in this format.\n  --pairbed PAIRBED     If set TIRmite will preform\
+  \ pairing on TIRs from\n                        custom bedfile only.\n  --stableReps\
+  \ STABLEREPS\n                        Number of times to iterate pairing procedure\
+  \ when no\n                        additional pairs are found AND remaining unpaired\
+  \ hits\n                        > 0.\n  --outdir OUTDIR       All output files will\
+  \ be written to this directory.\n  --prefix PREFIX       Add prefix to all TIRs\
+  \ and Paired elements detected in\n                        this run. Useful when\
+  \ running same TIR-pHMM against\n                        many genomes.(Default =\
+  \ None)\n  --nopairing           If set, only report TIR-pHMM hits. Do not attempt\n\
+  \                        pairing.\n  --gffOut              If set report features\
+  \ as prefix.gff3. File saved to\n                        outdir. Default: False\n\
+  \  --reportTIR {None,all,paired,unpaired}\n                        Options for reporting\
+  \ TIRs in GFF annotation file.\n  --padlen PADLEN       Extract x bases either side\
+  \ of TIR when writing TIRs\n                        to fasta.\n  --keeptemp    \
+  \        If set do not delete temp file directory.\n  -v, --verbose         Set\
+  \ syscall reporting to verbose.\n  --cores CORES         Set number of cores available\
+  \ to hmmer software.\n  --maxeval MAXEVAL     Maximum e-value allowed for valid\
+  \ hit. Default = 0.001\n  --maxdist MAXDIST     Maximum distance allowed between\
+  \ TIR candidates to\n                        consider valid pairing.\n  --nobias\
+  \              Turn OFF bias correction of scores in nhmmer.\n  --matrix MATRIX\
+  \       Use custom DNA substitution matrix with nhmmer.\n  --mincov MINCOV     \
+  \  Minimum valid hit length as prop of model length.\n                        Defaults\
+  \ to 0.5\n  --hmmpress HMMPRESS   Set location of hmmpress if not in PATH.\n  --nhmmer\
+  \ NHMMER       Set location of nhmmer if not in PATH.\n  --hmmbuild HMMBUILD   Set\
+  \ location of hmmbuild if not in PATH.\n"
+generated_using:
+- --help

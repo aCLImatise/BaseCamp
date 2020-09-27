@@ -1,0 +1,131 @@
+!Command
+command:
+- extract-sv-reads
+positional:
+- !Positional
+  description: '-n [ --with-nm ]               ensure NM tag is present in output
+    if reading '
+  position: 0
+  name: bams
+  optional: false
+named:
+- !Flag
+  description: only useful when the input file is a CRAM.
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: is
+  optional: true
+- !Flag
+  description: '[ --version ]               output the version'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --input ] arg (=-)        input BAM/CRAM/SAM. Use '-' for stdin\
+    \ if using\npositional arguments"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --splitter ] arg          output split reads to this file in BAM\
+    \ format\n(Required)"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --discordant ] arg        output discordant reads to this file in\
+    \ BAM\nformat (Required)"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --exclude-dups ]          exclude duplicate reads from output'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --reduce-output-bams ]    remove sequences and qualities from output'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(=50) maximum number of unaligned bases between two\nalignments to\
+    \ be included in the splitter file"
+  synonyms:
+  - --max-unmapped-bases
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(=50)     minimum structural variant feature size for\nsplit alignments\
+    \ to be included in the\nsplitter file"
+  synonyms:
+  - --min-indel-size
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(=20)    minimum number of non-overlapping base pairs\nbetween two\
+    \ alignments for a read to be\nincluded in the splitter file"
+  synonyms:
+  - --min-non-overlap
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=1)             number of threads to use
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]                  produce this message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: extract-sv-reads [OPTIONS...] <input_file> <splitter_file> <discordant_file>\n\
+  \nExamples:\n\textract-sv-reads input.bam splitters.bam discordants.bam\n\textract-sv-reads\
+  \ -i input.bam -s splitters.bam -d discordants.bam\n\textract-sv-reads -e -r --threads\
+  \ 4 -T /path/to/reference.fa \\\n\t  -i input.cram -s splitters.bam -d discordants.bam\n\
+  \nNotes:\n\t-T is only useful when the input file is a CRAM.\n\n\tWhen parsing CRAM,\
+  \ extract-sv-reads will download the entire reference\n\tused to encode the CRAM\
+  \ from EBI unless the -T option is specified to the\n\tproper local reference. This\
+  \ is both slow and may fill up your home\n\tdirectory. See the REF_PATH and REF_CACHE\
+  \ documentation of htslib and\n\tsamtools for more information.\n\nAvailable options:\n\
+  \  -h [ --help ]                  produce this message\n  -v [ --version ]     \
+  \          output the version\n  -i [ --input ] arg (=-)        input BAM/CRAM/SAM.\
+  \ Use '-' for stdin if using\n                                 positional arguments\n\
+  \  -s [ --splitter ] arg          output split reads to this file in BAM format\
+  \ \n                                 (Required)\n  -d [ --discordant ] arg     \
+  \   output discordant reads to this file in BAM \n                             \
+  \    format (Required)\n  -T [ --reference ] arg         reference sequence used\
+  \ to encode CRAM file, \n                                 recommended if reading\
+  \ CRAM\n  -e [ --exclude-dups ]          exclude duplicate reads from output\n \
+  \ -r [ --reduce-output-bams ]    remove sequences and qualities from output \n \
+  \                                bams\n  -n [ --with-nm ]               ensure NM\
+  \ tag is present in output if reading \n                                 CRAM file\n\
+  \  --max-unmapped-bases arg (=50) maximum number of unaligned bases between two\
+  \ \n                                 alignments to be included in the splitter file\n\
+  \  --min-indel-size arg (=50)     minimum structural variant feature size for \n\
+  \                                 split alignments to be included in the \n    \
+  \                             splitter file\n  --min-non-overlap arg (=20)    minimum\
+  \ number of non-overlapping base pairs \n                                 between\
+  \ two alignments for a read to be \n                                 included in\
+  \ the splitter file\n  --threads arg (=1)             number of threads to use\n\
+  \n"
+generated_using:
+- --help

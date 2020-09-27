@@ -1,0 +1,98 @@
+!Command
+command:
+- filter-abund.py
+positional:
+- !Positional
+  description: The input k-mer countgraph filename
+  position: 0
+  name: input_count_graph_filename
+  optional: false
+- !Positional
+  description: Input FAST[AQ] sequence filename
+  position: 1
+  name: input_sequence_filename
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: "show program's version number and exit\n--info                print\
+    \ citation information\n-h, --help            show this help message and exit\n\
+    -T THREADS, --threads THREADS\nNumber of simultaneous threads to execute (default:\
+    \ 1)\n-C CUTOFF, --cutoff CUTOFF\nTrim at k-mers below this abundance. (default:\
+    \ 2)\n-V, --variable-coverage\nOnly trim low-abundance k-mers from sequences that\n\
+    have high coverage. (default: False)\n-Z NORMALIZE_TO, --normalize-to NORMALIZE_TO\n\
+    Base the variable-coverage cutoff on this median k-mer\nabundance. (default: 20)\n\
+    -o optional_output_filename, --output optional_output_filename\nOutput the trimmed\
+    \ sequences into a single file with\nthe given filename instead of creating a\
+    \ new file for\neach input file. (default: None)\n-f, --force           Overwrite\
+    \ output file if it exists (default: False)\n-q, --quiet\n--gzip             \
+    \   Compress output using gzip (default: False)\n--bzip                Compress\
+    \ output using bzip2 (default: False)"
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: filter-abund.py [--version] [--info] [-h] [-T THREADS] [-C CUTOFF]\
+  \ [-V]\n                       [-Z NORMALIZE_TO] [-o optional_output_filename] [-f]\n\
+  \                       [-q] [--gzip | --bzip]\n                       input_count_graph_filename\
+  \ input_sequence_filename\n                       [input_sequence_filename ...]\n\
+  \nTrim sequences at a minimum k-mer abundance.\n\npositional arguments:\n  input_count_graph_filename\n\
+  \                        The input k-mer countgraph filename\n  input_sequence_filename\n\
+  \                        Input FAST[AQ] sequence filename\n\noptional arguments:\n\
+  \  --version             show program's version number and exit\n  --info      \
+  \          print citation information\n  -h, --help            show this help message\
+  \ and exit\n  -T THREADS, --threads THREADS\n                        Number of simultaneous\
+  \ threads to execute (default: 1)\n  -C CUTOFF, --cutoff CUTOFF\n              \
+  \          Trim at k-mers below this abundance. (default: 2)\n  -V, --variable-coverage\n\
+  \                        Only trim low-abundance k-mers from sequences that\n  \
+  \                      have high coverage. (default: False)\n  -Z NORMALIZE_TO,\
+  \ --normalize-to NORMALIZE_TO\n                        Base the variable-coverage\
+  \ cutoff on this median k-mer\n                        abundance. (default: 20)\n\
+  \  -o optional_output_filename, --output optional_output_filename\n            \
+  \            Output the trimmed sequences into a single file with\n            \
+  \            the given filename instead of creating a new file for\n           \
+  \             each input file. (default: None)\n  -f, --force           Overwrite\
+  \ output file if it exists (default: False)\n  -q, --quiet\n  --gzip           \
+  \     Compress output using gzip (default: False)\n  --bzip                Compress\
+  \ output using bzip2 (default: False)\n\nTrimmed sequences will be placed in \"\
+  ${input_sequence_filename}.abundfilt\" for\neach input sequence file. If the input\
+  \ sequences are from RNAseq or metagenome\nsequencing then `--variable-coverage`\
+  \ should be used.\n\nExample:\n\n    load-into-counting.py -k 20 -x 5e7 countgraph\
+  \ data/100k-filtered.fa\n    filter-abund.py -C 2 countgraph data/100k-filtered.fa\n"
+generated_using:
+- --help

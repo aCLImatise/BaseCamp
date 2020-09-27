@@ -1,0 +1,143 @@
+!Command
+command:
+- merfishtools
+- exp
+positional:
+- !Positional
+  description: <READOUTS>        Raw readout data containing molecule assignments
+    to positions.
+  position: 0
+  name: codebook.
+  optional: false
+- !Positional
+  description: feature
+  position: 0
+  name: cell
+  optional: false
+- !Positional
+  description: cell_position_x
+  position: 1
+  name: hamming_dist
+  optional: false
+- !Positional
+  description: rna_position_x
+  position: 2
+  name: cell_position_y
+  optional: false
+- !Positional
+  description: Otherwise, the official MERFISH binary format is expected.
+  position: 3
+  name: rna_position_y
+  optional: false
+named:
+- !Flag
+  description: "Path to write expected value and standard deviation estimates of expression\
+    \ to.\nOutput is formatted into columns: cell, feature, expected value, standard\
+    \ deviation"
+  synonyms:
+  - -e
+  - --estimate
+  args: !SimpleFlagArg
+    name: TSV-FILE
+  optional: true
+- !Flag
+  description: "Path to write global statistics per cell to.\nOutput is formatted\
+    \ into columns: cell, noise-rate"
+  synonyms:
+  - --stats
+  args: !SimpleFlagArg
+    name: TSV-FILE
+  optional: true
+- !Flag
+  description: Seed for shuffling that occurs in EM algorithm.
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: '...              Prior probability of 0->1 error [default: 0.04]'
+  synonyms:
+  - --p0
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: '...              Prior probability of 1->0 error [default: 0.1]'
+  synonyms:
+  - --p1
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Regular expression to select cells from cell column (see above). [default:
+    .*]'
+  synonyms:
+  - --cells
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: '<INT,>    Width of the window to calculate PMF for. [default: 100]'
+  synonyms:
+  - --pmf-window-width
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of threads to use. [default: 1]'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "merfishtools-exp \nEstimate expressions for each feature (e.g. gene or\
+  \ transcript) in each cell.\n\nUSAGE:\n    merfishtools exp [OPTIONS] <CODEBOOK-TSV>\
+  \ <READOUTS> --seed <INT>\n\nFLAGS:\n    -h, --help       Prints help information\n\
+  \    -V, --version    Prints version information\n\nOPTIONS:\n    -e, --estimate\
+  \ <TSV-FILE>        Path to write expected value and standard deviation estimates\
+  \ of expression to.\n                                     Output is formatted into\
+  \ columns: cell, feature, expected value, standard deviation\n        --stats <TSV-FILE>\
+  \           Path to write global statistics per cell to.\n                     \
+  \                Output is formatted into columns: cell, noise-rate\n        --seed\
+  \ <INT>                 Seed for shuffling that occurs in EM algorithm.\n      \
+  \  --p0 <FLOAT>...              Prior probability of 0->1 error [default: 0.04]\n\
+  \        --p1 <FLOAT>...              Prior probability of 1->0 error [default:\
+  \ 0.1]\n        --cells <REGEX>              Regular expression to select cells\
+  \ from cell column (see above). [default: .*]\n        --pmf-window-width <INT,>\
+  \    Width of the window to calculate PMF for. [default: 100]\n    -t, --threads\
+  \ <INT>              Number of threads to use. [default: 1]\n\nARGS:\n    <CODEBOOK-TSV>\
+  \    Path to codebook definition consisting of tab separated columns: feature, codeword.\n\
+  \                      Misidentification probes (see Chen et al. Science 2015) should\
+  \ not be contained in the\n                      codebook.\n    <READOUTS>     \
+  \   Raw readout data containing molecule assignments to positions.\n           \
+  \           If given as TSV file (ending on .tsv), the following columns are expected:\n\
+  \                      \n                      cell\n                      feature\n\
+  \                      hamming_dist\n                      cell_position_x\n   \
+  \                   cell_position_y\n                      rna_position_x\n    \
+  \                  rna_position_y\n                      \n                    \
+  \  Otherwise, the official MERFISH binary format is expected.\n\nThis command estimates\
+  \ expressions for each feature (e.g. gene or transcript) in each cell.\nResults\
+  \ are provided as PMF (probability mass function) in columns:\n\ncell\nfeature (e.g.\
+  \ gene, rna)\nexpression\nposterior probability\n\nExample usage:\n\nmerfishtools\
+  \ exp codebook.txt < data.txt > expression.txt\n"
+generated_using:
+- --help

@@ -1,0 +1,131 @@
+!Command
+command:
+- velocyto
+- run-dropest
+positional:
+- !Positional
+  description: bam files to be analyzed
+  position: 0
+  name: BAMFILE
+  optional: false
+named:
+- !Flag
+  description: Valid barcodes file, to filter the bam. If --bcfile is not specified
+    the file will be searched in the default position outputted by ``velocyto tools
+    dropest_bc_correct``. Otherwise an error will be thrown
+  synonyms:
+  - -b
+  - --bcfile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'The logic to use for the filtering (default: Default)'
+  synonyms:
+  - -l
+  - --logic
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Output folder, if it does not exist it will be created.
+  synonyms:
+  - -o
+  - --outputfolder
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: The sample name that will be used as a the filename of the output.
+  synonyms:
+  - -e
+  - --sampleid
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: .gtf file containing intervals to mask (Optional)
+  synonyms:
+  - -m
+  - --repmask
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: The number of threads to use to sort the bam by cellID file using samtools
+  synonyms:
+  - -@
+  - --samtools-threads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: The number of MB used for every thread by samtools to sort the bam
+    file
+  synonyms:
+  - --samtools-memory
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'The dtype of the loom file layers - if more than 6000 molecules/reads
+    per gene per cell are expected set uint32 to avoid truncation (default run_dropest:
+    uint32)'
+  synonyms:
+  - -t
+  - --dtype
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'For debugging purposes only: it will dump a molecular mapping report
+    to hdf5. --dump N, saves a cell every N cells. If p is prepended a more complete
+    (but huge) pickle report is printed (default: 0)'
+  synonyms:
+  - -d
+  - --dump
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Set the vebosity level: -v (only warnings) -vv (warnings and info)
+    -vvv (warnings, info and debug)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: velocyto run-dropest [OPTIONS] BAMFILE GTFFILE\n\n  Runs the velocity\
+  \ analysis on DropEst preprocessed data\n\n  BAMFILE  bam files to be analyzed\n\
+  \n  GTFFILE genome annotation file\n\nOptions:\n  -b, --bcfile FILE            \
+  \   Valid barcodes file, to filter the bam. If --bcfile is not specified the file\
+  \ will be searched in the default position outputted by ``velocyto tools dropest_bc_correct``.\
+  \ Otherwise an error will be thrown\n  -l, --logic TEXT                The logic\
+  \ to use for the filtering (default: Default)\n  -o, --outputfolder PATH       \
+  \  Output folder, if it does not exist it will be created.\n  -e, --sampleid PATH\
+  \             The sample name that will be used as a the filename of the output.\n\
+  \  -m, --repmask FILE              .gtf file containing intervals to mask (Optional)\n\
+  \  -@, --samtools-threads INTEGER  The number of threads to use to sort the bam\
+  \ by cellID file using samtools\n  --samtools-memory INTEGER       The number of\
+  \ MB used for every thread by samtools to sort the bam file\n  -t, --dtype TEXT\
+  \                The dtype of the loom file layers - if more than 6000 molecules/reads\
+  \ per gene per cell are expected set uint32 to avoid truncation (default run_dropest:\
+  \ uint32)\n  -d, --dump TEXT                 For debugging purposes only: it will\
+  \ dump a molecular mapping report to hdf5. --dump N, saves a cell every N cells.\
+  \ If p is prepended a more complete (but huge) pickle report is printed (default:\
+  \ 0)\n  -v, --verbose                   Set the vebosity level: -v (only warnings)\
+  \ -vv (warnings and info) -vvv (warnings, info and debug)\n  --help            \
+  \              Show this message and exit.\n"
+generated_using:
+- --help

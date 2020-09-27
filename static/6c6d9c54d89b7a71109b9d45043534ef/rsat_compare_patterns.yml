@@ -1,0 +1,417 @@
+!Command
+command:
+- rsat
+- compare-patterns
+positional:
+- !Positional
+  description: AUTHOR
+  position: 0
+  name: compare-patterns
+  optional: false
+- !Positional
+  description: This program is typically used to compare a set of discovered
+  position: 0
+  name: supported.
+  optional: false
+- !Positional
+  description: sequences
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: "seq1 and seq2 must be DNA sequences (not peptidic). \nIUPAC degenerate\
+    \ code is accepted in seq1 as well as seq2."
+  position: 0
+  name: PATTERNS
+  optional: false
+- !Positional
+  description: number of matching positions
+  position: 0
+  name: match
+  optional: false
+- !Positional
+  description: "P-value for a single comparison. \nThis represents the probability,\
+    \ for the comparison\nbetween two sequences, to return a match.\nWhen the simple\
+    \ nucleotide alphabet (A, C, G, T) is\nused, the probability of random match is\
+    \ estimated to\n1/4: given the letter in the first sequence, the\nprobability\
+    \ that a random letter would match it is\n1/4.\nNote that this assumes that nucleotides\
+    \ are considered\nequiprobable.\nThe program also scores matches between the\n\
+    degenerated nucleotides defined by the IUPAC\ncommission (http://www.iupac.org/).\n\
+    code    nucleotides     mnemonics\n---------------------------------------------------------\n\
+    A                       Adenine\nC                       Cytosine\nG         \
+    \              Guanine\nT                       Thymine\nR       = A or G    \
+    \    puRines\nY       = C or T        pYrimidines\nW       = A or T        Weak\
+    \ hydrogen bonding\nS       = G or C        Strong hydrogen bonding\nM       =\
+    \ A or C        aMino group at common position\nK       = G or T        Keto group\
+    \ at common position\nH       = A, C or T     not G\nB       = G, C or T     not\
+    \ A\nV       = G, A, C       not T\nD       = G, A or T     not C\nN       = G,\
+    \ A, C or T  aNy)\nThe probability of a match between two degenerated\nnucleotides\
+    \ is calculated with the hypergeometric\ndistribution.\nThe underlying probabilistic\
+    \ model is that the two\nletters to be macthed represent each a subset of the\n\
+    alphabet. The problem can be thought of as an urn with\n4 balls, each ball representing\
+    \ one possible\nnucleotide (A, C, G, T).\nFor the sake of illustration, let us\
+    \ assume that we\nwant to compare the two IUPAC codes Y (C or T) and M\n(A or\
+    \ C). in the urn (alphabet), we will label in\nblack the balls (nucleotides) comprised\
+    \ in the first\nset (C and T). We can now consider the second IUPAC\nletter as\
+    \ a random selection of 2 balls in this urn,\nwhich contains 2 black balls (A,\
+    \ C) and 2 white balls\n(G, T). Our selection (C and T) contains one black\nball.\
+    \ It is thus a match.\nThe right tail of the hypergeometric distribution\nallows\
+    \ us to calculate the probability to observe at\nleast one back ball in a selection\
+    \ of 2 balls,\nselected at random in an urn with 2 black balls and 2\nwhite balls.\n\
+    c      i  n-i     n\nPval = P(X >= c) = SUM  ( C  C     / C  )\ni=1     m  4-m\
+    \     4\nWhere\nm   is the number of black balls in the urn\n(nucleotides matching\
+    \ the first IUPAC letter)\n4-m is the number of white balls in the urn\n(nucleotides\
+    \ not matching the first IUPAC\nletter)\nn   is the number of nucleotides matched\
+    \ by the\nsecond IUPAC letter.\nc = min(n,m) is the maximal number of common\n\
+    letters between the m nucleotides of the 1st\nIUPAC letter and the n nucleotides\
+    \ of the 2nd\nIUPAC letter.\nIn our example (Y against M), m=2, n=2, c=min(2,2)=2.\n\
+    Pval=0.83333\nWe can check the generality of the formula with some\nexamples :\n\
+    - a trivial match (e.g. N against A) should have a\nP-value of 1. In this case,\
+    \ m=4, n=1, c=min(4,1)=1.\n1  0    1\nPval = P(X >= c) =  C  C  / C   = 4*1/4\
+    \ = 1\n4  0    4\n- a simple match between two non-degenerated letters\nshould\
+    \ have a P-value of 1/4. Indeed, in this case\nn=1, m=1, c=min(1,1)=1.\n1  0 \
+    \   1\nPval = P(X >= c) =  C  C  / C  = 0.25\n1  3    4\n- Interestingly, a match\
+    \ between a IUPAC letter\nmatching 3 nucleotides (e.g. H = A, C or T) letter\n\
+    another matching 2 nucleotides (e.g. S = G or C)\nwill have a probability to 1.\
+    \ Indeed, m=3, n=2 and\nc=min(3,2)=2, thus:\n2      i  2-i    2\nPval = P(X >=\
+    \ c) = SUM  ( C  C    / C  )\ni=1     3  1      4\nThis reflects the fact that\
+    \ it is impossible to\nhave not a single white ball in the selection, when\nwe\
+    \ select 2 balls among a set of 3 black and 1\nwhite balls."
+  position: 1
+  name: Pval
+  optional: false
+- !Positional
+  description: "E-value for a single comparison between two sequences. \nThis is a\
+    \ correction for multiple testing, taking\ninto account the fact that a comparison\
+    \ between two\nsequences (or patterns) can already result in some\nmulti-testing\
+    \ effects, for two reasons :\n- with the option -slide, the two sequences are\n\
+    compared with different offsets.\nEval_p = Pval * noffs\n- with the option -2str,\
+    \ two comparisons are\nperformed per pair of sequences. In this case,\nEval_p\
+    \ = Pval*2*noffs\nIt is useful to return the Eval together with the\nnumber of\
+    \ offsets analyzed (corresponding to the\nnumber of tests for a given pair of\
+    \ sequences).\n-return Pval,noffs,Eval,sig"
+  position: 2
+  name: Eval_p
+  optional: false
+- !Positional
+  description: Significance for a single comparison between two
+  position: 3
+  name: sig_p
+  optional: false
+- !Positional
+  description: "This is a simple logarithmic conversion of Eval_p.\nsig_p = -log10(Eval_p)"
+  position: 4
+  name: sequences.
+  optional: false
+- !Positional
+  description: "E-value for the whole analysis. \nThis E-value includes a correction\
+    \ for the fact\nthat, usually, multiple sequences (patterns) are\ncompared to\
+    \ multiple sequences (patterns).\nFor example, if the program is used to compare\
+    \ an\noligo-analysis result file with a database of\nannotated sites, the oligo\
+    \ file can typically\ncontain a dozen of words, and the database several\nhundreds\
+    \ of sites."
+  position: 5
+  name: Eval_f
+  optional: false
+- !Positional
+  description: "Significance for the whole analysis. \nThis is a simple logarithmic\
+    \ conversion of Eval_f.\nsig_f = -log10(Eval_f)"
+  position: 6
+  name: sig_f
+  optional: false
+- !Positional
+  description: "the weight reflects the number of matching positions,\nwith a lower\
+    \ weight for matches between partially\nspecified nucleotides (IUPAC codes).\n\
+    The weight is calculated as\n-log4(Pval)\nFor an alignment between non-ambigous\
+    \ nucleotides, the\nweight is maximal, and its value is the number of\nmatching\
+    \ residues."
+  position: 7
+  name: weight
+  optional: false
+- !Positional
+  description: maximal weight for pattern 1
+  position: 0
+  name: max_w1
+  optional: false
+- !Positional
+  description: maximal weight for pattern 2
+  position: 1
+  name: max_w2
+  optional: false
+- !Positional
+  description: "lengths \nThis option returns 4 length values\nlen1   length of sequence\
+    \ 1\nlen2   length of sequence 2\nmlen   length of the match\ntlen   total length\
+    \ of the alignment\ntlen = len1 + len2 - mlen"
+  position: 0
+  name: length
+  optional: false
+- !Positional
+  description: sequences to be compared
+  position: 1
+  name: seq
+  optional: false
+named:
+- !Flag
+  description: (must be first argument) display options
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "first sequence for the comparison\nThis argument can be repeated on\
+    \ the same command line\nto enter multiple patterns."
+  synonyms:
+  - -seq1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "second sequence for the comparison\nThe options -seq1 and -seq2 can\
+    \ be used iteratively to\nspecify multiple sequence patterns. Each sequence of\n\
+    group 1 is then compared to each sequence of group 2.\nex: -seq1 gataag -seq1\
+    \ gattag -seq1 gataah\n-seq2 agataata -seq2 gtttag\nNote that when many patterns\
+    \ have to be entered, the\noptions -file1 and -file2 are more convenient."
+  synonyms:
+  - -seq2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file containing a list of patterns to be used as first\nsequences\
+    \ for the comparison (see format below)."
+  synonyms:
+  - -file1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file containing a list of patterns to be used as second\nsequences\
+    \ for the comparison (see format below)."
+  synonyms:
+  - -file2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "fields\nEach selected field is returned in a separate column.\nSupported:\
+    \ match,Pval,Eval_p,sig_p,Eval_f,sig_f,noffs,weight,seq,id,length,offset,strand,max_w,diff_w,rel_w,top_s"
+  synonyms:
+  - -return
+  args: !SimpleFlagArg
+    name: return
+  optional: true
+- !Flag
+  description: "#\nupper threshold value for a given field\nSupported_fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,len1,len2,mlen,tlen,offset,max_w1,max_w2,max_w,diff_w1,diff_w2,diff_w,rel_w1,rel_w2,rel_w"
+  synonyms:
+  - -uth
+  args: !SimpleFlagArg
+    name: field
+  optional: true
+- !Flag
+  description: "#\nlower threshold value for a given field\n(same fields as -uth)"
+  synonyms:
+  - -lth
+  args: !SimpleFlagArg
+    name: field
+  optional: true
+- !Flag
+  description: "find best match by sliding seq2 along seq1\nWhen this option is used,\
+    \ the best offset is also\nreturned. The offset is the number of positions to\n\
+    shift seq1 in order to obtain the best scoring\nalignment. Negative values represent\
+    \ a shit of seq2 to\nthe left side, positive values ot the right side."
+  synonyms:
+  - -slide
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Match on both strands\nIn addition to the direct matching (strand\
+    \ = D), the\nreverse complement of each pattern of group 1\n(specified by -seq1\
+    \ or -file1) is matched against each\npattern of group2."
+  synonyms:
+  - -2str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Return a contingency table, where each row corresponds\nto one sequence\
+    \ from file 1, each column to a sequence\nfrom file 2, and the cells contain the\
+    \ value of the\nspecified field.\nSupported fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,offset,strand,max_w,diff_w,rel_w1,rel_w2,rel_w,top_s"
+  synonyms:
+  - -table
+  args: !SimpleFlagArg
+    name: field
+  optional: true
+- !Flag
+  description: "null string (default ) displayed in\ncontingency tables when the cell\
+    \ contains a value\nwhich does not pass the thresholds."
+  synonyms:
+  - -null
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display full help message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n\tcompare-patterns\n\nAUTHOR\n\tJacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
+  \nUSAGE\n\tcompare-patterns seq1 seq2\n\nDESCRIPTION\n\n\tCount matching residues\
+  \ between pairs of patterns from two\n\tsets, and assess the statistical significance\
+  \ of the\n\tmatches. Patterns can be described using the IUPAC code for\n\tambiguous\
+  \ nucleotides. Spaced patterns (dyads) are also\n\tsupported.\n\n\tThis program\
+  \ is typically used to compare a set of discovered\n\tpatterns (e.g. oligo-analysis\
+  \ result) with a set of known\n\ttranscription factor binding sites (e.g. sites\
+  \ stored in the\n\tTRANSFAC database).\n\nCATEGORY\n\tutil\n\tsequences\n\nOPTIONS\n\
+  \t-h\tdisplay full help message\n\t-help   (must be first argument) display options\n\
+  \t-v\tverbose\n\t-seq1\tfirst sequence for the comparison\n\t\tThis argument can\
+  \ be repeated on the same command line\n\t\tto enter multiple patterns.\n\t-seq2\t\
+  second sequence for the comparison\n\n\t\tThe options -seq1 and -seq2 can be used\
+  \ iteratively to\n\t\tspecify multiple sequence patterns. Each sequence of\n\t\t\
+  group 1 is then compared to each sequence of group 2.\n\t\t   ex: -seq1 gataag -seq1\
+  \ gattag -seq1 gataah \n\t\t       -seq2 agataata -seq2 gtttag\n\t\t Note that when\
+  \ many patterns have to be entered, the\n\t\t options -file1 and -file2 are more\
+  \ convenient.\n\t-file1 \tfile containing a list of patterns to be used as first\n\
+  \         \tsequences for the comparison (see format below). \n\t-file2 \tfile containing\
+  \ a list of patterns to be used as second\n         \tsequences for the comparison\
+  \ (see format below). \n\t-return\treturn fields\n\t\tEach selected field is returned\
+  \ in a separate column.\n\t\tSupported: match,Pval,Eval_p,sig_p,Eval_f,sig_f,noffs,weight,seq,id,length,offset,strand,max_w,diff_w,rel_w,top_s\n\
+  \n        -uth field #\n                upper threshold value for a given field\n\
+  \                Supported_fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,len1,len2,mlen,tlen,offset,max_w1,max_w2,max_w,diff_w1,diff_w2,diff_w,rel_w1,rel_w2,rel_w\n\
+  \n        -lth field #\n                lower threshold value for a given field\n\
+  \                (same fields as -uth)\n\n\t-slide\tfind best match by sliding seq2\
+  \ along seq1\n\t\tWhen this option is used, the best offset is also\n\t\treturned.\
+  \ The offset is the number of positions to\n\t\tshift seq1 in order to obtain the\
+  \ best scoring\n\t\talignment. Negative values represent a shit of seq2 to\n\t\t\
+  the left side, positive values ot the right side.\n\n\t-2str \tMatch on both strands\
+  \ \n\t\tIn addition to the direct matching (strand = D), the\n\t\treverse complement\
+  \ of each pattern of group 1\n\t\t(specified by -seq1 or -file1) is matched against\
+  \ each\n\t\tpattern of group2.\n\n\t-table field\n\t       Return a contingency\
+  \ table, where each row corresponds\n\t       to one sequence from file 1, each\
+  \ column to a sequence\n\t       from file 2, and the cells contain the value of\
+  \ the\n\t       specified field.\n\t       Supported fields: match,Pval,Eval_p,sig_p,Eval_f,sig_f,weight,offset,strand,max_w,diff_w,rel_w1,rel_w2,rel_w,top_s\n\
+  \n\t-null   null string (default ) displayed in\n                contingency tables\
+  \ when the cell contains a value\n                which does not pass the thresholds.\n\
+  \nINPUT FORMAT\n    PATTERNS\n\tseq1 and seq2 must be DNA sequences (not peptidic).\
+  \ \n        IUPAC degenerate code is accepted in seq1 as well as seq2.\n\n    PATTERN\
+  \ FILE\n\tA pattern file is a tab-delimited text file. Each row contains\n\tthe\
+  \ description of one pattern. Column content:\n\t  1) Pattern sequence. This is\
+  \ the only mandatory column.\n\t  2) Pattern ID (optional).\n\tAdditional columns\
+  \ can be used to specify other pattern\n\tattributes (description, score, ...),\
+  \ but they are by default\n\tignored by the program. The option -sc allows to specify\
+  \ a\n\tscore column.\n\nOUTPUT FORMAT\n       The output consists in a tab-separated\
+  \ text table, with one row\n       per pair of sequences, and one column per return\
+  \ field.\n\nRETURN FIELDS\n       match\tnumber of matching positions\n\n      \
+  \ Pval     P-value for a single comparison. \n\n       \t        This represents\
+  \ the probability, for the comparison\n       \t        between two sequences, to\
+  \ return a match.\n\n       \t\tWhen the simple nucleotide alphabet (A, C, G, T)\
+  \ is\n       \t\tused, the probability of random match is estimated to\n       \t\
+  \t1/4: given the letter in the first sequence, the\n       \t\tprobability that\
+  \ a random letter would match it is\n       \t\t1/4.\n\n\t\tNote that this assumes\
+  \ that nucleotides are considered\n\t\tequiprobable.\n\n\t\tThe program also scores\
+  \ matches between the\n\t\tdegenerated nucleotides defined by the IUPAC\n\t\tcommission\
+  \ (http://www.iupac.org/).\n\n\t\tcode\tnucleotides\tmnemonics\n\t\t---------------------------------------------------------\n\
+  \t\tA\t\t\tAdenine\n\t\tC\t\t\tCytosine\n\t\tG\t\t\tGuanine\n\t\tT\t\t\tThymine\n\
+  \t\tR\t= A or G\tpuRines\n\t\tY\t= C or T\tpYrimidines\n\t\tW\t= A or T\tWeak hydrogen\
+  \ bonding\n\t\tS\t= G or C\tStrong hydrogen bonding\n\t\tM\t= A or C\taMino group\
+  \ at common position\n\t\tK\t= G or T\tKeto group at common position\n\t\tH\t= A,\
+  \ C or T\tnot G\n\t\tB\t= G, C or T\tnot A\n\t\tV\t= G, A, C\tnot T\n\t\tD\t= G,\
+  \ A or T\tnot C\n\t\tN\t= G, A, C or T\taNy)\n\n\t\tThe probability of a match between\
+  \ two degenerated\n                nucleotides is calculated with the hypergeometric\n\
+  \                distribution.\n\n\t\tThe underlying probabilistic model is that\
+  \ the two\n\t\tletters to be macthed represent each a subset of the\n\t\talphabet.\
+  \ The problem can be thought of as an urn with\n\t\t4 balls, each ball representing\
+  \ one possible\n\t\tnucleotide (A, C, G, T).\n\n\t\tFor the sake of illustration,\
+  \ let us assume that we\n\t\twant to compare the two IUPAC codes Y (C or T) and\
+  \ M\n\t\t(A or C). in the urn (alphabet), we will label in\n\t\tblack the balls\
+  \ (nucleotides) comprised in the first\n\t\tset (C and T). We can now consider the\
+  \ second IUPAC\n\t\tletter as a random selection of 2 balls in this urn,\n\t\twhich\
+  \ contains 2 black balls (A, C) and 2 white balls\n\t\t(G, T). Our selection (C\
+  \ and T) contains one black\n\t\tball. It is thus a match.\n\n\t\tThe right tail\
+  \ of the hypergeometric distribution\n\t\tallows us to calculate the probability\
+  \ to observe at\n\t\tleast one back ball in a selection of 2 balls,\n\t\tselected\
+  \ at random in an urn with 2 black balls and 2\n\t\twhite balls.\n\n           \
+  \                               c      i  n-i     n\n                   Pval = P(X\
+  \ >= c) = SUM  ( C  C     / C  )\n                                         i=1 \
+  \    m  4-m     4\n\n\t\tWhere\n\n\t\t   m   is the number of black balls in the\
+  \ urn\n\t\t       (nucleotides matching the first IUPAC letter)\n\n\t\t   4-m is\
+  \ the number of white balls in the urn \n\t\t       (nucleotides not matching the\
+  \ first IUPAC\n\t\t       letter)\n\n\t\t   n   is the number of nucleotides matched\
+  \ by the\n\t\t       second IUPAC letter.\n\n\t\t   c = min(n,m) is the maximal\
+  \ number of common\n\t\t       letters between the m nucleotides of the 1st\n\t\t\
+  \       IUPAC letter and the n nucleotides of the 2nd\n\t\t       IUPAC letter.\n\
+  \n                In our example (Y against M), m=2, n=2, c=min(2,2)=2.\n\t\t  \
+  \ Pval=0.83333\n\n\t\tWe can check the generality of the formula with some\n\t\t\
+  examples : \n\n\t\t - a trivial match (e.g. N against A) should have a\n       \
+  \            P-value of 1. In this case, m=4, n=1, c=min(4,1)=1.\n\n           \
+  \                                1  0    1\n                   Pval = P(X >= c)\
+  \ =  C  C  / C   = 4*1/4 = 1\n                                           4  0  \
+  \  4\n\n\t\t\t\t   \n\t\t - a simple match between two non-degenerated letters\n\
+  \                   should have a P-value of 1/4. Indeed, in this case\n       \
+  \            n=1, m=1, c=min(1,1)=1.\n\n                                       \
+  \    1  0    1\n                   Pval = P(X >= c) =  C  C  / C  = 0.25\n     \
+  \                                      1  3    4\n\n\t         - Interestingly,\
+  \ a match between a IUPAC letter\n                   matching 3 nucleotides (e.g.\
+  \ H = A, C or T) letter\n                   another matching 2 nucleotides (e.g.\
+  \ S = G or C)\n                   will have a probability to 1. Indeed, m=3, n=2\
+  \ and\n                   c=min(3,2)=2, thus:\n\n                              \
+  \            2      i  2-i    2\n                   Pval = P(X >= c) = SUM  ( C\
+  \  C    / C  )\n                                         i=1     3  1      4\n\n\
+  \t\t   This reflects the fact that it is impossible to\n\t\t   have not a single\
+  \ white ball in the selection, when\n\t\t   we select 2 balls among a set of 3 black\
+  \ and 1\n\t\t   white balls.\n\n\tEval_p\t   E-value for a single comparison between\
+  \ two sequences. \n\n\t\t   This is a correction for multiple testing, taking\n\t\
+  \t   into account the fact that a comparison between two\n\t\t   sequences (or patterns)\
+  \ can already result in some\n\t\t   multi-testing effects, for two reasons :\n\n\
+  \t\t    - with the option -slide, the two sequences are\n                      compared\
+  \ with different offsets.\n\t\t      \t       Eval_p = Pval * noffs\n\n\t\t    -\
+  \ with the option -2str, two comparisons are\n                      performed per\
+  \ pair of sequences. In this case,\n\t\t      \t\tEval_p = Pval*2*noffs\n\n\t\t\
+  \   It is useful to return the Eval together with the\n\t\t   number of offsets\
+  \ analyzed (corresponding to the\n\t\t   number of tests for a given pair of sequences).\n\
+  \t\t   \t  -return Pval,noffs,Eval,sig\n\n\tsig_p      Significance for a single\
+  \ comparison between two\n\t\t   sequences. \n\t\t   This is a simple logarithmic\
+  \ conversion of Eval_p.\n\n\t\t   \t      sig_p = -log10(Eval_p)\n\n\tEval_f\t \
+  \  E-value for the whole analysis. \n\n\t\t   This E-value includes a correction\
+  \ for the fact\n\t\t   that, usually, multiple sequences (patterns) are\n\t\t  \
+  \ compared to multiple sequences (patterns).\n\n\t\t   For example, if the program\
+  \ is used to compare an\n\t\t   oligo-analysis result file with a database of\n\t\
+  \t   annotated sites, the oligo file can typically\n\t\t   contain a dozen of words,\
+  \ and the database several\n\t\t   hundreds of sites.\n\n\tsig_f      Significance\
+  \ for the whole analysis. \n\t\t   This is a simple logarithmic conversion of Eval_f.\n\
+  \n\t\t   \t      sig_f = -log10(Eval_f)\n\n\n\tweight \tthe weight reflects the\
+  \ number of matching positions,\n                with a lower weight for matches\
+  \ between partially\n                specified nucleotides (IUPAC codes).\n\n\t\t\
+  The weight is calculated as\n\t\t    -log4(Pval)\n\n\t\tFor an alignment between\
+  \ non-ambigous nucleotides, the\n\t\tweight is maximal, and its value is the number\
+  \ of\n\t\tmatching residues.\n\n\tmax weight\n\t\tMaximal weight for the match with\
+  \ a given pattern.\n\t\tmax_w1\tmaximal weight for pattern 1\n\t\tmax_w2\tmaximal\
+  \ weight for pattern 2\n\t\tmax_w maximal weight between pattern 1 and pattern2\n\
+  \t\t      max_w = min(max_w1, max_w1)\n\n\tweight differences\n\t\tDifference between\
+  \ match weight and maximal possible weight.\n\t\tdiff_w1 = max_w1 - weight\n\t\t\
+  diff_w2 = max_w2 - weight\n\t\tdiff_w = max_w - weight\n\n\n\trelative weight\n\t\
+  \tThe relative weight is the ratio between matching weight and\n\t\tmaximal weight.\n\
+  \t\t   rel_w1 = weight/max_w1\n\t\t   rel_w2 = weight/max_w2\n\t\t   rel_w = weight/max_w\n\
+  \n\tlength\tlengths \n\t\tThis option returns 4 length values\n\t\t     len1   length\
+  \ of sequence 1\n\t\t     len2   length of sequence 2\n\t\t     mlen   length of\
+  \ the match\n\t\t     tlen   total length of the alignment\n\t\t     \t    tlen\
+  \ = len1 + len2 - mlen\n\n\tseq\tsequences to be compared\n\nEXAMPLES\n\n\tSingle\
+  \ pair of sequences\n\t------------------------\n\tcompare-patterns -seq1 GATAAT\
+  \ -seq2 GATWAG -return match,weight\n\n\tshould return the value 5 matches (the\
+  \ degenerate code W\n        stands for \"T or A\") and a weight of 4.5\n\n\tMultiple\
+  \ pairs of sequences\n\t---------------------------\n\n\tcompare-patterns -seq1\
+  \ GATAAG -seq2 GATWAG -seq2 GATAAG \\\n\t    -seq2 GATAAT -seq2 gatha -seq2 gatnns\
+  \ -seq2 NNNNNN \\\n\t    -v 1 -return match,weight,Pval,length,seq\n\n        Compares\
+  \ the firsts sequence with each sequence of group 2.\n        Notice the difference\
+  \ between the columns match and weight.\n\n\tSliding sequences\n\t-----------------\n\
+  \tcompare-patterns -v 1 -seq1 gatasg -seq2 twagtt -slide \\\n\t    -return match,weight,Pval,seq,length\n\
+  \n        Thresholds\n\t----------\n\tcompare-patterns -v 1 -seq1 gatasg -seq2 twagtt\
+  \ -seq2 ccccga \\\n\t    -slide -return offset,match,weight,Pval,seq,length -lth\
+  \ mlen 3\n\n\tThis options sets a lower threshold of 3 on matching length.\n\n"
+generated_using:
+- -h

@@ -1,0 +1,232 @@
+!Command
+command:
+- proBAM.py
+positional: []
+named:
+- !Flag
+  description: location of the psm file to be processed
+  synonyms:
+  - --file
+  - -F
+  args: !SimpleFlagArg
+    name: PSM_FILE
+  optional: true
+- !Flag
+  description: "name of the project (will be determine how the output\nfile is called"
+  synonyms:
+  - --name
+  - -N
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: numpber of mismatches allowed during mapping
+  synonyms:
+  - --mismatches
+  - -M
+  args: !ChoiceFlagArg
+    choices: !!set
+      '4':
+      '2':
+      '5':
+      '0':
+      '3':
+      '1':
+  optional: true
+- !Flag
+  description: "Which database has to be used (currently only ENSEMBL\nis available"
+  synonyms:
+  - --database
+  - -D
+  args: !ChoiceFlagArg
+    choices: !!set
+      ENSEMBL:
+  optional: true
+- !Flag
+  description: species to be used
+  synonyms:
+  - --species
+  - -S
+  args: !ChoiceFlagArg
+    choices: !!set
+      drosophila_melanogaster:
+      mus_musculus:
+      danio_rerio:
+      homo_sapiens:
+  optional: true
+- !Flag
+  description: location where to output files should be stored
+  synonyms:
+  - --directory
+  - -C
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: Whether duplicates should be removes
+  synonyms:
+  - --rm_duplicates
+  - -R
+  args: !ChoiceFlagArg
+    choices: !!set
+      Y:
+      N:
+  optional: true
+- !Flag
+  description: translate transcript sequences in 3 frames
+  synonyms:
+  - --three_frame_translation
+  - -T
+  args: !ChoiceFlagArg
+    choices: !!set
+      Y:
+      N:
+  optional: true
+- !Flag
+  description: annotation for DECOY PSM
+  synonyms:
+  - --decoy_annotation
+  - -E
+  args: !SimpleFlagArg
+    name: DECOY_ANNOTATION
+  optional: true
+- !Flag
+  description: sorting order of the SAM file
+  synonyms:
+  - --sorting_order
+  - -O
+  args: !ChoiceFlagArg
+    choices: !!set
+      queryname:
+      coordinate:
+      unknown:
+      unsorted:
+  optional: true
+- !Flag
+  description: Which/How annotation should be identified
+  synonyms:
+  - --pre_picked_annotation
+  - -P
+  args: !ChoiceFlagArg
+    choices: !!set
+      all:
+      Ensembl_tr:
+      UniProt_ACC:
+      First:
+      UniProt_Entry:
+      Ensembl_pr:
+      RefSeq:
+  optional: true
+- !Flag
+  description: Whether unmapped psm should be included in the output
+  synonyms:
+  - --include_unmapped
+  - -U
+  args: !ChoiceFlagArg
+    choices: !!set
+      Y:
+      N:
+  optional: true
+- !Flag
+  description: which ouput format should be generated
+  synonyms:
+  - --conversion_mode
+  - -X
+  args: !ChoiceFlagArg
+    choices: !!set
+      proBAM_peptide_mod:
+      proBAM_psm:
+      proBAM_peptide:
+      proBED:
+  optional: true
+- !Flag
+  description: add a comment to the file
+  synonyms:
+  - --comments
+  - -Y
+  args: !SimpleFlagArg
+    name: COMMENTS
+  optional: true
+- !Flag
+  description: "only process validated PSMs (for mzIdentML\n"
+  synonyms:
+  - --validated_only
+  - -A
+  args: !ChoiceFlagArg
+    choices: !!set
+      Y:
+      N:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: ENSEMBL version to be used
+  synonyms:
+  - --version
+  - -V
+  args: !ChoiceFlagArg
+    choices: !!set
+      '82':
+      '85':
+      '79':
+      '87':
+      '78':
+      '80':
+      '74':
+      '75':
+      '83':
+      '76':
+      '88':
+      '81':
+      '89':
+      '77':
+      '84':
+      '86':
+  optional: true
+help_text: "Creating directory /root/.config/bioservices \nusage: proBAM.py [-h] --name\
+  \ NAME [--mismatches {0,1,2,3,4,5}]\n                 [--version {74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89}]\n\
+  \                 [--database {ENSEMBL}] --species\n                 {homo_sapiens,mus_musculus,drosophila_melanogaster,danio_rerio}\n\
+  \                 --file PSM_FILE [--directory DIRECTORY]\n                 [--rm_duplicates\
+  \ {Y,N}] [--three_frame_translation {Y,N}]\n                 [--decoy_annotation\
+  \ DECOY_ANNOTATION]\n                 [--sorting_order {unknown,unsorted,queryname,coordinate}]\n\
+  \                 [--pre_picked_annotation {First,Ensembl_tr,Ensembl_pr,UniProt_ACC,UniProt_Entry,RefSeq,all}]\n\
+  \                 [--include_unmapped {Y,N}]\n                 [--conversion_mode\
+  \ {proBAM_psm,proBAM_peptide,proBAM_peptide_mod,proBED}]\n                 [--comments\
+  \ COMMENTS] [--validated_only {Y,N}]\n\nproBAMconvert version 1.0.2\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --name\
+  \ NAME, -N NAME  name of the project (will be determine how the output\n       \
+  \                 file is called\n  --mismatches {0,1,2,3,4,5}, -M {0,1,2,3,4,5}\n\
+  \                        numpber of mismatches allowed during mapping\n  --version\
+  \ {74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89}, -V {74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89}\n\
+  \                        ENSEMBL version to be used\n  --database {ENSEMBL}, -D\
+  \ {ENSEMBL}\n                        Which database has to be used (currently only\
+  \ ENSEMBL\n                        is available\n  --species {homo_sapiens,mus_musculus,drosophila_melanogaster,danio_rerio},\
+  \ -S {homo_sapiens,mus_musculus,drosophila_melanogaster,danio_rerio}\n         \
+  \               species to be used\n  --file PSM_FILE, -F PSM_FILE\n           \
+  \             location of the psm file to be processed\n  --directory DIRECTORY,\
+  \ -C DIRECTORY\n                        location where to output files should be\
+  \ stored\n  --rm_duplicates {Y,N}, -R {Y,N}\n                        Whether duplicates\
+  \ should be removes\n  --three_frame_translation {Y,N}, -T {Y,N}\n             \
+  \           translate transcript sequences in 3 frames\n  --decoy_annotation DECOY_ANNOTATION,\
+  \ -E DECOY_ANNOTATION\n                        annotation for DECOY PSM\n  --sorting_order\
+  \ {unknown,unsorted,queryname,coordinate}, -O {unknown,unsorted,queryname,coordinate}\n\
+  \                        sorting order of the SAM file\n  --pre_picked_annotation\
+  \ {First,Ensembl_tr,Ensembl_pr,UniProt_ACC,UniProt_Entry,RefSeq,all}, -P {First,Ensembl_tr,Ensembl_pr,UniProt_ACC,UniProt_Entry,RefSeq,all}\n\
+  \                        Which/How annotation should be identified\n  --include_unmapped\
+  \ {Y,N}, -U {Y,N}\n                        Whether unmapped psm should be included\
+  \ in the output\n  --conversion_mode {proBAM_psm,proBAM_peptide,proBAM_peptide_mod,proBED},\
+  \ -X {proBAM_psm,proBAM_peptide,proBAM_peptide_mod,proBED}\n                   \
+  \     which ouput format should be generated\n  --comments COMMENTS, -Y COMMENTS\n\
+  \                        add a comment to the file\n  --validated_only {Y,N}, -A\
+  \ {Y,N}\n                        only process validated PSMs (for mzIdentML\n"
+generated_using:
+- --help

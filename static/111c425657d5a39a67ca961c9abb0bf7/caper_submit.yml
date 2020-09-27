@@ -1,0 +1,327 @@
+!Command
+command:
+- caper
+- submit
+positional:
+- !Positional
+  description: --singularity-cachedir SINGULARITY_CACHEDIR
+  position: 0
+  name: server.
+  optional: false
+named:
+- !Flag
+  description: Caper does not take any action.
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints all logs >= DEBUG level
+  synonyms:
+  - -D
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Port for Caper server
+  synonyms:
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+- !Flag
+  description: IP address for Caper server
+  synonyms:
+  - --ip
+  args: !SimpleFlagArg
+    name: IP
+  optional: true
+- !Flag
+  description: Disable server heartbeat file.
+  synonyms:
+  - --no-server-heartbeat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Heartbeat file for Caper clients to get IP and port of\na server"
+  synonyms:
+  - --server-heartbeat-file
+  args: !SimpleFlagArg
+    name: SERVER_HEARTBEAT_FILE
+  optional: true
+- !Flag
+  description: "Timeout for a heartbeat file in Milliseconds. A\nheartbeat file older\
+    \ than this interval will be\nignored."
+  synonyms:
+  - --server-heartbeat-timeout
+  args: !SimpleFlagArg
+    name: SERVER_HEARTBEAT_TIMEOUT
+  optional: true
+- !Flag
+  description: Workflow inputs JSON file
+  synonyms:
+  - -i
+  - --inputs
+  args: !SimpleFlagArg
+    name: INPUTS
+  optional: true
+- !Flag
+  description: Workflow options JSON file
+  synonyms:
+  - -o
+  - --options
+  args: !SimpleFlagArg
+    name: OPTIONS
+  optional: true
+- !Flag
+  description: Workflow labels JSON file
+  synonyms:
+  - -l
+  - --labels
+  args: !SimpleFlagArg
+    name: LABELS
+  optional: true
+- !Flag
+  description: Zip file of imported subworkflows
+  synonyms:
+  - -p
+  - --imports
+  args: !SimpleFlagArg
+    name: IMPORTS
+  optional: true
+- !Flag
+  description: "Caper's special label for a workflow This label will\nbe added to\
+    \ a workflow labels JSON file as a value for\na key \"caper-label\". DO NOT USE\
+    \ IRREGULAR CHARACTERS.\nUSE LETTERS, NUMBERS, DASHES AND UNDERSCORES ONLY\n(^[A-Za-z0-9\\\
+    -\\_]+$) since this label is used to\ncompose a path for workflow's temporary\
+    \ directory\n(tmp_dir/label/timestamp/)"
+  synonyms:
+  - -s
+  - --str-label
+  args: !SimpleFlagArg
+    name: STR_LABEL
+  optional: true
+- !Flag
+  description: Put a hold on a workflow when submitted to a Cromwell
+  synonyms:
+  - --hold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use gsutil CLI for direct trasnfer between S3 and GCS\nbuckets. Otherwise,\
+    \ such file transfer will stream\nthrough local machine. Make sure that gsutil\
+    \ is\ninstalled on your system and it has access to\ncredentials for AWS (e.g.\
+    \ ~/.boto or\n~/.aws/credentials)."
+  synonyms:
+  - --use-gsutil-for-s3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(IMPORTANT) --deepcopy has been deprecated.\nDeepcopying is now activated\
+    \ by default. This flag\ndisables deepcopy for JSON (.json), TSV (.tsv) and CSV\n\
+    (.csv) files specified in an input JSON file\n(--inputs). Find all path/URI string\
+    \ values in an\ninput JSON file and make copies of files on a\nlocal/remote storage\
+    \ for a target backend. Make sure\nthat you have installed gsutil for GCS and\
+    \ aws for S3."
+  synonyms:
+  - --no-deepcopy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore warnings from womtool.jar.
+  synonyms:
+  - --ignore-womtool
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path or URL for Cromwell's womtool JAR file
+  synonyms:
+  - --womtool
+  args: !SimpleFlagArg
+    name: WOMTOOL
+  optional: true
+- !Flag
+  description: Backend to run a workflow
+  synonyms:
+  - -b
+  - --backend
+  args: !SimpleFlagArg
+    name: BACKEND
+  optional: true
+- !Flag
+  description: "[DOCKER [DOCKER ...]]\nURI for Docker image (e.g. ubuntu:latest).\
+    \ This can\nalso be used as a flag to use Docker image address\ndefined in your\
+    \ WDL file as a comment (\"#CAPER\ndocker\")."
+  synonyms:
+  - --docker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[SINGULARITY [SINGULARITY ...]]\nURI or path for Singularity image\
+    \ (e.g.\n~/.singularity/ubuntu-latest.simg,\ndocker://ubuntu:latest, shub://vsoch/hello-world).\n\
+    This can also be used as a flag to use Docker image\naddress defined in your WDL\
+    \ file as a comment (\"#CAPER\nsingularity\")."
+  synonyms:
+  - --singularity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not build singularity image before running a\nworkflow."
+  synonyms:
+  - --no-build-singularity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SLURM partition
+  synonyms:
+  - --slurm-partition
+  args: !SimpleFlagArg
+    name: SLURM_PARTITION
+  optional: true
+- !Flag
+  description: SLURM account
+  synonyms:
+  - --slurm-account
+  args: !SimpleFlagArg
+    name: SLURM_ACCOUNT
+  optional: true
+- !Flag
+  description: SLURM extra parameters. Must be double-quoted
+  synonyms:
+  - --slurm-extra-param
+  args: !SimpleFlagArg
+    name: SLURM_EXTRA_PARAM
+  optional: true
+- !Flag
+  description: SGE parallel environment. Check with "qconf -spl"
+  synonyms:
+  - --sge-pe
+  args: !SimpleFlagArg
+    name: SGE_PE
+  optional: true
+- !Flag
+  description: SGE queue. Check with "qconf -sql"
+  synonyms:
+  - --sge-queue
+  args: !SimpleFlagArg
+    name: SGE_QUEUE
+  optional: true
+- !Flag
+  description: SGE extra parameters. Must be double-quoted
+  synonyms:
+  - --sge-extra-param
+  args: !SimpleFlagArg
+    name: SGE_EXTRA_PARAM
+  optional: true
+- !Flag
+  description: PBS queue
+  synonyms:
+  - --pbs-queue
+  args: !SimpleFlagArg
+    name: PBS_QUEUE
+  optional: true
+- !Flag
+  description: "PBS extra parameters. Must be double-quoted\n"
+  synonyms:
+  - --pbs-extra-param
+  args: !SimpleFlagArg
+    name: PBS_EXTRA_PARAM
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: caper submit [-h] [--dry-run] [-D] [--port PORT] [--ip IP]\n  \
+  \                  [--no-server-heartbeat]\n                    [--server-heartbeat-file\
+  \ SERVER_HEARTBEAT_FILE]\n                    [--server-heartbeat-timeout SERVER_HEARTBEAT_TIMEOUT]\n\
+  \                    [-i INPUTS] [-o OPTIONS] [-l LABELS] [-p IMPORTS]\n       \
+  \             [-s STR_LABEL] [--hold]\n                    [--singularity-cachedir\
+  \ SINGULARITY_CACHEDIR]\n                    [--use-gsutil-for-s3] [--no-deepcopy]\
+  \ [--ignore-womtool]\n                    [--womtool WOMTOOL] [--docker [DOCKER\
+  \ [DOCKER ...]]]\n                    [--singularity [SINGULARITY [SINGULARITY ...]]]\n\
+  \                    [--no-build-singularity]\n                    [--slurm-partition\
+  \ SLURM_PARTITION]\n                    [--slurm-account SLURM_ACCOUNT]\n      \
+  \              [--slurm-extra-param SLURM_EXTRA_PARAM] [--sge-pe SGE_PE]\n     \
+  \               [--sge-queue SGE_QUEUE]\n                    [--sge-extra-param\
+  \ SGE_EXTRA_PARAM]\n                    [--pbs-queue PBS_QUEUE]\n              \
+  \      [--pbs-extra-param PBS_EXTRA_PARAM] [-b BACKEND]\n                    wdl\n\
+  \npositional arguments:\n  wdl                   Path, URL or URI for WDL script\
+  \ Example:\n                        /scratch/my.wdl, gs://some/where/our.wdl,\n\
+  \                        http://hello.com/world/your.wdl\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --dry-run          \
+  \   Caper does not take any action.\n  -D, --debug           Prints all logs >=\
+  \ DEBUG level\n  --port PORT           Port for Caper server\n  --ip IP        \
+  \       IP address for Caper server\n  --no-server-heartbeat\n                 \
+  \       Disable server heartbeat file.\n  --server-heartbeat-file SERVER_HEARTBEAT_FILE\n\
+  \                        Heartbeat file for Caper clients to get IP and port of\n\
+  \                        a server\n  --server-heartbeat-timeout SERVER_HEARTBEAT_TIMEOUT\n\
+  \                        Timeout for a heartbeat file in Milliseconds. A\n     \
+  \                   heartbeat file older than this interval will be\n          \
+  \              ignored.\n  -i INPUTS, --inputs INPUTS\n                        Workflow\
+  \ inputs JSON file\n  -o OPTIONS, --options OPTIONS\n                        Workflow\
+  \ options JSON file\n  -l LABELS, --labels LABELS\n                        Workflow\
+  \ labels JSON file\n  -p IMPORTS, --imports IMPORTS\n                        Zip\
+  \ file of imported subworkflows\n  -s STR_LABEL, --str-label STR_LABEL\n       \
+  \                 Caper's special label for a workflow This label will\n       \
+  \                 be added to a workflow labels JSON file as a value for\n     \
+  \                   a key \"caper-label\". DO NOT USE IRREGULAR CHARACTERS.\n  \
+  \                      USE LETTERS, NUMBERS, DASHES AND UNDERSCORES ONLY\n     \
+  \                   (^[A-Za-z0-9\\-\\_]+$) since this label is used to\n       \
+  \                 compose a path for workflow's temporary directory\n          \
+  \              (tmp_dir/label/timestamp/)\n  --hold                Put a hold on\
+  \ a workflow when submitted to a Cromwell\n                        server.\n  --singularity-cachedir\
+  \ SINGULARITY_CACHEDIR\n                        Singularity cache directory. Equivalent\
+  \ to exporting\n                        an environment variable SINGULARITY_CACHEDIR.\
+  \ Define\n                        it to prevent repeatedly building a singularity\
+  \ image\n                        for every pipeline task\n  --use-gsutil-for-s3\
+  \   Use gsutil CLI for direct trasnfer between S3 and GCS\n                    \
+  \    buckets. Otherwise, such file transfer will stream\n                      \
+  \  through local machine. Make sure that gsutil is\n                        installed\
+  \ on your system and it has access to\n                        credentials for AWS\
+  \ (e.g. ~/.boto or\n                        ~/.aws/credentials).\n  --no-deepcopy\
+  \         (IMPORTANT) --deepcopy has been deprecated.\n                        Deepcopying\
+  \ is now activated by default. This flag\n                        disables deepcopy\
+  \ for JSON (.json), TSV (.tsv) and CSV\n                        (.csv) files specified\
+  \ in an input JSON file\n                        (--inputs). Find all path/URI string\
+  \ values in an\n                        input JSON file and make copies of files\
+  \ on a\n                        local/remote storage for a target backend. Make\
+  \ sure\n                        that you have installed gsutil for GCS and aws for\
+  \ S3.\n  --ignore-womtool      Ignore warnings from womtool.jar.\n  --womtool WOMTOOL\
+  \     Path or URL for Cromwell's womtool JAR file\n  -b BACKEND, --backend BACKEND\n\
+  \                        Backend to run a workflow\n\ndependency resolver for all\
+  \ backends:\n  Cloud-based backends (gc and aws) will only use Docker so that \"\
+  --docker\n  URI_FOR_DOCKER_IMG\" must be specified in the command line argument\
+  \ or as a\n  comment \"#CAPER docker URI_FOR_DOCKER_IMG\" in a WDL file\n\n  --docker\
+  \ [DOCKER [DOCKER ...]]\n                        URI for Docker image (e.g. ubuntu:latest).\
+  \ This can\n                        also be used as a flag to use Docker image address\n\
+  \                        defined in your WDL file as a comment (\"#CAPER\n     \
+  \                   docker\").\n\ndependency resolver for local backend:\n  Singularity\
+  \ is for local backend only. Other backends (gcp and aws) will\n  use Docker only.\
+  \ Local backend defaults to not use any container-based\n  methods. Use \"--singularity\"\
+  \ or \"--docker\" to use containers\n\n  --singularity [SINGULARITY [SINGULARITY\
+  \ ...]]\n                        URI or path for Singularity image (e.g.\n     \
+  \                   ~/.singularity/ubuntu-latest.simg,\n                       \
+  \ docker://ubuntu:latest, shub://vsoch/hello-world).\n                        This\
+  \ can also be used as a flag to use Docker image\n                        address\
+  \ defined in your WDL file as a comment (\"#CAPER\n                        singularity\"\
+  ).\n  --no-build-singularity\n                        Do not build singularity image\
+  \ before running a\n                        workflow.\n\nSLURM arguments:\n  --slurm-partition\
+  \ SLURM_PARTITION\n                        SLURM partition\n  --slurm-account SLURM_ACCOUNT\n\
+  \                        SLURM account\n  --slurm-extra-param SLURM_EXTRA_PARAM\n\
+  \                        SLURM extra parameters. Must be double-quoted\n\nSGE arguments:\n\
+  \  --sge-pe SGE_PE       SGE parallel environment. Check with \"qconf -spl\"\n \
+  \ --sge-queue SGE_QUEUE\n                        SGE queue. Check with \"qconf -sql\"\
+  \n  --sge-extra-param SGE_EXTRA_PARAM\n                        SGE extra parameters.\
+  \ Must be double-quoted\n\nPBS arguments:\n  --pbs-queue PBS_QUEUE\n           \
+  \             PBS queue\n  --pbs-extra-param PBS_EXTRA_PARAM\n                 \
+  \       PBS extra parameters. Must be double-quoted\n"
+generated_using:
+- --help

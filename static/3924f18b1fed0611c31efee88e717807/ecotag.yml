@@ -1,0 +1,289 @@
+!Command
+command:
+- ecotag
+positional:
+- !Positional
+  description: --sort=SORT           Sort output on input sequence tag
+  position: 0
+  name: identification
+  optional: false
+named:
+- !Flag
+  description: Set logging in debug mode
+  synonyms:
+  - --DEBUG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: desactivate progress bar
+  synonyms:
+  - --without-progress-bar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fasta file containing reference sequences
+  synonyms:
+  - -R
+  - --ref-database
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: minimum identity to consider.
+  synonyms:
+  - -m
+  - --minimum-identity
+  args: !SimpleFlagArg
+    name: identity
+  optional: true
+- !Flag
+  description: minimum identity considered for the assignment circle.
+  synonyms:
+  - --minimum-circle
+  args: !SimpleFlagArg
+    name: identity
+  optional: true
+- !Flag
+  description: "Add in the output CD (complementary data) record to\nexplain identification\
+    \ decision"
+  synonyms:
+  - -x
+  - --explain
+  args: !SimpleFlagArg
+    name: EXPLAIN
+  optional: true
+- !Flag
+  description: Apply a uniq filter on query sequences before
+  synonyms:
+  - -u
+  - --uniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sort in reverse order (should be used with -S)
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tolerated rate of wrong assignation
+  synonyms:
+  - -E
+  - --errors
+  args: !SimpleFlagArg
+    name: ERROR
+  optional: true
+- !Flag
+  description: Minimum congruent assignation
+  synonyms:
+  - -M
+  - --min-matches
+  args: !SimpleFlagArg
+    name: MINMATCHES
+  optional: true
+- !Flag
+  description: Cache size for the aligment score
+  synonyms:
+  - --cache-size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: ecoPCR taxonomy Database name
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: NCBI Taxonomy dump repository name
+  synonyms:
+  - -t
+  - --taxonomy-dump
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: skip the N first sequences
+  synonyms:
+  - --skip
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: treat only N sequences
+  synonyms:
+  - --only
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Input file is in genbank format
+  synonyms:
+  - --genbank
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is in embl format
+  synonyms:
+  - --embl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip sequence entries with parse error
+  synonyms:
+  - --skip-on-error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fasta nucleic format (including\nobitools fasta extentions)"
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is in ecopcr format
+  synonyms:
+  - --ecopcr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fasta format (but more tolerant to\nformat variant)"
+  synonyms:
+  - --raw-fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in sanger fastq nucleic format (standard\nfastq)"
+  synonyms:
+  - --sanger
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Input file is in fastq nucleic format produced by\nsolexa sequencer"
+  synonyms:
+  - --solexa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file is an ecopcr database
+  synonyms:
+  - --ecopcrdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file contains nucleic sequences
+  synonyms:
+  - --nuc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file contains protein sequences
+  synonyms:
+  - --prot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output sequences in obitools fasta format
+  synonyms:
+  - --fasta-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output sequences in sanger fastq format
+  synonyms:
+  - --fastq-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output sequences in ecopcr database format (sequence\nrecords are\
+    \ not printed on standard output)"
+  synonyms:
+  - --ecopcrdb-output
+  args: !SimpleFlagArg
+    name: ECOPCROUTPUT
+  optional: true
+- !Flag
+  description: Print sequences in upper case (default is lower case)
+  synonyms:
+  - --uppercase
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: \n:py:mod:`ecotag`: assigns sequences to taxa\n===========================================\n\
+  \n.. codeauthor:: Eric Coissac <eric.coissac@metabarcoding.org>\n\n:py:mod:`ecotag`\
+  \ is the tool that assigns sequences to a taxon based on \nsequence similarity.\
+  \ The program first searches the reference database for the \nreference sequence(s)\
+  \ (hereafter referred to as 'primary reference sequence(s)') showing the \nhighest\
+  \ similarity with the query sequence. Then it looks for all other reference \nsequences\
+  \ (hereafter referred to as 'secondary reference sequences') whose \nsimilarity\
+  \ with the primary reference sequence(s) is equal or higher than the \nsimilarity\
+  \ between the primary reference and the query sequences. Finally, it \nassigns the\
+  \ query sequence to the most recent common ancestor of the primary and \nsecondary\
+  \ reference sequences. \n\nAs input, `ecotag` requires the sequences to be assigned,\
+  \ a reference database \nin :doc:`fasta <../fasta>` format, where each sequence\
+  \ is associated with a taxon identified \nby a unique *taxid*, and a taxonomy database\
+  \ where taxonomic information is stored \nfor each *taxid*.\n\n  *Example:*\n  \
+  \  \n    .. code-block:: bash\n        \n          > ecotag -d embl_r113  -R ReferenceDB.fasta\
+  \ \\\n            --sort=count -m 0.95 -r seq.fasta > seq_tag.fasta\n    \n    The\
+  \ above command specifies that each sequence stored in ``seq.fasta`` \n    is compared\
+  \ to those in the reference database called ``ReferenceDB.fasta`` \n    for taxonomic\
+  \ assignment. In the output file ``seq_tag.fasta``, the sequences \n    are sorted\
+  \ from highest to lowest counts. When there is no reference sequence \n    with\
+  \ a similarity equal or higher than 0.95 for a given sequence, no taxonomic \n \
+  \   information is provided for this sequence in ``seq_tag.fasta``.\n\n\n\n***********\n\
+  * Options *\n***********\n  -h, --help            show this help message and exit\n\
+  \  --DEBUG               Set logging in debug mode\n  --without-progress-bar\n \
+  \                       desactivate progress bar\n  -R <FILENAME>, --ref-database=<FILENAME>\n\
+  \                        fasta file containing reference sequences\n  -m identity,\
+  \ --minimum-identity=identity\n                        minimum identity to consider.\n\
+  \  --minimum-circle=identity\n                        minimum identity considered\
+  \ for the assignment circle.\n  -x EXPLAIN, --explain=EXPLAIN\n                \
+  \        Add in the output CD (complementary data) record to\n                 \
+  \       explain identification decision\n  -u, --uniq            Apply a uniq filter\
+  \ on query sequences before\n                        identification\n  --sort=SORT\
+  \           Sort output on input sequence tag\n  -r, --reverse         Sort in reverse\
+  \ order (should be used with -S)\n  -E ERROR, --errors=ERROR\n                 \
+  \       Tolerated rate of wrong assignation\n  -M MINMATCHES, --min-matches=MINMATCHES\n\
+  \                        Minimum congruent assignation\n  --cache-size=<SIZE>  \
+  \ Cache size for the aligment score\n\n  ****************************\n  * Taxonomy\
+  \ loading options *\n  ****************************\n    -d <FILENAME>, --database=<FILENAME>\n\
+  \                        ecoPCR taxonomy Database name\n    -t <FILENAME>, --taxonomy-dump=<FILENAME>\n\
+  \                        NCBI Taxonomy dump repository name\n\n  *************************************\n\
+  \  * Restriction to a sub-part options *\n  *************************************\n\
+  \    Allow to limit analysis to a sub-part of the data file\n\n    --skip=<N>  \
+  \        skip the N first sequences\n    --only=<N>          treat only N sequences\n\
+  \n  ************************\n  * Input format options *\n  ************************\n\
+  \    If not specified, a test is done to determine the file format\n\n    --genbank\
+  \           Input file is in genbank format\n    --embl              Input file\
+  \ is in embl format\n    --skip-on-error     Skip sequence entries with parse error\n\
+  \    --fasta             Input file is in fasta nucleic format (including\n    \
+  \                    obitools fasta extentions)\n    --ecopcr            Input file\
+  \ is in ecopcr format\n    --raw-fasta         Input file is in fasta format (but\
+  \ more tolerant to\n                        format variant)\n    --sanger      \
+  \      Input file is in sanger fastq nucleic format (standard\n                \
+  \        fastq)\n    --solexa            Input file is in fastq nucleic format produced\
+  \ by\n                        solexa sequencer\n    --ecopcrdb          Input file\
+  \ is an ecopcr database\n    --nuc               Input file contains nucleic sequences\n\
+  \    --prot              Input file contains protein sequences\n\n  *************************\n\
+  \  * Output format options *\n  *************************\n    --fasta-output  \
+  \    Output sequences in obitools fasta format\n    --fastq-output      Output sequences\
+  \ in sanger fastq format\n    --ecopcrdb-output=ECOPCROUTPUT\n                 \
+  \       Output sequences in ecopcr database format (sequence\n                 \
+  \       records are not printed on standard output)\n    --uppercase         Print\
+  \ sequences in upper case (default is lower case)\n"
+generated_using:
+- --help

@@ -1,0 +1,83 @@
+!Command
+command:
+- rnftools
+- art2rnf
+positional: []
+named:
+- !Flag
+  description: "Input SAM/BAM with true (expected) alignments of the\nreads (- for\
+    \ standard input)."
+  synonyms:
+  - -s
+  - --sam
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Output FASTQ file (- for standard output).
+  synonyms:
+  - -o
+  - --rnf-fastq
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "FAI index of the reference FASTA file (- for standard\ninput). It\
+    \ can be created using 'samtools faidx'."
+  synonyms:
+  - -x
+  - --faidx
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'Genome ID in RNF (default: 1).'
+  synonyms:
+  - -g
+  - --genome-id
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Allow unmapped reads.
+  synonyms:
+  - -u
+  - --allow-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name of the simulator (for RNF).\n"
+  synonyms:
+  - -n
+  - --simulator-name
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: rnftools art2rnf [-h] -s file -o file -x file [-g int] [-u] [-n\
+  \ str]\n\nConvert an Art SAM file to RNF-FASTQ. Note that Art produces non-standard\
+  \ SAM\nfiles and manual editation might be necessary. In particular, when a FASTA\n\
+  file contains comments, Art left them in the sequence name. Comments must be\nremoved\
+  \ in their corresponding @SQ headers in the SAM file, otherwise all\nreads are considered\
+  \ to be unmapped by this script.\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  -s file, --sam file   Input SAM/BAM with true\
+  \ (expected) alignments of the\n                        reads (- for standard input).\n\
+  \  -o file, --rnf-fastq file\n                        Output FASTQ file (- for standard\
+  \ output).\n  -x file, --faidx file\n                        FAI index of the reference\
+  \ FASTA file (- for standard\n                        input). It can be created\
+  \ using 'samtools faidx'.\n  -g int, --genome-id int\n                        Genome\
+  \ ID in RNF (default: 1).\n  -u, --allow-unmapped  Allow unmapped reads.\n  -n str,\
+  \ --simulator-name str\n                        Name of the simulator (for RNF).\n"
+generated_using:
+- --help

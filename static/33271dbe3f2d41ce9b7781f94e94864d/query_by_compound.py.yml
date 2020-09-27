@@ -1,0 +1,82 @@
+!Command
+command:
+- query_by_compound.py
+positional: []
+named:
+- !Flag
+  description: "Input to sample directories output by run_midas.py\nCan be a list\
+    \ of directories, a directory containing all samples, or a file with paths\nSee\
+    \ '-t' for details"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: "list: -i is a comma-separated list (ex: /path/to/samples/sample_1,/path/to/samples/sample_2)\n\
+    dir: -i is a directory containing all samples (ex: /path/to/samples)\nfile: -i\
+    \ is a file containing paths to sample directories (ex: /path/to/sample_paths.txt)"
+  synonyms:
+  - -t
+  args: !ChoiceFlagArg
+    choices: !!set
+      file:
+      dir:
+      list:
+  optional: true
+- !Flag
+  description: Path to output file (/dev/stdout)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: "Path to MIDAS reference database\nBy default, the MIDAS_DB environmental\
+    \ variable is used"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: DB
+  optional: true
+- !Flag
+  description: KEGG Compound identifier
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: COMPOUND
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Description: \nQuery MIDAS output results by KEGG compound identifier\n\
+  For more info on compounds, see: http://www.genome.jp/kegg/compound/\n\nWorkflow:\n\
+  1) Identify enzymes linked to KEGG compound\n2) Identify genes linked to enzymes\n\
+  3) Scan over MIDAS output results \n4) Return abundances of identified genes per\
+  \ sample and species\n\nUsage: query_by_compound.py [options]\n\noptional arguments:\n\
+  \  -h, --help          show this help message and exit\n  -i INPUT            Input\
+  \ to sample directories output by run_midas.py\n                      Can be a list\
+  \ of directories, a directory containing all samples, or a file with paths\n   \
+  \                   See '-t' for details\n  -t {list,file,dir}  list: -i is a comma-separated\
+  \ list (ex: /path/to/samples/sample_1,/path/to/samples/sample_2)\n             \
+  \          dir: -i is a directory containing all samples (ex: /path/to/samples)\n\
+  \                      file: -i is a file containing paths to sample directories\
+  \ (ex: /path/to/sample_paths.txt)\n  -o OUT              Path to output file (/dev/stdout)\n\
+  \  -d DB               Path to MIDAS reference database\n                      By\
+  \ default, the MIDAS_DB environmental variable is used\n  -c COMPOUND         KEGG\
+  \ Compound identifier\n\nExamples:\n1) Query MIDAS results for compound C00312 (L-Xylulose):\n\
+  query_by_compound.py -i midas_out -t dir -c C00312\n\n2) Store results in text file:\n\
+  query_by_compound.py -i midas_out -t dir -c C00312 > midas_C00312.txt\n\n3) Specify\
+  \ path to individual sample directories:\nquery_by_compound.py -i midas_out/sample_1,midas_out/sample_2\
+  \ -t list -c C00312\n"
+generated_using:
+- --help

@@ -1,0 +1,108 @@
+!Command
+command:
+- rsat
+- matrix-distrib
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: matrix-distrib
+  optional: false
+- !Positional
+  description: PSSM
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: "For a description of available format, see \e[33mconvert-backgound-model"
+  position: 0
+  name: oligo-analysis.
+  optional: false
+- !Positional
+  description: "\e[1m-bgfile background_file\e[0m\nBackground model file."
+  position: 0
+  name: details.
+  optional: false
+- !Positional
+  description: "\e[1m-bg_pseudo #\e[0m"
+  position: 0
+  name: convert-background-model.
+  optional: false
+named:
+- !Flag
+  description: ': oligo-analysis, MotifSampler, meme. Default is:'
+  synonyms:
+  - -bg_format.Supported
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "\e[0m"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    matrix-distrib\n\n\e[1mDESCRIPTION\e[0m\n    Computes\
+  \ the theoretical distribution of score probabilities of a given\n    PSSM. Score\
+  \ probabilities can be computed according to bernoulli as well\n    as markov-chain\
+  \ background models.\n\n\e[1mAUTHORS\e[0m\n    Jacques van Helden Jacques.van-Helden\\\
+  @univ-amu.fr\n    Jean Valery Turatsinze jturatsi@bigre.ulb.ac.be\n    Morgane Thomas-Chollier\
+  \ morgane@bigre.ulb.ac.be\n    With the help of Matthieu de France defrance@bigre.ulb.ac.be\n\
+  \n\e[1mCATEGORY\e[0m\n    util\n    PSSM\n\n\e[1mUSAGE\e[0m\n    matrix-distrib\
+  \ [-i matrixfile] [-bgfile bgfile][-o outputfile] [-v]\n\n\e[1mINPUT FORMATS\e[0m\n\
+  \  \e[1mMatrix file\e[0m\n    The matrix format is specified with the option -matrix_format.\
+  \ Supported\n    : tab,cb,consensus,gibbs,meme,assembly. Default : tab.\n\n    For\
+  \ a description of these format, see \e[33mconvert-matrix -h\e[0m\n\n  \e[1mBackground\
+  \ model file\e[0m\n    The background model format is specified with the option\n\
+  \    -bg_format.Supported : oligo-analysis, MotifSampler, meme. Default is:\n  \
+  \  oligo-analysis.\n\n    For a description of available format, see \e[33mconvert-backgound-model\n\
+  \    -h\e[0m\n\n\e[1mOUTPUT FORMAT\e[0m\n    The output is a tab-delimited file\
+  \ with the following columns:\n\n    1 weight: log-likelihood score: w=P(S|M)/P(S|B)\n\
+  \    2 proba: probability density function: P(W=w)\n    3 cum: cumulative density\
+  \ function: P(W <= w)\n    4 Pval: P-value = inverse cumulative density function:\
+  \ Pval = P(W >= w)\n    5 ln_Pval: natural logarithm of the P-value\n    6 log_P:\
+  \ base 10 logarithm of the P-value\n    7 sig: significance: sig = -log10(Pval)\n\
+  \n\e[1mTHEORICAL DISTRIBUTION COMPUTATION\e[0m\n        The scoring scheme is the\
+  \ weight (see \e[33mmatrix-scan -h\e[0m for more\n        details). We calculate\
+  \ in an exaustive way the probabilities that\n        are associated to each score\
+  \ (weight) that can be obtained from a\n        given PSSM.\n\n        For Bernoulli\
+  \ (Markov order 0) background models, the distribution\n        of scores is computed\
+  \ with the algorithm described by Bailey\n        (Bioinformatics, 1999).\n\n  \
+  \      For Markov background models with higher orders, we have extended\n     \
+  \   this algorithm to take into account the dependencies between\n        residues.\
+  \ For each iteration of the algorithm, weigths associated to\n        all possible\
+  \ transitions are tagged with a prefix. Each residue\n        weight is calculated\
+  \ according to the prefix tag. The prefix\n        corresponds to a word of Markov\
+  \ order size that preceeds the\n        position of the iteration.\n\n\e[1mOPTIONS\e\
+  [0m\n    \e[1m-v #\e[0m\n        Level of verbosity (detail in the warning messages\
+  \ during execution)\n\n    \e[1m-h\e[0m  Display full help message\n\n    \e[1m-help\e\
+  [0m\n        Same as -h\n\n    \e[1m-m matrixfile\e[0m\n        Matrix file.\n\n\
+  \        This argument can be used iteratively to scan the sequence with\n     \
+  \   multiple matrices.\n\n    \e[1m-top top_matrix_nb\e[0m\n        Restrict the\
+  \ analysis to the N top matrices of the input file. This\n        option is useful\
+  \ when the input file contains multiple matrices (for\n        example fo the Web\
+  \ interface, where the program supports a single\n        matrix).\n\n    \e[1m-mlist\
+  \ matrix_list\e[0m\n        Matrix list.\n\n        Indicate a file containing a\
+  \ list of matrices to be used for\n        scanning the region. This facilitates\
+  \ the scanning of a sequence\n        with a library of matrices (e.g. all the matrices\
+  \ from RegulonDB, or\n        TRANSFAC).\n\n        Format: the matrix list file\
+  \ is a text file. The first word of each\n        row is suppose to indicate a file\
+  \ name. Any further information on\n        the same row is ignored.\n\n    \e[1m-o\
+  \ outputfile\e[0m\n        If no output file is specified, the standard output is\
+  \ used. This\n        allows to use the command within a pipe.\n\n    \e[1m-matrix_format\
+  \ matrix_format\e[0m\n        Matrix format. Default is tab.\n\n    \e[1m-pseudo\
+  \ #\e[0m\n        Pseudo-count for the matrix (default: 1). See matrix-scan for\n\
+  \        details.\n\n    \e[1m-bgfile background_file\e[0m\n         Background\
+  \ model file.\n\n    \e[1m-bg_format background_format\e[0m\n                Supported\
+  \ formats: all the input formats supported by\n                convert-background-model.\n\
+  \n    \e[1m-bg_pseudo #\e[0m\n        Pseudo frequency for the background models.\
+  \ Value must be a real\n        between 0 and 1 (default: 0) If the training sequence\
+  \ length (L) is\n        known, the value can be set to square-root of L divided\
+  \ by\n        L+squareroot of L.\n\n    \e[1m-decimals #\e[0m\n        Number of\
+  \ decimals to print or the transition probabilities.\n\n"
+generated_using:
+- -h

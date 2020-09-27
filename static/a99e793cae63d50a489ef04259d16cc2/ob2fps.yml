@@ -1,0 +1,134 @@
+!Command
+command:
+- ob2fps
+positional:
+- !Positional
+  description: input structure files (default is stdin)
+  position: 0
+  name: filenames
+  optional: false
+- !Positional
+  description: --MACCS               Open Babel's implementation of the MACCS 166
+    keys
+  position: 0
+  name: SMARTS_InteLigand.txt
+  optional: false
+named:
+- !Flag
+  description: linear fragments up to 7 atoms
+  synonyms:
+  - --FP2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SMARTS patterns specified in the file patterns.txt
+  synonyms:
+  - --FP3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SMARTS patterns specified in the file
+  synonyms:
+  - --FP4
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate ChemFP substructure fingerprints
+  synonyms:
+  - --substruct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 166 bit RDKit/MACCS fingerprints (version 2)
+  synonyms:
+  - --rdmaccs
+  - --rdmaccs/2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the version 1 definition for --rdmaccs
+  synonyms:
+  - --rdmaccs/1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: tag name containing the record id (SD files only)
+  synonyms:
+  - --id-tag
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "input structure format (default autodetects from the\nfilename extension)"
+  synonyms:
+  - --in
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: save the fingerprints to FILENAME (default=stdout)
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "output structure format (default guesses from output\nfilename, or\
+    \ is 'fps')"
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "how should structure parse errors be handled?\n(default=ignore)"
+  synonyms:
+  - --errors
+  args: !ChoiceFlagArg
+    choices: !!set
+      ignore:
+      strict:
+      report:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: ob2fps [-h]\n              [--FP2 | --FP3 | --FP4 | --MACCS | --substruct\
+  \ | --rdmaccs | --rdmaccs/1]\n              [--id-tag NAME] [--in FORMAT] [-o FILENAME]\
+  \ [--out FORMAT]\n              [--errors {strict,report,ignore}] [--version]\n\
+  \              [filenames [filenames ...]]\n\nGenerate FPS fingerprints from a structure\
+  \ file using Open Babel\n\npositional arguments:\n  filenames             input\
+  \ structure files (default is stdin)\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  --FP2                 linear fragments\
+  \ up to 7 atoms\n  --FP3                 SMARTS patterns specified in the file patterns.txt\n\
+  \  --FP4                 SMARTS patterns specified in the file\n               \
+  \         SMARTS_InteLigand.txt\n  --MACCS               Open Babel's implementation\
+  \ of the MACCS 166 keys\n  --substruct           generate ChemFP substructure fingerprints\n\
+  \  --rdmaccs, --rdmaccs/2\n                        166 bit RDKit/MACCS fingerprints\
+  \ (version 2)\n  --rdmaccs/1           use the version 1 definition for --rdmaccs\n\
+  \  --id-tag NAME         tag name containing the record id (SD files only)\n  --in\
+  \ FORMAT           input structure format (default autodetects from the\n      \
+  \                  filename extension)\n  -o FILENAME, --output FILENAME\n     \
+  \                   save the fingerprints to FILENAME (default=stdout)\n  --out\
+  \ FORMAT          output structure format (default guesses from output\n       \
+  \                 filename, or is 'fps')\n  --errors {strict,report,ignore}\n  \
+  \                      how should structure parse errors be handled?\n         \
+  \               (default=ignore)\n  --version             show program's version\
+  \ number and exit\n"
+generated_using:
+- --help

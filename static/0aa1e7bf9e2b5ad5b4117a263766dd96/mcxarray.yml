@@ -1,0 +1,351 @@
+!Command
+command:
+- mcxarray
+positional: []
+named:
+- !Flag
+  description: data file name
+  synonyms:
+  - -data
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: matrix file name
+  synonyms:
+  - -imx
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: only output values val with |val| >= <num>
+  synonyms:
+  - -co
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: write to file fname
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: write output in full text table format with tab-separated values (N-squared
+    entries)
+  synonyms:
+  - --text-table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write in binary format (use with low -co and subsequent mcx q --vary-threshold)
+  synonyms:
+  - --write-binary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write labels to tab file
+  synonyms:
+  - -write-tab
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: skip this many rows
+  synonyms:
+  - -skipr
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: skip this many columns
+  synonyms:
+  - -skipc
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: column (or row, with --transpose) containing labels (default 1)
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: compute edge weight as Pearson correlation score (default)
+  synonyms:
+  - --pearson
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as Spearman rank correlation score
+  synonyms:
+  - --spearman
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as cosine
+  synonyms:
+  - --cosine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as sine
+  synonyms:
+  - --sine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as cosine
+  synonyms:
+  - --slow-cosine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as sine
+  synonyms:
+  - --slow-sine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as arc length
+  synonyms:
+  - --angle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as acute arc length
+  synonyms:
+  - --acute-angle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as arc length, normalised by pi
+  synonyms:
+  - --angle-norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as acute arc length, normalised by pi/2
+  synonyms:
+  - --acute-angle-norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as Euclidean distance
+  synonyms:
+  - --euclid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as taxi (city block) distance
+  synonyms:
+  - --taxi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as max (aka L-oo or Chebyshev) distance
+  synonyms:
+  - --max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute edge weight as minkowski distance with power p = <val>
+  synonyms:
+  - -minkowski
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: compute edge weight as dot product
+  synonyms:
+  - --dot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|meet|tanimoto|cosine|cover a+b, c, c/(a+b+c), c/sqrt((a+c)*(b+c)),
+    c/(a+c)'
+  synonyms:
+  - -fp
+  args: !SimpleFlagArg
+    name: hamming
+  optional: true
+- !Flag
+  description: do not embed zero elements; ignore zero elements
+  synonyms:
+  - --sparse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads to use
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: number of compute jobs overall
+  synonyms:
+  - -J
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: index of this compute job
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: print node ids and exit
+  synonyms:
+  - --job-info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: start index
+  synonyms:
+  - -start
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: end index
+  synonyms:
+  - -end
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: work with the transposed data matrix
+  synonyms:
+  - --transpose-data
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <func(arg)[, func(arg)]*>          apply unary transformations to result
+    matrix values
+  synonyms:
+  - -tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <func(arg)[, func(arg)]*>    apply unary transformations to table values
+  synonyms:
+  - -table-tf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: precision to use in interchange format
+  synonyms:
+  - -digits
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: compute correlation only where both values are not zero
+  synonyms:
+  - --zero-as-na
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write table matrix to file
+  synonyms:
+  - -write-data
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: write na matrix to file
+  synonyms:
+  - -write-na
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: x {z,m}                       normalise P(rimary) or S(econdary) on
+    z-scores (z) or mean (m)
+  synonyms:
+  - -n
+  args: !ChoiceFlagArg
+    choices: !!set
+      P:
+      S:
+  optional: true
+- !Flag
+  description: rank transform the data
+  synonyms:
+  - --rank-transform
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print this help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: mcxarray <-data <data-file> | -imx <mcl-file> [options]\n\n-data\
+  \ <fname>                          data file name\n-imx <fname>                \
+  \           matrix file name\n-co <num>                              only output\
+  \ values val with |val| >= <num>\n-o <fname>                             write to\
+  \ file fname\n--text-table                           write output in full text table\
+  \ format with tab-separated values (N-squared entries)\n--write-binary         \
+  \                write in binary format (use with low -co and subsequent mcx q --vary-threshold)\n\
+  -write-tab <fname>                     write labels to tab file\n\n-skipr <num>\
+  \                           skip this many rows\n-skipc <num>                  \
+  \         skip this many columns\n-l <int>                               column\
+  \ (or row, with --transpose) containing labels (default 1)\n\n--pearson        \
+  \                      compute edge weight as Pearson correlation score (default)\n\
+  --spearman                             compute edge weight as Spearman rank correlation\
+  \ score\n--cosine                               compute edge weight as cosine\n\
+  --sine                                 compute edge weight as sine\n--slow-cosine\
+  \                          compute edge weight as cosine\n--slow-sine          \
+  \                  compute edge weight as sine\n--angle                        \
+  \        compute edge weight as arc length\n--acute-angle                      \
+  \    compute edge weight as acute arc length\n--angle-norm                     \
+  \      compute edge weight as arc length, normalised by pi\n--acute-angle-norm \
+  \                    compute edge weight as acute arc length, normalised by pi/2\n\
+  --euclid                               compute edge weight as Euclidean distance\n\
+  --taxi                                 compute edge weight as taxi (city block)\
+  \ distance\n--max                                  compute edge weight as max (aka\
+  \ L-oo or Chebyshev) distance\n-minkowski <val>                       compute edge\
+  \ weight as minkowski distance with power p = <val>\n--dot                     \
+  \             compute edge weight as dot product\n-fp hamming|meet|tanimoto|cosine|cover\
+  \ a+b, c, c/(a+b+c), c/sqrt((a+c)*(b+c)), c/(a+c)\n--sparse                    \
+  \           do not embed zero elements; ignore zero elements\n\n-t <int>       \
+  \                        number of threads to use\n-J <int>                    \
+  \           number of compute jobs overall\n-j <int>                           \
+  \    index of this compute job\n--job-info                             print node\
+  \ ids and exit\n-start <int>                           start index\n-end <int> \
+  \                            end index\n\n--transpose-data                     \
+  \  work with the transposed data matrix\n-tf <func(arg)[, func(arg)]*>         \
+  \ apply unary transformations to result matrix values\n-table-tf <func(arg)[, func(arg)]*>\
+  \    apply unary transformations to table values\n-digits <int>                \
+  \          precision to use in interchange format\n--zero-as-na                \
+  \           compute correlation only where both values are not zero\n-write-data\
+  \ <fname>                    write table matrix to file\n-write-na <fname>     \
+  \                 write na matrix to file\n-n {P,S} x {z,m}                    \
+  \   normalise P(rimary) or S(econdary) on z-scores (z) or mean (m)\n--rank-transform\
+  \                       rank transform the data\n-h                            \
+  \         print this help\n--help                                 print this help\n\
+  --version                              print version information\n"
+generated_using:
+- --help

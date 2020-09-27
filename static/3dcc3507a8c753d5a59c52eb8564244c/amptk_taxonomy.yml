@@ -1,0 +1,197 @@
+!Command
+command:
+- amptk
+- taxonomy
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: arguments
+  optional: false
+named:
+- !Flag
+  description: Input FASTA file (i.e. OTUs from amptk cluster) (Required)
+  synonyms:
+  - -f
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input OTU table file (i.e. otu_table from amptk cluster)
+  synonyms:
+  - -i
+  - --otu_table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Base name for output file. Default: amptk-taxonomy.<method>.txt'
+  synonyms:
+  - -o
+  - --out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Select Pre-installed database [ITS1, ITS2, ITS, 16S, LSU, COI]. Default:
+    ITS2'
+  synonyms:
+  - -d
+  - --db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: QIIME-like mapping file
+  synonyms:
+  - -m
+  - --mapping_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Taxonomy calculated elsewhere. 2 Column file.
+  synonyms:
+  - -t
+  - --taxonomy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Taxonomy method. Default: hybrid [utax, sintax, usearch, hybrid, rdp,
+    blast]'
+  synonyms:
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add FASTA files to DB on the fly.
+  synonyms:
+  - --add2db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alternative database of fasta sequenes to use for global alignment.
+  synonyms:
+  - --fasta_db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "UTAX formatted database. Default: ITS2.udb [See configured DB's below]"
+  synonyms:
+  - --utax_db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'UTAX confidence value threshold. Default: 0.8 [0 to 0.9]'
+  synonyms:
+  - --utax_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'USEARCH formatted database. Default: USEARCH.udb'
+  synonyms:
+  - --usearch_db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: USEARCH threshold percent identity. Default 0.7
+  synonyms:
+  - --usearch_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'SINTAX confidence value threshold. Default: 0.8 [0 to 0.9]'
+  synonyms:
+  - --sintax_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to RDP Classifier. Required if --method rdp
+  synonyms:
+  - -r
+  - --rdp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: RDP Classifer DB set. [fungalits_unite, fungalits_warcup. fungallsu,
+    16srrna]
+  synonyms:
+  - --rdp_db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'RDP Classifer confidence value threshold. Default: 0.8 [0 to 1.0]'
+  synonyms:
+  - --rdp_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Local Blast database (full path) Default: NCBI remote nt database'
+  synonyms:
+  - --local_blast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove OTUs from OTU table that do not match filter, i.e. Fungi to
+    keep only fungi.
+  synonyms:
+  - --tax_filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'USEARCH executable. Default: usearch9'
+  synonyms:
+  - -u
+  - --usearch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of CPUs to use. Default: all'
+  synonyms:
+  - --cpus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep intermediate files
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       amptk taxonomy <arguments>\nversion:     1.4.2\n\nDescription:\
+  \ Script maps OTUs to taxonomy information and can append to an OTU table (optional).\
+  \  \n             By default the script uses a hybrid approach, e.g. gets taxonomy\
+  \ information from \n             SINTAX, UTAX, and global alignment hits from the\
+  \ larger UNITE-INSD database, and \n             then parses results to extract\
+  \ the most taxonomy information that it can at 'trustable' \n             levels.\
+  \ SINTAX/UTAX results are used if global alignment pct identity is less than 97%.\
+  \  \n             If % identity is greater than 97%, the result with most taxonomy\
+  \ levels is retained.\n             Run amptk info to see taxonomy databases installed.\
+  \ \n    \nArguments:   -f, --fasta         Input FASTA file (i.e. OTUs from amptk\
+  \ cluster) (Required)\n             -i, --otu_table     Input OTU table file (i.e.\
+  \ otu_table from amptk cluster)\n             -o, --out           Base name for\
+  \ output file. Default: amptk-taxonomy.<method>.txt\n             -d, --db     \
+  \       Select Pre-installed database [ITS1, ITS2, ITS, 16S, LSU, COI]. Default:\
+  \ ITS2\n             -m, --mapping_file  QIIME-like mapping file\n             -t,\
+  \ --taxonomy      Taxonomy calculated elsewhere. 2 Column file.\n             --method\
+  \            Taxonomy method. Default: hybrid [utax, sintax, usearch, hybrid, rdp,\
+  \ blast]\n             --add2db            Add FASTA files to DB on the fly.\n \
+  \            --fasta_db          Alternative database of fasta sequenes to use for\
+  \ global alignment.\n             --utax_db           UTAX formatted database. Default:\
+  \ ITS2.udb [See configured DB's below]\n             --utax_cutoff       UTAX confidence\
+  \ value threshold. Default: 0.8 [0 to 0.9]\n             --usearch_db        USEARCH\
+  \ formatted database. Default: USEARCH.udb\n             --usearch_cutoff    USEARCH\
+  \ threshold percent identity. Default 0.7\n             --sintax_cutoff     SINTAX\
+  \ confidence value threshold. Default: 0.8 [0 to 0.9]\n             -r, --rdp  \
+  \         Path to RDP Classifier. Required if --method rdp\n             --rdp_db\
+  \            RDP Classifer DB set. [fungalits_unite, fungalits_warcup. fungallsu,\
+  \ 16srrna]  \n             --rdp_cutoff        RDP Classifer confidence value threshold.\
+  \ Default: 0.8 [0 to 1.0]\n             --local_blast       Local Blast database\
+  \ (full path) Default: NCBI remote nt database   \n             --tax_filter   \
+  \     Remove OTUs from OTU table that do not match filter, i.e. Fungi to keep only\
+  \ fungi.\n             -u, --usearch       USEARCH executable. Default: usearch9\n\
+  \             --cpus              Number of CPUs to use. Default: all\n        \
+  \     --debug             Keep intermediate files\n        \n"
+generated_using:
+- --help

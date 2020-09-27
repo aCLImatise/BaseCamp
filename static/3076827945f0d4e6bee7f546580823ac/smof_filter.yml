@@ -1,0 +1,59 @@
+!Command
+command:
+- smof
+- filter
+positional:
+- !Positional
+  description: input fasta sequence (default = stdin)
+  position: 0
+  name: INPUT
+  optional: false
+named:
+- !Flag
+  description: keep only if length is less than or equal to LEN
+  synonyms:
+  - -s
+  - --shorter-than
+  args: !SimpleFlagArg
+    name: LEN
+  optional: true
+- !Flag
+  description: keep only if length is greater than or equal to LEN
+  synonyms:
+  - -l
+  - --longer-than
+  args: !SimpleFlagArg
+    name: LEN
+  optional: true
+- !Flag
+  description: "keep only if composition meets the condition (e.g. 'GC\n> .5')\n"
+  synonyms:
+  - -c
+  - --composition
+  args: !SimpleFlagArg
+    name: EXPR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof filter <options>\n\nPrints every entry by default.\
+  \ You may add one or more criteria to filter the\nresults (e.g. `smof filter -s\
+  \ 200 -l 100 -c 'GC > .5'` will print only\nsequences between 100 and 200 resides\
+  \ in length and greater than 50% GC\ncontent).\n\npositional arguments:\n  INPUT\
+  \                 input fasta sequence (default = stdin)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -s LEN, --shorter-than\
+  \ LEN\n                        keep only if length is less than or equal to LEN\n\
+  \  -l LEN, --longer-than LEN\n                        keep only if length is greater\
+  \ than or equal to LEN\n  -c EXPR, --composition EXPR\n                        keep\
+  \ only if composition meets the condition (e.g. 'GC\n                        > .5')\n"
+generated_using:
+- --help

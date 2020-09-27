@@ -1,0 +1,137 @@
+!Command
+command:
+- sga
+- filter
+positional: []
+named:
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'use PREFIX for the names of the index files (default: prefix of the
+    input file)'
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'write the qc-passed reads to FILE (default: READSFILE.filter.pass.fa)'
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'use NUM threads to compute the overlaps (default: 1)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "use occurrence array sample rate of N in the FM-index. Higher values\
+    \ use significantly\nless memory at the cost of higher runtime. This value must\
+    \ be a power of 2 (default: 128)"
+  synonyms:
+  - -d
+  - --sample-rate
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: turn off duplicate removal
+  synonyms:
+  - --no-duplicate-check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: when removing duplicates, only remove substring sequences, not full-length
+    matches
+  synonyms:
+  - --substring-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: turn off the kmer check
+  synonyms:
+  - --no-kmer-check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mimimum kmer coverage is required for both strand
+  synonyms:
+  - --kmer-both-strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: check reads for hompolymer run length sequencing errors
+  synonyms:
+  - --homopolymer-check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: filter out low complexity reads
+  synonyms:
+  - --low-complexity-check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The length of the kmer to use. (default: 27)'
+  synonyms:
+  - -k
+  - --kmer-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Require at least N kmer coverage for each kmer in a read. (default:
+    3)'
+  synonyms:
+  - -x
+  - --kmer-threshold
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: sga filter [OPTION] ... READSFILE\nRemove reads from a data set.\n\
+  The currently available filters are removing exact-match duplicates\nand removing\
+  \ reads with low-frequency k-mers.\nAutomatically rebuilds the FM-index without\
+  \ the discarded reads.\n\n      --help                           display this help\
+  \ and exit\n      -v, --verbose                    display verbose output\n    \
+  \  -p, --prefix=PREFIX              use PREFIX for the names of the index files\
+  \ (default: prefix of the input file)\n      -o, --outfile=FILE               write\
+  \ the qc-passed reads to FILE (default: READSFILE.filter.pass.fa)\n      -t, --threads=NUM\
+  \                use NUM threads to compute the overlaps (default: 1)\n      -d,\
+  \ --sample-rate=N              use occurrence array sample rate of N in the FM-index.\
+  \ Higher values use significantly\n                                       less memory\
+  \ at the cost of higher runtime. This value must be a power of 2 (default: 128)\n\
+  \      --no-duplicate-check             turn off duplicate removal\n      --substring-only\
+  \                 when removing duplicates, only remove substring sequences, not\
+  \ full-length matches\n      --no-kmer-check                  turn off the kmer\
+  \ check\n      --kmer-both-strand               mimimum kmer coverage is required\
+  \ for both strand\n      --homopolymer-check              check reads for hompolymer\
+  \ run length sequencing errors\n      --low-complexity-check           filter out\
+  \ low complexity reads\n\nK-mer filter options:\n      -k, --kmer-size=N       \
+  \         The length of the kmer to use. (default: 27)\n      -x, --kmer-threshold=N\
+  \           Require at least N kmer coverage for each kmer in a read. (default:\
+  \ 3)\n\nReport bugs to js18@sanger.ac.uk\n\n"
+generated_using:
+- --help

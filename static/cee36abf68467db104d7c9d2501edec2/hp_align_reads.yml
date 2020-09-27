@@ -1,0 +1,160 @@
+!Command
+command:
+- hp_align_reads
+positional: []
+named:
+- !Flag
+  description: Fastq file with read 1
+  synonyms:
+  - --fq1
+  args: !SimpleFlagArg
+    name: FQ1
+  optional: true
+- !Flag
+  description: Fastq file with read 2
+  synonyms:
+  - --fq2
+  args: !SimpleFlagArg
+    name: FQ2
+  optional: true
+- !Flag
+  description: Fastq file with unpaired reads
+  synonyms:
+  - --fqU
+  args: !SimpleFlagArg
+    name: FQU
+  optional: true
+- !Flag
+  description: Reference fasta file.
+  synonyms:
+  - --ref_fa
+  args: !SimpleFlagArg
+    name: REF_FA
+  optional: true
+- !Flag
+  description: 'Output directory (default: .)'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: 'Bowtie2 preset (default: sensitive-local)'
+  synonyms:
+  - --bt2_preset
+  args: !ChoiceFlagArg
+    choices: !!set
+      very-sensitive:
+      very-fast-local:
+      sensitive:
+      very-fast:
+      very-sensitive-local:
+      fast:
+      fast-local:
+      sensitive-local:
+  optional: true
+- !Flag
+  description: "Sample ID. Used as read group ID in BAM (default:\nsampleXX)"
+  synonyms:
+  - --sample_id
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+  optional: true
+- !Flag
+  description: 'Do not realign indels (default: False)'
+  synonyms:
+  - --no_realign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Remove duplicates from final alignment. Otherwise\nduplicates are\
+    \ marked but not removed. (default:\nFalse)"
+  synonyms:
+  - --remove_duplicates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "{Phred+33,Phred+64}\nQuality score encoding"
+  synonyms:
+  - --encoding
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of CPUs to use (default: 1)'
+  synonyms:
+  - --ncpu
+  args: !SimpleFlagArg
+    name: NCPU
+  optional: true
+- !Flag
+  description: 'Maximum heap size for Java VM, in GB. (default: 32)'
+  synonyms:
+  - --xmx
+  args: !SimpleFlagArg
+    name: XMX
+  optional: true
+- !Flag
+  description: 'Do not delete temporary directory (default: False)'
+  synonyms:
+  - --keep_tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not write output to console (silence stdout and\nstderr) (default:\
+    \ False)"
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Append console output to this file
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: 'Print commands but do not run (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hp_align_reads [-h] [--fq1 FQ1] [--fq2 FQ2] [--fqU FQU] --ref_fa\
+  \ REF_FA\n                      [--outdir OUTDIR]\n                      [--bt2_preset\
+  \ {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}]\n\
+  \                      [--sample_id SAMPLE_ID] [--no_realign]\n                \
+  \      [--remove_duplicates] [--encoding {Phred+33,Phred+64}]\n                \
+  \      [--ncpu NCPU] [--xmx XMX] [--keep_tmp] [--quiet]\n                      [--logfile\
+  \ LOGFILE] [--debug]\n\nAlign reads to reference.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n\nInput/Output:\n  --fq1 FQ1\
+  \             Fastq file with read 1\n  --fq2 FQ2             Fastq file with read\
+  \ 2\n  --fqU FQU             Fastq file with unpaired reads\n  --ref_fa REF_FA \
+  \      Reference fasta file.\n  --outdir OUTDIR       Output directory (default:\
+  \ .)\n\nAlignment options:\n  --bt2_preset {very-fast,fast,sensitive,very-sensitive,very-fast-local,fast-local,sensitive-local,very-sensitive-local}\n\
+  \                        Bowtie2 preset (default: sensitive-local)\n  --sample_id\
+  \ SAMPLE_ID\n                        Sample ID. Used as read group ID in BAM (default:\n\
+  \                        sampleXX)\n  --no_realign          Do not realign indels\
+  \ (default: False)\n  --remove_duplicates   Remove duplicates from final alignment.\
+  \ Otherwise\n                        duplicates are marked but not removed. (default:\n\
+  \                        False)\n  --encoding {Phred+33,Phred+64}\n            \
+  \            Quality score encoding\n\nSettings:\n  --ncpu NCPU           Number\
+  \ of CPUs to use (default: 1)\n  --xmx XMX             Maximum heap size for Java\
+  \ VM, in GB. (default: 32)\n  --keep_tmp            Do not delete temporary directory\
+  \ (default: False)\n  --quiet               Do not write output to console (silence\
+  \ stdout and\n                        stderr) (default: False)\n  --logfile LOGFILE\
+  \     Append console output to this file\n  --debug               Print commands\
+  \ but do not run (default: False)\n"
+generated_using:
+- --help

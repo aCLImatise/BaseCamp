@@ -1,0 +1,56 @@
+!Command
+command:
+- cooler
+- merge
+positional:
+- !Positional
+  description: 'Options:'
+  position: 0
+  name: output.
+  optional: false
+named:
+- !Flag
+  description: Size of the merge buffer in number of pixel table
+  synonyms:
+  - -c
+  - --chunksize
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Specify the names of value columns to merge as\n'<name>'. Repeat the\
+    \ `--field` option for each one.\nUse '<name>,dtype=<dtype>' to specify the dtype.\n\
+    Include ',agg=<agg>' to specify an aggregation\nfunction different from 'sum'."
+  synonyms:
+  - --field
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: cooler merge [OPTIONS] OUT_PATH [IN_PATHS]...\n\n  Merge multiple\
+  \ coolers with identical axes.\n\n  OUT_PATH : Output file path or URI.\n\n  IN_PATHS\
+  \ : Input file paths or URIs of coolers to merge.\n\n  **Notes**\n\n  Data columns\
+  \ merged:\n\n      pixels/bin1_id, pixels/bin2_id, pixels/<value columns>\n\n  Data\
+  \ columns preserved:\n\n      chroms/name, chroms/length     bins/chrom, bins/start,\
+  \ bins/end\n\n  Additional columns in the the input files are not transferred to\
+  \ the\n  output.\n\nOptions:\n  -c, --chunksize INTEGER  Size of the merge buffer\
+  \ in number of pixel table\n                           rows.  [default: 20000000]\n\
+  \n  --field TEXT             Specify the names of value columns to merge as\n  \
+  \                         '<name>'. Repeat the `--field` option for each one.\n\
+  \                           Use '<name>,dtype=<dtype>' to specify the dtype.\n \
+  \                          Include ',agg=<agg>' to specify an aggregation\n    \
+  \                       function different from 'sum'.\n\n  -h, --help         \
+  \      Show this message and exit.\n"
+generated_using:
+- --help

@@ -1,0 +1,278 @@
+!Command
+command:
+- haystack_pipeline
+positional:
+- !Positional
+  description: "A tab delimeted file with in each row (1) a sample\nname, (2) the\
+    \ path to the corresponding bam filename,\n(3 optional) the path to the corresponding\
+    \ gene\nexpression filename."
+  position: 0
+  name: samples_filename_or_bam_folder
+  optional: false
+- !Positional
+  description: "Genome assembly to use from UCSC (for example hg19,\nmm9, etc.)"
+  position: 1
+  name: genome_name
+  optional: false
+named:
+- !Flag
+  description: HOTSPOTS OF VARIABILITY AND ENRICHED MOTIFS-
+  synonyms:
+  - -SELECTION
+  args: !SimpleFlagArg
+    name: OF
+  optional: true
+- !Flag
+  description: Define a custom output filename for the report
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'Output directory (default: current directory)'
+  synonyms:
+  - --output_directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: 'bin size to use(default: 500bp)'
+  synonyms:
+  - --bin_size
+  args: !SimpleFlagArg
+    name: BIN_SIZE
+  optional: true
+- !Flag
+  description: Keep any file previously precalculated
+  synonyms:
+  - --do_not_recompute
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use BAM files as provided. Do not remove reads that\nare unmapped,\
+    \ mate unmapped, not primary aligned or\nlow MAPQ reads, reads failing qc and\
+    \ optical\nduplicates"
+  synonyms:
+  - --do_not_filter_bams
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Look for cell type specific regions with depletion of\nsignal instead\
+    \ of enrichment"
+  synonyms:
+  - --depleted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use the bigwig format instead of the bam format for\nthe input. Note:\
+    \ The files must have extension .bw"
+  synonyms:
+  - --input_is_bigwig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable quantile normalization (default: False)'
+  synonyms:
+  - --disable_quantile_normalization
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Variance stabilizing transformation among: none, log2,\nangle (default:\
+    \ angle)"
+  synonyms:
+  - --transformation
+  args: !ChoiceFlagArg
+    choices: !!set
+      log2:
+      angle:
+      none:
+  optional: true
+- !Flag
+  description: "z-score value to select the specific regions(default:\n1.5)"
+  synonyms:
+  - --z_score_high
+  args: !SimpleFlagArg
+    name: Z_SCORE_HIGH
+  optional: true
+- !Flag
+  description: "z-score value to select the not specific\nregions(default: 0.25)"
+  synonyms:
+  - --z_score_low
+  args: !SimpleFlagArg
+    name: Z_SCORE_LOW
+  optional: true
+- !Flag
+  description: "Percentile on the signal intensity to consider for the\nhotspots (default:\
+    \ 99)"
+  synonyms:
+  - --th_rpm
+  args: !SimpleFlagArg
+    name: TH_RPM
+  optional: true
+- !Flag
+  description: "Motifs database in MEME format (default JASPAR CORE\n2016)"
+  synonyms:
+  - --meme_motifs_filename
+  args: !SimpleFlagArg
+    name: MEME_MOTIFS_FILENAME
+  optional: true
+- !Flag
+  description: "Custom motif to gene mapping file (the default is for\nJASPAR CORE\
+    \ 2016 database)"
+  synonyms:
+  - --motif_mapping_filename
+  args: !SimpleFlagArg
+    name: MOTIF_MAPPING_FILENAME
+  optional: true
+- !Flag
+  description: "Disable the filter on the TF activity and correlation\n(default z-score\
+    \ TF>0 and rho>0.3)"
+  synonyms:
+  - --plot_all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep intermediate bedgraph files
+  synonyms:
+  - --keep_intermediate_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the number of processes to use. The default is\n#cores available."
+  synonyms:
+  - --n_processes
+  args: !SimpleFlagArg
+    name: N_PROCESSES
+  optional: true
+- !Flag
+  description: "Exclude blacklisted regions. Blacklisted regions are\nnot excluded\
+    \ by default. Use hg19 to blacklist regions\nfor the human genome 19, otherwise\
+    \ provide the\nfilepath for a bed file with blacklisted regions."
+  synonyms:
+  - --blacklist
+  args: !SimpleFlagArg
+    name: BLACKLIST
+  optional: true
+- !Flag
+  description: "Exclude chromosomes that contain given (regex) string.\nFor example\
+    \ _random|chrX|chrY excludes random, X, and\nY chromosome regions"
+  synonyms:
+  - --chrom_exclude
+  args: !SimpleFlagArg
+    name: CHROM_EXCLUDE
+  optional: true
+- !Flag
+  description: 'Read extension in bps (default: 200)'
+  synonyms:
+  - --read_ext
+  args: !SimpleFlagArg
+    name: READ_EXT
+  optional: true
+- !Flag
+  description: 'Directory to store temporary files (default: /tmp)'
+  synonyms:
+  - --temp_directory
+  args: !SimpleFlagArg
+    name: TEMP_DIRECTORY
+  optional: true
+- !Flag
+  description: "The cutoff absolute correlation value (0.0 to 1) for\nwhich activity\
+    \ plots are generated (default: 0.3)"
+  synonyms:
+  - --rho_cutoff
+  args: !SimpleFlagArg
+    name: RHO_CUTOFF
+  optional: true
+- !Flag
+  description: "The cutoff z-score tf_value for which activity plots\nare generated\
+    \ (default: 0.0)"
+  synonyms:
+  - --tf_value_cuttoff
+  args: !SimpleFlagArg
+    name: TF_VALUE_CUTTOFF
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\n[H A Y S T A C K   P I P E L I N E]\n\n-SELECTION OF HOTSPOTS OF VARIABILITY\
+  \ AND ENRICHED MOTIFS-\n\nVersion 0.5.5\n\nusage: haystack_pipeline [-h] [--name\
+  \ NAME]\n                         [--output_directory OUTPUT_DIRECTORY]\n      \
+  \                   [--bin_size BIN_SIZE] [--do_not_recompute]\n               \
+  \          [--do_not_filter_bams] [--depleted]\n                         [--input_is_bigwig]\n\
+  \                         [--disable_quantile_normalization]\n                 \
+  \        [--transformation {angle,log2,none}]\n                         [--z_score_high\
+  \ Z_SCORE_HIGH]\n                         [--z_score_low Z_SCORE_LOW] [--th_rpm\
+  \ TH_RPM]\n                         [--meme_motifs_filename MEME_MOTIFS_FILENAME]\n\
+  \                         [--motif_mapping_filename MOTIF_MAPPING_FILENAME]\n  \
+  \                       [--plot_all] [--keep_intermediate_files]\n             \
+  \            [--n_processes N_PROCESSES] [--blacklist BLACKLIST]\n             \
+  \            [--chrom_exclude CHROM_EXCLUDE] [--read_ext READ_EXT]\n           \
+  \              [--temp_directory TEMP_DIRECTORY]\n                         [--rho_cutoff\
+  \ RHO_CUTOFF]\n                         [--tf_value_cuttoff TF_VALUE_CUTTOFF] [--version]\n\
+  \                         samples_filename_or_bam_folder genome_name\n\nHAYSTACK\
+  \ Parameters\n\npositional arguments:\n  samples_filename_or_bam_folder\n      \
+  \                  A tab delimeted file with in each row (1) a sample\n        \
+  \                name, (2) the path to the corresponding bam filename,\n       \
+  \                 (3 optional) the path to the corresponding gene\n            \
+  \            expression filename.\n  genome_name           Genome assembly to use\
+  \ from UCSC (for example hg19,\n                        mm9, etc.)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --name NAME        \
+  \   Define a custom output filename for the report\n  --output_directory OUTPUT_DIRECTORY\n\
+  \                        Output directory (default: current directory)\n  --bin_size\
+  \ BIN_SIZE   bin size to use(default: 500bp)\n  --do_not_recompute    Keep any file\
+  \ previously precalculated\n  --do_not_filter_bams  Use BAM files as provided. Do\
+  \ not remove reads that\n                        are unmapped, mate unmapped, not\
+  \ primary aligned or\n                        low MAPQ reads, reads failing qc and\
+  \ optical\n                        duplicates\n  --depleted            Look for\
+  \ cell type specific regions with depletion of\n                        signal instead\
+  \ of enrichment\n  --input_is_bigwig     Use the bigwig format instead of the bam\
+  \ format for\n                        the input. Note: The files must have extension\
+  \ .bw\n  --disable_quantile_normalization\n                        Disable quantile\
+  \ normalization (default: False)\n  --transformation {angle,log2,none}\n       \
+  \                 Variance stabilizing transformation among: none, log2,\n     \
+  \                   angle (default: angle)\n  --z_score_high Z_SCORE_HIGH\n    \
+  \                    z-score value to select the specific regions(default:\n   \
+  \                     1.5)\n  --z_score_low Z_SCORE_LOW\n                      \
+  \  z-score value to select the not specific\n                        regions(default:\
+  \ 0.25)\n  --th_rpm TH_RPM       Percentile on the signal intensity to consider\
+  \ for the\n                        hotspots (default: 99)\n  --meme_motifs_filename\
+  \ MEME_MOTIFS_FILENAME\n                        Motifs database in MEME format (default\
+  \ JASPAR CORE\n                        2016)\n  --motif_mapping_filename MOTIF_MAPPING_FILENAME\n\
+  \                        Custom motif to gene mapping file (the default is for\n\
+  \                        JASPAR CORE 2016 database)\n  --plot_all            Disable\
+  \ the filter on the TF activity and correlation\n                        (default\
+  \ z-score TF>0 and rho>0.3)\n  --keep_intermediate_files\n                     \
+  \   keep intermediate bedgraph files\n  --n_processes N_PROCESSES\n            \
+  \            Specify the number of processes to use. The default is\n          \
+  \              #cores available.\n  --blacklist BLACKLIST\n                    \
+  \    Exclude blacklisted regions. Blacklisted regions are\n                    \
+  \    not excluded by default. Use hg19 to blacklist regions\n                  \
+  \      for the human genome 19, otherwise provide the\n                        filepath\
+  \ for a bed file with blacklisted regions.\n  --chrom_exclude CHROM_EXCLUDE\n  \
+  \                      Exclude chromosomes that contain given (regex) string.\n\
+  \                        For example _random|chrX|chrY excludes random, X, and\n\
+  \                        Y chromosome regions\n  --read_ext READ_EXT   Read extension\
+  \ in bps (default: 200)\n  --temp_directory TEMP_DIRECTORY\n                   \
+  \     Directory to store temporary files (default: /tmp)\n  --rho_cutoff RHO_CUTOFF\n\
+  \                        The cutoff absolute correlation value (0.0 to 1) for\n\
+  \                        which activity plots are generated (default: 0.3)\n  --tf_value_cuttoff\
+  \ TF_VALUE_CUTTOFF\n                        The cutoff z-score tf_value for which\
+  \ activity plots\n                        are generated (default: 0.0)\n  --version\
+  \             Print version and exit.\n"
+generated_using:
+- --help

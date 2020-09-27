@@ -1,0 +1,253 @@
+!Command
+command:
+- whatshap
+- genotype
+positional:
+- !Positional
+  description: "VCF file with variants to be genotyped (can be gzip-\ncompressed)"
+  position: 0
+  name: VCF
+  optional: false
+- !Positional
+  description: "BAM or VCF file(s) with phase information, either\nthrough sequencing\
+    \ reads (BAM) or through phased\nblocks (VCF)"
+  position: 1
+  name: PHASEINPUT
+  optional: false
+named:
+- !Flag
+  description: "Output VCF file. Add .gz to the file name to get\ncompressed output.\
+    \ If omitted, use standard output."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "Reference file. Provide this to detect alleles through\nre-alignment.\
+    \ If no index (.fai) exists, it will be\ncreated"
+  synonyms:
+  - --reference
+  - -r
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: 'Reduce coverage to at most MAXCOV (default: 15).'
+  synonyms:
+  - --max-coverage
+  - -H
+  args: !SimpleFlagArg
+    name: MAXCOV
+  optional: true
+- !Flag
+  description: 'Minimum mapping quality (default: 20)'
+  synonyms:
+  - --mapping-quality
+  - --mapq
+  args: !SimpleFlagArg
+    name: QUAL
+  optional: true
+- !Flag
+  description: 'Also genotype indels (default: genotype only SNPs)'
+  synonyms:
+  - --indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ignore read groups in BAM header and assume all reads\ncome from the\
+    \ same sample."
+  synonyms:
+  - --ignore-read-groups
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name of a sample to genotype. If not given, all\nsamples in the input\
+    \ VCF are genotyped. Can be used\nmultiple times."
+  synonyms:
+  - --sample
+  args: !SimpleFlagArg
+    name: SAMPLE
+  optional: true
+- !Flag
+  description: "Name of chromosome to genotyped. If not given, all\nchromosomes in\
+    \ the input VCF are genotyped. Can be\nused multiple times."
+  synonyms:
+  - --chromosome
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+  optional: true
+- !Flag
+  description: "Phred scaled error probability threshold used for\ngenotyping (default:\
+    \ 0). Must be at least 0. If error\nprobability of genotype is higher, genotype\
+    \ ./. is\noutput."
+  synonyms:
+  - --gt-qual-threshold
+  args: !SimpleFlagArg
+    name: GTQUALTHRESHOLD
+  optional: true
+- !Flag
+  description: "Skip initial prior genotyping and use uniform priors\n(default: False)."
+  synonyms:
+  - --no-priors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output prior genotype likelihoods to the given file.
+  synonyms:
+  - -p
+  - --prioroutput
+  args: !SimpleFlagArg
+    name: PRIOROUTPUT
+  optional: true
+- !Flag
+  description: "When --reference is used, extend alignment by this\nmany bases to\
+    \ left and right when realigning (default:\n10)."
+  synonyms:
+  - --overhang
+  args: !SimpleFlagArg
+    name: OVERHANG
+  optional: true
+- !Flag
+  description: "This constant is used to regularize the priors\n(default: 0)."
+  synonyms:
+  - --constant
+  args: !SimpleFlagArg
+    name: CONSTANT
+  optional: true
+- !Flag
+  description: "When detecting alleles through re-alignment, use\naffine gap costs\
+    \ (EXPERIMENTAL)."
+  synonyms:
+  - --affine-gap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "gap starting penalty in case affine gap costs are used\n(default:\
+    \ 10)."
+  synonyms:
+  - --gap-start
+  args: !SimpleFlagArg
+    name: GAPSTART
+  optional: true
+- !Flag
+  description: "gap extend penalty in case affine gap costs are used\n(default: 7)."
+  synonyms:
+  - --gap-extend
+  args: !SimpleFlagArg
+    name: GAPEXTEND
+  optional: true
+- !Flag
+  description: "mismatch cost in case affine gap costs are used\n(default: 15)"
+  synonyms:
+  - --mismatch
+  args: !SimpleFlagArg
+    name: MISMATCH
+  optional: true
+- !Flag
+  description: "Use pedigree information in PED file to improve\ngenotyping (switches\
+    \ to PedMEC algorithm). Columns 2,\n3, 4 must refer to child, mother, and father\
+    \ sample\nnames as used in the VCF and BAM. Other columns are\nignored (EXPERIMENTAL)."
+  synonyms:
+  - --ped
+  args: !SimpleFlagArg
+    name: PED/FAM
+  optional: true
+- !Flag
+  description: "Recombination rate in cM/Mb (used with --ped). If\ngiven, a constant\
+    \ recombination rate is assumed\n(default: 1.26cM/Mb)."
+  synonyms:
+  - --recombrate
+  args: !SimpleFlagArg
+    name: RECOMBRATE
+  optional: true
+- !Flag
+  description: "File with genetic map (used with --ped) to be used\ninstead of constant\
+    \ recombination rate, i.e. overrides\noption --recombrate."
+  synonyms:
+  - --genmap
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Only work on samples mentioned in the provided PED\nfile.\n"
+  synonyms:
+  - --use-ped-samples
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: whatshap genotype [-h] [-o OUTPUT] [--reference FASTA]\n      \
+  \                   [--max-coverage MAXCOV] [--mapping-quality QUAL]\n         \
+  \                [--indels] [--ignore-read-groups] [--sample SAMPLE]\n         \
+  \                [--chromosome CHROMOSOME]\n                         [--gt-qual-threshold\
+  \ GTQUALTHRESHOLD] [--no-priors]\n                         [-p PRIOROUTPUT] [--overhang\
+  \ OVERHANG]\n                         [--constant CONSTANT] [--affine-gap]\n   \
+  \                      [--gap-start GAPSTART] [--gap-extend GAPEXTEND]\n       \
+  \                  [--mismatch MISMATCH] [--ped PED/FAM]\n                     \
+  \    [--recombrate RECOMBRATE] [--genmap FILE]\n                         [--use-ped-samples]\n\
+  \                         VCF [PHASEINPUT [PHASEINPUT ...]]\n\nGenotype variants\n\
+  \nRuns only the genotyping algorithm. Genotype Likelihoods are computed using the\n\
+  forward backward algorithm.\n\npositional arguments:\n  VCF                   VCF\
+  \ file with variants to be genotyped (can be gzip-\n                        compressed)\n\
+  \  PHASEINPUT            BAM or VCF file(s) with phase information, either\n   \
+  \                     through sequencing reads (BAM) or through phased\n       \
+  \                 blocks (VCF)\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -o OUTPUT, --output OUTPUT\n                   \
+  \     Output VCF file. Add .gz to the file name to get\n                       \
+  \ compressed output. If omitted, use standard output.\n  --reference FASTA, -r FASTA\n\
+  \                        Reference file. Provide this to detect alleles through\n\
+  \                        re-alignment. If no index (.fai) exists, it will be\n \
+  \                       created\n\nInput pre-processing, selection and filtering:\n\
+  \  --max-coverage MAXCOV, -H MAXCOV\n                        Reduce coverage to\
+  \ at most MAXCOV (default: 15).\n  --mapping-quality QUAL, --mapq QUAL\n       \
+  \                 Minimum mapping quality (default: 20)\n  --indels            \
+  \  Also genotype indels (default: genotype only SNPs)\n  --ignore-read-groups  Ignore\
+  \ read groups in BAM header and assume all reads\n                        come from\
+  \ the same sample.\n  --sample SAMPLE       Name of a sample to genotype. If not\
+  \ given, all\n                        samples in the input VCF are genotyped. Can\
+  \ be used\n                        multiple times.\n  --chromosome CHROMOSOME\n\
+  \                        Name of chromosome to genotyped. If not given, all\n  \
+  \                      chromosomes in the input VCF are genotyped. Can be\n    \
+  \                    used multiple times.\n  --gt-qual-threshold GTQUALTHRESHOLD\n\
+  \                        Phred scaled error probability threshold used for\n   \
+  \                     genotyping (default: 0). Must be at least 0. If error\n  \
+  \                      probability of genotype is higher, genotype ./. is\n    \
+  \                    output.\n  --no-priors           Skip initial prior genotyping\
+  \ and use uniform priors\n                        (default: False).\n  -p PRIOROUTPUT,\
+  \ --prioroutput PRIOROUTPUT\n                        output prior genotype likelihoods\
+  \ to the given file.\n  --overhang OVERHANG   When --reference is used, extend alignment\
+  \ by this\n                        many bases to left and right when realigning\
+  \ (default:\n                        10).\n  --constant CONSTANT   This constant\
+  \ is used to regularize the priors\n                        (default: 0).\n  --affine-gap\
+  \          When detecting alleles through re-alignment, use\n                  \
+  \      affine gap costs (EXPERIMENTAL).\n  --gap-start GAPSTART  gap starting penalty\
+  \ in case affine gap costs are used\n                        (default: 10).\n  --gap-extend\
+  \ GAPEXTEND\n                        gap extend penalty in case affine gap costs\
+  \ are used\n                        (default: 7).\n  --mismatch MISMATCH   mismatch\
+  \ cost in case affine gap costs are used\n                        (default: 15)\n\
+  \nPedigree genotyping:\n  --ped PED/FAM         Use pedigree information in PED\
+  \ file to improve\n                        genotyping (switches to PedMEC algorithm).\
+  \ Columns 2,\n                        3, 4 must refer to child, mother, and father\
+  \ sample\n                        names as used in the VCF and BAM. Other columns\
+  \ are\n                        ignored (EXPERIMENTAL).\n  --recombrate RECOMBRATE\n\
+  \                        Recombination rate in cM/Mb (used with --ped). If\n   \
+  \                     given, a constant recombination rate is assumed\n        \
+  \                (default: 1.26cM/Mb).\n  --genmap FILE         File with genetic\
+  \ map (used with --ped) to be used\n                        instead of constant\
+  \ recombination rate, i.e. overrides\n                        option --recombrate.\n\
+  \  --use-ped-samples     Only work on samples mentioned in the provided PED\n  \
+  \                      file.\n"
+generated_using:
+- --help

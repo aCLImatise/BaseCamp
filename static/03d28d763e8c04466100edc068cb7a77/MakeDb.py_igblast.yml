@@ -1,0 +1,198 @@
+!Command
+command:
+- MakeDb.py
+- igblast
+positional: []
+named:
+- !Flag
+  description: "[--10x CELLRANGER_FILE [CELLRANGER_FILE ...]]\n[--asis-id] [--asis-calls]\
+    \ [--partial] [--extended]\n[--regions {default,rhesus-igl}]"
+  synonyms:
+  - -i
+  - -r
+  - -s
+  args: !RepeatFlagArg
+    name: ALIGNER_FILES
+  optional: true
+- !Flag
+  description: "Explicit output file name. Note, this argument cannot\nbe used with\
+    \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
+    \ filename\nwill be based on the input filename(s). (default:\nNone)"
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify input and output format. (default: airr)'
+  synonyms:
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      changeo:
+      airr:
+  optional: true
+- !Flag
+  description: "Table file containing 10X annotations (with .csv or\n.tsv extension).\
+    \ (default: None)"
+  synonyms:
+  - --10x
+  args: !RepeatFlagArg
+    name: CELLRANGER_FILE
+  optional: true
+- !Flag
+  description: "Specify to prevent input sequence headers from being\nparsed to add\
+    \ new columns to database. Parsing of\nsequence headers requires headers to be\
+    \ in the pRESTO\nannotation format, so this should be specified when\nsequence\
+    \ headers are incompatible with the pRESTO\nannotation scheme. Note, unrecognized\
+    \ header formats\nwill default to this behavior. (default: False)"
+  synonyms:
+  - --asis-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify to prevent gene calls from being parsed into\nstandard allele\
+    \ names in both the IgBLAST output and\nreference database. Note, this requires\
+    \ the sequence\nidentifiers in the reference sequence set and the\nIgBLAST database\
+    \ to be exact string matches. (default:\nFalse)"
+  synonyms:
+  - --asis-calls
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, include incomplete V(D)J alignments in\nthe pass file\
+    \ instead of the fail file. An incomplete\nalignment is defined as a record for\
+    \ which a valid\nIMGT-gapped sequence cannot be built or that is\nmissing a V\
+    \ gene assignment, J gene assignment,\njunction region, or productivity call.\
+    \ (default:\nFalse)"
+  synonyms:
+  - --partial
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify to include additional aligner specific fields\nin the output.\
+    \ Adds <vdj>_score, <vdj>_identity,\n<vdj>_support, <vdj>_cigar, fwr1, fwr2, fwr3,\
+    \ fwr4,\ncdr1, cdr2 and cdr3. (default: False)"
+  synonyms:
+  - --extended
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "IMGT CDR and FWR boundary definition to use. (default:\ndefault)\n"
+  synonyms:
+  - --regions
+  args: !ChoiceFlagArg
+    choices: !!set
+      rhesus-igl:
+      default:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: MakeDb.py igblast [--version] [-h] [-o OUT_FILES [OUT_FILES ...]]\n\
+  \                         [--outdir OUT_DIR] [--outname OUT_NAME]\n            \
+  \             [--log LOG_FILE] [--failed] [--format {airr,changeo}]\n          \
+  \               -i ALIGNER_FILES [ALIGNER_FILES ...] -r REPO\n                 \
+  \        [REPO ...] -s SEQ_FILES [SEQ_FILES ...]\n                         [--10x\
+  \ CELLRANGER_FILE [CELLRANGER_FILE ...]]\n                         [--asis-id] [--asis-calls]\
+  \ [--partial] [--extended]\n                         [--regions {default,rhesus-igl}]\n\
+  \nProcess igblastn output.\n\nhelp:\n  --version             show program's version\
+  \ number and exit\n  -h, --help            show this help message and exit\n\nstandard\
+  \ arguments:\n  -o OUT_FILES [OUT_FILES ...]\n                        Explicit output\
+  \ file name. Note, this argument cannot\n                        be used with the\
+  \ --failed, --outdir, or --outname\n                        arguments. If unspecified,\
+  \ then the output filename\n                        will be based on the input filename(s).\
+  \ (default:\n                        None)\n  --outdir OUT_DIR      Specify to changes\
+  \ the output directory to the\n                        location specified. The input\
+  \ file directory is used\n                        if this is not specified. (default:\
+  \ None)\n  --outname OUT_NAME    Changes the prefix of the successfully processed\n\
+  \                        output file to the string specified. May not be\n     \
+  \                   specified with multiple input files. (default: None)\n  --log\
+  \ LOG_FILE        Specify to write verbose logging to a file. May not be\n     \
+  \                   specified with multiple input files. (default: None)\n  --failed\
+  \              If specified create files containing records that fail\n        \
+  \                processing. (default: False)\n  --format {airr,changeo}\n     \
+  \                   Specify input and output format. (default: airr)\n\naligner\
+  \ parsing arguments:\n  -i ALIGNER_FILES [ALIGNER_FILES ...]\n                 \
+  \       IgBLAST output files in format 7 with query sequence\n                 \
+  \       (igblastn argument '-outfmt \"7 std qseq sseq btop\"').\n              \
+  \          (default: None)\n  -r REPO [REPO ...]    List of folders and/or fasta\
+  \ files containing the same\n                        germline set used in the IgBLAST\
+  \ alignment. These\n                        reference sequences must contain IMGT-numbering\n\
+  \                        spacers (gaps) in the V segment. (default: None)\n  -s\
+  \ SEQ_FILES [SEQ_FILES ...]\n                        List of input FASTA files (with\
+  \ .fasta, .fna or .fa\n                        extension), containing sequences.\
+  \ (default: None)\n  --10x CELLRANGER_FILE [CELLRANGER_FILE ...]\n             \
+  \           Table file containing 10X annotations (with .csv or\n              \
+  \          .tsv extension). (default: None)\n  --asis-id             Specify to\
+  \ prevent input sequence headers from being\n                        parsed to add\
+  \ new columns to database. Parsing of\n                        sequence headers\
+  \ requires headers to be in the pRESTO\n                        annotation format,\
+  \ so this should be specified when\n                        sequence headers are\
+  \ incompatible with the pRESTO\n                        annotation scheme. Note,\
+  \ unrecognized header formats\n                        will default to this behavior.\
+  \ (default: False)\n  --asis-calls          Specify to prevent gene calls from being\
+  \ parsed into\n                        standard allele names in both the IgBLAST\
+  \ output and\n                        reference database. Note, this requires the\
+  \ sequence\n                        identifiers in the reference sequence set and\
+  \ the\n                        IgBLAST database to be exact string matches. (default:\n\
+  \                        False)\n  --partial             If specified, include incomplete\
+  \ V(D)J alignments in\n                        the pass file instead of the fail\
+  \ file. An incomplete\n                        alignment is defined as a record\
+  \ for which a valid\n                        IMGT-gapped sequence cannot be built\
+  \ or that is\n                        missing a V gene assignment, J gene assignment,\n\
+  \                        junction region, or productivity call. (default:\n    \
+  \                    False)\n  --extended            Specify to include additional\
+  \ aligner specific fields\n                        in the output. Adds <vdj>_score,\
+  \ <vdj>_identity,\n                        <vdj>_support, <vdj>_cigar, fwr1, fwr2,\
+  \ fwr3, fwr4,\n                        cdr1, cdr2 and cdr3. (default: False)\n \
+  \ --regions {default,rhesus-igl}\n                        IMGT CDR and FWR boundary\
+  \ definition to use. (default:\n                        default)\n"
+generated_using:
+- --help

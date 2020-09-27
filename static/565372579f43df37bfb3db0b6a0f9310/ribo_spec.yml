@@ -1,0 +1,163 @@
+!Command
+command:
+- ribo
+- spec
+positional: []
+named:
+- !Flag
+  description: 'output directory; default: None'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "fastg assembly graph from SPAdes or a SPAdes output\ndirectory. If\
+    \ the latter, riboSpec will be run on both\nthe final assembly graph, and all\
+    \ the intermediate\ngraphs for each k-mer."
+  synonyms:
+  - -g
+  - --assembly_graph
+  args: !SimpleFlagArg
+    name: ASSEMBLY_GRAPH
+  optional: true
+- !Flag
+  description: draw the network graphs
+  synonyms:
+  - --plot_graphs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
+    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
+    \ critical();\ndefault: 2"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '4':
+      '2':
+      '5':
+      '3':
+      '1':
+  optional: true
+- !Flag
+  description: "Contigs under this length will be collapsed; default:\n75"
+  synonyms:
+  - -m
+  - --min_contig_len
+  args: !SimpleFlagArg
+    name: MIN_CONTIG_LEN
+  optional: true
+- !Flag
+  description: "Paths must contain at least one node this long as an\nanchor; default:\
+    \ 500"
+  synonyms:
+  - -a
+  - --min_anchor_length
+  args: !SimpleFlagArg
+    name: MIN_ANCHOR_LENGTH
+  optional: true
+- !Flag
+  description: "Paths are simplified when contigs are greater than the\n--min_contig_length,\
+    \ but still short. These medium-\nlength contigs may be assembly artificts or\
+    \ otherwise\nirrelevent. IF you dont want this filtering applied,\nset to the\
+    \ same value as --min_contig_len; default:\n400"
+  synonyms:
+  - -f
+  - --medium_length_threshold
+  args: !SimpleFlagArg
+    name: MEDIUM_LENGTH_THRESHOLD
+  optional: true
+- !Flag
+  description: "paths must be at least this long (bp) to be\nconsidered; default:\
+    \ 1500"
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: "This gets passed to barrnap's --lencutoff argument,\nfor determining\
+    \ what we should treat as a legitimate\nhmm hit; default: 0.75"
+  synonyms:
+  - -b
+  - --barrnap_length_threshold
+  args: !SimpleFlagArg
+    name: BARRNAP_LENGTH_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Path to barrnap executable; default: barrnap'
+  synonyms:
+  - --barrnap_exe
+  args: !SimpleFlagArg
+    name: BARRNAP_EXE
+  optional: true
+- !Flag
+  description: 'cores to be used; default: None'
+  synonyms:
+  - -c
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: 'generate and plot an adjacency matrix; default: False'
+  synonyms:
+  - -x
+  - --MAKE_ADJACENCY_MATRIX
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Displays this help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ribo spec -o OUTPUT -g ASSEMBLY_GRAPH [--plot_graphs] [-v {1,2,3,4,5}]\n\
+  \                 [-m MIN_CONTIG_LEN] [-a MIN_ANCHOR_LENGTH]\n                 [-f\
+  \ MEDIUM_LENGTH_THRESHOLD] [-t THRESHOLD]\n                 [-b BARRNAP_LENGTH_THRESHOLD]\
+  \ [--barrnap_exe BARRNAP_EXE]\n                 [-c CORES] [-x] [-h]\n\nGiven either\
+  \ an assembly graph or a mapping file and reference, determine\nwhether the number\
+  \ of rDNAs appears to match the reference\n\nrequired named arguments:\n  -o OUTPUT,\
+  \ --output OUTPUT\n                        output directory; default: None\n  -g\
+  \ ASSEMBLY_GRAPH, --assembly_graph ASSEMBLY_GRAPH\n                        fastg\
+  \ assembly graph from SPAdes or a SPAdes output\n                        directory.\
+  \ If the latter, riboSpec will be run on both\n                        the final\
+  \ assembly graph, and all the intermediate\n                        graphs for each\
+  \ k-mer.\n\noptional arguments:\n  --plot_graphs         draw the network graphs\n\
+  \  -v {1,2,3,4,5}, --verbosity {1,2,3,4,5}\n                        Logger writes\
+  \ debug to file in output dir; this sets\n                        verbosity level\
+  \ sent to stderr. 1 = debug(), 2 =\n                        info(), 3 = warning(),\
+  \ 4 = error() and 5 = critical();\n                        default: 2\n  -m MIN_CONTIG_LEN,\
+  \ --min_contig_len MIN_CONTIG_LEN\n                        Contigs under this length\
+  \ will be collapsed; default:\n                        75\n  -a MIN_ANCHOR_LENGTH,\
+  \ --min_anchor_length MIN_ANCHOR_LENGTH\n                        Paths must contain\
+  \ at least one node this long as an\n                        anchor; default: 500\n\
+  \  -f MEDIUM_LENGTH_THRESHOLD, --medium_length_threshold MEDIUM_LENGTH_THRESHOLD\n\
+  \                        Paths are simplified when contigs are greater than the\n\
+  \                        --min_contig_length, but still short. These medium-\n \
+  \                       length contigs may be assembly artificts or otherwise\n\
+  \                        irrelevent. IF you dont want this filtering applied,\n\
+  \                        set to the same value as --min_contig_len; default:\n \
+  \                       400\n  -t THRESHOLD, --threshold THRESHOLD\n           \
+  \             paths must be at least this long (bp) to be\n                    \
+  \    considered; default: 1500\n  -b BARRNAP_LENGTH_THRESHOLD, --barrnap_length_threshold\
+  \ BARRNAP_LENGTH_THRESHOLD\n                        This gets passed to barrnap's\
+  \ --lencutoff argument,\n                        for determining what we should\
+  \ treat as a legitimate\n                        hmm hit; default: 0.75\n  --barrnap_exe\
+  \ BARRNAP_EXE\n                        Path to barrnap executable; default: barrnap\n\
+  \  -c CORES, --cores CORES\n                        cores to be used; default: None\n\
+  \  -x, --MAKE_ADJACENCY_MATRIX\n                        generate and plot an adjacency\
+  \ matrix; default: False\n  -h, --help            Displays this help message\n"
+generated_using:
+- --help

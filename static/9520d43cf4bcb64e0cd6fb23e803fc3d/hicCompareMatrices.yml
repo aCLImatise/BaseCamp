@@ -1,0 +1,69 @@
+!Command
+command:
+- hicCompareMatrices
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: matrix.h5
+  optional: false
+named:
+- !Flag
+  description: "matrix.h5, -m matrix.h5 matrix.h5\nName of the matrices in .h5 format\
+    \ to use, separated\nby a space. (default: None)"
+  synonyms:
+  - --matrices
+  args: !SimpleFlagArg
+    name: matrix.h5
+  optional: true
+- !Flag
+  description: "File name to save the resulting matrix. The output is\nalso a .h5\
+    \ file. (default: None)"
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: "Operation to apply to the matrices. (default:\nlog2ratio)"
+  synonyms:
+  - --operation
+  args: !ChoiceFlagArg
+    choices: !!set
+      log2ratio:
+      diff:
+      ratio:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicCompareMatrices --matrices matrix.h5 matrix.h5 --outFileName\n\
+  \                          OUTFILENAME [--operation {diff,ratio,log2ratio}]\n  \
+  \                        [--help] [--version]\n\nTakes two matrices as input, normalizes\
+  \ them and applies the given operation.\nTo normalize the matrices each element\
+  \ is divided by the sum of the matrix.\n\nRequired arguments:\n  --matrices matrix.h5\
+  \ matrix.h5, -m matrix.h5 matrix.h5\n                        Name of the matrices\
+  \ in .h5 format to use, separated\n                        by a space. (default:\
+  \ None)\n  --outFileName OUTFILENAME, -o OUTFILENAME\n                        File\
+  \ name to save the resulting matrix. The output is\n                        also\
+  \ a .h5 file. (default: None)\n\nOptional arguments:\n  --operation {diff,ratio,log2ratio}\n\
+  \                        Operation to apply to the matrices. (default:\n       \
+  \                 log2ratio)\n  --help, -h            show this help message and\
+  \ exit\n  --version             show program's version number and exit\n"
+generated_using:
+- --help

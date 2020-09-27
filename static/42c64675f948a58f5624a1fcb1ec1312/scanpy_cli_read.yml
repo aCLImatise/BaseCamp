@@ -1,0 +1,129 @@
+!Command
+command:
+- scanpy-cli
+- read
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: output_obj
+  optional: false
+named:
+- !Flag
+  description: Input 10x data in Cell-Ranger hdf5 format.
+  synonyms:
+  - -i
+  - --input-10x-h5
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Path of input folder containing 10x data in\nmtx format."
+  synonyms:
+  - -x
+  - --input-10x-mtx
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: "[anndata|loom|zarr]\nOutput object format.  [default: anndata]"
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Chunk size for writing output in zarr
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "When specified, using it as prefix for\nexporting mtx files. If not\
+    \ empty and not\nending with \"/\" or \"_\", a \"_\" will be\nappended."
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "[stdout|stderr]      Print output object summary info to\nspecified\
+    \ stream."
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name of the genome group in hdf5 file,\nrequired by \"--input-10x-h5\"\
+    .  [default:\nhg19]"
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "[gene_symbols|gene_ids]\nAttribute to be used as the index of the\n\
+    variable table, required by \"--\ninput-10x-mtx\".  [default: gene_symbols]"
+  synonyms:
+  - -v
+  - --var-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Extra cell metadata table, must be tab-\nseparated with a header row\
+    \ and an index\ncolumn, and with matched dimension."
+  synonyms:
+  - --extra-obs
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Extra gene metadata table, must be tab-\nseparated with a header row\
+    \ and an index\ncolumn, and with matched dimension."
+  synonyms:
+  - --extra-var
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: scanpy-cli read [OPTIONS] <output_obj>\n\n  Read 10x data and save\
+  \ in specified format.\n\n  <output_obj>:  output file in format specfied by --output-format\n\
+  \nOptions:\n  -i, --input-10x-h5 FILE         Input 10x data in Cell-Ranger hdf5\
+  \ format.\n  -x, --input-10x-mtx DIRECTORY   Path of input folder containing 10x\
+  \ data in\n                                  mtx format.\n  -F, --output-format\
+  \ [anndata|loom|zarr]\n                                  Output object format. \
+  \ [default: anndata]\n  -z, --zarr-chunk-size INTEGER   Chunk size for writing output\
+  \ in zarr\n                                  format.  [default: 1000]\n  -X, --export-mtx\
+  \ PATH           When specified, using it as prefix for\n                      \
+  \            exporting mtx files. If not empty and not\n                       \
+  \           ending with \"/\" or \"_\", a \"_\" will be\n                      \
+  \            appended.\n  --show-obj [stdout|stderr]      Print output object summary\
+  \ info to\n                                  specified stream.\n  -g, --genome TEXT\
+  \               Name of the genome group in hdf5 file,\n                       \
+  \           required by \"--input-10x-h5\".  [default:\n                       \
+  \           hg19]\n  -v, --var-names [gene_symbols|gene_ids]\n                 \
+  \                 Attribute to be used as the index of the\n                   \
+  \               variable table, required by \"--\n                             \
+  \     input-10x-mtx\".  [default: gene_symbols]\n  --extra-obs FILE            \
+  \    Extra cell metadata table, must be tab-\n                                 \
+  \ separated with a header row and an index\n                                  column,\
+  \ and with matched dimension.\n  --extra-var FILE                Extra gene metadata\
+  \ table, must be tab-\n                                  separated with a header\
+  \ row and an index\n                                  column, and with matched dimension.\n\
+  \  --help                          Show this message and exit.\n"
+generated_using:
+- --help

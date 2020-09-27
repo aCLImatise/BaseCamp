@@ -1,0 +1,269 @@
+!Command
+command:
+- make-consensi.py
+positional:
+- !Positional
+  description: "The output of align_families.py. 6 columns:\n1. (canonical) barcode\n\
+    2. order (\"ab\" or \"ba\")\n3. mate (\"1\" or \"2\")\n4. read name\n5. aligned\
+    \ sequence\n6. aligned quality scores."
+  position: 0
+  name: families.msa.tsv
+  optional: false
+named:
+- !Flag
+  description: "The file to output the first mates of the\nduplex consensus sequences\
+    \ into. Warning: This\nwill be overwritten if it exists!"
+  synonyms:
+  - '-1'
+  - --dcs1
+  args: !SimpleFlagArg
+    name: duplex_1.fa
+  optional: true
+- !Flag
+  description: Same, but for mate 2.
+  synonyms:
+  - '-2'
+  - --dcs2
+  args: !SimpleFlagArg
+    name: duplex_2.fa
+  optional: true
+- !Flag
+  description: "Save the single-strand consensus sequences\n(mate 1) in this file\
+    \ (FASTA format). Warning:\nThis will be overwritten if it exists!"
+  synonyms:
+  - --sscs1
+  args: !SimpleFlagArg
+    name: sscs_1.fa
+  optional: true
+- !Flag
+  description: "Save the single-strand consensus sequences\n(mate 2) in this file\
+    \ (FASTA format). Warning:\nThis will be overwritten if it exists!"
+  synonyms:
+  - --sscs2
+  args: !SimpleFlagArg
+    name: sscs_2.fa
+  optional: true
+- !Flag
+  description: "FASTQ quality score format. Sanger scores are\nassumed to begin at\
+    \ '33' (!). Default:\nsanger."
+  synonyms:
+  - -F
+  - --qual-format
+  args: !ChoiceFlagArg
+    choices: !!set
+      sanger:
+      solexa:
+  optional: true
+- !Flag
+  description: "Output in FASTQ instead of FASTA. You must\nspecify the quality score\
+    \ to give to all\nbases. There is no meaningful quality score we\ncan automatically\
+    \ give, so you will have to\nspecify an artificial one. A good choice is\n40,\
+    \ the maximum score normally output by\nsequencers."
+  synonyms:
+  - --fastq-out
+  args: !SimpleFlagArg
+    name: PHRED_SCORE
+  optional: true
+- !Flag
+  description: "The minimum number of reads (from each strand)\nrequired to form a\
+    \ single-strand consensus.\nStrands with fewer reads will be skipped.\nDefault:\
+    \ 3."
+  synonyms:
+  - -r
+  - --min-reads
+  args: !SimpleFlagArg
+    name: MIN_READS
+  optional: true
+- !Flag
+  description: "Base quality threshold. Bases below this\nquality will not be counted.\
+    \ Default:\n20."
+  synonyms:
+  - -q
+  - --qual
+  args: !SimpleFlagArg
+    name: PHRED_SCORE
+  optional: true
+- !Flag
+  description: "The fractional threshold to use when making\nconsensus sequences.\
+    \ The consensus base must\nbe present in more than this fraction of the\nreads,\
+    \ or N will be used as the consensus base\ninstead. Default: 0.5"
+  synonyms:
+  - -c
+  - --cons-thres
+  args: !SimpleFlagArg
+    name: THRES
+  optional: true
+- !Flag
+  description: "The absolute threshold to use when making\nconsensus sequences. The\
+    \ consensus base must\nbe present in more than this number of reads,\nor N will\
+    \ be used as the consensus base\ninstead. Default: 0"
+  synonyms:
+  - -C
+  - --min-cons-reads
+  args: !SimpleFlagArg
+    name: MIN_CONS_READS
+  optional: true
+- !Flag
+  description: "Report helpful usage data to the developer, to\nbetter understand\
+    \ the use cases and\nperformance of the tool. The only data which\nwill be recorded\
+    \ is the name and version of\nthe tool, the size of the input data, the time\n\
+    and memory taken to process it, and the IP\naddress of the machine running it.\
+    \ Also, if\nthe script fails, it will report the name of\nthe exception thrown\
+    \ and the line of code it\noccurred in. No filenames are sent, and the\nonly parameters\
+    \ reported are the number of\n--processes and the --queue-size. All the\nreporting\
+    \ and recording code is available at\nhttps://github.com/NickSto/ET."
+  synonyms:
+  - --phone-home
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Tell the script it's running on Galaxy.\nCurrently this only affects\
+    \ data reported when\nphoning home."
+  synonyms:
+  - --galaxy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If reporting usage data, mark this as a test\nrun."
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Print log messages to this file instead of to\nstderr. Warning: Will\
+    \ overwrite the file."
+  synonyms:
+  - -l
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: "-V, --verbose\n-D, --debug"
+  synonyms:
+  - -Q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of worker subprocesses to use. If 0, no\nsubprocesses will\
+    \ be started and everything\nwill be done inside one process. Give \"auto\"\n\
+    to use as many processes as there are CPU\ncores. Default: 0."
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: "How long to go accumulating responses from\nworker subprocesses before\
+    \ dealing with all of\nthem. Default: 8 * the number of worker\n--processes."
+  synonyms:
+  - --queue-size
+  args: !SimpleFlagArg
+    name: QUEUE_SIZE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this text on usage and arguments.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print the version number and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: $ make-consensi.py [options] families.msa.tsv -1 duplexes_1.fa\
+  \ -2 duplexes_2.fa\n       $ cat families.msa.tsv | make-consensi.py [options] -1\
+  \ duplexes_1.fa -2 duplexes_2.fa\n\nBuild consensus sequences from read aligned\
+  \ families. Prints duplex\nconsensus sequences in FASTA to stdout. The sequence\
+  \ ids are\nBARCODE.MATE, e.g. \"CTCAGATAACATACCTTATATGCA.1\", where \"BARCODE\"\
+  \ is\nthe input barcode, and \"MATE\" is \"1\" or \"2\" as an arbitrary\ndesignation\
+  \ of the two reads in the pair. The id is followed by the\ncount of the number of\
+  \ reads in the two families (one from each\nstrand) that make up the duplex, in\
+  \ the format READS1/READS2. If the\nduplex is actually a single-strand consensus\
+  \ because the matching\nstrand is missing, only one number is listed.\nRules for\
+  \ consensus building: Single-strand consensus sequences are\nmade by counting how\
+  \ many of each base are at a given position. Bases\nwith a PHRED quality score below\
+  \ the --qual threshold are not counted.\nIf a majority of the reads (that pass the\
+  \ --qual threshold at that\nposition) have one base at that position, then that\
+  \ base is used as\nthe consensus base. If no base has a majority, then an N is used.\n\
+  Duplex consensus sequences are made by aligning pairs of single-strand\nconsensuses,\
+  \ and comparing bases at each position. If they agree, that\nbase is used in the\
+  \ consensus. Otherwise, the IUPAC ambiguity code for\nboth bases is used (N + anything\
+  \ and gap + non-gap result in an N).\n\nInputs and outputs:\n  families.msa.tsv\
+  \      The output of align_families.py. 6 columns:\n                        1. (canonical)\
+  \ barcode\n                        2. order (\"ab\" or \"ba\")\n               \
+  \         3. mate (\"1\" or \"2\")\n                        4. read name\n     \
+  \                   5. aligned sequence\n                        6. aligned quality\
+  \ scores.\n  -1 duplex_1.fa, --dcs1 duplex_1.fa\n                        The file\
+  \ to output the first mates of the\n                        duplex consensus sequences\
+  \ into. Warning: This\n                        will be overwritten if it exists!\n\
+  \  -2 duplex_2.fa, --dcs2 duplex_2.fa\n                        Same, but for mate\
+  \ 2.\n  --sscs1 sscs_1.fa     Save the single-strand consensus sequences\n     \
+  \                   (mate 1) in this file (FASTA format). Warning:\n           \
+  \             This will be overwritten if it exists!\n  --sscs2 sscs_2.fa     Save\
+  \ the single-strand consensus sequences\n                        (mate 2) in this\
+  \ file (FASTA format). Warning:\n                        This will be overwritten\
+  \ if it exists!\n  -F {solexa,sanger}, --qual-format {solexa,sanger}\n         \
+  \               FASTQ quality score format. Sanger scores are\n                \
+  \        assumed to begin at '33' (!). Default:\n                        sanger.\n\
+  \  --fastq-out PHRED_SCORE\n                        Output in FASTQ instead of FASTA.\
+  \ You must\n                        specify the quality score to give to all\n \
+  \                       bases. There is no meaningful quality score we\n       \
+  \                 can automatically give, so you will have to\n                \
+  \        specify an artificial one. A good choice is\n                        40,\
+  \ the maximum score normally output by\n                        sequencers.\n\n\
+  Algorithm parameters:\n  -r MIN_READS, --min-reads MIN_READS\n                 \
+  \       The minimum number of reads (from each strand)\n                       \
+  \ required to form a single-strand consensus.\n                        Strands with\
+  \ fewer reads will be skipped.\n                        Default: 3.\n  -q PHRED_SCORE,\
+  \ --qual PHRED_SCORE\n                        Base quality threshold. Bases below\
+  \ this\n                        quality will not be counted. Default:\n        \
+  \                20.\n  -c THRES, --cons-thres THRES\n                        The\
+  \ fractional threshold to use when making\n                        consensus sequences.\
+  \ The consensus base must\n                        be present in more than this\
+  \ fraction of the\n                        reads, or N will be used as the consensus\
+  \ base\n                        instead. Default: 0.5\n  -C MIN_CONS_READS, --min-cons-reads\
+  \ MIN_CONS_READS\n                        The absolute threshold to use when making\n\
+  \                        consensus sequences. The consensus base must\n        \
+  \                be present in more than this number of reads,\n               \
+  \         or N will be used as the consensus base\n                        instead.\
+  \ Default: 0\n\nFeedback:\n  --phone-home          Report helpful usage data to\
+  \ the developer, to\n                        better understand the use cases and\n\
+  \                        performance of the tool. The only data which\n        \
+  \                will be recorded is the name and version of\n                 \
+  \       the tool, the size of the input data, the time\n                       \
+  \ and memory taken to process it, and the IP\n                        address of\
+  \ the machine running it. Also, if\n                        the script fails, it\
+  \ will report the name of\n                        the exception thrown and the\
+  \ line of code it\n                        occurred in. No filenames are sent, and\
+  \ the\n                        only parameters reported are the number of\n    \
+  \                    --processes and the --queue-size. All the\n               \
+  \         reporting and recording code is available at\n                       \
+  \ https://github.com/NickSto/ET.\n  --galaxy              Tell the script it's running\
+  \ on Galaxy.\n                        Currently this only affects data reported\
+  \ when\n                        phoning home.\n  --test                If reporting\
+  \ usage data, mark this as a test\n                        run.\n\nLogging:\n  -l\
+  \ LOG, --log LOG     Print log messages to this file instead of to\n           \
+  \             stderr. Warning: Will overwrite the file.\n  -Q, --quiet\n  -V, --verbose\n\
+  \  -D, --debug\n\nMiscellaneous:\n  -p PROCESSES, --processes PROCESSES\n      \
+  \                  Number of worker subprocesses to use. If 0, no\n            \
+  \            subprocesses will be started and everything\n                     \
+  \   will be done inside one process. Give \"auto\"\n                        to use\
+  \ as many processes as there are CPU\n                        cores. Default: 0.\n\
+  \  --queue-size QUEUE_SIZE\n                        How long to go accumulating\
+  \ responses from\n                        worker subprocesses before dealing with\
+  \ all of\n                        them. Default: 8 * the number of worker\n    \
+  \                    --processes.\n  -v, --version         Print the version number\
+  \ and exit.\n  -h, --help            Print this text on usage and arguments.\n"
+generated_using:
+- --help

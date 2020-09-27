@@ -1,0 +1,145 @@
+!Command
+command:
+- vtools
+- init
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: TABLE
+  optional: true
+named:
+- !Flag
+  description: Remove a project if it already exists.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set the build (hg18 or hg19) of the primary reference\ngenome of the\
+    \ project."
+  synonyms:
+  - --build
+  args: !SimpleFlagArg
+    name: BUILD
+  optional: true
+- !Flag
+  description: "Storage model used to storage variants and genotype.\nThe default\
+    \ value is the value set by environmental\nvariable STOREMODE or sqlite if the\
+    \ variable is not\nset."
+  synonyms:
+  - -s
+  - --store
+  args: !ChoiceFlagArg
+    choices: !!set
+      sqlite:
+      hdf5:
+  optional: true
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1)."
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+      '0':
+      '3':
+  optional: true
+- !Flag
+  description: "Directory or snapshot file of a parent project (e.g.\n--parent ../main)\
+    \ from which all or part of variants\n(--variants), samples (--samples) and genotypes\n\
+    (--genotypes) will be copied to the newly created\nproject."
+  synonyms:
+  - --parent
+  args: !SimpleFlagArg
+    name: DIR_or_SNAPSHOT
+  optional: true
+- !Flag
+  description: "[TABLE]    A variant table of the parental project whose variants\n\
+    will be copied to the new project. Default to variant\n(all variants)."
+  synonyms:
+  - --variants
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[COND [COND ...]]\nCopy only samples of the parental project that\
+    \ match\nspecified conditions."
+  synonyms:
+  - --samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[COND [COND ...]]\nCopy only genotypes that match specified conditions."
+  synonyms:
+  - --genotypes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A list of a subprojects (directories or snapshot files\nof projects)\
+    \ that will be merged to create this new\nproject. The subprojects must have the\
+    \ same primary\nand alternative reference genome. Variant tables with\nthe same\
+    \ names from multiple samples will be merged.\nSamples from the children projects\
+    \ will be copied even\nif they were identical samples imported from the same\n\
+    source files.\n"
+  synonyms:
+  - --children
+  args: !RepeatFlagArg
+    name: DIR_OR_SNAPSHOT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools init [-h] [-f] [--parent DIR_or_SNAPSHOT] [--variants [TABLE]]\n\
+  \                   [--samples [COND [COND ...]]]\n                   [--genotypes\
+  \ [COND [COND ...]]]\n                   [--children DIR_OR_SNAPSHOT [DIR_OR_SNAPSHOT\
+  \ ...]]\n                   [--build BUILD] [-s {sqlite,hdf5}] [-v {0,1,2,3}]\n\
+  \                   project\n\nCreate a new project in the current directory. This\
+  \ command will fail if\nanother project already exists in this directory, unless\
+  \ option '--force' is\nused to remove the existing project.\n\npositional arguments:\n\
+  \  project               Name of a new project. This will create a new .proj\n \
+  \                       file under the current directory. Only one project is\n\
+  \                        allowed in a directory.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -f, --force           Remove a project\
+  \ if it already exists.\n  --build BUILD         Set the build (hg18 or hg19) of\
+  \ the primary reference\n                        genome of the project.\n  -s {sqlite,hdf5},\
+  \ --store {sqlite,hdf5}\n                        Storage model used to storage variants\
+  \ and genotype.\n                        The default value is the value set by environmental\n\
+  \                        variable STOREMODE or sqlite if the variable is not\n \
+  \                       set.\n  -v {0,1,2,3}, --verbosity {0,1,2,3}\n          \
+  \              Output error and warning (0), info (1), debug (2) and\n         \
+  \               trace (3) information to standard output (default to\n         \
+  \               1).\n\nDerive from a parent project:\n  --parent DIR_or_SNAPSHOT\n\
+  \                        Directory or snapshot file of a parent project (e.g.\n\
+  \                        --parent ../main) from which all or part of variants\n\
+  \                        (--variants), samples (--samples) and genotypes\n     \
+  \                   (--genotypes) will be copied to the newly created\n        \
+  \                project.\n  --variants [TABLE]    A variant table of the parental\
+  \ project whose variants\n                        will be copied to the new project.\
+  \ Default to variant\n                        (all variants).\n  --samples [COND\
+  \ [COND ...]]\n                        Copy only samples of the parental project\
+  \ that match\n                        specified conditions.\n  --genotypes [COND\
+  \ [COND ...]]\n                        Copy only genotypes that match specified\
+  \ conditions.\n\nMerge from children projects:\n  --children DIR_OR_SNAPSHOT [DIR_OR_SNAPSHOT\
+  \ ...]\n                        A list of a subprojects (directories or snapshot\
+  \ files\n                        of projects) that will be merged to create this\
+  \ new\n                        project. The subprojects must have the same primary\n\
+  \                        and alternative reference genome. Variant tables with\n\
+  \                        the same names from multiple samples will be merged.\n\
+  \                        Samples from the children projects will be copied even\n\
+  \                        if they were identical samples imported from the same\n\
+  \                        source files.\n"
+generated_using:
+- --help

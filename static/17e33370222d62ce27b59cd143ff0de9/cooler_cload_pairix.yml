@@ -1,0 +1,93 @@
+!Command
+command:
+- cooler
+- cload
+- pairix
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: BINS
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: PAIRS_PATH
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: COOL_PATH
+  optional: false
+named:
+- !Flag
+  description: Path to JSON file containing user metadata.
+  synonyms:
+  - --metadata
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Name of genome assembly (e.g. hg19, mm10)
+  synonyms:
+  - --assembly
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Number of processes to split the work between.\n[default: 8]"
+  synonyms:
+  - -p
+  - --nproc
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Positions are zero-based  [default: False]'
+  synonyms:
+  - '-0'
+  - --zero-based
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Divide the pairs from each chromosome into at most\nthis many chunks.\
+    \ Smaller chromosomes will be split\nless frequently or not at all. Increase ths\
+    \ value\nif large chromosomes dominate the workload on\nmultiple processors. \
+    \ [default: 2]"
+  synonyms:
+  - -s
+  - --max-split
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: cooler cload pairix [OPTIONS] BINS PAIRS_PATH COOL_PATH\n\n  Bin\
+  \ a pairix-indexed contact list file.\n\n  BINS : One of the following\n\n     \
+  \ <TEXT:INTEGER> : 1. Path to a chromsizes file, 2. Bin size in bp\n\n      <TEXT>\
+  \ : Path to BED file defining the genomic bin segmentation.\n\n  PAIRS_PATH : Path\
+  \ to contacts (i.e. read pairs) file.\n\n  COOL_PATH : Output COOL file path or\
+  \ URI.\n\n  See also: 'cooler csort' to sort and index a contact list file\n\n \
+  \ Pairix on GitHub: <https://github.com/4dn-dcic/pairix>.\n\nOptions:\n  --metadata\
+  \ TEXT          Path to JSON file containing user metadata.\n  --assembly TEXT \
+  \         Name of genome assembly (e.g. hg19, mm10)\n  -p, --nproc INTEGER     \
+  \ Number of processes to split the work between.\n                           [default:\
+  \ 8]\n\n  -0, --zero-based         Positions are zero-based  [default: False]\n\
+  \  -s, --max-split INTEGER  Divide the pairs from each chromosome into at most\n\
+  \                           this many chunks. Smaller chromosomes will be split\n\
+  \                           less frequently or not at all. Increase ths value\n\
+  \                           if large chromosomes dominate the workload on\n    \
+  \                       multiple processors.  [default: 2]\n\n  -h, --help     \
+  \          Show this message and exit.\n"
+generated_using:
+- --help

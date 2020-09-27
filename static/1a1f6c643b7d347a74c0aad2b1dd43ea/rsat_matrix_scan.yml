@@ -1,0 +1,566 @@
+!Command
+command:
+- rsat
+- matrix-scan
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: matrix-scan
+  optional: false
+- !Positional
+  description: pattern matching
+  position: 0
+  name: sequences
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 1
+  name: PSSM
+  optional: false
+- !Positional
+  description: "\e[33mproba_M = P(S|M)\e[0m:"
+  position: 0
+  name: where
+  optional: false
+- !Positional
+  description: "Relative frequencies can be corrected by a pseudo-count (b) to reduce\n\
+    the bias due to the small number of observations.\nThe pseudo-count can be shared\
+    \ either in an equiprobable way,\nS<F''ij=(Nij + b/A)/[SUMi(Nij)+b]>\nor according\
+    \ to residue prior frequencies.\nS<F''ij=(Nij + b*Pi)/[SUMi(Nij)+b]>\nwhere\n\
+    Pi  is the prior frequency for residue i\nA   is the size of the alphabet (A=4\
+    \ for DNA).\nb   is the pseudo-count, which is \"shared\" between residues according\
+    \ to\ntheir prior frequencies."
+  position: 0
+  name: Pseudo-counts
+  optional: false
+- !Positional
+  description: Aerts, S., Thijs, G., Coessens, B., Staes, M., Moreau, Y. & De Moor,
+    B.
+  position: 0
+  name: papers.
+  optional: false
+- !Positional
+  description: Hertz, G.Z. and G.D. Stormo (1999).
+  position: 0
+  name: 81-92.
+  optional: false
+- !Positional
+  description: "\e[1m-m matrixfile\e[0m"
+  position: 0
+  name: distributed.
+  optional: false
+- !Positional
+  description: "\e[1m-matrix_name matrix_name1[,matrix_name2,...]\e[0m"
+  position: 0
+  name: MA0221.1
+  optional: false
+- !Positional
+  description: "\e[1m-first_seq N\e[0m"
+  position: 0
+  name: M00271
+  optional: false
+- !Positional
+  description: "\e[1m-bg_pseudo #\e[0m"
+  position: 0
+  name: default.
+  optional: false
+- !Positional
+  description: 'Note: in previous versions, -origin was used to specify both'
+  position: 0
+  name: TSS.
+  optional: false
+- !Positional
+  description: occ_sum inv_cum exp_occ occ_pval occ_eval occ_sig
+  position: 0
+  name: occ
+  optional: false
+- !Positional
+  description: In -window mode, if a threshold is set on pval (e.g. -uth
+  position: 1
+  name: occ_sig_rank
+  optional: false
+- !Positional
+  description: "\e[1mlimits:\e[0m limits (start, end) of the input sequences."
+  position: 0
+  name: efficiency.
+  optional: false
+- !Positional
+  description: "For each matrix and each score value, calculate the\nstatistical significance\
+    \ of the number of matches. This\nallows to select the score associated with te\
+    \ maximal\nsignificance, on the basis of the matrix-specific\ndistribution, rather\
+    \ than by selecting some a priori\nthreshold.\nFor each motif (M) and each score\
+    \ value (s), the program\nestimates the significance of the observed number of\n\
+    matches (x), given the prior probability (p) to find an\ninstance of this motif\
+    \ with at least this score at a\ngiven position of the sequence. The P-value is\n\
+    calculated using the binomial distribution (Aerts et\nal., 2003).\nThis option\
+    \ requires to specify a background score\ndistribution (option -bg_distrib) to\
+    \ estimate the prior\nprobabilities of motif instances."
+  position: 0
+  name: sequence
+  optional: false
+- !Positional
+  description: "matrix-scan -v 1 -return distrib -m matrix.tab -i\nbg_sequences.fta\
+    \ [...]"
+  position: 0
+  name: options
+  optional: false
+- !Positional
+  description: "\e[1mcheck_thresholds\e[0m"
+  position: 0
+  name: matrix.
+  optional: false
+named:
+- !Flag
+  description: order to select a subset of sequences for quick
+  synonyms:
+  - -last_seq
+  args: !SimpleFlagArg
+    name: in
+  optional: true
+- !Flag
+  description: ). The maximum size for a CRER is defined by the
+  synonyms:
+  - -2str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.0001 -lth crer_size 20 -uth crer_size 200
+  synonyms:
+  - -return
+  - -uth
+  args: !SimpleFlagArg
+    name: crer
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    matrix-scan\n\n\e[1mDESCRIPTION\e[0m\n    Scan sequences\
+  \ with one or several position-specific scoring matrices\n    (PSSM) to identify\
+  \ instances of the corresponding motifs (putative\n    sites). This program supports\
+  \ a variety of background models (Bernoulli,\n    Markov chains of any order).\n\
+  \n\e[1mAUTHORS\e[0m\n    Jacques van Helden <Jacques.van-Helden\\@univ-amu.fr>\n\
+  \    Jean Valery Turatsinze <jturatsi@bigre.ulb.ac.be>\n    Morgane Thomas-Chollier\
+  \ <morgane@bigre.ulb.ac.be>\n    Matthieu Defrance <defrance@bigre.ulb.ac.be>\n\n\
+  \e[1mCATEGORY\e[0m\n    sequences\n    pattern matching\n    PSSM\n\n\e[1mUSAGE\e\
+  [0m\n    matrix-scan -m matrixfile [-i inputfile] [-o outputfile] [-v] [-bgfile\n\
+  \    backgroundfile|-bgorder #]\n\n\e[1mINPUT FORMATS\e[0m\n  \e[1mSequence file\e\
+  [0m\n    All the formats supported in RSAT can be used as input (default: fasta).\n\
+  \n  \e[1mMatrix file\e[0m\n    The matrix format is specified with the option -matrix_format.\n\
+  \    Supported: all the input formats supported by \e[33mconvert-matrix\e[0m. For\
+  \ a\n    description of these format, see \e[33mconvert-matrix -h\e[0m\n\n\e[1mOUTPUT\
+  \ FORMAT\e[0m\n    The output is a tab-delimited file, with one row per match. This\
+  \ file\n    can directly be used as input for the program \e[33mfeature-map\e[0m.\n\
+  \n\e[1mSCORING SCHEME\e[0m\n  \e[1mWEIGHT SCORE\e[0m\n    The program scans the\
+  \ input sequences with a position-specific scoring\n    matrix (PSSM) by selecting,\
+  \ at each position, a sequence segment (S) of\n    the same length as the matrix,\
+  \ and assigning a score to this segment.\n\n    The segment score (weight) is calculated\
+  \ according to the theory\n    developed by Jerry Hertz and Gary Stormo (1999),\
+  \ but with the capability\n    to use Markov chain-based background models, as proposed\
+  \ by Thijs et al.\n    (2001).\n\n    The weight of a sequence segment (Ws) is calculated\
+  \ as the log-ratio\n    between two probabilities:\n\n    \e[33mWs = log[P(S|M)/P(S|B)]\e\
+  [0m\n        where\n\n    \e[33mproba_M = P(S|M)\e[0m:\n        The probability\
+  \ to generate the sequence segment given the matrix.\n\n    \e[33mproba_B = P(S|B)\e\
+  [0m:\n        The probability to generate the sequence segment given the\n     \
+  \   background model.\n\n    By default, the program uses natural logarithms, but\
+  \ the option -base\n    allows to specify any alternative base (e.g. 2 to obtain\
+  \ bit units);\n\n  \e[1mMOTIF MODEL\e[0m\n    The position-specific scoring matrix\
+  \ is generally built from an\n    alignment of transcription factor binding sites.\
+  \ The matrix indicates\n    the absolute frequency (Nij = number of occurrences)\
+  \ of each residue (i\n    = row) at each position (j = column) of the alignment.\n\
+  \n    Note: some programs use \"vertical\" matrices, where rows represents\n   \
+  \ positions and columns residues. See \e[33mconvert-matrix\e[0m for a description\
+  \ of\n    PSSM formats.\n\n   Pseudo-counts\n    Relative frequencies can be corrected\
+  \ by a pseudo-count (b) to reduce\n    the bias due to the small number of observations.\n\
+  \n    The pseudo-count can be shared either in an equiprobable way,\n\n      S<F''ij=(Nij\
+  \ + b/A)/[SUMi(Nij)+b]>\n\n    or according to residue prior frequencies.\n\n  \
+  \    S<F''ij=(Nij + b*Pi)/[SUMi(Nij)+b]>\n\n    where\n\n    Pi  is the prior frequency\
+  \ for residue i\n\n    A   is the size of the alphabet (A=4 for DNA).\n\n    b \
+  \  is the pseudo-count, which is \"shared\" between residues according to\n    \
+  \    their prior frequencies.\n\n  \e[1mBACKGROUND MODELS\e[0m\n    An essential\
+  \ parameter of any pattern detection approach is the choice\n    of an appropriate\
+  \ background model. This model is used to estimate the\n    probability for each\
+  \ site to occur by chance, rather than as an instance\n    of the motif.\n\n   \
+  \ The program matrix-scan supports Markov models of arbitrary order as\n    background\
+  \ models. A Markov model of \e[33morder m\e[0m means that the probability\n    of\
+  \ each residue depends on the \e[33mm\e[0m preceding residues in the sequence.\n\
+  \    Note that a Markov model of order 0 corresponds to a Bernoulli model\n    (each\
+  \ residue is independent from the preceding ones).\n\n    Markov models are represented\
+  \ as transition matrices, where each row\n    represents a prefix and each column\
+  \ a residue (suffix), and each cell\n    represents the conditional probability\
+  \ \e[33mP(r|prefix)\e[0m of observing residue\n    \e[33mr\e[0m at a given position,\
+  \ given the prefix (the \e[33mm\e[0m preceding letters).\n\n   Background model\
+  \ specification\n    The background model can be specified in different ways.\n\n\
+  \    \e[33m-bgfile\e[0m\n        This option allows to enter the background model\
+  \ from a background\n        model file. Background model files are tab-delimited\
+  \ files\n        containing the specification of oligonucleotide frequencies. A\n\
+  \        Markov model of order m=k-1 is automatically obtained from the\n      \
+  \  frequencies of oligonucleotides of length k. There is thus no need\n        to\
+  \ use the option -markov when the background model is secified with\n        a bg\
+  \ file.\n\n        The RSAT data folder contains pre-calibrated background model\
+  \ files\n        for all the supported organisms. Use the command\n        \e[33mchoose-background-model\e\
+  [0m to get the path of an organism-specific\n        background model file.\n\n\
+  \        Different formats are supported (option B-<bg_format>).\n\n    \e[33m-bginput\e\
+  [0m\n        The backgound model is calculated from the whole set of input\n   \
+  \     sequences. This option requires to specify the order of the\n        background\
+  \ model with the option -markov.\n\n    \e[33m-window\e[0m\n        The background\
+  \ model is calculated locally at each step of the scan,\n        by computing transition\
+  \ frequencies from a sliding window centred\n        around the considered segment.\
+  \ The model is thus updated at each\n        scanned position. This model is called\
+  \ \"adaptive\". Note that the\n        sliding window must be large enough to train\
+  \ the local Markov model.\n        The required sequence length increases exponentially\
+  \ with the Markov\n        order. This option is thus usually suitable for low order\
+  \ models\n        only (-markov 0 to 1).\n\n   Pseudo-frequencies for the background\
+  \ model\n    The concept of pseudo-count can be extended to \e[1mpseudo-frequencies\e\
+  [0m for\n    the background model, in order to increase the robustness of BG models\n\
+  \    when the training sequence set is too small. This is particularly\n    important\
+  \ for the adaptive models, which are trained on relatively short\n    sliding windows\
+  \ (a few hundreds of bases).\n\n    The reason for using pseudo-frequencies rather\
+  \ than pseudo-counts is\n    that background models are usually defined in terms\
+  \ of relative\n    frequencies, considered as estimates of prior frequencies. Since\
+  \ the\n    absolute counts used for estimating those probabilities are not always\n\
+  \    available, we introduce the correction in terms of pseudo-frequencies.\n\n\
+  \    P'(r|prefix)=((P(r|prefix) + (b/A)/(SUMi[P(i|prefix)]+b)\n\n\e[1mREFERENCES\e\
+  [0m\n    The probabilities use in this program were derived from the following\n\
+  \    papers.\n\n    Aerts, S., Thijs, G., Coessens, B., Staes, M., Moreau, Y. &\
+  \ De Moor, B.\n    (2003).\n        Toucan: deciphering the cis-regulatory logic\
+  \ of coregulated genes.\n        Nucleic Acids Res 31, 1753-64.\n\n    Bailey, T.\
+  \ L. & Gribskov, M. (1998).\n        Combining evidence using p-values: application\
+  \ to sequence homology\n        searches. Bioinformatics 14, 48-54.\n\n    Hertz,\
+  \ G.Z., G.W. Hartzell, 3rd, and G.D. Stormo (1990).\n        Identification of consensus\
+  \ patterns in unaligned DNA sequences\n        known to be functionally related.\
+  \ Comput Appl Biosci, 6(2): p.\n        81-92.\n\n    Hertz, G.Z. and G.D. Stormo\
+  \ (1999).\n        Identifying DNA and protein patterns with statistically significant\n\
+  \        alignments of multiple sequences. Bioinformatics, 15(7-8): p.\n       \
+  \ 563-77.\n\n    Staden (1989).\n        Methods for calculating the probabilities\
+  \ of finding patterns in\n        sequences. Comput Appl Biosci 5, 89-96.\n\n  \
+  \  Thijs, G., Lescot, M., Marchal, K., Rombauts, S., De Moor, B., Rouze, P.\n  \
+  \  & Moreau, Y. (2001).\n        A higher-order background model improves the detection\
+  \ of promoter\n        regulatory elements by Gibbs sampling. Bioinformatics 17,\
+  \ 1113-22.\n\n\e[1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n        Level of verbosity\
+  \ (detail in the warning messages during execution)\n\n    \e[1m-h\e[0m  Display\
+  \ full help message.\n\n    \e[1m-help\e[0m\n        Display only program options.\n\
+  \n    \e[1m-bgfile background_file\e[0m\n        Background model file.\n\n    \e\
+  [1m-bg_format format\e[0m\n        Format for the background model file.\n\n   \
+  \     Supported formats: type \e[33mconvert-background-model -h\e[0m to obtain a\
+  \ list\n        of supported background model formats.\n\n    \e[1m-bginput\e[0m\n\
+  \        Calculate background model from the input sequence set.\n\n    \e[1m-markov\e\
+  [0m\n        Order of the markov chain for the background model.\n\n        This\
+  \ option is incompatible with the option -bgfile.\n\n    \e[1m-window\e[0m\n   \
+  \     Size of the sliding window for the background model calculation.\n       \
+  \ When this option is specified, the matrix pseudo-count is equally\n        distributed.\n\
+  \n    \e[1m-m matrixfile\e[0m\n        Matrix file.\n\n        This argument can\
+  \ be used iteratively to scan the sequence with\n        multiple matrices.\n\n\
+  \    \e[1m-first_matrix N\e[0m\n        Start scanning with the Nth matrix (kip\
+  \ the N-1 first matrices of\n        the matrix file).\n\n        This option is\
+  \ valid for some file formats containing multiple\n        matrices (e.g. consensus,\
+  \ meme, MotifSampler), where the top matrix\n        is generally the most informative.\n\
+  \n    \e[1m-last_matrix #\e[0m\n        Only scan with the top # matrices per matrix\
+  \ file. This option is\n        valid for some file formats containing multiple\
+  \ matrices (e.g.\n        consensus, meme, MotifSampler), where the top matrix is\
+  \ generally\n        the most informative.\n\n        If several matrix files are\
+  \ specified, the # top matrices of each\n        file are used for scanning the\
+  \ sequences.\n\n    \e[1m-matrix_ac matrix_ac1[,matrix_ac2,...]\e[0m\n        Select\
+  \ one or more matrices specified by their ID.\n\n        Multiple matrices can be\
+  \ specified as a coma-separated list, or by\n        calling the argument iteratively.\n\
+  \n        Examples: matrix-scan [...] -matrix_ac MA0049.1,MA0221.1\n\n        is\
+  \ equivalent to matrix-scan [...] -matrix_ac MA0049.1 -matrix_ac\n        MA0221.1\n\
+  \n    \e[1m-matrix_name matrix_name1[,matrix_name2,...]\e[0m\n        Select one\
+  \ or more matrices specified by their ID.\n\n        Multiple matrices can be specified\
+  \ as a coma-separated list, or by\n        calling the argument iteratively.\n\n\
+  \        Examples: matrix-scan [...] -matrix_name eve,hb\n\n        is equivalent\
+  \ to matrix-scan [...] -matrix_name eve -matrix_name hb\n\n    \e[1m-matrix_id matrix_id1[,matrix_id2,...]\e\
+  [0m\n        Select one or more matrices specified by their ID.\n\n        Multiple\
+  \ matrices can be specified as a coma-separated list, or by\n        calling the\
+  \ argument iteratively.\n\n        Examples: matrix-scan [...] -matrix_id M00010,M00271\n\
+  \n        is equivalent to matrix-scan [...] -matrix_id M00010 -matrix_id\n    \
+  \    M00271\n\n    \e[1m-first_seq N\e[0m\n        Start scanning at the Nth sequence.\
+  \ This option can be combined with\n        -last_seq in order to select a subset\
+  \ of sequences for quick\n        testing, or for distributing the computation on\
+  \ several CPUs.\n\n    \e[1m-last_seq #\e[0m\n        Only scan with the top # sequences.\
+  \ This option allows to perform\n        quick tests or to scan only a given number\
+  \ of sequences at the top\n        of the input file (e.g. for collection of ChIP-seq\
+  \ peaks).\n\n    \e[1m-consensus_name\e[0m\n        Use the motif (degenerate) consensus\
+  \ as matrix name.\n\n    \e[1m-id_as_name\e[0m\n        Use the motif identifier\
+  \ as matrix name. This is useful for TRANSFAC\n        matrices, which have a distinct\
+  \ accession number (AC) and identifier\n        (ID). The identifier generally indicates\
+  \ the name of the\n        transcription factor.\n\n    \e[1m-ac_as_name\e[0m\n\
+  \        Use the motif accession number as matrix name. This is useful for\n   \
+  \     TRANSFAC matrices, which have a distinct accession number (AC) and\n     \
+  \   identifier (ID).\n\n    \e[1m-mlist matrix_list\e[0m\n        Matrix list.\n\
+  \n        Indicate a file containing a list of matrices to be used for\n       \
+  \ scanning the region. This facilitates the scanning of a sequence\n        with\
+  \ a library of matrices (e.g. all the matrices from RegulonDB, or\n        TRANSFAC).\n\
+  \n        Format: the matrix list file is a text file. The first word of each\n\
+  \        row is suppose to indicate a file name. Any further information on\n  \
+  \      the same row is ignored.\n\n    \e[1m-matrix_format matrix_format\e[0m\n\
+  \        Matrix format.\n\n    \e[1m-i inputfile\e[0m\n        File containing the\
+  \ sequences to scan.\n\n        If no input file is specified, the standard input\
+  \ is used. This\n        allows to use the command within a pipe.\n\n    \e[1m-seq_format\
+  \ sequence_format\e[0m\n        Sequence format.\n\n    \e[1m-mask upper|lower|non-dna\e\
+  [0m\n        Mask specific types of characters (lowercases, uppercases, non-dna),\n\
+  \        i.e. replace them by N characters.\n\n    \e[1m-n [skip|score]\e[0m\n \
+  \       Treatment of N characters. These characters are often used in DNA\n    \
+  \    sequences to represent undefined or masked nucleotides.\n\n        \e[33mskip\e\
+  [0m\n            N-containing regions are skipped.\n\n        \e[33mscore\e[0m\n\
+  \            N-containing regions are scored. The probability of an N is 1\n   \
+  \         for both the background model and the matrix. The N residues\n       \
+  \     will thus contribute neither positively nor negatively to the\n          \
+  \  weight score of the N-containing fragment. This option can be\n            useful\
+  \ to detect sites which are at the border of N-containing\n            regions,\
+  \ or in cases there are isolated N in the sequences.\n\n    \e[1m-o outputfile\e\
+  [0m\n        If no output file is specified, the standard output is used. This\n\
+  \        allows to use the command within a pipe.\n\n    \e[1m-pseudo pseudo_counts\e\
+  [0m\n        Pseudo-count for the matrix (default: 1).\n\n        The pseudo-count\
+  \ reflects the possibility that residues that were\n        not (yet) observed in\
+  \ the model might however be valid for future\n        observations. The pseudo-count\
+  \ is used to compute the corrected\n        residue frequencies.\n\n    \e[1m-equi_pseudo\e\
+  [0m\n        If this option is called, the pseudo-weight is distributed in an\n\
+  \        equiprobable way between residues.\n\n        By default, the pseudo-weight\
+  \ is distributed proportionally to\n        residue priors, except for the -window\
+  \ option where equipseudo is\n        default.\n\n    \e[1m-bg_pseudo #\e[0m\n \
+  \       Pseudo frequency for the background model. Value must be a real\n      \
+  \  between 0 and 1.\n\n        If this option is not specified, the pseudo-frequency\
+  \ value depends\n        on the background calculation.\n\n        For -bginput\
+  \ and -window, the pseudo frequency is automatically\n        calculated from the\
+  \ length (L) of the sequence following this\n        formula:\n\n          sqrt(L)/(L+sqrt(L))\n\
+  \n        For -bgfile, default value is 0.01.\n\n        In other cases, if the\
+  \ length (L) of the training sequence is known\n        (e.g. all promoters for\
+  \ the considered organism), the value can be\n        set manually by using the\
+  \ option -bg_pseudo. In such case, the\n        background pseudo-frequency might\
+  \ be set, as suggested by Thijs et\n        al., to the following value:\n\n   \
+  \       sqrt(L)/(L+sqrt(L))\n\n    \e[1m-origin [start|end|center|chrom]\e[0m\n\
+  \        Specify the origin for the calculation of positions.\n\n        Supported\
+  \ values:\n\n        \e[1mstart\e[0m\n            Site coordinates indicate their\
+  \ distance from the start of the\n            input sequence. The first residue\
+  \ of each sequence has a\n            coordinate value of 1.\n\n        \e[1mcenter\e\
+  [0m\n            Site coordinates are computed relative to the center of each\n\
+  \            sequence: sequence centers have coordinate 0, negative\n          \
+  \  coordinates indicate positions at the left of the center.\n\n        \e[1mend\e\
+  [0m Site coordinates are negative and indicate the distance from the\n         \
+  \   site to the end of the sequence. The last residue of the input\n           \
+  \ sequence has a coordinate value of -1.\n\n        \e[1mgenomic\e[0m\n        \
+  \    Site coordinates indicate their distance from the start of the\n          \
+  \  chromosome. The program automatically adds an offset\n            corresponding\
+  \ to the chromosomal position of the input sequence.\n            This requires\
+  \ a properly formatted fasta sequence, where the\n            chromosomal coordinates\
+  \ of the input sequences are included in\n            their header line (lines starting\
+  \ with '>').\n\n                \e[1m-seq_source\e[0m\n\n                The option\
+  \ \e[33m-seq_source\e[0m can be used to specify the source of\n                the\
+  \ fasta sequence, which determines its format for the\n                conversion\
+  \ to genomic coordinates (option \e[33m-origin genomic\e[0m.\n                Supported\
+  \ sources: \e[33mgetfasta\e[0m, \e[33mgalaxy\e[0m, \e[33mucsc\e[0m, \e[33musc2\e\
+  [0m. See the\n                help of \e[33mconvert-features\e[0m for a description\
+  \ of the\n                corresponding fasta headers.\n\n                \e[1m-offset\
+  \ offset_value\e[0m\n\n                Add an offset to site positions. The offset\
+  \ value must be an\n                Integer number (positive, null or negative).\
+  \ This option\n                allows to select an arbitrary position as origin.\n\
+  \n                Example: the option \e[33m-offset -100\e[0m can be used to specify\
+  \ the\n                transcription start site (TSS) as origin, in a collection\
+  \ of\n                promoter sequences including 100 residues downstream of the\n\
+  \                TSS.\n\n                Note: in previous versions, -origin was\
+  \ used to specify both\n                the reference point and the offset. Since\
+  \ 11/2009, the\n                offset is specified with the option -offset.\n\n\
+  \                \e[1m-base #\e[0m\n\n                Base for the logarithms used\
+  \ in the scores involving a\n                log-likelihood (weight and information\
+  \ content). Default:\n                exp(1) (natural logarithms).\n\n         \
+  \       A common alternative to natural logarithms is to use\n                logarithms\
+  \ in base 2, in which case the information content\n                is computed\
+  \ in bits.\n\n                \e[1m-decimals #\e[0m\n\n                Number of\
+  \ decimals displayed for the weight score.\n\n                Warning: the computation\
+  \ of P-values increases exponentially\n                with the number of decimals.\
+  \ For matrices wih many columns,\n                this can become non-tractable.\
+  \ We thus recommend to use the\n                default value (2 decimals).\n\n\
+  \                \e[1m-lth param lower_threshold\e[0m\n\n                \e[1m-uth\
+  \ param upper_threshold\e[0m\n\n                Threshold on some parameter (-lth:\
+  \ lower, -uth: upper\n                threshold).\n\n                Supported threshold\
+  \ fields for the matches : score pval sig\n                normw proba_M proba_B\
+  \ rank crer_sig crer_pval crer_sites\n                crer_size crer_site_distance\n\
+  \n                Supported threshold fields for score distributions: occ\n    \
+  \            occ_sum inv_cum exp_occ occ_pval occ_eval occ_sig\n               \
+  \ occ_sig_rank\n\n                In -window mode, if a threshold is set on pval\
+  \ (e.g. -uth\n                pval 0.001), a default threshold on the score (-lth\
+  \ score 0)\n                will be automatically added to limit the calculation\
+  \ time.\n\n                \e[1m-mth matrix_threshold_file\e[0m\n\n            \
+  \    Matrix-specific thresholds.\n\n                Specify a file containing a\
+  \ list of thresholds to be used\n                for scanning the region. This enables\
+  \ to use distinct\n                thresholds for each input matrix.\n\n       \
+  \         Format: the list of thresholds is a text file with four\n            \
+  \    columns (separated by spaces or tabulations) indicating the\n             \
+  \   following fields. 1. matrix name 2. threshold parameter (uth\n             \
+  \   or lth), 3. threshold field 4. threshold value.\n\n                The same\
+  \ list of fields is supported as for the options -lth\n                and -uth.\
+  \ Various threshold fields and parameters (uth and\n                lth) can be\
+  \ combined for each matrix.\n\n                Example:\n\n                MET_matrices.1\
+  \ lth score 8\n                MET_matrices.2 lth score 0\n                MET_matrices.2\
+  \ uth pval 0.0001\n\n                \e[1m-2str\e[0m\n\n                Scan both\
+  \ strands for DNA sequences.\n\n                \e[1m-1str\e[0m\n\n            \
+  \    single-strand search for DNA sequences.\n\n                \e[1m-return return_fields\e\
+  [0m\n\n                List of fields to return.\n\n                Supported fields:\n\
+  \                sites,pval,seq_scores,p_score,rank,normw,limits,weight_limit\n\
+  \                s,\n                distrib,occ_proba,bg_model,bg_residues,matrix,freq_matrix,we\n\
+  \                ight_matrix,crer\n\n                \e[1msites:\e[0m Matching sites.\n\
+  \                    Return the position of each matching site, in a\n         \
+  \           tab-delimited format which can be sed as input by\n                \
+  \    \e[33mfeature-map\e[0m (format .ft).\n\n                \e[1mpval:\e[0m site-wise\
+  \ P-value\n                    The site-wise P-value estimates the significance\
+  \ of the\n                    weight associated to each site. It is computed from\
+  \ the\n                    matrix, according to the probabilities described in\n\
+  \                    Staden (1989), Bailey (1998).\n\n                    In addition\
+  \ to the P-value, the program exports a column\n                    with the significance,\
+  \ defined as sig = -log(P-value).\n                    By default, logarithms are\
+  \ calculated in base 10, but\n                    this can be modified with the\
+  \ option -base.\n\n                \e[1mseq_scores:\e[0m sequence-wise score\n \
+  \                   Score each sequence according to Bailey (1998), with the\n \
+  \                   difference that, instead of computing the product of\n     \
+  \               P-values, we compute the sum of significances.\n\n             \
+  \   \e[1mproba_BM:\e[0m P(S|M) and P(S|B)\n                    For each scored segment\
+  \ S, returns its probability under\n                    the matrix model P(S|M)\
+  \ and its probability under the\n                    background model P(S|B).\n\n\
+  \                \e[1mp_score:\e[0m return the p_score\n                    This\
+  \ score is given by -log(Pval(w)/Pval_tresh). Where\n                    Pval(w)\
+  \ is the P-value of the wheight and Pval_tresh the\n                    threshold\
+  \ on P-value given by the user.\n\n                \e[1mrank:\e[0m Rank.\n     \
+  \               Sort the sites per decreasing values of score (weight),\n      \
+  \              and return the rank value.\n\n                    The rank is calculated\
+  \ independently for each sequence.\n                    In addition, a matrix-specidic\
+  \ rank is calculated for\n                    each sequence (rank_pm). This allows\
+  \ to distinguish\n                    between multiple matches for a single matrix\
+  \ (homotypic\n                    modules), and separate matches for distinct matrices\n\
+  \                    (heterotypic modules reflecting synergy between distinct\n\
+  \                    transcription factors).\n\n                    A common usage\
+  \ of the rank is to select the top scoring\n                    site per sequence\
+  \ (-uth rank 1) or the 3 top scoring\n                    sites per sequence (-uth\
+  \ rank 3).\n\n                    Another possibility is to define a maximal number\
+  \ of\n                    matches per matrix in the same sequence (-uth rank_pm\n\
+  \                    3).\n\n                \e[1mnormw:\e[0m normalized weights.\n\
+  \                    Normalized weights are calculated according to Thijs'\n   \
+  \                 formula :\n\n                      normw = (W -Wmin)/(Wmax - Wmin)\n\
+  \n                    Note that Wmin and Wmax are approximated using a\n       \
+  \             Bernoulli model, for reasons of commputational\n                 \
+  \   efficiency.\n\n                \e[1mlimits:\e[0m limits (start, end) of the\
+  \ input sequences.\n                    This is useful for drawing feature maps\
+  \ with sequences\n                    of different lengths.\n\n                \e\
+  [1mweight_limits:\e[0m Wmin and Wmax.\n                    For each site, returns\
+  \ the minimal and maximal weight.\n                    This is useful with adaptative\
+  \ background models.\n\n                \e[1mcrer\e[0m\n                    Return\
+  \ Cis-Regulatory elements Enriched-Regions (CRER).\n\n                    Calculate\
+  \ the statistical significance of the number of\n                    hits in windows\
+  \ of variable sizes. The number of hits is\n                    the sum of matches\
+  \ above a predefined threshold set on\n                    hits p-values, for all\
+  \ matrices and on both strands (if\n                    -2str). The maximum size\
+  \ for a CRER is defined by the\n                    option -crer_max.\n\n      \
+  \              The prior probability to find an instance of the motif\n        \
+  \            is the same for all matrices, and corresponds to the\n            \
+  \        chosen pval threshold. Within a region of maximal CRER\n              \
+  \      size, subwindows are defined between each hits, and the\n               \
+  \     observed number of matches in a subwindow is the sum of\n                \
+  \    hits above the threshold. The significance of the\n                    observed\
+  \ number of matches in a subwindow is estimated\n                    by calculating\
+  \ a P-value using the binomial distribution\n                    (Aerts et al.,\
+  \ 2003).\n\n                    Example of CRER search:\n\n                    \
+  \ -return crer -uth pval 0.0001 -lth crer_size 20 -uth crer_size 200\n\n       \
+  \              => the returned CRER lengths are between 20 and 200bp, and are\n\
+  \                     constructed with hits having a pval lower than 0.0001.\n\n\
+  \                \e[1mdistrib\e[0m Score distribution.\n                    Return\
+  \ the score distribution for each matrix.\n\n                \e[1mocc_proba\e[0m\
+  \ Probability of the number of matches in the input\n                sequence\n\
+  \                    For each matrix and each score value, calculate the\n     \
+  \               statistical significance of the number of matches. This\n      \
+  \              allows to select the score associated with te maximal\n         \
+  \           significance, on the basis of the matrix-specific\n                \
+  \    distribution, rather than by selecting some a priori\n                    threshold.\n\
+  \n                    For each motif (M) and each score value (s), the program\n\
+  \                    estimates the significance of the observed number of\n    \
+  \                matches (x), given the prior probability (p) to find an\n     \
+  \               instance of this motif with at least this score at a\n         \
+  \           given position of the sequence. The P-value is\n                   \
+  \ calculated using the binomial distribution (Aerts et\n                    al.,\
+  \ 2003).\n\n                    This option requires to specify a background score\n\
+  \                    distribution (option -bg_distrib) to estimate the prior\n \
+  \                   probabilities of motif instances.\n\n                \e[1mbg_model:\e\
+  [0m Background model.\n                    Report the transition matrix of the background\
+  \ model.\n                    Note that this option only makes sense for fixed\n\
+  \                    background models (-bgfile or -bginput), since when the\n \
+  \                   background model is adaptive (-mindow), the transition\n   \
+  \                 matrix changes along he sequence.\n\n                \e[1mbg_residues\e\
+  [0m\n                    Return for each site the composition in A,C,G and T of\n\
+  \                    the background model.\n\n                \e[1mmatrix\e[0m\n\
+  \                    Return as comments the count matrix (or matrices) which\n \
+  \                   were used for scanning.\n\n                \e[1mfreq_matrix\e\
+  [0m\n                    Return as comments the frequency matrix (or matrices)\n\
+  \                    which were used for scanning.\n\n                \e[1mweight_matrix\e\
+  [0m\n                    Return as comments the weight matrix (or matrices) which\n\
+  \                    were used for scanning.\n\n                \e[1m-sort_distrib\e\
+  [0m\n\n                Sort score distribution by decreasing value of significance.\n\
+  \                By default, the score distributions are sorted by score\n     \
+  \           (weight).\n\n                \e[1m-bg_distrib bg_distrib_file\e[0m\n\
+  \n                File specifying the background score distribution used to\n  \
+  \              estimate prior probabilities with the option -return\n          \
+  \      occ_proba. When this file is specified, the prior\n                probabilities\
+  \ of motif occurrences are estimated from the\n                frequencies of the\
+  \ background file, rather than using the\n                theoretical site-wise\
+  \ P-value.\n\n                This background distribution can be generated by running\n\
+  \                matrix-scan on a set of background sequences, with the\n      \
+  \          options\n\n                    matrix-scan -v 1 -return distrib -m matrix.tab\
+  \ -i\n                    bg_sequences.fta [...]\n\n                Various types\
+  \ of background sequences can be used as\n                background model: whole\
+  \ genome, whole set of upstream\n                sequences, randomly generated sequences,\
+  \ ... The choice of\n                the background model has a strong effect on\
+  \ the estimated\n                significance, and should thus be done carefully,\
+  \ according\n                to the biological question.\n\n                \e[1m-crer_ids\e\
+  [0m\n\n                Assign one separate feature ID per CRER This option is\n\
+  \                convenient to distinguish separate CRERs, but it can be\n     \
+  \           heavy for feature-map legends, especially when many CRERs\n        \
+  \        are detected.\n\n                \e[1m-quick\e[0m\n\n                Delegates\
+  \ scanning to the C program matrix-scan-quick\n                (developed by Matthieu\
+  \ Defrance) Evaluate if the quick mode\n                is compatible with the selected\
+  \ output parameters,\n                otherwise, run in the slower mode.\n\n   \
+  \             Incompatible with - CRER scanning - window background model\n\n  \
+  \              \e[1m-recursive\e[0m\n\n                Run matrix-scan separately\
+  \ for each sequence.\n\n                \e[1m-batch #\e[0m\n\n                Dispatch\
+  \ matrix-scan jobs on a cluster. Number of sequences\n                to be analyzed\
+  \ by job (= on each node of the cluster)\n\n\e[1mINTERNAL PROCEDURES\e[0m\n    \e\
+  [1mscore_segment\e[0m\n        Assign a score to a sequence segment and print it\
+  \ if it passes the\n        thresholds. Return value is 1 if the segment passed\
+  \ the thresholds.\n\n        Checks global variable $total_printed_matches. =back\n\
+  \n        \e[1mp-score\e[0m\n            Compute the p-score as in Bailey 2003.\n\
+  \n        \e[1mprint_match\e[0m\n            Print the matching site.\n\n\e[1mINTERNAL\
+  \ PROCEDURES\e[0m\n    \e[1mscore_crer\e[0m\n        Calculate the score of the\
+  \ CRER\n\n    \e[1mprint_crer\e[0m\n        Print the CRER.\n\n    \e[1mprint_crer_details\e\
+  [0m\n        Print the CRER in tab-delimited format, with detailed attribtues.\n\
+  \n    \e[1mcheck_matrix_thresholds\e[0m\n        Check the lower and upper threshold\
+  \ for a given hit of a given\n        matrix.\n\n    \e[1mcheck_thresholds\e[0m\n\
+  \        Check the lower and upper thresholds for any parameter value\n\n    \e\
+  [1mcheck_distrib_thresholds\e[0m\n        Check the lower and upper threshold for\
+  \ a given parameter in the\n        score distribution.\n\n\e[1mSEE ALSO\e[0m\n\
+  \    \e[33mconvert-matrix\e[0m\n    \e[33mconvert-background-model\e[0m\n    \e\
+  [33mfeature-map\e[0m\n\n\e[1mWISH LIST\e[0m\n  \e[1mautomatic pseudo-count\e[0m\n\
+  \    Automatically define a matrix-specific pseudo-count as the square root\n  \
+  \  of the number of sites used to train the matrix (the sum per column in\n    the\
+  \ residue count matrix).\n\n    This idea was propsed by Geert Thijs (PhD thesis)\
+  \ as an empirical way to\n    choose the pseudo-count. This rule makes sense, since\
+  \ the relative\n    impact of the pseudo-count decreases when the number of sites\
+  \ increases.\n    The square root makes sense because it is proportional to the\
+  \ standard\n    deviation of a Poisson sampling (the variance of the Poisson\n \
+  \   distribution equals its mean).\n\n  \e[1mHit table\e[0m\n    Export a table\
+  \ with one row per input sequence, one column per matrix,\n    where the value of\
+  \ a cell \e[33mh_{i,j}\e[0m indicates the number of hits for\n    matrix \e[33mj\e\
+  [0m in sequence \e[33mi\e[0m.\n\n  \e[1mCo-occurrence table\e[0m\n    Return a m\
+  \ x m table (where m is the number of input matrices) where the\n    value of a\
+  \ cell \e[33mc_{i,j}\e[0m indicates the number of input sequences having\n    at\
+  \ least one site for matrix \e[33mM_i\e[0m and on site for matrix \e[33mM_j\e[0m.\n\
+  \n    The goal is to detect pairs of co-occuring motifs in order to predict\n  \
+  \  putatively interacting transcription factors. The motifs do not need to\n   \
+  \ be individually over-represented, what matters here is that they are\n    foudn\
+  \ together more frequently than expected by chance. The significance\n    of the\
+  \ co-occurrences is computed using the hypergeometric function.\n\n    This option\
+  \ is distinct from the CRER detection. Motif co-occurrences\n    typically applies\
+  \ to the analysis of large number of small sequences\n    (e.g. all the promoters\
+  \ of a gien microbe), in order to detect pairs of\n    transcription factors whose\
+  \ putative target genes show a significant\n    overlap.\n\n"
+generated_using:
+- -h

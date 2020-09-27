@@ -1,0 +1,63 @@
+!Command
+command:
+- hubward
+- liftover
+positional:
+- !Positional
+  description: Single study to liftover
+  position: 0
+  name: dirname
+  optional: false
+- !Positional
+  description: Destination directory
+  position: 1
+  name: newdir
+  optional: false
+named:
+- !Flag
+  description: 'Source assembly (default: -)'
+  synonyms:
+  - --from_assembly
+  args: !SimpleFlagArg
+    name: FROM_ASSEMBLY
+  optional: true
+- !Flag
+  description: "Destination assembly (default: -)\n"
+  synonyms:
+  - --to_assembly
+  args: !SimpleFlagArg
+    name: TO_ASSEMBLY
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hubward liftover [-h] [--from_assembly FROM_ASSEMBLY]\n       \
+  \                 [--to_assembly TO_ASSEMBLY]\n                        dirname newdir\n\
+  \n    Lift over coordinates from one assembly to another, in bulk.\n\n    For all\
+  \ configured tracks in <dirname>/metadata.yaml, if the configured\n    track genome\
+  \ matches <from_assembly> then perform the liftover to\n    a temporary directory\
+  \ and then move the result to <newdir> when complete.\n\n    Currently, only studies\
+  \ where all tracks are in the same assembly are\n    supported. If a track is found\
+  \ that is from a different assembly,\n    a ValueError is raised.\n\n    The genome\
+  \ field of each track is also edited to reflect the new genome,\n    and a symlink\
+  \ called ORIGINAL-STUDY is placed in <newdir>. In the end,\n    a complete version\
+  \ of <dirname> is available in <newdir> with appropriate\n    tracks lifted over\
+  \ to the new assembly and appropriate metadata edited to\n    reflect the liftover.\n\
+  \n    Note: this uses CrossMap (http://crossmap.sourceforge.net) which currently\n\
+  \    only runs in Python 2.7.\n    \n\npositional arguments:\n  dirname        \
+  \       Single study to liftover\n  newdir                Destination directory\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --from_assembly FROM_ASSEMBLY\n                        Source assembly (default:\
+  \ -)\n  --to_assembly TO_ASSEMBLY\n                        Destination assembly\
+  \ (default: -)\n"
+generated_using:
+- --help

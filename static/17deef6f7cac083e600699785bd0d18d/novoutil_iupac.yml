@@ -1,0 +1,115 @@
+!Command
+command:
+- novoutil
+- iupac
+positional:
+- !Positional
+  description: is a sorted vcf file of SNPs, and
+  position: 0
+  name: snpfile
+  optional: false
+- !Positional
+  description: "is one or more fasta files to be processed.\nInput files may be compressed\
+    \ with gzip or bzip."
+  position: 1
+  name: fastafiles
+  optional: false
+- !Positional
+  description: "BED format files whose coordinates should be updated to match the\
+    \ new \nfasta file. Useful if indels are being incorporated in the new fasta files.\n\
+    Relocated BED filenames are prefixed by 'new.'"
+  position: 2
+  name: bedfiles
+  optional: false
+named:
+- !Flag
+  description: "<99>    Lower quality limit for SNPs. Default 30.\nSNPs with quality\
+    \ of '.' are assumed as high quality."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Replace reference base with the genotype base code.\nThe reference\
+    \ base will not be included in the IUPAC code if\nthe SNP is homozygous. Zygosity\
+    \ is determined as follows:\nif -s is specified then from GT attribute of the\
+    \ sample\nelse if there is an AF tag then AF=1 is homozygous\nelse check first\
+    \ GT tag."
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Update reference with homozygous indels from the vcf file.\nNote.\
+    \ That this changes the length of reference and will affect\nlocation of annotations\
+    \ hence ability to give a list of bed\nfiles to be relocated."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use with SNP files in wgsim format rather than vcf.
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets sample (1 based) to use for multi-sample vcf files.\nWhen a sample\
+    \ is specified the GT of that sample is used for\ndetermining genotype. If sample\
+    \ has ./. in GT attribute then\nthe SNP is not encoded into the reference.\nIf\
+    \ a multi-sample vcf file is used and -s is not specified\nthen all SNPs are applied\
+    \ and AF attribute is used to determine\ngenotype, AF=1.0 is homozygous for the\
+    \ SNP."
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: '9'
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Only homozygous SNPs are corrected.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nUsage:   novoutil iupac [-q 99] [-g] [-i] [-w] [-s 9] snpfile fastafiles...\
+  \  [bedfiles...]\n\nDescription:    Inserts SNPs into a fasta file as IUPAC ambiguous\
+  \ codes formed\n    from the reference base and high quality alternate alleles from\n\
+  \    the vcf file.\n    Any N's in the reference that have alt alleles called (subject\
+  \ \n    to quality check) will be replaced with IUPAC code for alt alleles.\n\n\
+  \    The VCF files CHROM attribute should match the chromosome name on the\n   \
+  \ fasta header (the first whitespace delimited field).\n    The test is vcfname\
+  \ == fastname || 'chr' + vcfname == fastaname || vcfname == 'chr' + fastname\n\n\
+  Where:\n    -q  <99>    Lower quality limit for SNPs. Default 30.\n            \
+  \    SNPs with quality of '.' are assumed as high quality.\n\n    -g          Replace\
+  \ reference base with the genotype base code.\n                The reference base\
+  \ will not be included in the IUPAC code if\n                the SNP is homozygous.\
+  \ Zygosity is determined as follows:\n                if -s is specified then from\
+  \ GT attribute of the sample\n                else if there is an AF tag then AF=1\
+  \ is homozygous\n                else check first GT tag.\n    -h          Only\
+  \ homozygous SNPs are corrected.\n    -i          Update reference with homozygous\
+  \ indels from the vcf file.\n                Note. That this changes the length\
+  \ of reference and will affect\n                location of annotations hence ability\
+  \ to give a list of bed \n                files to be relocated.\n\n    -w     \
+  \     Use with SNP files in wgsim format rather than vcf.\n\n    -s 9        Sets\
+  \ sample (1 based) to use for multi-sample vcf files.\n                When a sample\
+  \ is specified the GT of that sample is used for\n                determining genotype.\
+  \ If sample has ./. in GT attribute then\n                the SNP is not encoded\
+  \ into the reference.\n                If a multi-sample vcf file is used and -s\
+  \ is not specified\n                then all SNPs are applied and AF attribute is\
+  \ used to determine\n                genotype, AF=1.0 is homozygous for the SNP.\n\
+  \n    snpfile     is a sorted vcf file of SNPs, and\n    fastafiles  is one or more\
+  \ fasta files to be processed.\n                Input files may be compressed with\
+  \ gzip or bzip.\n\n    bedfiles    BED format files whose coordinates should be\
+  \ updated to match the new \n                fasta file. Useful if indels are being\
+  \ incorporated in the new fasta files.\n                Relocated BED filenames\
+  \ are prefixed by 'new.'\n\nOutput:\n    A single concatenated fasta file with IUPAC\
+  \ codes is written to stdout.\n    A log with counts of substituted SNPs and Indels\
+  \ per sequence is written\n    to stderr.\n\n   The iupac function \e[33;7mdoes\
+  \ not recalculate the md5sum\e[0m of the sequence (M5: tag) \n"
+generated_using:
+- --help

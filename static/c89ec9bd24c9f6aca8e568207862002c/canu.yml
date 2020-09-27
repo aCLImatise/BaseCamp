@@ -1,0 +1,136 @@
+!Command
+command:
+- canu
+positional:
+- !Positional
+  description: It is used primarily to estimate coverage in reads, NOT as the desired
+  position: 0
+  name: assembled.
+  optional: false
+named:
+- !Flag
+  description: '] file1 file2 ...'
+  synonyms:
+  - -nanopore
+  - -pacbio-hifi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- generate haplotype-specific reads'
+  synonyms:
+  - -haplotype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- generate corrected reads'
+  synonyms:
+  - -correct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- generate trimmed reads'
+  synonyms:
+  - -trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- generate an assembly'
+  synonyms:
+  - -assemble
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- generate trimmed reads and then assemble them'
+  synonyms:
+  - -trim-assemble
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '*gz'
+  synonyms:
+  - -haplotypeNANNY
+  args: !SimpleFlagArg
+    name: nanny/
+  optional: true
+- !Flag
+  description: billy2.fasta.gz
+  synonyms:
+  - -haplotypeBILLY
+  args: !SimpleFlagArg
+    name: billy1.fasta.gz
+  optional: true
+- !Flag
+  description: -trimmed
+  synonyms:
+  - -corrected
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<files>\n-nanopore    <files>\n-pacbio-hifi <files>"
+  synonyms:
+  - -pacbio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -citation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nusage:   canu [-version] [-citation] \\\n              [-haplotype |\
+  \ -correct | -trim | -assemble | -trim-assemble] \\\n              [-s <assembly-specifications-file>]\
+  \ \\\n               -p <assembly-prefix> \\\n               -d <assembly-directory>\
+  \ \\\n               genomeSize=<number>[g|m|k] \\\n              [other-options]\
+  \ \\\n              [-haplotype{NAME} illumina.fastq.gz] \\\n              [-corrected]\
+  \ \\\n              [-trimmed] \\\n              [-pacbio |\n               -nanopore\
+  \ |\n               -pacbio-hifi] file1 file2 ...\n\nexample: canu -d run1 -p godzilla\
+  \ genomeSize=1g -nanopore-raw reads/*.fasta.gz \n\n\n  To restrict canu to only\
+  \ a specific stage, use:\n    -haplotype     - generate haplotype-specific reads\n\
+  \    -correct       - generate corrected reads\n    -trim          - generate trimmed\
+  \ reads\n    -assemble      - generate an assembly\n    -trim-assemble - generate\
+  \ trimmed reads and then assemble them\n\n  The assembly is computed in the -d <assembly-directory>,\
+  \ with output files named\n  using the -p <assembly-prefix>.  This directory is\
+  \ created if needed.  It is not\n  possible to run multiple assemblies in the same\
+  \ directory.\n\n  The genome size should be your best guess of the haploid genome\
+  \ size of what is being\n  assembled.  It is used primarily to estimate coverage\
+  \ in reads, NOT as the desired\n  assembly size.  Fractional values are allowed:\
+  \ '4.7m' equals '4700k' equals '4700000'\n\n  Some common options:\n    useGrid=string\n\
+  \      - Run under grid control (true), locally (false), or set up for grid control\n\
+  \        but don't submit any jobs (remote)\n    rawErrorRate=fraction-error\n \
+  \     - The allowed difference in an overlap between two raw uncorrected reads.\
+  \  For lower\n        quality reads, use a higher number.  The defaults are 0.300\
+  \ for PacBio reads and\n        0.500 for Nanopore reads.\n    correctedErrorRate=fraction-error\n\
+  \      - The allowed difference in an overlap between two corrected reads.  Assemblies\
+  \ of\n        low coverage or data with biological differences will benefit from\
+  \ a slight increase\n        in this.  Defaults are 0.045 for PacBio reads and 0.144\
+  \ for Nanopore reads.\n    gridOptions=string\n      - Pass string to the command\
+  \ used to submit jobs to the grid.  Can be used to set\n        maximum run time\
+  \ limits.  Should NOT be used to set memory limits; Canu will do\n        that for\
+  \ you.\n    minReadLength=number\n      - Ignore reads shorter than 'number' bases\
+  \ long.  Default: 1000.\n    minOverlapLength=number\n      - Ignore read-to-read\
+  \ overlaps shorter than 'number' bases long.  Default: 500.\n  A full list of options\
+  \ can be printed with '-options'.  All options can be supplied in\n  an optional\
+  \ sepc file with the -s option.\n\n  For TrioCanu, haplotypes are specified with\
+  \ the -haplotype{NAME} option, with any\n  number of haplotype-specific Illumina\
+  \ read files after.  The {NAME} of each haplotype\n  is free text (but only letters\
+  \ and numbers, please).  For example:\n    -haplotypeNANNY nanny/*gz\n    -haplotypeBILLY\
+  \ billy1.fasta.gz billy2.fasta.gz\n\n  Reads can be either FASTA or FASTQ format,\
+  \ uncompressed, or compressed with gz, bz2 or xz.\n\n  Reads are specified by the\
+  \ technology they were generated with, and any processing performed.\n\n  [processing]\n\
+  \    -corrected\n    -trimmed\n\n  [technology]\n    -pacbio      <files>\n    -nanopore\
+  \    <files>\n    -pacbio-hifi <files>\n\nComplete documentation at http://canu.readthedocs.org/en/latest/\n\
+  \n"
+generated_using:
+- --help

@@ -1,0 +1,104 @@
+!Command
+command:
+- mimodd
+- convert
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: convert
+  optional: false
+named:
+- !Flag
+  description: 'the format of the input file(s) (default: bam)'
+  synonyms:
+  - --iformat
+  args: !ChoiceFlagArg
+    choices: !!set
+      gz_pe:
+      fastq_pe:
+      fastq:
+      gz:
+      sam:
+      bam:
+  optional: true
+- !Flag
+  description: "redirect the output to the specified file (default:\nstdout)"
+  synonyms:
+  - -o
+  - --ofile
+  args: !SimpleFlagArg
+    name: OFILE
+  optional: true
+- !Flag
+  description: 'the output format (default: sam)'
+  synonyms:
+  - --oformat
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      gz:
+      bam:
+      sam:
+  optional: true
+- !Flag
+  description: "optional SAM file, the header information of which\nshould be used\
+    \ in the output (will overwrite pre-\nexisting header information from the input\
+    \ file); not\nallowed for input in SAM/BAM format"
+  synonyms:
+  - -h
+  - --header
+  args: !SimpleFlagArg
+    name: HEADER
+  optional: true
+- !Flag
+  description: "if the input file has reads from different read\ngroups, write them\
+    \ to separate output files (using\n--ofile OFILE as a file name template); implied\
+    \ for\nconversions to fastq format"
+  synonyms:
+  - -r
+  - --split-on-rgs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the number of threads to use (overrides config\nsetting; ignored if\
+    \ not applicable to the conversion)\n"
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage:  convert [--help] [--iformat {fastq,fastq_pe,gz,gz_pe,sam,bam}]\n\
+  \                [-o OFILE] [--oformat {sam,bam,fastq,gz}] [-h HEADER] [-r]\n  \
+  \              [-t THREADS]\n                input_files) [input_file(s ...]\n\n\
+  positional arguments:\n  input_file(s)         a list of input files (alternating\
+  \ r1 and r2 files for\n                        paired-end data\n\noptional arguments:\n\
+  \  --help                show this help message and exit\n  --iformat {fastq,fastq_pe,gz,gz_pe,sam,bam}\n\
+  \                        the format of the input file(s) (default: bam)\n  -o OFILE,\
+  \ --ofile OFILE\n                        redirect the output to the specified file\
+  \ (default:\n                        stdout)\n  --oformat {sam,bam,fastq,gz}\n \
+  \                       the output format (default: sam)\n  -h HEADER, --header\
+  \ HEADER\n                        optional SAM file, the header information of which\n\
+  \                        should be used in the output (will overwrite pre-\n   \
+  \                     existing header information from the input file); not\n  \
+  \                      allowed for input in SAM/BAM format\n  -r, --split-on-rgs\
+  \    if the input file has reads from different read\n                        groups,\
+  \ write them to separate output files (using\n                        --ofile OFILE\
+  \ as a file name template); implied for\n                        conversions to\
+  \ fastq format\n  -t THREADS, --threads THREADS\n                        the number\
+  \ of threads to use (overrides config\n                        setting; ignored\
+  \ if not applicable to the conversion)\n"
+generated_using:
+- --help
