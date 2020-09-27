@@ -25,7 +25,13 @@ jobs:
         name: Fix file watch limit
 
       - run: echo fs.file-max=1000000 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-        name: Fix file watch limit
+        name: Fix open file limit
+
+      - run: |
+          ulimit -n
+          ulimit -n unlimited
+          ulimit -n
+        name: Fix ulimit
 
       - uses: enriikke/gatsby-gh-pages-action@v2
         env:
